@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentRegionKHR.html">VkPresentRegionKHR</a>
+@ValueBasedCandidate
 public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$rectangleCount = ValueLayout.JAVA_INT.withName("rectangleCount");
     public static final AddressLayout LAYOUT$pRectangles = ValueLayout.ADDRESS.withTargetLayout(VkRectLayerKHR.LAYOUT).withName("pRectangles");
@@ -101,4 +103,3 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IPoi
     }
 
 }
-/// dummy, not implemented yet

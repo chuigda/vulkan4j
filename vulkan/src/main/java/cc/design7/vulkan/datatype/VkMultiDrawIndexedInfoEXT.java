@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMultiDrawIndexedInfoEXT.html">VkMultiDrawIndexedInfoEXT</a>
+@ValueBasedCandidate
 public record VkMultiDrawIndexedInfoEXT(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$firstIndex = ValueLayout.JAVA_INT.withName("firstIndex");
     public static final OfInt LAYOUT$indexCount = ValueLayout.JAVA_INT.withName("indexCount");
@@ -86,4 +88,3 @@ public record VkMultiDrawIndexedInfoEXT(@NotNull MemorySegment segment) implemen
     }
 
 }
-/// dummy, not implemented yet

@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264FrameSizeKHR.html">VkVideoEncodeH264FrameSizeKHR</a>
+@ValueBasedCandidate
 public record VkVideoEncodeH264FrameSizeKHR(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$frameISize = ValueLayout.JAVA_INT.withName("frameISize");
     public static final OfInt LAYOUT$framePSize = ValueLayout.JAVA_INT.withName("framePSize");
@@ -86,4 +88,3 @@ public record VkVideoEncodeH264FrameSizeKHR(@NotNull MemorySegment segment) impl
     }
 
 }
-/// dummy, not implemented yet

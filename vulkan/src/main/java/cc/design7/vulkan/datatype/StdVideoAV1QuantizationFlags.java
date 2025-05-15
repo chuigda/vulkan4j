@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$using_qmatrix_reserved = ValueLayout.JAVA_INT.withName("bitfield$using_qmatrix_reserved");
 
@@ -53,35 +54,25 @@ public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) imple
 
     public static final long OFFSET$using_qmatrix_reserved = LAYOUT.byteOffset(PATH$bitfield$using_qmatrix_reserved);
 
-    public int using_qmatrix() {
+    public boolean using_qmatrix() {
         MemorySegment s = segment.asSlice(OFFSET$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void using_qmatrix(int value) {
+    public void using_qmatrix(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int diff_uv_delta() {
+    public boolean diff_uv_delta() {
         MemorySegment s = segment.asSlice(OFFSET$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void diff_uv_delta(int value) {
+    public void diff_uv_delta(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
-    public int reserved() {
-        MemorySegment s = segment.asSlice(OFFSET$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
-        return BitfieldUtil.readBits(s, 2, 32);
-    }
-
-    public void reserved(int value) {
-        MemorySegment s = segment.asSlice(OFFSET$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
-        BitfieldUtil.writeBits(s, 2, 32, value);
-    }
 
 }
-/// dummy, not implemented yet

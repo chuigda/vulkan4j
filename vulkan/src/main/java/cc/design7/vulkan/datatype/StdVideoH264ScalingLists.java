@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implements IPointer {
     public static final OfShort LAYOUT$scaling_list_present_mask = ValueLayout.JAVA_SHORT.withName("scaling_list_present_mask");
     public static final OfShort LAYOUT$use_default_scaling_matrix_mask = ValueLayout.JAVA_SHORT.withName("use_default_scaling_matrix_mask");
@@ -98,4 +99,3 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
     }
 
 }
-/// dummy, not implemented yet

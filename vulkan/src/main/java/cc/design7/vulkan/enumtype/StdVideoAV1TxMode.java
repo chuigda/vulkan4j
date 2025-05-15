@@ -2,7 +2,6 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1TxMode.html">StdVideoAV1TxMode</a>
 public final class StdVideoAV1TxMode {
     public static final int STD_VIDEO_AV1_TX_MODE_ONLY_4X4 = 0x0;
     public static final int STD_VIDEO_AV1_TX_MODE_LARGEST = 0x1;

@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$bit_rate_value_minus1 = ValueLayout.JAVA_INT.withName("bit_rate_value_minus1");
     public static final OfInt LAYOUT$cpb_size_value_minus1 = ValueLayout.JAVA_INT.withName("cpb_size_value_minus1");
@@ -110,4 +111,3 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
     }
 
 }
-/// dummy, not implemented yet

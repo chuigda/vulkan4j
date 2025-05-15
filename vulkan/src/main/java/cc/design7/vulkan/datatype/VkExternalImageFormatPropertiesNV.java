@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalImageFormatPropertiesNV.html">VkExternalImageFormatPropertiesNV</a>
+@ValueBasedCandidate
 public record VkExternalImageFormatPropertiesNV(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$imageFormatProperties = VkImageFormatProperties.LAYOUT.withName("imageFormatProperties");
     public static final OfInt LAYOUT$externalMemoryFeatures = ValueLayout.JAVA_INT.withName("externalMemoryFeatures");
@@ -98,4 +100,3 @@ public record VkExternalImageFormatPropertiesNV(@NotNull MemorySegment segment) 
     }
 
 }
-/// dummy, not implemented yet

@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkTransformMatrixKHR.html">VkTransformMatrixKHR</a>
+@ValueBasedCandidate
 public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IPointer {
     public static final OfFloat LAYOUT$matrix = ValueLayout.JAVA_FLOAT.withName("matrix");
 
@@ -62,4 +64,3 @@ public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IP
     }
 
 }
-/// dummy, not implemented yet

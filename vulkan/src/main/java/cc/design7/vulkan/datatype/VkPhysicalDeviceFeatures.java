@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFeatures.html">VkPhysicalDeviceFeatures</a>
+@ValueBasedCandidate
 public record VkPhysicalDeviceFeatures(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$robustBufferAccess = ValueLayout.JAVA_INT.withName("robustBufferAccess");
     public static final OfInt LAYOUT$fullDrawIndexUint32 = ValueLayout.JAVA_INT.withName("fullDrawIndexUint32");
@@ -710,4 +712,3 @@ public record VkPhysicalDeviceFeatures(@NotNull MemorySegment segment) implement
     }
 
 }
-/// dummy, not implemented yet

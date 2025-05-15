@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSpecializationMapEntry.html">VkSpecializationMapEntry</a>
+@ValueBasedCandidate
 public record VkSpecializationMapEntry(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$constantID = ValueLayout.JAVA_INT.withName("constantID");
     public static final OfInt LAYOUT$offset = ValueLayout.JAVA_INT.withName("offset");
@@ -86,4 +88,3 @@ public record VkSpecializationMapEntry(@NotNull MemorySegment segment) implement
     }
 
 }
-/// dummy, not implemented yet

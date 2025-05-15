@@ -2,7 +2,6 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoH264ProfileIdc.html">StdVideoH264ProfileIdc</a>
 public final class StdVideoH264ProfileIdc {
     public static final int STD_VIDEO_H264_PROFILE_IDC_BASELINE = 0x42;
     public static final int STD_VIDEO_H264_PROFILE_IDC_MAIN = 0x4d;

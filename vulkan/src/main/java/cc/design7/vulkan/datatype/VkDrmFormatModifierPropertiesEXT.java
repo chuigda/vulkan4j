@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDrmFormatModifierPropertiesEXT.html">VkDrmFormatModifierPropertiesEXT</a>
+@ValueBasedCandidate
 public record VkDrmFormatModifierPropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
     public static final OfLong LAYOUT$drmFormatModifier = ValueLayout.JAVA_LONG.withName("drmFormatModifier");
     public static final OfInt LAYOUT$drmFormatModifierPlaneCount = ValueLayout.JAVA_INT.withName("drmFormatModifierPlaneCount");
@@ -86,4 +88,3 @@ public record VkDrmFormatModifierPropertiesEXT(@NotNull MemorySegment segment) i
     }
 
 }
-/// dummy, not implemented yet

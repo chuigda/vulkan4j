@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineBinaryKeysAndDataKHR.html">VkPipelineBinaryKeysAndDataKHR</a>
+@ValueBasedCandidate
 public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$binaryCount = ValueLayout.JAVA_INT.withName("binaryCount");
     public static final AddressLayout LAYOUT$pPipelineBinaryKeys = ValueLayout.ADDRESS.withTargetLayout(VkPipelineBinaryKeyKHR.LAYOUT).withName("pPipelineBinaryKeys");
@@ -140,4 +142,3 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
     }
 
 }
-/// dummy, not implemented yet

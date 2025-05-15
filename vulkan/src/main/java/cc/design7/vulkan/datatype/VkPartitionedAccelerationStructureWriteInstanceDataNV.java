@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPartitionedAccelerationStructureWriteInstanceDataNV.html">VkPartitionedAccelerationStructureWriteInstanceDataNV</a>
+@ValueBasedCandidate
 public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$transform = VkTransformMatrixKHR.LAYOUT.withName("transform");
     public static final OfFloat LAYOUT$explicitAABB = ValueLayout.JAVA_FLOAT.withName("explicitAABB");
@@ -158,4 +160,3 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
     }
 
 }
-/// dummy, not implemented yet

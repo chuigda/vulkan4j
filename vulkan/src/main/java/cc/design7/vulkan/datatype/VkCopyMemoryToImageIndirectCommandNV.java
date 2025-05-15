@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyMemoryToImageIndirectCommandNV.html">VkCopyMemoryToImageIndirectCommandNV</a>
+@ValueBasedCandidate
 public record VkCopyMemoryToImageIndirectCommandNV(@NotNull MemorySegment segment) implements IPointer {
     public static final OfLong LAYOUT$srcAddress = ValueLayout.JAVA_LONG.withName("srcAddress");
     public static final OfInt LAYOUT$bufferRowLength = ValueLayout.JAVA_INT.withName("bufferRowLength");
@@ -122,4 +124,3 @@ public record VkCopyMemoryToImageIndirectCommandNV(@NotNull MemorySegment segmen
     }
 
 }
-/// dummy, not implemented yet

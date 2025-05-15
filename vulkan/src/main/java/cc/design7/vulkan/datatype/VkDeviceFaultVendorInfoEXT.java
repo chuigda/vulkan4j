@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceFaultVendorInfoEXT.html">VkDeviceFaultVendorInfoEXT</a>
+@ValueBasedCandidate
 public record VkDeviceFaultVendorInfoEXT(@NotNull MemorySegment segment) implements IPointer {
     public static final OfByte LAYOUT$description = ValueLayout.JAVA_BYTE.withName("description");
     public static final OfLong LAYOUT$vendorFaultCode = ValueLayout.JAVA_LONG.withName("vendorFaultCode");
@@ -86,4 +88,3 @@ public record VkDeviceFaultVendorInfoEXT(@NotNull MemorySegment segment) impleme
     }
 
 }
-/// dummy, not implemented yet

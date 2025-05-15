@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements IPointer {
     public static final OfByte LAYOUT$FeatureEnabled = ValueLayout.JAVA_BYTE.withName("FeatureEnabled");
     public static final OfShort LAYOUT$FeatureData = ValueLayout.JAVA_SHORT.withName("FeatureData");
@@ -74,4 +75,3 @@ public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements
     }
 
 }
-/// dummy, not implemented yet

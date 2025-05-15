@@ -2,7 +2,6 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1ChromaSamplePosition.html">StdVideoAV1ChromaSamplePosition</a>
 public final class StdVideoAV1ChromaSamplePosition {
     public static final int STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_UNKNOWN = 0x0;
     public static final int STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_VERTICAL = 0x1;

@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageSubresourceRange.html">VkImageSubresourceRange</a>
+@ValueBasedCandidate
 public record VkImageSubresourceRange(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$aspectMask = ValueLayout.JAVA_INT.withName("aspectMask");
     public static final OfInt LAYOUT$baseMipLevel = ValueLayout.JAVA_INT.withName("baseMipLevel");
@@ -110,4 +112,3 @@ public record VkImageSubresourceRange(@NotNull MemorySegment segment) implements
     }
 
 }
-/// dummy, not implemented yet

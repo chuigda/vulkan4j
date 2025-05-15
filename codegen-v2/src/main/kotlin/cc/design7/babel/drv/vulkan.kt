@@ -44,11 +44,21 @@ internal fun vulkanMain() {
 
     for (structure in vulkanRegistry.structures.values) {
         try {
-            val structureDoc = generateStructure(vulkanRegistry, structure, codegenOptions)
+            val structureDoc = generateStructure(vulkanRegistry, structure, false, codegenOptions)
             File("vulkan/src/main/java/cc/design7/vulkan/datatype/${structure.name}.java")
                 .writeText(render(structureDoc))
         } catch (e: Throwable) {
             log.severe("Failed to generate structure ${structure.name}: ${e.message}")
+        }
+    }
+
+    for (unions in vulkanRegistry.unions.values) {
+        try {
+            val structureDoc = generateStructure(vulkanRegistry, unions, true, codegenOptions)
+            File("vulkan/src/main/java/cc/design7/vulkan/datatype/${unions.name}.java")
+                .writeText(render(structureDoc))
+        } catch (e: Throwable) {
+            log.severe("Failed to generate union ${unions.name}: ${e.message}")
         }
     }
 }
@@ -71,7 +81,13 @@ private fun vulkanDocLinkProvider(entity: Entity) = when(entity) {
             "<a href=\"https://registry.khronos.org/vulkan/specs/latest/man/html/${entity.name.original}.html\">$constantName</a>"
         }
     }
-    is Bitmask, is Command, is Enumeration, is Structure ->
-        "<a href=\"https://registry.khronos.org/vulkan/specs/latest/man/html/${entity.name.original}.html\">${entity.name.original}</a>"
+    is Bitmask, is Command, is Enumeration, is Structure -> {
+        val entityName = entity.name.original
+        if (entityName.startsWith("StdVideo")) {
+            null
+        } else {
+            "<a href=\"https://registry.khronos.org/vulkan/specs/latest/man/html/${entity.name.original}.html\">${entity.name.original}</a>"
+        }
+    }
     else -> null
 }

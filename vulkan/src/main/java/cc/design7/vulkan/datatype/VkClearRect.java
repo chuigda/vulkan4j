@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClearRect.html">VkClearRect</a>
+@ValueBasedCandidate
 public record VkClearRect(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$rect = VkRect2D.LAYOUT.withName("rect");
     public static final OfInt LAYOUT$baseArrayLayer = ValueLayout.JAVA_INT.withName("baseArrayLayer");
@@ -86,4 +88,3 @@ public record VkClearRect(@NotNull MemorySegment segment) implements IPointer {
     }
 
 }
-/// dummy, not implemented yet

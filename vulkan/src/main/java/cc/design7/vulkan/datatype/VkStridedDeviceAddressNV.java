@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStridedDeviceAddressNV.html">VkStridedDeviceAddressNV</a>
+@ValueBasedCandidate
 public record VkStridedDeviceAddressNV(@NotNull MemorySegment segment) implements IPointer {
     public static final OfLong LAYOUT$startAddress = ValueLayout.JAVA_LONG.withName("startAddress");
     public static final OfLong LAYOUT$strideInBytes = ValueLayout.JAVA_LONG.withName("strideInBytes");
@@ -74,4 +76,3 @@ public record VkStridedDeviceAddressNV(@NotNull MemorySegment segment) implement
     }
 
 }
-/// dummy, not implemented yet

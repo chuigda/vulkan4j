@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMotionInstanceNV.html">VkAccelerationStructureMotionInstanceNV</a>
+@ValueBasedCandidate
 public record VkAccelerationStructureMotionInstanceNV(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$type = ValueLayout.JAVA_INT.withName("type");
     public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
@@ -86,4 +88,3 @@ public record VkAccelerationStructureMotionInstanceNV(@NotNull MemorySegment seg
     }
 
 }
-/// dummy, not implemented yet

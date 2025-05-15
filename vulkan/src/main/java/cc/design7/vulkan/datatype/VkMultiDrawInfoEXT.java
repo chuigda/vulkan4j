@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMultiDrawInfoEXT.html">VkMultiDrawInfoEXT</a>
+@ValueBasedCandidate
 public record VkMultiDrawInfoEXT(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$firstVertex = ValueLayout.JAVA_INT.withName("firstVertex");
     public static final OfInt LAYOUT$vertexCount = ValueLayout.JAVA_INT.withName("vertexCount");
@@ -74,4 +76,3 @@ public record VkMultiDrawInfoEXT(@NotNull MemorySegment segment) implements IPoi
     }
 
 }
-/// dummy, not implemented yet

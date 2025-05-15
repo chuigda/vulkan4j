@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageOpaqueMemoryBindInfo.html">VkSparseImageOpaqueMemoryBindInfo</a>
+@ValueBasedCandidate
 public record VkSparseImageOpaqueMemoryBindInfo(@NotNull MemorySegment segment) implements IPointer {
     public static final AddressLayout LAYOUT$image = ValueLayout.ADDRESS.withName("image");
     public static final OfInt LAYOUT$bindCount = ValueLayout.JAVA_INT.withName("bindCount");
@@ -117,4 +119,3 @@ public record VkSparseImageOpaqueMemoryBindInfo(@NotNull MemorySegment segment) 
     }
 
 }
-/// dummy, not implemented yet

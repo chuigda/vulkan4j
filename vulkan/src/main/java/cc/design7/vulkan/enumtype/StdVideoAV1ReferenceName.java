@@ -2,7 +2,6 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1ReferenceName.html">StdVideoAV1ReferenceName</a>
 public final class StdVideoAV1ReferenceName {
     public static final int STD_VIDEO_AV1_REFERENCE_NAME_INTRA_FRAME = 0x0;
     public static final int STD_VIDEO_AV1_REFERENCE_NAME_LAST_FRAME = 0x1;

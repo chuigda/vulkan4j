@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkWriteDescriptorSetPartitionedAccelerationStructureNV.html">VkWriteDescriptorSetPartitionedAccelerationStructureNV</a>
+@ValueBasedCandidate
 public record VkWriteDescriptorSetPartitionedAccelerationStructureNV(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
     public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
@@ -119,4 +121,3 @@ public record VkWriteDescriptorSetPartitionedAccelerationStructureNV(@NotNull Me
     }
 
 }
-/// dummy, not implemented yet

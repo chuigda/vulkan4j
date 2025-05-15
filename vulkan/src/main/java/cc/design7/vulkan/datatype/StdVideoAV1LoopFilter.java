@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$flags = StdVideoAV1LoopFilterFlags.LAYOUT.withName("flags");
     public static final OfByte LAYOUT$loop_filter_level = ValueLayout.JAVA_BYTE.withName("loop_filter_level");
@@ -134,4 +135,3 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
     }
 
 }
-/// dummy, not implemented yet

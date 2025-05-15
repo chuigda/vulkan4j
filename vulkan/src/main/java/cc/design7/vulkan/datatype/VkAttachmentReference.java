@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentReference.html">VkAttachmentReference</a>
+@ValueBasedCandidate
 public record VkAttachmentReference(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$attachment = ValueLayout.JAVA_INT.withName("attachment");
     public static final OfInt LAYOUT$layout = ValueLayout.JAVA_INT.withName("layout");
@@ -74,4 +76,3 @@ public record VkAttachmentReference(@NotNull MemorySegment segment) implements I
     }
 
 }
-/// dummy, not implemented yet

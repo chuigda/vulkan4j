@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkColorBlendAdvancedEXT.html">VkColorBlendAdvancedEXT</a>
+@ValueBasedCandidate
 public record VkColorBlendAdvancedEXT(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$advancedBlendOp = ValueLayout.JAVA_INT.withName("advancedBlendOp");
     public static final OfInt LAYOUT$srcPremultiplied = ValueLayout.JAVA_INT.withName("srcPremultiplied");
@@ -110,4 +112,3 @@ public record VkColorBlendAdvancedEXT(@NotNull MemorySegment segment) implements
     }
 
 }
-/// dummy, not implemented yet

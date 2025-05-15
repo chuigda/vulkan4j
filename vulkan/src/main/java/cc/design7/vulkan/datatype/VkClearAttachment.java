@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClearAttachment.html">VkClearAttachment</a>
+@ValueBasedCandidate
 public record VkClearAttachment(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$aspectMask = ValueLayout.JAVA_INT.withName("aspectMask");
     public static final OfInt LAYOUT$colorAttachment = ValueLayout.JAVA_INT.withName("colorAttachment");
@@ -86,4 +88,3 @@ public record VkClearAttachment(@NotNull MemorySegment segment) implements IPoin
     }
 
 }
-/// dummy, not implemented yet

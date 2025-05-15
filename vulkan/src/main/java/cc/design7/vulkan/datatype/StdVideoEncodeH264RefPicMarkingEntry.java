@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoEncodeH264RefPicMarkingEntry(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$memory_management_control_operation = ValueLayout.JAVA_INT.withName("memory_management_control_operation");
     public static final OfShort LAYOUT$difference_of_pic_nums_minus1 = ValueLayout.JAVA_SHORT.withName("difference_of_pic_nums_minus1");
@@ -110,4 +111,3 @@ public record StdVideoEncodeH264RefPicMarkingEntry(@NotNull MemorySegment segmen
     }
 
 }
-/// dummy, not implemented yet

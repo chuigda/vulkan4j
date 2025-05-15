@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindVertexBufferIndirectCommandEXT.html">VkBindVertexBufferIndirectCommandEXT</a>
+@ValueBasedCandidate
 public record VkBindVertexBufferIndirectCommandEXT(@NotNull MemorySegment segment) implements IPointer {
     public static final OfLong LAYOUT$bufferAddress = ValueLayout.JAVA_LONG.withName("bufferAddress");
     public static final OfInt LAYOUT$size = ValueLayout.JAVA_INT.withName("size");
@@ -86,4 +88,3 @@ public record VkBindVertexBufferIndirectCommandEXT(@NotNull MemorySegment segmen
     }
 
 }
-/// dummy, not implemented yet

@@ -2,7 +2,6 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1Level.html">StdVideoAV1Level</a>
 public final class StdVideoAV1Level {
     public static final int STD_VIDEO_AV1_LEVEL_2_0 = 0x0;
     public static final int STD_VIDEO_AV1_LEVEL_2_1 = 0x1;

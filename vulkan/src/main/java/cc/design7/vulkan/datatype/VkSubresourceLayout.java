@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubresourceLayout.html">VkSubresourceLayout</a>
+@ValueBasedCandidate
 public record VkSubresourceLayout(@NotNull MemorySegment segment) implements IPointer {
     public static final OfLong LAYOUT$offset = ValueLayout.JAVA_LONG.withName("offset");
     public static final OfLong LAYOUT$size = ValueLayout.JAVA_LONG.withName("size");
@@ -110,4 +112,3 @@ public record VkSubresourceLayout(@NotNull MemorySegment segment) implements IPo
     }
 
 }
-/// dummy, not implemented yet

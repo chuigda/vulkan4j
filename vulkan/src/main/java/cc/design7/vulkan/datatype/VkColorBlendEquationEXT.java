@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkColorBlendEquationEXT.html">VkColorBlendEquationEXT</a>
+@ValueBasedCandidate
 public record VkColorBlendEquationEXT(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$srcColorBlendFactor = ValueLayout.JAVA_INT.withName("srcColorBlendFactor");
     public static final OfInt LAYOUT$dstColorBlendFactor = ValueLayout.JAVA_INT.withName("dstColorBlendFactor");
@@ -122,4 +124,3 @@ public record VkColorBlendEquationEXT(@NotNull MemorySegment segment) implements
     }
 
 }
-/// dummy, not implemented yet

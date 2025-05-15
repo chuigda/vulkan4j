@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferCopy.html">VkBufferCopy</a>
+@ValueBasedCandidate
 public record VkBufferCopy(@NotNull MemorySegment segment) implements IPointer {
     public static final OfLong LAYOUT$srcOffset = ValueLayout.JAVA_LONG.withName("srcOffset");
     public static final OfLong LAYOUT$dstOffset = ValueLayout.JAVA_LONG.withName("dstOffset");
@@ -86,4 +88,3 @@ public record VkBufferCopy(@NotNull MemorySegment segment) implements IPointer {
     }
 
 }
-/// dummy, not implemented yet

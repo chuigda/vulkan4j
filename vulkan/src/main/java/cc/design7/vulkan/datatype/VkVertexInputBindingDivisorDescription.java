@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVertexInputBindingDivisorDescription.html">VkVertexInputBindingDivisorDescription</a>
+@ValueBasedCandidate
 public record VkVertexInputBindingDivisorDescription(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$binding = ValueLayout.JAVA_INT.withName("binding");
     public static final OfInt LAYOUT$divisor = ValueLayout.JAVA_INT.withName("divisor");
@@ -74,4 +76,3 @@ public record VkVertexInputBindingDivisorDescription(@NotNull MemorySegment segm
     }
 
 }
-/// dummy, not implemented yet

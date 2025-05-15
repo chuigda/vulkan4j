@@ -2,7 +2,6 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoH264PictureType.html">StdVideoH264PictureType</a>
 public final class StdVideoH264PictureType {
     public static final int STD_VIDEO_H264_PICTURE_TYPE_P = 0x0;
     public static final int STD_VIDEO_H264_PICTURE_TYPE_B = 0x1;

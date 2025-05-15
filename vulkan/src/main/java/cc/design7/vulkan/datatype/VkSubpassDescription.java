@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassDescription.html">VkSubpassDescription</a>
+@ValueBasedCandidate
 public record VkSubpassDescription(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
     public static final OfInt LAYOUT$pipelineBindPoint = ValueLayout.JAVA_INT.withName("pipelineBindPoint");
@@ -295,4 +297,3 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IP
     }
 
 }
-/// dummy, not implemented yet

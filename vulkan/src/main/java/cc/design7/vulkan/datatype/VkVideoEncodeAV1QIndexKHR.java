@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1QIndexKHR.html">VkVideoEncodeAV1QIndexKHR</a>
+@ValueBasedCandidate
 public record VkVideoEncodeAV1QIndexKHR(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$intraQIndex = ValueLayout.JAVA_INT.withName("intraQIndex");
     public static final OfInt LAYOUT$predictiveQIndex = ValueLayout.JAVA_INT.withName("predictiveQIndex");
@@ -86,4 +88,3 @@ public record VkVideoEncodeAV1QIndexKHR(@NotNull MemorySegment segment) implemen
     }
 
 }
-/// dummy, not implemented yet

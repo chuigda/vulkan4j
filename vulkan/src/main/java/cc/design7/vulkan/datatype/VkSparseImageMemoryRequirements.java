@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageMemoryRequirements.html">VkSparseImageMemoryRequirements</a>
+@ValueBasedCandidate
 public record VkSparseImageMemoryRequirements(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$formatProperties = VkSparseImageFormatProperties.LAYOUT.withName("formatProperties");
     public static final OfInt LAYOUT$imageMipTailFirstLod = ValueLayout.JAVA_INT.withName("imageMipTailFirstLod");
@@ -110,4 +112,3 @@ public record VkSparseImageMemoryRequirements(@NotNull MemorySegment segment) im
     }
 
 }
-/// dummy, not implemented yet

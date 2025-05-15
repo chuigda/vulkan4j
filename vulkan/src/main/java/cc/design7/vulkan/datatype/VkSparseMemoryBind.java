@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseMemoryBind.html">VkSparseMemoryBind</a>
+@ValueBasedCandidate
 public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IPointer {
     public static final OfLong LAYOUT$resourceOffset = ValueLayout.JAVA_LONG.withName("resourceOffset");
     public static final OfLong LAYOUT$size = ValueLayout.JAVA_LONG.withName("size");
@@ -114,4 +116,3 @@ public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IPoi
     }
 
 }
-/// dummy, not implemented yet

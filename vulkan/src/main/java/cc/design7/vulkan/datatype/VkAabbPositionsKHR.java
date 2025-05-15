@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAabbPositionsKHR.html">VkAabbPositionsKHR</a>
+@ValueBasedCandidate
 public record VkAabbPositionsKHR(@NotNull MemorySegment segment) implements IPointer {
     public static final OfFloat LAYOUT$minX = ValueLayout.JAVA_FLOAT.withName("minX");
     public static final OfFloat LAYOUT$minY = ValueLayout.JAVA_FLOAT.withName("minY");
@@ -122,4 +124,3 @@ public record VkAabbPositionsKHR(@NotNull MemorySegment segment) implements IPoi
     }
 
 }
-/// dummy, not implemented yet

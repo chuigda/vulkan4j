@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCoarseSampleLocationNV.html">VkCoarseSampleLocationNV</a>
+@ValueBasedCandidate
 public record VkCoarseSampleLocationNV(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$pixelX = ValueLayout.JAVA_INT.withName("pixelX");
     public static final OfInt LAYOUT$pixelY = ValueLayout.JAVA_INT.withName("pixelY");
@@ -86,4 +88,3 @@ public record VkCoarseSampleLocationNV(@NotNull MemorySegment segment) implement
     }
 
 }
-/// dummy, not implemented yet

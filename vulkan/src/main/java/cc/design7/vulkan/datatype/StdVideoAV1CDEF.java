@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IPointer {
     public static final OfByte LAYOUT$cdef_damping_minus_3 = ValueLayout.JAVA_BYTE.withName("cdef_damping_minus_3");
     public static final OfByte LAYOUT$cdef_bits = ValueLayout.JAVA_BYTE.withName("cdef_bits");
@@ -122,4 +123,3 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IPointe
     }
 
 }
-/// dummy, not implemented yet

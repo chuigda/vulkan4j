@@ -2,7 +2,6 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoH264CabacInitIdc.html">StdVideoH264CabacInitIdc</a>
 public final class StdVideoH264CabacInitIdc {
     public static final int STD_VIDEO_H264_CABAC_INIT_IDC_0 = 0x0;
     public static final int STD_VIDEO_H264_CABAC_INIT_IDC_1 = 0x1;

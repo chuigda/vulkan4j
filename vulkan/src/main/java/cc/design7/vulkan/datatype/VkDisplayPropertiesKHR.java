@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPropertiesKHR.html">VkDisplayPropertiesKHR</a>
+@ValueBasedCandidate
 public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
     public static final AddressLayout LAYOUT$display = ValueLayout.ADDRESS.withName("display");
     public static final AddressLayout LAYOUT$displayName = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("displayName");
@@ -155,4 +157,3 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
     }
 
 }
-/// dummy, not implemented yet

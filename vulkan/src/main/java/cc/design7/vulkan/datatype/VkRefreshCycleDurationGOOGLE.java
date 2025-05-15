@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRefreshCycleDurationGOOGLE.html">VkRefreshCycleDurationGOOGLE</a>
+@ValueBasedCandidate
 public record VkRefreshCycleDurationGOOGLE(@NotNull MemorySegment segment) implements IPointer {
     public static final OfLong LAYOUT$refreshDuration = ValueLayout.JAVA_LONG.withName("refreshDuration");
 
@@ -62,4 +64,3 @@ public record VkRefreshCycleDurationGOOGLE(@NotNull MemorySegment segment) imple
     }
 
 }
-/// dummy, not implemented yet

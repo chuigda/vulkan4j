@@ -15,6 +15,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureInstantiateClusterInfoNV.html">VkClusterAccelerationStructureInstantiateClusterInfoNV</a>
+@ValueBasedCandidate
 public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$clusterIdOffset = ValueLayout.JAVA_INT.withName("clusterIdOffset");
     public static final OfInt LAYOUT$geometryIndexOffset_reserved = ValueLayout.JAVA_INT.withName("bitfield$geometryIndexOffset_reserved");
@@ -73,25 +75,16 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
         segment.set(LAYOUT$clusterIdOffset, OFFSET$clusterIdOffset, value);
     }
 
-    public int geometryIndexOffset() {
+    public @unsigned int geometryIndexOffset() {
         MemorySegment s = segment.asSlice(OFFSET$geometryIndexOffset_reserved, LAYOUT$geometryIndexOffset_reserved);
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
-    public void geometryIndexOffset(int value) {
+    public void geometryIndexOffset(@unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$geometryIndexOffset_reserved, LAYOUT$geometryIndexOffset_reserved);
         BitfieldUtil.writeBits(s, 0, 24, value);
     }
 
-    public int reserved() {
-        MemorySegment s = segment.asSlice(OFFSET$geometryIndexOffset_reserved, LAYOUT$geometryIndexOffset_reserved);
-        return BitfieldUtil.readBits(s, 24, 32);
-    }
-
-    public void reserved(int value) {
-        MemorySegment s = segment.asSlice(OFFSET$geometryIndexOffset_reserved, LAYOUT$geometryIndexOffset_reserved);
-        BitfieldUtil.writeBits(s, 24, 32, value);
-    }
 
     public @unsigned long clusterTemplateAddress() {
         return segment.get(LAYOUT$clusterTemplateAddress, OFFSET$clusterTemplateAddress);
@@ -110,4 +103,3 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
     }
 
 }
-/// dummy, not implemented yet

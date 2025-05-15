@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineBinaryDataKHR.html">VkPipelineBinaryDataKHR</a>
+@ValueBasedCandidate
 public record VkPipelineBinaryDataKHR(@NotNull MemorySegment segment) implements IPointer {
     public static final ValueLayout LAYOUT$dataSize = NativeLayout.C_SIZE_T.withName("dataSize");
     public static final AddressLayout LAYOUT$pData = ValueLayout.ADDRESS.withName("pData");
@@ -78,4 +80,3 @@ public record VkPipelineBinaryDataKHR(@NotNull MemorySegment segment) implements
     }
 
 }
-/// dummy, not implemented yet

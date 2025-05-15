@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoAV1TileInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$uniform_tile_spacing_flag_reserved = ValueLayout.JAVA_INT.withName("bitfield$uniform_tile_spacing_flag_reserved");
 
@@ -53,25 +54,15 @@ public record StdVideoAV1TileInfoFlags(@NotNull MemorySegment segment) implement
 
     public static final long OFFSET$uniform_tile_spacing_flag_reserved = LAYOUT.byteOffset(PATH$bitfield$uniform_tile_spacing_flag_reserved);
 
-    public int uniform_tile_spacing_flag() {
+    public boolean uniform_tile_spacing_flag() {
         MemorySegment s = segment.asSlice(OFFSET$uniform_tile_spacing_flag_reserved, LAYOUT$uniform_tile_spacing_flag_reserved);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void uniform_tile_spacing_flag(int value) {
+    public void uniform_tile_spacing_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$uniform_tile_spacing_flag_reserved, LAYOUT$uniform_tile_spacing_flag_reserved);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int reserved() {
-        MemorySegment s = segment.asSlice(OFFSET$uniform_tile_spacing_flag_reserved, LAYOUT$uniform_tile_spacing_flag_reserved);
-        return BitfieldUtil.readBits(s, 1, 32);
-    }
-
-    public void reserved(int value) {
-        MemorySegment s = segment.asSlice(OFFSET$uniform_tile_spacing_flag_reserved, LAYOUT$uniform_tile_spacing_flag_reserved);
-        BitfieldUtil.writeBits(s, 1, 32, value);
-    }
 
 }
-/// dummy, not implemented yet

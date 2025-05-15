@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPlaneCapabilitiesKHR.html">VkDisplayPlaneCapabilitiesKHR</a>
+@ValueBasedCandidate
 public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$supportedAlpha = ValueLayout.JAVA_INT.withName("supportedAlpha");
     public static final StructLayout LAYOUT$minSrcPosition = VkOffset2D.LAYOUT.withName("minSrcPosition");
@@ -158,4 +160,3 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
     }
 
 }
-/// dummy, not implemented yet

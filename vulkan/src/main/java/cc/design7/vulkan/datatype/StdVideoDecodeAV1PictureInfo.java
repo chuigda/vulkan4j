@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$flags = StdVideoDecodeAV1PictureInfoFlags.LAYOUT.withName("flags");
     public static final OfInt LAYOUT$frame_type = ValueLayout.JAVA_INT.withName("frame_type");
@@ -554,4 +555,3 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     }
 
 }
-/// dummy, not implemented yet

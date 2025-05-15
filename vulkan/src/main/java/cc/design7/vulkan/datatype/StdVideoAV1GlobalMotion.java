@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements IPointer {
     public static final OfByte LAYOUT$GmType = ValueLayout.JAVA_BYTE.withName("GmType");
     public static final OfInt LAYOUT$gm_params = ValueLayout.JAVA_INT.withName("gm_params");
@@ -74,4 +75,3 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
     }
 
 }
-/// dummy, not implemented yet

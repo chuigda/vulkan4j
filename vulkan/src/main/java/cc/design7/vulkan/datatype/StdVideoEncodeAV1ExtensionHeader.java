@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) implements IPointer {
     public static final OfByte LAYOUT$temporal_id = ValueLayout.JAVA_BYTE.withName("temporal_id");
     public static final OfByte LAYOUT$spatial_id = ValueLayout.JAVA_BYTE.withName("spatial_id");
@@ -74,4 +75,3 @@ public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) i
     }
 
 }
-/// dummy, not implemented yet

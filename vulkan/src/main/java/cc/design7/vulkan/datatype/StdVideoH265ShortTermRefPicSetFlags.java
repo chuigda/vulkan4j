@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoH265ShortTermRefPicSetFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$inter_ref_pic_set_prediction_flag_delta_rps_sign = ValueLayout.JAVA_INT.withName("bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign");
 
@@ -53,25 +54,24 @@ public record StdVideoH265ShortTermRefPicSetFlags(@NotNull MemorySegment segment
 
     public static final long OFFSET$inter_ref_pic_set_prediction_flag_delta_rps_sign = LAYOUT.byteOffset(PATH$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign);
 
-    public int inter_ref_pic_set_prediction_flag() {
+    public boolean inter_ref_pic_set_prediction_flag() {
         MemorySegment s = segment.asSlice(OFFSET$inter_ref_pic_set_prediction_flag_delta_rps_sign, LAYOUT$inter_ref_pic_set_prediction_flag_delta_rps_sign);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void inter_ref_pic_set_prediction_flag(int value) {
+    public void inter_ref_pic_set_prediction_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$inter_ref_pic_set_prediction_flag_delta_rps_sign, LAYOUT$inter_ref_pic_set_prediction_flag_delta_rps_sign);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int delta_rps_sign() {
+    public boolean delta_rps_sign() {
         MemorySegment s = segment.asSlice(OFFSET$inter_ref_pic_set_prediction_flag_delta_rps_sign, LAYOUT$inter_ref_pic_set_prediction_flag_delta_rps_sign);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void delta_rps_sign(int value) {
+    public void delta_rps_sign(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$inter_ref_pic_set_prediction_flag_delta_rps_sign, LAYOUT$inter_ref_pic_set_prediction_flag_delta_rps_sign);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
 }
-/// dummy, not implemented yet

@@ -2,7 +2,6 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoH265LevelIdc.html">StdVideoH265LevelIdc</a>
 public final class StdVideoH265LevelIdc {
     public static final int STD_VIDEO_H265_LEVEL_IDC_1_0 = 0x0;
     public static final int STD_VIDEO_H265_LEVEL_IDC_2_0 = 0x1;

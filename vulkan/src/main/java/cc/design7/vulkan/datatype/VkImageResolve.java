@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageResolve.html">VkImageResolve</a>
+@ValueBasedCandidate
 public record VkImageResolve(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$srcSubresource = VkImageSubresourceLayers.LAYOUT.withName("srcSubresource");
     public static final StructLayout LAYOUT$srcOffset = VkOffset3D.LAYOUT.withName("srcOffset");
@@ -110,4 +112,3 @@ public record VkImageResolve(@NotNull MemorySegment segment) implements IPointer
     }
 
 }
-/// dummy, not implemented yet

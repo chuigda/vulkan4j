@@ -2,7 +2,6 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoH265SliceType.html">StdVideoH265SliceType</a>
 public final class StdVideoH265SliceType {
     public static final int STD_VIDEO_H265_SLICE_TYPE_B = 0x0;
     public static final int STD_VIDEO_H265_SLICE_TYPE_P = 0x1;

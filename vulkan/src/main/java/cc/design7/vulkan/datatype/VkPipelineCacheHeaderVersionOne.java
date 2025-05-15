@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCacheHeaderVersionOne.html">VkPipelineCacheHeaderVersionOne</a>
+@ValueBasedCandidate
 public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$headerSize = ValueLayout.JAVA_INT.withName("headerSize");
     public static final OfInt LAYOUT$headerVersion = ValueLayout.JAVA_INT.withName("headerVersion");
@@ -110,4 +112,3 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
     }
 
 }
-/// dummy, not implemented yet

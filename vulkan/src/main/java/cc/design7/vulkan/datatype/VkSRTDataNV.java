@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSRTDataNV.html">VkSRTDataNV</a>
+@ValueBasedCandidate
 public record VkSRTDataNV(@NotNull MemorySegment segment) implements IPointer {
     public static final OfFloat LAYOUT$sx = ValueLayout.JAVA_FLOAT.withName("sx");
     public static final OfFloat LAYOUT$a = ValueLayout.JAVA_FLOAT.withName("a");
@@ -242,4 +244,3 @@ public record VkSRTDataNV(@NotNull MemorySegment segment) implements IPointer {
     }
 
 }
-/// dummy, not implemented yet

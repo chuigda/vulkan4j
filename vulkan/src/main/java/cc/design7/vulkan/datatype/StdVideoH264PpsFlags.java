@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoH264PpsFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag = ValueLayout.JAVA_INT.withName("bitfield$transform_8x8_mode_flag_pic_scaling_matrix_present_flag");
 
@@ -53,85 +54,84 @@ public record StdVideoH264PpsFlags(@NotNull MemorySegment segment) implements IP
 
     public static final long OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag = LAYOUT.byteOffset(PATH$bitfield$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
 
-    public int transform_8x8_mode_flag() {
+    public boolean transform_8x8_mode_flag() {
         MemorySegment s = segment.asSlice(OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag, LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void transform_8x8_mode_flag(int value) {
+    public void transform_8x8_mode_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag, LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int redundant_pic_cnt_present_flag() {
+    public boolean redundant_pic_cnt_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag, LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void redundant_pic_cnt_present_flag(int value) {
+    public void redundant_pic_cnt_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag, LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
-    public int constrained_intra_pred_flag() {
+    public boolean constrained_intra_pred_flag() {
         MemorySegment s = segment.asSlice(OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag, LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
-        return BitfieldUtil.readBits(s, 2, 3);
+        return BitfieldUtil.readBit(s, 2);
     }
 
-    public void constrained_intra_pred_flag(int value) {
+    public void constrained_intra_pred_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag, LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
-        BitfieldUtil.writeBits(s, 2, 3, value);
+        BitfieldUtil.writeBit(s, 2, value);
     }
 
-    public int deblocking_filter_control_present_flag() {
+    public boolean deblocking_filter_control_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag, LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
-        return BitfieldUtil.readBits(s, 3, 4);
+        return BitfieldUtil.readBit(s, 3);
     }
 
-    public void deblocking_filter_control_present_flag(int value) {
+    public void deblocking_filter_control_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag, LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
-        BitfieldUtil.writeBits(s, 3, 4, value);
+        BitfieldUtil.writeBit(s, 3, value);
     }
 
-    public int weighted_pred_flag() {
+    public boolean weighted_pred_flag() {
         MemorySegment s = segment.asSlice(OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag, LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
-        return BitfieldUtil.readBits(s, 4, 5);
+        return BitfieldUtil.readBit(s, 4);
     }
 
-    public void weighted_pred_flag(int value) {
+    public void weighted_pred_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag, LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
-        BitfieldUtil.writeBits(s, 4, 5, value);
+        BitfieldUtil.writeBit(s, 4, value);
     }
 
-    public int bottom_field_pic_order_in_frame_present_flag() {
+    public boolean bottom_field_pic_order_in_frame_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag, LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
-        return BitfieldUtil.readBits(s, 5, 6);
+        return BitfieldUtil.readBit(s, 5);
     }
 
-    public void bottom_field_pic_order_in_frame_present_flag(int value) {
+    public void bottom_field_pic_order_in_frame_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag, LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
-        BitfieldUtil.writeBits(s, 5, 6, value);
+        BitfieldUtil.writeBit(s, 5, value);
     }
 
-    public int entropy_coding_mode_flag() {
+    public boolean entropy_coding_mode_flag() {
         MemorySegment s = segment.asSlice(OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag, LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
-        return BitfieldUtil.readBits(s, 6, 7);
+        return BitfieldUtil.readBit(s, 6);
     }
 
-    public void entropy_coding_mode_flag(int value) {
+    public void entropy_coding_mode_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag, LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
-        BitfieldUtil.writeBits(s, 6, 7, value);
+        BitfieldUtil.writeBit(s, 6, value);
     }
 
-    public int pic_scaling_matrix_present_flag() {
+    public boolean pic_scaling_matrix_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag, LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
-        return BitfieldUtil.readBits(s, 7, 8);
+        return BitfieldUtil.readBit(s, 7);
     }
 
-    public void pic_scaling_matrix_present_flag(int value) {
+    public void pic_scaling_matrix_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag, LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
-        BitfieldUtil.writeBits(s, 7, 8, value);
+        BitfieldUtil.writeBit(s, 7, value);
     }
 
 }
-/// dummy, not implemented yet

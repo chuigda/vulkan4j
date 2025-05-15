@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayModeParametersKHR.html">VkDisplayModeParametersKHR</a>
+@ValueBasedCandidate
 public record VkDisplayModeParametersKHR(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$visibleRegion = VkExtent2D.LAYOUT.withName("visibleRegion");
     public static final OfInt LAYOUT$refreshRate = ValueLayout.JAVA_INT.withName("refreshRate");
@@ -74,4 +76,3 @@ public record VkDisplayModeParametersKHR(@NotNull MemorySegment segment) impleme
     }
 
 }
-/// dummy, not implemented yet

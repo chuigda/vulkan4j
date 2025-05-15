@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMutableDescriptorTypeListEXT.html">VkMutableDescriptorTypeListEXT</a>
+@ValueBasedCandidate
 public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$descriptorTypeCount = ValueLayout.JAVA_INT.withName("descriptorTypeCount");
     public static final AddressLayout LAYOUT$pDescriptorTypes = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDescriptorTypes");
@@ -91,4 +93,3 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
     }
 
 }
-/// dummy, not implemented yet

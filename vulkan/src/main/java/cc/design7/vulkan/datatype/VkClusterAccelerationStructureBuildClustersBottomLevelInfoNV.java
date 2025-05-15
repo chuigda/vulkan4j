@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV.html">VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV</a>
+@ValueBasedCandidate
 public record VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$clusterReferencesCount = ValueLayout.JAVA_INT.withName("clusterReferencesCount");
     public static final OfInt LAYOUT$clusterReferencesStride = ValueLayout.JAVA_INT.withName("clusterReferencesStride");
@@ -86,4 +88,3 @@ public record VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(@NotN
     }
 
 }
-/// dummy, not implemented yet

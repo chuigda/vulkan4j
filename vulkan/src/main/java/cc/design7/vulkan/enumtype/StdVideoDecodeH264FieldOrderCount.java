@@ -2,7 +2,6 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoDecodeH264FieldOrderCount.html">StdVideoDecodeH264FieldOrderCount</a>
 public final class StdVideoDecodeH264FieldOrderCount {
     public static final int STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_TOP = 0x0;
     public static final int STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_BOTTOM = 0x1;

@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLayerProperties.html">VkLayerProperties</a>
+@ValueBasedCandidate
 public record VkLayerProperties(@NotNull MemorySegment segment) implements IPointer {
     public static final OfByte LAYOUT$layerName = ValueLayout.JAVA_BYTE.withName("layerName");
     public static final OfInt LAYOUT$specVersion = ValueLayout.JAVA_INT.withName("specVersion");
@@ -98,4 +100,3 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IPoin
     }
 
 }
-/// dummy, not implemented yet

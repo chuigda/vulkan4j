@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDispatchGraphInfoAMDX.html">VkDispatchGraphInfoAMDX</a>
+@ValueBasedCandidate
 public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$nodeIndex = ValueLayout.JAVA_INT.withName("nodeIndex");
     public static final OfInt LAYOUT$payloadCount = ValueLayout.JAVA_INT.withName("payloadCount");
@@ -98,4 +100,3 @@ public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements
     }
 
 }
-/// dummy, not implemented yet

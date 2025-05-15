@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderingAttachmentInfo.html">VkRenderingAttachmentInfo</a>
+@ValueBasedCandidate
 public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
     public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
@@ -182,4 +184,3 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
     }
 
 }
-/// dummy, not implemented yet

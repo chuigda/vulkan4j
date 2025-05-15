@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implements IPointer {
     public static final OfByte LAYOUT$ScalingList4x4 = ValueLayout.JAVA_BYTE.withName("ScalingList4x4");
     public static final OfByte LAYOUT$ScalingList8x8 = ValueLayout.JAVA_BYTE.withName("ScalingList8x8");
@@ -122,4 +123,3 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
     }
 
 }
-/// dummy, not implemented yet

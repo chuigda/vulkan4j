@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$flags = StdVideoAV1SequenceHeaderFlags.LAYOUT.withName("flags");
     public static final OfInt LAYOUT$seq_profile = ValueLayout.JAVA_INT.withName("seq_profile");
@@ -272,4 +273,3 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
     }
 
 }
-/// dummy, not implemented yet

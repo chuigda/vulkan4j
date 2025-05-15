@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoEncodeAV1ReferenceInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$disable_frame_end_update_cdf_reserved = ValueLayout.JAVA_INT.withName("bitfield$disable_frame_end_update_cdf_reserved");
 
@@ -53,35 +54,25 @@ public record StdVideoEncodeAV1ReferenceInfoFlags(@NotNull MemorySegment segment
 
     public static final long OFFSET$disable_frame_end_update_cdf_reserved = LAYOUT.byteOffset(PATH$bitfield$disable_frame_end_update_cdf_reserved);
 
-    public int disable_frame_end_update_cdf() {
+    public boolean disable_frame_end_update_cdf() {
         MemorySegment s = segment.asSlice(OFFSET$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void disable_frame_end_update_cdf(int value) {
+    public void disable_frame_end_update_cdf(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int segmentation_enabled() {
+    public boolean segmentation_enabled() {
         MemorySegment s = segment.asSlice(OFFSET$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void segmentation_enabled(int value) {
+    public void segmentation_enabled(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
-    public int reserved() {
-        MemorySegment s = segment.asSlice(OFFSET$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
-        return BitfieldUtil.readBits(s, 2, 32);
-    }
-
-    public void reserved(int value) {
-        MemorySegment s = segment.asSlice(OFFSET$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
-        BitfieldUtil.writeBits(s, 2, 32, value);
-    }
 
 }
-/// dummy, not implemented yet

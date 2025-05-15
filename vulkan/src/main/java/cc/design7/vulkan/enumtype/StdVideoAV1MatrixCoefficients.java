@@ -2,7 +2,6 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1MatrixCoefficients.html">StdVideoAV1MatrixCoefficients</a>
 public final class StdVideoAV1MatrixCoefficients {
     public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_IDENTITY = 0x0;
     public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_709 = 0x1;

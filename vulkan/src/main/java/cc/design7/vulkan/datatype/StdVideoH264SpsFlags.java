@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoH264SpsFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$constraint_set0_flag_vui_parameters_present_flag = ValueLayout.JAVA_INT.withName("bitfield$constraint_set0_flag_vui_parameters_present_flag");
 
@@ -53,165 +54,164 @@ public record StdVideoH264SpsFlags(@NotNull MemorySegment segment) implements IP
 
     public static final long OFFSET$constraint_set0_flag_vui_parameters_present_flag = LAYOUT.byteOffset(PATH$bitfield$constraint_set0_flag_vui_parameters_present_flag);
 
-    public int constraint_set0_flag() {
+    public boolean constraint_set0_flag() {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void constraint_set0_flag(int value) {
+    public void constraint_set0_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int constraint_set1_flag() {
+    public boolean constraint_set1_flag() {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void constraint_set1_flag(int value) {
+    public void constraint_set1_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
-    public int constraint_set2_flag() {
+    public boolean constraint_set2_flag() {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 2, 3);
+        return BitfieldUtil.readBit(s, 2);
     }
 
-    public void constraint_set2_flag(int value) {
+    public void constraint_set2_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 2, 3, value);
+        BitfieldUtil.writeBit(s, 2, value);
     }
 
-    public int constraint_set3_flag() {
+    public boolean constraint_set3_flag() {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 3, 4);
+        return BitfieldUtil.readBit(s, 3);
     }
 
-    public void constraint_set3_flag(int value) {
+    public void constraint_set3_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 3, 4, value);
+        BitfieldUtil.writeBit(s, 3, value);
     }
 
-    public int constraint_set4_flag() {
+    public boolean constraint_set4_flag() {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 4, 5);
+        return BitfieldUtil.readBit(s, 4);
     }
 
-    public void constraint_set4_flag(int value) {
+    public void constraint_set4_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 4, 5, value);
+        BitfieldUtil.writeBit(s, 4, value);
     }
 
-    public int constraint_set5_flag() {
+    public boolean constraint_set5_flag() {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 5, 6);
+        return BitfieldUtil.readBit(s, 5);
     }
 
-    public void constraint_set5_flag(int value) {
+    public void constraint_set5_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 5, 6, value);
+        BitfieldUtil.writeBit(s, 5, value);
     }
 
-    public int direct_8x8_inference_flag() {
+    public boolean direct_8x8_inference_flag() {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 6, 7);
+        return BitfieldUtil.readBit(s, 6);
     }
 
-    public void direct_8x8_inference_flag(int value) {
+    public void direct_8x8_inference_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 6, 7, value);
+        BitfieldUtil.writeBit(s, 6, value);
     }
 
-    public int mb_adaptive_frame_field_flag() {
+    public boolean mb_adaptive_frame_field_flag() {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 7, 8);
+        return BitfieldUtil.readBit(s, 7);
     }
 
-    public void mb_adaptive_frame_field_flag(int value) {
+    public void mb_adaptive_frame_field_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 7, 8, value);
+        BitfieldUtil.writeBit(s, 7, value);
     }
 
-    public int frame_mbs_only_flag() {
+    public boolean frame_mbs_only_flag() {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 8, 9);
+        return BitfieldUtil.readBit(s, 8);
     }
 
-    public void frame_mbs_only_flag(int value) {
+    public void frame_mbs_only_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 8, 9, value);
+        BitfieldUtil.writeBit(s, 8, value);
     }
 
-    public int delta_pic_order_always_zero_flag() {
+    public boolean delta_pic_order_always_zero_flag() {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 9, 10);
+        return BitfieldUtil.readBit(s, 9);
     }
 
-    public void delta_pic_order_always_zero_flag(int value) {
+    public void delta_pic_order_always_zero_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 9, 10, value);
+        BitfieldUtil.writeBit(s, 9, value);
     }
 
-    public int separate_colour_plane_flag() {
+    public boolean separate_colour_plane_flag() {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 10, 11);
+        return BitfieldUtil.readBit(s, 10);
     }
 
-    public void separate_colour_plane_flag(int value) {
+    public void separate_colour_plane_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 10, 11, value);
+        BitfieldUtil.writeBit(s, 10, value);
     }
 
-    public int gaps_in_frame_num_value_allowed_flag() {
+    public boolean gaps_in_frame_num_value_allowed_flag() {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 11, 12);
+        return BitfieldUtil.readBit(s, 11);
     }
 
-    public void gaps_in_frame_num_value_allowed_flag(int value) {
+    public void gaps_in_frame_num_value_allowed_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 11, 12, value);
+        BitfieldUtil.writeBit(s, 11, value);
     }
 
-    public int qpprime_y_zero_transform_bypass_flag() {
+    public boolean qpprime_y_zero_transform_bypass_flag() {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 12, 13);
+        return BitfieldUtil.readBit(s, 12);
     }
 
-    public void qpprime_y_zero_transform_bypass_flag(int value) {
+    public void qpprime_y_zero_transform_bypass_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 12, 13, value);
+        BitfieldUtil.writeBit(s, 12, value);
     }
 
-    public int frame_cropping_flag() {
+    public boolean frame_cropping_flag() {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 13, 14);
+        return BitfieldUtil.readBit(s, 13);
     }
 
-    public void frame_cropping_flag(int value) {
+    public void frame_cropping_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 13, 14, value);
+        BitfieldUtil.writeBit(s, 13, value);
     }
 
-    public int seq_scaling_matrix_present_flag() {
+    public boolean seq_scaling_matrix_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 14, 15);
+        return BitfieldUtil.readBit(s, 14);
     }
 
-    public void seq_scaling_matrix_present_flag(int value) {
+    public void seq_scaling_matrix_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 14, 15, value);
+        BitfieldUtil.writeBit(s, 14, value);
     }
 
-    public int vui_parameters_present_flag() {
+    public boolean vui_parameters_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 15, 16);
+        return BitfieldUtil.readBit(s, 15);
     }
 
-    public void vui_parameters_present_flag(int value) {
+    public void vui_parameters_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 15, 16, value);
+        BitfieldUtil.writeBit(s, 15, value);
     }
 
 }
-/// dummy, not implemented yet

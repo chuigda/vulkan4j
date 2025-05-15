@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFormatProperties.html">VkFormatProperties</a>
+@ValueBasedCandidate
 public record VkFormatProperties(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$linearTilingFeatures = ValueLayout.JAVA_INT.withName("linearTilingFeatures");
     public static final OfInt LAYOUT$optimalTilingFeatures = ValueLayout.JAVA_INT.withName("optimalTilingFeatures");
@@ -86,4 +88,3 @@ public record VkFormatProperties(@NotNull MemorySegment segment) implements IPoi
     }
 
 }
-/// dummy, not implemented yet

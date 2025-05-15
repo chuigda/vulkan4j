@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$flags = StdVideoH264SpsVuiFlags.LAYOUT.withName("flags");
     public static final OfInt LAYOUT$aspect_ratio_idc = ValueLayout.JAVA_INT.withName("aspect_ratio_idc");
@@ -269,4 +270,3 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
     }
 
 }
-/// dummy, not implemented yet

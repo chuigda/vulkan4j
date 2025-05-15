@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$chroma_scaling_from_luma_reserved = ValueLayout.JAVA_INT.withName("bitfield$chroma_scaling_from_luma_reserved");
 
@@ -53,55 +54,45 @@ public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implemen
 
     public static final long OFFSET$chroma_scaling_from_luma_reserved = LAYOUT.byteOffset(PATH$bitfield$chroma_scaling_from_luma_reserved);
 
-    public int chroma_scaling_from_luma() {
+    public boolean chroma_scaling_from_luma() {
         MemorySegment s = segment.asSlice(OFFSET$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void chroma_scaling_from_luma(int value) {
+    public void chroma_scaling_from_luma(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int overlap_flag() {
+    public boolean overlap_flag() {
         MemorySegment s = segment.asSlice(OFFSET$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void overlap_flag(int value) {
+    public void overlap_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
-    public int clip_to_restricted_range() {
+    public boolean clip_to_restricted_range() {
         MemorySegment s = segment.asSlice(OFFSET$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
-        return BitfieldUtil.readBits(s, 2, 3);
+        return BitfieldUtil.readBit(s, 2);
     }
 
-    public void clip_to_restricted_range(int value) {
+    public void clip_to_restricted_range(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
-        BitfieldUtil.writeBits(s, 2, 3, value);
+        BitfieldUtil.writeBit(s, 2, value);
     }
 
-    public int update_grain() {
+    public boolean update_grain() {
         MemorySegment s = segment.asSlice(OFFSET$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
-        return BitfieldUtil.readBits(s, 3, 4);
+        return BitfieldUtil.readBit(s, 3);
     }
 
-    public void update_grain(int value) {
+    public void update_grain(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
-        BitfieldUtil.writeBits(s, 3, 4, value);
+        BitfieldUtil.writeBit(s, 3, value);
     }
 
-    public int reserved() {
-        MemorySegment s = segment.asSlice(OFFSET$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
-        return BitfieldUtil.readBits(s, 4, 32);
-    }
-
-    public void reserved(int value) {
-        MemorySegment s = segment.asSlice(OFFSET$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
-        BitfieldUtil.writeBits(s, 4, 32, value);
-    }
 
 }
-/// dummy, not implemented yet

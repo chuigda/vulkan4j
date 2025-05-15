@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalMemoryProperties.html">VkExternalMemoryProperties</a>
+@ValueBasedCandidate
 public record VkExternalMemoryProperties(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$externalMemoryFeatures = ValueLayout.JAVA_INT.withName("externalMemoryFeatures");
     public static final OfInt LAYOUT$exportFromImportedHandleTypes = ValueLayout.JAVA_INT.withName("exportFromImportedHandleTypes");
@@ -86,4 +88,3 @@ public record VkExternalMemoryProperties(@NotNull MemorySegment segment) impleme
     }
 
 }
-/// dummy, not implemented yet

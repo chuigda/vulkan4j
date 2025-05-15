@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDrawIndexedIndirectCommand.html">VkDrawIndexedIndirectCommand</a>
+@ValueBasedCandidate
 public record VkDrawIndexedIndirectCommand(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$indexCount = ValueLayout.JAVA_INT.withName("indexCount");
     public static final OfInt LAYOUT$instanceCount = ValueLayout.JAVA_INT.withName("instanceCount");
@@ -110,4 +112,3 @@ public record VkDrawIndexedIndirectCommand(@NotNull MemorySegment segment) imple
     }
 
 }
-/// dummy, not implemented yet

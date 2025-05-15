@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRectLayerKHR.html">VkRectLayerKHR</a>
+@ValueBasedCandidate
 public record VkRectLayerKHR(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$offset = VkOffset2D.LAYOUT.withName("offset");
     public static final StructLayout LAYOUT$extent = VkExtent2D.LAYOUT.withName("extent");
@@ -86,4 +88,3 @@ public record VkRectLayerKHR(@NotNull MemorySegment segment) implements IPointer
     }
 
 }
-/// dummy, not implemented yet

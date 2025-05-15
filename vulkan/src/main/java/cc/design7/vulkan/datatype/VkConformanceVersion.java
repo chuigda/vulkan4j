@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkConformanceVersion.html">VkConformanceVersion</a>
+@ValueBasedCandidate
 public record VkConformanceVersion(@NotNull MemorySegment segment) implements IPointer {
     public static final OfByte LAYOUT$major = ValueLayout.JAVA_BYTE.withName("major");
     public static final OfByte LAYOUT$minor = ValueLayout.JAVA_BYTE.withName("minor");
@@ -98,4 +100,3 @@ public record VkConformanceVersion(@NotNull MemorySegment segment) implements IP
     }
 
 }
-/// dummy, not implemented yet

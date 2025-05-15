@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkViewportWScalingNV.html">VkViewportWScalingNV</a>
+@ValueBasedCandidate
 public record VkViewportWScalingNV(@NotNull MemorySegment segment) implements IPointer {
     public static final OfFloat LAYOUT$xcoeff = ValueLayout.JAVA_FLOAT.withName("xcoeff");
     public static final OfFloat LAYOUT$ycoeff = ValueLayout.JAVA_FLOAT.withName("ycoeff");
@@ -74,4 +76,3 @@ public record VkViewportWScalingNV(@NotNull MemorySegment segment) implements IP
     }
 
 }
-/// dummy, not implemented yet

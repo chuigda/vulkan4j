@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$flags = StdVideoAV1QuantizationFlags.LAYOUT.withName("flags");
     public static final OfByte LAYOUT$base_q_idx = ValueLayout.JAVA_BYTE.withName("base_q_idx");
@@ -170,4 +171,3 @@ public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements
     }
 
 }
-/// dummy, not implemented yet

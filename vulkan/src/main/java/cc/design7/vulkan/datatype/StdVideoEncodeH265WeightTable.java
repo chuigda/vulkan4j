@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$flags = StdVideoEncodeH265WeightTableFlags.LAYOUT.withName("flags");
     public static final OfByte LAYOUT$luma_log2_weight_denom = ValueLayout.JAVA_BYTE.withName("luma_log2_weight_denom");
@@ -182,4 +183,3 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
     }
 
 }
-/// dummy, not implemented yet

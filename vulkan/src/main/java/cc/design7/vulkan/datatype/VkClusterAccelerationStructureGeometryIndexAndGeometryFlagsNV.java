@@ -15,6 +15,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.html">VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV</a>
+@ValueBasedCandidate
 public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$geometryIndex_geometryFlags = ValueLayout.JAVA_INT.withName("bitfield$geometryIndex_geometryFlags");
 
@@ -53,35 +55,24 @@ public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@Not
 
     public static final long OFFSET$geometryIndex_geometryFlags = LAYOUT.byteOffset(PATH$bitfield$geometryIndex_geometryFlags);
 
-    public int geometryIndex() {
+    public @unsigned int geometryIndex() {
         MemorySegment s = segment.asSlice(OFFSET$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
-    public void geometryIndex(int value) {
+    public void geometryIndex(@unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
         BitfieldUtil.writeBits(s, 0, 24, value);
     }
 
-    public int reserved() {
-        MemorySegment s = segment.asSlice(OFFSET$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
-        return BitfieldUtil.readBits(s, 24, 29);
-    }
-
-    public void reserved(int value) {
-        MemorySegment s = segment.asSlice(OFFSET$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
-        BitfieldUtil.writeBits(s, 24, 29, value);
-    }
-
-    public int geometryFlags() {
+    public @unsigned int geometryFlags() {
         MemorySegment s = segment.asSlice(OFFSET$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
         return BitfieldUtil.readBits(s, 29, 32);
     }
 
-    public void geometryFlags(int value) {
+    public void geometryFlags(@unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
         BitfieldUtil.writeBits(s, 29, 32, value);
     }
 
 }
-/// dummy, not implemented yet

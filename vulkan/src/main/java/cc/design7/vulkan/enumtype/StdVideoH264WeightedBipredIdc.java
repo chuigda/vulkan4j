@@ -2,7 +2,6 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoH264WeightedBipredIdc.html">StdVideoH264WeightedBipredIdc</a>
 public final class StdVideoH264WeightedBipredIdc {
     public static final int STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_DEFAULT = 0x0;
     public static final int STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_EXPLICIT = 0x1;

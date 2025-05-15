@@ -2,7 +2,6 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1FrameType.html">StdVideoAV1FrameType</a>
 public final class StdVideoAV1FrameType {
     public static final int STD_VIDEO_AV1_FRAME_TYPE_KEY = 0x0;
     public static final int STD_VIDEO_AV1_FRAME_TYPE_INTER = 0x1;

@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPastPresentationTimingGOOGLE.html">VkPastPresentationTimingGOOGLE</a>
+@ValueBasedCandidate
 public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$presentID = ValueLayout.JAVA_INT.withName("presentID");
     public static final OfLong LAYOUT$desiredPresentTime = ValueLayout.JAVA_LONG.withName("desiredPresentTime");
@@ -110,4 +112,3 @@ public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) imp
     }
 
 }
-/// dummy, not implemented yet

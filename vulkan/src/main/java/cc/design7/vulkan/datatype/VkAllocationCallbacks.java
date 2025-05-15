@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAllocationCallbacks.html">VkAllocationCallbacks</a>
+@ValueBasedCandidate
 public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements IPointer {
     public static final AddressLayout LAYOUT$pUserData = ValueLayout.ADDRESS.withName("pUserData");
     public static final AddressLayout LAYOUT$pfnAllocation = ValueLayout.ADDRESS.withName("pfnAllocation");
@@ -146,4 +148,3 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
     }
 
 }
-/// dummy, not implemented yet

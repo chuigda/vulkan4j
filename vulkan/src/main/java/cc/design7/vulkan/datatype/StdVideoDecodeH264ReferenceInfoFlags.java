@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoDecodeH264ReferenceInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$top_field_flag_is_non_existing = ValueLayout.JAVA_INT.withName("bitfield$top_field_flag_is_non_existing");
 
@@ -53,45 +54,44 @@ public record StdVideoDecodeH264ReferenceInfoFlags(@NotNull MemorySegment segmen
 
     public static final long OFFSET$top_field_flag_is_non_existing = LAYOUT.byteOffset(PATH$bitfield$top_field_flag_is_non_existing);
 
-    public int top_field_flag() {
+    public boolean top_field_flag() {
         MemorySegment s = segment.asSlice(OFFSET$top_field_flag_is_non_existing, LAYOUT$top_field_flag_is_non_existing);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void top_field_flag(int value) {
+    public void top_field_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$top_field_flag_is_non_existing, LAYOUT$top_field_flag_is_non_existing);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int bottom_field_flag() {
+    public boolean bottom_field_flag() {
         MemorySegment s = segment.asSlice(OFFSET$top_field_flag_is_non_existing, LAYOUT$top_field_flag_is_non_existing);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void bottom_field_flag(int value) {
+    public void bottom_field_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$top_field_flag_is_non_existing, LAYOUT$top_field_flag_is_non_existing);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
-    public int used_for_long_term_reference() {
+    public boolean used_for_long_term_reference() {
         MemorySegment s = segment.asSlice(OFFSET$top_field_flag_is_non_existing, LAYOUT$top_field_flag_is_non_existing);
-        return BitfieldUtil.readBits(s, 2, 3);
+        return BitfieldUtil.readBit(s, 2);
     }
 
-    public void used_for_long_term_reference(int value) {
+    public void used_for_long_term_reference(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$top_field_flag_is_non_existing, LAYOUT$top_field_flag_is_non_existing);
-        BitfieldUtil.writeBits(s, 2, 3, value);
+        BitfieldUtil.writeBit(s, 2, value);
     }
 
-    public int is_non_existing() {
+    public boolean is_non_existing() {
         MemorySegment s = segment.asSlice(OFFSET$top_field_flag_is_non_existing, LAYOUT$top_field_flag_is_non_existing);
-        return BitfieldUtil.readBits(s, 3, 4);
+        return BitfieldUtil.readBit(s, 3);
     }
 
-    public void is_non_existing(int value) {
+    public void is_non_existing(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$top_field_flag_is_non_existing, LAYOUT$top_field_flag_is_non_existing);
-        BitfieldUtil.writeBits(s, 3, 4, value);
+        BitfieldUtil.writeBit(s, 3, value);
     }
 
 }
-/// dummy, not implemented yet

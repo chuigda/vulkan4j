@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSurfaceCapabilitiesKHR.html">VkSurfaceCapabilitiesKHR</a>
+@ValueBasedCandidate
 public record VkSurfaceCapabilitiesKHR(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$minImageCount = ValueLayout.JAVA_INT.withName("minImageCount");
     public static final OfInt LAYOUT$maxImageCount = ValueLayout.JAVA_INT.withName("maxImageCount");
@@ -170,4 +172,3 @@ public record VkSurfaceCapabilitiesKHR(@NotNull MemorySegment segment) implement
     }
 
 }
-/// dummy, not implemented yet

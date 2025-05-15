@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkComponentMapping.html">VkComponentMapping</a>
+@ValueBasedCandidate
 public record VkComponentMapping(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$r = ValueLayout.JAVA_INT.withName("r");
     public static final OfInt LAYOUT$g = ValueLayout.JAVA_INT.withName("g");
@@ -98,4 +100,3 @@ public record VkComponentMapping(@NotNull MemorySegment segment) implements IPoi
     }
 
 }
-/// dummy, not implemented yet

@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCoarseSampleOrderCustomNV.html">VkCoarseSampleOrderCustomNV</a>
+@ValueBasedCandidate
 public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$shadingRate = ValueLayout.JAVA_INT.withName("shadingRate");
     public static final OfInt LAYOUT$sampleCount = ValueLayout.JAVA_INT.withName("sampleCount");
@@ -125,4 +127,3 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
     }
 
 }
-/// dummy, not implemented yet

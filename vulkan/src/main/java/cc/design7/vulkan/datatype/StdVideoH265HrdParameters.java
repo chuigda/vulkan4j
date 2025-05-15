@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$flags = StdVideoH265HrdFlags.LAYOUT.withName("flags");
     public static final OfByte LAYOUT$tick_divisor_minus2 = ValueLayout.JAVA_BYTE.withName("tick_divisor_minus2");
@@ -284,4 +285,3 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
     }
 
 }
-/// dummy, not implemented yet

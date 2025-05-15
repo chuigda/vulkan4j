@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseBufferMemoryBindInfo.html">VkSparseBufferMemoryBindInfo</a>
+@ValueBasedCandidate
 public record VkSparseBufferMemoryBindInfo(@NotNull MemorySegment segment) implements IPointer {
     public static final AddressLayout LAYOUT$buffer = ValueLayout.ADDRESS.withName("buffer");
     public static final OfInt LAYOUT$bindCount = ValueLayout.JAVA_INT.withName("bindCount");
@@ -117,4 +119,3 @@ public record VkSparseBufferMemoryBindInfo(@NotNull MemorySegment segment) imple
     }
 
 }
-/// dummy, not implemented yet

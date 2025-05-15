@@ -2,7 +2,6 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoH265AspectRatioIdc.html">StdVideoH265AspectRatioIdc</a>
 public final class StdVideoH265AspectRatioIdc {
     public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_UNSPECIFIED = 0x0;
     public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_SQUARE = 0x1;

@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment) implements IPointer {
     public static final OfShort LAYOUT$PredictorPaletteEntries = ValueLayout.JAVA_SHORT.withName("PredictorPaletteEntries");
 
@@ -62,4 +63,3 @@ public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment
     }
 
 }
-/// dummy, not implemented yet

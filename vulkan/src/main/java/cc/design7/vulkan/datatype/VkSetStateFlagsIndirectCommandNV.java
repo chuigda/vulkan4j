@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSetStateFlagsIndirectCommandNV.html">VkSetStateFlagsIndirectCommandNV</a>
+@ValueBasedCandidate
 public record VkSetStateFlagsIndirectCommandNV(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$data = ValueLayout.JAVA_INT.withName("data");
 
@@ -62,4 +64,3 @@ public record VkSetStateFlagsIndirectCommandNV(@NotNull MemorySegment segment) i
     }
 
 }
-/// dummy, not implemented yet

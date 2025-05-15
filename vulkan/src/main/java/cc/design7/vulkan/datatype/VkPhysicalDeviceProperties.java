@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceProperties.html">VkPhysicalDeviceProperties</a>
+@ValueBasedCandidate
 public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$apiVersion = ValueLayout.JAVA_INT.withName("apiVersion");
     public static final OfInt LAYOUT$driverVersion = ValueLayout.JAVA_INT.withName("driverVersion");
@@ -158,4 +160,3 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
     }
 
 }
-/// dummy, not implemented yet

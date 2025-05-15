@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH265QpKHR.html">VkVideoEncodeH265QpKHR</a>
+@ValueBasedCandidate
 public record VkVideoEncodeH265QpKHR(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$qpI = ValueLayout.JAVA_INT.withName("qpI");
     public static final OfInt LAYOUT$qpP = ValueLayout.JAVA_INT.withName("qpP");
@@ -86,4 +88,3 @@ public record VkVideoEncodeH265QpKHR(@NotNull MemorySegment segment) implements 
     }
 
 }
-/// dummy, not implemented yet

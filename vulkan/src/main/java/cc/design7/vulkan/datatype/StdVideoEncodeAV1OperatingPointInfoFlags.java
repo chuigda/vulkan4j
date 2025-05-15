@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoEncodeAV1OperatingPointInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$decoder_model_present_for_this_op_reserved = ValueLayout.JAVA_INT.withName("bitfield$decoder_model_present_for_this_op_reserved");
 
@@ -53,45 +54,35 @@ public record StdVideoEncodeAV1OperatingPointInfoFlags(@NotNull MemorySegment se
 
     public static final long OFFSET$decoder_model_present_for_this_op_reserved = LAYOUT.byteOffset(PATH$bitfield$decoder_model_present_for_this_op_reserved);
 
-    public int decoder_model_present_for_this_op() {
+    public boolean decoder_model_present_for_this_op() {
         MemorySegment s = segment.asSlice(OFFSET$decoder_model_present_for_this_op_reserved, LAYOUT$decoder_model_present_for_this_op_reserved);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void decoder_model_present_for_this_op(int value) {
+    public void decoder_model_present_for_this_op(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$decoder_model_present_for_this_op_reserved, LAYOUT$decoder_model_present_for_this_op_reserved);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int low_delay_mode_flag() {
+    public boolean low_delay_mode_flag() {
         MemorySegment s = segment.asSlice(OFFSET$decoder_model_present_for_this_op_reserved, LAYOUT$decoder_model_present_for_this_op_reserved);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void low_delay_mode_flag(int value) {
+    public void low_delay_mode_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$decoder_model_present_for_this_op_reserved, LAYOUT$decoder_model_present_for_this_op_reserved);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
-    public int initial_display_delay_present_for_this_op() {
+    public boolean initial_display_delay_present_for_this_op() {
         MemorySegment s = segment.asSlice(OFFSET$decoder_model_present_for_this_op_reserved, LAYOUT$decoder_model_present_for_this_op_reserved);
-        return BitfieldUtil.readBits(s, 2, 3);
+        return BitfieldUtil.readBit(s, 2);
     }
 
-    public void initial_display_delay_present_for_this_op(int value) {
+    public void initial_display_delay_present_for_this_op(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$decoder_model_present_for_this_op_reserved, LAYOUT$decoder_model_present_for_this_op_reserved);
-        BitfieldUtil.writeBits(s, 2, 3, value);
+        BitfieldUtil.writeBit(s, 2, value);
     }
 
-    public int reserved() {
-        MemorySegment s = segment.asSlice(OFFSET$decoder_model_present_for_this_op_reserved, LAYOUT$decoder_model_present_for_this_op_reserved);
-        return BitfieldUtil.readBits(s, 3, 32);
-    }
-
-    public void reserved(int value) {
-        MemorySegment s = segment.asSlice(OFFSET$decoder_model_present_for_this_op_reserved, LAYOUT$decoder_model_present_for_this_op_reserved);
-        BitfieldUtil.writeBits(s, 3, 32, value);
-    }
 
 }
-/// dummy, not implemented yet

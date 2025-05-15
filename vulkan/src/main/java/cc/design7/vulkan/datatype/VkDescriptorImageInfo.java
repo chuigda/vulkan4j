@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorImageInfo.html">VkDescriptorImageInfo</a>
+@ValueBasedCandidate
 public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements IPointer {
     public static final AddressLayout LAYOUT$sampler = ValueLayout.ADDRESS.withName("sampler");
     public static final AddressLayout LAYOUT$imageView = ValueLayout.ADDRESS.withName("imageView");
@@ -94,4 +96,3 @@ public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements I
     }
 
 }
-/// dummy, not implemented yet

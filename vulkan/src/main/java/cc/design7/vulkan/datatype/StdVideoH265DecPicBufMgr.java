@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$max_latency_increase_plus1 = ValueLayout.JAVA_INT.withName("max_latency_increase_plus1");
     public static final OfByte LAYOUT$max_dec_pic_buffering_minus1 = ValueLayout.JAVA_BYTE.withName("max_dec_pic_buffering_minus1");
@@ -86,4 +87,3 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
     }
 
 }
-/// dummy, not implemented yet

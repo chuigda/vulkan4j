@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorUpdateTemplateEntry.html">VkDescriptorUpdateTemplateEntry</a>
+@ValueBasedCandidate
 public record VkDescriptorUpdateTemplateEntry(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$dstBinding = ValueLayout.JAVA_INT.withName("dstBinding");
     public static final OfInt LAYOUT$dstArrayElement = ValueLayout.JAVA_INT.withName("dstArrayElement");
@@ -122,4 +124,3 @@ public record VkDescriptorUpdateTemplateEntry(@NotNull MemorySegment segment) im
     }
 
 }
-/// dummy, not implemented yet

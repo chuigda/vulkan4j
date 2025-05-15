@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoH264SpsVuiFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag = ValueLayout.JAVA_INT.withName("bitfield$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag");
 
@@ -53,125 +54,124 @@ public record StdVideoH264SpsVuiFlags(@NotNull MemorySegment segment) implements
 
     public static final long OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag = LAYOUT.byteOffset(PATH$bitfield$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
 
-    public int aspect_ratio_info_present_flag() {
+    public boolean aspect_ratio_info_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void aspect_ratio_info_present_flag(int value) {
+    public void aspect_ratio_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int overscan_info_present_flag() {
+    public boolean overscan_info_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void overscan_info_present_flag(int value) {
+    public void overscan_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
-    public int overscan_appropriate_flag() {
+    public boolean overscan_appropriate_flag() {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 2, 3);
+        return BitfieldUtil.readBit(s, 2);
     }
 
-    public void overscan_appropriate_flag(int value) {
+    public void overscan_appropriate_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 2, 3, value);
+        BitfieldUtil.writeBit(s, 2, value);
     }
 
-    public int video_signal_type_present_flag() {
+    public boolean video_signal_type_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 3, 4);
+        return BitfieldUtil.readBit(s, 3);
     }
 
-    public void video_signal_type_present_flag(int value) {
+    public void video_signal_type_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 3, 4, value);
+        BitfieldUtil.writeBit(s, 3, value);
     }
 
-    public int video_full_range_flag() {
+    public boolean video_full_range_flag() {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 4, 5);
+        return BitfieldUtil.readBit(s, 4);
     }
 
-    public void video_full_range_flag(int value) {
+    public void video_full_range_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 4, 5, value);
+        BitfieldUtil.writeBit(s, 4, value);
     }
 
-    public int color_description_present_flag() {
+    public boolean color_description_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 5, 6);
+        return BitfieldUtil.readBit(s, 5);
     }
 
-    public void color_description_present_flag(int value) {
+    public void color_description_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 5, 6, value);
+        BitfieldUtil.writeBit(s, 5, value);
     }
 
-    public int chroma_loc_info_present_flag() {
+    public boolean chroma_loc_info_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 6, 7);
+        return BitfieldUtil.readBit(s, 6);
     }
 
-    public void chroma_loc_info_present_flag(int value) {
+    public void chroma_loc_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 6, 7, value);
+        BitfieldUtil.writeBit(s, 6, value);
     }
 
-    public int timing_info_present_flag() {
+    public boolean timing_info_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 7, 8);
+        return BitfieldUtil.readBit(s, 7);
     }
 
-    public void timing_info_present_flag(int value) {
+    public void timing_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 7, 8, value);
+        BitfieldUtil.writeBit(s, 7, value);
     }
 
-    public int fixed_frame_rate_flag() {
+    public boolean fixed_frame_rate_flag() {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 8, 9);
+        return BitfieldUtil.readBit(s, 8);
     }
 
-    public void fixed_frame_rate_flag(int value) {
+    public void fixed_frame_rate_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 8, 9, value);
+        BitfieldUtil.writeBit(s, 8, value);
     }
 
-    public int bitstream_restriction_flag() {
+    public boolean bitstream_restriction_flag() {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 9, 10);
+        return BitfieldUtil.readBit(s, 9);
     }
 
-    public void bitstream_restriction_flag(int value) {
+    public void bitstream_restriction_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 9, 10, value);
+        BitfieldUtil.writeBit(s, 9, value);
     }
 
-    public int nal_hrd_parameters_present_flag() {
+    public boolean nal_hrd_parameters_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 10, 11);
+        return BitfieldUtil.readBit(s, 10);
     }
 
-    public void nal_hrd_parameters_present_flag(int value) {
+    public void nal_hrd_parameters_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 10, 11, value);
+        BitfieldUtil.writeBit(s, 10, value);
     }
 
-    public int vcl_hrd_parameters_present_flag() {
+    public boolean vcl_hrd_parameters_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        return BitfieldUtil.readBits(s, 11, 12);
+        return BitfieldUtil.readBit(s, 11);
     }
 
-    public void vcl_hrd_parameters_present_flag(int value) {
+    public void vcl_hrd_parameters_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag, LAYOUT$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag);
-        BitfieldUtil.writeBits(s, 11, 12, value);
+        BitfieldUtil.writeBit(s, 11, value);
     }
 
 }
-/// dummy, not implemented yet

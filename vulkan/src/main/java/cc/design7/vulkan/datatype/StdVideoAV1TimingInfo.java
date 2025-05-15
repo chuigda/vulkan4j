@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoAV1TimingInfo(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$flags = StdVideoAV1TimingInfoFlags.LAYOUT.withName("flags");
     public static final OfInt LAYOUT$num_units_in_display_tick = ValueLayout.JAVA_INT.withName("num_units_in_display_tick");
@@ -98,4 +99,3 @@ public record StdVideoAV1TimingInfo(@NotNull MemorySegment segment) implements I
     }
 
 }
-/// dummy, not implemented yet

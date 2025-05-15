@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoEncodeAV1PictureInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$error_resilient_mode_reserved = ValueLayout.JAVA_INT.withName("bitfield$error_resilient_mode_reserved");
 
@@ -53,305 +54,295 @@ public record StdVideoEncodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
 
     public static final long OFFSET$error_resilient_mode_reserved = LAYOUT.byteOffset(PATH$bitfield$error_resilient_mode_reserved);
 
-    public int error_resilient_mode() {
+    public boolean error_resilient_mode() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void error_resilient_mode(int value) {
+    public void error_resilient_mode(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int disable_cdf_update() {
+    public boolean disable_cdf_update() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void disable_cdf_update(int value) {
+    public void disable_cdf_update(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
-    public int use_superres() {
+    public boolean use_superres() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 2, 3);
+        return BitfieldUtil.readBit(s, 2);
     }
 
-    public void use_superres(int value) {
+    public void use_superres(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 2, 3, value);
+        BitfieldUtil.writeBit(s, 2, value);
     }
 
-    public int render_and_frame_size_different() {
+    public boolean render_and_frame_size_different() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 3, 4);
+        return BitfieldUtil.readBit(s, 3);
     }
 
-    public void render_and_frame_size_different(int value) {
+    public void render_and_frame_size_different(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 3, 4, value);
+        BitfieldUtil.writeBit(s, 3, value);
     }
 
-    public int allow_screen_content_tools() {
+    public boolean allow_screen_content_tools() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 4, 5);
+        return BitfieldUtil.readBit(s, 4);
     }
 
-    public void allow_screen_content_tools(int value) {
+    public void allow_screen_content_tools(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 4, 5, value);
+        BitfieldUtil.writeBit(s, 4, value);
     }
 
-    public int is_filter_switchable() {
+    public boolean is_filter_switchable() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 5, 6);
+        return BitfieldUtil.readBit(s, 5);
     }
 
-    public void is_filter_switchable(int value) {
+    public void is_filter_switchable(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 5, 6, value);
+        BitfieldUtil.writeBit(s, 5, value);
     }
 
-    public int force_integer_mv() {
+    public boolean force_integer_mv() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 6, 7);
+        return BitfieldUtil.readBit(s, 6);
     }
 
-    public void force_integer_mv(int value) {
+    public void force_integer_mv(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 6, 7, value);
+        BitfieldUtil.writeBit(s, 6, value);
     }
 
-    public int frame_size_override_flag() {
+    public boolean frame_size_override_flag() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 7, 8);
+        return BitfieldUtil.readBit(s, 7);
     }
 
-    public void frame_size_override_flag(int value) {
+    public void frame_size_override_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 7, 8, value);
+        BitfieldUtil.writeBit(s, 7, value);
     }
 
-    public int buffer_removal_time_present_flag() {
+    public boolean buffer_removal_time_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 8, 9);
+        return BitfieldUtil.readBit(s, 8);
     }
 
-    public void buffer_removal_time_present_flag(int value) {
+    public void buffer_removal_time_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 8, 9, value);
+        BitfieldUtil.writeBit(s, 8, value);
     }
 
-    public int allow_intrabc() {
+    public boolean allow_intrabc() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 9, 10);
+        return BitfieldUtil.readBit(s, 9);
     }
 
-    public void allow_intrabc(int value) {
+    public void allow_intrabc(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 9, 10, value);
+        BitfieldUtil.writeBit(s, 9, value);
     }
 
-    public int frame_refs_short_signaling() {
+    public boolean frame_refs_short_signaling() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 10, 11);
+        return BitfieldUtil.readBit(s, 10);
     }
 
-    public void frame_refs_short_signaling(int value) {
+    public void frame_refs_short_signaling(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 10, 11, value);
+        BitfieldUtil.writeBit(s, 10, value);
     }
 
-    public int allow_high_precision_mv() {
+    public boolean allow_high_precision_mv() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 11, 12);
+        return BitfieldUtil.readBit(s, 11);
     }
 
-    public void allow_high_precision_mv(int value) {
+    public void allow_high_precision_mv(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 11, 12, value);
+        BitfieldUtil.writeBit(s, 11, value);
     }
 
-    public int is_motion_mode_switchable() {
+    public boolean is_motion_mode_switchable() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 12, 13);
+        return BitfieldUtil.readBit(s, 12);
     }
 
-    public void is_motion_mode_switchable(int value) {
+    public void is_motion_mode_switchable(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 12, 13, value);
+        BitfieldUtil.writeBit(s, 12, value);
     }
 
-    public int use_ref_frame_mvs() {
+    public boolean use_ref_frame_mvs() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 13, 14);
+        return BitfieldUtil.readBit(s, 13);
     }
 
-    public void use_ref_frame_mvs(int value) {
+    public void use_ref_frame_mvs(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 13, 14, value);
+        BitfieldUtil.writeBit(s, 13, value);
     }
 
-    public int disable_frame_end_update_cdf() {
+    public boolean disable_frame_end_update_cdf() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 14, 15);
+        return BitfieldUtil.readBit(s, 14);
     }
 
-    public void disable_frame_end_update_cdf(int value) {
+    public void disable_frame_end_update_cdf(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 14, 15, value);
+        BitfieldUtil.writeBit(s, 14, value);
     }
 
-    public int allow_warped_motion() {
+    public boolean allow_warped_motion() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 15, 16);
+        return BitfieldUtil.readBit(s, 15);
     }
 
-    public void allow_warped_motion(int value) {
+    public void allow_warped_motion(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 15, 16, value);
+        BitfieldUtil.writeBit(s, 15, value);
     }
 
-    public int reduced_tx_set() {
+    public boolean reduced_tx_set() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 16, 17);
+        return BitfieldUtil.readBit(s, 16);
     }
 
-    public void reduced_tx_set(int value) {
+    public void reduced_tx_set(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 16, 17, value);
+        BitfieldUtil.writeBit(s, 16, value);
     }
 
-    public int skip_mode_present() {
+    public boolean skip_mode_present() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 17, 18);
+        return BitfieldUtil.readBit(s, 17);
     }
 
-    public void skip_mode_present(int value) {
+    public void skip_mode_present(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 17, 18, value);
+        BitfieldUtil.writeBit(s, 17, value);
     }
 
-    public int delta_q_present() {
+    public boolean delta_q_present() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 18, 19);
+        return BitfieldUtil.readBit(s, 18);
     }
 
-    public void delta_q_present(int value) {
+    public void delta_q_present(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 18, 19, value);
+        BitfieldUtil.writeBit(s, 18, value);
     }
 
-    public int delta_lf_present() {
+    public boolean delta_lf_present() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 19, 20);
+        return BitfieldUtil.readBit(s, 19);
     }
 
-    public void delta_lf_present(int value) {
+    public void delta_lf_present(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 19, 20, value);
+        BitfieldUtil.writeBit(s, 19, value);
     }
 
-    public int delta_lf_multi() {
+    public boolean delta_lf_multi() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 20, 21);
+        return BitfieldUtil.readBit(s, 20);
     }
 
-    public void delta_lf_multi(int value) {
+    public void delta_lf_multi(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 20, 21, value);
+        BitfieldUtil.writeBit(s, 20, value);
     }
 
-    public int segmentation_enabled() {
+    public boolean segmentation_enabled() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 21, 22);
+        return BitfieldUtil.readBit(s, 21);
     }
 
-    public void segmentation_enabled(int value) {
+    public void segmentation_enabled(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 21, 22, value);
+        BitfieldUtil.writeBit(s, 21, value);
     }
 
-    public int segmentation_update_map() {
+    public boolean segmentation_update_map() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 22, 23);
+        return BitfieldUtil.readBit(s, 22);
     }
 
-    public void segmentation_update_map(int value) {
+    public void segmentation_update_map(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 22, 23, value);
+        BitfieldUtil.writeBit(s, 22, value);
     }
 
-    public int segmentation_temporal_update() {
+    public boolean segmentation_temporal_update() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 23, 24);
+        return BitfieldUtil.readBit(s, 23);
     }
 
-    public void segmentation_temporal_update(int value) {
+    public void segmentation_temporal_update(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 23, 24, value);
+        BitfieldUtil.writeBit(s, 23, value);
     }
 
-    public int segmentation_update_data() {
+    public boolean segmentation_update_data() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 24, 25);
+        return BitfieldUtil.readBit(s, 24);
     }
 
-    public void segmentation_update_data(int value) {
+    public void segmentation_update_data(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 24, 25, value);
+        BitfieldUtil.writeBit(s, 24, value);
     }
 
-    public int UsesLr() {
+    public boolean UsesLr() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 25, 26);
+        return BitfieldUtil.readBit(s, 25);
     }
 
-    public void UsesLr(int value) {
+    public void UsesLr(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 25, 26, value);
+        BitfieldUtil.writeBit(s, 25, value);
     }
 
-    public int usesChromaLr() {
+    public boolean usesChromaLr() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 26, 27);
+        return BitfieldUtil.readBit(s, 26);
     }
 
-    public void usesChromaLr(int value) {
+    public void usesChromaLr(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 26, 27, value);
+        BitfieldUtil.writeBit(s, 26, value);
     }
 
-    public int show_frame() {
+    public boolean show_frame() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 27, 28);
+        return BitfieldUtil.readBit(s, 27);
     }
 
-    public void show_frame(int value) {
+    public void show_frame(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 27, 28, value);
+        BitfieldUtil.writeBit(s, 27, value);
     }
 
-    public int showable_frame() {
+    public boolean showable_frame() {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 28, 29);
+        return BitfieldUtil.readBit(s, 28);
     }
 
-    public void showable_frame(int value) {
+    public void showable_frame(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 28, 29, value);
+        BitfieldUtil.writeBit(s, 28, value);
     }
 
-    public int reserved() {
-        MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        return BitfieldUtil.readBits(s, 29, 32);
-    }
-
-    public void reserved(int value) {
-        MemorySegment s = segment.asSlice(OFFSET$error_resilient_mode_reserved, LAYOUT$error_resilient_mode_reserved);
-        BitfieldUtil.writeBits(s, 29, 32, value);
-    }
 
 }
-/// dummy, not implemented yet

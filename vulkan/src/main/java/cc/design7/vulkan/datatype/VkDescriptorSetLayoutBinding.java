@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorSetLayoutBinding.html">VkDescriptorSetLayoutBinding</a>
+@ValueBasedCandidate
 public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$binding = ValueLayout.JAVA_INT.withName("binding");
     public static final OfInt LAYOUT$descriptorType = ValueLayout.JAVA_INT.withName("descriptorType");
@@ -123,4 +125,3 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
 
 
 }
-/// dummy, not implemented yet

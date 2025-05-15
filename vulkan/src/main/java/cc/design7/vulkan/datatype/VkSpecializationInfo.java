@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSpecializationInfo.html">VkSpecializationInfo</a>
+@ValueBasedCandidate
 public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$mapEntryCount = ValueLayout.JAVA_INT.withName("mapEntryCount");
     public static final AddressLayout LAYOUT$pMapEntries = ValueLayout.ADDRESS.withTargetLayout(VkSpecializationMapEntry.LAYOUT).withName("pMapEntries");
@@ -129,4 +131,3 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IP
     }
 
 }
-/// dummy, not implemented yet

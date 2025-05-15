@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkTraceRaysIndirectCommandKHR.html">VkTraceRaysIndirectCommandKHR</a>
+@ValueBasedCandidate
 public record VkTraceRaysIndirectCommandKHR(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$width = ValueLayout.JAVA_INT.withName("width");
     public static final OfInt LAYOUT$height = ValueLayout.JAVA_INT.withName("height");
@@ -86,4 +88,3 @@ public record VkTraceRaysIndirectCommandKHR(@NotNull MemorySegment segment) impl
     }
 
 }
-/// dummy, not implemented yet

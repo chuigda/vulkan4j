@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$flags = StdVideoH265ShortTermRefPicSetFlags.LAYOUT.withName("flags");
     public static final OfInt LAYOUT$delta_idx_minus1 = ValueLayout.JAVA_INT.withName("delta_idx_minus1");
@@ -218,4 +219,3 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
     }
 
 }
-/// dummy, not implemented yet

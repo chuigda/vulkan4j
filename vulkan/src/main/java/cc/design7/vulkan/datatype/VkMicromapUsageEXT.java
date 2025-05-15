@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMicromapUsageEXT.html">VkMicromapUsageEXT</a>
+@ValueBasedCandidate
 public record VkMicromapUsageEXT(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$count = ValueLayout.JAVA_INT.withName("count");
     public static final OfInt LAYOUT$subdivisionLevel = ValueLayout.JAVA_INT.withName("subdivisionLevel");
@@ -86,4 +88,3 @@ public record VkMicromapUsageEXT(@NotNull MemorySegment segment) implements IPoi
     }
 
 }
-/// dummy, not implemented yet

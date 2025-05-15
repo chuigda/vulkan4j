@@ -3,22 +3,12 @@ package cc.design7.babel.codegen
 import cc.design7.babel.codegen.accessor.*
 import cc.design7.babel.ctype.*
 import cc.design7.babel.ctype.lowerType
-import cc.design7.babel.extract.vulkan.extractVulkanRegistry
 import cc.design7.babel.registry.RegistryBase
 import cc.design7.babel.registry.Structure
 import cc.design7.babel.util.Doc
 import cc.design7.babel.util.DocList
 import cc.design7.babel.util.buildDoc
-import cc.design7.babel.util.render
 import org.intellij.lang.annotations.Language
-
-fun main() {
-    val registry = extractVulkanRegistry()
-    val structure = registry.structures.values.first()
-    val option = CodegenOptions("foo.bar", mutableListOf(), "constants", mutableListOf())
-
-    println(render(generateStructure(registry, structure, option)))
-}
 
 /**
  * @param name the name of the layout, such as "pNext"
@@ -64,6 +54,7 @@ private fun DocList.constant(type: String, name: String, value: String) {
 fun generateStructure(
     registryBase: RegistryBase,
     structure: Structure,
+    isUnion: Boolean,
     codegenOptions: CodegenOptions,
 ): Doc = buildDoc {
     val packageName = codegenOptions.packageName
@@ -116,6 +107,11 @@ fun generateStructure(
     +""
 
     // TODO: generate document
+    val seeLink = codegenOptions.seeLinkProvider(structure)
+    if (seeLink != null) {
+        +"/// @see $seeLink"
+    }
+    +"@ValueBasedCandidate"
     +"public record $className(@NotNull MemorySegment segment) implements IPointer {"
 
     indent {
@@ -126,7 +122,7 @@ fun generateStructure(
 
         +""
 
-        constant("MemoryLayout", "LAYOUT", generateLayout1(layouts))
+        constant("MemoryLayout", "LAYOUT", generateStructureLayout(layouts, isUnion))
         constant("long", "SIZE", "LAYOUT.byteSize()")
 
         +""
@@ -213,14 +209,12 @@ fun generateStructure(
 
     +"}"
     /// endregion import
-
-    +"/// dummy, not implemented yet"
 }
 
 // '1' means all
-private fun generateLayout1(layouts: List<LayoutField>): String {
+private fun generateStructureLayout(layouts: List<LayoutField>, isUnion: Boolean): String {
     return buildString {
-        val ctor = "NativeLayout.structLayout"
+        val ctor = if (isUnion) "NativeLayout.unionLayout" else "NativeLayout.structLayout"
         append(ctor)
         layouts.joinTo(this, prefix = "(", postfix = ")") { it.layoutName }
     }

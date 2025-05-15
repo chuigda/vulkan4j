@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLayerSettingEXT.html">VkLayerSettingEXT</a>
+@ValueBasedCandidate
 public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IPointer {
     public static final AddressLayout LAYOUT$pLayerName = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pLayerName");
     public static final AddressLayout LAYOUT$pSettingName = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pSettingName");
@@ -148,4 +150,3 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IPoin
     }
 
 }
-/// dummy, not implemented yet

@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStencilOpState.html">VkStencilOpState</a>
+@ValueBasedCandidate
 public record VkStencilOpState(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$failOp = ValueLayout.JAVA_INT.withName("failOp");
     public static final OfInt LAYOUT$passOp = ValueLayout.JAVA_INT.withName("passOp");
@@ -134,4 +136,3 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IPoint
     }
 
 }
-/// dummy, not implemented yet

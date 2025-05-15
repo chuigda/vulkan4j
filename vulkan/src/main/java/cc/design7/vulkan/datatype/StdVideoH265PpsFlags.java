@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag = ValueLayout.JAVA_INT.withName("bitfield$dependent_slice_segments_enabled_flag_pps_range_extension_flag");
 
@@ -53,315 +54,314 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IP
 
     public static final long OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag = LAYOUT.byteOffset(PATH$bitfield$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
 
-    public int dependent_slice_segments_enabled_flag() {
+    public boolean dependent_slice_segments_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void dependent_slice_segments_enabled_flag(int value) {
+    public void dependent_slice_segments_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int output_flag_present_flag() {
+    public boolean output_flag_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void output_flag_present_flag(int value) {
+    public void output_flag_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
-    public int sign_data_hiding_enabled_flag() {
+    public boolean sign_data_hiding_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 2, 3);
+        return BitfieldUtil.readBit(s, 2);
     }
 
-    public void sign_data_hiding_enabled_flag(int value) {
+    public void sign_data_hiding_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 2, 3, value);
+        BitfieldUtil.writeBit(s, 2, value);
     }
 
-    public int cabac_init_present_flag() {
+    public boolean cabac_init_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 3, 4);
+        return BitfieldUtil.readBit(s, 3);
     }
 
-    public void cabac_init_present_flag(int value) {
+    public void cabac_init_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 3, 4, value);
+        BitfieldUtil.writeBit(s, 3, value);
     }
 
-    public int constrained_intra_pred_flag() {
+    public boolean constrained_intra_pred_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 4, 5);
+        return BitfieldUtil.readBit(s, 4);
     }
 
-    public void constrained_intra_pred_flag(int value) {
+    public void constrained_intra_pred_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 4, 5, value);
+        BitfieldUtil.writeBit(s, 4, value);
     }
 
-    public int transform_skip_enabled_flag() {
+    public boolean transform_skip_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 5, 6);
+        return BitfieldUtil.readBit(s, 5);
     }
 
-    public void transform_skip_enabled_flag(int value) {
+    public void transform_skip_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 5, 6, value);
+        BitfieldUtil.writeBit(s, 5, value);
     }
 
-    public int cu_qp_delta_enabled_flag() {
+    public boolean cu_qp_delta_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 6, 7);
+        return BitfieldUtil.readBit(s, 6);
     }
 
-    public void cu_qp_delta_enabled_flag(int value) {
+    public void cu_qp_delta_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 6, 7, value);
+        BitfieldUtil.writeBit(s, 6, value);
     }
 
-    public int pps_slice_chroma_qp_offsets_present_flag() {
+    public boolean pps_slice_chroma_qp_offsets_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 7, 8);
+        return BitfieldUtil.readBit(s, 7);
     }
 
-    public void pps_slice_chroma_qp_offsets_present_flag(int value) {
+    public void pps_slice_chroma_qp_offsets_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 7, 8, value);
+        BitfieldUtil.writeBit(s, 7, value);
     }
 
-    public int weighted_pred_flag() {
+    public boolean weighted_pred_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 8, 9);
+        return BitfieldUtil.readBit(s, 8);
     }
 
-    public void weighted_pred_flag(int value) {
+    public void weighted_pred_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 8, 9, value);
+        BitfieldUtil.writeBit(s, 8, value);
     }
 
-    public int weighted_bipred_flag() {
+    public boolean weighted_bipred_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 9, 10);
+        return BitfieldUtil.readBit(s, 9);
     }
 
-    public void weighted_bipred_flag(int value) {
+    public void weighted_bipred_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 9, 10, value);
+        BitfieldUtil.writeBit(s, 9, value);
     }
 
-    public int transquant_bypass_enabled_flag() {
+    public boolean transquant_bypass_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 10, 11);
+        return BitfieldUtil.readBit(s, 10);
     }
 
-    public void transquant_bypass_enabled_flag(int value) {
+    public void transquant_bypass_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 10, 11, value);
+        BitfieldUtil.writeBit(s, 10, value);
     }
 
-    public int tiles_enabled_flag() {
+    public boolean tiles_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 11, 12);
+        return BitfieldUtil.readBit(s, 11);
     }
 
-    public void tiles_enabled_flag(int value) {
+    public void tiles_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 11, 12, value);
+        BitfieldUtil.writeBit(s, 11, value);
     }
 
-    public int entropy_coding_sync_enabled_flag() {
+    public boolean entropy_coding_sync_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 12, 13);
+        return BitfieldUtil.readBit(s, 12);
     }
 
-    public void entropy_coding_sync_enabled_flag(int value) {
+    public void entropy_coding_sync_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 12, 13, value);
+        BitfieldUtil.writeBit(s, 12, value);
     }
 
-    public int uniform_spacing_flag() {
+    public boolean uniform_spacing_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 13, 14);
+        return BitfieldUtil.readBit(s, 13);
     }
 
-    public void uniform_spacing_flag(int value) {
+    public void uniform_spacing_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 13, 14, value);
+        BitfieldUtil.writeBit(s, 13, value);
     }
 
-    public int loop_filter_across_tiles_enabled_flag() {
+    public boolean loop_filter_across_tiles_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 14, 15);
+        return BitfieldUtil.readBit(s, 14);
     }
 
-    public void loop_filter_across_tiles_enabled_flag(int value) {
+    public void loop_filter_across_tiles_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 14, 15, value);
+        BitfieldUtil.writeBit(s, 14, value);
     }
 
-    public int pps_loop_filter_across_slices_enabled_flag() {
+    public boolean pps_loop_filter_across_slices_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 15, 16);
+        return BitfieldUtil.readBit(s, 15);
     }
 
-    public void pps_loop_filter_across_slices_enabled_flag(int value) {
+    public void pps_loop_filter_across_slices_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 15, 16, value);
+        BitfieldUtil.writeBit(s, 15, value);
     }
 
-    public int deblocking_filter_control_present_flag() {
+    public boolean deblocking_filter_control_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 16, 17);
+        return BitfieldUtil.readBit(s, 16);
     }
 
-    public void deblocking_filter_control_present_flag(int value) {
+    public void deblocking_filter_control_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 16, 17, value);
+        BitfieldUtil.writeBit(s, 16, value);
     }
 
-    public int deblocking_filter_override_enabled_flag() {
+    public boolean deblocking_filter_override_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 17, 18);
+        return BitfieldUtil.readBit(s, 17);
     }
 
-    public void deblocking_filter_override_enabled_flag(int value) {
+    public void deblocking_filter_override_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 17, 18, value);
+        BitfieldUtil.writeBit(s, 17, value);
     }
 
-    public int pps_deblocking_filter_disabled_flag() {
+    public boolean pps_deblocking_filter_disabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 18, 19);
+        return BitfieldUtil.readBit(s, 18);
     }
 
-    public void pps_deblocking_filter_disabled_flag(int value) {
+    public void pps_deblocking_filter_disabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 18, 19, value);
+        BitfieldUtil.writeBit(s, 18, value);
     }
 
-    public int pps_scaling_list_data_present_flag() {
+    public boolean pps_scaling_list_data_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 19, 20);
+        return BitfieldUtil.readBit(s, 19);
     }
 
-    public void pps_scaling_list_data_present_flag(int value) {
+    public void pps_scaling_list_data_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 19, 20, value);
+        BitfieldUtil.writeBit(s, 19, value);
     }
 
-    public int lists_modification_present_flag() {
+    public boolean lists_modification_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 20, 21);
+        return BitfieldUtil.readBit(s, 20);
     }
 
-    public void lists_modification_present_flag(int value) {
+    public void lists_modification_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 20, 21, value);
+        BitfieldUtil.writeBit(s, 20, value);
     }
 
-    public int slice_segment_header_extension_present_flag() {
+    public boolean slice_segment_header_extension_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 21, 22);
+        return BitfieldUtil.readBit(s, 21);
     }
 
-    public void slice_segment_header_extension_present_flag(int value) {
+    public void slice_segment_header_extension_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 21, 22, value);
+        BitfieldUtil.writeBit(s, 21, value);
     }
 
-    public int pps_extension_present_flag() {
+    public boolean pps_extension_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 22, 23);
+        return BitfieldUtil.readBit(s, 22);
     }
 
-    public void pps_extension_present_flag(int value) {
+    public void pps_extension_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 22, 23, value);
+        BitfieldUtil.writeBit(s, 22, value);
     }
 
-    public int cross_component_prediction_enabled_flag() {
+    public boolean cross_component_prediction_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 23, 24);
+        return BitfieldUtil.readBit(s, 23);
     }
 
-    public void cross_component_prediction_enabled_flag(int value) {
+    public void cross_component_prediction_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 23, 24, value);
+        BitfieldUtil.writeBit(s, 23, value);
     }
 
-    public int chroma_qp_offset_list_enabled_flag() {
+    public boolean chroma_qp_offset_list_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 24, 25);
+        return BitfieldUtil.readBit(s, 24);
     }
 
-    public void chroma_qp_offset_list_enabled_flag(int value) {
+    public void chroma_qp_offset_list_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 24, 25, value);
+        BitfieldUtil.writeBit(s, 24, value);
     }
 
-    public int pps_curr_pic_ref_enabled_flag() {
+    public boolean pps_curr_pic_ref_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 25, 26);
+        return BitfieldUtil.readBit(s, 25);
     }
 
-    public void pps_curr_pic_ref_enabled_flag(int value) {
+    public void pps_curr_pic_ref_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 25, 26, value);
+        BitfieldUtil.writeBit(s, 25, value);
     }
 
-    public int residual_adaptive_colour_transform_enabled_flag() {
+    public boolean residual_adaptive_colour_transform_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 26, 27);
+        return BitfieldUtil.readBit(s, 26);
     }
 
-    public void residual_adaptive_colour_transform_enabled_flag(int value) {
+    public void residual_adaptive_colour_transform_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 26, 27, value);
+        BitfieldUtil.writeBit(s, 26, value);
     }
 
-    public int pps_slice_act_qp_offsets_present_flag() {
+    public boolean pps_slice_act_qp_offsets_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 27, 28);
+        return BitfieldUtil.readBit(s, 27);
     }
 
-    public void pps_slice_act_qp_offsets_present_flag(int value) {
+    public void pps_slice_act_qp_offsets_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 27, 28, value);
+        BitfieldUtil.writeBit(s, 27, value);
     }
 
-    public int pps_palette_predictor_initializers_present_flag() {
+    public boolean pps_palette_predictor_initializers_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 28, 29);
+        return BitfieldUtil.readBit(s, 28);
     }
 
-    public void pps_palette_predictor_initializers_present_flag(int value) {
+    public void pps_palette_predictor_initializers_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 28, 29, value);
+        BitfieldUtil.writeBit(s, 28, value);
     }
 
-    public int monochrome_palette_flag() {
+    public boolean monochrome_palette_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 29, 30);
+        return BitfieldUtil.readBit(s, 29);
     }
 
-    public void monochrome_palette_flag(int value) {
+    public void monochrome_palette_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 29, 30, value);
+        BitfieldUtil.writeBit(s, 29, value);
     }
 
-    public int pps_range_extension_flag() {
+    public boolean pps_range_extension_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        return BitfieldUtil.readBits(s, 30, 31);
+        return BitfieldUtil.readBit(s, 30);
     }
 
-    public void pps_range_extension_flag(int value) {
+    public void pps_range_extension_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-        BitfieldUtil.writeBits(s, 30, 31, value);
+        BitfieldUtil.writeBit(s, 30, value);
     }
 
 }
-/// dummy, not implemented yet

@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDrawMeshTasksIndirectCommandNV.html">VkDrawMeshTasksIndirectCommandNV</a>
+@ValueBasedCandidate
 public record VkDrawMeshTasksIndirectCommandNV(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$taskCount = ValueLayout.JAVA_INT.withName("taskCount");
     public static final OfInt LAYOUT$firstTask = ValueLayout.JAVA_INT.withName("firstTask");
@@ -74,4 +76,3 @@ public record VkDrawMeshTasksIndirectCommandNV(@NotNull MemorySegment segment) i
     }
 
 }
-/// dummy, not implemented yet

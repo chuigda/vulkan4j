@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1FrameSizeKHR.html">VkVideoEncodeAV1FrameSizeKHR</a>
+@ValueBasedCandidate
 public record VkVideoEncodeAV1FrameSizeKHR(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$intraFrameSize = ValueLayout.JAVA_INT.withName("intraFrameSize");
     public static final OfInt LAYOUT$predictiveFrameSize = ValueLayout.JAVA_INT.withName("predictiveFrameSize");
@@ -86,4 +88,3 @@ public record VkVideoEncodeAV1FrameSizeKHR(@NotNull MemorySegment segment) imple
     }
 
 }
-/// dummy, not implemented yet

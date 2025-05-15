@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$flags = StdVideoEncodeH265SliceSegmentHeaderFlags.LAYOUT.withName("flags");
     public static final OfInt LAYOUT$slice_type = ValueLayout.JAVA_INT.withName("slice_type");
@@ -257,4 +258,3 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
     }
 
 }
-/// dummy, not implemented yet

@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryHeap.html">VkMemoryHeap</a>
+@ValueBasedCandidate
 public record VkMemoryHeap(@NotNull MemorySegment segment) implements IPointer {
     public static final OfLong LAYOUT$size = ValueLayout.JAVA_LONG.withName("size");
     public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
@@ -74,4 +76,3 @@ public record VkMemoryHeap(@NotNull MemorySegment segment) implements IPointer {
     }
 
 }
-/// dummy, not implemented yet

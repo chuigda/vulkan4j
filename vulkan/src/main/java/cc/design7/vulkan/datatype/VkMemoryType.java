@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryType.html">VkMemoryType</a>
+@ValueBasedCandidate
 public record VkMemoryType(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$propertyFlags = ValueLayout.JAVA_INT.withName("propertyFlags");
     public static final OfInt LAYOUT$heapIndex = ValueLayout.JAVA_INT.withName("heapIndex");
@@ -74,4 +76,3 @@ public record VkMemoryType(@NotNull MemorySegment segment) implements IPointer {
     }
 
 }
-/// dummy, not implemented yet

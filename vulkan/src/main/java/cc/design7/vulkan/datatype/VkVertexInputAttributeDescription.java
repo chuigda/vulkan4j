@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVertexInputAttributeDescription.html">VkVertexInputAttributeDescription</a>
+@ValueBasedCandidate
 public record VkVertexInputAttributeDescription(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$location = ValueLayout.JAVA_INT.withName("location");
     public static final OfInt LAYOUT$binding = ValueLayout.JAVA_INT.withName("binding");
@@ -98,4 +100,3 @@ public record VkVertexInputAttributeDescription(@NotNull MemorySegment segment) 
     }
 
 }
-/// dummy, not implemented yet

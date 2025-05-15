@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoAV1TimingInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$equal_picture_interval_reserved = ValueLayout.JAVA_INT.withName("bitfield$equal_picture_interval_reserved");
 
@@ -53,25 +54,15 @@ public record StdVideoAV1TimingInfoFlags(@NotNull MemorySegment segment) impleme
 
     public static final long OFFSET$equal_picture_interval_reserved = LAYOUT.byteOffset(PATH$bitfield$equal_picture_interval_reserved);
 
-    public int equal_picture_interval() {
+    public boolean equal_picture_interval() {
         MemorySegment s = segment.asSlice(OFFSET$equal_picture_interval_reserved, LAYOUT$equal_picture_interval_reserved);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void equal_picture_interval(int value) {
+    public void equal_picture_interval(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$equal_picture_interval_reserved, LAYOUT$equal_picture_interval_reserved);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int reserved() {
-        MemorySegment s = segment.asSlice(OFFSET$equal_picture_interval_reserved, LAYOUT$equal_picture_interval_reserved);
-        return BitfieldUtil.readBits(s, 1, 32);
-    }
-
-    public void reserved(int value) {
-        MemorySegment s = segment.asSlice(OFFSET$equal_picture_interval_reserved, LAYOUT$equal_picture_interval_reserved);
-        BitfieldUtil.writeBits(s, 1, 32, value);
-    }
 
 }
-/// dummy, not implemented yet

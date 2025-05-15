@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClearDepthStencilValue.html">VkClearDepthStencilValue</a>
+@ValueBasedCandidate
 public record VkClearDepthStencilValue(@NotNull MemorySegment segment) implements IPointer {
     public static final OfFloat LAYOUT$depth = ValueLayout.JAVA_FLOAT.withName("depth");
     public static final OfInt LAYOUT$stencil = ValueLayout.JAVA_INT.withName("stencil");
@@ -74,4 +76,3 @@ public record VkClearDepthStencilValue(@NotNull MemorySegment segment) implement
     }
 
 }
-/// dummy, not implemented yet

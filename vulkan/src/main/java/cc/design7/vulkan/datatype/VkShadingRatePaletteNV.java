@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShadingRatePaletteNV.html">VkShadingRatePaletteNV</a>
+@ValueBasedCandidate
 public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$shadingRatePaletteEntryCount = ValueLayout.JAVA_INT.withName("shadingRatePaletteEntryCount");
     public static final AddressLayout LAYOUT$pShadingRatePaletteEntries = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pShadingRatePaletteEntries");
@@ -91,4 +93,3 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
     }
 
 }
-/// dummy, not implemented yet

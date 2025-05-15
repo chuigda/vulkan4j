@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPartitionedAccelerationStructureUpdateInstanceDataNV.html">VkPartitionedAccelerationStructureUpdateInstanceDataNV</a>
+@ValueBasedCandidate
 public record VkPartitionedAccelerationStructureUpdateInstanceDataNV(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$instanceIndex = ValueLayout.JAVA_INT.withName("instanceIndex");
     public static final OfInt LAYOUT$instanceContributionToHitGroupIndex = ValueLayout.JAVA_INT.withName("instanceContributionToHitGroupIndex");
@@ -86,4 +88,3 @@ public record VkPartitionedAccelerationStructureUpdateInstanceDataNV(@NotNull Me
     }
 
 }
-/// dummy, not implemented yet

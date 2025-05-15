@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageMemoryBind.html">VkSparseImageMemoryBind</a>
+@ValueBasedCandidate
 public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$subresource = VkImageSubresource.LAYOUT.withName("subresource");
     public static final StructLayout LAYOUT$offset = VkOffset3D.LAYOUT.withName("offset");
@@ -126,4 +128,3 @@ public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements
     }
 
 }
-/// dummy, not implemented yet

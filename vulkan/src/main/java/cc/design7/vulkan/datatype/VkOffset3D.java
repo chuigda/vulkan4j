@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOffset3D.html">VkOffset3D</a>
+@ValueBasedCandidate
 public record VkOffset3D(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$x = ValueLayout.JAVA_INT.withName("x");
     public static final OfInt LAYOUT$y = ValueLayout.JAVA_INT.withName("y");
@@ -86,4 +88,3 @@ public record VkOffset3D(@NotNull MemorySegment segment) implements IPointer {
     }
 
 }
-/// dummy, not implemented yet

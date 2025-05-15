@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$FrameRestorationType = ValueLayout.JAVA_INT.withName("FrameRestorationType");
     public static final OfShort LAYOUT$LoopRestorationSize = ValueLayout.JAVA_SHORT.withName("LoopRestorationSize");
@@ -74,4 +75,3 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
     }
 
 }
-/// dummy, not implemented yet

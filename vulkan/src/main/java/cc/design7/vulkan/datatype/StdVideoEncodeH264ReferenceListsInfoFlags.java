@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoEncodeH264ReferenceListsInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$ref_pic_list_modification_flag_l0_reserved = ValueLayout.JAVA_INT.withName("bitfield$ref_pic_list_modification_flag_l0_reserved");
 
@@ -53,35 +54,25 @@ public record StdVideoEncodeH264ReferenceListsInfoFlags(@NotNull MemorySegment s
 
     public static final long OFFSET$ref_pic_list_modification_flag_l0_reserved = LAYOUT.byteOffset(PATH$bitfield$ref_pic_list_modification_flag_l0_reserved);
 
-    public int ref_pic_list_modification_flag_l0() {
+    public boolean ref_pic_list_modification_flag_l0() {
         MemorySegment s = segment.asSlice(OFFSET$ref_pic_list_modification_flag_l0_reserved, LAYOUT$ref_pic_list_modification_flag_l0_reserved);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void ref_pic_list_modification_flag_l0(int value) {
+    public void ref_pic_list_modification_flag_l0(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$ref_pic_list_modification_flag_l0_reserved, LAYOUT$ref_pic_list_modification_flag_l0_reserved);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int ref_pic_list_modification_flag_l1() {
+    public boolean ref_pic_list_modification_flag_l1() {
         MemorySegment s = segment.asSlice(OFFSET$ref_pic_list_modification_flag_l0_reserved, LAYOUT$ref_pic_list_modification_flag_l0_reserved);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void ref_pic_list_modification_flag_l1(int value) {
+    public void ref_pic_list_modification_flag_l1(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$ref_pic_list_modification_flag_l0_reserved, LAYOUT$ref_pic_list_modification_flag_l0_reserved);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
-    public int reserved() {
-        MemorySegment s = segment.asSlice(OFFSET$ref_pic_list_modification_flag_l0_reserved, LAYOUT$ref_pic_list_modification_flag_l0_reserved);
-        return BitfieldUtil.readBits(s, 2, 32);
-    }
-
-    public void reserved(int value) {
-        MemorySegment s = segment.asSlice(OFFSET$ref_pic_list_modification_flag_l0_reserved, LAYOUT$ref_pic_list_modification_flag_l0_reserved);
-        BitfieldUtil.writeBits(s, 2, 32, value);
-    }
 
 }
-/// dummy, not implemented yet

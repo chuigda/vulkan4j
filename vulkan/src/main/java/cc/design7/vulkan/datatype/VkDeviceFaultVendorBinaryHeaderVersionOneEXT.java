@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceFaultVendorBinaryHeaderVersionOneEXT.html">VkDeviceFaultVendorBinaryHeaderVersionOneEXT</a>
+@ValueBasedCandidate
 public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$headerSize = ValueLayout.JAVA_INT.withName("headerSize");
     public static final OfInt LAYOUT$headerVersion = ValueLayout.JAVA_INT.withName("headerVersion");
@@ -182,4 +184,3 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
     }
 
 }
-/// dummy, not implemented yet

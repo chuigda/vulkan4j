@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$mono_chrome_reserved = ValueLayout.JAVA_INT.withName("bitfield$mono_chrome_reserved");
 
@@ -53,55 +54,45 @@ public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implem
 
     public static final long OFFSET$mono_chrome_reserved = LAYOUT.byteOffset(PATH$bitfield$mono_chrome_reserved);
 
-    public int mono_chrome() {
+    public boolean mono_chrome() {
         MemorySegment s = segment.asSlice(OFFSET$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void mono_chrome(int value) {
+    public void mono_chrome(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int color_range() {
+    public boolean color_range() {
         MemorySegment s = segment.asSlice(OFFSET$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void color_range(int value) {
+    public void color_range(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
-    public int separate_uv_delta_q() {
+    public boolean separate_uv_delta_q() {
         MemorySegment s = segment.asSlice(OFFSET$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
-        return BitfieldUtil.readBits(s, 2, 3);
+        return BitfieldUtil.readBit(s, 2);
     }
 
-    public void separate_uv_delta_q(int value) {
+    public void separate_uv_delta_q(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
-        BitfieldUtil.writeBits(s, 2, 3, value);
+        BitfieldUtil.writeBit(s, 2, value);
     }
 
-    public int color_description_present_flag() {
+    public boolean color_description_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
-        return BitfieldUtil.readBits(s, 3, 4);
+        return BitfieldUtil.readBit(s, 3);
     }
 
-    public void color_description_present_flag(int value) {
+    public void color_description_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
-        BitfieldUtil.writeBits(s, 3, 4, value);
+        BitfieldUtil.writeBit(s, 3, value);
     }
 
-    public int reserved() {
-        MemorySegment s = segment.asSlice(OFFSET$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
-        return BitfieldUtil.readBits(s, 4, 32);
-    }
-
-    public void reserved(int value) {
-        MemorySegment s = segment.asSlice(OFFSET$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
-        BitfieldUtil.writeBits(s, 4, 32, value);
-    }
 
 }
-/// dummy, not implemented yet

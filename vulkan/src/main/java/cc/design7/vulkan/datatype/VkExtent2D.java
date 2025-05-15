@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExtent2D.html">VkExtent2D</a>
+@ValueBasedCandidate
 public record VkExtent2D(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$width = ValueLayout.JAVA_INT.withName("width");
     public static final OfInt LAYOUT$height = ValueLayout.JAVA_INT.withName("height");
@@ -74,4 +76,3 @@ public record VkExtent2D(@NotNull MemorySegment segment) implements IPointer {
     }
 
 }
-/// dummy, not implemented yet

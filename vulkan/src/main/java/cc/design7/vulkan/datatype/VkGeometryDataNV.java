@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeometryDataNV.html">VkGeometryDataNV</a>
+@ValueBasedCandidate
 public record VkGeometryDataNV(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$triangles = VkGeometryTrianglesNV.LAYOUT.withName("triangles");
     public static final StructLayout LAYOUT$aabbs = VkGeometryAABBNV.LAYOUT.withName("aabbs");
@@ -74,4 +76,3 @@ public record VkGeometryDataNV(@NotNull MemorySegment segment) implements IPoint
     }
 
 }
-/// dummy, not implemented yet

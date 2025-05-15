@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceLayeredApiPropertiesListKHR.html">VkPhysicalDeviceLayeredApiPropertiesListKHR</a>
+@ValueBasedCandidate
 public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
     public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
@@ -129,4 +131,3 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
     }
 
 }
-/// dummy, not implemented yet

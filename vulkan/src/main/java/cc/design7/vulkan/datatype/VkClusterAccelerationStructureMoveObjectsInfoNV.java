@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureMoveObjectsInfoNV.html">VkClusterAccelerationStructureMoveObjectsInfoNV</a>
+@ValueBasedCandidate
 public record VkClusterAccelerationStructureMoveObjectsInfoNV(@NotNull MemorySegment segment) implements IPointer {
     public static final OfLong LAYOUT$srcAccelerationStructure = ValueLayout.JAVA_LONG.withName("srcAccelerationStructure");
 
@@ -62,4 +64,3 @@ public record VkClusterAccelerationStructureMoveObjectsInfoNV(@NotNull MemorySeg
     }
 
 }
-/// dummy, not implemented yet

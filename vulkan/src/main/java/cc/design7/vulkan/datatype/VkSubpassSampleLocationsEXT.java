@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassSampleLocationsEXT.html">VkSubpassSampleLocationsEXT</a>
+@ValueBasedCandidate
 public record VkSubpassSampleLocationsEXT(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$subpassIndex = ValueLayout.JAVA_INT.withName("subpassIndex");
     public static final StructLayout LAYOUT$sampleLocationsInfo = VkSampleLocationsInfoEXT.LAYOUT.withName("sampleLocationsInfo");
@@ -74,4 +76,3 @@ public record VkSubpassSampleLocationsEXT(@NotNull MemorySegment segment) implem
     }
 
 }
-/// dummy, not implemented yet

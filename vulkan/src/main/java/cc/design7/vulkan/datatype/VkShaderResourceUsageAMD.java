@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderResourceUsageAMD.html">VkShaderResourceUsageAMD</a>
+@ValueBasedCandidate
 public record VkShaderResourceUsageAMD(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$numUsedVgprs = ValueLayout.JAVA_INT.withName("numUsedVgprs");
     public static final OfInt LAYOUT$numUsedSgprs = ValueLayout.JAVA_INT.withName("numUsedSgprs");
@@ -110,4 +112,3 @@ public record VkShaderResourceUsageAMD(@NotNull MemorySegment segment) implement
     }
 
 }
-/// dummy, not implemented yet

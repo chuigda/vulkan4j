@@ -2,7 +2,6 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1ColorPrimaries.html">StdVideoAV1ColorPrimaries</a>
 public final class StdVideoAV1ColorPrimaries {
     public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_709 = 0x1;
     public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_UNSPECIFIED = 0x2;

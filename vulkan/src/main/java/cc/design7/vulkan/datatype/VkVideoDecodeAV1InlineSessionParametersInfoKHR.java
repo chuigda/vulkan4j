@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeAV1InlineSessionParametersInfoKHR.html">VkVideoDecodeAV1InlineSessionParametersInfoKHR</a>
+@ValueBasedCandidate
 public record VkVideoDecodeAV1InlineSessionParametersInfoKHR(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
     public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
@@ -117,4 +119,3 @@ public record VkVideoDecodeAV1InlineSessionParametersInfoKHR(@NotNull MemorySegm
     }
 
 }
-/// dummy, not implemented yet

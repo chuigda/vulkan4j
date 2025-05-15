@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) implements IPointer {
     public static final OfByte LAYOUT$num_long_term_sps = ValueLayout.JAVA_BYTE.withName("num_long_term_sps");
     public static final OfByte LAYOUT$num_long_term_pics = ValueLayout.JAVA_BYTE.withName("num_long_term_pics");
@@ -134,4 +135,3 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
     }
 
 }
-/// dummy, not implemented yet

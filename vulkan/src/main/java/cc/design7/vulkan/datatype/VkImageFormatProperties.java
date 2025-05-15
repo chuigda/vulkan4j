@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageFormatProperties.html">VkImageFormatProperties</a>
+@ValueBasedCandidate
 public record VkImageFormatProperties(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$maxExtent = VkExtent3D.LAYOUT.withName("maxExtent");
     public static final OfInt LAYOUT$maxMipLevels = ValueLayout.JAVA_INT.withName("maxMipLevels");
@@ -110,4 +112,3 @@ public record VkImageFormatProperties(@NotNull MemorySegment segment) implements
     }
 
 }
-/// dummy, not implemented yet

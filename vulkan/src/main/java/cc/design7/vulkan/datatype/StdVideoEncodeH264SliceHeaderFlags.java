@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoEncodeH264SliceHeaderFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$direct_spatial_mv_pred_flag_reserved = ValueLayout.JAVA_INT.withName("bitfield$direct_spatial_mv_pred_flag_reserved");
 
@@ -53,35 +54,25 @@ public record StdVideoEncodeH264SliceHeaderFlags(@NotNull MemorySegment segment)
 
     public static final long OFFSET$direct_spatial_mv_pred_flag_reserved = LAYOUT.byteOffset(PATH$bitfield$direct_spatial_mv_pred_flag_reserved);
 
-    public int direct_spatial_mv_pred_flag() {
+    public boolean direct_spatial_mv_pred_flag() {
         MemorySegment s = segment.asSlice(OFFSET$direct_spatial_mv_pred_flag_reserved, LAYOUT$direct_spatial_mv_pred_flag_reserved);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void direct_spatial_mv_pred_flag(int value) {
+    public void direct_spatial_mv_pred_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$direct_spatial_mv_pred_flag_reserved, LAYOUT$direct_spatial_mv_pred_flag_reserved);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int num_ref_idx_active_override_flag() {
+    public boolean num_ref_idx_active_override_flag() {
         MemorySegment s = segment.asSlice(OFFSET$direct_spatial_mv_pred_flag_reserved, LAYOUT$direct_spatial_mv_pred_flag_reserved);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void num_ref_idx_active_override_flag(int value) {
+    public void num_ref_idx_active_override_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$direct_spatial_mv_pred_flag_reserved, LAYOUT$direct_spatial_mv_pred_flag_reserved);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
-    public int reserved() {
-        MemorySegment s = segment.asSlice(OFFSET$direct_spatial_mv_pred_flag_reserved, LAYOUT$direct_spatial_mv_pred_flag_reserved);
-        return BitfieldUtil.readBits(s, 2, 32);
-    }
-
-    public void reserved(int value) {
-        MemorySegment s = segment.asSlice(OFFSET$direct_spatial_mv_pred_flag_reserved, LAYOUT$direct_spatial_mv_pred_flag_reserved);
-        BitfieldUtil.writeBits(s, 2, 32, value);
-    }
 
 }
-/// dummy, not implemented yet

@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSparseProperties.html">VkPhysicalDeviceSparseProperties</a>
+@ValueBasedCandidate
 public record VkPhysicalDeviceSparseProperties(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$residencyStandard2DBlockShape = ValueLayout.JAVA_INT.withName("residencyStandard2DBlockShape");
     public static final OfInt LAYOUT$residencyStandard2DMultisampleBlockShape = ValueLayout.JAVA_INT.withName("residencyStandard2DMultisampleBlockShape");
@@ -110,4 +112,3 @@ public record VkPhysicalDeviceSparseProperties(@NotNull MemorySegment segment) i
     }
 
 }
-/// dummy, not implemented yet

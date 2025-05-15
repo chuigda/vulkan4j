@@ -15,6 +15,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMatrixMotionInstanceNV.html">VkAccelerationStructureMatrixMotionInstanceNV</a>
+@ValueBasedCandidate
 public record VkAccelerationStructureMatrixMotionInstanceNV(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$transformT0 = VkTransformMatrixKHR.LAYOUT.withName("transformT0");
     public static final StructLayout LAYOUT$transformT1 = VkTransformMatrixKHR.LAYOUT.withName("transformT1");
@@ -84,42 +86,42 @@ public record VkAccelerationStructureMatrixMotionInstanceNV(@NotNull MemorySegme
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$transformT1, SIZE$transformT1);
     }
 
-    public int instanceCustomIndex() {
+    public @unsigned int instanceCustomIndex() {
         MemorySegment s = segment.asSlice(OFFSET$instanceCustomIndex_mask, LAYOUT$instanceCustomIndex_mask);
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
-    public void instanceCustomIndex(int value) {
+    public void instanceCustomIndex(@unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$instanceCustomIndex_mask, LAYOUT$instanceCustomIndex_mask);
         BitfieldUtil.writeBits(s, 0, 24, value);
     }
 
-    public int mask() {
+    public @unsigned int mask() {
         MemorySegment s = segment.asSlice(OFFSET$instanceCustomIndex_mask, LAYOUT$instanceCustomIndex_mask);
         return BitfieldUtil.readBits(s, 24, 32);
     }
 
-    public void mask(int value) {
+    public void mask(@unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$instanceCustomIndex_mask, LAYOUT$instanceCustomIndex_mask);
         BitfieldUtil.writeBits(s, 24, 32, value);
     }
 
-    public int instanceShaderBindingTableRecordOffset() {
+    public @unsigned int instanceShaderBindingTableRecordOffset() {
         MemorySegment s = segment.asSlice(OFFSET$instanceShaderBindingTableRecordOffset_flags, LAYOUT$instanceShaderBindingTableRecordOffset_flags);
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
-    public void instanceShaderBindingTableRecordOffset(int value) {
+    public void instanceShaderBindingTableRecordOffset(@unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$instanceShaderBindingTableRecordOffset_flags, LAYOUT$instanceShaderBindingTableRecordOffset_flags);
         BitfieldUtil.writeBits(s, 0, 24, value);
     }
 
-    public int flags() {
+    public @unsigned int flags() {
         MemorySegment s = segment.asSlice(OFFSET$instanceShaderBindingTableRecordOffset_flags, LAYOUT$instanceShaderBindingTableRecordOffset_flags);
         return BitfieldUtil.readBits(s, 24, 32);
     }
 
-    public void flags(int value) {
+    public void flags(@unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$instanceShaderBindingTableRecordOffset_flags, LAYOUT$instanceShaderBindingTableRecordOffset_flags);
         BitfieldUtil.writeBits(s, 24, 32, value);
     }
@@ -133,4 +135,3 @@ public record VkAccelerationStructureMatrixMotionInstanceNV(@NotNull MemorySegme
     }
 
 }
-/// dummy, not implemented yet

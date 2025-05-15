@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoAV1LoopFilterFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$loop_filter_delta_enabled_reserved = ValueLayout.JAVA_INT.withName("bitfield$loop_filter_delta_enabled_reserved");
 
@@ -53,35 +54,25 @@ public record StdVideoAV1LoopFilterFlags(@NotNull MemorySegment segment) impleme
 
     public static final long OFFSET$loop_filter_delta_enabled_reserved = LAYOUT.byteOffset(PATH$bitfield$loop_filter_delta_enabled_reserved);
 
-    public int loop_filter_delta_enabled() {
+    public boolean loop_filter_delta_enabled() {
         MemorySegment s = segment.asSlice(OFFSET$loop_filter_delta_enabled_reserved, LAYOUT$loop_filter_delta_enabled_reserved);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void loop_filter_delta_enabled(int value) {
+    public void loop_filter_delta_enabled(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$loop_filter_delta_enabled_reserved, LAYOUT$loop_filter_delta_enabled_reserved);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int loop_filter_delta_update() {
+    public boolean loop_filter_delta_update() {
         MemorySegment s = segment.asSlice(OFFSET$loop_filter_delta_enabled_reserved, LAYOUT$loop_filter_delta_enabled_reserved);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void loop_filter_delta_update(int value) {
+    public void loop_filter_delta_update(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$loop_filter_delta_enabled_reserved, LAYOUT$loop_filter_delta_enabled_reserved);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
-    public int reserved() {
-        MemorySegment s = segment.asSlice(OFFSET$loop_filter_delta_enabled_reserved, LAYOUT$loop_filter_delta_enabled_reserved);
-        return BitfieldUtil.readBits(s, 2, 32);
-    }
-
-    public void reserved(int value) {
-        MemorySegment s = segment.asSlice(OFFSET$loop_filter_delta_enabled_reserved, LAYOUT$loop_filter_delta_enabled_reserved);
-        BitfieldUtil.writeBits(s, 2, 32, value);
-    }
 
 }
-/// dummy, not implemented yet

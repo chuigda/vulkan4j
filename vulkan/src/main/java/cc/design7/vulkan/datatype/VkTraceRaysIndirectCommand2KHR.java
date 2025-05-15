@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkTraceRaysIndirectCommand2KHR.html">VkTraceRaysIndirectCommand2KHR</a>
+@ValueBasedCandidate
 public record VkTraceRaysIndirectCommand2KHR(@NotNull MemorySegment segment) implements IPointer {
     public static final OfLong LAYOUT$raygenShaderRecordAddress = ValueLayout.JAVA_LONG.withName("raygenShaderRecordAddress");
     public static final OfLong LAYOUT$raygenShaderRecordSize = ValueLayout.JAVA_LONG.withName("raygenShaderRecordSize");
@@ -218,4 +220,3 @@ public record VkTraceRaysIndirectCommand2KHR(@NotNull MemorySegment segment) imp
     }
 
 }
-/// dummy, not implemented yet

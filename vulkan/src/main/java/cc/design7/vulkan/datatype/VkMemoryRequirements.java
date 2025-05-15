@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryRequirements.html">VkMemoryRequirements</a>
+@ValueBasedCandidate
 public record VkMemoryRequirements(@NotNull MemorySegment segment) implements IPointer {
     public static final OfLong LAYOUT$size = ValueLayout.JAVA_LONG.withName("size");
     public static final OfLong LAYOUT$alignment = ValueLayout.JAVA_LONG.withName("alignment");
@@ -86,4 +88,3 @@ public record VkMemoryRequirements(@NotNull MemorySegment segment) implements IP
     }
 
 }
-/// dummy, not implemented yet

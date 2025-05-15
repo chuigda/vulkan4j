@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoH265VpsFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag = ValueLayout.JAVA_INT.withName("bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag");
 
@@ -53,45 +54,44 @@ public record StdVideoH265VpsFlags(@NotNull MemorySegment segment) implements IP
 
     public static final long OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag = LAYOUT.byteOffset(PATH$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
 
-    public int vps_temporal_id_nesting_flag() {
+    public boolean vps_temporal_id_nesting_flag() {
         MemorySegment s = segment.asSlice(OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void vps_temporal_id_nesting_flag(int value) {
+    public void vps_temporal_id_nesting_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int vps_sub_layer_ordering_info_present_flag() {
+    public boolean vps_sub_layer_ordering_info_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void vps_sub_layer_ordering_info_present_flag(int value) {
+    public void vps_sub_layer_ordering_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
-    public int vps_timing_info_present_flag() {
+    public boolean vps_timing_info_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
-        return BitfieldUtil.readBits(s, 2, 3);
+        return BitfieldUtil.readBit(s, 2);
     }
 
-    public void vps_timing_info_present_flag(int value) {
+    public void vps_timing_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
-        BitfieldUtil.writeBits(s, 2, 3, value);
+        BitfieldUtil.writeBit(s, 2, value);
     }
 
-    public int vps_poc_proportional_to_timing_flag() {
+    public boolean vps_poc_proportional_to_timing_flag() {
         MemorySegment s = segment.asSlice(OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
-        return BitfieldUtil.readBits(s, 3, 4);
+        return BitfieldUtil.readBit(s, 3);
     }
 
-    public void vps_poc_proportional_to_timing_flag(int value) {
+    public void vps_poc_proportional_to_timing_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
-        BitfieldUtil.writeBits(s, 3, 4, value);
+        BitfieldUtil.writeBit(s, 3, value);
     }
 
 }
-/// dummy, not implemented yet

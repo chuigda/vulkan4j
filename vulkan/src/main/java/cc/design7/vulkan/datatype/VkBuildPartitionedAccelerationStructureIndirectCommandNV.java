@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBuildPartitionedAccelerationStructureIndirectCommandNV.html">VkBuildPartitionedAccelerationStructureIndirectCommandNV</a>
+@ValueBasedCandidate
 public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$opType = ValueLayout.JAVA_INT.withName("opType");
     public static final OfInt LAYOUT$argCount = ValueLayout.JAVA_INT.withName("argCount");
@@ -86,4 +88,3 @@ public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull 
     }
 
 }
-/// dummy, not implemented yet

@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentDescription.html">VkAttachmentDescription</a>
+@ValueBasedCandidate
 public record VkAttachmentDescription(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
     public static final OfInt LAYOUT$format = ValueLayout.JAVA_INT.withName("format");
@@ -158,4 +160,3 @@ public record VkAttachmentDescription(@NotNull MemorySegment segment) implements
     }
 
 }
-/// dummy, not implemented yet

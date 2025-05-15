@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsExecutionSetTokenEXT.html">VkIndirectCommandsExecutionSetTokenEXT</a>
+@ValueBasedCandidate
 public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$type = ValueLayout.JAVA_INT.withName("type");
     public static final OfInt LAYOUT$shaderStages = ValueLayout.JAVA_INT.withName("shaderStages");
@@ -74,4 +76,3 @@ public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segm
     }
 
 }
-/// dummy, not implemented yet

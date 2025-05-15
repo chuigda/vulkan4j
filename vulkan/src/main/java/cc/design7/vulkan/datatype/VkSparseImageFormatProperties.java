@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageFormatProperties.html">VkSparseImageFormatProperties</a>
+@ValueBasedCandidate
 public record VkSparseImageFormatProperties(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$aspectMask = ValueLayout.JAVA_INT.withName("aspectMask");
     public static final StructLayout LAYOUT$imageGranularity = VkExtent3D.LAYOUT.withName("imageGranularity");
@@ -86,4 +88,3 @@ public record VkSparseImageFormatProperties(@NotNull MemorySegment segment) impl
     }
 
 }
-/// dummy, not implemented yet

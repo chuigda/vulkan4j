@@ -2,7 +2,6 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1TransferCharacteristics.html">StdVideoAV1TransferCharacteristics</a>
 public final class StdVideoAV1TransferCharacteristics {
     public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_RESERVED_0 = 0x0;
     public static final int STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_709 = 0x1;

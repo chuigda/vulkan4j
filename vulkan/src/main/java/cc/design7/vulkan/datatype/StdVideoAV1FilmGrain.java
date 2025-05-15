@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$flags = StdVideoAV1FilmGrainFlags.LAYOUT.withName("flags");
     public static final OfByte LAYOUT$grain_scaling_minus_8 = ValueLayout.JAVA_BYTE.withName("grain_scaling_minus_8");
@@ -350,4 +351,3 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IP
     }
 
 }
-/// dummy, not implemented yet

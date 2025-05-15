@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDepthClampRangeEXT.html">VkDepthClampRangeEXT</a>
+@ValueBasedCandidate
 public record VkDepthClampRangeEXT(@NotNull MemorySegment segment) implements IPointer {
     public static final OfFloat LAYOUT$minDepthClamp = ValueLayout.JAVA_FLOAT.withName("minDepthClamp");
     public static final OfFloat LAYOUT$maxDepthClamp = ValueLayout.JAVA_FLOAT.withName("maxDepthClamp");
@@ -74,4 +76,3 @@ public record VkDepthClampRangeEXT(@NotNull MemorySegment segment) implements IP
     }
 
 }
-/// dummy, not implemented yet

@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoH265SpsFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag = ValueLayout.JAVA_INT.withName("bitfield$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag");
 
@@ -53,305 +54,304 @@ public record StdVideoH265SpsFlags(@NotNull MemorySegment segment) implements IP
 
     public static final long OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag = LAYOUT.byteOffset(PATH$bitfield$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
 
-    public int sps_temporal_id_nesting_flag() {
+    public boolean sps_temporal_id_nesting_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void sps_temporal_id_nesting_flag(int value) {
+    public void sps_temporal_id_nesting_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int separate_colour_plane_flag() {
+    public boolean separate_colour_plane_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void separate_colour_plane_flag(int value) {
+    public void separate_colour_plane_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
-    public int conformance_window_flag() {
+    public boolean conformance_window_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 2, 3);
+        return BitfieldUtil.readBit(s, 2);
     }
 
-    public void conformance_window_flag(int value) {
+    public void conformance_window_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 2, 3, value);
+        BitfieldUtil.writeBit(s, 2, value);
     }
 
-    public int sps_sub_layer_ordering_info_present_flag() {
+    public boolean sps_sub_layer_ordering_info_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 3, 4);
+        return BitfieldUtil.readBit(s, 3);
     }
 
-    public void sps_sub_layer_ordering_info_present_flag(int value) {
+    public void sps_sub_layer_ordering_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 3, 4, value);
+        BitfieldUtil.writeBit(s, 3, value);
     }
 
-    public int scaling_list_enabled_flag() {
+    public boolean scaling_list_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 4, 5);
+        return BitfieldUtil.readBit(s, 4);
     }
 
-    public void scaling_list_enabled_flag(int value) {
+    public void scaling_list_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 4, 5, value);
+        BitfieldUtil.writeBit(s, 4, value);
     }
 
-    public int sps_scaling_list_data_present_flag() {
+    public boolean sps_scaling_list_data_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 5, 6);
+        return BitfieldUtil.readBit(s, 5);
     }
 
-    public void sps_scaling_list_data_present_flag(int value) {
+    public void sps_scaling_list_data_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 5, 6, value);
+        BitfieldUtil.writeBit(s, 5, value);
     }
 
-    public int amp_enabled_flag() {
+    public boolean amp_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 6, 7);
+        return BitfieldUtil.readBit(s, 6);
     }
 
-    public void amp_enabled_flag(int value) {
+    public void amp_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 6, 7, value);
+        BitfieldUtil.writeBit(s, 6, value);
     }
 
-    public int sample_adaptive_offset_enabled_flag() {
+    public boolean sample_adaptive_offset_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 7, 8);
+        return BitfieldUtil.readBit(s, 7);
     }
 
-    public void sample_adaptive_offset_enabled_flag(int value) {
+    public void sample_adaptive_offset_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 7, 8, value);
+        BitfieldUtil.writeBit(s, 7, value);
     }
 
-    public int pcm_enabled_flag() {
+    public boolean pcm_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 8, 9);
+        return BitfieldUtil.readBit(s, 8);
     }
 
-    public void pcm_enabled_flag(int value) {
+    public void pcm_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 8, 9, value);
+        BitfieldUtil.writeBit(s, 8, value);
     }
 
-    public int pcm_loop_filter_disabled_flag() {
+    public boolean pcm_loop_filter_disabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 9, 10);
+        return BitfieldUtil.readBit(s, 9);
     }
 
-    public void pcm_loop_filter_disabled_flag(int value) {
+    public void pcm_loop_filter_disabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 9, 10, value);
+        BitfieldUtil.writeBit(s, 9, value);
     }
 
-    public int long_term_ref_pics_present_flag() {
+    public boolean long_term_ref_pics_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 10, 11);
+        return BitfieldUtil.readBit(s, 10);
     }
 
-    public void long_term_ref_pics_present_flag(int value) {
+    public void long_term_ref_pics_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 10, 11, value);
+        BitfieldUtil.writeBit(s, 10, value);
     }
 
-    public int sps_temporal_mvp_enabled_flag() {
+    public boolean sps_temporal_mvp_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 11, 12);
+        return BitfieldUtil.readBit(s, 11);
     }
 
-    public void sps_temporal_mvp_enabled_flag(int value) {
+    public void sps_temporal_mvp_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 11, 12, value);
+        BitfieldUtil.writeBit(s, 11, value);
     }
 
-    public int strong_intra_smoothing_enabled_flag() {
+    public boolean strong_intra_smoothing_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 12, 13);
+        return BitfieldUtil.readBit(s, 12);
     }
 
-    public void strong_intra_smoothing_enabled_flag(int value) {
+    public void strong_intra_smoothing_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 12, 13, value);
+        BitfieldUtil.writeBit(s, 12, value);
     }
 
-    public int vui_parameters_present_flag() {
+    public boolean vui_parameters_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 13, 14);
+        return BitfieldUtil.readBit(s, 13);
     }
 
-    public void vui_parameters_present_flag(int value) {
+    public void vui_parameters_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 13, 14, value);
+        BitfieldUtil.writeBit(s, 13, value);
     }
 
-    public int sps_extension_present_flag() {
+    public boolean sps_extension_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 14, 15);
+        return BitfieldUtil.readBit(s, 14);
     }
 
-    public void sps_extension_present_flag(int value) {
+    public void sps_extension_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 14, 15, value);
+        BitfieldUtil.writeBit(s, 14, value);
     }
 
-    public int sps_range_extension_flag() {
+    public boolean sps_range_extension_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 15, 16);
+        return BitfieldUtil.readBit(s, 15);
     }
 
-    public void sps_range_extension_flag(int value) {
+    public void sps_range_extension_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 15, 16, value);
+        BitfieldUtil.writeBit(s, 15, value);
     }
 
-    public int transform_skip_rotation_enabled_flag() {
+    public boolean transform_skip_rotation_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 16, 17);
+        return BitfieldUtil.readBit(s, 16);
     }
 
-    public void transform_skip_rotation_enabled_flag(int value) {
+    public void transform_skip_rotation_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 16, 17, value);
+        BitfieldUtil.writeBit(s, 16, value);
     }
 
-    public int transform_skip_context_enabled_flag() {
+    public boolean transform_skip_context_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 17, 18);
+        return BitfieldUtil.readBit(s, 17);
     }
 
-    public void transform_skip_context_enabled_flag(int value) {
+    public void transform_skip_context_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 17, 18, value);
+        BitfieldUtil.writeBit(s, 17, value);
     }
 
-    public int implicit_rdpcm_enabled_flag() {
+    public boolean implicit_rdpcm_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 18, 19);
+        return BitfieldUtil.readBit(s, 18);
     }
 
-    public void implicit_rdpcm_enabled_flag(int value) {
+    public void implicit_rdpcm_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 18, 19, value);
+        BitfieldUtil.writeBit(s, 18, value);
     }
 
-    public int explicit_rdpcm_enabled_flag() {
+    public boolean explicit_rdpcm_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 19, 20);
+        return BitfieldUtil.readBit(s, 19);
     }
 
-    public void explicit_rdpcm_enabled_flag(int value) {
+    public void explicit_rdpcm_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 19, 20, value);
+        BitfieldUtil.writeBit(s, 19, value);
     }
 
-    public int extended_precision_processing_flag() {
+    public boolean extended_precision_processing_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 20, 21);
+        return BitfieldUtil.readBit(s, 20);
     }
 
-    public void extended_precision_processing_flag(int value) {
+    public void extended_precision_processing_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 20, 21, value);
+        BitfieldUtil.writeBit(s, 20, value);
     }
 
-    public int intra_smoothing_disabled_flag() {
+    public boolean intra_smoothing_disabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 21, 22);
+        return BitfieldUtil.readBit(s, 21);
     }
 
-    public void intra_smoothing_disabled_flag(int value) {
+    public void intra_smoothing_disabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 21, 22, value);
+        BitfieldUtil.writeBit(s, 21, value);
     }
 
-    public int high_precision_offsets_enabled_flag() {
+    public boolean high_precision_offsets_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 22, 23);
+        return BitfieldUtil.readBit(s, 22);
     }
 
-    public void high_precision_offsets_enabled_flag(int value) {
+    public void high_precision_offsets_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 22, 23, value);
+        BitfieldUtil.writeBit(s, 22, value);
     }
 
-    public int persistent_rice_adaptation_enabled_flag() {
+    public boolean persistent_rice_adaptation_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 23, 24);
+        return BitfieldUtil.readBit(s, 23);
     }
 
-    public void persistent_rice_adaptation_enabled_flag(int value) {
+    public void persistent_rice_adaptation_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 23, 24, value);
+        BitfieldUtil.writeBit(s, 23, value);
     }
 
-    public int cabac_bypass_alignment_enabled_flag() {
+    public boolean cabac_bypass_alignment_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 24, 25);
+        return BitfieldUtil.readBit(s, 24);
     }
 
-    public void cabac_bypass_alignment_enabled_flag(int value) {
+    public void cabac_bypass_alignment_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 24, 25, value);
+        BitfieldUtil.writeBit(s, 24, value);
     }
 
-    public int sps_scc_extension_flag() {
+    public boolean sps_scc_extension_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 25, 26);
+        return BitfieldUtil.readBit(s, 25);
     }
 
-    public void sps_scc_extension_flag(int value) {
+    public void sps_scc_extension_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 25, 26, value);
+        BitfieldUtil.writeBit(s, 25, value);
     }
 
-    public int sps_curr_pic_ref_enabled_flag() {
+    public boolean sps_curr_pic_ref_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 26, 27);
+        return BitfieldUtil.readBit(s, 26);
     }
 
-    public void sps_curr_pic_ref_enabled_flag(int value) {
+    public void sps_curr_pic_ref_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 26, 27, value);
+        BitfieldUtil.writeBit(s, 26, value);
     }
 
-    public int palette_mode_enabled_flag() {
+    public boolean palette_mode_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 27, 28);
+        return BitfieldUtil.readBit(s, 27);
     }
 
-    public void palette_mode_enabled_flag(int value) {
+    public void palette_mode_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 27, 28, value);
+        BitfieldUtil.writeBit(s, 27, value);
     }
 
-    public int sps_palette_predictor_initializers_present_flag() {
+    public boolean sps_palette_predictor_initializers_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 28, 29);
+        return BitfieldUtil.readBit(s, 28);
     }
 
-    public void sps_palette_predictor_initializers_present_flag(int value) {
+    public void sps_palette_predictor_initializers_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 28, 29, value);
+        BitfieldUtil.writeBit(s, 28, value);
     }
 
-    public int intra_boundary_filtering_disabled_flag() {
+    public boolean intra_boundary_filtering_disabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        return BitfieldUtil.readBits(s, 29, 30);
+        return BitfieldUtil.readBit(s, 29);
     }
 
-    public void intra_boundary_filtering_disabled_flag(int value) {
+    public void intra_boundary_filtering_disabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag, LAYOUT$sps_temporal_id_nesting_flag_intra_boundary_filtering_disabled_flag);
-        BitfieldUtil.writeBits(s, 29, 30, value);
+        BitfieldUtil.writeBit(s, 29, value);
     }
 
 }
-/// dummy, not implemented yet

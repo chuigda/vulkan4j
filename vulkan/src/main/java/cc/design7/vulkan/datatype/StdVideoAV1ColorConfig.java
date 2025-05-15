@@ -14,6 +14,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements IPointer {
     public static final StructLayout LAYOUT$flags = StdVideoAV1ColorConfigFlags.LAYOUT.withName("flags");
     public static final OfByte LAYOUT$BitDepth = ValueLayout.JAVA_BYTE.withName("BitDepth");
@@ -158,4 +159,3 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
     }
 
 }
-/// dummy, not implemented yet

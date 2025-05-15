@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMicromapTriangleEXT.html">VkMicromapTriangleEXT</a>
+@ValueBasedCandidate
 public record VkMicromapTriangleEXT(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$dataOffset = ValueLayout.JAVA_INT.withName("dataOffset");
     public static final OfShort LAYOUT$subdivisionLevel = ValueLayout.JAVA_SHORT.withName("subdivisionLevel");
@@ -86,4 +88,3 @@ public record VkMicromapTriangleEXT(@NotNull MemorySegment segment) implements I
     }
 
 }
-/// dummy, not implemented yet

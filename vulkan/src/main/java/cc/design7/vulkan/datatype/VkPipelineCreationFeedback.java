@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCreationFeedback.html">VkPipelineCreationFeedback</a>
+@ValueBasedCandidate
 public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
     public static final OfLong LAYOUT$duration = ValueLayout.JAVA_LONG.withName("duration");
@@ -74,4 +76,3 @@ public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) impleme
     }
 
 }
-/// dummy, not implemented yet

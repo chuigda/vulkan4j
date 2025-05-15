@@ -2,7 +2,6 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/StdVideoAV1FrameRestorationType.html">StdVideoAV1FrameRestorationType</a>
 public final class StdVideoAV1FrameRestorationType {
     public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_NONE = 0x0;
     public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_WIENER = 0x1;

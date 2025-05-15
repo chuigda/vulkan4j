@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkViewportSwizzleNV.html">VkViewportSwizzleNV</a>
+@ValueBasedCandidate
 public record VkViewportSwizzleNV(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$x = ValueLayout.JAVA_INT.withName("x");
     public static final OfInt LAYOUT$y = ValueLayout.JAVA_INT.withName("y");
@@ -98,4 +100,3 @@ public record VkViewportSwizzleNV(@NotNull MemorySegment segment) implements IPo
     }
 
 }
-/// dummy, not implemented yet

@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassSubpassFeedbackInfoEXT.html">VkRenderPassSubpassFeedbackInfoEXT</a>
+@ValueBasedCandidate
 public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$subpassMergeStatus = ValueLayout.JAVA_INT.withName("subpassMergeStatus");
     public static final OfByte LAYOUT$description = ValueLayout.JAVA_BYTE.withName("description");
@@ -86,4 +88,3 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
     }
 
 }
-/// dummy, not implemented yet

@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoDecodeH265PictureInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$IrapPicFlag_short_term_ref_pic_set_sps_flag = ValueLayout.JAVA_INT.withName("bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag");
 
@@ -53,45 +54,44 @@ public record StdVideoDecodeH265PictureInfoFlags(@NotNull MemorySegment segment)
 
     public static final long OFFSET$IrapPicFlag_short_term_ref_pic_set_sps_flag = LAYOUT.byteOffset(PATH$bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag);
 
-    public int IrapPicFlag() {
+    public boolean IrapPicFlag() {
         MemorySegment s = segment.asSlice(OFFSET$IrapPicFlag_short_term_ref_pic_set_sps_flag, LAYOUT$IrapPicFlag_short_term_ref_pic_set_sps_flag);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void IrapPicFlag(int value) {
+    public void IrapPicFlag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$IrapPicFlag_short_term_ref_pic_set_sps_flag, LAYOUT$IrapPicFlag_short_term_ref_pic_set_sps_flag);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int IdrPicFlag() {
+    public boolean IdrPicFlag() {
         MemorySegment s = segment.asSlice(OFFSET$IrapPicFlag_short_term_ref_pic_set_sps_flag, LAYOUT$IrapPicFlag_short_term_ref_pic_set_sps_flag);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void IdrPicFlag(int value) {
+    public void IdrPicFlag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$IrapPicFlag_short_term_ref_pic_set_sps_flag, LAYOUT$IrapPicFlag_short_term_ref_pic_set_sps_flag);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
-    public int IsReference() {
+    public boolean IsReference() {
         MemorySegment s = segment.asSlice(OFFSET$IrapPicFlag_short_term_ref_pic_set_sps_flag, LAYOUT$IrapPicFlag_short_term_ref_pic_set_sps_flag);
-        return BitfieldUtil.readBits(s, 2, 3);
+        return BitfieldUtil.readBit(s, 2);
     }
 
-    public void IsReference(int value) {
+    public void IsReference(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$IrapPicFlag_short_term_ref_pic_set_sps_flag, LAYOUT$IrapPicFlag_short_term_ref_pic_set_sps_flag);
-        BitfieldUtil.writeBits(s, 2, 3, value);
+        BitfieldUtil.writeBit(s, 2, value);
     }
 
-    public int short_term_ref_pic_set_sps_flag() {
+    public boolean short_term_ref_pic_set_sps_flag() {
         MemorySegment s = segment.asSlice(OFFSET$IrapPicFlag_short_term_ref_pic_set_sps_flag, LAYOUT$IrapPicFlag_short_term_ref_pic_set_sps_flag);
-        return BitfieldUtil.readBits(s, 3, 4);
+        return BitfieldUtil.readBit(s, 3);
     }
 
-    public void short_term_ref_pic_set_sps_flag(int value) {
+    public void short_term_ref_pic_set_sps_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$IrapPicFlag_short_term_ref_pic_set_sps_flag, LAYOUT$IrapPicFlag_short_term_ref_pic_set_sps_flag);
-        BitfieldUtil.writeBits(s, 3, 4, value);
+        BitfieldUtil.writeBit(s, 3, value);
     }
 
 }
-/// dummy, not implemented yet

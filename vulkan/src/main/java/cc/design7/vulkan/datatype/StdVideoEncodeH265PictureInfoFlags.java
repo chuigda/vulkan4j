@@ -15,6 +15,7 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+@ValueBasedCandidate
 public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$is_reference_reserved = ValueLayout.JAVA_INT.withName("bitfield$is_reference_reserved");
 
@@ -53,105 +54,95 @@ public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment)
 
     public static final long OFFSET$is_reference_reserved = LAYOUT.byteOffset(PATH$bitfield$is_reference_reserved);
 
-    public int is_reference() {
+    public boolean is_reference() {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        return BitfieldUtil.readBits(s, 0, 1);
+        return BitfieldUtil.readBit(s, 0);
     }
 
-    public void is_reference(int value) {
+    public void is_reference(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        BitfieldUtil.writeBits(s, 0, 1, value);
+        BitfieldUtil.writeBit(s, 0, value);
     }
 
-    public int IrapPicFlag() {
+    public boolean IrapPicFlag() {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        return BitfieldUtil.readBits(s, 1, 2);
+        return BitfieldUtil.readBit(s, 1);
     }
 
-    public void IrapPicFlag(int value) {
+    public void IrapPicFlag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        BitfieldUtil.writeBits(s, 1, 2, value);
+        BitfieldUtil.writeBit(s, 1, value);
     }
 
-    public int used_for_long_term_reference() {
+    public boolean used_for_long_term_reference() {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        return BitfieldUtil.readBits(s, 2, 3);
+        return BitfieldUtil.readBit(s, 2);
     }
 
-    public void used_for_long_term_reference(int value) {
+    public void used_for_long_term_reference(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        BitfieldUtil.writeBits(s, 2, 3, value);
+        BitfieldUtil.writeBit(s, 2, value);
     }
 
-    public int discardable_flag() {
+    public boolean discardable_flag() {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        return BitfieldUtil.readBits(s, 3, 4);
+        return BitfieldUtil.readBit(s, 3);
     }
 
-    public void discardable_flag(int value) {
+    public void discardable_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        BitfieldUtil.writeBits(s, 3, 4, value);
+        BitfieldUtil.writeBit(s, 3, value);
     }
 
-    public int cross_layer_bla_flag() {
+    public boolean cross_layer_bla_flag() {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        return BitfieldUtil.readBits(s, 4, 5);
+        return BitfieldUtil.readBit(s, 4);
     }
 
-    public void cross_layer_bla_flag(int value) {
+    public void cross_layer_bla_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        BitfieldUtil.writeBits(s, 4, 5, value);
+        BitfieldUtil.writeBit(s, 4, value);
     }
 
-    public int pic_output_flag() {
+    public boolean pic_output_flag() {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        return BitfieldUtil.readBits(s, 5, 6);
+        return BitfieldUtil.readBit(s, 5);
     }
 
-    public void pic_output_flag(int value) {
+    public void pic_output_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        BitfieldUtil.writeBits(s, 5, 6, value);
+        BitfieldUtil.writeBit(s, 5, value);
     }
 
-    public int no_output_of_prior_pics_flag() {
+    public boolean no_output_of_prior_pics_flag() {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        return BitfieldUtil.readBits(s, 6, 7);
+        return BitfieldUtil.readBit(s, 6);
     }
 
-    public void no_output_of_prior_pics_flag(int value) {
+    public void no_output_of_prior_pics_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        BitfieldUtil.writeBits(s, 6, 7, value);
+        BitfieldUtil.writeBit(s, 6, value);
     }
 
-    public int short_term_ref_pic_set_sps_flag() {
+    public boolean short_term_ref_pic_set_sps_flag() {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        return BitfieldUtil.readBits(s, 7, 8);
+        return BitfieldUtil.readBit(s, 7);
     }
 
-    public void short_term_ref_pic_set_sps_flag(int value) {
+    public void short_term_ref_pic_set_sps_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        BitfieldUtil.writeBits(s, 7, 8, value);
+        BitfieldUtil.writeBit(s, 7, value);
     }
 
-    public int slice_temporal_mvp_enabled_flag() {
+    public boolean slice_temporal_mvp_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        return BitfieldUtil.readBits(s, 8, 9);
+        return BitfieldUtil.readBit(s, 8);
     }
 
-    public void slice_temporal_mvp_enabled_flag(int value) {
+    public void slice_temporal_mvp_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        BitfieldUtil.writeBits(s, 8, 9, value);
+        BitfieldUtil.writeBit(s, 8, value);
     }
 
-    public int reserved() {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        return BitfieldUtil.readBits(s, 9, 32);
-    }
-
-    public void reserved(int value) {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
-        BitfieldUtil.writeBits(s, 9, 32, value);
-    }
 
 }
-/// dummy, not implemented yet

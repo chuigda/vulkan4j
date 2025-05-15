@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRefreshObjectKHR.html">VkRefreshObjectKHR</a>
+@ValueBasedCandidate
 public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IPointer {
     public static final OfInt LAYOUT$objectType = ValueLayout.JAVA_INT.withName("objectType");
     public static final OfLong LAYOUT$objectHandle = ValueLayout.JAVA_LONG.withName("objectHandle");
@@ -86,4 +88,3 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IPoi
     }
 
 }
-/// dummy, not implemented yet

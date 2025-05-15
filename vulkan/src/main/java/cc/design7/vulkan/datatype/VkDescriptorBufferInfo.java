@@ -14,6 +14,8 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorBufferInfo.html">VkDescriptorBufferInfo</a>
+@ValueBasedCandidate
 public record VkDescriptorBufferInfo(@NotNull MemorySegment segment) implements IPointer {
     public static final AddressLayout LAYOUT$buffer = ValueLayout.ADDRESS.withName("buffer");
     public static final OfLong LAYOUT$offset = ValueLayout.JAVA_LONG.withName("offset");
@@ -90,4 +92,3 @@ public record VkDescriptorBufferInfo(@NotNull MemorySegment segment) implements 
     }
 
 }
-/// dummy, not implemented yet
