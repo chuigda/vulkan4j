@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineCacheCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineCacheCreateFlags flags;
-///     size_t initialDataSize;
+///     void const* pNext; // optional
+///     VkPipelineCacheCreateFlags flags; // optional
+///     size_t initialDataSize; // optional
 ///     void const* pInitialData;
 /// } VkPipelineCacheCreateInfo;
 /// }

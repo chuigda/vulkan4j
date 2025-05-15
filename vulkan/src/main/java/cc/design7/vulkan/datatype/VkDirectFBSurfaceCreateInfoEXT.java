@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDirectFBSurfaceCreateInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkDirectFBSurfaceCreateFlagsEXT flags;
+///     void const* pNext; // optional
+///     VkDirectFBSurfaceCreateFlagsEXT flags; // optional
 ///     IDirectFB* dfb;
 ///     IDirectFBSurface* surface;
 /// } VkDirectFBSurfaceCreateInfoEXT;

@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkMemoryGetAndroidHardwareBufferInfoANDROID {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkDeviceMemory memory;
 /// } VkMemoryGetAndroidHardwareBufferInfoANDROID;
 /// }

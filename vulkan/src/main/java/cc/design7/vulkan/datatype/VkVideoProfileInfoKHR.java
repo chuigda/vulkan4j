@@ -21,11 +21,11 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoProfileInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkVideoCodecOperationFlagsKHR videoCodecOperation;
 ///     VkVideoChromaSubsamplingFlagsKHR chromaSubsampling;
 ///     VkVideoComponentBitDepthFlagsKHR lumaBitDepth;
-///     VkVideoComponentBitDepthFlagsKHR chromaBitDepth;
+///     VkVideoComponentBitDepthFlagsKHR chromaBitDepth; // optional
 /// } VkVideoProfileInfoKHR;
 /// }
 ///

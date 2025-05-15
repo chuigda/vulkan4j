@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPartitionedAccelerationStructureInstancesInputNV {
 ///     VkStructureType sType;
-///     void* pNext;
-///     VkBuildAccelerationStructureFlagsKHR flags;
+///     void* pNext; // optional
+///     VkBuildAccelerationStructureFlagsKHR flags; // optional
 ///     uint32_t instanceCount;
 ///     uint32_t maxInstancePerPartitionCount;
 ///     uint32_t partitionCount;

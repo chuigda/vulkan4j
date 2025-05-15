@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkImageDrmFormatModifierExplicitCreateInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     uint64_t drmFormatModifier;
 ///     uint32_t drmFormatModifierPlaneCount;
 ///     VkSubresourceLayout const* pPlaneLayouts;

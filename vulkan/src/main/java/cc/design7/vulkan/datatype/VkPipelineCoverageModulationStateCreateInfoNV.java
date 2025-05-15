@@ -21,12 +21,12 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineCoverageModulationStateCreateInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineCoverageModulationStateCreateFlagsNV flags;
+///     void const* pNext; // optional
+///     VkPipelineCoverageModulationStateCreateFlagsNV flags; // optional
 ///     VkCoverageModulationModeNV coverageModulationMode;
 ///     VkBool32 coverageModulationTableEnable;
-///     uint32_t coverageModulationTableCount;
-///     float const* pCoverageModulationTable;
+///     uint32_t coverageModulationTableCount; // optional
+///     float const* pCoverageModulationTable; // optional
 /// } VkPipelineCoverageModulationStateCreateInfoNV;
 /// }
 ///

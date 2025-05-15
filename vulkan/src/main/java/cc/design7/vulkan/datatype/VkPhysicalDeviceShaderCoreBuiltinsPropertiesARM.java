@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint64_t shaderCoreMask;
 ///     uint32_t shaderCoreCount;
 ///     uint32_t shaderWarpsPerCore;

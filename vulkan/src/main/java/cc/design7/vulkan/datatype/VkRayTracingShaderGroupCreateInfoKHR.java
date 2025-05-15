@@ -21,13 +21,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkRayTracingShaderGroupCreateInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkRayTracingShaderGroupTypeKHR type;
 ///     uint32_t generalShader;
 ///     uint32_t closestHitShader;
 ///     uint32_t anyHitShader;
 ///     uint32_t intersectionShader;
-///     void const* pShaderGroupCaptureReplayHandle;
+///     void const* pShaderGroupCaptureReplayHandle; // optional
 /// } VkRayTracingShaderGroupCreateInfoKHR;
 /// }
 ///

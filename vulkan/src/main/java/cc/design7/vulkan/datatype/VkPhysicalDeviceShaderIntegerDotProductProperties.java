@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderIntegerDotProductProperties {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 integerDotProduct8BitUnsignedAccelerated;
 ///     VkBool32 integerDotProduct8BitSignedAccelerated;
 ///     VkBool32 integerDotProduct8BitMixedSignednessAccelerated;

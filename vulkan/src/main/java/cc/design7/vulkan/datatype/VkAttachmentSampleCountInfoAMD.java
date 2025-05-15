@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkAttachmentSampleCountInfoAMD {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t colorAttachmentCount;
+///     void const* pNext; // optional
+///     uint32_t colorAttachmentCount; // optional
 ///     VkSampleCountFlags const* pColorAttachmentSamples;
-///     VkSampleCountFlags depthStencilAttachmentSamples;
+///     VkSampleCountFlags depthStencilAttachmentSamples; // optional
 /// } VkAttachmentSampleCountInfoAMD;
 /// }
 ///

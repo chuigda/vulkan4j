@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSemaphoreSubmitInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkSemaphore semaphore;
 ///     uint64_t value;
-///     VkPipelineStageFlags2 stageMask;
+///     VkPipelineStageFlags2 stageMask; // optional
 ///     uint32_t deviceIndex;
 /// } VkSemaphoreSubmitInfo;
 /// }

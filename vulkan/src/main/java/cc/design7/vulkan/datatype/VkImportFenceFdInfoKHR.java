@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkImportFenceFdInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkFence fence;
-///     VkFenceImportFlags flags;
+///     VkFenceImportFlags flags; // optional
 ///     VkExternalFenceHandleTypeFlags handleType;
 ///     int fd;
 /// } VkImportFenceFdInfoKHR;

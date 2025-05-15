@@ -21,12 +21,12 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineViewportStateCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineViewportStateCreateFlags flags;
-///     uint32_t viewportCount;
-///     VkViewport const* pViewports;
-///     uint32_t scissorCount;
-///     VkRect2D const* pScissors;
+///     void const* pNext; // optional
+///     VkPipelineViewportStateCreateFlags flags; // optional
+///     uint32_t viewportCount; // optional
+///     VkViewport const* pViewports; // optional
+///     uint32_t scissorCount; // optional
+///     VkRect2D const* pScissors; // optional
 /// } VkPipelineViewportStateCreateInfo;
 /// }
 ///

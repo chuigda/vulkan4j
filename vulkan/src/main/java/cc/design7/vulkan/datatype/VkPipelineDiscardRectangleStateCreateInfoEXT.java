@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineDiscardRectangleStateCreateInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineDiscardRectangleStateCreateFlagsEXT flags;
+///     void const* pNext; // optional
+///     VkPipelineDiscardRectangleStateCreateFlagsEXT flags; // optional
 ///     VkDiscardRectangleModeEXT discardRectangleMode;
-///     uint32_t discardRectangleCount;
+///     uint32_t discardRectangleCount; // optional
 ///     VkRect2D const* pDiscardRectangles;
 /// } VkPipelineDiscardRectangleStateCreateInfoEXT;
 /// }

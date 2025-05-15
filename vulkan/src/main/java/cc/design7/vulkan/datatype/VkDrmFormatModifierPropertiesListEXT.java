@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDrmFormatModifierPropertiesListEXT {
 ///     VkStructureType sType;
-///     void* pNext;
-///     uint32_t drmFormatModifierCount;
-///     VkDrmFormatModifierPropertiesEXT* pDrmFormatModifierProperties;
+///     void* pNext; // optional
+///     uint32_t drmFormatModifierCount; // optional
+///     VkDrmFormatModifierPropertiesEXT* pDrmFormatModifierProperties; // optional
 /// } VkDrmFormatModifierPropertiesListEXT;
 /// }
 ///

@@ -20,9 +20,9 @@ import static cc.design7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkFormatProperties {
-///     VkFormatFeatureFlags linearTilingFeatures;
-///     VkFormatFeatureFlags optimalTilingFeatures;
-///     VkFormatFeatureFlags bufferFeatures;
+///     VkFormatFeatureFlags linearTilingFeatures; // optional
+///     VkFormatFeatureFlags optimalTilingFeatures; // optional
+///     VkFormatFeatureFlags bufferFeatures; // optional
 /// } VkFormatProperties;
 /// }
 ///

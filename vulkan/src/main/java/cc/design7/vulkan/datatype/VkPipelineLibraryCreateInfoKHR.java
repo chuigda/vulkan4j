@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineLibraryCreateInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t libraryCount;
+///     void const* pNext; // optional
+///     uint32_t libraryCount; // optional
 ///     VkPipeline const* pLibraries;
 /// } VkPipelineLibraryCreateInfoKHR;
 /// }

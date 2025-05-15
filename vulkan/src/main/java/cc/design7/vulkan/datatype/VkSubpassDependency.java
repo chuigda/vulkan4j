@@ -22,11 +22,11 @@ import static cc.design7.vulkan.VkConstants.*;
 /// typedef struct VkSubpassDependency {
 ///     uint32_t srcSubpass;
 ///     uint32_t dstSubpass;
-///     VkPipelineStageFlags srcStageMask;
-///     VkPipelineStageFlags dstStageMask;
-///     VkAccessFlags srcAccessMask;
-///     VkAccessFlags dstAccessMask;
-///     VkDependencyFlags dependencyFlags;
+///     VkPipelineStageFlags srcStageMask; // optional
+///     VkPipelineStageFlags dstStageMask; // optional
+///     VkAccessFlags srcAccessMask; // optional
+///     VkAccessFlags dstAccessMask; // optional
+///     VkDependencyFlags dependencyFlags; // optional
 /// } VkSubpassDependency;
 /// }
 ///

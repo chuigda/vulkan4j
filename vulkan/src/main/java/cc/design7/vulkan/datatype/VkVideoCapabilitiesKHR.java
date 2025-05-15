@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoCapabilitiesKHR {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkVideoCapabilityFlagsKHR flags;
 ///     VkDeviceSize minBitstreamBufferOffsetAlignment;
 ///     VkDeviceSize minBitstreamBufferSizeAlignment;

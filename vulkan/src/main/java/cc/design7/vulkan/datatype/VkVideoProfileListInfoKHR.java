@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoProfileListInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t profileCount;
+///     void const* pNext; // optional
+///     uint32_t profileCount; // optional
 ///     VkVideoProfileInfoKHR const* pProfiles;
 /// } VkVideoProfileListInfoKHR;
 /// }

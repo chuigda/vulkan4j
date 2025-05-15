@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoSessionParametersCreateInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkVideoSessionParametersCreateFlagsKHR flags;
-///     VkVideoSessionParametersKHR videoSessionParametersTemplate;
+///     void const* pNext; // optional
+///     VkVideoSessionParametersCreateFlagsKHR flags; // optional
+///     VkVideoSessionParametersKHR videoSessionParametersTemplate; // optional
 ///     VkVideoSessionKHR videoSession;
 /// } VkVideoSessionParametersCreateInfoKHR;
 /// }

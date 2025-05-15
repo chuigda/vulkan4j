@@ -100,16 +100,16 @@ import static cc.design7.vulkan.VkConstants.*;
 ///     uint32_t maxFramebufferWidth;
 ///     uint32_t maxFramebufferHeight;
 ///     uint32_t maxFramebufferLayers;
-///     VkSampleCountFlags framebufferColorSampleCounts;
-///     VkSampleCountFlags framebufferDepthSampleCounts;
-///     VkSampleCountFlags framebufferStencilSampleCounts;
-///     VkSampleCountFlags framebufferNoAttachmentsSampleCounts;
+///     VkSampleCountFlags framebufferColorSampleCounts; // optional
+///     VkSampleCountFlags framebufferDepthSampleCounts; // optional
+///     VkSampleCountFlags framebufferStencilSampleCounts; // optional
+///     VkSampleCountFlags framebufferNoAttachmentsSampleCounts; // optional
 ///     uint32_t maxColorAttachments;
-///     VkSampleCountFlags sampledImageColorSampleCounts;
-///     VkSampleCountFlags sampledImageIntegerSampleCounts;
-///     VkSampleCountFlags sampledImageDepthSampleCounts;
-///     VkSampleCountFlags sampledImageStencilSampleCounts;
-///     VkSampleCountFlags storageImageSampleCounts;
+///     VkSampleCountFlags sampledImageColorSampleCounts; // optional
+///     VkSampleCountFlags sampledImageIntegerSampleCounts; // optional
+///     VkSampleCountFlags sampledImageDepthSampleCounts; // optional
+///     VkSampleCountFlags sampledImageStencilSampleCounts; // optional
+///     VkSampleCountFlags storageImageSampleCounts; // optional
 ///     uint32_t maxSampleMaskWords;
 ///     VkBool32 timestampComputeAndGraphics;
 ///     float timestampPeriod;

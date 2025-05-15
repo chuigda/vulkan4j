@@ -20,7 +20,7 @@ import static cc.design7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDispatchGraphCountInfoAMDX {
-///     uint32_t count;
+///     uint32_t count; // optional
 ///     VkDeviceOrHostAddressConstAMDX infos;
 ///     uint64_t stride;
 /// } VkDispatchGraphCountInfoAMDX;

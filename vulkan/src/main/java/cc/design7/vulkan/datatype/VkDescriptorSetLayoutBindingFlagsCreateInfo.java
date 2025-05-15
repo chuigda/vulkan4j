@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDescriptorSetLayoutBindingFlagsCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t bindingCount;
+///     void const* pNext; // optional
+///     uint32_t bindingCount; // optional
 ///     VkDescriptorBindingFlags const* pBindingFlags;
 /// } VkDescriptorSetLayoutBindingFlagsCreateInfo;
 /// }

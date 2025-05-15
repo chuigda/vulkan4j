@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkGeneratedCommandsInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkPipelineBindPoint pipelineBindPoint;
-///     VkPipeline pipeline;
+///     VkPipeline pipeline; // optional
 ///     VkIndirectCommandsLayoutNV indirectCommandsLayout;
 ///     uint32_t streamCount;
 ///     VkIndirectCommandsStreamNV const* pStreams;
@@ -31,9 +31,9 @@ import static cc.design7.vulkan.VkConstants.*;
 ///     VkBuffer preprocessBuffer;
 ///     VkDeviceSize preprocessOffset;
 ///     VkDeviceSize preprocessSize;
-///     VkBuffer sequencesCountBuffer;
+///     VkBuffer sequencesCountBuffer; // optional
 ///     VkDeviceSize sequencesCountOffset;
-///     VkBuffer sequencesIndexBuffer;
+///     VkBuffer sequencesIndexBuffer; // optional
 ///     VkDeviceSize sequencesIndexOffset;
 /// } VkGeneratedCommandsInfoNV;
 /// }

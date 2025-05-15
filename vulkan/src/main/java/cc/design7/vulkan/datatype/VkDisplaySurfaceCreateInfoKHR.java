@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDisplaySurfaceCreateInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkDisplaySurfaceCreateFlagsKHR flags;
+///     void const* pNext; // optional
+///     VkDisplaySurfaceCreateFlagsKHR flags; // optional
 ///     VkDisplayModeKHR displayMode;
 ///     uint32_t planeIndex;
 ///     uint32_t planeStackIndex;

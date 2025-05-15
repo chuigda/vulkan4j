@@ -21,13 +21,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDependencyInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkDependencyFlags dependencyFlags;
-///     uint32_t memoryBarrierCount;
+///     void const* pNext; // optional
+///     VkDependencyFlags dependencyFlags; // optional
+///     uint32_t memoryBarrierCount; // optional
 ///     VkMemoryBarrier2 const* pMemoryBarriers;
-///     uint32_t bufferMemoryBarrierCount;
+///     uint32_t bufferMemoryBarrierCount; // optional
 ///     VkBufferMemoryBarrier2 const* pBufferMemoryBarriers;
-///     uint32_t imageMemoryBarrierCount;
+///     uint32_t imageMemoryBarrierCount; // optional
 ///     VkImageMemoryBarrier2 const* pImageMemoryBarriers;
 /// } VkDependencyInfo;
 /// }

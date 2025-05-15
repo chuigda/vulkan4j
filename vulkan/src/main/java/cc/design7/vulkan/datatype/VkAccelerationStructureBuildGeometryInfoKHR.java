@@ -21,14 +21,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureBuildGeometryInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkAccelerationStructureTypeKHR type;
-///     VkBuildAccelerationStructureFlagsKHR flags;
+///     VkBuildAccelerationStructureFlagsKHR flags; // optional
 ///     VkBuildAccelerationStructureModeKHR mode;
-///     VkAccelerationStructureKHR srcAccelerationStructure;
-///     VkAccelerationStructureKHR dstAccelerationStructure;
-///     uint32_t geometryCount;
-///     VkAccelerationStructureGeometryKHR const* pGeometries;
+///     VkAccelerationStructureKHR srcAccelerationStructure; // optional
+///     VkAccelerationStructureKHR dstAccelerationStructure; // optional
+///     uint32_t geometryCount; // optional
+///     VkAccelerationStructureGeometryKHR const* pGeometries; // optional
 ///     VkAccelerationStructureGeometryKHR const* const* ppGeometries;
 ///     VkDeviceOrHostAddressKHR scratchData;
 /// } VkAccelerationStructureBuildGeometryInfoKHR;

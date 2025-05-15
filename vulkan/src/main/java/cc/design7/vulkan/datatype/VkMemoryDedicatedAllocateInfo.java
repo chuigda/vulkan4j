@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkMemoryDedicatedAllocateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkImage image;
-///     VkBuffer buffer;
+///     void const* pNext; // optional
+///     VkImage image; // optional
+///     VkBuffer buffer; // optional
 /// } VkMemoryDedicatedAllocateInfo;
 /// }
 ///

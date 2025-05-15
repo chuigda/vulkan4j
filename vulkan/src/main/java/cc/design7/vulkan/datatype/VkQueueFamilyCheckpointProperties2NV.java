@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkQueueFamilyCheckpointProperties2NV {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkPipelineStageFlags2 checkpointExecutionStageMask;
 /// } VkQueueFamilyCheckpointProperties2NV;
 /// }

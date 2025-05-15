@@ -21,13 +21,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkCommandBufferInheritanceInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkRenderPass renderPass;
+///     void const* pNext; // optional
+///     VkRenderPass renderPass; // optional
 ///     uint32_t subpass;
-///     VkFramebuffer framebuffer;
+///     VkFramebuffer framebuffer; // optional
 ///     VkBool32 occlusionQueryEnable;
-///     VkQueryControlFlags queryFlags;
-///     VkQueryPipelineStatisticFlags pipelineStatistics;
+///     VkQueryControlFlags queryFlags; // optional
+///     VkQueryPipelineStatisticFlags pipelineStatistics; // optional
 /// } VkCommandBufferInheritanceInfo;
 /// }
 ///

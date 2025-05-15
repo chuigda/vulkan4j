@@ -21,13 +21,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkMicromapCreateInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkMicromapCreateFlagsEXT createFlags;
+///     void const* pNext; // optional
+///     VkMicromapCreateFlagsEXT createFlags; // optional
 ///     VkBuffer buffer;
 ///     VkDeviceSize offset;
 ///     VkDeviceSize size;
 ///     VkMicromapTypeEXT type;
-///     VkDeviceAddress deviceAddress;
+///     VkDeviceAddress deviceAddress; // optional
 /// } VkMicromapCreateInfoEXT;
 /// }
 ///

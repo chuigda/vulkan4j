@@ -21,12 +21,12 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkBufferCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkBufferCreateFlags flags;
+///     void const* pNext; // optional
+///     VkBufferCreateFlags flags; // optional
 ///     VkDeviceSize size;
 ///     VkBufferUsageFlags usage;
 ///     VkSharingMode sharingMode;
-///     uint32_t queueFamilyIndexCount;
+///     uint32_t queueFamilyIndexCount; // optional
 ///     uint32_t const* pQueueFamilyIndices;
 /// } VkBufferCreateInfo;
 /// }

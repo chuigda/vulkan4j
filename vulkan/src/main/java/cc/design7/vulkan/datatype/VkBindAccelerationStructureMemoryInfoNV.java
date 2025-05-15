@@ -21,11 +21,11 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkBindAccelerationStructureMemoryInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkAccelerationStructureNV accelerationStructure;
 ///     VkDeviceMemory memory;
 ///     VkDeviceSize memoryOffset;
-///     uint32_t deviceIndexCount;
+///     uint32_t deviceIndexCount; // optional
 ///     uint32_t const* pDeviceIndices;
 /// } VkBindAccelerationStructureMemoryInfoNV;
 /// }

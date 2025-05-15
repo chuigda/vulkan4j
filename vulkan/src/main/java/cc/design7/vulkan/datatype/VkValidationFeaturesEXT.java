@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkValidationFeaturesEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t enabledValidationFeatureCount;
+///     void const* pNext; // optional
+///     uint32_t enabledValidationFeatureCount; // optional
 ///     VkValidationFeatureEnableEXT const* pEnabledValidationFeatures;
-///     uint32_t disabledValidationFeatureCount;
+///     uint32_t disabledValidationFeatureCount; // optional
 ///     VkValidationFeatureDisableEXT const* pDisabledValidationFeatures;
 /// } VkValidationFeaturesEXT;
 /// }

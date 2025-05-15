@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMaintenance4Properties {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkDeviceSize maxBufferSize;
 /// } VkPhysicalDeviceMaintenance4Properties;
 /// }

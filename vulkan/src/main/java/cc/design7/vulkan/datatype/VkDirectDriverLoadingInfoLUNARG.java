@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDirectDriverLoadingInfoLUNARG {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkDirectDriverLoadingFlagsLUNARG flags;
 ///     PFN_vkGetInstanceProcAddrLUNARG pfnGetInstanceProcAddr;
 /// } VkDirectDriverLoadingInfoLUNARG;

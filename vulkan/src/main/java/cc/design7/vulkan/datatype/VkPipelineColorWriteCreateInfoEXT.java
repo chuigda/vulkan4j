@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineColorWriteCreateInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t attachmentCount;
+///     void const* pNext; // optional
+///     uint32_t attachmentCount; // optional
 ///     VkBool32 const* pColorWriteEnables;
 /// } VkPipelineColorWriteCreateInfoEXT;
 /// }

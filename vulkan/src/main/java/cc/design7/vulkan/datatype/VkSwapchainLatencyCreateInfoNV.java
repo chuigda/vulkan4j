@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSwapchainLatencyCreateInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkBool32 latencyModeEnable;
+///     void const* pNext; // optional
+///     VkBool32 latencyModeEnable; // optional
 /// } VkSwapchainLatencyCreateInfoNV;
 /// }
 ///

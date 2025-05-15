@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassTileShadingCreateInfoQCOM {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkTileShadingRenderPassFlagsQCOM flags;
-///     VkExtent2D tileApronSize;
+///     void const* pNext; // optional
+///     VkTileShadingRenderPassFlagsQCOM flags; // optional
+///     VkExtent2D tileApronSize; // optional
 /// } VkRenderPassTileShadingCreateInfoQCOM;
 /// }
 ///

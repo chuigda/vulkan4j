@@ -21,13 +21,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPresentInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t waitSemaphoreCount;
+///     void const* pNext; // optional
+///     uint32_t waitSemaphoreCount; // optional
 ///     VkSemaphore const* pWaitSemaphores;
 ///     uint32_t swapchainCount;
 ///     VkSwapchainKHR const* pSwapchains;
 ///     uint32_t const* pImageIndices;
-///     VkResult* pResults;
+///     VkResult* pResults; // optional
 /// } VkPresentInfoKHR;
 /// }
 ///

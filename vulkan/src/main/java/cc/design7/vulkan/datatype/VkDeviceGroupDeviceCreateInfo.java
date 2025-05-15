@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDeviceGroupDeviceCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t physicalDeviceCount;
+///     void const* pNext; // optional
+///     uint32_t physicalDeviceCount; // optional
 ///     VkPhysicalDevice const* pPhysicalDevices;
 /// } VkDeviceGroupDeviceCreateInfo;
 /// }

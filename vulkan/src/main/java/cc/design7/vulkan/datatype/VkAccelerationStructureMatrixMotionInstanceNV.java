@@ -26,7 +26,7 @@ import static cc.design7.vulkan.VkConstants.*;
 ///     uint32_t instanceCustomIndex : 24;
 ///     uint32_t mask : 8;
 ///     uint32_t instanceShaderBindingTableRecordOffset : 24;
-///     VkGeometryInstanceFlagsKHR flags : 8;
+///     VkGeometryInstanceFlagsKHR flags : 8; // optional
 ///     uint64_t accelerationStructureReference;
 /// } VkAccelerationStructureMatrixMotionInstanceNV;
 /// }

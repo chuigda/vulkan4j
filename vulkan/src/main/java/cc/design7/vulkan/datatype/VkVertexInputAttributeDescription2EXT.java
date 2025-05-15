@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVertexInputAttributeDescription2EXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t location;
 ///     uint32_t binding;
 ///     VkFormat format;

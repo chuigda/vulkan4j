@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineInputAssemblyStateCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineInputAssemblyStateCreateFlags flags;
+///     void const* pNext; // optional
+///     VkPipelineInputAssemblyStateCreateFlags flags; // optional
 ///     VkPrimitiveTopology topology;
 ///     VkBool32 primitiveRestartEnable;
 /// } VkPipelineInputAssemblyStateCreateInfo;

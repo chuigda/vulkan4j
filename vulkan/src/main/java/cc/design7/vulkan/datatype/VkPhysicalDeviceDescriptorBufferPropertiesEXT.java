@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceDescriptorBufferPropertiesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 combinedImageSamplerDescriptorSingleArray;
 ///     VkBool32 bufferlessPushDescriptors;
 ///     VkBool32 allowSamplerImageViewPostSubmitCreation;

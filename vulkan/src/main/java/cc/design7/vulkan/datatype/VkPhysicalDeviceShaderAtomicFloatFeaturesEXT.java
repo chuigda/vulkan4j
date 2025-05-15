@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderAtomicFloatFeaturesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 shaderBufferFloat32Atomics;
 ///     VkBool32 shaderBufferFloat32AtomicAdd;
 ///     VkBool32 shaderBufferFloat64Atomics;

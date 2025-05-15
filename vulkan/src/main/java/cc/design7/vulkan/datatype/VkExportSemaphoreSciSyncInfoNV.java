@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkExportSemaphoreSciSyncInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     NvSciSyncAttrList pAttributes;
 /// } VkExportSemaphoreSciSyncInfoNV;
 /// }

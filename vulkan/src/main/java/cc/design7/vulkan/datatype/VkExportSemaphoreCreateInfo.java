@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkExportSemaphoreCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkExternalSemaphoreHandleTypeFlags handleTypes;
+///     void const* pNext; // optional
+///     VkExternalSemaphoreHandleTypeFlags handleTypes; // optional
 /// } VkExportSemaphoreCreateInfo;
 /// }
 ///

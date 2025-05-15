@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceExtendedDynamicState2FeaturesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 extendedDynamicState2;
 ///     VkBool32 extendedDynamicState2LogicOp;
 ///     VkBool32 extendedDynamicState2PatchControlPoints;

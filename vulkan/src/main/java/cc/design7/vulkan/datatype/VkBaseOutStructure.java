@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkBaseOutStructure {
 ///     VkStructureType sType;
-///     VkBaseOutStructure* pNext;
+///     VkBaseOutStructure* pNext; // optional
 /// } VkBaseOutStructure;
 /// }
 ///

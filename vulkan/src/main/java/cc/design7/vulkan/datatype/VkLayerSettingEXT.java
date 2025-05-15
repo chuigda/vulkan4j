@@ -23,7 +23,7 @@ import static cc.design7.vulkan.VkConstants.*;
 ///     char const* pLayerName;
 ///     char const* pSettingName;
 ///     VkLayerSettingTypeEXT type;
-///     uint32_t valueCount;
+///     uint32_t valueCount; // optional
 ///     void const* pValues;
 /// } VkLayerSettingEXT;
 /// }

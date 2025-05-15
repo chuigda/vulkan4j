@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkClusterAccelerationStructureTriangleClusterInputNV {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkFormat vertexFormat;
 ///     uint32_t maxGeometryIndexValue;
 ///     uint32_t maxClusterUniqueGeometryCount;

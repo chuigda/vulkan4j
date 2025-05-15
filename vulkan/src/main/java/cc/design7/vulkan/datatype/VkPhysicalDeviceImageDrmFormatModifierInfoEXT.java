@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceImageDrmFormatModifierInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     uint64_t drmFormatModifier;
 ///     VkSharingMode sharingMode;
-///     uint32_t queueFamilyIndexCount;
+///     uint32_t queueFamilyIndexCount; // optional
 ///     uint32_t const* pQueueFamilyIndices;
 /// } VkPhysicalDeviceImageDrmFormatModifierInfoEXT;
 /// }

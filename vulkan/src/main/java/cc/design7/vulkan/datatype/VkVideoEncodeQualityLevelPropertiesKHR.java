@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeQualityLevelPropertiesKHR {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkVideoEncodeRateControlModeFlagsKHR preferredRateControlMode;
 ///     uint32_t preferredRateControlLayerCount;
 /// } VkVideoEncodeQualityLevelPropertiesKHR;

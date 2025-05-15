@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceVideoEncodeAV1FeaturesKHR {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 videoEncodeAV1;
 /// } VkPhysicalDeviceVideoEncodeAV1FeaturesKHR;
 /// }

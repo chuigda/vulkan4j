@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 formatRgba10x6WithoutYCbCrSampler;
 /// } VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT;
 /// }

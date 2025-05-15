@@ -21,11 +21,11 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkQueryPoolCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkQueryPoolCreateFlags flags;
+///     void const* pNext; // optional
+///     VkQueryPoolCreateFlags flags; // optional
 ///     VkQueryType queryType;
 ///     uint32_t queryCount;
-///     VkQueryPipelineStatisticFlags pipelineStatistics;
+///     VkQueryPipelineStatisticFlags pipelineStatistics; // optional
 /// } VkQueryPoolCreateInfo;
 /// }
 ///

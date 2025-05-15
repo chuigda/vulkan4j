@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkConvertCooperativeVectorMatrixInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     size_t srcSize;
 ///     VkDeviceOrHostAddressConstKHR srcData;
 ///     size_t* pDstSize;

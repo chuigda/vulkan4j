@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 shaderSubgroupExtendedTypes;
 /// } VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures;
 /// }

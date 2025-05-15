@@ -21,11 +21,11 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceImageProcessingPropertiesQCOM {
 ///     VkStructureType sType;
-///     void* pNext;
-///     uint32_t maxWeightFilterPhases;
-///     VkExtent2D maxWeightFilterDimension;
-///     VkExtent2D maxBlockMatchRegion;
-///     VkExtent2D maxBoxFilterBlockSize;
+///     void* pNext; // optional
+///     uint32_t maxWeightFilterPhases; // optional
+///     VkExtent2D maxWeightFilterDimension; // optional
+///     VkExtent2D maxBlockMatchRegion; // optional
+///     VkExtent2D maxBoxFilterBlockSize; // optional
 /// } VkPhysicalDeviceImageProcessingPropertiesQCOM;
 /// }
 ///

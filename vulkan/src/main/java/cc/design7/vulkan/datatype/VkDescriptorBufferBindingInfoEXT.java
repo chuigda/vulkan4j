@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDescriptorBufferBindingInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkDeviceAddress address;
-///     VkBufferUsageFlags usage;
+///     VkBufferUsageFlags usage; // optional
 /// } VkDescriptorBufferBindingInfoEXT;
 /// }
 ///

@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceIndexTypeUint8Features {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 indexTypeUint8;
 /// } VkPhysicalDeviceIndexTypeUint8Features;
 /// }

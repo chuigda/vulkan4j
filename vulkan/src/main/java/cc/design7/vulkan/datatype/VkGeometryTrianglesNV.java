@@ -21,17 +21,17 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkGeometryTrianglesNV {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkBuffer vertexData;
+///     void const* pNext; // optional
+///     VkBuffer vertexData; // optional
 ///     VkDeviceSize vertexOffset;
 ///     uint32_t vertexCount;
 ///     VkDeviceSize vertexStride;
 ///     VkFormat vertexFormat;
-///     VkBuffer indexData;
+///     VkBuffer indexData; // optional
 ///     VkDeviceSize indexOffset;
 ///     uint32_t indexCount;
 ///     VkIndexType indexType;
-///     VkBuffer transformData;
+///     VkBuffer transformData; // optional
 ///     VkDeviceSize transformOffset;
 /// } VkGeometryTrianglesNV;
 /// }

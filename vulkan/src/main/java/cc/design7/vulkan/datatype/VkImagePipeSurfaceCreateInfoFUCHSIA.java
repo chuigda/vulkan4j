@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkImagePipeSurfaceCreateInfoFUCHSIA {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkImagePipeSurfaceCreateFlagsFUCHSIA flags;
+///     void const* pNext; // optional
+///     VkImagePipeSurfaceCreateFlagsFUCHSIA flags; // optional
 ///     zx_handle_t imagePipeHandle;
 /// } VkImagePipeSurfaceCreateInfoFUCHSIA;
 /// }

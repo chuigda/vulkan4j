@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSemaphoreWaitInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkSemaphoreWaitFlags flags;
+///     void const* pNext; // optional
+///     VkSemaphoreWaitFlags flags; // optional
 ///     uint32_t semaphoreCount;
 ///     VkSemaphore const* pSemaphores;
 ///     uint64_t const* pValues;

@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkShaderModuleCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkShaderModuleCreateFlags flags;
+///     void const* pNext; // optional
+///     VkShaderModuleCreateFlags flags; // optional
 ///     size_t codeSize;
 ///     uint32_t const* pCode;
 /// } VkShaderModuleCreateInfo;

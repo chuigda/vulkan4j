@@ -21,18 +21,18 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkIndirectCommandsLayoutTokenNV {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkIndirectCommandsTokenTypeNV tokenType;
 ///     uint32_t stream;
 ///     uint32_t offset;
 ///     uint32_t vertexBindingUnit;
 ///     VkBool32 vertexDynamicStride;
-///     VkPipelineLayout pushconstantPipelineLayout;
-///     VkShaderStageFlags pushconstantShaderStageFlags;
+///     VkPipelineLayout pushconstantPipelineLayout; // optional
+///     VkShaderStageFlags pushconstantShaderStageFlags; // optional
 ///     uint32_t pushconstantOffset;
 ///     uint32_t pushconstantSize;
-///     VkIndirectStateFlagsNV indirectStateFlags;
-///     uint32_t indexTypeCount;
+///     VkIndirectStateFlagsNV indirectStateFlags; // optional
+///     uint32_t indexTypeCount; // optional
 ///     VkIndexType const* pIndexTypes;
 ///     uint32_t const* pIndexTypeValues;
 /// } VkIndirectCommandsLayoutTokenNV;

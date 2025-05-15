@@ -20,7 +20,7 @@ import static cc.design7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDisplayPlaneCapabilitiesKHR {
-///     VkDisplayPlaneAlphaFlagsKHR supportedAlpha;
+///     VkDisplayPlaneAlphaFlagsKHR supportedAlpha; // optional
 ///     VkOffset2D minSrcPosition;
 ///     VkOffset2D maxSrcPosition;
 ///     VkExtent2D minSrcExtent;

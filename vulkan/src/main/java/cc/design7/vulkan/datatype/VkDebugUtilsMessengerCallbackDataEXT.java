@@ -21,16 +21,16 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDebugUtilsMessengerCallbackDataEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkDebugUtilsMessengerCallbackDataFlagsEXT flags;
-///     char const* pMessageIdName;
+///     void const* pNext; // optional
+///     VkDebugUtilsMessengerCallbackDataFlagsEXT flags; // optional
+///     char const* pMessageIdName; // optional
 ///     int32_t messageIdNumber;
-///     char const* pMessage;
-///     uint32_t queueLabelCount;
+///     char const* pMessage; // optional
+///     uint32_t queueLabelCount; // optional
 ///     VkDebugUtilsLabelEXT const* pQueueLabels;
-///     uint32_t cmdBufLabelCount;
+///     uint32_t cmdBufLabelCount; // optional
 ///     VkDebugUtilsLabelEXT const* pCmdBufLabels;
-///     uint32_t objectCount;
+///     uint32_t objectCount; // optional
 ///     VkDebugUtilsObjectNameInfoEXT const* pObjects;
 /// } VkDebugUtilsMessengerCallbackDataEXT;
 /// }

@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineCoverageReductionStateCreateInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineCoverageReductionStateCreateFlagsNV flags;
+///     void const* pNext; // optional
+///     VkPipelineCoverageReductionStateCreateFlagsNV flags; // optional
 ///     VkCoverageReductionModeNV coverageReductionMode;
 /// } VkPipelineCoverageReductionStateCreateInfoNV;
 /// }

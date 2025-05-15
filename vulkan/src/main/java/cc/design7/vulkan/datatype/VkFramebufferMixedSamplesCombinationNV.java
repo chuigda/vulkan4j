@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkFramebufferMixedSamplesCombinationNV {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkCoverageReductionModeNV coverageReductionMode;
 ///     VkSampleCountFlags rasterizationSamples;
 ///     VkSampleCountFlags depthStencilSamples;

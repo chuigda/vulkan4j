@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSparseImageMemoryRequirements2 {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkSparseImageMemoryRequirements memoryRequirements;
 /// } VkSparseImageMemoryRequirements2;
 /// }

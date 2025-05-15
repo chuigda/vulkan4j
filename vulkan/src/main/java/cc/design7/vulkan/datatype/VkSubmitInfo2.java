@@ -21,13 +21,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSubmitInfo2 {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkSubmitFlags flags;
-///     uint32_t waitSemaphoreInfoCount;
+///     void const* pNext; // optional
+///     VkSubmitFlags flags; // optional
+///     uint32_t waitSemaphoreInfoCount; // optional
 ///     VkSemaphoreSubmitInfo const* pWaitSemaphoreInfos;
-///     uint32_t commandBufferInfoCount;
+///     uint32_t commandBufferInfoCount; // optional
 ///     VkCommandBufferSubmitInfo const* pCommandBufferInfos;
-///     uint32_t signalSemaphoreInfoCount;
+///     uint32_t signalSemaphoreInfoCount; // optional
 ///     VkSemaphoreSubmitInfo const* pSignalSemaphoreInfos;
 /// } VkSubmitInfo2;
 /// }

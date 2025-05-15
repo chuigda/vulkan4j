@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPresentIdKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     uint32_t swapchainCount;
-///     uint64_t const* pPresentIds;
+///     uint64_t const* pPresentIds; // optional
 /// } VkPresentIdKHR;
 /// }
 ///

@@ -21,18 +21,18 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkRayTracingPipelineCreateInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineCreateFlags flags;
-///     uint32_t stageCount;
+///     void const* pNext; // optional
+///     VkPipelineCreateFlags flags; // optional
+///     uint32_t stageCount; // optional
 ///     VkPipelineShaderStageCreateInfo const* pStages;
-///     uint32_t groupCount;
+///     uint32_t groupCount; // optional
 ///     VkRayTracingShaderGroupCreateInfoKHR const* pGroups;
 ///     uint32_t maxPipelineRayRecursionDepth;
-///     VkPipelineLibraryCreateInfoKHR const* pLibraryInfo;
-///     VkRayTracingPipelineInterfaceCreateInfoKHR const* pLibraryInterface;
-///     VkPipelineDynamicStateCreateInfo const* pDynamicState;
+///     VkPipelineLibraryCreateInfoKHR const* pLibraryInfo; // optional
+///     VkRayTracingPipelineInterfaceCreateInfoKHR const* pLibraryInterface; // optional
+///     VkPipelineDynamicStateCreateInfo const* pDynamicState; // optional
 ///     VkPipelineLayout layout;
-///     VkPipeline basePipelineHandle;
+///     VkPipeline basePipelineHandle; // optional
 ///     int32_t basePipelineIndex;
 /// } VkRayTracingPipelineCreateInfoKHR;
 /// }

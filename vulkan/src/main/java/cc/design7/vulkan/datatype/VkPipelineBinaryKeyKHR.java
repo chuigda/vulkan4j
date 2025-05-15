@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineBinaryKeyKHR {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t keySize;
 ///     uint8_t key;
 /// } VkPipelineBinaryKeyKHR;

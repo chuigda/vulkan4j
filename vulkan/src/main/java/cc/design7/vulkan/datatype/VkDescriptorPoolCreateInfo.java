@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDescriptorPoolCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkDescriptorPoolCreateFlags flags;
+///     void const* pNext; // optional
+///     VkDescriptorPoolCreateFlags flags; // optional
 ///     uint32_t maxSets;
-///     uint32_t poolSizeCount;
+///     uint32_t poolSizeCount; // optional
 ///     VkDescriptorPoolSize const* pPoolSizes;
 /// } VkDescriptorPoolCreateInfo;
 /// }

@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkViSurfaceCreateInfoNN {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkViSurfaceCreateFlagsNN flags;
+///     void const* pNext; // optional
+///     VkViSurfaceCreateFlagsNN flags; // optional
 ///     void* window;
 /// } VkViSurfaceCreateInfoNN;
 /// }

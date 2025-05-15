@@ -22,9 +22,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// typedef struct VkDescriptorSetLayoutBinding {
 ///     uint32_t binding;
 ///     VkDescriptorType descriptorType;
-///     uint32_t descriptorCount;
+///     uint32_t descriptorCount; // optional
 ///     VkShaderStageFlags stageFlags;
-///     VkSampler const* pImmutableSamplers;
+///     VkSampler const* pImmutableSamplers; // optional
 /// } VkDescriptorSetLayoutBinding;
 /// }
 ///

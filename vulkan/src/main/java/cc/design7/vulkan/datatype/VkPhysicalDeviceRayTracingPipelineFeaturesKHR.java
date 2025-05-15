@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceRayTracingPipelineFeaturesKHR {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 rayTracingPipeline;
 ///     VkBool32 rayTracingPipelineShaderGroupHandleCaptureReplay;
 ///     VkBool32 rayTracingPipelineShaderGroupHandleCaptureReplayMixed;

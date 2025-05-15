@@ -21,15 +21,15 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDeviceCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkDeviceCreateFlags flags;
+///     void const* pNext; // optional
+///     VkDeviceCreateFlags flags; // optional
 ///     uint32_t queueCreateInfoCount;
 ///     VkDeviceQueueCreateInfo const* pQueueCreateInfos;
-///     uint32_t enabledLayerCount;
+///     uint32_t enabledLayerCount; // optional
 ///     char const* const* ppEnabledLayerNames;
-///     uint32_t enabledExtensionCount;
+///     uint32_t enabledExtensionCount; // optional
 ///     char const* const* ppEnabledExtensionNames;
-///     VkPhysicalDeviceFeatures const* pEnabledFeatures;
+///     VkPhysicalDeviceFeatures const* pEnabledFeatures; // optional
 /// } VkDeviceCreateInfo;
 /// }
 ///

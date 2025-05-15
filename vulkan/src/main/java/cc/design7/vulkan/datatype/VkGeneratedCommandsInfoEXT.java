@@ -21,16 +21,16 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkGeneratedCommandsInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkShaderStageFlags shaderStages;
-///     VkIndirectExecutionSetEXT indirectExecutionSet;
+///     VkIndirectExecutionSetEXT indirectExecutionSet; // optional
 ///     VkIndirectCommandsLayoutEXT indirectCommandsLayout;
 ///     VkDeviceAddress indirectAddress;
 ///     VkDeviceSize indirectAddressSize;
-///     VkDeviceAddress preprocessAddress;
+///     VkDeviceAddress preprocessAddress; // optional
 ///     VkDeviceSize preprocessSize;
 ///     uint32_t maxSequenceCount;
-///     VkDeviceAddress sequenceCountAddress;
+///     VkDeviceAddress sequenceCountAddress; // optional
 ///     uint32_t maxDrawCount;
 /// } VkGeneratedCommandsInfoEXT;
 /// }

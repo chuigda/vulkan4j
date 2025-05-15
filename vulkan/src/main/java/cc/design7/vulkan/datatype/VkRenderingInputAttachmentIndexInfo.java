@@ -21,11 +21,11 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkRenderingInputAttachmentIndexInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t colorAttachmentCount;
-///     uint32_t const* pColorAttachmentInputIndices;
-///     uint32_t const* pDepthInputAttachmentIndex;
-///     uint32_t const* pStencilInputAttachmentIndex;
+///     void const* pNext; // optional
+///     uint32_t colorAttachmentCount; // optional
+///     uint32_t const* pColorAttachmentInputIndices; // optional
+///     uint32_t const* pDepthInputAttachmentIndex; // optional
+///     uint32_t const* pStencilInputAttachmentIndex; // optional
 /// } VkRenderingInputAttachmentIndexInfo;
 /// }
 ///

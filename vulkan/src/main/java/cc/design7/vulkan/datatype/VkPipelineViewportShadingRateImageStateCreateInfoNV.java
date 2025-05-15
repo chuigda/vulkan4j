@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineViewportShadingRateImageStateCreateInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkBool32 shadingRateImageEnable;
-///     uint32_t viewportCount;
+///     uint32_t viewportCount; // optional
 ///     VkShadingRatePaletteNV const* pShadingRatePalettes;
 /// } VkPipelineViewportShadingRateImageStateCreateInfoNV;
 /// }

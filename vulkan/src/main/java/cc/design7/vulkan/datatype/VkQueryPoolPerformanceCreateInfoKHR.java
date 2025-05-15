@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkQueryPoolPerformanceCreateInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     uint32_t queueFamilyIndex;
 ///     uint32_t counterIndexCount;
 ///     uint32_t const* pCounterIndices;

@@ -21,12 +21,12 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineExecutableInternalRepresentationKHR {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     char name;
 ///     char description;
 ///     VkBool32 isText;
 ///     size_t dataSize;
-///     void* pData;
+///     void* pData; // optional
 /// } VkPipelineExecutableInternalRepresentationKHR;
 /// }
 ///

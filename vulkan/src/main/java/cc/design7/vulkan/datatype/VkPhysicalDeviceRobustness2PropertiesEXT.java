@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceRobustness2PropertiesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkDeviceSize robustStorageBufferAccessSizeAlignment;
 ///     VkDeviceSize robustUniformBufferAccessSizeAlignment;
 /// } VkPhysicalDeviceRobustness2PropertiesEXT;

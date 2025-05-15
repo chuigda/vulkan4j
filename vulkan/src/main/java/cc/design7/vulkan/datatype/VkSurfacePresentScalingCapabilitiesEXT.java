@@ -21,12 +21,12 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSurfacePresentScalingCapabilitiesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
-///     VkPresentScalingFlagsEXT supportedPresentScaling;
-///     VkPresentGravityFlagsEXT supportedPresentGravityX;
-///     VkPresentGravityFlagsEXT supportedPresentGravityY;
-///     VkExtent2D minScaledImageExtent;
-///     VkExtent2D maxScaledImageExtent;
+///     void* pNext; // optional
+///     VkPresentScalingFlagsEXT supportedPresentScaling; // optional
+///     VkPresentGravityFlagsEXT supportedPresentGravityX; // optional
+///     VkPresentGravityFlagsEXT supportedPresentGravityY; // optional
+///     VkExtent2D minScaledImageExtent; // optional
+///     VkExtent2D maxScaledImageExtent; // optional
 /// } VkSurfacePresentScalingCapabilitiesEXT;
 /// }
 ///

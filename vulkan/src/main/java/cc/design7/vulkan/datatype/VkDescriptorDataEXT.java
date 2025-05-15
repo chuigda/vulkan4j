@@ -23,12 +23,12 @@ import static cc.design7.vulkan.VkConstants.*;
 ///     VkSampler const* pSampler;
 ///     VkDescriptorImageInfo const* pCombinedImageSampler;
 ///     VkDescriptorImageInfo const* pInputAttachmentImage;
-///     VkDescriptorImageInfo const* pSampledImage;
-///     VkDescriptorImageInfo const* pStorageImage;
-///     VkDescriptorAddressInfoEXT const* pUniformTexelBuffer;
-///     VkDescriptorAddressInfoEXT const* pStorageTexelBuffer;
-///     VkDescriptorAddressInfoEXT const* pUniformBuffer;
-///     VkDescriptorAddressInfoEXT const* pStorageBuffer;
+///     VkDescriptorImageInfo const* pSampledImage; // optional
+///     VkDescriptorImageInfo const* pStorageImage; // optional
+///     VkDescriptorAddressInfoEXT const* pUniformTexelBuffer; // optional
+///     VkDescriptorAddressInfoEXT const* pStorageTexelBuffer; // optional
+///     VkDescriptorAddressInfoEXT const* pUniformBuffer; // optional
+///     VkDescriptorAddressInfoEXT const* pStorageBuffer; // optional
 ///     VkDeviceAddress accelerationStructure;
 /// } VkDescriptorDataEXT;
 /// }

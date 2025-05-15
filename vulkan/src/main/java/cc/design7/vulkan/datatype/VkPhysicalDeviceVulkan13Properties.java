@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceVulkan13Properties {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t minSubgroupSize;
 ///     uint32_t maxSubgroupSize;
 ///     uint32_t maxComputeWorkgroupSubgroups;

@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkStreamDescriptorSurfaceCreateInfoGGP {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkStreamDescriptorSurfaceCreateFlagsGGP flags;
+///     void const* pNext; // optional
+///     VkStreamDescriptorSurfaceCreateFlagsGGP flags; // optional
 ///     GgpStreamDescriptor streamDescriptor;
 /// } VkStreamDescriptorSurfaceCreateInfoGGP;
 /// }

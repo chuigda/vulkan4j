@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceCooperativeVectorPropertiesNV {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkShaderStageFlags cooperativeVectorSupportedStages;
 ///     VkBool32 cooperativeVectorTrainingFloat16Accumulation;
 ///     VkBool32 cooperativeVectorTrainingFloat32Accumulation;

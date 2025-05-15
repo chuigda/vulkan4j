@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineDepthStencilStateCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineDepthStencilStateCreateFlags flags;
+///     void const* pNext; // optional
+///     VkPipelineDepthStencilStateCreateFlags flags; // optional
 ///     VkBool32 depthTestEnable;
 ///     VkBool32 depthWriteEnable;
 ///     VkCompareOp depthCompareOp;

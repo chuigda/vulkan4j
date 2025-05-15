@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoFormatPropertiesKHR {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkFormat format;
 ///     VkComponentMapping componentMapping;
 ///     VkImageCreateFlags imageCreateFlags;

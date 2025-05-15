@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeH264CapabilitiesKHR {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkVideoEncodeH264CapabilityFlagsKHR flags;
 ///     StdVideoH264LevelIdc maxLevelIdc;
 ///     uint32_t maxSliceCount;

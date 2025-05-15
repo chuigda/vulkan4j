@@ -22,9 +22,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// typedef struct VkSparseMemoryBind {
 ///     VkDeviceSize resourceOffset;
 ///     VkDeviceSize size;
-///     VkDeviceMemory memory;
+///     VkDeviceMemory memory; // optional
 ///     VkDeviceSize memoryOffset;
-///     VkSparseMemoryBindFlags flags;
+///     VkSparseMemoryBindFlags flags; // optional
 /// } VkSparseMemoryBind;
 /// }
 ///

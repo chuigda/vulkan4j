@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPerformanceCounterDescriptionKHR {
 ///     VkStructureType sType;
-///     void* pNext;
-///     VkPerformanceCounterDescriptionFlagsKHR flags;
+///     void* pNext; // optional
+///     VkPerformanceCounterDescriptionFlagsKHR flags; // optional
 ///     char name;
 ///     char category;
 ///     char description;

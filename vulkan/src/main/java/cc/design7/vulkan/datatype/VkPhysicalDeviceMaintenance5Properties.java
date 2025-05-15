@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMaintenance5Properties {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 earlyFragmentMultisampleCoverageAfterSampleCounting;
 ///     VkBool32 earlyFragmentSampleMaskTestBeforeSampleCounting;
 ///     VkBool32 depthStencilSwizzleOneSupport;

@@ -21,23 +21,23 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkGraphicsPipelineCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineCreateFlags flags;
-///     uint32_t stageCount;
-///     VkPipelineShaderStageCreateInfo const* pStages;
-///     VkPipelineVertexInputStateCreateInfo const* pVertexInputState;
-///     VkPipelineInputAssemblyStateCreateInfo const* pInputAssemblyState;
-///     VkPipelineTessellationStateCreateInfo const* pTessellationState;
-///     VkPipelineViewportStateCreateInfo const* pViewportState;
-///     VkPipelineRasterizationStateCreateInfo const* pRasterizationState;
-///     VkPipelineMultisampleStateCreateInfo const* pMultisampleState;
-///     VkPipelineDepthStencilStateCreateInfo const* pDepthStencilState;
-///     VkPipelineColorBlendStateCreateInfo const* pColorBlendState;
-///     VkPipelineDynamicStateCreateInfo const* pDynamicState;
-///     VkPipelineLayout layout;
-///     VkRenderPass renderPass;
+///     void const* pNext; // optional
+///     VkPipelineCreateFlags flags; // optional
+///     uint32_t stageCount; // optional
+///     VkPipelineShaderStageCreateInfo const* pStages; // optional
+///     VkPipelineVertexInputStateCreateInfo const* pVertexInputState; // optional
+///     VkPipelineInputAssemblyStateCreateInfo const* pInputAssemblyState; // optional
+///     VkPipelineTessellationStateCreateInfo const* pTessellationState; // optional
+///     VkPipelineViewportStateCreateInfo const* pViewportState; // optional
+///     VkPipelineRasterizationStateCreateInfo const* pRasterizationState; // optional
+///     VkPipelineMultisampleStateCreateInfo const* pMultisampleState; // optional
+///     VkPipelineDepthStencilStateCreateInfo const* pDepthStencilState; // optional
+///     VkPipelineColorBlendStateCreateInfo const* pColorBlendState; // optional
+///     VkPipelineDynamicStateCreateInfo const* pDynamicState; // optional
+///     VkPipelineLayout layout; // optional
+///     VkRenderPass renderPass; // optional
 ///     uint32_t subpass;
-///     VkPipeline basePipelineHandle;
+///     VkPipeline basePipelineHandle; // optional
 ///     int32_t basePipelineIndex;
 /// } VkGraphicsPipelineCreateInfo;
 /// }

@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkWriteDescriptorSetAccelerationStructureNV {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     uint32_t accelerationStructureCount;
 ///     VkAccelerationStructureNV const* pAccelerationStructures;
 /// } VkWriteDescriptorSetAccelerationStructureNV;

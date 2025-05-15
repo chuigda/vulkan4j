@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceNestedCommandBufferFeaturesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 nestedCommandBuffer;
 ///     VkBool32 nestedCommandBufferRendering;
 ///     VkBool32 nestedCommandBufferSimultaneousUse;

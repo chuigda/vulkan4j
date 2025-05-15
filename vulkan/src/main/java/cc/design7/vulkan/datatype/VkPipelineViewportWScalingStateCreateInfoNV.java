@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineViewportWScalingStateCreateInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkBool32 viewportWScalingEnable;
 ///     uint32_t viewportCount;
-///     VkViewportWScalingNV const* pViewportWScalings;
+///     VkViewportWScalingNV const* pViewportWScalings; // optional
 /// } VkPipelineViewportWScalingStateCreateInfoNV;
 /// }
 ///

@@ -21,13 +21,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureCreateInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkAccelerationStructureCreateFlagsKHR createFlags;
+///     void const* pNext; // optional
+///     VkAccelerationStructureCreateFlagsKHR createFlags; // optional
 ///     VkBuffer buffer;
 ///     VkDeviceSize offset;
 ///     VkDeviceSize size;
 ///     VkAccelerationStructureTypeKHR type;
-///     VkDeviceAddress deviceAddress;
+///     VkDeviceAddress deviceAddress; // optional
 /// } VkAccelerationStructureCreateInfoKHR;
 /// }
 ///

@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceVulkan13Features {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 robustImageAccess;
 ///     VkBool32 inlineUniformBlock;
 ///     VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind;

@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t perViewRenderAreaCount;
+///     void const* pNext; // optional
+///     uint32_t perViewRenderAreaCount; // optional
 ///     VkRect2D const* pPerViewRenderAreas;
 /// } VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM;
 /// }

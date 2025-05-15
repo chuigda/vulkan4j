@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDeviceEventInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkDeviceEventTypeEXT deviceEvent;
 /// } VkDeviceEventInfoEXT;
 /// }

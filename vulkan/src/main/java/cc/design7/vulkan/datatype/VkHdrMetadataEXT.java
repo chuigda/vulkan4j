@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkHdrMetadataEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkXYColorEXT displayPrimaryRed;
 ///     VkXYColorEXT displayPrimaryGreen;
 ///     VkXYColorEXT displayPrimaryBlue;

@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 swapchainMaintenance1;
 /// } VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT;
 /// }

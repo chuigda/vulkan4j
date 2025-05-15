@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDescriptorSetLayoutHostMappingInfoVALVE {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     size_t descriptorOffset;
 ///     uint32_t descriptorSize;
 /// } VkDescriptorSetLayoutHostMappingInfoVALVE;

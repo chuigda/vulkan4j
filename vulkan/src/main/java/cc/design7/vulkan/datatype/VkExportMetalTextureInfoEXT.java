@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkExportMetalTextureInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkImage image;
-///     VkImageView imageView;
-///     VkBufferView bufferView;
+///     void const* pNext; // optional
+///     VkImage image; // optional
+///     VkImageView imageView; // optional
+///     VkBufferView bufferView; // optional
 ///     VkImageAspectFlags plane;
 ///     MTLTexture_id mtlTexture;
 /// } VkExportMetalTextureInfoEXT;

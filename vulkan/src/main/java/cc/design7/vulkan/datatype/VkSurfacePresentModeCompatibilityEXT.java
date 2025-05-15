@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSurfacePresentModeCompatibilityEXT {
 ///     VkStructureType sType;
-///     void* pNext;
-///     uint32_t presentModeCount;
-///     VkPresentModeKHR* pPresentModes;
+///     void* pNext; // optional
+///     uint32_t presentModeCount; // optional
+///     VkPresentModeKHR* pPresentModes; // optional
 /// } VkSurfacePresentModeCompatibilityEXT;
 /// }
 ///

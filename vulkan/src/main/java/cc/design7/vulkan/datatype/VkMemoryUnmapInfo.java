@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkMemoryUnmapInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkMemoryUnmapFlags flags;
+///     void const* pNext; // optional
+///     VkMemoryUnmapFlags flags; // optional
 ///     VkDeviceMemory memory;
 /// } VkMemoryUnmapInfo;
 /// }

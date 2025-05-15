@@ -21,14 +21,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSubpassDependency2 {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     uint32_t srcSubpass;
 ///     uint32_t dstSubpass;
-///     VkPipelineStageFlags srcStageMask;
-///     VkPipelineStageFlags dstStageMask;
-///     VkAccessFlags srcAccessMask;
-///     VkAccessFlags dstAccessMask;
-///     VkDependencyFlags dependencyFlags;
+///     VkPipelineStageFlags srcStageMask; // optional
+///     VkPipelineStageFlags dstStageMask; // optional
+///     VkAccessFlags srcAccessMask; // optional
+///     VkAccessFlags dstAccessMask; // optional
+///     VkDependencyFlags dependencyFlags; // optional
 ///     int32_t viewOffset;
 /// } VkSubpassDependency2;
 /// }

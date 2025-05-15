@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkCopyDescriptorSet {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkDescriptorSet srcSet;
 ///     uint32_t srcBinding;
 ///     uint32_t srcArrayElement;

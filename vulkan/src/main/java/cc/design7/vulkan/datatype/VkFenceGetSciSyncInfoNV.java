@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkFenceGetSciSyncInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkFence fence;
 ///     VkExternalFenceHandleTypeFlags handleType;
 /// } VkFenceGetSciSyncInfoNV;

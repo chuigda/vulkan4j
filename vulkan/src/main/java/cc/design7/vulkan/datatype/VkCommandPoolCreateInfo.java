@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkCommandPoolCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkCommandPoolCreateFlags flags;
+///     void const* pNext; // optional
+///     VkCommandPoolCreateFlags flags; // optional
 ///     uint32_t queueFamilyIndex;
 /// } VkCommandPoolCreateInfo;
 /// }

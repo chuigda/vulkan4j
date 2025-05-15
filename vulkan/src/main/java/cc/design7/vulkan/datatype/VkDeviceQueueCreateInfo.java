@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDeviceQueueCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkDeviceQueueCreateFlags flags;
+///     void const* pNext; // optional
+///     VkDeviceQueueCreateFlags flags; // optional
 ///     uint32_t queueFamilyIndex;
 ///     uint32_t queueCount;
 ///     float const* pQueuePriorities;

@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkImageCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkImageCreateFlags flags;
+///     void const* pNext; // optional
+///     VkImageCreateFlags flags; // optional
 ///     VkImageType imageType;
 ///     VkFormat format;
 ///     VkExtent3D extent;
@@ -32,7 +32,7 @@ import static cc.design7.vulkan.VkConstants.*;
 ///     VkImageTiling tiling;
 ///     VkImageUsageFlags usage;
 ///     VkSharingMode sharingMode;
-///     uint32_t queueFamilyIndexCount;
+///     uint32_t queueFamilyIndexCount; // optional
 ///     uint32_t const* pQueueFamilyIndices;
 ///     VkImageLayout initialLayout;
 /// } VkImageCreateInfo;

@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkOpticalFlowExecuteInfoNV {
 ///     VkStructureType sType;
-///     void* pNext;
-///     VkOpticalFlowExecuteFlagsNV flags;
-///     uint32_t regionCount;
+///     void* pNext; // optional
+///     VkOpticalFlowExecuteFlagsNV flags; // optional
+///     uint32_t regionCount; // optional
 ///     VkRect2D const* pRegions;
 /// } VkOpticalFlowExecuteInfoNV;
 /// }

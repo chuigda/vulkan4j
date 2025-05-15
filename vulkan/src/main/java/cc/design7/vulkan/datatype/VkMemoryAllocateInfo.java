@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkMemoryAllocateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkDeviceSize allocationSize;
 ///     uint32_t memoryTypeIndex;
 /// } VkMemoryAllocateInfo;

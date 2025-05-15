@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureTrianglesDisplacementMicromapNV {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkFormat displacementBiasAndScaleFormat;
 ///     VkFormat displacementVectorFormat;
 ///     VkDeviceOrHostAddressConstKHR displacementBiasAndScaleBuffer;
@@ -34,10 +34,10 @@ import static cc.design7.vulkan.VkConstants.*;
 ///     VkDeviceOrHostAddressConstKHR indexBuffer;
 ///     VkDeviceSize indexStride;
 ///     uint32_t baseTriangle;
-///     uint32_t usageCountsCount;
-///     VkMicromapUsageEXT const* pUsageCounts;
+///     uint32_t usageCountsCount; // optional
+///     VkMicromapUsageEXT const* pUsageCounts; // optional
 ///     VkMicromapUsageEXT const* const* ppUsageCounts;
-///     VkMicromapEXT micromap;
+///     VkMicromapEXT micromap; // optional
 /// } VkAccelerationStructureTrianglesDisplacementMicromapNV;
 /// }
 ///

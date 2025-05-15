@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkCuFunctionCreateInfoNVX {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkCuModuleNVX module;
 ///     char const* pName;
 /// } VkCuFunctionCreateInfoNVX;

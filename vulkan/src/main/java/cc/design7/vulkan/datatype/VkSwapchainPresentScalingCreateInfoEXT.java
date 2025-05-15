@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSwapchainPresentScalingCreateInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPresentScalingFlagsEXT scalingBehavior;
-///     VkPresentGravityFlagsEXT presentGravityX;
-///     VkPresentGravityFlagsEXT presentGravityY;
+///     void const* pNext; // optional
+///     VkPresentScalingFlagsEXT scalingBehavior; // optional
+///     VkPresentGravityFlagsEXT presentGravityX; // optional
+///     VkPresentGravityFlagsEXT presentGravityY; // optional
 /// } VkSwapchainPresentScalingCreateInfoEXT;
 /// }
 ///

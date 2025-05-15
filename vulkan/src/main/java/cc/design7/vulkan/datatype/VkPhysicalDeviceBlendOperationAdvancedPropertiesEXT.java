@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t advancedBlendMaxColorAttachments;
 ///     VkBool32 advancedBlendIndependentBlend;
 ///     VkBool32 advancedBlendNonPremultipliedSrcColor;

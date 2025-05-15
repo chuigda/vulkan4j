@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoDecodeH264ProfileInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     StdVideoH264ProfileIdc stdProfileIdc;
-///     VkVideoDecodeH264PictureLayoutFlagsKHR pictureLayout;
+///     VkVideoDecodeH264PictureLayoutFlagsKHR pictureLayout; // optional
 /// } VkVideoDecodeH264ProfileInfoKHR;
 /// }
 ///

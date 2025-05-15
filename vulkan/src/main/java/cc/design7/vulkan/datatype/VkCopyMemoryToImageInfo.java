@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkCopyMemoryToImageInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkHostImageCopyFlags flags;
+///     void const* pNext; // optional
+///     VkHostImageCopyFlags flags; // optional
 ///     VkImage dstImage;
 ///     VkImageLayout dstImageLayout;
 ///     uint32_t regionCount;

@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 rayTracingMaintenance1;
 ///     VkBool32 rayTracingPipelineTraceRaysIndirect2;
 /// } VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR;

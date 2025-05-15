@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceImageProcessing2PropertiesQCOM {
 ///     VkStructureType sType;
-///     void* pNext;
-///     VkExtent2D maxBlockMatchWindow;
+///     void* pNext; // optional
+///     VkExtent2D maxBlockMatchWindow; // optional
 /// } VkPhysicalDeviceImageProcessing2PropertiesQCOM;
 /// }
 ///

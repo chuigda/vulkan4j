@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPerformanceOverrideInfoINTEL {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkPerformanceOverrideTypeINTEL type;
 ///     VkBool32 enable;
 ///     uint64_t parameter;

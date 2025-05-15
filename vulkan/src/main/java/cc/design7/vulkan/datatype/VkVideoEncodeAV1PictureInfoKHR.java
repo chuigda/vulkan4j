@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeAV1PictureInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkVideoEncodeAV1PredictionModeKHR predictionMode;
 ///     VkVideoEncodeAV1RateControlGroupKHR rateControlGroup;
 ///     uint32_t constantQIndex;

@@ -21,12 +21,12 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineShaderStageCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineShaderStageCreateFlags flags;
+///     void const* pNext; // optional
+///     VkPipelineShaderStageCreateFlags flags; // optional
 ///     VkShaderStageFlags stage;
-///     VkShaderModule module;
+///     VkShaderModule module; // optional
 ///     char const* pName;
-///     VkSpecializationInfo const* pSpecializationInfo;
+///     VkSpecializationInfo const* pSpecializationInfo; // optional
 /// } VkPipelineShaderStageCreateInfo;
 /// }
 ///

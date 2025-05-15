@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDedicatedAllocationBufferCreateInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkBool32 dedicatedAllocation;
 /// } VkDedicatedAllocationBufferCreateInfoNV;
 /// }

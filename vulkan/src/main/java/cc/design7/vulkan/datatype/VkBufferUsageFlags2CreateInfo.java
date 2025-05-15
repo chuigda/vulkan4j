@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkBufferUsageFlags2CreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkBufferUsageFlags2 usage;
 /// } VkBufferUsageFlags2CreateInfo;
 /// }

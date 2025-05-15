@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShadingRateImagePropertiesNV {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkExtent2D shadingRateTexelSize;
 ///     uint32_t shadingRatePaletteSize;
 ///     uint32_t shadingRateMaxCoarseSamples;

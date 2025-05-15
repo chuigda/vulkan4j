@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkCommandBufferInheritanceViewportScissorInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkBool32 viewportScissor2D;
 ///     uint32_t viewportDepthCount;
 ///     VkViewport const* pViewportDepths;

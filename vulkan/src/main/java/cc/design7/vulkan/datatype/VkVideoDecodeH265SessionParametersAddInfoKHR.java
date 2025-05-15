@@ -21,12 +21,12 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoDecodeH265SessionParametersAddInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t stdVPSCount;
+///     void const* pNext; // optional
+///     uint32_t stdVPSCount; // optional
 ///     StdVideoH265VideoParameterSet const* pStdVPSs;
-///     uint32_t stdSPSCount;
+///     uint32_t stdSPSCount; // optional
 ///     StdVideoH265SequenceParameterSet const* pStdSPSs;
-///     uint32_t stdPPSCount;
+///     uint32_t stdPPSCount; // optional
 ///     StdVideoH265PictureParameterSet const* pStdPPSs;
 /// } VkVideoDecodeH265SessionParametersAddInfoKHR;
 /// }

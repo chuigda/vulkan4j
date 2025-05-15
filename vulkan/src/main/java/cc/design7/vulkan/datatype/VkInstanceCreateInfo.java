@@ -21,12 +21,12 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkInstanceCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkInstanceCreateFlags flags;
-///     VkApplicationInfo const* pApplicationInfo;
-///     uint32_t enabledLayerCount;
+///     void const* pNext; // optional
+///     VkInstanceCreateFlags flags; // optional
+///     VkApplicationInfo const* pApplicationInfo; // optional
+///     uint32_t enabledLayerCount; // optional
 ///     char const* const* ppEnabledLayerNames;
-///     uint32_t enabledExtensionCount;
+///     uint32_t enabledExtensionCount; // optional
 ///     char const* const* ppEnabledExtensionNames;
 /// } VkInstanceCreateInfo;
 /// }

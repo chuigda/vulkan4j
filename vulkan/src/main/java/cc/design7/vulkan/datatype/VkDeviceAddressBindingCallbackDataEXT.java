@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDeviceAddressBindingCallbackDataEXT {
 ///     VkStructureType sType;
-///     void* pNext;
-///     VkDeviceAddressBindingFlagsEXT flags;
+///     void* pNext; // optional
+///     VkDeviceAddressBindingFlagsEXT flags; // optional
 ///     VkDeviceAddress baseAddress;
 ///     VkDeviceSize size;
 ///     VkDeviceAddressBindingTypeEXT bindingType;

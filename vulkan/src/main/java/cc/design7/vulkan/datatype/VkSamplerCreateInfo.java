@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSamplerCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkSamplerCreateFlags flags;
+///     void const* pNext; // optional
+///     VkSamplerCreateFlags flags; // optional
 ///     VkFilter magFilter;
 ///     VkFilter minFilter;
 ///     VkSamplerMipmapMode mipmapMode;

@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkExportMemoryWin32HandleInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     SECURITY_ATTRIBUTES const* pAttributes;
+///     void const* pNext; // optional
+///     SECURITY_ATTRIBUTES const* pAttributes; // optional
 ///     DWORD dwAccess;
 ///     LPCWSTR name;
 /// } VkExportMemoryWin32HandleInfoKHR;

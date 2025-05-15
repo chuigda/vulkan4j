@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceExternalBufferInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkBufferCreateFlags flags;
-///     VkBufferUsageFlags usage;
+///     void const* pNext; // optional
+///     VkBufferCreateFlags flags; // optional
+///     VkBufferUsageFlags usage; // optional
 ///     VkExternalMemoryHandleTypeFlags handleType;
 /// } VkPhysicalDeviceExternalBufferInfo;
 /// }

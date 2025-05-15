@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkOpticalFlowSessionCreatePrivateDataInfoNV {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t id;
 ///     uint32_t size;
 ///     void const* pPrivateData;

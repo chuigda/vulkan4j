@@ -21,11 +21,11 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkComputePipelineCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineCreateFlags flags;
+///     void const* pNext; // optional
+///     VkPipelineCreateFlags flags; // optional
 ///     VkPipelineShaderStageCreateInfo stage;
 ///     VkPipelineLayout layout;
-///     VkPipeline basePipelineHandle;
+///     VkPipeline basePipelineHandle; // optional
 ///     int32_t basePipelineIndex;
 /// } VkComputePipelineCreateInfo;
 /// }

@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDevicePerformanceQueryFeaturesKHR {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 performanceCounterQueryPools;
 ///     VkBool32 performanceCounterMultipleQueryPools;
 /// } VkPhysicalDevicePerformanceQueryFeaturesKHR;

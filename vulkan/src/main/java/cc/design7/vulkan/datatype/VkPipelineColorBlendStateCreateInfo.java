@@ -21,12 +21,12 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineColorBlendStateCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineColorBlendStateCreateFlags flags;
+///     void const* pNext; // optional
+///     VkPipelineColorBlendStateCreateFlags flags; // optional
 ///     VkBool32 logicOpEnable;
 ///     VkLogicOp logicOp;
-///     uint32_t attachmentCount;
-///     VkPipelineColorBlendAttachmentState const* pAttachments;
+///     uint32_t attachmentCount; // optional
+///     VkPipelineColorBlendAttachmentState const* pAttachments; // optional
 ///     float blendConstants;
 /// } VkPipelineColorBlendStateCreateInfo;
 /// }

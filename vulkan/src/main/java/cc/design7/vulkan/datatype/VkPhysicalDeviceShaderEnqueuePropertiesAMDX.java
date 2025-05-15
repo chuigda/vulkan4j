@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderEnqueuePropertiesAMDX {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t maxExecutionGraphDepth;
 ///     uint32_t maxExecutionGraphShaderOutputNodes;
 ///     uint32_t maxExecutionGraphShaderPayloadSize;

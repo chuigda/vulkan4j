@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkBufferViewCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkBufferViewCreateFlags flags;
+///     void const* pNext; // optional
+///     VkBufferViewCreateFlags flags; // optional
 ///     VkBuffer buffer;
 ///     VkFormat format;
 ///     VkDeviceSize offset;

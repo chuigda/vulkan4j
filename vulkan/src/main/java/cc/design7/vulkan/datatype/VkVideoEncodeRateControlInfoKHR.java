@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeRateControlInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkVideoEncodeRateControlFlagsKHR flags;
-///     VkVideoEncodeRateControlModeFlagsKHR rateControlMode;
-///     uint32_t layerCount;
+///     void const* pNext; // optional
+///     VkVideoEncodeRateControlFlagsKHR flags; // optional
+///     VkVideoEncodeRateControlModeFlagsKHR rateControlMode; // optional
+///     uint32_t layerCount; // optional
 ///     VkVideoEncodeRateControlLayerInfoKHR const* pLayers;
 ///     uint32_t virtualBufferSizeInMs;
 ///     uint32_t initialVirtualBufferSizeInMs;

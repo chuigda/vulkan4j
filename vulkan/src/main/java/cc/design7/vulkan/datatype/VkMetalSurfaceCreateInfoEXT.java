@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkMetalSurfaceCreateInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkMetalSurfaceCreateFlagsEXT flags;
+///     void const* pNext; // optional
+///     VkMetalSurfaceCreateFlagsEXT flags; // optional
 ///     CAMetalLayer const* pLayer;
 /// } VkMetalSurfaceCreateInfoEXT;
 /// }

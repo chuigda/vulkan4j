@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 shaderImageInt64Atomics;
 ///     VkBool32 sparseImageInt64Atomics;
 /// } VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT;

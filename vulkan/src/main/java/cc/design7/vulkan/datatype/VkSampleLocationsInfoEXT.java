@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSampleLocationsInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkSampleCountFlags sampleLocationsPerPixel;
 ///     VkExtent2D sampleLocationGridSize;
-///     uint32_t sampleLocationsCount;
+///     uint32_t sampleLocationsCount; // optional
 ///     VkSampleLocationEXT const* pSampleLocations;
 /// } VkSampleLocationsInfoEXT;
 /// }

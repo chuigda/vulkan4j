@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceProvokingVertexPropertiesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 provokingVertexModePerPipeline;
 ///     VkBool32 transformFeedbackPreservesTriangleFanProvokingVertex;
 /// } VkPhysicalDeviceProvokingVertexPropertiesEXT;

@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineFragmentShadingRateEnumStateCreateInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkFragmentShadingRateTypeNV shadingRateType;
 ///     VkFragmentShadingRateNV shadingRate;
 ///     VkFragmentShadingRateCombinerOpKHR combinerOps;

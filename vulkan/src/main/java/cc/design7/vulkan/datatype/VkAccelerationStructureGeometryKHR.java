@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureGeometryKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkGeometryTypeKHR geometryType;
 ///     VkAccelerationStructureGeometryDataKHR geometry;
-///     VkGeometryFlagsKHR flags;
+///     VkGeometryFlagsKHR flags; // optional
 /// } VkAccelerationStructureGeometryKHR;
 /// }
 ///

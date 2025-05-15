@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkAttachmentReferenceStencilLayout {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkImageLayout stencilLayout;
 /// } VkAttachmentReferenceStencilLayout;
 /// }

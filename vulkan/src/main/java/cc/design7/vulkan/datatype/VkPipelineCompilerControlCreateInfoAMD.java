@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineCompilerControlCreateInfoAMD {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineCompilerControlFlagsAMD compilerControlFlags;
+///     void const* pNext; // optional
+///     VkPipelineCompilerControlFlagsAMD compilerControlFlags; // optional
 /// } VkPipelineCompilerControlCreateInfoAMD;
 /// }
 ///

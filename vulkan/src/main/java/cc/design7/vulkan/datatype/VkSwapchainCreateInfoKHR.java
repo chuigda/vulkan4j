@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSwapchainCreateInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkSwapchainCreateFlagsKHR flags;
+///     void const* pNext; // optional
+///     VkSwapchainCreateFlagsKHR flags; // optional
 ///     VkSurfaceKHR surface;
 ///     uint32_t minImageCount;
 ///     VkFormat imageFormat;
@@ -31,13 +31,13 @@ import static cc.design7.vulkan.VkConstants.*;
 ///     uint32_t imageArrayLayers;
 ///     VkImageUsageFlags imageUsage;
 ///     VkSharingMode imageSharingMode;
-///     uint32_t queueFamilyIndexCount;
+///     uint32_t queueFamilyIndexCount; // optional
 ///     uint32_t const* pQueueFamilyIndices;
 ///     VkSurfaceTransformFlagsKHR preTransform;
 ///     VkCompositeAlphaFlagsKHR compositeAlpha;
 ///     VkPresentModeKHR presentMode;
 ///     VkBool32 clipped;
-///     VkSwapchainKHR oldSwapchain;
+///     VkSwapchainKHR oldSwapchain; // optional
 /// } VkSwapchainCreateInfoKHR;
 /// }
 ///

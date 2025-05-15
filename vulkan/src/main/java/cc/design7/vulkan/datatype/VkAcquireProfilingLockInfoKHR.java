@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkAcquireProfilingLockInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkAcquireProfilingLockFlagsKHR flags;
+///     void const* pNext; // optional
+///     VkAcquireProfilingLockFlagsKHR flags; // optional
 ///     uint64_t timeout;
 /// } VkAcquireProfilingLockInfoKHR;
 /// }

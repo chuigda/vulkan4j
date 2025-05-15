@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkIndirectCommandsLayoutTokenEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkIndirectCommandsTokenTypeEXT type;
 ///     VkIndirectCommandsTokenDataEXT data;
 ///     uint32_t offset;

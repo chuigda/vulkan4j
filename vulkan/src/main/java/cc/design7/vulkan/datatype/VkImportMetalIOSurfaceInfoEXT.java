@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkImportMetalIOSurfaceInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     IOSurfaceRef ioSurface;
+///     void const* pNext; // optional
+///     IOSurfaceRef ioSurface; // optional
 /// } VkImportMetalIOSurfaceInfoEXT;
 /// }
 ///

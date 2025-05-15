@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkApplicationInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     char const* pApplicationName;
+///     void const* pNext; // optional
+///     char const* pApplicationName; // optional
 ///     uint32_t applicationVersion;
-///     char const* pEngineName;
+///     char const* pEngineName; // optional
 ///     uint32_t engineVersion;
 ///     uint32_t apiVersion;
 /// } VkApplicationInfo;

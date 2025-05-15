@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceClusterAccelerationStructurePropertiesNV {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t maxVerticesPerCluster;
 ///     uint32_t maxTrianglesPerCluster;
 ///     uint32_t clusterScratchByteAlignment;

@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkRenderingAttachmentLocationInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t colorAttachmentCount;
+///     void const* pNext; // optional
+///     uint32_t colorAttachmentCount; // optional
 ///     uint32_t const* pColorAttachmentLocations;
 /// } VkRenderingAttachmentLocationInfo;
 /// }

@@ -21,11 +21,11 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineLayoutCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineLayoutCreateFlags flags;
-///     uint32_t setLayoutCount;
+///     void const* pNext; // optional
+///     VkPipelineLayoutCreateFlags flags; // optional
+///     uint32_t setLayoutCount; // optional
 ///     VkDescriptorSetLayout const* pSetLayouts;
-///     uint32_t pushConstantRangeCount;
+///     uint32_t pushConstantRangeCount; // optional
 ///     VkPushConstantRange const* pPushConstantRanges;
 /// } VkPipelineLayoutCreateInfo;
 /// }

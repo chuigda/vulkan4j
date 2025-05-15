@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDevice8BitStorageFeatures {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 storageBuffer8BitAccess;
 ///     VkBool32 uniformAndStorageBuffer8BitAccess;
 ///     VkBool32 storagePushConstant8;

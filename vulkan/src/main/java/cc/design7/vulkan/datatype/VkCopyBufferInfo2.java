@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkCopyBufferInfo2 {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkBuffer srcBuffer;
 ///     VkBuffer dstBuffer;
 ///     uint32_t regionCount;

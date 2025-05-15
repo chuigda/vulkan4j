@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMultiviewFeatures {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 multiview;
 ///     VkBool32 multiviewGeometryShader;
 ///     VkBool32 multiviewTessellationShader;

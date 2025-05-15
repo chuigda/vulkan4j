@@ -22,7 +22,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkClusterAccelerationStructureBuildTriangleClusterInfoNV {
 ///     uint32_t clusterID;
-///     VkClusterAccelerationStructureClusterFlagsNV clusterFlags;
+///     VkClusterAccelerationStructureClusterFlagsNV clusterFlags; // optional
 ///     uint32_t triangleCount : 9;
 ///     uint32_t vertexCount : 9;
 ///     uint32_t positionTruncateBitCount : 6;

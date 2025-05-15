@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkImageSwapchainCreateInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkSwapchainKHR swapchain;
+///     void const* pNext; // optional
+///     VkSwapchainKHR swapchain; // optional
 /// } VkImageSwapchainCreateInfoKHR;
 /// }
 ///

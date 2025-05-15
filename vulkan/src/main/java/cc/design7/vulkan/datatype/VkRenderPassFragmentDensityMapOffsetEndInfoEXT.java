@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassFragmentDensityMapOffsetEndInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t fragmentDensityOffsetCount;
+///     void const* pNext; // optional
+///     uint32_t fragmentDensityOffsetCount; // optional
 ///     VkOffset2D const* pFragmentDensityOffsets;
 /// } VkRenderPassFragmentDensityMapOffsetEndInfoEXT;
 /// }

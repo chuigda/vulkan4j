@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkIOSSurfaceCreateInfoMVK {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkIOSSurfaceCreateFlagsMVK flags;
+///     void const* pNext; // optional
+///     VkIOSSurfaceCreateFlagsMVK flags; // optional
 ///     void const* pView;
 /// } VkIOSSurfaceCreateInfoMVK;
 /// }

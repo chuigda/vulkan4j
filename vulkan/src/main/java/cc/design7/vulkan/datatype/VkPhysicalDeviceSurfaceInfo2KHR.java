@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceSurfaceInfo2KHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkSurfaceKHR surface;
+///     void const* pNext; // optional
+///     VkSurfaceKHR surface; // optional
 /// } VkPhysicalDeviceSurfaceInfo2KHR;
 /// }
 ///

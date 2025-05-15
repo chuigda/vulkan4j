@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderFloat16Int8Features {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 shaderFloat16;
 ///     VkBool32 shaderInt8;
 /// } VkPhysicalDeviceShaderFloat16Int8Features;

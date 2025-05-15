@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkEventCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkEventCreateFlags flags;
+///     void const* pNext; // optional
+///     VkEventCreateFlags flags; // optional
 /// } VkEventCreateInfo;
 /// }
 ///

@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkMemoryBarrier {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkAccessFlags srcAccessMask;
-///     VkAccessFlags dstAccessMask;
+///     void const* pNext; // optional
+///     VkAccessFlags srcAccessMask; // optional
+///     VkAccessFlags dstAccessMask; // optional
 /// } VkMemoryBarrier;
 /// }
 ///

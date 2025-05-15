@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoDecodeH265PictureInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     StdVideoDecodeH265PictureInfo const* pStdPictureInfo;
 ///     uint32_t sliceSegmentCount;
 ///     uint32_t const* pSliceSegmentOffsets;

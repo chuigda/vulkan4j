@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceVulkan12Properties {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkDriverId driverID;
 ///     char driverName;
 ///     char driverInfo;
@@ -73,7 +73,7 @@ import static cc.design7.vulkan.VkConstants.*;
 ///     VkBool32 filterMinmaxSingleComponentFormats;
 ///     VkBool32 filterMinmaxImageComponentMapping;
 ///     uint64_t maxTimelineSemaphoreValueDifference;
-///     VkSampleCountFlags framebufferIntegerColorSampleCounts;
+///     VkSampleCountFlags framebufferIntegerColorSampleCounts; // optional
 /// } VkPhysicalDeviceVulkan12Properties;
 /// }
 ///

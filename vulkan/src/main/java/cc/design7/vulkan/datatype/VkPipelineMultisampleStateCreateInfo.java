@@ -21,12 +21,12 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineMultisampleStateCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineMultisampleStateCreateFlags flags;
+///     void const* pNext; // optional
+///     VkPipelineMultisampleStateCreateFlags flags; // optional
 ///     VkSampleCountFlags rasterizationSamples;
 ///     VkBool32 sampleShadingEnable;
 ///     float minSampleShading;
-///     VkSampleMask const* pSampleMask;
+///     VkSampleMask const* pSampleMask; // optional
 ///     VkBool32 alphaToCoverageEnable;
 ///     VkBool32 alphaToOneEnable;
 /// } VkPipelineMultisampleStateCreateInfo;

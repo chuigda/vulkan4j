@@ -20,12 +20,12 @@ import static cc.design7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAllocationCallbacks {
-///     void* pUserData;
+///     void* pUserData; // optional
 ///     PFN_vkAllocationFunction pfnAllocation;
 ///     PFN_vkReallocationFunction pfnReallocation;
 ///     PFN_vkFreeFunction pfnFree;
-///     PFN_vkInternalAllocationNotification pfnInternalAllocation;
-///     PFN_vkInternalFreeNotification pfnInternalFree;
+///     PFN_vkInternalAllocationNotification pfnInternalAllocation; // optional
+///     PFN_vkInternalFreeNotification pfnInternalFree; // optional
 /// } VkAllocationCallbacks;
 /// }
 ///

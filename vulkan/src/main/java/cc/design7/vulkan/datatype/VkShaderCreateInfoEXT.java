@@ -21,19 +21,19 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkShaderCreateInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkShaderCreateFlagsEXT flags;
+///     void const* pNext; // optional
+///     VkShaderCreateFlagsEXT flags; // optional
 ///     VkShaderStageFlags stage;
-///     VkShaderStageFlags nextStage;
+///     VkShaderStageFlags nextStage; // optional
 ///     VkShaderCodeTypeEXT codeType;
 ///     size_t codeSize;
 ///     void const* pCode;
-///     char const* pName;
-///     uint32_t setLayoutCount;
-///     VkDescriptorSetLayout const* pSetLayouts;
-///     uint32_t pushConstantRangeCount;
-///     VkPushConstantRange const* pPushConstantRanges;
-///     VkSpecializationInfo const* pSpecializationInfo;
+///     char const* pName; // optional
+///     uint32_t setLayoutCount; // optional
+///     VkDescriptorSetLayout const* pSetLayouts; // optional
+///     uint32_t pushConstantRangeCount; // optional
+///     VkPushConstantRange const* pPushConstantRanges; // optional
+///     VkSpecializationInfo const* pSpecializationInfo; // optional
 /// } VkShaderCreateInfoEXT;
 /// }
 ///

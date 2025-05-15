@@ -20,7 +20,7 @@ import static cc.design7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDescriptorBufferInfo {
-///     VkBuffer buffer;
+///     VkBuffer buffer; // optional
 ///     VkDeviceSize offset;
 ///     VkDeviceSize range;
 /// } VkDescriptorBufferInfo;

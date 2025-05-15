@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMaintenance7PropertiesKHR {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 robustFragmentShadingRateAttachmentAccess;
 ///     VkBool32 separateDepthStencilAttachmentAccess;
 ///     uint32_t maxDescriptorSetTotalUniformBuffersDynamic;

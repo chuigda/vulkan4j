@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureGeometryLinearSweptSpheresDataNV {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkFormat vertexFormat;
 ///     VkDeviceOrHostAddressConstKHR vertexData;
 ///     VkDeviceSize vertexStride;

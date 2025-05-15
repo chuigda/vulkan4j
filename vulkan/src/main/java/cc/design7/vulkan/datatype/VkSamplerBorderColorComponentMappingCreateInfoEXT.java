@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSamplerBorderColorComponentMappingCreateInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkComponentMapping components;
 ///     VkBool32 srgb;
 /// } VkSamplerBorderColorComponentMappingCreateInfoEXT;

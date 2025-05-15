@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkScreenSurfaceCreateInfoQNX {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkScreenSurfaceCreateFlagsQNX flags;
+///     void const* pNext; // optional
+///     VkScreenSurfaceCreateFlagsQNX flags; // optional
 ///     _screen_context* context;
 ///     _screen_window* window;
 /// } VkScreenSurfaceCreateInfoQNX;

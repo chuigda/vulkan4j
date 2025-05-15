@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkRenderingAreaInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     uint32_t viewMask;
-///     uint32_t colorAttachmentCount;
+///     uint32_t colorAttachmentCount; // optional
 ///     VkFormat const* pColorAttachmentFormats;
 ///     VkFormat depthAttachmentFormat;
 ///     VkFormat stencilAttachmentFormat;

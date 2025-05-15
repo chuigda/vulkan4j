@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkHdrVividDynamicMetadataHUAWEI {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     size_t dynamicMetadataSize;
 ///     void const* pDynamicMetadata;
 /// } VkHdrVividDynamicMetadataHUAWEI;

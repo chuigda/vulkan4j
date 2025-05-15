@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkExportMemoryAllocateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkExternalMemoryHandleTypeFlags handleTypes;
+///     void const* pNext; // optional
+///     VkExternalMemoryHandleTypeFlags handleTypes; // optional
 /// } VkExportMemoryAllocateInfo;
 /// }
 ///

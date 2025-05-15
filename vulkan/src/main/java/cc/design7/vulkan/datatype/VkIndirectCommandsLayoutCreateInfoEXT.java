@@ -21,11 +21,11 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkIndirectCommandsLayoutCreateInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkIndirectCommandsLayoutUsageFlagsEXT flags;
+///     void const* pNext; // optional
+///     VkIndirectCommandsLayoutUsageFlagsEXT flags; // optional
 ///     VkShaderStageFlags shaderStages;
 ///     uint32_t indirectStride;
-///     VkPipelineLayout pipelineLayout;
+///     VkPipelineLayout pipelineLayout; // optional
 ///     uint32_t tokenCount;
 ///     VkIndirectCommandsLayoutTokenEXT const* pTokens;
 /// } VkIndirectCommandsLayoutCreateInfoEXT;

@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkGeneratedCommandsPipelineInfoEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkPipeline pipeline;
 /// } VkGeneratedCommandsPipelineInfoEXT;
 /// }

@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkAntiLagPresentationInfoAMD {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkAntiLagStageAMD stage;
 ///     uint64_t frameIndex;
 /// } VkAntiLagPresentationInfoAMD;

@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeUsageInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkVideoEncodeUsageFlagsKHR videoUsageHints;
-///     VkVideoEncodeContentFlagsKHR videoContentHints;
-///     VkVideoEncodeTuningModeKHR tuningMode;
+///     void const* pNext; // optional
+///     VkVideoEncodeUsageFlagsKHR videoUsageHints; // optional
+///     VkVideoEncodeContentFlagsKHR videoContentHints; // optional
+///     VkVideoEncodeTuningModeKHR tuningMode; // optional
 /// } VkVideoEncodeUsageInfoKHR;
 /// }
 ///

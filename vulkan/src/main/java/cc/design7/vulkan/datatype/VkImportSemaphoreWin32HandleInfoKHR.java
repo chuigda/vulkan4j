@@ -21,12 +21,12 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkImportSemaphoreWin32HandleInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkSemaphore semaphore;
-///     VkSemaphoreImportFlags flags;
+///     VkSemaphoreImportFlags flags; // optional
 ///     VkExternalSemaphoreHandleTypeFlags handleType;
-///     HANDLE handle;
-///     LPCWSTR name;
+///     HANDLE handle; // optional
+///     LPCWSTR name; // optional
 /// } VkImportSemaphoreWin32HandleInfoKHR;
 /// }
 ///

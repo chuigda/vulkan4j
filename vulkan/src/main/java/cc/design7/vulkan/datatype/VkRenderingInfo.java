@@ -21,15 +21,15 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkRenderingInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkRenderingFlags flags;
+///     void const* pNext; // optional
+///     VkRenderingFlags flags; // optional
 ///     VkRect2D renderArea;
 ///     uint32_t layerCount;
 ///     uint32_t viewMask;
-///     uint32_t colorAttachmentCount;
+///     uint32_t colorAttachmentCount; // optional
 ///     VkRenderingAttachmentInfo const* pColorAttachments;
-///     VkRenderingAttachmentInfo const* pDepthAttachment;
-///     VkRenderingAttachmentInfo const* pStencilAttachment;
+///     VkRenderingAttachmentInfo const* pDepthAttachment; // optional
+///     VkRenderingAttachmentInfo const* pStencilAttachment; // optional
 /// } VkRenderingInfo;
 /// }
 ///

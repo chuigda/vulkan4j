@@ -21,16 +21,16 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkBindSparseInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t waitSemaphoreCount;
+///     void const* pNext; // optional
+///     uint32_t waitSemaphoreCount; // optional
 ///     VkSemaphore const* pWaitSemaphores;
-///     uint32_t bufferBindCount;
+///     uint32_t bufferBindCount; // optional
 ///     VkSparseBufferMemoryBindInfo const* pBufferBinds;
-///     uint32_t imageOpaqueBindCount;
+///     uint32_t imageOpaqueBindCount; // optional
 ///     VkSparseImageOpaqueMemoryBindInfo const* pImageOpaqueBinds;
-///     uint32_t imageBindCount;
+///     uint32_t imageBindCount; // optional
 ///     VkSparseImageMemoryBindInfo const* pImageBinds;
-///     uint32_t signalSemaphoreCount;
+///     uint32_t signalSemaphoreCount; // optional
 ///     VkSemaphore const* pSignalSemaphores;
 /// } VkBindSparseInfo;
 /// }

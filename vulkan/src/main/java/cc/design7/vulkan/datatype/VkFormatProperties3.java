@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkFormatProperties3 {
 ///     VkStructureType sType;
-///     void* pNext;
-///     VkFormatFeatureFlags2 linearTilingFeatures;
-///     VkFormatFeatureFlags2 optimalTilingFeatures;
-///     VkFormatFeatureFlags2 bufferFeatures;
+///     void* pNext; // optional
+///     VkFormatFeatureFlags2 linearTilingFeatures; // optional
+///     VkFormatFeatureFlags2 optimalTilingFeatures; // optional
+///     VkFormatFeatureFlags2 bufferFeatures; // optional
 /// } VkFormatProperties3;
 /// }
 ///

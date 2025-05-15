@@ -21,11 +21,11 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkAcquireNextImageInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkSwapchainKHR swapchain;
 ///     uint64_t timeout;
-///     VkSemaphore semaphore;
-///     VkFence fence;
+///     VkSemaphore semaphore; // optional
+///     VkFence fence; // optional
 ///     uint32_t deviceMask;
 /// } VkAcquireNextImageInfoKHR;
 /// }

@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkBindImageMemoryInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkImage image;
 ///     VkDeviceMemory memory;
 ///     VkDeviceSize memoryOffset;

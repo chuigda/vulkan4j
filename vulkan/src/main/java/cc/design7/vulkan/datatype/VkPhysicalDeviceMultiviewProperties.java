@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMultiviewProperties {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t maxMultiviewViewCount;
 ///     uint32_t maxMultiviewInstanceIndex;
 /// } VkPhysicalDeviceMultiviewProperties;

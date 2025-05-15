@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceInlineUniformBlockFeatures {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 inlineUniformBlock;
 ///     VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind;
 /// } VkPhysicalDeviceInlineUniformBlockFeatures;

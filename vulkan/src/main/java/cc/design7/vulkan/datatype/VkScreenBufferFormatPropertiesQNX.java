@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkScreenBufferFormatPropertiesQNX {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkFormat format;
 ///     uint64_t externalFormat;
 ///     uint64_t screenUsage;

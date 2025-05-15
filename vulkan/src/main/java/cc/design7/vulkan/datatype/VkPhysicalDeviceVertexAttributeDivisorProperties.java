@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceVertexAttributeDivisorProperties {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t maxVertexAttribDivisor;
 ///     VkBool32 supportsNonZeroFirstInstance;
 /// } VkPhysicalDeviceVertexAttributeDivisorProperties;

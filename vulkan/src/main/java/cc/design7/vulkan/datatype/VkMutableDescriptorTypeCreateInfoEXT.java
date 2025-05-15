@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkMutableDescriptorTypeCreateInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t mutableDescriptorTypeListCount;
+///     void const* pNext; // optional
+///     uint32_t mutableDescriptorTypeListCount; // optional
 ///     VkMutableDescriptorTypeListEXT const* pMutableDescriptorTypeLists;
 /// } VkMutableDescriptorTypeCreateInfoEXT;
 /// }

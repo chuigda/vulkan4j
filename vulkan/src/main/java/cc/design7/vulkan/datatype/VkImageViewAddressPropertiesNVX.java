@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkImageViewAddressPropertiesNVX {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkDeviceAddress deviceAddress;
 ///     VkDeviceSize size;
 /// } VkImageViewAddressPropertiesNVX;

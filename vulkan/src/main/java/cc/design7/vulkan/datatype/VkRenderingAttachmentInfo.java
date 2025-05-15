@@ -21,11 +21,11 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkRenderingAttachmentInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkImageView imageView;
+///     void const* pNext; // optional
+///     VkImageView imageView; // optional
 ///     VkImageLayout imageLayout;
-///     VkResolveModeFlags resolveMode;
-///     VkImageView resolveImageView;
+///     VkResolveModeFlags resolveMode; // optional
+///     VkImageView resolveImageView; // optional
 ///     VkImageLayout resolveImageLayout;
 ///     VkAttachmentLoadOp loadOp;
 ///     VkAttachmentStoreOp storeOp;

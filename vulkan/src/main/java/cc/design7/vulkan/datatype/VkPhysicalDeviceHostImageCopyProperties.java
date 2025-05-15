@@ -21,12 +21,12 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceHostImageCopyProperties {
 ///     VkStructureType sType;
-///     void* pNext;
-///     uint32_t copySrcLayoutCount;
-///     VkImageLayout* pCopySrcLayouts;
-///     uint32_t copyDstLayoutCount;
-///     VkImageLayout* pCopyDstLayouts;
-///     uint8_t optimalTilingLayoutUUID;
+///     void* pNext; // optional
+///     uint32_t copySrcLayoutCount; // optional
+///     VkImageLayout* pCopySrcLayouts; // optional
+///     uint32_t copyDstLayoutCount; // optional
+///     VkImageLayout* pCopyDstLayouts; // optional
+///     uint8_t optimalTilingLayoutUUID; // optional
 ///     VkBool32 identicalMemoryTypeRequirements;
 /// } VkPhysicalDeviceHostImageCopyProperties;
 /// }

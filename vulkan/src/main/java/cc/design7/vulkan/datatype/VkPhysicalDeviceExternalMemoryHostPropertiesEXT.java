@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceExternalMemoryHostPropertiesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkDeviceSize minImportedHostPointerAlignment;
 /// } VkPhysicalDeviceExternalMemoryHostPropertiesEXT;
 /// }

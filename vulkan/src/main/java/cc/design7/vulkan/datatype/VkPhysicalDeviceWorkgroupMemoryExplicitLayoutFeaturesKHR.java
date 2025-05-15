@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 workgroupMemoryExplicitLayout;
 ///     VkBool32 workgroupMemoryExplicitLayoutScalarBlockLayout;
 ///     VkBool32 workgroupMemoryExplicitLayout8BitAccess;

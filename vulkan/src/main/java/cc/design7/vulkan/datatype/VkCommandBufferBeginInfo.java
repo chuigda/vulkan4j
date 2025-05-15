@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkCommandBufferBeginInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkCommandBufferUsageFlags flags;
-///     VkCommandBufferInheritanceInfo const* pInheritanceInfo;
+///     void const* pNext; // optional
+///     VkCommandBufferUsageFlags flags; // optional
+///     VkCommandBufferInheritanceInfo const* pInheritanceInfo; // optional
 /// } VkCommandBufferBeginInfo;
 /// }
 ///

@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkExternalImageFormatPropertiesNV {
 ///     VkImageFormatProperties imageFormatProperties;
-///     VkExternalMemoryFeatureFlagsNV externalMemoryFeatures;
-///     VkExternalMemoryHandleTypeFlagsNV exportFromImportedHandleTypes;
-///     VkExternalMemoryHandleTypeFlagsNV compatibleHandleTypes;
+///     VkExternalMemoryFeatureFlagsNV externalMemoryFeatures; // optional
+///     VkExternalMemoryHandleTypeFlagsNV exportFromImportedHandleTypes; // optional
+///     VkExternalMemoryHandleTypeFlagsNV compatibleHandleTypes; // optional
 /// } VkExternalImageFormatPropertiesNV;
 /// }
 ///

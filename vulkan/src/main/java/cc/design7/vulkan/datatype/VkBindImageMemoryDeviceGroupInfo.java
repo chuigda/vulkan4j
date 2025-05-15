@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkBindImageMemoryDeviceGroupInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t deviceIndexCount;
+///     void const* pNext; // optional
+///     uint32_t deviceIndexCount; // optional
 ///     uint32_t const* pDeviceIndices;
-///     uint32_t splitInstanceBindRegionCount;
+///     uint32_t splitInstanceBindRegionCount; // optional
 ///     VkRect2D const* pSplitInstanceBindRegions;
 /// } VkBindImageMemoryDeviceGroupInfo;
 /// }

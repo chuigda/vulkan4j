@@ -21,11 +21,11 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineVertexInputStateCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineVertexInputStateCreateFlags flags;
-///     uint32_t vertexBindingDescriptionCount;
+///     void const* pNext; // optional
+///     VkPipelineVertexInputStateCreateFlags flags; // optional
+///     uint32_t vertexBindingDescriptionCount; // optional
 ///     VkVertexInputBindingDescription const* pVertexBindingDescriptions;
-///     uint32_t vertexAttributeDescriptionCount;
+///     uint32_t vertexAttributeDescriptionCount; // optional
 ///     VkVertexInputAttributeDescription const* pVertexAttributeDescriptions;
 /// } VkPipelineVertexInputStateCreateInfo;
 /// }

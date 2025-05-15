@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceOpacityMicromapPropertiesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t maxOpacity2StateSubdivisionLevel;
 ///     uint32_t maxOpacity4StateSubdivisionLevel;
 /// } VkPhysicalDeviceOpacityMicromapPropertiesEXT;

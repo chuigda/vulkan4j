@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceVulkan14Properties {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t lineSubPixelPrecisionBits;
 ///     uint32_t maxVertexAttribDivisor;
 ///     VkBool32 supportsNonZeroFirstInstance;
@@ -41,11 +41,11 @@ import static cc.design7.vulkan.VkConstants.*;
 ///     VkPipelineRobustnessBufferBehavior defaultRobustnessUniformBuffers;
 ///     VkPipelineRobustnessBufferBehavior defaultRobustnessVertexInputs;
 ///     VkPipelineRobustnessImageBehavior defaultRobustnessImages;
-///     uint32_t copySrcLayoutCount;
-///     VkImageLayout* pCopySrcLayouts;
-///     uint32_t copyDstLayoutCount;
-///     VkImageLayout* pCopyDstLayouts;
-///     uint8_t optimalTilingLayoutUUID;
+///     uint32_t copySrcLayoutCount; // optional
+///     VkImageLayout* pCopySrcLayouts; // optional
+///     uint32_t copyDstLayoutCount; // optional
+///     VkImageLayout* pCopyDstLayouts; // optional
+///     uint8_t optimalTilingLayoutUUID; // optional
 ///     VkBool32 identicalMemoryTypeRequirements;
 /// } VkPhysicalDeviceVulkan14Properties;
 /// }

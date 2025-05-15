@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceBufferDeviceAddressFeatures {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 bufferDeviceAddress;
 ///     VkBool32 bufferDeviceAddressCaptureReplay;
 ///     VkBool32 bufferDeviceAddressMultiDevice;

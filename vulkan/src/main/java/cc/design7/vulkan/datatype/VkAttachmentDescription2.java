@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkAttachmentDescription2 {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkAttachmentDescriptionFlags flags;
+///     void const* pNext; // optional
+///     VkAttachmentDescriptionFlags flags; // optional
 ///     VkFormat format;
 ///     VkSampleCountFlags samples;
 ///     VkAttachmentLoadOp loadOp;

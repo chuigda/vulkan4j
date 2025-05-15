@@ -21,13 +21,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkExecutionGraphPipelineCreateInfoAMDX {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineCreateFlags flags;
-///     uint32_t stageCount;
-///     VkPipelineShaderStageCreateInfo const* pStages;
-///     VkPipelineLibraryCreateInfoKHR const* pLibraryInfo;
+///     void const* pNext; // optional
+///     VkPipelineCreateFlags flags; // optional
+///     uint32_t stageCount; // optional
+///     VkPipelineShaderStageCreateInfo const* pStages; // optional
+///     VkPipelineLibraryCreateInfoKHR const* pLibraryInfo; // optional
 ///     VkPipelineLayout layout;
-///     VkPipeline basePipelineHandle;
+///     VkPipeline basePipelineHandle; // optional
 ///     int32_t basePipelineIndex;
 /// } VkExecutionGraphPipelineCreateInfoAMDX;
 /// }

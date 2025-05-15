@@ -20,7 +20,7 @@ import static cc.design7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAttachmentDescription {
-///     VkAttachmentDescriptionFlags flags;
+///     VkAttachmentDescriptionFlags flags; // optional
 ///     VkFormat format;
 ///     VkSampleCountFlags samples;
 ///     VkAttachmentLoadOp loadOp;

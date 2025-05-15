@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineViewportSwizzleStateCreateInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineViewportSwizzleStateCreateFlagsNV flags;
+///     void const* pNext; // optional
+///     VkPipelineViewportSwizzleStateCreateFlagsNV flags; // optional
 ///     uint32_t viewportCount;
 ///     VkViewportSwizzleNV const* pViewportSwizzles;
 /// } VkPipelineViewportSwizzleStateCreateInfoNV;

@@ -21,11 +21,11 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkImageMemoryBarrier2 {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineStageFlags2 srcStageMask;
-///     VkAccessFlags2 srcAccessMask;
-///     VkPipelineStageFlags2 dstStageMask;
-///     VkAccessFlags2 dstAccessMask;
+///     void const* pNext; // optional
+///     VkPipelineStageFlags2 srcStageMask; // optional
+///     VkAccessFlags2 srcAccessMask; // optional
+///     VkPipelineStageFlags2 dstStageMask; // optional
+///     VkAccessFlags2 dstAccessMask; // optional
 ///     VkImageLayout oldLayout;
 ///     VkImageLayout newLayout;
 ///     uint32_t srcQueueFamilyIndex;

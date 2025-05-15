@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkIndirectCommandsLayoutCreateInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkIndirectCommandsLayoutUsageFlagsNV flags;
+///     void const* pNext; // optional
+///     VkIndirectCommandsLayoutUsageFlagsNV flags; // optional
 ///     VkPipelineBindPoint pipelineBindPoint;
 ///     uint32_t tokenCount;
 ///     VkIndirectCommandsLayoutTokenNV const* pTokens;

@@ -22,7 +22,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// typedef struct VkRefreshObjectKHR {
 ///     VkObjectType objectType;
 ///     uint64_t objectHandle;
-///     VkRefreshObjectFlagsKHR flags;
+///     VkRefreshObjectFlagsKHR flags; // optional
 /// } VkRefreshObjectKHR;
 /// }
 ///

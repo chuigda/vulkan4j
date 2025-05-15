@@ -21,14 +21,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkCommandBufferInheritanceRenderingInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkRenderingFlags flags;
+///     void const* pNext; // optional
+///     VkRenderingFlags flags; // optional
 ///     uint32_t viewMask;
-///     uint32_t colorAttachmentCount;
+///     uint32_t colorAttachmentCount; // optional
 ///     VkFormat const* pColorAttachmentFormats;
 ///     VkFormat depthAttachmentFormat;
 ///     VkFormat stencilAttachmentFormat;
-///     VkSampleCountFlags rasterizationSamples;
+///     VkSampleCountFlags rasterizationSamples; // optional
 /// } VkCommandBufferInheritanceRenderingInfo;
 /// }
 ///

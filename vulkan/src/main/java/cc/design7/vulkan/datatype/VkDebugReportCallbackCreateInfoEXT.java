@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDebugReportCallbackCreateInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkDebugReportFlagsEXT flags;
+///     void const* pNext; // optional
+///     VkDebugReportFlagsEXT flags; // optional
 ///     PFN_vkDebugReportCallbackEXT pfnCallback;
-///     void* pUserData;
+///     void* pUserData; // optional
 /// } VkDebugReportCallbackCreateInfoEXT;
 /// }
 ///

@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSubpassDescriptionDepthStencilResolve {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkResolveModeFlags depthResolveMode;
 ///     VkResolveModeFlags stencilResolveMode;
-///     VkAttachmentReference2 const* pDepthStencilResolveAttachment;
+///     VkAttachmentReference2 const* pDepthStencilResolveAttachment; // optional
 /// } VkSubpassDescriptionDepthStencilResolve;
 /// }
 ///

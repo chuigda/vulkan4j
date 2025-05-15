@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkTilePropertiesQCOM {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkExtent3D tileSize;
 ///     VkExtent2D apronSize;
 ///     VkOffset2D origin;

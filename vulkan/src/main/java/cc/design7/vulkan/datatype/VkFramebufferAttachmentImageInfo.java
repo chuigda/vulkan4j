@@ -21,13 +21,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkFramebufferAttachmentImageInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkImageCreateFlags flags;
+///     void const* pNext; // optional
+///     VkImageCreateFlags flags; // optional
 ///     VkImageUsageFlags usage;
 ///     uint32_t width;
 ///     uint32_t height;
 ///     uint32_t layerCount;
-///     uint32_t viewFormatCount;
+///     uint32_t viewFormatCount; // optional
 ///     VkFormat const* pViewFormats;
 /// } VkFramebufferAttachmentImageInfo;
 /// }

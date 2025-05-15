@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoInlineQueryInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkQueryPool queryPool;
+///     void const* pNext; // optional
+///     VkQueryPool queryPool; // optional
 ///     uint32_t firstQuery;
 ///     uint32_t queryCount;
 /// } VkVideoInlineQueryInfoKHR;

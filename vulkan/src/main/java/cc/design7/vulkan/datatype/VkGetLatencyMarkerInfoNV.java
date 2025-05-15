@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkGetLatencyMarkerInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t timingCount;
-///     VkLatencyTimingsFrameReportNV* pTimings;
+///     void const* pNext; // optional
+///     uint32_t timingCount; // optional
+///     VkLatencyTimingsFrameReportNV* pTimings; // optional
 /// } VkGetLatencyMarkerInfoNV;
 /// }
 ///

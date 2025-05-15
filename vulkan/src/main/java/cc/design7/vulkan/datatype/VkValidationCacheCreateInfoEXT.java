@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkValidationCacheCreateInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkValidationCacheCreateFlagsEXT flags;
-///     size_t initialDataSize;
+///     void const* pNext; // optional
+///     VkValidationCacheCreateFlagsEXT flags; // optional
+///     size_t initialDataSize; // optional
 ///     void const* pInitialData;
 /// } VkValidationCacheCreateInfoEXT;
 /// }

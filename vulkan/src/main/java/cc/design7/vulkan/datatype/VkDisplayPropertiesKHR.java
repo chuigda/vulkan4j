@@ -24,7 +24,7 @@ import static cc.design7.vulkan.VkConstants.*;
 ///     char const* displayName;
 ///     VkExtent2D physicalDimensions;
 ///     VkExtent2D physicalResolution;
-///     VkSurfaceTransformFlagsKHR supportedTransforms;
+///     VkSurfaceTransformFlagsKHR supportedTransforms; // optional
 ///     VkBool32 planeReorderPossible;
 ///     VkBool32 persistentContent;
 /// } VkDisplayPropertiesKHR;

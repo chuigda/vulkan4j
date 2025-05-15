@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeAV1RateControlLayerInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkBool32 useMinQIndex;
 ///     VkVideoEncodeAV1QIndexKHR minQIndex;
 ///     VkBool32 useMaxQIndex;

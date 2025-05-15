@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderObjectPropertiesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint8_t shaderBinaryUUID;
 ///     uint32_t shaderBinaryVersion;
 /// } VkPhysicalDeviceShaderObjectPropertiesEXT;

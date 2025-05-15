@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkFramebufferAttachmentsCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t attachmentImageInfoCount;
+///     void const* pNext; // optional
+///     uint32_t attachmentImageInfoCount; // optional
 ///     VkFramebufferAttachmentImageInfo const* pAttachmentImageInfos;
 /// } VkFramebufferAttachmentsCreateInfo;
 /// }

@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSubpassShadingPipelineCreateInfoHUAWEI {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkRenderPass renderPass;
 ///     uint32_t subpass;
 /// } VkSubpassShadingPipelineCreateInfoHUAWEI;

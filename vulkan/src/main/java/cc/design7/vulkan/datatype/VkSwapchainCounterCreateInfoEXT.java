@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSwapchainCounterCreateInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkSurfaceCounterFlagsEXT surfaceCounters;
+///     void const* pNext; // optional
+///     VkSurfaceCounterFlagsEXT surfaceCounters; // optional
 /// } VkSwapchainCounterCreateInfoEXT;
 /// }
 ///

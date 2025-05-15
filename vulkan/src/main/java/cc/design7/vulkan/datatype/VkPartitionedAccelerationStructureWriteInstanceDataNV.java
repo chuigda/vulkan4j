@@ -25,7 +25,7 @@ import static cc.design7.vulkan.VkConstants.*;
 ///     uint32_t instanceID;
 ///     uint32_t instanceMask;
 ///     uint32_t instanceContributionToHitGroupIndex;
-///     VkPartitionedAccelerationStructureInstanceFlagsNV instanceFlags;
+///     VkPartitionedAccelerationStructureInstanceFlagsNV instanceFlags; // optional
 ///     uint32_t instanceIndex;
 ///     uint32_t partitionIndex;
 ///     VkDeviceAddress accelerationStructure;

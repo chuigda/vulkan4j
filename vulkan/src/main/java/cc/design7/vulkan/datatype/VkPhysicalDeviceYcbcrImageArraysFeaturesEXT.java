@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceYcbcrImageArraysFeaturesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 ycbcrImageArrays;
 /// } VkPhysicalDeviceYcbcrImageArraysFeaturesEXT;
 /// }

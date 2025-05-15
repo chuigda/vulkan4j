@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPushConstantsInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineLayout layout;
+///     void const* pNext; // optional
+///     VkPipelineLayout layout; // optional
 ///     VkShaderStageFlags stageFlags;
-///     uint32_t offset;
+///     uint32_t offset; // optional
 ///     uint32_t size;
 ///     void const* pValues;
 /// } VkPushConstantsInfo;

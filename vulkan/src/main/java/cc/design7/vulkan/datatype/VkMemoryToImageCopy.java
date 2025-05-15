@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkMemoryToImageCopy {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     void const* pHostPointer;
 ///     uint32_t memoryRowLength;
 ///     uint32_t memoryImageHeight;

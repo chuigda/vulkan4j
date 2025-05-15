@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineShaderStageNodeCreateInfoAMDX {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     char const* pName;
+///     void const* pNext; // optional
+///     char const* pName; // optional
 ///     uint32_t index;
 /// } VkPipelineShaderStageNodeCreateInfoAMDX;
 /// }

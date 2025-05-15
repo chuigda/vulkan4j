@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkBufferCollectionConstraintsInfoFUCHSIA {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     uint32_t minBufferCount;
 ///     uint32_t maxBufferCount;
 ///     uint32_t minBufferCountForCamping;

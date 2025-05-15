@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkLatencyTimingsFrameReportNV {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     uint64_t presentID;
 ///     uint64_t inputSampleTimeUs;
 ///     uint64_t simStartTimeUs;

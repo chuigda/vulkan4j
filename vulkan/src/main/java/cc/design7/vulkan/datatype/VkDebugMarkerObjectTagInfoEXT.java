@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDebugMarkerObjectTagInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkDebugReportObjectTypeEXT objectType;
 ///     uint64_t object;
 ///     uint64_t tagName;

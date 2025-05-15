@@ -113,10 +113,11 @@ fun generateStructure(
     +"/// {@snippet lang=c :"
     +"/// typedef struct $originalStructName {"
     structure.members.forEach {
+        val maybeOptionalComment = if (it.optional) " // optional" else ""
         if (it.bits != null) {
-            +"///     ${it.type.cDisplay} ${it.name} : ${it.bits};"
+            +"///     ${it.type.cDisplay} ${it.name} : ${it.bits};$maybeOptionalComment"
         } else {
-            +"///     ${it.type.cDisplay} ${it.name};"
+            +"///     ${it.type.cDisplay} ${it.name};$maybeOptionalComment"
         }
     }
     +"/// } $originalStructName;"

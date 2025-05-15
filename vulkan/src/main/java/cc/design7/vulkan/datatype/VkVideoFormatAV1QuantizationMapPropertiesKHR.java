@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoFormatAV1QuantizationMapPropertiesKHR {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkVideoEncodeAV1SuperblockSizeFlagsKHR compatibleSuperblockSizes;
 /// } VkVideoFormatAV1QuantizationMapPropertiesKHR;
 /// }

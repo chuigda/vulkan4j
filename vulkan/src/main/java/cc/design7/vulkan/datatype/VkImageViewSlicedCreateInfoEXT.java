@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkImageViewSlicedCreateInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     uint32_t sliceOffset;
 ///     uint32_t sliceCount;
 /// } VkImageViewSlicedCreateInfoEXT;

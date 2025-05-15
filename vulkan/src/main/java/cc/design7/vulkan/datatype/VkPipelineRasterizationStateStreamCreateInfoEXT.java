@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineRasterizationStateStreamCreateInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineRasterizationStateStreamCreateFlagsEXT flags;
+///     void const* pNext; // optional
+///     VkPipelineRasterizationStateStreamCreateFlagsEXT flags; // optional
 ///     uint32_t rasterizationStream;
 /// } VkPipelineRasterizationStateStreamCreateInfoEXT;
 /// }

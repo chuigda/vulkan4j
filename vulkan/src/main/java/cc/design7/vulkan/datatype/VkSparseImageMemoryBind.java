@@ -23,9 +23,9 @@ import static cc.design7.vulkan.VkConstants.*;
 ///     VkImageSubresource subresource;
 ///     VkOffset3D offset;
 ///     VkExtent3D extent;
-///     VkDeviceMemory memory;
+///     VkDeviceMemory memory; // optional
 ///     VkDeviceSize memoryOffset;
-///     VkSparseMemoryBindFlags flags;
+///     VkSparseMemoryBindFlags flags; // optional
 /// } VkSparseImageMemoryBind;
 /// }
 ///

@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeAV1QuantizationMapCapabilitiesKHR {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     int32_t minQIndexDelta;
 ///     int32_t maxQIndexDelta;
 /// } VkVideoEncodeAV1QuantizationMapCapabilitiesKHR;

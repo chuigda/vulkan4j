@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineRobustnessCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkPipelineRobustnessBufferBehavior storageBuffers;
 ///     VkPipelineRobustnessBufferBehavior uniformBuffers;
 ///     VkPipelineRobustnessBufferBehavior vertexInputs;

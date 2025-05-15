@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceGroupProperties {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t physicalDeviceCount;
 ///     VkPhysicalDevice physicalDevices;
 ///     VkBool32 subsetAllocation;

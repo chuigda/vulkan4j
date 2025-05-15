@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkImportSemaphoreZirconHandleInfoFUCHSIA {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkSemaphore semaphore;
-///     VkSemaphoreImportFlags flags;
+///     VkSemaphoreImportFlags flags; // optional
 ///     VkExternalSemaphoreHandleTypeFlags handleType;
 ///     zx_handle_t zirconHandle;
 /// } VkImportSemaphoreZirconHandleInfoFUCHSIA;

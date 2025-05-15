@@ -21,13 +21,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkRenderPassCreateFlags flags;
-///     uint32_t attachmentCount;
+///     void const* pNext; // optional
+///     VkRenderPassCreateFlags flags; // optional
+///     uint32_t attachmentCount; // optional
 ///     VkAttachmentDescription const* pAttachments;
 ///     uint32_t subpassCount;
 ///     VkSubpassDescription const* pSubpasses;
-///     uint32_t dependencyCount;
+///     uint32_t dependencyCount; // optional
 ///     VkSubpassDependency const* pDependencies;
 /// } VkRenderPassCreateInfo;
 /// }

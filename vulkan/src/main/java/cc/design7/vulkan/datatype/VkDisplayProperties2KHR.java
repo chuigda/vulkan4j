@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDisplayProperties2KHR {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkDisplayPropertiesKHR displayProperties;
 /// } VkDisplayProperties2KHR;
 /// }

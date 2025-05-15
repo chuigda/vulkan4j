@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkExportMetalSharedEventInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkSemaphore semaphore;
-///     VkEvent event;
+///     void const* pNext; // optional
+///     VkSemaphore semaphore; // optional
+///     VkEvent event; // optional
 ///     MTLSharedEvent_id mtlSharedEvent;
 /// } VkExportMetalSharedEventInfoEXT;
 /// }

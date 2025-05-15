@@ -21,12 +21,12 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassMultiviewCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t subpassCount;
+///     void const* pNext; // optional
+///     uint32_t subpassCount; // optional
 ///     uint32_t const* pViewMasks;
-///     uint32_t dependencyCount;
+///     uint32_t dependencyCount; // optional
 ///     int32_t const* pViewOffsets;
-///     uint32_t correlationMaskCount;
+///     uint32_t correlationMaskCount; // optional
 ///     uint32_t const* pCorrelationMasks;
 /// } VkRenderPassMultiviewCreateInfo;
 /// }

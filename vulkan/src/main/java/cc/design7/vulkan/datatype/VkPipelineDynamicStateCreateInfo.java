@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineDynamicStateCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineDynamicStateCreateFlags flags;
-///     uint32_t dynamicStateCount;
+///     void const* pNext; // optional
+///     VkPipelineDynamicStateCreateFlags flags; // optional
+///     uint32_t dynamicStateCount; // optional
 ///     VkDynamicState const* pDynamicStates;
 /// } VkPipelineDynamicStateCreateInfo;
 /// }

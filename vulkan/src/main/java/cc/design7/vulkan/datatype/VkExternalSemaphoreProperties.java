@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkExternalSemaphoreProperties {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkExternalSemaphoreHandleTypeFlags exportFromImportedHandleTypes;
 ///     VkExternalSemaphoreHandleTypeFlags compatibleHandleTypes;
-///     VkExternalSemaphoreFeatureFlags externalSemaphoreFeatures;
+///     VkExternalSemaphoreFeatureFlags externalSemaphoreFeatures; // optional
 /// } VkExternalSemaphoreProperties;
 /// }
 ///

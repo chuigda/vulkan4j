@@ -20,9 +20,9 @@ import static cc.design7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSpecializationInfo {
-///     uint32_t mapEntryCount;
+///     uint32_t mapEntryCount; // optional
 ///     VkSpecializationMapEntry const* pMapEntries;
-///     size_t dataSize;
+///     size_t dataSize; // optional
 ///     void const* pData;
 /// } VkSpecializationInfo;
 /// }

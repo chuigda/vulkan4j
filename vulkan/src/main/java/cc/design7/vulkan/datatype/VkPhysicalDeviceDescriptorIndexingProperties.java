@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceDescriptorIndexingProperties {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t maxUpdateAfterBindDescriptorsInAllPools;
 ///     VkBool32 shaderUniformBufferArrayNonUniformIndexingNative;
 ///     VkBool32 shaderSampledImageArrayNonUniformIndexingNative;

@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoDecodeAV1InlineSessionParametersInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     StdVideoAV1SequenceHeader const* pStdSequenceHeader;
+///     void const* pNext; // optional
+///     StdVideoAV1SequenceHeader const* pStdSequenceHeader; // optional
 /// } VkVideoDecodeAV1InlineSessionParametersInfoKHR;
 /// }
 ///

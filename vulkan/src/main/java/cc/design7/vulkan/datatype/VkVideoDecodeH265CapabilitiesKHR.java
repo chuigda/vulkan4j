@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoDecodeH265CapabilitiesKHR {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     StdVideoH265LevelIdc maxLevelIdc;
 /// } VkVideoDecodeH265CapabilitiesKHR;
 /// }

@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkImageViewHandleInfoNVX {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkImageView imageView;
 ///     VkDescriptorType descriptorType;
-///     VkSampler sampler;
+///     VkSampler sampler; // optional
 /// } VkImageViewHandleInfoNVX;
 /// }
 ///

@@ -21,12 +21,12 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineRasterizationStateCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineRasterizationStateCreateFlags flags;
+///     void const* pNext; // optional
+///     VkPipelineRasterizationStateCreateFlags flags; // optional
 ///     VkBool32 depthClampEnable;
 ///     VkBool32 rasterizerDiscardEnable;
 ///     VkPolygonMode polygonMode;
-///     VkCullModeFlags cullMode;
+///     VkCullModeFlags cullMode; // optional
 ///     VkFrontFace frontFace;
 ///     VkBool32 depthBiasEnable;
 ///     float depthBiasConstantFactor;

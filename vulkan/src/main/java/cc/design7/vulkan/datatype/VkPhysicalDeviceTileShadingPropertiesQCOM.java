@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceTileShadingPropertiesQCOM {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t maxApronSize;
 ///     VkBool32 preferNonCoherent;
 ///     VkExtent2D tileGranularity;

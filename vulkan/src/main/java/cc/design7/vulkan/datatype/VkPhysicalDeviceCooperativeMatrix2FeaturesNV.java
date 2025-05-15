@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceCooperativeMatrix2FeaturesNV {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 cooperativeMatrixWorkgroupScope;
 ///     VkBool32 cooperativeMatrixFlexibleDimensions;
 ///     VkBool32 cooperativeMatrixReductions;

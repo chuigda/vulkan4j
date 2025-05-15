@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceLayeredApiVulkanPropertiesKHR {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkPhysicalDeviceProperties2 properties;
 /// } VkPhysicalDeviceLayeredApiVulkanPropertiesKHR;
 /// }

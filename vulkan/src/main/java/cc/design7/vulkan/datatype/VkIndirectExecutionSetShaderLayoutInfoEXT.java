@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkIndirectExecutionSetShaderLayoutInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t setLayoutCount;
+///     void const* pNext; // optional
+///     uint32_t setLayoutCount; // optional
 ///     VkDescriptorSetLayout const* pSetLayouts;
 /// } VkIndirectExecutionSetShaderLayoutInfoEXT;
 /// }

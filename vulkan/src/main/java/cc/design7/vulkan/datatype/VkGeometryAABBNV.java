@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkGeometryAABBNV {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkBuffer aabbData;
+///     void const* pNext; // optional
+///     VkBuffer aabbData; // optional
 ///     uint32_t numAABBs;
 ///     uint32_t stride;
 ///     VkDeviceSize offset;

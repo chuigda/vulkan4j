@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkXcbSurfaceCreateInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkXcbSurfaceCreateFlagsKHR flags;
+///     void const* pNext; // optional
+///     VkXcbSurfaceCreateFlagsKHR flags; // optional
 ///     xcb_connection_t* connection;
 ///     xcb_window_t window;
 /// } VkXcbSurfaceCreateInfoKHR;

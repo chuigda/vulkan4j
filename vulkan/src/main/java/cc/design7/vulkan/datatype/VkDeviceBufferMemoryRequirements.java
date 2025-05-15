@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDeviceBufferMemoryRequirements {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkBufferCreateInfo const* pCreateInfo;
 /// } VkDeviceBufferMemoryRequirements;
 /// }

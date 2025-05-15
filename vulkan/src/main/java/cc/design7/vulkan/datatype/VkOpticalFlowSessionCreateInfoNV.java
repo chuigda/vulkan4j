@@ -21,16 +21,16 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkOpticalFlowSessionCreateInfoNV {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t width;
 ///     uint32_t height;
 ///     VkFormat imageFormat;
 ///     VkFormat flowVectorFormat;
-///     VkFormat costFormat;
+///     VkFormat costFormat; // optional
 ///     VkOpticalFlowGridSizeFlagsNV outputGridSize;
-///     VkOpticalFlowGridSizeFlagsNV hintGridSize;
-///     VkOpticalFlowPerformanceLevelNV performanceLevel;
-///     VkOpticalFlowSessionCreateFlagsNV flags;
+///     VkOpticalFlowGridSizeFlagsNV hintGridSize; // optional
+///     VkOpticalFlowPerformanceLevelNV performanceLevel; // optional
+///     VkOpticalFlowSessionCreateFlagsNV flags; // optional
 /// } VkOpticalFlowSessionCreateInfoNV;
 /// }
 ///

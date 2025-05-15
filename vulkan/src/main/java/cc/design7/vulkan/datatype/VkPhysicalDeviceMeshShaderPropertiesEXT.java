@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMeshShaderPropertiesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t maxTaskWorkGroupTotalCount;
 ///     uint32_t maxTaskWorkGroupCount;
 ///     uint32_t maxTaskWorkGroupInvocations;

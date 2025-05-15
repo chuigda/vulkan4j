@@ -21,17 +21,17 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSubpassDescription2 {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkSubpassDescriptionFlags flags;
+///     void const* pNext; // optional
+///     VkSubpassDescriptionFlags flags; // optional
 ///     VkPipelineBindPoint pipelineBindPoint;
 ///     uint32_t viewMask;
-///     uint32_t inputAttachmentCount;
+///     uint32_t inputAttachmentCount; // optional
 ///     VkAttachmentReference2 const* pInputAttachments;
-///     uint32_t colorAttachmentCount;
+///     uint32_t colorAttachmentCount; // optional
 ///     VkAttachmentReference2 const* pColorAttachments;
-///     VkAttachmentReference2 const* pResolveAttachments;
-///     VkAttachmentReference2 const* pDepthStencilAttachment;
-///     uint32_t preserveAttachmentCount;
+///     VkAttachmentReference2 const* pResolveAttachments; // optional
+///     VkAttachmentReference2 const* pDepthStencilAttachment; // optional
+///     uint32_t preserveAttachmentCount; // optional
 ///     uint32_t const* pPreserveAttachments;
 /// } VkSubpassDescription2;
 /// }

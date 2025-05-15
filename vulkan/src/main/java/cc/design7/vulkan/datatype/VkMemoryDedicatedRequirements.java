@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkMemoryDedicatedRequirements {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 prefersDedicatedAllocation;
 ///     VkBool32 requiresDedicatedAllocation;
 /// } VkMemoryDedicatedRequirements;

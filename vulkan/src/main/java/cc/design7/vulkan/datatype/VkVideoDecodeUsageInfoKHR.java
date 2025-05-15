@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoDecodeUsageInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkVideoDecodeUsageFlagsKHR videoUsageHints;
+///     void const* pNext; // optional
+///     VkVideoDecodeUsageFlagsKHR videoUsageHints; // optional
 /// } VkVideoDecodeUsageInfoKHR;
 /// }
 ///

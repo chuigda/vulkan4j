@@ -21,11 +21,11 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDeviceFaultInfoEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     char description;
-///     VkDeviceFaultAddressInfoEXT* pAddressInfos;
-///     VkDeviceFaultVendorInfoEXT* pVendorInfos;
-///     void* pVendorBinaryData;
+///     VkDeviceFaultAddressInfoEXT* pAddressInfos; // optional
+///     VkDeviceFaultVendorInfoEXT* pVendorInfos; // optional
+///     void* pVendorBinaryData; // optional
 /// } VkDeviceFaultInfoEXT;
 /// }
 ///

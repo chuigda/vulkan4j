@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMaintenance6Properties {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 blockTexelViewCompatibleMultipleLayers;
 ///     uint32_t maxCombinedImageSamplerDescriptorCount;
 ///     VkBool32 fragmentShadingRateClampCombinerInputs;

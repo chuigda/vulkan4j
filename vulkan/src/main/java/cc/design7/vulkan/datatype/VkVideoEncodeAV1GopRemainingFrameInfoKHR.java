@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeAV1GopRemainingFrameInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkBool32 useGopRemainingFrames;
 ///     uint32_t gopRemainingIntra;
 ///     uint32_t gopRemainingPredictive;

@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSetDescriptorBufferOffsetsInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkShaderStageFlags stageFlags;
-///     VkPipelineLayout layout;
-///     uint32_t firstSet;
+///     VkPipelineLayout layout; // optional
+///     uint32_t firstSet; // optional
 ///     uint32_t setCount;
 ///     uint32_t const* pBufferIndices;
 ///     VkDeviceSize const* pOffsets;

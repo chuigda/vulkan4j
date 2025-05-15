@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkSurfaceCapabilities2EXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t minImageCount;
 ///     uint32_t maxImageCount;
 ///     VkExtent2D currentExtent;
@@ -32,7 +32,7 @@ import static cc.design7.vulkan.VkConstants.*;
 ///     VkSurfaceTransformFlagsKHR currentTransform;
 ///     VkCompositeAlphaFlagsKHR supportedCompositeAlpha;
 ///     VkImageUsageFlags supportedUsageFlags;
-///     VkSurfaceCounterFlagsEXT supportedSurfaceCounters;
+///     VkSurfaceCounterFlagsEXT supportedSurfaceCounters; // optional
 /// } VkSurfaceCapabilities2EXT;
 /// }
 ///

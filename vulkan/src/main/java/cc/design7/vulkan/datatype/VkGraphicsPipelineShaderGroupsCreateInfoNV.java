@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkGraphicsPipelineShaderGroupsCreateInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t groupCount;
+///     void const* pNext; // optional
+///     uint32_t groupCount; // optional
 ///     VkGraphicsShaderGroupCreateInfoNV const* pGroups;
-///     uint32_t pipelineCount;
+///     uint32_t pipelineCount; // optional
 ///     VkPipeline const* pPipelines;
 /// } VkGraphicsPipelineShaderGroupsCreateInfoNV;
 /// }

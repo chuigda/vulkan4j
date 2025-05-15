@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceLayeredDriverPropertiesMSFT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkLayeredDriverUnderlyingApiMSFT underlyingAPI;
 /// } VkPhysicalDeviceLayeredDriverPropertiesMSFT;
 /// }

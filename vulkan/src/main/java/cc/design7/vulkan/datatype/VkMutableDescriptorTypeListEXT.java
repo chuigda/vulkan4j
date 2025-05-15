@@ -20,7 +20,7 @@ import static cc.design7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMutableDescriptorTypeListEXT {
-///     uint32_t descriptorTypeCount;
+///     uint32_t descriptorTypeCount; // optional
 ///     VkDescriptorType const* pDescriptorTypes;
 /// } VkMutableDescriptorTypeListEXT;
 /// }

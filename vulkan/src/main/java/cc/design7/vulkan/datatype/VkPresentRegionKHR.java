@@ -20,8 +20,8 @@ import static cc.design7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPresentRegionKHR {
-///     uint32_t rectangleCount;
-///     VkRectLayerKHR const* pRectangles;
+///     uint32_t rectangleCount; // optional
+///     VkRectLayerKHR const* pRectangles; // optional
 /// } VkPresentRegionKHR;
 /// }
 ///

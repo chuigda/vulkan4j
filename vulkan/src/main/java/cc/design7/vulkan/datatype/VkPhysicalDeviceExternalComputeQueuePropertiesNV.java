@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceExternalComputeQueuePropertiesNV {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t externalDataSize;
 ///     uint32_t maxExternalQueues;
 /// } VkPhysicalDeviceExternalComputeQueuePropertiesNV;

@@ -21,16 +21,16 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkFrameBoundaryEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkFrameBoundaryFlagsEXT flags;
+///     void const* pNext; // optional
+///     VkFrameBoundaryFlagsEXT flags; // optional
 ///     uint64_t frameID;
-///     uint32_t imageCount;
-///     VkImage const* pImages;
-///     uint32_t bufferCount;
-///     VkBuffer const* pBuffers;
-///     uint64_t tagName;
-///     size_t tagSize;
-///     void const* pTag;
+///     uint32_t imageCount; // optional
+///     VkImage const* pImages; // optional
+///     uint32_t bufferCount; // optional
+///     VkBuffer const* pBuffers; // optional
+///     uint64_t tagName; // optional
+///     size_t tagSize; // optional
+///     void const* pTag; // optional
 /// } VkFrameBoundaryEXT;
 /// }
 ///

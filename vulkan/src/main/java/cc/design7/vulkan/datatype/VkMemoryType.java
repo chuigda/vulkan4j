@@ -20,7 +20,7 @@ import static cc.design7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMemoryType {
-///     VkMemoryPropertyFlags propertyFlags;
+///     VkMemoryPropertyFlags propertyFlags; // optional
 ///     uint32_t heapIndex;
 /// } VkMemoryType;
 /// }

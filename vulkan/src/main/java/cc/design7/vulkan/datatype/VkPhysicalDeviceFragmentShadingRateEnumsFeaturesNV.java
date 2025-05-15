@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 fragmentShadingRateEnums;
 ///     VkBool32 supersampleFragmentShadingRates;
 ///     VkBool32 noInvocationFragmentShadingRates;

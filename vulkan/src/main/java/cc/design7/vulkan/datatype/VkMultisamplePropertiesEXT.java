@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkMultisamplePropertiesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkExtent2D maxSampleLocationGridSize;
 /// } VkMultisamplePropertiesEXT;
 /// }

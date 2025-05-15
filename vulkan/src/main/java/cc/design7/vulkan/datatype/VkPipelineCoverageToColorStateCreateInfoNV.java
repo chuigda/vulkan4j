@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineCoverageToColorStateCreateInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineCoverageToColorStateCreateFlagsNV flags;
+///     void const* pNext; // optional
+///     VkPipelineCoverageToColorStateCreateFlagsNV flags; // optional
 ///     VkBool32 coverageToColorEnable;
-///     uint32_t coverageToColorLocation;
+///     uint32_t coverageToColorLocation; // optional
 /// } VkPipelineCoverageToColorStateCreateInfoNV;
 /// }
 ///

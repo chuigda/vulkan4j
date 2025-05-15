@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassSampleLocationsBeginInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t attachmentInitialSampleLocationsCount;
+///     void const* pNext; // optional
+///     uint32_t attachmentInitialSampleLocationsCount; // optional
 ///     VkAttachmentSampleLocationsEXT const* pAttachmentInitialSampleLocations;
-///     uint32_t postSubpassSampleLocationsCount;
+///     uint32_t postSubpassSampleLocationsCount; // optional
 ///     VkSubpassSampleLocationsEXT const* pPostSubpassSampleLocations;
 /// } VkRenderPassSampleLocationsBeginInfoEXT;
 /// }

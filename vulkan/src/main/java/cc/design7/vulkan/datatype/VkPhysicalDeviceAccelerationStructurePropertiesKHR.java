@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceAccelerationStructurePropertiesKHR {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint64_t maxGeometryCount;
 ///     uint64_t maxInstanceCount;
 ///     uint64_t maxPrimitiveCount;

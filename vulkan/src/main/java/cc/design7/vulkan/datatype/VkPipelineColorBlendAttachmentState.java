@@ -27,7 +27,7 @@ import static cc.design7.vulkan.VkConstants.*;
 ///     VkBlendFactor srcAlphaBlendFactor;
 ///     VkBlendFactor dstAlphaBlendFactor;
 ///     VkBlendOp alphaBlendOp;
-///     VkColorComponentFlags colorWriteMask;
+///     VkColorComponentFlags colorWriteMask; // optional
 /// } VkPipelineColorBlendAttachmentState;
 /// }
 ///

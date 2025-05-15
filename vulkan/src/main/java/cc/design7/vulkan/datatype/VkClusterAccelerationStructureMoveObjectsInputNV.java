@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkClusterAccelerationStructureMoveObjectsInputNV {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkClusterAccelerationStructureTypeNV type;
 ///     VkBool32 noMoveOverlap;
 ///     VkDeviceSize maxMovedBytes;

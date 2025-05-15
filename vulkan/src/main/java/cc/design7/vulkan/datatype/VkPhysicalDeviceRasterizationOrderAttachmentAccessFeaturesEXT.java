@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 rasterizationOrderColorAttachmentAccess;
 ///     VkBool32 rasterizationOrderDepthAttachmentAccess;
 ///     VkBool32 rasterizationOrderStencilAttachmentAccess;

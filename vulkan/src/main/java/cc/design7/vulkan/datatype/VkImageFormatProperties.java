@@ -23,7 +23,7 @@ import static cc.design7.vulkan.VkConstants.*;
 ///     VkExtent3D maxExtent;
 ///     uint32_t maxMipLevels;
 ///     uint32_t maxArrayLayers;
-///     VkSampleCountFlags sampleCounts;
+///     VkSampleCountFlags sampleCounts; // optional
 ///     VkDeviceSize maxResourceSize;
 /// } VkImageFormatProperties;
 /// }

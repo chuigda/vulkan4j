@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkImportMemoryWin32HandleInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkExternalMemoryHandleTypeFlagsNV handleType;
-///     HANDLE handle;
+///     void const* pNext; // optional
+///     VkExternalMemoryHandleTypeFlagsNV handleType; // optional
+///     HANDLE handle; // optional
 /// } VkImportMemoryWin32HandleInfoNV;
 /// }
 ///

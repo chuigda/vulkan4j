@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceRenderPassStripedPropertiesARM {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkExtent2D renderPassStripeGranularity;
 ///     uint32_t maxRenderPassStripes;
 /// } VkPhysicalDeviceRenderPassStripedPropertiesARM;

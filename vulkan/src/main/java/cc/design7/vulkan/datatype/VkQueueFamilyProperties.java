@@ -20,7 +20,7 @@ import static cc.design7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkQueueFamilyProperties {
-///     VkQueueFlags queueFlags;
+///     VkQueueFlags queueFlags; // optional
 ///     uint32_t queueCount;
 ///     uint32_t timestampValidBits;
 ///     VkExtent3D minImageTransferGranularity;

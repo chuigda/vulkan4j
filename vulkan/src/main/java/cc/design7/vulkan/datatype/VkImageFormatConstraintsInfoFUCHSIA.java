@@ -21,11 +21,11 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkImageFormatConstraintsInfoFUCHSIA {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkImageCreateInfo imageCreateInfo;
 ///     VkFormatFeatureFlags requiredFormatFeatures;
-///     VkImageFormatConstraintsFlagsFUCHSIA flags;
-///     uint64_t sysmemPixelFormat;
+///     VkImageFormatConstraintsFlagsFUCHSIA flags; // optional
+///     uint64_t sysmemPixelFormat; // optional
 ///     uint32_t colorSpaceCount;
 ///     VkSysmemColorSpaceFUCHSIA const* pColorSpaces;
 /// } VkImageFormatConstraintsInfoFUCHSIA;

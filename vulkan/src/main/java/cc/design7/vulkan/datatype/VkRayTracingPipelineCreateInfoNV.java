@@ -21,15 +21,15 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkRayTracingPipelineCreateInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineCreateFlags flags;
+///     void const* pNext; // optional
+///     VkPipelineCreateFlags flags; // optional
 ///     uint32_t stageCount;
 ///     VkPipelineShaderStageCreateInfo const* pStages;
 ///     uint32_t groupCount;
 ///     VkRayTracingShaderGroupCreateInfoNV const* pGroups;
 ///     uint32_t maxRecursionDepth;
 ///     VkPipelineLayout layout;
-///     VkPipeline basePipelineHandle;
+///     VkPipeline basePipelineHandle; // optional
 ///     int32_t basePipelineIndex;
 /// } VkRayTracingPipelineCreateInfoNV;
 /// }

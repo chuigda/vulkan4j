@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineRasterizationConservativeStateCreateInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineRasterizationConservativeStateCreateFlagsEXT flags;
+///     void const* pNext; // optional
+///     VkPipelineRasterizationConservativeStateCreateFlagsEXT flags; // optional
 ///     VkConservativeRasterizationModeEXT conservativeRasterizationMode;
 ///     float extraPrimitiveOverestimationSize;
 /// } VkPipelineRasterizationConservativeStateCreateInfoEXT;

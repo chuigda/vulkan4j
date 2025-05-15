@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureCaptureDescriptorDataInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkAccelerationStructureKHR accelerationStructure;
-///     VkAccelerationStructureNV accelerationStructureNV;
+///     void const* pNext; // optional
+///     VkAccelerationStructureKHR accelerationStructure; // optional
+///     VkAccelerationStructureNV accelerationStructureNV; // optional
 /// } VkAccelerationStructureCaptureDescriptorDataInfoEXT;
 /// }
 ///

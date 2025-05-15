@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDispatchGraphInfoAMDX {
 ///     uint32_t nodeIndex;
-///     uint32_t payloadCount;
+///     uint32_t payloadCount; // optional
 ///     VkDeviceOrHostAddressConstAMDX payloads;
 ///     uint64_t payloadStride;
 /// } VkDispatchGraphInfoAMDX;

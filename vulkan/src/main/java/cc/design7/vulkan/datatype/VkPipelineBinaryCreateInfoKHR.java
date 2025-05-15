@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineBinaryCreateInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkPipelineBinaryKeysAndDataKHR const* pKeysAndDataInfo;
-///     VkPipeline pipeline;
-///     VkPipelineCreateInfoKHR const* pPipelineCreateInfo;
+///     void const* pNext; // optional
+///     VkPipelineBinaryKeysAndDataKHR const* pKeysAndDataInfo; // optional
+///     VkPipeline pipeline; // optional
+///     VkPipelineCreateInfoKHR const* pPipelineCreateInfo; // optional
 /// } VkPipelineBinaryCreateInfoKHR;
 /// }
 ///

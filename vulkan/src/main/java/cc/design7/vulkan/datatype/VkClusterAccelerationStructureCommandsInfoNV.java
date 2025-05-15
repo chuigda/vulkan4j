@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkClusterAccelerationStructureCommandsInfoNV {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkClusterAccelerationStructureInputInfoNV input;
 ///     VkDeviceAddress dstImplicitData;
 ///     VkDeviceAddress scratchData;
@@ -29,7 +29,7 @@ import static cc.design7.vulkan.VkConstants.*;
 ///     VkStridedDeviceAddressRegionKHR dstSizesArray;
 ///     VkStridedDeviceAddressRegionKHR srcInfosArray;
 ///     VkDeviceAddress srcInfosCount;
-///     VkClusterAccelerationStructureAddressResolutionFlagsNV addressResolutionFlags;
+///     VkClusterAccelerationStructureAddressResolutionFlagsNV addressResolutionFlags; // optional
 /// } VkClusterAccelerationStructureCommandsInfoNV;
 /// }
 ///

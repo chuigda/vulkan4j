@@ -21,12 +21,12 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDeviceGroupSubmitInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t waitSemaphoreCount;
+///     void const* pNext; // optional
+///     uint32_t waitSemaphoreCount; // optional
 ///     uint32_t const* pWaitSemaphoreDeviceIndices;
-///     uint32_t commandBufferCount;
+///     uint32_t commandBufferCount; // optional
 ///     uint32_t const* pCommandBufferDeviceMasks;
-///     uint32_t signalSemaphoreCount;
+///     uint32_t signalSemaphoreCount; // optional
 ///     uint32_t const* pSignalSemaphoreDeviceIndices;
 /// } VkDeviceGroupSubmitInfo;
 /// }

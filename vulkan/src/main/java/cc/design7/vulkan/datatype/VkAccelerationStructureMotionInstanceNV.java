@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureMotionInstanceNV {
 ///     VkAccelerationStructureMotionInstanceTypeNV type;
-///     VkAccelerationStructureMotionInstanceFlagsNV flags;
+///     VkAccelerationStructureMotionInstanceFlagsNV flags; // optional
 ///     VkAccelerationStructureMotionInstanceDataNV data;
 /// } VkAccelerationStructureMotionInstanceNV;
 /// }

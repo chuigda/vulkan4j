@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkDescriptorUpdateTemplateCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkDescriptorUpdateTemplateCreateFlags flags;
+///     void const* pNext; // optional
+///     VkDescriptorUpdateTemplateCreateFlags flags; // optional
 ///     uint32_t descriptorUpdateEntryCount;
 ///     VkDescriptorUpdateTemplateEntry const* pDescriptorUpdateEntries;
 ///     VkDescriptorUpdateTemplateType templateType;

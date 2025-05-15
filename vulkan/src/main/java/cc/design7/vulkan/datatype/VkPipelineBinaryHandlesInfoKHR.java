@@ -21,9 +21,9 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPipelineBinaryHandlesInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     uint32_t pipelineBinaryCount;
-///     VkPipelineBinaryKHR* pPipelineBinaries;
+///     VkPipelineBinaryKHR* pPipelineBinaries; // optional
 /// } VkPipelineBinaryHandlesInfoKHR;
 /// }
 ///

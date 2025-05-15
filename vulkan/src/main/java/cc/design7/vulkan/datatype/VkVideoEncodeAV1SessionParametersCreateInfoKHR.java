@@ -21,11 +21,11 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeAV1SessionParametersCreateInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     StdVideoAV1SequenceHeader const* pStdSequenceHeader;
-///     StdVideoEncodeAV1DecoderModelInfo const* pStdDecoderModelInfo;
-///     uint32_t stdOperatingPointCount;
-///     StdVideoEncodeAV1OperatingPointInfo const* pStdOperatingPoints;
+///     StdVideoEncodeAV1DecoderModelInfo const* pStdDecoderModelInfo; // optional
+///     uint32_t stdOperatingPointCount; // optional
+///     StdVideoEncodeAV1OperatingPointInfo const* pStdOperatingPoints; // optional
 /// } VkVideoEncodeAV1SessionParametersCreateInfoKHR;
 /// }
 ///

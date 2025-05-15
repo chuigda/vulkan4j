@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkFragmentShadingRateAttachmentInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkAttachmentReference2 const* pFragmentShadingRateAttachment;
+///     void const* pNext; // optional
+///     VkAttachmentReference2 const* pFragmentShadingRateAttachment; // optional
 ///     VkExtent2D shadingRateAttachmentTexelSize;
 /// } VkFragmentShadingRateAttachmentInfoKHR;
 /// }

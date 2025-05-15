@@ -21,12 +21,12 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkWin32KeyedMutexAcquireReleaseInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t acquireCount;
+///     void const* pNext; // optional
+///     uint32_t acquireCount; // optional
 ///     VkDeviceMemory const* pAcquireSyncs;
 ///     uint64_t const* pAcquireKeys;
 ///     uint32_t const* pAcquireTimeouts;
-///     uint32_t releaseCount;
+///     uint32_t releaseCount; // optional
 ///     VkDeviceMemory const* pReleaseSyncs;
 ///     uint64_t const* pReleaseKeys;
 /// } VkWin32KeyedMutexAcquireReleaseInfoKHR;

@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceVulkanMemoryModelFeatures {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 vulkanMemoryModel;
 ///     VkBool32 vulkanMemoryModelDeviceScope;
 ///     VkBool32 vulkanMemoryModelAvailabilityVisibilityChains;

@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkMemoryAllocateFlagsInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkMemoryAllocateFlags flags;
+///     void const* pNext; // optional
+///     VkMemoryAllocateFlags flags; // optional
 ///     uint32_t deviceMask;
 /// } VkMemoryAllocateFlagsInfo;
 /// }

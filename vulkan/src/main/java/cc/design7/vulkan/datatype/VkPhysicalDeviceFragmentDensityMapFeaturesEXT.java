@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceFragmentDensityMapFeaturesEXT {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 fragmentDensityMap;
 ///     VkBool32 fragmentDensityMapDynamic;
 ///     VkBool32 fragmentDensityMapNonSubsampledImages;

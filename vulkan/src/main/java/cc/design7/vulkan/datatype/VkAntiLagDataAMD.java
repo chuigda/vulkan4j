@@ -21,10 +21,10 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkAntiLagDataAMD {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkAntiLagModeAMD mode;
 ///     uint32_t maxFPS;
-///     VkAntiLagPresentationInfoAMD const* pPresentationInfo;
+///     VkAntiLagPresentationInfoAMD const* pPresentationInfo; // optional
 /// } VkAntiLagDataAMD;
 /// }
 ///

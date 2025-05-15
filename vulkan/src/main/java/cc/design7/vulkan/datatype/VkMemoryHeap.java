@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkMemoryHeap {
 ///     VkDeviceSize size;
-///     VkMemoryHeapFlags flags;
+///     VkMemoryHeapFlags flags; // optional
 /// } VkMemoryHeap;
 /// }
 ///

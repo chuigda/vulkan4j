@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceTileMemoryHeapPropertiesQCOM {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     VkBool32 queueSubmitBoundary;
 ///     VkBool32 tileBufferTransfers;
 /// } VkPhysicalDeviceTileMemoryHeapPropertiesQCOM;

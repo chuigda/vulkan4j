@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkLatencySleepInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     VkSemaphore signalSemaphore;
 ///     uint64_t value;
 /// } VkLatencySleepInfoNV;

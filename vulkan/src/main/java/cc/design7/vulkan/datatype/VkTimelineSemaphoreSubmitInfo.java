@@ -21,11 +21,11 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkTimelineSemaphoreSubmitInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     uint32_t waitSemaphoreValueCount;
-///     uint64_t const* pWaitSemaphoreValues;
-///     uint32_t signalSemaphoreValueCount;
-///     uint64_t const* pSignalSemaphoreValues;
+///     void const* pNext; // optional
+///     uint32_t waitSemaphoreValueCount; // optional
+///     uint64_t const* pWaitSemaphoreValues; // optional
+///     uint32_t signalSemaphoreValueCount; // optional
+///     uint64_t const* pSignalSemaphoreValues; // optional
 /// } VkTimelineSemaphoreSubmitInfo;
 /// }
 ///

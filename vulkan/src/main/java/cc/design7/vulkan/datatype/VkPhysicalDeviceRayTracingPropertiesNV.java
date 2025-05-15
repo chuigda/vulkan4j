@@ -21,7 +21,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceRayTracingPropertiesNV {
 ///     VkStructureType sType;
-///     void* pNext;
+///     void* pNext; // optional
 ///     uint32_t shaderGroupHandleSize;
 ///     uint32_t maxRecursionDepth;
 ///     uint32_t maxShaderGroupStride;

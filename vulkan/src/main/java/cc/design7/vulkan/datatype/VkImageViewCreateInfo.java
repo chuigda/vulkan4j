@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkImageViewCreateInfo {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkImageViewCreateFlags flags;
+///     void const* pNext; // optional
+///     VkImageViewCreateFlags flags; // optional
 ///     VkImage image;
 ///     VkImageViewType viewType;
 ///     VkFormat format;

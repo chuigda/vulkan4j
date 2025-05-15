@@ -21,11 +21,11 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkGraphicsShaderGroupCreateInfoNV {
 ///     VkStructureType sType;
-///     void const* pNext;
+///     void const* pNext; // optional
 ///     uint32_t stageCount;
 ///     VkPipelineShaderStageCreateInfo const* pStages;
-///     VkPipelineVertexInputStateCreateInfo const* pVertexInputState;
-///     VkPipelineTessellationStateCreateInfo const* pTessellationState;
+///     VkPipelineVertexInputStateCreateInfo const* pVertexInputState; // optional
+///     VkPipelineTessellationStateCreateInfo const* pTessellationState; // optional
 /// } VkGraphicsShaderGroupCreateInfoNV;
 /// }
 ///

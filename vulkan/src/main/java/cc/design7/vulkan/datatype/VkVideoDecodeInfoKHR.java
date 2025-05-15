@@ -21,14 +21,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkVideoDecodeInfoKHR {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkVideoDecodeFlagsKHR flags;
+///     void const* pNext; // optional
+///     VkVideoDecodeFlagsKHR flags; // optional
 ///     VkBuffer srcBuffer;
 ///     VkDeviceSize srcBufferOffset;
 ///     VkDeviceSize srcBufferRange;
 ///     VkVideoPictureResourceInfoKHR dstPictureResource;
-///     VkVideoReferenceSlotInfoKHR const* pSetupReferenceSlot;
-///     uint32_t referenceSlotCount;
+///     VkVideoReferenceSlotInfoKHR const* pSetupReferenceSlot; // optional
+///     uint32_t referenceSlotCount; // optional
 ///     VkVideoReferenceSlotInfoKHR const* pReferenceSlots;
 /// } VkVideoDecodeInfoKHR;
 /// }

@@ -21,8 +21,8 @@ import static cc.design7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkGeneratedCommandsMemoryRequirementsInfoEXT {
 ///     VkStructureType sType;
-///     void const* pNext;
-///     VkIndirectExecutionSetEXT indirectExecutionSet;
+///     void const* pNext; // optional
+///     VkIndirectExecutionSetEXT indirectExecutionSet; // optional
 ///     VkIndirectCommandsLayoutEXT indirectCommandsLayout;
 ///     uint32_t maxSequenceCount;
 ///     uint32_t maxDrawCount;
