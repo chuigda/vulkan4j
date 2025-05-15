@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureClusterFlagsNV.html">VkClusterAccelerationStructureClusterFlagsNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureClusterFlagsNV.html"><code>VkClusterAccelerationStructureClusterFlagsNV</code></a>
 public final class VkClusterAccelerationStructureClusterFlagsNV {
     public static final int ALLOW_DISABLE_OPACITY_MICROMAPS = 0x1;
 

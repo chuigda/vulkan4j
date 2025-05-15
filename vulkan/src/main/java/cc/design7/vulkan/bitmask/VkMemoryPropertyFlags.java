@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryPropertyFlags.html">VkMemoryPropertyFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryPropertyFlags.html"><code>VkMemoryPropertyFlags</code></a>
 public final class VkMemoryPropertyFlags {
     public static final int DEVICE_COHERENT_AMD = 0x40;
     public static final int DEVICE_LOCAL = 0x1;

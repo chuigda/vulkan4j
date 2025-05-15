@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFrontFace.html">VkFrontFace</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFrontFace.html"><code>VkFrontFace</code></a>
 public final class VkFrontFace {
     public static final int COUNTER_CLOCKWISE = 0x0;
     public static final int CLOCKWISE = 0x1;

@@ -14,8 +14,35 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkAccelerationStructureBuildGeometryInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureBuildGeometryInfoKHR.html"><code>VkAccelerationStructureBuildGeometryInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkAccelerationStructureBuildGeometryInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkAccelerationStructureTypeKHR type;
+///     VkBuildAccelerationStructureFlagsKHR flags;
+///     VkBuildAccelerationStructureModeKHR mode;
+///     VkAccelerationStructureKHR srcAccelerationStructure;
+///     VkAccelerationStructureKHR dstAccelerationStructure;
+///     uint32_t geometryCount;
+///     VkAccelerationStructureGeometryKHR const* pGeometries;
+///     VkAccelerationStructureGeometryKHR const* const* ppGeometries;
+///     VkDeviceOrHostAddressKHR scratchData;
+/// } VkAccelerationStructureBuildGeometryInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR`
+///
+/// The {@link VkAccelerationStructureBuildGeometryInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkAccelerationStructureBuildGeometryInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +51,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureBuildGeometryInfoKHR.html">VkAccelerationStructureBuildGeometryInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureBuildGeometryInfoKHR.html"><code>VkAccelerationStructureBuildGeometryInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkAccelerationStructureBuildGeometryInfoKHR {
-        sType(VkStructureType.ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR);
-    }
-
     public static VkAccelerationStructureBuildGeometryInfoKHR allocate(Arena arena) {
-        return new VkAccelerationStructureBuildGeometryInfoKHR(arena.allocate(LAYOUT));
+        VkAccelerationStructureBuildGeometryInfoKHR ret = new VkAccelerationStructureBuildGeometryInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR);
+        return ret;
     }
 
     public static VkAccelerationStructureBuildGeometryInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +66,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         VkAccelerationStructureBuildGeometryInfoKHR[] ret = new VkAccelerationStructureBuildGeometryInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkAccelerationStructureBuildGeometryInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR);
         }
         return ret;
     }
@@ -57,6 +83,153 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkAccelerationStructureTypeKHR.class) int type() {
+        return segment.get(LAYOUT$type, OFFSET$type);
+    }
+
+    public void type(@enumtype(VkAccelerationStructureTypeKHR.class) int value) {
+        segment.set(LAYOUT$type, OFFSET$type, value);
+    }
+
+    public @enumtype(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkBuildAccelerationStructureFlagsKHR.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @enumtype(VkBuildAccelerationStructureModeKHR.class) int mode() {
+        return segment.get(LAYOUT$mode, OFFSET$mode);
+    }
+
+    public void mode(@enumtype(VkBuildAccelerationStructureModeKHR.class) int value) {
+        segment.set(LAYOUT$mode, OFFSET$mode, value);
+    }
+
+    public @Nullable VkAccelerationStructureKHR srcAccelerationStructure() {
+        MemorySegment s = segment.asSlice(OFFSET$srcAccelerationStructure, SIZE$srcAccelerationStructure);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkAccelerationStructureKHR(s);
+    }
+
+    public void srcAccelerationStructure(@Nullable VkAccelerationStructureKHR value) {
+        segment.set(LAYOUT$srcAccelerationStructure, OFFSET$srcAccelerationStructure, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @Nullable VkAccelerationStructureKHR dstAccelerationStructure() {
+        MemorySegment s = segment.asSlice(OFFSET$dstAccelerationStructure, SIZE$dstAccelerationStructure);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkAccelerationStructureKHR(s);
+    }
+
+    public void dstAccelerationStructure(@Nullable VkAccelerationStructureKHR value) {
+        segment.set(LAYOUT$dstAccelerationStructure, OFFSET$dstAccelerationStructure, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned int geometryCount() {
+        return segment.get(LAYOUT$geometryCount, OFFSET$geometryCount);
+    }
+
+    public void geometryCount(@unsigned int value) {
+        segment.set(LAYOUT$geometryCount, OFFSET$geometryCount, value);
+    }
+
+    public @pointer(comment="VkAccelerationStructureGeometryKHR*") MemorySegment pGeometriesRaw() {
+        return segment.get(LAYOUT$pGeometries, OFFSET$pGeometries);
+    }
+
+    public void pGeometriesRaw(@pointer(comment="VkAccelerationStructureGeometryKHR*") MemorySegment value) {
+        segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
+    }
+
+    public @Nullable VkAccelerationStructureGeometryKHR pGeometries() {
+        MemorySegment s = pGeometriesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkAccelerationStructureGeometryKHR(s);
+    }
+
+    public void pGeometries(@Nullable VkAccelerationStructureGeometryKHR value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pGeometriesRaw(s);
+    }
+
+    @unsafe public @Nullable VkAccelerationStructureGeometryKHR[] pGeometries(int assumedCount) {
+        MemorySegment s = pGeometriesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkAccelerationStructureGeometryKHR.SIZE);
+        VkAccelerationStructureGeometryKHR[] ret = new VkAccelerationStructureGeometryKHR[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkAccelerationStructureGeometryKHR(s.asSlice(i * VkAccelerationStructureGeometryKHR.SIZE, VkAccelerationStructureGeometryKHR.SIZE));
+        }
+        return ret;
+    }
+
+    public @pointer(comment="void**") MemorySegment ppGeometriesRaw() {
+        return segment.get(LAYOUT$ppGeometries, OFFSET$ppGeometries);
+    }
+
+    public void ppGeometriesRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$ppGeometries, OFFSET$ppGeometries, value);
+    }
+
+    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
+    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the size before
+    /// actually reading from or writing to the buffer.
+    public @Nullable PointerBuffer ppGeometries() {
+        MemorySegment s = ppGeometriesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new PointerBuffer(s);
+    }
+
+    public void ppGeometries(@Nullable PointerBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        ppGeometriesRaw(s);
+    }
+
+    public VkDeviceOrHostAddressKHR scratchData() {
+        return new VkDeviceOrHostAddressKHR(segment.asSlice(OFFSET$scratchData, LAYOUT$scratchData));
+    }
+
+    public void scratchData(VkDeviceOrHostAddressKHR value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$scratchData, SIZE$scratchData);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -121,148 +294,4 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
     public static final long OFFSET$pGeometries = LAYOUT.byteOffset(PATH$pGeometries);
     public static final long OFFSET$ppGeometries = LAYOUT.byteOffset(PATH$ppGeometries);
     public static final long OFFSET$scratchData = LAYOUT.byteOffset(PATH$scratchData);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @enumtype(VkAccelerationStructureTypeKHR.class) int type() {
-        return segment.get(LAYOUT$type, OFFSET$type);
-    }
-
-    public void type(@enumtype(VkAccelerationStructureTypeKHR.class) int value) {
-        segment.set(LAYOUT$type, OFFSET$type, value);
-    }
-
-    public @enumtype(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkBuildAccelerationStructureFlagsKHR.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @enumtype(VkBuildAccelerationStructureModeKHR.class) int mode() {
-        return segment.get(LAYOUT$mode, OFFSET$mode);
-    }
-
-    public void mode(@enumtype(VkBuildAccelerationStructureModeKHR.class) int value) {
-        segment.set(LAYOUT$mode, OFFSET$mode, value);
-    }
-
-    public @Nullable VkAccelerationStructureKHR srcAccelerationStructure() {
-        MemorySegment s = segment.asSlice(OFFSET$srcAccelerationStructure, SIZE$srcAccelerationStructure);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkAccelerationStructureKHR(s);
-    }
-
-    public void srcAccelerationStructure(@Nullable VkAccelerationStructureKHR value) {
-        segment.set(LAYOUT$srcAccelerationStructure, OFFSET$srcAccelerationStructure, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @Nullable VkAccelerationStructureKHR dstAccelerationStructure() {
-        MemorySegment s = segment.asSlice(OFFSET$dstAccelerationStructure, SIZE$dstAccelerationStructure);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkAccelerationStructureKHR(s);
-    }
-
-    public void dstAccelerationStructure(@Nullable VkAccelerationStructureKHR value) {
-        segment.set(LAYOUT$dstAccelerationStructure, OFFSET$dstAccelerationStructure, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned int geometryCount() {
-        return segment.get(LAYOUT$geometryCount, OFFSET$geometryCount);
-    }
-
-    public void geometryCount(@unsigned int value) {
-        segment.set(LAYOUT$geometryCount, OFFSET$geometryCount, value);
-    }
-
-    public @pointer(comment="VkAccelerationStructureGeometryKHR*") MemorySegment pGeometriesRaw() {
-        return segment.get(LAYOUT$pGeometries, OFFSET$pGeometries);
-    }
-
-    public void pGeometriesRaw(@pointer(comment="VkAccelerationStructureGeometryKHR*") MemorySegment value) {
-        segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
-    }
-
-    public @Nullable VkAccelerationStructureGeometryKHR pGeometries() {
-        MemorySegment s = pGeometriesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkAccelerationStructureGeometryKHR(s);
-    }
-
-    public void pGeometries(@Nullable VkAccelerationStructureGeometryKHR value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pGeometriesRaw(s);
-    }
-
-    @unsafe public @Nullable VkAccelerationStructureGeometryKHR[] pGeometries(int assumedCount) {
-        MemorySegment s = pGeometriesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkAccelerationStructureGeometryKHR.SIZE);
-        VkAccelerationStructureGeometryKHR[] ret = new VkAccelerationStructureGeometryKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAccelerationStructureGeometryKHR(s.asSlice(i * VkAccelerationStructureGeometryKHR.SIZE, VkAccelerationStructureGeometryKHR.SIZE));
-        }
-        return ret;
-    }
-
-    public @pointer(comment="void**") MemorySegment ppGeometriesRaw() {
-        return segment.get(LAYOUT$ppGeometries, OFFSET$ppGeometries);
-    }
-
-    public void ppGeometriesRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$ppGeometries, OFFSET$ppGeometries, value);
-    }
-
-    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
-    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the size before
-    /// actually reading from or writing to the buffer.
-    public @Nullable PointerBuffer ppGeometries() {
-        MemorySegment s = ppGeometriesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new PointerBuffer(s);
-    }
-
-    public void ppGeometries(@Nullable PointerBuffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        ppGeometriesRaw(s);
-    }
-
-    public VkDeviceOrHostAddressKHR scratchData() {
-        return new VkDeviceOrHostAddressKHR(segment.asSlice(OFFSET$scratchData, LAYOUT$scratchData));
-    }
-
-    public void scratchData(VkDeviceOrHostAddressKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$scratchData, SIZE$scratchData);
-    }
-
 }

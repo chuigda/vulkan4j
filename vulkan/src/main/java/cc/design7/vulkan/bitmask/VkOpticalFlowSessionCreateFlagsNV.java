@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowSessionCreateFlagsNV.html">VkOpticalFlowSessionCreateFlagsNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowSessionCreateFlagsNV.html"><code>VkOpticalFlowSessionCreateFlagsNV</code></a>
 public final class VkOpticalFlowSessionCreateFlagsNV {
     public static final int ALLOW_REGIONS = 0x8;
     public static final int BOTH_DIRECTIONS = 0x10;

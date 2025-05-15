@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkGraphicsPipelineShaderGroupsCreateInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGraphicsPipelineShaderGroupsCreateInfoNV.html"><code>VkGraphicsPipelineShaderGroupsCreateInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkGraphicsPipelineShaderGroupsCreateInfoNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t groupCount;
+///     VkGraphicsShaderGroupCreateInfoNV const* pGroups;
+///     uint32_t pipelineCount;
+///     VkPipeline const* pPipelines;
+/// } VkGraphicsPipelineShaderGroupsCreateInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_SHADER_GROUPS_CREATE_INFO_NV`
+///
+/// The {@link VkGraphicsPipelineShaderGroupsCreateInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkGraphicsPipelineShaderGroupsCreateInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGraphicsPipelineShaderGroupsCreateInfoNV.html">VkGraphicsPipelineShaderGroupsCreateInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGraphicsPipelineShaderGroupsCreateInfoNV.html"><code>VkGraphicsPipelineShaderGroupsCreateInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkGraphicsPipelineShaderGroupsCreateInfoNV {
-        sType(VkStructureType.GRAPHICS_PIPELINE_SHADER_GROUPS_CREATE_INFO_NV);
-    }
-
     public static VkGraphicsPipelineShaderGroupsCreateInfoNV allocate(Arena arena) {
-        return new VkGraphicsPipelineShaderGroupsCreateInfoNV(arena.allocate(LAYOUT));
+        VkGraphicsPipelineShaderGroupsCreateInfoNV ret = new VkGraphicsPipelineShaderGroupsCreateInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.GRAPHICS_PIPELINE_SHADER_GROUPS_CREATE_INFO_NV);
+        return ret;
     }
 
     public static VkGraphicsPipelineShaderGroupsCreateInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         VkGraphicsPipelineShaderGroupsCreateInfoNV[] ret = new VkGraphicsPipelineShaderGroupsCreateInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkGraphicsPipelineShaderGroupsCreateInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.GRAPHICS_PIPELINE_SHADER_GROUPS_CREATE_INFO_NV);
         }
         return ret;
     }
@@ -59,43 +80,9 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("groupCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkGraphicsShaderGroupCreateInfoNV.LAYOUT).withName("pGroups"),
-        ValueLayout.JAVA_INT.withName("pipelineCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pPipelines")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$groupCount = PathElement.groupElement("PATH$groupCount");
-    public static final PathElement PATH$pGroups = PathElement.groupElement("PATH$pGroups");
-    public static final PathElement PATH$pipelineCount = PathElement.groupElement("PATH$pipelineCount");
-    public static final PathElement PATH$pPipelines = PathElement.groupElement("PATH$pPipelines");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$groupCount = (OfInt) LAYOUT.select(PATH$groupCount);
-    public static final AddressLayout LAYOUT$pGroups = (AddressLayout) LAYOUT.select(PATH$pGroups);
-    public static final OfInt LAYOUT$pipelineCount = (OfInt) LAYOUT.select(PATH$pipelineCount);
-    public static final AddressLayout LAYOUT$pPipelines = (AddressLayout) LAYOUT.select(PATH$pPipelines);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$groupCount = LAYOUT$groupCount.byteSize();
-    public static final long SIZE$pGroups = LAYOUT$pGroups.byteSize();
-    public static final long SIZE$pipelineCount = LAYOUT$pipelineCount.byteSize();
-    public static final long SIZE$pPipelines = LAYOUT$pPipelines.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$groupCount = LAYOUT.byteOffset(PATH$groupCount);
-    public static final long OFFSET$pGroups = LAYOUT.byteOffset(PATH$pGroups);
-    public static final long OFFSET$pipelineCount = LAYOUT.byteOffset(PATH$pipelineCount);
-    public static final long OFFSET$pPipelines = LAYOUT.byteOffset(PATH$pPipelines);
+    public void autoInit() {
+        sType(VkStructureType.GRAPHICS_PIPELINE_SHADER_GROUPS_CREATE_INFO_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -135,7 +122,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
 
     public @Nullable VkGraphicsShaderGroupCreateInfoNV pGroups() {
         MemorySegment s = pGroupsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkGraphicsShaderGroupCreateInfoNV(s);
@@ -148,7 +135,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
 
     @unsafe public @Nullable VkGraphicsShaderGroupCreateInfoNV[] pGroups(int assumedCount) {
         MemorySegment s = pGroupsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -182,11 +169,48 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
     /// buffer.
     public @Nullable VkPipeline.Buffer pPipelines() {
         MemorySegment s = pPipelinesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkPipeline.Buffer(s);
     }
 
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("groupCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkGraphicsShaderGroupCreateInfoNV.LAYOUT).withName("pGroups"),
+        ValueLayout.JAVA_INT.withName("pipelineCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pPipelines")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$groupCount = PathElement.groupElement("PATH$groupCount");
+    public static final PathElement PATH$pGroups = PathElement.groupElement("PATH$pGroups");
+    public static final PathElement PATH$pipelineCount = PathElement.groupElement("PATH$pipelineCount");
+    public static final PathElement PATH$pPipelines = PathElement.groupElement("PATH$pPipelines");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$groupCount = (OfInt) LAYOUT.select(PATH$groupCount);
+    public static final AddressLayout LAYOUT$pGroups = (AddressLayout) LAYOUT.select(PATH$pGroups);
+    public static final OfInt LAYOUT$pipelineCount = (OfInt) LAYOUT.select(PATH$pipelineCount);
+    public static final AddressLayout LAYOUT$pPipelines = (AddressLayout) LAYOUT.select(PATH$pPipelines);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$groupCount = LAYOUT$groupCount.byteSize();
+    public static final long SIZE$pGroups = LAYOUT$pGroups.byteSize();
+    public static final long SIZE$pipelineCount = LAYOUT$pipelineCount.byteSize();
+    public static final long SIZE$pPipelines = LAYOUT$pPipelines.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$groupCount = LAYOUT.byteOffset(PATH$groupCount);
+    public static final long OFFSET$pGroups = LAYOUT.byteOffset(PATH$pGroups);
+    public static final long OFFSET$pipelineCount = LAYOUT.byteOffset(PATH$pipelineCount);
+    public static final long OFFSET$pPipelines = LAYOUT.byteOffset(PATH$pPipelines);
 }

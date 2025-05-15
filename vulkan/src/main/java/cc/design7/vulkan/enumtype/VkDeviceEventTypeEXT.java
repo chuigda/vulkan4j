@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceEventTypeEXT.html">VkDeviceEventTypeEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceEventTypeEXT.html"><code>VkDeviceEventTypeEXT</code></a>
 public final class VkDeviceEventTypeEXT {
     public static final int DISPLAY_HOTPLUG = 0x0;
 

@@ -14,8 +14,25 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceProperties} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceProperties.html"><code>VkPhysicalDeviceProperties</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceProperties {
+///     uint32_t apiVersion;
+///     uint32_t driverVersion;
+///     uint32_t vendorID;
+///     uint32_t deviceID;
+///     VkPhysicalDeviceType deviceType;
+///     char deviceName;
+///     uint8_t pipelineCacheUUID;
+///     VkPhysicalDeviceLimits limits;
+///     VkPhysicalDeviceSparseProperties sparseProperties;
+/// } VkPhysicalDeviceProperties;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +41,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceProperties.html">VkPhysicalDeviceProperties</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceProperties.html"><code>VkPhysicalDeviceProperties</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) implements IPointer {
     public static VkPhysicalDeviceProperties allocate(Arena arena) {
-        return new VkPhysicalDeviceProperties(arena.allocate(LAYOUT));
+        VkPhysicalDeviceProperties ret = new VkPhysicalDeviceProperties(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkPhysicalDeviceProperties[] allocate(Arena arena, int count) {
@@ -54,59 +72,6 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("apiVersion"),
-        ValueLayout.JAVA_INT.withName("driverVersion"),
-        ValueLayout.JAVA_INT.withName("vendorID"),
-        ValueLayout.JAVA_INT.withName("deviceID"),
-        ValueLayout.JAVA_INT.withName("deviceType"),
-        ValueLayout.JAVA_BYTE.withName("deviceName"),
-        ValueLayout.JAVA_BYTE.withName("pipelineCacheUUID"),
-        VkPhysicalDeviceLimits.LAYOUT.withName("limits"),
-        VkPhysicalDeviceSparseProperties.LAYOUT.withName("sparseProperties")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$apiVersion = PathElement.groupElement("PATH$apiVersion");
-    public static final PathElement PATH$driverVersion = PathElement.groupElement("PATH$driverVersion");
-    public static final PathElement PATH$vendorID = PathElement.groupElement("PATH$vendorID");
-    public static final PathElement PATH$deviceID = PathElement.groupElement("PATH$deviceID");
-    public static final PathElement PATH$deviceType = PathElement.groupElement("PATH$deviceType");
-    public static final PathElement PATH$deviceName = PathElement.groupElement("PATH$deviceName");
-    public static final PathElement PATH$pipelineCacheUUID = PathElement.groupElement("PATH$pipelineCacheUUID");
-    public static final PathElement PATH$limits = PathElement.groupElement("PATH$limits");
-    public static final PathElement PATH$sparseProperties = PathElement.groupElement("PATH$sparseProperties");
-
-    public static final OfInt LAYOUT$apiVersion = (OfInt) LAYOUT.select(PATH$apiVersion);
-    public static final OfInt LAYOUT$driverVersion = (OfInt) LAYOUT.select(PATH$driverVersion);
-    public static final OfInt LAYOUT$vendorID = (OfInt) LAYOUT.select(PATH$vendorID);
-    public static final OfInt LAYOUT$deviceID = (OfInt) LAYOUT.select(PATH$deviceID);
-    public static final OfInt LAYOUT$deviceType = (OfInt) LAYOUT.select(PATH$deviceType);
-    public static final OfByte LAYOUT$deviceName = (OfByte) LAYOUT.select(PATH$deviceName);
-    public static final OfByte LAYOUT$pipelineCacheUUID = (OfByte) LAYOUT.select(PATH$pipelineCacheUUID);
-    public static final StructLayout LAYOUT$limits = (StructLayout) LAYOUT.select(PATH$limits);
-    public static final StructLayout LAYOUT$sparseProperties = (StructLayout) LAYOUT.select(PATH$sparseProperties);
-
-    public static final long SIZE$apiVersion = LAYOUT$apiVersion.byteSize();
-    public static final long SIZE$driverVersion = LAYOUT$driverVersion.byteSize();
-    public static final long SIZE$vendorID = LAYOUT$vendorID.byteSize();
-    public static final long SIZE$deviceID = LAYOUT$deviceID.byteSize();
-    public static final long SIZE$deviceType = LAYOUT$deviceType.byteSize();
-    public static final long SIZE$deviceName = LAYOUT$deviceName.byteSize();
-    public static final long SIZE$pipelineCacheUUID = LAYOUT$pipelineCacheUUID.byteSize();
-    public static final long SIZE$limits = LAYOUT$limits.byteSize();
-    public static final long SIZE$sparseProperties = LAYOUT$sparseProperties.byteSize();
-
-    public static final long OFFSET$apiVersion = LAYOUT.byteOffset(PATH$apiVersion);
-    public static final long OFFSET$driverVersion = LAYOUT.byteOffset(PATH$driverVersion);
-    public static final long OFFSET$vendorID = LAYOUT.byteOffset(PATH$vendorID);
-    public static final long OFFSET$deviceID = LAYOUT.byteOffset(PATH$deviceID);
-    public static final long OFFSET$deviceType = LAYOUT.byteOffset(PATH$deviceType);
-    public static final long OFFSET$deviceName = LAYOUT.byteOffset(PATH$deviceName);
-    public static final long OFFSET$pipelineCacheUUID = LAYOUT.byteOffset(PATH$pipelineCacheUUID);
-    public static final long OFFSET$limits = LAYOUT.byteOffset(PATH$limits);
-    public static final long OFFSET$sparseProperties = LAYOUT.byteOffset(PATH$sparseProperties);
 
     public @unsigned int apiVersion() {
         return segment.get(LAYOUT$apiVersion, OFFSET$apiVersion);
@@ -180,4 +145,56 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sparseProperties, SIZE$sparseProperties);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("apiVersion"),
+        ValueLayout.JAVA_INT.withName("driverVersion"),
+        ValueLayout.JAVA_INT.withName("vendorID"),
+        ValueLayout.JAVA_INT.withName("deviceID"),
+        ValueLayout.JAVA_INT.withName("deviceType"),
+        ValueLayout.JAVA_BYTE.withName("deviceName"),
+        ValueLayout.JAVA_BYTE.withName("pipelineCacheUUID"),
+        VkPhysicalDeviceLimits.LAYOUT.withName("limits"),
+        VkPhysicalDeviceSparseProperties.LAYOUT.withName("sparseProperties")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$apiVersion = PathElement.groupElement("PATH$apiVersion");
+    public static final PathElement PATH$driverVersion = PathElement.groupElement("PATH$driverVersion");
+    public static final PathElement PATH$vendorID = PathElement.groupElement("PATH$vendorID");
+    public static final PathElement PATH$deviceID = PathElement.groupElement("PATH$deviceID");
+    public static final PathElement PATH$deviceType = PathElement.groupElement("PATH$deviceType");
+    public static final PathElement PATH$deviceName = PathElement.groupElement("PATH$deviceName");
+    public static final PathElement PATH$pipelineCacheUUID = PathElement.groupElement("PATH$pipelineCacheUUID");
+    public static final PathElement PATH$limits = PathElement.groupElement("PATH$limits");
+    public static final PathElement PATH$sparseProperties = PathElement.groupElement("PATH$sparseProperties");
+
+    public static final OfInt LAYOUT$apiVersion = (OfInt) LAYOUT.select(PATH$apiVersion);
+    public static final OfInt LAYOUT$driverVersion = (OfInt) LAYOUT.select(PATH$driverVersion);
+    public static final OfInt LAYOUT$vendorID = (OfInt) LAYOUT.select(PATH$vendorID);
+    public static final OfInt LAYOUT$deviceID = (OfInt) LAYOUT.select(PATH$deviceID);
+    public static final OfInt LAYOUT$deviceType = (OfInt) LAYOUT.select(PATH$deviceType);
+    public static final OfByte LAYOUT$deviceName = (OfByte) LAYOUT.select(PATH$deviceName);
+    public static final OfByte LAYOUT$pipelineCacheUUID = (OfByte) LAYOUT.select(PATH$pipelineCacheUUID);
+    public static final StructLayout LAYOUT$limits = (StructLayout) LAYOUT.select(PATH$limits);
+    public static final StructLayout LAYOUT$sparseProperties = (StructLayout) LAYOUT.select(PATH$sparseProperties);
+
+    public static final long SIZE$apiVersion = LAYOUT$apiVersion.byteSize();
+    public static final long SIZE$driverVersion = LAYOUT$driverVersion.byteSize();
+    public static final long SIZE$vendorID = LAYOUT$vendorID.byteSize();
+    public static final long SIZE$deviceID = LAYOUT$deviceID.byteSize();
+    public static final long SIZE$deviceType = LAYOUT$deviceType.byteSize();
+    public static final long SIZE$deviceName = LAYOUT$deviceName.byteSize();
+    public static final long SIZE$pipelineCacheUUID = LAYOUT$pipelineCacheUUID.byteSize();
+    public static final long SIZE$limits = LAYOUT$limits.byteSize();
+    public static final long SIZE$sparseProperties = LAYOUT$sparseProperties.byteSize();
+
+    public static final long OFFSET$apiVersion = LAYOUT.byteOffset(PATH$apiVersion);
+    public static final long OFFSET$driverVersion = LAYOUT.byteOffset(PATH$driverVersion);
+    public static final long OFFSET$vendorID = LAYOUT.byteOffset(PATH$vendorID);
+    public static final long OFFSET$deviceID = LAYOUT.byteOffset(PATH$deviceID);
+    public static final long OFFSET$deviceType = LAYOUT.byteOffset(PATH$deviceType);
+    public static final long OFFSET$deviceName = LAYOUT.byteOffset(PATH$deviceName);
+    public static final long OFFSET$pipelineCacheUUID = LAYOUT.byteOffset(PATH$pipelineCacheUUID);
+    public static final long OFFSET$limits = LAYOUT.byteOffset(PATH$limits);
+    public static final long OFFSET$sparseProperties = LAYOUT.byteOffset(PATH$sparseProperties);
 }

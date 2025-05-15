@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT.html"><code>VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 graphicsPipelineLibraryFastLinking;
+///     VkBool32 graphicsPipelineLibraryIndependentInterpolationDecoration;
+/// } VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_PROPERTIES_EXT`
+///
+/// The {@link VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT.html">VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT.html"><code>VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT {
-        sType(VkStructureType.PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_PROPERTIES_EXT);
-    }
-
     public static VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(arena.allocate(LAYOUT));
+        VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT ret = new VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_PROPERTIES_EXT);
+        return ret;
     }
 
     public static VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(@NotNull Memo
         VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT[] ret = new VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_PROPERTIES_EXT);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(@NotNull Memo
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("graphicsPipelineLibraryFastLinking"),
-        ValueLayout.JAVA_INT.withName("graphicsPipelineLibraryIndependentInterpolationDecoration")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$graphicsPipelineLibraryFastLinking = PathElement.groupElement("PATH$graphicsPipelineLibraryFastLinking");
-    public static final PathElement PATH$graphicsPipelineLibraryIndependentInterpolationDecoration = PathElement.groupElement("PATH$graphicsPipelineLibraryIndependentInterpolationDecoration");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$graphicsPipelineLibraryFastLinking = (OfInt) LAYOUT.select(PATH$graphicsPipelineLibraryFastLinking);
-    public static final OfInt LAYOUT$graphicsPipelineLibraryIndependentInterpolationDecoration = (OfInt) LAYOUT.select(PATH$graphicsPipelineLibraryIndependentInterpolationDecoration);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$graphicsPipelineLibraryFastLinking = LAYOUT$graphicsPipelineLibraryFastLinking.byteSize();
-    public static final long SIZE$graphicsPipelineLibraryIndependentInterpolationDecoration = LAYOUT$graphicsPipelineLibraryIndependentInterpolationDecoration.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$graphicsPipelineLibraryFastLinking = LAYOUT.byteOffset(PATH$graphicsPipelineLibraryFastLinking);
-    public static final long OFFSET$graphicsPipelineLibraryIndependentInterpolationDecoration = LAYOUT.byteOffset(PATH$graphicsPipelineLibraryIndependentInterpolationDecoration);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_PROPERTIES_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(@NotNull Memo
         segment.set(LAYOUT$graphicsPipelineLibraryIndependentInterpolationDecoration, OFFSET$graphicsPipelineLibraryIndependentInterpolationDecoration, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("graphicsPipelineLibraryFastLinking"),
+        ValueLayout.JAVA_INT.withName("graphicsPipelineLibraryIndependentInterpolationDecoration")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$graphicsPipelineLibraryFastLinking = PathElement.groupElement("PATH$graphicsPipelineLibraryFastLinking");
+    public static final PathElement PATH$graphicsPipelineLibraryIndependentInterpolationDecoration = PathElement.groupElement("PATH$graphicsPipelineLibraryIndependentInterpolationDecoration");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$graphicsPipelineLibraryFastLinking = (OfInt) LAYOUT.select(PATH$graphicsPipelineLibraryFastLinking);
+    public static final OfInt LAYOUT$graphicsPipelineLibraryIndependentInterpolationDecoration = (OfInt) LAYOUT.select(PATH$graphicsPipelineLibraryIndependentInterpolationDecoration);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$graphicsPipelineLibraryFastLinking = LAYOUT$graphicsPipelineLibraryFastLinking.byteSize();
+    public static final long SIZE$graphicsPipelineLibraryIndependentInterpolationDecoration = LAYOUT$graphicsPipelineLibraryIndependentInterpolationDecoration.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$graphicsPipelineLibraryFastLinking = LAYOUT.byteOffset(PATH$graphicsPipelineLibraryFastLinking);
+    public static final long OFFSET$graphicsPipelineLibraryIndependentInterpolationDecoration = LAYOUT.byteOffset(PATH$graphicsPipelineLibraryIndependentInterpolationDecoration);
 }

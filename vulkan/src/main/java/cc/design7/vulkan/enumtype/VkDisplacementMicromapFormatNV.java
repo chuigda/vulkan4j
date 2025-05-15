@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplacementMicromapFormatNV.html">VkDisplacementMicromapFormatNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplacementMicromapFormatNV.html"><code>VkDisplacementMicromapFormatNV</code></a>
 public final class VkDisplacementMicromapFormatNV {
     public static final int _64_TRIANGLES_64_BYTES = 0x1;
     public static final int _256_TRIANGLES_128_BYTES = 0x2;

@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDescriptorImageInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorImageInfo.html"><code>VkDescriptorImageInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDescriptorImageInfo {
+///     VkSampler sampler;
+///     VkImageView imageView;
+///     VkImageLayout imageLayout;
+/// } VkDescriptorImageInfo;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorImageInfo.html">VkDescriptorImageInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorImageInfo.html"><code>VkDescriptorImageInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements IPointer {
     public static VkDescriptorImageInfo allocate(Arena arena) {
-        return new VkDescriptorImageInfo(arena.allocate(LAYOUT));
+        VkDescriptorImageInfo ret = new VkDescriptorImageInfo(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkDescriptorImageInfo[] allocate(Arena arena, int count) {
@@ -55,6 +67,38 @@ public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
+    public @Nullable VkSampler sampler() {
+        MemorySegment s = segment.asSlice(OFFSET$sampler, SIZE$sampler);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkSampler(s);
+    }
+
+    public void sampler(@Nullable VkSampler value) {
+        segment.set(LAYOUT$sampler, OFFSET$sampler, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @Nullable VkImageView imageView() {
+        MemorySegment s = segment.asSlice(OFFSET$imageView, SIZE$imageView);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkImageView(s);
+    }
+
+    public void imageView(@Nullable VkImageView value) {
+        segment.set(LAYOUT$imageView, OFFSET$imageView, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @enumtype(VkImageLayout.class) int imageLayout() {
+        return segment.get(LAYOUT$imageLayout, OFFSET$imageLayout);
+    }
+
+    public void imageLayout(@enumtype(VkImageLayout.class) int value) {
+        segment.set(LAYOUT$imageLayout, OFFSET$imageLayout, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withName("sampler"),
         ValueLayout.ADDRESS.withName("imageView"),
@@ -77,37 +121,4 @@ public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements I
     public static final long OFFSET$sampler = LAYOUT.byteOffset(PATH$sampler);
     public static final long OFFSET$imageView = LAYOUT.byteOffset(PATH$imageView);
     public static final long OFFSET$imageLayout = LAYOUT.byteOffset(PATH$imageLayout);
-
-    public @Nullable VkSampler sampler() {
-        MemorySegment s = segment.asSlice(OFFSET$sampler, SIZE$sampler);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkSampler(s);
-    }
-
-    public void sampler(@Nullable VkSampler value) {
-        segment.set(LAYOUT$sampler, OFFSET$sampler, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @Nullable VkImageView imageView() {
-        MemorySegment s = segment.asSlice(OFFSET$imageView, SIZE$imageView);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkImageView(s);
-    }
-
-    public void imageView(@Nullable VkImageView value) {
-        segment.set(LAYOUT$imageView, OFFSET$imageView, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @enumtype(VkImageLayout.class) int imageLayout() {
-        return segment.get(LAYOUT$imageLayout, OFFSET$imageLayout);
-    }
-
-    public void imageLayout(@enumtype(VkImageLayout.class) int value) {
-        segment.set(LAYOUT$imageLayout, OFFSET$imageLayout, value);
-    }
-
 }

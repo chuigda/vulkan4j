@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkCudaModuleCreateInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCudaModuleCreateInfoNV.html"><code>VkCudaModuleCreateInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkCudaModuleCreateInfoNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     size_t dataSize;
+///     void const* pData;
+/// } VkCudaModuleCreateInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV`
+///
+/// The {@link VkCudaModuleCreateInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkCudaModuleCreateInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCudaModuleCreateInfoNV.html">VkCudaModuleCreateInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCudaModuleCreateInfoNV.html"><code>VkCudaModuleCreateInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkCudaModuleCreateInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkCudaModuleCreateInfoNV {
-        sType(VkStructureType.CUDA_MODULE_CREATE_INFO_NV);
-    }
-
     public static VkCudaModuleCreateInfoNV allocate(Arena arena) {
-        return new VkCudaModuleCreateInfoNV(arena.allocate(LAYOUT));
+        VkCudaModuleCreateInfoNV ret = new VkCudaModuleCreateInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.CUDA_MODULE_CREATE_INFO_NV);
+        return ret;
     }
 
     public static VkCudaModuleCreateInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkCudaModuleCreateInfoNV(@NotNull MemorySegment segment) implement
         VkCudaModuleCreateInfoNV[] ret = new VkCudaModuleCreateInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkCudaModuleCreateInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.CUDA_MODULE_CREATE_INFO_NV);
         }
         return ret;
     }
@@ -59,32 +78,9 @@ public record VkCudaModuleCreateInfoNV(@NotNull MemorySegment segment) implement
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        NativeLayout.C_SIZE_T.withName("dataSize"),
-        ValueLayout.ADDRESS.withName("pData")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$dataSize = PathElement.groupElement("PATH$dataSize");
-    public static final PathElement PATH$pData = PathElement.groupElement("PATH$pData");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$pData = (AddressLayout) LAYOUT.select(PATH$pData);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$dataSize = NativeLayout.C_SIZE_T.byteSize();
-    public static final long SIZE$pData = LAYOUT$pData.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$dataSize = LAYOUT.byteOffset(PATH$dataSize);
-    public static final long OFFSET$pData = LAYOUT.byteOffset(PATH$pData);
+    public void autoInit() {
+        sType(VkStructureType.CUDA_MODULE_CREATE_INFO_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -126,4 +122,30 @@ public record VkCudaModuleCreateInfoNV(@NotNull MemorySegment segment) implement
         pData(pointer.segment());
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        NativeLayout.C_SIZE_T.withName("dataSize"),
+        ValueLayout.ADDRESS.withName("pData")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$dataSize = PathElement.groupElement("PATH$dataSize");
+    public static final PathElement PATH$pData = PathElement.groupElement("PATH$pData");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$pData = (AddressLayout) LAYOUT.select(PATH$pData);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$dataSize = NativeLayout.C_SIZE_T.byteSize();
+    public static final long SIZE$pData = LAYOUT$pData.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$dataSize = LAYOUT.byteOffset(PATH$dataSize);
+    public static final long OFFSET$pData = LAYOUT.byteOffset(PATH$pData);
 }

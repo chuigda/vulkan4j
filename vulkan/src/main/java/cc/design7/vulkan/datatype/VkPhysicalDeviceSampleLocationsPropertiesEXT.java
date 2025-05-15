@@ -14,8 +14,31 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceSampleLocationsPropertiesEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSampleLocationsPropertiesEXT.html"><code>VkPhysicalDeviceSampleLocationsPropertiesEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceSampleLocationsPropertiesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkSampleCountFlags sampleLocationSampleCounts;
+///     VkExtent2D maxSampleLocationGridSize;
+///     float sampleLocationCoordinateRange;
+///     uint32_t sampleLocationSubPixelBits;
+///     VkBool32 variableSampleLocations;
+/// } VkPhysicalDeviceSampleLocationsPropertiesEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT`
+///
+/// The {@link VkPhysicalDeviceSampleLocationsPropertiesEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceSampleLocationsPropertiesEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +47,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSampleLocationsPropertiesEXT.html">VkPhysicalDeviceSampleLocationsPropertiesEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSampleLocationsPropertiesEXT.html"><code>VkPhysicalDeviceSampleLocationsPropertiesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceSampleLocationsPropertiesEXT {
-        sType(VkStructureType.PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT);
-    }
-
     public static VkPhysicalDeviceSampleLocationsPropertiesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceSampleLocationsPropertiesEXT(arena.allocate(LAYOUT));
+        VkPhysicalDeviceSampleLocationsPropertiesEXT ret = new VkPhysicalDeviceSampleLocationsPropertiesEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT);
+        return ret;
     }
 
     public static VkPhysicalDeviceSampleLocationsPropertiesEXT[] allocate(Arena arena, int count) {
@@ -41,6 +62,7 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         VkPhysicalDeviceSampleLocationsPropertiesEXT[] ret = new VkPhysicalDeviceSampleLocationsPropertiesEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceSampleLocationsPropertiesEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT);
         }
         return ret;
     }
@@ -59,48 +81,9 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("sampleLocationSampleCounts"),
-        VkExtent2D.LAYOUT.withName("maxSampleLocationGridSize"),
-        ValueLayout.JAVA_FLOAT.withName("sampleLocationCoordinateRange"),
-        ValueLayout.JAVA_INT.withName("sampleLocationSubPixelBits"),
-        ValueLayout.JAVA_INT.withName("variableSampleLocations")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$sampleLocationSampleCounts = PathElement.groupElement("PATH$sampleLocationSampleCounts");
-    public static final PathElement PATH$maxSampleLocationGridSize = PathElement.groupElement("PATH$maxSampleLocationGridSize");
-    public static final PathElement PATH$sampleLocationCoordinateRange = PathElement.groupElement("PATH$sampleLocationCoordinateRange");
-    public static final PathElement PATH$sampleLocationSubPixelBits = PathElement.groupElement("PATH$sampleLocationSubPixelBits");
-    public static final PathElement PATH$variableSampleLocations = PathElement.groupElement("PATH$variableSampleLocations");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$sampleLocationSampleCounts = (OfInt) LAYOUT.select(PATH$sampleLocationSampleCounts);
-    public static final StructLayout LAYOUT$maxSampleLocationGridSize = (StructLayout) LAYOUT.select(PATH$maxSampleLocationGridSize);
-    public static final OfFloat LAYOUT$sampleLocationCoordinateRange = (OfFloat) LAYOUT.select(PATH$sampleLocationCoordinateRange);
-    public static final OfInt LAYOUT$sampleLocationSubPixelBits = (OfInt) LAYOUT.select(PATH$sampleLocationSubPixelBits);
-    public static final OfInt LAYOUT$variableSampleLocations = (OfInt) LAYOUT.select(PATH$variableSampleLocations);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$sampleLocationSampleCounts = LAYOUT$sampleLocationSampleCounts.byteSize();
-    public static final long SIZE$maxSampleLocationGridSize = LAYOUT$maxSampleLocationGridSize.byteSize();
-    public static final long SIZE$sampleLocationCoordinateRange = LAYOUT$sampleLocationCoordinateRange.byteSize();
-    public static final long SIZE$sampleLocationSubPixelBits = LAYOUT$sampleLocationSubPixelBits.byteSize();
-    public static final long SIZE$variableSampleLocations = LAYOUT$variableSampleLocations.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$sampleLocationSampleCounts = LAYOUT.byteOffset(PATH$sampleLocationSampleCounts);
-    public static final long OFFSET$maxSampleLocationGridSize = LAYOUT.byteOffset(PATH$maxSampleLocationGridSize);
-    public static final long OFFSET$sampleLocationCoordinateRange = LAYOUT.byteOffset(PATH$sampleLocationCoordinateRange);
-    public static final long OFFSET$sampleLocationSubPixelBits = LAYOUT.byteOffset(PATH$sampleLocationSubPixelBits);
-    public static final long OFFSET$variableSampleLocations = LAYOUT.byteOffset(PATH$variableSampleLocations);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -162,4 +145,46 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         segment.set(LAYOUT$variableSampleLocations, OFFSET$variableSampleLocations, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("sampleLocationSampleCounts"),
+        VkExtent2D.LAYOUT.withName("maxSampleLocationGridSize"),
+        ValueLayout.JAVA_FLOAT.withName("sampleLocationCoordinateRange"),
+        ValueLayout.JAVA_INT.withName("sampleLocationSubPixelBits"),
+        ValueLayout.JAVA_INT.withName("variableSampleLocations")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$sampleLocationSampleCounts = PathElement.groupElement("PATH$sampleLocationSampleCounts");
+    public static final PathElement PATH$maxSampleLocationGridSize = PathElement.groupElement("PATH$maxSampleLocationGridSize");
+    public static final PathElement PATH$sampleLocationCoordinateRange = PathElement.groupElement("PATH$sampleLocationCoordinateRange");
+    public static final PathElement PATH$sampleLocationSubPixelBits = PathElement.groupElement("PATH$sampleLocationSubPixelBits");
+    public static final PathElement PATH$variableSampleLocations = PathElement.groupElement("PATH$variableSampleLocations");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$sampleLocationSampleCounts = (OfInt) LAYOUT.select(PATH$sampleLocationSampleCounts);
+    public static final StructLayout LAYOUT$maxSampleLocationGridSize = (StructLayout) LAYOUT.select(PATH$maxSampleLocationGridSize);
+    public static final OfFloat LAYOUT$sampleLocationCoordinateRange = (OfFloat) LAYOUT.select(PATH$sampleLocationCoordinateRange);
+    public static final OfInt LAYOUT$sampleLocationSubPixelBits = (OfInt) LAYOUT.select(PATH$sampleLocationSubPixelBits);
+    public static final OfInt LAYOUT$variableSampleLocations = (OfInt) LAYOUT.select(PATH$variableSampleLocations);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$sampleLocationSampleCounts = LAYOUT$sampleLocationSampleCounts.byteSize();
+    public static final long SIZE$maxSampleLocationGridSize = LAYOUT$maxSampleLocationGridSize.byteSize();
+    public static final long SIZE$sampleLocationCoordinateRange = LAYOUT$sampleLocationCoordinateRange.byteSize();
+    public static final long SIZE$sampleLocationSubPixelBits = LAYOUT$sampleLocationSubPixelBits.byteSize();
+    public static final long SIZE$variableSampleLocations = LAYOUT$variableSampleLocations.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$sampleLocationSampleCounts = LAYOUT.byteOffset(PATH$sampleLocationSampleCounts);
+    public static final long OFFSET$maxSampleLocationGridSize = LAYOUT.byteOffset(PATH$maxSampleLocationGridSize);
+    public static final long OFFSET$sampleLocationCoordinateRange = LAYOUT.byteOffset(PATH$sampleLocationCoordinateRange);
+    public static final long OFFSET$sampleLocationSubPixelBits = LAYOUT.byteOffset(PATH$sampleLocationSubPixelBits);
+    public static final long OFFSET$variableSampleLocations = LAYOUT.byteOffset(PATH$variableSampleLocations);
 }

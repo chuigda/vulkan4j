@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkExtensionProperties} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExtensionProperties.html"><code>VkExtensionProperties</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkExtensionProperties {
+///     char extensionName;
+///     uint32_t specVersion;
+/// } VkExtensionProperties;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExtensionProperties.html">VkExtensionProperties</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExtensionProperties.html"><code>VkExtensionProperties</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkExtensionProperties(@NotNull MemorySegment segment) implements IPointer {
     public static VkExtensionProperties allocate(Arena arena) {
-        return new VkExtensionProperties(arena.allocate(LAYOUT));
+        VkExtensionProperties ret = new VkExtensionProperties(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkExtensionProperties[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkExtensionProperties(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
+    public byte extensionName() {
+        return segment.get(LAYOUT$extensionName, OFFSET$extensionName);
+    }
+
+    public void extensionName(byte value) {
+        segment.set(LAYOUT$extensionName, OFFSET$extensionName, value);
+    }
+
+    public @unsigned int specVersion() {
+        return segment.get(LAYOUT$specVersion, OFFSET$specVersion);
+    }
+
+    public void specVersion(@unsigned int value) {
+        segment.set(LAYOUT$specVersion, OFFSET$specVersion, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_BYTE.withName("extensionName"),
         ValueLayout.JAVA_INT.withName("specVersion")
@@ -72,21 +99,4 @@ public record VkExtensionProperties(@NotNull MemorySegment segment) implements I
 
     public static final long OFFSET$extensionName = LAYOUT.byteOffset(PATH$extensionName);
     public static final long OFFSET$specVersion = LAYOUT.byteOffset(PATH$specVersion);
-
-    public byte extensionName() {
-        return segment.get(LAYOUT$extensionName, OFFSET$extensionName);
-    }
-
-    public void extensionName(byte value) {
-        segment.set(LAYOUT$extensionName, OFFSET$extensionName, value);
-    }
-
-    public @unsigned int specVersion() {
-        return segment.get(LAYOUT$specVersion, OFFSET$specVersion);
-    }
-
-    public void specVersion(@unsigned int value) {
-        segment.set(LAYOUT$specVersion, OFFSET$specVersion, value);
-    }
-
 }

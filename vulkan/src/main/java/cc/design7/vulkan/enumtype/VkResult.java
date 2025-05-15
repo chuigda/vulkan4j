@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkResult.html">VkResult</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkResult.html"><code>VkResult</code></a>
 public final class VkResult {
     public static final int VK_SUCCESS = 0x0;
     public static final int VK_NOT_READY = 0x1;

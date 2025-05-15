@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkRenderingInputAttachmentIndexInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderingInputAttachmentIndexInfo.html"><code>VkRenderingInputAttachmentIndexInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkRenderingInputAttachmentIndexInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t colorAttachmentCount;
+///     uint32_t const* pColorAttachmentInputIndices;
+///     uint32_t const* pDepthInputAttachmentIndex;
+///     uint32_t const* pStencilInputAttachmentIndex;
+/// } VkRenderingInputAttachmentIndexInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO`
+///
+/// The {@link VkRenderingInputAttachmentIndexInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkRenderingInputAttachmentIndexInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderingInputAttachmentIndexInfo.html">VkRenderingInputAttachmentIndexInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderingInputAttachmentIndexInfo.html"><code>VkRenderingInputAttachmentIndexInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkRenderingInputAttachmentIndexInfo {
-        sType(VkStructureType.RENDERING_INPUT_ATTACHMENT_INDEX_INFO);
-    }
-
     public static VkRenderingInputAttachmentIndexInfo allocate(Arena arena) {
-        return new VkRenderingInputAttachmentIndexInfo(arena.allocate(LAYOUT));
+        VkRenderingInputAttachmentIndexInfo ret = new VkRenderingInputAttachmentIndexInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.RENDERING_INPUT_ATTACHMENT_INDEX_INFO);
+        return ret;
     }
 
     public static VkRenderingInputAttachmentIndexInfo[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         VkRenderingInputAttachmentIndexInfo[] ret = new VkRenderingInputAttachmentIndexInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkRenderingInputAttachmentIndexInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.RENDERING_INPUT_ATTACHMENT_INDEX_INFO);
         }
         return ret;
     }
@@ -59,43 +80,9 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("colorAttachmentCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pColorAttachmentInputIndices"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDepthInputAttachmentIndex"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pStencilInputAttachmentIndex")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$colorAttachmentCount = PathElement.groupElement("PATH$colorAttachmentCount");
-    public static final PathElement PATH$pColorAttachmentInputIndices = PathElement.groupElement("PATH$pColorAttachmentInputIndices");
-    public static final PathElement PATH$pDepthInputAttachmentIndex = PathElement.groupElement("PATH$pDepthInputAttachmentIndex");
-    public static final PathElement PATH$pStencilInputAttachmentIndex = PathElement.groupElement("PATH$pStencilInputAttachmentIndex");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$colorAttachmentCount = (OfInt) LAYOUT.select(PATH$colorAttachmentCount);
-    public static final AddressLayout LAYOUT$pColorAttachmentInputIndices = (AddressLayout) LAYOUT.select(PATH$pColorAttachmentInputIndices);
-    public static final AddressLayout LAYOUT$pDepthInputAttachmentIndex = (AddressLayout) LAYOUT.select(PATH$pDepthInputAttachmentIndex);
-    public static final AddressLayout LAYOUT$pStencilInputAttachmentIndex = (AddressLayout) LAYOUT.select(PATH$pStencilInputAttachmentIndex);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$colorAttachmentCount = LAYOUT$colorAttachmentCount.byteSize();
-    public static final long SIZE$pColorAttachmentInputIndices = LAYOUT$pColorAttachmentInputIndices.byteSize();
-    public static final long SIZE$pDepthInputAttachmentIndex = LAYOUT$pDepthInputAttachmentIndex.byteSize();
-    public static final long SIZE$pStencilInputAttachmentIndex = LAYOUT$pStencilInputAttachmentIndex.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$colorAttachmentCount = LAYOUT.byteOffset(PATH$colorAttachmentCount);
-    public static final long OFFSET$pColorAttachmentInputIndices = LAYOUT.byteOffset(PATH$pColorAttachmentInputIndices);
-    public static final long OFFSET$pDepthInputAttachmentIndex = LAYOUT.byteOffset(PATH$pDepthInputAttachmentIndex);
-    public static final long OFFSET$pStencilInputAttachmentIndex = LAYOUT.byteOffset(PATH$pStencilInputAttachmentIndex);
+    public void autoInit() {
+        sType(VkStructureType.RENDERING_INPUT_ATTACHMENT_INDEX_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -139,7 +126,7 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
     /// writing to the buffer.
     public @Nullable @unsigned IntPtr pColorAttachmentInputIndices() {
         MemorySegment s = pColorAttachmentInputIndicesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -164,7 +151,7 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
     /// writing to the buffer.
     public @Nullable @unsigned IntPtr pDepthInputAttachmentIndex() {
         MemorySegment s = pDepthInputAttachmentIndexRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -189,7 +176,7 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
     /// writing to the buffer.
     public @Nullable @unsigned IntPtr pStencilInputAttachmentIndex() {
         MemorySegment s = pStencilInputAttachmentIndexRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -200,4 +187,41 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         pStencilInputAttachmentIndexRaw(s);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("colorAttachmentCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pColorAttachmentInputIndices"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDepthInputAttachmentIndex"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pStencilInputAttachmentIndex")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$colorAttachmentCount = PathElement.groupElement("PATH$colorAttachmentCount");
+    public static final PathElement PATH$pColorAttachmentInputIndices = PathElement.groupElement("PATH$pColorAttachmentInputIndices");
+    public static final PathElement PATH$pDepthInputAttachmentIndex = PathElement.groupElement("PATH$pDepthInputAttachmentIndex");
+    public static final PathElement PATH$pStencilInputAttachmentIndex = PathElement.groupElement("PATH$pStencilInputAttachmentIndex");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$colorAttachmentCount = (OfInt) LAYOUT.select(PATH$colorAttachmentCount);
+    public static final AddressLayout LAYOUT$pColorAttachmentInputIndices = (AddressLayout) LAYOUT.select(PATH$pColorAttachmentInputIndices);
+    public static final AddressLayout LAYOUT$pDepthInputAttachmentIndex = (AddressLayout) LAYOUT.select(PATH$pDepthInputAttachmentIndex);
+    public static final AddressLayout LAYOUT$pStencilInputAttachmentIndex = (AddressLayout) LAYOUT.select(PATH$pStencilInputAttachmentIndex);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$colorAttachmentCount = LAYOUT$colorAttachmentCount.byteSize();
+    public static final long SIZE$pColorAttachmentInputIndices = LAYOUT$pColorAttachmentInputIndices.byteSize();
+    public static final long SIZE$pDepthInputAttachmentIndex = LAYOUT$pDepthInputAttachmentIndex.byteSize();
+    public static final long SIZE$pStencilInputAttachmentIndex = LAYOUT$pStencilInputAttachmentIndex.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$colorAttachmentCount = LAYOUT.byteOffset(PATH$colorAttachmentCount);
+    public static final long OFFSET$pColorAttachmentInputIndices = LAYOUT.byteOffset(PATH$pColorAttachmentInputIndices);
+    public static final long OFFSET$pDepthInputAttachmentIndex = LAYOUT.byteOffset(PATH$pDepthInputAttachmentIndex);
+    public static final long OFFSET$pStencilInputAttachmentIndex = LAYOUT.byteOffset(PATH$pStencilInputAttachmentIndex);
 }

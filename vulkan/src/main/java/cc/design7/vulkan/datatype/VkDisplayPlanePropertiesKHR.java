@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDisplayPlanePropertiesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPlanePropertiesKHR.html"><code>VkDisplayPlanePropertiesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDisplayPlanePropertiesKHR {
+///     VkDisplayKHR currentDisplay;
+///     uint32_t currentStackIndex;
+/// } VkDisplayPlanePropertiesKHR;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPlanePropertiesKHR.html">VkDisplayPlanePropertiesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPlanePropertiesKHR.html"><code>VkDisplayPlanePropertiesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDisplayPlanePropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkDisplayPlanePropertiesKHR allocate(Arena arena) {
-        return new VkDisplayPlanePropertiesKHR(arena.allocate(LAYOUT));
+        VkDisplayPlanePropertiesKHR ret = new VkDisplayPlanePropertiesKHR(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkDisplayPlanePropertiesKHR[] allocate(Arena arena, int count) {
@@ -55,27 +66,9 @@ public record VkDisplayPlanePropertiesKHR(@NotNull MemorySegment segment) implem
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.ADDRESS.withName("currentDisplay"),
-        ValueLayout.JAVA_INT.withName("currentStackIndex")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$currentDisplay = PathElement.groupElement("PATH$currentDisplay");
-    public static final PathElement PATH$currentStackIndex = PathElement.groupElement("PATH$currentStackIndex");
-
-    public static final AddressLayout LAYOUT$currentDisplay = (AddressLayout) LAYOUT.select(PATH$currentDisplay);
-    public static final OfInt LAYOUT$currentStackIndex = (OfInt) LAYOUT.select(PATH$currentStackIndex);
-
-    public static final long SIZE$currentDisplay = LAYOUT$currentDisplay.byteSize();
-    public static final long SIZE$currentStackIndex = LAYOUT$currentStackIndex.byteSize();
-
-    public static final long OFFSET$currentDisplay = LAYOUT.byteOffset(PATH$currentDisplay);
-    public static final long OFFSET$currentStackIndex = LAYOUT.byteOffset(PATH$currentStackIndex);
-
     public @Nullable VkDisplayKHR currentDisplay() {
         MemorySegment s = segment.asSlice(OFFSET$currentDisplay, SIZE$currentDisplay);
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkDisplayKHR(s);
@@ -93,4 +86,21 @@ public record VkDisplayPlanePropertiesKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$currentStackIndex, OFFSET$currentStackIndex, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withName("currentDisplay"),
+        ValueLayout.JAVA_INT.withName("currentStackIndex")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$currentDisplay = PathElement.groupElement("PATH$currentDisplay");
+    public static final PathElement PATH$currentStackIndex = PathElement.groupElement("PATH$currentStackIndex");
+
+    public static final AddressLayout LAYOUT$currentDisplay = (AddressLayout) LAYOUT.select(PATH$currentDisplay);
+    public static final OfInt LAYOUT$currentStackIndex = (OfInt) LAYOUT.select(PATH$currentStackIndex);
+
+    public static final long SIZE$currentDisplay = LAYOUT$currentDisplay.byteSize();
+    public static final long SIZE$currentStackIndex = LAYOUT$currentStackIndex.byteSize();
+
+    public static final long OFFSET$currentDisplay = LAYOUT.byteOffset(PATH$currentDisplay);
+    public static final long OFFSET$currentStackIndex = LAYOUT.byteOffset(PATH$currentStackIndex);
 }

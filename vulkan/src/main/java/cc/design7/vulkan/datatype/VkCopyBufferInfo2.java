@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkCopyBufferInfo2} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyBufferInfo2.html"><code>VkCopyBufferInfo2</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkCopyBufferInfo2 {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkBuffer srcBuffer;
+///     VkBuffer dstBuffer;
+///     uint32_t regionCount;
+///     VkBufferCopy2 const* pRegions;
+/// } VkCopyBufferInfo2;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_COPY_BUFFER_INFO_2`
+///
+/// The {@link VkCopyBufferInfo2#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkCopyBufferInfo2#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyBufferInfo2.html">VkCopyBufferInfo2</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyBufferInfo2.html"><code>VkCopyBufferInfo2</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IPointer {
-    public VkCopyBufferInfo2 {
-        sType(VkStructureType.COPY_BUFFER_INFO_2);
-    }
-
     public static VkCopyBufferInfo2 allocate(Arena arena) {
-        return new VkCopyBufferInfo2(arena.allocate(LAYOUT));
+        VkCopyBufferInfo2 ret = new VkCopyBufferInfo2(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.COPY_BUFFER_INFO_2);
+        return ret;
     }
 
     public static VkCopyBufferInfo2[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IPoin
         VkCopyBufferInfo2[] ret = new VkCopyBufferInfo2[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkCopyBufferInfo2(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.COPY_BUFFER_INFO_2);
         }
         return ret;
     }
@@ -55,6 +76,97 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IPoin
         VkCopyBufferInfo2[] ret = allocate(arena, src.length);
         for (int i = 0; i < src.length; i ++) {
             ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.COPY_BUFFER_INFO_2);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkBuffer srcBuffer() {
+        MemorySegment s = segment.asSlice(OFFSET$srcBuffer, SIZE$srcBuffer);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkBuffer(s);
+    }
+
+    public void srcBuffer(@Nullable VkBuffer value) {
+        segment.set(LAYOUT$srcBuffer, OFFSET$srcBuffer, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @Nullable VkBuffer dstBuffer() {
+        MemorySegment s = segment.asSlice(OFFSET$dstBuffer, SIZE$dstBuffer);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkBuffer(s);
+    }
+
+    public void dstBuffer(@Nullable VkBuffer value) {
+        segment.set(LAYOUT$dstBuffer, OFFSET$dstBuffer, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned int regionCount() {
+        return segment.get(LAYOUT$regionCount, OFFSET$regionCount);
+    }
+
+    public void regionCount(@unsigned int value) {
+        segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
+    }
+
+    public @pointer(comment="VkBufferCopy2*") MemorySegment pRegionsRaw() {
+        return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
+    }
+
+    public void pRegionsRaw(@pointer(comment="VkBufferCopy2*") MemorySegment value) {
+        segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
+    }
+
+    public @Nullable VkBufferCopy2 pRegions() {
+        MemorySegment s = pRegionsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkBufferCopy2(s);
+    }
+
+    public void pRegions(@Nullable VkBufferCopy2 value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pRegionsRaw(s);
+    }
+
+    @unsafe public @Nullable VkBufferCopy2[] pRegions(int assumedCount) {
+        MemorySegment s = pRegionsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkBufferCopy2.SIZE);
+        VkBufferCopy2[] ret = new VkBufferCopy2[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkBufferCopy2(s.asSlice(i * VkBufferCopy2.SIZE, VkBufferCopy2.SIZE));
         }
         return ret;
     }
@@ -96,92 +208,4 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IPoin
     public static final long OFFSET$dstBuffer = LAYOUT.byteOffset(PATH$dstBuffer);
     public static final long OFFSET$regionCount = LAYOUT.byteOffset(PATH$regionCount);
     public static final long OFFSET$pRegions = LAYOUT.byteOffset(PATH$pRegions);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkBuffer srcBuffer() {
-        MemorySegment s = segment.asSlice(OFFSET$srcBuffer, SIZE$srcBuffer);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkBuffer(s);
-    }
-
-    public void srcBuffer(@Nullable VkBuffer value) {
-        segment.set(LAYOUT$srcBuffer, OFFSET$srcBuffer, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @Nullable VkBuffer dstBuffer() {
-        MemorySegment s = segment.asSlice(OFFSET$dstBuffer, SIZE$dstBuffer);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkBuffer(s);
-    }
-
-    public void dstBuffer(@Nullable VkBuffer value) {
-        segment.set(LAYOUT$dstBuffer, OFFSET$dstBuffer, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned int regionCount() {
-        return segment.get(LAYOUT$regionCount, OFFSET$regionCount);
-    }
-
-    public void regionCount(@unsigned int value) {
-        segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
-    }
-
-    public @pointer(comment="VkBufferCopy2*") MemorySegment pRegionsRaw() {
-        return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
-    }
-
-    public void pRegionsRaw(@pointer(comment="VkBufferCopy2*") MemorySegment value) {
-        segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
-    }
-
-    public @Nullable VkBufferCopy2 pRegions() {
-        MemorySegment s = pRegionsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkBufferCopy2(s);
-    }
-
-    public void pRegions(@Nullable VkBufferCopy2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pRegionsRaw(s);
-    }
-
-    @unsafe public @Nullable VkBufferCopy2[] pRegions(int assumedCount) {
-        MemorySegment s = pRegionsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkBufferCopy2.SIZE);
-        VkBufferCopy2[] ret = new VkBufferCopy2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkBufferCopy2(s.asSlice(i * VkBufferCopy2.SIZE, VkBufferCopy2.SIZE));
-        }
-        return ret;
-    }
-
 }

@@ -17,6 +17,17 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoAV1LoopFilterFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoAV1LoopFilterFlags {
+///     uint32_t loop_filter_delta_enabled : 1;
+///     uint32_t loop_filter_delta_update : 1;
+///     uint32_t reserved : 30;
+/// } StdVideoAV1LoopFilterFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +39,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1LoopFilterFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1LoopFilterFlags allocate(Arena arena) {
-        return new StdVideoAV1LoopFilterFlags(arena.allocate(LAYOUT));
+        StdVideoAV1LoopFilterFlags ret = new StdVideoAV1LoopFilterFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoAV1LoopFilterFlags[] allocate(Arena arena, int count) {
@@ -54,18 +66,6 @@ public record StdVideoAV1LoopFilterFlags(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$loop_filter_delta_enabled_reserved")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$loop_filter_delta_enabled_reserved = PathElement.groupElement("PATH$bitfield$loop_filter_delta_enabled_reserved");
-
-    public static final OfInt LAYOUT$loop_filter_delta_enabled_reserved = (OfInt) LAYOUT.select(PATH$bitfield$loop_filter_delta_enabled_reserved);
-
-
-    public static final long OFFSET$loop_filter_delta_enabled_reserved = LAYOUT.byteOffset(PATH$bitfield$loop_filter_delta_enabled_reserved);
-
     public boolean loop_filter_delta_enabled() {
         MemorySegment s = segment.asSlice(OFFSET$loop_filter_delta_enabled_reserved, LAYOUT$loop_filter_delta_enabled_reserved);
         return BitfieldUtil.readBit(s, 0);
@@ -86,5 +86,15 @@ public record StdVideoAV1LoopFilterFlags(@NotNull MemorySegment segment) impleme
         BitfieldUtil.writeBit(s, 1, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$loop_filter_delta_enabled_reserved")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$bitfield$loop_filter_delta_enabled_reserved = PathElement.groupElement("PATH$bitfield$loop_filter_delta_enabled_reserved");
+
+    public static final OfInt LAYOUT$loop_filter_delta_enabled_reserved = (OfInt) LAYOUT.select(PATH$bitfield$loop_filter_delta_enabled_reserved);
+
+
+    public static final long OFFSET$loop_filter_delta_enabled_reserved = LAYOUT.byteOffset(PATH$bitfield$loop_filter_delta_enabled_reserved);
 }

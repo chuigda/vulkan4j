@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkSampleLocationEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSampleLocationEXT.html"><code>VkSampleLocationEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkSampleLocationEXT {
+///     float x;
+///     float y;
+/// } VkSampleLocationEXT;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSampleLocationEXT.html">VkSampleLocationEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSampleLocationEXT.html"><code>VkSampleLocationEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkSampleLocationEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkSampleLocationEXT allocate(Arena arena) {
-        return new VkSampleLocationEXT(arena.allocate(LAYOUT));
+        VkSampleLocationEXT ret = new VkSampleLocationEXT(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkSampleLocationEXT[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkSampleLocationEXT(@NotNull MemorySegment segment) implements IPo
         return ret;
     }
 
+    public float x() {
+        return segment.get(LAYOUT$x, OFFSET$x);
+    }
+
+    public void x(float value) {
+        segment.set(LAYOUT$x, OFFSET$x, value);
+    }
+
+    public float y() {
+        return segment.get(LAYOUT$y, OFFSET$y);
+    }
+
+    public void y(float value) {
+        segment.set(LAYOUT$y, OFFSET$y, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_FLOAT.withName("x"),
         ValueLayout.JAVA_FLOAT.withName("y")
@@ -72,21 +99,4 @@ public record VkSampleLocationEXT(@NotNull MemorySegment segment) implements IPo
 
     public static final long OFFSET$x = LAYOUT.byteOffset(PATH$x);
     public static final long OFFSET$y = LAYOUT.byteOffset(PATH$y);
-
-    public float x() {
-        return segment.get(LAYOUT$x, OFFSET$x);
-    }
-
-    public void x(float value) {
-        segment.set(LAYOUT$x, OFFSET$x, value);
-    }
-
-    public float y() {
-        return segment.get(LAYOUT$y, OFFSET$y);
-    }
-
-    public void y(float value) {
-        segment.set(LAYOUT$y, OFFSET$y, value);
-    }
-
 }

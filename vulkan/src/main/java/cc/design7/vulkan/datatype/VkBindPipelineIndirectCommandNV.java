@@ -14,8 +14,17 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkBindPipelineIndirectCommandNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindPipelineIndirectCommandNV.html"><code>VkBindPipelineIndirectCommandNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkBindPipelineIndirectCommandNV {
+///     VkDeviceAddress pipelineAddress;
+/// } VkBindPipelineIndirectCommandNV;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +33,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindPipelineIndirectCommandNV.html">VkBindPipelineIndirectCommandNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindPipelineIndirectCommandNV.html"><code>VkBindPipelineIndirectCommandNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkBindPipelineIndirectCommandNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkBindPipelineIndirectCommandNV allocate(Arena arena) {
-        return new VkBindPipelineIndirectCommandNV(arena.allocate(LAYOUT));
+        VkBindPipelineIndirectCommandNV ret = new VkBindPipelineIndirectCommandNV(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkBindPipelineIndirectCommandNV[] allocate(Arena arena, int count) {
@@ -55,6 +65,14 @@ public record VkBindPipelineIndirectCommandNV(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public @unsigned long pipelineAddress() {
+        return segment.get(LAYOUT$pipelineAddress, OFFSET$pipelineAddress);
+    }
+
+    public void pipelineAddress(@unsigned long value) {
+        segment.set(LAYOUT$pipelineAddress, OFFSET$pipelineAddress, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_LONG.withName("pipelineAddress")
     );
@@ -67,13 +85,4 @@ public record VkBindPipelineIndirectCommandNV(@NotNull MemorySegment segment) im
     public static final long SIZE$pipelineAddress = LAYOUT$pipelineAddress.byteSize();
 
     public static final long OFFSET$pipelineAddress = LAYOUT.byteOffset(PATH$pipelineAddress);
-
-    public @unsigned long pipelineAddress() {
-        return segment.get(LAYOUT$pipelineAddress, OFFSET$pipelineAddress);
-    }
-
-    public void pipelineAddress(@unsigned long value) {
-        segment.set(LAYOUT$pipelineAddress, OFFSET$pipelineAddress, value);
-    }
-
 }

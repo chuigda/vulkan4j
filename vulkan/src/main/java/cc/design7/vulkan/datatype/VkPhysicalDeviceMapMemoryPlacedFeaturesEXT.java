@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceMapMemoryPlacedFeaturesEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.html"><code>VkPhysicalDeviceMapMemoryPlacedFeaturesEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceMapMemoryPlacedFeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 memoryMapPlaced;
+///     VkBool32 memoryMapRangePlaced;
+///     VkBool32 memoryUnmapReserve;
+/// } VkPhysicalDeviceMapMemoryPlacedFeaturesEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_FEATURES_EXT`
+///
+/// The {@link VkPhysicalDeviceMapMemoryPlacedFeaturesEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceMapMemoryPlacedFeaturesEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.html">VkPhysicalDeviceMapMemoryPlacedFeaturesEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.html"><code>VkPhysicalDeviceMapMemoryPlacedFeaturesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT {
-        sType(VkStructureType.PHYSICAL_DEVICE_MAP_MEMORY_PLACED_FEATURES_EXT);
-    }
-
     public static VkPhysicalDeviceMapMemoryPlacedFeaturesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(arena.allocate(LAYOUT));
+        VkPhysicalDeviceMapMemoryPlacedFeaturesEXT ret = new VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_MAP_MEMORY_PLACED_FEATURES_EXT);
+        return ret;
     }
 
     public static VkPhysicalDeviceMapMemoryPlacedFeaturesEXT[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(@NotNull MemorySegment 
         VkPhysicalDeviceMapMemoryPlacedFeaturesEXT[] ret = new VkPhysicalDeviceMapMemoryPlacedFeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_MAP_MEMORY_PLACED_FEATURES_EXT);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(@NotNull MemorySegment 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("memoryMapPlaced"),
-        ValueLayout.JAVA_INT.withName("memoryMapRangePlaced"),
-        ValueLayout.JAVA_INT.withName("memoryUnmapReserve")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$memoryMapPlaced = PathElement.groupElement("PATH$memoryMapPlaced");
-    public static final PathElement PATH$memoryMapRangePlaced = PathElement.groupElement("PATH$memoryMapRangePlaced");
-    public static final PathElement PATH$memoryUnmapReserve = PathElement.groupElement("PATH$memoryUnmapReserve");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$memoryMapPlaced = (OfInt) LAYOUT.select(PATH$memoryMapPlaced);
-    public static final OfInt LAYOUT$memoryMapRangePlaced = (OfInt) LAYOUT.select(PATH$memoryMapRangePlaced);
-    public static final OfInt LAYOUT$memoryUnmapReserve = (OfInt) LAYOUT.select(PATH$memoryUnmapReserve);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$memoryMapPlaced = LAYOUT$memoryMapPlaced.byteSize();
-    public static final long SIZE$memoryMapRangePlaced = LAYOUT$memoryMapRangePlaced.byteSize();
-    public static final long SIZE$memoryUnmapReserve = LAYOUT$memoryUnmapReserve.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$memoryMapPlaced = LAYOUT.byteOffset(PATH$memoryMapPlaced);
-    public static final long OFFSET$memoryMapRangePlaced = LAYOUT.byteOffset(PATH$memoryMapRangePlaced);
-    public static final long OFFSET$memoryUnmapReserve = LAYOUT.byteOffset(PATH$memoryUnmapReserve);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_MAP_MEMORY_PLACED_FEATURES_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -136,4 +127,36 @@ public record VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(@NotNull MemorySegment 
         segment.set(LAYOUT$memoryUnmapReserve, OFFSET$memoryUnmapReserve, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("memoryMapPlaced"),
+        ValueLayout.JAVA_INT.withName("memoryMapRangePlaced"),
+        ValueLayout.JAVA_INT.withName("memoryUnmapReserve")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$memoryMapPlaced = PathElement.groupElement("PATH$memoryMapPlaced");
+    public static final PathElement PATH$memoryMapRangePlaced = PathElement.groupElement("PATH$memoryMapRangePlaced");
+    public static final PathElement PATH$memoryUnmapReserve = PathElement.groupElement("PATH$memoryUnmapReserve");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$memoryMapPlaced = (OfInt) LAYOUT.select(PATH$memoryMapPlaced);
+    public static final OfInt LAYOUT$memoryMapRangePlaced = (OfInt) LAYOUT.select(PATH$memoryMapRangePlaced);
+    public static final OfInt LAYOUT$memoryUnmapReserve = (OfInt) LAYOUT.select(PATH$memoryUnmapReserve);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$memoryMapPlaced = LAYOUT$memoryMapPlaced.byteSize();
+    public static final long SIZE$memoryMapRangePlaced = LAYOUT$memoryMapRangePlaced.byteSize();
+    public static final long SIZE$memoryUnmapReserve = LAYOUT$memoryUnmapReserve.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$memoryMapPlaced = LAYOUT.byteOffset(PATH$memoryMapPlaced);
+    public static final long OFFSET$memoryMapRangePlaced = LAYOUT.byteOffset(PATH$memoryMapRangePlaced);
+    public static final long OFFSET$memoryUnmapReserve = LAYOUT.byteOffset(PATH$memoryUnmapReserve);
 }

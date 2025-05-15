@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkStridedDeviceAddressRegionKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStridedDeviceAddressRegionKHR.html"><code>VkStridedDeviceAddressRegionKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkStridedDeviceAddressRegionKHR {
+///     VkDeviceAddress deviceAddress;
+///     VkDeviceSize stride;
+///     VkDeviceSize size;
+/// } VkStridedDeviceAddressRegionKHR;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStridedDeviceAddressRegionKHR.html">VkStridedDeviceAddressRegionKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStridedDeviceAddressRegionKHR.html"><code>VkStridedDeviceAddressRegionKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkStridedDeviceAddressRegionKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkStridedDeviceAddressRegionKHR allocate(Arena arena) {
-        return new VkStridedDeviceAddressRegionKHR(arena.allocate(LAYOUT));
+        VkStridedDeviceAddressRegionKHR ret = new VkStridedDeviceAddressRegionKHR(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkStridedDeviceAddressRegionKHR[] allocate(Arena arena, int count) {
@@ -55,29 +67,6 @@ public record VkStridedDeviceAddressRegionKHR(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_LONG.withName("deviceAddress"),
-        ValueLayout.JAVA_LONG.withName("stride"),
-        ValueLayout.JAVA_LONG.withName("size")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$deviceAddress = PathElement.groupElement("PATH$deviceAddress");
-    public static final PathElement PATH$stride = PathElement.groupElement("PATH$stride");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
-
-    public static final OfLong LAYOUT$deviceAddress = (OfLong) LAYOUT.select(PATH$deviceAddress);
-    public static final OfLong LAYOUT$stride = (OfLong) LAYOUT.select(PATH$stride);
-    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
-
-    public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
-    public static final long SIZE$stride = LAYOUT$stride.byteSize();
-    public static final long SIZE$size = LAYOUT$size.byteSize();
-
-    public static final long OFFSET$deviceAddress = LAYOUT.byteOffset(PATH$deviceAddress);
-    public static final long OFFSET$stride = LAYOUT.byteOffset(PATH$stride);
-    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
-
     public @unsigned long deviceAddress() {
         return segment.get(LAYOUT$deviceAddress, OFFSET$deviceAddress);
     }
@@ -102,4 +91,26 @@ public record VkStridedDeviceAddressRegionKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("deviceAddress"),
+        ValueLayout.JAVA_LONG.withName("stride"),
+        ValueLayout.JAVA_LONG.withName("size")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$deviceAddress = PathElement.groupElement("PATH$deviceAddress");
+    public static final PathElement PATH$stride = PathElement.groupElement("PATH$stride");
+    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
+
+    public static final OfLong LAYOUT$deviceAddress = (OfLong) LAYOUT.select(PATH$deviceAddress);
+    public static final OfLong LAYOUT$stride = (OfLong) LAYOUT.select(PATH$stride);
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
+
+    public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
+    public static final long SIZE$stride = LAYOUT$stride.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+
+    public static final long OFFSET$deviceAddress = LAYOUT.byteOffset(PATH$deviceAddress);
+    public static final long OFFSET$stride = LAYOUT.byteOffset(PATH$stride);
+    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
 }

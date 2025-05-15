@@ -14,8 +14,25 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPartitionedAccelerationStructureWriteInstanceDataNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPartitionedAccelerationStructureWriteInstanceDataNV.html"><code>VkPartitionedAccelerationStructureWriteInstanceDataNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPartitionedAccelerationStructureWriteInstanceDataNV {
+///     VkTransformMatrixKHR transform;
+///     float explicitAABB;
+///     uint32_t instanceID;
+///     uint32_t instanceMask;
+///     uint32_t instanceContributionToHitGroupIndex;
+///     VkPartitionedAccelerationStructureInstanceFlagsNV instanceFlags;
+///     uint32_t instanceIndex;
+///     uint32_t partitionIndex;
+///     VkDeviceAddress accelerationStructure;
+/// } VkPartitionedAccelerationStructureWriteInstanceDataNV;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +41,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPartitionedAccelerationStructureWriteInstanceDataNV.html">VkPartitionedAccelerationStructureWriteInstanceDataNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPartitionedAccelerationStructureWriteInstanceDataNV.html"><code>VkPartitionedAccelerationStructureWriteInstanceDataNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkPartitionedAccelerationStructureWriteInstanceDataNV allocate(Arena arena) {
-        return new VkPartitionedAccelerationStructureWriteInstanceDataNV(arena.allocate(LAYOUT));
+        VkPartitionedAccelerationStructureWriteInstanceDataNV ret = new VkPartitionedAccelerationStructureWriteInstanceDataNV(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkPartitionedAccelerationStructureWriteInstanceDataNV[] allocate(Arena arena, int count) {
@@ -54,59 +72,6 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        VkTransformMatrixKHR.LAYOUT.withName("transform"),
-        ValueLayout.JAVA_FLOAT.withName("explicitAABB"),
-        ValueLayout.JAVA_INT.withName("instanceID"),
-        ValueLayout.JAVA_INT.withName("instanceMask"),
-        ValueLayout.JAVA_INT.withName("instanceContributionToHitGroupIndex"),
-        ValueLayout.JAVA_INT.withName("instanceFlags"),
-        ValueLayout.JAVA_INT.withName("instanceIndex"),
-        ValueLayout.JAVA_INT.withName("partitionIndex"),
-        ValueLayout.JAVA_LONG.withName("accelerationStructure")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$transform = PathElement.groupElement("PATH$transform");
-    public static final PathElement PATH$explicitAABB = PathElement.groupElement("PATH$explicitAABB");
-    public static final PathElement PATH$instanceID = PathElement.groupElement("PATH$instanceID");
-    public static final PathElement PATH$instanceMask = PathElement.groupElement("PATH$instanceMask");
-    public static final PathElement PATH$instanceContributionToHitGroupIndex = PathElement.groupElement("PATH$instanceContributionToHitGroupIndex");
-    public static final PathElement PATH$instanceFlags = PathElement.groupElement("PATH$instanceFlags");
-    public static final PathElement PATH$instanceIndex = PathElement.groupElement("PATH$instanceIndex");
-    public static final PathElement PATH$partitionIndex = PathElement.groupElement("PATH$partitionIndex");
-    public static final PathElement PATH$accelerationStructure = PathElement.groupElement("PATH$accelerationStructure");
-
-    public static final StructLayout LAYOUT$transform = (StructLayout) LAYOUT.select(PATH$transform);
-    public static final OfFloat LAYOUT$explicitAABB = (OfFloat) LAYOUT.select(PATH$explicitAABB);
-    public static final OfInt LAYOUT$instanceID = (OfInt) LAYOUT.select(PATH$instanceID);
-    public static final OfInt LAYOUT$instanceMask = (OfInt) LAYOUT.select(PATH$instanceMask);
-    public static final OfInt LAYOUT$instanceContributionToHitGroupIndex = (OfInt) LAYOUT.select(PATH$instanceContributionToHitGroupIndex);
-    public static final OfInt LAYOUT$instanceFlags = (OfInt) LAYOUT.select(PATH$instanceFlags);
-    public static final OfInt LAYOUT$instanceIndex = (OfInt) LAYOUT.select(PATH$instanceIndex);
-    public static final OfInt LAYOUT$partitionIndex = (OfInt) LAYOUT.select(PATH$partitionIndex);
-    public static final OfLong LAYOUT$accelerationStructure = (OfLong) LAYOUT.select(PATH$accelerationStructure);
-
-    public static final long SIZE$transform = LAYOUT$transform.byteSize();
-    public static final long SIZE$explicitAABB = LAYOUT$explicitAABB.byteSize();
-    public static final long SIZE$instanceID = LAYOUT$instanceID.byteSize();
-    public static final long SIZE$instanceMask = LAYOUT$instanceMask.byteSize();
-    public static final long SIZE$instanceContributionToHitGroupIndex = LAYOUT$instanceContributionToHitGroupIndex.byteSize();
-    public static final long SIZE$instanceFlags = LAYOUT$instanceFlags.byteSize();
-    public static final long SIZE$instanceIndex = LAYOUT$instanceIndex.byteSize();
-    public static final long SIZE$partitionIndex = LAYOUT$partitionIndex.byteSize();
-    public static final long SIZE$accelerationStructure = LAYOUT$accelerationStructure.byteSize();
-
-    public static final long OFFSET$transform = LAYOUT.byteOffset(PATH$transform);
-    public static final long OFFSET$explicitAABB = LAYOUT.byteOffset(PATH$explicitAABB);
-    public static final long OFFSET$instanceID = LAYOUT.byteOffset(PATH$instanceID);
-    public static final long OFFSET$instanceMask = LAYOUT.byteOffset(PATH$instanceMask);
-    public static final long OFFSET$instanceContributionToHitGroupIndex = LAYOUT.byteOffset(PATH$instanceContributionToHitGroupIndex);
-    public static final long OFFSET$instanceFlags = LAYOUT.byteOffset(PATH$instanceFlags);
-    public static final long OFFSET$instanceIndex = LAYOUT.byteOffset(PATH$instanceIndex);
-    public static final long OFFSET$partitionIndex = LAYOUT.byteOffset(PATH$partitionIndex);
-    public static final long OFFSET$accelerationStructure = LAYOUT.byteOffset(PATH$accelerationStructure);
 
     public VkTransformMatrixKHR transform() {
         return new VkTransformMatrixKHR(segment.asSlice(OFFSET$transform, LAYOUT$transform));
@@ -180,4 +145,56 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        VkTransformMatrixKHR.LAYOUT.withName("transform"),
+        ValueLayout.JAVA_FLOAT.withName("explicitAABB"),
+        ValueLayout.JAVA_INT.withName("instanceID"),
+        ValueLayout.JAVA_INT.withName("instanceMask"),
+        ValueLayout.JAVA_INT.withName("instanceContributionToHitGroupIndex"),
+        ValueLayout.JAVA_INT.withName("instanceFlags"),
+        ValueLayout.JAVA_INT.withName("instanceIndex"),
+        ValueLayout.JAVA_INT.withName("partitionIndex"),
+        ValueLayout.JAVA_LONG.withName("accelerationStructure")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$transform = PathElement.groupElement("PATH$transform");
+    public static final PathElement PATH$explicitAABB = PathElement.groupElement("PATH$explicitAABB");
+    public static final PathElement PATH$instanceID = PathElement.groupElement("PATH$instanceID");
+    public static final PathElement PATH$instanceMask = PathElement.groupElement("PATH$instanceMask");
+    public static final PathElement PATH$instanceContributionToHitGroupIndex = PathElement.groupElement("PATH$instanceContributionToHitGroupIndex");
+    public static final PathElement PATH$instanceFlags = PathElement.groupElement("PATH$instanceFlags");
+    public static final PathElement PATH$instanceIndex = PathElement.groupElement("PATH$instanceIndex");
+    public static final PathElement PATH$partitionIndex = PathElement.groupElement("PATH$partitionIndex");
+    public static final PathElement PATH$accelerationStructure = PathElement.groupElement("PATH$accelerationStructure");
+
+    public static final StructLayout LAYOUT$transform = (StructLayout) LAYOUT.select(PATH$transform);
+    public static final OfFloat LAYOUT$explicitAABB = (OfFloat) LAYOUT.select(PATH$explicitAABB);
+    public static final OfInt LAYOUT$instanceID = (OfInt) LAYOUT.select(PATH$instanceID);
+    public static final OfInt LAYOUT$instanceMask = (OfInt) LAYOUT.select(PATH$instanceMask);
+    public static final OfInt LAYOUT$instanceContributionToHitGroupIndex = (OfInt) LAYOUT.select(PATH$instanceContributionToHitGroupIndex);
+    public static final OfInt LAYOUT$instanceFlags = (OfInt) LAYOUT.select(PATH$instanceFlags);
+    public static final OfInt LAYOUT$instanceIndex = (OfInt) LAYOUT.select(PATH$instanceIndex);
+    public static final OfInt LAYOUT$partitionIndex = (OfInt) LAYOUT.select(PATH$partitionIndex);
+    public static final OfLong LAYOUT$accelerationStructure = (OfLong) LAYOUT.select(PATH$accelerationStructure);
+
+    public static final long SIZE$transform = LAYOUT$transform.byteSize();
+    public static final long SIZE$explicitAABB = LAYOUT$explicitAABB.byteSize();
+    public static final long SIZE$instanceID = LAYOUT$instanceID.byteSize();
+    public static final long SIZE$instanceMask = LAYOUT$instanceMask.byteSize();
+    public static final long SIZE$instanceContributionToHitGroupIndex = LAYOUT$instanceContributionToHitGroupIndex.byteSize();
+    public static final long SIZE$instanceFlags = LAYOUT$instanceFlags.byteSize();
+    public static final long SIZE$instanceIndex = LAYOUT$instanceIndex.byteSize();
+    public static final long SIZE$partitionIndex = LAYOUT$partitionIndex.byteSize();
+    public static final long SIZE$accelerationStructure = LAYOUT$accelerationStructure.byteSize();
+
+    public static final long OFFSET$transform = LAYOUT.byteOffset(PATH$transform);
+    public static final long OFFSET$explicitAABB = LAYOUT.byteOffset(PATH$explicitAABB);
+    public static final long OFFSET$instanceID = LAYOUT.byteOffset(PATH$instanceID);
+    public static final long OFFSET$instanceMask = LAYOUT.byteOffset(PATH$instanceMask);
+    public static final long OFFSET$instanceContributionToHitGroupIndex = LAYOUT.byteOffset(PATH$instanceContributionToHitGroupIndex);
+    public static final long OFFSET$instanceFlags = LAYOUT.byteOffset(PATH$instanceFlags);
+    public static final long OFFSET$instanceIndex = LAYOUT.byteOffset(PATH$instanceIndex);
+    public static final long OFFSET$partitionIndex = LAYOUT.byteOffset(PATH$partitionIndex);
+    public static final long OFFSET$accelerationStructure = LAYOUT.byteOffset(PATH$accelerationStructure);
 }

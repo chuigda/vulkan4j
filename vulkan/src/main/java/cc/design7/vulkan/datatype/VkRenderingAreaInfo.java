@@ -14,8 +14,31 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkRenderingAreaInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderingAreaInfo.html"><code>VkRenderingAreaInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkRenderingAreaInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t viewMask;
+///     uint32_t colorAttachmentCount;
+///     VkFormat const* pColorAttachmentFormats;
+///     VkFormat depthAttachmentFormat;
+///     VkFormat stencilAttachmentFormat;
+/// } VkRenderingAreaInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_RENDERING_AREA_INFO`
+///
+/// The {@link VkRenderingAreaInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkRenderingAreaInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +47,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderingAreaInfo.html">VkRenderingAreaInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderingAreaInfo.html"><code>VkRenderingAreaInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkRenderingAreaInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkRenderingAreaInfo {
-        sType(VkStructureType.RENDERING_AREA_INFO);
-    }
-
     public static VkRenderingAreaInfo allocate(Arena arena) {
-        return new VkRenderingAreaInfo(arena.allocate(LAYOUT));
+        VkRenderingAreaInfo ret = new VkRenderingAreaInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.RENDERING_AREA_INFO);
+        return ret;
     }
 
     public static VkRenderingAreaInfo[] allocate(Arena arena, int count) {
@@ -41,6 +62,7 @@ public record VkRenderingAreaInfo(@NotNull MemorySegment segment) implements IPo
         VkRenderingAreaInfo[] ret = new VkRenderingAreaInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkRenderingAreaInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.RENDERING_AREA_INFO);
         }
         return ret;
     }
@@ -59,48 +81,9 @@ public record VkRenderingAreaInfo(@NotNull MemorySegment segment) implements IPo
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("viewMask"),
-        ValueLayout.JAVA_INT.withName("colorAttachmentCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pColorAttachmentFormats"),
-        ValueLayout.JAVA_INT.withName("depthAttachmentFormat"),
-        ValueLayout.JAVA_INT.withName("stencilAttachmentFormat")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$viewMask = PathElement.groupElement("PATH$viewMask");
-    public static final PathElement PATH$colorAttachmentCount = PathElement.groupElement("PATH$colorAttachmentCount");
-    public static final PathElement PATH$pColorAttachmentFormats = PathElement.groupElement("PATH$pColorAttachmentFormats");
-    public static final PathElement PATH$depthAttachmentFormat = PathElement.groupElement("PATH$depthAttachmentFormat");
-    public static final PathElement PATH$stencilAttachmentFormat = PathElement.groupElement("PATH$stencilAttachmentFormat");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$viewMask = (OfInt) LAYOUT.select(PATH$viewMask);
-    public static final OfInt LAYOUT$colorAttachmentCount = (OfInt) LAYOUT.select(PATH$colorAttachmentCount);
-    public static final AddressLayout LAYOUT$pColorAttachmentFormats = (AddressLayout) LAYOUT.select(PATH$pColorAttachmentFormats);
-    public static final OfInt LAYOUT$depthAttachmentFormat = (OfInt) LAYOUT.select(PATH$depthAttachmentFormat);
-    public static final OfInt LAYOUT$stencilAttachmentFormat = (OfInt) LAYOUT.select(PATH$stencilAttachmentFormat);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$viewMask = LAYOUT$viewMask.byteSize();
-    public static final long SIZE$colorAttachmentCount = LAYOUT$colorAttachmentCount.byteSize();
-    public static final long SIZE$pColorAttachmentFormats = LAYOUT$pColorAttachmentFormats.byteSize();
-    public static final long SIZE$depthAttachmentFormat = LAYOUT$depthAttachmentFormat.byteSize();
-    public static final long SIZE$stencilAttachmentFormat = LAYOUT$stencilAttachmentFormat.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$viewMask = LAYOUT.byteOffset(PATH$viewMask);
-    public static final long OFFSET$colorAttachmentCount = LAYOUT.byteOffset(PATH$colorAttachmentCount);
-    public static final long OFFSET$pColorAttachmentFormats = LAYOUT.byteOffset(PATH$pColorAttachmentFormats);
-    public static final long OFFSET$depthAttachmentFormat = LAYOUT.byteOffset(PATH$depthAttachmentFormat);
-    public static final long OFFSET$stencilAttachmentFormat = LAYOUT.byteOffset(PATH$stencilAttachmentFormat);
+    public void autoInit() {
+        sType(VkStructureType.RENDERING_AREA_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -152,7 +135,7 @@ public record VkRenderingAreaInfo(@NotNull MemorySegment segment) implements IPo
     /// or writing to the buffer.
     public @Nullable @enumtype(VkFormat.class) IntPtr pColorAttachmentFormats() {
         MemorySegment s = pColorAttachmentFormatsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -179,4 +162,46 @@ public record VkRenderingAreaInfo(@NotNull MemorySegment segment) implements IPo
         segment.set(LAYOUT$stencilAttachmentFormat, OFFSET$stencilAttachmentFormat, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("viewMask"),
+        ValueLayout.JAVA_INT.withName("colorAttachmentCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pColorAttachmentFormats"),
+        ValueLayout.JAVA_INT.withName("depthAttachmentFormat"),
+        ValueLayout.JAVA_INT.withName("stencilAttachmentFormat")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$viewMask = PathElement.groupElement("PATH$viewMask");
+    public static final PathElement PATH$colorAttachmentCount = PathElement.groupElement("PATH$colorAttachmentCount");
+    public static final PathElement PATH$pColorAttachmentFormats = PathElement.groupElement("PATH$pColorAttachmentFormats");
+    public static final PathElement PATH$depthAttachmentFormat = PathElement.groupElement("PATH$depthAttachmentFormat");
+    public static final PathElement PATH$stencilAttachmentFormat = PathElement.groupElement("PATH$stencilAttachmentFormat");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$viewMask = (OfInt) LAYOUT.select(PATH$viewMask);
+    public static final OfInt LAYOUT$colorAttachmentCount = (OfInt) LAYOUT.select(PATH$colorAttachmentCount);
+    public static final AddressLayout LAYOUT$pColorAttachmentFormats = (AddressLayout) LAYOUT.select(PATH$pColorAttachmentFormats);
+    public static final OfInt LAYOUT$depthAttachmentFormat = (OfInt) LAYOUT.select(PATH$depthAttachmentFormat);
+    public static final OfInt LAYOUT$stencilAttachmentFormat = (OfInt) LAYOUT.select(PATH$stencilAttachmentFormat);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$viewMask = LAYOUT$viewMask.byteSize();
+    public static final long SIZE$colorAttachmentCount = LAYOUT$colorAttachmentCount.byteSize();
+    public static final long SIZE$pColorAttachmentFormats = LAYOUT$pColorAttachmentFormats.byteSize();
+    public static final long SIZE$depthAttachmentFormat = LAYOUT$depthAttachmentFormat.byteSize();
+    public static final long SIZE$stencilAttachmentFormat = LAYOUT$stencilAttachmentFormat.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$viewMask = LAYOUT.byteOffset(PATH$viewMask);
+    public static final long OFFSET$colorAttachmentCount = LAYOUT.byteOffset(PATH$colorAttachmentCount);
+    public static final long OFFSET$pColorAttachmentFormats = LAYOUT.byteOffset(PATH$pColorAttachmentFormats);
+    public static final long OFFSET$depthAttachmentFormat = LAYOUT.byteOffset(PATH$depthAttachmentFormat);
+    public static final long OFFSET$stencilAttachmentFormat = LAYOUT.byteOffset(PATH$stencilAttachmentFormat);
 }

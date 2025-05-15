@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCommandPoolCreateFlags.html">VkCommandPoolCreateFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCommandPoolCreateFlags.html"><code>VkCommandPoolCreateFlags</code></a>
 public final class VkCommandPoolCreateFlags {
     public static final int PROTECTED = 0x4;
     public static final int RESET_COMMAND_BUFFER = 0x2;

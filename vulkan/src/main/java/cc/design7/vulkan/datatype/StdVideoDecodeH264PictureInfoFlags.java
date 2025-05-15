@@ -17,6 +17,20 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoDecodeH264PictureInfoFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoDecodeH264PictureInfoFlags {
+///     uint32_t field_pic_flag : 1;
+///     uint32_t is_intra : 1;
+///     uint32_t IdrPicFlag : 1;
+///     uint32_t bottom_field_flag : 1;
+///     uint32_t is_reference : 1;
+///     uint32_t complementary_field_pair : 1;
+/// } StdVideoDecodeH264PictureInfoFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +42,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoDecodeH264PictureInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoDecodeH264PictureInfoFlags allocate(Arena arena) {
-        return new StdVideoDecodeH264PictureInfoFlags(arena.allocate(LAYOUT));
+        StdVideoDecodeH264PictureInfoFlags ret = new StdVideoDecodeH264PictureInfoFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoDecodeH264PictureInfoFlags[] allocate(Arena arena, int count) {
@@ -53,18 +68,6 @@ public record StdVideoDecodeH264PictureInfoFlags(@NotNull MemorySegment segment)
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$field_pic_flag_complementary_field_pair")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$field_pic_flag_complementary_field_pair = PathElement.groupElement("PATH$bitfield$field_pic_flag_complementary_field_pair");
-
-    public static final OfInt LAYOUT$field_pic_flag_complementary_field_pair = (OfInt) LAYOUT.select(PATH$bitfield$field_pic_flag_complementary_field_pair);
-
-
-    public static final long OFFSET$field_pic_flag_complementary_field_pair = LAYOUT.byteOffset(PATH$bitfield$field_pic_flag_complementary_field_pair);
 
     public boolean field_pic_flag() {
         MemorySegment s = segment.asSlice(OFFSET$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
@@ -126,4 +129,15 @@ public record StdVideoDecodeH264PictureInfoFlags(@NotNull MemorySegment segment)
         BitfieldUtil.writeBit(s, 5, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$field_pic_flag_complementary_field_pair")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$bitfield$field_pic_flag_complementary_field_pair = PathElement.groupElement("PATH$bitfield$field_pic_flag_complementary_field_pair");
+
+    public static final OfInt LAYOUT$field_pic_flag_complementary_field_pair = (OfInt) LAYOUT.select(PATH$bitfield$field_pic_flag_complementary_field_pair);
+
+
+    public static final long OFFSET$field_pic_flag_complementary_field_pair = LAYOUT.byteOffset(PATH$bitfield$field_pic_flag_complementary_field_pair);
 }

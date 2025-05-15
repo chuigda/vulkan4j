@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkSurfaceFormatKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSurfaceFormatKHR.html"><code>VkSurfaceFormatKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkSurfaceFormatKHR {
+///     VkFormat format;
+///     VkColorSpaceKHR colorSpace;
+/// } VkSurfaceFormatKHR;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSurfaceFormatKHR.html">VkSurfaceFormatKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSurfaceFormatKHR.html"><code>VkSurfaceFormatKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkSurfaceFormatKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkSurfaceFormatKHR allocate(Arena arena) {
-        return new VkSurfaceFormatKHR(arena.allocate(LAYOUT));
+        VkSurfaceFormatKHR ret = new VkSurfaceFormatKHR(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkSurfaceFormatKHR[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkSurfaceFormatKHR(@NotNull MemorySegment segment) implements IPoi
         return ret;
     }
 
+    public @enumtype(VkFormat.class) int format() {
+        return segment.get(LAYOUT$format, OFFSET$format);
+    }
+
+    public void format(@enumtype(VkFormat.class) int value) {
+        segment.set(LAYOUT$format, OFFSET$format, value);
+    }
+
+    public @enumtype(VkColorSpaceKHR.class) int colorSpace() {
+        return segment.get(LAYOUT$colorSpace, OFFSET$colorSpace);
+    }
+
+    public void colorSpace(@enumtype(VkColorSpaceKHR.class) int value) {
+        segment.set(LAYOUT$colorSpace, OFFSET$colorSpace, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("format"),
         ValueLayout.JAVA_INT.withName("colorSpace")
@@ -72,21 +99,4 @@ public record VkSurfaceFormatKHR(@NotNull MemorySegment segment) implements IPoi
 
     public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
     public static final long OFFSET$colorSpace = LAYOUT.byteOffset(PATH$colorSpace);
-
-    public @enumtype(VkFormat.class) int format() {
-        return segment.get(LAYOUT$format, OFFSET$format);
-    }
-
-    public void format(@enumtype(VkFormat.class) int value) {
-        segment.set(LAYOUT$format, OFFSET$format, value);
-    }
-
-    public @enumtype(VkColorSpaceKHR.class) int colorSpace() {
-        return segment.get(LAYOUT$colorSpace, OFFSET$colorSpace);
-    }
-
-    public void colorSpace(@enumtype(VkColorSpaceKHR.class) int value) {
-        segment.set(LAYOUT$colorSpace, OFFSET$colorSpace, value);
-    }
-
 }

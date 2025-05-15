@@ -17,6 +17,18 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoDecodeH264ReferenceInfoFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoDecodeH264ReferenceInfoFlags {
+///     uint32_t top_field_flag : 1;
+///     uint32_t bottom_field_flag : 1;
+///     uint32_t used_for_long_term_reference : 1;
+///     uint32_t is_non_existing : 1;
+/// } StdVideoDecodeH264ReferenceInfoFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +40,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoDecodeH264ReferenceInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoDecodeH264ReferenceInfoFlags allocate(Arena arena) {
-        return new StdVideoDecodeH264ReferenceInfoFlags(arena.allocate(LAYOUT));
+        StdVideoDecodeH264ReferenceInfoFlags ret = new StdVideoDecodeH264ReferenceInfoFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoDecodeH264ReferenceInfoFlags[] allocate(Arena arena, int count) {
@@ -53,18 +66,6 @@ public record StdVideoDecodeH264ReferenceInfoFlags(@NotNull MemorySegment segmen
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$top_field_flag_is_non_existing")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$top_field_flag_is_non_existing = PathElement.groupElement("PATH$bitfield$top_field_flag_is_non_existing");
-
-    public static final OfInt LAYOUT$top_field_flag_is_non_existing = (OfInt) LAYOUT.select(PATH$bitfield$top_field_flag_is_non_existing);
-
-
-    public static final long OFFSET$top_field_flag_is_non_existing = LAYOUT.byteOffset(PATH$bitfield$top_field_flag_is_non_existing);
 
     public boolean top_field_flag() {
         MemorySegment s = segment.asSlice(OFFSET$top_field_flag_is_non_existing, LAYOUT$top_field_flag_is_non_existing);
@@ -106,4 +107,15 @@ public record StdVideoDecodeH264ReferenceInfoFlags(@NotNull MemorySegment segmen
         BitfieldUtil.writeBit(s, 3, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$top_field_flag_is_non_existing")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$bitfield$top_field_flag_is_non_existing = PathElement.groupElement("PATH$bitfield$top_field_flag_is_non_existing");
+
+    public static final OfInt LAYOUT$top_field_flag_is_non_existing = (OfInt) LAYOUT.select(PATH$bitfield$top_field_flag_is_non_existing);
+
+
+    public static final long OFFSET$top_field_flag_is_non_existing = LAYOUT.byteOffset(PATH$bitfield$top_field_flag_is_non_existing);
 }

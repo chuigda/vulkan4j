@@ -14,8 +14,35 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkRenderPassCreateInfo2} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassCreateInfo2.html"><code>VkRenderPassCreateInfo2</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkRenderPassCreateInfo2 {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkRenderPassCreateFlags flags;
+///     uint32_t attachmentCount;
+///     VkAttachmentDescription2 const* pAttachments;
+///     uint32_t subpassCount;
+///     VkSubpassDescription2 const* pSubpasses;
+///     uint32_t dependencyCount;
+///     VkSubpassDependency2 const* pDependencies;
+///     uint32_t correlatedViewMaskCount;
+///     uint32_t const* pCorrelatedViewMasks;
+/// } VkRenderPassCreateInfo2;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO_2`
+///
+/// The {@link VkRenderPassCreateInfo2#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkRenderPassCreateInfo2#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +51,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassCreateInfo2.html">VkRenderPassCreateInfo2</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassCreateInfo2.html"><code>VkRenderPassCreateInfo2</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements IPointer {
-    public VkRenderPassCreateInfo2 {
-        sType(VkStructureType.RENDER_PASS_CREATE_INFO_2);
-    }
-
     public static VkRenderPassCreateInfo2 allocate(Arena arena) {
-        return new VkRenderPassCreateInfo2(arena.allocate(LAYOUT));
+        VkRenderPassCreateInfo2 ret = new VkRenderPassCreateInfo2(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.RENDER_PASS_CREATE_INFO_2);
+        return ret;
     }
 
     public static VkRenderPassCreateInfo2[] allocate(Arena arena, int count) {
@@ -41,6 +66,7 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         VkRenderPassCreateInfo2[] ret = new VkRenderPassCreateInfo2[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkRenderPassCreateInfo2(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.RENDER_PASS_CREATE_INFO_2);
         }
         return ret;
     }
@@ -57,6 +83,200 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.RENDER_PASS_CREATE_INFO_2);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkRenderPassCreateFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkRenderPassCreateFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @unsigned int attachmentCount() {
+        return segment.get(LAYOUT$attachmentCount, OFFSET$attachmentCount);
+    }
+
+    public void attachmentCount(@unsigned int value) {
+        segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
+    }
+
+    public @pointer(comment="VkAttachmentDescription2*") MemorySegment pAttachmentsRaw() {
+        return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
+    }
+
+    public void pAttachmentsRaw(@pointer(comment="VkAttachmentDescription2*") MemorySegment value) {
+        segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
+    }
+
+    public @Nullable VkAttachmentDescription2 pAttachments() {
+        MemorySegment s = pAttachmentsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkAttachmentDescription2(s);
+    }
+
+    public void pAttachments(@Nullable VkAttachmentDescription2 value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pAttachmentsRaw(s);
+    }
+
+    @unsafe public @Nullable VkAttachmentDescription2[] pAttachments(int assumedCount) {
+        MemorySegment s = pAttachmentsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkAttachmentDescription2.SIZE);
+        VkAttachmentDescription2[] ret = new VkAttachmentDescription2[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkAttachmentDescription2(s.asSlice(i * VkAttachmentDescription2.SIZE, VkAttachmentDescription2.SIZE));
+        }
+        return ret;
+    }
+
+    public @unsigned int subpassCount() {
+        return segment.get(LAYOUT$subpassCount, OFFSET$subpassCount);
+    }
+
+    public void subpassCount(@unsigned int value) {
+        segment.set(LAYOUT$subpassCount, OFFSET$subpassCount, value);
+    }
+
+    public @pointer(comment="VkSubpassDescription2*") MemorySegment pSubpassesRaw() {
+        return segment.get(LAYOUT$pSubpasses, OFFSET$pSubpasses);
+    }
+
+    public void pSubpassesRaw(@pointer(comment="VkSubpassDescription2*") MemorySegment value) {
+        segment.set(LAYOUT$pSubpasses, OFFSET$pSubpasses, value);
+    }
+
+    public @Nullable VkSubpassDescription2 pSubpasses() {
+        MemorySegment s = pSubpassesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkSubpassDescription2(s);
+    }
+
+    public void pSubpasses(@Nullable VkSubpassDescription2 value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSubpassesRaw(s);
+    }
+
+    @unsafe public @Nullable VkSubpassDescription2[] pSubpasses(int assumedCount) {
+        MemorySegment s = pSubpassesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkSubpassDescription2.SIZE);
+        VkSubpassDescription2[] ret = new VkSubpassDescription2[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkSubpassDescription2(s.asSlice(i * VkSubpassDescription2.SIZE, VkSubpassDescription2.SIZE));
+        }
+        return ret;
+    }
+
+    public @unsigned int dependencyCount() {
+        return segment.get(LAYOUT$dependencyCount, OFFSET$dependencyCount);
+    }
+
+    public void dependencyCount(@unsigned int value) {
+        segment.set(LAYOUT$dependencyCount, OFFSET$dependencyCount, value);
+    }
+
+    public @pointer(comment="VkSubpassDependency2*") MemorySegment pDependenciesRaw() {
+        return segment.get(LAYOUT$pDependencies, OFFSET$pDependencies);
+    }
+
+    public void pDependenciesRaw(@pointer(comment="VkSubpassDependency2*") MemorySegment value) {
+        segment.set(LAYOUT$pDependencies, OFFSET$pDependencies, value);
+    }
+
+    public @Nullable VkSubpassDependency2 pDependencies() {
+        MemorySegment s = pDependenciesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkSubpassDependency2(s);
+    }
+
+    public void pDependencies(@Nullable VkSubpassDependency2 value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDependenciesRaw(s);
+    }
+
+    @unsafe public @Nullable VkSubpassDependency2[] pDependencies(int assumedCount) {
+        MemorySegment s = pDependenciesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkSubpassDependency2.SIZE);
+        VkSubpassDependency2[] ret = new VkSubpassDependency2[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkSubpassDependency2(s.asSlice(i * VkSubpassDependency2.SIZE, VkSubpassDependency2.SIZE));
+        }
+        return ret;
+    }
+
+    public @unsigned int correlatedViewMaskCount() {
+        return segment.get(LAYOUT$correlatedViewMaskCount, OFFSET$correlatedViewMaskCount);
+    }
+
+    public void correlatedViewMaskCount(@unsigned int value) {
+        segment.set(LAYOUT$correlatedViewMaskCount, OFFSET$correlatedViewMaskCount, value);
+    }
+
+    public @pointer(comment="int*") MemorySegment pCorrelatedViewMasksRaw() {
+        return segment.get(LAYOUT$pCorrelatedViewMasks, OFFSET$pCorrelatedViewMasks);
+    }
+
+    public void pCorrelatedViewMasksRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pCorrelatedViewMasks, OFFSET$pCorrelatedViewMasks, value);
+    }
+
+    /// Note: the returned {@link IntPtr} does not have correct
+    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
+    /// writing to the buffer.
+    public @Nullable @unsigned IntPtr pCorrelatedViewMasks() {
+        MemorySegment s = pCorrelatedViewMasksRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new IntPtr(s);
+    }
+
+    public void pCorrelatedViewMasks(@Nullable @unsigned IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pCorrelatedViewMasksRaw(s);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -121,195 +341,4 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
     public static final long OFFSET$pDependencies = LAYOUT.byteOffset(PATH$pDependencies);
     public static final long OFFSET$correlatedViewMaskCount = LAYOUT.byteOffset(PATH$correlatedViewMaskCount);
     public static final long OFFSET$pCorrelatedViewMasks = LAYOUT.byteOffset(PATH$pCorrelatedViewMasks);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @enumtype(VkRenderPassCreateFlags.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkRenderPassCreateFlags.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @unsigned int attachmentCount() {
-        return segment.get(LAYOUT$attachmentCount, OFFSET$attachmentCount);
-    }
-
-    public void attachmentCount(@unsigned int value) {
-        segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
-    }
-
-    public @pointer(comment="VkAttachmentDescription2*") MemorySegment pAttachmentsRaw() {
-        return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
-    }
-
-    public void pAttachmentsRaw(@pointer(comment="VkAttachmentDescription2*") MemorySegment value) {
-        segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
-    }
-
-    public @Nullable VkAttachmentDescription2 pAttachments() {
-        MemorySegment s = pAttachmentsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkAttachmentDescription2(s);
-    }
-
-    public void pAttachments(@Nullable VkAttachmentDescription2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pAttachmentsRaw(s);
-    }
-
-    @unsafe public @Nullable VkAttachmentDescription2[] pAttachments(int assumedCount) {
-        MemorySegment s = pAttachmentsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkAttachmentDescription2.SIZE);
-        VkAttachmentDescription2[] ret = new VkAttachmentDescription2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentDescription2(s.asSlice(i * VkAttachmentDescription2.SIZE, VkAttachmentDescription2.SIZE));
-        }
-        return ret;
-    }
-
-    public @unsigned int subpassCount() {
-        return segment.get(LAYOUT$subpassCount, OFFSET$subpassCount);
-    }
-
-    public void subpassCount(@unsigned int value) {
-        segment.set(LAYOUT$subpassCount, OFFSET$subpassCount, value);
-    }
-
-    public @pointer(comment="VkSubpassDescription2*") MemorySegment pSubpassesRaw() {
-        return segment.get(LAYOUT$pSubpasses, OFFSET$pSubpasses);
-    }
-
-    public void pSubpassesRaw(@pointer(comment="VkSubpassDescription2*") MemorySegment value) {
-        segment.set(LAYOUT$pSubpasses, OFFSET$pSubpasses, value);
-    }
-
-    public @Nullable VkSubpassDescription2 pSubpasses() {
-        MemorySegment s = pSubpassesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkSubpassDescription2(s);
-    }
-
-    public void pSubpasses(@Nullable VkSubpassDescription2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSubpassesRaw(s);
-    }
-
-    @unsafe public @Nullable VkSubpassDescription2[] pSubpasses(int assumedCount) {
-        MemorySegment s = pSubpassesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkSubpassDescription2.SIZE);
-        VkSubpassDescription2[] ret = new VkSubpassDescription2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSubpassDescription2(s.asSlice(i * VkSubpassDescription2.SIZE, VkSubpassDescription2.SIZE));
-        }
-        return ret;
-    }
-
-    public @unsigned int dependencyCount() {
-        return segment.get(LAYOUT$dependencyCount, OFFSET$dependencyCount);
-    }
-
-    public void dependencyCount(@unsigned int value) {
-        segment.set(LAYOUT$dependencyCount, OFFSET$dependencyCount, value);
-    }
-
-    public @pointer(comment="VkSubpassDependency2*") MemorySegment pDependenciesRaw() {
-        return segment.get(LAYOUT$pDependencies, OFFSET$pDependencies);
-    }
-
-    public void pDependenciesRaw(@pointer(comment="VkSubpassDependency2*") MemorySegment value) {
-        segment.set(LAYOUT$pDependencies, OFFSET$pDependencies, value);
-    }
-
-    public @Nullable VkSubpassDependency2 pDependencies() {
-        MemorySegment s = pDependenciesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkSubpassDependency2(s);
-    }
-
-    public void pDependencies(@Nullable VkSubpassDependency2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pDependenciesRaw(s);
-    }
-
-    @unsafe public @Nullable VkSubpassDependency2[] pDependencies(int assumedCount) {
-        MemorySegment s = pDependenciesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkSubpassDependency2.SIZE);
-        VkSubpassDependency2[] ret = new VkSubpassDependency2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSubpassDependency2(s.asSlice(i * VkSubpassDependency2.SIZE, VkSubpassDependency2.SIZE));
-        }
-        return ret;
-    }
-
-    public @unsigned int correlatedViewMaskCount() {
-        return segment.get(LAYOUT$correlatedViewMaskCount, OFFSET$correlatedViewMaskCount);
-    }
-
-    public void correlatedViewMaskCount(@unsigned int value) {
-        segment.set(LAYOUT$correlatedViewMaskCount, OFFSET$correlatedViewMaskCount, value);
-    }
-
-    public @pointer(comment="int*") MemorySegment pCorrelatedViewMasksRaw() {
-        return segment.get(LAYOUT$pCorrelatedViewMasks, OFFSET$pCorrelatedViewMasks);
-    }
-
-    public void pCorrelatedViewMasksRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pCorrelatedViewMasks, OFFSET$pCorrelatedViewMasks, value);
-    }
-
-    /// Note: the returned {@link IntPtr} does not have correct
-    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
-    /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
-    /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pCorrelatedViewMasks() {
-        MemorySegment s = pCorrelatedViewMasksRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new IntPtr(s);
-    }
-
-    public void pCorrelatedViewMasks(@Nullable @unsigned IntPtr value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pCorrelatedViewMasksRaw(s);
-    }
-
 }

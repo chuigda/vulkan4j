@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkAccelerationStructureGeometryDataKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureGeometryDataKHR.html"><code>VkAccelerationStructureGeometryDataKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkAccelerationStructureGeometryDataKHR {
+///     VkAccelerationStructureGeometryTrianglesDataKHR triangles;
+///     VkAccelerationStructureGeometryAabbsDataKHR aabbs;
+///     VkAccelerationStructureGeometryInstancesDataKHR instances;
+/// } VkAccelerationStructureGeometryDataKHR;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureGeometryDataKHR.html">VkAccelerationStructureGeometryDataKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureGeometryDataKHR.html"><code>VkAccelerationStructureGeometryDataKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkAccelerationStructureGeometryDataKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkAccelerationStructureGeometryDataKHR allocate(Arena arena) {
-        return new VkAccelerationStructureGeometryDataKHR(arena.allocate(LAYOUT));
+        VkAccelerationStructureGeometryDataKHR ret = new VkAccelerationStructureGeometryDataKHR(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkAccelerationStructureGeometryDataKHR[] allocate(Arena arena, int count) {
@@ -55,29 +67,6 @@ public record VkAccelerationStructureGeometryDataKHR(@NotNull MemorySegment segm
         return ret;
     }
 
-    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
-        VkAccelerationStructureGeometryTrianglesDataKHR.LAYOUT.withName("triangles"),
-        VkAccelerationStructureGeometryAabbsDataKHR.LAYOUT.withName("aabbs"),
-        VkAccelerationStructureGeometryInstancesDataKHR.LAYOUT.withName("instances")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$triangles = PathElement.groupElement("PATH$triangles");
-    public static final PathElement PATH$aabbs = PathElement.groupElement("PATH$aabbs");
-    public static final PathElement PATH$instances = PathElement.groupElement("PATH$instances");
-
-    public static final StructLayout LAYOUT$triangles = (StructLayout) LAYOUT.select(PATH$triangles);
-    public static final StructLayout LAYOUT$aabbs = (StructLayout) LAYOUT.select(PATH$aabbs);
-    public static final StructLayout LAYOUT$instances = (StructLayout) LAYOUT.select(PATH$instances);
-
-    public static final long SIZE$triangles = LAYOUT$triangles.byteSize();
-    public static final long SIZE$aabbs = LAYOUT$aabbs.byteSize();
-    public static final long SIZE$instances = LAYOUT$instances.byteSize();
-
-    public static final long OFFSET$triangles = LAYOUT.byteOffset(PATH$triangles);
-    public static final long OFFSET$aabbs = LAYOUT.byteOffset(PATH$aabbs);
-    public static final long OFFSET$instances = LAYOUT.byteOffset(PATH$instances);
-
     public VkAccelerationStructureGeometryTrianglesDataKHR triangles() {
         return new VkAccelerationStructureGeometryTrianglesDataKHR(segment.asSlice(OFFSET$triangles, LAYOUT$triangles));
     }
@@ -102,4 +91,26 @@ public record VkAccelerationStructureGeometryDataKHR(@NotNull MemorySegment segm
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$instances, SIZE$instances);
     }
 
+    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
+        VkAccelerationStructureGeometryTrianglesDataKHR.LAYOUT.withName("triangles"),
+        VkAccelerationStructureGeometryAabbsDataKHR.LAYOUT.withName("aabbs"),
+        VkAccelerationStructureGeometryInstancesDataKHR.LAYOUT.withName("instances")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$triangles = PathElement.groupElement("PATH$triangles");
+    public static final PathElement PATH$aabbs = PathElement.groupElement("PATH$aabbs");
+    public static final PathElement PATH$instances = PathElement.groupElement("PATH$instances");
+
+    public static final StructLayout LAYOUT$triangles = (StructLayout) LAYOUT.select(PATH$triangles);
+    public static final StructLayout LAYOUT$aabbs = (StructLayout) LAYOUT.select(PATH$aabbs);
+    public static final StructLayout LAYOUT$instances = (StructLayout) LAYOUT.select(PATH$instances);
+
+    public static final long SIZE$triangles = LAYOUT$triangles.byteSize();
+    public static final long SIZE$aabbs = LAYOUT$aabbs.byteSize();
+    public static final long SIZE$instances = LAYOUT$instances.byteSize();
+
+    public static final long OFFSET$triangles = LAYOUT.byteOffset(PATH$triangles);
+    public static final long OFFSET$aabbs = LAYOUT.byteOffset(PATH$aabbs);
+    public static final long OFFSET$instances = LAYOUT.byteOffset(PATH$instances);
 }

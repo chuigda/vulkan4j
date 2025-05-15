@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureTypeNV.html">VkClusterAccelerationStructureTypeNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureTypeNV.html"><code>VkClusterAccelerationStructureTypeNV</code></a>
 public final class VkClusterAccelerationStructureTypeNV {
     public static final int CLUSTERS_BOTTOM_LEVEL = 0x0;
     public static final int TRIANGLE_CLUSTER = 0x1;

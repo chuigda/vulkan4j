@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageAspectFlags.html">VkImageAspectFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageAspectFlags.html"><code>VkImageAspectFlags</code></a>
 public final class VkImageAspectFlags {
     public static final int COLOR = 0x1;
     public static final int DEPTH = 0x2;

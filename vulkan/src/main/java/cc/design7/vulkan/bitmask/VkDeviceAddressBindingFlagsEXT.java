@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceAddressBindingFlagsEXT.html">VkDeviceAddressBindingFlagsEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceAddressBindingFlagsEXT.html"><code>VkDeviceAddressBindingFlagsEXT</code></a>
 public final class VkDeviceAddressBindingFlagsEXT {
     public static final int INTERNAL_OBJECT = 0x1;
 

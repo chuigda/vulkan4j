@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures.html"><code>VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 shaderSubgroupExtendedTypes;
+/// } VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES`
+///
+/// The {@link VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures.html">VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures.html"><code>VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures {
-        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES);
-    }
-
     public static VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures allocate(Arena arena) {
-        return new VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(arena.allocate(LAYOUT));
+        VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures ret = new VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES);
+        return ret;
     }
 
     public static VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(@NotNull Memor
         VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures[] ret = new VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(@NotNull Memor
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("shaderSubgroupExtendedTypes")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shaderSubgroupExtendedTypes = PathElement.groupElement("PATH$shaderSubgroupExtendedTypes");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$shaderSubgroupExtendedTypes = (OfInt) LAYOUT.select(PATH$shaderSubgroupExtendedTypes);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$shaderSubgroupExtendedTypes = LAYOUT$shaderSubgroupExtendedTypes.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$shaderSubgroupExtendedTypes = LAYOUT.byteOffset(PATH$shaderSubgroupExtendedTypes);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(@NotNull Memor
         segment.set(LAYOUT$shaderSubgroupExtendedTypes, OFFSET$shaderSubgroupExtendedTypes, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("shaderSubgroupExtendedTypes")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$shaderSubgroupExtendedTypes = PathElement.groupElement("PATH$shaderSubgroupExtendedTypes");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$shaderSubgroupExtendedTypes = (OfInt) LAYOUT.select(PATH$shaderSubgroupExtendedTypes);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderSubgroupExtendedTypes = LAYOUT$shaderSubgroupExtendedTypes.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$shaderSubgroupExtendedTypes = LAYOUT.byteOffset(PATH$shaderSubgroupExtendedTypes);
 }

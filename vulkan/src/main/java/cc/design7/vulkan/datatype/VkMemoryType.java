@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkMemoryType} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryType.html"><code>VkMemoryType</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkMemoryType {
+///     VkMemoryPropertyFlags propertyFlags;
+///     uint32_t heapIndex;
+/// } VkMemoryType;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryType.html">VkMemoryType</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryType.html"><code>VkMemoryType</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkMemoryType(@NotNull MemorySegment segment) implements IPointer {
     public static VkMemoryType allocate(Arena arena) {
-        return new VkMemoryType(arena.allocate(LAYOUT));
+        VkMemoryType ret = new VkMemoryType(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkMemoryType[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkMemoryType(@NotNull MemorySegment segment) implements IPointer {
         return ret;
     }
 
+    public @enumtype(VkMemoryPropertyFlags.class) int propertyFlags() {
+        return segment.get(LAYOUT$propertyFlags, OFFSET$propertyFlags);
+    }
+
+    public void propertyFlags(@enumtype(VkMemoryPropertyFlags.class) int value) {
+        segment.set(LAYOUT$propertyFlags, OFFSET$propertyFlags, value);
+    }
+
+    public @unsigned int heapIndex() {
+        return segment.get(LAYOUT$heapIndex, OFFSET$heapIndex);
+    }
+
+    public void heapIndex(@unsigned int value) {
+        segment.set(LAYOUT$heapIndex, OFFSET$heapIndex, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("propertyFlags"),
         ValueLayout.JAVA_INT.withName("heapIndex")
@@ -72,21 +99,4 @@ public record VkMemoryType(@NotNull MemorySegment segment) implements IPointer {
 
     public static final long OFFSET$propertyFlags = LAYOUT.byteOffset(PATH$propertyFlags);
     public static final long OFFSET$heapIndex = LAYOUT.byteOffset(PATH$heapIndex);
-
-    public @enumtype(VkMemoryPropertyFlags.class) int propertyFlags() {
-        return segment.get(LAYOUT$propertyFlags, OFFSET$propertyFlags);
-    }
-
-    public void propertyFlags(@enumtype(VkMemoryPropertyFlags.class) int value) {
-        segment.set(LAYOUT$propertyFlags, OFFSET$propertyFlags, value);
-    }
-
-    public @unsigned int heapIndex() {
-        return segment.get(LAYOUT$heapIndex, OFFSET$heapIndex);
-    }
-
-    public void heapIndex(@unsigned int value) {
-        segment.set(LAYOUT$heapIndex, OFFSET$heapIndex, value);
-    }
-
 }

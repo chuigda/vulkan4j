@@ -17,6 +17,19 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoAV1FilmGrainFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoAV1FilmGrainFlags {
+///     uint32_t chroma_scaling_from_luma : 1;
+///     uint32_t overlap_flag : 1;
+///     uint32_t clip_to_restricted_range : 1;
+///     uint32_t update_grain : 1;
+///     uint32_t reserved : 28;
+/// } StdVideoAV1FilmGrainFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +41,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1FilmGrainFlags allocate(Arena arena) {
-        return new StdVideoAV1FilmGrainFlags(arena.allocate(LAYOUT));
+        StdVideoAV1FilmGrainFlags ret = new StdVideoAV1FilmGrainFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoAV1FilmGrainFlags[] allocate(Arena arena, int count) {
@@ -53,18 +67,6 @@ public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implemen
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$chroma_scaling_from_luma_reserved")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$chroma_scaling_from_luma_reserved = PathElement.groupElement("PATH$bitfield$chroma_scaling_from_luma_reserved");
-
-    public static final OfInt LAYOUT$chroma_scaling_from_luma_reserved = (OfInt) LAYOUT.select(PATH$bitfield$chroma_scaling_from_luma_reserved);
-
-
-    public static final long OFFSET$chroma_scaling_from_luma_reserved = LAYOUT.byteOffset(PATH$bitfield$chroma_scaling_from_luma_reserved);
 
     public boolean chroma_scaling_from_luma() {
         MemorySegment s = segment.asSlice(OFFSET$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
@@ -106,5 +108,15 @@ public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implemen
         BitfieldUtil.writeBit(s, 3, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$chroma_scaling_from_luma_reserved")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$bitfield$chroma_scaling_from_luma_reserved = PathElement.groupElement("PATH$bitfield$chroma_scaling_from_luma_reserved");
+
+    public static final OfInt LAYOUT$chroma_scaling_from_luma_reserved = (OfInt) LAYOUT.select(PATH$bitfield$chroma_scaling_from_luma_reserved);
+
+
+    public static final long OFFSET$chroma_scaling_from_luma_reserved = LAYOUT.byteOffset(PATH$bitfield$chroma_scaling_from_luma_reserved);
 }

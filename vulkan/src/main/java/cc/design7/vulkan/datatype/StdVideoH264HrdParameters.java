@@ -16,6 +16,25 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoH264HrdParameters} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoH264HrdParameters {
+///     uint8_t cpb_cnt_minus1;
+///     uint8_t bit_rate_scale;
+///     uint8_t cpb_size_scale;
+///     uint8_t reserved1;
+///     uint32_t bit_rate_value_minus1;
+///     uint32_t cpb_size_value_minus1;
+///     uint8_t cbr_flag;
+///     uint32_t initial_cpb_removal_delay_length_minus1;
+///     uint32_t cpb_removal_delay_length_minus1;
+///     uint32_t dpb_output_delay_length_minus1;
+///     uint32_t time_offset_length;
+/// } StdVideoH264HrdParameters;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +46,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH264HrdParameters allocate(Arena arena) {
-        return new StdVideoH264HrdParameters(arena.allocate(LAYOUT));
+        StdVideoH264HrdParameters ret = new StdVideoH264HrdParameters(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoH264HrdParameters[] allocate(Arena arena, int count) {
@@ -52,69 +72,6 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_BYTE.withName("cpb_cnt_minus1"),
-        ValueLayout.JAVA_BYTE.withName("bit_rate_scale"),
-        ValueLayout.JAVA_BYTE.withName("cpb_size_scale"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
-        ValueLayout.JAVA_INT.withName("bit_rate_value_minus1"),
-        ValueLayout.JAVA_INT.withName("cpb_size_value_minus1"),
-        ValueLayout.JAVA_BYTE.withName("cbr_flag"),
-        ValueLayout.JAVA_INT.withName("initial_cpb_removal_delay_length_minus1"),
-        ValueLayout.JAVA_INT.withName("cpb_removal_delay_length_minus1"),
-        ValueLayout.JAVA_INT.withName("dpb_output_delay_length_minus1"),
-        ValueLayout.JAVA_INT.withName("time_offset_length")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$cpb_cnt_minus1 = PathElement.groupElement("PATH$cpb_cnt_minus1");
-    public static final PathElement PATH$bit_rate_scale = PathElement.groupElement("PATH$bit_rate_scale");
-    public static final PathElement PATH$cpb_size_scale = PathElement.groupElement("PATH$cpb_size_scale");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
-    public static final PathElement PATH$bit_rate_value_minus1 = PathElement.groupElement("PATH$bit_rate_value_minus1");
-    public static final PathElement PATH$cpb_size_value_minus1 = PathElement.groupElement("PATH$cpb_size_value_minus1");
-    public static final PathElement PATH$cbr_flag = PathElement.groupElement("PATH$cbr_flag");
-    public static final PathElement PATH$initial_cpb_removal_delay_length_minus1 = PathElement.groupElement("PATH$initial_cpb_removal_delay_length_minus1");
-    public static final PathElement PATH$cpb_removal_delay_length_minus1 = PathElement.groupElement("PATH$cpb_removal_delay_length_minus1");
-    public static final PathElement PATH$dpb_output_delay_length_minus1 = PathElement.groupElement("PATH$dpb_output_delay_length_minus1");
-    public static final PathElement PATH$time_offset_length = PathElement.groupElement("PATH$time_offset_length");
-
-    public static final OfByte LAYOUT$cpb_cnt_minus1 = (OfByte) LAYOUT.select(PATH$cpb_cnt_minus1);
-    public static final OfByte LAYOUT$bit_rate_scale = (OfByte) LAYOUT.select(PATH$bit_rate_scale);
-    public static final OfByte LAYOUT$cpb_size_scale = (OfByte) LAYOUT.select(PATH$cpb_size_scale);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
-    public static final OfInt LAYOUT$bit_rate_value_minus1 = (OfInt) LAYOUT.select(PATH$bit_rate_value_minus1);
-    public static final OfInt LAYOUT$cpb_size_value_minus1 = (OfInt) LAYOUT.select(PATH$cpb_size_value_minus1);
-    public static final OfByte LAYOUT$cbr_flag = (OfByte) LAYOUT.select(PATH$cbr_flag);
-    public static final OfInt LAYOUT$initial_cpb_removal_delay_length_minus1 = (OfInt) LAYOUT.select(PATH$initial_cpb_removal_delay_length_minus1);
-    public static final OfInt LAYOUT$cpb_removal_delay_length_minus1 = (OfInt) LAYOUT.select(PATH$cpb_removal_delay_length_minus1);
-    public static final OfInt LAYOUT$dpb_output_delay_length_minus1 = (OfInt) LAYOUT.select(PATH$dpb_output_delay_length_minus1);
-    public static final OfInt LAYOUT$time_offset_length = (OfInt) LAYOUT.select(PATH$time_offset_length);
-
-    public static final long SIZE$cpb_cnt_minus1 = LAYOUT$cpb_cnt_minus1.byteSize();
-    public static final long SIZE$bit_rate_scale = LAYOUT$bit_rate_scale.byteSize();
-    public static final long SIZE$cpb_size_scale = LAYOUT$cpb_size_scale.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
-    public static final long SIZE$bit_rate_value_minus1 = LAYOUT$bit_rate_value_minus1.byteSize();
-    public static final long SIZE$cpb_size_value_minus1 = LAYOUT$cpb_size_value_minus1.byteSize();
-    public static final long SIZE$cbr_flag = LAYOUT$cbr_flag.byteSize();
-    public static final long SIZE$initial_cpb_removal_delay_length_minus1 = LAYOUT$initial_cpb_removal_delay_length_minus1.byteSize();
-    public static final long SIZE$cpb_removal_delay_length_minus1 = LAYOUT$cpb_removal_delay_length_minus1.byteSize();
-    public static final long SIZE$dpb_output_delay_length_minus1 = LAYOUT$dpb_output_delay_length_minus1.byteSize();
-    public static final long SIZE$time_offset_length = LAYOUT$time_offset_length.byteSize();
-
-    public static final long OFFSET$cpb_cnt_minus1 = LAYOUT.byteOffset(PATH$cpb_cnt_minus1);
-    public static final long OFFSET$bit_rate_scale = LAYOUT.byteOffset(PATH$bit_rate_scale);
-    public static final long OFFSET$cpb_size_scale = LAYOUT.byteOffset(PATH$cpb_size_scale);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
-    public static final long OFFSET$bit_rate_value_minus1 = LAYOUT.byteOffset(PATH$bit_rate_value_minus1);
-    public static final long OFFSET$cpb_size_value_minus1 = LAYOUT.byteOffset(PATH$cpb_size_value_minus1);
-    public static final long OFFSET$cbr_flag = LAYOUT.byteOffset(PATH$cbr_flag);
-    public static final long OFFSET$initial_cpb_removal_delay_length_minus1 = LAYOUT.byteOffset(PATH$initial_cpb_removal_delay_length_minus1);
-    public static final long OFFSET$cpb_removal_delay_length_minus1 = LAYOUT.byteOffset(PATH$cpb_removal_delay_length_minus1);
-    public static final long OFFSET$dpb_output_delay_length_minus1 = LAYOUT.byteOffset(PATH$dpb_output_delay_length_minus1);
-    public static final long OFFSET$time_offset_length = LAYOUT.byteOffset(PATH$time_offset_length);
 
     public @unsigned byte cpb_cnt_minus1() {
         return segment.get(LAYOUT$cpb_cnt_minus1, OFFSET$cpb_cnt_minus1);
@@ -204,4 +161,66 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$time_offset_length, OFFSET$time_offset_length, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_BYTE.withName("cpb_cnt_minus1"),
+        ValueLayout.JAVA_BYTE.withName("bit_rate_scale"),
+        ValueLayout.JAVA_BYTE.withName("cpb_size_scale"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.JAVA_INT.withName("bit_rate_value_minus1"),
+        ValueLayout.JAVA_INT.withName("cpb_size_value_minus1"),
+        ValueLayout.JAVA_BYTE.withName("cbr_flag"),
+        ValueLayout.JAVA_INT.withName("initial_cpb_removal_delay_length_minus1"),
+        ValueLayout.JAVA_INT.withName("cpb_removal_delay_length_minus1"),
+        ValueLayout.JAVA_INT.withName("dpb_output_delay_length_minus1"),
+        ValueLayout.JAVA_INT.withName("time_offset_length")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$cpb_cnt_minus1 = PathElement.groupElement("PATH$cpb_cnt_minus1");
+    public static final PathElement PATH$bit_rate_scale = PathElement.groupElement("PATH$bit_rate_scale");
+    public static final PathElement PATH$cpb_size_scale = PathElement.groupElement("PATH$cpb_size_scale");
+    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
+    public static final PathElement PATH$bit_rate_value_minus1 = PathElement.groupElement("PATH$bit_rate_value_minus1");
+    public static final PathElement PATH$cpb_size_value_minus1 = PathElement.groupElement("PATH$cpb_size_value_minus1");
+    public static final PathElement PATH$cbr_flag = PathElement.groupElement("PATH$cbr_flag");
+    public static final PathElement PATH$initial_cpb_removal_delay_length_minus1 = PathElement.groupElement("PATH$initial_cpb_removal_delay_length_minus1");
+    public static final PathElement PATH$cpb_removal_delay_length_minus1 = PathElement.groupElement("PATH$cpb_removal_delay_length_minus1");
+    public static final PathElement PATH$dpb_output_delay_length_minus1 = PathElement.groupElement("PATH$dpb_output_delay_length_minus1");
+    public static final PathElement PATH$time_offset_length = PathElement.groupElement("PATH$time_offset_length");
+
+    public static final OfByte LAYOUT$cpb_cnt_minus1 = (OfByte) LAYOUT.select(PATH$cpb_cnt_minus1);
+    public static final OfByte LAYOUT$bit_rate_scale = (OfByte) LAYOUT.select(PATH$bit_rate_scale);
+    public static final OfByte LAYOUT$cpb_size_scale = (OfByte) LAYOUT.select(PATH$cpb_size_scale);
+    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
+    public static final OfInt LAYOUT$bit_rate_value_minus1 = (OfInt) LAYOUT.select(PATH$bit_rate_value_minus1);
+    public static final OfInt LAYOUT$cpb_size_value_minus1 = (OfInt) LAYOUT.select(PATH$cpb_size_value_minus1);
+    public static final OfByte LAYOUT$cbr_flag = (OfByte) LAYOUT.select(PATH$cbr_flag);
+    public static final OfInt LAYOUT$initial_cpb_removal_delay_length_minus1 = (OfInt) LAYOUT.select(PATH$initial_cpb_removal_delay_length_minus1);
+    public static final OfInt LAYOUT$cpb_removal_delay_length_minus1 = (OfInt) LAYOUT.select(PATH$cpb_removal_delay_length_minus1);
+    public static final OfInt LAYOUT$dpb_output_delay_length_minus1 = (OfInt) LAYOUT.select(PATH$dpb_output_delay_length_minus1);
+    public static final OfInt LAYOUT$time_offset_length = (OfInt) LAYOUT.select(PATH$time_offset_length);
+
+    public static final long SIZE$cpb_cnt_minus1 = LAYOUT$cpb_cnt_minus1.byteSize();
+    public static final long SIZE$bit_rate_scale = LAYOUT$bit_rate_scale.byteSize();
+    public static final long SIZE$cpb_size_scale = LAYOUT$cpb_size_scale.byteSize();
+    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
+    public static final long SIZE$bit_rate_value_minus1 = LAYOUT$bit_rate_value_minus1.byteSize();
+    public static final long SIZE$cpb_size_value_minus1 = LAYOUT$cpb_size_value_minus1.byteSize();
+    public static final long SIZE$cbr_flag = LAYOUT$cbr_flag.byteSize();
+    public static final long SIZE$initial_cpb_removal_delay_length_minus1 = LAYOUT$initial_cpb_removal_delay_length_minus1.byteSize();
+    public static final long SIZE$cpb_removal_delay_length_minus1 = LAYOUT$cpb_removal_delay_length_minus1.byteSize();
+    public static final long SIZE$dpb_output_delay_length_minus1 = LAYOUT$dpb_output_delay_length_minus1.byteSize();
+    public static final long SIZE$time_offset_length = LAYOUT$time_offset_length.byteSize();
+
+    public static final long OFFSET$cpb_cnt_minus1 = LAYOUT.byteOffset(PATH$cpb_cnt_minus1);
+    public static final long OFFSET$bit_rate_scale = LAYOUT.byteOffset(PATH$bit_rate_scale);
+    public static final long OFFSET$cpb_size_scale = LAYOUT.byteOffset(PATH$cpb_size_scale);
+    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
+    public static final long OFFSET$bit_rate_value_minus1 = LAYOUT.byteOffset(PATH$bit_rate_value_minus1);
+    public static final long OFFSET$cpb_size_value_minus1 = LAYOUT.byteOffset(PATH$cpb_size_value_minus1);
+    public static final long OFFSET$cbr_flag = LAYOUT.byteOffset(PATH$cbr_flag);
+    public static final long OFFSET$initial_cpb_removal_delay_length_minus1 = LAYOUT.byteOffset(PATH$initial_cpb_removal_delay_length_minus1);
+    public static final long OFFSET$cpb_removal_delay_length_minus1 = LAYOUT.byteOffset(PATH$cpb_removal_delay_length_minus1);
+    public static final long OFFSET$dpb_output_delay_length_minus1 = LAYOUT.byteOffset(PATH$dpb_output_delay_length_minus1);
+    public static final long OFFSET$time_offset_length = LAYOUT.byteOffset(PATH$time_offset_length);
 }

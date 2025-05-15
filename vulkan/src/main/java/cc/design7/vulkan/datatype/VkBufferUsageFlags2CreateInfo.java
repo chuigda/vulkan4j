@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkBufferUsageFlags2CreateInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferUsageFlags2CreateInfo.html"><code>VkBufferUsageFlags2CreateInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkBufferUsageFlags2CreateInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkBufferUsageFlags2 usage;
+/// } VkBufferUsageFlags2CreateInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO`
+///
+/// The {@link VkBufferUsageFlags2CreateInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkBufferUsageFlags2CreateInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferUsageFlags2CreateInfo.html">VkBufferUsageFlags2CreateInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferUsageFlags2CreateInfo.html"><code>VkBufferUsageFlags2CreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkBufferUsageFlags2CreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkBufferUsageFlags2CreateInfo {
-        sType(VkStructureType.BUFFER_USAGE_FLAGS_2_CREATE_INFO);
-    }
-
     public static VkBufferUsageFlags2CreateInfo allocate(Arena arena) {
-        return new VkBufferUsageFlags2CreateInfo(arena.allocate(LAYOUT));
+        VkBufferUsageFlags2CreateInfo ret = new VkBufferUsageFlags2CreateInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.BUFFER_USAGE_FLAGS_2_CREATE_INFO);
+        return ret;
     }
 
     public static VkBufferUsageFlags2CreateInfo[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkBufferUsageFlags2CreateInfo(@NotNull MemorySegment segment) impl
         VkBufferUsageFlags2CreateInfo[] ret = new VkBufferUsageFlags2CreateInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkBufferUsageFlags2CreateInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.BUFFER_USAGE_FLAGS_2_CREATE_INFO);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkBufferUsageFlags2CreateInfo(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_LONG.withName("usage")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$usage = PathElement.groupElement("PATH$usage");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfLong LAYOUT$usage = (OfLong) LAYOUT.select(PATH$usage);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$usage = LAYOUT$usage.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$usage = LAYOUT.byteOffset(PATH$usage);
+    public void autoInit() {
+        sType(VkStructureType.BUFFER_USAGE_FLAGS_2_CREATE_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkBufferUsageFlags2CreateInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$usage, OFFSET$usage, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("usage")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$usage = PathElement.groupElement("PATH$usage");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$usage = (OfLong) LAYOUT.select(PATH$usage);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$usage = LAYOUT$usage.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$usage = LAYOUT.byteOffset(PATH$usage);
 }

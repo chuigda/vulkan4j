@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageTiling.html">VkImageTiling</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageTiling.html"><code>VkImageTiling</code></a>
 public final class VkImageTiling {
     public static final int OPTIMAL = 0x0;
     public static final int LINEAR = 0x1;

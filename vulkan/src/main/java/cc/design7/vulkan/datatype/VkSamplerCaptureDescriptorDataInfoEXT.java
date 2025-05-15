@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkSamplerCaptureDescriptorDataInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerCaptureDescriptorDataInfoEXT.html"><code>VkSamplerCaptureDescriptorDataInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkSamplerCaptureDescriptorDataInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkSampler sampler;
+/// } VkSamplerCaptureDescriptorDataInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_SAMPLER_CAPTURE_DESCRIPTOR_DATA_INFO_EXT`
+///
+/// The {@link VkSamplerCaptureDescriptorDataInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkSamplerCaptureDescriptorDataInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerCaptureDescriptorDataInfoEXT.html">VkSamplerCaptureDescriptorDataInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerCaptureDescriptorDataInfoEXT.html"><code>VkSamplerCaptureDescriptorDataInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkSamplerCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkSamplerCaptureDescriptorDataInfoEXT {
-        sType(VkStructureType.SAMPLER_CAPTURE_DESCRIPTOR_DATA_INFO_EXT);
-    }
-
     public static VkSamplerCaptureDescriptorDataInfoEXT allocate(Arena arena) {
-        return new VkSamplerCaptureDescriptorDataInfoEXT(arena.allocate(LAYOUT));
+        VkSamplerCaptureDescriptorDataInfoEXT ret = new VkSamplerCaptureDescriptorDataInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.SAMPLER_CAPTURE_DESCRIPTOR_DATA_INFO_EXT);
+        return ret;
     }
 
     public static VkSamplerCaptureDescriptorDataInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segme
         VkSamplerCaptureDescriptorDataInfoEXT[] ret = new VkSamplerCaptureDescriptorDataInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkSamplerCaptureDescriptorDataInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.SAMPLER_CAPTURE_DESCRIPTOR_DATA_INFO_EXT);
         }
         return ret;
     }
@@ -57,6 +75,42 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segme
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.SAMPLER_CAPTURE_DESCRIPTOR_DATA_INFO_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkSampler sampler() {
+        MemorySegment s = segment.asSlice(OFFSET$sampler, SIZE$sampler);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkSampler(s);
+    }
+
+    public void sampler(@Nullable VkSampler value) {
+        segment.set(LAYOUT$sampler, OFFSET$sampler, value != null ? value.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -81,37 +135,4 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segme
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$sampler = LAYOUT.byteOffset(PATH$sampler);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkSampler sampler() {
-        MemorySegment s = segment.asSlice(OFFSET$sampler, SIZE$sampler);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkSampler(s);
-    }
-
-    public void sampler(@Nullable VkSampler value) {
-        segment.set(LAYOUT$sampler, OFFSET$sampler, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
 }

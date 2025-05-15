@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkCudaFunctionCreateInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCudaFunctionCreateInfoNV.html"><code>VkCudaFunctionCreateInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkCudaFunctionCreateInfoNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkCudaModuleNV module;
+///     char const* pName;
+/// } VkCudaFunctionCreateInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_CUDA_FUNCTION_CREATE_INFO_NV`
+///
+/// The {@link VkCudaFunctionCreateInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkCudaFunctionCreateInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCudaFunctionCreateInfoNV.html">VkCudaFunctionCreateInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCudaFunctionCreateInfoNV.html"><code>VkCudaFunctionCreateInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkCudaFunctionCreateInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkCudaFunctionCreateInfoNV {
-        sType(VkStructureType.CUDA_FUNCTION_CREATE_INFO_NV);
-    }
-
     public static VkCudaFunctionCreateInfoNV allocate(Arena arena) {
-        return new VkCudaFunctionCreateInfoNV(arena.allocate(LAYOUT));
+        VkCudaFunctionCreateInfoNV ret = new VkCudaFunctionCreateInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.CUDA_FUNCTION_CREATE_INFO_NV);
+        return ret;
     }
 
     public static VkCudaFunctionCreateInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkCudaFunctionCreateInfoNV(@NotNull MemorySegment segment) impleme
         VkCudaFunctionCreateInfoNV[] ret = new VkCudaFunctionCreateInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkCudaFunctionCreateInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.CUDA_FUNCTION_CREATE_INFO_NV);
         }
         return ret;
     }
@@ -57,6 +76,67 @@ public record VkCudaFunctionCreateInfoNV(@NotNull MemorySegment segment) impleme
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.CUDA_FUNCTION_CREATE_INFO_NV);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkCudaModuleNV module() {
+        MemorySegment s = segment.asSlice(OFFSET$module, SIZE$module);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkCudaModuleNV(s);
+    }
+
+    public void module(@Nullable VkCudaModuleNV value) {
+        segment.set(LAYOUT$module, OFFSET$module, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @pointer(comment="byte*") MemorySegment pNameRaw() {
+        return segment.get(LAYOUT$pName, OFFSET$pName);
+    }
+
+    public void pNameRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pName, OFFSET$pName, value);
+    }
+
+    /// Note: the returned {@link BytePtr} does not have correct
+    /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
+    /// writing to the buffer.
+    public @Nullable BytePtr pName() {
+        MemorySegment s = pNameRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new BytePtr(s);
+    }
+
+    public void pName(@Nullable BytePtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pNameRaw(s);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -86,62 +166,4 @@ public record VkCudaFunctionCreateInfoNV(@NotNull MemorySegment segment) impleme
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$module = LAYOUT.byteOffset(PATH$module);
     public static final long OFFSET$pName = LAYOUT.byteOffset(PATH$pName);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkCudaModuleNV module() {
-        MemorySegment s = segment.asSlice(OFFSET$module, SIZE$module);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkCudaModuleNV(s);
-    }
-
-    public void module(@Nullable VkCudaModuleNV value) {
-        segment.set(LAYOUT$module, OFFSET$module, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @pointer(comment="byte*") MemorySegment pNameRaw() {
-        return segment.get(LAYOUT$pName, OFFSET$pName);
-    }
-
-    public void pNameRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pName, OFFSET$pName, value);
-    }
-
-    /// Note: the returned {@link BytePtr} does not have correct
-    /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
-    /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
-    /// writing to the buffer.
-    public @Nullable BytePtr pName() {
-        MemorySegment s = pNameRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new BytePtr(s);
-    }
-
-    public void pName(@Nullable BytePtr value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pNameRaw(s);
-    }
-
 }

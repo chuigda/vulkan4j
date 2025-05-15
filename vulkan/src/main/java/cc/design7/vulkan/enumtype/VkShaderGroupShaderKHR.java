@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderGroupShaderKHR.html">VkShaderGroupShaderKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderGroupShaderKHR.html"><code>VkShaderGroupShaderKHR</code></a>
 public final class VkShaderGroupShaderKHR {
     public static final int GENERAL = 0x0;
     public static final int CLOSEST_HIT = 0x1;

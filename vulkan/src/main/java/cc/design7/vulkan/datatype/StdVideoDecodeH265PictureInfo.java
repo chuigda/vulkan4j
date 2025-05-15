@@ -16,6 +16,25 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoDecodeH265PictureInfo} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoDecodeH265PictureInfo {
+///     StdVideoDecodeH265PictureInfoFlags flags;
+///     uint8_t sps_video_parameter_set_id;
+///     uint8_t pps_seq_parameter_set_id;
+///     uint8_t pps_pic_parameter_set_id;
+///     uint8_t NumDeltaPocsOfRefRpsIdx;
+///     int32_t PicOrderCntVal;
+///     uint16_t NumBitsForSTRefPicSetInSlice;
+///     uint16_t reserved;
+///     uint8_t RefPicSetStCurrBefore;
+///     uint8_t RefPicSetStCurrAfter;
+///     uint8_t RefPicSetLtCurr;
+/// } StdVideoDecodeH265PictureInfo;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +46,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoDecodeH265PictureInfo allocate(Arena arena) {
-        return new StdVideoDecodeH265PictureInfo(arena.allocate(LAYOUT));
+        StdVideoDecodeH265PictureInfo ret = new StdVideoDecodeH265PictureInfo(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoDecodeH265PictureInfo[] allocate(Arena arena, int count) {
@@ -52,69 +72,6 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        StdVideoDecodeH265PictureInfoFlags.LAYOUT.withName("flags"),
-        ValueLayout.JAVA_BYTE.withName("sps_video_parameter_set_id"),
-        ValueLayout.JAVA_BYTE.withName("pps_seq_parameter_set_id"),
-        ValueLayout.JAVA_BYTE.withName("pps_pic_parameter_set_id"),
-        ValueLayout.JAVA_BYTE.withName("NumDeltaPocsOfRefRpsIdx"),
-        ValueLayout.JAVA_INT.withName("PicOrderCntVal"),
-        ValueLayout.JAVA_SHORT.withName("NumBitsForSTRefPicSetInSlice"),
-        ValueLayout.JAVA_SHORT.withName("reserved"),
-        ValueLayout.JAVA_BYTE.withName("RefPicSetStCurrBefore"),
-        ValueLayout.JAVA_BYTE.withName("RefPicSetStCurrAfter"),
-        ValueLayout.JAVA_BYTE.withName("RefPicSetLtCurr")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$sps_video_parameter_set_id = PathElement.groupElement("PATH$sps_video_parameter_set_id");
-    public static final PathElement PATH$pps_seq_parameter_set_id = PathElement.groupElement("PATH$pps_seq_parameter_set_id");
-    public static final PathElement PATH$pps_pic_parameter_set_id = PathElement.groupElement("PATH$pps_pic_parameter_set_id");
-    public static final PathElement PATH$NumDeltaPocsOfRefRpsIdx = PathElement.groupElement("PATH$NumDeltaPocsOfRefRpsIdx");
-    public static final PathElement PATH$PicOrderCntVal = PathElement.groupElement("PATH$PicOrderCntVal");
-    public static final PathElement PATH$NumBitsForSTRefPicSetInSlice = PathElement.groupElement("PATH$NumBitsForSTRefPicSetInSlice");
-    public static final PathElement PATH$reserved = PathElement.groupElement("PATH$reserved");
-    public static final PathElement PATH$RefPicSetStCurrBefore = PathElement.groupElement("PATH$RefPicSetStCurrBefore");
-    public static final PathElement PATH$RefPicSetStCurrAfter = PathElement.groupElement("PATH$RefPicSetStCurrAfter");
-    public static final PathElement PATH$RefPicSetLtCurr = PathElement.groupElement("PATH$RefPicSetLtCurr");
-
-    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
-    public static final OfByte LAYOUT$sps_video_parameter_set_id = (OfByte) LAYOUT.select(PATH$sps_video_parameter_set_id);
-    public static final OfByte LAYOUT$pps_seq_parameter_set_id = (OfByte) LAYOUT.select(PATH$pps_seq_parameter_set_id);
-    public static final OfByte LAYOUT$pps_pic_parameter_set_id = (OfByte) LAYOUT.select(PATH$pps_pic_parameter_set_id);
-    public static final OfByte LAYOUT$NumDeltaPocsOfRefRpsIdx = (OfByte) LAYOUT.select(PATH$NumDeltaPocsOfRefRpsIdx);
-    public static final OfInt LAYOUT$PicOrderCntVal = (OfInt) LAYOUT.select(PATH$PicOrderCntVal);
-    public static final OfShort LAYOUT$NumBitsForSTRefPicSetInSlice = (OfShort) LAYOUT.select(PATH$NumBitsForSTRefPicSetInSlice);
-    public static final OfShort LAYOUT$reserved = (OfShort) LAYOUT.select(PATH$reserved);
-    public static final OfByte LAYOUT$RefPicSetStCurrBefore = (OfByte) LAYOUT.select(PATH$RefPicSetStCurrBefore);
-    public static final OfByte LAYOUT$RefPicSetStCurrAfter = (OfByte) LAYOUT.select(PATH$RefPicSetStCurrAfter);
-    public static final OfByte LAYOUT$RefPicSetLtCurr = (OfByte) LAYOUT.select(PATH$RefPicSetLtCurr);
-
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$sps_video_parameter_set_id = LAYOUT$sps_video_parameter_set_id.byteSize();
-    public static final long SIZE$pps_seq_parameter_set_id = LAYOUT$pps_seq_parameter_set_id.byteSize();
-    public static final long SIZE$pps_pic_parameter_set_id = LAYOUT$pps_pic_parameter_set_id.byteSize();
-    public static final long SIZE$NumDeltaPocsOfRefRpsIdx = LAYOUT$NumDeltaPocsOfRefRpsIdx.byteSize();
-    public static final long SIZE$PicOrderCntVal = LAYOUT$PicOrderCntVal.byteSize();
-    public static final long SIZE$NumBitsForSTRefPicSetInSlice = LAYOUT$NumBitsForSTRefPicSetInSlice.byteSize();
-    public static final long SIZE$reserved = LAYOUT$reserved.byteSize();
-    public static final long SIZE$RefPicSetStCurrBefore = LAYOUT$RefPicSetStCurrBefore.byteSize();
-    public static final long SIZE$RefPicSetStCurrAfter = LAYOUT$RefPicSetStCurrAfter.byteSize();
-    public static final long SIZE$RefPicSetLtCurr = LAYOUT$RefPicSetLtCurr.byteSize();
-
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$sps_video_parameter_set_id = LAYOUT.byteOffset(PATH$sps_video_parameter_set_id);
-    public static final long OFFSET$pps_seq_parameter_set_id = LAYOUT.byteOffset(PATH$pps_seq_parameter_set_id);
-    public static final long OFFSET$pps_pic_parameter_set_id = LAYOUT.byteOffset(PATH$pps_pic_parameter_set_id);
-    public static final long OFFSET$NumDeltaPocsOfRefRpsIdx = LAYOUT.byteOffset(PATH$NumDeltaPocsOfRefRpsIdx);
-    public static final long OFFSET$PicOrderCntVal = LAYOUT.byteOffset(PATH$PicOrderCntVal);
-    public static final long OFFSET$NumBitsForSTRefPicSetInSlice = LAYOUT.byteOffset(PATH$NumBitsForSTRefPicSetInSlice);
-    public static final long OFFSET$reserved = LAYOUT.byteOffset(PATH$reserved);
-    public static final long OFFSET$RefPicSetStCurrBefore = LAYOUT.byteOffset(PATH$RefPicSetStCurrBefore);
-    public static final long OFFSET$RefPicSetStCurrAfter = LAYOUT.byteOffset(PATH$RefPicSetStCurrAfter);
-    public static final long OFFSET$RefPicSetLtCurr = LAYOUT.byteOffset(PATH$RefPicSetLtCurr);
 
     public StdVideoDecodeH265PictureInfoFlags flags() {
         return new StdVideoDecodeH265PictureInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
@@ -204,4 +161,66 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$RefPicSetLtCurr, OFFSET$RefPicSetLtCurr, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoDecodeH265PictureInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("sps_video_parameter_set_id"),
+        ValueLayout.JAVA_BYTE.withName("pps_seq_parameter_set_id"),
+        ValueLayout.JAVA_BYTE.withName("pps_pic_parameter_set_id"),
+        ValueLayout.JAVA_BYTE.withName("NumDeltaPocsOfRefRpsIdx"),
+        ValueLayout.JAVA_INT.withName("PicOrderCntVal"),
+        ValueLayout.JAVA_SHORT.withName("NumBitsForSTRefPicSetInSlice"),
+        ValueLayout.JAVA_SHORT.withName("reserved"),
+        ValueLayout.JAVA_BYTE.withName("RefPicSetStCurrBefore"),
+        ValueLayout.JAVA_BYTE.withName("RefPicSetStCurrAfter"),
+        ValueLayout.JAVA_BYTE.withName("RefPicSetLtCurr")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$sps_video_parameter_set_id = PathElement.groupElement("PATH$sps_video_parameter_set_id");
+    public static final PathElement PATH$pps_seq_parameter_set_id = PathElement.groupElement("PATH$pps_seq_parameter_set_id");
+    public static final PathElement PATH$pps_pic_parameter_set_id = PathElement.groupElement("PATH$pps_pic_parameter_set_id");
+    public static final PathElement PATH$NumDeltaPocsOfRefRpsIdx = PathElement.groupElement("PATH$NumDeltaPocsOfRefRpsIdx");
+    public static final PathElement PATH$PicOrderCntVal = PathElement.groupElement("PATH$PicOrderCntVal");
+    public static final PathElement PATH$NumBitsForSTRefPicSetInSlice = PathElement.groupElement("PATH$NumBitsForSTRefPicSetInSlice");
+    public static final PathElement PATH$reserved = PathElement.groupElement("PATH$reserved");
+    public static final PathElement PATH$RefPicSetStCurrBefore = PathElement.groupElement("PATH$RefPicSetStCurrBefore");
+    public static final PathElement PATH$RefPicSetStCurrAfter = PathElement.groupElement("PATH$RefPicSetStCurrAfter");
+    public static final PathElement PATH$RefPicSetLtCurr = PathElement.groupElement("PATH$RefPicSetLtCurr");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$sps_video_parameter_set_id = (OfByte) LAYOUT.select(PATH$sps_video_parameter_set_id);
+    public static final OfByte LAYOUT$pps_seq_parameter_set_id = (OfByte) LAYOUT.select(PATH$pps_seq_parameter_set_id);
+    public static final OfByte LAYOUT$pps_pic_parameter_set_id = (OfByte) LAYOUT.select(PATH$pps_pic_parameter_set_id);
+    public static final OfByte LAYOUT$NumDeltaPocsOfRefRpsIdx = (OfByte) LAYOUT.select(PATH$NumDeltaPocsOfRefRpsIdx);
+    public static final OfInt LAYOUT$PicOrderCntVal = (OfInt) LAYOUT.select(PATH$PicOrderCntVal);
+    public static final OfShort LAYOUT$NumBitsForSTRefPicSetInSlice = (OfShort) LAYOUT.select(PATH$NumBitsForSTRefPicSetInSlice);
+    public static final OfShort LAYOUT$reserved = (OfShort) LAYOUT.select(PATH$reserved);
+    public static final OfByte LAYOUT$RefPicSetStCurrBefore = (OfByte) LAYOUT.select(PATH$RefPicSetStCurrBefore);
+    public static final OfByte LAYOUT$RefPicSetStCurrAfter = (OfByte) LAYOUT.select(PATH$RefPicSetStCurrAfter);
+    public static final OfByte LAYOUT$RefPicSetLtCurr = (OfByte) LAYOUT.select(PATH$RefPicSetLtCurr);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$sps_video_parameter_set_id = LAYOUT$sps_video_parameter_set_id.byteSize();
+    public static final long SIZE$pps_seq_parameter_set_id = LAYOUT$pps_seq_parameter_set_id.byteSize();
+    public static final long SIZE$pps_pic_parameter_set_id = LAYOUT$pps_pic_parameter_set_id.byteSize();
+    public static final long SIZE$NumDeltaPocsOfRefRpsIdx = LAYOUT$NumDeltaPocsOfRefRpsIdx.byteSize();
+    public static final long SIZE$PicOrderCntVal = LAYOUT$PicOrderCntVal.byteSize();
+    public static final long SIZE$NumBitsForSTRefPicSetInSlice = LAYOUT$NumBitsForSTRefPicSetInSlice.byteSize();
+    public static final long SIZE$reserved = LAYOUT$reserved.byteSize();
+    public static final long SIZE$RefPicSetStCurrBefore = LAYOUT$RefPicSetStCurrBefore.byteSize();
+    public static final long SIZE$RefPicSetStCurrAfter = LAYOUT$RefPicSetStCurrAfter.byteSize();
+    public static final long SIZE$RefPicSetLtCurr = LAYOUT$RefPicSetLtCurr.byteSize();
+
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$sps_video_parameter_set_id = LAYOUT.byteOffset(PATH$sps_video_parameter_set_id);
+    public static final long OFFSET$pps_seq_parameter_set_id = LAYOUT.byteOffset(PATH$pps_seq_parameter_set_id);
+    public static final long OFFSET$pps_pic_parameter_set_id = LAYOUT.byteOffset(PATH$pps_pic_parameter_set_id);
+    public static final long OFFSET$NumDeltaPocsOfRefRpsIdx = LAYOUT.byteOffset(PATH$NumDeltaPocsOfRefRpsIdx);
+    public static final long OFFSET$PicOrderCntVal = LAYOUT.byteOffset(PATH$PicOrderCntVal);
+    public static final long OFFSET$NumBitsForSTRefPicSetInSlice = LAYOUT.byteOffset(PATH$NumBitsForSTRefPicSetInSlice);
+    public static final long OFFSET$reserved = LAYOUT.byteOffset(PATH$reserved);
+    public static final long OFFSET$RefPicSetStCurrBefore = LAYOUT.byteOffset(PATH$RefPicSetStCurrBefore);
+    public static final long OFFSET$RefPicSetStCurrAfter = LAYOUT.byteOffset(PATH$RefPicSetStCurrAfter);
+    public static final long OFFSET$RefPicSetLtCurr = LAYOUT.byteOffset(PATH$RefPicSetLtCurr);
 }

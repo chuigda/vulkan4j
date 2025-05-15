@@ -16,6 +16,15 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoH265PredictorPaletteEntries} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoH265PredictorPaletteEntries {
+///     uint16_t PredictorPaletteEntries;
+/// } StdVideoH265PredictorPaletteEntries;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +36,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265PredictorPaletteEntries allocate(Arena arena) {
-        return new StdVideoH265PredictorPaletteEntries(arena.allocate(LAYOUT));
+        StdVideoH265PredictorPaletteEntries ret = new StdVideoH265PredictorPaletteEntries(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoH265PredictorPaletteEntries[] allocate(Arena arena, int count) {
@@ -53,6 +63,14 @@ public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment
         return ret;
     }
 
+    public @unsigned short PredictorPaletteEntries() {
+        return segment.get(LAYOUT$PredictorPaletteEntries, OFFSET$PredictorPaletteEntries);
+    }
+
+    public void PredictorPaletteEntries(@unsigned short value) {
+        segment.set(LAYOUT$PredictorPaletteEntries, OFFSET$PredictorPaletteEntries, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_SHORT.withName("PredictorPaletteEntries")
     );
@@ -65,13 +83,4 @@ public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment
     public static final long SIZE$PredictorPaletteEntries = LAYOUT$PredictorPaletteEntries.byteSize();
 
     public static final long OFFSET$PredictorPaletteEntries = LAYOUT.byteOffset(PATH$PredictorPaletteEntries);
-
-    public @unsigned short PredictorPaletteEntries() {
-        return segment.get(LAYOUT$PredictorPaletteEntries, OFFSET$PredictorPaletteEntries);
-    }
-
-    public void PredictorPaletteEntries(@unsigned short value) {
-        segment.set(LAYOUT$PredictorPaletteEntries, OFFSET$PredictorPaletteEntries, value);
-    }
-
 }

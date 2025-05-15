@@ -17,6 +17,19 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoAV1ColorConfigFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoAV1ColorConfigFlags {
+///     uint32_t mono_chrome : 1;
+///     uint32_t color_range : 1;
+///     uint32_t separate_uv_delta_q : 1;
+///     uint32_t color_description_present_flag : 1;
+///     uint32_t reserved : 28;
+/// } StdVideoAV1ColorConfigFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +41,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1ColorConfigFlags allocate(Arena arena) {
-        return new StdVideoAV1ColorConfigFlags(arena.allocate(LAYOUT));
+        StdVideoAV1ColorConfigFlags ret = new StdVideoAV1ColorConfigFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoAV1ColorConfigFlags[] allocate(Arena arena, int count) {
@@ -53,18 +67,6 @@ public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implem
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$mono_chrome_reserved")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$mono_chrome_reserved = PathElement.groupElement("PATH$bitfield$mono_chrome_reserved");
-
-    public static final OfInt LAYOUT$mono_chrome_reserved = (OfInt) LAYOUT.select(PATH$bitfield$mono_chrome_reserved);
-
-
-    public static final long OFFSET$mono_chrome_reserved = LAYOUT.byteOffset(PATH$bitfield$mono_chrome_reserved);
 
     public boolean mono_chrome() {
         MemorySegment s = segment.asSlice(OFFSET$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
@@ -106,5 +108,15 @@ public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implem
         BitfieldUtil.writeBit(s, 3, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$mono_chrome_reserved")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$bitfield$mono_chrome_reserved = PathElement.groupElement("PATH$bitfield$mono_chrome_reserved");
+
+    public static final OfInt LAYOUT$mono_chrome_reserved = (OfInt) LAYOUT.select(PATH$bitfield$mono_chrome_reserved);
+
+
+    public static final long OFFSET$mono_chrome_reserved = LAYOUT.byteOffset(PATH$bitfield$mono_chrome_reserved);
 }

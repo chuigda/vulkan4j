@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalMemoryHandleTypeFlags.html">VkExternalMemoryHandleTypeFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalMemoryHandleTypeFlags.html"><code>VkExternalMemoryHandleTypeFlags</code></a>
 public final class VkExternalMemoryHandleTypeFlags {
     public static final int ANDROID_HARDWARE_BUFFER_ANDROID = 0x400;
     public static final int D3D11_TEXTURE = 0x8;

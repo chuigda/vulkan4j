@@ -14,8 +14,21 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkSparseImageMemoryRequirements} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageMemoryRequirements.html"><code>VkSparseImageMemoryRequirements</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkSparseImageMemoryRequirements {
+///     VkSparseImageFormatProperties formatProperties;
+///     uint32_t imageMipTailFirstLod;
+///     VkDeviceSize imageMipTailSize;
+///     VkDeviceSize imageMipTailOffset;
+///     VkDeviceSize imageMipTailStride;
+/// } VkSparseImageMemoryRequirements;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +37,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageMemoryRequirements.html">VkSparseImageMemoryRequirements</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageMemoryRequirements.html"><code>VkSparseImageMemoryRequirements</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkSparseImageMemoryRequirements(@NotNull MemorySegment segment) implements IPointer {
     public static VkSparseImageMemoryRequirements allocate(Arena arena) {
-        return new VkSparseImageMemoryRequirements(arena.allocate(LAYOUT));
+        VkSparseImageMemoryRequirements ret = new VkSparseImageMemoryRequirements(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkSparseImageMemoryRequirements[] allocate(Arena arena, int count) {
@@ -54,39 +68,6 @@ public record VkSparseImageMemoryRequirements(@NotNull MemorySegment segment) im
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        VkSparseImageFormatProperties.LAYOUT.withName("formatProperties"),
-        ValueLayout.JAVA_INT.withName("imageMipTailFirstLod"),
-        ValueLayout.JAVA_LONG.withName("imageMipTailSize"),
-        ValueLayout.JAVA_LONG.withName("imageMipTailOffset"),
-        ValueLayout.JAVA_LONG.withName("imageMipTailStride")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$formatProperties = PathElement.groupElement("PATH$formatProperties");
-    public static final PathElement PATH$imageMipTailFirstLod = PathElement.groupElement("PATH$imageMipTailFirstLod");
-    public static final PathElement PATH$imageMipTailSize = PathElement.groupElement("PATH$imageMipTailSize");
-    public static final PathElement PATH$imageMipTailOffset = PathElement.groupElement("PATH$imageMipTailOffset");
-    public static final PathElement PATH$imageMipTailStride = PathElement.groupElement("PATH$imageMipTailStride");
-
-    public static final StructLayout LAYOUT$formatProperties = (StructLayout) LAYOUT.select(PATH$formatProperties);
-    public static final OfInt LAYOUT$imageMipTailFirstLod = (OfInt) LAYOUT.select(PATH$imageMipTailFirstLod);
-    public static final OfLong LAYOUT$imageMipTailSize = (OfLong) LAYOUT.select(PATH$imageMipTailSize);
-    public static final OfLong LAYOUT$imageMipTailOffset = (OfLong) LAYOUT.select(PATH$imageMipTailOffset);
-    public static final OfLong LAYOUT$imageMipTailStride = (OfLong) LAYOUT.select(PATH$imageMipTailStride);
-
-    public static final long SIZE$formatProperties = LAYOUT$formatProperties.byteSize();
-    public static final long SIZE$imageMipTailFirstLod = LAYOUT$imageMipTailFirstLod.byteSize();
-    public static final long SIZE$imageMipTailSize = LAYOUT$imageMipTailSize.byteSize();
-    public static final long SIZE$imageMipTailOffset = LAYOUT$imageMipTailOffset.byteSize();
-    public static final long SIZE$imageMipTailStride = LAYOUT$imageMipTailStride.byteSize();
-
-    public static final long OFFSET$formatProperties = LAYOUT.byteOffset(PATH$formatProperties);
-    public static final long OFFSET$imageMipTailFirstLod = LAYOUT.byteOffset(PATH$imageMipTailFirstLod);
-    public static final long OFFSET$imageMipTailSize = LAYOUT.byteOffset(PATH$imageMipTailSize);
-    public static final long OFFSET$imageMipTailOffset = LAYOUT.byteOffset(PATH$imageMipTailOffset);
-    public static final long OFFSET$imageMipTailStride = LAYOUT.byteOffset(PATH$imageMipTailStride);
 
     public VkSparseImageFormatProperties formatProperties() {
         return new VkSparseImageFormatProperties(segment.asSlice(OFFSET$formatProperties, LAYOUT$formatProperties));
@@ -128,4 +109,36 @@ public record VkSparseImageMemoryRequirements(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$imageMipTailStride, OFFSET$imageMipTailStride, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        VkSparseImageFormatProperties.LAYOUT.withName("formatProperties"),
+        ValueLayout.JAVA_INT.withName("imageMipTailFirstLod"),
+        ValueLayout.JAVA_LONG.withName("imageMipTailSize"),
+        ValueLayout.JAVA_LONG.withName("imageMipTailOffset"),
+        ValueLayout.JAVA_LONG.withName("imageMipTailStride")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$formatProperties = PathElement.groupElement("PATH$formatProperties");
+    public static final PathElement PATH$imageMipTailFirstLod = PathElement.groupElement("PATH$imageMipTailFirstLod");
+    public static final PathElement PATH$imageMipTailSize = PathElement.groupElement("PATH$imageMipTailSize");
+    public static final PathElement PATH$imageMipTailOffset = PathElement.groupElement("PATH$imageMipTailOffset");
+    public static final PathElement PATH$imageMipTailStride = PathElement.groupElement("PATH$imageMipTailStride");
+
+    public static final StructLayout LAYOUT$formatProperties = (StructLayout) LAYOUT.select(PATH$formatProperties);
+    public static final OfInt LAYOUT$imageMipTailFirstLod = (OfInt) LAYOUT.select(PATH$imageMipTailFirstLod);
+    public static final OfLong LAYOUT$imageMipTailSize = (OfLong) LAYOUT.select(PATH$imageMipTailSize);
+    public static final OfLong LAYOUT$imageMipTailOffset = (OfLong) LAYOUT.select(PATH$imageMipTailOffset);
+    public static final OfLong LAYOUT$imageMipTailStride = (OfLong) LAYOUT.select(PATH$imageMipTailStride);
+
+    public static final long SIZE$formatProperties = LAYOUT$formatProperties.byteSize();
+    public static final long SIZE$imageMipTailFirstLod = LAYOUT$imageMipTailFirstLod.byteSize();
+    public static final long SIZE$imageMipTailSize = LAYOUT$imageMipTailSize.byteSize();
+    public static final long SIZE$imageMipTailOffset = LAYOUT$imageMipTailOffset.byteSize();
+    public static final long SIZE$imageMipTailStride = LAYOUT$imageMipTailStride.byteSize();
+
+    public static final long OFFSET$formatProperties = LAYOUT.byteOffset(PATH$formatProperties);
+    public static final long OFFSET$imageMipTailFirstLod = LAYOUT.byteOffset(PATH$imageMipTailFirstLod);
+    public static final long OFFSET$imageMipTailSize = LAYOUT.byteOffset(PATH$imageMipTailSize);
+    public static final long OFFSET$imageMipTailOffset = LAYOUT.byteOffset(PATH$imageMipTailOffset);
+    public static final long OFFSET$imageMipTailStride = LAYOUT.byteOffset(PATH$imageMipTailStride);
 }

@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCompositeAlphaFlagsKHR.html">VkCompositeAlphaFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCompositeAlphaFlagsKHR.html"><code>VkCompositeAlphaFlagsKHR</code></a>
 public final class VkCompositeAlphaFlagsKHR {
     public static final int INHERIT = 0x8;
     public static final int OPAQUE = 0x1;

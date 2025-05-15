@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoDecodeH265ProfileInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeH265ProfileInfoKHR.html"><code>VkVideoDecodeH265ProfileInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoDecodeH265ProfileInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     StdVideoH265ProfileIdc stdProfileIdc;
+/// } VkVideoDecodeH265ProfileInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_PROFILE_INFO_KHR`
+///
+/// The {@link VkVideoDecodeH265ProfileInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkVideoDecodeH265ProfileInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeH265ProfileInfoKHR.html">VkVideoDecodeH265ProfileInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeH265ProfileInfoKHR.html"><code>VkVideoDecodeH265ProfileInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoDecodeH265ProfileInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkVideoDecodeH265ProfileInfoKHR {
-        sType(VkStructureType.VIDEO_DECODE_H265_PROFILE_INFO_KHR);
-    }
-
     public static VkVideoDecodeH265ProfileInfoKHR allocate(Arena arena) {
-        return new VkVideoDecodeH265ProfileInfoKHR(arena.allocate(LAYOUT));
+        VkVideoDecodeH265ProfileInfoKHR ret = new VkVideoDecodeH265ProfileInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VIDEO_DECODE_H265_PROFILE_INFO_KHR);
+        return ret;
     }
 
     public static VkVideoDecodeH265ProfileInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkVideoDecodeH265ProfileInfoKHR(@NotNull MemorySegment segment) im
         VkVideoDecodeH265ProfileInfoKHR[] ret = new VkVideoDecodeH265ProfileInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkVideoDecodeH265ProfileInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VIDEO_DECODE_H265_PROFILE_INFO_KHR);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkVideoDecodeH265ProfileInfoKHR(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("stdProfileIdc")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$stdProfileIdc = PathElement.groupElement("PATH$stdProfileIdc");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$stdProfileIdc = (OfInt) LAYOUT.select(PATH$stdProfileIdc);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$stdProfileIdc = LAYOUT$stdProfileIdc.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$stdProfileIdc = LAYOUT.byteOffset(PATH$stdProfileIdc);
+    public void autoInit() {
+        sType(VkStructureType.VIDEO_DECODE_H265_PROFILE_INFO_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkVideoDecodeH265ProfileInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$stdProfileIdc, OFFSET$stdProfileIdc, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("stdProfileIdc")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$stdProfileIdc = PathElement.groupElement("PATH$stdProfileIdc");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$stdProfileIdc = (OfInt) LAYOUT.select(PATH$stdProfileIdc);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$stdProfileIdc = LAYOUT$stdProfileIdc.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$stdProfileIdc = LAYOUT.byteOffset(PATH$stdProfileIdc);
 }

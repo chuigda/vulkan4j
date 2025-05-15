@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkShadingRatePaletteNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShadingRatePaletteNV.html"><code>VkShadingRatePaletteNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkShadingRatePaletteNV {
+///     uint32_t shadingRatePaletteEntryCount;
+///     VkShadingRatePaletteEntryNV const* pShadingRatePaletteEntries;
+/// } VkShadingRatePaletteNV;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShadingRatePaletteNV.html">VkShadingRatePaletteNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShadingRatePaletteNV.html"><code>VkShadingRatePaletteNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkShadingRatePaletteNV allocate(Arena arena) {
-        return new VkShadingRatePaletteNV(arena.allocate(LAYOUT));
+        VkShadingRatePaletteNV ret = new VkShadingRatePaletteNV(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkShadingRatePaletteNV[] allocate(Arena arena, int count) {
@@ -55,24 +66,6 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("shadingRatePaletteEntryCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pShadingRatePaletteEntries")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$shadingRatePaletteEntryCount = PathElement.groupElement("PATH$shadingRatePaletteEntryCount");
-    public static final PathElement PATH$pShadingRatePaletteEntries = PathElement.groupElement("PATH$pShadingRatePaletteEntries");
-
-    public static final OfInt LAYOUT$shadingRatePaletteEntryCount = (OfInt) LAYOUT.select(PATH$shadingRatePaletteEntryCount);
-    public static final AddressLayout LAYOUT$pShadingRatePaletteEntries = (AddressLayout) LAYOUT.select(PATH$pShadingRatePaletteEntries);
-
-    public static final long BYTESIZE$shadingRatePaletteEntryCount = LAYOUT$shadingRatePaletteEntryCount.byteSize();
-    public static final long BYTESIZE$pShadingRatePaletteEntries = LAYOUT$pShadingRatePaletteEntries.byteSize();
-
-    public static final long OFFSET$shadingRatePaletteEntryCount = LAYOUT.byteOffset(PATH$shadingRatePaletteEntryCount);
-    public static final long OFFSET$pShadingRatePaletteEntries = LAYOUT.byteOffset(PATH$pShadingRatePaletteEntries);
-
     public @unsigned int shadingRatePaletteEntryCount() {
         return segment.get(LAYOUT$shadingRatePaletteEntryCount, OFFSET$shadingRatePaletteEntryCount);
     }
@@ -91,11 +84,11 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
-    /// and use {@link IntPtr#reinterpret} to set the size before actually reading from
+    /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
     public @Nullable @enumtype(VkShadingRatePaletteEntryNV.class) IntPtr pShadingRatePaletteEntries() {
         MemorySegment s = pShadingRatePaletteEntriesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -106,4 +99,21 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
         pShadingRatePaletteEntriesRaw(s);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("shadingRatePaletteEntryCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pShadingRatePaletteEntries")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$shadingRatePaletteEntryCount = PathElement.groupElement("PATH$shadingRatePaletteEntryCount");
+    public static final PathElement PATH$pShadingRatePaletteEntries = PathElement.groupElement("PATH$pShadingRatePaletteEntries");
+
+    public static final OfInt LAYOUT$shadingRatePaletteEntryCount = (OfInt) LAYOUT.select(PATH$shadingRatePaletteEntryCount);
+    public static final AddressLayout LAYOUT$pShadingRatePaletteEntries = (AddressLayout) LAYOUT.select(PATH$pShadingRatePaletteEntries);
+
+    public static final long SIZE$shadingRatePaletteEntryCount = LAYOUT$shadingRatePaletteEntryCount.byteSize();
+    public static final long SIZE$pShadingRatePaletteEntries = LAYOUT$pShadingRatePaletteEntries.byteSize();
+
+    public static final long OFFSET$shadingRatePaletteEntryCount = LAYOUT.byteOffset(PATH$shadingRatePaletteEntryCount);
+    public static final long OFFSET$pShadingRatePaletteEntries = LAYOUT.byteOffset(PATH$pShadingRatePaletteEntries);
 }

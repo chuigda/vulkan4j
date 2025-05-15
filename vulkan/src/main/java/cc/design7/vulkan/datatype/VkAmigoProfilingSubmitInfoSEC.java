@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkAmigoProfilingSubmitInfoSEC} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAmigoProfilingSubmitInfoSEC.html"><code>VkAmigoProfilingSubmitInfoSEC</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkAmigoProfilingSubmitInfoSEC {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint64_t firstDrawTimestamp;
+///     uint64_t swapBufferTimestamp;
+/// } VkAmigoProfilingSubmitInfoSEC;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_AMIGO_PROFILING_SUBMIT_INFO_SEC`
+///
+/// The {@link VkAmigoProfilingSubmitInfoSEC#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkAmigoProfilingSubmitInfoSEC#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAmigoProfilingSubmitInfoSEC.html">VkAmigoProfilingSubmitInfoSEC</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAmigoProfilingSubmitInfoSEC.html"><code>VkAmigoProfilingSubmitInfoSEC</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkAmigoProfilingSubmitInfoSEC(@NotNull MemorySegment segment) implements IPointer {
-    public VkAmigoProfilingSubmitInfoSEC {
-        sType(VkStructureType.AMIGO_PROFILING_SUBMIT_INFO_SEC);
-    }
-
     public static VkAmigoProfilingSubmitInfoSEC allocate(Arena arena) {
-        return new VkAmigoProfilingSubmitInfoSEC(arena.allocate(LAYOUT));
+        VkAmigoProfilingSubmitInfoSEC ret = new VkAmigoProfilingSubmitInfoSEC(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.AMIGO_PROFILING_SUBMIT_INFO_SEC);
+        return ret;
     }
 
     public static VkAmigoProfilingSubmitInfoSEC[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkAmigoProfilingSubmitInfoSEC(@NotNull MemorySegment segment) impl
         VkAmigoProfilingSubmitInfoSEC[] ret = new VkAmigoProfilingSubmitInfoSEC[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkAmigoProfilingSubmitInfoSEC(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.AMIGO_PROFILING_SUBMIT_INFO_SEC);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkAmigoProfilingSubmitInfoSEC(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_LONG.withName("firstDrawTimestamp"),
-        ValueLayout.JAVA_LONG.withName("swapBufferTimestamp")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$firstDrawTimestamp = PathElement.groupElement("PATH$firstDrawTimestamp");
-    public static final PathElement PATH$swapBufferTimestamp = PathElement.groupElement("PATH$swapBufferTimestamp");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfLong LAYOUT$firstDrawTimestamp = (OfLong) LAYOUT.select(PATH$firstDrawTimestamp);
-    public static final OfLong LAYOUT$swapBufferTimestamp = (OfLong) LAYOUT.select(PATH$swapBufferTimestamp);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$firstDrawTimestamp = LAYOUT$firstDrawTimestamp.byteSize();
-    public static final long SIZE$swapBufferTimestamp = LAYOUT$swapBufferTimestamp.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$firstDrawTimestamp = LAYOUT.byteOffset(PATH$firstDrawTimestamp);
-    public static final long OFFSET$swapBufferTimestamp = LAYOUT.byteOffset(PATH$swapBufferTimestamp);
+    public void autoInit() {
+        sType(VkStructureType.AMIGO_PROFILING_SUBMIT_INFO_SEC);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkAmigoProfilingSubmitInfoSEC(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$swapBufferTimestamp, OFFSET$swapBufferTimestamp, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("firstDrawTimestamp"),
+        ValueLayout.JAVA_LONG.withName("swapBufferTimestamp")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$firstDrawTimestamp = PathElement.groupElement("PATH$firstDrawTimestamp");
+    public static final PathElement PATH$swapBufferTimestamp = PathElement.groupElement("PATH$swapBufferTimestamp");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$firstDrawTimestamp = (OfLong) LAYOUT.select(PATH$firstDrawTimestamp);
+    public static final OfLong LAYOUT$swapBufferTimestamp = (OfLong) LAYOUT.select(PATH$swapBufferTimestamp);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$firstDrawTimestamp = LAYOUT$firstDrawTimestamp.byteSize();
+    public static final long SIZE$swapBufferTimestamp = LAYOUT$swapBufferTimestamp.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$firstDrawTimestamp = LAYOUT.byteOffset(PATH$firstDrawTimestamp);
+    public static final long OFFSET$swapBufferTimestamp = LAYOUT.byteOffset(PATH$swapBufferTimestamp);
 }

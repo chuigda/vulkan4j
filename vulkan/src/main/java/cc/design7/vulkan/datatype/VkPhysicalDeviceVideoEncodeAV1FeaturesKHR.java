@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceVideoEncodeAV1FeaturesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceVideoEncodeAV1FeaturesKHR.html"><code>VkPhysicalDeviceVideoEncodeAV1FeaturesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceVideoEncodeAV1FeaturesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 videoEncodeAV1;
+/// } VkPhysicalDeviceVideoEncodeAV1FeaturesKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_AV1_FEATURES_KHR`
+///
+/// The {@link VkPhysicalDeviceVideoEncodeAV1FeaturesKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceVideoEncodeAV1FeaturesKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceVideoEncodeAV1FeaturesKHR.html">VkPhysicalDeviceVideoEncodeAV1FeaturesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceVideoEncodeAV1FeaturesKHR.html"><code>VkPhysicalDeviceVideoEncodeAV1FeaturesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceVideoEncodeAV1FeaturesKHR {
-        sType(VkStructureType.PHYSICAL_DEVICE_VIDEO_ENCODE_AV1_FEATURES_KHR);
-    }
-
     public static VkPhysicalDeviceVideoEncodeAV1FeaturesKHR allocate(Arena arena) {
-        return new VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(arena.allocate(LAYOUT));
+        VkPhysicalDeviceVideoEncodeAV1FeaturesKHR ret = new VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_VIDEO_ENCODE_AV1_FEATURES_KHR);
+        return ret;
     }
 
     public static VkPhysicalDeviceVideoEncodeAV1FeaturesKHR[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(@NotNull MemorySegment s
         VkPhysicalDeviceVideoEncodeAV1FeaturesKHR[] ret = new VkPhysicalDeviceVideoEncodeAV1FeaturesKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_VIDEO_ENCODE_AV1_FEATURES_KHR);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(@NotNull MemorySegment s
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("videoEncodeAV1")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$videoEncodeAV1 = PathElement.groupElement("PATH$videoEncodeAV1");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$videoEncodeAV1 = (OfInt) LAYOUT.select(PATH$videoEncodeAV1);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$videoEncodeAV1 = LAYOUT$videoEncodeAV1.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$videoEncodeAV1 = LAYOUT.byteOffset(PATH$videoEncodeAV1);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_VIDEO_ENCODE_AV1_FEATURES_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(@NotNull MemorySegment s
         segment.set(LAYOUT$videoEncodeAV1, OFFSET$videoEncodeAV1, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("videoEncodeAV1")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$videoEncodeAV1 = PathElement.groupElement("PATH$videoEncodeAV1");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$videoEncodeAV1 = (OfInt) LAYOUT.select(PATH$videoEncodeAV1);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$videoEncodeAV1 = LAYOUT$videoEncodeAV1.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$videoEncodeAV1 = LAYOUT.byteOffset(PATH$videoEncodeAV1);
 }

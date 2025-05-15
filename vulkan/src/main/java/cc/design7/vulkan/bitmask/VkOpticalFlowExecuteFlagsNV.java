@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowExecuteFlagsNV.html">VkOpticalFlowExecuteFlagsNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowExecuteFlagsNV.html"><code>VkOpticalFlowExecuteFlagsNV</code></a>
 public final class VkOpticalFlowExecuteFlagsNV {
     public static final int DISABLE_TEMPORAL_HINTS = 0x1;
 

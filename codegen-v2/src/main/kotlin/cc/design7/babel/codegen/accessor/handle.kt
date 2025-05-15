@@ -8,7 +8,7 @@ import cc.design7.babel.util.buildDoc
 fun generateHandleAccessor(type: CHandleType, member: LayoutField.Typed) = buildDoc {
     defun("public", "@Nullable ${type.name}", member.name) {
         +"MemorySegment s = segment.asSlice(${member.offsetName}, ${member.sizeName});"
-        "if (s.address() == 0)" {
+        "if (s.equals(MemorySegment.NULL))" {
             +"return null;"
         }
         +"return new ${type.name}(s);"

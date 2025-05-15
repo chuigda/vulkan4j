@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDebugUtilsLabelEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDebugUtilsLabelEXT.html"><code>VkDebugUtilsLabelEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDebugUtilsLabelEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     char const* pLabelName;
+///     float color;
+/// } VkDebugUtilsLabelEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT`
+///
+/// The {@link VkDebugUtilsLabelEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkDebugUtilsLabelEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDebugUtilsLabelEXT.html">VkDebugUtilsLabelEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDebugUtilsLabelEXT.html"><code>VkDebugUtilsLabelEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkDebugUtilsLabelEXT {
-        sType(VkStructureType.DEBUG_UTILS_LABEL_EXT);
-    }
-
     public static VkDebugUtilsLabelEXT allocate(Arena arena) {
-        return new VkDebugUtilsLabelEXT(arena.allocate(LAYOUT));
+        VkDebugUtilsLabelEXT ret = new VkDebugUtilsLabelEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.DEBUG_UTILS_LABEL_EXT);
+        return ret;
     }
 
     public static VkDebugUtilsLabelEXT[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IP
         VkDebugUtilsLabelEXT[] ret = new VkDebugUtilsLabelEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkDebugUtilsLabelEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.DEBUG_UTILS_LABEL_EXT);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pLabelName"),
-        ValueLayout.JAVA_FLOAT.withName("color")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$pLabelName = PathElement.groupElement("PATH$pLabelName");
-    public static final PathElement PATH$color = PathElement.groupElement("PATH$color");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$pLabelName = (AddressLayout) LAYOUT.select(PATH$pLabelName);
-    public static final OfFloat LAYOUT$color = (OfFloat) LAYOUT.select(PATH$color);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$pLabelName = LAYOUT$pLabelName.byteSize();
-    public static final long SIZE$color = LAYOUT$color.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$pLabelName = LAYOUT.byteOffset(PATH$pLabelName);
-    public static final long OFFSET$color = LAYOUT.byteOffset(PATH$color);
+    public void autoInit() {
+        sType(VkStructureType.DEBUG_UTILS_LABEL_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -121,7 +116,7 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IP
     /// writing to the buffer.
     public @Nullable BytePtr pLabelName() {
         MemorySegment s = pLabelNameRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new BytePtr(s);
@@ -140,4 +135,31 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$color, OFFSET$color, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pLabelName"),
+        ValueLayout.JAVA_FLOAT.withName("color")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$pLabelName = PathElement.groupElement("PATH$pLabelName");
+    public static final PathElement PATH$color = PathElement.groupElement("PATH$color");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$pLabelName = (AddressLayout) LAYOUT.select(PATH$pLabelName);
+    public static final OfFloat LAYOUT$color = (OfFloat) LAYOUT.select(PATH$color);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pLabelName = LAYOUT$pLabelName.byteSize();
+    public static final long SIZE$color = LAYOUT$color.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$pLabelName = LAYOUT.byteOffset(PATH$pLabelName);
+    public static final long OFFSET$color = LAYOUT.byteOffset(PATH$color);
 }

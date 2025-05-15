@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoCodecOperationFlagsKHR.html">VkVideoCodecOperationFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoCodecOperationFlagsKHR.html"><code>VkVideoCodecOperationFlagsKHR</code></a>
 public final class VkVideoCodecOperationFlagsKHR {
     public static final int DECODE_AV1 = 0x4;
     public static final int DECODE_H264 = 0x1;

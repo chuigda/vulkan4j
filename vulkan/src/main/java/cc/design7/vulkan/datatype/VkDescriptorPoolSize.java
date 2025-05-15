@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDescriptorPoolSize} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorPoolSize.html"><code>VkDescriptorPoolSize</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDescriptorPoolSize {
+///     VkDescriptorType type;
+///     uint32_t descriptorCount;
+/// } VkDescriptorPoolSize;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorPoolSize.html">VkDescriptorPoolSize</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorPoolSize.html"><code>VkDescriptorPoolSize</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDescriptorPoolSize(@NotNull MemorySegment segment) implements IPointer {
     public static VkDescriptorPoolSize allocate(Arena arena) {
-        return new VkDescriptorPoolSize(arena.allocate(LAYOUT));
+        VkDescriptorPoolSize ret = new VkDescriptorPoolSize(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkDescriptorPoolSize[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkDescriptorPoolSize(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
+    public @enumtype(VkDescriptorType.class) int type() {
+        return segment.get(LAYOUT$type, OFFSET$type);
+    }
+
+    public void type(@enumtype(VkDescriptorType.class) int value) {
+        segment.set(LAYOUT$type, OFFSET$type, value);
+    }
+
+    public @unsigned int descriptorCount() {
+        return segment.get(LAYOUT$descriptorCount, OFFSET$descriptorCount);
+    }
+
+    public void descriptorCount(@unsigned int value) {
+        segment.set(LAYOUT$descriptorCount, OFFSET$descriptorCount, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.JAVA_INT.withName("descriptorCount")
@@ -72,21 +99,4 @@ public record VkDescriptorPoolSize(@NotNull MemorySegment segment) implements IP
 
     public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
     public static final long OFFSET$descriptorCount = LAYOUT.byteOffset(PATH$descriptorCount);
-
-    public @enumtype(VkDescriptorType.class) int type() {
-        return segment.get(LAYOUT$type, OFFSET$type);
-    }
-
-    public void type(@enumtype(VkDescriptorType.class) int value) {
-        segment.set(LAYOUT$type, OFFSET$type, value);
-    }
-
-    public @unsigned int descriptorCount() {
-        return segment.get(LAYOUT$descriptorCount, OFFSET$descriptorCount);
-    }
-
-    public void descriptorCount(@unsigned int value) {
-        segment.set(LAYOUT$descriptorCount, OFFSET$descriptorCount, value);
-    }
-
 }

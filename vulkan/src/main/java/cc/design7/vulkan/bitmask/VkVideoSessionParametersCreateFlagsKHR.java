@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoSessionParametersCreateFlagsKHR.html">VkVideoSessionParametersCreateFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoSessionParametersCreateFlagsKHR.html"><code>VkVideoSessionParametersCreateFlagsKHR</code></a>
 public final class VkVideoSessionParametersCreateFlagsKHR {
     public static final int QUANTIZATION_MAP_COMPATIBLE = 0x1;
 

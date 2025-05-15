@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkViewportWScalingNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkViewportWScalingNV.html"><code>VkViewportWScalingNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkViewportWScalingNV {
+///     float xcoeff;
+///     float ycoeff;
+/// } VkViewportWScalingNV;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkViewportWScalingNV.html">VkViewportWScalingNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkViewportWScalingNV.html"><code>VkViewportWScalingNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkViewportWScalingNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkViewportWScalingNV allocate(Arena arena) {
-        return new VkViewportWScalingNV(arena.allocate(LAYOUT));
+        VkViewportWScalingNV ret = new VkViewportWScalingNV(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkViewportWScalingNV[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkViewportWScalingNV(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
+    public float xcoeff() {
+        return segment.get(LAYOUT$xcoeff, OFFSET$xcoeff);
+    }
+
+    public void xcoeff(float value) {
+        segment.set(LAYOUT$xcoeff, OFFSET$xcoeff, value);
+    }
+
+    public float ycoeff() {
+        return segment.get(LAYOUT$ycoeff, OFFSET$ycoeff);
+    }
+
+    public void ycoeff(float value) {
+        segment.set(LAYOUT$ycoeff, OFFSET$ycoeff, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_FLOAT.withName("xcoeff"),
         ValueLayout.JAVA_FLOAT.withName("ycoeff")
@@ -72,21 +99,4 @@ public record VkViewportWScalingNV(@NotNull MemorySegment segment) implements IP
 
     public static final long OFFSET$xcoeff = LAYOUT.byteOffset(PATH$xcoeff);
     public static final long OFFSET$ycoeff = LAYOUT.byteOffset(PATH$ycoeff);
-
-    public float xcoeff() {
-        return segment.get(LAYOUT$xcoeff, OFFSET$xcoeff);
-    }
-
-    public void xcoeff(float value) {
-        segment.set(LAYOUT$xcoeff, OFFSET$xcoeff, value);
-    }
-
-    public float ycoeff() {
-        return segment.get(LAYOUT$ycoeff, OFFSET$ycoeff);
-    }
-
-    public void ycoeff(float value) {
-        segment.set(LAYOUT$ycoeff, OFFSET$ycoeff, value);
-    }
-
 }

@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLatencyMarkerNV.html">VkLatencyMarkerNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLatencyMarkerNV.html"><code>VkLatencyMarkerNV</code></a>
 public final class VkLatencyMarkerNV {
     public static final int SIMULATION_START = 0x0;
     public static final int SIMULATION_END = 0x1;

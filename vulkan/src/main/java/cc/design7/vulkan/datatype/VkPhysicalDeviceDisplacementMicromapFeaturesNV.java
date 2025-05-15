@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceDisplacementMicromapFeaturesNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDisplacementMicromapFeaturesNV.html"><code>VkPhysicalDeviceDisplacementMicromapFeaturesNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceDisplacementMicromapFeaturesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 displacementMicromap;
+/// } VkPhysicalDeviceDisplacementMicromapFeaturesNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_FEATURES_NV`
+///
+/// The {@link VkPhysicalDeviceDisplacementMicromapFeaturesNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceDisplacementMicromapFeaturesNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDisplacementMicromapFeaturesNV.html">VkPhysicalDeviceDisplacementMicromapFeaturesNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDisplacementMicromapFeaturesNV.html"><code>VkPhysicalDeviceDisplacementMicromapFeaturesNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceDisplacementMicromapFeaturesNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceDisplacementMicromapFeaturesNV {
-        sType(VkStructureType.PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_FEATURES_NV);
-    }
-
     public static VkPhysicalDeviceDisplacementMicromapFeaturesNV allocate(Arena arena) {
-        return new VkPhysicalDeviceDisplacementMicromapFeaturesNV(arena.allocate(LAYOUT));
+        VkPhysicalDeviceDisplacementMicromapFeaturesNV ret = new VkPhysicalDeviceDisplacementMicromapFeaturesNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_FEATURES_NV);
+        return ret;
     }
 
     public static VkPhysicalDeviceDisplacementMicromapFeaturesNV[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceDisplacementMicromapFeaturesNV(@NotNull MemorySegm
         VkPhysicalDeviceDisplacementMicromapFeaturesNV[] ret = new VkPhysicalDeviceDisplacementMicromapFeaturesNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceDisplacementMicromapFeaturesNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_FEATURES_NV);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceDisplacementMicromapFeaturesNV(@NotNull MemorySegm
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("displacementMicromap")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$displacementMicromap = PathElement.groupElement("PATH$displacementMicromap");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$displacementMicromap = (OfInt) LAYOUT.select(PATH$displacementMicromap);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$displacementMicromap = LAYOUT$displacementMicromap.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$displacementMicromap = LAYOUT.byteOffset(PATH$displacementMicromap);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_FEATURES_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceDisplacementMicromapFeaturesNV(@NotNull MemorySegm
         segment.set(LAYOUT$displacementMicromap, OFFSET$displacementMicromap, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("displacementMicromap")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$displacementMicromap = PathElement.groupElement("PATH$displacementMicromap");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$displacementMicromap = (OfInt) LAYOUT.select(PATH$displacementMicromap);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$displacementMicromap = LAYOUT$displacementMicromap.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$displacementMicromap = LAYOUT.byteOffset(PATH$displacementMicromap);
 }

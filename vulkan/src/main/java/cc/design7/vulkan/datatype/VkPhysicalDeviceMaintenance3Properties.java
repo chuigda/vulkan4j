@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceMaintenance3Properties} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMaintenance3Properties.html"><code>VkPhysicalDeviceMaintenance3Properties</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceMaintenance3Properties {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t maxPerSetDescriptors;
+///     VkDeviceSize maxMemoryAllocationSize;
+/// } VkPhysicalDeviceMaintenance3Properties;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES`
+///
+/// The {@link VkPhysicalDeviceMaintenance3Properties#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceMaintenance3Properties#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMaintenance3Properties.html">VkPhysicalDeviceMaintenance3Properties</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMaintenance3Properties.html"><code>VkPhysicalDeviceMaintenance3Properties</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceMaintenance3Properties(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceMaintenance3Properties {
-        sType(VkStructureType.PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES);
-    }
-
     public static VkPhysicalDeviceMaintenance3Properties allocate(Arena arena) {
-        return new VkPhysicalDeviceMaintenance3Properties(arena.allocate(LAYOUT));
+        VkPhysicalDeviceMaintenance3Properties ret = new VkPhysicalDeviceMaintenance3Properties(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES);
+        return ret;
     }
 
     public static VkPhysicalDeviceMaintenance3Properties[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkPhysicalDeviceMaintenance3Properties(@NotNull MemorySegment segm
         VkPhysicalDeviceMaintenance3Properties[] ret = new VkPhysicalDeviceMaintenance3Properties[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceMaintenance3Properties(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkPhysicalDeviceMaintenance3Properties(@NotNull MemorySegment segm
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("maxPerSetDescriptors"),
-        ValueLayout.JAVA_LONG.withName("maxMemoryAllocationSize")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxPerSetDescriptors = PathElement.groupElement("PATH$maxPerSetDescriptors");
-    public static final PathElement PATH$maxMemoryAllocationSize = PathElement.groupElement("PATH$maxMemoryAllocationSize");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$maxPerSetDescriptors = (OfInt) LAYOUT.select(PATH$maxPerSetDescriptors);
-    public static final OfLong LAYOUT$maxMemoryAllocationSize = (OfLong) LAYOUT.select(PATH$maxMemoryAllocationSize);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$maxPerSetDescriptors = LAYOUT$maxPerSetDescriptors.byteSize();
-    public static final long SIZE$maxMemoryAllocationSize = LAYOUT$maxMemoryAllocationSize.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$maxPerSetDescriptors = LAYOUT.byteOffset(PATH$maxPerSetDescriptors);
-    public static final long OFFSET$maxMemoryAllocationSize = LAYOUT.byteOffset(PATH$maxMemoryAllocationSize);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkPhysicalDeviceMaintenance3Properties(@NotNull MemorySegment segm
         segment.set(LAYOUT$maxMemoryAllocationSize, OFFSET$maxMemoryAllocationSize, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maxPerSetDescriptors"),
+        ValueLayout.JAVA_LONG.withName("maxMemoryAllocationSize")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$maxPerSetDescriptors = PathElement.groupElement("PATH$maxPerSetDescriptors");
+    public static final PathElement PATH$maxMemoryAllocationSize = PathElement.groupElement("PATH$maxMemoryAllocationSize");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maxPerSetDescriptors = (OfInt) LAYOUT.select(PATH$maxPerSetDescriptors);
+    public static final OfLong LAYOUT$maxMemoryAllocationSize = (OfLong) LAYOUT.select(PATH$maxMemoryAllocationSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxPerSetDescriptors = LAYOUT$maxPerSetDescriptors.byteSize();
+    public static final long SIZE$maxMemoryAllocationSize = LAYOUT$maxMemoryAllocationSize.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$maxPerSetDescriptors = LAYOUT.byteOffset(PATH$maxPerSetDescriptors);
+    public static final long OFFSET$maxMemoryAllocationSize = LAYOUT.byteOffset(PATH$maxMemoryAllocationSize);
 }

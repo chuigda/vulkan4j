@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceTileMemoryHeapPropertiesQCOM} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceTileMemoryHeapPropertiesQCOM.html"><code>VkPhysicalDeviceTileMemoryHeapPropertiesQCOM</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceTileMemoryHeapPropertiesQCOM {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 queueSubmitBoundary;
+///     VkBool32 tileBufferTransfers;
+/// } VkPhysicalDeviceTileMemoryHeapPropertiesQCOM;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_PROPERTIES_QCOM`
+///
+/// The {@link VkPhysicalDeviceTileMemoryHeapPropertiesQCOM#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceTileMemoryHeapPropertiesQCOM#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceTileMemoryHeapPropertiesQCOM.html">VkPhysicalDeviceTileMemoryHeapPropertiesQCOM</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceTileMemoryHeapPropertiesQCOM.html"><code>VkPhysicalDeviceTileMemoryHeapPropertiesQCOM</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceTileMemoryHeapPropertiesQCOM(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceTileMemoryHeapPropertiesQCOM {
-        sType(VkStructureType.PHYSICAL_DEVICE_TILE_MEMORY_HEAP_PROPERTIES_QCOM);
-    }
-
     public static VkPhysicalDeviceTileMemoryHeapPropertiesQCOM allocate(Arena arena) {
-        return new VkPhysicalDeviceTileMemoryHeapPropertiesQCOM(arena.allocate(LAYOUT));
+        VkPhysicalDeviceTileMemoryHeapPropertiesQCOM ret = new VkPhysicalDeviceTileMemoryHeapPropertiesQCOM(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_TILE_MEMORY_HEAP_PROPERTIES_QCOM);
+        return ret;
     }
 
     public static VkPhysicalDeviceTileMemoryHeapPropertiesQCOM[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkPhysicalDeviceTileMemoryHeapPropertiesQCOM(@NotNull MemorySegmen
         VkPhysicalDeviceTileMemoryHeapPropertiesQCOM[] ret = new VkPhysicalDeviceTileMemoryHeapPropertiesQCOM[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceTileMemoryHeapPropertiesQCOM(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_TILE_MEMORY_HEAP_PROPERTIES_QCOM);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkPhysicalDeviceTileMemoryHeapPropertiesQCOM(@NotNull MemorySegmen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("queueSubmitBoundary"),
-        ValueLayout.JAVA_INT.withName("tileBufferTransfers")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$queueSubmitBoundary = PathElement.groupElement("PATH$queueSubmitBoundary");
-    public static final PathElement PATH$tileBufferTransfers = PathElement.groupElement("PATH$tileBufferTransfers");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$queueSubmitBoundary = (OfInt) LAYOUT.select(PATH$queueSubmitBoundary);
-    public static final OfInt LAYOUT$tileBufferTransfers = (OfInt) LAYOUT.select(PATH$tileBufferTransfers);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$queueSubmitBoundary = LAYOUT$queueSubmitBoundary.byteSize();
-    public static final long SIZE$tileBufferTransfers = LAYOUT$tileBufferTransfers.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$queueSubmitBoundary = LAYOUT.byteOffset(PATH$queueSubmitBoundary);
-    public static final long OFFSET$tileBufferTransfers = LAYOUT.byteOffset(PATH$tileBufferTransfers);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_TILE_MEMORY_HEAP_PROPERTIES_QCOM);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkPhysicalDeviceTileMemoryHeapPropertiesQCOM(@NotNull MemorySegmen
         segment.set(LAYOUT$tileBufferTransfers, OFFSET$tileBufferTransfers, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("queueSubmitBoundary"),
+        ValueLayout.JAVA_INT.withName("tileBufferTransfers")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$queueSubmitBoundary = PathElement.groupElement("PATH$queueSubmitBoundary");
+    public static final PathElement PATH$tileBufferTransfers = PathElement.groupElement("PATH$tileBufferTransfers");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$queueSubmitBoundary = (OfInt) LAYOUT.select(PATH$queueSubmitBoundary);
+    public static final OfInt LAYOUT$tileBufferTransfers = (OfInt) LAYOUT.select(PATH$tileBufferTransfers);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$queueSubmitBoundary = LAYOUT$queueSubmitBoundary.byteSize();
+    public static final long SIZE$tileBufferTransfers = LAYOUT$tileBufferTransfers.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$queueSubmitBoundary = LAYOUT.byteOffset(PATH$queueSubmitBoundary);
+    public static final long OFFSET$tileBufferTransfers = LAYOUT.byteOffset(PATH$tileBufferTransfers);
 }

@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceQueueCreateFlags.html">VkDeviceQueueCreateFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceQueueCreateFlags.html"><code>VkDeviceQueueCreateFlags</code></a>
 public final class VkDeviceQueueCreateFlags {
     public static final int PROTECTED = 0x1;
 

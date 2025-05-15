@@ -16,6 +16,28 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoH265ShortTermRefPicSet} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoH265ShortTermRefPicSet {
+///     StdVideoH265ShortTermRefPicSetFlags flags;
+///     uint32_t delta_idx_minus1;
+///     uint16_t use_delta_flag;
+///     uint16_t abs_delta_rps_minus1;
+///     uint16_t used_by_curr_pic_flag;
+///     uint16_t used_by_curr_pic_s0_flag;
+///     uint16_t used_by_curr_pic_s1_flag;
+///     uint16_t reserved1;
+///     uint8_t reserved2;
+///     uint8_t reserved3;
+///     uint8_t num_negative_pics;
+///     uint8_t num_positive_pics;
+///     uint16_t delta_poc_s0_minus1;
+///     uint16_t delta_poc_s1_minus1;
+/// } StdVideoH265ShortTermRefPicSet;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +49,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265ShortTermRefPicSet allocate(Arena arena) {
-        return new StdVideoH265ShortTermRefPicSet(arena.allocate(LAYOUT));
+        StdVideoH265ShortTermRefPicSet ret = new StdVideoH265ShortTermRefPicSet(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoH265ShortTermRefPicSet[] allocate(Arena arena, int count) {
@@ -52,84 +75,6 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        StdVideoH265ShortTermRefPicSetFlags.LAYOUT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("delta_idx_minus1"),
-        ValueLayout.JAVA_SHORT.withName("use_delta_flag"),
-        ValueLayout.JAVA_SHORT.withName("abs_delta_rps_minus1"),
-        ValueLayout.JAVA_SHORT.withName("used_by_curr_pic_flag"),
-        ValueLayout.JAVA_SHORT.withName("used_by_curr_pic_s0_flag"),
-        ValueLayout.JAVA_SHORT.withName("used_by_curr_pic_s1_flag"),
-        ValueLayout.JAVA_SHORT.withName("reserved1"),
-        ValueLayout.JAVA_BYTE.withName("reserved2"),
-        ValueLayout.JAVA_BYTE.withName("reserved3"),
-        ValueLayout.JAVA_BYTE.withName("num_negative_pics"),
-        ValueLayout.JAVA_BYTE.withName("num_positive_pics"),
-        ValueLayout.JAVA_SHORT.withName("delta_poc_s0_minus1"),
-        ValueLayout.JAVA_SHORT.withName("delta_poc_s1_minus1")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$delta_idx_minus1 = PathElement.groupElement("PATH$delta_idx_minus1");
-    public static final PathElement PATH$use_delta_flag = PathElement.groupElement("PATH$use_delta_flag");
-    public static final PathElement PATH$abs_delta_rps_minus1 = PathElement.groupElement("PATH$abs_delta_rps_minus1");
-    public static final PathElement PATH$used_by_curr_pic_flag = PathElement.groupElement("PATH$used_by_curr_pic_flag");
-    public static final PathElement PATH$used_by_curr_pic_s0_flag = PathElement.groupElement("PATH$used_by_curr_pic_s0_flag");
-    public static final PathElement PATH$used_by_curr_pic_s1_flag = PathElement.groupElement("PATH$used_by_curr_pic_s1_flag");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
-    public static final PathElement PATH$reserved2 = PathElement.groupElement("PATH$reserved2");
-    public static final PathElement PATH$reserved3 = PathElement.groupElement("PATH$reserved3");
-    public static final PathElement PATH$num_negative_pics = PathElement.groupElement("PATH$num_negative_pics");
-    public static final PathElement PATH$num_positive_pics = PathElement.groupElement("PATH$num_positive_pics");
-    public static final PathElement PATH$delta_poc_s0_minus1 = PathElement.groupElement("PATH$delta_poc_s0_minus1");
-    public static final PathElement PATH$delta_poc_s1_minus1 = PathElement.groupElement("PATH$delta_poc_s1_minus1");
-
-    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$delta_idx_minus1 = (OfInt) LAYOUT.select(PATH$delta_idx_minus1);
-    public static final OfShort LAYOUT$use_delta_flag = (OfShort) LAYOUT.select(PATH$use_delta_flag);
-    public static final OfShort LAYOUT$abs_delta_rps_minus1 = (OfShort) LAYOUT.select(PATH$abs_delta_rps_minus1);
-    public static final OfShort LAYOUT$used_by_curr_pic_flag = (OfShort) LAYOUT.select(PATH$used_by_curr_pic_flag);
-    public static final OfShort LAYOUT$used_by_curr_pic_s0_flag = (OfShort) LAYOUT.select(PATH$used_by_curr_pic_s0_flag);
-    public static final OfShort LAYOUT$used_by_curr_pic_s1_flag = (OfShort) LAYOUT.select(PATH$used_by_curr_pic_s1_flag);
-    public static final OfShort LAYOUT$reserved1 = (OfShort) LAYOUT.select(PATH$reserved1);
-    public static final OfByte LAYOUT$reserved2 = (OfByte) LAYOUT.select(PATH$reserved2);
-    public static final OfByte LAYOUT$reserved3 = (OfByte) LAYOUT.select(PATH$reserved3);
-    public static final OfByte LAYOUT$num_negative_pics = (OfByte) LAYOUT.select(PATH$num_negative_pics);
-    public static final OfByte LAYOUT$num_positive_pics = (OfByte) LAYOUT.select(PATH$num_positive_pics);
-    public static final OfShort LAYOUT$delta_poc_s0_minus1 = (OfShort) LAYOUT.select(PATH$delta_poc_s0_minus1);
-    public static final OfShort LAYOUT$delta_poc_s1_minus1 = (OfShort) LAYOUT.select(PATH$delta_poc_s1_minus1);
-
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$delta_idx_minus1 = LAYOUT$delta_idx_minus1.byteSize();
-    public static final long SIZE$use_delta_flag = LAYOUT$use_delta_flag.byteSize();
-    public static final long SIZE$abs_delta_rps_minus1 = LAYOUT$abs_delta_rps_minus1.byteSize();
-    public static final long SIZE$used_by_curr_pic_flag = LAYOUT$used_by_curr_pic_flag.byteSize();
-    public static final long SIZE$used_by_curr_pic_s0_flag = LAYOUT$used_by_curr_pic_s0_flag.byteSize();
-    public static final long SIZE$used_by_curr_pic_s1_flag = LAYOUT$used_by_curr_pic_s1_flag.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
-    public static final long SIZE$reserved2 = LAYOUT$reserved2.byteSize();
-    public static final long SIZE$reserved3 = LAYOUT$reserved3.byteSize();
-    public static final long SIZE$num_negative_pics = LAYOUT$num_negative_pics.byteSize();
-    public static final long SIZE$num_positive_pics = LAYOUT$num_positive_pics.byteSize();
-    public static final long SIZE$delta_poc_s0_minus1 = LAYOUT$delta_poc_s0_minus1.byteSize();
-    public static final long SIZE$delta_poc_s1_minus1 = LAYOUT$delta_poc_s1_minus1.byteSize();
-
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$delta_idx_minus1 = LAYOUT.byteOffset(PATH$delta_idx_minus1);
-    public static final long OFFSET$use_delta_flag = LAYOUT.byteOffset(PATH$use_delta_flag);
-    public static final long OFFSET$abs_delta_rps_minus1 = LAYOUT.byteOffset(PATH$abs_delta_rps_minus1);
-    public static final long OFFSET$used_by_curr_pic_flag = LAYOUT.byteOffset(PATH$used_by_curr_pic_flag);
-    public static final long OFFSET$used_by_curr_pic_s0_flag = LAYOUT.byteOffset(PATH$used_by_curr_pic_s0_flag);
-    public static final long OFFSET$used_by_curr_pic_s1_flag = LAYOUT.byteOffset(PATH$used_by_curr_pic_s1_flag);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
-    public static final long OFFSET$reserved2 = LAYOUT.byteOffset(PATH$reserved2);
-    public static final long OFFSET$reserved3 = LAYOUT.byteOffset(PATH$reserved3);
-    public static final long OFFSET$num_negative_pics = LAYOUT.byteOffset(PATH$num_negative_pics);
-    public static final long OFFSET$num_positive_pics = LAYOUT.byteOffset(PATH$num_positive_pics);
-    public static final long OFFSET$delta_poc_s0_minus1 = LAYOUT.byteOffset(PATH$delta_poc_s0_minus1);
-    public static final long OFFSET$delta_poc_s1_minus1 = LAYOUT.byteOffset(PATH$delta_poc_s1_minus1);
 
     public StdVideoH265ShortTermRefPicSetFlags flags() {
         return new StdVideoH265ShortTermRefPicSetFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
@@ -243,4 +188,81 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$delta_poc_s1_minus1, OFFSET$delta_poc_s1_minus1, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoH265ShortTermRefPicSetFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("delta_idx_minus1"),
+        ValueLayout.JAVA_SHORT.withName("use_delta_flag"),
+        ValueLayout.JAVA_SHORT.withName("abs_delta_rps_minus1"),
+        ValueLayout.JAVA_SHORT.withName("used_by_curr_pic_flag"),
+        ValueLayout.JAVA_SHORT.withName("used_by_curr_pic_s0_flag"),
+        ValueLayout.JAVA_SHORT.withName("used_by_curr_pic_s1_flag"),
+        ValueLayout.JAVA_SHORT.withName("reserved1"),
+        ValueLayout.JAVA_BYTE.withName("reserved2"),
+        ValueLayout.JAVA_BYTE.withName("reserved3"),
+        ValueLayout.JAVA_BYTE.withName("num_negative_pics"),
+        ValueLayout.JAVA_BYTE.withName("num_positive_pics"),
+        ValueLayout.JAVA_SHORT.withName("delta_poc_s0_minus1"),
+        ValueLayout.JAVA_SHORT.withName("delta_poc_s1_minus1")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$delta_idx_minus1 = PathElement.groupElement("PATH$delta_idx_minus1");
+    public static final PathElement PATH$use_delta_flag = PathElement.groupElement("PATH$use_delta_flag");
+    public static final PathElement PATH$abs_delta_rps_minus1 = PathElement.groupElement("PATH$abs_delta_rps_minus1");
+    public static final PathElement PATH$used_by_curr_pic_flag = PathElement.groupElement("PATH$used_by_curr_pic_flag");
+    public static final PathElement PATH$used_by_curr_pic_s0_flag = PathElement.groupElement("PATH$used_by_curr_pic_s0_flag");
+    public static final PathElement PATH$used_by_curr_pic_s1_flag = PathElement.groupElement("PATH$used_by_curr_pic_s1_flag");
+    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
+    public static final PathElement PATH$reserved2 = PathElement.groupElement("PATH$reserved2");
+    public static final PathElement PATH$reserved3 = PathElement.groupElement("PATH$reserved3");
+    public static final PathElement PATH$num_negative_pics = PathElement.groupElement("PATH$num_negative_pics");
+    public static final PathElement PATH$num_positive_pics = PathElement.groupElement("PATH$num_positive_pics");
+    public static final PathElement PATH$delta_poc_s0_minus1 = PathElement.groupElement("PATH$delta_poc_s0_minus1");
+    public static final PathElement PATH$delta_poc_s1_minus1 = PathElement.groupElement("PATH$delta_poc_s1_minus1");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$delta_idx_minus1 = (OfInt) LAYOUT.select(PATH$delta_idx_minus1);
+    public static final OfShort LAYOUT$use_delta_flag = (OfShort) LAYOUT.select(PATH$use_delta_flag);
+    public static final OfShort LAYOUT$abs_delta_rps_minus1 = (OfShort) LAYOUT.select(PATH$abs_delta_rps_minus1);
+    public static final OfShort LAYOUT$used_by_curr_pic_flag = (OfShort) LAYOUT.select(PATH$used_by_curr_pic_flag);
+    public static final OfShort LAYOUT$used_by_curr_pic_s0_flag = (OfShort) LAYOUT.select(PATH$used_by_curr_pic_s0_flag);
+    public static final OfShort LAYOUT$used_by_curr_pic_s1_flag = (OfShort) LAYOUT.select(PATH$used_by_curr_pic_s1_flag);
+    public static final OfShort LAYOUT$reserved1 = (OfShort) LAYOUT.select(PATH$reserved1);
+    public static final OfByte LAYOUT$reserved2 = (OfByte) LAYOUT.select(PATH$reserved2);
+    public static final OfByte LAYOUT$reserved3 = (OfByte) LAYOUT.select(PATH$reserved3);
+    public static final OfByte LAYOUT$num_negative_pics = (OfByte) LAYOUT.select(PATH$num_negative_pics);
+    public static final OfByte LAYOUT$num_positive_pics = (OfByte) LAYOUT.select(PATH$num_positive_pics);
+    public static final OfShort LAYOUT$delta_poc_s0_minus1 = (OfShort) LAYOUT.select(PATH$delta_poc_s0_minus1);
+    public static final OfShort LAYOUT$delta_poc_s1_minus1 = (OfShort) LAYOUT.select(PATH$delta_poc_s1_minus1);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$delta_idx_minus1 = LAYOUT$delta_idx_minus1.byteSize();
+    public static final long SIZE$use_delta_flag = LAYOUT$use_delta_flag.byteSize();
+    public static final long SIZE$abs_delta_rps_minus1 = LAYOUT$abs_delta_rps_minus1.byteSize();
+    public static final long SIZE$used_by_curr_pic_flag = LAYOUT$used_by_curr_pic_flag.byteSize();
+    public static final long SIZE$used_by_curr_pic_s0_flag = LAYOUT$used_by_curr_pic_s0_flag.byteSize();
+    public static final long SIZE$used_by_curr_pic_s1_flag = LAYOUT$used_by_curr_pic_s1_flag.byteSize();
+    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
+    public static final long SIZE$reserved2 = LAYOUT$reserved2.byteSize();
+    public static final long SIZE$reserved3 = LAYOUT$reserved3.byteSize();
+    public static final long SIZE$num_negative_pics = LAYOUT$num_negative_pics.byteSize();
+    public static final long SIZE$num_positive_pics = LAYOUT$num_positive_pics.byteSize();
+    public static final long SIZE$delta_poc_s0_minus1 = LAYOUT$delta_poc_s0_minus1.byteSize();
+    public static final long SIZE$delta_poc_s1_minus1 = LAYOUT$delta_poc_s1_minus1.byteSize();
+
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$delta_idx_minus1 = LAYOUT.byteOffset(PATH$delta_idx_minus1);
+    public static final long OFFSET$use_delta_flag = LAYOUT.byteOffset(PATH$use_delta_flag);
+    public static final long OFFSET$abs_delta_rps_minus1 = LAYOUT.byteOffset(PATH$abs_delta_rps_minus1);
+    public static final long OFFSET$used_by_curr_pic_flag = LAYOUT.byteOffset(PATH$used_by_curr_pic_flag);
+    public static final long OFFSET$used_by_curr_pic_s0_flag = LAYOUT.byteOffset(PATH$used_by_curr_pic_s0_flag);
+    public static final long OFFSET$used_by_curr_pic_s1_flag = LAYOUT.byteOffset(PATH$used_by_curr_pic_s1_flag);
+    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
+    public static final long OFFSET$reserved2 = LAYOUT.byteOffset(PATH$reserved2);
+    public static final long OFFSET$reserved3 = LAYOUT.byteOffset(PATH$reserved3);
+    public static final long OFFSET$num_negative_pics = LAYOUT.byteOffset(PATH$num_negative_pics);
+    public static final long OFFSET$num_positive_pics = LAYOUT.byteOffset(PATH$num_positive_pics);
+    public static final long OFFSET$delta_poc_s0_minus1 = LAYOUT.byteOffset(PATH$delta_poc_s0_minus1);
+    public static final long OFFSET$delta_poc_s1_minus1 = LAYOUT.byteOffset(PATH$delta_poc_s1_minus1);
 }

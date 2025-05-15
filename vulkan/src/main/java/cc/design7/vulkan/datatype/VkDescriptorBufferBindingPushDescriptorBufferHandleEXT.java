@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDescriptorBufferBindingPushDescriptorBufferHandleEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorBufferBindingPushDescriptorBufferHandleEXT.html"><code>VkDescriptorBufferBindingPushDescriptorBufferHandleEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDescriptorBufferBindingPushDescriptorBufferHandleEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkBuffer buffer;
+/// } VkDescriptorBufferBindingPushDescriptorBufferHandleEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_DESCRIPTOR_BUFFER_BINDING_PUSH_DESCRIPTOR_BUFFER_HANDLE_EXT`
+///
+/// The {@link VkDescriptorBufferBindingPushDescriptorBufferHandleEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkDescriptorBufferBindingPushDescriptorBufferHandleEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorBufferBindingPushDescriptorBufferHandleEXT.html">VkDescriptorBufferBindingPushDescriptorBufferHandleEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorBufferBindingPushDescriptorBufferHandleEXT.html"><code>VkDescriptorBufferBindingPushDescriptorBufferHandleEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkDescriptorBufferBindingPushDescriptorBufferHandleEXT {
-        sType(VkStructureType.DESCRIPTOR_BUFFER_BINDING_PUSH_DESCRIPTOR_BUFFER_HANDLE_EXT);
-    }
-
     public static VkDescriptorBufferBindingPushDescriptorBufferHandleEXT allocate(Arena arena) {
-        return new VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(arena.allocate(LAYOUT));
+        VkDescriptorBufferBindingPushDescriptorBufferHandleEXT ret = new VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.DESCRIPTOR_BUFFER_BINDING_PUSH_DESCRIPTOR_BUFFER_HANDLE_EXT);
+        return ret;
     }
 
     public static VkDescriptorBufferBindingPushDescriptorBufferHandleEXT[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(@NotNull Me
         VkDescriptorBufferBindingPushDescriptorBufferHandleEXT[] ret = new VkDescriptorBufferBindingPushDescriptorBufferHandleEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.DESCRIPTOR_BUFFER_BINDING_PUSH_DESCRIPTOR_BUFFER_HANDLE_EXT);
         }
         return ret;
     }
@@ -57,6 +75,42 @@ public record VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(@NotNull Me
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.DESCRIPTOR_BUFFER_BINDING_PUSH_DESCRIPTOR_BUFFER_HANDLE_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkBuffer buffer() {
+        MemorySegment s = segment.asSlice(OFFSET$buffer, SIZE$buffer);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkBuffer(s);
+    }
+
+    public void buffer(@Nullable VkBuffer value) {
+        segment.set(LAYOUT$buffer, OFFSET$buffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -81,37 +135,4 @@ public record VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(@NotNull Me
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$buffer = LAYOUT.byteOffset(PATH$buffer);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkBuffer buffer() {
-        MemorySegment s = segment.asSlice(OFFSET$buffer, SIZE$buffer);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkBuffer(s);
-    }
-
-    public void buffer(@Nullable VkBuffer value) {
-        segment.set(LAYOUT$buffer, OFFSET$buffer, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
 }

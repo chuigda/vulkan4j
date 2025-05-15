@@ -14,8 +14,21 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkSparseMemoryBind} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseMemoryBind.html"><code>VkSparseMemoryBind</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkSparseMemoryBind {
+///     VkDeviceSize resourceOffset;
+///     VkDeviceSize size;
+///     VkDeviceMemory memory;
+///     VkDeviceSize memoryOffset;
+///     VkSparseMemoryBindFlags flags;
+/// } VkSparseMemoryBind;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +37,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseMemoryBind.html">VkSparseMemoryBind</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseMemoryBind.html"><code>VkSparseMemoryBind</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IPointer {
     public static VkSparseMemoryBind allocate(Arena arena) {
-        return new VkSparseMemoryBind(arena.allocate(LAYOUT));
+        VkSparseMemoryBind ret = new VkSparseMemoryBind(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkSparseMemoryBind[] allocate(Arena arena, int count) {
@@ -53,6 +67,50 @@ public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IPoi
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public @unsigned long resourceOffset() {
+        return segment.get(LAYOUT$resourceOffset, OFFSET$resourceOffset);
+    }
+
+    public void resourceOffset(@unsigned long value) {
+        segment.set(LAYOUT$resourceOffset, OFFSET$resourceOffset, value);
+    }
+
+    public @unsigned long size() {
+        return segment.get(LAYOUT$size, OFFSET$size);
+    }
+
+    public void size(@unsigned long value) {
+        segment.set(LAYOUT$size, OFFSET$size, value);
+    }
+
+    public @Nullable VkDeviceMemory memory() {
+        MemorySegment s = segment.asSlice(OFFSET$memory, SIZE$memory);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDeviceMemory(s);
+    }
+
+    public void memory(@Nullable VkDeviceMemory value) {
+        segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned long memoryOffset() {
+        return segment.get(LAYOUT$memoryOffset, OFFSET$memoryOffset);
+    }
+
+    public void memoryOffset(@unsigned long value) {
+        segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
+    }
+
+    public @enumtype(VkSparseMemoryBindFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkSparseMemoryBindFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -87,49 +145,4 @@ public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IPoi
     public static final long OFFSET$memory = LAYOUT.byteOffset(PATH$memory);
     public static final long OFFSET$memoryOffset = LAYOUT.byteOffset(PATH$memoryOffset);
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-
-    public @unsigned long resourceOffset() {
-        return segment.get(LAYOUT$resourceOffset, OFFSET$resourceOffset);
-    }
-
-    public void resourceOffset(@unsigned long value) {
-        segment.set(LAYOUT$resourceOffset, OFFSET$resourceOffset, value);
-    }
-
-    public @unsigned long size() {
-        return segment.get(LAYOUT$size, OFFSET$size);
-    }
-
-    public void size(@unsigned long value) {
-        segment.set(LAYOUT$size, OFFSET$size, value);
-    }
-
-    public @Nullable VkDeviceMemory memory() {
-        MemorySegment s = segment.asSlice(OFFSET$memory, SIZE$memory);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkDeviceMemory(s);
-    }
-
-    public void memory(@Nullable VkDeviceMemory value) {
-        segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned long memoryOffset() {
-        return segment.get(LAYOUT$memoryOffset, OFFSET$memoryOffset);
-    }
-
-    public void memoryOffset(@unsigned long value) {
-        segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
-    }
-
-    public @enumtype(VkSparseMemoryBindFlags.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkSparseMemoryBindFlags.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
 }

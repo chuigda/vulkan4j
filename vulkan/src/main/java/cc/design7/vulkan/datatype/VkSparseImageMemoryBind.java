@@ -14,8 +14,22 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkSparseImageMemoryBind} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageMemoryBind.html"><code>VkSparseImageMemoryBind</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkSparseImageMemoryBind {
+///     VkImageSubresource subresource;
+///     VkOffset3D offset;
+///     VkExtent3D extent;
+///     VkDeviceMemory memory;
+///     VkDeviceSize memoryOffset;
+///     VkSparseMemoryBindFlags flags;
+/// } VkSparseImageMemoryBind;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +38,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageMemoryBind.html">VkSparseImageMemoryBind</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageMemoryBind.html"><code>VkSparseImageMemoryBind</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements IPointer {
     public static VkSparseImageMemoryBind allocate(Arena arena) {
-        return new VkSparseImageMemoryBind(arena.allocate(LAYOUT));
+        VkSparseImageMemoryBind ret = new VkSparseImageMemoryBind(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkSparseImageMemoryBind[] allocate(Arena arena, int count) {
@@ -53,6 +68,58 @@ public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public VkImageSubresource subresource() {
+        return new VkImageSubresource(segment.asSlice(OFFSET$subresource, LAYOUT$subresource));
+    }
+
+    public void subresource(VkImageSubresource value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresource, SIZE$subresource);
+    }
+
+    public VkOffset3D offset() {
+        return new VkOffset3D(segment.asSlice(OFFSET$offset, LAYOUT$offset));
+    }
+
+    public void offset(VkOffset3D value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$offset, SIZE$offset);
+    }
+
+    public VkExtent3D extent() {
+        return new VkExtent3D(segment.asSlice(OFFSET$extent, LAYOUT$extent));
+    }
+
+    public void extent(VkExtent3D value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
+    }
+
+    public @Nullable VkDeviceMemory memory() {
+        MemorySegment s = segment.asSlice(OFFSET$memory, SIZE$memory);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDeviceMemory(s);
+    }
+
+    public void memory(@Nullable VkDeviceMemory value) {
+        segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned long memoryOffset() {
+        return segment.get(LAYOUT$memoryOffset, OFFSET$memoryOffset);
+    }
+
+    public void memoryOffset(@unsigned long value) {
+        segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
+    }
+
+    public @enumtype(VkSparseMemoryBindFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkSparseMemoryBindFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -92,57 +159,4 @@ public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements
     public static final long OFFSET$memory = LAYOUT.byteOffset(PATH$memory);
     public static final long OFFSET$memoryOffset = LAYOUT.byteOffset(PATH$memoryOffset);
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-
-    public VkImageSubresource subresource() {
-        return new VkImageSubresource(segment.asSlice(OFFSET$subresource, LAYOUT$subresource));
-    }
-
-    public void subresource(VkImageSubresource value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresource, SIZE$subresource);
-    }
-
-    public VkOffset3D offset() {
-        return new VkOffset3D(segment.asSlice(OFFSET$offset, LAYOUT$offset));
-    }
-
-    public void offset(VkOffset3D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$offset, SIZE$offset);
-    }
-
-    public VkExtent3D extent() {
-        return new VkExtent3D(segment.asSlice(OFFSET$extent, LAYOUT$extent));
-    }
-
-    public void extent(VkExtent3D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
-    }
-
-    public @Nullable VkDeviceMemory memory() {
-        MemorySegment s = segment.asSlice(OFFSET$memory, SIZE$memory);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkDeviceMemory(s);
-    }
-
-    public void memory(@Nullable VkDeviceMemory value) {
-        segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned long memoryOffset() {
-        return segment.get(LAYOUT$memoryOffset, OFFSET$memoryOffset);
-    }
-
-    public void memoryOffset(@unsigned long value) {
-        segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
-    }
-
-    public @enumtype(VkSparseMemoryBindFlags.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkSparseMemoryBindFlags.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
 }

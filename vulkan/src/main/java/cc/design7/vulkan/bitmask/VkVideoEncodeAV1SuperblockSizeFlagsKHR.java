@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1SuperblockSizeFlagsKHR.html">VkVideoEncodeAV1SuperblockSizeFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1SuperblockSizeFlagsKHR.html"><code>VkVideoEncodeAV1SuperblockSizeFlagsKHR</code></a>
 public final class VkVideoEncodeAV1SuperblockSizeFlagsKHR {
     public static final int VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_128 = 0x2;
     public static final int VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_64 = 0x1;

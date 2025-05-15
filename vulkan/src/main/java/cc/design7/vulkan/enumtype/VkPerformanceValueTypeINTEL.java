@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceValueTypeINTEL.html">VkPerformanceValueTypeINTEL</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceValueTypeINTEL.html"><code>VkPerformanceValueTypeINTEL</code></a>
 public final class VkPerformanceValueTypeINTEL {
     public static final int UINT32 = 0x0;
     public static final int UINT64 = 0x1;

@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkWriteIndirectExecutionSetPipelineEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkWriteIndirectExecutionSetPipelineEXT.html"><code>VkWriteIndirectExecutionSetPipelineEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkWriteIndirectExecutionSetPipelineEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t index;
+///     VkPipeline pipeline;
+/// } VkWriteIndirectExecutionSetPipelineEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_PIPELINE_EXT`
+///
+/// The {@link VkWriteIndirectExecutionSetPipelineEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkWriteIndirectExecutionSetPipelineEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkWriteIndirectExecutionSetPipelineEXT.html">VkWriteIndirectExecutionSetPipelineEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkWriteIndirectExecutionSetPipelineEXT.html"><code>VkWriteIndirectExecutionSetPipelineEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkWriteIndirectExecutionSetPipelineEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkWriteIndirectExecutionSetPipelineEXT {
-        sType(VkStructureType.WRITE_INDIRECT_EXECUTION_SET_PIPELINE_EXT);
-    }
-
     public static VkWriteIndirectExecutionSetPipelineEXT allocate(Arena arena) {
-        return new VkWriteIndirectExecutionSetPipelineEXT(arena.allocate(LAYOUT));
+        VkWriteIndirectExecutionSetPipelineEXT ret = new VkWriteIndirectExecutionSetPipelineEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.WRITE_INDIRECT_EXECUTION_SET_PIPELINE_EXT);
+        return ret;
     }
 
     public static VkWriteIndirectExecutionSetPipelineEXT[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkWriteIndirectExecutionSetPipelineEXT(@NotNull MemorySegment segm
         VkWriteIndirectExecutionSetPipelineEXT[] ret = new VkWriteIndirectExecutionSetPipelineEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkWriteIndirectExecutionSetPipelineEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.WRITE_INDIRECT_EXECUTION_SET_PIPELINE_EXT);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkWriteIndirectExecutionSetPipelineEXT(@NotNull MemorySegment segm
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("index"),
-        ValueLayout.ADDRESS.withName("pipeline")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$index = PathElement.groupElement("PATH$index");
-    public static final PathElement PATH$pipeline = PathElement.groupElement("PATH$pipeline");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$index = (OfInt) LAYOUT.select(PATH$index);
-    public static final AddressLayout LAYOUT$pipeline = (AddressLayout) LAYOUT.select(PATH$pipeline);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$index = LAYOUT$index.byteSize();
-    public static final long SIZE$pipeline = LAYOUT$pipeline.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$index = LAYOUT.byteOffset(PATH$index);
-    public static final long OFFSET$pipeline = LAYOUT.byteOffset(PATH$pipeline);
+    public void autoInit() {
+        sType(VkStructureType.WRITE_INDIRECT_EXECUTION_SET_PIPELINE_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -117,7 +112,7 @@ public record VkWriteIndirectExecutionSetPipelineEXT(@NotNull MemorySegment segm
 
     public @Nullable VkPipeline pipeline() {
         MemorySegment s = segment.asSlice(OFFSET$pipeline, SIZE$pipeline);
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkPipeline(s);
@@ -127,4 +122,31 @@ public record VkWriteIndirectExecutionSetPipelineEXT(@NotNull MemorySegment segm
         segment.set(LAYOUT$pipeline, OFFSET$pipeline, value != null ? value.segment() : MemorySegment.NULL);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("index"),
+        ValueLayout.ADDRESS.withName("pipeline")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$index = PathElement.groupElement("PATH$index");
+    public static final PathElement PATH$pipeline = PathElement.groupElement("PATH$pipeline");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$index = (OfInt) LAYOUT.select(PATH$index);
+    public static final AddressLayout LAYOUT$pipeline = (AddressLayout) LAYOUT.select(PATH$pipeline);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$index = LAYOUT$index.byteSize();
+    public static final long SIZE$pipeline = LAYOUT$pipeline.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$index = LAYOUT.byteOffset(PATH$index);
+    public static final long OFFSET$pipeline = LAYOUT.byteOffset(PATH$pipeline);
 }

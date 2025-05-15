@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSampleCountFlags.html">VkSampleCountFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSampleCountFlags.html"><code>VkSampleCountFlags</code></a>
 public final class VkSampleCountFlags {
     public static final int _16 = 0x10;
     public static final int _1 = 0x1;

@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceCounterStorageKHR.html">VkPerformanceCounterStorageKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceCounterStorageKHR.html"><code>VkPerformanceCounterStorageKHR</code></a>
 public final class VkPerformanceCounterStorageKHR {
     public static final int INT32 = 0x0;
     public static final int INT64 = 0x1;

@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoInlineQueryInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoInlineQueryInfoKHR.html"><code>VkVideoInlineQueryInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoInlineQueryInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkQueryPool queryPool;
+///     uint32_t firstQuery;
+///     uint32_t queryCount;
+/// } VkVideoInlineQueryInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VIDEO_INLINE_QUERY_INFO_KHR`
+///
+/// The {@link VkVideoInlineQueryInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkVideoInlineQueryInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoInlineQueryInfoKHR.html">VkVideoInlineQueryInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoInlineQueryInfoKHR.html"><code>VkVideoInlineQueryInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoInlineQueryInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkVideoInlineQueryInfoKHR {
-        sType(VkStructureType.VIDEO_INLINE_QUERY_INFO_KHR);
-    }
-
     public static VkVideoInlineQueryInfoKHR allocate(Arena arena) {
-        return new VkVideoInlineQueryInfoKHR(arena.allocate(LAYOUT));
+        VkVideoInlineQueryInfoKHR ret = new VkVideoInlineQueryInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VIDEO_INLINE_QUERY_INFO_KHR);
+        return ret;
     }
 
     public static VkVideoInlineQueryInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkVideoInlineQueryInfoKHR(@NotNull MemorySegment segment) implemen
         VkVideoInlineQueryInfoKHR[] ret = new VkVideoInlineQueryInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkVideoInlineQueryInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VIDEO_INLINE_QUERY_INFO_KHR);
         }
         return ret;
     }
@@ -57,6 +77,58 @@ public record VkVideoInlineQueryInfoKHR(@NotNull MemorySegment segment) implemen
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.VIDEO_INLINE_QUERY_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkQueryPool queryPool() {
+        MemorySegment s = segment.asSlice(OFFSET$queryPool, SIZE$queryPool);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkQueryPool(s);
+    }
+
+    public void queryPool(@Nullable VkQueryPool value) {
+        segment.set(LAYOUT$queryPool, OFFSET$queryPool, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned int firstQuery() {
+        return segment.get(LAYOUT$firstQuery, OFFSET$firstQuery);
+    }
+
+    public void firstQuery(@unsigned int value) {
+        segment.set(LAYOUT$firstQuery, OFFSET$firstQuery, value);
+    }
+
+    public @unsigned int queryCount() {
+        return segment.get(LAYOUT$queryCount, OFFSET$queryCount);
+    }
+
+    public void queryCount(@unsigned int value) {
+        segment.set(LAYOUT$queryCount, OFFSET$queryCount, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -91,53 +163,4 @@ public record VkVideoInlineQueryInfoKHR(@NotNull MemorySegment segment) implemen
     public static final long OFFSET$queryPool = LAYOUT.byteOffset(PATH$queryPool);
     public static final long OFFSET$firstQuery = LAYOUT.byteOffset(PATH$firstQuery);
     public static final long OFFSET$queryCount = LAYOUT.byteOffset(PATH$queryCount);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkQueryPool queryPool() {
-        MemorySegment s = segment.asSlice(OFFSET$queryPool, SIZE$queryPool);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkQueryPool(s);
-    }
-
-    public void queryPool(@Nullable VkQueryPool value) {
-        segment.set(LAYOUT$queryPool, OFFSET$queryPool, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned int firstQuery() {
-        return segment.get(LAYOUT$firstQuery, OFFSET$firstQuery);
-    }
-
-    public void firstQuery(@unsigned int value) {
-        segment.set(LAYOUT$firstQuery, OFFSET$firstQuery, value);
-    }
-
-    public @unsigned int queryCount() {
-        return segment.get(LAYOUT$queryCount, OFFSET$queryCount);
-    }
-
-    public void queryCount(@unsigned int value) {
-        segment.set(LAYOUT$queryCount, OFFSET$queryCount, value);
-    }
-
 }

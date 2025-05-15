@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkImportMetalSharedEventInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportMetalSharedEventInfoEXT.html"><code>VkImportMetalSharedEventInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkImportMetalSharedEventInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     MTLSharedEvent_id mtlSharedEvent;
+/// } VkImportMetalSharedEventInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_IMPORT_METAL_SHARED_EVENT_INFO_EXT`
+///
+/// The {@link VkImportMetalSharedEventInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkImportMetalSharedEventInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportMetalSharedEventInfoEXT.html">VkImportMetalSharedEventInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportMetalSharedEventInfoEXT.html"><code>VkImportMetalSharedEventInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkImportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkImportMetalSharedEventInfoEXT {
-        sType(VkStructureType.IMPORT_METAL_SHARED_EVENT_INFO_EXT);
-    }
-
     public static VkImportMetalSharedEventInfoEXT allocate(Arena arena) {
-        return new VkImportMetalSharedEventInfoEXT(arena.allocate(LAYOUT));
+        VkImportMetalSharedEventInfoEXT ret = new VkImportMetalSharedEventInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.IMPORT_METAL_SHARED_EVENT_INFO_EXT);
+        return ret;
     }
 
     public static VkImportMetalSharedEventInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkImportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         VkImportMetalSharedEventInfoEXT[] ret = new VkImportMetalSharedEventInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkImportMetalSharedEventInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.IMPORT_METAL_SHARED_EVENT_INFO_EXT);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkImportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("mtlSharedEvent")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$mtlSharedEvent = PathElement.groupElement("PATH$mtlSharedEvent");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$mtlSharedEvent = (AddressLayout) LAYOUT.select(PATH$mtlSharedEvent);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$mtlSharedEvent = LAYOUT$mtlSharedEvent.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$mtlSharedEvent = LAYOUT.byteOffset(PATH$mtlSharedEvent);
+    public void autoInit() {
+        sType(VkStructureType.IMPORT_METAL_SHARED_EVENT_INFO_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -114,4 +113,26 @@ public record VkImportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         mtlSharedEvent(pointer.segment());
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("mtlSharedEvent")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$mtlSharedEvent = PathElement.groupElement("PATH$mtlSharedEvent");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$mtlSharedEvent = (AddressLayout) LAYOUT.select(PATH$mtlSharedEvent);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$mtlSharedEvent = LAYOUT$mtlSharedEvent.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$mtlSharedEvent = LAYOUT.byteOffset(PATH$mtlSharedEvent);
 }

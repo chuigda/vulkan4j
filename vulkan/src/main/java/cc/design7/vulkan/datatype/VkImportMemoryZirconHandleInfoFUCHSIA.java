@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkImportMemoryZirconHandleInfoFUCHSIA} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportMemoryZirconHandleInfoFUCHSIA.html"><code>VkImportMemoryZirconHandleInfoFUCHSIA</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkImportMemoryZirconHandleInfoFUCHSIA {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkExternalMemoryHandleTypeFlags handleType;
+///     zx_handle_t handle;
+/// } VkImportMemoryZirconHandleInfoFUCHSIA;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA`
+///
+/// The {@link VkImportMemoryZirconHandleInfoFUCHSIA#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkImportMemoryZirconHandleInfoFUCHSIA#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportMemoryZirconHandleInfoFUCHSIA.html">VkImportMemoryZirconHandleInfoFUCHSIA</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportMemoryZirconHandleInfoFUCHSIA.html"><code>VkImportMemoryZirconHandleInfoFUCHSIA</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkImportMemoryZirconHandleInfoFUCHSIA(@NotNull MemorySegment segment) implements IPointer {
-    public VkImportMemoryZirconHandleInfoFUCHSIA {
-        sType(VkStructureType.IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA);
-    }
-
     public static VkImportMemoryZirconHandleInfoFUCHSIA allocate(Arena arena) {
-        return new VkImportMemoryZirconHandleInfoFUCHSIA(arena.allocate(LAYOUT));
+        VkImportMemoryZirconHandleInfoFUCHSIA ret = new VkImportMemoryZirconHandleInfoFUCHSIA(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA);
+        return ret;
     }
 
     public static VkImportMemoryZirconHandleInfoFUCHSIA[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkImportMemoryZirconHandleInfoFUCHSIA(@NotNull MemorySegment segme
         VkImportMemoryZirconHandleInfoFUCHSIA[] ret = new VkImportMemoryZirconHandleInfoFUCHSIA[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkImportMemoryZirconHandleInfoFUCHSIA(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkImportMemoryZirconHandleInfoFUCHSIA(@NotNull MemorySegment segme
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("handleType"),
-        ValueLayout.JAVA_INT.withName("handle")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$handleType = PathElement.groupElement("PATH$handleType");
-    public static final PathElement PATH$handle = PathElement.groupElement("PATH$handle");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$handleType = (OfInt) LAYOUT.select(PATH$handleType);
-    public static final OfInt LAYOUT$handle = (OfInt) LAYOUT.select(PATH$handle);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
-    public static final long SIZE$handle = LAYOUT$handle.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
-    public static final long OFFSET$handle = LAYOUT.byteOffset(PATH$handle);
+    public void autoInit() {
+        sType(VkStructureType.IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkImportMemoryZirconHandleInfoFUCHSIA(@NotNull MemorySegment segme
         segment.set(LAYOUT$handle, OFFSET$handle, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("handleType"),
+        ValueLayout.JAVA_INT.withName("handle")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$handleType = PathElement.groupElement("PATH$handleType");
+    public static final PathElement PATH$handle = PathElement.groupElement("PATH$handle");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$handleType = (OfInt) LAYOUT.select(PATH$handleType);
+    public static final OfInt LAYOUT$handle = (OfInt) LAYOUT.select(PATH$handle);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
+    public static final long SIZE$handle = LAYOUT$handle.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
+    public static final long OFFSET$handle = LAYOUT.byteOffset(PATH$handle);
 }

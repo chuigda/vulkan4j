@@ -14,8 +14,33 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkBindDescriptorSetsInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindDescriptorSetsInfo.html"><code>VkBindDescriptorSetsInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkBindDescriptorSetsInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkShaderStageFlags stageFlags;
+///     VkPipelineLayout layout;
+///     uint32_t firstSet;
+///     uint32_t descriptorSetCount;
+///     VkDescriptorSet const* pDescriptorSets;
+///     uint32_t dynamicOffsetCount;
+///     uint32_t const* pDynamicOffsets;
+/// } VkBindDescriptorSetsInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_SETS_INFO`
+///
+/// The {@link VkBindDescriptorSetsInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkBindDescriptorSetsInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +49,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindDescriptorSetsInfo.html">VkBindDescriptorSetsInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindDescriptorSetsInfo.html"><code>VkBindDescriptorSetsInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkBindDescriptorSetsInfo {
-        sType(VkStructureType.BIND_DESCRIPTOR_SETS_INFO);
-    }
-
     public static VkBindDescriptorSetsInfo allocate(Arena arena) {
-        return new VkBindDescriptorSetsInfo(arena.allocate(LAYOUT));
+        VkBindDescriptorSetsInfo ret = new VkBindDescriptorSetsInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.BIND_DESCRIPTOR_SETS_INFO);
+        return ret;
     }
 
     public static VkBindDescriptorSetsInfo[] allocate(Arena arena, int count) {
@@ -41,6 +64,7 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         VkBindDescriptorSetsInfo[] ret = new VkBindDescriptorSetsInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkBindDescriptorSetsInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.BIND_DESCRIPTOR_SETS_INFO);
         }
         return ret;
     }
@@ -57,6 +81,120 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.BIND_DESCRIPTOR_SETS_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkShaderStageFlags.class) int stageFlags() {
+        return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
+    }
+
+    public void stageFlags(@enumtype(VkShaderStageFlags.class) int value) {
+        segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
+    }
+
+    public @Nullable VkPipelineLayout layout() {
+        MemorySegment s = segment.asSlice(OFFSET$layout, SIZE$layout);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineLayout(s);
+    }
+
+    public void layout(@Nullable VkPipelineLayout value) {
+        segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned int firstSet() {
+        return segment.get(LAYOUT$firstSet, OFFSET$firstSet);
+    }
+
+    public void firstSet(@unsigned int value) {
+        segment.set(LAYOUT$firstSet, OFFSET$firstSet, value);
+    }
+
+    public @unsigned int descriptorSetCount() {
+        return segment.get(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount);
+    }
+
+    public void descriptorSetCount(@unsigned int value) {
+        segment.set(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount, value);
+    }
+
+    public @pointer(comment="VkDescriptorSet*") MemorySegment pDescriptorSetsRaw() {
+        return segment.get(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets);
+    }
+
+    public void pDescriptorSetsRaw(@pointer(comment="VkDescriptorSet*") MemorySegment value) {
+        segment.set(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets, value);
+    }
+
+    /// Note: the returned {@link VkDescriptorSet.Buffer} does not have correct {@link VkDescriptorSet.Buffer#size}
+    /// property. It's up to user to track the size of the buffer, and use
+    /// {@link VkDescriptorSet.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// buffer.
+    public @Nullable VkDescriptorSet.Buffer pDescriptorSets() {
+        MemorySegment s = pDescriptorSetsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDescriptorSet.Buffer(s);
+    }
+
+
+    public @unsigned int dynamicOffsetCount() {
+        return segment.get(LAYOUT$dynamicOffsetCount, OFFSET$dynamicOffsetCount);
+    }
+
+    public void dynamicOffsetCount(@unsigned int value) {
+        segment.set(LAYOUT$dynamicOffsetCount, OFFSET$dynamicOffsetCount, value);
+    }
+
+    public @pointer(comment="int*") MemorySegment pDynamicOffsetsRaw() {
+        return segment.get(LAYOUT$pDynamicOffsets, OFFSET$pDynamicOffsets);
+    }
+
+    public void pDynamicOffsetsRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pDynamicOffsets, OFFSET$pDynamicOffsets, value);
+    }
+
+    /// Note: the returned {@link IntPtr} does not have correct
+    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
+    /// writing to the buffer.
+    public @Nullable @unsigned IntPtr pDynamicOffsets() {
+        MemorySegment s = pDynamicOffsetsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new IntPtr(s);
+    }
+
+    public void pDynamicOffsets(@Nullable @unsigned IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDynamicOffsetsRaw(s);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -111,115 +249,4 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
     public static final long OFFSET$pDescriptorSets = LAYOUT.byteOffset(PATH$pDescriptorSets);
     public static final long OFFSET$dynamicOffsetCount = LAYOUT.byteOffset(PATH$dynamicOffsetCount);
     public static final long OFFSET$pDynamicOffsets = LAYOUT.byteOffset(PATH$pDynamicOffsets);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @enumtype(VkShaderStageFlags.class) int stageFlags() {
-        return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
-    }
-
-    public void stageFlags(@enumtype(VkShaderStageFlags.class) int value) {
-        segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
-    }
-
-    public @Nullable VkPipelineLayout layout() {
-        MemorySegment s = segment.asSlice(OFFSET$layout, SIZE$layout);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPipelineLayout(s);
-    }
-
-    public void layout(@Nullable VkPipelineLayout value) {
-        segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned int firstSet() {
-        return segment.get(LAYOUT$firstSet, OFFSET$firstSet);
-    }
-
-    public void firstSet(@unsigned int value) {
-        segment.set(LAYOUT$firstSet, OFFSET$firstSet, value);
-    }
-
-    public @unsigned int descriptorSetCount() {
-        return segment.get(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount);
-    }
-
-    public void descriptorSetCount(@unsigned int value) {
-        segment.set(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount, value);
-    }
-
-    public @pointer(comment="VkDescriptorSet*") MemorySegment pDescriptorSetsRaw() {
-        return segment.get(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets);
-    }
-
-    public void pDescriptorSetsRaw(@pointer(comment="VkDescriptorSet*") MemorySegment value) {
-        segment.set(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets, value);
-    }
-
-    /// Note: the returned {@link VkDescriptorSet.Buffer} does not have correct {@link VkDescriptorSet.Buffer#size}
-    /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkDescriptorSet.Buffer#reinterpret} to set the size before actually reading from or writing to the
-    /// buffer.
-    public @Nullable VkDescriptorSet.Buffer pDescriptorSets() {
-        MemorySegment s = pDescriptorSetsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkDescriptorSet.Buffer(s);
-    }
-
-
-    public @unsigned int dynamicOffsetCount() {
-        return segment.get(LAYOUT$dynamicOffsetCount, OFFSET$dynamicOffsetCount);
-    }
-
-    public void dynamicOffsetCount(@unsigned int value) {
-        segment.set(LAYOUT$dynamicOffsetCount, OFFSET$dynamicOffsetCount, value);
-    }
-
-    public @pointer(comment="int*") MemorySegment pDynamicOffsetsRaw() {
-        return segment.get(LAYOUT$pDynamicOffsets, OFFSET$pDynamicOffsets);
-    }
-
-    public void pDynamicOffsetsRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pDynamicOffsets, OFFSET$pDynamicOffsets, value);
-    }
-
-    /// Note: the returned {@link IntPtr} does not have correct
-    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
-    /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
-    /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pDynamicOffsets() {
-        MemorySegment s = pDynamicOffsetsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new IntPtr(s);
-    }
-
-    public void pDynamicOffsets(@Nullable @unsigned IntPtr value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pDynamicOffsetsRaw(s);
-    }
-
 }

@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoEncodeH265QpKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH265QpKHR.html"><code>VkVideoEncodeH265QpKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoEncodeH265QpKHR {
+///     int32_t qpI;
+///     int32_t qpP;
+///     int32_t qpB;
+/// } VkVideoEncodeH265QpKHR;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH265QpKHR.html">VkVideoEncodeH265QpKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH265QpKHR.html"><code>VkVideoEncodeH265QpKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoEncodeH265QpKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkVideoEncodeH265QpKHR allocate(Arena arena) {
-        return new VkVideoEncodeH265QpKHR(arena.allocate(LAYOUT));
+        VkVideoEncodeH265QpKHR ret = new VkVideoEncodeH265QpKHR(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkVideoEncodeH265QpKHR[] allocate(Arena arena, int count) {
@@ -55,29 +67,6 @@ public record VkVideoEncodeH265QpKHR(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("qpI"),
-        ValueLayout.JAVA_INT.withName("qpP"),
-        ValueLayout.JAVA_INT.withName("qpB")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$qpI = PathElement.groupElement("PATH$qpI");
-    public static final PathElement PATH$qpP = PathElement.groupElement("PATH$qpP");
-    public static final PathElement PATH$qpB = PathElement.groupElement("PATH$qpB");
-
-    public static final OfInt LAYOUT$qpI = (OfInt) LAYOUT.select(PATH$qpI);
-    public static final OfInt LAYOUT$qpP = (OfInt) LAYOUT.select(PATH$qpP);
-    public static final OfInt LAYOUT$qpB = (OfInt) LAYOUT.select(PATH$qpB);
-
-    public static final long SIZE$qpI = LAYOUT$qpI.byteSize();
-    public static final long SIZE$qpP = LAYOUT$qpP.byteSize();
-    public static final long SIZE$qpB = LAYOUT$qpB.byteSize();
-
-    public static final long OFFSET$qpI = LAYOUT.byteOffset(PATH$qpI);
-    public static final long OFFSET$qpP = LAYOUT.byteOffset(PATH$qpP);
-    public static final long OFFSET$qpB = LAYOUT.byteOffset(PATH$qpB);
-
     public int qpI() {
         return segment.get(LAYOUT$qpI, OFFSET$qpI);
     }
@@ -102,4 +91,26 @@ public record VkVideoEncodeH265QpKHR(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$qpB, OFFSET$qpB, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("qpI"),
+        ValueLayout.JAVA_INT.withName("qpP"),
+        ValueLayout.JAVA_INT.withName("qpB")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$qpI = PathElement.groupElement("PATH$qpI");
+    public static final PathElement PATH$qpP = PathElement.groupElement("PATH$qpP");
+    public static final PathElement PATH$qpB = PathElement.groupElement("PATH$qpB");
+
+    public static final OfInt LAYOUT$qpI = (OfInt) LAYOUT.select(PATH$qpI);
+    public static final OfInt LAYOUT$qpP = (OfInt) LAYOUT.select(PATH$qpP);
+    public static final OfInt LAYOUT$qpB = (OfInt) LAYOUT.select(PATH$qpB);
+
+    public static final long SIZE$qpI = LAYOUT$qpI.byteSize();
+    public static final long SIZE$qpP = LAYOUT$qpP.byteSize();
+    public static final long SIZE$qpB = LAYOUT$qpB.byteSize();
+
+    public static final long OFFSET$qpI = LAYOUT.byteOffset(PATH$qpI);
+    public static final long OFFSET$qpP = LAYOUT.byteOffset(PATH$qpP);
+    public static final long OFFSET$qpB = LAYOUT.byteOffset(PATH$qpB);
 }

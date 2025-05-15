@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceDynamicRenderingFeatures} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDynamicRenderingFeatures.html"><code>VkPhysicalDeviceDynamicRenderingFeatures</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceDynamicRenderingFeatures {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 dynamicRendering;
+/// } VkPhysicalDeviceDynamicRenderingFeatures;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES`
+///
+/// The {@link VkPhysicalDeviceDynamicRenderingFeatures#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceDynamicRenderingFeatures#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDynamicRenderingFeatures.html">VkPhysicalDeviceDynamicRenderingFeatures</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDynamicRenderingFeatures.html"><code>VkPhysicalDeviceDynamicRenderingFeatures</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceDynamicRenderingFeatures(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceDynamicRenderingFeatures {
-        sType(VkStructureType.PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES);
-    }
-
     public static VkPhysicalDeviceDynamicRenderingFeatures allocate(Arena arena) {
-        return new VkPhysicalDeviceDynamicRenderingFeatures(arena.allocate(LAYOUT));
+        VkPhysicalDeviceDynamicRenderingFeatures ret = new VkPhysicalDeviceDynamicRenderingFeatures(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES);
+        return ret;
     }
 
     public static VkPhysicalDeviceDynamicRenderingFeatures[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceDynamicRenderingFeatures(@NotNull MemorySegment se
         VkPhysicalDeviceDynamicRenderingFeatures[] ret = new VkPhysicalDeviceDynamicRenderingFeatures[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceDynamicRenderingFeatures(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceDynamicRenderingFeatures(@NotNull MemorySegment se
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("dynamicRendering")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$dynamicRendering = PathElement.groupElement("PATH$dynamicRendering");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$dynamicRendering = (OfInt) LAYOUT.select(PATH$dynamicRendering);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$dynamicRendering = LAYOUT$dynamicRendering.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$dynamicRendering = LAYOUT.byteOffset(PATH$dynamicRendering);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceDynamicRenderingFeatures(@NotNull MemorySegment se
         segment.set(LAYOUT$dynamicRendering, OFFSET$dynamicRendering, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("dynamicRendering")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$dynamicRendering = PathElement.groupElement("PATH$dynamicRendering");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$dynamicRendering = (OfInt) LAYOUT.select(PATH$dynamicRendering);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$dynamicRendering = LAYOUT$dynamicRendering.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$dynamicRendering = LAYOUT.byteOffset(PATH$dynamicRendering);
 }

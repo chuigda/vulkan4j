@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceCounterScopeKHR.html">VkPerformanceCounterScopeKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceCounterScopeKHR.html"><code>VkPerformanceCounterScopeKHR</code></a>
 public final class VkPerformanceCounterScopeKHR {
     public static final int COMMAND_BUFFER = 0x0;
     public static final int RENDER_PASS = 0x1;

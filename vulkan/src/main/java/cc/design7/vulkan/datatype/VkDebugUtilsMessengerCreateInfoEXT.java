@@ -14,8 +14,31 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDebugUtilsMessengerCreateInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDebugUtilsMessengerCreateInfoEXT.html"><code>VkDebugUtilsMessengerCreateInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDebugUtilsMessengerCreateInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkDebugUtilsMessengerCreateFlagsEXT flags;
+///     VkDebugUtilsMessageSeverityFlagsEXT messageSeverity;
+///     VkDebugUtilsMessageTypeFlagsEXT messageType;
+///     PFN_vkDebugUtilsMessengerCallbackEXT pfnUserCallback;
+///     void* pUserData;
+/// } VkDebugUtilsMessengerCreateInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT`
+///
+/// The {@link VkDebugUtilsMessengerCreateInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkDebugUtilsMessengerCreateInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +47,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDebugUtilsMessengerCreateInfoEXT.html">VkDebugUtilsMessengerCreateInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDebugUtilsMessengerCreateInfoEXT.html"><code>VkDebugUtilsMessengerCreateInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkDebugUtilsMessengerCreateInfoEXT {
-        sType(VkStructureType.DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT);
-    }
-
     public static VkDebugUtilsMessengerCreateInfoEXT allocate(Arena arena) {
-        return new VkDebugUtilsMessengerCreateInfoEXT(arena.allocate(LAYOUT));
+        VkDebugUtilsMessengerCreateInfoEXT ret = new VkDebugUtilsMessengerCreateInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT);
+        return ret;
     }
 
     public static VkDebugUtilsMessengerCreateInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +62,7 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         VkDebugUtilsMessengerCreateInfoEXT[] ret = new VkDebugUtilsMessengerCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkDebugUtilsMessengerCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT);
         }
         return ret;
     }
@@ -59,48 +81,9 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("messageSeverity"),
-        ValueLayout.JAVA_INT.withName("messageType"),
-        ValueLayout.ADDRESS.withName("pfnUserCallback"),
-        ValueLayout.ADDRESS.withName("pUserData")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$messageSeverity = PathElement.groupElement("PATH$messageSeverity");
-    public static final PathElement PATH$messageType = PathElement.groupElement("PATH$messageType");
-    public static final PathElement PATH$pfnUserCallback = PathElement.groupElement("PATH$pfnUserCallback");
-    public static final PathElement PATH$pUserData = PathElement.groupElement("PATH$pUserData");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$messageSeverity = (OfInt) LAYOUT.select(PATH$messageSeverity);
-    public static final OfInt LAYOUT$messageType = (OfInt) LAYOUT.select(PATH$messageType);
-    public static final AddressLayout LAYOUT$pfnUserCallback = (AddressLayout) LAYOUT.select(PATH$pfnUserCallback);
-    public static final AddressLayout LAYOUT$pUserData = (AddressLayout) LAYOUT.select(PATH$pUserData);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$messageSeverity = LAYOUT$messageSeverity.byteSize();
-    public static final long SIZE$messageType = LAYOUT$messageType.byteSize();
-    public static final long SIZE$pfnUserCallback = LAYOUT$pfnUserCallback.byteSize();
-    public static final long SIZE$pUserData = LAYOUT$pUserData.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$messageSeverity = LAYOUT.byteOffset(PATH$messageSeverity);
-    public static final long OFFSET$messageType = LAYOUT.byteOffset(PATH$messageType);
-    public static final long OFFSET$pfnUserCallback = LAYOUT.byteOffset(PATH$pfnUserCallback);
-    public static final long OFFSET$pUserData = LAYOUT.byteOffset(PATH$pUserData);
+    public void autoInit() {
+        sType(VkStructureType.DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -170,4 +153,46 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         pUserData(pointer.segment());
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("messageSeverity"),
+        ValueLayout.JAVA_INT.withName("messageType"),
+        ValueLayout.ADDRESS.withName("pfnUserCallback"),
+        ValueLayout.ADDRESS.withName("pUserData")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$messageSeverity = PathElement.groupElement("PATH$messageSeverity");
+    public static final PathElement PATH$messageType = PathElement.groupElement("PATH$messageType");
+    public static final PathElement PATH$pfnUserCallback = PathElement.groupElement("PATH$pfnUserCallback");
+    public static final PathElement PATH$pUserData = PathElement.groupElement("PATH$pUserData");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$messageSeverity = (OfInt) LAYOUT.select(PATH$messageSeverity);
+    public static final OfInt LAYOUT$messageType = (OfInt) LAYOUT.select(PATH$messageType);
+    public static final AddressLayout LAYOUT$pfnUserCallback = (AddressLayout) LAYOUT.select(PATH$pfnUserCallback);
+    public static final AddressLayout LAYOUT$pUserData = (AddressLayout) LAYOUT.select(PATH$pUserData);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$messageSeverity = LAYOUT$messageSeverity.byteSize();
+    public static final long SIZE$messageType = LAYOUT$messageType.byteSize();
+    public static final long SIZE$pfnUserCallback = LAYOUT$pfnUserCallback.byteSize();
+    public static final long SIZE$pUserData = LAYOUT$pUserData.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$messageSeverity = LAYOUT.byteOffset(PATH$messageSeverity);
+    public static final long OFFSET$messageType = LAYOUT.byteOffset(PATH$messageType);
+    public static final long OFFSET$pfnUserCallback = LAYOUT.byteOffset(PATH$pfnUserCallback);
+    public static final long OFFSET$pUserData = LAYOUT.byteOffset(PATH$pUserData);
 }

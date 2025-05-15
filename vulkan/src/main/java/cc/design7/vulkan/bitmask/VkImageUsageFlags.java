@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageUsageFlags.html">VkImageUsageFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageUsageFlags.html"><code>VkImageUsageFlags</code></a>
 public final class VkImageUsageFlags {
     public static final int ATTACHMENT_FEEDBACK_LOOP_EXT = 0x80000;
     public static final int COLOR_ATTACHMENT = 0x10;

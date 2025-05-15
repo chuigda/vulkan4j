@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkAttachmentReference} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentReference.html"><code>VkAttachmentReference</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkAttachmentReference {
+///     uint32_t attachment;
+///     VkImageLayout layout;
+/// } VkAttachmentReference;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentReference.html">VkAttachmentReference</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentReference.html"><code>VkAttachmentReference</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkAttachmentReference(@NotNull MemorySegment segment) implements IPointer {
     public static VkAttachmentReference allocate(Arena arena) {
-        return new VkAttachmentReference(arena.allocate(LAYOUT));
+        VkAttachmentReference ret = new VkAttachmentReference(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkAttachmentReference[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkAttachmentReference(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
+    public @unsigned int attachment() {
+        return segment.get(LAYOUT$attachment, OFFSET$attachment);
+    }
+
+    public void attachment(@unsigned int value) {
+        segment.set(LAYOUT$attachment, OFFSET$attachment, value);
+    }
+
+    public @enumtype(VkImageLayout.class) int layout() {
+        return segment.get(LAYOUT$layout, OFFSET$layout);
+    }
+
+    public void layout(@enumtype(VkImageLayout.class) int value) {
+        segment.set(LAYOUT$layout, OFFSET$layout, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("attachment"),
         ValueLayout.JAVA_INT.withName("layout")
@@ -72,21 +99,4 @@ public record VkAttachmentReference(@NotNull MemorySegment segment) implements I
 
     public static final long OFFSET$attachment = LAYOUT.byteOffset(PATH$attachment);
     public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
-
-    public @unsigned int attachment() {
-        return segment.get(LAYOUT$attachment, OFFSET$attachment);
-    }
-
-    public void attachment(@unsigned int value) {
-        segment.set(LAYOUT$attachment, OFFSET$attachment, value);
-    }
-
-    public @enumtype(VkImageLayout.class) int layout() {
-        return segment.get(LAYOUT$layout, OFFSET$layout);
-    }
-
-    public void layout(@enumtype(VkImageLayout.class) int value) {
-        segment.set(LAYOUT$layout, OFFSET$layout, value);
-    }
-
 }

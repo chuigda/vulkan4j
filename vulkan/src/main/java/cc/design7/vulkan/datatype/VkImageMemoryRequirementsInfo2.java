@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkImageMemoryRequirementsInfo2} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageMemoryRequirementsInfo2.html"><code>VkImageMemoryRequirementsInfo2</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkImageMemoryRequirementsInfo2 {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkImage image;
+/// } VkImageMemoryRequirementsInfo2;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_REQUIREMENTS_INFO_2`
+///
+/// The {@link VkImageMemoryRequirementsInfo2#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkImageMemoryRequirementsInfo2#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageMemoryRequirementsInfo2.html">VkImageMemoryRequirementsInfo2</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageMemoryRequirementsInfo2.html"><code>VkImageMemoryRequirementsInfo2</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkImageMemoryRequirementsInfo2(@NotNull MemorySegment segment) implements IPointer {
-    public VkImageMemoryRequirementsInfo2 {
-        sType(VkStructureType.IMAGE_MEMORY_REQUIREMENTS_INFO_2);
-    }
-
     public static VkImageMemoryRequirementsInfo2 allocate(Arena arena) {
-        return new VkImageMemoryRequirementsInfo2(arena.allocate(LAYOUT));
+        VkImageMemoryRequirementsInfo2 ret = new VkImageMemoryRequirementsInfo2(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.IMAGE_MEMORY_REQUIREMENTS_INFO_2);
+        return ret;
     }
 
     public static VkImageMemoryRequirementsInfo2[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkImageMemoryRequirementsInfo2(@NotNull MemorySegment segment) imp
         VkImageMemoryRequirementsInfo2[] ret = new VkImageMemoryRequirementsInfo2[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkImageMemoryRequirementsInfo2(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.IMAGE_MEMORY_REQUIREMENTS_INFO_2);
         }
         return ret;
     }
@@ -57,6 +75,42 @@ public record VkImageMemoryRequirementsInfo2(@NotNull MemorySegment segment) imp
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.IMAGE_MEMORY_REQUIREMENTS_INFO_2);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkImage image() {
+        MemorySegment s = segment.asSlice(OFFSET$image, SIZE$image);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkImage(s);
+    }
+
+    public void image(@Nullable VkImage value) {
+        segment.set(LAYOUT$image, OFFSET$image, value != null ? value.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -81,37 +135,4 @@ public record VkImageMemoryRequirementsInfo2(@NotNull MemorySegment segment) imp
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$image = LAYOUT.byteOffset(PATH$image);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkImage image() {
-        MemorySegment s = segment.asSlice(OFFSET$image, SIZE$image);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkImage(s);
-    }
-
-    public void image(@Nullable VkImage value) {
-        segment.set(LAYOUT$image, OFFSET$image, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
 }

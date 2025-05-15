@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkExternalFenceProperties} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalFenceProperties.html"><code>VkExternalFenceProperties</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkExternalFenceProperties {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkExternalFenceHandleTypeFlags exportFromImportedHandleTypes;
+///     VkExternalFenceHandleTypeFlags compatibleHandleTypes;
+///     VkExternalFenceFeatureFlags externalFenceFeatures;
+/// } VkExternalFenceProperties;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_EXTERNAL_FENCE_PROPERTIES`
+///
+/// The {@link VkExternalFenceProperties#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkExternalFenceProperties#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalFenceProperties.html">VkExternalFenceProperties</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalFenceProperties.html"><code>VkExternalFenceProperties</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkExternalFenceProperties(@NotNull MemorySegment segment) implements IPointer {
-    public VkExternalFenceProperties {
-        sType(VkStructureType.EXTERNAL_FENCE_PROPERTIES);
-    }
-
     public static VkExternalFenceProperties allocate(Arena arena) {
-        return new VkExternalFenceProperties(arena.allocate(LAYOUT));
+        VkExternalFenceProperties ret = new VkExternalFenceProperties(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.EXTERNAL_FENCE_PROPERTIES);
+        return ret;
     }
 
     public static VkExternalFenceProperties[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkExternalFenceProperties(@NotNull MemorySegment segment) implemen
         VkExternalFenceProperties[] ret = new VkExternalFenceProperties[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkExternalFenceProperties(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.EXTERNAL_FENCE_PROPERTIES);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkExternalFenceProperties(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("exportFromImportedHandleTypes"),
-        ValueLayout.JAVA_INT.withName("compatibleHandleTypes"),
-        ValueLayout.JAVA_INT.withName("externalFenceFeatures")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$exportFromImportedHandleTypes = PathElement.groupElement("PATH$exportFromImportedHandleTypes");
-    public static final PathElement PATH$compatibleHandleTypes = PathElement.groupElement("PATH$compatibleHandleTypes");
-    public static final PathElement PATH$externalFenceFeatures = PathElement.groupElement("PATH$externalFenceFeatures");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$exportFromImportedHandleTypes = (OfInt) LAYOUT.select(PATH$exportFromImportedHandleTypes);
-    public static final OfInt LAYOUT$compatibleHandleTypes = (OfInt) LAYOUT.select(PATH$compatibleHandleTypes);
-    public static final OfInt LAYOUT$externalFenceFeatures = (OfInt) LAYOUT.select(PATH$externalFenceFeatures);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$exportFromImportedHandleTypes = LAYOUT$exportFromImportedHandleTypes.byteSize();
-    public static final long SIZE$compatibleHandleTypes = LAYOUT$compatibleHandleTypes.byteSize();
-    public static final long SIZE$externalFenceFeatures = LAYOUT$externalFenceFeatures.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$exportFromImportedHandleTypes = LAYOUT.byteOffset(PATH$exportFromImportedHandleTypes);
-    public static final long OFFSET$compatibleHandleTypes = LAYOUT.byteOffset(PATH$compatibleHandleTypes);
-    public static final long OFFSET$externalFenceFeatures = LAYOUT.byteOffset(PATH$externalFenceFeatures);
+    public void autoInit() {
+        sType(VkStructureType.EXTERNAL_FENCE_PROPERTIES);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -136,4 +127,36 @@ public record VkExternalFenceProperties(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$externalFenceFeatures, OFFSET$externalFenceFeatures, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("exportFromImportedHandleTypes"),
+        ValueLayout.JAVA_INT.withName("compatibleHandleTypes"),
+        ValueLayout.JAVA_INT.withName("externalFenceFeatures")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$exportFromImportedHandleTypes = PathElement.groupElement("PATH$exportFromImportedHandleTypes");
+    public static final PathElement PATH$compatibleHandleTypes = PathElement.groupElement("PATH$compatibleHandleTypes");
+    public static final PathElement PATH$externalFenceFeatures = PathElement.groupElement("PATH$externalFenceFeatures");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$exportFromImportedHandleTypes = (OfInt) LAYOUT.select(PATH$exportFromImportedHandleTypes);
+    public static final OfInt LAYOUT$compatibleHandleTypes = (OfInt) LAYOUT.select(PATH$compatibleHandleTypes);
+    public static final OfInt LAYOUT$externalFenceFeatures = (OfInt) LAYOUT.select(PATH$externalFenceFeatures);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$exportFromImportedHandleTypes = LAYOUT$exportFromImportedHandleTypes.byteSize();
+    public static final long SIZE$compatibleHandleTypes = LAYOUT$compatibleHandleTypes.byteSize();
+    public static final long SIZE$externalFenceFeatures = LAYOUT$externalFenceFeatures.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$exportFromImportedHandleTypes = LAYOUT.byteOffset(PATH$exportFromImportedHandleTypes);
+    public static final long OFFSET$compatibleHandleTypes = LAYOUT.byteOffset(PATH$compatibleHandleTypes);
+    public static final long OFFSET$externalFenceFeatures = LAYOUT.byteOffset(PATH$externalFenceFeatures);
 }

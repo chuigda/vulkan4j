@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineCreationFeedback} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCreationFeedback.html"><code>VkPipelineCreationFeedback</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineCreationFeedback {
+///     VkPipelineCreationFeedbackFlags flags;
+///     uint64_t duration;
+/// } VkPipelineCreationFeedback;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCreationFeedback.html">VkPipelineCreationFeedback</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCreationFeedback.html"><code>VkPipelineCreationFeedback</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) implements IPointer {
     public static VkPipelineCreationFeedback allocate(Arena arena) {
-        return new VkPipelineCreationFeedback(arena.allocate(LAYOUT));
+        VkPipelineCreationFeedback ret = new VkPipelineCreationFeedback(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkPipelineCreationFeedback[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
+    public @enumtype(VkPipelineCreationFeedbackFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkPipelineCreationFeedbackFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @unsigned long duration() {
+        return segment.get(LAYOUT$duration, OFFSET$duration);
+    }
+
+    public void duration(@unsigned long value) {
+        segment.set(LAYOUT$duration, OFFSET$duration, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.JAVA_LONG.withName("duration")
@@ -72,21 +99,4 @@ public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) impleme
 
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$duration = LAYOUT.byteOffset(PATH$duration);
-
-    public @enumtype(VkPipelineCreationFeedbackFlags.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkPipelineCreationFeedbackFlags.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @unsigned long duration() {
-        return segment.get(LAYOUT$duration, OFFSET$duration);
-    }
-
-    public void duration(@unsigned long value) {
-        segment.set(LAYOUT$duration, OFFSET$duration, value);
-    }
-
 }

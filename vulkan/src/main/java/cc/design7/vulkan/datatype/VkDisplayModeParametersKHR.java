@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDisplayModeParametersKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayModeParametersKHR.html"><code>VkDisplayModeParametersKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDisplayModeParametersKHR {
+///     VkExtent2D visibleRegion;
+///     uint32_t refreshRate;
+/// } VkDisplayModeParametersKHR;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayModeParametersKHR.html">VkDisplayModeParametersKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayModeParametersKHR.html"><code>VkDisplayModeParametersKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDisplayModeParametersKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkDisplayModeParametersKHR allocate(Arena arena) {
-        return new VkDisplayModeParametersKHR(arena.allocate(LAYOUT));
+        VkDisplayModeParametersKHR ret = new VkDisplayModeParametersKHR(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkDisplayModeParametersKHR[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkDisplayModeParametersKHR(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
+    public VkExtent2D visibleRegion() {
+        return new VkExtent2D(segment.asSlice(OFFSET$visibleRegion, LAYOUT$visibleRegion));
+    }
+
+    public void visibleRegion(VkExtent2D value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$visibleRegion, SIZE$visibleRegion);
+    }
+
+    public @unsigned int refreshRate() {
+        return segment.get(LAYOUT$refreshRate, OFFSET$refreshRate);
+    }
+
+    public void refreshRate(@unsigned int value) {
+        segment.set(LAYOUT$refreshRate, OFFSET$refreshRate, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         VkExtent2D.LAYOUT.withName("visibleRegion"),
         ValueLayout.JAVA_INT.withName("refreshRate")
@@ -72,21 +99,4 @@ public record VkDisplayModeParametersKHR(@NotNull MemorySegment segment) impleme
 
     public static final long OFFSET$visibleRegion = LAYOUT.byteOffset(PATH$visibleRegion);
     public static final long OFFSET$refreshRate = LAYOUT.byteOffset(PATH$refreshRate);
-
-    public VkExtent2D visibleRegion() {
-        return new VkExtent2D(segment.asSlice(OFFSET$visibleRegion, LAYOUT$visibleRegion));
-    }
-
-    public void visibleRegion(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$visibleRegion, SIZE$visibleRegion);
-    }
-
-    public @unsigned int refreshRate() {
-        return segment.get(LAYOUT$refreshRate, OFFSET$refreshRate);
-    }
-
-    public void refreshRate(@unsigned int value) {
-        segment.set(LAYOUT$refreshRate, OFFSET$refreshRate, value);
-    }
-
 }

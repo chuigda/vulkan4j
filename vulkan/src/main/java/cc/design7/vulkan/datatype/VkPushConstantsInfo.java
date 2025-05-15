@@ -14,8 +14,31 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPushConstantsInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPushConstantsInfo.html"><code>VkPushConstantsInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPushConstantsInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkPipelineLayout layout;
+///     VkShaderStageFlags stageFlags;
+///     uint32_t offset;
+///     uint32_t size;
+///     void const* pValues;
+/// } VkPushConstantsInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PUSH_CONSTANTS_INFO`
+///
+/// The {@link VkPushConstantsInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPushConstantsInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +47,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPushConstantsInfo.html">VkPushConstantsInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPushConstantsInfo.html"><code>VkPushConstantsInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkPushConstantsInfo {
-        sType(VkStructureType.PUSH_CONSTANTS_INFO);
-    }
-
     public static VkPushConstantsInfo allocate(Arena arena) {
-        return new VkPushConstantsInfo(arena.allocate(LAYOUT));
+        VkPushConstantsInfo ret = new VkPushConstantsInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PUSH_CONSTANTS_INFO);
+        return ret;
     }
 
     public static VkPushConstantsInfo[] allocate(Arena arena, int count) {
@@ -41,6 +62,7 @@ public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IPo
         VkPushConstantsInfo[] ret = new VkPushConstantsInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPushConstantsInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PUSH_CONSTANTS_INFO);
         }
         return ret;
     }
@@ -59,48 +81,9 @@ public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IPo
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("layout"),
-        ValueLayout.JAVA_INT.withName("stageFlags"),
-        ValueLayout.JAVA_INT.withName("offset"),
-        ValueLayout.JAVA_INT.withName("size"),
-        ValueLayout.ADDRESS.withName("pValues")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$layout = PathElement.groupElement("PATH$layout");
-    public static final PathElement PATH$stageFlags = PathElement.groupElement("PATH$stageFlags");
-    public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
-    public static final PathElement PATH$pValues = PathElement.groupElement("PATH$pValues");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$layout = (AddressLayout) LAYOUT.select(PATH$layout);
-    public static final OfInt LAYOUT$stageFlags = (OfInt) LAYOUT.select(PATH$stageFlags);
-    public static final OfInt LAYOUT$offset = (OfInt) LAYOUT.select(PATH$offset);
-    public static final OfInt LAYOUT$size = (OfInt) LAYOUT.select(PATH$size);
-    public static final AddressLayout LAYOUT$pValues = (AddressLayout) LAYOUT.select(PATH$pValues);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$layout = LAYOUT$layout.byteSize();
-    public static final long SIZE$stageFlags = LAYOUT$stageFlags.byteSize();
-    public static final long SIZE$offset = LAYOUT$offset.byteSize();
-    public static final long SIZE$size = LAYOUT$size.byteSize();
-    public static final long SIZE$pValues = LAYOUT$pValues.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
-    public static final long OFFSET$stageFlags = LAYOUT.byteOffset(PATH$stageFlags);
-    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
-    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
-    public static final long OFFSET$pValues = LAYOUT.byteOffset(PATH$pValues);
+    public void autoInit() {
+        sType(VkStructureType.PUSH_CONSTANTS_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -124,7 +107,7 @@ public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IPo
 
     public @Nullable VkPipelineLayout layout() {
         MemorySegment s = segment.asSlice(OFFSET$layout, SIZE$layout);
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkPipelineLayout(s);
@@ -170,4 +153,46 @@ public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IPo
         pValues(pointer.segment());
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("layout"),
+        ValueLayout.JAVA_INT.withName("stageFlags"),
+        ValueLayout.JAVA_INT.withName("offset"),
+        ValueLayout.JAVA_INT.withName("size"),
+        ValueLayout.ADDRESS.withName("pValues")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$layout = PathElement.groupElement("PATH$layout");
+    public static final PathElement PATH$stageFlags = PathElement.groupElement("PATH$stageFlags");
+    public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
+    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
+    public static final PathElement PATH$pValues = PathElement.groupElement("PATH$pValues");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$layout = (AddressLayout) LAYOUT.select(PATH$layout);
+    public static final OfInt LAYOUT$stageFlags = (OfInt) LAYOUT.select(PATH$stageFlags);
+    public static final OfInt LAYOUT$offset = (OfInt) LAYOUT.select(PATH$offset);
+    public static final OfInt LAYOUT$size = (OfInt) LAYOUT.select(PATH$size);
+    public static final AddressLayout LAYOUT$pValues = (AddressLayout) LAYOUT.select(PATH$pValues);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$layout = LAYOUT$layout.byteSize();
+    public static final long SIZE$stageFlags = LAYOUT$stageFlags.byteSize();
+    public static final long SIZE$offset = LAYOUT$offset.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$pValues = LAYOUT$pValues.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
+    public static final long OFFSET$stageFlags = LAYOUT.byteOffset(PATH$stageFlags);
+    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
+    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+    public static final long OFFSET$pValues = LAYOUT.byteOffset(PATH$pValues);
 }

@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageLayout.html">VkImageLayout</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageLayout.html"><code>VkImageLayout</code></a>
 public final class VkImageLayout {
     public static final int UNDEFINED = 0x0;
     public static final int GENERAL = 0x1;

@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderStageFlags.html">VkShaderStageFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderStageFlags.html"><code>VkShaderStageFlags</code></a>
 public final class VkShaderStageFlags {
     public static final int ALL = 0x7fffffff;
     public static final int ALL_GRAPHICS = 0x1f;

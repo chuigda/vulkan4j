@@ -14,8 +14,31 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPartitionedAccelerationStructureInstancesInputNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPartitionedAccelerationStructureInstancesInputNV.html"><code>VkPartitionedAccelerationStructureInstancesInputNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPartitionedAccelerationStructureInstancesInputNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBuildAccelerationStructureFlagsKHR flags;
+///     uint32_t instanceCount;
+///     uint32_t maxInstancePerPartitionCount;
+///     uint32_t partitionCount;
+///     uint32_t maxInstanceInGlobalPartitionCount;
+/// } VkPartitionedAccelerationStructureInstancesInputNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCES_INPUT_NV`
+///
+/// The {@link VkPartitionedAccelerationStructureInstancesInputNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPartitionedAccelerationStructureInstancesInputNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +47,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPartitionedAccelerationStructureInstancesInputNV.html">VkPartitionedAccelerationStructureInstancesInputNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPartitionedAccelerationStructureInstancesInputNV.html"><code>VkPartitionedAccelerationStructureInstancesInputNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPartitionedAccelerationStructureInstancesInputNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkPartitionedAccelerationStructureInstancesInputNV {
-        sType(VkStructureType.PARTITIONED_ACCELERATION_STRUCTURE_INSTANCES_INPUT_NV);
-    }
-
     public static VkPartitionedAccelerationStructureInstancesInputNV allocate(Arena arena) {
-        return new VkPartitionedAccelerationStructureInstancesInputNV(arena.allocate(LAYOUT));
+        VkPartitionedAccelerationStructureInstancesInputNV ret = new VkPartitionedAccelerationStructureInstancesInputNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PARTITIONED_ACCELERATION_STRUCTURE_INSTANCES_INPUT_NV);
+        return ret;
     }
 
     public static VkPartitionedAccelerationStructureInstancesInputNV[] allocate(Arena arena, int count) {
@@ -41,6 +62,7 @@ public record VkPartitionedAccelerationStructureInstancesInputNV(@NotNull Memory
         VkPartitionedAccelerationStructureInstancesInputNV[] ret = new VkPartitionedAccelerationStructureInstancesInputNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPartitionedAccelerationStructureInstancesInputNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PARTITIONED_ACCELERATION_STRUCTURE_INSTANCES_INPUT_NV);
         }
         return ret;
     }
@@ -59,48 +81,9 @@ public record VkPartitionedAccelerationStructureInstancesInputNV(@NotNull Memory
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("instanceCount"),
-        ValueLayout.JAVA_INT.withName("maxInstancePerPartitionCount"),
-        ValueLayout.JAVA_INT.withName("partitionCount"),
-        ValueLayout.JAVA_INT.withName("maxInstanceInGlobalPartitionCount")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$instanceCount = PathElement.groupElement("PATH$instanceCount");
-    public static final PathElement PATH$maxInstancePerPartitionCount = PathElement.groupElement("PATH$maxInstancePerPartitionCount");
-    public static final PathElement PATH$partitionCount = PathElement.groupElement("PATH$partitionCount");
-    public static final PathElement PATH$maxInstanceInGlobalPartitionCount = PathElement.groupElement("PATH$maxInstanceInGlobalPartitionCount");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$instanceCount = (OfInt) LAYOUT.select(PATH$instanceCount);
-    public static final OfInt LAYOUT$maxInstancePerPartitionCount = (OfInt) LAYOUT.select(PATH$maxInstancePerPartitionCount);
-    public static final OfInt LAYOUT$partitionCount = (OfInt) LAYOUT.select(PATH$partitionCount);
-    public static final OfInt LAYOUT$maxInstanceInGlobalPartitionCount = (OfInt) LAYOUT.select(PATH$maxInstanceInGlobalPartitionCount);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$instanceCount = LAYOUT$instanceCount.byteSize();
-    public static final long SIZE$maxInstancePerPartitionCount = LAYOUT$maxInstancePerPartitionCount.byteSize();
-    public static final long SIZE$partitionCount = LAYOUT$partitionCount.byteSize();
-    public static final long SIZE$maxInstanceInGlobalPartitionCount = LAYOUT$maxInstanceInGlobalPartitionCount.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$instanceCount = LAYOUT.byteOffset(PATH$instanceCount);
-    public static final long OFFSET$maxInstancePerPartitionCount = LAYOUT.byteOffset(PATH$maxInstancePerPartitionCount);
-    public static final long OFFSET$partitionCount = LAYOUT.byteOffset(PATH$partitionCount);
-    public static final long OFFSET$maxInstanceInGlobalPartitionCount = LAYOUT.byteOffset(PATH$maxInstanceInGlobalPartitionCount);
+    public void autoInit() {
+        sType(VkStructureType.PARTITIONED_ACCELERATION_STRUCTURE_INSTANCES_INPUT_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -162,4 +145,46 @@ public record VkPartitionedAccelerationStructureInstancesInputNV(@NotNull Memory
         segment.set(LAYOUT$maxInstanceInGlobalPartitionCount, OFFSET$maxInstanceInGlobalPartitionCount, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("instanceCount"),
+        ValueLayout.JAVA_INT.withName("maxInstancePerPartitionCount"),
+        ValueLayout.JAVA_INT.withName("partitionCount"),
+        ValueLayout.JAVA_INT.withName("maxInstanceInGlobalPartitionCount")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$instanceCount = PathElement.groupElement("PATH$instanceCount");
+    public static final PathElement PATH$maxInstancePerPartitionCount = PathElement.groupElement("PATH$maxInstancePerPartitionCount");
+    public static final PathElement PATH$partitionCount = PathElement.groupElement("PATH$partitionCount");
+    public static final PathElement PATH$maxInstanceInGlobalPartitionCount = PathElement.groupElement("PATH$maxInstanceInGlobalPartitionCount");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$instanceCount = (OfInt) LAYOUT.select(PATH$instanceCount);
+    public static final OfInt LAYOUT$maxInstancePerPartitionCount = (OfInt) LAYOUT.select(PATH$maxInstancePerPartitionCount);
+    public static final OfInt LAYOUT$partitionCount = (OfInt) LAYOUT.select(PATH$partitionCount);
+    public static final OfInt LAYOUT$maxInstanceInGlobalPartitionCount = (OfInt) LAYOUT.select(PATH$maxInstanceInGlobalPartitionCount);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$instanceCount = LAYOUT$instanceCount.byteSize();
+    public static final long SIZE$maxInstancePerPartitionCount = LAYOUT$maxInstancePerPartitionCount.byteSize();
+    public static final long SIZE$partitionCount = LAYOUT$partitionCount.byteSize();
+    public static final long SIZE$maxInstanceInGlobalPartitionCount = LAYOUT$maxInstanceInGlobalPartitionCount.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$instanceCount = LAYOUT.byteOffset(PATH$instanceCount);
+    public static final long OFFSET$maxInstancePerPartitionCount = LAYOUT.byteOffset(PATH$maxInstancePerPartitionCount);
+    public static final long OFFSET$partitionCount = LAYOUT.byteOffset(PATH$partitionCount);
+    public static final long OFFSET$maxInstanceInGlobalPartitionCount = LAYOUT.byteOffset(PATH$maxInstanceInGlobalPartitionCount);
 }

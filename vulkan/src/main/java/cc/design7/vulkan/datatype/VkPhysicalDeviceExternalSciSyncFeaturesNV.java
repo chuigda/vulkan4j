@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceExternalSciSyncFeaturesNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceExternalSciSyncFeaturesNV.html"><code>VkPhysicalDeviceExternalSciSyncFeaturesNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceExternalSciSyncFeaturesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 sciSyncFence;
+///     VkBool32 sciSyncSemaphore;
+///     VkBool32 sciSyncImport;
+///     VkBool32 sciSyncExport;
+/// } VkPhysicalDeviceExternalSciSyncFeaturesNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_SCI_SYNC_FEATURES_NV`
+///
+/// The {@link VkPhysicalDeviceExternalSciSyncFeaturesNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceExternalSciSyncFeaturesNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceExternalSciSyncFeaturesNV.html">VkPhysicalDeviceExternalSciSyncFeaturesNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceExternalSciSyncFeaturesNV.html"><code>VkPhysicalDeviceExternalSciSyncFeaturesNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceExternalSciSyncFeaturesNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceExternalSciSyncFeaturesNV {
-        sType(VkStructureType.PHYSICAL_DEVICE_EXTERNAL_SCI_SYNC_FEATURES_NV);
-    }
-
     public static VkPhysicalDeviceExternalSciSyncFeaturesNV allocate(Arena arena) {
-        return new VkPhysicalDeviceExternalSciSyncFeaturesNV(arena.allocate(LAYOUT));
+        VkPhysicalDeviceExternalSciSyncFeaturesNV ret = new VkPhysicalDeviceExternalSciSyncFeaturesNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_EXTERNAL_SCI_SYNC_FEATURES_NV);
+        return ret;
     }
 
     public static VkPhysicalDeviceExternalSciSyncFeaturesNV[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkPhysicalDeviceExternalSciSyncFeaturesNV(@NotNull MemorySegment s
         VkPhysicalDeviceExternalSciSyncFeaturesNV[] ret = new VkPhysicalDeviceExternalSciSyncFeaturesNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceExternalSciSyncFeaturesNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_EXTERNAL_SCI_SYNC_FEATURES_NV);
         }
         return ret;
     }
@@ -59,43 +80,9 @@ public record VkPhysicalDeviceExternalSciSyncFeaturesNV(@NotNull MemorySegment s
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("sciSyncFence"),
-        ValueLayout.JAVA_INT.withName("sciSyncSemaphore"),
-        ValueLayout.JAVA_INT.withName("sciSyncImport"),
-        ValueLayout.JAVA_INT.withName("sciSyncExport")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$sciSyncFence = PathElement.groupElement("PATH$sciSyncFence");
-    public static final PathElement PATH$sciSyncSemaphore = PathElement.groupElement("PATH$sciSyncSemaphore");
-    public static final PathElement PATH$sciSyncImport = PathElement.groupElement("PATH$sciSyncImport");
-    public static final PathElement PATH$sciSyncExport = PathElement.groupElement("PATH$sciSyncExport");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$sciSyncFence = (OfInt) LAYOUT.select(PATH$sciSyncFence);
-    public static final OfInt LAYOUT$sciSyncSemaphore = (OfInt) LAYOUT.select(PATH$sciSyncSemaphore);
-    public static final OfInt LAYOUT$sciSyncImport = (OfInt) LAYOUT.select(PATH$sciSyncImport);
-    public static final OfInt LAYOUT$sciSyncExport = (OfInt) LAYOUT.select(PATH$sciSyncExport);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$sciSyncFence = LAYOUT$sciSyncFence.byteSize();
-    public static final long SIZE$sciSyncSemaphore = LAYOUT$sciSyncSemaphore.byteSize();
-    public static final long SIZE$sciSyncImport = LAYOUT$sciSyncImport.byteSize();
-    public static final long SIZE$sciSyncExport = LAYOUT$sciSyncExport.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$sciSyncFence = LAYOUT.byteOffset(PATH$sciSyncFence);
-    public static final long OFFSET$sciSyncSemaphore = LAYOUT.byteOffset(PATH$sciSyncSemaphore);
-    public static final long OFFSET$sciSyncImport = LAYOUT.byteOffset(PATH$sciSyncImport);
-    public static final long OFFSET$sciSyncExport = LAYOUT.byteOffset(PATH$sciSyncExport);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_EXTERNAL_SCI_SYNC_FEATURES_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -149,4 +136,41 @@ public record VkPhysicalDeviceExternalSciSyncFeaturesNV(@NotNull MemorySegment s
         segment.set(LAYOUT$sciSyncExport, OFFSET$sciSyncExport, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("sciSyncFence"),
+        ValueLayout.JAVA_INT.withName("sciSyncSemaphore"),
+        ValueLayout.JAVA_INT.withName("sciSyncImport"),
+        ValueLayout.JAVA_INT.withName("sciSyncExport")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$sciSyncFence = PathElement.groupElement("PATH$sciSyncFence");
+    public static final PathElement PATH$sciSyncSemaphore = PathElement.groupElement("PATH$sciSyncSemaphore");
+    public static final PathElement PATH$sciSyncImport = PathElement.groupElement("PATH$sciSyncImport");
+    public static final PathElement PATH$sciSyncExport = PathElement.groupElement("PATH$sciSyncExport");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$sciSyncFence = (OfInt) LAYOUT.select(PATH$sciSyncFence);
+    public static final OfInt LAYOUT$sciSyncSemaphore = (OfInt) LAYOUT.select(PATH$sciSyncSemaphore);
+    public static final OfInt LAYOUT$sciSyncImport = (OfInt) LAYOUT.select(PATH$sciSyncImport);
+    public static final OfInt LAYOUT$sciSyncExport = (OfInt) LAYOUT.select(PATH$sciSyncExport);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$sciSyncFence = LAYOUT$sciSyncFence.byteSize();
+    public static final long SIZE$sciSyncSemaphore = LAYOUT$sciSyncSemaphore.byteSize();
+    public static final long SIZE$sciSyncImport = LAYOUT$sciSyncImport.byteSize();
+    public static final long SIZE$sciSyncExport = LAYOUT$sciSyncExport.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$sciSyncFence = LAYOUT.byteOffset(PATH$sciSyncFence);
+    public static final long OFFSET$sciSyncSemaphore = LAYOUT.byteOffset(PATH$sciSyncSemaphore);
+    public static final long OFFSET$sciSyncImport = LAYOUT.byteOffset(PATH$sciSyncImport);
+    public static final long OFFSET$sciSyncExport = LAYOUT.byteOffset(PATH$sciSyncExport);
 }

@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDirectDriverLoadingModeLUNARG.html">VkDirectDriverLoadingModeLUNARG</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDirectDriverLoadingModeLUNARG.html"><code>VkDirectDriverLoadingModeLUNARG</code></a>
 public final class VkDirectDriverLoadingModeLUNARG {
     public static final int EXCLUSIVE = 0x0;
     public static final int INCLUSIVE = 0x1;

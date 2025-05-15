@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndexType.html">VkIndexType</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndexType.html"><code>VkIndexType</code></a>
 public final class VkIndexType {
     public static final int UINT16 = 0x0;
     public static final int UINT32 = 0x1;

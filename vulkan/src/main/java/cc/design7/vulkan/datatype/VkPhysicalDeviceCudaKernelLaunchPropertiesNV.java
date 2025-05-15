@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceCudaKernelLaunchPropertiesNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceCudaKernelLaunchPropertiesNV.html"><code>VkPhysicalDeviceCudaKernelLaunchPropertiesNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceCudaKernelLaunchPropertiesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t computeCapabilityMinor;
+///     uint32_t computeCapabilityMajor;
+/// } VkPhysicalDeviceCudaKernelLaunchPropertiesNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV`
+///
+/// The {@link VkPhysicalDeviceCudaKernelLaunchPropertiesNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceCudaKernelLaunchPropertiesNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceCudaKernelLaunchPropertiesNV.html">VkPhysicalDeviceCudaKernelLaunchPropertiesNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceCudaKernelLaunchPropertiesNV.html"><code>VkPhysicalDeviceCudaKernelLaunchPropertiesNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceCudaKernelLaunchPropertiesNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceCudaKernelLaunchPropertiesNV {
-        sType(VkStructureType.PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV);
-    }
-
     public static VkPhysicalDeviceCudaKernelLaunchPropertiesNV allocate(Arena arena) {
-        return new VkPhysicalDeviceCudaKernelLaunchPropertiesNV(arena.allocate(LAYOUT));
+        VkPhysicalDeviceCudaKernelLaunchPropertiesNV ret = new VkPhysicalDeviceCudaKernelLaunchPropertiesNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV);
+        return ret;
     }
 
     public static VkPhysicalDeviceCudaKernelLaunchPropertiesNV[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkPhysicalDeviceCudaKernelLaunchPropertiesNV(@NotNull MemorySegmen
         VkPhysicalDeviceCudaKernelLaunchPropertiesNV[] ret = new VkPhysicalDeviceCudaKernelLaunchPropertiesNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceCudaKernelLaunchPropertiesNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkPhysicalDeviceCudaKernelLaunchPropertiesNV(@NotNull MemorySegmen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("computeCapabilityMinor"),
-        ValueLayout.JAVA_INT.withName("computeCapabilityMajor")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$computeCapabilityMinor = PathElement.groupElement("PATH$computeCapabilityMinor");
-    public static final PathElement PATH$computeCapabilityMajor = PathElement.groupElement("PATH$computeCapabilityMajor");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$computeCapabilityMinor = (OfInt) LAYOUT.select(PATH$computeCapabilityMinor);
-    public static final OfInt LAYOUT$computeCapabilityMajor = (OfInt) LAYOUT.select(PATH$computeCapabilityMajor);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$computeCapabilityMinor = LAYOUT$computeCapabilityMinor.byteSize();
-    public static final long SIZE$computeCapabilityMajor = LAYOUT$computeCapabilityMajor.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$computeCapabilityMinor = LAYOUT.byteOffset(PATH$computeCapabilityMinor);
-    public static final long OFFSET$computeCapabilityMajor = LAYOUT.byteOffset(PATH$computeCapabilityMajor);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkPhysicalDeviceCudaKernelLaunchPropertiesNV(@NotNull MemorySegmen
         segment.set(LAYOUT$computeCapabilityMajor, OFFSET$computeCapabilityMajor, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("computeCapabilityMinor"),
+        ValueLayout.JAVA_INT.withName("computeCapabilityMajor")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$computeCapabilityMinor = PathElement.groupElement("PATH$computeCapabilityMinor");
+    public static final PathElement PATH$computeCapabilityMajor = PathElement.groupElement("PATH$computeCapabilityMajor");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$computeCapabilityMinor = (OfInt) LAYOUT.select(PATH$computeCapabilityMinor);
+    public static final OfInt LAYOUT$computeCapabilityMajor = (OfInt) LAYOUT.select(PATH$computeCapabilityMajor);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$computeCapabilityMinor = LAYOUT$computeCapabilityMinor.byteSize();
+    public static final long SIZE$computeCapabilityMajor = LAYOUT$computeCapabilityMajor.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$computeCapabilityMinor = LAYOUT.byteOffset(PATH$computeCapabilityMinor);
+    public static final long OFFSET$computeCapabilityMajor = LAYOUT.byteOffset(PATH$computeCapabilityMajor);
 }

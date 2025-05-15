@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplaySurfaceStereoTypeNV.html">VkDisplaySurfaceStereoTypeNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplaySurfaceStereoTypeNV.html"><code>VkDisplaySurfaceStereoTypeNV</code></a>
 public final class VkDisplaySurfaceStereoTypeNV {
     public static final int NONE = 0x0;
     public static final int ONBOARD_DIN = 0x1;

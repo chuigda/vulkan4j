@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkMutableDescriptorTypeListEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMutableDescriptorTypeListEXT.html"><code>VkMutableDescriptorTypeListEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkMutableDescriptorTypeListEXT {
+///     uint32_t descriptorTypeCount;
+///     VkDescriptorType const* pDescriptorTypes;
+/// } VkMutableDescriptorTypeListEXT;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMutableDescriptorTypeListEXT.html">VkMutableDescriptorTypeListEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMutableDescriptorTypeListEXT.html"><code>VkMutableDescriptorTypeListEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkMutableDescriptorTypeListEXT allocate(Arena arena) {
-        return new VkMutableDescriptorTypeListEXT(arena.allocate(LAYOUT));
+        VkMutableDescriptorTypeListEXT ret = new VkMutableDescriptorTypeListEXT(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkMutableDescriptorTypeListEXT[] allocate(Arena arena, int count) {
@@ -55,24 +66,6 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("descriptorTypeCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDescriptorTypes")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$descriptorTypeCount = PathElement.groupElement("PATH$descriptorTypeCount");
-    public static final PathElement PATH$pDescriptorTypes = PathElement.groupElement("PATH$pDescriptorTypes");
-
-    public static final OfInt LAYOUT$descriptorTypeCount = (OfInt) LAYOUT.select(PATH$descriptorTypeCount);
-    public static final AddressLayout LAYOUT$pDescriptorTypes = (AddressLayout) LAYOUT.select(PATH$pDescriptorTypes);
-
-    public static final long SIZE$descriptorTypeCount = LAYOUT$descriptorTypeCount.byteSize();
-    public static final long SIZE$pDescriptorTypes = LAYOUT$pDescriptorTypes.byteSize();
-
-    public static final long OFFSET$descriptorTypeCount = LAYOUT.byteOffset(PATH$descriptorTypeCount);
-    public static final long OFFSET$pDescriptorTypes = LAYOUT.byteOffset(PATH$pDescriptorTypes);
-
     public @unsigned int descriptorTypeCount() {
         return segment.get(LAYOUT$descriptorTypeCount, OFFSET$descriptorTypeCount);
     }
@@ -95,7 +88,7 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
     /// or writing to the buffer.
     public @Nullable @enumtype(VkDescriptorType.class) IntPtr pDescriptorTypes() {
         MemorySegment s = pDescriptorTypesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -106,4 +99,21 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
         pDescriptorTypesRaw(s);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("descriptorTypeCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDescriptorTypes")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$descriptorTypeCount = PathElement.groupElement("PATH$descriptorTypeCount");
+    public static final PathElement PATH$pDescriptorTypes = PathElement.groupElement("PATH$pDescriptorTypes");
+
+    public static final OfInt LAYOUT$descriptorTypeCount = (OfInt) LAYOUT.select(PATH$descriptorTypeCount);
+    public static final AddressLayout LAYOUT$pDescriptorTypes = (AddressLayout) LAYOUT.select(PATH$pDescriptorTypes);
+
+    public static final long SIZE$descriptorTypeCount = LAYOUT$descriptorTypeCount.byteSize();
+    public static final long SIZE$pDescriptorTypes = LAYOUT$pDescriptorTypes.byteSize();
+
+    public static final long OFFSET$descriptorTypeCount = LAYOUT.byteOffset(PATH$descriptorTypeCount);
+    public static final long OFFSET$pDescriptorTypes = LAYOUT.byteOffset(PATH$pDescriptorTypes);
 }

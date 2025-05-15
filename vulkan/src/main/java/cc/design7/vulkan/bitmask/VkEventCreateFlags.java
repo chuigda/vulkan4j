@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkEventCreateFlags.html">VkEventCreateFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkEventCreateFlags.html"><code>VkEventCreateFlags</code></a>
 public final class VkEventCreateFlags {
     public static final int DEVICE_ONLY = 0x1;
 

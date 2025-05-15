@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkSubpassShadingPipelineCreateInfoHUAWEI} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassShadingPipelineCreateInfoHUAWEI.html"><code>VkSubpassShadingPipelineCreateInfoHUAWEI</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkSubpassShadingPipelineCreateInfoHUAWEI {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkRenderPass renderPass;
+///     uint32_t subpass;
+/// } VkSubpassShadingPipelineCreateInfoHUAWEI;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_SUBPASS_SHADING_PIPELINE_CREATE_INFO_HUAWEI`
+///
+/// The {@link VkSubpassShadingPipelineCreateInfoHUAWEI#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkSubpassShadingPipelineCreateInfoHUAWEI#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassShadingPipelineCreateInfoHUAWEI.html">VkSubpassShadingPipelineCreateInfoHUAWEI</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassShadingPipelineCreateInfoHUAWEI.html"><code>VkSubpassShadingPipelineCreateInfoHUAWEI</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkSubpassShadingPipelineCreateInfoHUAWEI(@NotNull MemorySegment segment) implements IPointer {
-    public VkSubpassShadingPipelineCreateInfoHUAWEI {
-        sType(VkStructureType.SUBPASS_SHADING_PIPELINE_CREATE_INFO_HUAWEI);
-    }
-
     public static VkSubpassShadingPipelineCreateInfoHUAWEI allocate(Arena arena) {
-        return new VkSubpassShadingPipelineCreateInfoHUAWEI(arena.allocate(LAYOUT));
+        VkSubpassShadingPipelineCreateInfoHUAWEI ret = new VkSubpassShadingPipelineCreateInfoHUAWEI(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.SUBPASS_SHADING_PIPELINE_CREATE_INFO_HUAWEI);
+        return ret;
     }
 
     public static VkSubpassShadingPipelineCreateInfoHUAWEI[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(@NotNull MemorySegment se
         VkSubpassShadingPipelineCreateInfoHUAWEI[] ret = new VkSubpassShadingPipelineCreateInfoHUAWEI[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkSubpassShadingPipelineCreateInfoHUAWEI(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.SUBPASS_SHADING_PIPELINE_CREATE_INFO_HUAWEI);
         }
         return ret;
     }
@@ -57,6 +76,50 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(@NotNull MemorySegment se
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.SUBPASS_SHADING_PIPELINE_CREATE_INFO_HUAWEI);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkRenderPass renderPass() {
+        MemorySegment s = segment.asSlice(OFFSET$renderPass, SIZE$renderPass);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkRenderPass(s);
+    }
+
+    public void renderPass(@Nullable VkRenderPass value) {
+        segment.set(LAYOUT$renderPass, OFFSET$renderPass, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned int subpass() {
+        return segment.get(LAYOUT$subpass, OFFSET$subpass);
+    }
+
+    public void subpass(@unsigned int value) {
+        segment.set(LAYOUT$subpass, OFFSET$subpass, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -86,45 +149,4 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(@NotNull MemorySegment se
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$renderPass = LAYOUT.byteOffset(PATH$renderPass);
     public static final long OFFSET$subpass = LAYOUT.byteOffset(PATH$subpass);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkRenderPass renderPass() {
-        MemorySegment s = segment.asSlice(OFFSET$renderPass, SIZE$renderPass);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkRenderPass(s);
-    }
-
-    public void renderPass(@Nullable VkRenderPass value) {
-        segment.set(LAYOUT$renderPass, OFFSET$renderPass, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned int subpass() {
-        return segment.get(LAYOUT$subpass, OFFSET$subpass);
-    }
-
-    public void subpass(@unsigned int value) {
-        segment.set(LAYOUT$subpass, OFFSET$subpass, value);
-    }
-
 }

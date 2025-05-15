@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryAllocateFlags.html">VkMemoryAllocateFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryAllocateFlags.html"><code>VkMemoryAllocateFlags</code></a>
 public final class VkMemoryAllocateFlags {
     public static final int DEVICE_ADDRESS = 0x2;
     public static final int DEVICE_ADDRESS_CAPTURE_REPLAY = 0x4;

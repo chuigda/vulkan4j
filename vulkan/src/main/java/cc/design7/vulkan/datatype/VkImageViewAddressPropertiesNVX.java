@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkImageViewAddressPropertiesNVX} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageViewAddressPropertiesNVX.html"><code>VkImageViewAddressPropertiesNVX</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkImageViewAddressPropertiesNVX {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkDeviceAddress deviceAddress;
+///     VkDeviceSize size;
+/// } VkImageViewAddressPropertiesNVX;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_ADDRESS_PROPERTIES_NVX`
+///
+/// The {@link VkImageViewAddressPropertiesNVX#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkImageViewAddressPropertiesNVX#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageViewAddressPropertiesNVX.html">VkImageViewAddressPropertiesNVX</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageViewAddressPropertiesNVX.html"><code>VkImageViewAddressPropertiesNVX</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkImageViewAddressPropertiesNVX(@NotNull MemorySegment segment) implements IPointer {
-    public VkImageViewAddressPropertiesNVX {
-        sType(VkStructureType.IMAGE_VIEW_ADDRESS_PROPERTIES_NVX);
-    }
-
     public static VkImageViewAddressPropertiesNVX allocate(Arena arena) {
-        return new VkImageViewAddressPropertiesNVX(arena.allocate(LAYOUT));
+        VkImageViewAddressPropertiesNVX ret = new VkImageViewAddressPropertiesNVX(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.IMAGE_VIEW_ADDRESS_PROPERTIES_NVX);
+        return ret;
     }
 
     public static VkImageViewAddressPropertiesNVX[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkImageViewAddressPropertiesNVX(@NotNull MemorySegment segment) im
         VkImageViewAddressPropertiesNVX[] ret = new VkImageViewAddressPropertiesNVX[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkImageViewAddressPropertiesNVX(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.IMAGE_VIEW_ADDRESS_PROPERTIES_NVX);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkImageViewAddressPropertiesNVX(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_LONG.withName("deviceAddress"),
-        ValueLayout.JAVA_LONG.withName("size")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$deviceAddress = PathElement.groupElement("PATH$deviceAddress");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfLong LAYOUT$deviceAddress = (OfLong) LAYOUT.select(PATH$deviceAddress);
-    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
-    public static final long SIZE$size = LAYOUT$size.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$deviceAddress = LAYOUT.byteOffset(PATH$deviceAddress);
-    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+    public void autoInit() {
+        sType(VkStructureType.IMAGE_VIEW_ADDRESS_PROPERTIES_NVX);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkImageViewAddressPropertiesNVX(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("deviceAddress"),
+        ValueLayout.JAVA_LONG.withName("size")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$deviceAddress = PathElement.groupElement("PATH$deviceAddress");
+    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$deviceAddress = (OfLong) LAYOUT.select(PATH$deviceAddress);
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$deviceAddress = LAYOUT.byteOffset(PATH$deviceAddress);
+    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
 }

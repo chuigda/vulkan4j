@@ -14,8 +14,22 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkAabbPositionsKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAabbPositionsKHR.html"><code>VkAabbPositionsKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkAabbPositionsKHR {
+///     float minX;
+///     float minY;
+///     float minZ;
+///     float maxX;
+///     float maxY;
+///     float maxZ;
+/// } VkAabbPositionsKHR;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +38,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAabbPositionsKHR.html">VkAabbPositionsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAabbPositionsKHR.html"><code>VkAabbPositionsKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkAabbPositionsKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkAabbPositionsKHR allocate(Arena arena) {
-        return new VkAabbPositionsKHR(arena.allocate(LAYOUT));
+        VkAabbPositionsKHR ret = new VkAabbPositionsKHR(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkAabbPositionsKHR[] allocate(Arena arena, int count) {
@@ -54,44 +69,6 @@ public record VkAabbPositionsKHR(@NotNull MemorySegment segment) implements IPoi
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_FLOAT.withName("minX"),
-        ValueLayout.JAVA_FLOAT.withName("minY"),
-        ValueLayout.JAVA_FLOAT.withName("minZ"),
-        ValueLayout.JAVA_FLOAT.withName("maxX"),
-        ValueLayout.JAVA_FLOAT.withName("maxY"),
-        ValueLayout.JAVA_FLOAT.withName("maxZ")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$minX = PathElement.groupElement("PATH$minX");
-    public static final PathElement PATH$minY = PathElement.groupElement("PATH$minY");
-    public static final PathElement PATH$minZ = PathElement.groupElement("PATH$minZ");
-    public static final PathElement PATH$maxX = PathElement.groupElement("PATH$maxX");
-    public static final PathElement PATH$maxY = PathElement.groupElement("PATH$maxY");
-    public static final PathElement PATH$maxZ = PathElement.groupElement("PATH$maxZ");
-
-    public static final OfFloat LAYOUT$minX = (OfFloat) LAYOUT.select(PATH$minX);
-    public static final OfFloat LAYOUT$minY = (OfFloat) LAYOUT.select(PATH$minY);
-    public static final OfFloat LAYOUT$minZ = (OfFloat) LAYOUT.select(PATH$minZ);
-    public static final OfFloat LAYOUT$maxX = (OfFloat) LAYOUT.select(PATH$maxX);
-    public static final OfFloat LAYOUT$maxY = (OfFloat) LAYOUT.select(PATH$maxY);
-    public static final OfFloat LAYOUT$maxZ = (OfFloat) LAYOUT.select(PATH$maxZ);
-
-    public static final long SIZE$minX = LAYOUT$minX.byteSize();
-    public static final long SIZE$minY = LAYOUT$minY.byteSize();
-    public static final long SIZE$minZ = LAYOUT$minZ.byteSize();
-    public static final long SIZE$maxX = LAYOUT$maxX.byteSize();
-    public static final long SIZE$maxY = LAYOUT$maxY.byteSize();
-    public static final long SIZE$maxZ = LAYOUT$maxZ.byteSize();
-
-    public static final long OFFSET$minX = LAYOUT.byteOffset(PATH$minX);
-    public static final long OFFSET$minY = LAYOUT.byteOffset(PATH$minY);
-    public static final long OFFSET$minZ = LAYOUT.byteOffset(PATH$minZ);
-    public static final long OFFSET$maxX = LAYOUT.byteOffset(PATH$maxX);
-    public static final long OFFSET$maxY = LAYOUT.byteOffset(PATH$maxY);
-    public static final long OFFSET$maxZ = LAYOUT.byteOffset(PATH$maxZ);
 
     public float minX() {
         return segment.get(LAYOUT$minX, OFFSET$minX);
@@ -141,4 +118,41 @@ public record VkAabbPositionsKHR(@NotNull MemorySegment segment) implements IPoi
         segment.set(LAYOUT$maxZ, OFFSET$maxZ, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_FLOAT.withName("minX"),
+        ValueLayout.JAVA_FLOAT.withName("minY"),
+        ValueLayout.JAVA_FLOAT.withName("minZ"),
+        ValueLayout.JAVA_FLOAT.withName("maxX"),
+        ValueLayout.JAVA_FLOAT.withName("maxY"),
+        ValueLayout.JAVA_FLOAT.withName("maxZ")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$minX = PathElement.groupElement("PATH$minX");
+    public static final PathElement PATH$minY = PathElement.groupElement("PATH$minY");
+    public static final PathElement PATH$minZ = PathElement.groupElement("PATH$minZ");
+    public static final PathElement PATH$maxX = PathElement.groupElement("PATH$maxX");
+    public static final PathElement PATH$maxY = PathElement.groupElement("PATH$maxY");
+    public static final PathElement PATH$maxZ = PathElement.groupElement("PATH$maxZ");
+
+    public static final OfFloat LAYOUT$minX = (OfFloat) LAYOUT.select(PATH$minX);
+    public static final OfFloat LAYOUT$minY = (OfFloat) LAYOUT.select(PATH$minY);
+    public static final OfFloat LAYOUT$minZ = (OfFloat) LAYOUT.select(PATH$minZ);
+    public static final OfFloat LAYOUT$maxX = (OfFloat) LAYOUT.select(PATH$maxX);
+    public static final OfFloat LAYOUT$maxY = (OfFloat) LAYOUT.select(PATH$maxY);
+    public static final OfFloat LAYOUT$maxZ = (OfFloat) LAYOUT.select(PATH$maxZ);
+
+    public static final long SIZE$minX = LAYOUT$minX.byteSize();
+    public static final long SIZE$minY = LAYOUT$minY.byteSize();
+    public static final long SIZE$minZ = LAYOUT$minZ.byteSize();
+    public static final long SIZE$maxX = LAYOUT$maxX.byteSize();
+    public static final long SIZE$maxY = LAYOUT$maxY.byteSize();
+    public static final long SIZE$maxZ = LAYOUT$maxZ.byteSize();
+
+    public static final long OFFSET$minX = LAYOUT.byteOffset(PATH$minX);
+    public static final long OFFSET$minY = LAYOUT.byteOffset(PATH$minY);
+    public static final long OFFSET$minZ = LAYOUT.byteOffset(PATH$minZ);
+    public static final long OFFSET$maxX = LAYOUT.byteOffset(PATH$maxX);
+    public static final long OFFSET$maxY = LAYOUT.byteOffset(PATH$maxY);
+    public static final long OFFSET$maxZ = LAYOUT.byteOffset(PATH$maxZ);
 }

@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkImageSwapchainCreateInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageSwapchainCreateInfoKHR.html"><code>VkImageSwapchainCreateInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkImageSwapchainCreateInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkSwapchainKHR swapchain;
+/// } VkImageSwapchainCreateInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR`
+///
+/// The {@link VkImageSwapchainCreateInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkImageSwapchainCreateInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageSwapchainCreateInfoKHR.html">VkImageSwapchainCreateInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageSwapchainCreateInfoKHR.html"><code>VkImageSwapchainCreateInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkImageSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkImageSwapchainCreateInfoKHR {
-        sType(VkStructureType.IMAGE_SWAPCHAIN_CREATE_INFO_KHR);
-    }
-
     public static VkImageSwapchainCreateInfoKHR allocate(Arena arena) {
-        return new VkImageSwapchainCreateInfoKHR(arena.allocate(LAYOUT));
+        VkImageSwapchainCreateInfoKHR ret = new VkImageSwapchainCreateInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.IMAGE_SWAPCHAIN_CREATE_INFO_KHR);
+        return ret;
     }
 
     public static VkImageSwapchainCreateInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkImageSwapchainCreateInfoKHR(@NotNull MemorySegment segment) impl
         VkImageSwapchainCreateInfoKHR[] ret = new VkImageSwapchainCreateInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkImageSwapchainCreateInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.IMAGE_SWAPCHAIN_CREATE_INFO_KHR);
         }
         return ret;
     }
@@ -57,6 +75,42 @@ public record VkImageSwapchainCreateInfoKHR(@NotNull MemorySegment segment) impl
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.IMAGE_SWAPCHAIN_CREATE_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkSwapchainKHR swapchain() {
+        MemorySegment s = segment.asSlice(OFFSET$swapchain, SIZE$swapchain);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkSwapchainKHR(s);
+    }
+
+    public void swapchain(@Nullable VkSwapchainKHR value) {
+        segment.set(LAYOUT$swapchain, OFFSET$swapchain, value != null ? value.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -81,37 +135,4 @@ public record VkImageSwapchainCreateInfoKHR(@NotNull MemorySegment segment) impl
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$swapchain = LAYOUT.byteOffset(PATH$swapchain);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkSwapchainKHR swapchain() {
-        MemorySegment s = segment.asSlice(OFFSET$swapchain, SIZE$swapchain);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkSwapchainKHR(s);
-    }
-
-    public void swapchain(@Nullable VkSwapchainKHR value) {
-        segment.set(LAYOUT$swapchain, OFFSET$swapchain, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
 }

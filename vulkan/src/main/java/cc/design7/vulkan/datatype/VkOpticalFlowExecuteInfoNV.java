@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkOpticalFlowExecuteInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowExecuteInfoNV.html"><code>VkOpticalFlowExecuteInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkOpticalFlowExecuteInfoNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkOpticalFlowExecuteFlagsNV flags;
+///     uint32_t regionCount;
+///     VkRect2D const* pRegions;
+/// } VkOpticalFlowExecuteInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_OPTICAL_FLOW_EXECUTE_INFO_NV`
+///
+/// The {@link VkOpticalFlowExecuteInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkOpticalFlowExecuteInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowExecuteInfoNV.html">VkOpticalFlowExecuteInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowExecuteInfoNV.html"><code>VkOpticalFlowExecuteInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkOpticalFlowExecuteInfoNV {
-        sType(VkStructureType.OPTICAL_FLOW_EXECUTE_INFO_NV);
-    }
-
     public static VkOpticalFlowExecuteInfoNV allocate(Arena arena) {
-        return new VkOpticalFlowExecuteInfoNV(arena.allocate(LAYOUT));
+        VkOpticalFlowExecuteInfoNV ret = new VkOpticalFlowExecuteInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.OPTICAL_FLOW_EXECUTE_INFO_NV);
+        return ret;
     }
 
     public static VkOpticalFlowExecuteInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) impleme
         VkOpticalFlowExecuteInfoNV[] ret = new VkOpticalFlowExecuteInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkOpticalFlowExecuteInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.OPTICAL_FLOW_EXECUTE_INFO_NV);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("regionCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pRegions")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$regionCount = PathElement.groupElement("PATH$regionCount");
-    public static final PathElement PATH$pRegions = PathElement.groupElement("PATH$pRegions");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$regionCount = (OfInt) LAYOUT.select(PATH$regionCount);
-    public static final AddressLayout LAYOUT$pRegions = (AddressLayout) LAYOUT.select(PATH$pRegions);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$regionCount = LAYOUT$regionCount.byteSize();
-    public static final long SIZE$pRegions = LAYOUT$pRegions.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$regionCount = LAYOUT.byteOffset(PATH$regionCount);
-    public static final long OFFSET$pRegions = LAYOUT.byteOffset(PATH$pRegions);
+    public void autoInit() {
+        sType(VkStructureType.OPTICAL_FLOW_EXECUTE_INFO_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -138,7 +129,7 @@ public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) impleme
 
     public @Nullable VkRect2D pRegions() {
         MemorySegment s = pRegionsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkRect2D(s);
@@ -151,7 +142,7 @@ public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) impleme
 
     @unsafe public @Nullable VkRect2D[] pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -163,4 +154,36 @@ public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("regionCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pRegions")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$regionCount = PathElement.groupElement("PATH$regionCount");
+    public static final PathElement PATH$pRegions = PathElement.groupElement("PATH$pRegions");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$regionCount = (OfInt) LAYOUT.select(PATH$regionCount);
+    public static final AddressLayout LAYOUT$pRegions = (AddressLayout) LAYOUT.select(PATH$pRegions);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$regionCount = LAYOUT$regionCount.byteSize();
+    public static final long SIZE$pRegions = LAYOUT$pRegions.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$regionCount = LAYOUT.byteOffset(PATH$regionCount);
+    public static final long OFFSET$pRegions = LAYOUT.byteOffset(PATH$pRegions);
 }

@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkBaseInStructure} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBaseInStructure.html"><code>VkBaseInStructure</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkBaseInStructure {
+///     VkStructureType sType;
+///     VkBaseInStructure const* pNext;
+/// } VkBaseInStructure;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBaseInStructure.html">VkBaseInStructure</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBaseInStructure.html"><code>VkBaseInStructure</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkBaseInStructure(@NotNull MemorySegment segment) implements IPointer {
     public static VkBaseInStructure allocate(Arena arena) {
-        return new VkBaseInStructure(arena.allocate(LAYOUT));
+        VkBaseInStructure ret = new VkBaseInStructure(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkBaseInStructure[] allocate(Arena arena, int count) {
@@ -55,24 +66,6 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IPoin
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withTargetLayout(VkBaseInStructure.LAYOUT).withName("pNext")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
@@ -91,7 +84,7 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IPoin
 
     public @Nullable VkBaseInStructure pNext() {
         MemorySegment s = pNextRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkBaseInStructure(s);
@@ -104,7 +97,7 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IPoin
 
     @unsafe public @Nullable VkBaseInStructure[] pNext(int assumedCount) {
         MemorySegment s = pNextRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -116,4 +109,21 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IPoin
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withTargetLayout(VkBaseInStructure.LAYOUT).withName("pNext")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
 }

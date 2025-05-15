@@ -16,6 +16,26 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoH265VideoParameterSet} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoH265VideoParameterSet {
+///     StdVideoH265VpsFlags flags;
+///     uint8_t vps_video_parameter_set_id;
+///     uint8_t vps_max_sub_layers_minus1;
+///     uint8_t reserved1;
+///     uint8_t reserved2;
+///     uint32_t vps_num_units_in_tick;
+///     uint32_t vps_time_scale;
+///     uint32_t vps_num_ticks_poc_diff_one_minus1;
+///     uint32_t reserved3;
+///     StdVideoH265DecPicBufMgr const* pDecPicBufMgr;
+///     StdVideoH265HrdParameters const* pHrdParameters;
+///     StdVideoH265ProfileTierLevel const* pProfileTierLevel;
+/// } StdVideoH265VideoParameterSet;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +47,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265VideoParameterSet allocate(Arena arena) {
-        return new StdVideoH265VideoParameterSet(arena.allocate(LAYOUT));
+        StdVideoH265VideoParameterSet ret = new StdVideoH265VideoParameterSet(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoH265VideoParameterSet[] allocate(Arena arena, int count) {
@@ -52,74 +73,6 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        StdVideoH265VpsFlags.LAYOUT.withName("flags"),
-        ValueLayout.JAVA_BYTE.withName("vps_video_parameter_set_id"),
-        ValueLayout.JAVA_BYTE.withName("vps_max_sub_layers_minus1"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
-        ValueLayout.JAVA_BYTE.withName("reserved2"),
-        ValueLayout.JAVA_INT.withName("vps_num_units_in_tick"),
-        ValueLayout.JAVA_INT.withName("vps_time_scale"),
-        ValueLayout.JAVA_INT.withName("vps_num_ticks_poc_diff_one_minus1"),
-        ValueLayout.JAVA_INT.withName("reserved3"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265DecPicBufMgr.LAYOUT).withName("pDecPicBufMgr"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265HrdParameters.LAYOUT).withName("pHrdParameters"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265ProfileTierLevel.LAYOUT).withName("pProfileTierLevel")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$vps_video_parameter_set_id = PathElement.groupElement("PATH$vps_video_parameter_set_id");
-    public static final PathElement PATH$vps_max_sub_layers_minus1 = PathElement.groupElement("PATH$vps_max_sub_layers_minus1");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
-    public static final PathElement PATH$reserved2 = PathElement.groupElement("PATH$reserved2");
-    public static final PathElement PATH$vps_num_units_in_tick = PathElement.groupElement("PATH$vps_num_units_in_tick");
-    public static final PathElement PATH$vps_time_scale = PathElement.groupElement("PATH$vps_time_scale");
-    public static final PathElement PATH$vps_num_ticks_poc_diff_one_minus1 = PathElement.groupElement("PATH$vps_num_ticks_poc_diff_one_minus1");
-    public static final PathElement PATH$reserved3 = PathElement.groupElement("PATH$reserved3");
-    public static final PathElement PATH$pDecPicBufMgr = PathElement.groupElement("PATH$pDecPicBufMgr");
-    public static final PathElement PATH$pHrdParameters = PathElement.groupElement("PATH$pHrdParameters");
-    public static final PathElement PATH$pProfileTierLevel = PathElement.groupElement("PATH$pProfileTierLevel");
-
-    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
-    public static final OfByte LAYOUT$vps_video_parameter_set_id = (OfByte) LAYOUT.select(PATH$vps_video_parameter_set_id);
-    public static final OfByte LAYOUT$vps_max_sub_layers_minus1 = (OfByte) LAYOUT.select(PATH$vps_max_sub_layers_minus1);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
-    public static final OfByte LAYOUT$reserved2 = (OfByte) LAYOUT.select(PATH$reserved2);
-    public static final OfInt LAYOUT$vps_num_units_in_tick = (OfInt) LAYOUT.select(PATH$vps_num_units_in_tick);
-    public static final OfInt LAYOUT$vps_time_scale = (OfInt) LAYOUT.select(PATH$vps_time_scale);
-    public static final OfInt LAYOUT$vps_num_ticks_poc_diff_one_minus1 = (OfInt) LAYOUT.select(PATH$vps_num_ticks_poc_diff_one_minus1);
-    public static final OfInt LAYOUT$reserved3 = (OfInt) LAYOUT.select(PATH$reserved3);
-    public static final AddressLayout LAYOUT$pDecPicBufMgr = (AddressLayout) LAYOUT.select(PATH$pDecPicBufMgr);
-    public static final AddressLayout LAYOUT$pHrdParameters = (AddressLayout) LAYOUT.select(PATH$pHrdParameters);
-    public static final AddressLayout LAYOUT$pProfileTierLevel = (AddressLayout) LAYOUT.select(PATH$pProfileTierLevel);
-
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$vps_video_parameter_set_id = LAYOUT$vps_video_parameter_set_id.byteSize();
-    public static final long SIZE$vps_max_sub_layers_minus1 = LAYOUT$vps_max_sub_layers_minus1.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
-    public static final long SIZE$reserved2 = LAYOUT$reserved2.byteSize();
-    public static final long SIZE$vps_num_units_in_tick = LAYOUT$vps_num_units_in_tick.byteSize();
-    public static final long SIZE$vps_time_scale = LAYOUT$vps_time_scale.byteSize();
-    public static final long SIZE$vps_num_ticks_poc_diff_one_minus1 = LAYOUT$vps_num_ticks_poc_diff_one_minus1.byteSize();
-    public static final long SIZE$reserved3 = LAYOUT$reserved3.byteSize();
-    public static final long SIZE$pDecPicBufMgr = LAYOUT$pDecPicBufMgr.byteSize();
-    public static final long SIZE$pHrdParameters = LAYOUT$pHrdParameters.byteSize();
-    public static final long SIZE$pProfileTierLevel = LAYOUT$pProfileTierLevel.byteSize();
-
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$vps_video_parameter_set_id = LAYOUT.byteOffset(PATH$vps_video_parameter_set_id);
-    public static final long OFFSET$vps_max_sub_layers_minus1 = LAYOUT.byteOffset(PATH$vps_max_sub_layers_minus1);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
-    public static final long OFFSET$reserved2 = LAYOUT.byteOffset(PATH$reserved2);
-    public static final long OFFSET$vps_num_units_in_tick = LAYOUT.byteOffset(PATH$vps_num_units_in_tick);
-    public static final long OFFSET$vps_time_scale = LAYOUT.byteOffset(PATH$vps_time_scale);
-    public static final long OFFSET$vps_num_ticks_poc_diff_one_minus1 = LAYOUT.byteOffset(PATH$vps_num_ticks_poc_diff_one_minus1);
-    public static final long OFFSET$reserved3 = LAYOUT.byteOffset(PATH$reserved3);
-    public static final long OFFSET$pDecPicBufMgr = LAYOUT.byteOffset(PATH$pDecPicBufMgr);
-    public static final long OFFSET$pHrdParameters = LAYOUT.byteOffset(PATH$pHrdParameters);
-    public static final long OFFSET$pProfileTierLevel = LAYOUT.byteOffset(PATH$pProfileTierLevel);
 
     public StdVideoH265VpsFlags flags() {
         return new StdVideoH265VpsFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
@@ -203,7 +156,7 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
 
     public @Nullable StdVideoH265DecPicBufMgr pDecPicBufMgr() {
         MemorySegment s = pDecPicBufMgrRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoH265DecPicBufMgr(s);
@@ -216,7 +169,7 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
 
     @unsafe public @Nullable StdVideoH265DecPicBufMgr[] pDecPicBufMgr(int assumedCount) {
         MemorySegment s = pDecPicBufMgrRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -238,7 +191,7 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
 
     public @Nullable StdVideoH265HrdParameters pHrdParameters() {
         MemorySegment s = pHrdParametersRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoH265HrdParameters(s);
@@ -251,7 +204,7 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
 
     @unsafe public @Nullable StdVideoH265HrdParameters[] pHrdParameters(int assumedCount) {
         MemorySegment s = pHrdParametersRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -273,7 +226,7 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
 
     public @Nullable StdVideoH265ProfileTierLevel pProfileTierLevel() {
         MemorySegment s = pProfileTierLevelRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoH265ProfileTierLevel(s);
@@ -286,7 +239,7 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
 
     @unsafe public @Nullable StdVideoH265ProfileTierLevel[] pProfileTierLevel(int assumedCount) {
         MemorySegment s = pProfileTierLevelRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -298,4 +251,71 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoH265VpsFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("vps_video_parameter_set_id"),
+        ValueLayout.JAVA_BYTE.withName("vps_max_sub_layers_minus1"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.JAVA_BYTE.withName("reserved2"),
+        ValueLayout.JAVA_INT.withName("vps_num_units_in_tick"),
+        ValueLayout.JAVA_INT.withName("vps_time_scale"),
+        ValueLayout.JAVA_INT.withName("vps_num_ticks_poc_diff_one_minus1"),
+        ValueLayout.JAVA_INT.withName("reserved3"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265DecPicBufMgr.LAYOUT).withName("pDecPicBufMgr"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265HrdParameters.LAYOUT).withName("pHrdParameters"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265ProfileTierLevel.LAYOUT).withName("pProfileTierLevel")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$vps_video_parameter_set_id = PathElement.groupElement("PATH$vps_video_parameter_set_id");
+    public static final PathElement PATH$vps_max_sub_layers_minus1 = PathElement.groupElement("PATH$vps_max_sub_layers_minus1");
+    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
+    public static final PathElement PATH$reserved2 = PathElement.groupElement("PATH$reserved2");
+    public static final PathElement PATH$vps_num_units_in_tick = PathElement.groupElement("PATH$vps_num_units_in_tick");
+    public static final PathElement PATH$vps_time_scale = PathElement.groupElement("PATH$vps_time_scale");
+    public static final PathElement PATH$vps_num_ticks_poc_diff_one_minus1 = PathElement.groupElement("PATH$vps_num_ticks_poc_diff_one_minus1");
+    public static final PathElement PATH$reserved3 = PathElement.groupElement("PATH$reserved3");
+    public static final PathElement PATH$pDecPicBufMgr = PathElement.groupElement("PATH$pDecPicBufMgr");
+    public static final PathElement PATH$pHrdParameters = PathElement.groupElement("PATH$pHrdParameters");
+    public static final PathElement PATH$pProfileTierLevel = PathElement.groupElement("PATH$pProfileTierLevel");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$vps_video_parameter_set_id = (OfByte) LAYOUT.select(PATH$vps_video_parameter_set_id);
+    public static final OfByte LAYOUT$vps_max_sub_layers_minus1 = (OfByte) LAYOUT.select(PATH$vps_max_sub_layers_minus1);
+    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
+    public static final OfByte LAYOUT$reserved2 = (OfByte) LAYOUT.select(PATH$reserved2);
+    public static final OfInt LAYOUT$vps_num_units_in_tick = (OfInt) LAYOUT.select(PATH$vps_num_units_in_tick);
+    public static final OfInt LAYOUT$vps_time_scale = (OfInt) LAYOUT.select(PATH$vps_time_scale);
+    public static final OfInt LAYOUT$vps_num_ticks_poc_diff_one_minus1 = (OfInt) LAYOUT.select(PATH$vps_num_ticks_poc_diff_one_minus1);
+    public static final OfInt LAYOUT$reserved3 = (OfInt) LAYOUT.select(PATH$reserved3);
+    public static final AddressLayout LAYOUT$pDecPicBufMgr = (AddressLayout) LAYOUT.select(PATH$pDecPicBufMgr);
+    public static final AddressLayout LAYOUT$pHrdParameters = (AddressLayout) LAYOUT.select(PATH$pHrdParameters);
+    public static final AddressLayout LAYOUT$pProfileTierLevel = (AddressLayout) LAYOUT.select(PATH$pProfileTierLevel);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$vps_video_parameter_set_id = LAYOUT$vps_video_parameter_set_id.byteSize();
+    public static final long SIZE$vps_max_sub_layers_minus1 = LAYOUT$vps_max_sub_layers_minus1.byteSize();
+    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
+    public static final long SIZE$reserved2 = LAYOUT$reserved2.byteSize();
+    public static final long SIZE$vps_num_units_in_tick = LAYOUT$vps_num_units_in_tick.byteSize();
+    public static final long SIZE$vps_time_scale = LAYOUT$vps_time_scale.byteSize();
+    public static final long SIZE$vps_num_ticks_poc_diff_one_minus1 = LAYOUT$vps_num_ticks_poc_diff_one_minus1.byteSize();
+    public static final long SIZE$reserved3 = LAYOUT$reserved3.byteSize();
+    public static final long SIZE$pDecPicBufMgr = LAYOUT$pDecPicBufMgr.byteSize();
+    public static final long SIZE$pHrdParameters = LAYOUT$pHrdParameters.byteSize();
+    public static final long SIZE$pProfileTierLevel = LAYOUT$pProfileTierLevel.byteSize();
+
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$vps_video_parameter_set_id = LAYOUT.byteOffset(PATH$vps_video_parameter_set_id);
+    public static final long OFFSET$vps_max_sub_layers_minus1 = LAYOUT.byteOffset(PATH$vps_max_sub_layers_minus1);
+    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
+    public static final long OFFSET$reserved2 = LAYOUT.byteOffset(PATH$reserved2);
+    public static final long OFFSET$vps_num_units_in_tick = LAYOUT.byteOffset(PATH$vps_num_units_in_tick);
+    public static final long OFFSET$vps_time_scale = LAYOUT.byteOffset(PATH$vps_time_scale);
+    public static final long OFFSET$vps_num_ticks_poc_diff_one_minus1 = LAYOUT.byteOffset(PATH$vps_num_ticks_poc_diff_one_minus1);
+    public static final long OFFSET$reserved3 = LAYOUT.byteOffset(PATH$reserved3);
+    public static final long OFFSET$pDecPicBufMgr = LAYOUT.byteOffset(PATH$pDecPicBufMgr);
+    public static final long OFFSET$pHrdParameters = LAYOUT.byteOffset(PATH$pHrdParameters);
+    public static final long OFFSET$pProfileTierLevel = LAYOUT.byteOffset(PATH$pProfileTierLevel);
 }

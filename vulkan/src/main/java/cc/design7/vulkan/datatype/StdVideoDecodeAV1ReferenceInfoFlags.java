@@ -17,6 +17,17 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoDecodeAV1ReferenceInfoFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoDecodeAV1ReferenceInfoFlags {
+///     uint32_t disable_frame_end_update_cdf : 1;
+///     uint32_t segmentation_enabled : 1;
+///     uint32_t reserved : 30;
+/// } StdVideoDecodeAV1ReferenceInfoFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +39,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoDecodeAV1ReferenceInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoDecodeAV1ReferenceInfoFlags allocate(Arena arena) {
-        return new StdVideoDecodeAV1ReferenceInfoFlags(arena.allocate(LAYOUT));
+        StdVideoDecodeAV1ReferenceInfoFlags ret = new StdVideoDecodeAV1ReferenceInfoFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoDecodeAV1ReferenceInfoFlags[] allocate(Arena arena, int count) {
@@ -54,18 +66,6 @@ public record StdVideoDecodeAV1ReferenceInfoFlags(@NotNull MemorySegment segment
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$disable_frame_end_update_cdf_reserved")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$disable_frame_end_update_cdf_reserved = PathElement.groupElement("PATH$bitfield$disable_frame_end_update_cdf_reserved");
-
-    public static final OfInt LAYOUT$disable_frame_end_update_cdf_reserved = (OfInt) LAYOUT.select(PATH$bitfield$disable_frame_end_update_cdf_reserved);
-
-
-    public static final long OFFSET$disable_frame_end_update_cdf_reserved = LAYOUT.byteOffset(PATH$bitfield$disable_frame_end_update_cdf_reserved);
-
     public boolean disable_frame_end_update_cdf() {
         MemorySegment s = segment.asSlice(OFFSET$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
         return BitfieldUtil.readBit(s, 0);
@@ -86,5 +86,15 @@ public record StdVideoDecodeAV1ReferenceInfoFlags(@NotNull MemorySegment segment
         BitfieldUtil.writeBit(s, 1, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$disable_frame_end_update_cdf_reserved")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$bitfield$disable_frame_end_update_cdf_reserved = PathElement.groupElement("PATH$bitfield$disable_frame_end_update_cdf_reserved");
+
+    public static final OfInt LAYOUT$disable_frame_end_update_cdf_reserved = (OfInt) LAYOUT.select(PATH$bitfield$disable_frame_end_update_cdf_reserved);
+
+
+    public static final long OFFSET$disable_frame_end_update_cdf_reserved = LAYOUT.byteOffset(PATH$bitfield$disable_frame_end_update_cdf_reserved);
 }

@@ -14,8 +14,17 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkTransformMatrixKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkTransformMatrixKHR.html"><code>VkTransformMatrixKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkTransformMatrixKHR {
+///     float matrix;
+/// } VkTransformMatrixKHR;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +33,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkTransformMatrixKHR.html">VkTransformMatrixKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkTransformMatrixKHR.html"><code>VkTransformMatrixKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkTransformMatrixKHR allocate(Arena arena) {
-        return new VkTransformMatrixKHR(arena.allocate(LAYOUT));
+        VkTransformMatrixKHR ret = new VkTransformMatrixKHR(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkTransformMatrixKHR[] allocate(Arena arena, int count) {
@@ -55,6 +65,14 @@ public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
+    public float matrix() {
+        return segment.get(LAYOUT$matrix, OFFSET$matrix);
+    }
+
+    public void matrix(float value) {
+        segment.set(LAYOUT$matrix, OFFSET$matrix, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_FLOAT.withName("matrix")
     );
@@ -67,13 +85,4 @@ public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IP
     public static final long SIZE$matrix = LAYOUT$matrix.byteSize();
 
     public static final long OFFSET$matrix = LAYOUT.byteOffset(PATH$matrix);
-
-    public float matrix() {
-        return segment.get(LAYOUT$matrix, OFFSET$matrix);
-    }
-
-    public void matrix(float value) {
-        segment.set(LAYOUT$matrix, OFFSET$matrix, value);
-    }
-
 }

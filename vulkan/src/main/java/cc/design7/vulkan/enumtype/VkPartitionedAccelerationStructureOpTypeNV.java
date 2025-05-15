@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPartitionedAccelerationStructureOpTypeNV.html">VkPartitionedAccelerationStructureOpTypeNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPartitionedAccelerationStructureOpTypeNV.html"><code>VkPartitionedAccelerationStructureOpTypeNV</code></a>
 public final class VkPartitionedAccelerationStructureOpTypeNV {
     public static final int WRITE_INSTANCE = 0x0;
     public static final int UPDATE_INSTANCE = 0x1;

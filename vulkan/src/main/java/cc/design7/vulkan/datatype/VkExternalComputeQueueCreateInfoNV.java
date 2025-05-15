@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkExternalComputeQueueCreateInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalComputeQueueCreateInfoNV.html"><code>VkExternalComputeQueueCreateInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkExternalComputeQueueCreateInfoNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkQueue preferredQueue;
+/// } VkExternalComputeQueueCreateInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_CREATE_INFO_NV`
+///
+/// The {@link VkExternalComputeQueueCreateInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkExternalComputeQueueCreateInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalComputeQueueCreateInfoNV.html">VkExternalComputeQueueCreateInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalComputeQueueCreateInfoNV.html"><code>VkExternalComputeQueueCreateInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkExternalComputeQueueCreateInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkExternalComputeQueueCreateInfoNV {
-        sType(VkStructureType.EXTERNAL_COMPUTE_QUEUE_CREATE_INFO_NV);
-    }
-
     public static VkExternalComputeQueueCreateInfoNV allocate(Arena arena) {
-        return new VkExternalComputeQueueCreateInfoNV(arena.allocate(LAYOUT));
+        VkExternalComputeQueueCreateInfoNV ret = new VkExternalComputeQueueCreateInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.EXTERNAL_COMPUTE_QUEUE_CREATE_INFO_NV);
+        return ret;
     }
 
     public static VkExternalComputeQueueCreateInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkExternalComputeQueueCreateInfoNV(@NotNull MemorySegment segment)
         VkExternalComputeQueueCreateInfoNV[] ret = new VkExternalComputeQueueCreateInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkExternalComputeQueueCreateInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.EXTERNAL_COMPUTE_QUEUE_CREATE_INFO_NV);
         }
         return ret;
     }
@@ -57,6 +75,42 @@ public record VkExternalComputeQueueCreateInfoNV(@NotNull MemorySegment segment)
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.EXTERNAL_COMPUTE_QUEUE_CREATE_INFO_NV);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkQueue preferredQueue() {
+        MemorySegment s = segment.asSlice(OFFSET$preferredQueue, SIZE$preferredQueue);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkQueue(s);
+    }
+
+    public void preferredQueue(@Nullable VkQueue value) {
+        segment.set(LAYOUT$preferredQueue, OFFSET$preferredQueue, value != null ? value.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -81,37 +135,4 @@ public record VkExternalComputeQueueCreateInfoNV(@NotNull MemorySegment segment)
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$preferredQueue = LAYOUT.byteOffset(PATH$preferredQueue);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkQueue preferredQueue() {
-        MemorySegment s = segment.asSlice(OFFSET$preferredQueue, SIZE$preferredQueue);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkQueue(s);
-    }
-
-    public void preferredQueue(@Nullable VkQueue value) {
-        segment.set(LAYOUT$preferredQueue, OFFSET$preferredQueue, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
 }

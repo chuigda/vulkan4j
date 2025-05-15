@@ -17,6 +17,45 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoH265PpsFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoH265PpsFlags {
+///     uint32_t dependent_slice_segments_enabled_flag : 1;
+///     uint32_t output_flag_present_flag : 1;
+///     uint32_t sign_data_hiding_enabled_flag : 1;
+///     uint32_t cabac_init_present_flag : 1;
+///     uint32_t constrained_intra_pred_flag : 1;
+///     uint32_t transform_skip_enabled_flag : 1;
+///     uint32_t cu_qp_delta_enabled_flag : 1;
+///     uint32_t pps_slice_chroma_qp_offsets_present_flag : 1;
+///     uint32_t weighted_pred_flag : 1;
+///     uint32_t weighted_bipred_flag : 1;
+///     uint32_t transquant_bypass_enabled_flag : 1;
+///     uint32_t tiles_enabled_flag : 1;
+///     uint32_t entropy_coding_sync_enabled_flag : 1;
+///     uint32_t uniform_spacing_flag : 1;
+///     uint32_t loop_filter_across_tiles_enabled_flag : 1;
+///     uint32_t pps_loop_filter_across_slices_enabled_flag : 1;
+///     uint32_t deblocking_filter_control_present_flag : 1;
+///     uint32_t deblocking_filter_override_enabled_flag : 1;
+///     uint32_t pps_deblocking_filter_disabled_flag : 1;
+///     uint32_t pps_scaling_list_data_present_flag : 1;
+///     uint32_t lists_modification_present_flag : 1;
+///     uint32_t slice_segment_header_extension_present_flag : 1;
+///     uint32_t pps_extension_present_flag : 1;
+///     uint32_t cross_component_prediction_enabled_flag : 1;
+///     uint32_t chroma_qp_offset_list_enabled_flag : 1;
+///     uint32_t pps_curr_pic_ref_enabled_flag : 1;
+///     uint32_t residual_adaptive_colour_transform_enabled_flag : 1;
+///     uint32_t pps_slice_act_qp_offsets_present_flag : 1;
+///     uint32_t pps_palette_predictor_initializers_present_flag : 1;
+///     uint32_t monochrome_palette_flag : 1;
+///     uint32_t pps_range_extension_flag : 1;
+/// } StdVideoH265PpsFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +67,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265PpsFlags allocate(Arena arena) {
-        return new StdVideoH265PpsFlags(arena.allocate(LAYOUT));
+        StdVideoH265PpsFlags ret = new StdVideoH265PpsFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoH265PpsFlags[] allocate(Arena arena, int count) {
@@ -53,18 +93,6 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IP
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$dependent_slice_segments_enabled_flag_pps_range_extension_flag")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$dependent_slice_segments_enabled_flag_pps_range_extension_flag = PathElement.groupElement("PATH$bitfield$dependent_slice_segments_enabled_flag_pps_range_extension_flag");
-
-    public static final OfInt LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag = (OfInt) LAYOUT.select(PATH$bitfield$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
-
-
-    public static final long OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag = LAYOUT.byteOffset(PATH$bitfield$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
 
     public boolean dependent_slice_segments_enabled_flag() {
         MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
@@ -376,4 +404,15 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IP
         BitfieldUtil.writeBit(s, 30, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$dependent_slice_segments_enabled_flag_pps_range_extension_flag")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$bitfield$dependent_slice_segments_enabled_flag_pps_range_extension_flag = PathElement.groupElement("PATH$bitfield$dependent_slice_segments_enabled_flag_pps_range_extension_flag");
+
+    public static final OfInt LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag = (OfInt) LAYOUT.select(PATH$bitfield$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+
+
+    public static final long OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag = LAYOUT.byteOffset(PATH$bitfield$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
 }

@@ -16,6 +16,16 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoAV1GlobalMotion} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoAV1GlobalMotion {
+///     uint8_t GmType;
+///     int32_t gm_params;
+/// } StdVideoAV1GlobalMotion;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +37,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1GlobalMotion allocate(Arena arena) {
-        return new StdVideoAV1GlobalMotion(arena.allocate(LAYOUT));
+        StdVideoAV1GlobalMotion ret = new StdVideoAV1GlobalMotion(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoAV1GlobalMotion[] allocate(Arena arena, int count) {
@@ -53,6 +64,22 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public @unsigned byte GmType() {
+        return segment.get(LAYOUT$GmType, OFFSET$GmType);
+    }
+
+    public void GmType(@unsigned byte value) {
+        segment.set(LAYOUT$GmType, OFFSET$GmType, value);
+    }
+
+    public int gm_params() {
+        return segment.get(LAYOUT$gm_params, OFFSET$gm_params);
+    }
+
+    public void gm_params(int value) {
+        segment.set(LAYOUT$gm_params, OFFSET$gm_params, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_BYTE.withName("GmType"),
         ValueLayout.JAVA_INT.withName("gm_params")
@@ -70,21 +97,4 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
 
     public static final long OFFSET$GmType = LAYOUT.byteOffset(PATH$GmType);
     public static final long OFFSET$gm_params = LAYOUT.byteOffset(PATH$gm_params);
-
-    public @unsigned byte GmType() {
-        return segment.get(LAYOUT$GmType, OFFSET$GmType);
-    }
-
-    public void GmType(@unsigned byte value) {
-        segment.set(LAYOUT$GmType, OFFSET$GmType, value);
-    }
-
-    public int gm_params() {
-        return segment.get(LAYOUT$gm_params, OFFSET$gm_params);
-    }
-
-    public void gm_params(int value) {
-        segment.set(LAYOUT$gm_params, OFFSET$gm_params, value);
-    }
-
 }

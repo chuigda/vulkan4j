@@ -14,8 +14,34 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDescriptorUpdateTemplateCreateInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorUpdateTemplateCreateInfo.html"><code>VkDescriptorUpdateTemplateCreateInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDescriptorUpdateTemplateCreateInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkDescriptorUpdateTemplateCreateFlags flags;
+///     uint32_t descriptorUpdateEntryCount;
+///     VkDescriptorUpdateTemplateEntry const* pDescriptorUpdateEntries;
+///     VkDescriptorUpdateTemplateType templateType;
+///     VkDescriptorSetLayout descriptorSetLayout;
+///     VkPipelineBindPoint pipelineBindPoint;
+///     VkPipelineLayout pipelineLayout;
+///     uint32_t set;
+/// } VkDescriptorUpdateTemplateCreateInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO`
+///
+/// The {@link VkDescriptorUpdateTemplateCreateInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkDescriptorUpdateTemplateCreateInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +50,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorUpdateTemplateCreateInfo.html">VkDescriptorUpdateTemplateCreateInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorUpdateTemplateCreateInfo.html"><code>VkDescriptorUpdateTemplateCreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkDescriptorUpdateTemplateCreateInfo {
-        sType(VkStructureType.DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO);
-    }
-
     public static VkDescriptorUpdateTemplateCreateInfo allocate(Arena arena) {
-        return new VkDescriptorUpdateTemplateCreateInfo(arena.allocate(LAYOUT));
+        VkDescriptorUpdateTemplateCreateInfo ret = new VkDescriptorUpdateTemplateCreateInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO);
+        return ret;
     }
 
     public static VkDescriptorUpdateTemplateCreateInfo[] allocate(Arena arena, int count) {
@@ -41,6 +65,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         VkDescriptorUpdateTemplateCreateInfo[] ret = new VkDescriptorUpdateTemplateCreateInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkDescriptorUpdateTemplateCreateInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO);
         }
         return ret;
     }
@@ -57,6 +82,129 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkDescriptorUpdateTemplateCreateFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkDescriptorUpdateTemplateCreateFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @unsigned int descriptorUpdateEntryCount() {
+        return segment.get(LAYOUT$descriptorUpdateEntryCount, OFFSET$descriptorUpdateEntryCount);
+    }
+
+    public void descriptorUpdateEntryCount(@unsigned int value) {
+        segment.set(LAYOUT$descriptorUpdateEntryCount, OFFSET$descriptorUpdateEntryCount, value);
+    }
+
+    public @pointer(comment="VkDescriptorUpdateTemplateEntry*") MemorySegment pDescriptorUpdateEntriesRaw() {
+        return segment.get(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries);
+    }
+
+    public void pDescriptorUpdateEntriesRaw(@pointer(comment="VkDescriptorUpdateTemplateEntry*") MemorySegment value) {
+        segment.set(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries, value);
+    }
+
+    public @Nullable VkDescriptorUpdateTemplateEntry pDescriptorUpdateEntries() {
+        MemorySegment s = pDescriptorUpdateEntriesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDescriptorUpdateTemplateEntry(s);
+    }
+
+    public void pDescriptorUpdateEntries(@Nullable VkDescriptorUpdateTemplateEntry value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDescriptorUpdateEntriesRaw(s);
+    }
+
+    @unsafe public @Nullable VkDescriptorUpdateTemplateEntry[] pDescriptorUpdateEntries(int assumedCount) {
+        MemorySegment s = pDescriptorUpdateEntriesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkDescriptorUpdateTemplateEntry.SIZE);
+        VkDescriptorUpdateTemplateEntry[] ret = new VkDescriptorUpdateTemplateEntry[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkDescriptorUpdateTemplateEntry(s.asSlice(i * VkDescriptorUpdateTemplateEntry.SIZE, VkDescriptorUpdateTemplateEntry.SIZE));
+        }
+        return ret;
+    }
+
+    public @enumtype(VkDescriptorUpdateTemplateType.class) int templateType() {
+        return segment.get(LAYOUT$templateType, OFFSET$templateType);
+    }
+
+    public void templateType(@enumtype(VkDescriptorUpdateTemplateType.class) int value) {
+        segment.set(LAYOUT$templateType, OFFSET$templateType, value);
+    }
+
+    public @Nullable VkDescriptorSetLayout descriptorSetLayout() {
+        MemorySegment s = segment.asSlice(OFFSET$descriptorSetLayout, SIZE$descriptorSetLayout);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDescriptorSetLayout(s);
+    }
+
+    public void descriptorSetLayout(@Nullable VkDescriptorSetLayout value) {
+        segment.set(LAYOUT$descriptorSetLayout, OFFSET$descriptorSetLayout, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @enumtype(VkPipelineBindPoint.class) int pipelineBindPoint() {
+        return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
+    }
+
+    public void pipelineBindPoint(@enumtype(VkPipelineBindPoint.class) int value) {
+        segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
+    }
+
+    public @Nullable VkPipelineLayout pipelineLayout() {
+        MemorySegment s = segment.asSlice(OFFSET$pipelineLayout, SIZE$pipelineLayout);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineLayout(s);
+    }
+
+    public void pipelineLayout(@Nullable VkPipelineLayout value) {
+        segment.set(LAYOUT$pipelineLayout, OFFSET$pipelineLayout, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned int set() {
+        return segment.get(LAYOUT$set, OFFSET$set);
+    }
+
+    public void set(@unsigned int value) {
+        segment.set(LAYOUT$set, OFFSET$set, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -116,124 +264,4 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
     public static final long OFFSET$pipelineBindPoint = LAYOUT.byteOffset(PATH$pipelineBindPoint);
     public static final long OFFSET$pipelineLayout = LAYOUT.byteOffset(PATH$pipelineLayout);
     public static final long OFFSET$set = LAYOUT.byteOffset(PATH$set);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @enumtype(VkDescriptorUpdateTemplateCreateFlags.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkDescriptorUpdateTemplateCreateFlags.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @unsigned int descriptorUpdateEntryCount() {
-        return segment.get(LAYOUT$descriptorUpdateEntryCount, OFFSET$descriptorUpdateEntryCount);
-    }
-
-    public void descriptorUpdateEntryCount(@unsigned int value) {
-        segment.set(LAYOUT$descriptorUpdateEntryCount, OFFSET$descriptorUpdateEntryCount, value);
-    }
-
-    public @pointer(comment="VkDescriptorUpdateTemplateEntry*") MemorySegment pDescriptorUpdateEntriesRaw() {
-        return segment.get(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries);
-    }
-
-    public void pDescriptorUpdateEntriesRaw(@pointer(comment="VkDescriptorUpdateTemplateEntry*") MemorySegment value) {
-        segment.set(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries, value);
-    }
-
-    public @Nullable VkDescriptorUpdateTemplateEntry pDescriptorUpdateEntries() {
-        MemorySegment s = pDescriptorUpdateEntriesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkDescriptorUpdateTemplateEntry(s);
-    }
-
-    public void pDescriptorUpdateEntries(@Nullable VkDescriptorUpdateTemplateEntry value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pDescriptorUpdateEntriesRaw(s);
-    }
-
-    @unsafe public @Nullable VkDescriptorUpdateTemplateEntry[] pDescriptorUpdateEntries(int assumedCount) {
-        MemorySegment s = pDescriptorUpdateEntriesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkDescriptorUpdateTemplateEntry.SIZE);
-        VkDescriptorUpdateTemplateEntry[] ret = new VkDescriptorUpdateTemplateEntry[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorUpdateTemplateEntry(s.asSlice(i * VkDescriptorUpdateTemplateEntry.SIZE, VkDescriptorUpdateTemplateEntry.SIZE));
-        }
-        return ret;
-    }
-
-    public @enumtype(VkDescriptorUpdateTemplateType.class) int templateType() {
-        return segment.get(LAYOUT$templateType, OFFSET$templateType);
-    }
-
-    public void templateType(@enumtype(VkDescriptorUpdateTemplateType.class) int value) {
-        segment.set(LAYOUT$templateType, OFFSET$templateType, value);
-    }
-
-    public @Nullable VkDescriptorSetLayout descriptorSetLayout() {
-        MemorySegment s = segment.asSlice(OFFSET$descriptorSetLayout, SIZE$descriptorSetLayout);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkDescriptorSetLayout(s);
-    }
-
-    public void descriptorSetLayout(@Nullable VkDescriptorSetLayout value) {
-        segment.set(LAYOUT$descriptorSetLayout, OFFSET$descriptorSetLayout, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @enumtype(VkPipelineBindPoint.class) int pipelineBindPoint() {
-        return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
-    }
-
-    public void pipelineBindPoint(@enumtype(VkPipelineBindPoint.class) int value) {
-        segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
-    }
-
-    public @Nullable VkPipelineLayout pipelineLayout() {
-        MemorySegment s = segment.asSlice(OFFSET$pipelineLayout, SIZE$pipelineLayout);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPipelineLayout(s);
-    }
-
-    public void pipelineLayout(@Nullable VkPipelineLayout value) {
-        segment.set(LAYOUT$pipelineLayout, OFFSET$pipelineLayout, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned int set() {
-        return segment.get(LAYOUT$set, OFFSET$set);
-    }
-
-    public void set(@unsigned int value) {
-        segment.set(LAYOUT$set, OFFSET$set, value);
-    }
-
 }

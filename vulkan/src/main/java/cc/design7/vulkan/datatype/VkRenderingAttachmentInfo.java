@@ -14,8 +14,34 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkRenderingAttachmentInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderingAttachmentInfo.html"><code>VkRenderingAttachmentInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkRenderingAttachmentInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkImageView imageView;
+///     VkImageLayout imageLayout;
+///     VkResolveModeFlags resolveMode;
+///     VkImageView resolveImageView;
+///     VkImageLayout resolveImageLayout;
+///     VkAttachmentLoadOp loadOp;
+///     VkAttachmentStoreOp storeOp;
+///     VkClearValue clearValue;
+/// } VkRenderingAttachmentInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_INFO`
+///
+/// The {@link VkRenderingAttachmentInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkRenderingAttachmentInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +50,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderingAttachmentInfo.html">VkRenderingAttachmentInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderingAttachmentInfo.html"><code>VkRenderingAttachmentInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkRenderingAttachmentInfo {
-        sType(VkStructureType.RENDERING_ATTACHMENT_INFO);
-    }
-
     public static VkRenderingAttachmentInfo allocate(Arena arena) {
-        return new VkRenderingAttachmentInfo(arena.allocate(LAYOUT));
+        VkRenderingAttachmentInfo ret = new VkRenderingAttachmentInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.RENDERING_ATTACHMENT_INFO);
+        return ret;
     }
 
     public static VkRenderingAttachmentInfo[] allocate(Arena arena, int count) {
@@ -41,6 +65,7 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         VkRenderingAttachmentInfo[] ret = new VkRenderingAttachmentInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkRenderingAttachmentInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.RENDERING_ATTACHMENT_INFO);
         }
         return ret;
     }
@@ -57,6 +82,102 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.RENDERING_ATTACHMENT_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkImageView imageView() {
+        MemorySegment s = segment.asSlice(OFFSET$imageView, SIZE$imageView);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkImageView(s);
+    }
+
+    public void imageView(@Nullable VkImageView value) {
+        segment.set(LAYOUT$imageView, OFFSET$imageView, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @enumtype(VkImageLayout.class) int imageLayout() {
+        return segment.get(LAYOUT$imageLayout, OFFSET$imageLayout);
+    }
+
+    public void imageLayout(@enumtype(VkImageLayout.class) int value) {
+        segment.set(LAYOUT$imageLayout, OFFSET$imageLayout, value);
+    }
+
+    public @enumtype(VkResolveModeFlags.class) int resolveMode() {
+        return segment.get(LAYOUT$resolveMode, OFFSET$resolveMode);
+    }
+
+    public void resolveMode(@enumtype(VkResolveModeFlags.class) int value) {
+        segment.set(LAYOUT$resolveMode, OFFSET$resolveMode, value);
+    }
+
+    public @Nullable VkImageView resolveImageView() {
+        MemorySegment s = segment.asSlice(OFFSET$resolveImageView, SIZE$resolveImageView);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkImageView(s);
+    }
+
+    public void resolveImageView(@Nullable VkImageView value) {
+        segment.set(LAYOUT$resolveImageView, OFFSET$resolveImageView, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @enumtype(VkImageLayout.class) int resolveImageLayout() {
+        return segment.get(LAYOUT$resolveImageLayout, OFFSET$resolveImageLayout);
+    }
+
+    public void resolveImageLayout(@enumtype(VkImageLayout.class) int value) {
+        segment.set(LAYOUT$resolveImageLayout, OFFSET$resolveImageLayout, value);
+    }
+
+    public @enumtype(VkAttachmentLoadOp.class) int loadOp() {
+        return segment.get(LAYOUT$loadOp, OFFSET$loadOp);
+    }
+
+    public void loadOp(@enumtype(VkAttachmentLoadOp.class) int value) {
+        segment.set(LAYOUT$loadOp, OFFSET$loadOp, value);
+    }
+
+    public @enumtype(VkAttachmentStoreOp.class) int storeOp() {
+        return segment.get(LAYOUT$storeOp, OFFSET$storeOp);
+    }
+
+    public void storeOp(@enumtype(VkAttachmentStoreOp.class) int value) {
+        segment.set(LAYOUT$storeOp, OFFSET$storeOp, value);
+    }
+
+    public VkClearValue clearValue() {
+        return new VkClearValue(segment.asSlice(OFFSET$clearValue, LAYOUT$clearValue));
+    }
+
+    public void clearValue(VkClearValue value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$clearValue, SIZE$clearValue);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -116,97 +237,4 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
     public static final long OFFSET$loadOp = LAYOUT.byteOffset(PATH$loadOp);
     public static final long OFFSET$storeOp = LAYOUT.byteOffset(PATH$storeOp);
     public static final long OFFSET$clearValue = LAYOUT.byteOffset(PATH$clearValue);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkImageView imageView() {
-        MemorySegment s = segment.asSlice(OFFSET$imageView, SIZE$imageView);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkImageView(s);
-    }
-
-    public void imageView(@Nullable VkImageView value) {
-        segment.set(LAYOUT$imageView, OFFSET$imageView, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @enumtype(VkImageLayout.class) int imageLayout() {
-        return segment.get(LAYOUT$imageLayout, OFFSET$imageLayout);
-    }
-
-    public void imageLayout(@enumtype(VkImageLayout.class) int value) {
-        segment.set(LAYOUT$imageLayout, OFFSET$imageLayout, value);
-    }
-
-    public @enumtype(VkResolveModeFlags.class) int resolveMode() {
-        return segment.get(LAYOUT$resolveMode, OFFSET$resolveMode);
-    }
-
-    public void resolveMode(@enumtype(VkResolveModeFlags.class) int value) {
-        segment.set(LAYOUT$resolveMode, OFFSET$resolveMode, value);
-    }
-
-    public @Nullable VkImageView resolveImageView() {
-        MemorySegment s = segment.asSlice(OFFSET$resolveImageView, SIZE$resolveImageView);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkImageView(s);
-    }
-
-    public void resolveImageView(@Nullable VkImageView value) {
-        segment.set(LAYOUT$resolveImageView, OFFSET$resolveImageView, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @enumtype(VkImageLayout.class) int resolveImageLayout() {
-        return segment.get(LAYOUT$resolveImageLayout, OFFSET$resolveImageLayout);
-    }
-
-    public void resolveImageLayout(@enumtype(VkImageLayout.class) int value) {
-        segment.set(LAYOUT$resolveImageLayout, OFFSET$resolveImageLayout, value);
-    }
-
-    public @enumtype(VkAttachmentLoadOp.class) int loadOp() {
-        return segment.get(LAYOUT$loadOp, OFFSET$loadOp);
-    }
-
-    public void loadOp(@enumtype(VkAttachmentLoadOp.class) int value) {
-        segment.set(LAYOUT$loadOp, OFFSET$loadOp, value);
-    }
-
-    public @enumtype(VkAttachmentStoreOp.class) int storeOp() {
-        return segment.get(LAYOUT$storeOp, OFFSET$storeOp);
-    }
-
-    public void storeOp(@enumtype(VkAttachmentStoreOp.class) int value) {
-        segment.set(LAYOUT$storeOp, OFFSET$storeOp, value);
-    }
-
-    public VkClearValue clearValue() {
-        return new VkClearValue(segment.asSlice(OFFSET$clearValue, LAYOUT$clearValue));
-    }
-
-    public void clearValue(VkClearValue value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$clearValue, SIZE$clearValue);
-    }
-
 }

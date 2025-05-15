@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkShaderModuleCreateInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderModuleCreateInfo.html"><code>VkShaderModuleCreateInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkShaderModuleCreateInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkShaderModuleCreateFlags flags;
+///     size_t codeSize;
+///     uint32_t const* pCode;
+/// } VkShaderModuleCreateInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO`
+///
+/// The {@link VkShaderModuleCreateInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkShaderModuleCreateInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderModuleCreateInfo.html">VkShaderModuleCreateInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderModuleCreateInfo.html"><code>VkShaderModuleCreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkShaderModuleCreateInfo {
-        sType(VkStructureType.SHADER_MODULE_CREATE_INFO);
-    }
-
     public static VkShaderModuleCreateInfo allocate(Arena arena) {
-        return new VkShaderModuleCreateInfo(arena.allocate(LAYOUT));
+        VkShaderModuleCreateInfo ret = new VkShaderModuleCreateInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.SHADER_MODULE_CREATE_INFO);
+        return ret;
     }
 
     public static VkShaderModuleCreateInfo[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
         VkShaderModuleCreateInfo[] ret = new VkShaderModuleCreateInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkShaderModuleCreateInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.SHADER_MODULE_CREATE_INFO);
         }
         return ret;
     }
@@ -59,37 +79,9 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        NativeLayout.C_SIZE_T.withName("codeSize"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCode")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$codeSize = PathElement.groupElement("PATH$codeSize");
-    public static final PathElement PATH$pCode = PathElement.groupElement("PATH$pCode");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final AddressLayout LAYOUT$pCode = (AddressLayout) LAYOUT.select(PATH$pCode);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$codeSize = NativeLayout.C_SIZE_T.byteSize();
-    public static final long SIZE$pCode = LAYOUT$pCode.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$codeSize = LAYOUT.byteOffset(PATH$codeSize);
-    public static final long OFFSET$pCode = LAYOUT.byteOffset(PATH$pCode);
+    public void autoInit() {
+        sType(VkStructureType.SHADER_MODULE_CREATE_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -141,7 +133,7 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
     /// writing to the buffer.
     public @Nullable @unsigned IntPtr pCode() {
         MemorySegment s = pCodeRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -152,4 +144,35 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
         pCodeRaw(s);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        NativeLayout.C_SIZE_T.withName("codeSize"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCode")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$codeSize = PathElement.groupElement("PATH$codeSize");
+    public static final PathElement PATH$pCode = PathElement.groupElement("PATH$pCode");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$pCode = (AddressLayout) LAYOUT.select(PATH$pCode);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$codeSize = NativeLayout.C_SIZE_T.byteSize();
+    public static final long SIZE$pCode = LAYOUT$pCode.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$codeSize = LAYOUT.byteOffset(PATH$codeSize);
+    public static final long OFFSET$pCode = LAYOUT.byteOffset(PATH$pCode);
 }

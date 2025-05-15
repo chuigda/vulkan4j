@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayEventTypeEXT.html">VkDisplayEventTypeEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayEventTypeEXT.html"><code>VkDisplayEventTypeEXT</code></a>
 public final class VkDisplayEventTypeEXT {
     public static final int FIRST_PIXEL_OUT = 0x0;
 

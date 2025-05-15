@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkScopeKHR.html">VkScopeKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkScopeKHR.html"><code>VkScopeKHR</code></a>
 public final class VkScopeKHR {
     public static final int DEVICE = 0x1;
     public static final int WORKGROUP = 0x2;

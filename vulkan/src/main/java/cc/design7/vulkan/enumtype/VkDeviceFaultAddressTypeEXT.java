@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceFaultAddressTypeEXT.html">VkDeviceFaultAddressTypeEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceFaultAddressTypeEXT.html"><code>VkDeviceFaultAddressTypeEXT</code></a>
 public final class VkDeviceFaultAddressTypeEXT {
     public static final int NONE = 0x0;
     public static final int READ_INVALID = 0x1;

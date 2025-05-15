@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerCreateFlags.html">VkSamplerCreateFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerCreateFlags.html"><code>VkSamplerCreateFlags</code></a>
 public final class VkSamplerCreateFlags {
     public static final int DESCRIPTOR_BUFFER_CAPTURE_REPLAY_EXT = 0x8;
     public static final int IMAGE_PROCESSING_QCOM = 0x10;

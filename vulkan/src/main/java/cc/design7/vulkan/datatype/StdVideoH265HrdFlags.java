@@ -17,6 +17,21 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoH265HrdFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoH265HrdFlags {
+///     uint32_t nal_hrd_parameters_present_flag : 1;
+///     uint32_t vcl_hrd_parameters_present_flag : 1;
+///     uint32_t sub_pic_hrd_params_present_flag : 1;
+///     uint32_t sub_pic_cpb_params_in_pic_timing_sei_flag : 1;
+///     uint32_t fixed_pic_rate_general_flag : 8;
+///     uint32_t fixed_pic_rate_within_cvs_flag : 8;
+///     uint32_t low_delay_hrd_flag : 8;
+/// } StdVideoH265HrdFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +43,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265HrdFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265HrdFlags allocate(Arena arena) {
-        return new StdVideoH265HrdFlags(arena.allocate(LAYOUT));
+        StdVideoH265HrdFlags ret = new StdVideoH265HrdFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoH265HrdFlags[] allocate(Arena arena, int count) {
@@ -53,18 +69,6 @@ public record StdVideoH265HrdFlags(@NotNull MemorySegment segment) implements IP
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag = PathElement.groupElement("PATH$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag");
-
-    public static final OfInt LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag = (OfInt) LAYOUT.select(PATH$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
-
-
-    public static final long OFFSET$nal_hrd_parameters_present_flag_low_delay_hrd_flag = LAYOUT.byteOffset(PATH$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
 
     public boolean nal_hrd_parameters_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
@@ -136,4 +140,15 @@ public record StdVideoH265HrdFlags(@NotNull MemorySegment segment) implements IP
         BitfieldUtil.writeBits(s, 20, 28, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag = PathElement.groupElement("PATH$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag");
+
+    public static final OfInt LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag = (OfInt) LAYOUT.select(PATH$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
+
+
+    public static final long OFFSET$nal_hrd_parameters_present_flag_low_delay_hrd_flag = LAYOUT.byteOffset(PATH$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
 }

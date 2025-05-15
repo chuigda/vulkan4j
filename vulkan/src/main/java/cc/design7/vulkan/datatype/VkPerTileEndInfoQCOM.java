@@ -14,8 +14,26 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPerTileEndInfoQCOM} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerTileEndInfoQCOM.html"><code>VkPerTileEndInfoQCOM</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPerTileEndInfoQCOM {
+///     VkStructureType sType;
+///     void const* pNext;
+/// } VkPerTileEndInfoQCOM;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PER_TILE_END_INFO_QCOM`
+///
+/// The {@link VkPerTileEndInfoQCOM#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPerTileEndInfoQCOM#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +42,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerTileEndInfoQCOM.html">VkPerTileEndInfoQCOM</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerTileEndInfoQCOM.html"><code>VkPerTileEndInfoQCOM</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPerTileEndInfoQCOM(@NotNull MemorySegment segment) implements IPointer {
-    public VkPerTileEndInfoQCOM {
-        sType(VkStructureType.PER_TILE_END_INFO_QCOM);
-    }
-
     public static VkPerTileEndInfoQCOM allocate(Arena arena) {
-        return new VkPerTileEndInfoQCOM(arena.allocate(LAYOUT));
+        VkPerTileEndInfoQCOM ret = new VkPerTileEndInfoQCOM(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PER_TILE_END_INFO_QCOM);
+        return ret;
     }
 
     public static VkPerTileEndInfoQCOM[] allocate(Arena arena, int count) {
@@ -41,6 +57,7 @@ public record VkPerTileEndInfoQCOM(@NotNull MemorySegment segment) implements IP
         VkPerTileEndInfoQCOM[] ret = new VkPerTileEndInfoQCOM[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPerTileEndInfoQCOM(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PER_TILE_END_INFO_QCOM);
         }
         return ret;
     }
@@ -59,23 +76,9 @@ public record VkPerTileEndInfoQCOM(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public void autoInit() {
+        sType(VkStructureType.PER_TILE_END_INFO_QCOM);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -97,4 +100,21 @@ public record VkPerTileEndInfoQCOM(@NotNull MemorySegment segment) implements IP
         pNext(pointer.segment());
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
 }

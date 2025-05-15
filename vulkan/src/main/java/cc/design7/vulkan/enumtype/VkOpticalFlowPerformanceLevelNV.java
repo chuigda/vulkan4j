@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowPerformanceLevelNV.html">VkOpticalFlowPerformanceLevelNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowPerformanceLevelNV.html"><code>VkOpticalFlowPerformanceLevelNV</code></a>
 public final class VkOpticalFlowPerformanceLevelNV {
     public static final int UNKNOWN = 0x0;
     public static final int SLOW = 0x1;

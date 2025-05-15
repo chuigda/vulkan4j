@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSwapchainCreateFlagsKHR.html">VkSwapchainCreateFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSwapchainCreateFlagsKHR.html"><code>VkSwapchainCreateFlagsKHR</code></a>
 public final class VkSwapchainCreateFlagsKHR {
     public static final int DEFERRED_MEMORY_ALLOCATION_EXT = 0x8;
     public static final int MUTABLE_FORMAT = 0x4;

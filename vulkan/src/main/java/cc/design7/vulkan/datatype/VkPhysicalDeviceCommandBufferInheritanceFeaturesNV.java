@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceCommandBufferInheritanceFeaturesNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceCommandBufferInheritanceFeaturesNV.html"><code>VkPhysicalDeviceCommandBufferInheritanceFeaturesNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceCommandBufferInheritanceFeaturesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 commandBufferInheritance;
+/// } VkPhysicalDeviceCommandBufferInheritanceFeaturesNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV`
+///
+/// The {@link VkPhysicalDeviceCommandBufferInheritanceFeaturesNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceCommandBufferInheritanceFeaturesNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceCommandBufferInheritanceFeaturesNV.html">VkPhysicalDeviceCommandBufferInheritanceFeaturesNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceCommandBufferInheritanceFeaturesNV.html"><code>VkPhysicalDeviceCommandBufferInheritanceFeaturesNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceCommandBufferInheritanceFeaturesNV {
-        sType(VkStructureType.PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV);
-    }
-
     public static VkPhysicalDeviceCommandBufferInheritanceFeaturesNV allocate(Arena arena) {
-        return new VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(arena.allocate(LAYOUT));
+        VkPhysicalDeviceCommandBufferInheritanceFeaturesNV ret = new VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV);
+        return ret;
     }
 
     public static VkPhysicalDeviceCommandBufferInheritanceFeaturesNV[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(@NotNull Memory
         VkPhysicalDeviceCommandBufferInheritanceFeaturesNV[] ret = new VkPhysicalDeviceCommandBufferInheritanceFeaturesNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(@NotNull Memory
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("commandBufferInheritance")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$commandBufferInheritance = PathElement.groupElement("PATH$commandBufferInheritance");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$commandBufferInheritance = (OfInt) LAYOUT.select(PATH$commandBufferInheritance);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$commandBufferInheritance = LAYOUT$commandBufferInheritance.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$commandBufferInheritance = LAYOUT.byteOffset(PATH$commandBufferInheritance);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(@NotNull Memory
         segment.set(LAYOUT$commandBufferInheritance, OFFSET$commandBufferInheritance, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("commandBufferInheritance")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$commandBufferInheritance = PathElement.groupElement("PATH$commandBufferInheritance");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$commandBufferInheritance = (OfInt) LAYOUT.select(PATH$commandBufferInheritance);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$commandBufferInheritance = LAYOUT$commandBufferInheritance.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$commandBufferInheritance = LAYOUT.byteOffset(PATH$commandBufferInheritance);
 }

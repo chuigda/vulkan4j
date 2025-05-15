@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceLayeredApiVulkanPropertiesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceLayeredApiVulkanPropertiesKHR.html"><code>VkPhysicalDeviceLayeredApiVulkanPropertiesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceLayeredApiVulkanPropertiesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkPhysicalDeviceProperties2 properties;
+/// } VkPhysicalDeviceLayeredApiVulkanPropertiesKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR`
+///
+/// The {@link VkPhysicalDeviceLayeredApiVulkanPropertiesKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceLayeredApiVulkanPropertiesKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceLayeredApiVulkanPropertiesKHR.html">VkPhysicalDeviceLayeredApiVulkanPropertiesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceLayeredApiVulkanPropertiesKHR.html"><code>VkPhysicalDeviceLayeredApiVulkanPropertiesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR {
-        sType(VkStructureType.PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR);
-    }
-
     public static VkPhysicalDeviceLayeredApiVulkanPropertiesKHR allocate(Arena arena) {
-        return new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(arena.allocate(LAYOUT));
+        VkPhysicalDeviceLayeredApiVulkanPropertiesKHR ret = new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR);
+        return ret;
     }
 
     public static VkPhysicalDeviceLayeredApiVulkanPropertiesKHR[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(@NotNull MemorySegme
         VkPhysicalDeviceLayeredApiVulkanPropertiesKHR[] ret = new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(@NotNull MemorySegme
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        VkPhysicalDeviceProperties2.LAYOUT.withName("properties")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$properties = PathElement.groupElement("PATH$properties");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$properties = (StructLayout) LAYOUT.select(PATH$properties);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$properties = LAYOUT$properties.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$properties = LAYOUT.byteOffset(PATH$properties);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(@NotNull MemorySegme
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$properties, SIZE$properties);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkPhysicalDeviceProperties2.LAYOUT.withName("properties")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$properties = PathElement.groupElement("PATH$properties");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$properties = (StructLayout) LAYOUT.select(PATH$properties);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$properties = LAYOUT$properties.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$properties = LAYOUT.byteOffset(PATH$properties);
 }

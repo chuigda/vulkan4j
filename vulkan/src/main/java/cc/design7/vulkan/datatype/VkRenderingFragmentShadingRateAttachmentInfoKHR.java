@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkRenderingFragmentShadingRateAttachmentInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderingFragmentShadingRateAttachmentInfoKHR.html"><code>VkRenderingFragmentShadingRateAttachmentInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkRenderingFragmentShadingRateAttachmentInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkImageView imageView;
+///     VkImageLayout imageLayout;
+///     VkExtent2D shadingRateAttachmentTexelSize;
+/// } VkRenderingFragmentShadingRateAttachmentInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR`
+///
+/// The {@link VkRenderingFragmentShadingRateAttachmentInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkRenderingFragmentShadingRateAttachmentInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderingFragmentShadingRateAttachmentInfoKHR.html">VkRenderingFragmentShadingRateAttachmentInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderingFragmentShadingRateAttachmentInfoKHR.html"><code>VkRenderingFragmentShadingRateAttachmentInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkRenderingFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkRenderingFragmentShadingRateAttachmentInfoKHR {
-        sType(VkStructureType.RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR);
-    }
-
     public static VkRenderingFragmentShadingRateAttachmentInfoKHR allocate(Arena arena) {
-        return new VkRenderingFragmentShadingRateAttachmentInfoKHR(arena.allocate(LAYOUT));
+        VkRenderingFragmentShadingRateAttachmentInfoKHR ret = new VkRenderingFragmentShadingRateAttachmentInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR);
+        return ret;
     }
 
     public static VkRenderingFragmentShadingRateAttachmentInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySeg
         VkRenderingFragmentShadingRateAttachmentInfoKHR[] ret = new VkRenderingFragmentShadingRateAttachmentInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkRenderingFragmentShadingRateAttachmentInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR);
         }
         return ret;
     }
@@ -57,6 +77,58 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySeg
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkImageView imageView() {
+        MemorySegment s = segment.asSlice(OFFSET$imageView, SIZE$imageView);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkImageView(s);
+    }
+
+    public void imageView(@Nullable VkImageView value) {
+        segment.set(LAYOUT$imageView, OFFSET$imageView, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @enumtype(VkImageLayout.class) int imageLayout() {
+        return segment.get(LAYOUT$imageLayout, OFFSET$imageLayout);
+    }
+
+    public void imageLayout(@enumtype(VkImageLayout.class) int value) {
+        segment.set(LAYOUT$imageLayout, OFFSET$imageLayout, value);
+    }
+
+    public VkExtent2D shadingRateAttachmentTexelSize() {
+        return new VkExtent2D(segment.asSlice(OFFSET$shadingRateAttachmentTexelSize, LAYOUT$shadingRateAttachmentTexelSize));
+    }
+
+    public void shadingRateAttachmentTexelSize(VkExtent2D value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$shadingRateAttachmentTexelSize, SIZE$shadingRateAttachmentTexelSize);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -91,53 +163,4 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySeg
     public static final long OFFSET$imageView = LAYOUT.byteOffset(PATH$imageView);
     public static final long OFFSET$imageLayout = LAYOUT.byteOffset(PATH$imageLayout);
     public static final long OFFSET$shadingRateAttachmentTexelSize = LAYOUT.byteOffset(PATH$shadingRateAttachmentTexelSize);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkImageView imageView() {
-        MemorySegment s = segment.asSlice(OFFSET$imageView, SIZE$imageView);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkImageView(s);
-    }
-
-    public void imageView(@Nullable VkImageView value) {
-        segment.set(LAYOUT$imageView, OFFSET$imageView, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @enumtype(VkImageLayout.class) int imageLayout() {
-        return segment.get(LAYOUT$imageLayout, OFFSET$imageLayout);
-    }
-
-    public void imageLayout(@enumtype(VkImageLayout.class) int value) {
-        segment.set(LAYOUT$imageLayout, OFFSET$imageLayout, value);
-    }
-
-    public VkExtent2D shadingRateAttachmentTexelSize() {
-        return new VkExtent2D(segment.asSlice(OFFSET$shadingRateAttachmentTexelSize, LAYOUT$shadingRateAttachmentTexelSize));
-    }
-
-    public void shadingRateAttachmentTexelSize(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$shadingRateAttachmentTexelSize, SIZE$shadingRateAttachmentTexelSize);
-    }
-
 }

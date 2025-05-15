@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceMemoryReportEventTypeEXT.html">VkDeviceMemoryReportEventTypeEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceMemoryReportEventTypeEXT.html"><code>VkDeviceMemoryReportEventTypeEXT</code></a>
 public final class VkDeviceMemoryReportEventTypeEXT {
     public static final int ALLOCATE = 0x0;
     public static final int FREE = 0x1;

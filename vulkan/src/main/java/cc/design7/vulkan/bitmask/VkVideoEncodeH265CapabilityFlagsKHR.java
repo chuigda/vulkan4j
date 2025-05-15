@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH265CapabilityFlagsKHR.html">VkVideoEncodeH265CapabilityFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH265CapabilityFlagsKHR.html"><code>VkVideoEncodeH265CapabilityFlagsKHR</code></a>
 public final class VkVideoEncodeH265CapabilityFlagsKHR {
     public static final int VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L0_LIST = 0x10;
     public static final int VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L1_LIST = 0x20;

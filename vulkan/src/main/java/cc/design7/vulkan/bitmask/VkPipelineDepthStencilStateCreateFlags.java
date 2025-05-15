@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineDepthStencilStateCreateFlags.html">VkPipelineDepthStencilStateCreateFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineDepthStencilStateCreateFlags.html"><code>VkPipelineDepthStencilStateCreateFlags</code></a>
 public final class VkPipelineDepthStencilStateCreateFlags {
     public static final int RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_EXT = 0x1;
     public static final int RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_EXT = 0x2;

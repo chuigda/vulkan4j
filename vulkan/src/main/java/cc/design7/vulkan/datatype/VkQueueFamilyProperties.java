@@ -14,8 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkQueueFamilyProperties} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueueFamilyProperties.html"><code>VkQueueFamilyProperties</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkQueueFamilyProperties {
+///     VkQueueFlags queueFlags;
+///     uint32_t queueCount;
+///     uint32_t timestampValidBits;
+///     VkExtent3D minImageTransferGranularity;
+/// } VkQueueFamilyProperties;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +36,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueueFamilyProperties.html">VkQueueFamilyProperties</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueueFamilyProperties.html"><code>VkQueueFamilyProperties</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements IPointer {
     public static VkQueueFamilyProperties allocate(Arena arena) {
-        return new VkQueueFamilyProperties(arena.allocate(LAYOUT));
+        VkQueueFamilyProperties ret = new VkQueueFamilyProperties(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkQueueFamilyProperties[] allocate(Arena arena, int count) {
@@ -54,34 +67,6 @@ public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("queueFlags"),
-        ValueLayout.JAVA_INT.withName("queueCount"),
-        ValueLayout.JAVA_INT.withName("timestampValidBits"),
-        VkExtent3D.LAYOUT.withName("minImageTransferGranularity")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$queueFlags = PathElement.groupElement("PATH$queueFlags");
-    public static final PathElement PATH$queueCount = PathElement.groupElement("PATH$queueCount");
-    public static final PathElement PATH$timestampValidBits = PathElement.groupElement("PATH$timestampValidBits");
-    public static final PathElement PATH$minImageTransferGranularity = PathElement.groupElement("PATH$minImageTransferGranularity");
-
-    public static final OfInt LAYOUT$queueFlags = (OfInt) LAYOUT.select(PATH$queueFlags);
-    public static final OfInt LAYOUT$queueCount = (OfInt) LAYOUT.select(PATH$queueCount);
-    public static final OfInt LAYOUT$timestampValidBits = (OfInt) LAYOUT.select(PATH$timestampValidBits);
-    public static final StructLayout LAYOUT$minImageTransferGranularity = (StructLayout) LAYOUT.select(PATH$minImageTransferGranularity);
-
-    public static final long SIZE$queueFlags = LAYOUT$queueFlags.byteSize();
-    public static final long SIZE$queueCount = LAYOUT$queueCount.byteSize();
-    public static final long SIZE$timestampValidBits = LAYOUT$timestampValidBits.byteSize();
-    public static final long SIZE$minImageTransferGranularity = LAYOUT$minImageTransferGranularity.byteSize();
-
-    public static final long OFFSET$queueFlags = LAYOUT.byteOffset(PATH$queueFlags);
-    public static final long OFFSET$queueCount = LAYOUT.byteOffset(PATH$queueCount);
-    public static final long OFFSET$timestampValidBits = LAYOUT.byteOffset(PATH$timestampValidBits);
-    public static final long OFFSET$minImageTransferGranularity = LAYOUT.byteOffset(PATH$minImageTransferGranularity);
 
     public @enumtype(VkQueueFlags.class) int queueFlags() {
         return segment.get(LAYOUT$queueFlags, OFFSET$queueFlags);
@@ -115,4 +100,31 @@ public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minImageTransferGranularity, SIZE$minImageTransferGranularity);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("queueFlags"),
+        ValueLayout.JAVA_INT.withName("queueCount"),
+        ValueLayout.JAVA_INT.withName("timestampValidBits"),
+        VkExtent3D.LAYOUT.withName("minImageTransferGranularity")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$queueFlags = PathElement.groupElement("PATH$queueFlags");
+    public static final PathElement PATH$queueCount = PathElement.groupElement("PATH$queueCount");
+    public static final PathElement PATH$timestampValidBits = PathElement.groupElement("PATH$timestampValidBits");
+    public static final PathElement PATH$minImageTransferGranularity = PathElement.groupElement("PATH$minImageTransferGranularity");
+
+    public static final OfInt LAYOUT$queueFlags = (OfInt) LAYOUT.select(PATH$queueFlags);
+    public static final OfInt LAYOUT$queueCount = (OfInt) LAYOUT.select(PATH$queueCount);
+    public static final OfInt LAYOUT$timestampValidBits = (OfInt) LAYOUT.select(PATH$timestampValidBits);
+    public static final StructLayout LAYOUT$minImageTransferGranularity = (StructLayout) LAYOUT.select(PATH$minImageTransferGranularity);
+
+    public static final long SIZE$queueFlags = LAYOUT$queueFlags.byteSize();
+    public static final long SIZE$queueCount = LAYOUT$queueCount.byteSize();
+    public static final long SIZE$timestampValidBits = LAYOUT$timestampValidBits.byteSize();
+    public static final long SIZE$minImageTransferGranularity = LAYOUT$minImageTransferGranularity.byteSize();
+
+    public static final long OFFSET$queueFlags = LAYOUT.byteOffset(PATH$queueFlags);
+    public static final long OFFSET$queueCount = LAYOUT.byteOffset(PATH$queueCount);
+    public static final long OFFSET$timestampValidBits = LAYOUT.byteOffset(PATH$timestampValidBits);
+    public static final long OFFSET$minImageTransferGranularity = LAYOUT.byteOffset(PATH$minImageTransferGranularity);
 }

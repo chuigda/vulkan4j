@@ -14,8 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDisplayPropertiesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPropertiesKHR.html"><code>VkDisplayPropertiesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDisplayPropertiesKHR {
+///     VkDisplayKHR display;
+///     char const* displayName;
+///     VkExtent2D physicalDimensions;
+///     VkExtent2D physicalResolution;
+///     VkSurfaceTransformFlagsKHR supportedTransforms;
+///     VkBool32 planeReorderPossible;
+///     VkBool32 persistentContent;
+/// } VkDisplayPropertiesKHR;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +39,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPropertiesKHR.html">VkDisplayPropertiesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPropertiesKHR.html"><code>VkDisplayPropertiesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkDisplayPropertiesKHR allocate(Arena arena) {
-        return new VkDisplayPropertiesKHR(arena.allocate(LAYOUT));
+        VkDisplayPropertiesKHR ret = new VkDisplayPropertiesKHR(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkDisplayPropertiesKHR[] allocate(Arena arena, int count) {
@@ -55,52 +71,9 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.ADDRESS.withName("display"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("displayName"),
-        VkExtent2D.LAYOUT.withName("physicalDimensions"),
-        VkExtent2D.LAYOUT.withName("physicalResolution"),
-        ValueLayout.JAVA_INT.withName("supportedTransforms"),
-        ValueLayout.JAVA_INT.withName("planeReorderPossible"),
-        ValueLayout.JAVA_INT.withName("persistentContent")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$display = PathElement.groupElement("PATH$display");
-    public static final PathElement PATH$displayName = PathElement.groupElement("PATH$displayName");
-    public static final PathElement PATH$physicalDimensions = PathElement.groupElement("PATH$physicalDimensions");
-    public static final PathElement PATH$physicalResolution = PathElement.groupElement("PATH$physicalResolution");
-    public static final PathElement PATH$supportedTransforms = PathElement.groupElement("PATH$supportedTransforms");
-    public static final PathElement PATH$planeReorderPossible = PathElement.groupElement("PATH$planeReorderPossible");
-    public static final PathElement PATH$persistentContent = PathElement.groupElement("PATH$persistentContent");
-
-    public static final AddressLayout LAYOUT$display = (AddressLayout) LAYOUT.select(PATH$display);
-    public static final AddressLayout LAYOUT$displayName = (AddressLayout) LAYOUT.select(PATH$displayName);
-    public static final StructLayout LAYOUT$physicalDimensions = (StructLayout) LAYOUT.select(PATH$physicalDimensions);
-    public static final StructLayout LAYOUT$physicalResolution = (StructLayout) LAYOUT.select(PATH$physicalResolution);
-    public static final OfInt LAYOUT$supportedTransforms = (OfInt) LAYOUT.select(PATH$supportedTransforms);
-    public static final OfInt LAYOUT$planeReorderPossible = (OfInt) LAYOUT.select(PATH$planeReorderPossible);
-    public static final OfInt LAYOUT$persistentContent = (OfInt) LAYOUT.select(PATH$persistentContent);
-
-    public static final long SIZE$display = LAYOUT$display.byteSize();
-    public static final long SIZE$displayName = LAYOUT$displayName.byteSize();
-    public static final long SIZE$physicalDimensions = LAYOUT$physicalDimensions.byteSize();
-    public static final long SIZE$physicalResolution = LAYOUT$physicalResolution.byteSize();
-    public static final long SIZE$supportedTransforms = LAYOUT$supportedTransforms.byteSize();
-    public static final long SIZE$planeReorderPossible = LAYOUT$planeReorderPossible.byteSize();
-    public static final long SIZE$persistentContent = LAYOUT$persistentContent.byteSize();
-
-    public static final long OFFSET$display = LAYOUT.byteOffset(PATH$display);
-    public static final long OFFSET$displayName = LAYOUT.byteOffset(PATH$displayName);
-    public static final long OFFSET$physicalDimensions = LAYOUT.byteOffset(PATH$physicalDimensions);
-    public static final long OFFSET$physicalResolution = LAYOUT.byteOffset(PATH$physicalResolution);
-    public static final long OFFSET$supportedTransforms = LAYOUT.byteOffset(PATH$supportedTransforms);
-    public static final long OFFSET$planeReorderPossible = LAYOUT.byteOffset(PATH$planeReorderPossible);
-    public static final long OFFSET$persistentContent = LAYOUT.byteOffset(PATH$persistentContent);
-
     public @Nullable VkDisplayKHR display() {
         MemorySegment s = segment.asSlice(OFFSET$display, SIZE$display);
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkDisplayKHR(s);
@@ -124,7 +97,7 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
     /// writing to the buffer.
     public @Nullable BytePtr displayName() {
         MemorySegment s = displayNameRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new BytePtr(s);
@@ -175,4 +148,46 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$persistentContent, OFFSET$persistentContent, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withName("display"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("displayName"),
+        VkExtent2D.LAYOUT.withName("physicalDimensions"),
+        VkExtent2D.LAYOUT.withName("physicalResolution"),
+        ValueLayout.JAVA_INT.withName("supportedTransforms"),
+        ValueLayout.JAVA_INT.withName("planeReorderPossible"),
+        ValueLayout.JAVA_INT.withName("persistentContent")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$display = PathElement.groupElement("PATH$display");
+    public static final PathElement PATH$displayName = PathElement.groupElement("PATH$displayName");
+    public static final PathElement PATH$physicalDimensions = PathElement.groupElement("PATH$physicalDimensions");
+    public static final PathElement PATH$physicalResolution = PathElement.groupElement("PATH$physicalResolution");
+    public static final PathElement PATH$supportedTransforms = PathElement.groupElement("PATH$supportedTransforms");
+    public static final PathElement PATH$planeReorderPossible = PathElement.groupElement("PATH$planeReorderPossible");
+    public static final PathElement PATH$persistentContent = PathElement.groupElement("PATH$persistentContent");
+
+    public static final AddressLayout LAYOUT$display = (AddressLayout) LAYOUT.select(PATH$display);
+    public static final AddressLayout LAYOUT$displayName = (AddressLayout) LAYOUT.select(PATH$displayName);
+    public static final StructLayout LAYOUT$physicalDimensions = (StructLayout) LAYOUT.select(PATH$physicalDimensions);
+    public static final StructLayout LAYOUT$physicalResolution = (StructLayout) LAYOUT.select(PATH$physicalResolution);
+    public static final OfInt LAYOUT$supportedTransforms = (OfInt) LAYOUT.select(PATH$supportedTransforms);
+    public static final OfInt LAYOUT$planeReorderPossible = (OfInt) LAYOUT.select(PATH$planeReorderPossible);
+    public static final OfInt LAYOUT$persistentContent = (OfInt) LAYOUT.select(PATH$persistentContent);
+
+    public static final long SIZE$display = LAYOUT$display.byteSize();
+    public static final long SIZE$displayName = LAYOUT$displayName.byteSize();
+    public static final long SIZE$physicalDimensions = LAYOUT$physicalDimensions.byteSize();
+    public static final long SIZE$physicalResolution = LAYOUT$physicalResolution.byteSize();
+    public static final long SIZE$supportedTransforms = LAYOUT$supportedTransforms.byteSize();
+    public static final long SIZE$planeReorderPossible = LAYOUT$planeReorderPossible.byteSize();
+    public static final long SIZE$persistentContent = LAYOUT$persistentContent.byteSize();
+
+    public static final long OFFSET$display = LAYOUT.byteOffset(PATH$display);
+    public static final long OFFSET$displayName = LAYOUT.byteOffset(PATH$displayName);
+    public static final long OFFSET$physicalDimensions = LAYOUT.byteOffset(PATH$physicalDimensions);
+    public static final long OFFSET$physicalResolution = LAYOUT.byteOffset(PATH$physicalResolution);
+    public static final long OFFSET$supportedTransforms = LAYOUT.byteOffset(PATH$supportedTransforms);
+    public static final long OFFSET$planeReorderPossible = LAYOUT.byteOffset(PATH$planeReorderPossible);
+    public static final long OFFSET$persistentContent = LAYOUT.byteOffset(PATH$persistentContent);
 }

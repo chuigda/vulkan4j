@@ -16,6 +16,18 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoEncodeH265ReferenceInfo} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoEncodeH265ReferenceInfo {
+///     StdVideoEncodeH265ReferenceInfoFlags flags;
+///     StdVideoH265PictureType pic_type;
+///     int32_t PicOrderCntVal;
+///     uint8_t TemporalId;
+/// } StdVideoEncodeH265ReferenceInfo;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +39,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeH265ReferenceInfo(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeH265ReferenceInfo allocate(Arena arena) {
-        return new StdVideoEncodeH265ReferenceInfo(arena.allocate(LAYOUT));
+        StdVideoEncodeH265ReferenceInfo ret = new StdVideoEncodeH265ReferenceInfo(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoEncodeH265ReferenceInfo[] allocate(Arena arena, int count) {
@@ -52,34 +65,6 @@ public record StdVideoEncodeH265ReferenceInfo(@NotNull MemorySegment segment) im
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        StdVideoEncodeH265ReferenceInfoFlags.LAYOUT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("pic_type"),
-        ValueLayout.JAVA_INT.withName("PicOrderCntVal"),
-        ValueLayout.JAVA_BYTE.withName("TemporalId")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$pic_type = PathElement.groupElement("PATH$pic_type");
-    public static final PathElement PATH$PicOrderCntVal = PathElement.groupElement("PATH$PicOrderCntVal");
-    public static final PathElement PATH$TemporalId = PathElement.groupElement("PATH$TemporalId");
-
-    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$pic_type = (OfInt) LAYOUT.select(PATH$pic_type);
-    public static final OfInt LAYOUT$PicOrderCntVal = (OfInt) LAYOUT.select(PATH$PicOrderCntVal);
-    public static final OfByte LAYOUT$TemporalId = (OfByte) LAYOUT.select(PATH$TemporalId);
-
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$pic_type = LAYOUT$pic_type.byteSize();
-    public static final long SIZE$PicOrderCntVal = LAYOUT$PicOrderCntVal.byteSize();
-    public static final long SIZE$TemporalId = LAYOUT$TemporalId.byteSize();
-
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$pic_type = LAYOUT.byteOffset(PATH$pic_type);
-    public static final long OFFSET$PicOrderCntVal = LAYOUT.byteOffset(PATH$PicOrderCntVal);
-    public static final long OFFSET$TemporalId = LAYOUT.byteOffset(PATH$TemporalId);
 
     public StdVideoEncodeH265ReferenceInfoFlags flags() {
         return new StdVideoEncodeH265ReferenceInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
@@ -113,4 +98,31 @@ public record StdVideoEncodeH265ReferenceInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$TemporalId, OFFSET$TemporalId, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoEncodeH265ReferenceInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("pic_type"),
+        ValueLayout.JAVA_INT.withName("PicOrderCntVal"),
+        ValueLayout.JAVA_BYTE.withName("TemporalId")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$pic_type = PathElement.groupElement("PATH$pic_type");
+    public static final PathElement PATH$PicOrderCntVal = PathElement.groupElement("PATH$PicOrderCntVal");
+    public static final PathElement PATH$TemporalId = PathElement.groupElement("PATH$TemporalId");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$pic_type = (OfInt) LAYOUT.select(PATH$pic_type);
+    public static final OfInt LAYOUT$PicOrderCntVal = (OfInt) LAYOUT.select(PATH$PicOrderCntVal);
+    public static final OfByte LAYOUT$TemporalId = (OfByte) LAYOUT.select(PATH$TemporalId);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$pic_type = LAYOUT$pic_type.byteSize();
+    public static final long SIZE$PicOrderCntVal = LAYOUT$PicOrderCntVal.byteSize();
+    public static final long SIZE$TemporalId = LAYOUT$TemporalId.byteSize();
+
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$pic_type = LAYOUT.byteOffset(PATH$pic_type);
+    public static final long OFFSET$PicOrderCntVal = LAYOUT.byteOffset(PATH$PicOrderCntVal);
+    public static final long OFFSET$TemporalId = LAYOUT.byteOffset(PATH$TemporalId);
 }

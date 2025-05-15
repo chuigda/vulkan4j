@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorType.html">VkDescriptorType</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorType.html"><code>VkDescriptorType</code></a>
 public final class VkDescriptorType {
     public static final int SAMPLER = 0x0;
     public static final int COMBINED_IMAGE_SAMPLER = 0x1;

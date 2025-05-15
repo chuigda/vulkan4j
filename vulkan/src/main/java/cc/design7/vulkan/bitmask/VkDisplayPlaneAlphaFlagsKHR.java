@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPlaneAlphaFlagsKHR.html">VkDisplayPlaneAlphaFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPlaneAlphaFlagsKHR.html"><code>VkDisplayPlaneAlphaFlagsKHR</code></a>
 public final class VkDisplayPlaneAlphaFlagsKHR {
     public static final int GLOBAL = 0x2;
     public static final int OPAQUE = 0x1;

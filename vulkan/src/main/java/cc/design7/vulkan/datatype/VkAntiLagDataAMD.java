@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkAntiLagDataAMD} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAntiLagDataAMD.html"><code>VkAntiLagDataAMD</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkAntiLagDataAMD {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkAntiLagModeAMD mode;
+///     uint32_t maxFPS;
+///     VkAntiLagPresentationInfoAMD const* pPresentationInfo;
+/// } VkAntiLagDataAMD;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD`
+///
+/// The {@link VkAntiLagDataAMD#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkAntiLagDataAMD#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAntiLagDataAMD.html">VkAntiLagDataAMD</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAntiLagDataAMD.html"><code>VkAntiLagDataAMD</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IPointer {
-    public VkAntiLagDataAMD {
-        sType(VkStructureType.ANTI_LAG_DATA_AMD);
-    }
-
     public static VkAntiLagDataAMD allocate(Arena arena) {
-        return new VkAntiLagDataAMD(arena.allocate(LAYOUT));
+        VkAntiLagDataAMD ret = new VkAntiLagDataAMD(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.ANTI_LAG_DATA_AMD);
+        return ret;
     }
 
     public static VkAntiLagDataAMD[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IPoint
         VkAntiLagDataAMD[] ret = new VkAntiLagDataAMD[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkAntiLagDataAMD(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.ANTI_LAG_DATA_AMD);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IPoint
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("mode"),
-        ValueLayout.JAVA_INT.withName("maxFPS"),
-        ValueLayout.ADDRESS.withTargetLayout(VkAntiLagPresentationInfoAMD.LAYOUT).withName("pPresentationInfo")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$mode = PathElement.groupElement("PATH$mode");
-    public static final PathElement PATH$maxFPS = PathElement.groupElement("PATH$maxFPS");
-    public static final PathElement PATH$pPresentationInfo = PathElement.groupElement("PATH$pPresentationInfo");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$mode = (OfInt) LAYOUT.select(PATH$mode);
-    public static final OfInt LAYOUT$maxFPS = (OfInt) LAYOUT.select(PATH$maxFPS);
-    public static final AddressLayout LAYOUT$pPresentationInfo = (AddressLayout) LAYOUT.select(PATH$pPresentationInfo);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$mode = LAYOUT$mode.byteSize();
-    public static final long SIZE$maxFPS = LAYOUT$maxFPS.byteSize();
-    public static final long SIZE$pPresentationInfo = LAYOUT$pPresentationInfo.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$mode = LAYOUT.byteOffset(PATH$mode);
-    public static final long OFFSET$maxFPS = LAYOUT.byteOffset(PATH$maxFPS);
-    public static final long OFFSET$pPresentationInfo = LAYOUT.byteOffset(PATH$pPresentationInfo);
+    public void autoInit() {
+        sType(VkStructureType.ANTI_LAG_DATA_AMD);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -138,7 +129,7 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IPoint
 
     public @Nullable VkAntiLagPresentationInfoAMD pPresentationInfo() {
         MemorySegment s = pPresentationInfoRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkAntiLagPresentationInfoAMD(s);
@@ -151,7 +142,7 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IPoint
 
     @unsafe public @Nullable VkAntiLagPresentationInfoAMD[] pPresentationInfo(int assumedCount) {
         MemorySegment s = pPresentationInfoRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -163,4 +154,36 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IPoint
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("mode"),
+        ValueLayout.JAVA_INT.withName("maxFPS"),
+        ValueLayout.ADDRESS.withTargetLayout(VkAntiLagPresentationInfoAMD.LAYOUT).withName("pPresentationInfo")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$mode = PathElement.groupElement("PATH$mode");
+    public static final PathElement PATH$maxFPS = PathElement.groupElement("PATH$maxFPS");
+    public static final PathElement PATH$pPresentationInfo = PathElement.groupElement("PATH$pPresentationInfo");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$mode = (OfInt) LAYOUT.select(PATH$mode);
+    public static final OfInt LAYOUT$maxFPS = (OfInt) LAYOUT.select(PATH$maxFPS);
+    public static final AddressLayout LAYOUT$pPresentationInfo = (AddressLayout) LAYOUT.select(PATH$pPresentationInfo);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$mode = LAYOUT$mode.byteSize();
+    public static final long SIZE$maxFPS = LAYOUT$maxFPS.byteSize();
+    public static final long SIZE$pPresentationInfo = LAYOUT$pPresentationInfo.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$mode = LAYOUT.byteOffset(PATH$mode);
+    public static final long OFFSET$maxFPS = LAYOUT.byteOffset(PATH$maxFPS);
+    public static final long OFFSET$pPresentationInfo = LAYOUT.byteOffset(PATH$pPresentationInfo);
 }

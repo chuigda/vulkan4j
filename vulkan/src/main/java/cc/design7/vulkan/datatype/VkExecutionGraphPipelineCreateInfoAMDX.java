@@ -14,8 +14,33 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkExecutionGraphPipelineCreateInfoAMDX} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExecutionGraphPipelineCreateInfoAMDX.html"><code>VkExecutionGraphPipelineCreateInfoAMDX</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkExecutionGraphPipelineCreateInfoAMDX {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkPipelineCreateFlags flags;
+///     uint32_t stageCount;
+///     VkPipelineShaderStageCreateInfo const* pStages;
+///     VkPipelineLibraryCreateInfoKHR const* pLibraryInfo;
+///     VkPipelineLayout layout;
+///     VkPipeline basePipelineHandle;
+///     int32_t basePipelineIndex;
+/// } VkExecutionGraphPipelineCreateInfoAMDX;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_EXECUTION_GRAPH_PIPELINE_CREATE_INFO_AMDX`
+///
+/// The {@link VkExecutionGraphPipelineCreateInfoAMDX#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkExecutionGraphPipelineCreateInfoAMDX#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +49,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExecutionGraphPipelineCreateInfoAMDX.html">VkExecutionGraphPipelineCreateInfoAMDX</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExecutionGraphPipelineCreateInfoAMDX.html"><code>VkExecutionGraphPipelineCreateInfoAMDX</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segment) implements IPointer {
-    public VkExecutionGraphPipelineCreateInfoAMDX {
-        sType(VkStructureType.EXECUTION_GRAPH_PIPELINE_CREATE_INFO_AMDX);
-    }
-
     public static VkExecutionGraphPipelineCreateInfoAMDX allocate(Arena arena) {
-        return new VkExecutionGraphPipelineCreateInfoAMDX(arena.allocate(LAYOUT));
+        VkExecutionGraphPipelineCreateInfoAMDX ret = new VkExecutionGraphPipelineCreateInfoAMDX(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.EXECUTION_GRAPH_PIPELINE_CREATE_INFO_AMDX);
+        return ret;
     }
 
     public static VkExecutionGraphPipelineCreateInfoAMDX[] allocate(Arena arena, int count) {
@@ -41,6 +64,7 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         VkExecutionGraphPipelineCreateInfoAMDX[] ret = new VkExecutionGraphPipelineCreateInfoAMDX[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkExecutionGraphPipelineCreateInfoAMDX(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.EXECUTION_GRAPH_PIPELINE_CREATE_INFO_AMDX);
         }
         return ret;
     }
@@ -57,6 +81,148 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.EXECUTION_GRAPH_PIPELINE_CREATE_INFO_AMDX);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkPipelineCreateFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkPipelineCreateFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @unsigned int stageCount() {
+        return segment.get(LAYOUT$stageCount, OFFSET$stageCount);
+    }
+
+    public void stageCount(@unsigned int value) {
+        segment.set(LAYOUT$stageCount, OFFSET$stageCount, value);
+    }
+
+    public @pointer(comment="VkPipelineShaderStageCreateInfo*") MemorySegment pStagesRaw() {
+        return segment.get(LAYOUT$pStages, OFFSET$pStages);
+    }
+
+    public void pStagesRaw(@pointer(comment="VkPipelineShaderStageCreateInfo*") MemorySegment value) {
+        segment.set(LAYOUT$pStages, OFFSET$pStages, value);
+    }
+
+    public @Nullable VkPipelineShaderStageCreateInfo pStages() {
+        MemorySegment s = pStagesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineShaderStageCreateInfo(s);
+    }
+
+    public void pStages(@Nullable VkPipelineShaderStageCreateInfo value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pStagesRaw(s);
+    }
+
+    @unsafe public @Nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
+        MemorySegment s = pStagesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.SIZE);
+        VkPipelineShaderStageCreateInfo[] ret = new VkPipelineShaderStageCreateInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkPipelineShaderStageCreateInfo(s.asSlice(i * VkPipelineShaderStageCreateInfo.SIZE, VkPipelineShaderStageCreateInfo.SIZE));
+        }
+        return ret;
+    }
+
+    public @pointer(comment="VkPipelineLibraryCreateInfoKHR*") MemorySegment pLibraryInfoRaw() {
+        return segment.get(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo);
+    }
+
+    public void pLibraryInfoRaw(@pointer(comment="VkPipelineLibraryCreateInfoKHR*") MemorySegment value) {
+        segment.set(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo, value);
+    }
+
+    public @Nullable VkPipelineLibraryCreateInfoKHR pLibraryInfo() {
+        MemorySegment s = pLibraryInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineLibraryCreateInfoKHR(s);
+    }
+
+    public void pLibraryInfo(@Nullable VkPipelineLibraryCreateInfoKHR value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pLibraryInfoRaw(s);
+    }
+
+    @unsafe public @Nullable VkPipelineLibraryCreateInfoKHR[] pLibraryInfo(int assumedCount) {
+        MemorySegment s = pLibraryInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkPipelineLibraryCreateInfoKHR.SIZE);
+        VkPipelineLibraryCreateInfoKHR[] ret = new VkPipelineLibraryCreateInfoKHR[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkPipelineLibraryCreateInfoKHR(s.asSlice(i * VkPipelineLibraryCreateInfoKHR.SIZE, VkPipelineLibraryCreateInfoKHR.SIZE));
+        }
+        return ret;
+    }
+
+    public @Nullable VkPipelineLayout layout() {
+        MemorySegment s = segment.asSlice(OFFSET$layout, SIZE$layout);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineLayout(s);
+    }
+
+    public void layout(@Nullable VkPipelineLayout value) {
+        segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @Nullable VkPipeline basePipelineHandle() {
+        MemorySegment s = segment.asSlice(OFFSET$basePipelineHandle, SIZE$basePipelineHandle);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipeline(s);
+    }
+
+    public void basePipelineHandle(@Nullable VkPipeline value) {
+        segment.set(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public int basePipelineIndex() {
+        return segment.get(LAYOUT$basePipelineIndex, OFFSET$basePipelineIndex);
+    }
+
+    public void basePipelineIndex(int value) {
+        segment.set(LAYOUT$basePipelineIndex, OFFSET$basePipelineIndex, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -111,143 +277,4 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
     public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
     public static final long OFFSET$basePipelineHandle = LAYOUT.byteOffset(PATH$basePipelineHandle);
     public static final long OFFSET$basePipelineIndex = LAYOUT.byteOffset(PATH$basePipelineIndex);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @enumtype(VkPipelineCreateFlags.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkPipelineCreateFlags.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @unsigned int stageCount() {
-        return segment.get(LAYOUT$stageCount, OFFSET$stageCount);
-    }
-
-    public void stageCount(@unsigned int value) {
-        segment.set(LAYOUT$stageCount, OFFSET$stageCount, value);
-    }
-
-    public @pointer(comment="VkPipelineShaderStageCreateInfo*") MemorySegment pStagesRaw() {
-        return segment.get(LAYOUT$pStages, OFFSET$pStages);
-    }
-
-    public void pStagesRaw(@pointer(comment="VkPipelineShaderStageCreateInfo*") MemorySegment value) {
-        segment.set(LAYOUT$pStages, OFFSET$pStages, value);
-    }
-
-    public @Nullable VkPipelineShaderStageCreateInfo pStages() {
-        MemorySegment s = pStagesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPipelineShaderStageCreateInfo(s);
-    }
-
-    public void pStages(@Nullable VkPipelineShaderStageCreateInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pStagesRaw(s);
-    }
-
-    @unsafe public @Nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
-        MemorySegment s = pStagesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.SIZE);
-        VkPipelineShaderStageCreateInfo[] ret = new VkPipelineShaderStageCreateInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineShaderStageCreateInfo(s.asSlice(i * VkPipelineShaderStageCreateInfo.SIZE, VkPipelineShaderStageCreateInfo.SIZE));
-        }
-        return ret;
-    }
-
-    public @pointer(comment="VkPipelineLibraryCreateInfoKHR*") MemorySegment pLibraryInfoRaw() {
-        return segment.get(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo);
-    }
-
-    public void pLibraryInfoRaw(@pointer(comment="VkPipelineLibraryCreateInfoKHR*") MemorySegment value) {
-        segment.set(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo, value);
-    }
-
-    public @Nullable VkPipelineLibraryCreateInfoKHR pLibraryInfo() {
-        MemorySegment s = pLibraryInfoRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPipelineLibraryCreateInfoKHR(s);
-    }
-
-    public void pLibraryInfo(@Nullable VkPipelineLibraryCreateInfoKHR value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pLibraryInfoRaw(s);
-    }
-
-    @unsafe public @Nullable VkPipelineLibraryCreateInfoKHR[] pLibraryInfo(int assumedCount) {
-        MemorySegment s = pLibraryInfoRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkPipelineLibraryCreateInfoKHR.SIZE);
-        VkPipelineLibraryCreateInfoKHR[] ret = new VkPipelineLibraryCreateInfoKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineLibraryCreateInfoKHR(s.asSlice(i * VkPipelineLibraryCreateInfoKHR.SIZE, VkPipelineLibraryCreateInfoKHR.SIZE));
-        }
-        return ret;
-    }
-
-    public @Nullable VkPipelineLayout layout() {
-        MemorySegment s = segment.asSlice(OFFSET$layout, SIZE$layout);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPipelineLayout(s);
-    }
-
-    public void layout(@Nullable VkPipelineLayout value) {
-        segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @Nullable VkPipeline basePipelineHandle() {
-        MemorySegment s = segment.asSlice(OFFSET$basePipelineHandle, SIZE$basePipelineHandle);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPipeline(s);
-    }
-
-    public void basePipelineHandle(@Nullable VkPipeline value) {
-        segment.set(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public int basePipelineIndex() {
-        return segment.get(LAYOUT$basePipelineIndex, OFFSET$basePipelineIndex);
-    }
-
-    public void basePipelineIndex(int value) {
-        segment.set(LAYOUT$basePipelineIndex, OFFSET$basePipelineIndex, value);
-    }
-
 }

@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkRefreshObjectListKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRefreshObjectListKHR.html"><code>VkRefreshObjectListKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkRefreshObjectListKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t objectCount;
+///     VkRefreshObjectKHR const* pObjects;
+/// } VkRefreshObjectListKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_REFRESH_OBJECT_LIST_KHR`
+///
+/// The {@link VkRefreshObjectListKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkRefreshObjectListKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRefreshObjectListKHR.html">VkRefreshObjectListKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRefreshObjectListKHR.html"><code>VkRefreshObjectListKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkRefreshObjectListKHR {
-        sType(VkStructureType.REFRESH_OBJECT_LIST_KHR);
-    }
-
     public static VkRefreshObjectListKHR allocate(Arena arena) {
-        return new VkRefreshObjectListKHR(arena.allocate(LAYOUT));
+        VkRefreshObjectListKHR ret = new VkRefreshObjectListKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.REFRESH_OBJECT_LIST_KHR);
+        return ret;
     }
 
     public static VkRefreshObjectListKHR[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         VkRefreshObjectListKHR[] ret = new VkRefreshObjectListKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkRefreshObjectListKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.REFRESH_OBJECT_LIST_KHR);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("objectCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkRefreshObjectKHR.LAYOUT).withName("pObjects")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$objectCount = PathElement.groupElement("PATH$objectCount");
-    public static final PathElement PATH$pObjects = PathElement.groupElement("PATH$pObjects");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$objectCount = (OfInt) LAYOUT.select(PATH$objectCount);
-    public static final AddressLayout LAYOUT$pObjects = (AddressLayout) LAYOUT.select(PATH$pObjects);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$objectCount = LAYOUT$objectCount.byteSize();
-    public static final long SIZE$pObjects = LAYOUT$pObjects.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$objectCount = LAYOUT.byteOffset(PATH$objectCount);
-    public static final long OFFSET$pObjects = LAYOUT.byteOffset(PATH$pObjects);
+    public void autoInit() {
+        sType(VkStructureType.REFRESH_OBJECT_LIST_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -125,7 +120,7 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
 
     public @Nullable VkRefreshObjectKHR pObjects() {
         MemorySegment s = pObjectsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkRefreshObjectKHR(s);
@@ -138,7 +133,7 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
 
     @unsafe public @Nullable VkRefreshObjectKHR[] pObjects(int assumedCount) {
         MemorySegment s = pObjectsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -150,4 +145,31 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("objectCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkRefreshObjectKHR.LAYOUT).withName("pObjects")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$objectCount = PathElement.groupElement("PATH$objectCount");
+    public static final PathElement PATH$pObjects = PathElement.groupElement("PATH$pObjects");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$objectCount = (OfInt) LAYOUT.select(PATH$objectCount);
+    public static final AddressLayout LAYOUT$pObjects = (AddressLayout) LAYOUT.select(PATH$pObjects);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$objectCount = LAYOUT$objectCount.byteSize();
+    public static final long SIZE$pObjects = LAYOUT$pObjects.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$objectCount = LAYOUT.byteOffset(PATH$objectCount);
+    public static final long OFFSET$pObjects = LAYOUT.byteOffset(PATH$pObjects);
 }

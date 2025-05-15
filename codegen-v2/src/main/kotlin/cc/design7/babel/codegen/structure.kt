@@ -50,6 +50,7 @@ fun generateStructure(
 ): Doc = buildDoc {
     val packageName = codegenOptions.packageName
     val className = structure.name.toString()
+    val originalStructName = structure.name.original
     val layouts = mutableListOf<LayoutField>()
 
     lowerMemberTypes(
@@ -98,11 +99,45 @@ fun generateStructure(
     +""
     /// endregion import
 
-    +"/// Represents a pointer to a {@code $className} structure in native memory."
+    val seeLink = codegenOptions.seeLinkProvider(structure)
+
+    if (seeLink != null) {
+        +"/// Represents a pointer to a $seeLink structure in native memory."
+    } else {
+        +"/// Represents a pointer to a {@code $className} structure in native memory."
+    }
     +"///"
 
-    // TODO: generate structure/union layout document
+    +"/// ## Structure"
+    +"///"
+    +"/// {@snippet lang=c :"
+    +"/// typedef struct $originalStructName {"
+    structure.members.forEach {
+        if (it.bits != null) {
+            +"///     ${it.type.cDisplay} ${it.name} : ${it.bits};"
+        } else {
+            +"///     ${it.type.cDisplay} ${it.name};"
+        }
+    }
+    +"/// } $originalStructName;"
+    +"/// }"
+    +"///"
 
+    val autoInitMembers = structure.members.filter { it.values != null && it.type is IdentifierType }
+    if (autoInitMembers.isNotEmpty()) {
+        +"/// ## Auto initialization"
+        +"/// This structure has the following members that can be automatically initialized:"
+        autoInitMembers.forEach {
+            +"/// - `${it.name} = ${it.values!!.original}`"
+        }
+        +"///"
+        +"/// The {@link $className#allocate} functions will automatically initialize these fields."
+        +"/// Also, you may call {@link $className#autoInit} to initialize these fields manually for"
+        +"/// non-allocated instances."
+        +"///"
+    }
+
+    +"/// ## Contracts"
     +"/// The property {@link #segment()} should always be not-null"
     +"/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)"
     +"/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java"
@@ -111,7 +146,6 @@ fun generateStructure(
     +"/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not"
     +"/// perform any runtime check. The constructor can be useful for automatic code generators."
 
-    val seeLink = codegenOptions.seeLinkProvider(structure)
     if (seeLink != null) {
         +"///"
         +"/// @see $seeLink"
@@ -122,23 +156,18 @@ fun generateStructure(
     +"public record $className(@NotNull MemorySegment segment) implements IPointer {"
 
     indent {
-        if (structure.members.any { it.values != null }) {
-            +"public $className {"
-            indent {
-                structure.members.forEach {
-                    if (it.values != null && it.type is IdentifierType) {
-                        +"${it.name}(${it.type.ident}.${it.values});"
-                    }
+        defun("public static", className, "allocate", "Arena arena") {
+            +"$className ret = new $className(arena.allocate(LAYOUT));"
+            if (autoInitMembers.isNotEmpty()) {
+                if (autoInitMembers.size == 1) {
+                    val it = autoInitMembers.first()
+                    +"ret.${it.name}(${(it.type as IdentifierType).ident}.${it.values});"
+                } else {
+                    +"ret.autoInit();"
                 }
             }
-            +"}"
-            +""
+            +"return ret;"
         }
-
-        defun("public static", className, "allocate", "Arena arena") {
-            +"return new $className(arena.allocate(LAYOUT));"
-        }
-
         +""
 
         defun("public static", "$className[]", "allocate", "Arena arena", "int count") {
@@ -146,11 +175,18 @@ fun generateStructure(
             +"$className[] ret = new $className[count];"
             "for (int i = 0; i < count; i ++)" {
                 +"ret[i] = new $className(segment.asSlice(i * BYTES, BYTES));"
+                if (autoInitMembers.isNotEmpty()) {
+                    if (autoInitMembers.size == 1) {
+                        val it = autoInitMembers.first()
+                        +"ret[i].${it.name}(${(it.type as IdentifierType).ident}.${it.values});"
+                    } else {
+                        +"ret[i].autoInit();"
+                    }
+                }
             }
 
             +"return ret;"
         }
-
         +""
 
         defun("public static", className, "clone", "Arena arena", "$className src") {
@@ -158,7 +194,6 @@ fun generateStructure(
             +"ret.segment.copyFrom(src.segment);"
             +"return ret;"
         }
-
         +""
 
         defun("public static", "$className[]", "clone", "Arena arena", "$className[] src") {
@@ -168,8 +203,26 @@ fun generateStructure(
             }
             +"return ret;"
         }
-
         +""
+
+        if (autoInitMembers.isNotEmpty()) {
+            +"public void autoInit() {"
+            indent {
+                autoInitMembers.forEach {
+                    +"${it.name}(${(it.type as IdentifierType).ident}.${it.values});"
+                }
+            }
+            +"}"
+            +""
+        }
+
+        layouts.forEach {
+            when (it) {
+                is LayoutField.Bitfields -> +generateBitfieldAccessor(it)
+                is LayoutField.Typed -> +generateMemberAccessor(it)
+            }
+            +""
+        }
 
         // layout of the whole structure (or union)
         val layoutType = if (isUnion) "UnionLayout" else "StructLayout"
@@ -226,17 +279,6 @@ fun generateStructure(
         // offset
         layouts.forEach { layout ->
             defConst("long", layout.offsetName, "LAYOUT.byteOffset(${layout.pathName})")
-        }
-
-        +""
-
-        layouts.forEach {
-            when (it) {
-                is LayoutField.Bitfields -> +generateBitfieldAccessor(it)
-                is LayoutField.Typed -> +generateMemberAccessor(it)
-            }
-
-            +""
         }
     }
 

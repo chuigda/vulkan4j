@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceShadingRateImagePropertiesNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShadingRateImagePropertiesNV.html"><code>VkPhysicalDeviceShadingRateImagePropertiesNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceShadingRateImagePropertiesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkExtent2D shadingRateTexelSize;
+///     uint32_t shadingRatePaletteSize;
+///     uint32_t shadingRateMaxCoarseSamples;
+/// } VkPhysicalDeviceShadingRateImagePropertiesNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV`
+///
+/// The {@link VkPhysicalDeviceShadingRateImagePropertiesNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceShadingRateImagePropertiesNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShadingRateImagePropertiesNV.html">VkPhysicalDeviceShadingRateImagePropertiesNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShadingRateImagePropertiesNV.html"><code>VkPhysicalDeviceShadingRateImagePropertiesNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceShadingRateImagePropertiesNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceShadingRateImagePropertiesNV {
-        sType(VkStructureType.PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV);
-    }
-
     public static VkPhysicalDeviceShadingRateImagePropertiesNV allocate(Arena arena) {
-        return new VkPhysicalDeviceShadingRateImagePropertiesNV(arena.allocate(LAYOUT));
+        VkPhysicalDeviceShadingRateImagePropertiesNV ret = new VkPhysicalDeviceShadingRateImagePropertiesNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV);
+        return ret;
     }
 
     public static VkPhysicalDeviceShadingRateImagePropertiesNV[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkPhysicalDeviceShadingRateImagePropertiesNV(@NotNull MemorySegmen
         VkPhysicalDeviceShadingRateImagePropertiesNV[] ret = new VkPhysicalDeviceShadingRateImagePropertiesNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceShadingRateImagePropertiesNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkPhysicalDeviceShadingRateImagePropertiesNV(@NotNull MemorySegmen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        VkExtent2D.LAYOUT.withName("shadingRateTexelSize"),
-        ValueLayout.JAVA_INT.withName("shadingRatePaletteSize"),
-        ValueLayout.JAVA_INT.withName("shadingRateMaxCoarseSamples")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shadingRateTexelSize = PathElement.groupElement("PATH$shadingRateTexelSize");
-    public static final PathElement PATH$shadingRatePaletteSize = PathElement.groupElement("PATH$shadingRatePaletteSize");
-    public static final PathElement PATH$shadingRateMaxCoarseSamples = PathElement.groupElement("PATH$shadingRateMaxCoarseSamples");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$shadingRateTexelSize = (StructLayout) LAYOUT.select(PATH$shadingRateTexelSize);
-    public static final OfInt LAYOUT$shadingRatePaletteSize = (OfInt) LAYOUT.select(PATH$shadingRatePaletteSize);
-    public static final OfInt LAYOUT$shadingRateMaxCoarseSamples = (OfInt) LAYOUT.select(PATH$shadingRateMaxCoarseSamples);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$shadingRateTexelSize = LAYOUT$shadingRateTexelSize.byteSize();
-    public static final long SIZE$shadingRatePaletteSize = LAYOUT$shadingRatePaletteSize.byteSize();
-    public static final long SIZE$shadingRateMaxCoarseSamples = LAYOUT$shadingRateMaxCoarseSamples.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$shadingRateTexelSize = LAYOUT.byteOffset(PATH$shadingRateTexelSize);
-    public static final long OFFSET$shadingRatePaletteSize = LAYOUT.byteOffset(PATH$shadingRatePaletteSize);
-    public static final long OFFSET$shadingRateMaxCoarseSamples = LAYOUT.byteOffset(PATH$shadingRateMaxCoarseSamples);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -136,4 +127,36 @@ public record VkPhysicalDeviceShadingRateImagePropertiesNV(@NotNull MemorySegmen
         segment.set(LAYOUT$shadingRateMaxCoarseSamples, OFFSET$shadingRateMaxCoarseSamples, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkExtent2D.LAYOUT.withName("shadingRateTexelSize"),
+        ValueLayout.JAVA_INT.withName("shadingRatePaletteSize"),
+        ValueLayout.JAVA_INT.withName("shadingRateMaxCoarseSamples")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$shadingRateTexelSize = PathElement.groupElement("PATH$shadingRateTexelSize");
+    public static final PathElement PATH$shadingRatePaletteSize = PathElement.groupElement("PATH$shadingRatePaletteSize");
+    public static final PathElement PATH$shadingRateMaxCoarseSamples = PathElement.groupElement("PATH$shadingRateMaxCoarseSamples");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$shadingRateTexelSize = (StructLayout) LAYOUT.select(PATH$shadingRateTexelSize);
+    public static final OfInt LAYOUT$shadingRatePaletteSize = (OfInt) LAYOUT.select(PATH$shadingRatePaletteSize);
+    public static final OfInt LAYOUT$shadingRateMaxCoarseSamples = (OfInt) LAYOUT.select(PATH$shadingRateMaxCoarseSamples);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shadingRateTexelSize = LAYOUT$shadingRateTexelSize.byteSize();
+    public static final long SIZE$shadingRatePaletteSize = LAYOUT$shadingRatePaletteSize.byteSize();
+    public static final long SIZE$shadingRateMaxCoarseSamples = LAYOUT$shadingRateMaxCoarseSamples.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$shadingRateTexelSize = LAYOUT.byteOffset(PATH$shadingRateTexelSize);
+    public static final long OFFSET$shadingRatePaletteSize = LAYOUT.byteOffset(PATH$shadingRatePaletteSize);
+    public static final long OFFSET$shadingRateMaxCoarseSamples = LAYOUT.byteOffset(PATH$shadingRateMaxCoarseSamples);
 }

@@ -14,8 +14,41 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDevicePortabilitySubsetFeaturesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevicePortabilitySubsetFeaturesKHR.html"><code>VkPhysicalDevicePortabilitySubsetFeaturesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDevicePortabilitySubsetFeaturesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 constantAlphaColorBlendFactors;
+///     VkBool32 events;
+///     VkBool32 imageViewFormatReinterpretation;
+///     VkBool32 imageViewFormatSwizzle;
+///     VkBool32 imageView2DOn3DImage;
+///     VkBool32 multisampleArrayImage;
+///     VkBool32 mutableComparisonSamplers;
+///     VkBool32 pointPolygons;
+///     VkBool32 samplerMipLodBias;
+///     VkBool32 separateStencilMaskRef;
+///     VkBool32 shaderSampleRateInterpolationFunctions;
+///     VkBool32 tessellationIsolines;
+///     VkBool32 tessellationPointMode;
+///     VkBool32 triangleFans;
+///     VkBool32 vertexAttributeAccessBeyondStride;
+/// } VkPhysicalDevicePortabilitySubsetFeaturesKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PORTABILITY_SUBSET_FEATURES_KHR`
+///
+/// The {@link VkPhysicalDevicePortabilitySubsetFeaturesKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDevicePortabilitySubsetFeaturesKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +57,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevicePortabilitySubsetFeaturesKHR.html">VkPhysicalDevicePortabilitySubsetFeaturesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevicePortabilitySubsetFeaturesKHR.html"><code>VkPhysicalDevicePortabilitySubsetFeaturesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR {
-        sType(VkStructureType.PHYSICAL_DEVICE_PORTABILITY_SUBSET_FEATURES_KHR);
-    }
-
     public static VkPhysicalDevicePortabilitySubsetFeaturesKHR allocate(Arena arena) {
-        return new VkPhysicalDevicePortabilitySubsetFeaturesKHR(arena.allocate(LAYOUT));
+        VkPhysicalDevicePortabilitySubsetFeaturesKHR ret = new VkPhysicalDevicePortabilitySubsetFeaturesKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_PORTABILITY_SUBSET_FEATURES_KHR);
+        return ret;
     }
 
     public static VkPhysicalDevicePortabilitySubsetFeaturesKHR[] allocate(Arena arena, int count) {
@@ -41,6 +72,7 @@ public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(@NotNull MemorySegmen
         VkPhysicalDevicePortabilitySubsetFeaturesKHR[] ret = new VkPhysicalDevicePortabilitySubsetFeaturesKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDevicePortabilitySubsetFeaturesKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_PORTABILITY_SUBSET_FEATURES_KHR);
         }
         return ret;
     }
@@ -59,98 +91,9 @@ public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(@NotNull MemorySegmen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("constantAlphaColorBlendFactors"),
-        ValueLayout.JAVA_INT.withName("events"),
-        ValueLayout.JAVA_INT.withName("imageViewFormatReinterpretation"),
-        ValueLayout.JAVA_INT.withName("imageViewFormatSwizzle"),
-        ValueLayout.JAVA_INT.withName("imageView2DOn3DImage"),
-        ValueLayout.JAVA_INT.withName("multisampleArrayImage"),
-        ValueLayout.JAVA_INT.withName("mutableComparisonSamplers"),
-        ValueLayout.JAVA_INT.withName("pointPolygons"),
-        ValueLayout.JAVA_INT.withName("samplerMipLodBias"),
-        ValueLayout.JAVA_INT.withName("separateStencilMaskRef"),
-        ValueLayout.JAVA_INT.withName("shaderSampleRateInterpolationFunctions"),
-        ValueLayout.JAVA_INT.withName("tessellationIsolines"),
-        ValueLayout.JAVA_INT.withName("tessellationPointMode"),
-        ValueLayout.JAVA_INT.withName("triangleFans"),
-        ValueLayout.JAVA_INT.withName("vertexAttributeAccessBeyondStride")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$constantAlphaColorBlendFactors = PathElement.groupElement("PATH$constantAlphaColorBlendFactors");
-    public static final PathElement PATH$events = PathElement.groupElement("PATH$events");
-    public static final PathElement PATH$imageViewFormatReinterpretation = PathElement.groupElement("PATH$imageViewFormatReinterpretation");
-    public static final PathElement PATH$imageViewFormatSwizzle = PathElement.groupElement("PATH$imageViewFormatSwizzle");
-    public static final PathElement PATH$imageView2DOn3DImage = PathElement.groupElement("PATH$imageView2DOn3DImage");
-    public static final PathElement PATH$multisampleArrayImage = PathElement.groupElement("PATH$multisampleArrayImage");
-    public static final PathElement PATH$mutableComparisonSamplers = PathElement.groupElement("PATH$mutableComparisonSamplers");
-    public static final PathElement PATH$pointPolygons = PathElement.groupElement("PATH$pointPolygons");
-    public static final PathElement PATH$samplerMipLodBias = PathElement.groupElement("PATH$samplerMipLodBias");
-    public static final PathElement PATH$separateStencilMaskRef = PathElement.groupElement("PATH$separateStencilMaskRef");
-    public static final PathElement PATH$shaderSampleRateInterpolationFunctions = PathElement.groupElement("PATH$shaderSampleRateInterpolationFunctions");
-    public static final PathElement PATH$tessellationIsolines = PathElement.groupElement("PATH$tessellationIsolines");
-    public static final PathElement PATH$tessellationPointMode = PathElement.groupElement("PATH$tessellationPointMode");
-    public static final PathElement PATH$triangleFans = PathElement.groupElement("PATH$triangleFans");
-    public static final PathElement PATH$vertexAttributeAccessBeyondStride = PathElement.groupElement("PATH$vertexAttributeAccessBeyondStride");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$constantAlphaColorBlendFactors = (OfInt) LAYOUT.select(PATH$constantAlphaColorBlendFactors);
-    public static final OfInt LAYOUT$events = (OfInt) LAYOUT.select(PATH$events);
-    public static final OfInt LAYOUT$imageViewFormatReinterpretation = (OfInt) LAYOUT.select(PATH$imageViewFormatReinterpretation);
-    public static final OfInt LAYOUT$imageViewFormatSwizzle = (OfInt) LAYOUT.select(PATH$imageViewFormatSwizzle);
-    public static final OfInt LAYOUT$imageView2DOn3DImage = (OfInt) LAYOUT.select(PATH$imageView2DOn3DImage);
-    public static final OfInt LAYOUT$multisampleArrayImage = (OfInt) LAYOUT.select(PATH$multisampleArrayImage);
-    public static final OfInt LAYOUT$mutableComparisonSamplers = (OfInt) LAYOUT.select(PATH$mutableComparisonSamplers);
-    public static final OfInt LAYOUT$pointPolygons = (OfInt) LAYOUT.select(PATH$pointPolygons);
-    public static final OfInt LAYOUT$samplerMipLodBias = (OfInt) LAYOUT.select(PATH$samplerMipLodBias);
-    public static final OfInt LAYOUT$separateStencilMaskRef = (OfInt) LAYOUT.select(PATH$separateStencilMaskRef);
-    public static final OfInt LAYOUT$shaderSampleRateInterpolationFunctions = (OfInt) LAYOUT.select(PATH$shaderSampleRateInterpolationFunctions);
-    public static final OfInt LAYOUT$tessellationIsolines = (OfInt) LAYOUT.select(PATH$tessellationIsolines);
-    public static final OfInt LAYOUT$tessellationPointMode = (OfInt) LAYOUT.select(PATH$tessellationPointMode);
-    public static final OfInt LAYOUT$triangleFans = (OfInt) LAYOUT.select(PATH$triangleFans);
-    public static final OfInt LAYOUT$vertexAttributeAccessBeyondStride = (OfInt) LAYOUT.select(PATH$vertexAttributeAccessBeyondStride);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$constantAlphaColorBlendFactors = LAYOUT$constantAlphaColorBlendFactors.byteSize();
-    public static final long SIZE$events = LAYOUT$events.byteSize();
-    public static final long SIZE$imageViewFormatReinterpretation = LAYOUT$imageViewFormatReinterpretation.byteSize();
-    public static final long SIZE$imageViewFormatSwizzle = LAYOUT$imageViewFormatSwizzle.byteSize();
-    public static final long SIZE$imageView2DOn3DImage = LAYOUT$imageView2DOn3DImage.byteSize();
-    public static final long SIZE$multisampleArrayImage = LAYOUT$multisampleArrayImage.byteSize();
-    public static final long SIZE$mutableComparisonSamplers = LAYOUT$mutableComparisonSamplers.byteSize();
-    public static final long SIZE$pointPolygons = LAYOUT$pointPolygons.byteSize();
-    public static final long SIZE$samplerMipLodBias = LAYOUT$samplerMipLodBias.byteSize();
-    public static final long SIZE$separateStencilMaskRef = LAYOUT$separateStencilMaskRef.byteSize();
-    public static final long SIZE$shaderSampleRateInterpolationFunctions = LAYOUT$shaderSampleRateInterpolationFunctions.byteSize();
-    public static final long SIZE$tessellationIsolines = LAYOUT$tessellationIsolines.byteSize();
-    public static final long SIZE$tessellationPointMode = LAYOUT$tessellationPointMode.byteSize();
-    public static final long SIZE$triangleFans = LAYOUT$triangleFans.byteSize();
-    public static final long SIZE$vertexAttributeAccessBeyondStride = LAYOUT$vertexAttributeAccessBeyondStride.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$constantAlphaColorBlendFactors = LAYOUT.byteOffset(PATH$constantAlphaColorBlendFactors);
-    public static final long OFFSET$events = LAYOUT.byteOffset(PATH$events);
-    public static final long OFFSET$imageViewFormatReinterpretation = LAYOUT.byteOffset(PATH$imageViewFormatReinterpretation);
-    public static final long OFFSET$imageViewFormatSwizzle = LAYOUT.byteOffset(PATH$imageViewFormatSwizzle);
-    public static final long OFFSET$imageView2DOn3DImage = LAYOUT.byteOffset(PATH$imageView2DOn3DImage);
-    public static final long OFFSET$multisampleArrayImage = LAYOUT.byteOffset(PATH$multisampleArrayImage);
-    public static final long OFFSET$mutableComparisonSamplers = LAYOUT.byteOffset(PATH$mutableComparisonSamplers);
-    public static final long OFFSET$pointPolygons = LAYOUT.byteOffset(PATH$pointPolygons);
-    public static final long OFFSET$samplerMipLodBias = LAYOUT.byteOffset(PATH$samplerMipLodBias);
-    public static final long OFFSET$separateStencilMaskRef = LAYOUT.byteOffset(PATH$separateStencilMaskRef);
-    public static final long OFFSET$shaderSampleRateInterpolationFunctions = LAYOUT.byteOffset(PATH$shaderSampleRateInterpolationFunctions);
-    public static final long OFFSET$tessellationIsolines = LAYOUT.byteOffset(PATH$tessellationIsolines);
-    public static final long OFFSET$tessellationPointMode = LAYOUT.byteOffset(PATH$tessellationPointMode);
-    public static final long OFFSET$triangleFans = LAYOUT.byteOffset(PATH$triangleFans);
-    public static final long OFFSET$vertexAttributeAccessBeyondStride = LAYOUT.byteOffset(PATH$vertexAttributeAccessBeyondStride);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_PORTABILITY_SUBSET_FEATURES_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -292,4 +235,96 @@ public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(@NotNull MemorySegmen
         segment.set(LAYOUT$vertexAttributeAccessBeyondStride, OFFSET$vertexAttributeAccessBeyondStride, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("constantAlphaColorBlendFactors"),
+        ValueLayout.JAVA_INT.withName("events"),
+        ValueLayout.JAVA_INT.withName("imageViewFormatReinterpretation"),
+        ValueLayout.JAVA_INT.withName("imageViewFormatSwizzle"),
+        ValueLayout.JAVA_INT.withName("imageView2DOn3DImage"),
+        ValueLayout.JAVA_INT.withName("multisampleArrayImage"),
+        ValueLayout.JAVA_INT.withName("mutableComparisonSamplers"),
+        ValueLayout.JAVA_INT.withName("pointPolygons"),
+        ValueLayout.JAVA_INT.withName("samplerMipLodBias"),
+        ValueLayout.JAVA_INT.withName("separateStencilMaskRef"),
+        ValueLayout.JAVA_INT.withName("shaderSampleRateInterpolationFunctions"),
+        ValueLayout.JAVA_INT.withName("tessellationIsolines"),
+        ValueLayout.JAVA_INT.withName("tessellationPointMode"),
+        ValueLayout.JAVA_INT.withName("triangleFans"),
+        ValueLayout.JAVA_INT.withName("vertexAttributeAccessBeyondStride")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$constantAlphaColorBlendFactors = PathElement.groupElement("PATH$constantAlphaColorBlendFactors");
+    public static final PathElement PATH$events = PathElement.groupElement("PATH$events");
+    public static final PathElement PATH$imageViewFormatReinterpretation = PathElement.groupElement("PATH$imageViewFormatReinterpretation");
+    public static final PathElement PATH$imageViewFormatSwizzle = PathElement.groupElement("PATH$imageViewFormatSwizzle");
+    public static final PathElement PATH$imageView2DOn3DImage = PathElement.groupElement("PATH$imageView2DOn3DImage");
+    public static final PathElement PATH$multisampleArrayImage = PathElement.groupElement("PATH$multisampleArrayImage");
+    public static final PathElement PATH$mutableComparisonSamplers = PathElement.groupElement("PATH$mutableComparisonSamplers");
+    public static final PathElement PATH$pointPolygons = PathElement.groupElement("PATH$pointPolygons");
+    public static final PathElement PATH$samplerMipLodBias = PathElement.groupElement("PATH$samplerMipLodBias");
+    public static final PathElement PATH$separateStencilMaskRef = PathElement.groupElement("PATH$separateStencilMaskRef");
+    public static final PathElement PATH$shaderSampleRateInterpolationFunctions = PathElement.groupElement("PATH$shaderSampleRateInterpolationFunctions");
+    public static final PathElement PATH$tessellationIsolines = PathElement.groupElement("PATH$tessellationIsolines");
+    public static final PathElement PATH$tessellationPointMode = PathElement.groupElement("PATH$tessellationPointMode");
+    public static final PathElement PATH$triangleFans = PathElement.groupElement("PATH$triangleFans");
+    public static final PathElement PATH$vertexAttributeAccessBeyondStride = PathElement.groupElement("PATH$vertexAttributeAccessBeyondStride");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$constantAlphaColorBlendFactors = (OfInt) LAYOUT.select(PATH$constantAlphaColorBlendFactors);
+    public static final OfInt LAYOUT$events = (OfInt) LAYOUT.select(PATH$events);
+    public static final OfInt LAYOUT$imageViewFormatReinterpretation = (OfInt) LAYOUT.select(PATH$imageViewFormatReinterpretation);
+    public static final OfInt LAYOUT$imageViewFormatSwizzle = (OfInt) LAYOUT.select(PATH$imageViewFormatSwizzle);
+    public static final OfInt LAYOUT$imageView2DOn3DImage = (OfInt) LAYOUT.select(PATH$imageView2DOn3DImage);
+    public static final OfInt LAYOUT$multisampleArrayImage = (OfInt) LAYOUT.select(PATH$multisampleArrayImage);
+    public static final OfInt LAYOUT$mutableComparisonSamplers = (OfInt) LAYOUT.select(PATH$mutableComparisonSamplers);
+    public static final OfInt LAYOUT$pointPolygons = (OfInt) LAYOUT.select(PATH$pointPolygons);
+    public static final OfInt LAYOUT$samplerMipLodBias = (OfInt) LAYOUT.select(PATH$samplerMipLodBias);
+    public static final OfInt LAYOUT$separateStencilMaskRef = (OfInt) LAYOUT.select(PATH$separateStencilMaskRef);
+    public static final OfInt LAYOUT$shaderSampleRateInterpolationFunctions = (OfInt) LAYOUT.select(PATH$shaderSampleRateInterpolationFunctions);
+    public static final OfInt LAYOUT$tessellationIsolines = (OfInt) LAYOUT.select(PATH$tessellationIsolines);
+    public static final OfInt LAYOUT$tessellationPointMode = (OfInt) LAYOUT.select(PATH$tessellationPointMode);
+    public static final OfInt LAYOUT$triangleFans = (OfInt) LAYOUT.select(PATH$triangleFans);
+    public static final OfInt LAYOUT$vertexAttributeAccessBeyondStride = (OfInt) LAYOUT.select(PATH$vertexAttributeAccessBeyondStride);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$constantAlphaColorBlendFactors = LAYOUT$constantAlphaColorBlendFactors.byteSize();
+    public static final long SIZE$events = LAYOUT$events.byteSize();
+    public static final long SIZE$imageViewFormatReinterpretation = LAYOUT$imageViewFormatReinterpretation.byteSize();
+    public static final long SIZE$imageViewFormatSwizzle = LAYOUT$imageViewFormatSwizzle.byteSize();
+    public static final long SIZE$imageView2DOn3DImage = LAYOUT$imageView2DOn3DImage.byteSize();
+    public static final long SIZE$multisampleArrayImage = LAYOUT$multisampleArrayImage.byteSize();
+    public static final long SIZE$mutableComparisonSamplers = LAYOUT$mutableComparisonSamplers.byteSize();
+    public static final long SIZE$pointPolygons = LAYOUT$pointPolygons.byteSize();
+    public static final long SIZE$samplerMipLodBias = LAYOUT$samplerMipLodBias.byteSize();
+    public static final long SIZE$separateStencilMaskRef = LAYOUT$separateStencilMaskRef.byteSize();
+    public static final long SIZE$shaderSampleRateInterpolationFunctions = LAYOUT$shaderSampleRateInterpolationFunctions.byteSize();
+    public static final long SIZE$tessellationIsolines = LAYOUT$tessellationIsolines.byteSize();
+    public static final long SIZE$tessellationPointMode = LAYOUT$tessellationPointMode.byteSize();
+    public static final long SIZE$triangleFans = LAYOUT$triangleFans.byteSize();
+    public static final long SIZE$vertexAttributeAccessBeyondStride = LAYOUT$vertexAttributeAccessBeyondStride.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$constantAlphaColorBlendFactors = LAYOUT.byteOffset(PATH$constantAlphaColorBlendFactors);
+    public static final long OFFSET$events = LAYOUT.byteOffset(PATH$events);
+    public static final long OFFSET$imageViewFormatReinterpretation = LAYOUT.byteOffset(PATH$imageViewFormatReinterpretation);
+    public static final long OFFSET$imageViewFormatSwizzle = LAYOUT.byteOffset(PATH$imageViewFormatSwizzle);
+    public static final long OFFSET$imageView2DOn3DImage = LAYOUT.byteOffset(PATH$imageView2DOn3DImage);
+    public static final long OFFSET$multisampleArrayImage = LAYOUT.byteOffset(PATH$multisampleArrayImage);
+    public static final long OFFSET$mutableComparisonSamplers = LAYOUT.byteOffset(PATH$mutableComparisonSamplers);
+    public static final long OFFSET$pointPolygons = LAYOUT.byteOffset(PATH$pointPolygons);
+    public static final long OFFSET$samplerMipLodBias = LAYOUT.byteOffset(PATH$samplerMipLodBias);
+    public static final long OFFSET$separateStencilMaskRef = LAYOUT.byteOffset(PATH$separateStencilMaskRef);
+    public static final long OFFSET$shaderSampleRateInterpolationFunctions = LAYOUT.byteOffset(PATH$shaderSampleRateInterpolationFunctions);
+    public static final long OFFSET$tessellationIsolines = LAYOUT.byteOffset(PATH$tessellationIsolines);
+    public static final long OFFSET$tessellationPointMode = LAYOUT.byteOffset(PATH$tessellationPointMode);
+    public static final long OFFSET$triangleFans = LAYOUT.byteOffset(PATH$triangleFans);
+    public static final long OFFSET$vertexAttributeAccessBeyondStride = LAYOUT.byteOffset(PATH$vertexAttributeAccessBeyondStride);
 }

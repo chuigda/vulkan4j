@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDeviceGroupDeviceCreateInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceGroupDeviceCreateInfo.html"><code>VkDeviceGroupDeviceCreateInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDeviceGroupDeviceCreateInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t physicalDeviceCount;
+///     VkPhysicalDevice const* pPhysicalDevices;
+/// } VkDeviceGroupDeviceCreateInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO`
+///
+/// The {@link VkDeviceGroupDeviceCreateInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkDeviceGroupDeviceCreateInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceGroupDeviceCreateInfo.html">VkDeviceGroupDeviceCreateInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceGroupDeviceCreateInfo.html"><code>VkDeviceGroupDeviceCreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDeviceGroupDeviceCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkDeviceGroupDeviceCreateInfo {
-        sType(VkStructureType.DEVICE_GROUP_DEVICE_CREATE_INFO);
-    }
-
     public static VkDeviceGroupDeviceCreateInfo allocate(Arena arena) {
-        return new VkDeviceGroupDeviceCreateInfo(arena.allocate(LAYOUT));
+        VkDeviceGroupDeviceCreateInfo ret = new VkDeviceGroupDeviceCreateInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.DEVICE_GROUP_DEVICE_CREATE_INFO);
+        return ret;
     }
 
     public static VkDeviceGroupDeviceCreateInfo[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkDeviceGroupDeviceCreateInfo(@NotNull MemorySegment segment) impl
         VkDeviceGroupDeviceCreateInfo[] ret = new VkDeviceGroupDeviceCreateInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkDeviceGroupDeviceCreateInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.DEVICE_GROUP_DEVICE_CREATE_INFO);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkDeviceGroupDeviceCreateInfo(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("physicalDeviceCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pPhysicalDevices")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$physicalDeviceCount = PathElement.groupElement("PATH$physicalDeviceCount");
-    public static final PathElement PATH$pPhysicalDevices = PathElement.groupElement("PATH$pPhysicalDevices");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$physicalDeviceCount = (OfInt) LAYOUT.select(PATH$physicalDeviceCount);
-    public static final AddressLayout LAYOUT$pPhysicalDevices = (AddressLayout) LAYOUT.select(PATH$pPhysicalDevices);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$physicalDeviceCount = LAYOUT$physicalDeviceCount.byteSize();
-    public static final long SIZE$pPhysicalDevices = LAYOUT$pPhysicalDevices.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$physicalDeviceCount = LAYOUT.byteOffset(PATH$physicalDeviceCount);
-    public static final long OFFSET$pPhysicalDevices = LAYOUT.byteOffset(PATH$pPhysicalDevices);
+    public void autoInit() {
+        sType(VkStructureType.DEVICE_GROUP_DEVICE_CREATE_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -129,11 +124,38 @@ public record VkDeviceGroupDeviceCreateInfo(@NotNull MemorySegment segment) impl
     /// buffer.
     public @Nullable VkPhysicalDevice.Buffer pPhysicalDevices() {
         MemorySegment s = pPhysicalDevicesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkPhysicalDevice.Buffer(s);
     }
 
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("physicalDeviceCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pPhysicalDevices")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$physicalDeviceCount = PathElement.groupElement("PATH$physicalDeviceCount");
+    public static final PathElement PATH$pPhysicalDevices = PathElement.groupElement("PATH$pPhysicalDevices");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$physicalDeviceCount = (OfInt) LAYOUT.select(PATH$physicalDeviceCount);
+    public static final AddressLayout LAYOUT$pPhysicalDevices = (AddressLayout) LAYOUT.select(PATH$pPhysicalDevices);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$physicalDeviceCount = LAYOUT$physicalDeviceCount.byteSize();
+    public static final long SIZE$pPhysicalDevices = LAYOUT$pPhysicalDevices.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$physicalDeviceCount = LAYOUT.byteOffset(PATH$physicalDeviceCount);
+    public static final long OFFSET$pPhysicalDevices = LAYOUT.byteOffset(PATH$pPhysicalDevices);
 }

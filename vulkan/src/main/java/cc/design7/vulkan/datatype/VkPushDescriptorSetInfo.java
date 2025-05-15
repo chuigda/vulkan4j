@@ -14,8 +14,31 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPushDescriptorSetInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPushDescriptorSetInfo.html"><code>VkPushDescriptorSetInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPushDescriptorSetInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkShaderStageFlags stageFlags;
+///     VkPipelineLayout layout;
+///     uint32_t set;
+///     uint32_t descriptorWriteCount;
+///     VkWriteDescriptorSet const* pDescriptorWrites;
+/// } VkPushDescriptorSetInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_INFO`
+///
+/// The {@link VkPushDescriptorSetInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPushDescriptorSetInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +47,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPushDescriptorSetInfo.html">VkPushDescriptorSetInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPushDescriptorSetInfo.html"><code>VkPushDescriptorSetInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkPushDescriptorSetInfo {
-        sType(VkStructureType.PUSH_DESCRIPTOR_SET_INFO);
-    }
-
     public static VkPushDescriptorSetInfo allocate(Arena arena) {
-        return new VkPushDescriptorSetInfo(arena.allocate(LAYOUT));
+        VkPushDescriptorSetInfo ret = new VkPushDescriptorSetInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PUSH_DESCRIPTOR_SET_INFO);
+        return ret;
     }
 
     public static VkPushDescriptorSetInfo[] allocate(Arena arena, int count) {
@@ -41,6 +62,7 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         VkPushDescriptorSetInfo[] ret = new VkPushDescriptorSetInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPushDescriptorSetInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PUSH_DESCRIPTOR_SET_INFO);
         }
         return ret;
     }
@@ -55,6 +77,101 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         VkPushDescriptorSetInfo[] ret = allocate(arena, src.length);
         for (int i = 0; i < src.length; i ++) {
             ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.PUSH_DESCRIPTOR_SET_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkShaderStageFlags.class) int stageFlags() {
+        return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
+    }
+
+    public void stageFlags(@enumtype(VkShaderStageFlags.class) int value) {
+        segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
+    }
+
+    public @Nullable VkPipelineLayout layout() {
+        MemorySegment s = segment.asSlice(OFFSET$layout, SIZE$layout);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineLayout(s);
+    }
+
+    public void layout(@Nullable VkPipelineLayout value) {
+        segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned int set() {
+        return segment.get(LAYOUT$set, OFFSET$set);
+    }
+
+    public void set(@unsigned int value) {
+        segment.set(LAYOUT$set, OFFSET$set, value);
+    }
+
+    public @unsigned int descriptorWriteCount() {
+        return segment.get(LAYOUT$descriptorWriteCount, OFFSET$descriptorWriteCount);
+    }
+
+    public void descriptorWriteCount(@unsigned int value) {
+        segment.set(LAYOUT$descriptorWriteCount, OFFSET$descriptorWriteCount, value);
+    }
+
+    public @pointer(comment="VkWriteDescriptorSet*") MemorySegment pDescriptorWritesRaw() {
+        return segment.get(LAYOUT$pDescriptorWrites, OFFSET$pDescriptorWrites);
+    }
+
+    public void pDescriptorWritesRaw(@pointer(comment="VkWriteDescriptorSet*") MemorySegment value) {
+        segment.set(LAYOUT$pDescriptorWrites, OFFSET$pDescriptorWrites, value);
+    }
+
+    public @Nullable VkWriteDescriptorSet pDescriptorWrites() {
+        MemorySegment s = pDescriptorWritesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkWriteDescriptorSet(s);
+    }
+
+    public void pDescriptorWrites(@Nullable VkWriteDescriptorSet value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDescriptorWritesRaw(s);
+    }
+
+    @unsafe public @Nullable VkWriteDescriptorSet[] pDescriptorWrites(int assumedCount) {
+        MemorySegment s = pDescriptorWritesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkWriteDescriptorSet.SIZE);
+        VkWriteDescriptorSet[] ret = new VkWriteDescriptorSet[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkWriteDescriptorSet(s.asSlice(i * VkWriteDescriptorSet.SIZE, VkWriteDescriptorSet.SIZE));
         }
         return ret;
     }
@@ -101,96 +218,4 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
     public static final long OFFSET$set = LAYOUT.byteOffset(PATH$set);
     public static final long OFFSET$descriptorWriteCount = LAYOUT.byteOffset(PATH$descriptorWriteCount);
     public static final long OFFSET$pDescriptorWrites = LAYOUT.byteOffset(PATH$pDescriptorWrites);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @enumtype(VkShaderStageFlags.class) int stageFlags() {
-        return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
-    }
-
-    public void stageFlags(@enumtype(VkShaderStageFlags.class) int value) {
-        segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
-    }
-
-    public @Nullable VkPipelineLayout layout() {
-        MemorySegment s = segment.asSlice(OFFSET$layout, SIZE$layout);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPipelineLayout(s);
-    }
-
-    public void layout(@Nullable VkPipelineLayout value) {
-        segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned int set() {
-        return segment.get(LAYOUT$set, OFFSET$set);
-    }
-
-    public void set(@unsigned int value) {
-        segment.set(LAYOUT$set, OFFSET$set, value);
-    }
-
-    public @unsigned int descriptorWriteCount() {
-        return segment.get(LAYOUT$descriptorWriteCount, OFFSET$descriptorWriteCount);
-    }
-
-    public void descriptorWriteCount(@unsigned int value) {
-        segment.set(LAYOUT$descriptorWriteCount, OFFSET$descriptorWriteCount, value);
-    }
-
-    public @pointer(comment="VkWriteDescriptorSet*") MemorySegment pDescriptorWritesRaw() {
-        return segment.get(LAYOUT$pDescriptorWrites, OFFSET$pDescriptorWrites);
-    }
-
-    public void pDescriptorWritesRaw(@pointer(comment="VkWriteDescriptorSet*") MemorySegment value) {
-        segment.set(LAYOUT$pDescriptorWrites, OFFSET$pDescriptorWrites, value);
-    }
-
-    public @Nullable VkWriteDescriptorSet pDescriptorWrites() {
-        MemorySegment s = pDescriptorWritesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkWriteDescriptorSet(s);
-    }
-
-    public void pDescriptorWrites(@Nullable VkWriteDescriptorSet value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pDescriptorWritesRaw(s);
-    }
-
-    @unsafe public @Nullable VkWriteDescriptorSet[] pDescriptorWrites(int assumedCount) {
-        MemorySegment s = pDescriptorWritesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkWriteDescriptorSet.SIZE);
-        VkWriteDescriptorSet[] ret = new VkWriteDescriptorSet[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkWriteDescriptorSet(s.asSlice(i * VkWriteDescriptorSet.SIZE, VkWriteDescriptorSet.SIZE));
-        }
-        return ret;
-    }
-
 }

@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkValidationFeaturesEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkValidationFeaturesEXT.html"><code>VkValidationFeaturesEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkValidationFeaturesEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t enabledValidationFeatureCount;
+///     VkValidationFeatureEnableEXT const* pEnabledValidationFeatures;
+///     uint32_t disabledValidationFeatureCount;
+///     VkValidationFeatureDisableEXT const* pDisabledValidationFeatures;
+/// } VkValidationFeaturesEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT`
+///
+/// The {@link VkValidationFeaturesEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkValidationFeaturesEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkValidationFeaturesEXT.html">VkValidationFeaturesEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkValidationFeaturesEXT.html"><code>VkValidationFeaturesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkValidationFeaturesEXT {
-        sType(VkStructureType.VALIDATION_FEATURES_EXT);
-    }
-
     public static VkValidationFeaturesEXT allocate(Arena arena) {
-        return new VkValidationFeaturesEXT(arena.allocate(LAYOUT));
+        VkValidationFeaturesEXT ret = new VkValidationFeaturesEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VALIDATION_FEATURES_EXT);
+        return ret;
     }
 
     public static VkValidationFeaturesEXT[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         VkValidationFeaturesEXT[] ret = new VkValidationFeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkValidationFeaturesEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VALIDATION_FEATURES_EXT);
         }
         return ret;
     }
@@ -59,43 +80,9 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("enabledValidationFeatureCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pEnabledValidationFeatures"),
-        ValueLayout.JAVA_INT.withName("disabledValidationFeatureCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDisabledValidationFeatures")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$enabledValidationFeatureCount = PathElement.groupElement("PATH$enabledValidationFeatureCount");
-    public static final PathElement PATH$pEnabledValidationFeatures = PathElement.groupElement("PATH$pEnabledValidationFeatures");
-    public static final PathElement PATH$disabledValidationFeatureCount = PathElement.groupElement("PATH$disabledValidationFeatureCount");
-    public static final PathElement PATH$pDisabledValidationFeatures = PathElement.groupElement("PATH$pDisabledValidationFeatures");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$enabledValidationFeatureCount = (OfInt) LAYOUT.select(PATH$enabledValidationFeatureCount);
-    public static final AddressLayout LAYOUT$pEnabledValidationFeatures = (AddressLayout) LAYOUT.select(PATH$pEnabledValidationFeatures);
-    public static final OfInt LAYOUT$disabledValidationFeatureCount = (OfInt) LAYOUT.select(PATH$disabledValidationFeatureCount);
-    public static final AddressLayout LAYOUT$pDisabledValidationFeatures = (AddressLayout) LAYOUT.select(PATH$pDisabledValidationFeatures);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$enabledValidationFeatureCount = LAYOUT$enabledValidationFeatureCount.byteSize();
-    public static final long SIZE$pEnabledValidationFeatures = LAYOUT$pEnabledValidationFeatures.byteSize();
-    public static final long SIZE$disabledValidationFeatureCount = LAYOUT$disabledValidationFeatureCount.byteSize();
-    public static final long SIZE$pDisabledValidationFeatures = LAYOUT$pDisabledValidationFeatures.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$enabledValidationFeatureCount = LAYOUT.byteOffset(PATH$enabledValidationFeatureCount);
-    public static final long OFFSET$pEnabledValidationFeatures = LAYOUT.byteOffset(PATH$pEnabledValidationFeatures);
-    public static final long OFFSET$disabledValidationFeatureCount = LAYOUT.byteOffset(PATH$disabledValidationFeatureCount);
-    public static final long OFFSET$pDisabledValidationFeatures = LAYOUT.byteOffset(PATH$pDisabledValidationFeatures);
+    public void autoInit() {
+        sType(VkStructureType.VALIDATION_FEATURES_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -139,7 +126,7 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
     /// or writing to the buffer.
     public @Nullable @enumtype(VkValidationFeatureEnableEXT.class) IntPtr pEnabledValidationFeatures() {
         MemorySegment s = pEnabledValidationFeaturesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -172,7 +159,7 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
     /// or writing to the buffer.
     public @Nullable @enumtype(VkValidationFeatureDisableEXT.class) IntPtr pDisabledValidationFeatures() {
         MemorySegment s = pDisabledValidationFeaturesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -183,4 +170,41 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         pDisabledValidationFeaturesRaw(s);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("enabledValidationFeatureCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pEnabledValidationFeatures"),
+        ValueLayout.JAVA_INT.withName("disabledValidationFeatureCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDisabledValidationFeatures")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$enabledValidationFeatureCount = PathElement.groupElement("PATH$enabledValidationFeatureCount");
+    public static final PathElement PATH$pEnabledValidationFeatures = PathElement.groupElement("PATH$pEnabledValidationFeatures");
+    public static final PathElement PATH$disabledValidationFeatureCount = PathElement.groupElement("PATH$disabledValidationFeatureCount");
+    public static final PathElement PATH$pDisabledValidationFeatures = PathElement.groupElement("PATH$pDisabledValidationFeatures");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$enabledValidationFeatureCount = (OfInt) LAYOUT.select(PATH$enabledValidationFeatureCount);
+    public static final AddressLayout LAYOUT$pEnabledValidationFeatures = (AddressLayout) LAYOUT.select(PATH$pEnabledValidationFeatures);
+    public static final OfInt LAYOUT$disabledValidationFeatureCount = (OfInt) LAYOUT.select(PATH$disabledValidationFeatureCount);
+    public static final AddressLayout LAYOUT$pDisabledValidationFeatures = (AddressLayout) LAYOUT.select(PATH$pDisabledValidationFeatures);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$enabledValidationFeatureCount = LAYOUT$enabledValidationFeatureCount.byteSize();
+    public static final long SIZE$pEnabledValidationFeatures = LAYOUT$pEnabledValidationFeatures.byteSize();
+    public static final long SIZE$disabledValidationFeatureCount = LAYOUT$disabledValidationFeatureCount.byteSize();
+    public static final long SIZE$pDisabledValidationFeatures = LAYOUT$pDisabledValidationFeatures.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$enabledValidationFeatureCount = LAYOUT.byteOffset(PATH$enabledValidationFeatureCount);
+    public static final long OFFSET$pEnabledValidationFeatures = LAYOUT.byteOffset(PATH$pEnabledValidationFeatures);
+    public static final long OFFSET$disabledValidationFeatureCount = LAYOUT.byteOffset(PATH$disabledValidationFeatureCount);
+    public static final long OFFSET$pDisabledValidationFeatures = LAYOUT.byteOffset(PATH$pDisabledValidationFeatures);
 }

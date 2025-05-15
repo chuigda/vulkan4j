@@ -17,6 +17,20 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoEncodeH264PictureInfoFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoEncodeH264PictureInfoFlags {
+///     uint32_t IdrPicFlag : 1;
+///     uint32_t is_reference : 1;
+///     uint32_t no_output_of_prior_pics_flag : 1;
+///     uint32_t long_term_reference_flag : 1;
+///     uint32_t adaptive_ref_pic_marking_mode_flag : 1;
+///     uint32_t reserved : 27;
+/// } StdVideoEncodeH264PictureInfoFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +42,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeH264PictureInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeH264PictureInfoFlags allocate(Arena arena) {
-        return new StdVideoEncodeH264PictureInfoFlags(arena.allocate(LAYOUT));
+        StdVideoEncodeH264PictureInfoFlags ret = new StdVideoEncodeH264PictureInfoFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoEncodeH264PictureInfoFlags[] allocate(Arena arena, int count) {
@@ -53,18 +68,6 @@ public record StdVideoEncodeH264PictureInfoFlags(@NotNull MemorySegment segment)
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$IdrPicFlag_reserved")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$IdrPicFlag_reserved = PathElement.groupElement("PATH$bitfield$IdrPicFlag_reserved");
-
-    public static final OfInt LAYOUT$IdrPicFlag_reserved = (OfInt) LAYOUT.select(PATH$bitfield$IdrPicFlag_reserved);
-
-
-    public static final long OFFSET$IdrPicFlag_reserved = LAYOUT.byteOffset(PATH$bitfield$IdrPicFlag_reserved);
 
     public boolean IdrPicFlag() {
         MemorySegment s = segment.asSlice(OFFSET$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
@@ -116,5 +119,15 @@ public record StdVideoEncodeH264PictureInfoFlags(@NotNull MemorySegment segment)
         BitfieldUtil.writeBit(s, 4, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$IdrPicFlag_reserved")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$bitfield$IdrPicFlag_reserved = PathElement.groupElement("PATH$bitfield$IdrPicFlag_reserved");
+
+    public static final OfInt LAYOUT$IdrPicFlag_reserved = (OfInt) LAYOUT.select(PATH$bitfield$IdrPicFlag_reserved);
+
+
+    public static final long OFFSET$IdrPicFlag_reserved = LAYOUT.byteOffset(PATH$bitfield$IdrPicFlag_reserved);
 }

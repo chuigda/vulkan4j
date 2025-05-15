@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkProvokingVertexModeEXT.html">VkProvokingVertexModeEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkProvokingVertexModeEXT.html"><code>VkProvokingVertexModeEXT</code></a>
 public final class VkProvokingVertexModeEXT {
     public static final int FIRST_VERTEX = 0x0;
     public static final int LAST_VERTEX = 0x1;

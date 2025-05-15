@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeCapabilityFlagsKHR.html">VkVideoDecodeCapabilityFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeCapabilityFlagsKHR.html"><code>VkVideoDecodeCapabilityFlagsKHR</code></a>
 public final class VkVideoDecodeCapabilityFlagsKHR {
     public static final int DPB_AND_OUTPUT_COINCIDE = 0x1;
     public static final int DPB_AND_OUTPUT_DISTINCT = 0x2;

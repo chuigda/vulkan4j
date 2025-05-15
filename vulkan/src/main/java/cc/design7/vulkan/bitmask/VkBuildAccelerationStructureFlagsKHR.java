@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBuildAccelerationStructureFlagsKHR.html">VkBuildAccelerationStructureFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBuildAccelerationStructureFlagsKHR.html"><code>VkBuildAccelerationStructureFlagsKHR</code></a>
 public final class VkBuildAccelerationStructureFlagsKHR {
     public static final int ALLOW_COMPACTION = 0x2;
     public static final int ALLOW_DATA_ACCESS = 0x800;

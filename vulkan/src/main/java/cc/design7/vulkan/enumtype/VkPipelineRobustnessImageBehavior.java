@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineRobustnessImageBehavior.html">VkPipelineRobustnessImageBehavior</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineRobustnessImageBehavior.html"><code>VkPipelineRobustnessImageBehavior</code></a>
 public final class VkPipelineRobustnessImageBehavior {
     public static final int DEVICE_DEFAULT = 0x0;
     public static final int DISABLED = 0x1;

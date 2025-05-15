@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceMemoryBudgetPropertiesEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMemoryBudgetPropertiesEXT.html"><code>VkPhysicalDeviceMemoryBudgetPropertiesEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceMemoryBudgetPropertiesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkDeviceSize heapBudget;
+///     VkDeviceSize heapUsage;
+/// } VkPhysicalDeviceMemoryBudgetPropertiesEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT`
+///
+/// The {@link VkPhysicalDeviceMemoryBudgetPropertiesEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceMemoryBudgetPropertiesEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMemoryBudgetPropertiesEXT.html">VkPhysicalDeviceMemoryBudgetPropertiesEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMemoryBudgetPropertiesEXT.html"><code>VkPhysicalDeviceMemoryBudgetPropertiesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceMemoryBudgetPropertiesEXT {
-        sType(VkStructureType.PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT);
-    }
-
     public static VkPhysicalDeviceMemoryBudgetPropertiesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceMemoryBudgetPropertiesEXT(arena.allocate(LAYOUT));
+        VkPhysicalDeviceMemoryBudgetPropertiesEXT ret = new VkPhysicalDeviceMemoryBudgetPropertiesEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT);
+        return ret;
     }
 
     public static VkPhysicalDeviceMemoryBudgetPropertiesEXT[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
         VkPhysicalDeviceMemoryBudgetPropertiesEXT[] ret = new VkPhysicalDeviceMemoryBudgetPropertiesEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceMemoryBudgetPropertiesEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_LONG.withName("heapBudget"),
-        ValueLayout.JAVA_LONG.withName("heapUsage")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$heapBudget = PathElement.groupElement("PATH$heapBudget");
-    public static final PathElement PATH$heapUsage = PathElement.groupElement("PATH$heapUsage");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfLong LAYOUT$heapBudget = (OfLong) LAYOUT.select(PATH$heapBudget);
-    public static final OfLong LAYOUT$heapUsage = (OfLong) LAYOUT.select(PATH$heapUsage);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$heapBudget = LAYOUT$heapBudget.byteSize();
-    public static final long SIZE$heapUsage = LAYOUT$heapUsage.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$heapBudget = LAYOUT.byteOffset(PATH$heapBudget);
-    public static final long OFFSET$heapUsage = LAYOUT.byteOffset(PATH$heapUsage);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
         segment.set(LAYOUT$heapUsage, OFFSET$heapUsage, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("heapBudget"),
+        ValueLayout.JAVA_LONG.withName("heapUsage")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$heapBudget = PathElement.groupElement("PATH$heapBudget");
+    public static final PathElement PATH$heapUsage = PathElement.groupElement("PATH$heapUsage");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$heapBudget = (OfLong) LAYOUT.select(PATH$heapBudget);
+    public static final OfLong LAYOUT$heapUsage = (OfLong) LAYOUT.select(PATH$heapUsage);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$heapBudget = LAYOUT$heapBudget.byteSize();
+    public static final long SIZE$heapUsage = LAYOUT$heapUsage.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$heapBudget = LAYOUT.byteOffset(PATH$heapBudget);
+    public static final long OFFSET$heapUsage = LAYOUT.byteOffset(PATH$heapUsage);
 }

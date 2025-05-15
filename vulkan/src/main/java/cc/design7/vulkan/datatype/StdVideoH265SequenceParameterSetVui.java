@@ -16,6 +16,40 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoH265SequenceParameterSetVui} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoH265SequenceParameterSetVui {
+///     StdVideoH265SpsVuiFlags flags;
+///     StdVideoH265AspectRatioIdc aspect_ratio_idc;
+///     uint16_t sar_width;
+///     uint16_t sar_height;
+///     uint8_t video_format;
+///     uint8_t colour_primaries;
+///     uint8_t transfer_characteristics;
+///     uint8_t matrix_coeffs;
+///     uint8_t chroma_sample_loc_type_top_field;
+///     uint8_t chroma_sample_loc_type_bottom_field;
+///     uint8_t reserved1;
+///     uint8_t reserved2;
+///     uint16_t def_disp_win_left_offset;
+///     uint16_t def_disp_win_right_offset;
+///     uint16_t def_disp_win_top_offset;
+///     uint16_t def_disp_win_bottom_offset;
+///     uint32_t vui_num_units_in_tick;
+///     uint32_t vui_time_scale;
+///     uint32_t vui_num_ticks_poc_diff_one_minus1;
+///     uint16_t min_spatial_segmentation_idc;
+///     uint16_t reserved3;
+///     uint8_t max_bytes_per_pic_denom;
+///     uint8_t max_bits_per_min_cu_denom;
+///     uint8_t log2_max_mv_length_horizontal;
+///     uint8_t log2_max_mv_length_vertical;
+///     StdVideoH265HrdParameters const* pHrdParameters;
+/// } StdVideoH265SequenceParameterSetVui;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +61,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265SequenceParameterSetVui allocate(Arena arena) {
-        return new StdVideoH265SequenceParameterSetVui(arena.allocate(LAYOUT));
+        StdVideoH265SequenceParameterSetVui ret = new StdVideoH265SequenceParameterSetVui(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoH265SequenceParameterSetVui[] allocate(Arena arena, int count) {
@@ -52,144 +87,6 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        StdVideoH265SpsVuiFlags.LAYOUT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("aspect_ratio_idc"),
-        ValueLayout.JAVA_SHORT.withName("sar_width"),
-        ValueLayout.JAVA_SHORT.withName("sar_height"),
-        ValueLayout.JAVA_BYTE.withName("video_format"),
-        ValueLayout.JAVA_BYTE.withName("colour_primaries"),
-        ValueLayout.JAVA_BYTE.withName("transfer_characteristics"),
-        ValueLayout.JAVA_BYTE.withName("matrix_coeffs"),
-        ValueLayout.JAVA_BYTE.withName("chroma_sample_loc_type_top_field"),
-        ValueLayout.JAVA_BYTE.withName("chroma_sample_loc_type_bottom_field"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
-        ValueLayout.JAVA_BYTE.withName("reserved2"),
-        ValueLayout.JAVA_SHORT.withName("def_disp_win_left_offset"),
-        ValueLayout.JAVA_SHORT.withName("def_disp_win_right_offset"),
-        ValueLayout.JAVA_SHORT.withName("def_disp_win_top_offset"),
-        ValueLayout.JAVA_SHORT.withName("def_disp_win_bottom_offset"),
-        ValueLayout.JAVA_INT.withName("vui_num_units_in_tick"),
-        ValueLayout.JAVA_INT.withName("vui_time_scale"),
-        ValueLayout.JAVA_INT.withName("vui_num_ticks_poc_diff_one_minus1"),
-        ValueLayout.JAVA_SHORT.withName("min_spatial_segmentation_idc"),
-        ValueLayout.JAVA_SHORT.withName("reserved3"),
-        ValueLayout.JAVA_BYTE.withName("max_bytes_per_pic_denom"),
-        ValueLayout.JAVA_BYTE.withName("max_bits_per_min_cu_denom"),
-        ValueLayout.JAVA_BYTE.withName("log2_max_mv_length_horizontal"),
-        ValueLayout.JAVA_BYTE.withName("log2_max_mv_length_vertical"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265HrdParameters.LAYOUT).withName("pHrdParameters")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$aspect_ratio_idc = PathElement.groupElement("PATH$aspect_ratio_idc");
-    public static final PathElement PATH$sar_width = PathElement.groupElement("PATH$sar_width");
-    public static final PathElement PATH$sar_height = PathElement.groupElement("PATH$sar_height");
-    public static final PathElement PATH$video_format = PathElement.groupElement("PATH$video_format");
-    public static final PathElement PATH$colour_primaries = PathElement.groupElement("PATH$colour_primaries");
-    public static final PathElement PATH$transfer_characteristics = PathElement.groupElement("PATH$transfer_characteristics");
-    public static final PathElement PATH$matrix_coeffs = PathElement.groupElement("PATH$matrix_coeffs");
-    public static final PathElement PATH$chroma_sample_loc_type_top_field = PathElement.groupElement("PATH$chroma_sample_loc_type_top_field");
-    public static final PathElement PATH$chroma_sample_loc_type_bottom_field = PathElement.groupElement("PATH$chroma_sample_loc_type_bottom_field");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
-    public static final PathElement PATH$reserved2 = PathElement.groupElement("PATH$reserved2");
-    public static final PathElement PATH$def_disp_win_left_offset = PathElement.groupElement("PATH$def_disp_win_left_offset");
-    public static final PathElement PATH$def_disp_win_right_offset = PathElement.groupElement("PATH$def_disp_win_right_offset");
-    public static final PathElement PATH$def_disp_win_top_offset = PathElement.groupElement("PATH$def_disp_win_top_offset");
-    public static final PathElement PATH$def_disp_win_bottom_offset = PathElement.groupElement("PATH$def_disp_win_bottom_offset");
-    public static final PathElement PATH$vui_num_units_in_tick = PathElement.groupElement("PATH$vui_num_units_in_tick");
-    public static final PathElement PATH$vui_time_scale = PathElement.groupElement("PATH$vui_time_scale");
-    public static final PathElement PATH$vui_num_ticks_poc_diff_one_minus1 = PathElement.groupElement("PATH$vui_num_ticks_poc_diff_one_minus1");
-    public static final PathElement PATH$min_spatial_segmentation_idc = PathElement.groupElement("PATH$min_spatial_segmentation_idc");
-    public static final PathElement PATH$reserved3 = PathElement.groupElement("PATH$reserved3");
-    public static final PathElement PATH$max_bytes_per_pic_denom = PathElement.groupElement("PATH$max_bytes_per_pic_denom");
-    public static final PathElement PATH$max_bits_per_min_cu_denom = PathElement.groupElement("PATH$max_bits_per_min_cu_denom");
-    public static final PathElement PATH$log2_max_mv_length_horizontal = PathElement.groupElement("PATH$log2_max_mv_length_horizontal");
-    public static final PathElement PATH$log2_max_mv_length_vertical = PathElement.groupElement("PATH$log2_max_mv_length_vertical");
-    public static final PathElement PATH$pHrdParameters = PathElement.groupElement("PATH$pHrdParameters");
-
-    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$aspect_ratio_idc = (OfInt) LAYOUT.select(PATH$aspect_ratio_idc);
-    public static final OfShort LAYOUT$sar_width = (OfShort) LAYOUT.select(PATH$sar_width);
-    public static final OfShort LAYOUT$sar_height = (OfShort) LAYOUT.select(PATH$sar_height);
-    public static final OfByte LAYOUT$video_format = (OfByte) LAYOUT.select(PATH$video_format);
-    public static final OfByte LAYOUT$colour_primaries = (OfByte) LAYOUT.select(PATH$colour_primaries);
-    public static final OfByte LAYOUT$transfer_characteristics = (OfByte) LAYOUT.select(PATH$transfer_characteristics);
-    public static final OfByte LAYOUT$matrix_coeffs = (OfByte) LAYOUT.select(PATH$matrix_coeffs);
-    public static final OfByte LAYOUT$chroma_sample_loc_type_top_field = (OfByte) LAYOUT.select(PATH$chroma_sample_loc_type_top_field);
-    public static final OfByte LAYOUT$chroma_sample_loc_type_bottom_field = (OfByte) LAYOUT.select(PATH$chroma_sample_loc_type_bottom_field);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
-    public static final OfByte LAYOUT$reserved2 = (OfByte) LAYOUT.select(PATH$reserved2);
-    public static final OfShort LAYOUT$def_disp_win_left_offset = (OfShort) LAYOUT.select(PATH$def_disp_win_left_offset);
-    public static final OfShort LAYOUT$def_disp_win_right_offset = (OfShort) LAYOUT.select(PATH$def_disp_win_right_offset);
-    public static final OfShort LAYOUT$def_disp_win_top_offset = (OfShort) LAYOUT.select(PATH$def_disp_win_top_offset);
-    public static final OfShort LAYOUT$def_disp_win_bottom_offset = (OfShort) LAYOUT.select(PATH$def_disp_win_bottom_offset);
-    public static final OfInt LAYOUT$vui_num_units_in_tick = (OfInt) LAYOUT.select(PATH$vui_num_units_in_tick);
-    public static final OfInt LAYOUT$vui_time_scale = (OfInt) LAYOUT.select(PATH$vui_time_scale);
-    public static final OfInt LAYOUT$vui_num_ticks_poc_diff_one_minus1 = (OfInt) LAYOUT.select(PATH$vui_num_ticks_poc_diff_one_minus1);
-    public static final OfShort LAYOUT$min_spatial_segmentation_idc = (OfShort) LAYOUT.select(PATH$min_spatial_segmentation_idc);
-    public static final OfShort LAYOUT$reserved3 = (OfShort) LAYOUT.select(PATH$reserved3);
-    public static final OfByte LAYOUT$max_bytes_per_pic_denom = (OfByte) LAYOUT.select(PATH$max_bytes_per_pic_denom);
-    public static final OfByte LAYOUT$max_bits_per_min_cu_denom = (OfByte) LAYOUT.select(PATH$max_bits_per_min_cu_denom);
-    public static final OfByte LAYOUT$log2_max_mv_length_horizontal = (OfByte) LAYOUT.select(PATH$log2_max_mv_length_horizontal);
-    public static final OfByte LAYOUT$log2_max_mv_length_vertical = (OfByte) LAYOUT.select(PATH$log2_max_mv_length_vertical);
-    public static final AddressLayout LAYOUT$pHrdParameters = (AddressLayout) LAYOUT.select(PATH$pHrdParameters);
-
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$aspect_ratio_idc = LAYOUT$aspect_ratio_idc.byteSize();
-    public static final long SIZE$sar_width = LAYOUT$sar_width.byteSize();
-    public static final long SIZE$sar_height = LAYOUT$sar_height.byteSize();
-    public static final long SIZE$video_format = LAYOUT$video_format.byteSize();
-    public static final long SIZE$colour_primaries = LAYOUT$colour_primaries.byteSize();
-    public static final long SIZE$transfer_characteristics = LAYOUT$transfer_characteristics.byteSize();
-    public static final long SIZE$matrix_coeffs = LAYOUT$matrix_coeffs.byteSize();
-    public static final long SIZE$chroma_sample_loc_type_top_field = LAYOUT$chroma_sample_loc_type_top_field.byteSize();
-    public static final long SIZE$chroma_sample_loc_type_bottom_field = LAYOUT$chroma_sample_loc_type_bottom_field.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
-    public static final long SIZE$reserved2 = LAYOUT$reserved2.byteSize();
-    public static final long SIZE$def_disp_win_left_offset = LAYOUT$def_disp_win_left_offset.byteSize();
-    public static final long SIZE$def_disp_win_right_offset = LAYOUT$def_disp_win_right_offset.byteSize();
-    public static final long SIZE$def_disp_win_top_offset = LAYOUT$def_disp_win_top_offset.byteSize();
-    public static final long SIZE$def_disp_win_bottom_offset = LAYOUT$def_disp_win_bottom_offset.byteSize();
-    public static final long SIZE$vui_num_units_in_tick = LAYOUT$vui_num_units_in_tick.byteSize();
-    public static final long SIZE$vui_time_scale = LAYOUT$vui_time_scale.byteSize();
-    public static final long SIZE$vui_num_ticks_poc_diff_one_minus1 = LAYOUT$vui_num_ticks_poc_diff_one_minus1.byteSize();
-    public static final long SIZE$min_spatial_segmentation_idc = LAYOUT$min_spatial_segmentation_idc.byteSize();
-    public static final long SIZE$reserved3 = LAYOUT$reserved3.byteSize();
-    public static final long SIZE$max_bytes_per_pic_denom = LAYOUT$max_bytes_per_pic_denom.byteSize();
-    public static final long SIZE$max_bits_per_min_cu_denom = LAYOUT$max_bits_per_min_cu_denom.byteSize();
-    public static final long SIZE$log2_max_mv_length_horizontal = LAYOUT$log2_max_mv_length_horizontal.byteSize();
-    public static final long SIZE$log2_max_mv_length_vertical = LAYOUT$log2_max_mv_length_vertical.byteSize();
-    public static final long SIZE$pHrdParameters = LAYOUT$pHrdParameters.byteSize();
-
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$aspect_ratio_idc = LAYOUT.byteOffset(PATH$aspect_ratio_idc);
-    public static final long OFFSET$sar_width = LAYOUT.byteOffset(PATH$sar_width);
-    public static final long OFFSET$sar_height = LAYOUT.byteOffset(PATH$sar_height);
-    public static final long OFFSET$video_format = LAYOUT.byteOffset(PATH$video_format);
-    public static final long OFFSET$colour_primaries = LAYOUT.byteOffset(PATH$colour_primaries);
-    public static final long OFFSET$transfer_characteristics = LAYOUT.byteOffset(PATH$transfer_characteristics);
-    public static final long OFFSET$matrix_coeffs = LAYOUT.byteOffset(PATH$matrix_coeffs);
-    public static final long OFFSET$chroma_sample_loc_type_top_field = LAYOUT.byteOffset(PATH$chroma_sample_loc_type_top_field);
-    public static final long OFFSET$chroma_sample_loc_type_bottom_field = LAYOUT.byteOffset(PATH$chroma_sample_loc_type_bottom_field);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
-    public static final long OFFSET$reserved2 = LAYOUT.byteOffset(PATH$reserved2);
-    public static final long OFFSET$def_disp_win_left_offset = LAYOUT.byteOffset(PATH$def_disp_win_left_offset);
-    public static final long OFFSET$def_disp_win_right_offset = LAYOUT.byteOffset(PATH$def_disp_win_right_offset);
-    public static final long OFFSET$def_disp_win_top_offset = LAYOUT.byteOffset(PATH$def_disp_win_top_offset);
-    public static final long OFFSET$def_disp_win_bottom_offset = LAYOUT.byteOffset(PATH$def_disp_win_bottom_offset);
-    public static final long OFFSET$vui_num_units_in_tick = LAYOUT.byteOffset(PATH$vui_num_units_in_tick);
-    public static final long OFFSET$vui_time_scale = LAYOUT.byteOffset(PATH$vui_time_scale);
-    public static final long OFFSET$vui_num_ticks_poc_diff_one_minus1 = LAYOUT.byteOffset(PATH$vui_num_ticks_poc_diff_one_minus1);
-    public static final long OFFSET$min_spatial_segmentation_idc = LAYOUT.byteOffset(PATH$min_spatial_segmentation_idc);
-    public static final long OFFSET$reserved3 = LAYOUT.byteOffset(PATH$reserved3);
-    public static final long OFFSET$max_bytes_per_pic_denom = LAYOUT.byteOffset(PATH$max_bytes_per_pic_denom);
-    public static final long OFFSET$max_bits_per_min_cu_denom = LAYOUT.byteOffset(PATH$max_bits_per_min_cu_denom);
-    public static final long OFFSET$log2_max_mv_length_horizontal = LAYOUT.byteOffset(PATH$log2_max_mv_length_horizontal);
-    public static final long OFFSET$log2_max_mv_length_vertical = LAYOUT.byteOffset(PATH$log2_max_mv_length_vertical);
-    public static final long OFFSET$pHrdParameters = LAYOUT.byteOffset(PATH$pHrdParameters);
 
     public StdVideoH265SpsVuiFlags flags() {
         return new StdVideoH265SpsVuiFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
@@ -401,7 +298,7 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
 
     public @Nullable StdVideoH265HrdParameters pHrdParameters() {
         MemorySegment s = pHrdParametersRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoH265HrdParameters(s);
@@ -414,7 +311,7 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
 
     @unsafe public @Nullable StdVideoH265HrdParameters[] pHrdParameters(int assumedCount) {
         MemorySegment s = pHrdParametersRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -426,4 +323,141 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoH265SpsVuiFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("aspect_ratio_idc"),
+        ValueLayout.JAVA_SHORT.withName("sar_width"),
+        ValueLayout.JAVA_SHORT.withName("sar_height"),
+        ValueLayout.JAVA_BYTE.withName("video_format"),
+        ValueLayout.JAVA_BYTE.withName("colour_primaries"),
+        ValueLayout.JAVA_BYTE.withName("transfer_characteristics"),
+        ValueLayout.JAVA_BYTE.withName("matrix_coeffs"),
+        ValueLayout.JAVA_BYTE.withName("chroma_sample_loc_type_top_field"),
+        ValueLayout.JAVA_BYTE.withName("chroma_sample_loc_type_bottom_field"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.JAVA_BYTE.withName("reserved2"),
+        ValueLayout.JAVA_SHORT.withName("def_disp_win_left_offset"),
+        ValueLayout.JAVA_SHORT.withName("def_disp_win_right_offset"),
+        ValueLayout.JAVA_SHORT.withName("def_disp_win_top_offset"),
+        ValueLayout.JAVA_SHORT.withName("def_disp_win_bottom_offset"),
+        ValueLayout.JAVA_INT.withName("vui_num_units_in_tick"),
+        ValueLayout.JAVA_INT.withName("vui_time_scale"),
+        ValueLayout.JAVA_INT.withName("vui_num_ticks_poc_diff_one_minus1"),
+        ValueLayout.JAVA_SHORT.withName("min_spatial_segmentation_idc"),
+        ValueLayout.JAVA_SHORT.withName("reserved3"),
+        ValueLayout.JAVA_BYTE.withName("max_bytes_per_pic_denom"),
+        ValueLayout.JAVA_BYTE.withName("max_bits_per_min_cu_denom"),
+        ValueLayout.JAVA_BYTE.withName("log2_max_mv_length_horizontal"),
+        ValueLayout.JAVA_BYTE.withName("log2_max_mv_length_vertical"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265HrdParameters.LAYOUT).withName("pHrdParameters")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$aspect_ratio_idc = PathElement.groupElement("PATH$aspect_ratio_idc");
+    public static final PathElement PATH$sar_width = PathElement.groupElement("PATH$sar_width");
+    public static final PathElement PATH$sar_height = PathElement.groupElement("PATH$sar_height");
+    public static final PathElement PATH$video_format = PathElement.groupElement("PATH$video_format");
+    public static final PathElement PATH$colour_primaries = PathElement.groupElement("PATH$colour_primaries");
+    public static final PathElement PATH$transfer_characteristics = PathElement.groupElement("PATH$transfer_characteristics");
+    public static final PathElement PATH$matrix_coeffs = PathElement.groupElement("PATH$matrix_coeffs");
+    public static final PathElement PATH$chroma_sample_loc_type_top_field = PathElement.groupElement("PATH$chroma_sample_loc_type_top_field");
+    public static final PathElement PATH$chroma_sample_loc_type_bottom_field = PathElement.groupElement("PATH$chroma_sample_loc_type_bottom_field");
+    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
+    public static final PathElement PATH$reserved2 = PathElement.groupElement("PATH$reserved2");
+    public static final PathElement PATH$def_disp_win_left_offset = PathElement.groupElement("PATH$def_disp_win_left_offset");
+    public static final PathElement PATH$def_disp_win_right_offset = PathElement.groupElement("PATH$def_disp_win_right_offset");
+    public static final PathElement PATH$def_disp_win_top_offset = PathElement.groupElement("PATH$def_disp_win_top_offset");
+    public static final PathElement PATH$def_disp_win_bottom_offset = PathElement.groupElement("PATH$def_disp_win_bottom_offset");
+    public static final PathElement PATH$vui_num_units_in_tick = PathElement.groupElement("PATH$vui_num_units_in_tick");
+    public static final PathElement PATH$vui_time_scale = PathElement.groupElement("PATH$vui_time_scale");
+    public static final PathElement PATH$vui_num_ticks_poc_diff_one_minus1 = PathElement.groupElement("PATH$vui_num_ticks_poc_diff_one_minus1");
+    public static final PathElement PATH$min_spatial_segmentation_idc = PathElement.groupElement("PATH$min_spatial_segmentation_idc");
+    public static final PathElement PATH$reserved3 = PathElement.groupElement("PATH$reserved3");
+    public static final PathElement PATH$max_bytes_per_pic_denom = PathElement.groupElement("PATH$max_bytes_per_pic_denom");
+    public static final PathElement PATH$max_bits_per_min_cu_denom = PathElement.groupElement("PATH$max_bits_per_min_cu_denom");
+    public static final PathElement PATH$log2_max_mv_length_horizontal = PathElement.groupElement("PATH$log2_max_mv_length_horizontal");
+    public static final PathElement PATH$log2_max_mv_length_vertical = PathElement.groupElement("PATH$log2_max_mv_length_vertical");
+    public static final PathElement PATH$pHrdParameters = PathElement.groupElement("PATH$pHrdParameters");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$aspect_ratio_idc = (OfInt) LAYOUT.select(PATH$aspect_ratio_idc);
+    public static final OfShort LAYOUT$sar_width = (OfShort) LAYOUT.select(PATH$sar_width);
+    public static final OfShort LAYOUT$sar_height = (OfShort) LAYOUT.select(PATH$sar_height);
+    public static final OfByte LAYOUT$video_format = (OfByte) LAYOUT.select(PATH$video_format);
+    public static final OfByte LAYOUT$colour_primaries = (OfByte) LAYOUT.select(PATH$colour_primaries);
+    public static final OfByte LAYOUT$transfer_characteristics = (OfByte) LAYOUT.select(PATH$transfer_characteristics);
+    public static final OfByte LAYOUT$matrix_coeffs = (OfByte) LAYOUT.select(PATH$matrix_coeffs);
+    public static final OfByte LAYOUT$chroma_sample_loc_type_top_field = (OfByte) LAYOUT.select(PATH$chroma_sample_loc_type_top_field);
+    public static final OfByte LAYOUT$chroma_sample_loc_type_bottom_field = (OfByte) LAYOUT.select(PATH$chroma_sample_loc_type_bottom_field);
+    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
+    public static final OfByte LAYOUT$reserved2 = (OfByte) LAYOUT.select(PATH$reserved2);
+    public static final OfShort LAYOUT$def_disp_win_left_offset = (OfShort) LAYOUT.select(PATH$def_disp_win_left_offset);
+    public static final OfShort LAYOUT$def_disp_win_right_offset = (OfShort) LAYOUT.select(PATH$def_disp_win_right_offset);
+    public static final OfShort LAYOUT$def_disp_win_top_offset = (OfShort) LAYOUT.select(PATH$def_disp_win_top_offset);
+    public static final OfShort LAYOUT$def_disp_win_bottom_offset = (OfShort) LAYOUT.select(PATH$def_disp_win_bottom_offset);
+    public static final OfInt LAYOUT$vui_num_units_in_tick = (OfInt) LAYOUT.select(PATH$vui_num_units_in_tick);
+    public static final OfInt LAYOUT$vui_time_scale = (OfInt) LAYOUT.select(PATH$vui_time_scale);
+    public static final OfInt LAYOUT$vui_num_ticks_poc_diff_one_minus1 = (OfInt) LAYOUT.select(PATH$vui_num_ticks_poc_diff_one_minus1);
+    public static final OfShort LAYOUT$min_spatial_segmentation_idc = (OfShort) LAYOUT.select(PATH$min_spatial_segmentation_idc);
+    public static final OfShort LAYOUT$reserved3 = (OfShort) LAYOUT.select(PATH$reserved3);
+    public static final OfByte LAYOUT$max_bytes_per_pic_denom = (OfByte) LAYOUT.select(PATH$max_bytes_per_pic_denom);
+    public static final OfByte LAYOUT$max_bits_per_min_cu_denom = (OfByte) LAYOUT.select(PATH$max_bits_per_min_cu_denom);
+    public static final OfByte LAYOUT$log2_max_mv_length_horizontal = (OfByte) LAYOUT.select(PATH$log2_max_mv_length_horizontal);
+    public static final OfByte LAYOUT$log2_max_mv_length_vertical = (OfByte) LAYOUT.select(PATH$log2_max_mv_length_vertical);
+    public static final AddressLayout LAYOUT$pHrdParameters = (AddressLayout) LAYOUT.select(PATH$pHrdParameters);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$aspect_ratio_idc = LAYOUT$aspect_ratio_idc.byteSize();
+    public static final long SIZE$sar_width = LAYOUT$sar_width.byteSize();
+    public static final long SIZE$sar_height = LAYOUT$sar_height.byteSize();
+    public static final long SIZE$video_format = LAYOUT$video_format.byteSize();
+    public static final long SIZE$colour_primaries = LAYOUT$colour_primaries.byteSize();
+    public static final long SIZE$transfer_characteristics = LAYOUT$transfer_characteristics.byteSize();
+    public static final long SIZE$matrix_coeffs = LAYOUT$matrix_coeffs.byteSize();
+    public static final long SIZE$chroma_sample_loc_type_top_field = LAYOUT$chroma_sample_loc_type_top_field.byteSize();
+    public static final long SIZE$chroma_sample_loc_type_bottom_field = LAYOUT$chroma_sample_loc_type_bottom_field.byteSize();
+    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
+    public static final long SIZE$reserved2 = LAYOUT$reserved2.byteSize();
+    public static final long SIZE$def_disp_win_left_offset = LAYOUT$def_disp_win_left_offset.byteSize();
+    public static final long SIZE$def_disp_win_right_offset = LAYOUT$def_disp_win_right_offset.byteSize();
+    public static final long SIZE$def_disp_win_top_offset = LAYOUT$def_disp_win_top_offset.byteSize();
+    public static final long SIZE$def_disp_win_bottom_offset = LAYOUT$def_disp_win_bottom_offset.byteSize();
+    public static final long SIZE$vui_num_units_in_tick = LAYOUT$vui_num_units_in_tick.byteSize();
+    public static final long SIZE$vui_time_scale = LAYOUT$vui_time_scale.byteSize();
+    public static final long SIZE$vui_num_ticks_poc_diff_one_minus1 = LAYOUT$vui_num_ticks_poc_diff_one_minus1.byteSize();
+    public static final long SIZE$min_spatial_segmentation_idc = LAYOUT$min_spatial_segmentation_idc.byteSize();
+    public static final long SIZE$reserved3 = LAYOUT$reserved3.byteSize();
+    public static final long SIZE$max_bytes_per_pic_denom = LAYOUT$max_bytes_per_pic_denom.byteSize();
+    public static final long SIZE$max_bits_per_min_cu_denom = LAYOUT$max_bits_per_min_cu_denom.byteSize();
+    public static final long SIZE$log2_max_mv_length_horizontal = LAYOUT$log2_max_mv_length_horizontal.byteSize();
+    public static final long SIZE$log2_max_mv_length_vertical = LAYOUT$log2_max_mv_length_vertical.byteSize();
+    public static final long SIZE$pHrdParameters = LAYOUT$pHrdParameters.byteSize();
+
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$aspect_ratio_idc = LAYOUT.byteOffset(PATH$aspect_ratio_idc);
+    public static final long OFFSET$sar_width = LAYOUT.byteOffset(PATH$sar_width);
+    public static final long OFFSET$sar_height = LAYOUT.byteOffset(PATH$sar_height);
+    public static final long OFFSET$video_format = LAYOUT.byteOffset(PATH$video_format);
+    public static final long OFFSET$colour_primaries = LAYOUT.byteOffset(PATH$colour_primaries);
+    public static final long OFFSET$transfer_characteristics = LAYOUT.byteOffset(PATH$transfer_characteristics);
+    public static final long OFFSET$matrix_coeffs = LAYOUT.byteOffset(PATH$matrix_coeffs);
+    public static final long OFFSET$chroma_sample_loc_type_top_field = LAYOUT.byteOffset(PATH$chroma_sample_loc_type_top_field);
+    public static final long OFFSET$chroma_sample_loc_type_bottom_field = LAYOUT.byteOffset(PATH$chroma_sample_loc_type_bottom_field);
+    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
+    public static final long OFFSET$reserved2 = LAYOUT.byteOffset(PATH$reserved2);
+    public static final long OFFSET$def_disp_win_left_offset = LAYOUT.byteOffset(PATH$def_disp_win_left_offset);
+    public static final long OFFSET$def_disp_win_right_offset = LAYOUT.byteOffset(PATH$def_disp_win_right_offset);
+    public static final long OFFSET$def_disp_win_top_offset = LAYOUT.byteOffset(PATH$def_disp_win_top_offset);
+    public static final long OFFSET$def_disp_win_bottom_offset = LAYOUT.byteOffset(PATH$def_disp_win_bottom_offset);
+    public static final long OFFSET$vui_num_units_in_tick = LAYOUT.byteOffset(PATH$vui_num_units_in_tick);
+    public static final long OFFSET$vui_time_scale = LAYOUT.byteOffset(PATH$vui_time_scale);
+    public static final long OFFSET$vui_num_ticks_poc_diff_one_minus1 = LAYOUT.byteOffset(PATH$vui_num_ticks_poc_diff_one_minus1);
+    public static final long OFFSET$min_spatial_segmentation_idc = LAYOUT.byteOffset(PATH$min_spatial_segmentation_idc);
+    public static final long OFFSET$reserved3 = LAYOUT.byteOffset(PATH$reserved3);
+    public static final long OFFSET$max_bytes_per_pic_denom = LAYOUT.byteOffset(PATH$max_bytes_per_pic_denom);
+    public static final long OFFSET$max_bits_per_min_cu_denom = LAYOUT.byteOffset(PATH$max_bits_per_min_cu_denom);
+    public static final long OFFSET$log2_max_mv_length_horizontal = LAYOUT.byteOffset(PATH$log2_max_mv_length_horizontal);
+    public static final long OFFSET$log2_max_mv_length_vertical = LAYOUT.byteOffset(PATH$log2_max_mv_length_vertical);
+    public static final long OFFSET$pHrdParameters = LAYOUT.byteOffset(PATH$pHrdParameters);
 }

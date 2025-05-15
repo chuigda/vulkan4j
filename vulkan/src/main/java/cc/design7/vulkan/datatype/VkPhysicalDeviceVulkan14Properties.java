@@ -14,8 +14,51 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceVulkan14Properties} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceVulkan14Properties.html"><code>VkPhysicalDeviceVulkan14Properties</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceVulkan14Properties {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t lineSubPixelPrecisionBits;
+///     uint32_t maxVertexAttribDivisor;
+///     VkBool32 supportsNonZeroFirstInstance;
+///     uint32_t maxPushDescriptors;
+///     VkBool32 dynamicRenderingLocalReadDepthStencilAttachments;
+///     VkBool32 dynamicRenderingLocalReadMultisampledAttachments;
+///     VkBool32 earlyFragmentMultisampleCoverageAfterSampleCounting;
+///     VkBool32 earlyFragmentSampleMaskTestBeforeSampleCounting;
+///     VkBool32 depthStencilSwizzleOneSupport;
+///     VkBool32 polygonModePointSize;
+///     VkBool32 nonStrictSinglePixelWideLinesUseParallelogram;
+///     VkBool32 nonStrictWideLinesUseParallelogram;
+///     VkBool32 blockTexelViewCompatibleMultipleLayers;
+///     uint32_t maxCombinedImageSamplerDescriptorCount;
+///     VkBool32 fragmentShadingRateClampCombinerInputs;
+///     VkPipelineRobustnessBufferBehavior defaultRobustnessStorageBuffers;
+///     VkPipelineRobustnessBufferBehavior defaultRobustnessUniformBuffers;
+///     VkPipelineRobustnessBufferBehavior defaultRobustnessVertexInputs;
+///     VkPipelineRobustnessImageBehavior defaultRobustnessImages;
+///     uint32_t copySrcLayoutCount;
+///     VkImageLayout* pCopySrcLayouts;
+///     uint32_t copyDstLayoutCount;
+///     VkImageLayout* pCopyDstLayouts;
+///     uint8_t optimalTilingLayoutUUID;
+///     VkBool32 identicalMemoryTypeRequirements;
+/// } VkPhysicalDeviceVulkan14Properties;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_4_PROPERTIES`
+///
+/// The {@link VkPhysicalDeviceVulkan14Properties#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceVulkan14Properties#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +67,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceVulkan14Properties.html">VkPhysicalDeviceVulkan14Properties</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceVulkan14Properties.html"><code>VkPhysicalDeviceVulkan14Properties</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceVulkan14Properties {
-        sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_4_PROPERTIES);
-    }
-
     public static VkPhysicalDeviceVulkan14Properties allocate(Arena arena) {
-        return new VkPhysicalDeviceVulkan14Properties(arena.allocate(LAYOUT));
+        VkPhysicalDeviceVulkan14Properties ret = new VkPhysicalDeviceVulkan14Properties(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_4_PROPERTIES);
+        return ret;
     }
 
     public static VkPhysicalDeviceVulkan14Properties[] allocate(Arena arena, int count) {
@@ -41,6 +82,7 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         VkPhysicalDeviceVulkan14Properties[] ret = new VkPhysicalDeviceVulkan14Properties[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceVulkan14Properties(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_4_PROPERTIES);
         }
         return ret;
     }
@@ -59,148 +101,9 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("lineSubPixelPrecisionBits"),
-        ValueLayout.JAVA_INT.withName("maxVertexAttribDivisor"),
-        ValueLayout.JAVA_INT.withName("supportsNonZeroFirstInstance"),
-        ValueLayout.JAVA_INT.withName("maxPushDescriptors"),
-        ValueLayout.JAVA_INT.withName("dynamicRenderingLocalReadDepthStencilAttachments"),
-        ValueLayout.JAVA_INT.withName("dynamicRenderingLocalReadMultisampledAttachments"),
-        ValueLayout.JAVA_INT.withName("earlyFragmentMultisampleCoverageAfterSampleCounting"),
-        ValueLayout.JAVA_INT.withName("earlyFragmentSampleMaskTestBeforeSampleCounting"),
-        ValueLayout.JAVA_INT.withName("depthStencilSwizzleOneSupport"),
-        ValueLayout.JAVA_INT.withName("polygonModePointSize"),
-        ValueLayout.JAVA_INT.withName("nonStrictSinglePixelWideLinesUseParallelogram"),
-        ValueLayout.JAVA_INT.withName("nonStrictWideLinesUseParallelogram"),
-        ValueLayout.JAVA_INT.withName("blockTexelViewCompatibleMultipleLayers"),
-        ValueLayout.JAVA_INT.withName("maxCombinedImageSamplerDescriptorCount"),
-        ValueLayout.JAVA_INT.withName("fragmentShadingRateClampCombinerInputs"),
-        ValueLayout.JAVA_INT.withName("defaultRobustnessStorageBuffers"),
-        ValueLayout.JAVA_INT.withName("defaultRobustnessUniformBuffers"),
-        ValueLayout.JAVA_INT.withName("defaultRobustnessVertexInputs"),
-        ValueLayout.JAVA_INT.withName("defaultRobustnessImages"),
-        ValueLayout.JAVA_INT.withName("copySrcLayoutCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCopySrcLayouts"),
-        ValueLayout.JAVA_INT.withName("copyDstLayoutCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCopyDstLayouts"),
-        ValueLayout.JAVA_BYTE.withName("optimalTilingLayoutUUID"),
-        ValueLayout.JAVA_INT.withName("identicalMemoryTypeRequirements")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$lineSubPixelPrecisionBits = PathElement.groupElement("PATH$lineSubPixelPrecisionBits");
-    public static final PathElement PATH$maxVertexAttribDivisor = PathElement.groupElement("PATH$maxVertexAttribDivisor");
-    public static final PathElement PATH$supportsNonZeroFirstInstance = PathElement.groupElement("PATH$supportsNonZeroFirstInstance");
-    public static final PathElement PATH$maxPushDescriptors = PathElement.groupElement("PATH$maxPushDescriptors");
-    public static final PathElement PATH$dynamicRenderingLocalReadDepthStencilAttachments = PathElement.groupElement("PATH$dynamicRenderingLocalReadDepthStencilAttachments");
-    public static final PathElement PATH$dynamicRenderingLocalReadMultisampledAttachments = PathElement.groupElement("PATH$dynamicRenderingLocalReadMultisampledAttachments");
-    public static final PathElement PATH$earlyFragmentMultisampleCoverageAfterSampleCounting = PathElement.groupElement("PATH$earlyFragmentMultisampleCoverageAfterSampleCounting");
-    public static final PathElement PATH$earlyFragmentSampleMaskTestBeforeSampleCounting = PathElement.groupElement("PATH$earlyFragmentSampleMaskTestBeforeSampleCounting");
-    public static final PathElement PATH$depthStencilSwizzleOneSupport = PathElement.groupElement("PATH$depthStencilSwizzleOneSupport");
-    public static final PathElement PATH$polygonModePointSize = PathElement.groupElement("PATH$polygonModePointSize");
-    public static final PathElement PATH$nonStrictSinglePixelWideLinesUseParallelogram = PathElement.groupElement("PATH$nonStrictSinglePixelWideLinesUseParallelogram");
-    public static final PathElement PATH$nonStrictWideLinesUseParallelogram = PathElement.groupElement("PATH$nonStrictWideLinesUseParallelogram");
-    public static final PathElement PATH$blockTexelViewCompatibleMultipleLayers = PathElement.groupElement("PATH$blockTexelViewCompatibleMultipleLayers");
-    public static final PathElement PATH$maxCombinedImageSamplerDescriptorCount = PathElement.groupElement("PATH$maxCombinedImageSamplerDescriptorCount");
-    public static final PathElement PATH$fragmentShadingRateClampCombinerInputs = PathElement.groupElement("PATH$fragmentShadingRateClampCombinerInputs");
-    public static final PathElement PATH$defaultRobustnessStorageBuffers = PathElement.groupElement("PATH$defaultRobustnessStorageBuffers");
-    public static final PathElement PATH$defaultRobustnessUniformBuffers = PathElement.groupElement("PATH$defaultRobustnessUniformBuffers");
-    public static final PathElement PATH$defaultRobustnessVertexInputs = PathElement.groupElement("PATH$defaultRobustnessVertexInputs");
-    public static final PathElement PATH$defaultRobustnessImages = PathElement.groupElement("PATH$defaultRobustnessImages");
-    public static final PathElement PATH$copySrcLayoutCount = PathElement.groupElement("PATH$copySrcLayoutCount");
-    public static final PathElement PATH$pCopySrcLayouts = PathElement.groupElement("PATH$pCopySrcLayouts");
-    public static final PathElement PATH$copyDstLayoutCount = PathElement.groupElement("PATH$copyDstLayoutCount");
-    public static final PathElement PATH$pCopyDstLayouts = PathElement.groupElement("PATH$pCopyDstLayouts");
-    public static final PathElement PATH$optimalTilingLayoutUUID = PathElement.groupElement("PATH$optimalTilingLayoutUUID");
-    public static final PathElement PATH$identicalMemoryTypeRequirements = PathElement.groupElement("PATH$identicalMemoryTypeRequirements");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$lineSubPixelPrecisionBits = (OfInt) LAYOUT.select(PATH$lineSubPixelPrecisionBits);
-    public static final OfInt LAYOUT$maxVertexAttribDivisor = (OfInt) LAYOUT.select(PATH$maxVertexAttribDivisor);
-    public static final OfInt LAYOUT$supportsNonZeroFirstInstance = (OfInt) LAYOUT.select(PATH$supportsNonZeroFirstInstance);
-    public static final OfInt LAYOUT$maxPushDescriptors = (OfInt) LAYOUT.select(PATH$maxPushDescriptors);
-    public static final OfInt LAYOUT$dynamicRenderingLocalReadDepthStencilAttachments = (OfInt) LAYOUT.select(PATH$dynamicRenderingLocalReadDepthStencilAttachments);
-    public static final OfInt LAYOUT$dynamicRenderingLocalReadMultisampledAttachments = (OfInt) LAYOUT.select(PATH$dynamicRenderingLocalReadMultisampledAttachments);
-    public static final OfInt LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting = (OfInt) LAYOUT.select(PATH$earlyFragmentMultisampleCoverageAfterSampleCounting);
-    public static final OfInt LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting = (OfInt) LAYOUT.select(PATH$earlyFragmentSampleMaskTestBeforeSampleCounting);
-    public static final OfInt LAYOUT$depthStencilSwizzleOneSupport = (OfInt) LAYOUT.select(PATH$depthStencilSwizzleOneSupport);
-    public static final OfInt LAYOUT$polygonModePointSize = (OfInt) LAYOUT.select(PATH$polygonModePointSize);
-    public static final OfInt LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram = (OfInt) LAYOUT.select(PATH$nonStrictSinglePixelWideLinesUseParallelogram);
-    public static final OfInt LAYOUT$nonStrictWideLinesUseParallelogram = (OfInt) LAYOUT.select(PATH$nonStrictWideLinesUseParallelogram);
-    public static final OfInt LAYOUT$blockTexelViewCompatibleMultipleLayers = (OfInt) LAYOUT.select(PATH$blockTexelViewCompatibleMultipleLayers);
-    public static final OfInt LAYOUT$maxCombinedImageSamplerDescriptorCount = (OfInt) LAYOUT.select(PATH$maxCombinedImageSamplerDescriptorCount);
-    public static final OfInt LAYOUT$fragmentShadingRateClampCombinerInputs = (OfInt) LAYOUT.select(PATH$fragmentShadingRateClampCombinerInputs);
-    public static final OfInt LAYOUT$defaultRobustnessStorageBuffers = (OfInt) LAYOUT.select(PATH$defaultRobustnessStorageBuffers);
-    public static final OfInt LAYOUT$defaultRobustnessUniformBuffers = (OfInt) LAYOUT.select(PATH$defaultRobustnessUniformBuffers);
-    public static final OfInt LAYOUT$defaultRobustnessVertexInputs = (OfInt) LAYOUT.select(PATH$defaultRobustnessVertexInputs);
-    public static final OfInt LAYOUT$defaultRobustnessImages = (OfInt) LAYOUT.select(PATH$defaultRobustnessImages);
-    public static final OfInt LAYOUT$copySrcLayoutCount = (OfInt) LAYOUT.select(PATH$copySrcLayoutCount);
-    public static final AddressLayout LAYOUT$pCopySrcLayouts = (AddressLayout) LAYOUT.select(PATH$pCopySrcLayouts);
-    public static final OfInt LAYOUT$copyDstLayoutCount = (OfInt) LAYOUT.select(PATH$copyDstLayoutCount);
-    public static final AddressLayout LAYOUT$pCopyDstLayouts = (AddressLayout) LAYOUT.select(PATH$pCopyDstLayouts);
-    public static final OfByte LAYOUT$optimalTilingLayoutUUID = (OfByte) LAYOUT.select(PATH$optimalTilingLayoutUUID);
-    public static final OfInt LAYOUT$identicalMemoryTypeRequirements = (OfInt) LAYOUT.select(PATH$identicalMemoryTypeRequirements);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$lineSubPixelPrecisionBits = LAYOUT$lineSubPixelPrecisionBits.byteSize();
-    public static final long SIZE$maxVertexAttribDivisor = LAYOUT$maxVertexAttribDivisor.byteSize();
-    public static final long SIZE$supportsNonZeroFirstInstance = LAYOUT$supportsNonZeroFirstInstance.byteSize();
-    public static final long SIZE$maxPushDescriptors = LAYOUT$maxPushDescriptors.byteSize();
-    public static final long SIZE$dynamicRenderingLocalReadDepthStencilAttachments = LAYOUT$dynamicRenderingLocalReadDepthStencilAttachments.byteSize();
-    public static final long SIZE$dynamicRenderingLocalReadMultisampledAttachments = LAYOUT$dynamicRenderingLocalReadMultisampledAttachments.byteSize();
-    public static final long SIZE$earlyFragmentMultisampleCoverageAfterSampleCounting = LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting.byteSize();
-    public static final long SIZE$earlyFragmentSampleMaskTestBeforeSampleCounting = LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting.byteSize();
-    public static final long SIZE$depthStencilSwizzleOneSupport = LAYOUT$depthStencilSwizzleOneSupport.byteSize();
-    public static final long SIZE$polygonModePointSize = LAYOUT$polygonModePointSize.byteSize();
-    public static final long SIZE$nonStrictSinglePixelWideLinesUseParallelogram = LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram.byteSize();
-    public static final long SIZE$nonStrictWideLinesUseParallelogram = LAYOUT$nonStrictWideLinesUseParallelogram.byteSize();
-    public static final long SIZE$blockTexelViewCompatibleMultipleLayers = LAYOUT$blockTexelViewCompatibleMultipleLayers.byteSize();
-    public static final long SIZE$maxCombinedImageSamplerDescriptorCount = LAYOUT$maxCombinedImageSamplerDescriptorCount.byteSize();
-    public static final long SIZE$fragmentShadingRateClampCombinerInputs = LAYOUT$fragmentShadingRateClampCombinerInputs.byteSize();
-    public static final long SIZE$defaultRobustnessStorageBuffers = LAYOUT$defaultRobustnessStorageBuffers.byteSize();
-    public static final long SIZE$defaultRobustnessUniformBuffers = LAYOUT$defaultRobustnessUniformBuffers.byteSize();
-    public static final long SIZE$defaultRobustnessVertexInputs = LAYOUT$defaultRobustnessVertexInputs.byteSize();
-    public static final long SIZE$defaultRobustnessImages = LAYOUT$defaultRobustnessImages.byteSize();
-    public static final long SIZE$copySrcLayoutCount = LAYOUT$copySrcLayoutCount.byteSize();
-    public static final long SIZE$pCopySrcLayouts = LAYOUT$pCopySrcLayouts.byteSize();
-    public static final long SIZE$copyDstLayoutCount = LAYOUT$copyDstLayoutCount.byteSize();
-    public static final long SIZE$pCopyDstLayouts = LAYOUT$pCopyDstLayouts.byteSize();
-    public static final long SIZE$optimalTilingLayoutUUID = LAYOUT$optimalTilingLayoutUUID.byteSize();
-    public static final long SIZE$identicalMemoryTypeRequirements = LAYOUT$identicalMemoryTypeRequirements.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$lineSubPixelPrecisionBits = LAYOUT.byteOffset(PATH$lineSubPixelPrecisionBits);
-    public static final long OFFSET$maxVertexAttribDivisor = LAYOUT.byteOffset(PATH$maxVertexAttribDivisor);
-    public static final long OFFSET$supportsNonZeroFirstInstance = LAYOUT.byteOffset(PATH$supportsNonZeroFirstInstance);
-    public static final long OFFSET$maxPushDescriptors = LAYOUT.byteOffset(PATH$maxPushDescriptors);
-    public static final long OFFSET$dynamicRenderingLocalReadDepthStencilAttachments = LAYOUT.byteOffset(PATH$dynamicRenderingLocalReadDepthStencilAttachments);
-    public static final long OFFSET$dynamicRenderingLocalReadMultisampledAttachments = LAYOUT.byteOffset(PATH$dynamicRenderingLocalReadMultisampledAttachments);
-    public static final long OFFSET$earlyFragmentMultisampleCoverageAfterSampleCounting = LAYOUT.byteOffset(PATH$earlyFragmentMultisampleCoverageAfterSampleCounting);
-    public static final long OFFSET$earlyFragmentSampleMaskTestBeforeSampleCounting = LAYOUT.byteOffset(PATH$earlyFragmentSampleMaskTestBeforeSampleCounting);
-    public static final long OFFSET$depthStencilSwizzleOneSupport = LAYOUT.byteOffset(PATH$depthStencilSwizzleOneSupport);
-    public static final long OFFSET$polygonModePointSize = LAYOUT.byteOffset(PATH$polygonModePointSize);
-    public static final long OFFSET$nonStrictSinglePixelWideLinesUseParallelogram = LAYOUT.byteOffset(PATH$nonStrictSinglePixelWideLinesUseParallelogram);
-    public static final long OFFSET$nonStrictWideLinesUseParallelogram = LAYOUT.byteOffset(PATH$nonStrictWideLinesUseParallelogram);
-    public static final long OFFSET$blockTexelViewCompatibleMultipleLayers = LAYOUT.byteOffset(PATH$blockTexelViewCompatibleMultipleLayers);
-    public static final long OFFSET$maxCombinedImageSamplerDescriptorCount = LAYOUT.byteOffset(PATH$maxCombinedImageSamplerDescriptorCount);
-    public static final long OFFSET$fragmentShadingRateClampCombinerInputs = LAYOUT.byteOffset(PATH$fragmentShadingRateClampCombinerInputs);
-    public static final long OFFSET$defaultRobustnessStorageBuffers = LAYOUT.byteOffset(PATH$defaultRobustnessStorageBuffers);
-    public static final long OFFSET$defaultRobustnessUniformBuffers = LAYOUT.byteOffset(PATH$defaultRobustnessUniformBuffers);
-    public static final long OFFSET$defaultRobustnessVertexInputs = LAYOUT.byteOffset(PATH$defaultRobustnessVertexInputs);
-    public static final long OFFSET$defaultRobustnessImages = LAYOUT.byteOffset(PATH$defaultRobustnessImages);
-    public static final long OFFSET$copySrcLayoutCount = LAYOUT.byteOffset(PATH$copySrcLayoutCount);
-    public static final long OFFSET$pCopySrcLayouts = LAYOUT.byteOffset(PATH$pCopySrcLayouts);
-    public static final long OFFSET$copyDstLayoutCount = LAYOUT.byteOffset(PATH$copyDstLayoutCount);
-    public static final long OFFSET$pCopyDstLayouts = LAYOUT.byteOffset(PATH$pCopyDstLayouts);
-    public static final long OFFSET$optimalTilingLayoutUUID = LAYOUT.byteOffset(PATH$optimalTilingLayoutUUID);
-    public static final long OFFSET$identicalMemoryTypeRequirements = LAYOUT.byteOffset(PATH$identicalMemoryTypeRequirements);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_4_PROPERTIES);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -396,7 +299,7 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
     /// or writing to the buffer.
     public @Nullable @enumtype(VkImageLayout.class) IntPtr pCopySrcLayouts() {
         MemorySegment s = pCopySrcLayoutsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -429,7 +332,7 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
     /// or writing to the buffer.
     public @Nullable @enumtype(VkImageLayout.class) IntPtr pCopyDstLayouts() {
         MemorySegment s = pCopyDstLayoutsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -456,4 +359,146 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$identicalMemoryTypeRequirements, OFFSET$identicalMemoryTypeRequirements, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("lineSubPixelPrecisionBits"),
+        ValueLayout.JAVA_INT.withName("maxVertexAttribDivisor"),
+        ValueLayout.JAVA_INT.withName("supportsNonZeroFirstInstance"),
+        ValueLayout.JAVA_INT.withName("maxPushDescriptors"),
+        ValueLayout.JAVA_INT.withName("dynamicRenderingLocalReadDepthStencilAttachments"),
+        ValueLayout.JAVA_INT.withName("dynamicRenderingLocalReadMultisampledAttachments"),
+        ValueLayout.JAVA_INT.withName("earlyFragmentMultisampleCoverageAfterSampleCounting"),
+        ValueLayout.JAVA_INT.withName("earlyFragmentSampleMaskTestBeforeSampleCounting"),
+        ValueLayout.JAVA_INT.withName("depthStencilSwizzleOneSupport"),
+        ValueLayout.JAVA_INT.withName("polygonModePointSize"),
+        ValueLayout.JAVA_INT.withName("nonStrictSinglePixelWideLinesUseParallelogram"),
+        ValueLayout.JAVA_INT.withName("nonStrictWideLinesUseParallelogram"),
+        ValueLayout.JAVA_INT.withName("blockTexelViewCompatibleMultipleLayers"),
+        ValueLayout.JAVA_INT.withName("maxCombinedImageSamplerDescriptorCount"),
+        ValueLayout.JAVA_INT.withName("fragmentShadingRateClampCombinerInputs"),
+        ValueLayout.JAVA_INT.withName("defaultRobustnessStorageBuffers"),
+        ValueLayout.JAVA_INT.withName("defaultRobustnessUniformBuffers"),
+        ValueLayout.JAVA_INT.withName("defaultRobustnessVertexInputs"),
+        ValueLayout.JAVA_INT.withName("defaultRobustnessImages"),
+        ValueLayout.JAVA_INT.withName("copySrcLayoutCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCopySrcLayouts"),
+        ValueLayout.JAVA_INT.withName("copyDstLayoutCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCopyDstLayouts"),
+        ValueLayout.JAVA_BYTE.withName("optimalTilingLayoutUUID"),
+        ValueLayout.JAVA_INT.withName("identicalMemoryTypeRequirements")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$lineSubPixelPrecisionBits = PathElement.groupElement("PATH$lineSubPixelPrecisionBits");
+    public static final PathElement PATH$maxVertexAttribDivisor = PathElement.groupElement("PATH$maxVertexAttribDivisor");
+    public static final PathElement PATH$supportsNonZeroFirstInstance = PathElement.groupElement("PATH$supportsNonZeroFirstInstance");
+    public static final PathElement PATH$maxPushDescriptors = PathElement.groupElement("PATH$maxPushDescriptors");
+    public static final PathElement PATH$dynamicRenderingLocalReadDepthStencilAttachments = PathElement.groupElement("PATH$dynamicRenderingLocalReadDepthStencilAttachments");
+    public static final PathElement PATH$dynamicRenderingLocalReadMultisampledAttachments = PathElement.groupElement("PATH$dynamicRenderingLocalReadMultisampledAttachments");
+    public static final PathElement PATH$earlyFragmentMultisampleCoverageAfterSampleCounting = PathElement.groupElement("PATH$earlyFragmentMultisampleCoverageAfterSampleCounting");
+    public static final PathElement PATH$earlyFragmentSampleMaskTestBeforeSampleCounting = PathElement.groupElement("PATH$earlyFragmentSampleMaskTestBeforeSampleCounting");
+    public static final PathElement PATH$depthStencilSwizzleOneSupport = PathElement.groupElement("PATH$depthStencilSwizzleOneSupport");
+    public static final PathElement PATH$polygonModePointSize = PathElement.groupElement("PATH$polygonModePointSize");
+    public static final PathElement PATH$nonStrictSinglePixelWideLinesUseParallelogram = PathElement.groupElement("PATH$nonStrictSinglePixelWideLinesUseParallelogram");
+    public static final PathElement PATH$nonStrictWideLinesUseParallelogram = PathElement.groupElement("PATH$nonStrictWideLinesUseParallelogram");
+    public static final PathElement PATH$blockTexelViewCompatibleMultipleLayers = PathElement.groupElement("PATH$blockTexelViewCompatibleMultipleLayers");
+    public static final PathElement PATH$maxCombinedImageSamplerDescriptorCount = PathElement.groupElement("PATH$maxCombinedImageSamplerDescriptorCount");
+    public static final PathElement PATH$fragmentShadingRateClampCombinerInputs = PathElement.groupElement("PATH$fragmentShadingRateClampCombinerInputs");
+    public static final PathElement PATH$defaultRobustnessStorageBuffers = PathElement.groupElement("PATH$defaultRobustnessStorageBuffers");
+    public static final PathElement PATH$defaultRobustnessUniformBuffers = PathElement.groupElement("PATH$defaultRobustnessUniformBuffers");
+    public static final PathElement PATH$defaultRobustnessVertexInputs = PathElement.groupElement("PATH$defaultRobustnessVertexInputs");
+    public static final PathElement PATH$defaultRobustnessImages = PathElement.groupElement("PATH$defaultRobustnessImages");
+    public static final PathElement PATH$copySrcLayoutCount = PathElement.groupElement("PATH$copySrcLayoutCount");
+    public static final PathElement PATH$pCopySrcLayouts = PathElement.groupElement("PATH$pCopySrcLayouts");
+    public static final PathElement PATH$copyDstLayoutCount = PathElement.groupElement("PATH$copyDstLayoutCount");
+    public static final PathElement PATH$pCopyDstLayouts = PathElement.groupElement("PATH$pCopyDstLayouts");
+    public static final PathElement PATH$optimalTilingLayoutUUID = PathElement.groupElement("PATH$optimalTilingLayoutUUID");
+    public static final PathElement PATH$identicalMemoryTypeRequirements = PathElement.groupElement("PATH$identicalMemoryTypeRequirements");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$lineSubPixelPrecisionBits = (OfInt) LAYOUT.select(PATH$lineSubPixelPrecisionBits);
+    public static final OfInt LAYOUT$maxVertexAttribDivisor = (OfInt) LAYOUT.select(PATH$maxVertexAttribDivisor);
+    public static final OfInt LAYOUT$supportsNonZeroFirstInstance = (OfInt) LAYOUT.select(PATH$supportsNonZeroFirstInstance);
+    public static final OfInt LAYOUT$maxPushDescriptors = (OfInt) LAYOUT.select(PATH$maxPushDescriptors);
+    public static final OfInt LAYOUT$dynamicRenderingLocalReadDepthStencilAttachments = (OfInt) LAYOUT.select(PATH$dynamicRenderingLocalReadDepthStencilAttachments);
+    public static final OfInt LAYOUT$dynamicRenderingLocalReadMultisampledAttachments = (OfInt) LAYOUT.select(PATH$dynamicRenderingLocalReadMultisampledAttachments);
+    public static final OfInt LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting = (OfInt) LAYOUT.select(PATH$earlyFragmentMultisampleCoverageAfterSampleCounting);
+    public static final OfInt LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting = (OfInt) LAYOUT.select(PATH$earlyFragmentSampleMaskTestBeforeSampleCounting);
+    public static final OfInt LAYOUT$depthStencilSwizzleOneSupport = (OfInt) LAYOUT.select(PATH$depthStencilSwizzleOneSupport);
+    public static final OfInt LAYOUT$polygonModePointSize = (OfInt) LAYOUT.select(PATH$polygonModePointSize);
+    public static final OfInt LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram = (OfInt) LAYOUT.select(PATH$nonStrictSinglePixelWideLinesUseParallelogram);
+    public static final OfInt LAYOUT$nonStrictWideLinesUseParallelogram = (OfInt) LAYOUT.select(PATH$nonStrictWideLinesUseParallelogram);
+    public static final OfInt LAYOUT$blockTexelViewCompatibleMultipleLayers = (OfInt) LAYOUT.select(PATH$blockTexelViewCompatibleMultipleLayers);
+    public static final OfInt LAYOUT$maxCombinedImageSamplerDescriptorCount = (OfInt) LAYOUT.select(PATH$maxCombinedImageSamplerDescriptorCount);
+    public static final OfInt LAYOUT$fragmentShadingRateClampCombinerInputs = (OfInt) LAYOUT.select(PATH$fragmentShadingRateClampCombinerInputs);
+    public static final OfInt LAYOUT$defaultRobustnessStorageBuffers = (OfInt) LAYOUT.select(PATH$defaultRobustnessStorageBuffers);
+    public static final OfInt LAYOUT$defaultRobustnessUniformBuffers = (OfInt) LAYOUT.select(PATH$defaultRobustnessUniformBuffers);
+    public static final OfInt LAYOUT$defaultRobustnessVertexInputs = (OfInt) LAYOUT.select(PATH$defaultRobustnessVertexInputs);
+    public static final OfInt LAYOUT$defaultRobustnessImages = (OfInt) LAYOUT.select(PATH$defaultRobustnessImages);
+    public static final OfInt LAYOUT$copySrcLayoutCount = (OfInt) LAYOUT.select(PATH$copySrcLayoutCount);
+    public static final AddressLayout LAYOUT$pCopySrcLayouts = (AddressLayout) LAYOUT.select(PATH$pCopySrcLayouts);
+    public static final OfInt LAYOUT$copyDstLayoutCount = (OfInt) LAYOUT.select(PATH$copyDstLayoutCount);
+    public static final AddressLayout LAYOUT$pCopyDstLayouts = (AddressLayout) LAYOUT.select(PATH$pCopyDstLayouts);
+    public static final OfByte LAYOUT$optimalTilingLayoutUUID = (OfByte) LAYOUT.select(PATH$optimalTilingLayoutUUID);
+    public static final OfInt LAYOUT$identicalMemoryTypeRequirements = (OfInt) LAYOUT.select(PATH$identicalMemoryTypeRequirements);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$lineSubPixelPrecisionBits = LAYOUT$lineSubPixelPrecisionBits.byteSize();
+    public static final long SIZE$maxVertexAttribDivisor = LAYOUT$maxVertexAttribDivisor.byteSize();
+    public static final long SIZE$supportsNonZeroFirstInstance = LAYOUT$supportsNonZeroFirstInstance.byteSize();
+    public static final long SIZE$maxPushDescriptors = LAYOUT$maxPushDescriptors.byteSize();
+    public static final long SIZE$dynamicRenderingLocalReadDepthStencilAttachments = LAYOUT$dynamicRenderingLocalReadDepthStencilAttachments.byteSize();
+    public static final long SIZE$dynamicRenderingLocalReadMultisampledAttachments = LAYOUT$dynamicRenderingLocalReadMultisampledAttachments.byteSize();
+    public static final long SIZE$earlyFragmentMultisampleCoverageAfterSampleCounting = LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting.byteSize();
+    public static final long SIZE$earlyFragmentSampleMaskTestBeforeSampleCounting = LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting.byteSize();
+    public static final long SIZE$depthStencilSwizzleOneSupport = LAYOUT$depthStencilSwizzleOneSupport.byteSize();
+    public static final long SIZE$polygonModePointSize = LAYOUT$polygonModePointSize.byteSize();
+    public static final long SIZE$nonStrictSinglePixelWideLinesUseParallelogram = LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram.byteSize();
+    public static final long SIZE$nonStrictWideLinesUseParallelogram = LAYOUT$nonStrictWideLinesUseParallelogram.byteSize();
+    public static final long SIZE$blockTexelViewCompatibleMultipleLayers = LAYOUT$blockTexelViewCompatibleMultipleLayers.byteSize();
+    public static final long SIZE$maxCombinedImageSamplerDescriptorCount = LAYOUT$maxCombinedImageSamplerDescriptorCount.byteSize();
+    public static final long SIZE$fragmentShadingRateClampCombinerInputs = LAYOUT$fragmentShadingRateClampCombinerInputs.byteSize();
+    public static final long SIZE$defaultRobustnessStorageBuffers = LAYOUT$defaultRobustnessStorageBuffers.byteSize();
+    public static final long SIZE$defaultRobustnessUniformBuffers = LAYOUT$defaultRobustnessUniformBuffers.byteSize();
+    public static final long SIZE$defaultRobustnessVertexInputs = LAYOUT$defaultRobustnessVertexInputs.byteSize();
+    public static final long SIZE$defaultRobustnessImages = LAYOUT$defaultRobustnessImages.byteSize();
+    public static final long SIZE$copySrcLayoutCount = LAYOUT$copySrcLayoutCount.byteSize();
+    public static final long SIZE$pCopySrcLayouts = LAYOUT$pCopySrcLayouts.byteSize();
+    public static final long SIZE$copyDstLayoutCount = LAYOUT$copyDstLayoutCount.byteSize();
+    public static final long SIZE$pCopyDstLayouts = LAYOUT$pCopyDstLayouts.byteSize();
+    public static final long SIZE$optimalTilingLayoutUUID = LAYOUT$optimalTilingLayoutUUID.byteSize();
+    public static final long SIZE$identicalMemoryTypeRequirements = LAYOUT$identicalMemoryTypeRequirements.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$lineSubPixelPrecisionBits = LAYOUT.byteOffset(PATH$lineSubPixelPrecisionBits);
+    public static final long OFFSET$maxVertexAttribDivisor = LAYOUT.byteOffset(PATH$maxVertexAttribDivisor);
+    public static final long OFFSET$supportsNonZeroFirstInstance = LAYOUT.byteOffset(PATH$supportsNonZeroFirstInstance);
+    public static final long OFFSET$maxPushDescriptors = LAYOUT.byteOffset(PATH$maxPushDescriptors);
+    public static final long OFFSET$dynamicRenderingLocalReadDepthStencilAttachments = LAYOUT.byteOffset(PATH$dynamicRenderingLocalReadDepthStencilAttachments);
+    public static final long OFFSET$dynamicRenderingLocalReadMultisampledAttachments = LAYOUT.byteOffset(PATH$dynamicRenderingLocalReadMultisampledAttachments);
+    public static final long OFFSET$earlyFragmentMultisampleCoverageAfterSampleCounting = LAYOUT.byteOffset(PATH$earlyFragmentMultisampleCoverageAfterSampleCounting);
+    public static final long OFFSET$earlyFragmentSampleMaskTestBeforeSampleCounting = LAYOUT.byteOffset(PATH$earlyFragmentSampleMaskTestBeforeSampleCounting);
+    public static final long OFFSET$depthStencilSwizzleOneSupport = LAYOUT.byteOffset(PATH$depthStencilSwizzleOneSupport);
+    public static final long OFFSET$polygonModePointSize = LAYOUT.byteOffset(PATH$polygonModePointSize);
+    public static final long OFFSET$nonStrictSinglePixelWideLinesUseParallelogram = LAYOUT.byteOffset(PATH$nonStrictSinglePixelWideLinesUseParallelogram);
+    public static final long OFFSET$nonStrictWideLinesUseParallelogram = LAYOUT.byteOffset(PATH$nonStrictWideLinesUseParallelogram);
+    public static final long OFFSET$blockTexelViewCompatibleMultipleLayers = LAYOUT.byteOffset(PATH$blockTexelViewCompatibleMultipleLayers);
+    public static final long OFFSET$maxCombinedImageSamplerDescriptorCount = LAYOUT.byteOffset(PATH$maxCombinedImageSamplerDescriptorCount);
+    public static final long OFFSET$fragmentShadingRateClampCombinerInputs = LAYOUT.byteOffset(PATH$fragmentShadingRateClampCombinerInputs);
+    public static final long OFFSET$defaultRobustnessStorageBuffers = LAYOUT.byteOffset(PATH$defaultRobustnessStorageBuffers);
+    public static final long OFFSET$defaultRobustnessUniformBuffers = LAYOUT.byteOffset(PATH$defaultRobustnessUniformBuffers);
+    public static final long OFFSET$defaultRobustnessVertexInputs = LAYOUT.byteOffset(PATH$defaultRobustnessVertexInputs);
+    public static final long OFFSET$defaultRobustnessImages = LAYOUT.byteOffset(PATH$defaultRobustnessImages);
+    public static final long OFFSET$copySrcLayoutCount = LAYOUT.byteOffset(PATH$copySrcLayoutCount);
+    public static final long OFFSET$pCopySrcLayouts = LAYOUT.byteOffset(PATH$pCopySrcLayouts);
+    public static final long OFFSET$copyDstLayoutCount = LAYOUT.byteOffset(PATH$copyDstLayoutCount);
+    public static final long OFFSET$pCopyDstLayouts = LAYOUT.byteOffset(PATH$pCopyDstLayouts);
+    public static final long OFFSET$optimalTilingLayoutUUID = LAYOUT.byteOffset(PATH$optimalTilingLayoutUUID);
+    public static final long OFFSET$identicalMemoryTypeRequirements = LAYOUT.byteOffset(PATH$identicalMemoryTypeRequirements);
 }

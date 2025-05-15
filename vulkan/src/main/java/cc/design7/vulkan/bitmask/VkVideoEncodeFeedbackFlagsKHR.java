@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeFeedbackFlagsKHR.html">VkVideoEncodeFeedbackFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeFeedbackFlagsKHR.html"><code>VkVideoEncodeFeedbackFlagsKHR</code></a>
 public final class VkVideoEncodeFeedbackFlagsKHR {
     public static final int BITSTREAM_BUFFER_OFFSET = 0x1;
     public static final int BITSTREAM_BYTES_WRITTEN = 0x2;

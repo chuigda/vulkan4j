@@ -14,8 +14,17 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkIndirectCommandsIndexBufferTokenEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsIndexBufferTokenEXT.html"><code>VkIndirectCommandsIndexBufferTokenEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkIndirectCommandsIndexBufferTokenEXT {
+///     VkIndirectCommandsInputModeFlagsEXT mode;
+/// } VkIndirectCommandsIndexBufferTokenEXT;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +33,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsIndexBufferTokenEXT.html">VkIndirectCommandsIndexBufferTokenEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsIndexBufferTokenEXT.html"><code>VkIndirectCommandsIndexBufferTokenEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkIndirectCommandsIndexBufferTokenEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkIndirectCommandsIndexBufferTokenEXT allocate(Arena arena) {
-        return new VkIndirectCommandsIndexBufferTokenEXT(arena.allocate(LAYOUT));
+        VkIndirectCommandsIndexBufferTokenEXT ret = new VkIndirectCommandsIndexBufferTokenEXT(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkIndirectCommandsIndexBufferTokenEXT[] allocate(Arena arena, int count) {
@@ -55,6 +65,14 @@ public record VkIndirectCommandsIndexBufferTokenEXT(@NotNull MemorySegment segme
         return ret;
     }
 
+    public @enumtype(VkIndirectCommandsInputModeFlagsEXT.class) int mode() {
+        return segment.get(LAYOUT$mode, OFFSET$mode);
+    }
+
+    public void mode(@enumtype(VkIndirectCommandsInputModeFlagsEXT.class) int value) {
+        segment.set(LAYOUT$mode, OFFSET$mode, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("mode")
     );
@@ -67,13 +85,4 @@ public record VkIndirectCommandsIndexBufferTokenEXT(@NotNull MemorySegment segme
     public static final long SIZE$mode = LAYOUT$mode.byteSize();
 
     public static final long OFFSET$mode = LAYOUT.byteOffset(PATH$mode);
-
-    public @enumtype(VkIndirectCommandsInputModeFlagsEXT.class) int mode() {
-        return segment.get(LAYOUT$mode, OFFSET$mode);
-    }
-
-    public void mode(@enumtype(VkIndirectCommandsInputModeFlagsEXT.class) int value) {
-        segment.set(LAYOUT$mode, OFFSET$mode, value);
-    }
-
 }

@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.html"><code>VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 shaderFloat16VectorAtomics;
+/// } VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV`
+///
+/// The {@link VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.html">VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.html"><code>VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV {
-        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV);
-    }
-
     public static VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV allocate(Arena arena) {
-        return new VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(arena.allocate(LAYOUT));
+        VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV ret = new VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV);
+        return ret;
     }
 
     public static VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(@NotNull Memor
         VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV[] ret = new VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(@NotNull Memor
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("shaderFloat16VectorAtomics")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shaderFloat16VectorAtomics = PathElement.groupElement("PATH$shaderFloat16VectorAtomics");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$shaderFloat16VectorAtomics = (OfInt) LAYOUT.select(PATH$shaderFloat16VectorAtomics);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$shaderFloat16VectorAtomics = LAYOUT$shaderFloat16VectorAtomics.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$shaderFloat16VectorAtomics = LAYOUT.byteOffset(PATH$shaderFloat16VectorAtomics);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(@NotNull Memor
         segment.set(LAYOUT$shaderFloat16VectorAtomics, OFFSET$shaderFloat16VectorAtomics, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("shaderFloat16VectorAtomics")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$shaderFloat16VectorAtomics = PathElement.groupElement("PATH$shaderFloat16VectorAtomics");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$shaderFloat16VectorAtomics = (OfInt) LAYOUT.select(PATH$shaderFloat16VectorAtomics);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderFloat16VectorAtomics = LAYOUT$shaderFloat16VectorAtomics.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$shaderFloat16VectorAtomics = LAYOUT.byteOffset(PATH$shaderFloat16VectorAtomics);
 }

@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceFeatures2} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFeatures2.html"><code>VkPhysicalDeviceFeatures2</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceFeatures2 {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkPhysicalDeviceFeatures features;
+/// } VkPhysicalDeviceFeatures2;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2`
+///
+/// The {@link VkPhysicalDeviceFeatures2#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceFeatures2#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFeatures2.html">VkPhysicalDeviceFeatures2</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFeatures2.html"><code>VkPhysicalDeviceFeatures2</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceFeatures2(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceFeatures2 {
-        sType(VkStructureType.PHYSICAL_DEVICE_FEATURES_2);
-    }
-
     public static VkPhysicalDeviceFeatures2 allocate(Arena arena) {
-        return new VkPhysicalDeviceFeatures2(arena.allocate(LAYOUT));
+        VkPhysicalDeviceFeatures2 ret = new VkPhysicalDeviceFeatures2(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_FEATURES_2);
+        return ret;
     }
 
     public static VkPhysicalDeviceFeatures2[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceFeatures2(@NotNull MemorySegment segment) implemen
         VkPhysicalDeviceFeatures2[] ret = new VkPhysicalDeviceFeatures2[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceFeatures2(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_FEATURES_2);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceFeatures2(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        VkPhysicalDeviceFeatures.LAYOUT.withName("features")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$features = PathElement.groupElement("PATH$features");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$features = (StructLayout) LAYOUT.select(PATH$features);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$features = LAYOUT$features.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$features = LAYOUT.byteOffset(PATH$features);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_FEATURES_2);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceFeatures2(@NotNull MemorySegment segment) implemen
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$features, SIZE$features);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkPhysicalDeviceFeatures.LAYOUT.withName("features")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$features = PathElement.groupElement("PATH$features");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$features = (StructLayout) LAYOUT.select(PATH$features);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$features = LAYOUT$features.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$features = LAYOUT.byteOffset(PATH$features);
 }

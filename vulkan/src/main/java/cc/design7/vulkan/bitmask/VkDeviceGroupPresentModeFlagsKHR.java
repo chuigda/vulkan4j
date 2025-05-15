@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceGroupPresentModeFlagsKHR.html">VkDeviceGroupPresentModeFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceGroupPresentModeFlagsKHR.html"><code>VkDeviceGroupPresentModeFlagsKHR</code></a>
 public final class VkDeviceGroupPresentModeFlagsKHR {
     public static final int LOCAL = 0x1;
     public static final int LOCAL_MULTI_DEVICE = 0x8;

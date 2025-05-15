@@ -16,6 +16,16 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoEncodeAV1ExtensionHeader} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoEncodeAV1ExtensionHeader {
+///     uint8_t temporal_id;
+///     uint8_t spatial_id;
+/// } StdVideoEncodeAV1ExtensionHeader;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +37,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeAV1ExtensionHeader allocate(Arena arena) {
-        return new StdVideoEncodeAV1ExtensionHeader(arena.allocate(LAYOUT));
+        StdVideoEncodeAV1ExtensionHeader ret = new StdVideoEncodeAV1ExtensionHeader(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoEncodeAV1ExtensionHeader[] allocate(Arena arena, int count) {
@@ -53,6 +64,22 @@ public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public @unsigned byte temporal_id() {
+        return segment.get(LAYOUT$temporal_id, OFFSET$temporal_id);
+    }
+
+    public void temporal_id(@unsigned byte value) {
+        segment.set(LAYOUT$temporal_id, OFFSET$temporal_id, value);
+    }
+
+    public @unsigned byte spatial_id() {
+        return segment.get(LAYOUT$spatial_id, OFFSET$spatial_id);
+    }
+
+    public void spatial_id(@unsigned byte value) {
+        segment.set(LAYOUT$spatial_id, OFFSET$spatial_id, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_BYTE.withName("temporal_id"),
         ValueLayout.JAVA_BYTE.withName("spatial_id")
@@ -70,21 +97,4 @@ public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) i
 
     public static final long OFFSET$temporal_id = LAYOUT.byteOffset(PATH$temporal_id);
     public static final long OFFSET$spatial_id = LAYOUT.byteOffset(PATH$spatial_id);
-
-    public @unsigned byte temporal_id() {
-        return segment.get(LAYOUT$temporal_id, OFFSET$temporal_id);
-    }
-
-    public void temporal_id(@unsigned byte value) {
-        segment.set(LAYOUT$temporal_id, OFFSET$temporal_id, value);
-    }
-
-    public @unsigned byte spatial_id() {
-        return segment.get(LAYOUT$spatial_id, OFFSET$spatial_id);
-    }
-
-    public void spatial_id(@unsigned byte value) {
-        segment.set(LAYOUT$spatial_id, OFFSET$spatial_id, value);
-    }
-
 }

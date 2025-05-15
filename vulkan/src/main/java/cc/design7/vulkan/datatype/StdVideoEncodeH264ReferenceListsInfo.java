@@ -16,6 +16,26 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoEncodeH264ReferenceListsInfo} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoEncodeH264ReferenceListsInfo {
+///     StdVideoEncodeH264ReferenceListsInfoFlags flags;
+///     uint8_t num_ref_idx_l0_active_minus1;
+///     uint8_t num_ref_idx_l1_active_minus1;
+///     uint8_t RefPicList0;
+///     uint8_t RefPicList1;
+///     uint8_t refList0ModOpCount;
+///     uint8_t refList1ModOpCount;
+///     uint8_t refPicMarkingOpCount;
+///     uint8_t reserved1;
+///     StdVideoEncodeH264RefListModEntry const* pRefList0ModOperations;
+///     StdVideoEncodeH264RefListModEntry const* pRefList1ModOperations;
+///     StdVideoEncodeH264RefPicMarkingEntry const* pRefPicMarkingOperations;
+/// } StdVideoEncodeH264ReferenceListsInfo;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +47,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeH264ReferenceListsInfo allocate(Arena arena) {
-        return new StdVideoEncodeH264ReferenceListsInfo(arena.allocate(LAYOUT));
+        StdVideoEncodeH264ReferenceListsInfo ret = new StdVideoEncodeH264ReferenceListsInfo(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoEncodeH264ReferenceListsInfo[] allocate(Arena arena, int count) {
@@ -52,74 +73,6 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        StdVideoEncodeH264ReferenceListsInfoFlags.LAYOUT.withName("flags"),
-        ValueLayout.JAVA_BYTE.withName("num_ref_idx_l0_active_minus1"),
-        ValueLayout.JAVA_BYTE.withName("num_ref_idx_l1_active_minus1"),
-        ValueLayout.JAVA_BYTE.withName("RefPicList0"),
-        ValueLayout.JAVA_BYTE.withName("RefPicList1"),
-        ValueLayout.JAVA_BYTE.withName("refList0ModOpCount"),
-        ValueLayout.JAVA_BYTE.withName("refList1ModOpCount"),
-        ValueLayout.JAVA_BYTE.withName("refPicMarkingOpCount"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264RefListModEntry.LAYOUT).withName("pRefList0ModOperations"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264RefListModEntry.LAYOUT).withName("pRefList1ModOperations"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264RefPicMarkingEntry.LAYOUT).withName("pRefPicMarkingOperations")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$num_ref_idx_l0_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l0_active_minus1");
-    public static final PathElement PATH$num_ref_idx_l1_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l1_active_minus1");
-    public static final PathElement PATH$RefPicList0 = PathElement.groupElement("PATH$RefPicList0");
-    public static final PathElement PATH$RefPicList1 = PathElement.groupElement("PATH$RefPicList1");
-    public static final PathElement PATH$refList0ModOpCount = PathElement.groupElement("PATH$refList0ModOpCount");
-    public static final PathElement PATH$refList1ModOpCount = PathElement.groupElement("PATH$refList1ModOpCount");
-    public static final PathElement PATH$refPicMarkingOpCount = PathElement.groupElement("PATH$refPicMarkingOpCount");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
-    public static final PathElement PATH$pRefList0ModOperations = PathElement.groupElement("PATH$pRefList0ModOperations");
-    public static final PathElement PATH$pRefList1ModOperations = PathElement.groupElement("PATH$pRefList1ModOperations");
-    public static final PathElement PATH$pRefPicMarkingOperations = PathElement.groupElement("PATH$pRefPicMarkingOperations");
-
-    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
-    public static final OfByte LAYOUT$num_ref_idx_l0_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l0_active_minus1);
-    public static final OfByte LAYOUT$num_ref_idx_l1_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l1_active_minus1);
-    public static final OfByte LAYOUT$RefPicList0 = (OfByte) LAYOUT.select(PATH$RefPicList0);
-    public static final OfByte LAYOUT$RefPicList1 = (OfByte) LAYOUT.select(PATH$RefPicList1);
-    public static final OfByte LAYOUT$refList0ModOpCount = (OfByte) LAYOUT.select(PATH$refList0ModOpCount);
-    public static final OfByte LAYOUT$refList1ModOpCount = (OfByte) LAYOUT.select(PATH$refList1ModOpCount);
-    public static final OfByte LAYOUT$refPicMarkingOpCount = (OfByte) LAYOUT.select(PATH$refPicMarkingOpCount);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
-    public static final AddressLayout LAYOUT$pRefList0ModOperations = (AddressLayout) LAYOUT.select(PATH$pRefList0ModOperations);
-    public static final AddressLayout LAYOUT$pRefList1ModOperations = (AddressLayout) LAYOUT.select(PATH$pRefList1ModOperations);
-    public static final AddressLayout LAYOUT$pRefPicMarkingOperations = (AddressLayout) LAYOUT.select(PATH$pRefPicMarkingOperations);
-
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$num_ref_idx_l0_active_minus1 = LAYOUT$num_ref_idx_l0_active_minus1.byteSize();
-    public static final long SIZE$num_ref_idx_l1_active_minus1 = LAYOUT$num_ref_idx_l1_active_minus1.byteSize();
-    public static final long SIZE$RefPicList0 = LAYOUT$RefPicList0.byteSize();
-    public static final long SIZE$RefPicList1 = LAYOUT$RefPicList1.byteSize();
-    public static final long SIZE$refList0ModOpCount = LAYOUT$refList0ModOpCount.byteSize();
-    public static final long SIZE$refList1ModOpCount = LAYOUT$refList1ModOpCount.byteSize();
-    public static final long SIZE$refPicMarkingOpCount = LAYOUT$refPicMarkingOpCount.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
-    public static final long SIZE$pRefList0ModOperations = LAYOUT$pRefList0ModOperations.byteSize();
-    public static final long SIZE$pRefList1ModOperations = LAYOUT$pRefList1ModOperations.byteSize();
-    public static final long SIZE$pRefPicMarkingOperations = LAYOUT$pRefPicMarkingOperations.byteSize();
-
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$num_ref_idx_l0_active_minus1 = LAYOUT.byteOffset(PATH$num_ref_idx_l0_active_minus1);
-    public static final long OFFSET$num_ref_idx_l1_active_minus1 = LAYOUT.byteOffset(PATH$num_ref_idx_l1_active_minus1);
-    public static final long OFFSET$RefPicList0 = LAYOUT.byteOffset(PATH$RefPicList0);
-    public static final long OFFSET$RefPicList1 = LAYOUT.byteOffset(PATH$RefPicList1);
-    public static final long OFFSET$refList0ModOpCount = LAYOUT.byteOffset(PATH$refList0ModOpCount);
-    public static final long OFFSET$refList1ModOpCount = LAYOUT.byteOffset(PATH$refList1ModOpCount);
-    public static final long OFFSET$refPicMarkingOpCount = LAYOUT.byteOffset(PATH$refPicMarkingOpCount);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
-    public static final long OFFSET$pRefList0ModOperations = LAYOUT.byteOffset(PATH$pRefList0ModOperations);
-    public static final long OFFSET$pRefList1ModOperations = LAYOUT.byteOffset(PATH$pRefList1ModOperations);
-    public static final long OFFSET$pRefPicMarkingOperations = LAYOUT.byteOffset(PATH$pRefPicMarkingOperations);
 
     public StdVideoEncodeH264ReferenceListsInfoFlags flags() {
         return new StdVideoEncodeH264ReferenceListsInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
@@ -203,7 +156,7 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
 
     public @Nullable StdVideoEncodeH264RefListModEntry pRefList0ModOperations() {
         MemorySegment s = pRefList0ModOperationsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoEncodeH264RefListModEntry(s);
@@ -216,7 +169,7 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
 
     @unsafe public @Nullable StdVideoEncodeH264RefListModEntry[] pRefList0ModOperations(int assumedCount) {
         MemorySegment s = pRefList0ModOperationsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -238,7 +191,7 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
 
     public @Nullable StdVideoEncodeH264RefListModEntry pRefList1ModOperations() {
         MemorySegment s = pRefList1ModOperationsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoEncodeH264RefListModEntry(s);
@@ -251,7 +204,7 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
 
     @unsafe public @Nullable StdVideoEncodeH264RefListModEntry[] pRefList1ModOperations(int assumedCount) {
         MemorySegment s = pRefList1ModOperationsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -273,7 +226,7 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
 
     public @Nullable StdVideoEncodeH264RefPicMarkingEntry pRefPicMarkingOperations() {
         MemorySegment s = pRefPicMarkingOperationsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoEncodeH264RefPicMarkingEntry(s);
@@ -286,7 +239,7 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
 
     @unsafe public @Nullable StdVideoEncodeH264RefPicMarkingEntry[] pRefPicMarkingOperations(int assumedCount) {
         MemorySegment s = pRefPicMarkingOperationsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -298,4 +251,71 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoEncodeH264ReferenceListsInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("num_ref_idx_l0_active_minus1"),
+        ValueLayout.JAVA_BYTE.withName("num_ref_idx_l1_active_minus1"),
+        ValueLayout.JAVA_BYTE.withName("RefPicList0"),
+        ValueLayout.JAVA_BYTE.withName("RefPicList1"),
+        ValueLayout.JAVA_BYTE.withName("refList0ModOpCount"),
+        ValueLayout.JAVA_BYTE.withName("refList1ModOpCount"),
+        ValueLayout.JAVA_BYTE.withName("refPicMarkingOpCount"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264RefListModEntry.LAYOUT).withName("pRefList0ModOperations"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264RefListModEntry.LAYOUT).withName("pRefList1ModOperations"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264RefPicMarkingEntry.LAYOUT).withName("pRefPicMarkingOperations")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$num_ref_idx_l0_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l0_active_minus1");
+    public static final PathElement PATH$num_ref_idx_l1_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l1_active_minus1");
+    public static final PathElement PATH$RefPicList0 = PathElement.groupElement("PATH$RefPicList0");
+    public static final PathElement PATH$RefPicList1 = PathElement.groupElement("PATH$RefPicList1");
+    public static final PathElement PATH$refList0ModOpCount = PathElement.groupElement("PATH$refList0ModOpCount");
+    public static final PathElement PATH$refList1ModOpCount = PathElement.groupElement("PATH$refList1ModOpCount");
+    public static final PathElement PATH$refPicMarkingOpCount = PathElement.groupElement("PATH$refPicMarkingOpCount");
+    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
+    public static final PathElement PATH$pRefList0ModOperations = PathElement.groupElement("PATH$pRefList0ModOperations");
+    public static final PathElement PATH$pRefList1ModOperations = PathElement.groupElement("PATH$pRefList1ModOperations");
+    public static final PathElement PATH$pRefPicMarkingOperations = PathElement.groupElement("PATH$pRefPicMarkingOperations");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$num_ref_idx_l0_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l0_active_minus1);
+    public static final OfByte LAYOUT$num_ref_idx_l1_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l1_active_minus1);
+    public static final OfByte LAYOUT$RefPicList0 = (OfByte) LAYOUT.select(PATH$RefPicList0);
+    public static final OfByte LAYOUT$RefPicList1 = (OfByte) LAYOUT.select(PATH$RefPicList1);
+    public static final OfByte LAYOUT$refList0ModOpCount = (OfByte) LAYOUT.select(PATH$refList0ModOpCount);
+    public static final OfByte LAYOUT$refList1ModOpCount = (OfByte) LAYOUT.select(PATH$refList1ModOpCount);
+    public static final OfByte LAYOUT$refPicMarkingOpCount = (OfByte) LAYOUT.select(PATH$refPicMarkingOpCount);
+    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
+    public static final AddressLayout LAYOUT$pRefList0ModOperations = (AddressLayout) LAYOUT.select(PATH$pRefList0ModOperations);
+    public static final AddressLayout LAYOUT$pRefList1ModOperations = (AddressLayout) LAYOUT.select(PATH$pRefList1ModOperations);
+    public static final AddressLayout LAYOUT$pRefPicMarkingOperations = (AddressLayout) LAYOUT.select(PATH$pRefPicMarkingOperations);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$num_ref_idx_l0_active_minus1 = LAYOUT$num_ref_idx_l0_active_minus1.byteSize();
+    public static final long SIZE$num_ref_idx_l1_active_minus1 = LAYOUT$num_ref_idx_l1_active_minus1.byteSize();
+    public static final long SIZE$RefPicList0 = LAYOUT$RefPicList0.byteSize();
+    public static final long SIZE$RefPicList1 = LAYOUT$RefPicList1.byteSize();
+    public static final long SIZE$refList0ModOpCount = LAYOUT$refList0ModOpCount.byteSize();
+    public static final long SIZE$refList1ModOpCount = LAYOUT$refList1ModOpCount.byteSize();
+    public static final long SIZE$refPicMarkingOpCount = LAYOUT$refPicMarkingOpCount.byteSize();
+    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
+    public static final long SIZE$pRefList0ModOperations = LAYOUT$pRefList0ModOperations.byteSize();
+    public static final long SIZE$pRefList1ModOperations = LAYOUT$pRefList1ModOperations.byteSize();
+    public static final long SIZE$pRefPicMarkingOperations = LAYOUT$pRefPicMarkingOperations.byteSize();
+
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$num_ref_idx_l0_active_minus1 = LAYOUT.byteOffset(PATH$num_ref_idx_l0_active_minus1);
+    public static final long OFFSET$num_ref_idx_l1_active_minus1 = LAYOUT.byteOffset(PATH$num_ref_idx_l1_active_minus1);
+    public static final long OFFSET$RefPicList0 = LAYOUT.byteOffset(PATH$RefPicList0);
+    public static final long OFFSET$RefPicList1 = LAYOUT.byteOffset(PATH$RefPicList1);
+    public static final long OFFSET$refList0ModOpCount = LAYOUT.byteOffset(PATH$refList0ModOpCount);
+    public static final long OFFSET$refList1ModOpCount = LAYOUT.byteOffset(PATH$refList1ModOpCount);
+    public static final long OFFSET$refPicMarkingOpCount = LAYOUT.byteOffset(PATH$refPicMarkingOpCount);
+    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
+    public static final long OFFSET$pRefList0ModOperations = LAYOUT.byteOffset(PATH$pRefList0ModOperations);
+    public static final long OFFSET$pRefList1ModOperations = LAYOUT.byteOffset(PATH$pRefList1ModOperations);
+    public static final long OFFSET$pRefPicMarkingOperations = LAYOUT.byteOffset(PATH$pRefPicMarkingOperations);
 }

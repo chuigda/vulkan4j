@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryType.html">VkQueryType</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryType.html"><code>VkQueryType</code></a>
 public final class VkQueryType {
     public static final int OCCLUSION = 0x0;
     public static final int PIPELINE_STATISTICS = 0x1;

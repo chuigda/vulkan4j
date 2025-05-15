@@ -17,6 +17,16 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoDecodeH265ReferenceInfoFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoDecodeH265ReferenceInfoFlags {
+///     uint32_t used_for_long_term_reference : 1;
+///     uint32_t unused_for_reference : 1;
+/// } StdVideoDecodeH265ReferenceInfoFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +38,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoDecodeH265ReferenceInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoDecodeH265ReferenceInfoFlags allocate(Arena arena) {
-        return new StdVideoDecodeH265ReferenceInfoFlags(arena.allocate(LAYOUT));
+        StdVideoDecodeH265ReferenceInfoFlags ret = new StdVideoDecodeH265ReferenceInfoFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoDecodeH265ReferenceInfoFlags[] allocate(Arena arena, int count) {
@@ -54,18 +65,6 @@ public record StdVideoDecodeH265ReferenceInfoFlags(@NotNull MemorySegment segmen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$used_for_long_term_reference_unused_for_reference")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$used_for_long_term_reference_unused_for_reference = PathElement.groupElement("PATH$bitfield$used_for_long_term_reference_unused_for_reference");
-
-    public static final OfInt LAYOUT$used_for_long_term_reference_unused_for_reference = (OfInt) LAYOUT.select(PATH$bitfield$used_for_long_term_reference_unused_for_reference);
-
-
-    public static final long OFFSET$used_for_long_term_reference_unused_for_reference = LAYOUT.byteOffset(PATH$bitfield$used_for_long_term_reference_unused_for_reference);
-
     public boolean used_for_long_term_reference() {
         MemorySegment s = segment.asSlice(OFFSET$used_for_long_term_reference_unused_for_reference, LAYOUT$used_for_long_term_reference_unused_for_reference);
         return BitfieldUtil.readBit(s, 0);
@@ -86,4 +85,15 @@ public record StdVideoDecodeH265ReferenceInfoFlags(@NotNull MemorySegment segmen
         BitfieldUtil.writeBit(s, 1, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$used_for_long_term_reference_unused_for_reference")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$bitfield$used_for_long_term_reference_unused_for_reference = PathElement.groupElement("PATH$bitfield$used_for_long_term_reference_unused_for_reference");
+
+    public static final OfInt LAYOUT$used_for_long_term_reference_unused_for_reference = (OfInt) LAYOUT.select(PATH$bitfield$used_for_long_term_reference_unused_for_reference);
+
+
+    public static final long OFFSET$used_for_long_term_reference_unused_for_reference = LAYOUT.byteOffset(PATH$bitfield$used_for_long_term_reference_unused_for_reference);
 }

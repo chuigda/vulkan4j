@@ -14,8 +14,24 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineColorBlendAttachmentState} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineColorBlendAttachmentState.html"><code>VkPipelineColorBlendAttachmentState</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineColorBlendAttachmentState {
+///     VkBool32 blendEnable;
+///     VkBlendFactor srcColorBlendFactor;
+///     VkBlendFactor dstColorBlendFactor;
+///     VkBlendOp colorBlendOp;
+///     VkBlendFactor srcAlphaBlendFactor;
+///     VkBlendFactor dstAlphaBlendFactor;
+///     VkBlendOp alphaBlendOp;
+///     VkColorComponentFlags colorWriteMask;
+/// } VkPipelineColorBlendAttachmentState;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +40,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineColorBlendAttachmentState.html">VkPipelineColorBlendAttachmentState</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineColorBlendAttachmentState.html"><code>VkPipelineColorBlendAttachmentState</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineColorBlendAttachmentState(@NotNull MemorySegment segment) implements IPointer {
     public static VkPipelineColorBlendAttachmentState allocate(Arena arena) {
-        return new VkPipelineColorBlendAttachmentState(arena.allocate(LAYOUT));
+        VkPipelineColorBlendAttachmentState ret = new VkPipelineColorBlendAttachmentState(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkPipelineColorBlendAttachmentState[] allocate(Arena arena, int count) {
@@ -54,54 +71,6 @@ public record VkPipelineColorBlendAttachmentState(@NotNull MemorySegment segment
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("blendEnable"),
-        ValueLayout.JAVA_INT.withName("srcColorBlendFactor"),
-        ValueLayout.JAVA_INT.withName("dstColorBlendFactor"),
-        ValueLayout.JAVA_INT.withName("colorBlendOp"),
-        ValueLayout.JAVA_INT.withName("srcAlphaBlendFactor"),
-        ValueLayout.JAVA_INT.withName("dstAlphaBlendFactor"),
-        ValueLayout.JAVA_INT.withName("alphaBlendOp"),
-        ValueLayout.JAVA_INT.withName("colorWriteMask")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$blendEnable = PathElement.groupElement("PATH$blendEnable");
-    public static final PathElement PATH$srcColorBlendFactor = PathElement.groupElement("PATH$srcColorBlendFactor");
-    public static final PathElement PATH$dstColorBlendFactor = PathElement.groupElement("PATH$dstColorBlendFactor");
-    public static final PathElement PATH$colorBlendOp = PathElement.groupElement("PATH$colorBlendOp");
-    public static final PathElement PATH$srcAlphaBlendFactor = PathElement.groupElement("PATH$srcAlphaBlendFactor");
-    public static final PathElement PATH$dstAlphaBlendFactor = PathElement.groupElement("PATH$dstAlphaBlendFactor");
-    public static final PathElement PATH$alphaBlendOp = PathElement.groupElement("PATH$alphaBlendOp");
-    public static final PathElement PATH$colorWriteMask = PathElement.groupElement("PATH$colorWriteMask");
-
-    public static final OfInt LAYOUT$blendEnable = (OfInt) LAYOUT.select(PATH$blendEnable);
-    public static final OfInt LAYOUT$srcColorBlendFactor = (OfInt) LAYOUT.select(PATH$srcColorBlendFactor);
-    public static final OfInt LAYOUT$dstColorBlendFactor = (OfInt) LAYOUT.select(PATH$dstColorBlendFactor);
-    public static final OfInt LAYOUT$colorBlendOp = (OfInt) LAYOUT.select(PATH$colorBlendOp);
-    public static final OfInt LAYOUT$srcAlphaBlendFactor = (OfInt) LAYOUT.select(PATH$srcAlphaBlendFactor);
-    public static final OfInt LAYOUT$dstAlphaBlendFactor = (OfInt) LAYOUT.select(PATH$dstAlphaBlendFactor);
-    public static final OfInt LAYOUT$alphaBlendOp = (OfInt) LAYOUT.select(PATH$alphaBlendOp);
-    public static final OfInt LAYOUT$colorWriteMask = (OfInt) LAYOUT.select(PATH$colorWriteMask);
-
-    public static final long SIZE$blendEnable = LAYOUT$blendEnable.byteSize();
-    public static final long SIZE$srcColorBlendFactor = LAYOUT$srcColorBlendFactor.byteSize();
-    public static final long SIZE$dstColorBlendFactor = LAYOUT$dstColorBlendFactor.byteSize();
-    public static final long SIZE$colorBlendOp = LAYOUT$colorBlendOp.byteSize();
-    public static final long SIZE$srcAlphaBlendFactor = LAYOUT$srcAlphaBlendFactor.byteSize();
-    public static final long SIZE$dstAlphaBlendFactor = LAYOUT$dstAlphaBlendFactor.byteSize();
-    public static final long SIZE$alphaBlendOp = LAYOUT$alphaBlendOp.byteSize();
-    public static final long SIZE$colorWriteMask = LAYOUT$colorWriteMask.byteSize();
-
-    public static final long OFFSET$blendEnable = LAYOUT.byteOffset(PATH$blendEnable);
-    public static final long OFFSET$srcColorBlendFactor = LAYOUT.byteOffset(PATH$srcColorBlendFactor);
-    public static final long OFFSET$dstColorBlendFactor = LAYOUT.byteOffset(PATH$dstColorBlendFactor);
-    public static final long OFFSET$colorBlendOp = LAYOUT.byteOffset(PATH$colorBlendOp);
-    public static final long OFFSET$srcAlphaBlendFactor = LAYOUT.byteOffset(PATH$srcAlphaBlendFactor);
-    public static final long OFFSET$dstAlphaBlendFactor = LAYOUT.byteOffset(PATH$dstAlphaBlendFactor);
-    public static final long OFFSET$alphaBlendOp = LAYOUT.byteOffset(PATH$alphaBlendOp);
-    public static final long OFFSET$colorWriteMask = LAYOUT.byteOffset(PATH$colorWriteMask);
 
     public @unsigned int blendEnable() {
         return segment.get(LAYOUT$blendEnable, OFFSET$blendEnable);
@@ -167,4 +136,51 @@ public record VkPipelineColorBlendAttachmentState(@NotNull MemorySegment segment
         segment.set(LAYOUT$colorWriteMask, OFFSET$colorWriteMask, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("blendEnable"),
+        ValueLayout.JAVA_INT.withName("srcColorBlendFactor"),
+        ValueLayout.JAVA_INT.withName("dstColorBlendFactor"),
+        ValueLayout.JAVA_INT.withName("colorBlendOp"),
+        ValueLayout.JAVA_INT.withName("srcAlphaBlendFactor"),
+        ValueLayout.JAVA_INT.withName("dstAlphaBlendFactor"),
+        ValueLayout.JAVA_INT.withName("alphaBlendOp"),
+        ValueLayout.JAVA_INT.withName("colorWriteMask")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$blendEnable = PathElement.groupElement("PATH$blendEnable");
+    public static final PathElement PATH$srcColorBlendFactor = PathElement.groupElement("PATH$srcColorBlendFactor");
+    public static final PathElement PATH$dstColorBlendFactor = PathElement.groupElement("PATH$dstColorBlendFactor");
+    public static final PathElement PATH$colorBlendOp = PathElement.groupElement("PATH$colorBlendOp");
+    public static final PathElement PATH$srcAlphaBlendFactor = PathElement.groupElement("PATH$srcAlphaBlendFactor");
+    public static final PathElement PATH$dstAlphaBlendFactor = PathElement.groupElement("PATH$dstAlphaBlendFactor");
+    public static final PathElement PATH$alphaBlendOp = PathElement.groupElement("PATH$alphaBlendOp");
+    public static final PathElement PATH$colorWriteMask = PathElement.groupElement("PATH$colorWriteMask");
+
+    public static final OfInt LAYOUT$blendEnable = (OfInt) LAYOUT.select(PATH$blendEnable);
+    public static final OfInt LAYOUT$srcColorBlendFactor = (OfInt) LAYOUT.select(PATH$srcColorBlendFactor);
+    public static final OfInt LAYOUT$dstColorBlendFactor = (OfInt) LAYOUT.select(PATH$dstColorBlendFactor);
+    public static final OfInt LAYOUT$colorBlendOp = (OfInt) LAYOUT.select(PATH$colorBlendOp);
+    public static final OfInt LAYOUT$srcAlphaBlendFactor = (OfInt) LAYOUT.select(PATH$srcAlphaBlendFactor);
+    public static final OfInt LAYOUT$dstAlphaBlendFactor = (OfInt) LAYOUT.select(PATH$dstAlphaBlendFactor);
+    public static final OfInt LAYOUT$alphaBlendOp = (OfInt) LAYOUT.select(PATH$alphaBlendOp);
+    public static final OfInt LAYOUT$colorWriteMask = (OfInt) LAYOUT.select(PATH$colorWriteMask);
+
+    public static final long SIZE$blendEnable = LAYOUT$blendEnable.byteSize();
+    public static final long SIZE$srcColorBlendFactor = LAYOUT$srcColorBlendFactor.byteSize();
+    public static final long SIZE$dstColorBlendFactor = LAYOUT$dstColorBlendFactor.byteSize();
+    public static final long SIZE$colorBlendOp = LAYOUT$colorBlendOp.byteSize();
+    public static final long SIZE$srcAlphaBlendFactor = LAYOUT$srcAlphaBlendFactor.byteSize();
+    public static final long SIZE$dstAlphaBlendFactor = LAYOUT$dstAlphaBlendFactor.byteSize();
+    public static final long SIZE$alphaBlendOp = LAYOUT$alphaBlendOp.byteSize();
+    public static final long SIZE$colorWriteMask = LAYOUT$colorWriteMask.byteSize();
+
+    public static final long OFFSET$blendEnable = LAYOUT.byteOffset(PATH$blendEnable);
+    public static final long OFFSET$srcColorBlendFactor = LAYOUT.byteOffset(PATH$srcColorBlendFactor);
+    public static final long OFFSET$dstColorBlendFactor = LAYOUT.byteOffset(PATH$dstColorBlendFactor);
+    public static final long OFFSET$colorBlendOp = LAYOUT.byteOffset(PATH$colorBlendOp);
+    public static final long OFFSET$srcAlphaBlendFactor = LAYOUT.byteOffset(PATH$srcAlphaBlendFactor);
+    public static final long OFFSET$dstAlphaBlendFactor = LAYOUT.byteOffset(PATH$dstAlphaBlendFactor);
+    public static final long OFFSET$alphaBlendOp = LAYOUT.byteOffset(PATH$alphaBlendOp);
+    public static final long OFFSET$colorWriteMask = LAYOUT.byteOffset(PATH$colorWriteMask);
 }

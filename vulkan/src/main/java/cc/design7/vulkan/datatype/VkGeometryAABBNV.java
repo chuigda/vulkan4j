@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkGeometryAABBNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeometryAABBNV.html"><code>VkGeometryAABBNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkGeometryAABBNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkBuffer aabbData;
+///     uint32_t numAABBs;
+///     uint32_t stride;
+///     VkDeviceSize offset;
+/// } VkGeometryAABBNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_GEOMETRY_AABB_NV`
+///
+/// The {@link VkGeometryAABBNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkGeometryAABBNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeometryAABBNV.html">VkGeometryAABBNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeometryAABBNV.html"><code>VkGeometryAABBNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkGeometryAABBNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkGeometryAABBNV {
-        sType(VkStructureType.GEOMETRY_AABB_NV);
-    }
-
     public static VkGeometryAABBNV allocate(Arena arena) {
-        return new VkGeometryAABBNV(arena.allocate(LAYOUT));
+        VkGeometryAABBNV ret = new VkGeometryAABBNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.GEOMETRY_AABB_NV);
+        return ret;
     }
 
     public static VkGeometryAABBNV[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkGeometryAABBNV(@NotNull MemorySegment segment) implements IPoint
         VkGeometryAABBNV[] ret = new VkGeometryAABBNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkGeometryAABBNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.GEOMETRY_AABB_NV);
         }
         return ret;
     }
@@ -57,6 +78,66 @@ public record VkGeometryAABBNV(@NotNull MemorySegment segment) implements IPoint
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.GEOMETRY_AABB_NV);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkBuffer aabbData() {
+        MemorySegment s = segment.asSlice(OFFSET$aabbData, SIZE$aabbData);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkBuffer(s);
+    }
+
+    public void aabbData(@Nullable VkBuffer value) {
+        segment.set(LAYOUT$aabbData, OFFSET$aabbData, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned int numAABBs() {
+        return segment.get(LAYOUT$numAABBs, OFFSET$numAABBs);
+    }
+
+    public void numAABBs(@unsigned int value) {
+        segment.set(LAYOUT$numAABBs, OFFSET$numAABBs, value);
+    }
+
+    public @unsigned int stride() {
+        return segment.get(LAYOUT$stride, OFFSET$stride);
+    }
+
+    public void stride(@unsigned int value) {
+        segment.set(LAYOUT$stride, OFFSET$stride, value);
+    }
+
+    public @unsigned long offset() {
+        return segment.get(LAYOUT$offset, OFFSET$offset);
+    }
+
+    public void offset(@unsigned long value) {
+        segment.set(LAYOUT$offset, OFFSET$offset, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -96,61 +177,4 @@ public record VkGeometryAABBNV(@NotNull MemorySegment segment) implements IPoint
     public static final long OFFSET$numAABBs = LAYOUT.byteOffset(PATH$numAABBs);
     public static final long OFFSET$stride = LAYOUT.byteOffset(PATH$stride);
     public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkBuffer aabbData() {
-        MemorySegment s = segment.asSlice(OFFSET$aabbData, SIZE$aabbData);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkBuffer(s);
-    }
-
-    public void aabbData(@Nullable VkBuffer value) {
-        segment.set(LAYOUT$aabbData, OFFSET$aabbData, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned int numAABBs() {
-        return segment.get(LAYOUT$numAABBs, OFFSET$numAABBs);
-    }
-
-    public void numAABBs(@unsigned int value) {
-        segment.set(LAYOUT$numAABBs, OFFSET$numAABBs, value);
-    }
-
-    public @unsigned int stride() {
-        return segment.get(LAYOUT$stride, OFFSET$stride);
-    }
-
-    public void stride(@unsigned int value) {
-        segment.set(LAYOUT$stride, OFFSET$stride, value);
-    }
-
-    public @unsigned long offset() {
-        return segment.get(LAYOUT$offset, OFFSET$offset);
-    }
-
-    public void offset(@unsigned long value) {
-        segment.set(LAYOUT$offset, OFFSET$offset, value);
-    }
-
 }

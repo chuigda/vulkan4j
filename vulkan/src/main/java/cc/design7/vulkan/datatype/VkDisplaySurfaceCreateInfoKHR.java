@@ -14,8 +14,34 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDisplaySurfaceCreateInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplaySurfaceCreateInfoKHR.html"><code>VkDisplaySurfaceCreateInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDisplaySurfaceCreateInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkDisplaySurfaceCreateFlagsKHR flags;
+///     VkDisplayModeKHR displayMode;
+///     uint32_t planeIndex;
+///     uint32_t planeStackIndex;
+///     VkSurfaceTransformFlagsKHR transform;
+///     float globalAlpha;
+///     VkDisplayPlaneAlphaFlagsKHR alphaMode;
+///     VkExtent2D imageExtent;
+/// } VkDisplaySurfaceCreateInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR`
+///
+/// The {@link VkDisplaySurfaceCreateInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkDisplaySurfaceCreateInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +50,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplaySurfaceCreateInfoKHR.html">VkDisplaySurfaceCreateInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplaySurfaceCreateInfoKHR.html"><code>VkDisplaySurfaceCreateInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkDisplaySurfaceCreateInfoKHR {
-        sType(VkStructureType.DISPLAY_SURFACE_CREATE_INFO_KHR);
-    }
-
     public static VkDisplaySurfaceCreateInfoKHR allocate(Arena arena) {
-        return new VkDisplaySurfaceCreateInfoKHR(arena.allocate(LAYOUT));
+        VkDisplaySurfaceCreateInfoKHR ret = new VkDisplaySurfaceCreateInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.DISPLAY_SURFACE_CREATE_INFO_KHR);
+        return ret;
     }
 
     public static VkDisplaySurfaceCreateInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +65,7 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         VkDisplaySurfaceCreateInfoKHR[] ret = new VkDisplaySurfaceCreateInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkDisplaySurfaceCreateInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.DISPLAY_SURFACE_CREATE_INFO_KHR);
         }
         return ret;
     }
@@ -57,6 +82,98 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.DISPLAY_SURFACE_CREATE_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkDisplaySurfaceCreateFlagsKHR.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkDisplaySurfaceCreateFlagsKHR.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @Nullable VkDisplayModeKHR displayMode() {
+        MemorySegment s = segment.asSlice(OFFSET$displayMode, SIZE$displayMode);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDisplayModeKHR(s);
+    }
+
+    public void displayMode(@Nullable VkDisplayModeKHR value) {
+        segment.set(LAYOUT$displayMode, OFFSET$displayMode, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned int planeIndex() {
+        return segment.get(LAYOUT$planeIndex, OFFSET$planeIndex);
+    }
+
+    public void planeIndex(@unsigned int value) {
+        segment.set(LAYOUT$planeIndex, OFFSET$planeIndex, value);
+    }
+
+    public @unsigned int planeStackIndex() {
+        return segment.get(LAYOUT$planeStackIndex, OFFSET$planeStackIndex);
+    }
+
+    public void planeStackIndex(@unsigned int value) {
+        segment.set(LAYOUT$planeStackIndex, OFFSET$planeStackIndex, value);
+    }
+
+    public @enumtype(VkSurfaceTransformFlagsKHR.class) int transform() {
+        return segment.get(LAYOUT$transform, OFFSET$transform);
+    }
+
+    public void transform(@enumtype(VkSurfaceTransformFlagsKHR.class) int value) {
+        segment.set(LAYOUT$transform, OFFSET$transform, value);
+    }
+
+    public float globalAlpha() {
+        return segment.get(LAYOUT$globalAlpha, OFFSET$globalAlpha);
+    }
+
+    public void globalAlpha(float value) {
+        segment.set(LAYOUT$globalAlpha, OFFSET$globalAlpha, value);
+    }
+
+    public @enumtype(VkDisplayPlaneAlphaFlagsKHR.class) int alphaMode() {
+        return segment.get(LAYOUT$alphaMode, OFFSET$alphaMode);
+    }
+
+    public void alphaMode(@enumtype(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
+        segment.set(LAYOUT$alphaMode, OFFSET$alphaMode, value);
+    }
+
+    public VkExtent2D imageExtent() {
+        return new VkExtent2D(segment.asSlice(OFFSET$imageExtent, LAYOUT$imageExtent));
+    }
+
+    public void imageExtent(VkExtent2D value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -116,93 +233,4 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
     public static final long OFFSET$globalAlpha = LAYOUT.byteOffset(PATH$globalAlpha);
     public static final long OFFSET$alphaMode = LAYOUT.byteOffset(PATH$alphaMode);
     public static final long OFFSET$imageExtent = LAYOUT.byteOffset(PATH$imageExtent);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @enumtype(VkDisplaySurfaceCreateFlagsKHR.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkDisplaySurfaceCreateFlagsKHR.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @Nullable VkDisplayModeKHR displayMode() {
-        MemorySegment s = segment.asSlice(OFFSET$displayMode, SIZE$displayMode);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkDisplayModeKHR(s);
-    }
-
-    public void displayMode(@Nullable VkDisplayModeKHR value) {
-        segment.set(LAYOUT$displayMode, OFFSET$displayMode, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned int planeIndex() {
-        return segment.get(LAYOUT$planeIndex, OFFSET$planeIndex);
-    }
-
-    public void planeIndex(@unsigned int value) {
-        segment.set(LAYOUT$planeIndex, OFFSET$planeIndex, value);
-    }
-
-    public @unsigned int planeStackIndex() {
-        return segment.get(LAYOUT$planeStackIndex, OFFSET$planeStackIndex);
-    }
-
-    public void planeStackIndex(@unsigned int value) {
-        segment.set(LAYOUT$planeStackIndex, OFFSET$planeStackIndex, value);
-    }
-
-    public @enumtype(VkSurfaceTransformFlagsKHR.class) int transform() {
-        return segment.get(LAYOUT$transform, OFFSET$transform);
-    }
-
-    public void transform(@enumtype(VkSurfaceTransformFlagsKHR.class) int value) {
-        segment.set(LAYOUT$transform, OFFSET$transform, value);
-    }
-
-    public float globalAlpha() {
-        return segment.get(LAYOUT$globalAlpha, OFFSET$globalAlpha);
-    }
-
-    public void globalAlpha(float value) {
-        segment.set(LAYOUT$globalAlpha, OFFSET$globalAlpha, value);
-    }
-
-    public @enumtype(VkDisplayPlaneAlphaFlagsKHR.class) int alphaMode() {
-        return segment.get(LAYOUT$alphaMode, OFFSET$alphaMode);
-    }
-
-    public void alphaMode(@enumtype(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
-        segment.set(LAYOUT$alphaMode, OFFSET$alphaMode, value);
-    }
-
-    public VkExtent2D imageExtent() {
-        return new VkExtent2D(segment.asSlice(OFFSET$imageExtent, LAYOUT$imageExtent));
-    }
-
-    public void imageExtent(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
-    }
-
 }

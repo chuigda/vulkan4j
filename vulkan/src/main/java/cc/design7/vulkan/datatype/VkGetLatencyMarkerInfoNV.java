@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkGetLatencyMarkerInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGetLatencyMarkerInfoNV.html"><code>VkGetLatencyMarkerInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkGetLatencyMarkerInfoNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t timingCount;
+///     VkLatencyTimingsFrameReportNV* pTimings;
+/// } VkGetLatencyMarkerInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_GET_LATENCY_MARKER_INFO_NV`
+///
+/// The {@link VkGetLatencyMarkerInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkGetLatencyMarkerInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGetLatencyMarkerInfoNV.html">VkGetLatencyMarkerInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGetLatencyMarkerInfoNV.html"><code>VkGetLatencyMarkerInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkGetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkGetLatencyMarkerInfoNV {
-        sType(VkStructureType.GET_LATENCY_MARKER_INFO_NV);
-    }
-
     public static VkGetLatencyMarkerInfoNV allocate(Arena arena) {
-        return new VkGetLatencyMarkerInfoNV(arena.allocate(LAYOUT));
+        VkGetLatencyMarkerInfoNV ret = new VkGetLatencyMarkerInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.GET_LATENCY_MARKER_INFO_NV);
+        return ret;
     }
 
     public static VkGetLatencyMarkerInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkGetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
         VkGetLatencyMarkerInfoNV[] ret = new VkGetLatencyMarkerInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkGetLatencyMarkerInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.GET_LATENCY_MARKER_INFO_NV);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkGetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("timingCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkLatencyTimingsFrameReportNV.LAYOUT).withName("pTimings")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$timingCount = PathElement.groupElement("PATH$timingCount");
-    public static final PathElement PATH$pTimings = PathElement.groupElement("PATH$pTimings");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$timingCount = (OfInt) LAYOUT.select(PATH$timingCount);
-    public static final AddressLayout LAYOUT$pTimings = (AddressLayout) LAYOUT.select(PATH$pTimings);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$timingCount = LAYOUT$timingCount.byteSize();
-    public static final long SIZE$pTimings = LAYOUT$pTimings.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$timingCount = LAYOUT.byteOffset(PATH$timingCount);
-    public static final long OFFSET$pTimings = LAYOUT.byteOffset(PATH$pTimings);
+    public void autoInit() {
+        sType(VkStructureType.GET_LATENCY_MARKER_INFO_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -125,7 +120,7 @@ public record VkGetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
 
     public @Nullable VkLatencyTimingsFrameReportNV pTimings() {
         MemorySegment s = pTimingsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkLatencyTimingsFrameReportNV(s);
@@ -138,7 +133,7 @@ public record VkGetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
 
     @unsafe public @Nullable VkLatencyTimingsFrameReportNV[] pTimings(int assumedCount) {
         MemorySegment s = pTimingsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -150,4 +145,31 @@ public record VkGetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("timingCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkLatencyTimingsFrameReportNV.LAYOUT).withName("pTimings")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$timingCount = PathElement.groupElement("PATH$timingCount");
+    public static final PathElement PATH$pTimings = PathElement.groupElement("PATH$pTimings");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$timingCount = (OfInt) LAYOUT.select(PATH$timingCount);
+    public static final AddressLayout LAYOUT$pTimings = (AddressLayout) LAYOUT.select(PATH$pTimings);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$timingCount = LAYOUT$timingCount.byteSize();
+    public static final long SIZE$pTimings = LAYOUT$pTimings.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$timingCount = LAYOUT.byteOffset(PATH$timingCount);
+    public static final long OFFSET$pTimings = LAYOUT.byteOffset(PATH$pTimings);
 }

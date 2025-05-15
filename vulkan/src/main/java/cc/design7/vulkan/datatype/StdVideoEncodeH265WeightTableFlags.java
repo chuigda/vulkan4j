@@ -16,6 +16,18 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoEncodeH265WeightTableFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoEncodeH265WeightTableFlags {
+///     uint16_t luma_weight_l0_flag;
+///     uint16_t chroma_weight_l0_flag;
+///     uint16_t luma_weight_l1_flag;
+///     uint16_t chroma_weight_l1_flag;
+/// } StdVideoEncodeH265WeightTableFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +39,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeH265WeightTableFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeH265WeightTableFlags allocate(Arena arena) {
-        return new StdVideoEncodeH265WeightTableFlags(arena.allocate(LAYOUT));
+        StdVideoEncodeH265WeightTableFlags ret = new StdVideoEncodeH265WeightTableFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoEncodeH265WeightTableFlags[] allocate(Arena arena, int count) {
@@ -52,34 +65,6 @@ public record StdVideoEncodeH265WeightTableFlags(@NotNull MemorySegment segment)
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_SHORT.withName("luma_weight_l0_flag"),
-        ValueLayout.JAVA_SHORT.withName("chroma_weight_l0_flag"),
-        ValueLayout.JAVA_SHORT.withName("luma_weight_l1_flag"),
-        ValueLayout.JAVA_SHORT.withName("chroma_weight_l1_flag")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$luma_weight_l0_flag = PathElement.groupElement("PATH$luma_weight_l0_flag");
-    public static final PathElement PATH$chroma_weight_l0_flag = PathElement.groupElement("PATH$chroma_weight_l0_flag");
-    public static final PathElement PATH$luma_weight_l1_flag = PathElement.groupElement("PATH$luma_weight_l1_flag");
-    public static final PathElement PATH$chroma_weight_l1_flag = PathElement.groupElement("PATH$chroma_weight_l1_flag");
-
-    public static final OfShort LAYOUT$luma_weight_l0_flag = (OfShort) LAYOUT.select(PATH$luma_weight_l0_flag);
-    public static final OfShort LAYOUT$chroma_weight_l0_flag = (OfShort) LAYOUT.select(PATH$chroma_weight_l0_flag);
-    public static final OfShort LAYOUT$luma_weight_l1_flag = (OfShort) LAYOUT.select(PATH$luma_weight_l1_flag);
-    public static final OfShort LAYOUT$chroma_weight_l1_flag = (OfShort) LAYOUT.select(PATH$chroma_weight_l1_flag);
-
-    public static final long SIZE$luma_weight_l0_flag = LAYOUT$luma_weight_l0_flag.byteSize();
-    public static final long SIZE$chroma_weight_l0_flag = LAYOUT$chroma_weight_l0_flag.byteSize();
-    public static final long SIZE$luma_weight_l1_flag = LAYOUT$luma_weight_l1_flag.byteSize();
-    public static final long SIZE$chroma_weight_l1_flag = LAYOUT$chroma_weight_l1_flag.byteSize();
-
-    public static final long OFFSET$luma_weight_l0_flag = LAYOUT.byteOffset(PATH$luma_weight_l0_flag);
-    public static final long OFFSET$chroma_weight_l0_flag = LAYOUT.byteOffset(PATH$chroma_weight_l0_flag);
-    public static final long OFFSET$luma_weight_l1_flag = LAYOUT.byteOffset(PATH$luma_weight_l1_flag);
-    public static final long OFFSET$chroma_weight_l1_flag = LAYOUT.byteOffset(PATH$chroma_weight_l1_flag);
 
     public @unsigned short luma_weight_l0_flag() {
         return segment.get(LAYOUT$luma_weight_l0_flag, OFFSET$luma_weight_l0_flag);
@@ -113,4 +98,31 @@ public record StdVideoEncodeH265WeightTableFlags(@NotNull MemorySegment segment)
         segment.set(LAYOUT$chroma_weight_l1_flag, OFFSET$chroma_weight_l1_flag, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_SHORT.withName("luma_weight_l0_flag"),
+        ValueLayout.JAVA_SHORT.withName("chroma_weight_l0_flag"),
+        ValueLayout.JAVA_SHORT.withName("luma_weight_l1_flag"),
+        ValueLayout.JAVA_SHORT.withName("chroma_weight_l1_flag")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$luma_weight_l0_flag = PathElement.groupElement("PATH$luma_weight_l0_flag");
+    public static final PathElement PATH$chroma_weight_l0_flag = PathElement.groupElement("PATH$chroma_weight_l0_flag");
+    public static final PathElement PATH$luma_weight_l1_flag = PathElement.groupElement("PATH$luma_weight_l1_flag");
+    public static final PathElement PATH$chroma_weight_l1_flag = PathElement.groupElement("PATH$chroma_weight_l1_flag");
+
+    public static final OfShort LAYOUT$luma_weight_l0_flag = (OfShort) LAYOUT.select(PATH$luma_weight_l0_flag);
+    public static final OfShort LAYOUT$chroma_weight_l0_flag = (OfShort) LAYOUT.select(PATH$chroma_weight_l0_flag);
+    public static final OfShort LAYOUT$luma_weight_l1_flag = (OfShort) LAYOUT.select(PATH$luma_weight_l1_flag);
+    public static final OfShort LAYOUT$chroma_weight_l1_flag = (OfShort) LAYOUT.select(PATH$chroma_weight_l1_flag);
+
+    public static final long SIZE$luma_weight_l0_flag = LAYOUT$luma_weight_l0_flag.byteSize();
+    public static final long SIZE$chroma_weight_l0_flag = LAYOUT$chroma_weight_l0_flag.byteSize();
+    public static final long SIZE$luma_weight_l1_flag = LAYOUT$luma_weight_l1_flag.byteSize();
+    public static final long SIZE$chroma_weight_l1_flag = LAYOUT$chroma_weight_l1_flag.byteSize();
+
+    public static final long OFFSET$luma_weight_l0_flag = LAYOUT.byteOffset(PATH$luma_weight_l0_flag);
+    public static final long OFFSET$chroma_weight_l0_flag = LAYOUT.byteOffset(PATH$chroma_weight_l0_flag);
+    public static final long OFFSET$luma_weight_l1_flag = LAYOUT.byteOffset(PATH$luma_weight_l1_flag);
+    public static final long OFFSET$chroma_weight_l1_flag = LAYOUT.byteOffset(PATH$chroma_weight_l1_flag);
 }

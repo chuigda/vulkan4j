@@ -15,8 +15,22 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkAccelerationStructureInstanceKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureInstanceKHR.html"><code>VkAccelerationStructureInstanceKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkAccelerationStructureInstanceKHR {
+///     VkTransformMatrixKHR transform;
+///     uint32_t instanceCustomIndex : 24;
+///     uint32_t mask : 8;
+///     uint32_t instanceShaderBindingTableRecordOffset : 24;
+///     VkGeometryInstanceFlagsKHR flags : 8;
+///     uint64_t accelerationStructureReference;
+/// } VkAccelerationStructureInstanceKHR;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -25,12 +39,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureInstanceKHR.html">VkAccelerationStructureInstanceKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureInstanceKHR.html"><code>VkAccelerationStructureInstanceKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkAccelerationStructureInstanceKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkAccelerationStructureInstanceKHR allocate(Arena arena) {
-        return new VkAccelerationStructureInstanceKHR(arena.allocate(LAYOUT));
+        VkAccelerationStructureInstanceKHR ret = new VkAccelerationStructureInstanceKHR(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkAccelerationStructureInstanceKHR[] allocate(Arena arena, int count) {
@@ -55,32 +70,6 @@ public record VkAccelerationStructureInstanceKHR(@NotNull MemorySegment segment)
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        VkTransformMatrixKHR.LAYOUT.withName("transform"),
-        ValueLayout.JAVA_INT.withName("bitfield$instanceCustomIndex_mask"),
-        ValueLayout.JAVA_INT.withName("bitfield$instanceShaderBindingTableRecordOffset_flags"),
-        ValueLayout.JAVA_LONG.withName("accelerationStructureReference")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$transform = PathElement.groupElement("PATH$transform");
-    public static final PathElement PATH$bitfield$instanceCustomIndex_mask = PathElement.groupElement("PATH$bitfield$instanceCustomIndex_mask");
-    public static final PathElement PATH$bitfield$instanceShaderBindingTableRecordOffset_flags = PathElement.groupElement("PATH$bitfield$instanceShaderBindingTableRecordOffset_flags");
-    public static final PathElement PATH$accelerationStructureReference = PathElement.groupElement("PATH$accelerationStructureReference");
-
-    public static final StructLayout LAYOUT$transform = (StructLayout) LAYOUT.select(PATH$transform);
-    public static final OfInt LAYOUT$instanceCustomIndex_mask = (OfInt) LAYOUT.select(PATH$bitfield$instanceCustomIndex_mask);
-    public static final OfInt LAYOUT$instanceShaderBindingTableRecordOffset_flags = (OfInt) LAYOUT.select(PATH$bitfield$instanceShaderBindingTableRecordOffset_flags);
-    public static final OfLong LAYOUT$accelerationStructureReference = (OfLong) LAYOUT.select(PATH$accelerationStructureReference);
-
-    public static final long SIZE$transform = LAYOUT$transform.byteSize();
-    public static final long SIZE$accelerationStructureReference = LAYOUT$accelerationStructureReference.byteSize();
-
-    public static final long OFFSET$transform = LAYOUT.byteOffset(PATH$transform);
-    public static final long OFFSET$instanceCustomIndex_mask = LAYOUT.byteOffset(PATH$bitfield$instanceCustomIndex_mask);
-    public static final long OFFSET$instanceShaderBindingTableRecordOffset_flags = LAYOUT.byteOffset(PATH$bitfield$instanceShaderBindingTableRecordOffset_flags);
-    public static final long OFFSET$accelerationStructureReference = LAYOUT.byteOffset(PATH$accelerationStructureReference);
 
     public VkTransformMatrixKHR transform() {
         return new VkTransformMatrixKHR(segment.asSlice(OFFSET$transform, LAYOUT$transform));
@@ -138,4 +127,29 @@ public record VkAccelerationStructureInstanceKHR(@NotNull MemorySegment segment)
         segment.set(LAYOUT$accelerationStructureReference, OFFSET$accelerationStructureReference, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        VkTransformMatrixKHR.LAYOUT.withName("transform"),
+        ValueLayout.JAVA_INT.withName("bitfield$instanceCustomIndex_mask"),
+        ValueLayout.JAVA_INT.withName("bitfield$instanceShaderBindingTableRecordOffset_flags"),
+        ValueLayout.JAVA_LONG.withName("accelerationStructureReference")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$transform = PathElement.groupElement("PATH$transform");
+    public static final PathElement PATH$bitfield$instanceCustomIndex_mask = PathElement.groupElement("PATH$bitfield$instanceCustomIndex_mask");
+    public static final PathElement PATH$bitfield$instanceShaderBindingTableRecordOffset_flags = PathElement.groupElement("PATH$bitfield$instanceShaderBindingTableRecordOffset_flags");
+    public static final PathElement PATH$accelerationStructureReference = PathElement.groupElement("PATH$accelerationStructureReference");
+
+    public static final StructLayout LAYOUT$transform = (StructLayout) LAYOUT.select(PATH$transform);
+    public static final OfInt LAYOUT$instanceCustomIndex_mask = (OfInt) LAYOUT.select(PATH$bitfield$instanceCustomIndex_mask);
+    public static final OfInt LAYOUT$instanceShaderBindingTableRecordOffset_flags = (OfInt) LAYOUT.select(PATH$bitfield$instanceShaderBindingTableRecordOffset_flags);
+    public static final OfLong LAYOUT$accelerationStructureReference = (OfLong) LAYOUT.select(PATH$accelerationStructureReference);
+
+    public static final long SIZE$transform = LAYOUT$transform.byteSize();
+    public static final long SIZE$accelerationStructureReference = LAYOUT$accelerationStructureReference.byteSize();
+
+    public static final long OFFSET$transform = LAYOUT.byteOffset(PATH$transform);
+    public static final long OFFSET$instanceCustomIndex_mask = LAYOUT.byteOffset(PATH$bitfield$instanceCustomIndex_mask);
+    public static final long OFFSET$instanceShaderBindingTableRecordOffset_flags = LAYOUT.byteOffset(PATH$bitfield$instanceShaderBindingTableRecordOffset_flags);
+    public static final long OFFSET$accelerationStructureReference = LAYOUT.byteOffset(PATH$accelerationStructureReference);
 }

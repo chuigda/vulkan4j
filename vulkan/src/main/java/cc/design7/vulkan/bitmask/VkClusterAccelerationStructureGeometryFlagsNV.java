@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureGeometryFlagsNV.html">VkClusterAccelerationStructureGeometryFlagsNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureGeometryFlagsNV.html"><code>VkClusterAccelerationStructureGeometryFlagsNV</code></a>
 public final class VkClusterAccelerationStructureGeometryFlagsNV {
     public static final int CULL_DISABLE = 0x1;
     public static final int NO_DUPLICATE_ANYHIT_INVOCATION = 0x2;

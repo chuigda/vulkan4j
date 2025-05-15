@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkBufferConstraintsInfoFUCHSIA} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferConstraintsInfoFUCHSIA.html"><code>VkBufferConstraintsInfoFUCHSIA</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkBufferConstraintsInfoFUCHSIA {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkBufferCreateInfo createInfo;
+///     VkFormatFeatureFlags requiredFormatFeatures;
+///     VkBufferCollectionConstraintsInfoFUCHSIA bufferCollectionConstraints;
+/// } VkBufferConstraintsInfoFUCHSIA;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_BUFFER_CONSTRAINTS_INFO_FUCHSIA`
+///
+/// The {@link VkBufferConstraintsInfoFUCHSIA#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkBufferConstraintsInfoFUCHSIA#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferConstraintsInfoFUCHSIA.html">VkBufferConstraintsInfoFUCHSIA</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferConstraintsInfoFUCHSIA.html"><code>VkBufferConstraintsInfoFUCHSIA</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkBufferConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) implements IPointer {
-    public VkBufferConstraintsInfoFUCHSIA {
-        sType(VkStructureType.BUFFER_CONSTRAINTS_INFO_FUCHSIA);
-    }
-
     public static VkBufferConstraintsInfoFUCHSIA allocate(Arena arena) {
-        return new VkBufferConstraintsInfoFUCHSIA(arena.allocate(LAYOUT));
+        VkBufferConstraintsInfoFUCHSIA ret = new VkBufferConstraintsInfoFUCHSIA(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.BUFFER_CONSTRAINTS_INFO_FUCHSIA);
+        return ret;
     }
 
     public static VkBufferConstraintsInfoFUCHSIA[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkBufferConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) imp
         VkBufferConstraintsInfoFUCHSIA[] ret = new VkBufferConstraintsInfoFUCHSIA[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkBufferConstraintsInfoFUCHSIA(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.BUFFER_CONSTRAINTS_INFO_FUCHSIA);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkBufferConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        VkBufferCreateInfo.LAYOUT.withName("createInfo"),
-        ValueLayout.JAVA_INT.withName("requiredFormatFeatures"),
-        VkBufferCollectionConstraintsInfoFUCHSIA.LAYOUT.withName("bufferCollectionConstraints")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$createInfo = PathElement.groupElement("PATH$createInfo");
-    public static final PathElement PATH$requiredFormatFeatures = PathElement.groupElement("PATH$requiredFormatFeatures");
-    public static final PathElement PATH$bufferCollectionConstraints = PathElement.groupElement("PATH$bufferCollectionConstraints");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$createInfo = (StructLayout) LAYOUT.select(PATH$createInfo);
-    public static final OfInt LAYOUT$requiredFormatFeatures = (OfInt) LAYOUT.select(PATH$requiredFormatFeatures);
-    public static final StructLayout LAYOUT$bufferCollectionConstraints = (StructLayout) LAYOUT.select(PATH$bufferCollectionConstraints);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$createInfo = LAYOUT$createInfo.byteSize();
-    public static final long SIZE$requiredFormatFeatures = LAYOUT$requiredFormatFeatures.byteSize();
-    public static final long SIZE$bufferCollectionConstraints = LAYOUT$bufferCollectionConstraints.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$createInfo = LAYOUT.byteOffset(PATH$createInfo);
-    public static final long OFFSET$requiredFormatFeatures = LAYOUT.byteOffset(PATH$requiredFormatFeatures);
-    public static final long OFFSET$bufferCollectionConstraints = LAYOUT.byteOffset(PATH$bufferCollectionConstraints);
+    public void autoInit() {
+        sType(VkStructureType.BUFFER_CONSTRAINTS_INFO_FUCHSIA);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -136,4 +127,36 @@ public record VkBufferConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) imp
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$bufferCollectionConstraints, SIZE$bufferCollectionConstraints);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkBufferCreateInfo.LAYOUT.withName("createInfo"),
+        ValueLayout.JAVA_INT.withName("requiredFormatFeatures"),
+        VkBufferCollectionConstraintsInfoFUCHSIA.LAYOUT.withName("bufferCollectionConstraints")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$createInfo = PathElement.groupElement("PATH$createInfo");
+    public static final PathElement PATH$requiredFormatFeatures = PathElement.groupElement("PATH$requiredFormatFeatures");
+    public static final PathElement PATH$bufferCollectionConstraints = PathElement.groupElement("PATH$bufferCollectionConstraints");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$createInfo = (StructLayout) LAYOUT.select(PATH$createInfo);
+    public static final OfInt LAYOUT$requiredFormatFeatures = (OfInt) LAYOUT.select(PATH$requiredFormatFeatures);
+    public static final StructLayout LAYOUT$bufferCollectionConstraints = (StructLayout) LAYOUT.select(PATH$bufferCollectionConstraints);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$createInfo = LAYOUT$createInfo.byteSize();
+    public static final long SIZE$requiredFormatFeatures = LAYOUT$requiredFormatFeatures.byteSize();
+    public static final long SIZE$bufferCollectionConstraints = LAYOUT$bufferCollectionConstraints.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$createInfo = LAYOUT.byteOffset(PATH$createInfo);
+    public static final long OFFSET$requiredFormatFeatures = LAYOUT.byteOffset(PATH$requiredFormatFeatures);
+    public static final long OFFSET$bufferCollectionConstraints = LAYOUT.byteOffset(PATH$bufferCollectionConstraints);
 }

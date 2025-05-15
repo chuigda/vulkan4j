@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkSparseImageMemoryRequirements2} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageMemoryRequirements2.html"><code>VkSparseImageMemoryRequirements2</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkSparseImageMemoryRequirements2 {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkSparseImageMemoryRequirements memoryRequirements;
+/// } VkSparseImageMemoryRequirements2;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2`
+///
+/// The {@link VkSparseImageMemoryRequirements2#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkSparseImageMemoryRequirements2#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageMemoryRequirements2.html">VkSparseImageMemoryRequirements2</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageMemoryRequirements2.html"><code>VkSparseImageMemoryRequirements2</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkSparseImageMemoryRequirements2(@NotNull MemorySegment segment) implements IPointer {
-    public VkSparseImageMemoryRequirements2 {
-        sType(VkStructureType.SPARSE_IMAGE_MEMORY_REQUIREMENTS_2);
-    }
-
     public static VkSparseImageMemoryRequirements2 allocate(Arena arena) {
-        return new VkSparseImageMemoryRequirements2(arena.allocate(LAYOUT));
+        VkSparseImageMemoryRequirements2 ret = new VkSparseImageMemoryRequirements2(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.SPARSE_IMAGE_MEMORY_REQUIREMENTS_2);
+        return ret;
     }
 
     public static VkSparseImageMemoryRequirements2[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkSparseImageMemoryRequirements2(@NotNull MemorySegment segment) i
         VkSparseImageMemoryRequirements2[] ret = new VkSparseImageMemoryRequirements2[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkSparseImageMemoryRequirements2(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.SPARSE_IMAGE_MEMORY_REQUIREMENTS_2);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkSparseImageMemoryRequirements2(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        VkSparseImageMemoryRequirements.LAYOUT.withName("memoryRequirements")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$memoryRequirements = PathElement.groupElement("PATH$memoryRequirements");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$memoryRequirements = (StructLayout) LAYOUT.select(PATH$memoryRequirements);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$memoryRequirements = LAYOUT$memoryRequirements.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$memoryRequirements = LAYOUT.byteOffset(PATH$memoryRequirements);
+    public void autoInit() {
+        sType(VkStructureType.SPARSE_IMAGE_MEMORY_REQUIREMENTS_2);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkSparseImageMemoryRequirements2(@NotNull MemorySegment segment) i
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryRequirements, SIZE$memoryRequirements);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkSparseImageMemoryRequirements.LAYOUT.withName("memoryRequirements")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$memoryRequirements = PathElement.groupElement("PATH$memoryRequirements");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$memoryRequirements = (StructLayout) LAYOUT.select(PATH$memoryRequirements);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$memoryRequirements = LAYOUT$memoryRequirements.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$memoryRequirements = LAYOUT.byteOffset(PATH$memoryRequirements);
 }

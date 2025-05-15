@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccessFlags3KHR.html">VkAccessFlags3KHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccessFlags3KHR.html"><code>VkAccessFlags3KHR</code></a>
 public final class VkAccessFlags3KHR {
     public static final long NONE = 0x0L;
 

@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkMemoryGetRemoteAddressInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryGetRemoteAddressInfoNV.html"><code>VkMemoryGetRemoteAddressInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkMemoryGetRemoteAddressInfoNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkDeviceMemory memory;
+///     VkExternalMemoryHandleTypeFlags handleType;
+/// } VkMemoryGetRemoteAddressInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_MEMORY_GET_REMOTE_ADDRESS_INFO_NV`
+///
+/// The {@link VkMemoryGetRemoteAddressInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkMemoryGetRemoteAddressInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryGetRemoteAddressInfoNV.html">VkMemoryGetRemoteAddressInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryGetRemoteAddressInfoNV.html"><code>VkMemoryGetRemoteAddressInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkMemoryGetRemoteAddressInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkMemoryGetRemoteAddressInfoNV {
-        sType(VkStructureType.MEMORY_GET_REMOTE_ADDRESS_INFO_NV);
-    }
-
     public static VkMemoryGetRemoteAddressInfoNV allocate(Arena arena) {
-        return new VkMemoryGetRemoteAddressInfoNV(arena.allocate(LAYOUT));
+        VkMemoryGetRemoteAddressInfoNV ret = new VkMemoryGetRemoteAddressInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.MEMORY_GET_REMOTE_ADDRESS_INFO_NV);
+        return ret;
     }
 
     public static VkMemoryGetRemoteAddressInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkMemoryGetRemoteAddressInfoNV(@NotNull MemorySegment segment) imp
         VkMemoryGetRemoteAddressInfoNV[] ret = new VkMemoryGetRemoteAddressInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkMemoryGetRemoteAddressInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.MEMORY_GET_REMOTE_ADDRESS_INFO_NV);
         }
         return ret;
     }
@@ -57,6 +76,50 @@ public record VkMemoryGetRemoteAddressInfoNV(@NotNull MemorySegment segment) imp
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.MEMORY_GET_REMOTE_ADDRESS_INFO_NV);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkDeviceMemory memory() {
+        MemorySegment s = segment.asSlice(OFFSET$memory, SIZE$memory);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDeviceMemory(s);
+    }
+
+    public void memory(@Nullable VkDeviceMemory value) {
+        segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @enumtype(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+        return segment.get(LAYOUT$handleType, OFFSET$handleType);
+    }
+
+    public void handleType(@enumtype(VkExternalMemoryHandleTypeFlags.class) int value) {
+        segment.set(LAYOUT$handleType, OFFSET$handleType, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -86,45 +149,4 @@ public record VkMemoryGetRemoteAddressInfoNV(@NotNull MemorySegment segment) imp
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$memory = LAYOUT.byteOffset(PATH$memory);
     public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkDeviceMemory memory() {
-        MemorySegment s = segment.asSlice(OFFSET$memory, SIZE$memory);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkDeviceMemory(s);
-    }
-
-    public void memory(@Nullable VkDeviceMemory value) {
-        segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @enumtype(VkExternalMemoryHandleTypeFlags.class) int handleType() {
-        return segment.get(LAYOUT$handleType, OFFSET$handleType);
-    }
-
-    public void handleType(@enumtype(VkExternalMemoryHandleTypeFlags.class) int value) {
-        segment.set(LAYOUT$handleType, OFFSET$handleType, value);
-    }
-
 }

@@ -14,8 +14,32 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkCooperativeVectorPropertiesNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCooperativeVectorPropertiesNV.html"><code>VkCooperativeVectorPropertiesNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkCooperativeVectorPropertiesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkComponentTypeKHR inputType;
+///     VkComponentTypeKHR inputInterpretation;
+///     VkComponentTypeKHR matrixInterpretation;
+///     VkComponentTypeKHR biasInterpretation;
+///     VkComponentTypeKHR resultType;
+///     VkBool32 transpose;
+/// } VkCooperativeVectorPropertiesNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_COOPERATIVE_VECTOR_PROPERTIES_NV`
+///
+/// The {@link VkCooperativeVectorPropertiesNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkCooperativeVectorPropertiesNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +48,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCooperativeVectorPropertiesNV.html">VkCooperativeVectorPropertiesNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCooperativeVectorPropertiesNV.html"><code>VkCooperativeVectorPropertiesNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkCooperativeVectorPropertiesNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkCooperativeVectorPropertiesNV {
-        sType(VkStructureType.COOPERATIVE_VECTOR_PROPERTIES_NV);
-    }
-
     public static VkCooperativeVectorPropertiesNV allocate(Arena arena) {
-        return new VkCooperativeVectorPropertiesNV(arena.allocate(LAYOUT));
+        VkCooperativeVectorPropertiesNV ret = new VkCooperativeVectorPropertiesNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.COOPERATIVE_VECTOR_PROPERTIES_NV);
+        return ret;
     }
 
     public static VkCooperativeVectorPropertiesNV[] allocate(Arena arena, int count) {
@@ -41,6 +63,7 @@ public record VkCooperativeVectorPropertiesNV(@NotNull MemorySegment segment) im
         VkCooperativeVectorPropertiesNV[] ret = new VkCooperativeVectorPropertiesNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkCooperativeVectorPropertiesNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.COOPERATIVE_VECTOR_PROPERTIES_NV);
         }
         return ret;
     }
@@ -59,53 +82,9 @@ public record VkCooperativeVectorPropertiesNV(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("inputType"),
-        ValueLayout.JAVA_INT.withName("inputInterpretation"),
-        ValueLayout.JAVA_INT.withName("matrixInterpretation"),
-        ValueLayout.JAVA_INT.withName("biasInterpretation"),
-        ValueLayout.JAVA_INT.withName("resultType"),
-        ValueLayout.JAVA_INT.withName("transpose")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$inputType = PathElement.groupElement("PATH$inputType");
-    public static final PathElement PATH$inputInterpretation = PathElement.groupElement("PATH$inputInterpretation");
-    public static final PathElement PATH$matrixInterpretation = PathElement.groupElement("PATH$matrixInterpretation");
-    public static final PathElement PATH$biasInterpretation = PathElement.groupElement("PATH$biasInterpretation");
-    public static final PathElement PATH$resultType = PathElement.groupElement("PATH$resultType");
-    public static final PathElement PATH$transpose = PathElement.groupElement("PATH$transpose");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$inputType = (OfInt) LAYOUT.select(PATH$inputType);
-    public static final OfInt LAYOUT$inputInterpretation = (OfInt) LAYOUT.select(PATH$inputInterpretation);
-    public static final OfInt LAYOUT$matrixInterpretation = (OfInt) LAYOUT.select(PATH$matrixInterpretation);
-    public static final OfInt LAYOUT$biasInterpretation = (OfInt) LAYOUT.select(PATH$biasInterpretation);
-    public static final OfInt LAYOUT$resultType = (OfInt) LAYOUT.select(PATH$resultType);
-    public static final OfInt LAYOUT$transpose = (OfInt) LAYOUT.select(PATH$transpose);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$inputType = LAYOUT$inputType.byteSize();
-    public static final long SIZE$inputInterpretation = LAYOUT$inputInterpretation.byteSize();
-    public static final long SIZE$matrixInterpretation = LAYOUT$matrixInterpretation.byteSize();
-    public static final long SIZE$biasInterpretation = LAYOUT$biasInterpretation.byteSize();
-    public static final long SIZE$resultType = LAYOUT$resultType.byteSize();
-    public static final long SIZE$transpose = LAYOUT$transpose.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$inputType = LAYOUT.byteOffset(PATH$inputType);
-    public static final long OFFSET$inputInterpretation = LAYOUT.byteOffset(PATH$inputInterpretation);
-    public static final long OFFSET$matrixInterpretation = LAYOUT.byteOffset(PATH$matrixInterpretation);
-    public static final long OFFSET$biasInterpretation = LAYOUT.byteOffset(PATH$biasInterpretation);
-    public static final long OFFSET$resultType = LAYOUT.byteOffset(PATH$resultType);
-    public static final long OFFSET$transpose = LAYOUT.byteOffset(PATH$transpose);
+    public void autoInit() {
+        sType(VkStructureType.COOPERATIVE_VECTOR_PROPERTIES_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -175,4 +154,51 @@ public record VkCooperativeVectorPropertiesNV(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$transpose, OFFSET$transpose, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("inputType"),
+        ValueLayout.JAVA_INT.withName("inputInterpretation"),
+        ValueLayout.JAVA_INT.withName("matrixInterpretation"),
+        ValueLayout.JAVA_INT.withName("biasInterpretation"),
+        ValueLayout.JAVA_INT.withName("resultType"),
+        ValueLayout.JAVA_INT.withName("transpose")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$inputType = PathElement.groupElement("PATH$inputType");
+    public static final PathElement PATH$inputInterpretation = PathElement.groupElement("PATH$inputInterpretation");
+    public static final PathElement PATH$matrixInterpretation = PathElement.groupElement("PATH$matrixInterpretation");
+    public static final PathElement PATH$biasInterpretation = PathElement.groupElement("PATH$biasInterpretation");
+    public static final PathElement PATH$resultType = PathElement.groupElement("PATH$resultType");
+    public static final PathElement PATH$transpose = PathElement.groupElement("PATH$transpose");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$inputType = (OfInt) LAYOUT.select(PATH$inputType);
+    public static final OfInt LAYOUT$inputInterpretation = (OfInt) LAYOUT.select(PATH$inputInterpretation);
+    public static final OfInt LAYOUT$matrixInterpretation = (OfInt) LAYOUT.select(PATH$matrixInterpretation);
+    public static final OfInt LAYOUT$biasInterpretation = (OfInt) LAYOUT.select(PATH$biasInterpretation);
+    public static final OfInt LAYOUT$resultType = (OfInt) LAYOUT.select(PATH$resultType);
+    public static final OfInt LAYOUT$transpose = (OfInt) LAYOUT.select(PATH$transpose);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$inputType = LAYOUT$inputType.byteSize();
+    public static final long SIZE$inputInterpretation = LAYOUT$inputInterpretation.byteSize();
+    public static final long SIZE$matrixInterpretation = LAYOUT$matrixInterpretation.byteSize();
+    public static final long SIZE$biasInterpretation = LAYOUT$biasInterpretation.byteSize();
+    public static final long SIZE$resultType = LAYOUT$resultType.byteSize();
+    public static final long SIZE$transpose = LAYOUT$transpose.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$inputType = LAYOUT.byteOffset(PATH$inputType);
+    public static final long OFFSET$inputInterpretation = LAYOUT.byteOffset(PATH$inputInterpretation);
+    public static final long OFFSET$matrixInterpretation = LAYOUT.byteOffset(PATH$matrixInterpretation);
+    public static final long OFFSET$biasInterpretation = LAYOUT.byteOffset(PATH$biasInterpretation);
+    public static final long OFFSET$resultType = LAYOUT.byteOffset(PATH$resultType);
+    public static final long OFFSET$transpose = LAYOUT.byteOffset(PATH$transpose);
 }

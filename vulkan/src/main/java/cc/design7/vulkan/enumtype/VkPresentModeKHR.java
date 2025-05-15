@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentModeKHR.html">VkPresentModeKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentModeKHR.html"><code>VkPresentModeKHR</code></a>
 public final class VkPresentModeKHR {
     public static final int IMMEDIATE = 0x0;
     public static final int MAILBOX = 0x1;

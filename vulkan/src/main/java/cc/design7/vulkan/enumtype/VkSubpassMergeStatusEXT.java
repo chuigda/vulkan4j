@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassMergeStatusEXT.html">VkSubpassMergeStatusEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassMergeStatusEXT.html"><code>VkSubpassMergeStatusEXT</code></a>
 public final class VkSubpassMergeStatusEXT {
     public static final int MERGED = 0x0;
     public static final int DISALLOWED = 0x1;

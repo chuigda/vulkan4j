@@ -17,6 +17,16 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoEncodeH264ReferenceInfoFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoEncodeH264ReferenceInfoFlags {
+///     uint32_t used_for_long_term_reference : 1;
+///     uint32_t reserved : 31;
+/// } StdVideoEncodeH264ReferenceInfoFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +38,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeH264ReferenceInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeH264ReferenceInfoFlags allocate(Arena arena) {
-        return new StdVideoEncodeH264ReferenceInfoFlags(arena.allocate(LAYOUT));
+        StdVideoEncodeH264ReferenceInfoFlags ret = new StdVideoEncodeH264ReferenceInfoFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoEncodeH264ReferenceInfoFlags[] allocate(Arena arena, int count) {
@@ -54,6 +65,16 @@ public record StdVideoEncodeH264ReferenceInfoFlags(@NotNull MemorySegment segmen
         return ret;
     }
 
+    public boolean used_for_long_term_reference() {
+        MemorySegment s = segment.asSlice(OFFSET$used_for_long_term_reference_reserved, LAYOUT$used_for_long_term_reference_reserved);
+        return BitfieldUtil.readBit(s, 0);
+    }
+
+    public void used_for_long_term_reference(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$used_for_long_term_reference_reserved, LAYOUT$used_for_long_term_reference_reserved);
+        BitfieldUtil.writeBit(s, 0, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$used_for_long_term_reference_reserved")
     );
@@ -65,16 +86,4 @@ public record StdVideoEncodeH264ReferenceInfoFlags(@NotNull MemorySegment segmen
 
 
     public static final long OFFSET$used_for_long_term_reference_reserved = LAYOUT.byteOffset(PATH$bitfield$used_for_long_term_reference_reserved);
-
-    public boolean used_for_long_term_reference() {
-        MemorySegment s = segment.asSlice(OFFSET$used_for_long_term_reference_reserved, LAYOUT$used_for_long_term_reference_reserved);
-        return BitfieldUtil.readBit(s, 0);
-    }
-
-    public void used_for_long_term_reference(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$used_for_long_term_reference_reserved, LAYOUT$used_for_long_term_reference_reserved);
-        BitfieldUtil.writeBit(s, 0, value);
-    }
-
-
 }

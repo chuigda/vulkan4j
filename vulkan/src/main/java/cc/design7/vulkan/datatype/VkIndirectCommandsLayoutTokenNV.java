@@ -14,8 +14,39 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkIndirectCommandsLayoutTokenNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsLayoutTokenNV.html"><code>VkIndirectCommandsLayoutTokenNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkIndirectCommandsLayoutTokenNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkIndirectCommandsTokenTypeNV tokenType;
+///     uint32_t stream;
+///     uint32_t offset;
+///     uint32_t vertexBindingUnit;
+///     VkBool32 vertexDynamicStride;
+///     VkPipelineLayout pushconstantPipelineLayout;
+///     VkShaderStageFlags pushconstantShaderStageFlags;
+///     uint32_t pushconstantOffset;
+///     uint32_t pushconstantSize;
+///     VkIndirectStateFlagsNV indirectStateFlags;
+///     uint32_t indexTypeCount;
+///     VkIndexType const* pIndexTypes;
+///     uint32_t const* pIndexTypeValues;
+/// } VkIndirectCommandsLayoutTokenNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_NV`
+///
+/// The {@link VkIndirectCommandsLayoutTokenNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkIndirectCommandsLayoutTokenNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +55,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsLayoutTokenNV.html">VkIndirectCommandsLayoutTokenNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsLayoutTokenNV.html"><code>VkIndirectCommandsLayoutTokenNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkIndirectCommandsLayoutTokenNV {
-        sType(VkStructureType.INDIRECT_COMMANDS_LAYOUT_TOKEN_NV);
-    }
-
     public static VkIndirectCommandsLayoutTokenNV allocate(Arena arena) {
-        return new VkIndirectCommandsLayoutTokenNV(arena.allocate(LAYOUT));
+        VkIndirectCommandsLayoutTokenNV ret = new VkIndirectCommandsLayoutTokenNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.INDIRECT_COMMANDS_LAYOUT_TOKEN_NV);
+        return ret;
     }
 
     public static VkIndirectCommandsLayoutTokenNV[] allocate(Arena arena, int count) {
@@ -41,6 +70,7 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         VkIndirectCommandsLayoutTokenNV[] ret = new VkIndirectCommandsLayoutTokenNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkIndirectCommandsLayoutTokenNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.INDIRECT_COMMANDS_LAYOUT_TOKEN_NV);
         }
         return ret;
     }
@@ -57,6 +87,172 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.INDIRECT_COMMANDS_LAYOUT_TOKEN_NV);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkIndirectCommandsTokenTypeNV.class) int tokenType() {
+        return segment.get(LAYOUT$tokenType, OFFSET$tokenType);
+    }
+
+    public void tokenType(@enumtype(VkIndirectCommandsTokenTypeNV.class) int value) {
+        segment.set(LAYOUT$tokenType, OFFSET$tokenType, value);
+    }
+
+    public @unsigned int stream() {
+        return segment.get(LAYOUT$stream, OFFSET$stream);
+    }
+
+    public void stream(@unsigned int value) {
+        segment.set(LAYOUT$stream, OFFSET$stream, value);
+    }
+
+    public @unsigned int offset() {
+        return segment.get(LAYOUT$offset, OFFSET$offset);
+    }
+
+    public void offset(@unsigned int value) {
+        segment.set(LAYOUT$offset, OFFSET$offset, value);
+    }
+
+    public @unsigned int vertexBindingUnit() {
+        return segment.get(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit);
+    }
+
+    public void vertexBindingUnit(@unsigned int value) {
+        segment.set(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit, value);
+    }
+
+    public @unsigned int vertexDynamicStride() {
+        return segment.get(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride);
+    }
+
+    public void vertexDynamicStride(@unsigned int value) {
+        segment.set(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride, value);
+    }
+
+    public @Nullable VkPipelineLayout pushconstantPipelineLayout() {
+        MemorySegment s = segment.asSlice(OFFSET$pushconstantPipelineLayout, SIZE$pushconstantPipelineLayout);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineLayout(s);
+    }
+
+    public void pushconstantPipelineLayout(@Nullable VkPipelineLayout value) {
+        segment.set(LAYOUT$pushconstantPipelineLayout, OFFSET$pushconstantPipelineLayout, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @enumtype(VkShaderStageFlags.class) int pushconstantShaderStageFlags() {
+        return segment.get(LAYOUT$pushconstantShaderStageFlags, OFFSET$pushconstantShaderStageFlags);
+    }
+
+    public void pushconstantShaderStageFlags(@enumtype(VkShaderStageFlags.class) int value) {
+        segment.set(LAYOUT$pushconstantShaderStageFlags, OFFSET$pushconstantShaderStageFlags, value);
+    }
+
+    public @unsigned int pushconstantOffset() {
+        return segment.get(LAYOUT$pushconstantOffset, OFFSET$pushconstantOffset);
+    }
+
+    public void pushconstantOffset(@unsigned int value) {
+        segment.set(LAYOUT$pushconstantOffset, OFFSET$pushconstantOffset, value);
+    }
+
+    public @unsigned int pushconstantSize() {
+        return segment.get(LAYOUT$pushconstantSize, OFFSET$pushconstantSize);
+    }
+
+    public void pushconstantSize(@unsigned int value) {
+        segment.set(LAYOUT$pushconstantSize, OFFSET$pushconstantSize, value);
+    }
+
+    public @enumtype(VkIndirectStateFlagsNV.class) int indirectStateFlags() {
+        return segment.get(LAYOUT$indirectStateFlags, OFFSET$indirectStateFlags);
+    }
+
+    public void indirectStateFlags(@enumtype(VkIndirectStateFlagsNV.class) int value) {
+        segment.set(LAYOUT$indirectStateFlags, OFFSET$indirectStateFlags, value);
+    }
+
+    public @unsigned int indexTypeCount() {
+        return segment.get(LAYOUT$indexTypeCount, OFFSET$indexTypeCount);
+    }
+
+    public void indexTypeCount(@unsigned int value) {
+        segment.set(LAYOUT$indexTypeCount, OFFSET$indexTypeCount, value);
+    }
+
+    public @pointer(target=VkIndexType.class) MemorySegment pIndexTypesRaw() {
+        return segment.get(LAYOUT$pIndexTypes, OFFSET$pIndexTypes);
+    }
+
+    public void pIndexTypesRaw(@pointer(target=VkIndexType.class) MemorySegment value) {
+        segment.set(LAYOUT$pIndexTypes, OFFSET$pIndexTypes, value);
+    }
+
+    /// Note: the returned {@link IntPtr} does not have correct
+    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
+    /// or writing to the buffer.
+    public @Nullable @enumtype(VkIndexType.class) IntPtr pIndexTypes() {
+        MemorySegment s = pIndexTypesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new IntPtr(s);
+    }
+
+    public void pIndexTypes(@Nullable @enumtype(VkIndexType.class) IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pIndexTypesRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pIndexTypeValuesRaw() {
+        return segment.get(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues);
+    }
+
+    public void pIndexTypeValuesRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues, value);
+    }
+
+    /// Note: the returned {@link IntPtr} does not have correct
+    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
+    /// writing to the buffer.
+    public @Nullable @unsigned IntPtr pIndexTypeValues() {
+        MemorySegment s = pIndexTypeValuesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new IntPtr(s);
+    }
+
+    public void pIndexTypeValues(@Nullable @unsigned IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pIndexTypeValuesRaw(s);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -141,167 +337,4 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
     public static final long OFFSET$indexTypeCount = LAYOUT.byteOffset(PATH$indexTypeCount);
     public static final long OFFSET$pIndexTypes = LAYOUT.byteOffset(PATH$pIndexTypes);
     public static final long OFFSET$pIndexTypeValues = LAYOUT.byteOffset(PATH$pIndexTypeValues);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @enumtype(VkIndirectCommandsTokenTypeNV.class) int tokenType() {
-        return segment.get(LAYOUT$tokenType, OFFSET$tokenType);
-    }
-
-    public void tokenType(@enumtype(VkIndirectCommandsTokenTypeNV.class) int value) {
-        segment.set(LAYOUT$tokenType, OFFSET$tokenType, value);
-    }
-
-    public @unsigned int stream() {
-        return segment.get(LAYOUT$stream, OFFSET$stream);
-    }
-
-    public void stream(@unsigned int value) {
-        segment.set(LAYOUT$stream, OFFSET$stream, value);
-    }
-
-    public @unsigned int offset() {
-        return segment.get(LAYOUT$offset, OFFSET$offset);
-    }
-
-    public void offset(@unsigned int value) {
-        segment.set(LAYOUT$offset, OFFSET$offset, value);
-    }
-
-    public @unsigned int vertexBindingUnit() {
-        return segment.get(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit);
-    }
-
-    public void vertexBindingUnit(@unsigned int value) {
-        segment.set(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit, value);
-    }
-
-    public @unsigned int vertexDynamicStride() {
-        return segment.get(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride);
-    }
-
-    public void vertexDynamicStride(@unsigned int value) {
-        segment.set(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride, value);
-    }
-
-    public @Nullable VkPipelineLayout pushconstantPipelineLayout() {
-        MemorySegment s = segment.asSlice(OFFSET$pushconstantPipelineLayout, SIZE$pushconstantPipelineLayout);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPipelineLayout(s);
-    }
-
-    public void pushconstantPipelineLayout(@Nullable VkPipelineLayout value) {
-        segment.set(LAYOUT$pushconstantPipelineLayout, OFFSET$pushconstantPipelineLayout, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @enumtype(VkShaderStageFlags.class) int pushconstantShaderStageFlags() {
-        return segment.get(LAYOUT$pushconstantShaderStageFlags, OFFSET$pushconstantShaderStageFlags);
-    }
-
-    public void pushconstantShaderStageFlags(@enumtype(VkShaderStageFlags.class) int value) {
-        segment.set(LAYOUT$pushconstantShaderStageFlags, OFFSET$pushconstantShaderStageFlags, value);
-    }
-
-    public @unsigned int pushconstantOffset() {
-        return segment.get(LAYOUT$pushconstantOffset, OFFSET$pushconstantOffset);
-    }
-
-    public void pushconstantOffset(@unsigned int value) {
-        segment.set(LAYOUT$pushconstantOffset, OFFSET$pushconstantOffset, value);
-    }
-
-    public @unsigned int pushconstantSize() {
-        return segment.get(LAYOUT$pushconstantSize, OFFSET$pushconstantSize);
-    }
-
-    public void pushconstantSize(@unsigned int value) {
-        segment.set(LAYOUT$pushconstantSize, OFFSET$pushconstantSize, value);
-    }
-
-    public @enumtype(VkIndirectStateFlagsNV.class) int indirectStateFlags() {
-        return segment.get(LAYOUT$indirectStateFlags, OFFSET$indirectStateFlags);
-    }
-
-    public void indirectStateFlags(@enumtype(VkIndirectStateFlagsNV.class) int value) {
-        segment.set(LAYOUT$indirectStateFlags, OFFSET$indirectStateFlags, value);
-    }
-
-    public @unsigned int indexTypeCount() {
-        return segment.get(LAYOUT$indexTypeCount, OFFSET$indexTypeCount);
-    }
-
-    public void indexTypeCount(@unsigned int value) {
-        segment.set(LAYOUT$indexTypeCount, OFFSET$indexTypeCount, value);
-    }
-
-    public @pointer(target=VkIndexType.class) MemorySegment pIndexTypesRaw() {
-        return segment.get(LAYOUT$pIndexTypes, OFFSET$pIndexTypes);
-    }
-
-    public void pIndexTypesRaw(@pointer(target=VkIndexType.class) MemorySegment value) {
-        segment.set(LAYOUT$pIndexTypes, OFFSET$pIndexTypes, value);
-    }
-
-    /// Note: the returned {@link IntPtr} does not have correct
-    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
-    /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
-    /// or writing to the buffer.
-    public @Nullable @enumtype(VkIndexType.class) IntPtr pIndexTypes() {
-        MemorySegment s = pIndexTypesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new IntPtr(s);
-    }
-
-    public void pIndexTypes(@Nullable @enumtype(VkIndexType.class) IntPtr value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pIndexTypesRaw(s);
-    }
-
-    public @pointer(comment="int*") MemorySegment pIndexTypeValuesRaw() {
-        return segment.get(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues);
-    }
-
-    public void pIndexTypeValuesRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues, value);
-    }
-
-    /// Note: the returned {@link IntPtr} does not have correct
-    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
-    /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
-    /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pIndexTypeValues() {
-        MemorySegment s = pIndexTypeValuesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new IntPtr(s);
-    }
-
-    public void pIndexTypeValues(@Nullable @unsigned IntPtr value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pIndexTypeValuesRaw(s);
-    }
-
 }

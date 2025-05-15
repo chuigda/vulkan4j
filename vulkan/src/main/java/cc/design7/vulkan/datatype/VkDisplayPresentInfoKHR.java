@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDisplayPresentInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPresentInfoKHR.html"><code>VkDisplayPresentInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDisplayPresentInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkRect2D srcRect;
+///     VkRect2D dstRect;
+///     VkBool32 persistent;
+/// } VkDisplayPresentInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR`
+///
+/// The {@link VkDisplayPresentInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkDisplayPresentInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPresentInfoKHR.html">VkDisplayPresentInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPresentInfoKHR.html"><code>VkDisplayPresentInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDisplayPresentInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkDisplayPresentInfoKHR {
-        sType(VkStructureType.DISPLAY_PRESENT_INFO_KHR);
-    }
-
     public static VkDisplayPresentInfoKHR allocate(Arena arena) {
-        return new VkDisplayPresentInfoKHR(arena.allocate(LAYOUT));
+        VkDisplayPresentInfoKHR ret = new VkDisplayPresentInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.DISPLAY_PRESENT_INFO_KHR);
+        return ret;
     }
 
     public static VkDisplayPresentInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkDisplayPresentInfoKHR(@NotNull MemorySegment segment) implements
         VkDisplayPresentInfoKHR[] ret = new VkDisplayPresentInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkDisplayPresentInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.DISPLAY_PRESENT_INFO_KHR);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkDisplayPresentInfoKHR(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        VkRect2D.LAYOUT.withName("srcRect"),
-        VkRect2D.LAYOUT.withName("dstRect"),
-        ValueLayout.JAVA_INT.withName("persistent")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$srcRect = PathElement.groupElement("PATH$srcRect");
-    public static final PathElement PATH$dstRect = PathElement.groupElement("PATH$dstRect");
-    public static final PathElement PATH$persistent = PathElement.groupElement("PATH$persistent");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$srcRect = (StructLayout) LAYOUT.select(PATH$srcRect);
-    public static final StructLayout LAYOUT$dstRect = (StructLayout) LAYOUT.select(PATH$dstRect);
-    public static final OfInt LAYOUT$persistent = (OfInt) LAYOUT.select(PATH$persistent);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$srcRect = LAYOUT$srcRect.byteSize();
-    public static final long SIZE$dstRect = LAYOUT$dstRect.byteSize();
-    public static final long SIZE$persistent = LAYOUT$persistent.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$srcRect = LAYOUT.byteOffset(PATH$srcRect);
-    public static final long OFFSET$dstRect = LAYOUT.byteOffset(PATH$dstRect);
-    public static final long OFFSET$persistent = LAYOUT.byteOffset(PATH$persistent);
+    public void autoInit() {
+        sType(VkStructureType.DISPLAY_PRESENT_INFO_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -136,4 +127,36 @@ public record VkDisplayPresentInfoKHR(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$persistent, OFFSET$persistent, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkRect2D.LAYOUT.withName("srcRect"),
+        VkRect2D.LAYOUT.withName("dstRect"),
+        ValueLayout.JAVA_INT.withName("persistent")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$srcRect = PathElement.groupElement("PATH$srcRect");
+    public static final PathElement PATH$dstRect = PathElement.groupElement("PATH$dstRect");
+    public static final PathElement PATH$persistent = PathElement.groupElement("PATH$persistent");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$srcRect = (StructLayout) LAYOUT.select(PATH$srcRect);
+    public static final StructLayout LAYOUT$dstRect = (StructLayout) LAYOUT.select(PATH$dstRect);
+    public static final OfInt LAYOUT$persistent = (OfInt) LAYOUT.select(PATH$persistent);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$srcRect = LAYOUT$srcRect.byteSize();
+    public static final long SIZE$dstRect = LAYOUT$dstRect.byteSize();
+    public static final long SIZE$persistent = LAYOUT$persistent.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$srcRect = LAYOUT.byteOffset(PATH$srcRect);
+    public static final long OFFSET$dstRect = LAYOUT.byteOffset(PATH$dstRect);
+    public static final long OFFSET$persistent = LAYOUT.byteOffset(PATH$persistent);
 }

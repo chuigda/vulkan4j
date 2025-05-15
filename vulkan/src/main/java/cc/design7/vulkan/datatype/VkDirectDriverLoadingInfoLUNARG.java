@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDirectDriverLoadingInfoLUNARG} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDirectDriverLoadingInfoLUNARG.html"><code>VkDirectDriverLoadingInfoLUNARG</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDirectDriverLoadingInfoLUNARG {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkDirectDriverLoadingFlagsLUNARG flags;
+///     PFN_vkGetInstanceProcAddrLUNARG pfnGetInstanceProcAddr;
+/// } VkDirectDriverLoadingInfoLUNARG;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_INFO_LUNARG`
+///
+/// The {@link VkDirectDriverLoadingInfoLUNARG#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkDirectDriverLoadingInfoLUNARG#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDirectDriverLoadingInfoLUNARG.html">VkDirectDriverLoadingInfoLUNARG</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDirectDriverLoadingInfoLUNARG.html"><code>VkDirectDriverLoadingInfoLUNARG</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) implements IPointer {
-    public VkDirectDriverLoadingInfoLUNARG {
-        sType(VkStructureType.DIRECT_DRIVER_LOADING_INFO_LUNARG);
-    }
-
     public static VkDirectDriverLoadingInfoLUNARG allocate(Arena arena) {
-        return new VkDirectDriverLoadingInfoLUNARG(arena.allocate(LAYOUT));
+        VkDirectDriverLoadingInfoLUNARG ret = new VkDirectDriverLoadingInfoLUNARG(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.DIRECT_DRIVER_LOADING_INFO_LUNARG);
+        return ret;
     }
 
     public static VkDirectDriverLoadingInfoLUNARG[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
         VkDirectDriverLoadingInfoLUNARG[] ret = new VkDirectDriverLoadingInfoLUNARG[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkDirectDriverLoadingInfoLUNARG(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.DIRECT_DRIVER_LOADING_INFO_LUNARG);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.ADDRESS.withName("pfnGetInstanceProcAddr")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$pfnGetInstanceProcAddr = PathElement.groupElement("PATH$pfnGetInstanceProcAddr");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final AddressLayout LAYOUT$pfnGetInstanceProcAddr = (AddressLayout) LAYOUT.select(PATH$pfnGetInstanceProcAddr);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$pfnGetInstanceProcAddr = LAYOUT$pfnGetInstanceProcAddr.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$pfnGetInstanceProcAddr = LAYOUT.byteOffset(PATH$pfnGetInstanceProcAddr);
+    public void autoInit() {
+        sType(VkStructureType.DIRECT_DRIVER_LOADING_INFO_LUNARG);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -127,4 +122,31 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
         pfnGetInstanceProcAddr(pointer.segment());
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.ADDRESS.withName("pfnGetInstanceProcAddr")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$pfnGetInstanceProcAddr = PathElement.groupElement("PATH$pfnGetInstanceProcAddr");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$pfnGetInstanceProcAddr = (AddressLayout) LAYOUT.select(PATH$pfnGetInstanceProcAddr);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$pfnGetInstanceProcAddr = LAYOUT$pfnGetInstanceProcAddr.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$pfnGetInstanceProcAddr = LAYOUT.byteOffset(PATH$pfnGetInstanceProcAddr);
 }

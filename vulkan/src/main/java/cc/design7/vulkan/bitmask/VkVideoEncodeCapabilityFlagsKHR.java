@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeCapabilityFlagsKHR.html">VkVideoEncodeCapabilityFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeCapabilityFlagsKHR.html"><code>VkVideoEncodeCapabilityFlagsKHR</code></a>
 public final class VkVideoEncodeCapabilityFlagsKHR {
     public static final int EMPHASIS_MAP = 0x8;
     public static final int INSUFFICIENT_BITSTREAM_BUFFER_RANGE_DETECTION = 0x2;

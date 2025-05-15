@@ -14,8 +14,34 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDeviceCreateInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceCreateInfo.html"><code>VkDeviceCreateInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDeviceCreateInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkDeviceCreateFlags flags;
+///     uint32_t queueCreateInfoCount;
+///     VkDeviceQueueCreateInfo const* pQueueCreateInfos;
+///     uint32_t enabledLayerCount;
+///     char const* const* ppEnabledLayerNames;
+///     uint32_t enabledExtensionCount;
+///     char const* const* ppEnabledExtensionNames;
+///     VkPhysicalDeviceFeatures const* pEnabledFeatures;
+/// } VkDeviceCreateInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO`
+///
+/// The {@link VkDeviceCreateInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkDeviceCreateInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +50,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceCreateInfo.html">VkDeviceCreateInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceCreateInfo.html"><code>VkDeviceCreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkDeviceCreateInfo {
-        sType(VkStructureType.DEVICE_CREATE_INFO);
-    }
-
     public static VkDeviceCreateInfo allocate(Arena arena) {
-        return new VkDeviceCreateInfo(arena.allocate(LAYOUT));
+        VkDeviceCreateInfo ret = new VkDeviceCreateInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.DEVICE_CREATE_INFO);
+        return ret;
     }
 
     public static VkDeviceCreateInfo[] allocate(Arena arena, int count) {
@@ -41,6 +65,7 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IPoi
         VkDeviceCreateInfo[] ret = new VkDeviceCreateInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkDeviceCreateInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.DEVICE_CREATE_INFO);
         }
         return ret;
     }
@@ -55,6 +80,180 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IPoi
         VkDeviceCreateInfo[] ret = allocate(arena, src.length);
         for (int i = 0; i < src.length; i ++) {
             ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.DEVICE_CREATE_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkDeviceCreateFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkDeviceCreateFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @unsigned int queueCreateInfoCount() {
+        return segment.get(LAYOUT$queueCreateInfoCount, OFFSET$queueCreateInfoCount);
+    }
+
+    public void queueCreateInfoCount(@unsigned int value) {
+        segment.set(LAYOUT$queueCreateInfoCount, OFFSET$queueCreateInfoCount, value);
+    }
+
+    public @pointer(comment="VkDeviceQueueCreateInfo*") MemorySegment pQueueCreateInfosRaw() {
+        return segment.get(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos);
+    }
+
+    public void pQueueCreateInfosRaw(@pointer(comment="VkDeviceQueueCreateInfo*") MemorySegment value) {
+        segment.set(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos, value);
+    }
+
+    public @Nullable VkDeviceQueueCreateInfo pQueueCreateInfos() {
+        MemorySegment s = pQueueCreateInfosRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDeviceQueueCreateInfo(s);
+    }
+
+    public void pQueueCreateInfos(@Nullable VkDeviceQueueCreateInfo value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pQueueCreateInfosRaw(s);
+    }
+
+    @unsafe public @Nullable VkDeviceQueueCreateInfo[] pQueueCreateInfos(int assumedCount) {
+        MemorySegment s = pQueueCreateInfosRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkDeviceQueueCreateInfo.SIZE);
+        VkDeviceQueueCreateInfo[] ret = new VkDeviceQueueCreateInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkDeviceQueueCreateInfo(s.asSlice(i * VkDeviceQueueCreateInfo.SIZE, VkDeviceQueueCreateInfo.SIZE));
+        }
+        return ret;
+    }
+
+    public @unsigned int enabledLayerCount() {
+        return segment.get(LAYOUT$enabledLayerCount, OFFSET$enabledLayerCount);
+    }
+
+    public void enabledLayerCount(@unsigned int value) {
+        segment.set(LAYOUT$enabledLayerCount, OFFSET$enabledLayerCount, value);
+    }
+
+    public @pointer(comment="void**") MemorySegment ppEnabledLayerNamesRaw() {
+        return segment.get(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames);
+    }
+
+    public void ppEnabledLayerNamesRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames, value);
+    }
+
+    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
+    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the size before
+    /// actually reading from or writing to the buffer.
+    public @Nullable PointerBuffer ppEnabledLayerNames() {
+        MemorySegment s = ppEnabledLayerNamesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new PointerBuffer(s);
+    }
+
+    public void ppEnabledLayerNames(@Nullable PointerBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        ppEnabledLayerNamesRaw(s);
+    }
+
+    public @unsigned int enabledExtensionCount() {
+        return segment.get(LAYOUT$enabledExtensionCount, OFFSET$enabledExtensionCount);
+    }
+
+    public void enabledExtensionCount(@unsigned int value) {
+        segment.set(LAYOUT$enabledExtensionCount, OFFSET$enabledExtensionCount, value);
+    }
+
+    public @pointer(comment="void**") MemorySegment ppEnabledExtensionNamesRaw() {
+        return segment.get(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames);
+    }
+
+    public void ppEnabledExtensionNamesRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames, value);
+    }
+
+    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
+    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the size before
+    /// actually reading from or writing to the buffer.
+    public @Nullable PointerBuffer ppEnabledExtensionNames() {
+        MemorySegment s = ppEnabledExtensionNamesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new PointerBuffer(s);
+    }
+
+    public void ppEnabledExtensionNames(@Nullable PointerBuffer value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        ppEnabledExtensionNamesRaw(s);
+    }
+
+    public @pointer(comment="VkPhysicalDeviceFeatures*") MemorySegment pEnabledFeaturesRaw() {
+        return segment.get(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures);
+    }
+
+    public void pEnabledFeaturesRaw(@pointer(comment="VkPhysicalDeviceFeatures*") MemorySegment value) {
+        segment.set(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures, value);
+    }
+
+    public @Nullable VkPhysicalDeviceFeatures pEnabledFeatures() {
+        MemorySegment s = pEnabledFeaturesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPhysicalDeviceFeatures(s);
+    }
+
+    public void pEnabledFeatures(@Nullable VkPhysicalDeviceFeatures value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pEnabledFeaturesRaw(s);
+    }
+
+    @unsafe public @Nullable VkPhysicalDeviceFeatures[] pEnabledFeatures(int assumedCount) {
+        MemorySegment s = pEnabledFeaturesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkPhysicalDeviceFeatures.SIZE);
+        VkPhysicalDeviceFeatures[] ret = new VkPhysicalDeviceFeatures[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkPhysicalDeviceFeatures(s.asSlice(i * VkPhysicalDeviceFeatures.SIZE, VkPhysicalDeviceFeatures.SIZE));
         }
         return ret;
     }
@@ -116,175 +315,4 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IPoi
     public static final long OFFSET$enabledExtensionCount = LAYOUT.byteOffset(PATH$enabledExtensionCount);
     public static final long OFFSET$ppEnabledExtensionNames = LAYOUT.byteOffset(PATH$ppEnabledExtensionNames);
     public static final long OFFSET$pEnabledFeatures = LAYOUT.byteOffset(PATH$pEnabledFeatures);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @enumtype(VkDeviceCreateFlags.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkDeviceCreateFlags.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @unsigned int queueCreateInfoCount() {
-        return segment.get(LAYOUT$queueCreateInfoCount, OFFSET$queueCreateInfoCount);
-    }
-
-    public void queueCreateInfoCount(@unsigned int value) {
-        segment.set(LAYOUT$queueCreateInfoCount, OFFSET$queueCreateInfoCount, value);
-    }
-
-    public @pointer(comment="VkDeviceQueueCreateInfo*") MemorySegment pQueueCreateInfosRaw() {
-        return segment.get(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos);
-    }
-
-    public void pQueueCreateInfosRaw(@pointer(comment="VkDeviceQueueCreateInfo*") MemorySegment value) {
-        segment.set(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos, value);
-    }
-
-    public @Nullable VkDeviceQueueCreateInfo pQueueCreateInfos() {
-        MemorySegment s = pQueueCreateInfosRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkDeviceQueueCreateInfo(s);
-    }
-
-    public void pQueueCreateInfos(@Nullable VkDeviceQueueCreateInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pQueueCreateInfosRaw(s);
-    }
-
-    @unsafe public @Nullable VkDeviceQueueCreateInfo[] pQueueCreateInfos(int assumedCount) {
-        MemorySegment s = pQueueCreateInfosRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkDeviceQueueCreateInfo.SIZE);
-        VkDeviceQueueCreateInfo[] ret = new VkDeviceQueueCreateInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDeviceQueueCreateInfo(s.asSlice(i * VkDeviceQueueCreateInfo.SIZE, VkDeviceQueueCreateInfo.SIZE));
-        }
-        return ret;
-    }
-
-    public @unsigned int enabledLayerCount() {
-        return segment.get(LAYOUT$enabledLayerCount, OFFSET$enabledLayerCount);
-    }
-
-    public void enabledLayerCount(@unsigned int value) {
-        segment.set(LAYOUT$enabledLayerCount, OFFSET$enabledLayerCount, value);
-    }
-
-    public @pointer(comment="void**") MemorySegment ppEnabledLayerNamesRaw() {
-        return segment.get(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames);
-    }
-
-    public void ppEnabledLayerNamesRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames, value);
-    }
-
-    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
-    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the size before
-    /// actually reading from or writing to the buffer.
-    public @Nullable PointerBuffer ppEnabledLayerNames() {
-        MemorySegment s = ppEnabledLayerNamesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new PointerBuffer(s);
-    }
-
-    public void ppEnabledLayerNames(@Nullable PointerBuffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        ppEnabledLayerNamesRaw(s);
-    }
-
-    public @unsigned int enabledExtensionCount() {
-        return segment.get(LAYOUT$enabledExtensionCount, OFFSET$enabledExtensionCount);
-    }
-
-    public void enabledExtensionCount(@unsigned int value) {
-        segment.set(LAYOUT$enabledExtensionCount, OFFSET$enabledExtensionCount, value);
-    }
-
-    public @pointer(comment="void**") MemorySegment ppEnabledExtensionNamesRaw() {
-        return segment.get(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames);
-    }
-
-    public void ppEnabledExtensionNamesRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames, value);
-    }
-
-    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
-    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the size before
-    /// actually reading from or writing to the buffer.
-    public @Nullable PointerBuffer ppEnabledExtensionNames() {
-        MemorySegment s = ppEnabledExtensionNamesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new PointerBuffer(s);
-    }
-
-    public void ppEnabledExtensionNames(@Nullable PointerBuffer value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        ppEnabledExtensionNamesRaw(s);
-    }
-
-    public @pointer(comment="VkPhysicalDeviceFeatures*") MemorySegment pEnabledFeaturesRaw() {
-        return segment.get(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures);
-    }
-
-    public void pEnabledFeaturesRaw(@pointer(comment="VkPhysicalDeviceFeatures*") MemorySegment value) {
-        segment.set(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures, value);
-    }
-
-    public @Nullable VkPhysicalDeviceFeatures pEnabledFeatures() {
-        MemorySegment s = pEnabledFeaturesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPhysicalDeviceFeatures(s);
-    }
-
-    public void pEnabledFeatures(@Nullable VkPhysicalDeviceFeatures value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pEnabledFeaturesRaw(s);
-    }
-
-    @unsafe public @Nullable VkPhysicalDeviceFeatures[] pEnabledFeatures(int assumedCount) {
-        MemorySegment s = pEnabledFeaturesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkPhysicalDeviceFeatures.SIZE);
-        VkPhysicalDeviceFeatures[] ret = new VkPhysicalDeviceFeatures[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPhysicalDeviceFeatures(s.asSlice(i * VkPhysicalDeviceFeatures.SIZE, VkPhysicalDeviceFeatures.SIZE));
-        }
-        return ret;
-    }
-
 }

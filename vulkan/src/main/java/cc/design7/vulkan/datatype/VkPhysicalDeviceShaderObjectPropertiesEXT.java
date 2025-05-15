@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceShaderObjectPropertiesEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderObjectPropertiesEXT.html"><code>VkPhysicalDeviceShaderObjectPropertiesEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceShaderObjectPropertiesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint8_t shaderBinaryUUID;
+///     uint32_t shaderBinaryVersion;
+/// } VkPhysicalDeviceShaderObjectPropertiesEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT`
+///
+/// The {@link VkPhysicalDeviceShaderObjectPropertiesEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceShaderObjectPropertiesEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderObjectPropertiesEXT.html">VkPhysicalDeviceShaderObjectPropertiesEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderObjectPropertiesEXT.html"><code>VkPhysicalDeviceShaderObjectPropertiesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceShaderObjectPropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceShaderObjectPropertiesEXT {
-        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT);
-    }
-
     public static VkPhysicalDeviceShaderObjectPropertiesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceShaderObjectPropertiesEXT(arena.allocate(LAYOUT));
+        VkPhysicalDeviceShaderObjectPropertiesEXT ret = new VkPhysicalDeviceShaderObjectPropertiesEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT);
+        return ret;
     }
 
     public static VkPhysicalDeviceShaderObjectPropertiesEXT[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(@NotNull MemorySegment s
         VkPhysicalDeviceShaderObjectPropertiesEXT[] ret = new VkPhysicalDeviceShaderObjectPropertiesEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceShaderObjectPropertiesEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(@NotNull MemorySegment s
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_BYTE.withName("shaderBinaryUUID"),
-        ValueLayout.JAVA_INT.withName("shaderBinaryVersion")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shaderBinaryUUID = PathElement.groupElement("PATH$shaderBinaryUUID");
-    public static final PathElement PATH$shaderBinaryVersion = PathElement.groupElement("PATH$shaderBinaryVersion");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfByte LAYOUT$shaderBinaryUUID = (OfByte) LAYOUT.select(PATH$shaderBinaryUUID);
-    public static final OfInt LAYOUT$shaderBinaryVersion = (OfInt) LAYOUT.select(PATH$shaderBinaryVersion);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$shaderBinaryUUID = LAYOUT$shaderBinaryUUID.byteSize();
-    public static final long SIZE$shaderBinaryVersion = LAYOUT$shaderBinaryVersion.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$shaderBinaryUUID = LAYOUT.byteOffset(PATH$shaderBinaryUUID);
-    public static final long OFFSET$shaderBinaryVersion = LAYOUT.byteOffset(PATH$shaderBinaryVersion);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(@NotNull MemorySegment s
         segment.set(LAYOUT$shaderBinaryVersion, OFFSET$shaderBinaryVersion, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_BYTE.withName("shaderBinaryUUID"),
+        ValueLayout.JAVA_INT.withName("shaderBinaryVersion")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$shaderBinaryUUID = PathElement.groupElement("PATH$shaderBinaryUUID");
+    public static final PathElement PATH$shaderBinaryVersion = PathElement.groupElement("PATH$shaderBinaryVersion");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfByte LAYOUT$shaderBinaryUUID = (OfByte) LAYOUT.select(PATH$shaderBinaryUUID);
+    public static final OfInt LAYOUT$shaderBinaryVersion = (OfInt) LAYOUT.select(PATH$shaderBinaryVersion);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderBinaryUUID = LAYOUT$shaderBinaryUUID.byteSize();
+    public static final long SIZE$shaderBinaryVersion = LAYOUT$shaderBinaryVersion.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$shaderBinaryUUID = LAYOUT.byteOffset(PATH$shaderBinaryUUID);
+    public static final long OFFSET$shaderBinaryVersion = LAYOUT.byteOffset(PATH$shaderBinaryVersion);
 }

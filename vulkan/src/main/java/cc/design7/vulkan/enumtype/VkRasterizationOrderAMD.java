@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRasterizationOrderAMD.html">VkRasterizationOrderAMD</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRasterizationOrderAMD.html"><code>VkRasterizationOrderAMD</code></a>
 public final class VkRasterizationOrderAMD {
     public static final int STRICT = 0x0;
     public static final int RELAXED = 0x1;

@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1CapabilityFlagsKHR.html">VkVideoEncodeAV1CapabilityFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1CapabilityFlagsKHR.html"><code>VkVideoEncodeAV1CapabilityFlagsKHR</code></a>
 public final class VkVideoEncodeAV1CapabilityFlagsKHR {
     public static final int VK_VIDEO_ENCODE_AV1_CAPABILITY_FRAME_SIZE_OVERRIDE = 0x8;
     public static final int VK_VIDEO_ENCODE_AV1_CAPABILITY_GENERATE_OBU_EXTENSION_HEADER = 0x2;

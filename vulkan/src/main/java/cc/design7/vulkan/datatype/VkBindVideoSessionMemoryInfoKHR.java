@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkBindVideoSessionMemoryInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindVideoSessionMemoryInfoKHR.html"><code>VkBindVideoSessionMemoryInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkBindVideoSessionMemoryInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t memoryBindIndex;
+///     VkDeviceMemory memory;
+///     VkDeviceSize memoryOffset;
+///     VkDeviceSize memorySize;
+/// } VkBindVideoSessionMemoryInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_BIND_VIDEO_SESSION_MEMORY_INFO_KHR`
+///
+/// The {@link VkBindVideoSessionMemoryInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkBindVideoSessionMemoryInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindVideoSessionMemoryInfoKHR.html">VkBindVideoSessionMemoryInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindVideoSessionMemoryInfoKHR.html"><code>VkBindVideoSessionMemoryInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkBindVideoSessionMemoryInfoKHR {
-        sType(VkStructureType.BIND_VIDEO_SESSION_MEMORY_INFO_KHR);
-    }
-
     public static VkBindVideoSessionMemoryInfoKHR allocate(Arena arena) {
-        return new VkBindVideoSessionMemoryInfoKHR(arena.allocate(LAYOUT));
+        VkBindVideoSessionMemoryInfoKHR ret = new VkBindVideoSessionMemoryInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.BIND_VIDEO_SESSION_MEMORY_INFO_KHR);
+        return ret;
     }
 
     public static VkBindVideoSessionMemoryInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
         VkBindVideoSessionMemoryInfoKHR[] ret = new VkBindVideoSessionMemoryInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkBindVideoSessionMemoryInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.BIND_VIDEO_SESSION_MEMORY_INFO_KHR);
         }
         return ret;
     }
@@ -57,6 +78,66 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.BIND_VIDEO_SESSION_MEMORY_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int memoryBindIndex() {
+        return segment.get(LAYOUT$memoryBindIndex, OFFSET$memoryBindIndex);
+    }
+
+    public void memoryBindIndex(@unsigned int value) {
+        segment.set(LAYOUT$memoryBindIndex, OFFSET$memoryBindIndex, value);
+    }
+
+    public @Nullable VkDeviceMemory memory() {
+        MemorySegment s = segment.asSlice(OFFSET$memory, SIZE$memory);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDeviceMemory(s);
+    }
+
+    public void memory(@Nullable VkDeviceMemory value) {
+        segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned long memoryOffset() {
+        return segment.get(LAYOUT$memoryOffset, OFFSET$memoryOffset);
+    }
+
+    public void memoryOffset(@unsigned long value) {
+        segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
+    }
+
+    public @unsigned long memorySize() {
+        return segment.get(LAYOUT$memorySize, OFFSET$memorySize);
+    }
+
+    public void memorySize(@unsigned long value) {
+        segment.set(LAYOUT$memorySize, OFFSET$memorySize, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -96,61 +177,4 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
     public static final long OFFSET$memory = LAYOUT.byteOffset(PATH$memory);
     public static final long OFFSET$memoryOffset = LAYOUT.byteOffset(PATH$memoryOffset);
     public static final long OFFSET$memorySize = LAYOUT.byteOffset(PATH$memorySize);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @unsigned int memoryBindIndex() {
-        return segment.get(LAYOUT$memoryBindIndex, OFFSET$memoryBindIndex);
-    }
-
-    public void memoryBindIndex(@unsigned int value) {
-        segment.set(LAYOUT$memoryBindIndex, OFFSET$memoryBindIndex, value);
-    }
-
-    public @Nullable VkDeviceMemory memory() {
-        MemorySegment s = segment.asSlice(OFFSET$memory, SIZE$memory);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkDeviceMemory(s);
-    }
-
-    public void memory(@Nullable VkDeviceMemory value) {
-        segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned long memoryOffset() {
-        return segment.get(LAYOUT$memoryOffset, OFFSET$memoryOffset);
-    }
-
-    public void memoryOffset(@unsigned long value) {
-        segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
-    }
-
-    public @unsigned long memorySize() {
-        return segment.get(LAYOUT$memorySize, OFFSET$memorySize);
-    }
-
-    public void memorySize(@unsigned long value) {
-        segment.set(LAYOUT$memorySize, OFFSET$memorySize, value);
-    }
-
 }

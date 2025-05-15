@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsLayoutUsageFlagsNV.html">VkIndirectCommandsLayoutUsageFlagsNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsLayoutUsageFlagsNV.html"><code>VkIndirectCommandsLayoutUsageFlagsNV</code></a>
 public final class VkIndirectCommandsLayoutUsageFlagsNV {
     public static final int EXPLICIT_PREPROCESS = 0x1;
     public static final int INDEXED_SEQUENCES = 0x2;

@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkAccelerationStructureMotionInstanceDataNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMotionInstanceDataNV.html"><code>VkAccelerationStructureMotionInstanceDataNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkAccelerationStructureMotionInstanceDataNV {
+///     VkAccelerationStructureInstanceKHR staticInstance;
+///     VkAccelerationStructureMatrixMotionInstanceNV matrixMotionInstance;
+///     VkAccelerationStructureSRTMotionInstanceNV srtMotionInstance;
+/// } VkAccelerationStructureMotionInstanceDataNV;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMotionInstanceDataNV.html">VkAccelerationStructureMotionInstanceDataNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMotionInstanceDataNV.html"><code>VkAccelerationStructureMotionInstanceDataNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkAccelerationStructureMotionInstanceDataNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkAccelerationStructureMotionInstanceDataNV allocate(Arena arena) {
-        return new VkAccelerationStructureMotionInstanceDataNV(arena.allocate(LAYOUT));
+        VkAccelerationStructureMotionInstanceDataNV ret = new VkAccelerationStructureMotionInstanceDataNV(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkAccelerationStructureMotionInstanceDataNV[] allocate(Arena arena, int count) {
@@ -55,29 +67,6 @@ public record VkAccelerationStructureMotionInstanceDataNV(@NotNull MemorySegment
         return ret;
     }
 
-    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
-        VkAccelerationStructureInstanceKHR.LAYOUT.withName("staticInstance"),
-        VkAccelerationStructureMatrixMotionInstanceNV.LAYOUT.withName("matrixMotionInstance"),
-        VkAccelerationStructureSRTMotionInstanceNV.LAYOUT.withName("srtMotionInstance")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$staticInstance = PathElement.groupElement("PATH$staticInstance");
-    public static final PathElement PATH$matrixMotionInstance = PathElement.groupElement("PATH$matrixMotionInstance");
-    public static final PathElement PATH$srtMotionInstance = PathElement.groupElement("PATH$srtMotionInstance");
-
-    public static final StructLayout LAYOUT$staticInstance = (StructLayout) LAYOUT.select(PATH$staticInstance);
-    public static final StructLayout LAYOUT$matrixMotionInstance = (StructLayout) LAYOUT.select(PATH$matrixMotionInstance);
-    public static final StructLayout LAYOUT$srtMotionInstance = (StructLayout) LAYOUT.select(PATH$srtMotionInstance);
-
-    public static final long SIZE$staticInstance = LAYOUT$staticInstance.byteSize();
-    public static final long SIZE$matrixMotionInstance = LAYOUT$matrixMotionInstance.byteSize();
-    public static final long SIZE$srtMotionInstance = LAYOUT$srtMotionInstance.byteSize();
-
-    public static final long OFFSET$staticInstance = LAYOUT.byteOffset(PATH$staticInstance);
-    public static final long OFFSET$matrixMotionInstance = LAYOUT.byteOffset(PATH$matrixMotionInstance);
-    public static final long OFFSET$srtMotionInstance = LAYOUT.byteOffset(PATH$srtMotionInstance);
-
     public VkAccelerationStructureInstanceKHR staticInstance() {
         return new VkAccelerationStructureInstanceKHR(segment.asSlice(OFFSET$staticInstance, LAYOUT$staticInstance));
     }
@@ -102,4 +91,26 @@ public record VkAccelerationStructureMotionInstanceDataNV(@NotNull MemorySegment
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srtMotionInstance, SIZE$srtMotionInstance);
     }
 
+    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
+        VkAccelerationStructureInstanceKHR.LAYOUT.withName("staticInstance"),
+        VkAccelerationStructureMatrixMotionInstanceNV.LAYOUT.withName("matrixMotionInstance"),
+        VkAccelerationStructureSRTMotionInstanceNV.LAYOUT.withName("srtMotionInstance")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$staticInstance = PathElement.groupElement("PATH$staticInstance");
+    public static final PathElement PATH$matrixMotionInstance = PathElement.groupElement("PATH$matrixMotionInstance");
+    public static final PathElement PATH$srtMotionInstance = PathElement.groupElement("PATH$srtMotionInstance");
+
+    public static final StructLayout LAYOUT$staticInstance = (StructLayout) LAYOUT.select(PATH$staticInstance);
+    public static final StructLayout LAYOUT$matrixMotionInstance = (StructLayout) LAYOUT.select(PATH$matrixMotionInstance);
+    public static final StructLayout LAYOUT$srtMotionInstance = (StructLayout) LAYOUT.select(PATH$srtMotionInstance);
+
+    public static final long SIZE$staticInstance = LAYOUT$staticInstance.byteSize();
+    public static final long SIZE$matrixMotionInstance = LAYOUT$matrixMotionInstance.byteSize();
+    public static final long SIZE$srtMotionInstance = LAYOUT$srtMotionInstance.byteSize();
+
+    public static final long OFFSET$staticInstance = LAYOUT.byteOffset(PATH$staticInstance);
+    public static final long OFFSET$matrixMotionInstance = LAYOUT.byteOffset(PATH$matrixMotionInstance);
+    public static final long OFFSET$srtMotionInstance = LAYOUT.byteOffset(PATH$srtMotionInstance);
 }

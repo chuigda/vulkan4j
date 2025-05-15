@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSurfaceTransformFlagsKHR.html">VkSurfaceTransformFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSurfaceTransformFlagsKHR.html"><code>VkSurfaceTransformFlagsKHR</code></a>
 public final class VkSurfaceTransformFlagsKHR {
     public static final int HORIZONTAL_MIRROR = 0x10;
     public static final int HORIZONTAL_MIRROR_ROTATE_180 = 0x40;

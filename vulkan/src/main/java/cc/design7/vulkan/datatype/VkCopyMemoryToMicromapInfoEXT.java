@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkCopyMemoryToMicromapInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyMemoryToMicromapInfoEXT.html"><code>VkCopyMemoryToMicromapInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkCopyMemoryToMicromapInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkDeviceOrHostAddressConstKHR src;
+///     VkMicromapEXT dst;
+///     VkCopyMicromapModeEXT mode;
+/// } VkCopyMemoryToMicromapInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_COPY_MEMORY_TO_MICROMAP_INFO_EXT`
+///
+/// The {@link VkCopyMemoryToMicromapInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkCopyMemoryToMicromapInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyMemoryToMicromapInfoEXT.html">VkCopyMemoryToMicromapInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyMemoryToMicromapInfoEXT.html"><code>VkCopyMemoryToMicromapInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkCopyMemoryToMicromapInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkCopyMemoryToMicromapInfoEXT {
-        sType(VkStructureType.COPY_MEMORY_TO_MICROMAP_INFO_EXT);
-    }
-
     public static VkCopyMemoryToMicromapInfoEXT allocate(Arena arena) {
-        return new VkCopyMemoryToMicromapInfoEXT(arena.allocate(LAYOUT));
+        VkCopyMemoryToMicromapInfoEXT ret = new VkCopyMemoryToMicromapInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.COPY_MEMORY_TO_MICROMAP_INFO_EXT);
+        return ret;
     }
 
     public static VkCopyMemoryToMicromapInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkCopyMemoryToMicromapInfoEXT(@NotNull MemorySegment segment) impl
         VkCopyMemoryToMicromapInfoEXT[] ret = new VkCopyMemoryToMicromapInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkCopyMemoryToMicromapInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.COPY_MEMORY_TO_MICROMAP_INFO_EXT);
         }
         return ret;
     }
@@ -57,6 +77,58 @@ public record VkCopyMemoryToMicromapInfoEXT(@NotNull MemorySegment segment) impl
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.COPY_MEMORY_TO_MICROMAP_INFO_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public VkDeviceOrHostAddressConstKHR src() {
+        return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$src, LAYOUT$src));
+    }
+
+    public void src(VkDeviceOrHostAddressConstKHR value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$src, SIZE$src);
+    }
+
+    public @Nullable VkMicromapEXT dst() {
+        MemorySegment s = segment.asSlice(OFFSET$dst, SIZE$dst);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkMicromapEXT(s);
+    }
+
+    public void dst(@Nullable VkMicromapEXT value) {
+        segment.set(LAYOUT$dst, OFFSET$dst, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @enumtype(VkCopyMicromapModeEXT.class) int mode() {
+        return segment.get(LAYOUT$mode, OFFSET$mode);
+    }
+
+    public void mode(@enumtype(VkCopyMicromapModeEXT.class) int value) {
+        segment.set(LAYOUT$mode, OFFSET$mode, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -91,53 +163,4 @@ public record VkCopyMemoryToMicromapInfoEXT(@NotNull MemorySegment segment) impl
     public static final long OFFSET$src = LAYOUT.byteOffset(PATH$src);
     public static final long OFFSET$dst = LAYOUT.byteOffset(PATH$dst);
     public static final long OFFSET$mode = LAYOUT.byteOffset(PATH$mode);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public VkDeviceOrHostAddressConstKHR src() {
-        return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$src, LAYOUT$src));
-    }
-
-    public void src(VkDeviceOrHostAddressConstKHR value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$src, SIZE$src);
-    }
-
-    public @Nullable VkMicromapEXT dst() {
-        MemorySegment s = segment.asSlice(OFFSET$dst, SIZE$dst);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkMicromapEXT(s);
-    }
-
-    public void dst(@Nullable VkMicromapEXT value) {
-        segment.set(LAYOUT$dst, OFFSET$dst, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @enumtype(VkCopyMicromapModeEXT.class) int mode() {
-        return segment.get(LAYOUT$mode, OFFSET$mode);
-    }
-
-    public void mode(@enumtype(VkCopyMicromapModeEXT.class) int value) {
-        segment.set(LAYOUT$mode, OFFSET$mode, value);
-    }
-
 }

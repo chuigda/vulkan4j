@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSemaphoreType.html">VkSemaphoreType</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSemaphoreType.html"><code>VkSemaphoreType</code></a>
 public final class VkSemaphoreType {
     public static final int BINARY = 0x0;
     public static final int TIMELINE = 0x1;

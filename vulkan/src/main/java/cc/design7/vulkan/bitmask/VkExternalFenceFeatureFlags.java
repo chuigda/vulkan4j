@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalFenceFeatureFlags.html">VkExternalFenceFeatureFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalFenceFeatureFlags.html"><code>VkExternalFenceFeatureFlags</code></a>
 public final class VkExternalFenceFeatureFlags {
     public static final int EXPORTABLE = 0x1;
     public static final int IMPORTABLE = 0x2;

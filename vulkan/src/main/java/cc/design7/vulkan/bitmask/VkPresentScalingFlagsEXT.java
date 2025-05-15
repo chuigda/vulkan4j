@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentScalingFlagsEXT.html">VkPresentScalingFlagsEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentScalingFlagsEXT.html"><code>VkPresentScalingFlagsEXT</code></a>
 public final class VkPresentScalingFlagsEXT {
     public static final int ASPECT_RATIO_STRETCH = 0x2;
     public static final int ONE_TO_ONE = 0x1;

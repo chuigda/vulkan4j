@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVertexInputRate.html">VkVertexInputRate</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVertexInputRate.html"><code>VkVertexInputRate</code></a>
 public final class VkVertexInputRate {
     public static final int VERTEX = 0x0;
     public static final int INSTANCE = 0x1;

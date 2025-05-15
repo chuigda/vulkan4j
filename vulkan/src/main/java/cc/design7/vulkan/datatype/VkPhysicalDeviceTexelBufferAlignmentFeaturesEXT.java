@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.html"><code>VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 texelBufferAlignment;
+/// } VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_FEATURES_EXT`
+///
+/// The {@link VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.html">VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.html"><code>VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT {
-        sType(VkStructureType.PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_FEATURES_EXT);
-    }
-
     public static VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT(arena.allocate(LAYOUT));
+        VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT ret = new VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_FEATURES_EXT);
+        return ret;
     }
 
     public static VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT(@NotNull MemorySeg
         VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT[] ret = new VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_FEATURES_EXT);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT(@NotNull MemorySeg
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("texelBufferAlignment")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$texelBufferAlignment = PathElement.groupElement("PATH$texelBufferAlignment");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$texelBufferAlignment = (OfInt) LAYOUT.select(PATH$texelBufferAlignment);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$texelBufferAlignment = LAYOUT$texelBufferAlignment.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$texelBufferAlignment = LAYOUT.byteOffset(PATH$texelBufferAlignment);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_FEATURES_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT(@NotNull MemorySeg
         segment.set(LAYOUT$texelBufferAlignment, OFFSET$texelBufferAlignment, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("texelBufferAlignment")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$texelBufferAlignment = PathElement.groupElement("PATH$texelBufferAlignment");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$texelBufferAlignment = (OfInt) LAYOUT.select(PATH$texelBufferAlignment);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$texelBufferAlignment = LAYOUT$texelBufferAlignment.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$texelBufferAlignment = LAYOUT.byteOffset(PATH$texelBufferAlignment);
 }

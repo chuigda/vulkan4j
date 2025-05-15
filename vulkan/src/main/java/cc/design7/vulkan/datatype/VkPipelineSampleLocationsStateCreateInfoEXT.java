@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineSampleLocationsStateCreateInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineSampleLocationsStateCreateInfoEXT.html"><code>VkPipelineSampleLocationsStateCreateInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineSampleLocationsStateCreateInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkBool32 sampleLocationsEnable;
+///     VkSampleLocationsInfoEXT sampleLocationsInfo;
+/// } VkPipelineSampleLocationsStateCreateInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT`
+///
+/// The {@link VkPipelineSampleLocationsStateCreateInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineSampleLocationsStateCreateInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineSampleLocationsStateCreateInfoEXT.html">VkPipelineSampleLocationsStateCreateInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineSampleLocationsStateCreateInfoEXT.html"><code>VkPipelineSampleLocationsStateCreateInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineSampleLocationsStateCreateInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineSampleLocationsStateCreateInfoEXT {
-        sType(VkStructureType.PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT);
-    }
-
     public static VkPipelineSampleLocationsStateCreateInfoEXT allocate(Arena arena) {
-        return new VkPipelineSampleLocationsStateCreateInfoEXT(arena.allocate(LAYOUT));
+        VkPipelineSampleLocationsStateCreateInfoEXT ret = new VkPipelineSampleLocationsStateCreateInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT);
+        return ret;
     }
 
     public static VkPipelineSampleLocationsStateCreateInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(@NotNull MemorySegment
         VkPipelineSampleLocationsStateCreateInfoEXT[] ret = new VkPipelineSampleLocationsStateCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineSampleLocationsStateCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(@NotNull MemorySegment
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("sampleLocationsEnable"),
-        VkSampleLocationsInfoEXT.LAYOUT.withName("sampleLocationsInfo")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$sampleLocationsEnable = PathElement.groupElement("PATH$sampleLocationsEnable");
-    public static final PathElement PATH$sampleLocationsInfo = PathElement.groupElement("PATH$sampleLocationsInfo");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$sampleLocationsEnable = (OfInt) LAYOUT.select(PATH$sampleLocationsEnable);
-    public static final StructLayout LAYOUT$sampleLocationsInfo = (StructLayout) LAYOUT.select(PATH$sampleLocationsInfo);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$sampleLocationsEnable = LAYOUT$sampleLocationsEnable.byteSize();
-    public static final long SIZE$sampleLocationsInfo = LAYOUT$sampleLocationsInfo.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$sampleLocationsEnable = LAYOUT.byteOffset(PATH$sampleLocationsEnable);
-    public static final long OFFSET$sampleLocationsInfo = LAYOUT.byteOffset(PATH$sampleLocationsInfo);
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(@NotNull MemorySegment
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationsInfo, SIZE$sampleLocationsInfo);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("sampleLocationsEnable"),
+        VkSampleLocationsInfoEXT.LAYOUT.withName("sampleLocationsInfo")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$sampleLocationsEnable = PathElement.groupElement("PATH$sampleLocationsEnable");
+    public static final PathElement PATH$sampleLocationsInfo = PathElement.groupElement("PATH$sampleLocationsInfo");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$sampleLocationsEnable = (OfInt) LAYOUT.select(PATH$sampleLocationsEnable);
+    public static final StructLayout LAYOUT$sampleLocationsInfo = (StructLayout) LAYOUT.select(PATH$sampleLocationsInfo);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$sampleLocationsEnable = LAYOUT$sampleLocationsEnable.byteSize();
+    public static final long SIZE$sampleLocationsInfo = LAYOUT$sampleLocationsInfo.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$sampleLocationsEnable = LAYOUT.byteOffset(PATH$sampleLocationsEnable);
+    public static final long OFFSET$sampleLocationsInfo = LAYOUT.byteOffset(PATH$sampleLocationsInfo);
 }

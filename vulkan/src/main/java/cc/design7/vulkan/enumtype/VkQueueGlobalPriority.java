@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueueGlobalPriority.html">VkQueueGlobalPriority</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueueGlobalPriority.html"><code>VkQueueGlobalPriority</code></a>
 public final class VkQueueGlobalPriority {
     public static final int LOW = 0x80;
     public static final int MEDIUM = 0x100;

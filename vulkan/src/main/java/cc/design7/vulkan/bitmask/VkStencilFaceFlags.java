@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStencilFaceFlags.html">VkStencilFaceFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStencilFaceFlags.html"><code>VkStencilFaceFlags</code></a>
 public final class VkStencilFaceFlags {
     public static final int BACK = 0x2;
     public static final int FRONT_AND_BACK = 0x3;

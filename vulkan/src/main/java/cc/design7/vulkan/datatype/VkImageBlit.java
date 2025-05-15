@@ -14,8 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkImageBlit} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageBlit.html"><code>VkImageBlit</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkImageBlit {
+///     VkImageSubresourceLayers srcSubresource;
+///     VkOffset3D srcOffsets;
+///     VkImageSubresourceLayers dstSubresource;
+///     VkOffset3D dstOffsets;
+/// } VkImageBlit;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +36,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageBlit.html">VkImageBlit</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageBlit.html"><code>VkImageBlit</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkImageBlit(@NotNull MemorySegment segment) implements IPointer {
     public static VkImageBlit allocate(Arena arena) {
-        return new VkImageBlit(arena.allocate(LAYOUT));
+        VkImageBlit ret = new VkImageBlit(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkImageBlit[] allocate(Arena arena, int count) {
@@ -54,34 +67,6 @@ public record VkImageBlit(@NotNull MemorySegment segment) implements IPointer {
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        VkImageSubresourceLayers.LAYOUT.withName("srcSubresource"),
-        VkOffset3D.LAYOUT.withName("srcOffsets"),
-        VkImageSubresourceLayers.LAYOUT.withName("dstSubresource"),
-        VkOffset3D.LAYOUT.withName("dstOffsets")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$srcSubresource = PathElement.groupElement("PATH$srcSubresource");
-    public static final PathElement PATH$srcOffsets = PathElement.groupElement("PATH$srcOffsets");
-    public static final PathElement PATH$dstSubresource = PathElement.groupElement("PATH$dstSubresource");
-    public static final PathElement PATH$dstOffsets = PathElement.groupElement("PATH$dstOffsets");
-
-    public static final StructLayout LAYOUT$srcSubresource = (StructLayout) LAYOUT.select(PATH$srcSubresource);
-    public static final StructLayout LAYOUT$srcOffsets = (StructLayout) LAYOUT.select(PATH$srcOffsets);
-    public static final StructLayout LAYOUT$dstSubresource = (StructLayout) LAYOUT.select(PATH$dstSubresource);
-    public static final StructLayout LAYOUT$dstOffsets = (StructLayout) LAYOUT.select(PATH$dstOffsets);
-
-    public static final long SIZE$srcSubresource = LAYOUT$srcSubresource.byteSize();
-    public static final long SIZE$srcOffsets = LAYOUT$srcOffsets.byteSize();
-    public static final long SIZE$dstSubresource = LAYOUT$dstSubresource.byteSize();
-    public static final long SIZE$dstOffsets = LAYOUT$dstOffsets.byteSize();
-
-    public static final long OFFSET$srcSubresource = LAYOUT.byteOffset(PATH$srcSubresource);
-    public static final long OFFSET$srcOffsets = LAYOUT.byteOffset(PATH$srcOffsets);
-    public static final long OFFSET$dstSubresource = LAYOUT.byteOffset(PATH$dstSubresource);
-    public static final long OFFSET$dstOffsets = LAYOUT.byteOffset(PATH$dstOffsets);
 
     public VkImageSubresourceLayers srcSubresource() {
         return new VkImageSubresourceLayers(segment.asSlice(OFFSET$srcSubresource, LAYOUT$srcSubresource));
@@ -115,4 +100,31 @@ public record VkImageBlit(@NotNull MemorySegment segment) implements IPointer {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstOffsets, SIZE$dstOffsets);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        VkImageSubresourceLayers.LAYOUT.withName("srcSubresource"),
+        VkOffset3D.LAYOUT.withName("srcOffsets"),
+        VkImageSubresourceLayers.LAYOUT.withName("dstSubresource"),
+        VkOffset3D.LAYOUT.withName("dstOffsets")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$srcSubresource = PathElement.groupElement("PATH$srcSubresource");
+    public static final PathElement PATH$srcOffsets = PathElement.groupElement("PATH$srcOffsets");
+    public static final PathElement PATH$dstSubresource = PathElement.groupElement("PATH$dstSubresource");
+    public static final PathElement PATH$dstOffsets = PathElement.groupElement("PATH$dstOffsets");
+
+    public static final StructLayout LAYOUT$srcSubresource = (StructLayout) LAYOUT.select(PATH$srcSubresource);
+    public static final StructLayout LAYOUT$srcOffsets = (StructLayout) LAYOUT.select(PATH$srcOffsets);
+    public static final StructLayout LAYOUT$dstSubresource = (StructLayout) LAYOUT.select(PATH$dstSubresource);
+    public static final StructLayout LAYOUT$dstOffsets = (StructLayout) LAYOUT.select(PATH$dstOffsets);
+
+    public static final long SIZE$srcSubresource = LAYOUT$srcSubresource.byteSize();
+    public static final long SIZE$srcOffsets = LAYOUT$srcOffsets.byteSize();
+    public static final long SIZE$dstSubresource = LAYOUT$dstSubresource.byteSize();
+    public static final long SIZE$dstOffsets = LAYOUT$dstOffsets.byteSize();
+
+    public static final long OFFSET$srcSubresource = LAYOUT.byteOffset(PATH$srcSubresource);
+    public static final long OFFSET$srcOffsets = LAYOUT.byteOffset(PATH$srcOffsets);
+    public static final long OFFSET$dstSubresource = LAYOUT.byteOffset(PATH$dstSubresource);
+    public static final long OFFSET$dstOffsets = LAYOUT.byteOffset(PATH$dstOffsets);
 }

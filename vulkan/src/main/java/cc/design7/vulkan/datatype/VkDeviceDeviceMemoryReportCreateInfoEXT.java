@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDeviceDeviceMemoryReportCreateInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceDeviceMemoryReportCreateInfoEXT.html"><code>VkDeviceDeviceMemoryReportCreateInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDeviceDeviceMemoryReportCreateInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkDeviceMemoryReportFlagsEXT flags;
+///     PFN_vkDeviceMemoryReportCallbackEXT pfnUserCallback;
+///     void* pUserData;
+/// } VkDeviceDeviceMemoryReportCreateInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT`
+///
+/// The {@link VkDeviceDeviceMemoryReportCreateInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkDeviceDeviceMemoryReportCreateInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceDeviceMemoryReportCreateInfoEXT.html">VkDeviceDeviceMemoryReportCreateInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceDeviceMemoryReportCreateInfoEXT.html"><code>VkDeviceDeviceMemoryReportCreateInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDeviceDeviceMemoryReportCreateInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkDeviceDeviceMemoryReportCreateInfoEXT {
-        sType(VkStructureType.DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT);
-    }
-
     public static VkDeviceDeviceMemoryReportCreateInfoEXT allocate(Arena arena) {
-        return new VkDeviceDeviceMemoryReportCreateInfoEXT(arena.allocate(LAYOUT));
+        VkDeviceDeviceMemoryReportCreateInfoEXT ret = new VkDeviceDeviceMemoryReportCreateInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT);
+        return ret;
     }
 
     public static VkDeviceDeviceMemoryReportCreateInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(@NotNull MemorySegment seg
         VkDeviceDeviceMemoryReportCreateInfoEXT[] ret = new VkDeviceDeviceMemoryReportCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkDeviceDeviceMemoryReportCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(@NotNull MemorySegment seg
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.ADDRESS.withName("pfnUserCallback"),
-        ValueLayout.ADDRESS.withName("pUserData")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$pfnUserCallback = PathElement.groupElement("PATH$pfnUserCallback");
-    public static final PathElement PATH$pUserData = PathElement.groupElement("PATH$pUserData");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final AddressLayout LAYOUT$pfnUserCallback = (AddressLayout) LAYOUT.select(PATH$pfnUserCallback);
-    public static final AddressLayout LAYOUT$pUserData = (AddressLayout) LAYOUT.select(PATH$pUserData);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$pfnUserCallback = LAYOUT$pfnUserCallback.byteSize();
-    public static final long SIZE$pUserData = LAYOUT$pUserData.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$pfnUserCallback = LAYOUT.byteOffset(PATH$pfnUserCallback);
-    public static final long OFFSET$pUserData = LAYOUT.byteOffset(PATH$pUserData);
+    public void autoInit() {
+        sType(VkStructureType.DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -144,4 +135,36 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(@NotNull MemorySegment seg
         pUserData(pointer.segment());
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.ADDRESS.withName("pfnUserCallback"),
+        ValueLayout.ADDRESS.withName("pUserData")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$pfnUserCallback = PathElement.groupElement("PATH$pfnUserCallback");
+    public static final PathElement PATH$pUserData = PathElement.groupElement("PATH$pUserData");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$pfnUserCallback = (AddressLayout) LAYOUT.select(PATH$pfnUserCallback);
+    public static final AddressLayout LAYOUT$pUserData = (AddressLayout) LAYOUT.select(PATH$pUserData);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$pfnUserCallback = LAYOUT$pfnUserCallback.byteSize();
+    public static final long SIZE$pUserData = LAYOUT$pUserData.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$pfnUserCallback = LAYOUT.byteOffset(PATH$pfnUserCallback);
+    public static final long OFFSET$pUserData = LAYOUT.byteOffset(PATH$pUserData);
 }

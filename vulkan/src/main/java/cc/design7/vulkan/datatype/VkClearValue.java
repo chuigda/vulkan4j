@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkClearValue} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClearValue.html"><code>VkClearValue</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkClearValue {
+///     VkClearColorValue color;
+///     VkClearDepthStencilValue depthStencil;
+/// } VkClearValue;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClearValue.html">VkClearValue</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClearValue.html"><code>VkClearValue</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkClearValue(@NotNull MemorySegment segment) implements IPointer {
     public static VkClearValue allocate(Arena arena) {
-        return new VkClearValue(arena.allocate(LAYOUT));
+        VkClearValue ret = new VkClearValue(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkClearValue[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkClearValue(@NotNull MemorySegment segment) implements IPointer {
         return ret;
     }
 
+    public VkClearColorValue color() {
+        return new VkClearColorValue(segment.asSlice(OFFSET$color, LAYOUT$color));
+    }
+
+    public void color(VkClearColorValue value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$color, SIZE$color);
+    }
+
+    public VkClearDepthStencilValue depthStencil() {
+        return new VkClearDepthStencilValue(segment.asSlice(OFFSET$depthStencil, LAYOUT$depthStencil));
+    }
+
+    public void depthStencil(VkClearDepthStencilValue value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$depthStencil, SIZE$depthStencil);
+    }
+
     public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
         VkClearColorValue.LAYOUT.withName("color"),
         VkClearDepthStencilValue.LAYOUT.withName("depthStencil")
@@ -72,21 +99,4 @@ public record VkClearValue(@NotNull MemorySegment segment) implements IPointer {
 
     public static final long OFFSET$color = LAYOUT.byteOffset(PATH$color);
     public static final long OFFSET$depthStencil = LAYOUT.byteOffset(PATH$depthStencil);
-
-    public VkClearColorValue color() {
-        return new VkClearColorValue(segment.asSlice(OFFSET$color, LAYOUT$color));
-    }
-
-    public void color(VkClearColorValue value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$color, SIZE$color);
-    }
-
-    public VkClearDepthStencilValue depthStencil() {
-        return new VkClearDepthStencilValue(segment.asSlice(OFFSET$depthStencil, LAYOUT$depthStencil));
-    }
-
-    public void depthStencil(VkClearDepthStencilValue value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$depthStencil, SIZE$depthStencil);
-    }
-
 }

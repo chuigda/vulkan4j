@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkIndirectExecutionSetInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectExecutionSetInfoEXT.html"><code>VkIndirectExecutionSetInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkIndirectExecutionSetInfoEXT {
+///     VkIndirectExecutionSetPipelineInfoEXT const* pPipelineInfo;
+///     VkIndirectExecutionSetShaderInfoEXT const* pShaderInfo;
+/// } VkIndirectExecutionSetInfoEXT;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectExecutionSetInfoEXT.html">VkIndirectExecutionSetInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectExecutionSetInfoEXT.html"><code>VkIndirectExecutionSetInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkIndirectExecutionSetInfoEXT allocate(Arena arena) {
-        return new VkIndirectExecutionSetInfoEXT(arena.allocate(LAYOUT));
+        VkIndirectExecutionSetInfoEXT ret = new VkIndirectExecutionSetInfoEXT(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkIndirectExecutionSetInfoEXT[] allocate(Arena arena, int count) {
@@ -55,24 +66,6 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
-        ValueLayout.ADDRESS.withTargetLayout(VkIndirectExecutionSetPipelineInfoEXT.LAYOUT).withName("pPipelineInfo"),
-        ValueLayout.ADDRESS.withTargetLayout(VkIndirectExecutionSetShaderInfoEXT.LAYOUT).withName("pShaderInfo")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$pPipelineInfo = PathElement.groupElement("PATH$pPipelineInfo");
-    public static final PathElement PATH$pShaderInfo = PathElement.groupElement("PATH$pShaderInfo");
-
-    public static final AddressLayout LAYOUT$pPipelineInfo = (AddressLayout) LAYOUT.select(PATH$pPipelineInfo);
-    public static final AddressLayout LAYOUT$pShaderInfo = (AddressLayout) LAYOUT.select(PATH$pShaderInfo);
-
-    public static final long SIZE$pPipelineInfo = LAYOUT$pPipelineInfo.byteSize();
-    public static final long SIZE$pShaderInfo = LAYOUT$pShaderInfo.byteSize();
-
-    public static final long OFFSET$pPipelineInfo = LAYOUT.byteOffset(PATH$pPipelineInfo);
-    public static final long OFFSET$pShaderInfo = LAYOUT.byteOffset(PATH$pShaderInfo);
-
     public @pointer(comment="VkIndirectExecutionSetPipelineInfoEXT*") MemorySegment pPipelineInfoRaw() {
         return segment.get(LAYOUT$pPipelineInfo, OFFSET$pPipelineInfo);
     }
@@ -83,7 +76,7 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
 
     public @Nullable VkIndirectExecutionSetPipelineInfoEXT pPipelineInfo() {
         MemorySegment s = pPipelineInfoRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkIndirectExecutionSetPipelineInfoEXT(s);
@@ -96,7 +89,7 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
 
     @unsafe public @Nullable VkIndirectExecutionSetPipelineInfoEXT[] pPipelineInfo(int assumedCount) {
         MemorySegment s = pPipelineInfoRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -118,7 +111,7 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
 
     public @Nullable VkIndirectExecutionSetShaderInfoEXT pShaderInfo() {
         MemorySegment s = pShaderInfoRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkIndirectExecutionSetShaderInfoEXT(s);
@@ -131,7 +124,7 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
 
     @unsafe public @Nullable VkIndirectExecutionSetShaderInfoEXT[] pShaderInfo(int assumedCount) {
         MemorySegment s = pShaderInfoRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -143,4 +136,21 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         return ret;
     }
 
+    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
+        ValueLayout.ADDRESS.withTargetLayout(VkIndirectExecutionSetPipelineInfoEXT.LAYOUT).withName("pPipelineInfo"),
+        ValueLayout.ADDRESS.withTargetLayout(VkIndirectExecutionSetShaderInfoEXT.LAYOUT).withName("pShaderInfo")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$pPipelineInfo = PathElement.groupElement("PATH$pPipelineInfo");
+    public static final PathElement PATH$pShaderInfo = PathElement.groupElement("PATH$pShaderInfo");
+
+    public static final AddressLayout LAYOUT$pPipelineInfo = (AddressLayout) LAYOUT.select(PATH$pPipelineInfo);
+    public static final AddressLayout LAYOUT$pShaderInfo = (AddressLayout) LAYOUT.select(PATH$pShaderInfo);
+
+    public static final long SIZE$pPipelineInfo = LAYOUT$pPipelineInfo.byteSize();
+    public static final long SIZE$pShaderInfo = LAYOUT$pShaderInfo.byteSize();
+
+    public static final long OFFSET$pPipelineInfo = LAYOUT.byteOffset(PATH$pPipelineInfo);
+    public static final long OFFSET$pShaderInfo = LAYOUT.byteOffset(PATH$pShaderInfo);
 }

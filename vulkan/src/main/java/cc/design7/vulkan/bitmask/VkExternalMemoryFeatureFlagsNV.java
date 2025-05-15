@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalMemoryFeatureFlagsNV.html">VkExternalMemoryFeatureFlagsNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalMemoryFeatureFlagsNV.html"><code>VkExternalMemoryFeatureFlagsNV</code></a>
 public final class VkExternalMemoryFeatureFlagsNV {
     public static final int DEDICATED_ONLY = 0x1;
     public static final int EXPORTABLE = 0x2;

@@ -17,6 +17,16 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoAV1TimingInfoFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoAV1TimingInfoFlags {
+///     uint32_t equal_picture_interval : 1;
+///     uint32_t reserved : 31;
+/// } StdVideoAV1TimingInfoFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +38,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1TimingInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1TimingInfoFlags allocate(Arena arena) {
-        return new StdVideoAV1TimingInfoFlags(arena.allocate(LAYOUT));
+        StdVideoAV1TimingInfoFlags ret = new StdVideoAV1TimingInfoFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoAV1TimingInfoFlags[] allocate(Arena arena, int count) {
@@ -54,6 +65,16 @@ public record StdVideoAV1TimingInfoFlags(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
+    public boolean equal_picture_interval() {
+        MemorySegment s = segment.asSlice(OFFSET$equal_picture_interval_reserved, LAYOUT$equal_picture_interval_reserved);
+        return BitfieldUtil.readBit(s, 0);
+    }
+
+    public void equal_picture_interval(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$equal_picture_interval_reserved, LAYOUT$equal_picture_interval_reserved);
+        BitfieldUtil.writeBit(s, 0, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$equal_picture_interval_reserved")
     );
@@ -65,16 +86,4 @@ public record StdVideoAV1TimingInfoFlags(@NotNull MemorySegment segment) impleme
 
 
     public static final long OFFSET$equal_picture_interval_reserved = LAYOUT.byteOffset(PATH$bitfield$equal_picture_interval_reserved);
-
-    public boolean equal_picture_interval() {
-        MemorySegment s = segment.asSlice(OFFSET$equal_picture_interval_reserved, LAYOUT$equal_picture_interval_reserved);
-        return BitfieldUtil.readBit(s, 0);
-    }
-
-    public void equal_picture_interval(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$equal_picture_interval_reserved, LAYOUT$equal_picture_interval_reserved);
-        BitfieldUtil.writeBit(s, 0, value);
-    }
-
-
 }

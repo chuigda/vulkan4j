@@ -14,8 +14,25 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDisplayPlaneCapabilitiesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPlaneCapabilitiesKHR.html"><code>VkDisplayPlaneCapabilitiesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDisplayPlaneCapabilitiesKHR {
+///     VkDisplayPlaneAlphaFlagsKHR supportedAlpha;
+///     VkOffset2D minSrcPosition;
+///     VkOffset2D maxSrcPosition;
+///     VkExtent2D minSrcExtent;
+///     VkExtent2D maxSrcExtent;
+///     VkOffset2D minDstPosition;
+///     VkOffset2D maxDstPosition;
+///     VkExtent2D minDstExtent;
+///     VkExtent2D maxDstExtent;
+/// } VkDisplayPlaneCapabilitiesKHR;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +41,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPlaneCapabilitiesKHR.html">VkDisplayPlaneCapabilitiesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPlaneCapabilitiesKHR.html"><code>VkDisplayPlaneCapabilitiesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkDisplayPlaneCapabilitiesKHR allocate(Arena arena) {
-        return new VkDisplayPlaneCapabilitiesKHR(arena.allocate(LAYOUT));
+        VkDisplayPlaneCapabilitiesKHR ret = new VkDisplayPlaneCapabilitiesKHR(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkDisplayPlaneCapabilitiesKHR[] allocate(Arena arena, int count) {
@@ -54,59 +72,6 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("supportedAlpha"),
-        VkOffset2D.LAYOUT.withName("minSrcPosition"),
-        VkOffset2D.LAYOUT.withName("maxSrcPosition"),
-        VkExtent2D.LAYOUT.withName("minSrcExtent"),
-        VkExtent2D.LAYOUT.withName("maxSrcExtent"),
-        VkOffset2D.LAYOUT.withName("minDstPosition"),
-        VkOffset2D.LAYOUT.withName("maxDstPosition"),
-        VkExtent2D.LAYOUT.withName("minDstExtent"),
-        VkExtent2D.LAYOUT.withName("maxDstExtent")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$supportedAlpha = PathElement.groupElement("PATH$supportedAlpha");
-    public static final PathElement PATH$minSrcPosition = PathElement.groupElement("PATH$minSrcPosition");
-    public static final PathElement PATH$maxSrcPosition = PathElement.groupElement("PATH$maxSrcPosition");
-    public static final PathElement PATH$minSrcExtent = PathElement.groupElement("PATH$minSrcExtent");
-    public static final PathElement PATH$maxSrcExtent = PathElement.groupElement("PATH$maxSrcExtent");
-    public static final PathElement PATH$minDstPosition = PathElement.groupElement("PATH$minDstPosition");
-    public static final PathElement PATH$maxDstPosition = PathElement.groupElement("PATH$maxDstPosition");
-    public static final PathElement PATH$minDstExtent = PathElement.groupElement("PATH$minDstExtent");
-    public static final PathElement PATH$maxDstExtent = PathElement.groupElement("PATH$maxDstExtent");
-
-    public static final OfInt LAYOUT$supportedAlpha = (OfInt) LAYOUT.select(PATH$supportedAlpha);
-    public static final StructLayout LAYOUT$minSrcPosition = (StructLayout) LAYOUT.select(PATH$minSrcPosition);
-    public static final StructLayout LAYOUT$maxSrcPosition = (StructLayout) LAYOUT.select(PATH$maxSrcPosition);
-    public static final StructLayout LAYOUT$minSrcExtent = (StructLayout) LAYOUT.select(PATH$minSrcExtent);
-    public static final StructLayout LAYOUT$maxSrcExtent = (StructLayout) LAYOUT.select(PATH$maxSrcExtent);
-    public static final StructLayout LAYOUT$minDstPosition = (StructLayout) LAYOUT.select(PATH$minDstPosition);
-    public static final StructLayout LAYOUT$maxDstPosition = (StructLayout) LAYOUT.select(PATH$maxDstPosition);
-    public static final StructLayout LAYOUT$minDstExtent = (StructLayout) LAYOUT.select(PATH$minDstExtent);
-    public static final StructLayout LAYOUT$maxDstExtent = (StructLayout) LAYOUT.select(PATH$maxDstExtent);
-
-    public static final long SIZE$supportedAlpha = LAYOUT$supportedAlpha.byteSize();
-    public static final long SIZE$minSrcPosition = LAYOUT$minSrcPosition.byteSize();
-    public static final long SIZE$maxSrcPosition = LAYOUT$maxSrcPosition.byteSize();
-    public static final long SIZE$minSrcExtent = LAYOUT$minSrcExtent.byteSize();
-    public static final long SIZE$maxSrcExtent = LAYOUT$maxSrcExtent.byteSize();
-    public static final long SIZE$minDstPosition = LAYOUT$minDstPosition.byteSize();
-    public static final long SIZE$maxDstPosition = LAYOUT$maxDstPosition.byteSize();
-    public static final long SIZE$minDstExtent = LAYOUT$minDstExtent.byteSize();
-    public static final long SIZE$maxDstExtent = LAYOUT$maxDstExtent.byteSize();
-
-    public static final long OFFSET$supportedAlpha = LAYOUT.byteOffset(PATH$supportedAlpha);
-    public static final long OFFSET$minSrcPosition = LAYOUT.byteOffset(PATH$minSrcPosition);
-    public static final long OFFSET$maxSrcPosition = LAYOUT.byteOffset(PATH$maxSrcPosition);
-    public static final long OFFSET$minSrcExtent = LAYOUT.byteOffset(PATH$minSrcExtent);
-    public static final long OFFSET$maxSrcExtent = LAYOUT.byteOffset(PATH$maxSrcExtent);
-    public static final long OFFSET$minDstPosition = LAYOUT.byteOffset(PATH$minDstPosition);
-    public static final long OFFSET$maxDstPosition = LAYOUT.byteOffset(PATH$maxDstPosition);
-    public static final long OFFSET$minDstExtent = LAYOUT.byteOffset(PATH$minDstExtent);
-    public static final long OFFSET$maxDstExtent = LAYOUT.byteOffset(PATH$maxDstExtent);
 
     public @enumtype(VkDisplayPlaneAlphaFlagsKHR.class) int supportedAlpha() {
         return segment.get(LAYOUT$supportedAlpha, OFFSET$supportedAlpha);
@@ -180,4 +145,56 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxDstExtent, SIZE$maxDstExtent);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("supportedAlpha"),
+        VkOffset2D.LAYOUT.withName("minSrcPosition"),
+        VkOffset2D.LAYOUT.withName("maxSrcPosition"),
+        VkExtent2D.LAYOUT.withName("minSrcExtent"),
+        VkExtent2D.LAYOUT.withName("maxSrcExtent"),
+        VkOffset2D.LAYOUT.withName("minDstPosition"),
+        VkOffset2D.LAYOUT.withName("maxDstPosition"),
+        VkExtent2D.LAYOUT.withName("minDstExtent"),
+        VkExtent2D.LAYOUT.withName("maxDstExtent")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$supportedAlpha = PathElement.groupElement("PATH$supportedAlpha");
+    public static final PathElement PATH$minSrcPosition = PathElement.groupElement("PATH$minSrcPosition");
+    public static final PathElement PATH$maxSrcPosition = PathElement.groupElement("PATH$maxSrcPosition");
+    public static final PathElement PATH$minSrcExtent = PathElement.groupElement("PATH$minSrcExtent");
+    public static final PathElement PATH$maxSrcExtent = PathElement.groupElement("PATH$maxSrcExtent");
+    public static final PathElement PATH$minDstPosition = PathElement.groupElement("PATH$minDstPosition");
+    public static final PathElement PATH$maxDstPosition = PathElement.groupElement("PATH$maxDstPosition");
+    public static final PathElement PATH$minDstExtent = PathElement.groupElement("PATH$minDstExtent");
+    public static final PathElement PATH$maxDstExtent = PathElement.groupElement("PATH$maxDstExtent");
+
+    public static final OfInt LAYOUT$supportedAlpha = (OfInt) LAYOUT.select(PATH$supportedAlpha);
+    public static final StructLayout LAYOUT$minSrcPosition = (StructLayout) LAYOUT.select(PATH$minSrcPosition);
+    public static final StructLayout LAYOUT$maxSrcPosition = (StructLayout) LAYOUT.select(PATH$maxSrcPosition);
+    public static final StructLayout LAYOUT$minSrcExtent = (StructLayout) LAYOUT.select(PATH$minSrcExtent);
+    public static final StructLayout LAYOUT$maxSrcExtent = (StructLayout) LAYOUT.select(PATH$maxSrcExtent);
+    public static final StructLayout LAYOUT$minDstPosition = (StructLayout) LAYOUT.select(PATH$minDstPosition);
+    public static final StructLayout LAYOUT$maxDstPosition = (StructLayout) LAYOUT.select(PATH$maxDstPosition);
+    public static final StructLayout LAYOUT$minDstExtent = (StructLayout) LAYOUT.select(PATH$minDstExtent);
+    public static final StructLayout LAYOUT$maxDstExtent = (StructLayout) LAYOUT.select(PATH$maxDstExtent);
+
+    public static final long SIZE$supportedAlpha = LAYOUT$supportedAlpha.byteSize();
+    public static final long SIZE$minSrcPosition = LAYOUT$minSrcPosition.byteSize();
+    public static final long SIZE$maxSrcPosition = LAYOUT$maxSrcPosition.byteSize();
+    public static final long SIZE$minSrcExtent = LAYOUT$minSrcExtent.byteSize();
+    public static final long SIZE$maxSrcExtent = LAYOUT$maxSrcExtent.byteSize();
+    public static final long SIZE$minDstPosition = LAYOUT$minDstPosition.byteSize();
+    public static final long SIZE$maxDstPosition = LAYOUT$maxDstPosition.byteSize();
+    public static final long SIZE$minDstExtent = LAYOUT$minDstExtent.byteSize();
+    public static final long SIZE$maxDstExtent = LAYOUT$maxDstExtent.byteSize();
+
+    public static final long OFFSET$supportedAlpha = LAYOUT.byteOffset(PATH$supportedAlpha);
+    public static final long OFFSET$minSrcPosition = LAYOUT.byteOffset(PATH$minSrcPosition);
+    public static final long OFFSET$maxSrcPosition = LAYOUT.byteOffset(PATH$maxSrcPosition);
+    public static final long OFFSET$minSrcExtent = LAYOUT.byteOffset(PATH$minSrcExtent);
+    public static final long OFFSET$maxSrcExtent = LAYOUT.byteOffset(PATH$maxSrcExtent);
+    public static final long OFFSET$minDstPosition = LAYOUT.byteOffset(PATH$minDstPosition);
+    public static final long OFFSET$maxDstPosition = LAYOUT.byteOffset(PATH$maxDstPosition);
+    public static final long OFFSET$minDstExtent = LAYOUT.byteOffset(PATH$minDstExtent);
+    public static final long OFFSET$maxDstExtent = LAYOUT.byteOffset(PATH$maxDstExtent);
 }

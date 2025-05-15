@@ -14,8 +14,32 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkIndirectCommandsLayoutCreateInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsLayoutCreateInfoNV.html"><code>VkIndirectCommandsLayoutCreateInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkIndirectCommandsLayoutCreateInfoNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkIndirectCommandsLayoutUsageFlagsNV flags;
+///     VkPipelineBindPoint pipelineBindPoint;
+///     uint32_t tokenCount;
+///     VkIndirectCommandsLayoutTokenNV const* pTokens;
+///     uint32_t streamCount;
+///     uint32_t const* pStreamStrides;
+/// } VkIndirectCommandsLayoutCreateInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NV`
+///
+/// The {@link VkIndirectCommandsLayoutCreateInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkIndirectCommandsLayoutCreateInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +48,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsLayoutCreateInfoNV.html">VkIndirectCommandsLayoutCreateInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsLayoutCreateInfoNV.html"><code>VkIndirectCommandsLayoutCreateInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkIndirectCommandsLayoutCreateInfoNV {
-        sType(VkStructureType.INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NV);
-    }
-
     public static VkIndirectCommandsLayoutCreateInfoNV allocate(Arena arena) {
-        return new VkIndirectCommandsLayoutCreateInfoNV(arena.allocate(LAYOUT));
+        VkIndirectCommandsLayoutCreateInfoNV ret = new VkIndirectCommandsLayoutCreateInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NV);
+        return ret;
     }
 
     public static VkIndirectCommandsLayoutCreateInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +63,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         VkIndirectCommandsLayoutCreateInfoNV[] ret = new VkIndirectCommandsLayoutCreateInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkIndirectCommandsLayoutCreateInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NV);
         }
         return ret;
     }
@@ -59,53 +82,9 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("pipelineBindPoint"),
-        ValueLayout.JAVA_INT.withName("tokenCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkIndirectCommandsLayoutTokenNV.LAYOUT).withName("pTokens"),
-        ValueLayout.JAVA_INT.withName("streamCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pStreamStrides")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement("PATH$pipelineBindPoint");
-    public static final PathElement PATH$tokenCount = PathElement.groupElement("PATH$tokenCount");
-    public static final PathElement PATH$pTokens = PathElement.groupElement("PATH$pTokens");
-    public static final PathElement PATH$streamCount = PathElement.groupElement("PATH$streamCount");
-    public static final PathElement PATH$pStreamStrides = PathElement.groupElement("PATH$pStreamStrides");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$pipelineBindPoint = (OfInt) LAYOUT.select(PATH$pipelineBindPoint);
-    public static final OfInt LAYOUT$tokenCount = (OfInt) LAYOUT.select(PATH$tokenCount);
-    public static final AddressLayout LAYOUT$pTokens = (AddressLayout) LAYOUT.select(PATH$pTokens);
-    public static final OfInt LAYOUT$streamCount = (OfInt) LAYOUT.select(PATH$streamCount);
-    public static final AddressLayout LAYOUT$pStreamStrides = (AddressLayout) LAYOUT.select(PATH$pStreamStrides);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$pipelineBindPoint = LAYOUT$pipelineBindPoint.byteSize();
-    public static final long SIZE$tokenCount = LAYOUT$tokenCount.byteSize();
-    public static final long SIZE$pTokens = LAYOUT$pTokens.byteSize();
-    public static final long SIZE$streamCount = LAYOUT$streamCount.byteSize();
-    public static final long SIZE$pStreamStrides = LAYOUT$pStreamStrides.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$pipelineBindPoint = LAYOUT.byteOffset(PATH$pipelineBindPoint);
-    public static final long OFFSET$tokenCount = LAYOUT.byteOffset(PATH$tokenCount);
-    public static final long OFFSET$pTokens = LAYOUT.byteOffset(PATH$pTokens);
-    public static final long OFFSET$streamCount = LAYOUT.byteOffset(PATH$streamCount);
-    public static final long OFFSET$pStreamStrides = LAYOUT.byteOffset(PATH$pStreamStrides);
+    public void autoInit() {
+        sType(VkStructureType.INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -161,7 +140,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
 
     public @Nullable VkIndirectCommandsLayoutTokenNV pTokens() {
         MemorySegment s = pTokensRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkIndirectCommandsLayoutTokenNV(s);
@@ -174,7 +153,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
 
     @unsafe public @Nullable VkIndirectCommandsLayoutTokenNV[] pTokens(int assumedCount) {
         MemorySegment s = pTokensRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -208,7 +187,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
     /// writing to the buffer.
     public @Nullable @unsigned IntPtr pStreamStrides() {
         MemorySegment s = pStreamStridesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -219,4 +198,51 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         pStreamStridesRaw(s);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("pipelineBindPoint"),
+        ValueLayout.JAVA_INT.withName("tokenCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkIndirectCommandsLayoutTokenNV.LAYOUT).withName("pTokens"),
+        ValueLayout.JAVA_INT.withName("streamCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pStreamStrides")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement("PATH$pipelineBindPoint");
+    public static final PathElement PATH$tokenCount = PathElement.groupElement("PATH$tokenCount");
+    public static final PathElement PATH$pTokens = PathElement.groupElement("PATH$pTokens");
+    public static final PathElement PATH$streamCount = PathElement.groupElement("PATH$streamCount");
+    public static final PathElement PATH$pStreamStrides = PathElement.groupElement("PATH$pStreamStrides");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$pipelineBindPoint = (OfInt) LAYOUT.select(PATH$pipelineBindPoint);
+    public static final OfInt LAYOUT$tokenCount = (OfInt) LAYOUT.select(PATH$tokenCount);
+    public static final AddressLayout LAYOUT$pTokens = (AddressLayout) LAYOUT.select(PATH$pTokens);
+    public static final OfInt LAYOUT$streamCount = (OfInt) LAYOUT.select(PATH$streamCount);
+    public static final AddressLayout LAYOUT$pStreamStrides = (AddressLayout) LAYOUT.select(PATH$pStreamStrides);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$pipelineBindPoint = LAYOUT$pipelineBindPoint.byteSize();
+    public static final long SIZE$tokenCount = LAYOUT$tokenCount.byteSize();
+    public static final long SIZE$pTokens = LAYOUT$pTokens.byteSize();
+    public static final long SIZE$streamCount = LAYOUT$streamCount.byteSize();
+    public static final long SIZE$pStreamStrides = LAYOUT$pStreamStrides.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$pipelineBindPoint = LAYOUT.byteOffset(PATH$pipelineBindPoint);
+    public static final long OFFSET$tokenCount = LAYOUT.byteOffset(PATH$tokenCount);
+    public static final long OFFSET$pTokens = LAYOUT.byteOffset(PATH$pTokens);
+    public static final long OFFSET$streamCount = LAYOUT.byteOffset(PATH$streamCount);
+    public static final long OFFSET$pStreamStrides = LAYOUT.byteOffset(PATH$pStreamStrides);
 }

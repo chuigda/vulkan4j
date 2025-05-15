@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkCommandBufferAllocateInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCommandBufferAllocateInfo.html"><code>VkCommandBufferAllocateInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkCommandBufferAllocateInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkCommandPool commandPool;
+///     VkCommandBufferLevel level;
+///     uint32_t commandBufferCount;
+/// } VkCommandBufferAllocateInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO`
+///
+/// The {@link VkCommandBufferAllocateInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkCommandBufferAllocateInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCommandBufferAllocateInfo.html">VkCommandBufferAllocateInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCommandBufferAllocateInfo.html"><code>VkCommandBufferAllocateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkCommandBufferAllocateInfo {
-        sType(VkStructureType.COMMAND_BUFFER_ALLOCATE_INFO);
-    }
-
     public static VkCommandBufferAllocateInfo allocate(Arena arena) {
-        return new VkCommandBufferAllocateInfo(arena.allocate(LAYOUT));
+        VkCommandBufferAllocateInfo ret = new VkCommandBufferAllocateInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.COMMAND_BUFFER_ALLOCATE_INFO);
+        return ret;
     }
 
     public static VkCommandBufferAllocateInfo[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implem
         VkCommandBufferAllocateInfo[] ret = new VkCommandBufferAllocateInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkCommandBufferAllocateInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.COMMAND_BUFFER_ALLOCATE_INFO);
         }
         return ret;
     }
@@ -57,6 +77,58 @@ public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implem
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.COMMAND_BUFFER_ALLOCATE_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkCommandPool commandPool() {
+        MemorySegment s = segment.asSlice(OFFSET$commandPool, SIZE$commandPool);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkCommandPool(s);
+    }
+
+    public void commandPool(@Nullable VkCommandPool value) {
+        segment.set(LAYOUT$commandPool, OFFSET$commandPool, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @enumtype(VkCommandBufferLevel.class) int level() {
+        return segment.get(LAYOUT$level, OFFSET$level);
+    }
+
+    public void level(@enumtype(VkCommandBufferLevel.class) int value) {
+        segment.set(LAYOUT$level, OFFSET$level, value);
+    }
+
+    public @unsigned int commandBufferCount() {
+        return segment.get(LAYOUT$commandBufferCount, OFFSET$commandBufferCount);
+    }
+
+    public void commandBufferCount(@unsigned int value) {
+        segment.set(LAYOUT$commandBufferCount, OFFSET$commandBufferCount, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -91,53 +163,4 @@ public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implem
     public static final long OFFSET$commandPool = LAYOUT.byteOffset(PATH$commandPool);
     public static final long OFFSET$level = LAYOUT.byteOffset(PATH$level);
     public static final long OFFSET$commandBufferCount = LAYOUT.byteOffset(PATH$commandBufferCount);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkCommandPool commandPool() {
-        MemorySegment s = segment.asSlice(OFFSET$commandPool, SIZE$commandPool);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkCommandPool(s);
-    }
-
-    public void commandPool(@Nullable VkCommandPool value) {
-        segment.set(LAYOUT$commandPool, OFFSET$commandPool, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @enumtype(VkCommandBufferLevel.class) int level() {
-        return segment.get(LAYOUT$level, OFFSET$level);
-    }
-
-    public void level(@enumtype(VkCommandBufferLevel.class) int value) {
-        segment.set(LAYOUT$level, OFFSET$level, value);
-    }
-
-    public @unsigned int commandBufferCount() {
-        return segment.get(LAYOUT$commandBufferCount, OFFSET$commandBufferCount);
-    }
-
-    public void commandBufferCount(@unsigned int value) {
-        segment.set(LAYOUT$commandBufferCount, OFFSET$commandBufferCount, value);
-    }
-
 }

@@ -14,8 +14,33 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceShaderEnqueuePropertiesAMDX} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderEnqueuePropertiesAMDX.html"><code>VkPhysicalDeviceShaderEnqueuePropertiesAMDX</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceShaderEnqueuePropertiesAMDX {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t maxExecutionGraphDepth;
+///     uint32_t maxExecutionGraphShaderOutputNodes;
+///     uint32_t maxExecutionGraphShaderPayloadSize;
+///     uint32_t maxExecutionGraphShaderPayloadCount;
+///     uint32_t executionGraphDispatchAddressAlignment;
+///     uint32_t maxExecutionGraphWorkgroupCount;
+///     uint32_t maxExecutionGraphWorkgroups;
+/// } VkPhysicalDeviceShaderEnqueuePropertiesAMDX;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX`
+///
+/// The {@link VkPhysicalDeviceShaderEnqueuePropertiesAMDX#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceShaderEnqueuePropertiesAMDX#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +49,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderEnqueuePropertiesAMDX.html">VkPhysicalDeviceShaderEnqueuePropertiesAMDX</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderEnqueuePropertiesAMDX.html"><code>VkPhysicalDeviceShaderEnqueuePropertiesAMDX</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX {
-        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX);
-    }
-
     public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX allocate(Arena arena) {
-        return new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(arena.allocate(LAYOUT));
+        VkPhysicalDeviceShaderEnqueuePropertiesAMDX ret = new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX);
+        return ret;
     }
 
     public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX[] allocate(Arena arena, int count) {
@@ -41,6 +64,7 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
         VkPhysicalDeviceShaderEnqueuePropertiesAMDX[] ret = new VkPhysicalDeviceShaderEnqueuePropertiesAMDX[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX);
         }
         return ret;
     }
@@ -59,58 +83,9 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("maxExecutionGraphDepth"),
-        ValueLayout.JAVA_INT.withName("maxExecutionGraphShaderOutputNodes"),
-        ValueLayout.JAVA_INT.withName("maxExecutionGraphShaderPayloadSize"),
-        ValueLayout.JAVA_INT.withName("maxExecutionGraphShaderPayloadCount"),
-        ValueLayout.JAVA_INT.withName("executionGraphDispatchAddressAlignment"),
-        ValueLayout.JAVA_INT.withName("maxExecutionGraphWorkgroupCount"),
-        ValueLayout.JAVA_INT.withName("maxExecutionGraphWorkgroups")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxExecutionGraphDepth = PathElement.groupElement("PATH$maxExecutionGraphDepth");
-    public static final PathElement PATH$maxExecutionGraphShaderOutputNodes = PathElement.groupElement("PATH$maxExecutionGraphShaderOutputNodes");
-    public static final PathElement PATH$maxExecutionGraphShaderPayloadSize = PathElement.groupElement("PATH$maxExecutionGraphShaderPayloadSize");
-    public static final PathElement PATH$maxExecutionGraphShaderPayloadCount = PathElement.groupElement("PATH$maxExecutionGraphShaderPayloadCount");
-    public static final PathElement PATH$executionGraphDispatchAddressAlignment = PathElement.groupElement("PATH$executionGraphDispatchAddressAlignment");
-    public static final PathElement PATH$maxExecutionGraphWorkgroupCount = PathElement.groupElement("PATH$maxExecutionGraphWorkgroupCount");
-    public static final PathElement PATH$maxExecutionGraphWorkgroups = PathElement.groupElement("PATH$maxExecutionGraphWorkgroups");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$maxExecutionGraphDepth = (OfInt) LAYOUT.select(PATH$maxExecutionGraphDepth);
-    public static final OfInt LAYOUT$maxExecutionGraphShaderOutputNodes = (OfInt) LAYOUT.select(PATH$maxExecutionGraphShaderOutputNodes);
-    public static final OfInt LAYOUT$maxExecutionGraphShaderPayloadSize = (OfInt) LAYOUT.select(PATH$maxExecutionGraphShaderPayloadSize);
-    public static final OfInt LAYOUT$maxExecutionGraphShaderPayloadCount = (OfInt) LAYOUT.select(PATH$maxExecutionGraphShaderPayloadCount);
-    public static final OfInt LAYOUT$executionGraphDispatchAddressAlignment = (OfInt) LAYOUT.select(PATH$executionGraphDispatchAddressAlignment);
-    public static final OfInt LAYOUT$maxExecutionGraphWorkgroupCount = (OfInt) LAYOUT.select(PATH$maxExecutionGraphWorkgroupCount);
-    public static final OfInt LAYOUT$maxExecutionGraphWorkgroups = (OfInt) LAYOUT.select(PATH$maxExecutionGraphWorkgroups);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$maxExecutionGraphDepth = LAYOUT$maxExecutionGraphDepth.byteSize();
-    public static final long SIZE$maxExecutionGraphShaderOutputNodes = LAYOUT$maxExecutionGraphShaderOutputNodes.byteSize();
-    public static final long SIZE$maxExecutionGraphShaderPayloadSize = LAYOUT$maxExecutionGraphShaderPayloadSize.byteSize();
-    public static final long SIZE$maxExecutionGraphShaderPayloadCount = LAYOUT$maxExecutionGraphShaderPayloadCount.byteSize();
-    public static final long SIZE$executionGraphDispatchAddressAlignment = LAYOUT$executionGraphDispatchAddressAlignment.byteSize();
-    public static final long SIZE$maxExecutionGraphWorkgroupCount = LAYOUT$maxExecutionGraphWorkgroupCount.byteSize();
-    public static final long SIZE$maxExecutionGraphWorkgroups = LAYOUT$maxExecutionGraphWorkgroups.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$maxExecutionGraphDepth = LAYOUT.byteOffset(PATH$maxExecutionGraphDepth);
-    public static final long OFFSET$maxExecutionGraphShaderOutputNodes = LAYOUT.byteOffset(PATH$maxExecutionGraphShaderOutputNodes);
-    public static final long OFFSET$maxExecutionGraphShaderPayloadSize = LAYOUT.byteOffset(PATH$maxExecutionGraphShaderPayloadSize);
-    public static final long OFFSET$maxExecutionGraphShaderPayloadCount = LAYOUT.byteOffset(PATH$maxExecutionGraphShaderPayloadCount);
-    public static final long OFFSET$executionGraphDispatchAddressAlignment = LAYOUT.byteOffset(PATH$executionGraphDispatchAddressAlignment);
-    public static final long OFFSET$maxExecutionGraphWorkgroupCount = LAYOUT.byteOffset(PATH$maxExecutionGraphWorkgroupCount);
-    public static final long OFFSET$maxExecutionGraphWorkgroups = LAYOUT.byteOffset(PATH$maxExecutionGraphWorkgroups);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -188,4 +163,56 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
         segment.set(LAYOUT$maxExecutionGraphWorkgroups, OFFSET$maxExecutionGraphWorkgroups, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maxExecutionGraphDepth"),
+        ValueLayout.JAVA_INT.withName("maxExecutionGraphShaderOutputNodes"),
+        ValueLayout.JAVA_INT.withName("maxExecutionGraphShaderPayloadSize"),
+        ValueLayout.JAVA_INT.withName("maxExecutionGraphShaderPayloadCount"),
+        ValueLayout.JAVA_INT.withName("executionGraphDispatchAddressAlignment"),
+        ValueLayout.JAVA_INT.withName("maxExecutionGraphWorkgroupCount"),
+        ValueLayout.JAVA_INT.withName("maxExecutionGraphWorkgroups")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$maxExecutionGraphDepth = PathElement.groupElement("PATH$maxExecutionGraphDepth");
+    public static final PathElement PATH$maxExecutionGraphShaderOutputNodes = PathElement.groupElement("PATH$maxExecutionGraphShaderOutputNodes");
+    public static final PathElement PATH$maxExecutionGraphShaderPayloadSize = PathElement.groupElement("PATH$maxExecutionGraphShaderPayloadSize");
+    public static final PathElement PATH$maxExecutionGraphShaderPayloadCount = PathElement.groupElement("PATH$maxExecutionGraphShaderPayloadCount");
+    public static final PathElement PATH$executionGraphDispatchAddressAlignment = PathElement.groupElement("PATH$executionGraphDispatchAddressAlignment");
+    public static final PathElement PATH$maxExecutionGraphWorkgroupCount = PathElement.groupElement("PATH$maxExecutionGraphWorkgroupCount");
+    public static final PathElement PATH$maxExecutionGraphWorkgroups = PathElement.groupElement("PATH$maxExecutionGraphWorkgroups");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maxExecutionGraphDepth = (OfInt) LAYOUT.select(PATH$maxExecutionGraphDepth);
+    public static final OfInt LAYOUT$maxExecutionGraphShaderOutputNodes = (OfInt) LAYOUT.select(PATH$maxExecutionGraphShaderOutputNodes);
+    public static final OfInt LAYOUT$maxExecutionGraphShaderPayloadSize = (OfInt) LAYOUT.select(PATH$maxExecutionGraphShaderPayloadSize);
+    public static final OfInt LAYOUT$maxExecutionGraphShaderPayloadCount = (OfInt) LAYOUT.select(PATH$maxExecutionGraphShaderPayloadCount);
+    public static final OfInt LAYOUT$executionGraphDispatchAddressAlignment = (OfInt) LAYOUT.select(PATH$executionGraphDispatchAddressAlignment);
+    public static final OfInt LAYOUT$maxExecutionGraphWorkgroupCount = (OfInt) LAYOUT.select(PATH$maxExecutionGraphWorkgroupCount);
+    public static final OfInt LAYOUT$maxExecutionGraphWorkgroups = (OfInt) LAYOUT.select(PATH$maxExecutionGraphWorkgroups);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxExecutionGraphDepth = LAYOUT$maxExecutionGraphDepth.byteSize();
+    public static final long SIZE$maxExecutionGraphShaderOutputNodes = LAYOUT$maxExecutionGraphShaderOutputNodes.byteSize();
+    public static final long SIZE$maxExecutionGraphShaderPayloadSize = LAYOUT$maxExecutionGraphShaderPayloadSize.byteSize();
+    public static final long SIZE$maxExecutionGraphShaderPayloadCount = LAYOUT$maxExecutionGraphShaderPayloadCount.byteSize();
+    public static final long SIZE$executionGraphDispatchAddressAlignment = LAYOUT$executionGraphDispatchAddressAlignment.byteSize();
+    public static final long SIZE$maxExecutionGraphWorkgroupCount = LAYOUT$maxExecutionGraphWorkgroupCount.byteSize();
+    public static final long SIZE$maxExecutionGraphWorkgroups = LAYOUT$maxExecutionGraphWorkgroups.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$maxExecutionGraphDepth = LAYOUT.byteOffset(PATH$maxExecutionGraphDepth);
+    public static final long OFFSET$maxExecutionGraphShaderOutputNodes = LAYOUT.byteOffset(PATH$maxExecutionGraphShaderOutputNodes);
+    public static final long OFFSET$maxExecutionGraphShaderPayloadSize = LAYOUT.byteOffset(PATH$maxExecutionGraphShaderPayloadSize);
+    public static final long OFFSET$maxExecutionGraphShaderPayloadCount = LAYOUT.byteOffset(PATH$maxExecutionGraphShaderPayloadCount);
+    public static final long OFFSET$executionGraphDispatchAddressAlignment = LAYOUT.byteOffset(PATH$executionGraphDispatchAddressAlignment);
+    public static final long OFFSET$maxExecutionGraphWorkgroupCount = LAYOUT.byteOffset(PATH$maxExecutionGraphWorkgroupCount);
+    public static final long OFFSET$maxExecutionGraphWorkgroups = LAYOUT.byteOffset(PATH$maxExecutionGraphWorkgroups);
 }

@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDebugReportFlagsEXT.html">VkDebugReportFlagsEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDebugReportFlagsEXT.html"><code>VkDebugReportFlagsEXT</code></a>
 public final class VkDebugReportFlagsEXT {
     public static final int DEBUG = 0x10;
     public static final int ERROR = 0x8;

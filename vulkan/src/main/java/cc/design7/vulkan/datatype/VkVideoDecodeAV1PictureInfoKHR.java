@@ -14,8 +14,32 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoDecodeAV1PictureInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeAV1PictureInfoKHR.html"><code>VkVideoDecodeAV1PictureInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoDecodeAV1PictureInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     StdVideoDecodeAV1PictureInfo const* pStdPictureInfo;
+///     int32_t referenceNameSlotIndices;
+///     uint32_t frameHeaderOffset;
+///     uint32_t tileCount;
+///     uint32_t const* pTileOffsets;
+///     uint32_t const* pTileSizes;
+/// } VkVideoDecodeAV1PictureInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_PICTURE_INFO_KHR`
+///
+/// The {@link VkVideoDecodeAV1PictureInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkVideoDecodeAV1PictureInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +48,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeAV1PictureInfoKHR.html">VkVideoDecodeAV1PictureInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeAV1PictureInfoKHR.html"><code>VkVideoDecodeAV1PictureInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkVideoDecodeAV1PictureInfoKHR {
-        sType(VkStructureType.VIDEO_DECODE_AV1_PICTURE_INFO_KHR);
-    }
-
     public static VkVideoDecodeAV1PictureInfoKHR allocate(Arena arena) {
-        return new VkVideoDecodeAV1PictureInfoKHR(arena.allocate(LAYOUT));
+        VkVideoDecodeAV1PictureInfoKHR ret = new VkVideoDecodeAV1PictureInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VIDEO_DECODE_AV1_PICTURE_INFO_KHR);
+        return ret;
     }
 
     public static VkVideoDecodeAV1PictureInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +63,7 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         VkVideoDecodeAV1PictureInfoKHR[] ret = new VkVideoDecodeAV1PictureInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkVideoDecodeAV1PictureInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VIDEO_DECODE_AV1_PICTURE_INFO_KHR);
         }
         return ret;
     }
@@ -59,53 +82,9 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoDecodeAV1PictureInfo.LAYOUT).withName("pStdPictureInfo"),
-        ValueLayout.JAVA_INT.withName("referenceNameSlotIndices"),
-        ValueLayout.JAVA_INT.withName("frameHeaderOffset"),
-        ValueLayout.JAVA_INT.withName("tileCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pTileOffsets"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pTileSizes")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$pStdPictureInfo = PathElement.groupElement("PATH$pStdPictureInfo");
-    public static final PathElement PATH$referenceNameSlotIndices = PathElement.groupElement("PATH$referenceNameSlotIndices");
-    public static final PathElement PATH$frameHeaderOffset = PathElement.groupElement("PATH$frameHeaderOffset");
-    public static final PathElement PATH$tileCount = PathElement.groupElement("PATH$tileCount");
-    public static final PathElement PATH$pTileOffsets = PathElement.groupElement("PATH$pTileOffsets");
-    public static final PathElement PATH$pTileSizes = PathElement.groupElement("PATH$pTileSizes");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$pStdPictureInfo = (AddressLayout) LAYOUT.select(PATH$pStdPictureInfo);
-    public static final OfInt LAYOUT$referenceNameSlotIndices = (OfInt) LAYOUT.select(PATH$referenceNameSlotIndices);
-    public static final OfInt LAYOUT$frameHeaderOffset = (OfInt) LAYOUT.select(PATH$frameHeaderOffset);
-    public static final OfInt LAYOUT$tileCount = (OfInt) LAYOUT.select(PATH$tileCount);
-    public static final AddressLayout LAYOUT$pTileOffsets = (AddressLayout) LAYOUT.select(PATH$pTileOffsets);
-    public static final AddressLayout LAYOUT$pTileSizes = (AddressLayout) LAYOUT.select(PATH$pTileSizes);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$pStdPictureInfo = LAYOUT$pStdPictureInfo.byteSize();
-    public static final long SIZE$referenceNameSlotIndices = LAYOUT$referenceNameSlotIndices.byteSize();
-    public static final long SIZE$frameHeaderOffset = LAYOUT$frameHeaderOffset.byteSize();
-    public static final long SIZE$tileCount = LAYOUT$tileCount.byteSize();
-    public static final long SIZE$pTileOffsets = LAYOUT$pTileOffsets.byteSize();
-    public static final long SIZE$pTileSizes = LAYOUT$pTileSizes.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$pStdPictureInfo = LAYOUT.byteOffset(PATH$pStdPictureInfo);
-    public static final long OFFSET$referenceNameSlotIndices = LAYOUT.byteOffset(PATH$referenceNameSlotIndices);
-    public static final long OFFSET$frameHeaderOffset = LAYOUT.byteOffset(PATH$frameHeaderOffset);
-    public static final long OFFSET$tileCount = LAYOUT.byteOffset(PATH$tileCount);
-    public static final long OFFSET$pTileOffsets = LAYOUT.byteOffset(PATH$pTileOffsets);
-    public static final long OFFSET$pTileSizes = LAYOUT.byteOffset(PATH$pTileSizes);
+    public void autoInit() {
+        sType(VkStructureType.VIDEO_DECODE_AV1_PICTURE_INFO_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -137,7 +116,7 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
 
     public @Nullable StdVideoDecodeAV1PictureInfo pStdPictureInfo() {
         MemorySegment s = pStdPictureInfoRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoDecodeAV1PictureInfo(s);
@@ -150,7 +129,7 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
 
     @unsafe public @Nullable StdVideoDecodeAV1PictureInfo[] pStdPictureInfo(int assumedCount) {
         MemorySegment s = pStdPictureInfoRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -200,7 +179,7 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
     /// writing to the buffer.
     public @Nullable @unsigned IntPtr pTileOffsets() {
         MemorySegment s = pTileOffsetsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -225,7 +204,7 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
     /// writing to the buffer.
     public @Nullable @unsigned IntPtr pTileSizes() {
         MemorySegment s = pTileSizesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -236,4 +215,51 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         pTileSizesRaw(s);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoDecodeAV1PictureInfo.LAYOUT).withName("pStdPictureInfo"),
+        ValueLayout.JAVA_INT.withName("referenceNameSlotIndices"),
+        ValueLayout.JAVA_INT.withName("frameHeaderOffset"),
+        ValueLayout.JAVA_INT.withName("tileCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pTileOffsets"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pTileSizes")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$pStdPictureInfo = PathElement.groupElement("PATH$pStdPictureInfo");
+    public static final PathElement PATH$referenceNameSlotIndices = PathElement.groupElement("PATH$referenceNameSlotIndices");
+    public static final PathElement PATH$frameHeaderOffset = PathElement.groupElement("PATH$frameHeaderOffset");
+    public static final PathElement PATH$tileCount = PathElement.groupElement("PATH$tileCount");
+    public static final PathElement PATH$pTileOffsets = PathElement.groupElement("PATH$pTileOffsets");
+    public static final PathElement PATH$pTileSizes = PathElement.groupElement("PATH$pTileSizes");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$pStdPictureInfo = (AddressLayout) LAYOUT.select(PATH$pStdPictureInfo);
+    public static final OfInt LAYOUT$referenceNameSlotIndices = (OfInt) LAYOUT.select(PATH$referenceNameSlotIndices);
+    public static final OfInt LAYOUT$frameHeaderOffset = (OfInt) LAYOUT.select(PATH$frameHeaderOffset);
+    public static final OfInt LAYOUT$tileCount = (OfInt) LAYOUT.select(PATH$tileCount);
+    public static final AddressLayout LAYOUT$pTileOffsets = (AddressLayout) LAYOUT.select(PATH$pTileOffsets);
+    public static final AddressLayout LAYOUT$pTileSizes = (AddressLayout) LAYOUT.select(PATH$pTileSizes);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pStdPictureInfo = LAYOUT$pStdPictureInfo.byteSize();
+    public static final long SIZE$referenceNameSlotIndices = LAYOUT$referenceNameSlotIndices.byteSize();
+    public static final long SIZE$frameHeaderOffset = LAYOUT$frameHeaderOffset.byteSize();
+    public static final long SIZE$tileCount = LAYOUT$tileCount.byteSize();
+    public static final long SIZE$pTileOffsets = LAYOUT$pTileOffsets.byteSize();
+    public static final long SIZE$pTileSizes = LAYOUT$pTileSizes.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$pStdPictureInfo = LAYOUT.byteOffset(PATH$pStdPictureInfo);
+    public static final long OFFSET$referenceNameSlotIndices = LAYOUT.byteOffset(PATH$referenceNameSlotIndices);
+    public static final long OFFSET$frameHeaderOffset = LAYOUT.byteOffset(PATH$frameHeaderOffset);
+    public static final long OFFSET$tileCount = LAYOUT.byteOffset(PATH$tileCount);
+    public static final long OFFSET$pTileOffsets = LAYOUT.byteOffset(PATH$pTileOffsets);
+    public static final long OFFSET$pTileSizes = LAYOUT.byteOffset(PATH$pTileSizes);
 }

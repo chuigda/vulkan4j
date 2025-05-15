@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceMemoryPriorityFeaturesEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMemoryPriorityFeaturesEXT.html"><code>VkPhysicalDeviceMemoryPriorityFeaturesEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceMemoryPriorityFeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 memoryPriority;
+/// } VkPhysicalDeviceMemoryPriorityFeaturesEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT`
+///
+/// The {@link VkPhysicalDeviceMemoryPriorityFeaturesEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceMemoryPriorityFeaturesEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMemoryPriorityFeaturesEXT.html">VkPhysicalDeviceMemoryPriorityFeaturesEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMemoryPriorityFeaturesEXT.html"><code>VkPhysicalDeviceMemoryPriorityFeaturesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceMemoryPriorityFeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceMemoryPriorityFeaturesEXT {
-        sType(VkStructureType.PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT);
-    }
-
     public static VkPhysicalDeviceMemoryPriorityFeaturesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceMemoryPriorityFeaturesEXT(arena.allocate(LAYOUT));
+        VkPhysicalDeviceMemoryPriorityFeaturesEXT ret = new VkPhysicalDeviceMemoryPriorityFeaturesEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT);
+        return ret;
     }
 
     public static VkPhysicalDeviceMemoryPriorityFeaturesEXT[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceMemoryPriorityFeaturesEXT(@NotNull MemorySegment s
         VkPhysicalDeviceMemoryPriorityFeaturesEXT[] ret = new VkPhysicalDeviceMemoryPriorityFeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceMemoryPriorityFeaturesEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceMemoryPriorityFeaturesEXT(@NotNull MemorySegment s
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("memoryPriority")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$memoryPriority = PathElement.groupElement("PATH$memoryPriority");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$memoryPriority = (OfInt) LAYOUT.select(PATH$memoryPriority);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$memoryPriority = LAYOUT$memoryPriority.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$memoryPriority = LAYOUT.byteOffset(PATH$memoryPriority);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceMemoryPriorityFeaturesEXT(@NotNull MemorySegment s
         segment.set(LAYOUT$memoryPriority, OFFSET$memoryPriority, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("memoryPriority")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$memoryPriority = PathElement.groupElement("PATH$memoryPriority");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$memoryPriority = (OfInt) LAYOUT.select(PATH$memoryPriority);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$memoryPriority = LAYOUT$memoryPriority.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$memoryPriority = LAYOUT.byteOffset(PATH$memoryPriority);
 }

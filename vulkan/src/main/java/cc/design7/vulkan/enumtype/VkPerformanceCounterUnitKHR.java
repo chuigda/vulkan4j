@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceCounterUnitKHR.html">VkPerformanceCounterUnitKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceCounterUnitKHR.html"><code>VkPerformanceCounterUnitKHR</code></a>
 public final class VkPerformanceCounterUnitKHR {
     public static final int GENERIC = 0x0;
     public static final int PERCENTAGE = 0x1;

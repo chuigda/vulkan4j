@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV.html"><code>VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 deviceGeneratedCompute;
+///     VkBool32 deviceGeneratedComputePipelines;
+///     VkBool32 deviceGeneratedComputeCaptureReplay;
+/// } VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_COMPUTE_FEATURES_NV`
+///
+/// The {@link VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV.html">VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV.html"><code>VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV {
-        sType(VkStructureType.PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_COMPUTE_FEATURES_NV);
-    }
-
     public static VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV allocate(Arena arena) {
-        return new VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(arena.allocate(LAYOUT));
+        VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV ret = new VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_COMPUTE_FEATURES_NV);
+        return ret;
     }
 
     public static VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(@NotNull 
         VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV[] ret = new VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_COMPUTE_FEATURES_NV);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(@NotNull 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("deviceGeneratedCompute"),
-        ValueLayout.JAVA_INT.withName("deviceGeneratedComputePipelines"),
-        ValueLayout.JAVA_INT.withName("deviceGeneratedComputeCaptureReplay")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$deviceGeneratedCompute = PathElement.groupElement("PATH$deviceGeneratedCompute");
-    public static final PathElement PATH$deviceGeneratedComputePipelines = PathElement.groupElement("PATH$deviceGeneratedComputePipelines");
-    public static final PathElement PATH$deviceGeneratedComputeCaptureReplay = PathElement.groupElement("PATH$deviceGeneratedComputeCaptureReplay");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$deviceGeneratedCompute = (OfInt) LAYOUT.select(PATH$deviceGeneratedCompute);
-    public static final OfInt LAYOUT$deviceGeneratedComputePipelines = (OfInt) LAYOUT.select(PATH$deviceGeneratedComputePipelines);
-    public static final OfInt LAYOUT$deviceGeneratedComputeCaptureReplay = (OfInt) LAYOUT.select(PATH$deviceGeneratedComputeCaptureReplay);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$deviceGeneratedCompute = LAYOUT$deviceGeneratedCompute.byteSize();
-    public static final long SIZE$deviceGeneratedComputePipelines = LAYOUT$deviceGeneratedComputePipelines.byteSize();
-    public static final long SIZE$deviceGeneratedComputeCaptureReplay = LAYOUT$deviceGeneratedComputeCaptureReplay.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$deviceGeneratedCompute = LAYOUT.byteOffset(PATH$deviceGeneratedCompute);
-    public static final long OFFSET$deviceGeneratedComputePipelines = LAYOUT.byteOffset(PATH$deviceGeneratedComputePipelines);
-    public static final long OFFSET$deviceGeneratedComputeCaptureReplay = LAYOUT.byteOffset(PATH$deviceGeneratedComputeCaptureReplay);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_COMPUTE_FEATURES_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -136,4 +127,36 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(@NotNull 
         segment.set(LAYOUT$deviceGeneratedComputeCaptureReplay, OFFSET$deviceGeneratedComputeCaptureReplay, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("deviceGeneratedCompute"),
+        ValueLayout.JAVA_INT.withName("deviceGeneratedComputePipelines"),
+        ValueLayout.JAVA_INT.withName("deviceGeneratedComputeCaptureReplay")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$deviceGeneratedCompute = PathElement.groupElement("PATH$deviceGeneratedCompute");
+    public static final PathElement PATH$deviceGeneratedComputePipelines = PathElement.groupElement("PATH$deviceGeneratedComputePipelines");
+    public static final PathElement PATH$deviceGeneratedComputeCaptureReplay = PathElement.groupElement("PATH$deviceGeneratedComputeCaptureReplay");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$deviceGeneratedCompute = (OfInt) LAYOUT.select(PATH$deviceGeneratedCompute);
+    public static final OfInt LAYOUT$deviceGeneratedComputePipelines = (OfInt) LAYOUT.select(PATH$deviceGeneratedComputePipelines);
+    public static final OfInt LAYOUT$deviceGeneratedComputeCaptureReplay = (OfInt) LAYOUT.select(PATH$deviceGeneratedComputeCaptureReplay);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$deviceGeneratedCompute = LAYOUT$deviceGeneratedCompute.byteSize();
+    public static final long SIZE$deviceGeneratedComputePipelines = LAYOUT$deviceGeneratedComputePipelines.byteSize();
+    public static final long SIZE$deviceGeneratedComputeCaptureReplay = LAYOUT$deviceGeneratedComputeCaptureReplay.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$deviceGeneratedCompute = LAYOUT.byteOffset(PATH$deviceGeneratedCompute);
+    public static final long OFFSET$deviceGeneratedComputePipelines = LAYOUT.byteOffset(PATH$deviceGeneratedComputePipelines);
+    public static final long OFFSET$deviceGeneratedComputeCaptureReplay = LAYOUT.byteOffset(PATH$deviceGeneratedComputeCaptureReplay);
 }

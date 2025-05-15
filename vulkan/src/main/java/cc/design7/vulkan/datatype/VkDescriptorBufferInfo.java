@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDescriptorBufferInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorBufferInfo.html"><code>VkDescriptorBufferInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDescriptorBufferInfo {
+///     VkBuffer buffer;
+///     VkDeviceSize offset;
+///     VkDeviceSize range;
+/// } VkDescriptorBufferInfo;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorBufferInfo.html">VkDescriptorBufferInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorBufferInfo.html"><code>VkDescriptorBufferInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDescriptorBufferInfo(@NotNull MemorySegment segment) implements IPointer {
     public static VkDescriptorBufferInfo allocate(Arena arena) {
-        return new VkDescriptorBufferInfo(arena.allocate(LAYOUT));
+        VkDescriptorBufferInfo ret = new VkDescriptorBufferInfo(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkDescriptorBufferInfo[] allocate(Arena arena, int count) {
@@ -55,32 +67,9 @@ public record VkDescriptorBufferInfo(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.ADDRESS.withName("buffer"),
-        ValueLayout.JAVA_LONG.withName("offset"),
-        ValueLayout.JAVA_LONG.withName("range")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$buffer = PathElement.groupElement("PATH$buffer");
-    public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
-    public static final PathElement PATH$range = PathElement.groupElement("PATH$range");
-
-    public static final AddressLayout LAYOUT$buffer = (AddressLayout) LAYOUT.select(PATH$buffer);
-    public static final OfLong LAYOUT$offset = (OfLong) LAYOUT.select(PATH$offset);
-    public static final OfLong LAYOUT$range = (OfLong) LAYOUT.select(PATH$range);
-
-    public static final long SIZE$buffer = LAYOUT$buffer.byteSize();
-    public static final long SIZE$offset = LAYOUT$offset.byteSize();
-    public static final long SIZE$range = LAYOUT$range.byteSize();
-
-    public static final long OFFSET$buffer = LAYOUT.byteOffset(PATH$buffer);
-    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
-    public static final long OFFSET$range = LAYOUT.byteOffset(PATH$range);
-
     public @Nullable VkBuffer buffer() {
         MemorySegment s = segment.asSlice(OFFSET$buffer, SIZE$buffer);
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkBuffer(s);
@@ -106,4 +95,26 @@ public record VkDescriptorBufferInfo(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$range, OFFSET$range, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withName("buffer"),
+        ValueLayout.JAVA_LONG.withName("offset"),
+        ValueLayout.JAVA_LONG.withName("range")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$buffer = PathElement.groupElement("PATH$buffer");
+    public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
+    public static final PathElement PATH$range = PathElement.groupElement("PATH$range");
+
+    public static final AddressLayout LAYOUT$buffer = (AddressLayout) LAYOUT.select(PATH$buffer);
+    public static final OfLong LAYOUT$offset = (OfLong) LAYOUT.select(PATH$offset);
+    public static final OfLong LAYOUT$range = (OfLong) LAYOUT.select(PATH$range);
+
+    public static final long SIZE$buffer = LAYOUT$buffer.byteSize();
+    public static final long SIZE$offset = LAYOUT$offset.byteSize();
+    public static final long SIZE$range = LAYOUT$range.byteSize();
+
+    public static final long OFFSET$buffer = LAYOUT.byteOffset(PATH$buffer);
+    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
+    public static final long OFFSET$range = LAYOUT.byteOffset(PATH$range);
 }

@@ -16,6 +16,41 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoEncodeAV1PictureInfo} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoEncodeAV1PictureInfo {
+///     StdVideoEncodeAV1PictureInfoFlags flags;
+///     StdVideoAV1FrameType frame_type;
+///     uint32_t frame_presentation_time;
+///     uint32_t current_frame_id;
+///     uint8_t order_hint;
+///     uint8_t primary_ref_frame;
+///     uint8_t refresh_frame_flags;
+///     uint8_t coded_denom;
+///     uint16_t render_width_minus_1;
+///     uint16_t render_height_minus_1;
+///     StdVideoAV1InterpolationFilter interpolation_filter;
+///     StdVideoAV1TxMode TxMode;
+///     uint8_t delta_q_res;
+///     uint8_t delta_lf_res;
+///     uint8_t ref_order_hint;
+///     int8_t ref_frame_idx;
+///     uint8_t reserved1;
+///     uint32_t delta_frame_id_minus_1;
+///     StdVideoAV1TileInfo const* pTileInfo;
+///     StdVideoAV1Quantization const* pQuantization;
+///     StdVideoAV1Segmentation const* pSegmentation;
+///     StdVideoAV1LoopFilter const* pLoopFilter;
+///     StdVideoAV1CDEF const* pCDEF;
+///     StdVideoAV1LoopRestoration const* pLoopRestoration;
+///     StdVideoAV1GlobalMotion const* pGlobalMotion;
+///     StdVideoEncodeAV1ExtensionHeader const* pExtensionHeader;
+///     uint32_t const* pBufferRemovalTimes;
+/// } StdVideoEncodeAV1PictureInfo;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +62,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeAV1PictureInfo allocate(Arena arena) {
-        return new StdVideoEncodeAV1PictureInfo(arena.allocate(LAYOUT));
+        StdVideoEncodeAV1PictureInfo ret = new StdVideoEncodeAV1PictureInfo(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoEncodeAV1PictureInfo[] allocate(Arena arena, int count) {
@@ -52,149 +88,6 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        StdVideoEncodeAV1PictureInfoFlags.LAYOUT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("frame_type"),
-        ValueLayout.JAVA_INT.withName("frame_presentation_time"),
-        ValueLayout.JAVA_INT.withName("current_frame_id"),
-        ValueLayout.JAVA_BYTE.withName("order_hint"),
-        ValueLayout.JAVA_BYTE.withName("primary_ref_frame"),
-        ValueLayout.JAVA_BYTE.withName("refresh_frame_flags"),
-        ValueLayout.JAVA_BYTE.withName("coded_denom"),
-        ValueLayout.JAVA_SHORT.withName("render_width_minus_1"),
-        ValueLayout.JAVA_SHORT.withName("render_height_minus_1"),
-        ValueLayout.JAVA_INT.withName("interpolation_filter"),
-        ValueLayout.JAVA_INT.withName("TxMode"),
-        ValueLayout.JAVA_BYTE.withName("delta_q_res"),
-        ValueLayout.JAVA_BYTE.withName("delta_lf_res"),
-        ValueLayout.JAVA_BYTE.withName("ref_order_hint"),
-        ValueLayout.JAVA_BYTE.withName("ref_frame_idx"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
-        ValueLayout.JAVA_INT.withName("delta_frame_id_minus_1"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1TileInfo.LAYOUT).withName("pTileInfo"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1Quantization.LAYOUT).withName("pQuantization"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1Segmentation.LAYOUT).withName("pSegmentation"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1LoopFilter.LAYOUT).withName("pLoopFilter"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1CDEF.LAYOUT).withName("pCDEF"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1LoopRestoration.LAYOUT).withName("pLoopRestoration"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1GlobalMotion.LAYOUT).withName("pGlobalMotion"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeAV1ExtensionHeader.LAYOUT).withName("pExtensionHeader"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pBufferRemovalTimes")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$frame_type = PathElement.groupElement("PATH$frame_type");
-    public static final PathElement PATH$frame_presentation_time = PathElement.groupElement("PATH$frame_presentation_time");
-    public static final PathElement PATH$current_frame_id = PathElement.groupElement("PATH$current_frame_id");
-    public static final PathElement PATH$order_hint = PathElement.groupElement("PATH$order_hint");
-    public static final PathElement PATH$primary_ref_frame = PathElement.groupElement("PATH$primary_ref_frame");
-    public static final PathElement PATH$refresh_frame_flags = PathElement.groupElement("PATH$refresh_frame_flags");
-    public static final PathElement PATH$coded_denom = PathElement.groupElement("PATH$coded_denom");
-    public static final PathElement PATH$render_width_minus_1 = PathElement.groupElement("PATH$render_width_minus_1");
-    public static final PathElement PATH$render_height_minus_1 = PathElement.groupElement("PATH$render_height_minus_1");
-    public static final PathElement PATH$interpolation_filter = PathElement.groupElement("PATH$interpolation_filter");
-    public static final PathElement PATH$TxMode = PathElement.groupElement("PATH$TxMode");
-    public static final PathElement PATH$delta_q_res = PathElement.groupElement("PATH$delta_q_res");
-    public static final PathElement PATH$delta_lf_res = PathElement.groupElement("PATH$delta_lf_res");
-    public static final PathElement PATH$ref_order_hint = PathElement.groupElement("PATH$ref_order_hint");
-    public static final PathElement PATH$ref_frame_idx = PathElement.groupElement("PATH$ref_frame_idx");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
-    public static final PathElement PATH$delta_frame_id_minus_1 = PathElement.groupElement("PATH$delta_frame_id_minus_1");
-    public static final PathElement PATH$pTileInfo = PathElement.groupElement("PATH$pTileInfo");
-    public static final PathElement PATH$pQuantization = PathElement.groupElement("PATH$pQuantization");
-    public static final PathElement PATH$pSegmentation = PathElement.groupElement("PATH$pSegmentation");
-    public static final PathElement PATH$pLoopFilter = PathElement.groupElement("PATH$pLoopFilter");
-    public static final PathElement PATH$pCDEF = PathElement.groupElement("PATH$pCDEF");
-    public static final PathElement PATH$pLoopRestoration = PathElement.groupElement("PATH$pLoopRestoration");
-    public static final PathElement PATH$pGlobalMotion = PathElement.groupElement("PATH$pGlobalMotion");
-    public static final PathElement PATH$pExtensionHeader = PathElement.groupElement("PATH$pExtensionHeader");
-    public static final PathElement PATH$pBufferRemovalTimes = PathElement.groupElement("PATH$pBufferRemovalTimes");
-
-    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$frame_type = (OfInt) LAYOUT.select(PATH$frame_type);
-    public static final OfInt LAYOUT$frame_presentation_time = (OfInt) LAYOUT.select(PATH$frame_presentation_time);
-    public static final OfInt LAYOUT$current_frame_id = (OfInt) LAYOUT.select(PATH$current_frame_id);
-    public static final OfByte LAYOUT$order_hint = (OfByte) LAYOUT.select(PATH$order_hint);
-    public static final OfByte LAYOUT$primary_ref_frame = (OfByte) LAYOUT.select(PATH$primary_ref_frame);
-    public static final OfByte LAYOUT$refresh_frame_flags = (OfByte) LAYOUT.select(PATH$refresh_frame_flags);
-    public static final OfByte LAYOUT$coded_denom = (OfByte) LAYOUT.select(PATH$coded_denom);
-    public static final OfShort LAYOUT$render_width_minus_1 = (OfShort) LAYOUT.select(PATH$render_width_minus_1);
-    public static final OfShort LAYOUT$render_height_minus_1 = (OfShort) LAYOUT.select(PATH$render_height_minus_1);
-    public static final OfInt LAYOUT$interpolation_filter = (OfInt) LAYOUT.select(PATH$interpolation_filter);
-    public static final OfInt LAYOUT$TxMode = (OfInt) LAYOUT.select(PATH$TxMode);
-    public static final OfByte LAYOUT$delta_q_res = (OfByte) LAYOUT.select(PATH$delta_q_res);
-    public static final OfByte LAYOUT$delta_lf_res = (OfByte) LAYOUT.select(PATH$delta_lf_res);
-    public static final OfByte LAYOUT$ref_order_hint = (OfByte) LAYOUT.select(PATH$ref_order_hint);
-    public static final OfByte LAYOUT$ref_frame_idx = (OfByte) LAYOUT.select(PATH$ref_frame_idx);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
-    public static final OfInt LAYOUT$delta_frame_id_minus_1 = (OfInt) LAYOUT.select(PATH$delta_frame_id_minus_1);
-    public static final AddressLayout LAYOUT$pTileInfo = (AddressLayout) LAYOUT.select(PATH$pTileInfo);
-    public static final AddressLayout LAYOUT$pQuantization = (AddressLayout) LAYOUT.select(PATH$pQuantization);
-    public static final AddressLayout LAYOUT$pSegmentation = (AddressLayout) LAYOUT.select(PATH$pSegmentation);
-    public static final AddressLayout LAYOUT$pLoopFilter = (AddressLayout) LAYOUT.select(PATH$pLoopFilter);
-    public static final AddressLayout LAYOUT$pCDEF = (AddressLayout) LAYOUT.select(PATH$pCDEF);
-    public static final AddressLayout LAYOUT$pLoopRestoration = (AddressLayout) LAYOUT.select(PATH$pLoopRestoration);
-    public static final AddressLayout LAYOUT$pGlobalMotion = (AddressLayout) LAYOUT.select(PATH$pGlobalMotion);
-    public static final AddressLayout LAYOUT$pExtensionHeader = (AddressLayout) LAYOUT.select(PATH$pExtensionHeader);
-    public static final AddressLayout LAYOUT$pBufferRemovalTimes = (AddressLayout) LAYOUT.select(PATH$pBufferRemovalTimes);
-
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$frame_type = LAYOUT$frame_type.byteSize();
-    public static final long SIZE$frame_presentation_time = LAYOUT$frame_presentation_time.byteSize();
-    public static final long SIZE$current_frame_id = LAYOUT$current_frame_id.byteSize();
-    public static final long SIZE$order_hint = LAYOUT$order_hint.byteSize();
-    public static final long SIZE$primary_ref_frame = LAYOUT$primary_ref_frame.byteSize();
-    public static final long SIZE$refresh_frame_flags = LAYOUT$refresh_frame_flags.byteSize();
-    public static final long SIZE$coded_denom = LAYOUT$coded_denom.byteSize();
-    public static final long SIZE$render_width_minus_1 = LAYOUT$render_width_minus_1.byteSize();
-    public static final long SIZE$render_height_minus_1 = LAYOUT$render_height_minus_1.byteSize();
-    public static final long SIZE$interpolation_filter = LAYOUT$interpolation_filter.byteSize();
-    public static final long SIZE$TxMode = LAYOUT$TxMode.byteSize();
-    public static final long SIZE$delta_q_res = LAYOUT$delta_q_res.byteSize();
-    public static final long SIZE$delta_lf_res = LAYOUT$delta_lf_res.byteSize();
-    public static final long SIZE$ref_order_hint = LAYOUT$ref_order_hint.byteSize();
-    public static final long SIZE$ref_frame_idx = LAYOUT$ref_frame_idx.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
-    public static final long SIZE$delta_frame_id_minus_1 = LAYOUT$delta_frame_id_minus_1.byteSize();
-    public static final long SIZE$pTileInfo = LAYOUT$pTileInfo.byteSize();
-    public static final long SIZE$pQuantization = LAYOUT$pQuantization.byteSize();
-    public static final long SIZE$pSegmentation = LAYOUT$pSegmentation.byteSize();
-    public static final long SIZE$pLoopFilter = LAYOUT$pLoopFilter.byteSize();
-    public static final long SIZE$pCDEF = LAYOUT$pCDEF.byteSize();
-    public static final long SIZE$pLoopRestoration = LAYOUT$pLoopRestoration.byteSize();
-    public static final long SIZE$pGlobalMotion = LAYOUT$pGlobalMotion.byteSize();
-    public static final long SIZE$pExtensionHeader = LAYOUT$pExtensionHeader.byteSize();
-    public static final long SIZE$pBufferRemovalTimes = LAYOUT$pBufferRemovalTimes.byteSize();
-
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$frame_type = LAYOUT.byteOffset(PATH$frame_type);
-    public static final long OFFSET$frame_presentation_time = LAYOUT.byteOffset(PATH$frame_presentation_time);
-    public static final long OFFSET$current_frame_id = LAYOUT.byteOffset(PATH$current_frame_id);
-    public static final long OFFSET$order_hint = LAYOUT.byteOffset(PATH$order_hint);
-    public static final long OFFSET$primary_ref_frame = LAYOUT.byteOffset(PATH$primary_ref_frame);
-    public static final long OFFSET$refresh_frame_flags = LAYOUT.byteOffset(PATH$refresh_frame_flags);
-    public static final long OFFSET$coded_denom = LAYOUT.byteOffset(PATH$coded_denom);
-    public static final long OFFSET$render_width_minus_1 = LAYOUT.byteOffset(PATH$render_width_minus_1);
-    public static final long OFFSET$render_height_minus_1 = LAYOUT.byteOffset(PATH$render_height_minus_1);
-    public static final long OFFSET$interpolation_filter = LAYOUT.byteOffset(PATH$interpolation_filter);
-    public static final long OFFSET$TxMode = LAYOUT.byteOffset(PATH$TxMode);
-    public static final long OFFSET$delta_q_res = LAYOUT.byteOffset(PATH$delta_q_res);
-    public static final long OFFSET$delta_lf_res = LAYOUT.byteOffset(PATH$delta_lf_res);
-    public static final long OFFSET$ref_order_hint = LAYOUT.byteOffset(PATH$ref_order_hint);
-    public static final long OFFSET$ref_frame_idx = LAYOUT.byteOffset(PATH$ref_frame_idx);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
-    public static final long OFFSET$delta_frame_id_minus_1 = LAYOUT.byteOffset(PATH$delta_frame_id_minus_1);
-    public static final long OFFSET$pTileInfo = LAYOUT.byteOffset(PATH$pTileInfo);
-    public static final long OFFSET$pQuantization = LAYOUT.byteOffset(PATH$pQuantization);
-    public static final long OFFSET$pSegmentation = LAYOUT.byteOffset(PATH$pSegmentation);
-    public static final long OFFSET$pLoopFilter = LAYOUT.byteOffset(PATH$pLoopFilter);
-    public static final long OFFSET$pCDEF = LAYOUT.byteOffset(PATH$pCDEF);
-    public static final long OFFSET$pLoopRestoration = LAYOUT.byteOffset(PATH$pLoopRestoration);
-    public static final long OFFSET$pGlobalMotion = LAYOUT.byteOffset(PATH$pGlobalMotion);
-    public static final long OFFSET$pExtensionHeader = LAYOUT.byteOffset(PATH$pExtensionHeader);
-    public static final long OFFSET$pBufferRemovalTimes = LAYOUT.byteOffset(PATH$pBufferRemovalTimes);
 
     public StdVideoEncodeAV1PictureInfoFlags flags() {
         return new StdVideoEncodeAV1PictureInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
@@ -350,7 +243,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     public @Nullable StdVideoAV1TileInfo pTileInfo() {
         MemorySegment s = pTileInfoRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoAV1TileInfo(s);
@@ -363,7 +256,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     @unsafe public @Nullable StdVideoAV1TileInfo[] pTileInfo(int assumedCount) {
         MemorySegment s = pTileInfoRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -385,7 +278,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     public @Nullable StdVideoAV1Quantization pQuantization() {
         MemorySegment s = pQuantizationRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoAV1Quantization(s);
@@ -398,7 +291,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     @unsafe public @Nullable StdVideoAV1Quantization[] pQuantization(int assumedCount) {
         MemorySegment s = pQuantizationRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -420,7 +313,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     public @Nullable StdVideoAV1Segmentation pSegmentation() {
         MemorySegment s = pSegmentationRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoAV1Segmentation(s);
@@ -433,7 +326,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     @unsafe public @Nullable StdVideoAV1Segmentation[] pSegmentation(int assumedCount) {
         MemorySegment s = pSegmentationRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -455,7 +348,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     public @Nullable StdVideoAV1LoopFilter pLoopFilter() {
         MemorySegment s = pLoopFilterRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoAV1LoopFilter(s);
@@ -468,7 +361,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     @unsafe public @Nullable StdVideoAV1LoopFilter[] pLoopFilter(int assumedCount) {
         MemorySegment s = pLoopFilterRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -490,7 +383,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     public @Nullable StdVideoAV1CDEF pCDEF() {
         MemorySegment s = pCDEFRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoAV1CDEF(s);
@@ -503,7 +396,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     @unsafe public @Nullable StdVideoAV1CDEF[] pCDEF(int assumedCount) {
         MemorySegment s = pCDEFRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -525,7 +418,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     public @Nullable StdVideoAV1LoopRestoration pLoopRestoration() {
         MemorySegment s = pLoopRestorationRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoAV1LoopRestoration(s);
@@ -538,7 +431,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     @unsafe public @Nullable StdVideoAV1LoopRestoration[] pLoopRestoration(int assumedCount) {
         MemorySegment s = pLoopRestorationRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -560,7 +453,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     public @Nullable StdVideoAV1GlobalMotion pGlobalMotion() {
         MemorySegment s = pGlobalMotionRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoAV1GlobalMotion(s);
@@ -573,7 +466,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     @unsafe public @Nullable StdVideoAV1GlobalMotion[] pGlobalMotion(int assumedCount) {
         MemorySegment s = pGlobalMotionRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -595,7 +488,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     public @Nullable StdVideoEncodeAV1ExtensionHeader pExtensionHeader() {
         MemorySegment s = pExtensionHeaderRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoEncodeAV1ExtensionHeader(s);
@@ -608,7 +501,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     @unsafe public @Nullable StdVideoEncodeAV1ExtensionHeader[] pExtensionHeader(int assumedCount) {
         MemorySegment s = pExtensionHeaderRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -634,7 +527,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     /// writing to the buffer.
     public @Nullable @unsigned IntPtr pBufferRemovalTimes() {
         MemorySegment s = pBufferRemovalTimesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -645,4 +538,146 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         pBufferRemovalTimesRaw(s);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoEncodeAV1PictureInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("frame_type"),
+        ValueLayout.JAVA_INT.withName("frame_presentation_time"),
+        ValueLayout.JAVA_INT.withName("current_frame_id"),
+        ValueLayout.JAVA_BYTE.withName("order_hint"),
+        ValueLayout.JAVA_BYTE.withName("primary_ref_frame"),
+        ValueLayout.JAVA_BYTE.withName("refresh_frame_flags"),
+        ValueLayout.JAVA_BYTE.withName("coded_denom"),
+        ValueLayout.JAVA_SHORT.withName("render_width_minus_1"),
+        ValueLayout.JAVA_SHORT.withName("render_height_minus_1"),
+        ValueLayout.JAVA_INT.withName("interpolation_filter"),
+        ValueLayout.JAVA_INT.withName("TxMode"),
+        ValueLayout.JAVA_BYTE.withName("delta_q_res"),
+        ValueLayout.JAVA_BYTE.withName("delta_lf_res"),
+        ValueLayout.JAVA_BYTE.withName("ref_order_hint"),
+        ValueLayout.JAVA_BYTE.withName("ref_frame_idx"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.JAVA_INT.withName("delta_frame_id_minus_1"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1TileInfo.LAYOUT).withName("pTileInfo"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1Quantization.LAYOUT).withName("pQuantization"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1Segmentation.LAYOUT).withName("pSegmentation"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1LoopFilter.LAYOUT).withName("pLoopFilter"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1CDEF.LAYOUT).withName("pCDEF"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1LoopRestoration.LAYOUT).withName("pLoopRestoration"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1GlobalMotion.LAYOUT).withName("pGlobalMotion"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeAV1ExtensionHeader.LAYOUT).withName("pExtensionHeader"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pBufferRemovalTimes")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$frame_type = PathElement.groupElement("PATH$frame_type");
+    public static final PathElement PATH$frame_presentation_time = PathElement.groupElement("PATH$frame_presentation_time");
+    public static final PathElement PATH$current_frame_id = PathElement.groupElement("PATH$current_frame_id");
+    public static final PathElement PATH$order_hint = PathElement.groupElement("PATH$order_hint");
+    public static final PathElement PATH$primary_ref_frame = PathElement.groupElement("PATH$primary_ref_frame");
+    public static final PathElement PATH$refresh_frame_flags = PathElement.groupElement("PATH$refresh_frame_flags");
+    public static final PathElement PATH$coded_denom = PathElement.groupElement("PATH$coded_denom");
+    public static final PathElement PATH$render_width_minus_1 = PathElement.groupElement("PATH$render_width_minus_1");
+    public static final PathElement PATH$render_height_minus_1 = PathElement.groupElement("PATH$render_height_minus_1");
+    public static final PathElement PATH$interpolation_filter = PathElement.groupElement("PATH$interpolation_filter");
+    public static final PathElement PATH$TxMode = PathElement.groupElement("PATH$TxMode");
+    public static final PathElement PATH$delta_q_res = PathElement.groupElement("PATH$delta_q_res");
+    public static final PathElement PATH$delta_lf_res = PathElement.groupElement("PATH$delta_lf_res");
+    public static final PathElement PATH$ref_order_hint = PathElement.groupElement("PATH$ref_order_hint");
+    public static final PathElement PATH$ref_frame_idx = PathElement.groupElement("PATH$ref_frame_idx");
+    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
+    public static final PathElement PATH$delta_frame_id_minus_1 = PathElement.groupElement("PATH$delta_frame_id_minus_1");
+    public static final PathElement PATH$pTileInfo = PathElement.groupElement("PATH$pTileInfo");
+    public static final PathElement PATH$pQuantization = PathElement.groupElement("PATH$pQuantization");
+    public static final PathElement PATH$pSegmentation = PathElement.groupElement("PATH$pSegmentation");
+    public static final PathElement PATH$pLoopFilter = PathElement.groupElement("PATH$pLoopFilter");
+    public static final PathElement PATH$pCDEF = PathElement.groupElement("PATH$pCDEF");
+    public static final PathElement PATH$pLoopRestoration = PathElement.groupElement("PATH$pLoopRestoration");
+    public static final PathElement PATH$pGlobalMotion = PathElement.groupElement("PATH$pGlobalMotion");
+    public static final PathElement PATH$pExtensionHeader = PathElement.groupElement("PATH$pExtensionHeader");
+    public static final PathElement PATH$pBufferRemovalTimes = PathElement.groupElement("PATH$pBufferRemovalTimes");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$frame_type = (OfInt) LAYOUT.select(PATH$frame_type);
+    public static final OfInt LAYOUT$frame_presentation_time = (OfInt) LAYOUT.select(PATH$frame_presentation_time);
+    public static final OfInt LAYOUT$current_frame_id = (OfInt) LAYOUT.select(PATH$current_frame_id);
+    public static final OfByte LAYOUT$order_hint = (OfByte) LAYOUT.select(PATH$order_hint);
+    public static final OfByte LAYOUT$primary_ref_frame = (OfByte) LAYOUT.select(PATH$primary_ref_frame);
+    public static final OfByte LAYOUT$refresh_frame_flags = (OfByte) LAYOUT.select(PATH$refresh_frame_flags);
+    public static final OfByte LAYOUT$coded_denom = (OfByte) LAYOUT.select(PATH$coded_denom);
+    public static final OfShort LAYOUT$render_width_minus_1 = (OfShort) LAYOUT.select(PATH$render_width_minus_1);
+    public static final OfShort LAYOUT$render_height_minus_1 = (OfShort) LAYOUT.select(PATH$render_height_minus_1);
+    public static final OfInt LAYOUT$interpolation_filter = (OfInt) LAYOUT.select(PATH$interpolation_filter);
+    public static final OfInt LAYOUT$TxMode = (OfInt) LAYOUT.select(PATH$TxMode);
+    public static final OfByte LAYOUT$delta_q_res = (OfByte) LAYOUT.select(PATH$delta_q_res);
+    public static final OfByte LAYOUT$delta_lf_res = (OfByte) LAYOUT.select(PATH$delta_lf_res);
+    public static final OfByte LAYOUT$ref_order_hint = (OfByte) LAYOUT.select(PATH$ref_order_hint);
+    public static final OfByte LAYOUT$ref_frame_idx = (OfByte) LAYOUT.select(PATH$ref_frame_idx);
+    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
+    public static final OfInt LAYOUT$delta_frame_id_minus_1 = (OfInt) LAYOUT.select(PATH$delta_frame_id_minus_1);
+    public static final AddressLayout LAYOUT$pTileInfo = (AddressLayout) LAYOUT.select(PATH$pTileInfo);
+    public static final AddressLayout LAYOUT$pQuantization = (AddressLayout) LAYOUT.select(PATH$pQuantization);
+    public static final AddressLayout LAYOUT$pSegmentation = (AddressLayout) LAYOUT.select(PATH$pSegmentation);
+    public static final AddressLayout LAYOUT$pLoopFilter = (AddressLayout) LAYOUT.select(PATH$pLoopFilter);
+    public static final AddressLayout LAYOUT$pCDEF = (AddressLayout) LAYOUT.select(PATH$pCDEF);
+    public static final AddressLayout LAYOUT$pLoopRestoration = (AddressLayout) LAYOUT.select(PATH$pLoopRestoration);
+    public static final AddressLayout LAYOUT$pGlobalMotion = (AddressLayout) LAYOUT.select(PATH$pGlobalMotion);
+    public static final AddressLayout LAYOUT$pExtensionHeader = (AddressLayout) LAYOUT.select(PATH$pExtensionHeader);
+    public static final AddressLayout LAYOUT$pBufferRemovalTimes = (AddressLayout) LAYOUT.select(PATH$pBufferRemovalTimes);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$frame_type = LAYOUT$frame_type.byteSize();
+    public static final long SIZE$frame_presentation_time = LAYOUT$frame_presentation_time.byteSize();
+    public static final long SIZE$current_frame_id = LAYOUT$current_frame_id.byteSize();
+    public static final long SIZE$order_hint = LAYOUT$order_hint.byteSize();
+    public static final long SIZE$primary_ref_frame = LAYOUT$primary_ref_frame.byteSize();
+    public static final long SIZE$refresh_frame_flags = LAYOUT$refresh_frame_flags.byteSize();
+    public static final long SIZE$coded_denom = LAYOUT$coded_denom.byteSize();
+    public static final long SIZE$render_width_minus_1 = LAYOUT$render_width_minus_1.byteSize();
+    public static final long SIZE$render_height_minus_1 = LAYOUT$render_height_minus_1.byteSize();
+    public static final long SIZE$interpolation_filter = LAYOUT$interpolation_filter.byteSize();
+    public static final long SIZE$TxMode = LAYOUT$TxMode.byteSize();
+    public static final long SIZE$delta_q_res = LAYOUT$delta_q_res.byteSize();
+    public static final long SIZE$delta_lf_res = LAYOUT$delta_lf_res.byteSize();
+    public static final long SIZE$ref_order_hint = LAYOUT$ref_order_hint.byteSize();
+    public static final long SIZE$ref_frame_idx = LAYOUT$ref_frame_idx.byteSize();
+    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
+    public static final long SIZE$delta_frame_id_minus_1 = LAYOUT$delta_frame_id_minus_1.byteSize();
+    public static final long SIZE$pTileInfo = LAYOUT$pTileInfo.byteSize();
+    public static final long SIZE$pQuantization = LAYOUT$pQuantization.byteSize();
+    public static final long SIZE$pSegmentation = LAYOUT$pSegmentation.byteSize();
+    public static final long SIZE$pLoopFilter = LAYOUT$pLoopFilter.byteSize();
+    public static final long SIZE$pCDEF = LAYOUT$pCDEF.byteSize();
+    public static final long SIZE$pLoopRestoration = LAYOUT$pLoopRestoration.byteSize();
+    public static final long SIZE$pGlobalMotion = LAYOUT$pGlobalMotion.byteSize();
+    public static final long SIZE$pExtensionHeader = LAYOUT$pExtensionHeader.byteSize();
+    public static final long SIZE$pBufferRemovalTimes = LAYOUT$pBufferRemovalTimes.byteSize();
+
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$frame_type = LAYOUT.byteOffset(PATH$frame_type);
+    public static final long OFFSET$frame_presentation_time = LAYOUT.byteOffset(PATH$frame_presentation_time);
+    public static final long OFFSET$current_frame_id = LAYOUT.byteOffset(PATH$current_frame_id);
+    public static final long OFFSET$order_hint = LAYOUT.byteOffset(PATH$order_hint);
+    public static final long OFFSET$primary_ref_frame = LAYOUT.byteOffset(PATH$primary_ref_frame);
+    public static final long OFFSET$refresh_frame_flags = LAYOUT.byteOffset(PATH$refresh_frame_flags);
+    public static final long OFFSET$coded_denom = LAYOUT.byteOffset(PATH$coded_denom);
+    public static final long OFFSET$render_width_minus_1 = LAYOUT.byteOffset(PATH$render_width_minus_1);
+    public static final long OFFSET$render_height_minus_1 = LAYOUT.byteOffset(PATH$render_height_minus_1);
+    public static final long OFFSET$interpolation_filter = LAYOUT.byteOffset(PATH$interpolation_filter);
+    public static final long OFFSET$TxMode = LAYOUT.byteOffset(PATH$TxMode);
+    public static final long OFFSET$delta_q_res = LAYOUT.byteOffset(PATH$delta_q_res);
+    public static final long OFFSET$delta_lf_res = LAYOUT.byteOffset(PATH$delta_lf_res);
+    public static final long OFFSET$ref_order_hint = LAYOUT.byteOffset(PATH$ref_order_hint);
+    public static final long OFFSET$ref_frame_idx = LAYOUT.byteOffset(PATH$ref_frame_idx);
+    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
+    public static final long OFFSET$delta_frame_id_minus_1 = LAYOUT.byteOffset(PATH$delta_frame_id_minus_1);
+    public static final long OFFSET$pTileInfo = LAYOUT.byteOffset(PATH$pTileInfo);
+    public static final long OFFSET$pQuantization = LAYOUT.byteOffset(PATH$pQuantization);
+    public static final long OFFSET$pSegmentation = LAYOUT.byteOffset(PATH$pSegmentation);
+    public static final long OFFSET$pLoopFilter = LAYOUT.byteOffset(PATH$pLoopFilter);
+    public static final long OFFSET$pCDEF = LAYOUT.byteOffset(PATH$pCDEF);
+    public static final long OFFSET$pLoopRestoration = LAYOUT.byteOffset(PATH$pLoopRestoration);
+    public static final long OFFSET$pGlobalMotion = LAYOUT.byteOffset(PATH$pGlobalMotion);
+    public static final long OFFSET$pExtensionHeader = LAYOUT.byteOffset(PATH$pExtensionHeader);
+    public static final long OFFSET$pBufferRemovalTimes = LAYOUT.byteOffset(PATH$pBufferRemovalTimes);
 }

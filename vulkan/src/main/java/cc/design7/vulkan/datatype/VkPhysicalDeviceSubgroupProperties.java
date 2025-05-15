@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceSubgroupProperties} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSubgroupProperties.html"><code>VkPhysicalDeviceSubgroupProperties</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceSubgroupProperties {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t subgroupSize;
+///     VkShaderStageFlags supportedStages;
+///     VkSubgroupFeatureFlags supportedOperations;
+///     VkBool32 quadOperationsInAllStages;
+/// } VkPhysicalDeviceSubgroupProperties;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES`
+///
+/// The {@link VkPhysicalDeviceSubgroupProperties#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceSubgroupProperties#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSubgroupProperties.html">VkPhysicalDeviceSubgroupProperties</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSubgroupProperties.html"><code>VkPhysicalDeviceSubgroupProperties</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceSubgroupProperties {
-        sType(VkStructureType.PHYSICAL_DEVICE_SUBGROUP_PROPERTIES);
-    }
-
     public static VkPhysicalDeviceSubgroupProperties allocate(Arena arena) {
-        return new VkPhysicalDeviceSubgroupProperties(arena.allocate(LAYOUT));
+        VkPhysicalDeviceSubgroupProperties ret = new VkPhysicalDeviceSubgroupProperties(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_SUBGROUP_PROPERTIES);
+        return ret;
     }
 
     public static VkPhysicalDeviceSubgroupProperties[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
         VkPhysicalDeviceSubgroupProperties[] ret = new VkPhysicalDeviceSubgroupProperties[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceSubgroupProperties(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_SUBGROUP_PROPERTIES);
         }
         return ret;
     }
@@ -59,43 +80,9 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("subgroupSize"),
-        ValueLayout.JAVA_INT.withName("supportedStages"),
-        ValueLayout.JAVA_INT.withName("supportedOperations"),
-        ValueLayout.JAVA_INT.withName("quadOperationsInAllStages")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$subgroupSize = PathElement.groupElement("PATH$subgroupSize");
-    public static final PathElement PATH$supportedStages = PathElement.groupElement("PATH$supportedStages");
-    public static final PathElement PATH$supportedOperations = PathElement.groupElement("PATH$supportedOperations");
-    public static final PathElement PATH$quadOperationsInAllStages = PathElement.groupElement("PATH$quadOperationsInAllStages");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$subgroupSize = (OfInt) LAYOUT.select(PATH$subgroupSize);
-    public static final OfInt LAYOUT$supportedStages = (OfInt) LAYOUT.select(PATH$supportedStages);
-    public static final OfInt LAYOUT$supportedOperations = (OfInt) LAYOUT.select(PATH$supportedOperations);
-    public static final OfInt LAYOUT$quadOperationsInAllStages = (OfInt) LAYOUT.select(PATH$quadOperationsInAllStages);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$subgroupSize = LAYOUT$subgroupSize.byteSize();
-    public static final long SIZE$supportedStages = LAYOUT$supportedStages.byteSize();
-    public static final long SIZE$supportedOperations = LAYOUT$supportedOperations.byteSize();
-    public static final long SIZE$quadOperationsInAllStages = LAYOUT$quadOperationsInAllStages.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$subgroupSize = LAYOUT.byteOffset(PATH$subgroupSize);
-    public static final long OFFSET$supportedStages = LAYOUT.byteOffset(PATH$supportedStages);
-    public static final long OFFSET$supportedOperations = LAYOUT.byteOffset(PATH$supportedOperations);
-    public static final long OFFSET$quadOperationsInAllStages = LAYOUT.byteOffset(PATH$quadOperationsInAllStages);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_SUBGROUP_PROPERTIES);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -149,4 +136,41 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$quadOperationsInAllStages, OFFSET$quadOperationsInAllStages, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("subgroupSize"),
+        ValueLayout.JAVA_INT.withName("supportedStages"),
+        ValueLayout.JAVA_INT.withName("supportedOperations"),
+        ValueLayout.JAVA_INT.withName("quadOperationsInAllStages")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$subgroupSize = PathElement.groupElement("PATH$subgroupSize");
+    public static final PathElement PATH$supportedStages = PathElement.groupElement("PATH$supportedStages");
+    public static final PathElement PATH$supportedOperations = PathElement.groupElement("PATH$supportedOperations");
+    public static final PathElement PATH$quadOperationsInAllStages = PathElement.groupElement("PATH$quadOperationsInAllStages");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$subgroupSize = (OfInt) LAYOUT.select(PATH$subgroupSize);
+    public static final OfInt LAYOUT$supportedStages = (OfInt) LAYOUT.select(PATH$supportedStages);
+    public static final OfInt LAYOUT$supportedOperations = (OfInt) LAYOUT.select(PATH$supportedOperations);
+    public static final OfInt LAYOUT$quadOperationsInAllStages = (OfInt) LAYOUT.select(PATH$quadOperationsInAllStages);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$subgroupSize = LAYOUT$subgroupSize.byteSize();
+    public static final long SIZE$supportedStages = LAYOUT$supportedStages.byteSize();
+    public static final long SIZE$supportedOperations = LAYOUT$supportedOperations.byteSize();
+    public static final long SIZE$quadOperationsInAllStages = LAYOUT$quadOperationsInAllStages.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$subgroupSize = LAYOUT.byteOffset(PATH$subgroupSize);
+    public static final long OFFSET$supportedStages = LAYOUT.byteOffset(PATH$supportedStages);
+    public static final long OFFSET$supportedOperations = LAYOUT.byteOffset(PATH$supportedOperations);
+    public static final long OFFSET$quadOperationsInAllStages = LAYOUT.byteOffset(PATH$quadOperationsInAllStages);
 }

@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceFragmentDensityMap2FeaturesEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFragmentDensityMap2FeaturesEXT.html"><code>VkPhysicalDeviceFragmentDensityMap2FeaturesEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceFragmentDensityMap2FeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 fragmentDensityMapDeferred;
+/// } VkPhysicalDeviceFragmentDensityMap2FeaturesEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_FEATURES_EXT`
+///
+/// The {@link VkPhysicalDeviceFragmentDensityMap2FeaturesEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceFragmentDensityMap2FeaturesEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFragmentDensityMap2FeaturesEXT.html">VkPhysicalDeviceFragmentDensityMap2FeaturesEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFragmentDensityMap2FeaturesEXT.html"><code>VkPhysicalDeviceFragmentDensityMap2FeaturesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceFragmentDensityMap2FeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceFragmentDensityMap2FeaturesEXT {
-        sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_FEATURES_EXT);
-    }
-
     public static VkPhysicalDeviceFragmentDensityMap2FeaturesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceFragmentDensityMap2FeaturesEXT(arena.allocate(LAYOUT));
+        VkPhysicalDeviceFragmentDensityMap2FeaturesEXT ret = new VkPhysicalDeviceFragmentDensityMap2FeaturesEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_FEATURES_EXT);
+        return ret;
     }
 
     public static VkPhysicalDeviceFragmentDensityMap2FeaturesEXT[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceFragmentDensityMap2FeaturesEXT(@NotNull MemorySegm
         VkPhysicalDeviceFragmentDensityMap2FeaturesEXT[] ret = new VkPhysicalDeviceFragmentDensityMap2FeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceFragmentDensityMap2FeaturesEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_FEATURES_EXT);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceFragmentDensityMap2FeaturesEXT(@NotNull MemorySegm
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("fragmentDensityMapDeferred")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$fragmentDensityMapDeferred = PathElement.groupElement("PATH$fragmentDensityMapDeferred");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$fragmentDensityMapDeferred = (OfInt) LAYOUT.select(PATH$fragmentDensityMapDeferred);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$fragmentDensityMapDeferred = LAYOUT$fragmentDensityMapDeferred.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$fragmentDensityMapDeferred = LAYOUT.byteOffset(PATH$fragmentDensityMapDeferred);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_FEATURES_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceFragmentDensityMap2FeaturesEXT(@NotNull MemorySegm
         segment.set(LAYOUT$fragmentDensityMapDeferred, OFFSET$fragmentDensityMapDeferred, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("fragmentDensityMapDeferred")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$fragmentDensityMapDeferred = PathElement.groupElement("PATH$fragmentDensityMapDeferred");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$fragmentDensityMapDeferred = (OfInt) LAYOUT.select(PATH$fragmentDensityMapDeferred);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$fragmentDensityMapDeferred = LAYOUT$fragmentDensityMapDeferred.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$fragmentDensityMapDeferred = LAYOUT.byteOffset(PATH$fragmentDensityMapDeferred);
 }

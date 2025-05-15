@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubgroupFeatureFlags.html">VkSubgroupFeatureFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubgroupFeatureFlags.html"><code>VkSubgroupFeatureFlags</code></a>
 public final class VkSubgroupFeatureFlags {
     public static final int ARITHMETIC = 0x4;
     public static final int BALLOT = 0x8;

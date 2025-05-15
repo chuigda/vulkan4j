@@ -14,8 +14,31 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoEncodeH264RateControlInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264RateControlInfoKHR.html"><code>VkVideoEncodeH264RateControlInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoEncodeH264RateControlInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkVideoEncodeH264RateControlFlagsKHR flags;
+///     uint32_t gopFrameCount;
+///     uint32_t idrPeriod;
+///     uint32_t consecutiveBFrameCount;
+///     uint32_t temporalLayerCount;
+/// } VkVideoEncodeH264RateControlInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_RATE_CONTROL_INFO_KHR`
+///
+/// The {@link VkVideoEncodeH264RateControlInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkVideoEncodeH264RateControlInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +47,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264RateControlInfoKHR.html">VkVideoEncodeH264RateControlInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264RateControlInfoKHR.html"><code>VkVideoEncodeH264RateControlInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoEncodeH264RateControlInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkVideoEncodeH264RateControlInfoKHR {
-        sType(VkStructureType.VIDEO_ENCODE_H264_RATE_CONTROL_INFO_KHR);
-    }
-
     public static VkVideoEncodeH264RateControlInfoKHR allocate(Arena arena) {
-        return new VkVideoEncodeH264RateControlInfoKHR(arena.allocate(LAYOUT));
+        VkVideoEncodeH264RateControlInfoKHR ret = new VkVideoEncodeH264RateControlInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VIDEO_ENCODE_H264_RATE_CONTROL_INFO_KHR);
+        return ret;
     }
 
     public static VkVideoEncodeH264RateControlInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +62,7 @@ public record VkVideoEncodeH264RateControlInfoKHR(@NotNull MemorySegment segment
         VkVideoEncodeH264RateControlInfoKHR[] ret = new VkVideoEncodeH264RateControlInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkVideoEncodeH264RateControlInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VIDEO_ENCODE_H264_RATE_CONTROL_INFO_KHR);
         }
         return ret;
     }
@@ -59,48 +81,9 @@ public record VkVideoEncodeH264RateControlInfoKHR(@NotNull MemorySegment segment
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("gopFrameCount"),
-        ValueLayout.JAVA_INT.withName("idrPeriod"),
-        ValueLayout.JAVA_INT.withName("consecutiveBFrameCount"),
-        ValueLayout.JAVA_INT.withName("temporalLayerCount")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$gopFrameCount = PathElement.groupElement("PATH$gopFrameCount");
-    public static final PathElement PATH$idrPeriod = PathElement.groupElement("PATH$idrPeriod");
-    public static final PathElement PATH$consecutiveBFrameCount = PathElement.groupElement("PATH$consecutiveBFrameCount");
-    public static final PathElement PATH$temporalLayerCount = PathElement.groupElement("PATH$temporalLayerCount");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$gopFrameCount = (OfInt) LAYOUT.select(PATH$gopFrameCount);
-    public static final OfInt LAYOUT$idrPeriod = (OfInt) LAYOUT.select(PATH$idrPeriod);
-    public static final OfInt LAYOUT$consecutiveBFrameCount = (OfInt) LAYOUT.select(PATH$consecutiveBFrameCount);
-    public static final OfInt LAYOUT$temporalLayerCount = (OfInt) LAYOUT.select(PATH$temporalLayerCount);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$gopFrameCount = LAYOUT$gopFrameCount.byteSize();
-    public static final long SIZE$idrPeriod = LAYOUT$idrPeriod.byteSize();
-    public static final long SIZE$consecutiveBFrameCount = LAYOUT$consecutiveBFrameCount.byteSize();
-    public static final long SIZE$temporalLayerCount = LAYOUT$temporalLayerCount.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$gopFrameCount = LAYOUT.byteOffset(PATH$gopFrameCount);
-    public static final long OFFSET$idrPeriod = LAYOUT.byteOffset(PATH$idrPeriod);
-    public static final long OFFSET$consecutiveBFrameCount = LAYOUT.byteOffset(PATH$consecutiveBFrameCount);
-    public static final long OFFSET$temporalLayerCount = LAYOUT.byteOffset(PATH$temporalLayerCount);
+    public void autoInit() {
+        sType(VkStructureType.VIDEO_ENCODE_H264_RATE_CONTROL_INFO_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -162,4 +145,46 @@ public record VkVideoEncodeH264RateControlInfoKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$temporalLayerCount, OFFSET$temporalLayerCount, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("gopFrameCount"),
+        ValueLayout.JAVA_INT.withName("idrPeriod"),
+        ValueLayout.JAVA_INT.withName("consecutiveBFrameCount"),
+        ValueLayout.JAVA_INT.withName("temporalLayerCount")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$gopFrameCount = PathElement.groupElement("PATH$gopFrameCount");
+    public static final PathElement PATH$idrPeriod = PathElement.groupElement("PATH$idrPeriod");
+    public static final PathElement PATH$consecutiveBFrameCount = PathElement.groupElement("PATH$consecutiveBFrameCount");
+    public static final PathElement PATH$temporalLayerCount = PathElement.groupElement("PATH$temporalLayerCount");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$gopFrameCount = (OfInt) LAYOUT.select(PATH$gopFrameCount);
+    public static final OfInt LAYOUT$idrPeriod = (OfInt) LAYOUT.select(PATH$idrPeriod);
+    public static final OfInt LAYOUT$consecutiveBFrameCount = (OfInt) LAYOUT.select(PATH$consecutiveBFrameCount);
+    public static final OfInt LAYOUT$temporalLayerCount = (OfInt) LAYOUT.select(PATH$temporalLayerCount);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$gopFrameCount = LAYOUT$gopFrameCount.byteSize();
+    public static final long SIZE$idrPeriod = LAYOUT$idrPeriod.byteSize();
+    public static final long SIZE$consecutiveBFrameCount = LAYOUT$consecutiveBFrameCount.byteSize();
+    public static final long SIZE$temporalLayerCount = LAYOUT$temporalLayerCount.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$gopFrameCount = LAYOUT.byteOffset(PATH$gopFrameCount);
+    public static final long OFFSET$idrPeriod = LAYOUT.byteOffset(PATH$idrPeriod);
+    public static final long OFFSET$consecutiveBFrameCount = LAYOUT.byteOffset(PATH$consecutiveBFrameCount);
+    public static final long OFFSET$temporalLayerCount = LAYOUT.byteOffset(PATH$temporalLayerCount);
 }

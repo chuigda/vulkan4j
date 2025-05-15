@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDispatchIndirectCommand} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDispatchIndirectCommand.html"><code>VkDispatchIndirectCommand</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDispatchIndirectCommand {
+///     uint32_t x;
+///     uint32_t y;
+///     uint32_t z;
+/// } VkDispatchIndirectCommand;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDispatchIndirectCommand.html">VkDispatchIndirectCommand</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDispatchIndirectCommand.html"><code>VkDispatchIndirectCommand</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDispatchIndirectCommand(@NotNull MemorySegment segment) implements IPointer {
     public static VkDispatchIndirectCommand allocate(Arena arena) {
-        return new VkDispatchIndirectCommand(arena.allocate(LAYOUT));
+        VkDispatchIndirectCommand ret = new VkDispatchIndirectCommand(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkDispatchIndirectCommand[] allocate(Arena arena, int count) {
@@ -55,29 +67,6 @@ public record VkDispatchIndirectCommand(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("x"),
-        ValueLayout.JAVA_INT.withName("y"),
-        ValueLayout.JAVA_INT.withName("z")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$x = PathElement.groupElement("PATH$x");
-    public static final PathElement PATH$y = PathElement.groupElement("PATH$y");
-    public static final PathElement PATH$z = PathElement.groupElement("PATH$z");
-
-    public static final OfInt LAYOUT$x = (OfInt) LAYOUT.select(PATH$x);
-    public static final OfInt LAYOUT$y = (OfInt) LAYOUT.select(PATH$y);
-    public static final OfInt LAYOUT$z = (OfInt) LAYOUT.select(PATH$z);
-
-    public static final long SIZE$x = LAYOUT$x.byteSize();
-    public static final long SIZE$y = LAYOUT$y.byteSize();
-    public static final long SIZE$z = LAYOUT$z.byteSize();
-
-    public static final long OFFSET$x = LAYOUT.byteOffset(PATH$x);
-    public static final long OFFSET$y = LAYOUT.byteOffset(PATH$y);
-    public static final long OFFSET$z = LAYOUT.byteOffset(PATH$z);
-
     public @unsigned int x() {
         return segment.get(LAYOUT$x, OFFSET$x);
     }
@@ -102,4 +91,26 @@ public record VkDispatchIndirectCommand(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$z, OFFSET$z, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("x"),
+        ValueLayout.JAVA_INT.withName("y"),
+        ValueLayout.JAVA_INT.withName("z")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$x = PathElement.groupElement("PATH$x");
+    public static final PathElement PATH$y = PathElement.groupElement("PATH$y");
+    public static final PathElement PATH$z = PathElement.groupElement("PATH$z");
+
+    public static final OfInt LAYOUT$x = (OfInt) LAYOUT.select(PATH$x);
+    public static final OfInt LAYOUT$y = (OfInt) LAYOUT.select(PATH$y);
+    public static final OfInt LAYOUT$z = (OfInt) LAYOUT.select(PATH$z);
+
+    public static final long SIZE$x = LAYOUT$x.byteSize();
+    public static final long SIZE$y = LAYOUT$y.byteSize();
+    public static final long SIZE$z = LAYOUT$z.byteSize();
+
+    public static final long OFFSET$x = LAYOUT.byteOffset(PATH$x);
+    public static final long OFFSET$y = LAYOUT.byteOffset(PATH$y);
+    public static final long OFFSET$z = LAYOUT.byteOffset(PATH$z);
 }

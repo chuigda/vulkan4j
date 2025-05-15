@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkImportMemoryBufferCollectionFUCHSIA} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportMemoryBufferCollectionFUCHSIA.html"><code>VkImportMemoryBufferCollectionFUCHSIA</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkImportMemoryBufferCollectionFUCHSIA {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkBufferCollectionFUCHSIA collection;
+///     uint32_t index;
+/// } VkImportMemoryBufferCollectionFUCHSIA;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_BUFFER_COLLECTION_FUCHSIA`
+///
+/// The {@link VkImportMemoryBufferCollectionFUCHSIA#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkImportMemoryBufferCollectionFUCHSIA#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportMemoryBufferCollectionFUCHSIA.html">VkImportMemoryBufferCollectionFUCHSIA</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportMemoryBufferCollectionFUCHSIA.html"><code>VkImportMemoryBufferCollectionFUCHSIA</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkImportMemoryBufferCollectionFUCHSIA(@NotNull MemorySegment segment) implements IPointer {
-    public VkImportMemoryBufferCollectionFUCHSIA {
-        sType(VkStructureType.IMPORT_MEMORY_BUFFER_COLLECTION_FUCHSIA);
-    }
-
     public static VkImportMemoryBufferCollectionFUCHSIA allocate(Arena arena) {
-        return new VkImportMemoryBufferCollectionFUCHSIA(arena.allocate(LAYOUT));
+        VkImportMemoryBufferCollectionFUCHSIA ret = new VkImportMemoryBufferCollectionFUCHSIA(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.IMPORT_MEMORY_BUFFER_COLLECTION_FUCHSIA);
+        return ret;
     }
 
     public static VkImportMemoryBufferCollectionFUCHSIA[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkImportMemoryBufferCollectionFUCHSIA(@NotNull MemorySegment segme
         VkImportMemoryBufferCollectionFUCHSIA[] ret = new VkImportMemoryBufferCollectionFUCHSIA[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkImportMemoryBufferCollectionFUCHSIA(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.IMPORT_MEMORY_BUFFER_COLLECTION_FUCHSIA);
         }
         return ret;
     }
@@ -57,6 +76,50 @@ public record VkImportMemoryBufferCollectionFUCHSIA(@NotNull MemorySegment segme
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.IMPORT_MEMORY_BUFFER_COLLECTION_FUCHSIA);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkBufferCollectionFUCHSIA collection() {
+        MemorySegment s = segment.asSlice(OFFSET$collection, SIZE$collection);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkBufferCollectionFUCHSIA(s);
+    }
+
+    public void collection(@Nullable VkBufferCollectionFUCHSIA value) {
+        segment.set(LAYOUT$collection, OFFSET$collection, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned int index() {
+        return segment.get(LAYOUT$index, OFFSET$index);
+    }
+
+    public void index(@unsigned int value) {
+        segment.set(LAYOUT$index, OFFSET$index, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -86,45 +149,4 @@ public record VkImportMemoryBufferCollectionFUCHSIA(@NotNull MemorySegment segme
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$collection = LAYOUT.byteOffset(PATH$collection);
     public static final long OFFSET$index = LAYOUT.byteOffset(PATH$index);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkBufferCollectionFUCHSIA collection() {
-        MemorySegment s = segment.asSlice(OFFSET$collection, SIZE$collection);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkBufferCollectionFUCHSIA(s);
-    }
-
-    public void collection(@Nullable VkBufferCollectionFUCHSIA value) {
-        segment.set(LAYOUT$collection, OFFSET$collection, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned int index() {
-        return segment.get(LAYOUT$index, OFFSET$index);
-    }
-
-    public void index(@unsigned int value) {
-        segment.set(LAYOUT$index, OFFSET$index, value);
-    }
-
 }

@@ -16,6 +16,39 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoAV1FilmGrain} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoAV1FilmGrain {
+///     StdVideoAV1FilmGrainFlags flags;
+///     uint8_t grain_scaling_minus_8;
+///     uint8_t ar_coeff_lag;
+///     uint8_t ar_coeff_shift_minus_6;
+///     uint8_t grain_scale_shift;
+///     uint16_t grain_seed;
+///     uint8_t film_grain_params_ref_idx;
+///     uint8_t num_y_points;
+///     uint8_t point_y_value;
+///     uint8_t point_y_scaling;
+///     uint8_t num_cb_points;
+///     uint8_t point_cb_value;
+///     uint8_t point_cb_scaling;
+///     uint8_t num_cr_points;
+///     uint8_t point_cr_value;
+///     uint8_t point_cr_scaling;
+///     int8_t ar_coeffs_y_plus_128;
+///     int8_t ar_coeffs_cb_plus_128;
+///     int8_t ar_coeffs_cr_plus_128;
+///     uint8_t cb_mult;
+///     uint8_t cb_luma_mult;
+///     uint16_t cb_offset;
+///     uint8_t cr_mult;
+///     uint8_t cr_luma_mult;
+///     uint16_t cr_offset;
+/// } StdVideoAV1FilmGrain;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +60,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1FilmGrain allocate(Arena arena) {
-        return new StdVideoAV1FilmGrain(arena.allocate(LAYOUT));
+        StdVideoAV1FilmGrain ret = new StdVideoAV1FilmGrain(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoAV1FilmGrain[] allocate(Arena arena, int count) {
@@ -52,139 +86,6 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IP
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        StdVideoAV1FilmGrainFlags.LAYOUT.withName("flags"),
-        ValueLayout.JAVA_BYTE.withName("grain_scaling_minus_8"),
-        ValueLayout.JAVA_BYTE.withName("ar_coeff_lag"),
-        ValueLayout.JAVA_BYTE.withName("ar_coeff_shift_minus_6"),
-        ValueLayout.JAVA_BYTE.withName("grain_scale_shift"),
-        ValueLayout.JAVA_SHORT.withName("grain_seed"),
-        ValueLayout.JAVA_BYTE.withName("film_grain_params_ref_idx"),
-        ValueLayout.JAVA_BYTE.withName("num_y_points"),
-        ValueLayout.JAVA_BYTE.withName("point_y_value"),
-        ValueLayout.JAVA_BYTE.withName("point_y_scaling"),
-        ValueLayout.JAVA_BYTE.withName("num_cb_points"),
-        ValueLayout.JAVA_BYTE.withName("point_cb_value"),
-        ValueLayout.JAVA_BYTE.withName("point_cb_scaling"),
-        ValueLayout.JAVA_BYTE.withName("num_cr_points"),
-        ValueLayout.JAVA_BYTE.withName("point_cr_value"),
-        ValueLayout.JAVA_BYTE.withName("point_cr_scaling"),
-        ValueLayout.JAVA_BYTE.withName("ar_coeffs_y_plus_128"),
-        ValueLayout.JAVA_BYTE.withName("ar_coeffs_cb_plus_128"),
-        ValueLayout.JAVA_BYTE.withName("ar_coeffs_cr_plus_128"),
-        ValueLayout.JAVA_BYTE.withName("cb_mult"),
-        ValueLayout.JAVA_BYTE.withName("cb_luma_mult"),
-        ValueLayout.JAVA_SHORT.withName("cb_offset"),
-        ValueLayout.JAVA_BYTE.withName("cr_mult"),
-        ValueLayout.JAVA_BYTE.withName("cr_luma_mult"),
-        ValueLayout.JAVA_SHORT.withName("cr_offset")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$grain_scaling_minus_8 = PathElement.groupElement("PATH$grain_scaling_minus_8");
-    public static final PathElement PATH$ar_coeff_lag = PathElement.groupElement("PATH$ar_coeff_lag");
-    public static final PathElement PATH$ar_coeff_shift_minus_6 = PathElement.groupElement("PATH$ar_coeff_shift_minus_6");
-    public static final PathElement PATH$grain_scale_shift = PathElement.groupElement("PATH$grain_scale_shift");
-    public static final PathElement PATH$grain_seed = PathElement.groupElement("PATH$grain_seed");
-    public static final PathElement PATH$film_grain_params_ref_idx = PathElement.groupElement("PATH$film_grain_params_ref_idx");
-    public static final PathElement PATH$num_y_points = PathElement.groupElement("PATH$num_y_points");
-    public static final PathElement PATH$point_y_value = PathElement.groupElement("PATH$point_y_value");
-    public static final PathElement PATH$point_y_scaling = PathElement.groupElement("PATH$point_y_scaling");
-    public static final PathElement PATH$num_cb_points = PathElement.groupElement("PATH$num_cb_points");
-    public static final PathElement PATH$point_cb_value = PathElement.groupElement("PATH$point_cb_value");
-    public static final PathElement PATH$point_cb_scaling = PathElement.groupElement("PATH$point_cb_scaling");
-    public static final PathElement PATH$num_cr_points = PathElement.groupElement("PATH$num_cr_points");
-    public static final PathElement PATH$point_cr_value = PathElement.groupElement("PATH$point_cr_value");
-    public static final PathElement PATH$point_cr_scaling = PathElement.groupElement("PATH$point_cr_scaling");
-    public static final PathElement PATH$ar_coeffs_y_plus_128 = PathElement.groupElement("PATH$ar_coeffs_y_plus_128");
-    public static final PathElement PATH$ar_coeffs_cb_plus_128 = PathElement.groupElement("PATH$ar_coeffs_cb_plus_128");
-    public static final PathElement PATH$ar_coeffs_cr_plus_128 = PathElement.groupElement("PATH$ar_coeffs_cr_plus_128");
-    public static final PathElement PATH$cb_mult = PathElement.groupElement("PATH$cb_mult");
-    public static final PathElement PATH$cb_luma_mult = PathElement.groupElement("PATH$cb_luma_mult");
-    public static final PathElement PATH$cb_offset = PathElement.groupElement("PATH$cb_offset");
-    public static final PathElement PATH$cr_mult = PathElement.groupElement("PATH$cr_mult");
-    public static final PathElement PATH$cr_luma_mult = PathElement.groupElement("PATH$cr_luma_mult");
-    public static final PathElement PATH$cr_offset = PathElement.groupElement("PATH$cr_offset");
-
-    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
-    public static final OfByte LAYOUT$grain_scaling_minus_8 = (OfByte) LAYOUT.select(PATH$grain_scaling_minus_8);
-    public static final OfByte LAYOUT$ar_coeff_lag = (OfByte) LAYOUT.select(PATH$ar_coeff_lag);
-    public static final OfByte LAYOUT$ar_coeff_shift_minus_6 = (OfByte) LAYOUT.select(PATH$ar_coeff_shift_minus_6);
-    public static final OfByte LAYOUT$grain_scale_shift = (OfByte) LAYOUT.select(PATH$grain_scale_shift);
-    public static final OfShort LAYOUT$grain_seed = (OfShort) LAYOUT.select(PATH$grain_seed);
-    public static final OfByte LAYOUT$film_grain_params_ref_idx = (OfByte) LAYOUT.select(PATH$film_grain_params_ref_idx);
-    public static final OfByte LAYOUT$num_y_points = (OfByte) LAYOUT.select(PATH$num_y_points);
-    public static final OfByte LAYOUT$point_y_value = (OfByte) LAYOUT.select(PATH$point_y_value);
-    public static final OfByte LAYOUT$point_y_scaling = (OfByte) LAYOUT.select(PATH$point_y_scaling);
-    public static final OfByte LAYOUT$num_cb_points = (OfByte) LAYOUT.select(PATH$num_cb_points);
-    public static final OfByte LAYOUT$point_cb_value = (OfByte) LAYOUT.select(PATH$point_cb_value);
-    public static final OfByte LAYOUT$point_cb_scaling = (OfByte) LAYOUT.select(PATH$point_cb_scaling);
-    public static final OfByte LAYOUT$num_cr_points = (OfByte) LAYOUT.select(PATH$num_cr_points);
-    public static final OfByte LAYOUT$point_cr_value = (OfByte) LAYOUT.select(PATH$point_cr_value);
-    public static final OfByte LAYOUT$point_cr_scaling = (OfByte) LAYOUT.select(PATH$point_cr_scaling);
-    public static final OfByte LAYOUT$ar_coeffs_y_plus_128 = (OfByte) LAYOUT.select(PATH$ar_coeffs_y_plus_128);
-    public static final OfByte LAYOUT$ar_coeffs_cb_plus_128 = (OfByte) LAYOUT.select(PATH$ar_coeffs_cb_plus_128);
-    public static final OfByte LAYOUT$ar_coeffs_cr_plus_128 = (OfByte) LAYOUT.select(PATH$ar_coeffs_cr_plus_128);
-    public static final OfByte LAYOUT$cb_mult = (OfByte) LAYOUT.select(PATH$cb_mult);
-    public static final OfByte LAYOUT$cb_luma_mult = (OfByte) LAYOUT.select(PATH$cb_luma_mult);
-    public static final OfShort LAYOUT$cb_offset = (OfShort) LAYOUT.select(PATH$cb_offset);
-    public static final OfByte LAYOUT$cr_mult = (OfByte) LAYOUT.select(PATH$cr_mult);
-    public static final OfByte LAYOUT$cr_luma_mult = (OfByte) LAYOUT.select(PATH$cr_luma_mult);
-    public static final OfShort LAYOUT$cr_offset = (OfShort) LAYOUT.select(PATH$cr_offset);
-
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$grain_scaling_minus_8 = LAYOUT$grain_scaling_minus_8.byteSize();
-    public static final long SIZE$ar_coeff_lag = LAYOUT$ar_coeff_lag.byteSize();
-    public static final long SIZE$ar_coeff_shift_minus_6 = LAYOUT$ar_coeff_shift_minus_6.byteSize();
-    public static final long SIZE$grain_scale_shift = LAYOUT$grain_scale_shift.byteSize();
-    public static final long SIZE$grain_seed = LAYOUT$grain_seed.byteSize();
-    public static final long SIZE$film_grain_params_ref_idx = LAYOUT$film_grain_params_ref_idx.byteSize();
-    public static final long SIZE$num_y_points = LAYOUT$num_y_points.byteSize();
-    public static final long SIZE$point_y_value = LAYOUT$point_y_value.byteSize();
-    public static final long SIZE$point_y_scaling = LAYOUT$point_y_scaling.byteSize();
-    public static final long SIZE$num_cb_points = LAYOUT$num_cb_points.byteSize();
-    public static final long SIZE$point_cb_value = LAYOUT$point_cb_value.byteSize();
-    public static final long SIZE$point_cb_scaling = LAYOUT$point_cb_scaling.byteSize();
-    public static final long SIZE$num_cr_points = LAYOUT$num_cr_points.byteSize();
-    public static final long SIZE$point_cr_value = LAYOUT$point_cr_value.byteSize();
-    public static final long SIZE$point_cr_scaling = LAYOUT$point_cr_scaling.byteSize();
-    public static final long SIZE$ar_coeffs_y_plus_128 = LAYOUT$ar_coeffs_y_plus_128.byteSize();
-    public static final long SIZE$ar_coeffs_cb_plus_128 = LAYOUT$ar_coeffs_cb_plus_128.byteSize();
-    public static final long SIZE$ar_coeffs_cr_plus_128 = LAYOUT$ar_coeffs_cr_plus_128.byteSize();
-    public static final long SIZE$cb_mult = LAYOUT$cb_mult.byteSize();
-    public static final long SIZE$cb_luma_mult = LAYOUT$cb_luma_mult.byteSize();
-    public static final long SIZE$cb_offset = LAYOUT$cb_offset.byteSize();
-    public static final long SIZE$cr_mult = LAYOUT$cr_mult.byteSize();
-    public static final long SIZE$cr_luma_mult = LAYOUT$cr_luma_mult.byteSize();
-    public static final long SIZE$cr_offset = LAYOUT$cr_offset.byteSize();
-
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$grain_scaling_minus_8 = LAYOUT.byteOffset(PATH$grain_scaling_minus_8);
-    public static final long OFFSET$ar_coeff_lag = LAYOUT.byteOffset(PATH$ar_coeff_lag);
-    public static final long OFFSET$ar_coeff_shift_minus_6 = LAYOUT.byteOffset(PATH$ar_coeff_shift_minus_6);
-    public static final long OFFSET$grain_scale_shift = LAYOUT.byteOffset(PATH$grain_scale_shift);
-    public static final long OFFSET$grain_seed = LAYOUT.byteOffset(PATH$grain_seed);
-    public static final long OFFSET$film_grain_params_ref_idx = LAYOUT.byteOffset(PATH$film_grain_params_ref_idx);
-    public static final long OFFSET$num_y_points = LAYOUT.byteOffset(PATH$num_y_points);
-    public static final long OFFSET$point_y_value = LAYOUT.byteOffset(PATH$point_y_value);
-    public static final long OFFSET$point_y_scaling = LAYOUT.byteOffset(PATH$point_y_scaling);
-    public static final long OFFSET$num_cb_points = LAYOUT.byteOffset(PATH$num_cb_points);
-    public static final long OFFSET$point_cb_value = LAYOUT.byteOffset(PATH$point_cb_value);
-    public static final long OFFSET$point_cb_scaling = LAYOUT.byteOffset(PATH$point_cb_scaling);
-    public static final long OFFSET$num_cr_points = LAYOUT.byteOffset(PATH$num_cr_points);
-    public static final long OFFSET$point_cr_value = LAYOUT.byteOffset(PATH$point_cr_value);
-    public static final long OFFSET$point_cr_scaling = LAYOUT.byteOffset(PATH$point_cr_scaling);
-    public static final long OFFSET$ar_coeffs_y_plus_128 = LAYOUT.byteOffset(PATH$ar_coeffs_y_plus_128);
-    public static final long OFFSET$ar_coeffs_cb_plus_128 = LAYOUT.byteOffset(PATH$ar_coeffs_cb_plus_128);
-    public static final long OFFSET$ar_coeffs_cr_plus_128 = LAYOUT.byteOffset(PATH$ar_coeffs_cr_plus_128);
-    public static final long OFFSET$cb_mult = LAYOUT.byteOffset(PATH$cb_mult);
-    public static final long OFFSET$cb_luma_mult = LAYOUT.byteOffset(PATH$cb_luma_mult);
-    public static final long OFFSET$cb_offset = LAYOUT.byteOffset(PATH$cb_offset);
-    public static final long OFFSET$cr_mult = LAYOUT.byteOffset(PATH$cr_mult);
-    public static final long OFFSET$cr_luma_mult = LAYOUT.byteOffset(PATH$cr_luma_mult);
-    public static final long OFFSET$cr_offset = LAYOUT.byteOffset(PATH$cr_offset);
 
     public StdVideoAV1FilmGrainFlags flags() {
         return new StdVideoAV1FilmGrainFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
@@ -386,4 +287,136 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$cr_offset, OFFSET$cr_offset, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoAV1FilmGrainFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("grain_scaling_minus_8"),
+        ValueLayout.JAVA_BYTE.withName("ar_coeff_lag"),
+        ValueLayout.JAVA_BYTE.withName("ar_coeff_shift_minus_6"),
+        ValueLayout.JAVA_BYTE.withName("grain_scale_shift"),
+        ValueLayout.JAVA_SHORT.withName("grain_seed"),
+        ValueLayout.JAVA_BYTE.withName("film_grain_params_ref_idx"),
+        ValueLayout.JAVA_BYTE.withName("num_y_points"),
+        ValueLayout.JAVA_BYTE.withName("point_y_value"),
+        ValueLayout.JAVA_BYTE.withName("point_y_scaling"),
+        ValueLayout.JAVA_BYTE.withName("num_cb_points"),
+        ValueLayout.JAVA_BYTE.withName("point_cb_value"),
+        ValueLayout.JAVA_BYTE.withName("point_cb_scaling"),
+        ValueLayout.JAVA_BYTE.withName("num_cr_points"),
+        ValueLayout.JAVA_BYTE.withName("point_cr_value"),
+        ValueLayout.JAVA_BYTE.withName("point_cr_scaling"),
+        ValueLayout.JAVA_BYTE.withName("ar_coeffs_y_plus_128"),
+        ValueLayout.JAVA_BYTE.withName("ar_coeffs_cb_plus_128"),
+        ValueLayout.JAVA_BYTE.withName("ar_coeffs_cr_plus_128"),
+        ValueLayout.JAVA_BYTE.withName("cb_mult"),
+        ValueLayout.JAVA_BYTE.withName("cb_luma_mult"),
+        ValueLayout.JAVA_SHORT.withName("cb_offset"),
+        ValueLayout.JAVA_BYTE.withName("cr_mult"),
+        ValueLayout.JAVA_BYTE.withName("cr_luma_mult"),
+        ValueLayout.JAVA_SHORT.withName("cr_offset")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$grain_scaling_minus_8 = PathElement.groupElement("PATH$grain_scaling_minus_8");
+    public static final PathElement PATH$ar_coeff_lag = PathElement.groupElement("PATH$ar_coeff_lag");
+    public static final PathElement PATH$ar_coeff_shift_minus_6 = PathElement.groupElement("PATH$ar_coeff_shift_minus_6");
+    public static final PathElement PATH$grain_scale_shift = PathElement.groupElement("PATH$grain_scale_shift");
+    public static final PathElement PATH$grain_seed = PathElement.groupElement("PATH$grain_seed");
+    public static final PathElement PATH$film_grain_params_ref_idx = PathElement.groupElement("PATH$film_grain_params_ref_idx");
+    public static final PathElement PATH$num_y_points = PathElement.groupElement("PATH$num_y_points");
+    public static final PathElement PATH$point_y_value = PathElement.groupElement("PATH$point_y_value");
+    public static final PathElement PATH$point_y_scaling = PathElement.groupElement("PATH$point_y_scaling");
+    public static final PathElement PATH$num_cb_points = PathElement.groupElement("PATH$num_cb_points");
+    public static final PathElement PATH$point_cb_value = PathElement.groupElement("PATH$point_cb_value");
+    public static final PathElement PATH$point_cb_scaling = PathElement.groupElement("PATH$point_cb_scaling");
+    public static final PathElement PATH$num_cr_points = PathElement.groupElement("PATH$num_cr_points");
+    public static final PathElement PATH$point_cr_value = PathElement.groupElement("PATH$point_cr_value");
+    public static final PathElement PATH$point_cr_scaling = PathElement.groupElement("PATH$point_cr_scaling");
+    public static final PathElement PATH$ar_coeffs_y_plus_128 = PathElement.groupElement("PATH$ar_coeffs_y_plus_128");
+    public static final PathElement PATH$ar_coeffs_cb_plus_128 = PathElement.groupElement("PATH$ar_coeffs_cb_plus_128");
+    public static final PathElement PATH$ar_coeffs_cr_plus_128 = PathElement.groupElement("PATH$ar_coeffs_cr_plus_128");
+    public static final PathElement PATH$cb_mult = PathElement.groupElement("PATH$cb_mult");
+    public static final PathElement PATH$cb_luma_mult = PathElement.groupElement("PATH$cb_luma_mult");
+    public static final PathElement PATH$cb_offset = PathElement.groupElement("PATH$cb_offset");
+    public static final PathElement PATH$cr_mult = PathElement.groupElement("PATH$cr_mult");
+    public static final PathElement PATH$cr_luma_mult = PathElement.groupElement("PATH$cr_luma_mult");
+    public static final PathElement PATH$cr_offset = PathElement.groupElement("PATH$cr_offset");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$grain_scaling_minus_8 = (OfByte) LAYOUT.select(PATH$grain_scaling_minus_8);
+    public static final OfByte LAYOUT$ar_coeff_lag = (OfByte) LAYOUT.select(PATH$ar_coeff_lag);
+    public static final OfByte LAYOUT$ar_coeff_shift_minus_6 = (OfByte) LAYOUT.select(PATH$ar_coeff_shift_minus_6);
+    public static final OfByte LAYOUT$grain_scale_shift = (OfByte) LAYOUT.select(PATH$grain_scale_shift);
+    public static final OfShort LAYOUT$grain_seed = (OfShort) LAYOUT.select(PATH$grain_seed);
+    public static final OfByte LAYOUT$film_grain_params_ref_idx = (OfByte) LAYOUT.select(PATH$film_grain_params_ref_idx);
+    public static final OfByte LAYOUT$num_y_points = (OfByte) LAYOUT.select(PATH$num_y_points);
+    public static final OfByte LAYOUT$point_y_value = (OfByte) LAYOUT.select(PATH$point_y_value);
+    public static final OfByte LAYOUT$point_y_scaling = (OfByte) LAYOUT.select(PATH$point_y_scaling);
+    public static final OfByte LAYOUT$num_cb_points = (OfByte) LAYOUT.select(PATH$num_cb_points);
+    public static final OfByte LAYOUT$point_cb_value = (OfByte) LAYOUT.select(PATH$point_cb_value);
+    public static final OfByte LAYOUT$point_cb_scaling = (OfByte) LAYOUT.select(PATH$point_cb_scaling);
+    public static final OfByte LAYOUT$num_cr_points = (OfByte) LAYOUT.select(PATH$num_cr_points);
+    public static final OfByte LAYOUT$point_cr_value = (OfByte) LAYOUT.select(PATH$point_cr_value);
+    public static final OfByte LAYOUT$point_cr_scaling = (OfByte) LAYOUT.select(PATH$point_cr_scaling);
+    public static final OfByte LAYOUT$ar_coeffs_y_plus_128 = (OfByte) LAYOUT.select(PATH$ar_coeffs_y_plus_128);
+    public static final OfByte LAYOUT$ar_coeffs_cb_plus_128 = (OfByte) LAYOUT.select(PATH$ar_coeffs_cb_plus_128);
+    public static final OfByte LAYOUT$ar_coeffs_cr_plus_128 = (OfByte) LAYOUT.select(PATH$ar_coeffs_cr_plus_128);
+    public static final OfByte LAYOUT$cb_mult = (OfByte) LAYOUT.select(PATH$cb_mult);
+    public static final OfByte LAYOUT$cb_luma_mult = (OfByte) LAYOUT.select(PATH$cb_luma_mult);
+    public static final OfShort LAYOUT$cb_offset = (OfShort) LAYOUT.select(PATH$cb_offset);
+    public static final OfByte LAYOUT$cr_mult = (OfByte) LAYOUT.select(PATH$cr_mult);
+    public static final OfByte LAYOUT$cr_luma_mult = (OfByte) LAYOUT.select(PATH$cr_luma_mult);
+    public static final OfShort LAYOUT$cr_offset = (OfShort) LAYOUT.select(PATH$cr_offset);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$grain_scaling_minus_8 = LAYOUT$grain_scaling_minus_8.byteSize();
+    public static final long SIZE$ar_coeff_lag = LAYOUT$ar_coeff_lag.byteSize();
+    public static final long SIZE$ar_coeff_shift_minus_6 = LAYOUT$ar_coeff_shift_minus_6.byteSize();
+    public static final long SIZE$grain_scale_shift = LAYOUT$grain_scale_shift.byteSize();
+    public static final long SIZE$grain_seed = LAYOUT$grain_seed.byteSize();
+    public static final long SIZE$film_grain_params_ref_idx = LAYOUT$film_grain_params_ref_idx.byteSize();
+    public static final long SIZE$num_y_points = LAYOUT$num_y_points.byteSize();
+    public static final long SIZE$point_y_value = LAYOUT$point_y_value.byteSize();
+    public static final long SIZE$point_y_scaling = LAYOUT$point_y_scaling.byteSize();
+    public static final long SIZE$num_cb_points = LAYOUT$num_cb_points.byteSize();
+    public static final long SIZE$point_cb_value = LAYOUT$point_cb_value.byteSize();
+    public static final long SIZE$point_cb_scaling = LAYOUT$point_cb_scaling.byteSize();
+    public static final long SIZE$num_cr_points = LAYOUT$num_cr_points.byteSize();
+    public static final long SIZE$point_cr_value = LAYOUT$point_cr_value.byteSize();
+    public static final long SIZE$point_cr_scaling = LAYOUT$point_cr_scaling.byteSize();
+    public static final long SIZE$ar_coeffs_y_plus_128 = LAYOUT$ar_coeffs_y_plus_128.byteSize();
+    public static final long SIZE$ar_coeffs_cb_plus_128 = LAYOUT$ar_coeffs_cb_plus_128.byteSize();
+    public static final long SIZE$ar_coeffs_cr_plus_128 = LAYOUT$ar_coeffs_cr_plus_128.byteSize();
+    public static final long SIZE$cb_mult = LAYOUT$cb_mult.byteSize();
+    public static final long SIZE$cb_luma_mult = LAYOUT$cb_luma_mult.byteSize();
+    public static final long SIZE$cb_offset = LAYOUT$cb_offset.byteSize();
+    public static final long SIZE$cr_mult = LAYOUT$cr_mult.byteSize();
+    public static final long SIZE$cr_luma_mult = LAYOUT$cr_luma_mult.byteSize();
+    public static final long SIZE$cr_offset = LAYOUT$cr_offset.byteSize();
+
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$grain_scaling_minus_8 = LAYOUT.byteOffset(PATH$grain_scaling_minus_8);
+    public static final long OFFSET$ar_coeff_lag = LAYOUT.byteOffset(PATH$ar_coeff_lag);
+    public static final long OFFSET$ar_coeff_shift_minus_6 = LAYOUT.byteOffset(PATH$ar_coeff_shift_minus_6);
+    public static final long OFFSET$grain_scale_shift = LAYOUT.byteOffset(PATH$grain_scale_shift);
+    public static final long OFFSET$grain_seed = LAYOUT.byteOffset(PATH$grain_seed);
+    public static final long OFFSET$film_grain_params_ref_idx = LAYOUT.byteOffset(PATH$film_grain_params_ref_idx);
+    public static final long OFFSET$num_y_points = LAYOUT.byteOffset(PATH$num_y_points);
+    public static final long OFFSET$point_y_value = LAYOUT.byteOffset(PATH$point_y_value);
+    public static final long OFFSET$point_y_scaling = LAYOUT.byteOffset(PATH$point_y_scaling);
+    public static final long OFFSET$num_cb_points = LAYOUT.byteOffset(PATH$num_cb_points);
+    public static final long OFFSET$point_cb_value = LAYOUT.byteOffset(PATH$point_cb_value);
+    public static final long OFFSET$point_cb_scaling = LAYOUT.byteOffset(PATH$point_cb_scaling);
+    public static final long OFFSET$num_cr_points = LAYOUT.byteOffset(PATH$num_cr_points);
+    public static final long OFFSET$point_cr_value = LAYOUT.byteOffset(PATH$point_cr_value);
+    public static final long OFFSET$point_cr_scaling = LAYOUT.byteOffset(PATH$point_cr_scaling);
+    public static final long OFFSET$ar_coeffs_y_plus_128 = LAYOUT.byteOffset(PATH$ar_coeffs_y_plus_128);
+    public static final long OFFSET$ar_coeffs_cb_plus_128 = LAYOUT.byteOffset(PATH$ar_coeffs_cb_plus_128);
+    public static final long OFFSET$ar_coeffs_cr_plus_128 = LAYOUT.byteOffset(PATH$ar_coeffs_cr_plus_128);
+    public static final long OFFSET$cb_mult = LAYOUT.byteOffset(PATH$cb_mult);
+    public static final long OFFSET$cb_luma_mult = LAYOUT.byteOffset(PATH$cb_luma_mult);
+    public static final long OFFSET$cb_offset = LAYOUT.byteOffset(PATH$cb_offset);
+    public static final long OFFSET$cr_mult = LAYOUT.byteOffset(PATH$cr_mult);
+    public static final long OFFSET$cr_luma_mult = LAYOUT.byteOffset(PATH$cr_luma_mult);
+    public static final long OFFSET$cr_offset = LAYOUT.byteOffset(PATH$cr_offset);
 }

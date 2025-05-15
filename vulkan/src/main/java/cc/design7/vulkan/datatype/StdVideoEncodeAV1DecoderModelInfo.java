@@ -16,6 +16,19 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoEncodeAV1DecoderModelInfo} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoEncodeAV1DecoderModelInfo {
+///     uint8_t buffer_delay_length_minus_1;
+///     uint8_t buffer_removal_time_length_minus_1;
+///     uint8_t frame_presentation_time_length_minus_1;
+///     uint8_t reserved1;
+///     uint32_t num_units_in_decoding_tick;
+/// } StdVideoEncodeAV1DecoderModelInfo;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +40,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeAV1DecoderModelInfo(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeAV1DecoderModelInfo allocate(Arena arena) {
-        return new StdVideoEncodeAV1DecoderModelInfo(arena.allocate(LAYOUT));
+        StdVideoEncodeAV1DecoderModelInfo ret = new StdVideoEncodeAV1DecoderModelInfo(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoEncodeAV1DecoderModelInfo[] allocate(Arena arena, int count) {
@@ -52,39 +66,6 @@ public record StdVideoEncodeAV1DecoderModelInfo(@NotNull MemorySegment segment) 
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_BYTE.withName("buffer_delay_length_minus_1"),
-        ValueLayout.JAVA_BYTE.withName("buffer_removal_time_length_minus_1"),
-        ValueLayout.JAVA_BYTE.withName("frame_presentation_time_length_minus_1"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
-        ValueLayout.JAVA_INT.withName("num_units_in_decoding_tick")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$buffer_delay_length_minus_1 = PathElement.groupElement("PATH$buffer_delay_length_minus_1");
-    public static final PathElement PATH$buffer_removal_time_length_minus_1 = PathElement.groupElement("PATH$buffer_removal_time_length_minus_1");
-    public static final PathElement PATH$frame_presentation_time_length_minus_1 = PathElement.groupElement("PATH$frame_presentation_time_length_minus_1");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
-    public static final PathElement PATH$num_units_in_decoding_tick = PathElement.groupElement("PATH$num_units_in_decoding_tick");
-
-    public static final OfByte LAYOUT$buffer_delay_length_minus_1 = (OfByte) LAYOUT.select(PATH$buffer_delay_length_minus_1);
-    public static final OfByte LAYOUT$buffer_removal_time_length_minus_1 = (OfByte) LAYOUT.select(PATH$buffer_removal_time_length_minus_1);
-    public static final OfByte LAYOUT$frame_presentation_time_length_minus_1 = (OfByte) LAYOUT.select(PATH$frame_presentation_time_length_minus_1);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
-    public static final OfInt LAYOUT$num_units_in_decoding_tick = (OfInt) LAYOUT.select(PATH$num_units_in_decoding_tick);
-
-    public static final long SIZE$buffer_delay_length_minus_1 = LAYOUT$buffer_delay_length_minus_1.byteSize();
-    public static final long SIZE$buffer_removal_time_length_minus_1 = LAYOUT$buffer_removal_time_length_minus_1.byteSize();
-    public static final long SIZE$frame_presentation_time_length_minus_1 = LAYOUT$frame_presentation_time_length_minus_1.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
-    public static final long SIZE$num_units_in_decoding_tick = LAYOUT$num_units_in_decoding_tick.byteSize();
-
-    public static final long OFFSET$buffer_delay_length_minus_1 = LAYOUT.byteOffset(PATH$buffer_delay_length_minus_1);
-    public static final long OFFSET$buffer_removal_time_length_minus_1 = LAYOUT.byteOffset(PATH$buffer_removal_time_length_minus_1);
-    public static final long OFFSET$frame_presentation_time_length_minus_1 = LAYOUT.byteOffset(PATH$frame_presentation_time_length_minus_1);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
-    public static final long OFFSET$num_units_in_decoding_tick = LAYOUT.byteOffset(PATH$num_units_in_decoding_tick);
 
     public @unsigned byte buffer_delay_length_minus_1() {
         return segment.get(LAYOUT$buffer_delay_length_minus_1, OFFSET$buffer_delay_length_minus_1);
@@ -126,4 +107,36 @@ public record StdVideoEncodeAV1DecoderModelInfo(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$num_units_in_decoding_tick, OFFSET$num_units_in_decoding_tick, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_BYTE.withName("buffer_delay_length_minus_1"),
+        ValueLayout.JAVA_BYTE.withName("buffer_removal_time_length_minus_1"),
+        ValueLayout.JAVA_BYTE.withName("frame_presentation_time_length_minus_1"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.JAVA_INT.withName("num_units_in_decoding_tick")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$buffer_delay_length_minus_1 = PathElement.groupElement("PATH$buffer_delay_length_minus_1");
+    public static final PathElement PATH$buffer_removal_time_length_minus_1 = PathElement.groupElement("PATH$buffer_removal_time_length_minus_1");
+    public static final PathElement PATH$frame_presentation_time_length_minus_1 = PathElement.groupElement("PATH$frame_presentation_time_length_minus_1");
+    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
+    public static final PathElement PATH$num_units_in_decoding_tick = PathElement.groupElement("PATH$num_units_in_decoding_tick");
+
+    public static final OfByte LAYOUT$buffer_delay_length_minus_1 = (OfByte) LAYOUT.select(PATH$buffer_delay_length_minus_1);
+    public static final OfByte LAYOUT$buffer_removal_time_length_minus_1 = (OfByte) LAYOUT.select(PATH$buffer_removal_time_length_minus_1);
+    public static final OfByte LAYOUT$frame_presentation_time_length_minus_1 = (OfByte) LAYOUT.select(PATH$frame_presentation_time_length_minus_1);
+    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
+    public static final OfInt LAYOUT$num_units_in_decoding_tick = (OfInt) LAYOUT.select(PATH$num_units_in_decoding_tick);
+
+    public static final long SIZE$buffer_delay_length_minus_1 = LAYOUT$buffer_delay_length_minus_1.byteSize();
+    public static final long SIZE$buffer_removal_time_length_minus_1 = LAYOUT$buffer_removal_time_length_minus_1.byteSize();
+    public static final long SIZE$frame_presentation_time_length_minus_1 = LAYOUT$frame_presentation_time_length_minus_1.byteSize();
+    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
+    public static final long SIZE$num_units_in_decoding_tick = LAYOUT$num_units_in_decoding_tick.byteSize();
+
+    public static final long OFFSET$buffer_delay_length_minus_1 = LAYOUT.byteOffset(PATH$buffer_delay_length_minus_1);
+    public static final long OFFSET$buffer_removal_time_length_minus_1 = LAYOUT.byteOffset(PATH$buffer_removal_time_length_minus_1);
+    public static final long OFFSET$frame_presentation_time_length_minus_1 = LAYOUT.byteOffset(PATH$frame_presentation_time_length_minus_1);
+    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
+    public static final long OFFSET$num_units_in_decoding_tick = LAYOUT.byteOffset(PATH$num_units_in_decoding_tick);
 }

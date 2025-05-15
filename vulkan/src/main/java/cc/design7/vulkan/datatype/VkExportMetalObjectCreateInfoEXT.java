@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkExportMetalObjectCreateInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExportMetalObjectCreateInfoEXT.html"><code>VkExportMetalObjectCreateInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkExportMetalObjectCreateInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkExportMetalObjectTypeFlagsEXT exportObjectType;
+/// } VkExportMetalObjectCreateInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECT_CREATE_INFO_EXT`
+///
+/// The {@link VkExportMetalObjectCreateInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkExportMetalObjectCreateInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExportMetalObjectCreateInfoEXT.html">VkExportMetalObjectCreateInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExportMetalObjectCreateInfoEXT.html"><code>VkExportMetalObjectCreateInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkExportMetalObjectCreateInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkExportMetalObjectCreateInfoEXT {
-        sType(VkStructureType.EXPORT_METAL_OBJECT_CREATE_INFO_EXT);
-    }
-
     public static VkExportMetalObjectCreateInfoEXT allocate(Arena arena) {
-        return new VkExportMetalObjectCreateInfoEXT(arena.allocate(LAYOUT));
+        VkExportMetalObjectCreateInfoEXT ret = new VkExportMetalObjectCreateInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.EXPORT_METAL_OBJECT_CREATE_INFO_EXT);
+        return ret;
     }
 
     public static VkExportMetalObjectCreateInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkExportMetalObjectCreateInfoEXT(@NotNull MemorySegment segment) i
         VkExportMetalObjectCreateInfoEXT[] ret = new VkExportMetalObjectCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkExportMetalObjectCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.EXPORT_METAL_OBJECT_CREATE_INFO_EXT);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkExportMetalObjectCreateInfoEXT(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("exportObjectType")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$exportObjectType = PathElement.groupElement("PATH$exportObjectType");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$exportObjectType = (OfInt) LAYOUT.select(PATH$exportObjectType);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$exportObjectType = LAYOUT$exportObjectType.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$exportObjectType = LAYOUT.byteOffset(PATH$exportObjectType);
+    public void autoInit() {
+        sType(VkStructureType.EXPORT_METAL_OBJECT_CREATE_INFO_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkExportMetalObjectCreateInfoEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$exportObjectType, OFFSET$exportObjectType, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("exportObjectType")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$exportObjectType = PathElement.groupElement("PATH$exportObjectType");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$exportObjectType = (OfInt) LAYOUT.select(PATH$exportObjectType);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$exportObjectType = LAYOUT$exportObjectType.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$exportObjectType = LAYOUT.byteOffset(PATH$exportObjectType);
 }

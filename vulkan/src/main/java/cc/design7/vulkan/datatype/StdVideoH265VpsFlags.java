@@ -17,6 +17,18 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoH265VpsFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoH265VpsFlags {
+///     uint32_t vps_temporal_id_nesting_flag : 1;
+///     uint32_t vps_sub_layer_ordering_info_present_flag : 1;
+///     uint32_t vps_timing_info_present_flag : 1;
+///     uint32_t vps_poc_proportional_to_timing_flag : 1;
+/// } StdVideoH265VpsFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +40,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265VpsFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265VpsFlags allocate(Arena arena) {
-        return new StdVideoH265VpsFlags(arena.allocate(LAYOUT));
+        StdVideoH265VpsFlags ret = new StdVideoH265VpsFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoH265VpsFlags[] allocate(Arena arena, int count) {
@@ -53,18 +66,6 @@ public record StdVideoH265VpsFlags(@NotNull MemorySegment segment) implements IP
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag = PathElement.groupElement("PATH$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag");
-
-    public static final OfInt LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag = (OfInt) LAYOUT.select(PATH$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
-
-
-    public static final long OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag = LAYOUT.byteOffset(PATH$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
 
     public boolean vps_temporal_id_nesting_flag() {
         MemorySegment s = segment.asSlice(OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
@@ -106,4 +107,15 @@ public record StdVideoH265VpsFlags(@NotNull MemorySegment segment) implements IP
         BitfieldUtil.writeBit(s, 3, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag = PathElement.groupElement("PATH$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag");
+
+    public static final OfInt LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag = (OfInt) LAYOUT.select(PATH$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
+
+
+    public static final long OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag = LAYOUT.byteOffset(PATH$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
 }

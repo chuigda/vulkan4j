@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkExternalSemaphoreProperties} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalSemaphoreProperties.html"><code>VkExternalSemaphoreProperties</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkExternalSemaphoreProperties {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkExternalSemaphoreHandleTypeFlags exportFromImportedHandleTypes;
+///     VkExternalSemaphoreHandleTypeFlags compatibleHandleTypes;
+///     VkExternalSemaphoreFeatureFlags externalSemaphoreFeatures;
+/// } VkExternalSemaphoreProperties;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_EXTERNAL_SEMAPHORE_PROPERTIES`
+///
+/// The {@link VkExternalSemaphoreProperties#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkExternalSemaphoreProperties#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalSemaphoreProperties.html">VkExternalSemaphoreProperties</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalSemaphoreProperties.html"><code>VkExternalSemaphoreProperties</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkExternalSemaphoreProperties(@NotNull MemorySegment segment) implements IPointer {
-    public VkExternalSemaphoreProperties {
-        sType(VkStructureType.EXTERNAL_SEMAPHORE_PROPERTIES);
-    }
-
     public static VkExternalSemaphoreProperties allocate(Arena arena) {
-        return new VkExternalSemaphoreProperties(arena.allocate(LAYOUT));
+        VkExternalSemaphoreProperties ret = new VkExternalSemaphoreProperties(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.EXTERNAL_SEMAPHORE_PROPERTIES);
+        return ret;
     }
 
     public static VkExternalSemaphoreProperties[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkExternalSemaphoreProperties(@NotNull MemorySegment segment) impl
         VkExternalSemaphoreProperties[] ret = new VkExternalSemaphoreProperties[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkExternalSemaphoreProperties(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.EXTERNAL_SEMAPHORE_PROPERTIES);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkExternalSemaphoreProperties(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("exportFromImportedHandleTypes"),
-        ValueLayout.JAVA_INT.withName("compatibleHandleTypes"),
-        ValueLayout.JAVA_INT.withName("externalSemaphoreFeatures")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$exportFromImportedHandleTypes = PathElement.groupElement("PATH$exportFromImportedHandleTypes");
-    public static final PathElement PATH$compatibleHandleTypes = PathElement.groupElement("PATH$compatibleHandleTypes");
-    public static final PathElement PATH$externalSemaphoreFeatures = PathElement.groupElement("PATH$externalSemaphoreFeatures");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$exportFromImportedHandleTypes = (OfInt) LAYOUT.select(PATH$exportFromImportedHandleTypes);
-    public static final OfInt LAYOUT$compatibleHandleTypes = (OfInt) LAYOUT.select(PATH$compatibleHandleTypes);
-    public static final OfInt LAYOUT$externalSemaphoreFeatures = (OfInt) LAYOUT.select(PATH$externalSemaphoreFeatures);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$exportFromImportedHandleTypes = LAYOUT$exportFromImportedHandleTypes.byteSize();
-    public static final long SIZE$compatibleHandleTypes = LAYOUT$compatibleHandleTypes.byteSize();
-    public static final long SIZE$externalSemaphoreFeatures = LAYOUT$externalSemaphoreFeatures.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$exportFromImportedHandleTypes = LAYOUT.byteOffset(PATH$exportFromImportedHandleTypes);
-    public static final long OFFSET$compatibleHandleTypes = LAYOUT.byteOffset(PATH$compatibleHandleTypes);
-    public static final long OFFSET$externalSemaphoreFeatures = LAYOUT.byteOffset(PATH$externalSemaphoreFeatures);
+    public void autoInit() {
+        sType(VkStructureType.EXTERNAL_SEMAPHORE_PROPERTIES);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -136,4 +127,36 @@ public record VkExternalSemaphoreProperties(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$externalSemaphoreFeatures, OFFSET$externalSemaphoreFeatures, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("exportFromImportedHandleTypes"),
+        ValueLayout.JAVA_INT.withName("compatibleHandleTypes"),
+        ValueLayout.JAVA_INT.withName("externalSemaphoreFeatures")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$exportFromImportedHandleTypes = PathElement.groupElement("PATH$exportFromImportedHandleTypes");
+    public static final PathElement PATH$compatibleHandleTypes = PathElement.groupElement("PATH$compatibleHandleTypes");
+    public static final PathElement PATH$externalSemaphoreFeatures = PathElement.groupElement("PATH$externalSemaphoreFeatures");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$exportFromImportedHandleTypes = (OfInt) LAYOUT.select(PATH$exportFromImportedHandleTypes);
+    public static final OfInt LAYOUT$compatibleHandleTypes = (OfInt) LAYOUT.select(PATH$compatibleHandleTypes);
+    public static final OfInt LAYOUT$externalSemaphoreFeatures = (OfInt) LAYOUT.select(PATH$externalSemaphoreFeatures);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$exportFromImportedHandleTypes = LAYOUT$exportFromImportedHandleTypes.byteSize();
+    public static final long SIZE$compatibleHandleTypes = LAYOUT$compatibleHandleTypes.byteSize();
+    public static final long SIZE$externalSemaphoreFeatures = LAYOUT$externalSemaphoreFeatures.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$exportFromImportedHandleTypes = LAYOUT.byteOffset(PATH$exportFromImportedHandleTypes);
+    public static final long OFFSET$compatibleHandleTypes = LAYOUT.byteOffset(PATH$compatibleHandleTypes);
+    public static final long OFFSET$externalSemaphoreFeatures = LAYOUT.byteOffset(PATH$externalSemaphoreFeatures);
 }

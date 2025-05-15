@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkTimeDomainKHR.html">VkTimeDomainKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkTimeDomainKHR.html"><code>VkTimeDomainKHR</code></a>
 public final class VkTimeDomainKHR {
     public static final int DEVICE = 0x0;
     public static final int CLOCK_MONOTONIC = 0x1;

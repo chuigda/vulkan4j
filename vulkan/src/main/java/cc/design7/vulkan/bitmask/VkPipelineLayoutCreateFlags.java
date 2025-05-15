@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineLayoutCreateFlags.html">VkPipelineLayoutCreateFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineLayoutCreateFlags.html"><code>VkPipelineLayoutCreateFlags</code></a>
 public final class VkPipelineLayoutCreateFlags {
     public static final int INDEPENDENT_SETS_EXT = 0x2;
 

@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkComponentSwizzle.html">VkComponentSwizzle</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkComponentSwizzle.html"><code>VkComponentSwizzle</code></a>
 public final class VkComponentSwizzle {
     public static final int IDENTITY = 0x0;
     public static final int ZERO = 0x1;

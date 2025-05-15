@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkValidationCheckEXT.html">VkValidationCheckEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkValidationCheckEXT.html"><code>VkValidationCheckEXT</code></a>
 public final class VkValidationCheckEXT {
     public static final int ALL = 0x0;
     public static final int SHADERS = 0x1;

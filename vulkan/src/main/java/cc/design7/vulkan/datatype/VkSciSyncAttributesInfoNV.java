@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkSciSyncAttributesInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSciSyncAttributesInfoNV.html"><code>VkSciSyncAttributesInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkSciSyncAttributesInfoNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkSciSyncClientTypeNV clientType;
+///     VkSciSyncPrimitiveTypeNV primitiveType;
+/// } VkSciSyncAttributesInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_SCI_SYNC_ATTRIBUTES_INFO_NV`
+///
+/// The {@link VkSciSyncAttributesInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkSciSyncAttributesInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSciSyncAttributesInfoNV.html">VkSciSyncAttributesInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSciSyncAttributesInfoNV.html"><code>VkSciSyncAttributesInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkSciSyncAttributesInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkSciSyncAttributesInfoNV {
-        sType(VkStructureType.SCI_SYNC_ATTRIBUTES_INFO_NV);
-    }
-
     public static VkSciSyncAttributesInfoNV allocate(Arena arena) {
-        return new VkSciSyncAttributesInfoNV(arena.allocate(LAYOUT));
+        VkSciSyncAttributesInfoNV ret = new VkSciSyncAttributesInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.SCI_SYNC_ATTRIBUTES_INFO_NV);
+        return ret;
     }
 
     public static VkSciSyncAttributesInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkSciSyncAttributesInfoNV(@NotNull MemorySegment segment) implemen
         VkSciSyncAttributesInfoNV[] ret = new VkSciSyncAttributesInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkSciSyncAttributesInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.SCI_SYNC_ATTRIBUTES_INFO_NV);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkSciSyncAttributesInfoNV(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("clientType"),
-        ValueLayout.JAVA_INT.withName("primitiveType")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$clientType = PathElement.groupElement("PATH$clientType");
-    public static final PathElement PATH$primitiveType = PathElement.groupElement("PATH$primitiveType");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$clientType = (OfInt) LAYOUT.select(PATH$clientType);
-    public static final OfInt LAYOUT$primitiveType = (OfInt) LAYOUT.select(PATH$primitiveType);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$clientType = LAYOUT$clientType.byteSize();
-    public static final long SIZE$primitiveType = LAYOUT$primitiveType.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$clientType = LAYOUT.byteOffset(PATH$clientType);
-    public static final long OFFSET$primitiveType = LAYOUT.byteOffset(PATH$primitiveType);
+    public void autoInit() {
+        sType(VkStructureType.SCI_SYNC_ATTRIBUTES_INFO_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkSciSyncAttributesInfoNV(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$primitiveType, OFFSET$primitiveType, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("clientType"),
+        ValueLayout.JAVA_INT.withName("primitiveType")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$clientType = PathElement.groupElement("PATH$clientType");
+    public static final PathElement PATH$primitiveType = PathElement.groupElement("PATH$primitiveType");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$clientType = (OfInt) LAYOUT.select(PATH$clientType);
+    public static final OfInt LAYOUT$primitiveType = (OfInt) LAYOUT.select(PATH$primitiveType);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$clientType = LAYOUT$clientType.byteSize();
+    public static final long SIZE$primitiveType = LAYOUT$primitiveType.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$clientType = LAYOUT.byteOffset(PATH$clientType);
+    public static final long OFFSET$primitiveType = LAYOUT.byteOffset(PATH$primitiveType);
 }

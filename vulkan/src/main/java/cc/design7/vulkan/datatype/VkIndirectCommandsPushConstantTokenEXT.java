@@ -14,8 +14,17 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkIndirectCommandsPushConstantTokenEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsPushConstantTokenEXT.html"><code>VkIndirectCommandsPushConstantTokenEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkIndirectCommandsPushConstantTokenEXT {
+///     VkPushConstantRange updateRange;
+/// } VkIndirectCommandsPushConstantTokenEXT;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +33,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsPushConstantTokenEXT.html">VkIndirectCommandsPushConstantTokenEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsPushConstantTokenEXT.html"><code>VkIndirectCommandsPushConstantTokenEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkIndirectCommandsPushConstantTokenEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkIndirectCommandsPushConstantTokenEXT allocate(Arena arena) {
-        return new VkIndirectCommandsPushConstantTokenEXT(arena.allocate(LAYOUT));
+        VkIndirectCommandsPushConstantTokenEXT ret = new VkIndirectCommandsPushConstantTokenEXT(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkIndirectCommandsPushConstantTokenEXT[] allocate(Arena arena, int count) {
@@ -55,6 +65,14 @@ public record VkIndirectCommandsPushConstantTokenEXT(@NotNull MemorySegment segm
         return ret;
     }
 
+    public VkPushConstantRange updateRange() {
+        return new VkPushConstantRange(segment.asSlice(OFFSET$updateRange, LAYOUT$updateRange));
+    }
+
+    public void updateRange(VkPushConstantRange value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$updateRange, SIZE$updateRange);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         VkPushConstantRange.LAYOUT.withName("updateRange")
     );
@@ -67,13 +85,4 @@ public record VkIndirectCommandsPushConstantTokenEXT(@NotNull MemorySegment segm
     public static final long SIZE$updateRange = LAYOUT$updateRange.byteSize();
 
     public static final long OFFSET$updateRange = LAYOUT.byteOffset(PATH$updateRange);
-
-    public VkPushConstantRange updateRange() {
-        return new VkPushConstantRange(segment.asSlice(OFFSET$updateRange, LAYOUT$updateRange));
-    }
-
-    public void updateRange(VkPushConstantRange value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$updateRange, SIZE$updateRange);
-    }
-
 }

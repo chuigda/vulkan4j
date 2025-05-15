@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFragmentShadingRateNV.html">VkFragmentShadingRateNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFragmentShadingRateNV.html"><code>VkFragmentShadingRateNV</code></a>
 public final class VkFragmentShadingRateNV {
     public static final int _1_INVOCATION_PER_PIXEL = 0x0;
     public static final int _1_INVOCATION_PER_1X2_PIXELS = 0x1;

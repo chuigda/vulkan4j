@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceShaderTileImagePropertiesEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderTileImagePropertiesEXT.html"><code>VkPhysicalDeviceShaderTileImagePropertiesEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceShaderTileImagePropertiesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 shaderTileImageCoherentReadAccelerated;
+///     VkBool32 shaderTileImageReadSampleFromPixelRateInvocation;
+///     VkBool32 shaderTileImageReadFromHelperInvocation;
+/// } VkPhysicalDeviceShaderTileImagePropertiesEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_TILE_IMAGE_PROPERTIES_EXT`
+///
+/// The {@link VkPhysicalDeviceShaderTileImagePropertiesEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceShaderTileImagePropertiesEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderTileImagePropertiesEXT.html">VkPhysicalDeviceShaderTileImagePropertiesEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderTileImagePropertiesEXT.html"><code>VkPhysicalDeviceShaderTileImagePropertiesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceShaderTileImagePropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceShaderTileImagePropertiesEXT {
-        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_TILE_IMAGE_PROPERTIES_EXT);
-    }
-
     public static VkPhysicalDeviceShaderTileImagePropertiesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceShaderTileImagePropertiesEXT(arena.allocate(LAYOUT));
+        VkPhysicalDeviceShaderTileImagePropertiesEXT ret = new VkPhysicalDeviceShaderTileImagePropertiesEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_SHADER_TILE_IMAGE_PROPERTIES_EXT);
+        return ret;
     }
 
     public static VkPhysicalDeviceShaderTileImagePropertiesEXT[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkPhysicalDeviceShaderTileImagePropertiesEXT(@NotNull MemorySegmen
         VkPhysicalDeviceShaderTileImagePropertiesEXT[] ret = new VkPhysicalDeviceShaderTileImagePropertiesEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceShaderTileImagePropertiesEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_SHADER_TILE_IMAGE_PROPERTIES_EXT);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkPhysicalDeviceShaderTileImagePropertiesEXT(@NotNull MemorySegmen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("shaderTileImageCoherentReadAccelerated"),
-        ValueLayout.JAVA_INT.withName("shaderTileImageReadSampleFromPixelRateInvocation"),
-        ValueLayout.JAVA_INT.withName("shaderTileImageReadFromHelperInvocation")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shaderTileImageCoherentReadAccelerated = PathElement.groupElement("PATH$shaderTileImageCoherentReadAccelerated");
-    public static final PathElement PATH$shaderTileImageReadSampleFromPixelRateInvocation = PathElement.groupElement("PATH$shaderTileImageReadSampleFromPixelRateInvocation");
-    public static final PathElement PATH$shaderTileImageReadFromHelperInvocation = PathElement.groupElement("PATH$shaderTileImageReadFromHelperInvocation");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$shaderTileImageCoherentReadAccelerated = (OfInt) LAYOUT.select(PATH$shaderTileImageCoherentReadAccelerated);
-    public static final OfInt LAYOUT$shaderTileImageReadSampleFromPixelRateInvocation = (OfInt) LAYOUT.select(PATH$shaderTileImageReadSampleFromPixelRateInvocation);
-    public static final OfInt LAYOUT$shaderTileImageReadFromHelperInvocation = (OfInt) LAYOUT.select(PATH$shaderTileImageReadFromHelperInvocation);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$shaderTileImageCoherentReadAccelerated = LAYOUT$shaderTileImageCoherentReadAccelerated.byteSize();
-    public static final long SIZE$shaderTileImageReadSampleFromPixelRateInvocation = LAYOUT$shaderTileImageReadSampleFromPixelRateInvocation.byteSize();
-    public static final long SIZE$shaderTileImageReadFromHelperInvocation = LAYOUT$shaderTileImageReadFromHelperInvocation.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$shaderTileImageCoherentReadAccelerated = LAYOUT.byteOffset(PATH$shaderTileImageCoherentReadAccelerated);
-    public static final long OFFSET$shaderTileImageReadSampleFromPixelRateInvocation = LAYOUT.byteOffset(PATH$shaderTileImageReadSampleFromPixelRateInvocation);
-    public static final long OFFSET$shaderTileImageReadFromHelperInvocation = LAYOUT.byteOffset(PATH$shaderTileImageReadFromHelperInvocation);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_TILE_IMAGE_PROPERTIES_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -136,4 +127,36 @@ public record VkPhysicalDeviceShaderTileImagePropertiesEXT(@NotNull MemorySegmen
         segment.set(LAYOUT$shaderTileImageReadFromHelperInvocation, OFFSET$shaderTileImageReadFromHelperInvocation, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("shaderTileImageCoherentReadAccelerated"),
+        ValueLayout.JAVA_INT.withName("shaderTileImageReadSampleFromPixelRateInvocation"),
+        ValueLayout.JAVA_INT.withName("shaderTileImageReadFromHelperInvocation")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$shaderTileImageCoherentReadAccelerated = PathElement.groupElement("PATH$shaderTileImageCoherentReadAccelerated");
+    public static final PathElement PATH$shaderTileImageReadSampleFromPixelRateInvocation = PathElement.groupElement("PATH$shaderTileImageReadSampleFromPixelRateInvocation");
+    public static final PathElement PATH$shaderTileImageReadFromHelperInvocation = PathElement.groupElement("PATH$shaderTileImageReadFromHelperInvocation");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$shaderTileImageCoherentReadAccelerated = (OfInt) LAYOUT.select(PATH$shaderTileImageCoherentReadAccelerated);
+    public static final OfInt LAYOUT$shaderTileImageReadSampleFromPixelRateInvocation = (OfInt) LAYOUT.select(PATH$shaderTileImageReadSampleFromPixelRateInvocation);
+    public static final OfInt LAYOUT$shaderTileImageReadFromHelperInvocation = (OfInt) LAYOUT.select(PATH$shaderTileImageReadFromHelperInvocation);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderTileImageCoherentReadAccelerated = LAYOUT$shaderTileImageCoherentReadAccelerated.byteSize();
+    public static final long SIZE$shaderTileImageReadSampleFromPixelRateInvocation = LAYOUT$shaderTileImageReadSampleFromPixelRateInvocation.byteSize();
+    public static final long SIZE$shaderTileImageReadFromHelperInvocation = LAYOUT$shaderTileImageReadFromHelperInvocation.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$shaderTileImageCoherentReadAccelerated = LAYOUT.byteOffset(PATH$shaderTileImageCoherentReadAccelerated);
+    public static final long OFFSET$shaderTileImageReadSampleFromPixelRateInvocation = LAYOUT.byteOffset(PATH$shaderTileImageReadSampleFromPixelRateInvocation);
+    public static final long OFFSET$shaderTileImageReadFromHelperInvocation = LAYOUT.byteOffset(PATH$shaderTileImageReadFromHelperInvocation);
 }

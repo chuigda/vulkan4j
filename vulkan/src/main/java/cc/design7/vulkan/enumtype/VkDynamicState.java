@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDynamicState.html">VkDynamicState</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDynamicState.html"><code>VkDynamicState</code></a>
 public final class VkDynamicState {
     public static final int VIEWPORT = 0x0;
     public static final int SCISSOR = 0x1;

@@ -14,8 +14,26 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkSubpassDescription} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassDescription.html"><code>VkSubpassDescription</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkSubpassDescription {
+///     VkSubpassDescriptionFlags flags;
+///     VkPipelineBindPoint pipelineBindPoint;
+///     uint32_t inputAttachmentCount;
+///     VkAttachmentReference const* pInputAttachments;
+///     uint32_t colorAttachmentCount;
+///     VkAttachmentReference const* pColorAttachments;
+///     VkAttachmentReference const* pResolveAttachments;
+///     VkAttachmentReference const* pDepthStencilAttachment;
+///     uint32_t preserveAttachmentCount;
+///     uint32_t const* pPreserveAttachments;
+/// } VkSubpassDescription;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +42,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassDescription.html">VkSubpassDescription</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassDescription.html"><code>VkSubpassDescription</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkSubpassDescription(@NotNull MemorySegment segment) implements IPointer {
     public static VkSubpassDescription allocate(Arena arena) {
-        return new VkSubpassDescription(arena.allocate(LAYOUT));
+        VkSubpassDescription ret = new VkSubpassDescription(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkSubpassDescription[] allocate(Arena arena, int count) {
@@ -53,6 +72,211 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IP
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public @enumtype(VkSubpassDescriptionFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkSubpassDescriptionFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @enumtype(VkPipelineBindPoint.class) int pipelineBindPoint() {
+        return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
+    }
+
+    public void pipelineBindPoint(@enumtype(VkPipelineBindPoint.class) int value) {
+        segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
+    }
+
+    public @unsigned int inputAttachmentCount() {
+        return segment.get(LAYOUT$inputAttachmentCount, OFFSET$inputAttachmentCount);
+    }
+
+    public void inputAttachmentCount(@unsigned int value) {
+        segment.set(LAYOUT$inputAttachmentCount, OFFSET$inputAttachmentCount, value);
+    }
+
+    public @pointer(comment="VkAttachmentReference*") MemorySegment pInputAttachmentsRaw() {
+        return segment.get(LAYOUT$pInputAttachments, OFFSET$pInputAttachments);
+    }
+
+    public void pInputAttachmentsRaw(@pointer(comment="VkAttachmentReference*") MemorySegment value) {
+        segment.set(LAYOUT$pInputAttachments, OFFSET$pInputAttachments, value);
+    }
+
+    public @Nullable VkAttachmentReference pInputAttachments() {
+        MemorySegment s = pInputAttachmentsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkAttachmentReference(s);
+    }
+
+    public void pInputAttachments(@Nullable VkAttachmentReference value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pInputAttachmentsRaw(s);
+    }
+
+    @unsafe public @Nullable VkAttachmentReference[] pInputAttachments(int assumedCount) {
+        MemorySegment s = pInputAttachmentsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkAttachmentReference.SIZE);
+        VkAttachmentReference[] ret = new VkAttachmentReference[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkAttachmentReference(s.asSlice(i * VkAttachmentReference.SIZE, VkAttachmentReference.SIZE));
+        }
+        return ret;
+    }
+
+    public @unsigned int colorAttachmentCount() {
+        return segment.get(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount);
+    }
+
+    public void colorAttachmentCount(@unsigned int value) {
+        segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
+    }
+
+    public @pointer(comment="VkAttachmentReference*") MemorySegment pColorAttachmentsRaw() {
+        return segment.get(LAYOUT$pColorAttachments, OFFSET$pColorAttachments);
+    }
+
+    public void pColorAttachmentsRaw(@pointer(comment="VkAttachmentReference*") MemorySegment value) {
+        segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
+    }
+
+    public @Nullable VkAttachmentReference pColorAttachments() {
+        MemorySegment s = pColorAttachmentsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkAttachmentReference(s);
+    }
+
+    public void pColorAttachments(@Nullable VkAttachmentReference value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pColorAttachmentsRaw(s);
+    }
+
+    @unsafe public @Nullable VkAttachmentReference[] pColorAttachments(int assumedCount) {
+        MemorySegment s = pColorAttachmentsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkAttachmentReference.SIZE);
+        VkAttachmentReference[] ret = new VkAttachmentReference[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkAttachmentReference(s.asSlice(i * VkAttachmentReference.SIZE, VkAttachmentReference.SIZE));
+        }
+        return ret;
+    }
+
+    public @pointer(comment="VkAttachmentReference*") MemorySegment pResolveAttachmentsRaw() {
+        return segment.get(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments);
+    }
+
+    public void pResolveAttachmentsRaw(@pointer(comment="VkAttachmentReference*") MemorySegment value) {
+        segment.set(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments, value);
+    }
+
+    public @Nullable VkAttachmentReference pResolveAttachments() {
+        MemorySegment s = pResolveAttachmentsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkAttachmentReference(s);
+    }
+
+    public void pResolveAttachments(@Nullable VkAttachmentReference value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pResolveAttachmentsRaw(s);
+    }
+
+    @unsafe public @Nullable VkAttachmentReference[] pResolveAttachments(int assumedCount) {
+        MemorySegment s = pResolveAttachmentsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkAttachmentReference.SIZE);
+        VkAttachmentReference[] ret = new VkAttachmentReference[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkAttachmentReference(s.asSlice(i * VkAttachmentReference.SIZE, VkAttachmentReference.SIZE));
+        }
+        return ret;
+    }
+
+    public @pointer(comment="VkAttachmentReference*") MemorySegment pDepthStencilAttachmentRaw() {
+        return segment.get(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment);
+    }
+
+    public void pDepthStencilAttachmentRaw(@pointer(comment="VkAttachmentReference*") MemorySegment value) {
+        segment.set(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment, value);
+    }
+
+    public @Nullable VkAttachmentReference pDepthStencilAttachment() {
+        MemorySegment s = pDepthStencilAttachmentRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkAttachmentReference(s);
+    }
+
+    public void pDepthStencilAttachment(@Nullable VkAttachmentReference value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDepthStencilAttachmentRaw(s);
+    }
+
+    @unsafe public @Nullable VkAttachmentReference[] pDepthStencilAttachment(int assumedCount) {
+        MemorySegment s = pDepthStencilAttachmentRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkAttachmentReference.SIZE);
+        VkAttachmentReference[] ret = new VkAttachmentReference[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkAttachmentReference(s.asSlice(i * VkAttachmentReference.SIZE, VkAttachmentReference.SIZE));
+        }
+        return ret;
+    }
+
+    public @unsigned int preserveAttachmentCount() {
+        return segment.get(LAYOUT$preserveAttachmentCount, OFFSET$preserveAttachmentCount);
+    }
+
+    public void preserveAttachmentCount(@unsigned int value) {
+        segment.set(LAYOUT$preserveAttachmentCount, OFFSET$preserveAttachmentCount, value);
+    }
+
+    public @pointer(comment="int*") MemorySegment pPreserveAttachmentsRaw() {
+        return segment.get(LAYOUT$pPreserveAttachments, OFFSET$pPreserveAttachments);
+    }
+
+    public void pPreserveAttachmentsRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pPreserveAttachments, OFFSET$pPreserveAttachments, value);
+    }
+
+    /// Note: the returned {@link IntPtr} does not have correct
+    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
+    /// writing to the buffer.
+    public @Nullable @unsigned IntPtr pPreserveAttachments() {
+        MemorySegment s = pPreserveAttachmentsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new IntPtr(s);
+    }
+
+    public void pPreserveAttachments(@Nullable @unsigned IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pPreserveAttachmentsRaw(s);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -112,210 +336,4 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IP
     public static final long OFFSET$pDepthStencilAttachment = LAYOUT.byteOffset(PATH$pDepthStencilAttachment);
     public static final long OFFSET$preserveAttachmentCount = LAYOUT.byteOffset(PATH$preserveAttachmentCount);
     public static final long OFFSET$pPreserveAttachments = LAYOUT.byteOffset(PATH$pPreserveAttachments);
-
-    public @enumtype(VkSubpassDescriptionFlags.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkSubpassDescriptionFlags.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @enumtype(VkPipelineBindPoint.class) int pipelineBindPoint() {
-        return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
-    }
-
-    public void pipelineBindPoint(@enumtype(VkPipelineBindPoint.class) int value) {
-        segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
-    }
-
-    public @unsigned int inputAttachmentCount() {
-        return segment.get(LAYOUT$inputAttachmentCount, OFFSET$inputAttachmentCount);
-    }
-
-    public void inputAttachmentCount(@unsigned int value) {
-        segment.set(LAYOUT$inputAttachmentCount, OFFSET$inputAttachmentCount, value);
-    }
-
-    public @pointer(comment="VkAttachmentReference*") MemorySegment pInputAttachmentsRaw() {
-        return segment.get(LAYOUT$pInputAttachments, OFFSET$pInputAttachments);
-    }
-
-    public void pInputAttachmentsRaw(@pointer(comment="VkAttachmentReference*") MemorySegment value) {
-        segment.set(LAYOUT$pInputAttachments, OFFSET$pInputAttachments, value);
-    }
-
-    public @Nullable VkAttachmentReference pInputAttachments() {
-        MemorySegment s = pInputAttachmentsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkAttachmentReference(s);
-    }
-
-    public void pInputAttachments(@Nullable VkAttachmentReference value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pInputAttachmentsRaw(s);
-    }
-
-    @unsafe public @Nullable VkAttachmentReference[] pInputAttachments(int assumedCount) {
-        MemorySegment s = pInputAttachmentsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkAttachmentReference.SIZE);
-        VkAttachmentReference[] ret = new VkAttachmentReference[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentReference(s.asSlice(i * VkAttachmentReference.SIZE, VkAttachmentReference.SIZE));
-        }
-        return ret;
-    }
-
-    public @unsigned int colorAttachmentCount() {
-        return segment.get(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount);
-    }
-
-    public void colorAttachmentCount(@unsigned int value) {
-        segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
-    }
-
-    public @pointer(comment="VkAttachmentReference*") MemorySegment pColorAttachmentsRaw() {
-        return segment.get(LAYOUT$pColorAttachments, OFFSET$pColorAttachments);
-    }
-
-    public void pColorAttachmentsRaw(@pointer(comment="VkAttachmentReference*") MemorySegment value) {
-        segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
-    }
-
-    public @Nullable VkAttachmentReference pColorAttachments() {
-        MemorySegment s = pColorAttachmentsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkAttachmentReference(s);
-    }
-
-    public void pColorAttachments(@Nullable VkAttachmentReference value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pColorAttachmentsRaw(s);
-    }
-
-    @unsafe public @Nullable VkAttachmentReference[] pColorAttachments(int assumedCount) {
-        MemorySegment s = pColorAttachmentsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkAttachmentReference.SIZE);
-        VkAttachmentReference[] ret = new VkAttachmentReference[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentReference(s.asSlice(i * VkAttachmentReference.SIZE, VkAttachmentReference.SIZE));
-        }
-        return ret;
-    }
-
-    public @pointer(comment="VkAttachmentReference*") MemorySegment pResolveAttachmentsRaw() {
-        return segment.get(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments);
-    }
-
-    public void pResolveAttachmentsRaw(@pointer(comment="VkAttachmentReference*") MemorySegment value) {
-        segment.set(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments, value);
-    }
-
-    public @Nullable VkAttachmentReference pResolveAttachments() {
-        MemorySegment s = pResolveAttachmentsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkAttachmentReference(s);
-    }
-
-    public void pResolveAttachments(@Nullable VkAttachmentReference value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pResolveAttachmentsRaw(s);
-    }
-
-    @unsafe public @Nullable VkAttachmentReference[] pResolveAttachments(int assumedCount) {
-        MemorySegment s = pResolveAttachmentsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkAttachmentReference.SIZE);
-        VkAttachmentReference[] ret = new VkAttachmentReference[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentReference(s.asSlice(i * VkAttachmentReference.SIZE, VkAttachmentReference.SIZE));
-        }
-        return ret;
-    }
-
-    public @pointer(comment="VkAttachmentReference*") MemorySegment pDepthStencilAttachmentRaw() {
-        return segment.get(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment);
-    }
-
-    public void pDepthStencilAttachmentRaw(@pointer(comment="VkAttachmentReference*") MemorySegment value) {
-        segment.set(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment, value);
-    }
-
-    public @Nullable VkAttachmentReference pDepthStencilAttachment() {
-        MemorySegment s = pDepthStencilAttachmentRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkAttachmentReference(s);
-    }
-
-    public void pDepthStencilAttachment(@Nullable VkAttachmentReference value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pDepthStencilAttachmentRaw(s);
-    }
-
-    @unsafe public @Nullable VkAttachmentReference[] pDepthStencilAttachment(int assumedCount) {
-        MemorySegment s = pDepthStencilAttachmentRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkAttachmentReference.SIZE);
-        VkAttachmentReference[] ret = new VkAttachmentReference[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentReference(s.asSlice(i * VkAttachmentReference.SIZE, VkAttachmentReference.SIZE));
-        }
-        return ret;
-    }
-
-    public @unsigned int preserveAttachmentCount() {
-        return segment.get(LAYOUT$preserveAttachmentCount, OFFSET$preserveAttachmentCount);
-    }
-
-    public void preserveAttachmentCount(@unsigned int value) {
-        segment.set(LAYOUT$preserveAttachmentCount, OFFSET$preserveAttachmentCount, value);
-    }
-
-    public @pointer(comment="int*") MemorySegment pPreserveAttachmentsRaw() {
-        return segment.get(LAYOUT$pPreserveAttachments, OFFSET$pPreserveAttachments);
-    }
-
-    public void pPreserveAttachmentsRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pPreserveAttachments, OFFSET$pPreserveAttachments, value);
-    }
-
-    /// Note: the returned {@link IntPtr} does not have correct
-    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
-    /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
-    /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pPreserveAttachments() {
-        MemorySegment s = pPreserveAttachmentsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new IntPtr(s);
-    }
-
-    public void pPreserveAttachments(@Nullable @unsigned IntPtr value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pPreserveAttachmentsRaw(s);
-    }
-
 }

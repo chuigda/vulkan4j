@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDependencyFlags.html">VkDependencyFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDependencyFlags.html"><code>VkDependencyFlags</code></a>
 public final class VkDependencyFlags {
     public static final int BY_REGION = 0x1;
     public static final int DEVICE_GROUP = 0x4;

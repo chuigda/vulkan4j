@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkOffset2D} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOffset2D.html"><code>VkOffset2D</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkOffset2D {
+///     int32_t x;
+///     int32_t y;
+/// } VkOffset2D;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOffset2D.html">VkOffset2D</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOffset2D.html"><code>VkOffset2D</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkOffset2D(@NotNull MemorySegment segment) implements IPointer {
     public static VkOffset2D allocate(Arena arena) {
-        return new VkOffset2D(arena.allocate(LAYOUT));
+        VkOffset2D ret = new VkOffset2D(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkOffset2D[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkOffset2D(@NotNull MemorySegment segment) implements IPointer {
         return ret;
     }
 
+    public int x() {
+        return segment.get(LAYOUT$x, OFFSET$x);
+    }
+
+    public void x(int value) {
+        segment.set(LAYOUT$x, OFFSET$x, value);
+    }
+
+    public int y() {
+        return segment.get(LAYOUT$y, OFFSET$y);
+    }
+
+    public void y(int value) {
+        segment.set(LAYOUT$y, OFFSET$y, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("x"),
         ValueLayout.JAVA_INT.withName("y")
@@ -72,21 +99,4 @@ public record VkOffset2D(@NotNull MemorySegment segment) implements IPointer {
 
     public static final long OFFSET$x = LAYOUT.byteOffset(PATH$x);
     public static final long OFFSET$y = LAYOUT.byteOffset(PATH$y);
-
-    public int x() {
-        return segment.get(LAYOUT$x, OFFSET$x);
-    }
-
-    public void x(int value) {
-        segment.set(LAYOUT$x, OFFSET$x, value);
-    }
-
-    public int y() {
-        return segment.get(LAYOUT$y, OFFSET$y);
-    }
-
-    public void y(int value) {
-        segment.set(LAYOUT$y, OFFSET$y, value);
-    }
-
 }

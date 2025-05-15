@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineRasterizationProvokingVertexStateCreateInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineRasterizationProvokingVertexStateCreateInfoEXT.html"><code>VkPipelineRasterizationProvokingVertexStateCreateInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineRasterizationProvokingVertexStateCreateInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkProvokingVertexModeEXT provokingVertexMode;
+/// } VkPipelineRasterizationProvokingVertexStateCreateInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT`
+///
+/// The {@link VkPipelineRasterizationProvokingVertexStateCreateInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineRasterizationProvokingVertexStateCreateInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineRasterizationProvokingVertexStateCreateInfoEXT.html">VkPipelineRasterizationProvokingVertexStateCreateInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineRasterizationProvokingVertexStateCreateInfoEXT.html"><code>VkPipelineRasterizationProvokingVertexStateCreateInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT {
-        sType(VkStructureType.PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT);
-    }
-
     public static VkPipelineRasterizationProvokingVertexStateCreateInfoEXT allocate(Arena arena) {
-        return new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(arena.allocate(LAYOUT));
+        VkPipelineRasterizationProvokingVertexStateCreateInfoEXT ret = new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT);
+        return ret;
     }
 
     public static VkPipelineRasterizationProvokingVertexStateCreateInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(@NotNull 
         VkPipelineRasterizationProvokingVertexStateCreateInfoEXT[] ret = new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(@NotNull 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("provokingVertexMode")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$provokingVertexMode = PathElement.groupElement("PATH$provokingVertexMode");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$provokingVertexMode = (OfInt) LAYOUT.select(PATH$provokingVertexMode);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$provokingVertexMode = LAYOUT$provokingVertexMode.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$provokingVertexMode = LAYOUT.byteOffset(PATH$provokingVertexMode);
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(@NotNull 
         segment.set(LAYOUT$provokingVertexMode, OFFSET$provokingVertexMode, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("provokingVertexMode")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$provokingVertexMode = PathElement.groupElement("PATH$provokingVertexMode");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$provokingVertexMode = (OfInt) LAYOUT.select(PATH$provokingVertexMode);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$provokingVertexMode = LAYOUT$provokingVertexMode.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$provokingVertexMode = LAYOUT.byteOffset(PATH$provokingVertexMode);
 }

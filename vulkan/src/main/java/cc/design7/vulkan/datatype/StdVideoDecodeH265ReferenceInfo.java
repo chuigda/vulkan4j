@@ -16,6 +16,16 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoDecodeH265ReferenceInfo} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoDecodeH265ReferenceInfo {
+///     StdVideoDecodeH265ReferenceInfoFlags flags;
+///     int32_t PicOrderCntVal;
+/// } StdVideoDecodeH265ReferenceInfo;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +37,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoDecodeH265ReferenceInfo(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoDecodeH265ReferenceInfo allocate(Arena arena) {
-        return new StdVideoDecodeH265ReferenceInfo(arena.allocate(LAYOUT));
+        StdVideoDecodeH265ReferenceInfo ret = new StdVideoDecodeH265ReferenceInfo(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoDecodeH265ReferenceInfo[] allocate(Arena arena, int count) {
@@ -53,6 +64,22 @@ public record StdVideoDecodeH265ReferenceInfo(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public StdVideoDecodeH265ReferenceInfoFlags flags() {
+        return new StdVideoDecodeH265ReferenceInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
+    }
+
+    public void flags(StdVideoDecodeH265ReferenceInfoFlags value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+    }
+
+    public int PicOrderCntVal() {
+        return segment.get(LAYOUT$PicOrderCntVal, OFFSET$PicOrderCntVal);
+    }
+
+    public void PicOrderCntVal(int value) {
+        segment.set(LAYOUT$PicOrderCntVal, OFFSET$PicOrderCntVal, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         StdVideoDecodeH265ReferenceInfoFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_INT.withName("PicOrderCntVal")
@@ -70,21 +97,4 @@ public record StdVideoDecodeH265ReferenceInfo(@NotNull MemorySegment segment) im
 
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$PicOrderCntVal = LAYOUT.byteOffset(PATH$PicOrderCntVal);
-
-    public StdVideoDecodeH265ReferenceInfoFlags flags() {
-        return new StdVideoDecodeH265ReferenceInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
-    }
-
-    public void flags(StdVideoDecodeH265ReferenceInfoFlags value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
-    }
-
-    public int PicOrderCntVal() {
-        return segment.get(LAYOUT$PicOrderCntVal, OFFSET$PicOrderCntVal);
-    }
-
-    public void PicOrderCntVal(int value) {
-        segment.set(LAYOUT$PicOrderCntVal, OFFSET$PicOrderCntVal, value);
-    }
-
 }

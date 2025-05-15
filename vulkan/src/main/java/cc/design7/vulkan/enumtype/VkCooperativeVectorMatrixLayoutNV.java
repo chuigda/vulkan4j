@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCooperativeVectorMatrixLayoutNV.html">VkCooperativeVectorMatrixLayoutNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCooperativeVectorMatrixLayoutNV.html"><code>VkCooperativeVectorMatrixLayoutNV</code></a>
 public final class VkCooperativeVectorMatrixLayoutNV {
     public static final int ROW_MAJOR = 0x0;
     public static final int COLUMN_MAJOR = 0x1;

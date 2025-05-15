@@ -14,8 +14,36 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineDepthStencilStateCreateInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineDepthStencilStateCreateInfo.html"><code>VkPipelineDepthStencilStateCreateInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineDepthStencilStateCreateInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkPipelineDepthStencilStateCreateFlags flags;
+///     VkBool32 depthTestEnable;
+///     VkBool32 depthWriteEnable;
+///     VkCompareOp depthCompareOp;
+///     VkBool32 depthBoundsTestEnable;
+///     VkBool32 stencilTestEnable;
+///     VkStencilOpState front;
+///     VkStencilOpState back;
+///     float minDepthBounds;
+///     float maxDepthBounds;
+/// } VkPipelineDepthStencilStateCreateInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO`
+///
+/// The {@link VkPipelineDepthStencilStateCreateInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineDepthStencilStateCreateInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +52,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineDepthStencilStateCreateInfo.html">VkPipelineDepthStencilStateCreateInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineDepthStencilStateCreateInfo.html"><code>VkPipelineDepthStencilStateCreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineDepthStencilStateCreateInfo {
-        sType(VkStructureType.PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO);
-    }
-
     public static VkPipelineDepthStencilStateCreateInfo allocate(Arena arena) {
-        return new VkPipelineDepthStencilStateCreateInfo(arena.allocate(LAYOUT));
+        VkPipelineDepthStencilStateCreateInfo ret = new VkPipelineDepthStencilStateCreateInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO);
+        return ret;
     }
 
     public static VkPipelineDepthStencilStateCreateInfo[] allocate(Arena arena, int count) {
@@ -41,6 +67,7 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         VkPipelineDepthStencilStateCreateInfo[] ret = new VkPipelineDepthStencilStateCreateInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineDepthStencilStateCreateInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO);
         }
         return ret;
     }
@@ -59,73 +86,9 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("depthTestEnable"),
-        ValueLayout.JAVA_INT.withName("depthWriteEnable"),
-        ValueLayout.JAVA_INT.withName("depthCompareOp"),
-        ValueLayout.JAVA_INT.withName("depthBoundsTestEnable"),
-        ValueLayout.JAVA_INT.withName("stencilTestEnable"),
-        VkStencilOpState.LAYOUT.withName("front"),
-        VkStencilOpState.LAYOUT.withName("back"),
-        ValueLayout.JAVA_FLOAT.withName("minDepthBounds"),
-        ValueLayout.JAVA_FLOAT.withName("maxDepthBounds")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$depthTestEnable = PathElement.groupElement("PATH$depthTestEnable");
-    public static final PathElement PATH$depthWriteEnable = PathElement.groupElement("PATH$depthWriteEnable");
-    public static final PathElement PATH$depthCompareOp = PathElement.groupElement("PATH$depthCompareOp");
-    public static final PathElement PATH$depthBoundsTestEnable = PathElement.groupElement("PATH$depthBoundsTestEnable");
-    public static final PathElement PATH$stencilTestEnable = PathElement.groupElement("PATH$stencilTestEnable");
-    public static final PathElement PATH$front = PathElement.groupElement("PATH$front");
-    public static final PathElement PATH$back = PathElement.groupElement("PATH$back");
-    public static final PathElement PATH$minDepthBounds = PathElement.groupElement("PATH$minDepthBounds");
-    public static final PathElement PATH$maxDepthBounds = PathElement.groupElement("PATH$maxDepthBounds");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$depthTestEnable = (OfInt) LAYOUT.select(PATH$depthTestEnable);
-    public static final OfInt LAYOUT$depthWriteEnable = (OfInt) LAYOUT.select(PATH$depthWriteEnable);
-    public static final OfInt LAYOUT$depthCompareOp = (OfInt) LAYOUT.select(PATH$depthCompareOp);
-    public static final OfInt LAYOUT$depthBoundsTestEnable = (OfInt) LAYOUT.select(PATH$depthBoundsTestEnable);
-    public static final OfInt LAYOUT$stencilTestEnable = (OfInt) LAYOUT.select(PATH$stencilTestEnable);
-    public static final StructLayout LAYOUT$front = (StructLayout) LAYOUT.select(PATH$front);
-    public static final StructLayout LAYOUT$back = (StructLayout) LAYOUT.select(PATH$back);
-    public static final OfFloat LAYOUT$minDepthBounds = (OfFloat) LAYOUT.select(PATH$minDepthBounds);
-    public static final OfFloat LAYOUT$maxDepthBounds = (OfFloat) LAYOUT.select(PATH$maxDepthBounds);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$depthTestEnable = LAYOUT$depthTestEnable.byteSize();
-    public static final long SIZE$depthWriteEnable = LAYOUT$depthWriteEnable.byteSize();
-    public static final long SIZE$depthCompareOp = LAYOUT$depthCompareOp.byteSize();
-    public static final long SIZE$depthBoundsTestEnable = LAYOUT$depthBoundsTestEnable.byteSize();
-    public static final long SIZE$stencilTestEnable = LAYOUT$stencilTestEnable.byteSize();
-    public static final long SIZE$front = LAYOUT$front.byteSize();
-    public static final long SIZE$back = LAYOUT$back.byteSize();
-    public static final long SIZE$minDepthBounds = LAYOUT$minDepthBounds.byteSize();
-    public static final long SIZE$maxDepthBounds = LAYOUT$maxDepthBounds.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$depthTestEnable = LAYOUT.byteOffset(PATH$depthTestEnable);
-    public static final long OFFSET$depthWriteEnable = LAYOUT.byteOffset(PATH$depthWriteEnable);
-    public static final long OFFSET$depthCompareOp = LAYOUT.byteOffset(PATH$depthCompareOp);
-    public static final long OFFSET$depthBoundsTestEnable = LAYOUT.byteOffset(PATH$depthBoundsTestEnable);
-    public static final long OFFSET$stencilTestEnable = LAYOUT.byteOffset(PATH$stencilTestEnable);
-    public static final long OFFSET$front = LAYOUT.byteOffset(PATH$front);
-    public static final long OFFSET$back = LAYOUT.byteOffset(PATH$back);
-    public static final long OFFSET$minDepthBounds = LAYOUT.byteOffset(PATH$minDepthBounds);
-    public static final long OFFSET$maxDepthBounds = LAYOUT.byteOffset(PATH$maxDepthBounds);
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -227,4 +190,71 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         segment.set(LAYOUT$maxDepthBounds, OFFSET$maxDepthBounds, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("depthTestEnable"),
+        ValueLayout.JAVA_INT.withName("depthWriteEnable"),
+        ValueLayout.JAVA_INT.withName("depthCompareOp"),
+        ValueLayout.JAVA_INT.withName("depthBoundsTestEnable"),
+        ValueLayout.JAVA_INT.withName("stencilTestEnable"),
+        VkStencilOpState.LAYOUT.withName("front"),
+        VkStencilOpState.LAYOUT.withName("back"),
+        ValueLayout.JAVA_FLOAT.withName("minDepthBounds"),
+        ValueLayout.JAVA_FLOAT.withName("maxDepthBounds")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$depthTestEnable = PathElement.groupElement("PATH$depthTestEnable");
+    public static final PathElement PATH$depthWriteEnable = PathElement.groupElement("PATH$depthWriteEnable");
+    public static final PathElement PATH$depthCompareOp = PathElement.groupElement("PATH$depthCompareOp");
+    public static final PathElement PATH$depthBoundsTestEnable = PathElement.groupElement("PATH$depthBoundsTestEnable");
+    public static final PathElement PATH$stencilTestEnable = PathElement.groupElement("PATH$stencilTestEnable");
+    public static final PathElement PATH$front = PathElement.groupElement("PATH$front");
+    public static final PathElement PATH$back = PathElement.groupElement("PATH$back");
+    public static final PathElement PATH$minDepthBounds = PathElement.groupElement("PATH$minDepthBounds");
+    public static final PathElement PATH$maxDepthBounds = PathElement.groupElement("PATH$maxDepthBounds");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$depthTestEnable = (OfInt) LAYOUT.select(PATH$depthTestEnable);
+    public static final OfInt LAYOUT$depthWriteEnable = (OfInt) LAYOUT.select(PATH$depthWriteEnable);
+    public static final OfInt LAYOUT$depthCompareOp = (OfInt) LAYOUT.select(PATH$depthCompareOp);
+    public static final OfInt LAYOUT$depthBoundsTestEnable = (OfInt) LAYOUT.select(PATH$depthBoundsTestEnable);
+    public static final OfInt LAYOUT$stencilTestEnable = (OfInt) LAYOUT.select(PATH$stencilTestEnable);
+    public static final StructLayout LAYOUT$front = (StructLayout) LAYOUT.select(PATH$front);
+    public static final StructLayout LAYOUT$back = (StructLayout) LAYOUT.select(PATH$back);
+    public static final OfFloat LAYOUT$minDepthBounds = (OfFloat) LAYOUT.select(PATH$minDepthBounds);
+    public static final OfFloat LAYOUT$maxDepthBounds = (OfFloat) LAYOUT.select(PATH$maxDepthBounds);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$depthTestEnable = LAYOUT$depthTestEnable.byteSize();
+    public static final long SIZE$depthWriteEnable = LAYOUT$depthWriteEnable.byteSize();
+    public static final long SIZE$depthCompareOp = LAYOUT$depthCompareOp.byteSize();
+    public static final long SIZE$depthBoundsTestEnable = LAYOUT$depthBoundsTestEnable.byteSize();
+    public static final long SIZE$stencilTestEnable = LAYOUT$stencilTestEnable.byteSize();
+    public static final long SIZE$front = LAYOUT$front.byteSize();
+    public static final long SIZE$back = LAYOUT$back.byteSize();
+    public static final long SIZE$minDepthBounds = LAYOUT$minDepthBounds.byteSize();
+    public static final long SIZE$maxDepthBounds = LAYOUT$maxDepthBounds.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$depthTestEnable = LAYOUT.byteOffset(PATH$depthTestEnable);
+    public static final long OFFSET$depthWriteEnable = LAYOUT.byteOffset(PATH$depthWriteEnable);
+    public static final long OFFSET$depthCompareOp = LAYOUT.byteOffset(PATH$depthCompareOp);
+    public static final long OFFSET$depthBoundsTestEnable = LAYOUT.byteOffset(PATH$depthBoundsTestEnable);
+    public static final long OFFSET$stencilTestEnable = LAYOUT.byteOffset(PATH$stencilTestEnable);
+    public static final long OFFSET$front = LAYOUT.byteOffset(PATH$front);
+    public static final long OFFSET$back = LAYOUT.byteOffset(PATH$back);
+    public static final long OFFSET$minDepthBounds = LAYOUT.byteOffset(PATH$minDepthBounds);
+    public static final long OFFSET$maxDepthBounds = LAYOUT.byteOffset(PATH$maxDepthBounds);
 }

@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBlendOverlapEXT.html">VkBlendOverlapEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBlendOverlapEXT.html"><code>VkBlendOverlapEXT</code></a>
 public final class VkBlendOverlapEXT {
     public static final int UNCORRELATED = 0x0;
     public static final int DISJOINT = 0x1;

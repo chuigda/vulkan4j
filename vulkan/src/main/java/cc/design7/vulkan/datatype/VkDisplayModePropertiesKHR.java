@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDisplayModePropertiesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayModePropertiesKHR.html"><code>VkDisplayModePropertiesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDisplayModePropertiesKHR {
+///     VkDisplayModeKHR displayMode;
+///     VkDisplayModeParametersKHR parameters;
+/// } VkDisplayModePropertiesKHR;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayModePropertiesKHR.html">VkDisplayModePropertiesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayModePropertiesKHR.html"><code>VkDisplayModePropertiesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDisplayModePropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkDisplayModePropertiesKHR allocate(Arena arena) {
-        return new VkDisplayModePropertiesKHR(arena.allocate(LAYOUT));
+        VkDisplayModePropertiesKHR ret = new VkDisplayModePropertiesKHR(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkDisplayModePropertiesKHR[] allocate(Arena arena, int count) {
@@ -55,27 +66,9 @@ public record VkDisplayModePropertiesKHR(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.ADDRESS.withName("displayMode"),
-        VkDisplayModeParametersKHR.LAYOUT.withName("parameters")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$displayMode = PathElement.groupElement("PATH$displayMode");
-    public static final PathElement PATH$parameters = PathElement.groupElement("PATH$parameters");
-
-    public static final AddressLayout LAYOUT$displayMode = (AddressLayout) LAYOUT.select(PATH$displayMode);
-    public static final StructLayout LAYOUT$parameters = (StructLayout) LAYOUT.select(PATH$parameters);
-
-    public static final long SIZE$displayMode = LAYOUT$displayMode.byteSize();
-    public static final long SIZE$parameters = LAYOUT$parameters.byteSize();
-
-    public static final long OFFSET$displayMode = LAYOUT.byteOffset(PATH$displayMode);
-    public static final long OFFSET$parameters = LAYOUT.byteOffset(PATH$parameters);
-
     public @Nullable VkDisplayModeKHR displayMode() {
         MemorySegment s = segment.asSlice(OFFSET$displayMode, SIZE$displayMode);
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkDisplayModeKHR(s);
@@ -93,4 +86,21 @@ public record VkDisplayModePropertiesKHR(@NotNull MemorySegment segment) impleme
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$parameters, SIZE$parameters);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withName("displayMode"),
+        VkDisplayModeParametersKHR.LAYOUT.withName("parameters")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$displayMode = PathElement.groupElement("PATH$displayMode");
+    public static final PathElement PATH$parameters = PathElement.groupElement("PATH$parameters");
+
+    public static final AddressLayout LAYOUT$displayMode = (AddressLayout) LAYOUT.select(PATH$displayMode);
+    public static final StructLayout LAYOUT$parameters = (StructLayout) LAYOUT.select(PATH$parameters);
+
+    public static final long SIZE$displayMode = LAYOUT$displayMode.byteSize();
+    public static final long SIZE$parameters = LAYOUT$parameters.byteSize();
+
+    public static final long OFFSET$displayMode = LAYOUT.byteOffset(PATH$displayMode);
+    public static final long OFFSET$parameters = LAYOUT.byteOffset(PATH$parameters);
 }

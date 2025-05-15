@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkAndroidSurfaceCreateInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAndroidSurfaceCreateInfoKHR.html"><code>VkAndroidSurfaceCreateInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkAndroidSurfaceCreateInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkAndroidSurfaceCreateFlagsKHR flags;
+///     ANativeWindow* window;
+/// } VkAndroidSurfaceCreateInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR`
+///
+/// The {@link VkAndroidSurfaceCreateInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkAndroidSurfaceCreateInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAndroidSurfaceCreateInfoKHR.html">VkAndroidSurfaceCreateInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAndroidSurfaceCreateInfoKHR.html"><code>VkAndroidSurfaceCreateInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkAndroidSurfaceCreateInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkAndroidSurfaceCreateInfoKHR {
-        sType(VkStructureType.ANDROID_SURFACE_CREATE_INFO_KHR);
-    }
-
     public static VkAndroidSurfaceCreateInfoKHR allocate(Arena arena) {
-        return new VkAndroidSurfaceCreateInfoKHR(arena.allocate(LAYOUT));
+        VkAndroidSurfaceCreateInfoKHR ret = new VkAndroidSurfaceCreateInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.ANDROID_SURFACE_CREATE_INFO_KHR);
+        return ret;
     }
 
     public static VkAndroidSurfaceCreateInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkAndroidSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         VkAndroidSurfaceCreateInfoKHR[] ret = new VkAndroidSurfaceCreateInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkAndroidSurfaceCreateInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.ANDROID_SURFACE_CREATE_INFO_KHR);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkAndroidSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("window")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$window = PathElement.groupElement("PATH$window");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final AddressLayout LAYOUT$window = (AddressLayout) LAYOUT.select(PATH$window);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$window = LAYOUT$window.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$window = LAYOUT.byteOffset(PATH$window);
+    public void autoInit() {
+        sType(VkStructureType.ANDROID_SURFACE_CREATE_INFO_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -128,7 +123,7 @@ public record VkAndroidSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
     /// actually reading from or writing to the buffer.
     public @Nullable PointerBuffer window() {
         MemorySegment s = windowRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new PointerBuffer(s);
@@ -139,4 +134,31 @@ public record VkAndroidSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         windowRaw(s);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("window")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$window = PathElement.groupElement("PATH$window");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$window = (AddressLayout) LAYOUT.select(PATH$window);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$window = LAYOUT$window.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$window = LAYOUT.byteOffset(PATH$window);
 }

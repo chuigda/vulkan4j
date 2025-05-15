@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkConservativeRasterizationModeEXT.html">VkConservativeRasterizationModeEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkConservativeRasterizationModeEXT.html"><code>VkConservativeRasterizationModeEXT</code></a>
 public final class VkConservativeRasterizationModeEXT {
     public static final int DISABLED = 0x0;
     public static final int OVERESTIMATE = 0x1;

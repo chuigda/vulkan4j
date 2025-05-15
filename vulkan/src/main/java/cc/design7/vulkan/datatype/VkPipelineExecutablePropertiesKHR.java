@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineExecutablePropertiesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineExecutablePropertiesKHR.html"><code>VkPipelineExecutablePropertiesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineExecutablePropertiesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkShaderStageFlags stages;
+///     char name;
+///     char description;
+///     uint32_t subgroupSize;
+/// } VkPipelineExecutablePropertiesKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_PROPERTIES_KHR`
+///
+/// The {@link VkPipelineExecutablePropertiesKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineExecutablePropertiesKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineExecutablePropertiesKHR.html">VkPipelineExecutablePropertiesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineExecutablePropertiesKHR.html"><code>VkPipelineExecutablePropertiesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineExecutablePropertiesKHR {
-        sType(VkStructureType.PIPELINE_EXECUTABLE_PROPERTIES_KHR);
-    }
-
     public static VkPipelineExecutablePropertiesKHR allocate(Arena arena) {
-        return new VkPipelineExecutablePropertiesKHR(arena.allocate(LAYOUT));
+        VkPipelineExecutablePropertiesKHR ret = new VkPipelineExecutablePropertiesKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_EXECUTABLE_PROPERTIES_KHR);
+        return ret;
     }
 
     public static VkPipelineExecutablePropertiesKHR[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         VkPipelineExecutablePropertiesKHR[] ret = new VkPipelineExecutablePropertiesKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineExecutablePropertiesKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_EXECUTABLE_PROPERTIES_KHR);
         }
         return ret;
     }
@@ -59,43 +80,9 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("stages"),
-        ValueLayout.JAVA_BYTE.withName("name"),
-        ValueLayout.JAVA_BYTE.withName("description"),
-        ValueLayout.JAVA_INT.withName("subgroupSize")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$stages = PathElement.groupElement("PATH$stages");
-    public static final PathElement PATH$name = PathElement.groupElement("PATH$name");
-    public static final PathElement PATH$description = PathElement.groupElement("PATH$description");
-    public static final PathElement PATH$subgroupSize = PathElement.groupElement("PATH$subgroupSize");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$stages = (OfInt) LAYOUT.select(PATH$stages);
-    public static final OfByte LAYOUT$name = (OfByte) LAYOUT.select(PATH$name);
-    public static final OfByte LAYOUT$description = (OfByte) LAYOUT.select(PATH$description);
-    public static final OfInt LAYOUT$subgroupSize = (OfInt) LAYOUT.select(PATH$subgroupSize);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$stages = LAYOUT$stages.byteSize();
-    public static final long SIZE$name = LAYOUT$name.byteSize();
-    public static final long SIZE$description = LAYOUT$description.byteSize();
-    public static final long SIZE$subgroupSize = LAYOUT$subgroupSize.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$stages = LAYOUT.byteOffset(PATH$stages);
-    public static final long OFFSET$name = LAYOUT.byteOffset(PATH$name);
-    public static final long OFFSET$description = LAYOUT.byteOffset(PATH$description);
-    public static final long OFFSET$subgroupSize = LAYOUT.byteOffset(PATH$subgroupSize);
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_EXECUTABLE_PROPERTIES_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -149,4 +136,41 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$subgroupSize, OFFSET$subgroupSize, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("stages"),
+        ValueLayout.JAVA_BYTE.withName("name"),
+        ValueLayout.JAVA_BYTE.withName("description"),
+        ValueLayout.JAVA_INT.withName("subgroupSize")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$stages = PathElement.groupElement("PATH$stages");
+    public static final PathElement PATH$name = PathElement.groupElement("PATH$name");
+    public static final PathElement PATH$description = PathElement.groupElement("PATH$description");
+    public static final PathElement PATH$subgroupSize = PathElement.groupElement("PATH$subgroupSize");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$stages = (OfInt) LAYOUT.select(PATH$stages);
+    public static final OfByte LAYOUT$name = (OfByte) LAYOUT.select(PATH$name);
+    public static final OfByte LAYOUT$description = (OfByte) LAYOUT.select(PATH$description);
+    public static final OfInt LAYOUT$subgroupSize = (OfInt) LAYOUT.select(PATH$subgroupSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$stages = LAYOUT$stages.byteSize();
+    public static final long SIZE$name = LAYOUT$name.byteSize();
+    public static final long SIZE$description = LAYOUT$description.byteSize();
+    public static final long SIZE$subgroupSize = LAYOUT$subgroupSize.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$stages = LAYOUT.byteOffset(PATH$stages);
+    public static final long OFFSET$name = LAYOUT.byteOffset(PATH$name);
+    public static final long OFFSET$description = LAYOUT.byteOffset(PATH$description);
+    public static final long OFFSET$subgroupSize = LAYOUT.byteOffset(PATH$subgroupSize);
 }

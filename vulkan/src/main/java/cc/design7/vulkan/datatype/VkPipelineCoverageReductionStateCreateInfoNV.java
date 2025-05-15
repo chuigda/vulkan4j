@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineCoverageReductionStateCreateInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCoverageReductionStateCreateInfoNV.html"><code>VkPipelineCoverageReductionStateCreateInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineCoverageReductionStateCreateInfoNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkPipelineCoverageReductionStateCreateFlagsNV flags;
+///     VkCoverageReductionModeNV coverageReductionMode;
+/// } VkPipelineCoverageReductionStateCreateInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV`
+///
+/// The {@link VkPipelineCoverageReductionStateCreateInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineCoverageReductionStateCreateInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCoverageReductionStateCreateInfoNV.html">VkPipelineCoverageReductionStateCreateInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCoverageReductionStateCreateInfoNV.html"><code>VkPipelineCoverageReductionStateCreateInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineCoverageReductionStateCreateInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineCoverageReductionStateCreateInfoNV {
-        sType(VkStructureType.PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV);
-    }
-
     public static VkPipelineCoverageReductionStateCreateInfoNV allocate(Arena arena) {
-        return new VkPipelineCoverageReductionStateCreateInfoNV(arena.allocate(LAYOUT));
+        VkPipelineCoverageReductionStateCreateInfoNV ret = new VkPipelineCoverageReductionStateCreateInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV);
+        return ret;
     }
 
     public static VkPipelineCoverageReductionStateCreateInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkPipelineCoverageReductionStateCreateInfoNV(@NotNull MemorySegmen
         VkPipelineCoverageReductionStateCreateInfoNV[] ret = new VkPipelineCoverageReductionStateCreateInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineCoverageReductionStateCreateInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkPipelineCoverageReductionStateCreateInfoNV(@NotNull MemorySegmen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("coverageReductionMode")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$coverageReductionMode = PathElement.groupElement("PATH$coverageReductionMode");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$coverageReductionMode = (OfInt) LAYOUT.select(PATH$coverageReductionMode);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$coverageReductionMode = LAYOUT$coverageReductionMode.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$coverageReductionMode = LAYOUT.byteOffset(PATH$coverageReductionMode);
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkPipelineCoverageReductionStateCreateInfoNV(@NotNull MemorySegmen
         segment.set(LAYOUT$coverageReductionMode, OFFSET$coverageReductionMode, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("coverageReductionMode")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$coverageReductionMode = PathElement.groupElement("PATH$coverageReductionMode");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$coverageReductionMode = (OfInt) LAYOUT.select(PATH$coverageReductionMode);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$coverageReductionMode = LAYOUT$coverageReductionMode.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$coverageReductionMode = LAYOUT.byteOffset(PATH$coverageReductionMode);
 }

@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeRateControlModeFlagsKHR.html">VkVideoEncodeRateControlModeFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeRateControlModeFlagsKHR.html"><code>VkVideoEncodeRateControlModeFlagsKHR</code></a>
 public final class VkVideoEncodeRateControlModeFlagsKHR {
     public static final int CBR = 0x2;
     public static final int DEFAULT = 0x0;

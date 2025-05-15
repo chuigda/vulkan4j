@@ -14,8 +14,34 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkClusterAccelerationStructureTriangleClusterInputNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureTriangleClusterInputNV.html"><code>VkClusterAccelerationStructureTriangleClusterInputNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkClusterAccelerationStructureTriangleClusterInputNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkFormat vertexFormat;
+///     uint32_t maxGeometryIndexValue;
+///     uint32_t maxClusterUniqueGeometryCount;
+///     uint32_t maxClusterTriangleCount;
+///     uint32_t maxClusterVertexCount;
+///     uint32_t maxTotalTriangleCount;
+///     uint32_t maxTotalVertexCount;
+///     uint32_t minPositionTruncateBitCount;
+/// } VkClusterAccelerationStructureTriangleClusterInputNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_TRIANGLE_CLUSTER_INPUT_NV`
+///
+/// The {@link VkClusterAccelerationStructureTriangleClusterInputNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkClusterAccelerationStructureTriangleClusterInputNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +50,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureTriangleClusterInputNV.html">VkClusterAccelerationStructureTriangleClusterInputNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureTriangleClusterInputNV.html"><code>VkClusterAccelerationStructureTriangleClusterInputNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkClusterAccelerationStructureTriangleClusterInputNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkClusterAccelerationStructureTriangleClusterInputNV {
-        sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_TRIANGLE_CLUSTER_INPUT_NV);
-    }
-
     public static VkClusterAccelerationStructureTriangleClusterInputNV allocate(Arena arena) {
-        return new VkClusterAccelerationStructureTriangleClusterInputNV(arena.allocate(LAYOUT));
+        VkClusterAccelerationStructureTriangleClusterInputNV ret = new VkClusterAccelerationStructureTriangleClusterInputNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_TRIANGLE_CLUSTER_INPUT_NV);
+        return ret;
     }
 
     public static VkClusterAccelerationStructureTriangleClusterInputNV[] allocate(Arena arena, int count) {
@@ -41,6 +65,7 @@ public record VkClusterAccelerationStructureTriangleClusterInputNV(@NotNull Memo
         VkClusterAccelerationStructureTriangleClusterInputNV[] ret = new VkClusterAccelerationStructureTriangleClusterInputNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkClusterAccelerationStructureTriangleClusterInputNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_TRIANGLE_CLUSTER_INPUT_NV);
         }
         return ret;
     }
@@ -59,63 +84,9 @@ public record VkClusterAccelerationStructureTriangleClusterInputNV(@NotNull Memo
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("vertexFormat"),
-        ValueLayout.JAVA_INT.withName("maxGeometryIndexValue"),
-        ValueLayout.JAVA_INT.withName("maxClusterUniqueGeometryCount"),
-        ValueLayout.JAVA_INT.withName("maxClusterTriangleCount"),
-        ValueLayout.JAVA_INT.withName("maxClusterVertexCount"),
-        ValueLayout.JAVA_INT.withName("maxTotalTriangleCount"),
-        ValueLayout.JAVA_INT.withName("maxTotalVertexCount"),
-        ValueLayout.JAVA_INT.withName("minPositionTruncateBitCount")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$vertexFormat = PathElement.groupElement("PATH$vertexFormat");
-    public static final PathElement PATH$maxGeometryIndexValue = PathElement.groupElement("PATH$maxGeometryIndexValue");
-    public static final PathElement PATH$maxClusterUniqueGeometryCount = PathElement.groupElement("PATH$maxClusterUniqueGeometryCount");
-    public static final PathElement PATH$maxClusterTriangleCount = PathElement.groupElement("PATH$maxClusterTriangleCount");
-    public static final PathElement PATH$maxClusterVertexCount = PathElement.groupElement("PATH$maxClusterVertexCount");
-    public static final PathElement PATH$maxTotalTriangleCount = PathElement.groupElement("PATH$maxTotalTriangleCount");
-    public static final PathElement PATH$maxTotalVertexCount = PathElement.groupElement("PATH$maxTotalVertexCount");
-    public static final PathElement PATH$minPositionTruncateBitCount = PathElement.groupElement("PATH$minPositionTruncateBitCount");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$vertexFormat = (OfInt) LAYOUT.select(PATH$vertexFormat);
-    public static final OfInt LAYOUT$maxGeometryIndexValue = (OfInt) LAYOUT.select(PATH$maxGeometryIndexValue);
-    public static final OfInt LAYOUT$maxClusterUniqueGeometryCount = (OfInt) LAYOUT.select(PATH$maxClusterUniqueGeometryCount);
-    public static final OfInt LAYOUT$maxClusterTriangleCount = (OfInt) LAYOUT.select(PATH$maxClusterTriangleCount);
-    public static final OfInt LAYOUT$maxClusterVertexCount = (OfInt) LAYOUT.select(PATH$maxClusterVertexCount);
-    public static final OfInt LAYOUT$maxTotalTriangleCount = (OfInt) LAYOUT.select(PATH$maxTotalTriangleCount);
-    public static final OfInt LAYOUT$maxTotalVertexCount = (OfInt) LAYOUT.select(PATH$maxTotalVertexCount);
-    public static final OfInt LAYOUT$minPositionTruncateBitCount = (OfInt) LAYOUT.select(PATH$minPositionTruncateBitCount);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$vertexFormat = LAYOUT$vertexFormat.byteSize();
-    public static final long SIZE$maxGeometryIndexValue = LAYOUT$maxGeometryIndexValue.byteSize();
-    public static final long SIZE$maxClusterUniqueGeometryCount = LAYOUT$maxClusterUniqueGeometryCount.byteSize();
-    public static final long SIZE$maxClusterTriangleCount = LAYOUT$maxClusterTriangleCount.byteSize();
-    public static final long SIZE$maxClusterVertexCount = LAYOUT$maxClusterVertexCount.byteSize();
-    public static final long SIZE$maxTotalTriangleCount = LAYOUT$maxTotalTriangleCount.byteSize();
-    public static final long SIZE$maxTotalVertexCount = LAYOUT$maxTotalVertexCount.byteSize();
-    public static final long SIZE$minPositionTruncateBitCount = LAYOUT$minPositionTruncateBitCount.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$vertexFormat = LAYOUT.byteOffset(PATH$vertexFormat);
-    public static final long OFFSET$maxGeometryIndexValue = LAYOUT.byteOffset(PATH$maxGeometryIndexValue);
-    public static final long OFFSET$maxClusterUniqueGeometryCount = LAYOUT.byteOffset(PATH$maxClusterUniqueGeometryCount);
-    public static final long OFFSET$maxClusterTriangleCount = LAYOUT.byteOffset(PATH$maxClusterTriangleCount);
-    public static final long OFFSET$maxClusterVertexCount = LAYOUT.byteOffset(PATH$maxClusterVertexCount);
-    public static final long OFFSET$maxTotalTriangleCount = LAYOUT.byteOffset(PATH$maxTotalTriangleCount);
-    public static final long OFFSET$maxTotalVertexCount = LAYOUT.byteOffset(PATH$maxTotalVertexCount);
-    public static final long OFFSET$minPositionTruncateBitCount = LAYOUT.byteOffset(PATH$minPositionTruncateBitCount);
+    public void autoInit() {
+        sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_TRIANGLE_CLUSTER_INPUT_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -201,4 +172,61 @@ public record VkClusterAccelerationStructureTriangleClusterInputNV(@NotNull Memo
         segment.set(LAYOUT$minPositionTruncateBitCount, OFFSET$minPositionTruncateBitCount, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("vertexFormat"),
+        ValueLayout.JAVA_INT.withName("maxGeometryIndexValue"),
+        ValueLayout.JAVA_INT.withName("maxClusterUniqueGeometryCount"),
+        ValueLayout.JAVA_INT.withName("maxClusterTriangleCount"),
+        ValueLayout.JAVA_INT.withName("maxClusterVertexCount"),
+        ValueLayout.JAVA_INT.withName("maxTotalTriangleCount"),
+        ValueLayout.JAVA_INT.withName("maxTotalVertexCount"),
+        ValueLayout.JAVA_INT.withName("minPositionTruncateBitCount")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$vertexFormat = PathElement.groupElement("PATH$vertexFormat");
+    public static final PathElement PATH$maxGeometryIndexValue = PathElement.groupElement("PATH$maxGeometryIndexValue");
+    public static final PathElement PATH$maxClusterUniqueGeometryCount = PathElement.groupElement("PATH$maxClusterUniqueGeometryCount");
+    public static final PathElement PATH$maxClusterTriangleCount = PathElement.groupElement("PATH$maxClusterTriangleCount");
+    public static final PathElement PATH$maxClusterVertexCount = PathElement.groupElement("PATH$maxClusterVertexCount");
+    public static final PathElement PATH$maxTotalTriangleCount = PathElement.groupElement("PATH$maxTotalTriangleCount");
+    public static final PathElement PATH$maxTotalVertexCount = PathElement.groupElement("PATH$maxTotalVertexCount");
+    public static final PathElement PATH$minPositionTruncateBitCount = PathElement.groupElement("PATH$minPositionTruncateBitCount");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$vertexFormat = (OfInt) LAYOUT.select(PATH$vertexFormat);
+    public static final OfInt LAYOUT$maxGeometryIndexValue = (OfInt) LAYOUT.select(PATH$maxGeometryIndexValue);
+    public static final OfInt LAYOUT$maxClusterUniqueGeometryCount = (OfInt) LAYOUT.select(PATH$maxClusterUniqueGeometryCount);
+    public static final OfInt LAYOUT$maxClusterTriangleCount = (OfInt) LAYOUT.select(PATH$maxClusterTriangleCount);
+    public static final OfInt LAYOUT$maxClusterVertexCount = (OfInt) LAYOUT.select(PATH$maxClusterVertexCount);
+    public static final OfInt LAYOUT$maxTotalTriangleCount = (OfInt) LAYOUT.select(PATH$maxTotalTriangleCount);
+    public static final OfInt LAYOUT$maxTotalVertexCount = (OfInt) LAYOUT.select(PATH$maxTotalVertexCount);
+    public static final OfInt LAYOUT$minPositionTruncateBitCount = (OfInt) LAYOUT.select(PATH$minPositionTruncateBitCount);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$vertexFormat = LAYOUT$vertexFormat.byteSize();
+    public static final long SIZE$maxGeometryIndexValue = LAYOUT$maxGeometryIndexValue.byteSize();
+    public static final long SIZE$maxClusterUniqueGeometryCount = LAYOUT$maxClusterUniqueGeometryCount.byteSize();
+    public static final long SIZE$maxClusterTriangleCount = LAYOUT$maxClusterTriangleCount.byteSize();
+    public static final long SIZE$maxClusterVertexCount = LAYOUT$maxClusterVertexCount.byteSize();
+    public static final long SIZE$maxTotalTriangleCount = LAYOUT$maxTotalTriangleCount.byteSize();
+    public static final long SIZE$maxTotalVertexCount = LAYOUT$maxTotalVertexCount.byteSize();
+    public static final long SIZE$minPositionTruncateBitCount = LAYOUT$minPositionTruncateBitCount.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$vertexFormat = LAYOUT.byteOffset(PATH$vertexFormat);
+    public static final long OFFSET$maxGeometryIndexValue = LAYOUT.byteOffset(PATH$maxGeometryIndexValue);
+    public static final long OFFSET$maxClusterUniqueGeometryCount = LAYOUT.byteOffset(PATH$maxClusterUniqueGeometryCount);
+    public static final long OFFSET$maxClusterTriangleCount = LAYOUT.byteOffset(PATH$maxClusterTriangleCount);
+    public static final long OFFSET$maxClusterVertexCount = LAYOUT.byteOffset(PATH$maxClusterVertexCount);
+    public static final long OFFSET$maxTotalTriangleCount = LAYOUT.byteOffset(PATH$maxTotalTriangleCount);
+    public static final long OFFSET$maxTotalVertexCount = LAYOUT.byteOffset(PATH$maxTotalVertexCount);
+    public static final long OFFSET$minPositionTruncateBitCount = LAYOUT.byteOffset(PATH$minPositionTruncateBitCount);
 }

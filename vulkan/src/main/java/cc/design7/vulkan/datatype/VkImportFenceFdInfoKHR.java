@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkImportFenceFdInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportFenceFdInfoKHR.html"><code>VkImportFenceFdInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkImportFenceFdInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkFence fence;
+///     VkFenceImportFlags flags;
+///     VkExternalFenceHandleTypeFlags handleType;
+///     int fd;
+/// } VkImportFenceFdInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_IMPORT_FENCE_FD_INFO_KHR`
+///
+/// The {@link VkImportFenceFdInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkImportFenceFdInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportFenceFdInfoKHR.html">VkImportFenceFdInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportFenceFdInfoKHR.html"><code>VkImportFenceFdInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkImportFenceFdInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkImportFenceFdInfoKHR {
-        sType(VkStructureType.IMPORT_FENCE_FD_INFO_KHR);
-    }
-
     public static VkImportFenceFdInfoKHR allocate(Arena arena) {
-        return new VkImportFenceFdInfoKHR(arena.allocate(LAYOUT));
+        VkImportFenceFdInfoKHR ret = new VkImportFenceFdInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.IMPORT_FENCE_FD_INFO_KHR);
+        return ret;
     }
 
     public static VkImportFenceFdInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkImportFenceFdInfoKHR(@NotNull MemorySegment segment) implements 
         VkImportFenceFdInfoKHR[] ret = new VkImportFenceFdInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkImportFenceFdInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.IMPORT_FENCE_FD_INFO_KHR);
         }
         return ret;
     }
@@ -57,6 +78,66 @@ public record VkImportFenceFdInfoKHR(@NotNull MemorySegment segment) implements 
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.IMPORT_FENCE_FD_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkFence fence() {
+        MemorySegment s = segment.asSlice(OFFSET$fence, SIZE$fence);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkFence(s);
+    }
+
+    public void fence(@Nullable VkFence value) {
+        segment.set(LAYOUT$fence, OFFSET$fence, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @enumtype(VkFenceImportFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkFenceImportFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @enumtype(VkExternalFenceHandleTypeFlags.class) int handleType() {
+        return segment.get(LAYOUT$handleType, OFFSET$handleType);
+    }
+
+    public void handleType(@enumtype(VkExternalFenceHandleTypeFlags.class) int value) {
+        segment.set(LAYOUT$handleType, OFFSET$handleType, value);
+    }
+
+    public int fd() {
+        return segment.get(LAYOUT$fd, OFFSET$fd);
+    }
+
+    public void fd(int value) {
+        segment.set(LAYOUT$fd, OFFSET$fd, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -96,61 +177,4 @@ public record VkImportFenceFdInfoKHR(@NotNull MemorySegment segment) implements 
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
     public static final long OFFSET$fd = LAYOUT.byteOffset(PATH$fd);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkFence fence() {
-        MemorySegment s = segment.asSlice(OFFSET$fence, SIZE$fence);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkFence(s);
-    }
-
-    public void fence(@Nullable VkFence value) {
-        segment.set(LAYOUT$fence, OFFSET$fence, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @enumtype(VkFenceImportFlags.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkFenceImportFlags.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @enumtype(VkExternalFenceHandleTypeFlags.class) int handleType() {
-        return segment.get(LAYOUT$handleType, OFFSET$handleType);
-    }
-
-    public void handleType(@enumtype(VkExternalFenceHandleTypeFlags.class) int value) {
-        segment.set(LAYOUT$handleType, OFFSET$handleType, value);
-    }
-
-    public int fd() {
-        return segment.get(LAYOUT$fd, OFFSET$fd);
-    }
-
-    public void fd(int value) {
-        segment.set(LAYOUT$fd, OFFSET$fd, value);
-    }
-
 }

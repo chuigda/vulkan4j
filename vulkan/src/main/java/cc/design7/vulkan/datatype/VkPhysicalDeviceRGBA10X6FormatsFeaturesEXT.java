@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.html"><code>VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 formatRgba10x6WithoutYCbCrSampler;
+/// } VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RGBA10X6_FORMATS_FEATURES_EXT`
+///
+/// The {@link VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.html">VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.html"><code>VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT {
-        sType(VkStructureType.PHYSICAL_DEVICE_RGBA10X6_FORMATS_FEATURES_EXT);
-    }
-
     public static VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(arena.allocate(LAYOUT));
+        VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT ret = new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_RGBA10X6_FORMATS_FEATURES_EXT);
+        return ret;
     }
 
     public static VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(@NotNull MemorySegment 
         VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT[] ret = new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_RGBA10X6_FORMATS_FEATURES_EXT);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(@NotNull MemorySegment 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("formatRgba10x6WithoutYCbCrSampler")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$formatRgba10x6WithoutYCbCrSampler = PathElement.groupElement("PATH$formatRgba10x6WithoutYCbCrSampler");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$formatRgba10x6WithoutYCbCrSampler = (OfInt) LAYOUT.select(PATH$formatRgba10x6WithoutYCbCrSampler);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$formatRgba10x6WithoutYCbCrSampler = LAYOUT$formatRgba10x6WithoutYCbCrSampler.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$formatRgba10x6WithoutYCbCrSampler = LAYOUT.byteOffset(PATH$formatRgba10x6WithoutYCbCrSampler);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_RGBA10X6_FORMATS_FEATURES_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(@NotNull MemorySegment 
         segment.set(LAYOUT$formatRgba10x6WithoutYCbCrSampler, OFFSET$formatRgba10x6WithoutYCbCrSampler, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("formatRgba10x6WithoutYCbCrSampler")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$formatRgba10x6WithoutYCbCrSampler = PathElement.groupElement("PATH$formatRgba10x6WithoutYCbCrSampler");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$formatRgba10x6WithoutYCbCrSampler = (OfInt) LAYOUT.select(PATH$formatRgba10x6WithoutYCbCrSampler);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$formatRgba10x6WithoutYCbCrSampler = LAYOUT$formatRgba10x6WithoutYCbCrSampler.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$formatRgba10x6WithoutYCbCrSampler = LAYOUT.byteOffset(PATH$formatRgba10x6WithoutYCbCrSampler);
 }

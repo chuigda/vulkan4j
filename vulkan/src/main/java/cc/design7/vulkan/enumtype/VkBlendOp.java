@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBlendOp.html">VkBlendOp</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBlendOp.html"><code>VkBlendOp</code></a>
 public final class VkBlendOp {
     public static final int ADD = 0x0;
     public static final int SUBTRACT = 0x1;

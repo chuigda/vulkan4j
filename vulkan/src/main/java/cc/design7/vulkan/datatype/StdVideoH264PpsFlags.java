@@ -17,6 +17,22 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoH264PpsFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoH264PpsFlags {
+///     uint32_t transform_8x8_mode_flag : 1;
+///     uint32_t redundant_pic_cnt_present_flag : 1;
+///     uint32_t constrained_intra_pred_flag : 1;
+///     uint32_t deblocking_filter_control_present_flag : 1;
+///     uint32_t weighted_pred_flag : 1;
+///     uint32_t bottom_field_pic_order_in_frame_present_flag : 1;
+///     uint32_t entropy_coding_mode_flag : 1;
+///     uint32_t pic_scaling_matrix_present_flag : 1;
+/// } StdVideoH264PpsFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +44,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH264PpsFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH264PpsFlags allocate(Arena arena) {
-        return new StdVideoH264PpsFlags(arena.allocate(LAYOUT));
+        StdVideoH264PpsFlags ret = new StdVideoH264PpsFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoH264PpsFlags[] allocate(Arena arena, int count) {
@@ -53,18 +70,6 @@ public record StdVideoH264PpsFlags(@NotNull MemorySegment segment) implements IP
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$transform_8x8_mode_flag_pic_scaling_matrix_present_flag")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$transform_8x8_mode_flag_pic_scaling_matrix_present_flag = PathElement.groupElement("PATH$bitfield$transform_8x8_mode_flag_pic_scaling_matrix_present_flag");
-
-    public static final OfInt LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag = (OfInt) LAYOUT.select(PATH$bitfield$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
-
-
-    public static final long OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag = LAYOUT.byteOffset(PATH$bitfield$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
 
     public boolean transform_8x8_mode_flag() {
         MemorySegment s = segment.asSlice(OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag, LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
@@ -146,4 +151,15 @@ public record StdVideoH264PpsFlags(@NotNull MemorySegment segment) implements IP
         BitfieldUtil.writeBit(s, 7, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$transform_8x8_mode_flag_pic_scaling_matrix_present_flag")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$bitfield$transform_8x8_mode_flag_pic_scaling_matrix_present_flag = PathElement.groupElement("PATH$bitfield$transform_8x8_mode_flag_pic_scaling_matrix_present_flag");
+
+    public static final OfInt LAYOUT$transform_8x8_mode_flag_pic_scaling_matrix_present_flag = (OfInt) LAYOUT.select(PATH$bitfield$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
+
+
+    public static final long OFFSET$transform_8x8_mode_flag_pic_scaling_matrix_present_flag = LAYOUT.byteOffset(PATH$bitfield$transform_8x8_mode_flag_pic_scaling_matrix_present_flag);
 }

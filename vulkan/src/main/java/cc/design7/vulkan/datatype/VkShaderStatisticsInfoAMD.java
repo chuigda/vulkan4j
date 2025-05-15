@@ -14,8 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkShaderStatisticsInfoAMD} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderStatisticsInfoAMD.html"><code>VkShaderStatisticsInfoAMD</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkShaderStatisticsInfoAMD {
+///     VkShaderStageFlags shaderStageMask;
+///     VkShaderResourceUsageAMD resourceUsage;
+///     uint32_t numPhysicalVgprs;
+///     uint32_t numPhysicalSgprs;
+///     uint32_t numAvailableVgprs;
+///     uint32_t numAvailableSgprs;
+///     uint32_t computeWorkGroupSize;
+/// } VkShaderStatisticsInfoAMD;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +39,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderStatisticsInfoAMD.html">VkShaderStatisticsInfoAMD</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderStatisticsInfoAMD.html"><code>VkShaderStatisticsInfoAMD</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implements IPointer {
     public static VkShaderStatisticsInfoAMD allocate(Arena arena) {
-        return new VkShaderStatisticsInfoAMD(arena.allocate(LAYOUT));
+        VkShaderStatisticsInfoAMD ret = new VkShaderStatisticsInfoAMD(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkShaderStatisticsInfoAMD[] allocate(Arena arena, int count) {
@@ -54,49 +70,6 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("shaderStageMask"),
-        VkShaderResourceUsageAMD.LAYOUT.withName("resourceUsage"),
-        ValueLayout.JAVA_INT.withName("numPhysicalVgprs"),
-        ValueLayout.JAVA_INT.withName("numPhysicalSgprs"),
-        ValueLayout.JAVA_INT.withName("numAvailableVgprs"),
-        ValueLayout.JAVA_INT.withName("numAvailableSgprs"),
-        ValueLayout.JAVA_INT.withName("computeWorkGroupSize")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$shaderStageMask = PathElement.groupElement("PATH$shaderStageMask");
-    public static final PathElement PATH$resourceUsage = PathElement.groupElement("PATH$resourceUsage");
-    public static final PathElement PATH$numPhysicalVgprs = PathElement.groupElement("PATH$numPhysicalVgprs");
-    public static final PathElement PATH$numPhysicalSgprs = PathElement.groupElement("PATH$numPhysicalSgprs");
-    public static final PathElement PATH$numAvailableVgprs = PathElement.groupElement("PATH$numAvailableVgprs");
-    public static final PathElement PATH$numAvailableSgprs = PathElement.groupElement("PATH$numAvailableSgprs");
-    public static final PathElement PATH$computeWorkGroupSize = PathElement.groupElement("PATH$computeWorkGroupSize");
-
-    public static final OfInt LAYOUT$shaderStageMask = (OfInt) LAYOUT.select(PATH$shaderStageMask);
-    public static final StructLayout LAYOUT$resourceUsage = (StructLayout) LAYOUT.select(PATH$resourceUsage);
-    public static final OfInt LAYOUT$numPhysicalVgprs = (OfInt) LAYOUT.select(PATH$numPhysicalVgprs);
-    public static final OfInt LAYOUT$numPhysicalSgprs = (OfInt) LAYOUT.select(PATH$numPhysicalSgprs);
-    public static final OfInt LAYOUT$numAvailableVgprs = (OfInt) LAYOUT.select(PATH$numAvailableVgprs);
-    public static final OfInt LAYOUT$numAvailableSgprs = (OfInt) LAYOUT.select(PATH$numAvailableSgprs);
-    public static final OfInt LAYOUT$computeWorkGroupSize = (OfInt) LAYOUT.select(PATH$computeWorkGroupSize);
-
-    public static final long SIZE$shaderStageMask = LAYOUT$shaderStageMask.byteSize();
-    public static final long SIZE$resourceUsage = LAYOUT$resourceUsage.byteSize();
-    public static final long SIZE$numPhysicalVgprs = LAYOUT$numPhysicalVgprs.byteSize();
-    public static final long SIZE$numPhysicalSgprs = LAYOUT$numPhysicalSgprs.byteSize();
-    public static final long SIZE$numAvailableVgprs = LAYOUT$numAvailableVgprs.byteSize();
-    public static final long SIZE$numAvailableSgprs = LAYOUT$numAvailableSgprs.byteSize();
-    public static final long SIZE$computeWorkGroupSize = LAYOUT$computeWorkGroupSize.byteSize();
-
-    public static final long OFFSET$shaderStageMask = LAYOUT.byteOffset(PATH$shaderStageMask);
-    public static final long OFFSET$resourceUsage = LAYOUT.byteOffset(PATH$resourceUsage);
-    public static final long OFFSET$numPhysicalVgprs = LAYOUT.byteOffset(PATH$numPhysicalVgprs);
-    public static final long OFFSET$numPhysicalSgprs = LAYOUT.byteOffset(PATH$numPhysicalSgprs);
-    public static final long OFFSET$numAvailableVgprs = LAYOUT.byteOffset(PATH$numAvailableVgprs);
-    public static final long OFFSET$numAvailableSgprs = LAYOUT.byteOffset(PATH$numAvailableSgprs);
-    public static final long OFFSET$computeWorkGroupSize = LAYOUT.byteOffset(PATH$computeWorkGroupSize);
 
     public @enumtype(VkShaderStageFlags.class) int shaderStageMask() {
         return segment.get(LAYOUT$shaderStageMask, OFFSET$shaderStageMask);
@@ -154,4 +127,46 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$computeWorkGroupSize, OFFSET$computeWorkGroupSize, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("shaderStageMask"),
+        VkShaderResourceUsageAMD.LAYOUT.withName("resourceUsage"),
+        ValueLayout.JAVA_INT.withName("numPhysicalVgprs"),
+        ValueLayout.JAVA_INT.withName("numPhysicalSgprs"),
+        ValueLayout.JAVA_INT.withName("numAvailableVgprs"),
+        ValueLayout.JAVA_INT.withName("numAvailableSgprs"),
+        ValueLayout.JAVA_INT.withName("computeWorkGroupSize")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$shaderStageMask = PathElement.groupElement("PATH$shaderStageMask");
+    public static final PathElement PATH$resourceUsage = PathElement.groupElement("PATH$resourceUsage");
+    public static final PathElement PATH$numPhysicalVgprs = PathElement.groupElement("PATH$numPhysicalVgprs");
+    public static final PathElement PATH$numPhysicalSgprs = PathElement.groupElement("PATH$numPhysicalSgprs");
+    public static final PathElement PATH$numAvailableVgprs = PathElement.groupElement("PATH$numAvailableVgprs");
+    public static final PathElement PATH$numAvailableSgprs = PathElement.groupElement("PATH$numAvailableSgprs");
+    public static final PathElement PATH$computeWorkGroupSize = PathElement.groupElement("PATH$computeWorkGroupSize");
+
+    public static final OfInt LAYOUT$shaderStageMask = (OfInt) LAYOUT.select(PATH$shaderStageMask);
+    public static final StructLayout LAYOUT$resourceUsage = (StructLayout) LAYOUT.select(PATH$resourceUsage);
+    public static final OfInt LAYOUT$numPhysicalVgprs = (OfInt) LAYOUT.select(PATH$numPhysicalVgprs);
+    public static final OfInt LAYOUT$numPhysicalSgprs = (OfInt) LAYOUT.select(PATH$numPhysicalSgprs);
+    public static final OfInt LAYOUT$numAvailableVgprs = (OfInt) LAYOUT.select(PATH$numAvailableVgprs);
+    public static final OfInt LAYOUT$numAvailableSgprs = (OfInt) LAYOUT.select(PATH$numAvailableSgprs);
+    public static final OfInt LAYOUT$computeWorkGroupSize = (OfInt) LAYOUT.select(PATH$computeWorkGroupSize);
+
+    public static final long SIZE$shaderStageMask = LAYOUT$shaderStageMask.byteSize();
+    public static final long SIZE$resourceUsage = LAYOUT$resourceUsage.byteSize();
+    public static final long SIZE$numPhysicalVgprs = LAYOUT$numPhysicalVgprs.byteSize();
+    public static final long SIZE$numPhysicalSgprs = LAYOUT$numPhysicalSgprs.byteSize();
+    public static final long SIZE$numAvailableVgprs = LAYOUT$numAvailableVgprs.byteSize();
+    public static final long SIZE$numAvailableSgprs = LAYOUT$numAvailableSgprs.byteSize();
+    public static final long SIZE$computeWorkGroupSize = LAYOUT$computeWorkGroupSize.byteSize();
+
+    public static final long OFFSET$shaderStageMask = LAYOUT.byteOffset(PATH$shaderStageMask);
+    public static final long OFFSET$resourceUsage = LAYOUT.byteOffset(PATH$resourceUsage);
+    public static final long OFFSET$numPhysicalVgprs = LAYOUT.byteOffset(PATH$numPhysicalVgprs);
+    public static final long OFFSET$numPhysicalSgprs = LAYOUT.byteOffset(PATH$numPhysicalSgprs);
+    public static final long OFFSET$numAvailableVgprs = LAYOUT.byteOffset(PATH$numAvailableVgprs);
+    public static final long OFFSET$numAvailableSgprs = LAYOUT.byteOffset(PATH$numAvailableSgprs);
+    public static final long OFFSET$computeWorkGroupSize = LAYOUT.byteOffset(PATH$computeWorkGroupSize);
 }

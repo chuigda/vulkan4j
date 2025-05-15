@@ -47,6 +47,6 @@ fun generateBitfieldAccessor(bitfields: LayoutField.Bitfields) = buildDoc {
             }
         }
 
-        if (next != null) +""
+        if (next != null && next.bitfieldName != "reserved") +""
     }
 }

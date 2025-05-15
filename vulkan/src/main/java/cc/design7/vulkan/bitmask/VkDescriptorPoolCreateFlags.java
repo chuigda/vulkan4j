@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorPoolCreateFlags.html">VkDescriptorPoolCreateFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorPoolCreateFlags.html"><code>VkDescriptorPoolCreateFlags</code></a>
 public final class VkDescriptorPoolCreateFlags {
     public static final int ALLOW_OVERALLOCATION_POOLS_NV = 0x10;
     public static final int ALLOW_OVERALLOCATION_SETS_NV = 0x8;

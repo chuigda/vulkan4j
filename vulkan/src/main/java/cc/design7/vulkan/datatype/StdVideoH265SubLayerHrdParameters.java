@@ -16,6 +16,19 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoH265SubLayerHrdParameters} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoH265SubLayerHrdParameters {
+///     uint32_t bit_rate_value_minus1;
+///     uint32_t cpb_size_value_minus1;
+///     uint32_t cpb_size_du_value_minus1;
+///     uint32_t bit_rate_du_value_minus1;
+///     uint32_t cbr_flag;
+/// } StdVideoH265SubLayerHrdParameters;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +40,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265SubLayerHrdParameters allocate(Arena arena) {
-        return new StdVideoH265SubLayerHrdParameters(arena.allocate(LAYOUT));
+        StdVideoH265SubLayerHrdParameters ret = new StdVideoH265SubLayerHrdParameters(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoH265SubLayerHrdParameters[] allocate(Arena arena, int count) {
@@ -52,39 +66,6 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bit_rate_value_minus1"),
-        ValueLayout.JAVA_INT.withName("cpb_size_value_minus1"),
-        ValueLayout.JAVA_INT.withName("cpb_size_du_value_minus1"),
-        ValueLayout.JAVA_INT.withName("bit_rate_du_value_minus1"),
-        ValueLayout.JAVA_INT.withName("cbr_flag")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bit_rate_value_minus1 = PathElement.groupElement("PATH$bit_rate_value_minus1");
-    public static final PathElement PATH$cpb_size_value_minus1 = PathElement.groupElement("PATH$cpb_size_value_minus1");
-    public static final PathElement PATH$cpb_size_du_value_minus1 = PathElement.groupElement("PATH$cpb_size_du_value_minus1");
-    public static final PathElement PATH$bit_rate_du_value_minus1 = PathElement.groupElement("PATH$bit_rate_du_value_minus1");
-    public static final PathElement PATH$cbr_flag = PathElement.groupElement("PATH$cbr_flag");
-
-    public static final OfInt LAYOUT$bit_rate_value_minus1 = (OfInt) LAYOUT.select(PATH$bit_rate_value_minus1);
-    public static final OfInt LAYOUT$cpb_size_value_minus1 = (OfInt) LAYOUT.select(PATH$cpb_size_value_minus1);
-    public static final OfInt LAYOUT$cpb_size_du_value_minus1 = (OfInt) LAYOUT.select(PATH$cpb_size_du_value_minus1);
-    public static final OfInt LAYOUT$bit_rate_du_value_minus1 = (OfInt) LAYOUT.select(PATH$bit_rate_du_value_minus1);
-    public static final OfInt LAYOUT$cbr_flag = (OfInt) LAYOUT.select(PATH$cbr_flag);
-
-    public static final long SIZE$bit_rate_value_minus1 = LAYOUT$bit_rate_value_minus1.byteSize();
-    public static final long SIZE$cpb_size_value_minus1 = LAYOUT$cpb_size_value_minus1.byteSize();
-    public static final long SIZE$cpb_size_du_value_minus1 = LAYOUT$cpb_size_du_value_minus1.byteSize();
-    public static final long SIZE$bit_rate_du_value_minus1 = LAYOUT$bit_rate_du_value_minus1.byteSize();
-    public static final long SIZE$cbr_flag = LAYOUT$cbr_flag.byteSize();
-
-    public static final long OFFSET$bit_rate_value_minus1 = LAYOUT.byteOffset(PATH$bit_rate_value_minus1);
-    public static final long OFFSET$cpb_size_value_minus1 = LAYOUT.byteOffset(PATH$cpb_size_value_minus1);
-    public static final long OFFSET$cpb_size_du_value_minus1 = LAYOUT.byteOffset(PATH$cpb_size_du_value_minus1);
-    public static final long OFFSET$bit_rate_du_value_minus1 = LAYOUT.byteOffset(PATH$bit_rate_du_value_minus1);
-    public static final long OFFSET$cbr_flag = LAYOUT.byteOffset(PATH$cbr_flag);
 
     public @unsigned int bit_rate_value_minus1() {
         return segment.get(LAYOUT$bit_rate_value_minus1, OFFSET$bit_rate_value_minus1);
@@ -126,4 +107,36 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$cbr_flag, OFFSET$cbr_flag, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bit_rate_value_minus1"),
+        ValueLayout.JAVA_INT.withName("cpb_size_value_minus1"),
+        ValueLayout.JAVA_INT.withName("cpb_size_du_value_minus1"),
+        ValueLayout.JAVA_INT.withName("bit_rate_du_value_minus1"),
+        ValueLayout.JAVA_INT.withName("cbr_flag")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$bit_rate_value_minus1 = PathElement.groupElement("PATH$bit_rate_value_minus1");
+    public static final PathElement PATH$cpb_size_value_minus1 = PathElement.groupElement("PATH$cpb_size_value_minus1");
+    public static final PathElement PATH$cpb_size_du_value_minus1 = PathElement.groupElement("PATH$cpb_size_du_value_minus1");
+    public static final PathElement PATH$bit_rate_du_value_minus1 = PathElement.groupElement("PATH$bit_rate_du_value_minus1");
+    public static final PathElement PATH$cbr_flag = PathElement.groupElement("PATH$cbr_flag");
+
+    public static final OfInt LAYOUT$bit_rate_value_minus1 = (OfInt) LAYOUT.select(PATH$bit_rate_value_minus1);
+    public static final OfInt LAYOUT$cpb_size_value_minus1 = (OfInt) LAYOUT.select(PATH$cpb_size_value_minus1);
+    public static final OfInt LAYOUT$cpb_size_du_value_minus1 = (OfInt) LAYOUT.select(PATH$cpb_size_du_value_minus1);
+    public static final OfInt LAYOUT$bit_rate_du_value_minus1 = (OfInt) LAYOUT.select(PATH$bit_rate_du_value_minus1);
+    public static final OfInt LAYOUT$cbr_flag = (OfInt) LAYOUT.select(PATH$cbr_flag);
+
+    public static final long SIZE$bit_rate_value_minus1 = LAYOUT$bit_rate_value_minus1.byteSize();
+    public static final long SIZE$cpb_size_value_minus1 = LAYOUT$cpb_size_value_minus1.byteSize();
+    public static final long SIZE$cpb_size_du_value_minus1 = LAYOUT$cpb_size_du_value_minus1.byteSize();
+    public static final long SIZE$bit_rate_du_value_minus1 = LAYOUT$bit_rate_du_value_minus1.byteSize();
+    public static final long SIZE$cbr_flag = LAYOUT$cbr_flag.byteSize();
+
+    public static final long OFFSET$bit_rate_value_minus1 = LAYOUT.byteOffset(PATH$bit_rate_value_minus1);
+    public static final long OFFSET$cpb_size_value_minus1 = LAYOUT.byteOffset(PATH$cpb_size_value_minus1);
+    public static final long OFFSET$cpb_size_du_value_minus1 = LAYOUT.byteOffset(PATH$cpb_size_du_value_minus1);
+    public static final long OFFSET$bit_rate_du_value_minus1 = LAYOUT.byteOffset(PATH$bit_rate_du_value_minus1);
+    public static final long OFFSET$cbr_flag = LAYOUT.byteOffset(PATH$cbr_flag);
 }

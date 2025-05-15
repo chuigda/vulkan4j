@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceMemoryProperties2} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMemoryProperties2.html"><code>VkPhysicalDeviceMemoryProperties2</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceMemoryProperties2 {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkPhysicalDeviceMemoryProperties memoryProperties;
+/// } VkPhysicalDeviceMemoryProperties2;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PROPERTIES_2`
+///
+/// The {@link VkPhysicalDeviceMemoryProperties2#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceMemoryProperties2#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMemoryProperties2.html">VkPhysicalDeviceMemoryProperties2</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMemoryProperties2.html"><code>VkPhysicalDeviceMemoryProperties2</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceMemoryProperties2(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceMemoryProperties2 {
-        sType(VkStructureType.PHYSICAL_DEVICE_MEMORY_PROPERTIES_2);
-    }
-
     public static VkPhysicalDeviceMemoryProperties2 allocate(Arena arena) {
-        return new VkPhysicalDeviceMemoryProperties2(arena.allocate(LAYOUT));
+        VkPhysicalDeviceMemoryProperties2 ret = new VkPhysicalDeviceMemoryProperties2(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_MEMORY_PROPERTIES_2);
+        return ret;
     }
 
     public static VkPhysicalDeviceMemoryProperties2[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceMemoryProperties2(@NotNull MemorySegment segment) 
         VkPhysicalDeviceMemoryProperties2[] ret = new VkPhysicalDeviceMemoryProperties2[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceMemoryProperties2(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_MEMORY_PROPERTIES_2);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceMemoryProperties2(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        VkPhysicalDeviceMemoryProperties.LAYOUT.withName("memoryProperties")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$memoryProperties = PathElement.groupElement("PATH$memoryProperties");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$memoryProperties = (StructLayout) LAYOUT.select(PATH$memoryProperties);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$memoryProperties = LAYOUT$memoryProperties.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$memoryProperties = LAYOUT.byteOffset(PATH$memoryProperties);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_MEMORY_PROPERTIES_2);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceMemoryProperties2(@NotNull MemorySegment segment) 
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryProperties, SIZE$memoryProperties);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkPhysicalDeviceMemoryProperties.LAYOUT.withName("memoryProperties")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$memoryProperties = PathElement.groupElement("PATH$memoryProperties");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$memoryProperties = (StructLayout) LAYOUT.select(PATH$memoryProperties);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$memoryProperties = LAYOUT$memoryProperties.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$memoryProperties = LAYOUT.byteOffset(PATH$memoryProperties);
 }

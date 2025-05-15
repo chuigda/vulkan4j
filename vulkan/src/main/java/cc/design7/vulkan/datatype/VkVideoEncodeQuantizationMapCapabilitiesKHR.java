@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoEncodeQuantizationMapCapabilitiesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeQuantizationMapCapabilitiesKHR.html"><code>VkVideoEncodeQuantizationMapCapabilitiesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoEncodeQuantizationMapCapabilitiesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkExtent2D maxQuantizationMapExtent;
+/// } VkVideoEncodeQuantizationMapCapabilitiesKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUANTIZATION_MAP_CAPABILITIES_KHR`
+///
+/// The {@link VkVideoEncodeQuantizationMapCapabilitiesKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkVideoEncodeQuantizationMapCapabilitiesKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeQuantizationMapCapabilitiesKHR.html">VkVideoEncodeQuantizationMapCapabilitiesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeQuantizationMapCapabilitiesKHR.html"><code>VkVideoEncodeQuantizationMapCapabilitiesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoEncodeQuantizationMapCapabilitiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkVideoEncodeQuantizationMapCapabilitiesKHR {
-        sType(VkStructureType.VIDEO_ENCODE_QUANTIZATION_MAP_CAPABILITIES_KHR);
-    }
-
     public static VkVideoEncodeQuantizationMapCapabilitiesKHR allocate(Arena arena) {
-        return new VkVideoEncodeQuantizationMapCapabilitiesKHR(arena.allocate(LAYOUT));
+        VkVideoEncodeQuantizationMapCapabilitiesKHR ret = new VkVideoEncodeQuantizationMapCapabilitiesKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VIDEO_ENCODE_QUANTIZATION_MAP_CAPABILITIES_KHR);
+        return ret;
     }
 
     public static VkVideoEncodeQuantizationMapCapabilitiesKHR[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkVideoEncodeQuantizationMapCapabilitiesKHR(@NotNull MemorySegment
         VkVideoEncodeQuantizationMapCapabilitiesKHR[] ret = new VkVideoEncodeQuantizationMapCapabilitiesKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkVideoEncodeQuantizationMapCapabilitiesKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VIDEO_ENCODE_QUANTIZATION_MAP_CAPABILITIES_KHR);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkVideoEncodeQuantizationMapCapabilitiesKHR(@NotNull MemorySegment
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        VkExtent2D.LAYOUT.withName("maxQuantizationMapExtent")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxQuantizationMapExtent = PathElement.groupElement("PATH$maxQuantizationMapExtent");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$maxQuantizationMapExtent = (StructLayout) LAYOUT.select(PATH$maxQuantizationMapExtent);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$maxQuantizationMapExtent = LAYOUT$maxQuantizationMapExtent.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$maxQuantizationMapExtent = LAYOUT.byteOffset(PATH$maxQuantizationMapExtent);
+    public void autoInit() {
+        sType(VkStructureType.VIDEO_ENCODE_QUANTIZATION_MAP_CAPABILITIES_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkVideoEncodeQuantizationMapCapabilitiesKHR(@NotNull MemorySegment
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxQuantizationMapExtent, SIZE$maxQuantizationMapExtent);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkExtent2D.LAYOUT.withName("maxQuantizationMapExtent")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$maxQuantizationMapExtent = PathElement.groupElement("PATH$maxQuantizationMapExtent");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$maxQuantizationMapExtent = (StructLayout) LAYOUT.select(PATH$maxQuantizationMapExtent);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxQuantizationMapExtent = LAYOUT$maxQuantizationMapExtent.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$maxQuantizationMapExtent = LAYOUT.byteOffset(PATH$maxQuantizationMapExtent);
 }

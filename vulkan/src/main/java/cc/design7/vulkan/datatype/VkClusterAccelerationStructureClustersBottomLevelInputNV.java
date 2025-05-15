@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkClusterAccelerationStructureClustersBottomLevelInputNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureClustersBottomLevelInputNV.html"><code>VkClusterAccelerationStructureClustersBottomLevelInputNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkClusterAccelerationStructureClustersBottomLevelInputNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t maxTotalClusterCount;
+///     uint32_t maxClusterCountPerAccelerationStructure;
+/// } VkClusterAccelerationStructureClustersBottomLevelInputNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_CLUSTERS_BOTTOM_LEVEL_INPUT_NV`
+///
+/// The {@link VkClusterAccelerationStructureClustersBottomLevelInputNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkClusterAccelerationStructureClustersBottomLevelInputNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureClustersBottomLevelInputNV.html">VkClusterAccelerationStructureClustersBottomLevelInputNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureClustersBottomLevelInputNV.html"><code>VkClusterAccelerationStructureClustersBottomLevelInputNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkClusterAccelerationStructureClustersBottomLevelInputNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkClusterAccelerationStructureClustersBottomLevelInputNV {
-        sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_CLUSTERS_BOTTOM_LEVEL_INPUT_NV);
-    }
-
     public static VkClusterAccelerationStructureClustersBottomLevelInputNV allocate(Arena arena) {
-        return new VkClusterAccelerationStructureClustersBottomLevelInputNV(arena.allocate(LAYOUT));
+        VkClusterAccelerationStructureClustersBottomLevelInputNV ret = new VkClusterAccelerationStructureClustersBottomLevelInputNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_CLUSTERS_BOTTOM_LEVEL_INPUT_NV);
+        return ret;
     }
 
     public static VkClusterAccelerationStructureClustersBottomLevelInputNV[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkClusterAccelerationStructureClustersBottomLevelInputNV(@NotNull 
         VkClusterAccelerationStructureClustersBottomLevelInputNV[] ret = new VkClusterAccelerationStructureClustersBottomLevelInputNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkClusterAccelerationStructureClustersBottomLevelInputNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_CLUSTERS_BOTTOM_LEVEL_INPUT_NV);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkClusterAccelerationStructureClustersBottomLevelInputNV(@NotNull 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("maxTotalClusterCount"),
-        ValueLayout.JAVA_INT.withName("maxClusterCountPerAccelerationStructure")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxTotalClusterCount = PathElement.groupElement("PATH$maxTotalClusterCount");
-    public static final PathElement PATH$maxClusterCountPerAccelerationStructure = PathElement.groupElement("PATH$maxClusterCountPerAccelerationStructure");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$maxTotalClusterCount = (OfInt) LAYOUT.select(PATH$maxTotalClusterCount);
-    public static final OfInt LAYOUT$maxClusterCountPerAccelerationStructure = (OfInt) LAYOUT.select(PATH$maxClusterCountPerAccelerationStructure);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$maxTotalClusterCount = LAYOUT$maxTotalClusterCount.byteSize();
-    public static final long SIZE$maxClusterCountPerAccelerationStructure = LAYOUT$maxClusterCountPerAccelerationStructure.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$maxTotalClusterCount = LAYOUT.byteOffset(PATH$maxTotalClusterCount);
-    public static final long OFFSET$maxClusterCountPerAccelerationStructure = LAYOUT.byteOffset(PATH$maxClusterCountPerAccelerationStructure);
+    public void autoInit() {
+        sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_CLUSTERS_BOTTOM_LEVEL_INPUT_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkClusterAccelerationStructureClustersBottomLevelInputNV(@NotNull 
         segment.set(LAYOUT$maxClusterCountPerAccelerationStructure, OFFSET$maxClusterCountPerAccelerationStructure, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maxTotalClusterCount"),
+        ValueLayout.JAVA_INT.withName("maxClusterCountPerAccelerationStructure")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$maxTotalClusterCount = PathElement.groupElement("PATH$maxTotalClusterCount");
+    public static final PathElement PATH$maxClusterCountPerAccelerationStructure = PathElement.groupElement("PATH$maxClusterCountPerAccelerationStructure");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maxTotalClusterCount = (OfInt) LAYOUT.select(PATH$maxTotalClusterCount);
+    public static final OfInt LAYOUT$maxClusterCountPerAccelerationStructure = (OfInt) LAYOUT.select(PATH$maxClusterCountPerAccelerationStructure);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxTotalClusterCount = LAYOUT$maxTotalClusterCount.byteSize();
+    public static final long SIZE$maxClusterCountPerAccelerationStructure = LAYOUT$maxClusterCountPerAccelerationStructure.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$maxTotalClusterCount = LAYOUT.byteOffset(PATH$maxTotalClusterCount);
+    public static final long OFFSET$maxClusterCountPerAccelerationStructure = LAYOUT.byteOffset(PATH$maxClusterCountPerAccelerationStructure);
 }

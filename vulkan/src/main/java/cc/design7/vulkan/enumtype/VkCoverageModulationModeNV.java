@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCoverageModulationModeNV.html">VkCoverageModulationModeNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCoverageModulationModeNV.html"><code>VkCoverageModulationModeNV</code></a>
 public final class VkCoverageModulationModeNV {
     public static final int NONE = 0x0;
     public static final int RGB = 0x1;

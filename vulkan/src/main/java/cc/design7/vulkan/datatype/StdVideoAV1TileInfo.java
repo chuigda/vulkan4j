@@ -16,6 +16,24 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoAV1TileInfo} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoAV1TileInfo {
+///     StdVideoAV1TileInfoFlags flags;
+///     uint8_t TileCols;
+///     uint8_t TileRows;
+///     uint16_t context_update_tile_id;
+///     uint8_t tile_size_bytes_minus_1;
+///     uint8_t reserved1;
+///     uint16_t const* pMiColStarts;
+///     uint16_t const* pMiRowStarts;
+///     uint16_t const* pWidthInSbsMinus1;
+///     uint16_t const* pHeightInSbsMinus1;
+/// } StdVideoAV1TileInfo;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +45,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1TileInfo allocate(Arena arena) {
-        return new StdVideoAV1TileInfo(arena.allocate(LAYOUT));
+        StdVideoAV1TileInfo ret = new StdVideoAV1TileInfo(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoAV1TileInfo[] allocate(Arena arena, int count) {
@@ -52,64 +71,6 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        StdVideoAV1TileInfoFlags.LAYOUT.withName("flags"),
-        ValueLayout.JAVA_BYTE.withName("TileCols"),
-        ValueLayout.JAVA_BYTE.withName("TileRows"),
-        ValueLayout.JAVA_SHORT.withName("context_update_tile_id"),
-        ValueLayout.JAVA_BYTE.withName("tile_size_bytes_minus_1"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pMiColStarts"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pMiRowStarts"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pWidthInSbsMinus1"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pHeightInSbsMinus1")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$TileCols = PathElement.groupElement("PATH$TileCols");
-    public static final PathElement PATH$TileRows = PathElement.groupElement("PATH$TileRows");
-    public static final PathElement PATH$context_update_tile_id = PathElement.groupElement("PATH$context_update_tile_id");
-    public static final PathElement PATH$tile_size_bytes_minus_1 = PathElement.groupElement("PATH$tile_size_bytes_minus_1");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
-    public static final PathElement PATH$pMiColStarts = PathElement.groupElement("PATH$pMiColStarts");
-    public static final PathElement PATH$pMiRowStarts = PathElement.groupElement("PATH$pMiRowStarts");
-    public static final PathElement PATH$pWidthInSbsMinus1 = PathElement.groupElement("PATH$pWidthInSbsMinus1");
-    public static final PathElement PATH$pHeightInSbsMinus1 = PathElement.groupElement("PATH$pHeightInSbsMinus1");
-
-    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
-    public static final OfByte LAYOUT$TileCols = (OfByte) LAYOUT.select(PATH$TileCols);
-    public static final OfByte LAYOUT$TileRows = (OfByte) LAYOUT.select(PATH$TileRows);
-    public static final OfShort LAYOUT$context_update_tile_id = (OfShort) LAYOUT.select(PATH$context_update_tile_id);
-    public static final OfByte LAYOUT$tile_size_bytes_minus_1 = (OfByte) LAYOUT.select(PATH$tile_size_bytes_minus_1);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
-    public static final AddressLayout LAYOUT$pMiColStarts = (AddressLayout) LAYOUT.select(PATH$pMiColStarts);
-    public static final AddressLayout LAYOUT$pMiRowStarts = (AddressLayout) LAYOUT.select(PATH$pMiRowStarts);
-    public static final AddressLayout LAYOUT$pWidthInSbsMinus1 = (AddressLayout) LAYOUT.select(PATH$pWidthInSbsMinus1);
-    public static final AddressLayout LAYOUT$pHeightInSbsMinus1 = (AddressLayout) LAYOUT.select(PATH$pHeightInSbsMinus1);
-
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$TileCols = LAYOUT$TileCols.byteSize();
-    public static final long SIZE$TileRows = LAYOUT$TileRows.byteSize();
-    public static final long SIZE$context_update_tile_id = LAYOUT$context_update_tile_id.byteSize();
-    public static final long SIZE$tile_size_bytes_minus_1 = LAYOUT$tile_size_bytes_minus_1.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
-    public static final long SIZE$pMiColStarts = LAYOUT$pMiColStarts.byteSize();
-    public static final long SIZE$pMiRowStarts = LAYOUT$pMiRowStarts.byteSize();
-    public static final long SIZE$pWidthInSbsMinus1 = LAYOUT$pWidthInSbsMinus1.byteSize();
-    public static final long SIZE$pHeightInSbsMinus1 = LAYOUT$pHeightInSbsMinus1.byteSize();
-
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$TileCols = LAYOUT.byteOffset(PATH$TileCols);
-    public static final long OFFSET$TileRows = LAYOUT.byteOffset(PATH$TileRows);
-    public static final long OFFSET$context_update_tile_id = LAYOUT.byteOffset(PATH$context_update_tile_id);
-    public static final long OFFSET$tile_size_bytes_minus_1 = LAYOUT.byteOffset(PATH$tile_size_bytes_minus_1);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
-    public static final long OFFSET$pMiColStarts = LAYOUT.byteOffset(PATH$pMiColStarts);
-    public static final long OFFSET$pMiRowStarts = LAYOUT.byteOffset(PATH$pMiRowStarts);
-    public static final long OFFSET$pWidthInSbsMinus1 = LAYOUT.byteOffset(PATH$pWidthInSbsMinus1);
-    public static final long OFFSET$pHeightInSbsMinus1 = LAYOUT.byteOffset(PATH$pHeightInSbsMinus1);
 
     public StdVideoAV1TileInfoFlags flags() {
         return new StdVideoAV1TileInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
@@ -173,7 +134,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
     /// writing to the buffer.
     public @Nullable @unsigned ShortPtr pMiColStarts() {
         MemorySegment s = pMiColStartsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new ShortPtr(s);
@@ -198,7 +159,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
     /// writing to the buffer.
     public @Nullable @unsigned ShortPtr pMiRowStarts() {
         MemorySegment s = pMiRowStartsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new ShortPtr(s);
@@ -223,7 +184,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
     /// writing to the buffer.
     public @Nullable @unsigned ShortPtr pWidthInSbsMinus1() {
         MemorySegment s = pWidthInSbsMinus1Raw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new ShortPtr(s);
@@ -248,7 +209,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
     /// writing to the buffer.
     public @Nullable @unsigned ShortPtr pHeightInSbsMinus1() {
         MemorySegment s = pHeightInSbsMinus1Raw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new ShortPtr(s);
@@ -259,4 +220,61 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
         pHeightInSbsMinus1Raw(s);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoAV1TileInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("TileCols"),
+        ValueLayout.JAVA_BYTE.withName("TileRows"),
+        ValueLayout.JAVA_SHORT.withName("context_update_tile_id"),
+        ValueLayout.JAVA_BYTE.withName("tile_size_bytes_minus_1"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pMiColStarts"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pMiRowStarts"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pWidthInSbsMinus1"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pHeightInSbsMinus1")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$TileCols = PathElement.groupElement("PATH$TileCols");
+    public static final PathElement PATH$TileRows = PathElement.groupElement("PATH$TileRows");
+    public static final PathElement PATH$context_update_tile_id = PathElement.groupElement("PATH$context_update_tile_id");
+    public static final PathElement PATH$tile_size_bytes_minus_1 = PathElement.groupElement("PATH$tile_size_bytes_minus_1");
+    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
+    public static final PathElement PATH$pMiColStarts = PathElement.groupElement("PATH$pMiColStarts");
+    public static final PathElement PATH$pMiRowStarts = PathElement.groupElement("PATH$pMiRowStarts");
+    public static final PathElement PATH$pWidthInSbsMinus1 = PathElement.groupElement("PATH$pWidthInSbsMinus1");
+    public static final PathElement PATH$pHeightInSbsMinus1 = PathElement.groupElement("PATH$pHeightInSbsMinus1");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$TileCols = (OfByte) LAYOUT.select(PATH$TileCols);
+    public static final OfByte LAYOUT$TileRows = (OfByte) LAYOUT.select(PATH$TileRows);
+    public static final OfShort LAYOUT$context_update_tile_id = (OfShort) LAYOUT.select(PATH$context_update_tile_id);
+    public static final OfByte LAYOUT$tile_size_bytes_minus_1 = (OfByte) LAYOUT.select(PATH$tile_size_bytes_minus_1);
+    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
+    public static final AddressLayout LAYOUT$pMiColStarts = (AddressLayout) LAYOUT.select(PATH$pMiColStarts);
+    public static final AddressLayout LAYOUT$pMiRowStarts = (AddressLayout) LAYOUT.select(PATH$pMiRowStarts);
+    public static final AddressLayout LAYOUT$pWidthInSbsMinus1 = (AddressLayout) LAYOUT.select(PATH$pWidthInSbsMinus1);
+    public static final AddressLayout LAYOUT$pHeightInSbsMinus1 = (AddressLayout) LAYOUT.select(PATH$pHeightInSbsMinus1);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$TileCols = LAYOUT$TileCols.byteSize();
+    public static final long SIZE$TileRows = LAYOUT$TileRows.byteSize();
+    public static final long SIZE$context_update_tile_id = LAYOUT$context_update_tile_id.byteSize();
+    public static final long SIZE$tile_size_bytes_minus_1 = LAYOUT$tile_size_bytes_minus_1.byteSize();
+    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
+    public static final long SIZE$pMiColStarts = LAYOUT$pMiColStarts.byteSize();
+    public static final long SIZE$pMiRowStarts = LAYOUT$pMiRowStarts.byteSize();
+    public static final long SIZE$pWidthInSbsMinus1 = LAYOUT$pWidthInSbsMinus1.byteSize();
+    public static final long SIZE$pHeightInSbsMinus1 = LAYOUT$pHeightInSbsMinus1.byteSize();
+
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$TileCols = LAYOUT.byteOffset(PATH$TileCols);
+    public static final long OFFSET$TileRows = LAYOUT.byteOffset(PATH$TileRows);
+    public static final long OFFSET$context_update_tile_id = LAYOUT.byteOffset(PATH$context_update_tile_id);
+    public static final long OFFSET$tile_size_bytes_minus_1 = LAYOUT.byteOffset(PATH$tile_size_bytes_minus_1);
+    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
+    public static final long OFFSET$pMiColStarts = LAYOUT.byteOffset(PATH$pMiColStarts);
+    public static final long OFFSET$pMiRowStarts = LAYOUT.byteOffset(PATH$pMiRowStarts);
+    public static final long OFFSET$pWidthInSbsMinus1 = LAYOUT.byteOffset(PATH$pWidthInSbsMinus1);
+    public static final long OFFSET$pHeightInSbsMinus1 = LAYOUT.byteOffset(PATH$pHeightInSbsMinus1);
 }

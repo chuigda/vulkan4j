@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoEncodeQualityLevelInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeQualityLevelInfoKHR.html"><code>VkVideoEncodeQualityLevelInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoEncodeQualityLevelInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t qualityLevel;
+/// } VkVideoEncodeQualityLevelInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR`
+///
+/// The {@link VkVideoEncodeQualityLevelInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkVideoEncodeQualityLevelInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeQualityLevelInfoKHR.html">VkVideoEncodeQualityLevelInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeQualityLevelInfoKHR.html"><code>VkVideoEncodeQualityLevelInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkVideoEncodeQualityLevelInfoKHR {
-        sType(VkStructureType.VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR);
-    }
-
     public static VkVideoEncodeQualityLevelInfoKHR allocate(Arena arena) {
-        return new VkVideoEncodeQualityLevelInfoKHR(arena.allocate(LAYOUT));
+        VkVideoEncodeQualityLevelInfoKHR ret = new VkVideoEncodeQualityLevelInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR);
+        return ret;
     }
 
     public static VkVideoEncodeQualityLevelInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegment segment) i
         VkVideoEncodeQualityLevelInfoKHR[] ret = new VkVideoEncodeQualityLevelInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkVideoEncodeQualityLevelInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("qualityLevel")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$qualityLevel = PathElement.groupElement("PATH$qualityLevel");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$qualityLevel = (OfInt) LAYOUT.select(PATH$qualityLevel);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$qualityLevel = LAYOUT$qualityLevel.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$qualityLevel = LAYOUT.byteOffset(PATH$qualityLevel);
+    public void autoInit() {
+        sType(VkStructureType.VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$qualityLevel, OFFSET$qualityLevel, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("qualityLevel")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$qualityLevel = PathElement.groupElement("PATH$qualityLevel");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$qualityLevel = (OfInt) LAYOUT.select(PATH$qualityLevel);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$qualityLevel = LAYOUT$qualityLevel.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$qualityLevel = LAYOUT.byteOffset(PATH$qualityLevel);
 }

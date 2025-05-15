@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSystemAllocationScope.html">VkSystemAllocationScope</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSystemAllocationScope.html"><code>VkSystemAllocationScope</code></a>
 public final class VkSystemAllocationScope {
     public static final int COMMAND = 0x0;
     public static final int OBJECT = 0x1;

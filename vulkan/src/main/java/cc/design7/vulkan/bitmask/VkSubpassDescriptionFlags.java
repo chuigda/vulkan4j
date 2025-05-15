@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassDescriptionFlags.html">VkSubpassDescriptionFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassDescriptionFlags.html"><code>VkSubpassDescriptionFlags</code></a>
 public final class VkSubpassDescriptionFlags {
     public static final int ENABLE_LEGACY_DITHERING_EXT = 0x80;
     public static final int FRAGMENT_REGION_QCOM = 0x4;

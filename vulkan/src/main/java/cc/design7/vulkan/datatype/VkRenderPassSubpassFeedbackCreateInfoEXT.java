@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkRenderPassSubpassFeedbackCreateInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassSubpassFeedbackCreateInfoEXT.html"><code>VkRenderPassSubpassFeedbackCreateInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkRenderPassSubpassFeedbackCreateInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkRenderPassSubpassFeedbackInfoEXT* pSubpassFeedback;
+/// } VkRenderPassSubpassFeedbackCreateInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_RENDER_PASS_SUBPASS_FEEDBACK_CREATE_INFO_EXT`
+///
+/// The {@link VkRenderPassSubpassFeedbackCreateInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkRenderPassSubpassFeedbackCreateInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassSubpassFeedbackCreateInfoEXT.html">VkRenderPassSubpassFeedbackCreateInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassSubpassFeedbackCreateInfoEXT.html"><code>VkRenderPassSubpassFeedbackCreateInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkRenderPassSubpassFeedbackCreateInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkRenderPassSubpassFeedbackCreateInfoEXT {
-        sType(VkStructureType.RENDER_PASS_SUBPASS_FEEDBACK_CREATE_INFO_EXT);
-    }
-
     public static VkRenderPassSubpassFeedbackCreateInfoEXT allocate(Arena arena) {
-        return new VkRenderPassSubpassFeedbackCreateInfoEXT(arena.allocate(LAYOUT));
+        VkRenderPassSubpassFeedbackCreateInfoEXT ret = new VkRenderPassSubpassFeedbackCreateInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.RENDER_PASS_SUBPASS_FEEDBACK_CREATE_INFO_EXT);
+        return ret;
     }
 
     public static VkRenderPassSubpassFeedbackCreateInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(@NotNull MemorySegment se
         VkRenderPassSubpassFeedbackCreateInfoEXT[] ret = new VkRenderPassSubpassFeedbackCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkRenderPassSubpassFeedbackCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.RENDER_PASS_SUBPASS_FEEDBACK_CREATE_INFO_EXT);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(@NotNull MemorySegment se
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withTargetLayout(VkRenderPassSubpassFeedbackInfoEXT.LAYOUT).withName("pSubpassFeedback")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$pSubpassFeedback = PathElement.groupElement("PATH$pSubpassFeedback");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$pSubpassFeedback = (AddressLayout) LAYOUT.select(PATH$pSubpassFeedback);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$pSubpassFeedback = LAYOUT$pSubpassFeedback.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$pSubpassFeedback = LAYOUT.byteOffset(PATH$pSubpassFeedback);
+    public void autoInit() {
+        sType(VkStructureType.RENDER_PASS_SUBPASS_FEEDBACK_CREATE_INFO_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -112,7 +111,7 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(@NotNull MemorySegment se
 
     public @Nullable VkRenderPassSubpassFeedbackInfoEXT pSubpassFeedback() {
         MemorySegment s = pSubpassFeedbackRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkRenderPassSubpassFeedbackInfoEXT(s);
@@ -125,7 +124,7 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(@NotNull MemorySegment se
 
     @unsafe public @Nullable VkRenderPassSubpassFeedbackInfoEXT[] pSubpassFeedback(int assumedCount) {
         MemorySegment s = pSubpassFeedbackRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -137,4 +136,26 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(@NotNull MemorySegment se
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withTargetLayout(VkRenderPassSubpassFeedbackInfoEXT.LAYOUT).withName("pSubpassFeedback")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$pSubpassFeedback = PathElement.groupElement("PATH$pSubpassFeedback");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$pSubpassFeedback = (AddressLayout) LAYOUT.select(PATH$pSubpassFeedback);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pSubpassFeedback = LAYOUT$pSubpassFeedback.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$pSubpassFeedback = LAYOUT.byteOffset(PATH$pSubpassFeedback);
 }

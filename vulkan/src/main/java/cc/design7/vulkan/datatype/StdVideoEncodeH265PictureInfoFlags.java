@@ -17,6 +17,24 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoEncodeH265PictureInfoFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoEncodeH265PictureInfoFlags {
+///     uint32_t is_reference : 1;
+///     uint32_t IrapPicFlag : 1;
+///     uint32_t used_for_long_term_reference : 1;
+///     uint32_t discardable_flag : 1;
+///     uint32_t cross_layer_bla_flag : 1;
+///     uint32_t pic_output_flag : 1;
+///     uint32_t no_output_of_prior_pics_flag : 1;
+///     uint32_t short_term_ref_pic_set_sps_flag : 1;
+///     uint32_t slice_temporal_mvp_enabled_flag : 1;
+///     uint32_t reserved : 23;
+/// } StdVideoEncodeH265PictureInfoFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +46,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeH265PictureInfoFlags allocate(Arena arena) {
-        return new StdVideoEncodeH265PictureInfoFlags(arena.allocate(LAYOUT));
+        StdVideoEncodeH265PictureInfoFlags ret = new StdVideoEncodeH265PictureInfoFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoEncodeH265PictureInfoFlags[] allocate(Arena arena, int count) {
@@ -53,18 +72,6 @@ public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment)
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$is_reference_reserved")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$is_reference_reserved = PathElement.groupElement("PATH$bitfield$is_reference_reserved");
-
-    public static final OfInt LAYOUT$is_reference_reserved = (OfInt) LAYOUT.select(PATH$bitfield$is_reference_reserved);
-
-
-    public static final long OFFSET$is_reference_reserved = LAYOUT.byteOffset(PATH$bitfield$is_reference_reserved);
 
     public boolean is_reference() {
         MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
@@ -156,5 +163,15 @@ public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment)
         BitfieldUtil.writeBit(s, 8, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$is_reference_reserved")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$bitfield$is_reference_reserved = PathElement.groupElement("PATH$bitfield$is_reference_reserved");
+
+    public static final OfInt LAYOUT$is_reference_reserved = (OfInt) LAYOUT.select(PATH$bitfield$is_reference_reserved);
+
+
+    public static final long OFFSET$is_reference_reserved = LAYOUT.byteOffset(PATH$bitfield$is_reference_reserved);
 }

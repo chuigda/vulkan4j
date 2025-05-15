@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkClearDepthStencilValue} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClearDepthStencilValue.html"><code>VkClearDepthStencilValue</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkClearDepthStencilValue {
+///     float depth;
+///     uint32_t stencil;
+/// } VkClearDepthStencilValue;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClearDepthStencilValue.html">VkClearDepthStencilValue</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClearDepthStencilValue.html"><code>VkClearDepthStencilValue</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkClearDepthStencilValue(@NotNull MemorySegment segment) implements IPointer {
     public static VkClearDepthStencilValue allocate(Arena arena) {
-        return new VkClearDepthStencilValue(arena.allocate(LAYOUT));
+        VkClearDepthStencilValue ret = new VkClearDepthStencilValue(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkClearDepthStencilValue[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkClearDepthStencilValue(@NotNull MemorySegment segment) implement
         return ret;
     }
 
+    public float depth() {
+        return segment.get(LAYOUT$depth, OFFSET$depth);
+    }
+
+    public void depth(float value) {
+        segment.set(LAYOUT$depth, OFFSET$depth, value);
+    }
+
+    public @unsigned int stencil() {
+        return segment.get(LAYOUT$stencil, OFFSET$stencil);
+    }
+
+    public void stencil(@unsigned int value) {
+        segment.set(LAYOUT$stencil, OFFSET$stencil, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_FLOAT.withName("depth"),
         ValueLayout.JAVA_INT.withName("stencil")
@@ -72,21 +99,4 @@ public record VkClearDepthStencilValue(@NotNull MemorySegment segment) implement
 
     public static final long OFFSET$depth = LAYOUT.byteOffset(PATH$depth);
     public static final long OFFSET$stencil = LAYOUT.byteOffset(PATH$stencil);
-
-    public float depth() {
-        return segment.get(LAYOUT$depth, OFFSET$depth);
-    }
-
-    public void depth(float value) {
-        segment.set(LAYOUT$depth, OFFSET$depth, value);
-    }
-
-    public @unsigned int stencil() {
-        return segment.get(LAYOUT$stencil, OFFSET$stencil);
-    }
-
-    public void stencil(@unsigned int value) {
-        segment.set(LAYOUT$stencil, OFFSET$stencil, value);
-    }
-
 }

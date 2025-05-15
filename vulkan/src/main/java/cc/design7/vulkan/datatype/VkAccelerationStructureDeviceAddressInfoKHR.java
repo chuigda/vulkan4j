@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkAccelerationStructureDeviceAddressInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureDeviceAddressInfoKHR.html"><code>VkAccelerationStructureDeviceAddressInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkAccelerationStructureDeviceAddressInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkAccelerationStructureKHR accelerationStructure;
+/// } VkAccelerationStructureDeviceAddressInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DEVICE_ADDRESS_INFO_KHR`
+///
+/// The {@link VkAccelerationStructureDeviceAddressInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkAccelerationStructureDeviceAddressInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureDeviceAddressInfoKHR.html">VkAccelerationStructureDeviceAddressInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureDeviceAddressInfoKHR.html"><code>VkAccelerationStructureDeviceAddressInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkAccelerationStructureDeviceAddressInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkAccelerationStructureDeviceAddressInfoKHR {
-        sType(VkStructureType.ACCELERATION_STRUCTURE_DEVICE_ADDRESS_INFO_KHR);
-    }
-
     public static VkAccelerationStructureDeviceAddressInfoKHR allocate(Arena arena) {
-        return new VkAccelerationStructureDeviceAddressInfoKHR(arena.allocate(LAYOUT));
+        VkAccelerationStructureDeviceAddressInfoKHR ret = new VkAccelerationStructureDeviceAddressInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.ACCELERATION_STRUCTURE_DEVICE_ADDRESS_INFO_KHR);
+        return ret;
     }
 
     public static VkAccelerationStructureDeviceAddressInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkAccelerationStructureDeviceAddressInfoKHR(@NotNull MemorySegment
         VkAccelerationStructureDeviceAddressInfoKHR[] ret = new VkAccelerationStructureDeviceAddressInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkAccelerationStructureDeviceAddressInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.ACCELERATION_STRUCTURE_DEVICE_ADDRESS_INFO_KHR);
         }
         return ret;
     }
@@ -57,6 +75,42 @@ public record VkAccelerationStructureDeviceAddressInfoKHR(@NotNull MemorySegment
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.ACCELERATION_STRUCTURE_DEVICE_ADDRESS_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkAccelerationStructureKHR accelerationStructure() {
+        MemorySegment s = segment.asSlice(OFFSET$accelerationStructure, SIZE$accelerationStructure);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkAccelerationStructureKHR(s);
+    }
+
+    public void accelerationStructure(@Nullable VkAccelerationStructureKHR value) {
+        segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value != null ? value.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -81,37 +135,4 @@ public record VkAccelerationStructureDeviceAddressInfoKHR(@NotNull MemorySegment
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$accelerationStructure = LAYOUT.byteOffset(PATH$accelerationStructure);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkAccelerationStructureKHR accelerationStructure() {
-        MemorySegment s = segment.asSlice(OFFSET$accelerationStructure, SIZE$accelerationStructure);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkAccelerationStructureKHR(s);
-    }
-
-    public void accelerationStructure(@Nullable VkAccelerationStructureKHR value) {
-        segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
 }

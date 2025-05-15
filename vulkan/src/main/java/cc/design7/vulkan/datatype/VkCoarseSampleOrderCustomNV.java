@@ -14,8 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkCoarseSampleOrderCustomNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCoarseSampleOrderCustomNV.html"><code>VkCoarseSampleOrderCustomNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkCoarseSampleOrderCustomNV {
+///     VkShadingRatePaletteEntryNV shadingRate;
+///     uint32_t sampleCount;
+///     uint32_t sampleLocationCount;
+///     VkCoarseSampleLocationNV const* pSampleLocations;
+/// } VkCoarseSampleOrderCustomNV;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +36,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCoarseSampleOrderCustomNV.html">VkCoarseSampleOrderCustomNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCoarseSampleOrderCustomNV.html"><code>VkCoarseSampleOrderCustomNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkCoarseSampleOrderCustomNV allocate(Arena arena) {
-        return new VkCoarseSampleOrderCustomNV(arena.allocate(LAYOUT));
+        VkCoarseSampleOrderCustomNV ret = new VkCoarseSampleOrderCustomNV(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkCoarseSampleOrderCustomNV[] allocate(Arena arena, int count) {
@@ -54,34 +67,6 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("shadingRate"),
-        ValueLayout.JAVA_INT.withName("sampleCount"),
-        ValueLayout.JAVA_INT.withName("sampleLocationCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkCoarseSampleLocationNV.LAYOUT).withName("pSampleLocations")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$shadingRate = PathElement.groupElement("PATH$shadingRate");
-    public static final PathElement PATH$sampleCount = PathElement.groupElement("PATH$sampleCount");
-    public static final PathElement PATH$sampleLocationCount = PathElement.groupElement("PATH$sampleLocationCount");
-    public static final PathElement PATH$pSampleLocations = PathElement.groupElement("PATH$pSampleLocations");
-
-    public static final OfInt LAYOUT$shadingRate = (OfInt) LAYOUT.select(PATH$shadingRate);
-    public static final OfInt LAYOUT$sampleCount = (OfInt) LAYOUT.select(PATH$sampleCount);
-    public static final OfInt LAYOUT$sampleLocationCount = (OfInt) LAYOUT.select(PATH$sampleLocationCount);
-    public static final AddressLayout LAYOUT$pSampleLocations = (AddressLayout) LAYOUT.select(PATH$pSampleLocations);
-
-    public static final long SIZE$shadingRate = LAYOUT$shadingRate.byteSize();
-    public static final long SIZE$sampleCount = LAYOUT$sampleCount.byteSize();
-    public static final long SIZE$sampleLocationCount = LAYOUT$sampleLocationCount.byteSize();
-    public static final long SIZE$pSampleLocations = LAYOUT$pSampleLocations.byteSize();
-
-    public static final long OFFSET$shadingRate = LAYOUT.byteOffset(PATH$shadingRate);
-    public static final long OFFSET$sampleCount = LAYOUT.byteOffset(PATH$sampleCount);
-    public static final long OFFSET$sampleLocationCount = LAYOUT.byteOffset(PATH$sampleLocationCount);
-    public static final long OFFSET$pSampleLocations = LAYOUT.byteOffset(PATH$pSampleLocations);
 
     public @enumtype(VkShadingRatePaletteEntryNV.class) int shadingRate() {
         return segment.get(LAYOUT$shadingRate, OFFSET$shadingRate);
@@ -117,7 +102,7 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
 
     public @Nullable VkCoarseSampleLocationNV pSampleLocations() {
         MemorySegment s = pSampleLocationsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkCoarseSampleLocationNV(s);
@@ -130,7 +115,7 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
 
     @unsafe public @Nullable VkCoarseSampleLocationNV[] pSampleLocations(int assumedCount) {
         MemorySegment s = pSampleLocationsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -142,4 +127,31 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("shadingRate"),
+        ValueLayout.JAVA_INT.withName("sampleCount"),
+        ValueLayout.JAVA_INT.withName("sampleLocationCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkCoarseSampleLocationNV.LAYOUT).withName("pSampleLocations")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$shadingRate = PathElement.groupElement("PATH$shadingRate");
+    public static final PathElement PATH$sampleCount = PathElement.groupElement("PATH$sampleCount");
+    public static final PathElement PATH$sampleLocationCount = PathElement.groupElement("PATH$sampleLocationCount");
+    public static final PathElement PATH$pSampleLocations = PathElement.groupElement("PATH$pSampleLocations");
+
+    public static final OfInt LAYOUT$shadingRate = (OfInt) LAYOUT.select(PATH$shadingRate);
+    public static final OfInt LAYOUT$sampleCount = (OfInt) LAYOUT.select(PATH$sampleCount);
+    public static final OfInt LAYOUT$sampleLocationCount = (OfInt) LAYOUT.select(PATH$sampleLocationCount);
+    public static final AddressLayout LAYOUT$pSampleLocations = (AddressLayout) LAYOUT.select(PATH$pSampleLocations);
+
+    public static final long SIZE$shadingRate = LAYOUT$shadingRate.byteSize();
+    public static final long SIZE$sampleCount = LAYOUT$sampleCount.byteSize();
+    public static final long SIZE$sampleLocationCount = LAYOUT$sampleLocationCount.byteSize();
+    public static final long SIZE$pSampleLocations = LAYOUT$pSampleLocations.byteSize();
+
+    public static final long OFFSET$shadingRate = LAYOUT.byteOffset(PATH$shadingRate);
+    public static final long OFFSET$sampleCount = LAYOUT.byteOffset(PATH$sampleCount);
+    public static final long OFFSET$sampleLocationCount = LAYOUT.byteOffset(PATH$sampleLocationCount);
+    public static final long OFFSET$pSampleLocations = LAYOUT.byteOffset(PATH$pSampleLocations);
 }

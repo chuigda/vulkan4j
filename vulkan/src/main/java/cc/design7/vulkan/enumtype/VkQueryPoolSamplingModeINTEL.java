@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryPoolSamplingModeINTEL.html">VkQueryPoolSamplingModeINTEL</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryPoolSamplingModeINTEL.html"><code>VkQueryPoolSamplingModeINTEL</code></a>
 public final class VkQueryPoolSamplingModeINTEL {
     public static final int MANUAL = 0x0;
 

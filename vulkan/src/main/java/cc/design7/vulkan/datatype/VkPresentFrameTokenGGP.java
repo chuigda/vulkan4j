@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPresentFrameTokenGGP} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentFrameTokenGGP.html"><code>VkPresentFrameTokenGGP</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPresentFrameTokenGGP {
+///     VkStructureType sType;
+///     void const* pNext;
+///     GgpFrameToken frameToken;
+/// } VkPresentFrameTokenGGP;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP`
+///
+/// The {@link VkPresentFrameTokenGGP#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPresentFrameTokenGGP#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentFrameTokenGGP.html">VkPresentFrameTokenGGP</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentFrameTokenGGP.html"><code>VkPresentFrameTokenGGP</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPresentFrameTokenGGP(@NotNull MemorySegment segment) implements IPointer {
-    public VkPresentFrameTokenGGP {
-        sType(VkStructureType.PRESENT_FRAME_TOKEN_GGP);
-    }
-
     public static VkPresentFrameTokenGGP allocate(Arena arena) {
-        return new VkPresentFrameTokenGGP(arena.allocate(LAYOUT));
+        VkPresentFrameTokenGGP ret = new VkPresentFrameTokenGGP(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PRESENT_FRAME_TOKEN_GGP);
+        return ret;
     }
 
     public static VkPresentFrameTokenGGP[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPresentFrameTokenGGP(@NotNull MemorySegment segment) implements 
         VkPresentFrameTokenGGP[] ret = new VkPresentFrameTokenGGP[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPresentFrameTokenGGP(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PRESENT_FRAME_TOKEN_GGP);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPresentFrameTokenGGP(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("frameToken")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$frameToken = PathElement.groupElement("PATH$frameToken");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$frameToken = (OfInt) LAYOUT.select(PATH$frameToken);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$frameToken = LAYOUT$frameToken.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$frameToken = LAYOUT.byteOffset(PATH$frameToken);
+    public void autoInit() {
+        sType(VkStructureType.PRESENT_FRAME_TOKEN_GGP);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPresentFrameTokenGGP(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$frameToken, OFFSET$frameToken, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("frameToken")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$frameToken = PathElement.groupElement("PATH$frameToken");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$frameToken = (OfInt) LAYOUT.select(PATH$frameToken);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$frameToken = LAYOUT$frameToken.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$frameToken = LAYOUT.byteOffset(PATH$frameToken);
 }

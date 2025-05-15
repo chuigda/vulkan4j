@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelinePropertiesIdentifierEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelinePropertiesIdentifierEXT.html"><code>VkPipelinePropertiesIdentifierEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelinePropertiesIdentifierEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint8_t pipelineIdentifier;
+/// } VkPipelinePropertiesIdentifierEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_PROPERTIES_IDENTIFIER_EXT`
+///
+/// The {@link VkPipelinePropertiesIdentifierEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelinePropertiesIdentifierEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelinePropertiesIdentifierEXT.html">VkPipelinePropertiesIdentifierEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelinePropertiesIdentifierEXT.html"><code>VkPipelinePropertiesIdentifierEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelinePropertiesIdentifierEXT {
-        sType(VkStructureType.PIPELINE_PROPERTIES_IDENTIFIER_EXT);
-    }
-
     public static VkPipelinePropertiesIdentifierEXT allocate(Arena arena) {
-        return new VkPipelinePropertiesIdentifierEXT(arena.allocate(LAYOUT));
+        VkPipelinePropertiesIdentifierEXT ret = new VkPipelinePropertiesIdentifierEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_PROPERTIES_IDENTIFIER_EXT);
+        return ret;
     }
 
     public static VkPipelinePropertiesIdentifierEXT[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) 
         VkPipelinePropertiesIdentifierEXT[] ret = new VkPipelinePropertiesIdentifierEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelinePropertiesIdentifierEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_PROPERTIES_IDENTIFIER_EXT);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_BYTE.withName("pipelineIdentifier")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$pipelineIdentifier = PathElement.groupElement("PATH$pipelineIdentifier");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfByte LAYOUT$pipelineIdentifier = (OfByte) LAYOUT.select(PATH$pipelineIdentifier);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$pipelineIdentifier = LAYOUT$pipelineIdentifier.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$pipelineIdentifier = LAYOUT.byteOffset(PATH$pipelineIdentifier);
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_PROPERTIES_IDENTIFIER_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$pipelineIdentifier, OFFSET$pipelineIdentifier, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_BYTE.withName("pipelineIdentifier")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$pipelineIdentifier = PathElement.groupElement("PATH$pipelineIdentifier");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfByte LAYOUT$pipelineIdentifier = (OfByte) LAYOUT.select(PATH$pipelineIdentifier);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pipelineIdentifier = LAYOUT$pipelineIdentifier.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$pipelineIdentifier = LAYOUT.byteOffset(PATH$pipelineIdentifier);
 }

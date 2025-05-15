@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDrawMeshTasksIndirectCommandNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDrawMeshTasksIndirectCommandNV.html"><code>VkDrawMeshTasksIndirectCommandNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDrawMeshTasksIndirectCommandNV {
+///     uint32_t taskCount;
+///     uint32_t firstTask;
+/// } VkDrawMeshTasksIndirectCommandNV;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDrawMeshTasksIndirectCommandNV.html">VkDrawMeshTasksIndirectCommandNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDrawMeshTasksIndirectCommandNV.html"><code>VkDrawMeshTasksIndirectCommandNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDrawMeshTasksIndirectCommandNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkDrawMeshTasksIndirectCommandNV allocate(Arena arena) {
-        return new VkDrawMeshTasksIndirectCommandNV(arena.allocate(LAYOUT));
+        VkDrawMeshTasksIndirectCommandNV ret = new VkDrawMeshTasksIndirectCommandNV(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkDrawMeshTasksIndirectCommandNV[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkDrawMeshTasksIndirectCommandNV(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public @unsigned int taskCount() {
+        return segment.get(LAYOUT$taskCount, OFFSET$taskCount);
+    }
+
+    public void taskCount(@unsigned int value) {
+        segment.set(LAYOUT$taskCount, OFFSET$taskCount, value);
+    }
+
+    public @unsigned int firstTask() {
+        return segment.get(LAYOUT$firstTask, OFFSET$firstTask);
+    }
+
+    public void firstTask(@unsigned int value) {
+        segment.set(LAYOUT$firstTask, OFFSET$firstTask, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("taskCount"),
         ValueLayout.JAVA_INT.withName("firstTask")
@@ -72,21 +99,4 @@ public record VkDrawMeshTasksIndirectCommandNV(@NotNull MemorySegment segment) i
 
     public static final long OFFSET$taskCount = LAYOUT.byteOffset(PATH$taskCount);
     public static final long OFFSET$firstTask = LAYOUT.byteOffset(PATH$firstTask);
-
-    public @unsigned int taskCount() {
-        return segment.get(LAYOUT$taskCount, OFFSET$taskCount);
-    }
-
-    public void taskCount(@unsigned int value) {
-        segment.set(LAYOUT$taskCount, OFFSET$taskCount, value);
-    }
-
-    public @unsigned int firstTask() {
-        return segment.get(LAYOUT$firstTask, OFFSET$firstTask);
-    }
-
-    public void firstTask(@unsigned int value) {
-        segment.set(LAYOUT$firstTask, OFFSET$firstTask, value);
-    }
-
 }

@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorBindingFlags.html">VkDescriptorBindingFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorBindingFlags.html"><code>VkDescriptorBindingFlags</code></a>
 public final class VkDescriptorBindingFlags {
     public static final int PARTIALLY_BOUND = 0x4;
     public static final int UPDATE_AFTER_BIND = 0x1;

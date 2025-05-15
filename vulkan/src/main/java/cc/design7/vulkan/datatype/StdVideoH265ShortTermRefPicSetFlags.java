@@ -17,6 +17,16 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoH265ShortTermRefPicSetFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoH265ShortTermRefPicSetFlags {
+///     uint32_t inter_ref_pic_set_prediction_flag : 1;
+///     uint32_t delta_rps_sign : 1;
+/// } StdVideoH265ShortTermRefPicSetFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +38,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265ShortTermRefPicSetFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265ShortTermRefPicSetFlags allocate(Arena arena) {
-        return new StdVideoH265ShortTermRefPicSetFlags(arena.allocate(LAYOUT));
+        StdVideoH265ShortTermRefPicSetFlags ret = new StdVideoH265ShortTermRefPicSetFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoH265ShortTermRefPicSetFlags[] allocate(Arena arena, int count) {
@@ -54,18 +65,6 @@ public record StdVideoH265ShortTermRefPicSetFlags(@NotNull MemorySegment segment
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign = PathElement.groupElement("PATH$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign");
-
-    public static final OfInt LAYOUT$inter_ref_pic_set_prediction_flag_delta_rps_sign = (OfInt) LAYOUT.select(PATH$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign);
-
-
-    public static final long OFFSET$inter_ref_pic_set_prediction_flag_delta_rps_sign = LAYOUT.byteOffset(PATH$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign);
-
     public boolean inter_ref_pic_set_prediction_flag() {
         MemorySegment s = segment.asSlice(OFFSET$inter_ref_pic_set_prediction_flag_delta_rps_sign, LAYOUT$inter_ref_pic_set_prediction_flag_delta_rps_sign);
         return BitfieldUtil.readBit(s, 0);
@@ -86,4 +85,15 @@ public record StdVideoH265ShortTermRefPicSetFlags(@NotNull MemorySegment segment
         BitfieldUtil.writeBit(s, 1, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign = PathElement.groupElement("PATH$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign");
+
+    public static final OfInt LAYOUT$inter_ref_pic_set_prediction_flag_delta_rps_sign = (OfInt) LAYOUT.select(PATH$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign);
+
+
+    public static final long OFFSET$inter_ref_pic_set_prediction_flag_delta_rps_sign = LAYOUT.byteOffset(PATH$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign);
 }

@@ -48,7 +48,7 @@ private fun DocList.makeRawGet(returnType: String, con: String, member: LayoutFi
     val rawName = "${member.name}Raw"
     defun("public", "@Nullable $returnType", member.name) {
         +"MemorySegment s = $rawName();"
-        "if (s.address() == 0)" {
+        "if (s.equals(MemorySegment.NULL))" {
             +"return null;"
         }
 
@@ -193,7 +193,7 @@ private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField
 
         defun("@unsafe public", "@Nullable ${pointee.name}[]", member.name, "int assumedCount") {
             +"MemorySegment s = ${member.rawName}();"
-            "if (s.address() == 0)" {
+            "if (s.equals(MemorySegment.NULL))" {
                 +"return null;"
             }
 

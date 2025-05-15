@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH265CtbSizeFlagsKHR.html">VkVideoEncodeH265CtbSizeFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH265CtbSizeFlagsKHR.html"><code>VkVideoEncodeH265CtbSizeFlagsKHR</code></a>
 public final class VkVideoEncodeH265CtbSizeFlagsKHR {
     public static final int VK_VIDEO_ENCODE_H265_CTB_SIZE_16 = 0x1;
     public static final int VK_VIDEO_ENCODE_H265_CTB_SIZE_32 = 0x2;

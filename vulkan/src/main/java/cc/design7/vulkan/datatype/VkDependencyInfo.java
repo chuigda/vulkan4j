@@ -14,8 +14,33 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDependencyInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDependencyInfo.html"><code>VkDependencyInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDependencyInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkDependencyFlags dependencyFlags;
+///     uint32_t memoryBarrierCount;
+///     VkMemoryBarrier2 const* pMemoryBarriers;
+///     uint32_t bufferMemoryBarrierCount;
+///     VkBufferMemoryBarrier2 const* pBufferMemoryBarriers;
+///     uint32_t imageMemoryBarrierCount;
+///     VkImageMemoryBarrier2 const* pImageMemoryBarriers;
+/// } VkDependencyInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_DEPENDENCY_INFO`
+///
+/// The {@link VkDependencyInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkDependencyInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +49,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDependencyInfo.html">VkDependencyInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDependencyInfo.html"><code>VkDependencyInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDependencyInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkDependencyInfo {
-        sType(VkStructureType.DEPENDENCY_INFO);
-    }
-
     public static VkDependencyInfo allocate(Arena arena) {
-        return new VkDependencyInfo(arena.allocate(LAYOUT));
+        VkDependencyInfo ret = new VkDependencyInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.DEPENDENCY_INFO);
+        return ret;
     }
 
     public static VkDependencyInfo[] allocate(Arena arena, int count) {
@@ -41,6 +64,7 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IPoint
         VkDependencyInfo[] ret = new VkDependencyInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkDependencyInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.DEPENDENCY_INFO);
         }
         return ret;
     }
@@ -55,6 +79,167 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IPoint
         VkDependencyInfo[] ret = allocate(arena, src.length);
         for (int i = 0; i < src.length; i ++) {
             ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.DEPENDENCY_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkDependencyFlags.class) int dependencyFlags() {
+        return segment.get(LAYOUT$dependencyFlags, OFFSET$dependencyFlags);
+    }
+
+    public void dependencyFlags(@enumtype(VkDependencyFlags.class) int value) {
+        segment.set(LAYOUT$dependencyFlags, OFFSET$dependencyFlags, value);
+    }
+
+    public @unsigned int memoryBarrierCount() {
+        return segment.get(LAYOUT$memoryBarrierCount, OFFSET$memoryBarrierCount);
+    }
+
+    public void memoryBarrierCount(@unsigned int value) {
+        segment.set(LAYOUT$memoryBarrierCount, OFFSET$memoryBarrierCount, value);
+    }
+
+    public @pointer(comment="VkMemoryBarrier2*") MemorySegment pMemoryBarriersRaw() {
+        return segment.get(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers);
+    }
+
+    public void pMemoryBarriersRaw(@pointer(comment="VkMemoryBarrier2*") MemorySegment value) {
+        segment.set(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers, value);
+    }
+
+    public @Nullable VkMemoryBarrier2 pMemoryBarriers() {
+        MemorySegment s = pMemoryBarriersRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkMemoryBarrier2(s);
+    }
+
+    public void pMemoryBarriers(@Nullable VkMemoryBarrier2 value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pMemoryBarriersRaw(s);
+    }
+
+    @unsafe public @Nullable VkMemoryBarrier2[] pMemoryBarriers(int assumedCount) {
+        MemorySegment s = pMemoryBarriersRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkMemoryBarrier2.SIZE);
+        VkMemoryBarrier2[] ret = new VkMemoryBarrier2[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkMemoryBarrier2(s.asSlice(i * VkMemoryBarrier2.SIZE, VkMemoryBarrier2.SIZE));
+        }
+        return ret;
+    }
+
+    public @unsigned int bufferMemoryBarrierCount() {
+        return segment.get(LAYOUT$bufferMemoryBarrierCount, OFFSET$bufferMemoryBarrierCount);
+    }
+
+    public void bufferMemoryBarrierCount(@unsigned int value) {
+        segment.set(LAYOUT$bufferMemoryBarrierCount, OFFSET$bufferMemoryBarrierCount, value);
+    }
+
+    public @pointer(comment="VkBufferMemoryBarrier2*") MemorySegment pBufferMemoryBarriersRaw() {
+        return segment.get(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers);
+    }
+
+    public void pBufferMemoryBarriersRaw(@pointer(comment="VkBufferMemoryBarrier2*") MemorySegment value) {
+        segment.set(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers, value);
+    }
+
+    public @Nullable VkBufferMemoryBarrier2 pBufferMemoryBarriers() {
+        MemorySegment s = pBufferMemoryBarriersRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkBufferMemoryBarrier2(s);
+    }
+
+    public void pBufferMemoryBarriers(@Nullable VkBufferMemoryBarrier2 value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pBufferMemoryBarriersRaw(s);
+    }
+
+    @unsafe public @Nullable VkBufferMemoryBarrier2[] pBufferMemoryBarriers(int assumedCount) {
+        MemorySegment s = pBufferMemoryBarriersRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkBufferMemoryBarrier2.SIZE);
+        VkBufferMemoryBarrier2[] ret = new VkBufferMemoryBarrier2[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkBufferMemoryBarrier2(s.asSlice(i * VkBufferMemoryBarrier2.SIZE, VkBufferMemoryBarrier2.SIZE));
+        }
+        return ret;
+    }
+
+    public @unsigned int imageMemoryBarrierCount() {
+        return segment.get(LAYOUT$imageMemoryBarrierCount, OFFSET$imageMemoryBarrierCount);
+    }
+
+    public void imageMemoryBarrierCount(@unsigned int value) {
+        segment.set(LAYOUT$imageMemoryBarrierCount, OFFSET$imageMemoryBarrierCount, value);
+    }
+
+    public @pointer(comment="VkImageMemoryBarrier2*") MemorySegment pImageMemoryBarriersRaw() {
+        return segment.get(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers);
+    }
+
+    public void pImageMemoryBarriersRaw(@pointer(comment="VkImageMemoryBarrier2*") MemorySegment value) {
+        segment.set(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers, value);
+    }
+
+    public @Nullable VkImageMemoryBarrier2 pImageMemoryBarriers() {
+        MemorySegment s = pImageMemoryBarriersRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkImageMemoryBarrier2(s);
+    }
+
+    public void pImageMemoryBarriers(@Nullable VkImageMemoryBarrier2 value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pImageMemoryBarriersRaw(s);
+    }
+
+    @unsafe public @Nullable VkImageMemoryBarrier2[] pImageMemoryBarriers(int assumedCount) {
+        MemorySegment s = pImageMemoryBarriersRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkImageMemoryBarrier2.SIZE);
+        VkImageMemoryBarrier2[] ret = new VkImageMemoryBarrier2[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkImageMemoryBarrier2(s.asSlice(i * VkImageMemoryBarrier2.SIZE, VkImageMemoryBarrier2.SIZE));
         }
         return ret;
     }
@@ -111,162 +296,4 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IPoint
     public static final long OFFSET$pBufferMemoryBarriers = LAYOUT.byteOffset(PATH$pBufferMemoryBarriers);
     public static final long OFFSET$imageMemoryBarrierCount = LAYOUT.byteOffset(PATH$imageMemoryBarrierCount);
     public static final long OFFSET$pImageMemoryBarriers = LAYOUT.byteOffset(PATH$pImageMemoryBarriers);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @enumtype(VkDependencyFlags.class) int dependencyFlags() {
-        return segment.get(LAYOUT$dependencyFlags, OFFSET$dependencyFlags);
-    }
-
-    public void dependencyFlags(@enumtype(VkDependencyFlags.class) int value) {
-        segment.set(LAYOUT$dependencyFlags, OFFSET$dependencyFlags, value);
-    }
-
-    public @unsigned int memoryBarrierCount() {
-        return segment.get(LAYOUT$memoryBarrierCount, OFFSET$memoryBarrierCount);
-    }
-
-    public void memoryBarrierCount(@unsigned int value) {
-        segment.set(LAYOUT$memoryBarrierCount, OFFSET$memoryBarrierCount, value);
-    }
-
-    public @pointer(comment="VkMemoryBarrier2*") MemorySegment pMemoryBarriersRaw() {
-        return segment.get(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers);
-    }
-
-    public void pMemoryBarriersRaw(@pointer(comment="VkMemoryBarrier2*") MemorySegment value) {
-        segment.set(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers, value);
-    }
-
-    public @Nullable VkMemoryBarrier2 pMemoryBarriers() {
-        MemorySegment s = pMemoryBarriersRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkMemoryBarrier2(s);
-    }
-
-    public void pMemoryBarriers(@Nullable VkMemoryBarrier2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pMemoryBarriersRaw(s);
-    }
-
-    @unsafe public @Nullable VkMemoryBarrier2[] pMemoryBarriers(int assumedCount) {
-        MemorySegment s = pMemoryBarriersRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkMemoryBarrier2.SIZE);
-        VkMemoryBarrier2[] ret = new VkMemoryBarrier2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkMemoryBarrier2(s.asSlice(i * VkMemoryBarrier2.SIZE, VkMemoryBarrier2.SIZE));
-        }
-        return ret;
-    }
-
-    public @unsigned int bufferMemoryBarrierCount() {
-        return segment.get(LAYOUT$bufferMemoryBarrierCount, OFFSET$bufferMemoryBarrierCount);
-    }
-
-    public void bufferMemoryBarrierCount(@unsigned int value) {
-        segment.set(LAYOUT$bufferMemoryBarrierCount, OFFSET$bufferMemoryBarrierCount, value);
-    }
-
-    public @pointer(comment="VkBufferMemoryBarrier2*") MemorySegment pBufferMemoryBarriersRaw() {
-        return segment.get(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers);
-    }
-
-    public void pBufferMemoryBarriersRaw(@pointer(comment="VkBufferMemoryBarrier2*") MemorySegment value) {
-        segment.set(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers, value);
-    }
-
-    public @Nullable VkBufferMemoryBarrier2 pBufferMemoryBarriers() {
-        MemorySegment s = pBufferMemoryBarriersRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkBufferMemoryBarrier2(s);
-    }
-
-    public void pBufferMemoryBarriers(@Nullable VkBufferMemoryBarrier2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pBufferMemoryBarriersRaw(s);
-    }
-
-    @unsafe public @Nullable VkBufferMemoryBarrier2[] pBufferMemoryBarriers(int assumedCount) {
-        MemorySegment s = pBufferMemoryBarriersRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkBufferMemoryBarrier2.SIZE);
-        VkBufferMemoryBarrier2[] ret = new VkBufferMemoryBarrier2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkBufferMemoryBarrier2(s.asSlice(i * VkBufferMemoryBarrier2.SIZE, VkBufferMemoryBarrier2.SIZE));
-        }
-        return ret;
-    }
-
-    public @unsigned int imageMemoryBarrierCount() {
-        return segment.get(LAYOUT$imageMemoryBarrierCount, OFFSET$imageMemoryBarrierCount);
-    }
-
-    public void imageMemoryBarrierCount(@unsigned int value) {
-        segment.set(LAYOUT$imageMemoryBarrierCount, OFFSET$imageMemoryBarrierCount, value);
-    }
-
-    public @pointer(comment="VkImageMemoryBarrier2*") MemorySegment pImageMemoryBarriersRaw() {
-        return segment.get(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers);
-    }
-
-    public void pImageMemoryBarriersRaw(@pointer(comment="VkImageMemoryBarrier2*") MemorySegment value) {
-        segment.set(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers, value);
-    }
-
-    public @Nullable VkImageMemoryBarrier2 pImageMemoryBarriers() {
-        MemorySegment s = pImageMemoryBarriersRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkImageMemoryBarrier2(s);
-    }
-
-    public void pImageMemoryBarriers(@Nullable VkImageMemoryBarrier2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pImageMemoryBarriersRaw(s);
-    }
-
-    @unsafe public @Nullable VkImageMemoryBarrier2[] pImageMemoryBarriers(int assumedCount) {
-        MemorySegment s = pImageMemoryBarriersRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkImageMemoryBarrier2.SIZE);
-        VkImageMemoryBarrier2[] ret = new VkImageMemoryBarrier2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkImageMemoryBarrier2(s.asSlice(i * VkImageMemoryBarrier2.SIZE, VkImageMemoryBarrier2.SIZE));
-        }
-        return ret;
-    }
-
 }

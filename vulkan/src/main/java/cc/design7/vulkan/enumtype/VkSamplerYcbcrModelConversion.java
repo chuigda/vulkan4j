@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerYcbcrModelConversion.html">VkSamplerYcbcrModelConversion</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerYcbcrModelConversion.html"><code>VkSamplerYcbcrModelConversion</code></a>
 public final class VkSamplerYcbcrModelConversion {
     public static final int RGB_IDENTITY = 0x0;
     public static final int YCBCR_IDENTITY = 0x1;

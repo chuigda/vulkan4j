@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkInternalAllocationType.html">VkInternalAllocationType</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkInternalAllocationType.html"><code>VkInternalAllocationType</code></a>
 public final class VkInternalAllocationType {
     public static final int EXECUTABLE = 0x0;
 

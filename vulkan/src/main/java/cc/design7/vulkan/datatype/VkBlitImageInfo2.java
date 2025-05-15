@@ -14,8 +14,33 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkBlitImageInfo2} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBlitImageInfo2.html"><code>VkBlitImageInfo2</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkBlitImageInfo2 {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkImage srcImage;
+///     VkImageLayout srcImageLayout;
+///     VkImage dstImage;
+///     VkImageLayout dstImageLayout;
+///     uint32_t regionCount;
+///     VkImageBlit2 const* pRegions;
+///     VkFilter filter;
+/// } VkBlitImageInfo2;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_BLIT_IMAGE_INFO_2`
+///
+/// The {@link VkBlitImageInfo2#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkBlitImageInfo2#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +49,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBlitImageInfo2.html">VkBlitImageInfo2</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBlitImageInfo2.html"><code>VkBlitImageInfo2</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IPointer {
-    public VkBlitImageInfo2 {
-        sType(VkStructureType.BLIT_IMAGE_INFO_2);
-    }
-
     public static VkBlitImageInfo2 allocate(Arena arena) {
-        return new VkBlitImageInfo2(arena.allocate(LAYOUT));
+        VkBlitImageInfo2 ret = new VkBlitImageInfo2(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.BLIT_IMAGE_INFO_2);
+        return ret;
     }
 
     public static VkBlitImageInfo2[] allocate(Arena arena, int count) {
@@ -41,6 +64,7 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IPoint
         VkBlitImageInfo2[] ret = new VkBlitImageInfo2[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkBlitImageInfo2(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.BLIT_IMAGE_INFO_2);
         }
         return ret;
     }
@@ -57,6 +81,121 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IPoint
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.BLIT_IMAGE_INFO_2);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkImage srcImage() {
+        MemorySegment s = segment.asSlice(OFFSET$srcImage, SIZE$srcImage);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkImage(s);
+    }
+
+    public void srcImage(@Nullable VkImage value) {
+        segment.set(LAYOUT$srcImage, OFFSET$srcImage, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @enumtype(VkImageLayout.class) int srcImageLayout() {
+        return segment.get(LAYOUT$srcImageLayout, OFFSET$srcImageLayout);
+    }
+
+    public void srcImageLayout(@enumtype(VkImageLayout.class) int value) {
+        segment.set(LAYOUT$srcImageLayout, OFFSET$srcImageLayout, value);
+    }
+
+    public @Nullable VkImage dstImage() {
+        MemorySegment s = segment.asSlice(OFFSET$dstImage, SIZE$dstImage);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkImage(s);
+    }
+
+    public void dstImage(@Nullable VkImage value) {
+        segment.set(LAYOUT$dstImage, OFFSET$dstImage, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @enumtype(VkImageLayout.class) int dstImageLayout() {
+        return segment.get(LAYOUT$dstImageLayout, OFFSET$dstImageLayout);
+    }
+
+    public void dstImageLayout(@enumtype(VkImageLayout.class) int value) {
+        segment.set(LAYOUT$dstImageLayout, OFFSET$dstImageLayout, value);
+    }
+
+    public @unsigned int regionCount() {
+        return segment.get(LAYOUT$regionCount, OFFSET$regionCount);
+    }
+
+    public void regionCount(@unsigned int value) {
+        segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
+    }
+
+    public @pointer(comment="VkImageBlit2*") MemorySegment pRegionsRaw() {
+        return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
+    }
+
+    public void pRegionsRaw(@pointer(comment="VkImageBlit2*") MemorySegment value) {
+        segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
+    }
+
+    public @Nullable VkImageBlit2 pRegions() {
+        MemorySegment s = pRegionsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkImageBlit2(s);
+    }
+
+    public void pRegions(@Nullable VkImageBlit2 value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pRegionsRaw(s);
+    }
+
+    @unsafe public @Nullable VkImageBlit2[] pRegions(int assumedCount) {
+        MemorySegment s = pRegionsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkImageBlit2.SIZE);
+        VkImageBlit2[] ret = new VkImageBlit2[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkImageBlit2(s.asSlice(i * VkImageBlit2.SIZE, VkImageBlit2.SIZE));
+        }
+        return ret;
+    }
+
+    public @enumtype(VkFilter.class) int filter() {
+        return segment.get(LAYOUT$filter, OFFSET$filter);
+    }
+
+    public void filter(@enumtype(VkFilter.class) int value) {
+        segment.set(LAYOUT$filter, OFFSET$filter, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -111,116 +250,4 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IPoint
     public static final long OFFSET$regionCount = LAYOUT.byteOffset(PATH$regionCount);
     public static final long OFFSET$pRegions = LAYOUT.byteOffset(PATH$pRegions);
     public static final long OFFSET$filter = LAYOUT.byteOffset(PATH$filter);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkImage srcImage() {
-        MemorySegment s = segment.asSlice(OFFSET$srcImage, SIZE$srcImage);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkImage(s);
-    }
-
-    public void srcImage(@Nullable VkImage value) {
-        segment.set(LAYOUT$srcImage, OFFSET$srcImage, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @enumtype(VkImageLayout.class) int srcImageLayout() {
-        return segment.get(LAYOUT$srcImageLayout, OFFSET$srcImageLayout);
-    }
-
-    public void srcImageLayout(@enumtype(VkImageLayout.class) int value) {
-        segment.set(LAYOUT$srcImageLayout, OFFSET$srcImageLayout, value);
-    }
-
-    public @Nullable VkImage dstImage() {
-        MemorySegment s = segment.asSlice(OFFSET$dstImage, SIZE$dstImage);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkImage(s);
-    }
-
-    public void dstImage(@Nullable VkImage value) {
-        segment.set(LAYOUT$dstImage, OFFSET$dstImage, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @enumtype(VkImageLayout.class) int dstImageLayout() {
-        return segment.get(LAYOUT$dstImageLayout, OFFSET$dstImageLayout);
-    }
-
-    public void dstImageLayout(@enumtype(VkImageLayout.class) int value) {
-        segment.set(LAYOUT$dstImageLayout, OFFSET$dstImageLayout, value);
-    }
-
-    public @unsigned int regionCount() {
-        return segment.get(LAYOUT$regionCount, OFFSET$regionCount);
-    }
-
-    public void regionCount(@unsigned int value) {
-        segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
-    }
-
-    public @pointer(comment="VkImageBlit2*") MemorySegment pRegionsRaw() {
-        return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
-    }
-
-    public void pRegionsRaw(@pointer(comment="VkImageBlit2*") MemorySegment value) {
-        segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
-    }
-
-    public @Nullable VkImageBlit2 pRegions() {
-        MemorySegment s = pRegionsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkImageBlit2(s);
-    }
-
-    public void pRegions(@Nullable VkImageBlit2 value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pRegionsRaw(s);
-    }
-
-    @unsafe public @Nullable VkImageBlit2[] pRegions(int assumedCount) {
-        MemorySegment s = pRegionsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkImageBlit2.SIZE);
-        VkImageBlit2[] ret = new VkImageBlit2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkImageBlit2(s.asSlice(i * VkImageBlit2.SIZE, VkImageBlit2.SIZE));
-        }
-        return ret;
-    }
-
-    public @enumtype(VkFilter.class) int filter() {
-        return segment.get(LAYOUT$filter, OFFSET$filter);
-    }
-
-    public void filter(@enumtype(VkFilter.class) int value) {
-        segment.set(LAYOUT$filter, OFFSET$filter, value);
-    }
-
 }

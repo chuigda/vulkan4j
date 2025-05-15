@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFullScreenExclusiveEXT.html">VkFullScreenExclusiveEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFullScreenExclusiveEXT.html"><code>VkFullScreenExclusiveEXT</code></a>
 public final class VkFullScreenExclusiveEXT {
     public static final int DEFAULT = 0x0;
     public static final int ALLOWED = 0x1;

@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCreateFlags2.html">VkPipelineCreateFlags2</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCreateFlags2.html"><code>VkPipelineCreateFlags2</code></a>
 public final class VkPipelineCreateFlags2 {
     public static final long ALLOW_DERIVATIVES = 0x2L;
     public static final long CAPTURE_DATA_KHR = 0x80000000L;

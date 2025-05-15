@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFrameBoundaryFlagsEXT.html">VkFrameBoundaryFlagsEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFrameBoundaryFlagsEXT.html"><code>VkFrameBoundaryFlagsEXT</code></a>
 public final class VkFrameBoundaryFlagsEXT {
     public static final int FRAME_END = 0x1;
 

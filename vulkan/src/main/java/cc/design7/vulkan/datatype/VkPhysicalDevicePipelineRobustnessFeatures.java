@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDevicePipelineRobustnessFeatures} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevicePipelineRobustnessFeatures.html"><code>VkPhysicalDevicePipelineRobustnessFeatures</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDevicePipelineRobustnessFeatures {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 pipelineRobustness;
+/// } VkPhysicalDevicePipelineRobustnessFeatures;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_FEATURES`
+///
+/// The {@link VkPhysicalDevicePipelineRobustnessFeatures#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDevicePipelineRobustnessFeatures#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevicePipelineRobustnessFeatures.html">VkPhysicalDevicePipelineRobustnessFeatures</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevicePipelineRobustnessFeatures.html"><code>VkPhysicalDevicePipelineRobustnessFeatures</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDevicePipelineRobustnessFeatures(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDevicePipelineRobustnessFeatures {
-        sType(VkStructureType.PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_FEATURES);
-    }
-
     public static VkPhysicalDevicePipelineRobustnessFeatures allocate(Arena arena) {
-        return new VkPhysicalDevicePipelineRobustnessFeatures(arena.allocate(LAYOUT));
+        VkPhysicalDevicePipelineRobustnessFeatures ret = new VkPhysicalDevicePipelineRobustnessFeatures(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_FEATURES);
+        return ret;
     }
 
     public static VkPhysicalDevicePipelineRobustnessFeatures[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDevicePipelineRobustnessFeatures(@NotNull MemorySegment 
         VkPhysicalDevicePipelineRobustnessFeatures[] ret = new VkPhysicalDevicePipelineRobustnessFeatures[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDevicePipelineRobustnessFeatures(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_FEATURES);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDevicePipelineRobustnessFeatures(@NotNull MemorySegment 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("pipelineRobustness")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$pipelineRobustness = PathElement.groupElement("PATH$pipelineRobustness");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$pipelineRobustness = (OfInt) LAYOUT.select(PATH$pipelineRobustness);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$pipelineRobustness = LAYOUT$pipelineRobustness.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$pipelineRobustness = LAYOUT.byteOffset(PATH$pipelineRobustness);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_FEATURES);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDevicePipelineRobustnessFeatures(@NotNull MemorySegment 
         segment.set(LAYOUT$pipelineRobustness, OFFSET$pipelineRobustness, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("pipelineRobustness")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$pipelineRobustness = PathElement.groupElement("PATH$pipelineRobustness");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$pipelineRobustness = (OfInt) LAYOUT.select(PATH$pipelineRobustness);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pipelineRobustness = LAYOUT$pipelineRobustness.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$pipelineRobustness = LAYOUT.byteOffset(PATH$pipelineRobustness);
 }

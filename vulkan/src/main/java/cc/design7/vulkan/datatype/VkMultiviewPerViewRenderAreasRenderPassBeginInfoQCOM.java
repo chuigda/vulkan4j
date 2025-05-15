@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM.html"><code>VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t perViewRenderAreaCount;
+///     VkRect2D const* pPerViewRenderAreas;
+/// } VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM`
+///
+/// The {@link VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM.html">VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM.html"><code>VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull MemorySegment segment) implements IPointer {
-    public VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM {
-        sType(VkStructureType.MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM);
-    }
-
     public static VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM allocate(Arena arena) {
-        return new VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(arena.allocate(LAYOUT));
+        VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM ret = new VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM);
+        return ret;
     }
 
     public static VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
         VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM[] ret = new VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("perViewRenderAreaCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pPerViewRenderAreas")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$perViewRenderAreaCount = PathElement.groupElement("PATH$perViewRenderAreaCount");
-    public static final PathElement PATH$pPerViewRenderAreas = PathElement.groupElement("PATH$pPerViewRenderAreas");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$perViewRenderAreaCount = (OfInt) LAYOUT.select(PATH$perViewRenderAreaCount);
-    public static final AddressLayout LAYOUT$pPerViewRenderAreas = (AddressLayout) LAYOUT.select(PATH$pPerViewRenderAreas);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$perViewRenderAreaCount = LAYOUT$perViewRenderAreaCount.byteSize();
-    public static final long SIZE$pPerViewRenderAreas = LAYOUT$pPerViewRenderAreas.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$perViewRenderAreaCount = LAYOUT.byteOffset(PATH$perViewRenderAreaCount);
-    public static final long OFFSET$pPerViewRenderAreas = LAYOUT.byteOffset(PATH$pPerViewRenderAreas);
+    public void autoInit() {
+        sType(VkStructureType.MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -125,7 +120,7 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
 
     public @Nullable VkRect2D pPerViewRenderAreas() {
         MemorySegment s = pPerViewRenderAreasRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkRect2D(s);
@@ -138,7 +133,7 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
 
     @unsafe public @Nullable VkRect2D[] pPerViewRenderAreas(int assumedCount) {
         MemorySegment s = pPerViewRenderAreasRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -150,4 +145,31 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("perViewRenderAreaCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pPerViewRenderAreas")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$perViewRenderAreaCount = PathElement.groupElement("PATH$perViewRenderAreaCount");
+    public static final PathElement PATH$pPerViewRenderAreas = PathElement.groupElement("PATH$pPerViewRenderAreas");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$perViewRenderAreaCount = (OfInt) LAYOUT.select(PATH$perViewRenderAreaCount);
+    public static final AddressLayout LAYOUT$pPerViewRenderAreas = (AddressLayout) LAYOUT.select(PATH$pPerViewRenderAreas);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$perViewRenderAreaCount = LAYOUT$perViewRenderAreaCount.byteSize();
+    public static final long SIZE$pPerViewRenderAreas = LAYOUT$pPerViewRenderAreas.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$perViewRenderAreaCount = LAYOUT.byteOffset(PATH$perViewRenderAreaCount);
+    public static final long OFFSET$pPerViewRenderAreas = LAYOUT.byteOffset(PATH$pPerViewRenderAreas);
 }

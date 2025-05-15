@@ -16,6 +16,16 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoH265LongTermRefPicsSps} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoH265LongTermRefPicsSps {
+///     uint32_t used_by_curr_pic_lt_sps_flag;
+///     uint32_t lt_ref_pic_poc_lsb_sps;
+/// } StdVideoH265LongTermRefPicsSps;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +37,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265LongTermRefPicsSps allocate(Arena arena) {
-        return new StdVideoH265LongTermRefPicsSps(arena.allocate(LAYOUT));
+        StdVideoH265LongTermRefPicsSps ret = new StdVideoH265LongTermRefPicsSps(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoH265LongTermRefPicsSps[] allocate(Arena arena, int count) {
@@ -53,6 +64,22 @@ public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) imp
         return ret;
     }
 
+    public @unsigned int used_by_curr_pic_lt_sps_flag() {
+        return segment.get(LAYOUT$used_by_curr_pic_lt_sps_flag, OFFSET$used_by_curr_pic_lt_sps_flag);
+    }
+
+    public void used_by_curr_pic_lt_sps_flag(@unsigned int value) {
+        segment.set(LAYOUT$used_by_curr_pic_lt_sps_flag, OFFSET$used_by_curr_pic_lt_sps_flag, value);
+    }
+
+    public @unsigned int lt_ref_pic_poc_lsb_sps() {
+        return segment.get(LAYOUT$lt_ref_pic_poc_lsb_sps, OFFSET$lt_ref_pic_poc_lsb_sps);
+    }
+
+    public void lt_ref_pic_poc_lsb_sps(@unsigned int value) {
+        segment.set(LAYOUT$lt_ref_pic_poc_lsb_sps, OFFSET$lt_ref_pic_poc_lsb_sps, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("used_by_curr_pic_lt_sps_flag"),
         ValueLayout.JAVA_INT.withName("lt_ref_pic_poc_lsb_sps")
@@ -70,21 +97,4 @@ public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) imp
 
     public static final long OFFSET$used_by_curr_pic_lt_sps_flag = LAYOUT.byteOffset(PATH$used_by_curr_pic_lt_sps_flag);
     public static final long OFFSET$lt_ref_pic_poc_lsb_sps = LAYOUT.byteOffset(PATH$lt_ref_pic_poc_lsb_sps);
-
-    public @unsigned int used_by_curr_pic_lt_sps_flag() {
-        return segment.get(LAYOUT$used_by_curr_pic_lt_sps_flag, OFFSET$used_by_curr_pic_lt_sps_flag);
-    }
-
-    public void used_by_curr_pic_lt_sps_flag(@unsigned int value) {
-        segment.set(LAYOUT$used_by_curr_pic_lt_sps_flag, OFFSET$used_by_curr_pic_lt_sps_flag, value);
-    }
-
-    public @unsigned int lt_ref_pic_poc_lsb_sps() {
-        return segment.get(LAYOUT$lt_ref_pic_poc_lsb_sps, OFFSET$lt_ref_pic_poc_lsb_sps);
-    }
-
-    public void lt_ref_pic_poc_lsb_sps(@unsigned int value) {
-        segment.set(LAYOUT$lt_ref_pic_poc_lsb_sps, OFFSET$lt_ref_pic_poc_lsb_sps, value);
-    }
-
 }

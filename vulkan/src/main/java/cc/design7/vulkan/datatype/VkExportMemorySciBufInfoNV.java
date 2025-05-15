@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkExportMemorySciBufInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExportMemorySciBufInfoNV.html"><code>VkExportMemorySciBufInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkExportMemorySciBufInfoNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     NvSciBufAttrList pAttributes;
+/// } VkExportMemorySciBufInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_EXPORT_MEMORY_SCI_BUF_INFO_NV`
+///
+/// The {@link VkExportMemorySciBufInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkExportMemorySciBufInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExportMemorySciBufInfoNV.html">VkExportMemorySciBufInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExportMemorySciBufInfoNV.html"><code>VkExportMemorySciBufInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkExportMemorySciBufInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkExportMemorySciBufInfoNV {
-        sType(VkStructureType.EXPORT_MEMORY_SCI_BUF_INFO_NV);
-    }
-
     public static VkExportMemorySciBufInfoNV allocate(Arena arena) {
-        return new VkExportMemorySciBufInfoNV(arena.allocate(LAYOUT));
+        VkExportMemorySciBufInfoNV ret = new VkExportMemorySciBufInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.EXPORT_MEMORY_SCI_BUF_INFO_NV);
+        return ret;
     }
 
     public static VkExportMemorySciBufInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkExportMemorySciBufInfoNV(@NotNull MemorySegment segment) impleme
         VkExportMemorySciBufInfoNV[] ret = new VkExportMemorySciBufInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkExportMemorySciBufInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.EXPORT_MEMORY_SCI_BUF_INFO_NV);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkExportMemorySciBufInfoNV(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("pAttributes")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$pAttributes = PathElement.groupElement("PATH$pAttributes");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$pAttributes = (AddressLayout) LAYOUT.select(PATH$pAttributes);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$pAttributes = LAYOUT$pAttributes.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$pAttributes = LAYOUT.byteOffset(PATH$pAttributes);
+    public void autoInit() {
+        sType(VkStructureType.EXPORT_MEMORY_SCI_BUF_INFO_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -114,4 +113,26 @@ public record VkExportMemorySciBufInfoNV(@NotNull MemorySegment segment) impleme
         pAttributes(pointer.segment());
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("pAttributes")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$pAttributes = PathElement.groupElement("PATH$pAttributes");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$pAttributes = (AddressLayout) LAYOUT.select(PATH$pAttributes);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pAttributes = LAYOUT$pAttributes.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$pAttributes = LAYOUT.byteOffset(PATH$pAttributes);
 }

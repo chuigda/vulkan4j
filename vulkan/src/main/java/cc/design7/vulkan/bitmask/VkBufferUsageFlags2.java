@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferUsageFlags2.html">VkBufferUsageFlags2</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferUsageFlags2.html"><code>VkBufferUsageFlags2</code></a>
 public final class VkBufferUsageFlags2 {
     public static final long ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_KHR = 0x80000L;
     public static final long ACCELERATION_STRUCTURE_STORAGE_KHR = 0x100000L;

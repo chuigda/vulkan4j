@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkMemoryBarrierAccessFlags3KHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryBarrierAccessFlags3KHR.html"><code>VkMemoryBarrierAccessFlags3KHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkMemoryBarrierAccessFlags3KHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkAccessFlags3KHR srcAccessMask3;
+///     VkAccessFlags3KHR dstAccessMask3;
+/// } VkMemoryBarrierAccessFlags3KHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_MEMORY_BARRIER_ACCESS_FLAGS_3_KHR`
+///
+/// The {@link VkMemoryBarrierAccessFlags3KHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkMemoryBarrierAccessFlags3KHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryBarrierAccessFlags3KHR.html">VkMemoryBarrierAccessFlags3KHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryBarrierAccessFlags3KHR.html"><code>VkMemoryBarrierAccessFlags3KHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkMemoryBarrierAccessFlags3KHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkMemoryBarrierAccessFlags3KHR {
-        sType(VkStructureType.MEMORY_BARRIER_ACCESS_FLAGS_3_KHR);
-    }
-
     public static VkMemoryBarrierAccessFlags3KHR allocate(Arena arena) {
-        return new VkMemoryBarrierAccessFlags3KHR(arena.allocate(LAYOUT));
+        VkMemoryBarrierAccessFlags3KHR ret = new VkMemoryBarrierAccessFlags3KHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.MEMORY_BARRIER_ACCESS_FLAGS_3_KHR);
+        return ret;
     }
 
     public static VkMemoryBarrierAccessFlags3KHR[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkMemoryBarrierAccessFlags3KHR(@NotNull MemorySegment segment) imp
         VkMemoryBarrierAccessFlags3KHR[] ret = new VkMemoryBarrierAccessFlags3KHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkMemoryBarrierAccessFlags3KHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.MEMORY_BARRIER_ACCESS_FLAGS_3_KHR);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkMemoryBarrierAccessFlags3KHR(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_LONG.withName("srcAccessMask3"),
-        ValueLayout.JAVA_LONG.withName("dstAccessMask3")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$srcAccessMask3 = PathElement.groupElement("PATH$srcAccessMask3");
-    public static final PathElement PATH$dstAccessMask3 = PathElement.groupElement("PATH$dstAccessMask3");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfLong LAYOUT$srcAccessMask3 = (OfLong) LAYOUT.select(PATH$srcAccessMask3);
-    public static final OfLong LAYOUT$dstAccessMask3 = (OfLong) LAYOUT.select(PATH$dstAccessMask3);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$srcAccessMask3 = LAYOUT$srcAccessMask3.byteSize();
-    public static final long SIZE$dstAccessMask3 = LAYOUT$dstAccessMask3.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$srcAccessMask3 = LAYOUT.byteOffset(PATH$srcAccessMask3);
-    public static final long OFFSET$dstAccessMask3 = LAYOUT.byteOffset(PATH$dstAccessMask3);
+    public void autoInit() {
+        sType(VkStructureType.MEMORY_BARRIER_ACCESS_FLAGS_3_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkMemoryBarrierAccessFlags3KHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$dstAccessMask3, OFFSET$dstAccessMask3, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("srcAccessMask3"),
+        ValueLayout.JAVA_LONG.withName("dstAccessMask3")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$srcAccessMask3 = PathElement.groupElement("PATH$srcAccessMask3");
+    public static final PathElement PATH$dstAccessMask3 = PathElement.groupElement("PATH$dstAccessMask3");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$srcAccessMask3 = (OfLong) LAYOUT.select(PATH$srcAccessMask3);
+    public static final OfLong LAYOUT$dstAccessMask3 = (OfLong) LAYOUT.select(PATH$dstAccessMask3);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$srcAccessMask3 = LAYOUT$srcAccessMask3.byteSize();
+    public static final long SIZE$dstAccessMask3 = LAYOUT$dstAccessMask3.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$srcAccessMask3 = LAYOUT.byteOffset(PATH$srcAccessMask3);
+    public static final long OFFSET$dstAccessMask3 = LAYOUT.byteOffset(PATH$dstAccessMask3);
 }

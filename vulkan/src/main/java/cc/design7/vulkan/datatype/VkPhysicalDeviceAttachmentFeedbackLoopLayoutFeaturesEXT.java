@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT.html"><code>VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 attachmentFeedbackLoopLayout;
+/// } VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_LAYOUT_FEATURES_EXT`
+///
+/// The {@link VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT.html">VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT.html"><code>VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT {
-        sType(VkStructureType.PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_LAYOUT_FEATURES_EXT);
-    }
-
     public static VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(arena.allocate(LAYOUT));
+        VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT ret = new VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_LAYOUT_FEATURES_EXT);
+        return ret;
     }
 
     public static VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(@NotNull M
         VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT[] ret = new VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_LAYOUT_FEATURES_EXT);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(@NotNull M
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("attachmentFeedbackLoopLayout")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$attachmentFeedbackLoopLayout = PathElement.groupElement("PATH$attachmentFeedbackLoopLayout");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$attachmentFeedbackLoopLayout = (OfInt) LAYOUT.select(PATH$attachmentFeedbackLoopLayout);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$attachmentFeedbackLoopLayout = LAYOUT$attachmentFeedbackLoopLayout.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$attachmentFeedbackLoopLayout = LAYOUT.byteOffset(PATH$attachmentFeedbackLoopLayout);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_LAYOUT_FEATURES_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(@NotNull M
         segment.set(LAYOUT$attachmentFeedbackLoopLayout, OFFSET$attachmentFeedbackLoopLayout, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("attachmentFeedbackLoopLayout")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$attachmentFeedbackLoopLayout = PathElement.groupElement("PATH$attachmentFeedbackLoopLayout");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$attachmentFeedbackLoopLayout = (OfInt) LAYOUT.select(PATH$attachmentFeedbackLoopLayout);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$attachmentFeedbackLoopLayout = LAYOUT$attachmentFeedbackLoopLayout.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$attachmentFeedbackLoopLayout = LAYOUT.byteOffset(PATH$attachmentFeedbackLoopLayout);
 }

@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFragmentShadingRateCombinerOpKHR.html">VkFragmentShadingRateCombinerOpKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFragmentShadingRateCombinerOpKHR.html"><code>VkFragmentShadingRateCombinerOpKHR</code></a>
 public final class VkFragmentShadingRateCombinerOpKHR {
     public static final int KEEP = 0x0;
     public static final int REPLACE = 0x1;

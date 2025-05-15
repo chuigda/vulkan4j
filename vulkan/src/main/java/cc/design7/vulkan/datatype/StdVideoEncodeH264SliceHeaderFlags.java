@@ -17,6 +17,17 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoEncodeH264SliceHeaderFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoEncodeH264SliceHeaderFlags {
+///     uint32_t direct_spatial_mv_pred_flag : 1;
+///     uint32_t num_ref_idx_active_override_flag : 1;
+///     uint32_t reserved : 30;
+/// } StdVideoEncodeH264SliceHeaderFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +39,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeH264SliceHeaderFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeH264SliceHeaderFlags allocate(Arena arena) {
-        return new StdVideoEncodeH264SliceHeaderFlags(arena.allocate(LAYOUT));
+        StdVideoEncodeH264SliceHeaderFlags ret = new StdVideoEncodeH264SliceHeaderFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoEncodeH264SliceHeaderFlags[] allocate(Arena arena, int count) {
@@ -54,18 +66,6 @@ public record StdVideoEncodeH264SliceHeaderFlags(@NotNull MemorySegment segment)
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$direct_spatial_mv_pred_flag_reserved")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$direct_spatial_mv_pred_flag_reserved = PathElement.groupElement("PATH$bitfield$direct_spatial_mv_pred_flag_reserved");
-
-    public static final OfInt LAYOUT$direct_spatial_mv_pred_flag_reserved = (OfInt) LAYOUT.select(PATH$bitfield$direct_spatial_mv_pred_flag_reserved);
-
-
-    public static final long OFFSET$direct_spatial_mv_pred_flag_reserved = LAYOUT.byteOffset(PATH$bitfield$direct_spatial_mv_pred_flag_reserved);
-
     public boolean direct_spatial_mv_pred_flag() {
         MemorySegment s = segment.asSlice(OFFSET$direct_spatial_mv_pred_flag_reserved, LAYOUT$direct_spatial_mv_pred_flag_reserved);
         return BitfieldUtil.readBit(s, 0);
@@ -86,5 +86,15 @@ public record StdVideoEncodeH264SliceHeaderFlags(@NotNull MemorySegment segment)
         BitfieldUtil.writeBit(s, 1, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$direct_spatial_mv_pred_flag_reserved")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$bitfield$direct_spatial_mv_pred_flag_reserved = PathElement.groupElement("PATH$bitfield$direct_spatial_mv_pred_flag_reserved");
+
+    public static final OfInt LAYOUT$direct_spatial_mv_pred_flag_reserved = (OfInt) LAYOUT.select(PATH$bitfield$direct_spatial_mv_pred_flag_reserved);
+
+
+    public static final long OFFSET$direct_spatial_mv_pred_flag_reserved = LAYOUT.byteOffset(PATH$bitfield$direct_spatial_mv_pred_flag_reserved);
 }

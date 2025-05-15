@@ -75,10 +75,10 @@ private fun vulkanDocLinkProvider(entity: Entity) = when(entity) {
             if (constantValueUnquoted.contains("STD_vulkan_video")) {
                 null
             } else {
-                "<a href=\"https://registry.khronos.org/vulkan/specs/latest/man/html/$constantValueUnquoted.html\">$constantValueUnquoted</a>"
+                "<a href=\"https://registry.khronos.org/vulkan/specs/latest/man/html/$constantValueUnquoted.html\"><code>$constantValueUnquoted</code></a>"
             }
         } else {
-            "<a href=\"https://registry.khronos.org/vulkan/specs/latest/man/html/${entity.name.original}.html\">$constantName</a>"
+            "<a href=\"https://registry.khronos.org/vulkan/specs/latest/man/html/${entity.name.original}.html\"><code>$constantName</code></a>"
         }
     }
     is Bitmask, is Command, is Enumeration, is Structure -> {
@@ -86,7 +86,7 @@ private fun vulkanDocLinkProvider(entity: Entity) = when(entity) {
         if (entityName.startsWith("StdVideo")) {
             null
         } else {
-            "<a href=\"https://registry.khronos.org/vulkan/specs/latest/man/html/${entity.name.original}.html\">${entity.name.original}</a>"
+            "<a href=\"https://registry.khronos.org/vulkan/specs/latest/man/html/${entity.name.original}.html\"><code>${entity.name.original}</code></a>"
         }
     }
     else -> null

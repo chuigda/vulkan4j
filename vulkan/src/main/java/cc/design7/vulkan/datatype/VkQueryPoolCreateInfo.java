@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkQueryPoolCreateInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryPoolCreateInfo.html"><code>VkQueryPoolCreateInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkQueryPoolCreateInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkQueryPoolCreateFlags flags;
+///     VkQueryType queryType;
+///     uint32_t queryCount;
+///     VkQueryPipelineStatisticFlags pipelineStatistics;
+/// } VkQueryPoolCreateInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO`
+///
+/// The {@link VkQueryPoolCreateInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkQueryPoolCreateInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryPoolCreateInfo.html">VkQueryPoolCreateInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryPoolCreateInfo.html"><code>VkQueryPoolCreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkQueryPoolCreateInfo {
-        sType(VkStructureType.QUERY_POOL_CREATE_INFO);
-    }
-
     public static VkQueryPoolCreateInfo allocate(Arena arena) {
-        return new VkQueryPoolCreateInfo(arena.allocate(LAYOUT));
+        VkQueryPoolCreateInfo ret = new VkQueryPoolCreateInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.QUERY_POOL_CREATE_INFO);
+        return ret;
     }
 
     public static VkQueryPoolCreateInfo[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements I
         VkQueryPoolCreateInfo[] ret = new VkQueryPoolCreateInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkQueryPoolCreateInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.QUERY_POOL_CREATE_INFO);
         }
         return ret;
     }
@@ -59,43 +80,9 @@ public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("queryType"),
-        ValueLayout.JAVA_INT.withName("queryCount"),
-        ValueLayout.JAVA_INT.withName("pipelineStatistics")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$queryType = PathElement.groupElement("PATH$queryType");
-    public static final PathElement PATH$queryCount = PathElement.groupElement("PATH$queryCount");
-    public static final PathElement PATH$pipelineStatistics = PathElement.groupElement("PATH$pipelineStatistics");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$queryType = (OfInt) LAYOUT.select(PATH$queryType);
-    public static final OfInt LAYOUT$queryCount = (OfInt) LAYOUT.select(PATH$queryCount);
-    public static final OfInt LAYOUT$pipelineStatistics = (OfInt) LAYOUT.select(PATH$pipelineStatistics);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$queryType = LAYOUT$queryType.byteSize();
-    public static final long SIZE$queryCount = LAYOUT$queryCount.byteSize();
-    public static final long SIZE$pipelineStatistics = LAYOUT$pipelineStatistics.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$queryType = LAYOUT.byteOffset(PATH$queryType);
-    public static final long OFFSET$queryCount = LAYOUT.byteOffset(PATH$queryCount);
-    public static final long OFFSET$pipelineStatistics = LAYOUT.byteOffset(PATH$pipelineStatistics);
+    public void autoInit() {
+        sType(VkStructureType.QUERY_POOL_CREATE_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -149,4 +136,41 @@ public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("queryType"),
+        ValueLayout.JAVA_INT.withName("queryCount"),
+        ValueLayout.JAVA_INT.withName("pipelineStatistics")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$queryType = PathElement.groupElement("PATH$queryType");
+    public static final PathElement PATH$queryCount = PathElement.groupElement("PATH$queryCount");
+    public static final PathElement PATH$pipelineStatistics = PathElement.groupElement("PATH$pipelineStatistics");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$queryType = (OfInt) LAYOUT.select(PATH$queryType);
+    public static final OfInt LAYOUT$queryCount = (OfInt) LAYOUT.select(PATH$queryCount);
+    public static final OfInt LAYOUT$pipelineStatistics = (OfInt) LAYOUT.select(PATH$pipelineStatistics);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$queryType = LAYOUT$queryType.byteSize();
+    public static final long SIZE$queryCount = LAYOUT$queryCount.byteSize();
+    public static final long SIZE$pipelineStatistics = LAYOUT$pipelineStatistics.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$queryType = LAYOUT.byteOffset(PATH$queryType);
+    public static final long OFFSET$queryCount = LAYOUT.byteOffset(PATH$queryCount);
+    public static final long OFFSET$pipelineStatistics = LAYOUT.byteOffset(PATH$pipelineStatistics);
 }

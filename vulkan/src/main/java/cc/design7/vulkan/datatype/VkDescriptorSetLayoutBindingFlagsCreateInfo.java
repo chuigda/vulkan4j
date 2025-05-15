@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDescriptorSetLayoutBindingFlagsCreateInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorSetLayoutBindingFlagsCreateInfo.html"><code>VkDescriptorSetLayoutBindingFlagsCreateInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDescriptorSetLayoutBindingFlagsCreateInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t bindingCount;
+///     VkDescriptorBindingFlags const* pBindingFlags;
+/// } VkDescriptorSetLayoutBindingFlagsCreateInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO`
+///
+/// The {@link VkDescriptorSetLayoutBindingFlagsCreateInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkDescriptorSetLayoutBindingFlagsCreateInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorSetLayoutBindingFlagsCreateInfo.html">VkDescriptorSetLayoutBindingFlagsCreateInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorSetLayoutBindingFlagsCreateInfo.html"><code>VkDescriptorSetLayoutBindingFlagsCreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkDescriptorSetLayoutBindingFlagsCreateInfo {
-        sType(VkStructureType.DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO);
-    }
-
     public static VkDescriptorSetLayoutBindingFlagsCreateInfo allocate(Arena arena) {
-        return new VkDescriptorSetLayoutBindingFlagsCreateInfo(arena.allocate(LAYOUT));
+        VkDescriptorSetLayoutBindingFlagsCreateInfo ret = new VkDescriptorSetLayoutBindingFlagsCreateInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO);
+        return ret;
     }
 
     public static VkDescriptorSetLayoutBindingFlagsCreateInfo[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
         VkDescriptorSetLayoutBindingFlagsCreateInfo[] ret = new VkDescriptorSetLayoutBindingFlagsCreateInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkDescriptorSetLayoutBindingFlagsCreateInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("bindingCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pBindingFlags")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$bindingCount = PathElement.groupElement("PATH$bindingCount");
-    public static final PathElement PATH$pBindingFlags = PathElement.groupElement("PATH$pBindingFlags");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$bindingCount = (OfInt) LAYOUT.select(PATH$bindingCount);
-    public static final AddressLayout LAYOUT$pBindingFlags = (AddressLayout) LAYOUT.select(PATH$pBindingFlags);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$bindingCount = LAYOUT$bindingCount.byteSize();
-    public static final long SIZE$pBindingFlags = LAYOUT$pBindingFlags.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$bindingCount = LAYOUT.byteOffset(PATH$bindingCount);
-    public static final long OFFSET$pBindingFlags = LAYOUT.byteOffset(PATH$pBindingFlags);
+    public void autoInit() {
+        sType(VkStructureType.DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -129,7 +124,7 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
     /// or writing to the buffer.
     public @Nullable @enumtype(VkDescriptorBindingFlags.class) IntPtr pBindingFlags() {
         MemorySegment s = pBindingFlagsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -140,4 +135,31 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
         pBindingFlagsRaw(s);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("bindingCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pBindingFlags")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$bindingCount = PathElement.groupElement("PATH$bindingCount");
+    public static final PathElement PATH$pBindingFlags = PathElement.groupElement("PATH$pBindingFlags");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$bindingCount = (OfInt) LAYOUT.select(PATH$bindingCount);
+    public static final AddressLayout LAYOUT$pBindingFlags = (AddressLayout) LAYOUT.select(PATH$pBindingFlags);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$bindingCount = LAYOUT$bindingCount.byteSize();
+    public static final long SIZE$pBindingFlags = LAYOUT$pBindingFlags.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$bindingCount = LAYOUT.byteOffset(PATH$bindingCount);
+    public static final long OFFSET$pBindingFlags = LAYOUT.byteOffset(PATH$pBindingFlags);
 }

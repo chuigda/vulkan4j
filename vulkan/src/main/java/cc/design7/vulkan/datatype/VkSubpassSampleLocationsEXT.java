@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkSubpassSampleLocationsEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassSampleLocationsEXT.html"><code>VkSubpassSampleLocationsEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkSubpassSampleLocationsEXT {
+///     uint32_t subpassIndex;
+///     VkSampleLocationsInfoEXT sampleLocationsInfo;
+/// } VkSubpassSampleLocationsEXT;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassSampleLocationsEXT.html">VkSubpassSampleLocationsEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassSampleLocationsEXT.html"><code>VkSubpassSampleLocationsEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkSubpassSampleLocationsEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkSubpassSampleLocationsEXT allocate(Arena arena) {
-        return new VkSubpassSampleLocationsEXT(arena.allocate(LAYOUT));
+        VkSubpassSampleLocationsEXT ret = new VkSubpassSampleLocationsEXT(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkSubpassSampleLocationsEXT[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkSubpassSampleLocationsEXT(@NotNull MemorySegment segment) implem
         return ret;
     }
 
+    public @unsigned int subpassIndex() {
+        return segment.get(LAYOUT$subpassIndex, OFFSET$subpassIndex);
+    }
+
+    public void subpassIndex(@unsigned int value) {
+        segment.set(LAYOUT$subpassIndex, OFFSET$subpassIndex, value);
+    }
+
+    public VkSampleLocationsInfoEXT sampleLocationsInfo() {
+        return new VkSampleLocationsInfoEXT(segment.asSlice(OFFSET$sampleLocationsInfo, LAYOUT$sampleLocationsInfo));
+    }
+
+    public void sampleLocationsInfo(VkSampleLocationsInfoEXT value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationsInfo, SIZE$sampleLocationsInfo);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("subpassIndex"),
         VkSampleLocationsInfoEXT.LAYOUT.withName("sampleLocationsInfo")
@@ -72,21 +99,4 @@ public record VkSubpassSampleLocationsEXT(@NotNull MemorySegment segment) implem
 
     public static final long OFFSET$subpassIndex = LAYOUT.byteOffset(PATH$subpassIndex);
     public static final long OFFSET$sampleLocationsInfo = LAYOUT.byteOffset(PATH$sampleLocationsInfo);
-
-    public @unsigned int subpassIndex() {
-        return segment.get(LAYOUT$subpassIndex, OFFSET$subpassIndex);
-    }
-
-    public void subpassIndex(@unsigned int value) {
-        segment.set(LAYOUT$subpassIndex, OFFSET$subpassIndex, value);
-    }
-
-    public VkSampleLocationsInfoEXT sampleLocationsInfo() {
-        return new VkSampleLocationsInfoEXT(segment.asSlice(OFFSET$sampleLocationsInfo, LAYOUT$sampleLocationsInfo));
-    }
-
-    public void sampleLocationsInfo(VkSampleLocationsInfoEXT value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationsInfo, SIZE$sampleLocationsInfo);
-    }
-
 }

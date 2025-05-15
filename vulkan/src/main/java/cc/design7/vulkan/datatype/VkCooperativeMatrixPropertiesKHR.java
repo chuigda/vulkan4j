@@ -14,8 +14,35 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkCooperativeMatrixPropertiesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCooperativeMatrixPropertiesKHR.html"><code>VkCooperativeMatrixPropertiesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkCooperativeMatrixPropertiesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t MSize;
+///     uint32_t NSize;
+///     uint32_t KSize;
+///     VkComponentTypeKHR AType;
+///     VkComponentTypeKHR BType;
+///     VkComponentTypeKHR CType;
+///     VkComponentTypeKHR ResultType;
+///     VkBool32 saturatingAccumulation;
+///     VkScopeKHR scope;
+/// } VkCooperativeMatrixPropertiesKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_KHR`
+///
+/// The {@link VkCooperativeMatrixPropertiesKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkCooperativeMatrixPropertiesKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +51,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCooperativeMatrixPropertiesKHR.html">VkCooperativeMatrixPropertiesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCooperativeMatrixPropertiesKHR.html"><code>VkCooperativeMatrixPropertiesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkCooperativeMatrixPropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkCooperativeMatrixPropertiesKHR {
-        sType(VkStructureType.COOPERATIVE_MATRIX_PROPERTIES_KHR);
-    }
-
     public static VkCooperativeMatrixPropertiesKHR allocate(Arena arena) {
-        return new VkCooperativeMatrixPropertiesKHR(arena.allocate(LAYOUT));
+        VkCooperativeMatrixPropertiesKHR ret = new VkCooperativeMatrixPropertiesKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.COOPERATIVE_MATRIX_PROPERTIES_KHR);
+        return ret;
     }
 
     public static VkCooperativeMatrixPropertiesKHR[] allocate(Arena arena, int count) {
@@ -41,6 +66,7 @@ public record VkCooperativeMatrixPropertiesKHR(@NotNull MemorySegment segment) i
         VkCooperativeMatrixPropertiesKHR[] ret = new VkCooperativeMatrixPropertiesKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkCooperativeMatrixPropertiesKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.COOPERATIVE_MATRIX_PROPERTIES_KHR);
         }
         return ret;
     }
@@ -59,68 +85,9 @@ public record VkCooperativeMatrixPropertiesKHR(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("MSize"),
-        ValueLayout.JAVA_INT.withName("NSize"),
-        ValueLayout.JAVA_INT.withName("KSize"),
-        ValueLayout.JAVA_INT.withName("AType"),
-        ValueLayout.JAVA_INT.withName("BType"),
-        ValueLayout.JAVA_INT.withName("CType"),
-        ValueLayout.JAVA_INT.withName("ResultType"),
-        ValueLayout.JAVA_INT.withName("saturatingAccumulation"),
-        ValueLayout.JAVA_INT.withName("scope")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$MSize = PathElement.groupElement("PATH$MSize");
-    public static final PathElement PATH$NSize = PathElement.groupElement("PATH$NSize");
-    public static final PathElement PATH$KSize = PathElement.groupElement("PATH$KSize");
-    public static final PathElement PATH$AType = PathElement.groupElement("PATH$AType");
-    public static final PathElement PATH$BType = PathElement.groupElement("PATH$BType");
-    public static final PathElement PATH$CType = PathElement.groupElement("PATH$CType");
-    public static final PathElement PATH$ResultType = PathElement.groupElement("PATH$ResultType");
-    public static final PathElement PATH$saturatingAccumulation = PathElement.groupElement("PATH$saturatingAccumulation");
-    public static final PathElement PATH$scope = PathElement.groupElement("PATH$scope");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$MSize = (OfInt) LAYOUT.select(PATH$MSize);
-    public static final OfInt LAYOUT$NSize = (OfInt) LAYOUT.select(PATH$NSize);
-    public static final OfInt LAYOUT$KSize = (OfInt) LAYOUT.select(PATH$KSize);
-    public static final OfInt LAYOUT$AType = (OfInt) LAYOUT.select(PATH$AType);
-    public static final OfInt LAYOUT$BType = (OfInt) LAYOUT.select(PATH$BType);
-    public static final OfInt LAYOUT$CType = (OfInt) LAYOUT.select(PATH$CType);
-    public static final OfInt LAYOUT$ResultType = (OfInt) LAYOUT.select(PATH$ResultType);
-    public static final OfInt LAYOUT$saturatingAccumulation = (OfInt) LAYOUT.select(PATH$saturatingAccumulation);
-    public static final OfInt LAYOUT$scope = (OfInt) LAYOUT.select(PATH$scope);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$MSize = LAYOUT$MSize.byteSize();
-    public static final long SIZE$NSize = LAYOUT$NSize.byteSize();
-    public static final long SIZE$KSize = LAYOUT$KSize.byteSize();
-    public static final long SIZE$AType = LAYOUT$AType.byteSize();
-    public static final long SIZE$BType = LAYOUT$BType.byteSize();
-    public static final long SIZE$CType = LAYOUT$CType.byteSize();
-    public static final long SIZE$ResultType = LAYOUT$ResultType.byteSize();
-    public static final long SIZE$saturatingAccumulation = LAYOUT$saturatingAccumulation.byteSize();
-    public static final long SIZE$scope = LAYOUT$scope.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$MSize = LAYOUT.byteOffset(PATH$MSize);
-    public static final long OFFSET$NSize = LAYOUT.byteOffset(PATH$NSize);
-    public static final long OFFSET$KSize = LAYOUT.byteOffset(PATH$KSize);
-    public static final long OFFSET$AType = LAYOUT.byteOffset(PATH$AType);
-    public static final long OFFSET$BType = LAYOUT.byteOffset(PATH$BType);
-    public static final long OFFSET$CType = LAYOUT.byteOffset(PATH$CType);
-    public static final long OFFSET$ResultType = LAYOUT.byteOffset(PATH$ResultType);
-    public static final long OFFSET$saturatingAccumulation = LAYOUT.byteOffset(PATH$saturatingAccumulation);
-    public static final long OFFSET$scope = LAYOUT.byteOffset(PATH$scope);
+    public void autoInit() {
+        sType(VkStructureType.COOPERATIVE_MATRIX_PROPERTIES_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -214,4 +181,66 @@ public record VkCooperativeMatrixPropertiesKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$scope, OFFSET$scope, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("MSize"),
+        ValueLayout.JAVA_INT.withName("NSize"),
+        ValueLayout.JAVA_INT.withName("KSize"),
+        ValueLayout.JAVA_INT.withName("AType"),
+        ValueLayout.JAVA_INT.withName("BType"),
+        ValueLayout.JAVA_INT.withName("CType"),
+        ValueLayout.JAVA_INT.withName("ResultType"),
+        ValueLayout.JAVA_INT.withName("saturatingAccumulation"),
+        ValueLayout.JAVA_INT.withName("scope")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$MSize = PathElement.groupElement("PATH$MSize");
+    public static final PathElement PATH$NSize = PathElement.groupElement("PATH$NSize");
+    public static final PathElement PATH$KSize = PathElement.groupElement("PATH$KSize");
+    public static final PathElement PATH$AType = PathElement.groupElement("PATH$AType");
+    public static final PathElement PATH$BType = PathElement.groupElement("PATH$BType");
+    public static final PathElement PATH$CType = PathElement.groupElement("PATH$CType");
+    public static final PathElement PATH$ResultType = PathElement.groupElement("PATH$ResultType");
+    public static final PathElement PATH$saturatingAccumulation = PathElement.groupElement("PATH$saturatingAccumulation");
+    public static final PathElement PATH$scope = PathElement.groupElement("PATH$scope");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$MSize = (OfInt) LAYOUT.select(PATH$MSize);
+    public static final OfInt LAYOUT$NSize = (OfInt) LAYOUT.select(PATH$NSize);
+    public static final OfInt LAYOUT$KSize = (OfInt) LAYOUT.select(PATH$KSize);
+    public static final OfInt LAYOUT$AType = (OfInt) LAYOUT.select(PATH$AType);
+    public static final OfInt LAYOUT$BType = (OfInt) LAYOUT.select(PATH$BType);
+    public static final OfInt LAYOUT$CType = (OfInt) LAYOUT.select(PATH$CType);
+    public static final OfInt LAYOUT$ResultType = (OfInt) LAYOUT.select(PATH$ResultType);
+    public static final OfInt LAYOUT$saturatingAccumulation = (OfInt) LAYOUT.select(PATH$saturatingAccumulation);
+    public static final OfInt LAYOUT$scope = (OfInt) LAYOUT.select(PATH$scope);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$MSize = LAYOUT$MSize.byteSize();
+    public static final long SIZE$NSize = LAYOUT$NSize.byteSize();
+    public static final long SIZE$KSize = LAYOUT$KSize.byteSize();
+    public static final long SIZE$AType = LAYOUT$AType.byteSize();
+    public static final long SIZE$BType = LAYOUT$BType.byteSize();
+    public static final long SIZE$CType = LAYOUT$CType.byteSize();
+    public static final long SIZE$ResultType = LAYOUT$ResultType.byteSize();
+    public static final long SIZE$saturatingAccumulation = LAYOUT$saturatingAccumulation.byteSize();
+    public static final long SIZE$scope = LAYOUT$scope.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$MSize = LAYOUT.byteOffset(PATH$MSize);
+    public static final long OFFSET$NSize = LAYOUT.byteOffset(PATH$NSize);
+    public static final long OFFSET$KSize = LAYOUT.byteOffset(PATH$KSize);
+    public static final long OFFSET$AType = LAYOUT.byteOffset(PATH$AType);
+    public static final long OFFSET$BType = LAYOUT.byteOffset(PATH$BType);
+    public static final long OFFSET$CType = LAYOUT.byteOffset(PATH$CType);
+    public static final long OFFSET$ResultType = LAYOUT.byteOffset(PATH$ResultType);
+    public static final long OFFSET$saturatingAccumulation = LAYOUT.byteOffset(PATH$saturatingAccumulation);
+    public static final long OFFSET$scope = LAYOUT.byteOffset(PATH$scope);
 }

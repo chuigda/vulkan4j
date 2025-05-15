@@ -14,8 +14,32 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkBufferCreateInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferCreateInfo.html"><code>VkBufferCreateInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkBufferCreateInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkBufferCreateFlags flags;
+///     VkDeviceSize size;
+///     VkBufferUsageFlags usage;
+///     VkSharingMode sharingMode;
+///     uint32_t queueFamilyIndexCount;
+///     uint32_t const* pQueueFamilyIndices;
+/// } VkBufferCreateInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO`
+///
+/// The {@link VkBufferCreateInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkBufferCreateInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +48,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferCreateInfo.html">VkBufferCreateInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferCreateInfo.html"><code>VkBufferCreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkBufferCreateInfo {
-        sType(VkStructureType.BUFFER_CREATE_INFO);
-    }
-
     public static VkBufferCreateInfo allocate(Arena arena) {
-        return new VkBufferCreateInfo(arena.allocate(LAYOUT));
+        VkBufferCreateInfo ret = new VkBufferCreateInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.BUFFER_CREATE_INFO);
+        return ret;
     }
 
     public static VkBufferCreateInfo[] allocate(Arena arena, int count) {
@@ -41,6 +63,7 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IPoi
         VkBufferCreateInfo[] ret = new VkBufferCreateInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkBufferCreateInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.BUFFER_CREATE_INFO);
         }
         return ret;
     }
@@ -59,53 +82,9 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IPoi
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_LONG.withName("size"),
-        ValueLayout.JAVA_INT.withName("usage"),
-        ValueLayout.JAVA_INT.withName("sharingMode"),
-        ValueLayout.JAVA_INT.withName("queueFamilyIndexCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pQueueFamilyIndices")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
-    public static final PathElement PATH$usage = PathElement.groupElement("PATH$usage");
-    public static final PathElement PATH$sharingMode = PathElement.groupElement("PATH$sharingMode");
-    public static final PathElement PATH$queueFamilyIndexCount = PathElement.groupElement("PATH$queueFamilyIndexCount");
-    public static final PathElement PATH$pQueueFamilyIndices = PathElement.groupElement("PATH$pQueueFamilyIndices");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
-    public static final OfInt LAYOUT$usage = (OfInt) LAYOUT.select(PATH$usage);
-    public static final OfInt LAYOUT$sharingMode = (OfInt) LAYOUT.select(PATH$sharingMode);
-    public static final OfInt LAYOUT$queueFamilyIndexCount = (OfInt) LAYOUT.select(PATH$queueFamilyIndexCount);
-    public static final AddressLayout LAYOUT$pQueueFamilyIndices = (AddressLayout) LAYOUT.select(PATH$pQueueFamilyIndices);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$size = LAYOUT$size.byteSize();
-    public static final long SIZE$usage = LAYOUT$usage.byteSize();
-    public static final long SIZE$sharingMode = LAYOUT$sharingMode.byteSize();
-    public static final long SIZE$queueFamilyIndexCount = LAYOUT$queueFamilyIndexCount.byteSize();
-    public static final long SIZE$pQueueFamilyIndices = LAYOUT$pQueueFamilyIndices.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
-    public static final long OFFSET$usage = LAYOUT.byteOffset(PATH$usage);
-    public static final long OFFSET$sharingMode = LAYOUT.byteOffset(PATH$sharingMode);
-    public static final long OFFSET$queueFamilyIndexCount = LAYOUT.byteOffset(PATH$queueFamilyIndexCount);
-    public static final long OFFSET$pQueueFamilyIndices = LAYOUT.byteOffset(PATH$pQueueFamilyIndices);
+    public void autoInit() {
+        sType(VkStructureType.BUFFER_CREATE_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -181,7 +160,7 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IPoi
     /// writing to the buffer.
     public @Nullable @unsigned IntPtr pQueueFamilyIndices() {
         MemorySegment s = pQueueFamilyIndicesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -192,4 +171,51 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IPoi
         pQueueFamilyIndicesRaw(s);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_LONG.withName("size"),
+        ValueLayout.JAVA_INT.withName("usage"),
+        ValueLayout.JAVA_INT.withName("sharingMode"),
+        ValueLayout.JAVA_INT.withName("queueFamilyIndexCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pQueueFamilyIndices")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
+    public static final PathElement PATH$usage = PathElement.groupElement("PATH$usage");
+    public static final PathElement PATH$sharingMode = PathElement.groupElement("PATH$sharingMode");
+    public static final PathElement PATH$queueFamilyIndexCount = PathElement.groupElement("PATH$queueFamilyIndexCount");
+    public static final PathElement PATH$pQueueFamilyIndices = PathElement.groupElement("PATH$pQueueFamilyIndices");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
+    public static final OfInt LAYOUT$usage = (OfInt) LAYOUT.select(PATH$usage);
+    public static final OfInt LAYOUT$sharingMode = (OfInt) LAYOUT.select(PATH$sharingMode);
+    public static final OfInt LAYOUT$queueFamilyIndexCount = (OfInt) LAYOUT.select(PATH$queueFamilyIndexCount);
+    public static final AddressLayout LAYOUT$pQueueFamilyIndices = (AddressLayout) LAYOUT.select(PATH$pQueueFamilyIndices);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$usage = LAYOUT$usage.byteSize();
+    public static final long SIZE$sharingMode = LAYOUT$sharingMode.byteSize();
+    public static final long SIZE$queueFamilyIndexCount = LAYOUT$queueFamilyIndexCount.byteSize();
+    public static final long SIZE$pQueueFamilyIndices = LAYOUT$pQueueFamilyIndices.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+    public static final long OFFSET$usage = LAYOUT.byteOffset(PATH$usage);
+    public static final long OFFSET$sharingMode = LAYOUT.byteOffset(PATH$sharingMode);
+    public static final long OFFSET$queueFamilyIndexCount = LAYOUT.byteOffset(PATH$queueFamilyIndexCount);
+    public static final long OFFSET$pQueueFamilyIndices = LAYOUT.byteOffset(PATH$pQueueFamilyIndices);
 }

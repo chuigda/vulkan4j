@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDeviceFaultCountsEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceFaultCountsEXT.html"><code>VkDeviceFaultCountsEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDeviceFaultCountsEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t addressInfoCount;
+///     uint32_t vendorInfoCount;
+///     VkDeviceSize vendorBinarySize;
+/// } VkDeviceFaultCountsEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_DEVICE_FAULT_COUNTS_EXT`
+///
+/// The {@link VkDeviceFaultCountsEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkDeviceFaultCountsEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceFaultCountsEXT.html">VkDeviceFaultCountsEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceFaultCountsEXT.html"><code>VkDeviceFaultCountsEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDeviceFaultCountsEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkDeviceFaultCountsEXT {
-        sType(VkStructureType.DEVICE_FAULT_COUNTS_EXT);
-    }
-
     public static VkDeviceFaultCountsEXT allocate(Arena arena) {
-        return new VkDeviceFaultCountsEXT(arena.allocate(LAYOUT));
+        VkDeviceFaultCountsEXT ret = new VkDeviceFaultCountsEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.DEVICE_FAULT_COUNTS_EXT);
+        return ret;
     }
 
     public static VkDeviceFaultCountsEXT[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkDeviceFaultCountsEXT(@NotNull MemorySegment segment) implements 
         VkDeviceFaultCountsEXT[] ret = new VkDeviceFaultCountsEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkDeviceFaultCountsEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.DEVICE_FAULT_COUNTS_EXT);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkDeviceFaultCountsEXT(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("addressInfoCount"),
-        ValueLayout.JAVA_INT.withName("vendorInfoCount"),
-        ValueLayout.JAVA_LONG.withName("vendorBinarySize")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$addressInfoCount = PathElement.groupElement("PATH$addressInfoCount");
-    public static final PathElement PATH$vendorInfoCount = PathElement.groupElement("PATH$vendorInfoCount");
-    public static final PathElement PATH$vendorBinarySize = PathElement.groupElement("PATH$vendorBinarySize");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$addressInfoCount = (OfInt) LAYOUT.select(PATH$addressInfoCount);
-    public static final OfInt LAYOUT$vendorInfoCount = (OfInt) LAYOUT.select(PATH$vendorInfoCount);
-    public static final OfLong LAYOUT$vendorBinarySize = (OfLong) LAYOUT.select(PATH$vendorBinarySize);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$addressInfoCount = LAYOUT$addressInfoCount.byteSize();
-    public static final long SIZE$vendorInfoCount = LAYOUT$vendorInfoCount.byteSize();
-    public static final long SIZE$vendorBinarySize = LAYOUT$vendorBinarySize.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$addressInfoCount = LAYOUT.byteOffset(PATH$addressInfoCount);
-    public static final long OFFSET$vendorInfoCount = LAYOUT.byteOffset(PATH$vendorInfoCount);
-    public static final long OFFSET$vendorBinarySize = LAYOUT.byteOffset(PATH$vendorBinarySize);
+    public void autoInit() {
+        sType(VkStructureType.DEVICE_FAULT_COUNTS_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -136,4 +127,36 @@ public record VkDeviceFaultCountsEXT(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$vendorBinarySize, OFFSET$vendorBinarySize, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("addressInfoCount"),
+        ValueLayout.JAVA_INT.withName("vendorInfoCount"),
+        ValueLayout.JAVA_LONG.withName("vendorBinarySize")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$addressInfoCount = PathElement.groupElement("PATH$addressInfoCount");
+    public static final PathElement PATH$vendorInfoCount = PathElement.groupElement("PATH$vendorInfoCount");
+    public static final PathElement PATH$vendorBinarySize = PathElement.groupElement("PATH$vendorBinarySize");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$addressInfoCount = (OfInt) LAYOUT.select(PATH$addressInfoCount);
+    public static final OfInt LAYOUT$vendorInfoCount = (OfInt) LAYOUT.select(PATH$vendorInfoCount);
+    public static final OfLong LAYOUT$vendorBinarySize = (OfLong) LAYOUT.select(PATH$vendorBinarySize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$addressInfoCount = LAYOUT$addressInfoCount.byteSize();
+    public static final long SIZE$vendorInfoCount = LAYOUT$vendorInfoCount.byteSize();
+    public static final long SIZE$vendorBinarySize = LAYOUT$vendorBinarySize.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$addressInfoCount = LAYOUT.byteOffset(PATH$addressInfoCount);
+    public static final long OFFSET$vendorInfoCount = LAYOUT.byteOffset(PATH$vendorInfoCount);
+    public static final long OFFSET$vendorBinarySize = LAYOUT.byteOffset(PATH$vendorBinarySize);
 }

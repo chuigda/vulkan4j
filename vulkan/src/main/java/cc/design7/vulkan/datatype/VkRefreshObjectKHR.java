@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkRefreshObjectKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRefreshObjectKHR.html"><code>VkRefreshObjectKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkRefreshObjectKHR {
+///     VkObjectType objectType;
+///     uint64_t objectHandle;
+///     VkRefreshObjectFlagsKHR flags;
+/// } VkRefreshObjectKHR;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRefreshObjectKHR.html">VkRefreshObjectKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRefreshObjectKHR.html"><code>VkRefreshObjectKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkRefreshObjectKHR allocate(Arena arena) {
-        return new VkRefreshObjectKHR(arena.allocate(LAYOUT));
+        VkRefreshObjectKHR ret = new VkRefreshObjectKHR(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkRefreshObjectKHR[] allocate(Arena arena, int count) {
@@ -55,29 +67,6 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IPoi
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("objectType"),
-        ValueLayout.JAVA_LONG.withName("objectHandle"),
-        ValueLayout.JAVA_INT.withName("flags")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$objectType = PathElement.groupElement("PATH$objectType");
-    public static final PathElement PATH$objectHandle = PathElement.groupElement("PATH$objectHandle");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-
-    public static final OfInt LAYOUT$objectType = (OfInt) LAYOUT.select(PATH$objectType);
-    public static final OfLong LAYOUT$objectHandle = (OfLong) LAYOUT.select(PATH$objectHandle);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-
-    public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
-    public static final long SIZE$objectHandle = LAYOUT$objectHandle.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-
-    public static final long OFFSET$objectType = LAYOUT.byteOffset(PATH$objectType);
-    public static final long OFFSET$objectHandle = LAYOUT.byteOffset(PATH$objectHandle);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-
     public @enumtype(VkObjectType.class) int objectType() {
         return segment.get(LAYOUT$objectType, OFFSET$objectType);
     }
@@ -102,4 +91,26 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IPoi
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("objectType"),
+        ValueLayout.JAVA_LONG.withName("objectHandle"),
+        ValueLayout.JAVA_INT.withName("flags")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$objectType = PathElement.groupElement("PATH$objectType");
+    public static final PathElement PATH$objectHandle = PathElement.groupElement("PATH$objectHandle");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+
+    public static final OfInt LAYOUT$objectType = (OfInt) LAYOUT.select(PATH$objectType);
+    public static final OfLong LAYOUT$objectHandle = (OfLong) LAYOUT.select(PATH$objectHandle);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+
+    public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
+    public static final long SIZE$objectHandle = LAYOUT$objectHandle.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+
+    public static final long OFFSET$objectType = LAYOUT.byteOffset(PATH$objectType);
+    public static final long OFFSET$objectHandle = LAYOUT.byteOffset(PATH$objectHandle);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
 }

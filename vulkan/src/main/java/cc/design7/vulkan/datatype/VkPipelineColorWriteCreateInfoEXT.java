@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineColorWriteCreateInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineColorWriteCreateInfoEXT.html"><code>VkPipelineColorWriteCreateInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineColorWriteCreateInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t attachmentCount;
+///     VkBool32 const* pColorWriteEnables;
+/// } VkPipelineColorWriteCreateInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_WRITE_CREATE_INFO_EXT`
+///
+/// The {@link VkPipelineColorWriteCreateInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineColorWriteCreateInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineColorWriteCreateInfoEXT.html">VkPipelineColorWriteCreateInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineColorWriteCreateInfoEXT.html"><code>VkPipelineColorWriteCreateInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineColorWriteCreateInfoEXT {
-        sType(VkStructureType.PIPELINE_COLOR_WRITE_CREATE_INFO_EXT);
-    }
-
     public static VkPipelineColorWriteCreateInfoEXT allocate(Arena arena) {
-        return new VkPipelineColorWriteCreateInfoEXT(arena.allocate(LAYOUT));
+        VkPipelineColorWriteCreateInfoEXT ret = new VkPipelineColorWriteCreateInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_COLOR_WRITE_CREATE_INFO_EXT);
+        return ret;
     }
 
     public static VkPipelineColorWriteCreateInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
         VkPipelineColorWriteCreateInfoEXT[] ret = new VkPipelineColorWriteCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineColorWriteCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_COLOR_WRITE_CREATE_INFO_EXT);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("attachmentCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pColorWriteEnables")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$attachmentCount = PathElement.groupElement("PATH$attachmentCount");
-    public static final PathElement PATH$pColorWriteEnables = PathElement.groupElement("PATH$pColorWriteEnables");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$attachmentCount = (OfInt) LAYOUT.select(PATH$attachmentCount);
-    public static final AddressLayout LAYOUT$pColorWriteEnables = (AddressLayout) LAYOUT.select(PATH$pColorWriteEnables);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$attachmentCount = LAYOUT$attachmentCount.byteSize();
-    public static final long SIZE$pColorWriteEnables = LAYOUT$pColorWriteEnables.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$attachmentCount = LAYOUT.byteOffset(PATH$attachmentCount);
-    public static final long OFFSET$pColorWriteEnables = LAYOUT.byteOffset(PATH$pColorWriteEnables);
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_COLOR_WRITE_CREATE_INFO_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -129,7 +124,7 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
     /// writing to the buffer.
     public @Nullable @unsigned IntPtr pColorWriteEnables() {
         MemorySegment s = pColorWriteEnablesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -140,4 +135,31 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
         pColorWriteEnablesRaw(s);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("attachmentCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pColorWriteEnables")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$attachmentCount = PathElement.groupElement("PATH$attachmentCount");
+    public static final PathElement PATH$pColorWriteEnables = PathElement.groupElement("PATH$pColorWriteEnables");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$attachmentCount = (OfInt) LAYOUT.select(PATH$attachmentCount);
+    public static final AddressLayout LAYOUT$pColorWriteEnables = (AddressLayout) LAYOUT.select(PATH$pColorWriteEnables);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$attachmentCount = LAYOUT$attachmentCount.byteSize();
+    public static final long SIZE$pColorWriteEnables = LAYOUT$pColorWriteEnables.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$attachmentCount = LAYOUT.byteOffset(PATH$attachmentCount);
+    public static final long OFFSET$pColorWriteEnables = LAYOUT.byteOffset(PATH$pColorWriteEnables);
 }

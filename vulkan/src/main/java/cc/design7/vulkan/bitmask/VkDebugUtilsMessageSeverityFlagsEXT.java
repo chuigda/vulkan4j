@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDebugUtilsMessageSeverityFlagsEXT.html">VkDebugUtilsMessageSeverityFlagsEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDebugUtilsMessageSeverityFlagsEXT.html"><code>VkDebugUtilsMessageSeverityFlagsEXT</code></a>
 public final class VkDebugUtilsMessageSeverityFlagsEXT {
     public static final int ERROR = 0x1000;
     public static final int INFO = 0x10;

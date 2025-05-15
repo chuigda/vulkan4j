@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueueFlags.html">VkQueueFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueueFlags.html"><code>VkQueueFlags</code></a>
 public final class VkQueueFlags {
     public static final int COMPUTE = 0x2;
     public static final int GRAPHICS = 0x1;

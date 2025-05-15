@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkBindVertexBufferIndirectCommandNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindVertexBufferIndirectCommandNV.html"><code>VkBindVertexBufferIndirectCommandNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkBindVertexBufferIndirectCommandNV {
+///     VkDeviceAddress bufferAddress;
+///     uint32_t size;
+///     uint32_t stride;
+/// } VkBindVertexBufferIndirectCommandNV;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindVertexBufferIndirectCommandNV.html">VkBindVertexBufferIndirectCommandNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindVertexBufferIndirectCommandNV.html"><code>VkBindVertexBufferIndirectCommandNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkBindVertexBufferIndirectCommandNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkBindVertexBufferIndirectCommandNV allocate(Arena arena) {
-        return new VkBindVertexBufferIndirectCommandNV(arena.allocate(LAYOUT));
+        VkBindVertexBufferIndirectCommandNV ret = new VkBindVertexBufferIndirectCommandNV(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkBindVertexBufferIndirectCommandNV[] allocate(Arena arena, int count) {
@@ -55,29 +67,6 @@ public record VkBindVertexBufferIndirectCommandNV(@NotNull MemorySegment segment
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_LONG.withName("bufferAddress"),
-        ValueLayout.JAVA_INT.withName("size"),
-        ValueLayout.JAVA_INT.withName("stride")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bufferAddress = PathElement.groupElement("PATH$bufferAddress");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
-    public static final PathElement PATH$stride = PathElement.groupElement("PATH$stride");
-
-    public static final OfLong LAYOUT$bufferAddress = (OfLong) LAYOUT.select(PATH$bufferAddress);
-    public static final OfInt LAYOUT$size = (OfInt) LAYOUT.select(PATH$size);
-    public static final OfInt LAYOUT$stride = (OfInt) LAYOUT.select(PATH$stride);
-
-    public static final long SIZE$bufferAddress = LAYOUT$bufferAddress.byteSize();
-    public static final long SIZE$size = LAYOUT$size.byteSize();
-    public static final long SIZE$stride = LAYOUT$stride.byteSize();
-
-    public static final long OFFSET$bufferAddress = LAYOUT.byteOffset(PATH$bufferAddress);
-    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
-    public static final long OFFSET$stride = LAYOUT.byteOffset(PATH$stride);
-
     public @unsigned long bufferAddress() {
         return segment.get(LAYOUT$bufferAddress, OFFSET$bufferAddress);
     }
@@ -102,4 +91,26 @@ public record VkBindVertexBufferIndirectCommandNV(@NotNull MemorySegment segment
         segment.set(LAYOUT$stride, OFFSET$stride, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("bufferAddress"),
+        ValueLayout.JAVA_INT.withName("size"),
+        ValueLayout.JAVA_INT.withName("stride")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$bufferAddress = PathElement.groupElement("PATH$bufferAddress");
+    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
+    public static final PathElement PATH$stride = PathElement.groupElement("PATH$stride");
+
+    public static final OfLong LAYOUT$bufferAddress = (OfLong) LAYOUT.select(PATH$bufferAddress);
+    public static final OfInt LAYOUT$size = (OfInt) LAYOUT.select(PATH$size);
+    public static final OfInt LAYOUT$stride = (OfInt) LAYOUT.select(PATH$stride);
+
+    public static final long SIZE$bufferAddress = LAYOUT$bufferAddress.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$stride = LAYOUT$stride.byteSize();
+
+    public static final long OFFSET$bufferAddress = LAYOUT.byteOffset(PATH$bufferAddress);
+    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+    public static final long OFFSET$stride = LAYOUT.byteOffset(PATH$stride);
 }

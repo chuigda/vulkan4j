@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1PredictionModeKHR.html">VkVideoEncodeAV1PredictionModeKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1PredictionModeKHR.html"><code>VkVideoEncodeAV1PredictionModeKHR</code></a>
 public final class VkVideoEncodeAV1PredictionModeKHR {
     public static final int VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY = 0x0;
     public static final int VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_SINGLE_REFERENCE = 0x1;

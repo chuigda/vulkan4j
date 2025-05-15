@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoDecodeAV1DpbSlotInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeAV1DpbSlotInfoKHR.html"><code>VkVideoDecodeAV1DpbSlotInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoDecodeAV1DpbSlotInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     StdVideoDecodeAV1ReferenceInfo const* pStdReferenceInfo;
+/// } VkVideoDecodeAV1DpbSlotInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_DPB_SLOT_INFO_KHR`
+///
+/// The {@link VkVideoDecodeAV1DpbSlotInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkVideoDecodeAV1DpbSlotInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeAV1DpbSlotInfoKHR.html">VkVideoDecodeAV1DpbSlotInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeAV1DpbSlotInfoKHR.html"><code>VkVideoDecodeAV1DpbSlotInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoDecodeAV1DpbSlotInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkVideoDecodeAV1DpbSlotInfoKHR {
-        sType(VkStructureType.VIDEO_DECODE_AV1_DPB_SLOT_INFO_KHR);
-    }
-
     public static VkVideoDecodeAV1DpbSlotInfoKHR allocate(Arena arena) {
-        return new VkVideoDecodeAV1DpbSlotInfoKHR(arena.allocate(LAYOUT));
+        VkVideoDecodeAV1DpbSlotInfoKHR ret = new VkVideoDecodeAV1DpbSlotInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VIDEO_DECODE_AV1_DPB_SLOT_INFO_KHR);
+        return ret;
     }
 
     public static VkVideoDecodeAV1DpbSlotInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkVideoDecodeAV1DpbSlotInfoKHR(@NotNull MemorySegment segment) imp
         VkVideoDecodeAV1DpbSlotInfoKHR[] ret = new VkVideoDecodeAV1DpbSlotInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkVideoDecodeAV1DpbSlotInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VIDEO_DECODE_AV1_DPB_SLOT_INFO_KHR);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkVideoDecodeAV1DpbSlotInfoKHR(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoDecodeAV1ReferenceInfo.LAYOUT).withName("pStdReferenceInfo")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$pStdReferenceInfo = PathElement.groupElement("PATH$pStdReferenceInfo");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$pStdReferenceInfo = (AddressLayout) LAYOUT.select(PATH$pStdReferenceInfo);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$pStdReferenceInfo = LAYOUT$pStdReferenceInfo.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$pStdReferenceInfo = LAYOUT.byteOffset(PATH$pStdReferenceInfo);
+    public void autoInit() {
+        sType(VkStructureType.VIDEO_DECODE_AV1_DPB_SLOT_INFO_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -112,7 +111,7 @@ public record VkVideoDecodeAV1DpbSlotInfoKHR(@NotNull MemorySegment segment) imp
 
     public @Nullable StdVideoDecodeAV1ReferenceInfo pStdReferenceInfo() {
         MemorySegment s = pStdReferenceInfoRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoDecodeAV1ReferenceInfo(s);
@@ -125,7 +124,7 @@ public record VkVideoDecodeAV1DpbSlotInfoKHR(@NotNull MemorySegment segment) imp
 
     @unsafe public @Nullable StdVideoDecodeAV1ReferenceInfo[] pStdReferenceInfo(int assumedCount) {
         MemorySegment s = pStdReferenceInfoRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -137,4 +136,26 @@ public record VkVideoDecodeAV1DpbSlotInfoKHR(@NotNull MemorySegment segment) imp
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoDecodeAV1ReferenceInfo.LAYOUT).withName("pStdReferenceInfo")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$pStdReferenceInfo = PathElement.groupElement("PATH$pStdReferenceInfo");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$pStdReferenceInfo = (AddressLayout) LAYOUT.select(PATH$pStdReferenceInfo);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pStdReferenceInfo = LAYOUT$pStdReferenceInfo.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$pStdReferenceInfo = LAYOUT.byteOffset(PATH$pStdReferenceInfo);
 }

@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDevicePresentWaitFeaturesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevicePresentWaitFeaturesKHR.html"><code>VkPhysicalDevicePresentWaitFeaturesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDevicePresentWaitFeaturesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 presentWait;
+/// } VkPhysicalDevicePresentWaitFeaturesKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_WAIT_FEATURES_KHR`
+///
+/// The {@link VkPhysicalDevicePresentWaitFeaturesKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDevicePresentWaitFeaturesKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevicePresentWaitFeaturesKHR.html">VkPhysicalDevicePresentWaitFeaturesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevicePresentWaitFeaturesKHR.html"><code>VkPhysicalDevicePresentWaitFeaturesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDevicePresentWaitFeaturesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDevicePresentWaitFeaturesKHR {
-        sType(VkStructureType.PHYSICAL_DEVICE_PRESENT_WAIT_FEATURES_KHR);
-    }
-
     public static VkPhysicalDevicePresentWaitFeaturesKHR allocate(Arena arena) {
-        return new VkPhysicalDevicePresentWaitFeaturesKHR(arena.allocate(LAYOUT));
+        VkPhysicalDevicePresentWaitFeaturesKHR ret = new VkPhysicalDevicePresentWaitFeaturesKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_PRESENT_WAIT_FEATURES_KHR);
+        return ret;
     }
 
     public static VkPhysicalDevicePresentWaitFeaturesKHR[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDevicePresentWaitFeaturesKHR(@NotNull MemorySegment segm
         VkPhysicalDevicePresentWaitFeaturesKHR[] ret = new VkPhysicalDevicePresentWaitFeaturesKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDevicePresentWaitFeaturesKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_PRESENT_WAIT_FEATURES_KHR);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDevicePresentWaitFeaturesKHR(@NotNull MemorySegment segm
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("presentWait")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$presentWait = PathElement.groupElement("PATH$presentWait");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$presentWait = (OfInt) LAYOUT.select(PATH$presentWait);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$presentWait = LAYOUT$presentWait.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$presentWait = LAYOUT.byteOffset(PATH$presentWait);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_PRESENT_WAIT_FEATURES_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDevicePresentWaitFeaturesKHR(@NotNull MemorySegment segm
         segment.set(LAYOUT$presentWait, OFFSET$presentWait, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("presentWait")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$presentWait = PathElement.groupElement("PATH$presentWait");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$presentWait = (OfInt) LAYOUT.select(PATH$presentWait);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$presentWait = LAYOUT$presentWait.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$presentWait = LAYOUT.byteOffset(PATH$presentWait);
 }

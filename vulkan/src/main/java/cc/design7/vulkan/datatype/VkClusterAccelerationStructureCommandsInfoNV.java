@@ -14,8 +14,34 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkClusterAccelerationStructureCommandsInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureCommandsInfoNV.html"><code>VkClusterAccelerationStructureCommandsInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkClusterAccelerationStructureCommandsInfoNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkClusterAccelerationStructureInputInfoNV input;
+///     VkDeviceAddress dstImplicitData;
+///     VkDeviceAddress scratchData;
+///     VkStridedDeviceAddressRegionKHR dstAddressesArray;
+///     VkStridedDeviceAddressRegionKHR dstSizesArray;
+///     VkStridedDeviceAddressRegionKHR srcInfosArray;
+///     VkDeviceAddress srcInfosCount;
+///     VkClusterAccelerationStructureAddressResolutionFlagsNV addressResolutionFlags;
+/// } VkClusterAccelerationStructureCommandsInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_COMMANDS_INFO_NV`
+///
+/// The {@link VkClusterAccelerationStructureCommandsInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkClusterAccelerationStructureCommandsInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +50,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureCommandsInfoNV.html">VkClusterAccelerationStructureCommandsInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureCommandsInfoNV.html"><code>VkClusterAccelerationStructureCommandsInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkClusterAccelerationStructureCommandsInfoNV {
-        sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_COMMANDS_INFO_NV);
-    }
-
     public static VkClusterAccelerationStructureCommandsInfoNV allocate(Arena arena) {
-        return new VkClusterAccelerationStructureCommandsInfoNV(arena.allocate(LAYOUT));
+        VkClusterAccelerationStructureCommandsInfoNV ret = new VkClusterAccelerationStructureCommandsInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_COMMANDS_INFO_NV);
+        return ret;
     }
 
     public static VkClusterAccelerationStructureCommandsInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +65,7 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         VkClusterAccelerationStructureCommandsInfoNV[] ret = new VkClusterAccelerationStructureCommandsInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkClusterAccelerationStructureCommandsInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_COMMANDS_INFO_NV);
         }
         return ret;
     }
@@ -59,63 +84,9 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        VkClusterAccelerationStructureInputInfoNV.LAYOUT.withName("input"),
-        ValueLayout.JAVA_LONG.withName("dstImplicitData"),
-        ValueLayout.JAVA_LONG.withName("scratchData"),
-        VkStridedDeviceAddressRegionKHR.LAYOUT.withName("dstAddressesArray"),
-        VkStridedDeviceAddressRegionKHR.LAYOUT.withName("dstSizesArray"),
-        VkStridedDeviceAddressRegionKHR.LAYOUT.withName("srcInfosArray"),
-        ValueLayout.JAVA_LONG.withName("srcInfosCount"),
-        ValueLayout.JAVA_INT.withName("addressResolutionFlags")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$input = PathElement.groupElement("PATH$input");
-    public static final PathElement PATH$dstImplicitData = PathElement.groupElement("PATH$dstImplicitData");
-    public static final PathElement PATH$scratchData = PathElement.groupElement("PATH$scratchData");
-    public static final PathElement PATH$dstAddressesArray = PathElement.groupElement("PATH$dstAddressesArray");
-    public static final PathElement PATH$dstSizesArray = PathElement.groupElement("PATH$dstSizesArray");
-    public static final PathElement PATH$srcInfosArray = PathElement.groupElement("PATH$srcInfosArray");
-    public static final PathElement PATH$srcInfosCount = PathElement.groupElement("PATH$srcInfosCount");
-    public static final PathElement PATH$addressResolutionFlags = PathElement.groupElement("PATH$addressResolutionFlags");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$input = (StructLayout) LAYOUT.select(PATH$input);
-    public static final OfLong LAYOUT$dstImplicitData = (OfLong) LAYOUT.select(PATH$dstImplicitData);
-    public static final OfLong LAYOUT$scratchData = (OfLong) LAYOUT.select(PATH$scratchData);
-    public static final StructLayout LAYOUT$dstAddressesArray = (StructLayout) LAYOUT.select(PATH$dstAddressesArray);
-    public static final StructLayout LAYOUT$dstSizesArray = (StructLayout) LAYOUT.select(PATH$dstSizesArray);
-    public static final StructLayout LAYOUT$srcInfosArray = (StructLayout) LAYOUT.select(PATH$srcInfosArray);
-    public static final OfLong LAYOUT$srcInfosCount = (OfLong) LAYOUT.select(PATH$srcInfosCount);
-    public static final OfInt LAYOUT$addressResolutionFlags = (OfInt) LAYOUT.select(PATH$addressResolutionFlags);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$input = LAYOUT$input.byteSize();
-    public static final long SIZE$dstImplicitData = LAYOUT$dstImplicitData.byteSize();
-    public static final long SIZE$scratchData = LAYOUT$scratchData.byteSize();
-    public static final long SIZE$dstAddressesArray = LAYOUT$dstAddressesArray.byteSize();
-    public static final long SIZE$dstSizesArray = LAYOUT$dstSizesArray.byteSize();
-    public static final long SIZE$srcInfosArray = LAYOUT$srcInfosArray.byteSize();
-    public static final long SIZE$srcInfosCount = LAYOUT$srcInfosCount.byteSize();
-    public static final long SIZE$addressResolutionFlags = LAYOUT$addressResolutionFlags.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$input = LAYOUT.byteOffset(PATH$input);
-    public static final long OFFSET$dstImplicitData = LAYOUT.byteOffset(PATH$dstImplicitData);
-    public static final long OFFSET$scratchData = LAYOUT.byteOffset(PATH$scratchData);
-    public static final long OFFSET$dstAddressesArray = LAYOUT.byteOffset(PATH$dstAddressesArray);
-    public static final long OFFSET$dstSizesArray = LAYOUT.byteOffset(PATH$dstSizesArray);
-    public static final long OFFSET$srcInfosArray = LAYOUT.byteOffset(PATH$srcInfosArray);
-    public static final long OFFSET$srcInfosCount = LAYOUT.byteOffset(PATH$srcInfosCount);
-    public static final long OFFSET$addressResolutionFlags = LAYOUT.byteOffset(PATH$addressResolutionFlags);
+    public void autoInit() {
+        sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_COMMANDS_INFO_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -201,4 +172,61 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         segment.set(LAYOUT$addressResolutionFlags, OFFSET$addressResolutionFlags, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkClusterAccelerationStructureInputInfoNV.LAYOUT.withName("input"),
+        ValueLayout.JAVA_LONG.withName("dstImplicitData"),
+        ValueLayout.JAVA_LONG.withName("scratchData"),
+        VkStridedDeviceAddressRegionKHR.LAYOUT.withName("dstAddressesArray"),
+        VkStridedDeviceAddressRegionKHR.LAYOUT.withName("dstSizesArray"),
+        VkStridedDeviceAddressRegionKHR.LAYOUT.withName("srcInfosArray"),
+        ValueLayout.JAVA_LONG.withName("srcInfosCount"),
+        ValueLayout.JAVA_INT.withName("addressResolutionFlags")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$input = PathElement.groupElement("PATH$input");
+    public static final PathElement PATH$dstImplicitData = PathElement.groupElement("PATH$dstImplicitData");
+    public static final PathElement PATH$scratchData = PathElement.groupElement("PATH$scratchData");
+    public static final PathElement PATH$dstAddressesArray = PathElement.groupElement("PATH$dstAddressesArray");
+    public static final PathElement PATH$dstSizesArray = PathElement.groupElement("PATH$dstSizesArray");
+    public static final PathElement PATH$srcInfosArray = PathElement.groupElement("PATH$srcInfosArray");
+    public static final PathElement PATH$srcInfosCount = PathElement.groupElement("PATH$srcInfosCount");
+    public static final PathElement PATH$addressResolutionFlags = PathElement.groupElement("PATH$addressResolutionFlags");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$input = (StructLayout) LAYOUT.select(PATH$input);
+    public static final OfLong LAYOUT$dstImplicitData = (OfLong) LAYOUT.select(PATH$dstImplicitData);
+    public static final OfLong LAYOUT$scratchData = (OfLong) LAYOUT.select(PATH$scratchData);
+    public static final StructLayout LAYOUT$dstAddressesArray = (StructLayout) LAYOUT.select(PATH$dstAddressesArray);
+    public static final StructLayout LAYOUT$dstSizesArray = (StructLayout) LAYOUT.select(PATH$dstSizesArray);
+    public static final StructLayout LAYOUT$srcInfosArray = (StructLayout) LAYOUT.select(PATH$srcInfosArray);
+    public static final OfLong LAYOUT$srcInfosCount = (OfLong) LAYOUT.select(PATH$srcInfosCount);
+    public static final OfInt LAYOUT$addressResolutionFlags = (OfInt) LAYOUT.select(PATH$addressResolutionFlags);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$input = LAYOUT$input.byteSize();
+    public static final long SIZE$dstImplicitData = LAYOUT$dstImplicitData.byteSize();
+    public static final long SIZE$scratchData = LAYOUT$scratchData.byteSize();
+    public static final long SIZE$dstAddressesArray = LAYOUT$dstAddressesArray.byteSize();
+    public static final long SIZE$dstSizesArray = LAYOUT$dstSizesArray.byteSize();
+    public static final long SIZE$srcInfosArray = LAYOUT$srcInfosArray.byteSize();
+    public static final long SIZE$srcInfosCount = LAYOUT$srcInfosCount.byteSize();
+    public static final long SIZE$addressResolutionFlags = LAYOUT$addressResolutionFlags.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$input = LAYOUT.byteOffset(PATH$input);
+    public static final long OFFSET$dstImplicitData = LAYOUT.byteOffset(PATH$dstImplicitData);
+    public static final long OFFSET$scratchData = LAYOUT.byteOffset(PATH$scratchData);
+    public static final long OFFSET$dstAddressesArray = LAYOUT.byteOffset(PATH$dstAddressesArray);
+    public static final long OFFSET$dstSizesArray = LAYOUT.byteOffset(PATH$dstSizesArray);
+    public static final long OFFSET$srcInfosArray = LAYOUT.byteOffset(PATH$srcInfosArray);
+    public static final long OFFSET$srcInfosCount = LAYOUT.byteOffset(PATH$srcInfosCount);
+    public static final long OFFSET$addressResolutionFlags = LAYOUT.byteOffset(PATH$addressResolutionFlags);
 }

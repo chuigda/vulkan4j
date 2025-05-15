@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineViewportShadingRateImageStateCreateInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineViewportShadingRateImageStateCreateInfoNV.html"><code>VkPipelineViewportShadingRateImageStateCreateInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineViewportShadingRateImageStateCreateInfoNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkBool32 shadingRateImageEnable;
+///     uint32_t viewportCount;
+///     VkShadingRatePaletteNV const* pShadingRatePalettes;
+/// } VkPipelineViewportShadingRateImageStateCreateInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV`
+///
+/// The {@link VkPipelineViewportShadingRateImageStateCreateInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineViewportShadingRateImageStateCreateInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineViewportShadingRateImageStateCreateInfoNV.html">VkPipelineViewportShadingRateImageStateCreateInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineViewportShadingRateImageStateCreateInfoNV.html"><code>VkPipelineViewportShadingRateImageStateCreateInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineViewportShadingRateImageStateCreateInfoNV {
-        sType(VkStructureType.PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV);
-    }
-
     public static VkPipelineViewportShadingRateImageStateCreateInfoNV allocate(Arena arena) {
-        return new VkPipelineViewportShadingRateImageStateCreateInfoNV(arena.allocate(LAYOUT));
+        VkPipelineViewportShadingRateImageStateCreateInfoNV ret = new VkPipelineViewportShadingRateImageStateCreateInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV);
+        return ret;
     }
 
     public static VkPipelineViewportShadingRateImageStateCreateInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         VkPipelineViewportShadingRateImageStateCreateInfoNV[] ret = new VkPipelineViewportShadingRateImageStateCreateInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineViewportShadingRateImageStateCreateInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("shadingRateImageEnable"),
-        ValueLayout.JAVA_INT.withName("viewportCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkShadingRatePaletteNV.LAYOUT).withName("pShadingRatePalettes")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shadingRateImageEnable = PathElement.groupElement("PATH$shadingRateImageEnable");
-    public static final PathElement PATH$viewportCount = PathElement.groupElement("PATH$viewportCount");
-    public static final PathElement PATH$pShadingRatePalettes = PathElement.groupElement("PATH$pShadingRatePalettes");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$shadingRateImageEnable = (OfInt) LAYOUT.select(PATH$shadingRateImageEnable);
-    public static final OfInt LAYOUT$viewportCount = (OfInt) LAYOUT.select(PATH$viewportCount);
-    public static final AddressLayout LAYOUT$pShadingRatePalettes = (AddressLayout) LAYOUT.select(PATH$pShadingRatePalettes);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$shadingRateImageEnable = LAYOUT$shadingRateImageEnable.byteSize();
-    public static final long SIZE$viewportCount = LAYOUT$viewportCount.byteSize();
-    public static final long SIZE$pShadingRatePalettes = LAYOUT$pShadingRatePalettes.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$shadingRateImageEnable = LAYOUT.byteOffset(PATH$shadingRateImageEnable);
-    public static final long OFFSET$viewportCount = LAYOUT.byteOffset(PATH$viewportCount);
-    public static final long OFFSET$pShadingRatePalettes = LAYOUT.byteOffset(PATH$pShadingRatePalettes);
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -138,7 +129,7 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
 
     public @Nullable VkShadingRatePaletteNV pShadingRatePalettes() {
         MemorySegment s = pShadingRatePalettesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkShadingRatePaletteNV(s);
@@ -151,7 +142,7 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
 
     @unsafe public @Nullable VkShadingRatePaletteNV[] pShadingRatePalettes(int assumedCount) {
         MemorySegment s = pShadingRatePalettesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -163,4 +154,36 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("shadingRateImageEnable"),
+        ValueLayout.JAVA_INT.withName("viewportCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkShadingRatePaletteNV.LAYOUT).withName("pShadingRatePalettes")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$shadingRateImageEnable = PathElement.groupElement("PATH$shadingRateImageEnable");
+    public static final PathElement PATH$viewportCount = PathElement.groupElement("PATH$viewportCount");
+    public static final PathElement PATH$pShadingRatePalettes = PathElement.groupElement("PATH$pShadingRatePalettes");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$shadingRateImageEnable = (OfInt) LAYOUT.select(PATH$shadingRateImageEnable);
+    public static final OfInt LAYOUT$viewportCount = (OfInt) LAYOUT.select(PATH$viewportCount);
+    public static final AddressLayout LAYOUT$pShadingRatePalettes = (AddressLayout) LAYOUT.select(PATH$pShadingRatePalettes);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shadingRateImageEnable = LAYOUT$shadingRateImageEnable.byteSize();
+    public static final long SIZE$viewportCount = LAYOUT$viewportCount.byteSize();
+    public static final long SIZE$pShadingRatePalettes = LAYOUT$pShadingRatePalettes.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$shadingRateImageEnable = LAYOUT.byteOffset(PATH$shadingRateImageEnable);
+    public static final long OFFSET$viewportCount = LAYOUT.byteOffset(PATH$viewportCount);
+    public static final long OFFSET$pShadingRatePalettes = LAYOUT.byteOffset(PATH$pShadingRatePalettes);
 }

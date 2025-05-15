@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoPictureResourceInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoPictureResourceInfoKHR.html"><code>VkVideoPictureResourceInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoPictureResourceInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkOffset2D codedOffset;
+///     VkExtent2D codedExtent;
+///     uint32_t baseArrayLayer;
+///     VkImageView imageViewBinding;
+/// } VkVideoPictureResourceInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VIDEO_PICTURE_RESOURCE_INFO_KHR`
+///
+/// The {@link VkVideoPictureResourceInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkVideoPictureResourceInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoPictureResourceInfoKHR.html">VkVideoPictureResourceInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoPictureResourceInfoKHR.html"><code>VkVideoPictureResourceInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoPictureResourceInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkVideoPictureResourceInfoKHR {
-        sType(VkStructureType.VIDEO_PICTURE_RESOURCE_INFO_KHR);
-    }
-
     public static VkVideoPictureResourceInfoKHR allocate(Arena arena) {
-        return new VkVideoPictureResourceInfoKHR(arena.allocate(LAYOUT));
+        VkVideoPictureResourceInfoKHR ret = new VkVideoPictureResourceInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VIDEO_PICTURE_RESOURCE_INFO_KHR);
+        return ret;
     }
 
     public static VkVideoPictureResourceInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkVideoPictureResourceInfoKHR(@NotNull MemorySegment segment) impl
         VkVideoPictureResourceInfoKHR[] ret = new VkVideoPictureResourceInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkVideoPictureResourceInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VIDEO_PICTURE_RESOURCE_INFO_KHR);
         }
         return ret;
     }
@@ -59,43 +80,9 @@ public record VkVideoPictureResourceInfoKHR(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        VkOffset2D.LAYOUT.withName("codedOffset"),
-        VkExtent2D.LAYOUT.withName("codedExtent"),
-        ValueLayout.JAVA_INT.withName("baseArrayLayer"),
-        ValueLayout.ADDRESS.withName("imageViewBinding")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$codedOffset = PathElement.groupElement("PATH$codedOffset");
-    public static final PathElement PATH$codedExtent = PathElement.groupElement("PATH$codedExtent");
-    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("PATH$baseArrayLayer");
-    public static final PathElement PATH$imageViewBinding = PathElement.groupElement("PATH$imageViewBinding");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$codedOffset = (StructLayout) LAYOUT.select(PATH$codedOffset);
-    public static final StructLayout LAYOUT$codedExtent = (StructLayout) LAYOUT.select(PATH$codedExtent);
-    public static final OfInt LAYOUT$baseArrayLayer = (OfInt) LAYOUT.select(PATH$baseArrayLayer);
-    public static final AddressLayout LAYOUT$imageViewBinding = (AddressLayout) LAYOUT.select(PATH$imageViewBinding);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$codedOffset = LAYOUT$codedOffset.byteSize();
-    public static final long SIZE$codedExtent = LAYOUT$codedExtent.byteSize();
-    public static final long SIZE$baseArrayLayer = LAYOUT$baseArrayLayer.byteSize();
-    public static final long SIZE$imageViewBinding = LAYOUT$imageViewBinding.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$codedOffset = LAYOUT.byteOffset(PATH$codedOffset);
-    public static final long OFFSET$codedExtent = LAYOUT.byteOffset(PATH$codedExtent);
-    public static final long OFFSET$baseArrayLayer = LAYOUT.byteOffset(PATH$baseArrayLayer);
-    public static final long OFFSET$imageViewBinding = LAYOUT.byteOffset(PATH$imageViewBinding);
+    public void autoInit() {
+        sType(VkStructureType.VIDEO_PICTURE_RESOURCE_INFO_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -143,7 +130,7 @@ public record VkVideoPictureResourceInfoKHR(@NotNull MemorySegment segment) impl
 
     public @Nullable VkImageView imageViewBinding() {
         MemorySegment s = segment.asSlice(OFFSET$imageViewBinding, SIZE$imageViewBinding);
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkImageView(s);
@@ -153,4 +140,41 @@ public record VkVideoPictureResourceInfoKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$imageViewBinding, OFFSET$imageViewBinding, value != null ? value.segment() : MemorySegment.NULL);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkOffset2D.LAYOUT.withName("codedOffset"),
+        VkExtent2D.LAYOUT.withName("codedExtent"),
+        ValueLayout.JAVA_INT.withName("baseArrayLayer"),
+        ValueLayout.ADDRESS.withName("imageViewBinding")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$codedOffset = PathElement.groupElement("PATH$codedOffset");
+    public static final PathElement PATH$codedExtent = PathElement.groupElement("PATH$codedExtent");
+    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("PATH$baseArrayLayer");
+    public static final PathElement PATH$imageViewBinding = PathElement.groupElement("PATH$imageViewBinding");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$codedOffset = (StructLayout) LAYOUT.select(PATH$codedOffset);
+    public static final StructLayout LAYOUT$codedExtent = (StructLayout) LAYOUT.select(PATH$codedExtent);
+    public static final OfInt LAYOUT$baseArrayLayer = (OfInt) LAYOUT.select(PATH$baseArrayLayer);
+    public static final AddressLayout LAYOUT$imageViewBinding = (AddressLayout) LAYOUT.select(PATH$imageViewBinding);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$codedOffset = LAYOUT$codedOffset.byteSize();
+    public static final long SIZE$codedExtent = LAYOUT$codedExtent.byteSize();
+    public static final long SIZE$baseArrayLayer = LAYOUT$baseArrayLayer.byteSize();
+    public static final long SIZE$imageViewBinding = LAYOUT$imageViewBinding.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$codedOffset = LAYOUT.byteOffset(PATH$codedOffset);
+    public static final long OFFSET$codedExtent = LAYOUT.byteOffset(PATH$codedExtent);
+    public static final long OFFSET$baseArrayLayer = LAYOUT.byteOffset(PATH$baseArrayLayer);
+    public static final long OFFSET$imageViewBinding = LAYOUT.byteOffset(PATH$imageViewBinding);
 }

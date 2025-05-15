@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures.html"><code>VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 separateDepthStencilLayouts;
+/// } VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES`
+///
+/// The {@link VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures.html">VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures.html"><code>VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures {
-        sType(VkStructureType.PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES);
-    }
-
     public static VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures allocate(Arena arena) {
-        return new VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(arena.allocate(LAYOUT));
+        VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures ret = new VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES);
+        return ret;
     }
 
     public static VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(@NotNull Memor
         VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures[] ret = new VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(@NotNull Memor
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("separateDepthStencilLayouts")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$separateDepthStencilLayouts = PathElement.groupElement("PATH$separateDepthStencilLayouts");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$separateDepthStencilLayouts = (OfInt) LAYOUT.select(PATH$separateDepthStencilLayouts);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$separateDepthStencilLayouts = LAYOUT$separateDepthStencilLayouts.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$separateDepthStencilLayouts = LAYOUT.byteOffset(PATH$separateDepthStencilLayouts);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(@NotNull Memor
         segment.set(LAYOUT$separateDepthStencilLayouts, OFFSET$separateDepthStencilLayouts, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("separateDepthStencilLayouts")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$separateDepthStencilLayouts = PathElement.groupElement("PATH$separateDepthStencilLayouts");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$separateDepthStencilLayouts = (OfInt) LAYOUT.select(PATH$separateDepthStencilLayouts);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$separateDepthStencilLayouts = LAYOUT$separateDepthStencilLayouts.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$separateDepthStencilLayouts = LAYOUT.byteOffset(PATH$separateDepthStencilLayouts);
 }

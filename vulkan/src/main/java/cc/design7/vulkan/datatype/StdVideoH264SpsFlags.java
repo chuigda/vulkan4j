@@ -17,6 +17,30 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoH264SpsFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoH264SpsFlags {
+///     uint32_t constraint_set0_flag : 1;
+///     uint32_t constraint_set1_flag : 1;
+///     uint32_t constraint_set2_flag : 1;
+///     uint32_t constraint_set3_flag : 1;
+///     uint32_t constraint_set4_flag : 1;
+///     uint32_t constraint_set5_flag : 1;
+///     uint32_t direct_8x8_inference_flag : 1;
+///     uint32_t mb_adaptive_frame_field_flag : 1;
+///     uint32_t frame_mbs_only_flag : 1;
+///     uint32_t delta_pic_order_always_zero_flag : 1;
+///     uint32_t separate_colour_plane_flag : 1;
+///     uint32_t gaps_in_frame_num_value_allowed_flag : 1;
+///     uint32_t qpprime_y_zero_transform_bypass_flag : 1;
+///     uint32_t frame_cropping_flag : 1;
+///     uint32_t seq_scaling_matrix_present_flag : 1;
+///     uint32_t vui_parameters_present_flag : 1;
+/// } StdVideoH264SpsFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +52,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH264SpsFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH264SpsFlags allocate(Arena arena) {
-        return new StdVideoH264SpsFlags(arena.allocate(LAYOUT));
+        StdVideoH264SpsFlags ret = new StdVideoH264SpsFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoH264SpsFlags[] allocate(Arena arena, int count) {
@@ -53,18 +78,6 @@ public record StdVideoH264SpsFlags(@NotNull MemorySegment segment) implements IP
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$constraint_set0_flag_vui_parameters_present_flag")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$constraint_set0_flag_vui_parameters_present_flag = PathElement.groupElement("PATH$bitfield$constraint_set0_flag_vui_parameters_present_flag");
-
-    public static final OfInt LAYOUT$constraint_set0_flag_vui_parameters_present_flag = (OfInt) LAYOUT.select(PATH$bitfield$constraint_set0_flag_vui_parameters_present_flag);
-
-
-    public static final long OFFSET$constraint_set0_flag_vui_parameters_present_flag = LAYOUT.byteOffset(PATH$bitfield$constraint_set0_flag_vui_parameters_present_flag);
 
     public boolean constraint_set0_flag() {
         MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
@@ -226,4 +239,15 @@ public record StdVideoH264SpsFlags(@NotNull MemorySegment segment) implements IP
         BitfieldUtil.writeBit(s, 15, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$constraint_set0_flag_vui_parameters_present_flag")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$bitfield$constraint_set0_flag_vui_parameters_present_flag = PathElement.groupElement("PATH$bitfield$constraint_set0_flag_vui_parameters_present_flag");
+
+    public static final OfInt LAYOUT$constraint_set0_flag_vui_parameters_present_flag = (OfInt) LAYOUT.select(PATH$bitfield$constraint_set0_flag_vui_parameters_present_flag);
+
+
+    public static final long OFFSET$constraint_set0_flag_vui_parameters_present_flag = LAYOUT.byteOffset(PATH$bitfield$constraint_set0_flag_vui_parameters_present_flag);
 }

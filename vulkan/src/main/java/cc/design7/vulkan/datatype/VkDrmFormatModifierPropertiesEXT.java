@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDrmFormatModifierPropertiesEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDrmFormatModifierPropertiesEXT.html"><code>VkDrmFormatModifierPropertiesEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDrmFormatModifierPropertiesEXT {
+///     uint64_t drmFormatModifier;
+///     uint32_t drmFormatModifierPlaneCount;
+///     VkFormatFeatureFlags drmFormatModifierTilingFeatures;
+/// } VkDrmFormatModifierPropertiesEXT;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDrmFormatModifierPropertiesEXT.html">VkDrmFormatModifierPropertiesEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDrmFormatModifierPropertiesEXT.html"><code>VkDrmFormatModifierPropertiesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDrmFormatModifierPropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkDrmFormatModifierPropertiesEXT allocate(Arena arena) {
-        return new VkDrmFormatModifierPropertiesEXT(arena.allocate(LAYOUT));
+        VkDrmFormatModifierPropertiesEXT ret = new VkDrmFormatModifierPropertiesEXT(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkDrmFormatModifierPropertiesEXT[] allocate(Arena arena, int count) {
@@ -55,29 +67,6 @@ public record VkDrmFormatModifierPropertiesEXT(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_LONG.withName("drmFormatModifier"),
-        ValueLayout.JAVA_INT.withName("drmFormatModifierPlaneCount"),
-        ValueLayout.JAVA_INT.withName("drmFormatModifierTilingFeatures")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$drmFormatModifier = PathElement.groupElement("PATH$drmFormatModifier");
-    public static final PathElement PATH$drmFormatModifierPlaneCount = PathElement.groupElement("PATH$drmFormatModifierPlaneCount");
-    public static final PathElement PATH$drmFormatModifierTilingFeatures = PathElement.groupElement("PATH$drmFormatModifierTilingFeatures");
-
-    public static final OfLong LAYOUT$drmFormatModifier = (OfLong) LAYOUT.select(PATH$drmFormatModifier);
-    public static final OfInt LAYOUT$drmFormatModifierPlaneCount = (OfInt) LAYOUT.select(PATH$drmFormatModifierPlaneCount);
-    public static final OfInt LAYOUT$drmFormatModifierTilingFeatures = (OfInt) LAYOUT.select(PATH$drmFormatModifierTilingFeatures);
-
-    public static final long SIZE$drmFormatModifier = LAYOUT$drmFormatModifier.byteSize();
-    public static final long SIZE$drmFormatModifierPlaneCount = LAYOUT$drmFormatModifierPlaneCount.byteSize();
-    public static final long SIZE$drmFormatModifierTilingFeatures = LAYOUT$drmFormatModifierTilingFeatures.byteSize();
-
-    public static final long OFFSET$drmFormatModifier = LAYOUT.byteOffset(PATH$drmFormatModifier);
-    public static final long OFFSET$drmFormatModifierPlaneCount = LAYOUT.byteOffset(PATH$drmFormatModifierPlaneCount);
-    public static final long OFFSET$drmFormatModifierTilingFeatures = LAYOUT.byteOffset(PATH$drmFormatModifierTilingFeatures);
-
     public @unsigned long drmFormatModifier() {
         return segment.get(LAYOUT$drmFormatModifier, OFFSET$drmFormatModifier);
     }
@@ -102,4 +91,26 @@ public record VkDrmFormatModifierPropertiesEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$drmFormatModifierTilingFeatures, OFFSET$drmFormatModifierTilingFeatures, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("drmFormatModifier"),
+        ValueLayout.JAVA_INT.withName("drmFormatModifierPlaneCount"),
+        ValueLayout.JAVA_INT.withName("drmFormatModifierTilingFeatures")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$drmFormatModifier = PathElement.groupElement("PATH$drmFormatModifier");
+    public static final PathElement PATH$drmFormatModifierPlaneCount = PathElement.groupElement("PATH$drmFormatModifierPlaneCount");
+    public static final PathElement PATH$drmFormatModifierTilingFeatures = PathElement.groupElement("PATH$drmFormatModifierTilingFeatures");
+
+    public static final OfLong LAYOUT$drmFormatModifier = (OfLong) LAYOUT.select(PATH$drmFormatModifier);
+    public static final OfInt LAYOUT$drmFormatModifierPlaneCount = (OfInt) LAYOUT.select(PATH$drmFormatModifierPlaneCount);
+    public static final OfInt LAYOUT$drmFormatModifierTilingFeatures = (OfInt) LAYOUT.select(PATH$drmFormatModifierTilingFeatures);
+
+    public static final long SIZE$drmFormatModifier = LAYOUT$drmFormatModifier.byteSize();
+    public static final long SIZE$drmFormatModifierPlaneCount = LAYOUT$drmFormatModifierPlaneCount.byteSize();
+    public static final long SIZE$drmFormatModifierTilingFeatures = LAYOUT$drmFormatModifierTilingFeatures.byteSize();
+
+    public static final long OFFSET$drmFormatModifier = LAYOUT.byteOffset(PATH$drmFormatModifier);
+    public static final long OFFSET$drmFormatModifierPlaneCount = LAYOUT.byteOffset(PATH$drmFormatModifierPlaneCount);
+    public static final long OFFSET$drmFormatModifierTilingFeatures = LAYOUT.byteOffset(PATH$drmFormatModifierTilingFeatures);
 }

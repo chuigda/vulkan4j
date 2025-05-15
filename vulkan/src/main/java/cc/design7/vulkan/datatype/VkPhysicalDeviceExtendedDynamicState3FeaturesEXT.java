@@ -14,8 +14,57 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceExtendedDynamicState3FeaturesEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.html"><code>VkPhysicalDeviceExtendedDynamicState3FeaturesEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceExtendedDynamicState3FeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 extendedDynamicState3TessellationDomainOrigin;
+///     VkBool32 extendedDynamicState3DepthClampEnable;
+///     VkBool32 extendedDynamicState3PolygonMode;
+///     VkBool32 extendedDynamicState3RasterizationSamples;
+///     VkBool32 extendedDynamicState3SampleMask;
+///     VkBool32 extendedDynamicState3AlphaToCoverageEnable;
+///     VkBool32 extendedDynamicState3AlphaToOneEnable;
+///     VkBool32 extendedDynamicState3LogicOpEnable;
+///     VkBool32 extendedDynamicState3ColorBlendEnable;
+///     VkBool32 extendedDynamicState3ColorBlendEquation;
+///     VkBool32 extendedDynamicState3ColorWriteMask;
+///     VkBool32 extendedDynamicState3RasterizationStream;
+///     VkBool32 extendedDynamicState3ConservativeRasterizationMode;
+///     VkBool32 extendedDynamicState3ExtraPrimitiveOverestimationSize;
+///     VkBool32 extendedDynamicState3DepthClipEnable;
+///     VkBool32 extendedDynamicState3SampleLocationsEnable;
+///     VkBool32 extendedDynamicState3ColorBlendAdvanced;
+///     VkBool32 extendedDynamicState3ProvokingVertexMode;
+///     VkBool32 extendedDynamicState3LineRasterizationMode;
+///     VkBool32 extendedDynamicState3LineStippleEnable;
+///     VkBool32 extendedDynamicState3DepthClipNegativeOneToOne;
+///     VkBool32 extendedDynamicState3ViewportWScalingEnable;
+///     VkBool32 extendedDynamicState3ViewportSwizzle;
+///     VkBool32 extendedDynamicState3CoverageToColorEnable;
+///     VkBool32 extendedDynamicState3CoverageToColorLocation;
+///     VkBool32 extendedDynamicState3CoverageModulationMode;
+///     VkBool32 extendedDynamicState3CoverageModulationTableEnable;
+///     VkBool32 extendedDynamicState3CoverageModulationTable;
+///     VkBool32 extendedDynamicState3CoverageReductionMode;
+///     VkBool32 extendedDynamicState3RepresentativeFragmentTestEnable;
+///     VkBool32 extendedDynamicState3ShadingRateImageEnable;
+/// } VkPhysicalDeviceExtendedDynamicState3FeaturesEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT`
+///
+/// The {@link VkPhysicalDeviceExtendedDynamicState3FeaturesEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceExtendedDynamicState3FeaturesEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +73,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.html">VkPhysicalDeviceExtendedDynamicState3FeaturesEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.html"><code>VkPhysicalDeviceExtendedDynamicState3FeaturesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT {
-        sType(VkStructureType.PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT);
-    }
-
     public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(arena.allocate(LAYOUT));
+        VkPhysicalDeviceExtendedDynamicState3FeaturesEXT ret = new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT);
+        return ret;
     }
 
     public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[] allocate(Arena arena, int count) {
@@ -41,6 +88,7 @@ public record VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(@NotNull MemorySe
         VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[] ret = new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT);
         }
         return ret;
     }
@@ -59,178 +107,9 @@ public record VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(@NotNull MemorySe
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3TessellationDomainOrigin"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3DepthClampEnable"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3PolygonMode"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3RasterizationSamples"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3SampleMask"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3AlphaToCoverageEnable"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3AlphaToOneEnable"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3LogicOpEnable"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3ColorBlendEnable"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3ColorBlendEquation"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3ColorWriteMask"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3RasterizationStream"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3ConservativeRasterizationMode"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3ExtraPrimitiveOverestimationSize"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3DepthClipEnable"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3SampleLocationsEnable"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3ColorBlendAdvanced"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3ProvokingVertexMode"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3LineRasterizationMode"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3LineStippleEnable"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3DepthClipNegativeOneToOne"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3ViewportWScalingEnable"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3ViewportSwizzle"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3CoverageToColorEnable"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3CoverageToColorLocation"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3CoverageModulationMode"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3CoverageModulationTableEnable"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3CoverageModulationTable"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3CoverageReductionMode"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3RepresentativeFragmentTestEnable"),
-        ValueLayout.JAVA_INT.withName("extendedDynamicState3ShadingRateImageEnable")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$extendedDynamicState3TessellationDomainOrigin = PathElement.groupElement("PATH$extendedDynamicState3TessellationDomainOrigin");
-    public static final PathElement PATH$extendedDynamicState3DepthClampEnable = PathElement.groupElement("PATH$extendedDynamicState3DepthClampEnable");
-    public static final PathElement PATH$extendedDynamicState3PolygonMode = PathElement.groupElement("PATH$extendedDynamicState3PolygonMode");
-    public static final PathElement PATH$extendedDynamicState3RasterizationSamples = PathElement.groupElement("PATH$extendedDynamicState3RasterizationSamples");
-    public static final PathElement PATH$extendedDynamicState3SampleMask = PathElement.groupElement("PATH$extendedDynamicState3SampleMask");
-    public static final PathElement PATH$extendedDynamicState3AlphaToCoverageEnable = PathElement.groupElement("PATH$extendedDynamicState3AlphaToCoverageEnable");
-    public static final PathElement PATH$extendedDynamicState3AlphaToOneEnable = PathElement.groupElement("PATH$extendedDynamicState3AlphaToOneEnable");
-    public static final PathElement PATH$extendedDynamicState3LogicOpEnable = PathElement.groupElement("PATH$extendedDynamicState3LogicOpEnable");
-    public static final PathElement PATH$extendedDynamicState3ColorBlendEnable = PathElement.groupElement("PATH$extendedDynamicState3ColorBlendEnable");
-    public static final PathElement PATH$extendedDynamicState3ColorBlendEquation = PathElement.groupElement("PATH$extendedDynamicState3ColorBlendEquation");
-    public static final PathElement PATH$extendedDynamicState3ColorWriteMask = PathElement.groupElement("PATH$extendedDynamicState3ColorWriteMask");
-    public static final PathElement PATH$extendedDynamicState3RasterizationStream = PathElement.groupElement("PATH$extendedDynamicState3RasterizationStream");
-    public static final PathElement PATH$extendedDynamicState3ConservativeRasterizationMode = PathElement.groupElement("PATH$extendedDynamicState3ConservativeRasterizationMode");
-    public static final PathElement PATH$extendedDynamicState3ExtraPrimitiveOverestimationSize = PathElement.groupElement("PATH$extendedDynamicState3ExtraPrimitiveOverestimationSize");
-    public static final PathElement PATH$extendedDynamicState3DepthClipEnable = PathElement.groupElement("PATH$extendedDynamicState3DepthClipEnable");
-    public static final PathElement PATH$extendedDynamicState3SampleLocationsEnable = PathElement.groupElement("PATH$extendedDynamicState3SampleLocationsEnable");
-    public static final PathElement PATH$extendedDynamicState3ColorBlendAdvanced = PathElement.groupElement("PATH$extendedDynamicState3ColorBlendAdvanced");
-    public static final PathElement PATH$extendedDynamicState3ProvokingVertexMode = PathElement.groupElement("PATH$extendedDynamicState3ProvokingVertexMode");
-    public static final PathElement PATH$extendedDynamicState3LineRasterizationMode = PathElement.groupElement("PATH$extendedDynamicState3LineRasterizationMode");
-    public static final PathElement PATH$extendedDynamicState3LineStippleEnable = PathElement.groupElement("PATH$extendedDynamicState3LineStippleEnable");
-    public static final PathElement PATH$extendedDynamicState3DepthClipNegativeOneToOne = PathElement.groupElement("PATH$extendedDynamicState3DepthClipNegativeOneToOne");
-    public static final PathElement PATH$extendedDynamicState3ViewportWScalingEnable = PathElement.groupElement("PATH$extendedDynamicState3ViewportWScalingEnable");
-    public static final PathElement PATH$extendedDynamicState3ViewportSwizzle = PathElement.groupElement("PATH$extendedDynamicState3ViewportSwizzle");
-    public static final PathElement PATH$extendedDynamicState3CoverageToColorEnable = PathElement.groupElement("PATH$extendedDynamicState3CoverageToColorEnable");
-    public static final PathElement PATH$extendedDynamicState3CoverageToColorLocation = PathElement.groupElement("PATH$extendedDynamicState3CoverageToColorLocation");
-    public static final PathElement PATH$extendedDynamicState3CoverageModulationMode = PathElement.groupElement("PATH$extendedDynamicState3CoverageModulationMode");
-    public static final PathElement PATH$extendedDynamicState3CoverageModulationTableEnable = PathElement.groupElement("PATH$extendedDynamicState3CoverageModulationTableEnable");
-    public static final PathElement PATH$extendedDynamicState3CoverageModulationTable = PathElement.groupElement("PATH$extendedDynamicState3CoverageModulationTable");
-    public static final PathElement PATH$extendedDynamicState3CoverageReductionMode = PathElement.groupElement("PATH$extendedDynamicState3CoverageReductionMode");
-    public static final PathElement PATH$extendedDynamicState3RepresentativeFragmentTestEnable = PathElement.groupElement("PATH$extendedDynamicState3RepresentativeFragmentTestEnable");
-    public static final PathElement PATH$extendedDynamicState3ShadingRateImageEnable = PathElement.groupElement("PATH$extendedDynamicState3ShadingRateImageEnable");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$extendedDynamicState3TessellationDomainOrigin = (OfInt) LAYOUT.select(PATH$extendedDynamicState3TessellationDomainOrigin);
-    public static final OfInt LAYOUT$extendedDynamicState3DepthClampEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3DepthClampEnable);
-    public static final OfInt LAYOUT$extendedDynamicState3PolygonMode = (OfInt) LAYOUT.select(PATH$extendedDynamicState3PolygonMode);
-    public static final OfInt LAYOUT$extendedDynamicState3RasterizationSamples = (OfInt) LAYOUT.select(PATH$extendedDynamicState3RasterizationSamples);
-    public static final OfInt LAYOUT$extendedDynamicState3SampleMask = (OfInt) LAYOUT.select(PATH$extendedDynamicState3SampleMask);
-    public static final OfInt LAYOUT$extendedDynamicState3AlphaToCoverageEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3AlphaToCoverageEnable);
-    public static final OfInt LAYOUT$extendedDynamicState3AlphaToOneEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3AlphaToOneEnable);
-    public static final OfInt LAYOUT$extendedDynamicState3LogicOpEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3LogicOpEnable);
-    public static final OfInt LAYOUT$extendedDynamicState3ColorBlendEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ColorBlendEnable);
-    public static final OfInt LAYOUT$extendedDynamicState3ColorBlendEquation = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ColorBlendEquation);
-    public static final OfInt LAYOUT$extendedDynamicState3ColorWriteMask = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ColorWriteMask);
-    public static final OfInt LAYOUT$extendedDynamicState3RasterizationStream = (OfInt) LAYOUT.select(PATH$extendedDynamicState3RasterizationStream);
-    public static final OfInt LAYOUT$extendedDynamicState3ConservativeRasterizationMode = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ConservativeRasterizationMode);
-    public static final OfInt LAYOUT$extendedDynamicState3ExtraPrimitiveOverestimationSize = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ExtraPrimitiveOverestimationSize);
-    public static final OfInt LAYOUT$extendedDynamicState3DepthClipEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3DepthClipEnable);
-    public static final OfInt LAYOUT$extendedDynamicState3SampleLocationsEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3SampleLocationsEnable);
-    public static final OfInt LAYOUT$extendedDynamicState3ColorBlendAdvanced = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ColorBlendAdvanced);
-    public static final OfInt LAYOUT$extendedDynamicState3ProvokingVertexMode = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ProvokingVertexMode);
-    public static final OfInt LAYOUT$extendedDynamicState3LineRasterizationMode = (OfInt) LAYOUT.select(PATH$extendedDynamicState3LineRasterizationMode);
-    public static final OfInt LAYOUT$extendedDynamicState3LineStippleEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3LineStippleEnable);
-    public static final OfInt LAYOUT$extendedDynamicState3DepthClipNegativeOneToOne = (OfInt) LAYOUT.select(PATH$extendedDynamicState3DepthClipNegativeOneToOne);
-    public static final OfInt LAYOUT$extendedDynamicState3ViewportWScalingEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ViewportWScalingEnable);
-    public static final OfInt LAYOUT$extendedDynamicState3ViewportSwizzle = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ViewportSwizzle);
-    public static final OfInt LAYOUT$extendedDynamicState3CoverageToColorEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3CoverageToColorEnable);
-    public static final OfInt LAYOUT$extendedDynamicState3CoverageToColorLocation = (OfInt) LAYOUT.select(PATH$extendedDynamicState3CoverageToColorLocation);
-    public static final OfInt LAYOUT$extendedDynamicState3CoverageModulationMode = (OfInt) LAYOUT.select(PATH$extendedDynamicState3CoverageModulationMode);
-    public static final OfInt LAYOUT$extendedDynamicState3CoverageModulationTableEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3CoverageModulationTableEnable);
-    public static final OfInt LAYOUT$extendedDynamicState3CoverageModulationTable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3CoverageModulationTable);
-    public static final OfInt LAYOUT$extendedDynamicState3CoverageReductionMode = (OfInt) LAYOUT.select(PATH$extendedDynamicState3CoverageReductionMode);
-    public static final OfInt LAYOUT$extendedDynamicState3RepresentativeFragmentTestEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3RepresentativeFragmentTestEnable);
-    public static final OfInt LAYOUT$extendedDynamicState3ShadingRateImageEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ShadingRateImageEnable);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$extendedDynamicState3TessellationDomainOrigin = LAYOUT$extendedDynamicState3TessellationDomainOrigin.byteSize();
-    public static final long SIZE$extendedDynamicState3DepthClampEnable = LAYOUT$extendedDynamicState3DepthClampEnable.byteSize();
-    public static final long SIZE$extendedDynamicState3PolygonMode = LAYOUT$extendedDynamicState3PolygonMode.byteSize();
-    public static final long SIZE$extendedDynamicState3RasterizationSamples = LAYOUT$extendedDynamicState3RasterizationSamples.byteSize();
-    public static final long SIZE$extendedDynamicState3SampleMask = LAYOUT$extendedDynamicState3SampleMask.byteSize();
-    public static final long SIZE$extendedDynamicState3AlphaToCoverageEnable = LAYOUT$extendedDynamicState3AlphaToCoverageEnable.byteSize();
-    public static final long SIZE$extendedDynamicState3AlphaToOneEnable = LAYOUT$extendedDynamicState3AlphaToOneEnable.byteSize();
-    public static final long SIZE$extendedDynamicState3LogicOpEnable = LAYOUT$extendedDynamicState3LogicOpEnable.byteSize();
-    public static final long SIZE$extendedDynamicState3ColorBlendEnable = LAYOUT$extendedDynamicState3ColorBlendEnable.byteSize();
-    public static final long SIZE$extendedDynamicState3ColorBlendEquation = LAYOUT$extendedDynamicState3ColorBlendEquation.byteSize();
-    public static final long SIZE$extendedDynamicState3ColorWriteMask = LAYOUT$extendedDynamicState3ColorWriteMask.byteSize();
-    public static final long SIZE$extendedDynamicState3RasterizationStream = LAYOUT$extendedDynamicState3RasterizationStream.byteSize();
-    public static final long SIZE$extendedDynamicState3ConservativeRasterizationMode = LAYOUT$extendedDynamicState3ConservativeRasterizationMode.byteSize();
-    public static final long SIZE$extendedDynamicState3ExtraPrimitiveOverestimationSize = LAYOUT$extendedDynamicState3ExtraPrimitiveOverestimationSize.byteSize();
-    public static final long SIZE$extendedDynamicState3DepthClipEnable = LAYOUT$extendedDynamicState3DepthClipEnable.byteSize();
-    public static final long SIZE$extendedDynamicState3SampleLocationsEnable = LAYOUT$extendedDynamicState3SampleLocationsEnable.byteSize();
-    public static final long SIZE$extendedDynamicState3ColorBlendAdvanced = LAYOUT$extendedDynamicState3ColorBlendAdvanced.byteSize();
-    public static final long SIZE$extendedDynamicState3ProvokingVertexMode = LAYOUT$extendedDynamicState3ProvokingVertexMode.byteSize();
-    public static final long SIZE$extendedDynamicState3LineRasterizationMode = LAYOUT$extendedDynamicState3LineRasterizationMode.byteSize();
-    public static final long SIZE$extendedDynamicState3LineStippleEnable = LAYOUT$extendedDynamicState3LineStippleEnable.byteSize();
-    public static final long SIZE$extendedDynamicState3DepthClipNegativeOneToOne = LAYOUT$extendedDynamicState3DepthClipNegativeOneToOne.byteSize();
-    public static final long SIZE$extendedDynamicState3ViewportWScalingEnable = LAYOUT$extendedDynamicState3ViewportWScalingEnable.byteSize();
-    public static final long SIZE$extendedDynamicState3ViewportSwizzle = LAYOUT$extendedDynamicState3ViewportSwizzle.byteSize();
-    public static final long SIZE$extendedDynamicState3CoverageToColorEnable = LAYOUT$extendedDynamicState3CoverageToColorEnable.byteSize();
-    public static final long SIZE$extendedDynamicState3CoverageToColorLocation = LAYOUT$extendedDynamicState3CoverageToColorLocation.byteSize();
-    public static final long SIZE$extendedDynamicState3CoverageModulationMode = LAYOUT$extendedDynamicState3CoverageModulationMode.byteSize();
-    public static final long SIZE$extendedDynamicState3CoverageModulationTableEnable = LAYOUT$extendedDynamicState3CoverageModulationTableEnable.byteSize();
-    public static final long SIZE$extendedDynamicState3CoverageModulationTable = LAYOUT$extendedDynamicState3CoverageModulationTable.byteSize();
-    public static final long SIZE$extendedDynamicState3CoverageReductionMode = LAYOUT$extendedDynamicState3CoverageReductionMode.byteSize();
-    public static final long SIZE$extendedDynamicState3RepresentativeFragmentTestEnable = LAYOUT$extendedDynamicState3RepresentativeFragmentTestEnable.byteSize();
-    public static final long SIZE$extendedDynamicState3ShadingRateImageEnable = LAYOUT$extendedDynamicState3ShadingRateImageEnable.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$extendedDynamicState3TessellationDomainOrigin = LAYOUT.byteOffset(PATH$extendedDynamicState3TessellationDomainOrigin);
-    public static final long OFFSET$extendedDynamicState3DepthClampEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3DepthClampEnable);
-    public static final long OFFSET$extendedDynamicState3PolygonMode = LAYOUT.byteOffset(PATH$extendedDynamicState3PolygonMode);
-    public static final long OFFSET$extendedDynamicState3RasterizationSamples = LAYOUT.byteOffset(PATH$extendedDynamicState3RasterizationSamples);
-    public static final long OFFSET$extendedDynamicState3SampleMask = LAYOUT.byteOffset(PATH$extendedDynamicState3SampleMask);
-    public static final long OFFSET$extendedDynamicState3AlphaToCoverageEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3AlphaToCoverageEnable);
-    public static final long OFFSET$extendedDynamicState3AlphaToOneEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3AlphaToOneEnable);
-    public static final long OFFSET$extendedDynamicState3LogicOpEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3LogicOpEnable);
-    public static final long OFFSET$extendedDynamicState3ColorBlendEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3ColorBlendEnable);
-    public static final long OFFSET$extendedDynamicState3ColorBlendEquation = LAYOUT.byteOffset(PATH$extendedDynamicState3ColorBlendEquation);
-    public static final long OFFSET$extendedDynamicState3ColorWriteMask = LAYOUT.byteOffset(PATH$extendedDynamicState3ColorWriteMask);
-    public static final long OFFSET$extendedDynamicState3RasterizationStream = LAYOUT.byteOffset(PATH$extendedDynamicState3RasterizationStream);
-    public static final long OFFSET$extendedDynamicState3ConservativeRasterizationMode = LAYOUT.byteOffset(PATH$extendedDynamicState3ConservativeRasterizationMode);
-    public static final long OFFSET$extendedDynamicState3ExtraPrimitiveOverestimationSize = LAYOUT.byteOffset(PATH$extendedDynamicState3ExtraPrimitiveOverestimationSize);
-    public static final long OFFSET$extendedDynamicState3DepthClipEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3DepthClipEnable);
-    public static final long OFFSET$extendedDynamicState3SampleLocationsEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3SampleLocationsEnable);
-    public static final long OFFSET$extendedDynamicState3ColorBlendAdvanced = LAYOUT.byteOffset(PATH$extendedDynamicState3ColorBlendAdvanced);
-    public static final long OFFSET$extendedDynamicState3ProvokingVertexMode = LAYOUT.byteOffset(PATH$extendedDynamicState3ProvokingVertexMode);
-    public static final long OFFSET$extendedDynamicState3LineRasterizationMode = LAYOUT.byteOffset(PATH$extendedDynamicState3LineRasterizationMode);
-    public static final long OFFSET$extendedDynamicState3LineStippleEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3LineStippleEnable);
-    public static final long OFFSET$extendedDynamicState3DepthClipNegativeOneToOne = LAYOUT.byteOffset(PATH$extendedDynamicState3DepthClipNegativeOneToOne);
-    public static final long OFFSET$extendedDynamicState3ViewportWScalingEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3ViewportWScalingEnable);
-    public static final long OFFSET$extendedDynamicState3ViewportSwizzle = LAYOUT.byteOffset(PATH$extendedDynamicState3ViewportSwizzle);
-    public static final long OFFSET$extendedDynamicState3CoverageToColorEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3CoverageToColorEnable);
-    public static final long OFFSET$extendedDynamicState3CoverageToColorLocation = LAYOUT.byteOffset(PATH$extendedDynamicState3CoverageToColorLocation);
-    public static final long OFFSET$extendedDynamicState3CoverageModulationMode = LAYOUT.byteOffset(PATH$extendedDynamicState3CoverageModulationMode);
-    public static final long OFFSET$extendedDynamicState3CoverageModulationTableEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3CoverageModulationTableEnable);
-    public static final long OFFSET$extendedDynamicState3CoverageModulationTable = LAYOUT.byteOffset(PATH$extendedDynamicState3CoverageModulationTable);
-    public static final long OFFSET$extendedDynamicState3CoverageReductionMode = LAYOUT.byteOffset(PATH$extendedDynamicState3CoverageReductionMode);
-    public static final long OFFSET$extendedDynamicState3RepresentativeFragmentTestEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3RepresentativeFragmentTestEnable);
-    public static final long OFFSET$extendedDynamicState3ShadingRateImageEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3ShadingRateImageEnable);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -500,4 +379,176 @@ public record VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(@NotNull MemorySe
         segment.set(LAYOUT$extendedDynamicState3ShadingRateImageEnable, OFFSET$extendedDynamicState3ShadingRateImageEnable, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3TessellationDomainOrigin"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3DepthClampEnable"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3PolygonMode"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3RasterizationSamples"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3SampleMask"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3AlphaToCoverageEnable"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3AlphaToOneEnable"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3LogicOpEnable"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3ColorBlendEnable"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3ColorBlendEquation"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3ColorWriteMask"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3RasterizationStream"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3ConservativeRasterizationMode"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3ExtraPrimitiveOverestimationSize"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3DepthClipEnable"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3SampleLocationsEnable"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3ColorBlendAdvanced"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3ProvokingVertexMode"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3LineRasterizationMode"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3LineStippleEnable"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3DepthClipNegativeOneToOne"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3ViewportWScalingEnable"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3ViewportSwizzle"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3CoverageToColorEnable"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3CoverageToColorLocation"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3CoverageModulationMode"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3CoverageModulationTableEnable"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3CoverageModulationTable"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3CoverageReductionMode"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3RepresentativeFragmentTestEnable"),
+        ValueLayout.JAVA_INT.withName("extendedDynamicState3ShadingRateImageEnable")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$extendedDynamicState3TessellationDomainOrigin = PathElement.groupElement("PATH$extendedDynamicState3TessellationDomainOrigin");
+    public static final PathElement PATH$extendedDynamicState3DepthClampEnable = PathElement.groupElement("PATH$extendedDynamicState3DepthClampEnable");
+    public static final PathElement PATH$extendedDynamicState3PolygonMode = PathElement.groupElement("PATH$extendedDynamicState3PolygonMode");
+    public static final PathElement PATH$extendedDynamicState3RasterizationSamples = PathElement.groupElement("PATH$extendedDynamicState3RasterizationSamples");
+    public static final PathElement PATH$extendedDynamicState3SampleMask = PathElement.groupElement("PATH$extendedDynamicState3SampleMask");
+    public static final PathElement PATH$extendedDynamicState3AlphaToCoverageEnable = PathElement.groupElement("PATH$extendedDynamicState3AlphaToCoverageEnable");
+    public static final PathElement PATH$extendedDynamicState3AlphaToOneEnable = PathElement.groupElement("PATH$extendedDynamicState3AlphaToOneEnable");
+    public static final PathElement PATH$extendedDynamicState3LogicOpEnable = PathElement.groupElement("PATH$extendedDynamicState3LogicOpEnable");
+    public static final PathElement PATH$extendedDynamicState3ColorBlendEnable = PathElement.groupElement("PATH$extendedDynamicState3ColorBlendEnable");
+    public static final PathElement PATH$extendedDynamicState3ColorBlendEquation = PathElement.groupElement("PATH$extendedDynamicState3ColorBlendEquation");
+    public static final PathElement PATH$extendedDynamicState3ColorWriteMask = PathElement.groupElement("PATH$extendedDynamicState3ColorWriteMask");
+    public static final PathElement PATH$extendedDynamicState3RasterizationStream = PathElement.groupElement("PATH$extendedDynamicState3RasterizationStream");
+    public static final PathElement PATH$extendedDynamicState3ConservativeRasterizationMode = PathElement.groupElement("PATH$extendedDynamicState3ConservativeRasterizationMode");
+    public static final PathElement PATH$extendedDynamicState3ExtraPrimitiveOverestimationSize = PathElement.groupElement("PATH$extendedDynamicState3ExtraPrimitiveOverestimationSize");
+    public static final PathElement PATH$extendedDynamicState3DepthClipEnable = PathElement.groupElement("PATH$extendedDynamicState3DepthClipEnable");
+    public static final PathElement PATH$extendedDynamicState3SampleLocationsEnable = PathElement.groupElement("PATH$extendedDynamicState3SampleLocationsEnable");
+    public static final PathElement PATH$extendedDynamicState3ColorBlendAdvanced = PathElement.groupElement("PATH$extendedDynamicState3ColorBlendAdvanced");
+    public static final PathElement PATH$extendedDynamicState3ProvokingVertexMode = PathElement.groupElement("PATH$extendedDynamicState3ProvokingVertexMode");
+    public static final PathElement PATH$extendedDynamicState3LineRasterizationMode = PathElement.groupElement("PATH$extendedDynamicState3LineRasterizationMode");
+    public static final PathElement PATH$extendedDynamicState3LineStippleEnable = PathElement.groupElement("PATH$extendedDynamicState3LineStippleEnable");
+    public static final PathElement PATH$extendedDynamicState3DepthClipNegativeOneToOne = PathElement.groupElement("PATH$extendedDynamicState3DepthClipNegativeOneToOne");
+    public static final PathElement PATH$extendedDynamicState3ViewportWScalingEnable = PathElement.groupElement("PATH$extendedDynamicState3ViewportWScalingEnable");
+    public static final PathElement PATH$extendedDynamicState3ViewportSwizzle = PathElement.groupElement("PATH$extendedDynamicState3ViewportSwizzle");
+    public static final PathElement PATH$extendedDynamicState3CoverageToColorEnable = PathElement.groupElement("PATH$extendedDynamicState3CoverageToColorEnable");
+    public static final PathElement PATH$extendedDynamicState3CoverageToColorLocation = PathElement.groupElement("PATH$extendedDynamicState3CoverageToColorLocation");
+    public static final PathElement PATH$extendedDynamicState3CoverageModulationMode = PathElement.groupElement("PATH$extendedDynamicState3CoverageModulationMode");
+    public static final PathElement PATH$extendedDynamicState3CoverageModulationTableEnable = PathElement.groupElement("PATH$extendedDynamicState3CoverageModulationTableEnable");
+    public static final PathElement PATH$extendedDynamicState3CoverageModulationTable = PathElement.groupElement("PATH$extendedDynamicState3CoverageModulationTable");
+    public static final PathElement PATH$extendedDynamicState3CoverageReductionMode = PathElement.groupElement("PATH$extendedDynamicState3CoverageReductionMode");
+    public static final PathElement PATH$extendedDynamicState3RepresentativeFragmentTestEnable = PathElement.groupElement("PATH$extendedDynamicState3RepresentativeFragmentTestEnable");
+    public static final PathElement PATH$extendedDynamicState3ShadingRateImageEnable = PathElement.groupElement("PATH$extendedDynamicState3ShadingRateImageEnable");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$extendedDynamicState3TessellationDomainOrigin = (OfInt) LAYOUT.select(PATH$extendedDynamicState3TessellationDomainOrigin);
+    public static final OfInt LAYOUT$extendedDynamicState3DepthClampEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3DepthClampEnable);
+    public static final OfInt LAYOUT$extendedDynamicState3PolygonMode = (OfInt) LAYOUT.select(PATH$extendedDynamicState3PolygonMode);
+    public static final OfInt LAYOUT$extendedDynamicState3RasterizationSamples = (OfInt) LAYOUT.select(PATH$extendedDynamicState3RasterizationSamples);
+    public static final OfInt LAYOUT$extendedDynamicState3SampleMask = (OfInt) LAYOUT.select(PATH$extendedDynamicState3SampleMask);
+    public static final OfInt LAYOUT$extendedDynamicState3AlphaToCoverageEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3AlphaToCoverageEnable);
+    public static final OfInt LAYOUT$extendedDynamicState3AlphaToOneEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3AlphaToOneEnable);
+    public static final OfInt LAYOUT$extendedDynamicState3LogicOpEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3LogicOpEnable);
+    public static final OfInt LAYOUT$extendedDynamicState3ColorBlendEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ColorBlendEnable);
+    public static final OfInt LAYOUT$extendedDynamicState3ColorBlendEquation = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ColorBlendEquation);
+    public static final OfInt LAYOUT$extendedDynamicState3ColorWriteMask = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ColorWriteMask);
+    public static final OfInt LAYOUT$extendedDynamicState3RasterizationStream = (OfInt) LAYOUT.select(PATH$extendedDynamicState3RasterizationStream);
+    public static final OfInt LAYOUT$extendedDynamicState3ConservativeRasterizationMode = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ConservativeRasterizationMode);
+    public static final OfInt LAYOUT$extendedDynamicState3ExtraPrimitiveOverestimationSize = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ExtraPrimitiveOverestimationSize);
+    public static final OfInt LAYOUT$extendedDynamicState3DepthClipEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3DepthClipEnable);
+    public static final OfInt LAYOUT$extendedDynamicState3SampleLocationsEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3SampleLocationsEnable);
+    public static final OfInt LAYOUT$extendedDynamicState3ColorBlendAdvanced = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ColorBlendAdvanced);
+    public static final OfInt LAYOUT$extendedDynamicState3ProvokingVertexMode = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ProvokingVertexMode);
+    public static final OfInt LAYOUT$extendedDynamicState3LineRasterizationMode = (OfInt) LAYOUT.select(PATH$extendedDynamicState3LineRasterizationMode);
+    public static final OfInt LAYOUT$extendedDynamicState3LineStippleEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3LineStippleEnable);
+    public static final OfInt LAYOUT$extendedDynamicState3DepthClipNegativeOneToOne = (OfInt) LAYOUT.select(PATH$extendedDynamicState3DepthClipNegativeOneToOne);
+    public static final OfInt LAYOUT$extendedDynamicState3ViewportWScalingEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ViewportWScalingEnable);
+    public static final OfInt LAYOUT$extendedDynamicState3ViewportSwizzle = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ViewportSwizzle);
+    public static final OfInt LAYOUT$extendedDynamicState3CoverageToColorEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3CoverageToColorEnable);
+    public static final OfInt LAYOUT$extendedDynamicState3CoverageToColorLocation = (OfInt) LAYOUT.select(PATH$extendedDynamicState3CoverageToColorLocation);
+    public static final OfInt LAYOUT$extendedDynamicState3CoverageModulationMode = (OfInt) LAYOUT.select(PATH$extendedDynamicState3CoverageModulationMode);
+    public static final OfInt LAYOUT$extendedDynamicState3CoverageModulationTableEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3CoverageModulationTableEnable);
+    public static final OfInt LAYOUT$extendedDynamicState3CoverageModulationTable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3CoverageModulationTable);
+    public static final OfInt LAYOUT$extendedDynamicState3CoverageReductionMode = (OfInt) LAYOUT.select(PATH$extendedDynamicState3CoverageReductionMode);
+    public static final OfInt LAYOUT$extendedDynamicState3RepresentativeFragmentTestEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3RepresentativeFragmentTestEnable);
+    public static final OfInt LAYOUT$extendedDynamicState3ShadingRateImageEnable = (OfInt) LAYOUT.select(PATH$extendedDynamicState3ShadingRateImageEnable);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$extendedDynamicState3TessellationDomainOrigin = LAYOUT$extendedDynamicState3TessellationDomainOrigin.byteSize();
+    public static final long SIZE$extendedDynamicState3DepthClampEnable = LAYOUT$extendedDynamicState3DepthClampEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3PolygonMode = LAYOUT$extendedDynamicState3PolygonMode.byteSize();
+    public static final long SIZE$extendedDynamicState3RasterizationSamples = LAYOUT$extendedDynamicState3RasterizationSamples.byteSize();
+    public static final long SIZE$extendedDynamicState3SampleMask = LAYOUT$extendedDynamicState3SampleMask.byteSize();
+    public static final long SIZE$extendedDynamicState3AlphaToCoverageEnable = LAYOUT$extendedDynamicState3AlphaToCoverageEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3AlphaToOneEnable = LAYOUT$extendedDynamicState3AlphaToOneEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3LogicOpEnable = LAYOUT$extendedDynamicState3LogicOpEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3ColorBlendEnable = LAYOUT$extendedDynamicState3ColorBlendEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3ColorBlendEquation = LAYOUT$extendedDynamicState3ColorBlendEquation.byteSize();
+    public static final long SIZE$extendedDynamicState3ColorWriteMask = LAYOUT$extendedDynamicState3ColorWriteMask.byteSize();
+    public static final long SIZE$extendedDynamicState3RasterizationStream = LAYOUT$extendedDynamicState3RasterizationStream.byteSize();
+    public static final long SIZE$extendedDynamicState3ConservativeRasterizationMode = LAYOUT$extendedDynamicState3ConservativeRasterizationMode.byteSize();
+    public static final long SIZE$extendedDynamicState3ExtraPrimitiveOverestimationSize = LAYOUT$extendedDynamicState3ExtraPrimitiveOverestimationSize.byteSize();
+    public static final long SIZE$extendedDynamicState3DepthClipEnable = LAYOUT$extendedDynamicState3DepthClipEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3SampleLocationsEnable = LAYOUT$extendedDynamicState3SampleLocationsEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3ColorBlendAdvanced = LAYOUT$extendedDynamicState3ColorBlendAdvanced.byteSize();
+    public static final long SIZE$extendedDynamicState3ProvokingVertexMode = LAYOUT$extendedDynamicState3ProvokingVertexMode.byteSize();
+    public static final long SIZE$extendedDynamicState3LineRasterizationMode = LAYOUT$extendedDynamicState3LineRasterizationMode.byteSize();
+    public static final long SIZE$extendedDynamicState3LineStippleEnable = LAYOUT$extendedDynamicState3LineStippleEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3DepthClipNegativeOneToOne = LAYOUT$extendedDynamicState3DepthClipNegativeOneToOne.byteSize();
+    public static final long SIZE$extendedDynamicState3ViewportWScalingEnable = LAYOUT$extendedDynamicState3ViewportWScalingEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3ViewportSwizzle = LAYOUT$extendedDynamicState3ViewportSwizzle.byteSize();
+    public static final long SIZE$extendedDynamicState3CoverageToColorEnable = LAYOUT$extendedDynamicState3CoverageToColorEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3CoverageToColorLocation = LAYOUT$extendedDynamicState3CoverageToColorLocation.byteSize();
+    public static final long SIZE$extendedDynamicState3CoverageModulationMode = LAYOUT$extendedDynamicState3CoverageModulationMode.byteSize();
+    public static final long SIZE$extendedDynamicState3CoverageModulationTableEnable = LAYOUT$extendedDynamicState3CoverageModulationTableEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3CoverageModulationTable = LAYOUT$extendedDynamicState3CoverageModulationTable.byteSize();
+    public static final long SIZE$extendedDynamicState3CoverageReductionMode = LAYOUT$extendedDynamicState3CoverageReductionMode.byteSize();
+    public static final long SIZE$extendedDynamicState3RepresentativeFragmentTestEnable = LAYOUT$extendedDynamicState3RepresentativeFragmentTestEnable.byteSize();
+    public static final long SIZE$extendedDynamicState3ShadingRateImageEnable = LAYOUT$extendedDynamicState3ShadingRateImageEnable.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$extendedDynamicState3TessellationDomainOrigin = LAYOUT.byteOffset(PATH$extendedDynamicState3TessellationDomainOrigin);
+    public static final long OFFSET$extendedDynamicState3DepthClampEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3DepthClampEnable);
+    public static final long OFFSET$extendedDynamicState3PolygonMode = LAYOUT.byteOffset(PATH$extendedDynamicState3PolygonMode);
+    public static final long OFFSET$extendedDynamicState3RasterizationSamples = LAYOUT.byteOffset(PATH$extendedDynamicState3RasterizationSamples);
+    public static final long OFFSET$extendedDynamicState3SampleMask = LAYOUT.byteOffset(PATH$extendedDynamicState3SampleMask);
+    public static final long OFFSET$extendedDynamicState3AlphaToCoverageEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3AlphaToCoverageEnable);
+    public static final long OFFSET$extendedDynamicState3AlphaToOneEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3AlphaToOneEnable);
+    public static final long OFFSET$extendedDynamicState3LogicOpEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3LogicOpEnable);
+    public static final long OFFSET$extendedDynamicState3ColorBlendEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3ColorBlendEnable);
+    public static final long OFFSET$extendedDynamicState3ColorBlendEquation = LAYOUT.byteOffset(PATH$extendedDynamicState3ColorBlendEquation);
+    public static final long OFFSET$extendedDynamicState3ColorWriteMask = LAYOUT.byteOffset(PATH$extendedDynamicState3ColorWriteMask);
+    public static final long OFFSET$extendedDynamicState3RasterizationStream = LAYOUT.byteOffset(PATH$extendedDynamicState3RasterizationStream);
+    public static final long OFFSET$extendedDynamicState3ConservativeRasterizationMode = LAYOUT.byteOffset(PATH$extendedDynamicState3ConservativeRasterizationMode);
+    public static final long OFFSET$extendedDynamicState3ExtraPrimitiveOverestimationSize = LAYOUT.byteOffset(PATH$extendedDynamicState3ExtraPrimitiveOverestimationSize);
+    public static final long OFFSET$extendedDynamicState3DepthClipEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3DepthClipEnable);
+    public static final long OFFSET$extendedDynamicState3SampleLocationsEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3SampleLocationsEnable);
+    public static final long OFFSET$extendedDynamicState3ColorBlendAdvanced = LAYOUT.byteOffset(PATH$extendedDynamicState3ColorBlendAdvanced);
+    public static final long OFFSET$extendedDynamicState3ProvokingVertexMode = LAYOUT.byteOffset(PATH$extendedDynamicState3ProvokingVertexMode);
+    public static final long OFFSET$extendedDynamicState3LineRasterizationMode = LAYOUT.byteOffset(PATH$extendedDynamicState3LineRasterizationMode);
+    public static final long OFFSET$extendedDynamicState3LineStippleEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3LineStippleEnable);
+    public static final long OFFSET$extendedDynamicState3DepthClipNegativeOneToOne = LAYOUT.byteOffset(PATH$extendedDynamicState3DepthClipNegativeOneToOne);
+    public static final long OFFSET$extendedDynamicState3ViewportWScalingEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3ViewportWScalingEnable);
+    public static final long OFFSET$extendedDynamicState3ViewportSwizzle = LAYOUT.byteOffset(PATH$extendedDynamicState3ViewportSwizzle);
+    public static final long OFFSET$extendedDynamicState3CoverageToColorEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3CoverageToColorEnable);
+    public static final long OFFSET$extendedDynamicState3CoverageToColorLocation = LAYOUT.byteOffset(PATH$extendedDynamicState3CoverageToColorLocation);
+    public static final long OFFSET$extendedDynamicState3CoverageModulationMode = LAYOUT.byteOffset(PATH$extendedDynamicState3CoverageModulationMode);
+    public static final long OFFSET$extendedDynamicState3CoverageModulationTableEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3CoverageModulationTableEnable);
+    public static final long OFFSET$extendedDynamicState3CoverageModulationTable = LAYOUT.byteOffset(PATH$extendedDynamicState3CoverageModulationTable);
+    public static final long OFFSET$extendedDynamicState3CoverageReductionMode = LAYOUT.byteOffset(PATH$extendedDynamicState3CoverageReductionMode);
+    public static final long OFFSET$extendedDynamicState3RepresentativeFragmentTestEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3RepresentativeFragmentTestEnable);
+    public static final long OFFSET$extendedDynamicState3ShadingRateImageEnable = LAYOUT.byteOffset(PATH$extendedDynamicState3ShadingRateImageEnable);
 }

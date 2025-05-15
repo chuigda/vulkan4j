@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCubicFilterWeightsQCOM.html">VkCubicFilterWeightsQCOM</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCubicFilterWeightsQCOM.html"><code>VkCubicFilterWeightsQCOM</code></a>
 public final class VkCubicFilterWeightsQCOM {
     public static final int CATMULL_ROM = 0x0;
     public static final int ZERO_TANGENT_CARDINAL = 0x1;

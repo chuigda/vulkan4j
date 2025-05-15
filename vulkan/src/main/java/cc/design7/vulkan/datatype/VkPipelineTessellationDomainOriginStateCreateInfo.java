@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineTessellationDomainOriginStateCreateInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineTessellationDomainOriginStateCreateInfo.html"><code>VkPipelineTessellationDomainOriginStateCreateInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineTessellationDomainOriginStateCreateInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkTessellationDomainOrigin domainOrigin;
+/// } VkPipelineTessellationDomainOriginStateCreateInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO`
+///
+/// The {@link VkPipelineTessellationDomainOriginStateCreateInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineTessellationDomainOriginStateCreateInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineTessellationDomainOriginStateCreateInfo.html">VkPipelineTessellationDomainOriginStateCreateInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineTessellationDomainOriginStateCreateInfo.html"><code>VkPipelineTessellationDomainOriginStateCreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineTessellationDomainOriginStateCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineTessellationDomainOriginStateCreateInfo {
-        sType(VkStructureType.PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO);
-    }
-
     public static VkPipelineTessellationDomainOriginStateCreateInfo allocate(Arena arena) {
-        return new VkPipelineTessellationDomainOriginStateCreateInfo(arena.allocate(LAYOUT));
+        VkPipelineTessellationDomainOriginStateCreateInfo ret = new VkPipelineTessellationDomainOriginStateCreateInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO);
+        return ret;
     }
 
     public static VkPipelineTessellationDomainOriginStateCreateInfo[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPipelineTessellationDomainOriginStateCreateInfo(@NotNull MemoryS
         VkPipelineTessellationDomainOriginStateCreateInfo[] ret = new VkPipelineTessellationDomainOriginStateCreateInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineTessellationDomainOriginStateCreateInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPipelineTessellationDomainOriginStateCreateInfo(@NotNull MemoryS
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("domainOrigin")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$domainOrigin = PathElement.groupElement("PATH$domainOrigin");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$domainOrigin = (OfInt) LAYOUT.select(PATH$domainOrigin);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$domainOrigin = LAYOUT$domainOrigin.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$domainOrigin = LAYOUT.byteOffset(PATH$domainOrigin);
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPipelineTessellationDomainOriginStateCreateInfo(@NotNull MemoryS
         segment.set(LAYOUT$domainOrigin, OFFSET$domainOrigin, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("domainOrigin")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$domainOrigin = PathElement.groupElement("PATH$domainOrigin");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$domainOrigin = (OfInt) LAYOUT.select(PATH$domainOrigin);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$domainOrigin = LAYOUT$domainOrigin.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$domainOrigin = LAYOUT.byteOffset(PATH$domainOrigin);
 }

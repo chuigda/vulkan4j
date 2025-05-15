@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkRenderPassTileShadingCreateInfoQCOM} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassTileShadingCreateInfoQCOM.html"><code>VkRenderPassTileShadingCreateInfoQCOM</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkRenderPassTileShadingCreateInfoQCOM {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkTileShadingRenderPassFlagsQCOM flags;
+///     VkExtent2D tileApronSize;
+/// } VkRenderPassTileShadingCreateInfoQCOM;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM`
+///
+/// The {@link VkRenderPassTileShadingCreateInfoQCOM#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkRenderPassTileShadingCreateInfoQCOM#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassTileShadingCreateInfoQCOM.html">VkRenderPassTileShadingCreateInfoQCOM</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassTileShadingCreateInfoQCOM.html"><code>VkRenderPassTileShadingCreateInfoQCOM</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkRenderPassTileShadingCreateInfoQCOM(@NotNull MemorySegment segment) implements IPointer {
-    public VkRenderPassTileShadingCreateInfoQCOM {
-        sType(VkStructureType.RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM);
-    }
-
     public static VkRenderPassTileShadingCreateInfoQCOM allocate(Arena arena) {
-        return new VkRenderPassTileShadingCreateInfoQCOM(arena.allocate(LAYOUT));
+        VkRenderPassTileShadingCreateInfoQCOM ret = new VkRenderPassTileShadingCreateInfoQCOM(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM);
+        return ret;
     }
 
     public static VkRenderPassTileShadingCreateInfoQCOM[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkRenderPassTileShadingCreateInfoQCOM(@NotNull MemorySegment segme
         VkRenderPassTileShadingCreateInfoQCOM[] ret = new VkRenderPassTileShadingCreateInfoQCOM[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkRenderPassTileShadingCreateInfoQCOM(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkRenderPassTileShadingCreateInfoQCOM(@NotNull MemorySegment segme
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        VkExtent2D.LAYOUT.withName("tileApronSize")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$tileApronSize = PathElement.groupElement("PATH$tileApronSize");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final StructLayout LAYOUT$tileApronSize = (StructLayout) LAYOUT.select(PATH$tileApronSize);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$tileApronSize = LAYOUT$tileApronSize.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$tileApronSize = LAYOUT.byteOffset(PATH$tileApronSize);
+    public void autoInit() {
+        sType(VkStructureType.RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkRenderPassTileShadingCreateInfoQCOM(@NotNull MemorySegment segme
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$tileApronSize, SIZE$tileApronSize);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        VkExtent2D.LAYOUT.withName("tileApronSize")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$tileApronSize = PathElement.groupElement("PATH$tileApronSize");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final StructLayout LAYOUT$tileApronSize = (StructLayout) LAYOUT.select(PATH$tileApronSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$tileApronSize = LAYOUT$tileApronSize.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$tileApronSize = LAYOUT.byteOffset(PATH$tileApronSize);
 }

@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureIndexFormatFlagsNV.html">VkClusterAccelerationStructureIndexFormatFlagsNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureIndexFormatFlagsNV.html"><code>VkClusterAccelerationStructureIndexFormatFlagsNV</code></a>
 public final class VkClusterAccelerationStructureIndexFormatFlagsNV {
     public static final int _16BIT = 0x2;
     public static final int _32BIT = 0x4;

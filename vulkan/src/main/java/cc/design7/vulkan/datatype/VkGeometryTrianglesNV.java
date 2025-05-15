@@ -14,8 +14,37 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkGeometryTrianglesNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeometryTrianglesNV.html"><code>VkGeometryTrianglesNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkGeometryTrianglesNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkBuffer vertexData;
+///     VkDeviceSize vertexOffset;
+///     uint32_t vertexCount;
+///     VkDeviceSize vertexStride;
+///     VkFormat vertexFormat;
+///     VkBuffer indexData;
+///     VkDeviceSize indexOffset;
+///     uint32_t indexCount;
+///     VkIndexType indexType;
+///     VkBuffer transformData;
+///     VkDeviceSize transformOffset;
+/// } VkGeometryTrianglesNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_GEOMETRY_TRIANGLES_NV`
+///
+/// The {@link VkGeometryTrianglesNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkGeometryTrianglesNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +53,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeometryTrianglesNV.html">VkGeometryTrianglesNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeometryTrianglesNV.html"><code>VkGeometryTrianglesNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkGeometryTrianglesNV {
-        sType(VkStructureType.GEOMETRY_TRIANGLES_NV);
-    }
-
     public static VkGeometryTrianglesNV allocate(Arena arena) {
-        return new VkGeometryTrianglesNV(arena.allocate(LAYOUT));
+        VkGeometryTrianglesNV ret = new VkGeometryTrianglesNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.GEOMETRY_TRIANGLES_NV);
+        return ret;
     }
 
     public static VkGeometryTrianglesNV[] allocate(Arena arena, int count) {
@@ -41,6 +68,7 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         VkGeometryTrianglesNV[] ret = new VkGeometryTrianglesNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkGeometryTrianglesNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.GEOMETRY_TRIANGLES_NV);
         }
         return ret;
     }
@@ -57,6 +85,130 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.GEOMETRY_TRIANGLES_NV);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkBuffer vertexData() {
+        MemorySegment s = segment.asSlice(OFFSET$vertexData, SIZE$vertexData);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkBuffer(s);
+    }
+
+    public void vertexData(@Nullable VkBuffer value) {
+        segment.set(LAYOUT$vertexData, OFFSET$vertexData, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned long vertexOffset() {
+        return segment.get(LAYOUT$vertexOffset, OFFSET$vertexOffset);
+    }
+
+    public void vertexOffset(@unsigned long value) {
+        segment.set(LAYOUT$vertexOffset, OFFSET$vertexOffset, value);
+    }
+
+    public @unsigned int vertexCount() {
+        return segment.get(LAYOUT$vertexCount, OFFSET$vertexCount);
+    }
+
+    public void vertexCount(@unsigned int value) {
+        segment.set(LAYOUT$vertexCount, OFFSET$vertexCount, value);
+    }
+
+    public @unsigned long vertexStride() {
+        return segment.get(LAYOUT$vertexStride, OFFSET$vertexStride);
+    }
+
+    public void vertexStride(@unsigned long value) {
+        segment.set(LAYOUT$vertexStride, OFFSET$vertexStride, value);
+    }
+
+    public @enumtype(VkFormat.class) int vertexFormat() {
+        return segment.get(LAYOUT$vertexFormat, OFFSET$vertexFormat);
+    }
+
+    public void vertexFormat(@enumtype(VkFormat.class) int value) {
+        segment.set(LAYOUT$vertexFormat, OFFSET$vertexFormat, value);
+    }
+
+    public @Nullable VkBuffer indexData() {
+        MemorySegment s = segment.asSlice(OFFSET$indexData, SIZE$indexData);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkBuffer(s);
+    }
+
+    public void indexData(@Nullable VkBuffer value) {
+        segment.set(LAYOUT$indexData, OFFSET$indexData, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned long indexOffset() {
+        return segment.get(LAYOUT$indexOffset, OFFSET$indexOffset);
+    }
+
+    public void indexOffset(@unsigned long value) {
+        segment.set(LAYOUT$indexOffset, OFFSET$indexOffset, value);
+    }
+
+    public @unsigned int indexCount() {
+        return segment.get(LAYOUT$indexCount, OFFSET$indexCount);
+    }
+
+    public void indexCount(@unsigned int value) {
+        segment.set(LAYOUT$indexCount, OFFSET$indexCount, value);
+    }
+
+    public @enumtype(VkIndexType.class) int indexType() {
+        return segment.get(LAYOUT$indexType, OFFSET$indexType);
+    }
+
+    public void indexType(@enumtype(VkIndexType.class) int value) {
+        segment.set(LAYOUT$indexType, OFFSET$indexType, value);
+    }
+
+    public @Nullable VkBuffer transformData() {
+        MemorySegment s = segment.asSlice(OFFSET$transformData, SIZE$transformData);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkBuffer(s);
+    }
+
+    public void transformData(@Nullable VkBuffer value) {
+        segment.set(LAYOUT$transformData, OFFSET$transformData, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned long transformOffset() {
+        return segment.get(LAYOUT$transformOffset, OFFSET$transformOffset);
+    }
+
+    public void transformOffset(@unsigned long value) {
+        segment.set(LAYOUT$transformOffset, OFFSET$transformOffset, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -131,125 +283,4 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
     public static final long OFFSET$indexType = LAYOUT.byteOffset(PATH$indexType);
     public static final long OFFSET$transformData = LAYOUT.byteOffset(PATH$transformData);
     public static final long OFFSET$transformOffset = LAYOUT.byteOffset(PATH$transformOffset);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkBuffer vertexData() {
-        MemorySegment s = segment.asSlice(OFFSET$vertexData, SIZE$vertexData);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkBuffer(s);
-    }
-
-    public void vertexData(@Nullable VkBuffer value) {
-        segment.set(LAYOUT$vertexData, OFFSET$vertexData, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned long vertexOffset() {
-        return segment.get(LAYOUT$vertexOffset, OFFSET$vertexOffset);
-    }
-
-    public void vertexOffset(@unsigned long value) {
-        segment.set(LAYOUT$vertexOffset, OFFSET$vertexOffset, value);
-    }
-
-    public @unsigned int vertexCount() {
-        return segment.get(LAYOUT$vertexCount, OFFSET$vertexCount);
-    }
-
-    public void vertexCount(@unsigned int value) {
-        segment.set(LAYOUT$vertexCount, OFFSET$vertexCount, value);
-    }
-
-    public @unsigned long vertexStride() {
-        return segment.get(LAYOUT$vertexStride, OFFSET$vertexStride);
-    }
-
-    public void vertexStride(@unsigned long value) {
-        segment.set(LAYOUT$vertexStride, OFFSET$vertexStride, value);
-    }
-
-    public @enumtype(VkFormat.class) int vertexFormat() {
-        return segment.get(LAYOUT$vertexFormat, OFFSET$vertexFormat);
-    }
-
-    public void vertexFormat(@enumtype(VkFormat.class) int value) {
-        segment.set(LAYOUT$vertexFormat, OFFSET$vertexFormat, value);
-    }
-
-    public @Nullable VkBuffer indexData() {
-        MemorySegment s = segment.asSlice(OFFSET$indexData, SIZE$indexData);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkBuffer(s);
-    }
-
-    public void indexData(@Nullable VkBuffer value) {
-        segment.set(LAYOUT$indexData, OFFSET$indexData, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned long indexOffset() {
-        return segment.get(LAYOUT$indexOffset, OFFSET$indexOffset);
-    }
-
-    public void indexOffset(@unsigned long value) {
-        segment.set(LAYOUT$indexOffset, OFFSET$indexOffset, value);
-    }
-
-    public @unsigned int indexCount() {
-        return segment.get(LAYOUT$indexCount, OFFSET$indexCount);
-    }
-
-    public void indexCount(@unsigned int value) {
-        segment.set(LAYOUT$indexCount, OFFSET$indexCount, value);
-    }
-
-    public @enumtype(VkIndexType.class) int indexType() {
-        return segment.get(LAYOUT$indexType, OFFSET$indexType);
-    }
-
-    public void indexType(@enumtype(VkIndexType.class) int value) {
-        segment.set(LAYOUT$indexType, OFFSET$indexType, value);
-    }
-
-    public @Nullable VkBuffer transformData() {
-        MemorySegment s = segment.asSlice(OFFSET$transformData, SIZE$transformData);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkBuffer(s);
-    }
-
-    public void transformData(@Nullable VkBuffer value) {
-        segment.set(LAYOUT$transformData, OFFSET$transformData, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned long transformOffset() {
-        return segment.get(LAYOUT$transformOffset, OFFSET$transformOffset);
-    }
-
-    public void transformOffset(@unsigned long value) {
-        segment.set(LAYOUT$transformOffset, OFFSET$transformOffset, value);
-    }
-
 }

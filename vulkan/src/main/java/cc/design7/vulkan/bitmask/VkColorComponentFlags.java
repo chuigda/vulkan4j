@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkColorComponentFlags.html">VkColorComponentFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkColorComponentFlags.html"><code>VkColorComponentFlags</code></a>
 public final class VkColorComponentFlags {
     public static final int A = 0x8;
     public static final int B = 0x4;

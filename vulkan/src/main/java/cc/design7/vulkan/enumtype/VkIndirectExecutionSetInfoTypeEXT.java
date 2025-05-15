@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectExecutionSetInfoTypeEXT.html">VkIndirectExecutionSetInfoTypeEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectExecutionSetInfoTypeEXT.html"><code>VkIndirectExecutionSetInfoTypeEXT</code></a>
 public final class VkIndirectExecutionSetInfoTypeEXT {
     public static final int PIPELINES = 0x0;
     public static final int SHADER_OBJECTS = 0x1;

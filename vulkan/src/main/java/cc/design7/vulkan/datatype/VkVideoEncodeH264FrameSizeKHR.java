@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoEncodeH264FrameSizeKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264FrameSizeKHR.html"><code>VkVideoEncodeH264FrameSizeKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoEncodeH264FrameSizeKHR {
+///     uint32_t frameISize;
+///     uint32_t framePSize;
+///     uint32_t frameBSize;
+/// } VkVideoEncodeH264FrameSizeKHR;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264FrameSizeKHR.html">VkVideoEncodeH264FrameSizeKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264FrameSizeKHR.html"><code>VkVideoEncodeH264FrameSizeKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoEncodeH264FrameSizeKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkVideoEncodeH264FrameSizeKHR allocate(Arena arena) {
-        return new VkVideoEncodeH264FrameSizeKHR(arena.allocate(LAYOUT));
+        VkVideoEncodeH264FrameSizeKHR ret = new VkVideoEncodeH264FrameSizeKHR(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkVideoEncodeH264FrameSizeKHR[] allocate(Arena arena, int count) {
@@ -55,29 +67,6 @@ public record VkVideoEncodeH264FrameSizeKHR(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("frameISize"),
-        ValueLayout.JAVA_INT.withName("framePSize"),
-        ValueLayout.JAVA_INT.withName("frameBSize")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$frameISize = PathElement.groupElement("PATH$frameISize");
-    public static final PathElement PATH$framePSize = PathElement.groupElement("PATH$framePSize");
-    public static final PathElement PATH$frameBSize = PathElement.groupElement("PATH$frameBSize");
-
-    public static final OfInt LAYOUT$frameISize = (OfInt) LAYOUT.select(PATH$frameISize);
-    public static final OfInt LAYOUT$framePSize = (OfInt) LAYOUT.select(PATH$framePSize);
-    public static final OfInt LAYOUT$frameBSize = (OfInt) LAYOUT.select(PATH$frameBSize);
-
-    public static final long SIZE$frameISize = LAYOUT$frameISize.byteSize();
-    public static final long SIZE$framePSize = LAYOUT$framePSize.byteSize();
-    public static final long SIZE$frameBSize = LAYOUT$frameBSize.byteSize();
-
-    public static final long OFFSET$frameISize = LAYOUT.byteOffset(PATH$frameISize);
-    public static final long OFFSET$framePSize = LAYOUT.byteOffset(PATH$framePSize);
-    public static final long OFFSET$frameBSize = LAYOUT.byteOffset(PATH$frameBSize);
-
     public @unsigned int frameISize() {
         return segment.get(LAYOUT$frameISize, OFFSET$frameISize);
     }
@@ -102,4 +91,26 @@ public record VkVideoEncodeH264FrameSizeKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$frameBSize, OFFSET$frameBSize, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("frameISize"),
+        ValueLayout.JAVA_INT.withName("framePSize"),
+        ValueLayout.JAVA_INT.withName("frameBSize")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$frameISize = PathElement.groupElement("PATH$frameISize");
+    public static final PathElement PATH$framePSize = PathElement.groupElement("PATH$framePSize");
+    public static final PathElement PATH$frameBSize = PathElement.groupElement("PATH$frameBSize");
+
+    public static final OfInt LAYOUT$frameISize = (OfInt) LAYOUT.select(PATH$frameISize);
+    public static final OfInt LAYOUT$framePSize = (OfInt) LAYOUT.select(PATH$framePSize);
+    public static final OfInt LAYOUT$frameBSize = (OfInt) LAYOUT.select(PATH$frameBSize);
+
+    public static final long SIZE$frameISize = LAYOUT$frameISize.byteSize();
+    public static final long SIZE$framePSize = LAYOUT$framePSize.byteSize();
+    public static final long SIZE$frameBSize = LAYOUT$frameBSize.byteSize();
+
+    public static final long OFFSET$frameISize = LAYOUT.byteOffset(PATH$frameISize);
+    public static final long OFFSET$framePSize = LAYOUT.byteOffset(PATH$framePSize);
+    public static final long OFFSET$frameBSize = LAYOUT.byteOffset(PATH$frameBSize);
 }

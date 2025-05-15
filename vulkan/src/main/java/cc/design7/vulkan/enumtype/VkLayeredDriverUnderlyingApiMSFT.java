@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLayeredDriverUnderlyingApiMSFT.html">VkLayeredDriverUnderlyingApiMSFT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLayeredDriverUnderlyingApiMSFT.html"><code>VkLayeredDriverUnderlyingApiMSFT</code></a>
 public final class VkLayeredDriverUnderlyingApiMSFT {
     public static final int NONE = 0x0;
     public static final int D3D12 = 0x1;

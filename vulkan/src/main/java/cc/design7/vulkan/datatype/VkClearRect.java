@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkClearRect} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClearRect.html"><code>VkClearRect</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkClearRect {
+///     VkRect2D rect;
+///     uint32_t baseArrayLayer;
+///     uint32_t layerCount;
+/// } VkClearRect;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClearRect.html">VkClearRect</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClearRect.html"><code>VkClearRect</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkClearRect(@NotNull MemorySegment segment) implements IPointer {
     public static VkClearRect allocate(Arena arena) {
-        return new VkClearRect(arena.allocate(LAYOUT));
+        VkClearRect ret = new VkClearRect(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkClearRect[] allocate(Arena arena, int count) {
@@ -55,29 +67,6 @@ public record VkClearRect(@NotNull MemorySegment segment) implements IPointer {
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        VkRect2D.LAYOUT.withName("rect"),
-        ValueLayout.JAVA_INT.withName("baseArrayLayer"),
-        ValueLayout.JAVA_INT.withName("layerCount")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$rect = PathElement.groupElement("PATH$rect");
-    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("PATH$baseArrayLayer");
-    public static final PathElement PATH$layerCount = PathElement.groupElement("PATH$layerCount");
-
-    public static final StructLayout LAYOUT$rect = (StructLayout) LAYOUT.select(PATH$rect);
-    public static final OfInt LAYOUT$baseArrayLayer = (OfInt) LAYOUT.select(PATH$baseArrayLayer);
-    public static final OfInt LAYOUT$layerCount = (OfInt) LAYOUT.select(PATH$layerCount);
-
-    public static final long SIZE$rect = LAYOUT$rect.byteSize();
-    public static final long SIZE$baseArrayLayer = LAYOUT$baseArrayLayer.byteSize();
-    public static final long SIZE$layerCount = LAYOUT$layerCount.byteSize();
-
-    public static final long OFFSET$rect = LAYOUT.byteOffset(PATH$rect);
-    public static final long OFFSET$baseArrayLayer = LAYOUT.byteOffset(PATH$baseArrayLayer);
-    public static final long OFFSET$layerCount = LAYOUT.byteOffset(PATH$layerCount);
-
     public VkRect2D rect() {
         return new VkRect2D(segment.asSlice(OFFSET$rect, LAYOUT$rect));
     }
@@ -102,4 +91,26 @@ public record VkClearRect(@NotNull MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$layerCount, OFFSET$layerCount, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        VkRect2D.LAYOUT.withName("rect"),
+        ValueLayout.JAVA_INT.withName("baseArrayLayer"),
+        ValueLayout.JAVA_INT.withName("layerCount")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$rect = PathElement.groupElement("PATH$rect");
+    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("PATH$baseArrayLayer");
+    public static final PathElement PATH$layerCount = PathElement.groupElement("PATH$layerCount");
+
+    public static final StructLayout LAYOUT$rect = (StructLayout) LAYOUT.select(PATH$rect);
+    public static final OfInt LAYOUT$baseArrayLayer = (OfInt) LAYOUT.select(PATH$baseArrayLayer);
+    public static final OfInt LAYOUT$layerCount = (OfInt) LAYOUT.select(PATH$layerCount);
+
+    public static final long SIZE$rect = LAYOUT$rect.byteSize();
+    public static final long SIZE$baseArrayLayer = LAYOUT$baseArrayLayer.byteSize();
+    public static final long SIZE$layerCount = LAYOUT$layerCount.byteSize();
+
+    public static final long OFFSET$rect = LAYOUT.byteOffset(PATH$rect);
+    public static final long OFFSET$baseArrayLayer = LAYOUT.byteOffset(PATH$baseArrayLayer);
+    public static final long OFFSET$layerCount = LAYOUT.byteOffset(PATH$layerCount);
 }

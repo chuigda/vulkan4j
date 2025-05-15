@@ -17,6 +17,17 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoEncodeH265ReferenceListsInfoFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoEncodeH265ReferenceListsInfoFlags {
+///     uint32_t ref_pic_list_modification_flag_l0 : 1;
+///     uint32_t ref_pic_list_modification_flag_l1 : 1;
+///     uint32_t reserved : 30;
+/// } StdVideoEncodeH265ReferenceListsInfoFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +39,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeH265ReferenceListsInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeH265ReferenceListsInfoFlags allocate(Arena arena) {
-        return new StdVideoEncodeH265ReferenceListsInfoFlags(arena.allocate(LAYOUT));
+        StdVideoEncodeH265ReferenceListsInfoFlags ret = new StdVideoEncodeH265ReferenceListsInfoFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoEncodeH265ReferenceListsInfoFlags[] allocate(Arena arena, int count) {
@@ -54,18 +66,6 @@ public record StdVideoEncodeH265ReferenceListsInfoFlags(@NotNull MemorySegment s
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$ref_pic_list_modification_flag_l0_reserved")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$ref_pic_list_modification_flag_l0_reserved = PathElement.groupElement("PATH$bitfield$ref_pic_list_modification_flag_l0_reserved");
-
-    public static final OfInt LAYOUT$ref_pic_list_modification_flag_l0_reserved = (OfInt) LAYOUT.select(PATH$bitfield$ref_pic_list_modification_flag_l0_reserved);
-
-
-    public static final long OFFSET$ref_pic_list_modification_flag_l0_reserved = LAYOUT.byteOffset(PATH$bitfield$ref_pic_list_modification_flag_l0_reserved);
-
     public boolean ref_pic_list_modification_flag_l0() {
         MemorySegment s = segment.asSlice(OFFSET$ref_pic_list_modification_flag_l0_reserved, LAYOUT$ref_pic_list_modification_flag_l0_reserved);
         return BitfieldUtil.readBit(s, 0);
@@ -86,5 +86,15 @@ public record StdVideoEncodeH265ReferenceListsInfoFlags(@NotNull MemorySegment s
         BitfieldUtil.writeBit(s, 1, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$ref_pic_list_modification_flag_l0_reserved")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$bitfield$ref_pic_list_modification_flag_l0_reserved = PathElement.groupElement("PATH$bitfield$ref_pic_list_modification_flag_l0_reserved");
+
+    public static final OfInt LAYOUT$ref_pic_list_modification_flag_l0_reserved = (OfInt) LAYOUT.select(PATH$bitfield$ref_pic_list_modification_flag_l0_reserved);
+
+
+    public static final long OFFSET$ref_pic_list_modification_flag_l0_reserved = LAYOUT.byteOffset(PATH$bitfield$ref_pic_list_modification_flag_l0_reserved);
 }

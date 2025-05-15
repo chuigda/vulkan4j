@@ -14,8 +14,36 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceTransformFeedbackPropertiesEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceTransformFeedbackPropertiesEXT.html"><code>VkPhysicalDeviceTransformFeedbackPropertiesEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceTransformFeedbackPropertiesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t maxTransformFeedbackStreams;
+///     uint32_t maxTransformFeedbackBuffers;
+///     VkDeviceSize maxTransformFeedbackBufferSize;
+///     uint32_t maxTransformFeedbackStreamDataSize;
+///     uint32_t maxTransformFeedbackBufferDataSize;
+///     uint32_t maxTransformFeedbackBufferDataStride;
+///     VkBool32 transformFeedbackQueries;
+///     VkBool32 transformFeedbackStreamsLinesTriangles;
+///     VkBool32 transformFeedbackRasterizationStreamSelect;
+///     VkBool32 transformFeedbackDraw;
+/// } VkPhysicalDeviceTransformFeedbackPropertiesEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT`
+///
+/// The {@link VkPhysicalDeviceTransformFeedbackPropertiesEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceTransformFeedbackPropertiesEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +52,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceTransformFeedbackPropertiesEXT.html">VkPhysicalDeviceTransformFeedbackPropertiesEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceTransformFeedbackPropertiesEXT.html"><code>VkPhysicalDeviceTransformFeedbackPropertiesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceTransformFeedbackPropertiesEXT {
-        sType(VkStructureType.PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT);
-    }
-
     public static VkPhysicalDeviceTransformFeedbackPropertiesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceTransformFeedbackPropertiesEXT(arena.allocate(LAYOUT));
+        VkPhysicalDeviceTransformFeedbackPropertiesEXT ret = new VkPhysicalDeviceTransformFeedbackPropertiesEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT);
+        return ret;
     }
 
     public static VkPhysicalDeviceTransformFeedbackPropertiesEXT[] allocate(Arena arena, int count) {
@@ -41,6 +67,7 @@ public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(@NotNull MemorySegm
         VkPhysicalDeviceTransformFeedbackPropertiesEXT[] ret = new VkPhysicalDeviceTransformFeedbackPropertiesEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceTransformFeedbackPropertiesEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT);
         }
         return ret;
     }
@@ -59,73 +86,9 @@ public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(@NotNull MemorySegm
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("maxTransformFeedbackStreams"),
-        ValueLayout.JAVA_INT.withName("maxTransformFeedbackBuffers"),
-        ValueLayout.JAVA_LONG.withName("maxTransformFeedbackBufferSize"),
-        ValueLayout.JAVA_INT.withName("maxTransformFeedbackStreamDataSize"),
-        ValueLayout.JAVA_INT.withName("maxTransformFeedbackBufferDataSize"),
-        ValueLayout.JAVA_INT.withName("maxTransformFeedbackBufferDataStride"),
-        ValueLayout.JAVA_INT.withName("transformFeedbackQueries"),
-        ValueLayout.JAVA_INT.withName("transformFeedbackStreamsLinesTriangles"),
-        ValueLayout.JAVA_INT.withName("transformFeedbackRasterizationStreamSelect"),
-        ValueLayout.JAVA_INT.withName("transformFeedbackDraw")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxTransformFeedbackStreams = PathElement.groupElement("PATH$maxTransformFeedbackStreams");
-    public static final PathElement PATH$maxTransformFeedbackBuffers = PathElement.groupElement("PATH$maxTransformFeedbackBuffers");
-    public static final PathElement PATH$maxTransformFeedbackBufferSize = PathElement.groupElement("PATH$maxTransformFeedbackBufferSize");
-    public static final PathElement PATH$maxTransformFeedbackStreamDataSize = PathElement.groupElement("PATH$maxTransformFeedbackStreamDataSize");
-    public static final PathElement PATH$maxTransformFeedbackBufferDataSize = PathElement.groupElement("PATH$maxTransformFeedbackBufferDataSize");
-    public static final PathElement PATH$maxTransformFeedbackBufferDataStride = PathElement.groupElement("PATH$maxTransformFeedbackBufferDataStride");
-    public static final PathElement PATH$transformFeedbackQueries = PathElement.groupElement("PATH$transformFeedbackQueries");
-    public static final PathElement PATH$transformFeedbackStreamsLinesTriangles = PathElement.groupElement("PATH$transformFeedbackStreamsLinesTriangles");
-    public static final PathElement PATH$transformFeedbackRasterizationStreamSelect = PathElement.groupElement("PATH$transformFeedbackRasterizationStreamSelect");
-    public static final PathElement PATH$transformFeedbackDraw = PathElement.groupElement("PATH$transformFeedbackDraw");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$maxTransformFeedbackStreams = (OfInt) LAYOUT.select(PATH$maxTransformFeedbackStreams);
-    public static final OfInt LAYOUT$maxTransformFeedbackBuffers = (OfInt) LAYOUT.select(PATH$maxTransformFeedbackBuffers);
-    public static final OfLong LAYOUT$maxTransformFeedbackBufferSize = (OfLong) LAYOUT.select(PATH$maxTransformFeedbackBufferSize);
-    public static final OfInt LAYOUT$maxTransformFeedbackStreamDataSize = (OfInt) LAYOUT.select(PATH$maxTransformFeedbackStreamDataSize);
-    public static final OfInt LAYOUT$maxTransformFeedbackBufferDataSize = (OfInt) LAYOUT.select(PATH$maxTransformFeedbackBufferDataSize);
-    public static final OfInt LAYOUT$maxTransformFeedbackBufferDataStride = (OfInt) LAYOUT.select(PATH$maxTransformFeedbackBufferDataStride);
-    public static final OfInt LAYOUT$transformFeedbackQueries = (OfInt) LAYOUT.select(PATH$transformFeedbackQueries);
-    public static final OfInt LAYOUT$transformFeedbackStreamsLinesTriangles = (OfInt) LAYOUT.select(PATH$transformFeedbackStreamsLinesTriangles);
-    public static final OfInt LAYOUT$transformFeedbackRasterizationStreamSelect = (OfInt) LAYOUT.select(PATH$transformFeedbackRasterizationStreamSelect);
-    public static final OfInt LAYOUT$transformFeedbackDraw = (OfInt) LAYOUT.select(PATH$transformFeedbackDraw);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$maxTransformFeedbackStreams = LAYOUT$maxTransformFeedbackStreams.byteSize();
-    public static final long SIZE$maxTransformFeedbackBuffers = LAYOUT$maxTransformFeedbackBuffers.byteSize();
-    public static final long SIZE$maxTransformFeedbackBufferSize = LAYOUT$maxTransformFeedbackBufferSize.byteSize();
-    public static final long SIZE$maxTransformFeedbackStreamDataSize = LAYOUT$maxTransformFeedbackStreamDataSize.byteSize();
-    public static final long SIZE$maxTransformFeedbackBufferDataSize = LAYOUT$maxTransformFeedbackBufferDataSize.byteSize();
-    public static final long SIZE$maxTransformFeedbackBufferDataStride = LAYOUT$maxTransformFeedbackBufferDataStride.byteSize();
-    public static final long SIZE$transformFeedbackQueries = LAYOUT$transformFeedbackQueries.byteSize();
-    public static final long SIZE$transformFeedbackStreamsLinesTriangles = LAYOUT$transformFeedbackStreamsLinesTriangles.byteSize();
-    public static final long SIZE$transformFeedbackRasterizationStreamSelect = LAYOUT$transformFeedbackRasterizationStreamSelect.byteSize();
-    public static final long SIZE$transformFeedbackDraw = LAYOUT$transformFeedbackDraw.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$maxTransformFeedbackStreams = LAYOUT.byteOffset(PATH$maxTransformFeedbackStreams);
-    public static final long OFFSET$maxTransformFeedbackBuffers = LAYOUT.byteOffset(PATH$maxTransformFeedbackBuffers);
-    public static final long OFFSET$maxTransformFeedbackBufferSize = LAYOUT.byteOffset(PATH$maxTransformFeedbackBufferSize);
-    public static final long OFFSET$maxTransformFeedbackStreamDataSize = LAYOUT.byteOffset(PATH$maxTransformFeedbackStreamDataSize);
-    public static final long OFFSET$maxTransformFeedbackBufferDataSize = LAYOUT.byteOffset(PATH$maxTransformFeedbackBufferDataSize);
-    public static final long OFFSET$maxTransformFeedbackBufferDataStride = LAYOUT.byteOffset(PATH$maxTransformFeedbackBufferDataStride);
-    public static final long OFFSET$transformFeedbackQueries = LAYOUT.byteOffset(PATH$transformFeedbackQueries);
-    public static final long OFFSET$transformFeedbackStreamsLinesTriangles = LAYOUT.byteOffset(PATH$transformFeedbackStreamsLinesTriangles);
-    public static final long OFFSET$transformFeedbackRasterizationStreamSelect = LAYOUT.byteOffset(PATH$transformFeedbackRasterizationStreamSelect);
-    public static final long OFFSET$transformFeedbackDraw = LAYOUT.byteOffset(PATH$transformFeedbackDraw);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -227,4 +190,71 @@ public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(@NotNull MemorySegm
         segment.set(LAYOUT$transformFeedbackDraw, OFFSET$transformFeedbackDraw, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maxTransformFeedbackStreams"),
+        ValueLayout.JAVA_INT.withName("maxTransformFeedbackBuffers"),
+        ValueLayout.JAVA_LONG.withName("maxTransformFeedbackBufferSize"),
+        ValueLayout.JAVA_INT.withName("maxTransformFeedbackStreamDataSize"),
+        ValueLayout.JAVA_INT.withName("maxTransformFeedbackBufferDataSize"),
+        ValueLayout.JAVA_INT.withName("maxTransformFeedbackBufferDataStride"),
+        ValueLayout.JAVA_INT.withName("transformFeedbackQueries"),
+        ValueLayout.JAVA_INT.withName("transformFeedbackStreamsLinesTriangles"),
+        ValueLayout.JAVA_INT.withName("transformFeedbackRasterizationStreamSelect"),
+        ValueLayout.JAVA_INT.withName("transformFeedbackDraw")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$maxTransformFeedbackStreams = PathElement.groupElement("PATH$maxTransformFeedbackStreams");
+    public static final PathElement PATH$maxTransformFeedbackBuffers = PathElement.groupElement("PATH$maxTransformFeedbackBuffers");
+    public static final PathElement PATH$maxTransformFeedbackBufferSize = PathElement.groupElement("PATH$maxTransformFeedbackBufferSize");
+    public static final PathElement PATH$maxTransformFeedbackStreamDataSize = PathElement.groupElement("PATH$maxTransformFeedbackStreamDataSize");
+    public static final PathElement PATH$maxTransformFeedbackBufferDataSize = PathElement.groupElement("PATH$maxTransformFeedbackBufferDataSize");
+    public static final PathElement PATH$maxTransformFeedbackBufferDataStride = PathElement.groupElement("PATH$maxTransformFeedbackBufferDataStride");
+    public static final PathElement PATH$transformFeedbackQueries = PathElement.groupElement("PATH$transformFeedbackQueries");
+    public static final PathElement PATH$transformFeedbackStreamsLinesTriangles = PathElement.groupElement("PATH$transformFeedbackStreamsLinesTriangles");
+    public static final PathElement PATH$transformFeedbackRasterizationStreamSelect = PathElement.groupElement("PATH$transformFeedbackRasterizationStreamSelect");
+    public static final PathElement PATH$transformFeedbackDraw = PathElement.groupElement("PATH$transformFeedbackDraw");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maxTransformFeedbackStreams = (OfInt) LAYOUT.select(PATH$maxTransformFeedbackStreams);
+    public static final OfInt LAYOUT$maxTransformFeedbackBuffers = (OfInt) LAYOUT.select(PATH$maxTransformFeedbackBuffers);
+    public static final OfLong LAYOUT$maxTransformFeedbackBufferSize = (OfLong) LAYOUT.select(PATH$maxTransformFeedbackBufferSize);
+    public static final OfInt LAYOUT$maxTransformFeedbackStreamDataSize = (OfInt) LAYOUT.select(PATH$maxTransformFeedbackStreamDataSize);
+    public static final OfInt LAYOUT$maxTransformFeedbackBufferDataSize = (OfInt) LAYOUT.select(PATH$maxTransformFeedbackBufferDataSize);
+    public static final OfInt LAYOUT$maxTransformFeedbackBufferDataStride = (OfInt) LAYOUT.select(PATH$maxTransformFeedbackBufferDataStride);
+    public static final OfInt LAYOUT$transformFeedbackQueries = (OfInt) LAYOUT.select(PATH$transformFeedbackQueries);
+    public static final OfInt LAYOUT$transformFeedbackStreamsLinesTriangles = (OfInt) LAYOUT.select(PATH$transformFeedbackStreamsLinesTriangles);
+    public static final OfInt LAYOUT$transformFeedbackRasterizationStreamSelect = (OfInt) LAYOUT.select(PATH$transformFeedbackRasterizationStreamSelect);
+    public static final OfInt LAYOUT$transformFeedbackDraw = (OfInt) LAYOUT.select(PATH$transformFeedbackDraw);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxTransformFeedbackStreams = LAYOUT$maxTransformFeedbackStreams.byteSize();
+    public static final long SIZE$maxTransformFeedbackBuffers = LAYOUT$maxTransformFeedbackBuffers.byteSize();
+    public static final long SIZE$maxTransformFeedbackBufferSize = LAYOUT$maxTransformFeedbackBufferSize.byteSize();
+    public static final long SIZE$maxTransformFeedbackStreamDataSize = LAYOUT$maxTransformFeedbackStreamDataSize.byteSize();
+    public static final long SIZE$maxTransformFeedbackBufferDataSize = LAYOUT$maxTransformFeedbackBufferDataSize.byteSize();
+    public static final long SIZE$maxTransformFeedbackBufferDataStride = LAYOUT$maxTransformFeedbackBufferDataStride.byteSize();
+    public static final long SIZE$transformFeedbackQueries = LAYOUT$transformFeedbackQueries.byteSize();
+    public static final long SIZE$transformFeedbackStreamsLinesTriangles = LAYOUT$transformFeedbackStreamsLinesTriangles.byteSize();
+    public static final long SIZE$transformFeedbackRasterizationStreamSelect = LAYOUT$transformFeedbackRasterizationStreamSelect.byteSize();
+    public static final long SIZE$transformFeedbackDraw = LAYOUT$transformFeedbackDraw.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$maxTransformFeedbackStreams = LAYOUT.byteOffset(PATH$maxTransformFeedbackStreams);
+    public static final long OFFSET$maxTransformFeedbackBuffers = LAYOUT.byteOffset(PATH$maxTransformFeedbackBuffers);
+    public static final long OFFSET$maxTransformFeedbackBufferSize = LAYOUT.byteOffset(PATH$maxTransformFeedbackBufferSize);
+    public static final long OFFSET$maxTransformFeedbackStreamDataSize = LAYOUT.byteOffset(PATH$maxTransformFeedbackStreamDataSize);
+    public static final long OFFSET$maxTransformFeedbackBufferDataSize = LAYOUT.byteOffset(PATH$maxTransformFeedbackBufferDataSize);
+    public static final long OFFSET$maxTransformFeedbackBufferDataStride = LAYOUT.byteOffset(PATH$maxTransformFeedbackBufferDataStride);
+    public static final long OFFSET$transformFeedbackQueries = LAYOUT.byteOffset(PATH$transformFeedbackQueries);
+    public static final long OFFSET$transformFeedbackStreamsLinesTriangles = LAYOUT.byteOffset(PATH$transformFeedbackStreamsLinesTriangles);
+    public static final long OFFSET$transformFeedbackRasterizationStreamSelect = LAYOUT.byteOffset(PATH$transformFeedbackRasterizationStreamSelect);
+    public static final long OFFSET$transformFeedbackDraw = LAYOUT.byteOffset(PATH$transformFeedbackDraw);
 }

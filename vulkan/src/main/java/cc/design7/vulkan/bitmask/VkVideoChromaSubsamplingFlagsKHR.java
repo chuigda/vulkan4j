@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoChromaSubsamplingFlagsKHR.html">VkVideoChromaSubsamplingFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoChromaSubsamplingFlagsKHR.html"><code>VkVideoChromaSubsamplingFlagsKHR</code></a>
 public final class VkVideoChromaSubsamplingFlagsKHR {
     public static final int _420 = 0x2;
     public static final int _422 = 0x4;

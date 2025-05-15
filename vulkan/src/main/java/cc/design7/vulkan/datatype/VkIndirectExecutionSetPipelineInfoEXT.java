@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkIndirectExecutionSetPipelineInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectExecutionSetPipelineInfoEXT.html"><code>VkIndirectExecutionSetPipelineInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkIndirectExecutionSetPipelineInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkPipeline initialPipeline;
+///     uint32_t maxPipelineCount;
+/// } VkIndirectExecutionSetPipelineInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_PIPELINE_INFO_EXT`
+///
+/// The {@link VkIndirectExecutionSetPipelineInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkIndirectExecutionSetPipelineInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectExecutionSetPipelineInfoEXT.html">VkIndirectExecutionSetPipelineInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectExecutionSetPipelineInfoEXT.html"><code>VkIndirectExecutionSetPipelineInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkIndirectExecutionSetPipelineInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkIndirectExecutionSetPipelineInfoEXT {
-        sType(VkStructureType.INDIRECT_EXECUTION_SET_PIPELINE_INFO_EXT);
-    }
-
     public static VkIndirectExecutionSetPipelineInfoEXT allocate(Arena arena) {
-        return new VkIndirectExecutionSetPipelineInfoEXT(arena.allocate(LAYOUT));
+        VkIndirectExecutionSetPipelineInfoEXT ret = new VkIndirectExecutionSetPipelineInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.INDIRECT_EXECUTION_SET_PIPELINE_INFO_EXT);
+        return ret;
     }
 
     public static VkIndirectExecutionSetPipelineInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkIndirectExecutionSetPipelineInfoEXT(@NotNull MemorySegment segme
         VkIndirectExecutionSetPipelineInfoEXT[] ret = new VkIndirectExecutionSetPipelineInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkIndirectExecutionSetPipelineInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.INDIRECT_EXECUTION_SET_PIPELINE_INFO_EXT);
         }
         return ret;
     }
@@ -57,6 +76,50 @@ public record VkIndirectExecutionSetPipelineInfoEXT(@NotNull MemorySegment segme
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.INDIRECT_EXECUTION_SET_PIPELINE_INFO_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkPipeline initialPipeline() {
+        MemorySegment s = segment.asSlice(OFFSET$initialPipeline, SIZE$initialPipeline);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipeline(s);
+    }
+
+    public void initialPipeline(@Nullable VkPipeline value) {
+        segment.set(LAYOUT$initialPipeline, OFFSET$initialPipeline, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned int maxPipelineCount() {
+        return segment.get(LAYOUT$maxPipelineCount, OFFSET$maxPipelineCount);
+    }
+
+    public void maxPipelineCount(@unsigned int value) {
+        segment.set(LAYOUT$maxPipelineCount, OFFSET$maxPipelineCount, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -86,45 +149,4 @@ public record VkIndirectExecutionSetPipelineInfoEXT(@NotNull MemorySegment segme
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$initialPipeline = LAYOUT.byteOffset(PATH$initialPipeline);
     public static final long OFFSET$maxPipelineCount = LAYOUT.byteOffset(PATH$maxPipelineCount);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkPipeline initialPipeline() {
-        MemorySegment s = segment.asSlice(OFFSET$initialPipeline, SIZE$initialPipeline);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPipeline(s);
-    }
-
-    public void initialPipeline(@Nullable VkPipeline value) {
-        segment.set(LAYOUT$initialPipeline, OFFSET$initialPipeline, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned int maxPipelineCount() {
-        return segment.get(LAYOUT$maxPipelineCount, OFFSET$maxPipelineCount);
-    }
-
-    public void maxPipelineCount(@unsigned int value) {
-        segment.set(LAYOUT$maxPipelineCount, OFFSET$maxPipelineCount, value);
-    }
-
 }

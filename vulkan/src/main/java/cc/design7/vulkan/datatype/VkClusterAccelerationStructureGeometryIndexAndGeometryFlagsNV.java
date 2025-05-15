@@ -15,8 +15,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.html"><code>VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV {
+///     uint32_t geometryIndex : 24;
+///     uint32_t reserved : 5;
+///     uint32_t geometryFlags : 3;
+/// } VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -25,12 +36,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.html">VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.html"><code>VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV allocate(Arena arena) {
-        return new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(arena.allocate(LAYOUT));
+        VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV ret = new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV[] allocate(Arena arena, int count) {
@@ -56,6 +68,25 @@ public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@Not
         return ret;
     }
 
+    public @unsigned int geometryIndex() {
+        MemorySegment s = segment.asSlice(OFFSET$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
+        return BitfieldUtil.readBits(s, 0, 24);
+    }
+
+    public void geometryIndex(@unsigned int value) {
+        MemorySegment s = segment.asSlice(OFFSET$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
+        BitfieldUtil.writeBits(s, 0, 24, value);
+    }
+    public @unsigned int geometryFlags() {
+        MemorySegment s = segment.asSlice(OFFSET$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
+        return BitfieldUtil.readBits(s, 29, 32);
+    }
+
+    public void geometryFlags(@unsigned int value) {
+        MemorySegment s = segment.asSlice(OFFSET$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
+        BitfieldUtil.writeBits(s, 29, 32, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$geometryIndex_geometryFlags")
     );
@@ -67,25 +98,4 @@ public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@Not
 
 
     public static final long OFFSET$geometryIndex_geometryFlags = LAYOUT.byteOffset(PATH$bitfield$geometryIndex_geometryFlags);
-
-    public @unsigned int geometryIndex() {
-        MemorySegment s = segment.asSlice(OFFSET$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
-        return BitfieldUtil.readBits(s, 0, 24);
-    }
-
-    public void geometryIndex(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
-        BitfieldUtil.writeBits(s, 0, 24, value);
-    }
-
-    public @unsigned int geometryFlags() {
-        MemorySegment s = segment.asSlice(OFFSET$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
-        return BitfieldUtil.readBits(s, 29, 32);
-    }
-
-    public void geometryFlags(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
-        BitfieldUtil.writeBits(s, 29, 32, value);
-    }
-
 }

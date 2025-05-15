@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineStageFlags2.html">VkPipelineStageFlags2</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineStageFlags2.html"><code>VkPipelineStageFlags2</code></a>
 public final class VkPipelineStageFlags2 {
     public static final long ACCELERATION_STRUCTURE_BUILD_KHR = 0x2000000L;
     public static final long ACCELERATION_STRUCTURE_COPY_KHR = 0x10000000L;

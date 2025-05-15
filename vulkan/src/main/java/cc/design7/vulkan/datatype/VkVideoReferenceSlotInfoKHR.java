@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoReferenceSlotInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoReferenceSlotInfoKHR.html"><code>VkVideoReferenceSlotInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoReferenceSlotInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     int32_t slotIndex;
+///     VkVideoPictureResourceInfoKHR const* pPictureResource;
+/// } VkVideoReferenceSlotInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VIDEO_REFERENCE_SLOT_INFO_KHR`
+///
+/// The {@link VkVideoReferenceSlotInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkVideoReferenceSlotInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoReferenceSlotInfoKHR.html">VkVideoReferenceSlotInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoReferenceSlotInfoKHR.html"><code>VkVideoReferenceSlotInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkVideoReferenceSlotInfoKHR {
-        sType(VkStructureType.VIDEO_REFERENCE_SLOT_INFO_KHR);
-    }
-
     public static VkVideoReferenceSlotInfoKHR allocate(Arena arena) {
-        return new VkVideoReferenceSlotInfoKHR(arena.allocate(LAYOUT));
+        VkVideoReferenceSlotInfoKHR ret = new VkVideoReferenceSlotInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VIDEO_REFERENCE_SLOT_INFO_KHR);
+        return ret;
     }
 
     public static VkVideoReferenceSlotInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
         VkVideoReferenceSlotInfoKHR[] ret = new VkVideoReferenceSlotInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkVideoReferenceSlotInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VIDEO_REFERENCE_SLOT_INFO_KHR);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("slotIndex"),
-        ValueLayout.ADDRESS.withTargetLayout(VkVideoPictureResourceInfoKHR.LAYOUT).withName("pPictureResource")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$slotIndex = PathElement.groupElement("PATH$slotIndex");
-    public static final PathElement PATH$pPictureResource = PathElement.groupElement("PATH$pPictureResource");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$slotIndex = (OfInt) LAYOUT.select(PATH$slotIndex);
-    public static final AddressLayout LAYOUT$pPictureResource = (AddressLayout) LAYOUT.select(PATH$pPictureResource);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$slotIndex = LAYOUT$slotIndex.byteSize();
-    public static final long SIZE$pPictureResource = LAYOUT$pPictureResource.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$slotIndex = LAYOUT.byteOffset(PATH$slotIndex);
-    public static final long OFFSET$pPictureResource = LAYOUT.byteOffset(PATH$pPictureResource);
+    public void autoInit() {
+        sType(VkStructureType.VIDEO_REFERENCE_SLOT_INFO_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -125,7 +120,7 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
 
     public @Nullable VkVideoPictureResourceInfoKHR pPictureResource() {
         MemorySegment s = pPictureResourceRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkVideoPictureResourceInfoKHR(s);
@@ -138,7 +133,7 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
 
     @unsafe public @Nullable VkVideoPictureResourceInfoKHR[] pPictureResource(int assumedCount) {
         MemorySegment s = pPictureResourceRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -150,4 +145,31 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("slotIndex"),
+        ValueLayout.ADDRESS.withTargetLayout(VkVideoPictureResourceInfoKHR.LAYOUT).withName("pPictureResource")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$slotIndex = PathElement.groupElement("PATH$slotIndex");
+    public static final PathElement PATH$pPictureResource = PathElement.groupElement("PATH$pPictureResource");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$slotIndex = (OfInt) LAYOUT.select(PATH$slotIndex);
+    public static final AddressLayout LAYOUT$pPictureResource = (AddressLayout) LAYOUT.select(PATH$pPictureResource);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$slotIndex = LAYOUT$slotIndex.byteSize();
+    public static final long SIZE$pPictureResource = LAYOUT$pPictureResource.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$slotIndex = LAYOUT.byteOffset(PATH$slotIndex);
+    public static final long OFFSET$pPictureResource = LAYOUT.byteOffset(PATH$pPictureResource);
 }

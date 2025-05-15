@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkSwapchainDisplayNativeHdrCreateInfoAMD} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSwapchainDisplayNativeHdrCreateInfoAMD.html"><code>VkSwapchainDisplayNativeHdrCreateInfoAMD</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkSwapchainDisplayNativeHdrCreateInfoAMD {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkBool32 localDimmingEnable;
+/// } VkSwapchainDisplayNativeHdrCreateInfoAMD;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD`
+///
+/// The {@link VkSwapchainDisplayNativeHdrCreateInfoAMD#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkSwapchainDisplayNativeHdrCreateInfoAMD#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSwapchainDisplayNativeHdrCreateInfoAMD.html">VkSwapchainDisplayNativeHdrCreateInfoAMD</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSwapchainDisplayNativeHdrCreateInfoAMD.html"><code>VkSwapchainDisplayNativeHdrCreateInfoAMD</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkSwapchainDisplayNativeHdrCreateInfoAMD(@NotNull MemorySegment segment) implements IPointer {
-    public VkSwapchainDisplayNativeHdrCreateInfoAMD {
-        sType(VkStructureType.SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD);
-    }
-
     public static VkSwapchainDisplayNativeHdrCreateInfoAMD allocate(Arena arena) {
-        return new VkSwapchainDisplayNativeHdrCreateInfoAMD(arena.allocate(LAYOUT));
+        VkSwapchainDisplayNativeHdrCreateInfoAMD ret = new VkSwapchainDisplayNativeHdrCreateInfoAMD(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD);
+        return ret;
     }
 
     public static VkSwapchainDisplayNativeHdrCreateInfoAMD[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkSwapchainDisplayNativeHdrCreateInfoAMD(@NotNull MemorySegment se
         VkSwapchainDisplayNativeHdrCreateInfoAMD[] ret = new VkSwapchainDisplayNativeHdrCreateInfoAMD[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkSwapchainDisplayNativeHdrCreateInfoAMD(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkSwapchainDisplayNativeHdrCreateInfoAMD(@NotNull MemorySegment se
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("localDimmingEnable")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$localDimmingEnable = PathElement.groupElement("PATH$localDimmingEnable");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$localDimmingEnable = (OfInt) LAYOUT.select(PATH$localDimmingEnable);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$localDimmingEnable = LAYOUT$localDimmingEnable.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$localDimmingEnable = LAYOUT.byteOffset(PATH$localDimmingEnable);
+    public void autoInit() {
+        sType(VkStructureType.SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkSwapchainDisplayNativeHdrCreateInfoAMD(@NotNull MemorySegment se
         segment.set(LAYOUT$localDimmingEnable, OFFSET$localDimmingEnable, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("localDimmingEnable")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$localDimmingEnable = PathElement.groupElement("PATH$localDimmingEnable");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$localDimmingEnable = (OfInt) LAYOUT.select(PATH$localDimmingEnable);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$localDimmingEnable = LAYOUT$localDimmingEnable.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$localDimmingEnable = LAYOUT.byteOffset(PATH$localDimmingEnable);
 }

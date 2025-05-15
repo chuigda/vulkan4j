@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkAttachmentSampleCountInfoAMD} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentSampleCountInfoAMD.html"><code>VkAttachmentSampleCountInfoAMD</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkAttachmentSampleCountInfoAMD {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t colorAttachmentCount;
+///     VkSampleCountFlags const* pColorAttachmentSamples;
+///     VkSampleCountFlags depthStencilAttachmentSamples;
+/// } VkAttachmentSampleCountInfoAMD;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_AMD`
+///
+/// The {@link VkAttachmentSampleCountInfoAMD#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkAttachmentSampleCountInfoAMD#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentSampleCountInfoAMD.html">VkAttachmentSampleCountInfoAMD</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentSampleCountInfoAMD.html"><code>VkAttachmentSampleCountInfoAMD</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) implements IPointer {
-    public VkAttachmentSampleCountInfoAMD {
-        sType(VkStructureType.ATTACHMENT_SAMPLE_COUNT_INFO_AMD);
-    }
-
     public static VkAttachmentSampleCountInfoAMD allocate(Arena arena) {
-        return new VkAttachmentSampleCountInfoAMD(arena.allocate(LAYOUT));
+        VkAttachmentSampleCountInfoAMD ret = new VkAttachmentSampleCountInfoAMD(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.ATTACHMENT_SAMPLE_COUNT_INFO_AMD);
+        return ret;
     }
 
     public static VkAttachmentSampleCountInfoAMD[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         VkAttachmentSampleCountInfoAMD[] ret = new VkAttachmentSampleCountInfoAMD[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkAttachmentSampleCountInfoAMD(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.ATTACHMENT_SAMPLE_COUNT_INFO_AMD);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("colorAttachmentCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pColorAttachmentSamples"),
-        ValueLayout.JAVA_INT.withName("depthStencilAttachmentSamples")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$colorAttachmentCount = PathElement.groupElement("PATH$colorAttachmentCount");
-    public static final PathElement PATH$pColorAttachmentSamples = PathElement.groupElement("PATH$pColorAttachmentSamples");
-    public static final PathElement PATH$depthStencilAttachmentSamples = PathElement.groupElement("PATH$depthStencilAttachmentSamples");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$colorAttachmentCount = (OfInt) LAYOUT.select(PATH$colorAttachmentCount);
-    public static final AddressLayout LAYOUT$pColorAttachmentSamples = (AddressLayout) LAYOUT.select(PATH$pColorAttachmentSamples);
-    public static final OfInt LAYOUT$depthStencilAttachmentSamples = (OfInt) LAYOUT.select(PATH$depthStencilAttachmentSamples);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$colorAttachmentCount = LAYOUT$colorAttachmentCount.byteSize();
-    public static final long SIZE$pColorAttachmentSamples = LAYOUT$pColorAttachmentSamples.byteSize();
-    public static final long SIZE$depthStencilAttachmentSamples = LAYOUT$depthStencilAttachmentSamples.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$colorAttachmentCount = LAYOUT.byteOffset(PATH$colorAttachmentCount);
-    public static final long OFFSET$pColorAttachmentSamples = LAYOUT.byteOffset(PATH$pColorAttachmentSamples);
-    public static final long OFFSET$depthStencilAttachmentSamples = LAYOUT.byteOffset(PATH$depthStencilAttachmentSamples);
+    public void autoInit() {
+        sType(VkStructureType.ATTACHMENT_SAMPLE_COUNT_INFO_AMD);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -134,7 +125,7 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
     /// or writing to the buffer.
     public @Nullable @enumtype(VkSampleCountFlags.class) IntPtr pColorAttachmentSamples() {
         MemorySegment s = pColorAttachmentSamplesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -153,4 +144,36 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$depthStencilAttachmentSamples, OFFSET$depthStencilAttachmentSamples, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("colorAttachmentCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pColorAttachmentSamples"),
+        ValueLayout.JAVA_INT.withName("depthStencilAttachmentSamples")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$colorAttachmentCount = PathElement.groupElement("PATH$colorAttachmentCount");
+    public static final PathElement PATH$pColorAttachmentSamples = PathElement.groupElement("PATH$pColorAttachmentSamples");
+    public static final PathElement PATH$depthStencilAttachmentSamples = PathElement.groupElement("PATH$depthStencilAttachmentSamples");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$colorAttachmentCount = (OfInt) LAYOUT.select(PATH$colorAttachmentCount);
+    public static final AddressLayout LAYOUT$pColorAttachmentSamples = (AddressLayout) LAYOUT.select(PATH$pColorAttachmentSamples);
+    public static final OfInt LAYOUT$depthStencilAttachmentSamples = (OfInt) LAYOUT.select(PATH$depthStencilAttachmentSamples);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$colorAttachmentCount = LAYOUT$colorAttachmentCount.byteSize();
+    public static final long SIZE$pColorAttachmentSamples = LAYOUT$pColorAttachmentSamples.byteSize();
+    public static final long SIZE$depthStencilAttachmentSamples = LAYOUT$depthStencilAttachmentSamples.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$colorAttachmentCount = LAYOUT.byteOffset(PATH$colorAttachmentCount);
+    public static final long OFFSET$pColorAttachmentSamples = LAYOUT.byteOffset(PATH$pColorAttachmentSamples);
+    public static final long OFFSET$depthStencilAttachmentSamples = LAYOUT.byteOffset(PATH$depthStencilAttachmentSamples);
 }

@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerAddressMode.html">VkSamplerAddressMode</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerAddressMode.html"><code>VkSamplerAddressMode</code></a>
 public final class VkSamplerAddressMode {
     public static final int REPEAT = 0x0;
     public static final int MIRRORED_REPEAT = 0x1;

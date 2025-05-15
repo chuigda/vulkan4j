@@ -16,6 +16,16 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoAV1Segmentation} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoAV1Segmentation {
+///     uint8_t FeatureEnabled;
+///     int16_t FeatureData;
+/// } StdVideoAV1Segmentation;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +37,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1Segmentation allocate(Arena arena) {
-        return new StdVideoAV1Segmentation(arena.allocate(LAYOUT));
+        StdVideoAV1Segmentation ret = new StdVideoAV1Segmentation(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoAV1Segmentation[] allocate(Arena arena, int count) {
@@ -53,6 +64,22 @@ public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public @unsigned byte FeatureEnabled() {
+        return segment.get(LAYOUT$FeatureEnabled, OFFSET$FeatureEnabled);
+    }
+
+    public void FeatureEnabled(@unsigned byte value) {
+        segment.set(LAYOUT$FeatureEnabled, OFFSET$FeatureEnabled, value);
+    }
+
+    public short FeatureData() {
+        return segment.get(LAYOUT$FeatureData, OFFSET$FeatureData);
+    }
+
+    public void FeatureData(short value) {
+        segment.set(LAYOUT$FeatureData, OFFSET$FeatureData, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_BYTE.withName("FeatureEnabled"),
         ValueLayout.JAVA_SHORT.withName("FeatureData")
@@ -70,21 +97,4 @@ public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements
 
     public static final long OFFSET$FeatureEnabled = LAYOUT.byteOffset(PATH$FeatureEnabled);
     public static final long OFFSET$FeatureData = LAYOUT.byteOffset(PATH$FeatureData);
-
-    public @unsigned byte FeatureEnabled() {
-        return segment.get(LAYOUT$FeatureEnabled, OFFSET$FeatureEnabled);
-    }
-
-    public void FeatureEnabled(@unsigned byte value) {
-        segment.set(LAYOUT$FeatureEnabled, OFFSET$FeatureEnabled, value);
-    }
-
-    public short FeatureData() {
-        return segment.get(LAYOUT$FeatureData, OFFSET$FeatureData);
-    }
-
-    public void FeatureData(short value) {
-        segment.set(LAYOUT$FeatureData, OFFSET$FeatureData, value);
-    }
-
 }

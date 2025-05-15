@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1StdFlagsKHR.html">VkVideoEncodeAV1StdFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1StdFlagsKHR.html"><code>VkVideoEncodeAV1StdFlagsKHR</code></a>
 public final class VkVideoEncodeAV1StdFlagsKHR {
     public static final int VK_VIDEO_ENCODE_AV1_STD_DELTA_Q = 0x8;
     public static final int VK_VIDEO_ENCODE_AV1_STD_PRIMARY_REF_FRAME = 0x4;

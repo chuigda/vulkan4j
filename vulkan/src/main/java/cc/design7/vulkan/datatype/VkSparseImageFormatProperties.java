@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkSparseImageFormatProperties} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageFormatProperties.html"><code>VkSparseImageFormatProperties</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkSparseImageFormatProperties {
+///     VkImageAspectFlags aspectMask;
+///     VkExtent3D imageGranularity;
+///     VkSparseImageFormatFlags flags;
+/// } VkSparseImageFormatProperties;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageFormatProperties.html">VkSparseImageFormatProperties</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageFormatProperties.html"><code>VkSparseImageFormatProperties</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkSparseImageFormatProperties(@NotNull MemorySegment segment) implements IPointer {
     public static VkSparseImageFormatProperties allocate(Arena arena) {
-        return new VkSparseImageFormatProperties(arena.allocate(LAYOUT));
+        VkSparseImageFormatProperties ret = new VkSparseImageFormatProperties(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkSparseImageFormatProperties[] allocate(Arena arena, int count) {
@@ -55,29 +67,6 @@ public record VkSparseImageFormatProperties(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("aspectMask"),
-        VkExtent3D.LAYOUT.withName("imageGranularity"),
-        ValueLayout.JAVA_INT.withName("flags")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$aspectMask = PathElement.groupElement("PATH$aspectMask");
-    public static final PathElement PATH$imageGranularity = PathElement.groupElement("PATH$imageGranularity");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-
-    public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
-    public static final StructLayout LAYOUT$imageGranularity = (StructLayout) LAYOUT.select(PATH$imageGranularity);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-
-    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
-    public static final long SIZE$imageGranularity = LAYOUT$imageGranularity.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-
-    public static final long OFFSET$aspectMask = LAYOUT.byteOffset(PATH$aspectMask);
-    public static final long OFFSET$imageGranularity = LAYOUT.byteOffset(PATH$imageGranularity);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-
     public @enumtype(VkImageAspectFlags.class) int aspectMask() {
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
@@ -102,4 +91,26 @@ public record VkSparseImageFormatProperties(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("aspectMask"),
+        VkExtent3D.LAYOUT.withName("imageGranularity"),
+        ValueLayout.JAVA_INT.withName("flags")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$aspectMask = PathElement.groupElement("PATH$aspectMask");
+    public static final PathElement PATH$imageGranularity = PathElement.groupElement("PATH$imageGranularity");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+
+    public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
+    public static final StructLayout LAYOUT$imageGranularity = (StructLayout) LAYOUT.select(PATH$imageGranularity);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+
+    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
+    public static final long SIZE$imageGranularity = LAYOUT$imageGranularity.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+
+    public static final long OFFSET$aspectMask = LAYOUT.byteOffset(PATH$aspectMask);
+    public static final long OFFSET$imageGranularity = LAYOUT.byteOffset(PATH$imageGranularity);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
 }

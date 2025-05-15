@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoEncodeH264QuantizationMapCapabilitiesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264QuantizationMapCapabilitiesKHR.html"><code>VkVideoEncodeH264QuantizationMapCapabilitiesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoEncodeH264QuantizationMapCapabilitiesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     int32_t minQpDelta;
+///     int32_t maxQpDelta;
+/// } VkVideoEncodeH264QuantizationMapCapabilitiesKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_QUANTIZATION_MAP_CAPABILITIES_KHR`
+///
+/// The {@link VkVideoEncodeH264QuantizationMapCapabilitiesKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkVideoEncodeH264QuantizationMapCapabilitiesKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264QuantizationMapCapabilitiesKHR.html">VkVideoEncodeH264QuantizationMapCapabilitiesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264QuantizationMapCapabilitiesKHR.html"><code>VkVideoEncodeH264QuantizationMapCapabilitiesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoEncodeH264QuantizationMapCapabilitiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkVideoEncodeH264QuantizationMapCapabilitiesKHR {
-        sType(VkStructureType.VIDEO_ENCODE_H264_QUANTIZATION_MAP_CAPABILITIES_KHR);
-    }
-
     public static VkVideoEncodeH264QuantizationMapCapabilitiesKHR allocate(Arena arena) {
-        return new VkVideoEncodeH264QuantizationMapCapabilitiesKHR(arena.allocate(LAYOUT));
+        VkVideoEncodeH264QuantizationMapCapabilitiesKHR ret = new VkVideoEncodeH264QuantizationMapCapabilitiesKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VIDEO_ENCODE_H264_QUANTIZATION_MAP_CAPABILITIES_KHR);
+        return ret;
     }
 
     public static VkVideoEncodeH264QuantizationMapCapabilitiesKHR[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkVideoEncodeH264QuantizationMapCapabilitiesKHR(@NotNull MemorySeg
         VkVideoEncodeH264QuantizationMapCapabilitiesKHR[] ret = new VkVideoEncodeH264QuantizationMapCapabilitiesKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkVideoEncodeH264QuantizationMapCapabilitiesKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VIDEO_ENCODE_H264_QUANTIZATION_MAP_CAPABILITIES_KHR);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkVideoEncodeH264QuantizationMapCapabilitiesKHR(@NotNull MemorySeg
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("minQpDelta"),
-        ValueLayout.JAVA_INT.withName("maxQpDelta")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$minQpDelta = PathElement.groupElement("PATH$minQpDelta");
-    public static final PathElement PATH$maxQpDelta = PathElement.groupElement("PATH$maxQpDelta");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$minQpDelta = (OfInt) LAYOUT.select(PATH$minQpDelta);
-    public static final OfInt LAYOUT$maxQpDelta = (OfInt) LAYOUT.select(PATH$maxQpDelta);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$minQpDelta = LAYOUT$minQpDelta.byteSize();
-    public static final long SIZE$maxQpDelta = LAYOUT$maxQpDelta.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$minQpDelta = LAYOUT.byteOffset(PATH$minQpDelta);
-    public static final long OFFSET$maxQpDelta = LAYOUT.byteOffset(PATH$maxQpDelta);
+    public void autoInit() {
+        sType(VkStructureType.VIDEO_ENCODE_H264_QUANTIZATION_MAP_CAPABILITIES_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkVideoEncodeH264QuantizationMapCapabilitiesKHR(@NotNull MemorySeg
         segment.set(LAYOUT$maxQpDelta, OFFSET$maxQpDelta, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("minQpDelta"),
+        ValueLayout.JAVA_INT.withName("maxQpDelta")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$minQpDelta = PathElement.groupElement("PATH$minQpDelta");
+    public static final PathElement PATH$maxQpDelta = PathElement.groupElement("PATH$maxQpDelta");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$minQpDelta = (OfInt) LAYOUT.select(PATH$minQpDelta);
+    public static final OfInt LAYOUT$maxQpDelta = (OfInt) LAYOUT.select(PATH$maxQpDelta);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$minQpDelta = LAYOUT$minQpDelta.byteSize();
+    public static final long SIZE$maxQpDelta = LAYOUT$maxQpDelta.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$minQpDelta = LAYOUT.byteOffset(PATH$minQpDelta);
+    public static final long OFFSET$maxQpDelta = LAYOUT.byteOffset(PATH$maxQpDelta);
 }

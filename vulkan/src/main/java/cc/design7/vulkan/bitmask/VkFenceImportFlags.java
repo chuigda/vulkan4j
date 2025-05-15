@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFenceImportFlags.html">VkFenceImportFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFenceImportFlags.html"><code>VkFenceImportFlags</code></a>
 public final class VkFenceImportFlags {
     public static final int TEMPORARY = 0x1;
 

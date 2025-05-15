@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentStoreOp.html">VkAttachmentStoreOp</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentStoreOp.html"><code>VkAttachmentStoreOp</code></a>
 public final class VkAttachmentStoreOp {
     public static final int STORE = 0x0;
     public static final int DONT_CARE = 0x1;

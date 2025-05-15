@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkQueueFamilyCheckpointPropertiesNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueueFamilyCheckpointPropertiesNV.html"><code>VkQueueFamilyCheckpointPropertiesNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkQueueFamilyCheckpointPropertiesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkPipelineStageFlags checkpointExecutionStageMask;
+/// } VkQueueFamilyCheckpointPropertiesNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV`
+///
+/// The {@link VkQueueFamilyCheckpointPropertiesNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkQueueFamilyCheckpointPropertiesNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueueFamilyCheckpointPropertiesNV.html">VkQueueFamilyCheckpointPropertiesNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueueFamilyCheckpointPropertiesNV.html"><code>VkQueueFamilyCheckpointPropertiesNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkQueueFamilyCheckpointPropertiesNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkQueueFamilyCheckpointPropertiesNV {
-        sType(VkStructureType.QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV);
-    }
-
     public static VkQueueFamilyCheckpointPropertiesNV allocate(Arena arena) {
-        return new VkQueueFamilyCheckpointPropertiesNV(arena.allocate(LAYOUT));
+        VkQueueFamilyCheckpointPropertiesNV ret = new VkQueueFamilyCheckpointPropertiesNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV);
+        return ret;
     }
 
     public static VkQueueFamilyCheckpointPropertiesNV[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkQueueFamilyCheckpointPropertiesNV(@NotNull MemorySegment segment
         VkQueueFamilyCheckpointPropertiesNV[] ret = new VkQueueFamilyCheckpointPropertiesNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkQueueFamilyCheckpointPropertiesNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkQueueFamilyCheckpointPropertiesNV(@NotNull MemorySegment segment
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("checkpointExecutionStageMask")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$checkpointExecutionStageMask = PathElement.groupElement("PATH$checkpointExecutionStageMask");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$checkpointExecutionStageMask = (OfInt) LAYOUT.select(PATH$checkpointExecutionStageMask);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$checkpointExecutionStageMask = LAYOUT$checkpointExecutionStageMask.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$checkpointExecutionStageMask = LAYOUT.byteOffset(PATH$checkpointExecutionStageMask);
+    public void autoInit() {
+        sType(VkStructureType.QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkQueueFamilyCheckpointPropertiesNV(@NotNull MemorySegment segment
         segment.set(LAYOUT$checkpointExecutionStageMask, OFFSET$checkpointExecutionStageMask, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("checkpointExecutionStageMask")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$checkpointExecutionStageMask = PathElement.groupElement("PATH$checkpointExecutionStageMask");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$checkpointExecutionStageMask = (OfInt) LAYOUT.select(PATH$checkpointExecutionStageMask);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$checkpointExecutionStageMask = LAYOUT$checkpointExecutionStageMask.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$checkpointExecutionStageMask = LAYOUT.byteOffset(PATH$checkpointExecutionStageMask);
 }

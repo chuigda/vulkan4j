@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineBinaryDataKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineBinaryDataKHR.html"><code>VkPipelineBinaryDataKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineBinaryDataKHR {
+///     size_t dataSize;
+///     void* pData;
+/// } VkPipelineBinaryDataKHR;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineBinaryDataKHR.html">VkPipelineBinaryDataKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineBinaryDataKHR.html"><code>VkPipelineBinaryDataKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineBinaryDataKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkPipelineBinaryDataKHR allocate(Arena arena) {
-        return new VkPipelineBinaryDataKHR(arena.allocate(LAYOUT));
+        VkPipelineBinaryDataKHR ret = new VkPipelineBinaryDataKHR(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkPipelineBinaryDataKHR[] allocate(Arena arena, int count) {
@@ -55,23 +66,6 @@ public record VkPipelineBinaryDataKHR(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        NativeLayout.C_SIZE_T.withName("dataSize"),
-        ValueLayout.ADDRESS.withName("pData")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$dataSize = PathElement.groupElement("PATH$dataSize");
-    public static final PathElement PATH$pData = PathElement.groupElement("PATH$pData");
-
-    public static final AddressLayout LAYOUT$pData = (AddressLayout) LAYOUT.select(PATH$pData);
-
-    public static final long SIZE$dataSize = NativeLayout.C_SIZE_T.byteSize();
-    public static final long SIZE$pData = LAYOUT$pData.byteSize();
-
-    public static final long OFFSET$dataSize = LAYOUT.byteOffset(PATH$dataSize);
-    public static final long OFFSET$pData = LAYOUT.byteOffset(PATH$pData);
-
     public @unsigned long dataSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$dataSize);
     }
@@ -92,4 +86,20 @@ public record VkPipelineBinaryDataKHR(@NotNull MemorySegment segment) implements
         pData(pointer.segment());
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        NativeLayout.C_SIZE_T.withName("dataSize"),
+        ValueLayout.ADDRESS.withName("pData")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$dataSize = PathElement.groupElement("PATH$dataSize");
+    public static final PathElement PATH$pData = PathElement.groupElement("PATH$pData");
+
+    public static final AddressLayout LAYOUT$pData = (AddressLayout) LAYOUT.select(PATH$pData);
+
+    public static final long SIZE$dataSize = NativeLayout.C_SIZE_T.byteSize();
+    public static final long SIZE$pData = LAYOUT$pData.byteSize();
+
+    public static final long OFFSET$dataSize = LAYOUT.byteOffset(PATH$dataSize);
+    public static final long OFFSET$pData = LAYOUT.byteOffset(PATH$pData);
 }

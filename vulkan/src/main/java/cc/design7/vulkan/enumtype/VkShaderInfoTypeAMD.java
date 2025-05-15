@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderInfoTypeAMD.html">VkShaderInfoTypeAMD</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderInfoTypeAMD.html"><code>VkShaderInfoTypeAMD</code></a>
 public final class VkShaderInfoTypeAMD {
     public static final int STATISTICS = 0x0;
     public static final int BINARY = 0x1;

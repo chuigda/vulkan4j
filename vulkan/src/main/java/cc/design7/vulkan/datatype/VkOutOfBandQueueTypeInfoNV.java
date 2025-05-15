@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkOutOfBandQueueTypeInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOutOfBandQueueTypeInfoNV.html"><code>VkOutOfBandQueueTypeInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkOutOfBandQueueTypeInfoNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkOutOfBandQueueTypeNV queueType;
+/// } VkOutOfBandQueueTypeInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_OUT_OF_BAND_QUEUE_TYPE_INFO_NV`
+///
+/// The {@link VkOutOfBandQueueTypeInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkOutOfBandQueueTypeInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOutOfBandQueueTypeInfoNV.html">VkOutOfBandQueueTypeInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOutOfBandQueueTypeInfoNV.html"><code>VkOutOfBandQueueTypeInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkOutOfBandQueueTypeInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkOutOfBandQueueTypeInfoNV {
-        sType(VkStructureType.OUT_OF_BAND_QUEUE_TYPE_INFO_NV);
-    }
-
     public static VkOutOfBandQueueTypeInfoNV allocate(Arena arena) {
-        return new VkOutOfBandQueueTypeInfoNV(arena.allocate(LAYOUT));
+        VkOutOfBandQueueTypeInfoNV ret = new VkOutOfBandQueueTypeInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.OUT_OF_BAND_QUEUE_TYPE_INFO_NV);
+        return ret;
     }
 
     public static VkOutOfBandQueueTypeInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkOutOfBandQueueTypeInfoNV(@NotNull MemorySegment segment) impleme
         VkOutOfBandQueueTypeInfoNV[] ret = new VkOutOfBandQueueTypeInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkOutOfBandQueueTypeInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.OUT_OF_BAND_QUEUE_TYPE_INFO_NV);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkOutOfBandQueueTypeInfoNV(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("queueType")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$queueType = PathElement.groupElement("PATH$queueType");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$queueType = (OfInt) LAYOUT.select(PATH$queueType);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$queueType = LAYOUT$queueType.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$queueType = LAYOUT.byteOffset(PATH$queueType);
+    public void autoInit() {
+        sType(VkStructureType.OUT_OF_BAND_QUEUE_TYPE_INFO_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkOutOfBandQueueTypeInfoNV(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$queueType, OFFSET$queueType, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("queueType")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$queueType = PathElement.groupElement("PATH$queueType");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$queueType = (OfInt) LAYOUT.select(PATH$queueType);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$queueType = LAYOUT$queueType.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$queueType = LAYOUT.byteOffset(PATH$queueType);
 }

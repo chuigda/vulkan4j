@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDevicePerStageDescriptorSetFeaturesNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevicePerStageDescriptorSetFeaturesNV.html"><code>VkPhysicalDevicePerStageDescriptorSetFeaturesNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDevicePerStageDescriptorSetFeaturesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 perStageDescriptorSet;
+///     VkBool32 dynamicPipelineLayout;
+/// } VkPhysicalDevicePerStageDescriptorSetFeaturesNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PER_STAGE_DESCRIPTOR_SET_FEATURES_NV`
+///
+/// The {@link VkPhysicalDevicePerStageDescriptorSetFeaturesNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDevicePerStageDescriptorSetFeaturesNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevicePerStageDescriptorSetFeaturesNV.html">VkPhysicalDevicePerStageDescriptorSetFeaturesNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevicePerStageDescriptorSetFeaturesNV.html"><code>VkPhysicalDevicePerStageDescriptorSetFeaturesNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDevicePerStageDescriptorSetFeaturesNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDevicePerStageDescriptorSetFeaturesNV {
-        sType(VkStructureType.PHYSICAL_DEVICE_PER_STAGE_DESCRIPTOR_SET_FEATURES_NV);
-    }
-
     public static VkPhysicalDevicePerStageDescriptorSetFeaturesNV allocate(Arena arena) {
-        return new VkPhysicalDevicePerStageDescriptorSetFeaturesNV(arena.allocate(LAYOUT));
+        VkPhysicalDevicePerStageDescriptorSetFeaturesNV ret = new VkPhysicalDevicePerStageDescriptorSetFeaturesNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_PER_STAGE_DESCRIPTOR_SET_FEATURES_NV);
+        return ret;
     }
 
     public static VkPhysicalDevicePerStageDescriptorSetFeaturesNV[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkPhysicalDevicePerStageDescriptorSetFeaturesNV(@NotNull MemorySeg
         VkPhysicalDevicePerStageDescriptorSetFeaturesNV[] ret = new VkPhysicalDevicePerStageDescriptorSetFeaturesNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDevicePerStageDescriptorSetFeaturesNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_PER_STAGE_DESCRIPTOR_SET_FEATURES_NV);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkPhysicalDevicePerStageDescriptorSetFeaturesNV(@NotNull MemorySeg
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("perStageDescriptorSet"),
-        ValueLayout.JAVA_INT.withName("dynamicPipelineLayout")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$perStageDescriptorSet = PathElement.groupElement("PATH$perStageDescriptorSet");
-    public static final PathElement PATH$dynamicPipelineLayout = PathElement.groupElement("PATH$dynamicPipelineLayout");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$perStageDescriptorSet = (OfInt) LAYOUT.select(PATH$perStageDescriptorSet);
-    public static final OfInt LAYOUT$dynamicPipelineLayout = (OfInt) LAYOUT.select(PATH$dynamicPipelineLayout);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$perStageDescriptorSet = LAYOUT$perStageDescriptorSet.byteSize();
-    public static final long SIZE$dynamicPipelineLayout = LAYOUT$dynamicPipelineLayout.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$perStageDescriptorSet = LAYOUT.byteOffset(PATH$perStageDescriptorSet);
-    public static final long OFFSET$dynamicPipelineLayout = LAYOUT.byteOffset(PATH$dynamicPipelineLayout);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_PER_STAGE_DESCRIPTOR_SET_FEATURES_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkPhysicalDevicePerStageDescriptorSetFeaturesNV(@NotNull MemorySeg
         segment.set(LAYOUT$dynamicPipelineLayout, OFFSET$dynamicPipelineLayout, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("perStageDescriptorSet"),
+        ValueLayout.JAVA_INT.withName("dynamicPipelineLayout")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$perStageDescriptorSet = PathElement.groupElement("PATH$perStageDescriptorSet");
+    public static final PathElement PATH$dynamicPipelineLayout = PathElement.groupElement("PATH$dynamicPipelineLayout");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$perStageDescriptorSet = (OfInt) LAYOUT.select(PATH$perStageDescriptorSet);
+    public static final OfInt LAYOUT$dynamicPipelineLayout = (OfInt) LAYOUT.select(PATH$dynamicPipelineLayout);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$perStageDescriptorSet = LAYOUT$perStageDescriptorSet.byteSize();
+    public static final long SIZE$dynamicPipelineLayout = LAYOUT$dynamicPipelineLayout.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$perStageDescriptorSet = LAYOUT.byteOffset(PATH$perStageDescriptorSet);
+    public static final long OFFSET$dynamicPipelineLayout = LAYOUT.byteOffset(PATH$dynamicPipelineLayout);
 }

@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkCopyCommandTransformInfoQCOM} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyCommandTransformInfoQCOM.html"><code>VkCopyCommandTransformInfoQCOM</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkCopyCommandTransformInfoQCOM {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkSurfaceTransformFlagsKHR transform;
+/// } VkCopyCommandTransformInfoQCOM;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_COPY_COMMAND_TRANSFORM_INFO_QCOM`
+///
+/// The {@link VkCopyCommandTransformInfoQCOM#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkCopyCommandTransformInfoQCOM#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyCommandTransformInfoQCOM.html">VkCopyCommandTransformInfoQCOM</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyCommandTransformInfoQCOM.html"><code>VkCopyCommandTransformInfoQCOM</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkCopyCommandTransformInfoQCOM(@NotNull MemorySegment segment) implements IPointer {
-    public VkCopyCommandTransformInfoQCOM {
-        sType(VkStructureType.COPY_COMMAND_TRANSFORM_INFO_QCOM);
-    }
-
     public static VkCopyCommandTransformInfoQCOM allocate(Arena arena) {
-        return new VkCopyCommandTransformInfoQCOM(arena.allocate(LAYOUT));
+        VkCopyCommandTransformInfoQCOM ret = new VkCopyCommandTransformInfoQCOM(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.COPY_COMMAND_TRANSFORM_INFO_QCOM);
+        return ret;
     }
 
     public static VkCopyCommandTransformInfoQCOM[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkCopyCommandTransformInfoQCOM(@NotNull MemorySegment segment) imp
         VkCopyCommandTransformInfoQCOM[] ret = new VkCopyCommandTransformInfoQCOM[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkCopyCommandTransformInfoQCOM(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.COPY_COMMAND_TRANSFORM_INFO_QCOM);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkCopyCommandTransformInfoQCOM(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("transform")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$transform = PathElement.groupElement("PATH$transform");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$transform = (OfInt) LAYOUT.select(PATH$transform);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$transform = LAYOUT$transform.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$transform = LAYOUT.byteOffset(PATH$transform);
+    public void autoInit() {
+        sType(VkStructureType.COPY_COMMAND_TRANSFORM_INFO_QCOM);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkCopyCommandTransformInfoQCOM(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$transform, OFFSET$transform, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("transform")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$transform = PathElement.groupElement("PATH$transform");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$transform = (OfInt) LAYOUT.select(PATH$transform);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$transform = LAYOUT$transform.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$transform = LAYOUT.byteOffset(PATH$transform);
 }

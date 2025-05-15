@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSharingMode.html">VkSharingMode</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSharingMode.html"><code>VkSharingMode</code></a>
 public final class VkSharingMode {
     public static final int EXCLUSIVE = 0x0;
     public static final int CONCURRENT = 0x1;

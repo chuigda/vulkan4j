@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineExecutableStatisticFormatKHR.html">VkPipelineExecutableStatisticFormatKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineExecutableStatisticFormatKHR.html"><code>VkPipelineExecutableStatisticFormatKHR</code></a>
 public final class VkPipelineExecutableStatisticFormatKHR {
     public static final int BOOL32 = 0x0;
     public static final int INT64 = 0x1;

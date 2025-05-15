@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkRect2D} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRect2D.html"><code>VkRect2D</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkRect2D {
+///     VkOffset2D offset;
+///     VkExtent2D extent;
+/// } VkRect2D;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRect2D.html">VkRect2D</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRect2D.html"><code>VkRect2D</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkRect2D(@NotNull MemorySegment segment) implements IPointer {
     public static VkRect2D allocate(Arena arena) {
-        return new VkRect2D(arena.allocate(LAYOUT));
+        VkRect2D ret = new VkRect2D(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkRect2D[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkRect2D(@NotNull MemorySegment segment) implements IPointer {
         return ret;
     }
 
+    public VkOffset2D offset() {
+        return new VkOffset2D(segment.asSlice(OFFSET$offset, LAYOUT$offset));
+    }
+
+    public void offset(VkOffset2D value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$offset, SIZE$offset);
+    }
+
+    public VkExtent2D extent() {
+        return new VkExtent2D(segment.asSlice(OFFSET$extent, LAYOUT$extent));
+    }
+
+    public void extent(VkExtent2D value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         VkOffset2D.LAYOUT.withName("offset"),
         VkExtent2D.LAYOUT.withName("extent")
@@ -72,21 +99,4 @@ public record VkRect2D(@NotNull MemorySegment segment) implements IPointer {
 
     public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
     public static final long OFFSET$extent = LAYOUT.byteOffset(PATH$extent);
-
-    public VkOffset2D offset() {
-        return new VkOffset2D(segment.asSlice(OFFSET$offset, LAYOUT$offset));
-    }
-
-    public void offset(VkOffset2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$offset, SIZE$offset);
-    }
-
-    public VkExtent2D extent() {
-        return new VkExtent2D(segment.asSlice(OFFSET$extent, LAYOUT$extent));
-    }
-
-    public void extent(VkExtent2D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
-    }
-
 }

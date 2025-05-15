@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkAccelerationStructureMotionInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMotionInfoNV.html"><code>VkAccelerationStructureMotionInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkAccelerationStructureMotionInfoNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t maxInstances;
+///     VkAccelerationStructureMotionInfoFlagsNV flags;
+/// } VkAccelerationStructureMotionInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MOTION_INFO_NV`
+///
+/// The {@link VkAccelerationStructureMotionInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkAccelerationStructureMotionInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMotionInfoNV.html">VkAccelerationStructureMotionInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMotionInfoNV.html"><code>VkAccelerationStructureMotionInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkAccelerationStructureMotionInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkAccelerationStructureMotionInfoNV {
-        sType(VkStructureType.ACCELERATION_STRUCTURE_MOTION_INFO_NV);
-    }
-
     public static VkAccelerationStructureMotionInfoNV allocate(Arena arena) {
-        return new VkAccelerationStructureMotionInfoNV(arena.allocate(LAYOUT));
+        VkAccelerationStructureMotionInfoNV ret = new VkAccelerationStructureMotionInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.ACCELERATION_STRUCTURE_MOTION_INFO_NV);
+        return ret;
     }
 
     public static VkAccelerationStructureMotionInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkAccelerationStructureMotionInfoNV(@NotNull MemorySegment segment
         VkAccelerationStructureMotionInfoNV[] ret = new VkAccelerationStructureMotionInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkAccelerationStructureMotionInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.ACCELERATION_STRUCTURE_MOTION_INFO_NV);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkAccelerationStructureMotionInfoNV(@NotNull MemorySegment segment
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("maxInstances"),
-        ValueLayout.JAVA_INT.withName("flags")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxInstances = PathElement.groupElement("PATH$maxInstances");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$maxInstances = (OfInt) LAYOUT.select(PATH$maxInstances);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$maxInstances = LAYOUT$maxInstances.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$maxInstances = LAYOUT.byteOffset(PATH$maxInstances);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public void autoInit() {
+        sType(VkStructureType.ACCELERATION_STRUCTURE_MOTION_INFO_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkAccelerationStructureMotionInfoNV(@NotNull MemorySegment segment
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maxInstances"),
+        ValueLayout.JAVA_INT.withName("flags")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$maxInstances = PathElement.groupElement("PATH$maxInstances");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maxInstances = (OfInt) LAYOUT.select(PATH$maxInstances);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxInstances = LAYOUT$maxInstances.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$maxInstances = LAYOUT.byteOffset(PATH$maxInstances);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
 }

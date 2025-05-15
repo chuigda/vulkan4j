@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkImageCompressionControlEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionControlEXT.html"><code>VkImageCompressionControlEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkImageCompressionControlEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkImageCompressionFlagsEXT flags;
+///     uint32_t compressionControlPlaneCount;
+///     VkImageCompressionFixedRateFlagsEXT* pFixedRateFlags;
+/// } VkImageCompressionControlEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_CONTROL_EXT`
+///
+/// The {@link VkImageCompressionControlEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkImageCompressionControlEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionControlEXT.html">VkImageCompressionControlEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionControlEXT.html"><code>VkImageCompressionControlEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkImageCompressionControlEXT {
-        sType(VkStructureType.IMAGE_COMPRESSION_CONTROL_EXT);
-    }
-
     public static VkImageCompressionControlEXT allocate(Arena arena) {
-        return new VkImageCompressionControlEXT(arena.allocate(LAYOUT));
+        VkImageCompressionControlEXT ret = new VkImageCompressionControlEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.IMAGE_COMPRESSION_CONTROL_EXT);
+        return ret;
     }
 
     public static VkImageCompressionControlEXT[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         VkImageCompressionControlEXT[] ret = new VkImageCompressionControlEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkImageCompressionControlEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.IMAGE_COMPRESSION_CONTROL_EXT);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("compressionControlPlaneCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pFixedRateFlags")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$compressionControlPlaneCount = PathElement.groupElement("PATH$compressionControlPlaneCount");
-    public static final PathElement PATH$pFixedRateFlags = PathElement.groupElement("PATH$pFixedRateFlags");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$compressionControlPlaneCount = (OfInt) LAYOUT.select(PATH$compressionControlPlaneCount);
-    public static final AddressLayout LAYOUT$pFixedRateFlags = (AddressLayout) LAYOUT.select(PATH$pFixedRateFlags);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$compressionControlPlaneCount = LAYOUT$compressionControlPlaneCount.byteSize();
-    public static final long SIZE$pFixedRateFlags = LAYOUT$pFixedRateFlags.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$compressionControlPlaneCount = LAYOUT.byteOffset(PATH$compressionControlPlaneCount);
-    public static final long OFFSET$pFixedRateFlags = LAYOUT.byteOffset(PATH$pFixedRateFlags);
+    public void autoInit() {
+        sType(VkStructureType.IMAGE_COMPRESSION_CONTROL_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -142,7 +133,7 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
     /// or writing to the buffer.
     public @Nullable @enumtype(VkImageCompressionFixedRateFlagsEXT.class) IntPtr pFixedRateFlags() {
         MemorySegment s = pFixedRateFlagsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -153,4 +144,36 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         pFixedRateFlagsRaw(s);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("compressionControlPlaneCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pFixedRateFlags")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$compressionControlPlaneCount = PathElement.groupElement("PATH$compressionControlPlaneCount");
+    public static final PathElement PATH$pFixedRateFlags = PathElement.groupElement("PATH$pFixedRateFlags");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$compressionControlPlaneCount = (OfInt) LAYOUT.select(PATH$compressionControlPlaneCount);
+    public static final AddressLayout LAYOUT$pFixedRateFlags = (AddressLayout) LAYOUT.select(PATH$pFixedRateFlags);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$compressionControlPlaneCount = LAYOUT$compressionControlPlaneCount.byteSize();
+    public static final long SIZE$pFixedRateFlags = LAYOUT$pFixedRateFlags.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$compressionControlPlaneCount = LAYOUT.byteOffset(PATH$compressionControlPlaneCount);
+    public static final long OFFSET$pFixedRateFlags = LAYOUT.byteOffset(PATH$pFixedRateFlags);
 }

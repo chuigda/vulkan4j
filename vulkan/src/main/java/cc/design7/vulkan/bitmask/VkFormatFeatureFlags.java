@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFormatFeatureFlags.html">VkFormatFeatureFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFormatFeatureFlags.html"><code>VkFormatFeatureFlags</code></a>
 public final class VkFormatFeatureFlags {
     public static final int ACCELERATION_STRUCTURE_VERTEX_BUFFER_KHR = 0x20000000;
     public static final int BLIT_DST = 0x800;

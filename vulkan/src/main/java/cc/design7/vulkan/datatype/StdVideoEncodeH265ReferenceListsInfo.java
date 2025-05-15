@@ -16,6 +16,21 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoEncodeH265ReferenceListsInfo} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoEncodeH265ReferenceListsInfo {
+///     StdVideoEncodeH265ReferenceListsInfoFlags flags;
+///     uint8_t num_ref_idx_l0_active_minus1;
+///     uint8_t num_ref_idx_l1_active_minus1;
+///     uint8_t RefPicList0;
+///     uint8_t RefPicList1;
+///     uint8_t list_entry_l0;
+///     uint8_t list_entry_l1;
+/// } StdVideoEncodeH265ReferenceListsInfo;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +42,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeH265ReferenceListsInfo allocate(Arena arena) {
-        return new StdVideoEncodeH265ReferenceListsInfo(arena.allocate(LAYOUT));
+        StdVideoEncodeH265ReferenceListsInfo ret = new StdVideoEncodeH265ReferenceListsInfo(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoEncodeH265ReferenceListsInfo[] allocate(Arena arena, int count) {
@@ -52,49 +68,6 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        StdVideoEncodeH265ReferenceListsInfoFlags.LAYOUT.withName("flags"),
-        ValueLayout.JAVA_BYTE.withName("num_ref_idx_l0_active_minus1"),
-        ValueLayout.JAVA_BYTE.withName("num_ref_idx_l1_active_minus1"),
-        ValueLayout.JAVA_BYTE.withName("RefPicList0"),
-        ValueLayout.JAVA_BYTE.withName("RefPicList1"),
-        ValueLayout.JAVA_BYTE.withName("list_entry_l0"),
-        ValueLayout.JAVA_BYTE.withName("list_entry_l1")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$num_ref_idx_l0_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l0_active_minus1");
-    public static final PathElement PATH$num_ref_idx_l1_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l1_active_minus1");
-    public static final PathElement PATH$RefPicList0 = PathElement.groupElement("PATH$RefPicList0");
-    public static final PathElement PATH$RefPicList1 = PathElement.groupElement("PATH$RefPicList1");
-    public static final PathElement PATH$list_entry_l0 = PathElement.groupElement("PATH$list_entry_l0");
-    public static final PathElement PATH$list_entry_l1 = PathElement.groupElement("PATH$list_entry_l1");
-
-    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
-    public static final OfByte LAYOUT$num_ref_idx_l0_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l0_active_minus1);
-    public static final OfByte LAYOUT$num_ref_idx_l1_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l1_active_minus1);
-    public static final OfByte LAYOUT$RefPicList0 = (OfByte) LAYOUT.select(PATH$RefPicList0);
-    public static final OfByte LAYOUT$RefPicList1 = (OfByte) LAYOUT.select(PATH$RefPicList1);
-    public static final OfByte LAYOUT$list_entry_l0 = (OfByte) LAYOUT.select(PATH$list_entry_l0);
-    public static final OfByte LAYOUT$list_entry_l1 = (OfByte) LAYOUT.select(PATH$list_entry_l1);
-
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$num_ref_idx_l0_active_minus1 = LAYOUT$num_ref_idx_l0_active_minus1.byteSize();
-    public static final long SIZE$num_ref_idx_l1_active_minus1 = LAYOUT$num_ref_idx_l1_active_minus1.byteSize();
-    public static final long SIZE$RefPicList0 = LAYOUT$RefPicList0.byteSize();
-    public static final long SIZE$RefPicList1 = LAYOUT$RefPicList1.byteSize();
-    public static final long SIZE$list_entry_l0 = LAYOUT$list_entry_l0.byteSize();
-    public static final long SIZE$list_entry_l1 = LAYOUT$list_entry_l1.byteSize();
-
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$num_ref_idx_l0_active_minus1 = LAYOUT.byteOffset(PATH$num_ref_idx_l0_active_minus1);
-    public static final long OFFSET$num_ref_idx_l1_active_minus1 = LAYOUT.byteOffset(PATH$num_ref_idx_l1_active_minus1);
-    public static final long OFFSET$RefPicList0 = LAYOUT.byteOffset(PATH$RefPicList0);
-    public static final long OFFSET$RefPicList1 = LAYOUT.byteOffset(PATH$RefPicList1);
-    public static final long OFFSET$list_entry_l0 = LAYOUT.byteOffset(PATH$list_entry_l0);
-    public static final long OFFSET$list_entry_l1 = LAYOUT.byteOffset(PATH$list_entry_l1);
 
     public StdVideoEncodeH265ReferenceListsInfoFlags flags() {
         return new StdVideoEncodeH265ReferenceListsInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
@@ -152,4 +125,46 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$list_entry_l1, OFFSET$list_entry_l1, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoEncodeH265ReferenceListsInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("num_ref_idx_l0_active_minus1"),
+        ValueLayout.JAVA_BYTE.withName("num_ref_idx_l1_active_minus1"),
+        ValueLayout.JAVA_BYTE.withName("RefPicList0"),
+        ValueLayout.JAVA_BYTE.withName("RefPicList1"),
+        ValueLayout.JAVA_BYTE.withName("list_entry_l0"),
+        ValueLayout.JAVA_BYTE.withName("list_entry_l1")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$num_ref_idx_l0_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l0_active_minus1");
+    public static final PathElement PATH$num_ref_idx_l1_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l1_active_minus1");
+    public static final PathElement PATH$RefPicList0 = PathElement.groupElement("PATH$RefPicList0");
+    public static final PathElement PATH$RefPicList1 = PathElement.groupElement("PATH$RefPicList1");
+    public static final PathElement PATH$list_entry_l0 = PathElement.groupElement("PATH$list_entry_l0");
+    public static final PathElement PATH$list_entry_l1 = PathElement.groupElement("PATH$list_entry_l1");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$num_ref_idx_l0_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l0_active_minus1);
+    public static final OfByte LAYOUT$num_ref_idx_l1_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l1_active_minus1);
+    public static final OfByte LAYOUT$RefPicList0 = (OfByte) LAYOUT.select(PATH$RefPicList0);
+    public static final OfByte LAYOUT$RefPicList1 = (OfByte) LAYOUT.select(PATH$RefPicList1);
+    public static final OfByte LAYOUT$list_entry_l0 = (OfByte) LAYOUT.select(PATH$list_entry_l0);
+    public static final OfByte LAYOUT$list_entry_l1 = (OfByte) LAYOUT.select(PATH$list_entry_l1);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$num_ref_idx_l0_active_minus1 = LAYOUT$num_ref_idx_l0_active_minus1.byteSize();
+    public static final long SIZE$num_ref_idx_l1_active_minus1 = LAYOUT$num_ref_idx_l1_active_minus1.byteSize();
+    public static final long SIZE$RefPicList0 = LAYOUT$RefPicList0.byteSize();
+    public static final long SIZE$RefPicList1 = LAYOUT$RefPicList1.byteSize();
+    public static final long SIZE$list_entry_l0 = LAYOUT$list_entry_l0.byteSize();
+    public static final long SIZE$list_entry_l1 = LAYOUT$list_entry_l1.byteSize();
+
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$num_ref_idx_l0_active_minus1 = LAYOUT.byteOffset(PATH$num_ref_idx_l0_active_minus1);
+    public static final long OFFSET$num_ref_idx_l1_active_minus1 = LAYOUT.byteOffset(PATH$num_ref_idx_l1_active_minus1);
+    public static final long OFFSET$RefPicList0 = LAYOUT.byteOffset(PATH$RefPicList0);
+    public static final long OFFSET$RefPicList1 = LAYOUT.byteOffset(PATH$RefPicList1);
+    public static final long OFFSET$list_entry_l0 = LAYOUT.byteOffset(PATH$list_entry_l0);
+    public static final long OFFSET$list_entry_l1 = LAYOUT.byteOffset(PATH$list_entry_l1);
 }

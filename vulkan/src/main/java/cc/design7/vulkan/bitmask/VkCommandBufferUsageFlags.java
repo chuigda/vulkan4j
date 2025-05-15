@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCommandBufferUsageFlags.html">VkCommandBufferUsageFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCommandBufferUsageFlags.html"><code>VkCommandBufferUsageFlags</code></a>
 public final class VkCommandBufferUsageFlags {
     public static final int ONE_TIME_SUBMIT = 0x1;
     public static final int RENDER_PASS_CONTINUE = 0x2;

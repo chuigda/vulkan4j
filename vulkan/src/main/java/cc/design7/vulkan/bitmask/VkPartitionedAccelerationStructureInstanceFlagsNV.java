@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPartitionedAccelerationStructureInstanceFlagsNV.html">VkPartitionedAccelerationStructureInstanceFlagsNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPartitionedAccelerationStructureInstanceFlagsNV.html"><code>VkPartitionedAccelerationStructureInstanceFlagsNV</code></a>
 public final class VkPartitionedAccelerationStructureInstanceFlagsNV {
     public static final int FLAG_ENABLE_EXPLICIT_BOUNDING_BOX = 0x10;
     public static final int FLAG_FORCE_NO_OPAQUE = 0x8;

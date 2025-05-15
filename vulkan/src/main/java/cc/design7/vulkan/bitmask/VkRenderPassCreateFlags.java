@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassCreateFlags.html">VkRenderPassCreateFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassCreateFlags.html"><code>VkRenderPassCreateFlags</code></a>
 public final class VkRenderPassCreateFlags {
     public static final int TRANSFORM_QCOM = 0x2;
 

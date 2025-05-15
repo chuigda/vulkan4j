@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentGravityFlagsEXT.html">VkPresentGravityFlagsEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentGravityFlagsEXT.html"><code>VkPresentGravityFlagsEXT</code></a>
 public final class VkPresentGravityFlagsEXT {
     public static final int CENTERED = 0x4;
     public static final int MAX = 0x2;

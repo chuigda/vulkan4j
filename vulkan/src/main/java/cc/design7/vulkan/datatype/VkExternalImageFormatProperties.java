@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkExternalImageFormatProperties} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalImageFormatProperties.html"><code>VkExternalImageFormatProperties</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkExternalImageFormatProperties {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkExternalMemoryProperties externalMemoryProperties;
+/// } VkExternalImageFormatProperties;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES`
+///
+/// The {@link VkExternalImageFormatProperties#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkExternalImageFormatProperties#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalImageFormatProperties.html">VkExternalImageFormatProperties</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalImageFormatProperties.html"><code>VkExternalImageFormatProperties</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkExternalImageFormatProperties(@NotNull MemorySegment segment) implements IPointer {
-    public VkExternalImageFormatProperties {
-        sType(VkStructureType.EXTERNAL_IMAGE_FORMAT_PROPERTIES);
-    }
-
     public static VkExternalImageFormatProperties allocate(Arena arena) {
-        return new VkExternalImageFormatProperties(arena.allocate(LAYOUT));
+        VkExternalImageFormatProperties ret = new VkExternalImageFormatProperties(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.EXTERNAL_IMAGE_FORMAT_PROPERTIES);
+        return ret;
     }
 
     public static VkExternalImageFormatProperties[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkExternalImageFormatProperties(@NotNull MemorySegment segment) im
         VkExternalImageFormatProperties[] ret = new VkExternalImageFormatProperties[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkExternalImageFormatProperties(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.EXTERNAL_IMAGE_FORMAT_PROPERTIES);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkExternalImageFormatProperties(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        VkExternalMemoryProperties.LAYOUT.withName("externalMemoryProperties")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$externalMemoryProperties = PathElement.groupElement("PATH$externalMemoryProperties");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$externalMemoryProperties = (StructLayout) LAYOUT.select(PATH$externalMemoryProperties);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$externalMemoryProperties = LAYOUT$externalMemoryProperties.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$externalMemoryProperties = LAYOUT.byteOffset(PATH$externalMemoryProperties);
+    public void autoInit() {
+        sType(VkStructureType.EXTERNAL_IMAGE_FORMAT_PROPERTIES);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkExternalImageFormatProperties(@NotNull MemorySegment segment) im
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$externalMemoryProperties, SIZE$externalMemoryProperties);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkExternalMemoryProperties.LAYOUT.withName("externalMemoryProperties")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$externalMemoryProperties = PathElement.groupElement("PATH$externalMemoryProperties");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$externalMemoryProperties = (StructLayout) LAYOUT.select(PATH$externalMemoryProperties);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$externalMemoryProperties = LAYOUT$externalMemoryProperties.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$externalMemoryProperties = LAYOUT.byteOffset(PATH$externalMemoryProperties);
 }

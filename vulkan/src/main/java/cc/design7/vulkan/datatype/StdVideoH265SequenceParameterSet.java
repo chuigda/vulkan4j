@@ -16,6 +16,53 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoH265SequenceParameterSet} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoH265SequenceParameterSet {
+///     StdVideoH265SpsFlags flags;
+///     StdVideoH265ChromaFormatIdc chroma_format_idc;
+///     uint32_t pic_width_in_luma_samples;
+///     uint32_t pic_height_in_luma_samples;
+///     uint8_t sps_video_parameter_set_id;
+///     uint8_t sps_max_sub_layers_minus1;
+///     uint8_t sps_seq_parameter_set_id;
+///     uint8_t bit_depth_luma_minus8;
+///     uint8_t bit_depth_chroma_minus8;
+///     uint8_t log2_max_pic_order_cnt_lsb_minus4;
+///     uint8_t log2_min_luma_coding_block_size_minus3;
+///     uint8_t log2_diff_max_min_luma_coding_block_size;
+///     uint8_t log2_min_luma_transform_block_size_minus2;
+///     uint8_t log2_diff_max_min_luma_transform_block_size;
+///     uint8_t max_transform_hierarchy_depth_inter;
+///     uint8_t max_transform_hierarchy_depth_intra;
+///     uint8_t num_short_term_ref_pic_sets;
+///     uint8_t num_long_term_ref_pics_sps;
+///     uint8_t pcm_sample_bit_depth_luma_minus1;
+///     uint8_t pcm_sample_bit_depth_chroma_minus1;
+///     uint8_t log2_min_pcm_luma_coding_block_size_minus3;
+///     uint8_t log2_diff_max_min_pcm_luma_coding_block_size;
+///     uint8_t reserved1;
+///     uint8_t reserved2;
+///     uint8_t palette_max_size;
+///     uint8_t delta_palette_max_predictor_size;
+///     uint8_t motion_vector_resolution_control_idc;
+///     uint8_t sps_num_palette_predictor_initializers_minus1;
+///     uint32_t conf_win_left_offset;
+///     uint32_t conf_win_right_offset;
+///     uint32_t conf_win_top_offset;
+///     uint32_t conf_win_bottom_offset;
+///     StdVideoH265ProfileTierLevel const* pProfileTierLevel;
+///     StdVideoH265DecPicBufMgr const* pDecPicBufMgr;
+///     StdVideoH265ScalingLists const* pScalingLists;
+///     StdVideoH265ShortTermRefPicSet const* pShortTermRefPicSet;
+///     StdVideoH265LongTermRefPicsSps const* pLongTermRefPicsSps;
+///     StdVideoH265SequenceParameterSetVui const* pSequenceParameterSetVui;
+///     StdVideoH265PredictorPaletteEntries const* pPredictorPaletteEntries;
+/// } StdVideoH265SequenceParameterSet;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +74,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265SequenceParameterSet allocate(Arena arena) {
-        return new StdVideoH265SequenceParameterSet(arena.allocate(LAYOUT));
+        StdVideoH265SequenceParameterSet ret = new StdVideoH265SequenceParameterSet(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoH265SequenceParameterSet[] allocate(Arena arena, int count) {
@@ -52,209 +100,6 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        StdVideoH265SpsFlags.LAYOUT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("chroma_format_idc"),
-        ValueLayout.JAVA_INT.withName("pic_width_in_luma_samples"),
-        ValueLayout.JAVA_INT.withName("pic_height_in_luma_samples"),
-        ValueLayout.JAVA_BYTE.withName("sps_video_parameter_set_id"),
-        ValueLayout.JAVA_BYTE.withName("sps_max_sub_layers_minus1"),
-        ValueLayout.JAVA_BYTE.withName("sps_seq_parameter_set_id"),
-        ValueLayout.JAVA_BYTE.withName("bit_depth_luma_minus8"),
-        ValueLayout.JAVA_BYTE.withName("bit_depth_chroma_minus8"),
-        ValueLayout.JAVA_BYTE.withName("log2_max_pic_order_cnt_lsb_minus4"),
-        ValueLayout.JAVA_BYTE.withName("log2_min_luma_coding_block_size_minus3"),
-        ValueLayout.JAVA_BYTE.withName("log2_diff_max_min_luma_coding_block_size"),
-        ValueLayout.JAVA_BYTE.withName("log2_min_luma_transform_block_size_minus2"),
-        ValueLayout.JAVA_BYTE.withName("log2_diff_max_min_luma_transform_block_size"),
-        ValueLayout.JAVA_BYTE.withName("max_transform_hierarchy_depth_inter"),
-        ValueLayout.JAVA_BYTE.withName("max_transform_hierarchy_depth_intra"),
-        ValueLayout.JAVA_BYTE.withName("num_short_term_ref_pic_sets"),
-        ValueLayout.JAVA_BYTE.withName("num_long_term_ref_pics_sps"),
-        ValueLayout.JAVA_BYTE.withName("pcm_sample_bit_depth_luma_minus1"),
-        ValueLayout.JAVA_BYTE.withName("pcm_sample_bit_depth_chroma_minus1"),
-        ValueLayout.JAVA_BYTE.withName("log2_min_pcm_luma_coding_block_size_minus3"),
-        ValueLayout.JAVA_BYTE.withName("log2_diff_max_min_pcm_luma_coding_block_size"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
-        ValueLayout.JAVA_BYTE.withName("reserved2"),
-        ValueLayout.JAVA_BYTE.withName("palette_max_size"),
-        ValueLayout.JAVA_BYTE.withName("delta_palette_max_predictor_size"),
-        ValueLayout.JAVA_BYTE.withName("motion_vector_resolution_control_idc"),
-        ValueLayout.JAVA_BYTE.withName("sps_num_palette_predictor_initializers_minus1"),
-        ValueLayout.JAVA_INT.withName("conf_win_left_offset"),
-        ValueLayout.JAVA_INT.withName("conf_win_right_offset"),
-        ValueLayout.JAVA_INT.withName("conf_win_top_offset"),
-        ValueLayout.JAVA_INT.withName("conf_win_bottom_offset"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265ProfileTierLevel.LAYOUT).withName("pProfileTierLevel"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265DecPicBufMgr.LAYOUT).withName("pDecPicBufMgr"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265ScalingLists.LAYOUT).withName("pScalingLists"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265ShortTermRefPicSet.LAYOUT).withName("pShortTermRefPicSet"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265LongTermRefPicsSps.LAYOUT).withName("pLongTermRefPicsSps"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265SequenceParameterSetVui.LAYOUT).withName("pSequenceParameterSetVui"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265PredictorPaletteEntries.LAYOUT).withName("pPredictorPaletteEntries")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$chroma_format_idc = PathElement.groupElement("PATH$chroma_format_idc");
-    public static final PathElement PATH$pic_width_in_luma_samples = PathElement.groupElement("PATH$pic_width_in_luma_samples");
-    public static final PathElement PATH$pic_height_in_luma_samples = PathElement.groupElement("PATH$pic_height_in_luma_samples");
-    public static final PathElement PATH$sps_video_parameter_set_id = PathElement.groupElement("PATH$sps_video_parameter_set_id");
-    public static final PathElement PATH$sps_max_sub_layers_minus1 = PathElement.groupElement("PATH$sps_max_sub_layers_minus1");
-    public static final PathElement PATH$sps_seq_parameter_set_id = PathElement.groupElement("PATH$sps_seq_parameter_set_id");
-    public static final PathElement PATH$bit_depth_luma_minus8 = PathElement.groupElement("PATH$bit_depth_luma_minus8");
-    public static final PathElement PATH$bit_depth_chroma_minus8 = PathElement.groupElement("PATH$bit_depth_chroma_minus8");
-    public static final PathElement PATH$log2_max_pic_order_cnt_lsb_minus4 = PathElement.groupElement("PATH$log2_max_pic_order_cnt_lsb_minus4");
-    public static final PathElement PATH$log2_min_luma_coding_block_size_minus3 = PathElement.groupElement("PATH$log2_min_luma_coding_block_size_minus3");
-    public static final PathElement PATH$log2_diff_max_min_luma_coding_block_size = PathElement.groupElement("PATH$log2_diff_max_min_luma_coding_block_size");
-    public static final PathElement PATH$log2_min_luma_transform_block_size_minus2 = PathElement.groupElement("PATH$log2_min_luma_transform_block_size_minus2");
-    public static final PathElement PATH$log2_diff_max_min_luma_transform_block_size = PathElement.groupElement("PATH$log2_diff_max_min_luma_transform_block_size");
-    public static final PathElement PATH$max_transform_hierarchy_depth_inter = PathElement.groupElement("PATH$max_transform_hierarchy_depth_inter");
-    public static final PathElement PATH$max_transform_hierarchy_depth_intra = PathElement.groupElement("PATH$max_transform_hierarchy_depth_intra");
-    public static final PathElement PATH$num_short_term_ref_pic_sets = PathElement.groupElement("PATH$num_short_term_ref_pic_sets");
-    public static final PathElement PATH$num_long_term_ref_pics_sps = PathElement.groupElement("PATH$num_long_term_ref_pics_sps");
-    public static final PathElement PATH$pcm_sample_bit_depth_luma_minus1 = PathElement.groupElement("PATH$pcm_sample_bit_depth_luma_minus1");
-    public static final PathElement PATH$pcm_sample_bit_depth_chroma_minus1 = PathElement.groupElement("PATH$pcm_sample_bit_depth_chroma_minus1");
-    public static final PathElement PATH$log2_min_pcm_luma_coding_block_size_minus3 = PathElement.groupElement("PATH$log2_min_pcm_luma_coding_block_size_minus3");
-    public static final PathElement PATH$log2_diff_max_min_pcm_luma_coding_block_size = PathElement.groupElement("PATH$log2_diff_max_min_pcm_luma_coding_block_size");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
-    public static final PathElement PATH$reserved2 = PathElement.groupElement("PATH$reserved2");
-    public static final PathElement PATH$palette_max_size = PathElement.groupElement("PATH$palette_max_size");
-    public static final PathElement PATH$delta_palette_max_predictor_size = PathElement.groupElement("PATH$delta_palette_max_predictor_size");
-    public static final PathElement PATH$motion_vector_resolution_control_idc = PathElement.groupElement("PATH$motion_vector_resolution_control_idc");
-    public static final PathElement PATH$sps_num_palette_predictor_initializers_minus1 = PathElement.groupElement("PATH$sps_num_palette_predictor_initializers_minus1");
-    public static final PathElement PATH$conf_win_left_offset = PathElement.groupElement("PATH$conf_win_left_offset");
-    public static final PathElement PATH$conf_win_right_offset = PathElement.groupElement("PATH$conf_win_right_offset");
-    public static final PathElement PATH$conf_win_top_offset = PathElement.groupElement("PATH$conf_win_top_offset");
-    public static final PathElement PATH$conf_win_bottom_offset = PathElement.groupElement("PATH$conf_win_bottom_offset");
-    public static final PathElement PATH$pProfileTierLevel = PathElement.groupElement("PATH$pProfileTierLevel");
-    public static final PathElement PATH$pDecPicBufMgr = PathElement.groupElement("PATH$pDecPicBufMgr");
-    public static final PathElement PATH$pScalingLists = PathElement.groupElement("PATH$pScalingLists");
-    public static final PathElement PATH$pShortTermRefPicSet = PathElement.groupElement("PATH$pShortTermRefPicSet");
-    public static final PathElement PATH$pLongTermRefPicsSps = PathElement.groupElement("PATH$pLongTermRefPicsSps");
-    public static final PathElement PATH$pSequenceParameterSetVui = PathElement.groupElement("PATH$pSequenceParameterSetVui");
-    public static final PathElement PATH$pPredictorPaletteEntries = PathElement.groupElement("PATH$pPredictorPaletteEntries");
-
-    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$chroma_format_idc = (OfInt) LAYOUT.select(PATH$chroma_format_idc);
-    public static final OfInt LAYOUT$pic_width_in_luma_samples = (OfInt) LAYOUT.select(PATH$pic_width_in_luma_samples);
-    public static final OfInt LAYOUT$pic_height_in_luma_samples = (OfInt) LAYOUT.select(PATH$pic_height_in_luma_samples);
-    public static final OfByte LAYOUT$sps_video_parameter_set_id = (OfByte) LAYOUT.select(PATH$sps_video_parameter_set_id);
-    public static final OfByte LAYOUT$sps_max_sub_layers_minus1 = (OfByte) LAYOUT.select(PATH$sps_max_sub_layers_minus1);
-    public static final OfByte LAYOUT$sps_seq_parameter_set_id = (OfByte) LAYOUT.select(PATH$sps_seq_parameter_set_id);
-    public static final OfByte LAYOUT$bit_depth_luma_minus8 = (OfByte) LAYOUT.select(PATH$bit_depth_luma_minus8);
-    public static final OfByte LAYOUT$bit_depth_chroma_minus8 = (OfByte) LAYOUT.select(PATH$bit_depth_chroma_minus8);
-    public static final OfByte LAYOUT$log2_max_pic_order_cnt_lsb_minus4 = (OfByte) LAYOUT.select(PATH$log2_max_pic_order_cnt_lsb_minus4);
-    public static final OfByte LAYOUT$log2_min_luma_coding_block_size_minus3 = (OfByte) LAYOUT.select(PATH$log2_min_luma_coding_block_size_minus3);
-    public static final OfByte LAYOUT$log2_diff_max_min_luma_coding_block_size = (OfByte) LAYOUT.select(PATH$log2_diff_max_min_luma_coding_block_size);
-    public static final OfByte LAYOUT$log2_min_luma_transform_block_size_minus2 = (OfByte) LAYOUT.select(PATH$log2_min_luma_transform_block_size_minus2);
-    public static final OfByte LAYOUT$log2_diff_max_min_luma_transform_block_size = (OfByte) LAYOUT.select(PATH$log2_diff_max_min_luma_transform_block_size);
-    public static final OfByte LAYOUT$max_transform_hierarchy_depth_inter = (OfByte) LAYOUT.select(PATH$max_transform_hierarchy_depth_inter);
-    public static final OfByte LAYOUT$max_transform_hierarchy_depth_intra = (OfByte) LAYOUT.select(PATH$max_transform_hierarchy_depth_intra);
-    public static final OfByte LAYOUT$num_short_term_ref_pic_sets = (OfByte) LAYOUT.select(PATH$num_short_term_ref_pic_sets);
-    public static final OfByte LAYOUT$num_long_term_ref_pics_sps = (OfByte) LAYOUT.select(PATH$num_long_term_ref_pics_sps);
-    public static final OfByte LAYOUT$pcm_sample_bit_depth_luma_minus1 = (OfByte) LAYOUT.select(PATH$pcm_sample_bit_depth_luma_minus1);
-    public static final OfByte LAYOUT$pcm_sample_bit_depth_chroma_minus1 = (OfByte) LAYOUT.select(PATH$pcm_sample_bit_depth_chroma_minus1);
-    public static final OfByte LAYOUT$log2_min_pcm_luma_coding_block_size_minus3 = (OfByte) LAYOUT.select(PATH$log2_min_pcm_luma_coding_block_size_minus3);
-    public static final OfByte LAYOUT$log2_diff_max_min_pcm_luma_coding_block_size = (OfByte) LAYOUT.select(PATH$log2_diff_max_min_pcm_luma_coding_block_size);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
-    public static final OfByte LAYOUT$reserved2 = (OfByte) LAYOUT.select(PATH$reserved2);
-    public static final OfByte LAYOUT$palette_max_size = (OfByte) LAYOUT.select(PATH$palette_max_size);
-    public static final OfByte LAYOUT$delta_palette_max_predictor_size = (OfByte) LAYOUT.select(PATH$delta_palette_max_predictor_size);
-    public static final OfByte LAYOUT$motion_vector_resolution_control_idc = (OfByte) LAYOUT.select(PATH$motion_vector_resolution_control_idc);
-    public static final OfByte LAYOUT$sps_num_palette_predictor_initializers_minus1 = (OfByte) LAYOUT.select(PATH$sps_num_palette_predictor_initializers_minus1);
-    public static final OfInt LAYOUT$conf_win_left_offset = (OfInt) LAYOUT.select(PATH$conf_win_left_offset);
-    public static final OfInt LAYOUT$conf_win_right_offset = (OfInt) LAYOUT.select(PATH$conf_win_right_offset);
-    public static final OfInt LAYOUT$conf_win_top_offset = (OfInt) LAYOUT.select(PATH$conf_win_top_offset);
-    public static final OfInt LAYOUT$conf_win_bottom_offset = (OfInt) LAYOUT.select(PATH$conf_win_bottom_offset);
-    public static final AddressLayout LAYOUT$pProfileTierLevel = (AddressLayout) LAYOUT.select(PATH$pProfileTierLevel);
-    public static final AddressLayout LAYOUT$pDecPicBufMgr = (AddressLayout) LAYOUT.select(PATH$pDecPicBufMgr);
-    public static final AddressLayout LAYOUT$pScalingLists = (AddressLayout) LAYOUT.select(PATH$pScalingLists);
-    public static final AddressLayout LAYOUT$pShortTermRefPicSet = (AddressLayout) LAYOUT.select(PATH$pShortTermRefPicSet);
-    public static final AddressLayout LAYOUT$pLongTermRefPicsSps = (AddressLayout) LAYOUT.select(PATH$pLongTermRefPicsSps);
-    public static final AddressLayout LAYOUT$pSequenceParameterSetVui = (AddressLayout) LAYOUT.select(PATH$pSequenceParameterSetVui);
-    public static final AddressLayout LAYOUT$pPredictorPaletteEntries = (AddressLayout) LAYOUT.select(PATH$pPredictorPaletteEntries);
-
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$chroma_format_idc = LAYOUT$chroma_format_idc.byteSize();
-    public static final long SIZE$pic_width_in_luma_samples = LAYOUT$pic_width_in_luma_samples.byteSize();
-    public static final long SIZE$pic_height_in_luma_samples = LAYOUT$pic_height_in_luma_samples.byteSize();
-    public static final long SIZE$sps_video_parameter_set_id = LAYOUT$sps_video_parameter_set_id.byteSize();
-    public static final long SIZE$sps_max_sub_layers_minus1 = LAYOUT$sps_max_sub_layers_minus1.byteSize();
-    public static final long SIZE$sps_seq_parameter_set_id = LAYOUT$sps_seq_parameter_set_id.byteSize();
-    public static final long SIZE$bit_depth_luma_minus8 = LAYOUT$bit_depth_luma_minus8.byteSize();
-    public static final long SIZE$bit_depth_chroma_minus8 = LAYOUT$bit_depth_chroma_minus8.byteSize();
-    public static final long SIZE$log2_max_pic_order_cnt_lsb_minus4 = LAYOUT$log2_max_pic_order_cnt_lsb_minus4.byteSize();
-    public static final long SIZE$log2_min_luma_coding_block_size_minus3 = LAYOUT$log2_min_luma_coding_block_size_minus3.byteSize();
-    public static final long SIZE$log2_diff_max_min_luma_coding_block_size = LAYOUT$log2_diff_max_min_luma_coding_block_size.byteSize();
-    public static final long SIZE$log2_min_luma_transform_block_size_minus2 = LAYOUT$log2_min_luma_transform_block_size_minus2.byteSize();
-    public static final long SIZE$log2_diff_max_min_luma_transform_block_size = LAYOUT$log2_diff_max_min_luma_transform_block_size.byteSize();
-    public static final long SIZE$max_transform_hierarchy_depth_inter = LAYOUT$max_transform_hierarchy_depth_inter.byteSize();
-    public static final long SIZE$max_transform_hierarchy_depth_intra = LAYOUT$max_transform_hierarchy_depth_intra.byteSize();
-    public static final long SIZE$num_short_term_ref_pic_sets = LAYOUT$num_short_term_ref_pic_sets.byteSize();
-    public static final long SIZE$num_long_term_ref_pics_sps = LAYOUT$num_long_term_ref_pics_sps.byteSize();
-    public static final long SIZE$pcm_sample_bit_depth_luma_minus1 = LAYOUT$pcm_sample_bit_depth_luma_minus1.byteSize();
-    public static final long SIZE$pcm_sample_bit_depth_chroma_minus1 = LAYOUT$pcm_sample_bit_depth_chroma_minus1.byteSize();
-    public static final long SIZE$log2_min_pcm_luma_coding_block_size_minus3 = LAYOUT$log2_min_pcm_luma_coding_block_size_minus3.byteSize();
-    public static final long SIZE$log2_diff_max_min_pcm_luma_coding_block_size = LAYOUT$log2_diff_max_min_pcm_luma_coding_block_size.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
-    public static final long SIZE$reserved2 = LAYOUT$reserved2.byteSize();
-    public static final long SIZE$palette_max_size = LAYOUT$palette_max_size.byteSize();
-    public static final long SIZE$delta_palette_max_predictor_size = LAYOUT$delta_palette_max_predictor_size.byteSize();
-    public static final long SIZE$motion_vector_resolution_control_idc = LAYOUT$motion_vector_resolution_control_idc.byteSize();
-    public static final long SIZE$sps_num_palette_predictor_initializers_minus1 = LAYOUT$sps_num_palette_predictor_initializers_minus1.byteSize();
-    public static final long SIZE$conf_win_left_offset = LAYOUT$conf_win_left_offset.byteSize();
-    public static final long SIZE$conf_win_right_offset = LAYOUT$conf_win_right_offset.byteSize();
-    public static final long SIZE$conf_win_top_offset = LAYOUT$conf_win_top_offset.byteSize();
-    public static final long SIZE$conf_win_bottom_offset = LAYOUT$conf_win_bottom_offset.byteSize();
-    public static final long SIZE$pProfileTierLevel = LAYOUT$pProfileTierLevel.byteSize();
-    public static final long SIZE$pDecPicBufMgr = LAYOUT$pDecPicBufMgr.byteSize();
-    public static final long SIZE$pScalingLists = LAYOUT$pScalingLists.byteSize();
-    public static final long SIZE$pShortTermRefPicSet = LAYOUT$pShortTermRefPicSet.byteSize();
-    public static final long SIZE$pLongTermRefPicsSps = LAYOUT$pLongTermRefPicsSps.byteSize();
-    public static final long SIZE$pSequenceParameterSetVui = LAYOUT$pSequenceParameterSetVui.byteSize();
-    public static final long SIZE$pPredictorPaletteEntries = LAYOUT$pPredictorPaletteEntries.byteSize();
-
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$chroma_format_idc = LAYOUT.byteOffset(PATH$chroma_format_idc);
-    public static final long OFFSET$pic_width_in_luma_samples = LAYOUT.byteOffset(PATH$pic_width_in_luma_samples);
-    public static final long OFFSET$pic_height_in_luma_samples = LAYOUT.byteOffset(PATH$pic_height_in_luma_samples);
-    public static final long OFFSET$sps_video_parameter_set_id = LAYOUT.byteOffset(PATH$sps_video_parameter_set_id);
-    public static final long OFFSET$sps_max_sub_layers_minus1 = LAYOUT.byteOffset(PATH$sps_max_sub_layers_minus1);
-    public static final long OFFSET$sps_seq_parameter_set_id = LAYOUT.byteOffset(PATH$sps_seq_parameter_set_id);
-    public static final long OFFSET$bit_depth_luma_minus8 = LAYOUT.byteOffset(PATH$bit_depth_luma_minus8);
-    public static final long OFFSET$bit_depth_chroma_minus8 = LAYOUT.byteOffset(PATH$bit_depth_chroma_minus8);
-    public static final long OFFSET$log2_max_pic_order_cnt_lsb_minus4 = LAYOUT.byteOffset(PATH$log2_max_pic_order_cnt_lsb_minus4);
-    public static final long OFFSET$log2_min_luma_coding_block_size_minus3 = LAYOUT.byteOffset(PATH$log2_min_luma_coding_block_size_minus3);
-    public static final long OFFSET$log2_diff_max_min_luma_coding_block_size = LAYOUT.byteOffset(PATH$log2_diff_max_min_luma_coding_block_size);
-    public static final long OFFSET$log2_min_luma_transform_block_size_minus2 = LAYOUT.byteOffset(PATH$log2_min_luma_transform_block_size_minus2);
-    public static final long OFFSET$log2_diff_max_min_luma_transform_block_size = LAYOUT.byteOffset(PATH$log2_diff_max_min_luma_transform_block_size);
-    public static final long OFFSET$max_transform_hierarchy_depth_inter = LAYOUT.byteOffset(PATH$max_transform_hierarchy_depth_inter);
-    public static final long OFFSET$max_transform_hierarchy_depth_intra = LAYOUT.byteOffset(PATH$max_transform_hierarchy_depth_intra);
-    public static final long OFFSET$num_short_term_ref_pic_sets = LAYOUT.byteOffset(PATH$num_short_term_ref_pic_sets);
-    public static final long OFFSET$num_long_term_ref_pics_sps = LAYOUT.byteOffset(PATH$num_long_term_ref_pics_sps);
-    public static final long OFFSET$pcm_sample_bit_depth_luma_minus1 = LAYOUT.byteOffset(PATH$pcm_sample_bit_depth_luma_minus1);
-    public static final long OFFSET$pcm_sample_bit_depth_chroma_minus1 = LAYOUT.byteOffset(PATH$pcm_sample_bit_depth_chroma_minus1);
-    public static final long OFFSET$log2_min_pcm_luma_coding_block_size_minus3 = LAYOUT.byteOffset(PATH$log2_min_pcm_luma_coding_block_size_minus3);
-    public static final long OFFSET$log2_diff_max_min_pcm_luma_coding_block_size = LAYOUT.byteOffset(PATH$log2_diff_max_min_pcm_luma_coding_block_size);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
-    public static final long OFFSET$reserved2 = LAYOUT.byteOffset(PATH$reserved2);
-    public static final long OFFSET$palette_max_size = LAYOUT.byteOffset(PATH$palette_max_size);
-    public static final long OFFSET$delta_palette_max_predictor_size = LAYOUT.byteOffset(PATH$delta_palette_max_predictor_size);
-    public static final long OFFSET$motion_vector_resolution_control_idc = LAYOUT.byteOffset(PATH$motion_vector_resolution_control_idc);
-    public static final long OFFSET$sps_num_palette_predictor_initializers_minus1 = LAYOUT.byteOffset(PATH$sps_num_palette_predictor_initializers_minus1);
-    public static final long OFFSET$conf_win_left_offset = LAYOUT.byteOffset(PATH$conf_win_left_offset);
-    public static final long OFFSET$conf_win_right_offset = LAYOUT.byteOffset(PATH$conf_win_right_offset);
-    public static final long OFFSET$conf_win_top_offset = LAYOUT.byteOffset(PATH$conf_win_top_offset);
-    public static final long OFFSET$conf_win_bottom_offset = LAYOUT.byteOffset(PATH$conf_win_bottom_offset);
-    public static final long OFFSET$pProfileTierLevel = LAYOUT.byteOffset(PATH$pProfileTierLevel);
-    public static final long OFFSET$pDecPicBufMgr = LAYOUT.byteOffset(PATH$pDecPicBufMgr);
-    public static final long OFFSET$pScalingLists = LAYOUT.byteOffset(PATH$pScalingLists);
-    public static final long OFFSET$pShortTermRefPicSet = LAYOUT.byteOffset(PATH$pShortTermRefPicSet);
-    public static final long OFFSET$pLongTermRefPicsSps = LAYOUT.byteOffset(PATH$pLongTermRefPicsSps);
-    public static final long OFFSET$pSequenceParameterSetVui = LAYOUT.byteOffset(PATH$pSequenceParameterSetVui);
-    public static final long OFFSET$pPredictorPaletteEntries = LAYOUT.byteOffset(PATH$pPredictorPaletteEntries);
 
     public StdVideoH265SpsFlags flags() {
         return new StdVideoH265SpsFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
@@ -522,7 +367,7 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
 
     public @Nullable StdVideoH265ProfileTierLevel pProfileTierLevel() {
         MemorySegment s = pProfileTierLevelRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoH265ProfileTierLevel(s);
@@ -535,7 +380,7 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
 
     @unsafe public @Nullable StdVideoH265ProfileTierLevel[] pProfileTierLevel(int assumedCount) {
         MemorySegment s = pProfileTierLevelRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -557,7 +402,7 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
 
     public @Nullable StdVideoH265DecPicBufMgr pDecPicBufMgr() {
         MemorySegment s = pDecPicBufMgrRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoH265DecPicBufMgr(s);
@@ -570,7 +415,7 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
 
     @unsafe public @Nullable StdVideoH265DecPicBufMgr[] pDecPicBufMgr(int assumedCount) {
         MemorySegment s = pDecPicBufMgrRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -592,7 +437,7 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
 
     public @Nullable StdVideoH265ScalingLists pScalingLists() {
         MemorySegment s = pScalingListsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoH265ScalingLists(s);
@@ -605,7 +450,7 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
 
     @unsafe public @Nullable StdVideoH265ScalingLists[] pScalingLists(int assumedCount) {
         MemorySegment s = pScalingListsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -627,7 +472,7 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
 
     public @Nullable StdVideoH265ShortTermRefPicSet pShortTermRefPicSet() {
         MemorySegment s = pShortTermRefPicSetRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoH265ShortTermRefPicSet(s);
@@ -640,7 +485,7 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
 
     @unsafe public @Nullable StdVideoH265ShortTermRefPicSet[] pShortTermRefPicSet(int assumedCount) {
         MemorySegment s = pShortTermRefPicSetRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -662,7 +507,7 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
 
     public @Nullable StdVideoH265LongTermRefPicsSps pLongTermRefPicsSps() {
         MemorySegment s = pLongTermRefPicsSpsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoH265LongTermRefPicsSps(s);
@@ -675,7 +520,7 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
 
     @unsafe public @Nullable StdVideoH265LongTermRefPicsSps[] pLongTermRefPicsSps(int assumedCount) {
         MemorySegment s = pLongTermRefPicsSpsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -697,7 +542,7 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
 
     public @Nullable StdVideoH265SequenceParameterSetVui pSequenceParameterSetVui() {
         MemorySegment s = pSequenceParameterSetVuiRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoH265SequenceParameterSetVui(s);
@@ -710,7 +555,7 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
 
     @unsafe public @Nullable StdVideoH265SequenceParameterSetVui[] pSequenceParameterSetVui(int assumedCount) {
         MemorySegment s = pSequenceParameterSetVuiRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -732,7 +577,7 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
 
     public @Nullable StdVideoH265PredictorPaletteEntries pPredictorPaletteEntries() {
         MemorySegment s = pPredictorPaletteEntriesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoH265PredictorPaletteEntries(s);
@@ -745,7 +590,7 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
 
     @unsafe public @Nullable StdVideoH265PredictorPaletteEntries[] pPredictorPaletteEntries(int assumedCount) {
         MemorySegment s = pPredictorPaletteEntriesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -757,4 +602,206 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoH265SpsFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("chroma_format_idc"),
+        ValueLayout.JAVA_INT.withName("pic_width_in_luma_samples"),
+        ValueLayout.JAVA_INT.withName("pic_height_in_luma_samples"),
+        ValueLayout.JAVA_BYTE.withName("sps_video_parameter_set_id"),
+        ValueLayout.JAVA_BYTE.withName("sps_max_sub_layers_minus1"),
+        ValueLayout.JAVA_BYTE.withName("sps_seq_parameter_set_id"),
+        ValueLayout.JAVA_BYTE.withName("bit_depth_luma_minus8"),
+        ValueLayout.JAVA_BYTE.withName("bit_depth_chroma_minus8"),
+        ValueLayout.JAVA_BYTE.withName("log2_max_pic_order_cnt_lsb_minus4"),
+        ValueLayout.JAVA_BYTE.withName("log2_min_luma_coding_block_size_minus3"),
+        ValueLayout.JAVA_BYTE.withName("log2_diff_max_min_luma_coding_block_size"),
+        ValueLayout.JAVA_BYTE.withName("log2_min_luma_transform_block_size_minus2"),
+        ValueLayout.JAVA_BYTE.withName("log2_diff_max_min_luma_transform_block_size"),
+        ValueLayout.JAVA_BYTE.withName("max_transform_hierarchy_depth_inter"),
+        ValueLayout.JAVA_BYTE.withName("max_transform_hierarchy_depth_intra"),
+        ValueLayout.JAVA_BYTE.withName("num_short_term_ref_pic_sets"),
+        ValueLayout.JAVA_BYTE.withName("num_long_term_ref_pics_sps"),
+        ValueLayout.JAVA_BYTE.withName("pcm_sample_bit_depth_luma_minus1"),
+        ValueLayout.JAVA_BYTE.withName("pcm_sample_bit_depth_chroma_minus1"),
+        ValueLayout.JAVA_BYTE.withName("log2_min_pcm_luma_coding_block_size_minus3"),
+        ValueLayout.JAVA_BYTE.withName("log2_diff_max_min_pcm_luma_coding_block_size"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.JAVA_BYTE.withName("reserved2"),
+        ValueLayout.JAVA_BYTE.withName("palette_max_size"),
+        ValueLayout.JAVA_BYTE.withName("delta_palette_max_predictor_size"),
+        ValueLayout.JAVA_BYTE.withName("motion_vector_resolution_control_idc"),
+        ValueLayout.JAVA_BYTE.withName("sps_num_palette_predictor_initializers_minus1"),
+        ValueLayout.JAVA_INT.withName("conf_win_left_offset"),
+        ValueLayout.JAVA_INT.withName("conf_win_right_offset"),
+        ValueLayout.JAVA_INT.withName("conf_win_top_offset"),
+        ValueLayout.JAVA_INT.withName("conf_win_bottom_offset"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265ProfileTierLevel.LAYOUT).withName("pProfileTierLevel"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265DecPicBufMgr.LAYOUT).withName("pDecPicBufMgr"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265ScalingLists.LAYOUT).withName("pScalingLists"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265ShortTermRefPicSet.LAYOUT).withName("pShortTermRefPicSet"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265LongTermRefPicsSps.LAYOUT).withName("pLongTermRefPicsSps"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265SequenceParameterSetVui.LAYOUT).withName("pSequenceParameterSetVui"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265PredictorPaletteEntries.LAYOUT).withName("pPredictorPaletteEntries")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$chroma_format_idc = PathElement.groupElement("PATH$chroma_format_idc");
+    public static final PathElement PATH$pic_width_in_luma_samples = PathElement.groupElement("PATH$pic_width_in_luma_samples");
+    public static final PathElement PATH$pic_height_in_luma_samples = PathElement.groupElement("PATH$pic_height_in_luma_samples");
+    public static final PathElement PATH$sps_video_parameter_set_id = PathElement.groupElement("PATH$sps_video_parameter_set_id");
+    public static final PathElement PATH$sps_max_sub_layers_minus1 = PathElement.groupElement("PATH$sps_max_sub_layers_minus1");
+    public static final PathElement PATH$sps_seq_parameter_set_id = PathElement.groupElement("PATH$sps_seq_parameter_set_id");
+    public static final PathElement PATH$bit_depth_luma_minus8 = PathElement.groupElement("PATH$bit_depth_luma_minus8");
+    public static final PathElement PATH$bit_depth_chroma_minus8 = PathElement.groupElement("PATH$bit_depth_chroma_minus8");
+    public static final PathElement PATH$log2_max_pic_order_cnt_lsb_minus4 = PathElement.groupElement("PATH$log2_max_pic_order_cnt_lsb_minus4");
+    public static final PathElement PATH$log2_min_luma_coding_block_size_minus3 = PathElement.groupElement("PATH$log2_min_luma_coding_block_size_minus3");
+    public static final PathElement PATH$log2_diff_max_min_luma_coding_block_size = PathElement.groupElement("PATH$log2_diff_max_min_luma_coding_block_size");
+    public static final PathElement PATH$log2_min_luma_transform_block_size_minus2 = PathElement.groupElement("PATH$log2_min_luma_transform_block_size_minus2");
+    public static final PathElement PATH$log2_diff_max_min_luma_transform_block_size = PathElement.groupElement("PATH$log2_diff_max_min_luma_transform_block_size");
+    public static final PathElement PATH$max_transform_hierarchy_depth_inter = PathElement.groupElement("PATH$max_transform_hierarchy_depth_inter");
+    public static final PathElement PATH$max_transform_hierarchy_depth_intra = PathElement.groupElement("PATH$max_transform_hierarchy_depth_intra");
+    public static final PathElement PATH$num_short_term_ref_pic_sets = PathElement.groupElement("PATH$num_short_term_ref_pic_sets");
+    public static final PathElement PATH$num_long_term_ref_pics_sps = PathElement.groupElement("PATH$num_long_term_ref_pics_sps");
+    public static final PathElement PATH$pcm_sample_bit_depth_luma_minus1 = PathElement.groupElement("PATH$pcm_sample_bit_depth_luma_minus1");
+    public static final PathElement PATH$pcm_sample_bit_depth_chroma_minus1 = PathElement.groupElement("PATH$pcm_sample_bit_depth_chroma_minus1");
+    public static final PathElement PATH$log2_min_pcm_luma_coding_block_size_minus3 = PathElement.groupElement("PATH$log2_min_pcm_luma_coding_block_size_minus3");
+    public static final PathElement PATH$log2_diff_max_min_pcm_luma_coding_block_size = PathElement.groupElement("PATH$log2_diff_max_min_pcm_luma_coding_block_size");
+    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
+    public static final PathElement PATH$reserved2 = PathElement.groupElement("PATH$reserved2");
+    public static final PathElement PATH$palette_max_size = PathElement.groupElement("PATH$palette_max_size");
+    public static final PathElement PATH$delta_palette_max_predictor_size = PathElement.groupElement("PATH$delta_palette_max_predictor_size");
+    public static final PathElement PATH$motion_vector_resolution_control_idc = PathElement.groupElement("PATH$motion_vector_resolution_control_idc");
+    public static final PathElement PATH$sps_num_palette_predictor_initializers_minus1 = PathElement.groupElement("PATH$sps_num_palette_predictor_initializers_minus1");
+    public static final PathElement PATH$conf_win_left_offset = PathElement.groupElement("PATH$conf_win_left_offset");
+    public static final PathElement PATH$conf_win_right_offset = PathElement.groupElement("PATH$conf_win_right_offset");
+    public static final PathElement PATH$conf_win_top_offset = PathElement.groupElement("PATH$conf_win_top_offset");
+    public static final PathElement PATH$conf_win_bottom_offset = PathElement.groupElement("PATH$conf_win_bottom_offset");
+    public static final PathElement PATH$pProfileTierLevel = PathElement.groupElement("PATH$pProfileTierLevel");
+    public static final PathElement PATH$pDecPicBufMgr = PathElement.groupElement("PATH$pDecPicBufMgr");
+    public static final PathElement PATH$pScalingLists = PathElement.groupElement("PATH$pScalingLists");
+    public static final PathElement PATH$pShortTermRefPicSet = PathElement.groupElement("PATH$pShortTermRefPicSet");
+    public static final PathElement PATH$pLongTermRefPicsSps = PathElement.groupElement("PATH$pLongTermRefPicsSps");
+    public static final PathElement PATH$pSequenceParameterSetVui = PathElement.groupElement("PATH$pSequenceParameterSetVui");
+    public static final PathElement PATH$pPredictorPaletteEntries = PathElement.groupElement("PATH$pPredictorPaletteEntries");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$chroma_format_idc = (OfInt) LAYOUT.select(PATH$chroma_format_idc);
+    public static final OfInt LAYOUT$pic_width_in_luma_samples = (OfInt) LAYOUT.select(PATH$pic_width_in_luma_samples);
+    public static final OfInt LAYOUT$pic_height_in_luma_samples = (OfInt) LAYOUT.select(PATH$pic_height_in_luma_samples);
+    public static final OfByte LAYOUT$sps_video_parameter_set_id = (OfByte) LAYOUT.select(PATH$sps_video_parameter_set_id);
+    public static final OfByte LAYOUT$sps_max_sub_layers_minus1 = (OfByte) LAYOUT.select(PATH$sps_max_sub_layers_minus1);
+    public static final OfByte LAYOUT$sps_seq_parameter_set_id = (OfByte) LAYOUT.select(PATH$sps_seq_parameter_set_id);
+    public static final OfByte LAYOUT$bit_depth_luma_minus8 = (OfByte) LAYOUT.select(PATH$bit_depth_luma_minus8);
+    public static final OfByte LAYOUT$bit_depth_chroma_minus8 = (OfByte) LAYOUT.select(PATH$bit_depth_chroma_minus8);
+    public static final OfByte LAYOUT$log2_max_pic_order_cnt_lsb_minus4 = (OfByte) LAYOUT.select(PATH$log2_max_pic_order_cnt_lsb_minus4);
+    public static final OfByte LAYOUT$log2_min_luma_coding_block_size_minus3 = (OfByte) LAYOUT.select(PATH$log2_min_luma_coding_block_size_minus3);
+    public static final OfByte LAYOUT$log2_diff_max_min_luma_coding_block_size = (OfByte) LAYOUT.select(PATH$log2_diff_max_min_luma_coding_block_size);
+    public static final OfByte LAYOUT$log2_min_luma_transform_block_size_minus2 = (OfByte) LAYOUT.select(PATH$log2_min_luma_transform_block_size_minus2);
+    public static final OfByte LAYOUT$log2_diff_max_min_luma_transform_block_size = (OfByte) LAYOUT.select(PATH$log2_diff_max_min_luma_transform_block_size);
+    public static final OfByte LAYOUT$max_transform_hierarchy_depth_inter = (OfByte) LAYOUT.select(PATH$max_transform_hierarchy_depth_inter);
+    public static final OfByte LAYOUT$max_transform_hierarchy_depth_intra = (OfByte) LAYOUT.select(PATH$max_transform_hierarchy_depth_intra);
+    public static final OfByte LAYOUT$num_short_term_ref_pic_sets = (OfByte) LAYOUT.select(PATH$num_short_term_ref_pic_sets);
+    public static final OfByte LAYOUT$num_long_term_ref_pics_sps = (OfByte) LAYOUT.select(PATH$num_long_term_ref_pics_sps);
+    public static final OfByte LAYOUT$pcm_sample_bit_depth_luma_minus1 = (OfByte) LAYOUT.select(PATH$pcm_sample_bit_depth_luma_minus1);
+    public static final OfByte LAYOUT$pcm_sample_bit_depth_chroma_minus1 = (OfByte) LAYOUT.select(PATH$pcm_sample_bit_depth_chroma_minus1);
+    public static final OfByte LAYOUT$log2_min_pcm_luma_coding_block_size_minus3 = (OfByte) LAYOUT.select(PATH$log2_min_pcm_luma_coding_block_size_minus3);
+    public static final OfByte LAYOUT$log2_diff_max_min_pcm_luma_coding_block_size = (OfByte) LAYOUT.select(PATH$log2_diff_max_min_pcm_luma_coding_block_size);
+    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
+    public static final OfByte LAYOUT$reserved2 = (OfByte) LAYOUT.select(PATH$reserved2);
+    public static final OfByte LAYOUT$palette_max_size = (OfByte) LAYOUT.select(PATH$palette_max_size);
+    public static final OfByte LAYOUT$delta_palette_max_predictor_size = (OfByte) LAYOUT.select(PATH$delta_palette_max_predictor_size);
+    public static final OfByte LAYOUT$motion_vector_resolution_control_idc = (OfByte) LAYOUT.select(PATH$motion_vector_resolution_control_idc);
+    public static final OfByte LAYOUT$sps_num_palette_predictor_initializers_minus1 = (OfByte) LAYOUT.select(PATH$sps_num_palette_predictor_initializers_minus1);
+    public static final OfInt LAYOUT$conf_win_left_offset = (OfInt) LAYOUT.select(PATH$conf_win_left_offset);
+    public static final OfInt LAYOUT$conf_win_right_offset = (OfInt) LAYOUT.select(PATH$conf_win_right_offset);
+    public static final OfInt LAYOUT$conf_win_top_offset = (OfInt) LAYOUT.select(PATH$conf_win_top_offset);
+    public static final OfInt LAYOUT$conf_win_bottom_offset = (OfInt) LAYOUT.select(PATH$conf_win_bottom_offset);
+    public static final AddressLayout LAYOUT$pProfileTierLevel = (AddressLayout) LAYOUT.select(PATH$pProfileTierLevel);
+    public static final AddressLayout LAYOUT$pDecPicBufMgr = (AddressLayout) LAYOUT.select(PATH$pDecPicBufMgr);
+    public static final AddressLayout LAYOUT$pScalingLists = (AddressLayout) LAYOUT.select(PATH$pScalingLists);
+    public static final AddressLayout LAYOUT$pShortTermRefPicSet = (AddressLayout) LAYOUT.select(PATH$pShortTermRefPicSet);
+    public static final AddressLayout LAYOUT$pLongTermRefPicsSps = (AddressLayout) LAYOUT.select(PATH$pLongTermRefPicsSps);
+    public static final AddressLayout LAYOUT$pSequenceParameterSetVui = (AddressLayout) LAYOUT.select(PATH$pSequenceParameterSetVui);
+    public static final AddressLayout LAYOUT$pPredictorPaletteEntries = (AddressLayout) LAYOUT.select(PATH$pPredictorPaletteEntries);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$chroma_format_idc = LAYOUT$chroma_format_idc.byteSize();
+    public static final long SIZE$pic_width_in_luma_samples = LAYOUT$pic_width_in_luma_samples.byteSize();
+    public static final long SIZE$pic_height_in_luma_samples = LAYOUT$pic_height_in_luma_samples.byteSize();
+    public static final long SIZE$sps_video_parameter_set_id = LAYOUT$sps_video_parameter_set_id.byteSize();
+    public static final long SIZE$sps_max_sub_layers_minus1 = LAYOUT$sps_max_sub_layers_minus1.byteSize();
+    public static final long SIZE$sps_seq_parameter_set_id = LAYOUT$sps_seq_parameter_set_id.byteSize();
+    public static final long SIZE$bit_depth_luma_minus8 = LAYOUT$bit_depth_luma_minus8.byteSize();
+    public static final long SIZE$bit_depth_chroma_minus8 = LAYOUT$bit_depth_chroma_minus8.byteSize();
+    public static final long SIZE$log2_max_pic_order_cnt_lsb_minus4 = LAYOUT$log2_max_pic_order_cnt_lsb_minus4.byteSize();
+    public static final long SIZE$log2_min_luma_coding_block_size_minus3 = LAYOUT$log2_min_luma_coding_block_size_minus3.byteSize();
+    public static final long SIZE$log2_diff_max_min_luma_coding_block_size = LAYOUT$log2_diff_max_min_luma_coding_block_size.byteSize();
+    public static final long SIZE$log2_min_luma_transform_block_size_minus2 = LAYOUT$log2_min_luma_transform_block_size_minus2.byteSize();
+    public static final long SIZE$log2_diff_max_min_luma_transform_block_size = LAYOUT$log2_diff_max_min_luma_transform_block_size.byteSize();
+    public static final long SIZE$max_transform_hierarchy_depth_inter = LAYOUT$max_transform_hierarchy_depth_inter.byteSize();
+    public static final long SIZE$max_transform_hierarchy_depth_intra = LAYOUT$max_transform_hierarchy_depth_intra.byteSize();
+    public static final long SIZE$num_short_term_ref_pic_sets = LAYOUT$num_short_term_ref_pic_sets.byteSize();
+    public static final long SIZE$num_long_term_ref_pics_sps = LAYOUT$num_long_term_ref_pics_sps.byteSize();
+    public static final long SIZE$pcm_sample_bit_depth_luma_minus1 = LAYOUT$pcm_sample_bit_depth_luma_minus1.byteSize();
+    public static final long SIZE$pcm_sample_bit_depth_chroma_minus1 = LAYOUT$pcm_sample_bit_depth_chroma_minus1.byteSize();
+    public static final long SIZE$log2_min_pcm_luma_coding_block_size_minus3 = LAYOUT$log2_min_pcm_luma_coding_block_size_minus3.byteSize();
+    public static final long SIZE$log2_diff_max_min_pcm_luma_coding_block_size = LAYOUT$log2_diff_max_min_pcm_luma_coding_block_size.byteSize();
+    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
+    public static final long SIZE$reserved2 = LAYOUT$reserved2.byteSize();
+    public static final long SIZE$palette_max_size = LAYOUT$palette_max_size.byteSize();
+    public static final long SIZE$delta_palette_max_predictor_size = LAYOUT$delta_palette_max_predictor_size.byteSize();
+    public static final long SIZE$motion_vector_resolution_control_idc = LAYOUT$motion_vector_resolution_control_idc.byteSize();
+    public static final long SIZE$sps_num_palette_predictor_initializers_minus1 = LAYOUT$sps_num_palette_predictor_initializers_minus1.byteSize();
+    public static final long SIZE$conf_win_left_offset = LAYOUT$conf_win_left_offset.byteSize();
+    public static final long SIZE$conf_win_right_offset = LAYOUT$conf_win_right_offset.byteSize();
+    public static final long SIZE$conf_win_top_offset = LAYOUT$conf_win_top_offset.byteSize();
+    public static final long SIZE$conf_win_bottom_offset = LAYOUT$conf_win_bottom_offset.byteSize();
+    public static final long SIZE$pProfileTierLevel = LAYOUT$pProfileTierLevel.byteSize();
+    public static final long SIZE$pDecPicBufMgr = LAYOUT$pDecPicBufMgr.byteSize();
+    public static final long SIZE$pScalingLists = LAYOUT$pScalingLists.byteSize();
+    public static final long SIZE$pShortTermRefPicSet = LAYOUT$pShortTermRefPicSet.byteSize();
+    public static final long SIZE$pLongTermRefPicsSps = LAYOUT$pLongTermRefPicsSps.byteSize();
+    public static final long SIZE$pSequenceParameterSetVui = LAYOUT$pSequenceParameterSetVui.byteSize();
+    public static final long SIZE$pPredictorPaletteEntries = LAYOUT$pPredictorPaletteEntries.byteSize();
+
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$chroma_format_idc = LAYOUT.byteOffset(PATH$chroma_format_idc);
+    public static final long OFFSET$pic_width_in_luma_samples = LAYOUT.byteOffset(PATH$pic_width_in_luma_samples);
+    public static final long OFFSET$pic_height_in_luma_samples = LAYOUT.byteOffset(PATH$pic_height_in_luma_samples);
+    public static final long OFFSET$sps_video_parameter_set_id = LAYOUT.byteOffset(PATH$sps_video_parameter_set_id);
+    public static final long OFFSET$sps_max_sub_layers_minus1 = LAYOUT.byteOffset(PATH$sps_max_sub_layers_minus1);
+    public static final long OFFSET$sps_seq_parameter_set_id = LAYOUT.byteOffset(PATH$sps_seq_parameter_set_id);
+    public static final long OFFSET$bit_depth_luma_minus8 = LAYOUT.byteOffset(PATH$bit_depth_luma_minus8);
+    public static final long OFFSET$bit_depth_chroma_minus8 = LAYOUT.byteOffset(PATH$bit_depth_chroma_minus8);
+    public static final long OFFSET$log2_max_pic_order_cnt_lsb_minus4 = LAYOUT.byteOffset(PATH$log2_max_pic_order_cnt_lsb_minus4);
+    public static final long OFFSET$log2_min_luma_coding_block_size_minus3 = LAYOUT.byteOffset(PATH$log2_min_luma_coding_block_size_minus3);
+    public static final long OFFSET$log2_diff_max_min_luma_coding_block_size = LAYOUT.byteOffset(PATH$log2_diff_max_min_luma_coding_block_size);
+    public static final long OFFSET$log2_min_luma_transform_block_size_minus2 = LAYOUT.byteOffset(PATH$log2_min_luma_transform_block_size_minus2);
+    public static final long OFFSET$log2_diff_max_min_luma_transform_block_size = LAYOUT.byteOffset(PATH$log2_diff_max_min_luma_transform_block_size);
+    public static final long OFFSET$max_transform_hierarchy_depth_inter = LAYOUT.byteOffset(PATH$max_transform_hierarchy_depth_inter);
+    public static final long OFFSET$max_transform_hierarchy_depth_intra = LAYOUT.byteOffset(PATH$max_transform_hierarchy_depth_intra);
+    public static final long OFFSET$num_short_term_ref_pic_sets = LAYOUT.byteOffset(PATH$num_short_term_ref_pic_sets);
+    public static final long OFFSET$num_long_term_ref_pics_sps = LAYOUT.byteOffset(PATH$num_long_term_ref_pics_sps);
+    public static final long OFFSET$pcm_sample_bit_depth_luma_minus1 = LAYOUT.byteOffset(PATH$pcm_sample_bit_depth_luma_minus1);
+    public static final long OFFSET$pcm_sample_bit_depth_chroma_minus1 = LAYOUT.byteOffset(PATH$pcm_sample_bit_depth_chroma_minus1);
+    public static final long OFFSET$log2_min_pcm_luma_coding_block_size_minus3 = LAYOUT.byteOffset(PATH$log2_min_pcm_luma_coding_block_size_minus3);
+    public static final long OFFSET$log2_diff_max_min_pcm_luma_coding_block_size = LAYOUT.byteOffset(PATH$log2_diff_max_min_pcm_luma_coding_block_size);
+    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
+    public static final long OFFSET$reserved2 = LAYOUT.byteOffset(PATH$reserved2);
+    public static final long OFFSET$palette_max_size = LAYOUT.byteOffset(PATH$palette_max_size);
+    public static final long OFFSET$delta_palette_max_predictor_size = LAYOUT.byteOffset(PATH$delta_palette_max_predictor_size);
+    public static final long OFFSET$motion_vector_resolution_control_idc = LAYOUT.byteOffset(PATH$motion_vector_resolution_control_idc);
+    public static final long OFFSET$sps_num_palette_predictor_initializers_minus1 = LAYOUT.byteOffset(PATH$sps_num_palette_predictor_initializers_minus1);
+    public static final long OFFSET$conf_win_left_offset = LAYOUT.byteOffset(PATH$conf_win_left_offset);
+    public static final long OFFSET$conf_win_right_offset = LAYOUT.byteOffset(PATH$conf_win_right_offset);
+    public static final long OFFSET$conf_win_top_offset = LAYOUT.byteOffset(PATH$conf_win_top_offset);
+    public static final long OFFSET$conf_win_bottom_offset = LAYOUT.byteOffset(PATH$conf_win_bottom_offset);
+    public static final long OFFSET$pProfileTierLevel = LAYOUT.byteOffset(PATH$pProfileTierLevel);
+    public static final long OFFSET$pDecPicBufMgr = LAYOUT.byteOffset(PATH$pDecPicBufMgr);
+    public static final long OFFSET$pScalingLists = LAYOUT.byteOffset(PATH$pScalingLists);
+    public static final long OFFSET$pShortTermRefPicSet = LAYOUT.byteOffset(PATH$pShortTermRefPicSet);
+    public static final long OFFSET$pLongTermRefPicsSps = LAYOUT.byteOffset(PATH$pLongTermRefPicsSps);
+    public static final long OFFSET$pSequenceParameterSetVui = LAYOUT.byteOffset(PATH$pSequenceParameterSetVui);
+    public static final long OFFSET$pPredictorPaletteEntries = LAYOUT.byteOffset(PATH$pPredictorPaletteEntries);
 }

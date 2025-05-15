@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsTokenTypeNV.html">VkIndirectCommandsTokenTypeNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsTokenTypeNV.html"><code>VkIndirectCommandsTokenTypeNV</code></a>
 public final class VkIndirectCommandsTokenTypeNV {
     public static final int SHADER_GROUP = 0x0;
     public static final int STATE_FLAGS = 0x1;

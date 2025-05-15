@@ -17,6 +17,19 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoH265ProfileTierLevelFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoH265ProfileTierLevelFlags {
+///     uint32_t general_tier_flag : 1;
+///     uint32_t general_progressive_source_flag : 1;
+///     uint32_t general_interlaced_source_flag : 1;
+///     uint32_t general_non_packed_constraint_flag : 1;
+///     uint32_t general_frame_only_constraint_flag : 1;
+/// } StdVideoH265ProfileTierLevelFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +41,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265ProfileTierLevelFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265ProfileTierLevelFlags allocate(Arena arena) {
-        return new StdVideoH265ProfileTierLevelFlags(arena.allocate(LAYOUT));
+        StdVideoH265ProfileTierLevelFlags ret = new StdVideoH265ProfileTierLevelFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoH265ProfileTierLevelFlags[] allocate(Arena arena, int count) {
@@ -53,18 +67,6 @@ public record StdVideoH265ProfileTierLevelFlags(@NotNull MemorySegment segment) 
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$general_tier_flag_general_frame_only_constraint_flag")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$general_tier_flag_general_frame_only_constraint_flag = PathElement.groupElement("PATH$bitfield$general_tier_flag_general_frame_only_constraint_flag");
-
-    public static final OfInt LAYOUT$general_tier_flag_general_frame_only_constraint_flag = (OfInt) LAYOUT.select(PATH$bitfield$general_tier_flag_general_frame_only_constraint_flag);
-
-
-    public static final long OFFSET$general_tier_flag_general_frame_only_constraint_flag = LAYOUT.byteOffset(PATH$bitfield$general_tier_flag_general_frame_only_constraint_flag);
 
     public boolean general_tier_flag() {
         MemorySegment s = segment.asSlice(OFFSET$general_tier_flag_general_frame_only_constraint_flag, LAYOUT$general_tier_flag_general_frame_only_constraint_flag);
@@ -116,4 +118,15 @@ public record StdVideoH265ProfileTierLevelFlags(@NotNull MemorySegment segment) 
         BitfieldUtil.writeBit(s, 4, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$general_tier_flag_general_frame_only_constraint_flag")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$bitfield$general_tier_flag_general_frame_only_constraint_flag = PathElement.groupElement("PATH$bitfield$general_tier_flag_general_frame_only_constraint_flag");
+
+    public static final OfInt LAYOUT$general_tier_flag_general_frame_only_constraint_flag = (OfInt) LAYOUT.select(PATH$bitfield$general_tier_flag_general_frame_only_constraint_flag);
+
+
+    public static final long OFFSET$general_tier_flag_general_frame_only_constraint_flag = LAYOUT.byteOffset(PATH$bitfield$general_tier_flag_general_frame_only_constraint_flag);
 }

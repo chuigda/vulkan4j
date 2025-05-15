@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceDepthStencilResolveProperties} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDepthStencilResolveProperties.html"><code>VkPhysicalDeviceDepthStencilResolveProperties</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceDepthStencilResolveProperties {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkResolveModeFlags supportedDepthResolveModes;
+///     VkResolveModeFlags supportedStencilResolveModes;
+///     VkBool32 independentResolveNone;
+///     VkBool32 independentResolve;
+/// } VkPhysicalDeviceDepthStencilResolveProperties;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES`
+///
+/// The {@link VkPhysicalDeviceDepthStencilResolveProperties#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceDepthStencilResolveProperties#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDepthStencilResolveProperties.html">VkPhysicalDeviceDepthStencilResolveProperties</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDepthStencilResolveProperties.html"><code>VkPhysicalDeviceDepthStencilResolveProperties</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceDepthStencilResolveProperties {
-        sType(VkStructureType.PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES);
-    }
-
     public static VkPhysicalDeviceDepthStencilResolveProperties allocate(Arena arena) {
-        return new VkPhysicalDeviceDepthStencilResolveProperties(arena.allocate(LAYOUT));
+        VkPhysicalDeviceDepthStencilResolveProperties ret = new VkPhysicalDeviceDepthStencilResolveProperties(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES);
+        return ret;
     }
 
     public static VkPhysicalDeviceDepthStencilResolveProperties[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         VkPhysicalDeviceDepthStencilResolveProperties[] ret = new VkPhysicalDeviceDepthStencilResolveProperties[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceDepthStencilResolveProperties(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES);
         }
         return ret;
     }
@@ -59,43 +80,9 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("supportedDepthResolveModes"),
-        ValueLayout.JAVA_INT.withName("supportedStencilResolveModes"),
-        ValueLayout.JAVA_INT.withName("independentResolveNone"),
-        ValueLayout.JAVA_INT.withName("independentResolve")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$supportedDepthResolveModes = PathElement.groupElement("PATH$supportedDepthResolveModes");
-    public static final PathElement PATH$supportedStencilResolveModes = PathElement.groupElement("PATH$supportedStencilResolveModes");
-    public static final PathElement PATH$independentResolveNone = PathElement.groupElement("PATH$independentResolveNone");
-    public static final PathElement PATH$independentResolve = PathElement.groupElement("PATH$independentResolve");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$supportedDepthResolveModes = (OfInt) LAYOUT.select(PATH$supportedDepthResolveModes);
-    public static final OfInt LAYOUT$supportedStencilResolveModes = (OfInt) LAYOUT.select(PATH$supportedStencilResolveModes);
-    public static final OfInt LAYOUT$independentResolveNone = (OfInt) LAYOUT.select(PATH$independentResolveNone);
-    public static final OfInt LAYOUT$independentResolve = (OfInt) LAYOUT.select(PATH$independentResolve);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$supportedDepthResolveModes = LAYOUT$supportedDepthResolveModes.byteSize();
-    public static final long SIZE$supportedStencilResolveModes = LAYOUT$supportedStencilResolveModes.byteSize();
-    public static final long SIZE$independentResolveNone = LAYOUT$independentResolveNone.byteSize();
-    public static final long SIZE$independentResolve = LAYOUT$independentResolve.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$supportedDepthResolveModes = LAYOUT.byteOffset(PATH$supportedDepthResolveModes);
-    public static final long OFFSET$supportedStencilResolveModes = LAYOUT.byteOffset(PATH$supportedStencilResolveModes);
-    public static final long OFFSET$independentResolveNone = LAYOUT.byteOffset(PATH$independentResolveNone);
-    public static final long OFFSET$independentResolve = LAYOUT.byteOffset(PATH$independentResolve);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -149,4 +136,41 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         segment.set(LAYOUT$independentResolve, OFFSET$independentResolve, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("supportedDepthResolveModes"),
+        ValueLayout.JAVA_INT.withName("supportedStencilResolveModes"),
+        ValueLayout.JAVA_INT.withName("independentResolveNone"),
+        ValueLayout.JAVA_INT.withName("independentResolve")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$supportedDepthResolveModes = PathElement.groupElement("PATH$supportedDepthResolveModes");
+    public static final PathElement PATH$supportedStencilResolveModes = PathElement.groupElement("PATH$supportedStencilResolveModes");
+    public static final PathElement PATH$independentResolveNone = PathElement.groupElement("PATH$independentResolveNone");
+    public static final PathElement PATH$independentResolve = PathElement.groupElement("PATH$independentResolve");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$supportedDepthResolveModes = (OfInt) LAYOUT.select(PATH$supportedDepthResolveModes);
+    public static final OfInt LAYOUT$supportedStencilResolveModes = (OfInt) LAYOUT.select(PATH$supportedStencilResolveModes);
+    public static final OfInt LAYOUT$independentResolveNone = (OfInt) LAYOUT.select(PATH$independentResolveNone);
+    public static final OfInt LAYOUT$independentResolve = (OfInt) LAYOUT.select(PATH$independentResolve);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$supportedDepthResolveModes = LAYOUT$supportedDepthResolveModes.byteSize();
+    public static final long SIZE$supportedStencilResolveModes = LAYOUT$supportedStencilResolveModes.byteSize();
+    public static final long SIZE$independentResolveNone = LAYOUT$independentResolveNone.byteSize();
+    public static final long SIZE$independentResolve = LAYOUT$independentResolve.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$supportedDepthResolveModes = LAYOUT.byteOffset(PATH$supportedDepthResolveModes);
+    public static final long OFFSET$supportedStencilResolveModes = LAYOUT.byteOffset(PATH$supportedStencilResolveModes);
+    public static final long OFFSET$independentResolveNone = LAYOUT.byteOffset(PATH$independentResolveNone);
+    public static final long OFFSET$independentResolve = LAYOUT.byteOffset(PATH$independentResolve);
 }

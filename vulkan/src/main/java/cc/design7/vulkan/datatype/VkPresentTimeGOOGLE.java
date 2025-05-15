@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPresentTimeGOOGLE} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentTimeGOOGLE.html"><code>VkPresentTimeGOOGLE</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPresentTimeGOOGLE {
+///     uint32_t presentID;
+///     uint64_t desiredPresentTime;
+/// } VkPresentTimeGOOGLE;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentTimeGOOGLE.html">VkPresentTimeGOOGLE</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentTimeGOOGLE.html"><code>VkPresentTimeGOOGLE</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPresentTimeGOOGLE(@NotNull MemorySegment segment) implements IPointer {
     public static VkPresentTimeGOOGLE allocate(Arena arena) {
-        return new VkPresentTimeGOOGLE(arena.allocate(LAYOUT));
+        VkPresentTimeGOOGLE ret = new VkPresentTimeGOOGLE(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkPresentTimeGOOGLE[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkPresentTimeGOOGLE(@NotNull MemorySegment segment) implements IPo
         return ret;
     }
 
+    public @unsigned int presentID() {
+        return segment.get(LAYOUT$presentID, OFFSET$presentID);
+    }
+
+    public void presentID(@unsigned int value) {
+        segment.set(LAYOUT$presentID, OFFSET$presentID, value);
+    }
+
+    public @unsigned long desiredPresentTime() {
+        return segment.get(LAYOUT$desiredPresentTime, OFFSET$desiredPresentTime);
+    }
+
+    public void desiredPresentTime(@unsigned long value) {
+        segment.set(LAYOUT$desiredPresentTime, OFFSET$desiredPresentTime, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("presentID"),
         ValueLayout.JAVA_LONG.withName("desiredPresentTime")
@@ -72,21 +99,4 @@ public record VkPresentTimeGOOGLE(@NotNull MemorySegment segment) implements IPo
 
     public static final long OFFSET$presentID = LAYOUT.byteOffset(PATH$presentID);
     public static final long OFFSET$desiredPresentTime = LAYOUT.byteOffset(PATH$desiredPresentTime);
-
-    public @unsigned int presentID() {
-        return segment.get(LAYOUT$presentID, OFFSET$presentID);
-    }
-
-    public void presentID(@unsigned int value) {
-        segment.set(LAYOUT$presentID, OFFSET$presentID, value);
-    }
-
-    public @unsigned long desiredPresentTime() {
-        return segment.get(LAYOUT$desiredPresentTime, OFFSET$desiredPresentTime);
-    }
-
-    public void desiredPresentTime(@unsigned long value) {
-        segment.set(LAYOUT$desiredPresentTime, OFFSET$desiredPresentTime, value);
-    }
-
 }

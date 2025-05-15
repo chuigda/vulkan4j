@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDepthBiasRepresentationEXT.html">VkDepthBiasRepresentationEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDepthBiasRepresentationEXT.html"><code>VkDepthBiasRepresentationEXT</code></a>
 public final class VkDepthBiasRepresentationEXT {
     public static final int LEAST_REPRESENTABLE_VALUE_FORMAT = 0x0;
     public static final int LEAST_REPRESENTABLE_VALUE_FORCE_UNORM = 0x1;

@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStructureType.html">VkStructureType</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStructureType.html"><code>VkStructureType</code></a>
 public final class VkStructureType {
     public static final int APPLICATION_INFO = 0x0;
     public static final int INSTANCE_CREATE_INFO = 0x1;

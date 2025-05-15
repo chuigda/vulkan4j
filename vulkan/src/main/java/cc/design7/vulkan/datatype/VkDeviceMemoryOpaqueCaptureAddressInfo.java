@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDeviceMemoryOpaqueCaptureAddressInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceMemoryOpaqueCaptureAddressInfo.html"><code>VkDeviceMemoryOpaqueCaptureAddressInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDeviceMemoryOpaqueCaptureAddressInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkDeviceMemory memory;
+/// } VkDeviceMemoryOpaqueCaptureAddressInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO`
+///
+/// The {@link VkDeviceMemoryOpaqueCaptureAddressInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkDeviceMemoryOpaqueCaptureAddressInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceMemoryOpaqueCaptureAddressInfo.html">VkDeviceMemoryOpaqueCaptureAddressInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceMemoryOpaqueCaptureAddressInfo.html"><code>VkDeviceMemoryOpaqueCaptureAddressInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDeviceMemoryOpaqueCaptureAddressInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkDeviceMemoryOpaqueCaptureAddressInfo {
-        sType(VkStructureType.DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO);
-    }
-
     public static VkDeviceMemoryOpaqueCaptureAddressInfo allocate(Arena arena) {
-        return new VkDeviceMemoryOpaqueCaptureAddressInfo(arena.allocate(LAYOUT));
+        VkDeviceMemoryOpaqueCaptureAddressInfo ret = new VkDeviceMemoryOpaqueCaptureAddressInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO);
+        return ret;
     }
 
     public static VkDeviceMemoryOpaqueCaptureAddressInfo[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkDeviceMemoryOpaqueCaptureAddressInfo(@NotNull MemorySegment segm
         VkDeviceMemoryOpaqueCaptureAddressInfo[] ret = new VkDeviceMemoryOpaqueCaptureAddressInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkDeviceMemoryOpaqueCaptureAddressInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO);
         }
         return ret;
     }
@@ -57,6 +75,42 @@ public record VkDeviceMemoryOpaqueCaptureAddressInfo(@NotNull MemorySegment segm
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkDeviceMemory memory() {
+        MemorySegment s = segment.asSlice(OFFSET$memory, SIZE$memory);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDeviceMemory(s);
+    }
+
+    public void memory(@Nullable VkDeviceMemory value) {
+        segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -81,37 +135,4 @@ public record VkDeviceMemoryOpaqueCaptureAddressInfo(@NotNull MemorySegment segm
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
     public static final long OFFSET$memory = LAYOUT.byteOffset(PATH$memory);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkDeviceMemory memory() {
-        MemorySegment s = segment.asSlice(OFFSET$memory, SIZE$memory);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkDeviceMemory(s);
-    }
-
-    public void memory(@Nullable VkDeviceMemory value) {
-        segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
 }

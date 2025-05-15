@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceCounterDescriptionFlagsKHR.html">VkPerformanceCounterDescriptionFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceCounterDescriptionFlagsKHR.html"><code>VkPerformanceCounterDescriptionFlagsKHR</code></a>
 public final class VkPerformanceCounterDescriptionFlagsKHR {
     public static final int CONCURRENTLY_IMPACTED = 0x2;
     public static final int PERFORMANCE_IMPACTING = 0x1;

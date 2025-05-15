@@ -14,8 +14,39 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkGeneratedCommandsInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeneratedCommandsInfoNV.html"><code>VkGeneratedCommandsInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkGeneratedCommandsInfoNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkPipelineBindPoint pipelineBindPoint;
+///     VkPipeline pipeline;
+///     VkIndirectCommandsLayoutNV indirectCommandsLayout;
+///     uint32_t streamCount;
+///     VkIndirectCommandsStreamNV const* pStreams;
+///     uint32_t sequencesCount;
+///     VkBuffer preprocessBuffer;
+///     VkDeviceSize preprocessOffset;
+///     VkDeviceSize preprocessSize;
+///     VkBuffer sequencesCountBuffer;
+///     VkDeviceSize sequencesCountOffset;
+///     VkBuffer sequencesIndexBuffer;
+///     VkDeviceSize sequencesIndexOffset;
+/// } VkGeneratedCommandsInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_NV`
+///
+/// The {@link VkGeneratedCommandsInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkGeneratedCommandsInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +55,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeneratedCommandsInfoNV.html">VkGeneratedCommandsInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeneratedCommandsInfoNV.html"><code>VkGeneratedCommandsInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkGeneratedCommandsInfoNV {
-        sType(VkStructureType.GENERATED_COMMANDS_INFO_NV);
-    }
-
     public static VkGeneratedCommandsInfoNV allocate(Arena arena) {
-        return new VkGeneratedCommandsInfoNV(arena.allocate(LAYOUT));
+        VkGeneratedCommandsInfoNV ret = new VkGeneratedCommandsInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.GENERATED_COMMANDS_INFO_NV);
+        return ret;
     }
 
     public static VkGeneratedCommandsInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +70,7 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         VkGeneratedCommandsInfoNV[] ret = new VkGeneratedCommandsInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkGeneratedCommandsInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.GENERATED_COMMANDS_INFO_NV);
         }
         return ret;
     }
@@ -57,6 +87,181 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.GENERATED_COMMANDS_INFO_NV);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkPipelineBindPoint.class) int pipelineBindPoint() {
+        return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
+    }
+
+    public void pipelineBindPoint(@enumtype(VkPipelineBindPoint.class) int value) {
+        segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
+    }
+
+    public @Nullable VkPipeline pipeline() {
+        MemorySegment s = segment.asSlice(OFFSET$pipeline, SIZE$pipeline);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipeline(s);
+    }
+
+    public void pipeline(@Nullable VkPipeline value) {
+        segment.set(LAYOUT$pipeline, OFFSET$pipeline, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @Nullable VkIndirectCommandsLayoutNV indirectCommandsLayout() {
+        MemorySegment s = segment.asSlice(OFFSET$indirectCommandsLayout, SIZE$indirectCommandsLayout);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkIndirectCommandsLayoutNV(s);
+    }
+
+    public void indirectCommandsLayout(@Nullable VkIndirectCommandsLayoutNV value) {
+        segment.set(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned int streamCount() {
+        return segment.get(LAYOUT$streamCount, OFFSET$streamCount);
+    }
+
+    public void streamCount(@unsigned int value) {
+        segment.set(LAYOUT$streamCount, OFFSET$streamCount, value);
+    }
+
+    public @pointer(comment="VkIndirectCommandsStreamNV*") MemorySegment pStreamsRaw() {
+        return segment.get(LAYOUT$pStreams, OFFSET$pStreams);
+    }
+
+    public void pStreamsRaw(@pointer(comment="VkIndirectCommandsStreamNV*") MemorySegment value) {
+        segment.set(LAYOUT$pStreams, OFFSET$pStreams, value);
+    }
+
+    public @Nullable VkIndirectCommandsStreamNV pStreams() {
+        MemorySegment s = pStreamsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkIndirectCommandsStreamNV(s);
+    }
+
+    public void pStreams(@Nullable VkIndirectCommandsStreamNV value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pStreamsRaw(s);
+    }
+
+    @unsafe public @Nullable VkIndirectCommandsStreamNV[] pStreams(int assumedCount) {
+        MemorySegment s = pStreamsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkIndirectCommandsStreamNV.SIZE);
+        VkIndirectCommandsStreamNV[] ret = new VkIndirectCommandsStreamNV[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkIndirectCommandsStreamNV(s.asSlice(i * VkIndirectCommandsStreamNV.SIZE, VkIndirectCommandsStreamNV.SIZE));
+        }
+        return ret;
+    }
+
+    public @unsigned int sequencesCount() {
+        return segment.get(LAYOUT$sequencesCount, OFFSET$sequencesCount);
+    }
+
+    public void sequencesCount(@unsigned int value) {
+        segment.set(LAYOUT$sequencesCount, OFFSET$sequencesCount, value);
+    }
+
+    public @Nullable VkBuffer preprocessBuffer() {
+        MemorySegment s = segment.asSlice(OFFSET$preprocessBuffer, SIZE$preprocessBuffer);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkBuffer(s);
+    }
+
+    public void preprocessBuffer(@Nullable VkBuffer value) {
+        segment.set(LAYOUT$preprocessBuffer, OFFSET$preprocessBuffer, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned long preprocessOffset() {
+        return segment.get(LAYOUT$preprocessOffset, OFFSET$preprocessOffset);
+    }
+
+    public void preprocessOffset(@unsigned long value) {
+        segment.set(LAYOUT$preprocessOffset, OFFSET$preprocessOffset, value);
+    }
+
+    public @unsigned long preprocessSize() {
+        return segment.get(LAYOUT$preprocessSize, OFFSET$preprocessSize);
+    }
+
+    public void preprocessSize(@unsigned long value) {
+        segment.set(LAYOUT$preprocessSize, OFFSET$preprocessSize, value);
+    }
+
+    public @Nullable VkBuffer sequencesCountBuffer() {
+        MemorySegment s = segment.asSlice(OFFSET$sequencesCountBuffer, SIZE$sequencesCountBuffer);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkBuffer(s);
+    }
+
+    public void sequencesCountBuffer(@Nullable VkBuffer value) {
+        segment.set(LAYOUT$sequencesCountBuffer, OFFSET$sequencesCountBuffer, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned long sequencesCountOffset() {
+        return segment.get(LAYOUT$sequencesCountOffset, OFFSET$sequencesCountOffset);
+    }
+
+    public void sequencesCountOffset(@unsigned long value) {
+        segment.set(LAYOUT$sequencesCountOffset, OFFSET$sequencesCountOffset, value);
+    }
+
+    public @Nullable VkBuffer sequencesIndexBuffer() {
+        MemorySegment s = segment.asSlice(OFFSET$sequencesIndexBuffer, SIZE$sequencesIndexBuffer);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkBuffer(s);
+    }
+
+    public void sequencesIndexBuffer(@Nullable VkBuffer value) {
+        segment.set(LAYOUT$sequencesIndexBuffer, OFFSET$sequencesIndexBuffer, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned long sequencesIndexOffset() {
+        return segment.get(LAYOUT$sequencesIndexOffset, OFFSET$sequencesIndexOffset);
+    }
+
+    public void sequencesIndexOffset(@unsigned long value) {
+        segment.set(LAYOUT$sequencesIndexOffset, OFFSET$sequencesIndexOffset, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -141,176 +346,4 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
     public static final long OFFSET$sequencesCountOffset = LAYOUT.byteOffset(PATH$sequencesCountOffset);
     public static final long OFFSET$sequencesIndexBuffer = LAYOUT.byteOffset(PATH$sequencesIndexBuffer);
     public static final long OFFSET$sequencesIndexOffset = LAYOUT.byteOffset(PATH$sequencesIndexOffset);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @enumtype(VkPipelineBindPoint.class) int pipelineBindPoint() {
-        return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
-    }
-
-    public void pipelineBindPoint(@enumtype(VkPipelineBindPoint.class) int value) {
-        segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
-    }
-
-    public @Nullable VkPipeline pipeline() {
-        MemorySegment s = segment.asSlice(OFFSET$pipeline, SIZE$pipeline);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPipeline(s);
-    }
-
-    public void pipeline(@Nullable VkPipeline value) {
-        segment.set(LAYOUT$pipeline, OFFSET$pipeline, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @Nullable VkIndirectCommandsLayoutNV indirectCommandsLayout() {
-        MemorySegment s = segment.asSlice(OFFSET$indirectCommandsLayout, SIZE$indirectCommandsLayout);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkIndirectCommandsLayoutNV(s);
-    }
-
-    public void indirectCommandsLayout(@Nullable VkIndirectCommandsLayoutNV value) {
-        segment.set(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned int streamCount() {
-        return segment.get(LAYOUT$streamCount, OFFSET$streamCount);
-    }
-
-    public void streamCount(@unsigned int value) {
-        segment.set(LAYOUT$streamCount, OFFSET$streamCount, value);
-    }
-
-    public @pointer(comment="VkIndirectCommandsStreamNV*") MemorySegment pStreamsRaw() {
-        return segment.get(LAYOUT$pStreams, OFFSET$pStreams);
-    }
-
-    public void pStreamsRaw(@pointer(comment="VkIndirectCommandsStreamNV*") MemorySegment value) {
-        segment.set(LAYOUT$pStreams, OFFSET$pStreams, value);
-    }
-
-    public @Nullable VkIndirectCommandsStreamNV pStreams() {
-        MemorySegment s = pStreamsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkIndirectCommandsStreamNV(s);
-    }
-
-    public void pStreams(@Nullable VkIndirectCommandsStreamNV value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pStreamsRaw(s);
-    }
-
-    @unsafe public @Nullable VkIndirectCommandsStreamNV[] pStreams(int assumedCount) {
-        MemorySegment s = pStreamsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkIndirectCommandsStreamNV.SIZE);
-        VkIndirectCommandsStreamNV[] ret = new VkIndirectCommandsStreamNV[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectCommandsStreamNV(s.asSlice(i * VkIndirectCommandsStreamNV.SIZE, VkIndirectCommandsStreamNV.SIZE));
-        }
-        return ret;
-    }
-
-    public @unsigned int sequencesCount() {
-        return segment.get(LAYOUT$sequencesCount, OFFSET$sequencesCount);
-    }
-
-    public void sequencesCount(@unsigned int value) {
-        segment.set(LAYOUT$sequencesCount, OFFSET$sequencesCount, value);
-    }
-
-    public @Nullable VkBuffer preprocessBuffer() {
-        MemorySegment s = segment.asSlice(OFFSET$preprocessBuffer, SIZE$preprocessBuffer);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkBuffer(s);
-    }
-
-    public void preprocessBuffer(@Nullable VkBuffer value) {
-        segment.set(LAYOUT$preprocessBuffer, OFFSET$preprocessBuffer, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned long preprocessOffset() {
-        return segment.get(LAYOUT$preprocessOffset, OFFSET$preprocessOffset);
-    }
-
-    public void preprocessOffset(@unsigned long value) {
-        segment.set(LAYOUT$preprocessOffset, OFFSET$preprocessOffset, value);
-    }
-
-    public @unsigned long preprocessSize() {
-        return segment.get(LAYOUT$preprocessSize, OFFSET$preprocessSize);
-    }
-
-    public void preprocessSize(@unsigned long value) {
-        segment.set(LAYOUT$preprocessSize, OFFSET$preprocessSize, value);
-    }
-
-    public @Nullable VkBuffer sequencesCountBuffer() {
-        MemorySegment s = segment.asSlice(OFFSET$sequencesCountBuffer, SIZE$sequencesCountBuffer);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkBuffer(s);
-    }
-
-    public void sequencesCountBuffer(@Nullable VkBuffer value) {
-        segment.set(LAYOUT$sequencesCountBuffer, OFFSET$sequencesCountBuffer, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned long sequencesCountOffset() {
-        return segment.get(LAYOUT$sequencesCountOffset, OFFSET$sequencesCountOffset);
-    }
-
-    public void sequencesCountOffset(@unsigned long value) {
-        segment.set(LAYOUT$sequencesCountOffset, OFFSET$sequencesCountOffset, value);
-    }
-
-    public @Nullable VkBuffer sequencesIndexBuffer() {
-        MemorySegment s = segment.asSlice(OFFSET$sequencesIndexBuffer, SIZE$sequencesIndexBuffer);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkBuffer(s);
-    }
-
-    public void sequencesIndexBuffer(@Nullable VkBuffer value) {
-        segment.set(LAYOUT$sequencesIndexBuffer, OFFSET$sequencesIndexBuffer, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned long sequencesIndexOffset() {
-        return segment.get(LAYOUT$sequencesIndexOffset, OFFSET$sequencesIndexOffset);
-    }
-
-    public void sequencesIndexOffset(@unsigned long value) {
-        segment.set(LAYOUT$sequencesIndexOffset, OFFSET$sequencesIndexOffset, value);
-    }
-
 }

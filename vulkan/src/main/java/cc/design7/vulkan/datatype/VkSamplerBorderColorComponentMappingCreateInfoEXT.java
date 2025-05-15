@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkSamplerBorderColorComponentMappingCreateInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerBorderColorComponentMappingCreateInfoEXT.html"><code>VkSamplerBorderColorComponentMappingCreateInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkSamplerBorderColorComponentMappingCreateInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkComponentMapping components;
+///     VkBool32 srgb;
+/// } VkSamplerBorderColorComponentMappingCreateInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_SAMPLER_BORDER_COLOR_COMPONENT_MAPPING_CREATE_INFO_EXT`
+///
+/// The {@link VkSamplerBorderColorComponentMappingCreateInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkSamplerBorderColorComponentMappingCreateInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerBorderColorComponentMappingCreateInfoEXT.html">VkSamplerBorderColorComponentMappingCreateInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerBorderColorComponentMappingCreateInfoEXT.html"><code>VkSamplerBorderColorComponentMappingCreateInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkSamplerBorderColorComponentMappingCreateInfoEXT {
-        sType(VkStructureType.SAMPLER_BORDER_COLOR_COMPONENT_MAPPING_CREATE_INFO_EXT);
-    }
-
     public static VkSamplerBorderColorComponentMappingCreateInfoEXT allocate(Arena arena) {
-        return new VkSamplerBorderColorComponentMappingCreateInfoEXT(arena.allocate(LAYOUT));
+        VkSamplerBorderColorComponentMappingCreateInfoEXT ret = new VkSamplerBorderColorComponentMappingCreateInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.SAMPLER_BORDER_COLOR_COMPONENT_MAPPING_CREATE_INFO_EXT);
+        return ret;
     }
 
     public static VkSamplerBorderColorComponentMappingCreateInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemoryS
         VkSamplerBorderColorComponentMappingCreateInfoEXT[] ret = new VkSamplerBorderColorComponentMappingCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkSamplerBorderColorComponentMappingCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.SAMPLER_BORDER_COLOR_COMPONENT_MAPPING_CREATE_INFO_EXT);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemoryS
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        VkComponentMapping.LAYOUT.withName("components"),
-        ValueLayout.JAVA_INT.withName("srgb")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$components = PathElement.groupElement("PATH$components");
-    public static final PathElement PATH$srgb = PathElement.groupElement("PATH$srgb");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$components = (StructLayout) LAYOUT.select(PATH$components);
-    public static final OfInt LAYOUT$srgb = (OfInt) LAYOUT.select(PATH$srgb);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$components = LAYOUT$components.byteSize();
-    public static final long SIZE$srgb = LAYOUT$srgb.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$components = LAYOUT.byteOffset(PATH$components);
-    public static final long OFFSET$srgb = LAYOUT.byteOffset(PATH$srgb);
+    public void autoInit() {
+        sType(VkStructureType.SAMPLER_BORDER_COLOR_COMPONENT_MAPPING_CREATE_INFO_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemoryS
         segment.set(LAYOUT$srgb, OFFSET$srgb, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkComponentMapping.LAYOUT.withName("components"),
+        ValueLayout.JAVA_INT.withName("srgb")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$components = PathElement.groupElement("PATH$components");
+    public static final PathElement PATH$srgb = PathElement.groupElement("PATH$srgb");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$components = (StructLayout) LAYOUT.select(PATH$components);
+    public static final OfInt LAYOUT$srgb = (OfInt) LAYOUT.select(PATH$srgb);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$components = LAYOUT$components.byteSize();
+    public static final long SIZE$srgb = LAYOUT$srgb.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$components = LAYOUT.byteOffset(PATH$components);
+    public static final long OFFSET$srgb = LAYOUT.byteOffset(PATH$srgb);
 }

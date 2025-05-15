@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeFlagsKHR.html">VkVideoEncodeFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeFlagsKHR.html"><code>VkVideoEncodeFlagsKHR</code></a>
 public final class VkVideoEncodeFlagsKHR {
     public static final int WITH_EMPHASIS_MAP = 0x2;
     public static final int WITH_QUANTIZATION_DELTA_MAP = 0x1;

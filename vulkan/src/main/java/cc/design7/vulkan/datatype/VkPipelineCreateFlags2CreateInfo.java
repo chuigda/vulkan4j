@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineCreateFlags2CreateInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCreateFlags2CreateInfo.html"><code>VkPipelineCreateFlags2CreateInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineCreateFlags2CreateInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkPipelineCreateFlags2 flags;
+/// } VkPipelineCreateFlags2CreateInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_CREATE_FLAGS_2_CREATE_INFO`
+///
+/// The {@link VkPipelineCreateFlags2CreateInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineCreateFlags2CreateInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCreateFlags2CreateInfo.html">VkPipelineCreateFlags2CreateInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCreateFlags2CreateInfo.html"><code>VkPipelineCreateFlags2CreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineCreateFlags2CreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineCreateFlags2CreateInfo {
-        sType(VkStructureType.PIPELINE_CREATE_FLAGS_2_CREATE_INFO);
-    }
-
     public static VkPipelineCreateFlags2CreateInfo allocate(Arena arena) {
-        return new VkPipelineCreateFlags2CreateInfo(arena.allocate(LAYOUT));
+        VkPipelineCreateFlags2CreateInfo ret = new VkPipelineCreateFlags2CreateInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_CREATE_FLAGS_2_CREATE_INFO);
+        return ret;
     }
 
     public static VkPipelineCreateFlags2CreateInfo[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPipelineCreateFlags2CreateInfo(@NotNull MemorySegment segment) i
         VkPipelineCreateFlags2CreateInfo[] ret = new VkPipelineCreateFlags2CreateInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineCreateFlags2CreateInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_CREATE_FLAGS_2_CREATE_INFO);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPipelineCreateFlags2CreateInfo(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_LONG.withName("flags")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_CREATE_FLAGS_2_CREATE_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPipelineCreateFlags2CreateInfo(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("flags")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$flags = (OfLong) LAYOUT.select(PATH$flags);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
 }

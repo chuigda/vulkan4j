@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkColorSpaceKHR.html">VkColorSpaceKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkColorSpaceKHR.html"><code>VkColorSpaceKHR</code></a>
 public final class VkColorSpaceKHR {
     public static final int SRGB_NONLINEAR = 0x0;
     public static final int DISPLAY_P3_NONLINEAR_EXT = 0x3b9c6041;

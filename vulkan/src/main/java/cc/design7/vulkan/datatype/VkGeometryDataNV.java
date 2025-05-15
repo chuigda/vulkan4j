@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkGeometryDataNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeometryDataNV.html"><code>VkGeometryDataNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkGeometryDataNV {
+///     VkGeometryTrianglesNV triangles;
+///     VkGeometryAABBNV aabbs;
+/// } VkGeometryDataNV;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeometryDataNV.html">VkGeometryDataNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeometryDataNV.html"><code>VkGeometryDataNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkGeometryDataNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkGeometryDataNV allocate(Arena arena) {
-        return new VkGeometryDataNV(arena.allocate(LAYOUT));
+        VkGeometryDataNV ret = new VkGeometryDataNV(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkGeometryDataNV[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkGeometryDataNV(@NotNull MemorySegment segment) implements IPoint
         return ret;
     }
 
+    public VkGeometryTrianglesNV triangles() {
+        return new VkGeometryTrianglesNV(segment.asSlice(OFFSET$triangles, LAYOUT$triangles));
+    }
+
+    public void triangles(VkGeometryTrianglesNV value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$triangles, SIZE$triangles);
+    }
+
+    public VkGeometryAABBNV aabbs() {
+        return new VkGeometryAABBNV(segment.asSlice(OFFSET$aabbs, LAYOUT$aabbs));
+    }
+
+    public void aabbs(VkGeometryAABBNV value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$aabbs, SIZE$aabbs);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         VkGeometryTrianglesNV.LAYOUT.withName("triangles"),
         VkGeometryAABBNV.LAYOUT.withName("aabbs")
@@ -72,21 +99,4 @@ public record VkGeometryDataNV(@NotNull MemorySegment segment) implements IPoint
 
     public static final long OFFSET$triangles = LAYOUT.byteOffset(PATH$triangles);
     public static final long OFFSET$aabbs = LAYOUT.byteOffset(PATH$aabbs);
-
-    public VkGeometryTrianglesNV triangles() {
-        return new VkGeometryTrianglesNV(segment.asSlice(OFFSET$triangles, LAYOUT$triangles));
-    }
-
-    public void triangles(VkGeometryTrianglesNV value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$triangles, SIZE$triangles);
-    }
-
-    public VkGeometryAABBNV aabbs() {
-        return new VkGeometryAABBNV(segment.asSlice(OFFSET$aabbs, LAYOUT$aabbs));
-    }
-
-    public void aabbs(VkGeometryAABBNV value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$aabbs, SIZE$aabbs);
-    }
-
 }

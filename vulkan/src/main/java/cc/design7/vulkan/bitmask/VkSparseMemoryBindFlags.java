@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseMemoryBindFlags.html">VkSparseMemoryBindFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseMemoryBindFlags.html"><code>VkSparseMemoryBindFlags</code></a>
 public final class VkSparseMemoryBindFlags {
     public static final int METADATA = 0x1;
 

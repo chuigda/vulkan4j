@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectStateFlagsNV.html">VkIndirectStateFlagsNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectStateFlagsNV.html"><code>VkIndirectStateFlagsNV</code></a>
 public final class VkIndirectStateFlagsNV {
     public static final int FLAG_FRONTFACE = 0x1;
 

@@ -14,8 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDispatchGraphInfoAMDX} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDispatchGraphInfoAMDX.html"><code>VkDispatchGraphInfoAMDX</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDispatchGraphInfoAMDX {
+///     uint32_t nodeIndex;
+///     uint32_t payloadCount;
+///     VkDeviceOrHostAddressConstAMDX payloads;
+///     uint64_t payloadStride;
+/// } VkDispatchGraphInfoAMDX;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +36,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDispatchGraphInfoAMDX.html">VkDispatchGraphInfoAMDX</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDispatchGraphInfoAMDX.html"><code>VkDispatchGraphInfoAMDX</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements IPointer {
     public static VkDispatchGraphInfoAMDX allocate(Arena arena) {
-        return new VkDispatchGraphInfoAMDX(arena.allocate(LAYOUT));
+        VkDispatchGraphInfoAMDX ret = new VkDispatchGraphInfoAMDX(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkDispatchGraphInfoAMDX[] allocate(Arena arena, int count) {
@@ -54,34 +67,6 @@ public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("nodeIndex"),
-        ValueLayout.JAVA_INT.withName("payloadCount"),
-        VkDeviceOrHostAddressConstAMDX.LAYOUT.withName("payloads"),
-        ValueLayout.JAVA_LONG.withName("payloadStride")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$nodeIndex = PathElement.groupElement("PATH$nodeIndex");
-    public static final PathElement PATH$payloadCount = PathElement.groupElement("PATH$payloadCount");
-    public static final PathElement PATH$payloads = PathElement.groupElement("PATH$payloads");
-    public static final PathElement PATH$payloadStride = PathElement.groupElement("PATH$payloadStride");
-
-    public static final OfInt LAYOUT$nodeIndex = (OfInt) LAYOUT.select(PATH$nodeIndex);
-    public static final OfInt LAYOUT$payloadCount = (OfInt) LAYOUT.select(PATH$payloadCount);
-    public static final StructLayout LAYOUT$payloads = (StructLayout) LAYOUT.select(PATH$payloads);
-    public static final OfLong LAYOUT$payloadStride = (OfLong) LAYOUT.select(PATH$payloadStride);
-
-    public static final long SIZE$nodeIndex = LAYOUT$nodeIndex.byteSize();
-    public static final long SIZE$payloadCount = LAYOUT$payloadCount.byteSize();
-    public static final long SIZE$payloads = LAYOUT$payloads.byteSize();
-    public static final long SIZE$payloadStride = LAYOUT$payloadStride.byteSize();
-
-    public static final long OFFSET$nodeIndex = LAYOUT.byteOffset(PATH$nodeIndex);
-    public static final long OFFSET$payloadCount = LAYOUT.byteOffset(PATH$payloadCount);
-    public static final long OFFSET$payloads = LAYOUT.byteOffset(PATH$payloads);
-    public static final long OFFSET$payloadStride = LAYOUT.byteOffset(PATH$payloadStride);
 
     public @unsigned int nodeIndex() {
         return segment.get(LAYOUT$nodeIndex, OFFSET$nodeIndex);
@@ -115,4 +100,31 @@ public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$payloadStride, OFFSET$payloadStride, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("nodeIndex"),
+        ValueLayout.JAVA_INT.withName("payloadCount"),
+        VkDeviceOrHostAddressConstAMDX.LAYOUT.withName("payloads"),
+        ValueLayout.JAVA_LONG.withName("payloadStride")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$nodeIndex = PathElement.groupElement("PATH$nodeIndex");
+    public static final PathElement PATH$payloadCount = PathElement.groupElement("PATH$payloadCount");
+    public static final PathElement PATH$payloads = PathElement.groupElement("PATH$payloads");
+    public static final PathElement PATH$payloadStride = PathElement.groupElement("PATH$payloadStride");
+
+    public static final OfInt LAYOUT$nodeIndex = (OfInt) LAYOUT.select(PATH$nodeIndex);
+    public static final OfInt LAYOUT$payloadCount = (OfInt) LAYOUT.select(PATH$payloadCount);
+    public static final StructLayout LAYOUT$payloads = (StructLayout) LAYOUT.select(PATH$payloads);
+    public static final OfLong LAYOUT$payloadStride = (OfLong) LAYOUT.select(PATH$payloadStride);
+
+    public static final long SIZE$nodeIndex = LAYOUT$nodeIndex.byteSize();
+    public static final long SIZE$payloadCount = LAYOUT$payloadCount.byteSize();
+    public static final long SIZE$payloads = LAYOUT$payloads.byteSize();
+    public static final long SIZE$payloadStride = LAYOUT$payloadStride.byteSize();
+
+    public static final long OFFSET$nodeIndex = LAYOUT.byteOffset(PATH$nodeIndex);
+    public static final long OFFSET$payloadCount = LAYOUT.byteOffset(PATH$payloadCount);
+    public static final long OFFSET$payloads = LAYOUT.byteOffset(PATH$payloads);
+    public static final long OFFSET$payloadStride = LAYOUT.byteOffset(PATH$payloadStride);
 }

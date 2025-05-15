@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureOpModeNV.html">VkClusterAccelerationStructureOpModeNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureOpModeNV.html"><code>VkClusterAccelerationStructureOpModeNV</code></a>
 public final class VkClusterAccelerationStructureOpModeNV {
     public static final int IMPLICIT_DESTINATIONS = 0x0;
     public static final int EXPLICIT_DESTINATIONS = 0x1;

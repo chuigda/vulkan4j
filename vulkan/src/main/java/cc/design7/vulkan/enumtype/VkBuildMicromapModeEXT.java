@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBuildMicromapModeEXT.html">VkBuildMicromapModeEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBuildMicromapModeEXT.html"><code>VkBuildMicromapModeEXT</code></a>
 public final class VkBuildMicromapModeEXT {
     public static final int BUILD = 0x0;
 

@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoProfileListInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoProfileListInfoKHR.html"><code>VkVideoProfileListInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoProfileListInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t profileCount;
+///     VkVideoProfileInfoKHR const* pProfiles;
+/// } VkVideoProfileListInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VIDEO_PROFILE_LIST_INFO_KHR`
+///
+/// The {@link VkVideoProfileListInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkVideoProfileListInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoProfileListInfoKHR.html">VkVideoProfileListInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoProfileListInfoKHR.html"><code>VkVideoProfileListInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkVideoProfileListInfoKHR {
-        sType(VkStructureType.VIDEO_PROFILE_LIST_INFO_KHR);
-    }
-
     public static VkVideoProfileListInfoKHR allocate(Arena arena) {
-        return new VkVideoProfileListInfoKHR(arena.allocate(LAYOUT));
+        VkVideoProfileListInfoKHR ret = new VkVideoProfileListInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VIDEO_PROFILE_LIST_INFO_KHR);
+        return ret;
     }
 
     public static VkVideoProfileListInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
         VkVideoProfileListInfoKHR[] ret = new VkVideoProfileListInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkVideoProfileListInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VIDEO_PROFILE_LIST_INFO_KHR);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("profileCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkVideoProfileInfoKHR.LAYOUT).withName("pProfiles")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$profileCount = PathElement.groupElement("PATH$profileCount");
-    public static final PathElement PATH$pProfiles = PathElement.groupElement("PATH$pProfiles");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$profileCount = (OfInt) LAYOUT.select(PATH$profileCount);
-    public static final AddressLayout LAYOUT$pProfiles = (AddressLayout) LAYOUT.select(PATH$pProfiles);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$profileCount = LAYOUT$profileCount.byteSize();
-    public static final long SIZE$pProfiles = LAYOUT$pProfiles.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$profileCount = LAYOUT.byteOffset(PATH$profileCount);
-    public static final long OFFSET$pProfiles = LAYOUT.byteOffset(PATH$pProfiles);
+    public void autoInit() {
+        sType(VkStructureType.VIDEO_PROFILE_LIST_INFO_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -125,7 +120,7 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
 
     public @Nullable VkVideoProfileInfoKHR pProfiles() {
         MemorySegment s = pProfilesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkVideoProfileInfoKHR(s);
@@ -138,7 +133,7 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
 
     @unsafe public @Nullable VkVideoProfileInfoKHR[] pProfiles(int assumedCount) {
         MemorySegment s = pProfilesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -150,4 +145,31 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("profileCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkVideoProfileInfoKHR.LAYOUT).withName("pProfiles")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$profileCount = PathElement.groupElement("PATH$profileCount");
+    public static final PathElement PATH$pProfiles = PathElement.groupElement("PATH$pProfiles");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$profileCount = (OfInt) LAYOUT.select(PATH$profileCount);
+    public static final AddressLayout LAYOUT$pProfiles = (AddressLayout) LAYOUT.select(PATH$pProfiles);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$profileCount = LAYOUT$profileCount.byteSize();
+    public static final long SIZE$pProfiles = LAYOUT$pProfiles.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$profileCount = LAYOUT.byteOffset(PATH$profileCount);
+    public static final long OFFSET$pProfiles = LAYOUT.byteOffset(PATH$pProfiles);
 }

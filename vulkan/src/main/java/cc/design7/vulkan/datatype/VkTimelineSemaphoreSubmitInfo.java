@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkTimelineSemaphoreSubmitInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkTimelineSemaphoreSubmitInfo.html"><code>VkTimelineSemaphoreSubmitInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkTimelineSemaphoreSubmitInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t waitSemaphoreValueCount;
+///     uint64_t const* pWaitSemaphoreValues;
+///     uint32_t signalSemaphoreValueCount;
+///     uint64_t const* pSignalSemaphoreValues;
+/// } VkTimelineSemaphoreSubmitInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO`
+///
+/// The {@link VkTimelineSemaphoreSubmitInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkTimelineSemaphoreSubmitInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkTimelineSemaphoreSubmitInfo.html">VkTimelineSemaphoreSubmitInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkTimelineSemaphoreSubmitInfo.html"><code>VkTimelineSemaphoreSubmitInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkTimelineSemaphoreSubmitInfo {
-        sType(VkStructureType.TIMELINE_SEMAPHORE_SUBMIT_INFO);
-    }
-
     public static VkTimelineSemaphoreSubmitInfo allocate(Arena arena) {
-        return new VkTimelineSemaphoreSubmitInfo(arena.allocate(LAYOUT));
+        VkTimelineSemaphoreSubmitInfo ret = new VkTimelineSemaphoreSubmitInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.TIMELINE_SEMAPHORE_SUBMIT_INFO);
+        return ret;
     }
 
     public static VkTimelineSemaphoreSubmitInfo[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         VkTimelineSemaphoreSubmitInfo[] ret = new VkTimelineSemaphoreSubmitInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkTimelineSemaphoreSubmitInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.TIMELINE_SEMAPHORE_SUBMIT_INFO);
         }
         return ret;
     }
@@ -59,43 +80,9 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("waitSemaphoreValueCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pWaitSemaphoreValues"),
-        ValueLayout.JAVA_INT.withName("signalSemaphoreValueCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pSignalSemaphoreValues")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$waitSemaphoreValueCount = PathElement.groupElement("PATH$waitSemaphoreValueCount");
-    public static final PathElement PATH$pWaitSemaphoreValues = PathElement.groupElement("PATH$pWaitSemaphoreValues");
-    public static final PathElement PATH$signalSemaphoreValueCount = PathElement.groupElement("PATH$signalSemaphoreValueCount");
-    public static final PathElement PATH$pSignalSemaphoreValues = PathElement.groupElement("PATH$pSignalSemaphoreValues");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$waitSemaphoreValueCount = (OfInt) LAYOUT.select(PATH$waitSemaphoreValueCount);
-    public static final AddressLayout LAYOUT$pWaitSemaphoreValues = (AddressLayout) LAYOUT.select(PATH$pWaitSemaphoreValues);
-    public static final OfInt LAYOUT$signalSemaphoreValueCount = (OfInt) LAYOUT.select(PATH$signalSemaphoreValueCount);
-    public static final AddressLayout LAYOUT$pSignalSemaphoreValues = (AddressLayout) LAYOUT.select(PATH$pSignalSemaphoreValues);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$waitSemaphoreValueCount = LAYOUT$waitSemaphoreValueCount.byteSize();
-    public static final long SIZE$pWaitSemaphoreValues = LAYOUT$pWaitSemaphoreValues.byteSize();
-    public static final long SIZE$signalSemaphoreValueCount = LAYOUT$signalSemaphoreValueCount.byteSize();
-    public static final long SIZE$pSignalSemaphoreValues = LAYOUT$pSignalSemaphoreValues.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$waitSemaphoreValueCount = LAYOUT.byteOffset(PATH$waitSemaphoreValueCount);
-    public static final long OFFSET$pWaitSemaphoreValues = LAYOUT.byteOffset(PATH$pWaitSemaphoreValues);
-    public static final long OFFSET$signalSemaphoreValueCount = LAYOUT.byteOffset(PATH$signalSemaphoreValueCount);
-    public static final long OFFSET$pSignalSemaphoreValues = LAYOUT.byteOffset(PATH$pSignalSemaphoreValues);
+    public void autoInit() {
+        sType(VkStructureType.TIMELINE_SEMAPHORE_SUBMIT_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -139,7 +126,7 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
     /// writing to the buffer.
     public @Nullable @unsigned LongPtr pWaitSemaphoreValues() {
         MemorySegment s = pWaitSemaphoreValuesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new LongPtr(s);
@@ -172,7 +159,7 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
     /// writing to the buffer.
     public @Nullable @unsigned LongPtr pSignalSemaphoreValues() {
         MemorySegment s = pSignalSemaphoreValuesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new LongPtr(s);
@@ -183,4 +170,41 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         pSignalSemaphoreValuesRaw(s);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("waitSemaphoreValueCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pWaitSemaphoreValues"),
+        ValueLayout.JAVA_INT.withName("signalSemaphoreValueCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pSignalSemaphoreValues")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$waitSemaphoreValueCount = PathElement.groupElement("PATH$waitSemaphoreValueCount");
+    public static final PathElement PATH$pWaitSemaphoreValues = PathElement.groupElement("PATH$pWaitSemaphoreValues");
+    public static final PathElement PATH$signalSemaphoreValueCount = PathElement.groupElement("PATH$signalSemaphoreValueCount");
+    public static final PathElement PATH$pSignalSemaphoreValues = PathElement.groupElement("PATH$pSignalSemaphoreValues");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$waitSemaphoreValueCount = (OfInt) LAYOUT.select(PATH$waitSemaphoreValueCount);
+    public static final AddressLayout LAYOUT$pWaitSemaphoreValues = (AddressLayout) LAYOUT.select(PATH$pWaitSemaphoreValues);
+    public static final OfInt LAYOUT$signalSemaphoreValueCount = (OfInt) LAYOUT.select(PATH$signalSemaphoreValueCount);
+    public static final AddressLayout LAYOUT$pSignalSemaphoreValues = (AddressLayout) LAYOUT.select(PATH$pSignalSemaphoreValues);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$waitSemaphoreValueCount = LAYOUT$waitSemaphoreValueCount.byteSize();
+    public static final long SIZE$pWaitSemaphoreValues = LAYOUT$pWaitSemaphoreValues.byteSize();
+    public static final long SIZE$signalSemaphoreValueCount = LAYOUT$signalSemaphoreValueCount.byteSize();
+    public static final long SIZE$pSignalSemaphoreValues = LAYOUT$pSignalSemaphoreValues.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$waitSemaphoreValueCount = LAYOUT.byteOffset(PATH$waitSemaphoreValueCount);
+    public static final long OFFSET$pWaitSemaphoreValues = LAYOUT.byteOffset(PATH$pWaitSemaphoreValues);
+    public static final long OFFSET$signalSemaphoreValueCount = LAYOUT.byteOffset(PATH$signalSemaphoreValueCount);
+    public static final long OFFSET$pSignalSemaphoreValues = LAYOUT.byteOffset(PATH$pSignalSemaphoreValues);
 }

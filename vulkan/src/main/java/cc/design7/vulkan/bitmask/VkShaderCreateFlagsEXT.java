@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderCreateFlagsEXT.html">VkShaderCreateFlagsEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderCreateFlagsEXT.html"><code>VkShaderCreateFlagsEXT</code></a>
 public final class VkShaderCreateFlagsEXT {
     public static final int ALLOW_VARYING_SUBGROUP_SIZE = 0x2;
     public static final int DISPATCH_BASE = 0x10;

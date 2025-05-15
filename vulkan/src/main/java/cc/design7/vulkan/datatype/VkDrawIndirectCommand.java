@@ -14,8 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDrawIndirectCommand} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDrawIndirectCommand.html"><code>VkDrawIndirectCommand</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDrawIndirectCommand {
+///     uint32_t vertexCount;
+///     uint32_t instanceCount;
+///     uint32_t firstVertex;
+///     uint32_t firstInstance;
+/// } VkDrawIndirectCommand;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +36,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDrawIndirectCommand.html">VkDrawIndirectCommand</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDrawIndirectCommand.html"><code>VkDrawIndirectCommand</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDrawIndirectCommand(@NotNull MemorySegment segment) implements IPointer {
     public static VkDrawIndirectCommand allocate(Arena arena) {
-        return new VkDrawIndirectCommand(arena.allocate(LAYOUT));
+        VkDrawIndirectCommand ret = new VkDrawIndirectCommand(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkDrawIndirectCommand[] allocate(Arena arena, int count) {
@@ -54,34 +67,6 @@ public record VkDrawIndirectCommand(@NotNull MemorySegment segment) implements I
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("vertexCount"),
-        ValueLayout.JAVA_INT.withName("instanceCount"),
-        ValueLayout.JAVA_INT.withName("firstVertex"),
-        ValueLayout.JAVA_INT.withName("firstInstance")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$vertexCount = PathElement.groupElement("PATH$vertexCount");
-    public static final PathElement PATH$instanceCount = PathElement.groupElement("PATH$instanceCount");
-    public static final PathElement PATH$firstVertex = PathElement.groupElement("PATH$firstVertex");
-    public static final PathElement PATH$firstInstance = PathElement.groupElement("PATH$firstInstance");
-
-    public static final OfInt LAYOUT$vertexCount = (OfInt) LAYOUT.select(PATH$vertexCount);
-    public static final OfInt LAYOUT$instanceCount = (OfInt) LAYOUT.select(PATH$instanceCount);
-    public static final OfInt LAYOUT$firstVertex = (OfInt) LAYOUT.select(PATH$firstVertex);
-    public static final OfInt LAYOUT$firstInstance = (OfInt) LAYOUT.select(PATH$firstInstance);
-
-    public static final long SIZE$vertexCount = LAYOUT$vertexCount.byteSize();
-    public static final long SIZE$instanceCount = LAYOUT$instanceCount.byteSize();
-    public static final long SIZE$firstVertex = LAYOUT$firstVertex.byteSize();
-    public static final long SIZE$firstInstance = LAYOUT$firstInstance.byteSize();
-
-    public static final long OFFSET$vertexCount = LAYOUT.byteOffset(PATH$vertexCount);
-    public static final long OFFSET$instanceCount = LAYOUT.byteOffset(PATH$instanceCount);
-    public static final long OFFSET$firstVertex = LAYOUT.byteOffset(PATH$firstVertex);
-    public static final long OFFSET$firstInstance = LAYOUT.byteOffset(PATH$firstInstance);
 
     public @unsigned int vertexCount() {
         return segment.get(LAYOUT$vertexCount, OFFSET$vertexCount);
@@ -115,4 +100,31 @@ public record VkDrawIndirectCommand(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$firstInstance, OFFSET$firstInstance, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("vertexCount"),
+        ValueLayout.JAVA_INT.withName("instanceCount"),
+        ValueLayout.JAVA_INT.withName("firstVertex"),
+        ValueLayout.JAVA_INT.withName("firstInstance")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$vertexCount = PathElement.groupElement("PATH$vertexCount");
+    public static final PathElement PATH$instanceCount = PathElement.groupElement("PATH$instanceCount");
+    public static final PathElement PATH$firstVertex = PathElement.groupElement("PATH$firstVertex");
+    public static final PathElement PATH$firstInstance = PathElement.groupElement("PATH$firstInstance");
+
+    public static final OfInt LAYOUT$vertexCount = (OfInt) LAYOUT.select(PATH$vertexCount);
+    public static final OfInt LAYOUT$instanceCount = (OfInt) LAYOUT.select(PATH$instanceCount);
+    public static final OfInt LAYOUT$firstVertex = (OfInt) LAYOUT.select(PATH$firstVertex);
+    public static final OfInt LAYOUT$firstInstance = (OfInt) LAYOUT.select(PATH$firstInstance);
+
+    public static final long SIZE$vertexCount = LAYOUT$vertexCount.byteSize();
+    public static final long SIZE$instanceCount = LAYOUT$instanceCount.byteSize();
+    public static final long SIZE$firstVertex = LAYOUT$firstVertex.byteSize();
+    public static final long SIZE$firstInstance = LAYOUT$firstInstance.byteSize();
+
+    public static final long OFFSET$vertexCount = LAYOUT.byteOffset(PATH$vertexCount);
+    public static final long OFFSET$instanceCount = LAYOUT.byteOffset(PATH$instanceCount);
+    public static final long OFFSET$firstVertex = LAYOUT.byteOffset(PATH$firstVertex);
+    public static final long OFFSET$firstInstance = LAYOUT.byteOffset(PATH$firstInstance);
 }

@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoDecodeAV1CapabilitiesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeAV1CapabilitiesKHR.html"><code>VkVideoDecodeAV1CapabilitiesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoDecodeAV1CapabilitiesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     StdVideoAV1Level maxLevel;
+/// } VkVideoDecodeAV1CapabilitiesKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_CAPABILITIES_KHR`
+///
+/// The {@link VkVideoDecodeAV1CapabilitiesKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkVideoDecodeAV1CapabilitiesKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeAV1CapabilitiesKHR.html">VkVideoDecodeAV1CapabilitiesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeAV1CapabilitiesKHR.html"><code>VkVideoDecodeAV1CapabilitiesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoDecodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkVideoDecodeAV1CapabilitiesKHR {
-        sType(VkStructureType.VIDEO_DECODE_AV1_CAPABILITIES_KHR);
-    }
-
     public static VkVideoDecodeAV1CapabilitiesKHR allocate(Arena arena) {
-        return new VkVideoDecodeAV1CapabilitiesKHR(arena.allocate(LAYOUT));
+        VkVideoDecodeAV1CapabilitiesKHR ret = new VkVideoDecodeAV1CapabilitiesKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VIDEO_DECODE_AV1_CAPABILITIES_KHR);
+        return ret;
     }
 
     public static VkVideoDecodeAV1CapabilitiesKHR[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkVideoDecodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         VkVideoDecodeAV1CapabilitiesKHR[] ret = new VkVideoDecodeAV1CapabilitiesKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkVideoDecodeAV1CapabilitiesKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VIDEO_DECODE_AV1_CAPABILITIES_KHR);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkVideoDecodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("maxLevel")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxLevel = PathElement.groupElement("PATH$maxLevel");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$maxLevel = (OfInt) LAYOUT.select(PATH$maxLevel);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$maxLevel = LAYOUT$maxLevel.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$maxLevel = LAYOUT.byteOffset(PATH$maxLevel);
+    public void autoInit() {
+        sType(VkStructureType.VIDEO_DECODE_AV1_CAPABILITIES_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkVideoDecodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$maxLevel, OFFSET$maxLevel, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maxLevel")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$maxLevel = PathElement.groupElement("PATH$maxLevel");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maxLevel = (OfInt) LAYOUT.select(PATH$maxLevel);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxLevel = LAYOUT$maxLevel.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$maxLevel = LAYOUT.byteOffset(PATH$maxLevel);
 }

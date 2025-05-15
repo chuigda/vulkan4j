@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineBinaryCreateInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineBinaryCreateInfoKHR.html"><code>VkPipelineBinaryCreateInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineBinaryCreateInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkPipelineBinaryKeysAndDataKHR const* pKeysAndDataInfo;
+///     VkPipeline pipeline;
+///     VkPipelineCreateInfoKHR const* pPipelineCreateInfo;
+/// } VkPipelineBinaryCreateInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_BINARY_CREATE_INFO_KHR`
+///
+/// The {@link VkPipelineBinaryCreateInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineBinaryCreateInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineBinaryCreateInfoKHR.html">VkPipelineBinaryCreateInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineBinaryCreateInfoKHR.html"><code>VkPipelineBinaryCreateInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineBinaryCreateInfoKHR {
-        sType(VkStructureType.PIPELINE_BINARY_CREATE_INFO_KHR);
-    }
-
     public static VkPipelineBinaryCreateInfoKHR allocate(Arena arena) {
-        return new VkPipelineBinaryCreateInfoKHR(arena.allocate(LAYOUT));
+        VkPipelineBinaryCreateInfoKHR ret = new VkPipelineBinaryCreateInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_BINARY_CREATE_INFO_KHR);
+        return ret;
     }
 
     public static VkPipelineBinaryCreateInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
         VkPipelineBinaryCreateInfoKHR[] ret = new VkPipelineBinaryCreateInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineBinaryCreateInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_BINARY_CREATE_INFO_KHR);
         }
         return ret;
     }
@@ -55,6 +75,112 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
         VkPipelineBinaryCreateInfoKHR[] ret = allocate(arena, src.length);
         for (int i = 0; i < src.length; i ++) {
             ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_BINARY_CREATE_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @pointer(comment="VkPipelineBinaryKeysAndDataKHR*") MemorySegment pKeysAndDataInfoRaw() {
+        return segment.get(LAYOUT$pKeysAndDataInfo, OFFSET$pKeysAndDataInfo);
+    }
+
+    public void pKeysAndDataInfoRaw(@pointer(comment="VkPipelineBinaryKeysAndDataKHR*") MemorySegment value) {
+        segment.set(LAYOUT$pKeysAndDataInfo, OFFSET$pKeysAndDataInfo, value);
+    }
+
+    public @Nullable VkPipelineBinaryKeysAndDataKHR pKeysAndDataInfo() {
+        MemorySegment s = pKeysAndDataInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineBinaryKeysAndDataKHR(s);
+    }
+
+    public void pKeysAndDataInfo(@Nullable VkPipelineBinaryKeysAndDataKHR value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pKeysAndDataInfoRaw(s);
+    }
+
+    @unsafe public @Nullable VkPipelineBinaryKeysAndDataKHR[] pKeysAndDataInfo(int assumedCount) {
+        MemorySegment s = pKeysAndDataInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkPipelineBinaryKeysAndDataKHR.SIZE);
+        VkPipelineBinaryKeysAndDataKHR[] ret = new VkPipelineBinaryKeysAndDataKHR[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkPipelineBinaryKeysAndDataKHR(s.asSlice(i * VkPipelineBinaryKeysAndDataKHR.SIZE, VkPipelineBinaryKeysAndDataKHR.SIZE));
+        }
+        return ret;
+    }
+
+    public @Nullable VkPipeline pipeline() {
+        MemorySegment s = segment.asSlice(OFFSET$pipeline, SIZE$pipeline);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipeline(s);
+    }
+
+    public void pipeline(@Nullable VkPipeline value) {
+        segment.set(LAYOUT$pipeline, OFFSET$pipeline, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @pointer(comment="VkPipelineCreateInfoKHR*") MemorySegment pPipelineCreateInfoRaw() {
+        return segment.get(LAYOUT$pPipelineCreateInfo, OFFSET$pPipelineCreateInfo);
+    }
+
+    public void pPipelineCreateInfoRaw(@pointer(comment="VkPipelineCreateInfoKHR*") MemorySegment value) {
+        segment.set(LAYOUT$pPipelineCreateInfo, OFFSET$pPipelineCreateInfo, value);
+    }
+
+    public @Nullable VkPipelineCreateInfoKHR pPipelineCreateInfo() {
+        MemorySegment s = pPipelineCreateInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineCreateInfoKHR(s);
+    }
+
+    public void pPipelineCreateInfo(@Nullable VkPipelineCreateInfoKHR value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pPipelineCreateInfoRaw(s);
+    }
+
+    @unsafe public @Nullable VkPipelineCreateInfoKHR[] pPipelineCreateInfo(int assumedCount) {
+        MemorySegment s = pPipelineCreateInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkPipelineCreateInfoKHR.SIZE);
+        VkPipelineCreateInfoKHR[] ret = new VkPipelineCreateInfoKHR[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkPipelineCreateInfoKHR(s.asSlice(i * VkPipelineCreateInfoKHR.SIZE, VkPipelineCreateInfoKHR.SIZE));
         }
         return ret;
     }
@@ -91,107 +217,4 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
     public static final long OFFSET$pKeysAndDataInfo = LAYOUT.byteOffset(PATH$pKeysAndDataInfo);
     public static final long OFFSET$pipeline = LAYOUT.byteOffset(PATH$pipeline);
     public static final long OFFSET$pPipelineCreateInfo = LAYOUT.byteOffset(PATH$pPipelineCreateInfo);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @pointer(comment="VkPipelineBinaryKeysAndDataKHR*") MemorySegment pKeysAndDataInfoRaw() {
-        return segment.get(LAYOUT$pKeysAndDataInfo, OFFSET$pKeysAndDataInfo);
-    }
-
-    public void pKeysAndDataInfoRaw(@pointer(comment="VkPipelineBinaryKeysAndDataKHR*") MemorySegment value) {
-        segment.set(LAYOUT$pKeysAndDataInfo, OFFSET$pKeysAndDataInfo, value);
-    }
-
-    public @Nullable VkPipelineBinaryKeysAndDataKHR pKeysAndDataInfo() {
-        MemorySegment s = pKeysAndDataInfoRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPipelineBinaryKeysAndDataKHR(s);
-    }
-
-    public void pKeysAndDataInfo(@Nullable VkPipelineBinaryKeysAndDataKHR value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pKeysAndDataInfoRaw(s);
-    }
-
-    @unsafe public @Nullable VkPipelineBinaryKeysAndDataKHR[] pKeysAndDataInfo(int assumedCount) {
-        MemorySegment s = pKeysAndDataInfoRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkPipelineBinaryKeysAndDataKHR.SIZE);
-        VkPipelineBinaryKeysAndDataKHR[] ret = new VkPipelineBinaryKeysAndDataKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineBinaryKeysAndDataKHR(s.asSlice(i * VkPipelineBinaryKeysAndDataKHR.SIZE, VkPipelineBinaryKeysAndDataKHR.SIZE));
-        }
-        return ret;
-    }
-
-    public @Nullable VkPipeline pipeline() {
-        MemorySegment s = segment.asSlice(OFFSET$pipeline, SIZE$pipeline);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPipeline(s);
-    }
-
-    public void pipeline(@Nullable VkPipeline value) {
-        segment.set(LAYOUT$pipeline, OFFSET$pipeline, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @pointer(comment="VkPipelineCreateInfoKHR*") MemorySegment pPipelineCreateInfoRaw() {
-        return segment.get(LAYOUT$pPipelineCreateInfo, OFFSET$pPipelineCreateInfo);
-    }
-
-    public void pPipelineCreateInfoRaw(@pointer(comment="VkPipelineCreateInfoKHR*") MemorySegment value) {
-        segment.set(LAYOUT$pPipelineCreateInfo, OFFSET$pPipelineCreateInfo, value);
-    }
-
-    public @Nullable VkPipelineCreateInfoKHR pPipelineCreateInfo() {
-        MemorySegment s = pPipelineCreateInfoRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPipelineCreateInfoKHR(s);
-    }
-
-    public void pPipelineCreateInfo(@Nullable VkPipelineCreateInfoKHR value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pPipelineCreateInfoRaw(s);
-    }
-
-    @unsafe public @Nullable VkPipelineCreateInfoKHR[] pPipelineCreateInfo(int assumedCount) {
-        MemorySegment s = pPipelineCreateInfoRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkPipelineCreateInfoKHR.SIZE);
-        VkPipelineCreateInfoKHR[] ret = new VkPipelineCreateInfoKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineCreateInfoKHR(s.asSlice(i * VkPipelineCreateInfoKHR.SIZE, VkPipelineCreateInfoKHR.SIZE));
-        }
-        return ret;
-    }
-
 }

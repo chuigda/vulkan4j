@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPolygonMode.html">VkPolygonMode</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPolygonMode.html"><code>VkPolygonMode</code></a>
 public final class VkPolygonMode {
     public static final int FILL = 0x0;
     public static final int LINE = 0x1;

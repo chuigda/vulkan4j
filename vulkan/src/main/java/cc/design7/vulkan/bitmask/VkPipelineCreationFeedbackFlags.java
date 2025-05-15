@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCreationFeedbackFlags.html">VkPipelineCreationFeedbackFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCreationFeedbackFlags.html"><code>VkPipelineCreationFeedbackFlags</code></a>
 public final class VkPipelineCreationFeedbackFlags {
     public static final int APPLICATION_PIPELINE_CACHE_HIT = 0x2;
     public static final int BASE_PIPELINE_ACCELERATION = 0x4;

@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkRenderPassFragmentDensityMapCreateInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassFragmentDensityMapCreateInfoEXT.html"><code>VkRenderPassFragmentDensityMapCreateInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkRenderPassFragmentDensityMapCreateInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkAttachmentReference fragmentDensityMapAttachment;
+/// } VkRenderPassFragmentDensityMapCreateInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT`
+///
+/// The {@link VkRenderPassFragmentDensityMapCreateInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkRenderPassFragmentDensityMapCreateInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassFragmentDensityMapCreateInfoEXT.html">VkRenderPassFragmentDensityMapCreateInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassFragmentDensityMapCreateInfoEXT.html"><code>VkRenderPassFragmentDensityMapCreateInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkRenderPassFragmentDensityMapCreateInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkRenderPassFragmentDensityMapCreateInfoEXT {
-        sType(VkStructureType.RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT);
-    }
-
     public static VkRenderPassFragmentDensityMapCreateInfoEXT allocate(Arena arena) {
-        return new VkRenderPassFragmentDensityMapCreateInfoEXT(arena.allocate(LAYOUT));
+        VkRenderPassFragmentDensityMapCreateInfoEXT ret = new VkRenderPassFragmentDensityMapCreateInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT);
+        return ret;
     }
 
     public static VkRenderPassFragmentDensityMapCreateInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkRenderPassFragmentDensityMapCreateInfoEXT(@NotNull MemorySegment
         VkRenderPassFragmentDensityMapCreateInfoEXT[] ret = new VkRenderPassFragmentDensityMapCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkRenderPassFragmentDensityMapCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkRenderPassFragmentDensityMapCreateInfoEXT(@NotNull MemorySegment
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        VkAttachmentReference.LAYOUT.withName("fragmentDensityMapAttachment")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$fragmentDensityMapAttachment = PathElement.groupElement("PATH$fragmentDensityMapAttachment");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$fragmentDensityMapAttachment = (StructLayout) LAYOUT.select(PATH$fragmentDensityMapAttachment);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$fragmentDensityMapAttachment = LAYOUT$fragmentDensityMapAttachment.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$fragmentDensityMapAttachment = LAYOUT.byteOffset(PATH$fragmentDensityMapAttachment);
+    public void autoInit() {
+        sType(VkStructureType.RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkRenderPassFragmentDensityMapCreateInfoEXT(@NotNull MemorySegment
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$fragmentDensityMapAttachment, SIZE$fragmentDensityMapAttachment);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkAttachmentReference.LAYOUT.withName("fragmentDensityMapAttachment")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$fragmentDensityMapAttachment = PathElement.groupElement("PATH$fragmentDensityMapAttachment");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$fragmentDensityMapAttachment = (StructLayout) LAYOUT.select(PATH$fragmentDensityMapAttachment);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$fragmentDensityMapAttachment = LAYOUT$fragmentDensityMapAttachment.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$fragmentDensityMapAttachment = LAYOUT.byteOffset(PATH$fragmentDensityMapAttachment);
 }

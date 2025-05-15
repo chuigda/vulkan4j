@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionFixedRateFlagsEXT.html">VkImageCompressionFixedRateFlagsEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionFixedRateFlagsEXT.html"><code>VkImageCompressionFixedRateFlagsEXT</code></a>
 public final class VkImageCompressionFixedRateFlagsEXT {
     public static final int _10BPC = 0x200;
     public static final int _11BPC = 0x400;

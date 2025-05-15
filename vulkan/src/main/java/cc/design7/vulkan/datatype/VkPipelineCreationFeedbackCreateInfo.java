@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineCreationFeedbackCreateInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCreationFeedbackCreateInfo.html"><code>VkPipelineCreationFeedbackCreateInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineCreationFeedbackCreateInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkPipelineCreationFeedback* pPipelineCreationFeedback;
+///     uint32_t pipelineStageCreationFeedbackCount;
+///     VkPipelineCreationFeedback* pPipelineStageCreationFeedbacks;
+/// } VkPipelineCreationFeedbackCreateInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO`
+///
+/// The {@link VkPipelineCreationFeedbackCreateInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineCreationFeedbackCreateInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCreationFeedbackCreateInfo.html">VkPipelineCreationFeedbackCreateInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCreationFeedbackCreateInfo.html"><code>VkPipelineCreationFeedbackCreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineCreationFeedbackCreateInfo {
-        sType(VkStructureType.PIPELINE_CREATION_FEEDBACK_CREATE_INFO);
-    }
-
     public static VkPipelineCreationFeedbackCreateInfo allocate(Arena arena) {
-        return new VkPipelineCreationFeedbackCreateInfo(arena.allocate(LAYOUT));
+        VkPipelineCreationFeedbackCreateInfo ret = new VkPipelineCreationFeedbackCreateInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_CREATION_FEEDBACK_CREATE_INFO);
+        return ret;
     }
 
     public static VkPipelineCreationFeedbackCreateInfo[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segmen
         VkPipelineCreationFeedbackCreateInfo[] ret = new VkPipelineCreationFeedbackCreateInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineCreationFeedbackCreateInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_CREATION_FEEDBACK_CREATE_INFO);
         }
         return ret;
     }
@@ -55,6 +75,108 @@ public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segmen
         VkPipelineCreationFeedbackCreateInfo[] ret = allocate(arena, src.length);
         for (int i = 0; i < src.length; i ++) {
             ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_CREATION_FEEDBACK_CREATE_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @pointer(comment="VkPipelineCreationFeedback*") MemorySegment pPipelineCreationFeedbackRaw() {
+        return segment.get(LAYOUT$pPipelineCreationFeedback, OFFSET$pPipelineCreationFeedback);
+    }
+
+    public void pPipelineCreationFeedbackRaw(@pointer(comment="VkPipelineCreationFeedback*") MemorySegment value) {
+        segment.set(LAYOUT$pPipelineCreationFeedback, OFFSET$pPipelineCreationFeedback, value);
+    }
+
+    public @Nullable VkPipelineCreationFeedback pPipelineCreationFeedback() {
+        MemorySegment s = pPipelineCreationFeedbackRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineCreationFeedback(s);
+    }
+
+    public void pPipelineCreationFeedback(@Nullable VkPipelineCreationFeedback value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pPipelineCreationFeedbackRaw(s);
+    }
+
+    @unsafe public @Nullable VkPipelineCreationFeedback[] pPipelineCreationFeedback(int assumedCount) {
+        MemorySegment s = pPipelineCreationFeedbackRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkPipelineCreationFeedback.SIZE);
+        VkPipelineCreationFeedback[] ret = new VkPipelineCreationFeedback[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkPipelineCreationFeedback(s.asSlice(i * VkPipelineCreationFeedback.SIZE, VkPipelineCreationFeedback.SIZE));
+        }
+        return ret;
+    }
+
+    public @unsigned int pipelineStageCreationFeedbackCount() {
+        return segment.get(LAYOUT$pipelineStageCreationFeedbackCount, OFFSET$pipelineStageCreationFeedbackCount);
+    }
+
+    public void pipelineStageCreationFeedbackCount(@unsigned int value) {
+        segment.set(LAYOUT$pipelineStageCreationFeedbackCount, OFFSET$pipelineStageCreationFeedbackCount, value);
+    }
+
+    public @pointer(comment="VkPipelineCreationFeedback*") MemorySegment pPipelineStageCreationFeedbacksRaw() {
+        return segment.get(LAYOUT$pPipelineStageCreationFeedbacks, OFFSET$pPipelineStageCreationFeedbacks);
+    }
+
+    public void pPipelineStageCreationFeedbacksRaw(@pointer(comment="VkPipelineCreationFeedback*") MemorySegment value) {
+        segment.set(LAYOUT$pPipelineStageCreationFeedbacks, OFFSET$pPipelineStageCreationFeedbacks, value);
+    }
+
+    public @Nullable VkPipelineCreationFeedback pPipelineStageCreationFeedbacks() {
+        MemorySegment s = pPipelineStageCreationFeedbacksRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineCreationFeedback(s);
+    }
+
+    public void pPipelineStageCreationFeedbacks(@Nullable VkPipelineCreationFeedback value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pPipelineStageCreationFeedbacksRaw(s);
+    }
+
+    @unsafe public @Nullable VkPipelineCreationFeedback[] pPipelineStageCreationFeedbacks(int assumedCount) {
+        MemorySegment s = pPipelineStageCreationFeedbacksRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkPipelineCreationFeedback.SIZE);
+        VkPipelineCreationFeedback[] ret = new VkPipelineCreationFeedback[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkPipelineCreationFeedback(s.asSlice(i * VkPipelineCreationFeedback.SIZE, VkPipelineCreationFeedback.SIZE));
         }
         return ret;
     }
@@ -91,103 +213,4 @@ public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segmen
     public static final long OFFSET$pPipelineCreationFeedback = LAYOUT.byteOffset(PATH$pPipelineCreationFeedback);
     public static final long OFFSET$pipelineStageCreationFeedbackCount = LAYOUT.byteOffset(PATH$pipelineStageCreationFeedbackCount);
     public static final long OFFSET$pPipelineStageCreationFeedbacks = LAYOUT.byteOffset(PATH$pPipelineStageCreationFeedbacks);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @pointer(comment="VkPipelineCreationFeedback*") MemorySegment pPipelineCreationFeedbackRaw() {
-        return segment.get(LAYOUT$pPipelineCreationFeedback, OFFSET$pPipelineCreationFeedback);
-    }
-
-    public void pPipelineCreationFeedbackRaw(@pointer(comment="VkPipelineCreationFeedback*") MemorySegment value) {
-        segment.set(LAYOUT$pPipelineCreationFeedback, OFFSET$pPipelineCreationFeedback, value);
-    }
-
-    public @Nullable VkPipelineCreationFeedback pPipelineCreationFeedback() {
-        MemorySegment s = pPipelineCreationFeedbackRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPipelineCreationFeedback(s);
-    }
-
-    public void pPipelineCreationFeedback(@Nullable VkPipelineCreationFeedback value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pPipelineCreationFeedbackRaw(s);
-    }
-
-    @unsafe public @Nullable VkPipelineCreationFeedback[] pPipelineCreationFeedback(int assumedCount) {
-        MemorySegment s = pPipelineCreationFeedbackRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkPipelineCreationFeedback.SIZE);
-        VkPipelineCreationFeedback[] ret = new VkPipelineCreationFeedback[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineCreationFeedback(s.asSlice(i * VkPipelineCreationFeedback.SIZE, VkPipelineCreationFeedback.SIZE));
-        }
-        return ret;
-    }
-
-    public @unsigned int pipelineStageCreationFeedbackCount() {
-        return segment.get(LAYOUT$pipelineStageCreationFeedbackCount, OFFSET$pipelineStageCreationFeedbackCount);
-    }
-
-    public void pipelineStageCreationFeedbackCount(@unsigned int value) {
-        segment.set(LAYOUT$pipelineStageCreationFeedbackCount, OFFSET$pipelineStageCreationFeedbackCount, value);
-    }
-
-    public @pointer(comment="VkPipelineCreationFeedback*") MemorySegment pPipelineStageCreationFeedbacksRaw() {
-        return segment.get(LAYOUT$pPipelineStageCreationFeedbacks, OFFSET$pPipelineStageCreationFeedbacks);
-    }
-
-    public void pPipelineStageCreationFeedbacksRaw(@pointer(comment="VkPipelineCreationFeedback*") MemorySegment value) {
-        segment.set(LAYOUT$pPipelineStageCreationFeedbacks, OFFSET$pPipelineStageCreationFeedbacks, value);
-    }
-
-    public @Nullable VkPipelineCreationFeedback pPipelineStageCreationFeedbacks() {
-        MemorySegment s = pPipelineStageCreationFeedbacksRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPipelineCreationFeedback(s);
-    }
-
-    public void pPipelineStageCreationFeedbacks(@Nullable VkPipelineCreationFeedback value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pPipelineStageCreationFeedbacksRaw(s);
-    }
-
-    @unsafe public @Nullable VkPipelineCreationFeedback[] pPipelineStageCreationFeedbacks(int assumedCount) {
-        MemorySegment s = pPipelineStageCreationFeedbacksRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkPipelineCreationFeedback.SIZE);
-        VkPipelineCreationFeedback[] ret = new VkPipelineCreationFeedback[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineCreationFeedback(s.asSlice(i * VkPipelineCreationFeedback.SIZE, VkPipelineCreationFeedback.SIZE));
-        }
-        return ret;
-    }
-
 }

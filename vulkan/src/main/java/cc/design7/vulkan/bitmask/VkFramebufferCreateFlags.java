@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFramebufferCreateFlags.html">VkFramebufferCreateFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFramebufferCreateFlags.html"><code>VkFramebufferCreateFlags</code></a>
 public final class VkFramebufferCreateFlags {
     public static final int IMAGELESS = 0x1;
 

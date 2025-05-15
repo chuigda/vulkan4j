@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyAccelerationStructureModeKHR.html">VkCopyAccelerationStructureModeKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyAccelerationStructureModeKHR.html"><code>VkCopyAccelerationStructureModeKHR</code></a>
 public final class VkCopyAccelerationStructureModeKHR {
     public static final int CLONE = 0x0;
     public static final int COMPACT = 0x1;

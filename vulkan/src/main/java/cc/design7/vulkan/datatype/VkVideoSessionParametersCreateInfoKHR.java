@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoSessionParametersCreateInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoSessionParametersCreateInfoKHR.html"><code>VkVideoSessionParametersCreateInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoSessionParametersCreateInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkVideoSessionParametersCreateFlagsKHR flags;
+///     VkVideoSessionParametersKHR videoSessionParametersTemplate;
+///     VkVideoSessionKHR videoSession;
+/// } VkVideoSessionParametersCreateInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VIDEO_SESSION_PARAMETERS_CREATE_INFO_KHR`
+///
+/// The {@link VkVideoSessionParametersCreateInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkVideoSessionParametersCreateInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoSessionParametersCreateInfoKHR.html">VkVideoSessionParametersCreateInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoSessionParametersCreateInfoKHR.html"><code>VkVideoSessionParametersCreateInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoSessionParametersCreateInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkVideoSessionParametersCreateInfoKHR {
-        sType(VkStructureType.VIDEO_SESSION_PARAMETERS_CREATE_INFO_KHR);
-    }
-
     public static VkVideoSessionParametersCreateInfoKHR allocate(Arena arena) {
-        return new VkVideoSessionParametersCreateInfoKHR(arena.allocate(LAYOUT));
+        VkVideoSessionParametersCreateInfoKHR ret = new VkVideoSessionParametersCreateInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VIDEO_SESSION_PARAMETERS_CREATE_INFO_KHR);
+        return ret;
     }
 
     public static VkVideoSessionParametersCreateInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkVideoSessionParametersCreateInfoKHR(@NotNull MemorySegment segme
         VkVideoSessionParametersCreateInfoKHR[] ret = new VkVideoSessionParametersCreateInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkVideoSessionParametersCreateInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VIDEO_SESSION_PARAMETERS_CREATE_INFO_KHR);
         }
         return ret;
     }
@@ -57,6 +77,62 @@ public record VkVideoSessionParametersCreateInfoKHR(@NotNull MemorySegment segme
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.VIDEO_SESSION_PARAMETERS_CREATE_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkVideoSessionParametersCreateFlagsKHR.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkVideoSessionParametersCreateFlagsKHR.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @Nullable VkVideoSessionParametersKHR videoSessionParametersTemplate() {
+        MemorySegment s = segment.asSlice(OFFSET$videoSessionParametersTemplate, SIZE$videoSessionParametersTemplate);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkVideoSessionParametersKHR(s);
+    }
+
+    public void videoSessionParametersTemplate(@Nullable VkVideoSessionParametersKHR value) {
+        segment.set(LAYOUT$videoSessionParametersTemplate, OFFSET$videoSessionParametersTemplate, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @Nullable VkVideoSessionKHR videoSession() {
+        MemorySegment s = segment.asSlice(OFFSET$videoSession, SIZE$videoSession);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkVideoSessionKHR(s);
+    }
+
+    public void videoSession(@Nullable VkVideoSessionKHR value) {
+        segment.set(LAYOUT$videoSession, OFFSET$videoSession, value != null ? value.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -91,57 +167,4 @@ public record VkVideoSessionParametersCreateInfoKHR(@NotNull MemorySegment segme
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$videoSessionParametersTemplate = LAYOUT.byteOffset(PATH$videoSessionParametersTemplate);
     public static final long OFFSET$videoSession = LAYOUT.byteOffset(PATH$videoSession);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @enumtype(VkVideoSessionParametersCreateFlagsKHR.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkVideoSessionParametersCreateFlagsKHR.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @Nullable VkVideoSessionParametersKHR videoSessionParametersTemplate() {
-        MemorySegment s = segment.asSlice(OFFSET$videoSessionParametersTemplate, SIZE$videoSessionParametersTemplate);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkVideoSessionParametersKHR(s);
-    }
-
-    public void videoSessionParametersTemplate(@Nullable VkVideoSessionParametersKHR value) {
-        segment.set(LAYOUT$videoSessionParametersTemplate, OFFSET$videoSessionParametersTemplate, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @Nullable VkVideoSessionKHR videoSession() {
-        MemorySegment s = segment.asSlice(OFFSET$videoSession, SIZE$videoSession);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkVideoSessionKHR(s);
-    }
-
-    public void videoSession(@Nullable VkVideoSessionKHR value) {
-        segment.set(LAYOUT$videoSession, OFFSET$videoSession, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
 }

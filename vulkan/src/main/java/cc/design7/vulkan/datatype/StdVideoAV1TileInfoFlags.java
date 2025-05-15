@@ -17,6 +17,16 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoAV1TileInfoFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoAV1TileInfoFlags {
+///     uint32_t uniform_tile_spacing_flag : 1;
+///     uint32_t reserved : 31;
+/// } StdVideoAV1TileInfoFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +38,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1TileInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1TileInfoFlags allocate(Arena arena) {
-        return new StdVideoAV1TileInfoFlags(arena.allocate(LAYOUT));
+        StdVideoAV1TileInfoFlags ret = new StdVideoAV1TileInfoFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoAV1TileInfoFlags[] allocate(Arena arena, int count) {
@@ -54,6 +65,16 @@ public record StdVideoAV1TileInfoFlags(@NotNull MemorySegment segment) implement
         return ret;
     }
 
+    public boolean uniform_tile_spacing_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$uniform_tile_spacing_flag_reserved, LAYOUT$uniform_tile_spacing_flag_reserved);
+        return BitfieldUtil.readBit(s, 0);
+    }
+
+    public void uniform_tile_spacing_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$uniform_tile_spacing_flag_reserved, LAYOUT$uniform_tile_spacing_flag_reserved);
+        BitfieldUtil.writeBit(s, 0, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$uniform_tile_spacing_flag_reserved")
     );
@@ -65,16 +86,4 @@ public record StdVideoAV1TileInfoFlags(@NotNull MemorySegment segment) implement
 
 
     public static final long OFFSET$uniform_tile_spacing_flag_reserved = LAYOUT.byteOffset(PATH$bitfield$uniform_tile_spacing_flag_reserved);
-
-    public boolean uniform_tile_spacing_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$uniform_tile_spacing_flag_reserved, LAYOUT$uniform_tile_spacing_flag_reserved);
-        return BitfieldUtil.readBit(s, 0);
-    }
-
-    public void uniform_tile_spacing_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$uniform_tile_spacing_flag_reserved, LAYOUT$uniform_tile_spacing_flag_reserved);
-        BitfieldUtil.writeBit(s, 0, value);
-    }
-
-
 }

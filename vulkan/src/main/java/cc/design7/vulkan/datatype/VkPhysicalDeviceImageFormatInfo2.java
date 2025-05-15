@@ -14,8 +14,31 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceImageFormatInfo2} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceImageFormatInfo2.html"><code>VkPhysicalDeviceImageFormatInfo2</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceImageFormatInfo2 {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkFormat format;
+///     VkImageType type;
+///     VkImageTiling tiling;
+///     VkImageUsageFlags usage;
+///     VkImageCreateFlags flags;
+/// } VkPhysicalDeviceImageFormatInfo2;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2`
+///
+/// The {@link VkPhysicalDeviceImageFormatInfo2#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceImageFormatInfo2#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +47,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceImageFormatInfo2.html">VkPhysicalDeviceImageFormatInfo2</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceImageFormatInfo2.html"><code>VkPhysicalDeviceImageFormatInfo2</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceImageFormatInfo2(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceImageFormatInfo2 {
-        sType(VkStructureType.PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2);
-    }
-
     public static VkPhysicalDeviceImageFormatInfo2 allocate(Arena arena) {
-        return new VkPhysicalDeviceImageFormatInfo2(arena.allocate(LAYOUT));
+        VkPhysicalDeviceImageFormatInfo2 ret = new VkPhysicalDeviceImageFormatInfo2(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2);
+        return ret;
     }
 
     public static VkPhysicalDeviceImageFormatInfo2[] allocate(Arena arena, int count) {
@@ -41,6 +62,7 @@ public record VkPhysicalDeviceImageFormatInfo2(@NotNull MemorySegment segment) i
         VkPhysicalDeviceImageFormatInfo2[] ret = new VkPhysicalDeviceImageFormatInfo2[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceImageFormatInfo2(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2);
         }
         return ret;
     }
@@ -59,48 +81,9 @@ public record VkPhysicalDeviceImageFormatInfo2(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("format"),
-        ValueLayout.JAVA_INT.withName("type"),
-        ValueLayout.JAVA_INT.withName("tiling"),
-        ValueLayout.JAVA_INT.withName("usage"),
-        ValueLayout.JAVA_INT.withName("flags")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
-    public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
-    public static final PathElement PATH$tiling = PathElement.groupElement("PATH$tiling");
-    public static final PathElement PATH$usage = PathElement.groupElement("PATH$usage");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
-    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
-    public static final OfInt LAYOUT$tiling = (OfInt) LAYOUT.select(PATH$tiling);
-    public static final OfInt LAYOUT$usage = (OfInt) LAYOUT.select(PATH$usage);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$format = LAYOUT$format.byteSize();
-    public static final long SIZE$type = LAYOUT$type.byteSize();
-    public static final long SIZE$tiling = LAYOUT$tiling.byteSize();
-    public static final long SIZE$usage = LAYOUT$usage.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
-    public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
-    public static final long OFFSET$tiling = LAYOUT.byteOffset(PATH$tiling);
-    public static final long OFFSET$usage = LAYOUT.byteOffset(PATH$usage);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -162,4 +145,46 @@ public record VkPhysicalDeviceImageFormatInfo2(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("format"),
+        ValueLayout.JAVA_INT.withName("type"),
+        ValueLayout.JAVA_INT.withName("tiling"),
+        ValueLayout.JAVA_INT.withName("usage"),
+        ValueLayout.JAVA_INT.withName("flags")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
+    public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
+    public static final PathElement PATH$tiling = PathElement.groupElement("PATH$tiling");
+    public static final PathElement PATH$usage = PathElement.groupElement("PATH$usage");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
+    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
+    public static final OfInt LAYOUT$tiling = (OfInt) LAYOUT.select(PATH$tiling);
+    public static final OfInt LAYOUT$usage = (OfInt) LAYOUT.select(PATH$usage);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$format = LAYOUT$format.byteSize();
+    public static final long SIZE$type = LAYOUT$type.byteSize();
+    public static final long SIZE$tiling = LAYOUT$tiling.byteSize();
+    public static final long SIZE$usage = LAYOUT$usage.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
+    public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
+    public static final long OFFSET$tiling = LAYOUT.byteOffset(PATH$tiling);
+    public static final long OFFSET$usage = LAYOUT.byteOffset(PATH$usage);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
 }

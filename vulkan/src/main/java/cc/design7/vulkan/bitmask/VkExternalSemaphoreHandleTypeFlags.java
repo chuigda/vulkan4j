@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalSemaphoreHandleTypeFlags.html">VkExternalSemaphoreHandleTypeFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalSemaphoreHandleTypeFlags.html"><code>VkExternalSemaphoreHandleTypeFlags</code></a>
 public final class VkExternalSemaphoreHandleTypeFlags {
     public static final int D3D12_FENCE = 0x8;
     public static final int OPAQUE_FD = 0x1;

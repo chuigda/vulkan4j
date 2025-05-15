@@ -14,8 +14,21 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkShaderResourceUsageAMD} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderResourceUsageAMD.html"><code>VkShaderResourceUsageAMD</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkShaderResourceUsageAMD {
+///     uint32_t numUsedVgprs;
+///     uint32_t numUsedSgprs;
+///     uint32_t ldsSizePerLocalWorkGroup;
+///     size_t ldsUsageSizeInBytes;
+///     size_t scratchMemUsageInBytes;
+/// } VkShaderResourceUsageAMD;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +37,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderResourceUsageAMD.html">VkShaderResourceUsageAMD</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderResourceUsageAMD.html"><code>VkShaderResourceUsageAMD</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkShaderResourceUsageAMD(@NotNull MemorySegment segment) implements IPointer {
     public static VkShaderResourceUsageAMD allocate(Arena arena) {
-        return new VkShaderResourceUsageAMD(arena.allocate(LAYOUT));
+        VkShaderResourceUsageAMD ret = new VkShaderResourceUsageAMD(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkShaderResourceUsageAMD[] allocate(Arena arena, int count) {
@@ -54,37 +68,6 @@ public record VkShaderResourceUsageAMD(@NotNull MemorySegment segment) implement
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("numUsedVgprs"),
-        ValueLayout.JAVA_INT.withName("numUsedSgprs"),
-        ValueLayout.JAVA_INT.withName("ldsSizePerLocalWorkGroup"),
-        NativeLayout.C_SIZE_T.withName("ldsUsageSizeInBytes"),
-        NativeLayout.C_SIZE_T.withName("scratchMemUsageInBytes")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$numUsedVgprs = PathElement.groupElement("PATH$numUsedVgprs");
-    public static final PathElement PATH$numUsedSgprs = PathElement.groupElement("PATH$numUsedSgprs");
-    public static final PathElement PATH$ldsSizePerLocalWorkGroup = PathElement.groupElement("PATH$ldsSizePerLocalWorkGroup");
-    public static final PathElement PATH$ldsUsageSizeInBytes = PathElement.groupElement("PATH$ldsUsageSizeInBytes");
-    public static final PathElement PATH$scratchMemUsageInBytes = PathElement.groupElement("PATH$scratchMemUsageInBytes");
-
-    public static final OfInt LAYOUT$numUsedVgprs = (OfInt) LAYOUT.select(PATH$numUsedVgprs);
-    public static final OfInt LAYOUT$numUsedSgprs = (OfInt) LAYOUT.select(PATH$numUsedSgprs);
-    public static final OfInt LAYOUT$ldsSizePerLocalWorkGroup = (OfInt) LAYOUT.select(PATH$ldsSizePerLocalWorkGroup);
-
-    public static final long SIZE$numUsedVgprs = LAYOUT$numUsedVgprs.byteSize();
-    public static final long SIZE$numUsedSgprs = LAYOUT$numUsedSgprs.byteSize();
-    public static final long SIZE$ldsSizePerLocalWorkGroup = LAYOUT$ldsSizePerLocalWorkGroup.byteSize();
-    public static final long SIZE$ldsUsageSizeInBytes = NativeLayout.C_SIZE_T.byteSize();
-    public static final long SIZE$scratchMemUsageInBytes = NativeLayout.C_SIZE_T.byteSize();
-
-    public static final long OFFSET$numUsedVgprs = LAYOUT.byteOffset(PATH$numUsedVgprs);
-    public static final long OFFSET$numUsedSgprs = LAYOUT.byteOffset(PATH$numUsedSgprs);
-    public static final long OFFSET$ldsSizePerLocalWorkGroup = LAYOUT.byteOffset(PATH$ldsSizePerLocalWorkGroup);
-    public static final long OFFSET$ldsUsageSizeInBytes = LAYOUT.byteOffset(PATH$ldsUsageSizeInBytes);
-    public static final long OFFSET$scratchMemUsageInBytes = LAYOUT.byteOffset(PATH$scratchMemUsageInBytes);
 
     public @unsigned int numUsedVgprs() {
         return segment.get(LAYOUT$numUsedVgprs, OFFSET$numUsedVgprs);
@@ -126,4 +109,34 @@ public record VkShaderResourceUsageAMD(@NotNull MemorySegment segment) implement
         NativeLayout.writeCSizeT(segment, OFFSET$scratchMemUsageInBytes, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("numUsedVgprs"),
+        ValueLayout.JAVA_INT.withName("numUsedSgprs"),
+        ValueLayout.JAVA_INT.withName("ldsSizePerLocalWorkGroup"),
+        NativeLayout.C_SIZE_T.withName("ldsUsageSizeInBytes"),
+        NativeLayout.C_SIZE_T.withName("scratchMemUsageInBytes")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$numUsedVgprs = PathElement.groupElement("PATH$numUsedVgprs");
+    public static final PathElement PATH$numUsedSgprs = PathElement.groupElement("PATH$numUsedSgprs");
+    public static final PathElement PATH$ldsSizePerLocalWorkGroup = PathElement.groupElement("PATH$ldsSizePerLocalWorkGroup");
+    public static final PathElement PATH$ldsUsageSizeInBytes = PathElement.groupElement("PATH$ldsUsageSizeInBytes");
+    public static final PathElement PATH$scratchMemUsageInBytes = PathElement.groupElement("PATH$scratchMemUsageInBytes");
+
+    public static final OfInt LAYOUT$numUsedVgprs = (OfInt) LAYOUT.select(PATH$numUsedVgprs);
+    public static final OfInt LAYOUT$numUsedSgprs = (OfInt) LAYOUT.select(PATH$numUsedSgprs);
+    public static final OfInt LAYOUT$ldsSizePerLocalWorkGroup = (OfInt) LAYOUT.select(PATH$ldsSizePerLocalWorkGroup);
+
+    public static final long SIZE$numUsedVgprs = LAYOUT$numUsedVgprs.byteSize();
+    public static final long SIZE$numUsedSgprs = LAYOUT$numUsedSgprs.byteSize();
+    public static final long SIZE$ldsSizePerLocalWorkGroup = LAYOUT$ldsSizePerLocalWorkGroup.byteSize();
+    public static final long SIZE$ldsUsageSizeInBytes = NativeLayout.C_SIZE_T.byteSize();
+    public static final long SIZE$scratchMemUsageInBytes = NativeLayout.C_SIZE_T.byteSize();
+
+    public static final long OFFSET$numUsedVgprs = LAYOUT.byteOffset(PATH$numUsedVgprs);
+    public static final long OFFSET$numUsedSgprs = LAYOUT.byteOffset(PATH$numUsedSgprs);
+    public static final long OFFSET$ldsSizePerLocalWorkGroup = LAYOUT.byteOffset(PATH$ldsSizePerLocalWorkGroup);
+    public static final long OFFSET$ldsUsageSizeInBytes = LAYOUT.byteOffset(PATH$ldsUsageSizeInBytes);
+    public static final long OFFSET$scratchMemUsageInBytes = LAYOUT.byteOffset(PATH$scratchMemUsageInBytes);
 }

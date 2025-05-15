@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVertexInputBindingDivisorDescription} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVertexInputBindingDivisorDescription.html"><code>VkVertexInputBindingDivisorDescription</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVertexInputBindingDivisorDescription {
+///     uint32_t binding;
+///     uint32_t divisor;
+/// } VkVertexInputBindingDivisorDescription;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVertexInputBindingDivisorDescription.html">VkVertexInputBindingDivisorDescription</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVertexInputBindingDivisorDescription.html"><code>VkVertexInputBindingDivisorDescription</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVertexInputBindingDivisorDescription(@NotNull MemorySegment segment) implements IPointer {
     public static VkVertexInputBindingDivisorDescription allocate(Arena arena) {
-        return new VkVertexInputBindingDivisorDescription(arena.allocate(LAYOUT));
+        VkVertexInputBindingDivisorDescription ret = new VkVertexInputBindingDivisorDescription(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkVertexInputBindingDivisorDescription[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkVertexInputBindingDivisorDescription(@NotNull MemorySegment segm
         return ret;
     }
 
+    public @unsigned int binding() {
+        return segment.get(LAYOUT$binding, OFFSET$binding);
+    }
+
+    public void binding(@unsigned int value) {
+        segment.set(LAYOUT$binding, OFFSET$binding, value);
+    }
+
+    public @unsigned int divisor() {
+        return segment.get(LAYOUT$divisor, OFFSET$divisor);
+    }
+
+    public void divisor(@unsigned int value) {
+        segment.set(LAYOUT$divisor, OFFSET$divisor, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("binding"),
         ValueLayout.JAVA_INT.withName("divisor")
@@ -72,21 +99,4 @@ public record VkVertexInputBindingDivisorDescription(@NotNull MemorySegment segm
 
     public static final long OFFSET$binding = LAYOUT.byteOffset(PATH$binding);
     public static final long OFFSET$divisor = LAYOUT.byteOffset(PATH$divisor);
-
-    public @unsigned int binding() {
-        return segment.get(LAYOUT$binding, OFFSET$binding);
-    }
-
-    public void binding(@unsigned int value) {
-        segment.set(LAYOUT$binding, OFFSET$binding, value);
-    }
-
-    public @unsigned int divisor() {
-        return segment.get(LAYOUT$divisor, OFFSET$divisor);
-    }
-
-    public void divisor(@unsigned int value) {
-        segment.set(LAYOUT$divisor, OFFSET$divisor, value);
-    }
-
 }

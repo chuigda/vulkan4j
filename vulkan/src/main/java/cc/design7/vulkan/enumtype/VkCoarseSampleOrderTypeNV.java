@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCoarseSampleOrderTypeNV.html">VkCoarseSampleOrderTypeNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCoarseSampleOrderTypeNV.html"><code>VkCoarseSampleOrderTypeNV</code></a>
 public final class VkCoarseSampleOrderTypeNV {
     public static final int DEFAULT = 0x0;
     public static final int CUSTOM = 0x1;

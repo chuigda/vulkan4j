@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceSchedulingControlsPropertiesARM} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSchedulingControlsPropertiesARM.html"><code>VkPhysicalDeviceSchedulingControlsPropertiesARM</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceSchedulingControlsPropertiesARM {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkPhysicalDeviceSchedulingControlsFlagsARM schedulingControlsFlags;
+/// } VkPhysicalDeviceSchedulingControlsPropertiesARM;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM`
+///
+/// The {@link VkPhysicalDeviceSchedulingControlsPropertiesARM#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceSchedulingControlsPropertiesARM#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSchedulingControlsPropertiesARM.html">VkPhysicalDeviceSchedulingControlsPropertiesARM</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSchedulingControlsPropertiesARM.html"><code>VkPhysicalDeviceSchedulingControlsPropertiesARM</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceSchedulingControlsPropertiesARM(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceSchedulingControlsPropertiesARM {
-        sType(VkStructureType.PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM);
-    }
-
     public static VkPhysicalDeviceSchedulingControlsPropertiesARM allocate(Arena arena) {
-        return new VkPhysicalDeviceSchedulingControlsPropertiesARM(arena.allocate(LAYOUT));
+        VkPhysicalDeviceSchedulingControlsPropertiesARM ret = new VkPhysicalDeviceSchedulingControlsPropertiesARM(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM);
+        return ret;
     }
 
     public static VkPhysicalDeviceSchedulingControlsPropertiesARM[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(@NotNull MemorySeg
         VkPhysicalDeviceSchedulingControlsPropertiesARM[] ret = new VkPhysicalDeviceSchedulingControlsPropertiesARM[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceSchedulingControlsPropertiesARM(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(@NotNull MemorySeg
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_LONG.withName("schedulingControlsFlags")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$schedulingControlsFlags = PathElement.groupElement("PATH$schedulingControlsFlags");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfLong LAYOUT$schedulingControlsFlags = (OfLong) LAYOUT.select(PATH$schedulingControlsFlags);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$schedulingControlsFlags = LAYOUT$schedulingControlsFlags.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$schedulingControlsFlags = LAYOUT.byteOffset(PATH$schedulingControlsFlags);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(@NotNull MemorySeg
         segment.set(LAYOUT$schedulingControlsFlags, OFFSET$schedulingControlsFlags, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("schedulingControlsFlags")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$schedulingControlsFlags = PathElement.groupElement("PATH$schedulingControlsFlags");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$schedulingControlsFlags = (OfLong) LAYOUT.select(PATH$schedulingControlsFlags);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$schedulingControlsFlags = LAYOUT$schedulingControlsFlags.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$schedulingControlsFlags = LAYOUT.byteOffset(PATH$schedulingControlsFlags);
 }

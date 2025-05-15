@@ -14,8 +14,17 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkIndirectCommandsVertexBufferTokenEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsVertexBufferTokenEXT.html"><code>VkIndirectCommandsVertexBufferTokenEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkIndirectCommandsVertexBufferTokenEXT {
+///     uint32_t vertexBindingUnit;
+/// } VkIndirectCommandsVertexBufferTokenEXT;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +33,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsVertexBufferTokenEXT.html">VkIndirectCommandsVertexBufferTokenEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsVertexBufferTokenEXT.html"><code>VkIndirectCommandsVertexBufferTokenEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkIndirectCommandsVertexBufferTokenEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkIndirectCommandsVertexBufferTokenEXT allocate(Arena arena) {
-        return new VkIndirectCommandsVertexBufferTokenEXT(arena.allocate(LAYOUT));
+        VkIndirectCommandsVertexBufferTokenEXT ret = new VkIndirectCommandsVertexBufferTokenEXT(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkIndirectCommandsVertexBufferTokenEXT[] allocate(Arena arena, int count) {
@@ -55,6 +65,14 @@ public record VkIndirectCommandsVertexBufferTokenEXT(@NotNull MemorySegment segm
         return ret;
     }
 
+    public @unsigned int vertexBindingUnit() {
+        return segment.get(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit);
+    }
+
+    public void vertexBindingUnit(@unsigned int value) {
+        segment.set(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("vertexBindingUnit")
     );
@@ -67,13 +85,4 @@ public record VkIndirectCommandsVertexBufferTokenEXT(@NotNull MemorySegment segm
     public static final long SIZE$vertexBindingUnit = LAYOUT$vertexBindingUnit.byteSize();
 
     public static final long OFFSET$vertexBindingUnit = LAYOUT.byteOffset(PATH$vertexBindingUnit);
-
-    public @unsigned int vertexBindingUnit() {
-        return segment.get(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit);
-    }
-
-    public void vertexBindingUnit(@unsigned int value) {
-        segment.set(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit, value);
-    }
-
 }

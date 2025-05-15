@@ -14,8 +14,32 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceHostImageCopyProperties} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceHostImageCopyProperties.html"><code>VkPhysicalDeviceHostImageCopyProperties</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceHostImageCopyProperties {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t copySrcLayoutCount;
+///     VkImageLayout* pCopySrcLayouts;
+///     uint32_t copyDstLayoutCount;
+///     VkImageLayout* pCopyDstLayouts;
+///     uint8_t optimalTilingLayoutUUID;
+///     VkBool32 identicalMemoryTypeRequirements;
+/// } VkPhysicalDeviceHostImageCopyProperties;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES`
+///
+/// The {@link VkPhysicalDeviceHostImageCopyProperties#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceHostImageCopyProperties#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +48,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceHostImageCopyProperties.html">VkPhysicalDeviceHostImageCopyProperties</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceHostImageCopyProperties.html"><code>VkPhysicalDeviceHostImageCopyProperties</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceHostImageCopyProperties {
-        sType(VkStructureType.PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES);
-    }
-
     public static VkPhysicalDeviceHostImageCopyProperties allocate(Arena arena) {
-        return new VkPhysicalDeviceHostImageCopyProperties(arena.allocate(LAYOUT));
+        VkPhysicalDeviceHostImageCopyProperties ret = new VkPhysicalDeviceHostImageCopyProperties(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES);
+        return ret;
     }
 
     public static VkPhysicalDeviceHostImageCopyProperties[] allocate(Arena arena, int count) {
@@ -41,6 +63,7 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         VkPhysicalDeviceHostImageCopyProperties[] ret = new VkPhysicalDeviceHostImageCopyProperties[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceHostImageCopyProperties(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES);
         }
         return ret;
     }
@@ -57,6 +80,112 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int copySrcLayoutCount() {
+        return segment.get(LAYOUT$copySrcLayoutCount, OFFSET$copySrcLayoutCount);
+    }
+
+    public void copySrcLayoutCount(@unsigned int value) {
+        segment.set(LAYOUT$copySrcLayoutCount, OFFSET$copySrcLayoutCount, value);
+    }
+
+    public @pointer(target=VkImageLayout.class) MemorySegment pCopySrcLayoutsRaw() {
+        return segment.get(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts);
+    }
+
+    public void pCopySrcLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
+        segment.set(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts, value);
+    }
+
+    /// Note: the returned {@link IntPtr} does not have correct
+    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
+    /// or writing to the buffer.
+    public @Nullable @enumtype(VkImageLayout.class) IntPtr pCopySrcLayouts() {
+        MemorySegment s = pCopySrcLayoutsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new IntPtr(s);
+    }
+
+    public void pCopySrcLayouts(@Nullable @enumtype(VkImageLayout.class) IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pCopySrcLayoutsRaw(s);
+    }
+
+    public @unsigned int copyDstLayoutCount() {
+        return segment.get(LAYOUT$copyDstLayoutCount, OFFSET$copyDstLayoutCount);
+    }
+
+    public void copyDstLayoutCount(@unsigned int value) {
+        segment.set(LAYOUT$copyDstLayoutCount, OFFSET$copyDstLayoutCount, value);
+    }
+
+    public @pointer(target=VkImageLayout.class) MemorySegment pCopyDstLayoutsRaw() {
+        return segment.get(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts);
+    }
+
+    public void pCopyDstLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
+        segment.set(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts, value);
+    }
+
+    /// Note: the returned {@link IntPtr} does not have correct
+    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
+    /// or writing to the buffer.
+    public @Nullable @enumtype(VkImageLayout.class) IntPtr pCopyDstLayouts() {
+        MemorySegment s = pCopyDstLayoutsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new IntPtr(s);
+    }
+
+    public void pCopyDstLayouts(@Nullable @enumtype(VkImageLayout.class) IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pCopyDstLayoutsRaw(s);
+    }
+
+    public @unsigned byte optimalTilingLayoutUUID() {
+        return segment.get(LAYOUT$optimalTilingLayoutUUID, OFFSET$optimalTilingLayoutUUID);
+    }
+
+    public void optimalTilingLayoutUUID(@unsigned byte value) {
+        segment.set(LAYOUT$optimalTilingLayoutUUID, OFFSET$optimalTilingLayoutUUID, value);
+    }
+
+    public @unsigned int identicalMemoryTypeRequirements() {
+        return segment.get(LAYOUT$identicalMemoryTypeRequirements, OFFSET$identicalMemoryTypeRequirements);
+    }
+
+    public void identicalMemoryTypeRequirements(@unsigned int value) {
+        segment.set(LAYOUT$identicalMemoryTypeRequirements, OFFSET$identicalMemoryTypeRequirements, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -106,107 +235,4 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
     public static final long OFFSET$pCopyDstLayouts = LAYOUT.byteOffset(PATH$pCopyDstLayouts);
     public static final long OFFSET$optimalTilingLayoutUUID = LAYOUT.byteOffset(PATH$optimalTilingLayoutUUID);
     public static final long OFFSET$identicalMemoryTypeRequirements = LAYOUT.byteOffset(PATH$identicalMemoryTypeRequirements);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @unsigned int copySrcLayoutCount() {
-        return segment.get(LAYOUT$copySrcLayoutCount, OFFSET$copySrcLayoutCount);
-    }
-
-    public void copySrcLayoutCount(@unsigned int value) {
-        segment.set(LAYOUT$copySrcLayoutCount, OFFSET$copySrcLayoutCount, value);
-    }
-
-    public @pointer(target=VkImageLayout.class) MemorySegment pCopySrcLayoutsRaw() {
-        return segment.get(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts);
-    }
-
-    public void pCopySrcLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
-        segment.set(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts, value);
-    }
-
-    /// Note: the returned {@link IntPtr} does not have correct
-    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
-    /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
-    /// or writing to the buffer.
-    public @Nullable @enumtype(VkImageLayout.class) IntPtr pCopySrcLayouts() {
-        MemorySegment s = pCopySrcLayoutsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new IntPtr(s);
-    }
-
-    public void pCopySrcLayouts(@Nullable @enumtype(VkImageLayout.class) IntPtr value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pCopySrcLayoutsRaw(s);
-    }
-
-    public @unsigned int copyDstLayoutCount() {
-        return segment.get(LAYOUT$copyDstLayoutCount, OFFSET$copyDstLayoutCount);
-    }
-
-    public void copyDstLayoutCount(@unsigned int value) {
-        segment.set(LAYOUT$copyDstLayoutCount, OFFSET$copyDstLayoutCount, value);
-    }
-
-    public @pointer(target=VkImageLayout.class) MemorySegment pCopyDstLayoutsRaw() {
-        return segment.get(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts);
-    }
-
-    public void pCopyDstLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
-        segment.set(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts, value);
-    }
-
-    /// Note: the returned {@link IntPtr} does not have correct
-    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
-    /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
-    /// or writing to the buffer.
-    public @Nullable @enumtype(VkImageLayout.class) IntPtr pCopyDstLayouts() {
-        MemorySegment s = pCopyDstLayoutsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new IntPtr(s);
-    }
-
-    public void pCopyDstLayouts(@Nullable @enumtype(VkImageLayout.class) IntPtr value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pCopyDstLayoutsRaw(s);
-    }
-
-    public @unsigned byte optimalTilingLayoutUUID() {
-        return segment.get(LAYOUT$optimalTilingLayoutUUID, OFFSET$optimalTilingLayoutUUID);
-    }
-
-    public void optimalTilingLayoutUUID(@unsigned byte value) {
-        segment.set(LAYOUT$optimalTilingLayoutUUID, OFFSET$optimalTilingLayoutUUID, value);
-    }
-
-    public @unsigned int identicalMemoryTypeRequirements() {
-        return segment.get(LAYOUT$identicalMemoryTypeRequirements, OFFSET$identicalMemoryTypeRequirements);
-    }
-
-    public void identicalMemoryTypeRequirements(@unsigned int value) {
-        segment.set(LAYOUT$identicalMemoryTypeRequirements, OFFSET$identicalMemoryTypeRequirements, value);
-    }
-
 }

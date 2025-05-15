@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoComponentBitDepthFlagsKHR.html">VkVideoComponentBitDepthFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoComponentBitDepthFlagsKHR.html"><code>VkVideoComponentBitDepthFlagsKHR</code></a>
 public final class VkVideoComponentBitDepthFlagsKHR {
     public static final int _10 = 0x4;
     public static final int _12 = 0x10;

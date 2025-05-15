@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkImageViewASTCDecodeModeEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageViewASTCDecodeModeEXT.html"><code>VkImageViewASTCDecodeModeEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkImageViewASTCDecodeModeEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkFormat decodeMode;
+/// } VkImageViewASTCDecodeModeEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT`
+///
+/// The {@link VkImageViewASTCDecodeModeEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkImageViewASTCDecodeModeEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageViewASTCDecodeModeEXT.html">VkImageViewASTCDecodeModeEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageViewASTCDecodeModeEXT.html"><code>VkImageViewASTCDecodeModeEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkImageViewASTCDecodeModeEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkImageViewASTCDecodeModeEXT {
-        sType(VkStructureType.IMAGE_VIEW_ASTC_DECODE_MODE_EXT);
-    }
-
     public static VkImageViewASTCDecodeModeEXT allocate(Arena arena) {
-        return new VkImageViewASTCDecodeModeEXT(arena.allocate(LAYOUT));
+        VkImageViewASTCDecodeModeEXT ret = new VkImageViewASTCDecodeModeEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.IMAGE_VIEW_ASTC_DECODE_MODE_EXT);
+        return ret;
     }
 
     public static VkImageViewASTCDecodeModeEXT[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkImageViewASTCDecodeModeEXT(@NotNull MemorySegment segment) imple
         VkImageViewASTCDecodeModeEXT[] ret = new VkImageViewASTCDecodeModeEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkImageViewASTCDecodeModeEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.IMAGE_VIEW_ASTC_DECODE_MODE_EXT);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkImageViewASTCDecodeModeEXT(@NotNull MemorySegment segment) imple
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("decodeMode")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$decodeMode = PathElement.groupElement("PATH$decodeMode");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$decodeMode = (OfInt) LAYOUT.select(PATH$decodeMode);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$decodeMode = LAYOUT$decodeMode.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$decodeMode = LAYOUT.byteOffset(PATH$decodeMode);
+    public void autoInit() {
+        sType(VkStructureType.IMAGE_VIEW_ASTC_DECODE_MODE_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkImageViewASTCDecodeModeEXT(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$decodeMode, OFFSET$decodeMode, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("decodeMode")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$decodeMode = PathElement.groupElement("PATH$decodeMode");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$decodeMode = (OfInt) LAYOUT.select(PATH$decodeMode);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$decodeMode = LAYOUT$decodeMode.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$decodeMode = LAYOUT.byteOffset(PATH$decodeMode);
 }

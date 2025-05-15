@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceRawAccessChainsFeaturesNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceRawAccessChainsFeaturesNV.html"><code>VkPhysicalDeviceRawAccessChainsFeaturesNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceRawAccessChainsFeaturesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 shaderRawAccessChains;
+/// } VkPhysicalDeviceRawAccessChainsFeaturesNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV`
+///
+/// The {@link VkPhysicalDeviceRawAccessChainsFeaturesNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceRawAccessChainsFeaturesNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceRawAccessChainsFeaturesNV.html">VkPhysicalDeviceRawAccessChainsFeaturesNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceRawAccessChainsFeaturesNV.html"><code>VkPhysicalDeviceRawAccessChainsFeaturesNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceRawAccessChainsFeaturesNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceRawAccessChainsFeaturesNV {
-        sType(VkStructureType.PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV);
-    }
-
     public static VkPhysicalDeviceRawAccessChainsFeaturesNV allocate(Arena arena) {
-        return new VkPhysicalDeviceRawAccessChainsFeaturesNV(arena.allocate(LAYOUT));
+        VkPhysicalDeviceRawAccessChainsFeaturesNV ret = new VkPhysicalDeviceRawAccessChainsFeaturesNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV);
+        return ret;
     }
 
     public static VkPhysicalDeviceRawAccessChainsFeaturesNV[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceRawAccessChainsFeaturesNV(@NotNull MemorySegment s
         VkPhysicalDeviceRawAccessChainsFeaturesNV[] ret = new VkPhysicalDeviceRawAccessChainsFeaturesNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceRawAccessChainsFeaturesNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceRawAccessChainsFeaturesNV(@NotNull MemorySegment s
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("shaderRawAccessChains")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shaderRawAccessChains = PathElement.groupElement("PATH$shaderRawAccessChains");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$shaderRawAccessChains = (OfInt) LAYOUT.select(PATH$shaderRawAccessChains);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$shaderRawAccessChains = LAYOUT$shaderRawAccessChains.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$shaderRawAccessChains = LAYOUT.byteOffset(PATH$shaderRawAccessChains);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceRawAccessChainsFeaturesNV(@NotNull MemorySegment s
         segment.set(LAYOUT$shaderRawAccessChains, OFFSET$shaderRawAccessChains, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("shaderRawAccessChains")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$shaderRawAccessChains = PathElement.groupElement("PATH$shaderRawAccessChains");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$shaderRawAccessChains = (OfInt) LAYOUT.select(PATH$shaderRawAccessChains);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderRawAccessChains = LAYOUT$shaderRawAccessChains.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$shaderRawAccessChains = LAYOUT.byteOffset(PATH$shaderRawAccessChains);
 }

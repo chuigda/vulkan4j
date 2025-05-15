@@ -16,6 +16,29 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoH265HrdParameters} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoH265HrdParameters {
+///     StdVideoH265HrdFlags flags;
+///     uint8_t tick_divisor_minus2;
+///     uint8_t du_cpb_removal_delay_increment_length_minus1;
+///     uint8_t dpb_output_delay_du_length_minus1;
+///     uint8_t bit_rate_scale;
+///     uint8_t cpb_size_scale;
+///     uint8_t cpb_size_du_scale;
+///     uint8_t initial_cpb_removal_delay_length_minus1;
+///     uint8_t au_cpb_removal_delay_length_minus1;
+///     uint8_t dpb_output_delay_length_minus1;
+///     uint8_t cpb_cnt_minus1;
+///     uint16_t elemental_duration_in_tc_minus1;
+///     uint16_t reserved;
+///     StdVideoH265SubLayerHrdParameters const* pSubLayerHrdParametersNal;
+///     StdVideoH265SubLayerHrdParameters const* pSubLayerHrdParametersVcl;
+/// } StdVideoH265HrdParameters;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +50,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265HrdParameters allocate(Arena arena) {
-        return new StdVideoH265HrdParameters(arena.allocate(LAYOUT));
+        StdVideoH265HrdParameters ret = new StdVideoH265HrdParameters(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoH265HrdParameters[] allocate(Arena arena, int count) {
@@ -52,89 +76,6 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        StdVideoH265HrdFlags.LAYOUT.withName("flags"),
-        ValueLayout.JAVA_BYTE.withName("tick_divisor_minus2"),
-        ValueLayout.JAVA_BYTE.withName("du_cpb_removal_delay_increment_length_minus1"),
-        ValueLayout.JAVA_BYTE.withName("dpb_output_delay_du_length_minus1"),
-        ValueLayout.JAVA_BYTE.withName("bit_rate_scale"),
-        ValueLayout.JAVA_BYTE.withName("cpb_size_scale"),
-        ValueLayout.JAVA_BYTE.withName("cpb_size_du_scale"),
-        ValueLayout.JAVA_BYTE.withName("initial_cpb_removal_delay_length_minus1"),
-        ValueLayout.JAVA_BYTE.withName("au_cpb_removal_delay_length_minus1"),
-        ValueLayout.JAVA_BYTE.withName("dpb_output_delay_length_minus1"),
-        ValueLayout.JAVA_BYTE.withName("cpb_cnt_minus1"),
-        ValueLayout.JAVA_SHORT.withName("elemental_duration_in_tc_minus1"),
-        ValueLayout.JAVA_SHORT.withName("reserved"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265SubLayerHrdParameters.LAYOUT).withName("pSubLayerHrdParametersNal"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265SubLayerHrdParameters.LAYOUT).withName("pSubLayerHrdParametersVcl")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$tick_divisor_minus2 = PathElement.groupElement("PATH$tick_divisor_minus2");
-    public static final PathElement PATH$du_cpb_removal_delay_increment_length_minus1 = PathElement.groupElement("PATH$du_cpb_removal_delay_increment_length_minus1");
-    public static final PathElement PATH$dpb_output_delay_du_length_minus1 = PathElement.groupElement("PATH$dpb_output_delay_du_length_minus1");
-    public static final PathElement PATH$bit_rate_scale = PathElement.groupElement("PATH$bit_rate_scale");
-    public static final PathElement PATH$cpb_size_scale = PathElement.groupElement("PATH$cpb_size_scale");
-    public static final PathElement PATH$cpb_size_du_scale = PathElement.groupElement("PATH$cpb_size_du_scale");
-    public static final PathElement PATH$initial_cpb_removal_delay_length_minus1 = PathElement.groupElement("PATH$initial_cpb_removal_delay_length_minus1");
-    public static final PathElement PATH$au_cpb_removal_delay_length_minus1 = PathElement.groupElement("PATH$au_cpb_removal_delay_length_minus1");
-    public static final PathElement PATH$dpb_output_delay_length_minus1 = PathElement.groupElement("PATH$dpb_output_delay_length_minus1");
-    public static final PathElement PATH$cpb_cnt_minus1 = PathElement.groupElement("PATH$cpb_cnt_minus1");
-    public static final PathElement PATH$elemental_duration_in_tc_minus1 = PathElement.groupElement("PATH$elemental_duration_in_tc_minus1");
-    public static final PathElement PATH$reserved = PathElement.groupElement("PATH$reserved");
-    public static final PathElement PATH$pSubLayerHrdParametersNal = PathElement.groupElement("PATH$pSubLayerHrdParametersNal");
-    public static final PathElement PATH$pSubLayerHrdParametersVcl = PathElement.groupElement("PATH$pSubLayerHrdParametersVcl");
-
-    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
-    public static final OfByte LAYOUT$tick_divisor_minus2 = (OfByte) LAYOUT.select(PATH$tick_divisor_minus2);
-    public static final OfByte LAYOUT$du_cpb_removal_delay_increment_length_minus1 = (OfByte) LAYOUT.select(PATH$du_cpb_removal_delay_increment_length_minus1);
-    public static final OfByte LAYOUT$dpb_output_delay_du_length_minus1 = (OfByte) LAYOUT.select(PATH$dpb_output_delay_du_length_minus1);
-    public static final OfByte LAYOUT$bit_rate_scale = (OfByte) LAYOUT.select(PATH$bit_rate_scale);
-    public static final OfByte LAYOUT$cpb_size_scale = (OfByte) LAYOUT.select(PATH$cpb_size_scale);
-    public static final OfByte LAYOUT$cpb_size_du_scale = (OfByte) LAYOUT.select(PATH$cpb_size_du_scale);
-    public static final OfByte LAYOUT$initial_cpb_removal_delay_length_minus1 = (OfByte) LAYOUT.select(PATH$initial_cpb_removal_delay_length_minus1);
-    public static final OfByte LAYOUT$au_cpb_removal_delay_length_minus1 = (OfByte) LAYOUT.select(PATH$au_cpb_removal_delay_length_minus1);
-    public static final OfByte LAYOUT$dpb_output_delay_length_minus1 = (OfByte) LAYOUT.select(PATH$dpb_output_delay_length_minus1);
-    public static final OfByte LAYOUT$cpb_cnt_minus1 = (OfByte) LAYOUT.select(PATH$cpb_cnt_minus1);
-    public static final OfShort LAYOUT$elemental_duration_in_tc_minus1 = (OfShort) LAYOUT.select(PATH$elemental_duration_in_tc_minus1);
-    public static final OfShort LAYOUT$reserved = (OfShort) LAYOUT.select(PATH$reserved);
-    public static final AddressLayout LAYOUT$pSubLayerHrdParametersNal = (AddressLayout) LAYOUT.select(PATH$pSubLayerHrdParametersNal);
-    public static final AddressLayout LAYOUT$pSubLayerHrdParametersVcl = (AddressLayout) LAYOUT.select(PATH$pSubLayerHrdParametersVcl);
-
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$tick_divisor_minus2 = LAYOUT$tick_divisor_minus2.byteSize();
-    public static final long SIZE$du_cpb_removal_delay_increment_length_minus1 = LAYOUT$du_cpb_removal_delay_increment_length_minus1.byteSize();
-    public static final long SIZE$dpb_output_delay_du_length_minus1 = LAYOUT$dpb_output_delay_du_length_minus1.byteSize();
-    public static final long SIZE$bit_rate_scale = LAYOUT$bit_rate_scale.byteSize();
-    public static final long SIZE$cpb_size_scale = LAYOUT$cpb_size_scale.byteSize();
-    public static final long SIZE$cpb_size_du_scale = LAYOUT$cpb_size_du_scale.byteSize();
-    public static final long SIZE$initial_cpb_removal_delay_length_minus1 = LAYOUT$initial_cpb_removal_delay_length_minus1.byteSize();
-    public static final long SIZE$au_cpb_removal_delay_length_minus1 = LAYOUT$au_cpb_removal_delay_length_minus1.byteSize();
-    public static final long SIZE$dpb_output_delay_length_minus1 = LAYOUT$dpb_output_delay_length_minus1.byteSize();
-    public static final long SIZE$cpb_cnt_minus1 = LAYOUT$cpb_cnt_minus1.byteSize();
-    public static final long SIZE$elemental_duration_in_tc_minus1 = LAYOUT$elemental_duration_in_tc_minus1.byteSize();
-    public static final long SIZE$reserved = LAYOUT$reserved.byteSize();
-    public static final long SIZE$pSubLayerHrdParametersNal = LAYOUT$pSubLayerHrdParametersNal.byteSize();
-    public static final long SIZE$pSubLayerHrdParametersVcl = LAYOUT$pSubLayerHrdParametersVcl.byteSize();
-
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$tick_divisor_minus2 = LAYOUT.byteOffset(PATH$tick_divisor_minus2);
-    public static final long OFFSET$du_cpb_removal_delay_increment_length_minus1 = LAYOUT.byteOffset(PATH$du_cpb_removal_delay_increment_length_minus1);
-    public static final long OFFSET$dpb_output_delay_du_length_minus1 = LAYOUT.byteOffset(PATH$dpb_output_delay_du_length_minus1);
-    public static final long OFFSET$bit_rate_scale = LAYOUT.byteOffset(PATH$bit_rate_scale);
-    public static final long OFFSET$cpb_size_scale = LAYOUT.byteOffset(PATH$cpb_size_scale);
-    public static final long OFFSET$cpb_size_du_scale = LAYOUT.byteOffset(PATH$cpb_size_du_scale);
-    public static final long OFFSET$initial_cpb_removal_delay_length_minus1 = LAYOUT.byteOffset(PATH$initial_cpb_removal_delay_length_minus1);
-    public static final long OFFSET$au_cpb_removal_delay_length_minus1 = LAYOUT.byteOffset(PATH$au_cpb_removal_delay_length_minus1);
-    public static final long OFFSET$dpb_output_delay_length_minus1 = LAYOUT.byteOffset(PATH$dpb_output_delay_length_minus1);
-    public static final long OFFSET$cpb_cnt_minus1 = LAYOUT.byteOffset(PATH$cpb_cnt_minus1);
-    public static final long OFFSET$elemental_duration_in_tc_minus1 = LAYOUT.byteOffset(PATH$elemental_duration_in_tc_minus1);
-    public static final long OFFSET$reserved = LAYOUT.byteOffset(PATH$reserved);
-    public static final long OFFSET$pSubLayerHrdParametersNal = LAYOUT.byteOffset(PATH$pSubLayerHrdParametersNal);
-    public static final long OFFSET$pSubLayerHrdParametersVcl = LAYOUT.byteOffset(PATH$pSubLayerHrdParametersVcl);
 
     public StdVideoH265HrdFlags flags() {
         return new StdVideoH265HrdFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
@@ -250,7 +191,7 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
 
     public @Nullable StdVideoH265SubLayerHrdParameters pSubLayerHrdParametersNal() {
         MemorySegment s = pSubLayerHrdParametersNalRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoH265SubLayerHrdParameters(s);
@@ -263,7 +204,7 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
 
     @unsafe public @Nullable StdVideoH265SubLayerHrdParameters[] pSubLayerHrdParametersNal(int assumedCount) {
         MemorySegment s = pSubLayerHrdParametersNalRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -285,7 +226,7 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
 
     public @Nullable StdVideoH265SubLayerHrdParameters pSubLayerHrdParametersVcl() {
         MemorySegment s = pSubLayerHrdParametersVclRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoH265SubLayerHrdParameters(s);
@@ -298,7 +239,7 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
 
     @unsafe public @Nullable StdVideoH265SubLayerHrdParameters[] pSubLayerHrdParametersVcl(int assumedCount) {
         MemorySegment s = pSubLayerHrdParametersVclRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -310,4 +251,86 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoH265HrdFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("tick_divisor_minus2"),
+        ValueLayout.JAVA_BYTE.withName("du_cpb_removal_delay_increment_length_minus1"),
+        ValueLayout.JAVA_BYTE.withName("dpb_output_delay_du_length_minus1"),
+        ValueLayout.JAVA_BYTE.withName("bit_rate_scale"),
+        ValueLayout.JAVA_BYTE.withName("cpb_size_scale"),
+        ValueLayout.JAVA_BYTE.withName("cpb_size_du_scale"),
+        ValueLayout.JAVA_BYTE.withName("initial_cpb_removal_delay_length_minus1"),
+        ValueLayout.JAVA_BYTE.withName("au_cpb_removal_delay_length_minus1"),
+        ValueLayout.JAVA_BYTE.withName("dpb_output_delay_length_minus1"),
+        ValueLayout.JAVA_BYTE.withName("cpb_cnt_minus1"),
+        ValueLayout.JAVA_SHORT.withName("elemental_duration_in_tc_minus1"),
+        ValueLayout.JAVA_SHORT.withName("reserved"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265SubLayerHrdParameters.LAYOUT).withName("pSubLayerHrdParametersNal"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265SubLayerHrdParameters.LAYOUT).withName("pSubLayerHrdParametersVcl")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$tick_divisor_minus2 = PathElement.groupElement("PATH$tick_divisor_minus2");
+    public static final PathElement PATH$du_cpb_removal_delay_increment_length_minus1 = PathElement.groupElement("PATH$du_cpb_removal_delay_increment_length_minus1");
+    public static final PathElement PATH$dpb_output_delay_du_length_minus1 = PathElement.groupElement("PATH$dpb_output_delay_du_length_minus1");
+    public static final PathElement PATH$bit_rate_scale = PathElement.groupElement("PATH$bit_rate_scale");
+    public static final PathElement PATH$cpb_size_scale = PathElement.groupElement("PATH$cpb_size_scale");
+    public static final PathElement PATH$cpb_size_du_scale = PathElement.groupElement("PATH$cpb_size_du_scale");
+    public static final PathElement PATH$initial_cpb_removal_delay_length_minus1 = PathElement.groupElement("PATH$initial_cpb_removal_delay_length_minus1");
+    public static final PathElement PATH$au_cpb_removal_delay_length_minus1 = PathElement.groupElement("PATH$au_cpb_removal_delay_length_minus1");
+    public static final PathElement PATH$dpb_output_delay_length_minus1 = PathElement.groupElement("PATH$dpb_output_delay_length_minus1");
+    public static final PathElement PATH$cpb_cnt_minus1 = PathElement.groupElement("PATH$cpb_cnt_minus1");
+    public static final PathElement PATH$elemental_duration_in_tc_minus1 = PathElement.groupElement("PATH$elemental_duration_in_tc_minus1");
+    public static final PathElement PATH$reserved = PathElement.groupElement("PATH$reserved");
+    public static final PathElement PATH$pSubLayerHrdParametersNal = PathElement.groupElement("PATH$pSubLayerHrdParametersNal");
+    public static final PathElement PATH$pSubLayerHrdParametersVcl = PathElement.groupElement("PATH$pSubLayerHrdParametersVcl");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$tick_divisor_minus2 = (OfByte) LAYOUT.select(PATH$tick_divisor_minus2);
+    public static final OfByte LAYOUT$du_cpb_removal_delay_increment_length_minus1 = (OfByte) LAYOUT.select(PATH$du_cpb_removal_delay_increment_length_minus1);
+    public static final OfByte LAYOUT$dpb_output_delay_du_length_minus1 = (OfByte) LAYOUT.select(PATH$dpb_output_delay_du_length_minus1);
+    public static final OfByte LAYOUT$bit_rate_scale = (OfByte) LAYOUT.select(PATH$bit_rate_scale);
+    public static final OfByte LAYOUT$cpb_size_scale = (OfByte) LAYOUT.select(PATH$cpb_size_scale);
+    public static final OfByte LAYOUT$cpb_size_du_scale = (OfByte) LAYOUT.select(PATH$cpb_size_du_scale);
+    public static final OfByte LAYOUT$initial_cpb_removal_delay_length_minus1 = (OfByte) LAYOUT.select(PATH$initial_cpb_removal_delay_length_minus1);
+    public static final OfByte LAYOUT$au_cpb_removal_delay_length_minus1 = (OfByte) LAYOUT.select(PATH$au_cpb_removal_delay_length_minus1);
+    public static final OfByte LAYOUT$dpb_output_delay_length_minus1 = (OfByte) LAYOUT.select(PATH$dpb_output_delay_length_minus1);
+    public static final OfByte LAYOUT$cpb_cnt_minus1 = (OfByte) LAYOUT.select(PATH$cpb_cnt_minus1);
+    public static final OfShort LAYOUT$elemental_duration_in_tc_minus1 = (OfShort) LAYOUT.select(PATH$elemental_duration_in_tc_minus1);
+    public static final OfShort LAYOUT$reserved = (OfShort) LAYOUT.select(PATH$reserved);
+    public static final AddressLayout LAYOUT$pSubLayerHrdParametersNal = (AddressLayout) LAYOUT.select(PATH$pSubLayerHrdParametersNal);
+    public static final AddressLayout LAYOUT$pSubLayerHrdParametersVcl = (AddressLayout) LAYOUT.select(PATH$pSubLayerHrdParametersVcl);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$tick_divisor_minus2 = LAYOUT$tick_divisor_minus2.byteSize();
+    public static final long SIZE$du_cpb_removal_delay_increment_length_minus1 = LAYOUT$du_cpb_removal_delay_increment_length_minus1.byteSize();
+    public static final long SIZE$dpb_output_delay_du_length_minus1 = LAYOUT$dpb_output_delay_du_length_minus1.byteSize();
+    public static final long SIZE$bit_rate_scale = LAYOUT$bit_rate_scale.byteSize();
+    public static final long SIZE$cpb_size_scale = LAYOUT$cpb_size_scale.byteSize();
+    public static final long SIZE$cpb_size_du_scale = LAYOUT$cpb_size_du_scale.byteSize();
+    public static final long SIZE$initial_cpb_removal_delay_length_minus1 = LAYOUT$initial_cpb_removal_delay_length_minus1.byteSize();
+    public static final long SIZE$au_cpb_removal_delay_length_minus1 = LAYOUT$au_cpb_removal_delay_length_minus1.byteSize();
+    public static final long SIZE$dpb_output_delay_length_minus1 = LAYOUT$dpb_output_delay_length_minus1.byteSize();
+    public static final long SIZE$cpb_cnt_minus1 = LAYOUT$cpb_cnt_minus1.byteSize();
+    public static final long SIZE$elemental_duration_in_tc_minus1 = LAYOUT$elemental_duration_in_tc_minus1.byteSize();
+    public static final long SIZE$reserved = LAYOUT$reserved.byteSize();
+    public static final long SIZE$pSubLayerHrdParametersNal = LAYOUT$pSubLayerHrdParametersNal.byteSize();
+    public static final long SIZE$pSubLayerHrdParametersVcl = LAYOUT$pSubLayerHrdParametersVcl.byteSize();
+
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$tick_divisor_minus2 = LAYOUT.byteOffset(PATH$tick_divisor_minus2);
+    public static final long OFFSET$du_cpb_removal_delay_increment_length_minus1 = LAYOUT.byteOffset(PATH$du_cpb_removal_delay_increment_length_minus1);
+    public static final long OFFSET$dpb_output_delay_du_length_minus1 = LAYOUT.byteOffset(PATH$dpb_output_delay_du_length_minus1);
+    public static final long OFFSET$bit_rate_scale = LAYOUT.byteOffset(PATH$bit_rate_scale);
+    public static final long OFFSET$cpb_size_scale = LAYOUT.byteOffset(PATH$cpb_size_scale);
+    public static final long OFFSET$cpb_size_du_scale = LAYOUT.byteOffset(PATH$cpb_size_du_scale);
+    public static final long OFFSET$initial_cpb_removal_delay_length_minus1 = LAYOUT.byteOffset(PATH$initial_cpb_removal_delay_length_minus1);
+    public static final long OFFSET$au_cpb_removal_delay_length_minus1 = LAYOUT.byteOffset(PATH$au_cpb_removal_delay_length_minus1);
+    public static final long OFFSET$dpb_output_delay_length_minus1 = LAYOUT.byteOffset(PATH$dpb_output_delay_length_minus1);
+    public static final long OFFSET$cpb_cnt_minus1 = LAYOUT.byteOffset(PATH$cpb_cnt_minus1);
+    public static final long OFFSET$elemental_duration_in_tc_minus1 = LAYOUT.byteOffset(PATH$elemental_duration_in_tc_minus1);
+    public static final long OFFSET$reserved = LAYOUT.byteOffset(PATH$reserved);
+    public static final long OFFSET$pSubLayerHrdParametersNal = LAYOUT.byteOffset(PATH$pSubLayerHrdParametersNal);
+    public static final long OFFSET$pSubLayerHrdParametersVcl = LAYOUT.byteOffset(PATH$pSubLayerHrdParametersVcl);
 }

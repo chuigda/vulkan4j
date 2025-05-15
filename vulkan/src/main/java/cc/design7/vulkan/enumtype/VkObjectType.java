@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkObjectType.html">VkObjectType</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkObjectType.html"><code>VkObjectType</code></a>
 public final class VkObjectType {
     public static final int UNKNOWN = 0x0;
     public static final int INSTANCE = 0x1;

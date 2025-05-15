@@ -14,8 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkConformanceVersion} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkConformanceVersion.html"><code>VkConformanceVersion</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkConformanceVersion {
+///     uint8_t major;
+///     uint8_t minor;
+///     uint8_t subminor;
+///     uint8_t patch;
+/// } VkConformanceVersion;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +36,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkConformanceVersion.html">VkConformanceVersion</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkConformanceVersion.html"><code>VkConformanceVersion</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkConformanceVersion(@NotNull MemorySegment segment) implements IPointer {
     public static VkConformanceVersion allocate(Arena arena) {
-        return new VkConformanceVersion(arena.allocate(LAYOUT));
+        VkConformanceVersion ret = new VkConformanceVersion(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkConformanceVersion[] allocate(Arena arena, int count) {
@@ -54,34 +67,6 @@ public record VkConformanceVersion(@NotNull MemorySegment segment) implements IP
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_BYTE.withName("major"),
-        ValueLayout.JAVA_BYTE.withName("minor"),
-        ValueLayout.JAVA_BYTE.withName("subminor"),
-        ValueLayout.JAVA_BYTE.withName("patch")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$major = PathElement.groupElement("PATH$major");
-    public static final PathElement PATH$minor = PathElement.groupElement("PATH$minor");
-    public static final PathElement PATH$subminor = PathElement.groupElement("PATH$subminor");
-    public static final PathElement PATH$patch = PathElement.groupElement("PATH$patch");
-
-    public static final OfByte LAYOUT$major = (OfByte) LAYOUT.select(PATH$major);
-    public static final OfByte LAYOUT$minor = (OfByte) LAYOUT.select(PATH$minor);
-    public static final OfByte LAYOUT$subminor = (OfByte) LAYOUT.select(PATH$subminor);
-    public static final OfByte LAYOUT$patch = (OfByte) LAYOUT.select(PATH$patch);
-
-    public static final long SIZE$major = LAYOUT$major.byteSize();
-    public static final long SIZE$minor = LAYOUT$minor.byteSize();
-    public static final long SIZE$subminor = LAYOUT$subminor.byteSize();
-    public static final long SIZE$patch = LAYOUT$patch.byteSize();
-
-    public static final long OFFSET$major = LAYOUT.byteOffset(PATH$major);
-    public static final long OFFSET$minor = LAYOUT.byteOffset(PATH$minor);
-    public static final long OFFSET$subminor = LAYOUT.byteOffset(PATH$subminor);
-    public static final long OFFSET$patch = LAYOUT.byteOffset(PATH$patch);
 
     public @unsigned byte major() {
         return segment.get(LAYOUT$major, OFFSET$major);
@@ -115,4 +100,31 @@ public record VkConformanceVersion(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$patch, OFFSET$patch, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_BYTE.withName("major"),
+        ValueLayout.JAVA_BYTE.withName("minor"),
+        ValueLayout.JAVA_BYTE.withName("subminor"),
+        ValueLayout.JAVA_BYTE.withName("patch")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$major = PathElement.groupElement("PATH$major");
+    public static final PathElement PATH$minor = PathElement.groupElement("PATH$minor");
+    public static final PathElement PATH$subminor = PathElement.groupElement("PATH$subminor");
+    public static final PathElement PATH$patch = PathElement.groupElement("PATH$patch");
+
+    public static final OfByte LAYOUT$major = (OfByte) LAYOUT.select(PATH$major);
+    public static final OfByte LAYOUT$minor = (OfByte) LAYOUT.select(PATH$minor);
+    public static final OfByte LAYOUT$subminor = (OfByte) LAYOUT.select(PATH$subminor);
+    public static final OfByte LAYOUT$patch = (OfByte) LAYOUT.select(PATH$patch);
+
+    public static final long SIZE$major = LAYOUT$major.byteSize();
+    public static final long SIZE$minor = LAYOUT$minor.byteSize();
+    public static final long SIZE$subminor = LAYOUT$subminor.byteSize();
+    public static final long SIZE$patch = LAYOUT$patch.byteSize();
+
+    public static final long OFFSET$major = LAYOUT.byteOffset(PATH$major);
+    public static final long OFFSET$minor = LAYOUT.byteOffset(PATH$minor);
+    public static final long OFFSET$subminor = LAYOUT.byteOffset(PATH$subminor);
+    public static final long OFFSET$patch = LAYOUT.byteOffset(PATH$patch);
 }

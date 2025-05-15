@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineBinaryInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineBinaryInfoKHR.html"><code>VkPipelineBinaryInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineBinaryInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t binaryCount;
+///     VkPipelineBinaryKHR const* pPipelineBinaries;
+/// } VkPipelineBinaryInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_BINARY_INFO_KHR`
+///
+/// The {@link VkPipelineBinaryInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineBinaryInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineBinaryInfoKHR.html">VkPipelineBinaryInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineBinaryInfoKHR.html"><code>VkPipelineBinaryInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineBinaryInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineBinaryInfoKHR {
-        sType(VkStructureType.PIPELINE_BINARY_INFO_KHR);
-    }
-
     public static VkPipelineBinaryInfoKHR allocate(Arena arena) {
-        return new VkPipelineBinaryInfoKHR(arena.allocate(LAYOUT));
+        VkPipelineBinaryInfoKHR ret = new VkPipelineBinaryInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_BINARY_INFO_KHR);
+        return ret;
     }
 
     public static VkPipelineBinaryInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkPipelineBinaryInfoKHR(@NotNull MemorySegment segment) implements
         VkPipelineBinaryInfoKHR[] ret = new VkPipelineBinaryInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineBinaryInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_BINARY_INFO_KHR);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkPipelineBinaryInfoKHR(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("binaryCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pPipelineBinaries")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$binaryCount = PathElement.groupElement("PATH$binaryCount");
-    public static final PathElement PATH$pPipelineBinaries = PathElement.groupElement("PATH$pPipelineBinaries");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$binaryCount = (OfInt) LAYOUT.select(PATH$binaryCount);
-    public static final AddressLayout LAYOUT$pPipelineBinaries = (AddressLayout) LAYOUT.select(PATH$pPipelineBinaries);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$binaryCount = LAYOUT$binaryCount.byteSize();
-    public static final long SIZE$pPipelineBinaries = LAYOUT$pPipelineBinaries.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$binaryCount = LAYOUT.byteOffset(PATH$binaryCount);
-    public static final long OFFSET$pPipelineBinaries = LAYOUT.byteOffset(PATH$pPipelineBinaries);
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_BINARY_INFO_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -129,11 +124,38 @@ public record VkPipelineBinaryInfoKHR(@NotNull MemorySegment segment) implements
     /// buffer.
     public @Nullable VkPipelineBinaryKHR.Buffer pPipelineBinaries() {
         MemorySegment s = pPipelineBinariesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkPipelineBinaryKHR.Buffer(s);
     }
 
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("binaryCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pPipelineBinaries")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$binaryCount = PathElement.groupElement("PATH$binaryCount");
+    public static final PathElement PATH$pPipelineBinaries = PathElement.groupElement("PATH$pPipelineBinaries");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$binaryCount = (OfInt) LAYOUT.select(PATH$binaryCount);
+    public static final AddressLayout LAYOUT$pPipelineBinaries = (AddressLayout) LAYOUT.select(PATH$pPipelineBinaries);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$binaryCount = LAYOUT$binaryCount.byteSize();
+    public static final long SIZE$pPipelineBinaries = LAYOUT$pPipelineBinaries.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$binaryCount = LAYOUT.byteOffset(PATH$binaryCount);
+    public static final long OFFSET$pPipelineBinaries = LAYOUT.byteOffset(PATH$pPipelineBinaries);
 }

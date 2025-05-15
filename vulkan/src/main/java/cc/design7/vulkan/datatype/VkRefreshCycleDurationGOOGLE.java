@@ -14,8 +14,17 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkRefreshCycleDurationGOOGLE} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRefreshCycleDurationGOOGLE.html"><code>VkRefreshCycleDurationGOOGLE</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkRefreshCycleDurationGOOGLE {
+///     uint64_t refreshDuration;
+/// } VkRefreshCycleDurationGOOGLE;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +33,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRefreshCycleDurationGOOGLE.html">VkRefreshCycleDurationGOOGLE</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRefreshCycleDurationGOOGLE.html"><code>VkRefreshCycleDurationGOOGLE</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkRefreshCycleDurationGOOGLE(@NotNull MemorySegment segment) implements IPointer {
     public static VkRefreshCycleDurationGOOGLE allocate(Arena arena) {
-        return new VkRefreshCycleDurationGOOGLE(arena.allocate(LAYOUT));
+        VkRefreshCycleDurationGOOGLE ret = new VkRefreshCycleDurationGOOGLE(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkRefreshCycleDurationGOOGLE[] allocate(Arena arena, int count) {
@@ -55,6 +65,14 @@ public record VkRefreshCycleDurationGOOGLE(@NotNull MemorySegment segment) imple
         return ret;
     }
 
+    public @unsigned long refreshDuration() {
+        return segment.get(LAYOUT$refreshDuration, OFFSET$refreshDuration);
+    }
+
+    public void refreshDuration(@unsigned long value) {
+        segment.set(LAYOUT$refreshDuration, OFFSET$refreshDuration, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_LONG.withName("refreshDuration")
     );
@@ -67,13 +85,4 @@ public record VkRefreshCycleDurationGOOGLE(@NotNull MemorySegment segment) imple
     public static final long SIZE$refreshDuration = LAYOUT$refreshDuration.byteSize();
 
     public static final long OFFSET$refreshDuration = LAYOUT.byteOffset(PATH$refreshDuration);
-
-    public @unsigned long refreshDuration() {
-        return segment.get(LAYOUT$refreshDuration, OFFSET$refreshDuration);
-    }
-
-    public void refreshDuration(@unsigned long value) {
-        segment.set(LAYOUT$refreshDuration, OFFSET$refreshDuration, value);
-    }
-
 }

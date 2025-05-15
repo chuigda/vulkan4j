@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalMemoryHandleTypeFlagsNV.html">VkExternalMemoryHandleTypeFlagsNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalMemoryHandleTypeFlagsNV.html"><code>VkExternalMemoryHandleTypeFlagsNV</code></a>
 public final class VkExternalMemoryHandleTypeFlagsNV {
     public static final int D3D11_IMAGE = 0x4;
     public static final int D3D11_IMAGE_KMT = 0x8;

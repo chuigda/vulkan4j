@@ -16,6 +16,18 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoDecodeH264ReferenceInfo} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoDecodeH264ReferenceInfo {
+///     StdVideoDecodeH264ReferenceInfoFlags flags;
+///     uint16_t FrameNum;
+///     uint16_t reserved;
+///     int32_t PicOrderCnt;
+/// } StdVideoDecodeH264ReferenceInfo;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +39,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoDecodeH264ReferenceInfo(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoDecodeH264ReferenceInfo allocate(Arena arena) {
-        return new StdVideoDecodeH264ReferenceInfo(arena.allocate(LAYOUT));
+        StdVideoDecodeH264ReferenceInfo ret = new StdVideoDecodeH264ReferenceInfo(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoDecodeH264ReferenceInfo[] allocate(Arena arena, int count) {
@@ -52,34 +65,6 @@ public record StdVideoDecodeH264ReferenceInfo(@NotNull MemorySegment segment) im
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        StdVideoDecodeH264ReferenceInfoFlags.LAYOUT.withName("flags"),
-        ValueLayout.JAVA_SHORT.withName("FrameNum"),
-        ValueLayout.JAVA_SHORT.withName("reserved"),
-        ValueLayout.JAVA_INT.withName("PicOrderCnt")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$FrameNum = PathElement.groupElement("PATH$FrameNum");
-    public static final PathElement PATH$reserved = PathElement.groupElement("PATH$reserved");
-    public static final PathElement PATH$PicOrderCnt = PathElement.groupElement("PATH$PicOrderCnt");
-
-    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
-    public static final OfShort LAYOUT$FrameNum = (OfShort) LAYOUT.select(PATH$FrameNum);
-    public static final OfShort LAYOUT$reserved = (OfShort) LAYOUT.select(PATH$reserved);
-    public static final OfInt LAYOUT$PicOrderCnt = (OfInt) LAYOUT.select(PATH$PicOrderCnt);
-
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$FrameNum = LAYOUT$FrameNum.byteSize();
-    public static final long SIZE$reserved = LAYOUT$reserved.byteSize();
-    public static final long SIZE$PicOrderCnt = LAYOUT$PicOrderCnt.byteSize();
-
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$FrameNum = LAYOUT.byteOffset(PATH$FrameNum);
-    public static final long OFFSET$reserved = LAYOUT.byteOffset(PATH$reserved);
-    public static final long OFFSET$PicOrderCnt = LAYOUT.byteOffset(PATH$PicOrderCnt);
 
     public StdVideoDecodeH264ReferenceInfoFlags flags() {
         return new StdVideoDecodeH264ReferenceInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
@@ -113,4 +98,31 @@ public record StdVideoDecodeH264ReferenceInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$PicOrderCnt, OFFSET$PicOrderCnt, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoDecodeH264ReferenceInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_SHORT.withName("FrameNum"),
+        ValueLayout.JAVA_SHORT.withName("reserved"),
+        ValueLayout.JAVA_INT.withName("PicOrderCnt")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$FrameNum = PathElement.groupElement("PATH$FrameNum");
+    public static final PathElement PATH$reserved = PathElement.groupElement("PATH$reserved");
+    public static final PathElement PATH$PicOrderCnt = PathElement.groupElement("PATH$PicOrderCnt");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfShort LAYOUT$FrameNum = (OfShort) LAYOUT.select(PATH$FrameNum);
+    public static final OfShort LAYOUT$reserved = (OfShort) LAYOUT.select(PATH$reserved);
+    public static final OfInt LAYOUT$PicOrderCnt = (OfInt) LAYOUT.select(PATH$PicOrderCnt);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$FrameNum = LAYOUT$FrameNum.byteSize();
+    public static final long SIZE$reserved = LAYOUT$reserved.byteSize();
+    public static final long SIZE$PicOrderCnt = LAYOUT$PicOrderCnt.byteSize();
+
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$FrameNum = LAYOUT.byteOffset(PATH$FrameNum);
+    public static final long OFFSET$reserved = LAYOUT.byteOffset(PATH$reserved);
+    public static final long OFFSET$PicOrderCnt = LAYOUT.byteOffset(PATH$PicOrderCnt);
 }

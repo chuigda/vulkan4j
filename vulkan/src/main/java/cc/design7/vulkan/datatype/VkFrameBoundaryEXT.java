@@ -14,8 +14,35 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkFrameBoundaryEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFrameBoundaryEXT.html"><code>VkFrameBoundaryEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkFrameBoundaryEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkFrameBoundaryFlagsEXT flags;
+///     uint64_t frameID;
+///     uint32_t imageCount;
+///     VkImage const* pImages;
+///     uint32_t bufferCount;
+///     VkBuffer const* pBuffers;
+///     uint64_t tagName;
+///     size_t tagSize;
+///     void const* pTag;
+/// } VkFrameBoundaryEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT`
+///
+/// The {@link VkFrameBoundaryEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkFrameBoundaryEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +51,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFrameBoundaryEXT.html">VkFrameBoundaryEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFrameBoundaryEXT.html"><code>VkFrameBoundaryEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkFrameBoundaryEXT {
-        sType(VkStructureType.FRAME_BOUNDARY_EXT);
-    }
-
     public static VkFrameBoundaryEXT allocate(Arena arena) {
-        return new VkFrameBoundaryEXT(arena.allocate(LAYOUT));
+        VkFrameBoundaryEXT ret = new VkFrameBoundaryEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.FRAME_BOUNDARY_EXT);
+        return ret;
     }
 
     public static VkFrameBoundaryEXT[] allocate(Arena arena, int count) {
@@ -41,6 +66,7 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPoi
         VkFrameBoundaryEXT[] ret = new VkFrameBoundaryEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkFrameBoundaryEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.FRAME_BOUNDARY_EXT);
         }
         return ret;
     }
@@ -57,6 +83,132 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPoi
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.FRAME_BOUNDARY_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkFrameBoundaryFlagsEXT.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkFrameBoundaryFlagsEXT.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @unsigned long frameID() {
+        return segment.get(LAYOUT$frameID, OFFSET$frameID);
+    }
+
+    public void frameID(@unsigned long value) {
+        segment.set(LAYOUT$frameID, OFFSET$frameID, value);
+    }
+
+    public @unsigned int imageCount() {
+        return segment.get(LAYOUT$imageCount, OFFSET$imageCount);
+    }
+
+    public void imageCount(@unsigned int value) {
+        segment.set(LAYOUT$imageCount, OFFSET$imageCount, value);
+    }
+
+    public @pointer(comment="VkImage*") MemorySegment pImagesRaw() {
+        return segment.get(LAYOUT$pImages, OFFSET$pImages);
+    }
+
+    public void pImagesRaw(@pointer(comment="VkImage*") MemorySegment value) {
+        segment.set(LAYOUT$pImages, OFFSET$pImages, value);
+    }
+
+    /// Note: the returned {@link VkImage.Buffer} does not have correct {@link VkImage.Buffer#size}
+    /// property. It's up to user to track the size of the buffer, and use
+    /// {@link VkImage.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// buffer.
+    public @Nullable VkImage.Buffer pImages() {
+        MemorySegment s = pImagesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkImage.Buffer(s);
+    }
+
+
+    public @unsigned int bufferCount() {
+        return segment.get(LAYOUT$bufferCount, OFFSET$bufferCount);
+    }
+
+    public void bufferCount(@unsigned int value) {
+        segment.set(LAYOUT$bufferCount, OFFSET$bufferCount, value);
+    }
+
+    public @pointer(comment="VkBuffer*") MemorySegment pBuffersRaw() {
+        return segment.get(LAYOUT$pBuffers, OFFSET$pBuffers);
+    }
+
+    public void pBuffersRaw(@pointer(comment="VkBuffer*") MemorySegment value) {
+        segment.set(LAYOUT$pBuffers, OFFSET$pBuffers, value);
+    }
+
+    /// Note: the returned {@link VkBuffer.Buffer} does not have correct {@link VkBuffer.Buffer#size}
+    /// property. It's up to user to track the size of the buffer, and use
+    /// {@link VkBuffer.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// buffer.
+    public @Nullable VkBuffer.Buffer pBuffers() {
+        MemorySegment s = pBuffersRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkBuffer.Buffer(s);
+    }
+
+
+    public @unsigned long tagName() {
+        return segment.get(LAYOUT$tagName, OFFSET$tagName);
+    }
+
+    public void tagName(@unsigned long value) {
+        segment.set(LAYOUT$tagName, OFFSET$tagName, value);
+    }
+
+    public @unsigned long tagSize() {
+        return NativeLayout.readCSizeT(segment, OFFSET$tagSize);
+    }
+
+    public void tagSize(@unsigned long value) {
+        NativeLayout.writeCSizeT(segment, OFFSET$tagSize, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pTag() {
+        return segment.get(LAYOUT$pTag, OFFSET$pTag);
+    }
+
+    public void pTag(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pTag, OFFSET$pTag, value);
+    }
+
+    public void pTag(IPointer pointer) {
+        pTag(pointer.segment());
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -120,127 +272,4 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPoi
     public static final long OFFSET$tagName = LAYOUT.byteOffset(PATH$tagName);
     public static final long OFFSET$tagSize = LAYOUT.byteOffset(PATH$tagSize);
     public static final long OFFSET$pTag = LAYOUT.byteOffset(PATH$pTag);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @enumtype(VkFrameBoundaryFlagsEXT.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkFrameBoundaryFlagsEXT.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @unsigned long frameID() {
-        return segment.get(LAYOUT$frameID, OFFSET$frameID);
-    }
-
-    public void frameID(@unsigned long value) {
-        segment.set(LAYOUT$frameID, OFFSET$frameID, value);
-    }
-
-    public @unsigned int imageCount() {
-        return segment.get(LAYOUT$imageCount, OFFSET$imageCount);
-    }
-
-    public void imageCount(@unsigned int value) {
-        segment.set(LAYOUT$imageCount, OFFSET$imageCount, value);
-    }
-
-    public @pointer(comment="VkImage*") MemorySegment pImagesRaw() {
-        return segment.get(LAYOUT$pImages, OFFSET$pImages);
-    }
-
-    public void pImagesRaw(@pointer(comment="VkImage*") MemorySegment value) {
-        segment.set(LAYOUT$pImages, OFFSET$pImages, value);
-    }
-
-    /// Note: the returned {@link VkImage.Buffer} does not have correct {@link VkImage.Buffer#size}
-    /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkImage.Buffer#reinterpret} to set the size before actually reading from or writing to the
-    /// buffer.
-    public @Nullable VkImage.Buffer pImages() {
-        MemorySegment s = pImagesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkImage.Buffer(s);
-    }
-
-
-    public @unsigned int bufferCount() {
-        return segment.get(LAYOUT$bufferCount, OFFSET$bufferCount);
-    }
-
-    public void bufferCount(@unsigned int value) {
-        segment.set(LAYOUT$bufferCount, OFFSET$bufferCount, value);
-    }
-
-    public @pointer(comment="VkBuffer*") MemorySegment pBuffersRaw() {
-        return segment.get(LAYOUT$pBuffers, OFFSET$pBuffers);
-    }
-
-    public void pBuffersRaw(@pointer(comment="VkBuffer*") MemorySegment value) {
-        segment.set(LAYOUT$pBuffers, OFFSET$pBuffers, value);
-    }
-
-    /// Note: the returned {@link VkBuffer.Buffer} does not have correct {@link VkBuffer.Buffer#size}
-    /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkBuffer.Buffer#reinterpret} to set the size before actually reading from or writing to the
-    /// buffer.
-    public @Nullable VkBuffer.Buffer pBuffers() {
-        MemorySegment s = pBuffersRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkBuffer.Buffer(s);
-    }
-
-
-    public @unsigned long tagName() {
-        return segment.get(LAYOUT$tagName, OFFSET$tagName);
-    }
-
-    public void tagName(@unsigned long value) {
-        segment.set(LAYOUT$tagName, OFFSET$tagName, value);
-    }
-
-    public @unsigned long tagSize() {
-        return NativeLayout.readCSizeT(segment, OFFSET$tagSize);
-    }
-
-    public void tagSize(@unsigned long value) {
-        NativeLayout.writeCSizeT(segment, OFFSET$tagSize, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pTag() {
-        return segment.get(LAYOUT$pTag, OFFSET$pTag);
-    }
-
-    public void pTag(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pTag, OFFSET$pTag, value);
-    }
-
-    public void pTag(IPointer pointer) {
-        pTag(pointer.segment());
-    }
-
 }

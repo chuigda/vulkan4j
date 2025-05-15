@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkExtent3D} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExtent3D.html"><code>VkExtent3D</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkExtent3D {
+///     uint32_t width;
+///     uint32_t height;
+///     uint32_t depth;
+/// } VkExtent3D;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExtent3D.html">VkExtent3D</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExtent3D.html"><code>VkExtent3D</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkExtent3D(@NotNull MemorySegment segment) implements IPointer {
     public static VkExtent3D allocate(Arena arena) {
-        return new VkExtent3D(arena.allocate(LAYOUT));
+        VkExtent3D ret = new VkExtent3D(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkExtent3D[] allocate(Arena arena, int count) {
@@ -55,29 +67,6 @@ public record VkExtent3D(@NotNull MemorySegment segment) implements IPointer {
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("width"),
-        ValueLayout.JAVA_INT.withName("height"),
-        ValueLayout.JAVA_INT.withName("depth")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$width = PathElement.groupElement("PATH$width");
-    public static final PathElement PATH$height = PathElement.groupElement("PATH$height");
-    public static final PathElement PATH$depth = PathElement.groupElement("PATH$depth");
-
-    public static final OfInt LAYOUT$width = (OfInt) LAYOUT.select(PATH$width);
-    public static final OfInt LAYOUT$height = (OfInt) LAYOUT.select(PATH$height);
-    public static final OfInt LAYOUT$depth = (OfInt) LAYOUT.select(PATH$depth);
-
-    public static final long SIZE$width = LAYOUT$width.byteSize();
-    public static final long SIZE$height = LAYOUT$height.byteSize();
-    public static final long SIZE$depth = LAYOUT$depth.byteSize();
-
-    public static final long OFFSET$width = LAYOUT.byteOffset(PATH$width);
-    public static final long OFFSET$height = LAYOUT.byteOffset(PATH$height);
-    public static final long OFFSET$depth = LAYOUT.byteOffset(PATH$depth);
-
     public @unsigned int width() {
         return segment.get(LAYOUT$width, OFFSET$width);
     }
@@ -102,4 +91,26 @@ public record VkExtent3D(@NotNull MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$depth, OFFSET$depth, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("width"),
+        ValueLayout.JAVA_INT.withName("height"),
+        ValueLayout.JAVA_INT.withName("depth")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$width = PathElement.groupElement("PATH$width");
+    public static final PathElement PATH$height = PathElement.groupElement("PATH$height");
+    public static final PathElement PATH$depth = PathElement.groupElement("PATH$depth");
+
+    public static final OfInt LAYOUT$width = (OfInt) LAYOUT.select(PATH$width);
+    public static final OfInt LAYOUT$height = (OfInt) LAYOUT.select(PATH$height);
+    public static final OfInt LAYOUT$depth = (OfInt) LAYOUT.select(PATH$depth);
+
+    public static final long SIZE$width = LAYOUT$width.byteSize();
+    public static final long SIZE$height = LAYOUT$height.byteSize();
+    public static final long SIZE$depth = LAYOUT$depth.byteSize();
+
+    public static final long OFFSET$width = LAYOUT.byteOffset(PATH$width);
+    public static final long OFFSET$height = LAYOUT.byteOffset(PATH$height);
+    public static final long OFFSET$depth = LAYOUT.byteOffset(PATH$depth);
 }

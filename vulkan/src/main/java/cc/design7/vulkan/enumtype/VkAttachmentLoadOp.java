@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentLoadOp.html">VkAttachmentLoadOp</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentLoadOp.html"><code>VkAttachmentLoadOp</code></a>
 public final class VkAttachmentLoadOp {
     public static final int LOAD = 0x0;
     public static final int CLEAR = 0x1;

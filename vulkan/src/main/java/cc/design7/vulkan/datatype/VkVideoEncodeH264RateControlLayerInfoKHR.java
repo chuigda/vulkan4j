@@ -14,8 +14,32 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoEncodeH264RateControlLayerInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264RateControlLayerInfoKHR.html"><code>VkVideoEncodeH264RateControlLayerInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoEncodeH264RateControlLayerInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkBool32 useMinQp;
+///     VkVideoEncodeH264QpKHR minQp;
+///     VkBool32 useMaxQp;
+///     VkVideoEncodeH264QpKHR maxQp;
+///     VkBool32 useMaxFrameSize;
+///     VkVideoEncodeH264FrameSizeKHR maxFrameSize;
+/// } VkVideoEncodeH264RateControlLayerInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_RATE_CONTROL_LAYER_INFO_KHR`
+///
+/// The {@link VkVideoEncodeH264RateControlLayerInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkVideoEncodeH264RateControlLayerInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +48,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264RateControlLayerInfoKHR.html">VkVideoEncodeH264RateControlLayerInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264RateControlLayerInfoKHR.html"><code>VkVideoEncodeH264RateControlLayerInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoEncodeH264RateControlLayerInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkVideoEncodeH264RateControlLayerInfoKHR {
-        sType(VkStructureType.VIDEO_ENCODE_H264_RATE_CONTROL_LAYER_INFO_KHR);
-    }
-
     public static VkVideoEncodeH264RateControlLayerInfoKHR allocate(Arena arena) {
-        return new VkVideoEncodeH264RateControlLayerInfoKHR(arena.allocate(LAYOUT));
+        VkVideoEncodeH264RateControlLayerInfoKHR ret = new VkVideoEncodeH264RateControlLayerInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VIDEO_ENCODE_H264_RATE_CONTROL_LAYER_INFO_KHR);
+        return ret;
     }
 
     public static VkVideoEncodeH264RateControlLayerInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +63,7 @@ public record VkVideoEncodeH264RateControlLayerInfoKHR(@NotNull MemorySegment se
         VkVideoEncodeH264RateControlLayerInfoKHR[] ret = new VkVideoEncodeH264RateControlLayerInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkVideoEncodeH264RateControlLayerInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VIDEO_ENCODE_H264_RATE_CONTROL_LAYER_INFO_KHR);
         }
         return ret;
     }
@@ -59,53 +82,9 @@ public record VkVideoEncodeH264RateControlLayerInfoKHR(@NotNull MemorySegment se
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("useMinQp"),
-        VkVideoEncodeH264QpKHR.LAYOUT.withName("minQp"),
-        ValueLayout.JAVA_INT.withName("useMaxQp"),
-        VkVideoEncodeH264QpKHR.LAYOUT.withName("maxQp"),
-        ValueLayout.JAVA_INT.withName("useMaxFrameSize"),
-        VkVideoEncodeH264FrameSizeKHR.LAYOUT.withName("maxFrameSize")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$useMinQp = PathElement.groupElement("PATH$useMinQp");
-    public static final PathElement PATH$minQp = PathElement.groupElement("PATH$minQp");
-    public static final PathElement PATH$useMaxQp = PathElement.groupElement("PATH$useMaxQp");
-    public static final PathElement PATH$maxQp = PathElement.groupElement("PATH$maxQp");
-    public static final PathElement PATH$useMaxFrameSize = PathElement.groupElement("PATH$useMaxFrameSize");
-    public static final PathElement PATH$maxFrameSize = PathElement.groupElement("PATH$maxFrameSize");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$useMinQp = (OfInt) LAYOUT.select(PATH$useMinQp);
-    public static final StructLayout LAYOUT$minQp = (StructLayout) LAYOUT.select(PATH$minQp);
-    public static final OfInt LAYOUT$useMaxQp = (OfInt) LAYOUT.select(PATH$useMaxQp);
-    public static final StructLayout LAYOUT$maxQp = (StructLayout) LAYOUT.select(PATH$maxQp);
-    public static final OfInt LAYOUT$useMaxFrameSize = (OfInt) LAYOUT.select(PATH$useMaxFrameSize);
-    public static final StructLayout LAYOUT$maxFrameSize = (StructLayout) LAYOUT.select(PATH$maxFrameSize);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$useMinQp = LAYOUT$useMinQp.byteSize();
-    public static final long SIZE$minQp = LAYOUT$minQp.byteSize();
-    public static final long SIZE$useMaxQp = LAYOUT$useMaxQp.byteSize();
-    public static final long SIZE$maxQp = LAYOUT$maxQp.byteSize();
-    public static final long SIZE$useMaxFrameSize = LAYOUT$useMaxFrameSize.byteSize();
-    public static final long SIZE$maxFrameSize = LAYOUT$maxFrameSize.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$useMinQp = LAYOUT.byteOffset(PATH$useMinQp);
-    public static final long OFFSET$minQp = LAYOUT.byteOffset(PATH$minQp);
-    public static final long OFFSET$useMaxQp = LAYOUT.byteOffset(PATH$useMaxQp);
-    public static final long OFFSET$maxQp = LAYOUT.byteOffset(PATH$maxQp);
-    public static final long OFFSET$useMaxFrameSize = LAYOUT.byteOffset(PATH$useMaxFrameSize);
-    public static final long OFFSET$maxFrameSize = LAYOUT.byteOffset(PATH$maxFrameSize);
+    public void autoInit() {
+        sType(VkStructureType.VIDEO_ENCODE_H264_RATE_CONTROL_LAYER_INFO_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -175,4 +154,51 @@ public record VkVideoEncodeH264RateControlLayerInfoKHR(@NotNull MemorySegment se
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFrameSize, SIZE$maxFrameSize);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("useMinQp"),
+        VkVideoEncodeH264QpKHR.LAYOUT.withName("minQp"),
+        ValueLayout.JAVA_INT.withName("useMaxQp"),
+        VkVideoEncodeH264QpKHR.LAYOUT.withName("maxQp"),
+        ValueLayout.JAVA_INT.withName("useMaxFrameSize"),
+        VkVideoEncodeH264FrameSizeKHR.LAYOUT.withName("maxFrameSize")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$useMinQp = PathElement.groupElement("PATH$useMinQp");
+    public static final PathElement PATH$minQp = PathElement.groupElement("PATH$minQp");
+    public static final PathElement PATH$useMaxQp = PathElement.groupElement("PATH$useMaxQp");
+    public static final PathElement PATH$maxQp = PathElement.groupElement("PATH$maxQp");
+    public static final PathElement PATH$useMaxFrameSize = PathElement.groupElement("PATH$useMaxFrameSize");
+    public static final PathElement PATH$maxFrameSize = PathElement.groupElement("PATH$maxFrameSize");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$useMinQp = (OfInt) LAYOUT.select(PATH$useMinQp);
+    public static final StructLayout LAYOUT$minQp = (StructLayout) LAYOUT.select(PATH$minQp);
+    public static final OfInt LAYOUT$useMaxQp = (OfInt) LAYOUT.select(PATH$useMaxQp);
+    public static final StructLayout LAYOUT$maxQp = (StructLayout) LAYOUT.select(PATH$maxQp);
+    public static final OfInt LAYOUT$useMaxFrameSize = (OfInt) LAYOUT.select(PATH$useMaxFrameSize);
+    public static final StructLayout LAYOUT$maxFrameSize = (StructLayout) LAYOUT.select(PATH$maxFrameSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$useMinQp = LAYOUT$useMinQp.byteSize();
+    public static final long SIZE$minQp = LAYOUT$minQp.byteSize();
+    public static final long SIZE$useMaxQp = LAYOUT$useMaxQp.byteSize();
+    public static final long SIZE$maxQp = LAYOUT$maxQp.byteSize();
+    public static final long SIZE$useMaxFrameSize = LAYOUT$useMaxFrameSize.byteSize();
+    public static final long SIZE$maxFrameSize = LAYOUT$maxFrameSize.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$useMinQp = LAYOUT.byteOffset(PATH$useMinQp);
+    public static final long OFFSET$minQp = LAYOUT.byteOffset(PATH$minQp);
+    public static final long OFFSET$useMaxQp = LAYOUT.byteOffset(PATH$useMaxQp);
+    public static final long OFFSET$maxQp = LAYOUT.byteOffset(PATH$maxQp);
+    public static final long OFFSET$useMaxFrameSize = LAYOUT.byteOffset(PATH$useMaxFrameSize);
+    public static final long OFFSET$maxFrameSize = LAYOUT.byteOffset(PATH$maxFrameSize);
 }

@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpacityMicromapSpecialIndexEXT.html">VkOpacityMicromapSpecialIndexEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpacityMicromapSpecialIndexEXT.html"><code>VkOpacityMicromapSpecialIndexEXT</code></a>
 public final class VkOpacityMicromapSpecialIndexEXT {
     public static final int FULLY_TRANSPARENT = 0xffffffff;
     public static final int FULLY_OPAQUE = 0xfffffffe;

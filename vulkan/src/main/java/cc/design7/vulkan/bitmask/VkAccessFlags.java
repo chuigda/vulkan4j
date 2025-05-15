@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccessFlags.html">VkAccessFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccessFlags.html"><code>VkAccessFlags</code></a>
 public final class VkAccessFlags {
     public static final int ACCELERATION_STRUCTURE_READ_KHR = 0x200000;
     public static final int ACCELERATION_STRUCTURE_WRITE_KHR = 0x400000;

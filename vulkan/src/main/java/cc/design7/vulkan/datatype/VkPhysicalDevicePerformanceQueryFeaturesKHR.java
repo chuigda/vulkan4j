@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDevicePerformanceQueryFeaturesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevicePerformanceQueryFeaturesKHR.html"><code>VkPhysicalDevicePerformanceQueryFeaturesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDevicePerformanceQueryFeaturesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 performanceCounterQueryPools;
+///     VkBool32 performanceCounterMultipleQueryPools;
+/// } VkPhysicalDevicePerformanceQueryFeaturesKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_QUERY_FEATURES_KHR`
+///
+/// The {@link VkPhysicalDevicePerformanceQueryFeaturesKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDevicePerformanceQueryFeaturesKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevicePerformanceQueryFeaturesKHR.html">VkPhysicalDevicePerformanceQueryFeaturesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevicePerformanceQueryFeaturesKHR.html"><code>VkPhysicalDevicePerformanceQueryFeaturesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDevicePerformanceQueryFeaturesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDevicePerformanceQueryFeaturesKHR {
-        sType(VkStructureType.PHYSICAL_DEVICE_PERFORMANCE_QUERY_FEATURES_KHR);
-    }
-
     public static VkPhysicalDevicePerformanceQueryFeaturesKHR allocate(Arena arena) {
-        return new VkPhysicalDevicePerformanceQueryFeaturesKHR(arena.allocate(LAYOUT));
+        VkPhysicalDevicePerformanceQueryFeaturesKHR ret = new VkPhysicalDevicePerformanceQueryFeaturesKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_PERFORMANCE_QUERY_FEATURES_KHR);
+        return ret;
     }
 
     public static VkPhysicalDevicePerformanceQueryFeaturesKHR[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkPhysicalDevicePerformanceQueryFeaturesKHR(@NotNull MemorySegment
         VkPhysicalDevicePerformanceQueryFeaturesKHR[] ret = new VkPhysicalDevicePerformanceQueryFeaturesKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDevicePerformanceQueryFeaturesKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_PERFORMANCE_QUERY_FEATURES_KHR);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkPhysicalDevicePerformanceQueryFeaturesKHR(@NotNull MemorySegment
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("performanceCounterQueryPools"),
-        ValueLayout.JAVA_INT.withName("performanceCounterMultipleQueryPools")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$performanceCounterQueryPools = PathElement.groupElement("PATH$performanceCounterQueryPools");
-    public static final PathElement PATH$performanceCounterMultipleQueryPools = PathElement.groupElement("PATH$performanceCounterMultipleQueryPools");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$performanceCounterQueryPools = (OfInt) LAYOUT.select(PATH$performanceCounterQueryPools);
-    public static final OfInt LAYOUT$performanceCounterMultipleQueryPools = (OfInt) LAYOUT.select(PATH$performanceCounterMultipleQueryPools);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$performanceCounterQueryPools = LAYOUT$performanceCounterQueryPools.byteSize();
-    public static final long SIZE$performanceCounterMultipleQueryPools = LAYOUT$performanceCounterMultipleQueryPools.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$performanceCounterQueryPools = LAYOUT.byteOffset(PATH$performanceCounterQueryPools);
-    public static final long OFFSET$performanceCounterMultipleQueryPools = LAYOUT.byteOffset(PATH$performanceCounterMultipleQueryPools);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_PERFORMANCE_QUERY_FEATURES_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkPhysicalDevicePerformanceQueryFeaturesKHR(@NotNull MemorySegment
         segment.set(LAYOUT$performanceCounterMultipleQueryPools, OFFSET$performanceCounterMultipleQueryPools, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("performanceCounterQueryPools"),
+        ValueLayout.JAVA_INT.withName("performanceCounterMultipleQueryPools")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$performanceCounterQueryPools = PathElement.groupElement("PATH$performanceCounterQueryPools");
+    public static final PathElement PATH$performanceCounterMultipleQueryPools = PathElement.groupElement("PATH$performanceCounterMultipleQueryPools");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$performanceCounterQueryPools = (OfInt) LAYOUT.select(PATH$performanceCounterQueryPools);
+    public static final OfInt LAYOUT$performanceCounterMultipleQueryPools = (OfInt) LAYOUT.select(PATH$performanceCounterMultipleQueryPools);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$performanceCounterQueryPools = LAYOUT$performanceCounterQueryPools.byteSize();
+    public static final long SIZE$performanceCounterMultipleQueryPools = LAYOUT$performanceCounterMultipleQueryPools.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$performanceCounterQueryPools = LAYOUT.byteOffset(PATH$performanceCounterQueryPools);
+    public static final long OFFSET$performanceCounterMultipleQueryPools = LAYOUT.byteOffset(PATH$performanceCounterMultipleQueryPools);
 }

@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineCoverageToColorStateCreateInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCoverageToColorStateCreateInfoNV.html"><code>VkPipelineCoverageToColorStateCreateInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineCoverageToColorStateCreateInfoNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkPipelineCoverageToColorStateCreateFlagsNV flags;
+///     VkBool32 coverageToColorEnable;
+///     uint32_t coverageToColorLocation;
+/// } VkPipelineCoverageToColorStateCreateInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV`
+///
+/// The {@link VkPipelineCoverageToColorStateCreateInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineCoverageToColorStateCreateInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCoverageToColorStateCreateInfoNV.html">VkPipelineCoverageToColorStateCreateInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCoverageToColorStateCreateInfoNV.html"><code>VkPipelineCoverageToColorStateCreateInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineCoverageToColorStateCreateInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineCoverageToColorStateCreateInfoNV {
-        sType(VkStructureType.PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV);
-    }
-
     public static VkPipelineCoverageToColorStateCreateInfoNV allocate(Arena arena) {
-        return new VkPipelineCoverageToColorStateCreateInfoNV(arena.allocate(LAYOUT));
+        VkPipelineCoverageToColorStateCreateInfoNV ret = new VkPipelineCoverageToColorStateCreateInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV);
+        return ret;
     }
 
     public static VkPipelineCoverageToColorStateCreateInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(@NotNull MemorySegment 
         VkPipelineCoverageToColorStateCreateInfoNV[] ret = new VkPipelineCoverageToColorStateCreateInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineCoverageToColorStateCreateInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(@NotNull MemorySegment 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("coverageToColorEnable"),
-        ValueLayout.JAVA_INT.withName("coverageToColorLocation")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$coverageToColorEnable = PathElement.groupElement("PATH$coverageToColorEnable");
-    public static final PathElement PATH$coverageToColorLocation = PathElement.groupElement("PATH$coverageToColorLocation");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$coverageToColorEnable = (OfInt) LAYOUT.select(PATH$coverageToColorEnable);
-    public static final OfInt LAYOUT$coverageToColorLocation = (OfInt) LAYOUT.select(PATH$coverageToColorLocation);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$coverageToColorEnable = LAYOUT$coverageToColorEnable.byteSize();
-    public static final long SIZE$coverageToColorLocation = LAYOUT$coverageToColorLocation.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$coverageToColorEnable = LAYOUT.byteOffset(PATH$coverageToColorEnable);
-    public static final long OFFSET$coverageToColorLocation = LAYOUT.byteOffset(PATH$coverageToColorLocation);
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -136,4 +127,36 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(@NotNull MemorySegment 
         segment.set(LAYOUT$coverageToColorLocation, OFFSET$coverageToColorLocation, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("coverageToColorEnable"),
+        ValueLayout.JAVA_INT.withName("coverageToColorLocation")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$coverageToColorEnable = PathElement.groupElement("PATH$coverageToColorEnable");
+    public static final PathElement PATH$coverageToColorLocation = PathElement.groupElement("PATH$coverageToColorLocation");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$coverageToColorEnable = (OfInt) LAYOUT.select(PATH$coverageToColorEnable);
+    public static final OfInt LAYOUT$coverageToColorLocation = (OfInt) LAYOUT.select(PATH$coverageToColorLocation);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$coverageToColorEnable = LAYOUT$coverageToColorEnable.byteSize();
+    public static final long SIZE$coverageToColorLocation = LAYOUT$coverageToColorLocation.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$coverageToColorEnable = LAYOUT.byteOffset(PATH$coverageToColorEnable);
+    public static final long OFFSET$coverageToColorLocation = LAYOUT.byteOffset(PATH$coverageToColorLocation);
 }

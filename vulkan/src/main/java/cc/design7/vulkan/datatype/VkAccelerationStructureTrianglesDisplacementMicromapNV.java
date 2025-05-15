@@ -14,8 +14,42 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkAccelerationStructureTrianglesDisplacementMicromapNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureTrianglesDisplacementMicromapNV.html"><code>VkAccelerationStructureTrianglesDisplacementMicromapNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkAccelerationStructureTrianglesDisplacementMicromapNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkFormat displacementBiasAndScaleFormat;
+///     VkFormat displacementVectorFormat;
+///     VkDeviceOrHostAddressConstKHR displacementBiasAndScaleBuffer;
+///     VkDeviceSize displacementBiasAndScaleStride;
+///     VkDeviceOrHostAddressConstKHR displacementVectorBuffer;
+///     VkDeviceSize displacementVectorStride;
+///     VkDeviceOrHostAddressConstKHR displacedMicromapPrimitiveFlags;
+///     VkDeviceSize displacedMicromapPrimitiveFlagsStride;
+///     VkIndexType indexType;
+///     VkDeviceOrHostAddressConstKHR indexBuffer;
+///     VkDeviceSize indexStride;
+///     uint32_t baseTriangle;
+///     uint32_t usageCountsCount;
+///     VkMicromapUsageEXT const* pUsageCounts;
+///     VkMicromapUsageEXT const* const* ppUsageCounts;
+///     VkMicromapEXT micromap;
+/// } VkAccelerationStructureTrianglesDisplacementMicromapNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_DISPLACEMENT_MICROMAP_NV`
+///
+/// The {@link VkAccelerationStructureTrianglesDisplacementMicromapNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkAccelerationStructureTrianglesDisplacementMicromapNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +58,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureTrianglesDisplacementMicromapNV.html">VkAccelerationStructureTrianglesDisplacementMicromapNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureTrianglesDisplacementMicromapNV.html"><code>VkAccelerationStructureTrianglesDisplacementMicromapNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkAccelerationStructureTrianglesDisplacementMicromapNV {
-        sType(VkStructureType.ACCELERATION_STRUCTURE_TRIANGLES_DISPLACEMENT_MICROMAP_NV);
-    }
-
     public static VkAccelerationStructureTrianglesDisplacementMicromapNV allocate(Arena arena) {
-        return new VkAccelerationStructureTrianglesDisplacementMicromapNV(arena.allocate(LAYOUT));
+        VkAccelerationStructureTrianglesDisplacementMicromapNV ret = new VkAccelerationStructureTrianglesDisplacementMicromapNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.ACCELERATION_STRUCTURE_TRIANGLES_DISPLACEMENT_MICROMAP_NV);
+        return ret;
     }
 
     public static VkAccelerationStructureTrianglesDisplacementMicromapNV[] allocate(Arena arena, int count) {
@@ -41,6 +73,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         VkAccelerationStructureTrianglesDisplacementMicromapNV[] ret = new VkAccelerationStructureTrianglesDisplacementMicromapNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkAccelerationStructureTrianglesDisplacementMicromapNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.ACCELERATION_STRUCTURE_TRIANGLES_DISPLACEMENT_MICROMAP_NV);
         }
         return ret;
     }
@@ -59,103 +92,9 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("displacementBiasAndScaleFormat"),
-        ValueLayout.JAVA_INT.withName("displacementVectorFormat"),
-        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("displacementBiasAndScaleBuffer"),
-        ValueLayout.JAVA_LONG.withName("displacementBiasAndScaleStride"),
-        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("displacementVectorBuffer"),
-        ValueLayout.JAVA_LONG.withName("displacementVectorStride"),
-        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("displacedMicromapPrimitiveFlags"),
-        ValueLayout.JAVA_LONG.withName("displacedMicromapPrimitiveFlagsStride"),
-        ValueLayout.JAVA_INT.withName("indexType"),
-        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("indexBuffer"),
-        ValueLayout.JAVA_LONG.withName("indexStride"),
-        ValueLayout.JAVA_INT.withName("baseTriangle"),
-        ValueLayout.JAVA_INT.withName("usageCountsCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT).withName("pUsageCounts"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT)).withName("ppUsageCounts"),
-        ValueLayout.ADDRESS.withName("micromap")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$displacementBiasAndScaleFormat = PathElement.groupElement("PATH$displacementBiasAndScaleFormat");
-    public static final PathElement PATH$displacementVectorFormat = PathElement.groupElement("PATH$displacementVectorFormat");
-    public static final PathElement PATH$displacementBiasAndScaleBuffer = PathElement.groupElement("PATH$displacementBiasAndScaleBuffer");
-    public static final PathElement PATH$displacementBiasAndScaleStride = PathElement.groupElement("PATH$displacementBiasAndScaleStride");
-    public static final PathElement PATH$displacementVectorBuffer = PathElement.groupElement("PATH$displacementVectorBuffer");
-    public static final PathElement PATH$displacementVectorStride = PathElement.groupElement("PATH$displacementVectorStride");
-    public static final PathElement PATH$displacedMicromapPrimitiveFlags = PathElement.groupElement("PATH$displacedMicromapPrimitiveFlags");
-    public static final PathElement PATH$displacedMicromapPrimitiveFlagsStride = PathElement.groupElement("PATH$displacedMicromapPrimitiveFlagsStride");
-    public static final PathElement PATH$indexType = PathElement.groupElement("PATH$indexType");
-    public static final PathElement PATH$indexBuffer = PathElement.groupElement("PATH$indexBuffer");
-    public static final PathElement PATH$indexStride = PathElement.groupElement("PATH$indexStride");
-    public static final PathElement PATH$baseTriangle = PathElement.groupElement("PATH$baseTriangle");
-    public static final PathElement PATH$usageCountsCount = PathElement.groupElement("PATH$usageCountsCount");
-    public static final PathElement PATH$pUsageCounts = PathElement.groupElement("PATH$pUsageCounts");
-    public static final PathElement PATH$ppUsageCounts = PathElement.groupElement("PATH$ppUsageCounts");
-    public static final PathElement PATH$micromap = PathElement.groupElement("PATH$micromap");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$displacementBiasAndScaleFormat = (OfInt) LAYOUT.select(PATH$displacementBiasAndScaleFormat);
-    public static final OfInt LAYOUT$displacementVectorFormat = (OfInt) LAYOUT.select(PATH$displacementVectorFormat);
-    public static final StructLayout LAYOUT$displacementBiasAndScaleBuffer = (StructLayout) LAYOUT.select(PATH$displacementBiasAndScaleBuffer);
-    public static final OfLong LAYOUT$displacementBiasAndScaleStride = (OfLong) LAYOUT.select(PATH$displacementBiasAndScaleStride);
-    public static final StructLayout LAYOUT$displacementVectorBuffer = (StructLayout) LAYOUT.select(PATH$displacementVectorBuffer);
-    public static final OfLong LAYOUT$displacementVectorStride = (OfLong) LAYOUT.select(PATH$displacementVectorStride);
-    public static final StructLayout LAYOUT$displacedMicromapPrimitiveFlags = (StructLayout) LAYOUT.select(PATH$displacedMicromapPrimitiveFlags);
-    public static final OfLong LAYOUT$displacedMicromapPrimitiveFlagsStride = (OfLong) LAYOUT.select(PATH$displacedMicromapPrimitiveFlagsStride);
-    public static final OfInt LAYOUT$indexType = (OfInt) LAYOUT.select(PATH$indexType);
-    public static final StructLayout LAYOUT$indexBuffer = (StructLayout) LAYOUT.select(PATH$indexBuffer);
-    public static final OfLong LAYOUT$indexStride = (OfLong) LAYOUT.select(PATH$indexStride);
-    public static final OfInt LAYOUT$baseTriangle = (OfInt) LAYOUT.select(PATH$baseTriangle);
-    public static final OfInt LAYOUT$usageCountsCount = (OfInt) LAYOUT.select(PATH$usageCountsCount);
-    public static final AddressLayout LAYOUT$pUsageCounts = (AddressLayout) LAYOUT.select(PATH$pUsageCounts);
-    public static final AddressLayout LAYOUT$ppUsageCounts = (AddressLayout) LAYOUT.select(PATH$ppUsageCounts);
-    public static final AddressLayout LAYOUT$micromap = (AddressLayout) LAYOUT.select(PATH$micromap);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$displacementBiasAndScaleFormat = LAYOUT$displacementBiasAndScaleFormat.byteSize();
-    public static final long SIZE$displacementVectorFormat = LAYOUT$displacementVectorFormat.byteSize();
-    public static final long SIZE$displacementBiasAndScaleBuffer = LAYOUT$displacementBiasAndScaleBuffer.byteSize();
-    public static final long SIZE$displacementBiasAndScaleStride = LAYOUT$displacementBiasAndScaleStride.byteSize();
-    public static final long SIZE$displacementVectorBuffer = LAYOUT$displacementVectorBuffer.byteSize();
-    public static final long SIZE$displacementVectorStride = LAYOUT$displacementVectorStride.byteSize();
-    public static final long SIZE$displacedMicromapPrimitiveFlags = LAYOUT$displacedMicromapPrimitiveFlags.byteSize();
-    public static final long SIZE$displacedMicromapPrimitiveFlagsStride = LAYOUT$displacedMicromapPrimitiveFlagsStride.byteSize();
-    public static final long SIZE$indexType = LAYOUT$indexType.byteSize();
-    public static final long SIZE$indexBuffer = LAYOUT$indexBuffer.byteSize();
-    public static final long SIZE$indexStride = LAYOUT$indexStride.byteSize();
-    public static final long SIZE$baseTriangle = LAYOUT$baseTriangle.byteSize();
-    public static final long SIZE$usageCountsCount = LAYOUT$usageCountsCount.byteSize();
-    public static final long SIZE$pUsageCounts = LAYOUT$pUsageCounts.byteSize();
-    public static final long SIZE$ppUsageCounts = LAYOUT$ppUsageCounts.byteSize();
-    public static final long SIZE$micromap = LAYOUT$micromap.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$displacementBiasAndScaleFormat = LAYOUT.byteOffset(PATH$displacementBiasAndScaleFormat);
-    public static final long OFFSET$displacementVectorFormat = LAYOUT.byteOffset(PATH$displacementVectorFormat);
-    public static final long OFFSET$displacementBiasAndScaleBuffer = LAYOUT.byteOffset(PATH$displacementBiasAndScaleBuffer);
-    public static final long OFFSET$displacementBiasAndScaleStride = LAYOUT.byteOffset(PATH$displacementBiasAndScaleStride);
-    public static final long OFFSET$displacementVectorBuffer = LAYOUT.byteOffset(PATH$displacementVectorBuffer);
-    public static final long OFFSET$displacementVectorStride = LAYOUT.byteOffset(PATH$displacementVectorStride);
-    public static final long OFFSET$displacedMicromapPrimitiveFlags = LAYOUT.byteOffset(PATH$displacedMicromapPrimitiveFlags);
-    public static final long OFFSET$displacedMicromapPrimitiveFlagsStride = LAYOUT.byteOffset(PATH$displacedMicromapPrimitiveFlagsStride);
-    public static final long OFFSET$indexType = LAYOUT.byteOffset(PATH$indexType);
-    public static final long OFFSET$indexBuffer = LAYOUT.byteOffset(PATH$indexBuffer);
-    public static final long OFFSET$indexStride = LAYOUT.byteOffset(PATH$indexStride);
-    public static final long OFFSET$baseTriangle = LAYOUT.byteOffset(PATH$baseTriangle);
-    public static final long OFFSET$usageCountsCount = LAYOUT.byteOffset(PATH$usageCountsCount);
-    public static final long OFFSET$pUsageCounts = LAYOUT.byteOffset(PATH$pUsageCounts);
-    public static final long OFFSET$ppUsageCounts = LAYOUT.byteOffset(PATH$ppUsageCounts);
-    public static final long OFFSET$micromap = LAYOUT.byteOffset(PATH$micromap);
+    public void autoInit() {
+        sType(VkStructureType.ACCELERATION_STRUCTURE_TRIANGLES_DISPLACEMENT_MICROMAP_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -291,7 +230,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
 
     public @Nullable VkMicromapUsageEXT pUsageCounts() {
         MemorySegment s = pUsageCountsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkMicromapUsageEXT(s);
@@ -304,7 +243,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
 
     @unsafe public @Nullable VkMicromapUsageEXT[] pUsageCounts(int assumedCount) {
         MemorySegment s = pUsageCountsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -329,7 +268,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
     /// actually reading from or writing to the buffer.
     public @Nullable PointerBuffer ppUsageCounts() {
         MemorySegment s = ppUsageCountsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new PointerBuffer(s);
@@ -342,7 +281,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
 
     public @Nullable VkMicromapEXT micromap() {
         MemorySegment s = segment.asSlice(OFFSET$micromap, SIZE$micromap);
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkMicromapEXT(s);
@@ -352,4 +291,101 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         segment.set(LAYOUT$micromap, OFFSET$micromap, value != null ? value.segment() : MemorySegment.NULL);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("displacementBiasAndScaleFormat"),
+        ValueLayout.JAVA_INT.withName("displacementVectorFormat"),
+        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("displacementBiasAndScaleBuffer"),
+        ValueLayout.JAVA_LONG.withName("displacementBiasAndScaleStride"),
+        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("displacementVectorBuffer"),
+        ValueLayout.JAVA_LONG.withName("displacementVectorStride"),
+        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("displacedMicromapPrimitiveFlags"),
+        ValueLayout.JAVA_LONG.withName("displacedMicromapPrimitiveFlagsStride"),
+        ValueLayout.JAVA_INT.withName("indexType"),
+        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("indexBuffer"),
+        ValueLayout.JAVA_LONG.withName("indexStride"),
+        ValueLayout.JAVA_INT.withName("baseTriangle"),
+        ValueLayout.JAVA_INT.withName("usageCountsCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT).withName("pUsageCounts"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT)).withName("ppUsageCounts"),
+        ValueLayout.ADDRESS.withName("micromap")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$displacementBiasAndScaleFormat = PathElement.groupElement("PATH$displacementBiasAndScaleFormat");
+    public static final PathElement PATH$displacementVectorFormat = PathElement.groupElement("PATH$displacementVectorFormat");
+    public static final PathElement PATH$displacementBiasAndScaleBuffer = PathElement.groupElement("PATH$displacementBiasAndScaleBuffer");
+    public static final PathElement PATH$displacementBiasAndScaleStride = PathElement.groupElement("PATH$displacementBiasAndScaleStride");
+    public static final PathElement PATH$displacementVectorBuffer = PathElement.groupElement("PATH$displacementVectorBuffer");
+    public static final PathElement PATH$displacementVectorStride = PathElement.groupElement("PATH$displacementVectorStride");
+    public static final PathElement PATH$displacedMicromapPrimitiveFlags = PathElement.groupElement("PATH$displacedMicromapPrimitiveFlags");
+    public static final PathElement PATH$displacedMicromapPrimitiveFlagsStride = PathElement.groupElement("PATH$displacedMicromapPrimitiveFlagsStride");
+    public static final PathElement PATH$indexType = PathElement.groupElement("PATH$indexType");
+    public static final PathElement PATH$indexBuffer = PathElement.groupElement("PATH$indexBuffer");
+    public static final PathElement PATH$indexStride = PathElement.groupElement("PATH$indexStride");
+    public static final PathElement PATH$baseTriangle = PathElement.groupElement("PATH$baseTriangle");
+    public static final PathElement PATH$usageCountsCount = PathElement.groupElement("PATH$usageCountsCount");
+    public static final PathElement PATH$pUsageCounts = PathElement.groupElement("PATH$pUsageCounts");
+    public static final PathElement PATH$ppUsageCounts = PathElement.groupElement("PATH$ppUsageCounts");
+    public static final PathElement PATH$micromap = PathElement.groupElement("PATH$micromap");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$displacementBiasAndScaleFormat = (OfInt) LAYOUT.select(PATH$displacementBiasAndScaleFormat);
+    public static final OfInt LAYOUT$displacementVectorFormat = (OfInt) LAYOUT.select(PATH$displacementVectorFormat);
+    public static final StructLayout LAYOUT$displacementBiasAndScaleBuffer = (StructLayout) LAYOUT.select(PATH$displacementBiasAndScaleBuffer);
+    public static final OfLong LAYOUT$displacementBiasAndScaleStride = (OfLong) LAYOUT.select(PATH$displacementBiasAndScaleStride);
+    public static final StructLayout LAYOUT$displacementVectorBuffer = (StructLayout) LAYOUT.select(PATH$displacementVectorBuffer);
+    public static final OfLong LAYOUT$displacementVectorStride = (OfLong) LAYOUT.select(PATH$displacementVectorStride);
+    public static final StructLayout LAYOUT$displacedMicromapPrimitiveFlags = (StructLayout) LAYOUT.select(PATH$displacedMicromapPrimitiveFlags);
+    public static final OfLong LAYOUT$displacedMicromapPrimitiveFlagsStride = (OfLong) LAYOUT.select(PATH$displacedMicromapPrimitiveFlagsStride);
+    public static final OfInt LAYOUT$indexType = (OfInt) LAYOUT.select(PATH$indexType);
+    public static final StructLayout LAYOUT$indexBuffer = (StructLayout) LAYOUT.select(PATH$indexBuffer);
+    public static final OfLong LAYOUT$indexStride = (OfLong) LAYOUT.select(PATH$indexStride);
+    public static final OfInt LAYOUT$baseTriangle = (OfInt) LAYOUT.select(PATH$baseTriangle);
+    public static final OfInt LAYOUT$usageCountsCount = (OfInt) LAYOUT.select(PATH$usageCountsCount);
+    public static final AddressLayout LAYOUT$pUsageCounts = (AddressLayout) LAYOUT.select(PATH$pUsageCounts);
+    public static final AddressLayout LAYOUT$ppUsageCounts = (AddressLayout) LAYOUT.select(PATH$ppUsageCounts);
+    public static final AddressLayout LAYOUT$micromap = (AddressLayout) LAYOUT.select(PATH$micromap);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$displacementBiasAndScaleFormat = LAYOUT$displacementBiasAndScaleFormat.byteSize();
+    public static final long SIZE$displacementVectorFormat = LAYOUT$displacementVectorFormat.byteSize();
+    public static final long SIZE$displacementBiasAndScaleBuffer = LAYOUT$displacementBiasAndScaleBuffer.byteSize();
+    public static final long SIZE$displacementBiasAndScaleStride = LAYOUT$displacementBiasAndScaleStride.byteSize();
+    public static final long SIZE$displacementVectorBuffer = LAYOUT$displacementVectorBuffer.byteSize();
+    public static final long SIZE$displacementVectorStride = LAYOUT$displacementVectorStride.byteSize();
+    public static final long SIZE$displacedMicromapPrimitiveFlags = LAYOUT$displacedMicromapPrimitiveFlags.byteSize();
+    public static final long SIZE$displacedMicromapPrimitiveFlagsStride = LAYOUT$displacedMicromapPrimitiveFlagsStride.byteSize();
+    public static final long SIZE$indexType = LAYOUT$indexType.byteSize();
+    public static final long SIZE$indexBuffer = LAYOUT$indexBuffer.byteSize();
+    public static final long SIZE$indexStride = LAYOUT$indexStride.byteSize();
+    public static final long SIZE$baseTriangle = LAYOUT$baseTriangle.byteSize();
+    public static final long SIZE$usageCountsCount = LAYOUT$usageCountsCount.byteSize();
+    public static final long SIZE$pUsageCounts = LAYOUT$pUsageCounts.byteSize();
+    public static final long SIZE$ppUsageCounts = LAYOUT$ppUsageCounts.byteSize();
+    public static final long SIZE$micromap = LAYOUT$micromap.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$displacementBiasAndScaleFormat = LAYOUT.byteOffset(PATH$displacementBiasAndScaleFormat);
+    public static final long OFFSET$displacementVectorFormat = LAYOUT.byteOffset(PATH$displacementVectorFormat);
+    public static final long OFFSET$displacementBiasAndScaleBuffer = LAYOUT.byteOffset(PATH$displacementBiasAndScaleBuffer);
+    public static final long OFFSET$displacementBiasAndScaleStride = LAYOUT.byteOffset(PATH$displacementBiasAndScaleStride);
+    public static final long OFFSET$displacementVectorBuffer = LAYOUT.byteOffset(PATH$displacementVectorBuffer);
+    public static final long OFFSET$displacementVectorStride = LAYOUT.byteOffset(PATH$displacementVectorStride);
+    public static final long OFFSET$displacedMicromapPrimitiveFlags = LAYOUT.byteOffset(PATH$displacedMicromapPrimitiveFlags);
+    public static final long OFFSET$displacedMicromapPrimitiveFlagsStride = LAYOUT.byteOffset(PATH$displacedMicromapPrimitiveFlagsStride);
+    public static final long OFFSET$indexType = LAYOUT.byteOffset(PATH$indexType);
+    public static final long OFFSET$indexBuffer = LAYOUT.byteOffset(PATH$indexBuffer);
+    public static final long OFFSET$indexStride = LAYOUT.byteOffset(PATH$indexStride);
+    public static final long OFFSET$baseTriangle = LAYOUT.byteOffset(PATH$baseTriangle);
+    public static final long OFFSET$usageCountsCount = LAYOUT.byteOffset(PATH$usageCountsCount);
+    public static final long OFFSET$pUsageCounts = LAYOUT.byteOffset(PATH$pUsageCounts);
+    public static final long OFFSET$ppUsageCounts = LAYOUT.byteOffset(PATH$ppUsageCounts);
+    public static final long OFFSET$micromap = LAYOUT.byteOffset(PATH$micromap);
 }

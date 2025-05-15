@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkImportSemaphoreFdInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportSemaphoreFdInfoKHR.html"><code>VkImportSemaphoreFdInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkImportSemaphoreFdInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkSemaphore semaphore;
+///     VkSemaphoreImportFlags flags;
+///     VkExternalSemaphoreHandleTypeFlags handleType;
+///     int fd;
+/// } VkImportSemaphoreFdInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR`
+///
+/// The {@link VkImportSemaphoreFdInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkImportSemaphoreFdInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportSemaphoreFdInfoKHR.html">VkImportSemaphoreFdInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportSemaphoreFdInfoKHR.html"><code>VkImportSemaphoreFdInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkImportSemaphoreFdInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkImportSemaphoreFdInfoKHR {
-        sType(VkStructureType.IMPORT_SEMAPHORE_FD_INFO_KHR);
-    }
-
     public static VkImportSemaphoreFdInfoKHR allocate(Arena arena) {
-        return new VkImportSemaphoreFdInfoKHR(arena.allocate(LAYOUT));
+        VkImportSemaphoreFdInfoKHR ret = new VkImportSemaphoreFdInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.IMPORT_SEMAPHORE_FD_INFO_KHR);
+        return ret;
     }
 
     public static VkImportSemaphoreFdInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkImportSemaphoreFdInfoKHR(@NotNull MemorySegment segment) impleme
         VkImportSemaphoreFdInfoKHR[] ret = new VkImportSemaphoreFdInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkImportSemaphoreFdInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.IMPORT_SEMAPHORE_FD_INFO_KHR);
         }
         return ret;
     }
@@ -57,6 +78,66 @@ public record VkImportSemaphoreFdInfoKHR(@NotNull MemorySegment segment) impleme
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.IMPORT_SEMAPHORE_FD_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkSemaphore semaphore() {
+        MemorySegment s = segment.asSlice(OFFSET$semaphore, SIZE$semaphore);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkSemaphore(s);
+    }
+
+    public void semaphore(@Nullable VkSemaphore value) {
+        segment.set(LAYOUT$semaphore, OFFSET$semaphore, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @enumtype(VkSemaphoreImportFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkSemaphoreImportFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @enumtype(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
+        return segment.get(LAYOUT$handleType, OFFSET$handleType);
+    }
+
+    public void handleType(@enumtype(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+        segment.set(LAYOUT$handleType, OFFSET$handleType, value);
+    }
+
+    public int fd() {
+        return segment.get(LAYOUT$fd, OFFSET$fd);
+    }
+
+    public void fd(int value) {
+        segment.set(LAYOUT$fd, OFFSET$fd, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -96,61 +177,4 @@ public record VkImportSemaphoreFdInfoKHR(@NotNull MemorySegment segment) impleme
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
     public static final long OFFSET$fd = LAYOUT.byteOffset(PATH$fd);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkSemaphore semaphore() {
-        MemorySegment s = segment.asSlice(OFFSET$semaphore, SIZE$semaphore);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkSemaphore(s);
-    }
-
-    public void semaphore(@Nullable VkSemaphore value) {
-        segment.set(LAYOUT$semaphore, OFFSET$semaphore, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @enumtype(VkSemaphoreImportFlags.class) int flags() {
-        return segment.get(LAYOUT$flags, OFFSET$flags);
-    }
-
-    public void flags(@enumtype(VkSemaphoreImportFlags.class) int value) {
-        segment.set(LAYOUT$flags, OFFSET$flags, value);
-    }
-
-    public @enumtype(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
-        return segment.get(LAYOUT$handleType, OFFSET$handleType);
-    }
-
-    public void handleType(@enumtype(VkExternalSemaphoreHandleTypeFlags.class) int value) {
-        segment.set(LAYOUT$handleType, OFFSET$handleType, value);
-    }
-
-    public int fd() {
-        return segment.get(LAYOUT$fd, OFFSET$fd);
-    }
-
-    public void fd(int value) {
-        segment.set(LAYOUT$fd, OFFSET$fd, value);
-    }
-
 }

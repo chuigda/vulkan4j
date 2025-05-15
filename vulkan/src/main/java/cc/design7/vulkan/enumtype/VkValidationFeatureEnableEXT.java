@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkValidationFeatureEnableEXT.html">VkValidationFeatureEnableEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkValidationFeatureEnableEXT.html"><code>VkValidationFeatureEnableEXT</code></a>
 public final class VkValidationFeatureEnableEXT {
     public static final int GPU_ASSISTED = 0x0;
     public static final int GPU_ASSISTED_RESERVE_BINDING_SLOT = 0x1;

@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceType.html">VkPhysicalDeviceType</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceType.html"><code>VkPhysicalDeviceType</code></a>
 public final class VkPhysicalDeviceType {
     public static final int OTHER = 0x0;
     public static final int INTEGRATED_GPU = 0x1;

@@ -14,8 +14,31 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineCoverageModulationStateCreateInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCoverageModulationStateCreateInfoNV.html"><code>VkPipelineCoverageModulationStateCreateInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineCoverageModulationStateCreateInfoNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkPipelineCoverageModulationStateCreateFlagsNV flags;
+///     VkCoverageModulationModeNV coverageModulationMode;
+///     VkBool32 coverageModulationTableEnable;
+///     uint32_t coverageModulationTableCount;
+///     float const* pCoverageModulationTable;
+/// } VkPipelineCoverageModulationStateCreateInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV`
+///
+/// The {@link VkPipelineCoverageModulationStateCreateInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineCoverageModulationStateCreateInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +47,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCoverageModulationStateCreateInfoNV.html">VkPipelineCoverageModulationStateCreateInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCoverageModulationStateCreateInfoNV.html"><code>VkPipelineCoverageModulationStateCreateInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineCoverageModulationStateCreateInfoNV {
-        sType(VkStructureType.PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV);
-    }
-
     public static VkPipelineCoverageModulationStateCreateInfoNV allocate(Arena arena) {
-        return new VkPipelineCoverageModulationStateCreateInfoNV(arena.allocate(LAYOUT));
+        VkPipelineCoverageModulationStateCreateInfoNV ret = new VkPipelineCoverageModulationStateCreateInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV);
+        return ret;
     }
 
     public static VkPipelineCoverageModulationStateCreateInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +62,7 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
         VkPipelineCoverageModulationStateCreateInfoNV[] ret = new VkPipelineCoverageModulationStateCreateInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineCoverageModulationStateCreateInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV);
         }
         return ret;
     }
@@ -59,48 +81,9 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("coverageModulationMode"),
-        ValueLayout.JAVA_INT.withName("coverageModulationTableEnable"),
-        ValueLayout.JAVA_INT.withName("coverageModulationTableCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_FLOAT).withName("pCoverageModulationTable")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$coverageModulationMode = PathElement.groupElement("PATH$coverageModulationMode");
-    public static final PathElement PATH$coverageModulationTableEnable = PathElement.groupElement("PATH$coverageModulationTableEnable");
-    public static final PathElement PATH$coverageModulationTableCount = PathElement.groupElement("PATH$coverageModulationTableCount");
-    public static final PathElement PATH$pCoverageModulationTable = PathElement.groupElement("PATH$pCoverageModulationTable");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$coverageModulationMode = (OfInt) LAYOUT.select(PATH$coverageModulationMode);
-    public static final OfInt LAYOUT$coverageModulationTableEnable = (OfInt) LAYOUT.select(PATH$coverageModulationTableEnable);
-    public static final OfInt LAYOUT$coverageModulationTableCount = (OfInt) LAYOUT.select(PATH$coverageModulationTableCount);
-    public static final AddressLayout LAYOUT$pCoverageModulationTable = (AddressLayout) LAYOUT.select(PATH$pCoverageModulationTable);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$coverageModulationMode = LAYOUT$coverageModulationMode.byteSize();
-    public static final long SIZE$coverageModulationTableEnable = LAYOUT$coverageModulationTableEnable.byteSize();
-    public static final long SIZE$coverageModulationTableCount = LAYOUT$coverageModulationTableCount.byteSize();
-    public static final long SIZE$pCoverageModulationTable = LAYOUT$pCoverageModulationTable.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$coverageModulationMode = LAYOUT.byteOffset(PATH$coverageModulationMode);
-    public static final long OFFSET$coverageModulationTableEnable = LAYOUT.byteOffset(PATH$coverageModulationTableEnable);
-    public static final long OFFSET$coverageModulationTableCount = LAYOUT.byteOffset(PATH$coverageModulationTableCount);
-    public static final long OFFSET$pCoverageModulationTable = LAYOUT.byteOffset(PATH$pCoverageModulationTable);
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -168,7 +151,7 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
     /// writing to the buffer.
     public @Nullable FloatPtr pCoverageModulationTable() {
         MemorySegment s = pCoverageModulationTableRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new FloatPtr(s);
@@ -179,4 +162,46 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
         pCoverageModulationTableRaw(s);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("coverageModulationMode"),
+        ValueLayout.JAVA_INT.withName("coverageModulationTableEnable"),
+        ValueLayout.JAVA_INT.withName("coverageModulationTableCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_FLOAT).withName("pCoverageModulationTable")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$coverageModulationMode = PathElement.groupElement("PATH$coverageModulationMode");
+    public static final PathElement PATH$coverageModulationTableEnable = PathElement.groupElement("PATH$coverageModulationTableEnable");
+    public static final PathElement PATH$coverageModulationTableCount = PathElement.groupElement("PATH$coverageModulationTableCount");
+    public static final PathElement PATH$pCoverageModulationTable = PathElement.groupElement("PATH$pCoverageModulationTable");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$coverageModulationMode = (OfInt) LAYOUT.select(PATH$coverageModulationMode);
+    public static final OfInt LAYOUT$coverageModulationTableEnable = (OfInt) LAYOUT.select(PATH$coverageModulationTableEnable);
+    public static final OfInt LAYOUT$coverageModulationTableCount = (OfInt) LAYOUT.select(PATH$coverageModulationTableCount);
+    public static final AddressLayout LAYOUT$pCoverageModulationTable = (AddressLayout) LAYOUT.select(PATH$pCoverageModulationTable);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$coverageModulationMode = LAYOUT$coverageModulationMode.byteSize();
+    public static final long SIZE$coverageModulationTableEnable = LAYOUT$coverageModulationTableEnable.byteSize();
+    public static final long SIZE$coverageModulationTableCount = LAYOUT$coverageModulationTableCount.byteSize();
+    public static final long SIZE$pCoverageModulationTable = LAYOUT$pCoverageModulationTable.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$coverageModulationMode = LAYOUT.byteOffset(PATH$coverageModulationMode);
+    public static final long OFFSET$coverageModulationTableEnable = LAYOUT.byteOffset(PATH$coverageModulationTableEnable);
+    public static final long OFFSET$coverageModulationTableCount = LAYOUT.byteOffset(PATH$coverageModulationTableCount);
+    public static final long OFFSET$pCoverageModulationTable = LAYOUT.byteOffset(PATH$pCoverageModulationTable);
 }

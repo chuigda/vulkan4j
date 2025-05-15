@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMemoryRequirementsTypeNV.html">VkAccelerationStructureMemoryRequirementsTypeNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMemoryRequirementsTypeNV.html"><code>VkAccelerationStructureMemoryRequirementsTypeNV</code></a>
 public final class VkAccelerationStructureMemoryRequirementsTypeNV {
     public static final int OBJECT = 0x0;
     public static final int BUILD_SCRATCH = 0x1;

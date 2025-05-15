@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureCreateFlagsKHR.html">VkAccelerationStructureCreateFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureCreateFlagsKHR.html"><code>VkAccelerationStructureCreateFlagsKHR</code></a>
 public final class VkAccelerationStructureCreateFlagsKHR {
     public static final int DESCRIPTOR_BUFFER_CAPTURE_REPLAY_EXT = 0x8;
     public static final int DEVICE_ADDRESS_CAPTURE_REPLAY = 0x1;

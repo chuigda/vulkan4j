@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkValidationCacheHeaderVersionEXT.html">VkValidationCacheHeaderVersionEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkValidationCacheHeaderVersionEXT.html"><code>VkValidationCacheHeaderVersionEXT</code></a>
 public final class VkValidationCacheHeaderVersionEXT {
     public static final int ONE = 0x1;
 

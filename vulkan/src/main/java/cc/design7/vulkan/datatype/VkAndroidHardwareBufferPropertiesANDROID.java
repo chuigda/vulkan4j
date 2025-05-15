@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkAndroidHardwareBufferPropertiesANDROID} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAndroidHardwareBufferPropertiesANDROID.html"><code>VkAndroidHardwareBufferPropertiesANDROID</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkAndroidHardwareBufferPropertiesANDROID {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkDeviceSize allocationSize;
+///     uint32_t memoryTypeBits;
+/// } VkAndroidHardwareBufferPropertiesANDROID;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID`
+///
+/// The {@link VkAndroidHardwareBufferPropertiesANDROID#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkAndroidHardwareBufferPropertiesANDROID#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAndroidHardwareBufferPropertiesANDROID.html">VkAndroidHardwareBufferPropertiesANDROID</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAndroidHardwareBufferPropertiesANDROID.html"><code>VkAndroidHardwareBufferPropertiesANDROID</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkAndroidHardwareBufferPropertiesANDROID(@NotNull MemorySegment segment) implements IPointer {
-    public VkAndroidHardwareBufferPropertiesANDROID {
-        sType(VkStructureType.ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID);
-    }
-
     public static VkAndroidHardwareBufferPropertiesANDROID allocate(Arena arena) {
-        return new VkAndroidHardwareBufferPropertiesANDROID(arena.allocate(LAYOUT));
+        VkAndroidHardwareBufferPropertiesANDROID ret = new VkAndroidHardwareBufferPropertiesANDROID(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID);
+        return ret;
     }
 
     public static VkAndroidHardwareBufferPropertiesANDROID[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkAndroidHardwareBufferPropertiesANDROID(@NotNull MemorySegment se
         VkAndroidHardwareBufferPropertiesANDROID[] ret = new VkAndroidHardwareBufferPropertiesANDROID[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkAndroidHardwareBufferPropertiesANDROID(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkAndroidHardwareBufferPropertiesANDROID(@NotNull MemorySegment se
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_LONG.withName("allocationSize"),
-        ValueLayout.JAVA_INT.withName("memoryTypeBits")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$allocationSize = PathElement.groupElement("PATH$allocationSize");
-    public static final PathElement PATH$memoryTypeBits = PathElement.groupElement("PATH$memoryTypeBits");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfLong LAYOUT$allocationSize = (OfLong) LAYOUT.select(PATH$allocationSize);
-    public static final OfInt LAYOUT$memoryTypeBits = (OfInt) LAYOUT.select(PATH$memoryTypeBits);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$allocationSize = LAYOUT$allocationSize.byteSize();
-    public static final long SIZE$memoryTypeBits = LAYOUT$memoryTypeBits.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$allocationSize = LAYOUT.byteOffset(PATH$allocationSize);
-    public static final long OFFSET$memoryTypeBits = LAYOUT.byteOffset(PATH$memoryTypeBits);
+    public void autoInit() {
+        sType(VkStructureType.ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkAndroidHardwareBufferPropertiesANDROID(@NotNull MemorySegment se
         segment.set(LAYOUT$memoryTypeBits, OFFSET$memoryTypeBits, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("allocationSize"),
+        ValueLayout.JAVA_INT.withName("memoryTypeBits")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$allocationSize = PathElement.groupElement("PATH$allocationSize");
+    public static final PathElement PATH$memoryTypeBits = PathElement.groupElement("PATH$memoryTypeBits");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$allocationSize = (OfLong) LAYOUT.select(PATH$allocationSize);
+    public static final OfInt LAYOUT$memoryTypeBits = (OfInt) LAYOUT.select(PATH$memoryTypeBits);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$allocationSize = LAYOUT$allocationSize.byteSize();
+    public static final long SIZE$memoryTypeBits = LAYOUT$memoryTypeBits.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$allocationSize = LAYOUT.byteOffset(PATH$allocationSize);
+    public static final long OFFSET$memoryTypeBits = LAYOUT.byteOffset(PATH$memoryTypeBits);
 }

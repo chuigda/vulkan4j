@@ -17,6 +17,27 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoEncodeH265SliceSegmentHeaderFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoEncodeH265SliceSegmentHeaderFlags {
+///     uint32_t first_slice_segment_in_pic_flag : 1;
+///     uint32_t dependent_slice_segment_flag : 1;
+///     uint32_t slice_sao_luma_flag : 1;
+///     uint32_t slice_sao_chroma_flag : 1;
+///     uint32_t num_ref_idx_active_override_flag : 1;
+///     uint32_t mvd_l1_zero_flag : 1;
+///     uint32_t cabac_init_flag : 1;
+///     uint32_t cu_chroma_qp_offset_enabled_flag : 1;
+///     uint32_t deblocking_filter_override_flag : 1;
+///     uint32_t slice_deblocking_filter_disabled_flag : 1;
+///     uint32_t collocated_from_l0_flag : 1;
+///     uint32_t slice_loop_filter_across_slices_enabled_flag : 1;
+///     uint32_t reserved : 20;
+/// } StdVideoEncodeH265SliceSegmentHeaderFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +49,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeH265SliceSegmentHeaderFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeH265SliceSegmentHeaderFlags allocate(Arena arena) {
-        return new StdVideoEncodeH265SliceSegmentHeaderFlags(arena.allocate(LAYOUT));
+        StdVideoEncodeH265SliceSegmentHeaderFlags ret = new StdVideoEncodeH265SliceSegmentHeaderFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoEncodeH265SliceSegmentHeaderFlags[] allocate(Arena arena, int count) {
@@ -53,18 +75,6 @@ public record StdVideoEncodeH265SliceSegmentHeaderFlags(@NotNull MemorySegment s
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$first_slice_segment_in_pic_flag_reserved")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$first_slice_segment_in_pic_flag_reserved = PathElement.groupElement("PATH$bitfield$first_slice_segment_in_pic_flag_reserved");
-
-    public static final OfInt LAYOUT$first_slice_segment_in_pic_flag_reserved = (OfInt) LAYOUT.select(PATH$bitfield$first_slice_segment_in_pic_flag_reserved);
-
-
-    public static final long OFFSET$first_slice_segment_in_pic_flag_reserved = LAYOUT.byteOffset(PATH$bitfield$first_slice_segment_in_pic_flag_reserved);
 
     public boolean first_slice_segment_in_pic_flag() {
         MemorySegment s = segment.asSlice(OFFSET$first_slice_segment_in_pic_flag_reserved, LAYOUT$first_slice_segment_in_pic_flag_reserved);
@@ -186,5 +196,15 @@ public record StdVideoEncodeH265SliceSegmentHeaderFlags(@NotNull MemorySegment s
         BitfieldUtil.writeBit(s, 11, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$first_slice_segment_in_pic_flag_reserved")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$bitfield$first_slice_segment_in_pic_flag_reserved = PathElement.groupElement("PATH$bitfield$first_slice_segment_in_pic_flag_reserved");
+
+    public static final OfInt LAYOUT$first_slice_segment_in_pic_flag_reserved = (OfInt) LAYOUT.select(PATH$bitfield$first_slice_segment_in_pic_flag_reserved);
+
+
+    public static final long OFFSET$first_slice_segment_in_pic_flag_reserved = LAYOUT.byteOffset(PATH$bitfield$first_slice_segment_in_pic_flag_reserved);
 }

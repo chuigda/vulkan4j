@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCacheCreateFlags.html">VkPipelineCacheCreateFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCacheCreateFlags.html"><code>VkPipelineCacheCreateFlags</code></a>
 public final class VkPipelineCacheCreateFlags {
     public static final int EXTERNALLY_SYNCHRONIZED = 0x1;
     public static final int INTERNALLY_SYNCHRONIZED_MERGE_KHR = 0x8;

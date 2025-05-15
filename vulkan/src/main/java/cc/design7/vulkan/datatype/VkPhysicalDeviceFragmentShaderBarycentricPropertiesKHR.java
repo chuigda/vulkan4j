@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR.html"><code>VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 triStripVertexOrderIndependentOfProvokingVertex;
+/// } VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_PROPERTIES_KHR`
+///
+/// The {@link VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR.html">VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR.html"><code>VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR {
-        sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_PROPERTIES_KHR);
-    }
-
     public static VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR allocate(Arena arena) {
-        return new VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR(arena.allocate(LAYOUT));
+        VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR ret = new VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_PROPERTIES_KHR);
+        return ret;
     }
 
     public static VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR(@NotNull Me
         VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR[] ret = new VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_PROPERTIES_KHR);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR(@NotNull Me
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("triStripVertexOrderIndependentOfProvokingVertex")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$triStripVertexOrderIndependentOfProvokingVertex = PathElement.groupElement("PATH$triStripVertexOrderIndependentOfProvokingVertex");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$triStripVertexOrderIndependentOfProvokingVertex = (OfInt) LAYOUT.select(PATH$triStripVertexOrderIndependentOfProvokingVertex);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$triStripVertexOrderIndependentOfProvokingVertex = LAYOUT$triStripVertexOrderIndependentOfProvokingVertex.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$triStripVertexOrderIndependentOfProvokingVertex = LAYOUT.byteOffset(PATH$triStripVertexOrderIndependentOfProvokingVertex);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_PROPERTIES_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR(@NotNull Me
         segment.set(LAYOUT$triStripVertexOrderIndependentOfProvokingVertex, OFFSET$triStripVertexOrderIndependentOfProvokingVertex, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("triStripVertexOrderIndependentOfProvokingVertex")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$triStripVertexOrderIndependentOfProvokingVertex = PathElement.groupElement("PATH$triStripVertexOrderIndependentOfProvokingVertex");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$triStripVertexOrderIndependentOfProvokingVertex = (OfInt) LAYOUT.select(PATH$triStripVertexOrderIndependentOfProvokingVertex);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$triStripVertexOrderIndependentOfProvokingVertex = LAYOUT$triStripVertexOrderIndependentOfProvokingVertex.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$triStripVertexOrderIndependentOfProvokingVertex = LAYOUT.byteOffset(PATH$triStripVertexOrderIndependentOfProvokingVertex);
 }

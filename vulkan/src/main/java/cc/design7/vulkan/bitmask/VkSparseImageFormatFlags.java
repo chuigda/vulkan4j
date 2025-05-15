@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageFormatFlags.html">VkSparseImageFormatFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageFormatFlags.html"><code>VkSparseImageFormatFlags</code></a>
 public final class VkSparseImageFormatFlags {
     public static final int ALIGNED_MIP_SIZE = 0x2;
     public static final int NONSTANDARD_BLOCK_SIZE = 0x4;

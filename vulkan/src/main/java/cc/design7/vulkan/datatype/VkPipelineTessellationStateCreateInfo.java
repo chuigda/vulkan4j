@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineTessellationStateCreateInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineTessellationStateCreateInfo.html"><code>VkPipelineTessellationStateCreateInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineTessellationStateCreateInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkPipelineTessellationStateCreateFlags flags;
+///     uint32_t patchControlPoints;
+/// } VkPipelineTessellationStateCreateInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO`
+///
+/// The {@link VkPipelineTessellationStateCreateInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineTessellationStateCreateInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineTessellationStateCreateInfo.html">VkPipelineTessellationStateCreateInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineTessellationStateCreateInfo.html"><code>VkPipelineTessellationStateCreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineTessellationStateCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineTessellationStateCreateInfo {
-        sType(VkStructureType.PIPELINE_TESSELLATION_STATE_CREATE_INFO);
-    }
-
     public static VkPipelineTessellationStateCreateInfo allocate(Arena arena) {
-        return new VkPipelineTessellationStateCreateInfo(arena.allocate(LAYOUT));
+        VkPipelineTessellationStateCreateInfo ret = new VkPipelineTessellationStateCreateInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_TESSELLATION_STATE_CREATE_INFO);
+        return ret;
     }
 
     public static VkPipelineTessellationStateCreateInfo[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkPipelineTessellationStateCreateInfo(@NotNull MemorySegment segme
         VkPipelineTessellationStateCreateInfo[] ret = new VkPipelineTessellationStateCreateInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineTessellationStateCreateInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_TESSELLATION_STATE_CREATE_INFO);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkPipelineTessellationStateCreateInfo(@NotNull MemorySegment segme
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("patchControlPoints")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$patchControlPoints = PathElement.groupElement("PATH$patchControlPoints");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$patchControlPoints = (OfInt) LAYOUT.select(PATH$patchControlPoints);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$patchControlPoints = LAYOUT$patchControlPoints.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$patchControlPoints = LAYOUT.byteOffset(PATH$patchControlPoints);
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_TESSELLATION_STATE_CREATE_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkPipelineTessellationStateCreateInfo(@NotNull MemorySegment segme
         segment.set(LAYOUT$patchControlPoints, OFFSET$patchControlPoints, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("patchControlPoints")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$patchControlPoints = PathElement.groupElement("PATH$patchControlPoints");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$patchControlPoints = (OfInt) LAYOUT.select(PATH$patchControlPoints);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$patchControlPoints = LAYOUT$patchControlPoints.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$patchControlPoints = LAYOUT.byteOffset(PATH$patchControlPoints);
 }

@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBlendFactor.html">VkBlendFactor</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBlendFactor.html"><code>VkBlendFactor</code></a>
 public final class VkBlendFactor {
     public static final int ZERO = 0x0;
     public static final int ONE = 0x1;

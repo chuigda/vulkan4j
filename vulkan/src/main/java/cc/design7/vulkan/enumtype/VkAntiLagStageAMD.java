@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAntiLagStageAMD.html">VkAntiLagStageAMD</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAntiLagStageAMD.html"><code>VkAntiLagStageAMD</code></a>
 public final class VkAntiLagStageAMD {
     public static final int INPUT = 0x0;
     public static final int PRESENT = 0x1;

@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDirectDriverLoadingListLUNARG} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDirectDriverLoadingListLUNARG.html"><code>VkDirectDriverLoadingListLUNARG</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDirectDriverLoadingListLUNARG {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkDirectDriverLoadingModeLUNARG mode;
+///     uint32_t driverCount;
+///     VkDirectDriverLoadingInfoLUNARG const* pDrivers;
+/// } VkDirectDriverLoadingListLUNARG;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_LIST_LUNARG`
+///
+/// The {@link VkDirectDriverLoadingListLUNARG#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkDirectDriverLoadingListLUNARG#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDirectDriverLoadingListLUNARG.html">VkDirectDriverLoadingListLUNARG</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDirectDriverLoadingListLUNARG.html"><code>VkDirectDriverLoadingListLUNARG</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) implements IPointer {
-    public VkDirectDriverLoadingListLUNARG {
-        sType(VkStructureType.DIRECT_DRIVER_LOADING_LIST_LUNARG);
-    }
-
     public static VkDirectDriverLoadingListLUNARG allocate(Arena arena) {
-        return new VkDirectDriverLoadingListLUNARG(arena.allocate(LAYOUT));
+        VkDirectDriverLoadingListLUNARG ret = new VkDirectDriverLoadingListLUNARG(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.DIRECT_DRIVER_LOADING_LIST_LUNARG);
+        return ret;
     }
 
     public static VkDirectDriverLoadingListLUNARG[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         VkDirectDriverLoadingListLUNARG[] ret = new VkDirectDriverLoadingListLUNARG[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkDirectDriverLoadingListLUNARG(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.DIRECT_DRIVER_LOADING_LIST_LUNARG);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("mode"),
-        ValueLayout.JAVA_INT.withName("driverCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkDirectDriverLoadingInfoLUNARG.LAYOUT).withName("pDrivers")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$mode = PathElement.groupElement("PATH$mode");
-    public static final PathElement PATH$driverCount = PathElement.groupElement("PATH$driverCount");
-    public static final PathElement PATH$pDrivers = PathElement.groupElement("PATH$pDrivers");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$mode = (OfInt) LAYOUT.select(PATH$mode);
-    public static final OfInt LAYOUT$driverCount = (OfInt) LAYOUT.select(PATH$driverCount);
-    public static final AddressLayout LAYOUT$pDrivers = (AddressLayout) LAYOUT.select(PATH$pDrivers);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$mode = LAYOUT$mode.byteSize();
-    public static final long SIZE$driverCount = LAYOUT$driverCount.byteSize();
-    public static final long SIZE$pDrivers = LAYOUT$pDrivers.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$mode = LAYOUT.byteOffset(PATH$mode);
-    public static final long OFFSET$driverCount = LAYOUT.byteOffset(PATH$driverCount);
-    public static final long OFFSET$pDrivers = LAYOUT.byteOffset(PATH$pDrivers);
+    public void autoInit() {
+        sType(VkStructureType.DIRECT_DRIVER_LOADING_LIST_LUNARG);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -138,7 +129,7 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
 
     public @Nullable VkDirectDriverLoadingInfoLUNARG pDrivers() {
         MemorySegment s = pDriversRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkDirectDriverLoadingInfoLUNARG(s);
@@ -151,7 +142,7 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
 
     @unsafe public @Nullable VkDirectDriverLoadingInfoLUNARG[] pDrivers(int assumedCount) {
         MemorySegment s = pDriversRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -163,4 +154,36 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("mode"),
+        ValueLayout.JAVA_INT.withName("driverCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDirectDriverLoadingInfoLUNARG.LAYOUT).withName("pDrivers")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$mode = PathElement.groupElement("PATH$mode");
+    public static final PathElement PATH$driverCount = PathElement.groupElement("PATH$driverCount");
+    public static final PathElement PATH$pDrivers = PathElement.groupElement("PATH$pDrivers");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$mode = (OfInt) LAYOUT.select(PATH$mode);
+    public static final OfInt LAYOUT$driverCount = (OfInt) LAYOUT.select(PATH$driverCount);
+    public static final AddressLayout LAYOUT$pDrivers = (AddressLayout) LAYOUT.select(PATH$pDrivers);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$mode = LAYOUT$mode.byteSize();
+    public static final long SIZE$driverCount = LAYOUT$driverCount.byteSize();
+    public static final long SIZE$pDrivers = LAYOUT$pDrivers.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$mode = LAYOUT.byteOffset(PATH$mode);
+    public static final long OFFSET$driverCount = LAYOUT.byteOffset(PATH$driverCount);
+    public static final long OFFSET$pDrivers = LAYOUT.byteOffset(PATH$pDrivers);
 }

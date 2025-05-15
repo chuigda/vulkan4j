@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDevice4444FormatsFeaturesEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevice4444FormatsFeaturesEXT.html"><code>VkPhysicalDevice4444FormatsFeaturesEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDevice4444FormatsFeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 formatA4R4G4B4;
+///     VkBool32 formatA4B4G4R4;
+/// } VkPhysicalDevice4444FormatsFeaturesEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_4444_FORMATS_FEATURES_EXT`
+///
+/// The {@link VkPhysicalDevice4444FormatsFeaturesEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDevice4444FormatsFeaturesEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevice4444FormatsFeaturesEXT.html">VkPhysicalDevice4444FormatsFeaturesEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevice4444FormatsFeaturesEXT.html"><code>VkPhysicalDevice4444FormatsFeaturesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDevice4444FormatsFeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDevice4444FormatsFeaturesEXT {
-        sType(VkStructureType.PHYSICAL_DEVICE_4444_FORMATS_FEATURES_EXT);
-    }
-
     public static VkPhysicalDevice4444FormatsFeaturesEXT allocate(Arena arena) {
-        return new VkPhysicalDevice4444FormatsFeaturesEXT(arena.allocate(LAYOUT));
+        VkPhysicalDevice4444FormatsFeaturesEXT ret = new VkPhysicalDevice4444FormatsFeaturesEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_4444_FORMATS_FEATURES_EXT);
+        return ret;
     }
 
     public static VkPhysicalDevice4444FormatsFeaturesEXT[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkPhysicalDevice4444FormatsFeaturesEXT(@NotNull MemorySegment segm
         VkPhysicalDevice4444FormatsFeaturesEXT[] ret = new VkPhysicalDevice4444FormatsFeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDevice4444FormatsFeaturesEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_4444_FORMATS_FEATURES_EXT);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkPhysicalDevice4444FormatsFeaturesEXT(@NotNull MemorySegment segm
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("formatA4R4G4B4"),
-        ValueLayout.JAVA_INT.withName("formatA4B4G4R4")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$formatA4R4G4B4 = PathElement.groupElement("PATH$formatA4R4G4B4");
-    public static final PathElement PATH$formatA4B4G4R4 = PathElement.groupElement("PATH$formatA4B4G4R4");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$formatA4R4G4B4 = (OfInt) LAYOUT.select(PATH$formatA4R4G4B4);
-    public static final OfInt LAYOUT$formatA4B4G4R4 = (OfInt) LAYOUT.select(PATH$formatA4B4G4R4);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$formatA4R4G4B4 = LAYOUT$formatA4R4G4B4.byteSize();
-    public static final long SIZE$formatA4B4G4R4 = LAYOUT$formatA4B4G4R4.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$formatA4R4G4B4 = LAYOUT.byteOffset(PATH$formatA4R4G4B4);
-    public static final long OFFSET$formatA4B4G4R4 = LAYOUT.byteOffset(PATH$formatA4B4G4R4);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_4444_FORMATS_FEATURES_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkPhysicalDevice4444FormatsFeaturesEXT(@NotNull MemorySegment segm
         segment.set(LAYOUT$formatA4B4G4R4, OFFSET$formatA4B4G4R4, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("formatA4R4G4B4"),
+        ValueLayout.JAVA_INT.withName("formatA4B4G4R4")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$formatA4R4G4B4 = PathElement.groupElement("PATH$formatA4R4G4B4");
+    public static final PathElement PATH$formatA4B4G4R4 = PathElement.groupElement("PATH$formatA4B4G4R4");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$formatA4R4G4B4 = (OfInt) LAYOUT.select(PATH$formatA4R4G4B4);
+    public static final OfInt LAYOUT$formatA4B4G4R4 = (OfInt) LAYOUT.select(PATH$formatA4B4G4R4);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$formatA4R4G4B4 = LAYOUT$formatA4R4G4B4.byteSize();
+    public static final long SIZE$formatA4B4G4R4 = LAYOUT$formatA4B4G4R4.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$formatA4R4G4B4 = LAYOUT.byteOffset(PATH$formatA4R4G4B4);
+    public static final long OFFSET$formatA4B4G4R4 = LAYOUT.byteOffset(PATH$formatA4B4G4R4);
 }

@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryMapFlags.html">VkMemoryMapFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryMapFlags.html"><code>VkMemoryMapFlags</code></a>
 public final class VkMemoryMapFlags {
     public static final int PLACED_EXT = 0x1;
 

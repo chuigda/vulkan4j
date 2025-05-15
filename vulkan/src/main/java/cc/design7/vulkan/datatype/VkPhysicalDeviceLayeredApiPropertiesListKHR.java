@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceLayeredApiPropertiesListKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceLayeredApiPropertiesListKHR.html"><code>VkPhysicalDeviceLayeredApiPropertiesListKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceLayeredApiPropertiesListKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t layeredApiCount;
+///     VkPhysicalDeviceLayeredApiPropertiesKHR* pLayeredApis;
+/// } VkPhysicalDeviceLayeredApiPropertiesListKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR`
+///
+/// The {@link VkPhysicalDeviceLayeredApiPropertiesListKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceLayeredApiPropertiesListKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceLayeredApiPropertiesListKHR.html">VkPhysicalDeviceLayeredApiPropertiesListKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceLayeredApiPropertiesListKHR.html"><code>VkPhysicalDeviceLayeredApiPropertiesListKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceLayeredApiPropertiesListKHR {
-        sType(VkStructureType.PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR);
-    }
-
     public static VkPhysicalDeviceLayeredApiPropertiesListKHR allocate(Arena arena) {
-        return new VkPhysicalDeviceLayeredApiPropertiesListKHR(arena.allocate(LAYOUT));
+        VkPhysicalDeviceLayeredApiPropertiesListKHR ret = new VkPhysicalDeviceLayeredApiPropertiesListKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR);
+        return ret;
     }
 
     public static VkPhysicalDeviceLayeredApiPropertiesListKHR[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
         VkPhysicalDeviceLayeredApiPropertiesListKHR[] ret = new VkPhysicalDeviceLayeredApiPropertiesListKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceLayeredApiPropertiesListKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("layeredApiCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceLayeredApiPropertiesKHR.LAYOUT).withName("pLayeredApis")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$layeredApiCount = PathElement.groupElement("PATH$layeredApiCount");
-    public static final PathElement PATH$pLayeredApis = PathElement.groupElement("PATH$pLayeredApis");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$layeredApiCount = (OfInt) LAYOUT.select(PATH$layeredApiCount);
-    public static final AddressLayout LAYOUT$pLayeredApis = (AddressLayout) LAYOUT.select(PATH$pLayeredApis);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$layeredApiCount = LAYOUT$layeredApiCount.byteSize();
-    public static final long SIZE$pLayeredApis = LAYOUT$pLayeredApis.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$layeredApiCount = LAYOUT.byteOffset(PATH$layeredApiCount);
-    public static final long OFFSET$pLayeredApis = LAYOUT.byteOffset(PATH$pLayeredApis);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -125,7 +120,7 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
 
     public @Nullable VkPhysicalDeviceLayeredApiPropertiesKHR pLayeredApis() {
         MemorySegment s = pLayeredApisRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkPhysicalDeviceLayeredApiPropertiesKHR(s);
@@ -138,7 +133,7 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
 
     @unsafe public @Nullable VkPhysicalDeviceLayeredApiPropertiesKHR[] pLayeredApis(int assumedCount) {
         MemorySegment s = pLayeredApisRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -150,4 +145,31 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("layeredApiCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceLayeredApiPropertiesKHR.LAYOUT).withName("pLayeredApis")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$layeredApiCount = PathElement.groupElement("PATH$layeredApiCount");
+    public static final PathElement PATH$pLayeredApis = PathElement.groupElement("PATH$pLayeredApis");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$layeredApiCount = (OfInt) LAYOUT.select(PATH$layeredApiCount);
+    public static final AddressLayout LAYOUT$pLayeredApis = (AddressLayout) LAYOUT.select(PATH$pLayeredApis);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$layeredApiCount = LAYOUT$layeredApiCount.byteSize();
+    public static final long SIZE$pLayeredApis = LAYOUT$pLayeredApis.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$layeredApiCount = LAYOUT.byteOffset(PATH$layeredApiCount);
+    public static final long OFFSET$pLayeredApis = LAYOUT.byteOffset(PATH$pLayeredApis);
 }

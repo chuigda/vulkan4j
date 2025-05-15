@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLogicOp.html">VkLogicOp</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLogicOp.html"><code>VkLogicOp</code></a>
 public final class VkLogicOp {
     public static final int CLEAR = 0x0;
     public static final int AND = 0x1;

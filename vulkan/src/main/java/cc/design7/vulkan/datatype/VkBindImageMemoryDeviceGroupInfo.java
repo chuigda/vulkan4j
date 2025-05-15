@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkBindImageMemoryDeviceGroupInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindImageMemoryDeviceGroupInfo.html"><code>VkBindImageMemoryDeviceGroupInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkBindImageMemoryDeviceGroupInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t deviceIndexCount;
+///     uint32_t const* pDeviceIndices;
+///     uint32_t splitInstanceBindRegionCount;
+///     VkRect2D const* pSplitInstanceBindRegions;
+/// } VkBindImageMemoryDeviceGroupInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO`
+///
+/// The {@link VkBindImageMemoryDeviceGroupInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkBindImageMemoryDeviceGroupInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindImageMemoryDeviceGroupInfo.html">VkBindImageMemoryDeviceGroupInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindImageMemoryDeviceGroupInfo.html"><code>VkBindImageMemoryDeviceGroupInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkBindImageMemoryDeviceGroupInfo {
-        sType(VkStructureType.BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO);
-    }
-
     public static VkBindImageMemoryDeviceGroupInfo allocate(Arena arena) {
-        return new VkBindImageMemoryDeviceGroupInfo(arena.allocate(LAYOUT));
+        VkBindImageMemoryDeviceGroupInfo ret = new VkBindImageMemoryDeviceGroupInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO);
+        return ret;
     }
 
     public static VkBindImageMemoryDeviceGroupInfo[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
         VkBindImageMemoryDeviceGroupInfo[] ret = new VkBindImageMemoryDeviceGroupInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkBindImageMemoryDeviceGroupInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO);
         }
         return ret;
     }
@@ -59,43 +80,9 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("deviceIndexCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDeviceIndices"),
-        ValueLayout.JAVA_INT.withName("splitInstanceBindRegionCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pSplitInstanceBindRegions")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$deviceIndexCount = PathElement.groupElement("PATH$deviceIndexCount");
-    public static final PathElement PATH$pDeviceIndices = PathElement.groupElement("PATH$pDeviceIndices");
-    public static final PathElement PATH$splitInstanceBindRegionCount = PathElement.groupElement("PATH$splitInstanceBindRegionCount");
-    public static final PathElement PATH$pSplitInstanceBindRegions = PathElement.groupElement("PATH$pSplitInstanceBindRegions");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$deviceIndexCount = (OfInt) LAYOUT.select(PATH$deviceIndexCount);
-    public static final AddressLayout LAYOUT$pDeviceIndices = (AddressLayout) LAYOUT.select(PATH$pDeviceIndices);
-    public static final OfInt LAYOUT$splitInstanceBindRegionCount = (OfInt) LAYOUT.select(PATH$splitInstanceBindRegionCount);
-    public static final AddressLayout LAYOUT$pSplitInstanceBindRegions = (AddressLayout) LAYOUT.select(PATH$pSplitInstanceBindRegions);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$deviceIndexCount = LAYOUT$deviceIndexCount.byteSize();
-    public static final long SIZE$pDeviceIndices = LAYOUT$pDeviceIndices.byteSize();
-    public static final long SIZE$splitInstanceBindRegionCount = LAYOUT$splitInstanceBindRegionCount.byteSize();
-    public static final long SIZE$pSplitInstanceBindRegions = LAYOUT$pSplitInstanceBindRegions.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$deviceIndexCount = LAYOUT.byteOffset(PATH$deviceIndexCount);
-    public static final long OFFSET$pDeviceIndices = LAYOUT.byteOffset(PATH$pDeviceIndices);
-    public static final long OFFSET$splitInstanceBindRegionCount = LAYOUT.byteOffset(PATH$splitInstanceBindRegionCount);
-    public static final long OFFSET$pSplitInstanceBindRegions = LAYOUT.byteOffset(PATH$pSplitInstanceBindRegions);
+    public void autoInit() {
+        sType(VkStructureType.BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -139,7 +126,7 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
     /// writing to the buffer.
     public @Nullable @unsigned IntPtr pDeviceIndices() {
         MemorySegment s = pDeviceIndicesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -168,7 +155,7 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
 
     public @Nullable VkRect2D pSplitInstanceBindRegions() {
         MemorySegment s = pSplitInstanceBindRegionsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkRect2D(s);
@@ -181,7 +168,7 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
 
     @unsafe public @Nullable VkRect2D[] pSplitInstanceBindRegions(int assumedCount) {
         MemorySegment s = pSplitInstanceBindRegionsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -193,4 +180,41 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("deviceIndexCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDeviceIndices"),
+        ValueLayout.JAVA_INT.withName("splitInstanceBindRegionCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pSplitInstanceBindRegions")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$deviceIndexCount = PathElement.groupElement("PATH$deviceIndexCount");
+    public static final PathElement PATH$pDeviceIndices = PathElement.groupElement("PATH$pDeviceIndices");
+    public static final PathElement PATH$splitInstanceBindRegionCount = PathElement.groupElement("PATH$splitInstanceBindRegionCount");
+    public static final PathElement PATH$pSplitInstanceBindRegions = PathElement.groupElement("PATH$pSplitInstanceBindRegions");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$deviceIndexCount = (OfInt) LAYOUT.select(PATH$deviceIndexCount);
+    public static final AddressLayout LAYOUT$pDeviceIndices = (AddressLayout) LAYOUT.select(PATH$pDeviceIndices);
+    public static final OfInt LAYOUT$splitInstanceBindRegionCount = (OfInt) LAYOUT.select(PATH$splitInstanceBindRegionCount);
+    public static final AddressLayout LAYOUT$pSplitInstanceBindRegions = (AddressLayout) LAYOUT.select(PATH$pSplitInstanceBindRegions);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$deviceIndexCount = LAYOUT$deviceIndexCount.byteSize();
+    public static final long SIZE$pDeviceIndices = LAYOUT$pDeviceIndices.byteSize();
+    public static final long SIZE$splitInstanceBindRegionCount = LAYOUT$splitInstanceBindRegionCount.byteSize();
+    public static final long SIZE$pSplitInstanceBindRegions = LAYOUT$pSplitInstanceBindRegions.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$deviceIndexCount = LAYOUT.byteOffset(PATH$deviceIndexCount);
+    public static final long OFFSET$pDeviceIndices = LAYOUT.byteOffset(PATH$pDeviceIndices);
+    public static final long OFFSET$splitInstanceBindRegionCount = LAYOUT.byteOffset(PATH$splitInstanceBindRegionCount);
+    public static final long OFFSET$pSplitInstanceBindRegions = LAYOUT.byteOffset(PATH$pSplitInstanceBindRegions);
 }

@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBuildMicromapFlagsEXT.html">VkBuildMicromapFlagsEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBuildMicromapFlagsEXT.html"><code>VkBuildMicromapFlagsEXT</code></a>
 public final class VkBuildMicromapFlagsEXT {
     public static final int ALLOW_COMPACTION = 0x4;
     public static final int PREFER_FAST_BUILD = 0x2;

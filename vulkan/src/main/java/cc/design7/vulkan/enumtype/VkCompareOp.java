@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCompareOp.html">VkCompareOp</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCompareOp.html"><code>VkCompareOp</code></a>
 public final class VkCompareOp {
     public static final int NEVER = 0x0;
     public static final int LESS = 0x1;

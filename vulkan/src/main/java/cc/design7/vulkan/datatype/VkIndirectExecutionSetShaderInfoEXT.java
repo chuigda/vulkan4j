@@ -14,8 +14,32 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkIndirectExecutionSetShaderInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectExecutionSetShaderInfoEXT.html"><code>VkIndirectExecutionSetShaderInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkIndirectExecutionSetShaderInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t shaderCount;
+///     VkShaderEXT const* pInitialShaders;
+///     VkIndirectExecutionSetShaderLayoutInfoEXT const* pSetLayoutInfos;
+///     uint32_t maxShaderCount;
+///     uint32_t pushConstantRangeCount;
+///     VkPushConstantRange const* pPushConstantRanges;
+/// } VkIndirectExecutionSetShaderInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_INFO_EXT`
+///
+/// The {@link VkIndirectExecutionSetShaderInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkIndirectExecutionSetShaderInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +48,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectExecutionSetShaderInfoEXT.html">VkIndirectExecutionSetShaderInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectExecutionSetShaderInfoEXT.html"><code>VkIndirectExecutionSetShaderInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkIndirectExecutionSetShaderInfoEXT {
-        sType(VkStructureType.INDIRECT_EXECUTION_SET_SHADER_INFO_EXT);
-    }
-
     public static VkIndirectExecutionSetShaderInfoEXT allocate(Arena arena) {
-        return new VkIndirectExecutionSetShaderInfoEXT(arena.allocate(LAYOUT));
+        VkIndirectExecutionSetShaderInfoEXT ret = new VkIndirectExecutionSetShaderInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.INDIRECT_EXECUTION_SET_SHADER_INFO_EXT);
+        return ret;
     }
 
     public static VkIndirectExecutionSetShaderInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +63,7 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         VkIndirectExecutionSetShaderInfoEXT[] ret = new VkIndirectExecutionSetShaderInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkIndirectExecutionSetShaderInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.INDIRECT_EXECUTION_SET_SHADER_INFO_EXT);
         }
         return ret;
     }
@@ -55,6 +78,145 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         VkIndirectExecutionSetShaderInfoEXT[] ret = allocate(arena, src.length);
         for (int i = 0; i < src.length; i ++) {
             ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.INDIRECT_EXECUTION_SET_SHADER_INFO_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int shaderCount() {
+        return segment.get(LAYOUT$shaderCount, OFFSET$shaderCount);
+    }
+
+    public void shaderCount(@unsigned int value) {
+        segment.set(LAYOUT$shaderCount, OFFSET$shaderCount, value);
+    }
+
+    public @pointer(comment="VkShaderEXT*") MemorySegment pInitialShadersRaw() {
+        return segment.get(LAYOUT$pInitialShaders, OFFSET$pInitialShaders);
+    }
+
+    public void pInitialShadersRaw(@pointer(comment="VkShaderEXT*") MemorySegment value) {
+        segment.set(LAYOUT$pInitialShaders, OFFSET$pInitialShaders, value);
+    }
+
+    /// Note: the returned {@link VkShaderEXT.Buffer} does not have correct {@link VkShaderEXT.Buffer#size}
+    /// property. It's up to user to track the size of the buffer, and use
+    /// {@link VkShaderEXT.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// buffer.
+    public @Nullable VkShaderEXT.Buffer pInitialShaders() {
+        MemorySegment s = pInitialShadersRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkShaderEXT.Buffer(s);
+    }
+
+
+    public @pointer(comment="VkIndirectExecutionSetShaderLayoutInfoEXT*") MemorySegment pSetLayoutInfosRaw() {
+        return segment.get(LAYOUT$pSetLayoutInfos, OFFSET$pSetLayoutInfos);
+    }
+
+    public void pSetLayoutInfosRaw(@pointer(comment="VkIndirectExecutionSetShaderLayoutInfoEXT*") MemorySegment value) {
+        segment.set(LAYOUT$pSetLayoutInfos, OFFSET$pSetLayoutInfos, value);
+    }
+
+    public @Nullable VkIndirectExecutionSetShaderLayoutInfoEXT pSetLayoutInfos() {
+        MemorySegment s = pSetLayoutInfosRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkIndirectExecutionSetShaderLayoutInfoEXT(s);
+    }
+
+    public void pSetLayoutInfos(@Nullable VkIndirectExecutionSetShaderLayoutInfoEXT value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSetLayoutInfosRaw(s);
+    }
+
+    @unsafe public @Nullable VkIndirectExecutionSetShaderLayoutInfoEXT[] pSetLayoutInfos(int assumedCount) {
+        MemorySegment s = pSetLayoutInfosRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkIndirectExecutionSetShaderLayoutInfoEXT.SIZE);
+        VkIndirectExecutionSetShaderLayoutInfoEXT[] ret = new VkIndirectExecutionSetShaderLayoutInfoEXT[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkIndirectExecutionSetShaderLayoutInfoEXT(s.asSlice(i * VkIndirectExecutionSetShaderLayoutInfoEXT.SIZE, VkIndirectExecutionSetShaderLayoutInfoEXT.SIZE));
+        }
+        return ret;
+    }
+
+    public @unsigned int maxShaderCount() {
+        return segment.get(LAYOUT$maxShaderCount, OFFSET$maxShaderCount);
+    }
+
+    public void maxShaderCount(@unsigned int value) {
+        segment.set(LAYOUT$maxShaderCount, OFFSET$maxShaderCount, value);
+    }
+
+    public @unsigned int pushConstantRangeCount() {
+        return segment.get(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount);
+    }
+
+    public void pushConstantRangeCount(@unsigned int value) {
+        segment.set(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount, value);
+    }
+
+    public @pointer(comment="VkPushConstantRange*") MemorySegment pPushConstantRangesRaw() {
+        return segment.get(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges);
+    }
+
+    public void pPushConstantRangesRaw(@pointer(comment="VkPushConstantRange*") MemorySegment value) {
+        segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
+    }
+
+    public @Nullable VkPushConstantRange pPushConstantRanges() {
+        MemorySegment s = pPushConstantRangesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPushConstantRange(s);
+    }
+
+    public void pPushConstantRanges(@Nullable VkPushConstantRange value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pPushConstantRangesRaw(s);
+    }
+
+    @unsafe public @Nullable VkPushConstantRange[] pPushConstantRanges(int assumedCount) {
+        MemorySegment s = pPushConstantRangesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkPushConstantRange.SIZE);
+        VkPushConstantRange[] ret = new VkPushConstantRange[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkPushConstantRange(s.asSlice(i * VkPushConstantRange.SIZE, VkPushConstantRange.SIZE));
         }
         return ret;
     }
@@ -106,140 +268,4 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
     public static final long OFFSET$maxShaderCount = LAYOUT.byteOffset(PATH$maxShaderCount);
     public static final long OFFSET$pushConstantRangeCount = LAYOUT.byteOffset(PATH$pushConstantRangeCount);
     public static final long OFFSET$pPushConstantRanges = LAYOUT.byteOffset(PATH$pPushConstantRanges);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @unsigned int shaderCount() {
-        return segment.get(LAYOUT$shaderCount, OFFSET$shaderCount);
-    }
-
-    public void shaderCount(@unsigned int value) {
-        segment.set(LAYOUT$shaderCount, OFFSET$shaderCount, value);
-    }
-
-    public @pointer(comment="VkShaderEXT*") MemorySegment pInitialShadersRaw() {
-        return segment.get(LAYOUT$pInitialShaders, OFFSET$pInitialShaders);
-    }
-
-    public void pInitialShadersRaw(@pointer(comment="VkShaderEXT*") MemorySegment value) {
-        segment.set(LAYOUT$pInitialShaders, OFFSET$pInitialShaders, value);
-    }
-
-    /// Note: the returned {@link VkShaderEXT.Buffer} does not have correct {@link VkShaderEXT.Buffer#size}
-    /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkShaderEXT.Buffer#reinterpret} to set the size before actually reading from or writing to the
-    /// buffer.
-    public @Nullable VkShaderEXT.Buffer pInitialShaders() {
-        MemorySegment s = pInitialShadersRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkShaderEXT.Buffer(s);
-    }
-
-
-    public @pointer(comment="VkIndirectExecutionSetShaderLayoutInfoEXT*") MemorySegment pSetLayoutInfosRaw() {
-        return segment.get(LAYOUT$pSetLayoutInfos, OFFSET$pSetLayoutInfos);
-    }
-
-    public void pSetLayoutInfosRaw(@pointer(comment="VkIndirectExecutionSetShaderLayoutInfoEXT*") MemorySegment value) {
-        segment.set(LAYOUT$pSetLayoutInfos, OFFSET$pSetLayoutInfos, value);
-    }
-
-    public @Nullable VkIndirectExecutionSetShaderLayoutInfoEXT pSetLayoutInfos() {
-        MemorySegment s = pSetLayoutInfosRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkIndirectExecutionSetShaderLayoutInfoEXT(s);
-    }
-
-    public void pSetLayoutInfos(@Nullable VkIndirectExecutionSetShaderLayoutInfoEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pSetLayoutInfosRaw(s);
-    }
-
-    @unsafe public @Nullable VkIndirectExecutionSetShaderLayoutInfoEXT[] pSetLayoutInfos(int assumedCount) {
-        MemorySegment s = pSetLayoutInfosRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkIndirectExecutionSetShaderLayoutInfoEXT.SIZE);
-        VkIndirectExecutionSetShaderLayoutInfoEXT[] ret = new VkIndirectExecutionSetShaderLayoutInfoEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectExecutionSetShaderLayoutInfoEXT(s.asSlice(i * VkIndirectExecutionSetShaderLayoutInfoEXT.SIZE, VkIndirectExecutionSetShaderLayoutInfoEXT.SIZE));
-        }
-        return ret;
-    }
-
-    public @unsigned int maxShaderCount() {
-        return segment.get(LAYOUT$maxShaderCount, OFFSET$maxShaderCount);
-    }
-
-    public void maxShaderCount(@unsigned int value) {
-        segment.set(LAYOUT$maxShaderCount, OFFSET$maxShaderCount, value);
-    }
-
-    public @unsigned int pushConstantRangeCount() {
-        return segment.get(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount);
-    }
-
-    public void pushConstantRangeCount(@unsigned int value) {
-        segment.set(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount, value);
-    }
-
-    public @pointer(comment="VkPushConstantRange*") MemorySegment pPushConstantRangesRaw() {
-        return segment.get(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges);
-    }
-
-    public void pPushConstantRangesRaw(@pointer(comment="VkPushConstantRange*") MemorySegment value) {
-        segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
-    }
-
-    public @Nullable VkPushConstantRange pPushConstantRanges() {
-        MemorySegment s = pPushConstantRangesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPushConstantRange(s);
-    }
-
-    public void pPushConstantRanges(@Nullable VkPushConstantRange value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pPushConstantRangesRaw(s);
-    }
-
-    @unsafe public @Nullable VkPushConstantRange[] pPushConstantRanges(int assumedCount) {
-        MemorySegment s = pPushConstantRangesRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkPushConstantRange.SIZE);
-        VkPushConstantRange[] ret = new VkPushConstantRange[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPushConstantRange(s.asSlice(i * VkPushConstantRange.SIZE, VkPushConstantRange.SIZE));
-        }
-        return ret;
-    }
-
 }

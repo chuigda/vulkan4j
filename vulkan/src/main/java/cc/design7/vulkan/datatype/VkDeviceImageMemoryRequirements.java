@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDeviceImageMemoryRequirements} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceImageMemoryRequirements.html"><code>VkDeviceImageMemoryRequirements</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDeviceImageMemoryRequirements {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkImageCreateInfo const* pCreateInfo;
+///     VkImageAspectFlags planeAspect;
+/// } VkDeviceImageMemoryRequirements;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_DEVICE_IMAGE_MEMORY_REQUIREMENTS`
+///
+/// The {@link VkDeviceImageMemoryRequirements#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkDeviceImageMemoryRequirements#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceImageMemoryRequirements.html">VkDeviceImageMemoryRequirements</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceImageMemoryRequirements.html"><code>VkDeviceImageMemoryRequirements</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) implements IPointer {
-    public VkDeviceImageMemoryRequirements {
-        sType(VkStructureType.DEVICE_IMAGE_MEMORY_REQUIREMENTS);
-    }
-
     public static VkDeviceImageMemoryRequirements allocate(Arena arena) {
-        return new VkDeviceImageMemoryRequirements(arena.allocate(LAYOUT));
+        VkDeviceImageMemoryRequirements ret = new VkDeviceImageMemoryRequirements(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.DEVICE_IMAGE_MEMORY_REQUIREMENTS);
+        return ret;
     }
 
     public static VkDeviceImageMemoryRequirements[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
         VkDeviceImageMemoryRequirements[] ret = new VkDeviceImageMemoryRequirements[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkDeviceImageMemoryRequirements(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.DEVICE_IMAGE_MEMORY_REQUIREMENTS);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withTargetLayout(VkImageCreateInfo.LAYOUT).withName("pCreateInfo"),
-        ValueLayout.JAVA_INT.withName("planeAspect")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$pCreateInfo = PathElement.groupElement("PATH$pCreateInfo");
-    public static final PathElement PATH$planeAspect = PathElement.groupElement("PATH$planeAspect");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$pCreateInfo = (AddressLayout) LAYOUT.select(PATH$pCreateInfo);
-    public static final OfInt LAYOUT$planeAspect = (OfInt) LAYOUT.select(PATH$planeAspect);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$pCreateInfo = LAYOUT$pCreateInfo.byteSize();
-    public static final long SIZE$planeAspect = LAYOUT$planeAspect.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$pCreateInfo = LAYOUT.byteOffset(PATH$pCreateInfo);
-    public static final long OFFSET$planeAspect = LAYOUT.byteOffset(PATH$planeAspect);
+    public void autoInit() {
+        sType(VkStructureType.DEVICE_IMAGE_MEMORY_REQUIREMENTS);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -117,7 +112,7 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
 
     public @Nullable VkImageCreateInfo pCreateInfo() {
         MemorySegment s = pCreateInfoRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkImageCreateInfo(s);
@@ -130,7 +125,7 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
 
     @unsafe public @Nullable VkImageCreateInfo[] pCreateInfo(int assumedCount) {
         MemorySegment s = pCreateInfoRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -150,4 +145,31 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$planeAspect, OFFSET$planeAspect, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withTargetLayout(VkImageCreateInfo.LAYOUT).withName("pCreateInfo"),
+        ValueLayout.JAVA_INT.withName("planeAspect")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$pCreateInfo = PathElement.groupElement("PATH$pCreateInfo");
+    public static final PathElement PATH$planeAspect = PathElement.groupElement("PATH$planeAspect");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$pCreateInfo = (AddressLayout) LAYOUT.select(PATH$pCreateInfo);
+    public static final OfInt LAYOUT$planeAspect = (OfInt) LAYOUT.select(PATH$planeAspect);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pCreateInfo = LAYOUT$pCreateInfo.byteSize();
+    public static final long SIZE$planeAspect = LAYOUT$planeAspect.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$pCreateInfo = LAYOUT.byteOffset(PATH$pCreateInfo);
+    public static final long OFFSET$planeAspect = LAYOUT.byteOffset(PATH$planeAspect);
 }

@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderingFlags.html">VkRenderingFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderingFlags.html"><code>VkRenderingFlags</code></a>
 public final class VkRenderingFlags {
     public static final int CONTENTS_INLINE_KHR = 0x10;
     public static final int CONTENTS_SECONDARY_COMMAND_BUFFERS = 0x1;

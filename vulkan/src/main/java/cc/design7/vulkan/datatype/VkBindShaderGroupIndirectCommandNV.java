@@ -14,8 +14,17 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkBindShaderGroupIndirectCommandNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindShaderGroupIndirectCommandNV.html"><code>VkBindShaderGroupIndirectCommandNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkBindShaderGroupIndirectCommandNV {
+///     uint32_t groupIndex;
+/// } VkBindShaderGroupIndirectCommandNV;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +33,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindShaderGroupIndirectCommandNV.html">VkBindShaderGroupIndirectCommandNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindShaderGroupIndirectCommandNV.html"><code>VkBindShaderGroupIndirectCommandNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkBindShaderGroupIndirectCommandNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkBindShaderGroupIndirectCommandNV allocate(Arena arena) {
-        return new VkBindShaderGroupIndirectCommandNV(arena.allocate(LAYOUT));
+        VkBindShaderGroupIndirectCommandNV ret = new VkBindShaderGroupIndirectCommandNV(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkBindShaderGroupIndirectCommandNV[] allocate(Arena arena, int count) {
@@ -55,6 +65,14 @@ public record VkBindShaderGroupIndirectCommandNV(@NotNull MemorySegment segment)
         return ret;
     }
 
+    public @unsigned int groupIndex() {
+        return segment.get(LAYOUT$groupIndex, OFFSET$groupIndex);
+    }
+
+    public void groupIndex(@unsigned int value) {
+        segment.set(LAYOUT$groupIndex, OFFSET$groupIndex, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("groupIndex")
     );
@@ -67,13 +85,4 @@ public record VkBindShaderGroupIndirectCommandNV(@NotNull MemorySegment segment)
     public static final long SIZE$groupIndex = LAYOUT$groupIndex.byteSize();
 
     public static final long OFFSET$groupIndex = LAYOUT.byteOffset(PATH$groupIndex);
-
-    public @unsigned int groupIndex() {
-        return segment.get(LAYOUT$groupIndex, OFFSET$groupIndex);
-    }
-
-    public void groupIndex(@unsigned int value) {
-        segment.set(LAYOUT$groupIndex, OFFSET$groupIndex, value);
-    }
-
 }

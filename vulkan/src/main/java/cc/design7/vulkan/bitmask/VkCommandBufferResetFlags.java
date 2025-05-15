@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCommandBufferResetFlags.html">VkCommandBufferResetFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCommandBufferResetFlags.html"><code>VkCommandBufferResetFlags</code></a>
 public final class VkCommandBufferResetFlags {
     public static final int RELEASE_RESOURCES = 0x1;
 

@@ -14,8 +14,31 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkApplicationInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkApplicationInfo.html"><code>VkApplicationInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkApplicationInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     char const* pApplicationName;
+///     uint32_t applicationVersion;
+///     char const* pEngineName;
+///     uint32_t engineVersion;
+///     uint32_t apiVersion;
+/// } VkApplicationInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_APPLICATION_INFO`
+///
+/// The {@link VkApplicationInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkApplicationInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +47,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkApplicationInfo.html">VkApplicationInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkApplicationInfo.html"><code>VkApplicationInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkApplicationInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkApplicationInfo {
-        sType(VkStructureType.APPLICATION_INFO);
-    }
-
     public static VkApplicationInfo allocate(Arena arena) {
-        return new VkApplicationInfo(arena.allocate(LAYOUT));
+        VkApplicationInfo ret = new VkApplicationInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.APPLICATION_INFO);
+        return ret;
     }
 
     public static VkApplicationInfo[] allocate(Arena arena, int count) {
@@ -41,6 +62,7 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IPoin
         VkApplicationInfo[] ret = new VkApplicationInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkApplicationInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.APPLICATION_INFO);
         }
         return ret;
     }
@@ -57,6 +79,104 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IPoin
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.APPLICATION_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @pointer(comment="byte*") MemorySegment pApplicationNameRaw() {
+        return segment.get(LAYOUT$pApplicationName, OFFSET$pApplicationName);
+    }
+
+    public void pApplicationNameRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pApplicationName, OFFSET$pApplicationName, value);
+    }
+
+    /// Note: the returned {@link BytePtr} does not have correct
+    /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
+    /// writing to the buffer.
+    public @Nullable BytePtr pApplicationName() {
+        MemorySegment s = pApplicationNameRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new BytePtr(s);
+    }
+
+    public void pApplicationName(@Nullable BytePtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pApplicationNameRaw(s);
+    }
+
+    public @unsigned int applicationVersion() {
+        return segment.get(LAYOUT$applicationVersion, OFFSET$applicationVersion);
+    }
+
+    public void applicationVersion(@unsigned int value) {
+        segment.set(LAYOUT$applicationVersion, OFFSET$applicationVersion, value);
+    }
+
+    public @pointer(comment="byte*") MemorySegment pEngineNameRaw() {
+        return segment.get(LAYOUT$pEngineName, OFFSET$pEngineName);
+    }
+
+    public void pEngineNameRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pEngineName, OFFSET$pEngineName, value);
+    }
+
+    /// Note: the returned {@link BytePtr} does not have correct
+    /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
+    /// writing to the buffer.
+    public @Nullable BytePtr pEngineName() {
+        MemorySegment s = pEngineNameRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new BytePtr(s);
+    }
+
+    public void pEngineName(@Nullable BytePtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pEngineNameRaw(s);
+    }
+
+    public @unsigned int engineVersion() {
+        return segment.get(LAYOUT$engineVersion, OFFSET$engineVersion);
+    }
+
+    public void engineVersion(@unsigned int value) {
+        segment.set(LAYOUT$engineVersion, OFFSET$engineVersion, value);
+    }
+
+    public @unsigned int apiVersion() {
+        return segment.get(LAYOUT$apiVersion, OFFSET$apiVersion);
+    }
+
+    public void apiVersion(@unsigned int value) {
+        segment.set(LAYOUT$apiVersion, OFFSET$apiVersion, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -101,99 +221,4 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IPoin
     public static final long OFFSET$pEngineName = LAYOUT.byteOffset(PATH$pEngineName);
     public static final long OFFSET$engineVersion = LAYOUT.byteOffset(PATH$engineVersion);
     public static final long OFFSET$apiVersion = LAYOUT.byteOffset(PATH$apiVersion);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @pointer(comment="byte*") MemorySegment pApplicationNameRaw() {
-        return segment.get(LAYOUT$pApplicationName, OFFSET$pApplicationName);
-    }
-
-    public void pApplicationNameRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pApplicationName, OFFSET$pApplicationName, value);
-    }
-
-    /// Note: the returned {@link BytePtr} does not have correct
-    /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
-    /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
-    /// writing to the buffer.
-    public @Nullable BytePtr pApplicationName() {
-        MemorySegment s = pApplicationNameRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new BytePtr(s);
-    }
-
-    public void pApplicationName(@Nullable BytePtr value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pApplicationNameRaw(s);
-    }
-
-    public @unsigned int applicationVersion() {
-        return segment.get(LAYOUT$applicationVersion, OFFSET$applicationVersion);
-    }
-
-    public void applicationVersion(@unsigned int value) {
-        segment.set(LAYOUT$applicationVersion, OFFSET$applicationVersion, value);
-    }
-
-    public @pointer(comment="byte*") MemorySegment pEngineNameRaw() {
-        return segment.get(LAYOUT$pEngineName, OFFSET$pEngineName);
-    }
-
-    public void pEngineNameRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pEngineName, OFFSET$pEngineName, value);
-    }
-
-    /// Note: the returned {@link BytePtr} does not have correct
-    /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
-    /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
-    /// writing to the buffer.
-    public @Nullable BytePtr pEngineName() {
-        MemorySegment s = pEngineNameRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new BytePtr(s);
-    }
-
-    public void pEngineName(@Nullable BytePtr value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pEngineNameRaw(s);
-    }
-
-    public @unsigned int engineVersion() {
-        return segment.get(LAYOUT$engineVersion, OFFSET$engineVersion);
-    }
-
-    public void engineVersion(@unsigned int value) {
-        segment.set(LAYOUT$engineVersion, OFFSET$engineVersion, value);
-    }
-
-    public @unsigned int apiVersion() {
-        return segment.get(LAYOUT$apiVersion, OFFSET$apiVersion);
-    }
-
-    public void apiVersion(@unsigned int value) {
-        segment.set(LAYOUT$apiVersion, OFFSET$apiVersion, value);
-    }
-
 }

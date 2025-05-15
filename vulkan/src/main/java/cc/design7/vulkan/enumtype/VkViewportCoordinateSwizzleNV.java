@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkViewportCoordinateSwizzleNV.html">VkViewportCoordinateSwizzleNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkViewportCoordinateSwizzleNV.html"><code>VkViewportCoordinateSwizzleNV</code></a>
 public final class VkViewportCoordinateSwizzleNV {
     public static final int POSITIVE_X = 0x0;
     public static final int NEGATIVE_X = 0x1;

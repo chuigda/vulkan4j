@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCreateFlags.html">VkImageCreateFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCreateFlags.html"><code>VkImageCreateFlags</code></a>
 public final class VkImageCreateFlags {
     public static final int _2D_ARRAY_COMPATIBLE = 0x20;
     public static final int _2D_VIEW_COMPATIBLE_EXT = 0x20000;

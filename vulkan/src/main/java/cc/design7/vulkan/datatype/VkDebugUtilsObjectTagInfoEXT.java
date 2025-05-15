@@ -14,8 +14,31 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDebugUtilsObjectTagInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDebugUtilsObjectTagInfoEXT.html"><code>VkDebugUtilsObjectTagInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDebugUtilsObjectTagInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkObjectType objectType;
+///     uint64_t objectHandle;
+///     uint64_t tagName;
+///     size_t tagSize;
+///     void const* pTag;
+/// } VkDebugUtilsObjectTagInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_TAG_INFO_EXT`
+///
+/// The {@link VkDebugUtilsObjectTagInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkDebugUtilsObjectTagInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +47,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDebugUtilsObjectTagInfoEXT.html">VkDebugUtilsObjectTagInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDebugUtilsObjectTagInfoEXT.html"><code>VkDebugUtilsObjectTagInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkDebugUtilsObjectTagInfoEXT {
-        sType(VkStructureType.DEBUG_UTILS_OBJECT_TAG_INFO_EXT);
-    }
-
     public static VkDebugUtilsObjectTagInfoEXT allocate(Arena arena) {
-        return new VkDebugUtilsObjectTagInfoEXT(arena.allocate(LAYOUT));
+        VkDebugUtilsObjectTagInfoEXT ret = new VkDebugUtilsObjectTagInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.DEBUG_UTILS_OBJECT_TAG_INFO_EXT);
+        return ret;
     }
 
     public static VkDebugUtilsObjectTagInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +62,7 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
         VkDebugUtilsObjectTagInfoEXT[] ret = new VkDebugUtilsObjectTagInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkDebugUtilsObjectTagInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.DEBUG_UTILS_OBJECT_TAG_INFO_EXT);
         }
         return ret;
     }
@@ -59,47 +81,9 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("objectType"),
-        ValueLayout.JAVA_LONG.withName("objectHandle"),
-        ValueLayout.JAVA_LONG.withName("tagName"),
-        NativeLayout.C_SIZE_T.withName("tagSize"),
-        ValueLayout.ADDRESS.withName("pTag")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$objectType = PathElement.groupElement("PATH$objectType");
-    public static final PathElement PATH$objectHandle = PathElement.groupElement("PATH$objectHandle");
-    public static final PathElement PATH$tagName = PathElement.groupElement("PATH$tagName");
-    public static final PathElement PATH$tagSize = PathElement.groupElement("PATH$tagSize");
-    public static final PathElement PATH$pTag = PathElement.groupElement("PATH$pTag");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$objectType = (OfInt) LAYOUT.select(PATH$objectType);
-    public static final OfLong LAYOUT$objectHandle = (OfLong) LAYOUT.select(PATH$objectHandle);
-    public static final OfLong LAYOUT$tagName = (OfLong) LAYOUT.select(PATH$tagName);
-    public static final AddressLayout LAYOUT$pTag = (AddressLayout) LAYOUT.select(PATH$pTag);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
-    public static final long SIZE$objectHandle = LAYOUT$objectHandle.byteSize();
-    public static final long SIZE$tagName = LAYOUT$tagName.byteSize();
-    public static final long SIZE$tagSize = NativeLayout.C_SIZE_T.byteSize();
-    public static final long SIZE$pTag = LAYOUT$pTag.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$objectType = LAYOUT.byteOffset(PATH$objectType);
-    public static final long OFFSET$objectHandle = LAYOUT.byteOffset(PATH$objectHandle);
-    public static final long OFFSET$tagName = LAYOUT.byteOffset(PATH$tagName);
-    public static final long OFFSET$tagSize = LAYOUT.byteOffset(PATH$tagSize);
-    public static final long OFFSET$pTag = LAYOUT.byteOffset(PATH$pTag);
+    public void autoInit() {
+        sType(VkStructureType.DEBUG_UTILS_OBJECT_TAG_INFO_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -165,4 +149,45 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
         pTag(pointer.segment());
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("objectType"),
+        ValueLayout.JAVA_LONG.withName("objectHandle"),
+        ValueLayout.JAVA_LONG.withName("tagName"),
+        NativeLayout.C_SIZE_T.withName("tagSize"),
+        ValueLayout.ADDRESS.withName("pTag")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$objectType = PathElement.groupElement("PATH$objectType");
+    public static final PathElement PATH$objectHandle = PathElement.groupElement("PATH$objectHandle");
+    public static final PathElement PATH$tagName = PathElement.groupElement("PATH$tagName");
+    public static final PathElement PATH$tagSize = PathElement.groupElement("PATH$tagSize");
+    public static final PathElement PATH$pTag = PathElement.groupElement("PATH$pTag");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$objectType = (OfInt) LAYOUT.select(PATH$objectType);
+    public static final OfLong LAYOUT$objectHandle = (OfLong) LAYOUT.select(PATH$objectHandle);
+    public static final OfLong LAYOUT$tagName = (OfLong) LAYOUT.select(PATH$tagName);
+    public static final AddressLayout LAYOUT$pTag = (AddressLayout) LAYOUT.select(PATH$pTag);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
+    public static final long SIZE$objectHandle = LAYOUT$objectHandle.byteSize();
+    public static final long SIZE$tagName = LAYOUT$tagName.byteSize();
+    public static final long SIZE$tagSize = NativeLayout.C_SIZE_T.byteSize();
+    public static final long SIZE$pTag = LAYOUT$pTag.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$objectType = LAYOUT.byteOffset(PATH$objectType);
+    public static final long OFFSET$objectHandle = LAYOUT.byteOffset(PATH$objectHandle);
+    public static final long OFFSET$tagName = LAYOUT.byteOffset(PATH$tagName);
+    public static final long OFFSET$tagSize = LAYOUT.byteOffset(PATH$tagSize);
+    public static final long OFFSET$pTag = LAYOUT.byteOffset(PATH$pTag);
 }

@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExportMetalObjectTypeFlagsEXT.html">VkExportMetalObjectTypeFlagsEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExportMetalObjectTypeFlagsEXT.html"><code>VkExportMetalObjectTypeFlagsEXT</code></a>
 public final class VkExportMetalObjectTypeFlagsEXT {
     public static final int METAL_BUFFER = 0x4;
     public static final int METAL_COMMAND_QUEUE = 0x2;

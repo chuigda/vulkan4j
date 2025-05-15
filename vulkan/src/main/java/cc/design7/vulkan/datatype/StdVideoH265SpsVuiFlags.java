@@ -17,6 +17,32 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoH265SpsVuiFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoH265SpsVuiFlags {
+///     uint32_t aspect_ratio_info_present_flag : 1;
+///     uint32_t overscan_info_present_flag : 1;
+///     uint32_t overscan_appropriate_flag : 1;
+///     uint32_t video_signal_type_present_flag : 1;
+///     uint32_t video_full_range_flag : 1;
+///     uint32_t colour_description_present_flag : 1;
+///     uint32_t chroma_loc_info_present_flag : 1;
+///     uint32_t neutral_chroma_indication_flag : 1;
+///     uint32_t field_seq_flag : 1;
+///     uint32_t frame_field_info_present_flag : 1;
+///     uint32_t default_display_window_flag : 1;
+///     uint32_t vui_timing_info_present_flag : 1;
+///     uint32_t vui_poc_proportional_to_timing_flag : 1;
+///     uint32_t vui_hrd_parameters_present_flag : 1;
+///     uint32_t bitstream_restriction_flag : 1;
+///     uint32_t tiles_fixed_structure_flag : 1;
+///     uint32_t motion_vectors_over_pic_boundaries_flag : 1;
+///     uint32_t restricted_ref_pic_lists_flag : 1;
+/// } StdVideoH265SpsVuiFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +54,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265SpsVuiFlags allocate(Arena arena) {
-        return new StdVideoH265SpsVuiFlags(arena.allocate(LAYOUT));
+        StdVideoH265SpsVuiFlags ret = new StdVideoH265SpsVuiFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoH265SpsVuiFlags[] allocate(Arena arena, int count) {
@@ -53,18 +80,6 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag = PathElement.groupElement("PATH$bitfield$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag");
-
-    public static final OfInt LAYOUT$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag = (OfInt) LAYOUT.select(PATH$bitfield$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag);
-
-
-    public static final long OFFSET$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag = LAYOUT.byteOffset(PATH$bitfield$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag);
 
     public boolean aspect_ratio_info_present_flag() {
         MemorySegment s = segment.asSlice(OFFSET$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag, LAYOUT$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag);
@@ -246,4 +261,15 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         BitfieldUtil.writeBit(s, 17, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$bitfield$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag = PathElement.groupElement("PATH$bitfield$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag");
+
+    public static final OfInt LAYOUT$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag = (OfInt) LAYOUT.select(PATH$bitfield$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag);
+
+
+    public static final long OFFSET$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag = LAYOUT.byteOffset(PATH$bitfield$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag);
 }

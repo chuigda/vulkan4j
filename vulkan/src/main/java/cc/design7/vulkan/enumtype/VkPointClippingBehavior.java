@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPointClippingBehavior.html">VkPointClippingBehavior</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPointClippingBehavior.html"><code>VkPointClippingBehavior</code></a>
 public final class VkPointClippingBehavior {
     public static final int ALL_CLIP_PLANES = 0x0;
     public static final int USER_CLIP_PLANES_ONLY = 0x1;

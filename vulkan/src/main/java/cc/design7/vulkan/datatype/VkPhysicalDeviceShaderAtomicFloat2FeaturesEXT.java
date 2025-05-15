@@ -14,8 +14,38 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.html"><code>VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 shaderBufferFloat16Atomics;
+///     VkBool32 shaderBufferFloat16AtomicAdd;
+///     VkBool32 shaderBufferFloat16AtomicMinMax;
+///     VkBool32 shaderBufferFloat32AtomicMinMax;
+///     VkBool32 shaderBufferFloat64AtomicMinMax;
+///     VkBool32 shaderSharedFloat16Atomics;
+///     VkBool32 shaderSharedFloat16AtomicAdd;
+///     VkBool32 shaderSharedFloat16AtomicMinMax;
+///     VkBool32 shaderSharedFloat32AtomicMinMax;
+///     VkBool32 shaderSharedFloat64AtomicMinMax;
+///     VkBool32 shaderImageFloat32AtomicMinMax;
+///     VkBool32 sparseImageFloat32AtomicMinMax;
+/// } VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_2_FEATURES_EXT`
+///
+/// The {@link VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +54,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.html">VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.html"><code>VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT {
-        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_2_FEATURES_EXT);
-    }
-
     public static VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(arena.allocate(LAYOUT));
+        VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT ret = new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_2_FEATURES_EXT);
+        return ret;
     }
 
     public static VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT[] allocate(Arena arena, int count) {
@@ -41,6 +69,7 @@ public record VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(@NotNull MemorySegme
         VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT[] ret = new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_2_FEATURES_EXT);
         }
         return ret;
     }
@@ -59,83 +88,9 @@ public record VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(@NotNull MemorySegme
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("shaderBufferFloat16Atomics"),
-        ValueLayout.JAVA_INT.withName("shaderBufferFloat16AtomicAdd"),
-        ValueLayout.JAVA_INT.withName("shaderBufferFloat16AtomicMinMax"),
-        ValueLayout.JAVA_INT.withName("shaderBufferFloat32AtomicMinMax"),
-        ValueLayout.JAVA_INT.withName("shaderBufferFloat64AtomicMinMax"),
-        ValueLayout.JAVA_INT.withName("shaderSharedFloat16Atomics"),
-        ValueLayout.JAVA_INT.withName("shaderSharedFloat16AtomicAdd"),
-        ValueLayout.JAVA_INT.withName("shaderSharedFloat16AtomicMinMax"),
-        ValueLayout.JAVA_INT.withName("shaderSharedFloat32AtomicMinMax"),
-        ValueLayout.JAVA_INT.withName("shaderSharedFloat64AtomicMinMax"),
-        ValueLayout.JAVA_INT.withName("shaderImageFloat32AtomicMinMax"),
-        ValueLayout.JAVA_INT.withName("sparseImageFloat32AtomicMinMax")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shaderBufferFloat16Atomics = PathElement.groupElement("PATH$shaderBufferFloat16Atomics");
-    public static final PathElement PATH$shaderBufferFloat16AtomicAdd = PathElement.groupElement("PATH$shaderBufferFloat16AtomicAdd");
-    public static final PathElement PATH$shaderBufferFloat16AtomicMinMax = PathElement.groupElement("PATH$shaderBufferFloat16AtomicMinMax");
-    public static final PathElement PATH$shaderBufferFloat32AtomicMinMax = PathElement.groupElement("PATH$shaderBufferFloat32AtomicMinMax");
-    public static final PathElement PATH$shaderBufferFloat64AtomicMinMax = PathElement.groupElement("PATH$shaderBufferFloat64AtomicMinMax");
-    public static final PathElement PATH$shaderSharedFloat16Atomics = PathElement.groupElement("PATH$shaderSharedFloat16Atomics");
-    public static final PathElement PATH$shaderSharedFloat16AtomicAdd = PathElement.groupElement("PATH$shaderSharedFloat16AtomicAdd");
-    public static final PathElement PATH$shaderSharedFloat16AtomicMinMax = PathElement.groupElement("PATH$shaderSharedFloat16AtomicMinMax");
-    public static final PathElement PATH$shaderSharedFloat32AtomicMinMax = PathElement.groupElement("PATH$shaderSharedFloat32AtomicMinMax");
-    public static final PathElement PATH$shaderSharedFloat64AtomicMinMax = PathElement.groupElement("PATH$shaderSharedFloat64AtomicMinMax");
-    public static final PathElement PATH$shaderImageFloat32AtomicMinMax = PathElement.groupElement("PATH$shaderImageFloat32AtomicMinMax");
-    public static final PathElement PATH$sparseImageFloat32AtomicMinMax = PathElement.groupElement("PATH$sparseImageFloat32AtomicMinMax");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$shaderBufferFloat16Atomics = (OfInt) LAYOUT.select(PATH$shaderBufferFloat16Atomics);
-    public static final OfInt LAYOUT$shaderBufferFloat16AtomicAdd = (OfInt) LAYOUT.select(PATH$shaderBufferFloat16AtomicAdd);
-    public static final OfInt LAYOUT$shaderBufferFloat16AtomicMinMax = (OfInt) LAYOUT.select(PATH$shaderBufferFloat16AtomicMinMax);
-    public static final OfInt LAYOUT$shaderBufferFloat32AtomicMinMax = (OfInt) LAYOUT.select(PATH$shaderBufferFloat32AtomicMinMax);
-    public static final OfInt LAYOUT$shaderBufferFloat64AtomicMinMax = (OfInt) LAYOUT.select(PATH$shaderBufferFloat64AtomicMinMax);
-    public static final OfInt LAYOUT$shaderSharedFloat16Atomics = (OfInt) LAYOUT.select(PATH$shaderSharedFloat16Atomics);
-    public static final OfInt LAYOUT$shaderSharedFloat16AtomicAdd = (OfInt) LAYOUT.select(PATH$shaderSharedFloat16AtomicAdd);
-    public static final OfInt LAYOUT$shaderSharedFloat16AtomicMinMax = (OfInt) LAYOUT.select(PATH$shaderSharedFloat16AtomicMinMax);
-    public static final OfInt LAYOUT$shaderSharedFloat32AtomicMinMax = (OfInt) LAYOUT.select(PATH$shaderSharedFloat32AtomicMinMax);
-    public static final OfInt LAYOUT$shaderSharedFloat64AtomicMinMax = (OfInt) LAYOUT.select(PATH$shaderSharedFloat64AtomicMinMax);
-    public static final OfInt LAYOUT$shaderImageFloat32AtomicMinMax = (OfInt) LAYOUT.select(PATH$shaderImageFloat32AtomicMinMax);
-    public static final OfInt LAYOUT$sparseImageFloat32AtomicMinMax = (OfInt) LAYOUT.select(PATH$sparseImageFloat32AtomicMinMax);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$shaderBufferFloat16Atomics = LAYOUT$shaderBufferFloat16Atomics.byteSize();
-    public static final long SIZE$shaderBufferFloat16AtomicAdd = LAYOUT$shaderBufferFloat16AtomicAdd.byteSize();
-    public static final long SIZE$shaderBufferFloat16AtomicMinMax = LAYOUT$shaderBufferFloat16AtomicMinMax.byteSize();
-    public static final long SIZE$shaderBufferFloat32AtomicMinMax = LAYOUT$shaderBufferFloat32AtomicMinMax.byteSize();
-    public static final long SIZE$shaderBufferFloat64AtomicMinMax = LAYOUT$shaderBufferFloat64AtomicMinMax.byteSize();
-    public static final long SIZE$shaderSharedFloat16Atomics = LAYOUT$shaderSharedFloat16Atomics.byteSize();
-    public static final long SIZE$shaderSharedFloat16AtomicAdd = LAYOUT$shaderSharedFloat16AtomicAdd.byteSize();
-    public static final long SIZE$shaderSharedFloat16AtomicMinMax = LAYOUT$shaderSharedFloat16AtomicMinMax.byteSize();
-    public static final long SIZE$shaderSharedFloat32AtomicMinMax = LAYOUT$shaderSharedFloat32AtomicMinMax.byteSize();
-    public static final long SIZE$shaderSharedFloat64AtomicMinMax = LAYOUT$shaderSharedFloat64AtomicMinMax.byteSize();
-    public static final long SIZE$shaderImageFloat32AtomicMinMax = LAYOUT$shaderImageFloat32AtomicMinMax.byteSize();
-    public static final long SIZE$sparseImageFloat32AtomicMinMax = LAYOUT$sparseImageFloat32AtomicMinMax.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$shaderBufferFloat16Atomics = LAYOUT.byteOffset(PATH$shaderBufferFloat16Atomics);
-    public static final long OFFSET$shaderBufferFloat16AtomicAdd = LAYOUT.byteOffset(PATH$shaderBufferFloat16AtomicAdd);
-    public static final long OFFSET$shaderBufferFloat16AtomicMinMax = LAYOUT.byteOffset(PATH$shaderBufferFloat16AtomicMinMax);
-    public static final long OFFSET$shaderBufferFloat32AtomicMinMax = LAYOUT.byteOffset(PATH$shaderBufferFloat32AtomicMinMax);
-    public static final long OFFSET$shaderBufferFloat64AtomicMinMax = LAYOUT.byteOffset(PATH$shaderBufferFloat64AtomicMinMax);
-    public static final long OFFSET$shaderSharedFloat16Atomics = LAYOUT.byteOffset(PATH$shaderSharedFloat16Atomics);
-    public static final long OFFSET$shaderSharedFloat16AtomicAdd = LAYOUT.byteOffset(PATH$shaderSharedFloat16AtomicAdd);
-    public static final long OFFSET$shaderSharedFloat16AtomicMinMax = LAYOUT.byteOffset(PATH$shaderSharedFloat16AtomicMinMax);
-    public static final long OFFSET$shaderSharedFloat32AtomicMinMax = LAYOUT.byteOffset(PATH$shaderSharedFloat32AtomicMinMax);
-    public static final long OFFSET$shaderSharedFloat64AtomicMinMax = LAYOUT.byteOffset(PATH$shaderSharedFloat64AtomicMinMax);
-    public static final long OFFSET$shaderImageFloat32AtomicMinMax = LAYOUT.byteOffset(PATH$shaderImageFloat32AtomicMinMax);
-    public static final long OFFSET$sparseImageFloat32AtomicMinMax = LAYOUT.byteOffset(PATH$sparseImageFloat32AtomicMinMax);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_2_FEATURES_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -253,4 +208,81 @@ public record VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(@NotNull MemorySegme
         segment.set(LAYOUT$sparseImageFloat32AtomicMinMax, OFFSET$sparseImageFloat32AtomicMinMax, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("shaderBufferFloat16Atomics"),
+        ValueLayout.JAVA_INT.withName("shaderBufferFloat16AtomicAdd"),
+        ValueLayout.JAVA_INT.withName("shaderBufferFloat16AtomicMinMax"),
+        ValueLayout.JAVA_INT.withName("shaderBufferFloat32AtomicMinMax"),
+        ValueLayout.JAVA_INT.withName("shaderBufferFloat64AtomicMinMax"),
+        ValueLayout.JAVA_INT.withName("shaderSharedFloat16Atomics"),
+        ValueLayout.JAVA_INT.withName("shaderSharedFloat16AtomicAdd"),
+        ValueLayout.JAVA_INT.withName("shaderSharedFloat16AtomicMinMax"),
+        ValueLayout.JAVA_INT.withName("shaderSharedFloat32AtomicMinMax"),
+        ValueLayout.JAVA_INT.withName("shaderSharedFloat64AtomicMinMax"),
+        ValueLayout.JAVA_INT.withName("shaderImageFloat32AtomicMinMax"),
+        ValueLayout.JAVA_INT.withName("sparseImageFloat32AtomicMinMax")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$shaderBufferFloat16Atomics = PathElement.groupElement("PATH$shaderBufferFloat16Atomics");
+    public static final PathElement PATH$shaderBufferFloat16AtomicAdd = PathElement.groupElement("PATH$shaderBufferFloat16AtomicAdd");
+    public static final PathElement PATH$shaderBufferFloat16AtomicMinMax = PathElement.groupElement("PATH$shaderBufferFloat16AtomicMinMax");
+    public static final PathElement PATH$shaderBufferFloat32AtomicMinMax = PathElement.groupElement("PATH$shaderBufferFloat32AtomicMinMax");
+    public static final PathElement PATH$shaderBufferFloat64AtomicMinMax = PathElement.groupElement("PATH$shaderBufferFloat64AtomicMinMax");
+    public static final PathElement PATH$shaderSharedFloat16Atomics = PathElement.groupElement("PATH$shaderSharedFloat16Atomics");
+    public static final PathElement PATH$shaderSharedFloat16AtomicAdd = PathElement.groupElement("PATH$shaderSharedFloat16AtomicAdd");
+    public static final PathElement PATH$shaderSharedFloat16AtomicMinMax = PathElement.groupElement("PATH$shaderSharedFloat16AtomicMinMax");
+    public static final PathElement PATH$shaderSharedFloat32AtomicMinMax = PathElement.groupElement("PATH$shaderSharedFloat32AtomicMinMax");
+    public static final PathElement PATH$shaderSharedFloat64AtomicMinMax = PathElement.groupElement("PATH$shaderSharedFloat64AtomicMinMax");
+    public static final PathElement PATH$shaderImageFloat32AtomicMinMax = PathElement.groupElement("PATH$shaderImageFloat32AtomicMinMax");
+    public static final PathElement PATH$sparseImageFloat32AtomicMinMax = PathElement.groupElement("PATH$sparseImageFloat32AtomicMinMax");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$shaderBufferFloat16Atomics = (OfInt) LAYOUT.select(PATH$shaderBufferFloat16Atomics);
+    public static final OfInt LAYOUT$shaderBufferFloat16AtomicAdd = (OfInt) LAYOUT.select(PATH$shaderBufferFloat16AtomicAdd);
+    public static final OfInt LAYOUT$shaderBufferFloat16AtomicMinMax = (OfInt) LAYOUT.select(PATH$shaderBufferFloat16AtomicMinMax);
+    public static final OfInt LAYOUT$shaderBufferFloat32AtomicMinMax = (OfInt) LAYOUT.select(PATH$shaderBufferFloat32AtomicMinMax);
+    public static final OfInt LAYOUT$shaderBufferFloat64AtomicMinMax = (OfInt) LAYOUT.select(PATH$shaderBufferFloat64AtomicMinMax);
+    public static final OfInt LAYOUT$shaderSharedFloat16Atomics = (OfInt) LAYOUT.select(PATH$shaderSharedFloat16Atomics);
+    public static final OfInt LAYOUT$shaderSharedFloat16AtomicAdd = (OfInt) LAYOUT.select(PATH$shaderSharedFloat16AtomicAdd);
+    public static final OfInt LAYOUT$shaderSharedFloat16AtomicMinMax = (OfInt) LAYOUT.select(PATH$shaderSharedFloat16AtomicMinMax);
+    public static final OfInt LAYOUT$shaderSharedFloat32AtomicMinMax = (OfInt) LAYOUT.select(PATH$shaderSharedFloat32AtomicMinMax);
+    public static final OfInt LAYOUT$shaderSharedFloat64AtomicMinMax = (OfInt) LAYOUT.select(PATH$shaderSharedFloat64AtomicMinMax);
+    public static final OfInt LAYOUT$shaderImageFloat32AtomicMinMax = (OfInt) LAYOUT.select(PATH$shaderImageFloat32AtomicMinMax);
+    public static final OfInt LAYOUT$sparseImageFloat32AtomicMinMax = (OfInt) LAYOUT.select(PATH$sparseImageFloat32AtomicMinMax);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shaderBufferFloat16Atomics = LAYOUT$shaderBufferFloat16Atomics.byteSize();
+    public static final long SIZE$shaderBufferFloat16AtomicAdd = LAYOUT$shaderBufferFloat16AtomicAdd.byteSize();
+    public static final long SIZE$shaderBufferFloat16AtomicMinMax = LAYOUT$shaderBufferFloat16AtomicMinMax.byteSize();
+    public static final long SIZE$shaderBufferFloat32AtomicMinMax = LAYOUT$shaderBufferFloat32AtomicMinMax.byteSize();
+    public static final long SIZE$shaderBufferFloat64AtomicMinMax = LAYOUT$shaderBufferFloat64AtomicMinMax.byteSize();
+    public static final long SIZE$shaderSharedFloat16Atomics = LAYOUT$shaderSharedFloat16Atomics.byteSize();
+    public static final long SIZE$shaderSharedFloat16AtomicAdd = LAYOUT$shaderSharedFloat16AtomicAdd.byteSize();
+    public static final long SIZE$shaderSharedFloat16AtomicMinMax = LAYOUT$shaderSharedFloat16AtomicMinMax.byteSize();
+    public static final long SIZE$shaderSharedFloat32AtomicMinMax = LAYOUT$shaderSharedFloat32AtomicMinMax.byteSize();
+    public static final long SIZE$shaderSharedFloat64AtomicMinMax = LAYOUT$shaderSharedFloat64AtomicMinMax.byteSize();
+    public static final long SIZE$shaderImageFloat32AtomicMinMax = LAYOUT$shaderImageFloat32AtomicMinMax.byteSize();
+    public static final long SIZE$sparseImageFloat32AtomicMinMax = LAYOUT$sparseImageFloat32AtomicMinMax.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$shaderBufferFloat16Atomics = LAYOUT.byteOffset(PATH$shaderBufferFloat16Atomics);
+    public static final long OFFSET$shaderBufferFloat16AtomicAdd = LAYOUT.byteOffset(PATH$shaderBufferFloat16AtomicAdd);
+    public static final long OFFSET$shaderBufferFloat16AtomicMinMax = LAYOUT.byteOffset(PATH$shaderBufferFloat16AtomicMinMax);
+    public static final long OFFSET$shaderBufferFloat32AtomicMinMax = LAYOUT.byteOffset(PATH$shaderBufferFloat32AtomicMinMax);
+    public static final long OFFSET$shaderBufferFloat64AtomicMinMax = LAYOUT.byteOffset(PATH$shaderBufferFloat64AtomicMinMax);
+    public static final long OFFSET$shaderSharedFloat16Atomics = LAYOUT.byteOffset(PATH$shaderSharedFloat16Atomics);
+    public static final long OFFSET$shaderSharedFloat16AtomicAdd = LAYOUT.byteOffset(PATH$shaderSharedFloat16AtomicAdd);
+    public static final long OFFSET$shaderSharedFloat16AtomicMinMax = LAYOUT.byteOffset(PATH$shaderSharedFloat16AtomicMinMax);
+    public static final long OFFSET$shaderSharedFloat32AtomicMinMax = LAYOUT.byteOffset(PATH$shaderSharedFloat32AtomicMinMax);
+    public static final long OFFSET$shaderSharedFloat64AtomicMinMax = LAYOUT.byteOffset(PATH$shaderSharedFloat64AtomicMinMax);
+    public static final long OFFSET$shaderImageFloat32AtomicMinMax = LAYOUT.byteOffset(PATH$shaderImageFloat32AtomicMinMax);
+    public static final long OFFSET$sparseImageFloat32AtomicMinMax = LAYOUT.byteOffset(PATH$sparseImageFloat32AtomicMinMax);
 }

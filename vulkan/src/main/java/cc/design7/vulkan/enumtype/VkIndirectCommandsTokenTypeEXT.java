@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsTokenTypeEXT.html">VkIndirectCommandsTokenTypeEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsTokenTypeEXT.html"><code>VkIndirectCommandsTokenTypeEXT</code></a>
 public final class VkIndirectCommandsTokenTypeEXT {
     public static final int EXECUTION_SET = 0x0;
     public static final int PUSH_CONSTANT = 0x1;

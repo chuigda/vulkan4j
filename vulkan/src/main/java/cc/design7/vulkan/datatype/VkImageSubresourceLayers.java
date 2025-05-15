@@ -14,8 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkImageSubresourceLayers} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageSubresourceLayers.html"><code>VkImageSubresourceLayers</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkImageSubresourceLayers {
+///     VkImageAspectFlags aspectMask;
+///     uint32_t mipLevel;
+///     uint32_t baseArrayLayer;
+///     uint32_t layerCount;
+/// } VkImageSubresourceLayers;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +36,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageSubresourceLayers.html">VkImageSubresourceLayers</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageSubresourceLayers.html"><code>VkImageSubresourceLayers</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkImageSubresourceLayers(@NotNull MemorySegment segment) implements IPointer {
     public static VkImageSubresourceLayers allocate(Arena arena) {
-        return new VkImageSubresourceLayers(arena.allocate(LAYOUT));
+        VkImageSubresourceLayers ret = new VkImageSubresourceLayers(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkImageSubresourceLayers[] allocate(Arena arena, int count) {
@@ -54,34 +67,6 @@ public record VkImageSubresourceLayers(@NotNull MemorySegment segment) implement
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("aspectMask"),
-        ValueLayout.JAVA_INT.withName("mipLevel"),
-        ValueLayout.JAVA_INT.withName("baseArrayLayer"),
-        ValueLayout.JAVA_INT.withName("layerCount")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$aspectMask = PathElement.groupElement("PATH$aspectMask");
-    public static final PathElement PATH$mipLevel = PathElement.groupElement("PATH$mipLevel");
-    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("PATH$baseArrayLayer");
-    public static final PathElement PATH$layerCount = PathElement.groupElement("PATH$layerCount");
-
-    public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
-    public static final OfInt LAYOUT$mipLevel = (OfInt) LAYOUT.select(PATH$mipLevel);
-    public static final OfInt LAYOUT$baseArrayLayer = (OfInt) LAYOUT.select(PATH$baseArrayLayer);
-    public static final OfInt LAYOUT$layerCount = (OfInt) LAYOUT.select(PATH$layerCount);
-
-    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
-    public static final long SIZE$mipLevel = LAYOUT$mipLevel.byteSize();
-    public static final long SIZE$baseArrayLayer = LAYOUT$baseArrayLayer.byteSize();
-    public static final long SIZE$layerCount = LAYOUT$layerCount.byteSize();
-
-    public static final long OFFSET$aspectMask = LAYOUT.byteOffset(PATH$aspectMask);
-    public static final long OFFSET$mipLevel = LAYOUT.byteOffset(PATH$mipLevel);
-    public static final long OFFSET$baseArrayLayer = LAYOUT.byteOffset(PATH$baseArrayLayer);
-    public static final long OFFSET$layerCount = LAYOUT.byteOffset(PATH$layerCount);
 
     public @enumtype(VkImageAspectFlags.class) int aspectMask() {
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
@@ -115,4 +100,31 @@ public record VkImageSubresourceLayers(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$layerCount, OFFSET$layerCount, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("aspectMask"),
+        ValueLayout.JAVA_INT.withName("mipLevel"),
+        ValueLayout.JAVA_INT.withName("baseArrayLayer"),
+        ValueLayout.JAVA_INT.withName("layerCount")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$aspectMask = PathElement.groupElement("PATH$aspectMask");
+    public static final PathElement PATH$mipLevel = PathElement.groupElement("PATH$mipLevel");
+    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("PATH$baseArrayLayer");
+    public static final PathElement PATH$layerCount = PathElement.groupElement("PATH$layerCount");
+
+    public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
+    public static final OfInt LAYOUT$mipLevel = (OfInt) LAYOUT.select(PATH$mipLevel);
+    public static final OfInt LAYOUT$baseArrayLayer = (OfInt) LAYOUT.select(PATH$baseArrayLayer);
+    public static final OfInt LAYOUT$layerCount = (OfInt) LAYOUT.select(PATH$layerCount);
+
+    public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
+    public static final long SIZE$mipLevel = LAYOUT$mipLevel.byteSize();
+    public static final long SIZE$baseArrayLayer = LAYOUT$baseArrayLayer.byteSize();
+    public static final long SIZE$layerCount = LAYOUT$layerCount.byteSize();
+
+    public static final long OFFSET$aspectMask = LAYOUT.byteOffset(PATH$aspectMask);
+    public static final long OFFSET$mipLevel = LAYOUT.byteOffset(PATH$mipLevel);
+    public static final long OFFSET$baseArrayLayer = LAYOUT.byteOffset(PATH$baseArrayLayer);
+    public static final long OFFSET$layerCount = LAYOUT.byteOffset(PATH$layerCount);
 }

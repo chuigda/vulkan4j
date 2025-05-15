@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryPipelineStatisticFlags.html">VkQueryPipelineStatisticFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryPipelineStatisticFlags.html"><code>VkQueryPipelineStatisticFlags</code></a>
 public final class VkQueryPipelineStatisticFlags {
     public static final int CLIPPING_INVOCATIONS = 0x20;
     public static final int CLIPPING_PRIMITIVES = 0x40;

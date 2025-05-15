@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureBuildTypeKHR.html">VkAccelerationStructureBuildTypeKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureBuildTypeKHR.html"><code>VkAccelerationStructureBuildTypeKHR</code></a>
 public final class VkAccelerationStructureBuildTypeKHR {
     public static final int HOST = 0x0;
     public static final int DEVICE = 0x1;

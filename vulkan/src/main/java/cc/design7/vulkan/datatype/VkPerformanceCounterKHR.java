@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPerformanceCounterKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceCounterKHR.html"><code>VkPerformanceCounterKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPerformanceCounterKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkPerformanceCounterUnitKHR unit;
+///     VkPerformanceCounterScopeKHR scope;
+///     VkPerformanceCounterStorageKHR storage;
+///     uint8_t uuid;
+/// } VkPerformanceCounterKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_KHR`
+///
+/// The {@link VkPerformanceCounterKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPerformanceCounterKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceCounterKHR.html">VkPerformanceCounterKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceCounterKHR.html"><code>VkPerformanceCounterKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkPerformanceCounterKHR {
-        sType(VkStructureType.PERFORMANCE_COUNTER_KHR);
-    }
-
     public static VkPerformanceCounterKHR allocate(Arena arena) {
-        return new VkPerformanceCounterKHR(arena.allocate(LAYOUT));
+        VkPerformanceCounterKHR ret = new VkPerformanceCounterKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PERFORMANCE_COUNTER_KHR);
+        return ret;
     }
 
     public static VkPerformanceCounterKHR[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
         VkPerformanceCounterKHR[] ret = new VkPerformanceCounterKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPerformanceCounterKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PERFORMANCE_COUNTER_KHR);
         }
         return ret;
     }
@@ -59,43 +80,9 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("unit"),
-        ValueLayout.JAVA_INT.withName("scope"),
-        ValueLayout.JAVA_INT.withName("storage"),
-        ValueLayout.JAVA_BYTE.withName("uuid")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$unit = PathElement.groupElement("PATH$unit");
-    public static final PathElement PATH$scope = PathElement.groupElement("PATH$scope");
-    public static final PathElement PATH$storage = PathElement.groupElement("PATH$storage");
-    public static final PathElement PATH$uuid = PathElement.groupElement("PATH$uuid");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$unit = (OfInt) LAYOUT.select(PATH$unit);
-    public static final OfInt LAYOUT$scope = (OfInt) LAYOUT.select(PATH$scope);
-    public static final OfInt LAYOUT$storage = (OfInt) LAYOUT.select(PATH$storage);
-    public static final OfByte LAYOUT$uuid = (OfByte) LAYOUT.select(PATH$uuid);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$unit = LAYOUT$unit.byteSize();
-    public static final long SIZE$scope = LAYOUT$scope.byteSize();
-    public static final long SIZE$storage = LAYOUT$storage.byteSize();
-    public static final long SIZE$uuid = LAYOUT$uuid.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$unit = LAYOUT.byteOffset(PATH$unit);
-    public static final long OFFSET$scope = LAYOUT.byteOffset(PATH$scope);
-    public static final long OFFSET$storage = LAYOUT.byteOffset(PATH$storage);
-    public static final long OFFSET$uuid = LAYOUT.byteOffset(PATH$uuid);
+    public void autoInit() {
+        sType(VkStructureType.PERFORMANCE_COUNTER_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -149,4 +136,41 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$uuid, OFFSET$uuid, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("unit"),
+        ValueLayout.JAVA_INT.withName("scope"),
+        ValueLayout.JAVA_INT.withName("storage"),
+        ValueLayout.JAVA_BYTE.withName("uuid")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$unit = PathElement.groupElement("PATH$unit");
+    public static final PathElement PATH$scope = PathElement.groupElement("PATH$scope");
+    public static final PathElement PATH$storage = PathElement.groupElement("PATH$storage");
+    public static final PathElement PATH$uuid = PathElement.groupElement("PATH$uuid");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$unit = (OfInt) LAYOUT.select(PATH$unit);
+    public static final OfInt LAYOUT$scope = (OfInt) LAYOUT.select(PATH$scope);
+    public static final OfInt LAYOUT$storage = (OfInt) LAYOUT.select(PATH$storage);
+    public static final OfByte LAYOUT$uuid = (OfByte) LAYOUT.select(PATH$uuid);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$unit = LAYOUT$unit.byteSize();
+    public static final long SIZE$scope = LAYOUT$scope.byteSize();
+    public static final long SIZE$storage = LAYOUT$storage.byteSize();
+    public static final long SIZE$uuid = LAYOUT$uuid.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$unit = LAYOUT.byteOffset(PATH$unit);
+    public static final long OFFSET$scope = LAYOUT.byteOffset(PATH$scope);
+    public static final long OFFSET$storage = LAYOUT.byteOffset(PATH$storage);
+    public static final long OFFSET$uuid = LAYOUT.byteOffset(PATH$uuid);
 }

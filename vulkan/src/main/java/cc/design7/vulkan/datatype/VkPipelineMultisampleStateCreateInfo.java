@@ -14,8 +14,33 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineMultisampleStateCreateInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineMultisampleStateCreateInfo.html"><code>VkPipelineMultisampleStateCreateInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineMultisampleStateCreateInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkPipelineMultisampleStateCreateFlags flags;
+///     VkSampleCountFlags rasterizationSamples;
+///     VkBool32 sampleShadingEnable;
+///     float minSampleShading;
+///     VkSampleMask const* pSampleMask;
+///     VkBool32 alphaToCoverageEnable;
+///     VkBool32 alphaToOneEnable;
+/// } VkPipelineMultisampleStateCreateInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO`
+///
+/// The {@link VkPipelineMultisampleStateCreateInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineMultisampleStateCreateInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +49,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineMultisampleStateCreateInfo.html">VkPipelineMultisampleStateCreateInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineMultisampleStateCreateInfo.html"><code>VkPipelineMultisampleStateCreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineMultisampleStateCreateInfo {
-        sType(VkStructureType.PIPELINE_MULTISAMPLE_STATE_CREATE_INFO);
-    }
-
     public static VkPipelineMultisampleStateCreateInfo allocate(Arena arena) {
-        return new VkPipelineMultisampleStateCreateInfo(arena.allocate(LAYOUT));
+        VkPipelineMultisampleStateCreateInfo ret = new VkPipelineMultisampleStateCreateInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_MULTISAMPLE_STATE_CREATE_INFO);
+        return ret;
     }
 
     public static VkPipelineMultisampleStateCreateInfo[] allocate(Arena arena, int count) {
@@ -41,6 +64,7 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         VkPipelineMultisampleStateCreateInfo[] ret = new VkPipelineMultisampleStateCreateInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineMultisampleStateCreateInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_MULTISAMPLE_STATE_CREATE_INFO);
         }
         return ret;
     }
@@ -59,58 +83,9 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("rasterizationSamples"),
-        ValueLayout.JAVA_INT.withName("sampleShadingEnable"),
-        ValueLayout.JAVA_FLOAT.withName("minSampleShading"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pSampleMask"),
-        ValueLayout.JAVA_INT.withName("alphaToCoverageEnable"),
-        ValueLayout.JAVA_INT.withName("alphaToOneEnable")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$rasterizationSamples = PathElement.groupElement("PATH$rasterizationSamples");
-    public static final PathElement PATH$sampleShadingEnable = PathElement.groupElement("PATH$sampleShadingEnable");
-    public static final PathElement PATH$minSampleShading = PathElement.groupElement("PATH$minSampleShading");
-    public static final PathElement PATH$pSampleMask = PathElement.groupElement("PATH$pSampleMask");
-    public static final PathElement PATH$alphaToCoverageEnable = PathElement.groupElement("PATH$alphaToCoverageEnable");
-    public static final PathElement PATH$alphaToOneEnable = PathElement.groupElement("PATH$alphaToOneEnable");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$rasterizationSamples = (OfInt) LAYOUT.select(PATH$rasterizationSamples);
-    public static final OfInt LAYOUT$sampleShadingEnable = (OfInt) LAYOUT.select(PATH$sampleShadingEnable);
-    public static final OfFloat LAYOUT$minSampleShading = (OfFloat) LAYOUT.select(PATH$minSampleShading);
-    public static final AddressLayout LAYOUT$pSampleMask = (AddressLayout) LAYOUT.select(PATH$pSampleMask);
-    public static final OfInt LAYOUT$alphaToCoverageEnable = (OfInt) LAYOUT.select(PATH$alphaToCoverageEnable);
-    public static final OfInt LAYOUT$alphaToOneEnable = (OfInt) LAYOUT.select(PATH$alphaToOneEnable);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$rasterizationSamples = LAYOUT$rasterizationSamples.byteSize();
-    public static final long SIZE$sampleShadingEnable = LAYOUT$sampleShadingEnable.byteSize();
-    public static final long SIZE$minSampleShading = LAYOUT$minSampleShading.byteSize();
-    public static final long SIZE$pSampleMask = LAYOUT$pSampleMask.byteSize();
-    public static final long SIZE$alphaToCoverageEnable = LAYOUT$alphaToCoverageEnable.byteSize();
-    public static final long SIZE$alphaToOneEnable = LAYOUT$alphaToOneEnable.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$rasterizationSamples = LAYOUT.byteOffset(PATH$rasterizationSamples);
-    public static final long OFFSET$sampleShadingEnable = LAYOUT.byteOffset(PATH$sampleShadingEnable);
-    public static final long OFFSET$minSampleShading = LAYOUT.byteOffset(PATH$minSampleShading);
-    public static final long OFFSET$pSampleMask = LAYOUT.byteOffset(PATH$pSampleMask);
-    public static final long OFFSET$alphaToCoverageEnable = LAYOUT.byteOffset(PATH$alphaToCoverageEnable);
-    public static final long OFFSET$alphaToOneEnable = LAYOUT.byteOffset(PATH$alphaToOneEnable);
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_MULTISAMPLE_STATE_CREATE_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -178,7 +153,7 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
     /// writing to the buffer.
     public @Nullable @unsigned IntPtr pSampleMask() {
         MemorySegment s = pSampleMaskRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -205,4 +180,56 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$alphaToOneEnable, OFFSET$alphaToOneEnable, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("rasterizationSamples"),
+        ValueLayout.JAVA_INT.withName("sampleShadingEnable"),
+        ValueLayout.JAVA_FLOAT.withName("minSampleShading"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pSampleMask"),
+        ValueLayout.JAVA_INT.withName("alphaToCoverageEnable"),
+        ValueLayout.JAVA_INT.withName("alphaToOneEnable")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$rasterizationSamples = PathElement.groupElement("PATH$rasterizationSamples");
+    public static final PathElement PATH$sampleShadingEnable = PathElement.groupElement("PATH$sampleShadingEnable");
+    public static final PathElement PATH$minSampleShading = PathElement.groupElement("PATH$minSampleShading");
+    public static final PathElement PATH$pSampleMask = PathElement.groupElement("PATH$pSampleMask");
+    public static final PathElement PATH$alphaToCoverageEnable = PathElement.groupElement("PATH$alphaToCoverageEnable");
+    public static final PathElement PATH$alphaToOneEnable = PathElement.groupElement("PATH$alphaToOneEnable");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$rasterizationSamples = (OfInt) LAYOUT.select(PATH$rasterizationSamples);
+    public static final OfInt LAYOUT$sampleShadingEnable = (OfInt) LAYOUT.select(PATH$sampleShadingEnable);
+    public static final OfFloat LAYOUT$minSampleShading = (OfFloat) LAYOUT.select(PATH$minSampleShading);
+    public static final AddressLayout LAYOUT$pSampleMask = (AddressLayout) LAYOUT.select(PATH$pSampleMask);
+    public static final OfInt LAYOUT$alphaToCoverageEnable = (OfInt) LAYOUT.select(PATH$alphaToCoverageEnable);
+    public static final OfInt LAYOUT$alphaToOneEnable = (OfInt) LAYOUT.select(PATH$alphaToOneEnable);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$rasterizationSamples = LAYOUT$rasterizationSamples.byteSize();
+    public static final long SIZE$sampleShadingEnable = LAYOUT$sampleShadingEnable.byteSize();
+    public static final long SIZE$minSampleShading = LAYOUT$minSampleShading.byteSize();
+    public static final long SIZE$pSampleMask = LAYOUT$pSampleMask.byteSize();
+    public static final long SIZE$alphaToCoverageEnable = LAYOUT$alphaToCoverageEnable.byteSize();
+    public static final long SIZE$alphaToOneEnable = LAYOUT$alphaToOneEnable.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$rasterizationSamples = LAYOUT.byteOffset(PATH$rasterizationSamples);
+    public static final long OFFSET$sampleShadingEnable = LAYOUT.byteOffset(PATH$sampleShadingEnable);
+    public static final long OFFSET$minSampleShading = LAYOUT.byteOffset(PATH$minSampleShading);
+    public static final long OFFSET$pSampleMask = LAYOUT.byteOffset(PATH$pSampleMask);
+    public static final long OFFSET$alphaToCoverageEnable = LAYOUT.byteOffset(PATH$alphaToCoverageEnable);
+    public static final long OFFSET$alphaToOneEnable = LAYOUT.byteOffset(PATH$alphaToOneEnable);
 }

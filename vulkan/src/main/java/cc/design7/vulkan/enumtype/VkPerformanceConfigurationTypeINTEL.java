@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceConfigurationTypeINTEL.html">VkPerformanceConfigurationTypeINTEL</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceConfigurationTypeINTEL.html"><code>VkPerformanceConfigurationTypeINTEL</code></a>
 public final class VkPerformanceConfigurationTypeINTEL {
     public static final int COMMAND_QUEUE_METRICS_DISCOVERY_ACTIVATED = 0x0;
 

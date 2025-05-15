@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkMicromapTriangleEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMicromapTriangleEXT.html"><code>VkMicromapTriangleEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkMicromapTriangleEXT {
+///     uint32_t dataOffset;
+///     uint16_t subdivisionLevel;
+///     uint16_t format;
+/// } VkMicromapTriangleEXT;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMicromapTriangleEXT.html">VkMicromapTriangleEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMicromapTriangleEXT.html"><code>VkMicromapTriangleEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkMicromapTriangleEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkMicromapTriangleEXT allocate(Arena arena) {
-        return new VkMicromapTriangleEXT(arena.allocate(LAYOUT));
+        VkMicromapTriangleEXT ret = new VkMicromapTriangleEXT(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkMicromapTriangleEXT[] allocate(Arena arena, int count) {
@@ -55,29 +67,6 @@ public record VkMicromapTriangleEXT(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("dataOffset"),
-        ValueLayout.JAVA_SHORT.withName("subdivisionLevel"),
-        ValueLayout.JAVA_SHORT.withName("format")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$dataOffset = PathElement.groupElement("PATH$dataOffset");
-    public static final PathElement PATH$subdivisionLevel = PathElement.groupElement("PATH$subdivisionLevel");
-    public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
-
-    public static final OfInt LAYOUT$dataOffset = (OfInt) LAYOUT.select(PATH$dataOffset);
-    public static final OfShort LAYOUT$subdivisionLevel = (OfShort) LAYOUT.select(PATH$subdivisionLevel);
-    public static final OfShort LAYOUT$format = (OfShort) LAYOUT.select(PATH$format);
-
-    public static final long SIZE$dataOffset = LAYOUT$dataOffset.byteSize();
-    public static final long SIZE$subdivisionLevel = LAYOUT$subdivisionLevel.byteSize();
-    public static final long SIZE$format = LAYOUT$format.byteSize();
-
-    public static final long OFFSET$dataOffset = LAYOUT.byteOffset(PATH$dataOffset);
-    public static final long OFFSET$subdivisionLevel = LAYOUT.byteOffset(PATH$subdivisionLevel);
-    public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
-
     public @unsigned int dataOffset() {
         return segment.get(LAYOUT$dataOffset, OFFSET$dataOffset);
     }
@@ -102,4 +91,26 @@ public record VkMicromapTriangleEXT(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$format, OFFSET$format, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("dataOffset"),
+        ValueLayout.JAVA_SHORT.withName("subdivisionLevel"),
+        ValueLayout.JAVA_SHORT.withName("format")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$dataOffset = PathElement.groupElement("PATH$dataOffset");
+    public static final PathElement PATH$subdivisionLevel = PathElement.groupElement("PATH$subdivisionLevel");
+    public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
+
+    public static final OfInt LAYOUT$dataOffset = (OfInt) LAYOUT.select(PATH$dataOffset);
+    public static final OfShort LAYOUT$subdivisionLevel = (OfShort) LAYOUT.select(PATH$subdivisionLevel);
+    public static final OfShort LAYOUT$format = (OfShort) LAYOUT.select(PATH$format);
+
+    public static final long SIZE$dataOffset = LAYOUT$dataOffset.byteSize();
+    public static final long SIZE$subdivisionLevel = LAYOUT$subdivisionLevel.byteSize();
+    public static final long SIZE$format = LAYOUT$format.byteSize();
+
+    public static final long OFFSET$dataOffset = LAYOUT.byteOffset(PATH$dataOffset);
+    public static final long OFFSET$subdivisionLevel = LAYOUT.byteOffset(PATH$subdivisionLevel);
+    public static final long OFFSET$format = LAYOUT.byteOffset(PATH$format);
 }

@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkFragmentShadingRateAttachmentInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFragmentShadingRateAttachmentInfoKHR.html"><code>VkFragmentShadingRateAttachmentInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkFragmentShadingRateAttachmentInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkAttachmentReference2 const* pFragmentShadingRateAttachment;
+///     VkExtent2D shadingRateAttachmentTexelSize;
+/// } VkFragmentShadingRateAttachmentInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR`
+///
+/// The {@link VkFragmentShadingRateAttachmentInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkFragmentShadingRateAttachmentInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFragmentShadingRateAttachmentInfoKHR.html">VkFragmentShadingRateAttachmentInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFragmentShadingRateAttachmentInfoKHR.html"><code>VkFragmentShadingRateAttachmentInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkFragmentShadingRateAttachmentInfoKHR {
-        sType(VkStructureType.FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR);
-    }
-
     public static VkFragmentShadingRateAttachmentInfoKHR allocate(Arena arena) {
-        return new VkFragmentShadingRateAttachmentInfoKHR(arena.allocate(LAYOUT));
+        VkFragmentShadingRateAttachmentInfoKHR ret = new VkFragmentShadingRateAttachmentInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR);
+        return ret;
     }
 
     public static VkFragmentShadingRateAttachmentInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segm
         VkFragmentShadingRateAttachmentInfoKHR[] ret = new VkFragmentShadingRateAttachmentInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkFragmentShadingRateAttachmentInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segm
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withTargetLayout(VkAttachmentReference2.LAYOUT).withName("pFragmentShadingRateAttachment"),
-        VkExtent2D.LAYOUT.withName("shadingRateAttachmentTexelSize")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$pFragmentShadingRateAttachment = PathElement.groupElement("PATH$pFragmentShadingRateAttachment");
-    public static final PathElement PATH$shadingRateAttachmentTexelSize = PathElement.groupElement("PATH$shadingRateAttachmentTexelSize");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final AddressLayout LAYOUT$pFragmentShadingRateAttachment = (AddressLayout) LAYOUT.select(PATH$pFragmentShadingRateAttachment);
-    public static final StructLayout LAYOUT$shadingRateAttachmentTexelSize = (StructLayout) LAYOUT.select(PATH$shadingRateAttachmentTexelSize);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$pFragmentShadingRateAttachment = LAYOUT$pFragmentShadingRateAttachment.byteSize();
-    public static final long SIZE$shadingRateAttachmentTexelSize = LAYOUT$shadingRateAttachmentTexelSize.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$pFragmentShadingRateAttachment = LAYOUT.byteOffset(PATH$pFragmentShadingRateAttachment);
-    public static final long OFFSET$shadingRateAttachmentTexelSize = LAYOUT.byteOffset(PATH$shadingRateAttachmentTexelSize);
+    public void autoInit() {
+        sType(VkStructureType.FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -117,7 +112,7 @@ public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segm
 
     public @Nullable VkAttachmentReference2 pFragmentShadingRateAttachment() {
         MemorySegment s = pFragmentShadingRateAttachmentRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkAttachmentReference2(s);
@@ -130,7 +125,7 @@ public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segm
 
     @unsafe public @Nullable VkAttachmentReference2[] pFragmentShadingRateAttachment(int assumedCount) {
         MemorySegment s = pFragmentShadingRateAttachmentRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -150,4 +145,31 @@ public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segm
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$shadingRateAttachmentTexelSize, SIZE$shadingRateAttachmentTexelSize);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withTargetLayout(VkAttachmentReference2.LAYOUT).withName("pFragmentShadingRateAttachment"),
+        VkExtent2D.LAYOUT.withName("shadingRateAttachmentTexelSize")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$pFragmentShadingRateAttachment = PathElement.groupElement("PATH$pFragmentShadingRateAttachment");
+    public static final PathElement PATH$shadingRateAttachmentTexelSize = PathElement.groupElement("PATH$shadingRateAttachmentTexelSize");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$pFragmentShadingRateAttachment = (AddressLayout) LAYOUT.select(PATH$pFragmentShadingRateAttachment);
+    public static final StructLayout LAYOUT$shadingRateAttachmentTexelSize = (StructLayout) LAYOUT.select(PATH$shadingRateAttachmentTexelSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$pFragmentShadingRateAttachment = LAYOUT$pFragmentShadingRateAttachment.byteSize();
+    public static final long SIZE$shadingRateAttachmentTexelSize = LAYOUT$shadingRateAttachmentTexelSize.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$pFragmentShadingRateAttachment = LAYOUT.byteOffset(PATH$pFragmentShadingRateAttachment);
+    public static final long OFFSET$shadingRateAttachmentTexelSize = LAYOUT.byteOffset(PATH$shadingRateAttachmentTexelSize);
 }

@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkSubpassBeginInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassBeginInfo.html"><code>VkSubpassBeginInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkSubpassBeginInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkSubpassContents contents;
+/// } VkSubpassBeginInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO`
+///
+/// The {@link VkSubpassBeginInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkSubpassBeginInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassBeginInfo.html">VkSubpassBeginInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassBeginInfo.html"><code>VkSubpassBeginInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkSubpassBeginInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkSubpassBeginInfo {
-        sType(VkStructureType.SUBPASS_BEGIN_INFO);
-    }
-
     public static VkSubpassBeginInfo allocate(Arena arena) {
-        return new VkSubpassBeginInfo(arena.allocate(LAYOUT));
+        VkSubpassBeginInfo ret = new VkSubpassBeginInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.SUBPASS_BEGIN_INFO);
+        return ret;
     }
 
     public static VkSubpassBeginInfo[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkSubpassBeginInfo(@NotNull MemorySegment segment) implements IPoi
         VkSubpassBeginInfo[] ret = new VkSubpassBeginInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkSubpassBeginInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.SUBPASS_BEGIN_INFO);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkSubpassBeginInfo(@NotNull MemorySegment segment) implements IPoi
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("contents")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$contents = PathElement.groupElement("PATH$contents");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$contents = (OfInt) LAYOUT.select(PATH$contents);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$contents = LAYOUT$contents.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$contents = LAYOUT.byteOffset(PATH$contents);
+    public void autoInit() {
+        sType(VkStructureType.SUBPASS_BEGIN_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkSubpassBeginInfo(@NotNull MemorySegment segment) implements IPoi
         segment.set(LAYOUT$contents, OFFSET$contents, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("contents")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$contents = PathElement.groupElement("PATH$contents");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$contents = (OfInt) LAYOUT.select(PATH$contents);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$contents = LAYOUT$contents.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$contents = LAYOUT.byteOffset(PATH$contents);
 }

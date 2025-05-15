@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerReductionMode.html">VkSamplerReductionMode</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerReductionMode.html"><code>VkSamplerReductionMode</code></a>
 public final class VkSamplerReductionMode {
     public static final int WEIGHTED_AVERAGE = 0x0;
     public static final int MIN = 0x1;

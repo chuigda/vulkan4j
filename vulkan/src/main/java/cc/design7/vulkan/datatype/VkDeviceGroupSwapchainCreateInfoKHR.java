@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDeviceGroupSwapchainCreateInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceGroupSwapchainCreateInfoKHR.html"><code>VkDeviceGroupSwapchainCreateInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDeviceGroupSwapchainCreateInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkDeviceGroupPresentModeFlagsKHR modes;
+/// } VkDeviceGroupSwapchainCreateInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR`
+///
+/// The {@link VkDeviceGroupSwapchainCreateInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkDeviceGroupSwapchainCreateInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceGroupSwapchainCreateInfoKHR.html">VkDeviceGroupSwapchainCreateInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceGroupSwapchainCreateInfoKHR.html"><code>VkDeviceGroupSwapchainCreateInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDeviceGroupSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkDeviceGroupSwapchainCreateInfoKHR {
-        sType(VkStructureType.DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR);
-    }
-
     public static VkDeviceGroupSwapchainCreateInfoKHR allocate(Arena arena) {
-        return new VkDeviceGroupSwapchainCreateInfoKHR(arena.allocate(LAYOUT));
+        VkDeviceGroupSwapchainCreateInfoKHR ret = new VkDeviceGroupSwapchainCreateInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR);
+        return ret;
     }
 
     public static VkDeviceGroupSwapchainCreateInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkDeviceGroupSwapchainCreateInfoKHR(@NotNull MemorySegment segment
         VkDeviceGroupSwapchainCreateInfoKHR[] ret = new VkDeviceGroupSwapchainCreateInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkDeviceGroupSwapchainCreateInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkDeviceGroupSwapchainCreateInfoKHR(@NotNull MemorySegment segment
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("modes")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$modes = PathElement.groupElement("PATH$modes");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$modes = (OfInt) LAYOUT.select(PATH$modes);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$modes = LAYOUT$modes.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$modes = LAYOUT.byteOffset(PATH$modes);
+    public void autoInit() {
+        sType(VkStructureType.DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkDeviceGroupSwapchainCreateInfoKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$modes, OFFSET$modes, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("modes")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$modes = PathElement.groupElement("PATH$modes");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$modes = (OfInt) LAYOUT.select(PATH$modes);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$modes = LAYOUT$modes.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$modes = LAYOUT.byteOffset(PATH$modes);
 }

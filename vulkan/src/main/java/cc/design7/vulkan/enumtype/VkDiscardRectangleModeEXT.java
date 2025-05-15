@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDiscardRectangleModeEXT.html">VkDiscardRectangleModeEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDiscardRectangleModeEXT.html"><code>VkDiscardRectangleModeEXT</code></a>
 public final class VkDiscardRectangleModeEXT {
     public static final int INCLUSIVE = 0x0;
     public static final int EXCLUSIVE = 0x1;

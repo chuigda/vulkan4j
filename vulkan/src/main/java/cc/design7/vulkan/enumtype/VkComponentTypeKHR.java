@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkComponentTypeKHR.html">VkComponentTypeKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkComponentTypeKHR.html"><code>VkComponentTypeKHR</code></a>
 public final class VkComponentTypeKHR {
     public static final int FLOAT16 = 0x0;
     public static final int FLOAT32 = 0x1;

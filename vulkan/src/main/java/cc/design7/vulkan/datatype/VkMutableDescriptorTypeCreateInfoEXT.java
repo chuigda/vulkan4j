@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkMutableDescriptorTypeCreateInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMutableDescriptorTypeCreateInfoEXT.html"><code>VkMutableDescriptorTypeCreateInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkMutableDescriptorTypeCreateInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t mutableDescriptorTypeListCount;
+///     VkMutableDescriptorTypeListEXT const* pMutableDescriptorTypeLists;
+/// } VkMutableDescriptorTypeCreateInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT`
+///
+/// The {@link VkMutableDescriptorTypeCreateInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkMutableDescriptorTypeCreateInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMutableDescriptorTypeCreateInfoEXT.html">VkMutableDescriptorTypeCreateInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMutableDescriptorTypeCreateInfoEXT.html"><code>VkMutableDescriptorTypeCreateInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkMutableDescriptorTypeCreateInfoEXT {
-        sType(VkStructureType.MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT);
-    }
-
     public static VkMutableDescriptorTypeCreateInfoEXT allocate(Arena arena) {
-        return new VkMutableDescriptorTypeCreateInfoEXT(arena.allocate(LAYOUT));
+        VkMutableDescriptorTypeCreateInfoEXT ret = new VkMutableDescriptorTypeCreateInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT);
+        return ret;
     }
 
     public static VkMutableDescriptorTypeCreateInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
         VkMutableDescriptorTypeCreateInfoEXT[] ret = new VkMutableDescriptorTypeCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkMutableDescriptorTypeCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("mutableDescriptorTypeListCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkMutableDescriptorTypeListEXT.LAYOUT).withName("pMutableDescriptorTypeLists")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$mutableDescriptorTypeListCount = PathElement.groupElement("PATH$mutableDescriptorTypeListCount");
-    public static final PathElement PATH$pMutableDescriptorTypeLists = PathElement.groupElement("PATH$pMutableDescriptorTypeLists");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$mutableDescriptorTypeListCount = (OfInt) LAYOUT.select(PATH$mutableDescriptorTypeListCount);
-    public static final AddressLayout LAYOUT$pMutableDescriptorTypeLists = (AddressLayout) LAYOUT.select(PATH$pMutableDescriptorTypeLists);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$mutableDescriptorTypeListCount = LAYOUT$mutableDescriptorTypeListCount.byteSize();
-    public static final long SIZE$pMutableDescriptorTypeLists = LAYOUT$pMutableDescriptorTypeLists.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$mutableDescriptorTypeListCount = LAYOUT.byteOffset(PATH$mutableDescriptorTypeListCount);
-    public static final long OFFSET$pMutableDescriptorTypeLists = LAYOUT.byteOffset(PATH$pMutableDescriptorTypeLists);
+    public void autoInit() {
+        sType(VkStructureType.MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -125,7 +120,7 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
 
     public @Nullable VkMutableDescriptorTypeListEXT pMutableDescriptorTypeLists() {
         MemorySegment s = pMutableDescriptorTypeListsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkMutableDescriptorTypeListEXT(s);
@@ -138,7 +133,7 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
 
     @unsafe public @Nullable VkMutableDescriptorTypeListEXT[] pMutableDescriptorTypeLists(int assumedCount) {
         MemorySegment s = pMutableDescriptorTypeListsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -150,4 +145,31 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("mutableDescriptorTypeListCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkMutableDescriptorTypeListEXT.LAYOUT).withName("pMutableDescriptorTypeLists")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$mutableDescriptorTypeListCount = PathElement.groupElement("PATH$mutableDescriptorTypeListCount");
+    public static final PathElement PATH$pMutableDescriptorTypeLists = PathElement.groupElement("PATH$pMutableDescriptorTypeLists");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$mutableDescriptorTypeListCount = (OfInt) LAYOUT.select(PATH$mutableDescriptorTypeListCount);
+    public static final AddressLayout LAYOUT$pMutableDescriptorTypeLists = (AddressLayout) LAYOUT.select(PATH$pMutableDescriptorTypeLists);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$mutableDescriptorTypeListCount = LAYOUT$mutableDescriptorTypeListCount.byteSize();
+    public static final long SIZE$pMutableDescriptorTypeLists = LAYOUT$pMutableDescriptorTypeLists.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$mutableDescriptorTypeListCount = LAYOUT.byteOffset(PATH$mutableDescriptorTypeListCount);
+    public static final long OFFSET$pMutableDescriptorTypeLists = LAYOUT.byteOffset(PATH$pMutableDescriptorTypeLists);
 }

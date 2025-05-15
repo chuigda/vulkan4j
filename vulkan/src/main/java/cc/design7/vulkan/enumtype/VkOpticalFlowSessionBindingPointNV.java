@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowSessionBindingPointNV.html">VkOpticalFlowSessionBindingPointNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowSessionBindingPointNV.html"><code>VkOpticalFlowSessionBindingPointNV</code></a>
 public final class VkOpticalFlowSessionBindingPointNV {
     public static final int UNKNOWN = 0x0;
     public static final int INPUT = 0x1;

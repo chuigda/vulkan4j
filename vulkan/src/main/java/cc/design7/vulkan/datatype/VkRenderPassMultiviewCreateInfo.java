@@ -14,8 +14,32 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkRenderPassMultiviewCreateInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassMultiviewCreateInfo.html"><code>VkRenderPassMultiviewCreateInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkRenderPassMultiviewCreateInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t subpassCount;
+///     uint32_t const* pViewMasks;
+///     uint32_t dependencyCount;
+///     int32_t const* pViewOffsets;
+///     uint32_t correlationMaskCount;
+///     uint32_t const* pCorrelationMasks;
+/// } VkRenderPassMultiviewCreateInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO`
+///
+/// The {@link VkRenderPassMultiviewCreateInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkRenderPassMultiviewCreateInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +48,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassMultiviewCreateInfo.html">VkRenderPassMultiviewCreateInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassMultiviewCreateInfo.html"><code>VkRenderPassMultiviewCreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkRenderPassMultiviewCreateInfo {
-        sType(VkStructureType.RENDER_PASS_MULTIVIEW_CREATE_INFO);
-    }
-
     public static VkRenderPassMultiviewCreateInfo allocate(Arena arena) {
-        return new VkRenderPassMultiviewCreateInfo(arena.allocate(LAYOUT));
+        VkRenderPassMultiviewCreateInfo ret = new VkRenderPassMultiviewCreateInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.RENDER_PASS_MULTIVIEW_CREATE_INFO);
+        return ret;
     }
 
     public static VkRenderPassMultiviewCreateInfo[] allocate(Arena arena, int count) {
@@ -41,6 +63,7 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         VkRenderPassMultiviewCreateInfo[] ret = new VkRenderPassMultiviewCreateInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkRenderPassMultiviewCreateInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.RENDER_PASS_MULTIVIEW_CREATE_INFO);
         }
         return ret;
     }
@@ -57,6 +80,129 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.RENDER_PASS_MULTIVIEW_CREATE_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int subpassCount() {
+        return segment.get(LAYOUT$subpassCount, OFFSET$subpassCount);
+    }
+
+    public void subpassCount(@unsigned int value) {
+        segment.set(LAYOUT$subpassCount, OFFSET$subpassCount, value);
+    }
+
+    public @pointer(comment="int*") MemorySegment pViewMasksRaw() {
+        return segment.get(LAYOUT$pViewMasks, OFFSET$pViewMasks);
+    }
+
+    public void pViewMasksRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pViewMasks, OFFSET$pViewMasks, value);
+    }
+
+    /// Note: the returned {@link IntPtr} does not have correct
+    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
+    /// writing to the buffer.
+    public @Nullable @unsigned IntPtr pViewMasks() {
+        MemorySegment s = pViewMasksRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new IntPtr(s);
+    }
+
+    public void pViewMasks(@Nullable @unsigned IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pViewMasksRaw(s);
+    }
+
+    public @unsigned int dependencyCount() {
+        return segment.get(LAYOUT$dependencyCount, OFFSET$dependencyCount);
+    }
+
+    public void dependencyCount(@unsigned int value) {
+        segment.set(LAYOUT$dependencyCount, OFFSET$dependencyCount, value);
+    }
+
+    public @pointer(comment="int*") MemorySegment pViewOffsetsRaw() {
+        return segment.get(LAYOUT$pViewOffsets, OFFSET$pViewOffsets);
+    }
+
+    public void pViewOffsetsRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pViewOffsets, OFFSET$pViewOffsets, value);
+    }
+
+    /// Note: the returned {@link IntPtr} does not have correct
+    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
+    /// writing to the buffer.
+    public @Nullable IntPtr pViewOffsets() {
+        MemorySegment s = pViewOffsetsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new IntPtr(s);
+    }
+
+    public void pViewOffsets(@Nullable IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pViewOffsetsRaw(s);
+    }
+
+    public @unsigned int correlationMaskCount() {
+        return segment.get(LAYOUT$correlationMaskCount, OFFSET$correlationMaskCount);
+    }
+
+    public void correlationMaskCount(@unsigned int value) {
+        segment.set(LAYOUT$correlationMaskCount, OFFSET$correlationMaskCount, value);
+    }
+
+    public @pointer(comment="int*") MemorySegment pCorrelationMasksRaw() {
+        return segment.get(LAYOUT$pCorrelationMasks, OFFSET$pCorrelationMasks);
+    }
+
+    public void pCorrelationMasksRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pCorrelationMasks, OFFSET$pCorrelationMasks, value);
+    }
+
+    /// Note: the returned {@link IntPtr} does not have correct
+    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
+    /// writing to the buffer.
+    public @Nullable @unsigned IntPtr pCorrelationMasks() {
+        MemorySegment s = pCorrelationMasksRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new IntPtr(s);
+    }
+
+    public void pCorrelationMasks(@Nullable @unsigned IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pCorrelationMasksRaw(s);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -106,124 +252,4 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
     public static final long OFFSET$pViewOffsets = LAYOUT.byteOffset(PATH$pViewOffsets);
     public static final long OFFSET$correlationMaskCount = LAYOUT.byteOffset(PATH$correlationMaskCount);
     public static final long OFFSET$pCorrelationMasks = LAYOUT.byteOffset(PATH$pCorrelationMasks);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @unsigned int subpassCount() {
-        return segment.get(LAYOUT$subpassCount, OFFSET$subpassCount);
-    }
-
-    public void subpassCount(@unsigned int value) {
-        segment.set(LAYOUT$subpassCount, OFFSET$subpassCount, value);
-    }
-
-    public @pointer(comment="int*") MemorySegment pViewMasksRaw() {
-        return segment.get(LAYOUT$pViewMasks, OFFSET$pViewMasks);
-    }
-
-    public void pViewMasksRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pViewMasks, OFFSET$pViewMasks, value);
-    }
-
-    /// Note: the returned {@link IntPtr} does not have correct
-    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
-    /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
-    /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pViewMasks() {
-        MemorySegment s = pViewMasksRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new IntPtr(s);
-    }
-
-    public void pViewMasks(@Nullable @unsigned IntPtr value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pViewMasksRaw(s);
-    }
-
-    public @unsigned int dependencyCount() {
-        return segment.get(LAYOUT$dependencyCount, OFFSET$dependencyCount);
-    }
-
-    public void dependencyCount(@unsigned int value) {
-        segment.set(LAYOUT$dependencyCount, OFFSET$dependencyCount, value);
-    }
-
-    public @pointer(comment="int*") MemorySegment pViewOffsetsRaw() {
-        return segment.get(LAYOUT$pViewOffsets, OFFSET$pViewOffsets);
-    }
-
-    public void pViewOffsetsRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pViewOffsets, OFFSET$pViewOffsets, value);
-    }
-
-    /// Note: the returned {@link IntPtr} does not have correct
-    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
-    /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
-    /// writing to the buffer.
-    public @Nullable IntPtr pViewOffsets() {
-        MemorySegment s = pViewOffsetsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new IntPtr(s);
-    }
-
-    public void pViewOffsets(@Nullable IntPtr value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pViewOffsetsRaw(s);
-    }
-
-    public @unsigned int correlationMaskCount() {
-        return segment.get(LAYOUT$correlationMaskCount, OFFSET$correlationMaskCount);
-    }
-
-    public void correlationMaskCount(@unsigned int value) {
-        segment.set(LAYOUT$correlationMaskCount, OFFSET$correlationMaskCount, value);
-    }
-
-    public @pointer(comment="int*") MemorySegment pCorrelationMasksRaw() {
-        return segment.get(LAYOUT$pCorrelationMasks, OFFSET$pCorrelationMasks);
-    }
-
-    public void pCorrelationMasksRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pCorrelationMasks, OFFSET$pCorrelationMasks, value);
-    }
-
-    /// Note: the returned {@link IntPtr} does not have correct
-    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
-    /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
-    /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pCorrelationMasks() {
-        MemorySegment s = pCorrelationMasksRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new IntPtr(s);
-    }
-
-    public void pCorrelationMasks(@Nullable @unsigned IntPtr value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pCorrelationMasksRaw(s);
-    }
-
 }

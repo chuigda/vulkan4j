@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoEncodeQualityLevelPropertiesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeQualityLevelPropertiesKHR.html"><code>VkVideoEncodeQualityLevelPropertiesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoEncodeQualityLevelPropertiesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkVideoEncodeRateControlModeFlagsKHR preferredRateControlMode;
+///     uint32_t preferredRateControlLayerCount;
+/// } VkVideoEncodeQualityLevelPropertiesKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUALITY_LEVEL_PROPERTIES_KHR`
+///
+/// The {@link VkVideoEncodeQualityLevelPropertiesKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkVideoEncodeQualityLevelPropertiesKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeQualityLevelPropertiesKHR.html">VkVideoEncodeQualityLevelPropertiesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeQualityLevelPropertiesKHR.html"><code>VkVideoEncodeQualityLevelPropertiesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoEncodeQualityLevelPropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkVideoEncodeQualityLevelPropertiesKHR {
-        sType(VkStructureType.VIDEO_ENCODE_QUALITY_LEVEL_PROPERTIES_KHR);
-    }
-
     public static VkVideoEncodeQualityLevelPropertiesKHR allocate(Arena arena) {
-        return new VkVideoEncodeQualityLevelPropertiesKHR(arena.allocate(LAYOUT));
+        VkVideoEncodeQualityLevelPropertiesKHR ret = new VkVideoEncodeQualityLevelPropertiesKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VIDEO_ENCODE_QUALITY_LEVEL_PROPERTIES_KHR);
+        return ret;
     }
 
     public static VkVideoEncodeQualityLevelPropertiesKHR[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkVideoEncodeQualityLevelPropertiesKHR(@NotNull MemorySegment segm
         VkVideoEncodeQualityLevelPropertiesKHR[] ret = new VkVideoEncodeQualityLevelPropertiesKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkVideoEncodeQualityLevelPropertiesKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VIDEO_ENCODE_QUALITY_LEVEL_PROPERTIES_KHR);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkVideoEncodeQualityLevelPropertiesKHR(@NotNull MemorySegment segm
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("preferredRateControlMode"),
-        ValueLayout.JAVA_INT.withName("preferredRateControlLayerCount")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$preferredRateControlMode = PathElement.groupElement("PATH$preferredRateControlMode");
-    public static final PathElement PATH$preferredRateControlLayerCount = PathElement.groupElement("PATH$preferredRateControlLayerCount");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$preferredRateControlMode = (OfInt) LAYOUT.select(PATH$preferredRateControlMode);
-    public static final OfInt LAYOUT$preferredRateControlLayerCount = (OfInt) LAYOUT.select(PATH$preferredRateControlLayerCount);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$preferredRateControlMode = LAYOUT$preferredRateControlMode.byteSize();
-    public static final long SIZE$preferredRateControlLayerCount = LAYOUT$preferredRateControlLayerCount.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$preferredRateControlMode = LAYOUT.byteOffset(PATH$preferredRateControlMode);
-    public static final long OFFSET$preferredRateControlLayerCount = LAYOUT.byteOffset(PATH$preferredRateControlLayerCount);
+    public void autoInit() {
+        sType(VkStructureType.VIDEO_ENCODE_QUALITY_LEVEL_PROPERTIES_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkVideoEncodeQualityLevelPropertiesKHR(@NotNull MemorySegment segm
         segment.set(LAYOUT$preferredRateControlLayerCount, OFFSET$preferredRateControlLayerCount, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("preferredRateControlMode"),
+        ValueLayout.JAVA_INT.withName("preferredRateControlLayerCount")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$preferredRateControlMode = PathElement.groupElement("PATH$preferredRateControlMode");
+    public static final PathElement PATH$preferredRateControlLayerCount = PathElement.groupElement("PATH$preferredRateControlLayerCount");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$preferredRateControlMode = (OfInt) LAYOUT.select(PATH$preferredRateControlMode);
+    public static final OfInt LAYOUT$preferredRateControlLayerCount = (OfInt) LAYOUT.select(PATH$preferredRateControlLayerCount);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$preferredRateControlMode = LAYOUT$preferredRateControlMode.byteSize();
+    public static final long SIZE$preferredRateControlLayerCount = LAYOUT$preferredRateControlLayerCount.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$preferredRateControlMode = LAYOUT.byteOffset(PATH$preferredRateControlMode);
+    public static final long OFFSET$preferredRateControlLayerCount = LAYOUT.byteOffset(PATH$preferredRateControlLayerCount);
 }

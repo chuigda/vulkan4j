@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeometryInstanceFlagsKHR.html">VkGeometryInstanceFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeometryInstanceFlagsKHR.html"><code>VkGeometryInstanceFlagsKHR</code></a>
 public final class VkGeometryInstanceFlagsKHR {
     public static final int DISABLE_OPACITY_MICROMAPS_EXT = 0x20;
     public static final int FORCE_NO_OPAQUE = 0x8;

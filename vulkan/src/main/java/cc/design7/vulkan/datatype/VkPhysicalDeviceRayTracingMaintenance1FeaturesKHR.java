@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.html"><code>VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 rayTracingMaintenance1;
+///     VkBool32 rayTracingPipelineTraceRaysIndirect2;
+/// } VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR`
+///
+/// The {@link VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.html">VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.html"><code>VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR {
-        sType(VkStructureType.PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR);
-    }
-
     public static VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR allocate(Arena arena) {
-        return new VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(arena.allocate(LAYOUT));
+        VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR ret = new VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR);
+        return ret;
     }
 
     public static VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
         VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR[] ret = new VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("rayTracingMaintenance1"),
-        ValueLayout.JAVA_INT.withName("rayTracingPipelineTraceRaysIndirect2")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$rayTracingMaintenance1 = PathElement.groupElement("PATH$rayTracingMaintenance1");
-    public static final PathElement PATH$rayTracingPipelineTraceRaysIndirect2 = PathElement.groupElement("PATH$rayTracingPipelineTraceRaysIndirect2");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$rayTracingMaintenance1 = (OfInt) LAYOUT.select(PATH$rayTracingMaintenance1);
-    public static final OfInt LAYOUT$rayTracingPipelineTraceRaysIndirect2 = (OfInt) LAYOUT.select(PATH$rayTracingPipelineTraceRaysIndirect2);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$rayTracingMaintenance1 = LAYOUT$rayTracingMaintenance1.byteSize();
-    public static final long SIZE$rayTracingPipelineTraceRaysIndirect2 = LAYOUT$rayTracingPipelineTraceRaysIndirect2.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$rayTracingMaintenance1 = LAYOUT.byteOffset(PATH$rayTracingMaintenance1);
-    public static final long OFFSET$rayTracingPipelineTraceRaysIndirect2 = LAYOUT.byteOffset(PATH$rayTracingPipelineTraceRaysIndirect2);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
         segment.set(LAYOUT$rayTracingPipelineTraceRaysIndirect2, OFFSET$rayTracingPipelineTraceRaysIndirect2, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("rayTracingMaintenance1"),
+        ValueLayout.JAVA_INT.withName("rayTracingPipelineTraceRaysIndirect2")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$rayTracingMaintenance1 = PathElement.groupElement("PATH$rayTracingMaintenance1");
+    public static final PathElement PATH$rayTracingPipelineTraceRaysIndirect2 = PathElement.groupElement("PATH$rayTracingPipelineTraceRaysIndirect2");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$rayTracingMaintenance1 = (OfInt) LAYOUT.select(PATH$rayTracingMaintenance1);
+    public static final OfInt LAYOUT$rayTracingPipelineTraceRaysIndirect2 = (OfInt) LAYOUT.select(PATH$rayTracingPipelineTraceRaysIndirect2);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$rayTracingMaintenance1 = LAYOUT$rayTracingMaintenance1.byteSize();
+    public static final long SIZE$rayTracingPipelineTraceRaysIndirect2 = LAYOUT$rayTracingPipelineTraceRaysIndirect2.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$rayTracingMaintenance1 = LAYOUT.byteOffset(PATH$rayTracingMaintenance1);
+    public static final long OFFSET$rayTracingPipelineTraceRaysIndirect2 = LAYOUT.byteOffset(PATH$rayTracingPipelineTraceRaysIndirect2);
 }

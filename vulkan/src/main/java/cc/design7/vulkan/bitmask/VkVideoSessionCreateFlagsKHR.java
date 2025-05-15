@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoSessionCreateFlagsKHR.html">VkVideoSessionCreateFlagsKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoSessionCreateFlagsKHR.html"><code>VkVideoSessionCreateFlagsKHR</code></a>
 public final class VkVideoSessionCreateFlagsKHR {
     public static final int ALLOW_ENCODE_EMPHASIS_MAP = 0x10;
     public static final int ALLOW_ENCODE_PARAMETER_OPTIMIZATIONS = 0x2;

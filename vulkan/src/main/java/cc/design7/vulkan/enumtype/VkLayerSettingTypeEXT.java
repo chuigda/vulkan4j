@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLayerSettingTypeEXT.html">VkLayerSettingTypeEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLayerSettingTypeEXT.html"><code>VkLayerSettingTypeEXT</code></a>
 public final class VkLayerSettingTypeEXT {
     public static final int BOOL32 = 0x0;
     public static final int INT32 = 0x1;

@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceFragmentDensityMapPropertiesEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFragmentDensityMapPropertiesEXT.html"><code>VkPhysicalDeviceFragmentDensityMapPropertiesEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceFragmentDensityMapPropertiesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkExtent2D minFragmentDensityTexelSize;
+///     VkExtent2D maxFragmentDensityTexelSize;
+///     VkBool32 fragmentDensityInvocations;
+/// } VkPhysicalDeviceFragmentDensityMapPropertiesEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT`
+///
+/// The {@link VkPhysicalDeviceFragmentDensityMapPropertiesEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceFragmentDensityMapPropertiesEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFragmentDensityMapPropertiesEXT.html">VkPhysicalDeviceFragmentDensityMapPropertiesEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFragmentDensityMapPropertiesEXT.html"><code>VkPhysicalDeviceFragmentDensityMapPropertiesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceFragmentDensityMapPropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT {
-        sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT);
-    }
-
     public static VkPhysicalDeviceFragmentDensityMapPropertiesEXT allocate(Arena arena) {
-        return new VkPhysicalDeviceFragmentDensityMapPropertiesEXT(arena.allocate(LAYOUT));
+        VkPhysicalDeviceFragmentDensityMapPropertiesEXT ret = new VkPhysicalDeviceFragmentDensityMapPropertiesEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT);
+        return ret;
     }
 
     public static VkPhysicalDeviceFragmentDensityMapPropertiesEXT[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkPhysicalDeviceFragmentDensityMapPropertiesEXT(@NotNull MemorySeg
         VkPhysicalDeviceFragmentDensityMapPropertiesEXT[] ret = new VkPhysicalDeviceFragmentDensityMapPropertiesEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceFragmentDensityMapPropertiesEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkPhysicalDeviceFragmentDensityMapPropertiesEXT(@NotNull MemorySeg
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        VkExtent2D.LAYOUT.withName("minFragmentDensityTexelSize"),
-        VkExtent2D.LAYOUT.withName("maxFragmentDensityTexelSize"),
-        ValueLayout.JAVA_INT.withName("fragmentDensityInvocations")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$minFragmentDensityTexelSize = PathElement.groupElement("PATH$minFragmentDensityTexelSize");
-    public static final PathElement PATH$maxFragmentDensityTexelSize = PathElement.groupElement("PATH$maxFragmentDensityTexelSize");
-    public static final PathElement PATH$fragmentDensityInvocations = PathElement.groupElement("PATH$fragmentDensityInvocations");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$minFragmentDensityTexelSize = (StructLayout) LAYOUT.select(PATH$minFragmentDensityTexelSize);
-    public static final StructLayout LAYOUT$maxFragmentDensityTexelSize = (StructLayout) LAYOUT.select(PATH$maxFragmentDensityTexelSize);
-    public static final OfInt LAYOUT$fragmentDensityInvocations = (OfInt) LAYOUT.select(PATH$fragmentDensityInvocations);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$minFragmentDensityTexelSize = LAYOUT$minFragmentDensityTexelSize.byteSize();
-    public static final long SIZE$maxFragmentDensityTexelSize = LAYOUT$maxFragmentDensityTexelSize.byteSize();
-    public static final long SIZE$fragmentDensityInvocations = LAYOUT$fragmentDensityInvocations.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$minFragmentDensityTexelSize = LAYOUT.byteOffset(PATH$minFragmentDensityTexelSize);
-    public static final long OFFSET$maxFragmentDensityTexelSize = LAYOUT.byteOffset(PATH$maxFragmentDensityTexelSize);
-    public static final long OFFSET$fragmentDensityInvocations = LAYOUT.byteOffset(PATH$fragmentDensityInvocations);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -136,4 +127,36 @@ public record VkPhysicalDeviceFragmentDensityMapPropertiesEXT(@NotNull MemorySeg
         segment.set(LAYOUT$fragmentDensityInvocations, OFFSET$fragmentDensityInvocations, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkExtent2D.LAYOUT.withName("minFragmentDensityTexelSize"),
+        VkExtent2D.LAYOUT.withName("maxFragmentDensityTexelSize"),
+        ValueLayout.JAVA_INT.withName("fragmentDensityInvocations")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$minFragmentDensityTexelSize = PathElement.groupElement("PATH$minFragmentDensityTexelSize");
+    public static final PathElement PATH$maxFragmentDensityTexelSize = PathElement.groupElement("PATH$maxFragmentDensityTexelSize");
+    public static final PathElement PATH$fragmentDensityInvocations = PathElement.groupElement("PATH$fragmentDensityInvocations");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$minFragmentDensityTexelSize = (StructLayout) LAYOUT.select(PATH$minFragmentDensityTexelSize);
+    public static final StructLayout LAYOUT$maxFragmentDensityTexelSize = (StructLayout) LAYOUT.select(PATH$maxFragmentDensityTexelSize);
+    public static final OfInt LAYOUT$fragmentDensityInvocations = (OfInt) LAYOUT.select(PATH$fragmentDensityInvocations);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$minFragmentDensityTexelSize = LAYOUT$minFragmentDensityTexelSize.byteSize();
+    public static final long SIZE$maxFragmentDensityTexelSize = LAYOUT$maxFragmentDensityTexelSize.byteSize();
+    public static final long SIZE$fragmentDensityInvocations = LAYOUT$fragmentDensityInvocations.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$minFragmentDensityTexelSize = LAYOUT.byteOffset(PATH$minFragmentDensityTexelSize);
+    public static final long OFFSET$maxFragmentDensityTexelSize = LAYOUT.byteOffset(PATH$maxFragmentDensityTexelSize);
+    public static final long OFFSET$fragmentDensityInvocations = LAYOUT.byteOffset(PATH$fragmentDensityInvocations);
 }

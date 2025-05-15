@@ -14,8 +14,71 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceFeatures} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFeatures.html"><code>VkPhysicalDeviceFeatures</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceFeatures {
+///     VkBool32 robustBufferAccess;
+///     VkBool32 fullDrawIndexUint32;
+///     VkBool32 imageCubeArray;
+///     VkBool32 independentBlend;
+///     VkBool32 geometryShader;
+///     VkBool32 tessellationShader;
+///     VkBool32 sampleRateShading;
+///     VkBool32 dualSrcBlend;
+///     VkBool32 logicOp;
+///     VkBool32 multiDrawIndirect;
+///     VkBool32 drawIndirectFirstInstance;
+///     VkBool32 depthClamp;
+///     VkBool32 depthBiasClamp;
+///     VkBool32 fillModeNonSolid;
+///     VkBool32 depthBounds;
+///     VkBool32 wideLines;
+///     VkBool32 largePoints;
+///     VkBool32 alphaToOne;
+///     VkBool32 multiViewport;
+///     VkBool32 samplerAnisotropy;
+///     VkBool32 textureCompressionETC2;
+///     VkBool32 textureCompressionASTC_LDR;
+///     VkBool32 textureCompressionBC;
+///     VkBool32 occlusionQueryPrecise;
+///     VkBool32 pipelineStatisticsQuery;
+///     VkBool32 vertexPipelineStoresAndAtomics;
+///     VkBool32 fragmentStoresAndAtomics;
+///     VkBool32 shaderTessellationAndGeometryPointSize;
+///     VkBool32 shaderImageGatherExtended;
+///     VkBool32 shaderStorageImageExtendedFormats;
+///     VkBool32 shaderStorageImageMultisample;
+///     VkBool32 shaderStorageImageReadWithoutFormat;
+///     VkBool32 shaderStorageImageWriteWithoutFormat;
+///     VkBool32 shaderUniformBufferArrayDynamicIndexing;
+///     VkBool32 shaderSampledImageArrayDynamicIndexing;
+///     VkBool32 shaderStorageBufferArrayDynamicIndexing;
+///     VkBool32 shaderStorageImageArrayDynamicIndexing;
+///     VkBool32 shaderClipDistance;
+///     VkBool32 shaderCullDistance;
+///     VkBool32 shaderFloat64;
+///     VkBool32 shaderInt64;
+///     VkBool32 shaderInt16;
+///     VkBool32 shaderResourceResidency;
+///     VkBool32 shaderResourceMinLod;
+///     VkBool32 sparseBinding;
+///     VkBool32 sparseResidencyBuffer;
+///     VkBool32 sparseResidencyImage2D;
+///     VkBool32 sparseResidencyImage3D;
+///     VkBool32 sparseResidency2Samples;
+///     VkBool32 sparseResidency4Samples;
+///     VkBool32 sparseResidency8Samples;
+///     VkBool32 sparseResidency16Samples;
+///     VkBool32 sparseResidencyAliased;
+///     VkBool32 variableMultisampleRate;
+///     VkBool32 inheritedQueries;
+/// } VkPhysicalDeviceFeatures;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +87,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFeatures.html">VkPhysicalDeviceFeatures</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFeatures.html"><code>VkPhysicalDeviceFeatures</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceFeatures(@NotNull MemorySegment segment) implements IPointer {
     public static VkPhysicalDeviceFeatures allocate(Arena arena) {
-        return new VkPhysicalDeviceFeatures(arena.allocate(LAYOUT));
+        VkPhysicalDeviceFeatures ret = new VkPhysicalDeviceFeatures(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkPhysicalDeviceFeatures[] allocate(Arena arena, int count) {
@@ -54,289 +118,6 @@ public record VkPhysicalDeviceFeatures(@NotNull MemorySegment segment) implement
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("robustBufferAccess"),
-        ValueLayout.JAVA_INT.withName("fullDrawIndexUint32"),
-        ValueLayout.JAVA_INT.withName("imageCubeArray"),
-        ValueLayout.JAVA_INT.withName("independentBlend"),
-        ValueLayout.JAVA_INT.withName("geometryShader"),
-        ValueLayout.JAVA_INT.withName("tessellationShader"),
-        ValueLayout.JAVA_INT.withName("sampleRateShading"),
-        ValueLayout.JAVA_INT.withName("dualSrcBlend"),
-        ValueLayout.JAVA_INT.withName("logicOp"),
-        ValueLayout.JAVA_INT.withName("multiDrawIndirect"),
-        ValueLayout.JAVA_INT.withName("drawIndirectFirstInstance"),
-        ValueLayout.JAVA_INT.withName("depthClamp"),
-        ValueLayout.JAVA_INT.withName("depthBiasClamp"),
-        ValueLayout.JAVA_INT.withName("fillModeNonSolid"),
-        ValueLayout.JAVA_INT.withName("depthBounds"),
-        ValueLayout.JAVA_INT.withName("wideLines"),
-        ValueLayout.JAVA_INT.withName("largePoints"),
-        ValueLayout.JAVA_INT.withName("alphaToOne"),
-        ValueLayout.JAVA_INT.withName("multiViewport"),
-        ValueLayout.JAVA_INT.withName("samplerAnisotropy"),
-        ValueLayout.JAVA_INT.withName("textureCompressionETC2"),
-        ValueLayout.JAVA_INT.withName("textureCompressionASTC_LDR"),
-        ValueLayout.JAVA_INT.withName("textureCompressionBC"),
-        ValueLayout.JAVA_INT.withName("occlusionQueryPrecise"),
-        ValueLayout.JAVA_INT.withName("pipelineStatisticsQuery"),
-        ValueLayout.JAVA_INT.withName("vertexPipelineStoresAndAtomics"),
-        ValueLayout.JAVA_INT.withName("fragmentStoresAndAtomics"),
-        ValueLayout.JAVA_INT.withName("shaderTessellationAndGeometryPointSize"),
-        ValueLayout.JAVA_INT.withName("shaderImageGatherExtended"),
-        ValueLayout.JAVA_INT.withName("shaderStorageImageExtendedFormats"),
-        ValueLayout.JAVA_INT.withName("shaderStorageImageMultisample"),
-        ValueLayout.JAVA_INT.withName("shaderStorageImageReadWithoutFormat"),
-        ValueLayout.JAVA_INT.withName("shaderStorageImageWriteWithoutFormat"),
-        ValueLayout.JAVA_INT.withName("shaderUniformBufferArrayDynamicIndexing"),
-        ValueLayout.JAVA_INT.withName("shaderSampledImageArrayDynamicIndexing"),
-        ValueLayout.JAVA_INT.withName("shaderStorageBufferArrayDynamicIndexing"),
-        ValueLayout.JAVA_INT.withName("shaderStorageImageArrayDynamicIndexing"),
-        ValueLayout.JAVA_INT.withName("shaderClipDistance"),
-        ValueLayout.JAVA_INT.withName("shaderCullDistance"),
-        ValueLayout.JAVA_INT.withName("shaderFloat64"),
-        ValueLayout.JAVA_INT.withName("shaderInt64"),
-        ValueLayout.JAVA_INT.withName("shaderInt16"),
-        ValueLayout.JAVA_INT.withName("shaderResourceResidency"),
-        ValueLayout.JAVA_INT.withName("shaderResourceMinLod"),
-        ValueLayout.JAVA_INT.withName("sparseBinding"),
-        ValueLayout.JAVA_INT.withName("sparseResidencyBuffer"),
-        ValueLayout.JAVA_INT.withName("sparseResidencyImage2D"),
-        ValueLayout.JAVA_INT.withName("sparseResidencyImage3D"),
-        ValueLayout.JAVA_INT.withName("sparseResidency2Samples"),
-        ValueLayout.JAVA_INT.withName("sparseResidency4Samples"),
-        ValueLayout.JAVA_INT.withName("sparseResidency8Samples"),
-        ValueLayout.JAVA_INT.withName("sparseResidency16Samples"),
-        ValueLayout.JAVA_INT.withName("sparseResidencyAliased"),
-        ValueLayout.JAVA_INT.withName("variableMultisampleRate"),
-        ValueLayout.JAVA_INT.withName("inheritedQueries")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$robustBufferAccess = PathElement.groupElement("PATH$robustBufferAccess");
-    public static final PathElement PATH$fullDrawIndexUint32 = PathElement.groupElement("PATH$fullDrawIndexUint32");
-    public static final PathElement PATH$imageCubeArray = PathElement.groupElement("PATH$imageCubeArray");
-    public static final PathElement PATH$independentBlend = PathElement.groupElement("PATH$independentBlend");
-    public static final PathElement PATH$geometryShader = PathElement.groupElement("PATH$geometryShader");
-    public static final PathElement PATH$tessellationShader = PathElement.groupElement("PATH$tessellationShader");
-    public static final PathElement PATH$sampleRateShading = PathElement.groupElement("PATH$sampleRateShading");
-    public static final PathElement PATH$dualSrcBlend = PathElement.groupElement("PATH$dualSrcBlend");
-    public static final PathElement PATH$logicOp = PathElement.groupElement("PATH$logicOp");
-    public static final PathElement PATH$multiDrawIndirect = PathElement.groupElement("PATH$multiDrawIndirect");
-    public static final PathElement PATH$drawIndirectFirstInstance = PathElement.groupElement("PATH$drawIndirectFirstInstance");
-    public static final PathElement PATH$depthClamp = PathElement.groupElement("PATH$depthClamp");
-    public static final PathElement PATH$depthBiasClamp = PathElement.groupElement("PATH$depthBiasClamp");
-    public static final PathElement PATH$fillModeNonSolid = PathElement.groupElement("PATH$fillModeNonSolid");
-    public static final PathElement PATH$depthBounds = PathElement.groupElement("PATH$depthBounds");
-    public static final PathElement PATH$wideLines = PathElement.groupElement("PATH$wideLines");
-    public static final PathElement PATH$largePoints = PathElement.groupElement("PATH$largePoints");
-    public static final PathElement PATH$alphaToOne = PathElement.groupElement("PATH$alphaToOne");
-    public static final PathElement PATH$multiViewport = PathElement.groupElement("PATH$multiViewport");
-    public static final PathElement PATH$samplerAnisotropy = PathElement.groupElement("PATH$samplerAnisotropy");
-    public static final PathElement PATH$textureCompressionETC2 = PathElement.groupElement("PATH$textureCompressionETC2");
-    public static final PathElement PATH$textureCompressionASTC_LDR = PathElement.groupElement("PATH$textureCompressionASTC_LDR");
-    public static final PathElement PATH$textureCompressionBC = PathElement.groupElement("PATH$textureCompressionBC");
-    public static final PathElement PATH$occlusionQueryPrecise = PathElement.groupElement("PATH$occlusionQueryPrecise");
-    public static final PathElement PATH$pipelineStatisticsQuery = PathElement.groupElement("PATH$pipelineStatisticsQuery");
-    public static final PathElement PATH$vertexPipelineStoresAndAtomics = PathElement.groupElement("PATH$vertexPipelineStoresAndAtomics");
-    public static final PathElement PATH$fragmentStoresAndAtomics = PathElement.groupElement("PATH$fragmentStoresAndAtomics");
-    public static final PathElement PATH$shaderTessellationAndGeometryPointSize = PathElement.groupElement("PATH$shaderTessellationAndGeometryPointSize");
-    public static final PathElement PATH$shaderImageGatherExtended = PathElement.groupElement("PATH$shaderImageGatherExtended");
-    public static final PathElement PATH$shaderStorageImageExtendedFormats = PathElement.groupElement("PATH$shaderStorageImageExtendedFormats");
-    public static final PathElement PATH$shaderStorageImageMultisample = PathElement.groupElement("PATH$shaderStorageImageMultisample");
-    public static final PathElement PATH$shaderStorageImageReadWithoutFormat = PathElement.groupElement("PATH$shaderStorageImageReadWithoutFormat");
-    public static final PathElement PATH$shaderStorageImageWriteWithoutFormat = PathElement.groupElement("PATH$shaderStorageImageWriteWithoutFormat");
-    public static final PathElement PATH$shaderUniformBufferArrayDynamicIndexing = PathElement.groupElement("PATH$shaderUniformBufferArrayDynamicIndexing");
-    public static final PathElement PATH$shaderSampledImageArrayDynamicIndexing = PathElement.groupElement("PATH$shaderSampledImageArrayDynamicIndexing");
-    public static final PathElement PATH$shaderStorageBufferArrayDynamicIndexing = PathElement.groupElement("PATH$shaderStorageBufferArrayDynamicIndexing");
-    public static final PathElement PATH$shaderStorageImageArrayDynamicIndexing = PathElement.groupElement("PATH$shaderStorageImageArrayDynamicIndexing");
-    public static final PathElement PATH$shaderClipDistance = PathElement.groupElement("PATH$shaderClipDistance");
-    public static final PathElement PATH$shaderCullDistance = PathElement.groupElement("PATH$shaderCullDistance");
-    public static final PathElement PATH$shaderFloat64 = PathElement.groupElement("PATH$shaderFloat64");
-    public static final PathElement PATH$shaderInt64 = PathElement.groupElement("PATH$shaderInt64");
-    public static final PathElement PATH$shaderInt16 = PathElement.groupElement("PATH$shaderInt16");
-    public static final PathElement PATH$shaderResourceResidency = PathElement.groupElement("PATH$shaderResourceResidency");
-    public static final PathElement PATH$shaderResourceMinLod = PathElement.groupElement("PATH$shaderResourceMinLod");
-    public static final PathElement PATH$sparseBinding = PathElement.groupElement("PATH$sparseBinding");
-    public static final PathElement PATH$sparseResidencyBuffer = PathElement.groupElement("PATH$sparseResidencyBuffer");
-    public static final PathElement PATH$sparseResidencyImage2D = PathElement.groupElement("PATH$sparseResidencyImage2D");
-    public static final PathElement PATH$sparseResidencyImage3D = PathElement.groupElement("PATH$sparseResidencyImage3D");
-    public static final PathElement PATH$sparseResidency2Samples = PathElement.groupElement("PATH$sparseResidency2Samples");
-    public static final PathElement PATH$sparseResidency4Samples = PathElement.groupElement("PATH$sparseResidency4Samples");
-    public static final PathElement PATH$sparseResidency8Samples = PathElement.groupElement("PATH$sparseResidency8Samples");
-    public static final PathElement PATH$sparseResidency16Samples = PathElement.groupElement("PATH$sparseResidency16Samples");
-    public static final PathElement PATH$sparseResidencyAliased = PathElement.groupElement("PATH$sparseResidencyAliased");
-    public static final PathElement PATH$variableMultisampleRate = PathElement.groupElement("PATH$variableMultisampleRate");
-    public static final PathElement PATH$inheritedQueries = PathElement.groupElement("PATH$inheritedQueries");
-
-    public static final OfInt LAYOUT$robustBufferAccess = (OfInt) LAYOUT.select(PATH$robustBufferAccess);
-    public static final OfInt LAYOUT$fullDrawIndexUint32 = (OfInt) LAYOUT.select(PATH$fullDrawIndexUint32);
-    public static final OfInt LAYOUT$imageCubeArray = (OfInt) LAYOUT.select(PATH$imageCubeArray);
-    public static final OfInt LAYOUT$independentBlend = (OfInt) LAYOUT.select(PATH$independentBlend);
-    public static final OfInt LAYOUT$geometryShader = (OfInt) LAYOUT.select(PATH$geometryShader);
-    public static final OfInt LAYOUT$tessellationShader = (OfInt) LAYOUT.select(PATH$tessellationShader);
-    public static final OfInt LAYOUT$sampleRateShading = (OfInt) LAYOUT.select(PATH$sampleRateShading);
-    public static final OfInt LAYOUT$dualSrcBlend = (OfInt) LAYOUT.select(PATH$dualSrcBlend);
-    public static final OfInt LAYOUT$logicOp = (OfInt) LAYOUT.select(PATH$logicOp);
-    public static final OfInt LAYOUT$multiDrawIndirect = (OfInt) LAYOUT.select(PATH$multiDrawIndirect);
-    public static final OfInt LAYOUT$drawIndirectFirstInstance = (OfInt) LAYOUT.select(PATH$drawIndirectFirstInstance);
-    public static final OfInt LAYOUT$depthClamp = (OfInt) LAYOUT.select(PATH$depthClamp);
-    public static final OfInt LAYOUT$depthBiasClamp = (OfInt) LAYOUT.select(PATH$depthBiasClamp);
-    public static final OfInt LAYOUT$fillModeNonSolid = (OfInt) LAYOUT.select(PATH$fillModeNonSolid);
-    public static final OfInt LAYOUT$depthBounds = (OfInt) LAYOUT.select(PATH$depthBounds);
-    public static final OfInt LAYOUT$wideLines = (OfInt) LAYOUT.select(PATH$wideLines);
-    public static final OfInt LAYOUT$largePoints = (OfInt) LAYOUT.select(PATH$largePoints);
-    public static final OfInt LAYOUT$alphaToOne = (OfInt) LAYOUT.select(PATH$alphaToOne);
-    public static final OfInt LAYOUT$multiViewport = (OfInt) LAYOUT.select(PATH$multiViewport);
-    public static final OfInt LAYOUT$samplerAnisotropy = (OfInt) LAYOUT.select(PATH$samplerAnisotropy);
-    public static final OfInt LAYOUT$textureCompressionETC2 = (OfInt) LAYOUT.select(PATH$textureCompressionETC2);
-    public static final OfInt LAYOUT$textureCompressionASTC_LDR = (OfInt) LAYOUT.select(PATH$textureCompressionASTC_LDR);
-    public static final OfInt LAYOUT$textureCompressionBC = (OfInt) LAYOUT.select(PATH$textureCompressionBC);
-    public static final OfInt LAYOUT$occlusionQueryPrecise = (OfInt) LAYOUT.select(PATH$occlusionQueryPrecise);
-    public static final OfInt LAYOUT$pipelineStatisticsQuery = (OfInt) LAYOUT.select(PATH$pipelineStatisticsQuery);
-    public static final OfInt LAYOUT$vertexPipelineStoresAndAtomics = (OfInt) LAYOUT.select(PATH$vertexPipelineStoresAndAtomics);
-    public static final OfInt LAYOUT$fragmentStoresAndAtomics = (OfInt) LAYOUT.select(PATH$fragmentStoresAndAtomics);
-    public static final OfInt LAYOUT$shaderTessellationAndGeometryPointSize = (OfInt) LAYOUT.select(PATH$shaderTessellationAndGeometryPointSize);
-    public static final OfInt LAYOUT$shaderImageGatherExtended = (OfInt) LAYOUT.select(PATH$shaderImageGatherExtended);
-    public static final OfInt LAYOUT$shaderStorageImageExtendedFormats = (OfInt) LAYOUT.select(PATH$shaderStorageImageExtendedFormats);
-    public static final OfInt LAYOUT$shaderStorageImageMultisample = (OfInt) LAYOUT.select(PATH$shaderStorageImageMultisample);
-    public static final OfInt LAYOUT$shaderStorageImageReadWithoutFormat = (OfInt) LAYOUT.select(PATH$shaderStorageImageReadWithoutFormat);
-    public static final OfInt LAYOUT$shaderStorageImageWriteWithoutFormat = (OfInt) LAYOUT.select(PATH$shaderStorageImageWriteWithoutFormat);
-    public static final OfInt LAYOUT$shaderUniformBufferArrayDynamicIndexing = (OfInt) LAYOUT.select(PATH$shaderUniformBufferArrayDynamicIndexing);
-    public static final OfInt LAYOUT$shaderSampledImageArrayDynamicIndexing = (OfInt) LAYOUT.select(PATH$shaderSampledImageArrayDynamicIndexing);
-    public static final OfInt LAYOUT$shaderStorageBufferArrayDynamicIndexing = (OfInt) LAYOUT.select(PATH$shaderStorageBufferArrayDynamicIndexing);
-    public static final OfInt LAYOUT$shaderStorageImageArrayDynamicIndexing = (OfInt) LAYOUT.select(PATH$shaderStorageImageArrayDynamicIndexing);
-    public static final OfInt LAYOUT$shaderClipDistance = (OfInt) LAYOUT.select(PATH$shaderClipDistance);
-    public static final OfInt LAYOUT$shaderCullDistance = (OfInt) LAYOUT.select(PATH$shaderCullDistance);
-    public static final OfInt LAYOUT$shaderFloat64 = (OfInt) LAYOUT.select(PATH$shaderFloat64);
-    public static final OfInt LAYOUT$shaderInt64 = (OfInt) LAYOUT.select(PATH$shaderInt64);
-    public static final OfInt LAYOUT$shaderInt16 = (OfInt) LAYOUT.select(PATH$shaderInt16);
-    public static final OfInt LAYOUT$shaderResourceResidency = (OfInt) LAYOUT.select(PATH$shaderResourceResidency);
-    public static final OfInt LAYOUT$shaderResourceMinLod = (OfInt) LAYOUT.select(PATH$shaderResourceMinLod);
-    public static final OfInt LAYOUT$sparseBinding = (OfInt) LAYOUT.select(PATH$sparseBinding);
-    public static final OfInt LAYOUT$sparseResidencyBuffer = (OfInt) LAYOUT.select(PATH$sparseResidencyBuffer);
-    public static final OfInt LAYOUT$sparseResidencyImage2D = (OfInt) LAYOUT.select(PATH$sparseResidencyImage2D);
-    public static final OfInt LAYOUT$sparseResidencyImage3D = (OfInt) LAYOUT.select(PATH$sparseResidencyImage3D);
-    public static final OfInt LAYOUT$sparseResidency2Samples = (OfInt) LAYOUT.select(PATH$sparseResidency2Samples);
-    public static final OfInt LAYOUT$sparseResidency4Samples = (OfInt) LAYOUT.select(PATH$sparseResidency4Samples);
-    public static final OfInt LAYOUT$sparseResidency8Samples = (OfInt) LAYOUT.select(PATH$sparseResidency8Samples);
-    public static final OfInt LAYOUT$sparseResidency16Samples = (OfInt) LAYOUT.select(PATH$sparseResidency16Samples);
-    public static final OfInt LAYOUT$sparseResidencyAliased = (OfInt) LAYOUT.select(PATH$sparseResidencyAliased);
-    public static final OfInt LAYOUT$variableMultisampleRate = (OfInt) LAYOUT.select(PATH$variableMultisampleRate);
-    public static final OfInt LAYOUT$inheritedQueries = (OfInt) LAYOUT.select(PATH$inheritedQueries);
-
-    public static final long SIZE$robustBufferAccess = LAYOUT$robustBufferAccess.byteSize();
-    public static final long SIZE$fullDrawIndexUint32 = LAYOUT$fullDrawIndexUint32.byteSize();
-    public static final long SIZE$imageCubeArray = LAYOUT$imageCubeArray.byteSize();
-    public static final long SIZE$independentBlend = LAYOUT$independentBlend.byteSize();
-    public static final long SIZE$geometryShader = LAYOUT$geometryShader.byteSize();
-    public static final long SIZE$tessellationShader = LAYOUT$tessellationShader.byteSize();
-    public static final long SIZE$sampleRateShading = LAYOUT$sampleRateShading.byteSize();
-    public static final long SIZE$dualSrcBlend = LAYOUT$dualSrcBlend.byteSize();
-    public static final long SIZE$logicOp = LAYOUT$logicOp.byteSize();
-    public static final long SIZE$multiDrawIndirect = LAYOUT$multiDrawIndirect.byteSize();
-    public static final long SIZE$drawIndirectFirstInstance = LAYOUT$drawIndirectFirstInstance.byteSize();
-    public static final long SIZE$depthClamp = LAYOUT$depthClamp.byteSize();
-    public static final long SIZE$depthBiasClamp = LAYOUT$depthBiasClamp.byteSize();
-    public static final long SIZE$fillModeNonSolid = LAYOUT$fillModeNonSolid.byteSize();
-    public static final long SIZE$depthBounds = LAYOUT$depthBounds.byteSize();
-    public static final long SIZE$wideLines = LAYOUT$wideLines.byteSize();
-    public static final long SIZE$largePoints = LAYOUT$largePoints.byteSize();
-    public static final long SIZE$alphaToOne = LAYOUT$alphaToOne.byteSize();
-    public static final long SIZE$multiViewport = LAYOUT$multiViewport.byteSize();
-    public static final long SIZE$samplerAnisotropy = LAYOUT$samplerAnisotropy.byteSize();
-    public static final long SIZE$textureCompressionETC2 = LAYOUT$textureCompressionETC2.byteSize();
-    public static final long SIZE$textureCompressionASTC_LDR = LAYOUT$textureCompressionASTC_LDR.byteSize();
-    public static final long SIZE$textureCompressionBC = LAYOUT$textureCompressionBC.byteSize();
-    public static final long SIZE$occlusionQueryPrecise = LAYOUT$occlusionQueryPrecise.byteSize();
-    public static final long SIZE$pipelineStatisticsQuery = LAYOUT$pipelineStatisticsQuery.byteSize();
-    public static final long SIZE$vertexPipelineStoresAndAtomics = LAYOUT$vertexPipelineStoresAndAtomics.byteSize();
-    public static final long SIZE$fragmentStoresAndAtomics = LAYOUT$fragmentStoresAndAtomics.byteSize();
-    public static final long SIZE$shaderTessellationAndGeometryPointSize = LAYOUT$shaderTessellationAndGeometryPointSize.byteSize();
-    public static final long SIZE$shaderImageGatherExtended = LAYOUT$shaderImageGatherExtended.byteSize();
-    public static final long SIZE$shaderStorageImageExtendedFormats = LAYOUT$shaderStorageImageExtendedFormats.byteSize();
-    public static final long SIZE$shaderStorageImageMultisample = LAYOUT$shaderStorageImageMultisample.byteSize();
-    public static final long SIZE$shaderStorageImageReadWithoutFormat = LAYOUT$shaderStorageImageReadWithoutFormat.byteSize();
-    public static final long SIZE$shaderStorageImageWriteWithoutFormat = LAYOUT$shaderStorageImageWriteWithoutFormat.byteSize();
-    public static final long SIZE$shaderUniformBufferArrayDynamicIndexing = LAYOUT$shaderUniformBufferArrayDynamicIndexing.byteSize();
-    public static final long SIZE$shaderSampledImageArrayDynamicIndexing = LAYOUT$shaderSampledImageArrayDynamicIndexing.byteSize();
-    public static final long SIZE$shaderStorageBufferArrayDynamicIndexing = LAYOUT$shaderStorageBufferArrayDynamicIndexing.byteSize();
-    public static final long SIZE$shaderStorageImageArrayDynamicIndexing = LAYOUT$shaderStorageImageArrayDynamicIndexing.byteSize();
-    public static final long SIZE$shaderClipDistance = LAYOUT$shaderClipDistance.byteSize();
-    public static final long SIZE$shaderCullDistance = LAYOUT$shaderCullDistance.byteSize();
-    public static final long SIZE$shaderFloat64 = LAYOUT$shaderFloat64.byteSize();
-    public static final long SIZE$shaderInt64 = LAYOUT$shaderInt64.byteSize();
-    public static final long SIZE$shaderInt16 = LAYOUT$shaderInt16.byteSize();
-    public static final long SIZE$shaderResourceResidency = LAYOUT$shaderResourceResidency.byteSize();
-    public static final long SIZE$shaderResourceMinLod = LAYOUT$shaderResourceMinLod.byteSize();
-    public static final long SIZE$sparseBinding = LAYOUT$sparseBinding.byteSize();
-    public static final long SIZE$sparseResidencyBuffer = LAYOUT$sparseResidencyBuffer.byteSize();
-    public static final long SIZE$sparseResidencyImage2D = LAYOUT$sparseResidencyImage2D.byteSize();
-    public static final long SIZE$sparseResidencyImage3D = LAYOUT$sparseResidencyImage3D.byteSize();
-    public static final long SIZE$sparseResidency2Samples = LAYOUT$sparseResidency2Samples.byteSize();
-    public static final long SIZE$sparseResidency4Samples = LAYOUT$sparseResidency4Samples.byteSize();
-    public static final long SIZE$sparseResidency8Samples = LAYOUT$sparseResidency8Samples.byteSize();
-    public static final long SIZE$sparseResidency16Samples = LAYOUT$sparseResidency16Samples.byteSize();
-    public static final long SIZE$sparseResidencyAliased = LAYOUT$sparseResidencyAliased.byteSize();
-    public static final long SIZE$variableMultisampleRate = LAYOUT$variableMultisampleRate.byteSize();
-    public static final long SIZE$inheritedQueries = LAYOUT$inheritedQueries.byteSize();
-
-    public static final long OFFSET$robustBufferAccess = LAYOUT.byteOffset(PATH$robustBufferAccess);
-    public static final long OFFSET$fullDrawIndexUint32 = LAYOUT.byteOffset(PATH$fullDrawIndexUint32);
-    public static final long OFFSET$imageCubeArray = LAYOUT.byteOffset(PATH$imageCubeArray);
-    public static final long OFFSET$independentBlend = LAYOUT.byteOffset(PATH$independentBlend);
-    public static final long OFFSET$geometryShader = LAYOUT.byteOffset(PATH$geometryShader);
-    public static final long OFFSET$tessellationShader = LAYOUT.byteOffset(PATH$tessellationShader);
-    public static final long OFFSET$sampleRateShading = LAYOUT.byteOffset(PATH$sampleRateShading);
-    public static final long OFFSET$dualSrcBlend = LAYOUT.byteOffset(PATH$dualSrcBlend);
-    public static final long OFFSET$logicOp = LAYOUT.byteOffset(PATH$logicOp);
-    public static final long OFFSET$multiDrawIndirect = LAYOUT.byteOffset(PATH$multiDrawIndirect);
-    public static final long OFFSET$drawIndirectFirstInstance = LAYOUT.byteOffset(PATH$drawIndirectFirstInstance);
-    public static final long OFFSET$depthClamp = LAYOUT.byteOffset(PATH$depthClamp);
-    public static final long OFFSET$depthBiasClamp = LAYOUT.byteOffset(PATH$depthBiasClamp);
-    public static final long OFFSET$fillModeNonSolid = LAYOUT.byteOffset(PATH$fillModeNonSolid);
-    public static final long OFFSET$depthBounds = LAYOUT.byteOffset(PATH$depthBounds);
-    public static final long OFFSET$wideLines = LAYOUT.byteOffset(PATH$wideLines);
-    public static final long OFFSET$largePoints = LAYOUT.byteOffset(PATH$largePoints);
-    public static final long OFFSET$alphaToOne = LAYOUT.byteOffset(PATH$alphaToOne);
-    public static final long OFFSET$multiViewport = LAYOUT.byteOffset(PATH$multiViewport);
-    public static final long OFFSET$samplerAnisotropy = LAYOUT.byteOffset(PATH$samplerAnisotropy);
-    public static final long OFFSET$textureCompressionETC2 = LAYOUT.byteOffset(PATH$textureCompressionETC2);
-    public static final long OFFSET$textureCompressionASTC_LDR = LAYOUT.byteOffset(PATH$textureCompressionASTC_LDR);
-    public static final long OFFSET$textureCompressionBC = LAYOUT.byteOffset(PATH$textureCompressionBC);
-    public static final long OFFSET$occlusionQueryPrecise = LAYOUT.byteOffset(PATH$occlusionQueryPrecise);
-    public static final long OFFSET$pipelineStatisticsQuery = LAYOUT.byteOffset(PATH$pipelineStatisticsQuery);
-    public static final long OFFSET$vertexPipelineStoresAndAtomics = LAYOUT.byteOffset(PATH$vertexPipelineStoresAndAtomics);
-    public static final long OFFSET$fragmentStoresAndAtomics = LAYOUT.byteOffset(PATH$fragmentStoresAndAtomics);
-    public static final long OFFSET$shaderTessellationAndGeometryPointSize = LAYOUT.byteOffset(PATH$shaderTessellationAndGeometryPointSize);
-    public static final long OFFSET$shaderImageGatherExtended = LAYOUT.byteOffset(PATH$shaderImageGatherExtended);
-    public static final long OFFSET$shaderStorageImageExtendedFormats = LAYOUT.byteOffset(PATH$shaderStorageImageExtendedFormats);
-    public static final long OFFSET$shaderStorageImageMultisample = LAYOUT.byteOffset(PATH$shaderStorageImageMultisample);
-    public static final long OFFSET$shaderStorageImageReadWithoutFormat = LAYOUT.byteOffset(PATH$shaderStorageImageReadWithoutFormat);
-    public static final long OFFSET$shaderStorageImageWriteWithoutFormat = LAYOUT.byteOffset(PATH$shaderStorageImageWriteWithoutFormat);
-    public static final long OFFSET$shaderUniformBufferArrayDynamicIndexing = LAYOUT.byteOffset(PATH$shaderUniformBufferArrayDynamicIndexing);
-    public static final long OFFSET$shaderSampledImageArrayDynamicIndexing = LAYOUT.byteOffset(PATH$shaderSampledImageArrayDynamicIndexing);
-    public static final long OFFSET$shaderStorageBufferArrayDynamicIndexing = LAYOUT.byteOffset(PATH$shaderStorageBufferArrayDynamicIndexing);
-    public static final long OFFSET$shaderStorageImageArrayDynamicIndexing = LAYOUT.byteOffset(PATH$shaderStorageImageArrayDynamicIndexing);
-    public static final long OFFSET$shaderClipDistance = LAYOUT.byteOffset(PATH$shaderClipDistance);
-    public static final long OFFSET$shaderCullDistance = LAYOUT.byteOffset(PATH$shaderCullDistance);
-    public static final long OFFSET$shaderFloat64 = LAYOUT.byteOffset(PATH$shaderFloat64);
-    public static final long OFFSET$shaderInt64 = LAYOUT.byteOffset(PATH$shaderInt64);
-    public static final long OFFSET$shaderInt16 = LAYOUT.byteOffset(PATH$shaderInt16);
-    public static final long OFFSET$shaderResourceResidency = LAYOUT.byteOffset(PATH$shaderResourceResidency);
-    public static final long OFFSET$shaderResourceMinLod = LAYOUT.byteOffset(PATH$shaderResourceMinLod);
-    public static final long OFFSET$sparseBinding = LAYOUT.byteOffset(PATH$sparseBinding);
-    public static final long OFFSET$sparseResidencyBuffer = LAYOUT.byteOffset(PATH$sparseResidencyBuffer);
-    public static final long OFFSET$sparseResidencyImage2D = LAYOUT.byteOffset(PATH$sparseResidencyImage2D);
-    public static final long OFFSET$sparseResidencyImage3D = LAYOUT.byteOffset(PATH$sparseResidencyImage3D);
-    public static final long OFFSET$sparseResidency2Samples = LAYOUT.byteOffset(PATH$sparseResidency2Samples);
-    public static final long OFFSET$sparseResidency4Samples = LAYOUT.byteOffset(PATH$sparseResidency4Samples);
-    public static final long OFFSET$sparseResidency8Samples = LAYOUT.byteOffset(PATH$sparseResidency8Samples);
-    public static final long OFFSET$sparseResidency16Samples = LAYOUT.byteOffset(PATH$sparseResidency16Samples);
-    public static final long OFFSET$sparseResidencyAliased = LAYOUT.byteOffset(PATH$sparseResidencyAliased);
-    public static final long OFFSET$variableMultisampleRate = LAYOUT.byteOffset(PATH$variableMultisampleRate);
-    public static final long OFFSET$inheritedQueries = LAYOUT.byteOffset(PATH$inheritedQueries);
 
     public @unsigned int robustBufferAccess() {
         return segment.get(LAYOUT$robustBufferAccess, OFFSET$robustBufferAccess);
@@ -778,4 +559,286 @@ public record VkPhysicalDeviceFeatures(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$inheritedQueries, OFFSET$inheritedQueries, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("robustBufferAccess"),
+        ValueLayout.JAVA_INT.withName("fullDrawIndexUint32"),
+        ValueLayout.JAVA_INT.withName("imageCubeArray"),
+        ValueLayout.JAVA_INT.withName("independentBlend"),
+        ValueLayout.JAVA_INT.withName("geometryShader"),
+        ValueLayout.JAVA_INT.withName("tessellationShader"),
+        ValueLayout.JAVA_INT.withName("sampleRateShading"),
+        ValueLayout.JAVA_INT.withName("dualSrcBlend"),
+        ValueLayout.JAVA_INT.withName("logicOp"),
+        ValueLayout.JAVA_INT.withName("multiDrawIndirect"),
+        ValueLayout.JAVA_INT.withName("drawIndirectFirstInstance"),
+        ValueLayout.JAVA_INT.withName("depthClamp"),
+        ValueLayout.JAVA_INT.withName("depthBiasClamp"),
+        ValueLayout.JAVA_INT.withName("fillModeNonSolid"),
+        ValueLayout.JAVA_INT.withName("depthBounds"),
+        ValueLayout.JAVA_INT.withName("wideLines"),
+        ValueLayout.JAVA_INT.withName("largePoints"),
+        ValueLayout.JAVA_INT.withName("alphaToOne"),
+        ValueLayout.JAVA_INT.withName("multiViewport"),
+        ValueLayout.JAVA_INT.withName("samplerAnisotropy"),
+        ValueLayout.JAVA_INT.withName("textureCompressionETC2"),
+        ValueLayout.JAVA_INT.withName("textureCompressionASTC_LDR"),
+        ValueLayout.JAVA_INT.withName("textureCompressionBC"),
+        ValueLayout.JAVA_INT.withName("occlusionQueryPrecise"),
+        ValueLayout.JAVA_INT.withName("pipelineStatisticsQuery"),
+        ValueLayout.JAVA_INT.withName("vertexPipelineStoresAndAtomics"),
+        ValueLayout.JAVA_INT.withName("fragmentStoresAndAtomics"),
+        ValueLayout.JAVA_INT.withName("shaderTessellationAndGeometryPointSize"),
+        ValueLayout.JAVA_INT.withName("shaderImageGatherExtended"),
+        ValueLayout.JAVA_INT.withName("shaderStorageImageExtendedFormats"),
+        ValueLayout.JAVA_INT.withName("shaderStorageImageMultisample"),
+        ValueLayout.JAVA_INT.withName("shaderStorageImageReadWithoutFormat"),
+        ValueLayout.JAVA_INT.withName("shaderStorageImageWriteWithoutFormat"),
+        ValueLayout.JAVA_INT.withName("shaderUniformBufferArrayDynamicIndexing"),
+        ValueLayout.JAVA_INT.withName("shaderSampledImageArrayDynamicIndexing"),
+        ValueLayout.JAVA_INT.withName("shaderStorageBufferArrayDynamicIndexing"),
+        ValueLayout.JAVA_INT.withName("shaderStorageImageArrayDynamicIndexing"),
+        ValueLayout.JAVA_INT.withName("shaderClipDistance"),
+        ValueLayout.JAVA_INT.withName("shaderCullDistance"),
+        ValueLayout.JAVA_INT.withName("shaderFloat64"),
+        ValueLayout.JAVA_INT.withName("shaderInt64"),
+        ValueLayout.JAVA_INT.withName("shaderInt16"),
+        ValueLayout.JAVA_INT.withName("shaderResourceResidency"),
+        ValueLayout.JAVA_INT.withName("shaderResourceMinLod"),
+        ValueLayout.JAVA_INT.withName("sparseBinding"),
+        ValueLayout.JAVA_INT.withName("sparseResidencyBuffer"),
+        ValueLayout.JAVA_INT.withName("sparseResidencyImage2D"),
+        ValueLayout.JAVA_INT.withName("sparseResidencyImage3D"),
+        ValueLayout.JAVA_INT.withName("sparseResidency2Samples"),
+        ValueLayout.JAVA_INT.withName("sparseResidency4Samples"),
+        ValueLayout.JAVA_INT.withName("sparseResidency8Samples"),
+        ValueLayout.JAVA_INT.withName("sparseResidency16Samples"),
+        ValueLayout.JAVA_INT.withName("sparseResidencyAliased"),
+        ValueLayout.JAVA_INT.withName("variableMultisampleRate"),
+        ValueLayout.JAVA_INT.withName("inheritedQueries")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$robustBufferAccess = PathElement.groupElement("PATH$robustBufferAccess");
+    public static final PathElement PATH$fullDrawIndexUint32 = PathElement.groupElement("PATH$fullDrawIndexUint32");
+    public static final PathElement PATH$imageCubeArray = PathElement.groupElement("PATH$imageCubeArray");
+    public static final PathElement PATH$independentBlend = PathElement.groupElement("PATH$independentBlend");
+    public static final PathElement PATH$geometryShader = PathElement.groupElement("PATH$geometryShader");
+    public static final PathElement PATH$tessellationShader = PathElement.groupElement("PATH$tessellationShader");
+    public static final PathElement PATH$sampleRateShading = PathElement.groupElement("PATH$sampleRateShading");
+    public static final PathElement PATH$dualSrcBlend = PathElement.groupElement("PATH$dualSrcBlend");
+    public static final PathElement PATH$logicOp = PathElement.groupElement("PATH$logicOp");
+    public static final PathElement PATH$multiDrawIndirect = PathElement.groupElement("PATH$multiDrawIndirect");
+    public static final PathElement PATH$drawIndirectFirstInstance = PathElement.groupElement("PATH$drawIndirectFirstInstance");
+    public static final PathElement PATH$depthClamp = PathElement.groupElement("PATH$depthClamp");
+    public static final PathElement PATH$depthBiasClamp = PathElement.groupElement("PATH$depthBiasClamp");
+    public static final PathElement PATH$fillModeNonSolid = PathElement.groupElement("PATH$fillModeNonSolid");
+    public static final PathElement PATH$depthBounds = PathElement.groupElement("PATH$depthBounds");
+    public static final PathElement PATH$wideLines = PathElement.groupElement("PATH$wideLines");
+    public static final PathElement PATH$largePoints = PathElement.groupElement("PATH$largePoints");
+    public static final PathElement PATH$alphaToOne = PathElement.groupElement("PATH$alphaToOne");
+    public static final PathElement PATH$multiViewport = PathElement.groupElement("PATH$multiViewport");
+    public static final PathElement PATH$samplerAnisotropy = PathElement.groupElement("PATH$samplerAnisotropy");
+    public static final PathElement PATH$textureCompressionETC2 = PathElement.groupElement("PATH$textureCompressionETC2");
+    public static final PathElement PATH$textureCompressionASTC_LDR = PathElement.groupElement("PATH$textureCompressionASTC_LDR");
+    public static final PathElement PATH$textureCompressionBC = PathElement.groupElement("PATH$textureCompressionBC");
+    public static final PathElement PATH$occlusionQueryPrecise = PathElement.groupElement("PATH$occlusionQueryPrecise");
+    public static final PathElement PATH$pipelineStatisticsQuery = PathElement.groupElement("PATH$pipelineStatisticsQuery");
+    public static final PathElement PATH$vertexPipelineStoresAndAtomics = PathElement.groupElement("PATH$vertexPipelineStoresAndAtomics");
+    public static final PathElement PATH$fragmentStoresAndAtomics = PathElement.groupElement("PATH$fragmentStoresAndAtomics");
+    public static final PathElement PATH$shaderTessellationAndGeometryPointSize = PathElement.groupElement("PATH$shaderTessellationAndGeometryPointSize");
+    public static final PathElement PATH$shaderImageGatherExtended = PathElement.groupElement("PATH$shaderImageGatherExtended");
+    public static final PathElement PATH$shaderStorageImageExtendedFormats = PathElement.groupElement("PATH$shaderStorageImageExtendedFormats");
+    public static final PathElement PATH$shaderStorageImageMultisample = PathElement.groupElement("PATH$shaderStorageImageMultisample");
+    public static final PathElement PATH$shaderStorageImageReadWithoutFormat = PathElement.groupElement("PATH$shaderStorageImageReadWithoutFormat");
+    public static final PathElement PATH$shaderStorageImageWriteWithoutFormat = PathElement.groupElement("PATH$shaderStorageImageWriteWithoutFormat");
+    public static final PathElement PATH$shaderUniformBufferArrayDynamicIndexing = PathElement.groupElement("PATH$shaderUniformBufferArrayDynamicIndexing");
+    public static final PathElement PATH$shaderSampledImageArrayDynamicIndexing = PathElement.groupElement("PATH$shaderSampledImageArrayDynamicIndexing");
+    public static final PathElement PATH$shaderStorageBufferArrayDynamicIndexing = PathElement.groupElement("PATH$shaderStorageBufferArrayDynamicIndexing");
+    public static final PathElement PATH$shaderStorageImageArrayDynamicIndexing = PathElement.groupElement("PATH$shaderStorageImageArrayDynamicIndexing");
+    public static final PathElement PATH$shaderClipDistance = PathElement.groupElement("PATH$shaderClipDistance");
+    public static final PathElement PATH$shaderCullDistance = PathElement.groupElement("PATH$shaderCullDistance");
+    public static final PathElement PATH$shaderFloat64 = PathElement.groupElement("PATH$shaderFloat64");
+    public static final PathElement PATH$shaderInt64 = PathElement.groupElement("PATH$shaderInt64");
+    public static final PathElement PATH$shaderInt16 = PathElement.groupElement("PATH$shaderInt16");
+    public static final PathElement PATH$shaderResourceResidency = PathElement.groupElement("PATH$shaderResourceResidency");
+    public static final PathElement PATH$shaderResourceMinLod = PathElement.groupElement("PATH$shaderResourceMinLod");
+    public static final PathElement PATH$sparseBinding = PathElement.groupElement("PATH$sparseBinding");
+    public static final PathElement PATH$sparseResidencyBuffer = PathElement.groupElement("PATH$sparseResidencyBuffer");
+    public static final PathElement PATH$sparseResidencyImage2D = PathElement.groupElement("PATH$sparseResidencyImage2D");
+    public static final PathElement PATH$sparseResidencyImage3D = PathElement.groupElement("PATH$sparseResidencyImage3D");
+    public static final PathElement PATH$sparseResidency2Samples = PathElement.groupElement("PATH$sparseResidency2Samples");
+    public static final PathElement PATH$sparseResidency4Samples = PathElement.groupElement("PATH$sparseResidency4Samples");
+    public static final PathElement PATH$sparseResidency8Samples = PathElement.groupElement("PATH$sparseResidency8Samples");
+    public static final PathElement PATH$sparseResidency16Samples = PathElement.groupElement("PATH$sparseResidency16Samples");
+    public static final PathElement PATH$sparseResidencyAliased = PathElement.groupElement("PATH$sparseResidencyAliased");
+    public static final PathElement PATH$variableMultisampleRate = PathElement.groupElement("PATH$variableMultisampleRate");
+    public static final PathElement PATH$inheritedQueries = PathElement.groupElement("PATH$inheritedQueries");
+
+    public static final OfInt LAYOUT$robustBufferAccess = (OfInt) LAYOUT.select(PATH$robustBufferAccess);
+    public static final OfInt LAYOUT$fullDrawIndexUint32 = (OfInt) LAYOUT.select(PATH$fullDrawIndexUint32);
+    public static final OfInt LAYOUT$imageCubeArray = (OfInt) LAYOUT.select(PATH$imageCubeArray);
+    public static final OfInt LAYOUT$independentBlend = (OfInt) LAYOUT.select(PATH$independentBlend);
+    public static final OfInt LAYOUT$geometryShader = (OfInt) LAYOUT.select(PATH$geometryShader);
+    public static final OfInt LAYOUT$tessellationShader = (OfInt) LAYOUT.select(PATH$tessellationShader);
+    public static final OfInt LAYOUT$sampleRateShading = (OfInt) LAYOUT.select(PATH$sampleRateShading);
+    public static final OfInt LAYOUT$dualSrcBlend = (OfInt) LAYOUT.select(PATH$dualSrcBlend);
+    public static final OfInt LAYOUT$logicOp = (OfInt) LAYOUT.select(PATH$logicOp);
+    public static final OfInt LAYOUT$multiDrawIndirect = (OfInt) LAYOUT.select(PATH$multiDrawIndirect);
+    public static final OfInt LAYOUT$drawIndirectFirstInstance = (OfInt) LAYOUT.select(PATH$drawIndirectFirstInstance);
+    public static final OfInt LAYOUT$depthClamp = (OfInt) LAYOUT.select(PATH$depthClamp);
+    public static final OfInt LAYOUT$depthBiasClamp = (OfInt) LAYOUT.select(PATH$depthBiasClamp);
+    public static final OfInt LAYOUT$fillModeNonSolid = (OfInt) LAYOUT.select(PATH$fillModeNonSolid);
+    public static final OfInt LAYOUT$depthBounds = (OfInt) LAYOUT.select(PATH$depthBounds);
+    public static final OfInt LAYOUT$wideLines = (OfInt) LAYOUT.select(PATH$wideLines);
+    public static final OfInt LAYOUT$largePoints = (OfInt) LAYOUT.select(PATH$largePoints);
+    public static final OfInt LAYOUT$alphaToOne = (OfInt) LAYOUT.select(PATH$alphaToOne);
+    public static final OfInt LAYOUT$multiViewport = (OfInt) LAYOUT.select(PATH$multiViewport);
+    public static final OfInt LAYOUT$samplerAnisotropy = (OfInt) LAYOUT.select(PATH$samplerAnisotropy);
+    public static final OfInt LAYOUT$textureCompressionETC2 = (OfInt) LAYOUT.select(PATH$textureCompressionETC2);
+    public static final OfInt LAYOUT$textureCompressionASTC_LDR = (OfInt) LAYOUT.select(PATH$textureCompressionASTC_LDR);
+    public static final OfInt LAYOUT$textureCompressionBC = (OfInt) LAYOUT.select(PATH$textureCompressionBC);
+    public static final OfInt LAYOUT$occlusionQueryPrecise = (OfInt) LAYOUT.select(PATH$occlusionQueryPrecise);
+    public static final OfInt LAYOUT$pipelineStatisticsQuery = (OfInt) LAYOUT.select(PATH$pipelineStatisticsQuery);
+    public static final OfInt LAYOUT$vertexPipelineStoresAndAtomics = (OfInt) LAYOUT.select(PATH$vertexPipelineStoresAndAtomics);
+    public static final OfInt LAYOUT$fragmentStoresAndAtomics = (OfInt) LAYOUT.select(PATH$fragmentStoresAndAtomics);
+    public static final OfInt LAYOUT$shaderTessellationAndGeometryPointSize = (OfInt) LAYOUT.select(PATH$shaderTessellationAndGeometryPointSize);
+    public static final OfInt LAYOUT$shaderImageGatherExtended = (OfInt) LAYOUT.select(PATH$shaderImageGatherExtended);
+    public static final OfInt LAYOUT$shaderStorageImageExtendedFormats = (OfInt) LAYOUT.select(PATH$shaderStorageImageExtendedFormats);
+    public static final OfInt LAYOUT$shaderStorageImageMultisample = (OfInt) LAYOUT.select(PATH$shaderStorageImageMultisample);
+    public static final OfInt LAYOUT$shaderStorageImageReadWithoutFormat = (OfInt) LAYOUT.select(PATH$shaderStorageImageReadWithoutFormat);
+    public static final OfInt LAYOUT$shaderStorageImageWriteWithoutFormat = (OfInt) LAYOUT.select(PATH$shaderStorageImageWriteWithoutFormat);
+    public static final OfInt LAYOUT$shaderUniformBufferArrayDynamicIndexing = (OfInt) LAYOUT.select(PATH$shaderUniformBufferArrayDynamicIndexing);
+    public static final OfInt LAYOUT$shaderSampledImageArrayDynamicIndexing = (OfInt) LAYOUT.select(PATH$shaderSampledImageArrayDynamicIndexing);
+    public static final OfInt LAYOUT$shaderStorageBufferArrayDynamicIndexing = (OfInt) LAYOUT.select(PATH$shaderStorageBufferArrayDynamicIndexing);
+    public static final OfInt LAYOUT$shaderStorageImageArrayDynamicIndexing = (OfInt) LAYOUT.select(PATH$shaderStorageImageArrayDynamicIndexing);
+    public static final OfInt LAYOUT$shaderClipDistance = (OfInt) LAYOUT.select(PATH$shaderClipDistance);
+    public static final OfInt LAYOUT$shaderCullDistance = (OfInt) LAYOUT.select(PATH$shaderCullDistance);
+    public static final OfInt LAYOUT$shaderFloat64 = (OfInt) LAYOUT.select(PATH$shaderFloat64);
+    public static final OfInt LAYOUT$shaderInt64 = (OfInt) LAYOUT.select(PATH$shaderInt64);
+    public static final OfInt LAYOUT$shaderInt16 = (OfInt) LAYOUT.select(PATH$shaderInt16);
+    public static final OfInt LAYOUT$shaderResourceResidency = (OfInt) LAYOUT.select(PATH$shaderResourceResidency);
+    public static final OfInt LAYOUT$shaderResourceMinLod = (OfInt) LAYOUT.select(PATH$shaderResourceMinLod);
+    public static final OfInt LAYOUT$sparseBinding = (OfInt) LAYOUT.select(PATH$sparseBinding);
+    public static final OfInt LAYOUT$sparseResidencyBuffer = (OfInt) LAYOUT.select(PATH$sparseResidencyBuffer);
+    public static final OfInt LAYOUT$sparseResidencyImage2D = (OfInt) LAYOUT.select(PATH$sparseResidencyImage2D);
+    public static final OfInt LAYOUT$sparseResidencyImage3D = (OfInt) LAYOUT.select(PATH$sparseResidencyImage3D);
+    public static final OfInt LAYOUT$sparseResidency2Samples = (OfInt) LAYOUT.select(PATH$sparseResidency2Samples);
+    public static final OfInt LAYOUT$sparseResidency4Samples = (OfInt) LAYOUT.select(PATH$sparseResidency4Samples);
+    public static final OfInt LAYOUT$sparseResidency8Samples = (OfInt) LAYOUT.select(PATH$sparseResidency8Samples);
+    public static final OfInt LAYOUT$sparseResidency16Samples = (OfInt) LAYOUT.select(PATH$sparseResidency16Samples);
+    public static final OfInt LAYOUT$sparseResidencyAliased = (OfInt) LAYOUT.select(PATH$sparseResidencyAliased);
+    public static final OfInt LAYOUT$variableMultisampleRate = (OfInt) LAYOUT.select(PATH$variableMultisampleRate);
+    public static final OfInt LAYOUT$inheritedQueries = (OfInt) LAYOUT.select(PATH$inheritedQueries);
+
+    public static final long SIZE$robustBufferAccess = LAYOUT$robustBufferAccess.byteSize();
+    public static final long SIZE$fullDrawIndexUint32 = LAYOUT$fullDrawIndexUint32.byteSize();
+    public static final long SIZE$imageCubeArray = LAYOUT$imageCubeArray.byteSize();
+    public static final long SIZE$independentBlend = LAYOUT$independentBlend.byteSize();
+    public static final long SIZE$geometryShader = LAYOUT$geometryShader.byteSize();
+    public static final long SIZE$tessellationShader = LAYOUT$tessellationShader.byteSize();
+    public static final long SIZE$sampleRateShading = LAYOUT$sampleRateShading.byteSize();
+    public static final long SIZE$dualSrcBlend = LAYOUT$dualSrcBlend.byteSize();
+    public static final long SIZE$logicOp = LAYOUT$logicOp.byteSize();
+    public static final long SIZE$multiDrawIndirect = LAYOUT$multiDrawIndirect.byteSize();
+    public static final long SIZE$drawIndirectFirstInstance = LAYOUT$drawIndirectFirstInstance.byteSize();
+    public static final long SIZE$depthClamp = LAYOUT$depthClamp.byteSize();
+    public static final long SIZE$depthBiasClamp = LAYOUT$depthBiasClamp.byteSize();
+    public static final long SIZE$fillModeNonSolid = LAYOUT$fillModeNonSolid.byteSize();
+    public static final long SIZE$depthBounds = LAYOUT$depthBounds.byteSize();
+    public static final long SIZE$wideLines = LAYOUT$wideLines.byteSize();
+    public static final long SIZE$largePoints = LAYOUT$largePoints.byteSize();
+    public static final long SIZE$alphaToOne = LAYOUT$alphaToOne.byteSize();
+    public static final long SIZE$multiViewport = LAYOUT$multiViewport.byteSize();
+    public static final long SIZE$samplerAnisotropy = LAYOUT$samplerAnisotropy.byteSize();
+    public static final long SIZE$textureCompressionETC2 = LAYOUT$textureCompressionETC2.byteSize();
+    public static final long SIZE$textureCompressionASTC_LDR = LAYOUT$textureCompressionASTC_LDR.byteSize();
+    public static final long SIZE$textureCompressionBC = LAYOUT$textureCompressionBC.byteSize();
+    public static final long SIZE$occlusionQueryPrecise = LAYOUT$occlusionQueryPrecise.byteSize();
+    public static final long SIZE$pipelineStatisticsQuery = LAYOUT$pipelineStatisticsQuery.byteSize();
+    public static final long SIZE$vertexPipelineStoresAndAtomics = LAYOUT$vertexPipelineStoresAndAtomics.byteSize();
+    public static final long SIZE$fragmentStoresAndAtomics = LAYOUT$fragmentStoresAndAtomics.byteSize();
+    public static final long SIZE$shaderTessellationAndGeometryPointSize = LAYOUT$shaderTessellationAndGeometryPointSize.byteSize();
+    public static final long SIZE$shaderImageGatherExtended = LAYOUT$shaderImageGatherExtended.byteSize();
+    public static final long SIZE$shaderStorageImageExtendedFormats = LAYOUT$shaderStorageImageExtendedFormats.byteSize();
+    public static final long SIZE$shaderStorageImageMultisample = LAYOUT$shaderStorageImageMultisample.byteSize();
+    public static final long SIZE$shaderStorageImageReadWithoutFormat = LAYOUT$shaderStorageImageReadWithoutFormat.byteSize();
+    public static final long SIZE$shaderStorageImageWriteWithoutFormat = LAYOUT$shaderStorageImageWriteWithoutFormat.byteSize();
+    public static final long SIZE$shaderUniformBufferArrayDynamicIndexing = LAYOUT$shaderUniformBufferArrayDynamicIndexing.byteSize();
+    public static final long SIZE$shaderSampledImageArrayDynamicIndexing = LAYOUT$shaderSampledImageArrayDynamicIndexing.byteSize();
+    public static final long SIZE$shaderStorageBufferArrayDynamicIndexing = LAYOUT$shaderStorageBufferArrayDynamicIndexing.byteSize();
+    public static final long SIZE$shaderStorageImageArrayDynamicIndexing = LAYOUT$shaderStorageImageArrayDynamicIndexing.byteSize();
+    public static final long SIZE$shaderClipDistance = LAYOUT$shaderClipDistance.byteSize();
+    public static final long SIZE$shaderCullDistance = LAYOUT$shaderCullDistance.byteSize();
+    public static final long SIZE$shaderFloat64 = LAYOUT$shaderFloat64.byteSize();
+    public static final long SIZE$shaderInt64 = LAYOUT$shaderInt64.byteSize();
+    public static final long SIZE$shaderInt16 = LAYOUT$shaderInt16.byteSize();
+    public static final long SIZE$shaderResourceResidency = LAYOUT$shaderResourceResidency.byteSize();
+    public static final long SIZE$shaderResourceMinLod = LAYOUT$shaderResourceMinLod.byteSize();
+    public static final long SIZE$sparseBinding = LAYOUT$sparseBinding.byteSize();
+    public static final long SIZE$sparseResidencyBuffer = LAYOUT$sparseResidencyBuffer.byteSize();
+    public static final long SIZE$sparseResidencyImage2D = LAYOUT$sparseResidencyImage2D.byteSize();
+    public static final long SIZE$sparseResidencyImage3D = LAYOUT$sparseResidencyImage3D.byteSize();
+    public static final long SIZE$sparseResidency2Samples = LAYOUT$sparseResidency2Samples.byteSize();
+    public static final long SIZE$sparseResidency4Samples = LAYOUT$sparseResidency4Samples.byteSize();
+    public static final long SIZE$sparseResidency8Samples = LAYOUT$sparseResidency8Samples.byteSize();
+    public static final long SIZE$sparseResidency16Samples = LAYOUT$sparseResidency16Samples.byteSize();
+    public static final long SIZE$sparseResidencyAliased = LAYOUT$sparseResidencyAliased.byteSize();
+    public static final long SIZE$variableMultisampleRate = LAYOUT$variableMultisampleRate.byteSize();
+    public static final long SIZE$inheritedQueries = LAYOUT$inheritedQueries.byteSize();
+
+    public static final long OFFSET$robustBufferAccess = LAYOUT.byteOffset(PATH$robustBufferAccess);
+    public static final long OFFSET$fullDrawIndexUint32 = LAYOUT.byteOffset(PATH$fullDrawIndexUint32);
+    public static final long OFFSET$imageCubeArray = LAYOUT.byteOffset(PATH$imageCubeArray);
+    public static final long OFFSET$independentBlend = LAYOUT.byteOffset(PATH$independentBlend);
+    public static final long OFFSET$geometryShader = LAYOUT.byteOffset(PATH$geometryShader);
+    public static final long OFFSET$tessellationShader = LAYOUT.byteOffset(PATH$tessellationShader);
+    public static final long OFFSET$sampleRateShading = LAYOUT.byteOffset(PATH$sampleRateShading);
+    public static final long OFFSET$dualSrcBlend = LAYOUT.byteOffset(PATH$dualSrcBlend);
+    public static final long OFFSET$logicOp = LAYOUT.byteOffset(PATH$logicOp);
+    public static final long OFFSET$multiDrawIndirect = LAYOUT.byteOffset(PATH$multiDrawIndirect);
+    public static final long OFFSET$drawIndirectFirstInstance = LAYOUT.byteOffset(PATH$drawIndirectFirstInstance);
+    public static final long OFFSET$depthClamp = LAYOUT.byteOffset(PATH$depthClamp);
+    public static final long OFFSET$depthBiasClamp = LAYOUT.byteOffset(PATH$depthBiasClamp);
+    public static final long OFFSET$fillModeNonSolid = LAYOUT.byteOffset(PATH$fillModeNonSolid);
+    public static final long OFFSET$depthBounds = LAYOUT.byteOffset(PATH$depthBounds);
+    public static final long OFFSET$wideLines = LAYOUT.byteOffset(PATH$wideLines);
+    public static final long OFFSET$largePoints = LAYOUT.byteOffset(PATH$largePoints);
+    public static final long OFFSET$alphaToOne = LAYOUT.byteOffset(PATH$alphaToOne);
+    public static final long OFFSET$multiViewport = LAYOUT.byteOffset(PATH$multiViewport);
+    public static final long OFFSET$samplerAnisotropy = LAYOUT.byteOffset(PATH$samplerAnisotropy);
+    public static final long OFFSET$textureCompressionETC2 = LAYOUT.byteOffset(PATH$textureCompressionETC2);
+    public static final long OFFSET$textureCompressionASTC_LDR = LAYOUT.byteOffset(PATH$textureCompressionASTC_LDR);
+    public static final long OFFSET$textureCompressionBC = LAYOUT.byteOffset(PATH$textureCompressionBC);
+    public static final long OFFSET$occlusionQueryPrecise = LAYOUT.byteOffset(PATH$occlusionQueryPrecise);
+    public static final long OFFSET$pipelineStatisticsQuery = LAYOUT.byteOffset(PATH$pipelineStatisticsQuery);
+    public static final long OFFSET$vertexPipelineStoresAndAtomics = LAYOUT.byteOffset(PATH$vertexPipelineStoresAndAtomics);
+    public static final long OFFSET$fragmentStoresAndAtomics = LAYOUT.byteOffset(PATH$fragmentStoresAndAtomics);
+    public static final long OFFSET$shaderTessellationAndGeometryPointSize = LAYOUT.byteOffset(PATH$shaderTessellationAndGeometryPointSize);
+    public static final long OFFSET$shaderImageGatherExtended = LAYOUT.byteOffset(PATH$shaderImageGatherExtended);
+    public static final long OFFSET$shaderStorageImageExtendedFormats = LAYOUT.byteOffset(PATH$shaderStorageImageExtendedFormats);
+    public static final long OFFSET$shaderStorageImageMultisample = LAYOUT.byteOffset(PATH$shaderStorageImageMultisample);
+    public static final long OFFSET$shaderStorageImageReadWithoutFormat = LAYOUT.byteOffset(PATH$shaderStorageImageReadWithoutFormat);
+    public static final long OFFSET$shaderStorageImageWriteWithoutFormat = LAYOUT.byteOffset(PATH$shaderStorageImageWriteWithoutFormat);
+    public static final long OFFSET$shaderUniformBufferArrayDynamicIndexing = LAYOUT.byteOffset(PATH$shaderUniformBufferArrayDynamicIndexing);
+    public static final long OFFSET$shaderSampledImageArrayDynamicIndexing = LAYOUT.byteOffset(PATH$shaderSampledImageArrayDynamicIndexing);
+    public static final long OFFSET$shaderStorageBufferArrayDynamicIndexing = LAYOUT.byteOffset(PATH$shaderStorageBufferArrayDynamicIndexing);
+    public static final long OFFSET$shaderStorageImageArrayDynamicIndexing = LAYOUT.byteOffset(PATH$shaderStorageImageArrayDynamicIndexing);
+    public static final long OFFSET$shaderClipDistance = LAYOUT.byteOffset(PATH$shaderClipDistance);
+    public static final long OFFSET$shaderCullDistance = LAYOUT.byteOffset(PATH$shaderCullDistance);
+    public static final long OFFSET$shaderFloat64 = LAYOUT.byteOffset(PATH$shaderFloat64);
+    public static final long OFFSET$shaderInt64 = LAYOUT.byteOffset(PATH$shaderInt64);
+    public static final long OFFSET$shaderInt16 = LAYOUT.byteOffset(PATH$shaderInt16);
+    public static final long OFFSET$shaderResourceResidency = LAYOUT.byteOffset(PATH$shaderResourceResidency);
+    public static final long OFFSET$shaderResourceMinLod = LAYOUT.byteOffset(PATH$shaderResourceMinLod);
+    public static final long OFFSET$sparseBinding = LAYOUT.byteOffset(PATH$sparseBinding);
+    public static final long OFFSET$sparseResidencyBuffer = LAYOUT.byteOffset(PATH$sparseResidencyBuffer);
+    public static final long OFFSET$sparseResidencyImage2D = LAYOUT.byteOffset(PATH$sparseResidencyImage2D);
+    public static final long OFFSET$sparseResidencyImage3D = LAYOUT.byteOffset(PATH$sparseResidencyImage3D);
+    public static final long OFFSET$sparseResidency2Samples = LAYOUT.byteOffset(PATH$sparseResidency2Samples);
+    public static final long OFFSET$sparseResidency4Samples = LAYOUT.byteOffset(PATH$sparseResidency4Samples);
+    public static final long OFFSET$sparseResidency8Samples = LAYOUT.byteOffset(PATH$sparseResidency8Samples);
+    public static final long OFFSET$sparseResidency16Samples = LAYOUT.byteOffset(PATH$sparseResidency16Samples);
+    public static final long OFFSET$sparseResidencyAliased = LAYOUT.byteOffset(PATH$sparseResidencyAliased);
+    public static final long OFFSET$variableMultisampleRate = LAYOUT.byteOffset(PATH$variableMultisampleRate);
+    public static final long OFFSET$inheritedQueries = LAYOUT.byteOffset(PATH$inheritedQueries);
 }

@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineFragmentShadingRateEnumStateCreateInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineFragmentShadingRateEnumStateCreateInfoNV.html"><code>VkPipelineFragmentShadingRateEnumStateCreateInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineFragmentShadingRateEnumStateCreateInfoNV {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkFragmentShadingRateTypeNV shadingRateType;
+///     VkFragmentShadingRateNV shadingRate;
+///     VkFragmentShadingRateCombinerOpKHR combinerOps;
+/// } VkPipelineFragmentShadingRateEnumStateCreateInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV`
+///
+/// The {@link VkPipelineFragmentShadingRateEnumStateCreateInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineFragmentShadingRateEnumStateCreateInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineFragmentShadingRateEnumStateCreateInfoNV.html">VkPipelineFragmentShadingRateEnumStateCreateInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineFragmentShadingRateEnumStateCreateInfoNV.html"><code>VkPipelineFragmentShadingRateEnumStateCreateInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV {
-        sType(VkStructureType.PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV);
-    }
-
     public static VkPipelineFragmentShadingRateEnumStateCreateInfoNV allocate(Arena arena) {
-        return new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(arena.allocate(LAYOUT));
+        VkPipelineFragmentShadingRateEnumStateCreateInfoNV ret = new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV);
+        return ret;
     }
 
     public static VkPipelineFragmentShadingRateEnumStateCreateInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(@NotNull Memory
         VkPipelineFragmentShadingRateEnumStateCreateInfoNV[] ret = new VkPipelineFragmentShadingRateEnumStateCreateInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(@NotNull Memory
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("shadingRateType"),
-        ValueLayout.JAVA_INT.withName("shadingRate"),
-        ValueLayout.JAVA_INT.withName("combinerOps")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shadingRateType = PathElement.groupElement("PATH$shadingRateType");
-    public static final PathElement PATH$shadingRate = PathElement.groupElement("PATH$shadingRate");
-    public static final PathElement PATH$combinerOps = PathElement.groupElement("PATH$combinerOps");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$shadingRateType = (OfInt) LAYOUT.select(PATH$shadingRateType);
-    public static final OfInt LAYOUT$shadingRate = (OfInt) LAYOUT.select(PATH$shadingRate);
-    public static final OfInt LAYOUT$combinerOps = (OfInt) LAYOUT.select(PATH$combinerOps);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$shadingRateType = LAYOUT$shadingRateType.byteSize();
-    public static final long SIZE$shadingRate = LAYOUT$shadingRate.byteSize();
-    public static final long SIZE$combinerOps = LAYOUT$combinerOps.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$shadingRateType = LAYOUT.byteOffset(PATH$shadingRateType);
-    public static final long OFFSET$shadingRate = LAYOUT.byteOffset(PATH$shadingRate);
-    public static final long OFFSET$combinerOps = LAYOUT.byteOffset(PATH$combinerOps);
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -136,4 +127,36 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(@NotNull Memory
         segment.set(LAYOUT$combinerOps, OFFSET$combinerOps, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("shadingRateType"),
+        ValueLayout.JAVA_INT.withName("shadingRate"),
+        ValueLayout.JAVA_INT.withName("combinerOps")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$shadingRateType = PathElement.groupElement("PATH$shadingRateType");
+    public static final PathElement PATH$shadingRate = PathElement.groupElement("PATH$shadingRate");
+    public static final PathElement PATH$combinerOps = PathElement.groupElement("PATH$combinerOps");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$shadingRateType = (OfInt) LAYOUT.select(PATH$shadingRateType);
+    public static final OfInt LAYOUT$shadingRate = (OfInt) LAYOUT.select(PATH$shadingRate);
+    public static final OfInt LAYOUT$combinerOps = (OfInt) LAYOUT.select(PATH$combinerOps);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$shadingRateType = LAYOUT$shadingRateType.byteSize();
+    public static final long SIZE$shadingRate = LAYOUT$shadingRate.byteSize();
+    public static final long SIZE$combinerOps = LAYOUT$combinerOps.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$shadingRateType = LAYOUT.byteOffset(PATH$shadingRateType);
+    public static final long OFFSET$shadingRate = LAYOUT.byteOffset(PATH$shadingRate);
+    public static final long OFFSET$combinerOps = LAYOUT.byteOffset(PATH$combinerOps);
 }

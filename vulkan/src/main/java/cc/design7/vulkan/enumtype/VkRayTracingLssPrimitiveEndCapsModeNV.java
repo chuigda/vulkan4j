@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRayTracingLssPrimitiveEndCapsModeNV.html">VkRayTracingLssPrimitiveEndCapsModeNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRayTracingLssPrimitiveEndCapsModeNV.html"><code>VkRayTracingLssPrimitiveEndCapsModeNV</code></a>
 public final class VkRayTracingLssPrimitiveEndCapsModeNV {
     public static final int NONE = 0x0;
     public static final int CHAINED = 0x1;

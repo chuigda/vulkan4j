@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkBindDescriptorBufferEmbeddedSamplersInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindDescriptorBufferEmbeddedSamplersInfoEXT.html"><code>VkBindDescriptorBufferEmbeddedSamplersInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkBindDescriptorBufferEmbeddedSamplersInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkShaderStageFlags stageFlags;
+///     VkPipelineLayout layout;
+///     uint32_t set;
+/// } VkBindDescriptorBufferEmbeddedSamplersInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT`
+///
+/// The {@link VkBindDescriptorBufferEmbeddedSamplersInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkBindDescriptorBufferEmbeddedSamplersInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindDescriptorBufferEmbeddedSamplersInfoEXT.html">VkBindDescriptorBufferEmbeddedSamplersInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindDescriptorBufferEmbeddedSamplersInfoEXT.html"><code>VkBindDescriptorBufferEmbeddedSamplersInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkBindDescriptorBufferEmbeddedSamplersInfoEXT {
-        sType(VkStructureType.BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT);
-    }
-
     public static VkBindDescriptorBufferEmbeddedSamplersInfoEXT allocate(Arena arena) {
-        return new VkBindDescriptorBufferEmbeddedSamplersInfoEXT(arena.allocate(LAYOUT));
+        VkBindDescriptorBufferEmbeddedSamplersInfoEXT ret = new VkBindDescriptorBufferEmbeddedSamplersInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT);
+        return ret;
     }
 
     public static VkBindDescriptorBufferEmbeddedSamplersInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(@NotNull MemorySegme
         VkBindDescriptorBufferEmbeddedSamplersInfoEXT[] ret = new VkBindDescriptorBufferEmbeddedSamplersInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkBindDescriptorBufferEmbeddedSamplersInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT);
         }
         return ret;
     }
@@ -57,6 +77,58 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(@NotNull MemorySegme
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkShaderStageFlags.class) int stageFlags() {
+        return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
+    }
+
+    public void stageFlags(@enumtype(VkShaderStageFlags.class) int value) {
+        segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
+    }
+
+    public @Nullable VkPipelineLayout layout() {
+        MemorySegment s = segment.asSlice(OFFSET$layout, SIZE$layout);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineLayout(s);
+    }
+
+    public void layout(@Nullable VkPipelineLayout value) {
+        segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned int set() {
+        return segment.get(LAYOUT$set, OFFSET$set);
+    }
+
+    public void set(@unsigned int value) {
+        segment.set(LAYOUT$set, OFFSET$set, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -91,53 +163,4 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(@NotNull MemorySegme
     public static final long OFFSET$stageFlags = LAYOUT.byteOffset(PATH$stageFlags);
     public static final long OFFSET$layout = LAYOUT.byteOffset(PATH$layout);
     public static final long OFFSET$set = LAYOUT.byteOffset(PATH$set);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @enumtype(VkShaderStageFlags.class) int stageFlags() {
-        return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
-    }
-
-    public void stageFlags(@enumtype(VkShaderStageFlags.class) int value) {
-        segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
-    }
-
-    public @Nullable VkPipelineLayout layout() {
-        MemorySegment s = segment.asSlice(OFFSET$layout, SIZE$layout);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkPipelineLayout(s);
-    }
-
-    public void layout(@Nullable VkPipelineLayout value) {
-        segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned int set() {
-        return segment.get(LAYOUT$set, OFFSET$set);
-    }
-
-    public void set(@unsigned int value) {
-        segment.set(LAYOUT$set, OFFSET$set, value);
-    }
-
 }

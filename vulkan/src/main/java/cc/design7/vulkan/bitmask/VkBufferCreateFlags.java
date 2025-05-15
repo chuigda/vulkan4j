@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferCreateFlags.html">VkBufferCreateFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferCreateFlags.html"><code>VkBufferCreateFlags</code></a>
 public final class VkBufferCreateFlags {
     public static final int DESCRIPTOR_BUFFER_CAPTURE_REPLAY_EXT = 0x20;
     public static final int DEVICE_ADDRESS_CAPTURE_REPLAY = 0x10;

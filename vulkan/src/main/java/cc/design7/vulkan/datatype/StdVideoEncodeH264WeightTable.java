@@ -16,6 +16,25 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoEncodeH264WeightTable} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoEncodeH264WeightTable {
+///     StdVideoEncodeH264WeightTableFlags flags;
+///     uint8_t luma_log2_weight_denom;
+///     uint8_t chroma_log2_weight_denom;
+///     int8_t luma_weight_l0;
+///     int8_t luma_offset_l0;
+///     int8_t chroma_weight_l0;
+///     int8_t chroma_offset_l0;
+///     int8_t luma_weight_l1;
+///     int8_t luma_offset_l1;
+///     int8_t chroma_weight_l1;
+///     int8_t chroma_offset_l1;
+/// } StdVideoEncodeH264WeightTable;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +46,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeH264WeightTable allocate(Arena arena) {
-        return new StdVideoEncodeH264WeightTable(arena.allocate(LAYOUT));
+        StdVideoEncodeH264WeightTable ret = new StdVideoEncodeH264WeightTable(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoEncodeH264WeightTable[] allocate(Arena arena, int count) {
@@ -52,69 +72,6 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        StdVideoEncodeH264WeightTableFlags.LAYOUT.withName("flags"),
-        ValueLayout.JAVA_BYTE.withName("luma_log2_weight_denom"),
-        ValueLayout.JAVA_BYTE.withName("chroma_log2_weight_denom"),
-        ValueLayout.JAVA_BYTE.withName("luma_weight_l0"),
-        ValueLayout.JAVA_BYTE.withName("luma_offset_l0"),
-        ValueLayout.JAVA_BYTE.withName("chroma_weight_l0"),
-        ValueLayout.JAVA_BYTE.withName("chroma_offset_l0"),
-        ValueLayout.JAVA_BYTE.withName("luma_weight_l1"),
-        ValueLayout.JAVA_BYTE.withName("luma_offset_l1"),
-        ValueLayout.JAVA_BYTE.withName("chroma_weight_l1"),
-        ValueLayout.JAVA_BYTE.withName("chroma_offset_l1")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$luma_log2_weight_denom = PathElement.groupElement("PATH$luma_log2_weight_denom");
-    public static final PathElement PATH$chroma_log2_weight_denom = PathElement.groupElement("PATH$chroma_log2_weight_denom");
-    public static final PathElement PATH$luma_weight_l0 = PathElement.groupElement("PATH$luma_weight_l0");
-    public static final PathElement PATH$luma_offset_l0 = PathElement.groupElement("PATH$luma_offset_l0");
-    public static final PathElement PATH$chroma_weight_l0 = PathElement.groupElement("PATH$chroma_weight_l0");
-    public static final PathElement PATH$chroma_offset_l0 = PathElement.groupElement("PATH$chroma_offset_l0");
-    public static final PathElement PATH$luma_weight_l1 = PathElement.groupElement("PATH$luma_weight_l1");
-    public static final PathElement PATH$luma_offset_l1 = PathElement.groupElement("PATH$luma_offset_l1");
-    public static final PathElement PATH$chroma_weight_l1 = PathElement.groupElement("PATH$chroma_weight_l1");
-    public static final PathElement PATH$chroma_offset_l1 = PathElement.groupElement("PATH$chroma_offset_l1");
-
-    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
-    public static final OfByte LAYOUT$luma_log2_weight_denom = (OfByte) LAYOUT.select(PATH$luma_log2_weight_denom);
-    public static final OfByte LAYOUT$chroma_log2_weight_denom = (OfByte) LAYOUT.select(PATH$chroma_log2_weight_denom);
-    public static final OfByte LAYOUT$luma_weight_l0 = (OfByte) LAYOUT.select(PATH$luma_weight_l0);
-    public static final OfByte LAYOUT$luma_offset_l0 = (OfByte) LAYOUT.select(PATH$luma_offset_l0);
-    public static final OfByte LAYOUT$chroma_weight_l0 = (OfByte) LAYOUT.select(PATH$chroma_weight_l0);
-    public static final OfByte LAYOUT$chroma_offset_l0 = (OfByte) LAYOUT.select(PATH$chroma_offset_l0);
-    public static final OfByte LAYOUT$luma_weight_l1 = (OfByte) LAYOUT.select(PATH$luma_weight_l1);
-    public static final OfByte LAYOUT$luma_offset_l1 = (OfByte) LAYOUT.select(PATH$luma_offset_l1);
-    public static final OfByte LAYOUT$chroma_weight_l1 = (OfByte) LAYOUT.select(PATH$chroma_weight_l1);
-    public static final OfByte LAYOUT$chroma_offset_l1 = (OfByte) LAYOUT.select(PATH$chroma_offset_l1);
-
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$luma_log2_weight_denom = LAYOUT$luma_log2_weight_denom.byteSize();
-    public static final long SIZE$chroma_log2_weight_denom = LAYOUT$chroma_log2_weight_denom.byteSize();
-    public static final long SIZE$luma_weight_l0 = LAYOUT$luma_weight_l0.byteSize();
-    public static final long SIZE$luma_offset_l0 = LAYOUT$luma_offset_l0.byteSize();
-    public static final long SIZE$chroma_weight_l0 = LAYOUT$chroma_weight_l0.byteSize();
-    public static final long SIZE$chroma_offset_l0 = LAYOUT$chroma_offset_l0.byteSize();
-    public static final long SIZE$luma_weight_l1 = LAYOUT$luma_weight_l1.byteSize();
-    public static final long SIZE$luma_offset_l1 = LAYOUT$luma_offset_l1.byteSize();
-    public static final long SIZE$chroma_weight_l1 = LAYOUT$chroma_weight_l1.byteSize();
-    public static final long SIZE$chroma_offset_l1 = LAYOUT$chroma_offset_l1.byteSize();
-
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$luma_log2_weight_denom = LAYOUT.byteOffset(PATH$luma_log2_weight_denom);
-    public static final long OFFSET$chroma_log2_weight_denom = LAYOUT.byteOffset(PATH$chroma_log2_weight_denom);
-    public static final long OFFSET$luma_weight_l0 = LAYOUT.byteOffset(PATH$luma_weight_l0);
-    public static final long OFFSET$luma_offset_l0 = LAYOUT.byteOffset(PATH$luma_offset_l0);
-    public static final long OFFSET$chroma_weight_l0 = LAYOUT.byteOffset(PATH$chroma_weight_l0);
-    public static final long OFFSET$chroma_offset_l0 = LAYOUT.byteOffset(PATH$chroma_offset_l0);
-    public static final long OFFSET$luma_weight_l1 = LAYOUT.byteOffset(PATH$luma_weight_l1);
-    public static final long OFFSET$luma_offset_l1 = LAYOUT.byteOffset(PATH$luma_offset_l1);
-    public static final long OFFSET$chroma_weight_l1 = LAYOUT.byteOffset(PATH$chroma_weight_l1);
-    public static final long OFFSET$chroma_offset_l1 = LAYOUT.byteOffset(PATH$chroma_offset_l1);
 
     public StdVideoEncodeH264WeightTableFlags flags() {
         return new StdVideoEncodeH264WeightTableFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
@@ -204,4 +161,66 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$chroma_offset_l1, OFFSET$chroma_offset_l1, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoEncodeH264WeightTableFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("luma_log2_weight_denom"),
+        ValueLayout.JAVA_BYTE.withName("chroma_log2_weight_denom"),
+        ValueLayout.JAVA_BYTE.withName("luma_weight_l0"),
+        ValueLayout.JAVA_BYTE.withName("luma_offset_l0"),
+        ValueLayout.JAVA_BYTE.withName("chroma_weight_l0"),
+        ValueLayout.JAVA_BYTE.withName("chroma_offset_l0"),
+        ValueLayout.JAVA_BYTE.withName("luma_weight_l1"),
+        ValueLayout.JAVA_BYTE.withName("luma_offset_l1"),
+        ValueLayout.JAVA_BYTE.withName("chroma_weight_l1"),
+        ValueLayout.JAVA_BYTE.withName("chroma_offset_l1")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$luma_log2_weight_denom = PathElement.groupElement("PATH$luma_log2_weight_denom");
+    public static final PathElement PATH$chroma_log2_weight_denom = PathElement.groupElement("PATH$chroma_log2_weight_denom");
+    public static final PathElement PATH$luma_weight_l0 = PathElement.groupElement("PATH$luma_weight_l0");
+    public static final PathElement PATH$luma_offset_l0 = PathElement.groupElement("PATH$luma_offset_l0");
+    public static final PathElement PATH$chroma_weight_l0 = PathElement.groupElement("PATH$chroma_weight_l0");
+    public static final PathElement PATH$chroma_offset_l0 = PathElement.groupElement("PATH$chroma_offset_l0");
+    public static final PathElement PATH$luma_weight_l1 = PathElement.groupElement("PATH$luma_weight_l1");
+    public static final PathElement PATH$luma_offset_l1 = PathElement.groupElement("PATH$luma_offset_l1");
+    public static final PathElement PATH$chroma_weight_l1 = PathElement.groupElement("PATH$chroma_weight_l1");
+    public static final PathElement PATH$chroma_offset_l1 = PathElement.groupElement("PATH$chroma_offset_l1");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$luma_log2_weight_denom = (OfByte) LAYOUT.select(PATH$luma_log2_weight_denom);
+    public static final OfByte LAYOUT$chroma_log2_weight_denom = (OfByte) LAYOUT.select(PATH$chroma_log2_weight_denom);
+    public static final OfByte LAYOUT$luma_weight_l0 = (OfByte) LAYOUT.select(PATH$luma_weight_l0);
+    public static final OfByte LAYOUT$luma_offset_l0 = (OfByte) LAYOUT.select(PATH$luma_offset_l0);
+    public static final OfByte LAYOUT$chroma_weight_l0 = (OfByte) LAYOUT.select(PATH$chroma_weight_l0);
+    public static final OfByte LAYOUT$chroma_offset_l0 = (OfByte) LAYOUT.select(PATH$chroma_offset_l0);
+    public static final OfByte LAYOUT$luma_weight_l1 = (OfByte) LAYOUT.select(PATH$luma_weight_l1);
+    public static final OfByte LAYOUT$luma_offset_l1 = (OfByte) LAYOUT.select(PATH$luma_offset_l1);
+    public static final OfByte LAYOUT$chroma_weight_l1 = (OfByte) LAYOUT.select(PATH$chroma_weight_l1);
+    public static final OfByte LAYOUT$chroma_offset_l1 = (OfByte) LAYOUT.select(PATH$chroma_offset_l1);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$luma_log2_weight_denom = LAYOUT$luma_log2_weight_denom.byteSize();
+    public static final long SIZE$chroma_log2_weight_denom = LAYOUT$chroma_log2_weight_denom.byteSize();
+    public static final long SIZE$luma_weight_l0 = LAYOUT$luma_weight_l0.byteSize();
+    public static final long SIZE$luma_offset_l0 = LAYOUT$luma_offset_l0.byteSize();
+    public static final long SIZE$chroma_weight_l0 = LAYOUT$chroma_weight_l0.byteSize();
+    public static final long SIZE$chroma_offset_l0 = LAYOUT$chroma_offset_l0.byteSize();
+    public static final long SIZE$luma_weight_l1 = LAYOUT$luma_weight_l1.byteSize();
+    public static final long SIZE$luma_offset_l1 = LAYOUT$luma_offset_l1.byteSize();
+    public static final long SIZE$chroma_weight_l1 = LAYOUT$chroma_weight_l1.byteSize();
+    public static final long SIZE$chroma_offset_l1 = LAYOUT$chroma_offset_l1.byteSize();
+
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$luma_log2_weight_denom = LAYOUT.byteOffset(PATH$luma_log2_weight_denom);
+    public static final long OFFSET$chroma_log2_weight_denom = LAYOUT.byteOffset(PATH$chroma_log2_weight_denom);
+    public static final long OFFSET$luma_weight_l0 = LAYOUT.byteOffset(PATH$luma_weight_l0);
+    public static final long OFFSET$luma_offset_l0 = LAYOUT.byteOffset(PATH$luma_offset_l0);
+    public static final long OFFSET$chroma_weight_l0 = LAYOUT.byteOffset(PATH$chroma_weight_l0);
+    public static final long OFFSET$chroma_offset_l0 = LAYOUT.byteOffset(PATH$chroma_offset_l0);
+    public static final long OFFSET$luma_weight_l1 = LAYOUT.byteOffset(PATH$luma_weight_l1);
+    public static final long OFFSET$luma_offset_l1 = LAYOUT.byteOffset(PATH$luma_offset_l1);
+    public static final long OFFSET$chroma_weight_l1 = LAYOUT.byteOffset(PATH$chroma_weight_l1);
+    public static final long OFFSET$chroma_offset_l1 = LAYOUT.byteOffset(PATH$chroma_offset_l1);
 }

@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFilter.html">VkFilter</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFilter.html"><code>VkFilter</code></a>
 public final class VkFilter {
     public static final int NEAREST = 0x0;
     public static final int LINEAR = 0x1;

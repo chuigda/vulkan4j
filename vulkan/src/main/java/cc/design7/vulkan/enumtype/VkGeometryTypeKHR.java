@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeometryTypeKHR.html">VkGeometryTypeKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeometryTypeKHR.html"><code>VkGeometryTypeKHR</code></a>
 public final class VkGeometryTypeKHR {
     public static final int TRIANGLES = 0x0;
     public static final int AABBS = 0x1;

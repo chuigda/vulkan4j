@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDispatchGraphCountInfoAMDX} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDispatchGraphCountInfoAMDX.html"><code>VkDispatchGraphCountInfoAMDX</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDispatchGraphCountInfoAMDX {
+///     uint32_t count;
+///     VkDeviceOrHostAddressConstAMDX infos;
+///     uint64_t stride;
+/// } VkDispatchGraphCountInfoAMDX;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDispatchGraphCountInfoAMDX.html">VkDispatchGraphCountInfoAMDX</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDispatchGraphCountInfoAMDX.html"><code>VkDispatchGraphCountInfoAMDX</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDispatchGraphCountInfoAMDX(@NotNull MemorySegment segment) implements IPointer {
     public static VkDispatchGraphCountInfoAMDX allocate(Arena arena) {
-        return new VkDispatchGraphCountInfoAMDX(arena.allocate(LAYOUT));
+        VkDispatchGraphCountInfoAMDX ret = new VkDispatchGraphCountInfoAMDX(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkDispatchGraphCountInfoAMDX[] allocate(Arena arena, int count) {
@@ -55,29 +67,6 @@ public record VkDispatchGraphCountInfoAMDX(@NotNull MemorySegment segment) imple
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("count"),
-        VkDeviceOrHostAddressConstAMDX.LAYOUT.withName("infos"),
-        ValueLayout.JAVA_LONG.withName("stride")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$count = PathElement.groupElement("PATH$count");
-    public static final PathElement PATH$infos = PathElement.groupElement("PATH$infos");
-    public static final PathElement PATH$stride = PathElement.groupElement("PATH$stride");
-
-    public static final OfInt LAYOUT$count = (OfInt) LAYOUT.select(PATH$count);
-    public static final StructLayout LAYOUT$infos = (StructLayout) LAYOUT.select(PATH$infos);
-    public static final OfLong LAYOUT$stride = (OfLong) LAYOUT.select(PATH$stride);
-
-    public static final long SIZE$count = LAYOUT$count.byteSize();
-    public static final long SIZE$infos = LAYOUT$infos.byteSize();
-    public static final long SIZE$stride = LAYOUT$stride.byteSize();
-
-    public static final long OFFSET$count = LAYOUT.byteOffset(PATH$count);
-    public static final long OFFSET$infos = LAYOUT.byteOffset(PATH$infos);
-    public static final long OFFSET$stride = LAYOUT.byteOffset(PATH$stride);
-
     public @unsigned int count() {
         return segment.get(LAYOUT$count, OFFSET$count);
     }
@@ -102,4 +91,26 @@ public record VkDispatchGraphCountInfoAMDX(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$stride, OFFSET$stride, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("count"),
+        VkDeviceOrHostAddressConstAMDX.LAYOUT.withName("infos"),
+        ValueLayout.JAVA_LONG.withName("stride")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$count = PathElement.groupElement("PATH$count");
+    public static final PathElement PATH$infos = PathElement.groupElement("PATH$infos");
+    public static final PathElement PATH$stride = PathElement.groupElement("PATH$stride");
+
+    public static final OfInt LAYOUT$count = (OfInt) LAYOUT.select(PATH$count);
+    public static final StructLayout LAYOUT$infos = (StructLayout) LAYOUT.select(PATH$infos);
+    public static final OfLong LAYOUT$stride = (OfLong) LAYOUT.select(PATH$stride);
+
+    public static final long SIZE$count = LAYOUT$count.byteSize();
+    public static final long SIZE$infos = LAYOUT$infos.byteSize();
+    public static final long SIZE$stride = LAYOUT$stride.byteSize();
+
+    public static final long OFFSET$count = LAYOUT.byteOffset(PATH$count);
+    public static final long OFFSET$infos = LAYOUT.byteOffset(PATH$infos);
+    public static final long OFFSET$stride = LAYOUT.byteOffset(PATH$stride);
 }

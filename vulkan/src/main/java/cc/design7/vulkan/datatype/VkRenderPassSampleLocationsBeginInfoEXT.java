@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkRenderPassSampleLocationsBeginInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassSampleLocationsBeginInfoEXT.html"><code>VkRenderPassSampleLocationsBeginInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkRenderPassSampleLocationsBeginInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t attachmentInitialSampleLocationsCount;
+///     VkAttachmentSampleLocationsEXT const* pAttachmentInitialSampleLocations;
+///     uint32_t postSubpassSampleLocationsCount;
+///     VkSubpassSampleLocationsEXT const* pPostSubpassSampleLocations;
+/// } VkRenderPassSampleLocationsBeginInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT`
+///
+/// The {@link VkRenderPassSampleLocationsBeginInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkRenderPassSampleLocationsBeginInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassSampleLocationsBeginInfoEXT.html">VkRenderPassSampleLocationsBeginInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassSampleLocationsBeginInfoEXT.html"><code>VkRenderPassSampleLocationsBeginInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkRenderPassSampleLocationsBeginInfoEXT {
-        sType(VkStructureType.RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT);
-    }
-
     public static VkRenderPassSampleLocationsBeginInfoEXT allocate(Arena arena) {
-        return new VkRenderPassSampleLocationsBeginInfoEXT(arena.allocate(LAYOUT));
+        VkRenderPassSampleLocationsBeginInfoEXT ret = new VkRenderPassSampleLocationsBeginInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT);
+        return ret;
     }
 
     public static VkRenderPassSampleLocationsBeginInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
         VkRenderPassSampleLocationsBeginInfoEXT[] ret = new VkRenderPassSampleLocationsBeginInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkRenderPassSampleLocationsBeginInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT);
         }
         return ret;
     }
@@ -55,6 +76,116 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
         VkRenderPassSampleLocationsBeginInfoEXT[] ret = allocate(arena, src.length);
         for (int i = 0; i < src.length; i ++) {
             ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int attachmentInitialSampleLocationsCount() {
+        return segment.get(LAYOUT$attachmentInitialSampleLocationsCount, OFFSET$attachmentInitialSampleLocationsCount);
+    }
+
+    public void attachmentInitialSampleLocationsCount(@unsigned int value) {
+        segment.set(LAYOUT$attachmentInitialSampleLocationsCount, OFFSET$attachmentInitialSampleLocationsCount, value);
+    }
+
+    public @pointer(comment="VkAttachmentSampleLocationsEXT*") MemorySegment pAttachmentInitialSampleLocationsRaw() {
+        return segment.get(LAYOUT$pAttachmentInitialSampleLocations, OFFSET$pAttachmentInitialSampleLocations);
+    }
+
+    public void pAttachmentInitialSampleLocationsRaw(@pointer(comment="VkAttachmentSampleLocationsEXT*") MemorySegment value) {
+        segment.set(LAYOUT$pAttachmentInitialSampleLocations, OFFSET$pAttachmentInitialSampleLocations, value);
+    }
+
+    public @Nullable VkAttachmentSampleLocationsEXT pAttachmentInitialSampleLocations() {
+        MemorySegment s = pAttachmentInitialSampleLocationsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkAttachmentSampleLocationsEXT(s);
+    }
+
+    public void pAttachmentInitialSampleLocations(@Nullable VkAttachmentSampleLocationsEXT value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pAttachmentInitialSampleLocationsRaw(s);
+    }
+
+    @unsafe public @Nullable VkAttachmentSampleLocationsEXT[] pAttachmentInitialSampleLocations(int assumedCount) {
+        MemorySegment s = pAttachmentInitialSampleLocationsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkAttachmentSampleLocationsEXT.SIZE);
+        VkAttachmentSampleLocationsEXT[] ret = new VkAttachmentSampleLocationsEXT[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkAttachmentSampleLocationsEXT(s.asSlice(i * VkAttachmentSampleLocationsEXT.SIZE, VkAttachmentSampleLocationsEXT.SIZE));
+        }
+        return ret;
+    }
+
+    public @unsigned int postSubpassSampleLocationsCount() {
+        return segment.get(LAYOUT$postSubpassSampleLocationsCount, OFFSET$postSubpassSampleLocationsCount);
+    }
+
+    public void postSubpassSampleLocationsCount(@unsigned int value) {
+        segment.set(LAYOUT$postSubpassSampleLocationsCount, OFFSET$postSubpassSampleLocationsCount, value);
+    }
+
+    public @pointer(comment="VkSubpassSampleLocationsEXT*") MemorySegment pPostSubpassSampleLocationsRaw() {
+        return segment.get(LAYOUT$pPostSubpassSampleLocations, OFFSET$pPostSubpassSampleLocations);
+    }
+
+    public void pPostSubpassSampleLocationsRaw(@pointer(comment="VkSubpassSampleLocationsEXT*") MemorySegment value) {
+        segment.set(LAYOUT$pPostSubpassSampleLocations, OFFSET$pPostSubpassSampleLocations, value);
+    }
+
+    public @Nullable VkSubpassSampleLocationsEXT pPostSubpassSampleLocations() {
+        MemorySegment s = pPostSubpassSampleLocationsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkSubpassSampleLocationsEXT(s);
+    }
+
+    public void pPostSubpassSampleLocations(@Nullable VkSubpassSampleLocationsEXT value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pPostSubpassSampleLocationsRaw(s);
+    }
+
+    @unsafe public @Nullable VkSubpassSampleLocationsEXT[] pPostSubpassSampleLocations(int assumedCount) {
+        MemorySegment s = pPostSubpassSampleLocationsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkSubpassSampleLocationsEXT.SIZE);
+        VkSubpassSampleLocationsEXT[] ret = new VkSubpassSampleLocationsEXT[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkSubpassSampleLocationsEXT(s.asSlice(i * VkSubpassSampleLocationsEXT.SIZE, VkSubpassSampleLocationsEXT.SIZE));
         }
         return ret;
     }
@@ -96,111 +227,4 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
     public static final long OFFSET$pAttachmentInitialSampleLocations = LAYOUT.byteOffset(PATH$pAttachmentInitialSampleLocations);
     public static final long OFFSET$postSubpassSampleLocationsCount = LAYOUT.byteOffset(PATH$postSubpassSampleLocationsCount);
     public static final long OFFSET$pPostSubpassSampleLocations = LAYOUT.byteOffset(PATH$pPostSubpassSampleLocations);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @unsigned int attachmentInitialSampleLocationsCount() {
-        return segment.get(LAYOUT$attachmentInitialSampleLocationsCount, OFFSET$attachmentInitialSampleLocationsCount);
-    }
-
-    public void attachmentInitialSampleLocationsCount(@unsigned int value) {
-        segment.set(LAYOUT$attachmentInitialSampleLocationsCount, OFFSET$attachmentInitialSampleLocationsCount, value);
-    }
-
-    public @pointer(comment="VkAttachmentSampleLocationsEXT*") MemorySegment pAttachmentInitialSampleLocationsRaw() {
-        return segment.get(LAYOUT$pAttachmentInitialSampleLocations, OFFSET$pAttachmentInitialSampleLocations);
-    }
-
-    public void pAttachmentInitialSampleLocationsRaw(@pointer(comment="VkAttachmentSampleLocationsEXT*") MemorySegment value) {
-        segment.set(LAYOUT$pAttachmentInitialSampleLocations, OFFSET$pAttachmentInitialSampleLocations, value);
-    }
-
-    public @Nullable VkAttachmentSampleLocationsEXT pAttachmentInitialSampleLocations() {
-        MemorySegment s = pAttachmentInitialSampleLocationsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkAttachmentSampleLocationsEXT(s);
-    }
-
-    public void pAttachmentInitialSampleLocations(@Nullable VkAttachmentSampleLocationsEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pAttachmentInitialSampleLocationsRaw(s);
-    }
-
-    @unsafe public @Nullable VkAttachmentSampleLocationsEXT[] pAttachmentInitialSampleLocations(int assumedCount) {
-        MemorySegment s = pAttachmentInitialSampleLocationsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkAttachmentSampleLocationsEXT.SIZE);
-        VkAttachmentSampleLocationsEXT[] ret = new VkAttachmentSampleLocationsEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentSampleLocationsEXT(s.asSlice(i * VkAttachmentSampleLocationsEXT.SIZE, VkAttachmentSampleLocationsEXT.SIZE));
-        }
-        return ret;
-    }
-
-    public @unsigned int postSubpassSampleLocationsCount() {
-        return segment.get(LAYOUT$postSubpassSampleLocationsCount, OFFSET$postSubpassSampleLocationsCount);
-    }
-
-    public void postSubpassSampleLocationsCount(@unsigned int value) {
-        segment.set(LAYOUT$postSubpassSampleLocationsCount, OFFSET$postSubpassSampleLocationsCount, value);
-    }
-
-    public @pointer(comment="VkSubpassSampleLocationsEXT*") MemorySegment pPostSubpassSampleLocationsRaw() {
-        return segment.get(LAYOUT$pPostSubpassSampleLocations, OFFSET$pPostSubpassSampleLocations);
-    }
-
-    public void pPostSubpassSampleLocationsRaw(@pointer(comment="VkSubpassSampleLocationsEXT*") MemorySegment value) {
-        segment.set(LAYOUT$pPostSubpassSampleLocations, OFFSET$pPostSubpassSampleLocations, value);
-    }
-
-    public @Nullable VkSubpassSampleLocationsEXT pPostSubpassSampleLocations() {
-        MemorySegment s = pPostSubpassSampleLocationsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkSubpassSampleLocationsEXT(s);
-    }
-
-    public void pPostSubpassSampleLocations(@Nullable VkSubpassSampleLocationsEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pPostSubpassSampleLocationsRaw(s);
-    }
-
-    @unsafe public @Nullable VkSubpassSampleLocationsEXT[] pPostSubpassSampleLocations(int assumedCount) {
-        MemorySegment s = pPostSubpassSampleLocationsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkSubpassSampleLocationsEXT.SIZE);
-        VkSubpassSampleLocationsEXT[] ret = new VkSubpassSampleLocationsEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSubpassSampleLocationsEXT(s.asSlice(i * VkSubpassSampleLocationsEXT.SIZE, VkSubpassSampleLocationsEXT.SIZE));
-        }
-        return ret;
-    }
-
 }

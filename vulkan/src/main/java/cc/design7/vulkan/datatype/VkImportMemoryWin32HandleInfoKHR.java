@@ -14,8 +14,29 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkImportMemoryWin32HandleInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportMemoryWin32HandleInfoKHR.html"><code>VkImportMemoryWin32HandleInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkImportMemoryWin32HandleInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkExternalMemoryHandleTypeFlags handleType;
+///     HANDLE handle;
+///     LPCWSTR name;
+/// } VkImportMemoryWin32HandleInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR`
+///
+/// The {@link VkImportMemoryWin32HandleInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkImportMemoryWin32HandleInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +45,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportMemoryWin32HandleInfoKHR.html">VkImportMemoryWin32HandleInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportMemoryWin32HandleInfoKHR.html"><code>VkImportMemoryWin32HandleInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkImportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkImportMemoryWin32HandleInfoKHR {
-        sType(VkStructureType.IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR);
-    }
-
     public static VkImportMemoryWin32HandleInfoKHR allocate(Arena arena) {
-        return new VkImportMemoryWin32HandleInfoKHR(arena.allocate(LAYOUT));
+        VkImportMemoryWin32HandleInfoKHR ret = new VkImportMemoryWin32HandleInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR);
+        return ret;
     }
 
     public static VkImportMemoryWin32HandleInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +60,7 @@ public record VkImportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
         VkImportMemoryWin32HandleInfoKHR[] ret = new VkImportMemoryWin32HandleInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkImportMemoryWin32HandleInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR);
         }
         return ret;
     }
@@ -59,38 +79,9 @@ public record VkImportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("handleType"),
-        ValueLayout.ADDRESS.withName("handle"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("name")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$handleType = PathElement.groupElement("PATH$handleType");
-    public static final PathElement PATH$handle = PathElement.groupElement("PATH$handle");
-    public static final PathElement PATH$name = PathElement.groupElement("PATH$name");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$handleType = (OfInt) LAYOUT.select(PATH$handleType);
-    public static final AddressLayout LAYOUT$handle = (AddressLayout) LAYOUT.select(PATH$handle);
-    public static final AddressLayout LAYOUT$name = (AddressLayout) LAYOUT.select(PATH$name);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
-    public static final long SIZE$handle = LAYOUT$handle.byteSize();
-    public static final long SIZE$name = LAYOUT$name.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
-    public static final long OFFSET$handle = LAYOUT.byteOffset(PATH$handle);
-    public static final long OFFSET$name = LAYOUT.byteOffset(PATH$name);
+    public void autoInit() {
+        sType(VkStructureType.IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -146,7 +137,7 @@ public record VkImportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
     /// writing to the buffer.
     public @Nullable @unsigned ShortPtr name() {
         MemorySegment s = nameRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new ShortPtr(s);
@@ -157,4 +148,36 @@ public record VkImportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
         nameRaw(s);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("handleType"),
+        ValueLayout.ADDRESS.withName("handle"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("name")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$handleType = PathElement.groupElement("PATH$handleType");
+    public static final PathElement PATH$handle = PathElement.groupElement("PATH$handle");
+    public static final PathElement PATH$name = PathElement.groupElement("PATH$name");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$handleType = (OfInt) LAYOUT.select(PATH$handleType);
+    public static final AddressLayout LAYOUT$handle = (AddressLayout) LAYOUT.select(PATH$handle);
+    public static final AddressLayout LAYOUT$name = (AddressLayout) LAYOUT.select(PATH$name);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
+    public static final long SIZE$handle = LAYOUT$handle.byteSize();
+    public static final long SIZE$name = LAYOUT$name.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
+    public static final long OFFSET$handle = LAYOUT.byteOffset(PATH$handle);
+    public static final long OFFSET$name = LAYOUT.byteOffset(PATH$name);
 }

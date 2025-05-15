@@ -14,8 +14,34 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceAccelerationStructurePropertiesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceAccelerationStructurePropertiesKHR.html"><code>VkPhysicalDeviceAccelerationStructurePropertiesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceAccelerationStructurePropertiesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint64_t maxGeometryCount;
+///     uint64_t maxInstanceCount;
+///     uint64_t maxPrimitiveCount;
+///     uint32_t maxPerStageDescriptorAccelerationStructures;
+///     uint32_t maxPerStageDescriptorUpdateAfterBindAccelerationStructures;
+///     uint32_t maxDescriptorSetAccelerationStructures;
+///     uint32_t maxDescriptorSetUpdateAfterBindAccelerationStructures;
+///     uint32_t minAccelerationStructureScratchOffsetAlignment;
+/// } VkPhysicalDeviceAccelerationStructurePropertiesKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR`
+///
+/// The {@link VkPhysicalDeviceAccelerationStructurePropertiesKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceAccelerationStructurePropertiesKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +50,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceAccelerationStructurePropertiesKHR.html">VkPhysicalDeviceAccelerationStructurePropertiesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceAccelerationStructurePropertiesKHR.html"><code>VkPhysicalDeviceAccelerationStructurePropertiesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceAccelerationStructurePropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceAccelerationStructurePropertiesKHR {
-        sType(VkStructureType.PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR);
-    }
-
     public static VkPhysicalDeviceAccelerationStructurePropertiesKHR allocate(Arena arena) {
-        return new VkPhysicalDeviceAccelerationStructurePropertiesKHR(arena.allocate(LAYOUT));
+        VkPhysicalDeviceAccelerationStructurePropertiesKHR ret = new VkPhysicalDeviceAccelerationStructurePropertiesKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR);
+        return ret;
     }
 
     public static VkPhysicalDeviceAccelerationStructurePropertiesKHR[] allocate(Arena arena, int count) {
@@ -41,6 +65,7 @@ public record VkPhysicalDeviceAccelerationStructurePropertiesKHR(@NotNull Memory
         VkPhysicalDeviceAccelerationStructurePropertiesKHR[] ret = new VkPhysicalDeviceAccelerationStructurePropertiesKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceAccelerationStructurePropertiesKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR);
         }
         return ret;
     }
@@ -59,63 +84,9 @@ public record VkPhysicalDeviceAccelerationStructurePropertiesKHR(@NotNull Memory
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_LONG.withName("maxGeometryCount"),
-        ValueLayout.JAVA_LONG.withName("maxInstanceCount"),
-        ValueLayout.JAVA_LONG.withName("maxPrimitiveCount"),
-        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorAccelerationStructures"),
-        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindAccelerationStructures"),
-        ValueLayout.JAVA_INT.withName("maxDescriptorSetAccelerationStructures"),
-        ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindAccelerationStructures"),
-        ValueLayout.JAVA_INT.withName("minAccelerationStructureScratchOffsetAlignment")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxGeometryCount = PathElement.groupElement("PATH$maxGeometryCount");
-    public static final PathElement PATH$maxInstanceCount = PathElement.groupElement("PATH$maxInstanceCount");
-    public static final PathElement PATH$maxPrimitiveCount = PathElement.groupElement("PATH$maxPrimitiveCount");
-    public static final PathElement PATH$maxPerStageDescriptorAccelerationStructures = PathElement.groupElement("PATH$maxPerStageDescriptorAccelerationStructures");
-    public static final PathElement PATH$maxPerStageDescriptorUpdateAfterBindAccelerationStructures = PathElement.groupElement("PATH$maxPerStageDescriptorUpdateAfterBindAccelerationStructures");
-    public static final PathElement PATH$maxDescriptorSetAccelerationStructures = PathElement.groupElement("PATH$maxDescriptorSetAccelerationStructures");
-    public static final PathElement PATH$maxDescriptorSetUpdateAfterBindAccelerationStructures = PathElement.groupElement("PATH$maxDescriptorSetUpdateAfterBindAccelerationStructures");
-    public static final PathElement PATH$minAccelerationStructureScratchOffsetAlignment = PathElement.groupElement("PATH$minAccelerationStructureScratchOffsetAlignment");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfLong LAYOUT$maxGeometryCount = (OfLong) LAYOUT.select(PATH$maxGeometryCount);
-    public static final OfLong LAYOUT$maxInstanceCount = (OfLong) LAYOUT.select(PATH$maxInstanceCount);
-    public static final OfLong LAYOUT$maxPrimitiveCount = (OfLong) LAYOUT.select(PATH$maxPrimitiveCount);
-    public static final OfInt LAYOUT$maxPerStageDescriptorAccelerationStructures = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorAccelerationStructures);
-    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindAccelerationStructures = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorUpdateAfterBindAccelerationStructures);
-    public static final OfInt LAYOUT$maxDescriptorSetAccelerationStructures = (OfInt) LAYOUT.select(PATH$maxDescriptorSetAccelerationStructures);
-    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindAccelerationStructures = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUpdateAfterBindAccelerationStructures);
-    public static final OfInt LAYOUT$minAccelerationStructureScratchOffsetAlignment = (OfInt) LAYOUT.select(PATH$minAccelerationStructureScratchOffsetAlignment);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$maxGeometryCount = LAYOUT$maxGeometryCount.byteSize();
-    public static final long SIZE$maxInstanceCount = LAYOUT$maxInstanceCount.byteSize();
-    public static final long SIZE$maxPrimitiveCount = LAYOUT$maxPrimitiveCount.byteSize();
-    public static final long SIZE$maxPerStageDescriptorAccelerationStructures = LAYOUT$maxPerStageDescriptorAccelerationStructures.byteSize();
-    public static final long SIZE$maxPerStageDescriptorUpdateAfterBindAccelerationStructures = LAYOUT$maxPerStageDescriptorUpdateAfterBindAccelerationStructures.byteSize();
-    public static final long SIZE$maxDescriptorSetAccelerationStructures = LAYOUT$maxDescriptorSetAccelerationStructures.byteSize();
-    public static final long SIZE$maxDescriptorSetUpdateAfterBindAccelerationStructures = LAYOUT$maxDescriptorSetUpdateAfterBindAccelerationStructures.byteSize();
-    public static final long SIZE$minAccelerationStructureScratchOffsetAlignment = LAYOUT$minAccelerationStructureScratchOffsetAlignment.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$maxGeometryCount = LAYOUT.byteOffset(PATH$maxGeometryCount);
-    public static final long OFFSET$maxInstanceCount = LAYOUT.byteOffset(PATH$maxInstanceCount);
-    public static final long OFFSET$maxPrimitiveCount = LAYOUT.byteOffset(PATH$maxPrimitiveCount);
-    public static final long OFFSET$maxPerStageDescriptorAccelerationStructures = LAYOUT.byteOffset(PATH$maxPerStageDescriptorAccelerationStructures);
-    public static final long OFFSET$maxPerStageDescriptorUpdateAfterBindAccelerationStructures = LAYOUT.byteOffset(PATH$maxPerStageDescriptorUpdateAfterBindAccelerationStructures);
-    public static final long OFFSET$maxDescriptorSetAccelerationStructures = LAYOUT.byteOffset(PATH$maxDescriptorSetAccelerationStructures);
-    public static final long OFFSET$maxDescriptorSetUpdateAfterBindAccelerationStructures = LAYOUT.byteOffset(PATH$maxDescriptorSetUpdateAfterBindAccelerationStructures);
-    public static final long OFFSET$minAccelerationStructureScratchOffsetAlignment = LAYOUT.byteOffset(PATH$minAccelerationStructureScratchOffsetAlignment);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -201,4 +172,61 @@ public record VkPhysicalDeviceAccelerationStructurePropertiesKHR(@NotNull Memory
         segment.set(LAYOUT$minAccelerationStructureScratchOffsetAlignment, OFFSET$minAccelerationStructureScratchOffsetAlignment, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("maxGeometryCount"),
+        ValueLayout.JAVA_LONG.withName("maxInstanceCount"),
+        ValueLayout.JAVA_LONG.withName("maxPrimitiveCount"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorAccelerationStructures"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindAccelerationStructures"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetAccelerationStructures"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindAccelerationStructures"),
+        ValueLayout.JAVA_INT.withName("minAccelerationStructureScratchOffsetAlignment")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$maxGeometryCount = PathElement.groupElement("PATH$maxGeometryCount");
+    public static final PathElement PATH$maxInstanceCount = PathElement.groupElement("PATH$maxInstanceCount");
+    public static final PathElement PATH$maxPrimitiveCount = PathElement.groupElement("PATH$maxPrimitiveCount");
+    public static final PathElement PATH$maxPerStageDescriptorAccelerationStructures = PathElement.groupElement("PATH$maxPerStageDescriptorAccelerationStructures");
+    public static final PathElement PATH$maxPerStageDescriptorUpdateAfterBindAccelerationStructures = PathElement.groupElement("PATH$maxPerStageDescriptorUpdateAfterBindAccelerationStructures");
+    public static final PathElement PATH$maxDescriptorSetAccelerationStructures = PathElement.groupElement("PATH$maxDescriptorSetAccelerationStructures");
+    public static final PathElement PATH$maxDescriptorSetUpdateAfterBindAccelerationStructures = PathElement.groupElement("PATH$maxDescriptorSetUpdateAfterBindAccelerationStructures");
+    public static final PathElement PATH$minAccelerationStructureScratchOffsetAlignment = PathElement.groupElement("PATH$minAccelerationStructureScratchOffsetAlignment");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$maxGeometryCount = (OfLong) LAYOUT.select(PATH$maxGeometryCount);
+    public static final OfLong LAYOUT$maxInstanceCount = (OfLong) LAYOUT.select(PATH$maxInstanceCount);
+    public static final OfLong LAYOUT$maxPrimitiveCount = (OfLong) LAYOUT.select(PATH$maxPrimitiveCount);
+    public static final OfInt LAYOUT$maxPerStageDescriptorAccelerationStructures = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorAccelerationStructures);
+    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindAccelerationStructures = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorUpdateAfterBindAccelerationStructures);
+    public static final OfInt LAYOUT$maxDescriptorSetAccelerationStructures = (OfInt) LAYOUT.select(PATH$maxDescriptorSetAccelerationStructures);
+    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindAccelerationStructures = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUpdateAfterBindAccelerationStructures);
+    public static final OfInt LAYOUT$minAccelerationStructureScratchOffsetAlignment = (OfInt) LAYOUT.select(PATH$minAccelerationStructureScratchOffsetAlignment);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxGeometryCount = LAYOUT$maxGeometryCount.byteSize();
+    public static final long SIZE$maxInstanceCount = LAYOUT$maxInstanceCount.byteSize();
+    public static final long SIZE$maxPrimitiveCount = LAYOUT$maxPrimitiveCount.byteSize();
+    public static final long SIZE$maxPerStageDescriptorAccelerationStructures = LAYOUT$maxPerStageDescriptorAccelerationStructures.byteSize();
+    public static final long SIZE$maxPerStageDescriptorUpdateAfterBindAccelerationStructures = LAYOUT$maxPerStageDescriptorUpdateAfterBindAccelerationStructures.byteSize();
+    public static final long SIZE$maxDescriptorSetAccelerationStructures = LAYOUT$maxDescriptorSetAccelerationStructures.byteSize();
+    public static final long SIZE$maxDescriptorSetUpdateAfterBindAccelerationStructures = LAYOUT$maxDescriptorSetUpdateAfterBindAccelerationStructures.byteSize();
+    public static final long SIZE$minAccelerationStructureScratchOffsetAlignment = LAYOUT$minAccelerationStructureScratchOffsetAlignment.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$maxGeometryCount = LAYOUT.byteOffset(PATH$maxGeometryCount);
+    public static final long OFFSET$maxInstanceCount = LAYOUT.byteOffset(PATH$maxInstanceCount);
+    public static final long OFFSET$maxPrimitiveCount = LAYOUT.byteOffset(PATH$maxPrimitiveCount);
+    public static final long OFFSET$maxPerStageDescriptorAccelerationStructures = LAYOUT.byteOffset(PATH$maxPerStageDescriptorAccelerationStructures);
+    public static final long OFFSET$maxPerStageDescriptorUpdateAfterBindAccelerationStructures = LAYOUT.byteOffset(PATH$maxPerStageDescriptorUpdateAfterBindAccelerationStructures);
+    public static final long OFFSET$maxDescriptorSetAccelerationStructures = LAYOUT.byteOffset(PATH$maxDescriptorSetAccelerationStructures);
+    public static final long OFFSET$maxDescriptorSetUpdateAfterBindAccelerationStructures = LAYOUT.byteOffset(PATH$maxDescriptorSetUpdateAfterBindAccelerationStructures);
+    public static final long OFFSET$minAccelerationStructureScratchOffsetAlignment = LAYOUT.byteOffset(PATH$minAccelerationStructureScratchOffsetAlignment);
 }

@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPresentRegionKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentRegionKHR.html"><code>VkPresentRegionKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPresentRegionKHR {
+///     uint32_t rectangleCount;
+///     VkRectLayerKHR const* pRectangles;
+/// } VkPresentRegionKHR;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentRegionKHR.html">VkPresentRegionKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentRegionKHR.html"><code>VkPresentRegionKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkPresentRegionKHR allocate(Arena arena) {
-        return new VkPresentRegionKHR(arena.allocate(LAYOUT));
+        VkPresentRegionKHR ret = new VkPresentRegionKHR(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkPresentRegionKHR[] allocate(Arena arena, int count) {
@@ -55,24 +66,6 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IPoi
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("rectangleCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkRectLayerKHR.LAYOUT).withName("pRectangles")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$rectangleCount = PathElement.groupElement("PATH$rectangleCount");
-    public static final PathElement PATH$pRectangles = PathElement.groupElement("PATH$pRectangles");
-
-    public static final OfInt LAYOUT$rectangleCount = (OfInt) LAYOUT.select(PATH$rectangleCount);
-    public static final AddressLayout LAYOUT$pRectangles = (AddressLayout) LAYOUT.select(PATH$pRectangles);
-
-    public static final long SIZE$rectangleCount = LAYOUT$rectangleCount.byteSize();
-    public static final long SIZE$pRectangles = LAYOUT$pRectangles.byteSize();
-
-    public static final long OFFSET$rectangleCount = LAYOUT.byteOffset(PATH$rectangleCount);
-    public static final long OFFSET$pRectangles = LAYOUT.byteOffset(PATH$pRectangles);
-
     public @unsigned int rectangleCount() {
         return segment.get(LAYOUT$rectangleCount, OFFSET$rectangleCount);
     }
@@ -91,7 +84,7 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IPoi
 
     public @Nullable VkRectLayerKHR pRectangles() {
         MemorySegment s = pRectanglesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkRectLayerKHR(s);
@@ -104,7 +97,7 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IPoi
 
     @unsafe public @Nullable VkRectLayerKHR[] pRectangles(int assumedCount) {
         MemorySegment s = pRectanglesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -116,4 +109,21 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IPoi
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("rectangleCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkRectLayerKHR.LAYOUT).withName("pRectangles")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$rectangleCount = PathElement.groupElement("PATH$rectangleCount");
+    public static final PathElement PATH$pRectangles = PathElement.groupElement("PATH$pRectangles");
+
+    public static final OfInt LAYOUT$rectangleCount = (OfInt) LAYOUT.select(PATH$rectangleCount);
+    public static final AddressLayout LAYOUT$pRectangles = (AddressLayout) LAYOUT.select(PATH$pRectangles);
+
+    public static final long SIZE$rectangleCount = LAYOUT$rectangleCount.byteSize();
+    public static final long SIZE$pRectangles = LAYOUT$pRectangles.byteSize();
+
+    public static final long OFFSET$rectangleCount = LAYOUT.byteOffset(PATH$rectangleCount);
+    public static final long OFFSET$pRectangles = LAYOUT.byteOffset(PATH$pRectangles);
 }

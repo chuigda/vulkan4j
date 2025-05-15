@@ -15,8 +15,21 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkClusterAccelerationStructureInstantiateClusterInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureInstantiateClusterInfoNV.html"><code>VkClusterAccelerationStructureInstantiateClusterInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkClusterAccelerationStructureInstantiateClusterInfoNV {
+///     uint32_t clusterIdOffset;
+///     uint32_t geometryIndexOffset : 24;
+///     uint32_t reserved : 8;
+///     VkDeviceAddress clusterTemplateAddress;
+///     VkStridedDeviceAddressNV vertexBuffer;
+/// } VkClusterAccelerationStructureInstantiateClusterInfoNV;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -25,12 +38,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureInstantiateClusterInfoNV.html">VkClusterAccelerationStructureInstantiateClusterInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureInstantiateClusterInfoNV.html"><code>VkClusterAccelerationStructureInstantiateClusterInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkClusterAccelerationStructureInstantiateClusterInfoNV allocate(Arena arena) {
-        return new VkClusterAccelerationStructureInstantiateClusterInfoNV(arena.allocate(LAYOUT));
+        VkClusterAccelerationStructureInstantiateClusterInfoNV ret = new VkClusterAccelerationStructureInstantiateClusterInfoNV(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkClusterAccelerationStructureInstantiateClusterInfoNV[] allocate(Arena arena, int count) {
@@ -54,6 +68,40 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public @unsigned int clusterIdOffset() {
+        return segment.get(LAYOUT$clusterIdOffset, OFFSET$clusterIdOffset);
+    }
+
+    public void clusterIdOffset(@unsigned int value) {
+        segment.set(LAYOUT$clusterIdOffset, OFFSET$clusterIdOffset, value);
+    }
+
+    public @unsigned int geometryIndexOffset() {
+        MemorySegment s = segment.asSlice(OFFSET$geometryIndexOffset_reserved, LAYOUT$geometryIndexOffset_reserved);
+        return BitfieldUtil.readBits(s, 0, 24);
+    }
+
+    public void geometryIndexOffset(@unsigned int value) {
+        MemorySegment s = segment.asSlice(OFFSET$geometryIndexOffset_reserved, LAYOUT$geometryIndexOffset_reserved);
+        BitfieldUtil.writeBits(s, 0, 24, value);
+    }
+
+    public @unsigned long clusterTemplateAddress() {
+        return segment.get(LAYOUT$clusterTemplateAddress, OFFSET$clusterTemplateAddress);
+    }
+
+    public void clusterTemplateAddress(@unsigned long value) {
+        segment.set(LAYOUT$clusterTemplateAddress, OFFSET$clusterTemplateAddress, value);
+    }
+
+    public VkStridedDeviceAddressNV vertexBuffer() {
+        return new VkStridedDeviceAddressNV(segment.asSlice(OFFSET$vertexBuffer, LAYOUT$vertexBuffer));
+    }
+
+    public void vertexBuffer(VkStridedDeviceAddressNV value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$vertexBuffer, SIZE$vertexBuffer);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -82,40 +130,4 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
     public static final long OFFSET$geometryIndexOffset_reserved = LAYOUT.byteOffset(PATH$bitfield$geometryIndexOffset_reserved);
     public static final long OFFSET$clusterTemplateAddress = LAYOUT.byteOffset(PATH$clusterTemplateAddress);
     public static final long OFFSET$vertexBuffer = LAYOUT.byteOffset(PATH$vertexBuffer);
-
-    public @unsigned int clusterIdOffset() {
-        return segment.get(LAYOUT$clusterIdOffset, OFFSET$clusterIdOffset);
-    }
-
-    public void clusterIdOffset(@unsigned int value) {
-        segment.set(LAYOUT$clusterIdOffset, OFFSET$clusterIdOffset, value);
-    }
-
-    public @unsigned int geometryIndexOffset() {
-        MemorySegment s = segment.asSlice(OFFSET$geometryIndexOffset_reserved, LAYOUT$geometryIndexOffset_reserved);
-        return BitfieldUtil.readBits(s, 0, 24);
-    }
-
-    public void geometryIndexOffset(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$geometryIndexOffset_reserved, LAYOUT$geometryIndexOffset_reserved);
-        BitfieldUtil.writeBits(s, 0, 24, value);
-    }
-
-
-    public @unsigned long clusterTemplateAddress() {
-        return segment.get(LAYOUT$clusterTemplateAddress, OFFSET$clusterTemplateAddress);
-    }
-
-    public void clusterTemplateAddress(@unsigned long value) {
-        segment.set(LAYOUT$clusterTemplateAddress, OFFSET$clusterTemplateAddress, value);
-    }
-
-    public VkStridedDeviceAddressNV vertexBuffer() {
-        return new VkStridedDeviceAddressNV(segment.asSlice(OFFSET$vertexBuffer, LAYOUT$vertexBuffer));
-    }
-
-    public void vertexBuffer(VkStridedDeviceAddressNV value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$vertexBuffer, SIZE$vertexBuffer);
-    }
-
 }

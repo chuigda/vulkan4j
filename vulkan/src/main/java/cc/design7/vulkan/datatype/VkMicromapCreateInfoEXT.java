@@ -14,8 +14,32 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkMicromapCreateInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMicromapCreateInfoEXT.html"><code>VkMicromapCreateInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkMicromapCreateInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkMicromapCreateFlagsEXT createFlags;
+///     VkBuffer buffer;
+///     VkDeviceSize offset;
+///     VkDeviceSize size;
+///     VkMicromapTypeEXT type;
+///     VkDeviceAddress deviceAddress;
+/// } VkMicromapCreateInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_MICROMAP_CREATE_INFO_EXT`
+///
+/// The {@link VkMicromapCreateInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkMicromapCreateInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +48,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMicromapCreateInfoEXT.html">VkMicromapCreateInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMicromapCreateInfoEXT.html"><code>VkMicromapCreateInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkMicromapCreateInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkMicromapCreateInfoEXT {
-        sType(VkStructureType.MICROMAP_CREATE_INFO_EXT);
-    }
-
     public static VkMicromapCreateInfoEXT allocate(Arena arena) {
-        return new VkMicromapCreateInfoEXT(arena.allocate(LAYOUT));
+        VkMicromapCreateInfoEXT ret = new VkMicromapCreateInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.MICROMAP_CREATE_INFO_EXT);
+        return ret;
     }
 
     public static VkMicromapCreateInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +63,7 @@ public record VkMicromapCreateInfoEXT(@NotNull MemorySegment segment) implements
         VkMicromapCreateInfoEXT[] ret = new VkMicromapCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkMicromapCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.MICROMAP_CREATE_INFO_EXT);
         }
         return ret;
     }
@@ -57,6 +80,82 @@ public record VkMicromapCreateInfoEXT(@NotNull MemorySegment segment) implements
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.MICROMAP_CREATE_INFO_EXT);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkMicromapCreateFlagsEXT.class) int createFlags() {
+        return segment.get(LAYOUT$createFlags, OFFSET$createFlags);
+    }
+
+    public void createFlags(@enumtype(VkMicromapCreateFlagsEXT.class) int value) {
+        segment.set(LAYOUT$createFlags, OFFSET$createFlags, value);
+    }
+
+    public @Nullable VkBuffer buffer() {
+        MemorySegment s = segment.asSlice(OFFSET$buffer, SIZE$buffer);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkBuffer(s);
+    }
+
+    public void buffer(@Nullable VkBuffer value) {
+        segment.set(LAYOUT$buffer, OFFSET$buffer, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned long offset() {
+        return segment.get(LAYOUT$offset, OFFSET$offset);
+    }
+
+    public void offset(@unsigned long value) {
+        segment.set(LAYOUT$offset, OFFSET$offset, value);
+    }
+
+    public @unsigned long size() {
+        return segment.get(LAYOUT$size, OFFSET$size);
+    }
+
+    public void size(@unsigned long value) {
+        segment.set(LAYOUT$size, OFFSET$size, value);
+    }
+
+    public @enumtype(VkMicromapTypeEXT.class) int type() {
+        return segment.get(LAYOUT$type, OFFSET$type);
+    }
+
+    public void type(@enumtype(VkMicromapTypeEXT.class) int value) {
+        segment.set(LAYOUT$type, OFFSET$type, value);
+    }
+
+    public @unsigned long deviceAddress() {
+        return segment.get(LAYOUT$deviceAddress, OFFSET$deviceAddress);
+    }
+
+    public void deviceAddress(@unsigned long value) {
+        segment.set(LAYOUT$deviceAddress, OFFSET$deviceAddress, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -106,77 +205,4 @@ public record VkMicromapCreateInfoEXT(@NotNull MemorySegment segment) implements
     public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
     public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
     public static final long OFFSET$deviceAddress = LAYOUT.byteOffset(PATH$deviceAddress);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @enumtype(VkMicromapCreateFlagsEXT.class) int createFlags() {
-        return segment.get(LAYOUT$createFlags, OFFSET$createFlags);
-    }
-
-    public void createFlags(@enumtype(VkMicromapCreateFlagsEXT.class) int value) {
-        segment.set(LAYOUT$createFlags, OFFSET$createFlags, value);
-    }
-
-    public @Nullable VkBuffer buffer() {
-        MemorySegment s = segment.asSlice(OFFSET$buffer, SIZE$buffer);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkBuffer(s);
-    }
-
-    public void buffer(@Nullable VkBuffer value) {
-        segment.set(LAYOUT$buffer, OFFSET$buffer, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned long offset() {
-        return segment.get(LAYOUT$offset, OFFSET$offset);
-    }
-
-    public void offset(@unsigned long value) {
-        segment.set(LAYOUT$offset, OFFSET$offset, value);
-    }
-
-    public @unsigned long size() {
-        return segment.get(LAYOUT$size, OFFSET$size);
-    }
-
-    public void size(@unsigned long value) {
-        segment.set(LAYOUT$size, OFFSET$size, value);
-    }
-
-    public @enumtype(VkMicromapTypeEXT.class) int type() {
-        return segment.get(LAYOUT$type, OFFSET$type);
-    }
-
-    public void type(@enumtype(VkMicromapTypeEXT.class) int value) {
-        segment.set(LAYOUT$type, OFFSET$type, value);
-    }
-
-    public @unsigned long deviceAddress() {
-        return segment.get(LAYOUT$deviceAddress, OFFSET$deviceAddress);
-    }
-
-    public void deviceAddress(@unsigned long value) {
-        segment.set(LAYOUT$deviceAddress, OFFSET$deviceAddress, value);
-    }
-
 }

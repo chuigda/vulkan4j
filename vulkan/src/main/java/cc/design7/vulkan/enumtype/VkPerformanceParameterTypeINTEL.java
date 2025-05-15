@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceParameterTypeINTEL.html">VkPerformanceParameterTypeINTEL</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceParameterTypeINTEL.html"><code>VkPerformanceParameterTypeINTEL</code></a>
 public final class VkPerformanceParameterTypeINTEL {
     public static final int HW_COUNTERS_SUPPORTED = 0x0;
     public static final int STREAM_MARKER_VALID_BITS = 0x1;

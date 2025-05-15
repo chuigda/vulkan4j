@@ -14,8 +14,21 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPastPresentationTimingGOOGLE} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPastPresentationTimingGOOGLE.html"><code>VkPastPresentationTimingGOOGLE</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPastPresentationTimingGOOGLE {
+///     uint32_t presentID;
+///     uint64_t desiredPresentTime;
+///     uint64_t actualPresentTime;
+///     uint64_t earliestPresentTime;
+///     uint64_t presentMargin;
+/// } VkPastPresentationTimingGOOGLE;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +37,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPastPresentationTimingGOOGLE.html">VkPastPresentationTimingGOOGLE</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPastPresentationTimingGOOGLE.html"><code>VkPastPresentationTimingGOOGLE</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) implements IPointer {
     public static VkPastPresentationTimingGOOGLE allocate(Arena arena) {
-        return new VkPastPresentationTimingGOOGLE(arena.allocate(LAYOUT));
+        VkPastPresentationTimingGOOGLE ret = new VkPastPresentationTimingGOOGLE(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkPastPresentationTimingGOOGLE[] allocate(Arena arena, int count) {
@@ -54,39 +68,6 @@ public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) imp
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("presentID"),
-        ValueLayout.JAVA_LONG.withName("desiredPresentTime"),
-        ValueLayout.JAVA_LONG.withName("actualPresentTime"),
-        ValueLayout.JAVA_LONG.withName("earliestPresentTime"),
-        ValueLayout.JAVA_LONG.withName("presentMargin")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$presentID = PathElement.groupElement("PATH$presentID");
-    public static final PathElement PATH$desiredPresentTime = PathElement.groupElement("PATH$desiredPresentTime");
-    public static final PathElement PATH$actualPresentTime = PathElement.groupElement("PATH$actualPresentTime");
-    public static final PathElement PATH$earliestPresentTime = PathElement.groupElement("PATH$earliestPresentTime");
-    public static final PathElement PATH$presentMargin = PathElement.groupElement("PATH$presentMargin");
-
-    public static final OfInt LAYOUT$presentID = (OfInt) LAYOUT.select(PATH$presentID);
-    public static final OfLong LAYOUT$desiredPresentTime = (OfLong) LAYOUT.select(PATH$desiredPresentTime);
-    public static final OfLong LAYOUT$actualPresentTime = (OfLong) LAYOUT.select(PATH$actualPresentTime);
-    public static final OfLong LAYOUT$earliestPresentTime = (OfLong) LAYOUT.select(PATH$earliestPresentTime);
-    public static final OfLong LAYOUT$presentMargin = (OfLong) LAYOUT.select(PATH$presentMargin);
-
-    public static final long SIZE$presentID = LAYOUT$presentID.byteSize();
-    public static final long SIZE$desiredPresentTime = LAYOUT$desiredPresentTime.byteSize();
-    public static final long SIZE$actualPresentTime = LAYOUT$actualPresentTime.byteSize();
-    public static final long SIZE$earliestPresentTime = LAYOUT$earliestPresentTime.byteSize();
-    public static final long SIZE$presentMargin = LAYOUT$presentMargin.byteSize();
-
-    public static final long OFFSET$presentID = LAYOUT.byteOffset(PATH$presentID);
-    public static final long OFFSET$desiredPresentTime = LAYOUT.byteOffset(PATH$desiredPresentTime);
-    public static final long OFFSET$actualPresentTime = LAYOUT.byteOffset(PATH$actualPresentTime);
-    public static final long OFFSET$earliestPresentTime = LAYOUT.byteOffset(PATH$earliestPresentTime);
-    public static final long OFFSET$presentMargin = LAYOUT.byteOffset(PATH$presentMargin);
 
     public @unsigned int presentID() {
         return segment.get(LAYOUT$presentID, OFFSET$presentID);
@@ -128,4 +109,36 @@ public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$presentMargin, OFFSET$presentMargin, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("presentID"),
+        ValueLayout.JAVA_LONG.withName("desiredPresentTime"),
+        ValueLayout.JAVA_LONG.withName("actualPresentTime"),
+        ValueLayout.JAVA_LONG.withName("earliestPresentTime"),
+        ValueLayout.JAVA_LONG.withName("presentMargin")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$presentID = PathElement.groupElement("PATH$presentID");
+    public static final PathElement PATH$desiredPresentTime = PathElement.groupElement("PATH$desiredPresentTime");
+    public static final PathElement PATH$actualPresentTime = PathElement.groupElement("PATH$actualPresentTime");
+    public static final PathElement PATH$earliestPresentTime = PathElement.groupElement("PATH$earliestPresentTime");
+    public static final PathElement PATH$presentMargin = PathElement.groupElement("PATH$presentMargin");
+
+    public static final OfInt LAYOUT$presentID = (OfInt) LAYOUT.select(PATH$presentID);
+    public static final OfLong LAYOUT$desiredPresentTime = (OfLong) LAYOUT.select(PATH$desiredPresentTime);
+    public static final OfLong LAYOUT$actualPresentTime = (OfLong) LAYOUT.select(PATH$actualPresentTime);
+    public static final OfLong LAYOUT$earliestPresentTime = (OfLong) LAYOUT.select(PATH$earliestPresentTime);
+    public static final OfLong LAYOUT$presentMargin = (OfLong) LAYOUT.select(PATH$presentMargin);
+
+    public static final long SIZE$presentID = LAYOUT$presentID.byteSize();
+    public static final long SIZE$desiredPresentTime = LAYOUT$desiredPresentTime.byteSize();
+    public static final long SIZE$actualPresentTime = LAYOUT$actualPresentTime.byteSize();
+    public static final long SIZE$earliestPresentTime = LAYOUT$earliestPresentTime.byteSize();
+    public static final long SIZE$presentMargin = LAYOUT$presentMargin.byteSize();
+
+    public static final long OFFSET$presentID = LAYOUT.byteOffset(PATH$presentID);
+    public static final long OFFSET$desiredPresentTime = LAYOUT.byteOffset(PATH$desiredPresentTime);
+    public static final long OFFSET$actualPresentTime = LAYOUT.byteOffset(PATH$actualPresentTime);
+    public static final long OFFSET$earliestPresentTime = LAYOUT.byteOffset(PATH$earliestPresentTime);
+    public static final long OFFSET$presentMargin = LAYOUT.byteOffset(PATH$presentMargin);
 }

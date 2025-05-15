@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceSubgroupSizeControlProperties} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSubgroupSizeControlProperties.html"><code>VkPhysicalDeviceSubgroupSizeControlProperties</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceSubgroupSizeControlProperties {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t minSubgroupSize;
+///     uint32_t maxSubgroupSize;
+///     uint32_t maxComputeWorkgroupSubgroups;
+///     VkShaderStageFlags requiredSubgroupSizeStages;
+/// } VkPhysicalDeviceSubgroupSizeControlProperties;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES`
+///
+/// The {@link VkPhysicalDeviceSubgroupSizeControlProperties#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceSubgroupSizeControlProperties#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSubgroupSizeControlProperties.html">VkPhysicalDeviceSubgroupSizeControlProperties</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSubgroupSizeControlProperties.html"><code>VkPhysicalDeviceSubgroupSizeControlProperties</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceSubgroupSizeControlProperties {
-        sType(VkStructureType.PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES);
-    }
-
     public static VkPhysicalDeviceSubgroupSizeControlProperties allocate(Arena arena) {
-        return new VkPhysicalDeviceSubgroupSizeControlProperties(arena.allocate(LAYOUT));
+        VkPhysicalDeviceSubgroupSizeControlProperties ret = new VkPhysicalDeviceSubgroupSizeControlProperties(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES);
+        return ret;
     }
 
     public static VkPhysicalDeviceSubgroupSizeControlProperties[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
         VkPhysicalDeviceSubgroupSizeControlProperties[] ret = new VkPhysicalDeviceSubgroupSizeControlProperties[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceSubgroupSizeControlProperties(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES);
         }
         return ret;
     }
@@ -59,43 +80,9 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("minSubgroupSize"),
-        ValueLayout.JAVA_INT.withName("maxSubgroupSize"),
-        ValueLayout.JAVA_INT.withName("maxComputeWorkgroupSubgroups"),
-        ValueLayout.JAVA_INT.withName("requiredSubgroupSizeStages")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$minSubgroupSize = PathElement.groupElement("PATH$minSubgroupSize");
-    public static final PathElement PATH$maxSubgroupSize = PathElement.groupElement("PATH$maxSubgroupSize");
-    public static final PathElement PATH$maxComputeWorkgroupSubgroups = PathElement.groupElement("PATH$maxComputeWorkgroupSubgroups");
-    public static final PathElement PATH$requiredSubgroupSizeStages = PathElement.groupElement("PATH$requiredSubgroupSizeStages");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$minSubgroupSize = (OfInt) LAYOUT.select(PATH$minSubgroupSize);
-    public static final OfInt LAYOUT$maxSubgroupSize = (OfInt) LAYOUT.select(PATH$maxSubgroupSize);
-    public static final OfInt LAYOUT$maxComputeWorkgroupSubgroups = (OfInt) LAYOUT.select(PATH$maxComputeWorkgroupSubgroups);
-    public static final OfInt LAYOUT$requiredSubgroupSizeStages = (OfInt) LAYOUT.select(PATH$requiredSubgroupSizeStages);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$minSubgroupSize = LAYOUT$minSubgroupSize.byteSize();
-    public static final long SIZE$maxSubgroupSize = LAYOUT$maxSubgroupSize.byteSize();
-    public static final long SIZE$maxComputeWorkgroupSubgroups = LAYOUT$maxComputeWorkgroupSubgroups.byteSize();
-    public static final long SIZE$requiredSubgroupSizeStages = LAYOUT$requiredSubgroupSizeStages.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$minSubgroupSize = LAYOUT.byteOffset(PATH$minSubgroupSize);
-    public static final long OFFSET$maxSubgroupSize = LAYOUT.byteOffset(PATH$maxSubgroupSize);
-    public static final long OFFSET$maxComputeWorkgroupSubgroups = LAYOUT.byteOffset(PATH$maxComputeWorkgroupSubgroups);
-    public static final long OFFSET$requiredSubgroupSizeStages = LAYOUT.byteOffset(PATH$requiredSubgroupSizeStages);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -149,4 +136,41 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
         segment.set(LAYOUT$requiredSubgroupSizeStages, OFFSET$requiredSubgroupSizeStages, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("minSubgroupSize"),
+        ValueLayout.JAVA_INT.withName("maxSubgroupSize"),
+        ValueLayout.JAVA_INT.withName("maxComputeWorkgroupSubgroups"),
+        ValueLayout.JAVA_INT.withName("requiredSubgroupSizeStages")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$minSubgroupSize = PathElement.groupElement("PATH$minSubgroupSize");
+    public static final PathElement PATH$maxSubgroupSize = PathElement.groupElement("PATH$maxSubgroupSize");
+    public static final PathElement PATH$maxComputeWorkgroupSubgroups = PathElement.groupElement("PATH$maxComputeWorkgroupSubgroups");
+    public static final PathElement PATH$requiredSubgroupSizeStages = PathElement.groupElement("PATH$requiredSubgroupSizeStages");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$minSubgroupSize = (OfInt) LAYOUT.select(PATH$minSubgroupSize);
+    public static final OfInt LAYOUT$maxSubgroupSize = (OfInt) LAYOUT.select(PATH$maxSubgroupSize);
+    public static final OfInt LAYOUT$maxComputeWorkgroupSubgroups = (OfInt) LAYOUT.select(PATH$maxComputeWorkgroupSubgroups);
+    public static final OfInt LAYOUT$requiredSubgroupSizeStages = (OfInt) LAYOUT.select(PATH$requiredSubgroupSizeStages);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$minSubgroupSize = LAYOUT$minSubgroupSize.byteSize();
+    public static final long SIZE$maxSubgroupSize = LAYOUT$maxSubgroupSize.byteSize();
+    public static final long SIZE$maxComputeWorkgroupSubgroups = LAYOUT$maxComputeWorkgroupSubgroups.byteSize();
+    public static final long SIZE$requiredSubgroupSizeStages = LAYOUT$requiredSubgroupSizeStages.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$minSubgroupSize = LAYOUT.byteOffset(PATH$minSubgroupSize);
+    public static final long OFFSET$maxSubgroupSize = LAYOUT.byteOffset(PATH$maxSubgroupSize);
+    public static final long OFFSET$maxComputeWorkgroupSubgroups = LAYOUT.byteOffset(PATH$maxComputeWorkgroupSubgroups);
+    public static final long OFFSET$requiredSubgroupSizeStages = LAYOUT.byteOffset(PATH$requiredSubgroupSizeStages);
 }

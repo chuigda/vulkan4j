@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPowerStateEXT.html">VkDisplayPowerStateEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPowerStateEXT.html"><code>VkDisplayPowerStateEXT</code></a>
 public final class VkDisplayPowerStateEXT {
     public static final int OFF = 0x0;
     public static final int SUSPEND = 0x1;

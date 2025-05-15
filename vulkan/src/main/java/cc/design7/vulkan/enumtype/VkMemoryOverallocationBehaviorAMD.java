@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryOverallocationBehaviorAMD.html">VkMemoryOverallocationBehaviorAMD</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryOverallocationBehaviorAMD.html"><code>VkMemoryOverallocationBehaviorAMD</code></a>
 public final class VkMemoryOverallocationBehaviorAMD {
     public static final int DEFAULT = 0x0;
     public static final int ALLOWED = 0x1;

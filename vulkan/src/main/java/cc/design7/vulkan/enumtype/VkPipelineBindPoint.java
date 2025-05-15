@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineBindPoint.html">VkPipelineBindPoint</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineBindPoint.html"><code>VkPipelineBindPoint</code></a>
 public final class VkPipelineBindPoint {
     public static final int GRAPHICS = 0x0;
     public static final int COMPUTE = 0x1;

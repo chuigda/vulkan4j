@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoEncodeAV1SessionParametersCreateInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1SessionParametersCreateInfoKHR.html"><code>VkVideoEncodeAV1SessionParametersCreateInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoEncodeAV1SessionParametersCreateInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     StdVideoAV1SequenceHeader const* pStdSequenceHeader;
+///     StdVideoEncodeAV1DecoderModelInfo const* pStdDecoderModelInfo;
+///     uint32_t stdOperatingPointCount;
+///     StdVideoEncodeAV1OperatingPointInfo const* pStdOperatingPoints;
+/// } VkVideoEncodeAV1SessionParametersCreateInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR`
+///
+/// The {@link VkVideoEncodeAV1SessionParametersCreateInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkVideoEncodeAV1SessionParametersCreateInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1SessionParametersCreateInfoKHR.html">VkVideoEncodeAV1SessionParametersCreateInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1SessionParametersCreateInfoKHR.html"><code>VkVideoEncodeAV1SessionParametersCreateInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkVideoEncodeAV1SessionParametersCreateInfoKHR {
-        sType(VkStructureType.VIDEO_ENCODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR);
-    }
-
     public static VkVideoEncodeAV1SessionParametersCreateInfoKHR allocate(Arena arena) {
-        return new VkVideoEncodeAV1SessionParametersCreateInfoKHR(arena.allocate(LAYOUT));
+        VkVideoEncodeAV1SessionParametersCreateInfoKHR ret = new VkVideoEncodeAV1SessionParametersCreateInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VIDEO_ENCODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR);
+        return ret;
     }
 
     public static VkVideoEncodeAV1SessionParametersCreateInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         VkVideoEncodeAV1SessionParametersCreateInfoKHR[] ret = new VkVideoEncodeAV1SessionParametersCreateInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkVideoEncodeAV1SessionParametersCreateInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VIDEO_ENCODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR);
         }
         return ret;
     }
@@ -55,6 +76,143 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         VkVideoEncodeAV1SessionParametersCreateInfoKHR[] ret = allocate(arena, src.length);
         for (int i = 0; i < src.length; i ++) {
             ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.VIDEO_ENCODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @pointer(comment="StdVideoAV1SequenceHeader*") MemorySegment pStdSequenceHeaderRaw() {
+        return segment.get(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader);
+    }
+
+    public void pStdSequenceHeaderRaw(@pointer(comment="StdVideoAV1SequenceHeader*") MemorySegment value) {
+        segment.set(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader, value);
+    }
+
+    public @Nullable StdVideoAV1SequenceHeader pStdSequenceHeader() {
+        MemorySegment s = pStdSequenceHeaderRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoAV1SequenceHeader(s);
+    }
+
+    public void pStdSequenceHeader(@Nullable StdVideoAV1SequenceHeader value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pStdSequenceHeaderRaw(s);
+    }
+
+    @unsafe public @Nullable StdVideoAV1SequenceHeader[] pStdSequenceHeader(int assumedCount) {
+        MemorySegment s = pStdSequenceHeaderRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * StdVideoAV1SequenceHeader.SIZE);
+        StdVideoAV1SequenceHeader[] ret = new StdVideoAV1SequenceHeader[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new StdVideoAV1SequenceHeader(s.asSlice(i * StdVideoAV1SequenceHeader.SIZE, StdVideoAV1SequenceHeader.SIZE));
+        }
+        return ret;
+    }
+
+    public @pointer(comment="StdVideoEncodeAV1DecoderModelInfo*") MemorySegment pStdDecoderModelInfoRaw() {
+        return segment.get(LAYOUT$pStdDecoderModelInfo, OFFSET$pStdDecoderModelInfo);
+    }
+
+    public void pStdDecoderModelInfoRaw(@pointer(comment="StdVideoEncodeAV1DecoderModelInfo*") MemorySegment value) {
+        segment.set(LAYOUT$pStdDecoderModelInfo, OFFSET$pStdDecoderModelInfo, value);
+    }
+
+    public @Nullable StdVideoEncodeAV1DecoderModelInfo pStdDecoderModelInfo() {
+        MemorySegment s = pStdDecoderModelInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoEncodeAV1DecoderModelInfo(s);
+    }
+
+    public void pStdDecoderModelInfo(@Nullable StdVideoEncodeAV1DecoderModelInfo value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pStdDecoderModelInfoRaw(s);
+    }
+
+    @unsafe public @Nullable StdVideoEncodeAV1DecoderModelInfo[] pStdDecoderModelInfo(int assumedCount) {
+        MemorySegment s = pStdDecoderModelInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * StdVideoEncodeAV1DecoderModelInfo.SIZE);
+        StdVideoEncodeAV1DecoderModelInfo[] ret = new StdVideoEncodeAV1DecoderModelInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new StdVideoEncodeAV1DecoderModelInfo(s.asSlice(i * StdVideoEncodeAV1DecoderModelInfo.SIZE, StdVideoEncodeAV1DecoderModelInfo.SIZE));
+        }
+        return ret;
+    }
+
+    public @unsigned int stdOperatingPointCount() {
+        return segment.get(LAYOUT$stdOperatingPointCount, OFFSET$stdOperatingPointCount);
+    }
+
+    public void stdOperatingPointCount(@unsigned int value) {
+        segment.set(LAYOUT$stdOperatingPointCount, OFFSET$stdOperatingPointCount, value);
+    }
+
+    public @pointer(comment="StdVideoEncodeAV1OperatingPointInfo*") MemorySegment pStdOperatingPointsRaw() {
+        return segment.get(LAYOUT$pStdOperatingPoints, OFFSET$pStdOperatingPoints);
+    }
+
+    public void pStdOperatingPointsRaw(@pointer(comment="StdVideoEncodeAV1OperatingPointInfo*") MemorySegment value) {
+        segment.set(LAYOUT$pStdOperatingPoints, OFFSET$pStdOperatingPoints, value);
+    }
+
+    public @Nullable StdVideoEncodeAV1OperatingPointInfo pStdOperatingPoints() {
+        MemorySegment s = pStdOperatingPointsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoEncodeAV1OperatingPointInfo(s);
+    }
+
+    public void pStdOperatingPoints(@Nullable StdVideoEncodeAV1OperatingPointInfo value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pStdOperatingPointsRaw(s);
+    }
+
+    @unsafe public @Nullable StdVideoEncodeAV1OperatingPointInfo[] pStdOperatingPoints(int assumedCount) {
+        MemorySegment s = pStdOperatingPointsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * StdVideoEncodeAV1OperatingPointInfo.SIZE);
+        StdVideoEncodeAV1OperatingPointInfo[] ret = new StdVideoEncodeAV1OperatingPointInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new StdVideoEncodeAV1OperatingPointInfo(s.asSlice(i * StdVideoEncodeAV1OperatingPointInfo.SIZE, StdVideoEncodeAV1OperatingPointInfo.SIZE));
         }
         return ret;
     }
@@ -96,138 +254,4 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
     public static final long OFFSET$pStdDecoderModelInfo = LAYOUT.byteOffset(PATH$pStdDecoderModelInfo);
     public static final long OFFSET$stdOperatingPointCount = LAYOUT.byteOffset(PATH$stdOperatingPointCount);
     public static final long OFFSET$pStdOperatingPoints = LAYOUT.byteOffset(PATH$pStdOperatingPoints);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @pointer(comment="StdVideoAV1SequenceHeader*") MemorySegment pStdSequenceHeaderRaw() {
-        return segment.get(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader);
-    }
-
-    public void pStdSequenceHeaderRaw(@pointer(comment="StdVideoAV1SequenceHeader*") MemorySegment value) {
-        segment.set(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader, value);
-    }
-
-    public @Nullable StdVideoAV1SequenceHeader pStdSequenceHeader() {
-        MemorySegment s = pStdSequenceHeaderRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new StdVideoAV1SequenceHeader(s);
-    }
-
-    public void pStdSequenceHeader(@Nullable StdVideoAV1SequenceHeader value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pStdSequenceHeaderRaw(s);
-    }
-
-    @unsafe public @Nullable StdVideoAV1SequenceHeader[] pStdSequenceHeader(int assumedCount) {
-        MemorySegment s = pStdSequenceHeaderRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * StdVideoAV1SequenceHeader.SIZE);
-        StdVideoAV1SequenceHeader[] ret = new StdVideoAV1SequenceHeader[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1SequenceHeader(s.asSlice(i * StdVideoAV1SequenceHeader.SIZE, StdVideoAV1SequenceHeader.SIZE));
-        }
-        return ret;
-    }
-
-    public @pointer(comment="StdVideoEncodeAV1DecoderModelInfo*") MemorySegment pStdDecoderModelInfoRaw() {
-        return segment.get(LAYOUT$pStdDecoderModelInfo, OFFSET$pStdDecoderModelInfo);
-    }
-
-    public void pStdDecoderModelInfoRaw(@pointer(comment="StdVideoEncodeAV1DecoderModelInfo*") MemorySegment value) {
-        segment.set(LAYOUT$pStdDecoderModelInfo, OFFSET$pStdDecoderModelInfo, value);
-    }
-
-    public @Nullable StdVideoEncodeAV1DecoderModelInfo pStdDecoderModelInfo() {
-        MemorySegment s = pStdDecoderModelInfoRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new StdVideoEncodeAV1DecoderModelInfo(s);
-    }
-
-    public void pStdDecoderModelInfo(@Nullable StdVideoEncodeAV1DecoderModelInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pStdDecoderModelInfoRaw(s);
-    }
-
-    @unsafe public @Nullable StdVideoEncodeAV1DecoderModelInfo[] pStdDecoderModelInfo(int assumedCount) {
-        MemorySegment s = pStdDecoderModelInfoRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * StdVideoEncodeAV1DecoderModelInfo.SIZE);
-        StdVideoEncodeAV1DecoderModelInfo[] ret = new StdVideoEncodeAV1DecoderModelInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeAV1DecoderModelInfo(s.asSlice(i * StdVideoEncodeAV1DecoderModelInfo.SIZE, StdVideoEncodeAV1DecoderModelInfo.SIZE));
-        }
-        return ret;
-    }
-
-    public @unsigned int stdOperatingPointCount() {
-        return segment.get(LAYOUT$stdOperatingPointCount, OFFSET$stdOperatingPointCount);
-    }
-
-    public void stdOperatingPointCount(@unsigned int value) {
-        segment.set(LAYOUT$stdOperatingPointCount, OFFSET$stdOperatingPointCount, value);
-    }
-
-    public @pointer(comment="StdVideoEncodeAV1OperatingPointInfo*") MemorySegment pStdOperatingPointsRaw() {
-        return segment.get(LAYOUT$pStdOperatingPoints, OFFSET$pStdOperatingPoints);
-    }
-
-    public void pStdOperatingPointsRaw(@pointer(comment="StdVideoEncodeAV1OperatingPointInfo*") MemorySegment value) {
-        segment.set(LAYOUT$pStdOperatingPoints, OFFSET$pStdOperatingPoints, value);
-    }
-
-    public @Nullable StdVideoEncodeAV1OperatingPointInfo pStdOperatingPoints() {
-        MemorySegment s = pStdOperatingPointsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-        return new StdVideoEncodeAV1OperatingPointInfo(s);
-    }
-
-    public void pStdOperatingPoints(@Nullable StdVideoEncodeAV1OperatingPointInfo value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pStdOperatingPointsRaw(s);
-    }
-
-    @unsafe public @Nullable StdVideoEncodeAV1OperatingPointInfo[] pStdOperatingPoints(int assumedCount) {
-        MemorySegment s = pStdOperatingPointsRaw();
-        if (s.address() == 0) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * StdVideoEncodeAV1OperatingPointInfo.SIZE);
-        StdVideoEncodeAV1OperatingPointInfo[] ret = new StdVideoEncodeAV1OperatingPointInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeAV1OperatingPointInfo(s.asSlice(i * StdVideoEncodeAV1OperatingPointInfo.SIZE, StdVideoEncodeAV1OperatingPointInfo.SIZE));
-        }
-        return ret;
-    }
-
 }

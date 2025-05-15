@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryUnmapFlags.html">VkMemoryUnmapFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryUnmapFlags.html"><code>VkMemoryUnmapFlags</code></a>
 public final class VkMemoryUnmapFlags {
     public static final int RESERVE_EXT = 0x1;
 

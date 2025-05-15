@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDriverId.html">VkDriverId</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDriverId.html"><code>VkDriverId</code></a>
 public final class VkDriverId {
     public static final int AMD_PROPRIETARY = 0x1;
     public static final int AMD_OPEN_SOURCE = 0x2;

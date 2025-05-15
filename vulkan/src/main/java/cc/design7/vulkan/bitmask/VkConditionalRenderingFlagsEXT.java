@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkConditionalRenderingFlagsEXT.html">VkConditionalRenderingFlagsEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkConditionalRenderingFlagsEXT.html"><code>VkConditionalRenderingFlagsEXT</code></a>
 public final class VkConditionalRenderingFlagsEXT {
     public static final int INVERTED = 0x1;
 

@@ -14,8 +14,35 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkOpticalFlowSessionCreateInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowSessionCreateInfoNV.html"><code>VkOpticalFlowSessionCreateInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkOpticalFlowSessionCreateInfoNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t width;
+///     uint32_t height;
+///     VkFormat imageFormat;
+///     VkFormat flowVectorFormat;
+///     VkFormat costFormat;
+///     VkOpticalFlowGridSizeFlagsNV outputGridSize;
+///     VkOpticalFlowGridSizeFlagsNV hintGridSize;
+///     VkOpticalFlowPerformanceLevelNV performanceLevel;
+///     VkOpticalFlowSessionCreateFlagsNV flags;
+/// } VkOpticalFlowSessionCreateInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_OPTICAL_FLOW_SESSION_CREATE_INFO_NV`
+///
+/// The {@link VkOpticalFlowSessionCreateInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkOpticalFlowSessionCreateInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +51,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowSessionCreateInfoNV.html">VkOpticalFlowSessionCreateInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowSessionCreateInfoNV.html"><code>VkOpticalFlowSessionCreateInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkOpticalFlowSessionCreateInfoNV {
-        sType(VkStructureType.OPTICAL_FLOW_SESSION_CREATE_INFO_NV);
-    }
-
     public static VkOpticalFlowSessionCreateInfoNV allocate(Arena arena) {
-        return new VkOpticalFlowSessionCreateInfoNV(arena.allocate(LAYOUT));
+        VkOpticalFlowSessionCreateInfoNV ret = new VkOpticalFlowSessionCreateInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.OPTICAL_FLOW_SESSION_CREATE_INFO_NV);
+        return ret;
     }
 
     public static VkOpticalFlowSessionCreateInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +66,7 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
         VkOpticalFlowSessionCreateInfoNV[] ret = new VkOpticalFlowSessionCreateInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkOpticalFlowSessionCreateInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.OPTICAL_FLOW_SESSION_CREATE_INFO_NV);
         }
         return ret;
     }
@@ -59,68 +85,9 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("width"),
-        ValueLayout.JAVA_INT.withName("height"),
-        ValueLayout.JAVA_INT.withName("imageFormat"),
-        ValueLayout.JAVA_INT.withName("flowVectorFormat"),
-        ValueLayout.JAVA_INT.withName("costFormat"),
-        ValueLayout.JAVA_INT.withName("outputGridSize"),
-        ValueLayout.JAVA_INT.withName("hintGridSize"),
-        ValueLayout.JAVA_INT.withName("performanceLevel"),
-        ValueLayout.JAVA_INT.withName("flags")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$width = PathElement.groupElement("PATH$width");
-    public static final PathElement PATH$height = PathElement.groupElement("PATH$height");
-    public static final PathElement PATH$imageFormat = PathElement.groupElement("PATH$imageFormat");
-    public static final PathElement PATH$flowVectorFormat = PathElement.groupElement("PATH$flowVectorFormat");
-    public static final PathElement PATH$costFormat = PathElement.groupElement("PATH$costFormat");
-    public static final PathElement PATH$outputGridSize = PathElement.groupElement("PATH$outputGridSize");
-    public static final PathElement PATH$hintGridSize = PathElement.groupElement("PATH$hintGridSize");
-    public static final PathElement PATH$performanceLevel = PathElement.groupElement("PATH$performanceLevel");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$width = (OfInt) LAYOUT.select(PATH$width);
-    public static final OfInt LAYOUT$height = (OfInt) LAYOUT.select(PATH$height);
-    public static final OfInt LAYOUT$imageFormat = (OfInt) LAYOUT.select(PATH$imageFormat);
-    public static final OfInt LAYOUT$flowVectorFormat = (OfInt) LAYOUT.select(PATH$flowVectorFormat);
-    public static final OfInt LAYOUT$costFormat = (OfInt) LAYOUT.select(PATH$costFormat);
-    public static final OfInt LAYOUT$outputGridSize = (OfInt) LAYOUT.select(PATH$outputGridSize);
-    public static final OfInt LAYOUT$hintGridSize = (OfInt) LAYOUT.select(PATH$hintGridSize);
-    public static final OfInt LAYOUT$performanceLevel = (OfInt) LAYOUT.select(PATH$performanceLevel);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$width = LAYOUT$width.byteSize();
-    public static final long SIZE$height = LAYOUT$height.byteSize();
-    public static final long SIZE$imageFormat = LAYOUT$imageFormat.byteSize();
-    public static final long SIZE$flowVectorFormat = LAYOUT$flowVectorFormat.byteSize();
-    public static final long SIZE$costFormat = LAYOUT$costFormat.byteSize();
-    public static final long SIZE$outputGridSize = LAYOUT$outputGridSize.byteSize();
-    public static final long SIZE$hintGridSize = LAYOUT$hintGridSize.byteSize();
-    public static final long SIZE$performanceLevel = LAYOUT$performanceLevel.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$width = LAYOUT.byteOffset(PATH$width);
-    public static final long OFFSET$height = LAYOUT.byteOffset(PATH$height);
-    public static final long OFFSET$imageFormat = LAYOUT.byteOffset(PATH$imageFormat);
-    public static final long OFFSET$flowVectorFormat = LAYOUT.byteOffset(PATH$flowVectorFormat);
-    public static final long OFFSET$costFormat = LAYOUT.byteOffset(PATH$costFormat);
-    public static final long OFFSET$outputGridSize = LAYOUT.byteOffset(PATH$outputGridSize);
-    public static final long OFFSET$hintGridSize = LAYOUT.byteOffset(PATH$hintGridSize);
-    public static final long OFFSET$performanceLevel = LAYOUT.byteOffset(PATH$performanceLevel);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public void autoInit() {
+        sType(VkStructureType.OPTICAL_FLOW_SESSION_CREATE_INFO_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -214,4 +181,66 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("width"),
+        ValueLayout.JAVA_INT.withName("height"),
+        ValueLayout.JAVA_INT.withName("imageFormat"),
+        ValueLayout.JAVA_INT.withName("flowVectorFormat"),
+        ValueLayout.JAVA_INT.withName("costFormat"),
+        ValueLayout.JAVA_INT.withName("outputGridSize"),
+        ValueLayout.JAVA_INT.withName("hintGridSize"),
+        ValueLayout.JAVA_INT.withName("performanceLevel"),
+        ValueLayout.JAVA_INT.withName("flags")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$width = PathElement.groupElement("PATH$width");
+    public static final PathElement PATH$height = PathElement.groupElement("PATH$height");
+    public static final PathElement PATH$imageFormat = PathElement.groupElement("PATH$imageFormat");
+    public static final PathElement PATH$flowVectorFormat = PathElement.groupElement("PATH$flowVectorFormat");
+    public static final PathElement PATH$costFormat = PathElement.groupElement("PATH$costFormat");
+    public static final PathElement PATH$outputGridSize = PathElement.groupElement("PATH$outputGridSize");
+    public static final PathElement PATH$hintGridSize = PathElement.groupElement("PATH$hintGridSize");
+    public static final PathElement PATH$performanceLevel = PathElement.groupElement("PATH$performanceLevel");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$width = (OfInt) LAYOUT.select(PATH$width);
+    public static final OfInt LAYOUT$height = (OfInt) LAYOUT.select(PATH$height);
+    public static final OfInt LAYOUT$imageFormat = (OfInt) LAYOUT.select(PATH$imageFormat);
+    public static final OfInt LAYOUT$flowVectorFormat = (OfInt) LAYOUT.select(PATH$flowVectorFormat);
+    public static final OfInt LAYOUT$costFormat = (OfInt) LAYOUT.select(PATH$costFormat);
+    public static final OfInt LAYOUT$outputGridSize = (OfInt) LAYOUT.select(PATH$outputGridSize);
+    public static final OfInt LAYOUT$hintGridSize = (OfInt) LAYOUT.select(PATH$hintGridSize);
+    public static final OfInt LAYOUT$performanceLevel = (OfInt) LAYOUT.select(PATH$performanceLevel);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$width = LAYOUT$width.byteSize();
+    public static final long SIZE$height = LAYOUT$height.byteSize();
+    public static final long SIZE$imageFormat = LAYOUT$imageFormat.byteSize();
+    public static final long SIZE$flowVectorFormat = LAYOUT$flowVectorFormat.byteSize();
+    public static final long SIZE$costFormat = LAYOUT$costFormat.byteSize();
+    public static final long SIZE$outputGridSize = LAYOUT$outputGridSize.byteSize();
+    public static final long SIZE$hintGridSize = LAYOUT$hintGridSize.byteSize();
+    public static final long SIZE$performanceLevel = LAYOUT$performanceLevel.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$width = LAYOUT.byteOffset(PATH$width);
+    public static final long OFFSET$height = LAYOUT.byteOffset(PATH$height);
+    public static final long OFFSET$imageFormat = LAYOUT.byteOffset(PATH$imageFormat);
+    public static final long OFFSET$flowVectorFormat = LAYOUT.byteOffset(PATH$flowVectorFormat);
+    public static final long OFFSET$costFormat = LAYOUT.byteOffset(PATH$costFormat);
+    public static final long OFFSET$outputGridSize = LAYOUT.byteOffset(PATH$outputGridSize);
+    public static final long OFFSET$hintGridSize = LAYOUT.byteOffset(PATH$hintGridSize);
+    public static final long OFFSET$performanceLevel = LAYOUT.byteOffset(PATH$performanceLevel);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
 }

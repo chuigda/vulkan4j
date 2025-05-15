@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageViewType.html">VkImageViewType</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageViewType.html"><code>VkImageViewType</code></a>
 public final class VkImageViewType {
     public static final int _1D = 0x0;
     public static final int _2D = 0x1;

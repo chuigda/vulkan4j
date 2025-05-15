@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkDepthClampRangeEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDepthClampRangeEXT.html"><code>VkDepthClampRangeEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkDepthClampRangeEXT {
+///     float minDepthClamp;
+///     float maxDepthClamp;
+/// } VkDepthClampRangeEXT;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDepthClampRangeEXT.html">VkDepthClampRangeEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDepthClampRangeEXT.html"><code>VkDepthClampRangeEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkDepthClampRangeEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkDepthClampRangeEXT allocate(Arena arena) {
-        return new VkDepthClampRangeEXT(arena.allocate(LAYOUT));
+        VkDepthClampRangeEXT ret = new VkDepthClampRangeEXT(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkDepthClampRangeEXT[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkDepthClampRangeEXT(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
+    public float minDepthClamp() {
+        return segment.get(LAYOUT$minDepthClamp, OFFSET$minDepthClamp);
+    }
+
+    public void minDepthClamp(float value) {
+        segment.set(LAYOUT$minDepthClamp, OFFSET$minDepthClamp, value);
+    }
+
+    public float maxDepthClamp() {
+        return segment.get(LAYOUT$maxDepthClamp, OFFSET$maxDepthClamp);
+    }
+
+    public void maxDepthClamp(float value) {
+        segment.set(LAYOUT$maxDepthClamp, OFFSET$maxDepthClamp, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_FLOAT.withName("minDepthClamp"),
         ValueLayout.JAVA_FLOAT.withName("maxDepthClamp")
@@ -72,21 +99,4 @@ public record VkDepthClampRangeEXT(@NotNull MemorySegment segment) implements IP
 
     public static final long OFFSET$minDepthClamp = LAYOUT.byteOffset(PATH$minDepthClamp);
     public static final long OFFSET$maxDepthClamp = LAYOUT.byteOffset(PATH$maxDepthClamp);
-
-    public float minDepthClamp() {
-        return segment.get(LAYOUT$minDepthClamp, OFFSET$minDepthClamp);
-    }
-
-    public void minDepthClamp(float value) {
-        segment.set(LAYOUT$minDepthClamp, OFFSET$minDepthClamp, value);
-    }
-
-    public float maxDepthClamp() {
-        return segment.get(LAYOUT$maxDepthClamp, OFFSET$maxDepthClamp);
-    }
-
-    public void maxDepthClamp(float value) {
-        segment.set(LAYOUT$maxDepthClamp, OFFSET$maxDepthClamp, value);
-    }
-
 }

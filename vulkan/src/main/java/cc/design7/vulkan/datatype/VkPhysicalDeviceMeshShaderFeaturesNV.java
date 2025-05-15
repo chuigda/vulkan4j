@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceMeshShaderFeaturesNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMeshShaderFeaturesNV.html"><code>VkPhysicalDeviceMeshShaderFeaturesNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceMeshShaderFeaturesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 taskShader;
+///     VkBool32 meshShader;
+/// } VkPhysicalDeviceMeshShaderFeaturesNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV`
+///
+/// The {@link VkPhysicalDeviceMeshShaderFeaturesNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceMeshShaderFeaturesNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMeshShaderFeaturesNV.html">VkPhysicalDeviceMeshShaderFeaturesNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMeshShaderFeaturesNV.html"><code>VkPhysicalDeviceMeshShaderFeaturesNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceMeshShaderFeaturesNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceMeshShaderFeaturesNV {
-        sType(VkStructureType.PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV);
-    }
-
     public static VkPhysicalDeviceMeshShaderFeaturesNV allocate(Arena arena) {
-        return new VkPhysicalDeviceMeshShaderFeaturesNV(arena.allocate(LAYOUT));
+        VkPhysicalDeviceMeshShaderFeaturesNV ret = new VkPhysicalDeviceMeshShaderFeaturesNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV);
+        return ret;
     }
 
     public static VkPhysicalDeviceMeshShaderFeaturesNV[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkPhysicalDeviceMeshShaderFeaturesNV(@NotNull MemorySegment segmen
         VkPhysicalDeviceMeshShaderFeaturesNV[] ret = new VkPhysicalDeviceMeshShaderFeaturesNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceMeshShaderFeaturesNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkPhysicalDeviceMeshShaderFeaturesNV(@NotNull MemorySegment segmen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("taskShader"),
-        ValueLayout.JAVA_INT.withName("meshShader")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$taskShader = PathElement.groupElement("PATH$taskShader");
-    public static final PathElement PATH$meshShader = PathElement.groupElement("PATH$meshShader");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$taskShader = (OfInt) LAYOUT.select(PATH$taskShader);
-    public static final OfInt LAYOUT$meshShader = (OfInt) LAYOUT.select(PATH$meshShader);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$taskShader = LAYOUT$taskShader.byteSize();
-    public static final long SIZE$meshShader = LAYOUT$meshShader.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$taskShader = LAYOUT.byteOffset(PATH$taskShader);
-    public static final long OFFSET$meshShader = LAYOUT.byteOffset(PATH$meshShader);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkPhysicalDeviceMeshShaderFeaturesNV(@NotNull MemorySegment segmen
         segment.set(LAYOUT$meshShader, OFFSET$meshShader, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("taskShader"),
+        ValueLayout.JAVA_INT.withName("meshShader")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$taskShader = PathElement.groupElement("PATH$taskShader");
+    public static final PathElement PATH$meshShader = PathElement.groupElement("PATH$meshShader");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$taskShader = (OfInt) LAYOUT.select(PATH$taskShader);
+    public static final OfInt LAYOUT$meshShader = (OfInt) LAYOUT.select(PATH$meshShader);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$taskShader = LAYOUT$taskShader.byteSize();
+    public static final long SIZE$meshShader = LAYOUT$meshShader.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$taskShader = LAYOUT.byteOffset(PATH$taskShader);
+    public static final long OFFSET$meshShader = LAYOUT.byteOffset(PATH$meshShader);
 }

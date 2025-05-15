@@ -14,8 +14,33 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceCooperativeMatrix2FeaturesNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceCooperativeMatrix2FeaturesNV.html"><code>VkPhysicalDeviceCooperativeMatrix2FeaturesNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceCooperativeMatrix2FeaturesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 cooperativeMatrixWorkgroupScope;
+///     VkBool32 cooperativeMatrixFlexibleDimensions;
+///     VkBool32 cooperativeMatrixReductions;
+///     VkBool32 cooperativeMatrixConversions;
+///     VkBool32 cooperativeMatrixPerElementOperations;
+///     VkBool32 cooperativeMatrixTensorAddressing;
+///     VkBool32 cooperativeMatrixBlockLoads;
+/// } VkPhysicalDeviceCooperativeMatrix2FeaturesNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV`
+///
+/// The {@link VkPhysicalDeviceCooperativeMatrix2FeaturesNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceCooperativeMatrix2FeaturesNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +49,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceCooperativeMatrix2FeaturesNV.html">VkPhysicalDeviceCooperativeMatrix2FeaturesNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceCooperativeMatrix2FeaturesNV.html"><code>VkPhysicalDeviceCooperativeMatrix2FeaturesNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceCooperativeMatrix2FeaturesNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceCooperativeMatrix2FeaturesNV {
-        sType(VkStructureType.PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV);
-    }
-
     public static VkPhysicalDeviceCooperativeMatrix2FeaturesNV allocate(Arena arena) {
-        return new VkPhysicalDeviceCooperativeMatrix2FeaturesNV(arena.allocate(LAYOUT));
+        VkPhysicalDeviceCooperativeMatrix2FeaturesNV ret = new VkPhysicalDeviceCooperativeMatrix2FeaturesNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV);
+        return ret;
     }
 
     public static VkPhysicalDeviceCooperativeMatrix2FeaturesNV[] allocate(Arena arena, int count) {
@@ -41,6 +64,7 @@ public record VkPhysicalDeviceCooperativeMatrix2FeaturesNV(@NotNull MemorySegmen
         VkPhysicalDeviceCooperativeMatrix2FeaturesNV[] ret = new VkPhysicalDeviceCooperativeMatrix2FeaturesNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceCooperativeMatrix2FeaturesNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV);
         }
         return ret;
     }
@@ -59,58 +83,9 @@ public record VkPhysicalDeviceCooperativeMatrix2FeaturesNV(@NotNull MemorySegmen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("cooperativeMatrixWorkgroupScope"),
-        ValueLayout.JAVA_INT.withName("cooperativeMatrixFlexibleDimensions"),
-        ValueLayout.JAVA_INT.withName("cooperativeMatrixReductions"),
-        ValueLayout.JAVA_INT.withName("cooperativeMatrixConversions"),
-        ValueLayout.JAVA_INT.withName("cooperativeMatrixPerElementOperations"),
-        ValueLayout.JAVA_INT.withName("cooperativeMatrixTensorAddressing"),
-        ValueLayout.JAVA_INT.withName("cooperativeMatrixBlockLoads")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$cooperativeMatrixWorkgroupScope = PathElement.groupElement("PATH$cooperativeMatrixWorkgroupScope");
-    public static final PathElement PATH$cooperativeMatrixFlexibleDimensions = PathElement.groupElement("PATH$cooperativeMatrixFlexibleDimensions");
-    public static final PathElement PATH$cooperativeMatrixReductions = PathElement.groupElement("PATH$cooperativeMatrixReductions");
-    public static final PathElement PATH$cooperativeMatrixConversions = PathElement.groupElement("PATH$cooperativeMatrixConversions");
-    public static final PathElement PATH$cooperativeMatrixPerElementOperations = PathElement.groupElement("PATH$cooperativeMatrixPerElementOperations");
-    public static final PathElement PATH$cooperativeMatrixTensorAddressing = PathElement.groupElement("PATH$cooperativeMatrixTensorAddressing");
-    public static final PathElement PATH$cooperativeMatrixBlockLoads = PathElement.groupElement("PATH$cooperativeMatrixBlockLoads");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$cooperativeMatrixWorkgroupScope = (OfInt) LAYOUT.select(PATH$cooperativeMatrixWorkgroupScope);
-    public static final OfInt LAYOUT$cooperativeMatrixFlexibleDimensions = (OfInt) LAYOUT.select(PATH$cooperativeMatrixFlexibleDimensions);
-    public static final OfInt LAYOUT$cooperativeMatrixReductions = (OfInt) LAYOUT.select(PATH$cooperativeMatrixReductions);
-    public static final OfInt LAYOUT$cooperativeMatrixConversions = (OfInt) LAYOUT.select(PATH$cooperativeMatrixConversions);
-    public static final OfInt LAYOUT$cooperativeMatrixPerElementOperations = (OfInt) LAYOUT.select(PATH$cooperativeMatrixPerElementOperations);
-    public static final OfInt LAYOUT$cooperativeMatrixTensorAddressing = (OfInt) LAYOUT.select(PATH$cooperativeMatrixTensorAddressing);
-    public static final OfInt LAYOUT$cooperativeMatrixBlockLoads = (OfInt) LAYOUT.select(PATH$cooperativeMatrixBlockLoads);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$cooperativeMatrixWorkgroupScope = LAYOUT$cooperativeMatrixWorkgroupScope.byteSize();
-    public static final long SIZE$cooperativeMatrixFlexibleDimensions = LAYOUT$cooperativeMatrixFlexibleDimensions.byteSize();
-    public static final long SIZE$cooperativeMatrixReductions = LAYOUT$cooperativeMatrixReductions.byteSize();
-    public static final long SIZE$cooperativeMatrixConversions = LAYOUT$cooperativeMatrixConversions.byteSize();
-    public static final long SIZE$cooperativeMatrixPerElementOperations = LAYOUT$cooperativeMatrixPerElementOperations.byteSize();
-    public static final long SIZE$cooperativeMatrixTensorAddressing = LAYOUT$cooperativeMatrixTensorAddressing.byteSize();
-    public static final long SIZE$cooperativeMatrixBlockLoads = LAYOUT$cooperativeMatrixBlockLoads.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$cooperativeMatrixWorkgroupScope = LAYOUT.byteOffset(PATH$cooperativeMatrixWorkgroupScope);
-    public static final long OFFSET$cooperativeMatrixFlexibleDimensions = LAYOUT.byteOffset(PATH$cooperativeMatrixFlexibleDimensions);
-    public static final long OFFSET$cooperativeMatrixReductions = LAYOUT.byteOffset(PATH$cooperativeMatrixReductions);
-    public static final long OFFSET$cooperativeMatrixConversions = LAYOUT.byteOffset(PATH$cooperativeMatrixConversions);
-    public static final long OFFSET$cooperativeMatrixPerElementOperations = LAYOUT.byteOffset(PATH$cooperativeMatrixPerElementOperations);
-    public static final long OFFSET$cooperativeMatrixTensorAddressing = LAYOUT.byteOffset(PATH$cooperativeMatrixTensorAddressing);
-    public static final long OFFSET$cooperativeMatrixBlockLoads = LAYOUT.byteOffset(PATH$cooperativeMatrixBlockLoads);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -188,4 +163,56 @@ public record VkPhysicalDeviceCooperativeMatrix2FeaturesNV(@NotNull MemorySegmen
         segment.set(LAYOUT$cooperativeMatrixBlockLoads, OFFSET$cooperativeMatrixBlockLoads, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("cooperativeMatrixWorkgroupScope"),
+        ValueLayout.JAVA_INT.withName("cooperativeMatrixFlexibleDimensions"),
+        ValueLayout.JAVA_INT.withName("cooperativeMatrixReductions"),
+        ValueLayout.JAVA_INT.withName("cooperativeMatrixConversions"),
+        ValueLayout.JAVA_INT.withName("cooperativeMatrixPerElementOperations"),
+        ValueLayout.JAVA_INT.withName("cooperativeMatrixTensorAddressing"),
+        ValueLayout.JAVA_INT.withName("cooperativeMatrixBlockLoads")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$cooperativeMatrixWorkgroupScope = PathElement.groupElement("PATH$cooperativeMatrixWorkgroupScope");
+    public static final PathElement PATH$cooperativeMatrixFlexibleDimensions = PathElement.groupElement("PATH$cooperativeMatrixFlexibleDimensions");
+    public static final PathElement PATH$cooperativeMatrixReductions = PathElement.groupElement("PATH$cooperativeMatrixReductions");
+    public static final PathElement PATH$cooperativeMatrixConversions = PathElement.groupElement("PATH$cooperativeMatrixConversions");
+    public static final PathElement PATH$cooperativeMatrixPerElementOperations = PathElement.groupElement("PATH$cooperativeMatrixPerElementOperations");
+    public static final PathElement PATH$cooperativeMatrixTensorAddressing = PathElement.groupElement("PATH$cooperativeMatrixTensorAddressing");
+    public static final PathElement PATH$cooperativeMatrixBlockLoads = PathElement.groupElement("PATH$cooperativeMatrixBlockLoads");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$cooperativeMatrixWorkgroupScope = (OfInt) LAYOUT.select(PATH$cooperativeMatrixWorkgroupScope);
+    public static final OfInt LAYOUT$cooperativeMatrixFlexibleDimensions = (OfInt) LAYOUT.select(PATH$cooperativeMatrixFlexibleDimensions);
+    public static final OfInt LAYOUT$cooperativeMatrixReductions = (OfInt) LAYOUT.select(PATH$cooperativeMatrixReductions);
+    public static final OfInt LAYOUT$cooperativeMatrixConversions = (OfInt) LAYOUT.select(PATH$cooperativeMatrixConversions);
+    public static final OfInt LAYOUT$cooperativeMatrixPerElementOperations = (OfInt) LAYOUT.select(PATH$cooperativeMatrixPerElementOperations);
+    public static final OfInt LAYOUT$cooperativeMatrixTensorAddressing = (OfInt) LAYOUT.select(PATH$cooperativeMatrixTensorAddressing);
+    public static final OfInt LAYOUT$cooperativeMatrixBlockLoads = (OfInt) LAYOUT.select(PATH$cooperativeMatrixBlockLoads);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$cooperativeMatrixWorkgroupScope = LAYOUT$cooperativeMatrixWorkgroupScope.byteSize();
+    public static final long SIZE$cooperativeMatrixFlexibleDimensions = LAYOUT$cooperativeMatrixFlexibleDimensions.byteSize();
+    public static final long SIZE$cooperativeMatrixReductions = LAYOUT$cooperativeMatrixReductions.byteSize();
+    public static final long SIZE$cooperativeMatrixConversions = LAYOUT$cooperativeMatrixConversions.byteSize();
+    public static final long SIZE$cooperativeMatrixPerElementOperations = LAYOUT$cooperativeMatrixPerElementOperations.byteSize();
+    public static final long SIZE$cooperativeMatrixTensorAddressing = LAYOUT$cooperativeMatrixTensorAddressing.byteSize();
+    public static final long SIZE$cooperativeMatrixBlockLoads = LAYOUT$cooperativeMatrixBlockLoads.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$cooperativeMatrixWorkgroupScope = LAYOUT.byteOffset(PATH$cooperativeMatrixWorkgroupScope);
+    public static final long OFFSET$cooperativeMatrixFlexibleDimensions = LAYOUT.byteOffset(PATH$cooperativeMatrixFlexibleDimensions);
+    public static final long OFFSET$cooperativeMatrixReductions = LAYOUT.byteOffset(PATH$cooperativeMatrixReductions);
+    public static final long OFFSET$cooperativeMatrixConversions = LAYOUT.byteOffset(PATH$cooperativeMatrixConversions);
+    public static final long OFFSET$cooperativeMatrixPerElementOperations = LAYOUT.byteOffset(PATH$cooperativeMatrixPerElementOperations);
+    public static final long OFFSET$cooperativeMatrixTensorAddressing = LAYOUT.byteOffset(PATH$cooperativeMatrixTensorAddressing);
+    public static final long OFFSET$cooperativeMatrixBlockLoads = LAYOUT.byteOffset(PATH$cooperativeMatrixBlockLoads);
 }

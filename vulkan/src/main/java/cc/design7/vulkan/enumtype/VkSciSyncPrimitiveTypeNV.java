@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSciSyncPrimitiveTypeNV.html">VkSciSyncPrimitiveTypeNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSciSyncPrimitiveTypeNV.html"><code>VkSciSyncPrimitiveTypeNV</code></a>
 public final class VkSciSyncPrimitiveTypeNV {
     public static final int FENCE = 0x0;
     public static final int SEMAPHORE = 0x1;

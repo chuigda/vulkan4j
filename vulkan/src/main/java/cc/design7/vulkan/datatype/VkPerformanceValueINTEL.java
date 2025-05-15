@@ -14,8 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPerformanceValueINTEL} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceValueINTEL.html"><code>VkPerformanceValueINTEL</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPerformanceValueINTEL {
+///     VkPerformanceValueTypeINTEL type;
+///     VkPerformanceValueDataINTEL data;
+/// } VkPerformanceValueINTEL;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +34,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceValueINTEL.html">VkPerformanceValueINTEL</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceValueINTEL.html"><code>VkPerformanceValueINTEL</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPerformanceValueINTEL(@NotNull MemorySegment segment) implements IPointer {
     public static VkPerformanceValueINTEL allocate(Arena arena) {
-        return new VkPerformanceValueINTEL(arena.allocate(LAYOUT));
+        VkPerformanceValueINTEL ret = new VkPerformanceValueINTEL(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkPerformanceValueINTEL[] allocate(Arena arena, int count) {
@@ -55,6 +66,22 @@ public record VkPerformanceValueINTEL(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public @enumtype(VkPerformanceValueTypeINTEL.class) int type() {
+        return segment.get(LAYOUT$type, OFFSET$type);
+    }
+
+    public void type(@enumtype(VkPerformanceValueTypeINTEL.class) int value) {
+        segment.set(LAYOUT$type, OFFSET$type, value);
+    }
+
+    public VkPerformanceValueDataINTEL data() {
+        return new VkPerformanceValueDataINTEL(segment.asSlice(OFFSET$data, LAYOUT$data));
+    }
+
+    public void data(VkPerformanceValueDataINTEL value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("type"),
         VkPerformanceValueDataINTEL.LAYOUT.withName("data")
@@ -72,21 +99,4 @@ public record VkPerformanceValueINTEL(@NotNull MemorySegment segment) implements
 
     public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
     public static final long OFFSET$data = LAYOUT.byteOffset(PATH$data);
-
-    public @enumtype(VkPerformanceValueTypeINTEL.class) int type() {
-        return segment.get(LAYOUT$type, OFFSET$type);
-    }
-
-    public void type(@enumtype(VkPerformanceValueTypeINTEL.class) int value) {
-        segment.set(LAYOUT$type, OFFSET$type, value);
-    }
-
-    public VkPerformanceValueDataINTEL data() {
-        return new VkPerformanceValueDataINTEL(segment.asSlice(OFFSET$data, LAYOUT$data));
-    }
-
-    public void data(VkPerformanceValueDataINTEL value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
-    }
-
 }

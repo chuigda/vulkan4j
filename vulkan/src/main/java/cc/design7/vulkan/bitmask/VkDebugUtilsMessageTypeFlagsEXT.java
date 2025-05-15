@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDebugUtilsMessageTypeFlagsEXT.html">VkDebugUtilsMessageTypeFlagsEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDebugUtilsMessageTypeFlagsEXT.html"><code>VkDebugUtilsMessageTypeFlagsEXT</code></a>
 public final class VkDebugUtilsMessageTypeFlagsEXT {
     public static final int DEVICE_ADDRESS_BINDING = 0x8;
     public static final int GENERAL = 0x1;

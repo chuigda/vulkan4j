@@ -16,6 +16,28 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoAV1SequenceHeader} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoAV1SequenceHeader {
+///     StdVideoAV1SequenceHeaderFlags flags;
+///     StdVideoAV1Profile seq_profile;
+///     uint8_t frame_width_bits_minus_1;
+///     uint8_t frame_height_bits_minus_1;
+///     uint16_t max_frame_width_minus_1;
+///     uint16_t max_frame_height_minus_1;
+///     uint8_t delta_frame_id_length_minus_2;
+///     uint8_t additional_frame_id_length_minus_1;
+///     uint8_t order_hint_bits_minus_1;
+///     uint8_t seq_force_integer_mv;
+///     uint8_t seq_force_screen_content_tools;
+///     uint8_t reserved1;
+///     StdVideoAV1ColorConfig const* pColorConfig;
+///     StdVideoAV1TimingInfo const* pTimingInfo;
+/// } StdVideoAV1SequenceHeader;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +49,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1SequenceHeader allocate(Arena arena) {
-        return new StdVideoAV1SequenceHeader(arena.allocate(LAYOUT));
+        StdVideoAV1SequenceHeader ret = new StdVideoAV1SequenceHeader(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoAV1SequenceHeader[] allocate(Arena arena, int count) {
@@ -52,84 +75,6 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        StdVideoAV1SequenceHeaderFlags.LAYOUT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("seq_profile"),
-        ValueLayout.JAVA_BYTE.withName("frame_width_bits_minus_1"),
-        ValueLayout.JAVA_BYTE.withName("frame_height_bits_minus_1"),
-        ValueLayout.JAVA_SHORT.withName("max_frame_width_minus_1"),
-        ValueLayout.JAVA_SHORT.withName("max_frame_height_minus_1"),
-        ValueLayout.JAVA_BYTE.withName("delta_frame_id_length_minus_2"),
-        ValueLayout.JAVA_BYTE.withName("additional_frame_id_length_minus_1"),
-        ValueLayout.JAVA_BYTE.withName("order_hint_bits_minus_1"),
-        ValueLayout.JAVA_BYTE.withName("seq_force_integer_mv"),
-        ValueLayout.JAVA_BYTE.withName("seq_force_screen_content_tools"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1ColorConfig.LAYOUT).withName("pColorConfig"),
-        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1TimingInfo.LAYOUT).withName("pTimingInfo")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$seq_profile = PathElement.groupElement("PATH$seq_profile");
-    public static final PathElement PATH$frame_width_bits_minus_1 = PathElement.groupElement("PATH$frame_width_bits_minus_1");
-    public static final PathElement PATH$frame_height_bits_minus_1 = PathElement.groupElement("PATH$frame_height_bits_minus_1");
-    public static final PathElement PATH$max_frame_width_minus_1 = PathElement.groupElement("PATH$max_frame_width_minus_1");
-    public static final PathElement PATH$max_frame_height_minus_1 = PathElement.groupElement("PATH$max_frame_height_minus_1");
-    public static final PathElement PATH$delta_frame_id_length_minus_2 = PathElement.groupElement("PATH$delta_frame_id_length_minus_2");
-    public static final PathElement PATH$additional_frame_id_length_minus_1 = PathElement.groupElement("PATH$additional_frame_id_length_minus_1");
-    public static final PathElement PATH$order_hint_bits_minus_1 = PathElement.groupElement("PATH$order_hint_bits_minus_1");
-    public static final PathElement PATH$seq_force_integer_mv = PathElement.groupElement("PATH$seq_force_integer_mv");
-    public static final PathElement PATH$seq_force_screen_content_tools = PathElement.groupElement("PATH$seq_force_screen_content_tools");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
-    public static final PathElement PATH$pColorConfig = PathElement.groupElement("PATH$pColorConfig");
-    public static final PathElement PATH$pTimingInfo = PathElement.groupElement("PATH$pTimingInfo");
-
-    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$seq_profile = (OfInt) LAYOUT.select(PATH$seq_profile);
-    public static final OfByte LAYOUT$frame_width_bits_minus_1 = (OfByte) LAYOUT.select(PATH$frame_width_bits_minus_1);
-    public static final OfByte LAYOUT$frame_height_bits_minus_1 = (OfByte) LAYOUT.select(PATH$frame_height_bits_minus_1);
-    public static final OfShort LAYOUT$max_frame_width_minus_1 = (OfShort) LAYOUT.select(PATH$max_frame_width_minus_1);
-    public static final OfShort LAYOUT$max_frame_height_minus_1 = (OfShort) LAYOUT.select(PATH$max_frame_height_minus_1);
-    public static final OfByte LAYOUT$delta_frame_id_length_minus_2 = (OfByte) LAYOUT.select(PATH$delta_frame_id_length_minus_2);
-    public static final OfByte LAYOUT$additional_frame_id_length_minus_1 = (OfByte) LAYOUT.select(PATH$additional_frame_id_length_minus_1);
-    public static final OfByte LAYOUT$order_hint_bits_minus_1 = (OfByte) LAYOUT.select(PATH$order_hint_bits_minus_1);
-    public static final OfByte LAYOUT$seq_force_integer_mv = (OfByte) LAYOUT.select(PATH$seq_force_integer_mv);
-    public static final OfByte LAYOUT$seq_force_screen_content_tools = (OfByte) LAYOUT.select(PATH$seq_force_screen_content_tools);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
-    public static final AddressLayout LAYOUT$pColorConfig = (AddressLayout) LAYOUT.select(PATH$pColorConfig);
-    public static final AddressLayout LAYOUT$pTimingInfo = (AddressLayout) LAYOUT.select(PATH$pTimingInfo);
-
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$seq_profile = LAYOUT$seq_profile.byteSize();
-    public static final long SIZE$frame_width_bits_minus_1 = LAYOUT$frame_width_bits_minus_1.byteSize();
-    public static final long SIZE$frame_height_bits_minus_1 = LAYOUT$frame_height_bits_minus_1.byteSize();
-    public static final long SIZE$max_frame_width_minus_1 = LAYOUT$max_frame_width_minus_1.byteSize();
-    public static final long SIZE$max_frame_height_minus_1 = LAYOUT$max_frame_height_minus_1.byteSize();
-    public static final long SIZE$delta_frame_id_length_minus_2 = LAYOUT$delta_frame_id_length_minus_2.byteSize();
-    public static final long SIZE$additional_frame_id_length_minus_1 = LAYOUT$additional_frame_id_length_minus_1.byteSize();
-    public static final long SIZE$order_hint_bits_minus_1 = LAYOUT$order_hint_bits_minus_1.byteSize();
-    public static final long SIZE$seq_force_integer_mv = LAYOUT$seq_force_integer_mv.byteSize();
-    public static final long SIZE$seq_force_screen_content_tools = LAYOUT$seq_force_screen_content_tools.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
-    public static final long SIZE$pColorConfig = LAYOUT$pColorConfig.byteSize();
-    public static final long SIZE$pTimingInfo = LAYOUT$pTimingInfo.byteSize();
-
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$seq_profile = LAYOUT.byteOffset(PATH$seq_profile);
-    public static final long OFFSET$frame_width_bits_minus_1 = LAYOUT.byteOffset(PATH$frame_width_bits_minus_1);
-    public static final long OFFSET$frame_height_bits_minus_1 = LAYOUT.byteOffset(PATH$frame_height_bits_minus_1);
-    public static final long OFFSET$max_frame_width_minus_1 = LAYOUT.byteOffset(PATH$max_frame_width_minus_1);
-    public static final long OFFSET$max_frame_height_minus_1 = LAYOUT.byteOffset(PATH$max_frame_height_minus_1);
-    public static final long OFFSET$delta_frame_id_length_minus_2 = LAYOUT.byteOffset(PATH$delta_frame_id_length_minus_2);
-    public static final long OFFSET$additional_frame_id_length_minus_1 = LAYOUT.byteOffset(PATH$additional_frame_id_length_minus_1);
-    public static final long OFFSET$order_hint_bits_minus_1 = LAYOUT.byteOffset(PATH$order_hint_bits_minus_1);
-    public static final long OFFSET$seq_force_integer_mv = LAYOUT.byteOffset(PATH$seq_force_integer_mv);
-    public static final long OFFSET$seq_force_screen_content_tools = LAYOUT.byteOffset(PATH$seq_force_screen_content_tools);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
-    public static final long OFFSET$pColorConfig = LAYOUT.byteOffset(PATH$pColorConfig);
-    public static final long OFFSET$pTimingInfo = LAYOUT.byteOffset(PATH$pTimingInfo);
 
     public StdVideoAV1SequenceHeaderFlags flags() {
         return new StdVideoAV1SequenceHeaderFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
@@ -237,7 +182,7 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
 
     public @Nullable StdVideoAV1ColorConfig pColorConfig() {
         MemorySegment s = pColorConfigRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoAV1ColorConfig(s);
@@ -250,7 +195,7 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
 
     @unsafe public @Nullable StdVideoAV1ColorConfig[] pColorConfig(int assumedCount) {
         MemorySegment s = pColorConfigRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -272,7 +217,7 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
 
     public @Nullable StdVideoAV1TimingInfo pTimingInfo() {
         MemorySegment s = pTimingInfoRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new StdVideoAV1TimingInfo(s);
@@ -285,7 +230,7 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
 
     @unsafe public @Nullable StdVideoAV1TimingInfo[] pTimingInfo(int assumedCount) {
         MemorySegment s = pTimingInfoRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -297,4 +242,81 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoAV1SequenceHeaderFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("seq_profile"),
+        ValueLayout.JAVA_BYTE.withName("frame_width_bits_minus_1"),
+        ValueLayout.JAVA_BYTE.withName("frame_height_bits_minus_1"),
+        ValueLayout.JAVA_SHORT.withName("max_frame_width_minus_1"),
+        ValueLayout.JAVA_SHORT.withName("max_frame_height_minus_1"),
+        ValueLayout.JAVA_BYTE.withName("delta_frame_id_length_minus_2"),
+        ValueLayout.JAVA_BYTE.withName("additional_frame_id_length_minus_1"),
+        ValueLayout.JAVA_BYTE.withName("order_hint_bits_minus_1"),
+        ValueLayout.JAVA_BYTE.withName("seq_force_integer_mv"),
+        ValueLayout.JAVA_BYTE.withName("seq_force_screen_content_tools"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1ColorConfig.LAYOUT).withName("pColorConfig"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1TimingInfo.LAYOUT).withName("pTimingInfo")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$seq_profile = PathElement.groupElement("PATH$seq_profile");
+    public static final PathElement PATH$frame_width_bits_minus_1 = PathElement.groupElement("PATH$frame_width_bits_minus_1");
+    public static final PathElement PATH$frame_height_bits_minus_1 = PathElement.groupElement("PATH$frame_height_bits_minus_1");
+    public static final PathElement PATH$max_frame_width_minus_1 = PathElement.groupElement("PATH$max_frame_width_minus_1");
+    public static final PathElement PATH$max_frame_height_minus_1 = PathElement.groupElement("PATH$max_frame_height_minus_1");
+    public static final PathElement PATH$delta_frame_id_length_minus_2 = PathElement.groupElement("PATH$delta_frame_id_length_minus_2");
+    public static final PathElement PATH$additional_frame_id_length_minus_1 = PathElement.groupElement("PATH$additional_frame_id_length_minus_1");
+    public static final PathElement PATH$order_hint_bits_minus_1 = PathElement.groupElement("PATH$order_hint_bits_minus_1");
+    public static final PathElement PATH$seq_force_integer_mv = PathElement.groupElement("PATH$seq_force_integer_mv");
+    public static final PathElement PATH$seq_force_screen_content_tools = PathElement.groupElement("PATH$seq_force_screen_content_tools");
+    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
+    public static final PathElement PATH$pColorConfig = PathElement.groupElement("PATH$pColorConfig");
+    public static final PathElement PATH$pTimingInfo = PathElement.groupElement("PATH$pTimingInfo");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$seq_profile = (OfInt) LAYOUT.select(PATH$seq_profile);
+    public static final OfByte LAYOUT$frame_width_bits_minus_1 = (OfByte) LAYOUT.select(PATH$frame_width_bits_minus_1);
+    public static final OfByte LAYOUT$frame_height_bits_minus_1 = (OfByte) LAYOUT.select(PATH$frame_height_bits_minus_1);
+    public static final OfShort LAYOUT$max_frame_width_minus_1 = (OfShort) LAYOUT.select(PATH$max_frame_width_minus_1);
+    public static final OfShort LAYOUT$max_frame_height_minus_1 = (OfShort) LAYOUT.select(PATH$max_frame_height_minus_1);
+    public static final OfByte LAYOUT$delta_frame_id_length_minus_2 = (OfByte) LAYOUT.select(PATH$delta_frame_id_length_minus_2);
+    public static final OfByte LAYOUT$additional_frame_id_length_minus_1 = (OfByte) LAYOUT.select(PATH$additional_frame_id_length_minus_1);
+    public static final OfByte LAYOUT$order_hint_bits_minus_1 = (OfByte) LAYOUT.select(PATH$order_hint_bits_minus_1);
+    public static final OfByte LAYOUT$seq_force_integer_mv = (OfByte) LAYOUT.select(PATH$seq_force_integer_mv);
+    public static final OfByte LAYOUT$seq_force_screen_content_tools = (OfByte) LAYOUT.select(PATH$seq_force_screen_content_tools);
+    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
+    public static final AddressLayout LAYOUT$pColorConfig = (AddressLayout) LAYOUT.select(PATH$pColorConfig);
+    public static final AddressLayout LAYOUT$pTimingInfo = (AddressLayout) LAYOUT.select(PATH$pTimingInfo);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$seq_profile = LAYOUT$seq_profile.byteSize();
+    public static final long SIZE$frame_width_bits_minus_1 = LAYOUT$frame_width_bits_minus_1.byteSize();
+    public static final long SIZE$frame_height_bits_minus_1 = LAYOUT$frame_height_bits_minus_1.byteSize();
+    public static final long SIZE$max_frame_width_minus_1 = LAYOUT$max_frame_width_minus_1.byteSize();
+    public static final long SIZE$max_frame_height_minus_1 = LAYOUT$max_frame_height_minus_1.byteSize();
+    public static final long SIZE$delta_frame_id_length_minus_2 = LAYOUT$delta_frame_id_length_minus_2.byteSize();
+    public static final long SIZE$additional_frame_id_length_minus_1 = LAYOUT$additional_frame_id_length_minus_1.byteSize();
+    public static final long SIZE$order_hint_bits_minus_1 = LAYOUT$order_hint_bits_minus_1.byteSize();
+    public static final long SIZE$seq_force_integer_mv = LAYOUT$seq_force_integer_mv.byteSize();
+    public static final long SIZE$seq_force_screen_content_tools = LAYOUT$seq_force_screen_content_tools.byteSize();
+    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
+    public static final long SIZE$pColorConfig = LAYOUT$pColorConfig.byteSize();
+    public static final long SIZE$pTimingInfo = LAYOUT$pTimingInfo.byteSize();
+
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$seq_profile = LAYOUT.byteOffset(PATH$seq_profile);
+    public static final long OFFSET$frame_width_bits_minus_1 = LAYOUT.byteOffset(PATH$frame_width_bits_minus_1);
+    public static final long OFFSET$frame_height_bits_minus_1 = LAYOUT.byteOffset(PATH$frame_height_bits_minus_1);
+    public static final long OFFSET$max_frame_width_minus_1 = LAYOUT.byteOffset(PATH$max_frame_width_minus_1);
+    public static final long OFFSET$max_frame_height_minus_1 = LAYOUT.byteOffset(PATH$max_frame_height_minus_1);
+    public static final long OFFSET$delta_frame_id_length_minus_2 = LAYOUT.byteOffset(PATH$delta_frame_id_length_minus_2);
+    public static final long OFFSET$additional_frame_id_length_minus_1 = LAYOUT.byteOffset(PATH$additional_frame_id_length_minus_1);
+    public static final long OFFSET$order_hint_bits_minus_1 = LAYOUT.byteOffset(PATH$order_hint_bits_minus_1);
+    public static final long OFFSET$seq_force_integer_mv = LAYOUT.byteOffset(PATH$seq_force_integer_mv);
+    public static final long OFFSET$seq_force_screen_content_tools = LAYOUT.byteOffset(PATH$seq_force_screen_content_tools);
+    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
+    public static final long OFFSET$pColorConfig = LAYOUT.byteOffset(PATH$pColorConfig);
+    public static final long OFFSET$pTimingInfo = LAYOUT.byteOffset(PATH$pTimingInfo);
 }

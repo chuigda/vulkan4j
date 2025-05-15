@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineViewportDepthClipControlCreateInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineViewportDepthClipControlCreateInfoEXT.html"><code>VkPipelineViewportDepthClipControlCreateInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineViewportDepthClipControlCreateInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkBool32 negativeOneToOne;
+/// } VkPipelineViewportDepthClipControlCreateInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT`
+///
+/// The {@link VkPipelineViewportDepthClipControlCreateInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineViewportDepthClipControlCreateInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineViewportDepthClipControlCreateInfoEXT.html">VkPipelineViewportDepthClipControlCreateInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineViewportDepthClipControlCreateInfoEXT.html"><code>VkPipelineViewportDepthClipControlCreateInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineViewportDepthClipControlCreateInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineViewportDepthClipControlCreateInfoEXT {
-        sType(VkStructureType.PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT);
-    }
-
     public static VkPipelineViewportDepthClipControlCreateInfoEXT allocate(Arena arena) {
-        return new VkPipelineViewportDepthClipControlCreateInfoEXT(arena.allocate(LAYOUT));
+        VkPipelineViewportDepthClipControlCreateInfoEXT ret = new VkPipelineViewportDepthClipControlCreateInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT);
+        return ret;
     }
 
     public static VkPipelineViewportDepthClipControlCreateInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPipelineViewportDepthClipControlCreateInfoEXT(@NotNull MemorySeg
         VkPipelineViewportDepthClipControlCreateInfoEXT[] ret = new VkPipelineViewportDepthClipControlCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineViewportDepthClipControlCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPipelineViewportDepthClipControlCreateInfoEXT(@NotNull MemorySeg
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("negativeOneToOne")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$negativeOneToOne = PathElement.groupElement("PATH$negativeOneToOne");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$negativeOneToOne = (OfInt) LAYOUT.select(PATH$negativeOneToOne);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$negativeOneToOne = LAYOUT$negativeOneToOne.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$negativeOneToOne = LAYOUT.byteOffset(PATH$negativeOneToOne);
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPipelineViewportDepthClipControlCreateInfoEXT(@NotNull MemorySeg
         segment.set(LAYOUT$negativeOneToOne, OFFSET$negativeOneToOne, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("negativeOneToOne")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$negativeOneToOne = PathElement.groupElement("PATH$negativeOneToOne");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$negativeOneToOne = (OfInt) LAYOUT.select(PATH$negativeOneToOne);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$negativeOneToOne = LAYOUT$negativeOneToOne.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$negativeOneToOne = LAYOUT.byteOffset(PATH$negativeOneToOne);
 }

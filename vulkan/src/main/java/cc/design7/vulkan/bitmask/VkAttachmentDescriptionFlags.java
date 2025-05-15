@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentDescriptionFlags.html">VkAttachmentDescriptionFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentDescriptionFlags.html"><code>VkAttachmentDescriptionFlags</code></a>
 public final class VkAttachmentDescriptionFlags {
     public static final int MAY_ALIAS = 0x1;
 

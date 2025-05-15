@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkClearColorValue} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClearColorValue.html"><code>VkClearColorValue</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkClearColorValue {
+///     float float32;
+///     int32_t int32;
+///     uint32_t uint32;
+/// } VkClearColorValue;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClearColorValue.html">VkClearColorValue</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClearColorValue.html"><code>VkClearColorValue</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkClearColorValue(@NotNull MemorySegment segment) implements IPointer {
     public static VkClearColorValue allocate(Arena arena) {
-        return new VkClearColorValue(arena.allocate(LAYOUT));
+        VkClearColorValue ret = new VkClearColorValue(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkClearColorValue[] allocate(Arena arena, int count) {
@@ -55,29 +67,6 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IPoin
         return ret;
     }
 
-    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
-        ValueLayout.JAVA_FLOAT.withName("float32"),
-        ValueLayout.JAVA_INT.withName("int32"),
-        ValueLayout.JAVA_INT.withName("uint32")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$float32 = PathElement.groupElement("PATH$float32");
-    public static final PathElement PATH$int32 = PathElement.groupElement("PATH$int32");
-    public static final PathElement PATH$uint32 = PathElement.groupElement("PATH$uint32");
-
-    public static final OfFloat LAYOUT$float32 = (OfFloat) LAYOUT.select(PATH$float32);
-    public static final OfInt LAYOUT$int32 = (OfInt) LAYOUT.select(PATH$int32);
-    public static final OfInt LAYOUT$uint32 = (OfInt) LAYOUT.select(PATH$uint32);
-
-    public static final long SIZE$float32 = LAYOUT$float32.byteSize();
-    public static final long SIZE$int32 = LAYOUT$int32.byteSize();
-    public static final long SIZE$uint32 = LAYOUT$uint32.byteSize();
-
-    public static final long OFFSET$float32 = LAYOUT.byteOffset(PATH$float32);
-    public static final long OFFSET$int32 = LAYOUT.byteOffset(PATH$int32);
-    public static final long OFFSET$uint32 = LAYOUT.byteOffset(PATH$uint32);
-
     public float float32() {
         return segment.get(LAYOUT$float32, OFFSET$float32);
     }
@@ -102,4 +91,26 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IPoin
         segment.set(LAYOUT$uint32, OFFSET$uint32, value);
     }
 
+    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
+        ValueLayout.JAVA_FLOAT.withName("float32"),
+        ValueLayout.JAVA_INT.withName("int32"),
+        ValueLayout.JAVA_INT.withName("uint32")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$float32 = PathElement.groupElement("PATH$float32");
+    public static final PathElement PATH$int32 = PathElement.groupElement("PATH$int32");
+    public static final PathElement PATH$uint32 = PathElement.groupElement("PATH$uint32");
+
+    public static final OfFloat LAYOUT$float32 = (OfFloat) LAYOUT.select(PATH$float32);
+    public static final OfInt LAYOUT$int32 = (OfInt) LAYOUT.select(PATH$int32);
+    public static final OfInt LAYOUT$uint32 = (OfInt) LAYOUT.select(PATH$uint32);
+
+    public static final long SIZE$float32 = LAYOUT$float32.byteSize();
+    public static final long SIZE$int32 = LAYOUT$int32.byteSize();
+    public static final long SIZE$uint32 = LAYOUT$uint32.byteSize();
+
+    public static final long OFFSET$float32 = LAYOUT.byteOffset(PATH$float32);
+    public static final long OFFSET$int32 = LAYOUT.byteOffset(PATH$int32);
+    public static final long OFFSET$uint32 = LAYOUT.byteOffset(PATH$uint32);
 }

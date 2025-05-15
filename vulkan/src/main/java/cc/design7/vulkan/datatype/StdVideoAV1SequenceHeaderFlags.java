@@ -17,6 +17,34 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoAV1SequenceHeaderFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoAV1SequenceHeaderFlags {
+///     uint32_t still_picture : 1;
+///     uint32_t reduced_still_picture_header : 1;
+///     uint32_t use_128x128_superblock : 1;
+///     uint32_t enable_filter_intra : 1;
+///     uint32_t enable_intra_edge_filter : 1;
+///     uint32_t enable_interintra_compound : 1;
+///     uint32_t enable_masked_compound : 1;
+///     uint32_t enable_warped_motion : 1;
+///     uint32_t enable_dual_filter : 1;
+///     uint32_t enable_order_hint : 1;
+///     uint32_t enable_jnt_comp : 1;
+///     uint32_t enable_ref_frame_mvs : 1;
+///     uint32_t frame_id_numbers_present_flag : 1;
+///     uint32_t enable_superres : 1;
+///     uint32_t enable_cdef : 1;
+///     uint32_t enable_restoration : 1;
+///     uint32_t film_grain_params_present : 1;
+///     uint32_t timing_info_present_flag : 1;
+///     uint32_t initial_display_delay_present_flag : 1;
+///     uint32_t reserved : 13;
+/// } StdVideoAV1SequenceHeaderFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +56,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1SequenceHeaderFlags allocate(Arena arena) {
-        return new StdVideoAV1SequenceHeaderFlags(arena.allocate(LAYOUT));
+        StdVideoAV1SequenceHeaderFlags ret = new StdVideoAV1SequenceHeaderFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoAV1SequenceHeaderFlags[] allocate(Arena arena, int count) {
@@ -53,18 +82,6 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$still_picture_reserved")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$still_picture_reserved = PathElement.groupElement("PATH$bitfield$still_picture_reserved");
-
-    public static final OfInt LAYOUT$still_picture_reserved = (OfInt) LAYOUT.select(PATH$bitfield$still_picture_reserved);
-
-
-    public static final long OFFSET$still_picture_reserved = LAYOUT.byteOffset(PATH$bitfield$still_picture_reserved);
 
     public boolean still_picture() {
         MemorySegment s = segment.asSlice(OFFSET$still_picture_reserved, LAYOUT$still_picture_reserved);
@@ -256,5 +273,15 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         BitfieldUtil.writeBit(s, 18, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$still_picture_reserved")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$bitfield$still_picture_reserved = PathElement.groupElement("PATH$bitfield$still_picture_reserved");
+
+    public static final OfInt LAYOUT$still_picture_reserved = (OfInt) LAYOUT.select(PATH$bitfield$still_picture_reserved);
+
+
+    public static final long OFFSET$still_picture_reserved = LAYOUT.byteOffset(PATH$bitfield$still_picture_reserved);
 }

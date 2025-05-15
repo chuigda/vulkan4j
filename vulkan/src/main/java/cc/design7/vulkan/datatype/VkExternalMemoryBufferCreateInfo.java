@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkExternalMemoryBufferCreateInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalMemoryBufferCreateInfo.html"><code>VkExternalMemoryBufferCreateInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkExternalMemoryBufferCreateInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkExternalMemoryHandleTypeFlags handleTypes;
+/// } VkExternalMemoryBufferCreateInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO`
+///
+/// The {@link VkExternalMemoryBufferCreateInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkExternalMemoryBufferCreateInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalMemoryBufferCreateInfo.html">VkExternalMemoryBufferCreateInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalMemoryBufferCreateInfo.html"><code>VkExternalMemoryBufferCreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkExternalMemoryBufferCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkExternalMemoryBufferCreateInfo {
-        sType(VkStructureType.EXTERNAL_MEMORY_BUFFER_CREATE_INFO);
-    }
-
     public static VkExternalMemoryBufferCreateInfo allocate(Arena arena) {
-        return new VkExternalMemoryBufferCreateInfo(arena.allocate(LAYOUT));
+        VkExternalMemoryBufferCreateInfo ret = new VkExternalMemoryBufferCreateInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.EXTERNAL_MEMORY_BUFFER_CREATE_INFO);
+        return ret;
     }
 
     public static VkExternalMemoryBufferCreateInfo[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkExternalMemoryBufferCreateInfo(@NotNull MemorySegment segment) i
         VkExternalMemoryBufferCreateInfo[] ret = new VkExternalMemoryBufferCreateInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkExternalMemoryBufferCreateInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.EXTERNAL_MEMORY_BUFFER_CREATE_INFO);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkExternalMemoryBufferCreateInfo(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("handleTypes")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$handleTypes = PathElement.groupElement("PATH$handleTypes");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$handleTypes = (OfInt) LAYOUT.select(PATH$handleTypes);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$handleTypes = LAYOUT$handleTypes.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$handleTypes = LAYOUT.byteOffset(PATH$handleTypes);
+    public void autoInit() {
+        sType(VkStructureType.EXTERNAL_MEMORY_BUFFER_CREATE_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkExternalMemoryBufferCreateInfo(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$handleTypes, OFFSET$handleTypes, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("handleTypes")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$handleTypes = PathElement.groupElement("PATH$handleTypes");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$handleTypes = (OfInt) LAYOUT.select(PATH$handleTypes);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$handleTypes = LAYOUT$handleTypes.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$handleTypes = LAYOUT.byteOffset(PATH$handleTypes);
 }

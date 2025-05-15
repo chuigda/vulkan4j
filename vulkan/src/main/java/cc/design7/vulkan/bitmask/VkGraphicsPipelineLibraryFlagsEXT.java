@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGraphicsPipelineLibraryFlagsEXT.html">VkGraphicsPipelineLibraryFlagsEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGraphicsPipelineLibraryFlagsEXT.html"><code>VkGraphicsPipelineLibraryFlagsEXT</code></a>
 public final class VkGraphicsPipelineLibraryFlagsEXT {
     public static final int FRAGMENT_OUTPUT_INTERFACE = 0x8;
     public static final int FRAGMENT_SHADER = 0x4;

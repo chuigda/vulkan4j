@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeTuningModeKHR.html">VkVideoEncodeTuningModeKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeTuningModeKHR.html"><code>VkVideoEncodeTuningModeKHR</code></a>
 public final class VkVideoEncodeTuningModeKHR {
     public static final int DEFAULT = 0x0;
     public static final int HIGH_QUALITY = 0x1;

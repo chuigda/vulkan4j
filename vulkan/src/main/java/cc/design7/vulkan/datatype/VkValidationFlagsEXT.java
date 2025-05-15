@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkValidationFlagsEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkValidationFlagsEXT.html"><code>VkValidationFlagsEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkValidationFlagsEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     uint32_t disabledValidationCheckCount;
+///     VkValidationCheckEXT const* pDisabledValidationChecks;
+/// } VkValidationFlagsEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT`
+///
+/// The {@link VkValidationFlagsEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkValidationFlagsEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkValidationFlagsEXT.html">VkValidationFlagsEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkValidationFlagsEXT.html"><code>VkValidationFlagsEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkValidationFlagsEXT {
-        sType(VkStructureType.VALIDATION_FLAGS_EXT);
-    }
-
     public static VkValidationFlagsEXT allocate(Arena arena) {
-        return new VkValidationFlagsEXT(arena.allocate(LAYOUT));
+        VkValidationFlagsEXT ret = new VkValidationFlagsEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VALIDATION_FLAGS_EXT);
+        return ret;
     }
 
     public static VkValidationFlagsEXT[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IP
         VkValidationFlagsEXT[] ret = new VkValidationFlagsEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkValidationFlagsEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VALIDATION_FLAGS_EXT);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("disabledValidationCheckCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDisabledValidationChecks")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$disabledValidationCheckCount = PathElement.groupElement("PATH$disabledValidationCheckCount");
-    public static final PathElement PATH$pDisabledValidationChecks = PathElement.groupElement("PATH$pDisabledValidationChecks");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$disabledValidationCheckCount = (OfInt) LAYOUT.select(PATH$disabledValidationCheckCount);
-    public static final AddressLayout LAYOUT$pDisabledValidationChecks = (AddressLayout) LAYOUT.select(PATH$pDisabledValidationChecks);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$disabledValidationCheckCount = LAYOUT$disabledValidationCheckCount.byteSize();
-    public static final long SIZE$pDisabledValidationChecks = LAYOUT$pDisabledValidationChecks.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$disabledValidationCheckCount = LAYOUT.byteOffset(PATH$disabledValidationCheckCount);
-    public static final long OFFSET$pDisabledValidationChecks = LAYOUT.byteOffset(PATH$pDisabledValidationChecks);
+    public void autoInit() {
+        sType(VkStructureType.VALIDATION_FLAGS_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -129,7 +124,7 @@ public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IP
     /// or writing to the buffer.
     public @Nullable @enumtype(VkValidationCheckEXT.class) IntPtr pDisabledValidationChecks() {
         MemorySegment s = pDisabledValidationChecksRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new IntPtr(s);
@@ -140,4 +135,31 @@ public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IP
         pDisabledValidationChecksRaw(s);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("disabledValidationCheckCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDisabledValidationChecks")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$disabledValidationCheckCount = PathElement.groupElement("PATH$disabledValidationCheckCount");
+    public static final PathElement PATH$pDisabledValidationChecks = PathElement.groupElement("PATH$pDisabledValidationChecks");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$disabledValidationCheckCount = (OfInt) LAYOUT.select(PATH$disabledValidationCheckCount);
+    public static final AddressLayout LAYOUT$pDisabledValidationChecks = (AddressLayout) LAYOUT.select(PATH$pDisabledValidationChecks);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$disabledValidationCheckCount = LAYOUT$disabledValidationCheckCount.byteSize();
+    public static final long SIZE$pDisabledValidationChecks = LAYOUT$pDisabledValidationChecks.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$disabledValidationCheckCount = LAYOUT.byteOffset(PATH$disabledValidationCheckCount);
+    public static final long OFFSET$pDisabledValidationChecks = LAYOUT.byteOffset(PATH$pDisabledValidationChecks);
 }

@@ -16,6 +16,16 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoAV1LoopRestoration} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoAV1LoopRestoration {
+///     StdVideoAV1FrameRestorationType FrameRestorationType;
+///     uint16_t LoopRestorationSize;
+/// } StdVideoAV1LoopRestoration;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +37,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1LoopRestoration allocate(Arena arena) {
-        return new StdVideoAV1LoopRestoration(arena.allocate(LAYOUT));
+        StdVideoAV1LoopRestoration ret = new StdVideoAV1LoopRestoration(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoAV1LoopRestoration[] allocate(Arena arena, int count) {
@@ -53,6 +64,22 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
+    public @enumtype(StdVideoAV1FrameRestorationType.class) int FrameRestorationType() {
+        return segment.get(LAYOUT$FrameRestorationType, OFFSET$FrameRestorationType);
+    }
+
+    public void FrameRestorationType(@enumtype(StdVideoAV1FrameRestorationType.class) int value) {
+        segment.set(LAYOUT$FrameRestorationType, OFFSET$FrameRestorationType, value);
+    }
+
+    public @unsigned short LoopRestorationSize() {
+        return segment.get(LAYOUT$LoopRestorationSize, OFFSET$LoopRestorationSize);
+    }
+
+    public void LoopRestorationSize(@unsigned short value) {
+        segment.set(LAYOUT$LoopRestorationSize, OFFSET$LoopRestorationSize, value);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("FrameRestorationType"),
         ValueLayout.JAVA_SHORT.withName("LoopRestorationSize")
@@ -70,21 +97,4 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
 
     public static final long OFFSET$FrameRestorationType = LAYOUT.byteOffset(PATH$FrameRestorationType);
     public static final long OFFSET$LoopRestorationSize = LAYOUT.byteOffset(PATH$LoopRestorationSize);
-
-    public @enumtype(StdVideoAV1FrameRestorationType.class) int FrameRestorationType() {
-        return segment.get(LAYOUT$FrameRestorationType, OFFSET$FrameRestorationType);
-    }
-
-    public void FrameRestorationType(@enumtype(StdVideoAV1FrameRestorationType.class) int value) {
-        segment.set(LAYOUT$FrameRestorationType, OFFSET$FrameRestorationType, value);
-    }
-
-    public @unsigned short LoopRestorationSize() {
-        return segment.get(LAYOUT$LoopRestorationSize, OFFSET$LoopRestorationSize);
-    }
-
-    public void LoopRestorationSize(@unsigned short value) {
-        segment.set(LAYOUT$LoopRestorationSize, OFFSET$LoopRestorationSize, value);
-    }
-
 }

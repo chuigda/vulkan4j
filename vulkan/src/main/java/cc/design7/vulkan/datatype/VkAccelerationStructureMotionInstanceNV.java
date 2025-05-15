@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkAccelerationStructureMotionInstanceNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMotionInstanceNV.html"><code>VkAccelerationStructureMotionInstanceNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkAccelerationStructureMotionInstanceNV {
+///     VkAccelerationStructureMotionInstanceTypeNV type;
+///     VkAccelerationStructureMotionInstanceFlagsNV flags;
+///     VkAccelerationStructureMotionInstanceDataNV data;
+/// } VkAccelerationStructureMotionInstanceNV;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMotionInstanceNV.html">VkAccelerationStructureMotionInstanceNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMotionInstanceNV.html"><code>VkAccelerationStructureMotionInstanceNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkAccelerationStructureMotionInstanceNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkAccelerationStructureMotionInstanceNV allocate(Arena arena) {
-        return new VkAccelerationStructureMotionInstanceNV(arena.allocate(LAYOUT));
+        VkAccelerationStructureMotionInstanceNV ret = new VkAccelerationStructureMotionInstanceNV(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkAccelerationStructureMotionInstanceNV[] allocate(Arena arena, int count) {
@@ -55,29 +67,6 @@ public record VkAccelerationStructureMotionInstanceNV(@NotNull MemorySegment seg
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("type"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        VkAccelerationStructureMotionInstanceDataNV.LAYOUT.withName("data")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$data = PathElement.groupElement("PATH$data");
-
-    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final StructLayout LAYOUT$data = (StructLayout) LAYOUT.select(PATH$data);
-
-    public static final long SIZE$type = LAYOUT$type.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$data = LAYOUT$data.byteSize();
-
-    public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$data = LAYOUT.byteOffset(PATH$data);
-
     public @enumtype(VkAccelerationStructureMotionInstanceTypeNV.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
@@ -102,4 +91,26 @@ public record VkAccelerationStructureMotionInstanceNV(@NotNull MemorySegment seg
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("type"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        VkAccelerationStructureMotionInstanceDataNV.LAYOUT.withName("data")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$data = PathElement.groupElement("PATH$data");
+
+    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final StructLayout LAYOUT$data = (StructLayout) LAYOUT.select(PATH$data);
+
+    public static final long SIZE$type = LAYOUT$type.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$data = LAYOUT$data.byteSize();
+
+    public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$data = LAYOUT.byteOffset(PATH$data);
 }

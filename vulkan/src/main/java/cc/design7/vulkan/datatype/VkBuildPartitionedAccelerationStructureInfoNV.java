@@ -14,8 +14,32 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkBuildPartitionedAccelerationStructureInfoNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBuildPartitionedAccelerationStructureInfoNV.html"><code>VkBuildPartitionedAccelerationStructureInfoNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkBuildPartitionedAccelerationStructureInfoNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkPartitionedAccelerationStructureInstancesInputNV input;
+///     VkDeviceAddress srcAccelerationStructureData;
+///     VkDeviceAddress dstAccelerationStructureData;
+///     VkDeviceAddress scratchData;
+///     VkDeviceAddress srcInfos;
+///     VkDeviceAddress srcInfosCount;
+/// } VkBuildPartitionedAccelerationStructureInfoNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_BUILD_PARTITIONED_ACCELERATION_STRUCTURE_INFO_NV`
+///
+/// The {@link VkBuildPartitionedAccelerationStructureInfoNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkBuildPartitionedAccelerationStructureInfoNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +48,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBuildPartitionedAccelerationStructureInfoNV.html">VkBuildPartitionedAccelerationStructureInfoNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBuildPartitionedAccelerationStructureInfoNV.html"><code>VkBuildPartitionedAccelerationStructureInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkBuildPartitionedAccelerationStructureInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkBuildPartitionedAccelerationStructureInfoNV {
-        sType(VkStructureType.BUILD_PARTITIONED_ACCELERATION_STRUCTURE_INFO_NV);
-    }
-
     public static VkBuildPartitionedAccelerationStructureInfoNV allocate(Arena arena) {
-        return new VkBuildPartitionedAccelerationStructureInfoNV(arena.allocate(LAYOUT));
+        VkBuildPartitionedAccelerationStructureInfoNV ret = new VkBuildPartitionedAccelerationStructureInfoNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.BUILD_PARTITIONED_ACCELERATION_STRUCTURE_INFO_NV);
+        return ret;
     }
 
     public static VkBuildPartitionedAccelerationStructureInfoNV[] allocate(Arena arena, int count) {
@@ -41,6 +63,7 @@ public record VkBuildPartitionedAccelerationStructureInfoNV(@NotNull MemorySegme
         VkBuildPartitionedAccelerationStructureInfoNV[] ret = new VkBuildPartitionedAccelerationStructureInfoNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkBuildPartitionedAccelerationStructureInfoNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.BUILD_PARTITIONED_ACCELERATION_STRUCTURE_INFO_NV);
         }
         return ret;
     }
@@ -59,53 +82,9 @@ public record VkBuildPartitionedAccelerationStructureInfoNV(@NotNull MemorySegme
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        VkPartitionedAccelerationStructureInstancesInputNV.LAYOUT.withName("input"),
-        ValueLayout.JAVA_LONG.withName("srcAccelerationStructureData"),
-        ValueLayout.JAVA_LONG.withName("dstAccelerationStructureData"),
-        ValueLayout.JAVA_LONG.withName("scratchData"),
-        ValueLayout.JAVA_LONG.withName("srcInfos"),
-        ValueLayout.JAVA_LONG.withName("srcInfosCount")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$input = PathElement.groupElement("PATH$input");
-    public static final PathElement PATH$srcAccelerationStructureData = PathElement.groupElement("PATH$srcAccelerationStructureData");
-    public static final PathElement PATH$dstAccelerationStructureData = PathElement.groupElement("PATH$dstAccelerationStructureData");
-    public static final PathElement PATH$scratchData = PathElement.groupElement("PATH$scratchData");
-    public static final PathElement PATH$srcInfos = PathElement.groupElement("PATH$srcInfos");
-    public static final PathElement PATH$srcInfosCount = PathElement.groupElement("PATH$srcInfosCount");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$input = (StructLayout) LAYOUT.select(PATH$input);
-    public static final OfLong LAYOUT$srcAccelerationStructureData = (OfLong) LAYOUT.select(PATH$srcAccelerationStructureData);
-    public static final OfLong LAYOUT$dstAccelerationStructureData = (OfLong) LAYOUT.select(PATH$dstAccelerationStructureData);
-    public static final OfLong LAYOUT$scratchData = (OfLong) LAYOUT.select(PATH$scratchData);
-    public static final OfLong LAYOUT$srcInfos = (OfLong) LAYOUT.select(PATH$srcInfos);
-    public static final OfLong LAYOUT$srcInfosCount = (OfLong) LAYOUT.select(PATH$srcInfosCount);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$input = LAYOUT$input.byteSize();
-    public static final long SIZE$srcAccelerationStructureData = LAYOUT$srcAccelerationStructureData.byteSize();
-    public static final long SIZE$dstAccelerationStructureData = LAYOUT$dstAccelerationStructureData.byteSize();
-    public static final long SIZE$scratchData = LAYOUT$scratchData.byteSize();
-    public static final long SIZE$srcInfos = LAYOUT$srcInfos.byteSize();
-    public static final long SIZE$srcInfosCount = LAYOUT$srcInfosCount.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$input = LAYOUT.byteOffset(PATH$input);
-    public static final long OFFSET$srcAccelerationStructureData = LAYOUT.byteOffset(PATH$srcAccelerationStructureData);
-    public static final long OFFSET$dstAccelerationStructureData = LAYOUT.byteOffset(PATH$dstAccelerationStructureData);
-    public static final long OFFSET$scratchData = LAYOUT.byteOffset(PATH$scratchData);
-    public static final long OFFSET$srcInfos = LAYOUT.byteOffset(PATH$srcInfos);
-    public static final long OFFSET$srcInfosCount = LAYOUT.byteOffset(PATH$srcInfosCount);
+    public void autoInit() {
+        sType(VkStructureType.BUILD_PARTITIONED_ACCELERATION_STRUCTURE_INFO_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -175,4 +154,51 @@ public record VkBuildPartitionedAccelerationStructureInfoNV(@NotNull MemorySegme
         segment.set(LAYOUT$srcInfosCount, OFFSET$srcInfosCount, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkPartitionedAccelerationStructureInstancesInputNV.LAYOUT.withName("input"),
+        ValueLayout.JAVA_LONG.withName("srcAccelerationStructureData"),
+        ValueLayout.JAVA_LONG.withName("dstAccelerationStructureData"),
+        ValueLayout.JAVA_LONG.withName("scratchData"),
+        ValueLayout.JAVA_LONG.withName("srcInfos"),
+        ValueLayout.JAVA_LONG.withName("srcInfosCount")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$input = PathElement.groupElement("PATH$input");
+    public static final PathElement PATH$srcAccelerationStructureData = PathElement.groupElement("PATH$srcAccelerationStructureData");
+    public static final PathElement PATH$dstAccelerationStructureData = PathElement.groupElement("PATH$dstAccelerationStructureData");
+    public static final PathElement PATH$scratchData = PathElement.groupElement("PATH$scratchData");
+    public static final PathElement PATH$srcInfos = PathElement.groupElement("PATH$srcInfos");
+    public static final PathElement PATH$srcInfosCount = PathElement.groupElement("PATH$srcInfosCount");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$input = (StructLayout) LAYOUT.select(PATH$input);
+    public static final OfLong LAYOUT$srcAccelerationStructureData = (OfLong) LAYOUT.select(PATH$srcAccelerationStructureData);
+    public static final OfLong LAYOUT$dstAccelerationStructureData = (OfLong) LAYOUT.select(PATH$dstAccelerationStructureData);
+    public static final OfLong LAYOUT$scratchData = (OfLong) LAYOUT.select(PATH$scratchData);
+    public static final OfLong LAYOUT$srcInfos = (OfLong) LAYOUT.select(PATH$srcInfos);
+    public static final OfLong LAYOUT$srcInfosCount = (OfLong) LAYOUT.select(PATH$srcInfosCount);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$input = LAYOUT$input.byteSize();
+    public static final long SIZE$srcAccelerationStructureData = LAYOUT$srcAccelerationStructureData.byteSize();
+    public static final long SIZE$dstAccelerationStructureData = LAYOUT$dstAccelerationStructureData.byteSize();
+    public static final long SIZE$scratchData = LAYOUT$scratchData.byteSize();
+    public static final long SIZE$srcInfos = LAYOUT$srcInfos.byteSize();
+    public static final long SIZE$srcInfosCount = LAYOUT$srcInfosCount.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$input = LAYOUT.byteOffset(PATH$input);
+    public static final long OFFSET$srcAccelerationStructureData = LAYOUT.byteOffset(PATH$srcAccelerationStructureData);
+    public static final long OFFSET$dstAccelerationStructureData = LAYOUT.byteOffset(PATH$dstAccelerationStructureData);
+    public static final long OFFSET$scratchData = LAYOUT.byteOffset(PATH$scratchData);
+    public static final long OFFSET$srcInfos = LAYOUT.byteOffset(PATH$srcInfos);
+    public static final long OFFSET$srcInfosCount = LAYOUT.byteOffset(PATH$srcInfosCount);
 }

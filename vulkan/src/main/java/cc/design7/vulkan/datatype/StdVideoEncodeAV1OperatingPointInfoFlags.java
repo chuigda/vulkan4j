@@ -17,6 +17,18 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoEncodeAV1OperatingPointInfoFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoEncodeAV1OperatingPointInfoFlags {
+///     uint32_t decoder_model_present_for_this_op : 1;
+///     uint32_t low_delay_mode_flag : 1;
+///     uint32_t initial_display_delay_present_for_this_op : 1;
+///     uint32_t reserved : 29;
+/// } StdVideoEncodeAV1OperatingPointInfoFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +40,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeAV1OperatingPointInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeAV1OperatingPointInfoFlags allocate(Arena arena) {
-        return new StdVideoEncodeAV1OperatingPointInfoFlags(arena.allocate(LAYOUT));
+        StdVideoEncodeAV1OperatingPointInfoFlags ret = new StdVideoEncodeAV1OperatingPointInfoFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoEncodeAV1OperatingPointInfoFlags[] allocate(Arena arena, int count) {
@@ -53,18 +66,6 @@ public record StdVideoEncodeAV1OperatingPointInfoFlags(@NotNull MemorySegment se
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$decoder_model_present_for_this_op_reserved")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$decoder_model_present_for_this_op_reserved = PathElement.groupElement("PATH$bitfield$decoder_model_present_for_this_op_reserved");
-
-    public static final OfInt LAYOUT$decoder_model_present_for_this_op_reserved = (OfInt) LAYOUT.select(PATH$bitfield$decoder_model_present_for_this_op_reserved);
-
-
-    public static final long OFFSET$decoder_model_present_for_this_op_reserved = LAYOUT.byteOffset(PATH$bitfield$decoder_model_present_for_this_op_reserved);
 
     public boolean decoder_model_present_for_this_op() {
         MemorySegment s = segment.asSlice(OFFSET$decoder_model_present_for_this_op_reserved, LAYOUT$decoder_model_present_for_this_op_reserved);
@@ -96,5 +97,15 @@ public record StdVideoEncodeAV1OperatingPointInfoFlags(@NotNull MemorySegment se
         BitfieldUtil.writeBit(s, 2, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$decoder_model_present_for_this_op_reserved")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$bitfield$decoder_model_present_for_this_op_reserved = PathElement.groupElement("PATH$bitfield$decoder_model_present_for_this_op_reserved");
+
+    public static final OfInt LAYOUT$decoder_model_present_for_this_op_reserved = (OfInt) LAYOUT.select(PATH$bitfield$decoder_model_present_for_this_op_reserved);
+
+
+    public static final long OFFSET$decoder_model_present_for_this_op_reserved = LAYOUT.byteOffset(PATH$bitfield$decoder_model_present_for_this_op_reserved);
 }

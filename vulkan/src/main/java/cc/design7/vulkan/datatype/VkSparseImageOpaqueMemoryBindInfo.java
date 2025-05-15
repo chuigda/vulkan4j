@@ -14,8 +14,19 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkSparseImageOpaqueMemoryBindInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageOpaqueMemoryBindInfo.html"><code>VkSparseImageOpaqueMemoryBindInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkSparseImageOpaqueMemoryBindInfo {
+///     VkImage image;
+///     uint32_t bindCount;
+///     VkSparseMemoryBind const* pBinds;
+/// } VkSparseImageOpaqueMemoryBindInfo;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +35,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageOpaqueMemoryBindInfo.html">VkSparseImageOpaqueMemoryBindInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageOpaqueMemoryBindInfo.html"><code>VkSparseImageOpaqueMemoryBindInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkSparseImageOpaqueMemoryBindInfo(@NotNull MemorySegment segment) implements IPointer {
     public static VkSparseImageOpaqueMemoryBindInfo allocate(Arena arena) {
-        return new VkSparseImageOpaqueMemoryBindInfo(arena.allocate(LAYOUT));
+        VkSparseImageOpaqueMemoryBindInfo ret = new VkSparseImageOpaqueMemoryBindInfo(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkSparseImageOpaqueMemoryBindInfo[] allocate(Arena arena, int count) {
@@ -55,32 +67,9 @@ public record VkSparseImageOpaqueMemoryBindInfo(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.ADDRESS.withName("image"),
-        ValueLayout.JAVA_INT.withName("bindCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkSparseMemoryBind.LAYOUT).withName("pBinds")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$image = PathElement.groupElement("PATH$image");
-    public static final PathElement PATH$bindCount = PathElement.groupElement("PATH$bindCount");
-    public static final PathElement PATH$pBinds = PathElement.groupElement("PATH$pBinds");
-
-    public static final AddressLayout LAYOUT$image = (AddressLayout) LAYOUT.select(PATH$image);
-    public static final OfInt LAYOUT$bindCount = (OfInt) LAYOUT.select(PATH$bindCount);
-    public static final AddressLayout LAYOUT$pBinds = (AddressLayout) LAYOUT.select(PATH$pBinds);
-
-    public static final long SIZE$image = LAYOUT$image.byteSize();
-    public static final long SIZE$bindCount = LAYOUT$bindCount.byteSize();
-    public static final long SIZE$pBinds = LAYOUT$pBinds.byteSize();
-
-    public static final long OFFSET$image = LAYOUT.byteOffset(PATH$image);
-    public static final long OFFSET$bindCount = LAYOUT.byteOffset(PATH$bindCount);
-    public static final long OFFSET$pBinds = LAYOUT.byteOffset(PATH$pBinds);
-
     public @Nullable VkImage image() {
         MemorySegment s = segment.asSlice(OFFSET$image, SIZE$image);
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkImage(s);
@@ -108,7 +97,7 @@ public record VkSparseImageOpaqueMemoryBindInfo(@NotNull MemorySegment segment) 
 
     public @Nullable VkSparseMemoryBind pBinds() {
         MemorySegment s = pBindsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkSparseMemoryBind(s);
@@ -121,7 +110,7 @@ public record VkSparseImageOpaqueMemoryBindInfo(@NotNull MemorySegment segment) 
 
     @unsafe public @Nullable VkSparseMemoryBind[] pBinds(int assumedCount) {
         MemorySegment s = pBindsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -133,4 +122,26 @@ public record VkSparseImageOpaqueMemoryBindInfo(@NotNull MemorySegment segment) 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withName("image"),
+        ValueLayout.JAVA_INT.withName("bindCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkSparseMemoryBind.LAYOUT).withName("pBinds")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$image = PathElement.groupElement("PATH$image");
+    public static final PathElement PATH$bindCount = PathElement.groupElement("PATH$bindCount");
+    public static final PathElement PATH$pBinds = PathElement.groupElement("PATH$pBinds");
+
+    public static final AddressLayout LAYOUT$image = (AddressLayout) LAYOUT.select(PATH$image);
+    public static final OfInt LAYOUT$bindCount = (OfInt) LAYOUT.select(PATH$bindCount);
+    public static final AddressLayout LAYOUT$pBinds = (AddressLayout) LAYOUT.select(PATH$pBinds);
+
+    public static final long SIZE$image = LAYOUT$image.byteSize();
+    public static final long SIZE$bindCount = LAYOUT$bindCount.byteSize();
+    public static final long SIZE$pBinds = LAYOUT$pBinds.byteSize();
+
+    public static final long OFFSET$image = LAYOUT.byteOffset(PATH$image);
+    public static final long OFFSET$bindCount = LAYOUT.byteOffset(PATH$bindCount);
+    public static final long OFFSET$pBinds = LAYOUT.byteOffset(PATH$pBinds);
 }

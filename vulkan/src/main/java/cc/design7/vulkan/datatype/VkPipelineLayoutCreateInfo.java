@@ -14,8 +14,31 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPipelineLayoutCreateInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineLayoutCreateInfo.html"><code>VkPipelineLayoutCreateInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPipelineLayoutCreateInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkPipelineLayoutCreateFlags flags;
+///     uint32_t setLayoutCount;
+///     VkDescriptorSetLayout const* pSetLayouts;
+///     uint32_t pushConstantRangeCount;
+///     VkPushConstantRange const* pPushConstantRanges;
+/// } VkPipelineLayoutCreateInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO`
+///
+/// The {@link VkPipelineLayoutCreateInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPipelineLayoutCreateInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +47,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineLayoutCreateInfo.html">VkPipelineLayoutCreateInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineLayoutCreateInfo.html"><code>VkPipelineLayoutCreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkPipelineLayoutCreateInfo {
-        sType(VkStructureType.PIPELINE_LAYOUT_CREATE_INFO);
-    }
-
     public static VkPipelineLayoutCreateInfo allocate(Arena arena) {
-        return new VkPipelineLayoutCreateInfo(arena.allocate(LAYOUT));
+        VkPipelineLayoutCreateInfo ret = new VkPipelineLayoutCreateInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PIPELINE_LAYOUT_CREATE_INFO);
+        return ret;
     }
 
     public static VkPipelineLayoutCreateInfo[] allocate(Arena arena, int count) {
@@ -41,6 +62,7 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         VkPipelineLayoutCreateInfo[] ret = new VkPipelineLayoutCreateInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPipelineLayoutCreateInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PIPELINE_LAYOUT_CREATE_INFO);
         }
         return ret;
     }
@@ -59,48 +81,9 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("setLayoutCount"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pSetLayouts"),
-        ValueLayout.JAVA_INT.withName("pushConstantRangeCount"),
-        ValueLayout.ADDRESS.withTargetLayout(VkPushConstantRange.LAYOUT).withName("pPushConstantRanges")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$setLayoutCount = PathElement.groupElement("PATH$setLayoutCount");
-    public static final PathElement PATH$pSetLayouts = PathElement.groupElement("PATH$pSetLayouts");
-    public static final PathElement PATH$pushConstantRangeCount = PathElement.groupElement("PATH$pushConstantRangeCount");
-    public static final PathElement PATH$pPushConstantRanges = PathElement.groupElement("PATH$pPushConstantRanges");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$setLayoutCount = (OfInt) LAYOUT.select(PATH$setLayoutCount);
-    public static final AddressLayout LAYOUT$pSetLayouts = (AddressLayout) LAYOUT.select(PATH$pSetLayouts);
-    public static final OfInt LAYOUT$pushConstantRangeCount = (OfInt) LAYOUT.select(PATH$pushConstantRangeCount);
-    public static final AddressLayout LAYOUT$pPushConstantRanges = (AddressLayout) LAYOUT.select(PATH$pPushConstantRanges);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$setLayoutCount = LAYOUT$setLayoutCount.byteSize();
-    public static final long SIZE$pSetLayouts = LAYOUT$pSetLayouts.byteSize();
-    public static final long SIZE$pushConstantRangeCount = LAYOUT$pushConstantRangeCount.byteSize();
-    public static final long SIZE$pPushConstantRanges = LAYOUT$pPushConstantRanges.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$setLayoutCount = LAYOUT.byteOffset(PATH$setLayoutCount);
-    public static final long OFFSET$pSetLayouts = LAYOUT.byteOffset(PATH$pSetLayouts);
-    public static final long OFFSET$pushConstantRangeCount = LAYOUT.byteOffset(PATH$pushConstantRangeCount);
-    public static final long OFFSET$pPushConstantRanges = LAYOUT.byteOffset(PATH$pPushConstantRanges);
+    public void autoInit() {
+        sType(VkStructureType.PIPELINE_LAYOUT_CREATE_INFO);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -152,7 +135,7 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
     /// buffer.
     public @Nullable VkDescriptorSetLayout.Buffer pSetLayouts() {
         MemorySegment s = pSetLayoutsRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkDescriptorSetLayout.Buffer(s);
@@ -177,7 +160,7 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
 
     public @Nullable VkPushConstantRange pPushConstantRanges() {
         MemorySegment s = pPushConstantRangesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
         return new VkPushConstantRange(s);
@@ -190,7 +173,7 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
 
     @unsafe public @Nullable VkPushConstantRange[] pPushConstantRanges(int assumedCount) {
         MemorySegment s = pPushConstantRangesRaw();
-        if (s.address() == 0) {
+        if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
@@ -202,4 +185,46 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("setLayoutCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pSetLayouts"),
+        ValueLayout.JAVA_INT.withName("pushConstantRangeCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPushConstantRange.LAYOUT).withName("pPushConstantRanges")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$setLayoutCount = PathElement.groupElement("PATH$setLayoutCount");
+    public static final PathElement PATH$pSetLayouts = PathElement.groupElement("PATH$pSetLayouts");
+    public static final PathElement PATH$pushConstantRangeCount = PathElement.groupElement("PATH$pushConstantRangeCount");
+    public static final PathElement PATH$pPushConstantRanges = PathElement.groupElement("PATH$pPushConstantRanges");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$setLayoutCount = (OfInt) LAYOUT.select(PATH$setLayoutCount);
+    public static final AddressLayout LAYOUT$pSetLayouts = (AddressLayout) LAYOUT.select(PATH$pSetLayouts);
+    public static final OfInt LAYOUT$pushConstantRangeCount = (OfInt) LAYOUT.select(PATH$pushConstantRangeCount);
+    public static final AddressLayout LAYOUT$pPushConstantRanges = (AddressLayout) LAYOUT.select(PATH$pPushConstantRanges);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$setLayoutCount = LAYOUT$setLayoutCount.byteSize();
+    public static final long SIZE$pSetLayouts = LAYOUT$pSetLayouts.byteSize();
+    public static final long SIZE$pushConstantRangeCount = LAYOUT$pushConstantRangeCount.byteSize();
+    public static final long SIZE$pPushConstantRanges = LAYOUT$pPushConstantRanges.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$setLayoutCount = LAYOUT.byteOffset(PATH$setLayoutCount);
+    public static final long OFFSET$pSetLayouts = LAYOUT.byteOffset(PATH$pSetLayouts);
+    public static final long OFFSET$pushConstantRangeCount = LAYOUT.byteOffset(PATH$pushConstantRangeCount);
+    public static final long OFFSET$pPushConstantRanges = LAYOUT.byteOffset(PATH$pPushConstantRanges);
 }

@@ -2,7 +2,7 @@ package cc.design7.vulkan.enumtype;
 
 import cc.design7.ffm.annotation.*;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyMicromapModeEXT.html">VkCopyMicromapModeEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyMicromapModeEXT.html"><code>VkCopyMicromapModeEXT</code></a>
 public final class VkCopyMicromapModeEXT {
     public static final int CLONE = 0x0;
     public static final int SERIALIZE = 0x1;

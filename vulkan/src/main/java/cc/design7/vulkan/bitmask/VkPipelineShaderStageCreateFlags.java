@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineShaderStageCreateFlags.html">VkPipelineShaderStageCreateFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineShaderStageCreateFlags.html"><code>VkPipelineShaderStageCreateFlags</code></a>
 public final class VkPipelineShaderStageCreateFlags {
     public static final int ALLOW_VARYING_SUBGROUP_SIZE = 0x1;
     public static final int REQUIRE_FULL_SUBGROUPS = 0x2;

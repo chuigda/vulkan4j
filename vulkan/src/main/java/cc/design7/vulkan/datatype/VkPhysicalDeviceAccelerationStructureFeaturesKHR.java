@@ -14,8 +14,31 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceAccelerationStructureFeaturesKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceAccelerationStructureFeaturesKHR.html"><code>VkPhysicalDeviceAccelerationStructureFeaturesKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceAccelerationStructureFeaturesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 accelerationStructure;
+///     VkBool32 accelerationStructureCaptureReplay;
+///     VkBool32 accelerationStructureIndirectBuild;
+///     VkBool32 accelerationStructureHostCommands;
+///     VkBool32 descriptorBindingAccelerationStructureUpdateAfterBind;
+/// } VkPhysicalDeviceAccelerationStructureFeaturesKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_FEATURES_KHR`
+///
+/// The {@link VkPhysicalDeviceAccelerationStructureFeaturesKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceAccelerationStructureFeaturesKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +47,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceAccelerationStructureFeaturesKHR.html">VkPhysicalDeviceAccelerationStructureFeaturesKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceAccelerationStructureFeaturesKHR.html"><code>VkPhysicalDeviceAccelerationStructureFeaturesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR {
-        sType(VkStructureType.PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_FEATURES_KHR);
-    }
-
     public static VkPhysicalDeviceAccelerationStructureFeaturesKHR allocate(Arena arena) {
-        return new VkPhysicalDeviceAccelerationStructureFeaturesKHR(arena.allocate(LAYOUT));
+        VkPhysicalDeviceAccelerationStructureFeaturesKHR ret = new VkPhysicalDeviceAccelerationStructureFeaturesKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_FEATURES_KHR);
+        return ret;
     }
 
     public static VkPhysicalDeviceAccelerationStructureFeaturesKHR[] allocate(Arena arena, int count) {
@@ -41,6 +62,7 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(@NotNull MemorySe
         VkPhysicalDeviceAccelerationStructureFeaturesKHR[] ret = new VkPhysicalDeviceAccelerationStructureFeaturesKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceAccelerationStructureFeaturesKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_FEATURES_KHR);
         }
         return ret;
     }
@@ -59,48 +81,9 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(@NotNull MemorySe
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("accelerationStructure"),
-        ValueLayout.JAVA_INT.withName("accelerationStructureCaptureReplay"),
-        ValueLayout.JAVA_INT.withName("accelerationStructureIndirectBuild"),
-        ValueLayout.JAVA_INT.withName("accelerationStructureHostCommands"),
-        ValueLayout.JAVA_INT.withName("descriptorBindingAccelerationStructureUpdateAfterBind")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$accelerationStructure = PathElement.groupElement("PATH$accelerationStructure");
-    public static final PathElement PATH$accelerationStructureCaptureReplay = PathElement.groupElement("PATH$accelerationStructureCaptureReplay");
-    public static final PathElement PATH$accelerationStructureIndirectBuild = PathElement.groupElement("PATH$accelerationStructureIndirectBuild");
-    public static final PathElement PATH$accelerationStructureHostCommands = PathElement.groupElement("PATH$accelerationStructureHostCommands");
-    public static final PathElement PATH$descriptorBindingAccelerationStructureUpdateAfterBind = PathElement.groupElement("PATH$descriptorBindingAccelerationStructureUpdateAfterBind");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$accelerationStructure = (OfInt) LAYOUT.select(PATH$accelerationStructure);
-    public static final OfInt LAYOUT$accelerationStructureCaptureReplay = (OfInt) LAYOUT.select(PATH$accelerationStructureCaptureReplay);
-    public static final OfInt LAYOUT$accelerationStructureIndirectBuild = (OfInt) LAYOUT.select(PATH$accelerationStructureIndirectBuild);
-    public static final OfInt LAYOUT$accelerationStructureHostCommands = (OfInt) LAYOUT.select(PATH$accelerationStructureHostCommands);
-    public static final OfInt LAYOUT$descriptorBindingAccelerationStructureUpdateAfterBind = (OfInt) LAYOUT.select(PATH$descriptorBindingAccelerationStructureUpdateAfterBind);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$accelerationStructure = LAYOUT$accelerationStructure.byteSize();
-    public static final long SIZE$accelerationStructureCaptureReplay = LAYOUT$accelerationStructureCaptureReplay.byteSize();
-    public static final long SIZE$accelerationStructureIndirectBuild = LAYOUT$accelerationStructureIndirectBuild.byteSize();
-    public static final long SIZE$accelerationStructureHostCommands = LAYOUT$accelerationStructureHostCommands.byteSize();
-    public static final long SIZE$descriptorBindingAccelerationStructureUpdateAfterBind = LAYOUT$descriptorBindingAccelerationStructureUpdateAfterBind.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$accelerationStructure = LAYOUT.byteOffset(PATH$accelerationStructure);
-    public static final long OFFSET$accelerationStructureCaptureReplay = LAYOUT.byteOffset(PATH$accelerationStructureCaptureReplay);
-    public static final long OFFSET$accelerationStructureIndirectBuild = LAYOUT.byteOffset(PATH$accelerationStructureIndirectBuild);
-    public static final long OFFSET$accelerationStructureHostCommands = LAYOUT.byteOffset(PATH$accelerationStructureHostCommands);
-    public static final long OFFSET$descriptorBindingAccelerationStructureUpdateAfterBind = LAYOUT.byteOffset(PATH$descriptorBindingAccelerationStructureUpdateAfterBind);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_FEATURES_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -162,4 +145,46 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(@NotNull MemorySe
         segment.set(LAYOUT$descriptorBindingAccelerationStructureUpdateAfterBind, OFFSET$descriptorBindingAccelerationStructureUpdateAfterBind, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("accelerationStructure"),
+        ValueLayout.JAVA_INT.withName("accelerationStructureCaptureReplay"),
+        ValueLayout.JAVA_INT.withName("accelerationStructureIndirectBuild"),
+        ValueLayout.JAVA_INT.withName("accelerationStructureHostCommands"),
+        ValueLayout.JAVA_INT.withName("descriptorBindingAccelerationStructureUpdateAfterBind")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$accelerationStructure = PathElement.groupElement("PATH$accelerationStructure");
+    public static final PathElement PATH$accelerationStructureCaptureReplay = PathElement.groupElement("PATH$accelerationStructureCaptureReplay");
+    public static final PathElement PATH$accelerationStructureIndirectBuild = PathElement.groupElement("PATH$accelerationStructureIndirectBuild");
+    public static final PathElement PATH$accelerationStructureHostCommands = PathElement.groupElement("PATH$accelerationStructureHostCommands");
+    public static final PathElement PATH$descriptorBindingAccelerationStructureUpdateAfterBind = PathElement.groupElement("PATH$descriptorBindingAccelerationStructureUpdateAfterBind");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$accelerationStructure = (OfInt) LAYOUT.select(PATH$accelerationStructure);
+    public static final OfInt LAYOUT$accelerationStructureCaptureReplay = (OfInt) LAYOUT.select(PATH$accelerationStructureCaptureReplay);
+    public static final OfInt LAYOUT$accelerationStructureIndirectBuild = (OfInt) LAYOUT.select(PATH$accelerationStructureIndirectBuild);
+    public static final OfInt LAYOUT$accelerationStructureHostCommands = (OfInt) LAYOUT.select(PATH$accelerationStructureHostCommands);
+    public static final OfInt LAYOUT$descriptorBindingAccelerationStructureUpdateAfterBind = (OfInt) LAYOUT.select(PATH$descriptorBindingAccelerationStructureUpdateAfterBind);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$accelerationStructure = LAYOUT$accelerationStructure.byteSize();
+    public static final long SIZE$accelerationStructureCaptureReplay = LAYOUT$accelerationStructureCaptureReplay.byteSize();
+    public static final long SIZE$accelerationStructureIndirectBuild = LAYOUT$accelerationStructureIndirectBuild.byteSize();
+    public static final long SIZE$accelerationStructureHostCommands = LAYOUT$accelerationStructureHostCommands.byteSize();
+    public static final long SIZE$descriptorBindingAccelerationStructureUpdateAfterBind = LAYOUT$descriptorBindingAccelerationStructureUpdateAfterBind.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$accelerationStructure = LAYOUT.byteOffset(PATH$accelerationStructure);
+    public static final long OFFSET$accelerationStructureCaptureReplay = LAYOUT.byteOffset(PATH$accelerationStructureCaptureReplay);
+    public static final long OFFSET$accelerationStructureIndirectBuild = LAYOUT.byteOffset(PATH$accelerationStructureIndirectBuild);
+    public static final long OFFSET$accelerationStructureHostCommands = LAYOUT.byteOffset(PATH$accelerationStructureHostCommands);
+    public static final long OFFSET$descriptorBindingAccelerationStructureUpdateAfterBind = LAYOUT.byteOffset(PATH$descriptorBindingAccelerationStructureUpdateAfterBind);
 }

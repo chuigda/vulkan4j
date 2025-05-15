@@ -16,6 +16,20 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoAV1CDEF} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoAV1CDEF {
+///     uint8_t cdef_damping_minus_3;
+///     uint8_t cdef_bits;
+///     uint8_t cdef_y_pri_strength;
+///     uint8_t cdef_y_sec_strength;
+///     uint8_t cdef_uv_pri_strength;
+///     uint8_t cdef_uv_sec_strength;
+/// } StdVideoAV1CDEF;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +41,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1CDEF allocate(Arena arena) {
-        return new StdVideoAV1CDEF(arena.allocate(LAYOUT));
+        StdVideoAV1CDEF ret = new StdVideoAV1CDEF(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoAV1CDEF[] allocate(Arena arena, int count) {
@@ -52,44 +67,6 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IPointe
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_BYTE.withName("cdef_damping_minus_3"),
-        ValueLayout.JAVA_BYTE.withName("cdef_bits"),
-        ValueLayout.JAVA_BYTE.withName("cdef_y_pri_strength"),
-        ValueLayout.JAVA_BYTE.withName("cdef_y_sec_strength"),
-        ValueLayout.JAVA_BYTE.withName("cdef_uv_pri_strength"),
-        ValueLayout.JAVA_BYTE.withName("cdef_uv_sec_strength")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$cdef_damping_minus_3 = PathElement.groupElement("PATH$cdef_damping_minus_3");
-    public static final PathElement PATH$cdef_bits = PathElement.groupElement("PATH$cdef_bits");
-    public static final PathElement PATH$cdef_y_pri_strength = PathElement.groupElement("PATH$cdef_y_pri_strength");
-    public static final PathElement PATH$cdef_y_sec_strength = PathElement.groupElement("PATH$cdef_y_sec_strength");
-    public static final PathElement PATH$cdef_uv_pri_strength = PathElement.groupElement("PATH$cdef_uv_pri_strength");
-    public static final PathElement PATH$cdef_uv_sec_strength = PathElement.groupElement("PATH$cdef_uv_sec_strength");
-
-    public static final OfByte LAYOUT$cdef_damping_minus_3 = (OfByte) LAYOUT.select(PATH$cdef_damping_minus_3);
-    public static final OfByte LAYOUT$cdef_bits = (OfByte) LAYOUT.select(PATH$cdef_bits);
-    public static final OfByte LAYOUT$cdef_y_pri_strength = (OfByte) LAYOUT.select(PATH$cdef_y_pri_strength);
-    public static final OfByte LAYOUT$cdef_y_sec_strength = (OfByte) LAYOUT.select(PATH$cdef_y_sec_strength);
-    public static final OfByte LAYOUT$cdef_uv_pri_strength = (OfByte) LAYOUT.select(PATH$cdef_uv_pri_strength);
-    public static final OfByte LAYOUT$cdef_uv_sec_strength = (OfByte) LAYOUT.select(PATH$cdef_uv_sec_strength);
-
-    public static final long SIZE$cdef_damping_minus_3 = LAYOUT$cdef_damping_minus_3.byteSize();
-    public static final long SIZE$cdef_bits = LAYOUT$cdef_bits.byteSize();
-    public static final long SIZE$cdef_y_pri_strength = LAYOUT$cdef_y_pri_strength.byteSize();
-    public static final long SIZE$cdef_y_sec_strength = LAYOUT$cdef_y_sec_strength.byteSize();
-    public static final long SIZE$cdef_uv_pri_strength = LAYOUT$cdef_uv_pri_strength.byteSize();
-    public static final long SIZE$cdef_uv_sec_strength = LAYOUT$cdef_uv_sec_strength.byteSize();
-
-    public static final long OFFSET$cdef_damping_minus_3 = LAYOUT.byteOffset(PATH$cdef_damping_minus_3);
-    public static final long OFFSET$cdef_bits = LAYOUT.byteOffset(PATH$cdef_bits);
-    public static final long OFFSET$cdef_y_pri_strength = LAYOUT.byteOffset(PATH$cdef_y_pri_strength);
-    public static final long OFFSET$cdef_y_sec_strength = LAYOUT.byteOffset(PATH$cdef_y_sec_strength);
-    public static final long OFFSET$cdef_uv_pri_strength = LAYOUT.byteOffset(PATH$cdef_uv_pri_strength);
-    public static final long OFFSET$cdef_uv_sec_strength = LAYOUT.byteOffset(PATH$cdef_uv_sec_strength);
 
     public @unsigned byte cdef_damping_minus_3() {
         return segment.get(LAYOUT$cdef_damping_minus_3, OFFSET$cdef_damping_minus_3);
@@ -139,4 +116,41 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IPointe
         segment.set(LAYOUT$cdef_uv_sec_strength, OFFSET$cdef_uv_sec_strength, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_BYTE.withName("cdef_damping_minus_3"),
+        ValueLayout.JAVA_BYTE.withName("cdef_bits"),
+        ValueLayout.JAVA_BYTE.withName("cdef_y_pri_strength"),
+        ValueLayout.JAVA_BYTE.withName("cdef_y_sec_strength"),
+        ValueLayout.JAVA_BYTE.withName("cdef_uv_pri_strength"),
+        ValueLayout.JAVA_BYTE.withName("cdef_uv_sec_strength")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$cdef_damping_minus_3 = PathElement.groupElement("PATH$cdef_damping_minus_3");
+    public static final PathElement PATH$cdef_bits = PathElement.groupElement("PATH$cdef_bits");
+    public static final PathElement PATH$cdef_y_pri_strength = PathElement.groupElement("PATH$cdef_y_pri_strength");
+    public static final PathElement PATH$cdef_y_sec_strength = PathElement.groupElement("PATH$cdef_y_sec_strength");
+    public static final PathElement PATH$cdef_uv_pri_strength = PathElement.groupElement("PATH$cdef_uv_pri_strength");
+    public static final PathElement PATH$cdef_uv_sec_strength = PathElement.groupElement("PATH$cdef_uv_sec_strength");
+
+    public static final OfByte LAYOUT$cdef_damping_minus_3 = (OfByte) LAYOUT.select(PATH$cdef_damping_minus_3);
+    public static final OfByte LAYOUT$cdef_bits = (OfByte) LAYOUT.select(PATH$cdef_bits);
+    public static final OfByte LAYOUT$cdef_y_pri_strength = (OfByte) LAYOUT.select(PATH$cdef_y_pri_strength);
+    public static final OfByte LAYOUT$cdef_y_sec_strength = (OfByte) LAYOUT.select(PATH$cdef_y_sec_strength);
+    public static final OfByte LAYOUT$cdef_uv_pri_strength = (OfByte) LAYOUT.select(PATH$cdef_uv_pri_strength);
+    public static final OfByte LAYOUT$cdef_uv_sec_strength = (OfByte) LAYOUT.select(PATH$cdef_uv_sec_strength);
+
+    public static final long SIZE$cdef_damping_minus_3 = LAYOUT$cdef_damping_minus_3.byteSize();
+    public static final long SIZE$cdef_bits = LAYOUT$cdef_bits.byteSize();
+    public static final long SIZE$cdef_y_pri_strength = LAYOUT$cdef_y_pri_strength.byteSize();
+    public static final long SIZE$cdef_y_sec_strength = LAYOUT$cdef_y_sec_strength.byteSize();
+    public static final long SIZE$cdef_uv_pri_strength = LAYOUT$cdef_uv_pri_strength.byteSize();
+    public static final long SIZE$cdef_uv_sec_strength = LAYOUT$cdef_uv_sec_strength.byteSize();
+
+    public static final long OFFSET$cdef_damping_minus_3 = LAYOUT.byteOffset(PATH$cdef_damping_minus_3);
+    public static final long OFFSET$cdef_bits = LAYOUT.byteOffset(PATH$cdef_bits);
+    public static final long OFFSET$cdef_y_pri_strength = LAYOUT.byteOffset(PATH$cdef_y_pri_strength);
+    public static final long OFFSET$cdef_y_sec_strength = LAYOUT.byteOffset(PATH$cdef_y_sec_strength);
+    public static final long OFFSET$cdef_uv_pri_strength = LAYOUT.byteOffset(PATH$cdef_uv_pri_strength);
+    public static final long OFFSET$cdef_uv_sec_strength = LAYOUT.byteOffset(PATH$cdef_uv_sec_strength);
 }

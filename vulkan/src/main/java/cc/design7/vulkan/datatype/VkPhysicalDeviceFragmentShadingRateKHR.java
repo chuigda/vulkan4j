@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceFragmentShadingRateKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFragmentShadingRateKHR.html"><code>VkPhysicalDeviceFragmentShadingRateKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceFragmentShadingRateKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkSampleCountFlags sampleCounts;
+///     VkExtent2D fragmentSize;
+/// } VkPhysicalDeviceFragmentShadingRateKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_KHR`
+///
+/// The {@link VkPhysicalDeviceFragmentShadingRateKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceFragmentShadingRateKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFragmentShadingRateKHR.html">VkPhysicalDeviceFragmentShadingRateKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFragmentShadingRateKHR.html"><code>VkPhysicalDeviceFragmentShadingRateKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceFragmentShadingRateKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceFragmentShadingRateKHR {
-        sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_KHR);
-    }
-
     public static VkPhysicalDeviceFragmentShadingRateKHR allocate(Arena arena) {
-        return new VkPhysicalDeviceFragmentShadingRateKHR(arena.allocate(LAYOUT));
+        VkPhysicalDeviceFragmentShadingRateKHR ret = new VkPhysicalDeviceFragmentShadingRateKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_KHR);
+        return ret;
     }
 
     public static VkPhysicalDeviceFragmentShadingRateKHR[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkPhysicalDeviceFragmentShadingRateKHR(@NotNull MemorySegment segm
         VkPhysicalDeviceFragmentShadingRateKHR[] ret = new VkPhysicalDeviceFragmentShadingRateKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceFragmentShadingRateKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_KHR);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkPhysicalDeviceFragmentShadingRateKHR(@NotNull MemorySegment segm
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("sampleCounts"),
-        VkExtent2D.LAYOUT.withName("fragmentSize")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$sampleCounts = PathElement.groupElement("PATH$sampleCounts");
-    public static final PathElement PATH$fragmentSize = PathElement.groupElement("PATH$fragmentSize");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$sampleCounts = (OfInt) LAYOUT.select(PATH$sampleCounts);
-    public static final StructLayout LAYOUT$fragmentSize = (StructLayout) LAYOUT.select(PATH$fragmentSize);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$sampleCounts = LAYOUT$sampleCounts.byteSize();
-    public static final long SIZE$fragmentSize = LAYOUT$fragmentSize.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$sampleCounts = LAYOUT.byteOffset(PATH$sampleCounts);
-    public static final long OFFSET$fragmentSize = LAYOUT.byteOffset(PATH$fragmentSize);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -123,4 +118,31 @@ public record VkPhysicalDeviceFragmentShadingRateKHR(@NotNull MemorySegment segm
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$fragmentSize, SIZE$fragmentSize);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("sampleCounts"),
+        VkExtent2D.LAYOUT.withName("fragmentSize")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$sampleCounts = PathElement.groupElement("PATH$sampleCounts");
+    public static final PathElement PATH$fragmentSize = PathElement.groupElement("PATH$fragmentSize");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$sampleCounts = (OfInt) LAYOUT.select(PATH$sampleCounts);
+    public static final StructLayout LAYOUT$fragmentSize = (StructLayout) LAYOUT.select(PATH$fragmentSize);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$sampleCounts = LAYOUT$sampleCounts.byteSize();
+    public static final long SIZE$fragmentSize = LAYOUT$fragmentSize.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$sampleCounts = LAYOUT.byteOffset(PATH$sampleCounts);
+    public static final long OFFSET$fragmentSize = LAYOUT.byteOffset(PATH$fragmentSize);
 }

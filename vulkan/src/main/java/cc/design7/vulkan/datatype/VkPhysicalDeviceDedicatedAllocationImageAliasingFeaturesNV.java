@@ -14,8 +14,27 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.html"><code>VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 dedicatedAllocationImageAliasing;
+/// } VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV`
+///
+/// The {@link VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +43,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.html">VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.html"><code>VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(@NotNull MemorySegment segment) implements IPointer {
-    public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
-        sType(VkStructureType.PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV);
-    }
-
     public static VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV allocate(Arena arena) {
-        return new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(arena.allocate(LAYOUT));
+        VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV ret = new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV);
+        return ret;
     }
 
     public static VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV[] allocate(Arena arena, int count) {
@@ -41,6 +58,7 @@ public record VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(@NotNul
         VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV[] ret = new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV);
         }
         return ret;
     }
@@ -59,28 +77,9 @@ public record VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(@NotNul
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("dedicatedAllocationImageAliasing")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$dedicatedAllocationImageAliasing = PathElement.groupElement("PATH$dedicatedAllocationImageAliasing");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$dedicatedAllocationImageAliasing = (OfInt) LAYOUT.select(PATH$dedicatedAllocationImageAliasing);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$dedicatedAllocationImageAliasing = LAYOUT$dedicatedAllocationImageAliasing.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$dedicatedAllocationImageAliasing = LAYOUT.byteOffset(PATH$dedicatedAllocationImageAliasing);
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -110,4 +109,26 @@ public record VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(@NotNul
         segment.set(LAYOUT$dedicatedAllocationImageAliasing, OFFSET$dedicatedAllocationImageAliasing, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("dedicatedAllocationImageAliasing")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$dedicatedAllocationImageAliasing = PathElement.groupElement("PATH$dedicatedAllocationImageAliasing");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$dedicatedAllocationImageAliasing = (OfInt) LAYOUT.select(PATH$dedicatedAllocationImageAliasing);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$dedicatedAllocationImageAliasing = LAYOUT$dedicatedAllocationImageAliasing.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$dedicatedAllocationImageAliasing = LAYOUT.byteOffset(PATH$dedicatedAllocationImageAliasing);
 }

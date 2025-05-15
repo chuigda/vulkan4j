@@ -17,6 +17,17 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoAV1QuantizationFlags} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoAV1QuantizationFlags {
+///     uint32_t using_qmatrix : 1;
+///     uint32_t diff_uv_delta : 1;
+///     uint32_t reserved : 30;
+/// } StdVideoAV1QuantizationFlags;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -28,7 +39,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1QuantizationFlags allocate(Arena arena) {
-        return new StdVideoAV1QuantizationFlags(arena.allocate(LAYOUT));
+        StdVideoAV1QuantizationFlags ret = new StdVideoAV1QuantizationFlags(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoAV1QuantizationFlags[] allocate(Arena arena, int count) {
@@ -54,18 +66,6 @@ public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) imple
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$using_qmatrix_reserved")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$bitfield$using_qmatrix_reserved = PathElement.groupElement("PATH$bitfield$using_qmatrix_reserved");
-
-    public static final OfInt LAYOUT$using_qmatrix_reserved = (OfInt) LAYOUT.select(PATH$bitfield$using_qmatrix_reserved);
-
-
-    public static final long OFFSET$using_qmatrix_reserved = LAYOUT.byteOffset(PATH$bitfield$using_qmatrix_reserved);
-
     public boolean using_qmatrix() {
         MemorySegment s = segment.asSlice(OFFSET$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
         return BitfieldUtil.readBit(s, 0);
@@ -86,5 +86,15 @@ public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) imple
         BitfieldUtil.writeBit(s, 1, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$using_qmatrix_reserved")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$bitfield$using_qmatrix_reserved = PathElement.groupElement("PATH$bitfield$using_qmatrix_reserved");
+
+    public static final OfInt LAYOUT$using_qmatrix_reserved = (OfInt) LAYOUT.select(PATH$bitfield$using_qmatrix_reserved);
+
+
+    public static final long OFFSET$using_qmatrix_reserved = LAYOUT.byteOffset(PATH$bitfield$using_qmatrix_reserved);
 }

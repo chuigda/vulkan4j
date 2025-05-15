@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkResolveModeFlags.html">VkResolveModeFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkResolveModeFlags.html"><code>VkResolveModeFlags</code></a>
 public final class VkResolveModeFlags {
     public static final int AVERAGE = 0x2;
     public static final int EXTERNAL_FORMAT_DOWNSAMPLE_ANDROID = 0x10;

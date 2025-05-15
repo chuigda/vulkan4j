@@ -14,8 +14,30 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkVideoProfileInfoKHR} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoProfileInfoKHR.html"><code>VkVideoProfileInfoKHR</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkVideoProfileInfoKHR {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkVideoCodecOperationFlagsKHR videoCodecOperation;
+///     VkVideoChromaSubsamplingFlagsKHR chromaSubsampling;
+///     VkVideoComponentBitDepthFlagsKHR lumaBitDepth;
+///     VkVideoComponentBitDepthFlagsKHR chromaBitDepth;
+/// } VkVideoProfileInfoKHR;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_VIDEO_PROFILE_INFO_KHR`
+///
+/// The {@link VkVideoProfileInfoKHR#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkVideoProfileInfoKHR#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +46,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoProfileInfoKHR.html">VkVideoProfileInfoKHR</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoProfileInfoKHR.html"><code>VkVideoProfileInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkVideoProfileInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public VkVideoProfileInfoKHR {
-        sType(VkStructureType.VIDEO_PROFILE_INFO_KHR);
-    }
-
     public static VkVideoProfileInfoKHR allocate(Arena arena) {
-        return new VkVideoProfileInfoKHR(arena.allocate(LAYOUT));
+        VkVideoProfileInfoKHR ret = new VkVideoProfileInfoKHR(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.VIDEO_PROFILE_INFO_KHR);
+        return ret;
     }
 
     public static VkVideoProfileInfoKHR[] allocate(Arena arena, int count) {
@@ -41,6 +61,7 @@ public record VkVideoProfileInfoKHR(@NotNull MemorySegment segment) implements I
         VkVideoProfileInfoKHR[] ret = new VkVideoProfileInfoKHR[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkVideoProfileInfoKHR(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.VIDEO_PROFILE_INFO_KHR);
         }
         return ret;
     }
@@ -59,43 +80,9 @@ public record VkVideoProfileInfoKHR(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("videoCodecOperation"),
-        ValueLayout.JAVA_INT.withName("chromaSubsampling"),
-        ValueLayout.JAVA_INT.withName("lumaBitDepth"),
-        ValueLayout.JAVA_INT.withName("chromaBitDepth")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$videoCodecOperation = PathElement.groupElement("PATH$videoCodecOperation");
-    public static final PathElement PATH$chromaSubsampling = PathElement.groupElement("PATH$chromaSubsampling");
-    public static final PathElement PATH$lumaBitDepth = PathElement.groupElement("PATH$lumaBitDepth");
-    public static final PathElement PATH$chromaBitDepth = PathElement.groupElement("PATH$chromaBitDepth");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$videoCodecOperation = (OfInt) LAYOUT.select(PATH$videoCodecOperation);
-    public static final OfInt LAYOUT$chromaSubsampling = (OfInt) LAYOUT.select(PATH$chromaSubsampling);
-    public static final OfInt LAYOUT$lumaBitDepth = (OfInt) LAYOUT.select(PATH$lumaBitDepth);
-    public static final OfInt LAYOUT$chromaBitDepth = (OfInt) LAYOUT.select(PATH$chromaBitDepth);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$videoCodecOperation = LAYOUT$videoCodecOperation.byteSize();
-    public static final long SIZE$chromaSubsampling = LAYOUT$chromaSubsampling.byteSize();
-    public static final long SIZE$lumaBitDepth = LAYOUT$lumaBitDepth.byteSize();
-    public static final long SIZE$chromaBitDepth = LAYOUT$chromaBitDepth.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$videoCodecOperation = LAYOUT.byteOffset(PATH$videoCodecOperation);
-    public static final long OFFSET$chromaSubsampling = LAYOUT.byteOffset(PATH$chromaSubsampling);
-    public static final long OFFSET$lumaBitDepth = LAYOUT.byteOffset(PATH$lumaBitDepth);
-    public static final long OFFSET$chromaBitDepth = LAYOUT.byteOffset(PATH$chromaBitDepth);
+    public void autoInit() {
+        sType(VkStructureType.VIDEO_PROFILE_INFO_KHR);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -149,4 +136,41 @@ public record VkVideoProfileInfoKHR(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$chromaBitDepth, OFFSET$chromaBitDepth, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("videoCodecOperation"),
+        ValueLayout.JAVA_INT.withName("chromaSubsampling"),
+        ValueLayout.JAVA_INT.withName("lumaBitDepth"),
+        ValueLayout.JAVA_INT.withName("chromaBitDepth")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$videoCodecOperation = PathElement.groupElement("PATH$videoCodecOperation");
+    public static final PathElement PATH$chromaSubsampling = PathElement.groupElement("PATH$chromaSubsampling");
+    public static final PathElement PATH$lumaBitDepth = PathElement.groupElement("PATH$lumaBitDepth");
+    public static final PathElement PATH$chromaBitDepth = PathElement.groupElement("PATH$chromaBitDepth");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$videoCodecOperation = (OfInt) LAYOUT.select(PATH$videoCodecOperation);
+    public static final OfInt LAYOUT$chromaSubsampling = (OfInt) LAYOUT.select(PATH$chromaSubsampling);
+    public static final OfInt LAYOUT$lumaBitDepth = (OfInt) LAYOUT.select(PATH$lumaBitDepth);
+    public static final OfInt LAYOUT$chromaBitDepth = (OfInt) LAYOUT.select(PATH$chromaBitDepth);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$videoCodecOperation = LAYOUT$videoCodecOperation.byteSize();
+    public static final long SIZE$chromaSubsampling = LAYOUT$chromaSubsampling.byteSize();
+    public static final long SIZE$lumaBitDepth = LAYOUT$lumaBitDepth.byteSize();
+    public static final long SIZE$chromaBitDepth = LAYOUT$chromaBitDepth.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$videoCodecOperation = LAYOUT.byteOffset(PATH$videoCodecOperation);
+    public static final long OFFSET$chromaSubsampling = LAYOUT.byteOffset(PATH$chromaSubsampling);
+    public static final long OFFSET$lumaBitDepth = LAYOUT.byteOffset(PATH$lumaBitDepth);
+    public static final long OFFSET$chromaBitDepth = LAYOUT.byteOffset(PATH$chromaBitDepth);
 }

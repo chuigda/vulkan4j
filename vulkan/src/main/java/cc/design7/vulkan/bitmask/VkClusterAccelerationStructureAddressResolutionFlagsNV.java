@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureAddressResolutionFlagsNV.html">VkClusterAccelerationStructureAddressResolutionFlagsNV</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureAddressResolutionFlagsNV.html"><code>VkClusterAccelerationStructureAddressResolutionFlagsNV</code></a>
 public final class VkClusterAccelerationStructureAddressResolutionFlagsNV {
     public static final int INDIRECTED_DST_ADDRESS_ARRAY = 0x4;
     public static final int INDIRECTED_DST_IMPLICIT_DATA = 0x1;

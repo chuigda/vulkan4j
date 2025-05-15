@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSchedulingControlsFlagsARM.html">VkPhysicalDeviceSchedulingControlsFlagsARM</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSchedulingControlsFlagsARM.html"><code>VkPhysicalDeviceSchedulingControlsFlagsARM</code></a>
 public final class VkPhysicalDeviceSchedulingControlsFlagsARM {
     public static final long SHADER_CORE_COUNT = 0x1L;
 

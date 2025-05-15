@@ -14,8 +14,28 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkImportMemoryMetalHandleInfoEXT} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportMemoryMetalHandleInfoEXT.html"><code>VkImportMemoryMetalHandleInfoEXT</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkImportMemoryMetalHandleInfoEXT {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkExternalMemoryHandleTypeFlags handleType;
+///     void* handle;
+/// } VkImportMemoryMetalHandleInfoEXT;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_METAL_HANDLE_INFO_EXT`
+///
+/// The {@link VkImportMemoryMetalHandleInfoEXT#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkImportMemoryMetalHandleInfoEXT#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +44,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportMemoryMetalHandleInfoEXT.html">VkImportMemoryMetalHandleInfoEXT</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportMemoryMetalHandleInfoEXT.html"><code>VkImportMemoryMetalHandleInfoEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkImportMemoryMetalHandleInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public VkImportMemoryMetalHandleInfoEXT {
-        sType(VkStructureType.IMPORT_MEMORY_METAL_HANDLE_INFO_EXT);
-    }
-
     public static VkImportMemoryMetalHandleInfoEXT allocate(Arena arena) {
-        return new VkImportMemoryMetalHandleInfoEXT(arena.allocate(LAYOUT));
+        VkImportMemoryMetalHandleInfoEXT ret = new VkImportMemoryMetalHandleInfoEXT(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.IMPORT_MEMORY_METAL_HANDLE_INFO_EXT);
+        return ret;
     }
 
     public static VkImportMemoryMetalHandleInfoEXT[] allocate(Arena arena, int count) {
@@ -41,6 +59,7 @@ public record VkImportMemoryMetalHandleInfoEXT(@NotNull MemorySegment segment) i
         VkImportMemoryMetalHandleInfoEXT[] ret = new VkImportMemoryMetalHandleInfoEXT[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkImportMemoryMetalHandleInfoEXT(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.IMPORT_MEMORY_METAL_HANDLE_INFO_EXT);
         }
         return ret;
     }
@@ -59,33 +78,9 @@ public record VkImportMemoryMetalHandleInfoEXT(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("handleType"),
-        ValueLayout.ADDRESS.withName("handle")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$handleType = PathElement.groupElement("PATH$handleType");
-    public static final PathElement PATH$handle = PathElement.groupElement("PATH$handle");
-
-    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
-    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$handleType = (OfInt) LAYOUT.select(PATH$handleType);
-    public static final AddressLayout LAYOUT$handle = (AddressLayout) LAYOUT.select(PATH$handle);
-
-    public static final long SIZE$sType = LAYOUT$sType.byteSize();
-    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
-    public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
-    public static final long SIZE$handle = LAYOUT$handle.byteSize();
-
-    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
-    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
-    public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
-    public static final long OFFSET$handle = LAYOUT.byteOffset(PATH$handle);
+    public void autoInit() {
+        sType(VkStructureType.IMPORT_MEMORY_METAL_HANDLE_INFO_EXT);
+    }
 
     public @enumtype(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
@@ -127,4 +122,31 @@ public record VkImportMemoryMetalHandleInfoEXT(@NotNull MemorySegment segment) i
         handle(pointer.segment());
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("handleType"),
+        ValueLayout.ADDRESS.withName("handle")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$handleType = PathElement.groupElement("PATH$handleType");
+    public static final PathElement PATH$handle = PathElement.groupElement("PATH$handle");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$handleType = (OfInt) LAYOUT.select(PATH$handleType);
+    public static final AddressLayout LAYOUT$handle = (AddressLayout) LAYOUT.select(PATH$handle);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$handleType = LAYOUT$handleType.byteSize();
+    public static final long SIZE$handle = LAYOUT$handle.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$handleType = LAYOUT.byteOffset(PATH$handleType);
+    public static final long OFFSET$handle = LAYOUT.byteOffset(PATH$handle);
 }

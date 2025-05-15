@@ -14,8 +14,122 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkPhysicalDeviceLimits} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceLimits.html"><code>VkPhysicalDeviceLimits</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceLimits {
+///     uint32_t maxImageDimension1D;
+///     uint32_t maxImageDimension2D;
+///     uint32_t maxImageDimension3D;
+///     uint32_t maxImageDimensionCube;
+///     uint32_t maxImageArrayLayers;
+///     uint32_t maxTexelBufferElements;
+///     uint32_t maxUniformBufferRange;
+///     uint32_t maxStorageBufferRange;
+///     uint32_t maxPushConstantsSize;
+///     uint32_t maxMemoryAllocationCount;
+///     uint32_t maxSamplerAllocationCount;
+///     VkDeviceSize bufferImageGranularity;
+///     VkDeviceSize sparseAddressSpaceSize;
+///     uint32_t maxBoundDescriptorSets;
+///     uint32_t maxPerStageDescriptorSamplers;
+///     uint32_t maxPerStageDescriptorUniformBuffers;
+///     uint32_t maxPerStageDescriptorStorageBuffers;
+///     uint32_t maxPerStageDescriptorSampledImages;
+///     uint32_t maxPerStageDescriptorStorageImages;
+///     uint32_t maxPerStageDescriptorInputAttachments;
+///     uint32_t maxPerStageResources;
+///     uint32_t maxDescriptorSetSamplers;
+///     uint32_t maxDescriptorSetUniformBuffers;
+///     uint32_t maxDescriptorSetUniformBuffersDynamic;
+///     uint32_t maxDescriptorSetStorageBuffers;
+///     uint32_t maxDescriptorSetStorageBuffersDynamic;
+///     uint32_t maxDescriptorSetSampledImages;
+///     uint32_t maxDescriptorSetStorageImages;
+///     uint32_t maxDescriptorSetInputAttachments;
+///     uint32_t maxVertexInputAttributes;
+///     uint32_t maxVertexInputBindings;
+///     uint32_t maxVertexInputAttributeOffset;
+///     uint32_t maxVertexInputBindingStride;
+///     uint32_t maxVertexOutputComponents;
+///     uint32_t maxTessellationGenerationLevel;
+///     uint32_t maxTessellationPatchSize;
+///     uint32_t maxTessellationControlPerVertexInputComponents;
+///     uint32_t maxTessellationControlPerVertexOutputComponents;
+///     uint32_t maxTessellationControlPerPatchOutputComponents;
+///     uint32_t maxTessellationControlTotalOutputComponents;
+///     uint32_t maxTessellationEvaluationInputComponents;
+///     uint32_t maxTessellationEvaluationOutputComponents;
+///     uint32_t maxGeometryShaderInvocations;
+///     uint32_t maxGeometryInputComponents;
+///     uint32_t maxGeometryOutputComponents;
+///     uint32_t maxGeometryOutputVertices;
+///     uint32_t maxGeometryTotalOutputComponents;
+///     uint32_t maxFragmentInputComponents;
+///     uint32_t maxFragmentOutputAttachments;
+///     uint32_t maxFragmentDualSrcAttachments;
+///     uint32_t maxFragmentCombinedOutputResources;
+///     uint32_t maxComputeSharedMemorySize;
+///     uint32_t maxComputeWorkGroupCount;
+///     uint32_t maxComputeWorkGroupInvocations;
+///     uint32_t maxComputeWorkGroupSize;
+///     uint32_t subPixelPrecisionBits;
+///     uint32_t subTexelPrecisionBits;
+///     uint32_t mipmapPrecisionBits;
+///     uint32_t maxDrawIndexedIndexValue;
+///     uint32_t maxDrawIndirectCount;
+///     float maxSamplerLodBias;
+///     float maxSamplerAnisotropy;
+///     uint32_t maxViewports;
+///     uint32_t maxViewportDimensions;
+///     float viewportBoundsRange;
+///     uint32_t viewportSubPixelBits;
+///     size_t minMemoryMapAlignment;
+///     VkDeviceSize minTexelBufferOffsetAlignment;
+///     VkDeviceSize minUniformBufferOffsetAlignment;
+///     VkDeviceSize minStorageBufferOffsetAlignment;
+///     int32_t minTexelOffset;
+///     uint32_t maxTexelOffset;
+///     int32_t minTexelGatherOffset;
+///     uint32_t maxTexelGatherOffset;
+///     float minInterpolationOffset;
+///     float maxInterpolationOffset;
+///     uint32_t subPixelInterpolationOffsetBits;
+///     uint32_t maxFramebufferWidth;
+///     uint32_t maxFramebufferHeight;
+///     uint32_t maxFramebufferLayers;
+///     VkSampleCountFlags framebufferColorSampleCounts;
+///     VkSampleCountFlags framebufferDepthSampleCounts;
+///     VkSampleCountFlags framebufferStencilSampleCounts;
+///     VkSampleCountFlags framebufferNoAttachmentsSampleCounts;
+///     uint32_t maxColorAttachments;
+///     VkSampleCountFlags sampledImageColorSampleCounts;
+///     VkSampleCountFlags sampledImageIntegerSampleCounts;
+///     VkSampleCountFlags sampledImageDepthSampleCounts;
+///     VkSampleCountFlags sampledImageStencilSampleCounts;
+///     VkSampleCountFlags storageImageSampleCounts;
+///     uint32_t maxSampleMaskWords;
+///     VkBool32 timestampComputeAndGraphics;
+///     float timestampPeriod;
+///     uint32_t maxClipDistances;
+///     uint32_t maxCullDistances;
+///     uint32_t maxCombinedClipAndCullDistances;
+///     uint32_t discreteQueuePriorities;
+///     float pointSizeRange;
+///     float lineWidthRange;
+///     float pointSizeGranularity;
+///     float lineWidthGranularity;
+///     VkBool32 strictLines;
+///     VkBool32 standardSampleLocations;
+///     VkDeviceSize optimalBufferCopyOffsetAlignment;
+///     VkDeviceSize optimalBufferCopyRowPitchAlignment;
+///     VkDeviceSize nonCoherentAtomSize;
+/// } VkPhysicalDeviceLimits;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,12 +138,13 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceLimits.html">VkPhysicalDeviceLimits</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceLimits.html"><code>VkPhysicalDeviceLimits</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements IPointer {
     public static VkPhysicalDeviceLimits allocate(Arena arena) {
-        return new VkPhysicalDeviceLimits(arena.allocate(LAYOUT));
+        VkPhysicalDeviceLimits ret = new VkPhysicalDeviceLimits(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static VkPhysicalDeviceLimits[] allocate(Arena arena, int count) {
@@ -54,543 +169,6 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("maxImageDimension1D"),
-        ValueLayout.JAVA_INT.withName("maxImageDimension2D"),
-        ValueLayout.JAVA_INT.withName("maxImageDimension3D"),
-        ValueLayout.JAVA_INT.withName("maxImageDimensionCube"),
-        ValueLayout.JAVA_INT.withName("maxImageArrayLayers"),
-        ValueLayout.JAVA_INT.withName("maxTexelBufferElements"),
-        ValueLayout.JAVA_INT.withName("maxUniformBufferRange"),
-        ValueLayout.JAVA_INT.withName("maxStorageBufferRange"),
-        ValueLayout.JAVA_INT.withName("maxPushConstantsSize"),
-        ValueLayout.JAVA_INT.withName("maxMemoryAllocationCount"),
-        ValueLayout.JAVA_INT.withName("maxSamplerAllocationCount"),
-        ValueLayout.JAVA_LONG.withName("bufferImageGranularity"),
-        ValueLayout.JAVA_LONG.withName("sparseAddressSpaceSize"),
-        ValueLayout.JAVA_INT.withName("maxBoundDescriptorSets"),
-        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorSamplers"),
-        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUniformBuffers"),
-        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorStorageBuffers"),
-        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorSampledImages"),
-        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorStorageImages"),
-        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorInputAttachments"),
-        ValueLayout.JAVA_INT.withName("maxPerStageResources"),
-        ValueLayout.JAVA_INT.withName("maxDescriptorSetSamplers"),
-        ValueLayout.JAVA_INT.withName("maxDescriptorSetUniformBuffers"),
-        ValueLayout.JAVA_INT.withName("maxDescriptorSetUniformBuffersDynamic"),
-        ValueLayout.JAVA_INT.withName("maxDescriptorSetStorageBuffers"),
-        ValueLayout.JAVA_INT.withName("maxDescriptorSetStorageBuffersDynamic"),
-        ValueLayout.JAVA_INT.withName("maxDescriptorSetSampledImages"),
-        ValueLayout.JAVA_INT.withName("maxDescriptorSetStorageImages"),
-        ValueLayout.JAVA_INT.withName("maxDescriptorSetInputAttachments"),
-        ValueLayout.JAVA_INT.withName("maxVertexInputAttributes"),
-        ValueLayout.JAVA_INT.withName("maxVertexInputBindings"),
-        ValueLayout.JAVA_INT.withName("maxVertexInputAttributeOffset"),
-        ValueLayout.JAVA_INT.withName("maxVertexInputBindingStride"),
-        ValueLayout.JAVA_INT.withName("maxVertexOutputComponents"),
-        ValueLayout.JAVA_INT.withName("maxTessellationGenerationLevel"),
-        ValueLayout.JAVA_INT.withName("maxTessellationPatchSize"),
-        ValueLayout.JAVA_INT.withName("maxTessellationControlPerVertexInputComponents"),
-        ValueLayout.JAVA_INT.withName("maxTessellationControlPerVertexOutputComponents"),
-        ValueLayout.JAVA_INT.withName("maxTessellationControlPerPatchOutputComponents"),
-        ValueLayout.JAVA_INT.withName("maxTessellationControlTotalOutputComponents"),
-        ValueLayout.JAVA_INT.withName("maxTessellationEvaluationInputComponents"),
-        ValueLayout.JAVA_INT.withName("maxTessellationEvaluationOutputComponents"),
-        ValueLayout.JAVA_INT.withName("maxGeometryShaderInvocations"),
-        ValueLayout.JAVA_INT.withName("maxGeometryInputComponents"),
-        ValueLayout.JAVA_INT.withName("maxGeometryOutputComponents"),
-        ValueLayout.JAVA_INT.withName("maxGeometryOutputVertices"),
-        ValueLayout.JAVA_INT.withName("maxGeometryTotalOutputComponents"),
-        ValueLayout.JAVA_INT.withName("maxFragmentInputComponents"),
-        ValueLayout.JAVA_INT.withName("maxFragmentOutputAttachments"),
-        ValueLayout.JAVA_INT.withName("maxFragmentDualSrcAttachments"),
-        ValueLayout.JAVA_INT.withName("maxFragmentCombinedOutputResources"),
-        ValueLayout.JAVA_INT.withName("maxComputeSharedMemorySize"),
-        ValueLayout.JAVA_INT.withName("maxComputeWorkGroupCount"),
-        ValueLayout.JAVA_INT.withName("maxComputeWorkGroupInvocations"),
-        ValueLayout.JAVA_INT.withName("maxComputeWorkGroupSize"),
-        ValueLayout.JAVA_INT.withName("subPixelPrecisionBits"),
-        ValueLayout.JAVA_INT.withName("subTexelPrecisionBits"),
-        ValueLayout.JAVA_INT.withName("mipmapPrecisionBits"),
-        ValueLayout.JAVA_INT.withName("maxDrawIndexedIndexValue"),
-        ValueLayout.JAVA_INT.withName("maxDrawIndirectCount"),
-        ValueLayout.JAVA_FLOAT.withName("maxSamplerLodBias"),
-        ValueLayout.JAVA_FLOAT.withName("maxSamplerAnisotropy"),
-        ValueLayout.JAVA_INT.withName("maxViewports"),
-        ValueLayout.JAVA_INT.withName("maxViewportDimensions"),
-        ValueLayout.JAVA_FLOAT.withName("viewportBoundsRange"),
-        ValueLayout.JAVA_INT.withName("viewportSubPixelBits"),
-        NativeLayout.C_SIZE_T.withName("minMemoryMapAlignment"),
-        ValueLayout.JAVA_LONG.withName("minTexelBufferOffsetAlignment"),
-        ValueLayout.JAVA_LONG.withName("minUniformBufferOffsetAlignment"),
-        ValueLayout.JAVA_LONG.withName("minStorageBufferOffsetAlignment"),
-        ValueLayout.JAVA_INT.withName("minTexelOffset"),
-        ValueLayout.JAVA_INT.withName("maxTexelOffset"),
-        ValueLayout.JAVA_INT.withName("minTexelGatherOffset"),
-        ValueLayout.JAVA_INT.withName("maxTexelGatherOffset"),
-        ValueLayout.JAVA_FLOAT.withName("minInterpolationOffset"),
-        ValueLayout.JAVA_FLOAT.withName("maxInterpolationOffset"),
-        ValueLayout.JAVA_INT.withName("subPixelInterpolationOffsetBits"),
-        ValueLayout.JAVA_INT.withName("maxFramebufferWidth"),
-        ValueLayout.JAVA_INT.withName("maxFramebufferHeight"),
-        ValueLayout.JAVA_INT.withName("maxFramebufferLayers"),
-        ValueLayout.JAVA_INT.withName("framebufferColorSampleCounts"),
-        ValueLayout.JAVA_INT.withName("framebufferDepthSampleCounts"),
-        ValueLayout.JAVA_INT.withName("framebufferStencilSampleCounts"),
-        ValueLayout.JAVA_INT.withName("framebufferNoAttachmentsSampleCounts"),
-        ValueLayout.JAVA_INT.withName("maxColorAttachments"),
-        ValueLayout.JAVA_INT.withName("sampledImageColorSampleCounts"),
-        ValueLayout.JAVA_INT.withName("sampledImageIntegerSampleCounts"),
-        ValueLayout.JAVA_INT.withName("sampledImageDepthSampleCounts"),
-        ValueLayout.JAVA_INT.withName("sampledImageStencilSampleCounts"),
-        ValueLayout.JAVA_INT.withName("storageImageSampleCounts"),
-        ValueLayout.JAVA_INT.withName("maxSampleMaskWords"),
-        ValueLayout.JAVA_INT.withName("timestampComputeAndGraphics"),
-        ValueLayout.JAVA_FLOAT.withName("timestampPeriod"),
-        ValueLayout.JAVA_INT.withName("maxClipDistances"),
-        ValueLayout.JAVA_INT.withName("maxCullDistances"),
-        ValueLayout.JAVA_INT.withName("maxCombinedClipAndCullDistances"),
-        ValueLayout.JAVA_INT.withName("discreteQueuePriorities"),
-        ValueLayout.JAVA_FLOAT.withName("pointSizeRange"),
-        ValueLayout.JAVA_FLOAT.withName("lineWidthRange"),
-        ValueLayout.JAVA_FLOAT.withName("pointSizeGranularity"),
-        ValueLayout.JAVA_FLOAT.withName("lineWidthGranularity"),
-        ValueLayout.JAVA_INT.withName("strictLines"),
-        ValueLayout.JAVA_INT.withName("standardSampleLocations"),
-        ValueLayout.JAVA_LONG.withName("optimalBufferCopyOffsetAlignment"),
-        ValueLayout.JAVA_LONG.withName("optimalBufferCopyRowPitchAlignment"),
-        ValueLayout.JAVA_LONG.withName("nonCoherentAtomSize")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$maxImageDimension1D = PathElement.groupElement("PATH$maxImageDimension1D");
-    public static final PathElement PATH$maxImageDimension2D = PathElement.groupElement("PATH$maxImageDimension2D");
-    public static final PathElement PATH$maxImageDimension3D = PathElement.groupElement("PATH$maxImageDimension3D");
-    public static final PathElement PATH$maxImageDimensionCube = PathElement.groupElement("PATH$maxImageDimensionCube");
-    public static final PathElement PATH$maxImageArrayLayers = PathElement.groupElement("PATH$maxImageArrayLayers");
-    public static final PathElement PATH$maxTexelBufferElements = PathElement.groupElement("PATH$maxTexelBufferElements");
-    public static final PathElement PATH$maxUniformBufferRange = PathElement.groupElement("PATH$maxUniformBufferRange");
-    public static final PathElement PATH$maxStorageBufferRange = PathElement.groupElement("PATH$maxStorageBufferRange");
-    public static final PathElement PATH$maxPushConstantsSize = PathElement.groupElement("PATH$maxPushConstantsSize");
-    public static final PathElement PATH$maxMemoryAllocationCount = PathElement.groupElement("PATH$maxMemoryAllocationCount");
-    public static final PathElement PATH$maxSamplerAllocationCount = PathElement.groupElement("PATH$maxSamplerAllocationCount");
-    public static final PathElement PATH$bufferImageGranularity = PathElement.groupElement("PATH$bufferImageGranularity");
-    public static final PathElement PATH$sparseAddressSpaceSize = PathElement.groupElement("PATH$sparseAddressSpaceSize");
-    public static final PathElement PATH$maxBoundDescriptorSets = PathElement.groupElement("PATH$maxBoundDescriptorSets");
-    public static final PathElement PATH$maxPerStageDescriptorSamplers = PathElement.groupElement("PATH$maxPerStageDescriptorSamplers");
-    public static final PathElement PATH$maxPerStageDescriptorUniformBuffers = PathElement.groupElement("PATH$maxPerStageDescriptorUniformBuffers");
-    public static final PathElement PATH$maxPerStageDescriptorStorageBuffers = PathElement.groupElement("PATH$maxPerStageDescriptorStorageBuffers");
-    public static final PathElement PATH$maxPerStageDescriptorSampledImages = PathElement.groupElement("PATH$maxPerStageDescriptorSampledImages");
-    public static final PathElement PATH$maxPerStageDescriptorStorageImages = PathElement.groupElement("PATH$maxPerStageDescriptorStorageImages");
-    public static final PathElement PATH$maxPerStageDescriptorInputAttachments = PathElement.groupElement("PATH$maxPerStageDescriptorInputAttachments");
-    public static final PathElement PATH$maxPerStageResources = PathElement.groupElement("PATH$maxPerStageResources");
-    public static final PathElement PATH$maxDescriptorSetSamplers = PathElement.groupElement("PATH$maxDescriptorSetSamplers");
-    public static final PathElement PATH$maxDescriptorSetUniformBuffers = PathElement.groupElement("PATH$maxDescriptorSetUniformBuffers");
-    public static final PathElement PATH$maxDescriptorSetUniformBuffersDynamic = PathElement.groupElement("PATH$maxDescriptorSetUniformBuffersDynamic");
-    public static final PathElement PATH$maxDescriptorSetStorageBuffers = PathElement.groupElement("PATH$maxDescriptorSetStorageBuffers");
-    public static final PathElement PATH$maxDescriptorSetStorageBuffersDynamic = PathElement.groupElement("PATH$maxDescriptorSetStorageBuffersDynamic");
-    public static final PathElement PATH$maxDescriptorSetSampledImages = PathElement.groupElement("PATH$maxDescriptorSetSampledImages");
-    public static final PathElement PATH$maxDescriptorSetStorageImages = PathElement.groupElement("PATH$maxDescriptorSetStorageImages");
-    public static final PathElement PATH$maxDescriptorSetInputAttachments = PathElement.groupElement("PATH$maxDescriptorSetInputAttachments");
-    public static final PathElement PATH$maxVertexInputAttributes = PathElement.groupElement("PATH$maxVertexInputAttributes");
-    public static final PathElement PATH$maxVertexInputBindings = PathElement.groupElement("PATH$maxVertexInputBindings");
-    public static final PathElement PATH$maxVertexInputAttributeOffset = PathElement.groupElement("PATH$maxVertexInputAttributeOffset");
-    public static final PathElement PATH$maxVertexInputBindingStride = PathElement.groupElement("PATH$maxVertexInputBindingStride");
-    public static final PathElement PATH$maxVertexOutputComponents = PathElement.groupElement("PATH$maxVertexOutputComponents");
-    public static final PathElement PATH$maxTessellationGenerationLevel = PathElement.groupElement("PATH$maxTessellationGenerationLevel");
-    public static final PathElement PATH$maxTessellationPatchSize = PathElement.groupElement("PATH$maxTessellationPatchSize");
-    public static final PathElement PATH$maxTessellationControlPerVertexInputComponents = PathElement.groupElement("PATH$maxTessellationControlPerVertexInputComponents");
-    public static final PathElement PATH$maxTessellationControlPerVertexOutputComponents = PathElement.groupElement("PATH$maxTessellationControlPerVertexOutputComponents");
-    public static final PathElement PATH$maxTessellationControlPerPatchOutputComponents = PathElement.groupElement("PATH$maxTessellationControlPerPatchOutputComponents");
-    public static final PathElement PATH$maxTessellationControlTotalOutputComponents = PathElement.groupElement("PATH$maxTessellationControlTotalOutputComponents");
-    public static final PathElement PATH$maxTessellationEvaluationInputComponents = PathElement.groupElement("PATH$maxTessellationEvaluationInputComponents");
-    public static final PathElement PATH$maxTessellationEvaluationOutputComponents = PathElement.groupElement("PATH$maxTessellationEvaluationOutputComponents");
-    public static final PathElement PATH$maxGeometryShaderInvocations = PathElement.groupElement("PATH$maxGeometryShaderInvocations");
-    public static final PathElement PATH$maxGeometryInputComponents = PathElement.groupElement("PATH$maxGeometryInputComponents");
-    public static final PathElement PATH$maxGeometryOutputComponents = PathElement.groupElement("PATH$maxGeometryOutputComponents");
-    public static final PathElement PATH$maxGeometryOutputVertices = PathElement.groupElement("PATH$maxGeometryOutputVertices");
-    public static final PathElement PATH$maxGeometryTotalOutputComponents = PathElement.groupElement("PATH$maxGeometryTotalOutputComponents");
-    public static final PathElement PATH$maxFragmentInputComponents = PathElement.groupElement("PATH$maxFragmentInputComponents");
-    public static final PathElement PATH$maxFragmentOutputAttachments = PathElement.groupElement("PATH$maxFragmentOutputAttachments");
-    public static final PathElement PATH$maxFragmentDualSrcAttachments = PathElement.groupElement("PATH$maxFragmentDualSrcAttachments");
-    public static final PathElement PATH$maxFragmentCombinedOutputResources = PathElement.groupElement("PATH$maxFragmentCombinedOutputResources");
-    public static final PathElement PATH$maxComputeSharedMemorySize = PathElement.groupElement("PATH$maxComputeSharedMemorySize");
-    public static final PathElement PATH$maxComputeWorkGroupCount = PathElement.groupElement("PATH$maxComputeWorkGroupCount");
-    public static final PathElement PATH$maxComputeWorkGroupInvocations = PathElement.groupElement("PATH$maxComputeWorkGroupInvocations");
-    public static final PathElement PATH$maxComputeWorkGroupSize = PathElement.groupElement("PATH$maxComputeWorkGroupSize");
-    public static final PathElement PATH$subPixelPrecisionBits = PathElement.groupElement("PATH$subPixelPrecisionBits");
-    public static final PathElement PATH$subTexelPrecisionBits = PathElement.groupElement("PATH$subTexelPrecisionBits");
-    public static final PathElement PATH$mipmapPrecisionBits = PathElement.groupElement("PATH$mipmapPrecisionBits");
-    public static final PathElement PATH$maxDrawIndexedIndexValue = PathElement.groupElement("PATH$maxDrawIndexedIndexValue");
-    public static final PathElement PATH$maxDrawIndirectCount = PathElement.groupElement("PATH$maxDrawIndirectCount");
-    public static final PathElement PATH$maxSamplerLodBias = PathElement.groupElement("PATH$maxSamplerLodBias");
-    public static final PathElement PATH$maxSamplerAnisotropy = PathElement.groupElement("PATH$maxSamplerAnisotropy");
-    public static final PathElement PATH$maxViewports = PathElement.groupElement("PATH$maxViewports");
-    public static final PathElement PATH$maxViewportDimensions = PathElement.groupElement("PATH$maxViewportDimensions");
-    public static final PathElement PATH$viewportBoundsRange = PathElement.groupElement("PATH$viewportBoundsRange");
-    public static final PathElement PATH$viewportSubPixelBits = PathElement.groupElement("PATH$viewportSubPixelBits");
-    public static final PathElement PATH$minMemoryMapAlignment = PathElement.groupElement("PATH$minMemoryMapAlignment");
-    public static final PathElement PATH$minTexelBufferOffsetAlignment = PathElement.groupElement("PATH$minTexelBufferOffsetAlignment");
-    public static final PathElement PATH$minUniformBufferOffsetAlignment = PathElement.groupElement("PATH$minUniformBufferOffsetAlignment");
-    public static final PathElement PATH$minStorageBufferOffsetAlignment = PathElement.groupElement("PATH$minStorageBufferOffsetAlignment");
-    public static final PathElement PATH$minTexelOffset = PathElement.groupElement("PATH$minTexelOffset");
-    public static final PathElement PATH$maxTexelOffset = PathElement.groupElement("PATH$maxTexelOffset");
-    public static final PathElement PATH$minTexelGatherOffset = PathElement.groupElement("PATH$minTexelGatherOffset");
-    public static final PathElement PATH$maxTexelGatherOffset = PathElement.groupElement("PATH$maxTexelGatherOffset");
-    public static final PathElement PATH$minInterpolationOffset = PathElement.groupElement("PATH$minInterpolationOffset");
-    public static final PathElement PATH$maxInterpolationOffset = PathElement.groupElement("PATH$maxInterpolationOffset");
-    public static final PathElement PATH$subPixelInterpolationOffsetBits = PathElement.groupElement("PATH$subPixelInterpolationOffsetBits");
-    public static final PathElement PATH$maxFramebufferWidth = PathElement.groupElement("PATH$maxFramebufferWidth");
-    public static final PathElement PATH$maxFramebufferHeight = PathElement.groupElement("PATH$maxFramebufferHeight");
-    public static final PathElement PATH$maxFramebufferLayers = PathElement.groupElement("PATH$maxFramebufferLayers");
-    public static final PathElement PATH$framebufferColorSampleCounts = PathElement.groupElement("PATH$framebufferColorSampleCounts");
-    public static final PathElement PATH$framebufferDepthSampleCounts = PathElement.groupElement("PATH$framebufferDepthSampleCounts");
-    public static final PathElement PATH$framebufferStencilSampleCounts = PathElement.groupElement("PATH$framebufferStencilSampleCounts");
-    public static final PathElement PATH$framebufferNoAttachmentsSampleCounts = PathElement.groupElement("PATH$framebufferNoAttachmentsSampleCounts");
-    public static final PathElement PATH$maxColorAttachments = PathElement.groupElement("PATH$maxColorAttachments");
-    public static final PathElement PATH$sampledImageColorSampleCounts = PathElement.groupElement("PATH$sampledImageColorSampleCounts");
-    public static final PathElement PATH$sampledImageIntegerSampleCounts = PathElement.groupElement("PATH$sampledImageIntegerSampleCounts");
-    public static final PathElement PATH$sampledImageDepthSampleCounts = PathElement.groupElement("PATH$sampledImageDepthSampleCounts");
-    public static final PathElement PATH$sampledImageStencilSampleCounts = PathElement.groupElement("PATH$sampledImageStencilSampleCounts");
-    public static final PathElement PATH$storageImageSampleCounts = PathElement.groupElement("PATH$storageImageSampleCounts");
-    public static final PathElement PATH$maxSampleMaskWords = PathElement.groupElement("PATH$maxSampleMaskWords");
-    public static final PathElement PATH$timestampComputeAndGraphics = PathElement.groupElement("PATH$timestampComputeAndGraphics");
-    public static final PathElement PATH$timestampPeriod = PathElement.groupElement("PATH$timestampPeriod");
-    public static final PathElement PATH$maxClipDistances = PathElement.groupElement("PATH$maxClipDistances");
-    public static final PathElement PATH$maxCullDistances = PathElement.groupElement("PATH$maxCullDistances");
-    public static final PathElement PATH$maxCombinedClipAndCullDistances = PathElement.groupElement("PATH$maxCombinedClipAndCullDistances");
-    public static final PathElement PATH$discreteQueuePriorities = PathElement.groupElement("PATH$discreteQueuePriorities");
-    public static final PathElement PATH$pointSizeRange = PathElement.groupElement("PATH$pointSizeRange");
-    public static final PathElement PATH$lineWidthRange = PathElement.groupElement("PATH$lineWidthRange");
-    public static final PathElement PATH$pointSizeGranularity = PathElement.groupElement("PATH$pointSizeGranularity");
-    public static final PathElement PATH$lineWidthGranularity = PathElement.groupElement("PATH$lineWidthGranularity");
-    public static final PathElement PATH$strictLines = PathElement.groupElement("PATH$strictLines");
-    public static final PathElement PATH$standardSampleLocations = PathElement.groupElement("PATH$standardSampleLocations");
-    public static final PathElement PATH$optimalBufferCopyOffsetAlignment = PathElement.groupElement("PATH$optimalBufferCopyOffsetAlignment");
-    public static final PathElement PATH$optimalBufferCopyRowPitchAlignment = PathElement.groupElement("PATH$optimalBufferCopyRowPitchAlignment");
-    public static final PathElement PATH$nonCoherentAtomSize = PathElement.groupElement("PATH$nonCoherentAtomSize");
-
-    public static final OfInt LAYOUT$maxImageDimension1D = (OfInt) LAYOUT.select(PATH$maxImageDimension1D);
-    public static final OfInt LAYOUT$maxImageDimension2D = (OfInt) LAYOUT.select(PATH$maxImageDimension2D);
-    public static final OfInt LAYOUT$maxImageDimension3D = (OfInt) LAYOUT.select(PATH$maxImageDimension3D);
-    public static final OfInt LAYOUT$maxImageDimensionCube = (OfInt) LAYOUT.select(PATH$maxImageDimensionCube);
-    public static final OfInt LAYOUT$maxImageArrayLayers = (OfInt) LAYOUT.select(PATH$maxImageArrayLayers);
-    public static final OfInt LAYOUT$maxTexelBufferElements = (OfInt) LAYOUT.select(PATH$maxTexelBufferElements);
-    public static final OfInt LAYOUT$maxUniformBufferRange = (OfInt) LAYOUT.select(PATH$maxUniformBufferRange);
-    public static final OfInt LAYOUT$maxStorageBufferRange = (OfInt) LAYOUT.select(PATH$maxStorageBufferRange);
-    public static final OfInt LAYOUT$maxPushConstantsSize = (OfInt) LAYOUT.select(PATH$maxPushConstantsSize);
-    public static final OfInt LAYOUT$maxMemoryAllocationCount = (OfInt) LAYOUT.select(PATH$maxMemoryAllocationCount);
-    public static final OfInt LAYOUT$maxSamplerAllocationCount = (OfInt) LAYOUT.select(PATH$maxSamplerAllocationCount);
-    public static final OfLong LAYOUT$bufferImageGranularity = (OfLong) LAYOUT.select(PATH$bufferImageGranularity);
-    public static final OfLong LAYOUT$sparseAddressSpaceSize = (OfLong) LAYOUT.select(PATH$sparseAddressSpaceSize);
-    public static final OfInt LAYOUT$maxBoundDescriptorSets = (OfInt) LAYOUT.select(PATH$maxBoundDescriptorSets);
-    public static final OfInt LAYOUT$maxPerStageDescriptorSamplers = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorSamplers);
-    public static final OfInt LAYOUT$maxPerStageDescriptorUniformBuffers = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorUniformBuffers);
-    public static final OfInt LAYOUT$maxPerStageDescriptorStorageBuffers = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorStorageBuffers);
-    public static final OfInt LAYOUT$maxPerStageDescriptorSampledImages = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorSampledImages);
-    public static final OfInt LAYOUT$maxPerStageDescriptorStorageImages = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorStorageImages);
-    public static final OfInt LAYOUT$maxPerStageDescriptorInputAttachments = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorInputAttachments);
-    public static final OfInt LAYOUT$maxPerStageResources = (OfInt) LAYOUT.select(PATH$maxPerStageResources);
-    public static final OfInt LAYOUT$maxDescriptorSetSamplers = (OfInt) LAYOUT.select(PATH$maxDescriptorSetSamplers);
-    public static final OfInt LAYOUT$maxDescriptorSetUniformBuffers = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUniformBuffers);
-    public static final OfInt LAYOUT$maxDescriptorSetUniformBuffersDynamic = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUniformBuffersDynamic);
-    public static final OfInt LAYOUT$maxDescriptorSetStorageBuffers = (OfInt) LAYOUT.select(PATH$maxDescriptorSetStorageBuffers);
-    public static final OfInt LAYOUT$maxDescriptorSetStorageBuffersDynamic = (OfInt) LAYOUT.select(PATH$maxDescriptorSetStorageBuffersDynamic);
-    public static final OfInt LAYOUT$maxDescriptorSetSampledImages = (OfInt) LAYOUT.select(PATH$maxDescriptorSetSampledImages);
-    public static final OfInt LAYOUT$maxDescriptorSetStorageImages = (OfInt) LAYOUT.select(PATH$maxDescriptorSetStorageImages);
-    public static final OfInt LAYOUT$maxDescriptorSetInputAttachments = (OfInt) LAYOUT.select(PATH$maxDescriptorSetInputAttachments);
-    public static final OfInt LAYOUT$maxVertexInputAttributes = (OfInt) LAYOUT.select(PATH$maxVertexInputAttributes);
-    public static final OfInt LAYOUT$maxVertexInputBindings = (OfInt) LAYOUT.select(PATH$maxVertexInputBindings);
-    public static final OfInt LAYOUT$maxVertexInputAttributeOffset = (OfInt) LAYOUT.select(PATH$maxVertexInputAttributeOffset);
-    public static final OfInt LAYOUT$maxVertexInputBindingStride = (OfInt) LAYOUT.select(PATH$maxVertexInputBindingStride);
-    public static final OfInt LAYOUT$maxVertexOutputComponents = (OfInt) LAYOUT.select(PATH$maxVertexOutputComponents);
-    public static final OfInt LAYOUT$maxTessellationGenerationLevel = (OfInt) LAYOUT.select(PATH$maxTessellationGenerationLevel);
-    public static final OfInt LAYOUT$maxTessellationPatchSize = (OfInt) LAYOUT.select(PATH$maxTessellationPatchSize);
-    public static final OfInt LAYOUT$maxTessellationControlPerVertexInputComponents = (OfInt) LAYOUT.select(PATH$maxTessellationControlPerVertexInputComponents);
-    public static final OfInt LAYOUT$maxTessellationControlPerVertexOutputComponents = (OfInt) LAYOUT.select(PATH$maxTessellationControlPerVertexOutputComponents);
-    public static final OfInt LAYOUT$maxTessellationControlPerPatchOutputComponents = (OfInt) LAYOUT.select(PATH$maxTessellationControlPerPatchOutputComponents);
-    public static final OfInt LAYOUT$maxTessellationControlTotalOutputComponents = (OfInt) LAYOUT.select(PATH$maxTessellationControlTotalOutputComponents);
-    public static final OfInt LAYOUT$maxTessellationEvaluationInputComponents = (OfInt) LAYOUT.select(PATH$maxTessellationEvaluationInputComponents);
-    public static final OfInt LAYOUT$maxTessellationEvaluationOutputComponents = (OfInt) LAYOUT.select(PATH$maxTessellationEvaluationOutputComponents);
-    public static final OfInt LAYOUT$maxGeometryShaderInvocations = (OfInt) LAYOUT.select(PATH$maxGeometryShaderInvocations);
-    public static final OfInt LAYOUT$maxGeometryInputComponents = (OfInt) LAYOUT.select(PATH$maxGeometryInputComponents);
-    public static final OfInt LAYOUT$maxGeometryOutputComponents = (OfInt) LAYOUT.select(PATH$maxGeometryOutputComponents);
-    public static final OfInt LAYOUT$maxGeometryOutputVertices = (OfInt) LAYOUT.select(PATH$maxGeometryOutputVertices);
-    public static final OfInt LAYOUT$maxGeometryTotalOutputComponents = (OfInt) LAYOUT.select(PATH$maxGeometryTotalOutputComponents);
-    public static final OfInt LAYOUT$maxFragmentInputComponents = (OfInt) LAYOUT.select(PATH$maxFragmentInputComponents);
-    public static final OfInt LAYOUT$maxFragmentOutputAttachments = (OfInt) LAYOUT.select(PATH$maxFragmentOutputAttachments);
-    public static final OfInt LAYOUT$maxFragmentDualSrcAttachments = (OfInt) LAYOUT.select(PATH$maxFragmentDualSrcAttachments);
-    public static final OfInt LAYOUT$maxFragmentCombinedOutputResources = (OfInt) LAYOUT.select(PATH$maxFragmentCombinedOutputResources);
-    public static final OfInt LAYOUT$maxComputeSharedMemorySize = (OfInt) LAYOUT.select(PATH$maxComputeSharedMemorySize);
-    public static final OfInt LAYOUT$maxComputeWorkGroupCount = (OfInt) LAYOUT.select(PATH$maxComputeWorkGroupCount);
-    public static final OfInt LAYOUT$maxComputeWorkGroupInvocations = (OfInt) LAYOUT.select(PATH$maxComputeWorkGroupInvocations);
-    public static final OfInt LAYOUT$maxComputeWorkGroupSize = (OfInt) LAYOUT.select(PATH$maxComputeWorkGroupSize);
-    public static final OfInt LAYOUT$subPixelPrecisionBits = (OfInt) LAYOUT.select(PATH$subPixelPrecisionBits);
-    public static final OfInt LAYOUT$subTexelPrecisionBits = (OfInt) LAYOUT.select(PATH$subTexelPrecisionBits);
-    public static final OfInt LAYOUT$mipmapPrecisionBits = (OfInt) LAYOUT.select(PATH$mipmapPrecisionBits);
-    public static final OfInt LAYOUT$maxDrawIndexedIndexValue = (OfInt) LAYOUT.select(PATH$maxDrawIndexedIndexValue);
-    public static final OfInt LAYOUT$maxDrawIndirectCount = (OfInt) LAYOUT.select(PATH$maxDrawIndirectCount);
-    public static final OfFloat LAYOUT$maxSamplerLodBias = (OfFloat) LAYOUT.select(PATH$maxSamplerLodBias);
-    public static final OfFloat LAYOUT$maxSamplerAnisotropy = (OfFloat) LAYOUT.select(PATH$maxSamplerAnisotropy);
-    public static final OfInt LAYOUT$maxViewports = (OfInt) LAYOUT.select(PATH$maxViewports);
-    public static final OfInt LAYOUT$maxViewportDimensions = (OfInt) LAYOUT.select(PATH$maxViewportDimensions);
-    public static final OfFloat LAYOUT$viewportBoundsRange = (OfFloat) LAYOUT.select(PATH$viewportBoundsRange);
-    public static final OfInt LAYOUT$viewportSubPixelBits = (OfInt) LAYOUT.select(PATH$viewportSubPixelBits);
-    public static final OfLong LAYOUT$minTexelBufferOffsetAlignment = (OfLong) LAYOUT.select(PATH$minTexelBufferOffsetAlignment);
-    public static final OfLong LAYOUT$minUniformBufferOffsetAlignment = (OfLong) LAYOUT.select(PATH$minUniformBufferOffsetAlignment);
-    public static final OfLong LAYOUT$minStorageBufferOffsetAlignment = (OfLong) LAYOUT.select(PATH$minStorageBufferOffsetAlignment);
-    public static final OfInt LAYOUT$minTexelOffset = (OfInt) LAYOUT.select(PATH$minTexelOffset);
-    public static final OfInt LAYOUT$maxTexelOffset = (OfInt) LAYOUT.select(PATH$maxTexelOffset);
-    public static final OfInt LAYOUT$minTexelGatherOffset = (OfInt) LAYOUT.select(PATH$minTexelGatherOffset);
-    public static final OfInt LAYOUT$maxTexelGatherOffset = (OfInt) LAYOUT.select(PATH$maxTexelGatherOffset);
-    public static final OfFloat LAYOUT$minInterpolationOffset = (OfFloat) LAYOUT.select(PATH$minInterpolationOffset);
-    public static final OfFloat LAYOUT$maxInterpolationOffset = (OfFloat) LAYOUT.select(PATH$maxInterpolationOffset);
-    public static final OfInt LAYOUT$subPixelInterpolationOffsetBits = (OfInt) LAYOUT.select(PATH$subPixelInterpolationOffsetBits);
-    public static final OfInt LAYOUT$maxFramebufferWidth = (OfInt) LAYOUT.select(PATH$maxFramebufferWidth);
-    public static final OfInt LAYOUT$maxFramebufferHeight = (OfInt) LAYOUT.select(PATH$maxFramebufferHeight);
-    public static final OfInt LAYOUT$maxFramebufferLayers = (OfInt) LAYOUT.select(PATH$maxFramebufferLayers);
-    public static final OfInt LAYOUT$framebufferColorSampleCounts = (OfInt) LAYOUT.select(PATH$framebufferColorSampleCounts);
-    public static final OfInt LAYOUT$framebufferDepthSampleCounts = (OfInt) LAYOUT.select(PATH$framebufferDepthSampleCounts);
-    public static final OfInt LAYOUT$framebufferStencilSampleCounts = (OfInt) LAYOUT.select(PATH$framebufferStencilSampleCounts);
-    public static final OfInt LAYOUT$framebufferNoAttachmentsSampleCounts = (OfInt) LAYOUT.select(PATH$framebufferNoAttachmentsSampleCounts);
-    public static final OfInt LAYOUT$maxColorAttachments = (OfInt) LAYOUT.select(PATH$maxColorAttachments);
-    public static final OfInt LAYOUT$sampledImageColorSampleCounts = (OfInt) LAYOUT.select(PATH$sampledImageColorSampleCounts);
-    public static final OfInt LAYOUT$sampledImageIntegerSampleCounts = (OfInt) LAYOUT.select(PATH$sampledImageIntegerSampleCounts);
-    public static final OfInt LAYOUT$sampledImageDepthSampleCounts = (OfInt) LAYOUT.select(PATH$sampledImageDepthSampleCounts);
-    public static final OfInt LAYOUT$sampledImageStencilSampleCounts = (OfInt) LAYOUT.select(PATH$sampledImageStencilSampleCounts);
-    public static final OfInt LAYOUT$storageImageSampleCounts = (OfInt) LAYOUT.select(PATH$storageImageSampleCounts);
-    public static final OfInt LAYOUT$maxSampleMaskWords = (OfInt) LAYOUT.select(PATH$maxSampleMaskWords);
-    public static final OfInt LAYOUT$timestampComputeAndGraphics = (OfInt) LAYOUT.select(PATH$timestampComputeAndGraphics);
-    public static final OfFloat LAYOUT$timestampPeriod = (OfFloat) LAYOUT.select(PATH$timestampPeriod);
-    public static final OfInt LAYOUT$maxClipDistances = (OfInt) LAYOUT.select(PATH$maxClipDistances);
-    public static final OfInt LAYOUT$maxCullDistances = (OfInt) LAYOUT.select(PATH$maxCullDistances);
-    public static final OfInt LAYOUT$maxCombinedClipAndCullDistances = (OfInt) LAYOUT.select(PATH$maxCombinedClipAndCullDistances);
-    public static final OfInt LAYOUT$discreteQueuePriorities = (OfInt) LAYOUT.select(PATH$discreteQueuePriorities);
-    public static final OfFloat LAYOUT$pointSizeRange = (OfFloat) LAYOUT.select(PATH$pointSizeRange);
-    public static final OfFloat LAYOUT$lineWidthRange = (OfFloat) LAYOUT.select(PATH$lineWidthRange);
-    public static final OfFloat LAYOUT$pointSizeGranularity = (OfFloat) LAYOUT.select(PATH$pointSizeGranularity);
-    public static final OfFloat LAYOUT$lineWidthGranularity = (OfFloat) LAYOUT.select(PATH$lineWidthGranularity);
-    public static final OfInt LAYOUT$strictLines = (OfInt) LAYOUT.select(PATH$strictLines);
-    public static final OfInt LAYOUT$standardSampleLocations = (OfInt) LAYOUT.select(PATH$standardSampleLocations);
-    public static final OfLong LAYOUT$optimalBufferCopyOffsetAlignment = (OfLong) LAYOUT.select(PATH$optimalBufferCopyOffsetAlignment);
-    public static final OfLong LAYOUT$optimalBufferCopyRowPitchAlignment = (OfLong) LAYOUT.select(PATH$optimalBufferCopyRowPitchAlignment);
-    public static final OfLong LAYOUT$nonCoherentAtomSize = (OfLong) LAYOUT.select(PATH$nonCoherentAtomSize);
-
-    public static final long SIZE$maxImageDimension1D = LAYOUT$maxImageDimension1D.byteSize();
-    public static final long SIZE$maxImageDimension2D = LAYOUT$maxImageDimension2D.byteSize();
-    public static final long SIZE$maxImageDimension3D = LAYOUT$maxImageDimension3D.byteSize();
-    public static final long SIZE$maxImageDimensionCube = LAYOUT$maxImageDimensionCube.byteSize();
-    public static final long SIZE$maxImageArrayLayers = LAYOUT$maxImageArrayLayers.byteSize();
-    public static final long SIZE$maxTexelBufferElements = LAYOUT$maxTexelBufferElements.byteSize();
-    public static final long SIZE$maxUniformBufferRange = LAYOUT$maxUniformBufferRange.byteSize();
-    public static final long SIZE$maxStorageBufferRange = LAYOUT$maxStorageBufferRange.byteSize();
-    public static final long SIZE$maxPushConstantsSize = LAYOUT$maxPushConstantsSize.byteSize();
-    public static final long SIZE$maxMemoryAllocationCount = LAYOUT$maxMemoryAllocationCount.byteSize();
-    public static final long SIZE$maxSamplerAllocationCount = LAYOUT$maxSamplerAllocationCount.byteSize();
-    public static final long SIZE$bufferImageGranularity = LAYOUT$bufferImageGranularity.byteSize();
-    public static final long SIZE$sparseAddressSpaceSize = LAYOUT$sparseAddressSpaceSize.byteSize();
-    public static final long SIZE$maxBoundDescriptorSets = LAYOUT$maxBoundDescriptorSets.byteSize();
-    public static final long SIZE$maxPerStageDescriptorSamplers = LAYOUT$maxPerStageDescriptorSamplers.byteSize();
-    public static final long SIZE$maxPerStageDescriptorUniformBuffers = LAYOUT$maxPerStageDescriptorUniformBuffers.byteSize();
-    public static final long SIZE$maxPerStageDescriptorStorageBuffers = LAYOUT$maxPerStageDescriptorStorageBuffers.byteSize();
-    public static final long SIZE$maxPerStageDescriptorSampledImages = LAYOUT$maxPerStageDescriptorSampledImages.byteSize();
-    public static final long SIZE$maxPerStageDescriptorStorageImages = LAYOUT$maxPerStageDescriptorStorageImages.byteSize();
-    public static final long SIZE$maxPerStageDescriptorInputAttachments = LAYOUT$maxPerStageDescriptorInputAttachments.byteSize();
-    public static final long SIZE$maxPerStageResources = LAYOUT$maxPerStageResources.byteSize();
-    public static final long SIZE$maxDescriptorSetSamplers = LAYOUT$maxDescriptorSetSamplers.byteSize();
-    public static final long SIZE$maxDescriptorSetUniformBuffers = LAYOUT$maxDescriptorSetUniformBuffers.byteSize();
-    public static final long SIZE$maxDescriptorSetUniformBuffersDynamic = LAYOUT$maxDescriptorSetUniformBuffersDynamic.byteSize();
-    public static final long SIZE$maxDescriptorSetStorageBuffers = LAYOUT$maxDescriptorSetStorageBuffers.byteSize();
-    public static final long SIZE$maxDescriptorSetStorageBuffersDynamic = LAYOUT$maxDescriptorSetStorageBuffersDynamic.byteSize();
-    public static final long SIZE$maxDescriptorSetSampledImages = LAYOUT$maxDescriptorSetSampledImages.byteSize();
-    public static final long SIZE$maxDescriptorSetStorageImages = LAYOUT$maxDescriptorSetStorageImages.byteSize();
-    public static final long SIZE$maxDescriptorSetInputAttachments = LAYOUT$maxDescriptorSetInputAttachments.byteSize();
-    public static final long SIZE$maxVertexInputAttributes = LAYOUT$maxVertexInputAttributes.byteSize();
-    public static final long SIZE$maxVertexInputBindings = LAYOUT$maxVertexInputBindings.byteSize();
-    public static final long SIZE$maxVertexInputAttributeOffset = LAYOUT$maxVertexInputAttributeOffset.byteSize();
-    public static final long SIZE$maxVertexInputBindingStride = LAYOUT$maxVertexInputBindingStride.byteSize();
-    public static final long SIZE$maxVertexOutputComponents = LAYOUT$maxVertexOutputComponents.byteSize();
-    public static final long SIZE$maxTessellationGenerationLevel = LAYOUT$maxTessellationGenerationLevel.byteSize();
-    public static final long SIZE$maxTessellationPatchSize = LAYOUT$maxTessellationPatchSize.byteSize();
-    public static final long SIZE$maxTessellationControlPerVertexInputComponents = LAYOUT$maxTessellationControlPerVertexInputComponents.byteSize();
-    public static final long SIZE$maxTessellationControlPerVertexOutputComponents = LAYOUT$maxTessellationControlPerVertexOutputComponents.byteSize();
-    public static final long SIZE$maxTessellationControlPerPatchOutputComponents = LAYOUT$maxTessellationControlPerPatchOutputComponents.byteSize();
-    public static final long SIZE$maxTessellationControlTotalOutputComponents = LAYOUT$maxTessellationControlTotalOutputComponents.byteSize();
-    public static final long SIZE$maxTessellationEvaluationInputComponents = LAYOUT$maxTessellationEvaluationInputComponents.byteSize();
-    public static final long SIZE$maxTessellationEvaluationOutputComponents = LAYOUT$maxTessellationEvaluationOutputComponents.byteSize();
-    public static final long SIZE$maxGeometryShaderInvocations = LAYOUT$maxGeometryShaderInvocations.byteSize();
-    public static final long SIZE$maxGeometryInputComponents = LAYOUT$maxGeometryInputComponents.byteSize();
-    public static final long SIZE$maxGeometryOutputComponents = LAYOUT$maxGeometryOutputComponents.byteSize();
-    public static final long SIZE$maxGeometryOutputVertices = LAYOUT$maxGeometryOutputVertices.byteSize();
-    public static final long SIZE$maxGeometryTotalOutputComponents = LAYOUT$maxGeometryTotalOutputComponents.byteSize();
-    public static final long SIZE$maxFragmentInputComponents = LAYOUT$maxFragmentInputComponents.byteSize();
-    public static final long SIZE$maxFragmentOutputAttachments = LAYOUT$maxFragmentOutputAttachments.byteSize();
-    public static final long SIZE$maxFragmentDualSrcAttachments = LAYOUT$maxFragmentDualSrcAttachments.byteSize();
-    public static final long SIZE$maxFragmentCombinedOutputResources = LAYOUT$maxFragmentCombinedOutputResources.byteSize();
-    public static final long SIZE$maxComputeSharedMemorySize = LAYOUT$maxComputeSharedMemorySize.byteSize();
-    public static final long SIZE$maxComputeWorkGroupCount = LAYOUT$maxComputeWorkGroupCount.byteSize();
-    public static final long SIZE$maxComputeWorkGroupInvocations = LAYOUT$maxComputeWorkGroupInvocations.byteSize();
-    public static final long SIZE$maxComputeWorkGroupSize = LAYOUT$maxComputeWorkGroupSize.byteSize();
-    public static final long SIZE$subPixelPrecisionBits = LAYOUT$subPixelPrecisionBits.byteSize();
-    public static final long SIZE$subTexelPrecisionBits = LAYOUT$subTexelPrecisionBits.byteSize();
-    public static final long SIZE$mipmapPrecisionBits = LAYOUT$mipmapPrecisionBits.byteSize();
-    public static final long SIZE$maxDrawIndexedIndexValue = LAYOUT$maxDrawIndexedIndexValue.byteSize();
-    public static final long SIZE$maxDrawIndirectCount = LAYOUT$maxDrawIndirectCount.byteSize();
-    public static final long SIZE$maxSamplerLodBias = LAYOUT$maxSamplerLodBias.byteSize();
-    public static final long SIZE$maxSamplerAnisotropy = LAYOUT$maxSamplerAnisotropy.byteSize();
-    public static final long SIZE$maxViewports = LAYOUT$maxViewports.byteSize();
-    public static final long SIZE$maxViewportDimensions = LAYOUT$maxViewportDimensions.byteSize();
-    public static final long SIZE$viewportBoundsRange = LAYOUT$viewportBoundsRange.byteSize();
-    public static final long SIZE$viewportSubPixelBits = LAYOUT$viewportSubPixelBits.byteSize();
-    public static final long SIZE$minMemoryMapAlignment = NativeLayout.C_SIZE_T.byteSize();
-    public static final long SIZE$minTexelBufferOffsetAlignment = LAYOUT$minTexelBufferOffsetAlignment.byteSize();
-    public static final long SIZE$minUniformBufferOffsetAlignment = LAYOUT$minUniformBufferOffsetAlignment.byteSize();
-    public static final long SIZE$minStorageBufferOffsetAlignment = LAYOUT$minStorageBufferOffsetAlignment.byteSize();
-    public static final long SIZE$minTexelOffset = LAYOUT$minTexelOffset.byteSize();
-    public static final long SIZE$maxTexelOffset = LAYOUT$maxTexelOffset.byteSize();
-    public static final long SIZE$minTexelGatherOffset = LAYOUT$minTexelGatherOffset.byteSize();
-    public static final long SIZE$maxTexelGatherOffset = LAYOUT$maxTexelGatherOffset.byteSize();
-    public static final long SIZE$minInterpolationOffset = LAYOUT$minInterpolationOffset.byteSize();
-    public static final long SIZE$maxInterpolationOffset = LAYOUT$maxInterpolationOffset.byteSize();
-    public static final long SIZE$subPixelInterpolationOffsetBits = LAYOUT$subPixelInterpolationOffsetBits.byteSize();
-    public static final long SIZE$maxFramebufferWidth = LAYOUT$maxFramebufferWidth.byteSize();
-    public static final long SIZE$maxFramebufferHeight = LAYOUT$maxFramebufferHeight.byteSize();
-    public static final long SIZE$maxFramebufferLayers = LAYOUT$maxFramebufferLayers.byteSize();
-    public static final long SIZE$framebufferColorSampleCounts = LAYOUT$framebufferColorSampleCounts.byteSize();
-    public static final long SIZE$framebufferDepthSampleCounts = LAYOUT$framebufferDepthSampleCounts.byteSize();
-    public static final long SIZE$framebufferStencilSampleCounts = LAYOUT$framebufferStencilSampleCounts.byteSize();
-    public static final long SIZE$framebufferNoAttachmentsSampleCounts = LAYOUT$framebufferNoAttachmentsSampleCounts.byteSize();
-    public static final long SIZE$maxColorAttachments = LAYOUT$maxColorAttachments.byteSize();
-    public static final long SIZE$sampledImageColorSampleCounts = LAYOUT$sampledImageColorSampleCounts.byteSize();
-    public static final long SIZE$sampledImageIntegerSampleCounts = LAYOUT$sampledImageIntegerSampleCounts.byteSize();
-    public static final long SIZE$sampledImageDepthSampleCounts = LAYOUT$sampledImageDepthSampleCounts.byteSize();
-    public static final long SIZE$sampledImageStencilSampleCounts = LAYOUT$sampledImageStencilSampleCounts.byteSize();
-    public static final long SIZE$storageImageSampleCounts = LAYOUT$storageImageSampleCounts.byteSize();
-    public static final long SIZE$maxSampleMaskWords = LAYOUT$maxSampleMaskWords.byteSize();
-    public static final long SIZE$timestampComputeAndGraphics = LAYOUT$timestampComputeAndGraphics.byteSize();
-    public static final long SIZE$timestampPeriod = LAYOUT$timestampPeriod.byteSize();
-    public static final long SIZE$maxClipDistances = LAYOUT$maxClipDistances.byteSize();
-    public static final long SIZE$maxCullDistances = LAYOUT$maxCullDistances.byteSize();
-    public static final long SIZE$maxCombinedClipAndCullDistances = LAYOUT$maxCombinedClipAndCullDistances.byteSize();
-    public static final long SIZE$discreteQueuePriorities = LAYOUT$discreteQueuePriorities.byteSize();
-    public static final long SIZE$pointSizeRange = LAYOUT$pointSizeRange.byteSize();
-    public static final long SIZE$lineWidthRange = LAYOUT$lineWidthRange.byteSize();
-    public static final long SIZE$pointSizeGranularity = LAYOUT$pointSizeGranularity.byteSize();
-    public static final long SIZE$lineWidthGranularity = LAYOUT$lineWidthGranularity.byteSize();
-    public static final long SIZE$strictLines = LAYOUT$strictLines.byteSize();
-    public static final long SIZE$standardSampleLocations = LAYOUT$standardSampleLocations.byteSize();
-    public static final long SIZE$optimalBufferCopyOffsetAlignment = LAYOUT$optimalBufferCopyOffsetAlignment.byteSize();
-    public static final long SIZE$optimalBufferCopyRowPitchAlignment = LAYOUT$optimalBufferCopyRowPitchAlignment.byteSize();
-    public static final long SIZE$nonCoherentAtomSize = LAYOUT$nonCoherentAtomSize.byteSize();
-
-    public static final long OFFSET$maxImageDimension1D = LAYOUT.byteOffset(PATH$maxImageDimension1D);
-    public static final long OFFSET$maxImageDimension2D = LAYOUT.byteOffset(PATH$maxImageDimension2D);
-    public static final long OFFSET$maxImageDimension3D = LAYOUT.byteOffset(PATH$maxImageDimension3D);
-    public static final long OFFSET$maxImageDimensionCube = LAYOUT.byteOffset(PATH$maxImageDimensionCube);
-    public static final long OFFSET$maxImageArrayLayers = LAYOUT.byteOffset(PATH$maxImageArrayLayers);
-    public static final long OFFSET$maxTexelBufferElements = LAYOUT.byteOffset(PATH$maxTexelBufferElements);
-    public static final long OFFSET$maxUniformBufferRange = LAYOUT.byteOffset(PATH$maxUniformBufferRange);
-    public static final long OFFSET$maxStorageBufferRange = LAYOUT.byteOffset(PATH$maxStorageBufferRange);
-    public static final long OFFSET$maxPushConstantsSize = LAYOUT.byteOffset(PATH$maxPushConstantsSize);
-    public static final long OFFSET$maxMemoryAllocationCount = LAYOUT.byteOffset(PATH$maxMemoryAllocationCount);
-    public static final long OFFSET$maxSamplerAllocationCount = LAYOUT.byteOffset(PATH$maxSamplerAllocationCount);
-    public static final long OFFSET$bufferImageGranularity = LAYOUT.byteOffset(PATH$bufferImageGranularity);
-    public static final long OFFSET$sparseAddressSpaceSize = LAYOUT.byteOffset(PATH$sparseAddressSpaceSize);
-    public static final long OFFSET$maxBoundDescriptorSets = LAYOUT.byteOffset(PATH$maxBoundDescriptorSets);
-    public static final long OFFSET$maxPerStageDescriptorSamplers = LAYOUT.byteOffset(PATH$maxPerStageDescriptorSamplers);
-    public static final long OFFSET$maxPerStageDescriptorUniformBuffers = LAYOUT.byteOffset(PATH$maxPerStageDescriptorUniformBuffers);
-    public static final long OFFSET$maxPerStageDescriptorStorageBuffers = LAYOUT.byteOffset(PATH$maxPerStageDescriptorStorageBuffers);
-    public static final long OFFSET$maxPerStageDescriptorSampledImages = LAYOUT.byteOffset(PATH$maxPerStageDescriptorSampledImages);
-    public static final long OFFSET$maxPerStageDescriptorStorageImages = LAYOUT.byteOffset(PATH$maxPerStageDescriptorStorageImages);
-    public static final long OFFSET$maxPerStageDescriptorInputAttachments = LAYOUT.byteOffset(PATH$maxPerStageDescriptorInputAttachments);
-    public static final long OFFSET$maxPerStageResources = LAYOUT.byteOffset(PATH$maxPerStageResources);
-    public static final long OFFSET$maxDescriptorSetSamplers = LAYOUT.byteOffset(PATH$maxDescriptorSetSamplers);
-    public static final long OFFSET$maxDescriptorSetUniformBuffers = LAYOUT.byteOffset(PATH$maxDescriptorSetUniformBuffers);
-    public static final long OFFSET$maxDescriptorSetUniformBuffersDynamic = LAYOUT.byteOffset(PATH$maxDescriptorSetUniformBuffersDynamic);
-    public static final long OFFSET$maxDescriptorSetStorageBuffers = LAYOUT.byteOffset(PATH$maxDescriptorSetStorageBuffers);
-    public static final long OFFSET$maxDescriptorSetStorageBuffersDynamic = LAYOUT.byteOffset(PATH$maxDescriptorSetStorageBuffersDynamic);
-    public static final long OFFSET$maxDescriptorSetSampledImages = LAYOUT.byteOffset(PATH$maxDescriptorSetSampledImages);
-    public static final long OFFSET$maxDescriptorSetStorageImages = LAYOUT.byteOffset(PATH$maxDescriptorSetStorageImages);
-    public static final long OFFSET$maxDescriptorSetInputAttachments = LAYOUT.byteOffset(PATH$maxDescriptorSetInputAttachments);
-    public static final long OFFSET$maxVertexInputAttributes = LAYOUT.byteOffset(PATH$maxVertexInputAttributes);
-    public static final long OFFSET$maxVertexInputBindings = LAYOUT.byteOffset(PATH$maxVertexInputBindings);
-    public static final long OFFSET$maxVertexInputAttributeOffset = LAYOUT.byteOffset(PATH$maxVertexInputAttributeOffset);
-    public static final long OFFSET$maxVertexInputBindingStride = LAYOUT.byteOffset(PATH$maxVertexInputBindingStride);
-    public static final long OFFSET$maxVertexOutputComponents = LAYOUT.byteOffset(PATH$maxVertexOutputComponents);
-    public static final long OFFSET$maxTessellationGenerationLevel = LAYOUT.byteOffset(PATH$maxTessellationGenerationLevel);
-    public static final long OFFSET$maxTessellationPatchSize = LAYOUT.byteOffset(PATH$maxTessellationPatchSize);
-    public static final long OFFSET$maxTessellationControlPerVertexInputComponents = LAYOUT.byteOffset(PATH$maxTessellationControlPerVertexInputComponents);
-    public static final long OFFSET$maxTessellationControlPerVertexOutputComponents = LAYOUT.byteOffset(PATH$maxTessellationControlPerVertexOutputComponents);
-    public static final long OFFSET$maxTessellationControlPerPatchOutputComponents = LAYOUT.byteOffset(PATH$maxTessellationControlPerPatchOutputComponents);
-    public static final long OFFSET$maxTessellationControlTotalOutputComponents = LAYOUT.byteOffset(PATH$maxTessellationControlTotalOutputComponents);
-    public static final long OFFSET$maxTessellationEvaluationInputComponents = LAYOUT.byteOffset(PATH$maxTessellationEvaluationInputComponents);
-    public static final long OFFSET$maxTessellationEvaluationOutputComponents = LAYOUT.byteOffset(PATH$maxTessellationEvaluationOutputComponents);
-    public static final long OFFSET$maxGeometryShaderInvocations = LAYOUT.byteOffset(PATH$maxGeometryShaderInvocations);
-    public static final long OFFSET$maxGeometryInputComponents = LAYOUT.byteOffset(PATH$maxGeometryInputComponents);
-    public static final long OFFSET$maxGeometryOutputComponents = LAYOUT.byteOffset(PATH$maxGeometryOutputComponents);
-    public static final long OFFSET$maxGeometryOutputVertices = LAYOUT.byteOffset(PATH$maxGeometryOutputVertices);
-    public static final long OFFSET$maxGeometryTotalOutputComponents = LAYOUT.byteOffset(PATH$maxGeometryTotalOutputComponents);
-    public static final long OFFSET$maxFragmentInputComponents = LAYOUT.byteOffset(PATH$maxFragmentInputComponents);
-    public static final long OFFSET$maxFragmentOutputAttachments = LAYOUT.byteOffset(PATH$maxFragmentOutputAttachments);
-    public static final long OFFSET$maxFragmentDualSrcAttachments = LAYOUT.byteOffset(PATH$maxFragmentDualSrcAttachments);
-    public static final long OFFSET$maxFragmentCombinedOutputResources = LAYOUT.byteOffset(PATH$maxFragmentCombinedOutputResources);
-    public static final long OFFSET$maxComputeSharedMemorySize = LAYOUT.byteOffset(PATH$maxComputeSharedMemorySize);
-    public static final long OFFSET$maxComputeWorkGroupCount = LAYOUT.byteOffset(PATH$maxComputeWorkGroupCount);
-    public static final long OFFSET$maxComputeWorkGroupInvocations = LAYOUT.byteOffset(PATH$maxComputeWorkGroupInvocations);
-    public static final long OFFSET$maxComputeWorkGroupSize = LAYOUT.byteOffset(PATH$maxComputeWorkGroupSize);
-    public static final long OFFSET$subPixelPrecisionBits = LAYOUT.byteOffset(PATH$subPixelPrecisionBits);
-    public static final long OFFSET$subTexelPrecisionBits = LAYOUT.byteOffset(PATH$subTexelPrecisionBits);
-    public static final long OFFSET$mipmapPrecisionBits = LAYOUT.byteOffset(PATH$mipmapPrecisionBits);
-    public static final long OFFSET$maxDrawIndexedIndexValue = LAYOUT.byteOffset(PATH$maxDrawIndexedIndexValue);
-    public static final long OFFSET$maxDrawIndirectCount = LAYOUT.byteOffset(PATH$maxDrawIndirectCount);
-    public static final long OFFSET$maxSamplerLodBias = LAYOUT.byteOffset(PATH$maxSamplerLodBias);
-    public static final long OFFSET$maxSamplerAnisotropy = LAYOUT.byteOffset(PATH$maxSamplerAnisotropy);
-    public static final long OFFSET$maxViewports = LAYOUT.byteOffset(PATH$maxViewports);
-    public static final long OFFSET$maxViewportDimensions = LAYOUT.byteOffset(PATH$maxViewportDimensions);
-    public static final long OFFSET$viewportBoundsRange = LAYOUT.byteOffset(PATH$viewportBoundsRange);
-    public static final long OFFSET$viewportSubPixelBits = LAYOUT.byteOffset(PATH$viewportSubPixelBits);
-    public static final long OFFSET$minMemoryMapAlignment = LAYOUT.byteOffset(PATH$minMemoryMapAlignment);
-    public static final long OFFSET$minTexelBufferOffsetAlignment = LAYOUT.byteOffset(PATH$minTexelBufferOffsetAlignment);
-    public static final long OFFSET$minUniformBufferOffsetAlignment = LAYOUT.byteOffset(PATH$minUniformBufferOffsetAlignment);
-    public static final long OFFSET$minStorageBufferOffsetAlignment = LAYOUT.byteOffset(PATH$minStorageBufferOffsetAlignment);
-    public static final long OFFSET$minTexelOffset = LAYOUT.byteOffset(PATH$minTexelOffset);
-    public static final long OFFSET$maxTexelOffset = LAYOUT.byteOffset(PATH$maxTexelOffset);
-    public static final long OFFSET$minTexelGatherOffset = LAYOUT.byteOffset(PATH$minTexelGatherOffset);
-    public static final long OFFSET$maxTexelGatherOffset = LAYOUT.byteOffset(PATH$maxTexelGatherOffset);
-    public static final long OFFSET$minInterpolationOffset = LAYOUT.byteOffset(PATH$minInterpolationOffset);
-    public static final long OFFSET$maxInterpolationOffset = LAYOUT.byteOffset(PATH$maxInterpolationOffset);
-    public static final long OFFSET$subPixelInterpolationOffsetBits = LAYOUT.byteOffset(PATH$subPixelInterpolationOffsetBits);
-    public static final long OFFSET$maxFramebufferWidth = LAYOUT.byteOffset(PATH$maxFramebufferWidth);
-    public static final long OFFSET$maxFramebufferHeight = LAYOUT.byteOffset(PATH$maxFramebufferHeight);
-    public static final long OFFSET$maxFramebufferLayers = LAYOUT.byteOffset(PATH$maxFramebufferLayers);
-    public static final long OFFSET$framebufferColorSampleCounts = LAYOUT.byteOffset(PATH$framebufferColorSampleCounts);
-    public static final long OFFSET$framebufferDepthSampleCounts = LAYOUT.byteOffset(PATH$framebufferDepthSampleCounts);
-    public static final long OFFSET$framebufferStencilSampleCounts = LAYOUT.byteOffset(PATH$framebufferStencilSampleCounts);
-    public static final long OFFSET$framebufferNoAttachmentsSampleCounts = LAYOUT.byteOffset(PATH$framebufferNoAttachmentsSampleCounts);
-    public static final long OFFSET$maxColorAttachments = LAYOUT.byteOffset(PATH$maxColorAttachments);
-    public static final long OFFSET$sampledImageColorSampleCounts = LAYOUT.byteOffset(PATH$sampledImageColorSampleCounts);
-    public static final long OFFSET$sampledImageIntegerSampleCounts = LAYOUT.byteOffset(PATH$sampledImageIntegerSampleCounts);
-    public static final long OFFSET$sampledImageDepthSampleCounts = LAYOUT.byteOffset(PATH$sampledImageDepthSampleCounts);
-    public static final long OFFSET$sampledImageStencilSampleCounts = LAYOUT.byteOffset(PATH$sampledImageStencilSampleCounts);
-    public static final long OFFSET$storageImageSampleCounts = LAYOUT.byteOffset(PATH$storageImageSampleCounts);
-    public static final long OFFSET$maxSampleMaskWords = LAYOUT.byteOffset(PATH$maxSampleMaskWords);
-    public static final long OFFSET$timestampComputeAndGraphics = LAYOUT.byteOffset(PATH$timestampComputeAndGraphics);
-    public static final long OFFSET$timestampPeriod = LAYOUT.byteOffset(PATH$timestampPeriod);
-    public static final long OFFSET$maxClipDistances = LAYOUT.byteOffset(PATH$maxClipDistances);
-    public static final long OFFSET$maxCullDistances = LAYOUT.byteOffset(PATH$maxCullDistances);
-    public static final long OFFSET$maxCombinedClipAndCullDistances = LAYOUT.byteOffset(PATH$maxCombinedClipAndCullDistances);
-    public static final long OFFSET$discreteQueuePriorities = LAYOUT.byteOffset(PATH$discreteQueuePriorities);
-    public static final long OFFSET$pointSizeRange = LAYOUT.byteOffset(PATH$pointSizeRange);
-    public static final long OFFSET$lineWidthRange = LAYOUT.byteOffset(PATH$lineWidthRange);
-    public static final long OFFSET$pointSizeGranularity = LAYOUT.byteOffset(PATH$pointSizeGranularity);
-    public static final long OFFSET$lineWidthGranularity = LAYOUT.byteOffset(PATH$lineWidthGranularity);
-    public static final long OFFSET$strictLines = LAYOUT.byteOffset(PATH$strictLines);
-    public static final long OFFSET$standardSampleLocations = LAYOUT.byteOffset(PATH$standardSampleLocations);
-    public static final long OFFSET$optimalBufferCopyOffsetAlignment = LAYOUT.byteOffset(PATH$optimalBufferCopyOffsetAlignment);
-    public static final long OFFSET$optimalBufferCopyRowPitchAlignment = LAYOUT.byteOffset(PATH$optimalBufferCopyRowPitchAlignment);
-    public static final long OFFSET$nonCoherentAtomSize = LAYOUT.byteOffset(PATH$nonCoherentAtomSize);
 
     public @unsigned int maxImageDimension1D() {
         return segment.get(LAYOUT$maxImageDimension1D, OFFSET$maxImageDimension1D);
@@ -1440,4 +1018,540 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$nonCoherentAtomSize, OFFSET$nonCoherentAtomSize, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("maxImageDimension1D"),
+        ValueLayout.JAVA_INT.withName("maxImageDimension2D"),
+        ValueLayout.JAVA_INT.withName("maxImageDimension3D"),
+        ValueLayout.JAVA_INT.withName("maxImageDimensionCube"),
+        ValueLayout.JAVA_INT.withName("maxImageArrayLayers"),
+        ValueLayout.JAVA_INT.withName("maxTexelBufferElements"),
+        ValueLayout.JAVA_INT.withName("maxUniformBufferRange"),
+        ValueLayout.JAVA_INT.withName("maxStorageBufferRange"),
+        ValueLayout.JAVA_INT.withName("maxPushConstantsSize"),
+        ValueLayout.JAVA_INT.withName("maxMemoryAllocationCount"),
+        ValueLayout.JAVA_INT.withName("maxSamplerAllocationCount"),
+        ValueLayout.JAVA_LONG.withName("bufferImageGranularity"),
+        ValueLayout.JAVA_LONG.withName("sparseAddressSpaceSize"),
+        ValueLayout.JAVA_INT.withName("maxBoundDescriptorSets"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorSamplers"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUniformBuffers"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorStorageBuffers"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorSampledImages"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorStorageImages"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorInputAttachments"),
+        ValueLayout.JAVA_INT.withName("maxPerStageResources"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetSamplers"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUniformBuffers"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUniformBuffersDynamic"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetStorageBuffers"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetStorageBuffersDynamic"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetSampledImages"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetStorageImages"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetInputAttachments"),
+        ValueLayout.JAVA_INT.withName("maxVertexInputAttributes"),
+        ValueLayout.JAVA_INT.withName("maxVertexInputBindings"),
+        ValueLayout.JAVA_INT.withName("maxVertexInputAttributeOffset"),
+        ValueLayout.JAVA_INT.withName("maxVertexInputBindingStride"),
+        ValueLayout.JAVA_INT.withName("maxVertexOutputComponents"),
+        ValueLayout.JAVA_INT.withName("maxTessellationGenerationLevel"),
+        ValueLayout.JAVA_INT.withName("maxTessellationPatchSize"),
+        ValueLayout.JAVA_INT.withName("maxTessellationControlPerVertexInputComponents"),
+        ValueLayout.JAVA_INT.withName("maxTessellationControlPerVertexOutputComponents"),
+        ValueLayout.JAVA_INT.withName("maxTessellationControlPerPatchOutputComponents"),
+        ValueLayout.JAVA_INT.withName("maxTessellationControlTotalOutputComponents"),
+        ValueLayout.JAVA_INT.withName("maxTessellationEvaluationInputComponents"),
+        ValueLayout.JAVA_INT.withName("maxTessellationEvaluationOutputComponents"),
+        ValueLayout.JAVA_INT.withName("maxGeometryShaderInvocations"),
+        ValueLayout.JAVA_INT.withName("maxGeometryInputComponents"),
+        ValueLayout.JAVA_INT.withName("maxGeometryOutputComponents"),
+        ValueLayout.JAVA_INT.withName("maxGeometryOutputVertices"),
+        ValueLayout.JAVA_INT.withName("maxGeometryTotalOutputComponents"),
+        ValueLayout.JAVA_INT.withName("maxFragmentInputComponents"),
+        ValueLayout.JAVA_INT.withName("maxFragmentOutputAttachments"),
+        ValueLayout.JAVA_INT.withName("maxFragmentDualSrcAttachments"),
+        ValueLayout.JAVA_INT.withName("maxFragmentCombinedOutputResources"),
+        ValueLayout.JAVA_INT.withName("maxComputeSharedMemorySize"),
+        ValueLayout.JAVA_INT.withName("maxComputeWorkGroupCount"),
+        ValueLayout.JAVA_INT.withName("maxComputeWorkGroupInvocations"),
+        ValueLayout.JAVA_INT.withName("maxComputeWorkGroupSize"),
+        ValueLayout.JAVA_INT.withName("subPixelPrecisionBits"),
+        ValueLayout.JAVA_INT.withName("subTexelPrecisionBits"),
+        ValueLayout.JAVA_INT.withName("mipmapPrecisionBits"),
+        ValueLayout.JAVA_INT.withName("maxDrawIndexedIndexValue"),
+        ValueLayout.JAVA_INT.withName("maxDrawIndirectCount"),
+        ValueLayout.JAVA_FLOAT.withName("maxSamplerLodBias"),
+        ValueLayout.JAVA_FLOAT.withName("maxSamplerAnisotropy"),
+        ValueLayout.JAVA_INT.withName("maxViewports"),
+        ValueLayout.JAVA_INT.withName("maxViewportDimensions"),
+        ValueLayout.JAVA_FLOAT.withName("viewportBoundsRange"),
+        ValueLayout.JAVA_INT.withName("viewportSubPixelBits"),
+        NativeLayout.C_SIZE_T.withName("minMemoryMapAlignment"),
+        ValueLayout.JAVA_LONG.withName("minTexelBufferOffsetAlignment"),
+        ValueLayout.JAVA_LONG.withName("minUniformBufferOffsetAlignment"),
+        ValueLayout.JAVA_LONG.withName("minStorageBufferOffsetAlignment"),
+        ValueLayout.JAVA_INT.withName("minTexelOffset"),
+        ValueLayout.JAVA_INT.withName("maxTexelOffset"),
+        ValueLayout.JAVA_INT.withName("minTexelGatherOffset"),
+        ValueLayout.JAVA_INT.withName("maxTexelGatherOffset"),
+        ValueLayout.JAVA_FLOAT.withName("minInterpolationOffset"),
+        ValueLayout.JAVA_FLOAT.withName("maxInterpolationOffset"),
+        ValueLayout.JAVA_INT.withName("subPixelInterpolationOffsetBits"),
+        ValueLayout.JAVA_INT.withName("maxFramebufferWidth"),
+        ValueLayout.JAVA_INT.withName("maxFramebufferHeight"),
+        ValueLayout.JAVA_INT.withName("maxFramebufferLayers"),
+        ValueLayout.JAVA_INT.withName("framebufferColorSampleCounts"),
+        ValueLayout.JAVA_INT.withName("framebufferDepthSampleCounts"),
+        ValueLayout.JAVA_INT.withName("framebufferStencilSampleCounts"),
+        ValueLayout.JAVA_INT.withName("framebufferNoAttachmentsSampleCounts"),
+        ValueLayout.JAVA_INT.withName("maxColorAttachments"),
+        ValueLayout.JAVA_INT.withName("sampledImageColorSampleCounts"),
+        ValueLayout.JAVA_INT.withName("sampledImageIntegerSampleCounts"),
+        ValueLayout.JAVA_INT.withName("sampledImageDepthSampleCounts"),
+        ValueLayout.JAVA_INT.withName("sampledImageStencilSampleCounts"),
+        ValueLayout.JAVA_INT.withName("storageImageSampleCounts"),
+        ValueLayout.JAVA_INT.withName("maxSampleMaskWords"),
+        ValueLayout.JAVA_INT.withName("timestampComputeAndGraphics"),
+        ValueLayout.JAVA_FLOAT.withName("timestampPeriod"),
+        ValueLayout.JAVA_INT.withName("maxClipDistances"),
+        ValueLayout.JAVA_INT.withName("maxCullDistances"),
+        ValueLayout.JAVA_INT.withName("maxCombinedClipAndCullDistances"),
+        ValueLayout.JAVA_INT.withName("discreteQueuePriorities"),
+        ValueLayout.JAVA_FLOAT.withName("pointSizeRange"),
+        ValueLayout.JAVA_FLOAT.withName("lineWidthRange"),
+        ValueLayout.JAVA_FLOAT.withName("pointSizeGranularity"),
+        ValueLayout.JAVA_FLOAT.withName("lineWidthGranularity"),
+        ValueLayout.JAVA_INT.withName("strictLines"),
+        ValueLayout.JAVA_INT.withName("standardSampleLocations"),
+        ValueLayout.JAVA_LONG.withName("optimalBufferCopyOffsetAlignment"),
+        ValueLayout.JAVA_LONG.withName("optimalBufferCopyRowPitchAlignment"),
+        ValueLayout.JAVA_LONG.withName("nonCoherentAtomSize")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$maxImageDimension1D = PathElement.groupElement("PATH$maxImageDimension1D");
+    public static final PathElement PATH$maxImageDimension2D = PathElement.groupElement("PATH$maxImageDimension2D");
+    public static final PathElement PATH$maxImageDimension3D = PathElement.groupElement("PATH$maxImageDimension3D");
+    public static final PathElement PATH$maxImageDimensionCube = PathElement.groupElement("PATH$maxImageDimensionCube");
+    public static final PathElement PATH$maxImageArrayLayers = PathElement.groupElement("PATH$maxImageArrayLayers");
+    public static final PathElement PATH$maxTexelBufferElements = PathElement.groupElement("PATH$maxTexelBufferElements");
+    public static final PathElement PATH$maxUniformBufferRange = PathElement.groupElement("PATH$maxUniformBufferRange");
+    public static final PathElement PATH$maxStorageBufferRange = PathElement.groupElement("PATH$maxStorageBufferRange");
+    public static final PathElement PATH$maxPushConstantsSize = PathElement.groupElement("PATH$maxPushConstantsSize");
+    public static final PathElement PATH$maxMemoryAllocationCount = PathElement.groupElement("PATH$maxMemoryAllocationCount");
+    public static final PathElement PATH$maxSamplerAllocationCount = PathElement.groupElement("PATH$maxSamplerAllocationCount");
+    public static final PathElement PATH$bufferImageGranularity = PathElement.groupElement("PATH$bufferImageGranularity");
+    public static final PathElement PATH$sparseAddressSpaceSize = PathElement.groupElement("PATH$sparseAddressSpaceSize");
+    public static final PathElement PATH$maxBoundDescriptorSets = PathElement.groupElement("PATH$maxBoundDescriptorSets");
+    public static final PathElement PATH$maxPerStageDescriptorSamplers = PathElement.groupElement("PATH$maxPerStageDescriptorSamplers");
+    public static final PathElement PATH$maxPerStageDescriptorUniformBuffers = PathElement.groupElement("PATH$maxPerStageDescriptorUniformBuffers");
+    public static final PathElement PATH$maxPerStageDescriptorStorageBuffers = PathElement.groupElement("PATH$maxPerStageDescriptorStorageBuffers");
+    public static final PathElement PATH$maxPerStageDescriptorSampledImages = PathElement.groupElement("PATH$maxPerStageDescriptorSampledImages");
+    public static final PathElement PATH$maxPerStageDescriptorStorageImages = PathElement.groupElement("PATH$maxPerStageDescriptorStorageImages");
+    public static final PathElement PATH$maxPerStageDescriptorInputAttachments = PathElement.groupElement("PATH$maxPerStageDescriptorInputAttachments");
+    public static final PathElement PATH$maxPerStageResources = PathElement.groupElement("PATH$maxPerStageResources");
+    public static final PathElement PATH$maxDescriptorSetSamplers = PathElement.groupElement("PATH$maxDescriptorSetSamplers");
+    public static final PathElement PATH$maxDescriptorSetUniformBuffers = PathElement.groupElement("PATH$maxDescriptorSetUniformBuffers");
+    public static final PathElement PATH$maxDescriptorSetUniformBuffersDynamic = PathElement.groupElement("PATH$maxDescriptorSetUniformBuffersDynamic");
+    public static final PathElement PATH$maxDescriptorSetStorageBuffers = PathElement.groupElement("PATH$maxDescriptorSetStorageBuffers");
+    public static final PathElement PATH$maxDescriptorSetStorageBuffersDynamic = PathElement.groupElement("PATH$maxDescriptorSetStorageBuffersDynamic");
+    public static final PathElement PATH$maxDescriptorSetSampledImages = PathElement.groupElement("PATH$maxDescriptorSetSampledImages");
+    public static final PathElement PATH$maxDescriptorSetStorageImages = PathElement.groupElement("PATH$maxDescriptorSetStorageImages");
+    public static final PathElement PATH$maxDescriptorSetInputAttachments = PathElement.groupElement("PATH$maxDescriptorSetInputAttachments");
+    public static final PathElement PATH$maxVertexInputAttributes = PathElement.groupElement("PATH$maxVertexInputAttributes");
+    public static final PathElement PATH$maxVertexInputBindings = PathElement.groupElement("PATH$maxVertexInputBindings");
+    public static final PathElement PATH$maxVertexInputAttributeOffset = PathElement.groupElement("PATH$maxVertexInputAttributeOffset");
+    public static final PathElement PATH$maxVertexInputBindingStride = PathElement.groupElement("PATH$maxVertexInputBindingStride");
+    public static final PathElement PATH$maxVertexOutputComponents = PathElement.groupElement("PATH$maxVertexOutputComponents");
+    public static final PathElement PATH$maxTessellationGenerationLevel = PathElement.groupElement("PATH$maxTessellationGenerationLevel");
+    public static final PathElement PATH$maxTessellationPatchSize = PathElement.groupElement("PATH$maxTessellationPatchSize");
+    public static final PathElement PATH$maxTessellationControlPerVertexInputComponents = PathElement.groupElement("PATH$maxTessellationControlPerVertexInputComponents");
+    public static final PathElement PATH$maxTessellationControlPerVertexOutputComponents = PathElement.groupElement("PATH$maxTessellationControlPerVertexOutputComponents");
+    public static final PathElement PATH$maxTessellationControlPerPatchOutputComponents = PathElement.groupElement("PATH$maxTessellationControlPerPatchOutputComponents");
+    public static final PathElement PATH$maxTessellationControlTotalOutputComponents = PathElement.groupElement("PATH$maxTessellationControlTotalOutputComponents");
+    public static final PathElement PATH$maxTessellationEvaluationInputComponents = PathElement.groupElement("PATH$maxTessellationEvaluationInputComponents");
+    public static final PathElement PATH$maxTessellationEvaluationOutputComponents = PathElement.groupElement("PATH$maxTessellationEvaluationOutputComponents");
+    public static final PathElement PATH$maxGeometryShaderInvocations = PathElement.groupElement("PATH$maxGeometryShaderInvocations");
+    public static final PathElement PATH$maxGeometryInputComponents = PathElement.groupElement("PATH$maxGeometryInputComponents");
+    public static final PathElement PATH$maxGeometryOutputComponents = PathElement.groupElement("PATH$maxGeometryOutputComponents");
+    public static final PathElement PATH$maxGeometryOutputVertices = PathElement.groupElement("PATH$maxGeometryOutputVertices");
+    public static final PathElement PATH$maxGeometryTotalOutputComponents = PathElement.groupElement("PATH$maxGeometryTotalOutputComponents");
+    public static final PathElement PATH$maxFragmentInputComponents = PathElement.groupElement("PATH$maxFragmentInputComponents");
+    public static final PathElement PATH$maxFragmentOutputAttachments = PathElement.groupElement("PATH$maxFragmentOutputAttachments");
+    public static final PathElement PATH$maxFragmentDualSrcAttachments = PathElement.groupElement("PATH$maxFragmentDualSrcAttachments");
+    public static final PathElement PATH$maxFragmentCombinedOutputResources = PathElement.groupElement("PATH$maxFragmentCombinedOutputResources");
+    public static final PathElement PATH$maxComputeSharedMemorySize = PathElement.groupElement("PATH$maxComputeSharedMemorySize");
+    public static final PathElement PATH$maxComputeWorkGroupCount = PathElement.groupElement("PATH$maxComputeWorkGroupCount");
+    public static final PathElement PATH$maxComputeWorkGroupInvocations = PathElement.groupElement("PATH$maxComputeWorkGroupInvocations");
+    public static final PathElement PATH$maxComputeWorkGroupSize = PathElement.groupElement("PATH$maxComputeWorkGroupSize");
+    public static final PathElement PATH$subPixelPrecisionBits = PathElement.groupElement("PATH$subPixelPrecisionBits");
+    public static final PathElement PATH$subTexelPrecisionBits = PathElement.groupElement("PATH$subTexelPrecisionBits");
+    public static final PathElement PATH$mipmapPrecisionBits = PathElement.groupElement("PATH$mipmapPrecisionBits");
+    public static final PathElement PATH$maxDrawIndexedIndexValue = PathElement.groupElement("PATH$maxDrawIndexedIndexValue");
+    public static final PathElement PATH$maxDrawIndirectCount = PathElement.groupElement("PATH$maxDrawIndirectCount");
+    public static final PathElement PATH$maxSamplerLodBias = PathElement.groupElement("PATH$maxSamplerLodBias");
+    public static final PathElement PATH$maxSamplerAnisotropy = PathElement.groupElement("PATH$maxSamplerAnisotropy");
+    public static final PathElement PATH$maxViewports = PathElement.groupElement("PATH$maxViewports");
+    public static final PathElement PATH$maxViewportDimensions = PathElement.groupElement("PATH$maxViewportDimensions");
+    public static final PathElement PATH$viewportBoundsRange = PathElement.groupElement("PATH$viewportBoundsRange");
+    public static final PathElement PATH$viewportSubPixelBits = PathElement.groupElement("PATH$viewportSubPixelBits");
+    public static final PathElement PATH$minMemoryMapAlignment = PathElement.groupElement("PATH$minMemoryMapAlignment");
+    public static final PathElement PATH$minTexelBufferOffsetAlignment = PathElement.groupElement("PATH$minTexelBufferOffsetAlignment");
+    public static final PathElement PATH$minUniformBufferOffsetAlignment = PathElement.groupElement("PATH$minUniformBufferOffsetAlignment");
+    public static final PathElement PATH$minStorageBufferOffsetAlignment = PathElement.groupElement("PATH$minStorageBufferOffsetAlignment");
+    public static final PathElement PATH$minTexelOffset = PathElement.groupElement("PATH$minTexelOffset");
+    public static final PathElement PATH$maxTexelOffset = PathElement.groupElement("PATH$maxTexelOffset");
+    public static final PathElement PATH$minTexelGatherOffset = PathElement.groupElement("PATH$minTexelGatherOffset");
+    public static final PathElement PATH$maxTexelGatherOffset = PathElement.groupElement("PATH$maxTexelGatherOffset");
+    public static final PathElement PATH$minInterpolationOffset = PathElement.groupElement("PATH$minInterpolationOffset");
+    public static final PathElement PATH$maxInterpolationOffset = PathElement.groupElement("PATH$maxInterpolationOffset");
+    public static final PathElement PATH$subPixelInterpolationOffsetBits = PathElement.groupElement("PATH$subPixelInterpolationOffsetBits");
+    public static final PathElement PATH$maxFramebufferWidth = PathElement.groupElement("PATH$maxFramebufferWidth");
+    public static final PathElement PATH$maxFramebufferHeight = PathElement.groupElement("PATH$maxFramebufferHeight");
+    public static final PathElement PATH$maxFramebufferLayers = PathElement.groupElement("PATH$maxFramebufferLayers");
+    public static final PathElement PATH$framebufferColorSampleCounts = PathElement.groupElement("PATH$framebufferColorSampleCounts");
+    public static final PathElement PATH$framebufferDepthSampleCounts = PathElement.groupElement("PATH$framebufferDepthSampleCounts");
+    public static final PathElement PATH$framebufferStencilSampleCounts = PathElement.groupElement("PATH$framebufferStencilSampleCounts");
+    public static final PathElement PATH$framebufferNoAttachmentsSampleCounts = PathElement.groupElement("PATH$framebufferNoAttachmentsSampleCounts");
+    public static final PathElement PATH$maxColorAttachments = PathElement.groupElement("PATH$maxColorAttachments");
+    public static final PathElement PATH$sampledImageColorSampleCounts = PathElement.groupElement("PATH$sampledImageColorSampleCounts");
+    public static final PathElement PATH$sampledImageIntegerSampleCounts = PathElement.groupElement("PATH$sampledImageIntegerSampleCounts");
+    public static final PathElement PATH$sampledImageDepthSampleCounts = PathElement.groupElement("PATH$sampledImageDepthSampleCounts");
+    public static final PathElement PATH$sampledImageStencilSampleCounts = PathElement.groupElement("PATH$sampledImageStencilSampleCounts");
+    public static final PathElement PATH$storageImageSampleCounts = PathElement.groupElement("PATH$storageImageSampleCounts");
+    public static final PathElement PATH$maxSampleMaskWords = PathElement.groupElement("PATH$maxSampleMaskWords");
+    public static final PathElement PATH$timestampComputeAndGraphics = PathElement.groupElement("PATH$timestampComputeAndGraphics");
+    public static final PathElement PATH$timestampPeriod = PathElement.groupElement("PATH$timestampPeriod");
+    public static final PathElement PATH$maxClipDistances = PathElement.groupElement("PATH$maxClipDistances");
+    public static final PathElement PATH$maxCullDistances = PathElement.groupElement("PATH$maxCullDistances");
+    public static final PathElement PATH$maxCombinedClipAndCullDistances = PathElement.groupElement("PATH$maxCombinedClipAndCullDistances");
+    public static final PathElement PATH$discreteQueuePriorities = PathElement.groupElement("PATH$discreteQueuePriorities");
+    public static final PathElement PATH$pointSizeRange = PathElement.groupElement("PATH$pointSizeRange");
+    public static final PathElement PATH$lineWidthRange = PathElement.groupElement("PATH$lineWidthRange");
+    public static final PathElement PATH$pointSizeGranularity = PathElement.groupElement("PATH$pointSizeGranularity");
+    public static final PathElement PATH$lineWidthGranularity = PathElement.groupElement("PATH$lineWidthGranularity");
+    public static final PathElement PATH$strictLines = PathElement.groupElement("PATH$strictLines");
+    public static final PathElement PATH$standardSampleLocations = PathElement.groupElement("PATH$standardSampleLocations");
+    public static final PathElement PATH$optimalBufferCopyOffsetAlignment = PathElement.groupElement("PATH$optimalBufferCopyOffsetAlignment");
+    public static final PathElement PATH$optimalBufferCopyRowPitchAlignment = PathElement.groupElement("PATH$optimalBufferCopyRowPitchAlignment");
+    public static final PathElement PATH$nonCoherentAtomSize = PathElement.groupElement("PATH$nonCoherentAtomSize");
+
+    public static final OfInt LAYOUT$maxImageDimension1D = (OfInt) LAYOUT.select(PATH$maxImageDimension1D);
+    public static final OfInt LAYOUT$maxImageDimension2D = (OfInt) LAYOUT.select(PATH$maxImageDimension2D);
+    public static final OfInt LAYOUT$maxImageDimension3D = (OfInt) LAYOUT.select(PATH$maxImageDimension3D);
+    public static final OfInt LAYOUT$maxImageDimensionCube = (OfInt) LAYOUT.select(PATH$maxImageDimensionCube);
+    public static final OfInt LAYOUT$maxImageArrayLayers = (OfInt) LAYOUT.select(PATH$maxImageArrayLayers);
+    public static final OfInt LAYOUT$maxTexelBufferElements = (OfInt) LAYOUT.select(PATH$maxTexelBufferElements);
+    public static final OfInt LAYOUT$maxUniformBufferRange = (OfInt) LAYOUT.select(PATH$maxUniformBufferRange);
+    public static final OfInt LAYOUT$maxStorageBufferRange = (OfInt) LAYOUT.select(PATH$maxStorageBufferRange);
+    public static final OfInt LAYOUT$maxPushConstantsSize = (OfInt) LAYOUT.select(PATH$maxPushConstantsSize);
+    public static final OfInt LAYOUT$maxMemoryAllocationCount = (OfInt) LAYOUT.select(PATH$maxMemoryAllocationCount);
+    public static final OfInt LAYOUT$maxSamplerAllocationCount = (OfInt) LAYOUT.select(PATH$maxSamplerAllocationCount);
+    public static final OfLong LAYOUT$bufferImageGranularity = (OfLong) LAYOUT.select(PATH$bufferImageGranularity);
+    public static final OfLong LAYOUT$sparseAddressSpaceSize = (OfLong) LAYOUT.select(PATH$sparseAddressSpaceSize);
+    public static final OfInt LAYOUT$maxBoundDescriptorSets = (OfInt) LAYOUT.select(PATH$maxBoundDescriptorSets);
+    public static final OfInt LAYOUT$maxPerStageDescriptorSamplers = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorSamplers);
+    public static final OfInt LAYOUT$maxPerStageDescriptorUniformBuffers = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorUniformBuffers);
+    public static final OfInt LAYOUT$maxPerStageDescriptorStorageBuffers = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorStorageBuffers);
+    public static final OfInt LAYOUT$maxPerStageDescriptorSampledImages = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorSampledImages);
+    public static final OfInt LAYOUT$maxPerStageDescriptorStorageImages = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorStorageImages);
+    public static final OfInt LAYOUT$maxPerStageDescriptorInputAttachments = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorInputAttachments);
+    public static final OfInt LAYOUT$maxPerStageResources = (OfInt) LAYOUT.select(PATH$maxPerStageResources);
+    public static final OfInt LAYOUT$maxDescriptorSetSamplers = (OfInt) LAYOUT.select(PATH$maxDescriptorSetSamplers);
+    public static final OfInt LAYOUT$maxDescriptorSetUniformBuffers = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUniformBuffers);
+    public static final OfInt LAYOUT$maxDescriptorSetUniformBuffersDynamic = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUniformBuffersDynamic);
+    public static final OfInt LAYOUT$maxDescriptorSetStorageBuffers = (OfInt) LAYOUT.select(PATH$maxDescriptorSetStorageBuffers);
+    public static final OfInt LAYOUT$maxDescriptorSetStorageBuffersDynamic = (OfInt) LAYOUT.select(PATH$maxDescriptorSetStorageBuffersDynamic);
+    public static final OfInt LAYOUT$maxDescriptorSetSampledImages = (OfInt) LAYOUT.select(PATH$maxDescriptorSetSampledImages);
+    public static final OfInt LAYOUT$maxDescriptorSetStorageImages = (OfInt) LAYOUT.select(PATH$maxDescriptorSetStorageImages);
+    public static final OfInt LAYOUT$maxDescriptorSetInputAttachments = (OfInt) LAYOUT.select(PATH$maxDescriptorSetInputAttachments);
+    public static final OfInt LAYOUT$maxVertexInputAttributes = (OfInt) LAYOUT.select(PATH$maxVertexInputAttributes);
+    public static final OfInt LAYOUT$maxVertexInputBindings = (OfInt) LAYOUT.select(PATH$maxVertexInputBindings);
+    public static final OfInt LAYOUT$maxVertexInputAttributeOffset = (OfInt) LAYOUT.select(PATH$maxVertexInputAttributeOffset);
+    public static final OfInt LAYOUT$maxVertexInputBindingStride = (OfInt) LAYOUT.select(PATH$maxVertexInputBindingStride);
+    public static final OfInt LAYOUT$maxVertexOutputComponents = (OfInt) LAYOUT.select(PATH$maxVertexOutputComponents);
+    public static final OfInt LAYOUT$maxTessellationGenerationLevel = (OfInt) LAYOUT.select(PATH$maxTessellationGenerationLevel);
+    public static final OfInt LAYOUT$maxTessellationPatchSize = (OfInt) LAYOUT.select(PATH$maxTessellationPatchSize);
+    public static final OfInt LAYOUT$maxTessellationControlPerVertexInputComponents = (OfInt) LAYOUT.select(PATH$maxTessellationControlPerVertexInputComponents);
+    public static final OfInt LAYOUT$maxTessellationControlPerVertexOutputComponents = (OfInt) LAYOUT.select(PATH$maxTessellationControlPerVertexOutputComponents);
+    public static final OfInt LAYOUT$maxTessellationControlPerPatchOutputComponents = (OfInt) LAYOUT.select(PATH$maxTessellationControlPerPatchOutputComponents);
+    public static final OfInt LAYOUT$maxTessellationControlTotalOutputComponents = (OfInt) LAYOUT.select(PATH$maxTessellationControlTotalOutputComponents);
+    public static final OfInt LAYOUT$maxTessellationEvaluationInputComponents = (OfInt) LAYOUT.select(PATH$maxTessellationEvaluationInputComponents);
+    public static final OfInt LAYOUT$maxTessellationEvaluationOutputComponents = (OfInt) LAYOUT.select(PATH$maxTessellationEvaluationOutputComponents);
+    public static final OfInt LAYOUT$maxGeometryShaderInvocations = (OfInt) LAYOUT.select(PATH$maxGeometryShaderInvocations);
+    public static final OfInt LAYOUT$maxGeometryInputComponents = (OfInt) LAYOUT.select(PATH$maxGeometryInputComponents);
+    public static final OfInt LAYOUT$maxGeometryOutputComponents = (OfInt) LAYOUT.select(PATH$maxGeometryOutputComponents);
+    public static final OfInt LAYOUT$maxGeometryOutputVertices = (OfInt) LAYOUT.select(PATH$maxGeometryOutputVertices);
+    public static final OfInt LAYOUT$maxGeometryTotalOutputComponents = (OfInt) LAYOUT.select(PATH$maxGeometryTotalOutputComponents);
+    public static final OfInt LAYOUT$maxFragmentInputComponents = (OfInt) LAYOUT.select(PATH$maxFragmentInputComponents);
+    public static final OfInt LAYOUT$maxFragmentOutputAttachments = (OfInt) LAYOUT.select(PATH$maxFragmentOutputAttachments);
+    public static final OfInt LAYOUT$maxFragmentDualSrcAttachments = (OfInt) LAYOUT.select(PATH$maxFragmentDualSrcAttachments);
+    public static final OfInt LAYOUT$maxFragmentCombinedOutputResources = (OfInt) LAYOUT.select(PATH$maxFragmentCombinedOutputResources);
+    public static final OfInt LAYOUT$maxComputeSharedMemorySize = (OfInt) LAYOUT.select(PATH$maxComputeSharedMemorySize);
+    public static final OfInt LAYOUT$maxComputeWorkGroupCount = (OfInt) LAYOUT.select(PATH$maxComputeWorkGroupCount);
+    public static final OfInt LAYOUT$maxComputeWorkGroupInvocations = (OfInt) LAYOUT.select(PATH$maxComputeWorkGroupInvocations);
+    public static final OfInt LAYOUT$maxComputeWorkGroupSize = (OfInt) LAYOUT.select(PATH$maxComputeWorkGroupSize);
+    public static final OfInt LAYOUT$subPixelPrecisionBits = (OfInt) LAYOUT.select(PATH$subPixelPrecisionBits);
+    public static final OfInt LAYOUT$subTexelPrecisionBits = (OfInt) LAYOUT.select(PATH$subTexelPrecisionBits);
+    public static final OfInt LAYOUT$mipmapPrecisionBits = (OfInt) LAYOUT.select(PATH$mipmapPrecisionBits);
+    public static final OfInt LAYOUT$maxDrawIndexedIndexValue = (OfInt) LAYOUT.select(PATH$maxDrawIndexedIndexValue);
+    public static final OfInt LAYOUT$maxDrawIndirectCount = (OfInt) LAYOUT.select(PATH$maxDrawIndirectCount);
+    public static final OfFloat LAYOUT$maxSamplerLodBias = (OfFloat) LAYOUT.select(PATH$maxSamplerLodBias);
+    public static final OfFloat LAYOUT$maxSamplerAnisotropy = (OfFloat) LAYOUT.select(PATH$maxSamplerAnisotropy);
+    public static final OfInt LAYOUT$maxViewports = (OfInt) LAYOUT.select(PATH$maxViewports);
+    public static final OfInt LAYOUT$maxViewportDimensions = (OfInt) LAYOUT.select(PATH$maxViewportDimensions);
+    public static final OfFloat LAYOUT$viewportBoundsRange = (OfFloat) LAYOUT.select(PATH$viewportBoundsRange);
+    public static final OfInt LAYOUT$viewportSubPixelBits = (OfInt) LAYOUT.select(PATH$viewportSubPixelBits);
+    public static final OfLong LAYOUT$minTexelBufferOffsetAlignment = (OfLong) LAYOUT.select(PATH$minTexelBufferOffsetAlignment);
+    public static final OfLong LAYOUT$minUniformBufferOffsetAlignment = (OfLong) LAYOUT.select(PATH$minUniformBufferOffsetAlignment);
+    public static final OfLong LAYOUT$minStorageBufferOffsetAlignment = (OfLong) LAYOUT.select(PATH$minStorageBufferOffsetAlignment);
+    public static final OfInt LAYOUT$minTexelOffset = (OfInt) LAYOUT.select(PATH$minTexelOffset);
+    public static final OfInt LAYOUT$maxTexelOffset = (OfInt) LAYOUT.select(PATH$maxTexelOffset);
+    public static final OfInt LAYOUT$minTexelGatherOffset = (OfInt) LAYOUT.select(PATH$minTexelGatherOffset);
+    public static final OfInt LAYOUT$maxTexelGatherOffset = (OfInt) LAYOUT.select(PATH$maxTexelGatherOffset);
+    public static final OfFloat LAYOUT$minInterpolationOffset = (OfFloat) LAYOUT.select(PATH$minInterpolationOffset);
+    public static final OfFloat LAYOUT$maxInterpolationOffset = (OfFloat) LAYOUT.select(PATH$maxInterpolationOffset);
+    public static final OfInt LAYOUT$subPixelInterpolationOffsetBits = (OfInt) LAYOUT.select(PATH$subPixelInterpolationOffsetBits);
+    public static final OfInt LAYOUT$maxFramebufferWidth = (OfInt) LAYOUT.select(PATH$maxFramebufferWidth);
+    public static final OfInt LAYOUT$maxFramebufferHeight = (OfInt) LAYOUT.select(PATH$maxFramebufferHeight);
+    public static final OfInt LAYOUT$maxFramebufferLayers = (OfInt) LAYOUT.select(PATH$maxFramebufferLayers);
+    public static final OfInt LAYOUT$framebufferColorSampleCounts = (OfInt) LAYOUT.select(PATH$framebufferColorSampleCounts);
+    public static final OfInt LAYOUT$framebufferDepthSampleCounts = (OfInt) LAYOUT.select(PATH$framebufferDepthSampleCounts);
+    public static final OfInt LAYOUT$framebufferStencilSampleCounts = (OfInt) LAYOUT.select(PATH$framebufferStencilSampleCounts);
+    public static final OfInt LAYOUT$framebufferNoAttachmentsSampleCounts = (OfInt) LAYOUT.select(PATH$framebufferNoAttachmentsSampleCounts);
+    public static final OfInt LAYOUT$maxColorAttachments = (OfInt) LAYOUT.select(PATH$maxColorAttachments);
+    public static final OfInt LAYOUT$sampledImageColorSampleCounts = (OfInt) LAYOUT.select(PATH$sampledImageColorSampleCounts);
+    public static final OfInt LAYOUT$sampledImageIntegerSampleCounts = (OfInt) LAYOUT.select(PATH$sampledImageIntegerSampleCounts);
+    public static final OfInt LAYOUT$sampledImageDepthSampleCounts = (OfInt) LAYOUT.select(PATH$sampledImageDepthSampleCounts);
+    public static final OfInt LAYOUT$sampledImageStencilSampleCounts = (OfInt) LAYOUT.select(PATH$sampledImageStencilSampleCounts);
+    public static final OfInt LAYOUT$storageImageSampleCounts = (OfInt) LAYOUT.select(PATH$storageImageSampleCounts);
+    public static final OfInt LAYOUT$maxSampleMaskWords = (OfInt) LAYOUT.select(PATH$maxSampleMaskWords);
+    public static final OfInt LAYOUT$timestampComputeAndGraphics = (OfInt) LAYOUT.select(PATH$timestampComputeAndGraphics);
+    public static final OfFloat LAYOUT$timestampPeriod = (OfFloat) LAYOUT.select(PATH$timestampPeriod);
+    public static final OfInt LAYOUT$maxClipDistances = (OfInt) LAYOUT.select(PATH$maxClipDistances);
+    public static final OfInt LAYOUT$maxCullDistances = (OfInt) LAYOUT.select(PATH$maxCullDistances);
+    public static final OfInt LAYOUT$maxCombinedClipAndCullDistances = (OfInt) LAYOUT.select(PATH$maxCombinedClipAndCullDistances);
+    public static final OfInt LAYOUT$discreteQueuePriorities = (OfInt) LAYOUT.select(PATH$discreteQueuePriorities);
+    public static final OfFloat LAYOUT$pointSizeRange = (OfFloat) LAYOUT.select(PATH$pointSizeRange);
+    public static final OfFloat LAYOUT$lineWidthRange = (OfFloat) LAYOUT.select(PATH$lineWidthRange);
+    public static final OfFloat LAYOUT$pointSizeGranularity = (OfFloat) LAYOUT.select(PATH$pointSizeGranularity);
+    public static final OfFloat LAYOUT$lineWidthGranularity = (OfFloat) LAYOUT.select(PATH$lineWidthGranularity);
+    public static final OfInt LAYOUT$strictLines = (OfInt) LAYOUT.select(PATH$strictLines);
+    public static final OfInt LAYOUT$standardSampleLocations = (OfInt) LAYOUT.select(PATH$standardSampleLocations);
+    public static final OfLong LAYOUT$optimalBufferCopyOffsetAlignment = (OfLong) LAYOUT.select(PATH$optimalBufferCopyOffsetAlignment);
+    public static final OfLong LAYOUT$optimalBufferCopyRowPitchAlignment = (OfLong) LAYOUT.select(PATH$optimalBufferCopyRowPitchAlignment);
+    public static final OfLong LAYOUT$nonCoherentAtomSize = (OfLong) LAYOUT.select(PATH$nonCoherentAtomSize);
+
+    public static final long SIZE$maxImageDimension1D = LAYOUT$maxImageDimension1D.byteSize();
+    public static final long SIZE$maxImageDimension2D = LAYOUT$maxImageDimension2D.byteSize();
+    public static final long SIZE$maxImageDimension3D = LAYOUT$maxImageDimension3D.byteSize();
+    public static final long SIZE$maxImageDimensionCube = LAYOUT$maxImageDimensionCube.byteSize();
+    public static final long SIZE$maxImageArrayLayers = LAYOUT$maxImageArrayLayers.byteSize();
+    public static final long SIZE$maxTexelBufferElements = LAYOUT$maxTexelBufferElements.byteSize();
+    public static final long SIZE$maxUniformBufferRange = LAYOUT$maxUniformBufferRange.byteSize();
+    public static final long SIZE$maxStorageBufferRange = LAYOUT$maxStorageBufferRange.byteSize();
+    public static final long SIZE$maxPushConstantsSize = LAYOUT$maxPushConstantsSize.byteSize();
+    public static final long SIZE$maxMemoryAllocationCount = LAYOUT$maxMemoryAllocationCount.byteSize();
+    public static final long SIZE$maxSamplerAllocationCount = LAYOUT$maxSamplerAllocationCount.byteSize();
+    public static final long SIZE$bufferImageGranularity = LAYOUT$bufferImageGranularity.byteSize();
+    public static final long SIZE$sparseAddressSpaceSize = LAYOUT$sparseAddressSpaceSize.byteSize();
+    public static final long SIZE$maxBoundDescriptorSets = LAYOUT$maxBoundDescriptorSets.byteSize();
+    public static final long SIZE$maxPerStageDescriptorSamplers = LAYOUT$maxPerStageDescriptorSamplers.byteSize();
+    public static final long SIZE$maxPerStageDescriptorUniformBuffers = LAYOUT$maxPerStageDescriptorUniformBuffers.byteSize();
+    public static final long SIZE$maxPerStageDescriptorStorageBuffers = LAYOUT$maxPerStageDescriptorStorageBuffers.byteSize();
+    public static final long SIZE$maxPerStageDescriptorSampledImages = LAYOUT$maxPerStageDescriptorSampledImages.byteSize();
+    public static final long SIZE$maxPerStageDescriptorStorageImages = LAYOUT$maxPerStageDescriptorStorageImages.byteSize();
+    public static final long SIZE$maxPerStageDescriptorInputAttachments = LAYOUT$maxPerStageDescriptorInputAttachments.byteSize();
+    public static final long SIZE$maxPerStageResources = LAYOUT$maxPerStageResources.byteSize();
+    public static final long SIZE$maxDescriptorSetSamplers = LAYOUT$maxDescriptorSetSamplers.byteSize();
+    public static final long SIZE$maxDescriptorSetUniformBuffers = LAYOUT$maxDescriptorSetUniformBuffers.byteSize();
+    public static final long SIZE$maxDescriptorSetUniformBuffersDynamic = LAYOUT$maxDescriptorSetUniformBuffersDynamic.byteSize();
+    public static final long SIZE$maxDescriptorSetStorageBuffers = LAYOUT$maxDescriptorSetStorageBuffers.byteSize();
+    public static final long SIZE$maxDescriptorSetStorageBuffersDynamic = LAYOUT$maxDescriptorSetStorageBuffersDynamic.byteSize();
+    public static final long SIZE$maxDescriptorSetSampledImages = LAYOUT$maxDescriptorSetSampledImages.byteSize();
+    public static final long SIZE$maxDescriptorSetStorageImages = LAYOUT$maxDescriptorSetStorageImages.byteSize();
+    public static final long SIZE$maxDescriptorSetInputAttachments = LAYOUT$maxDescriptorSetInputAttachments.byteSize();
+    public static final long SIZE$maxVertexInputAttributes = LAYOUT$maxVertexInputAttributes.byteSize();
+    public static final long SIZE$maxVertexInputBindings = LAYOUT$maxVertexInputBindings.byteSize();
+    public static final long SIZE$maxVertexInputAttributeOffset = LAYOUT$maxVertexInputAttributeOffset.byteSize();
+    public static final long SIZE$maxVertexInputBindingStride = LAYOUT$maxVertexInputBindingStride.byteSize();
+    public static final long SIZE$maxVertexOutputComponents = LAYOUT$maxVertexOutputComponents.byteSize();
+    public static final long SIZE$maxTessellationGenerationLevel = LAYOUT$maxTessellationGenerationLevel.byteSize();
+    public static final long SIZE$maxTessellationPatchSize = LAYOUT$maxTessellationPatchSize.byteSize();
+    public static final long SIZE$maxTessellationControlPerVertexInputComponents = LAYOUT$maxTessellationControlPerVertexInputComponents.byteSize();
+    public static final long SIZE$maxTessellationControlPerVertexOutputComponents = LAYOUT$maxTessellationControlPerVertexOutputComponents.byteSize();
+    public static final long SIZE$maxTessellationControlPerPatchOutputComponents = LAYOUT$maxTessellationControlPerPatchOutputComponents.byteSize();
+    public static final long SIZE$maxTessellationControlTotalOutputComponents = LAYOUT$maxTessellationControlTotalOutputComponents.byteSize();
+    public static final long SIZE$maxTessellationEvaluationInputComponents = LAYOUT$maxTessellationEvaluationInputComponents.byteSize();
+    public static final long SIZE$maxTessellationEvaluationOutputComponents = LAYOUT$maxTessellationEvaluationOutputComponents.byteSize();
+    public static final long SIZE$maxGeometryShaderInvocations = LAYOUT$maxGeometryShaderInvocations.byteSize();
+    public static final long SIZE$maxGeometryInputComponents = LAYOUT$maxGeometryInputComponents.byteSize();
+    public static final long SIZE$maxGeometryOutputComponents = LAYOUT$maxGeometryOutputComponents.byteSize();
+    public static final long SIZE$maxGeometryOutputVertices = LAYOUT$maxGeometryOutputVertices.byteSize();
+    public static final long SIZE$maxGeometryTotalOutputComponents = LAYOUT$maxGeometryTotalOutputComponents.byteSize();
+    public static final long SIZE$maxFragmentInputComponents = LAYOUT$maxFragmentInputComponents.byteSize();
+    public static final long SIZE$maxFragmentOutputAttachments = LAYOUT$maxFragmentOutputAttachments.byteSize();
+    public static final long SIZE$maxFragmentDualSrcAttachments = LAYOUT$maxFragmentDualSrcAttachments.byteSize();
+    public static final long SIZE$maxFragmentCombinedOutputResources = LAYOUT$maxFragmentCombinedOutputResources.byteSize();
+    public static final long SIZE$maxComputeSharedMemorySize = LAYOUT$maxComputeSharedMemorySize.byteSize();
+    public static final long SIZE$maxComputeWorkGroupCount = LAYOUT$maxComputeWorkGroupCount.byteSize();
+    public static final long SIZE$maxComputeWorkGroupInvocations = LAYOUT$maxComputeWorkGroupInvocations.byteSize();
+    public static final long SIZE$maxComputeWorkGroupSize = LAYOUT$maxComputeWorkGroupSize.byteSize();
+    public static final long SIZE$subPixelPrecisionBits = LAYOUT$subPixelPrecisionBits.byteSize();
+    public static final long SIZE$subTexelPrecisionBits = LAYOUT$subTexelPrecisionBits.byteSize();
+    public static final long SIZE$mipmapPrecisionBits = LAYOUT$mipmapPrecisionBits.byteSize();
+    public static final long SIZE$maxDrawIndexedIndexValue = LAYOUT$maxDrawIndexedIndexValue.byteSize();
+    public static final long SIZE$maxDrawIndirectCount = LAYOUT$maxDrawIndirectCount.byteSize();
+    public static final long SIZE$maxSamplerLodBias = LAYOUT$maxSamplerLodBias.byteSize();
+    public static final long SIZE$maxSamplerAnisotropy = LAYOUT$maxSamplerAnisotropy.byteSize();
+    public static final long SIZE$maxViewports = LAYOUT$maxViewports.byteSize();
+    public static final long SIZE$maxViewportDimensions = LAYOUT$maxViewportDimensions.byteSize();
+    public static final long SIZE$viewportBoundsRange = LAYOUT$viewportBoundsRange.byteSize();
+    public static final long SIZE$viewportSubPixelBits = LAYOUT$viewportSubPixelBits.byteSize();
+    public static final long SIZE$minMemoryMapAlignment = NativeLayout.C_SIZE_T.byteSize();
+    public static final long SIZE$minTexelBufferOffsetAlignment = LAYOUT$minTexelBufferOffsetAlignment.byteSize();
+    public static final long SIZE$minUniformBufferOffsetAlignment = LAYOUT$minUniformBufferOffsetAlignment.byteSize();
+    public static final long SIZE$minStorageBufferOffsetAlignment = LAYOUT$minStorageBufferOffsetAlignment.byteSize();
+    public static final long SIZE$minTexelOffset = LAYOUT$minTexelOffset.byteSize();
+    public static final long SIZE$maxTexelOffset = LAYOUT$maxTexelOffset.byteSize();
+    public static final long SIZE$minTexelGatherOffset = LAYOUT$minTexelGatherOffset.byteSize();
+    public static final long SIZE$maxTexelGatherOffset = LAYOUT$maxTexelGatherOffset.byteSize();
+    public static final long SIZE$minInterpolationOffset = LAYOUT$minInterpolationOffset.byteSize();
+    public static final long SIZE$maxInterpolationOffset = LAYOUT$maxInterpolationOffset.byteSize();
+    public static final long SIZE$subPixelInterpolationOffsetBits = LAYOUT$subPixelInterpolationOffsetBits.byteSize();
+    public static final long SIZE$maxFramebufferWidth = LAYOUT$maxFramebufferWidth.byteSize();
+    public static final long SIZE$maxFramebufferHeight = LAYOUT$maxFramebufferHeight.byteSize();
+    public static final long SIZE$maxFramebufferLayers = LAYOUT$maxFramebufferLayers.byteSize();
+    public static final long SIZE$framebufferColorSampleCounts = LAYOUT$framebufferColorSampleCounts.byteSize();
+    public static final long SIZE$framebufferDepthSampleCounts = LAYOUT$framebufferDepthSampleCounts.byteSize();
+    public static final long SIZE$framebufferStencilSampleCounts = LAYOUT$framebufferStencilSampleCounts.byteSize();
+    public static final long SIZE$framebufferNoAttachmentsSampleCounts = LAYOUT$framebufferNoAttachmentsSampleCounts.byteSize();
+    public static final long SIZE$maxColorAttachments = LAYOUT$maxColorAttachments.byteSize();
+    public static final long SIZE$sampledImageColorSampleCounts = LAYOUT$sampledImageColorSampleCounts.byteSize();
+    public static final long SIZE$sampledImageIntegerSampleCounts = LAYOUT$sampledImageIntegerSampleCounts.byteSize();
+    public static final long SIZE$sampledImageDepthSampleCounts = LAYOUT$sampledImageDepthSampleCounts.byteSize();
+    public static final long SIZE$sampledImageStencilSampleCounts = LAYOUT$sampledImageStencilSampleCounts.byteSize();
+    public static final long SIZE$storageImageSampleCounts = LAYOUT$storageImageSampleCounts.byteSize();
+    public static final long SIZE$maxSampleMaskWords = LAYOUT$maxSampleMaskWords.byteSize();
+    public static final long SIZE$timestampComputeAndGraphics = LAYOUT$timestampComputeAndGraphics.byteSize();
+    public static final long SIZE$timestampPeriod = LAYOUT$timestampPeriod.byteSize();
+    public static final long SIZE$maxClipDistances = LAYOUT$maxClipDistances.byteSize();
+    public static final long SIZE$maxCullDistances = LAYOUT$maxCullDistances.byteSize();
+    public static final long SIZE$maxCombinedClipAndCullDistances = LAYOUT$maxCombinedClipAndCullDistances.byteSize();
+    public static final long SIZE$discreteQueuePriorities = LAYOUT$discreteQueuePriorities.byteSize();
+    public static final long SIZE$pointSizeRange = LAYOUT$pointSizeRange.byteSize();
+    public static final long SIZE$lineWidthRange = LAYOUT$lineWidthRange.byteSize();
+    public static final long SIZE$pointSizeGranularity = LAYOUT$pointSizeGranularity.byteSize();
+    public static final long SIZE$lineWidthGranularity = LAYOUT$lineWidthGranularity.byteSize();
+    public static final long SIZE$strictLines = LAYOUT$strictLines.byteSize();
+    public static final long SIZE$standardSampleLocations = LAYOUT$standardSampleLocations.byteSize();
+    public static final long SIZE$optimalBufferCopyOffsetAlignment = LAYOUT$optimalBufferCopyOffsetAlignment.byteSize();
+    public static final long SIZE$optimalBufferCopyRowPitchAlignment = LAYOUT$optimalBufferCopyRowPitchAlignment.byteSize();
+    public static final long SIZE$nonCoherentAtomSize = LAYOUT$nonCoherentAtomSize.byteSize();
+
+    public static final long OFFSET$maxImageDimension1D = LAYOUT.byteOffset(PATH$maxImageDimension1D);
+    public static final long OFFSET$maxImageDimension2D = LAYOUT.byteOffset(PATH$maxImageDimension2D);
+    public static final long OFFSET$maxImageDimension3D = LAYOUT.byteOffset(PATH$maxImageDimension3D);
+    public static final long OFFSET$maxImageDimensionCube = LAYOUT.byteOffset(PATH$maxImageDimensionCube);
+    public static final long OFFSET$maxImageArrayLayers = LAYOUT.byteOffset(PATH$maxImageArrayLayers);
+    public static final long OFFSET$maxTexelBufferElements = LAYOUT.byteOffset(PATH$maxTexelBufferElements);
+    public static final long OFFSET$maxUniformBufferRange = LAYOUT.byteOffset(PATH$maxUniformBufferRange);
+    public static final long OFFSET$maxStorageBufferRange = LAYOUT.byteOffset(PATH$maxStorageBufferRange);
+    public static final long OFFSET$maxPushConstantsSize = LAYOUT.byteOffset(PATH$maxPushConstantsSize);
+    public static final long OFFSET$maxMemoryAllocationCount = LAYOUT.byteOffset(PATH$maxMemoryAllocationCount);
+    public static final long OFFSET$maxSamplerAllocationCount = LAYOUT.byteOffset(PATH$maxSamplerAllocationCount);
+    public static final long OFFSET$bufferImageGranularity = LAYOUT.byteOffset(PATH$bufferImageGranularity);
+    public static final long OFFSET$sparseAddressSpaceSize = LAYOUT.byteOffset(PATH$sparseAddressSpaceSize);
+    public static final long OFFSET$maxBoundDescriptorSets = LAYOUT.byteOffset(PATH$maxBoundDescriptorSets);
+    public static final long OFFSET$maxPerStageDescriptorSamplers = LAYOUT.byteOffset(PATH$maxPerStageDescriptorSamplers);
+    public static final long OFFSET$maxPerStageDescriptorUniformBuffers = LAYOUT.byteOffset(PATH$maxPerStageDescriptorUniformBuffers);
+    public static final long OFFSET$maxPerStageDescriptorStorageBuffers = LAYOUT.byteOffset(PATH$maxPerStageDescriptorStorageBuffers);
+    public static final long OFFSET$maxPerStageDescriptorSampledImages = LAYOUT.byteOffset(PATH$maxPerStageDescriptorSampledImages);
+    public static final long OFFSET$maxPerStageDescriptorStorageImages = LAYOUT.byteOffset(PATH$maxPerStageDescriptorStorageImages);
+    public static final long OFFSET$maxPerStageDescriptorInputAttachments = LAYOUT.byteOffset(PATH$maxPerStageDescriptorInputAttachments);
+    public static final long OFFSET$maxPerStageResources = LAYOUT.byteOffset(PATH$maxPerStageResources);
+    public static final long OFFSET$maxDescriptorSetSamplers = LAYOUT.byteOffset(PATH$maxDescriptorSetSamplers);
+    public static final long OFFSET$maxDescriptorSetUniformBuffers = LAYOUT.byteOffset(PATH$maxDescriptorSetUniformBuffers);
+    public static final long OFFSET$maxDescriptorSetUniformBuffersDynamic = LAYOUT.byteOffset(PATH$maxDescriptorSetUniformBuffersDynamic);
+    public static final long OFFSET$maxDescriptorSetStorageBuffers = LAYOUT.byteOffset(PATH$maxDescriptorSetStorageBuffers);
+    public static final long OFFSET$maxDescriptorSetStorageBuffersDynamic = LAYOUT.byteOffset(PATH$maxDescriptorSetStorageBuffersDynamic);
+    public static final long OFFSET$maxDescriptorSetSampledImages = LAYOUT.byteOffset(PATH$maxDescriptorSetSampledImages);
+    public static final long OFFSET$maxDescriptorSetStorageImages = LAYOUT.byteOffset(PATH$maxDescriptorSetStorageImages);
+    public static final long OFFSET$maxDescriptorSetInputAttachments = LAYOUT.byteOffset(PATH$maxDescriptorSetInputAttachments);
+    public static final long OFFSET$maxVertexInputAttributes = LAYOUT.byteOffset(PATH$maxVertexInputAttributes);
+    public static final long OFFSET$maxVertexInputBindings = LAYOUT.byteOffset(PATH$maxVertexInputBindings);
+    public static final long OFFSET$maxVertexInputAttributeOffset = LAYOUT.byteOffset(PATH$maxVertexInputAttributeOffset);
+    public static final long OFFSET$maxVertexInputBindingStride = LAYOUT.byteOffset(PATH$maxVertexInputBindingStride);
+    public static final long OFFSET$maxVertexOutputComponents = LAYOUT.byteOffset(PATH$maxVertexOutputComponents);
+    public static final long OFFSET$maxTessellationGenerationLevel = LAYOUT.byteOffset(PATH$maxTessellationGenerationLevel);
+    public static final long OFFSET$maxTessellationPatchSize = LAYOUT.byteOffset(PATH$maxTessellationPatchSize);
+    public static final long OFFSET$maxTessellationControlPerVertexInputComponents = LAYOUT.byteOffset(PATH$maxTessellationControlPerVertexInputComponents);
+    public static final long OFFSET$maxTessellationControlPerVertexOutputComponents = LAYOUT.byteOffset(PATH$maxTessellationControlPerVertexOutputComponents);
+    public static final long OFFSET$maxTessellationControlPerPatchOutputComponents = LAYOUT.byteOffset(PATH$maxTessellationControlPerPatchOutputComponents);
+    public static final long OFFSET$maxTessellationControlTotalOutputComponents = LAYOUT.byteOffset(PATH$maxTessellationControlTotalOutputComponents);
+    public static final long OFFSET$maxTessellationEvaluationInputComponents = LAYOUT.byteOffset(PATH$maxTessellationEvaluationInputComponents);
+    public static final long OFFSET$maxTessellationEvaluationOutputComponents = LAYOUT.byteOffset(PATH$maxTessellationEvaluationOutputComponents);
+    public static final long OFFSET$maxGeometryShaderInvocations = LAYOUT.byteOffset(PATH$maxGeometryShaderInvocations);
+    public static final long OFFSET$maxGeometryInputComponents = LAYOUT.byteOffset(PATH$maxGeometryInputComponents);
+    public static final long OFFSET$maxGeometryOutputComponents = LAYOUT.byteOffset(PATH$maxGeometryOutputComponents);
+    public static final long OFFSET$maxGeometryOutputVertices = LAYOUT.byteOffset(PATH$maxGeometryOutputVertices);
+    public static final long OFFSET$maxGeometryTotalOutputComponents = LAYOUT.byteOffset(PATH$maxGeometryTotalOutputComponents);
+    public static final long OFFSET$maxFragmentInputComponents = LAYOUT.byteOffset(PATH$maxFragmentInputComponents);
+    public static final long OFFSET$maxFragmentOutputAttachments = LAYOUT.byteOffset(PATH$maxFragmentOutputAttachments);
+    public static final long OFFSET$maxFragmentDualSrcAttachments = LAYOUT.byteOffset(PATH$maxFragmentDualSrcAttachments);
+    public static final long OFFSET$maxFragmentCombinedOutputResources = LAYOUT.byteOffset(PATH$maxFragmentCombinedOutputResources);
+    public static final long OFFSET$maxComputeSharedMemorySize = LAYOUT.byteOffset(PATH$maxComputeSharedMemorySize);
+    public static final long OFFSET$maxComputeWorkGroupCount = LAYOUT.byteOffset(PATH$maxComputeWorkGroupCount);
+    public static final long OFFSET$maxComputeWorkGroupInvocations = LAYOUT.byteOffset(PATH$maxComputeWorkGroupInvocations);
+    public static final long OFFSET$maxComputeWorkGroupSize = LAYOUT.byteOffset(PATH$maxComputeWorkGroupSize);
+    public static final long OFFSET$subPixelPrecisionBits = LAYOUT.byteOffset(PATH$subPixelPrecisionBits);
+    public static final long OFFSET$subTexelPrecisionBits = LAYOUT.byteOffset(PATH$subTexelPrecisionBits);
+    public static final long OFFSET$mipmapPrecisionBits = LAYOUT.byteOffset(PATH$mipmapPrecisionBits);
+    public static final long OFFSET$maxDrawIndexedIndexValue = LAYOUT.byteOffset(PATH$maxDrawIndexedIndexValue);
+    public static final long OFFSET$maxDrawIndirectCount = LAYOUT.byteOffset(PATH$maxDrawIndirectCount);
+    public static final long OFFSET$maxSamplerLodBias = LAYOUT.byteOffset(PATH$maxSamplerLodBias);
+    public static final long OFFSET$maxSamplerAnisotropy = LAYOUT.byteOffset(PATH$maxSamplerAnisotropy);
+    public static final long OFFSET$maxViewports = LAYOUT.byteOffset(PATH$maxViewports);
+    public static final long OFFSET$maxViewportDimensions = LAYOUT.byteOffset(PATH$maxViewportDimensions);
+    public static final long OFFSET$viewportBoundsRange = LAYOUT.byteOffset(PATH$viewportBoundsRange);
+    public static final long OFFSET$viewportSubPixelBits = LAYOUT.byteOffset(PATH$viewportSubPixelBits);
+    public static final long OFFSET$minMemoryMapAlignment = LAYOUT.byteOffset(PATH$minMemoryMapAlignment);
+    public static final long OFFSET$minTexelBufferOffsetAlignment = LAYOUT.byteOffset(PATH$minTexelBufferOffsetAlignment);
+    public static final long OFFSET$minUniformBufferOffsetAlignment = LAYOUT.byteOffset(PATH$minUniformBufferOffsetAlignment);
+    public static final long OFFSET$minStorageBufferOffsetAlignment = LAYOUT.byteOffset(PATH$minStorageBufferOffsetAlignment);
+    public static final long OFFSET$minTexelOffset = LAYOUT.byteOffset(PATH$minTexelOffset);
+    public static final long OFFSET$maxTexelOffset = LAYOUT.byteOffset(PATH$maxTexelOffset);
+    public static final long OFFSET$minTexelGatherOffset = LAYOUT.byteOffset(PATH$minTexelGatherOffset);
+    public static final long OFFSET$maxTexelGatherOffset = LAYOUT.byteOffset(PATH$maxTexelGatherOffset);
+    public static final long OFFSET$minInterpolationOffset = LAYOUT.byteOffset(PATH$minInterpolationOffset);
+    public static final long OFFSET$maxInterpolationOffset = LAYOUT.byteOffset(PATH$maxInterpolationOffset);
+    public static final long OFFSET$subPixelInterpolationOffsetBits = LAYOUT.byteOffset(PATH$subPixelInterpolationOffsetBits);
+    public static final long OFFSET$maxFramebufferWidth = LAYOUT.byteOffset(PATH$maxFramebufferWidth);
+    public static final long OFFSET$maxFramebufferHeight = LAYOUT.byteOffset(PATH$maxFramebufferHeight);
+    public static final long OFFSET$maxFramebufferLayers = LAYOUT.byteOffset(PATH$maxFramebufferLayers);
+    public static final long OFFSET$framebufferColorSampleCounts = LAYOUT.byteOffset(PATH$framebufferColorSampleCounts);
+    public static final long OFFSET$framebufferDepthSampleCounts = LAYOUT.byteOffset(PATH$framebufferDepthSampleCounts);
+    public static final long OFFSET$framebufferStencilSampleCounts = LAYOUT.byteOffset(PATH$framebufferStencilSampleCounts);
+    public static final long OFFSET$framebufferNoAttachmentsSampleCounts = LAYOUT.byteOffset(PATH$framebufferNoAttachmentsSampleCounts);
+    public static final long OFFSET$maxColorAttachments = LAYOUT.byteOffset(PATH$maxColorAttachments);
+    public static final long OFFSET$sampledImageColorSampleCounts = LAYOUT.byteOffset(PATH$sampledImageColorSampleCounts);
+    public static final long OFFSET$sampledImageIntegerSampleCounts = LAYOUT.byteOffset(PATH$sampledImageIntegerSampleCounts);
+    public static final long OFFSET$sampledImageDepthSampleCounts = LAYOUT.byteOffset(PATH$sampledImageDepthSampleCounts);
+    public static final long OFFSET$sampledImageStencilSampleCounts = LAYOUT.byteOffset(PATH$sampledImageStencilSampleCounts);
+    public static final long OFFSET$storageImageSampleCounts = LAYOUT.byteOffset(PATH$storageImageSampleCounts);
+    public static final long OFFSET$maxSampleMaskWords = LAYOUT.byteOffset(PATH$maxSampleMaskWords);
+    public static final long OFFSET$timestampComputeAndGraphics = LAYOUT.byteOffset(PATH$timestampComputeAndGraphics);
+    public static final long OFFSET$timestampPeriod = LAYOUT.byteOffset(PATH$timestampPeriod);
+    public static final long OFFSET$maxClipDistances = LAYOUT.byteOffset(PATH$maxClipDistances);
+    public static final long OFFSET$maxCullDistances = LAYOUT.byteOffset(PATH$maxCullDistances);
+    public static final long OFFSET$maxCombinedClipAndCullDistances = LAYOUT.byteOffset(PATH$maxCombinedClipAndCullDistances);
+    public static final long OFFSET$discreteQueuePriorities = LAYOUT.byteOffset(PATH$discreteQueuePriorities);
+    public static final long OFFSET$pointSizeRange = LAYOUT.byteOffset(PATH$pointSizeRange);
+    public static final long OFFSET$lineWidthRange = LAYOUT.byteOffset(PATH$lineWidthRange);
+    public static final long OFFSET$pointSizeGranularity = LAYOUT.byteOffset(PATH$pointSizeGranularity);
+    public static final long OFFSET$lineWidthGranularity = LAYOUT.byteOffset(PATH$lineWidthGranularity);
+    public static final long OFFSET$strictLines = LAYOUT.byteOffset(PATH$strictLines);
+    public static final long OFFSET$standardSampleLocations = LAYOUT.byteOffset(PATH$standardSampleLocations);
+    public static final long OFFSET$optimalBufferCopyOffsetAlignment = LAYOUT.byteOffset(PATH$optimalBufferCopyOffsetAlignment);
+    public static final long OFFSET$optimalBufferCopyRowPitchAlignment = LAYOUT.byteOffset(PATH$optimalBufferCopyRowPitchAlignment);
+    public static final long OFFSET$nonCoherentAtomSize = LAYOUT.byteOffset(PATH$nonCoherentAtomSize);
 }

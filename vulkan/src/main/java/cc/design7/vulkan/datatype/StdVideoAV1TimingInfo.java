@@ -16,6 +16,18 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoAV1TimingInfo} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoAV1TimingInfo {
+///     StdVideoAV1TimingInfoFlags flags;
+///     uint32_t num_units_in_display_tick;
+///     uint32_t time_scale;
+///     uint32_t num_ticks_per_picture_minus_1;
+/// } StdVideoAV1TimingInfo;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +39,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1TimingInfo(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1TimingInfo allocate(Arena arena) {
-        return new StdVideoAV1TimingInfo(arena.allocate(LAYOUT));
+        StdVideoAV1TimingInfo ret = new StdVideoAV1TimingInfo(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoAV1TimingInfo[] allocate(Arena arena, int count) {
@@ -52,34 +65,6 @@ public record StdVideoAV1TimingInfo(@NotNull MemorySegment segment) implements I
         }
         return ret;
     }
-
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        StdVideoAV1TimingInfoFlags.LAYOUT.withName("flags"),
-        ValueLayout.JAVA_INT.withName("num_units_in_display_tick"),
-        ValueLayout.JAVA_INT.withName("time_scale"),
-        ValueLayout.JAVA_INT.withName("num_ticks_per_picture_minus_1")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$num_units_in_display_tick = PathElement.groupElement("PATH$num_units_in_display_tick");
-    public static final PathElement PATH$time_scale = PathElement.groupElement("PATH$time_scale");
-    public static final PathElement PATH$num_ticks_per_picture_minus_1 = PathElement.groupElement("PATH$num_ticks_per_picture_minus_1");
-
-    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
-    public static final OfInt LAYOUT$num_units_in_display_tick = (OfInt) LAYOUT.select(PATH$num_units_in_display_tick);
-    public static final OfInt LAYOUT$time_scale = (OfInt) LAYOUT.select(PATH$time_scale);
-    public static final OfInt LAYOUT$num_ticks_per_picture_minus_1 = (OfInt) LAYOUT.select(PATH$num_ticks_per_picture_minus_1);
-
-    public static final long SIZE$flags = LAYOUT$flags.byteSize();
-    public static final long SIZE$num_units_in_display_tick = LAYOUT$num_units_in_display_tick.byteSize();
-    public static final long SIZE$time_scale = LAYOUT$time_scale.byteSize();
-    public static final long SIZE$num_ticks_per_picture_minus_1 = LAYOUT$num_ticks_per_picture_minus_1.byteSize();
-
-    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
-    public static final long OFFSET$num_units_in_display_tick = LAYOUT.byteOffset(PATH$num_units_in_display_tick);
-    public static final long OFFSET$time_scale = LAYOUT.byteOffset(PATH$time_scale);
-    public static final long OFFSET$num_ticks_per_picture_minus_1 = LAYOUT.byteOffset(PATH$num_ticks_per_picture_minus_1);
 
     public StdVideoAV1TimingInfoFlags flags() {
         return new StdVideoAV1TimingInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
@@ -113,4 +98,31 @@ public record StdVideoAV1TimingInfo(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$num_ticks_per_picture_minus_1, OFFSET$num_ticks_per_picture_minus_1, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoAV1TimingInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("num_units_in_display_tick"),
+        ValueLayout.JAVA_INT.withName("time_scale"),
+        ValueLayout.JAVA_INT.withName("num_ticks_per_picture_minus_1")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$num_units_in_display_tick = PathElement.groupElement("PATH$num_units_in_display_tick");
+    public static final PathElement PATH$time_scale = PathElement.groupElement("PATH$time_scale");
+    public static final PathElement PATH$num_ticks_per_picture_minus_1 = PathElement.groupElement("PATH$num_ticks_per_picture_minus_1");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$num_units_in_display_tick = (OfInt) LAYOUT.select(PATH$num_units_in_display_tick);
+    public static final OfInt LAYOUT$time_scale = (OfInt) LAYOUT.select(PATH$time_scale);
+    public static final OfInt LAYOUT$num_ticks_per_picture_minus_1 = (OfInt) LAYOUT.select(PATH$num_ticks_per_picture_minus_1);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$num_units_in_display_tick = LAYOUT$num_units_in_display_tick.byteSize();
+    public static final long SIZE$time_scale = LAYOUT$time_scale.byteSize();
+    public static final long SIZE$num_ticks_per_picture_minus_1 = LAYOUT$num_ticks_per_picture_minus_1.byteSize();
+
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$num_units_in_display_tick = LAYOUT.byteOffset(PATH$num_units_in_display_tick);
+    public static final long OFFSET$time_scale = LAYOUT.byteOffset(PATH$time_scale);
+    public static final long OFFSET$num_ticks_per_picture_minus_1 = LAYOUT.byteOffset(PATH$num_ticks_per_picture_minus_1);
 }

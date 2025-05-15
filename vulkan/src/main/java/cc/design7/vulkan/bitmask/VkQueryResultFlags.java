@@ -5,7 +5,7 @@ import cc.design7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryResultFlags.html">VkQueryResultFlags</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryResultFlags.html"><code>VkQueryResultFlags</code></a>
 public final class VkQueryResultFlags {
     public static final int _64 = 0x1;
     public static final int PARTIAL = 0x8;

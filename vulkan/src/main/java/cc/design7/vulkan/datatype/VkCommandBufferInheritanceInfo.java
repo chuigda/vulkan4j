@@ -14,8 +14,32 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VkCommandBufferInheritanceInfo} structure in native memory.
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCommandBufferInheritanceInfo.html"><code>VkCommandBufferInheritanceInfo</code></a> structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkCommandBufferInheritanceInfo {
+///     VkStructureType sType;
+///     void const* pNext;
+///     VkRenderPass renderPass;
+///     uint32_t subpass;
+///     VkFramebuffer framebuffer;
+///     VkBool32 occlusionQueryEnable;
+///     VkQueryControlFlags queryFlags;
+///     VkQueryPipelineStatisticFlags pipelineStatistics;
+/// } VkCommandBufferInheritanceInfo;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO`
+///
+/// The {@link VkCommandBufferInheritanceInfo#allocate} functions will automatically initialize these fields.
+/// Also, you may call {@link VkCommandBufferInheritanceInfo#autoInit} to initialize these fields manually for
+/// non-allocated instances.
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -24,16 +48,14 @@ import static cc.design7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCommandBufferInheritanceInfo.html">VkCommandBufferInheritanceInfo</a>
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCommandBufferInheritanceInfo.html"><code>VkCommandBufferInheritanceInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) implements IPointer {
-    public VkCommandBufferInheritanceInfo {
-        sType(VkStructureType.COMMAND_BUFFER_INHERITANCE_INFO);
-    }
-
     public static VkCommandBufferInheritanceInfo allocate(Arena arena) {
-        return new VkCommandBufferInheritanceInfo(arena.allocate(LAYOUT));
+        VkCommandBufferInheritanceInfo ret = new VkCommandBufferInheritanceInfo(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.COMMAND_BUFFER_INHERITANCE_INFO);
+        return ret;
     }
 
     public static VkCommandBufferInheritanceInfo[] allocate(Arena arena, int count) {
@@ -41,6 +63,7 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
         VkCommandBufferInheritanceInfo[] ret = new VkCommandBufferInheritanceInfo[count];
         for (int i = 0; i < count; i ++) {
             ret[i] = new VkCommandBufferInheritanceInfo(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.COMMAND_BUFFER_INHERITANCE_INFO);
         }
         return ret;
     }
@@ -57,6 +80,86 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
             ret[i].segment.copyFrom(src[i].segment);
         }
         return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.COMMAND_BUFFER_INHERITANCE_INFO);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @Nullable VkRenderPass renderPass() {
+        MemorySegment s = segment.asSlice(OFFSET$renderPass, SIZE$renderPass);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkRenderPass(s);
+    }
+
+    public void renderPass(@Nullable VkRenderPass value) {
+        segment.set(LAYOUT$renderPass, OFFSET$renderPass, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned int subpass() {
+        return segment.get(LAYOUT$subpass, OFFSET$subpass);
+    }
+
+    public void subpass(@unsigned int value) {
+        segment.set(LAYOUT$subpass, OFFSET$subpass, value);
+    }
+
+    public @Nullable VkFramebuffer framebuffer() {
+        MemorySegment s = segment.asSlice(OFFSET$framebuffer, SIZE$framebuffer);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkFramebuffer(s);
+    }
+
+    public void framebuffer(@Nullable VkFramebuffer value) {
+        segment.set(LAYOUT$framebuffer, OFFSET$framebuffer, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned int occlusionQueryEnable() {
+        return segment.get(LAYOUT$occlusionQueryEnable, OFFSET$occlusionQueryEnable);
+    }
+
+    public void occlusionQueryEnable(@unsigned int value) {
+        segment.set(LAYOUT$occlusionQueryEnable, OFFSET$occlusionQueryEnable, value);
+    }
+
+    public @enumtype(VkQueryControlFlags.class) int queryFlags() {
+        return segment.get(LAYOUT$queryFlags, OFFSET$queryFlags);
+    }
+
+    public void queryFlags(@enumtype(VkQueryControlFlags.class) int value) {
+        segment.set(LAYOUT$queryFlags, OFFSET$queryFlags, value);
+    }
+
+    public @enumtype(VkQueryPipelineStatisticFlags.class) int pipelineStatistics() {
+        return segment.get(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics);
+    }
+
+    public void pipelineStatistics(@enumtype(VkQueryPipelineStatisticFlags.class) int value) {
+        segment.set(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -106,81 +209,4 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
     public static final long OFFSET$occlusionQueryEnable = LAYOUT.byteOffset(PATH$occlusionQueryEnable);
     public static final long OFFSET$queryFlags = LAYOUT.byteOffset(PATH$queryFlags);
     public static final long OFFSET$pipelineStatistics = LAYOUT.byteOffset(PATH$pipelineStatistics);
-
-    public @enumtype(VkStructureType.class) int sType() {
-        return segment.get(LAYOUT$sType, OFFSET$sType);
-    }
-
-    public void sType(@enumtype(VkStructureType.class) int value) {
-        segment.set(LAYOUT$sType, OFFSET$sType, value);
-    }
-
-    public @pointer(comment="void*") MemorySegment pNext() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
-    }
-
-    public @Nullable VkRenderPass renderPass() {
-        MemorySegment s = segment.asSlice(OFFSET$renderPass, SIZE$renderPass);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkRenderPass(s);
-    }
-
-    public void renderPass(@Nullable VkRenderPass value) {
-        segment.set(LAYOUT$renderPass, OFFSET$renderPass, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned int subpass() {
-        return segment.get(LAYOUT$subpass, OFFSET$subpass);
-    }
-
-    public void subpass(@unsigned int value) {
-        segment.set(LAYOUT$subpass, OFFSET$subpass, value);
-    }
-
-    public @Nullable VkFramebuffer framebuffer() {
-        MemorySegment s = segment.asSlice(OFFSET$framebuffer, SIZE$framebuffer);
-        if (s.address() == 0) {
-            return null;
-        }
-        return new VkFramebuffer(s);
-    }
-
-    public void framebuffer(@Nullable VkFramebuffer value) {
-        segment.set(LAYOUT$framebuffer, OFFSET$framebuffer, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @unsigned int occlusionQueryEnable() {
-        return segment.get(LAYOUT$occlusionQueryEnable, OFFSET$occlusionQueryEnable);
-    }
-
-    public void occlusionQueryEnable(@unsigned int value) {
-        segment.set(LAYOUT$occlusionQueryEnable, OFFSET$occlusionQueryEnable, value);
-    }
-
-    public @enumtype(VkQueryControlFlags.class) int queryFlags() {
-        return segment.get(LAYOUT$queryFlags, OFFSET$queryFlags);
-    }
-
-    public void queryFlags(@enumtype(VkQueryControlFlags.class) int value) {
-        segment.set(LAYOUT$queryFlags, OFFSET$queryFlags, value);
-    }
-
-    public @enumtype(VkQueryPipelineStatisticFlags.class) int pipelineStatistics() {
-        return segment.get(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics);
-    }
-
-    public void pipelineStatistics(@enumtype(VkQueryPipelineStatisticFlags.class) int value) {
-        segment.set(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics, value);
-    }
-
 }

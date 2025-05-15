@@ -16,6 +16,17 @@ import static cc.design7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code StdVideoEncodeH264RefListModEntry} structure in native memory.
 ///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoEncodeH264RefListModEntry {
+///     StdVideoH264ModificationOfPicNumsIdc modification_of_pic_nums_idc;
+///     uint16_t abs_diff_pic_num_minus1;
+///     uint16_t long_term_pic_num;
+/// } StdVideoEncodeH264RefListModEntry;
+/// }
+///
+/// ## Contracts
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
@@ -27,7 +38,8 @@ import static cc.design7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeH264RefListModEntry allocate(Arena arena) {
-        return new StdVideoEncodeH264RefListModEntry(arena.allocate(LAYOUT));
+        StdVideoEncodeH264RefListModEntry ret = new StdVideoEncodeH264RefListModEntry(arena.allocate(LAYOUT));
+        return ret;
     }
 
     public static StdVideoEncodeH264RefListModEntry[] allocate(Arena arena, int count) {
@@ -53,29 +65,6 @@ public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("modification_of_pic_nums_idc"),
-        ValueLayout.JAVA_SHORT.withName("abs_diff_pic_num_minus1"),
-        ValueLayout.JAVA_SHORT.withName("long_term_pic_num")
-    );
-    public static final long BYTES = LAYOUT.byteSize();
-
-    public static final PathElement PATH$modification_of_pic_nums_idc = PathElement.groupElement("PATH$modification_of_pic_nums_idc");
-    public static final PathElement PATH$abs_diff_pic_num_minus1 = PathElement.groupElement("PATH$abs_diff_pic_num_minus1");
-    public static final PathElement PATH$long_term_pic_num = PathElement.groupElement("PATH$long_term_pic_num");
-
-    public static final OfInt LAYOUT$modification_of_pic_nums_idc = (OfInt) LAYOUT.select(PATH$modification_of_pic_nums_idc);
-    public static final OfShort LAYOUT$abs_diff_pic_num_minus1 = (OfShort) LAYOUT.select(PATH$abs_diff_pic_num_minus1);
-    public static final OfShort LAYOUT$long_term_pic_num = (OfShort) LAYOUT.select(PATH$long_term_pic_num);
-
-    public static final long SIZE$modification_of_pic_nums_idc = LAYOUT$modification_of_pic_nums_idc.byteSize();
-    public static final long SIZE$abs_diff_pic_num_minus1 = LAYOUT$abs_diff_pic_num_minus1.byteSize();
-    public static final long SIZE$long_term_pic_num = LAYOUT$long_term_pic_num.byteSize();
-
-    public static final long OFFSET$modification_of_pic_nums_idc = LAYOUT.byteOffset(PATH$modification_of_pic_nums_idc);
-    public static final long OFFSET$abs_diff_pic_num_minus1 = LAYOUT.byteOffset(PATH$abs_diff_pic_num_minus1);
-    public static final long OFFSET$long_term_pic_num = LAYOUT.byteOffset(PATH$long_term_pic_num);
-
     public @enumtype(StdVideoH264ModificationOfPicNumsIdc.class) int modification_of_pic_nums_idc() {
         return segment.get(LAYOUT$modification_of_pic_nums_idc, OFFSET$modification_of_pic_nums_idc);
     }
@@ -100,4 +89,26 @@ public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$long_term_pic_num, OFFSET$long_term_pic_num, value);
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("modification_of_pic_nums_idc"),
+        ValueLayout.JAVA_SHORT.withName("abs_diff_pic_num_minus1"),
+        ValueLayout.JAVA_SHORT.withName("long_term_pic_num")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$modification_of_pic_nums_idc = PathElement.groupElement("PATH$modification_of_pic_nums_idc");
+    public static final PathElement PATH$abs_diff_pic_num_minus1 = PathElement.groupElement("PATH$abs_diff_pic_num_minus1");
+    public static final PathElement PATH$long_term_pic_num = PathElement.groupElement("PATH$long_term_pic_num");
+
+    public static final OfInt LAYOUT$modification_of_pic_nums_idc = (OfInt) LAYOUT.select(PATH$modification_of_pic_nums_idc);
+    public static final OfShort LAYOUT$abs_diff_pic_num_minus1 = (OfShort) LAYOUT.select(PATH$abs_diff_pic_num_minus1);
+    public static final OfShort LAYOUT$long_term_pic_num = (OfShort) LAYOUT.select(PATH$long_term_pic_num);
+
+    public static final long SIZE$modification_of_pic_nums_idc = LAYOUT$modification_of_pic_nums_idc.byteSize();
+    public static final long SIZE$abs_diff_pic_num_minus1 = LAYOUT$abs_diff_pic_num_minus1.byteSize();
+    public static final long SIZE$long_term_pic_num = LAYOUT$long_term_pic_num.byteSize();
+
+    public static final long OFFSET$modification_of_pic_nums_idc = LAYOUT.byteOffset(PATH$modification_of_pic_nums_idc);
+    public static final long OFFSET$abs_diff_pic_num_minus1 = LAYOUT.byteOffset(PATH$abs_diff_pic_num_minus1);
+    public static final long OFFSET$long_term_pic_num = LAYOUT.byteOffset(PATH$long_term_pic_num);
 }
