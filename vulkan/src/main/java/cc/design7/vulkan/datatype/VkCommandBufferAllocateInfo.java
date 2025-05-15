@@ -100,8 +100,8 @@ public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @Nullable VkCommandPool commandPool() {

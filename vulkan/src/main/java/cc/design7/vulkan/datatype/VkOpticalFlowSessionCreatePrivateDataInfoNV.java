@@ -100,8 +100,8 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @unsigned int id() {
@@ -128,8 +128,8 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(@NotNull MemorySegment
         segment.set(LAYOUT$pPrivateData, OFFSET$pPrivateData, value);
     }
 
-    public void pPrivateData(IPointer pointer) {
-        pPrivateData(pointer.segment());
+    public void pPrivateData(@Nullable IPointer pointer) {
+        pPrivateData(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

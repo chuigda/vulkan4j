@@ -99,8 +99,8 @@ public record VkHdrVividDynamicMetadataHUAWEI(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @unsigned long dynamicMetadataSize() {
@@ -119,8 +119,8 @@ public record VkHdrVividDynamicMetadataHUAWEI(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pDynamicMetadata, OFFSET$pDynamicMetadata, value);
     }
 
-    public void pDynamicMetadata(IPointer pointer) {
-        pDynamicMetadata(pointer.segment());
+    public void pDynamicMetadata(@Nullable IPointer pointer) {
+        pDynamicMetadata(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

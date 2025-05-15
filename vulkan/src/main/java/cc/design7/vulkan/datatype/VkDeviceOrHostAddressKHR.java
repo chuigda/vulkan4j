@@ -83,8 +83,8 @@ public record VkDeviceOrHostAddressKHR(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$hostAddress, OFFSET$hostAddress, value);
     }
 
-    public void hostAddress(IPointer pointer) {
-        hostAddress(pointer.segment());
+    public void hostAddress(@Nullable IPointer pointer) {
+        hostAddress(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final UnionLayout LAYOUT = NativeLayout.unionLayout(

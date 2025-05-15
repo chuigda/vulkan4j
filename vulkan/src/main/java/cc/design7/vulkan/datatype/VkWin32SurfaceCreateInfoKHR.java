@@ -100,8 +100,8 @@ public record VkWin32SurfaceCreateInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @enumtype(VkWin32SurfaceCreateFlagsKHR.class) int flags() {
@@ -120,8 +120,8 @@ public record VkWin32SurfaceCreateInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$hinstance, OFFSET$hinstance, value);
     }
 
-    public void hinstance(IPointer pointer) {
-        hinstance(pointer.segment());
+    public void hinstance(@Nullable IPointer pointer) {
+        hinstance(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @pointer(comment="void*") MemorySegment hwnd() {
@@ -132,8 +132,8 @@ public record VkWin32SurfaceCreateInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$hwnd, OFFSET$hwnd, value);
     }
 
-    public void hwnd(IPointer pointer) {
-        hwnd(pointer.segment());
+    public void hwnd(@Nullable IPointer pointer) {
+        hwnd(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

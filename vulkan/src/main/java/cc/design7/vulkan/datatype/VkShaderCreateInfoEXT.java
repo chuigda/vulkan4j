@@ -109,8 +109,8 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @enumtype(VkShaderCreateFlagsEXT.class) int flags() {
@@ -161,8 +161,8 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pCode, OFFSET$pCode, value);
     }
 
-    public void pCode(IPointer pointer) {
-        pCode(pointer.segment());
+    public void pCode(@Nullable IPointer pointer) {
+        pCode(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @pointer(comment="byte*") MemorySegment pNameRaw() {

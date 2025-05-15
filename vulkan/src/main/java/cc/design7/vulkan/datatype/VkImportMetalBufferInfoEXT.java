@@ -98,8 +98,8 @@ public record VkImportMetalBufferInfoEXT(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @pointer(comment="void*") MemorySegment mtlBuffer() {
@@ -110,8 +110,8 @@ public record VkImportMetalBufferInfoEXT(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$mtlBuffer, OFFSET$mtlBuffer, value);
     }
 
-    public void mtlBuffer(IPointer pointer) {
-        mtlBuffer(pointer.segment());
+    public void mtlBuffer(@Nullable IPointer pointer) {
+        mtlBuffer(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

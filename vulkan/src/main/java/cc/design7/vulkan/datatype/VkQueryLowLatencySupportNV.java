@@ -98,8 +98,8 @@ public record VkQueryLowLatencySupportNV(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @pointer(comment="void*") MemorySegment pQueriedLowLatencyData() {
@@ -110,8 +110,8 @@ public record VkQueryLowLatencySupportNV(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pQueriedLowLatencyData, OFFSET$pQueriedLowLatencyData, value);
     }
 
-    public void pQueriedLowLatencyData(IPointer pointer) {
-        pQueriedLowLatencyData(pointer.segment());
+    public void pQueriedLowLatencyData(@Nullable IPointer pointer) {
+        pQueriedLowLatencyData(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

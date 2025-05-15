@@ -109,8 +109,8 @@ public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @Nullable VkCudaFunctionNV function() {
@@ -197,8 +197,8 @@ public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pParams, OFFSET$pParams, value);
     }
 
-    public void pParams(IPointer pointer) {
-        pParams(pointer.segment());
+    public void pParams(@Nullable IPointer pointer) {
+        pParams(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @unsigned long extraCount() {
@@ -217,8 +217,8 @@ public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pExtras, OFFSET$pExtras, value);
     }
 
-    public void pExtras(IPointer pointer) {
-        pExtras(pointer.segment());
+    public void pExtras(@Nullable IPointer pointer) {
+        pExtras(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -100,8 +100,8 @@ public record VkXcbSurfaceCreateInfoKHR(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @enumtype(VkXcbSurfaceCreateFlagsKHR.class) int flags() {
@@ -120,8 +120,8 @@ public record VkXcbSurfaceCreateInfoKHR(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$connection, OFFSET$connection, value);
     }
 
-    public void connection(IPointer pointer) {
-        connection(pointer.segment());
+    public void connection(@Nullable IPointer pointer) {
+        connection(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @unsigned int window() {

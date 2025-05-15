@@ -98,8 +98,8 @@ public record VkSurfaceFullScreenExclusiveWin32InfoEXT(@NotNull MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @pointer(comment="void*") MemorySegment hmonitor() {
@@ -110,8 +110,8 @@ public record VkSurfaceFullScreenExclusiveWin32InfoEXT(@NotNull MemorySegment se
         segment.set(LAYOUT$hmonitor, OFFSET$hmonitor, value);
     }
 
-    public void hmonitor(IPointer pointer) {
-        hmonitor(pointer.segment());
+    public void hmonitor(@Nullable IPointer pointer) {
+        hmonitor(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -100,8 +100,8 @@ public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @Nullable VkSemaphore semaphore() {
@@ -136,8 +136,8 @@ public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent, value);
     }
 
-    public void mtlSharedEvent(IPointer pointer) {
-        mtlSharedEvent(pointer.segment());
+    public void mtlSharedEvent(@Nullable IPointer pointer) {
+        mtlSharedEvent(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

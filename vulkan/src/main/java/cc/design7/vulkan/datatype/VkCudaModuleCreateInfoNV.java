@@ -99,8 +99,8 @@ public record VkCudaModuleCreateInfoNV(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @unsigned long dataSize() {
@@ -119,8 +119,8 @@ public record VkCudaModuleCreateInfoNV(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pData, OFFSET$pData, value);
     }
 
-    public void pData(IPointer pointer) {
-        pData(pointer.segment());
+    public void pData(@Nullable IPointer pointer) {
+        pData(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

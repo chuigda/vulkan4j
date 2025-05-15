@@ -99,8 +99,8 @@ public record VkIOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @enumtype(VkIOSSurfaceCreateFlagsMVK.class) int flags() {
@@ -119,8 +119,8 @@ public record VkIOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pView, OFFSET$pView, value);
     }
 
-    public void pView(IPointer pointer) {
-        pView(pointer.segment());
+    public void pView(@Nullable IPointer pointer) {
+        pView(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -75,8 +75,8 @@ private fun generatePVoidAccessor(type: CPointerType, member: LayoutField.Typed)
         makeTrivialSet(comment, member)
         +""
 
-        defun("public", "void", member.name, "IPointer pointer") {
-            +"${member.name}(pointer.segment());"
+        defun("public", "void", member.name, "@Nullable IPointer pointer") {
+            +"${member.name}(pointer != null ? pointer.segment() : MemorySegment.NULL);"
         }
     }
 }

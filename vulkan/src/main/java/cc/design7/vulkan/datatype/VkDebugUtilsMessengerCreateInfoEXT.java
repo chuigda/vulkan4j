@@ -102,8 +102,8 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @enumtype(VkDebugUtilsMessengerCreateFlagsEXT.class) int flags() {
@@ -138,8 +138,8 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback, value);
     }
 
-    public void pfnUserCallback(IPointer pointer) {
-        pfnUserCallback(pointer.segment());
+    public void pfnUserCallback(@Nullable IPointer pointer) {
+        pfnUserCallback(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @pointer(comment="void*") MemorySegment pUserData() {
@@ -150,8 +150,8 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
     }
 
-    public void pUserData(IPointer pointer) {
-        pUserData(pointer.segment());
+    public void pUserData(@Nullable IPointer pointer) {
+        pUserData(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

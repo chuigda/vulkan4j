@@ -99,8 +99,8 @@ public record VkCheckpointData2NV(@NotNull MemorySegment segment) implements IPo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @enumtype(VkPipelineStageFlags2.class) long stage() {
@@ -119,8 +119,8 @@ public record VkCheckpointData2NV(@NotNull MemorySegment segment) implements IPo
         segment.set(LAYOUT$pCheckpointMarker, OFFSET$pCheckpointMarker, value);
     }
 
-    public void pCheckpointMarker(IPointer pointer) {
-        pCheckpointMarker(pointer.segment());
+    public void pCheckpointMarker(@Nullable IPointer pointer) {
+        pCheckpointMarker(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

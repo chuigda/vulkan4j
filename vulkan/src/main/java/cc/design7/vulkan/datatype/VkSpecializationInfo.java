@@ -128,8 +128,8 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$pData, OFFSET$pData, value);
     }
 
-    public void pData(IPointer pointer) {
-        pData(pointer.segment());
+    public void pData(@Nullable IPointer pointer) {
+        pData(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

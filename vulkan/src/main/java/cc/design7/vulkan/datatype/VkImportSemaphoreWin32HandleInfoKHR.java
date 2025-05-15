@@ -102,8 +102,8 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @Nullable VkSemaphore semaphore() {
@@ -142,8 +142,8 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$handle, OFFSET$handle, value);
     }
 
-    public void handle(IPointer pointer) {
-        handle(pointer.segment());
+    public void handle(@Nullable IPointer pointer) {
+        handle(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @pointer(comment="short*") MemorySegment nameRaw() {

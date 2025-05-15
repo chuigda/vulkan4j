@@ -98,8 +98,8 @@ public record VkExportSemaphoreSciSyncInfoNV(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @pointer(comment="void*") MemorySegment pAttributes() {
@@ -110,8 +110,8 @@ public record VkExportSemaphoreSciSyncInfoNV(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pAttributes, OFFSET$pAttributes, value);
     }
 
-    public void pAttributes(IPointer pointer) {
-        pAttributes(pointer.segment());
+    public void pAttributes(@Nullable IPointer pointer) {
+        pAttributes(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

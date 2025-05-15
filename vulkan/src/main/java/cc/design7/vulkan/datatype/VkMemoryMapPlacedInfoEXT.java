@@ -98,8 +98,8 @@ public record VkMemoryMapPlacedInfoEXT(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @pointer(comment="void*") MemorySegment pPlacedAddress() {
@@ -110,8 +110,8 @@ public record VkMemoryMapPlacedInfoEXT(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pPlacedAddress, OFFSET$pPlacedAddress, value);
     }
 
-    public void pPlacedAddress(IPointer pointer) {
-        pPlacedAddress(pointer.segment());
+    public void pPlacedAddress(@Nullable IPointer pointer) {
+        pPlacedAddress(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -101,8 +101,8 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public byte description() {
@@ -191,8 +191,8 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$pVendorBinaryData, OFFSET$pVendorBinaryData, value);
     }
 
-    public void pVendorBinaryData(IPointer pointer) {
-        pVendorBinaryData(pointer.segment());
+    public void pVendorBinaryData(@Nullable IPointer pointer) {
+        pVendorBinaryData(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

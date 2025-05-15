@@ -79,8 +79,8 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
     }
 
-    public void pUserData(IPointer pointer) {
-        pUserData(pointer.segment());
+    public void pUserData(@Nullable IPointer pointer) {
+        pUserData(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @pointer(comment="PFN_vkAllocationFunction") MemorySegment pfnAllocation() {
@@ -91,8 +91,8 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pfnAllocation, OFFSET$pfnAllocation, value);
     }
 
-    public void pfnAllocation(IPointer pointer) {
-        pfnAllocation(pointer.segment());
+    public void pfnAllocation(@Nullable IPointer pointer) {
+        pfnAllocation(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @pointer(comment="PFN_vkReallocationFunction") MemorySegment pfnReallocation() {
@@ -103,8 +103,8 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pfnReallocation, OFFSET$pfnReallocation, value);
     }
 
-    public void pfnReallocation(IPointer pointer) {
-        pfnReallocation(pointer.segment());
+    public void pfnReallocation(@Nullable IPointer pointer) {
+        pfnReallocation(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @pointer(comment="PFN_vkFreeFunction") MemorySegment pfnFree() {
@@ -115,8 +115,8 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pfnFree, OFFSET$pfnFree, value);
     }
 
-    public void pfnFree(IPointer pointer) {
-        pfnFree(pointer.segment());
+    public void pfnFree(@Nullable IPointer pointer) {
+        pfnFree(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @pointer(comment="PFN_vkInternalAllocationNotification") MemorySegment pfnInternalAllocation() {
@@ -127,8 +127,8 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pfnInternalAllocation, OFFSET$pfnInternalAllocation, value);
     }
 
-    public void pfnInternalAllocation(IPointer pointer) {
-        pfnInternalAllocation(pointer.segment());
+    public void pfnInternalAllocation(@Nullable IPointer pointer) {
+        pfnInternalAllocation(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @pointer(comment="PFN_vkInternalFreeNotification") MemorySegment pfnInternalFree() {
@@ -139,8 +139,8 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pfnInternalFree, OFFSET$pfnInternalFree, value);
     }
 
-    public void pfnInternalFree(IPointer pointer) {
-        pfnInternalFree(pointer.segment());
+    public void pfnInternalFree(@Nullable IPointer pointer) {
+        pfnInternalFree(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

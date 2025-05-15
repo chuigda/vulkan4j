@@ -98,8 +98,8 @@ public record VkImportMetalIOSurfaceInfoEXT(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @pointer(comment="void*") MemorySegment ioSurface() {
@@ -110,8 +110,8 @@ public record VkImportMetalIOSurfaceInfoEXT(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$ioSurface, OFFSET$ioSurface, value);
     }
 
-    public void ioSurface(IPointer pointer) {
-        ioSurface(pointer.segment());
+    public void ioSurface(@Nullable IPointer pointer) {
+        ioSurface(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

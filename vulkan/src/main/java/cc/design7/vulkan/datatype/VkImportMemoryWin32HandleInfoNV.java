@@ -99,8 +99,8 @@ public record VkImportMemoryWin32HandleInfoNV(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @enumtype(VkExternalMemoryHandleTypeFlagsNV.class) int handleType() {
@@ -119,8 +119,8 @@ public record VkImportMemoryWin32HandleInfoNV(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$handle, OFFSET$handle, value);
     }
 
-    public void handle(IPointer pointer) {
-        handle(pointer.segment());
+    public void handle(@Nullable IPointer pointer) {
+        handle(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

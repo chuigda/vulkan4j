@@ -100,8 +100,8 @@ public record VkValidationCacheCreateInfoEXT(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @enumtype(VkValidationCacheCreateFlagsEXT.class) int flags() {
@@ -128,8 +128,8 @@ public record VkValidationCacheCreateInfoEXT(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pInitialData, OFFSET$pInitialData, value);
     }
 
-    public void pInitialData(IPointer pointer) {
-        pInitialData(pointer.segment());
+    public void pInitialData(@Nullable IPointer pointer) {
+        pInitialData(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

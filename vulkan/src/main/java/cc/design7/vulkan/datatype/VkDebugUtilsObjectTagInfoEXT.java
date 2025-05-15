@@ -102,8 +102,8 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @enumtype(VkObjectType.class) int objectType() {
@@ -146,8 +146,8 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pTag, OFFSET$pTag, value);
     }
 
-    public void pTag(IPointer pointer) {
-        pTag(pointer.segment());
+    public void pTag(@Nullable IPointer pointer) {
+        pTag(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

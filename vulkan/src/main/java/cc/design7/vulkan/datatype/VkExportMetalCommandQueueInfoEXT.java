@@ -99,8 +99,8 @@ public record VkExportMetalCommandQueueInfoEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @Nullable VkQueue queue() {
@@ -123,8 +123,8 @@ public record VkExportMetalCommandQueueInfoEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$mtlCommandQueue, OFFSET$mtlCommandQueue, value);
     }
 
-    public void mtlCommandQueue(IPointer pointer) {
-        mtlCommandQueue(pointer.segment());
+    public void mtlCommandQueue(@Nullable IPointer pointer) {
+        mtlCommandQueue(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

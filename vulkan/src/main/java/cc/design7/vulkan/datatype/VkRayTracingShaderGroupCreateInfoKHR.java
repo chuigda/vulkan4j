@@ -103,8 +103,8 @@ public record VkRayTracingShaderGroupCreateInfoKHR(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @enumtype(VkRayTracingShaderGroupTypeKHR.class) int type() {
@@ -155,8 +155,8 @@ public record VkRayTracingShaderGroupCreateInfoKHR(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pShaderGroupCaptureReplayHandle, OFFSET$pShaderGroupCaptureReplayHandle, value);
     }
 
-    public void pShaderGroupCaptureReplayHandle(IPointer pointer) {
-        pShaderGroupCaptureReplayHandle(pointer.segment());
+    public void pShaderGroupCaptureReplayHandle(@Nullable IPointer pointer) {
+        pShaderGroupCaptureReplayHandle(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

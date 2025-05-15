@@ -99,8 +99,8 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(IPointer pointer) {
-        pNext(pointer.segment());
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public @enumtype(VkDirectDriverLoadingFlagsLUNARG.class) int flags() {
@@ -119,8 +119,8 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pfnGetInstanceProcAddr, OFFSET$pfnGetInstanceProcAddr, value);
     }
 
-    public void pfnGetInstanceProcAddr(IPointer pointer) {
-        pfnGetInstanceProcAddr(pointer.segment());
+    public void pfnGetInstanceProcAddr(@Nullable IPointer pointer) {
+        pfnGetInstanceProcAddr(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

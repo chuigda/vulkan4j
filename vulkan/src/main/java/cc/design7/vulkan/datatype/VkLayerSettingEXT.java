@@ -144,8 +144,8 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IPoin
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
     }
 
-    public void pValues(IPointer pointer) {
-        pValues(pointer.segment());
+    public void pValues(@Nullable IPointer pointer) {
+        pValues(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
