@@ -34,7 +34,7 @@ public record StdVideoEncodeH264ReferenceInfo(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeH264ReferenceInfo[] ret = new StdVideoEncodeH264ReferenceInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeH264ReferenceInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeH264ReferenceInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record StdVideoEncodeH264ReferenceInfo(@NotNull MemorySegment segment) im
         ValueLayout.JAVA_SHORT.withName("long_term_frame_idx"),
         ValueLayout.JAVA_BYTE.withName("temporal_id")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$primary_pic_type = PathElement.groupElement("PATH$primary_pic_type");

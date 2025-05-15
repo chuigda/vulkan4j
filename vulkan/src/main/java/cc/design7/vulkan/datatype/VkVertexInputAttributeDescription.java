@@ -36,7 +36,7 @@ public record VkVertexInputAttributeDescription(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVertexInputAttributeDescription[] ret = new VkVertexInputAttributeDescription[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVertexInputAttributeDescription(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVertexInputAttributeDescription(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record VkVertexInputAttributeDescription(@NotNull MemorySegment segment) 
         ValueLayout.JAVA_INT.withName("format"),
         ValueLayout.JAVA_INT.withName("offset")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$location = PathElement.groupElement("PATH$location");
     public static final PathElement PATH$binding = PathElement.groupElement("PATH$binding");

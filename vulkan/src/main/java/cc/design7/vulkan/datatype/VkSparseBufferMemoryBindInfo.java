@@ -36,7 +36,7 @@ public record VkSparseBufferMemoryBindInfo(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSparseBufferMemoryBindInfo[] ret = new VkSparseBufferMemoryBindInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSparseBufferMemoryBindInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSparseBufferMemoryBindInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkSparseBufferMemoryBindInfo(@NotNull MemorySegment segment) imple
         ValueLayout.JAVA_INT.withName("bindCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkSparseMemoryBind.LAYOUT).withName("pBinds")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$buffer = PathElement.groupElement("PATH$buffer");
     public static final PathElement PATH$bindCount = PathElement.groupElement("PATH$bindCount");

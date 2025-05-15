@@ -37,7 +37,7 @@ public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@Not
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV[] ret = new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@Not
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$geometryIndex_geometryFlags")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$geometryIndex_geometryFlags = PathElement.groupElement("PATH$bitfield$geometryIndex_geometryFlags");
 

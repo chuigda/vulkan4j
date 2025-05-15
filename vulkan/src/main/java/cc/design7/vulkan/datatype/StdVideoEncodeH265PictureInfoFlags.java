@@ -35,7 +35,7 @@ public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeH265PictureInfoFlags[] ret = new StdVideoEncodeH265PictureInfoFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeH265PictureInfoFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeH265PictureInfoFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment)
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$is_reference_reserved")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$is_reference_reserved = PathElement.groupElement("PATH$bitfield$is_reference_reserved");
 

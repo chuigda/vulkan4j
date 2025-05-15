@@ -40,7 +40,7 @@ public record VkImageSubresource2(@NotNull MemorySegment segment) implements IPo
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageSubresource2[] ret = new VkImageSubresource2[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkImageSubresource2(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkImageSubresource2(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkImageSubresource2(@NotNull MemorySegment segment) implements IPo
         ValueLayout.ADDRESS.withName("pNext"),
         VkImageSubresource.LAYOUT.withName("imageSubresource")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -40,7 +40,7 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkShaderCreateInfoEXT[] ret = new VkShaderCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkShaderCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkShaderCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -75,7 +75,7 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         ValueLayout.ADDRESS.withTargetLayout(VkPushConstantRange.LAYOUT).withName("pPushConstantRanges"),
         ValueLayout.ADDRESS.withTargetLayout(VkSpecializationInfo.LAYOUT).withName("pSpecializationInfo")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

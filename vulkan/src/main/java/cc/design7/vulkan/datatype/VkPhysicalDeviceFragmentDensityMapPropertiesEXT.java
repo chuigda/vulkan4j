@@ -40,7 +40,7 @@ public record VkPhysicalDeviceFragmentDensityMapPropertiesEXT(@NotNull MemorySeg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceFragmentDensityMapPropertiesEXT[] ret = new VkPhysicalDeviceFragmentDensityMapPropertiesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceFragmentDensityMapPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceFragmentDensityMapPropertiesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkPhysicalDeviceFragmentDensityMapPropertiesEXT(@NotNull MemorySeg
         VkExtent2D.LAYOUT.withName("maxFragmentDensityTexelSize"),
         ValueLayout.JAVA_INT.withName("fragmentDensityInvocations")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

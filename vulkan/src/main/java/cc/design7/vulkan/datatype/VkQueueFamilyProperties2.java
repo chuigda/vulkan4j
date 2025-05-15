@@ -40,7 +40,7 @@ public record VkQueueFamilyProperties2(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkQueueFamilyProperties2[] ret = new VkQueueFamilyProperties2[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkQueueFamilyProperties2(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkQueueFamilyProperties2(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkQueueFamilyProperties2(@NotNull MemorySegment segment) implement
         ValueLayout.ADDRESS.withName("pNext"),
         VkQueueFamilyProperties.LAYOUT.withName("queueFamilyProperties")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

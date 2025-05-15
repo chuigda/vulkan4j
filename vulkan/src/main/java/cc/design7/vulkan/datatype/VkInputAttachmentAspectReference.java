@@ -36,7 +36,7 @@ public record VkInputAttachmentAspectReference(@NotNull MemorySegment segment) i
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkInputAttachmentAspectReference[] ret = new VkInputAttachmentAspectReference[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkInputAttachmentAspectReference(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkInputAttachmentAspectReference(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkInputAttachmentAspectReference(@NotNull MemorySegment segment) i
         ValueLayout.JAVA_INT.withName("inputAttachmentIndex"),
         ValueLayout.JAVA_INT.withName("aspectMask")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$subpass = PathElement.groupElement("PATH$subpass");
     public static final PathElement PATH$inputAttachmentIndex = PathElement.groupElement("PATH$inputAttachmentIndex");

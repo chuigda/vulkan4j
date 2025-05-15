@@ -40,7 +40,7 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceVulkan11Properties[] ret = new VkPhysicalDeviceVulkan11Properties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceVulkan11Properties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceVulkan11Properties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -78,7 +78,7 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         ValueLayout.JAVA_INT.withName("maxPerSetDescriptors"),
         ValueLayout.JAVA_LONG.withName("maxMemoryAllocationSize")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

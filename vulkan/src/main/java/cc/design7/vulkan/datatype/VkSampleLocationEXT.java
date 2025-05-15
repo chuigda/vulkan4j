@@ -36,7 +36,7 @@ public record VkSampleLocationEXT(@NotNull MemorySegment segment) implements IPo
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSampleLocationEXT[] ret = new VkSampleLocationEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSampleLocationEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSampleLocationEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkSampleLocationEXT(@NotNull MemorySegment segment) implements IPo
         ValueLayout.JAVA_FLOAT.withName("x"),
         ValueLayout.JAVA_FLOAT.withName("y")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$x = PathElement.groupElement("PATH$x");
     public static final PathElement PATH$y = PathElement.groupElement("PATH$y");

@@ -35,7 +35,7 @@ public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoAV1FilmGrainFlags[] ret = new StdVideoAV1FilmGrainFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1FilmGrainFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoAV1FilmGrainFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implemen
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$chroma_scaling_from_luma_reserved")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$chroma_scaling_from_luma_reserved = PathElement.groupElement("PATH$bitfield$chroma_scaling_from_luma_reserved");
 

@@ -36,7 +36,7 @@ public record VkXYColorEXT(@NotNull MemorySegment segment) implements IPointer {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkXYColorEXT[] ret = new VkXYColorEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkXYColorEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkXYColorEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkXYColorEXT(@NotNull MemorySegment segment) implements IPointer {
         ValueLayout.JAVA_FLOAT.withName("x"),
         ValueLayout.JAVA_FLOAT.withName("y")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$x = PathElement.groupElement("PATH$x");
     public static final PathElement PATH$y = PathElement.groupElement("PATH$y");

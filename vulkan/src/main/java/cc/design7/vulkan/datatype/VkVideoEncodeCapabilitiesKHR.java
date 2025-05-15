@@ -40,7 +40,7 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoEncodeCapabilitiesKHR[] ret = new VkVideoEncodeCapabilitiesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeCapabilitiesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoEncodeCapabilitiesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -70,7 +70,7 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         VkExtent2D.LAYOUT.withName("encodeInputPictureGranularity"),
         ValueLayout.JAVA_INT.withName("supportedEncodeFeedbackFlags")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -34,7 +34,7 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoAV1SequenceHeader[] ret = new StdVideoAV1SequenceHeader[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1SequenceHeader(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoAV1SequenceHeader(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -69,7 +69,7 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1ColorConfig.LAYOUT).withName("pColorConfig"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1TimingInfo.LAYOUT).withName("pTimingInfo")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$seq_profile = PathElement.groupElement("PATH$seq_profile");

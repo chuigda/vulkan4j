@@ -40,7 +40,7 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySeg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRenderingFragmentShadingRateAttachmentInfoKHR[] ret = new VkRenderingFragmentShadingRateAttachmentInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkRenderingFragmentShadingRateAttachmentInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkRenderingFragmentShadingRateAttachmentInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySeg
         ValueLayout.JAVA_INT.withName("imageLayout"),
         VkExtent2D.LAYOUT.withName("shadingRateAttachmentTexelSize")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

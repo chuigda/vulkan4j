@@ -36,7 +36,7 @@ public record VkExternalMemoryProperties(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExternalMemoryProperties[] ret = new VkExternalMemoryProperties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkExternalMemoryProperties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkExternalMemoryProperties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkExternalMemoryProperties(@NotNull MemorySegment segment) impleme
         ValueLayout.JAVA_INT.withName("exportFromImportedHandleTypes"),
         ValueLayout.JAVA_INT.withName("compatibleHandleTypes")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$externalMemoryFeatures = PathElement.groupElement("PATH$externalMemoryFeatures");
     public static final PathElement PATH$exportFromImportedHandleTypes = PathElement.groupElement("PATH$exportFromImportedHandleTypes");

@@ -35,7 +35,7 @@ public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoAV1ColorConfigFlags[] ret = new StdVideoAV1ColorConfigFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1ColorConfigFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoAV1ColorConfigFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implem
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$mono_chrome_reserved")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$mono_chrome_reserved = PathElement.groupElement("PATH$bitfield$mono_chrome_reserved");
 

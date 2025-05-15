@@ -40,7 +40,7 @@ public record VkImportMemoryFdInfoKHR(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImportMemoryFdInfoKHR[] ret = new VkImportMemoryFdInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkImportMemoryFdInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkImportMemoryFdInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkImportMemoryFdInfoKHR(@NotNull MemorySegment segment) implements
         ValueLayout.JAVA_INT.withName("handleType"),
         ValueLayout.JAVA_INT.withName("fd")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

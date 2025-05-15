@@ -37,7 +37,7 @@ public record VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV(@
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV[] ret = new VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -72,7 +72,7 @@ public record VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV(@
         ValueLayout.JAVA_LONG.withName("opacityMicromapIndexBuffer"),
         ValueLayout.JAVA_LONG.withName("instantiationBoundingBoxLimit")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$clusterID = PathElement.groupElement("PATH$clusterID");
     public static final PathElement PATH$clusterFlags = PathElement.groupElement("PATH$clusterFlags");

@@ -40,7 +40,7 @@ public record VkPhysicalDeviceRenderPassStripedPropertiesARM(@NotNull MemorySegm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceRenderPassStripedPropertiesARM[] ret = new VkPhysicalDeviceRenderPassStripedPropertiesARM[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceRenderPassStripedPropertiesARM(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceRenderPassStripedPropertiesARM(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDeviceRenderPassStripedPropertiesARM(@NotNull MemorySegm
         VkExtent2D.LAYOUT.withName("renderPassStripeGranularity"),
         ValueLayout.JAVA_INT.withName("maxRenderPassStripes")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

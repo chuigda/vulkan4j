@@ -40,7 +40,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkIndirectCommandsLayoutCreateInfoNV[] ret = new VkIndirectCommandsLayoutCreateInfoNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkIndirectCommandsLayoutCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkIndirectCommandsLayoutCreateInfoNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -69,7 +69,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         ValueLayout.JAVA_INT.withName("streamCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pStreamStrides")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

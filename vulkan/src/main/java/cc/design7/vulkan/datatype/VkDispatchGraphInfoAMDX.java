@@ -36,7 +36,7 @@ public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDispatchGraphInfoAMDX[] ret = new VkDispatchGraphInfoAMDX[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDispatchGraphInfoAMDX(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDispatchGraphInfoAMDX(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements
         VkDeviceOrHostAddressConstAMDX.LAYOUT.withName("payloads"),
         ValueLayout.JAVA_LONG.withName("payloadStride")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$nodeIndex = PathElement.groupElement("PATH$nodeIndex");
     public static final PathElement PATH$payloadCount = PathElement.groupElement("PATH$payloadCount");

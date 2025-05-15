@@ -36,7 +36,7 @@ public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBuildPartitionedAccelerationStructureIndirectCommandNV[] ret = new VkBuildPartitionedAccelerationStructureIndirectCommandNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBuildPartitionedAccelerationStructureIndirectCommandNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkBuildPartitionedAccelerationStructureIndirectCommandNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull 
         ValueLayout.JAVA_INT.withName("argCount"),
         VkStridedDeviceAddressNV.LAYOUT.withName("argData")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$opType = PathElement.groupElement("PATH$opType");
     public static final PathElement PATH$argCount = PathElement.groupElement("PATH$argCount");

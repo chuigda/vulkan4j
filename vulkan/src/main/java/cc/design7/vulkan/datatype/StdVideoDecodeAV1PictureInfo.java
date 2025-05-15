@@ -34,7 +34,7 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoDecodeAV1PictureInfo[] ret = new StdVideoDecodeAV1PictureInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoDecodeAV1PictureInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoDecodeAV1PictureInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -79,7 +79,7 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1GlobalMotion.LAYOUT).withName("pGlobalMotion"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1FilmGrain.LAYOUT).withName("pFilmGrain")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$frame_type = PathElement.groupElement("PATH$frame_type");

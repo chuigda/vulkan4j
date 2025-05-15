@@ -36,7 +36,7 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IPoin
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkClearColorValue[] ret = new VkClearColorValue[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkClearColorValue(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkClearColorValue(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IPoin
         ValueLayout.JAVA_INT.withName("int32"),
         ValueLayout.JAVA_INT.withName("uint32")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$float32 = PathElement.groupElement("PATH$float32");
     public static final PathElement PATH$int32 = PathElement.groupElement("PATH$int32");

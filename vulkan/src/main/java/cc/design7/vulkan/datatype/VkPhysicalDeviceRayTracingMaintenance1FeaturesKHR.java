@@ -40,7 +40,7 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR[] ret = new VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
         ValueLayout.JAVA_INT.withName("rayTracingMaintenance1"),
         ValueLayout.JAVA_INT.withName("rayTracingPipelineTraceRaysIndirect2")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

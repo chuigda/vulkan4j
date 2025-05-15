@@ -35,7 +35,7 @@ public record StdVideoAV1TimingInfoFlags(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoAV1TimingInfoFlags[] ret = new StdVideoAV1TimingInfoFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1TimingInfoFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoAV1TimingInfoFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoAV1TimingInfoFlags(@NotNull MemorySegment segment) impleme
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$equal_picture_interval_reserved")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$equal_picture_interval_reserved = PathElement.groupElement("PATH$bitfield$equal_picture_interval_reserved");
 

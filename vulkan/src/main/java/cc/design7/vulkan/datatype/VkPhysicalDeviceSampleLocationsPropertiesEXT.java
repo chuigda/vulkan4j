@@ -40,7 +40,7 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceSampleLocationsPropertiesEXT[] ret = new VkPhysicalDeviceSampleLocationsPropertiesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceSampleLocationsPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceSampleLocationsPropertiesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -68,7 +68,7 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         ValueLayout.JAVA_INT.withName("sampleLocationSubPixelBits"),
         ValueLayout.JAVA_INT.withName("variableSampleLocations")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

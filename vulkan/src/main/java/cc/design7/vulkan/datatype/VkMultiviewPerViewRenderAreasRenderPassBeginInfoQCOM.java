@@ -40,7 +40,7 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM[] ret = new VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
         ValueLayout.JAVA_INT.withName("perViewRenderAreaCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pPerViewRenderAreas")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

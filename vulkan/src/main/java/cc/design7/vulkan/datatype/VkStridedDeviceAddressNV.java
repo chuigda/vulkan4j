@@ -36,7 +36,7 @@ public record VkStridedDeviceAddressNV(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkStridedDeviceAddressNV[] ret = new VkStridedDeviceAddressNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkStridedDeviceAddressNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkStridedDeviceAddressNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkStridedDeviceAddressNV(@NotNull MemorySegment segment) implement
         ValueLayout.JAVA_LONG.withName("startAddress"),
         ValueLayout.JAVA_LONG.withName("strideInBytes")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$startAddress = PathElement.groupElement("PATH$startAddress");
     public static final PathElement PATH$strideInBytes = PathElement.groupElement("PATH$strideInBytes");

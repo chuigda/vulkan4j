@@ -36,7 +36,7 @@ public record VkBufferCopy(@NotNull MemorySegment segment) implements IPointer {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBufferCopy[] ret = new VkBufferCopy[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBufferCopy(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkBufferCopy(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkBufferCopy(@NotNull MemorySegment segment) implements IPointer {
         ValueLayout.JAVA_LONG.withName("dstOffset"),
         ValueLayout.JAVA_LONG.withName("size")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$srcOffset = PathElement.groupElement("PATH$srcOffset");
     public static final PathElement PATH$dstOffset = PathElement.groupElement("PATH$dstOffset");

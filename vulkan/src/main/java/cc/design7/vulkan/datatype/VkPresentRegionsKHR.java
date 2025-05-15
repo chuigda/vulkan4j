@@ -40,7 +40,7 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IPo
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPresentRegionsKHR[] ret = new VkPresentRegionsKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPresentRegionsKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPresentRegionsKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IPo
         ValueLayout.JAVA_INT.withName("swapchainCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkPresentRegionKHR.LAYOUT).withName("pRegions")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

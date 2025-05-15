@@ -40,7 +40,7 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineViewportDepthClampControlCreateInfoEXT[] ret = new VkPipelineViewportDepthClampControlCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineViewportDepthClampControlCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineViewportDepthClampControlCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
         ValueLayout.JAVA_INT.withName("depthClampMode"),
         ValueLayout.ADDRESS.withTargetLayout(VkDepthClampRangeEXT.LAYOUT).withName("pDepthClampRange")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

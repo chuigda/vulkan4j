@@ -40,7 +40,7 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineExecutablePropertiesKHR[] ret = new VkPipelineExecutablePropertiesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineExecutablePropertiesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineExecutablePropertiesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         ValueLayout.JAVA_BYTE.withName("description"),
         ValueLayout.JAVA_INT.withName("subgroupSize")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

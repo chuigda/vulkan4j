@@ -40,7 +40,7 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineRasterizationStateCreateInfo[] ret = new VkPipelineRasterizationStateCreateInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineRasterizationStateCreateInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineRasterizationStateCreateInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -74,7 +74,7 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         ValueLayout.JAVA_FLOAT.withName("depthBiasSlopeFactor"),
         ValueLayout.JAVA_FLOAT.withName("lineWidth")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -40,7 +40,7 @@ public record VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV(@NotNull Me
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV[] ret = new VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV(@NotNull Me
         ValueLayout.JAVA_INT.withName("spheres"),
         ValueLayout.JAVA_INT.withName("linearSweptSpheres")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -36,7 +36,7 @@ public record VkSubresourceLayout(@NotNull MemorySegment segment) implements IPo
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSubresourceLayout[] ret = new VkSubresourceLayout[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSubresourceLayout(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSubresourceLayout(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record VkSubresourceLayout(@NotNull MemorySegment segment) implements IPo
         ValueLayout.JAVA_LONG.withName("arrayPitch"),
         ValueLayout.JAVA_LONG.withName("depthPitch")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
     public static final PathElement PATH$size = PathElement.groupElement("PATH$size");

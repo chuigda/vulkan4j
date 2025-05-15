@@ -34,7 +34,7 @@ public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeAV1OperatingPointInfo[] ret = new StdVideoEncodeAV1OperatingPointInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeAV1OperatingPointInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeAV1OperatingPointInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment
         ValueLayout.JAVA_INT.withName("encoder_buffer_delay"),
         ValueLayout.JAVA_BYTE.withName("initial_display_delay_minus_1")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$operating_point_idc = PathElement.groupElement("PATH$operating_point_idc");

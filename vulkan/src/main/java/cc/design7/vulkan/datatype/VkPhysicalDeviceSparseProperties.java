@@ -36,7 +36,7 @@ public record VkPhysicalDeviceSparseProperties(@NotNull MemorySegment segment) i
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceSparseProperties[] ret = new VkPhysicalDeviceSparseProperties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceSparseProperties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceSparseProperties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record VkPhysicalDeviceSparseProperties(@NotNull MemorySegment segment) i
         ValueLayout.JAVA_INT.withName("residencyAlignedMipSize"),
         ValueLayout.JAVA_INT.withName("residencyNonResidentStrict")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$residencyStandard2DBlockShape = PathElement.groupElement("PATH$residencyStandard2DBlockShape");
     public static final PathElement PATH$residencyStandard2DMultisampleBlockShape = PathElement.groupElement("PATH$residencyStandard2DMultisampleBlockShape");

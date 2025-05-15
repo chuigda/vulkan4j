@@ -40,7 +40,7 @@ public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IPoint
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkHdrMetadataEXT[] ret = new VkHdrMetadataEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkHdrMetadataEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkHdrMetadataEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -71,7 +71,7 @@ public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IPoint
         ValueLayout.JAVA_FLOAT.withName("maxContentLightLevel"),
         ValueLayout.JAVA_FLOAT.withName("maxFrameAverageLightLevel")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

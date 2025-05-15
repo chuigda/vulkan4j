@@ -40,7 +40,7 @@ public record VkPhysicalDeviceCooperativeMatrixFeaturesNV(@NotNull MemorySegment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceCooperativeMatrixFeaturesNV[] ret = new VkPhysicalDeviceCooperativeMatrixFeaturesNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceCooperativeMatrixFeaturesNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceCooperativeMatrixFeaturesNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDeviceCooperativeMatrixFeaturesNV(@NotNull MemorySegment
         ValueLayout.JAVA_INT.withName("cooperativeMatrix"),
         ValueLayout.JAVA_INT.withName("cooperativeMatrixRobustBufferAccess")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

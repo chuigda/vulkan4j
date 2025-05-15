@@ -36,7 +36,7 @@ public record VkDeviceOrHostAddressConstAMDX(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceOrHostAddressConstAMDX[] ret = new VkDeviceOrHostAddressConstAMDX[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDeviceOrHostAddressConstAMDX(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDeviceOrHostAddressConstAMDX(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkDeviceOrHostAddressConstAMDX(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_LONG.withName("deviceAddress"),
         ValueLayout.ADDRESS.withName("hostAddress")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$deviceAddress = PathElement.groupElement("PATH$deviceAddress");
     public static final PathElement PATH$hostAddress = PathElement.groupElement("PATH$hostAddress");

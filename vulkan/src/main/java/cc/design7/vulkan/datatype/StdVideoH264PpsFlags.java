@@ -35,7 +35,7 @@ public record StdVideoH264PpsFlags(@NotNull MemorySegment segment) implements IP
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH264PpsFlags[] ret = new StdVideoH264PpsFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH264PpsFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH264PpsFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoH264PpsFlags(@NotNull MemorySegment segment) implements IP
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$transform_8x8_mode_flag_pic_scaling_matrix_present_flag")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$transform_8x8_mode_flag_pic_scaling_matrix_present_flag = PathElement.groupElement("PATH$bitfield$transform_8x8_mode_flag_pic_scaling_matrix_present_flag");
 

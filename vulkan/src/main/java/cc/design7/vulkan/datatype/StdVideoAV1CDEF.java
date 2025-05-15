@@ -34,7 +34,7 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IPointe
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoAV1CDEF[] ret = new StdVideoAV1CDEF[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1CDEF(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoAV1CDEF(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IPointe
         ValueLayout.JAVA_BYTE.withName("cdef_uv_pri_strength"),
         ValueLayout.JAVA_BYTE.withName("cdef_uv_sec_strength")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$cdef_damping_minus_3 = PathElement.groupElement("PATH$cdef_damping_minus_3");
     public static final PathElement PATH$cdef_bits = PathElement.groupElement("PATH$cdef_bits");

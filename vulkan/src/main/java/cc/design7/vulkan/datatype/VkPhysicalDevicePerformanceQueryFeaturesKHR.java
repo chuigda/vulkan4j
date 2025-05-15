@@ -40,7 +40,7 @@ public record VkPhysicalDevicePerformanceQueryFeaturesKHR(@NotNull MemorySegment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDevicePerformanceQueryFeaturesKHR[] ret = new VkPhysicalDevicePerformanceQueryFeaturesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDevicePerformanceQueryFeaturesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDevicePerformanceQueryFeaturesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDevicePerformanceQueryFeaturesKHR(@NotNull MemorySegment
         ValueLayout.JAVA_INT.withName("performanceCounterQueryPools"),
         ValueLayout.JAVA_INT.withName("performanceCounterMultipleQueryPools")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

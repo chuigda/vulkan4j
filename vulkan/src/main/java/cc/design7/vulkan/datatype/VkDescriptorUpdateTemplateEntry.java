@@ -36,7 +36,7 @@ public record VkDescriptorUpdateTemplateEntry(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDescriptorUpdateTemplateEntry[] ret = new VkDescriptorUpdateTemplateEntry[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDescriptorUpdateTemplateEntry(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDescriptorUpdateTemplateEntry(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -63,7 +63,7 @@ public record VkDescriptorUpdateTemplateEntry(@NotNull MemorySegment segment) im
         NativeLayout.C_SIZE_T.withName("offset"),
         NativeLayout.C_SIZE_T.withName("stride")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$dstBinding = PathElement.groupElement("PATH$dstBinding");
     public static final PathElement PATH$dstArrayElement = PathElement.groupElement("PATH$dstArrayElement");

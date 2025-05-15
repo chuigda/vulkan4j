@@ -40,7 +40,7 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceMemoryBudgetPropertiesEXT[] ret = new VkPhysicalDeviceMemoryBudgetPropertiesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceMemoryBudgetPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceMemoryBudgetPropertiesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
         ValueLayout.JAVA_LONG.withName("heapBudget"),
         ValueLayout.JAVA_LONG.withName("heapUsage")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

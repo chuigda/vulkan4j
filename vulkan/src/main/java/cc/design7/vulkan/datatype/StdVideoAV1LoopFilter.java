@@ -34,7 +34,7 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoAV1LoopFilter[] ret = new StdVideoAV1LoopFilter[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1LoopFilter(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoAV1LoopFilter(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         ValueLayout.JAVA_BYTE.withName("update_mode_delta"),
         ValueLayout.JAVA_BYTE.withName("loop_filter_mode_deltas")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$loop_filter_level = PathElement.groupElement("PATH$loop_filter_level");

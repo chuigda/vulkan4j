@@ -36,7 +36,7 @@ public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSparseImageMemoryBind[] ret = new VkSparseImageMemoryBind[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSparseImageMemoryBind(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSparseImageMemoryBind(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -63,7 +63,7 @@ public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements
         ValueLayout.JAVA_LONG.withName("memoryOffset"),
         ValueLayout.JAVA_INT.withName("flags")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$subresource = PathElement.groupElement("PATH$subresource");
     public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");

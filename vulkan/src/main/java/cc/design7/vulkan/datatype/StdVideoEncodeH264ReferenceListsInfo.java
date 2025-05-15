@@ -34,7 +34,7 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeH264ReferenceListsInfo[] ret = new StdVideoEncodeH264ReferenceListsInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeH264ReferenceListsInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeH264ReferenceListsInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264RefListModEntry.LAYOUT).withName("pRefList1ModOperations"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264RefPicMarkingEntry.LAYOUT).withName("pRefPicMarkingOperations")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$num_ref_idx_l0_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l0_active_minus1");

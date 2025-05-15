@@ -35,7 +35,7 @@ public record StdVideoAV1TileInfoFlags(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoAV1TileInfoFlags[] ret = new StdVideoAV1TileInfoFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1TileInfoFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoAV1TileInfoFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoAV1TileInfoFlags(@NotNull MemorySegment segment) implement
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$uniform_tile_spacing_flag_reserved")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$uniform_tile_spacing_flag_reserved = PathElement.groupElement("PATH$bitfield$uniform_tile_spacing_flag_reserved");
 

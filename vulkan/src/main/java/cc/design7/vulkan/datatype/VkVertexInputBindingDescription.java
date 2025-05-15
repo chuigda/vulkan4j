@@ -36,7 +36,7 @@ public record VkVertexInputBindingDescription(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVertexInputBindingDescription[] ret = new VkVertexInputBindingDescription[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVertexInputBindingDescription(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVertexInputBindingDescription(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkVertexInputBindingDescription(@NotNull MemorySegment segment) im
         ValueLayout.JAVA_INT.withName("stride"),
         ValueLayout.JAVA_INT.withName("inputRate")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$binding = PathElement.groupElement("PATH$binding");
     public static final PathElement PATH$stride = PathElement.groupElement("PATH$stride");

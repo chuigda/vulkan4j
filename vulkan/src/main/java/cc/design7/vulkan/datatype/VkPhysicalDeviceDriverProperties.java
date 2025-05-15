@@ -40,7 +40,7 @@ public record VkPhysicalDeviceDriverProperties(@NotNull MemorySegment segment) i
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceDriverProperties[] ret = new VkPhysicalDeviceDriverProperties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceDriverProperties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceDriverProperties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkPhysicalDeviceDriverProperties(@NotNull MemorySegment segment) i
         ValueLayout.JAVA_BYTE.withName("driverInfo"),
         VkConformanceVersion.LAYOUT.withName("conformanceVersion")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

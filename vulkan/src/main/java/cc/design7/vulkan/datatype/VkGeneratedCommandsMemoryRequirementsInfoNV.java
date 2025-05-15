@@ -40,7 +40,7 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(@NotNull MemorySegment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkGeneratedCommandsMemoryRequirementsInfoNV[] ret = new VkGeneratedCommandsMemoryRequirementsInfoNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkGeneratedCommandsMemoryRequirementsInfoNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkGeneratedCommandsMemoryRequirementsInfoNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(@NotNull MemorySegment
         ValueLayout.ADDRESS.withName("indirectCommandsLayout"),
         ValueLayout.JAVA_INT.withName("maxSequencesCount")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

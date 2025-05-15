@@ -36,7 +36,7 @@ public record VkSubpassSampleLocationsEXT(@NotNull MemorySegment segment) implem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSubpassSampleLocationsEXT[] ret = new VkSubpassSampleLocationsEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSubpassSampleLocationsEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSubpassSampleLocationsEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkSubpassSampleLocationsEXT(@NotNull MemorySegment segment) implem
         ValueLayout.JAVA_INT.withName("subpassIndex"),
         VkSampleLocationsInfoEXT.LAYOUT.withName("sampleLocationsInfo")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$subpassIndex = PathElement.groupElement("PATH$subpassIndex");
     public static final PathElement PATH$sampleLocationsInfo = PathElement.groupElement("PATH$sampleLocationsInfo");

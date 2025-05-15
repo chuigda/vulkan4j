@@ -40,7 +40,7 @@ public record VkVideoDecodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoDecodeH264CapabilitiesKHR[] ret = new VkVideoDecodeH264CapabilitiesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoDecodeH264CapabilitiesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoDecodeH264CapabilitiesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkVideoDecodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         ValueLayout.JAVA_INT.withName("maxLevelIdc"),
         VkOffset2D.LAYOUT.withName("fieldOffsetGranularity")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

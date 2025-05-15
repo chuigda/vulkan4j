@@ -40,7 +40,7 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkWaylandSurfaceCreateInfoKHR[] ret = new VkWaylandSurfaceCreateInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkWaylandSurfaceCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkWaylandSurfaceCreateInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("display"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("surface")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

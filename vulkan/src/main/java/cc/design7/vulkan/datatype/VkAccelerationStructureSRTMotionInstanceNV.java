@@ -37,7 +37,7 @@ public record VkAccelerationStructureSRTMotionInstanceNV(@NotNull MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureSRTMotionInstanceNV[] ret = new VkAccelerationStructureSRTMotionInstanceNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkAccelerationStructureSRTMotionInstanceNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkAccelerationStructureSRTMotionInstanceNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -63,7 +63,7 @@ public record VkAccelerationStructureSRTMotionInstanceNV(@NotNull MemorySegment 
         ValueLayout.JAVA_INT.withName("bitfield$instanceShaderBindingTableRecordOffset_flags"),
         ValueLayout.JAVA_LONG.withName("accelerationStructureReference")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$transformT0 = PathElement.groupElement("PATH$transformT0");
     public static final PathElement PATH$transformT1 = PathElement.groupElement("PATH$transformT1");

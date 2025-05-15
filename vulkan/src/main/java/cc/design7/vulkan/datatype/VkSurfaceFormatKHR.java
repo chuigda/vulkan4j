@@ -36,7 +36,7 @@ public record VkSurfaceFormatKHR(@NotNull MemorySegment segment) implements IPoi
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSurfaceFormatKHR[] ret = new VkSurfaceFormatKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSurfaceFormatKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSurfaceFormatKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkSurfaceFormatKHR(@NotNull MemorySegment segment) implements IPoi
         ValueLayout.JAVA_INT.withName("format"),
         ValueLayout.JAVA_INT.withName("colorSpace")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
     public static final PathElement PATH$colorSpace = PathElement.groupElement("PATH$colorSpace");

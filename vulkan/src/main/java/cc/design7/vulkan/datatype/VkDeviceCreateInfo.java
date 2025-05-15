@@ -40,7 +40,7 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IPoi
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceCreateInfo[] ret = new VkDeviceCreateInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDeviceCreateInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDeviceCreateInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -71,7 +71,7 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IPoi
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)).withName("ppEnabledExtensionNames"),
         ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceFeatures.LAYOUT).withName("pEnabledFeatures")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

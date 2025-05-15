@@ -40,7 +40,7 @@ public record VkExternalSemaphoreProperties(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExternalSemaphoreProperties[] ret = new VkExternalSemaphoreProperties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkExternalSemaphoreProperties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkExternalSemaphoreProperties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkExternalSemaphoreProperties(@NotNull MemorySegment segment) impl
         ValueLayout.JAVA_INT.withName("compatibleHandleTypes"),
         ValueLayout.JAVA_INT.withName("externalSemaphoreFeatures")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -40,7 +40,7 @@ public record VkPipelineRasterizationStateStreamCreateInfoEXT(@NotNull MemorySeg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineRasterizationStateStreamCreateInfoEXT[] ret = new VkPipelineRasterizationStateStreamCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineRasterizationStateStreamCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineRasterizationStateStreamCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPipelineRasterizationStateStreamCreateInfoEXT(@NotNull MemorySeg
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.JAVA_INT.withName("rasterizationStream")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

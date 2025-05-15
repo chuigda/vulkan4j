@@ -40,7 +40,7 @@ public record VkPhysicalDevice16BitStorageFeatures(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDevice16BitStorageFeatures[] ret = new VkPhysicalDevice16BitStorageFeatures[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDevice16BitStorageFeatures(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDevice16BitStorageFeatures(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkPhysicalDevice16BitStorageFeatures(@NotNull MemorySegment segmen
         ValueLayout.JAVA_INT.withName("storagePushConstant16"),
         ValueLayout.JAVA_INT.withName("storageInputOutput16")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

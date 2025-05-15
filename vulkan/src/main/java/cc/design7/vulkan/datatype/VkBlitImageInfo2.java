@@ -40,7 +40,7 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IPoint
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBlitImageInfo2[] ret = new VkBlitImageInfo2[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBlitImageInfo2(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkBlitImageInfo2(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -70,7 +70,7 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IPoint
         ValueLayout.ADDRESS.withTargetLayout(VkImageBlit2.LAYOUT).withName("pRegions"),
         ValueLayout.JAVA_INT.withName("filter")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

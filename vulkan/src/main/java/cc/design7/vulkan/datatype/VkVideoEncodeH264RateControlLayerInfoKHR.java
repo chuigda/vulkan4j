@@ -40,7 +40,7 @@ public record VkVideoEncodeH264RateControlLayerInfoKHR(@NotNull MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoEncodeH264RateControlLayerInfoKHR[] ret = new VkVideoEncodeH264RateControlLayerInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeH264RateControlLayerInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoEncodeH264RateControlLayerInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -69,7 +69,7 @@ public record VkVideoEncodeH264RateControlLayerInfoKHR(@NotNull MemorySegment se
         ValueLayout.JAVA_INT.withName("useMaxFrameSize"),
         VkVideoEncodeH264FrameSizeKHR.LAYOUT.withName("maxFrameSize")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

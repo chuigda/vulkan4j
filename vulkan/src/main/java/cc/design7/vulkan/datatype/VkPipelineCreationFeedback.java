@@ -36,7 +36,7 @@ public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineCreationFeedback[] ret = new VkPipelineCreationFeedback[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineCreationFeedback(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineCreationFeedback(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) impleme
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.JAVA_LONG.withName("duration")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$duration = PathElement.groupElement("PATH$duration");

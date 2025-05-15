@@ -36,7 +36,7 @@ public record VkPerformanceCounterResultKHR(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPerformanceCounterResultKHR[] ret = new VkPerformanceCounterResultKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPerformanceCounterResultKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPerformanceCounterResultKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -63,7 +63,7 @@ public record VkPerformanceCounterResultKHR(@NotNull MemorySegment segment) impl
         ValueLayout.JAVA_FLOAT.withName("float32"),
         ValueLayout.JAVA_DOUBLE.withName("float64")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$int32 = PathElement.groupElement("PATH$int32");
     public static final PathElement PATH$int64 = PathElement.groupElement("PATH$int64");

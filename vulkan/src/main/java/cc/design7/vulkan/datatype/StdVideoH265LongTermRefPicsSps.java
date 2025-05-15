@@ -34,7 +34,7 @@ public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH265LongTermRefPicsSps[] ret = new StdVideoH265LongTermRefPicsSps[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH265LongTermRefPicsSps(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH265LongTermRefPicsSps(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_INT.withName("used_by_curr_pic_lt_sps_flag"),
         ValueLayout.JAVA_INT.withName("lt_ref_pic_poc_lsb_sps")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$used_by_curr_pic_lt_sps_flag = PathElement.groupElement("PATH$used_by_curr_pic_lt_sps_flag");
     public static final PathElement PATH$lt_ref_pic_poc_lsb_sps = PathElement.groupElement("PATH$lt_ref_pic_poc_lsb_sps");

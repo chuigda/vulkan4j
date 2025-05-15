@@ -40,7 +40,7 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkClusterAccelerationStructureCommandsInfoNV[] ret = new VkClusterAccelerationStructureCommandsInfoNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkClusterAccelerationStructureCommandsInfoNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkClusterAccelerationStructureCommandsInfoNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -71,7 +71,7 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         ValueLayout.JAVA_LONG.withName("srcInfosCount"),
         ValueLayout.JAVA_INT.withName("addressResolutionFlags")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

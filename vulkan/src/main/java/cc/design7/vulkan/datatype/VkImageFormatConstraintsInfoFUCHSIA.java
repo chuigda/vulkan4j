@@ -40,7 +40,7 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageFormatConstraintsInfoFUCHSIA[] ret = new VkImageFormatConstraintsInfoFUCHSIA[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkImageFormatConstraintsInfoFUCHSIA(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkImageFormatConstraintsInfoFUCHSIA(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -69,7 +69,7 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
         ValueLayout.JAVA_INT.withName("colorSpaceCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkSysmemColorSpaceFUCHSIA.LAYOUT).withName("pColorSpaces")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -36,7 +36,7 @@ public record VkCopyMemoryToImageIndirectCommandNV(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCopyMemoryToImageIndirectCommandNV[] ret = new VkCopyMemoryToImageIndirectCommandNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkCopyMemoryToImageIndirectCommandNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkCopyMemoryToImageIndirectCommandNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -63,7 +63,7 @@ public record VkCopyMemoryToImageIndirectCommandNV(@NotNull MemorySegment segmen
         VkOffset3D.LAYOUT.withName("imageOffset"),
         VkExtent3D.LAYOUT.withName("imageExtent")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$srcAddress = PathElement.groupElement("PATH$srcAddress");
     public static final PathElement PATH$bufferRowLength = PathElement.groupElement("PATH$bufferRowLength");

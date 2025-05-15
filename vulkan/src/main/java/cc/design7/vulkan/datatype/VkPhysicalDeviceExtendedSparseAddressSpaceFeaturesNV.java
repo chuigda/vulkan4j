@@ -40,7 +40,7 @@ public record VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(@NotNull Memo
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV[] ret = new VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(@NotNull Memo
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("extendedSparseAddressSpace")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

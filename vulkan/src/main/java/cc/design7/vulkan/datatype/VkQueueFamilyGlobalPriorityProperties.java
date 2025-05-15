@@ -40,7 +40,7 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkQueueFamilyGlobalPriorityProperties[] ret = new VkQueueFamilyGlobalPriorityProperties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkQueueFamilyGlobalPriorityProperties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkQueueFamilyGlobalPriorityProperties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
         ValueLayout.JAVA_INT.withName("priorityCount"),
         ValueLayout.JAVA_INT.withName("priorities")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

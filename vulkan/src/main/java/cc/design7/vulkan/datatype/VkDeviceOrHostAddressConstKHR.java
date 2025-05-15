@@ -36,7 +36,7 @@ public record VkDeviceOrHostAddressConstKHR(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceOrHostAddressConstKHR[] ret = new VkDeviceOrHostAddressConstKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDeviceOrHostAddressConstKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDeviceOrHostAddressConstKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkDeviceOrHostAddressConstKHR(@NotNull MemorySegment segment) impl
         ValueLayout.JAVA_LONG.withName("deviceAddress"),
         ValueLayout.ADDRESS.withName("hostAddress")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$deviceAddress = PathElement.groupElement("PATH$deviceAddress");
     public static final PathElement PATH$hostAddress = PathElement.groupElement("PATH$hostAddress");

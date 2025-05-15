@@ -40,7 +40,7 @@ public record VkPhysicalDeviceExternalSciSyncFeaturesNV(@NotNull MemorySegment s
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceExternalSciSyncFeaturesNV[] ret = new VkPhysicalDeviceExternalSciSyncFeaturesNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceExternalSciSyncFeaturesNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceExternalSciSyncFeaturesNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkPhysicalDeviceExternalSciSyncFeaturesNV(@NotNull MemorySegment s
         ValueLayout.JAVA_INT.withName("sciSyncImport"),
         ValueLayout.JAVA_INT.withName("sciSyncExport")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

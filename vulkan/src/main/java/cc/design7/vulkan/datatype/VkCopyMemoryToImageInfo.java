@@ -40,7 +40,7 @@ public record VkCopyMemoryToImageInfo(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCopyMemoryToImageInfo[] ret = new VkCopyMemoryToImageInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkCopyMemoryToImageInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkCopyMemoryToImageInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -68,7 +68,7 @@ public record VkCopyMemoryToImageInfo(@NotNull MemorySegment segment) implements
         ValueLayout.JAVA_INT.withName("regionCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkMemoryToImageCopy.LAYOUT).withName("pRegions")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

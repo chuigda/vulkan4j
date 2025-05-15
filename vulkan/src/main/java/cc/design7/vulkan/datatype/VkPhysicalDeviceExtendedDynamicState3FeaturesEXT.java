@@ -40,7 +40,7 @@ public record VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(@NotNull MemorySe
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[] ret = new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -94,7 +94,7 @@ public record VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(@NotNull MemorySe
         ValueLayout.JAVA_INT.withName("extendedDynamicState3RepresentativeFragmentTestEnable"),
         ValueLayout.JAVA_INT.withName("extendedDynamicState3ShadingRateImageEnable")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

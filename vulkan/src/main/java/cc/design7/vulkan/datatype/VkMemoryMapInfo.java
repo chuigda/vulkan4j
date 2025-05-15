@@ -40,7 +40,7 @@ public record VkMemoryMapInfo(@NotNull MemorySegment segment) implements IPointe
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMemoryMapInfo[] ret = new VkMemoryMapInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMemoryMapInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMemoryMapInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkMemoryMapInfo(@NotNull MemorySegment segment) implements IPointe
         ValueLayout.JAVA_LONG.withName("offset"),
         ValueLayout.JAVA_LONG.withName("size")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

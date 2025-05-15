@@ -34,7 +34,7 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH265VideoParameterSet[] ret = new StdVideoH265VideoParameterSet[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH265VideoParameterSet(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH265VideoParameterSet(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         ValueLayout.ADDRESS.withTargetLayout(StdVideoH265HrdParameters.LAYOUT).withName("pHrdParameters"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoH265ProfileTierLevel.LAYOUT).withName("pProfileTierLevel")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$vps_video_parameter_set_id = PathElement.groupElement("PATH$vps_video_parameter_set_id");

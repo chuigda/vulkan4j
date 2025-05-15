@@ -40,7 +40,7 @@ public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(@Not
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT[] ret = new VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(@Not
         ValueLayout.JAVA_INT.withName("rasterizationOrderDepthAttachmentAccess"),
         ValueLayout.JAVA_INT.withName("rasterizationOrderStencilAttachmentAccess")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

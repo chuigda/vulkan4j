@@ -36,7 +36,7 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceProperties[] ret = new VkPhysicalDeviceProperties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceProperties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceProperties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         VkPhysicalDeviceLimits.LAYOUT.withName("limits"),
         VkPhysicalDeviceSparseProperties.LAYOUT.withName("sparseProperties")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$apiVersion = PathElement.groupElement("PATH$apiVersion");
     public static final PathElement PATH$driverVersion = PathElement.groupElement("PATH$driverVersion");

@@ -40,7 +40,7 @@ public record VkVideoEncodeQuantizationMapInfoKHR(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoEncodeQuantizationMapInfoKHR[] ret = new VkVideoEncodeQuantizationMapInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeQuantizationMapInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoEncodeQuantizationMapInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkVideoEncodeQuantizationMapInfoKHR(@NotNull MemorySegment segment
         ValueLayout.ADDRESS.withName("quantizationMap"),
         VkExtent2D.LAYOUT.withName("quantizationMapExtent")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

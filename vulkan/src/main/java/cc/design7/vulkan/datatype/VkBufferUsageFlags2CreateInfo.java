@@ -40,7 +40,7 @@ public record VkBufferUsageFlags2CreateInfo(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBufferUsageFlags2CreateInfo[] ret = new VkBufferUsageFlags2CreateInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBufferUsageFlags2CreateInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkBufferUsageFlags2CreateInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkBufferUsageFlags2CreateInfo(@NotNull MemorySegment segment) impl
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("usage")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

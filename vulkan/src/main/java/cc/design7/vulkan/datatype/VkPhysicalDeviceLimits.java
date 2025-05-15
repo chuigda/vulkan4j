@@ -36,7 +36,7 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceLimits[] ret = new VkPhysicalDeviceLimits[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceLimits(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceLimits(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -163,7 +163,7 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         ValueLayout.JAVA_LONG.withName("optimalBufferCopyRowPitchAlignment"),
         ValueLayout.JAVA_LONG.withName("nonCoherentAtomSize")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$maxImageDimension1D = PathElement.groupElement("PATH$maxImageDimension1D");
     public static final PathElement PATH$maxImageDimension2D = PathElement.groupElement("PATH$maxImageDimension2D");

@@ -40,7 +40,7 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(@NotNull MemorySegme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceImageProcessingPropertiesQCOM[] ret = new VkPhysicalDeviceImageProcessingPropertiesQCOM[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceImageProcessingPropertiesQCOM(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceImageProcessingPropertiesQCOM(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(@NotNull MemorySegme
         VkExtent2D.LAYOUT.withName("maxBlockMatchRegion"),
         VkExtent2D.LAYOUT.withName("maxBoxFilterBlockSize")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

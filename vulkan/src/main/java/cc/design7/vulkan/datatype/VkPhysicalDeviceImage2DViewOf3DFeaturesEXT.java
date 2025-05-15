@@ -40,7 +40,7 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(@NotNull MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceImage2DViewOf3DFeaturesEXT[] ret = new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(@NotNull MemorySegment 
         ValueLayout.JAVA_INT.withName("image2DViewOf3D"),
         ValueLayout.JAVA_INT.withName("sampler2DViewOf3D")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

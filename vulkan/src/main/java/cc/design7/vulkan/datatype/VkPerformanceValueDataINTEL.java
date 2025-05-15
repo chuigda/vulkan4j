@@ -36,7 +36,7 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPerformanceValueDataINTEL[] ret = new VkPerformanceValueDataINTEL[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPerformanceValueDataINTEL(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPerformanceValueDataINTEL(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
         ValueLayout.JAVA_INT.withName("valueBool"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("valueString")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$value32 = PathElement.groupElement("PATH$value32");
     public static final PathElement PATH$value64 = PathElement.groupElement("PATH$value64");

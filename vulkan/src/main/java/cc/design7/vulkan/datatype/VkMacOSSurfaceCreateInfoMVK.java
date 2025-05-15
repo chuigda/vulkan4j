@@ -40,7 +40,7 @@ public record VkMacOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMacOSSurfaceCreateInfoMVK[] ret = new VkMacOSSurfaceCreateInfoMVK[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMacOSSurfaceCreateInfoMVK(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMacOSSurfaceCreateInfoMVK(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkMacOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implem
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.ADDRESS.withName("pView")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -40,7 +40,7 @@ public record VkResolveImageInfo2(@NotNull MemorySegment segment) implements IPo
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkResolveImageInfo2[] ret = new VkResolveImageInfo2[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkResolveImageInfo2(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkResolveImageInfo2(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -69,7 +69,7 @@ public record VkResolveImageInfo2(@NotNull MemorySegment segment) implements IPo
         ValueLayout.JAVA_INT.withName("regionCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkImageResolve2.LAYOUT).withName("pRegions")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

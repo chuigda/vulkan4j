@@ -40,7 +40,7 @@ public record VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(@NotNull Me
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures[] ret = new VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(@NotNull Me
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("shaderDemoteToHelperInvocation")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

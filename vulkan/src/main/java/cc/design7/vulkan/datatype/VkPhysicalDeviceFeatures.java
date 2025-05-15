@@ -36,7 +36,7 @@ public record VkPhysicalDeviceFeatures(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceFeatures[] ret = new VkPhysicalDeviceFeatures[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceFeatures(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceFeatures(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -112,7 +112,7 @@ public record VkPhysicalDeviceFeatures(@NotNull MemorySegment segment) implement
         ValueLayout.JAVA_INT.withName("variableMultisampleRate"),
         ValueLayout.JAVA_INT.withName("inheritedQueries")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$robustBufferAccess = PathElement.groupElement("PATH$robustBufferAccess");
     public static final PathElement PATH$fullDrawIndexUint32 = PathElement.groupElement("PATH$fullDrawIndexUint32");

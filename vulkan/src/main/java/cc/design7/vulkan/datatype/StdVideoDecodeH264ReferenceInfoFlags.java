@@ -35,7 +35,7 @@ public record StdVideoDecodeH264ReferenceInfoFlags(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoDecodeH264ReferenceInfoFlags[] ret = new StdVideoDecodeH264ReferenceInfoFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoDecodeH264ReferenceInfoFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoDecodeH264ReferenceInfoFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoDecodeH264ReferenceInfoFlags(@NotNull MemorySegment segmen
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$top_field_flag_is_non_existing")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$top_field_flag_is_non_existing = PathElement.groupElement("PATH$bitfield$top_field_flag_is_non_existing");
 

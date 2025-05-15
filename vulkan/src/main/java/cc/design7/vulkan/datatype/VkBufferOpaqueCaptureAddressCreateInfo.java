@@ -40,7 +40,7 @@ public record VkBufferOpaqueCaptureAddressCreateInfo(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBufferOpaqueCaptureAddressCreateInfo[] ret = new VkBufferOpaqueCaptureAddressCreateInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBufferOpaqueCaptureAddressCreateInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkBufferOpaqueCaptureAddressCreateInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkBufferOpaqueCaptureAddressCreateInfo(@NotNull MemorySegment segm
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("opaqueCaptureAddress")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

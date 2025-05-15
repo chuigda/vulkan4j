@@ -40,7 +40,7 @@ public record VkSubpassDescriptionDepthStencilResolve(@NotNull MemorySegment seg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSubpassDescriptionDepthStencilResolve[] ret = new VkSubpassDescriptionDepthStencilResolve[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSubpassDescriptionDepthStencilResolve(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSubpassDescriptionDepthStencilResolve(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkSubpassDescriptionDepthStencilResolve(@NotNull MemorySegment seg
         ValueLayout.JAVA_INT.withName("stencilResolveMode"),
         ValueLayout.ADDRESS.withTargetLayout(VkAttachmentReference2.LAYOUT).withName("pDepthStencilResolveAttachment")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

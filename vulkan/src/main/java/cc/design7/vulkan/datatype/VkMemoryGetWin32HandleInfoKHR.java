@@ -40,7 +40,7 @@ public record VkMemoryGetWin32HandleInfoKHR(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMemoryGetWin32HandleInfoKHR[] ret = new VkMemoryGetWin32HandleInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMemoryGetWin32HandleInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMemoryGetWin32HandleInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkMemoryGetWin32HandleInfoKHR(@NotNull MemorySegment segment) impl
         ValueLayout.ADDRESS.withName("memory"),
         ValueLayout.JAVA_INT.withName("handleType")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

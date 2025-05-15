@@ -36,7 +36,7 @@ public record VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(@NotN
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV[] ret = new VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(@NotN
         ValueLayout.JAVA_INT.withName("clusterReferencesStride"),
         ValueLayout.JAVA_LONG.withName("clusterReferences")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$clusterReferencesCount = PathElement.groupElement("PATH$clusterReferencesCount");
     public static final PathElement PATH$clusterReferencesStride = PathElement.groupElement("PATH$clusterReferencesStride");

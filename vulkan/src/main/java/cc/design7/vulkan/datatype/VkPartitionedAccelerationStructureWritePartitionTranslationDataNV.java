@@ -36,7 +36,7 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPartitionedAccelerationStructureWritePartitionTranslationDataNV[] ret = new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
         ValueLayout.JAVA_INT.withName("partitionIndex"),
         ValueLayout.JAVA_FLOAT.withName("partitionTranslation")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$partitionIndex = PathElement.groupElement("PATH$partitionIndex");
     public static final PathElement PATH$partitionTranslation = PathElement.groupElement("PATH$partitionTranslation");

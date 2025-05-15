@@ -40,7 +40,7 @@ public record VkPhysicalDeviceShaderTileImagePropertiesEXT(@NotNull MemorySegmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderTileImagePropertiesEXT[] ret = new VkPhysicalDeviceShaderTileImagePropertiesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceShaderTileImagePropertiesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceShaderTileImagePropertiesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkPhysicalDeviceShaderTileImagePropertiesEXT(@NotNull MemorySegmen
         ValueLayout.JAVA_INT.withName("shaderTileImageReadSampleFromPixelRateInvocation"),
         ValueLayout.JAVA_INT.withName("shaderTileImageReadFromHelperInvocation")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

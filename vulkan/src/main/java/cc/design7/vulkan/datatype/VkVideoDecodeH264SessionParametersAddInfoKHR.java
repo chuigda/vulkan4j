@@ -40,7 +40,7 @@ public record VkVideoDecodeH264SessionParametersAddInfoKHR(@NotNull MemorySegmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoDecodeH264SessionParametersAddInfoKHR[] ret = new VkVideoDecodeH264SessionParametersAddInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoDecodeH264SessionParametersAddInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoDecodeH264SessionParametersAddInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkVideoDecodeH264SessionParametersAddInfoKHR(@NotNull MemorySegmen
         ValueLayout.JAVA_INT.withName("stdPPSCount"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoH264PictureParameterSet.LAYOUT).withName("pStdPPSs")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

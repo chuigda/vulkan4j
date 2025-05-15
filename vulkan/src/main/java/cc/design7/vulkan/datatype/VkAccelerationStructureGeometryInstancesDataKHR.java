@@ -40,7 +40,7 @@ public record VkAccelerationStructureGeometryInstancesDataKHR(@NotNull MemorySeg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureGeometryInstancesDataKHR[] ret = new VkAccelerationStructureGeometryInstancesDataKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkAccelerationStructureGeometryInstancesDataKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkAccelerationStructureGeometryInstancesDataKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkAccelerationStructureGeometryInstancesDataKHR(@NotNull MemorySeg
         ValueLayout.JAVA_INT.withName("arrayOfPointers"),
         VkDeviceOrHostAddressConstKHR.LAYOUT.withName("data")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

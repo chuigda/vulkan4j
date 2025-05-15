@@ -36,7 +36,7 @@ public record VkPushConstantRange(@NotNull MemorySegment segment) implements IPo
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPushConstantRange[] ret = new VkPushConstantRange[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPushConstantRange(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPushConstantRange(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkPushConstantRange(@NotNull MemorySegment segment) implements IPo
         ValueLayout.JAVA_INT.withName("offset"),
         ValueLayout.JAVA_INT.withName("size")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$stageFlags = PathElement.groupElement("PATH$stageFlags");
     public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");

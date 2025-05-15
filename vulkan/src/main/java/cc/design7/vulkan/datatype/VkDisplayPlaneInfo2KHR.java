@@ -40,7 +40,7 @@ public record VkDisplayPlaneInfo2KHR(@NotNull MemorySegment segment) implements 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDisplayPlaneInfo2KHR[] ret = new VkDisplayPlaneInfo2KHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDisplayPlaneInfo2KHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDisplayPlaneInfo2KHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkDisplayPlaneInfo2KHR(@NotNull MemorySegment segment) implements 
         ValueLayout.ADDRESS.withName("mode"),
         ValueLayout.JAVA_INT.withName("planeIndex")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

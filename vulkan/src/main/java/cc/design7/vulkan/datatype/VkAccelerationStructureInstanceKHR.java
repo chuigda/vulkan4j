@@ -37,7 +37,7 @@ public record VkAccelerationStructureInstanceKHR(@NotNull MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureInstanceKHR[] ret = new VkAccelerationStructureInstanceKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkAccelerationStructureInstanceKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkAccelerationStructureInstanceKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record VkAccelerationStructureInstanceKHR(@NotNull MemorySegment segment)
         ValueLayout.JAVA_INT.withName("bitfield$instanceShaderBindingTableRecordOffset_flags"),
         ValueLayout.JAVA_LONG.withName("accelerationStructureReference")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$transform = PathElement.groupElement("PATH$transform");
     public static final PathElement PATH$bitfield$instanceCustomIndex_mask = PathElement.groupElement("PATH$bitfield$instanceCustomIndex_mask");

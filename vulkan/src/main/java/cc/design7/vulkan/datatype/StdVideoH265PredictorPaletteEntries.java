@@ -34,7 +34,7 @@ public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH265PredictorPaletteEntries[] ret = new StdVideoH265PredictorPaletteEntries[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH265PredictorPaletteEntries(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH265PredictorPaletteEntries(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -56,7 +56,7 @@ public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_SHORT.withName("PredictorPaletteEntries")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$PredictorPaletteEntries = PathElement.groupElement("PATH$PredictorPaletteEntries");
 

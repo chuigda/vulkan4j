@@ -36,7 +36,7 @@ public record VkDrawMeshTasksIndirectCommandNV(@NotNull MemorySegment segment) i
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDrawMeshTasksIndirectCommandNV[] ret = new VkDrawMeshTasksIndirectCommandNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDrawMeshTasksIndirectCommandNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDrawMeshTasksIndirectCommandNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkDrawMeshTasksIndirectCommandNV(@NotNull MemorySegment segment) i
         ValueLayout.JAVA_INT.withName("taskCount"),
         ValueLayout.JAVA_INT.withName("firstTask")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$taskCount = PathElement.groupElement("PATH$taskCount");
     public static final PathElement PATH$firstTask = PathElement.groupElement("PATH$firstTask");

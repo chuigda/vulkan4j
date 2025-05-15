@@ -36,7 +36,7 @@ public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPastPresentationTimingGOOGLE[] ret = new VkPastPresentationTimingGOOGLE[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPastPresentationTimingGOOGLE(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPastPresentationTimingGOOGLE(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_LONG.withName("earliestPresentTime"),
         ValueLayout.JAVA_LONG.withName("presentMargin")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$presentID = PathElement.groupElement("PATH$presentID");
     public static final PathElement PATH$desiredPresentTime = PathElement.groupElement("PATH$desiredPresentTime");

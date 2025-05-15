@@ -36,7 +36,7 @@ public record VkExternalImageFormatPropertiesNV(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExternalImageFormatPropertiesNV[] ret = new VkExternalImageFormatPropertiesNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkExternalImageFormatPropertiesNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkExternalImageFormatPropertiesNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record VkExternalImageFormatPropertiesNV(@NotNull MemorySegment segment) 
         ValueLayout.JAVA_INT.withName("exportFromImportedHandleTypes"),
         ValueLayout.JAVA_INT.withName("compatibleHandleTypes")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$imageFormatProperties = PathElement.groupElement("PATH$imageFormatProperties");
     public static final PathElement PATH$externalMemoryFeatures = PathElement.groupElement("PATH$externalMemoryFeatures");

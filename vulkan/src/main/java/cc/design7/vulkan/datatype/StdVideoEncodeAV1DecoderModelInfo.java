@@ -34,7 +34,7 @@ public record StdVideoEncodeAV1DecoderModelInfo(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeAV1DecoderModelInfo[] ret = new StdVideoEncodeAV1DecoderModelInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeAV1DecoderModelInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeAV1DecoderModelInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record StdVideoEncodeAV1DecoderModelInfo(@NotNull MemorySegment segment) 
         ValueLayout.JAVA_BYTE.withName("reserved1"),
         ValueLayout.JAVA_INT.withName("num_units_in_decoding_tick")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$buffer_delay_length_minus_1 = PathElement.groupElement("PATH$buffer_delay_length_minus_1");
     public static final PathElement PATH$buffer_removal_time_length_minus_1 = PathElement.groupElement("PATH$buffer_removal_time_length_minus_1");

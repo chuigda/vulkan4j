@@ -40,7 +40,7 @@ public record VkCopyDescriptorSet(@NotNull MemorySegment segment) implements IPo
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCopyDescriptorSet[] ret = new VkCopyDescriptorSet[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkCopyDescriptorSet(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkCopyDescriptorSet(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -70,7 +70,7 @@ public record VkCopyDescriptorSet(@NotNull MemorySegment segment) implements IPo
         ValueLayout.JAVA_INT.withName("dstArrayElement"),
         ValueLayout.JAVA_INT.withName("descriptorCount")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -40,7 +40,7 @@ public record VkPipelineRenderingCreateInfo(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineRenderingCreateInfo[] ret = new VkPipelineRenderingCreateInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineRenderingCreateInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineRenderingCreateInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -68,7 +68,7 @@ public record VkPipelineRenderingCreateInfo(@NotNull MemorySegment segment) impl
         ValueLayout.JAVA_INT.withName("depthAttachmentFormat"),
         ValueLayout.JAVA_INT.withName("stencilAttachmentFormat")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

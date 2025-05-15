@@ -36,7 +36,7 @@ public record VkComponentMapping(@NotNull MemorySegment segment) implements IPoi
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkComponentMapping[] ret = new VkComponentMapping[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkComponentMapping(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkComponentMapping(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record VkComponentMapping(@NotNull MemorySegment segment) implements IPoi
         ValueLayout.JAVA_INT.withName("b"),
         ValueLayout.JAVA_INT.withName("a")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$r = PathElement.groupElement("PATH$r");
     public static final PathElement PATH$g = PathElement.groupElement("PATH$g");

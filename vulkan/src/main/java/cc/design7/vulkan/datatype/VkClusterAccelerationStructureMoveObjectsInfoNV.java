@@ -36,7 +36,7 @@ public record VkClusterAccelerationStructureMoveObjectsInfoNV(@NotNull MemorySeg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkClusterAccelerationStructureMoveObjectsInfoNV[] ret = new VkClusterAccelerationStructureMoveObjectsInfoNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkClusterAccelerationStructureMoveObjectsInfoNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkClusterAccelerationStructureMoveObjectsInfoNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -58,7 +58,7 @@ public record VkClusterAccelerationStructureMoveObjectsInfoNV(@NotNull MemorySeg
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_LONG.withName("srcAccelerationStructure")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$srcAccelerationStructure = PathElement.groupElement("PATH$srcAccelerationStructure");
 

@@ -40,7 +40,7 @@ public record VkPhysicalDeviceCooperativeVectorPropertiesNV(@NotNull MemorySegme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceCooperativeVectorPropertiesNV[] ret = new VkPhysicalDeviceCooperativeVectorPropertiesNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceCooperativeVectorPropertiesNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceCooperativeVectorPropertiesNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkPhysicalDeviceCooperativeVectorPropertiesNV(@NotNull MemorySegme
         ValueLayout.JAVA_INT.withName("cooperativeVectorTrainingFloat32Accumulation"),
         ValueLayout.JAVA_INT.withName("maxCooperativeVectorComponents")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

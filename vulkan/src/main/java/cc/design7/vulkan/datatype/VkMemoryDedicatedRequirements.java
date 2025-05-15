@@ -40,7 +40,7 @@ public record VkMemoryDedicatedRequirements(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMemoryDedicatedRequirements[] ret = new VkMemoryDedicatedRequirements[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMemoryDedicatedRequirements(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMemoryDedicatedRequirements(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkMemoryDedicatedRequirements(@NotNull MemorySegment segment) impl
         ValueLayout.JAVA_INT.withName("prefersDedicatedAllocation"),
         ValueLayout.JAVA_INT.withName("requiresDedicatedAllocation")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

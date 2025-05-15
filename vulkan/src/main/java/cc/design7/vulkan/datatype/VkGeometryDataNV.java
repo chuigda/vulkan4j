@@ -36,7 +36,7 @@ public record VkGeometryDataNV(@NotNull MemorySegment segment) implements IPoint
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkGeometryDataNV[] ret = new VkGeometryDataNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkGeometryDataNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkGeometryDataNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkGeometryDataNV(@NotNull MemorySegment segment) implements IPoint
         VkGeometryTrianglesNV.LAYOUT.withName("triangles"),
         VkGeometryAABBNV.LAYOUT.withName("aabbs")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$triangles = PathElement.groupElement("PATH$triangles");
     public static final PathElement PATH$aabbs = PathElement.groupElement("PATH$aabbs");

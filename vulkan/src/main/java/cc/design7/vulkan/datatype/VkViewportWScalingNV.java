@@ -36,7 +36,7 @@ public record VkViewportWScalingNV(@NotNull MemorySegment segment) implements IP
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkViewportWScalingNV[] ret = new VkViewportWScalingNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkViewportWScalingNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkViewportWScalingNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkViewportWScalingNV(@NotNull MemorySegment segment) implements IP
         ValueLayout.JAVA_FLOAT.withName("xcoeff"),
         ValueLayout.JAVA_FLOAT.withName("ycoeff")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$xcoeff = PathElement.groupElement("PATH$xcoeff");
     public static final PathElement PATH$ycoeff = PathElement.groupElement("PATH$ycoeff");

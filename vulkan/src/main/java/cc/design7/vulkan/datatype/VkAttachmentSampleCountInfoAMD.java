@@ -40,7 +40,7 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAttachmentSampleCountInfoAMD[] ret = new VkAttachmentSampleCountInfoAMD[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkAttachmentSampleCountInfoAMD(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkAttachmentSampleCountInfoAMD(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pColorAttachmentSamples"),
         ValueLayout.JAVA_INT.withName("depthStencilAttachmentSamples")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

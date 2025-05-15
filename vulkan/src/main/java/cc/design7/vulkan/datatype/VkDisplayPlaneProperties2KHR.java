@@ -40,7 +40,7 @@ public record VkDisplayPlaneProperties2KHR(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDisplayPlaneProperties2KHR[] ret = new VkDisplayPlaneProperties2KHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDisplayPlaneProperties2KHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDisplayPlaneProperties2KHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkDisplayPlaneProperties2KHR(@NotNull MemorySegment segment) imple
         ValueLayout.ADDRESS.withName("pNext"),
         VkDisplayPlanePropertiesKHR.LAYOUT.withName("displayPlaneProperties")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

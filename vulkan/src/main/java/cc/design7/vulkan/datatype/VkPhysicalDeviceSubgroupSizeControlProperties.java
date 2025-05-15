@@ -40,7 +40,7 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceSubgroupSizeControlProperties[] ret = new VkPhysicalDeviceSubgroupSizeControlProperties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceSubgroupSizeControlProperties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceSubgroupSizeControlProperties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
         ValueLayout.JAVA_INT.withName("maxComputeWorkgroupSubgroups"),
         ValueLayout.JAVA_INT.withName("requiredSubgroupSizeStages")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

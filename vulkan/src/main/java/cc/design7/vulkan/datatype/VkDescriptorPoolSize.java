@@ -36,7 +36,7 @@ public record VkDescriptorPoolSize(@NotNull MemorySegment segment) implements IP
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDescriptorPoolSize[] ret = new VkDescriptorPoolSize[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDescriptorPoolSize(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDescriptorPoolSize(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkDescriptorPoolSize(@NotNull MemorySegment segment) implements IP
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.JAVA_INT.withName("descriptorCount")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
     public static final PathElement PATH$descriptorCount = PathElement.groupElement("PATH$descriptorCount");

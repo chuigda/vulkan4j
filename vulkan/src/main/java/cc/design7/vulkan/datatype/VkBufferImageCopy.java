@@ -36,7 +36,7 @@ public record VkBufferImageCopy(@NotNull MemorySegment segment) implements IPoin
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBufferImageCopy[] ret = new VkBufferImageCopy[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBufferImageCopy(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkBufferImageCopy(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -63,7 +63,7 @@ public record VkBufferImageCopy(@NotNull MemorySegment segment) implements IPoin
         VkOffset3D.LAYOUT.withName("imageOffset"),
         VkExtent3D.LAYOUT.withName("imageExtent")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bufferOffset = PathElement.groupElement("PATH$bufferOffset");
     public static final PathElement PATH$bufferRowLength = PathElement.groupElement("PATH$bufferRowLength");

@@ -34,7 +34,7 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IP
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoAV1FilmGrain[] ret = new StdVideoAV1FilmGrain[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1FilmGrain(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoAV1FilmGrain(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -80,7 +80,7 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IP
         ValueLayout.JAVA_BYTE.withName("cr_luma_mult"),
         ValueLayout.JAVA_SHORT.withName("cr_offset")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$grain_scaling_minus_8 = PathElement.groupElement("PATH$grain_scaling_minus_8");

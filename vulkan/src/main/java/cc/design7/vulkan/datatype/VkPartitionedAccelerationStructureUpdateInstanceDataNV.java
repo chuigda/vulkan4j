@@ -36,7 +36,7 @@ public record VkPartitionedAccelerationStructureUpdateInstanceDataNV(@NotNull Me
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPartitionedAccelerationStructureUpdateInstanceDataNV[] ret = new VkPartitionedAccelerationStructureUpdateInstanceDataNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPartitionedAccelerationStructureUpdateInstanceDataNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPartitionedAccelerationStructureUpdateInstanceDataNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkPartitionedAccelerationStructureUpdateInstanceDataNV(@NotNull Me
         ValueLayout.JAVA_INT.withName("instanceContributionToHitGroupIndex"),
         ValueLayout.JAVA_LONG.withName("accelerationStructure")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$instanceIndex = PathElement.groupElement("PATH$instanceIndex");
     public static final PathElement PATH$instanceContributionToHitGroupIndex = PathElement.groupElement("PATH$instanceContributionToHitGroupIndex");

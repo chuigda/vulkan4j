@@ -34,7 +34,7 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH264HrdParameters[] ret = new StdVideoH264HrdParameters[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH264HrdParameters(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH264HrdParameters(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
         ValueLayout.JAVA_INT.withName("dpb_output_delay_length_minus1"),
         ValueLayout.JAVA_INT.withName("time_offset_length")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$cpb_cnt_minus1 = PathElement.groupElement("PATH$cpb_cnt_minus1");
     public static final PathElement PATH$bit_rate_scale = PathElement.groupElement("PATH$bit_rate_scale");

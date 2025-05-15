@@ -40,7 +40,7 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureTrianglesOpacityMicromapEXT[] ret = new VkAccelerationStructureTrianglesOpacityMicromapEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkAccelerationStructureTrianglesOpacityMicromapEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkAccelerationStructureTrianglesOpacityMicromapEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -71,7 +71,7 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT)).withName("ppUsageCounts"),
         ValueLayout.ADDRESS.withName("micromap")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

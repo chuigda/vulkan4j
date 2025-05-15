@@ -36,7 +36,7 @@ public record VkTraceRaysIndirectCommand2KHR(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkTraceRaysIndirectCommand2KHR[] ret = new VkTraceRaysIndirectCommand2KHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkTraceRaysIndirectCommand2KHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkTraceRaysIndirectCommand2KHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -71,7 +71,7 @@ public record VkTraceRaysIndirectCommand2KHR(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_INT.withName("height"),
         ValueLayout.JAVA_INT.withName("depth")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$raygenShaderRecordAddress = PathElement.groupElement("PATH$raygenShaderRecordAddress");
     public static final PathElement PATH$raygenShaderRecordSize = PathElement.groupElement("PATH$raygenShaderRecordSize");

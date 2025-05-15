@@ -40,7 +40,7 @@ public record VkPhysicalDeviceVulkan13Features(@NotNull MemorySegment segment) i
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceVulkan13Features[] ret = new VkPhysicalDeviceVulkan13Features[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceVulkan13Features(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceVulkan13Features(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -78,7 +78,7 @@ public record VkPhysicalDeviceVulkan13Features(@NotNull MemorySegment segment) i
         ValueLayout.JAVA_INT.withName("shaderIntegerDotProduct"),
         ValueLayout.JAVA_INT.withName("maintenance4")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

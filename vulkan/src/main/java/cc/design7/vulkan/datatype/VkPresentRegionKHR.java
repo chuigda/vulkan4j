@@ -36,7 +36,7 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IPoi
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPresentRegionKHR[] ret = new VkPresentRegionKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPresentRegionKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPresentRegionKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IPoi
         ValueLayout.JAVA_INT.withName("rectangleCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkRectLayerKHR.LAYOUT).withName("pRectangles")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$rectangleCount = PathElement.groupElement("PATH$rectangleCount");
     public static final PathElement PATH$pRectangles = PathElement.groupElement("PATH$pRectangles");

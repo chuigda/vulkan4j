@@ -40,7 +40,7 @@ public record VkSemaphoreGetFdInfoKHR(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSemaphoreGetFdInfoKHR[] ret = new VkSemaphoreGetFdInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSemaphoreGetFdInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSemaphoreGetFdInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkSemaphoreGetFdInfoKHR(@NotNull MemorySegment segment) implements
         ValueLayout.ADDRESS.withName("semaphore"),
         ValueLayout.JAVA_INT.withName("handleType")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

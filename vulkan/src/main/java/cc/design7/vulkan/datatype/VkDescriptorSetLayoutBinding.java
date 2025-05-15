@@ -36,7 +36,7 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDescriptorSetLayoutBinding[] ret = new VkDescriptorSetLayoutBinding[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDescriptorSetLayoutBinding(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDescriptorSetLayoutBinding(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
         ValueLayout.JAVA_INT.withName("stageFlags"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pImmutableSamplers")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$binding = PathElement.groupElement("PATH$binding");
     public static final PathElement PATH$descriptorType = PathElement.groupElement("PATH$descriptorType");

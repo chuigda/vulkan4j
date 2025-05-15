@@ -40,7 +40,7 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDescriptorPoolCreateInfo[] ret = new VkDescriptorPoolCreateInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDescriptorPoolCreateInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDescriptorPoolCreateInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
         ValueLayout.JAVA_INT.withName("poolSizeCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkDescriptorPoolSize.LAYOUT).withName("pPoolSizes")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

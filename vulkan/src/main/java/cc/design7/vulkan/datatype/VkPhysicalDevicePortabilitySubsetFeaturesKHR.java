@@ -40,7 +40,7 @@ public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(@NotNull MemorySegmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDevicePortabilitySubsetFeaturesKHR[] ret = new VkPhysicalDevicePortabilitySubsetFeaturesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDevicePortabilitySubsetFeaturesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDevicePortabilitySubsetFeaturesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -78,7 +78,7 @@ public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(@NotNull MemorySegmen
         ValueLayout.JAVA_INT.withName("triangleFans"),
         ValueLayout.JAVA_INT.withName("vertexAttributeAccessBeyondStride")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

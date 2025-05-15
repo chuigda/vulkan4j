@@ -36,7 +36,7 @@ public record VkSurfaceCapabilitiesKHR(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSurfaceCapabilitiesKHR[] ret = new VkSurfaceCapabilitiesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSurfaceCapabilitiesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSurfaceCapabilitiesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkSurfaceCapabilitiesKHR(@NotNull MemorySegment segment) implement
         ValueLayout.JAVA_INT.withName("supportedCompositeAlpha"),
         ValueLayout.JAVA_INT.withName("supportedUsageFlags")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$minImageCount = PathElement.groupElement("PATH$minImageCount");
     public static final PathElement PATH$maxImageCount = PathElement.groupElement("PATH$maxImageCount");

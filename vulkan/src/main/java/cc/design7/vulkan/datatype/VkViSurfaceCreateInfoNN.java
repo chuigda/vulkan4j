@@ -40,7 +40,7 @@ public record VkViSurfaceCreateInfoNN(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkViSurfaceCreateInfoNN[] ret = new VkViSurfaceCreateInfoNN[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkViSurfaceCreateInfoNN(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkViSurfaceCreateInfoNN(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkViSurfaceCreateInfoNN(@NotNull MemorySegment segment) implements
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.ADDRESS.withName("window")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

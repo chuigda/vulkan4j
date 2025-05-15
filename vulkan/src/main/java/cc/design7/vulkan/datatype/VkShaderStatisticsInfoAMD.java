@@ -36,7 +36,7 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkShaderStatisticsInfoAMD[] ret = new VkShaderStatisticsInfoAMD[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkShaderStatisticsInfoAMD(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkShaderStatisticsInfoAMD(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         ValueLayout.JAVA_INT.withName("numAvailableSgprs"),
         ValueLayout.JAVA_INT.withName("computeWorkGroupSize")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$shaderStageMask = PathElement.groupElement("PATH$shaderStageMask");
     public static final PathElement PATH$resourceUsage = PathElement.groupElement("PATH$resourceUsage");

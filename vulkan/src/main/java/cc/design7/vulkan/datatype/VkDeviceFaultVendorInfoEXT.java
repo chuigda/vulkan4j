@@ -36,7 +36,7 @@ public record VkDeviceFaultVendorInfoEXT(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceFaultVendorInfoEXT[] ret = new VkDeviceFaultVendorInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDeviceFaultVendorInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDeviceFaultVendorInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkDeviceFaultVendorInfoEXT(@NotNull MemorySegment segment) impleme
         ValueLayout.JAVA_LONG.withName("vendorFaultCode"),
         ValueLayout.JAVA_LONG.withName("vendorFaultData")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$description = PathElement.groupElement("PATH$description");
     public static final PathElement PATH$vendorFaultCode = PathElement.groupElement("PATH$vendorFaultCode");

@@ -40,7 +40,7 @@ public record VkFenceGetWin32HandleInfoKHR(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkFenceGetWin32HandleInfoKHR[] ret = new VkFenceGetWin32HandleInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkFenceGetWin32HandleInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkFenceGetWin32HandleInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkFenceGetWin32HandleInfoKHR(@NotNull MemorySegment segment) imple
         ValueLayout.ADDRESS.withName("fence"),
         ValueLayout.JAVA_INT.withName("handleType")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -40,7 +40,7 @@ public record VkPipelineRepresentativeFragmentTestStateCreateInfoNV(@NotNull Mem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineRepresentativeFragmentTestStateCreateInfoNV[] ret = new VkPipelineRepresentativeFragmentTestStateCreateInfoNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineRepresentativeFragmentTestStateCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineRepresentativeFragmentTestStateCreateInfoNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkPipelineRepresentativeFragmentTestStateCreateInfoNV(@NotNull Mem
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("representativeFragmentTestEnable")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

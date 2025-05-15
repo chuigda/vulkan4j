@@ -40,7 +40,7 @@ public record VkPhysicalDevicePipelineRobustnessFeatures(@NotNull MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDevicePipelineRobustnessFeatures[] ret = new VkPhysicalDevicePipelineRobustnessFeatures[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDevicePipelineRobustnessFeatures(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDevicePipelineRobustnessFeatures(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkPhysicalDevicePipelineRobustnessFeatures(@NotNull MemorySegment 
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("pipelineRobustness")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

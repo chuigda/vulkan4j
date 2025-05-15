@@ -40,7 +40,7 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(@NotNull Memo
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT[] ret = new VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(@NotNull Memo
         ValueLayout.JAVA_INT.withName("graphicsPipelineLibraryFastLinking"),
         ValueLayout.JAVA_INT.withName("graphicsPipelineLibraryIndependentInterpolationDecoration")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

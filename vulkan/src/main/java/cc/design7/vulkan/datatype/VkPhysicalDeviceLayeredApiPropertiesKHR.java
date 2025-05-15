@@ -40,7 +40,7 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceLayeredApiPropertiesKHR[] ret = new VkPhysicalDeviceLayeredApiPropertiesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceLayeredApiPropertiesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceLayeredApiPropertiesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
         ValueLayout.JAVA_INT.withName("layeredAPI"),
         ValueLayout.JAVA_BYTE.withName("deviceName")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

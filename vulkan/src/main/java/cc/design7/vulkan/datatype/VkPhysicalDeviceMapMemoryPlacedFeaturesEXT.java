@@ -40,7 +40,7 @@ public record VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(@NotNull MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceMapMemoryPlacedFeaturesEXT[] ret = new VkPhysicalDeviceMapMemoryPlacedFeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(@NotNull MemorySegment 
         ValueLayout.JAVA_INT.withName("memoryMapRangePlaced"),
         ValueLayout.JAVA_INT.withName("memoryUnmapReserve")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

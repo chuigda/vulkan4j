@@ -40,7 +40,7 @@ public record VkVideoFormatAV1QuantizationMapPropertiesKHR(@NotNull MemorySegmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoFormatAV1QuantizationMapPropertiesKHR[] ret = new VkVideoFormatAV1QuantizationMapPropertiesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoFormatAV1QuantizationMapPropertiesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoFormatAV1QuantizationMapPropertiesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkVideoFormatAV1QuantizationMapPropertiesKHR(@NotNull MemorySegmen
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("compatibleSuperblockSizes")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

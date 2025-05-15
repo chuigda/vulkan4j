@@ -40,7 +40,7 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineExecutableInternalRepresentationKHR[] ret = new VkPipelineExecutableInternalRepresentationKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineExecutableInternalRepresentationKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineExecutableInternalRepresentationKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -68,7 +68,7 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         NativeLayout.C_SIZE_T.withName("dataSize"),
         ValueLayout.ADDRESS.withName("pData")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

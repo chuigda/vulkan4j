@@ -40,7 +40,7 @@ public record VkPhysicalDeviceShadingRateImageFeaturesNV(@NotNull MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShadingRateImageFeaturesNV[] ret = new VkPhysicalDeviceShadingRateImageFeaturesNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceShadingRateImageFeaturesNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceShadingRateImageFeaturesNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDeviceShadingRateImageFeaturesNV(@NotNull MemorySegment 
         ValueLayout.JAVA_INT.withName("shadingRateImage"),
         ValueLayout.JAVA_INT.withName("shadingRateCoarseSampleOrder")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

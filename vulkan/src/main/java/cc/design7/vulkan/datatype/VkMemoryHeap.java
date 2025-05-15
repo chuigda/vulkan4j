@@ -36,7 +36,7 @@ public record VkMemoryHeap(@NotNull MemorySegment segment) implements IPointer {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMemoryHeap[] ret = new VkMemoryHeap[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMemoryHeap(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMemoryHeap(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkMemoryHeap(@NotNull MemorySegment segment) implements IPointer {
         ValueLayout.JAVA_LONG.withName("size"),
         ValueLayout.JAVA_INT.withName("flags")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");

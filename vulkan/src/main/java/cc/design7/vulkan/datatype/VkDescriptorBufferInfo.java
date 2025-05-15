@@ -36,7 +36,7 @@ public record VkDescriptorBufferInfo(@NotNull MemorySegment segment) implements 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDescriptorBufferInfo[] ret = new VkDescriptorBufferInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDescriptorBufferInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDescriptorBufferInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkDescriptorBufferInfo(@NotNull MemorySegment segment) implements 
         ValueLayout.JAVA_LONG.withName("offset"),
         ValueLayout.JAVA_LONG.withName("range")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$buffer = PathElement.groupElement("PATH$buffer");
     public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");

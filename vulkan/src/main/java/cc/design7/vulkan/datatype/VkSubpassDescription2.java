@@ -40,7 +40,7 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSubpassDescription2[] ret = new VkSubpassDescription2[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSubpassDescription2(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSubpassDescription2(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -74,7 +74,7 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         ValueLayout.JAVA_INT.withName("preserveAttachmentCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pPreserveAttachments")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

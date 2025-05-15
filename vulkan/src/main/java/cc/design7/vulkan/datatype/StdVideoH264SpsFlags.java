@@ -35,7 +35,7 @@ public record StdVideoH264SpsFlags(@NotNull MemorySegment segment) implements IP
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH264SpsFlags[] ret = new StdVideoH264SpsFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH264SpsFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH264SpsFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoH264SpsFlags(@NotNull MemorySegment segment) implements IP
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$constraint_set0_flag_vui_parameters_present_flag")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$constraint_set0_flag_vui_parameters_present_flag = PathElement.groupElement("PATH$bitfield$constraint_set0_flag_vui_parameters_present_flag");
 

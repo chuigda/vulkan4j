@@ -40,7 +40,7 @@ public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(@NotNull MemorySegmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderAtomicFloatFeaturesEXT[] ret = new VkPhysicalDeviceShaderAtomicFloatFeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -75,7 +75,7 @@ public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(@NotNull MemorySegmen
         ValueLayout.JAVA_INT.withName("sparseImageFloat32Atomics"),
         ValueLayout.JAVA_INT.withName("sparseImageFloat32AtomicAdd")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

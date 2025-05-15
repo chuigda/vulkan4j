@@ -36,7 +36,7 @@ public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IP
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkTransformMatrixKHR[] ret = new VkTransformMatrixKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkTransformMatrixKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkTransformMatrixKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -58,7 +58,7 @@ public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IP
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_FLOAT.withName("matrix")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$matrix = PathElement.groupElement("PATH$matrix");
 

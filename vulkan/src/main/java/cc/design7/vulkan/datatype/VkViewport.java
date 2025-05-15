@@ -36,7 +36,7 @@ public record VkViewport(@NotNull MemorySegment segment) implements IPointer {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkViewport[] ret = new VkViewport[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkViewport(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkViewport(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -63,7 +63,7 @@ public record VkViewport(@NotNull MemorySegment segment) implements IPointer {
         ValueLayout.JAVA_FLOAT.withName("minDepth"),
         ValueLayout.JAVA_FLOAT.withName("maxDepth")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$x = PathElement.groupElement("PATH$x");
     public static final PathElement PATH$y = PathElement.groupElement("PATH$y");

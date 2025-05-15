@@ -36,7 +36,7 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceFaultVendorBinaryHeaderVersionOneEXT[] ret = new VkDeviceFaultVendorBinaryHeaderVersionOneEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDeviceFaultVendorBinaryHeaderVersionOneEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDeviceFaultVendorBinaryHeaderVersionOneEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -68,7 +68,7 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
         ValueLayout.JAVA_INT.withName("engineVersion"),
         ValueLayout.JAVA_INT.withName("apiVersion")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$headerSize = PathElement.groupElement("PATH$headerSize");
     public static final PathElement PATH$headerVersion = PathElement.groupElement("PATH$headerVersion");

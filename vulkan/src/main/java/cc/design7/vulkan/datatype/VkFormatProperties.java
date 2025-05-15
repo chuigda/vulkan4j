@@ -36,7 +36,7 @@ public record VkFormatProperties(@NotNull MemorySegment segment) implements IPoi
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkFormatProperties[] ret = new VkFormatProperties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkFormatProperties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkFormatProperties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkFormatProperties(@NotNull MemorySegment segment) implements IPoi
         ValueLayout.JAVA_INT.withName("optimalTilingFeatures"),
         ValueLayout.JAVA_INT.withName("bufferFeatures")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$linearTilingFeatures = PathElement.groupElement("PATH$linearTilingFeatures");
     public static final PathElement PATH$optimalTilingFeatures = PathElement.groupElement("PATH$optimalTilingFeatures");

@@ -40,7 +40,7 @@ public record VkPhysicalDeviceConditionalRenderingFeaturesEXT(@NotNull MemorySeg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceConditionalRenderingFeaturesEXT[] ret = new VkPhysicalDeviceConditionalRenderingFeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceConditionalRenderingFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceConditionalRenderingFeaturesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDeviceConditionalRenderingFeaturesEXT(@NotNull MemorySeg
         ValueLayout.JAVA_INT.withName("conditionalRendering"),
         ValueLayout.JAVA_INT.withName("inheritedConditionalRendering")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

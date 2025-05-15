@@ -40,7 +40,7 @@ public record VkPhysicalDeviceLineRasterizationFeatures(@NotNull MemorySegment s
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceLineRasterizationFeatures[] ret = new VkPhysicalDeviceLineRasterizationFeatures[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceLineRasterizationFeatures(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceLineRasterizationFeatures(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -69,7 +69,7 @@ public record VkPhysicalDeviceLineRasterizationFeatures(@NotNull MemorySegment s
         ValueLayout.JAVA_INT.withName("stippledBresenhamLines"),
         ValueLayout.JAVA_INT.withName("stippledSmoothLines")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

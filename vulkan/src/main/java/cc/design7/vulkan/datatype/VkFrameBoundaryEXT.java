@@ -40,7 +40,7 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPoi
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkFrameBoundaryEXT[] ret = new VkFrameBoundaryEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkFrameBoundaryEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkFrameBoundaryEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -72,7 +72,7 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPoi
         NativeLayout.C_SIZE_T.withName("tagSize"),
         ValueLayout.ADDRESS.withName("pTag")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

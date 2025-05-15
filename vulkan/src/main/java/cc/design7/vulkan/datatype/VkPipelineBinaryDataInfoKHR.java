@@ -40,7 +40,7 @@ public record VkPipelineBinaryDataInfoKHR(@NotNull MemorySegment segment) implem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineBinaryDataInfoKHR[] ret = new VkPipelineBinaryDataInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineBinaryDataInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineBinaryDataInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkPipelineBinaryDataInfoKHR(@NotNull MemorySegment segment) implem
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withName("pipelineBinary")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

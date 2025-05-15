@@ -40,7 +40,7 @@ public record VkPhysicalDeviceShaderClockFeaturesKHR(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderClockFeaturesKHR[] ret = new VkPhysicalDeviceShaderClockFeaturesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceShaderClockFeaturesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceShaderClockFeaturesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDeviceShaderClockFeaturesKHR(@NotNull MemorySegment segm
         ValueLayout.JAVA_INT.withName("shaderSubgroupClock"),
         ValueLayout.JAVA_INT.withName("shaderDeviceClock")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

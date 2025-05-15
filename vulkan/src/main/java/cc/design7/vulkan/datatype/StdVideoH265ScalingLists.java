@@ -34,7 +34,7 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH265ScalingLists[] ret = new StdVideoH265ScalingLists[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH265ScalingLists(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH265ScalingLists(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
         ValueLayout.JAVA_BYTE.withName("ScalingListDCCoef16x16"),
         ValueLayout.JAVA_BYTE.withName("ScalingListDCCoef32x32")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$ScalingList4x4 = PathElement.groupElement("PATH$ScalingList4x4");
     public static final PathElement PATH$ScalingList8x8 = PathElement.groupElement("PATH$ScalingList8x8");

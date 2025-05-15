@@ -36,7 +36,7 @@ public record VkSpecializationMapEntry(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSpecializationMapEntry[] ret = new VkSpecializationMapEntry[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSpecializationMapEntry(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSpecializationMapEntry(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkSpecializationMapEntry(@NotNull MemorySegment segment) implement
         ValueLayout.JAVA_INT.withName("offset"),
         NativeLayout.C_SIZE_T.withName("size")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$constantID = PathElement.groupElement("PATH$constantID");
     public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");

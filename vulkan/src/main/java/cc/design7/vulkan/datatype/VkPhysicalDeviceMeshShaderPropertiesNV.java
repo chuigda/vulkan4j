@@ -40,7 +40,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceMeshShaderPropertiesNV[] ret = new VkPhysicalDeviceMeshShaderPropertiesNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceMeshShaderPropertiesNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceMeshShaderPropertiesNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -76,7 +76,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segm
         ValueLayout.JAVA_INT.withName("meshOutputPerVertexGranularity"),
         ValueLayout.JAVA_INT.withName("meshOutputPerPrimitiveGranularity")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

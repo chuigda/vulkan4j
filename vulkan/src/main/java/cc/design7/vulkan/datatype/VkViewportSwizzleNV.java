@@ -36,7 +36,7 @@ public record VkViewportSwizzleNV(@NotNull MemorySegment segment) implements IPo
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkViewportSwizzleNV[] ret = new VkViewportSwizzleNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkViewportSwizzleNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkViewportSwizzleNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record VkViewportSwizzleNV(@NotNull MemorySegment segment) implements IPo
         ValueLayout.JAVA_INT.withName("z"),
         ValueLayout.JAVA_INT.withName("w")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$x = PathElement.groupElement("PATH$x");
     public static final PathElement PATH$y = PathElement.groupElement("PATH$y");

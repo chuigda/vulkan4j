@@ -40,7 +40,7 @@ public record VkBuildPartitionedAccelerationStructureInfoNV(@NotNull MemorySegme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBuildPartitionedAccelerationStructureInfoNV[] ret = new VkBuildPartitionedAccelerationStructureInfoNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBuildPartitionedAccelerationStructureInfoNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkBuildPartitionedAccelerationStructureInfoNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -69,7 +69,7 @@ public record VkBuildPartitionedAccelerationStructureInfoNV(@NotNull MemorySegme
         ValueLayout.JAVA_LONG.withName("srcInfos"),
         ValueLayout.JAVA_LONG.withName("srcInfosCount")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

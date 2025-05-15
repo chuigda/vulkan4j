@@ -40,7 +40,7 @@ public record VkWriteDescriptorSetInlineUniformBlock(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkWriteDescriptorSetInlineUniformBlock[] ret = new VkWriteDescriptorSetInlineUniformBlock[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkWriteDescriptorSetInlineUniformBlock(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkWriteDescriptorSetInlineUniformBlock(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkWriteDescriptorSetInlineUniformBlock(@NotNull MemorySegment segm
         ValueLayout.JAVA_INT.withName("dataSize"),
         ValueLayout.ADDRESS.withName("pData")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

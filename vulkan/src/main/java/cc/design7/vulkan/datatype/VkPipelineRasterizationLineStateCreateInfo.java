@@ -40,7 +40,7 @@ public record VkPipelineRasterizationLineStateCreateInfo(@NotNull MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineRasterizationLineStateCreateInfo[] ret = new VkPipelineRasterizationLineStateCreateInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineRasterizationLineStateCreateInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineRasterizationLineStateCreateInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkPipelineRasterizationLineStateCreateInfo(@NotNull MemorySegment 
         ValueLayout.JAVA_INT.withName("lineStippleFactor"),
         ValueLayout.JAVA_SHORT.withName("lineStipplePattern")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

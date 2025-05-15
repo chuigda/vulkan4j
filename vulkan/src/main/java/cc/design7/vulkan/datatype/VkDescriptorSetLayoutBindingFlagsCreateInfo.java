@@ -40,7 +40,7 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDescriptorSetLayoutBindingFlagsCreateInfo[] ret = new VkDescriptorSetLayoutBindingFlagsCreateInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDescriptorSetLayoutBindingFlagsCreateInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDescriptorSetLayoutBindingFlagsCreateInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
         ValueLayout.JAVA_INT.withName("bindingCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pBindingFlags")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

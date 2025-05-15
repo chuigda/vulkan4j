@@ -40,7 +40,7 @@ public record VkVideoInlineQueryInfoKHR(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoInlineQueryInfoKHR[] ret = new VkVideoInlineQueryInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoInlineQueryInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoInlineQueryInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkVideoInlineQueryInfoKHR(@NotNull MemorySegment segment) implemen
         ValueLayout.JAVA_INT.withName("firstQuery"),
         ValueLayout.JAVA_INT.withName("queryCount")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

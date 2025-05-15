@@ -40,7 +40,7 @@ public record VkBufferCollectionBufferCreateInfoFUCHSIA(@NotNull MemorySegment s
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBufferCollectionBufferCreateInfoFUCHSIA[] ret = new VkBufferCollectionBufferCreateInfoFUCHSIA[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBufferCollectionBufferCreateInfoFUCHSIA(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkBufferCollectionBufferCreateInfoFUCHSIA(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkBufferCollectionBufferCreateInfoFUCHSIA(@NotNull MemorySegment s
         ValueLayout.ADDRESS.withName("collection"),
         ValueLayout.JAVA_INT.withName("index")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

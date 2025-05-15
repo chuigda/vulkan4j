@@ -34,7 +34,7 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeH265ReferenceListsInfo[] ret = new StdVideoEncodeH265ReferenceListsInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeH265ReferenceListsInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeH265ReferenceListsInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
         ValueLayout.JAVA_BYTE.withName("list_entry_l0"),
         ValueLayout.JAVA_BYTE.withName("list_entry_l1")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$num_ref_idx_l0_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l0_active_minus1");

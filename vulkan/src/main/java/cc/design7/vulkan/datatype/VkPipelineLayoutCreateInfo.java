@@ -40,7 +40,7 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineLayoutCreateInfo[] ret = new VkPipelineLayoutCreateInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineLayoutCreateInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineLayoutCreateInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -68,7 +68,7 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         ValueLayout.JAVA_INT.withName("pushConstantRangeCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkPushConstantRange.LAYOUT).withName("pPushConstantRanges")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

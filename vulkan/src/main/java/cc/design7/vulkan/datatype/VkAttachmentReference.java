@@ -36,7 +36,7 @@ public record VkAttachmentReference(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAttachmentReference[] ret = new VkAttachmentReference[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkAttachmentReference(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkAttachmentReference(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkAttachmentReference(@NotNull MemorySegment segment) implements I
         ValueLayout.JAVA_INT.withName("attachment"),
         ValueLayout.JAVA_INT.withName("layout")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$attachment = PathElement.groupElement("PATH$attachment");
     public static final PathElement PATH$layout = PathElement.groupElement("PATH$layout");

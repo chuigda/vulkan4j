@@ -40,7 +40,7 @@ public record VkVideoEncodeH265SessionParametersCreateInfoKHR(@NotNull MemorySeg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoEncodeH265SessionParametersCreateInfoKHR[] ret = new VkVideoEncodeH265SessionParametersCreateInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeH265SessionParametersCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoEncodeH265SessionParametersCreateInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkVideoEncodeH265SessionParametersCreateInfoKHR(@NotNull MemorySeg
         ValueLayout.JAVA_INT.withName("maxStdPPSCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkVideoEncodeH265SessionParametersAddInfoKHR.LAYOUT).withName("pParametersAddInfo")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

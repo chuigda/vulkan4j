@@ -36,7 +36,7 @@ public record VkImageSubresourceLayers(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageSubresourceLayers[] ret = new VkImageSubresourceLayers[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkImageSubresourceLayers(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkImageSubresourceLayers(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record VkImageSubresourceLayers(@NotNull MemorySegment segment) implement
         ValueLayout.JAVA_INT.withName("baseArrayLayer"),
         ValueLayout.JAVA_INT.withName("layerCount")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$aspectMask = PathElement.groupElement("PATH$aspectMask");
     public static final PathElement PATH$mipLevel = PathElement.groupElement("PATH$mipLevel");

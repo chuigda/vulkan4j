@@ -40,7 +40,7 @@ public record VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI(@NotNull Memory
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI[] ret = new VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI(@NotNull Memory
         ValueLayout.JAVA_INT.withName("clustercullingShader"),
         ValueLayout.JAVA_INT.withName("multiviewClusterCullingShader")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

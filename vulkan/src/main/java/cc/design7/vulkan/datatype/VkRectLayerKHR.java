@@ -36,7 +36,7 @@ public record VkRectLayerKHR(@NotNull MemorySegment segment) implements IPointer
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRectLayerKHR[] ret = new VkRectLayerKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkRectLayerKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkRectLayerKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkRectLayerKHR(@NotNull MemorySegment segment) implements IPointer
         VkExtent2D.LAYOUT.withName("extent"),
         ValueLayout.JAVA_INT.withName("layer")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
     public static final PathElement PATH$extent = PathElement.groupElement("PATH$extent");

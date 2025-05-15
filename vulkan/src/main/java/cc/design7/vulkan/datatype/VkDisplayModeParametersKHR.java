@@ -36,7 +36,7 @@ public record VkDisplayModeParametersKHR(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDisplayModeParametersKHR[] ret = new VkDisplayModeParametersKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDisplayModeParametersKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDisplayModeParametersKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkDisplayModeParametersKHR(@NotNull MemorySegment segment) impleme
         VkExtent2D.LAYOUT.withName("visibleRegion"),
         ValueLayout.JAVA_INT.withName("refreshRate")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$visibleRegion = PathElement.groupElement("PATH$visibleRegion");
     public static final PathElement PATH$refreshRate = PathElement.groupElement("PATH$refreshRate");

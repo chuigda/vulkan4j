@@ -40,7 +40,7 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoCapabilitiesKHR[] ret = new VkVideoCapabilitiesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoCapabilitiesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoCapabilitiesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -72,7 +72,7 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         ValueLayout.JAVA_INT.withName("maxActiveReferencePictures"),
         VkExtensionProperties.LAYOUT.withName("stdHeaderVersion")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

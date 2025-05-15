@@ -40,7 +40,7 @@ public record VkPhysicalDevice4444FormatsFeaturesEXT(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDevice4444FormatsFeaturesEXT[] ret = new VkPhysicalDevice4444FormatsFeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDevice4444FormatsFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDevice4444FormatsFeaturesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDevice4444FormatsFeaturesEXT(@NotNull MemorySegment segm
         ValueLayout.JAVA_INT.withName("formatA4R4G4B4"),
         ValueLayout.JAVA_INT.withName("formatA4B4G4R4")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

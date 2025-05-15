@@ -40,7 +40,7 @@ public record VkPhysicalDeviceRayTracingPropertiesNV(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceRayTracingPropertiesNV[] ret = new VkPhysicalDeviceRayTracingPropertiesNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceRayTracingPropertiesNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceRayTracingPropertiesNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -71,7 +71,7 @@ public record VkPhysicalDeviceRayTracingPropertiesNV(@NotNull MemorySegment segm
         ValueLayout.JAVA_LONG.withName("maxTriangleCount"),
         ValueLayout.JAVA_INT.withName("maxDescriptorSetAccelerationStructures")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

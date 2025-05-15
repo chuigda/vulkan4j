@@ -35,7 +35,7 @@ public record StdVideoEncodeAV1OperatingPointInfoFlags(@NotNull MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeAV1OperatingPointInfoFlags[] ret = new StdVideoEncodeAV1OperatingPointInfoFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeAV1OperatingPointInfoFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeAV1OperatingPointInfoFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoEncodeAV1OperatingPointInfoFlags(@NotNull MemorySegment se
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$decoder_model_present_for_this_op_reserved")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$decoder_model_present_for_this_op_reserved = PathElement.groupElement("PATH$bitfield$decoder_model_present_for_this_op_reserved");
 

@@ -36,7 +36,7 @@ public record VkOffset3D(@NotNull MemorySegment segment) implements IPointer {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkOffset3D[] ret = new VkOffset3D[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkOffset3D(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkOffset3D(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkOffset3D(@NotNull MemorySegment segment) implements IPointer {
         ValueLayout.JAVA_INT.withName("y"),
         ValueLayout.JAVA_INT.withName("z")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$x = PathElement.groupElement("PATH$x");
     public static final PathElement PATH$y = PathElement.groupElement("PATH$y");

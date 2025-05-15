@@ -40,7 +40,7 @@ public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkFramebufferMixedSamplesCombinationNV[] ret = new VkFramebufferMixedSamplesCombinationNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkFramebufferMixedSamplesCombinationNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkFramebufferMixedSamplesCombinationNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segm
         ValueLayout.JAVA_INT.withName("depthStencilSamples"),
         ValueLayout.JAVA_INT.withName("colorSamples")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

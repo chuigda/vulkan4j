@@ -35,7 +35,7 @@ public record StdVideoEncodeH264SliceHeaderFlags(@NotNull MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeH264SliceHeaderFlags[] ret = new StdVideoEncodeH264SliceHeaderFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeH264SliceHeaderFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeH264SliceHeaderFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoEncodeH264SliceHeaderFlags(@NotNull MemorySegment segment)
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$direct_spatial_mv_pred_flag_reserved")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$direct_spatial_mv_pred_flag_reserved = PathElement.groupElement("PATH$bitfield$direct_spatial_mv_pred_flag_reserved");
 

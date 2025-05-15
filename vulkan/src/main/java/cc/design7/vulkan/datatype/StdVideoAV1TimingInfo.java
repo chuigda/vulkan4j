@@ -34,7 +34,7 @@ public record StdVideoAV1TimingInfo(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoAV1TimingInfo[] ret = new StdVideoAV1TimingInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1TimingInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoAV1TimingInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record StdVideoAV1TimingInfo(@NotNull MemorySegment segment) implements I
         ValueLayout.JAVA_INT.withName("time_scale"),
         ValueLayout.JAVA_INT.withName("num_ticks_per_picture_minus_1")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$num_units_in_display_tick = PathElement.groupElement("PATH$num_units_in_display_tick");

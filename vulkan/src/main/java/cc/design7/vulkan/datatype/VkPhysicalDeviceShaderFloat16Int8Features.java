@@ -40,7 +40,7 @@ public record VkPhysicalDeviceShaderFloat16Int8Features(@NotNull MemorySegment s
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderFloat16Int8Features[] ret = new VkPhysicalDeviceShaderFloat16Int8Features[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceShaderFloat16Int8Features(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceShaderFloat16Int8Features(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDeviceShaderFloat16Int8Features(@NotNull MemorySegment s
         ValueLayout.JAVA_INT.withName("shaderFloat16"),
         ValueLayout.JAVA_INT.withName("shaderInt8")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

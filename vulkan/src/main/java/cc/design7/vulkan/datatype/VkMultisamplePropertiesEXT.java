@@ -40,7 +40,7 @@ public record VkMultisamplePropertiesEXT(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMultisamplePropertiesEXT[] ret = new VkMultisamplePropertiesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMultisamplePropertiesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMultisamplePropertiesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkMultisamplePropertiesEXT(@NotNull MemorySegment segment) impleme
         ValueLayout.ADDRESS.withName("pNext"),
         VkExtent2D.LAYOUT.withName("maxSampleLocationGridSize")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

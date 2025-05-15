@@ -40,7 +40,7 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRefreshObjectListKHR[] ret = new VkRefreshObjectListKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkRefreshObjectListKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkRefreshObjectListKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         ValueLayout.JAVA_INT.withName("objectCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkRefreshObjectKHR.LAYOUT).withName("pObjects")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

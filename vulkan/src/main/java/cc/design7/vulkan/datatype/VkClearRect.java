@@ -36,7 +36,7 @@ public record VkClearRect(@NotNull MemorySegment segment) implements IPointer {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkClearRect[] ret = new VkClearRect[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkClearRect(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkClearRect(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkClearRect(@NotNull MemorySegment segment) implements IPointer {
         ValueLayout.JAVA_INT.withName("baseArrayLayer"),
         ValueLayout.JAVA_INT.withName("layerCount")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$rect = PathElement.groupElement("PATH$rect");
     public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("PATH$baseArrayLayer");

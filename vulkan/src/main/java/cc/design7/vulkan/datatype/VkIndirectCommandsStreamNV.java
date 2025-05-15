@@ -36,7 +36,7 @@ public record VkIndirectCommandsStreamNV(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkIndirectCommandsStreamNV[] ret = new VkIndirectCommandsStreamNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkIndirectCommandsStreamNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkIndirectCommandsStreamNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkIndirectCommandsStreamNV(@NotNull MemorySegment segment) impleme
         ValueLayout.ADDRESS.withName("buffer"),
         ValueLayout.JAVA_LONG.withName("offset")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$buffer = PathElement.groupElement("PATH$buffer");
     public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");

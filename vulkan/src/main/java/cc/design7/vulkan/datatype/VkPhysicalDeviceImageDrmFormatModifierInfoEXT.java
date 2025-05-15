@@ -40,7 +40,7 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceImageDrmFormatModifierInfoEXT[] ret = new VkPhysicalDeviceImageDrmFormatModifierInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
         ValueLayout.JAVA_INT.withName("queueFamilyIndexCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pQueueFamilyIndices")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

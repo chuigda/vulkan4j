@@ -40,7 +40,7 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoBeginCodingInfoKHR[] ret = new VkVideoBeginCodingInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoBeginCodingInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoBeginCodingInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -68,7 +68,7 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         ValueLayout.JAVA_INT.withName("referenceSlotCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkVideoReferenceSlotInfoKHR.LAYOUT).withName("pReferenceSlots")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

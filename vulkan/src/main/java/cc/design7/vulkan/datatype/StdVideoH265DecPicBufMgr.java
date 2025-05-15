@@ -34,7 +34,7 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH265DecPicBufMgr[] ret = new StdVideoH265DecPicBufMgr[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH265DecPicBufMgr(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH265DecPicBufMgr(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -58,7 +58,7 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
         ValueLayout.JAVA_BYTE.withName("max_dec_pic_buffering_minus1"),
         ValueLayout.JAVA_BYTE.withName("max_num_reorder_pics")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$max_latency_increase_plus1 = PathElement.groupElement("PATH$max_latency_increase_plus1");
     public static final PathElement PATH$max_dec_pic_buffering_minus1 = PathElement.groupElement("PATH$max_dec_pic_buffering_minus1");

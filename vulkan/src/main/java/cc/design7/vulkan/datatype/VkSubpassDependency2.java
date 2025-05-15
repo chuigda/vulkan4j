@@ -40,7 +40,7 @@ public record VkSubpassDependency2(@NotNull MemorySegment segment) implements IP
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSubpassDependency2[] ret = new VkSubpassDependency2[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSubpassDependency2(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSubpassDependency2(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -71,7 +71,7 @@ public record VkSubpassDependency2(@NotNull MemorySegment segment) implements IP
         ValueLayout.JAVA_INT.withName("dependencyFlags"),
         ValueLayout.JAVA_INT.withName("viewOffset")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

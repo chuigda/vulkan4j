@@ -40,7 +40,7 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IP
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkInstanceCreateInfo[] ret = new VkInstanceCreateInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkInstanceCreateInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkInstanceCreateInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -69,7 +69,7 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IP
         ValueLayout.JAVA_INT.withName("enabledExtensionCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)).withName("ppEnabledExtensionNames")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

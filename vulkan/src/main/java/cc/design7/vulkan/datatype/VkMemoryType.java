@@ -36,7 +36,7 @@ public record VkMemoryType(@NotNull MemorySegment segment) implements IPointer {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMemoryType[] ret = new VkMemoryType[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMemoryType(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMemoryType(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkMemoryType(@NotNull MemorySegment segment) implements IPointer {
         ValueLayout.JAVA_INT.withName("propertyFlags"),
         ValueLayout.JAVA_INT.withName("heapIndex")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$propertyFlags = PathElement.groupElement("PATH$propertyFlags");
     public static final PathElement PATH$heapIndex = PathElement.groupElement("PATH$heapIndex");

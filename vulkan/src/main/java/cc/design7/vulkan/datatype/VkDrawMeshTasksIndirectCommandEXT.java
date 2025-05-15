@@ -36,7 +36,7 @@ public record VkDrawMeshTasksIndirectCommandEXT(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDrawMeshTasksIndirectCommandEXT[] ret = new VkDrawMeshTasksIndirectCommandEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDrawMeshTasksIndirectCommandEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDrawMeshTasksIndirectCommandEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkDrawMeshTasksIndirectCommandEXT(@NotNull MemorySegment segment) 
         ValueLayout.JAVA_INT.withName("groupCountY"),
         ValueLayout.JAVA_INT.withName("groupCountZ")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$groupCountX = PathElement.groupElement("PATH$groupCountX");
     public static final PathElement PATH$groupCountY = PathElement.groupElement("PATH$groupCountY");

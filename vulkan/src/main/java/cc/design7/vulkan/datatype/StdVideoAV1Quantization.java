@@ -34,7 +34,7 @@ public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoAV1Quantization[] ret = new StdVideoAV1Quantization[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1Quantization(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoAV1Quantization(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements
         ValueLayout.JAVA_BYTE.withName("qm_u"),
         ValueLayout.JAVA_BYTE.withName("qm_v")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$base_q_idx = PathElement.groupElement("PATH$base_q_idx");

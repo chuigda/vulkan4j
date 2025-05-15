@@ -36,7 +36,7 @@ public record VkDispatchGraphCountInfoAMDX(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDispatchGraphCountInfoAMDX[] ret = new VkDispatchGraphCountInfoAMDX[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDispatchGraphCountInfoAMDX(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDispatchGraphCountInfoAMDX(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkDispatchGraphCountInfoAMDX(@NotNull MemorySegment segment) imple
         VkDeviceOrHostAddressConstAMDX.LAYOUT.withName("infos"),
         ValueLayout.JAVA_LONG.withName("stride")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$count = PathElement.groupElement("PATH$count");
     public static final PathElement PATH$infos = PathElement.groupElement("PATH$infos");

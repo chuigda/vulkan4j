@@ -36,7 +36,7 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IPoin
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBaseInStructure[] ret = new VkBaseInStructure[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBaseInStructure(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkBaseInStructure(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IPoin
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withTargetLayout(VkBaseInStructure.LAYOUT).withName("pNext")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

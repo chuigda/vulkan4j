@@ -36,7 +36,7 @@ public record VkVertexInputBindingDivisorDescription(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVertexInputBindingDivisorDescription[] ret = new VkVertexInputBindingDivisorDescription[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVertexInputBindingDivisorDescription(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVertexInputBindingDivisorDescription(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkVertexInputBindingDivisorDescription(@NotNull MemorySegment segm
         ValueLayout.JAVA_INT.withName("binding"),
         ValueLayout.JAVA_INT.withName("divisor")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$binding = PathElement.groupElement("PATH$binding");
     public static final PathElement PATH$divisor = PathElement.groupElement("PATH$divisor");

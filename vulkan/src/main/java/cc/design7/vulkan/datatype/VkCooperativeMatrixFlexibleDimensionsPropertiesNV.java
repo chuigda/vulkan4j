@@ -40,7 +40,7 @@ public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemoryS
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCooperativeMatrixFlexibleDimensionsPropertiesNV[] ret = new VkCooperativeMatrixFlexibleDimensionsPropertiesNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkCooperativeMatrixFlexibleDimensionsPropertiesNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkCooperativeMatrixFlexibleDimensionsPropertiesNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -73,7 +73,7 @@ public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemoryS
         ValueLayout.JAVA_INT.withName("scope"),
         ValueLayout.JAVA_INT.withName("workgroupInvocations")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

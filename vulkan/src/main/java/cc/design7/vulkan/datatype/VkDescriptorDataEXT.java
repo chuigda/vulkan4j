@@ -36,7 +36,7 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDescriptorDataEXT[] ret = new VkDescriptorDataEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDescriptorDataEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDescriptorDataEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
         ValueLayout.ADDRESS.withTargetLayout(VkDescriptorAddressInfoEXT.LAYOUT).withName("pStorageBuffer"),
         ValueLayout.JAVA_LONG.withName("accelerationStructure")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$pSampler = PathElement.groupElement("PATH$pSampler");
     public static final PathElement PATH$pCombinedImageSampler = PathElement.groupElement("PATH$pCombinedImageSampler");

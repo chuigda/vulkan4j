@@ -40,7 +40,7 @@ public record VkMemoryBarrierAccessFlags3KHR(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMemoryBarrierAccessFlags3KHR[] ret = new VkMemoryBarrierAccessFlags3KHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMemoryBarrierAccessFlags3KHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMemoryBarrierAccessFlags3KHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkMemoryBarrierAccessFlags3KHR(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_LONG.withName("srcAccessMask3"),
         ValueLayout.JAVA_LONG.withName("dstAccessMask3")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

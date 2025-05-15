@@ -40,7 +40,7 @@ public record VkVideoFormatPropertiesKHR(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoFormatPropertiesKHR[] ret = new VkVideoFormatPropertiesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoFormatPropertiesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoFormatPropertiesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -69,7 +69,7 @@ public record VkVideoFormatPropertiesKHR(@NotNull MemorySegment segment) impleme
         ValueLayout.JAVA_INT.withName("imageTiling"),
         ValueLayout.JAVA_INT.withName("imageUsageFlags")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

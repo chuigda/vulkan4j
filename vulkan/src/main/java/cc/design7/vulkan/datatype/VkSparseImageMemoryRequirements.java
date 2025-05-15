@@ -36,7 +36,7 @@ public record VkSparseImageMemoryRequirements(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSparseImageMemoryRequirements[] ret = new VkSparseImageMemoryRequirements[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSparseImageMemoryRequirements(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSparseImageMemoryRequirements(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record VkSparseImageMemoryRequirements(@NotNull MemorySegment segment) im
         ValueLayout.JAVA_LONG.withName("imageMipTailOffset"),
         ValueLayout.JAVA_LONG.withName("imageMipTailStride")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$formatProperties = PathElement.groupElement("PATH$formatProperties");
     public static final PathElement PATH$imageMipTailFirstLod = PathElement.groupElement("PATH$imageMipTailFirstLod");

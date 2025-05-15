@@ -36,7 +36,7 @@ public record VkDrawIndirectCountIndirectCommandEXT(@NotNull MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDrawIndirectCountIndirectCommandEXT[] ret = new VkDrawIndirectCountIndirectCommandEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDrawIndirectCountIndirectCommandEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDrawIndirectCountIndirectCommandEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkDrawIndirectCountIndirectCommandEXT(@NotNull MemorySegment segme
         ValueLayout.JAVA_INT.withName("stride"),
         ValueLayout.JAVA_INT.withName("commandCount")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bufferAddress = PathElement.groupElement("PATH$bufferAddress");
     public static final PathElement PATH$stride = PathElement.groupElement("PATH$stride");

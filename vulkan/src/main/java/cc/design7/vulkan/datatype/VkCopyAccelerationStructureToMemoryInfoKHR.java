@@ -40,7 +40,7 @@ public record VkCopyAccelerationStructureToMemoryInfoKHR(@NotNull MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCopyAccelerationStructureToMemoryInfoKHR[] ret = new VkCopyAccelerationStructureToMemoryInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkCopyAccelerationStructureToMemoryInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkCopyAccelerationStructureToMemoryInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkCopyAccelerationStructureToMemoryInfoKHR(@NotNull MemorySegment 
         VkDeviceOrHostAddressKHR.LAYOUT.withName("dst"),
         ValueLayout.JAVA_INT.withName("mode")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

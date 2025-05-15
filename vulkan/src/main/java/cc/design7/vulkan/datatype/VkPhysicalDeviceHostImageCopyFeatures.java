@@ -40,7 +40,7 @@ public record VkPhysicalDeviceHostImageCopyFeatures(@NotNull MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceHostImageCopyFeatures[] ret = new VkPhysicalDeviceHostImageCopyFeatures[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceHostImageCopyFeatures(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceHostImageCopyFeatures(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkPhysicalDeviceHostImageCopyFeatures(@NotNull MemorySegment segme
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("hostImageCopy")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

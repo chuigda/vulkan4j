@@ -34,7 +34,7 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeH265LongTermRefPics[] ret = new StdVideoEncodeH265LongTermRefPics[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeH265LongTermRefPics(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeH265LongTermRefPics(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         ValueLayout.JAVA_BYTE.withName("delta_poc_msb_present_flag"),
         ValueLayout.JAVA_BYTE.withName("delta_poc_msb_cycle_lt")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$num_long_term_sps = PathElement.groupElement("PATH$num_long_term_sps");
     public static final PathElement PATH$num_long_term_pics = PathElement.groupElement("PATH$num_long_term_pics");

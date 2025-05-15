@@ -36,7 +36,7 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkShadingRatePaletteNV[] ret = new VkShadingRatePaletteNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkShadingRatePaletteNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkShadingRatePaletteNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
         ValueLayout.JAVA_INT.withName("shadingRatePaletteEntryCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pShadingRatePaletteEntries")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$shadingRatePaletteEntryCount = PathElement.groupElement("PATH$shadingRatePaletteEntryCount");
     public static final PathElement PATH$pShadingRatePaletteEntries = PathElement.groupElement("PATH$pShadingRatePaletteEntries");
@@ -67,8 +67,8 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
     public static final OfInt LAYOUT$shadingRatePaletteEntryCount = (OfInt) LAYOUT.select(PATH$shadingRatePaletteEntryCount);
     public static final AddressLayout LAYOUT$pShadingRatePaletteEntries = (AddressLayout) LAYOUT.select(PATH$pShadingRatePaletteEntries);
 
-    public static final long SIZE$shadingRatePaletteEntryCount = LAYOUT$shadingRatePaletteEntryCount.byteSize();
-    public static final long SIZE$pShadingRatePaletteEntries = LAYOUT$pShadingRatePaletteEntries.byteSize();
+    public static final long BYTESIZE$shadingRatePaletteEntryCount = LAYOUT$shadingRatePaletteEntryCount.byteSize();
+    public static final long BYTESIZE$pShadingRatePaletteEntries = LAYOUT$pShadingRatePaletteEntries.byteSize();
 
     public static final long OFFSET$shadingRatePaletteEntryCount = LAYOUT.byteOffset(PATH$shadingRatePaletteEntryCount);
     public static final long OFFSET$pShadingRatePaletteEntries = LAYOUT.byteOffset(PATH$pShadingRatePaletteEntries);
@@ -91,7 +91,7 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
-    /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
+    /// and use {@link IntPtr#reinterpret} to set the size before actually reading from
     /// or writing to the buffer.
     public @Nullable @enumtype(VkShadingRatePaletteEntryNV.class) IntPtr pShadingRatePaletteEntries() {
         MemorySegment s = pShadingRatePaletteEntriesRaw();

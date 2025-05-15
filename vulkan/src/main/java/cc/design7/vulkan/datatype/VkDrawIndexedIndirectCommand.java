@@ -36,7 +36,7 @@ public record VkDrawIndexedIndirectCommand(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDrawIndexedIndirectCommand[] ret = new VkDrawIndexedIndirectCommand[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDrawIndexedIndirectCommand(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDrawIndexedIndirectCommand(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record VkDrawIndexedIndirectCommand(@NotNull MemorySegment segment) imple
         ValueLayout.JAVA_INT.withName("vertexOffset"),
         ValueLayout.JAVA_INT.withName("firstInstance")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$indexCount = PathElement.groupElement("PATH$indexCount");
     public static final PathElement PATH$instanceCount = PathElement.groupElement("PATH$instanceCount");

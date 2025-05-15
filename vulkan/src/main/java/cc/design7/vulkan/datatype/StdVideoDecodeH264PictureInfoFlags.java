@@ -35,7 +35,7 @@ public record StdVideoDecodeH264PictureInfoFlags(@NotNull MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoDecodeH264PictureInfoFlags[] ret = new StdVideoDecodeH264PictureInfoFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoDecodeH264PictureInfoFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoDecodeH264PictureInfoFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoDecodeH264PictureInfoFlags(@NotNull MemorySegment segment)
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$field_pic_flag_complementary_field_pair")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$field_pic_flag_complementary_field_pair = PathElement.groupElement("PATH$bitfield$field_pic_flag_complementary_field_pair");
 

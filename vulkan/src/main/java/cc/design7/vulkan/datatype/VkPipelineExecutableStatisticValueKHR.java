@@ -36,7 +36,7 @@ public record VkPipelineExecutableStatisticValueKHR(@NotNull MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineExecutableStatisticValueKHR[] ret = new VkPipelineExecutableStatisticValueKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineExecutableStatisticValueKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineExecutableStatisticValueKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record VkPipelineExecutableStatisticValueKHR(@NotNull MemorySegment segme
         ValueLayout.JAVA_LONG.withName("u64"),
         ValueLayout.JAVA_DOUBLE.withName("f64")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$b32 = PathElement.groupElement("PATH$b32");
     public static final PathElement PATH$i64 = PathElement.groupElement("PATH$i64");

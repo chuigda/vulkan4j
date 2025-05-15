@@ -36,7 +36,7 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPartitionedAccelerationStructureWriteInstanceDataNV[] ret = new VkPartitionedAccelerationStructureWriteInstanceDataNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPartitionedAccelerationStructureWriteInstanceDataNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPartitionedAccelerationStructureWriteInstanceDataNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         ValueLayout.JAVA_INT.withName("partitionIndex"),
         ValueLayout.JAVA_LONG.withName("accelerationStructure")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$transform = PathElement.groupElement("PATH$transform");
     public static final PathElement PATH$explicitAABB = PathElement.groupElement("PATH$explicitAABB");

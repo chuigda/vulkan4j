@@ -40,7 +40,7 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(@NotNull MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderCoreProperties2AMD[] ret = new VkPhysicalDeviceShaderCoreProperties2AMD[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceShaderCoreProperties2AMD(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceShaderCoreProperties2AMD(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(@NotNull MemorySegment se
         ValueLayout.JAVA_INT.withName("shaderCoreFeatures"),
         ValueLayout.JAVA_INT.withName("activeComputeUnitCount")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -36,7 +36,7 @@ public record VkShaderResourceUsageAMD(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkShaderResourceUsageAMD[] ret = new VkShaderResourceUsageAMD[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkShaderResourceUsageAMD(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkShaderResourceUsageAMD(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record VkShaderResourceUsageAMD(@NotNull MemorySegment segment) implement
         NativeLayout.C_SIZE_T.withName("ldsUsageSizeInBytes"),
         NativeLayout.C_SIZE_T.withName("scratchMemUsageInBytes")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$numUsedVgprs = PathElement.groupElement("PATH$numUsedVgprs");
     public static final PathElement PATH$numUsedSgprs = PathElement.groupElement("PATH$numUsedSgprs");

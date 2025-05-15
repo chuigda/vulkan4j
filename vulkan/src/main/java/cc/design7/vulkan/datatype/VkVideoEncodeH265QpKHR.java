@@ -36,7 +36,7 @@ public record VkVideoEncodeH265QpKHR(@NotNull MemorySegment segment) implements 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoEncodeH265QpKHR[] ret = new VkVideoEncodeH265QpKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeH265QpKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoEncodeH265QpKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkVideoEncodeH265QpKHR(@NotNull MemorySegment segment) implements 
         ValueLayout.JAVA_INT.withName("qpP"),
         ValueLayout.JAVA_INT.withName("qpB")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$qpI = PathElement.groupElement("PATH$qpI");
     public static final PathElement PATH$qpP = PathElement.groupElement("PATH$qpP");

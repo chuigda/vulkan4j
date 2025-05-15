@@ -40,7 +40,7 @@ public record VkVideoEncodeAV1QualityLevelPropertiesKHR(@NotNull MemorySegment s
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoEncodeAV1QualityLevelPropertiesKHR[] ret = new VkVideoEncodeAV1QualityLevelPropertiesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeAV1QualityLevelPropertiesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoEncodeAV1QualityLevelPropertiesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -78,7 +78,7 @@ public record VkVideoEncodeAV1QualityLevelPropertiesKHR(@NotNull MemorySegment s
         ValueLayout.JAVA_INT.withName("preferredMaxBidirectionalCompoundGroup2ReferenceCount"),
         ValueLayout.JAVA_INT.withName("preferredBidirectionalCompoundReferenceNameMask")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

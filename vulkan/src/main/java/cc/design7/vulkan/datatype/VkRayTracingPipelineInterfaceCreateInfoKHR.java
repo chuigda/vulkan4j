@@ -40,7 +40,7 @@ public record VkRayTracingPipelineInterfaceCreateInfoKHR(@NotNull MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRayTracingPipelineInterfaceCreateInfoKHR[] ret = new VkRayTracingPipelineInterfaceCreateInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkRayTracingPipelineInterfaceCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkRayTracingPipelineInterfaceCreateInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkRayTracingPipelineInterfaceCreateInfoKHR(@NotNull MemorySegment 
         ValueLayout.JAVA_INT.withName("maxPipelineRayPayloadSize"),
         ValueLayout.JAVA_INT.withName("maxPipelineRayHitAttributeSize")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

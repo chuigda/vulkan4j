@@ -40,7 +40,7 @@ public record VkIndirectExecutionSetPipelineInfoEXT(@NotNull MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkIndirectExecutionSetPipelineInfoEXT[] ret = new VkIndirectExecutionSetPipelineInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkIndirectExecutionSetPipelineInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkIndirectExecutionSetPipelineInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkIndirectExecutionSetPipelineInfoEXT(@NotNull MemorySegment segme
         ValueLayout.ADDRESS.withName("initialPipeline"),
         ValueLayout.JAVA_INT.withName("maxPipelineCount")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

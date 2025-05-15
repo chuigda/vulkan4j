@@ -40,7 +40,7 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(@NotNull MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT[] ret = new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(@NotNull MemorySegment 
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("formatRgba10x6WithoutYCbCrSampler")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

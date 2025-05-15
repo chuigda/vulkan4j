@@ -40,7 +40,7 @@ public record VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(@NotNull Mem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX[] ret = new VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(@NotNull Mem
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("screenBufferImport")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

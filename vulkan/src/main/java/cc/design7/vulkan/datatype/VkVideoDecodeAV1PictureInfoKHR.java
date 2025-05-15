@@ -40,7 +40,7 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoDecodeAV1PictureInfoKHR[] ret = new VkVideoDecodeAV1PictureInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoDecodeAV1PictureInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoDecodeAV1PictureInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -69,7 +69,7 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pTileOffsets"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pTileSizes")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

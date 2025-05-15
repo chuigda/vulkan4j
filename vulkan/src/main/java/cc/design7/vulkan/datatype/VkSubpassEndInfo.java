@@ -40,7 +40,7 @@ public record VkSubpassEndInfo(@NotNull MemorySegment segment) implements IPoint
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSubpassEndInfo[] ret = new VkSubpassEndInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSubpassEndInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSubpassEndInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -63,7 +63,7 @@ public record VkSubpassEndInfo(@NotNull MemorySegment segment) implements IPoint
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

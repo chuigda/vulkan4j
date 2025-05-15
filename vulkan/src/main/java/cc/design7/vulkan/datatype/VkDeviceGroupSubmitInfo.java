@@ -40,7 +40,7 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceGroupSubmitInfo[] ret = new VkDeviceGroupSubmitInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDeviceGroupSubmitInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDeviceGroupSubmitInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -69,7 +69,7 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         ValueLayout.JAVA_INT.withName("signalSemaphoreCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pSignalSemaphoreDeviceIndices")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -40,7 +40,7 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPresentTimesInfoGOOGLE[] ret = new VkPresentTimesInfoGOOGLE[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPresentTimesInfoGOOGLE(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPresentTimesInfoGOOGLE(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         ValueLayout.JAVA_INT.withName("swapchainCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkPresentTimeGOOGLE.LAYOUT).withName("pTimes")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

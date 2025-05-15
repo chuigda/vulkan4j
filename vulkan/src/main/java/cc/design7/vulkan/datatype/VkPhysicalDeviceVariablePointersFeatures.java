@@ -40,7 +40,7 @@ public record VkPhysicalDeviceVariablePointersFeatures(@NotNull MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceVariablePointersFeatures[] ret = new VkPhysicalDeviceVariablePointersFeatures[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceVariablePointersFeatures(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceVariablePointersFeatures(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDeviceVariablePointersFeatures(@NotNull MemorySegment se
         ValueLayout.JAVA_INT.withName("variablePointersStorageBuffer"),
         ValueLayout.JAVA_INT.withName("variablePointers")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

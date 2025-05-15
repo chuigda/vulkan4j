@@ -36,7 +36,7 @@ public record VkExtensionProperties(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExtensionProperties[] ret = new VkExtensionProperties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkExtensionProperties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkExtensionProperties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkExtensionProperties(@NotNull MemorySegment segment) implements I
         ValueLayout.JAVA_BYTE.withName("extensionName"),
         ValueLayout.JAVA_INT.withName("specVersion")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$extensionName = PathElement.groupElement("PATH$extensionName");
     public static final PathElement PATH$specVersion = PathElement.groupElement("PATH$specVersion");

@@ -40,7 +40,7 @@ public record VkRenderPassAttachmentBeginInfo(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRenderPassAttachmentBeginInfo[] ret = new VkRenderPassAttachmentBeginInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkRenderPassAttachmentBeginInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkRenderPassAttachmentBeginInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkRenderPassAttachmentBeginInfo(@NotNull MemorySegment segment) im
         ValueLayout.JAVA_INT.withName("attachmentCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pAttachments")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

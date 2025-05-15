@@ -40,7 +40,7 @@ public record VkPhysicalDevicePCIBusInfoPropertiesEXT(@NotNull MemorySegment seg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDevicePCIBusInfoPropertiesEXT[] ret = new VkPhysicalDevicePCIBusInfoPropertiesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDevicePCIBusInfoPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDevicePCIBusInfoPropertiesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkPhysicalDevicePCIBusInfoPropertiesEXT(@NotNull MemorySegment seg
         ValueLayout.JAVA_INT.withName("pciDevice"),
         ValueLayout.JAVA_INT.withName("pciFunction")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -40,7 +40,7 @@ public record VkVideoEncodeInfoKHR(@NotNull MemorySegment segment) implements IP
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoEncodeInfoKHR[] ret = new VkVideoEncodeInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoEncodeInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -72,7 +72,7 @@ public record VkVideoEncodeInfoKHR(@NotNull MemorySegment segment) implements IP
         ValueLayout.ADDRESS.withTargetLayout(VkVideoReferenceSlotInfoKHR.LAYOUT).withName("pReferenceSlots"),
         ValueLayout.JAVA_INT.withName("precedingExternallyEncodedBytes")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

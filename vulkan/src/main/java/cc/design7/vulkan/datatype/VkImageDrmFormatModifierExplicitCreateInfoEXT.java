@@ -40,7 +40,7 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(@NotNull MemorySegme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageDrmFormatModifierExplicitCreateInfoEXT[] ret = new VkImageDrmFormatModifierExplicitCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkImageDrmFormatModifierExplicitCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkImageDrmFormatModifierExplicitCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(@NotNull MemorySegme
         ValueLayout.JAVA_INT.withName("drmFormatModifierPlaneCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkSubresourceLayout.LAYOUT).withName("pPlaneLayouts")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

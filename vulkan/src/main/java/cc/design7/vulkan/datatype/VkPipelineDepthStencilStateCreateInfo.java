@@ -40,7 +40,7 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineDepthStencilStateCreateInfo[] ret = new VkPipelineDepthStencilStateCreateInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineDepthStencilStateCreateInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineDepthStencilStateCreateInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -73,7 +73,7 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         ValueLayout.JAVA_FLOAT.withName("minDepthBounds"),
         ValueLayout.JAVA_FLOAT.withName("maxDepthBounds")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

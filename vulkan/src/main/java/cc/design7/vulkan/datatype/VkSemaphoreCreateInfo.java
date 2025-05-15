@@ -40,7 +40,7 @@ public record VkSemaphoreCreateInfo(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSemaphoreCreateInfo[] ret = new VkSemaphoreCreateInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSemaphoreCreateInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSemaphoreCreateInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkSemaphoreCreateInfo(@NotNull MemorySegment segment) implements I
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

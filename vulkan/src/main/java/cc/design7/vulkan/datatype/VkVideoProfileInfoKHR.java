@@ -40,7 +40,7 @@ public record VkVideoProfileInfoKHR(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoProfileInfoKHR[] ret = new VkVideoProfileInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoProfileInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoProfileInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkVideoProfileInfoKHR(@NotNull MemorySegment segment) implements I
         ValueLayout.JAVA_INT.withName("lumaBitDepth"),
         ValueLayout.JAVA_INT.withName("chromaBitDepth")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

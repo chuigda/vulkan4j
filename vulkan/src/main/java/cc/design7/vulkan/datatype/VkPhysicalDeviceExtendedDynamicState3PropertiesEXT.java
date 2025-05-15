@@ -40,7 +40,7 @@ public record VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(@NotNull Memory
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceExtendedDynamicState3PropertiesEXT[] ret = new VkPhysicalDeviceExtendedDynamicState3PropertiesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(@NotNull Memory
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("dynamicPrimitiveTopologyUnrestricted")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

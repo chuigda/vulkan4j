@@ -40,7 +40,7 @@ public record VkHostImageCopyDevicePerformanceQuery(@NotNull MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkHostImageCopyDevicePerformanceQuery[] ret = new VkHostImageCopyDevicePerformanceQuery[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkHostImageCopyDevicePerformanceQuery(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkHostImageCopyDevicePerformanceQuery(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkHostImageCopyDevicePerformanceQuery(@NotNull MemorySegment segme
         ValueLayout.JAVA_INT.withName("optimalDeviceAccess"),
         ValueLayout.JAVA_INT.withName("identicalMemoryLayout")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

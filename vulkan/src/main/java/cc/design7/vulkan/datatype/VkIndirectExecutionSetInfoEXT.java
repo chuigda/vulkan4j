@@ -36,7 +36,7 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkIndirectExecutionSetInfoEXT[] ret = new VkIndirectExecutionSetInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkIndirectExecutionSetInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkIndirectExecutionSetInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         ValueLayout.ADDRESS.withTargetLayout(VkIndirectExecutionSetPipelineInfoEXT.LAYOUT).withName("pPipelineInfo"),
         ValueLayout.ADDRESS.withTargetLayout(VkIndirectExecutionSetShaderInfoEXT.LAYOUT).withName("pShaderInfo")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$pPipelineInfo = PathElement.groupElement("PATH$pPipelineInfo");
     public static final PathElement PATH$pShaderInfo = PathElement.groupElement("PATH$pShaderInfo");

@@ -37,7 +37,7 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkClusterAccelerationStructureInstantiateClusterInfoNV[] ret = new VkClusterAccelerationStructureInstantiateClusterInfoNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkClusterAccelerationStructureInstantiateClusterInfoNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkClusterAccelerationStructureInstantiateClusterInfoNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
         ValueLayout.JAVA_LONG.withName("clusterTemplateAddress"),
         VkStridedDeviceAddressNV.LAYOUT.withName("vertexBuffer")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$clusterIdOffset = PathElement.groupElement("PATH$clusterIdOffset");
     public static final PathElement PATH$bitfield$geometryIndexOffset_reserved = PathElement.groupElement("PATH$bitfield$geometryIndexOffset_reserved");

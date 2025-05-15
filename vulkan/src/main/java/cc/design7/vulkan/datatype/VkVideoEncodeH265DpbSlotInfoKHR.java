@@ -40,7 +40,7 @@ public record VkVideoEncodeH265DpbSlotInfoKHR(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoEncodeH265DpbSlotInfoKHR[] ret = new VkVideoEncodeH265DpbSlotInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeH265DpbSlotInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoEncodeH265DpbSlotInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkVideoEncodeH265DpbSlotInfoKHR(@NotNull MemorySegment segment) im
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH265ReferenceInfo.LAYOUT).withName("pStdReferenceInfo")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

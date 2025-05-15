@@ -36,7 +36,7 @@ public record VkClearValue(@NotNull MemorySegment segment) implements IPointer {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkClearValue[] ret = new VkClearValue[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkClearValue(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkClearValue(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkClearValue(@NotNull MemorySegment segment) implements IPointer {
         VkClearColorValue.LAYOUT.withName("color"),
         VkClearDepthStencilValue.LAYOUT.withName("depthStencil")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$color = PathElement.groupElement("PATH$color");
     public static final PathElement PATH$depthStencil = PathElement.groupElement("PATH$depthStencil");

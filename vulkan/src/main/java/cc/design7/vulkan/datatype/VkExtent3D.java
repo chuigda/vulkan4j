@@ -36,7 +36,7 @@ public record VkExtent3D(@NotNull MemorySegment segment) implements IPointer {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExtent3D[] ret = new VkExtent3D[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkExtent3D(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkExtent3D(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkExtent3D(@NotNull MemorySegment segment) implements IPointer {
         ValueLayout.JAVA_INT.withName("height"),
         ValueLayout.JAVA_INT.withName("depth")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$width = PathElement.groupElement("PATH$width");
     public static final PathElement PATH$height = PathElement.groupElement("PATH$height");

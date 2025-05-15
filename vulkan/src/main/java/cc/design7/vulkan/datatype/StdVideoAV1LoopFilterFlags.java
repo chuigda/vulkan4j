@@ -35,7 +35,7 @@ public record StdVideoAV1LoopFilterFlags(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoAV1LoopFilterFlags[] ret = new StdVideoAV1LoopFilterFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1LoopFilterFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoAV1LoopFilterFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoAV1LoopFilterFlags(@NotNull MemorySegment segment) impleme
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$loop_filter_delta_enabled_reserved")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$loop_filter_delta_enabled_reserved = PathElement.groupElement("PATH$bitfield$loop_filter_delta_enabled_reserved");
 

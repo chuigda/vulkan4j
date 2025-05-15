@@ -40,7 +40,7 @@ public record VkMappedMemoryRange(@NotNull MemorySegment segment) implements IPo
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMappedMemoryRange[] ret = new VkMappedMemoryRange[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMappedMemoryRange(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMappedMemoryRange(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkMappedMemoryRange(@NotNull MemorySegment segment) implements IPo
         ValueLayout.JAVA_LONG.withName("offset"),
         ValueLayout.JAVA_LONG.withName("size")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

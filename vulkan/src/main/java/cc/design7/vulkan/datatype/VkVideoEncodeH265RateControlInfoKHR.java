@@ -40,7 +40,7 @@ public record VkVideoEncodeH265RateControlInfoKHR(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoEncodeH265RateControlInfoKHR[] ret = new VkVideoEncodeH265RateControlInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeH265RateControlInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoEncodeH265RateControlInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -68,7 +68,7 @@ public record VkVideoEncodeH265RateControlInfoKHR(@NotNull MemorySegment segment
         ValueLayout.JAVA_INT.withName("consecutiveBFrameCount"),
         ValueLayout.JAVA_INT.withName("subLayerCount")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

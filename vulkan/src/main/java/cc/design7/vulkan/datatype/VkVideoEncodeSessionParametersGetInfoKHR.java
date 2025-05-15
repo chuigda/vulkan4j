@@ -40,7 +40,7 @@ public record VkVideoEncodeSessionParametersGetInfoKHR(@NotNull MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoEncodeSessionParametersGetInfoKHR[] ret = new VkVideoEncodeSessionParametersGetInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeSessionParametersGetInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoEncodeSessionParametersGetInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkVideoEncodeSessionParametersGetInfoKHR(@NotNull MemorySegment se
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withName("videoSessionParameters")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

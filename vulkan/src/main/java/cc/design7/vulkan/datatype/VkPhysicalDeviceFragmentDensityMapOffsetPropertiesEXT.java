@@ -40,7 +40,7 @@ public record VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT(@NotNull Mem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT[] ret = new VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT(@NotNull Mem
         ValueLayout.ADDRESS.withName("pNext"),
         VkExtent2D.LAYOUT.withName("fragmentDensityOffsetGranularity")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

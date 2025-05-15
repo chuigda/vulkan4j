@@ -36,7 +36,7 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IPoin
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkLayerSettingEXT[] ret = new VkLayerSettingEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkLayerSettingEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkLayerSettingEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IPoin
         ValueLayout.JAVA_INT.withName("valueCount"),
         ValueLayout.ADDRESS.withName("pValues")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$pLayerName = PathElement.groupElement("PATH$pLayerName");
     public static final PathElement PATH$pSettingName = PathElement.groupElement("PATH$pSettingName");

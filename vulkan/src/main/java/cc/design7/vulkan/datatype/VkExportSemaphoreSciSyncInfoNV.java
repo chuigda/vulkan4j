@@ -40,7 +40,7 @@ public record VkExportSemaphoreSciSyncInfoNV(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkExportSemaphoreSciSyncInfoNV[] ret = new VkExportSemaphoreSciSyncInfoNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkExportSemaphoreSciSyncInfoNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkExportSemaphoreSciSyncInfoNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkExportSemaphoreSciSyncInfoNV(@NotNull MemorySegment segment) imp
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withName("pAttributes")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

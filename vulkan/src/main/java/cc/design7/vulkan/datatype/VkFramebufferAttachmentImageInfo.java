@@ -40,7 +40,7 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkFramebufferAttachmentImageInfo[] ret = new VkFramebufferAttachmentImageInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkFramebufferAttachmentImageInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkFramebufferAttachmentImageInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -70,7 +70,7 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         ValueLayout.JAVA_INT.withName("viewFormatCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pViewFormats")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -36,7 +36,7 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCoarseSampleOrderCustomNV[] ret = new VkCoarseSampleOrderCustomNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkCoarseSampleOrderCustomNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkCoarseSampleOrderCustomNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         ValueLayout.JAVA_INT.withName("sampleLocationCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkCoarseSampleLocationNV.LAYOUT).withName("pSampleLocations")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$shadingRate = PathElement.groupElement("PATH$shadingRate");
     public static final PathElement PATH$sampleCount = PathElement.groupElement("PATH$sampleCount");

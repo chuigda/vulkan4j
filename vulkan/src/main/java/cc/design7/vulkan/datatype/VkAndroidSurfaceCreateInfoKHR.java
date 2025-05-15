@@ -40,7 +40,7 @@ public record VkAndroidSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAndroidSurfaceCreateInfoKHR[] ret = new VkAndroidSurfaceCreateInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkAndroidSurfaceCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkAndroidSurfaceCreateInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkAndroidSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("window")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

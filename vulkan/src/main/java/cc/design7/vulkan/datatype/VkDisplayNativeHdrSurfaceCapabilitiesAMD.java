@@ -40,7 +40,7 @@ public record VkDisplayNativeHdrSurfaceCapabilitiesAMD(@NotNull MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDisplayNativeHdrSurfaceCapabilitiesAMD[] ret = new VkDisplayNativeHdrSurfaceCapabilitiesAMD[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDisplayNativeHdrSurfaceCapabilitiesAMD(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDisplayNativeHdrSurfaceCapabilitiesAMD(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkDisplayNativeHdrSurfaceCapabilitiesAMD(@NotNull MemorySegment se
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("localDimmingSupport")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

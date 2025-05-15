@@ -36,7 +36,7 @@ public record VkAccelerationStructureMotionInstanceDataNV(@NotNull MemorySegment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureMotionInstanceDataNV[] ret = new VkAccelerationStructureMotionInstanceDataNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkAccelerationStructureMotionInstanceDataNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkAccelerationStructureMotionInstanceDataNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkAccelerationStructureMotionInstanceDataNV(@NotNull MemorySegment
         VkAccelerationStructureMatrixMotionInstanceNV.LAYOUT.withName("matrixMotionInstance"),
         VkAccelerationStructureSRTMotionInstanceNV.LAYOUT.withName("srtMotionInstance")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$staticInstance = PathElement.groupElement("PATH$staticInstance");
     public static final PathElement PATH$matrixMotionInstance = PathElement.groupElement("PATH$matrixMotionInstance");

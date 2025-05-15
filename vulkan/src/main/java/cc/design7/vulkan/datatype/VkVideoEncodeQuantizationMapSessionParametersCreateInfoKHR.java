@@ -40,7 +40,7 @@ public record VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR(@NotNul
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR[] ret = new VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR(@NotNul
         ValueLayout.ADDRESS.withName("pNext"),
         VkExtent2D.LAYOUT.withName("quantizationMapTexelSize")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

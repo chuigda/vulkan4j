@@ -36,7 +36,7 @@ public record VkImageFormatProperties(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageFormatProperties[] ret = new VkImageFormatProperties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkImageFormatProperties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkImageFormatProperties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record VkImageFormatProperties(@NotNull MemorySegment segment) implements
         ValueLayout.JAVA_INT.withName("sampleCounts"),
         ValueLayout.JAVA_LONG.withName("maxResourceSize")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$maxExtent = PathElement.groupElement("PATH$maxExtent");
     public static final PathElement PATH$maxMipLevels = PathElement.groupElement("PATH$maxMipLevels");

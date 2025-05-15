@@ -40,7 +40,7 @@ public record VkScreenSurfaceCreateInfoQNX(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkScreenSurfaceCreateInfoQNX[] ret = new VkScreenSurfaceCreateInfoQNX[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkScreenSurfaceCreateInfoQNX(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkScreenSurfaceCreateInfoQNX(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkScreenSurfaceCreateInfoQNX(@NotNull MemorySegment segment) imple
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("context"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("window")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

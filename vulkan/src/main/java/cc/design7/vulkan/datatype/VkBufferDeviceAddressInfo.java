@@ -40,7 +40,7 @@ public record VkBufferDeviceAddressInfo(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBufferDeviceAddressInfo[] ret = new VkBufferDeviceAddressInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBufferDeviceAddressInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkBufferDeviceAddressInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkBufferDeviceAddressInfo(@NotNull MemorySegment segment) implemen
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withName("buffer")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

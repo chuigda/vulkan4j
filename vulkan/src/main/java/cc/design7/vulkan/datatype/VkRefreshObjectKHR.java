@@ -36,7 +36,7 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IPoi
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRefreshObjectKHR[] ret = new VkRefreshObjectKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkRefreshObjectKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkRefreshObjectKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IPoi
         ValueLayout.JAVA_LONG.withName("objectHandle"),
         ValueLayout.JAVA_INT.withName("flags")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$objectType = PathElement.groupElement("PATH$objectType");
     public static final PathElement PATH$objectHandle = PathElement.groupElement("PATH$objectHandle");

@@ -36,7 +36,7 @@ public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkIndirectCommandsExecutionSetTokenEXT[] ret = new VkIndirectCommandsExecutionSetTokenEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkIndirectCommandsExecutionSetTokenEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkIndirectCommandsExecutionSetTokenEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segm
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.JAVA_INT.withName("shaderStages")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
     public static final PathElement PATH$shaderStages = PathElement.groupElement("PATH$shaderStages");

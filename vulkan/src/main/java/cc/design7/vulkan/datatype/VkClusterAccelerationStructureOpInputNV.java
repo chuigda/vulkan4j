@@ -36,7 +36,7 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkClusterAccelerationStructureOpInputNV[] ret = new VkClusterAccelerationStructureOpInputNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkClusterAccelerationStructureOpInputNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkClusterAccelerationStructureOpInputNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         ValueLayout.ADDRESS.withTargetLayout(VkClusterAccelerationStructureTriangleClusterInputNV.LAYOUT).withName("pTriangleClusters"),
         ValueLayout.ADDRESS.withTargetLayout(VkClusterAccelerationStructureMoveObjectsInputNV.LAYOUT).withName("pMoveObjects")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$pClustersBottomLevel = PathElement.groupElement("PATH$pClustersBottomLevel");
     public static final PathElement PATH$pTriangleClusters = PathElement.groupElement("PATH$pTriangleClusters");

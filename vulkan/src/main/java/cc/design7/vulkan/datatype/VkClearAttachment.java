@@ -36,7 +36,7 @@ public record VkClearAttachment(@NotNull MemorySegment segment) implements IPoin
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkClearAttachment[] ret = new VkClearAttachment[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkClearAttachment(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkClearAttachment(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkClearAttachment(@NotNull MemorySegment segment) implements IPoin
         ValueLayout.JAVA_INT.withName("colorAttachment"),
         VkClearValue.LAYOUT.withName("clearValue")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$aspectMask = PathElement.groupElement("PATH$aspectMask");
     public static final PathElement PATH$colorAttachment = PathElement.groupElement("PATH$colorAttachment");

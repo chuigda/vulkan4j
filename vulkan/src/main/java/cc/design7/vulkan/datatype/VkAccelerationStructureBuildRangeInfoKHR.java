@@ -36,7 +36,7 @@ public record VkAccelerationStructureBuildRangeInfoKHR(@NotNull MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureBuildRangeInfoKHR[] ret = new VkAccelerationStructureBuildRangeInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkAccelerationStructureBuildRangeInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkAccelerationStructureBuildRangeInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record VkAccelerationStructureBuildRangeInfoKHR(@NotNull MemorySegment se
         ValueLayout.JAVA_INT.withName("firstVertex"),
         ValueLayout.JAVA_INT.withName("transformOffset")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$primitiveCount = PathElement.groupElement("PATH$primitiveCount");
     public static final PathElement PATH$primitiveOffset = PathElement.groupElement("PATH$primitiveOffset");

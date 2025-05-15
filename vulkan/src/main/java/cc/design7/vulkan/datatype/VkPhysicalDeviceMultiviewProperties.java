@@ -40,7 +40,7 @@ public record VkPhysicalDeviceMultiviewProperties(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceMultiviewProperties[] ret = new VkPhysicalDeviceMultiviewProperties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceMultiviewProperties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceMultiviewProperties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDeviceMultiviewProperties(@NotNull MemorySegment segment
         ValueLayout.JAVA_INT.withName("maxMultiviewViewCount"),
         ValueLayout.JAVA_INT.withName("maxMultiviewInstanceIndex")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

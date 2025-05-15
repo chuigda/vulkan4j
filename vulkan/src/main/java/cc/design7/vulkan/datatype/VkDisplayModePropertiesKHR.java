@@ -36,7 +36,7 @@ public record VkDisplayModePropertiesKHR(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDisplayModePropertiesKHR[] ret = new VkDisplayModePropertiesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDisplayModePropertiesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDisplayModePropertiesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkDisplayModePropertiesKHR(@NotNull MemorySegment segment) impleme
         ValueLayout.ADDRESS.withName("displayMode"),
         VkDisplayModeParametersKHR.LAYOUT.withName("parameters")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$displayMode = PathElement.groupElement("PATH$displayMode");
     public static final PathElement PATH$parameters = PathElement.groupElement("PATH$parameters");

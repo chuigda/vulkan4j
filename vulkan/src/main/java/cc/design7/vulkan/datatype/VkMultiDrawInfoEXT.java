@@ -36,7 +36,7 @@ public record VkMultiDrawInfoEXT(@NotNull MemorySegment segment) implements IPoi
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMultiDrawInfoEXT[] ret = new VkMultiDrawInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMultiDrawInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMultiDrawInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkMultiDrawInfoEXT(@NotNull MemorySegment segment) implements IPoi
         ValueLayout.JAVA_INT.withName("firstVertex"),
         ValueLayout.JAVA_INT.withName("vertexCount")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$firstVertex = PathElement.groupElement("PATH$firstVertex");
     public static final PathElement PATH$vertexCount = PathElement.groupElement("PATH$vertexCount");

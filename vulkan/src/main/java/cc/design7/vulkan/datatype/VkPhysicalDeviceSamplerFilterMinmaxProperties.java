@@ -40,7 +40,7 @@ public record VkPhysicalDeviceSamplerFilterMinmaxProperties(@NotNull MemorySegme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceSamplerFilterMinmaxProperties[] ret = new VkPhysicalDeviceSamplerFilterMinmaxProperties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceSamplerFilterMinmaxProperties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceSamplerFilterMinmaxProperties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDeviceSamplerFilterMinmaxProperties(@NotNull MemorySegme
         ValueLayout.JAVA_INT.withName("filterMinmaxSingleComponentFormats"),
         ValueLayout.JAVA_INT.withName("filterMinmaxImageComponentMapping")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

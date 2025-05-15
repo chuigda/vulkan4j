@@ -145,7 +145,7 @@ fun generateStructure(
             +"MemorySegment segment = arena.allocate(LAYOUT, count);"
             +"$className[] ret = new $className[count];"
             "for (int i = 0; i < count; i ++)" {
-                +"ret[i] = new $className(segment.asSlice(i * SIZE, SIZE));"
+                +"ret[i] = new $className(segment.asSlice(i * BYTES, BYTES));"
             }
 
             +"return ret;"
@@ -190,7 +190,7 @@ fun generateStructure(
             }
             +");"
         }
-        defConst("long", "SIZE", "LAYOUT.byteSize()")
+        defConst("long", "BYTES", "LAYOUT.byteSize()")
         +""
 
         // `PathElement`s

@@ -36,7 +36,7 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRenderPassSubpassFeedbackInfoEXT[] ret = new VkRenderPassSubpassFeedbackInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkRenderPassSubpassFeedbackInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkRenderPassSubpassFeedbackInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
         ValueLayout.JAVA_BYTE.withName("description"),
         ValueLayout.JAVA_INT.withName("postMergeIndex")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$subpassMergeStatus = PathElement.groupElement("PATH$subpassMergeStatus");
     public static final PathElement PATH$description = PathElement.groupElement("PATH$description");

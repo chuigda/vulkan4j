@@ -40,7 +40,7 @@ public record VkBindImageMemoryInfo(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBindImageMemoryInfo[] ret = new VkBindImageMemoryInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBindImageMemoryInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkBindImageMemoryInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkBindImageMemoryInfo(@NotNull MemorySegment segment) implements I
         ValueLayout.ADDRESS.withName("memory"),
         ValueLayout.JAVA_LONG.withName("memoryOffset")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

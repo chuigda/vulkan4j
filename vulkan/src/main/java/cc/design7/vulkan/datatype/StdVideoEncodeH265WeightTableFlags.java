@@ -34,7 +34,7 @@ public record StdVideoEncodeH265WeightTableFlags(@NotNull MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeH265WeightTableFlags[] ret = new StdVideoEncodeH265WeightTableFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeH265WeightTableFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeH265WeightTableFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record StdVideoEncodeH265WeightTableFlags(@NotNull MemorySegment segment)
         ValueLayout.JAVA_SHORT.withName("luma_weight_l1_flag"),
         ValueLayout.JAVA_SHORT.withName("chroma_weight_l1_flag")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$luma_weight_l0_flag = PathElement.groupElement("PATH$luma_weight_l0_flag");
     public static final PathElement PATH$chroma_weight_l0_flag = PathElement.groupElement("PATH$chroma_weight_l0_flag");

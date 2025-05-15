@@ -36,7 +36,7 @@ public record VkImageSubresource(@NotNull MemorySegment segment) implements IPoi
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageSubresource[] ret = new VkImageSubresource[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkImageSubresource(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkImageSubresource(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkImageSubresource(@NotNull MemorySegment segment) implements IPoi
         ValueLayout.JAVA_INT.withName("mipLevel"),
         ValueLayout.JAVA_INT.withName("arrayLayer")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$aspectMask = PathElement.groupElement("PATH$aspectMask");
     public static final PathElement PATH$mipLevel = PathElement.groupElement("PATH$mipLevel");

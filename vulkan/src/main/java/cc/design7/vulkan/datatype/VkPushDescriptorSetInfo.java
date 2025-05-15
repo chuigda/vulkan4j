@@ -40,7 +40,7 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPushDescriptorSetInfo[] ret = new VkPushDescriptorSetInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPushDescriptorSetInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPushDescriptorSetInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -68,7 +68,7 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         ValueLayout.JAVA_INT.withName("descriptorWriteCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkWriteDescriptorSet.LAYOUT).withName("pDescriptorWrites")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

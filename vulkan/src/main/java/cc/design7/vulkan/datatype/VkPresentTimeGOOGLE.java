@@ -36,7 +36,7 @@ public record VkPresentTimeGOOGLE(@NotNull MemorySegment segment) implements IPo
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPresentTimeGOOGLE[] ret = new VkPresentTimeGOOGLE[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPresentTimeGOOGLE(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPresentTimeGOOGLE(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkPresentTimeGOOGLE(@NotNull MemorySegment segment) implements IPo
         ValueLayout.JAVA_INT.withName("presentID"),
         ValueLayout.JAVA_LONG.withName("desiredPresentTime")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$presentID = PathElement.groupElement("PATH$presentID");
     public static final PathElement PATH$desiredPresentTime = PathElement.groupElement("PATH$desiredPresentTime");

@@ -40,7 +40,7 @@ public record VkHdrVividDynamicMetadataHUAWEI(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkHdrVividDynamicMetadataHUAWEI[] ret = new VkHdrVividDynamicMetadataHUAWEI[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkHdrVividDynamicMetadataHUAWEI(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkHdrVividDynamicMetadataHUAWEI(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkHdrVividDynamicMetadataHUAWEI(@NotNull MemorySegment segment) im
         NativeLayout.C_SIZE_T.withName("dynamicMetadataSize"),
         ValueLayout.ADDRESS.withName("pDynamicMetadata")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

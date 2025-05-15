@@ -34,7 +34,7 @@ public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) i
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeAV1ExtensionHeader[] ret = new StdVideoEncodeAV1ExtensionHeader[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeAV1ExtensionHeader(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeAV1ExtensionHeader(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) i
         ValueLayout.JAVA_BYTE.withName("temporal_id"),
         ValueLayout.JAVA_BYTE.withName("spatial_id")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$temporal_id = PathElement.groupElement("PATH$temporal_id");
     public static final PathElement PATH$spatial_id = PathElement.groupElement("PATH$spatial_id");

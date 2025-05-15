@@ -36,7 +36,7 @@ public record VkMicromapTriangleEXT(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMicromapTriangleEXT[] ret = new VkMicromapTriangleEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMicromapTriangleEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMicromapTriangleEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkMicromapTriangleEXT(@NotNull MemorySegment segment) implements I
         ValueLayout.JAVA_SHORT.withName("subdivisionLevel"),
         ValueLayout.JAVA_SHORT.withName("format")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$dataOffset = PathElement.groupElement("PATH$dataOffset");
     public static final PathElement PATH$subdivisionLevel = PathElement.groupElement("PATH$subdivisionLevel");

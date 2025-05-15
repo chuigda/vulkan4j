@@ -40,7 +40,7 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceToolProperties[] ret = new VkPhysicalDeviceToolProperties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceToolProperties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceToolProperties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -68,7 +68,7 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_BYTE.withName("description"),
         ValueLayout.JAVA_BYTE.withName("layer")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

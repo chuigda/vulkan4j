@@ -36,7 +36,7 @@ public record VkVideoEncodeAV1QIndexKHR(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoEncodeAV1QIndexKHR[] ret = new VkVideoEncodeAV1QIndexKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeAV1QIndexKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoEncodeAV1QIndexKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkVideoEncodeAV1QIndexKHR(@NotNull MemorySegment segment) implemen
         ValueLayout.JAVA_INT.withName("predictiveQIndex"),
         ValueLayout.JAVA_INT.withName("bipredictiveQIndex")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$intraQIndex = PathElement.groupElement("PATH$intraQIndex");
     public static final PathElement PATH$predictiveQIndex = PathElement.groupElement("PATH$predictiveQIndex");

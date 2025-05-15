@@ -40,7 +40,7 @@ public record VkDepthBiasRepresentationInfoEXT(@NotNull MemorySegment segment) i
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDepthBiasRepresentationInfoEXT[] ret = new VkDepthBiasRepresentationInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDepthBiasRepresentationInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDepthBiasRepresentationInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkDepthBiasRepresentationInfoEXT(@NotNull MemorySegment segment) i
         ValueLayout.JAVA_INT.withName("depthBiasRepresentation"),
         ValueLayout.JAVA_INT.withName("depthBiasExact")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

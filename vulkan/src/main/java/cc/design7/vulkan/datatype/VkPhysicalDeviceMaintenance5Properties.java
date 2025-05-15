@@ -40,7 +40,7 @@ public record VkPhysicalDeviceMaintenance5Properties(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceMaintenance5Properties[] ret = new VkPhysicalDeviceMaintenance5Properties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceMaintenance5Properties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceMaintenance5Properties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -69,7 +69,7 @@ public record VkPhysicalDeviceMaintenance5Properties(@NotNull MemorySegment segm
         ValueLayout.JAVA_INT.withName("nonStrictSinglePixelWideLinesUseParallelogram"),
         ValueLayout.JAVA_INT.withName("nonStrictWideLinesUseParallelogram")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

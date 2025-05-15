@@ -36,7 +36,7 @@ public record VkImageBlit(@NotNull MemorySegment segment) implements IPointer {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageBlit[] ret = new VkImageBlit[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkImageBlit(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkImageBlit(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record VkImageBlit(@NotNull MemorySegment segment) implements IPointer {
         VkImageSubresourceLayers.LAYOUT.withName("dstSubresource"),
         VkOffset3D.LAYOUT.withName("dstOffsets")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$srcSubresource = PathElement.groupElement("PATH$srcSubresource");
     public static final PathElement PATH$srcOffsets = PathElement.groupElement("PATH$srcOffsets");

@@ -40,7 +40,7 @@ public record VkPhysicalDeviceMaintenance6Features(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceMaintenance6Features[] ret = new VkPhysicalDeviceMaintenance6Features[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceMaintenance6Features(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceMaintenance6Features(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkPhysicalDeviceMaintenance6Features(@NotNull MemorySegment segmen
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("maintenance6")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

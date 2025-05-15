@@ -40,7 +40,7 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(@NotNull MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineViewportSwizzleStateCreateInfoNV[] ret = new VkPipelineViewportSwizzleStateCreateInfoNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineViewportSwizzleStateCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineViewportSwizzleStateCreateInfoNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(@NotNull MemorySegment 
         ValueLayout.JAVA_INT.withName("viewportCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkViewportSwizzleNV.LAYOUT).withName("pViewportSwizzles")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

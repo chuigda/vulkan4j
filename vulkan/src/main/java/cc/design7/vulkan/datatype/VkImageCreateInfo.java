@@ -40,7 +40,7 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IPoin
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageCreateInfo[] ret = new VkImageCreateInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkImageCreateInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkImageCreateInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -76,7 +76,7 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IPoin
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pQueueFamilyIndices"),
         ValueLayout.JAVA_INT.withName("initialLayout")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

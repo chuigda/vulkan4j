@@ -40,7 +40,7 @@ public record VkClusterAccelerationStructureMoveObjectsInputNV(@NotNull MemorySe
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkClusterAccelerationStructureMoveObjectsInputNV[] ret = new VkClusterAccelerationStructureMoveObjectsInputNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkClusterAccelerationStructureMoveObjectsInputNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkClusterAccelerationStructureMoveObjectsInputNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkClusterAccelerationStructureMoveObjectsInputNV(@NotNull MemorySe
         ValueLayout.JAVA_INT.withName("noMoveOverlap"),
         ValueLayout.JAVA_LONG.withName("maxMovedBytes")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

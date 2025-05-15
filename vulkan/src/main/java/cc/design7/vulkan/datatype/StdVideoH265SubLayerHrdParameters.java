@@ -34,7 +34,7 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH265SubLayerHrdParameters[] ret = new StdVideoH265SubLayerHrdParameters[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH265SubLayerHrdParameters(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH265SubLayerHrdParameters(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         ValueLayout.JAVA_INT.withName("bit_rate_du_value_minus1"),
         ValueLayout.JAVA_INT.withName("cbr_flag")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bit_rate_value_minus1 = PathElement.groupElement("PATH$bit_rate_value_minus1");
     public static final PathElement PATH$cpb_size_value_minus1 = PathElement.groupElement("PATH$cpb_size_value_minus1");

@@ -35,7 +35,7 @@ public record StdVideoEncodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeAV1PictureInfoFlags[] ret = new StdVideoEncodeAV1PictureInfoFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeAV1PictureInfoFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeAV1PictureInfoFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoEncodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$error_resilient_mode_reserved")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$error_resilient_mode_reserved = PathElement.groupElement("PATH$bitfield$error_resilient_mode_reserved");
 

@@ -40,7 +40,7 @@ public record VkImageMemoryBarrier2(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageMemoryBarrier2[] ret = new VkImageMemoryBarrier2[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkImageMemoryBarrier2(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkImageMemoryBarrier2(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -73,7 +73,7 @@ public record VkImageMemoryBarrier2(@NotNull MemorySegment segment) implements I
         ValueLayout.ADDRESS.withName("image"),
         VkImageSubresourceRange.LAYOUT.withName("subresourceRange")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

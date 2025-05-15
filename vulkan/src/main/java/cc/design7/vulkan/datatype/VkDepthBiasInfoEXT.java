@@ -40,7 +40,7 @@ public record VkDepthBiasInfoEXT(@NotNull MemorySegment segment) implements IPoi
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDepthBiasInfoEXT[] ret = new VkDepthBiasInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDepthBiasInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDepthBiasInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkDepthBiasInfoEXT(@NotNull MemorySegment segment) implements IPoi
         ValueLayout.JAVA_FLOAT.withName("depthBiasClamp"),
         ValueLayout.JAVA_FLOAT.withName("depthBiasSlopeFactor")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

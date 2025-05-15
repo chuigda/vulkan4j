@@ -35,7 +35,7 @@ public record StdVideoH264SpsVuiFlags(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH264SpsVuiFlags[] ret = new StdVideoH264SpsVuiFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH264SpsVuiFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH264SpsVuiFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoH264SpsVuiFlags(@NotNull MemorySegment segment) implements
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag = PathElement.groupElement("PATH$bitfield$aspect_ratio_info_present_flag_vcl_hrd_parameters_present_flag");
 

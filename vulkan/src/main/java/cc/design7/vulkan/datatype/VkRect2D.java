@@ -36,7 +36,7 @@ public record VkRect2D(@NotNull MemorySegment segment) implements IPointer {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRect2D[] ret = new VkRect2D[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkRect2D(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkRect2D(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkRect2D(@NotNull MemorySegment segment) implements IPointer {
         VkOffset2D.LAYOUT.withName("offset"),
         VkExtent2D.LAYOUT.withName("extent")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
     public static final PathElement PATH$extent = PathElement.groupElement("PATH$extent");

@@ -40,7 +40,7 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkFramebufferCreateInfo[] ret = new VkFramebufferCreateInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkFramebufferCreateInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkFramebufferCreateInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -70,7 +70,7 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         ValueLayout.JAVA_INT.withName("height"),
         ValueLayout.JAVA_INT.withName("layers")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

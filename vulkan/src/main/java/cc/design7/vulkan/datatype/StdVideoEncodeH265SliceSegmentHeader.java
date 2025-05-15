@@ -34,7 +34,7 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeH265SliceSegmentHeader[] ret = new StdVideoEncodeH265SliceSegmentHeader[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeH265SliceSegmentHeader(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeH265SliceSegmentHeader(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -70,7 +70,7 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         ValueLayout.JAVA_SHORT.withName("reserved1"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH265WeightTable.LAYOUT).withName("pWeightTable")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$slice_type = PathElement.groupElement("PATH$slice_type");

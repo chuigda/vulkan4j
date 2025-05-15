@@ -36,7 +36,7 @@ public record VkPipelineColorBlendAttachmentState(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineColorBlendAttachmentState[] ret = new VkPipelineColorBlendAttachmentState[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineColorBlendAttachmentState(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineColorBlendAttachmentState(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPipelineColorBlendAttachmentState(@NotNull MemorySegment segment
         ValueLayout.JAVA_INT.withName("alphaBlendOp"),
         ValueLayout.JAVA_INT.withName("colorWriteMask")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$blendEnable = PathElement.groupElement("PATH$blendEnable");
     public static final PathElement PATH$srcColorBlendFactor = PathElement.groupElement("PATH$srcColorBlendFactor");

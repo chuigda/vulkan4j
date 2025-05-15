@@ -34,7 +34,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeAV1PictureInfo[] ret = new StdVideoEncodeAV1PictureInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeAV1PictureInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeAV1PictureInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -82,7 +82,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeAV1ExtensionHeader.LAYOUT).withName("pExtensionHeader"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pBufferRemovalTimes")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$frame_type = PathElement.groupElement("PATH$frame_type");

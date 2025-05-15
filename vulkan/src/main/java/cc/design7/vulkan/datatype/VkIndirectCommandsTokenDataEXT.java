@@ -36,7 +36,7 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkIndirectCommandsTokenDataEXT[] ret = new VkIndirectCommandsTokenDataEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkIndirectCommandsTokenDataEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkIndirectCommandsTokenDataEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         ValueLayout.ADDRESS.withTargetLayout(VkIndirectCommandsIndexBufferTokenEXT.LAYOUT).withName("pIndexBuffer"),
         ValueLayout.ADDRESS.withTargetLayout(VkIndirectCommandsExecutionSetTokenEXT.LAYOUT).withName("pExecutionSet")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$pPushConstant = PathElement.groupElement("PATH$pPushConstant");
     public static final PathElement PATH$pVertexBuffer = PathElement.groupElement("PATH$pVertexBuffer");

@@ -34,7 +34,7 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoAV1LoopRestoration[] ret = new StdVideoAV1LoopRestoration[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1LoopRestoration(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoAV1LoopRestoration(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
         ValueLayout.JAVA_INT.withName("FrameRestorationType"),
         ValueLayout.JAVA_SHORT.withName("LoopRestorationSize")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$FrameRestorationType = PathElement.groupElement("PATH$FrameRestorationType");
     public static final PathElement PATH$LoopRestorationSize = PathElement.groupElement("PATH$LoopRestorationSize");

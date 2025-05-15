@@ -40,7 +40,7 @@ public record VkBufferCollectionConstraintsInfoFUCHSIA(@NotNull MemorySegment se
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBufferCollectionConstraintsInfoFUCHSIA[] ret = new VkBufferCollectionConstraintsInfoFUCHSIA[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBufferCollectionConstraintsInfoFUCHSIA(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkBufferCollectionConstraintsInfoFUCHSIA(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -68,7 +68,7 @@ public record VkBufferCollectionConstraintsInfoFUCHSIA(@NotNull MemorySegment se
         ValueLayout.JAVA_INT.withName("minBufferCountForDedicatedSlack"),
         ValueLayout.JAVA_INT.withName("minBufferCountForSharedSlack")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

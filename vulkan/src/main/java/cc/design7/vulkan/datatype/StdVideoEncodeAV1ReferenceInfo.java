@@ -34,7 +34,7 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeAV1ReferenceInfo[] ret = new StdVideoEncodeAV1ReferenceInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeAV1ReferenceInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeAV1ReferenceInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_BYTE.withName("reserved1"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeAV1ExtensionHeader.LAYOUT).withName("pExtensionHeader")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$RefFrameId = PathElement.groupElement("PATH$RefFrameId");

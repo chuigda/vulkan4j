@@ -40,7 +40,7 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRenderPassStripeSubmitInfoARM[] ret = new VkRenderPassStripeSubmitInfoARM[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkRenderPassStripeSubmitInfoARM(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkRenderPassStripeSubmitInfoARM(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
         ValueLayout.JAVA_INT.withName("stripeSemaphoreInfoCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkSemaphoreSubmitInfo.LAYOUT).withName("pStripeSemaphoreInfos")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -36,7 +36,7 @@ public record VkDrawIndirectCommand(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDrawIndirectCommand[] ret = new VkDrawIndirectCommand[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDrawIndirectCommand(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDrawIndirectCommand(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record VkDrawIndirectCommand(@NotNull MemorySegment segment) implements I
         ValueLayout.JAVA_INT.withName("firstVertex"),
         ValueLayout.JAVA_INT.withName("firstInstance")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$vertexCount = PathElement.groupElement("PATH$vertexCount");
     public static final PathElement PATH$instanceCount = PathElement.groupElement("PATH$instanceCount");

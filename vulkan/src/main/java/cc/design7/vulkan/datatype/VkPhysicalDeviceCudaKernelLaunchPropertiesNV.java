@@ -40,7 +40,7 @@ public record VkPhysicalDeviceCudaKernelLaunchPropertiesNV(@NotNull MemorySegmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceCudaKernelLaunchPropertiesNV[] ret = new VkPhysicalDeviceCudaKernelLaunchPropertiesNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceCudaKernelLaunchPropertiesNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceCudaKernelLaunchPropertiesNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDeviceCudaKernelLaunchPropertiesNV(@NotNull MemorySegmen
         ValueLayout.JAVA_INT.withName("computeCapabilityMinor"),
         ValueLayout.JAVA_INT.withName("computeCapabilityMajor")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

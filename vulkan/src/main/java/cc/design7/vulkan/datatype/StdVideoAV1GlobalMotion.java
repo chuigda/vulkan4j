@@ -34,7 +34,7 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoAV1GlobalMotion[] ret = new StdVideoAV1GlobalMotion[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1GlobalMotion(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoAV1GlobalMotion(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
         ValueLayout.JAVA_BYTE.withName("GmType"),
         ValueLayout.JAVA_INT.withName("gm_params")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$GmType = PathElement.groupElement("PATH$GmType");
     public static final PathElement PATH$gm_params = PathElement.groupElement("PATH$gm_params");

@@ -40,7 +40,7 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineCoverageModulationStateCreateInfoNV[] ret = new VkPipelineCoverageModulationStateCreateInfoNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineCoverageModulationStateCreateInfoNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineCoverageModulationStateCreateInfoNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -68,7 +68,7 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
         ValueLayout.JAVA_INT.withName("coverageModulationTableCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_FLOAT).withName("pCoverageModulationTable")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -36,7 +36,7 @@ public record VkAttachmentSampleLocationsEXT(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAttachmentSampleLocationsEXT[] ret = new VkAttachmentSampleLocationsEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkAttachmentSampleLocationsEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkAttachmentSampleLocationsEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkAttachmentSampleLocationsEXT(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_INT.withName("attachmentIndex"),
         VkSampleLocationsInfoEXT.LAYOUT.withName("sampleLocationsInfo")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$attachmentIndex = PathElement.groupElement("PATH$attachmentIndex");
     public static final PathElement PATH$sampleLocationsInfo = PathElement.groupElement("PATH$sampleLocationsInfo");

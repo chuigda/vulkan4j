@@ -36,7 +36,7 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDisplayPropertiesKHR[] ret = new VkDisplayPropertiesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDisplayPropertiesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDisplayPropertiesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         ValueLayout.JAVA_INT.withName("planeReorderPossible"),
         ValueLayout.JAVA_INT.withName("persistentContent")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$display = PathElement.groupElement("PATH$display");
     public static final PathElement PATH$displayName = PathElement.groupElement("PATH$displayName");

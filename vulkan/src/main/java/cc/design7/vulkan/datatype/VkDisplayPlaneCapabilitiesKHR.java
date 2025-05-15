@@ -36,7 +36,7 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDisplayPlaneCapabilitiesKHR[] ret = new VkDisplayPlaneCapabilitiesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDisplayPlaneCapabilitiesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDisplayPlaneCapabilitiesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
         VkExtent2D.LAYOUT.withName("minDstExtent"),
         VkExtent2D.LAYOUT.withName("maxDstExtent")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$supportedAlpha = PathElement.groupElement("PATH$supportedAlpha");
     public static final PathElement PATH$minSrcPosition = PathElement.groupElement("PATH$minSrcPosition");

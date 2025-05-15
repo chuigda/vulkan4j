@@ -40,7 +40,7 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineDiscardRectangleStateCreateInfoEXT[] ret = new VkPipelineDiscardRectangleStateCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineDiscardRectangleStateCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineDiscardRectangleStateCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         ValueLayout.JAVA_INT.withName("discardRectangleCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pDiscardRectangles")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

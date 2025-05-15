@@ -36,7 +36,7 @@ public record VkSRTDataNV(@NotNull MemorySegment segment) implements IPointer {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSRTDataNV[] ret = new VkSRTDataNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSRTDataNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSRTDataNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -73,7 +73,7 @@ public record VkSRTDataNV(@NotNull MemorySegment segment) implements IPointer {
         ValueLayout.JAVA_FLOAT.withName("ty"),
         ValueLayout.JAVA_FLOAT.withName("tz")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sx = PathElement.groupElement("PATH$sx");
     public static final PathElement PATH$a = PathElement.groupElement("PATH$a");

@@ -34,7 +34,7 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH265ShortTermRefPicSet[] ret = new StdVideoH265ShortTermRefPicSet[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH265ShortTermRefPicSet(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH265ShortTermRefPicSet(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -69,7 +69,7 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_SHORT.withName("delta_poc_s0_minus1"),
         ValueLayout.JAVA_SHORT.withName("delta_poc_s1_minus1")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$delta_idx_minus1 = PathElement.groupElement("PATH$delta_idx_minus1");

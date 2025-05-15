@@ -36,7 +36,7 @@ public record VkColorBlendAdvancedEXT(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkColorBlendAdvancedEXT[] ret = new VkColorBlendAdvancedEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkColorBlendAdvancedEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkColorBlendAdvancedEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record VkColorBlendAdvancedEXT(@NotNull MemorySegment segment) implements
         ValueLayout.JAVA_INT.withName("blendOverlap"),
         ValueLayout.JAVA_INT.withName("clampResults")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$advancedBlendOp = PathElement.groupElement("PATH$advancedBlendOp");
     public static final PathElement PATH$srcPremultiplied = PathElement.groupElement("PATH$srcPremultiplied");

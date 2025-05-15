@@ -40,7 +40,7 @@ public record VkBlitImageCubicWeightsInfoQCOM(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBlitImageCubicWeightsInfoQCOM[] ret = new VkBlitImageCubicWeightsInfoQCOM[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBlitImageCubicWeightsInfoQCOM(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkBlitImageCubicWeightsInfoQCOM(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkBlitImageCubicWeightsInfoQCOM(@NotNull MemorySegment segment) im
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("cubicWeights")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

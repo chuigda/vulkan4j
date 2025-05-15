@@ -40,7 +40,7 @@ public record VkPipelineRasterizationDepthClipStateCreateInfoEXT(@NotNull Memory
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineRasterizationDepthClipStateCreateInfoEXT[] ret = new VkPipelineRasterizationDepthClipStateCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineRasterizationDepthClipStateCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineRasterizationDepthClipStateCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPipelineRasterizationDepthClipStateCreateInfoEXT(@NotNull Memory
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.JAVA_INT.withName("depthClipEnable")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

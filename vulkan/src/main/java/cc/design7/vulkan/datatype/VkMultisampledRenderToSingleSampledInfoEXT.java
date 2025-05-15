@@ -40,7 +40,7 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(@NotNull MemorySegment 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMultisampledRenderToSingleSampledInfoEXT[] ret = new VkMultisampledRenderToSingleSampledInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMultisampledRenderToSingleSampledInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMultisampledRenderToSingleSampledInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(@NotNull MemorySegment 
         ValueLayout.JAVA_INT.withName("multisampledRenderToSingleSampledEnable"),
         ValueLayout.JAVA_INT.withName("rasterizationSamples")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

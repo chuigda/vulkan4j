@@ -34,7 +34,7 @@ public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoDecodeAV1ReferenceInfo[] ret = new StdVideoDecodeAV1ReferenceInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoDecodeAV1ReferenceInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoDecodeAV1ReferenceInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_BYTE.withName("OrderHint"),
         ValueLayout.JAVA_BYTE.withName("SavedOrderHints")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$frame_type = PathElement.groupElement("PATH$frame_type");

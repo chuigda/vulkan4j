@@ -36,7 +36,7 @@ public record VkDisplayPlanePropertiesKHR(@NotNull MemorySegment segment) implem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDisplayPlanePropertiesKHR[] ret = new VkDisplayPlanePropertiesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDisplayPlanePropertiesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDisplayPlanePropertiesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkDisplayPlanePropertiesKHR(@NotNull MemorySegment segment) implem
         ValueLayout.ADDRESS.withName("currentDisplay"),
         ValueLayout.JAVA_INT.withName("currentStackIndex")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$currentDisplay = PathElement.groupElement("PATH$currentDisplay");
     public static final PathElement PATH$currentStackIndex = PathElement.groupElement("PATH$currentStackIndex");

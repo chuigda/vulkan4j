@@ -34,7 +34,7 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH264ScalingLists[] ret = new StdVideoH264ScalingLists[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH264ScalingLists(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH264ScalingLists(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
         ValueLayout.JAVA_BYTE.withName("ScalingList4x4"),
         ValueLayout.JAVA_BYTE.withName("ScalingList8x8")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$scaling_list_present_mask = PathElement.groupElement("PATH$scaling_list_present_mask");
     public static final PathElement PATH$use_default_scaling_matrix_mask = PathElement.groupElement("PATH$use_default_scaling_matrix_mask");

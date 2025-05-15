@@ -36,7 +36,7 @@ public record VkDeviceFaultAddressInfoEXT(@NotNull MemorySegment segment) implem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDeviceFaultAddressInfoEXT[] ret = new VkDeviceFaultAddressInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDeviceFaultAddressInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDeviceFaultAddressInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkDeviceFaultAddressInfoEXT(@NotNull MemorySegment segment) implem
         ValueLayout.JAVA_LONG.withName("reportedAddress"),
         ValueLayout.JAVA_LONG.withName("addressPrecision")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$addressType = PathElement.groupElement("PATH$addressType");
     public static final PathElement PATH$reportedAddress = PathElement.groupElement("PATH$reportedAddress");

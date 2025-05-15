@@ -40,7 +40,7 @@ public record VkBufferImageCopy2(@NotNull MemorySegment segment) implements IPoi
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBufferImageCopy2[] ret = new VkBufferImageCopy2[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBufferImageCopy2(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkBufferImageCopy2(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -69,7 +69,7 @@ public record VkBufferImageCopy2(@NotNull MemorySegment segment) implements IPoi
         VkOffset3D.LAYOUT.withName("imageOffset"),
         VkExtent3D.LAYOUT.withName("imageExtent")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

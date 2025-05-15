@@ -40,7 +40,7 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT[] ret = new VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -75,7 +75,7 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         ValueLayout.JAVA_INT.withName("deviceGeneratedCommandsTransformFeedback"),
         ValueLayout.JAVA_INT.withName("deviceGeneratedCommandsMultiDrawIndirectCount")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

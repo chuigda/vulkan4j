@@ -36,7 +36,7 @@ public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDescriptorImageInfo[] ret = new VkDescriptorImageInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDescriptorImageInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDescriptorImageInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements I
         ValueLayout.ADDRESS.withName("imageView"),
         ValueLayout.JAVA_INT.withName("imageLayout")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sampler = PathElement.groupElement("PATH$sampler");
     public static final PathElement PATH$imageView = PathElement.groupElement("PATH$imageView");

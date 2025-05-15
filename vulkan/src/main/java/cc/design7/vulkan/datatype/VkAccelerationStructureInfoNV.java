@@ -40,7 +40,7 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureInfoNV[] ret = new VkAccelerationStructureInfoNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkAccelerationStructureInfoNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkAccelerationStructureInfoNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -68,7 +68,7 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
         ValueLayout.JAVA_INT.withName("geometryCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkGeometryNV.LAYOUT).withName("pGeometries")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

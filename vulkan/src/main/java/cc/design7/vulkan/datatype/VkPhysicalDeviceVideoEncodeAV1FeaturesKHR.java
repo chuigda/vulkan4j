@@ -40,7 +40,7 @@ public record VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(@NotNull MemorySegment s
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceVideoEncodeAV1FeaturesKHR[] ret = new VkPhysicalDeviceVideoEncodeAV1FeaturesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(@NotNull MemorySegment s
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("videoEncodeAV1")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

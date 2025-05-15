@@ -35,7 +35,7 @@ public record StdVideoH265ShortTermRefPicSetFlags(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH265ShortTermRefPicSetFlags[] ret = new StdVideoH265ShortTermRefPicSetFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH265ShortTermRefPicSetFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH265ShortTermRefPicSetFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoH265ShortTermRefPicSetFlags(@NotNull MemorySegment segment
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign = PathElement.groupElement("PATH$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign");
 

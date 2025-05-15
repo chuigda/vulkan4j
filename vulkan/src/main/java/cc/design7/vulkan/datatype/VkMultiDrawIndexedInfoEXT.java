@@ -36,7 +36,7 @@ public record VkMultiDrawIndexedInfoEXT(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMultiDrawIndexedInfoEXT[] ret = new VkMultiDrawIndexedInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMultiDrawIndexedInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMultiDrawIndexedInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkMultiDrawIndexedInfoEXT(@NotNull MemorySegment segment) implemen
         ValueLayout.JAVA_INT.withName("indexCount"),
         ValueLayout.JAVA_INT.withName("vertexOffset")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$firstIndex = PathElement.groupElement("PATH$firstIndex");
     public static final PathElement PATH$indexCount = PathElement.groupElement("PATH$indexCount");

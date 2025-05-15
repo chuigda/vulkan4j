@@ -36,7 +36,7 @@ public record VkSubpassDependency(@NotNull MemorySegment segment) implements IPo
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSubpassDependency[] ret = new VkSubpassDependency[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSubpassDependency(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSubpassDependency(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkSubpassDependency(@NotNull MemorySegment segment) implements IPo
         ValueLayout.JAVA_INT.withName("dstAccessMask"),
         ValueLayout.JAVA_INT.withName("dependencyFlags")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$srcSubpass = PathElement.groupElement("PATH$srcSubpass");
     public static final PathElement PATH$dstSubpass = PathElement.groupElement("PATH$dstSubpass");

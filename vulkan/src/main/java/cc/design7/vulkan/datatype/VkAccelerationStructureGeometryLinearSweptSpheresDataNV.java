@@ -40,7 +40,7 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAccelerationStructureGeometryLinearSweptSpheresDataNV[] ret = new VkAccelerationStructureGeometryLinearSweptSpheresDataNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkAccelerationStructureGeometryLinearSweptSpheresDataNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkAccelerationStructureGeometryLinearSweptSpheresDataNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -74,7 +74,7 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
         ValueLayout.JAVA_INT.withName("indexingMode"),
         ValueLayout.JAVA_INT.withName("endCapsMode")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -36,7 +36,7 @@ public record VkVideoEncodeAV1FrameSizeKHR(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoEncodeAV1FrameSizeKHR[] ret = new VkVideoEncodeAV1FrameSizeKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeAV1FrameSizeKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoEncodeAV1FrameSizeKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkVideoEncodeAV1FrameSizeKHR(@NotNull MemorySegment segment) imple
         ValueLayout.JAVA_INT.withName("predictiveFrameSize"),
         ValueLayout.JAVA_INT.withName("bipredictiveFrameSize")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$intraFrameSize = PathElement.groupElement("PATH$intraFrameSize");
     public static final PathElement PATH$predictiveFrameSize = PathElement.groupElement("PATH$predictiveFrameSize");

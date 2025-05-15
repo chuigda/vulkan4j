@@ -40,7 +40,7 @@ public record VkPhysicalDeviceShaderEnqueueFeaturesAMDX(@NotNull MemorySegment s
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderEnqueueFeaturesAMDX[] ret = new VkPhysicalDeviceShaderEnqueueFeaturesAMDX[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceShaderEnqueueFeaturesAMDX(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceShaderEnqueueFeaturesAMDX(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPhysicalDeviceShaderEnqueueFeaturesAMDX(@NotNull MemorySegment s
         ValueLayout.JAVA_INT.withName("shaderEnqueue"),
         ValueLayout.JAVA_INT.withName("shaderMeshEnqueue")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

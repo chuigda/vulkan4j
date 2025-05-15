@@ -40,7 +40,7 @@ public record VkD3D12FenceSubmitInfoKHR(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkD3D12FenceSubmitInfoKHR[] ret = new VkD3D12FenceSubmitInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkD3D12FenceSubmitInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkD3D12FenceSubmitInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkD3D12FenceSubmitInfoKHR(@NotNull MemorySegment segment) implemen
         ValueLayout.JAVA_INT.withName("signalSemaphoreValuesCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pSignalSemaphoreValues")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

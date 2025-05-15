@@ -40,7 +40,7 @@ public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IP
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkValidationFlagsEXT[] ret = new VkValidationFlagsEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkValidationFlagsEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkValidationFlagsEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IP
         ValueLayout.JAVA_INT.withName("disabledValidationCheckCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDisabledValidationChecks")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -36,7 +36,7 @@ public record VkMemoryRequirements(@NotNull MemorySegment segment) implements IP
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMemoryRequirements[] ret = new VkMemoryRequirements[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMemoryRequirements(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMemoryRequirements(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkMemoryRequirements(@NotNull MemorySegment segment) implements IP
         ValueLayout.JAVA_LONG.withName("alignment"),
         ValueLayout.JAVA_INT.withName("memoryTypeBits")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
     public static final PathElement PATH$alignment = PathElement.groupElement("PATH$alignment");

@@ -36,7 +36,7 @@ public record VkSparseImageFormatProperties(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSparseImageFormatProperties[] ret = new VkSparseImageFormatProperties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSparseImageFormatProperties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSparseImageFormatProperties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkSparseImageFormatProperties(@NotNull MemorySegment segment) impl
         VkExtent3D.LAYOUT.withName("imageGranularity"),
         ValueLayout.JAVA_INT.withName("flags")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$aspectMask = PathElement.groupElement("PATH$aspectMask");
     public static final PathElement PATH$imageGranularity = PathElement.groupElement("PATH$imageGranularity");

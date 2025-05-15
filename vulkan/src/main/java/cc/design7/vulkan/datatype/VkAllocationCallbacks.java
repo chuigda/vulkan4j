@@ -36,7 +36,7 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAllocationCallbacks[] ret = new VkAllocationCallbacks[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkAllocationCallbacks(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkAllocationCallbacks(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -63,7 +63,7 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         ValueLayout.ADDRESS.withName("pfnInternalAllocation"),
         ValueLayout.ADDRESS.withName("pfnInternalFree")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$pUserData = PathElement.groupElement("PATH$pUserData");
     public static final PathElement PATH$pfnAllocation = PathElement.groupElement("PATH$pfnAllocation");

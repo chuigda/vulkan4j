@@ -40,7 +40,7 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkConvertCooperativeVectorMatrixInfoNV[] ret = new VkConvertCooperativeVectorMatrixInfoNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkConvertCooperativeVectorMatrixInfoNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkConvertCooperativeVectorMatrixInfoNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -75,7 +75,7 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         ValueLayout.JAVA_INT.withName("dstLayout"),
         NativeLayout.C_SIZE_T.withName("dstStride")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

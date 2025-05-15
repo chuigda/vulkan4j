@@ -36,7 +36,7 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineCacheHeaderVersionOne[] ret = new VkPipelineCacheHeaderVersionOne[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineCacheHeaderVersionOne(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineCacheHeaderVersionOne(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
         ValueLayout.JAVA_INT.withName("deviceID"),
         ValueLayout.JAVA_BYTE.withName("pipelineCacheUUID")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$headerSize = PathElement.groupElement("PATH$headerSize");
     public static final PathElement PATH$headerVersion = PathElement.groupElement("PATH$headerVersion");

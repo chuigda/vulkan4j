@@ -40,7 +40,7 @@ public record VkSurfacePresentModeEXT(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSurfacePresentModeEXT[] ret = new VkSurfacePresentModeEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSurfacePresentModeEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSurfacePresentModeEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkSurfacePresentModeEXT(@NotNull MemorySegment segment) implements
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("presentMode")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

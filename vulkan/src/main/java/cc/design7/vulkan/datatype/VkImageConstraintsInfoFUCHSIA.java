@@ -40,7 +40,7 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageConstraintsInfoFUCHSIA[] ret = new VkImageConstraintsInfoFUCHSIA[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkImageConstraintsInfoFUCHSIA(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkImageConstraintsInfoFUCHSIA(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         VkBufferCollectionConstraintsInfoFUCHSIA.LAYOUT.withName("bufferCollectionConstraints"),
         ValueLayout.JAVA_INT.withName("flags")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -34,7 +34,7 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH265HrdParameters[] ret = new StdVideoH265HrdParameters[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH265HrdParameters(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH265HrdParameters(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -70,7 +70,7 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         ValueLayout.ADDRESS.withTargetLayout(StdVideoH265SubLayerHrdParameters.LAYOUT).withName("pSubLayerHrdParametersNal"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoH265SubLayerHrdParameters.LAYOUT).withName("pSubLayerHrdParametersVcl")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$tick_divisor_minus2 = PathElement.groupElement("PATH$tick_divisor_minus2");

@@ -40,7 +40,7 @@ public record VkLatencySleepModeInfoNV(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkLatencySleepModeInfoNV[] ret = new VkLatencySleepModeInfoNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkLatencySleepModeInfoNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkLatencySleepModeInfoNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkLatencySleepModeInfoNV(@NotNull MemorySegment segment) implement
         ValueLayout.JAVA_INT.withName("lowLatencyBoost"),
         ValueLayout.JAVA_INT.withName("minimumIntervalUs")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

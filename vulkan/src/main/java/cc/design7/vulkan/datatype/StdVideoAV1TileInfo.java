@@ -34,7 +34,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoAV1TileInfo[] ret = new StdVideoAV1TileInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1TileInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoAV1TileInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pWidthInSbsMinus1"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pHeightInSbsMinus1")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$TileCols = PathElement.groupElement("PATH$TileCols");

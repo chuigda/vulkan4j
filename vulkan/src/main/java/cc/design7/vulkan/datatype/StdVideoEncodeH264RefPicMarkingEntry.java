@@ -34,7 +34,7 @@ public record StdVideoEncodeH264RefPicMarkingEntry(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeH264RefPicMarkingEntry[] ret = new StdVideoEncodeH264RefPicMarkingEntry[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeH264RefPicMarkingEntry(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeH264RefPicMarkingEntry(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record StdVideoEncodeH264RefPicMarkingEntry(@NotNull MemorySegment segmen
         ValueLayout.JAVA_SHORT.withName("long_term_frame_idx"),
         ValueLayout.JAVA_SHORT.withName("max_long_term_frame_idx_plus1")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$memory_management_control_operation = PathElement.groupElement("PATH$memory_management_control_operation");
     public static final PathElement PATH$difference_of_pic_nums_minus1 = PathElement.groupElement("PATH$difference_of_pic_nums_minus1");

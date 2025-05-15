@@ -35,7 +35,7 @@ public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoAV1QuantizationFlags[] ret = new StdVideoAV1QuantizationFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1QuantizationFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoAV1QuantizationFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) imple
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$using_qmatrix_reserved")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$using_qmatrix_reserved = PathElement.groupElement("PATH$bitfield$using_qmatrix_reserved");
 

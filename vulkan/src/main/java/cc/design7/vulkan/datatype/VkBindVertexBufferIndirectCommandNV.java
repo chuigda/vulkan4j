@@ -36,7 +36,7 @@ public record VkBindVertexBufferIndirectCommandNV(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBindVertexBufferIndirectCommandNV[] ret = new VkBindVertexBufferIndirectCommandNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBindVertexBufferIndirectCommandNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkBindVertexBufferIndirectCommandNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkBindVertexBufferIndirectCommandNV(@NotNull MemorySegment segment
         ValueLayout.JAVA_INT.withName("size"),
         ValueLayout.JAVA_INT.withName("stride")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bufferAddress = PathElement.groupElement("PATH$bufferAddress");
     public static final PathElement PATH$size = PathElement.groupElement("PATH$size");

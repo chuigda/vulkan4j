@@ -36,7 +36,7 @@ public record VkTraceRaysIndirectCommandKHR(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkTraceRaysIndirectCommandKHR[] ret = new VkTraceRaysIndirectCommandKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkTraceRaysIndirectCommandKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkTraceRaysIndirectCommandKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkTraceRaysIndirectCommandKHR(@NotNull MemorySegment segment) impl
         ValueLayout.JAVA_INT.withName("height"),
         ValueLayout.JAVA_INT.withName("depth")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$width = PathElement.groupElement("PATH$width");
     public static final PathElement PATH$height = PathElement.groupElement("PATH$height");

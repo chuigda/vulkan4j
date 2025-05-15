@@ -40,7 +40,7 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(@NotNull MemorySe
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceAccelerationStructureFeaturesKHR[] ret = new VkPhysicalDeviceAccelerationStructureFeaturesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceAccelerationStructureFeaturesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceAccelerationStructureFeaturesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -68,7 +68,7 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(@NotNull MemorySe
         ValueLayout.JAVA_INT.withName("accelerationStructureHostCommands"),
         ValueLayout.JAVA_INT.withName("descriptorBindingAccelerationStructureUpdateAfterBind")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

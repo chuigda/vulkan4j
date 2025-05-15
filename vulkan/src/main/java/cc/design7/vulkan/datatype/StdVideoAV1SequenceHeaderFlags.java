@@ -35,7 +35,7 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoAV1SequenceHeaderFlags[] ret = new StdVideoAV1SequenceHeaderFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1SequenceHeaderFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoAV1SequenceHeaderFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$still_picture_reserved")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$still_picture_reserved = PathElement.groupElement("PATH$bitfield$still_picture_reserved");
 

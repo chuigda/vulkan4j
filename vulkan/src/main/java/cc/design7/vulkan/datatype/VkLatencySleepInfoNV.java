@@ -40,7 +40,7 @@ public record VkLatencySleepInfoNV(@NotNull MemorySegment segment) implements IP
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkLatencySleepInfoNV[] ret = new VkLatencySleepInfoNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkLatencySleepInfoNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkLatencySleepInfoNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkLatencySleepInfoNV(@NotNull MemorySegment segment) implements IP
         ValueLayout.ADDRESS.withName("signalSemaphore"),
         ValueLayout.JAVA_LONG.withName("value")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

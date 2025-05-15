@@ -36,7 +36,7 @@ public record VkImageResolve(@NotNull MemorySegment segment) implements IPointer
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkImageResolve[] ret = new VkImageResolve[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkImageResolve(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkImageResolve(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record VkImageResolve(@NotNull MemorySegment segment) implements IPointer
         VkOffset3D.LAYOUT.withName("dstOffset"),
         VkExtent3D.LAYOUT.withName("extent")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$srcSubresource = PathElement.groupElement("PATH$srcSubresource");
     public static final PathElement PATH$srcOffset = PathElement.groupElement("PATH$srcOffset");

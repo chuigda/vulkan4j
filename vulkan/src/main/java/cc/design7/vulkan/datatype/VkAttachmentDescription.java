@@ -36,7 +36,7 @@ public record VkAttachmentDescription(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAttachmentDescription[] ret = new VkAttachmentDescription[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkAttachmentDescription(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkAttachmentDescription(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkAttachmentDescription(@NotNull MemorySegment segment) implements
         ValueLayout.JAVA_INT.withName("initialLayout"),
         ValueLayout.JAVA_INT.withName("finalLayout")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$format = PathElement.groupElement("PATH$format");

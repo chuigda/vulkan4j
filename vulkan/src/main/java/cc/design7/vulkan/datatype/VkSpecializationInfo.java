@@ -36,7 +36,7 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IP
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSpecializationInfo[] ret = new VkSpecializationInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSpecializationInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSpecializationInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IP
         NativeLayout.C_SIZE_T.withName("dataSize"),
         ValueLayout.ADDRESS.withName("pData")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$mapEntryCount = PathElement.groupElement("PATH$mapEntryCount");
     public static final PathElement PATH$pMapEntries = PathElement.groupElement("PATH$pMapEntries");

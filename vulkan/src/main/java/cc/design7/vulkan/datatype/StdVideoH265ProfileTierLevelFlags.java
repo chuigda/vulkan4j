@@ -35,7 +35,7 @@ public record StdVideoH265ProfileTierLevelFlags(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH265ProfileTierLevelFlags[] ret = new StdVideoH265ProfileTierLevelFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH265ProfileTierLevelFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH265ProfileTierLevelFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoH265ProfileTierLevelFlags(@NotNull MemorySegment segment) 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$general_tier_flag_general_frame_only_constraint_flag")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$general_tier_flag_general_frame_only_constraint_flag = PathElement.groupElement("PATH$bitfield$general_tier_flag_general_frame_only_constraint_flag");
 

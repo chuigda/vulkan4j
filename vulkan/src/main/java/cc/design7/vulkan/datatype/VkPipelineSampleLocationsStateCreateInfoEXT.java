@@ -40,7 +40,7 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(@NotNull MemorySegment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPipelineSampleLocationsStateCreateInfoEXT[] ret = new VkPipelineSampleLocationsStateCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineSampleLocationsStateCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPipelineSampleLocationsStateCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(@NotNull MemorySegment
         ValueLayout.JAVA_INT.withName("sampleLocationsEnable"),
         VkSampleLocationsInfoEXT.LAYOUT.withName("sampleLocationsInfo")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

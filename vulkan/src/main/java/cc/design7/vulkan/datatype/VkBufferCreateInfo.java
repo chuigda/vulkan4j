@@ -40,7 +40,7 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IPoi
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBufferCreateInfo[] ret = new VkBufferCreateInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBufferCreateInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkBufferCreateInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -69,7 +69,7 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IPoi
         ValueLayout.JAVA_INT.withName("queueFamilyIndexCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pQueueFamilyIndices")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

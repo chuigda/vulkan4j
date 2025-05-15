@@ -40,7 +40,7 @@ public record VkCommandBufferInheritanceRenderingInfo(@NotNull MemorySegment seg
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCommandBufferInheritanceRenderingInfo[] ret = new VkCommandBufferInheritanceRenderingInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkCommandBufferInheritanceRenderingInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkCommandBufferInheritanceRenderingInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -70,7 +70,7 @@ public record VkCommandBufferInheritanceRenderingInfo(@NotNull MemorySegment seg
         ValueLayout.JAVA_INT.withName("stencilAttachmentFormat"),
         ValueLayout.JAVA_INT.withName("rasterizationSamples")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

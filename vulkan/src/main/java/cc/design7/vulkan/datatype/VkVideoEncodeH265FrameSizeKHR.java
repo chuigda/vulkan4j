@@ -36,7 +36,7 @@ public record VkVideoEncodeH265FrameSizeKHR(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoEncodeH265FrameSizeKHR[] ret = new VkVideoEncodeH265FrameSizeKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeH265FrameSizeKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoEncodeH265FrameSizeKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkVideoEncodeH265FrameSizeKHR(@NotNull MemorySegment segment) impl
         ValueLayout.JAVA_INT.withName("framePSize"),
         ValueLayout.JAVA_INT.withName("frameBSize")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$frameISize = PathElement.groupElement("PATH$frameISize");
     public static final PathElement PATH$framePSize = PathElement.groupElement("PATH$framePSize");

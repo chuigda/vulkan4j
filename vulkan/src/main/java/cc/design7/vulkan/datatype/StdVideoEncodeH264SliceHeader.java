@@ -34,7 +34,7 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeH264SliceHeader[] ret = new StdVideoEncodeH264SliceHeader[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeH264SliceHeader(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeH264SliceHeader(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
         ValueLayout.JAVA_INT.withName("disable_deblocking_filter_idc"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264WeightTable.LAYOUT).withName("pWeightTable")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$first_mb_in_slice = PathElement.groupElement("PATH$first_mb_in_slice");

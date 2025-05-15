@@ -34,7 +34,7 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoAV1ColorConfig[] ret = new StdVideoAV1ColorConfig[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1ColorConfig(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoAV1ColorConfig(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
         ValueLayout.JAVA_INT.withName("matrix_coefficients"),
         ValueLayout.JAVA_INT.withName("chroma_sample_position")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$BitDepth = PathElement.groupElement("PATH$BitDepth");

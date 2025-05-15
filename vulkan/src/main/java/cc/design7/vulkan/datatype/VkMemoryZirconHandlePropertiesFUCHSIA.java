@@ -40,7 +40,7 @@ public record VkMemoryZirconHandlePropertiesFUCHSIA(@NotNull MemorySegment segme
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMemoryZirconHandlePropertiesFUCHSIA[] ret = new VkMemoryZirconHandlePropertiesFUCHSIA[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMemoryZirconHandlePropertiesFUCHSIA(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMemoryZirconHandlePropertiesFUCHSIA(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkMemoryZirconHandlePropertiesFUCHSIA(@NotNull MemorySegment segme
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("memoryTypeBits")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

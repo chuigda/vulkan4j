@@ -36,7 +36,7 @@ public record VkConformanceVersion(@NotNull MemorySegment segment) implements IP
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkConformanceVersion[] ret = new VkConformanceVersion[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkConformanceVersion(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkConformanceVersion(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record VkConformanceVersion(@NotNull MemorySegment segment) implements IP
         ValueLayout.JAVA_BYTE.withName("subminor"),
         ValueLayout.JAVA_BYTE.withName("patch")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$major = PathElement.groupElement("PATH$major");
     public static final PathElement PATH$minor = PathElement.groupElement("PATH$minor");

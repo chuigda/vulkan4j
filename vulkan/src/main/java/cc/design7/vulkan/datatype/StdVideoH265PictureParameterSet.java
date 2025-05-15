@@ -34,7 +34,7 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH265PictureParameterSet[] ret = new StdVideoH265PictureParameterSet[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH265PictureParameterSet(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH265PictureParameterSet(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -91,7 +91,7 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         ValueLayout.ADDRESS.withTargetLayout(StdVideoH265ScalingLists.LAYOUT).withName("pScalingLists"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoH265PredictorPaletteEntries.LAYOUT).withName("pPredictorPaletteEntries")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$pps_pic_parameter_set_id = PathElement.groupElement("PATH$pps_pic_parameter_set_id");

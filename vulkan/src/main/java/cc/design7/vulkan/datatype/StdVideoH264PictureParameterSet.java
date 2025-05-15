@@ -34,7 +34,7 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH264PictureParameterSet[] ret = new StdVideoH264PictureParameterSet[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH264PictureParameterSet(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH264PictureParameterSet(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         ValueLayout.JAVA_BYTE.withName("second_chroma_qp_index_offset"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoH264ScalingLists.LAYOUT).withName("pScalingLists")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$seq_parameter_set_id = PathElement.groupElement("PATH$seq_parameter_set_id");

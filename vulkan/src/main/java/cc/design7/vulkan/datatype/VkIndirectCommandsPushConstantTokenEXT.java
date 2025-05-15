@@ -36,7 +36,7 @@ public record VkIndirectCommandsPushConstantTokenEXT(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkIndirectCommandsPushConstantTokenEXT[] ret = new VkIndirectCommandsPushConstantTokenEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkIndirectCommandsPushConstantTokenEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkIndirectCommandsPushConstantTokenEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -58,7 +58,7 @@ public record VkIndirectCommandsPushConstantTokenEXT(@NotNull MemorySegment segm
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         VkPushConstantRange.LAYOUT.withName("updateRange")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$updateRange = PathElement.groupElement("PATH$updateRange");
 

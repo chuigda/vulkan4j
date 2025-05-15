@@ -40,7 +40,7 @@ public record VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(@NotNull MemorySe
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT[] ret = new VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(@NotNull MemorySe
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("ycbcr2plane444Formats")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

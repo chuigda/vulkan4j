@@ -40,7 +40,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(@NotNull MemorySegment segm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkWin32KeyedMutexAcquireReleaseInfoKHR[] ret = new VkWin32KeyedMutexAcquireReleaseInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkWin32KeyedMutexAcquireReleaseInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkWin32KeyedMutexAcquireReleaseInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -70,7 +70,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(@NotNull MemorySegment segm
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pReleaseSyncs"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pReleaseKeys")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

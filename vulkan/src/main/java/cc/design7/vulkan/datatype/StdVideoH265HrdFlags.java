@@ -35,7 +35,7 @@ public record StdVideoH265HrdFlags(@NotNull MemorySegment segment) implements IP
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH265HrdFlags[] ret = new StdVideoH265HrdFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH265HrdFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH265HrdFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoH265HrdFlags(@NotNull MemorySegment segment) implements IP
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag = PathElement.groupElement("PATH$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag");
 

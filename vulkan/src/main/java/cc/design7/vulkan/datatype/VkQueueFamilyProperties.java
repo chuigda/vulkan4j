@@ -36,7 +36,7 @@ public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkQueueFamilyProperties[] ret = new VkQueueFamilyProperties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkQueueFamilyProperties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkQueueFamilyProperties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements
         ValueLayout.JAVA_INT.withName("timestampValidBits"),
         VkExtent3D.LAYOUT.withName("minImageTransferGranularity")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$queueFlags = PathElement.groupElement("PATH$queueFlags");
     public static final PathElement PATH$queueCount = PathElement.groupElement("PATH$queueCount");

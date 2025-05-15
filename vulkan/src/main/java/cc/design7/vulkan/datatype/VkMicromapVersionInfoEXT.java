@@ -40,7 +40,7 @@ public record VkMicromapVersionInfoEXT(@NotNull MemorySegment segment) implement
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMicromapVersionInfoEXT[] ret = new VkMicromapVersionInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMicromapVersionInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMicromapVersionInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkMicromapVersionInfoEXT(@NotNull MemorySegment segment) implement
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pVersionData")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

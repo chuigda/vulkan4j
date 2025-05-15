@@ -40,7 +40,7 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceVulkan14Properties[] ret = new VkPhysicalDeviceVulkan14Properties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceVulkan14Properties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceVulkan14Properties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -88,7 +88,7 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         ValueLayout.JAVA_BYTE.withName("optimalTilingLayoutUUID"),
         ValueLayout.JAVA_INT.withName("identicalMemoryTypeRequirements")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

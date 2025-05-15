@@ -36,7 +36,7 @@ public record VkAabbPositionsKHR(@NotNull MemorySegment segment) implements IPoi
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkAabbPositionsKHR[] ret = new VkAabbPositionsKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkAabbPositionsKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkAabbPositionsKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -63,7 +63,7 @@ public record VkAabbPositionsKHR(@NotNull MemorySegment segment) implements IPoi
         ValueLayout.JAVA_FLOAT.withName("maxY"),
         ValueLayout.JAVA_FLOAT.withName("maxZ")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$minX = PathElement.groupElement("PATH$minX");
     public static final PathElement PATH$minY = PathElement.groupElement("PATH$minY");

@@ -40,7 +40,7 @@ public record VkBindImageMemorySwapchainInfoKHR(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBindImageMemorySwapchainInfoKHR[] ret = new VkBindImageMemorySwapchainInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBindImageMemorySwapchainInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkBindImageMemorySwapchainInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkBindImageMemorySwapchainInfoKHR(@NotNull MemorySegment segment) 
         ValueLayout.ADDRESS.withName("swapchain"),
         ValueLayout.JAVA_INT.withName("imageIndex")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

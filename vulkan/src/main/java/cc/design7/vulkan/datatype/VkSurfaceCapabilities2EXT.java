@@ -40,7 +40,7 @@ public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSurfaceCapabilities2EXT[] ret = new VkSurfaceCapabilities2EXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSurfaceCapabilities2EXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSurfaceCapabilities2EXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -74,7 +74,7 @@ public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implemen
         ValueLayout.JAVA_INT.withName("supportedUsageFlags"),
         ValueLayout.JAVA_INT.withName("supportedSurfaceCounters")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

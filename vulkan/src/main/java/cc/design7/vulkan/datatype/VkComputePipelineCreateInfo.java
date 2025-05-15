@@ -40,7 +40,7 @@ public record VkComputePipelineCreateInfo(@NotNull MemorySegment segment) implem
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkComputePipelineCreateInfo[] ret = new VkComputePipelineCreateInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkComputePipelineCreateInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkComputePipelineCreateInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -68,7 +68,7 @@ public record VkComputePipelineCreateInfo(@NotNull MemorySegment segment) implem
         ValueLayout.ADDRESS.withName("basePipelineHandle"),
         ValueLayout.JAVA_INT.withName("basePipelineIndex")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -34,7 +34,7 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH264SequenceParameterSetVui[] ret = new StdVideoH264SequenceParameterSetVui[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH264SequenceParameterSetVui(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH264SequenceParameterSetVui(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -71,7 +71,7 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
         ValueLayout.JAVA_INT.withName("reserved1"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoH264HrdParameters.LAYOUT).withName("pHrdParameters")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$aspect_ratio_idc = PathElement.groupElement("PATH$aspect_ratio_idc");

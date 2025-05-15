@@ -36,7 +36,7 @@ public record VkDepthClampRangeEXT(@NotNull MemorySegment segment) implements IP
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDepthClampRangeEXT[] ret = new VkDepthClampRangeEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDepthClampRangeEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDepthClampRangeEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -59,7 +59,7 @@ public record VkDepthClampRangeEXT(@NotNull MemorySegment segment) implements IP
         ValueLayout.JAVA_FLOAT.withName("minDepthClamp"),
         ValueLayout.JAVA_FLOAT.withName("maxDepthClamp")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$minDepthClamp = PathElement.groupElement("PATH$minDepthClamp");
     public static final PathElement PATH$maxDepthClamp = PathElement.groupElement("PATH$maxDepthClamp");

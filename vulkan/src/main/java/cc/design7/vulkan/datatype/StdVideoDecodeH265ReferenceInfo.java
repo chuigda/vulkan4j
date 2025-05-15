@@ -34,7 +34,7 @@ public record StdVideoDecodeH265ReferenceInfo(@NotNull MemorySegment segment) im
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoDecodeH265ReferenceInfo[] ret = new StdVideoDecodeH265ReferenceInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoDecodeH265ReferenceInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoDecodeH265ReferenceInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoDecodeH265ReferenceInfo(@NotNull MemorySegment segment) im
         StdVideoDecodeH265ReferenceInfoFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_INT.withName("PicOrderCntVal")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$PicOrderCntVal = PathElement.groupElement("PATH$PicOrderCntVal");

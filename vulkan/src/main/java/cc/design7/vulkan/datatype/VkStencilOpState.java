@@ -36,7 +36,7 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IPoint
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkStencilOpState[] ret = new VkStencilOpState[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkStencilOpState(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkStencilOpState(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IPoint
         ValueLayout.JAVA_INT.withName("writeMask"),
         ValueLayout.JAVA_INT.withName("reference")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$failOp = PathElement.groupElement("PATH$failOp");
     public static final PathElement PATH$passOp = PathElement.groupElement("PATH$passOp");

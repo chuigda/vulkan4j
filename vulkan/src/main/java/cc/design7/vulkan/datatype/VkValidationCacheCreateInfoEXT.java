@@ -40,7 +40,7 @@ public record VkValidationCacheCreateInfoEXT(@NotNull MemorySegment segment) imp
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkValidationCacheCreateInfoEXT[] ret = new VkValidationCacheCreateInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkValidationCacheCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkValidationCacheCreateInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkValidationCacheCreateInfoEXT(@NotNull MemorySegment segment) imp
         NativeLayout.C_SIZE_T.withName("initialDataSize"),
         ValueLayout.ADDRESS.withName("pInitialData")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

@@ -40,7 +40,7 @@ public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IPoi
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkCudaLaunchInfoNV[] ret = new VkCudaLaunchInfoNV[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkCudaLaunchInfoNV(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkCudaLaunchInfoNV(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -75,7 +75,7 @@ public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IPoi
         NativeLayout.C_SIZE_T.withName("extraCount"),
         ValueLayout.ADDRESS.withName("pExtras")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

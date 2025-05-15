@@ -36,7 +36,7 @@ public record VkMicromapUsageEXT(@NotNull MemorySegment segment) implements IPoi
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMicromapUsageEXT[] ret = new VkMicromapUsageEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMicromapUsageEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMicromapUsageEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -60,7 +60,7 @@ public record VkMicromapUsageEXT(@NotNull MemorySegment segment) implements IPoi
         ValueLayout.JAVA_INT.withName("subdivisionLevel"),
         ValueLayout.JAVA_INT.withName("format")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$count = PathElement.groupElement("PATH$count");
     public static final PathElement PATH$subdivisionLevel = PathElement.groupElement("PATH$subdivisionLevel");

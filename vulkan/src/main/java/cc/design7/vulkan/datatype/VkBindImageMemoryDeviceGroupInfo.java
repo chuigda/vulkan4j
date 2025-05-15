@@ -40,7 +40,7 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBindImageMemoryDeviceGroupInfo[] ret = new VkBindImageMemoryDeviceGroupInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBindImageMemoryDeviceGroupInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkBindImageMemoryDeviceGroupInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
         ValueLayout.JAVA_INT.withName("splitInstanceBindRegionCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pSplitInstanceBindRegions")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

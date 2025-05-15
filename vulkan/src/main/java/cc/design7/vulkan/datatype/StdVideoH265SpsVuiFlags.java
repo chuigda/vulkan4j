@@ -35,7 +35,7 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoH265SpsVuiFlags[] ret = new StdVideoH265SpsVuiFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH265SpsVuiFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoH265SpsVuiFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag = PathElement.groupElement("PATH$bitfield$aspect_ratio_info_present_flag_restricted_ref_pic_lists_flag");
 

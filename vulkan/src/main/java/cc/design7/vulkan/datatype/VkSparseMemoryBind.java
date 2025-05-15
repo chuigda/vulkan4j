@@ -36,7 +36,7 @@ public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IPoi
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkSparseMemoryBind[] ret = new VkSparseMemoryBind[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSparseMemoryBind(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkSparseMemoryBind(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -62,7 +62,7 @@ public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IPoi
         ValueLayout.JAVA_LONG.withName("memoryOffset"),
         ValueLayout.JAVA_INT.withName("flags")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$resourceOffset = PathElement.groupElement("PATH$resourceOffset");
     public static final PathElement PATH$size = PathElement.groupElement("PATH$size");

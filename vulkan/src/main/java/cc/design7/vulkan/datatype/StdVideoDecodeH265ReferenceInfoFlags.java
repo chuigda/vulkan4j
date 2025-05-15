@@ -35,7 +35,7 @@ public record StdVideoDecodeH265ReferenceInfoFlags(@NotNull MemorySegment segmen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoDecodeH265ReferenceInfoFlags[] ret = new StdVideoDecodeH265ReferenceInfoFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoDecodeH265ReferenceInfoFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoDecodeH265ReferenceInfoFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoDecodeH265ReferenceInfoFlags(@NotNull MemorySegment segmen
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$used_for_long_term_reference_unused_for_reference")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$used_for_long_term_reference_unused_for_reference = PathElement.groupElement("PATH$bitfield$used_for_long_term_reference_unused_for_reference");
 

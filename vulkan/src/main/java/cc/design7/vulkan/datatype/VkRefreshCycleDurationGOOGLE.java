@@ -36,7 +36,7 @@ public record VkRefreshCycleDurationGOOGLE(@NotNull MemorySegment segment) imple
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkRefreshCycleDurationGOOGLE[] ret = new VkRefreshCycleDurationGOOGLE[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkRefreshCycleDurationGOOGLE(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkRefreshCycleDurationGOOGLE(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -58,7 +58,7 @@ public record VkRefreshCycleDurationGOOGLE(@NotNull MemorySegment segment) imple
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_LONG.withName("refreshDuration")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$refreshDuration = PathElement.groupElement("PATH$refreshDuration");
 

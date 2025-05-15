@@ -36,7 +36,7 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IPoin
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkLayerProperties[] ret = new VkLayerProperties[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkLayerProperties(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkLayerProperties(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -61,7 +61,7 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IPoin
         ValueLayout.JAVA_INT.withName("implementationVersion"),
         ValueLayout.JAVA_BYTE.withName("description")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$layerName = PathElement.groupElement("PATH$layerName");
     public static final PathElement PATH$specVersion = PathElement.groupElement("PATH$specVersion");

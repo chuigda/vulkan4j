@@ -40,7 +40,7 @@ public record VkMemoryAllocateFlagsInfo(@NotNull MemorySegment segment) implemen
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkMemoryAllocateFlagsInfo[] ret = new VkMemoryAllocateFlagsInfo[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkMemoryAllocateFlagsInfo(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkMemoryAllocateFlagsInfo(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkMemoryAllocateFlagsInfo(@NotNull MemorySegment segment) implemen
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.JAVA_INT.withName("deviceMask")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

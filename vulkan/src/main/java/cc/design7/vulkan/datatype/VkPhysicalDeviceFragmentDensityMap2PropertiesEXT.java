@@ -40,7 +40,7 @@ public record VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(@NotNull MemorySe
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceFragmentDensityMap2PropertiesEXT[] ret = new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(@NotNull MemorySe
         ValueLayout.JAVA_INT.withName("maxSubsampledArrayLayers"),
         ValueLayout.JAVA_INT.withName("maxDescriptorSetSubsampledSamplers")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

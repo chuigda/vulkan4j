@@ -40,7 +40,7 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoEncodeAV1SessionParametersCreateInfoKHR[] ret = new VkVideoEncodeAV1SessionParametersCreateInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeAV1SessionParametersCreateInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoEncodeAV1SessionParametersCreateInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -67,7 +67,7 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         ValueLayout.JAVA_INT.withName("stdOperatingPointCount"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeAV1OperatingPointInfo.LAYOUT).withName("pStdOperatingPoints")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

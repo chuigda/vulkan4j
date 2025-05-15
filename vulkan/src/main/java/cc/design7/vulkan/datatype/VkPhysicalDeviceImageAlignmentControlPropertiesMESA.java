@@ -40,7 +40,7 @@ public record VkPhysicalDeviceImageAlignmentControlPropertiesMESA(@NotNull Memor
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceImageAlignmentControlPropertiesMESA[] ret = new VkPhysicalDeviceImageAlignmentControlPropertiesMESA[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceImageAlignmentControlPropertiesMESA(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceImageAlignmentControlPropertiesMESA(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -64,7 +64,7 @@ public record VkPhysicalDeviceImageAlignmentControlPropertiesMESA(@NotNull Memor
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("supportedImageAlignmentMask")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

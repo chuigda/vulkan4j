@@ -35,7 +35,7 @@ public record StdVideoDecodeH265PictureInfoFlags(@NotNull MemorySegment segment)
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoDecodeH265PictureInfoFlags[] ret = new StdVideoDecodeH265PictureInfoFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoDecodeH265PictureInfoFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoDecodeH265PictureInfoFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoDecodeH265PictureInfoFlags(@NotNull MemorySegment segment)
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag = PathElement.groupElement("PATH$bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag");
 

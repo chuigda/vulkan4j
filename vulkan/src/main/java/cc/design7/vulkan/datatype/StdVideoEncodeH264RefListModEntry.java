@@ -34,7 +34,7 @@ public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) 
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeH264RefListModEntry[] ret = new StdVideoEncodeH264RefListModEntry[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeH264RefListModEntry(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeH264RefListModEntry(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -58,7 +58,7 @@ public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) 
         ValueLayout.JAVA_SHORT.withName("abs_diff_pic_num_minus1"),
         ValueLayout.JAVA_SHORT.withName("long_term_pic_num")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$modification_of_pic_nums_idc = PathElement.groupElement("PATH$modification_of_pic_nums_idc");
     public static final PathElement PATH$abs_diff_pic_num_minus1 = PathElement.groupElement("PATH$abs_diff_pic_num_minus1");

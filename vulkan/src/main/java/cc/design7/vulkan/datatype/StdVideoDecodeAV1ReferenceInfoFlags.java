@@ -35,7 +35,7 @@ public record StdVideoDecodeAV1ReferenceInfoFlags(@NotNull MemorySegment segment
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoDecodeAV1ReferenceInfoFlags[] ret = new StdVideoDecodeAV1ReferenceInfoFlags[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoDecodeAV1ReferenceInfoFlags(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoDecodeAV1ReferenceInfoFlags(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -57,7 +57,7 @@ public record StdVideoDecodeAV1ReferenceInfoFlags(@NotNull MemorySegment segment
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("bitfield$disable_frame_end_update_cdf_reserved")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$bitfield$disable_frame_end_update_cdf_reserved = PathElement.groupElement("PATH$bitfield$disable_frame_end_update_cdf_reserved");
 

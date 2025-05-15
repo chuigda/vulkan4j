@@ -40,7 +40,7 @@ public record VkDebugMarkerObjectTagInfoEXT(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkDebugMarkerObjectTagInfoEXT[] ret = new VkDebugMarkerObjectTagInfoEXT[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDebugMarkerObjectTagInfoEXT(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkDebugMarkerObjectTagInfoEXT(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -68,7 +68,7 @@ public record VkDebugMarkerObjectTagInfoEXT(@NotNull MemorySegment segment) impl
         NativeLayout.C_SIZE_T.withName("tagSize"),
         ValueLayout.ADDRESS.withName("pTag")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

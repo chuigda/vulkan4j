@@ -34,7 +34,7 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoEncodeH264WeightTable[] ret = new StdVideoEncodeH264WeightTable[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeH264WeightTable(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new StdVideoEncodeH264WeightTable(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
         ValueLayout.JAVA_BYTE.withName("chroma_weight_l1"),
         ValueLayout.JAVA_BYTE.withName("chroma_offset_l1")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$luma_log2_weight_denom = PathElement.groupElement("PATH$luma_log2_weight_denom");

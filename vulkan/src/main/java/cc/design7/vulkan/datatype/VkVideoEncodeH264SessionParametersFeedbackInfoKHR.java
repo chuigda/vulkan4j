@@ -40,7 +40,7 @@ public record VkVideoEncodeH264SessionParametersFeedbackInfoKHR(@NotNull MemoryS
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkVideoEncodeH264SessionParametersFeedbackInfoKHR[] ret = new VkVideoEncodeH264SessionParametersFeedbackInfoKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeH264SessionParametersFeedbackInfoKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkVideoEncodeH264SessionParametersFeedbackInfoKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -65,7 +65,7 @@ public record VkVideoEncodeH264SessionParametersFeedbackInfoKHR(@NotNull MemoryS
         ValueLayout.JAVA_INT.withName("hasStdSPSOverrides"),
         ValueLayout.JAVA_INT.withName("hasStdPPSOverrides")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");

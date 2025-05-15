@@ -40,7 +40,7 @@ public record VkPhysicalDeviceShaderBfloat16FeaturesKHR(@NotNull MemorySegment s
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceShaderBfloat16FeaturesKHR[] ret = new VkPhysicalDeviceShaderBfloat16FeaturesKHR[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceShaderBfloat16FeaturesKHR(segment.asSlice(i * SIZE, SIZE));
+            ret[i] = new VkPhysicalDeviceShaderBfloat16FeaturesKHR(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
@@ -66,7 +66,7 @@ public record VkPhysicalDeviceShaderBfloat16FeaturesKHR(@NotNull MemorySegment s
         ValueLayout.JAVA_INT.withName("shaderBFloat16DotProduct"),
         ValueLayout.JAVA_INT.withName("shaderBFloat16CooperativeMatrix")
     );
-    public static final long SIZE = LAYOUT.byteSize();
+    public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
