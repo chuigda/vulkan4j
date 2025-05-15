@@ -1,9 +1,7 @@
 package cc.design7.babel.codegen
 
-import cc.design7.babel.codegen.accessor.generateBitfieldAccessor
-import cc.design7.babel.ctype.CFixedSizeType
-import cc.design7.babel.ctype.CPlatformDependentIntType
-import cc.design7.babel.ctype.CType
+import cc.design7.babel.codegen.accessor.*
+import cc.design7.babel.ctype.*
 import cc.design7.babel.ctype.lowerType
 import cc.design7.babel.extract.vulkan.extractVulkanRegistry
 import cc.design7.babel.registry.RegistryBase
@@ -38,6 +36,7 @@ sealed class LayoutField(
     class Typed(jType: String, name: String, value: String, val type: CType) :
         LayoutField(jType, name, value) {
         override val pathName: String = "PATH$$name"
+        val rawName = "${name}Raw"
     }
 
     /**
@@ -203,10 +202,12 @@ fun generateStructure(
         +""
 
         layouts.forEach {
-            if (it is LayoutField.Bitfields) {
-                generateBitfieldAccessor(it)
-                +""
+            when (it) {
+                is LayoutField.Bitfields -> +generateBitfieldAccessor(it)
+                is LayoutField.Typed -> +generateMemberAccessor(it)
             }
+
+            +""
         }
     }
 
@@ -350,15 +351,13 @@ private fun summarizeBitfieldStorageUnit(
     )
 }
 
-//private fun generateMemberAccessor(layout: LayoutField.Typed, cType: CType): Doc {
-//    val accessor = when (cType) {
-//        is CArrayType -> generateArrayAccessor(cType, layout)
-//        is CHandleType -> generateHandleAccessor(cType, layout)
-//        is CNonRefType -> generateNonRefAccessor(cType, layout)
-//        is CPointerType -> generatePtrAccessor(cType, layout)
-//        is CStructType -> generateStructureTypeAccessor(cType, layout)
-//        is CVoidType -> throw Exception("void type not allowed in struct")
-//    }
-//
-//    return DocText(accessor)
-//}
+private fun generateMemberAccessor(layout: LayoutField.Typed): Doc {
+    return when (val cType = layout.type) {
+        is CArrayType -> generateArrayAccessor(cType, layout)
+        is CHandleType -> generateHandleAccessor(cType, layout)
+        is CNonRefType -> generateNonRefAccessor(cType, layout)
+        is CPointerType -> generatePtrAccessor(cType, layout)
+        is CStructType -> generateStructureTypeAccessor(cType, layout)
+        is CVoidType -> throw Exception("void type not allowed in struct")
+    }
+}
