@@ -48,6 +48,7 @@ import static cc.design7.vulkan.VkConstants.*;
 /// non-allocated instances.
 ///
 /// ## Contracts
+///
 /// The property {@link #segment()} should always be not-null
 /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
