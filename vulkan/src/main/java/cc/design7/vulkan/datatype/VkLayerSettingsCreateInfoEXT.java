@@ -138,10 +138,10 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkLayerSettingEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkLayerSettingEXT.BYTES);
         VkLayerSettingEXT[] ret = new VkLayerSettingEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkLayerSettingEXT(s.asSlice(i * VkLayerSettingEXT.SIZE, VkLayerSettingEXT.SIZE));
+            ret[i] = new VkLayerSettingEXT(s.asSlice(i * VkLayerSettingEXT.BYTES, VkLayerSettingEXT.BYTES));
         }
         return ret;
     }

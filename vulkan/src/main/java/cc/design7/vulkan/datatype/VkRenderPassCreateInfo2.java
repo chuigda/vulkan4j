@@ -153,10 +153,10 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkAttachmentDescription2.SIZE);
+        s = s.reinterpret(assumedCount * VkAttachmentDescription2.BYTES);
         VkAttachmentDescription2[] ret = new VkAttachmentDescription2[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentDescription2(s.asSlice(i * VkAttachmentDescription2.SIZE, VkAttachmentDescription2.SIZE));
+            ret[i] = new VkAttachmentDescription2(s.asSlice(i * VkAttachmentDescription2.BYTES, VkAttachmentDescription2.BYTES));
         }
         return ret;
     }
@@ -196,10 +196,10 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSubpassDescription2.SIZE);
+        s = s.reinterpret(assumedCount * VkSubpassDescription2.BYTES);
         VkSubpassDescription2[] ret = new VkSubpassDescription2[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSubpassDescription2(s.asSlice(i * VkSubpassDescription2.SIZE, VkSubpassDescription2.SIZE));
+            ret[i] = new VkSubpassDescription2(s.asSlice(i * VkSubpassDescription2.BYTES, VkSubpassDescription2.BYTES));
         }
         return ret;
     }
@@ -239,10 +239,10 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSubpassDependency2.SIZE);
+        s = s.reinterpret(assumedCount * VkSubpassDependency2.BYTES);
         VkSubpassDependency2[] ret = new VkSubpassDependency2[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSubpassDependency2(s.asSlice(i * VkSubpassDependency2.SIZE, VkSubpassDependency2.SIZE));
+            ret[i] = new VkSubpassDependency2(s.asSlice(i * VkSubpassDependency2.BYTES, VkSubpassDependency2.BYTES));
         }
         return ret;
     }

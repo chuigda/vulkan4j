@@ -131,10 +131,10 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineBinaryKeysAndDataKHR.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineBinaryKeysAndDataKHR.BYTES);
         VkPipelineBinaryKeysAndDataKHR[] ret = new VkPipelineBinaryKeysAndDataKHR[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineBinaryKeysAndDataKHR(s.asSlice(i * VkPipelineBinaryKeysAndDataKHR.SIZE, VkPipelineBinaryKeysAndDataKHR.SIZE));
+            ret[i] = new VkPipelineBinaryKeysAndDataKHR(s.asSlice(i * VkPipelineBinaryKeysAndDataKHR.BYTES, VkPipelineBinaryKeysAndDataKHR.BYTES));
         }
         return ret;
     }
@@ -178,10 +178,10 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineCreateInfoKHR.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineCreateInfoKHR.BYTES);
         VkPipelineCreateInfoKHR[] ret = new VkPipelineCreateInfoKHR[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineCreateInfoKHR(s.asSlice(i * VkPipelineCreateInfoKHR.SIZE, VkPipelineCreateInfoKHR.SIZE));
+            ret[i] = new VkPipelineCreateInfoKHR(s.asSlice(i * VkPipelineCreateInfoKHR.BYTES, VkPipelineCreateInfoKHR.BYTES));
         }
         return ret;
     }

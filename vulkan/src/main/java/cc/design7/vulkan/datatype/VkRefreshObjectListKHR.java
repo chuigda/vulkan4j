@@ -138,10 +138,10 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkRefreshObjectKHR.SIZE);
+        s = s.reinterpret(assumedCount * VkRefreshObjectKHR.BYTES);
         VkRefreshObjectKHR[] ret = new VkRefreshObjectKHR[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkRefreshObjectKHR(s.asSlice(i * VkRefreshObjectKHR.SIZE, VkRefreshObjectKHR.SIZE));
+            ret[i] = new VkRefreshObjectKHR(s.asSlice(i * VkRefreshObjectKHR.BYTES, VkRefreshObjectKHR.BYTES));
         }
         return ret;
     }

@@ -156,10 +156,10 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.BYTES);
         VkPipelineShaderStageCreateInfo[] ret = new VkPipelineShaderStageCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineShaderStageCreateInfo(s.asSlice(i * VkPipelineShaderStageCreateInfo.SIZE, VkPipelineShaderStageCreateInfo.SIZE));
+            ret[i] = new VkPipelineShaderStageCreateInfo(s.asSlice(i * VkPipelineShaderStageCreateInfo.BYTES, VkPipelineShaderStageCreateInfo.BYTES));
         }
         return ret;
     }
@@ -199,10 +199,10 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkRayTracingShaderGroupCreateInfoKHR.SIZE);
+        s = s.reinterpret(assumedCount * VkRayTracingShaderGroupCreateInfoKHR.BYTES);
         VkRayTracingShaderGroupCreateInfoKHR[] ret = new VkRayTracingShaderGroupCreateInfoKHR[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkRayTracingShaderGroupCreateInfoKHR(s.asSlice(i * VkRayTracingShaderGroupCreateInfoKHR.SIZE, VkRayTracingShaderGroupCreateInfoKHR.SIZE));
+            ret[i] = new VkRayTracingShaderGroupCreateInfoKHR(s.asSlice(i * VkRayTracingShaderGroupCreateInfoKHR.BYTES, VkRayTracingShaderGroupCreateInfoKHR.BYTES));
         }
         return ret;
     }
@@ -242,10 +242,10 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineLibraryCreateInfoKHR.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineLibraryCreateInfoKHR.BYTES);
         VkPipelineLibraryCreateInfoKHR[] ret = new VkPipelineLibraryCreateInfoKHR[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineLibraryCreateInfoKHR(s.asSlice(i * VkPipelineLibraryCreateInfoKHR.SIZE, VkPipelineLibraryCreateInfoKHR.SIZE));
+            ret[i] = new VkPipelineLibraryCreateInfoKHR(s.asSlice(i * VkPipelineLibraryCreateInfoKHR.BYTES, VkPipelineLibraryCreateInfoKHR.BYTES));
         }
         return ret;
     }
@@ -277,10 +277,10 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkRayTracingPipelineInterfaceCreateInfoKHR.SIZE);
+        s = s.reinterpret(assumedCount * VkRayTracingPipelineInterfaceCreateInfoKHR.BYTES);
         VkRayTracingPipelineInterfaceCreateInfoKHR[] ret = new VkRayTracingPipelineInterfaceCreateInfoKHR[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkRayTracingPipelineInterfaceCreateInfoKHR(s.asSlice(i * VkRayTracingPipelineInterfaceCreateInfoKHR.SIZE, VkRayTracingPipelineInterfaceCreateInfoKHR.SIZE));
+            ret[i] = new VkRayTracingPipelineInterfaceCreateInfoKHR(s.asSlice(i * VkRayTracingPipelineInterfaceCreateInfoKHR.BYTES, VkRayTracingPipelineInterfaceCreateInfoKHR.BYTES));
         }
         return ret;
     }
@@ -312,10 +312,10 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineDynamicStateCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineDynamicStateCreateInfo.BYTES);
         VkPipelineDynamicStateCreateInfo[] ret = new VkPipelineDynamicStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineDynamicStateCreateInfo(s.asSlice(i * VkPipelineDynamicStateCreateInfo.SIZE, VkPipelineDynamicStateCreateInfo.SIZE));
+            ret[i] = new VkPipelineDynamicStateCreateInfo(s.asSlice(i * VkPipelineDynamicStateCreateInfo.BYTES, VkPipelineDynamicStateCreateInfo.BYTES));
         }
         return ret;
     }

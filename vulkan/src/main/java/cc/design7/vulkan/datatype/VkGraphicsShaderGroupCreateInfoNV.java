@@ -140,10 +140,10 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.BYTES);
         VkPipelineShaderStageCreateInfo[] ret = new VkPipelineShaderStageCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineShaderStageCreateInfo(s.asSlice(i * VkPipelineShaderStageCreateInfo.SIZE, VkPipelineShaderStageCreateInfo.SIZE));
+            ret[i] = new VkPipelineShaderStageCreateInfo(s.asSlice(i * VkPipelineShaderStageCreateInfo.BYTES, VkPipelineShaderStageCreateInfo.BYTES));
         }
         return ret;
     }
@@ -175,10 +175,10 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineVertexInputStateCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineVertexInputStateCreateInfo.BYTES);
         VkPipelineVertexInputStateCreateInfo[] ret = new VkPipelineVertexInputStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineVertexInputStateCreateInfo(s.asSlice(i * VkPipelineVertexInputStateCreateInfo.SIZE, VkPipelineVertexInputStateCreateInfo.SIZE));
+            ret[i] = new VkPipelineVertexInputStateCreateInfo(s.asSlice(i * VkPipelineVertexInputStateCreateInfo.BYTES, VkPipelineVertexInputStateCreateInfo.BYTES));
         }
         return ret;
     }
@@ -210,10 +210,10 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineTessellationStateCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineTessellationStateCreateInfo.BYTES);
         VkPipelineTessellationStateCreateInfo[] ret = new VkPipelineTessellationStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineTessellationStateCreateInfo(s.asSlice(i * VkPipelineTessellationStateCreateInfo.SIZE, VkPipelineTessellationStateCreateInfo.SIZE));
+            ret[i] = new VkPipelineTessellationStateCreateInfo(s.asSlice(i * VkPipelineTessellationStateCreateInfo.BYTES, VkPipelineTessellationStateCreateInfo.BYTES));
         }
         return ret;
     }

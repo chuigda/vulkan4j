@@ -175,10 +175,10 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPoint
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSparseBufferMemoryBindInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkSparseBufferMemoryBindInfo.BYTES);
         VkSparseBufferMemoryBindInfo[] ret = new VkSparseBufferMemoryBindInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSparseBufferMemoryBindInfo(s.asSlice(i * VkSparseBufferMemoryBindInfo.SIZE, VkSparseBufferMemoryBindInfo.SIZE));
+            ret[i] = new VkSparseBufferMemoryBindInfo(s.asSlice(i * VkSparseBufferMemoryBindInfo.BYTES, VkSparseBufferMemoryBindInfo.BYTES));
         }
         return ret;
     }
@@ -218,10 +218,10 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPoint
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSparseImageOpaqueMemoryBindInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkSparseImageOpaqueMemoryBindInfo.BYTES);
         VkSparseImageOpaqueMemoryBindInfo[] ret = new VkSparseImageOpaqueMemoryBindInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSparseImageOpaqueMemoryBindInfo(s.asSlice(i * VkSparseImageOpaqueMemoryBindInfo.SIZE, VkSparseImageOpaqueMemoryBindInfo.SIZE));
+            ret[i] = new VkSparseImageOpaqueMemoryBindInfo(s.asSlice(i * VkSparseImageOpaqueMemoryBindInfo.BYTES, VkSparseImageOpaqueMemoryBindInfo.BYTES));
         }
         return ret;
     }
@@ -261,10 +261,10 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPoint
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSparseImageMemoryBindInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkSparseImageMemoryBindInfo.BYTES);
         VkSparseImageMemoryBindInfo[] ret = new VkSparseImageMemoryBindInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSparseImageMemoryBindInfo(s.asSlice(i * VkSparseImageMemoryBindInfo.SIZE, VkSparseImageMemoryBindInfo.SIZE));
+            ret[i] = new VkSparseImageMemoryBindInfo(s.asSlice(i * VkSparseImageMemoryBindInfo.BYTES, VkSparseImageMemoryBindInfo.BYTES));
         }
         return ret;
     }

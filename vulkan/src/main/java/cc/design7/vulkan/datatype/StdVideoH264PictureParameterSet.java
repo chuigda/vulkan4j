@@ -181,10 +181,10 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoH264ScalingLists.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoH264ScalingLists.BYTES);
         StdVideoH264ScalingLists[] ret = new StdVideoH264ScalingLists[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH264ScalingLists(s.asSlice(i * StdVideoH264ScalingLists.SIZE, StdVideoH264ScalingLists.SIZE));
+            ret[i] = new StdVideoH264ScalingLists(s.asSlice(i * StdVideoH264ScalingLists.BYTES, StdVideoH264ScalingLists.BYTES));
         }
         return ret;
     }

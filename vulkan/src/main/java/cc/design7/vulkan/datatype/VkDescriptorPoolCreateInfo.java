@@ -156,10 +156,10 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDescriptorPoolSize.SIZE);
+        s = s.reinterpret(assumedCount * VkDescriptorPoolSize.BYTES);
         VkDescriptorPoolSize[] ret = new VkDescriptorPoolSize[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorPoolSize(s.asSlice(i * VkDescriptorPoolSize.SIZE, VkDescriptorPoolSize.SIZE));
+            ret[i] = new VkDescriptorPoolSize(s.asSlice(i * VkDescriptorPoolSize.BYTES, VkDescriptorPoolSize.BYTES));
         }
         return ret;
     }

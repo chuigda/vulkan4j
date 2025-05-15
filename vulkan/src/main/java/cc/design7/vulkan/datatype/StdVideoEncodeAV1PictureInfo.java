@@ -261,10 +261,10 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoAV1TileInfo.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoAV1TileInfo.BYTES);
         StdVideoAV1TileInfo[] ret = new StdVideoAV1TileInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1TileInfo(s.asSlice(i * StdVideoAV1TileInfo.SIZE, StdVideoAV1TileInfo.SIZE));
+            ret[i] = new StdVideoAV1TileInfo(s.asSlice(i * StdVideoAV1TileInfo.BYTES, StdVideoAV1TileInfo.BYTES));
         }
         return ret;
     }
@@ -296,10 +296,10 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoAV1Quantization.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoAV1Quantization.BYTES);
         StdVideoAV1Quantization[] ret = new StdVideoAV1Quantization[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1Quantization(s.asSlice(i * StdVideoAV1Quantization.SIZE, StdVideoAV1Quantization.SIZE));
+            ret[i] = new StdVideoAV1Quantization(s.asSlice(i * StdVideoAV1Quantization.BYTES, StdVideoAV1Quantization.BYTES));
         }
         return ret;
     }
@@ -331,10 +331,10 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoAV1Segmentation.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoAV1Segmentation.BYTES);
         StdVideoAV1Segmentation[] ret = new StdVideoAV1Segmentation[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1Segmentation(s.asSlice(i * StdVideoAV1Segmentation.SIZE, StdVideoAV1Segmentation.SIZE));
+            ret[i] = new StdVideoAV1Segmentation(s.asSlice(i * StdVideoAV1Segmentation.BYTES, StdVideoAV1Segmentation.BYTES));
         }
         return ret;
     }
@@ -366,10 +366,10 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoAV1LoopFilter.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoAV1LoopFilter.BYTES);
         StdVideoAV1LoopFilter[] ret = new StdVideoAV1LoopFilter[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1LoopFilter(s.asSlice(i * StdVideoAV1LoopFilter.SIZE, StdVideoAV1LoopFilter.SIZE));
+            ret[i] = new StdVideoAV1LoopFilter(s.asSlice(i * StdVideoAV1LoopFilter.BYTES, StdVideoAV1LoopFilter.BYTES));
         }
         return ret;
     }
@@ -401,10 +401,10 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoAV1CDEF.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoAV1CDEF.BYTES);
         StdVideoAV1CDEF[] ret = new StdVideoAV1CDEF[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1CDEF(s.asSlice(i * StdVideoAV1CDEF.SIZE, StdVideoAV1CDEF.SIZE));
+            ret[i] = new StdVideoAV1CDEF(s.asSlice(i * StdVideoAV1CDEF.BYTES, StdVideoAV1CDEF.BYTES));
         }
         return ret;
     }
@@ -436,10 +436,10 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoAV1LoopRestoration.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoAV1LoopRestoration.BYTES);
         StdVideoAV1LoopRestoration[] ret = new StdVideoAV1LoopRestoration[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1LoopRestoration(s.asSlice(i * StdVideoAV1LoopRestoration.SIZE, StdVideoAV1LoopRestoration.SIZE));
+            ret[i] = new StdVideoAV1LoopRestoration(s.asSlice(i * StdVideoAV1LoopRestoration.BYTES, StdVideoAV1LoopRestoration.BYTES));
         }
         return ret;
     }
@@ -471,10 +471,10 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoAV1GlobalMotion.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoAV1GlobalMotion.BYTES);
         StdVideoAV1GlobalMotion[] ret = new StdVideoAV1GlobalMotion[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1GlobalMotion(s.asSlice(i * StdVideoAV1GlobalMotion.SIZE, StdVideoAV1GlobalMotion.SIZE));
+            ret[i] = new StdVideoAV1GlobalMotion(s.asSlice(i * StdVideoAV1GlobalMotion.BYTES, StdVideoAV1GlobalMotion.BYTES));
         }
         return ret;
     }
@@ -506,10 +506,10 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoEncodeAV1ExtensionHeader.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoEncodeAV1ExtensionHeader.BYTES);
         StdVideoEncodeAV1ExtensionHeader[] ret = new StdVideoEncodeAV1ExtensionHeader[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeAV1ExtensionHeader(s.asSlice(i * StdVideoEncodeAV1ExtensionHeader.SIZE, StdVideoEncodeAV1ExtensionHeader.SIZE));
+            ret[i] = new StdVideoEncodeAV1ExtensionHeader(s.asSlice(i * StdVideoEncodeAV1ExtensionHeader.BYTES, StdVideoEncodeAV1ExtensionHeader.BYTES));
         }
         return ret;
     }

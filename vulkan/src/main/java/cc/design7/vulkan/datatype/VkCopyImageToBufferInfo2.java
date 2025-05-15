@@ -173,10 +173,10 @@ public record VkCopyImageToBufferInfo2(@NotNull MemorySegment segment) implement
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkBufferImageCopy2.SIZE);
+        s = s.reinterpret(assumedCount * VkBufferImageCopy2.BYTES);
         VkBufferImageCopy2[] ret = new VkBufferImageCopy2[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkBufferImageCopy2(s.asSlice(i * VkBufferImageCopy2.SIZE, VkBufferImageCopy2.SIZE));
+            ret[i] = new VkBufferImageCopy2(s.asSlice(i * VkBufferImageCopy2.BYTES, VkBufferImageCopy2.BYTES));
         }
         return ret;
     }

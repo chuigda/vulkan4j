@@ -147,10 +147,10 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkShadingRatePaletteNV.SIZE);
+        s = s.reinterpret(assumedCount * VkShadingRatePaletteNV.BYTES);
         VkShadingRatePaletteNV[] ret = new VkShadingRatePaletteNV[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkShadingRatePaletteNV(s.asSlice(i * VkShadingRatePaletteNV.SIZE, VkShadingRatePaletteNV.SIZE));
+            ret[i] = new VkShadingRatePaletteNV(s.asSlice(i * VkShadingRatePaletteNV.BYTES, VkShadingRatePaletteNV.BYTES));
         }
         return ret;
     }

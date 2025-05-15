@@ -193,10 +193,10 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkAccelerationStructureGeometryKHR.SIZE);
+        s = s.reinterpret(assumedCount * VkAccelerationStructureGeometryKHR.BYTES);
         VkAccelerationStructureGeometryKHR[] ret = new VkAccelerationStructureGeometryKHR[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAccelerationStructureGeometryKHR(s.asSlice(i * VkAccelerationStructureGeometryKHR.SIZE, VkAccelerationStructureGeometryKHR.SIZE));
+            ret[i] = new VkAccelerationStructureGeometryKHR(s.asSlice(i * VkAccelerationStructureGeometryKHR.BYTES, VkAccelerationStructureGeometryKHR.BYTES));
         }
         return ret;
     }

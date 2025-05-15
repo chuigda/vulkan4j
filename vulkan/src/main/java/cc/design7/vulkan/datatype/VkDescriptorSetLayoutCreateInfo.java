@@ -147,10 +147,10 @@ public record VkDescriptorSetLayoutCreateInfo(@NotNull MemorySegment segment) im
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDescriptorSetLayoutBinding.SIZE);
+        s = s.reinterpret(assumedCount * VkDescriptorSetLayoutBinding.BYTES);
         VkDescriptorSetLayoutBinding[] ret = new VkDescriptorSetLayoutBinding[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorSetLayoutBinding(s.asSlice(i * VkDescriptorSetLayoutBinding.SIZE, VkDescriptorSetLayoutBinding.SIZE));
+            ret[i] = new VkDescriptorSetLayoutBinding(s.asSlice(i * VkDescriptorSetLayoutBinding.BYTES, VkDescriptorSetLayoutBinding.BYTES));
         }
         return ret;
     }

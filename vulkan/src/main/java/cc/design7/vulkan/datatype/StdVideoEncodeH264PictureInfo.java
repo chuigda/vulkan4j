@@ -172,10 +172,10 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoEncodeH264ReferenceListsInfo.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoEncodeH264ReferenceListsInfo.BYTES);
         StdVideoEncodeH264ReferenceListsInfo[] ret = new StdVideoEncodeH264ReferenceListsInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH264ReferenceListsInfo(s.asSlice(i * StdVideoEncodeH264ReferenceListsInfo.SIZE, StdVideoEncodeH264ReferenceListsInfo.SIZE));
+            ret[i] = new StdVideoEncodeH264ReferenceListsInfo(s.asSlice(i * StdVideoEncodeH264ReferenceListsInfo.BYTES, StdVideoEncodeH264ReferenceListsInfo.BYTES));
         }
         return ret;
     }

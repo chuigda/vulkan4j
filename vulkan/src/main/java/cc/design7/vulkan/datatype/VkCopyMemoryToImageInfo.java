@@ -169,10 +169,10 @@ public record VkCopyMemoryToImageInfo(@NotNull MemorySegment segment) implements
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkMemoryToImageCopy.SIZE);
+        s = s.reinterpret(assumedCount * VkMemoryToImageCopy.BYTES);
         VkMemoryToImageCopy[] ret = new VkMemoryToImageCopy[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkMemoryToImageCopy(s.asSlice(i * VkMemoryToImageCopy.SIZE, VkMemoryToImageCopy.SIZE));
+            ret[i] = new VkMemoryToImageCopy(s.asSlice(i * VkMemoryToImageCopy.BYTES, VkMemoryToImageCopy.BYTES));
         }
         return ret;
     }

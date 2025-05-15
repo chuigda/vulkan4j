@@ -151,10 +151,10 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkAttachmentDescription.SIZE);
+        s = s.reinterpret(assumedCount * VkAttachmentDescription.BYTES);
         VkAttachmentDescription[] ret = new VkAttachmentDescription[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentDescription(s.asSlice(i * VkAttachmentDescription.SIZE, VkAttachmentDescription.SIZE));
+            ret[i] = new VkAttachmentDescription(s.asSlice(i * VkAttachmentDescription.BYTES, VkAttachmentDescription.BYTES));
         }
         return ret;
     }
@@ -194,10 +194,10 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSubpassDescription.SIZE);
+        s = s.reinterpret(assumedCount * VkSubpassDescription.BYTES);
         VkSubpassDescription[] ret = new VkSubpassDescription[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSubpassDescription(s.asSlice(i * VkSubpassDescription.SIZE, VkSubpassDescription.SIZE));
+            ret[i] = new VkSubpassDescription(s.asSlice(i * VkSubpassDescription.BYTES, VkSubpassDescription.BYTES));
         }
         return ret;
     }
@@ -237,10 +237,10 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSubpassDependency.SIZE);
+        s = s.reinterpret(assumedCount * VkSubpassDependency.BYTES);
         VkSubpassDependency[] ret = new VkSubpassDependency[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSubpassDependency(s.asSlice(i * VkSubpassDependency.SIZE, VkSubpassDependency.SIZE));
+            ret[i] = new VkSubpassDependency(s.asSlice(i * VkSubpassDependency.BYTES, VkSubpassDependency.BYTES));
         }
         return ret;
     }

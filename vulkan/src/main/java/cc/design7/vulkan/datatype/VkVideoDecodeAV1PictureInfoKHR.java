@@ -134,10 +134,10 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoDecodeAV1PictureInfo.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoDecodeAV1PictureInfo.BYTES);
         StdVideoDecodeAV1PictureInfo[] ret = new StdVideoDecodeAV1PictureInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoDecodeAV1PictureInfo(s.asSlice(i * StdVideoDecodeAV1PictureInfo.SIZE, StdVideoDecodeAV1PictureInfo.SIZE));
+            ret[i] = new StdVideoDecodeAV1PictureInfo(s.asSlice(i * StdVideoDecodeAV1PictureInfo.BYTES, StdVideoDecodeAV1PictureInfo.BYTES));
         }
         return ret;
     }

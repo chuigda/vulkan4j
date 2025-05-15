@@ -138,10 +138,10 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPhysicalDeviceLayeredApiPropertiesKHR.SIZE);
+        s = s.reinterpret(assumedCount * VkPhysicalDeviceLayeredApiPropertiesKHR.BYTES);
         VkPhysicalDeviceLayeredApiPropertiesKHR[] ret = new VkPhysicalDeviceLayeredApiPropertiesKHR[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPhysicalDeviceLayeredApiPropertiesKHR(s.asSlice(i * VkPhysicalDeviceLayeredApiPropertiesKHR.SIZE, VkPhysicalDeviceLayeredApiPropertiesKHR.SIZE));
+            ret[i] = new VkPhysicalDeviceLayeredApiPropertiesKHR(s.asSlice(i * VkPhysicalDeviceLayeredApiPropertiesKHR.BYTES, VkPhysicalDeviceLayeredApiPropertiesKHR.BYTES));
         }
         return ret;
     }

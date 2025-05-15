@@ -181,10 +181,10 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkIndirectCommandsStreamNV.SIZE);
+        s = s.reinterpret(assumedCount * VkIndirectCommandsStreamNV.BYTES);
         VkIndirectCommandsStreamNV[] ret = new VkIndirectCommandsStreamNV[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectCommandsStreamNV(s.asSlice(i * VkIndirectCommandsStreamNV.SIZE, VkIndirectCommandsStreamNV.SIZE));
+            ret[i] = new VkIndirectCommandsStreamNV(s.asSlice(i * VkIndirectCommandsStreamNV.BYTES, VkIndirectCommandsStreamNV.BYTES));
         }
         return ret;
     }

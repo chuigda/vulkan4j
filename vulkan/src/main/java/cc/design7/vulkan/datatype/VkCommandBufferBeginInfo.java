@@ -138,10 +138,10 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkCommandBufferInheritanceInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkCommandBufferInheritanceInfo.BYTES);
         VkCommandBufferInheritanceInfo[] ret = new VkCommandBufferInheritanceInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkCommandBufferInheritanceInfo(s.asSlice(i * VkCommandBufferInheritanceInfo.SIZE, VkCommandBufferInheritanceInfo.SIZE));
+            ret[i] = new VkCommandBufferInheritanceInfo(s.asSlice(i * VkCommandBufferInheritanceInfo.BYTES, VkCommandBufferInheritanceInfo.BYTES));
         }
         return ret;
     }

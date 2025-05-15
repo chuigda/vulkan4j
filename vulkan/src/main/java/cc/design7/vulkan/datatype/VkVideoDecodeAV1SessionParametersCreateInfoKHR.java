@@ -129,10 +129,10 @@ public record VkVideoDecodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoAV1SequenceHeader.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoAV1SequenceHeader.BYTES);
         StdVideoAV1SequenceHeader[] ret = new StdVideoAV1SequenceHeader[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1SequenceHeader(s.asSlice(i * StdVideoAV1SequenceHeader.SIZE, StdVideoAV1SequenceHeader.SIZE));
+            ret[i] = new StdVideoAV1SequenceHeader(s.asSlice(i * StdVideoAV1SequenceHeader.BYTES, StdVideoAV1SequenceHeader.BYTES));
         }
         return ret;
     }

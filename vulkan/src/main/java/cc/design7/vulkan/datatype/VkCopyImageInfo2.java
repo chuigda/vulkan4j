@@ -182,10 +182,10 @@ public record VkCopyImageInfo2(@NotNull MemorySegment segment) implements IPoint
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkImageCopy2.SIZE);
+        s = s.reinterpret(assumedCount * VkImageCopy2.BYTES);
         VkImageCopy2[] ret = new VkImageCopy2[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkImageCopy2(s.asSlice(i * VkImageCopy2.SIZE, VkImageCopy2.SIZE));
+            ret[i] = new VkImageCopy2(s.asSlice(i * VkImageCopy2.BYTES, VkImageCopy2.BYTES));
         }
         return ret;
     }

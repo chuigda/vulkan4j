@@ -131,10 +131,10 @@ public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segmen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineCreationFeedback.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineCreationFeedback.BYTES);
         VkPipelineCreationFeedback[] ret = new VkPipelineCreationFeedback[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineCreationFeedback(s.asSlice(i * VkPipelineCreationFeedback.SIZE, VkPipelineCreationFeedback.SIZE));
+            ret[i] = new VkPipelineCreationFeedback(s.asSlice(i * VkPipelineCreationFeedback.BYTES, VkPipelineCreationFeedback.BYTES));
         }
         return ret;
     }
@@ -174,10 +174,10 @@ public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segmen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineCreationFeedback.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineCreationFeedback.BYTES);
         VkPipelineCreationFeedback[] ret = new VkPipelineCreationFeedback[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineCreationFeedback(s.asSlice(i * VkPipelineCreationFeedback.SIZE, VkPipelineCreationFeedback.SIZE));
+            ret[i] = new VkPipelineCreationFeedback(s.asSlice(i * VkPipelineCreationFeedback.BYTES, VkPipelineCreationFeedback.BYTES));
         }
         return ret;
     }

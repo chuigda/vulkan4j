@@ -178,10 +178,10 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPushConstantRange.SIZE);
+        s = s.reinterpret(assumedCount * VkPushConstantRange.BYTES);
         VkPushConstantRange[] ret = new VkPushConstantRange[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPushConstantRange(s.asSlice(i * VkPushConstantRange.SIZE, VkPushConstantRange.SIZE));
+            ret[i] = new VkPushConstantRange(s.asSlice(i * VkPushConstantRange.BYTES, VkPushConstantRange.BYTES));
         }
         return ret;
     }

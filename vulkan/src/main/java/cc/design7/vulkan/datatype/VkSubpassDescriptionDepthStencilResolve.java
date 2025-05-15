@@ -147,10 +147,10 @@ public record VkSubpassDescriptionDepthStencilResolve(@NotNull MemorySegment seg
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkAttachmentReference2.SIZE);
+        s = s.reinterpret(assumedCount * VkAttachmentReference2.BYTES);
         VkAttachmentReference2[] ret = new VkAttachmentReference2[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentReference2(s.asSlice(i * VkAttachmentReference2.SIZE, VkAttachmentReference2.SIZE));
+            ret[i] = new VkAttachmentReference2(s.asSlice(i * VkAttachmentReference2.BYTES, VkAttachmentReference2.BYTES));
         }
         return ret;
     }

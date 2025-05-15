@@ -138,10 +138,10 @@ public record VkPipelineVertexInputDivisorStateCreateInfo(@NotNull MemorySegment
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkVertexInputBindingDivisorDescription.SIZE);
+        s = s.reinterpret(assumedCount * VkVertexInputBindingDivisorDescription.BYTES);
         VkVertexInputBindingDivisorDescription[] ret = new VkVertexInputBindingDivisorDescription[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVertexInputBindingDivisorDescription(s.asSlice(i * VkVertexInputBindingDivisorDescription.SIZE, VkVertexInputBindingDivisorDescription.SIZE));
+            ret[i] = new VkVertexInputBindingDivisorDescription(s.asSlice(i * VkVertexInputBindingDivisorDescription.BYTES, VkVertexInputBindingDivisorDescription.BYTES));
         }
         return ret;
     }

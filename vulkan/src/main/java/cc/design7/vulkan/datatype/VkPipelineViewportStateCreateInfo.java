@@ -149,10 +149,10 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkViewport.SIZE);
+        s = s.reinterpret(assumedCount * VkViewport.BYTES);
         VkViewport[] ret = new VkViewport[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkViewport(s.asSlice(i * VkViewport.SIZE, VkViewport.SIZE));
+            ret[i] = new VkViewport(s.asSlice(i * VkViewport.BYTES, VkViewport.BYTES));
         }
         return ret;
     }
@@ -192,10 +192,10 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkRect2D.SIZE);
+        s = s.reinterpret(assumedCount * VkRect2D.BYTES);
         VkRect2D[] ret = new VkRect2D[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkRect2D(s.asSlice(i * VkRect2D.SIZE, VkRect2D.SIZE));
+            ret[i] = new VkRect2D(s.asSlice(i * VkRect2D.BYTES, VkRect2D.BYTES));
         }
         return ret;
     }

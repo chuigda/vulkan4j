@@ -147,10 +147,10 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkCoarseSampleOrderCustomNV.SIZE);
+        s = s.reinterpret(assumedCount * VkCoarseSampleOrderCustomNV.BYTES);
         VkCoarseSampleOrderCustomNV[] ret = new VkCoarseSampleOrderCustomNV[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkCoarseSampleOrderCustomNV(s.asSlice(i * VkCoarseSampleOrderCustomNV.SIZE, VkCoarseSampleOrderCustomNV.SIZE));
+            ret[i] = new VkCoarseSampleOrderCustomNV(s.asSlice(i * VkCoarseSampleOrderCustomNV.BYTES, VkCoarseSampleOrderCustomNV.BYTES));
         }
         return ret;
     }

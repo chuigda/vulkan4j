@@ -130,10 +130,10 @@ public record VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegm
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkVideoProfileInfoKHR.SIZE);
+        s = s.reinterpret(assumedCount * VkVideoProfileInfoKHR.BYTES);
         VkVideoProfileInfoKHR[] ret = new VkVideoProfileInfoKHR[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVideoProfileInfoKHR(s.asSlice(i * VkVideoProfileInfoKHR.SIZE, VkVideoProfileInfoKHR.SIZE));
+            ret[i] = new VkVideoProfileInfoKHR(s.asSlice(i * VkVideoProfileInfoKHR.BYTES, VkVideoProfileInfoKHR.BYTES));
         }
         return ret;
     }

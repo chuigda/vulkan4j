@@ -212,10 +212,10 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDebugUtilsLabelEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkDebugUtilsLabelEXT.BYTES);
         VkDebugUtilsLabelEXT[] ret = new VkDebugUtilsLabelEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDebugUtilsLabelEXT(s.asSlice(i * VkDebugUtilsLabelEXT.SIZE, VkDebugUtilsLabelEXT.SIZE));
+            ret[i] = new VkDebugUtilsLabelEXT(s.asSlice(i * VkDebugUtilsLabelEXT.BYTES, VkDebugUtilsLabelEXT.BYTES));
         }
         return ret;
     }
@@ -255,10 +255,10 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDebugUtilsLabelEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkDebugUtilsLabelEXT.BYTES);
         VkDebugUtilsLabelEXT[] ret = new VkDebugUtilsLabelEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDebugUtilsLabelEXT(s.asSlice(i * VkDebugUtilsLabelEXT.SIZE, VkDebugUtilsLabelEXT.SIZE));
+            ret[i] = new VkDebugUtilsLabelEXT(s.asSlice(i * VkDebugUtilsLabelEXT.BYTES, VkDebugUtilsLabelEXT.BYTES));
         }
         return ret;
     }
@@ -298,10 +298,10 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDebugUtilsObjectNameInfoEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkDebugUtilsObjectNameInfoEXT.BYTES);
         VkDebugUtilsObjectNameInfoEXT[] ret = new VkDebugUtilsObjectNameInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDebugUtilsObjectNameInfoEXT(s.asSlice(i * VkDebugUtilsObjectNameInfoEXT.SIZE, VkDebugUtilsObjectNameInfoEXT.SIZE));
+            ret[i] = new VkDebugUtilsObjectNameInfoEXT(s.asSlice(i * VkDebugUtilsObjectNameInfoEXT.BYTES, VkDebugUtilsObjectNameInfoEXT.BYTES));
         }
         return ret;
     }

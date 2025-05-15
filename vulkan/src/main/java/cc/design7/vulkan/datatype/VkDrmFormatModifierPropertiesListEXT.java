@@ -138,10 +138,10 @@ public record VkDrmFormatModifierPropertiesListEXT(@NotNull MemorySegment segmen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDrmFormatModifierPropertiesEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkDrmFormatModifierPropertiesEXT.BYTES);
         VkDrmFormatModifierPropertiesEXT[] ret = new VkDrmFormatModifierPropertiesEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDrmFormatModifierPropertiesEXT(s.asSlice(i * VkDrmFormatModifierPropertiesEXT.SIZE, VkDrmFormatModifierPropertiesEXT.SIZE));
+            ret[i] = new VkDrmFormatModifierPropertiesEXT(s.asSlice(i * VkDrmFormatModifierPropertiesEXT.BYTES, VkDrmFormatModifierPropertiesEXT.BYTES));
         }
         return ret;
     }

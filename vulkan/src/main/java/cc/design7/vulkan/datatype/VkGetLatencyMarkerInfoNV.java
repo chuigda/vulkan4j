@@ -138,10 +138,10 @@ public record VkGetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkLatencyTimingsFrameReportNV.SIZE);
+        s = s.reinterpret(assumedCount * VkLatencyTimingsFrameReportNV.BYTES);
         VkLatencyTimingsFrameReportNV[] ret = new VkLatencyTimingsFrameReportNV[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkLatencyTimingsFrameReportNV(s.asSlice(i * VkLatencyTimingsFrameReportNV.SIZE, VkLatencyTimingsFrameReportNV.SIZE));
+            ret[i] = new VkLatencyTimingsFrameReportNV(s.asSlice(i * VkLatencyTimingsFrameReportNV.BYTES, VkLatencyTimingsFrameReportNV.BYTES));
         }
         return ret;
     }

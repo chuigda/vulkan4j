@@ -138,10 +138,10 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPresentTimeGOOGLE.SIZE);
+        s = s.reinterpret(assumedCount * VkPresentTimeGOOGLE.BYTES);
         VkPresentTimeGOOGLE[] ret = new VkPresentTimeGOOGLE[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPresentTimeGOOGLE(s.asSlice(i * VkPresentTimeGOOGLE.SIZE, VkPresentTimeGOOGLE.SIZE));
+            ret[i] = new VkPresentTimeGOOGLE(s.asSlice(i * VkPresentTimeGOOGLE.BYTES, VkPresentTimeGOOGLE.BYTES));
         }
         return ret;
     }

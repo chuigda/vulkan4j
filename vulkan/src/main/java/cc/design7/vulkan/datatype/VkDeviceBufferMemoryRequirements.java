@@ -129,10 +129,10 @@ public record VkDeviceBufferMemoryRequirements(@NotNull MemorySegment segment) i
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkBufferCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkBufferCreateInfo.BYTES);
         VkBufferCreateInfo[] ret = new VkBufferCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkBufferCreateInfo(s.asSlice(i * VkBufferCreateInfo.SIZE, VkBufferCreateInfo.SIZE));
+            ret[i] = new VkBufferCreateInfo(s.asSlice(i * VkBufferCreateInfo.BYTES, VkBufferCreateInfo.BYTES));
         }
         return ret;
     }

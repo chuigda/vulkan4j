@@ -156,10 +156,10 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSampleLocationEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkSampleLocationEXT.BYTES);
         VkSampleLocationEXT[] ret = new VkSampleLocationEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSampleLocationEXT(s.asSlice(i * VkSampleLocationEXT.SIZE, VkSampleLocationEXT.SIZE));
+            ret[i] = new VkSampleLocationEXT(s.asSlice(i * VkSampleLocationEXT.BYTES, VkSampleLocationEXT.BYTES));
         }
         return ret;
     }

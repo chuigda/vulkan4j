@@ -147,10 +147,10 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IPoint
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkAntiLagPresentationInfoAMD.SIZE);
+        s = s.reinterpret(assumedCount * VkAntiLagPresentationInfoAMD.BYTES);
         VkAntiLagPresentationInfoAMD[] ret = new VkAntiLagPresentationInfoAMD[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAntiLagPresentationInfoAMD(s.asSlice(i * VkAntiLagPresentationInfoAMD.SIZE, VkAntiLagPresentationInfoAMD.SIZE));
+            ret[i] = new VkAntiLagPresentationInfoAMD(s.asSlice(i * VkAntiLagPresentationInfoAMD.BYTES, VkAntiLagPresentationInfoAMD.BYTES));
         }
         return ret;
     }

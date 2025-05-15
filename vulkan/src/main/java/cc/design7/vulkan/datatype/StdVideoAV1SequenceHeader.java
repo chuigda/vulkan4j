@@ -200,10 +200,10 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoAV1ColorConfig.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoAV1ColorConfig.BYTES);
         StdVideoAV1ColorConfig[] ret = new StdVideoAV1ColorConfig[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1ColorConfig(s.asSlice(i * StdVideoAV1ColorConfig.SIZE, StdVideoAV1ColorConfig.SIZE));
+            ret[i] = new StdVideoAV1ColorConfig(s.asSlice(i * StdVideoAV1ColorConfig.BYTES, StdVideoAV1ColorConfig.BYTES));
         }
         return ret;
     }
@@ -235,10 +235,10 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoAV1TimingInfo.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoAV1TimingInfo.BYTES);
         StdVideoAV1TimingInfo[] ret = new StdVideoAV1TimingInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1TimingInfo(s.asSlice(i * StdVideoAV1TimingInfo.SIZE, StdVideoAV1TimingInfo.SIZE));
+            ret[i] = new StdVideoAV1TimingInfo(s.asSlice(i * StdVideoAV1TimingInfo.BYTES, StdVideoAV1TimingInfo.BYTES));
         }
         return ret;
     }

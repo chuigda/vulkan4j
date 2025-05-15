@@ -140,10 +140,10 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkAttachmentSampleLocationsEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkAttachmentSampleLocationsEXT.BYTES);
         VkAttachmentSampleLocationsEXT[] ret = new VkAttachmentSampleLocationsEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentSampleLocationsEXT(s.asSlice(i * VkAttachmentSampleLocationsEXT.SIZE, VkAttachmentSampleLocationsEXT.SIZE));
+            ret[i] = new VkAttachmentSampleLocationsEXT(s.asSlice(i * VkAttachmentSampleLocationsEXT.BYTES, VkAttachmentSampleLocationsEXT.BYTES));
         }
         return ret;
     }
@@ -183,10 +183,10 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSubpassSampleLocationsEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkSubpassSampleLocationsEXT.BYTES);
         VkSubpassSampleLocationsEXT[] ret = new VkSubpassSampleLocationsEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSubpassSampleLocationsEXT(s.asSlice(i * VkSubpassSampleLocationsEXT.SIZE, VkSubpassSampleLocationsEXT.SIZE));
+            ret[i] = new VkSubpassSampleLocationsEXT(s.asSlice(i * VkSubpassSampleLocationsEXT.BYTES, VkSubpassSampleLocationsEXT.BYTES));
         }
         return ret;
     }

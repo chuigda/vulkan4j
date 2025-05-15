@@ -152,10 +152,10 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IPoi
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDeviceQueueCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkDeviceQueueCreateInfo.BYTES);
         VkDeviceQueueCreateInfo[] ret = new VkDeviceQueueCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDeviceQueueCreateInfo(s.asSlice(i * VkDeviceQueueCreateInfo.SIZE, VkDeviceQueueCreateInfo.SIZE));
+            ret[i] = new VkDeviceQueueCreateInfo(s.asSlice(i * VkDeviceQueueCreateInfo.BYTES, VkDeviceQueueCreateInfo.BYTES));
         }
         return ret;
     }
@@ -251,10 +251,10 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IPoi
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPhysicalDeviceFeatures.SIZE);
+        s = s.reinterpret(assumedCount * VkPhysicalDeviceFeatures.BYTES);
         VkPhysicalDeviceFeatures[] ret = new VkPhysicalDeviceFeatures[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPhysicalDeviceFeatures(s.asSlice(i * VkPhysicalDeviceFeatures.SIZE, VkPhysicalDeviceFeatures.SIZE));
+            ret[i] = new VkPhysicalDeviceFeatures(s.asSlice(i * VkPhysicalDeviceFeatures.BYTES, VkPhysicalDeviceFeatures.BYTES));
         }
         return ret;
     }

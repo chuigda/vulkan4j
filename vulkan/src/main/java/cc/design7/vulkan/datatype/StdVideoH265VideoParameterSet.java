@@ -174,10 +174,10 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoH265DecPicBufMgr.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoH265DecPicBufMgr.BYTES);
         StdVideoH265DecPicBufMgr[] ret = new StdVideoH265DecPicBufMgr[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265DecPicBufMgr(s.asSlice(i * StdVideoH265DecPicBufMgr.SIZE, StdVideoH265DecPicBufMgr.SIZE));
+            ret[i] = new StdVideoH265DecPicBufMgr(s.asSlice(i * StdVideoH265DecPicBufMgr.BYTES, StdVideoH265DecPicBufMgr.BYTES));
         }
         return ret;
     }
@@ -209,10 +209,10 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoH265HrdParameters.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoH265HrdParameters.BYTES);
         StdVideoH265HrdParameters[] ret = new StdVideoH265HrdParameters[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265HrdParameters(s.asSlice(i * StdVideoH265HrdParameters.SIZE, StdVideoH265HrdParameters.SIZE));
+            ret[i] = new StdVideoH265HrdParameters(s.asSlice(i * StdVideoH265HrdParameters.BYTES, StdVideoH265HrdParameters.BYTES));
         }
         return ret;
     }
@@ -244,10 +244,10 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoH265ProfileTierLevel.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoH265ProfileTierLevel.BYTES);
         StdVideoH265ProfileTierLevel[] ret = new StdVideoH265ProfileTierLevel[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265ProfileTierLevel(s.asSlice(i * StdVideoH265ProfileTierLevel.SIZE, StdVideoH265ProfileTierLevel.SIZE));
+            ret[i] = new StdVideoH265ProfileTierLevel(s.asSlice(i * StdVideoH265ProfileTierLevel.BYTES, StdVideoH265ProfileTierLevel.BYTES));
         }
         return ret;
     }

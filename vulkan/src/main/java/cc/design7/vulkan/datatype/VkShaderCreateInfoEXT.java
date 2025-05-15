@@ -254,10 +254,10 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPushConstantRange.SIZE);
+        s = s.reinterpret(assumedCount * VkPushConstantRange.BYTES);
         VkPushConstantRange[] ret = new VkPushConstantRange[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPushConstantRange(s.asSlice(i * VkPushConstantRange.SIZE, VkPushConstantRange.SIZE));
+            ret[i] = new VkPushConstantRange(s.asSlice(i * VkPushConstantRange.BYTES, VkPushConstantRange.BYTES));
         }
         return ret;
     }
@@ -289,10 +289,10 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSpecializationInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkSpecializationInfo.BYTES);
         VkSpecializationInfo[] ret = new VkSpecializationInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSpecializationInfo(s.asSlice(i * VkSpecializationInfo.SIZE, VkSpecializationInfo.SIZE));
+            ret[i] = new VkSpecializationInfo(s.asSlice(i * VkSpecializationInfo.BYTES, VkSpecializationInfo.BYTES));
         }
         return ret;
     }

@@ -174,10 +174,10 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSysmemColorSpaceFUCHSIA.SIZE);
+        s = s.reinterpret(assumedCount * VkSysmemColorSpaceFUCHSIA.BYTES);
         VkSysmemColorSpaceFUCHSIA[] ret = new VkSysmemColorSpaceFUCHSIA[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSysmemColorSpaceFUCHSIA(s.asSlice(i * VkSysmemColorSpaceFUCHSIA.SIZE, VkSysmemColorSpaceFUCHSIA.SIZE));
+            ret[i] = new VkSysmemColorSpaceFUCHSIA(s.asSlice(i * VkSysmemColorSpaceFUCHSIA.BYTES, VkSysmemColorSpaceFUCHSIA.BYTES));
         }
         return ret;
     }

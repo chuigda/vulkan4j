@@ -102,10 +102,10 @@ public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IPoi
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkBaseOutStructure.SIZE);
+        s = s.reinterpret(assumedCount * VkBaseOutStructure.BYTES);
         VkBaseOutStructure[] ret = new VkBaseOutStructure[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkBaseOutStructure(s.asSlice(i * VkBaseOutStructure.SIZE, VkBaseOutStructure.SIZE));
+            ret[i] = new VkBaseOutStructure(s.asSlice(i * VkBaseOutStructure.BYTES, VkBaseOutStructure.BYTES));
         }
         return ret;
     }

@@ -316,10 +316,10 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoH264ScalingLists.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoH264ScalingLists.BYTES);
         StdVideoH264ScalingLists[] ret = new StdVideoH264ScalingLists[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH264ScalingLists(s.asSlice(i * StdVideoH264ScalingLists.SIZE, StdVideoH264ScalingLists.SIZE));
+            ret[i] = new StdVideoH264ScalingLists(s.asSlice(i * StdVideoH264ScalingLists.BYTES, StdVideoH264ScalingLists.BYTES));
         }
         return ret;
     }
@@ -351,10 +351,10 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoH264SequenceParameterSetVui.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoH264SequenceParameterSetVui.BYTES);
         StdVideoH264SequenceParameterSetVui[] ret = new StdVideoH264SequenceParameterSetVui[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH264SequenceParameterSetVui(s.asSlice(i * StdVideoH264SequenceParameterSetVui.SIZE, StdVideoH264SequenceParameterSetVui.SIZE));
+            ret[i] = new StdVideoH264SequenceParameterSetVui(s.asSlice(i * StdVideoH264SequenceParameterSetVui.BYTES, StdVideoH264SequenceParameterSetVui.BYTES));
         }
         return ret;
     }

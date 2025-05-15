@@ -138,10 +138,10 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSemaphoreSubmitInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkSemaphoreSubmitInfo.BYTES);
         VkSemaphoreSubmitInfo[] ret = new VkSemaphoreSubmitInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSemaphoreSubmitInfo(s.asSlice(i * VkSemaphoreSubmitInfo.SIZE, VkSemaphoreSubmitInfo.SIZE));
+            ret[i] = new VkSemaphoreSubmitInfo(s.asSlice(i * VkSemaphoreSubmitInfo.BYTES, VkSemaphoreSubmitInfo.BYTES));
         }
         return ret;
     }

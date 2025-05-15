@@ -139,10 +139,10 @@ public record VkVideoEncodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkVideoEncodeH265NaluSliceSegmentInfoKHR.SIZE);
+        s = s.reinterpret(assumedCount * VkVideoEncodeH265NaluSliceSegmentInfoKHR.BYTES);
         VkVideoEncodeH265NaluSliceSegmentInfoKHR[] ret = new VkVideoEncodeH265NaluSliceSegmentInfoKHR[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVideoEncodeH265NaluSliceSegmentInfoKHR(s.asSlice(i * VkVideoEncodeH265NaluSliceSegmentInfoKHR.SIZE, VkVideoEncodeH265NaluSliceSegmentInfoKHR.SIZE));
+            ret[i] = new VkVideoEncodeH265NaluSliceSegmentInfoKHR(s.asSlice(i * VkVideoEncodeH265NaluSliceSegmentInfoKHR.BYTES, VkVideoEncodeH265NaluSliceSegmentInfoKHR.BYTES));
         }
         return ret;
     }
@@ -174,10 +174,10 @@ public record VkVideoEncodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoEncodeH265PictureInfo.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoEncodeH265PictureInfo.BYTES);
         StdVideoEncodeH265PictureInfo[] ret = new StdVideoEncodeH265PictureInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH265PictureInfo(s.asSlice(i * StdVideoEncodeH265PictureInfo.SIZE, StdVideoEncodeH265PictureInfo.SIZE));
+            ret[i] = new StdVideoEncodeH265PictureInfo(s.asSlice(i * StdVideoEncodeH265PictureInfo.BYTES, StdVideoEncodeH265PictureInfo.BYTES));
         }
         return ret;
     }

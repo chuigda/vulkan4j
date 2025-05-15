@@ -217,10 +217,10 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoEncodeH265WeightTable.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoEncodeH265WeightTable.BYTES);
         StdVideoEncodeH265WeightTable[] ret = new StdVideoEncodeH265WeightTable[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH265WeightTable(s.asSlice(i * StdVideoEncodeH265WeightTable.SIZE, StdVideoEncodeH265WeightTable.SIZE));
+            ret[i] = new StdVideoEncodeH265WeightTable(s.asSlice(i * StdVideoEncodeH265WeightTable.BYTES, StdVideoEncodeH265WeightTable.BYTES));
         }
         return ret;
     }

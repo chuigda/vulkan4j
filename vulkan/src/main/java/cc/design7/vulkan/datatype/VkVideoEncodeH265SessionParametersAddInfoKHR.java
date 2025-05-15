@@ -142,10 +142,10 @@ public record VkVideoEncodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoH265VideoParameterSet.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoH265VideoParameterSet.BYTES);
         StdVideoH265VideoParameterSet[] ret = new StdVideoH265VideoParameterSet[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265VideoParameterSet(s.asSlice(i * StdVideoH265VideoParameterSet.SIZE, StdVideoH265VideoParameterSet.SIZE));
+            ret[i] = new StdVideoH265VideoParameterSet(s.asSlice(i * StdVideoH265VideoParameterSet.BYTES, StdVideoH265VideoParameterSet.BYTES));
         }
         return ret;
     }
@@ -185,10 +185,10 @@ public record VkVideoEncodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoH265SequenceParameterSet.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoH265SequenceParameterSet.BYTES);
         StdVideoH265SequenceParameterSet[] ret = new StdVideoH265SequenceParameterSet[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265SequenceParameterSet(s.asSlice(i * StdVideoH265SequenceParameterSet.SIZE, StdVideoH265SequenceParameterSet.SIZE));
+            ret[i] = new StdVideoH265SequenceParameterSet(s.asSlice(i * StdVideoH265SequenceParameterSet.BYTES, StdVideoH265SequenceParameterSet.BYTES));
         }
         return ret;
     }
@@ -228,10 +228,10 @@ public record VkVideoEncodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoH265PictureParameterSet.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoH265PictureParameterSet.BYTES);
         StdVideoH265PictureParameterSet[] ret = new StdVideoH265PictureParameterSet[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265PictureParameterSet(s.asSlice(i * StdVideoH265PictureParameterSet.SIZE, StdVideoH265PictureParameterSet.SIZE));
+            ret[i] = new StdVideoH265PictureParameterSet(s.asSlice(i * StdVideoH265PictureParameterSet.BYTES, StdVideoH265PictureParameterSet.BYTES));
         }
         return ret;
     }

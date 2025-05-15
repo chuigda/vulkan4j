@@ -96,10 +96,10 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkIndirectCommandsPushConstantTokenEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkIndirectCommandsPushConstantTokenEXT.BYTES);
         VkIndirectCommandsPushConstantTokenEXT[] ret = new VkIndirectCommandsPushConstantTokenEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectCommandsPushConstantTokenEXT(s.asSlice(i * VkIndirectCommandsPushConstantTokenEXT.SIZE, VkIndirectCommandsPushConstantTokenEXT.SIZE));
+            ret[i] = new VkIndirectCommandsPushConstantTokenEXT(s.asSlice(i * VkIndirectCommandsPushConstantTokenEXT.BYTES, VkIndirectCommandsPushConstantTokenEXT.BYTES));
         }
         return ret;
     }
@@ -131,10 +131,10 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkIndirectCommandsVertexBufferTokenEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkIndirectCommandsVertexBufferTokenEXT.BYTES);
         VkIndirectCommandsVertexBufferTokenEXT[] ret = new VkIndirectCommandsVertexBufferTokenEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectCommandsVertexBufferTokenEXT(s.asSlice(i * VkIndirectCommandsVertexBufferTokenEXT.SIZE, VkIndirectCommandsVertexBufferTokenEXT.SIZE));
+            ret[i] = new VkIndirectCommandsVertexBufferTokenEXT(s.asSlice(i * VkIndirectCommandsVertexBufferTokenEXT.BYTES, VkIndirectCommandsVertexBufferTokenEXT.BYTES));
         }
         return ret;
     }
@@ -166,10 +166,10 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkIndirectCommandsIndexBufferTokenEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkIndirectCommandsIndexBufferTokenEXT.BYTES);
         VkIndirectCommandsIndexBufferTokenEXT[] ret = new VkIndirectCommandsIndexBufferTokenEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectCommandsIndexBufferTokenEXT(s.asSlice(i * VkIndirectCommandsIndexBufferTokenEXT.SIZE, VkIndirectCommandsIndexBufferTokenEXT.SIZE));
+            ret[i] = new VkIndirectCommandsIndexBufferTokenEXT(s.asSlice(i * VkIndirectCommandsIndexBufferTokenEXT.BYTES, VkIndirectCommandsIndexBufferTokenEXT.BYTES));
         }
         return ret;
     }
@@ -201,10 +201,10 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkIndirectCommandsExecutionSetTokenEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkIndirectCommandsExecutionSetTokenEXT.BYTES);
         VkIndirectCommandsExecutionSetTokenEXT[] ret = new VkIndirectCommandsExecutionSetTokenEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectCommandsExecutionSetTokenEXT(s.asSlice(i * VkIndirectCommandsExecutionSetTokenEXT.SIZE, VkIndirectCommandsExecutionSetTokenEXT.SIZE));
+            ret[i] = new VkIndirectCommandsExecutionSetTokenEXT(s.asSlice(i * VkIndirectCommandsExecutionSetTokenEXT.BYTES, VkIndirectCommandsExecutionSetTokenEXT.BYTES));
         }
         return ret;
     }

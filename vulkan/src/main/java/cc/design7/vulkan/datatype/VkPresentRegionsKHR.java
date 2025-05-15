@@ -138,10 +138,10 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IPo
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPresentRegionKHR.SIZE);
+        s = s.reinterpret(assumedCount * VkPresentRegionKHR.BYTES);
         VkPresentRegionKHR[] ret = new VkPresentRegionKHR[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPresentRegionKHR(s.asSlice(i * VkPresentRegionKHR.SIZE, VkPresentRegionKHR.SIZE));
+            ret[i] = new VkPresentRegionKHR(s.asSlice(i * VkPresentRegionKHR.BYTES, VkPresentRegionKHR.BYTES));
         }
         return ret;
     }

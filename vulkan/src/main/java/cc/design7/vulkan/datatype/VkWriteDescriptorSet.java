@@ -180,10 +180,10 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IP
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDescriptorImageInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkDescriptorImageInfo.BYTES);
         VkDescriptorImageInfo[] ret = new VkDescriptorImageInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorImageInfo(s.asSlice(i * VkDescriptorImageInfo.SIZE, VkDescriptorImageInfo.SIZE));
+            ret[i] = new VkDescriptorImageInfo(s.asSlice(i * VkDescriptorImageInfo.BYTES, VkDescriptorImageInfo.BYTES));
         }
         return ret;
     }
@@ -215,10 +215,10 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IP
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDescriptorBufferInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkDescriptorBufferInfo.BYTES);
         VkDescriptorBufferInfo[] ret = new VkDescriptorBufferInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorBufferInfo(s.asSlice(i * VkDescriptorBufferInfo.SIZE, VkDescriptorBufferInfo.SIZE));
+            ret[i] = new VkDescriptorBufferInfo(s.asSlice(i * VkDescriptorBufferInfo.BYTES, VkDescriptorBufferInfo.BYTES));
         }
         return ret;
     }

@@ -178,10 +178,10 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkIndirectCommandsLayoutTokenEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkIndirectCommandsLayoutTokenEXT.BYTES);
         VkIndirectCommandsLayoutTokenEXT[] ret = new VkIndirectCommandsLayoutTokenEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectCommandsLayoutTokenEXT(s.asSlice(i * VkIndirectCommandsLayoutTokenEXT.SIZE, VkIndirectCommandsLayoutTokenEXT.SIZE));
+            ret[i] = new VkIndirectCommandsLayoutTokenEXT(s.asSlice(i * VkIndirectCommandsLayoutTokenEXT.BYTES, VkIndirectCommandsLayoutTokenEXT.BYTES));
         }
         return ret;
     }

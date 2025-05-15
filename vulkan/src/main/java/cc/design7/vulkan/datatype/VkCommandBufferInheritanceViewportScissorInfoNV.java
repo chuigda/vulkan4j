@@ -147,10 +147,10 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(@NotNull MemorySeg
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkViewport.SIZE);
+        s = s.reinterpret(assumedCount * VkViewport.BYTES);
         VkViewport[] ret = new VkViewport[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkViewport(s.asSlice(i * VkViewport.SIZE, VkViewport.SIZE));
+            ret[i] = new VkViewport(s.asSlice(i * VkViewport.BYTES, VkViewport.BYTES));
         }
         return ret;
     }

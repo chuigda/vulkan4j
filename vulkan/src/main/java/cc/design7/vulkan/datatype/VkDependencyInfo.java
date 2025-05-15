@@ -151,10 +151,10 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IPoint
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkMemoryBarrier2.SIZE);
+        s = s.reinterpret(assumedCount * VkMemoryBarrier2.BYTES);
         VkMemoryBarrier2[] ret = new VkMemoryBarrier2[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkMemoryBarrier2(s.asSlice(i * VkMemoryBarrier2.SIZE, VkMemoryBarrier2.SIZE));
+            ret[i] = new VkMemoryBarrier2(s.asSlice(i * VkMemoryBarrier2.BYTES, VkMemoryBarrier2.BYTES));
         }
         return ret;
     }
@@ -194,10 +194,10 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IPoint
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkBufferMemoryBarrier2.SIZE);
+        s = s.reinterpret(assumedCount * VkBufferMemoryBarrier2.BYTES);
         VkBufferMemoryBarrier2[] ret = new VkBufferMemoryBarrier2[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkBufferMemoryBarrier2(s.asSlice(i * VkBufferMemoryBarrier2.SIZE, VkBufferMemoryBarrier2.SIZE));
+            ret[i] = new VkBufferMemoryBarrier2(s.asSlice(i * VkBufferMemoryBarrier2.BYTES, VkBufferMemoryBarrier2.BYTES));
         }
         return ret;
     }
@@ -237,10 +237,10 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IPoint
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkImageMemoryBarrier2.SIZE);
+        s = s.reinterpret(assumedCount * VkImageMemoryBarrier2.BYTES);
         VkImageMemoryBarrier2[] ret = new VkImageMemoryBarrier2[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkImageMemoryBarrier2(s.asSlice(i * VkImageMemoryBarrier2.SIZE, VkImageMemoryBarrier2.SIZE));
+            ret[i] = new VkImageMemoryBarrier2(s.asSlice(i * VkImageMemoryBarrier2.BYTES, VkImageMemoryBarrier2.BYTES));
         }
         return ret;
     }

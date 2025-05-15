@@ -147,10 +147,10 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(@NotNull MemorySegme
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSubresourceLayout.SIZE);
+        s = s.reinterpret(assumedCount * VkSubresourceLayout.BYTES);
         VkSubresourceLayout[] ret = new VkSubresourceLayout[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSubresourceLayout(s.asSlice(i * VkSubresourceLayout.SIZE, VkSubresourceLayout.SIZE));
+            ret[i] = new VkSubresourceLayout(s.asSlice(i * VkSubresourceLayout.BYTES, VkSubresourceLayout.BYTES));
         }
         return ret;
     }

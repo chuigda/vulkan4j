@@ -104,10 +104,10 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IP
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSpecializationMapEntry.SIZE);
+        s = s.reinterpret(assumedCount * VkSpecializationMapEntry.BYTES);
         VkSpecializationMapEntry[] ret = new VkSpecializationMapEntry[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSpecializationMapEntry(s.asSlice(i * VkSpecializationMapEntry.SIZE, VkSpecializationMapEntry.SIZE));
+            ret[i] = new VkSpecializationMapEntry(s.asSlice(i * VkSpecializationMapEntry.BYTES, VkSpecializationMapEntry.BYTES));
         }
         return ret;
     }

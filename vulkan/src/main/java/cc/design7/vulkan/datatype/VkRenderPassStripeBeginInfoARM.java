@@ -138,10 +138,10 @@ public record VkRenderPassStripeBeginInfoARM(@NotNull MemorySegment segment) imp
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkRenderPassStripeInfoARM.SIZE);
+        s = s.reinterpret(assumedCount * VkRenderPassStripeInfoARM.BYTES);
         VkRenderPassStripeInfoARM[] ret = new VkRenderPassStripeInfoARM[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkRenderPassStripeInfoARM(s.asSlice(i * VkRenderPassStripeInfoARM.SIZE, VkRenderPassStripeInfoARM.SIZE));
+            ret[i] = new VkRenderPassStripeInfoARM(s.asSlice(i * VkRenderPassStripeInfoARM.BYTES, VkRenderPassStripeInfoARM.BYTES));
         }
         return ret;
     }

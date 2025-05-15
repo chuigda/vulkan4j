@@ -174,10 +174,10 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoEncodeH264RefListModEntry.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoEncodeH264RefListModEntry.BYTES);
         StdVideoEncodeH264RefListModEntry[] ret = new StdVideoEncodeH264RefListModEntry[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH264RefListModEntry(s.asSlice(i * StdVideoEncodeH264RefListModEntry.SIZE, StdVideoEncodeH264RefListModEntry.SIZE));
+            ret[i] = new StdVideoEncodeH264RefListModEntry(s.asSlice(i * StdVideoEncodeH264RefListModEntry.BYTES, StdVideoEncodeH264RefListModEntry.BYTES));
         }
         return ret;
     }
@@ -209,10 +209,10 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoEncodeH264RefListModEntry.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoEncodeH264RefListModEntry.BYTES);
         StdVideoEncodeH264RefListModEntry[] ret = new StdVideoEncodeH264RefListModEntry[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH264RefListModEntry(s.asSlice(i * StdVideoEncodeH264RefListModEntry.SIZE, StdVideoEncodeH264RefListModEntry.SIZE));
+            ret[i] = new StdVideoEncodeH264RefListModEntry(s.asSlice(i * StdVideoEncodeH264RefListModEntry.BYTES, StdVideoEncodeH264RefListModEntry.BYTES));
         }
         return ret;
     }
@@ -244,10 +244,10 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoEncodeH264RefPicMarkingEntry.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoEncodeH264RefPicMarkingEntry.BYTES);
         StdVideoEncodeH264RefPicMarkingEntry[] ret = new StdVideoEncodeH264RefPicMarkingEntry[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH264RefPicMarkingEntry(s.asSlice(i * StdVideoEncodeH264RefPicMarkingEntry.SIZE, StdVideoEncodeH264RefPicMarkingEntry.SIZE));
+            ret[i] = new StdVideoEncodeH264RefPicMarkingEntry(s.asSlice(i * StdVideoEncodeH264RefPicMarkingEntry.BYTES, StdVideoEncodeH264RefPicMarkingEntry.BYTES));
         }
         return ret;
     }

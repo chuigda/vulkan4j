@@ -54,7 +54,7 @@ private fun generateStructureArrayAccessor(elementType: CStructType, member: Lay
         +"MemorySegment s = $rawName;"
         +"${elementType.name}[] arr = new ${elementType.name}[(int) ${member.layoutName}.elementCount()];"
         "for (int i = 0; i < arr.length; i ++)" {
-            +"arr[i] = new ${elementType.name}(s.asSlice(i * ${elementType.name}.SIZE, ${elementType.name}.SIZE));"
+            +"arr[i] = new ${elementType.name}(s.asSlice(i * ${elementType.name}.BYTES, ${elementType.name}.BYTES));"
         }
         +"return arr;"
     }
@@ -64,7 +64,7 @@ private fun generateStructureArrayAccessor(elementType: CStructType, member: Lay
     defun("public", "void", member.name, "${elementType.name}[] value") {
         +"MemorySegment s = $rawName;"
         "for (int i = 0; i < value.length; i++)" {
-            +"MemorySegment.copy(value[i].segment(), 0, s, i * ${elementType.name}.SIZE, ${elementType.name}.SIZE);"
+            +"MemorySegment.copy(value[i].segment(), 0, s, i * ${elementType.name}.BYTES, ${elementType.name}.BYTES);"
         }
     }
 
@@ -74,14 +74,14 @@ private fun generateStructureArrayAccessor(elementType: CStructType, member: Lay
 
     defun("public", elementType.name, atName, "int index") {
         +"MemorySegment s = $rawName();"
-        +"return new ${elementType.name}(s.asSlice(index * ${elementType.name}.SIZE, ${elementType.name}.SIZE));"
+        +"return new ${elementType.name}(s.asSlice(index * ${elementType.name}.BYTES, ${elementType.name}.BYTES));"
     }
 
     +""
 
     defun("public", "void", atName, "int index", "${elementType.name} value") {
         +"MemorySegment s = $rawName();"
-        +"MemorySegment.copy(value.segment(), 0, s, index * ${elementType.name}.SIZE, ${elementType.name}.SIZE);"
+        +"MemorySegment.copy(value.segment(), 0, s, index * ${elementType.name}.BYTES, ${elementType.name}.BYTES);"
     }
 }
 

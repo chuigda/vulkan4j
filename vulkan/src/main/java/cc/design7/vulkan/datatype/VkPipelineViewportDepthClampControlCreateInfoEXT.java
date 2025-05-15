@@ -138,10 +138,10 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDepthClampRangeEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkDepthClampRangeEXT.BYTES);
         VkDepthClampRangeEXT[] ret = new VkDepthClampRangeEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDepthClampRangeEXT(s.asSlice(i * VkDepthClampRangeEXT.SIZE, VkDepthClampRangeEXT.SIZE));
+            ret[i] = new VkDepthClampRangeEXT(s.asSlice(i * VkDepthClampRangeEXT.BYTES, VkDepthClampRangeEXT.BYTES));
         }
         return ret;
     }

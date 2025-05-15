@@ -147,10 +147,10 @@ public record VkVideoDecodeH264SessionParametersCreateInfoKHR(@NotNull MemorySeg
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkVideoDecodeH264SessionParametersAddInfoKHR.SIZE);
+        s = s.reinterpret(assumedCount * VkVideoDecodeH264SessionParametersAddInfoKHR.BYTES);
         VkVideoDecodeH264SessionParametersAddInfoKHR[] ret = new VkVideoDecodeH264SessionParametersAddInfoKHR[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVideoDecodeH264SessionParametersAddInfoKHR(s.asSlice(i * VkVideoDecodeH264SessionParametersAddInfoKHR.SIZE, VkVideoDecodeH264SessionParametersAddInfoKHR.SIZE));
+            ret[i] = new VkVideoDecodeH264SessionParametersAddInfoKHR(s.asSlice(i * VkVideoDecodeH264SessionParametersAddInfoKHR.BYTES, VkVideoDecodeH264SessionParametersAddInfoKHR.BYTES));
         }
         return ret;
     }

@@ -140,10 +140,10 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkGraphicsShaderGroupCreateInfoNV.SIZE);
+        s = s.reinterpret(assumedCount * VkGraphicsShaderGroupCreateInfoNV.BYTES);
         VkGraphicsShaderGroupCreateInfoNV[] ret = new VkGraphicsShaderGroupCreateInfoNV[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkGraphicsShaderGroupCreateInfoNV(s.asSlice(i * VkGraphicsShaderGroupCreateInfoNV.SIZE, VkGraphicsShaderGroupCreateInfoNV.SIZE));
+            ret[i] = new VkGraphicsShaderGroupCreateInfoNV(s.asSlice(i * VkGraphicsShaderGroupCreateInfoNV.BYTES, VkGraphicsShaderGroupCreateInfoNV.BYTES));
         }
         return ret;
     }

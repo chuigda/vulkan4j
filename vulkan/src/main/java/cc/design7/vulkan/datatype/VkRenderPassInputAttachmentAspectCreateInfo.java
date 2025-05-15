@@ -138,10 +138,10 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(@NotNull MemorySegment
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkInputAttachmentAspectReference.SIZE);
+        s = s.reinterpret(assumedCount * VkInputAttachmentAspectReference.BYTES);
         VkInputAttachmentAspectReference[] ret = new VkInputAttachmentAspectReference[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkInputAttachmentAspectReference(s.asSlice(i * VkInputAttachmentAspectReference.SIZE, VkInputAttachmentAspectReference.SIZE));
+            ret[i] = new VkInputAttachmentAspectReference(s.asSlice(i * VkInputAttachmentAspectReference.BYTES, VkInputAttachmentAspectReference.BYTES));
         }
         return ret;
     }

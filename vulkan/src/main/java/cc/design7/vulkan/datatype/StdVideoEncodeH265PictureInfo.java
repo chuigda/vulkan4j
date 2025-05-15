@@ -174,10 +174,10 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoEncodeH265ReferenceListsInfo.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoEncodeH265ReferenceListsInfo.BYTES);
         StdVideoEncodeH265ReferenceListsInfo[] ret = new StdVideoEncodeH265ReferenceListsInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH265ReferenceListsInfo(s.asSlice(i * StdVideoEncodeH265ReferenceListsInfo.SIZE, StdVideoEncodeH265ReferenceListsInfo.SIZE));
+            ret[i] = new StdVideoEncodeH265ReferenceListsInfo(s.asSlice(i * StdVideoEncodeH265ReferenceListsInfo.BYTES, StdVideoEncodeH265ReferenceListsInfo.BYTES));
         }
         return ret;
     }
@@ -209,10 +209,10 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoH265ShortTermRefPicSet.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoH265ShortTermRefPicSet.BYTES);
         StdVideoH265ShortTermRefPicSet[] ret = new StdVideoH265ShortTermRefPicSet[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265ShortTermRefPicSet(s.asSlice(i * StdVideoH265ShortTermRefPicSet.SIZE, StdVideoH265ShortTermRefPicSet.SIZE));
+            ret[i] = new StdVideoH265ShortTermRefPicSet(s.asSlice(i * StdVideoH265ShortTermRefPicSet.BYTES, StdVideoH265ShortTermRefPicSet.BYTES));
         }
         return ret;
     }
@@ -244,10 +244,10 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoEncodeH265LongTermRefPics.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoEncodeH265LongTermRefPics.BYTES);
         StdVideoEncodeH265LongTermRefPics[] ret = new StdVideoEncodeH265LongTermRefPics[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH265LongTermRefPics(s.asSlice(i * StdVideoEncodeH265LongTermRefPics.SIZE, StdVideoEncodeH265LongTermRefPics.SIZE));
+            ret[i] = new StdVideoEncodeH265LongTermRefPics(s.asSlice(i * StdVideoEncodeH265LongTermRefPics.BYTES, StdVideoEncodeH265LongTermRefPics.BYTES));
         }
         return ret;
     }

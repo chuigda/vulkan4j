@@ -95,10 +95,10 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkClusterAccelerationStructureClustersBottomLevelInputNV.SIZE);
+        s = s.reinterpret(assumedCount * VkClusterAccelerationStructureClustersBottomLevelInputNV.BYTES);
         VkClusterAccelerationStructureClustersBottomLevelInputNV[] ret = new VkClusterAccelerationStructureClustersBottomLevelInputNV[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkClusterAccelerationStructureClustersBottomLevelInputNV(s.asSlice(i * VkClusterAccelerationStructureClustersBottomLevelInputNV.SIZE, VkClusterAccelerationStructureClustersBottomLevelInputNV.SIZE));
+            ret[i] = new VkClusterAccelerationStructureClustersBottomLevelInputNV(s.asSlice(i * VkClusterAccelerationStructureClustersBottomLevelInputNV.BYTES, VkClusterAccelerationStructureClustersBottomLevelInputNV.BYTES));
         }
         return ret;
     }
@@ -130,10 +130,10 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkClusterAccelerationStructureTriangleClusterInputNV.SIZE);
+        s = s.reinterpret(assumedCount * VkClusterAccelerationStructureTriangleClusterInputNV.BYTES);
         VkClusterAccelerationStructureTriangleClusterInputNV[] ret = new VkClusterAccelerationStructureTriangleClusterInputNV[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkClusterAccelerationStructureTriangleClusterInputNV(s.asSlice(i * VkClusterAccelerationStructureTriangleClusterInputNV.SIZE, VkClusterAccelerationStructureTriangleClusterInputNV.SIZE));
+            ret[i] = new VkClusterAccelerationStructureTriangleClusterInputNV(s.asSlice(i * VkClusterAccelerationStructureTriangleClusterInputNV.BYTES, VkClusterAccelerationStructureTriangleClusterInputNV.BYTES));
         }
         return ret;
     }
@@ -165,10 +165,10 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkClusterAccelerationStructureMoveObjectsInputNV.SIZE);
+        s = s.reinterpret(assumedCount * VkClusterAccelerationStructureMoveObjectsInputNV.BYTES);
         VkClusterAccelerationStructureMoveObjectsInputNV[] ret = new VkClusterAccelerationStructureMoveObjectsInputNV[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkClusterAccelerationStructureMoveObjectsInputNV(s.asSlice(i * VkClusterAccelerationStructureMoveObjectsInputNV.SIZE, VkClusterAccelerationStructureMoveObjectsInputNV.SIZE));
+            ret[i] = new VkClusterAccelerationStructureMoveObjectsInputNV(s.asSlice(i * VkClusterAccelerationStructureMoveObjectsInputNV.BYTES, VkClusterAccelerationStructureMoveObjectsInputNV.BYTES));
         }
         return ret;
     }

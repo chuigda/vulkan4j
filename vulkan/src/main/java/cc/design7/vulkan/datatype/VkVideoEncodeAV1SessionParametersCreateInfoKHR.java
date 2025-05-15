@@ -132,10 +132,10 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoAV1SequenceHeader.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoAV1SequenceHeader.BYTES);
         StdVideoAV1SequenceHeader[] ret = new StdVideoAV1SequenceHeader[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1SequenceHeader(s.asSlice(i * StdVideoAV1SequenceHeader.SIZE, StdVideoAV1SequenceHeader.SIZE));
+            ret[i] = new StdVideoAV1SequenceHeader(s.asSlice(i * StdVideoAV1SequenceHeader.BYTES, StdVideoAV1SequenceHeader.BYTES));
         }
         return ret;
     }
@@ -167,10 +167,10 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoEncodeAV1DecoderModelInfo.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoEncodeAV1DecoderModelInfo.BYTES);
         StdVideoEncodeAV1DecoderModelInfo[] ret = new StdVideoEncodeAV1DecoderModelInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeAV1DecoderModelInfo(s.asSlice(i * StdVideoEncodeAV1DecoderModelInfo.SIZE, StdVideoEncodeAV1DecoderModelInfo.SIZE));
+            ret[i] = new StdVideoEncodeAV1DecoderModelInfo(s.asSlice(i * StdVideoEncodeAV1DecoderModelInfo.BYTES, StdVideoEncodeAV1DecoderModelInfo.BYTES));
         }
         return ret;
     }
@@ -210,10 +210,10 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoEncodeAV1OperatingPointInfo.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoEncodeAV1OperatingPointInfo.BYTES);
         StdVideoEncodeAV1OperatingPointInfo[] ret = new StdVideoEncodeAV1OperatingPointInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeAV1OperatingPointInfo(s.asSlice(i * StdVideoEncodeAV1OperatingPointInfo.SIZE, StdVideoEncodeAV1OperatingPointInfo.SIZE));
+            ret[i] = new StdVideoEncodeAV1OperatingPointInfo(s.asSlice(i * StdVideoEncodeAV1OperatingPointInfo.BYTES, StdVideoEncodeAV1OperatingPointInfo.BYTES));
         }
         return ret;
     }

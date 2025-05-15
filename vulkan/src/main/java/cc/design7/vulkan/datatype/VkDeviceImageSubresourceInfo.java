@@ -130,10 +130,10 @@ public record VkDeviceImageSubresourceInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkImageCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkImageCreateInfo.BYTES);
         VkImageCreateInfo[] ret = new VkImageCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkImageCreateInfo(s.asSlice(i * VkImageCreateInfo.SIZE, VkImageCreateInfo.SIZE));
+            ret[i] = new VkImageCreateInfo(s.asSlice(i * VkImageCreateInfo.BYTES, VkImageCreateInfo.BYTES));
         }
         return ret;
     }
@@ -165,10 +165,10 @@ public record VkDeviceImageSubresourceInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkImageSubresource2.SIZE);
+        s = s.reinterpret(assumedCount * VkImageSubresource2.BYTES);
         VkImageSubresource2[] ret = new VkImageSubresource2[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkImageSubresource2(s.asSlice(i * VkImageSubresource2.SIZE, VkImageSubresource2.SIZE));
+            ret[i] = new VkImageSubresource2(s.asSlice(i * VkImageSubresource2.BYTES, VkImageSubresource2.BYTES));
         }
         return ret;
     }

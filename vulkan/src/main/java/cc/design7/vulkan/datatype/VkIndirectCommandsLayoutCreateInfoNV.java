@@ -158,10 +158,10 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkIndirectCommandsLayoutTokenNV.SIZE);
+        s = s.reinterpret(assumedCount * VkIndirectCommandsLayoutTokenNV.BYTES);
         VkIndirectCommandsLayoutTokenNV[] ret = new VkIndirectCommandsLayoutTokenNV[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectCommandsLayoutTokenNV(s.asSlice(i * VkIndirectCommandsLayoutTokenNV.SIZE, VkIndirectCommandsLayoutTokenNV.SIZE));
+            ret[i] = new VkIndirectCommandsLayoutTokenNV(s.asSlice(i * VkIndirectCommandsLayoutTokenNV.BYTES, VkIndirectCommandsLayoutTokenNV.BYTES));
         }
         return ret;
     }

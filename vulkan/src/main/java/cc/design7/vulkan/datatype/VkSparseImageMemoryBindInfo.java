@@ -115,10 +115,10 @@ public record VkSparseImageMemoryBindInfo(@NotNull MemorySegment segment) implem
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSparseImageMemoryBind.SIZE);
+        s = s.reinterpret(assumedCount * VkSparseImageMemoryBind.BYTES);
         VkSparseImageMemoryBind[] ret = new VkSparseImageMemoryBind[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSparseImageMemoryBind(s.asSlice(i * VkSparseImageMemoryBind.SIZE, VkSparseImageMemoryBind.SIZE));
+            ret[i] = new VkSparseImageMemoryBind(s.asSlice(i * VkSparseImageMemoryBind.BYTES, VkSparseImageMemoryBind.BYTES));
         }
         return ret;
     }

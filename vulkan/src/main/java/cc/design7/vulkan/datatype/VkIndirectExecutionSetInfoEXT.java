@@ -94,10 +94,10 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkIndirectExecutionSetPipelineInfoEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkIndirectExecutionSetPipelineInfoEXT.BYTES);
         VkIndirectExecutionSetPipelineInfoEXT[] ret = new VkIndirectExecutionSetPipelineInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectExecutionSetPipelineInfoEXT(s.asSlice(i * VkIndirectExecutionSetPipelineInfoEXT.SIZE, VkIndirectExecutionSetPipelineInfoEXT.SIZE));
+            ret[i] = new VkIndirectExecutionSetPipelineInfoEXT(s.asSlice(i * VkIndirectExecutionSetPipelineInfoEXT.BYTES, VkIndirectExecutionSetPipelineInfoEXT.BYTES));
         }
         return ret;
     }
@@ -129,10 +129,10 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkIndirectExecutionSetShaderInfoEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkIndirectExecutionSetShaderInfoEXT.BYTES);
         VkIndirectExecutionSetShaderInfoEXT[] ret = new VkIndirectExecutionSetShaderInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectExecutionSetShaderInfoEXT(s.asSlice(i * VkIndirectExecutionSetShaderInfoEXT.SIZE, VkIndirectExecutionSetShaderInfoEXT.SIZE));
+            ret[i] = new VkIndirectExecutionSetShaderInfoEXT(s.asSlice(i * VkIndirectExecutionSetShaderInfoEXT.BYTES, VkIndirectExecutionSetShaderInfoEXT.BYTES));
         }
         return ret;
     }

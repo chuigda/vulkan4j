@@ -158,10 +158,10 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkVideoEncodeRateControlLayerInfoKHR.SIZE);
+        s = s.reinterpret(assumedCount * VkVideoEncodeRateControlLayerInfoKHR.BYTES);
         VkVideoEncodeRateControlLayerInfoKHR[] ret = new VkVideoEncodeRateControlLayerInfoKHR[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVideoEncodeRateControlLayerInfoKHR(s.asSlice(i * VkVideoEncodeRateControlLayerInfoKHR.SIZE, VkVideoEncodeRateControlLayerInfoKHR.SIZE));
+            ret[i] = new VkVideoEncodeRateControlLayerInfoKHR(s.asSlice(i * VkVideoEncodeRateControlLayerInfoKHR.BYTES, VkVideoEncodeRateControlLayerInfoKHR.BYTES));
         }
         return ret;
     }

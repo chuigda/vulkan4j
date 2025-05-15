@@ -151,10 +151,10 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IPointer 
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSemaphoreSubmitInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkSemaphoreSubmitInfo.BYTES);
         VkSemaphoreSubmitInfo[] ret = new VkSemaphoreSubmitInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSemaphoreSubmitInfo(s.asSlice(i * VkSemaphoreSubmitInfo.SIZE, VkSemaphoreSubmitInfo.SIZE));
+            ret[i] = new VkSemaphoreSubmitInfo(s.asSlice(i * VkSemaphoreSubmitInfo.BYTES, VkSemaphoreSubmitInfo.BYTES));
         }
         return ret;
     }
@@ -194,10 +194,10 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IPointer 
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkCommandBufferSubmitInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkCommandBufferSubmitInfo.BYTES);
         VkCommandBufferSubmitInfo[] ret = new VkCommandBufferSubmitInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkCommandBufferSubmitInfo(s.asSlice(i * VkCommandBufferSubmitInfo.SIZE, VkCommandBufferSubmitInfo.SIZE));
+            ret[i] = new VkCommandBufferSubmitInfo(s.asSlice(i * VkCommandBufferSubmitInfo.BYTES, VkCommandBufferSubmitInfo.BYTES));
         }
         return ret;
     }
@@ -237,10 +237,10 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IPointer 
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSemaphoreSubmitInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkSemaphoreSubmitInfo.BYTES);
         VkSemaphoreSubmitInfo[] ret = new VkSemaphoreSubmitInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSemaphoreSubmitInfo(s.asSlice(i * VkSemaphoreSubmitInfo.SIZE, VkSemaphoreSubmitInfo.SIZE));
+            ret[i] = new VkSemaphoreSubmitInfo(s.asSlice(i * VkSemaphoreSubmitInfo.BYTES, VkSemaphoreSubmitInfo.BYTES));
         }
         return ret;
     }

@@ -173,10 +173,10 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkRect2D.SIZE);
+        s = s.reinterpret(assumedCount * VkRect2D.BYTES);
         VkRect2D[] ret = new VkRect2D[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkRect2D(s.asSlice(i * VkRect2D.SIZE, VkRect2D.SIZE));
+            ret[i] = new VkRect2D(s.asSlice(i * VkRect2D.BYTES, VkRect2D.BYTES));
         }
         return ret;
     }

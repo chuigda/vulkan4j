@@ -140,10 +140,10 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IP
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDeviceFaultAddressInfoEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkDeviceFaultAddressInfoEXT.BYTES);
         VkDeviceFaultAddressInfoEXT[] ret = new VkDeviceFaultAddressInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDeviceFaultAddressInfoEXT(s.asSlice(i * VkDeviceFaultAddressInfoEXT.SIZE, VkDeviceFaultAddressInfoEXT.SIZE));
+            ret[i] = new VkDeviceFaultAddressInfoEXT(s.asSlice(i * VkDeviceFaultAddressInfoEXT.BYTES, VkDeviceFaultAddressInfoEXT.BYTES));
         }
         return ret;
     }
@@ -175,10 +175,10 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IP
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDeviceFaultVendorInfoEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkDeviceFaultVendorInfoEXT.BYTES);
         VkDeviceFaultVendorInfoEXT[] ret = new VkDeviceFaultVendorInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDeviceFaultVendorInfoEXT(s.asSlice(i * VkDeviceFaultVendorInfoEXT.SIZE, VkDeviceFaultVendorInfoEXT.SIZE));
+            ret[i] = new VkDeviceFaultVendorInfoEXT(s.asSlice(i * VkDeviceFaultVendorInfoEXT.BYTES, VkDeviceFaultVendorInfoEXT.BYTES));
         }
         return ret;
     }

@@ -138,10 +138,10 @@ public record VkVideoEncodeH265NaluSliceSegmentInfoKHR(@NotNull MemorySegment se
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoEncodeH265SliceSegmentHeader.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoEncodeH265SliceSegmentHeader.BYTES);
         StdVideoEncodeH265SliceSegmentHeader[] ret = new StdVideoEncodeH265SliceSegmentHeader[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH265SliceSegmentHeader(s.asSlice(i * StdVideoEncodeH265SliceSegmentHeader.SIZE, StdVideoEncodeH265SliceSegmentHeader.SIZE));
+            ret[i] = new StdVideoEncodeH265SliceSegmentHeader(s.asSlice(i * StdVideoEncodeH265SliceSegmentHeader.BYTES, StdVideoEncodeH265SliceSegmentHeader.BYTES));
         }
         return ret;
     }

@@ -161,10 +161,10 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.BYTES);
         VkPipelineShaderStageCreateInfo[] ret = new VkPipelineShaderStageCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineShaderStageCreateInfo(s.asSlice(i * VkPipelineShaderStageCreateInfo.SIZE, VkPipelineShaderStageCreateInfo.SIZE));
+            ret[i] = new VkPipelineShaderStageCreateInfo(s.asSlice(i * VkPipelineShaderStageCreateInfo.BYTES, VkPipelineShaderStageCreateInfo.BYTES));
         }
         return ret;
     }
@@ -196,10 +196,10 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineVertexInputStateCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineVertexInputStateCreateInfo.BYTES);
         VkPipelineVertexInputStateCreateInfo[] ret = new VkPipelineVertexInputStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineVertexInputStateCreateInfo(s.asSlice(i * VkPipelineVertexInputStateCreateInfo.SIZE, VkPipelineVertexInputStateCreateInfo.SIZE));
+            ret[i] = new VkPipelineVertexInputStateCreateInfo(s.asSlice(i * VkPipelineVertexInputStateCreateInfo.BYTES, VkPipelineVertexInputStateCreateInfo.BYTES));
         }
         return ret;
     }
@@ -231,10 +231,10 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineInputAssemblyStateCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineInputAssemblyStateCreateInfo.BYTES);
         VkPipelineInputAssemblyStateCreateInfo[] ret = new VkPipelineInputAssemblyStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineInputAssemblyStateCreateInfo(s.asSlice(i * VkPipelineInputAssemblyStateCreateInfo.SIZE, VkPipelineInputAssemblyStateCreateInfo.SIZE));
+            ret[i] = new VkPipelineInputAssemblyStateCreateInfo(s.asSlice(i * VkPipelineInputAssemblyStateCreateInfo.BYTES, VkPipelineInputAssemblyStateCreateInfo.BYTES));
         }
         return ret;
     }
@@ -266,10 +266,10 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineTessellationStateCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineTessellationStateCreateInfo.BYTES);
         VkPipelineTessellationStateCreateInfo[] ret = new VkPipelineTessellationStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineTessellationStateCreateInfo(s.asSlice(i * VkPipelineTessellationStateCreateInfo.SIZE, VkPipelineTessellationStateCreateInfo.SIZE));
+            ret[i] = new VkPipelineTessellationStateCreateInfo(s.asSlice(i * VkPipelineTessellationStateCreateInfo.BYTES, VkPipelineTessellationStateCreateInfo.BYTES));
         }
         return ret;
     }
@@ -301,10 +301,10 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineViewportStateCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineViewportStateCreateInfo.BYTES);
         VkPipelineViewportStateCreateInfo[] ret = new VkPipelineViewportStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineViewportStateCreateInfo(s.asSlice(i * VkPipelineViewportStateCreateInfo.SIZE, VkPipelineViewportStateCreateInfo.SIZE));
+            ret[i] = new VkPipelineViewportStateCreateInfo(s.asSlice(i * VkPipelineViewportStateCreateInfo.BYTES, VkPipelineViewportStateCreateInfo.BYTES));
         }
         return ret;
     }
@@ -336,10 +336,10 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineRasterizationStateCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineRasterizationStateCreateInfo.BYTES);
         VkPipelineRasterizationStateCreateInfo[] ret = new VkPipelineRasterizationStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineRasterizationStateCreateInfo(s.asSlice(i * VkPipelineRasterizationStateCreateInfo.SIZE, VkPipelineRasterizationStateCreateInfo.SIZE));
+            ret[i] = new VkPipelineRasterizationStateCreateInfo(s.asSlice(i * VkPipelineRasterizationStateCreateInfo.BYTES, VkPipelineRasterizationStateCreateInfo.BYTES));
         }
         return ret;
     }
@@ -371,10 +371,10 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineMultisampleStateCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineMultisampleStateCreateInfo.BYTES);
         VkPipelineMultisampleStateCreateInfo[] ret = new VkPipelineMultisampleStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineMultisampleStateCreateInfo(s.asSlice(i * VkPipelineMultisampleStateCreateInfo.SIZE, VkPipelineMultisampleStateCreateInfo.SIZE));
+            ret[i] = new VkPipelineMultisampleStateCreateInfo(s.asSlice(i * VkPipelineMultisampleStateCreateInfo.BYTES, VkPipelineMultisampleStateCreateInfo.BYTES));
         }
         return ret;
     }
@@ -406,10 +406,10 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineDepthStencilStateCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineDepthStencilStateCreateInfo.BYTES);
         VkPipelineDepthStencilStateCreateInfo[] ret = new VkPipelineDepthStencilStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineDepthStencilStateCreateInfo(s.asSlice(i * VkPipelineDepthStencilStateCreateInfo.SIZE, VkPipelineDepthStencilStateCreateInfo.SIZE));
+            ret[i] = new VkPipelineDepthStencilStateCreateInfo(s.asSlice(i * VkPipelineDepthStencilStateCreateInfo.BYTES, VkPipelineDepthStencilStateCreateInfo.BYTES));
         }
         return ret;
     }
@@ -441,10 +441,10 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineColorBlendStateCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineColorBlendStateCreateInfo.BYTES);
         VkPipelineColorBlendStateCreateInfo[] ret = new VkPipelineColorBlendStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineColorBlendStateCreateInfo(s.asSlice(i * VkPipelineColorBlendStateCreateInfo.SIZE, VkPipelineColorBlendStateCreateInfo.SIZE));
+            ret[i] = new VkPipelineColorBlendStateCreateInfo(s.asSlice(i * VkPipelineColorBlendStateCreateInfo.BYTES, VkPipelineColorBlendStateCreateInfo.BYTES));
         }
         return ret;
     }
@@ -476,10 +476,10 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineDynamicStateCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineDynamicStateCreateInfo.BYTES);
         VkPipelineDynamicStateCreateInfo[] ret = new VkPipelineDynamicStateCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineDynamicStateCreateInfo(s.asSlice(i * VkPipelineDynamicStateCreateInfo.SIZE, VkPipelineDynamicStateCreateInfo.SIZE));
+            ret[i] = new VkPipelineDynamicStateCreateInfo(s.asSlice(i * VkPipelineDynamicStateCreateInfo.BYTES, VkPipelineDynamicStateCreateInfo.BYTES));
         }
         return ret;
     }

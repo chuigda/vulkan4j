@@ -156,10 +156,10 @@ public record VkVideoEncodeH265SessionParametersCreateInfoKHR(@NotNull MemorySeg
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkVideoEncodeH265SessionParametersAddInfoKHR.SIZE);
+        s = s.reinterpret(assumedCount * VkVideoEncodeH265SessionParametersAddInfoKHR.BYTES);
         VkVideoEncodeH265SessionParametersAddInfoKHR[] ret = new VkVideoEncodeH265SessionParametersAddInfoKHR[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVideoEncodeH265SessionParametersAddInfoKHR(s.asSlice(i * VkVideoEncodeH265SessionParametersAddInfoKHR.SIZE, VkVideoEncodeH265SessionParametersAddInfoKHR.SIZE));
+            ret[i] = new VkVideoEncodeH265SessionParametersAddInfoKHR(s.asSlice(i * VkVideoEncodeH265SessionParametersAddInfoKHR.BYTES, VkVideoEncodeH265SessionParametersAddInfoKHR.BYTES));
         }
         return ret;
     }

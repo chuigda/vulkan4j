@@ -138,10 +138,10 @@ public record VkFramebufferAttachmentsCreateInfo(@NotNull MemorySegment segment)
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkFramebufferAttachmentImageInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkFramebufferAttachmentImageInfo.BYTES);
         VkFramebufferAttachmentImageInfo[] ret = new VkFramebufferAttachmentImageInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkFramebufferAttachmentImageInfo(s.asSlice(i * VkFramebufferAttachmentImageInfo.SIZE, VkFramebufferAttachmentImageInfo.SIZE));
+            ret[i] = new VkFramebufferAttachmentImageInfo(s.asSlice(i * VkFramebufferAttachmentImageInfo.BYTES, VkFramebufferAttachmentImageInfo.BYTES));
         }
         return ret;
     }

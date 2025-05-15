@@ -142,10 +142,10 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IP
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkApplicationInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkApplicationInfo.BYTES);
         VkApplicationInfo[] ret = new VkApplicationInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkApplicationInfo(s.asSlice(i * VkApplicationInfo.SIZE, VkApplicationInfo.SIZE));
+            ret[i] = new VkApplicationInfo(s.asSlice(i * VkApplicationInfo.BYTES, VkApplicationInfo.BYTES));
         }
         return ret;
     }

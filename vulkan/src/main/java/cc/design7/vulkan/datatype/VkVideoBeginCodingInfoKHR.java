@@ -173,10 +173,10 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkVideoReferenceSlotInfoKHR.SIZE);
+        s = s.reinterpret(assumedCount * VkVideoReferenceSlotInfoKHR.BYTES);
         VkVideoReferenceSlotInfoKHR[] ret = new VkVideoReferenceSlotInfoKHR[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVideoReferenceSlotInfoKHR(s.asSlice(i * VkVideoReferenceSlotInfoKHR.SIZE, VkVideoReferenceSlotInfoKHR.SIZE));
+            ret[i] = new VkVideoReferenceSlotInfoKHR(s.asSlice(i * VkVideoReferenceSlotInfoKHR.BYTES, VkVideoReferenceSlotInfoKHR.BYTES));
         }
         return ret;
     }

@@ -138,10 +138,10 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkVideoPictureResourceInfoKHR.SIZE);
+        s = s.reinterpret(assumedCount * VkVideoPictureResourceInfoKHR.BYTES);
         VkVideoPictureResourceInfoKHR[] ret = new VkVideoPictureResourceInfoKHR[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVideoPictureResourceInfoKHR(s.asSlice(i * VkVideoPictureResourceInfoKHR.SIZE, VkVideoPictureResourceInfoKHR.SIZE));
+            ret[i] = new VkVideoPictureResourceInfoKHR(s.asSlice(i * VkVideoPictureResourceInfoKHR.BYTES, VkVideoPictureResourceInfoKHR.BYTES));
         }
         return ret;
     }

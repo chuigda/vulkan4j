@@ -136,10 +136,10 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoEncodeAV1ExtensionHeader.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoEncodeAV1ExtensionHeader.BYTES);
         StdVideoEncodeAV1ExtensionHeader[] ret = new StdVideoEncodeAV1ExtensionHeader[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeAV1ExtensionHeader(s.asSlice(i * StdVideoEncodeAV1ExtensionHeader.SIZE, StdVideoEncodeAV1ExtensionHeader.SIZE));
+            ret[i] = new StdVideoEncodeAV1ExtensionHeader(s.asSlice(i * StdVideoEncodeAV1ExtensionHeader.BYTES, StdVideoEncodeAV1ExtensionHeader.BYTES));
         }
         return ret;
     }

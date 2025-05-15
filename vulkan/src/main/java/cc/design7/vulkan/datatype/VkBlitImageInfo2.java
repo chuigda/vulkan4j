@@ -183,10 +183,10 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IPoint
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkImageBlit2.SIZE);
+        s = s.reinterpret(assumedCount * VkImageBlit2.BYTES);
         VkImageBlit2[] ret = new VkImageBlit2[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkImageBlit2(s.asSlice(i * VkImageBlit2.SIZE, VkImageBlit2.SIZE));
+            ret[i] = new VkImageBlit2(s.asSlice(i * VkImageBlit2.BYTES, VkImageBlit2.BYTES));
         }
         return ret;
     }

@@ -152,10 +152,10 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDescriptorUpdateTemplateEntry.SIZE);
+        s = s.reinterpret(assumedCount * VkDescriptorUpdateTemplateEntry.BYTES);
         VkDescriptorUpdateTemplateEntry[] ret = new VkDescriptorUpdateTemplateEntry[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorUpdateTemplateEntry(s.asSlice(i * VkDescriptorUpdateTemplateEntry.SIZE, VkDescriptorUpdateTemplateEntry.SIZE));
+            ret[i] = new VkDescriptorUpdateTemplateEntry(s.asSlice(i * VkDescriptorUpdateTemplateEntry.BYTES, VkDescriptorUpdateTemplateEntry.BYTES));
         }
         return ret;
     }

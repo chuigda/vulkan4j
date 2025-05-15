@@ -102,10 +102,10 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IPoi
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkRectLayerKHR.SIZE);
+        s = s.reinterpret(assumedCount * VkRectLayerKHR.BYTES);
         VkRectLayerKHR[] ret = new VkRectLayerKHR[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkRectLayerKHR(s.asSlice(i * VkRectLayerKHR.SIZE, VkRectLayerKHR.SIZE));
+            ret[i] = new VkRectLayerKHR(s.asSlice(i * VkRectLayerKHR.BYTES, VkRectLayerKHR.BYTES));
         }
         return ret;
     }

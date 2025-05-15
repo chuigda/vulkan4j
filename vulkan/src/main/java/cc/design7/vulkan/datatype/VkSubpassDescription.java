@@ -126,10 +126,10 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IP
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkAttachmentReference.SIZE);
+        s = s.reinterpret(assumedCount * VkAttachmentReference.BYTES);
         VkAttachmentReference[] ret = new VkAttachmentReference[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentReference(s.asSlice(i * VkAttachmentReference.SIZE, VkAttachmentReference.SIZE));
+            ret[i] = new VkAttachmentReference(s.asSlice(i * VkAttachmentReference.BYTES, VkAttachmentReference.BYTES));
         }
         return ret;
     }
@@ -169,10 +169,10 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IP
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkAttachmentReference.SIZE);
+        s = s.reinterpret(assumedCount * VkAttachmentReference.BYTES);
         VkAttachmentReference[] ret = new VkAttachmentReference[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentReference(s.asSlice(i * VkAttachmentReference.SIZE, VkAttachmentReference.SIZE));
+            ret[i] = new VkAttachmentReference(s.asSlice(i * VkAttachmentReference.BYTES, VkAttachmentReference.BYTES));
         }
         return ret;
     }
@@ -204,10 +204,10 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IP
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkAttachmentReference.SIZE);
+        s = s.reinterpret(assumedCount * VkAttachmentReference.BYTES);
         VkAttachmentReference[] ret = new VkAttachmentReference[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentReference(s.asSlice(i * VkAttachmentReference.SIZE, VkAttachmentReference.SIZE));
+            ret[i] = new VkAttachmentReference(s.asSlice(i * VkAttachmentReference.BYTES, VkAttachmentReference.BYTES));
         }
         return ret;
     }
@@ -239,10 +239,10 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IP
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkAttachmentReference.SIZE);
+        s = s.reinterpret(assumedCount * VkAttachmentReference.BYTES);
         VkAttachmentReference[] ret = new VkAttachmentReference[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentReference(s.asSlice(i * VkAttachmentReference.SIZE, VkAttachmentReference.SIZE));
+            ret[i] = new VkAttachmentReference(s.asSlice(i * VkAttachmentReference.BYTES, VkAttachmentReference.BYTES));
         }
         return ret;
     }

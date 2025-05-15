@@ -138,10 +138,10 @@ public record VkRenderPassFragmentDensityMapOffsetEndInfoEXT(@NotNull MemorySegm
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkOffset2D.SIZE);
+        s = s.reinterpret(assumedCount * VkOffset2D.BYTES);
         VkOffset2D[] ret = new VkOffset2D[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkOffset2D(s.asSlice(i * VkOffset2D.SIZE, VkOffset2D.SIZE));
+            ret[i] = new VkOffset2D(s.asSlice(i * VkOffset2D.BYTES, VkOffset2D.BYTES));
         }
         return ret;
     }

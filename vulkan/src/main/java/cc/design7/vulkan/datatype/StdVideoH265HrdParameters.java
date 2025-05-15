@@ -209,10 +209,10 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoH265SubLayerHrdParameters.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoH265SubLayerHrdParameters.BYTES);
         StdVideoH265SubLayerHrdParameters[] ret = new StdVideoH265SubLayerHrdParameters[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265SubLayerHrdParameters(s.asSlice(i * StdVideoH265SubLayerHrdParameters.SIZE, StdVideoH265SubLayerHrdParameters.SIZE));
+            ret[i] = new StdVideoH265SubLayerHrdParameters(s.asSlice(i * StdVideoH265SubLayerHrdParameters.BYTES, StdVideoH265SubLayerHrdParameters.BYTES));
         }
         return ret;
     }
@@ -244,10 +244,10 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoH265SubLayerHrdParameters.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoH265SubLayerHrdParameters.BYTES);
         StdVideoH265SubLayerHrdParameters[] ret = new StdVideoH265SubLayerHrdParameters[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265SubLayerHrdParameters(s.asSlice(i * StdVideoH265SubLayerHrdParameters.SIZE, StdVideoH265SubLayerHrdParameters.SIZE));
+            ret[i] = new StdVideoH265SubLayerHrdParameters(s.asSlice(i * StdVideoH265SubLayerHrdParameters.BYTES, StdVideoH265SubLayerHrdParameters.BYTES));
         }
         return ret;
     }

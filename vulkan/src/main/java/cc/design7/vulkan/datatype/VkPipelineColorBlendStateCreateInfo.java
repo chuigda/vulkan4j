@@ -166,10 +166,10 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineColorBlendAttachmentState.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineColorBlendAttachmentState.BYTES);
         VkPipelineColorBlendAttachmentState[] ret = new VkPipelineColorBlendAttachmentState[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineColorBlendAttachmentState(s.asSlice(i * VkPipelineColorBlendAttachmentState.SIZE, VkPipelineColorBlendAttachmentState.SIZE));
+            ret[i] = new VkPipelineColorBlendAttachmentState(s.asSlice(i * VkPipelineColorBlendAttachmentState.BYTES, VkPipelineColorBlendAttachmentState.BYTES));
         }
         return ret;
     }

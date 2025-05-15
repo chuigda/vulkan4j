@@ -129,10 +129,10 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(@NotNull MemorySegment se
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkRenderPassSubpassFeedbackInfoEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkRenderPassSubpassFeedbackInfoEXT.BYTES);
         VkRenderPassSubpassFeedbackInfoEXT[] ret = new VkRenderPassSubpassFeedbackInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkRenderPassSubpassFeedbackInfoEXT(s.asSlice(i * VkRenderPassSubpassFeedbackInfoEXT.SIZE, VkRenderPassSubpassFeedbackInfoEXT.SIZE));
+            ret[i] = new VkRenderPassSubpassFeedbackInfoEXT(s.asSlice(i * VkRenderPassSubpassFeedbackInfoEXT.BYTES, VkRenderPassSubpassFeedbackInfoEXT.BYTES));
         }
         return ret;
     }

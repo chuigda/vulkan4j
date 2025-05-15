@@ -173,10 +173,10 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkClearValue.SIZE);
+        s = s.reinterpret(assumedCount * VkClearValue.BYTES);
         VkClearValue[] ret = new VkClearValue[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkClearValue(s.asSlice(i * VkClearValue.SIZE, VkClearValue.SIZE));
+            ret[i] = new VkClearValue(s.asSlice(i * VkClearValue.BYTES, VkClearValue.BYTES));
         }
         return ret;
     }

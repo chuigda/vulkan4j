@@ -102,10 +102,10 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IPoin
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkBaseInStructure.SIZE);
+        s = s.reinterpret(assumedCount * VkBaseInStructure.BYTES);
         VkBaseInStructure[] ret = new VkBaseInStructure[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkBaseInStructure(s.asSlice(i * VkBaseInStructure.SIZE, VkBaseInStructure.SIZE));
+            ret[i] = new VkBaseInStructure(s.asSlice(i * VkBaseInStructure.BYTES, VkBaseInStructure.BYTES));
         }
         return ret;
     }

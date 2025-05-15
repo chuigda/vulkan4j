@@ -163,10 +163,10 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkIndirectExecutionSetShaderLayoutInfoEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkIndirectExecutionSetShaderLayoutInfoEXT.BYTES);
         VkIndirectExecutionSetShaderLayoutInfoEXT[] ret = new VkIndirectExecutionSetShaderLayoutInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectExecutionSetShaderLayoutInfoEXT(s.asSlice(i * VkIndirectExecutionSetShaderLayoutInfoEXT.SIZE, VkIndirectExecutionSetShaderLayoutInfoEXT.SIZE));
+            ret[i] = new VkIndirectExecutionSetShaderLayoutInfoEXT(s.asSlice(i * VkIndirectExecutionSetShaderLayoutInfoEXT.BYTES, VkIndirectExecutionSetShaderLayoutInfoEXT.BYTES));
         }
         return ret;
     }
@@ -214,10 +214,10 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPushConstantRange.SIZE);
+        s = s.reinterpret(assumedCount * VkPushConstantRange.BYTES);
         VkPushConstantRange[] ret = new VkPushConstantRange[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPushConstantRange(s.asSlice(i * VkPushConstantRange.SIZE, VkPushConstantRange.SIZE));
+            ret[i] = new VkPushConstantRange(s.asSlice(i * VkPushConstantRange.BYTES, VkPushConstantRange.BYTES));
         }
         return ret;
     }

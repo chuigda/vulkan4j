@@ -138,10 +138,10 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkMutableDescriptorTypeListEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkMutableDescriptorTypeListEXT.BYTES);
         VkMutableDescriptorTypeListEXT[] ret = new VkMutableDescriptorTypeListEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkMutableDescriptorTypeListEXT(s.asSlice(i * VkMutableDescriptorTypeListEXT.SIZE, VkMutableDescriptorTypeListEXT.SIZE));
+            ret[i] = new VkMutableDescriptorTypeListEXT(s.asSlice(i * VkMutableDescriptorTypeListEXT.BYTES, VkMutableDescriptorTypeListEXT.BYTES));
         }
         return ret;
     }

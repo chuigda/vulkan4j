@@ -123,10 +123,10 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDescriptorImageInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkDescriptorImageInfo.BYTES);
         VkDescriptorImageInfo[] ret = new VkDescriptorImageInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorImageInfo(s.asSlice(i * VkDescriptorImageInfo.SIZE, VkDescriptorImageInfo.SIZE));
+            ret[i] = new VkDescriptorImageInfo(s.asSlice(i * VkDescriptorImageInfo.BYTES, VkDescriptorImageInfo.BYTES));
         }
         return ret;
     }
@@ -158,10 +158,10 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDescriptorImageInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkDescriptorImageInfo.BYTES);
         VkDescriptorImageInfo[] ret = new VkDescriptorImageInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorImageInfo(s.asSlice(i * VkDescriptorImageInfo.SIZE, VkDescriptorImageInfo.SIZE));
+            ret[i] = new VkDescriptorImageInfo(s.asSlice(i * VkDescriptorImageInfo.BYTES, VkDescriptorImageInfo.BYTES));
         }
         return ret;
     }
@@ -193,10 +193,10 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDescriptorImageInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkDescriptorImageInfo.BYTES);
         VkDescriptorImageInfo[] ret = new VkDescriptorImageInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorImageInfo(s.asSlice(i * VkDescriptorImageInfo.SIZE, VkDescriptorImageInfo.SIZE));
+            ret[i] = new VkDescriptorImageInfo(s.asSlice(i * VkDescriptorImageInfo.BYTES, VkDescriptorImageInfo.BYTES));
         }
         return ret;
     }
@@ -228,10 +228,10 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDescriptorImageInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkDescriptorImageInfo.BYTES);
         VkDescriptorImageInfo[] ret = new VkDescriptorImageInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorImageInfo(s.asSlice(i * VkDescriptorImageInfo.SIZE, VkDescriptorImageInfo.SIZE));
+            ret[i] = new VkDescriptorImageInfo(s.asSlice(i * VkDescriptorImageInfo.BYTES, VkDescriptorImageInfo.BYTES));
         }
         return ret;
     }
@@ -263,10 +263,10 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDescriptorAddressInfoEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkDescriptorAddressInfoEXT.BYTES);
         VkDescriptorAddressInfoEXT[] ret = new VkDescriptorAddressInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorAddressInfoEXT(s.asSlice(i * VkDescriptorAddressInfoEXT.SIZE, VkDescriptorAddressInfoEXT.SIZE));
+            ret[i] = new VkDescriptorAddressInfoEXT(s.asSlice(i * VkDescriptorAddressInfoEXT.BYTES, VkDescriptorAddressInfoEXT.BYTES));
         }
         return ret;
     }
@@ -298,10 +298,10 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDescriptorAddressInfoEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkDescriptorAddressInfoEXT.BYTES);
         VkDescriptorAddressInfoEXT[] ret = new VkDescriptorAddressInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorAddressInfoEXT(s.asSlice(i * VkDescriptorAddressInfoEXT.SIZE, VkDescriptorAddressInfoEXT.SIZE));
+            ret[i] = new VkDescriptorAddressInfoEXT(s.asSlice(i * VkDescriptorAddressInfoEXT.BYTES, VkDescriptorAddressInfoEXT.BYTES));
         }
         return ret;
     }
@@ -333,10 +333,10 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDescriptorAddressInfoEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkDescriptorAddressInfoEXT.BYTES);
         VkDescriptorAddressInfoEXT[] ret = new VkDescriptorAddressInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorAddressInfoEXT(s.asSlice(i * VkDescriptorAddressInfoEXT.SIZE, VkDescriptorAddressInfoEXT.SIZE));
+            ret[i] = new VkDescriptorAddressInfoEXT(s.asSlice(i * VkDescriptorAddressInfoEXT.BYTES, VkDescriptorAddressInfoEXT.BYTES));
         }
         return ret;
     }
@@ -368,10 +368,10 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDescriptorAddressInfoEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkDescriptorAddressInfoEXT.BYTES);
         VkDescriptorAddressInfoEXT[] ret = new VkDescriptorAddressInfoEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorAddressInfoEXT(s.asSlice(i * VkDescriptorAddressInfoEXT.SIZE, VkDescriptorAddressInfoEXT.SIZE));
+            ret[i] = new VkDescriptorAddressInfoEXT(s.asSlice(i * VkDescriptorAddressInfoEXT.BYTES, VkDescriptorAddressInfoEXT.BYTES));
         }
         return ret;
     }

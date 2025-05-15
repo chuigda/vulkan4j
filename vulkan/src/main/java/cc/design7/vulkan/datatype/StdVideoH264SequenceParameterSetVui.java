@@ -226,10 +226,10 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoH264HrdParameters.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoH264HrdParameters.BYTES);
         StdVideoH264HrdParameters[] ret = new StdVideoH264HrdParameters[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH264HrdParameters(s.asSlice(i * StdVideoH264HrdParameters.SIZE, StdVideoH264HrdParameters.SIZE));
+            ret[i] = new StdVideoH264HrdParameters(s.asSlice(i * StdVideoH264HrdParameters.BYTES, StdVideoH264HrdParameters.BYTES));
         }
         return ret;
     }

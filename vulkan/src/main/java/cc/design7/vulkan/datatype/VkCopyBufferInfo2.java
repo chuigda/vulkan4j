@@ -164,10 +164,10 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IPoin
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkBufferCopy2.SIZE);
+        s = s.reinterpret(assumedCount * VkBufferCopy2.BYTES);
         VkBufferCopy2[] ret = new VkBufferCopy2[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkBufferCopy2(s.asSlice(i * VkBufferCopy2.SIZE, VkBufferCopy2.SIZE));
+            ret[i] = new VkBufferCopy2(s.asSlice(i * VkBufferCopy2.BYTES, VkBufferCopy2.BYTES));
         }
         return ret;
     }

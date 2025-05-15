@@ -186,10 +186,10 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSpecializationInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkSpecializationInfo.BYTES);
         VkSpecializationInfo[] ret = new VkSpecializationInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSpecializationInfo(s.asSlice(i * VkSpecializationInfo.SIZE, VkSpecializationInfo.SIZE));
+            ret[i] = new VkSpecializationInfo(s.asSlice(i * VkSpecializationInfo.BYTES, VkSpecializationInfo.BYTES));
         }
         return ret;
     }

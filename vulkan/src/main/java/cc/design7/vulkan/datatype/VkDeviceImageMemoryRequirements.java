@@ -130,10 +130,10 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkImageCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkImageCreateInfo.BYTES);
         VkImageCreateInfo[] ret = new VkImageCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkImageCreateInfo(s.asSlice(i * VkImageCreateInfo.SIZE, VkImageCreateInfo.SIZE));
+            ret[i] = new VkImageCreateInfo(s.asSlice(i * VkImageCreateInfo.BYTES, VkImageCreateInfo.BYTES));
         }
         return ret;
     }

@@ -248,10 +248,10 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkMicromapUsageEXT.SIZE);
+        s = s.reinterpret(assumedCount * VkMicromapUsageEXT.BYTES);
         VkMicromapUsageEXT[] ret = new VkMicromapUsageEXT[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkMicromapUsageEXT(s.asSlice(i * VkMicromapUsageEXT.SIZE, VkMicromapUsageEXT.SIZE));
+            ret[i] = new VkMicromapUsageEXT(s.asSlice(i * VkMicromapUsageEXT.BYTES, VkMicromapUsageEXT.BYTES));
         }
         return ret;
     }

@@ -147,10 +147,10 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkDirectDriverLoadingInfoLUNARG.SIZE);
+        s = s.reinterpret(assumedCount * VkDirectDriverLoadingInfoLUNARG.BYTES);
         VkDirectDriverLoadingInfoLUNARG[] ret = new VkDirectDriverLoadingInfoLUNARG[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDirectDriverLoadingInfoLUNARG(s.asSlice(i * VkDirectDriverLoadingInfoLUNARG.SIZE, VkDirectDriverLoadingInfoLUNARG.SIZE));
+            ret[i] = new VkDirectDriverLoadingInfoLUNARG(s.asSlice(i * VkDirectDriverLoadingInfoLUNARG.BYTES, VkDirectDriverLoadingInfoLUNARG.BYTES));
         }
         return ret;
     }

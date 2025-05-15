@@ -169,10 +169,10 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkWriteDescriptorSet.SIZE);
+        s = s.reinterpret(assumedCount * VkWriteDescriptorSet.BYTES);
         VkWriteDescriptorSet[] ret = new VkWriteDescriptorSet[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkWriteDescriptorSet(s.asSlice(i * VkWriteDescriptorSet.SIZE, VkWriteDescriptorSet.SIZE));
+            ret[i] = new VkWriteDescriptorSet(s.asSlice(i * VkWriteDescriptorSet.BYTES, VkWriteDescriptorSet.BYTES));
         }
         return ret;
     }

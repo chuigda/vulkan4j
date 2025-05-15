@@ -120,10 +120,10 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkCoarseSampleLocationNV.SIZE);
+        s = s.reinterpret(assumedCount * VkCoarseSampleLocationNV.BYTES);
         VkCoarseSampleLocationNV[] ret = new VkCoarseSampleLocationNV[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkCoarseSampleLocationNV(s.asSlice(i * VkCoarseSampleLocationNV.SIZE, VkCoarseSampleLocationNV.SIZE));
+            ret[i] = new VkCoarseSampleLocationNV(s.asSlice(i * VkCoarseSampleLocationNV.BYTES, VkCoarseSampleLocationNV.BYTES));
         }
         return ret;
     }

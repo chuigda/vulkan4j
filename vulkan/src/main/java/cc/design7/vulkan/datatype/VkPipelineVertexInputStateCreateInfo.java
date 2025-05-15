@@ -149,10 +149,10 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkVertexInputBindingDescription.SIZE);
+        s = s.reinterpret(assumedCount * VkVertexInputBindingDescription.BYTES);
         VkVertexInputBindingDescription[] ret = new VkVertexInputBindingDescription[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVertexInputBindingDescription(s.asSlice(i * VkVertexInputBindingDescription.SIZE, VkVertexInputBindingDescription.SIZE));
+            ret[i] = new VkVertexInputBindingDescription(s.asSlice(i * VkVertexInputBindingDescription.BYTES, VkVertexInputBindingDescription.BYTES));
         }
         return ret;
     }
@@ -192,10 +192,10 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkVertexInputAttributeDescription.SIZE);
+        s = s.reinterpret(assumedCount * VkVertexInputAttributeDescription.BYTES);
         VkVertexInputAttributeDescription[] ret = new VkVertexInputAttributeDescription[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVertexInputAttributeDescription(s.asSlice(i * VkVertexInputAttributeDescription.SIZE, VkVertexInputAttributeDescription.SIZE));
+            ret[i] = new VkVertexInputAttributeDescription(s.asSlice(i * VkVertexInputAttributeDescription.BYTES, VkVertexInputAttributeDescription.BYTES));
         }
         return ret;
     }

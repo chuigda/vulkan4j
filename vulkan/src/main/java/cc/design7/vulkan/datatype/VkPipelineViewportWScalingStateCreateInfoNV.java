@@ -147,10 +147,10 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkViewportWScalingNV.SIZE);
+        s = s.reinterpret(assumedCount * VkViewportWScalingNV.BYTES);
         VkViewportWScalingNV[] ret = new VkViewportWScalingNV[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkViewportWScalingNV(s.asSlice(i * VkViewportWScalingNV.SIZE, VkViewportWScalingNV.SIZE));
+            ret[i] = new VkViewportWScalingNV(s.asSlice(i * VkViewportWScalingNV.BYTES, VkViewportWScalingNV.BYTES));
         }
         return ret;
     }

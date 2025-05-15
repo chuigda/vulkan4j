@@ -153,10 +153,10 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.BYTES);
         VkPipelineShaderStageCreateInfo[] ret = new VkPipelineShaderStageCreateInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineShaderStageCreateInfo(s.asSlice(i * VkPipelineShaderStageCreateInfo.SIZE, VkPipelineShaderStageCreateInfo.SIZE));
+            ret[i] = new VkPipelineShaderStageCreateInfo(s.asSlice(i * VkPipelineShaderStageCreateInfo.BYTES, VkPipelineShaderStageCreateInfo.BYTES));
         }
         return ret;
     }
@@ -196,10 +196,10 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkRayTracingShaderGroupCreateInfoNV.SIZE);
+        s = s.reinterpret(assumedCount * VkRayTracingShaderGroupCreateInfoNV.BYTES);
         VkRayTracingShaderGroupCreateInfoNV[] ret = new VkRayTracingShaderGroupCreateInfoNV[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkRayTracingShaderGroupCreateInfoNV(s.asSlice(i * VkRayTracingShaderGroupCreateInfoNV.SIZE, VkRayTracingShaderGroupCreateInfoNV.SIZE));
+            ret[i] = new VkRayTracingShaderGroupCreateInfoNV(s.asSlice(i * VkRayTracingShaderGroupCreateInfoNV.BYTES, VkRayTracingShaderGroupCreateInfoNV.BYTES));
         }
         return ret;
     }

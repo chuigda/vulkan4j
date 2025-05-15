@@ -165,10 +165,10 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkGeometryNV.SIZE);
+        s = s.reinterpret(assumedCount * VkGeometryNV.BYTES);
         VkGeometryNV[] ret = new VkGeometryNV[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkGeometryNV(s.asSlice(i * VkGeometryNV.SIZE, VkGeometryNV.SIZE));
+            ret[i] = new VkGeometryNV(s.asSlice(i * VkGeometryNV.BYTES, VkGeometryNV.BYTES));
         }
         return ret;
     }

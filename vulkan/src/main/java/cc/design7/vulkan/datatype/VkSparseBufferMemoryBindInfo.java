@@ -115,10 +115,10 @@ public record VkSparseBufferMemoryBindInfo(@NotNull MemorySegment segment) imple
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkSparseMemoryBind.SIZE);
+        s = s.reinterpret(assumedCount * VkSparseMemoryBind.BYTES);
         VkSparseMemoryBind[] ret = new VkSparseMemoryBind[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSparseMemoryBind(s.asSlice(i * VkSparseMemoryBind.SIZE, VkSparseMemoryBind.SIZE));
+            ret[i] = new VkSparseMemoryBind(s.asSlice(i * VkSparseMemoryBind.BYTES, VkSparseMemoryBind.BYTES));
         }
         return ret;
     }

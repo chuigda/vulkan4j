@@ -166,10 +166,10 @@ private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField
                 return null;
             }
 
-            s = s.reinterpret(assumedCount * ${pointee.name}.SIZE);
+            s = s.reinterpret(assumedCount * ${pointee.name}.BYTES);
             ${pointee.name}[] ret = new ${pointee.name}[assumedCount];
             for (int i = 0; i < assumedCount; i++) {
-                ret[i] = new ${pointee.name}(s.asSlice(i * ${pointee.name}.SIZE, ${pointee.name}.SIZE));
+                ret[i] = new ${pointee.name}(s.asSlice(i * ${pointee.name}.BYTES, ${pointee.name}.BYTES));
             }
             return ret;
         }
@@ -198,10 +198,10 @@ private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField
             }
 
             +""
-            +"s = s.reinterpret(assumedCount * ${pointee.name}.SIZE);"
+            +"s = s.reinterpret(assumedCount * ${pointee.name}.BYTES);"
             +"${pointee.name}[] ret = new ${pointee.name}[assumedCount];"
             "for (int i = 0; i < assumedCount; i ++)" {
-                +"ret[i] = new ${pointee.name}(s.asSlice(i * ${pointee.name}.SIZE, ${pointee.name}.SIZE));"
+                +"ret[i] = new ${pointee.name}(s.asSlice(i * ${pointee.name}.BYTES, ${pointee.name}.BYTES));"
             }
 
             +"return ret;"

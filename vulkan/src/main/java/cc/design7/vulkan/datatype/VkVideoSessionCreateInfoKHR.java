@@ -153,10 +153,10 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkVideoProfileInfoKHR.SIZE);
+        s = s.reinterpret(assumedCount * VkVideoProfileInfoKHR.BYTES);
         VkVideoProfileInfoKHR[] ret = new VkVideoProfileInfoKHR[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVideoProfileInfoKHR(s.asSlice(i * VkVideoProfileInfoKHR.SIZE, VkVideoProfileInfoKHR.SIZE));
+            ret[i] = new VkVideoProfileInfoKHR(s.asSlice(i * VkVideoProfileInfoKHR.BYTES, VkVideoProfileInfoKHR.BYTES));
         }
         return ret;
     }
@@ -228,10 +228,10 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkExtensionProperties.SIZE);
+        s = s.reinterpret(assumedCount * VkExtensionProperties.BYTES);
         VkExtensionProperties[] ret = new VkExtensionProperties[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkExtensionProperties(s.asSlice(i * VkExtensionProperties.SIZE, VkExtensionProperties.SIZE));
+            ret[i] = new VkExtensionProperties(s.asSlice(i * VkExtensionProperties.BYTES, VkExtensionProperties.BYTES));
         }
         return ret;
     }

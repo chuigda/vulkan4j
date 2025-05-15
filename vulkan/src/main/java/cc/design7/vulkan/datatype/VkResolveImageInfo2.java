@@ -182,10 +182,10 @@ public record VkResolveImageInfo2(@NotNull MemorySegment segment) implements IPo
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkImageResolve2.SIZE);
+        s = s.reinterpret(assumedCount * VkImageResolve2.BYTES);
         VkImageResolve2[] ret = new VkImageResolve2[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkImageResolve2(s.asSlice(i * VkImageResolve2.SIZE, VkImageResolve2.SIZE));
+            ret[i] = new VkImageResolve2(s.asSlice(i * VkImageResolve2.BYTES, VkImageResolve2.BYTES));
         }
         return ret;
     }

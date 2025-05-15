@@ -131,10 +131,10 @@ public record VkVideoDecodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
             return null;
         }
 
-        s = s.reinterpret(assumedCount * StdVideoDecodeH265PictureInfo.SIZE);
+        s = s.reinterpret(assumedCount * StdVideoDecodeH265PictureInfo.BYTES);
         StdVideoDecodeH265PictureInfo[] ret = new StdVideoDecodeH265PictureInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoDecodeH265PictureInfo(s.asSlice(i * StdVideoDecodeH265PictureInfo.SIZE, StdVideoDecodeH265PictureInfo.SIZE));
+            ret[i] = new StdVideoDecodeH265PictureInfo(s.asSlice(i * StdVideoDecodeH265PictureInfo.BYTES, StdVideoDecodeH265PictureInfo.BYTES));
         }
         return ret;
     }

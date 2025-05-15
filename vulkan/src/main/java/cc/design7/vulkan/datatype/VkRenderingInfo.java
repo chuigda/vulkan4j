@@ -176,10 +176,10 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IPointe
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkRenderingAttachmentInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkRenderingAttachmentInfo.BYTES);
         VkRenderingAttachmentInfo[] ret = new VkRenderingAttachmentInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkRenderingAttachmentInfo(s.asSlice(i * VkRenderingAttachmentInfo.SIZE, VkRenderingAttachmentInfo.SIZE));
+            ret[i] = new VkRenderingAttachmentInfo(s.asSlice(i * VkRenderingAttachmentInfo.BYTES, VkRenderingAttachmentInfo.BYTES));
         }
         return ret;
     }
@@ -211,10 +211,10 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IPointe
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkRenderingAttachmentInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkRenderingAttachmentInfo.BYTES);
         VkRenderingAttachmentInfo[] ret = new VkRenderingAttachmentInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkRenderingAttachmentInfo(s.asSlice(i * VkRenderingAttachmentInfo.SIZE, VkRenderingAttachmentInfo.SIZE));
+            ret[i] = new VkRenderingAttachmentInfo(s.asSlice(i * VkRenderingAttachmentInfo.BYTES, VkRenderingAttachmentInfo.BYTES));
         }
         return ret;
     }
@@ -246,10 +246,10 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IPointe
             return null;
         }
 
-        s = s.reinterpret(assumedCount * VkRenderingAttachmentInfo.SIZE);
+        s = s.reinterpret(assumedCount * VkRenderingAttachmentInfo.BYTES);
         VkRenderingAttachmentInfo[] ret = new VkRenderingAttachmentInfo[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkRenderingAttachmentInfo(s.asSlice(i * VkRenderingAttachmentInfo.SIZE, VkRenderingAttachmentInfo.SIZE));
+            ret[i] = new VkRenderingAttachmentInfo(s.asSlice(i * VkRenderingAttachmentInfo.BYTES, VkRenderingAttachmentInfo.BYTES));
         }
         return ret;
     }
