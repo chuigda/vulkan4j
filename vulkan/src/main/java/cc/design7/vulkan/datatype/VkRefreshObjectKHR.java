@@ -1,0 +1,89 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IPointer {
+    public static final OfInt LAYOUT$objectType = ValueLayout.JAVA_INT.withName("objectType");
+    public static final OfLong LAYOUT$objectHandle = ValueLayout.JAVA_LONG.withName("objectHandle");
+    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$objectType, LAYOUT$objectHandle, LAYOUT$flags);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static VkRefreshObjectKHR allocate(Arena arena) {
+        return new VkRefreshObjectKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkRefreshObjectKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkRefreshObjectKHR[] ret = new VkRefreshObjectKHR[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new VkRefreshObjectKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkRefreshObjectKHR clone(Arena arena, VkRefreshObjectKHR src) {
+        VkRefreshObjectKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkRefreshObjectKHR[] clone(Arena arena, VkRefreshObjectKHR[] src) {
+        VkRefreshObjectKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$objectType = PathElement.groupElement("PATH$objectType");
+    public static final PathElement PATH$objectHandle = PathElement.groupElement("PATH$objectHandle");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+
+    public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
+    public static final long SIZE$objectHandle = LAYOUT$objectHandle.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+
+    public static final long OFFSET$objectType = LAYOUT.byteOffset(PATH$objectType);
+    public static final long OFFSET$objectHandle = LAYOUT.byteOffset(PATH$objectHandle);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+
+    public @enumtype(VkObjectType.class) int objectType() {
+        return segment.get(LAYOUT$objectType, OFFSET$objectType);
+    }
+
+    public void objectType(@enumtype(VkObjectType.class) int value) {
+        segment.set(LAYOUT$objectType, OFFSET$objectType, value);
+    }
+
+    public @unsigned long objectHandle() {
+        return segment.get(LAYOUT$objectHandle, OFFSET$objectHandle);
+    }
+
+    public void objectHandle(@unsigned long value) {
+        segment.set(LAYOUT$objectHandle, OFFSET$objectHandle, value);
+    }
+
+    public @enumtype(VkRefreshObjectFlagsKHR.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkRefreshObjectFlagsKHR.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+}
+/// dummy, not implemented yet

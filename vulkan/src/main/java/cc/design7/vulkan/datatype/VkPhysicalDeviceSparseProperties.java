@@ -1,0 +1,113 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record VkPhysicalDeviceSparseProperties(@NotNull MemorySegment segment) implements IPointer {
+    public static final OfInt LAYOUT$residencyStandard2DBlockShape = ValueLayout.JAVA_INT.withName("residencyStandard2DBlockShape");
+    public static final OfInt LAYOUT$residencyStandard2DMultisampleBlockShape = ValueLayout.JAVA_INT.withName("residencyStandard2DMultisampleBlockShape");
+    public static final OfInt LAYOUT$residencyStandard3DBlockShape = ValueLayout.JAVA_INT.withName("residencyStandard3DBlockShape");
+    public static final OfInt LAYOUT$residencyAlignedMipSize = ValueLayout.JAVA_INT.withName("residencyAlignedMipSize");
+    public static final OfInt LAYOUT$residencyNonResidentStrict = ValueLayout.JAVA_INT.withName("residencyNonResidentStrict");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$residencyStandard2DBlockShape, LAYOUT$residencyStandard2DMultisampleBlockShape, LAYOUT$residencyStandard3DBlockShape, LAYOUT$residencyAlignedMipSize, LAYOUT$residencyNonResidentStrict);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static VkPhysicalDeviceSparseProperties allocate(Arena arena) {
+        return new VkPhysicalDeviceSparseProperties(arena.allocate(LAYOUT));
+    }
+
+    public static VkPhysicalDeviceSparseProperties[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceSparseProperties[] ret = new VkPhysicalDeviceSparseProperties[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new VkPhysicalDeviceSparseProperties(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPhysicalDeviceSparseProperties clone(Arena arena, VkPhysicalDeviceSparseProperties src) {
+        VkPhysicalDeviceSparseProperties ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceSparseProperties[] clone(Arena arena, VkPhysicalDeviceSparseProperties[] src) {
+        VkPhysicalDeviceSparseProperties[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$residencyStandard2DBlockShape = PathElement.groupElement("PATH$residencyStandard2DBlockShape");
+    public static final PathElement PATH$residencyStandard2DMultisampleBlockShape = PathElement.groupElement("PATH$residencyStandard2DMultisampleBlockShape");
+    public static final PathElement PATH$residencyStandard3DBlockShape = PathElement.groupElement("PATH$residencyStandard3DBlockShape");
+    public static final PathElement PATH$residencyAlignedMipSize = PathElement.groupElement("PATH$residencyAlignedMipSize");
+    public static final PathElement PATH$residencyNonResidentStrict = PathElement.groupElement("PATH$residencyNonResidentStrict");
+
+    public static final long SIZE$residencyStandard2DBlockShape = LAYOUT$residencyStandard2DBlockShape.byteSize();
+    public static final long SIZE$residencyStandard2DMultisampleBlockShape = LAYOUT$residencyStandard2DMultisampleBlockShape.byteSize();
+    public static final long SIZE$residencyStandard3DBlockShape = LAYOUT$residencyStandard3DBlockShape.byteSize();
+    public static final long SIZE$residencyAlignedMipSize = LAYOUT$residencyAlignedMipSize.byteSize();
+    public static final long SIZE$residencyNonResidentStrict = LAYOUT$residencyNonResidentStrict.byteSize();
+
+    public static final long OFFSET$residencyStandard2DBlockShape = LAYOUT.byteOffset(PATH$residencyStandard2DBlockShape);
+    public static final long OFFSET$residencyStandard2DMultisampleBlockShape = LAYOUT.byteOffset(PATH$residencyStandard2DMultisampleBlockShape);
+    public static final long OFFSET$residencyStandard3DBlockShape = LAYOUT.byteOffset(PATH$residencyStandard3DBlockShape);
+    public static final long OFFSET$residencyAlignedMipSize = LAYOUT.byteOffset(PATH$residencyAlignedMipSize);
+    public static final long OFFSET$residencyNonResidentStrict = LAYOUT.byteOffset(PATH$residencyNonResidentStrict);
+
+    public @unsigned int residencyStandard2DBlockShape() {
+        return segment.get(LAYOUT$residencyStandard2DBlockShape, OFFSET$residencyStandard2DBlockShape);
+    }
+
+    public void residencyStandard2DBlockShape(@unsigned int value) {
+        segment.set(LAYOUT$residencyStandard2DBlockShape, OFFSET$residencyStandard2DBlockShape, value);
+    }
+
+    public @unsigned int residencyStandard2DMultisampleBlockShape() {
+        return segment.get(LAYOUT$residencyStandard2DMultisampleBlockShape, OFFSET$residencyStandard2DMultisampleBlockShape);
+    }
+
+    public void residencyStandard2DMultisampleBlockShape(@unsigned int value) {
+        segment.set(LAYOUT$residencyStandard2DMultisampleBlockShape, OFFSET$residencyStandard2DMultisampleBlockShape, value);
+    }
+
+    public @unsigned int residencyStandard3DBlockShape() {
+        return segment.get(LAYOUT$residencyStandard3DBlockShape, OFFSET$residencyStandard3DBlockShape);
+    }
+
+    public void residencyStandard3DBlockShape(@unsigned int value) {
+        segment.set(LAYOUT$residencyStandard3DBlockShape, OFFSET$residencyStandard3DBlockShape, value);
+    }
+
+    public @unsigned int residencyAlignedMipSize() {
+        return segment.get(LAYOUT$residencyAlignedMipSize, OFFSET$residencyAlignedMipSize);
+    }
+
+    public void residencyAlignedMipSize(@unsigned int value) {
+        segment.set(LAYOUT$residencyAlignedMipSize, OFFSET$residencyAlignedMipSize, value);
+    }
+
+    public @unsigned int residencyNonResidentStrict() {
+        return segment.get(LAYOUT$residencyNonResidentStrict, OFFSET$residencyNonResidentStrict);
+    }
+
+    public void residencyNonResidentStrict(@unsigned int value) {
+        segment.set(LAYOUT$residencyNonResidentStrict, OFFSET$residencyNonResidentStrict, value);
+    }
+
+}
+/// dummy, not implemented yet

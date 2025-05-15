@@ -1,6 +1,5 @@
 package cc.design7.babel.codegen.accessor
 
-import cc.design7.babel.codegen.FIELD_segment
 import cc.design7.babel.codegen.LayoutField
 import cc.design7.babel.codegen.fn
 import cc.design7.babel.ctype.CPlatformDependentIntType
@@ -19,26 +18,26 @@ private fun generatePlatformDependentIntAccessor(type: CPlatformDependentIntType
         "long" -> {
             buildDoc {
                 fn("public", "long", member.name) {
-                    +"return NativeLayout.readCLong($FIELD_segment, ${member.offsetName});"
+                    +"return NativeLayout.readCLong(segment, ${member.offsetName});"
                 }
 
                 +""
 
                 fn("public", "void", member.name, "long value") {
-                    +"NativeLayout.writeCLong($FIELD_segment, ${member.offsetName}, value);"
+                    +"NativeLayout.writeCLong(segment, ${member.offsetName}, value);"
                 }
             }
         }
         "size_t" -> {
             buildDoc {
                 fn("public", "@unsigned long", member.name) {
-                    +"return NativeLayout.readCSizeT($FIELD_segment, ${member.offsetName});"
+                    +"return NativeLayout.readCSizeT(segment, ${member.offsetName});"
                 }
 
                 +""
 
                 fn("public", "void", member.name, "@unsigned long value") {
-                    +"NativeLayout.writeCSizeT($FIELD_segment, ${member.offsetName}, value);"
+                    +"NativeLayout.writeCSizeT(segment, ${member.offsetName}, value);"
                 }
             }
         }
@@ -61,7 +60,7 @@ private fun generateFixedTypeAccessor(type: CType, member: LayoutField.Typed): D
 
     return buildDoc {
         fn("public", type.jType, member.name) {
-            +"return $FIELD_segment.get(${member.layoutName}, ${member.offsetName});"
+            +"return segment.get(${member.layoutName}, ${member.offsetName});"
         }
 
         +""

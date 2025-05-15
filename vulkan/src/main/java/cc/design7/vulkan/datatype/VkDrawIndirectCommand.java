@@ -1,0 +1,101 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record VkDrawIndirectCommand(@NotNull MemorySegment segment) implements IPointer {
+    public static final OfInt LAYOUT$vertexCount = ValueLayout.JAVA_INT.withName("vertexCount");
+    public static final OfInt LAYOUT$instanceCount = ValueLayout.JAVA_INT.withName("instanceCount");
+    public static final OfInt LAYOUT$firstVertex = ValueLayout.JAVA_INT.withName("firstVertex");
+    public static final OfInt LAYOUT$firstInstance = ValueLayout.JAVA_INT.withName("firstInstance");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$vertexCount, LAYOUT$instanceCount, LAYOUT$firstVertex, LAYOUT$firstInstance);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static VkDrawIndirectCommand allocate(Arena arena) {
+        return new VkDrawIndirectCommand(arena.allocate(LAYOUT));
+    }
+
+    public static VkDrawIndirectCommand[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDrawIndirectCommand[] ret = new VkDrawIndirectCommand[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new VkDrawIndirectCommand(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkDrawIndirectCommand clone(Arena arena, VkDrawIndirectCommand src) {
+        VkDrawIndirectCommand ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDrawIndirectCommand[] clone(Arena arena, VkDrawIndirectCommand[] src) {
+        VkDrawIndirectCommand[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$vertexCount = PathElement.groupElement("PATH$vertexCount");
+    public static final PathElement PATH$instanceCount = PathElement.groupElement("PATH$instanceCount");
+    public static final PathElement PATH$firstVertex = PathElement.groupElement("PATH$firstVertex");
+    public static final PathElement PATH$firstInstance = PathElement.groupElement("PATH$firstInstance");
+
+    public static final long SIZE$vertexCount = LAYOUT$vertexCount.byteSize();
+    public static final long SIZE$instanceCount = LAYOUT$instanceCount.byteSize();
+    public static final long SIZE$firstVertex = LAYOUT$firstVertex.byteSize();
+    public static final long SIZE$firstInstance = LAYOUT$firstInstance.byteSize();
+
+    public static final long OFFSET$vertexCount = LAYOUT.byteOffset(PATH$vertexCount);
+    public static final long OFFSET$instanceCount = LAYOUT.byteOffset(PATH$instanceCount);
+    public static final long OFFSET$firstVertex = LAYOUT.byteOffset(PATH$firstVertex);
+    public static final long OFFSET$firstInstance = LAYOUT.byteOffset(PATH$firstInstance);
+
+    public @unsigned int vertexCount() {
+        return segment.get(LAYOUT$vertexCount, OFFSET$vertexCount);
+    }
+
+    public void vertexCount(@unsigned int value) {
+        segment.set(LAYOUT$vertexCount, OFFSET$vertexCount, value);
+    }
+
+    public @unsigned int instanceCount() {
+        return segment.get(LAYOUT$instanceCount, OFFSET$instanceCount);
+    }
+
+    public void instanceCount(@unsigned int value) {
+        segment.set(LAYOUT$instanceCount, OFFSET$instanceCount, value);
+    }
+
+    public @unsigned int firstVertex() {
+        return segment.get(LAYOUT$firstVertex, OFFSET$firstVertex);
+    }
+
+    public void firstVertex(@unsigned int value) {
+        segment.set(LAYOUT$firstVertex, OFFSET$firstVertex, value);
+    }
+
+    public @unsigned int firstInstance() {
+        return segment.get(LAYOUT$firstInstance, OFFSET$firstInstance);
+    }
+
+    public void firstInstance(@unsigned int value) {
+        segment.set(LAYOUT$firstInstance, OFFSET$firstInstance, value);
+    }
+
+}
+/// dummy, not implemented yet

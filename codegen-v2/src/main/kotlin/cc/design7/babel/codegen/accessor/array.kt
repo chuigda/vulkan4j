@@ -1,6 +1,5 @@
 package cc.design7.babel.codegen.accessor
 
-import cc.design7.babel.codegen.FIELD_segment
 import cc.design7.babel.codegen.LayoutField
 import cc.design7.babel.codegen.fn
 import cc.design7.babel.ctype.CArrayType
@@ -27,7 +26,7 @@ private fun generateNonRefArrayAccessor(elementType: CNonRefType, member: Layout
         val fnRaw = "${member.name}Raw"
 
         fn("public", "MemorySegment", fnRaw) {
-            +"return $FIELD_segment.asSlice(${member.offsetName}, ${member.sizeName});"
+            +"return segment.asSlice(${member.offsetName}, ${member.sizeName});"
         }
 
         +""
@@ -39,7 +38,7 @@ private fun generateNonRefArrayAccessor(elementType: CNonRefType, member: Layout
         +""
 
         fn("public", "void", member.name, "${elementType.jPtrType} value") {
-            +"MemorySegment.copy(value.segment(), 0, $FIELD_segment, ${member.offsetName}, ${member.sizeName});"
+            +"MemorySegment.copy(value.segment(), 0, segment, ${member.offsetName}, ${member.sizeName});"
         }
     }
 }
@@ -49,7 +48,7 @@ private fun generateStructureArrayAccessor(elementType: CStructType, member: Lay
 
     return buildDoc {
         fn("public", "MemorySegment", rawName) {
-            +"return $FIELD_segment.asSlice(${member.offsetName}, ${member.sizeName});"
+            +"return segment.asSlice(${member.offsetName}, ${member.sizeName});"
         }
 
         +""
@@ -95,7 +94,7 @@ private fun generateHandleArrayAccessor(elementType: CHandleType, member: Layout
         val rawName = "${member.name}Raw"
 
         fn("public", "MemorySegment", rawName) {
-            +"return $FIELD_segment.asSlice(${member.offsetName}, ${member.sizeName});"
+            +"return segment.asSlice(${member.offsetName}, ${member.sizeName});"
         }
 
         +""
@@ -107,7 +106,7 @@ private fun generateHandleArrayAccessor(elementType: CHandleType, member: Layout
         +""
 
         fn("public", "void", member.name, "${elementType.name}.Buffer value") {
-            +"MemorySegment.copy(value.segment(), 0, $FIELD_segment, ${member.offsetName}, ${member.sizeName});"
+            +"MemorySegment.copy(value.segment(), 0, segment, ${member.offsetName}, ${member.sizeName});"
         }
 
         +""

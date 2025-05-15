@@ -49,7 +49,9 @@ fun renderImpl(sb: StringBuilder, doc: Doc, indent: Int) {
             }
         }
         is DocText -> {
-            sb.repeat("    ", indent)
+            for (i in 0 until indent) {
+                sb.append("    ")
+            }
             sb.append(doc.text.trim())
             sb.append("\n")
         }

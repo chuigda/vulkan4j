@@ -1,0 +1,81 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record VkDisplayPlanePropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
+    public static final AddressLayout LAYOUT$currentDisplay = ValueLayout.ADDRESS.withName("currentDisplay");
+    public static final OfInt LAYOUT$currentStackIndex = ValueLayout.JAVA_INT.withName("currentStackIndex");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$currentDisplay, LAYOUT$currentStackIndex);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static VkDisplayPlanePropertiesKHR allocate(Arena arena) {
+        return new VkDisplayPlanePropertiesKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkDisplayPlanePropertiesKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDisplayPlanePropertiesKHR[] ret = new VkDisplayPlanePropertiesKHR[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new VkDisplayPlanePropertiesKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkDisplayPlanePropertiesKHR clone(Arena arena, VkDisplayPlanePropertiesKHR src) {
+        VkDisplayPlanePropertiesKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDisplayPlanePropertiesKHR[] clone(Arena arena, VkDisplayPlanePropertiesKHR[] src) {
+        VkDisplayPlanePropertiesKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$currentDisplay = PathElement.groupElement("PATH$currentDisplay");
+    public static final PathElement PATH$currentStackIndex = PathElement.groupElement("PATH$currentStackIndex");
+
+    public static final long SIZE$currentDisplay = LAYOUT$currentDisplay.byteSize();
+    public static final long SIZE$currentStackIndex = LAYOUT$currentStackIndex.byteSize();
+
+    public static final long OFFSET$currentDisplay = LAYOUT.byteOffset(PATH$currentDisplay);
+    public static final long OFFSET$currentStackIndex = LAYOUT.byteOffset(PATH$currentStackIndex);
+
+    public @Nullable VkDisplayKHR currentDisplay() {
+        MemorySegment s = segment.asSlice(OFFSET$currentDisplay, SIZE$currentDisplay);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDisplayKHR(s);
+    }
+
+    public void currentDisplay() {
+        segment.set(LAYOUT$currentDisplay, OFFSET$currentDisplay, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @unsigned int currentStackIndex() {
+        return segment.get(LAYOUT$currentStackIndex, OFFSET$currentStackIndex);
+    }
+
+    public void currentStackIndex(@unsigned int value) {
+        segment.set(LAYOUT$currentStackIndex, OFFSET$currentStackIndex, value);
+    }
+
+}
+/// dummy, not implemented yet

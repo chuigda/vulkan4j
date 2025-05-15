@@ -61,9 +61,6 @@ private fun DocList.constant(type: String, name: String, value: String) {
     +"public static final $type $name = $value;"
 }
 
-private const val TYPE_MemorySegment: String = "MemorySegment"
-internal const val FIELD_segment: String = "segment"
-
 fun generateStructure(
     registryBase: RegistryBase,
     structure: Structure,
@@ -90,6 +87,9 @@ fun generateStructure(
     imports("org.jetbrains.annotations.NotNull")
     imports("cc.design7.ffm.IPointer")
     imports("cc.design7.ffm.NativeLayout")
+    if (layouts.any { it is LayoutField.Bitfields }) {
+        imports("cc.design7.ffm.bits.BitfieldUtil")
+    }
     imports("cc.design7.ffm.annotation.*")
     imports("cc.design7.ffm.ptr.*")
 
@@ -98,15 +98,15 @@ fun generateStructure(
     }
 
     if (registryBase.structures.isNotEmpty()) {
-        imports("$packageName.datatype.*;")
+        imports("$packageName.datatype.*")
     }
 
     if (registryBase.enumerations.isNotEmpty()) {
-        imports("$packageName.enumtype.*;")
+        imports("$packageName.enumtype.*")
     }
 
     if (registryBase.constants.isNotEmpty()) {
-        imports("$packageName.${codegenOptions.constantClassName}.*;", true)
+        imports("$packageName.${codegenOptions.constantClassName}.*", true)
     }
 
     for (extra in codegenOptions.extraImport) {
@@ -116,7 +116,7 @@ fun generateStructure(
     +""
 
     // TODO: generate document
-    +"public record $className(@NotNull $TYPE_MemorySegment $FIELD_segment) implements IPointer {"
+    +"public record $className(@NotNull MemorySegment segment) implements IPointer {"
 
     indent {
         // layouts
@@ -126,19 +126,19 @@ fun generateStructure(
 
         +""
 
-        constant(TYPE_MemorySegment, "LAYOUT", generateLayout1(layouts))
+        constant("MemoryLayout", "LAYOUT", generateLayout1(layouts))
         constant("long", "SIZE", "LAYOUT.byteSize()")
 
         +""
 
         fn("public static", className, "allocate", "Arena arena") {
-            +"return new $className(arena,allocate(LAYOUT));"
+            +"return new $className(arena.allocate(LAYOUT));"
         }
 
         +""
 
         fn("public static", "$className[]", "allocate", "Arena arena", "int count") {
-            +"$TYPE_MemorySegment segment = arena.allocate(LAYOUT, count);"
+            +"MemorySegment segment = arena.allocate(LAYOUT, count);"
             +"$className[] ret = new $className[count];"
             "for (int i = 0; i < count; i ++)" {
                 +"ret[i] = new $className(segment.asSlice(i * SIZE, SIZE));"

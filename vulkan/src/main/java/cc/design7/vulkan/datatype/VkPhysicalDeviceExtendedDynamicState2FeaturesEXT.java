@@ -1,0 +1,117 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
+    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
+    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
+    public static final OfInt LAYOUT$extendedDynamicState2 = ValueLayout.JAVA_INT.withName("extendedDynamicState2");
+    public static final OfInt LAYOUT$extendedDynamicState2LogicOp = ValueLayout.JAVA_INT.withName("extendedDynamicState2LogicOp");
+    public static final OfInt LAYOUT$extendedDynamicState2PatchControlPoints = ValueLayout.JAVA_INT.withName("extendedDynamicState2PatchControlPoints");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$extendedDynamicState2, LAYOUT$extendedDynamicState2LogicOp, LAYOUT$extendedDynamicState2PatchControlPoints);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static VkPhysicalDeviceExtendedDynamicState2FeaturesEXT allocate(Arena arena) {
+        return new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkPhysicalDeviceExtendedDynamicState2FeaturesEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceExtendedDynamicState2FeaturesEXT[] ret = new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPhysicalDeviceExtendedDynamicState2FeaturesEXT clone(Arena arena, VkPhysicalDeviceExtendedDynamicState2FeaturesEXT src) {
+        VkPhysicalDeviceExtendedDynamicState2FeaturesEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceExtendedDynamicState2FeaturesEXT[] clone(Arena arena, VkPhysicalDeviceExtendedDynamicState2FeaturesEXT[] src) {
+        VkPhysicalDeviceExtendedDynamicState2FeaturesEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$extendedDynamicState2 = PathElement.groupElement("PATH$extendedDynamicState2");
+    public static final PathElement PATH$extendedDynamicState2LogicOp = PathElement.groupElement("PATH$extendedDynamicState2LogicOp");
+    public static final PathElement PATH$extendedDynamicState2PatchControlPoints = PathElement.groupElement("PATH$extendedDynamicState2PatchControlPoints");
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$extendedDynamicState2 = LAYOUT$extendedDynamicState2.byteSize();
+    public static final long SIZE$extendedDynamicState2LogicOp = LAYOUT$extendedDynamicState2LogicOp.byteSize();
+    public static final long SIZE$extendedDynamicState2PatchControlPoints = LAYOUT$extendedDynamicState2PatchControlPoints.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$extendedDynamicState2 = LAYOUT.byteOffset(PATH$extendedDynamicState2);
+    public static final long OFFSET$extendedDynamicState2LogicOp = LAYOUT.byteOffset(PATH$extendedDynamicState2LogicOp);
+    public static final long OFFSET$extendedDynamicState2PatchControlPoints = LAYOUT.byteOffset(PATH$extendedDynamicState2PatchControlPoints);
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int extendedDynamicState2() {
+        return segment.get(LAYOUT$extendedDynamicState2, OFFSET$extendedDynamicState2);
+    }
+
+    public void extendedDynamicState2(@unsigned int value) {
+        segment.set(LAYOUT$extendedDynamicState2, OFFSET$extendedDynamicState2, value);
+    }
+
+    public @unsigned int extendedDynamicState2LogicOp() {
+        return segment.get(LAYOUT$extendedDynamicState2LogicOp, OFFSET$extendedDynamicState2LogicOp);
+    }
+
+    public void extendedDynamicState2LogicOp(@unsigned int value) {
+        segment.set(LAYOUT$extendedDynamicState2LogicOp, OFFSET$extendedDynamicState2LogicOp, value);
+    }
+
+    public @unsigned int extendedDynamicState2PatchControlPoints() {
+        return segment.get(LAYOUT$extendedDynamicState2PatchControlPoints, OFFSET$extendedDynamicState2PatchControlPoints);
+    }
+
+    public void extendedDynamicState2PatchControlPoints(@unsigned int value) {
+        segment.set(LAYOUT$extendedDynamicState2PatchControlPoints, OFFSET$extendedDynamicState2PatchControlPoints, value);
+    }
+
+}
+/// dummy, not implemented yet

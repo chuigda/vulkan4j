@@ -1,0 +1,89 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record VkRectLayerKHR(@NotNull MemorySegment segment) implements IPointer {
+    public static final StructLayout LAYOUT$offset = VkOffset2D.LAYOUT.withName("offset");
+    public static final StructLayout LAYOUT$extent = VkExtent2D.LAYOUT.withName("extent");
+    public static final OfInt LAYOUT$layer = ValueLayout.JAVA_INT.withName("layer");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$offset, LAYOUT$extent, LAYOUT$layer);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static VkRectLayerKHR allocate(Arena arena) {
+        return new VkRectLayerKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkRectLayerKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkRectLayerKHR[] ret = new VkRectLayerKHR[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new VkRectLayerKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkRectLayerKHR clone(Arena arena, VkRectLayerKHR src) {
+        VkRectLayerKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkRectLayerKHR[] clone(Arena arena, VkRectLayerKHR[] src) {
+        VkRectLayerKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
+    public static final PathElement PATH$extent = PathElement.groupElement("PATH$extent");
+    public static final PathElement PATH$layer = PathElement.groupElement("PATH$layer");
+
+    public static final long SIZE$offset = LAYOUT$offset.byteSize();
+    public static final long SIZE$extent = LAYOUT$extent.byteSize();
+    public static final long SIZE$layer = LAYOUT$layer.byteSize();
+
+    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
+    public static final long OFFSET$extent = LAYOUT.byteOffset(PATH$extent);
+    public static final long OFFSET$layer = LAYOUT.byteOffset(PATH$layer);
+
+    public VkOffset2D offset() {
+        return new VkOffset2D(segment.asSlice(OFFSET$offset, LAYOUT$offset));
+    }
+
+    public void offset(VkOffset2D value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$offset, SIZE$offset);
+    }
+
+    public VkExtent2D extent() {
+        return new VkExtent2D(segment.asSlice(OFFSET$extent, LAYOUT$extent));
+    }
+
+    public void extent(VkExtent2D value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
+    }
+
+    public @unsigned int layer() {
+        return segment.get(LAYOUT$layer, OFFSET$layer);
+    }
+
+    public void layer(@unsigned int value) {
+        segment.set(LAYOUT$layer, OFFSET$layer, value);
+    }
+
+}
+/// dummy, not implemented yet

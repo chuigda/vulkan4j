@@ -1,0 +1,161 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull MemorySegment segment) implements IPointer {
+    public static final StructLayout LAYOUT$transform = VkTransformMatrixKHR.LAYOUT.withName("transform");
+    public static final OfFloat LAYOUT$explicitAABB = ValueLayout.JAVA_FLOAT.withName("explicitAABB");
+    public static final OfInt LAYOUT$instanceID = ValueLayout.JAVA_INT.withName("instanceID");
+    public static final OfInt LAYOUT$instanceMask = ValueLayout.JAVA_INT.withName("instanceMask");
+    public static final OfInt LAYOUT$instanceContributionToHitGroupIndex = ValueLayout.JAVA_INT.withName("instanceContributionToHitGroupIndex");
+    public static final OfInt LAYOUT$instanceFlags = ValueLayout.JAVA_INT.withName("instanceFlags");
+    public static final OfInt LAYOUT$instanceIndex = ValueLayout.JAVA_INT.withName("instanceIndex");
+    public static final OfInt LAYOUT$partitionIndex = ValueLayout.JAVA_INT.withName("partitionIndex");
+    public static final OfLong LAYOUT$accelerationStructure = ValueLayout.JAVA_LONG.withName("accelerationStructure");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$transform, LAYOUT$explicitAABB, LAYOUT$instanceID, LAYOUT$instanceMask, LAYOUT$instanceContributionToHitGroupIndex, LAYOUT$instanceFlags, LAYOUT$instanceIndex, LAYOUT$partitionIndex, LAYOUT$accelerationStructure);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static VkPartitionedAccelerationStructureWriteInstanceDataNV allocate(Arena arena) {
+        return new VkPartitionedAccelerationStructureWriteInstanceDataNV(arena.allocate(LAYOUT));
+    }
+
+    public static VkPartitionedAccelerationStructureWriteInstanceDataNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPartitionedAccelerationStructureWriteInstanceDataNV[] ret = new VkPartitionedAccelerationStructureWriteInstanceDataNV[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new VkPartitionedAccelerationStructureWriteInstanceDataNV(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPartitionedAccelerationStructureWriteInstanceDataNV clone(Arena arena, VkPartitionedAccelerationStructureWriteInstanceDataNV src) {
+        VkPartitionedAccelerationStructureWriteInstanceDataNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPartitionedAccelerationStructureWriteInstanceDataNV[] clone(Arena arena, VkPartitionedAccelerationStructureWriteInstanceDataNV[] src) {
+        VkPartitionedAccelerationStructureWriteInstanceDataNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$transform = PathElement.groupElement("PATH$transform");
+    public static final PathElement PATH$explicitAABB = PathElement.groupElement("PATH$explicitAABB");
+    public static final PathElement PATH$instanceID = PathElement.groupElement("PATH$instanceID");
+    public static final PathElement PATH$instanceMask = PathElement.groupElement("PATH$instanceMask");
+    public static final PathElement PATH$instanceContributionToHitGroupIndex = PathElement.groupElement("PATH$instanceContributionToHitGroupIndex");
+    public static final PathElement PATH$instanceFlags = PathElement.groupElement("PATH$instanceFlags");
+    public static final PathElement PATH$instanceIndex = PathElement.groupElement("PATH$instanceIndex");
+    public static final PathElement PATH$partitionIndex = PathElement.groupElement("PATH$partitionIndex");
+    public static final PathElement PATH$accelerationStructure = PathElement.groupElement("PATH$accelerationStructure");
+
+    public static final long SIZE$transform = LAYOUT$transform.byteSize();
+    public static final long SIZE$explicitAABB = LAYOUT$explicitAABB.byteSize();
+    public static final long SIZE$instanceID = LAYOUT$instanceID.byteSize();
+    public static final long SIZE$instanceMask = LAYOUT$instanceMask.byteSize();
+    public static final long SIZE$instanceContributionToHitGroupIndex = LAYOUT$instanceContributionToHitGroupIndex.byteSize();
+    public static final long SIZE$instanceFlags = LAYOUT$instanceFlags.byteSize();
+    public static final long SIZE$instanceIndex = LAYOUT$instanceIndex.byteSize();
+    public static final long SIZE$partitionIndex = LAYOUT$partitionIndex.byteSize();
+    public static final long SIZE$accelerationStructure = LAYOUT$accelerationStructure.byteSize();
+
+    public static final long OFFSET$transform = LAYOUT.byteOffset(PATH$transform);
+    public static final long OFFSET$explicitAABB = LAYOUT.byteOffset(PATH$explicitAABB);
+    public static final long OFFSET$instanceID = LAYOUT.byteOffset(PATH$instanceID);
+    public static final long OFFSET$instanceMask = LAYOUT.byteOffset(PATH$instanceMask);
+    public static final long OFFSET$instanceContributionToHitGroupIndex = LAYOUT.byteOffset(PATH$instanceContributionToHitGroupIndex);
+    public static final long OFFSET$instanceFlags = LAYOUT.byteOffset(PATH$instanceFlags);
+    public static final long OFFSET$instanceIndex = LAYOUT.byteOffset(PATH$instanceIndex);
+    public static final long OFFSET$partitionIndex = LAYOUT.byteOffset(PATH$partitionIndex);
+    public static final long OFFSET$accelerationStructure = LAYOUT.byteOffset(PATH$accelerationStructure);
+
+    public VkTransformMatrixKHR transform() {
+        return new VkTransformMatrixKHR(segment.asSlice(OFFSET$transform, LAYOUT$transform));
+    }
+
+    public void transform(VkTransformMatrixKHR value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$transform, SIZE$transform);
+    }
+
+    public float explicitAABB() {
+        return segment.get(LAYOUT$explicitAABB, OFFSET$explicitAABB);
+    }
+
+    public void explicitAABB(float value) {
+        segment.set(LAYOUT$explicitAABB, OFFSET$explicitAABB, value);
+    }
+
+    public @unsigned int instanceID() {
+        return segment.get(LAYOUT$instanceID, OFFSET$instanceID);
+    }
+
+    public void instanceID(@unsigned int value) {
+        segment.set(LAYOUT$instanceID, OFFSET$instanceID, value);
+    }
+
+    public @unsigned int instanceMask() {
+        return segment.get(LAYOUT$instanceMask, OFFSET$instanceMask);
+    }
+
+    public void instanceMask(@unsigned int value) {
+        segment.set(LAYOUT$instanceMask, OFFSET$instanceMask, value);
+    }
+
+    public @unsigned int instanceContributionToHitGroupIndex() {
+        return segment.get(LAYOUT$instanceContributionToHitGroupIndex, OFFSET$instanceContributionToHitGroupIndex);
+    }
+
+    public void instanceContributionToHitGroupIndex(@unsigned int value) {
+        segment.set(LAYOUT$instanceContributionToHitGroupIndex, OFFSET$instanceContributionToHitGroupIndex, value);
+    }
+
+    public @enumtype(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int instanceFlags() {
+        return segment.get(LAYOUT$instanceFlags, OFFSET$instanceFlags);
+    }
+
+    public void instanceFlags(@enumtype(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int value) {
+        segment.set(LAYOUT$instanceFlags, OFFSET$instanceFlags, value);
+    }
+
+    public @unsigned int instanceIndex() {
+        return segment.get(LAYOUT$instanceIndex, OFFSET$instanceIndex);
+    }
+
+    public void instanceIndex(@unsigned int value) {
+        segment.set(LAYOUT$instanceIndex, OFFSET$instanceIndex, value);
+    }
+
+    public @unsigned int partitionIndex() {
+        return segment.get(LAYOUT$partitionIndex, OFFSET$partitionIndex);
+    }
+
+    public void partitionIndex(@unsigned int value) {
+        segment.set(LAYOUT$partitionIndex, OFFSET$partitionIndex, value);
+    }
+
+    public @unsigned long accelerationStructure() {
+        return segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure);
+    }
+
+    public void accelerationStructure(@unsigned long value) {
+        segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value);
+    }
+
+}
+/// dummy, not implemented yet

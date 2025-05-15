@@ -1,7 +1,6 @@
 package cc.design7.babel.codegen.accessor
 
 import cc.design7.babel.codegen.BitfieldUtil
-import cc.design7.babel.codegen.FIELD_segment
 import cc.design7.babel.codegen.LayoutField
 import cc.design7.babel.codegen.fn
 import cc.design7.babel.util.Doc
@@ -17,7 +16,7 @@ fun generateBitfieldAccessor(bitfields: LayoutField.Bitfields): Doc {
             val until = next?.offset ?: bitfields.length
 
             val s = "s"
-            val sliceSegment = "MemorySegment $s = $FIELD_segment.asSlice(${bitfields.offsetName}, ${bitfields.layoutName});"
+            val sliceSegment = "MemorySegment $s = segment.asSlice(${bitfields.offsetName}, ${bitfields.layoutName});"
 
             fn("public", "int", memberName) {
                 +sliceSegment

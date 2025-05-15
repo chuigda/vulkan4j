@@ -1,0 +1,165 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record VkDeviceMemoryReportCallbackDataEXT(@NotNull MemorySegment segment) implements IPointer {
+    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
+    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
+    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
+    public static final OfInt LAYOUT$type = ValueLayout.JAVA_INT.withName("type");
+    public static final OfLong LAYOUT$memoryObjectId = ValueLayout.JAVA_LONG.withName("memoryObjectId");
+    public static final OfLong LAYOUT$size = ValueLayout.JAVA_LONG.withName("size");
+    public static final OfInt LAYOUT$objectType = ValueLayout.JAVA_INT.withName("objectType");
+    public static final OfLong LAYOUT$objectHandle = ValueLayout.JAVA_LONG.withName("objectHandle");
+    public static final OfInt LAYOUT$heapIndex = ValueLayout.JAVA_INT.withName("heapIndex");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$type, LAYOUT$memoryObjectId, LAYOUT$size, LAYOUT$objectType, LAYOUT$objectHandle, LAYOUT$heapIndex);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static VkDeviceMemoryReportCallbackDataEXT allocate(Arena arena) {
+        return new VkDeviceMemoryReportCallbackDataEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkDeviceMemoryReportCallbackDataEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDeviceMemoryReportCallbackDataEXT[] ret = new VkDeviceMemoryReportCallbackDataEXT[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new VkDeviceMemoryReportCallbackDataEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkDeviceMemoryReportCallbackDataEXT clone(Arena arena, VkDeviceMemoryReportCallbackDataEXT src) {
+        VkDeviceMemoryReportCallbackDataEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDeviceMemoryReportCallbackDataEXT[] clone(Arena arena, VkDeviceMemoryReportCallbackDataEXT[] src) {
+        VkDeviceMemoryReportCallbackDataEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
+    public static final PathElement PATH$memoryObjectId = PathElement.groupElement("PATH$memoryObjectId");
+    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
+    public static final PathElement PATH$objectType = PathElement.groupElement("PATH$objectType");
+    public static final PathElement PATH$objectHandle = PathElement.groupElement("PATH$objectHandle");
+    public static final PathElement PATH$heapIndex = PathElement.groupElement("PATH$heapIndex");
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$type = LAYOUT$type.byteSize();
+    public static final long SIZE$memoryObjectId = LAYOUT$memoryObjectId.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$objectType = LAYOUT$objectType.byteSize();
+    public static final long SIZE$objectHandle = LAYOUT$objectHandle.byteSize();
+    public static final long SIZE$heapIndex = LAYOUT$heapIndex.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$type = LAYOUT.byteOffset(PATH$type);
+    public static final long OFFSET$memoryObjectId = LAYOUT.byteOffset(PATH$memoryObjectId);
+    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+    public static final long OFFSET$objectType = LAYOUT.byteOffset(PATH$objectType);
+    public static final long OFFSET$objectHandle = LAYOUT.byteOffset(PATH$objectHandle);
+    public static final long OFFSET$heapIndex = LAYOUT.byteOffset(PATH$heapIndex);
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkDeviceMemoryReportFlagsEXT.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkDeviceMemoryReportFlagsEXT.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @enumtype(VkDeviceMemoryReportEventTypeEXT.class) int type() {
+        return segment.get(LAYOUT$type, OFFSET$type);
+    }
+
+    public void type(@enumtype(VkDeviceMemoryReportEventTypeEXT.class) int value) {
+        segment.set(LAYOUT$type, OFFSET$type, value);
+    }
+
+    public @unsigned long memoryObjectId() {
+        return segment.get(LAYOUT$memoryObjectId, OFFSET$memoryObjectId);
+    }
+
+    public void memoryObjectId(@unsigned long value) {
+        segment.set(LAYOUT$memoryObjectId, OFFSET$memoryObjectId, value);
+    }
+
+    public @unsigned long size() {
+        return segment.get(LAYOUT$size, OFFSET$size);
+    }
+
+    public void size(@unsigned long value) {
+        segment.set(LAYOUT$size, OFFSET$size, value);
+    }
+
+    public @enumtype(VkObjectType.class) int objectType() {
+        return segment.get(LAYOUT$objectType, OFFSET$objectType);
+    }
+
+    public void objectType(@enumtype(VkObjectType.class) int value) {
+        segment.set(LAYOUT$objectType, OFFSET$objectType, value);
+    }
+
+    public @unsigned long objectHandle() {
+        return segment.get(LAYOUT$objectHandle, OFFSET$objectHandle);
+    }
+
+    public void objectHandle(@unsigned long value) {
+        segment.set(LAYOUT$objectHandle, OFFSET$objectHandle, value);
+    }
+
+    public @unsigned int heapIndex() {
+        return segment.get(LAYOUT$heapIndex, OFFSET$heapIndex);
+    }
+
+    public void heapIndex(@unsigned int value) {
+        segment.set(LAYOUT$heapIndex, OFFSET$heapIndex, value);
+    }
+
+}
+/// dummy, not implemented yet

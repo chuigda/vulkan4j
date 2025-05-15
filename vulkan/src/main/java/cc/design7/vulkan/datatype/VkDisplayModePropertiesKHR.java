@@ -1,0 +1,81 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record VkDisplayModePropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
+    public static final AddressLayout LAYOUT$displayMode = ValueLayout.ADDRESS.withName("displayMode");
+    public static final StructLayout LAYOUT$parameters = VkDisplayModeParametersKHR.LAYOUT.withName("parameters");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$displayMode, LAYOUT$parameters);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static VkDisplayModePropertiesKHR allocate(Arena arena) {
+        return new VkDisplayModePropertiesKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkDisplayModePropertiesKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDisplayModePropertiesKHR[] ret = new VkDisplayModePropertiesKHR[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new VkDisplayModePropertiesKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkDisplayModePropertiesKHR clone(Arena arena, VkDisplayModePropertiesKHR src) {
+        VkDisplayModePropertiesKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDisplayModePropertiesKHR[] clone(Arena arena, VkDisplayModePropertiesKHR[] src) {
+        VkDisplayModePropertiesKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$displayMode = PathElement.groupElement("PATH$displayMode");
+    public static final PathElement PATH$parameters = PathElement.groupElement("PATH$parameters");
+
+    public static final long SIZE$displayMode = LAYOUT$displayMode.byteSize();
+    public static final long SIZE$parameters = LAYOUT$parameters.byteSize();
+
+    public static final long OFFSET$displayMode = LAYOUT.byteOffset(PATH$displayMode);
+    public static final long OFFSET$parameters = LAYOUT.byteOffset(PATH$parameters);
+
+    public @Nullable VkDisplayModeKHR displayMode() {
+        MemorySegment s = segment.asSlice(OFFSET$displayMode, SIZE$displayMode);
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkDisplayModeKHR(s);
+    }
+
+    public void displayMode() {
+        segment.set(LAYOUT$displayMode, OFFSET$displayMode, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public VkDisplayModeParametersKHR parameters() {
+        return new VkDisplayModeParametersKHR(segment.asSlice(OFFSET$parameters, LAYOUT$parameters));
+    }
+
+    public void parameters(VkDisplayModeParametersKHR value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$parameters, SIZE$parameters);
+    }
+
+}
+/// dummy, not implemented yet

@@ -44,8 +44,10 @@ internal fun vulkanMain() {
 
     for (structure in vulkanRegistry.structures.values) {
         try {
-            generateStructure(vulkanRegistry, structure, codegenOptions)
-        } catch (e: Exception) {
+            val structureDoc = generateStructure(vulkanRegistry, structure, codegenOptions)
+            File("vulkan/src/main/java/cc/design7/vulkan/datatype/${structure.name}.java")
+                .writeText(render(structureDoc))
+        } catch (e: Throwable) {
             log.severe("Failed to generate structure ${structure.name}: ${e.message}")
         }
     }

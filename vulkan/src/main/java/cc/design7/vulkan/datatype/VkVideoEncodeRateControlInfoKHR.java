@@ -1,0 +1,180 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) implements IPointer {
+    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
+    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
+    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
+    public static final OfInt LAYOUT$rateControlMode = ValueLayout.JAVA_INT.withName("rateControlMode");
+    public static final OfInt LAYOUT$layerCount = ValueLayout.JAVA_INT.withName("layerCount");
+    public static final AddressLayout LAYOUT$pLayers = ValueLayout.ADDRESS.withTargetLayout(VkVideoEncodeRateControlLayerInfoKHR.LAYOUT).withName("pLayers");
+    public static final OfInt LAYOUT$virtualBufferSizeInMs = ValueLayout.JAVA_INT.withName("virtualBufferSizeInMs");
+    public static final OfInt LAYOUT$initialVirtualBufferSizeInMs = ValueLayout.JAVA_INT.withName("initialVirtualBufferSizeInMs");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$rateControlMode, LAYOUT$layerCount, LAYOUT$pLayers, LAYOUT$virtualBufferSizeInMs, LAYOUT$initialVirtualBufferSizeInMs);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static VkVideoEncodeRateControlInfoKHR allocate(Arena arena) {
+        return new VkVideoEncodeRateControlInfoKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkVideoEncodeRateControlInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkVideoEncodeRateControlInfoKHR[] ret = new VkVideoEncodeRateControlInfoKHR[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new VkVideoEncodeRateControlInfoKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkVideoEncodeRateControlInfoKHR clone(Arena arena, VkVideoEncodeRateControlInfoKHR src) {
+        VkVideoEncodeRateControlInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkVideoEncodeRateControlInfoKHR[] clone(Arena arena, VkVideoEncodeRateControlInfoKHR[] src) {
+        VkVideoEncodeRateControlInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$rateControlMode = PathElement.groupElement("PATH$rateControlMode");
+    public static final PathElement PATH$layerCount = PathElement.groupElement("PATH$layerCount");
+    public static final PathElement PATH$pLayers = PathElement.groupElement("PATH$pLayers");
+    public static final PathElement PATH$virtualBufferSizeInMs = PathElement.groupElement("PATH$virtualBufferSizeInMs");
+    public static final PathElement PATH$initialVirtualBufferSizeInMs = PathElement.groupElement("PATH$initialVirtualBufferSizeInMs");
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$rateControlMode = LAYOUT$rateControlMode.byteSize();
+    public static final long SIZE$layerCount = LAYOUT$layerCount.byteSize();
+    public static final long SIZE$pLayers = LAYOUT$pLayers.byteSize();
+    public static final long SIZE$virtualBufferSizeInMs = LAYOUT$virtualBufferSizeInMs.byteSize();
+    public static final long SIZE$initialVirtualBufferSizeInMs = LAYOUT$initialVirtualBufferSizeInMs.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$rateControlMode = LAYOUT.byteOffset(PATH$rateControlMode);
+    public static final long OFFSET$layerCount = LAYOUT.byteOffset(PATH$layerCount);
+    public static final long OFFSET$pLayers = LAYOUT.byteOffset(PATH$pLayers);
+    public static final long OFFSET$virtualBufferSizeInMs = LAYOUT.byteOffset(PATH$virtualBufferSizeInMs);
+    public static final long OFFSET$initialVirtualBufferSizeInMs = LAYOUT.byteOffset(PATH$initialVirtualBufferSizeInMs);
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkVideoEncodeRateControlFlagsKHR.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkVideoEncodeRateControlFlagsKHR.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @enumtype(VkVideoEncodeRateControlModeFlagsKHR.class) int rateControlMode() {
+        return segment.get(LAYOUT$rateControlMode, OFFSET$rateControlMode);
+    }
+
+    public void rateControlMode(@enumtype(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
+        segment.set(LAYOUT$rateControlMode, OFFSET$rateControlMode, value);
+    }
+
+    public @unsigned int layerCount() {
+        return segment.get(LAYOUT$layerCount, OFFSET$layerCount);
+    }
+
+    public void layerCount(@unsigned int value) {
+        segment.set(LAYOUT$layerCount, OFFSET$layerCount, value);
+    }
+
+    public @pointer(comment="VkVideoEncodeRateControlLayerInfoKHR*") MemorySegment pLayersRaw() {
+        return segment.get(LAYOUT$pLayers, OFFSET$pLayers);
+    }
+
+    public void pLayersRaw(@pointer(comment="VkVideoEncodeRateControlLayerInfoKHR*") MemorySegment value) {
+        segment.set(LAYOUT$pLayers, OFFSET$pLayers, value);
+    }
+
+    public @Nullable VkVideoEncodeRateControlLayerInfoKHR pLayers() {
+        MemorySegment s = pLayersRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkVideoEncodeRateControlLayerInfoKHR(s);
+    }
+
+    public void pLayers(@Nullable VkVideoEncodeRateControlLayerInfoKHR value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pLayersRaw(s);
+    }
+
+    @unsafe public @Nullable VkVideoEncodeRateControlLayerInfoKHR[] pLayers(int assumedCount) {
+        MemorySegment s = pLayersRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkVideoEncodeRateControlLayerInfoKHR.SIZE);
+        VkVideoEncodeRateControlLayerInfoKHR[] ret = new VkVideoEncodeRateControlLayerInfoKHR[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkVideoEncodeRateControlLayerInfoKHR(s.asSlice(i * VkVideoEncodeRateControlLayerInfoKHR.SIZE, VkVideoEncodeRateControlLayerInfoKHR.SIZE));
+        }
+        return ret;
+    }
+
+    public @unsigned int virtualBufferSizeInMs() {
+        return segment.get(LAYOUT$virtualBufferSizeInMs, OFFSET$virtualBufferSizeInMs);
+    }
+
+    public void virtualBufferSizeInMs(@unsigned int value) {
+        segment.set(LAYOUT$virtualBufferSizeInMs, OFFSET$virtualBufferSizeInMs, value);
+    }
+
+    public @unsigned int initialVirtualBufferSizeInMs() {
+        return segment.get(LAYOUT$initialVirtualBufferSizeInMs, OFFSET$initialVirtualBufferSizeInMs);
+    }
+
+    public void initialVirtualBufferSizeInMs(@unsigned int value) {
+        segment.set(LAYOUT$initialVirtualBufferSizeInMs, OFFSET$initialVirtualBufferSizeInMs, value);
+    }
+
+}
+/// dummy, not implemented yet

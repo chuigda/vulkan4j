@@ -1,0 +1,101 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record StdVideoEncodeH265WeightTableFlags(@NotNull MemorySegment segment) implements IPointer {
+    public static final OfShort LAYOUT$luma_weight_l0_flag = ValueLayout.JAVA_SHORT.withName("luma_weight_l0_flag");
+    public static final OfShort LAYOUT$chroma_weight_l0_flag = ValueLayout.JAVA_SHORT.withName("chroma_weight_l0_flag");
+    public static final OfShort LAYOUT$luma_weight_l1_flag = ValueLayout.JAVA_SHORT.withName("luma_weight_l1_flag");
+    public static final OfShort LAYOUT$chroma_weight_l1_flag = ValueLayout.JAVA_SHORT.withName("chroma_weight_l1_flag");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$luma_weight_l0_flag, LAYOUT$chroma_weight_l0_flag, LAYOUT$luma_weight_l1_flag, LAYOUT$chroma_weight_l1_flag);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static StdVideoEncodeH265WeightTableFlags allocate(Arena arena) {
+        return new StdVideoEncodeH265WeightTableFlags(arena.allocate(LAYOUT));
+    }
+
+    public static StdVideoEncodeH265WeightTableFlags[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        StdVideoEncodeH265WeightTableFlags[] ret = new StdVideoEncodeH265WeightTableFlags[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new StdVideoEncodeH265WeightTableFlags(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static StdVideoEncodeH265WeightTableFlags clone(Arena arena, StdVideoEncodeH265WeightTableFlags src) {
+        StdVideoEncodeH265WeightTableFlags ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static StdVideoEncodeH265WeightTableFlags[] clone(Arena arena, StdVideoEncodeH265WeightTableFlags[] src) {
+        StdVideoEncodeH265WeightTableFlags[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$luma_weight_l0_flag = PathElement.groupElement("PATH$luma_weight_l0_flag");
+    public static final PathElement PATH$chroma_weight_l0_flag = PathElement.groupElement("PATH$chroma_weight_l0_flag");
+    public static final PathElement PATH$luma_weight_l1_flag = PathElement.groupElement("PATH$luma_weight_l1_flag");
+    public static final PathElement PATH$chroma_weight_l1_flag = PathElement.groupElement("PATH$chroma_weight_l1_flag");
+
+    public static final long SIZE$luma_weight_l0_flag = LAYOUT$luma_weight_l0_flag.byteSize();
+    public static final long SIZE$chroma_weight_l0_flag = LAYOUT$chroma_weight_l0_flag.byteSize();
+    public static final long SIZE$luma_weight_l1_flag = LAYOUT$luma_weight_l1_flag.byteSize();
+    public static final long SIZE$chroma_weight_l1_flag = LAYOUT$chroma_weight_l1_flag.byteSize();
+
+    public static final long OFFSET$luma_weight_l0_flag = LAYOUT.byteOffset(PATH$luma_weight_l0_flag);
+    public static final long OFFSET$chroma_weight_l0_flag = LAYOUT.byteOffset(PATH$chroma_weight_l0_flag);
+    public static final long OFFSET$luma_weight_l1_flag = LAYOUT.byteOffset(PATH$luma_weight_l1_flag);
+    public static final long OFFSET$chroma_weight_l1_flag = LAYOUT.byteOffset(PATH$chroma_weight_l1_flag);
+
+    public @unsigned short luma_weight_l0_flag() {
+        return segment.get(LAYOUT$luma_weight_l0_flag, OFFSET$luma_weight_l0_flag);
+    }
+
+    public void luma_weight_l0_flag(@unsigned short value) {
+        segment.set(LAYOUT$luma_weight_l0_flag, OFFSET$luma_weight_l0_flag, value);
+    }
+
+    public @unsigned short chroma_weight_l0_flag() {
+        return segment.get(LAYOUT$chroma_weight_l0_flag, OFFSET$chroma_weight_l0_flag);
+    }
+
+    public void chroma_weight_l0_flag(@unsigned short value) {
+        segment.set(LAYOUT$chroma_weight_l0_flag, OFFSET$chroma_weight_l0_flag, value);
+    }
+
+    public @unsigned short luma_weight_l1_flag() {
+        return segment.get(LAYOUT$luma_weight_l1_flag, OFFSET$luma_weight_l1_flag);
+    }
+
+    public void luma_weight_l1_flag(@unsigned short value) {
+        segment.set(LAYOUT$luma_weight_l1_flag, OFFSET$luma_weight_l1_flag, value);
+    }
+
+    public @unsigned short chroma_weight_l1_flag() {
+        return segment.get(LAYOUT$chroma_weight_l1_flag, OFFSET$chroma_weight_l1_flag);
+    }
+
+    public void chroma_weight_l1_flag(@unsigned short value) {
+        segment.set(LAYOUT$chroma_weight_l1_flag, OFFSET$chroma_weight_l1_flag, value);
+    }
+
+}
+/// dummy, not implemented yet

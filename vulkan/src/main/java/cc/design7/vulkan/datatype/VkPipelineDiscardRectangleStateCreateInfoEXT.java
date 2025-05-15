@@ -1,0 +1,156 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegment segment) implements IPointer {
+    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
+    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
+    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
+    public static final OfInt LAYOUT$discardRectangleMode = ValueLayout.JAVA_INT.withName("discardRectangleMode");
+    public static final OfInt LAYOUT$discardRectangleCount = ValueLayout.JAVA_INT.withName("discardRectangleCount");
+    public static final AddressLayout LAYOUT$pDiscardRectangles = ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pDiscardRectangles");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$discardRectangleMode, LAYOUT$discardRectangleCount, LAYOUT$pDiscardRectangles);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static VkPipelineDiscardRectangleStateCreateInfoEXT allocate(Arena arena) {
+        return new VkPipelineDiscardRectangleStateCreateInfoEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkPipelineDiscardRectangleStateCreateInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPipelineDiscardRectangleStateCreateInfoEXT[] ret = new VkPipelineDiscardRectangleStateCreateInfoEXT[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new VkPipelineDiscardRectangleStateCreateInfoEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPipelineDiscardRectangleStateCreateInfoEXT clone(Arena arena, VkPipelineDiscardRectangleStateCreateInfoEXT src) {
+        VkPipelineDiscardRectangleStateCreateInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPipelineDiscardRectangleStateCreateInfoEXT[] clone(Arena arena, VkPipelineDiscardRectangleStateCreateInfoEXT[] src) {
+        VkPipelineDiscardRectangleStateCreateInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$discardRectangleMode = PathElement.groupElement("PATH$discardRectangleMode");
+    public static final PathElement PATH$discardRectangleCount = PathElement.groupElement("PATH$discardRectangleCount");
+    public static final PathElement PATH$pDiscardRectangles = PathElement.groupElement("PATH$pDiscardRectangles");
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$discardRectangleMode = LAYOUT$discardRectangleMode.byteSize();
+    public static final long SIZE$discardRectangleCount = LAYOUT$discardRectangleCount.byteSize();
+    public static final long SIZE$pDiscardRectangles = LAYOUT$pDiscardRectangles.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$discardRectangleMode = LAYOUT.byteOffset(PATH$discardRectangleMode);
+    public static final long OFFSET$discardRectangleCount = LAYOUT.byteOffset(PATH$discardRectangleCount);
+    public static final long OFFSET$pDiscardRectangles = LAYOUT.byteOffset(PATH$pDiscardRectangles);
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @enumtype(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@enumtype(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @enumtype(VkDiscardRectangleModeEXT.class) int discardRectangleMode() {
+        return segment.get(LAYOUT$discardRectangleMode, OFFSET$discardRectangleMode);
+    }
+
+    public void discardRectangleMode(@enumtype(VkDiscardRectangleModeEXT.class) int value) {
+        segment.set(LAYOUT$discardRectangleMode, OFFSET$discardRectangleMode, value);
+    }
+
+    public @unsigned int discardRectangleCount() {
+        return segment.get(LAYOUT$discardRectangleCount, OFFSET$discardRectangleCount);
+    }
+
+    public void discardRectangleCount(@unsigned int value) {
+        segment.set(LAYOUT$discardRectangleCount, OFFSET$discardRectangleCount, value);
+    }
+
+    public @pointer(comment="VkRect2D*") MemorySegment pDiscardRectanglesRaw() {
+        return segment.get(LAYOUT$pDiscardRectangles, OFFSET$pDiscardRectangles);
+    }
+
+    public void pDiscardRectanglesRaw(@pointer(comment="VkRect2D*") MemorySegment value) {
+        segment.set(LAYOUT$pDiscardRectangles, OFFSET$pDiscardRectangles, value);
+    }
+
+    public @Nullable VkRect2D pDiscardRectangles() {
+        MemorySegment s = pDiscardRectanglesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkRect2D(s);
+    }
+
+    public void pDiscardRectangles(@Nullable VkRect2D value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDiscardRectanglesRaw(s);
+    }
+
+    @unsafe public @Nullable VkRect2D[] pDiscardRectangles(int assumedCount) {
+        MemorySegment s = pDiscardRectanglesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkRect2D.SIZE);
+        VkRect2D[] ret = new VkRect2D[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new VkRect2D(s.asSlice(i * VkRect2D.SIZE, VkRect2D.SIZE));
+        }
+        return ret;
+    }
+
+}
+/// dummy, not implemented yet

@@ -9,5 +9,5 @@ fun main() {
     setupLog()
 
     vulkanMain()
-    gles2Main()
+    // gles2Main()
 }

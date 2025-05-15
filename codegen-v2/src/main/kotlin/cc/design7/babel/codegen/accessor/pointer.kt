@@ -1,6 +1,5 @@
 package cc.design7.babel.codegen.accessor
 
-import cc.design7.babel.codegen.FIELD_segment
 import cc.design7.babel.codegen.LayoutField
 import cc.design7.babel.codegen.fn
 import cc.design7.babel.ctype.*
@@ -22,7 +21,7 @@ fun generatePtrAccessor(type: CPointerType, member: LayoutField.Typed): Doc =
 private fun DocList.makeGet(annotation: String, member: LayoutField.Typed, raw: Boolean = false) {
     val postfix = if (raw) "Raw" else ""
     fn("public", "$annotation MemorySegment", "${member.name}$postfix") {
-        +"return $FIELD_segment.get(${member.layoutName}, ${member.offsetName});"
+        +"return segment.get(${member.layoutName}, ${member.offsetName});"
     }
 }
 
@@ -34,7 +33,7 @@ private fun DocList.makeTrivialGet(comment: String, member: LayoutField.Typed, r
 private fun DocList.makeSet(annotation: String, member: LayoutField.Typed, raw: Boolean = false) {
     val postfix = if (raw) "Raw" else ""
     fn("public", "void", "${member.name}$postfix", "$annotation MemorySegment value") {
-        +"$FIELD_segment.set(${member.layoutName}, ${member.offsetName}, value);"
+        +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
     }
 }
 
@@ -48,7 +47,7 @@ private fun DocList.makeTrivialSet(comment: String, member: LayoutField.Typed, r
 private fun DocList.makeRawGet(returnType: String, con: String, member: LayoutField.Typed) {
     val rawName = "${member.name}Raw"
     fn("public", "@Nullable $returnType", member.name) {
-        +"MemorySegment s = $rawName;"
+        +"MemorySegment s = $rawName();"
         "if (s.address() == 0)" {
             +"return null;"
         }

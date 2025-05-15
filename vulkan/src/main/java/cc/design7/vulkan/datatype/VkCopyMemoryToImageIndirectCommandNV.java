@@ -1,0 +1,125 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record VkCopyMemoryToImageIndirectCommandNV(@NotNull MemorySegment segment) implements IPointer {
+    public static final OfLong LAYOUT$srcAddress = ValueLayout.JAVA_LONG.withName("srcAddress");
+    public static final OfInt LAYOUT$bufferRowLength = ValueLayout.JAVA_INT.withName("bufferRowLength");
+    public static final OfInt LAYOUT$bufferImageHeight = ValueLayout.JAVA_INT.withName("bufferImageHeight");
+    public static final StructLayout LAYOUT$imageSubresource = VkImageSubresourceLayers.LAYOUT.withName("imageSubresource");
+    public static final StructLayout LAYOUT$imageOffset = VkOffset3D.LAYOUT.withName("imageOffset");
+    public static final StructLayout LAYOUT$imageExtent = VkExtent3D.LAYOUT.withName("imageExtent");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$srcAddress, LAYOUT$bufferRowLength, LAYOUT$bufferImageHeight, LAYOUT$imageSubresource, LAYOUT$imageOffset, LAYOUT$imageExtent);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static VkCopyMemoryToImageIndirectCommandNV allocate(Arena arena) {
+        return new VkCopyMemoryToImageIndirectCommandNV(arena.allocate(LAYOUT));
+    }
+
+    public static VkCopyMemoryToImageIndirectCommandNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkCopyMemoryToImageIndirectCommandNV[] ret = new VkCopyMemoryToImageIndirectCommandNV[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new VkCopyMemoryToImageIndirectCommandNV(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkCopyMemoryToImageIndirectCommandNV clone(Arena arena, VkCopyMemoryToImageIndirectCommandNV src) {
+        VkCopyMemoryToImageIndirectCommandNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkCopyMemoryToImageIndirectCommandNV[] clone(Arena arena, VkCopyMemoryToImageIndirectCommandNV[] src) {
+        VkCopyMemoryToImageIndirectCommandNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$srcAddress = PathElement.groupElement("PATH$srcAddress");
+    public static final PathElement PATH$bufferRowLength = PathElement.groupElement("PATH$bufferRowLength");
+    public static final PathElement PATH$bufferImageHeight = PathElement.groupElement("PATH$bufferImageHeight");
+    public static final PathElement PATH$imageSubresource = PathElement.groupElement("PATH$imageSubresource");
+    public static final PathElement PATH$imageOffset = PathElement.groupElement("PATH$imageOffset");
+    public static final PathElement PATH$imageExtent = PathElement.groupElement("PATH$imageExtent");
+
+    public static final long SIZE$srcAddress = LAYOUT$srcAddress.byteSize();
+    public static final long SIZE$bufferRowLength = LAYOUT$bufferRowLength.byteSize();
+    public static final long SIZE$bufferImageHeight = LAYOUT$bufferImageHeight.byteSize();
+    public static final long SIZE$imageSubresource = LAYOUT$imageSubresource.byteSize();
+    public static final long SIZE$imageOffset = LAYOUT$imageOffset.byteSize();
+    public static final long SIZE$imageExtent = LAYOUT$imageExtent.byteSize();
+
+    public static final long OFFSET$srcAddress = LAYOUT.byteOffset(PATH$srcAddress);
+    public static final long OFFSET$bufferRowLength = LAYOUT.byteOffset(PATH$bufferRowLength);
+    public static final long OFFSET$bufferImageHeight = LAYOUT.byteOffset(PATH$bufferImageHeight);
+    public static final long OFFSET$imageSubresource = LAYOUT.byteOffset(PATH$imageSubresource);
+    public static final long OFFSET$imageOffset = LAYOUT.byteOffset(PATH$imageOffset);
+    public static final long OFFSET$imageExtent = LAYOUT.byteOffset(PATH$imageExtent);
+
+    public @unsigned long srcAddress() {
+        return segment.get(LAYOUT$srcAddress, OFFSET$srcAddress);
+    }
+
+    public void srcAddress(@unsigned long value) {
+        segment.set(LAYOUT$srcAddress, OFFSET$srcAddress, value);
+    }
+
+    public @unsigned int bufferRowLength() {
+        return segment.get(LAYOUT$bufferRowLength, OFFSET$bufferRowLength);
+    }
+
+    public void bufferRowLength(@unsigned int value) {
+        segment.set(LAYOUT$bufferRowLength, OFFSET$bufferRowLength, value);
+    }
+
+    public @unsigned int bufferImageHeight() {
+        return segment.get(LAYOUT$bufferImageHeight, OFFSET$bufferImageHeight);
+    }
+
+    public void bufferImageHeight(@unsigned int value) {
+        segment.set(LAYOUT$bufferImageHeight, OFFSET$bufferImageHeight, value);
+    }
+
+    public VkImageSubresourceLayers imageSubresource() {
+        return new VkImageSubresourceLayers(segment.asSlice(OFFSET$imageSubresource, LAYOUT$imageSubresource));
+    }
+
+    public void imageSubresource(VkImageSubresourceLayers value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageSubresource, SIZE$imageSubresource);
+    }
+
+    public VkOffset3D imageOffset() {
+        return new VkOffset3D(segment.asSlice(OFFSET$imageOffset, LAYOUT$imageOffset));
+    }
+
+    public void imageOffset(VkOffset3D value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageOffset, SIZE$imageOffset);
+    }
+
+    public VkExtent3D imageExtent() {
+        return new VkExtent3D(segment.asSlice(OFFSET$imageExtent, LAYOUT$imageExtent));
+    }
+
+    public void imageExtent(VkExtent3D value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
+    }
+
+}
+/// dummy, not implemented yet

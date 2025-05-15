@@ -1,0 +1,237 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segment) implements IPointer {
+    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
+    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
+    public static final OfInt LAYOUT$maxDrawMeshTasksCount = ValueLayout.JAVA_INT.withName("maxDrawMeshTasksCount");
+    public static final OfInt LAYOUT$maxTaskWorkGroupInvocations = ValueLayout.JAVA_INT.withName("maxTaskWorkGroupInvocations");
+    public static final OfInt LAYOUT$maxTaskWorkGroupSize = ValueLayout.JAVA_INT.withName("maxTaskWorkGroupSize");
+    public static final OfInt LAYOUT$maxTaskTotalMemorySize = ValueLayout.JAVA_INT.withName("maxTaskTotalMemorySize");
+    public static final OfInt LAYOUT$maxTaskOutputCount = ValueLayout.JAVA_INT.withName("maxTaskOutputCount");
+    public static final OfInt LAYOUT$maxMeshWorkGroupInvocations = ValueLayout.JAVA_INT.withName("maxMeshWorkGroupInvocations");
+    public static final OfInt LAYOUT$maxMeshWorkGroupSize = ValueLayout.JAVA_INT.withName("maxMeshWorkGroupSize");
+    public static final OfInt LAYOUT$maxMeshTotalMemorySize = ValueLayout.JAVA_INT.withName("maxMeshTotalMemorySize");
+    public static final OfInt LAYOUT$maxMeshOutputVertices = ValueLayout.JAVA_INT.withName("maxMeshOutputVertices");
+    public static final OfInt LAYOUT$maxMeshOutputPrimitives = ValueLayout.JAVA_INT.withName("maxMeshOutputPrimitives");
+    public static final OfInt LAYOUT$maxMeshMultiviewViewCount = ValueLayout.JAVA_INT.withName("maxMeshMultiviewViewCount");
+    public static final OfInt LAYOUT$meshOutputPerVertexGranularity = ValueLayout.JAVA_INT.withName("meshOutputPerVertexGranularity");
+    public static final OfInt LAYOUT$meshOutputPerPrimitiveGranularity = ValueLayout.JAVA_INT.withName("meshOutputPerPrimitiveGranularity");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$maxDrawMeshTasksCount, LAYOUT$maxTaskWorkGroupInvocations, LAYOUT$maxTaskWorkGroupSize, LAYOUT$maxTaskTotalMemorySize, LAYOUT$maxTaskOutputCount, LAYOUT$maxMeshWorkGroupInvocations, LAYOUT$maxMeshWorkGroupSize, LAYOUT$maxMeshTotalMemorySize, LAYOUT$maxMeshOutputVertices, LAYOUT$maxMeshOutputPrimitives, LAYOUT$maxMeshMultiviewViewCount, LAYOUT$meshOutputPerVertexGranularity, LAYOUT$meshOutputPerPrimitiveGranularity);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static VkPhysicalDeviceMeshShaderPropertiesNV allocate(Arena arena) {
+        return new VkPhysicalDeviceMeshShaderPropertiesNV(arena.allocate(LAYOUT));
+    }
+
+    public static VkPhysicalDeviceMeshShaderPropertiesNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceMeshShaderPropertiesNV[] ret = new VkPhysicalDeviceMeshShaderPropertiesNV[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new VkPhysicalDeviceMeshShaderPropertiesNV(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPhysicalDeviceMeshShaderPropertiesNV clone(Arena arena, VkPhysicalDeviceMeshShaderPropertiesNV src) {
+        VkPhysicalDeviceMeshShaderPropertiesNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceMeshShaderPropertiesNV[] clone(Arena arena, VkPhysicalDeviceMeshShaderPropertiesNV[] src) {
+        VkPhysicalDeviceMeshShaderPropertiesNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$maxDrawMeshTasksCount = PathElement.groupElement("PATH$maxDrawMeshTasksCount");
+    public static final PathElement PATH$maxTaskWorkGroupInvocations = PathElement.groupElement("PATH$maxTaskWorkGroupInvocations");
+    public static final PathElement PATH$maxTaskWorkGroupSize = PathElement.groupElement("PATH$maxTaskWorkGroupSize");
+    public static final PathElement PATH$maxTaskTotalMemorySize = PathElement.groupElement("PATH$maxTaskTotalMemorySize");
+    public static final PathElement PATH$maxTaskOutputCount = PathElement.groupElement("PATH$maxTaskOutputCount");
+    public static final PathElement PATH$maxMeshWorkGroupInvocations = PathElement.groupElement("PATH$maxMeshWorkGroupInvocations");
+    public static final PathElement PATH$maxMeshWorkGroupSize = PathElement.groupElement("PATH$maxMeshWorkGroupSize");
+    public static final PathElement PATH$maxMeshTotalMemorySize = PathElement.groupElement("PATH$maxMeshTotalMemorySize");
+    public static final PathElement PATH$maxMeshOutputVertices = PathElement.groupElement("PATH$maxMeshOutputVertices");
+    public static final PathElement PATH$maxMeshOutputPrimitives = PathElement.groupElement("PATH$maxMeshOutputPrimitives");
+    public static final PathElement PATH$maxMeshMultiviewViewCount = PathElement.groupElement("PATH$maxMeshMultiviewViewCount");
+    public static final PathElement PATH$meshOutputPerVertexGranularity = PathElement.groupElement("PATH$meshOutputPerVertexGranularity");
+    public static final PathElement PATH$meshOutputPerPrimitiveGranularity = PathElement.groupElement("PATH$meshOutputPerPrimitiveGranularity");
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$maxDrawMeshTasksCount = LAYOUT$maxDrawMeshTasksCount.byteSize();
+    public static final long SIZE$maxTaskWorkGroupInvocations = LAYOUT$maxTaskWorkGroupInvocations.byteSize();
+    public static final long SIZE$maxTaskWorkGroupSize = LAYOUT$maxTaskWorkGroupSize.byteSize();
+    public static final long SIZE$maxTaskTotalMemorySize = LAYOUT$maxTaskTotalMemorySize.byteSize();
+    public static final long SIZE$maxTaskOutputCount = LAYOUT$maxTaskOutputCount.byteSize();
+    public static final long SIZE$maxMeshWorkGroupInvocations = LAYOUT$maxMeshWorkGroupInvocations.byteSize();
+    public static final long SIZE$maxMeshWorkGroupSize = LAYOUT$maxMeshWorkGroupSize.byteSize();
+    public static final long SIZE$maxMeshTotalMemorySize = LAYOUT$maxMeshTotalMemorySize.byteSize();
+    public static final long SIZE$maxMeshOutputVertices = LAYOUT$maxMeshOutputVertices.byteSize();
+    public static final long SIZE$maxMeshOutputPrimitives = LAYOUT$maxMeshOutputPrimitives.byteSize();
+    public static final long SIZE$maxMeshMultiviewViewCount = LAYOUT$maxMeshMultiviewViewCount.byteSize();
+    public static final long SIZE$meshOutputPerVertexGranularity = LAYOUT$meshOutputPerVertexGranularity.byteSize();
+    public static final long SIZE$meshOutputPerPrimitiveGranularity = LAYOUT$meshOutputPerPrimitiveGranularity.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$maxDrawMeshTasksCount = LAYOUT.byteOffset(PATH$maxDrawMeshTasksCount);
+    public static final long OFFSET$maxTaskWorkGroupInvocations = LAYOUT.byteOffset(PATH$maxTaskWorkGroupInvocations);
+    public static final long OFFSET$maxTaskWorkGroupSize = LAYOUT.byteOffset(PATH$maxTaskWorkGroupSize);
+    public static final long OFFSET$maxTaskTotalMemorySize = LAYOUT.byteOffset(PATH$maxTaskTotalMemorySize);
+    public static final long OFFSET$maxTaskOutputCount = LAYOUT.byteOffset(PATH$maxTaskOutputCount);
+    public static final long OFFSET$maxMeshWorkGroupInvocations = LAYOUT.byteOffset(PATH$maxMeshWorkGroupInvocations);
+    public static final long OFFSET$maxMeshWorkGroupSize = LAYOUT.byteOffset(PATH$maxMeshWorkGroupSize);
+    public static final long OFFSET$maxMeshTotalMemorySize = LAYOUT.byteOffset(PATH$maxMeshTotalMemorySize);
+    public static final long OFFSET$maxMeshOutputVertices = LAYOUT.byteOffset(PATH$maxMeshOutputVertices);
+    public static final long OFFSET$maxMeshOutputPrimitives = LAYOUT.byteOffset(PATH$maxMeshOutputPrimitives);
+    public static final long OFFSET$maxMeshMultiviewViewCount = LAYOUT.byteOffset(PATH$maxMeshMultiviewViewCount);
+    public static final long OFFSET$meshOutputPerVertexGranularity = LAYOUT.byteOffset(PATH$meshOutputPerVertexGranularity);
+    public static final long OFFSET$meshOutputPerPrimitiveGranularity = LAYOUT.byteOffset(PATH$meshOutputPerPrimitiveGranularity);
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int maxDrawMeshTasksCount() {
+        return segment.get(LAYOUT$maxDrawMeshTasksCount, OFFSET$maxDrawMeshTasksCount);
+    }
+
+    public void maxDrawMeshTasksCount(@unsigned int value) {
+        segment.set(LAYOUT$maxDrawMeshTasksCount, OFFSET$maxDrawMeshTasksCount, value);
+    }
+
+    public @unsigned int maxTaskWorkGroupInvocations() {
+        return segment.get(LAYOUT$maxTaskWorkGroupInvocations, OFFSET$maxTaskWorkGroupInvocations);
+    }
+
+    public void maxTaskWorkGroupInvocations(@unsigned int value) {
+        segment.set(LAYOUT$maxTaskWorkGroupInvocations, OFFSET$maxTaskWorkGroupInvocations, value);
+    }
+
+    public @unsigned int maxTaskWorkGroupSize() {
+        return segment.get(LAYOUT$maxTaskWorkGroupSize, OFFSET$maxTaskWorkGroupSize);
+    }
+
+    public void maxTaskWorkGroupSize(@unsigned int value) {
+        segment.set(LAYOUT$maxTaskWorkGroupSize, OFFSET$maxTaskWorkGroupSize, value);
+    }
+
+    public @unsigned int maxTaskTotalMemorySize() {
+        return segment.get(LAYOUT$maxTaskTotalMemorySize, OFFSET$maxTaskTotalMemorySize);
+    }
+
+    public void maxTaskTotalMemorySize(@unsigned int value) {
+        segment.set(LAYOUT$maxTaskTotalMemorySize, OFFSET$maxTaskTotalMemorySize, value);
+    }
+
+    public @unsigned int maxTaskOutputCount() {
+        return segment.get(LAYOUT$maxTaskOutputCount, OFFSET$maxTaskOutputCount);
+    }
+
+    public void maxTaskOutputCount(@unsigned int value) {
+        segment.set(LAYOUT$maxTaskOutputCount, OFFSET$maxTaskOutputCount, value);
+    }
+
+    public @unsigned int maxMeshWorkGroupInvocations() {
+        return segment.get(LAYOUT$maxMeshWorkGroupInvocations, OFFSET$maxMeshWorkGroupInvocations);
+    }
+
+    public void maxMeshWorkGroupInvocations(@unsigned int value) {
+        segment.set(LAYOUT$maxMeshWorkGroupInvocations, OFFSET$maxMeshWorkGroupInvocations, value);
+    }
+
+    public @unsigned int maxMeshWorkGroupSize() {
+        return segment.get(LAYOUT$maxMeshWorkGroupSize, OFFSET$maxMeshWorkGroupSize);
+    }
+
+    public void maxMeshWorkGroupSize(@unsigned int value) {
+        segment.set(LAYOUT$maxMeshWorkGroupSize, OFFSET$maxMeshWorkGroupSize, value);
+    }
+
+    public @unsigned int maxMeshTotalMemorySize() {
+        return segment.get(LAYOUT$maxMeshTotalMemorySize, OFFSET$maxMeshTotalMemorySize);
+    }
+
+    public void maxMeshTotalMemorySize(@unsigned int value) {
+        segment.set(LAYOUT$maxMeshTotalMemorySize, OFFSET$maxMeshTotalMemorySize, value);
+    }
+
+    public @unsigned int maxMeshOutputVertices() {
+        return segment.get(LAYOUT$maxMeshOutputVertices, OFFSET$maxMeshOutputVertices);
+    }
+
+    public void maxMeshOutputVertices(@unsigned int value) {
+        segment.set(LAYOUT$maxMeshOutputVertices, OFFSET$maxMeshOutputVertices, value);
+    }
+
+    public @unsigned int maxMeshOutputPrimitives() {
+        return segment.get(LAYOUT$maxMeshOutputPrimitives, OFFSET$maxMeshOutputPrimitives);
+    }
+
+    public void maxMeshOutputPrimitives(@unsigned int value) {
+        segment.set(LAYOUT$maxMeshOutputPrimitives, OFFSET$maxMeshOutputPrimitives, value);
+    }
+
+    public @unsigned int maxMeshMultiviewViewCount() {
+        return segment.get(LAYOUT$maxMeshMultiviewViewCount, OFFSET$maxMeshMultiviewViewCount);
+    }
+
+    public void maxMeshMultiviewViewCount(@unsigned int value) {
+        segment.set(LAYOUT$maxMeshMultiviewViewCount, OFFSET$maxMeshMultiviewViewCount, value);
+    }
+
+    public @unsigned int meshOutputPerVertexGranularity() {
+        return segment.get(LAYOUT$meshOutputPerVertexGranularity, OFFSET$meshOutputPerVertexGranularity);
+    }
+
+    public void meshOutputPerVertexGranularity(@unsigned int value) {
+        segment.set(LAYOUT$meshOutputPerVertexGranularity, OFFSET$meshOutputPerVertexGranularity, value);
+    }
+
+    public @unsigned int meshOutputPerPrimitiveGranularity() {
+        return segment.get(LAYOUT$meshOutputPerPrimitiveGranularity, OFFSET$meshOutputPerPrimitiveGranularity);
+    }
+
+    public void meshOutputPerPrimitiveGranularity(@unsigned int value) {
+        segment.set(LAYOUT$meshOutputPerPrimitiveGranularity, OFFSET$meshOutputPerPrimitiveGranularity, value);
+    }
+
+}
+/// dummy, not implemented yet

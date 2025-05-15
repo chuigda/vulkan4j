@@ -1,0 +1,87 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.bits.BitfieldUtil;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record StdVideoEncodeAV1ReferenceInfoFlags(@NotNull MemorySegment segment) implements IPointer {
+    public static final OfInt LAYOUT$disable_frame_end_update_cdf_reserved = ValueLayout.JAVA_INT.withName("bitfield$disable_frame_end_update_cdf_reserved");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$disable_frame_end_update_cdf_reserved);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static StdVideoEncodeAV1ReferenceInfoFlags allocate(Arena arena) {
+        return new StdVideoEncodeAV1ReferenceInfoFlags(arena.allocate(LAYOUT));
+    }
+
+    public static StdVideoEncodeAV1ReferenceInfoFlags[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        StdVideoEncodeAV1ReferenceInfoFlags[] ret = new StdVideoEncodeAV1ReferenceInfoFlags[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new StdVideoEncodeAV1ReferenceInfoFlags(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static StdVideoEncodeAV1ReferenceInfoFlags clone(Arena arena, StdVideoEncodeAV1ReferenceInfoFlags src) {
+        StdVideoEncodeAV1ReferenceInfoFlags ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static StdVideoEncodeAV1ReferenceInfoFlags[] clone(Arena arena, StdVideoEncodeAV1ReferenceInfoFlags[] src) {
+        StdVideoEncodeAV1ReferenceInfoFlags[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$bitfield$disable_frame_end_update_cdf_reserved = PathElement.groupElement("PATH$bitfield$disable_frame_end_update_cdf_reserved");
+
+
+    public static final long OFFSET$disable_frame_end_update_cdf_reserved = LAYOUT.byteOffset(PATH$bitfield$disable_frame_end_update_cdf_reserved);
+
+    public int disable_frame_end_update_cdf() {
+        MemorySegment s = segment.asSlice(OFFSET$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
+        return BitfieldUtil.readBits(s, 0, 1);
+    }
+
+    public void disable_frame_end_update_cdf(int value) {
+        MemorySegment s = segment.asSlice(OFFSET$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
+        BitfieldUtil.writeBits(s, 0, 1, value);
+    }
+
+    public int segmentation_enabled() {
+        MemorySegment s = segment.asSlice(OFFSET$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
+        return BitfieldUtil.readBits(s, 1, 2);
+    }
+
+    public void segmentation_enabled(int value) {
+        MemorySegment s = segment.asSlice(OFFSET$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
+        BitfieldUtil.writeBits(s, 1, 2, value);
+    }
+
+    public int reserved() {
+        MemorySegment s = segment.asSlice(OFFSET$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
+        return BitfieldUtil.readBits(s, 2, 32);
+    }
+
+    public void reserved(int value) {
+        MemorySegment s = segment.asSlice(OFFSET$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
+        BitfieldUtil.writeBits(s, 2, 32, value);
+    }
+
+}
+/// dummy, not implemented yet

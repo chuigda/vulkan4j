@@ -1,0 +1,118 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record VkPipelineBinaryInfoKHR(@NotNull MemorySegment segment) implements IPointer {
+    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
+    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
+    public static final OfInt LAYOUT$binaryCount = ValueLayout.JAVA_INT.withName("binaryCount");
+    public static final AddressLayout LAYOUT$pPipelineBinaries = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pPipelineBinaries");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$binaryCount, LAYOUT$pPipelineBinaries);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static VkPipelineBinaryInfoKHR allocate(Arena arena) {
+        return new VkPipelineBinaryInfoKHR(arena.allocate(LAYOUT));
+    }
+
+    public static VkPipelineBinaryInfoKHR[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPipelineBinaryInfoKHR[] ret = new VkPipelineBinaryInfoKHR[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new VkPipelineBinaryInfoKHR(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPipelineBinaryInfoKHR clone(Arena arena, VkPipelineBinaryInfoKHR src) {
+        VkPipelineBinaryInfoKHR ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPipelineBinaryInfoKHR[] clone(Arena arena, VkPipelineBinaryInfoKHR[] src) {
+        VkPipelineBinaryInfoKHR[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$binaryCount = PathElement.groupElement("PATH$binaryCount");
+    public static final PathElement PATH$pPipelineBinaries = PathElement.groupElement("PATH$pPipelineBinaries");
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$binaryCount = LAYOUT$binaryCount.byteSize();
+    public static final long SIZE$pPipelineBinaries = LAYOUT$pPipelineBinaries.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$binaryCount = LAYOUT.byteOffset(PATH$binaryCount);
+    public static final long OFFSET$pPipelineBinaries = LAYOUT.byteOffset(PATH$pPipelineBinaries);
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int binaryCount() {
+        return segment.get(LAYOUT$binaryCount, OFFSET$binaryCount);
+    }
+
+    public void binaryCount(@unsigned int value) {
+        segment.set(LAYOUT$binaryCount, OFFSET$binaryCount, value);
+    }
+
+    public @pointer(comment="VkPipelineBinaryKHR*") MemorySegment pPipelineBinariesRaw() {
+        return segment.get(LAYOUT$pPipelineBinaries, OFFSET$pPipelineBinaries);
+    }
+
+    public void pPipelineBinariesRaw(@pointer(comment="VkPipelineBinaryKHR*") MemorySegment value) {
+        segment.set(LAYOUT$pPipelineBinaries, OFFSET$pPipelineBinaries, value);
+    }
+
+    /// Note: the returned {@link VkPipelineBinaryKHR.Buffer} does not have correct {@link VkPipelineBinaryKHR.Buffer#size}
+    /// property. It's up to user to track the size of the buffer, and use
+    /// {@link VkPipelineBinaryKHR.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// buffer.
+    public @Nullable VkPipelineBinaryKHR.Buffer pPipelineBinaries() {
+        MemorySegment s = pPipelineBinariesRaw();
+        if (s.address() == 0) {
+            return null;
+        }
+        return new VkPipelineBinaryKHR.Buffer(s);
+    }
+
+
+}
+/// dummy, not implemented yet

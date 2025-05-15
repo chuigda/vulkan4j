@@ -1,0 +1,89 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record VkDeviceFaultVendorInfoEXT(@NotNull MemorySegment segment) implements IPointer {
+    public static final OfByte LAYOUT$description = ValueLayout.JAVA_BYTE.withName("description");
+    public static final OfLong LAYOUT$vendorFaultCode = ValueLayout.JAVA_LONG.withName("vendorFaultCode");
+    public static final OfLong LAYOUT$vendorFaultData = ValueLayout.JAVA_LONG.withName("vendorFaultData");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$description, LAYOUT$vendorFaultCode, LAYOUT$vendorFaultData);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static VkDeviceFaultVendorInfoEXT allocate(Arena arena) {
+        return new VkDeviceFaultVendorInfoEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkDeviceFaultVendorInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkDeviceFaultVendorInfoEXT[] ret = new VkDeviceFaultVendorInfoEXT[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new VkDeviceFaultVendorInfoEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkDeviceFaultVendorInfoEXT clone(Arena arena, VkDeviceFaultVendorInfoEXT src) {
+        VkDeviceFaultVendorInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkDeviceFaultVendorInfoEXT[] clone(Arena arena, VkDeviceFaultVendorInfoEXT[] src) {
+        VkDeviceFaultVendorInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$description = PathElement.groupElement("PATH$description");
+    public static final PathElement PATH$vendorFaultCode = PathElement.groupElement("PATH$vendorFaultCode");
+    public static final PathElement PATH$vendorFaultData = PathElement.groupElement("PATH$vendorFaultData");
+
+    public static final long SIZE$description = LAYOUT$description.byteSize();
+    public static final long SIZE$vendorFaultCode = LAYOUT$vendorFaultCode.byteSize();
+    public static final long SIZE$vendorFaultData = LAYOUT$vendorFaultData.byteSize();
+
+    public static final long OFFSET$description = LAYOUT.byteOffset(PATH$description);
+    public static final long OFFSET$vendorFaultCode = LAYOUT.byteOffset(PATH$vendorFaultCode);
+    public static final long OFFSET$vendorFaultData = LAYOUT.byteOffset(PATH$vendorFaultData);
+
+    public byte description() {
+        return segment.get(LAYOUT$description, OFFSET$description);
+    }
+
+    public void description(byte value) {
+        segment.set(LAYOUT$description, OFFSET$description, value);
+    }
+
+    public @unsigned long vendorFaultCode() {
+        return segment.get(LAYOUT$vendorFaultCode, OFFSET$vendorFaultCode);
+    }
+
+    public void vendorFaultCode(@unsigned long value) {
+        segment.set(LAYOUT$vendorFaultCode, OFFSET$vendorFaultCode, value);
+    }
+
+    public @unsigned long vendorFaultData() {
+        return segment.get(LAYOUT$vendorFaultData, OFFSET$vendorFaultData);
+    }
+
+    public void vendorFaultData(@unsigned long value) {
+        segment.set(LAYOUT$vendorFaultData, OFFSET$vendorFaultData, value);
+    }
+
+}
+/// dummy, not implemented yet

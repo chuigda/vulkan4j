@@ -1,0 +1,89 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record VkMultiDrawIndexedInfoEXT(@NotNull MemorySegment segment) implements IPointer {
+    public static final OfInt LAYOUT$firstIndex = ValueLayout.JAVA_INT.withName("firstIndex");
+    public static final OfInt LAYOUT$indexCount = ValueLayout.JAVA_INT.withName("indexCount");
+    public static final OfInt LAYOUT$vertexOffset = ValueLayout.JAVA_INT.withName("vertexOffset");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$firstIndex, LAYOUT$indexCount, LAYOUT$vertexOffset);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static VkMultiDrawIndexedInfoEXT allocate(Arena arena) {
+        return new VkMultiDrawIndexedInfoEXT(arena.allocate(LAYOUT));
+    }
+
+    public static VkMultiDrawIndexedInfoEXT[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkMultiDrawIndexedInfoEXT[] ret = new VkMultiDrawIndexedInfoEXT[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new VkMultiDrawIndexedInfoEXT(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkMultiDrawIndexedInfoEXT clone(Arena arena, VkMultiDrawIndexedInfoEXT src) {
+        VkMultiDrawIndexedInfoEXT ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkMultiDrawIndexedInfoEXT[] clone(Arena arena, VkMultiDrawIndexedInfoEXT[] src) {
+        VkMultiDrawIndexedInfoEXT[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$firstIndex = PathElement.groupElement("PATH$firstIndex");
+    public static final PathElement PATH$indexCount = PathElement.groupElement("PATH$indexCount");
+    public static final PathElement PATH$vertexOffset = PathElement.groupElement("PATH$vertexOffset");
+
+    public static final long SIZE$firstIndex = LAYOUT$firstIndex.byteSize();
+    public static final long SIZE$indexCount = LAYOUT$indexCount.byteSize();
+    public static final long SIZE$vertexOffset = LAYOUT$vertexOffset.byteSize();
+
+    public static final long OFFSET$firstIndex = LAYOUT.byteOffset(PATH$firstIndex);
+    public static final long OFFSET$indexCount = LAYOUT.byteOffset(PATH$indexCount);
+    public static final long OFFSET$vertexOffset = LAYOUT.byteOffset(PATH$vertexOffset);
+
+    public @unsigned int firstIndex() {
+        return segment.get(LAYOUT$firstIndex, OFFSET$firstIndex);
+    }
+
+    public void firstIndex(@unsigned int value) {
+        segment.set(LAYOUT$firstIndex, OFFSET$firstIndex, value);
+    }
+
+    public @unsigned int indexCount() {
+        return segment.get(LAYOUT$indexCount, OFFSET$indexCount);
+    }
+
+    public void indexCount(@unsigned int value) {
+        segment.set(LAYOUT$indexCount, OFFSET$indexCount, value);
+    }
+
+    public int vertexOffset() {
+        return segment.get(LAYOUT$vertexOffset, OFFSET$vertexOffset);
+    }
+
+    public void vertexOffset(int value) {
+        segment.set(LAYOUT$vertexOffset, OFFSET$vertexOffset, value);
+    }
+
+}
+/// dummy, not implemented yet

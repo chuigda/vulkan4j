@@ -1,0 +1,333 @@
+package cc.design7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import cc.design7.ffm.IPointer;
+import cc.design7.ffm.NativeLayout;
+import cc.design7.ffm.annotation.*;
+import cc.design7.ffm.ptr.*;
+import cc.design7.vulkan.bitmask.*;
+import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.enumtype.*;
+import static cc.design7.vulkan.VkConstants.*;
+
+public record VkPhysicalDeviceVulkan14Features(@NotNull MemorySegment segment) implements IPointer {
+    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
+    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
+    public static final OfInt LAYOUT$globalPriorityQuery = ValueLayout.JAVA_INT.withName("globalPriorityQuery");
+    public static final OfInt LAYOUT$shaderSubgroupRotate = ValueLayout.JAVA_INT.withName("shaderSubgroupRotate");
+    public static final OfInt LAYOUT$shaderSubgroupRotateClustered = ValueLayout.JAVA_INT.withName("shaderSubgroupRotateClustered");
+    public static final OfInt LAYOUT$shaderFloatControls2 = ValueLayout.JAVA_INT.withName("shaderFloatControls2");
+    public static final OfInt LAYOUT$shaderExpectAssume = ValueLayout.JAVA_INT.withName("shaderExpectAssume");
+    public static final OfInt LAYOUT$rectangularLines = ValueLayout.JAVA_INT.withName("rectangularLines");
+    public static final OfInt LAYOUT$bresenhamLines = ValueLayout.JAVA_INT.withName("bresenhamLines");
+    public static final OfInt LAYOUT$smoothLines = ValueLayout.JAVA_INT.withName("smoothLines");
+    public static final OfInt LAYOUT$stippledRectangularLines = ValueLayout.JAVA_INT.withName("stippledRectangularLines");
+    public static final OfInt LAYOUT$stippledBresenhamLines = ValueLayout.JAVA_INT.withName("stippledBresenhamLines");
+    public static final OfInt LAYOUT$stippledSmoothLines = ValueLayout.JAVA_INT.withName("stippledSmoothLines");
+    public static final OfInt LAYOUT$vertexAttributeInstanceRateDivisor = ValueLayout.JAVA_INT.withName("vertexAttributeInstanceRateDivisor");
+    public static final OfInt LAYOUT$vertexAttributeInstanceRateZeroDivisor = ValueLayout.JAVA_INT.withName("vertexAttributeInstanceRateZeroDivisor");
+    public static final OfInt LAYOUT$indexTypeUint8 = ValueLayout.JAVA_INT.withName("indexTypeUint8");
+    public static final OfInt LAYOUT$dynamicRenderingLocalRead = ValueLayout.JAVA_INT.withName("dynamicRenderingLocalRead");
+    public static final OfInt LAYOUT$maintenance5 = ValueLayout.JAVA_INT.withName("maintenance5");
+    public static final OfInt LAYOUT$maintenance6 = ValueLayout.JAVA_INT.withName("maintenance6");
+    public static final OfInt LAYOUT$pipelineProtectedAccess = ValueLayout.JAVA_INT.withName("pipelineProtectedAccess");
+    public static final OfInt LAYOUT$pipelineRobustness = ValueLayout.JAVA_INT.withName("pipelineRobustness");
+    public static final OfInt LAYOUT$hostImageCopy = ValueLayout.JAVA_INT.withName("hostImageCopy");
+    public static final OfInt LAYOUT$pushDescriptor = ValueLayout.JAVA_INT.withName("pushDescriptor");
+
+    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$globalPriorityQuery, LAYOUT$shaderSubgroupRotate, LAYOUT$shaderSubgroupRotateClustered, LAYOUT$shaderFloatControls2, LAYOUT$shaderExpectAssume, LAYOUT$rectangularLines, LAYOUT$bresenhamLines, LAYOUT$smoothLines, LAYOUT$stippledRectangularLines, LAYOUT$stippledBresenhamLines, LAYOUT$stippledSmoothLines, LAYOUT$vertexAttributeInstanceRateDivisor, LAYOUT$vertexAttributeInstanceRateZeroDivisor, LAYOUT$indexTypeUint8, LAYOUT$dynamicRenderingLocalRead, LAYOUT$maintenance5, LAYOUT$maintenance6, LAYOUT$pipelineProtectedAccess, LAYOUT$pipelineRobustness, LAYOUT$hostImageCopy, LAYOUT$pushDescriptor);
+    public static final long SIZE = LAYOUT.byteSize();
+
+    public static VkPhysicalDeviceVulkan14Features allocate(Arena arena) {
+        return new VkPhysicalDeviceVulkan14Features(arena.allocate(LAYOUT));
+    }
+
+    public static VkPhysicalDeviceVulkan14Features[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceVulkan14Features[] ret = new VkPhysicalDeviceVulkan14Features[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new VkPhysicalDeviceVulkan14Features(segment.asSlice(i * SIZE, SIZE));
+        }
+        return ret;
+    }
+
+    public static VkPhysicalDeviceVulkan14Features clone(Arena arena, VkPhysicalDeviceVulkan14Features src) {
+        VkPhysicalDeviceVulkan14Features ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceVulkan14Features[] clone(Arena arena, VkPhysicalDeviceVulkan14Features[] src) {
+        VkPhysicalDeviceVulkan14Features[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$globalPriorityQuery = PathElement.groupElement("PATH$globalPriorityQuery");
+    public static final PathElement PATH$shaderSubgroupRotate = PathElement.groupElement("PATH$shaderSubgroupRotate");
+    public static final PathElement PATH$shaderSubgroupRotateClustered = PathElement.groupElement("PATH$shaderSubgroupRotateClustered");
+    public static final PathElement PATH$shaderFloatControls2 = PathElement.groupElement("PATH$shaderFloatControls2");
+    public static final PathElement PATH$shaderExpectAssume = PathElement.groupElement("PATH$shaderExpectAssume");
+    public static final PathElement PATH$rectangularLines = PathElement.groupElement("PATH$rectangularLines");
+    public static final PathElement PATH$bresenhamLines = PathElement.groupElement("PATH$bresenhamLines");
+    public static final PathElement PATH$smoothLines = PathElement.groupElement("PATH$smoothLines");
+    public static final PathElement PATH$stippledRectangularLines = PathElement.groupElement("PATH$stippledRectangularLines");
+    public static final PathElement PATH$stippledBresenhamLines = PathElement.groupElement("PATH$stippledBresenhamLines");
+    public static final PathElement PATH$stippledSmoothLines = PathElement.groupElement("PATH$stippledSmoothLines");
+    public static final PathElement PATH$vertexAttributeInstanceRateDivisor = PathElement.groupElement("PATH$vertexAttributeInstanceRateDivisor");
+    public static final PathElement PATH$vertexAttributeInstanceRateZeroDivisor = PathElement.groupElement("PATH$vertexAttributeInstanceRateZeroDivisor");
+    public static final PathElement PATH$indexTypeUint8 = PathElement.groupElement("PATH$indexTypeUint8");
+    public static final PathElement PATH$dynamicRenderingLocalRead = PathElement.groupElement("PATH$dynamicRenderingLocalRead");
+    public static final PathElement PATH$maintenance5 = PathElement.groupElement("PATH$maintenance5");
+    public static final PathElement PATH$maintenance6 = PathElement.groupElement("PATH$maintenance6");
+    public static final PathElement PATH$pipelineProtectedAccess = PathElement.groupElement("PATH$pipelineProtectedAccess");
+    public static final PathElement PATH$pipelineRobustness = PathElement.groupElement("PATH$pipelineRobustness");
+    public static final PathElement PATH$hostImageCopy = PathElement.groupElement("PATH$hostImageCopy");
+    public static final PathElement PATH$pushDescriptor = PathElement.groupElement("PATH$pushDescriptor");
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$globalPriorityQuery = LAYOUT$globalPriorityQuery.byteSize();
+    public static final long SIZE$shaderSubgroupRotate = LAYOUT$shaderSubgroupRotate.byteSize();
+    public static final long SIZE$shaderSubgroupRotateClustered = LAYOUT$shaderSubgroupRotateClustered.byteSize();
+    public static final long SIZE$shaderFloatControls2 = LAYOUT$shaderFloatControls2.byteSize();
+    public static final long SIZE$shaderExpectAssume = LAYOUT$shaderExpectAssume.byteSize();
+    public static final long SIZE$rectangularLines = LAYOUT$rectangularLines.byteSize();
+    public static final long SIZE$bresenhamLines = LAYOUT$bresenhamLines.byteSize();
+    public static final long SIZE$smoothLines = LAYOUT$smoothLines.byteSize();
+    public static final long SIZE$stippledRectangularLines = LAYOUT$stippledRectangularLines.byteSize();
+    public static final long SIZE$stippledBresenhamLines = LAYOUT$stippledBresenhamLines.byteSize();
+    public static final long SIZE$stippledSmoothLines = LAYOUT$stippledSmoothLines.byteSize();
+    public static final long SIZE$vertexAttributeInstanceRateDivisor = LAYOUT$vertexAttributeInstanceRateDivisor.byteSize();
+    public static final long SIZE$vertexAttributeInstanceRateZeroDivisor = LAYOUT$vertexAttributeInstanceRateZeroDivisor.byteSize();
+    public static final long SIZE$indexTypeUint8 = LAYOUT$indexTypeUint8.byteSize();
+    public static final long SIZE$dynamicRenderingLocalRead = LAYOUT$dynamicRenderingLocalRead.byteSize();
+    public static final long SIZE$maintenance5 = LAYOUT$maintenance5.byteSize();
+    public static final long SIZE$maintenance6 = LAYOUT$maintenance6.byteSize();
+    public static final long SIZE$pipelineProtectedAccess = LAYOUT$pipelineProtectedAccess.byteSize();
+    public static final long SIZE$pipelineRobustness = LAYOUT$pipelineRobustness.byteSize();
+    public static final long SIZE$hostImageCopy = LAYOUT$hostImageCopy.byteSize();
+    public static final long SIZE$pushDescriptor = LAYOUT$pushDescriptor.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$globalPriorityQuery = LAYOUT.byteOffset(PATH$globalPriorityQuery);
+    public static final long OFFSET$shaderSubgroupRotate = LAYOUT.byteOffset(PATH$shaderSubgroupRotate);
+    public static final long OFFSET$shaderSubgroupRotateClustered = LAYOUT.byteOffset(PATH$shaderSubgroupRotateClustered);
+    public static final long OFFSET$shaderFloatControls2 = LAYOUT.byteOffset(PATH$shaderFloatControls2);
+    public static final long OFFSET$shaderExpectAssume = LAYOUT.byteOffset(PATH$shaderExpectAssume);
+    public static final long OFFSET$rectangularLines = LAYOUT.byteOffset(PATH$rectangularLines);
+    public static final long OFFSET$bresenhamLines = LAYOUT.byteOffset(PATH$bresenhamLines);
+    public static final long OFFSET$smoothLines = LAYOUT.byteOffset(PATH$smoothLines);
+    public static final long OFFSET$stippledRectangularLines = LAYOUT.byteOffset(PATH$stippledRectangularLines);
+    public static final long OFFSET$stippledBresenhamLines = LAYOUT.byteOffset(PATH$stippledBresenhamLines);
+    public static final long OFFSET$stippledSmoothLines = LAYOUT.byteOffset(PATH$stippledSmoothLines);
+    public static final long OFFSET$vertexAttributeInstanceRateDivisor = LAYOUT.byteOffset(PATH$vertexAttributeInstanceRateDivisor);
+    public static final long OFFSET$vertexAttributeInstanceRateZeroDivisor = LAYOUT.byteOffset(PATH$vertexAttributeInstanceRateZeroDivisor);
+    public static final long OFFSET$indexTypeUint8 = LAYOUT.byteOffset(PATH$indexTypeUint8);
+    public static final long OFFSET$dynamicRenderingLocalRead = LAYOUT.byteOffset(PATH$dynamicRenderingLocalRead);
+    public static final long OFFSET$maintenance5 = LAYOUT.byteOffset(PATH$maintenance5);
+    public static final long OFFSET$maintenance6 = LAYOUT.byteOffset(PATH$maintenance6);
+    public static final long OFFSET$pipelineProtectedAccess = LAYOUT.byteOffset(PATH$pipelineProtectedAccess);
+    public static final long OFFSET$pipelineRobustness = LAYOUT.byteOffset(PATH$pipelineRobustness);
+    public static final long OFFSET$hostImageCopy = LAYOUT.byteOffset(PATH$hostImageCopy);
+    public static final long OFFSET$pushDescriptor = LAYOUT.byteOffset(PATH$pushDescriptor);
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(IPointer pointer) {
+        pNext(pointer.segment());
+    }
+
+    public @unsigned int globalPriorityQuery() {
+        return segment.get(LAYOUT$globalPriorityQuery, OFFSET$globalPriorityQuery);
+    }
+
+    public void globalPriorityQuery(@unsigned int value) {
+        segment.set(LAYOUT$globalPriorityQuery, OFFSET$globalPriorityQuery, value);
+    }
+
+    public @unsigned int shaderSubgroupRotate() {
+        return segment.get(LAYOUT$shaderSubgroupRotate, OFFSET$shaderSubgroupRotate);
+    }
+
+    public void shaderSubgroupRotate(@unsigned int value) {
+        segment.set(LAYOUT$shaderSubgroupRotate, OFFSET$shaderSubgroupRotate, value);
+    }
+
+    public @unsigned int shaderSubgroupRotateClustered() {
+        return segment.get(LAYOUT$shaderSubgroupRotateClustered, OFFSET$shaderSubgroupRotateClustered);
+    }
+
+    public void shaderSubgroupRotateClustered(@unsigned int value) {
+        segment.set(LAYOUT$shaderSubgroupRotateClustered, OFFSET$shaderSubgroupRotateClustered, value);
+    }
+
+    public @unsigned int shaderFloatControls2() {
+        return segment.get(LAYOUT$shaderFloatControls2, OFFSET$shaderFloatControls2);
+    }
+
+    public void shaderFloatControls2(@unsigned int value) {
+        segment.set(LAYOUT$shaderFloatControls2, OFFSET$shaderFloatControls2, value);
+    }
+
+    public @unsigned int shaderExpectAssume() {
+        return segment.get(LAYOUT$shaderExpectAssume, OFFSET$shaderExpectAssume);
+    }
+
+    public void shaderExpectAssume(@unsigned int value) {
+        segment.set(LAYOUT$shaderExpectAssume, OFFSET$shaderExpectAssume, value);
+    }
+
+    public @unsigned int rectangularLines() {
+        return segment.get(LAYOUT$rectangularLines, OFFSET$rectangularLines);
+    }
+
+    public void rectangularLines(@unsigned int value) {
+        segment.set(LAYOUT$rectangularLines, OFFSET$rectangularLines, value);
+    }
+
+    public @unsigned int bresenhamLines() {
+        return segment.get(LAYOUT$bresenhamLines, OFFSET$bresenhamLines);
+    }
+
+    public void bresenhamLines(@unsigned int value) {
+        segment.set(LAYOUT$bresenhamLines, OFFSET$bresenhamLines, value);
+    }
+
+    public @unsigned int smoothLines() {
+        return segment.get(LAYOUT$smoothLines, OFFSET$smoothLines);
+    }
+
+    public void smoothLines(@unsigned int value) {
+        segment.set(LAYOUT$smoothLines, OFFSET$smoothLines, value);
+    }
+
+    public @unsigned int stippledRectangularLines() {
+        return segment.get(LAYOUT$stippledRectangularLines, OFFSET$stippledRectangularLines);
+    }
+
+    public void stippledRectangularLines(@unsigned int value) {
+        segment.set(LAYOUT$stippledRectangularLines, OFFSET$stippledRectangularLines, value);
+    }
+
+    public @unsigned int stippledBresenhamLines() {
+        return segment.get(LAYOUT$stippledBresenhamLines, OFFSET$stippledBresenhamLines);
+    }
+
+    public void stippledBresenhamLines(@unsigned int value) {
+        segment.set(LAYOUT$stippledBresenhamLines, OFFSET$stippledBresenhamLines, value);
+    }
+
+    public @unsigned int stippledSmoothLines() {
+        return segment.get(LAYOUT$stippledSmoothLines, OFFSET$stippledSmoothLines);
+    }
+
+    public void stippledSmoothLines(@unsigned int value) {
+        segment.set(LAYOUT$stippledSmoothLines, OFFSET$stippledSmoothLines, value);
+    }
+
+    public @unsigned int vertexAttributeInstanceRateDivisor() {
+        return segment.get(LAYOUT$vertexAttributeInstanceRateDivisor, OFFSET$vertexAttributeInstanceRateDivisor);
+    }
+
+    public void vertexAttributeInstanceRateDivisor(@unsigned int value) {
+        segment.set(LAYOUT$vertexAttributeInstanceRateDivisor, OFFSET$vertexAttributeInstanceRateDivisor, value);
+    }
+
+    public @unsigned int vertexAttributeInstanceRateZeroDivisor() {
+        return segment.get(LAYOUT$vertexAttributeInstanceRateZeroDivisor, OFFSET$vertexAttributeInstanceRateZeroDivisor);
+    }
+
+    public void vertexAttributeInstanceRateZeroDivisor(@unsigned int value) {
+        segment.set(LAYOUT$vertexAttributeInstanceRateZeroDivisor, OFFSET$vertexAttributeInstanceRateZeroDivisor, value);
+    }
+
+    public @unsigned int indexTypeUint8() {
+        return segment.get(LAYOUT$indexTypeUint8, OFFSET$indexTypeUint8);
+    }
+
+    public void indexTypeUint8(@unsigned int value) {
+        segment.set(LAYOUT$indexTypeUint8, OFFSET$indexTypeUint8, value);
+    }
+
+    public @unsigned int dynamicRenderingLocalRead() {
+        return segment.get(LAYOUT$dynamicRenderingLocalRead, OFFSET$dynamicRenderingLocalRead);
+    }
+
+    public void dynamicRenderingLocalRead(@unsigned int value) {
+        segment.set(LAYOUT$dynamicRenderingLocalRead, OFFSET$dynamicRenderingLocalRead, value);
+    }
+
+    public @unsigned int maintenance5() {
+        return segment.get(LAYOUT$maintenance5, OFFSET$maintenance5);
+    }
+
+    public void maintenance5(@unsigned int value) {
+        segment.set(LAYOUT$maintenance5, OFFSET$maintenance5, value);
+    }
+
+    public @unsigned int maintenance6() {
+        return segment.get(LAYOUT$maintenance6, OFFSET$maintenance6);
+    }
+
+    public void maintenance6(@unsigned int value) {
+        segment.set(LAYOUT$maintenance6, OFFSET$maintenance6, value);
+    }
+
+    public @unsigned int pipelineProtectedAccess() {
+        return segment.get(LAYOUT$pipelineProtectedAccess, OFFSET$pipelineProtectedAccess);
+    }
+
+    public void pipelineProtectedAccess(@unsigned int value) {
+        segment.set(LAYOUT$pipelineProtectedAccess, OFFSET$pipelineProtectedAccess, value);
+    }
+
+    public @unsigned int pipelineRobustness() {
+        return segment.get(LAYOUT$pipelineRobustness, OFFSET$pipelineRobustness);
+    }
+
+    public void pipelineRobustness(@unsigned int value) {
+        segment.set(LAYOUT$pipelineRobustness, OFFSET$pipelineRobustness, value);
+    }
+
+    public @unsigned int hostImageCopy() {
+        return segment.get(LAYOUT$hostImageCopy, OFFSET$hostImageCopy);
+    }
+
+    public void hostImageCopy(@unsigned int value) {
+        segment.set(LAYOUT$hostImageCopy, OFFSET$hostImageCopy, value);
+    }
+
+    public @unsigned int pushDescriptor() {
+        return segment.get(LAYOUT$pushDescriptor, OFFSET$pushDescriptor);
+    }
+
+    public void pushDescriptor(@unsigned int value) {
+        segment.set(LAYOUT$pushDescriptor, OFFSET$pushDescriptor, value);
+    }
+
+}
+/// dummy, not implemented yet
