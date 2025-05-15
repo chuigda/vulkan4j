@@ -1,12 +1,16 @@
 package cc.design7.babel.codegen.accessor
 
+import cc.design7.babel.codegen.FIELD_segment
+import cc.design7.babel.codegen.LayoutField
+import cc.design7.babel.codegen.fn
 import cc.design7.babel.ctype.CArrayType
 import cc.design7.babel.ctype.CHandleType
 import cc.design7.babel.ctype.CNonRefType
 import cc.design7.babel.ctype.CStructType
-import cc.design7.babel.registry.Member
+import cc.design7.babel.util.Doc
+import cc.design7.babel.util.buildDoc
 
-fun generateArrayAccessor(type: CArrayType, member: Member): String {
+fun generateArrayAccessor(type: CArrayType, member: LayoutField.Typed): Doc {
     val flattened = type.flattened
     val elementType = flattened.element
 
@@ -18,76 +22,109 @@ fun generateArrayAccessor(type: CArrayType, member: Member): String {
     }
 }
 
-private fun generateNonRefArrayAccessor(elementType: CNonRefType, member: Member): String =
-    """
-        public MemorySegment ${member.name}Raw() {
-            return segment.asSlice(OFFSET$${member.name}, SIZE$${member.name});
+private fun generateNonRefArrayAccessor(elementType: CNonRefType, member: LayoutField.Typed): Doc {
+    return buildDoc {
+        val fnRaw = "${member.name}Raw"
+
+        fn("public", "MemorySegment", fnRaw) {
+            +"return $FIELD_segment.asSlice(${member.offsetName}, ${member.sizeName});"
         }
 
-        public ${elementType.jPtrType} ${member.name}() {
-            return new ${elementType.jPtrTypeNoAnnotation}(${member.name}Raw());
+        +""
+
+        fn("public", elementType.jPtrType, member.name) {
+            +"return new ${elementType.jPtrTypeNoAnnotation}($fnRaw);"
         }
 
-        public void ${member.name}(${elementType.jPtrType} value) {
-            MemorySegment.copy(value.segment(), 0, segment, OFFSET$${member.name}, SIZE$${member.name});
-        }
-    """.trimIndent()
+        +""
 
-private fun generateStructureArrayAccessor(elementType: CStructType, member: Member): String =
-    """
-        public MemorySegment ${member.name}Raw() {
-            return segment.asSlice(OFFSET$${member.name}, SIZE$${member.name});
+        fn("public", "void", member.name, "${elementType.jPtrType} value") {
+            +"MemorySegment.copy(value.segment(), 0, $FIELD_segment, ${member.offsetName}, ${member.sizeName});"
+        }
+    }
+}
+
+private fun generateStructureArrayAccessor(elementType: CStructType, member: LayoutField.Typed): Doc {
+    val rawName = "${member.name}Raw"
+
+    return buildDoc {
+        fn("public", "MemorySegment", rawName) {
+            +"return $FIELD_segment.asSlice(${member.offsetName}, ${member.sizeName});"
         }
 
-        public ${elementType.name}[] ${member.name}() {
-            MemorySegment s = ${member.name}Raw();
-            ${elementType.name}[] arr = new ${elementType.name}[(int) LAYOUT$${member.name}.elementCount()];
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = new ${elementType.name}(s.asSlice(i * ${elementType.name}.SIZE, ${elementType.name}.SIZE));
+        +""
+
+        fn("public", "${elementType.name}[]", member.name) {
+            +"MemorySegment s = $rawName;"
+            +"${elementType.name}[] arr = new ${elementType.name}[(int) ${member.layoutName}.elementCount()];"
+            "for (int i = 0; i < arr.length; i ++)" {
+                +"arr[i] = new ${elementType.name}(s.asSlice(i * ${elementType.name}.SIZE, ${elementType.name}.SIZE));"
             }
-            return arr;
+            +"return arr;"
         }
-        
-        public void ${member.name}(${elementType.name}[] value) {
-            MemorySegment s = ${member.name}Raw();
-            for (int i = 0; i < value.length; i++) {
-                MemorySegment.copy(value[i].segment(), 0, s, i * ${elementType.name}.SIZE, ${elementType.name}.SIZE);
+
+        +""
+
+        fn("public", "void", member.name, "${elementType.name}[] value") {
+            +"MemorySegment s = $rawName;"
+            "for (int i = 0; i < value.length; i++)" {
+                +"MemorySegment.copy(value[i].segment(), 0, s, i * ${elementType.name}.SIZE, ${elementType.name}.SIZE);"
             }
         }
 
-        public ${elementType.name} ${member.name}At(int index) {
-            MemorySegment s = ${member.name}Raw();
-            return new ${elementType.name}(s.asSlice(index * ${elementType.name}.SIZE, ${elementType.name}.SIZE));
+        +""
+
+        val atName = "${member.name}At"
+
+        fn("public", elementType.name, atName, "int index") {
+            +"MemorySegment s = $rawName();"
+            +"return new ${elementType.name}(s.asSlice(index * ${elementType.name}.SIZE, ${elementType.name}.SIZE));"
         }
 
-        public void ${member.name}At(int index, ${elementType.name} value) {
-            MemorySegment s = ${member.name}Raw();
-            MemorySegment.copy(value.segment(), 0, s, index * ${elementType.name}.SIZE, ${elementType.name}.SIZE);
-        }
-    """.trimIndent()
+        +""
 
-private fun generateHandleArrayAccessor(elementType: CHandleType, member: Member): String =
-    """
-        public MemorySegment ${member.name}Raw() {
-            return segment.asSlice(OFFSET$${member.name}, SIZE$${member.name});
+        fn("public", "void", atName, "int index", "${elementType.name} value") {
+            +"MemorySegment s = $rawName();"
+            +"MemorySegment.copy(value.segment(), 0, s, index * ${elementType.name}.SIZE, ${elementType.name}.SIZE);"
         }
+    }
+}
 
-        public ${elementType.name}.Buffer ${member.name}() {
-            return new ${elementType.name}.Buffer(${member.name}Raw());
-        }
+private fun generateHandleArrayAccessor(elementType: CHandleType, member: LayoutField.Typed): Doc {
+    return buildDoc {
+        val rawName = "${member.name}Raw"
 
-        public void ${member.name}(${elementType.name}.Buffer value) {
-            MemorySegment.copy(value.segment(), 0, segment, OFFSET$${member.name}, SIZE$${member.name});
+        fn("public", "MemorySegment", rawName) {
+            +"return $FIELD_segment.asSlice(${member.offsetName}, ${member.sizeName});"
         }
 
-        public ${elementType.name} ${member.name}At(int index) {
-            MemorySegment s = ${member.name}Raw();
-            MemorySegment deref = s.get(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize());
-            return new ${elementType.name}(deref);
+        +""
+
+        fn("public", "${elementType.name}.Buffer", member.name) {
+            +"return new ${elementType.name}.Buffer($rawName());"
         }
 
-        public void ${member.name}At(int index, ${elementType.name} value) {
-            MemorySegment s = ${member.name}Raw();
-            s.put(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize(), value.segment());
+        +""
+
+        fn("public", "void", member.name, "${elementType.name}.Buffer value") {
+            +"MemorySegment.copy(value.segment(), 0, $FIELD_segment, ${member.offsetName}, ${member.sizeName});"
         }
-    """.trimIndent()
+
+        +""
+
+        val atName = "${member.name}At"
+
+        fn("public", elementType.name, atName, "int index") {
+            +"MemorySegment s = $rawName();"
+            +"MemorySegment deref = s.get(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize());"
+            +"return new ${elementType.name}(deref);"
+        }
+
+        +""
+
+        fn("public", "void", atName, "int index", "${elementType.name} value") {
+            +"MemorySegment s = $rawName();"
+            +"s.put(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize(), value.segment());"
+        }
+    }
+}
