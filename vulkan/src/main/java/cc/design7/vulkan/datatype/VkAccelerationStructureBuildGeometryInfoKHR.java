@@ -147,7 +147,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         return new VkAccelerationStructureKHR(s);
     }
 
-    public void srcAccelerationStructure() {
+    public void srcAccelerationStructure(@Nullable VkAccelerationStructureKHR value) {
         segment.set(LAYOUT$srcAccelerationStructure, OFFSET$srcAccelerationStructure, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -159,7 +159,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         return new VkAccelerationStructureKHR(s);
     }
 
-    public void dstAccelerationStructure() {
+    public void dstAccelerationStructure(@Nullable VkAccelerationStructureKHR value) {
         segment.set(LAYOUT$dstAccelerationStructure, OFFSET$dstAccelerationStructure, value != null ? value.segment() : MemorySegment.NULL);
     }
 

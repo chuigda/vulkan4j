@@ -87,7 +87,7 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         return new VkDisplayKHR(s);
     }
 
-    public void display() {
+    public void display(@Nullable VkDisplayKHR value) {
         segment.set(LAYOUT$display, OFFSET$display, value != null ? value.segment() : MemorySegment.NULL);
     }
 

@@ -103,7 +103,7 @@ public record VkWriteIndirectExecutionSetShaderEXT(@NotNull MemorySegment segmen
         return new VkShaderEXT(s);
     }
 
-    public void shader() {
+    public void shader(@Nullable VkShaderEXT value) {
         segment.set(LAYOUT$shader, OFFSET$shader, value != null ? value.segment() : MemorySegment.NULL);
     }
 

@@ -135,7 +135,7 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         return new VkPipelineLayout(s);
     }
 
-    public void pipelineLayout() {
+    public void pipelineLayout(@Nullable VkPipelineLayout value) {
         segment.set(LAYOUT$pipelineLayout, OFFSET$pipelineLayout, value != null ? value.segment() : MemorySegment.NULL);
     }
 

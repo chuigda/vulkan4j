@@ -95,7 +95,7 @@ public record VkDisplayPlaneInfo2KHR(@NotNull MemorySegment segment) implements 
         return new VkDisplayModeKHR(s);
     }
 
-    public void mode() {
+    public void mode(@Nullable VkDisplayModeKHR value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value != null ? value.segment() : MemorySegment.NULL);
     }
 

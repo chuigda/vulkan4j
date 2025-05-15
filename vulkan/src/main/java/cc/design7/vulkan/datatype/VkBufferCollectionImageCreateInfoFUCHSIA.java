@@ -95,7 +95,7 @@ public record VkBufferCollectionImageCreateInfoFUCHSIA(@NotNull MemorySegment se
         return new VkBufferCollectionFUCHSIA(s);
     }
 
-    public void collection() {
+    public void collection(@Nullable VkBufferCollectionFUCHSIA value) {
         segment.set(LAYOUT$collection, OFFSET$collection, value != null ? value.segment() : MemorySegment.NULL);
     }
 

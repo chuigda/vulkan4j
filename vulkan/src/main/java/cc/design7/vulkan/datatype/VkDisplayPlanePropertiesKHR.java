@@ -67,7 +67,7 @@ public record VkDisplayPlanePropertiesKHR(@NotNull MemorySegment segment) implem
         return new VkDisplayKHR(s);
     }
 
-    public void currentDisplay() {
+    public void currentDisplay(@Nullable VkDisplayKHR value) {
         segment.set(LAYOUT$currentDisplay, OFFSET$currentDisplay, value != null ? value.segment() : MemorySegment.NULL);
     }
 

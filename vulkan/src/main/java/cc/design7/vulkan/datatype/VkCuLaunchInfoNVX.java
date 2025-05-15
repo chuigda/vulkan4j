@@ -135,7 +135,7 @@ public record VkCuLaunchInfoNVX(@NotNull MemorySegment segment) implements IPoin
         return new VkCuFunctionNVX(s);
     }
 
-    public void function() {
+    public void function(@Nullable VkCuFunctionNVX value) {
         segment.set(LAYOUT$function, OFFSET$function, value != null ? value.segment() : MemorySegment.NULL);
     }
 

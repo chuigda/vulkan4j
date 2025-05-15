@@ -95,7 +95,7 @@ public record VkExportMetalCommandQueueInfoEXT(@NotNull MemorySegment segment) i
         return new VkQueue(s);
     }
 
-    public void queue() {
+    public void queue(@Nullable VkQueue value) {
         segment.set(LAYOUT$queue, OFFSET$queue, value != null ? value.segment() : MemorySegment.NULL);
     }
 

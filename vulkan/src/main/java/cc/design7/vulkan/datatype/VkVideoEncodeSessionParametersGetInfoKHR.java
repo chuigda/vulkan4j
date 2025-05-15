@@ -91,7 +91,7 @@ public record VkVideoEncodeSessionParametersGetInfoKHR(@NotNull MemorySegment se
         return new VkVideoSessionParametersKHR(s);
     }
 
-    public void videoSessionParameters() {
+    public void videoSessionParameters(@Nullable VkVideoSessionParametersKHR value) {
         segment.set(LAYOUT$videoSessionParameters, OFFSET$videoSessionParameters, value != null ? value.segment() : MemorySegment.NULL);
     }
 

@@ -91,7 +91,7 @@ public record VkImageSwapchainCreateInfoKHR(@NotNull MemorySegment segment) impl
         return new VkSwapchainKHR(s);
     }
 
-    public void swapchain() {
+    public void swapchain(@Nullable VkSwapchainKHR value) {
         segment.set(LAYOUT$swapchain, OFFSET$swapchain, value != null ? value.segment() : MemorySegment.NULL);
     }
 

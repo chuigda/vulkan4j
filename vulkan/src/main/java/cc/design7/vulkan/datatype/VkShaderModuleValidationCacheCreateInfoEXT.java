@@ -91,7 +91,7 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(@NotNull MemorySegment 
         return new VkValidationCacheEXT(s);
     }
 
-    public void validationCache() {
+    public void validationCache(@Nullable VkValidationCacheEXT value) {
         segment.set(LAYOUT$validationCache, OFFSET$validationCache, value != null ? value.segment() : MemorySegment.NULL);
     }
 

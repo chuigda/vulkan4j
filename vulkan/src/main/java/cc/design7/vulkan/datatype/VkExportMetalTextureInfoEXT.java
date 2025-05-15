@@ -107,7 +107,7 @@ public record VkExportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         return new VkImage(s);
     }
 
-    public void image() {
+    public void image(@Nullable VkImage value) {
         segment.set(LAYOUT$image, OFFSET$image, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -119,7 +119,7 @@ public record VkExportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         return new VkImageView(s);
     }
 
-    public void imageView() {
+    public void imageView(@Nullable VkImageView value) {
         segment.set(LAYOUT$imageView, OFFSET$imageView, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -131,7 +131,7 @@ public record VkExportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         return new VkBufferView(s);
     }
 
-    public void bufferView() {
+    public void bufferView(@Nullable VkBufferView value) {
         segment.set(LAYOUT$bufferView, OFFSET$bufferView, value != null ? value.segment() : MemorySegment.NULL);
     }
 

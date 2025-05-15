@@ -95,7 +95,7 @@ public record VkSemaphoreGetFdInfoKHR(@NotNull MemorySegment segment) implements
         return new VkSemaphore(s);
     }
 
-    public void semaphore() {
+    public void semaphore(@Nullable VkSemaphore value) {
         segment.set(LAYOUT$semaphore, OFFSET$semaphore, value != null ? value.segment() : MemorySegment.NULL);
     }
 

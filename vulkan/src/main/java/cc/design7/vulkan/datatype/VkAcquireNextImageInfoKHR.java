@@ -107,7 +107,7 @@ public record VkAcquireNextImageInfoKHR(@NotNull MemorySegment segment) implemen
         return new VkSwapchainKHR(s);
     }
 
-    public void swapchain() {
+    public void swapchain(@Nullable VkSwapchainKHR value) {
         segment.set(LAYOUT$swapchain, OFFSET$swapchain, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -127,7 +127,7 @@ public record VkAcquireNextImageInfoKHR(@NotNull MemorySegment segment) implemen
         return new VkSemaphore(s);
     }
 
-    public void semaphore() {
+    public void semaphore(@Nullable VkSemaphore value) {
         segment.set(LAYOUT$semaphore, OFFSET$semaphore, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -139,7 +139,7 @@ public record VkAcquireNextImageInfoKHR(@NotNull MemorySegment segment) implemen
         return new VkFence(s);
     }
 
-    public void fence() {
+    public void fence(@Nullable VkFence value) {
         segment.set(LAYOUT$fence, OFFSET$fence, value != null ? value.segment() : MemorySegment.NULL);
     }
 

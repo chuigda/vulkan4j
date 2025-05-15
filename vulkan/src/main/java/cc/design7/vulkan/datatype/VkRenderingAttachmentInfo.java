@@ -119,7 +119,7 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         return new VkImageView(s);
     }
 
-    public void imageView() {
+    public void imageView(@Nullable VkImageView value) {
         segment.set(LAYOUT$imageView, OFFSET$imageView, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -147,7 +147,7 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         return new VkImageView(s);
     }
 
-    public void resolveImageView() {
+    public void resolveImageView(@Nullable VkImageView value) {
         segment.set(LAYOUT$resolveImageView, OFFSET$resolveImageView, value != null ? value.segment() : MemorySegment.NULL);
     }
 

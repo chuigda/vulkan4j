@@ -111,7 +111,7 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(@NotNull MemorySegment
         return new VkPipeline(s);
     }
 
-    public void pipeline() {
+    public void pipeline(@Nullable VkPipeline value) {
         segment.set(LAYOUT$pipeline, OFFSET$pipeline, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -123,7 +123,7 @@ public record VkGeneratedCommandsMemoryRequirementsInfoNV(@NotNull MemorySegment
         return new VkIndirectCommandsLayoutNV(s);
     }
 
-    public void indirectCommandsLayout() {
+    public void indirectCommandsLayout(@Nullable VkIndirectCommandsLayoutNV value) {
         segment.set(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout, value != null ? value.segment() : MemorySegment.NULL);
     }
 

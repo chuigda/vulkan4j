@@ -131,7 +131,7 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         return new VkBuffer(s);
     }
 
-    public void vertexData() {
+    public void vertexData(@Nullable VkBuffer value) {
         segment.set(LAYOUT$vertexData, OFFSET$vertexData, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -175,7 +175,7 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         return new VkBuffer(s);
     }
 
-    public void indexData() {
+    public void indexData(@Nullable VkBuffer value) {
         segment.set(LAYOUT$indexData, OFFSET$indexData, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -211,7 +211,7 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         return new VkBuffer(s);
     }
 
-    public void transformData() {
+    public void transformData(@Nullable VkBuffer value) {
         segment.set(LAYOUT$transformData, OFFSET$transformData, value != null ? value.segment() : MemorySegment.NULL);
     }
 

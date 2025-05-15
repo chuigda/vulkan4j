@@ -95,7 +95,7 @@ public record VkCuFunctionCreateInfoNVX(@NotNull MemorySegment segment) implemen
         return new VkCuModuleNVX(s);
     }
 
-    public void module() {
+    public void module(@Nullable VkCuModuleNVX value) {
         segment.set(LAYOUT$module, OFFSET$module, value != null ? value.segment() : MemorySegment.NULL);
     }
 

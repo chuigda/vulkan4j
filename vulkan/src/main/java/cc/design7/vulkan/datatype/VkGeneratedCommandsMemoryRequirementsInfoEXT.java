@@ -103,7 +103,7 @@ public record VkGeneratedCommandsMemoryRequirementsInfoEXT(@NotNull MemorySegmen
         return new VkIndirectExecutionSetEXT(s);
     }
 
-    public void indirectExecutionSet() {
+    public void indirectExecutionSet(@Nullable VkIndirectExecutionSetEXT value) {
         segment.set(LAYOUT$indirectExecutionSet, OFFSET$indirectExecutionSet, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -115,7 +115,7 @@ public record VkGeneratedCommandsMemoryRequirementsInfoEXT(@NotNull MemorySegmen
         return new VkIndirectCommandsLayoutEXT(s);
     }
 
-    public void indirectCommandsLayout() {
+    public void indirectCommandsLayout(@Nullable VkIndirectCommandsLayoutEXT value) {
         segment.set(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout, value != null ? value.segment() : MemorySegment.NULL);
     }
 

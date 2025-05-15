@@ -95,7 +95,7 @@ public record VkCommandBufferSubmitInfo(@NotNull MemorySegment segment) implemen
         return new VkCommandBuffer(s);
     }
 
-    public void commandBuffer() {
+    public void commandBuffer(@Nullable VkCommandBuffer value) {
         segment.set(LAYOUT$commandBuffer, OFFSET$commandBuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 

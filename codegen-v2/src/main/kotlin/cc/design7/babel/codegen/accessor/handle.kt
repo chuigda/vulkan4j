@@ -18,7 +18,7 @@ fun generateHandleAccessor(type: CHandleType, member: LayoutField.Typed): Doc {
 
         +""
 
-        fn("public", "void", member.name) {
+        fn("public", "void", member.name, "@Nullable ${type.name} value") {
             +"segment.set(${member.layoutName}, ${member.offsetName}, value != null ? value.segment() : MemorySegment.NULL);"
         }
     }

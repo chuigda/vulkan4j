@@ -107,7 +107,7 @@ public record VkCopyImageToBufferInfo2(@NotNull MemorySegment segment) implement
         return new VkImage(s);
     }
 
-    public void srcImage() {
+    public void srcImage(@Nullable VkImage value) {
         segment.set(LAYOUT$srcImage, OFFSET$srcImage, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -127,7 +127,7 @@ public record VkCopyImageToBufferInfo2(@NotNull MemorySegment segment) implement
         return new VkBuffer(s);
     }
 
-    public void dstBuffer() {
+    public void dstBuffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$dstBuffer, OFFSET$dstBuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 

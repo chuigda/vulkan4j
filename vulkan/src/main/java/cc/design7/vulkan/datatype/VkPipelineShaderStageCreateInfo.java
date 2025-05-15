@@ -123,7 +123,7 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         return new VkShaderModule(s);
     }
 
-    public void module() {
+    public void module(@Nullable VkShaderModule value) {
         segment.set(LAYOUT$module, OFFSET$module, value != null ? value.segment() : MemorySegment.NULL);
     }
 

@@ -95,7 +95,7 @@ public record VkDescriptorSetBindingReferenceVALVE(@NotNull MemorySegment segmen
         return new VkDescriptorSetLayout(s);
     }
 
-    public void descriptorSetLayout() {
+    public void descriptorSetLayout(@Nullable VkDescriptorSetLayout value) {
         segment.set(LAYOUT$descriptorSetLayout, OFFSET$descriptorSetLayout, value != null ? value.segment() : MemorySegment.NULL);
     }
 

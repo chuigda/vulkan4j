@@ -103,7 +103,7 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IPoin
         return new VkBuffer(s);
     }
 
-    public void srcBuffer() {
+    public void srcBuffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$srcBuffer, OFFSET$srcBuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -115,7 +115,7 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IPoin
         return new VkBuffer(s);
     }
 
-    public void dstBuffer() {
+    public void dstBuffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$dstBuffer, OFFSET$dstBuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 

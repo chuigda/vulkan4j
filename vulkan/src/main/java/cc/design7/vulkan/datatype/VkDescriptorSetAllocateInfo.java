@@ -99,7 +99,7 @@ public record VkDescriptorSetAllocateInfo(@NotNull MemorySegment segment) implem
         return new VkDescriptorPool(s);
     }
 
-    public void descriptorPool() {
+    public void descriptorPool(@Nullable VkDescriptorPool value) {
         segment.set(LAYOUT$descriptorPool, OFFSET$descriptorPool, value != null ? value.segment() : MemorySegment.NULL);
     }
 

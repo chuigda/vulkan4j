@@ -103,7 +103,7 @@ public record VkGeometryAABBNV(@NotNull MemorySegment segment) implements IPoint
         return new VkBuffer(s);
     }
 
-    public void aabbData() {
+    public void aabbData(@Nullable VkBuffer value) {
         segment.set(LAYOUT$aabbData, OFFSET$aabbData, value != null ? value.segment() : MemorySegment.NULL);
     }
 

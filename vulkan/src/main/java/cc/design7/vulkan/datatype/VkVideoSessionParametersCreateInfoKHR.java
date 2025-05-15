@@ -107,7 +107,7 @@ public record VkVideoSessionParametersCreateInfoKHR(@NotNull MemorySegment segme
         return new VkVideoSessionParametersKHR(s);
     }
 
-    public void videoSessionParametersTemplate() {
+    public void videoSessionParametersTemplate(@Nullable VkVideoSessionParametersKHR value) {
         segment.set(LAYOUT$videoSessionParametersTemplate, OFFSET$videoSessionParametersTemplate, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -119,7 +119,7 @@ public record VkVideoSessionParametersCreateInfoKHR(@NotNull MemorySegment segme
         return new VkVideoSessionKHR(s);
     }
 
-    public void videoSession() {
+    public void videoSession(@Nullable VkVideoSessionKHR value) {
         segment.set(LAYOUT$videoSession, OFFSET$videoSession, value != null ? value.segment() : MemorySegment.NULL);
     }
 

@@ -99,7 +99,7 @@ public record VkBindBufferMemoryInfo(@NotNull MemorySegment segment) implements 
         return new VkBuffer(s);
     }
 
-    public void buffer() {
+    public void buffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$buffer, OFFSET$buffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -111,7 +111,7 @@ public record VkBindBufferMemoryInfo(@NotNull MemorySegment segment) implements 
         return new VkDeviceMemory(s);
     }
 
-    public void memory() {
+    public void memory(@Nullable VkDeviceMemory value) {
         segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
     }
 

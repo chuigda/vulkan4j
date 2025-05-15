@@ -127,7 +127,7 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IP
         return new VkBuffer(s);
     }
 
-    public void srcBuffer() {
+    public void srcBuffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$srcBuffer, OFFSET$srcBuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 

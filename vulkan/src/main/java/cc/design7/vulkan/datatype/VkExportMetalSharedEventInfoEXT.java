@@ -99,7 +99,7 @@ public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         return new VkSemaphore(s);
     }
 
-    public void semaphore() {
+    public void semaphore(@Nullable VkSemaphore value) {
         segment.set(LAYOUT$semaphore, OFFSET$semaphore, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -111,7 +111,7 @@ public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         return new VkEvent(s);
     }
 
-    public void event() {
+    public void event(@Nullable VkEvent value) {
         segment.set(LAYOUT$event, OFFSET$event, value != null ? value.segment() : MemorySegment.NULL);
     }
 

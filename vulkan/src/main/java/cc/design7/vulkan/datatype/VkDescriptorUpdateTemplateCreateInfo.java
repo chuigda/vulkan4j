@@ -178,7 +178,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         return new VkDescriptorSetLayout(s);
     }
 
-    public void descriptorSetLayout() {
+    public void descriptorSetLayout(@Nullable VkDescriptorSetLayout value) {
         segment.set(LAYOUT$descriptorSetLayout, OFFSET$descriptorSetLayout, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -198,7 +198,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         return new VkPipelineLayout(s);
     }
 
-    public void pipelineLayout() {
+    public void pipelineLayout(@Nullable VkPipelineLayout value) {
         segment.set(LAYOUT$pipelineLayout, OFFSET$pipelineLayout, value != null ? value.segment() : MemorySegment.NULL);
     }
 

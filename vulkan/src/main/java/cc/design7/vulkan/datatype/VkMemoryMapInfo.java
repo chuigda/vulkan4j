@@ -111,7 +111,7 @@ public record VkMemoryMapInfo(@NotNull MemorySegment segment) implements IPointe
         return new VkDeviceMemory(s);
     }
 
-    public void memory() {
+    public void memory(@Nullable VkDeviceMemory value) {
         segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
     }
 

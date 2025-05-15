@@ -103,7 +103,7 @@ public record VkPipelineIndirectDeviceAddressInfoNV(@NotNull MemorySegment segme
         return new VkPipeline(s);
     }
 
-    public void pipeline() {
+    public void pipeline(@Nullable VkPipeline value) {
         segment.set(LAYOUT$pipeline, OFFSET$pipeline, value != null ? value.segment() : MemorySegment.NULL);
     }
 

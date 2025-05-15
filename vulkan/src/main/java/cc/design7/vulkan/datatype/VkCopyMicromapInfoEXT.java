@@ -99,7 +99,7 @@ public record VkCopyMicromapInfoEXT(@NotNull MemorySegment segment) implements I
         return new VkMicromapEXT(s);
     }
 
-    public void src() {
+    public void src(@Nullable VkMicromapEXT value) {
         segment.set(LAYOUT$src, OFFSET$src, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -111,7 +111,7 @@ public record VkCopyMicromapInfoEXT(@NotNull MemorySegment segment) implements I
         return new VkMicromapEXT(s);
     }
 
-    public void dst() {
+    public void dst(@Nullable VkMicromapEXT value) {
         segment.set(LAYOUT$dst, OFFSET$dst, value != null ? value.segment() : MemorySegment.NULL);
     }
 

@@ -123,7 +123,7 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         return new VkRenderPass(s);
     }
 
-    public void renderPass() {
+    public void renderPass(@Nullable VkRenderPass value) {
         segment.set(LAYOUT$renderPass, OFFSET$renderPass, value != null ? value.segment() : MemorySegment.NULL);
     }
 

@@ -99,7 +99,7 @@ public record VkImageViewHandleInfoNVX(@NotNull MemorySegment segment) implement
         return new VkImageView(s);
     }
 
-    public void imageView() {
+    public void imageView(@Nullable VkImageView value) {
         segment.set(LAYOUT$imageView, OFFSET$imageView, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -119,7 +119,7 @@ public record VkImageViewHandleInfoNVX(@NotNull MemorySegment segment) implement
         return new VkSampler(s);
     }
 
-    public void sampler() {
+    public void sampler(@Nullable VkSampler value) {
         segment.set(LAYOUT$sampler, OFFSET$sampler, value != null ? value.segment() : MemorySegment.NULL);
     }
 

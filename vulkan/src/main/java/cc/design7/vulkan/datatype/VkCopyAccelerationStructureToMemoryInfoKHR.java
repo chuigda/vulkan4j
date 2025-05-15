@@ -99,7 +99,7 @@ public record VkCopyAccelerationStructureToMemoryInfoKHR(@NotNull MemorySegment 
         return new VkAccelerationStructureKHR(s);
     }
 
-    public void src() {
+    public void src(@Nullable VkAccelerationStructureKHR value) {
         segment.set(LAYOUT$src, OFFSET$src, value != null ? value.segment() : MemorySegment.NULL);
     }
 

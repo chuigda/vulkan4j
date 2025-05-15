@@ -111,7 +111,7 @@ public record VkCopyImageInfo2(@NotNull MemorySegment segment) implements IPoint
         return new VkImage(s);
     }
 
-    public void srcImage() {
+    public void srcImage(@Nullable VkImage value) {
         segment.set(LAYOUT$srcImage, OFFSET$srcImage, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -131,7 +131,7 @@ public record VkCopyImageInfo2(@NotNull MemorySegment segment) implements IPoint
         return new VkImage(s);
     }
 
-    public void dstImage() {
+    public void dstImage(@Nullable VkImage value) {
         segment.set(LAYOUT$dstImage, OFFSET$dstImage, value != null ? value.segment() : MemorySegment.NULL);
     }
 

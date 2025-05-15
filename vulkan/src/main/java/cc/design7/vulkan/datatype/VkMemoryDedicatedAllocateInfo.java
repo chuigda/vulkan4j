@@ -95,7 +95,7 @@ public record VkMemoryDedicatedAllocateInfo(@NotNull MemorySegment segment) impl
         return new VkImage(s);
     }
 
-    public void image() {
+    public void image(@Nullable VkImage value) {
         segment.set(LAYOUT$image, OFFSET$image, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -107,7 +107,7 @@ public record VkMemoryDedicatedAllocateInfo(@NotNull MemorySegment segment) impl
         return new VkBuffer(s);
     }
 
-    public void buffer() {
+    public void buffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$buffer, OFFSET$buffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 

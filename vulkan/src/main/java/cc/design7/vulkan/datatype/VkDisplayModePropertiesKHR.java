@@ -67,7 +67,7 @@ public record VkDisplayModePropertiesKHR(@NotNull MemorySegment segment) impleme
         return new VkDisplayModeKHR(s);
     }
 
-    public void displayMode() {
+    public void displayMode(@Nullable VkDisplayModeKHR value) {
         segment.set(LAYOUT$displayMode, OFFSET$displayMode, value != null ? value.segment() : MemorySegment.NULL);
     }
 

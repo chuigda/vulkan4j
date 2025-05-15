@@ -99,7 +99,7 @@ public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implem
         return new VkCommandPool(s);
     }
 
-    public void commandPool() {
+    public void commandPool(@Nullable VkCommandPool value) {
         segment.set(LAYOUT$commandPool, OFFSET$commandPool, value != null ? value.segment() : MemorySegment.NULL);
     }
 

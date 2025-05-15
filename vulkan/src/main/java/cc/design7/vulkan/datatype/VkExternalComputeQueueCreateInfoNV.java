@@ -91,7 +91,7 @@ public record VkExternalComputeQueueCreateInfoNV(@NotNull MemorySegment segment)
         return new VkQueue(s);
     }
 
-    public void preferredQueue() {
+    public void preferredQueue(@Nullable VkQueue value) {
         segment.set(LAYOUT$preferredQueue, OFFSET$preferredQueue, value != null ? value.segment() : MemorySegment.NULL);
     }
 

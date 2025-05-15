@@ -107,7 +107,7 @@ public record VkCopyMemoryToMicromapInfoEXT(@NotNull MemorySegment segment) impl
         return new VkMicromapEXT(s);
     }
 
-    public void dst() {
+    public void dst(@Nullable VkMicromapEXT value) {
         segment.set(LAYOUT$dst, OFFSET$dst, value != null ? value.segment() : MemorySegment.NULL);
     }
 

@@ -95,7 +95,7 @@ public record VkIndirectExecutionSetPipelineInfoEXT(@NotNull MemorySegment segme
         return new VkPipeline(s);
     }
 
-    public void initialPipeline() {
+    public void initialPipeline(@Nullable VkPipeline value) {
         segment.set(LAYOUT$initialPipeline, OFFSET$initialPipeline, value != null ? value.segment() : MemorySegment.NULL);
     }
 

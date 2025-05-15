@@ -107,7 +107,7 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
         return new VkAccelerationStructureNV(s);
     }
 
-    public void accelerationStructure() {
+    public void accelerationStructure(@Nullable VkAccelerationStructureNV value) {
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -119,7 +119,7 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
         return new VkDeviceMemory(s);
     }
 
-    public void memory() {
+    public void memory(@Nullable VkDeviceMemory value) {
         segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
     }
 

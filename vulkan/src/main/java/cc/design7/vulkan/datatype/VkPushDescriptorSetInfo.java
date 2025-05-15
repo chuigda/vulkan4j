@@ -115,7 +115,7 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         return new VkPipelineLayout(s);
     }
 
-    public void layout() {
+    public void layout(@Nullable VkPipelineLayout value) {
         segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
     }
 

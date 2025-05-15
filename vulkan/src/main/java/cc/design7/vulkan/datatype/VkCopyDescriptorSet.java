@@ -115,7 +115,7 @@ public record VkCopyDescriptorSet(@NotNull MemorySegment segment) implements IPo
         return new VkDescriptorSet(s);
     }
 
-    public void srcSet() {
+    public void srcSet(@Nullable VkDescriptorSet value) {
         segment.set(LAYOUT$srcSet, OFFSET$srcSet, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -143,7 +143,7 @@ public record VkCopyDescriptorSet(@NotNull MemorySegment segment) implements IPo
         return new VkDescriptorSet(s);
     }
 
-    public void dstSet() {
+    public void dstSet(@Nullable VkDescriptorSet value) {
         segment.set(LAYOUT$dstSet, OFFSET$dstSet, value != null ? value.segment() : MemorySegment.NULL);
     }
 

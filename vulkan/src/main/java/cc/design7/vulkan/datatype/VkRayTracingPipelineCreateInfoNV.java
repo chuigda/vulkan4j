@@ -225,7 +225,7 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         return new VkPipelineLayout(s);
     }
 
-    public void layout() {
+    public void layout(@Nullable VkPipelineLayout value) {
         segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -237,7 +237,7 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         return new VkPipeline(s);
     }
 
-    public void basePipelineHandle() {
+    public void basePipelineHandle(@Nullable VkPipeline value) {
         segment.set(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle, value != null ? value.segment() : MemorySegment.NULL);
     }
 

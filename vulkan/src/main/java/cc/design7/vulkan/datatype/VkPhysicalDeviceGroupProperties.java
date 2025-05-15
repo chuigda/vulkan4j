@@ -107,7 +107,7 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
         return new VkPhysicalDevice(s);
     }
 
-    public void physicalDevices() {
+    public void physicalDevices(@Nullable VkPhysicalDevice value) {
         segment.set(LAYOUT$physicalDevices, OFFSET$physicalDevices, value != null ? value.segment() : MemorySegment.NULL);
     }
 

@@ -119,7 +119,7 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IP
         return new VkDescriptorSet(s);
     }
 
-    public void dstSet() {
+    public void dstSet(@Nullable VkDescriptorSet value) {
         segment.set(LAYOUT$dstSet, OFFSET$dstSet, value != null ? value.segment() : MemorySegment.NULL);
     }
 

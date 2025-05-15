@@ -107,7 +107,7 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
         return new VkRenderPass(s);
     }
 
-    public void renderPass() {
+    public void renderPass(@Nullable VkRenderPass value) {
         segment.set(LAYOUT$renderPass, OFFSET$renderPass, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -119,7 +119,7 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
         return new VkFramebuffer(s);
     }
 
-    public void framebuffer() {
+    public void framebuffer(@Nullable VkFramebuffer value) {
         segment.set(LAYOUT$framebuffer, OFFSET$framebuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 

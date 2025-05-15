@@ -91,7 +91,7 @@ public record VkImageCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segment
         return new VkImage(s);
     }
 
-    public void image() {
+    public void image(@Nullable VkImage value) {
         segment.set(LAYOUT$image, OFFSET$image, value != null ? value.segment() : MemorySegment.NULL);
     }
 

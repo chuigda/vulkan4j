@@ -91,7 +91,7 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segme
         return new VkSampler(s);
     }
 
-    public void sampler() {
+    public void sampler(@Nullable VkSampler value) {
         segment.set(LAYOUT$sampler, OFFSET$sampler, value != null ? value.segment() : MemorySegment.NULL);
     }
 

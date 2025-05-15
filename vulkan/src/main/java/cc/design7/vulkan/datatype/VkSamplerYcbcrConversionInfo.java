@@ -91,7 +91,7 @@ public record VkSamplerYcbcrConversionInfo(@NotNull MemorySegment segment) imple
         return new VkSamplerYcbcrConversion(s);
     }
 
-    public void conversion() {
+    public void conversion(@Nullable VkSamplerYcbcrConversion value) {
         segment.set(LAYOUT$conversion, OFFSET$conversion, value != null ? value.segment() : MemorySegment.NULL);
     }
 

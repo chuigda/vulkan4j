@@ -127,7 +127,7 @@ public record VkVideoPictureResourceInfoKHR(@NotNull MemorySegment segment) impl
         return new VkImageView(s);
     }
 
-    public void imageViewBinding() {
+    public void imageViewBinding(@Nullable VkImageView value) {
         segment.set(LAYOUT$imageViewBinding, OFFSET$imageViewBinding, value != null ? value.segment() : MemorySegment.NULL);
     }
 

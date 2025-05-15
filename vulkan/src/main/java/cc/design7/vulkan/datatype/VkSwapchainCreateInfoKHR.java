@@ -159,7 +159,7 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         return new VkSurfaceKHR(s);
     }
 
-    public void surface() {
+    public void surface(@Nullable VkSurfaceKHR value) {
         segment.set(LAYOUT$surface, OFFSET$surface, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -292,7 +292,7 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         return new VkSwapchainKHR(s);
     }
 
-    public void oldSwapchain() {
+    public void oldSwapchain(@Nullable VkSwapchainKHR value) {
         segment.set(LAYOUT$oldSwapchain, OFFSET$oldSwapchain, value != null ? value.segment() : MemorySegment.NULL);
     }
 

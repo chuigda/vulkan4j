@@ -95,7 +95,7 @@ public record VkCudaFunctionCreateInfoNV(@NotNull MemorySegment segment) impleme
         return new VkCudaModuleNV(s);
     }
 
-    public void module() {
+    public void module(@Nullable VkCudaModuleNV value) {
         segment.set(LAYOUT$module, OFFSET$module, value != null ? value.segment() : MemorySegment.NULL);
     }
 

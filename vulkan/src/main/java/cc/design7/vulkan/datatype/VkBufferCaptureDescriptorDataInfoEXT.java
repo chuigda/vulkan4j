@@ -91,7 +91,7 @@ public record VkBufferCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segmen
         return new VkBuffer(s);
     }
 
-    public void buffer() {
+    public void buffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$buffer, OFFSET$buffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 

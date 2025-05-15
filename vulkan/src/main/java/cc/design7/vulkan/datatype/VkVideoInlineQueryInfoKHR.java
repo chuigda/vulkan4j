@@ -99,7 +99,7 @@ public record VkVideoInlineQueryInfoKHR(@NotNull MemorySegment segment) implemen
         return new VkQueryPool(s);
     }
 
-    public void queryPool() {
+    public void queryPool(@Nullable VkQueryPool value) {
         segment.set(LAYOUT$queryPool, OFFSET$queryPool, value != null ? value.segment() : MemorySegment.NULL);
     }
 

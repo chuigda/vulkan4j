@@ -131,7 +131,7 @@ public record VkVideoEncodeInfoKHR(@NotNull MemorySegment segment) implements IP
         return new VkBuffer(s);
     }
 
-    public void dstBuffer() {
+    public void dstBuffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$dstBuffer, OFFSET$dstBuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 

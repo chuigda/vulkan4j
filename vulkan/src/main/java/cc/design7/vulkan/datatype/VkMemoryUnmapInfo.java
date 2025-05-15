@@ -103,7 +103,7 @@ public record VkMemoryUnmapInfo(@NotNull MemorySegment segment) implements IPoin
         return new VkDeviceMemory(s);
     }
 
-    public void memory() {
+    public void memory(@Nullable VkDeviceMemory value) {
         segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
     }
 

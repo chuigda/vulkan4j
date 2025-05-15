@@ -95,7 +95,7 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(@NotNull Memor
         return new VkAccelerationStructureKHR(s);
     }
 
-    public void accelerationStructure() {
+    public void accelerationStructure(@Nullable VkAccelerationStructureKHR value) {
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -107,7 +107,7 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(@NotNull Memor
         return new VkAccelerationStructureNV(s);
     }
 
-    public void accelerationStructureNV() {
+    public void accelerationStructureNV(@Nullable VkAccelerationStructureNV value) {
         segment.set(LAYOUT$accelerationStructureNV, OFFSET$accelerationStructureNV, value != null ? value.segment() : MemorySegment.NULL);
     }
 

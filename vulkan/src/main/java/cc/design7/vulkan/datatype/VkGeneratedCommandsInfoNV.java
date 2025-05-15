@@ -147,7 +147,7 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         return new VkPipeline(s);
     }
 
-    public void pipeline() {
+    public void pipeline(@Nullable VkPipeline value) {
         segment.set(LAYOUT$pipeline, OFFSET$pipeline, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -159,7 +159,7 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         return new VkIndirectCommandsLayoutNV(s);
     }
 
-    public void indirectCommandsLayout() {
+    public void indirectCommandsLayout(@Nullable VkIndirectCommandsLayoutNV value) {
         segment.set(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -222,7 +222,7 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         return new VkBuffer(s);
     }
 
-    public void preprocessBuffer() {
+    public void preprocessBuffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$preprocessBuffer, OFFSET$preprocessBuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -250,7 +250,7 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         return new VkBuffer(s);
     }
 
-    public void sequencesCountBuffer() {
+    public void sequencesCountBuffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$sequencesCountBuffer, OFFSET$sequencesCountBuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -270,7 +270,7 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         return new VkBuffer(s);
     }
 
-    public void sequencesIndexBuffer() {
+    public void sequencesIndexBuffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$sequencesIndexBuffer, OFFSET$sequencesIndexBuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 

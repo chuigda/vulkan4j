@@ -103,7 +103,7 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(@NotNull MemorySeg
         return new VkAccelerationStructureNV(s);
     }
 
-    public void accelerationStructure() {
+    public void accelerationStructure(@Nullable VkAccelerationStructureNV value) {
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value != null ? value.segment() : MemorySegment.NULL);
     }
 

@@ -103,7 +103,7 @@ public record VkPushDescriptorSetWithTemplateInfo(@NotNull MemorySegment segment
         return new VkDescriptorUpdateTemplate(s);
     }
 
-    public void descriptorUpdateTemplate() {
+    public void descriptorUpdateTemplate(@Nullable VkDescriptorUpdateTemplate value) {
         segment.set(LAYOUT$descriptorUpdateTemplate, OFFSET$descriptorUpdateTemplate, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -115,7 +115,7 @@ public record VkPushDescriptorSetWithTemplateInfo(@NotNull MemorySegment segment
         return new VkPipelineLayout(s);
     }
 
-    public void layout() {
+    public void layout(@Nullable VkPipelineLayout value) {
         segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
     }
 

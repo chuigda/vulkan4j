@@ -99,7 +99,7 @@ public record VkBindImageMemoryInfo(@NotNull MemorySegment segment) implements I
         return new VkImage(s);
     }
 
-    public void image() {
+    public void image(@Nullable VkImage value) {
         segment.set(LAYOUT$image, OFFSET$image, value != null ? value.segment() : MemorySegment.NULL);
     }
 
@@ -111,7 +111,7 @@ public record VkBindImageMemoryInfo(@NotNull MemorySegment segment) implements I
         return new VkDeviceMemory(s);
     }
 
-    public void memory() {
+    public void memory(@Nullable VkDeviceMemory value) {
         segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
     }
 

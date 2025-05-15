@@ -179,7 +179,7 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         return new VkPipelineLayout(s);
     }
 
-    public void pushconstantPipelineLayout() {
+    public void pushconstantPipelineLayout(@Nullable VkPipelineLayout value) {
         segment.set(LAYOUT$pushconstantPipelineLayout, OFFSET$pushconstantPipelineLayout, value != null ? value.segment() : MemorySegment.NULL);
     }
 

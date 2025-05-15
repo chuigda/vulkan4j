@@ -95,7 +95,7 @@ public record VkLatencySleepInfoNV(@NotNull MemorySegment segment) implements IP
         return new VkSemaphore(s);
     }
 
-    public void signalSemaphore() {
+    public void signalSemaphore(@Nullable VkSemaphore value) {
         segment.set(LAYOUT$signalSemaphore, OFFSET$signalSemaphore, value != null ? value.segment() : MemorySegment.NULL);
     }
 

@@ -95,7 +95,7 @@ public record VkVideoEncodeQuantizationMapInfoKHR(@NotNull MemorySegment segment
         return new VkImageView(s);
     }
 
-    public void quantizationMap() {
+    public void quantizationMap(@Nullable VkImageView value) {
         segment.set(LAYOUT$quantizationMap, OFFSET$quantizationMap, value != null ? value.segment() : MemorySegment.NULL);
     }
 

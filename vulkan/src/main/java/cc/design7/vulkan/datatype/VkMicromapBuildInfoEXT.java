@@ -155,7 +155,7 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return new VkMicromapEXT(s);
     }
 
-    public void dstMicromap() {
+    public void dstMicromap(@Nullable VkMicromapEXT value) {
         segment.set(LAYOUT$dstMicromap, OFFSET$dstMicromap, value != null ? value.segment() : MemorySegment.NULL);
     }
 

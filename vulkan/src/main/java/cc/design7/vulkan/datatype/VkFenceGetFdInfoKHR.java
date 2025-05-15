@@ -95,7 +95,7 @@ public record VkFenceGetFdInfoKHR(@NotNull MemorySegment segment) implements IPo
         return new VkFence(s);
     }
 
-    public void fence() {
+    public void fence(@Nullable VkFence value) {
         segment.set(LAYOUT$fence, OFFSET$fence, value != null ? value.segment() : MemorySegment.NULL);
     }
 

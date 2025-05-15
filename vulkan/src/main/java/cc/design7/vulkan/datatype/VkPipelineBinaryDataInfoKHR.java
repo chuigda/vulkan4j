@@ -91,7 +91,7 @@ public record VkPipelineBinaryDataInfoKHR(@NotNull MemorySegment segment) implem
         return new VkPipelineBinaryKHR(s);
     }
 
-    public void pipelineBinary() {
+    public void pipelineBinary(@Nullable VkPipelineBinaryKHR value) {
         segment.set(LAYOUT$pipelineBinary, OFFSET$pipelineBinary, value != null ? value.segment() : MemorySegment.NULL);
     }
 

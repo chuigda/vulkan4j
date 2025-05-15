@@ -314,7 +314,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         return new VkMicromapEXT(s);
     }
 
-    public void micromap() {
+    public void micromap(@Nullable VkMicromapEXT value) {
         segment.set(LAYOUT$micromap, OFFSET$micromap, value != null ? value.segment() : MemorySegment.NULL);
     }
 

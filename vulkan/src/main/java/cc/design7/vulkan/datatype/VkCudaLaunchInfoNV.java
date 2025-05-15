@@ -135,7 +135,7 @@ public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IPoi
         return new VkCudaFunctionNV(s);
     }
 
-    public void function() {
+    public void function(@Nullable VkCudaFunctionNV value) {
         segment.set(LAYOUT$function, OFFSET$function, value != null ? value.segment() : MemorySegment.NULL);
     }
 
