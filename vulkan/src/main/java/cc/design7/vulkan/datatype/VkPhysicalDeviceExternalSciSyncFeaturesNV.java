@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceExternalSciSyncFeaturesNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceExternalSciSyncFeaturesNV.html">VkPhysicalDeviceExternalSciSyncFeaturesNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceExternalSciSyncFeaturesNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$sciSyncFence = ValueLayout.JAVA_INT.withName("sciSyncFence");
-    public static final OfInt LAYOUT$sciSyncSemaphore = ValueLayout.JAVA_INT.withName("sciSyncSemaphore");
-    public static final OfInt LAYOUT$sciSyncImport = ValueLayout.JAVA_INT.withName("sciSyncImport");
-    public static final OfInt LAYOUT$sciSyncExport = ValueLayout.JAVA_INT.withName("sciSyncExport");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$sciSyncFence, LAYOUT$sciSyncSemaphore, LAYOUT$sciSyncImport, LAYOUT$sciSyncExport);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceExternalSciSyncFeaturesNV {
+        sType(VkStructureType.PHYSICAL_DEVICE_EXTERNAL_SCI_SYNC_FEATURES_NV);
+    }
 
     public static VkPhysicalDeviceExternalSciSyncFeaturesNV allocate(Arena arena) {
         return new VkPhysicalDeviceExternalSciSyncFeaturesNV(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkPhysicalDeviceExternalSciSyncFeaturesNV(@NotNull MemorySegment s
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("sciSyncFence"),
+        ValueLayout.JAVA_INT.withName("sciSyncSemaphore"),
+        ValueLayout.JAVA_INT.withName("sciSyncImport"),
+        ValueLayout.JAVA_INT.withName("sciSyncExport")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$sciSyncFence = PathElement.groupElement("PATH$sciSyncFence");
     public static final PathElement PATH$sciSyncSemaphore = PathElement.groupElement("PATH$sciSyncSemaphore");
     public static final PathElement PATH$sciSyncImport = PathElement.groupElement("PATH$sciSyncImport");
     public static final PathElement PATH$sciSyncExport = PathElement.groupElement("PATH$sciSyncExport");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$sciSyncFence = (OfInt) LAYOUT.select(PATH$sciSyncFence);
+    public static final OfInt LAYOUT$sciSyncSemaphore = (OfInt) LAYOUT.select(PATH$sciSyncSemaphore);
+    public static final OfInt LAYOUT$sciSyncImport = (OfInt) LAYOUT.select(PATH$sciSyncImport);
+    public static final OfInt LAYOUT$sciSyncExport = (OfInt) LAYOUT.select(PATH$sciSyncExport);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

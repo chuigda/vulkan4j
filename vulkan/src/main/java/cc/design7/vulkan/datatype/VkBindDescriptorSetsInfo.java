@@ -14,21 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkBindDescriptorSetsInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindDescriptorSetsInfo.html">VkBindDescriptorSetsInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$stageFlags = ValueLayout.JAVA_INT.withName("stageFlags");
-    public static final AddressLayout LAYOUT$layout = ValueLayout.ADDRESS.withName("layout");
-    public static final OfInt LAYOUT$firstSet = ValueLayout.JAVA_INT.withName("firstSet");
-    public static final OfInt LAYOUT$descriptorSetCount = ValueLayout.JAVA_INT.withName("descriptorSetCount");
-    public static final AddressLayout LAYOUT$pDescriptorSets = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pDescriptorSets");
-    public static final OfInt LAYOUT$dynamicOffsetCount = ValueLayout.JAVA_INT.withName("dynamicOffsetCount");
-    public static final AddressLayout LAYOUT$pDynamicOffsets = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDynamicOffsets");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$stageFlags, LAYOUT$layout, LAYOUT$firstSet, LAYOUT$descriptorSetCount, LAYOUT$pDescriptorSets, LAYOUT$dynamicOffsetCount, LAYOUT$pDynamicOffsets);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkBindDescriptorSetsInfo {
+        sType(VkStructureType.BIND_DESCRIPTOR_SETS_INFO);
+    }
 
     public static VkBindDescriptorSetsInfo allocate(Arena arena) {
         return new VkBindDescriptorSetsInfo(arena.allocate(LAYOUT));
@@ -57,6 +59,19 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("stageFlags"),
+        ValueLayout.ADDRESS.withName("layout"),
+        ValueLayout.JAVA_INT.withName("firstSet"),
+        ValueLayout.JAVA_INT.withName("descriptorSetCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pDescriptorSets"),
+        ValueLayout.JAVA_INT.withName("dynamicOffsetCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDynamicOffsets")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$stageFlags = PathElement.groupElement("PATH$stageFlags");
@@ -66,6 +81,16 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
     public static final PathElement PATH$pDescriptorSets = PathElement.groupElement("PATH$pDescriptorSets");
     public static final PathElement PATH$dynamicOffsetCount = PathElement.groupElement("PATH$dynamicOffsetCount");
     public static final PathElement PATH$pDynamicOffsets = PathElement.groupElement("PATH$pDynamicOffsets");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$stageFlags = (OfInt) LAYOUT.select(PATH$stageFlags);
+    public static final AddressLayout LAYOUT$layout = (AddressLayout) LAYOUT.select(PATH$layout);
+    public static final OfInt LAYOUT$firstSet = (OfInt) LAYOUT.select(PATH$firstSet);
+    public static final OfInt LAYOUT$descriptorSetCount = (OfInt) LAYOUT.select(PATH$descriptorSetCount);
+    public static final AddressLayout LAYOUT$pDescriptorSets = (AddressLayout) LAYOUT.select(PATH$pDescriptorSets);
+    public static final OfInt LAYOUT$dynamicOffsetCount = (OfInt) LAYOUT.select(PATH$dynamicOffsetCount);
+    public static final AddressLayout LAYOUT$pDynamicOffsets = (AddressLayout) LAYOUT.select(PATH$pDynamicOffsets);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

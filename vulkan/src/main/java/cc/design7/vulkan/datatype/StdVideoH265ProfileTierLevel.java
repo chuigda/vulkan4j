@@ -14,15 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoH265ProfileTierLevel} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoH265ProfileTierLevel(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoH265ProfileTierLevelFlags.LAYOUT.withName("flags");
-    public static final OfInt LAYOUT$general_profile_idc = ValueLayout.JAVA_INT.withName("general_profile_idc");
-    public static final OfInt LAYOUT$general_level_idc = ValueLayout.JAVA_INT.withName("general_level_idc");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$general_profile_idc, LAYOUT$general_level_idc);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoH265ProfileTierLevel allocate(Arena arena) {
         return new StdVideoH265ProfileTierLevel(arena.allocate(LAYOUT));
     }
@@ -50,9 +53,20 @@ public record StdVideoH265ProfileTierLevel(@NotNull MemorySegment segment) imple
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoH265ProfileTierLevelFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("general_profile_idc"),
+        ValueLayout.JAVA_INT.withName("general_level_idc")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$general_profile_idc = PathElement.groupElement("PATH$general_profile_idc");
     public static final PathElement PATH$general_level_idc = PathElement.groupElement("PATH$general_level_idc");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$general_profile_idc = (OfInt) LAYOUT.select(PATH$general_profile_idc);
+    public static final OfInt LAYOUT$general_level_idc = (OfInt) LAYOUT.select(PATH$general_level_idc);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$general_profile_idc = LAYOUT$general_profile_idc.byteSize();

@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeH264SessionParametersGetInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264SessionParametersGetInfoKHR.html">VkVideoEncodeH264SessionParametersGetInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeH264SessionParametersGetInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$writeStdSPS = ValueLayout.JAVA_INT.withName("writeStdSPS");
-    public static final OfInt LAYOUT$writeStdPPS = ValueLayout.JAVA_INT.withName("writeStdPPS");
-    public static final OfInt LAYOUT$stdSPSId = ValueLayout.JAVA_INT.withName("stdSPSId");
-    public static final OfInt LAYOUT$stdPPSId = ValueLayout.JAVA_INT.withName("stdPPSId");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$writeStdSPS, LAYOUT$writeStdPPS, LAYOUT$stdSPSId, LAYOUT$stdPPSId);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoEncodeH264SessionParametersGetInfoKHR {
+        sType(VkStructureType.VIDEO_ENCODE_H264_SESSION_PARAMETERS_GET_INFO_KHR);
+    }
 
     public static VkVideoEncodeH264SessionParametersGetInfoKHR allocate(Arena arena) {
         return new VkVideoEncodeH264SessionParametersGetInfoKHR(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkVideoEncodeH264SessionParametersGetInfoKHR(@NotNull MemorySegmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("writeStdSPS"),
+        ValueLayout.JAVA_INT.withName("writeStdPPS"),
+        ValueLayout.JAVA_INT.withName("stdSPSId"),
+        ValueLayout.JAVA_INT.withName("stdPPSId")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$writeStdSPS = PathElement.groupElement("PATH$writeStdSPS");
     public static final PathElement PATH$writeStdPPS = PathElement.groupElement("PATH$writeStdPPS");
     public static final PathElement PATH$stdSPSId = PathElement.groupElement("PATH$stdSPSId");
     public static final PathElement PATH$stdPPSId = PathElement.groupElement("PATH$stdPPSId");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$writeStdSPS = (OfInt) LAYOUT.select(PATH$writeStdSPS);
+    public static final OfInt LAYOUT$writeStdPPS = (OfInt) LAYOUT.select(PATH$writeStdPPS);
+    public static final OfInt LAYOUT$stdSPSId = (OfInt) LAYOUT.select(PATH$stdSPSId);
+    public static final OfInt LAYOUT$stdPPSId = (OfInt) LAYOUT.select(PATH$stdPPSId);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

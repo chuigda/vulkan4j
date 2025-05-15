@@ -14,21 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceShaderEnqueuePropertiesAMDX} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderEnqueuePropertiesAMDX.html">VkPhysicalDeviceShaderEnqueuePropertiesAMDX</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$maxExecutionGraphDepth = ValueLayout.JAVA_INT.withName("maxExecutionGraphDepth");
-    public static final OfInt LAYOUT$maxExecutionGraphShaderOutputNodes = ValueLayout.JAVA_INT.withName("maxExecutionGraphShaderOutputNodes");
-    public static final OfInt LAYOUT$maxExecutionGraphShaderPayloadSize = ValueLayout.JAVA_INT.withName("maxExecutionGraphShaderPayloadSize");
-    public static final OfInt LAYOUT$maxExecutionGraphShaderPayloadCount = ValueLayout.JAVA_INT.withName("maxExecutionGraphShaderPayloadCount");
-    public static final OfInt LAYOUT$executionGraphDispatchAddressAlignment = ValueLayout.JAVA_INT.withName("executionGraphDispatchAddressAlignment");
-    public static final OfInt LAYOUT$maxExecutionGraphWorkgroupCount = ValueLayout.JAVA_INT.withName("maxExecutionGraphWorkgroupCount");
-    public static final OfInt LAYOUT$maxExecutionGraphWorkgroups = ValueLayout.JAVA_INT.withName("maxExecutionGraphWorkgroups");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$maxExecutionGraphDepth, LAYOUT$maxExecutionGraphShaderOutputNodes, LAYOUT$maxExecutionGraphShaderPayloadSize, LAYOUT$maxExecutionGraphShaderPayloadCount, LAYOUT$executionGraphDispatchAddressAlignment, LAYOUT$maxExecutionGraphWorkgroupCount, LAYOUT$maxExecutionGraphWorkgroups);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX {
+        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX);
+    }
 
     public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX allocate(Arena arena) {
         return new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(arena.allocate(LAYOUT));
@@ -57,6 +59,19 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maxExecutionGraphDepth"),
+        ValueLayout.JAVA_INT.withName("maxExecutionGraphShaderOutputNodes"),
+        ValueLayout.JAVA_INT.withName("maxExecutionGraphShaderPayloadSize"),
+        ValueLayout.JAVA_INT.withName("maxExecutionGraphShaderPayloadCount"),
+        ValueLayout.JAVA_INT.withName("executionGraphDispatchAddressAlignment"),
+        ValueLayout.JAVA_INT.withName("maxExecutionGraphWorkgroupCount"),
+        ValueLayout.JAVA_INT.withName("maxExecutionGraphWorkgroups")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$maxExecutionGraphDepth = PathElement.groupElement("PATH$maxExecutionGraphDepth");
@@ -66,6 +81,16 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
     public static final PathElement PATH$executionGraphDispatchAddressAlignment = PathElement.groupElement("PATH$executionGraphDispatchAddressAlignment");
     public static final PathElement PATH$maxExecutionGraphWorkgroupCount = PathElement.groupElement("PATH$maxExecutionGraphWorkgroupCount");
     public static final PathElement PATH$maxExecutionGraphWorkgroups = PathElement.groupElement("PATH$maxExecutionGraphWorkgroups");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maxExecutionGraphDepth = (OfInt) LAYOUT.select(PATH$maxExecutionGraphDepth);
+    public static final OfInt LAYOUT$maxExecutionGraphShaderOutputNodes = (OfInt) LAYOUT.select(PATH$maxExecutionGraphShaderOutputNodes);
+    public static final OfInt LAYOUT$maxExecutionGraphShaderPayloadSize = (OfInt) LAYOUT.select(PATH$maxExecutionGraphShaderPayloadSize);
+    public static final OfInt LAYOUT$maxExecutionGraphShaderPayloadCount = (OfInt) LAYOUT.select(PATH$maxExecutionGraphShaderPayloadCount);
+    public static final OfInt LAYOUT$executionGraphDispatchAddressAlignment = (OfInt) LAYOUT.select(PATH$executionGraphDispatchAddressAlignment);
+    public static final OfInt LAYOUT$maxExecutionGraphWorkgroupCount = (OfInt) LAYOUT.select(PATH$maxExecutionGraphWorkgroupCount);
+    public static final OfInt LAYOUT$maxExecutionGraphWorkgroups = (OfInt) LAYOUT.select(PATH$maxExecutionGraphWorkgroups);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,15 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoH265DecPicBufMgr} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$max_latency_increase_plus1 = ValueLayout.JAVA_INT.withName("max_latency_increase_plus1");
-    public static final OfByte LAYOUT$max_dec_pic_buffering_minus1 = ValueLayout.JAVA_BYTE.withName("max_dec_pic_buffering_minus1");
-    public static final OfByte LAYOUT$max_num_reorder_pics = ValueLayout.JAVA_BYTE.withName("max_num_reorder_pics");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$max_latency_increase_plus1, LAYOUT$max_dec_pic_buffering_minus1, LAYOUT$max_num_reorder_pics);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoH265DecPicBufMgr allocate(Arena arena) {
         return new StdVideoH265DecPicBufMgr(arena.allocate(LAYOUT));
     }
@@ -50,9 +53,20 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("max_latency_increase_plus1"),
+        ValueLayout.JAVA_BYTE.withName("max_dec_pic_buffering_minus1"),
+        ValueLayout.JAVA_BYTE.withName("max_num_reorder_pics")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$max_latency_increase_plus1 = PathElement.groupElement("PATH$max_latency_increase_plus1");
     public static final PathElement PATH$max_dec_pic_buffering_minus1 = PathElement.groupElement("PATH$max_dec_pic_buffering_minus1");
     public static final PathElement PATH$max_num_reorder_pics = PathElement.groupElement("PATH$max_num_reorder_pics");
+
+    public static final OfInt LAYOUT$max_latency_increase_plus1 = (OfInt) LAYOUT.select(PATH$max_latency_increase_plus1);
+    public static final OfByte LAYOUT$max_dec_pic_buffering_minus1 = (OfByte) LAYOUT.select(PATH$max_dec_pic_buffering_minus1);
+    public static final OfByte LAYOUT$max_num_reorder_pics = (OfByte) LAYOUT.select(PATH$max_num_reorder_pics);
 
     public static final long SIZE$max_latency_increase_plus1 = LAYOUT$max_latency_increase_plus1.byteSize();
     public static final long SIZE$max_dec_pic_buffering_minus1 = LAYOUT$max_dec_pic_buffering_minus1.byteSize();

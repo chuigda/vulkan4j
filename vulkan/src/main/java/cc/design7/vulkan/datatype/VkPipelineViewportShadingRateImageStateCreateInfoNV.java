@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPipelineViewportShadingRateImageStateCreateInfoNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineViewportShadingRateImageStateCreateInfoNV.html">VkPipelineViewportShadingRateImageStateCreateInfoNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$shadingRateImageEnable = ValueLayout.JAVA_INT.withName("shadingRateImageEnable");
-    public static final OfInt LAYOUT$viewportCount = ValueLayout.JAVA_INT.withName("viewportCount");
-    public static final AddressLayout LAYOUT$pShadingRatePalettes = ValueLayout.ADDRESS.withTargetLayout(VkShadingRatePaletteNV.LAYOUT).withName("pShadingRatePalettes");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$shadingRateImageEnable, LAYOUT$viewportCount, LAYOUT$pShadingRatePalettes);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPipelineViewportShadingRateImageStateCreateInfoNV {
+        sType(VkStructureType.PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV);
+    }
 
     public static VkPipelineViewportShadingRateImageStateCreateInfoNV allocate(Arena arena) {
         return new VkPipelineViewportShadingRateImageStateCreateInfoNV(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("shadingRateImageEnable"),
+        ValueLayout.JAVA_INT.withName("viewportCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkShadingRatePaletteNV.LAYOUT).withName("pShadingRatePalettes")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$shadingRateImageEnable = PathElement.groupElement("PATH$shadingRateImageEnable");
     public static final PathElement PATH$viewportCount = PathElement.groupElement("PATH$viewportCount");
     public static final PathElement PATH$pShadingRatePalettes = PathElement.groupElement("PATH$pShadingRatePalettes");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$shadingRateImageEnable = (OfInt) LAYOUT.select(PATH$shadingRateImageEnable);
+    public static final OfInt LAYOUT$viewportCount = (OfInt) LAYOUT.select(PATH$viewportCount);
+    public static final AddressLayout LAYOUT$pShadingRatePalettes = (AddressLayout) LAYOUT.select(PATH$pShadingRatePalettes);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

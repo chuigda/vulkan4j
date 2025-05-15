@@ -14,19 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkColorBlendEquationEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkColorBlendEquationEXT.html">VkColorBlendEquationEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkColorBlendEquationEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$srcColorBlendFactor = ValueLayout.JAVA_INT.withName("srcColorBlendFactor");
-    public static final OfInt LAYOUT$dstColorBlendFactor = ValueLayout.JAVA_INT.withName("dstColorBlendFactor");
-    public static final OfInt LAYOUT$colorBlendOp = ValueLayout.JAVA_INT.withName("colorBlendOp");
-    public static final OfInt LAYOUT$srcAlphaBlendFactor = ValueLayout.JAVA_INT.withName("srcAlphaBlendFactor");
-    public static final OfInt LAYOUT$dstAlphaBlendFactor = ValueLayout.JAVA_INT.withName("dstAlphaBlendFactor");
-    public static final OfInt LAYOUT$alphaBlendOp = ValueLayout.JAVA_INT.withName("alphaBlendOp");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$srcColorBlendFactor, LAYOUT$dstColorBlendFactor, LAYOUT$colorBlendOp, LAYOUT$srcAlphaBlendFactor, LAYOUT$dstAlphaBlendFactor, LAYOUT$alphaBlendOp);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkColorBlendEquationEXT allocate(Arena arena) {
         return new VkColorBlendEquationEXT(arena.allocate(LAYOUT));
     }
@@ -54,12 +55,29 @@ public record VkColorBlendEquationEXT(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("srcColorBlendFactor"),
+        ValueLayout.JAVA_INT.withName("dstColorBlendFactor"),
+        ValueLayout.JAVA_INT.withName("colorBlendOp"),
+        ValueLayout.JAVA_INT.withName("srcAlphaBlendFactor"),
+        ValueLayout.JAVA_INT.withName("dstAlphaBlendFactor"),
+        ValueLayout.JAVA_INT.withName("alphaBlendOp")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$srcColorBlendFactor = PathElement.groupElement("PATH$srcColorBlendFactor");
     public static final PathElement PATH$dstColorBlendFactor = PathElement.groupElement("PATH$dstColorBlendFactor");
     public static final PathElement PATH$colorBlendOp = PathElement.groupElement("PATH$colorBlendOp");
     public static final PathElement PATH$srcAlphaBlendFactor = PathElement.groupElement("PATH$srcAlphaBlendFactor");
     public static final PathElement PATH$dstAlphaBlendFactor = PathElement.groupElement("PATH$dstAlphaBlendFactor");
     public static final PathElement PATH$alphaBlendOp = PathElement.groupElement("PATH$alphaBlendOp");
+
+    public static final OfInt LAYOUT$srcColorBlendFactor = (OfInt) LAYOUT.select(PATH$srcColorBlendFactor);
+    public static final OfInt LAYOUT$dstColorBlendFactor = (OfInt) LAYOUT.select(PATH$dstColorBlendFactor);
+    public static final OfInt LAYOUT$colorBlendOp = (OfInt) LAYOUT.select(PATH$colorBlendOp);
+    public static final OfInt LAYOUT$srcAlphaBlendFactor = (OfInt) LAYOUT.select(PATH$srcAlphaBlendFactor);
+    public static final OfInt LAYOUT$dstAlphaBlendFactor = (OfInt) LAYOUT.select(PATH$dstAlphaBlendFactor);
+    public static final OfInt LAYOUT$alphaBlendOp = (OfInt) LAYOUT.select(PATH$alphaBlendOp);
 
     public static final long SIZE$srcColorBlendFactor = LAYOUT$srcColorBlendFactor.byteSize();
     public static final long SIZE$dstColorBlendFactor = LAYOUT$dstColorBlendFactor.byteSize();

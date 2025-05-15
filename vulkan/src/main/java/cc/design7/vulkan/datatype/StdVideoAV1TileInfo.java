@@ -14,22 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoAV1TileInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoAV1TileInfoFlags.LAYOUT.withName("flags");
-    public static final OfByte LAYOUT$TileCols = ValueLayout.JAVA_BYTE.withName("TileCols");
-    public static final OfByte LAYOUT$TileRows = ValueLayout.JAVA_BYTE.withName("TileRows");
-    public static final OfShort LAYOUT$context_update_tile_id = ValueLayout.JAVA_SHORT.withName("context_update_tile_id");
-    public static final OfByte LAYOUT$tile_size_bytes_minus_1 = ValueLayout.JAVA_BYTE.withName("tile_size_bytes_minus_1");
-    public static final OfByte LAYOUT$reserved1 = ValueLayout.JAVA_BYTE.withName("reserved1");
-    public static final AddressLayout LAYOUT$pMiColStarts = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pMiColStarts");
-    public static final AddressLayout LAYOUT$pMiRowStarts = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pMiRowStarts");
-    public static final AddressLayout LAYOUT$pWidthInSbsMinus1 = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pWidthInSbsMinus1");
-    public static final AddressLayout LAYOUT$pHeightInSbsMinus1 = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pHeightInSbsMinus1");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$TileCols, LAYOUT$TileRows, LAYOUT$context_update_tile_id, LAYOUT$tile_size_bytes_minus_1, LAYOUT$reserved1, LAYOUT$pMiColStarts, LAYOUT$pMiRowStarts, LAYOUT$pWidthInSbsMinus1, LAYOUT$pHeightInSbsMinus1);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoAV1TileInfo allocate(Arena arena) {
         return new StdVideoAV1TileInfo(arena.allocate(LAYOUT));
     }
@@ -57,6 +53,20 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoAV1TileInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("TileCols"),
+        ValueLayout.JAVA_BYTE.withName("TileRows"),
+        ValueLayout.JAVA_SHORT.withName("context_update_tile_id"),
+        ValueLayout.JAVA_BYTE.withName("tile_size_bytes_minus_1"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pMiColStarts"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pMiRowStarts"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pWidthInSbsMinus1"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pHeightInSbsMinus1")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$TileCols = PathElement.groupElement("PATH$TileCols");
     public static final PathElement PATH$TileRows = PathElement.groupElement("PATH$TileRows");
@@ -67,6 +77,17 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
     public static final PathElement PATH$pMiRowStarts = PathElement.groupElement("PATH$pMiRowStarts");
     public static final PathElement PATH$pWidthInSbsMinus1 = PathElement.groupElement("PATH$pWidthInSbsMinus1");
     public static final PathElement PATH$pHeightInSbsMinus1 = PathElement.groupElement("PATH$pHeightInSbsMinus1");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$TileCols = (OfByte) LAYOUT.select(PATH$TileCols);
+    public static final OfByte LAYOUT$TileRows = (OfByte) LAYOUT.select(PATH$TileRows);
+    public static final OfShort LAYOUT$context_update_tile_id = (OfShort) LAYOUT.select(PATH$context_update_tile_id);
+    public static final OfByte LAYOUT$tile_size_bytes_minus_1 = (OfByte) LAYOUT.select(PATH$tile_size_bytes_minus_1);
+    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
+    public static final AddressLayout LAYOUT$pMiColStarts = (AddressLayout) LAYOUT.select(PATH$pMiColStarts);
+    public static final AddressLayout LAYOUT$pMiRowStarts = (AddressLayout) LAYOUT.select(PATH$pMiRowStarts);
+    public static final AddressLayout LAYOUT$pWidthInSbsMinus1 = (AddressLayout) LAYOUT.select(PATH$pWidthInSbsMinus1);
+    public static final AddressLayout LAYOUT$pHeightInSbsMinus1 = (AddressLayout) LAYOUT.select(PATH$pHeightInSbsMinus1);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$TileCols = LAYOUT$TileCols.byteSize();

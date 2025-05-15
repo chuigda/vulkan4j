@@ -14,19 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkApplicationInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkApplicationInfo.html">VkApplicationInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkApplicationInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$pApplicationName = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pApplicationName");
-    public static final OfInt LAYOUT$applicationVersion = ValueLayout.JAVA_INT.withName("applicationVersion");
-    public static final AddressLayout LAYOUT$pEngineName = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pEngineName");
-    public static final OfInt LAYOUT$engineVersion = ValueLayout.JAVA_INT.withName("engineVersion");
-    public static final OfInt LAYOUT$apiVersion = ValueLayout.JAVA_INT.withName("apiVersion");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$pApplicationName, LAYOUT$applicationVersion, LAYOUT$pEngineName, LAYOUT$engineVersion, LAYOUT$apiVersion);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkApplicationInfo {
+        sType(VkStructureType.APPLICATION_INFO);
+    }
 
     public static VkApplicationInfo allocate(Arena arena) {
         return new VkApplicationInfo(arena.allocate(LAYOUT));
@@ -55,6 +59,17 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IPoin
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pApplicationName"),
+        ValueLayout.JAVA_INT.withName("applicationVersion"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pEngineName"),
+        ValueLayout.JAVA_INT.withName("engineVersion"),
+        ValueLayout.JAVA_INT.withName("apiVersion")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$pApplicationName = PathElement.groupElement("PATH$pApplicationName");
@@ -62,6 +77,14 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IPoin
     public static final PathElement PATH$pEngineName = PathElement.groupElement("PATH$pEngineName");
     public static final PathElement PATH$engineVersion = PathElement.groupElement("PATH$engineVersion");
     public static final PathElement PATH$apiVersion = PathElement.groupElement("PATH$apiVersion");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$pApplicationName = (AddressLayout) LAYOUT.select(PATH$pApplicationName);
+    public static final OfInt LAYOUT$applicationVersion = (OfInt) LAYOUT.select(PATH$applicationVersion);
+    public static final AddressLayout LAYOUT$pEngineName = (AddressLayout) LAYOUT.select(PATH$pEngineName);
+    public static final OfInt LAYOUT$engineVersion = (OfInt) LAYOUT.select(PATH$engineVersion);
+    public static final OfInt LAYOUT$apiVersion = (OfInt) LAYOUT.select(PATH$apiVersion);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

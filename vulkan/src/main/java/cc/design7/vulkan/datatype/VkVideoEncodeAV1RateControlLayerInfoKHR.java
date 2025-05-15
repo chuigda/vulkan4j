@@ -14,20 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeAV1RateControlLayerInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1RateControlLayerInfoKHR.html">VkVideoEncodeAV1RateControlLayerInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeAV1RateControlLayerInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$useMinQIndex = ValueLayout.JAVA_INT.withName("useMinQIndex");
-    public static final StructLayout LAYOUT$minQIndex = VkVideoEncodeAV1QIndexKHR.LAYOUT.withName("minQIndex");
-    public static final OfInt LAYOUT$useMaxQIndex = ValueLayout.JAVA_INT.withName("useMaxQIndex");
-    public static final StructLayout LAYOUT$maxQIndex = VkVideoEncodeAV1QIndexKHR.LAYOUT.withName("maxQIndex");
-    public static final OfInt LAYOUT$useMaxFrameSize = ValueLayout.JAVA_INT.withName("useMaxFrameSize");
-    public static final StructLayout LAYOUT$maxFrameSize = VkVideoEncodeAV1FrameSizeKHR.LAYOUT.withName("maxFrameSize");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$useMinQIndex, LAYOUT$minQIndex, LAYOUT$useMaxQIndex, LAYOUT$maxQIndex, LAYOUT$useMaxFrameSize, LAYOUT$maxFrameSize);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoEncodeAV1RateControlLayerInfoKHR {
+        sType(VkStructureType.VIDEO_ENCODE_AV1_RATE_CONTROL_LAYER_INFO_KHR);
+    }
 
     public static VkVideoEncodeAV1RateControlLayerInfoKHR allocate(Arena arena) {
         return new VkVideoEncodeAV1RateControlLayerInfoKHR(arena.allocate(LAYOUT));
@@ -56,6 +59,18 @@ public record VkVideoEncodeAV1RateControlLayerInfoKHR(@NotNull MemorySegment seg
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("useMinQIndex"),
+        VkVideoEncodeAV1QIndexKHR.LAYOUT.withName("minQIndex"),
+        ValueLayout.JAVA_INT.withName("useMaxQIndex"),
+        VkVideoEncodeAV1QIndexKHR.LAYOUT.withName("maxQIndex"),
+        ValueLayout.JAVA_INT.withName("useMaxFrameSize"),
+        VkVideoEncodeAV1FrameSizeKHR.LAYOUT.withName("maxFrameSize")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$useMinQIndex = PathElement.groupElement("PATH$useMinQIndex");
@@ -64,6 +79,15 @@ public record VkVideoEncodeAV1RateControlLayerInfoKHR(@NotNull MemorySegment seg
     public static final PathElement PATH$maxQIndex = PathElement.groupElement("PATH$maxQIndex");
     public static final PathElement PATH$useMaxFrameSize = PathElement.groupElement("PATH$useMaxFrameSize");
     public static final PathElement PATH$maxFrameSize = PathElement.groupElement("PATH$maxFrameSize");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$useMinQIndex = (OfInt) LAYOUT.select(PATH$useMinQIndex);
+    public static final StructLayout LAYOUT$minQIndex = (StructLayout) LAYOUT.select(PATH$minQIndex);
+    public static final OfInt LAYOUT$useMaxQIndex = (OfInt) LAYOUT.select(PATH$useMaxQIndex);
+    public static final StructLayout LAYOUT$maxQIndex = (StructLayout) LAYOUT.select(PATH$maxQIndex);
+    public static final OfInt LAYOUT$useMaxFrameSize = (OfInt) LAYOUT.select(PATH$useMaxFrameSize);
+    public static final StructLayout LAYOUT$maxFrameSize = (StructLayout) LAYOUT.select(PATH$maxFrameSize);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

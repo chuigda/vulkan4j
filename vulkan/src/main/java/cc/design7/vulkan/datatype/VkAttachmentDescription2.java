@@ -14,23 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkAttachmentDescription2} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentDescription2.html">VkAttachmentDescription2</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkAttachmentDescription2(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$format = ValueLayout.JAVA_INT.withName("format");
-    public static final OfInt LAYOUT$samples = ValueLayout.JAVA_INT.withName("samples");
-    public static final OfInt LAYOUT$loadOp = ValueLayout.JAVA_INT.withName("loadOp");
-    public static final OfInt LAYOUT$storeOp = ValueLayout.JAVA_INT.withName("storeOp");
-    public static final OfInt LAYOUT$stencilLoadOp = ValueLayout.JAVA_INT.withName("stencilLoadOp");
-    public static final OfInt LAYOUT$stencilStoreOp = ValueLayout.JAVA_INT.withName("stencilStoreOp");
-    public static final OfInt LAYOUT$initialLayout = ValueLayout.JAVA_INT.withName("initialLayout");
-    public static final OfInt LAYOUT$finalLayout = ValueLayout.JAVA_INT.withName("finalLayout");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$format, LAYOUT$samples, LAYOUT$loadOp, LAYOUT$storeOp, LAYOUT$stencilLoadOp, LAYOUT$stencilStoreOp, LAYOUT$initialLayout, LAYOUT$finalLayout);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkAttachmentDescription2 {
+        sType(VkStructureType.ATTACHMENT_DESCRIPTION_2);
+    }
 
     public static VkAttachmentDescription2 allocate(Arena arena) {
         return new VkAttachmentDescription2(arena.allocate(LAYOUT));
@@ -59,6 +59,21 @@ public record VkAttachmentDescription2(@NotNull MemorySegment segment) implement
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("format"),
+        ValueLayout.JAVA_INT.withName("samples"),
+        ValueLayout.JAVA_INT.withName("loadOp"),
+        ValueLayout.JAVA_INT.withName("storeOp"),
+        ValueLayout.JAVA_INT.withName("stencilLoadOp"),
+        ValueLayout.JAVA_INT.withName("stencilStoreOp"),
+        ValueLayout.JAVA_INT.withName("initialLayout"),
+        ValueLayout.JAVA_INT.withName("finalLayout")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -70,6 +85,18 @@ public record VkAttachmentDescription2(@NotNull MemorySegment segment) implement
     public static final PathElement PATH$stencilStoreOp = PathElement.groupElement("PATH$stencilStoreOp");
     public static final PathElement PATH$initialLayout = PathElement.groupElement("PATH$initialLayout");
     public static final PathElement PATH$finalLayout = PathElement.groupElement("PATH$finalLayout");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
+    public static final OfInt LAYOUT$samples = (OfInt) LAYOUT.select(PATH$samples);
+    public static final OfInt LAYOUT$loadOp = (OfInt) LAYOUT.select(PATH$loadOp);
+    public static final OfInt LAYOUT$storeOp = (OfInt) LAYOUT.select(PATH$storeOp);
+    public static final OfInt LAYOUT$stencilLoadOp = (OfInt) LAYOUT.select(PATH$stencilLoadOp);
+    public static final OfInt LAYOUT$stencilStoreOp = (OfInt) LAYOUT.select(PATH$stencilStoreOp);
+    public static final OfInt LAYOUT$initialLayout = (OfInt) LAYOUT.select(PATH$initialLayout);
+    public static final OfInt LAYOUT$finalLayout = (OfInt) LAYOUT.select(PATH$finalLayout);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

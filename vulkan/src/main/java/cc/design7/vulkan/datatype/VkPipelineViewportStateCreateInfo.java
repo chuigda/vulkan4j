@@ -14,19 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPipelineViewportStateCreateInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineViewportStateCreateInfo.html">VkPipelineViewportStateCreateInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$viewportCount = ValueLayout.JAVA_INT.withName("viewportCount");
-    public static final AddressLayout LAYOUT$pViewports = ValueLayout.ADDRESS.withTargetLayout(VkViewport.LAYOUT).withName("pViewports");
-    public static final OfInt LAYOUT$scissorCount = ValueLayout.JAVA_INT.withName("scissorCount");
-    public static final AddressLayout LAYOUT$pScissors = ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pScissors");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$viewportCount, LAYOUT$pViewports, LAYOUT$scissorCount, LAYOUT$pScissors);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPipelineViewportStateCreateInfo {
+        sType(VkStructureType.PIPELINE_VIEWPORT_STATE_CREATE_INFO);
+    }
 
     public static VkPipelineViewportStateCreateInfo allocate(Arena arena) {
         return new VkPipelineViewportStateCreateInfo(arena.allocate(LAYOUT));
@@ -55,6 +59,17 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("viewportCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkViewport.LAYOUT).withName("pViewports"),
+        ValueLayout.JAVA_INT.withName("scissorCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pScissors")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -62,6 +77,14 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
     public static final PathElement PATH$pViewports = PathElement.groupElement("PATH$pViewports");
     public static final PathElement PATH$scissorCount = PathElement.groupElement("PATH$scissorCount");
     public static final PathElement PATH$pScissors = PathElement.groupElement("PATH$pScissors");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$viewportCount = (OfInt) LAYOUT.select(PATH$viewportCount);
+    public static final AddressLayout LAYOUT$pViewports = (AddressLayout) LAYOUT.select(PATH$pViewports);
+    public static final OfInt LAYOUT$scissorCount = (OfInt) LAYOUT.select(PATH$scissorCount);
+    public static final AddressLayout LAYOUT$pScissors = (AddressLayout) LAYOUT.select(PATH$pScissors);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

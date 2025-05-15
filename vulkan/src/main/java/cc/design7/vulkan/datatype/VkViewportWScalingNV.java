@@ -14,15 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkViewportWScalingNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkViewportWScalingNV.html">VkViewportWScalingNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkViewportWScalingNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfFloat LAYOUT$xcoeff = ValueLayout.JAVA_FLOAT.withName("xcoeff");
-    public static final OfFloat LAYOUT$ycoeff = ValueLayout.JAVA_FLOAT.withName("ycoeff");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$xcoeff, LAYOUT$ycoeff);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkViewportWScalingNV allocate(Arena arena) {
         return new VkViewportWScalingNV(arena.allocate(LAYOUT));
     }
@@ -50,8 +55,17 @@ public record VkViewportWScalingNV(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_FLOAT.withName("xcoeff"),
+        ValueLayout.JAVA_FLOAT.withName("ycoeff")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$xcoeff = PathElement.groupElement("PATH$xcoeff");
     public static final PathElement PATH$ycoeff = PathElement.groupElement("PATH$ycoeff");
+
+    public static final OfFloat LAYOUT$xcoeff = (OfFloat) LAYOUT.select(PATH$xcoeff);
+    public static final OfFloat LAYOUT$ycoeff = (OfFloat) LAYOUT.select(PATH$ycoeff);
 
     public static final long SIZE$xcoeff = LAYOUT$xcoeff.byteSize();
     public static final long SIZE$ycoeff = LAYOUT$ycoeff.byteSize();

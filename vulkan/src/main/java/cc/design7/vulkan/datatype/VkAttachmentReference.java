@@ -14,15 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkAttachmentReference} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentReference.html">VkAttachmentReference</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkAttachmentReference(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$attachment = ValueLayout.JAVA_INT.withName("attachment");
-    public static final OfInt LAYOUT$layout = ValueLayout.JAVA_INT.withName("layout");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$attachment, LAYOUT$layout);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkAttachmentReference allocate(Arena arena) {
         return new VkAttachmentReference(arena.allocate(LAYOUT));
     }
@@ -50,8 +55,17 @@ public record VkAttachmentReference(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("attachment"),
+        ValueLayout.JAVA_INT.withName("layout")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$attachment = PathElement.groupElement("PATH$attachment");
     public static final PathElement PATH$layout = PathElement.groupElement("PATH$layout");
+
+    public static final OfInt LAYOUT$attachment = (OfInt) LAYOUT.select(PATH$attachment);
+    public static final OfInt LAYOUT$layout = (OfInt) LAYOUT.select(PATH$layout);
 
     public static final long SIZE$attachment = LAYOUT$attachment.byteSize();
     public static final long SIZE$layout = LAYOUT$layout.byteSize();

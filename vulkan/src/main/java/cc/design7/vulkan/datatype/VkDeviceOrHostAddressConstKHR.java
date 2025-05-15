@@ -14,15 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDeviceOrHostAddressConstKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceOrHostAddressConstKHR.html">VkDeviceOrHostAddressConstKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDeviceOrHostAddressConstKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfLong LAYOUT$deviceAddress = ValueLayout.JAVA_LONG.withName("deviceAddress");
-    public static final AddressLayout LAYOUT$hostAddress = ValueLayout.ADDRESS.withName("hostAddress");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(LAYOUT$deviceAddress, LAYOUT$hostAddress);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkDeviceOrHostAddressConstKHR allocate(Arena arena) {
         return new VkDeviceOrHostAddressConstKHR(arena.allocate(LAYOUT));
     }
@@ -50,8 +55,17 @@ public record VkDeviceOrHostAddressConstKHR(@NotNull MemorySegment segment) impl
         return ret;
     }
 
+    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
+        ValueLayout.JAVA_LONG.withName("deviceAddress"),
+        ValueLayout.ADDRESS.withName("hostAddress")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$deviceAddress = PathElement.groupElement("PATH$deviceAddress");
     public static final PathElement PATH$hostAddress = PathElement.groupElement("PATH$hostAddress");
+
+    public static final OfLong LAYOUT$deviceAddress = (OfLong) LAYOUT.select(PATH$deviceAddress);
+    public static final AddressLayout LAYOUT$hostAddress = (AddressLayout) LAYOUT.select(PATH$hostAddress);
 
     public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
     public static final long SIZE$hostAddress = LAYOUT$hostAddress.byteSize();

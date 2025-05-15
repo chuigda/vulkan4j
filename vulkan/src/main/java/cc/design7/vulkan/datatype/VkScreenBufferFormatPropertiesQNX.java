@@ -14,23 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkScreenBufferFormatPropertiesQNX} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkScreenBufferFormatPropertiesQNX.html">VkScreenBufferFormatPropertiesQNX</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkScreenBufferFormatPropertiesQNX(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$format = ValueLayout.JAVA_INT.withName("format");
-    public static final OfLong LAYOUT$externalFormat = ValueLayout.JAVA_LONG.withName("externalFormat");
-    public static final OfLong LAYOUT$screenUsage = ValueLayout.JAVA_LONG.withName("screenUsage");
-    public static final OfInt LAYOUT$formatFeatures = ValueLayout.JAVA_INT.withName("formatFeatures");
-    public static final StructLayout LAYOUT$samplerYcbcrConversionComponents = VkComponentMapping.LAYOUT.withName("samplerYcbcrConversionComponents");
-    public static final OfInt LAYOUT$suggestedYcbcrModel = ValueLayout.JAVA_INT.withName("suggestedYcbcrModel");
-    public static final OfInt LAYOUT$suggestedYcbcrRange = ValueLayout.JAVA_INT.withName("suggestedYcbcrRange");
-    public static final OfInt LAYOUT$suggestedXChromaOffset = ValueLayout.JAVA_INT.withName("suggestedXChromaOffset");
-    public static final OfInt LAYOUT$suggestedYChromaOffset = ValueLayout.JAVA_INT.withName("suggestedYChromaOffset");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$format, LAYOUT$externalFormat, LAYOUT$screenUsage, LAYOUT$formatFeatures, LAYOUT$samplerYcbcrConversionComponents, LAYOUT$suggestedYcbcrModel, LAYOUT$suggestedYcbcrRange, LAYOUT$suggestedXChromaOffset, LAYOUT$suggestedYChromaOffset);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkScreenBufferFormatPropertiesQNX {
+        sType(VkStructureType.SCREEN_BUFFER_FORMAT_PROPERTIES_QNX);
+    }
 
     public static VkScreenBufferFormatPropertiesQNX allocate(Arena arena) {
         return new VkScreenBufferFormatPropertiesQNX(arena.allocate(LAYOUT));
@@ -59,6 +59,21 @@ public record VkScreenBufferFormatPropertiesQNX(@NotNull MemorySegment segment) 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("format"),
+        ValueLayout.JAVA_LONG.withName("externalFormat"),
+        ValueLayout.JAVA_LONG.withName("screenUsage"),
+        ValueLayout.JAVA_INT.withName("formatFeatures"),
+        VkComponentMapping.LAYOUT.withName("samplerYcbcrConversionComponents"),
+        ValueLayout.JAVA_INT.withName("suggestedYcbcrModel"),
+        ValueLayout.JAVA_INT.withName("suggestedYcbcrRange"),
+        ValueLayout.JAVA_INT.withName("suggestedXChromaOffset"),
+        ValueLayout.JAVA_INT.withName("suggestedYChromaOffset")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
@@ -70,6 +85,18 @@ public record VkScreenBufferFormatPropertiesQNX(@NotNull MemorySegment segment) 
     public static final PathElement PATH$suggestedYcbcrRange = PathElement.groupElement("PATH$suggestedYcbcrRange");
     public static final PathElement PATH$suggestedXChromaOffset = PathElement.groupElement("PATH$suggestedXChromaOffset");
     public static final PathElement PATH$suggestedYChromaOffset = PathElement.groupElement("PATH$suggestedYChromaOffset");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
+    public static final OfLong LAYOUT$externalFormat = (OfLong) LAYOUT.select(PATH$externalFormat);
+    public static final OfLong LAYOUT$screenUsage = (OfLong) LAYOUT.select(PATH$screenUsage);
+    public static final OfInt LAYOUT$formatFeatures = (OfInt) LAYOUT.select(PATH$formatFeatures);
+    public static final StructLayout LAYOUT$samplerYcbcrConversionComponents = (StructLayout) LAYOUT.select(PATH$samplerYcbcrConversionComponents);
+    public static final OfInt LAYOUT$suggestedYcbcrModel = (OfInt) LAYOUT.select(PATH$suggestedYcbcrModel);
+    public static final OfInt LAYOUT$suggestedYcbcrRange = (OfInt) LAYOUT.select(PATH$suggestedYcbcrRange);
+    public static final OfInt LAYOUT$suggestedXChromaOffset = (OfInt) LAYOUT.select(PATH$suggestedXChromaOffset);
+    public static final OfInt LAYOUT$suggestedYChromaOffset = (OfInt) LAYOUT.select(PATH$suggestedYChromaOffset);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

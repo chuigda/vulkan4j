@@ -14,24 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoEncodeH264ReferenceListsInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoEncodeH264ReferenceListsInfoFlags.LAYOUT.withName("flags");
-    public static final OfByte LAYOUT$num_ref_idx_l0_active_minus1 = ValueLayout.JAVA_BYTE.withName("num_ref_idx_l0_active_minus1");
-    public static final OfByte LAYOUT$num_ref_idx_l1_active_minus1 = ValueLayout.JAVA_BYTE.withName("num_ref_idx_l1_active_minus1");
-    public static final OfByte LAYOUT$RefPicList0 = ValueLayout.JAVA_BYTE.withName("RefPicList0");
-    public static final OfByte LAYOUT$RefPicList1 = ValueLayout.JAVA_BYTE.withName("RefPicList1");
-    public static final OfByte LAYOUT$refList0ModOpCount = ValueLayout.JAVA_BYTE.withName("refList0ModOpCount");
-    public static final OfByte LAYOUT$refList1ModOpCount = ValueLayout.JAVA_BYTE.withName("refList1ModOpCount");
-    public static final OfByte LAYOUT$refPicMarkingOpCount = ValueLayout.JAVA_BYTE.withName("refPicMarkingOpCount");
-    public static final OfByte LAYOUT$reserved1 = ValueLayout.JAVA_BYTE.withName("reserved1");
-    public static final AddressLayout LAYOUT$pRefList0ModOperations = ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264RefListModEntry.LAYOUT).withName("pRefList0ModOperations");
-    public static final AddressLayout LAYOUT$pRefList1ModOperations = ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264RefListModEntry.LAYOUT).withName("pRefList1ModOperations");
-    public static final AddressLayout LAYOUT$pRefPicMarkingOperations = ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264RefPicMarkingEntry.LAYOUT).withName("pRefPicMarkingOperations");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$num_ref_idx_l0_active_minus1, LAYOUT$num_ref_idx_l1_active_minus1, LAYOUT$RefPicList0, LAYOUT$RefPicList1, LAYOUT$refList0ModOpCount, LAYOUT$refList1ModOpCount, LAYOUT$refPicMarkingOpCount, LAYOUT$reserved1, LAYOUT$pRefList0ModOperations, LAYOUT$pRefList1ModOperations, LAYOUT$pRefPicMarkingOperations);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoEncodeH264ReferenceListsInfo allocate(Arena arena) {
         return new StdVideoEncodeH264ReferenceListsInfo(arena.allocate(LAYOUT));
     }
@@ -59,6 +53,22 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoEncodeH264ReferenceListsInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("num_ref_idx_l0_active_minus1"),
+        ValueLayout.JAVA_BYTE.withName("num_ref_idx_l1_active_minus1"),
+        ValueLayout.JAVA_BYTE.withName("RefPicList0"),
+        ValueLayout.JAVA_BYTE.withName("RefPicList1"),
+        ValueLayout.JAVA_BYTE.withName("refList0ModOpCount"),
+        ValueLayout.JAVA_BYTE.withName("refList1ModOpCount"),
+        ValueLayout.JAVA_BYTE.withName("refPicMarkingOpCount"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264RefListModEntry.LAYOUT).withName("pRefList0ModOperations"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264RefListModEntry.LAYOUT).withName("pRefList1ModOperations"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264RefPicMarkingEntry.LAYOUT).withName("pRefPicMarkingOperations")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$num_ref_idx_l0_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l0_active_minus1");
     public static final PathElement PATH$num_ref_idx_l1_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l1_active_minus1");
@@ -71,6 +81,19 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
     public static final PathElement PATH$pRefList0ModOperations = PathElement.groupElement("PATH$pRefList0ModOperations");
     public static final PathElement PATH$pRefList1ModOperations = PathElement.groupElement("PATH$pRefList1ModOperations");
     public static final PathElement PATH$pRefPicMarkingOperations = PathElement.groupElement("PATH$pRefPicMarkingOperations");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$num_ref_idx_l0_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l0_active_minus1);
+    public static final OfByte LAYOUT$num_ref_idx_l1_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l1_active_minus1);
+    public static final OfByte LAYOUT$RefPicList0 = (OfByte) LAYOUT.select(PATH$RefPicList0);
+    public static final OfByte LAYOUT$RefPicList1 = (OfByte) LAYOUT.select(PATH$RefPicList1);
+    public static final OfByte LAYOUT$refList0ModOpCount = (OfByte) LAYOUT.select(PATH$refList0ModOpCount);
+    public static final OfByte LAYOUT$refList1ModOpCount = (OfByte) LAYOUT.select(PATH$refList1ModOpCount);
+    public static final OfByte LAYOUT$refPicMarkingOpCount = (OfByte) LAYOUT.select(PATH$refPicMarkingOpCount);
+    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
+    public static final AddressLayout LAYOUT$pRefList0ModOperations = (AddressLayout) LAYOUT.select(PATH$pRefList0ModOperations);
+    public static final AddressLayout LAYOUT$pRefList1ModOperations = (AddressLayout) LAYOUT.select(PATH$pRefList1ModOperations);
+    public static final AddressLayout LAYOUT$pRefPicMarkingOperations = (AddressLayout) LAYOUT.select(PATH$pRefPicMarkingOperations);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$num_ref_idx_l0_active_minus1 = LAYOUT$num_ref_idx_l0_active_minus1.byteSize();

@@ -14,28 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkLatencyTimingsFrameReportNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLatencyTimingsFrameReportNV.html">VkLatencyTimingsFrameReportNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkLatencyTimingsFrameReportNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfLong LAYOUT$presentID = ValueLayout.JAVA_LONG.withName("presentID");
-    public static final OfLong LAYOUT$inputSampleTimeUs = ValueLayout.JAVA_LONG.withName("inputSampleTimeUs");
-    public static final OfLong LAYOUT$simStartTimeUs = ValueLayout.JAVA_LONG.withName("simStartTimeUs");
-    public static final OfLong LAYOUT$simEndTimeUs = ValueLayout.JAVA_LONG.withName("simEndTimeUs");
-    public static final OfLong LAYOUT$renderSubmitStartTimeUs = ValueLayout.JAVA_LONG.withName("renderSubmitStartTimeUs");
-    public static final OfLong LAYOUT$renderSubmitEndTimeUs = ValueLayout.JAVA_LONG.withName("renderSubmitEndTimeUs");
-    public static final OfLong LAYOUT$presentStartTimeUs = ValueLayout.JAVA_LONG.withName("presentStartTimeUs");
-    public static final OfLong LAYOUT$presentEndTimeUs = ValueLayout.JAVA_LONG.withName("presentEndTimeUs");
-    public static final OfLong LAYOUT$driverStartTimeUs = ValueLayout.JAVA_LONG.withName("driverStartTimeUs");
-    public static final OfLong LAYOUT$driverEndTimeUs = ValueLayout.JAVA_LONG.withName("driverEndTimeUs");
-    public static final OfLong LAYOUT$osRenderQueueStartTimeUs = ValueLayout.JAVA_LONG.withName("osRenderQueueStartTimeUs");
-    public static final OfLong LAYOUT$osRenderQueueEndTimeUs = ValueLayout.JAVA_LONG.withName("osRenderQueueEndTimeUs");
-    public static final OfLong LAYOUT$gpuRenderStartTimeUs = ValueLayout.JAVA_LONG.withName("gpuRenderStartTimeUs");
-    public static final OfLong LAYOUT$gpuRenderEndTimeUs = ValueLayout.JAVA_LONG.withName("gpuRenderEndTimeUs");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$presentID, LAYOUT$inputSampleTimeUs, LAYOUT$simStartTimeUs, LAYOUT$simEndTimeUs, LAYOUT$renderSubmitStartTimeUs, LAYOUT$renderSubmitEndTimeUs, LAYOUT$presentStartTimeUs, LAYOUT$presentEndTimeUs, LAYOUT$driverStartTimeUs, LAYOUT$driverEndTimeUs, LAYOUT$osRenderQueueStartTimeUs, LAYOUT$osRenderQueueEndTimeUs, LAYOUT$gpuRenderStartTimeUs, LAYOUT$gpuRenderEndTimeUs);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkLatencyTimingsFrameReportNV {
+        sType(VkStructureType.LATENCY_TIMINGS_FRAME_REPORT_NV);
+    }
 
     public static VkLatencyTimingsFrameReportNV allocate(Arena arena) {
         return new VkLatencyTimingsFrameReportNV(arena.allocate(LAYOUT));
@@ -64,6 +59,26 @@ public record VkLatencyTimingsFrameReportNV(@NotNull MemorySegment segment) impl
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("presentID"),
+        ValueLayout.JAVA_LONG.withName("inputSampleTimeUs"),
+        ValueLayout.JAVA_LONG.withName("simStartTimeUs"),
+        ValueLayout.JAVA_LONG.withName("simEndTimeUs"),
+        ValueLayout.JAVA_LONG.withName("renderSubmitStartTimeUs"),
+        ValueLayout.JAVA_LONG.withName("renderSubmitEndTimeUs"),
+        ValueLayout.JAVA_LONG.withName("presentStartTimeUs"),
+        ValueLayout.JAVA_LONG.withName("presentEndTimeUs"),
+        ValueLayout.JAVA_LONG.withName("driverStartTimeUs"),
+        ValueLayout.JAVA_LONG.withName("driverEndTimeUs"),
+        ValueLayout.JAVA_LONG.withName("osRenderQueueStartTimeUs"),
+        ValueLayout.JAVA_LONG.withName("osRenderQueueEndTimeUs"),
+        ValueLayout.JAVA_LONG.withName("gpuRenderStartTimeUs"),
+        ValueLayout.JAVA_LONG.withName("gpuRenderEndTimeUs")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$presentID = PathElement.groupElement("PATH$presentID");
@@ -80,6 +95,23 @@ public record VkLatencyTimingsFrameReportNV(@NotNull MemorySegment segment) impl
     public static final PathElement PATH$osRenderQueueEndTimeUs = PathElement.groupElement("PATH$osRenderQueueEndTimeUs");
     public static final PathElement PATH$gpuRenderStartTimeUs = PathElement.groupElement("PATH$gpuRenderStartTimeUs");
     public static final PathElement PATH$gpuRenderEndTimeUs = PathElement.groupElement("PATH$gpuRenderEndTimeUs");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$presentID = (OfLong) LAYOUT.select(PATH$presentID);
+    public static final OfLong LAYOUT$inputSampleTimeUs = (OfLong) LAYOUT.select(PATH$inputSampleTimeUs);
+    public static final OfLong LAYOUT$simStartTimeUs = (OfLong) LAYOUT.select(PATH$simStartTimeUs);
+    public static final OfLong LAYOUT$simEndTimeUs = (OfLong) LAYOUT.select(PATH$simEndTimeUs);
+    public static final OfLong LAYOUT$renderSubmitStartTimeUs = (OfLong) LAYOUT.select(PATH$renderSubmitStartTimeUs);
+    public static final OfLong LAYOUT$renderSubmitEndTimeUs = (OfLong) LAYOUT.select(PATH$renderSubmitEndTimeUs);
+    public static final OfLong LAYOUT$presentStartTimeUs = (OfLong) LAYOUT.select(PATH$presentStartTimeUs);
+    public static final OfLong LAYOUT$presentEndTimeUs = (OfLong) LAYOUT.select(PATH$presentEndTimeUs);
+    public static final OfLong LAYOUT$driverStartTimeUs = (OfLong) LAYOUT.select(PATH$driverStartTimeUs);
+    public static final OfLong LAYOUT$driverEndTimeUs = (OfLong) LAYOUT.select(PATH$driverEndTimeUs);
+    public static final OfLong LAYOUT$osRenderQueueStartTimeUs = (OfLong) LAYOUT.select(PATH$osRenderQueueStartTimeUs);
+    public static final OfLong LAYOUT$osRenderQueueEndTimeUs = (OfLong) LAYOUT.select(PATH$osRenderQueueEndTimeUs);
+    public static final OfLong LAYOUT$gpuRenderStartTimeUs = (OfLong) LAYOUT.select(PATH$gpuRenderStartTimeUs);
+    public static final OfLong LAYOUT$gpuRenderEndTimeUs = (OfLong) LAYOUT.select(PATH$gpuRenderEndTimeUs);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

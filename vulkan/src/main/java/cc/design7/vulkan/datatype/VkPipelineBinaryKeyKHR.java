@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPipelineBinaryKeyKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineBinaryKeyKHR.html">VkPipelineBinaryKeyKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPipelineBinaryKeyKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$keySize = ValueLayout.JAVA_INT.withName("keySize");
-    public static final OfByte LAYOUT$key = ValueLayout.JAVA_BYTE.withName("key");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$keySize, LAYOUT$key);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPipelineBinaryKeyKHR {
+        sType(VkStructureType.PIPELINE_BINARY_KEY_KHR);
+    }
 
     public static VkPipelineBinaryKeyKHR allocate(Arena arena) {
         return new VkPipelineBinaryKeyKHR(arena.allocate(LAYOUT));
@@ -52,10 +59,23 @@ public record VkPipelineBinaryKeyKHR(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("keySize"),
+        ValueLayout.JAVA_BYTE.withName("key")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$keySize = PathElement.groupElement("PATH$keySize");
     public static final PathElement PATH$key = PathElement.groupElement("PATH$key");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$keySize = (OfInt) LAYOUT.select(PATH$keySize);
+    public static final OfByte LAYOUT$key = (OfByte) LAYOUT.select(PATH$key);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

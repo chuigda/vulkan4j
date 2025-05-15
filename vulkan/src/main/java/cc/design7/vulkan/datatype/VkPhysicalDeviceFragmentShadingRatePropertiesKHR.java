@@ -14,31 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceFragmentShadingRatePropertiesKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFragmentShadingRatePropertiesKHR.html">VkPhysicalDeviceFragmentShadingRatePropertiesKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final StructLayout LAYOUT$minFragmentShadingRateAttachmentTexelSize = VkExtent2D.LAYOUT.withName("minFragmentShadingRateAttachmentTexelSize");
-    public static final StructLayout LAYOUT$maxFragmentShadingRateAttachmentTexelSize = VkExtent2D.LAYOUT.withName("maxFragmentShadingRateAttachmentTexelSize");
-    public static final OfInt LAYOUT$maxFragmentShadingRateAttachmentTexelSizeAspectRatio = ValueLayout.JAVA_INT.withName("maxFragmentShadingRateAttachmentTexelSizeAspectRatio");
-    public static final OfInt LAYOUT$primitiveFragmentShadingRateWithMultipleViewports = ValueLayout.JAVA_INT.withName("primitiveFragmentShadingRateWithMultipleViewports");
-    public static final OfInt LAYOUT$layeredShadingRateAttachments = ValueLayout.JAVA_INT.withName("layeredShadingRateAttachments");
-    public static final OfInt LAYOUT$fragmentShadingRateNonTrivialCombinerOps = ValueLayout.JAVA_INT.withName("fragmentShadingRateNonTrivialCombinerOps");
-    public static final StructLayout LAYOUT$maxFragmentSize = VkExtent2D.LAYOUT.withName("maxFragmentSize");
-    public static final OfInt LAYOUT$maxFragmentSizeAspectRatio = ValueLayout.JAVA_INT.withName("maxFragmentSizeAspectRatio");
-    public static final OfInt LAYOUT$maxFragmentShadingRateCoverageSamples = ValueLayout.JAVA_INT.withName("maxFragmentShadingRateCoverageSamples");
-    public static final OfInt LAYOUT$maxFragmentShadingRateRasterizationSamples = ValueLayout.JAVA_INT.withName("maxFragmentShadingRateRasterizationSamples");
-    public static final OfInt LAYOUT$fragmentShadingRateWithShaderDepthStencilWrites = ValueLayout.JAVA_INT.withName("fragmentShadingRateWithShaderDepthStencilWrites");
-    public static final OfInt LAYOUT$fragmentShadingRateWithSampleMask = ValueLayout.JAVA_INT.withName("fragmentShadingRateWithSampleMask");
-    public static final OfInt LAYOUT$fragmentShadingRateWithShaderSampleMask = ValueLayout.JAVA_INT.withName("fragmentShadingRateWithShaderSampleMask");
-    public static final OfInt LAYOUT$fragmentShadingRateWithConservativeRasterization = ValueLayout.JAVA_INT.withName("fragmentShadingRateWithConservativeRasterization");
-    public static final OfInt LAYOUT$fragmentShadingRateWithFragmentShaderInterlock = ValueLayout.JAVA_INT.withName("fragmentShadingRateWithFragmentShaderInterlock");
-    public static final OfInt LAYOUT$fragmentShadingRateWithCustomSampleLocations = ValueLayout.JAVA_INT.withName("fragmentShadingRateWithCustomSampleLocations");
-    public static final OfInt LAYOUT$fragmentShadingRateStrictMultiplyCombiner = ValueLayout.JAVA_INT.withName("fragmentShadingRateStrictMultiplyCombiner");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$minFragmentShadingRateAttachmentTexelSize, LAYOUT$maxFragmentShadingRateAttachmentTexelSize, LAYOUT$maxFragmentShadingRateAttachmentTexelSizeAspectRatio, LAYOUT$primitiveFragmentShadingRateWithMultipleViewports, LAYOUT$layeredShadingRateAttachments, LAYOUT$fragmentShadingRateNonTrivialCombinerOps, LAYOUT$maxFragmentSize, LAYOUT$maxFragmentSizeAspectRatio, LAYOUT$maxFragmentShadingRateCoverageSamples, LAYOUT$maxFragmentShadingRateRasterizationSamples, LAYOUT$fragmentShadingRateWithShaderDepthStencilWrites, LAYOUT$fragmentShadingRateWithSampleMask, LAYOUT$fragmentShadingRateWithShaderSampleMask, LAYOUT$fragmentShadingRateWithConservativeRasterization, LAYOUT$fragmentShadingRateWithFragmentShaderInterlock, LAYOUT$fragmentShadingRateWithCustomSampleLocations, LAYOUT$fragmentShadingRateStrictMultiplyCombiner);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR {
+        sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR);
+    }
 
     public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocate(Arena arena) {
         return new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(arena.allocate(LAYOUT));
@@ -67,6 +59,29 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkExtent2D.LAYOUT.withName("minFragmentShadingRateAttachmentTexelSize"),
+        VkExtent2D.LAYOUT.withName("maxFragmentShadingRateAttachmentTexelSize"),
+        ValueLayout.JAVA_INT.withName("maxFragmentShadingRateAttachmentTexelSizeAspectRatio"),
+        ValueLayout.JAVA_INT.withName("primitiveFragmentShadingRateWithMultipleViewports"),
+        ValueLayout.JAVA_INT.withName("layeredShadingRateAttachments"),
+        ValueLayout.JAVA_INT.withName("fragmentShadingRateNonTrivialCombinerOps"),
+        VkExtent2D.LAYOUT.withName("maxFragmentSize"),
+        ValueLayout.JAVA_INT.withName("maxFragmentSizeAspectRatio"),
+        ValueLayout.JAVA_INT.withName("maxFragmentShadingRateCoverageSamples"),
+        ValueLayout.JAVA_INT.withName("maxFragmentShadingRateRasterizationSamples"),
+        ValueLayout.JAVA_INT.withName("fragmentShadingRateWithShaderDepthStencilWrites"),
+        ValueLayout.JAVA_INT.withName("fragmentShadingRateWithSampleMask"),
+        ValueLayout.JAVA_INT.withName("fragmentShadingRateWithShaderSampleMask"),
+        ValueLayout.JAVA_INT.withName("fragmentShadingRateWithConservativeRasterization"),
+        ValueLayout.JAVA_INT.withName("fragmentShadingRateWithFragmentShaderInterlock"),
+        ValueLayout.JAVA_INT.withName("fragmentShadingRateWithCustomSampleLocations"),
+        ValueLayout.JAVA_INT.withName("fragmentShadingRateStrictMultiplyCombiner")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$minFragmentShadingRateAttachmentTexelSize = PathElement.groupElement("PATH$minFragmentShadingRateAttachmentTexelSize");
@@ -86,6 +101,26 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
     public static final PathElement PATH$fragmentShadingRateWithFragmentShaderInterlock = PathElement.groupElement("PATH$fragmentShadingRateWithFragmentShaderInterlock");
     public static final PathElement PATH$fragmentShadingRateWithCustomSampleLocations = PathElement.groupElement("PATH$fragmentShadingRateWithCustomSampleLocations");
     public static final PathElement PATH$fragmentShadingRateStrictMultiplyCombiner = PathElement.groupElement("PATH$fragmentShadingRateStrictMultiplyCombiner");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$minFragmentShadingRateAttachmentTexelSize = (StructLayout) LAYOUT.select(PATH$minFragmentShadingRateAttachmentTexelSize);
+    public static final StructLayout LAYOUT$maxFragmentShadingRateAttachmentTexelSize = (StructLayout) LAYOUT.select(PATH$maxFragmentShadingRateAttachmentTexelSize);
+    public static final OfInt LAYOUT$maxFragmentShadingRateAttachmentTexelSizeAspectRatio = (OfInt) LAYOUT.select(PATH$maxFragmentShadingRateAttachmentTexelSizeAspectRatio);
+    public static final OfInt LAYOUT$primitiveFragmentShadingRateWithMultipleViewports = (OfInt) LAYOUT.select(PATH$primitiveFragmentShadingRateWithMultipleViewports);
+    public static final OfInt LAYOUT$layeredShadingRateAttachments = (OfInt) LAYOUT.select(PATH$layeredShadingRateAttachments);
+    public static final OfInt LAYOUT$fragmentShadingRateNonTrivialCombinerOps = (OfInt) LAYOUT.select(PATH$fragmentShadingRateNonTrivialCombinerOps);
+    public static final StructLayout LAYOUT$maxFragmentSize = (StructLayout) LAYOUT.select(PATH$maxFragmentSize);
+    public static final OfInt LAYOUT$maxFragmentSizeAspectRatio = (OfInt) LAYOUT.select(PATH$maxFragmentSizeAspectRatio);
+    public static final OfInt LAYOUT$maxFragmentShadingRateCoverageSamples = (OfInt) LAYOUT.select(PATH$maxFragmentShadingRateCoverageSamples);
+    public static final OfInt LAYOUT$maxFragmentShadingRateRasterizationSamples = (OfInt) LAYOUT.select(PATH$maxFragmentShadingRateRasterizationSamples);
+    public static final OfInt LAYOUT$fragmentShadingRateWithShaderDepthStencilWrites = (OfInt) LAYOUT.select(PATH$fragmentShadingRateWithShaderDepthStencilWrites);
+    public static final OfInt LAYOUT$fragmentShadingRateWithSampleMask = (OfInt) LAYOUT.select(PATH$fragmentShadingRateWithSampleMask);
+    public static final OfInt LAYOUT$fragmentShadingRateWithShaderSampleMask = (OfInt) LAYOUT.select(PATH$fragmentShadingRateWithShaderSampleMask);
+    public static final OfInt LAYOUT$fragmentShadingRateWithConservativeRasterization = (OfInt) LAYOUT.select(PATH$fragmentShadingRateWithConservativeRasterization);
+    public static final OfInt LAYOUT$fragmentShadingRateWithFragmentShaderInterlock = (OfInt) LAYOUT.select(PATH$fragmentShadingRateWithFragmentShaderInterlock);
+    public static final OfInt LAYOUT$fragmentShadingRateWithCustomSampleLocations = (OfInt) LAYOUT.select(PATH$fragmentShadingRateWithCustomSampleLocations);
+    public static final OfInt LAYOUT$fragmentShadingRateStrictMultiplyCombiner = (OfInt) LAYOUT.select(PATH$fragmentShadingRateStrictMultiplyCombiner);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,15 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDisplayModeParametersKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayModeParametersKHR.html">VkDisplayModeParametersKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDisplayModeParametersKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$visibleRegion = VkExtent2D.LAYOUT.withName("visibleRegion");
-    public static final OfInt LAYOUT$refreshRate = ValueLayout.JAVA_INT.withName("refreshRate");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$visibleRegion, LAYOUT$refreshRate);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkDisplayModeParametersKHR allocate(Arena arena) {
         return new VkDisplayModeParametersKHR(arena.allocate(LAYOUT));
     }
@@ -50,8 +55,17 @@ public record VkDisplayModeParametersKHR(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        VkExtent2D.LAYOUT.withName("visibleRegion"),
+        ValueLayout.JAVA_INT.withName("refreshRate")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$visibleRegion = PathElement.groupElement("PATH$visibleRegion");
     public static final PathElement PATH$refreshRate = PathElement.groupElement("PATH$refreshRate");
+
+    public static final StructLayout LAYOUT$visibleRegion = (StructLayout) LAYOUT.select(PATH$visibleRegion);
+    public static final OfInt LAYOUT$refreshRate = (OfInt) LAYOUT.select(PATH$refreshRate);
 
     public static final long SIZE$visibleRegion = LAYOUT$visibleRegion.byteSize();
     public static final long SIZE$refreshRate = LAYOUT$refreshRate.byteSize();

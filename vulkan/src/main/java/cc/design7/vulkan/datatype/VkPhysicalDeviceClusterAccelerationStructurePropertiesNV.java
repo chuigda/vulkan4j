@@ -14,22 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceClusterAccelerationStructurePropertiesNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceClusterAccelerationStructurePropertiesNV.html">VkPhysicalDeviceClusterAccelerationStructurePropertiesNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$maxVerticesPerCluster = ValueLayout.JAVA_INT.withName("maxVerticesPerCluster");
-    public static final OfInt LAYOUT$maxTrianglesPerCluster = ValueLayout.JAVA_INT.withName("maxTrianglesPerCluster");
-    public static final OfInt LAYOUT$clusterScratchByteAlignment = ValueLayout.JAVA_INT.withName("clusterScratchByteAlignment");
-    public static final OfInt LAYOUT$clusterByteAlignment = ValueLayout.JAVA_INT.withName("clusterByteAlignment");
-    public static final OfInt LAYOUT$clusterTemplateByteAlignment = ValueLayout.JAVA_INT.withName("clusterTemplateByteAlignment");
-    public static final OfInt LAYOUT$clusterBottomLevelByteAlignment = ValueLayout.JAVA_INT.withName("clusterBottomLevelByteAlignment");
-    public static final OfInt LAYOUT$clusterTemplateBoundsByteAlignment = ValueLayout.JAVA_INT.withName("clusterTemplateBoundsByteAlignment");
-    public static final OfInt LAYOUT$maxClusterGeometryIndex = ValueLayout.JAVA_INT.withName("maxClusterGeometryIndex");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$maxVerticesPerCluster, LAYOUT$maxTrianglesPerCluster, LAYOUT$clusterScratchByteAlignment, LAYOUT$clusterByteAlignment, LAYOUT$clusterTemplateByteAlignment, LAYOUT$clusterBottomLevelByteAlignment, LAYOUT$clusterTemplateBoundsByteAlignment, LAYOUT$maxClusterGeometryIndex);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV {
+        sType(VkStructureType.PHYSICAL_DEVICE_CLUSTER_ACCELERATION_STRUCTURE_PROPERTIES_NV);
+    }
 
     public static VkPhysicalDeviceClusterAccelerationStructurePropertiesNV allocate(Arena arena) {
         return new VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(arena.allocate(LAYOUT));
@@ -58,6 +59,20 @@ public record VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(@NotNull 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maxVerticesPerCluster"),
+        ValueLayout.JAVA_INT.withName("maxTrianglesPerCluster"),
+        ValueLayout.JAVA_INT.withName("clusterScratchByteAlignment"),
+        ValueLayout.JAVA_INT.withName("clusterByteAlignment"),
+        ValueLayout.JAVA_INT.withName("clusterTemplateByteAlignment"),
+        ValueLayout.JAVA_INT.withName("clusterBottomLevelByteAlignment"),
+        ValueLayout.JAVA_INT.withName("clusterTemplateBoundsByteAlignment"),
+        ValueLayout.JAVA_INT.withName("maxClusterGeometryIndex")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$maxVerticesPerCluster = PathElement.groupElement("PATH$maxVerticesPerCluster");
@@ -68,6 +83,17 @@ public record VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(@NotNull 
     public static final PathElement PATH$clusterBottomLevelByteAlignment = PathElement.groupElement("PATH$clusterBottomLevelByteAlignment");
     public static final PathElement PATH$clusterTemplateBoundsByteAlignment = PathElement.groupElement("PATH$clusterTemplateBoundsByteAlignment");
     public static final PathElement PATH$maxClusterGeometryIndex = PathElement.groupElement("PATH$maxClusterGeometryIndex");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maxVerticesPerCluster = (OfInt) LAYOUT.select(PATH$maxVerticesPerCluster);
+    public static final OfInt LAYOUT$maxTrianglesPerCluster = (OfInt) LAYOUT.select(PATH$maxTrianglesPerCluster);
+    public static final OfInt LAYOUT$clusterScratchByteAlignment = (OfInt) LAYOUT.select(PATH$clusterScratchByteAlignment);
+    public static final OfInt LAYOUT$clusterByteAlignment = (OfInt) LAYOUT.select(PATH$clusterByteAlignment);
+    public static final OfInt LAYOUT$clusterTemplateByteAlignment = (OfInt) LAYOUT.select(PATH$clusterTemplateByteAlignment);
+    public static final OfInt LAYOUT$clusterBottomLevelByteAlignment = (OfInt) LAYOUT.select(PATH$clusterBottomLevelByteAlignment);
+    public static final OfInt LAYOUT$clusterTemplateBoundsByteAlignment = (OfInt) LAYOUT.select(PATH$clusterTemplateBoundsByteAlignment);
+    public static final OfInt LAYOUT$maxClusterGeometryIndex = (OfInt) LAYOUT.select(PATH$maxClusterGeometryIndex);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,18 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDescriptorSetLayoutBinding} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorSetLayoutBinding.html">VkDescriptorSetLayoutBinding</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$binding = ValueLayout.JAVA_INT.withName("binding");
-    public static final OfInt LAYOUT$descriptorType = ValueLayout.JAVA_INT.withName("descriptorType");
-    public static final OfInt LAYOUT$descriptorCount = ValueLayout.JAVA_INT.withName("descriptorCount");
-    public static final OfInt LAYOUT$stageFlags = ValueLayout.JAVA_INT.withName("stageFlags");
-    public static final AddressLayout LAYOUT$pImmutableSamplers = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pImmutableSamplers");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$binding, LAYOUT$descriptorType, LAYOUT$descriptorCount, LAYOUT$stageFlags, LAYOUT$pImmutableSamplers);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkDescriptorSetLayoutBinding allocate(Arena arena) {
         return new VkDescriptorSetLayoutBinding(arena.allocate(LAYOUT));
     }
@@ -53,11 +55,26 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("binding"),
+        ValueLayout.JAVA_INT.withName("descriptorType"),
+        ValueLayout.JAVA_INT.withName("descriptorCount"),
+        ValueLayout.JAVA_INT.withName("stageFlags"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pImmutableSamplers")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$binding = PathElement.groupElement("PATH$binding");
     public static final PathElement PATH$descriptorType = PathElement.groupElement("PATH$descriptorType");
     public static final PathElement PATH$descriptorCount = PathElement.groupElement("PATH$descriptorCount");
     public static final PathElement PATH$stageFlags = PathElement.groupElement("PATH$stageFlags");
     public static final PathElement PATH$pImmutableSamplers = PathElement.groupElement("PATH$pImmutableSamplers");
+
+    public static final OfInt LAYOUT$binding = (OfInt) LAYOUT.select(PATH$binding);
+    public static final OfInt LAYOUT$descriptorType = (OfInt) LAYOUT.select(PATH$descriptorType);
+    public static final OfInt LAYOUT$descriptorCount = (OfInt) LAYOUT.select(PATH$descriptorCount);
+    public static final OfInt LAYOUT$stageFlags = (OfInt) LAYOUT.select(PATH$stageFlags);
+    public static final AddressLayout LAYOUT$pImmutableSamplers = (AddressLayout) LAYOUT.select(PATH$pImmutableSamplers);
 
     public static final long SIZE$binding = LAYOUT$binding.byteSize();
     public static final long SIZE$descriptorType = LAYOUT$descriptorType.byteSize();

@@ -14,22 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkRenderingAttachmentInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderingAttachmentInfo.html">VkRenderingAttachmentInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$imageView = ValueLayout.ADDRESS.withName("imageView");
-    public static final OfInt LAYOUT$imageLayout = ValueLayout.JAVA_INT.withName("imageLayout");
-    public static final OfInt LAYOUT$resolveMode = ValueLayout.JAVA_INT.withName("resolveMode");
-    public static final AddressLayout LAYOUT$resolveImageView = ValueLayout.ADDRESS.withName("resolveImageView");
-    public static final OfInt LAYOUT$resolveImageLayout = ValueLayout.JAVA_INT.withName("resolveImageLayout");
-    public static final OfInt LAYOUT$loadOp = ValueLayout.JAVA_INT.withName("loadOp");
-    public static final OfInt LAYOUT$storeOp = ValueLayout.JAVA_INT.withName("storeOp");
-    public static final StructLayout LAYOUT$clearValue = VkClearValue.LAYOUT.withName("clearValue");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$imageView, LAYOUT$imageLayout, LAYOUT$resolveMode, LAYOUT$resolveImageView, LAYOUT$resolveImageLayout, LAYOUT$loadOp, LAYOUT$storeOp, LAYOUT$clearValue);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkRenderingAttachmentInfo {
+        sType(VkStructureType.RENDERING_ATTACHMENT_INFO);
+    }
 
     public static VkRenderingAttachmentInfo allocate(Arena arena) {
         return new VkRenderingAttachmentInfo(arena.allocate(LAYOUT));
@@ -58,6 +59,20 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("imageView"),
+        ValueLayout.JAVA_INT.withName("imageLayout"),
+        ValueLayout.JAVA_INT.withName("resolveMode"),
+        ValueLayout.ADDRESS.withName("resolveImageView"),
+        ValueLayout.JAVA_INT.withName("resolveImageLayout"),
+        ValueLayout.JAVA_INT.withName("loadOp"),
+        ValueLayout.JAVA_INT.withName("storeOp"),
+        VkClearValue.LAYOUT.withName("clearValue")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$imageView = PathElement.groupElement("PATH$imageView");
@@ -68,6 +83,17 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
     public static final PathElement PATH$loadOp = PathElement.groupElement("PATH$loadOp");
     public static final PathElement PATH$storeOp = PathElement.groupElement("PATH$storeOp");
     public static final PathElement PATH$clearValue = PathElement.groupElement("PATH$clearValue");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$imageView = (AddressLayout) LAYOUT.select(PATH$imageView);
+    public static final OfInt LAYOUT$imageLayout = (OfInt) LAYOUT.select(PATH$imageLayout);
+    public static final OfInt LAYOUT$resolveMode = (OfInt) LAYOUT.select(PATH$resolveMode);
+    public static final AddressLayout LAYOUT$resolveImageView = (AddressLayout) LAYOUT.select(PATH$resolveImageView);
+    public static final OfInt LAYOUT$resolveImageLayout = (OfInt) LAYOUT.select(PATH$resolveImageLayout);
+    public static final OfInt LAYOUT$loadOp = (OfInt) LAYOUT.select(PATH$loadOp);
+    public static final OfInt LAYOUT$storeOp = (OfInt) LAYOUT.select(PATH$storeOp);
+    public static final StructLayout LAYOUT$clearValue = (StructLayout) LAYOUT.select(PATH$clearValue);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

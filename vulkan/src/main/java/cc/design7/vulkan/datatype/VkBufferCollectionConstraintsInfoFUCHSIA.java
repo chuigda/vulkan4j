@@ -14,19 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkBufferCollectionConstraintsInfoFUCHSIA} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferCollectionConstraintsInfoFUCHSIA.html">VkBufferCollectionConstraintsInfoFUCHSIA</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkBufferCollectionConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$minBufferCount = ValueLayout.JAVA_INT.withName("minBufferCount");
-    public static final OfInt LAYOUT$maxBufferCount = ValueLayout.JAVA_INT.withName("maxBufferCount");
-    public static final OfInt LAYOUT$minBufferCountForCamping = ValueLayout.JAVA_INT.withName("minBufferCountForCamping");
-    public static final OfInt LAYOUT$minBufferCountForDedicatedSlack = ValueLayout.JAVA_INT.withName("minBufferCountForDedicatedSlack");
-    public static final OfInt LAYOUT$minBufferCountForSharedSlack = ValueLayout.JAVA_INT.withName("minBufferCountForSharedSlack");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$minBufferCount, LAYOUT$maxBufferCount, LAYOUT$minBufferCountForCamping, LAYOUT$minBufferCountForDedicatedSlack, LAYOUT$minBufferCountForSharedSlack);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkBufferCollectionConstraintsInfoFUCHSIA {
+        sType(VkStructureType.BUFFER_COLLECTION_CONSTRAINTS_INFO_FUCHSIA);
+    }
 
     public static VkBufferCollectionConstraintsInfoFUCHSIA allocate(Arena arena) {
         return new VkBufferCollectionConstraintsInfoFUCHSIA(arena.allocate(LAYOUT));
@@ -55,6 +59,17 @@ public record VkBufferCollectionConstraintsInfoFUCHSIA(@NotNull MemorySegment se
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("minBufferCount"),
+        ValueLayout.JAVA_INT.withName("maxBufferCount"),
+        ValueLayout.JAVA_INT.withName("minBufferCountForCamping"),
+        ValueLayout.JAVA_INT.withName("minBufferCountForDedicatedSlack"),
+        ValueLayout.JAVA_INT.withName("minBufferCountForSharedSlack")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$minBufferCount = PathElement.groupElement("PATH$minBufferCount");
@@ -62,6 +77,14 @@ public record VkBufferCollectionConstraintsInfoFUCHSIA(@NotNull MemorySegment se
     public static final PathElement PATH$minBufferCountForCamping = PathElement.groupElement("PATH$minBufferCountForCamping");
     public static final PathElement PATH$minBufferCountForDedicatedSlack = PathElement.groupElement("PATH$minBufferCountForDedicatedSlack");
     public static final PathElement PATH$minBufferCountForSharedSlack = PathElement.groupElement("PATH$minBufferCountForSharedSlack");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$minBufferCount = (OfInt) LAYOUT.select(PATH$minBufferCount);
+    public static final OfInt LAYOUT$maxBufferCount = (OfInt) LAYOUT.select(PATH$maxBufferCount);
+    public static final OfInt LAYOUT$minBufferCountForCamping = (OfInt) LAYOUT.select(PATH$minBufferCountForCamping);
+    public static final OfInt LAYOUT$minBufferCountForDedicatedSlack = (OfInt) LAYOUT.select(PATH$minBufferCountForDedicatedSlack);
+    public static final OfInt LAYOUT$minBufferCountForSharedSlack = (OfInt) LAYOUT.select(PATH$minBufferCountForSharedSlack);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

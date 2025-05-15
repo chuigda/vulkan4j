@@ -14,17 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPipelineExecutableStatisticValueKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineExecutableStatisticValueKHR.html">VkPipelineExecutableStatisticValueKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPipelineExecutableStatisticValueKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$b32 = ValueLayout.JAVA_INT.withName("b32");
-    public static final OfLong LAYOUT$i64 = ValueLayout.JAVA_LONG.withName("i64");
-    public static final OfLong LAYOUT$u64 = ValueLayout.JAVA_LONG.withName("u64");
-    public static final OfDouble LAYOUT$f64 = ValueLayout.JAVA_DOUBLE.withName("f64");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(LAYOUT$b32, LAYOUT$i64, LAYOUT$u64, LAYOUT$f64);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkPipelineExecutableStatisticValueKHR allocate(Arena arena) {
         return new VkPipelineExecutableStatisticValueKHR(arena.allocate(LAYOUT));
     }
@@ -52,10 +55,23 @@ public record VkPipelineExecutableStatisticValueKHR(@NotNull MemorySegment segme
         return ret;
     }
 
+    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
+        ValueLayout.JAVA_INT.withName("b32"),
+        ValueLayout.JAVA_LONG.withName("i64"),
+        ValueLayout.JAVA_LONG.withName("u64"),
+        ValueLayout.JAVA_DOUBLE.withName("f64")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$b32 = PathElement.groupElement("PATH$b32");
     public static final PathElement PATH$i64 = PathElement.groupElement("PATH$i64");
     public static final PathElement PATH$u64 = PathElement.groupElement("PATH$u64");
     public static final PathElement PATH$f64 = PathElement.groupElement("PATH$f64");
+
+    public static final OfInt LAYOUT$b32 = (OfInt) LAYOUT.select(PATH$b32);
+    public static final OfLong LAYOUT$i64 = (OfLong) LAYOUT.select(PATH$i64);
+    public static final OfLong LAYOUT$u64 = (OfLong) LAYOUT.select(PATH$u64);
+    public static final OfDouble LAYOUT$f64 = (OfDouble) LAYOUT.select(PATH$f64);
 
     public static final long SIZE$b32 = LAYOUT$b32.byteSize();
     public static final long SIZE$i64 = LAYOUT$i64.byteSize();

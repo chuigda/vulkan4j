@@ -14,17 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceMemoryProperties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMemoryProperties.html">VkPhysicalDeviceMemoryProperties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$memoryTypeCount = ValueLayout.JAVA_INT.withName("memoryTypeCount");
-    public static final StructLayout LAYOUT$memoryTypes = VkMemoryType.LAYOUT.withName("memoryTypes");
-    public static final OfInt LAYOUT$memoryHeapCount = ValueLayout.JAVA_INT.withName("memoryHeapCount");
-    public static final StructLayout LAYOUT$memoryHeaps = VkMemoryHeap.LAYOUT.withName("memoryHeaps");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$memoryTypeCount, LAYOUT$memoryTypes, LAYOUT$memoryHeapCount, LAYOUT$memoryHeaps);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkPhysicalDeviceMemoryProperties allocate(Arena arena) {
         return new VkPhysicalDeviceMemoryProperties(arena.allocate(LAYOUT));
     }
@@ -52,10 +55,23 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("memoryTypeCount"),
+        VkMemoryType.LAYOUT.withName("memoryTypes"),
+        ValueLayout.JAVA_INT.withName("memoryHeapCount"),
+        VkMemoryHeap.LAYOUT.withName("memoryHeaps")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$memoryTypeCount = PathElement.groupElement("PATH$memoryTypeCount");
     public static final PathElement PATH$memoryTypes = PathElement.groupElement("PATH$memoryTypes");
     public static final PathElement PATH$memoryHeapCount = PathElement.groupElement("PATH$memoryHeapCount");
     public static final PathElement PATH$memoryHeaps = PathElement.groupElement("PATH$memoryHeaps");
+
+    public static final OfInt LAYOUT$memoryTypeCount = (OfInt) LAYOUT.select(PATH$memoryTypeCount);
+    public static final StructLayout LAYOUT$memoryTypes = (StructLayout) LAYOUT.select(PATH$memoryTypes);
+    public static final OfInt LAYOUT$memoryHeapCount = (OfInt) LAYOUT.select(PATH$memoryHeapCount);
+    public static final StructLayout LAYOUT$memoryHeaps = (StructLayout) LAYOUT.select(PATH$memoryHeaps);
 
     public static final long SIZE$memoryTypeCount = LAYOUT$memoryTypeCount.byteSize();
     public static final long SIZE$memoryTypes = LAYOUT$memoryTypes.byteSize();

@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkQueueFamilyGlobalPriorityProperties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueueFamilyGlobalPriorityProperties.html">VkQueueFamilyGlobalPriorityProperties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$priorityCount = ValueLayout.JAVA_INT.withName("priorityCount");
-    public static final OfInt LAYOUT$priorities = ValueLayout.JAVA_INT.withName("priorities");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$priorityCount, LAYOUT$priorities);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkQueueFamilyGlobalPriorityProperties {
+        sType(VkStructureType.QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES);
+    }
 
     public static VkQueueFamilyGlobalPriorityProperties allocate(Arena arena) {
         return new VkQueueFamilyGlobalPriorityProperties(arena.allocate(LAYOUT));
@@ -52,10 +59,23 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("priorityCount"),
+        ValueLayout.JAVA_INT.withName("priorities")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$priorityCount = PathElement.groupElement("PATH$priorityCount");
     public static final PathElement PATH$priorities = PathElement.groupElement("PATH$priorities");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$priorityCount = (OfInt) LAYOUT.select(PATH$priorityCount);
+    public static final OfInt LAYOUT$priorities = (OfInt) LAYOUT.select(PATH$priorities);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.html">VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$fragmentShadingRateEnums = ValueLayout.JAVA_INT.withName("fragmentShadingRateEnums");
-    public static final OfInt LAYOUT$supersampleFragmentShadingRates = ValueLayout.JAVA_INT.withName("supersampleFragmentShadingRates");
-    public static final OfInt LAYOUT$noInvocationFragmentShadingRates = ValueLayout.JAVA_INT.withName("noInvocationFragmentShadingRates");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$fragmentShadingRateEnums, LAYOUT$supersampleFragmentShadingRates, LAYOUT$noInvocationFragmentShadingRates);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV {
+        sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_FEATURES_NV);
+    }
 
     public static VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV allocate(Arena arena) {
         return new VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(@NotNull Memory
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("fragmentShadingRateEnums"),
+        ValueLayout.JAVA_INT.withName("supersampleFragmentShadingRates"),
+        ValueLayout.JAVA_INT.withName("noInvocationFragmentShadingRates")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$fragmentShadingRateEnums = PathElement.groupElement("PATH$fragmentShadingRateEnums");
     public static final PathElement PATH$supersampleFragmentShadingRates = PathElement.groupElement("PATH$supersampleFragmentShadingRates");
     public static final PathElement PATH$noInvocationFragmentShadingRates = PathElement.groupElement("PATH$noInvocationFragmentShadingRates");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$fragmentShadingRateEnums = (OfInt) LAYOUT.select(PATH$fragmentShadingRateEnums);
+    public static final OfInt LAYOUT$supersampleFragmentShadingRates = (OfInt) LAYOUT.select(PATH$supersampleFragmentShadingRates);
+    public static final OfInt LAYOUT$noInvocationFragmentShadingRates = (OfInt) LAYOUT.select(PATH$noInvocationFragmentShadingRates);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,16 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoEncodeH265ReferenceInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoEncodeH265ReferenceInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoEncodeH265ReferenceInfoFlags.LAYOUT.withName("flags");
-    public static final OfInt LAYOUT$pic_type = ValueLayout.JAVA_INT.withName("pic_type");
-    public static final OfInt LAYOUT$PicOrderCntVal = ValueLayout.JAVA_INT.withName("PicOrderCntVal");
-    public static final OfByte LAYOUT$TemporalId = ValueLayout.JAVA_BYTE.withName("TemporalId");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$pic_type, LAYOUT$PicOrderCntVal, LAYOUT$TemporalId);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoEncodeH265ReferenceInfo allocate(Arena arena) {
         return new StdVideoEncodeH265ReferenceInfo(arena.allocate(LAYOUT));
     }
@@ -51,10 +53,23 @@ public record StdVideoEncodeH265ReferenceInfo(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoEncodeH265ReferenceInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("pic_type"),
+        ValueLayout.JAVA_INT.withName("PicOrderCntVal"),
+        ValueLayout.JAVA_BYTE.withName("TemporalId")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$pic_type = PathElement.groupElement("PATH$pic_type");
     public static final PathElement PATH$PicOrderCntVal = PathElement.groupElement("PATH$PicOrderCntVal");
     public static final PathElement PATH$TemporalId = PathElement.groupElement("PATH$TemporalId");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$pic_type = (OfInt) LAYOUT.select(PATH$pic_type);
+    public static final OfInt LAYOUT$PicOrderCntVal = (OfInt) LAYOUT.select(PATH$PicOrderCntVal);
+    public static final OfByte LAYOUT$TemporalId = (OfByte) LAYOUT.select(PATH$TemporalId);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$pic_type = LAYOUT$pic_type.byteSize();

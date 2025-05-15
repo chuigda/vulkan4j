@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkCommandBufferAllocateInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCommandBufferAllocateInfo.html">VkCommandBufferAllocateInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$commandPool = ValueLayout.ADDRESS.withName("commandPool");
-    public static final OfInt LAYOUT$level = ValueLayout.JAVA_INT.withName("level");
-    public static final OfInt LAYOUT$commandBufferCount = ValueLayout.JAVA_INT.withName("commandBufferCount");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$commandPool, LAYOUT$level, LAYOUT$commandBufferCount);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkCommandBufferAllocateInfo {
+        sType(VkStructureType.COMMAND_BUFFER_ALLOCATE_INFO);
+    }
 
     public static VkCommandBufferAllocateInfo allocate(Arena arena) {
         return new VkCommandBufferAllocateInfo(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implem
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("commandPool"),
+        ValueLayout.JAVA_INT.withName("level"),
+        ValueLayout.JAVA_INT.withName("commandBufferCount")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$commandPool = PathElement.groupElement("PATH$commandPool");
     public static final PathElement PATH$level = PathElement.groupElement("PATH$level");
     public static final PathElement PATH$commandBufferCount = PathElement.groupElement("PATH$commandBufferCount");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$commandPool = (AddressLayout) LAYOUT.select(PATH$commandPool);
+    public static final OfInt LAYOUT$level = (OfInt) LAYOUT.select(PATH$level);
+    public static final OfInt LAYOUT$commandBufferCount = (OfInt) LAYOUT.select(PATH$commandBufferCount);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

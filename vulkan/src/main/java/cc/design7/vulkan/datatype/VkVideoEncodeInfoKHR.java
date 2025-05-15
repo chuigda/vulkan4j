@@ -14,23 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeInfoKHR.html">VkVideoEncodeInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final AddressLayout LAYOUT$dstBuffer = ValueLayout.ADDRESS.withName("dstBuffer");
-    public static final OfLong LAYOUT$dstBufferOffset = ValueLayout.JAVA_LONG.withName("dstBufferOffset");
-    public static final OfLong LAYOUT$dstBufferRange = ValueLayout.JAVA_LONG.withName("dstBufferRange");
-    public static final StructLayout LAYOUT$srcPictureResource = VkVideoPictureResourceInfoKHR.LAYOUT.withName("srcPictureResource");
-    public static final AddressLayout LAYOUT$pSetupReferenceSlot = ValueLayout.ADDRESS.withTargetLayout(VkVideoReferenceSlotInfoKHR.LAYOUT).withName("pSetupReferenceSlot");
-    public static final OfInt LAYOUT$referenceSlotCount = ValueLayout.JAVA_INT.withName("referenceSlotCount");
-    public static final AddressLayout LAYOUT$pReferenceSlots = ValueLayout.ADDRESS.withTargetLayout(VkVideoReferenceSlotInfoKHR.LAYOUT).withName("pReferenceSlots");
-    public static final OfInt LAYOUT$precedingExternallyEncodedBytes = ValueLayout.JAVA_INT.withName("precedingExternallyEncodedBytes");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$dstBuffer, LAYOUT$dstBufferOffset, LAYOUT$dstBufferRange, LAYOUT$srcPictureResource, LAYOUT$pSetupReferenceSlot, LAYOUT$referenceSlotCount, LAYOUT$pReferenceSlots, LAYOUT$precedingExternallyEncodedBytes);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoEncodeInfoKHR {
+        sType(VkStructureType.VIDEO_ENCODE_INFO_KHR);
+    }
 
     public static VkVideoEncodeInfoKHR allocate(Arena arena) {
         return new VkVideoEncodeInfoKHR(arena.allocate(LAYOUT));
@@ -59,6 +59,21 @@ public record VkVideoEncodeInfoKHR(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.ADDRESS.withName("dstBuffer"),
+        ValueLayout.JAVA_LONG.withName("dstBufferOffset"),
+        ValueLayout.JAVA_LONG.withName("dstBufferRange"),
+        VkVideoPictureResourceInfoKHR.LAYOUT.withName("srcPictureResource"),
+        ValueLayout.ADDRESS.withTargetLayout(VkVideoReferenceSlotInfoKHR.LAYOUT).withName("pSetupReferenceSlot"),
+        ValueLayout.JAVA_INT.withName("referenceSlotCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkVideoReferenceSlotInfoKHR.LAYOUT).withName("pReferenceSlots"),
+        ValueLayout.JAVA_INT.withName("precedingExternallyEncodedBytes")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -70,6 +85,18 @@ public record VkVideoEncodeInfoKHR(@NotNull MemorySegment segment) implements IP
     public static final PathElement PATH$referenceSlotCount = PathElement.groupElement("PATH$referenceSlotCount");
     public static final PathElement PATH$pReferenceSlots = PathElement.groupElement("PATH$pReferenceSlots");
     public static final PathElement PATH$precedingExternallyEncodedBytes = PathElement.groupElement("PATH$precedingExternallyEncodedBytes");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$dstBuffer = (AddressLayout) LAYOUT.select(PATH$dstBuffer);
+    public static final OfLong LAYOUT$dstBufferOffset = (OfLong) LAYOUT.select(PATH$dstBufferOffset);
+    public static final OfLong LAYOUT$dstBufferRange = (OfLong) LAYOUT.select(PATH$dstBufferRange);
+    public static final StructLayout LAYOUT$srcPictureResource = (StructLayout) LAYOUT.select(PATH$srcPictureResource);
+    public static final AddressLayout LAYOUT$pSetupReferenceSlot = (AddressLayout) LAYOUT.select(PATH$pSetupReferenceSlot);
+    public static final OfInt LAYOUT$referenceSlotCount = (OfInt) LAYOUT.select(PATH$referenceSlotCount);
+    public static final AddressLayout LAYOUT$pReferenceSlots = (AddressLayout) LAYOUT.select(PATH$pReferenceSlots);
+    public static final OfInt LAYOUT$precedingExternallyEncodedBytes = (OfInt) LAYOUT.select(PATH$precedingExternallyEncodedBytes);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

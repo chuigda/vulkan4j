@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeUsageInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeUsageInfoKHR.html">VkVideoEncodeUsageInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeUsageInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$videoUsageHints = ValueLayout.JAVA_INT.withName("videoUsageHints");
-    public static final OfInt LAYOUT$videoContentHints = ValueLayout.JAVA_INT.withName("videoContentHints");
-    public static final OfInt LAYOUT$tuningMode = ValueLayout.JAVA_INT.withName("tuningMode");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$videoUsageHints, LAYOUT$videoContentHints, LAYOUT$tuningMode);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoEncodeUsageInfoKHR {
+        sType(VkStructureType.VIDEO_ENCODE_USAGE_INFO_KHR);
+    }
 
     public static VkVideoEncodeUsageInfoKHR allocate(Arena arena) {
         return new VkVideoEncodeUsageInfoKHR(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkVideoEncodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("videoUsageHints"),
+        ValueLayout.JAVA_INT.withName("videoContentHints"),
+        ValueLayout.JAVA_INT.withName("tuningMode")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$videoUsageHints = PathElement.groupElement("PATH$videoUsageHints");
     public static final PathElement PATH$videoContentHints = PathElement.groupElement("PATH$videoContentHints");
     public static final PathElement PATH$tuningMode = PathElement.groupElement("PATH$tuningMode");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$videoUsageHints = (OfInt) LAYOUT.select(PATH$videoUsageHints);
+    public static final OfInt LAYOUT$videoContentHints = (OfInt) LAYOUT.select(PATH$videoContentHints);
+    public static final OfInt LAYOUT$tuningMode = (OfInt) LAYOUT.select(PATH$tuningMode);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

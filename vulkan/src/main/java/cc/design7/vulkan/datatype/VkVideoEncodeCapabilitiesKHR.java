@@ -14,21 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeCapabilitiesKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeCapabilitiesKHR.html">VkVideoEncodeCapabilitiesKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$rateControlModes = ValueLayout.JAVA_INT.withName("rateControlModes");
-    public static final OfInt LAYOUT$maxRateControlLayers = ValueLayout.JAVA_INT.withName("maxRateControlLayers");
-    public static final OfLong LAYOUT$maxBitrate = ValueLayout.JAVA_LONG.withName("maxBitrate");
-    public static final OfInt LAYOUT$maxQualityLevels = ValueLayout.JAVA_INT.withName("maxQualityLevels");
-    public static final StructLayout LAYOUT$encodeInputPictureGranularity = VkExtent2D.LAYOUT.withName("encodeInputPictureGranularity");
-    public static final OfInt LAYOUT$supportedEncodeFeedbackFlags = ValueLayout.JAVA_INT.withName("supportedEncodeFeedbackFlags");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$rateControlModes, LAYOUT$maxRateControlLayers, LAYOUT$maxBitrate, LAYOUT$maxQualityLevels, LAYOUT$encodeInputPictureGranularity, LAYOUT$supportedEncodeFeedbackFlags);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoEncodeCapabilitiesKHR {
+        sType(VkStructureType.VIDEO_ENCODE_CAPABILITIES_KHR);
+    }
 
     public static VkVideoEncodeCapabilitiesKHR allocate(Arena arena) {
         return new VkVideoEncodeCapabilitiesKHR(arena.allocate(LAYOUT));
@@ -57,6 +59,19 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("rateControlModes"),
+        ValueLayout.JAVA_INT.withName("maxRateControlLayers"),
+        ValueLayout.JAVA_LONG.withName("maxBitrate"),
+        ValueLayout.JAVA_INT.withName("maxQualityLevels"),
+        VkExtent2D.LAYOUT.withName("encodeInputPictureGranularity"),
+        ValueLayout.JAVA_INT.withName("supportedEncodeFeedbackFlags")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -66,6 +81,16 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
     public static final PathElement PATH$maxQualityLevels = PathElement.groupElement("PATH$maxQualityLevels");
     public static final PathElement PATH$encodeInputPictureGranularity = PathElement.groupElement("PATH$encodeInputPictureGranularity");
     public static final PathElement PATH$supportedEncodeFeedbackFlags = PathElement.groupElement("PATH$supportedEncodeFeedbackFlags");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$rateControlModes = (OfInt) LAYOUT.select(PATH$rateControlModes);
+    public static final OfInt LAYOUT$maxRateControlLayers = (OfInt) LAYOUT.select(PATH$maxRateControlLayers);
+    public static final OfLong LAYOUT$maxBitrate = (OfLong) LAYOUT.select(PATH$maxBitrate);
+    public static final OfInt LAYOUT$maxQualityLevels = (OfInt) LAYOUT.select(PATH$maxQualityLevels);
+    public static final StructLayout LAYOUT$encodeInputPictureGranularity = (StructLayout) LAYOUT.select(PATH$encodeInputPictureGranularity);
+    public static final OfInt LAYOUT$supportedEncodeFeedbackFlags = (OfInt) LAYOUT.select(PATH$supportedEncodeFeedbackFlags);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

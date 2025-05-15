@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDescriptorImageInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorImageInfo.html">VkDescriptorImageInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final AddressLayout LAYOUT$sampler = ValueLayout.ADDRESS.withName("sampler");
-    public static final AddressLayout LAYOUT$imageView = ValueLayout.ADDRESS.withName("imageView");
-    public static final OfInt LAYOUT$imageLayout = ValueLayout.JAVA_INT.withName("imageLayout");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sampler, LAYOUT$imageView, LAYOUT$imageLayout);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkDescriptorImageInfo allocate(Arena arena) {
         return new VkDescriptorImageInfo(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withName("sampler"),
+        ValueLayout.ADDRESS.withName("imageView"),
+        ValueLayout.JAVA_INT.withName("imageLayout")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sampler = PathElement.groupElement("PATH$sampler");
     public static final PathElement PATH$imageView = PathElement.groupElement("PATH$imageView");
     public static final PathElement PATH$imageLayout = PathElement.groupElement("PATH$imageLayout");
+
+    public static final AddressLayout LAYOUT$sampler = (AddressLayout) LAYOUT.select(PATH$sampler);
+    public static final AddressLayout LAYOUT$imageView = (AddressLayout) LAYOUT.select(PATH$imageView);
+    public static final OfInt LAYOUT$imageLayout = (OfInt) LAYOUT.select(PATH$imageLayout);
 
     public static final long SIZE$sampler = LAYOUT$sampler.byteSize();
     public static final long SIZE$imageView = LAYOUT$imageView.byteSize();

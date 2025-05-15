@@ -14,17 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkCoarseSampleOrderCustomNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCoarseSampleOrderCustomNV.html">VkCoarseSampleOrderCustomNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$shadingRate = ValueLayout.JAVA_INT.withName("shadingRate");
-    public static final OfInt LAYOUT$sampleCount = ValueLayout.JAVA_INT.withName("sampleCount");
-    public static final OfInt LAYOUT$sampleLocationCount = ValueLayout.JAVA_INT.withName("sampleLocationCount");
-    public static final AddressLayout LAYOUT$pSampleLocations = ValueLayout.ADDRESS.withTargetLayout(VkCoarseSampleLocationNV.LAYOUT).withName("pSampleLocations");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$shadingRate, LAYOUT$sampleCount, LAYOUT$sampleLocationCount, LAYOUT$pSampleLocations);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkCoarseSampleOrderCustomNV allocate(Arena arena) {
         return new VkCoarseSampleOrderCustomNV(arena.allocate(LAYOUT));
     }
@@ -52,10 +55,23 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("shadingRate"),
+        ValueLayout.JAVA_INT.withName("sampleCount"),
+        ValueLayout.JAVA_INT.withName("sampleLocationCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkCoarseSampleLocationNV.LAYOUT).withName("pSampleLocations")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$shadingRate = PathElement.groupElement("PATH$shadingRate");
     public static final PathElement PATH$sampleCount = PathElement.groupElement("PATH$sampleCount");
     public static final PathElement PATH$sampleLocationCount = PathElement.groupElement("PATH$sampleLocationCount");
     public static final PathElement PATH$pSampleLocations = PathElement.groupElement("PATH$pSampleLocations");
+
+    public static final OfInt LAYOUT$shadingRate = (OfInt) LAYOUT.select(PATH$shadingRate);
+    public static final OfInt LAYOUT$sampleCount = (OfInt) LAYOUT.select(PATH$sampleCount);
+    public static final OfInt LAYOUT$sampleLocationCount = (OfInt) LAYOUT.select(PATH$sampleLocationCount);
+    public static final AddressLayout LAYOUT$pSampleLocations = (AddressLayout) LAYOUT.select(PATH$pSampleLocations);
 
     public static final long SIZE$shadingRate = LAYOUT$shadingRate.byteSize();
     public static final long SIZE$sampleCount = LAYOUT$sampleCount.byteSize();

@@ -14,22 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkAccelerationStructureTrianglesOpacityMicromapEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureTrianglesOpacityMicromapEXT.html">VkAccelerationStructureTrianglesOpacityMicromapEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$indexType = ValueLayout.JAVA_INT.withName("indexType");
-    public static final StructLayout LAYOUT$indexBuffer = VkDeviceOrHostAddressConstKHR.LAYOUT.withName("indexBuffer");
-    public static final OfLong LAYOUT$indexStride = ValueLayout.JAVA_LONG.withName("indexStride");
-    public static final OfInt LAYOUT$baseTriangle = ValueLayout.JAVA_INT.withName("baseTriangle");
-    public static final OfInt LAYOUT$usageCountsCount = ValueLayout.JAVA_INT.withName("usageCountsCount");
-    public static final AddressLayout LAYOUT$pUsageCounts = ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT).withName("pUsageCounts");
-    public static final AddressLayout LAYOUT$ppUsageCounts = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT)).withName("ppUsageCounts");
-    public static final AddressLayout LAYOUT$micromap = ValueLayout.ADDRESS.withName("micromap");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$indexType, LAYOUT$indexBuffer, LAYOUT$indexStride, LAYOUT$baseTriangle, LAYOUT$usageCountsCount, LAYOUT$pUsageCounts, LAYOUT$ppUsageCounts, LAYOUT$micromap);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT {
+        sType(VkStructureType.ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_EXT);
+    }
 
     public static VkAccelerationStructureTrianglesOpacityMicromapEXT allocate(Arena arena) {
         return new VkAccelerationStructureTrianglesOpacityMicromapEXT(arena.allocate(LAYOUT));
@@ -58,6 +59,20 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("indexType"),
+        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("indexBuffer"),
+        ValueLayout.JAVA_LONG.withName("indexStride"),
+        ValueLayout.JAVA_INT.withName("baseTriangle"),
+        ValueLayout.JAVA_INT.withName("usageCountsCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT).withName("pUsageCounts"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT)).withName("ppUsageCounts"),
+        ValueLayout.ADDRESS.withName("micromap")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$indexType = PathElement.groupElement("PATH$indexType");
@@ -68,6 +83,17 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
     public static final PathElement PATH$pUsageCounts = PathElement.groupElement("PATH$pUsageCounts");
     public static final PathElement PATH$ppUsageCounts = PathElement.groupElement("PATH$ppUsageCounts");
     public static final PathElement PATH$micromap = PathElement.groupElement("PATH$micromap");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$indexType = (OfInt) LAYOUT.select(PATH$indexType);
+    public static final StructLayout LAYOUT$indexBuffer = (StructLayout) LAYOUT.select(PATH$indexBuffer);
+    public static final OfLong LAYOUT$indexStride = (OfLong) LAYOUT.select(PATH$indexStride);
+    public static final OfInt LAYOUT$baseTriangle = (OfInt) LAYOUT.select(PATH$baseTriangle);
+    public static final OfInt LAYOUT$usageCountsCount = (OfInt) LAYOUT.select(PATH$usageCountsCount);
+    public static final AddressLayout LAYOUT$pUsageCounts = (AddressLayout) LAYOUT.select(PATH$pUsageCounts);
+    public static final AddressLayout LAYOUT$ppUsageCounts = (AddressLayout) LAYOUT.select(PATH$ppUsageCounts);
+    public static final AddressLayout LAYOUT$micromap = (AddressLayout) LAYOUT.select(PATH$micromap);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

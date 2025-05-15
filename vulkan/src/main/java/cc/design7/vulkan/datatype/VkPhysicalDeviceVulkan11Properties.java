@@ -14,29 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceVulkan11Properties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceVulkan11Properties.html">VkPhysicalDeviceVulkan11Properties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfByte LAYOUT$deviceUUID = ValueLayout.JAVA_BYTE.withName("deviceUUID");
-    public static final OfByte LAYOUT$driverUUID = ValueLayout.JAVA_BYTE.withName("driverUUID");
-    public static final OfByte LAYOUT$deviceLUID = ValueLayout.JAVA_BYTE.withName("deviceLUID");
-    public static final OfInt LAYOUT$deviceNodeMask = ValueLayout.JAVA_INT.withName("deviceNodeMask");
-    public static final OfInt LAYOUT$deviceLUIDValid = ValueLayout.JAVA_INT.withName("deviceLUIDValid");
-    public static final OfInt LAYOUT$subgroupSize = ValueLayout.JAVA_INT.withName("subgroupSize");
-    public static final OfInt LAYOUT$subgroupSupportedStages = ValueLayout.JAVA_INT.withName("subgroupSupportedStages");
-    public static final OfInt LAYOUT$subgroupSupportedOperations = ValueLayout.JAVA_INT.withName("subgroupSupportedOperations");
-    public static final OfInt LAYOUT$subgroupQuadOperationsInAllStages = ValueLayout.JAVA_INT.withName("subgroupQuadOperationsInAllStages");
-    public static final OfInt LAYOUT$pointClippingBehavior = ValueLayout.JAVA_INT.withName("pointClippingBehavior");
-    public static final OfInt LAYOUT$maxMultiviewViewCount = ValueLayout.JAVA_INT.withName("maxMultiviewViewCount");
-    public static final OfInt LAYOUT$maxMultiviewInstanceIndex = ValueLayout.JAVA_INT.withName("maxMultiviewInstanceIndex");
-    public static final OfInt LAYOUT$protectedNoFault = ValueLayout.JAVA_INT.withName("protectedNoFault");
-    public static final OfInt LAYOUT$maxPerSetDescriptors = ValueLayout.JAVA_INT.withName("maxPerSetDescriptors");
-    public static final OfLong LAYOUT$maxMemoryAllocationSize = ValueLayout.JAVA_LONG.withName("maxMemoryAllocationSize");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$deviceUUID, LAYOUT$driverUUID, LAYOUT$deviceLUID, LAYOUT$deviceNodeMask, LAYOUT$deviceLUIDValid, LAYOUT$subgroupSize, LAYOUT$subgroupSupportedStages, LAYOUT$subgroupSupportedOperations, LAYOUT$subgroupQuadOperationsInAllStages, LAYOUT$pointClippingBehavior, LAYOUT$maxMultiviewViewCount, LAYOUT$maxMultiviewInstanceIndex, LAYOUT$protectedNoFault, LAYOUT$maxPerSetDescriptors, LAYOUT$maxMemoryAllocationSize);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceVulkan11Properties {
+        sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_1_PROPERTIES);
+    }
 
     public static VkPhysicalDeviceVulkan11Properties allocate(Arena arena) {
         return new VkPhysicalDeviceVulkan11Properties(arena.allocate(LAYOUT));
@@ -65,6 +59,27 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_BYTE.withName("deviceUUID"),
+        ValueLayout.JAVA_BYTE.withName("driverUUID"),
+        ValueLayout.JAVA_BYTE.withName("deviceLUID"),
+        ValueLayout.JAVA_INT.withName("deviceNodeMask"),
+        ValueLayout.JAVA_INT.withName("deviceLUIDValid"),
+        ValueLayout.JAVA_INT.withName("subgroupSize"),
+        ValueLayout.JAVA_INT.withName("subgroupSupportedStages"),
+        ValueLayout.JAVA_INT.withName("subgroupSupportedOperations"),
+        ValueLayout.JAVA_INT.withName("subgroupQuadOperationsInAllStages"),
+        ValueLayout.JAVA_INT.withName("pointClippingBehavior"),
+        ValueLayout.JAVA_INT.withName("maxMultiviewViewCount"),
+        ValueLayout.JAVA_INT.withName("maxMultiviewInstanceIndex"),
+        ValueLayout.JAVA_INT.withName("protectedNoFault"),
+        ValueLayout.JAVA_INT.withName("maxPerSetDescriptors"),
+        ValueLayout.JAVA_LONG.withName("maxMemoryAllocationSize")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$deviceUUID = PathElement.groupElement("PATH$deviceUUID");
@@ -82,6 +97,24 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
     public static final PathElement PATH$protectedNoFault = PathElement.groupElement("PATH$protectedNoFault");
     public static final PathElement PATH$maxPerSetDescriptors = PathElement.groupElement("PATH$maxPerSetDescriptors");
     public static final PathElement PATH$maxMemoryAllocationSize = PathElement.groupElement("PATH$maxMemoryAllocationSize");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfByte LAYOUT$deviceUUID = (OfByte) LAYOUT.select(PATH$deviceUUID);
+    public static final OfByte LAYOUT$driverUUID = (OfByte) LAYOUT.select(PATH$driverUUID);
+    public static final OfByte LAYOUT$deviceLUID = (OfByte) LAYOUT.select(PATH$deviceLUID);
+    public static final OfInt LAYOUT$deviceNodeMask = (OfInt) LAYOUT.select(PATH$deviceNodeMask);
+    public static final OfInt LAYOUT$deviceLUIDValid = (OfInt) LAYOUT.select(PATH$deviceLUIDValid);
+    public static final OfInt LAYOUT$subgroupSize = (OfInt) LAYOUT.select(PATH$subgroupSize);
+    public static final OfInt LAYOUT$subgroupSupportedStages = (OfInt) LAYOUT.select(PATH$subgroupSupportedStages);
+    public static final OfInt LAYOUT$subgroupSupportedOperations = (OfInt) LAYOUT.select(PATH$subgroupSupportedOperations);
+    public static final OfInt LAYOUT$subgroupQuadOperationsInAllStages = (OfInt) LAYOUT.select(PATH$subgroupQuadOperationsInAllStages);
+    public static final OfInt LAYOUT$pointClippingBehavior = (OfInt) LAYOUT.select(PATH$pointClippingBehavior);
+    public static final OfInt LAYOUT$maxMultiviewViewCount = (OfInt) LAYOUT.select(PATH$maxMultiviewViewCount);
+    public static final OfInt LAYOUT$maxMultiviewInstanceIndex = (OfInt) LAYOUT.select(PATH$maxMultiviewInstanceIndex);
+    public static final OfInt LAYOUT$protectedNoFault = (OfInt) LAYOUT.select(PATH$protectedNoFault);
+    public static final OfInt LAYOUT$maxPerSetDescriptors = (OfInt) LAYOUT.select(PATH$maxPerSetDescriptors);
+    public static final OfLong LAYOUT$maxMemoryAllocationSize = (OfLong) LAYOUT.select(PATH$maxMemoryAllocationSize);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

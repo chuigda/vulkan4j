@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDescriptorSetLayoutHostMappingInfoVALVE} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorSetLayoutHostMappingInfoVALVE.html">VkDescriptorSetLayoutHostMappingInfoVALVE</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDescriptorSetLayoutHostMappingInfoVALVE(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final ValueLayout LAYOUT$descriptorOffset = NativeLayout.C_SIZE_T.withName("descriptorOffset");
-    public static final OfInt LAYOUT$descriptorSize = ValueLayout.JAVA_INT.withName("descriptorSize");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$descriptorOffset, LAYOUT$descriptorSize);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkDescriptorSetLayoutHostMappingInfoVALVE {
+        sType(VkStructureType.DESCRIPTOR_SET_LAYOUT_HOST_MAPPING_INFO_VALVE);
+    }
 
     public static VkDescriptorSetLayoutHostMappingInfoVALVE allocate(Arena arena) {
         return new VkDescriptorSetLayoutHostMappingInfoVALVE(arena.allocate(LAYOUT));
@@ -52,10 +59,22 @@ public record VkDescriptorSetLayoutHostMappingInfoVALVE(@NotNull MemorySegment s
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        NativeLayout.C_SIZE_T.withName("descriptorOffset"),
+        ValueLayout.JAVA_INT.withName("descriptorSize")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$descriptorOffset = PathElement.groupElement("PATH$descriptorOffset");
     public static final PathElement PATH$descriptorSize = PathElement.groupElement("PATH$descriptorSize");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$descriptorSize = (OfInt) LAYOUT.select(PATH$descriptorSize);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

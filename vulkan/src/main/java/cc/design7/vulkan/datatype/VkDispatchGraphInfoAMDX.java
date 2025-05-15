@@ -14,17 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDispatchGraphInfoAMDX} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDispatchGraphInfoAMDX.html">VkDispatchGraphInfoAMDX</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$nodeIndex = ValueLayout.JAVA_INT.withName("nodeIndex");
-    public static final OfInt LAYOUT$payloadCount = ValueLayout.JAVA_INT.withName("payloadCount");
-    public static final StructLayout LAYOUT$payloads = VkDeviceOrHostAddressConstAMDX.LAYOUT.withName("payloads");
-    public static final OfLong LAYOUT$payloadStride = ValueLayout.JAVA_LONG.withName("payloadStride");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$nodeIndex, LAYOUT$payloadCount, LAYOUT$payloads, LAYOUT$payloadStride);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkDispatchGraphInfoAMDX allocate(Arena arena) {
         return new VkDispatchGraphInfoAMDX(arena.allocate(LAYOUT));
     }
@@ -52,10 +55,23 @@ public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("nodeIndex"),
+        ValueLayout.JAVA_INT.withName("payloadCount"),
+        VkDeviceOrHostAddressConstAMDX.LAYOUT.withName("payloads"),
+        ValueLayout.JAVA_LONG.withName("payloadStride")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$nodeIndex = PathElement.groupElement("PATH$nodeIndex");
     public static final PathElement PATH$payloadCount = PathElement.groupElement("PATH$payloadCount");
     public static final PathElement PATH$payloads = PathElement.groupElement("PATH$payloads");
     public static final PathElement PATH$payloadStride = PathElement.groupElement("PATH$payloadStride");
+
+    public static final OfInt LAYOUT$nodeIndex = (OfInt) LAYOUT.select(PATH$nodeIndex);
+    public static final OfInt LAYOUT$payloadCount = (OfInt) LAYOUT.select(PATH$payloadCount);
+    public static final StructLayout LAYOUT$payloads = (StructLayout) LAYOUT.select(PATH$payloads);
+    public static final OfLong LAYOUT$payloadStride = (OfLong) LAYOUT.select(PATH$payloadStride);
 
     public static final long SIZE$nodeIndex = LAYOUT$nodeIndex.byteSize();
     public static final long SIZE$payloadCount = LAYOUT$payloadCount.byteSize();

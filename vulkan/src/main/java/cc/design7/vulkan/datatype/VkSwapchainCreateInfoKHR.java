@@ -14,30 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkSwapchainCreateInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSwapchainCreateInfoKHR.html">VkSwapchainCreateInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final AddressLayout LAYOUT$surface = ValueLayout.ADDRESS.withName("surface");
-    public static final OfInt LAYOUT$minImageCount = ValueLayout.JAVA_INT.withName("minImageCount");
-    public static final OfInt LAYOUT$imageFormat = ValueLayout.JAVA_INT.withName("imageFormat");
-    public static final OfInt LAYOUT$imageColorSpace = ValueLayout.JAVA_INT.withName("imageColorSpace");
-    public static final StructLayout LAYOUT$imageExtent = VkExtent2D.LAYOUT.withName("imageExtent");
-    public static final OfInt LAYOUT$imageArrayLayers = ValueLayout.JAVA_INT.withName("imageArrayLayers");
-    public static final OfInt LAYOUT$imageUsage = ValueLayout.JAVA_INT.withName("imageUsage");
-    public static final OfInt LAYOUT$imageSharingMode = ValueLayout.JAVA_INT.withName("imageSharingMode");
-    public static final OfInt LAYOUT$queueFamilyIndexCount = ValueLayout.JAVA_INT.withName("queueFamilyIndexCount");
-    public static final AddressLayout LAYOUT$pQueueFamilyIndices = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pQueueFamilyIndices");
-    public static final OfInt LAYOUT$preTransform = ValueLayout.JAVA_INT.withName("preTransform");
-    public static final OfInt LAYOUT$compositeAlpha = ValueLayout.JAVA_INT.withName("compositeAlpha");
-    public static final OfInt LAYOUT$presentMode = ValueLayout.JAVA_INT.withName("presentMode");
-    public static final OfInt LAYOUT$clipped = ValueLayout.JAVA_INT.withName("clipped");
-    public static final AddressLayout LAYOUT$oldSwapchain = ValueLayout.ADDRESS.withName("oldSwapchain");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$surface, LAYOUT$minImageCount, LAYOUT$imageFormat, LAYOUT$imageColorSpace, LAYOUT$imageExtent, LAYOUT$imageArrayLayers, LAYOUT$imageUsage, LAYOUT$imageSharingMode, LAYOUT$queueFamilyIndexCount, LAYOUT$pQueueFamilyIndices, LAYOUT$preTransform, LAYOUT$compositeAlpha, LAYOUT$presentMode, LAYOUT$clipped, LAYOUT$oldSwapchain);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkSwapchainCreateInfoKHR {
+        sType(VkStructureType.SWAPCHAIN_CREATE_INFO_KHR);
+    }
 
     public static VkSwapchainCreateInfoKHR allocate(Arena arena) {
         return new VkSwapchainCreateInfoKHR(arena.allocate(LAYOUT));
@@ -66,6 +59,28 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.ADDRESS.withName("surface"),
+        ValueLayout.JAVA_INT.withName("minImageCount"),
+        ValueLayout.JAVA_INT.withName("imageFormat"),
+        ValueLayout.JAVA_INT.withName("imageColorSpace"),
+        VkExtent2D.LAYOUT.withName("imageExtent"),
+        ValueLayout.JAVA_INT.withName("imageArrayLayers"),
+        ValueLayout.JAVA_INT.withName("imageUsage"),
+        ValueLayout.JAVA_INT.withName("imageSharingMode"),
+        ValueLayout.JAVA_INT.withName("queueFamilyIndexCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pQueueFamilyIndices"),
+        ValueLayout.JAVA_INT.withName("preTransform"),
+        ValueLayout.JAVA_INT.withName("compositeAlpha"),
+        ValueLayout.JAVA_INT.withName("presentMode"),
+        ValueLayout.JAVA_INT.withName("clipped"),
+        ValueLayout.ADDRESS.withName("oldSwapchain")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -84,6 +99,25 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
     public static final PathElement PATH$presentMode = PathElement.groupElement("PATH$presentMode");
     public static final PathElement PATH$clipped = PathElement.groupElement("PATH$clipped");
     public static final PathElement PATH$oldSwapchain = PathElement.groupElement("PATH$oldSwapchain");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$surface = (AddressLayout) LAYOUT.select(PATH$surface);
+    public static final OfInt LAYOUT$minImageCount = (OfInt) LAYOUT.select(PATH$minImageCount);
+    public static final OfInt LAYOUT$imageFormat = (OfInt) LAYOUT.select(PATH$imageFormat);
+    public static final OfInt LAYOUT$imageColorSpace = (OfInt) LAYOUT.select(PATH$imageColorSpace);
+    public static final StructLayout LAYOUT$imageExtent = (StructLayout) LAYOUT.select(PATH$imageExtent);
+    public static final OfInt LAYOUT$imageArrayLayers = (OfInt) LAYOUT.select(PATH$imageArrayLayers);
+    public static final OfInt LAYOUT$imageUsage = (OfInt) LAYOUT.select(PATH$imageUsage);
+    public static final OfInt LAYOUT$imageSharingMode = (OfInt) LAYOUT.select(PATH$imageSharingMode);
+    public static final OfInt LAYOUT$queueFamilyIndexCount = (OfInt) LAYOUT.select(PATH$queueFamilyIndexCount);
+    public static final AddressLayout LAYOUT$pQueueFamilyIndices = (AddressLayout) LAYOUT.select(PATH$pQueueFamilyIndices);
+    public static final OfInt LAYOUT$preTransform = (OfInt) LAYOUT.select(PATH$preTransform);
+    public static final OfInt LAYOUT$compositeAlpha = (OfInt) LAYOUT.select(PATH$compositeAlpha);
+    public static final OfInt LAYOUT$presentMode = (OfInt) LAYOUT.select(PATH$presentMode);
+    public static final OfInt LAYOUT$clipped = (OfInt) LAYOUT.select(PATH$clipped);
+    public static final AddressLayout LAYOUT$oldSwapchain = (AddressLayout) LAYOUT.select(PATH$oldSwapchain);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

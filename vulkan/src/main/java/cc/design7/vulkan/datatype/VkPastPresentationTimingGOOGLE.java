@@ -14,18 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPastPresentationTimingGOOGLE} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPastPresentationTimingGOOGLE.html">VkPastPresentationTimingGOOGLE</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$presentID = ValueLayout.JAVA_INT.withName("presentID");
-    public static final OfLong LAYOUT$desiredPresentTime = ValueLayout.JAVA_LONG.withName("desiredPresentTime");
-    public static final OfLong LAYOUT$actualPresentTime = ValueLayout.JAVA_LONG.withName("actualPresentTime");
-    public static final OfLong LAYOUT$earliestPresentTime = ValueLayout.JAVA_LONG.withName("earliestPresentTime");
-    public static final OfLong LAYOUT$presentMargin = ValueLayout.JAVA_LONG.withName("presentMargin");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$presentID, LAYOUT$desiredPresentTime, LAYOUT$actualPresentTime, LAYOUT$earliestPresentTime, LAYOUT$presentMargin);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkPastPresentationTimingGOOGLE allocate(Arena arena) {
         return new VkPastPresentationTimingGOOGLE(arena.allocate(LAYOUT));
     }
@@ -53,11 +55,26 @@ public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) imp
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("presentID"),
+        ValueLayout.JAVA_LONG.withName("desiredPresentTime"),
+        ValueLayout.JAVA_LONG.withName("actualPresentTime"),
+        ValueLayout.JAVA_LONG.withName("earliestPresentTime"),
+        ValueLayout.JAVA_LONG.withName("presentMargin")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$presentID = PathElement.groupElement("PATH$presentID");
     public static final PathElement PATH$desiredPresentTime = PathElement.groupElement("PATH$desiredPresentTime");
     public static final PathElement PATH$actualPresentTime = PathElement.groupElement("PATH$actualPresentTime");
     public static final PathElement PATH$earliestPresentTime = PathElement.groupElement("PATH$earliestPresentTime");
     public static final PathElement PATH$presentMargin = PathElement.groupElement("PATH$presentMargin");
+
+    public static final OfInt LAYOUT$presentID = (OfInt) LAYOUT.select(PATH$presentID);
+    public static final OfLong LAYOUT$desiredPresentTime = (OfLong) LAYOUT.select(PATH$desiredPresentTime);
+    public static final OfLong LAYOUT$actualPresentTime = (OfLong) LAYOUT.select(PATH$actualPresentTime);
+    public static final OfLong LAYOUT$earliestPresentTime = (OfLong) LAYOUT.select(PATH$earliestPresentTime);
+    public static final OfLong LAYOUT$presentMargin = (OfLong) LAYOUT.select(PATH$presentMargin);
 
     public static final long SIZE$presentID = LAYOUT$presentID.byteSize();
     public static final long SIZE$desiredPresentTime = LAYOUT$desiredPresentTime.byteSize();

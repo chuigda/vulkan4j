@@ -14,18 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPerformanceValueDataINTEL} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceValueDataINTEL.html">VkPerformanceValueDataINTEL</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$value32 = ValueLayout.JAVA_INT.withName("value32");
-    public static final OfLong LAYOUT$value64 = ValueLayout.JAVA_LONG.withName("value64");
-    public static final OfFloat LAYOUT$valueFloat = ValueLayout.JAVA_FLOAT.withName("valueFloat");
-    public static final OfInt LAYOUT$valueBool = ValueLayout.JAVA_INT.withName("valueBool");
-    public static final AddressLayout LAYOUT$valueString = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("valueString");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(LAYOUT$value32, LAYOUT$value64, LAYOUT$valueFloat, LAYOUT$valueBool, LAYOUT$valueString);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkPerformanceValueDataINTEL allocate(Arena arena) {
         return new VkPerformanceValueDataINTEL(arena.allocate(LAYOUT));
     }
@@ -53,11 +55,26 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
         return ret;
     }
 
+    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
+        ValueLayout.JAVA_INT.withName("value32"),
+        ValueLayout.JAVA_LONG.withName("value64"),
+        ValueLayout.JAVA_FLOAT.withName("valueFloat"),
+        ValueLayout.JAVA_INT.withName("valueBool"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("valueString")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$value32 = PathElement.groupElement("PATH$value32");
     public static final PathElement PATH$value64 = PathElement.groupElement("PATH$value64");
     public static final PathElement PATH$valueFloat = PathElement.groupElement("PATH$valueFloat");
     public static final PathElement PATH$valueBool = PathElement.groupElement("PATH$valueBool");
     public static final PathElement PATH$valueString = PathElement.groupElement("PATH$valueString");
+
+    public static final OfInt LAYOUT$value32 = (OfInt) LAYOUT.select(PATH$value32);
+    public static final OfLong LAYOUT$value64 = (OfLong) LAYOUT.select(PATH$value64);
+    public static final OfFloat LAYOUT$valueFloat = (OfFloat) LAYOUT.select(PATH$valueFloat);
+    public static final OfInt LAYOUT$valueBool = (OfInt) LAYOUT.select(PATH$valueBool);
+    public static final AddressLayout LAYOUT$valueString = (AddressLayout) LAYOUT.select(PATH$valueString);
 
     public static final long SIZE$value32 = LAYOUT$value32.byteSize();
     public static final long SIZE$value64 = LAYOUT$value64.byteSize();

@@ -15,13 +15,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoEncodeH265ReferenceListsInfoFlags} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoEncodeH265ReferenceListsInfoFlags(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$ref_pic_list_modification_flag_l0_reserved = ValueLayout.JAVA_INT.withName("bitfield$ref_pic_list_modification_flag_l0_reserved");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$ref_pic_list_modification_flag_l0_reserved);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoEncodeH265ReferenceListsInfoFlags allocate(Arena arena) {
         return new StdVideoEncodeH265ReferenceListsInfoFlags(arena.allocate(LAYOUT));
     }
@@ -49,7 +54,14 @@ public record StdVideoEncodeH265ReferenceListsInfoFlags(@NotNull MemorySegment s
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$ref_pic_list_modification_flag_l0_reserved")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$bitfield$ref_pic_list_modification_flag_l0_reserved = PathElement.groupElement("PATH$bitfield$ref_pic_list_modification_flag_l0_reserved");
+
+    public static final OfInt LAYOUT$ref_pic_list_modification_flag_l0_reserved = (OfInt) LAYOUT.select(PATH$bitfield$ref_pic_list_modification_flag_l0_reserved);
 
 
     public static final long OFFSET$ref_pic_list_modification_flag_l0_reserved = LAYOUT.byteOffset(PATH$bitfield$ref_pic_list_modification_flag_l0_reserved);

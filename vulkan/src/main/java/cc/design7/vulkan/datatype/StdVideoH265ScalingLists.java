@@ -14,18 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoH265ScalingLists} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfByte LAYOUT$ScalingList4x4 = ValueLayout.JAVA_BYTE.withName("ScalingList4x4");
-    public static final OfByte LAYOUT$ScalingList8x8 = ValueLayout.JAVA_BYTE.withName("ScalingList8x8");
-    public static final OfByte LAYOUT$ScalingList16x16 = ValueLayout.JAVA_BYTE.withName("ScalingList16x16");
-    public static final OfByte LAYOUT$ScalingList32x32 = ValueLayout.JAVA_BYTE.withName("ScalingList32x32");
-    public static final OfByte LAYOUT$ScalingListDCCoef16x16 = ValueLayout.JAVA_BYTE.withName("ScalingListDCCoef16x16");
-    public static final OfByte LAYOUT$ScalingListDCCoef32x32 = ValueLayout.JAVA_BYTE.withName("ScalingListDCCoef32x32");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$ScalingList4x4, LAYOUT$ScalingList8x8, LAYOUT$ScalingList16x16, LAYOUT$ScalingList32x32, LAYOUT$ScalingListDCCoef16x16, LAYOUT$ScalingListDCCoef32x32);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoH265ScalingLists allocate(Arena arena) {
         return new StdVideoH265ScalingLists(arena.allocate(LAYOUT));
     }
@@ -53,12 +53,29 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_BYTE.withName("ScalingList4x4"),
+        ValueLayout.JAVA_BYTE.withName("ScalingList8x8"),
+        ValueLayout.JAVA_BYTE.withName("ScalingList16x16"),
+        ValueLayout.JAVA_BYTE.withName("ScalingList32x32"),
+        ValueLayout.JAVA_BYTE.withName("ScalingListDCCoef16x16"),
+        ValueLayout.JAVA_BYTE.withName("ScalingListDCCoef32x32")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$ScalingList4x4 = PathElement.groupElement("PATH$ScalingList4x4");
     public static final PathElement PATH$ScalingList8x8 = PathElement.groupElement("PATH$ScalingList8x8");
     public static final PathElement PATH$ScalingList16x16 = PathElement.groupElement("PATH$ScalingList16x16");
     public static final PathElement PATH$ScalingList32x32 = PathElement.groupElement("PATH$ScalingList32x32");
     public static final PathElement PATH$ScalingListDCCoef16x16 = PathElement.groupElement("PATH$ScalingListDCCoef16x16");
     public static final PathElement PATH$ScalingListDCCoef32x32 = PathElement.groupElement("PATH$ScalingListDCCoef32x32");
+
+    public static final OfByte LAYOUT$ScalingList4x4 = (OfByte) LAYOUT.select(PATH$ScalingList4x4);
+    public static final OfByte LAYOUT$ScalingList8x8 = (OfByte) LAYOUT.select(PATH$ScalingList8x8);
+    public static final OfByte LAYOUT$ScalingList16x16 = (OfByte) LAYOUT.select(PATH$ScalingList16x16);
+    public static final OfByte LAYOUT$ScalingList32x32 = (OfByte) LAYOUT.select(PATH$ScalingList32x32);
+    public static final OfByte LAYOUT$ScalingListDCCoef16x16 = (OfByte) LAYOUT.select(PATH$ScalingListDCCoef16x16);
+    public static final OfByte LAYOUT$ScalingListDCCoef32x32 = (OfByte) LAYOUT.select(PATH$ScalingListDCCoef32x32);
 
     public static final long SIZE$ScalingList4x4 = LAYOUT$ScalingList4x4.byteSize();
     public static final long SIZE$ScalingList8x8 = LAYOUT$ScalingList8x8.byteSize();

@@ -14,17 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkLayerProperties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLayerProperties.html">VkLayerProperties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkLayerProperties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfByte LAYOUT$layerName = ValueLayout.JAVA_BYTE.withName("layerName");
-    public static final OfInt LAYOUT$specVersion = ValueLayout.JAVA_INT.withName("specVersion");
-    public static final OfInt LAYOUT$implementationVersion = ValueLayout.JAVA_INT.withName("implementationVersion");
-    public static final OfByte LAYOUT$description = ValueLayout.JAVA_BYTE.withName("description");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$layerName, LAYOUT$specVersion, LAYOUT$implementationVersion, LAYOUT$description);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkLayerProperties allocate(Arena arena) {
         return new VkLayerProperties(arena.allocate(LAYOUT));
     }
@@ -52,10 +55,23 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IPoin
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_BYTE.withName("layerName"),
+        ValueLayout.JAVA_INT.withName("specVersion"),
+        ValueLayout.JAVA_INT.withName("implementationVersion"),
+        ValueLayout.JAVA_BYTE.withName("description")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$layerName = PathElement.groupElement("PATH$layerName");
     public static final PathElement PATH$specVersion = PathElement.groupElement("PATH$specVersion");
     public static final PathElement PATH$implementationVersion = PathElement.groupElement("PATH$implementationVersion");
     public static final PathElement PATH$description = PathElement.groupElement("PATH$description");
+
+    public static final OfByte LAYOUT$layerName = (OfByte) LAYOUT.select(PATH$layerName);
+    public static final OfInt LAYOUT$specVersion = (OfInt) LAYOUT.select(PATH$specVersion);
+    public static final OfInt LAYOUT$implementationVersion = (OfInt) LAYOUT.select(PATH$implementationVersion);
+    public static final OfByte LAYOUT$description = (OfByte) LAYOUT.select(PATH$description);
 
     public static final long SIZE$layerName = LAYOUT$layerName.byteSize();
     public static final long SIZE$specVersion = LAYOUT$specVersion.byteSize();

@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceExternalFormatResolvePropertiesANDROID} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.html">VkPhysicalDeviceExternalFormatResolvePropertiesANDROID</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$nullColorAttachmentWithExternalFormatResolve = ValueLayout.JAVA_INT.withName("nullColorAttachmentWithExternalFormatResolve");
-    public static final OfInt LAYOUT$externalFormatResolveChromaOffsetX = ValueLayout.JAVA_INT.withName("externalFormatResolveChromaOffsetX");
-    public static final OfInt LAYOUT$externalFormatResolveChromaOffsetY = ValueLayout.JAVA_INT.withName("externalFormatResolveChromaOffsetY");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$nullColorAttachmentWithExternalFormatResolve, LAYOUT$externalFormatResolveChromaOffsetX, LAYOUT$externalFormatResolveChromaOffsetY);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID {
+        sType(VkStructureType.PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_PROPERTIES_ANDROID);
+    }
 
     public static VkPhysicalDeviceExternalFormatResolvePropertiesANDROID allocate(Arena arena) {
         return new VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(@NotNull Me
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("nullColorAttachmentWithExternalFormatResolve"),
+        ValueLayout.JAVA_INT.withName("externalFormatResolveChromaOffsetX"),
+        ValueLayout.JAVA_INT.withName("externalFormatResolveChromaOffsetY")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$nullColorAttachmentWithExternalFormatResolve = PathElement.groupElement("PATH$nullColorAttachmentWithExternalFormatResolve");
     public static final PathElement PATH$externalFormatResolveChromaOffsetX = PathElement.groupElement("PATH$externalFormatResolveChromaOffsetX");
     public static final PathElement PATH$externalFormatResolveChromaOffsetY = PathElement.groupElement("PATH$externalFormatResolveChromaOffsetY");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$nullColorAttachmentWithExternalFormatResolve = (OfInt) LAYOUT.select(PATH$nullColorAttachmentWithExternalFormatResolve);
+    public static final OfInt LAYOUT$externalFormatResolveChromaOffsetX = (OfInt) LAYOUT.select(PATH$externalFormatResolveChromaOffsetX);
+    public static final OfInt LAYOUT$externalFormatResolveChromaOffsetY = (OfInt) LAYOUT.select(PATH$externalFormatResolveChromaOffsetY);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

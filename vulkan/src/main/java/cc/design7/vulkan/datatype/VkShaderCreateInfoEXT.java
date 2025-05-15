@@ -14,26 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkShaderCreateInfoEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkShaderCreateInfoEXT.html">VkShaderCreateInfoEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$stage = ValueLayout.JAVA_INT.withName("stage");
-    public static final OfInt LAYOUT$nextStage = ValueLayout.JAVA_INT.withName("nextStage");
-    public static final OfInt LAYOUT$codeType = ValueLayout.JAVA_INT.withName("codeType");
-    public static final ValueLayout LAYOUT$codeSize = NativeLayout.C_SIZE_T.withName("codeSize");
-    public static final AddressLayout LAYOUT$pCode = ValueLayout.ADDRESS.withName("pCode");
-    public static final AddressLayout LAYOUT$pName = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pName");
-    public static final OfInt LAYOUT$setLayoutCount = ValueLayout.JAVA_INT.withName("setLayoutCount");
-    public static final AddressLayout LAYOUT$pSetLayouts = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pSetLayouts");
-    public static final OfInt LAYOUT$pushConstantRangeCount = ValueLayout.JAVA_INT.withName("pushConstantRangeCount");
-    public static final AddressLayout LAYOUT$pPushConstantRanges = ValueLayout.ADDRESS.withTargetLayout(VkPushConstantRange.LAYOUT).withName("pPushConstantRanges");
-    public static final AddressLayout LAYOUT$pSpecializationInfo = ValueLayout.ADDRESS.withTargetLayout(VkSpecializationInfo.LAYOUT).withName("pSpecializationInfo");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$stage, LAYOUT$nextStage, LAYOUT$codeType, LAYOUT$codeSize, LAYOUT$pCode, LAYOUT$pName, LAYOUT$setLayoutCount, LAYOUT$pSetLayouts, LAYOUT$pushConstantRangeCount, LAYOUT$pPushConstantRanges, LAYOUT$pSpecializationInfo);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkShaderCreateInfoEXT {
+        sType(VkStructureType.SHADER_CREATE_INFO_EXT);
+    }
 
     public static VkShaderCreateInfoEXT allocate(Arena arena) {
         return new VkShaderCreateInfoEXT(arena.allocate(LAYOUT));
@@ -62,6 +59,24 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("stage"),
+        ValueLayout.JAVA_INT.withName("nextStage"),
+        ValueLayout.JAVA_INT.withName("codeType"),
+        NativeLayout.C_SIZE_T.withName("codeSize"),
+        ValueLayout.ADDRESS.withName("pCode"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pName"),
+        ValueLayout.JAVA_INT.withName("setLayoutCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pSetLayouts"),
+        ValueLayout.JAVA_INT.withName("pushConstantRangeCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPushConstantRange.LAYOUT).withName("pPushConstantRanges"),
+        ValueLayout.ADDRESS.withTargetLayout(VkSpecializationInfo.LAYOUT).withName("pSpecializationInfo")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -76,6 +91,20 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
     public static final PathElement PATH$pushConstantRangeCount = PathElement.groupElement("PATH$pushConstantRangeCount");
     public static final PathElement PATH$pPushConstantRanges = PathElement.groupElement("PATH$pPushConstantRanges");
     public static final PathElement PATH$pSpecializationInfo = PathElement.groupElement("PATH$pSpecializationInfo");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$stage = (OfInt) LAYOUT.select(PATH$stage);
+    public static final OfInt LAYOUT$nextStage = (OfInt) LAYOUT.select(PATH$nextStage);
+    public static final OfInt LAYOUT$codeType = (OfInt) LAYOUT.select(PATH$codeType);
+    public static final AddressLayout LAYOUT$pCode = (AddressLayout) LAYOUT.select(PATH$pCode);
+    public static final AddressLayout LAYOUT$pName = (AddressLayout) LAYOUT.select(PATH$pName);
+    public static final OfInt LAYOUT$setLayoutCount = (OfInt) LAYOUT.select(PATH$setLayoutCount);
+    public static final AddressLayout LAYOUT$pSetLayouts = (AddressLayout) LAYOUT.select(PATH$pSetLayouts);
+    public static final OfInt LAYOUT$pushConstantRangeCount = (OfInt) LAYOUT.select(PATH$pushConstantRangeCount);
+    public static final AddressLayout LAYOUT$pPushConstantRanges = (AddressLayout) LAYOUT.select(PATH$pPushConstantRanges);
+    public static final AddressLayout LAYOUT$pSpecializationInfo = (AddressLayout) LAYOUT.select(PATH$pSpecializationInfo);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

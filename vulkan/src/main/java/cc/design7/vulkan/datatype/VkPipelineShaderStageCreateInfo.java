@@ -14,19 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPipelineShaderStageCreateInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineShaderStageCreateInfo.html">VkPipelineShaderStageCreateInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$stage = ValueLayout.JAVA_INT.withName("stage");
-    public static final AddressLayout LAYOUT$module = ValueLayout.ADDRESS.withName("module");
-    public static final AddressLayout LAYOUT$pName = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pName");
-    public static final AddressLayout LAYOUT$pSpecializationInfo = ValueLayout.ADDRESS.withTargetLayout(VkSpecializationInfo.LAYOUT).withName("pSpecializationInfo");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$stage, LAYOUT$module, LAYOUT$pName, LAYOUT$pSpecializationInfo);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPipelineShaderStageCreateInfo {
+        sType(VkStructureType.PIPELINE_SHADER_STAGE_CREATE_INFO);
+    }
 
     public static VkPipelineShaderStageCreateInfo allocate(Arena arena) {
         return new VkPipelineShaderStageCreateInfo(arena.allocate(LAYOUT));
@@ -55,6 +59,17 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("stage"),
+        ValueLayout.ADDRESS.withName("module"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pName"),
+        ValueLayout.ADDRESS.withTargetLayout(VkSpecializationInfo.LAYOUT).withName("pSpecializationInfo")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -62,6 +77,14 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
     public static final PathElement PATH$module = PathElement.groupElement("PATH$module");
     public static final PathElement PATH$pName = PathElement.groupElement("PATH$pName");
     public static final PathElement PATH$pSpecializationInfo = PathElement.groupElement("PATH$pSpecializationInfo");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$stage = (OfInt) LAYOUT.select(PATH$stage);
+    public static final AddressLayout LAYOUT$module = (AddressLayout) LAYOUT.select(PATH$module);
+    public static final AddressLayout LAYOUT$pName = (AddressLayout) LAYOUT.select(PATH$pName);
+    public static final AddressLayout LAYOUT$pSpecializationInfo = (AddressLayout) LAYOUT.select(PATH$pSpecializationInfo);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

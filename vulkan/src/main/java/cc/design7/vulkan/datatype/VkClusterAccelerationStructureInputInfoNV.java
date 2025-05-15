@@ -14,19 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkClusterAccelerationStructureInputInfoNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureInputInfoNV.html">VkClusterAccelerationStructureInputInfoNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkClusterAccelerationStructureInputInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$maxAccelerationStructureCount = ValueLayout.JAVA_INT.withName("maxAccelerationStructureCount");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$opType = ValueLayout.JAVA_INT.withName("opType");
-    public static final OfInt LAYOUT$opMode = ValueLayout.JAVA_INT.withName("opMode");
-    public static final StructLayout LAYOUT$opInput = VkClusterAccelerationStructureOpInputNV.LAYOUT.withName("opInput");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$maxAccelerationStructureCount, LAYOUT$flags, LAYOUT$opType, LAYOUT$opMode, LAYOUT$opInput);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkClusterAccelerationStructureInputInfoNV {
+        sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_INPUT_INFO_NV);
+    }
 
     public static VkClusterAccelerationStructureInputInfoNV allocate(Arena arena) {
         return new VkClusterAccelerationStructureInputInfoNV(arena.allocate(LAYOUT));
@@ -55,6 +59,17 @@ public record VkClusterAccelerationStructureInputInfoNV(@NotNull MemorySegment s
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maxAccelerationStructureCount"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("opType"),
+        ValueLayout.JAVA_INT.withName("opMode"),
+        VkClusterAccelerationStructureOpInputNV.LAYOUT.withName("opInput")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$maxAccelerationStructureCount = PathElement.groupElement("PATH$maxAccelerationStructureCount");
@@ -62,6 +77,14 @@ public record VkClusterAccelerationStructureInputInfoNV(@NotNull MemorySegment s
     public static final PathElement PATH$opType = PathElement.groupElement("PATH$opType");
     public static final PathElement PATH$opMode = PathElement.groupElement("PATH$opMode");
     public static final PathElement PATH$opInput = PathElement.groupElement("PATH$opInput");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maxAccelerationStructureCount = (OfInt) LAYOUT.select(PATH$maxAccelerationStructureCount);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$opType = (OfInt) LAYOUT.select(PATH$opType);
+    public static final OfInt LAYOUT$opMode = (OfInt) LAYOUT.select(PATH$opMode);
+    public static final StructLayout LAYOUT$opInput = (StructLayout) LAYOUT.select(PATH$opInput);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

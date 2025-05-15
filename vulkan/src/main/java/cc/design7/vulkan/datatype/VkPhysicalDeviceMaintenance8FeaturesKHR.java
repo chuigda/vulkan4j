@@ -14,15 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceMaintenance8FeaturesKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMaintenance8FeaturesKHR.html">VkPhysicalDeviceMaintenance8FeaturesKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceMaintenance8FeaturesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$maintenance8 = ValueLayout.JAVA_INT.withName("maintenance8");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$maintenance8);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceMaintenance8FeaturesKHR {
+        sType(VkStructureType.PHYSICAL_DEVICE_MAINTENANCE_8_FEATURES_KHR);
+    }
 
     public static VkPhysicalDeviceMaintenance8FeaturesKHR allocate(Arena arena) {
         return new VkPhysicalDeviceMaintenance8FeaturesKHR(arena.allocate(LAYOUT));
@@ -51,9 +59,20 @@ public record VkPhysicalDeviceMaintenance8FeaturesKHR(@NotNull MemorySegment seg
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maintenance8")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$maintenance8 = PathElement.groupElement("PATH$maintenance8");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maintenance8 = (OfInt) LAYOUT.select(PATH$maintenance8);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,15 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoEncodeH264RefListModEntry} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$modification_of_pic_nums_idc = ValueLayout.JAVA_INT.withName("modification_of_pic_nums_idc");
-    public static final OfShort LAYOUT$abs_diff_pic_num_minus1 = ValueLayout.JAVA_SHORT.withName("abs_diff_pic_num_minus1");
-    public static final OfShort LAYOUT$long_term_pic_num = ValueLayout.JAVA_SHORT.withName("long_term_pic_num");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$modification_of_pic_nums_idc, LAYOUT$abs_diff_pic_num_minus1, LAYOUT$long_term_pic_num);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoEncodeH264RefListModEntry allocate(Arena arena) {
         return new StdVideoEncodeH264RefListModEntry(arena.allocate(LAYOUT));
     }
@@ -50,9 +53,20 @@ public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("modification_of_pic_nums_idc"),
+        ValueLayout.JAVA_SHORT.withName("abs_diff_pic_num_minus1"),
+        ValueLayout.JAVA_SHORT.withName("long_term_pic_num")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$modification_of_pic_nums_idc = PathElement.groupElement("PATH$modification_of_pic_nums_idc");
     public static final PathElement PATH$abs_diff_pic_num_minus1 = PathElement.groupElement("PATH$abs_diff_pic_num_minus1");
     public static final PathElement PATH$long_term_pic_num = PathElement.groupElement("PATH$long_term_pic_num");
+
+    public static final OfInt LAYOUT$modification_of_pic_nums_idc = (OfInt) LAYOUT.select(PATH$modification_of_pic_nums_idc);
+    public static final OfShort LAYOUT$abs_diff_pic_num_minus1 = (OfShort) LAYOUT.select(PATH$abs_diff_pic_num_minus1);
+    public static final OfShort LAYOUT$long_term_pic_num = (OfShort) LAYOUT.select(PATH$long_term_pic_num);
 
     public static final long SIZE$modification_of_pic_nums_idc = LAYOUT$modification_of_pic_nums_idc.byteSize();
     public static final long SIZE$abs_diff_pic_num_minus1 = LAYOUT$abs_diff_pic_num_minus1.byteSize();

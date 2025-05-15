@@ -14,19 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkBindAccelerationStructureMemoryInfoNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindAccelerationStructureMemoryInfoNV.html">VkBindAccelerationStructureMemoryInfoNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$accelerationStructure = ValueLayout.ADDRESS.withName("accelerationStructure");
-    public static final AddressLayout LAYOUT$memory = ValueLayout.ADDRESS.withName("memory");
-    public static final OfLong LAYOUT$memoryOffset = ValueLayout.JAVA_LONG.withName("memoryOffset");
-    public static final OfInt LAYOUT$deviceIndexCount = ValueLayout.JAVA_INT.withName("deviceIndexCount");
-    public static final AddressLayout LAYOUT$pDeviceIndices = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDeviceIndices");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$accelerationStructure, LAYOUT$memory, LAYOUT$memoryOffset, LAYOUT$deviceIndexCount, LAYOUT$pDeviceIndices);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkBindAccelerationStructureMemoryInfoNV {
+        sType(VkStructureType.BIND_ACCELERATION_STRUCTURE_MEMORY_INFO_NV);
+    }
 
     public static VkBindAccelerationStructureMemoryInfoNV allocate(Arena arena) {
         return new VkBindAccelerationStructureMemoryInfoNV(arena.allocate(LAYOUT));
@@ -55,6 +59,17 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("accelerationStructure"),
+        ValueLayout.ADDRESS.withName("memory"),
+        ValueLayout.JAVA_LONG.withName("memoryOffset"),
+        ValueLayout.JAVA_INT.withName("deviceIndexCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pDeviceIndices")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$accelerationStructure = PathElement.groupElement("PATH$accelerationStructure");
@@ -62,6 +77,14 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
     public static final PathElement PATH$memoryOffset = PathElement.groupElement("PATH$memoryOffset");
     public static final PathElement PATH$deviceIndexCount = PathElement.groupElement("PATH$deviceIndexCount");
     public static final PathElement PATH$pDeviceIndices = PathElement.groupElement("PATH$pDeviceIndices");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$accelerationStructure = (AddressLayout) LAYOUT.select(PATH$accelerationStructure);
+    public static final AddressLayout LAYOUT$memory = (AddressLayout) LAYOUT.select(PATH$memory);
+    public static final OfLong LAYOUT$memoryOffset = (OfLong) LAYOUT.select(PATH$memoryOffset);
+    public static final OfInt LAYOUT$deviceIndexCount = (OfInt) LAYOUT.select(PATH$deviceIndexCount);
+    public static final AddressLayout LAYOUT$pDeviceIndices = (AddressLayout) LAYOUT.select(PATH$pDeviceIndices);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

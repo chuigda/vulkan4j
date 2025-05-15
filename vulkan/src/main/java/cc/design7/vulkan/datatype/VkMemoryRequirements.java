@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkMemoryRequirements} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryRequirements.html">VkMemoryRequirements</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkMemoryRequirements(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfLong LAYOUT$size = ValueLayout.JAVA_LONG.withName("size");
-    public static final OfLong LAYOUT$alignment = ValueLayout.JAVA_LONG.withName("alignment");
-    public static final OfInt LAYOUT$memoryTypeBits = ValueLayout.JAVA_INT.withName("memoryTypeBits");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$size, LAYOUT$alignment, LAYOUT$memoryTypeBits);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkMemoryRequirements allocate(Arena arena) {
         return new VkMemoryRequirements(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkMemoryRequirements(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("size"),
+        ValueLayout.JAVA_LONG.withName("alignment"),
+        ValueLayout.JAVA_INT.withName("memoryTypeBits")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
     public static final PathElement PATH$alignment = PathElement.groupElement("PATH$alignment");
     public static final PathElement PATH$memoryTypeBits = PathElement.groupElement("PATH$memoryTypeBits");
+
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
+    public static final OfLong LAYOUT$alignment = (OfLong) LAYOUT.select(PATH$alignment);
+    public static final OfInt LAYOUT$memoryTypeBits = (OfInt) LAYOUT.select(PATH$memoryTypeBits);
 
     public static final long SIZE$size = LAYOUT$size.byteSize();
     public static final long SIZE$alignment = LAYOUT$alignment.byteSize();

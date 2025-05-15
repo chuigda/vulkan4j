@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceCooperativeMatrix2PropertiesNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceCooperativeMatrix2PropertiesNV.html">VkPhysicalDeviceCooperativeMatrix2PropertiesNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceCooperativeMatrix2PropertiesNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$cooperativeMatrixWorkgroupScopeMaxWorkgroupSize = ValueLayout.JAVA_INT.withName("cooperativeMatrixWorkgroupScopeMaxWorkgroupSize");
-    public static final OfInt LAYOUT$cooperativeMatrixFlexibleDimensionsMaxDimension = ValueLayout.JAVA_INT.withName("cooperativeMatrixFlexibleDimensionsMaxDimension");
-    public static final OfInt LAYOUT$cooperativeMatrixWorkgroupScopeReservedSharedMemory = ValueLayout.JAVA_INT.withName("cooperativeMatrixWorkgroupScopeReservedSharedMemory");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$cooperativeMatrixWorkgroupScopeMaxWorkgroupSize, LAYOUT$cooperativeMatrixFlexibleDimensionsMaxDimension, LAYOUT$cooperativeMatrixWorkgroupScopeReservedSharedMemory);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV {
+        sType(VkStructureType.PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV);
+    }
 
     public static VkPhysicalDeviceCooperativeMatrix2PropertiesNV allocate(Arena arena) {
         return new VkPhysicalDeviceCooperativeMatrix2PropertiesNV(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkPhysicalDeviceCooperativeMatrix2PropertiesNV(@NotNull MemorySegm
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("cooperativeMatrixWorkgroupScopeMaxWorkgroupSize"),
+        ValueLayout.JAVA_INT.withName("cooperativeMatrixFlexibleDimensionsMaxDimension"),
+        ValueLayout.JAVA_INT.withName("cooperativeMatrixWorkgroupScopeReservedSharedMemory")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$cooperativeMatrixWorkgroupScopeMaxWorkgroupSize = PathElement.groupElement("PATH$cooperativeMatrixWorkgroupScopeMaxWorkgroupSize");
     public static final PathElement PATH$cooperativeMatrixFlexibleDimensionsMaxDimension = PathElement.groupElement("PATH$cooperativeMatrixFlexibleDimensionsMaxDimension");
     public static final PathElement PATH$cooperativeMatrixWorkgroupScopeReservedSharedMemory = PathElement.groupElement("PATH$cooperativeMatrixWorkgroupScopeReservedSharedMemory");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$cooperativeMatrixWorkgroupScopeMaxWorkgroupSize = (OfInt) LAYOUT.select(PATH$cooperativeMatrixWorkgroupScopeMaxWorkgroupSize);
+    public static final OfInt LAYOUT$cooperativeMatrixFlexibleDimensionsMaxDimension = (OfInt) LAYOUT.select(PATH$cooperativeMatrixFlexibleDimensionsMaxDimension);
+    public static final OfInt LAYOUT$cooperativeMatrixWorkgroupScopeReservedSharedMemory = (OfInt) LAYOUT.select(PATH$cooperativeMatrixWorkgroupScopeReservedSharedMemory);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

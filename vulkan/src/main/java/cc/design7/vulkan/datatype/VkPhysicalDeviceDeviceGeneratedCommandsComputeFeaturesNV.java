@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV.html">VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$deviceGeneratedCompute = ValueLayout.JAVA_INT.withName("deviceGeneratedCompute");
-    public static final OfInt LAYOUT$deviceGeneratedComputePipelines = ValueLayout.JAVA_INT.withName("deviceGeneratedComputePipelines");
-    public static final OfInt LAYOUT$deviceGeneratedComputeCaptureReplay = ValueLayout.JAVA_INT.withName("deviceGeneratedComputeCaptureReplay");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$deviceGeneratedCompute, LAYOUT$deviceGeneratedComputePipelines, LAYOUT$deviceGeneratedComputeCaptureReplay);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV {
+        sType(VkStructureType.PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_COMPUTE_FEATURES_NV);
+    }
 
     public static VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV allocate(Arena arena) {
         return new VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(@NotNull 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("deviceGeneratedCompute"),
+        ValueLayout.JAVA_INT.withName("deviceGeneratedComputePipelines"),
+        ValueLayout.JAVA_INT.withName("deviceGeneratedComputeCaptureReplay")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$deviceGeneratedCompute = PathElement.groupElement("PATH$deviceGeneratedCompute");
     public static final PathElement PATH$deviceGeneratedComputePipelines = PathElement.groupElement("PATH$deviceGeneratedComputePipelines");
     public static final PathElement PATH$deviceGeneratedComputeCaptureReplay = PathElement.groupElement("PATH$deviceGeneratedComputeCaptureReplay");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$deviceGeneratedCompute = (OfInt) LAYOUT.select(PATH$deviceGeneratedCompute);
+    public static final OfInt LAYOUT$deviceGeneratedComputePipelines = (OfInt) LAYOUT.select(PATH$deviceGeneratedComputePipelines);
+    public static final OfInt LAYOUT$deviceGeneratedComputeCaptureReplay = (OfInt) LAYOUT.select(PATH$deviceGeneratedComputeCaptureReplay);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

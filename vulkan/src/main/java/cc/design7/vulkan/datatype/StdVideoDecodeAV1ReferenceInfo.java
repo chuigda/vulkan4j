@@ -14,17 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoDecodeAV1ReferenceInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoDecodeAV1ReferenceInfoFlags.LAYOUT.withName("flags");
-    public static final OfByte LAYOUT$frame_type = ValueLayout.JAVA_BYTE.withName("frame_type");
-    public static final OfByte LAYOUT$RefFrameSignBias = ValueLayout.JAVA_BYTE.withName("RefFrameSignBias");
-    public static final OfByte LAYOUT$OrderHint = ValueLayout.JAVA_BYTE.withName("OrderHint");
-    public static final OfByte LAYOUT$SavedOrderHints = ValueLayout.JAVA_BYTE.withName("SavedOrderHints");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$frame_type, LAYOUT$RefFrameSignBias, LAYOUT$OrderHint, LAYOUT$SavedOrderHints);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoDecodeAV1ReferenceInfo allocate(Arena arena) {
         return new StdVideoDecodeAV1ReferenceInfo(arena.allocate(LAYOUT));
     }
@@ -52,11 +53,26 @@ public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoDecodeAV1ReferenceInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("frame_type"),
+        ValueLayout.JAVA_BYTE.withName("RefFrameSignBias"),
+        ValueLayout.JAVA_BYTE.withName("OrderHint"),
+        ValueLayout.JAVA_BYTE.withName("SavedOrderHints")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$frame_type = PathElement.groupElement("PATH$frame_type");
     public static final PathElement PATH$RefFrameSignBias = PathElement.groupElement("PATH$RefFrameSignBias");
     public static final PathElement PATH$OrderHint = PathElement.groupElement("PATH$OrderHint");
     public static final PathElement PATH$SavedOrderHints = PathElement.groupElement("PATH$SavedOrderHints");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$frame_type = (OfByte) LAYOUT.select(PATH$frame_type);
+    public static final OfByte LAYOUT$RefFrameSignBias = (OfByte) LAYOUT.select(PATH$RefFrameSignBias);
+    public static final OfByte LAYOUT$OrderHint = (OfByte) LAYOUT.select(PATH$OrderHint);
+    public static final OfByte LAYOUT$SavedOrderHints = (OfByte) LAYOUT.select(PATH$SavedOrderHints);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$frame_type = LAYOUT$frame_type.byteSize();

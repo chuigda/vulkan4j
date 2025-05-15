@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDevicePCIBusInfoPropertiesEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevicePCIBusInfoPropertiesEXT.html">VkPhysicalDevicePCIBusInfoPropertiesEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDevicePCIBusInfoPropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$pciDomain = ValueLayout.JAVA_INT.withName("pciDomain");
-    public static final OfInt LAYOUT$pciBus = ValueLayout.JAVA_INT.withName("pciBus");
-    public static final OfInt LAYOUT$pciDevice = ValueLayout.JAVA_INT.withName("pciDevice");
-    public static final OfInt LAYOUT$pciFunction = ValueLayout.JAVA_INT.withName("pciFunction");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$pciDomain, LAYOUT$pciBus, LAYOUT$pciDevice, LAYOUT$pciFunction);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT {
+        sType(VkStructureType.PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT);
+    }
 
     public static VkPhysicalDevicePCIBusInfoPropertiesEXT allocate(Arena arena) {
         return new VkPhysicalDevicePCIBusInfoPropertiesEXT(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkPhysicalDevicePCIBusInfoPropertiesEXT(@NotNull MemorySegment seg
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("pciDomain"),
+        ValueLayout.JAVA_INT.withName("pciBus"),
+        ValueLayout.JAVA_INT.withName("pciDevice"),
+        ValueLayout.JAVA_INT.withName("pciFunction")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$pciDomain = PathElement.groupElement("PATH$pciDomain");
     public static final PathElement PATH$pciBus = PathElement.groupElement("PATH$pciBus");
     public static final PathElement PATH$pciDevice = PathElement.groupElement("PATH$pciDevice");
     public static final PathElement PATH$pciFunction = PathElement.groupElement("PATH$pciFunction");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$pciDomain = (OfInt) LAYOUT.select(PATH$pciDomain);
+    public static final OfInt LAYOUT$pciBus = (OfInt) LAYOUT.select(PATH$pciBus);
+    public static final OfInt LAYOUT$pciDevice = (OfInt) LAYOUT.select(PATH$pciDevice);
+    public static final OfInt LAYOUT$pciFunction = (OfInt) LAYOUT.select(PATH$pciFunction);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

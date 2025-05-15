@@ -14,17 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkSpecializationInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSpecializationInfo.html">VkSpecializationInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$mapEntryCount = ValueLayout.JAVA_INT.withName("mapEntryCount");
-    public static final AddressLayout LAYOUT$pMapEntries = ValueLayout.ADDRESS.withTargetLayout(VkSpecializationMapEntry.LAYOUT).withName("pMapEntries");
-    public static final ValueLayout LAYOUT$dataSize = NativeLayout.C_SIZE_T.withName("dataSize");
-    public static final AddressLayout LAYOUT$pData = ValueLayout.ADDRESS.withName("pData");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$mapEntryCount, LAYOUT$pMapEntries, LAYOUT$dataSize, LAYOUT$pData);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkSpecializationInfo allocate(Arena arena) {
         return new VkSpecializationInfo(arena.allocate(LAYOUT));
     }
@@ -52,10 +55,22 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("mapEntryCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkSpecializationMapEntry.LAYOUT).withName("pMapEntries"),
+        NativeLayout.C_SIZE_T.withName("dataSize"),
+        ValueLayout.ADDRESS.withName("pData")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$mapEntryCount = PathElement.groupElement("PATH$mapEntryCount");
     public static final PathElement PATH$pMapEntries = PathElement.groupElement("PATH$pMapEntries");
     public static final PathElement PATH$dataSize = PathElement.groupElement("PATH$dataSize");
     public static final PathElement PATH$pData = PathElement.groupElement("PATH$pData");
+
+    public static final OfInt LAYOUT$mapEntryCount = (OfInt) LAYOUT.select(PATH$mapEntryCount);
+    public static final AddressLayout LAYOUT$pMapEntries = (AddressLayout) LAYOUT.select(PATH$pMapEntries);
+    public static final AddressLayout LAYOUT$pData = (AddressLayout) LAYOUT.select(PATH$pData);
 
     public static final long SIZE$mapEntryCount = LAYOUT$mapEntryCount.byteSize();
     public static final long SIZE$pMapEntries = LAYOUT$pMapEntries.byteSize();

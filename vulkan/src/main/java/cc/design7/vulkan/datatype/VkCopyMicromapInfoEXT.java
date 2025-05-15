@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkCopyMicromapInfoEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyMicromapInfoEXT.html">VkCopyMicromapInfoEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkCopyMicromapInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$src = ValueLayout.ADDRESS.withName("src");
-    public static final AddressLayout LAYOUT$dst = ValueLayout.ADDRESS.withName("dst");
-    public static final OfInt LAYOUT$mode = ValueLayout.JAVA_INT.withName("mode");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$src, LAYOUT$dst, LAYOUT$mode);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkCopyMicromapInfoEXT {
+        sType(VkStructureType.COPY_MICROMAP_INFO_EXT);
+    }
 
     public static VkCopyMicromapInfoEXT allocate(Arena arena) {
         return new VkCopyMicromapInfoEXT(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkCopyMicromapInfoEXT(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("src"),
+        ValueLayout.ADDRESS.withName("dst"),
+        ValueLayout.JAVA_INT.withName("mode")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$src = PathElement.groupElement("PATH$src");
     public static final PathElement PATH$dst = PathElement.groupElement("PATH$dst");
     public static final PathElement PATH$mode = PathElement.groupElement("PATH$mode");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$src = (AddressLayout) LAYOUT.select(PATH$src);
+    public static final AddressLayout LAYOUT$dst = (AddressLayout) LAYOUT.select(PATH$dst);
+    public static final OfInt LAYOUT$mode = (OfInt) LAYOUT.select(PATH$mode);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

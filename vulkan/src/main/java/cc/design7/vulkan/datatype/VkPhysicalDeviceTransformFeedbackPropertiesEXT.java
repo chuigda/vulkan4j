@@ -14,24 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceTransformFeedbackPropertiesEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceTransformFeedbackPropertiesEXT.html">VkPhysicalDeviceTransformFeedbackPropertiesEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$maxTransformFeedbackStreams = ValueLayout.JAVA_INT.withName("maxTransformFeedbackStreams");
-    public static final OfInt LAYOUT$maxTransformFeedbackBuffers = ValueLayout.JAVA_INT.withName("maxTransformFeedbackBuffers");
-    public static final OfLong LAYOUT$maxTransformFeedbackBufferSize = ValueLayout.JAVA_LONG.withName("maxTransformFeedbackBufferSize");
-    public static final OfInt LAYOUT$maxTransformFeedbackStreamDataSize = ValueLayout.JAVA_INT.withName("maxTransformFeedbackStreamDataSize");
-    public static final OfInt LAYOUT$maxTransformFeedbackBufferDataSize = ValueLayout.JAVA_INT.withName("maxTransformFeedbackBufferDataSize");
-    public static final OfInt LAYOUT$maxTransformFeedbackBufferDataStride = ValueLayout.JAVA_INT.withName("maxTransformFeedbackBufferDataStride");
-    public static final OfInt LAYOUT$transformFeedbackQueries = ValueLayout.JAVA_INT.withName("transformFeedbackQueries");
-    public static final OfInt LAYOUT$transformFeedbackStreamsLinesTriangles = ValueLayout.JAVA_INT.withName("transformFeedbackStreamsLinesTriangles");
-    public static final OfInt LAYOUT$transformFeedbackRasterizationStreamSelect = ValueLayout.JAVA_INT.withName("transformFeedbackRasterizationStreamSelect");
-    public static final OfInt LAYOUT$transformFeedbackDraw = ValueLayout.JAVA_INT.withName("transformFeedbackDraw");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$maxTransformFeedbackStreams, LAYOUT$maxTransformFeedbackBuffers, LAYOUT$maxTransformFeedbackBufferSize, LAYOUT$maxTransformFeedbackStreamDataSize, LAYOUT$maxTransformFeedbackBufferDataSize, LAYOUT$maxTransformFeedbackBufferDataStride, LAYOUT$transformFeedbackQueries, LAYOUT$transformFeedbackStreamsLinesTriangles, LAYOUT$transformFeedbackRasterizationStreamSelect, LAYOUT$transformFeedbackDraw);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceTransformFeedbackPropertiesEXT {
+        sType(VkStructureType.PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT);
+    }
 
     public static VkPhysicalDeviceTransformFeedbackPropertiesEXT allocate(Arena arena) {
         return new VkPhysicalDeviceTransformFeedbackPropertiesEXT(arena.allocate(LAYOUT));
@@ -60,6 +59,22 @@ public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(@NotNull MemorySegm
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maxTransformFeedbackStreams"),
+        ValueLayout.JAVA_INT.withName("maxTransformFeedbackBuffers"),
+        ValueLayout.JAVA_LONG.withName("maxTransformFeedbackBufferSize"),
+        ValueLayout.JAVA_INT.withName("maxTransformFeedbackStreamDataSize"),
+        ValueLayout.JAVA_INT.withName("maxTransformFeedbackBufferDataSize"),
+        ValueLayout.JAVA_INT.withName("maxTransformFeedbackBufferDataStride"),
+        ValueLayout.JAVA_INT.withName("transformFeedbackQueries"),
+        ValueLayout.JAVA_INT.withName("transformFeedbackStreamsLinesTriangles"),
+        ValueLayout.JAVA_INT.withName("transformFeedbackRasterizationStreamSelect"),
+        ValueLayout.JAVA_INT.withName("transformFeedbackDraw")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$maxTransformFeedbackStreams = PathElement.groupElement("PATH$maxTransformFeedbackStreams");
@@ -72,6 +87,19 @@ public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(@NotNull MemorySegm
     public static final PathElement PATH$transformFeedbackStreamsLinesTriangles = PathElement.groupElement("PATH$transformFeedbackStreamsLinesTriangles");
     public static final PathElement PATH$transformFeedbackRasterizationStreamSelect = PathElement.groupElement("PATH$transformFeedbackRasterizationStreamSelect");
     public static final PathElement PATH$transformFeedbackDraw = PathElement.groupElement("PATH$transformFeedbackDraw");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maxTransformFeedbackStreams = (OfInt) LAYOUT.select(PATH$maxTransformFeedbackStreams);
+    public static final OfInt LAYOUT$maxTransformFeedbackBuffers = (OfInt) LAYOUT.select(PATH$maxTransformFeedbackBuffers);
+    public static final OfLong LAYOUT$maxTransformFeedbackBufferSize = (OfLong) LAYOUT.select(PATH$maxTransformFeedbackBufferSize);
+    public static final OfInt LAYOUT$maxTransformFeedbackStreamDataSize = (OfInt) LAYOUT.select(PATH$maxTransformFeedbackStreamDataSize);
+    public static final OfInt LAYOUT$maxTransformFeedbackBufferDataSize = (OfInt) LAYOUT.select(PATH$maxTransformFeedbackBufferDataSize);
+    public static final OfInt LAYOUT$maxTransformFeedbackBufferDataStride = (OfInt) LAYOUT.select(PATH$maxTransformFeedbackBufferDataStride);
+    public static final OfInt LAYOUT$transformFeedbackQueries = (OfInt) LAYOUT.select(PATH$transformFeedbackQueries);
+    public static final OfInt LAYOUT$transformFeedbackStreamsLinesTriangles = (OfInt) LAYOUT.select(PATH$transformFeedbackStreamsLinesTriangles);
+    public static final OfInt LAYOUT$transformFeedbackRasterizationStreamSelect = (OfInt) LAYOUT.select(PATH$transformFeedbackRasterizationStreamSelect);
+    public static final OfInt LAYOUT$transformFeedbackDraw = (OfInt) LAYOUT.select(PATH$transformFeedbackDraw);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

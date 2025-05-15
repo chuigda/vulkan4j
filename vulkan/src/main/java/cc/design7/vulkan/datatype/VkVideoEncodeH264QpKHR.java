@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeH264QpKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264QpKHR.html">VkVideoEncodeH264QpKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeH264QpKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$qpI = ValueLayout.JAVA_INT.withName("qpI");
-    public static final OfInt LAYOUT$qpP = ValueLayout.JAVA_INT.withName("qpP");
-    public static final OfInt LAYOUT$qpB = ValueLayout.JAVA_INT.withName("qpB");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$qpI, LAYOUT$qpP, LAYOUT$qpB);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkVideoEncodeH264QpKHR allocate(Arena arena) {
         return new VkVideoEncodeH264QpKHR(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkVideoEncodeH264QpKHR(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("qpI"),
+        ValueLayout.JAVA_INT.withName("qpP"),
+        ValueLayout.JAVA_INT.withName("qpB")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$qpI = PathElement.groupElement("PATH$qpI");
     public static final PathElement PATH$qpP = PathElement.groupElement("PATH$qpP");
     public static final PathElement PATH$qpB = PathElement.groupElement("PATH$qpB");
+
+    public static final OfInt LAYOUT$qpI = (OfInt) LAYOUT.select(PATH$qpI);
+    public static final OfInt LAYOUT$qpP = (OfInt) LAYOUT.select(PATH$qpP);
+    public static final OfInt LAYOUT$qpB = (OfInt) LAYOUT.select(PATH$qpB);
 
     public static final long SIZE$qpI = LAYOUT$qpI.byteSize();
     public static final long SIZE$qpP = LAYOUT$qpP.byteSize();

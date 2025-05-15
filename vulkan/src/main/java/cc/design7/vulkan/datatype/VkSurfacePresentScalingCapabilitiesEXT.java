@@ -14,19 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkSurfacePresentScalingCapabilitiesEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSurfacePresentScalingCapabilitiesEXT.html">VkSurfacePresentScalingCapabilitiesEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkSurfacePresentScalingCapabilitiesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$supportedPresentScaling = ValueLayout.JAVA_INT.withName("supportedPresentScaling");
-    public static final OfInt LAYOUT$supportedPresentGravityX = ValueLayout.JAVA_INT.withName("supportedPresentGravityX");
-    public static final OfInt LAYOUT$supportedPresentGravityY = ValueLayout.JAVA_INT.withName("supportedPresentGravityY");
-    public static final StructLayout LAYOUT$minScaledImageExtent = VkExtent2D.LAYOUT.withName("minScaledImageExtent");
-    public static final StructLayout LAYOUT$maxScaledImageExtent = VkExtent2D.LAYOUT.withName("maxScaledImageExtent");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$supportedPresentScaling, LAYOUT$supportedPresentGravityX, LAYOUT$supportedPresentGravityY, LAYOUT$minScaledImageExtent, LAYOUT$maxScaledImageExtent);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkSurfacePresentScalingCapabilitiesEXT {
+        sType(VkStructureType.SURFACE_PRESENT_SCALING_CAPABILITIES_EXT);
+    }
 
     public static VkSurfacePresentScalingCapabilitiesEXT allocate(Arena arena) {
         return new VkSurfacePresentScalingCapabilitiesEXT(arena.allocate(LAYOUT));
@@ -55,6 +59,17 @@ public record VkSurfacePresentScalingCapabilitiesEXT(@NotNull MemorySegment segm
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("supportedPresentScaling"),
+        ValueLayout.JAVA_INT.withName("supportedPresentGravityX"),
+        ValueLayout.JAVA_INT.withName("supportedPresentGravityY"),
+        VkExtent2D.LAYOUT.withName("minScaledImageExtent"),
+        VkExtent2D.LAYOUT.withName("maxScaledImageExtent")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$supportedPresentScaling = PathElement.groupElement("PATH$supportedPresentScaling");
@@ -62,6 +77,14 @@ public record VkSurfacePresentScalingCapabilitiesEXT(@NotNull MemorySegment segm
     public static final PathElement PATH$supportedPresentGravityY = PathElement.groupElement("PATH$supportedPresentGravityY");
     public static final PathElement PATH$minScaledImageExtent = PathElement.groupElement("PATH$minScaledImageExtent");
     public static final PathElement PATH$maxScaledImageExtent = PathElement.groupElement("PATH$maxScaledImageExtent");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$supportedPresentScaling = (OfInt) LAYOUT.select(PATH$supportedPresentScaling);
+    public static final OfInt LAYOUT$supportedPresentGravityX = (OfInt) LAYOUT.select(PATH$supportedPresentGravityX);
+    public static final OfInt LAYOUT$supportedPresentGravityY = (OfInt) LAYOUT.select(PATH$supportedPresentGravityY);
+    public static final StructLayout LAYOUT$minScaledImageExtent = (StructLayout) LAYOUT.select(PATH$minScaledImageExtent);
+    public static final StructLayout LAYOUT$maxScaledImageExtent = (StructLayout) LAYOUT.select(PATH$maxScaledImageExtent);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

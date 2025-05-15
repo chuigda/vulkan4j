@@ -14,20 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkImageFormatConstraintsInfoFUCHSIA} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageFormatConstraintsInfoFUCHSIA.html">VkImageFormatConstraintsInfoFUCHSIA</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final StructLayout LAYOUT$imageCreateInfo = VkImageCreateInfo.LAYOUT.withName("imageCreateInfo");
-    public static final OfInt LAYOUT$requiredFormatFeatures = ValueLayout.JAVA_INT.withName("requiredFormatFeatures");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfLong LAYOUT$sysmemPixelFormat = ValueLayout.JAVA_LONG.withName("sysmemPixelFormat");
-    public static final OfInt LAYOUT$colorSpaceCount = ValueLayout.JAVA_INT.withName("colorSpaceCount");
-    public static final AddressLayout LAYOUT$pColorSpaces = ValueLayout.ADDRESS.withTargetLayout(VkSysmemColorSpaceFUCHSIA.LAYOUT).withName("pColorSpaces");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$imageCreateInfo, LAYOUT$requiredFormatFeatures, LAYOUT$flags, LAYOUT$sysmemPixelFormat, LAYOUT$colorSpaceCount, LAYOUT$pColorSpaces);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkImageFormatConstraintsInfoFUCHSIA {
+        sType(VkStructureType.IMAGE_FORMAT_CONSTRAINTS_INFO_FUCHSIA);
+    }
 
     public static VkImageFormatConstraintsInfoFUCHSIA allocate(Arena arena) {
         return new VkImageFormatConstraintsInfoFUCHSIA(arena.allocate(LAYOUT));
@@ -56,6 +59,18 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkImageCreateInfo.LAYOUT.withName("imageCreateInfo"),
+        ValueLayout.JAVA_INT.withName("requiredFormatFeatures"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_LONG.withName("sysmemPixelFormat"),
+        ValueLayout.JAVA_INT.withName("colorSpaceCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkSysmemColorSpaceFUCHSIA.LAYOUT).withName("pColorSpaces")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$imageCreateInfo = PathElement.groupElement("PATH$imageCreateInfo");
@@ -64,6 +79,15 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
     public static final PathElement PATH$sysmemPixelFormat = PathElement.groupElement("PATH$sysmemPixelFormat");
     public static final PathElement PATH$colorSpaceCount = PathElement.groupElement("PATH$colorSpaceCount");
     public static final PathElement PATH$pColorSpaces = PathElement.groupElement("PATH$pColorSpaces");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$imageCreateInfo = (StructLayout) LAYOUT.select(PATH$imageCreateInfo);
+    public static final OfInt LAYOUT$requiredFormatFeatures = (OfInt) LAYOUT.select(PATH$requiredFormatFeatures);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$sysmemPixelFormat = (OfLong) LAYOUT.select(PATH$sysmemPixelFormat);
+    public static final OfInt LAYOUT$colorSpaceCount = (OfInt) LAYOUT.select(PATH$colorSpaceCount);
+    public static final AddressLayout LAYOUT$pColorSpaces = (AddressLayout) LAYOUT.select(PATH$pColorSpaces);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

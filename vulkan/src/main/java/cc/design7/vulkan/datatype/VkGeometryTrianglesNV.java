@@ -14,25 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkGeometryTrianglesNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeometryTrianglesNV.html">VkGeometryTrianglesNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$vertexData = ValueLayout.ADDRESS.withName("vertexData");
-    public static final OfLong LAYOUT$vertexOffset = ValueLayout.JAVA_LONG.withName("vertexOffset");
-    public static final OfInt LAYOUT$vertexCount = ValueLayout.JAVA_INT.withName("vertexCount");
-    public static final OfLong LAYOUT$vertexStride = ValueLayout.JAVA_LONG.withName("vertexStride");
-    public static final OfInt LAYOUT$vertexFormat = ValueLayout.JAVA_INT.withName("vertexFormat");
-    public static final AddressLayout LAYOUT$indexData = ValueLayout.ADDRESS.withName("indexData");
-    public static final OfLong LAYOUT$indexOffset = ValueLayout.JAVA_LONG.withName("indexOffset");
-    public static final OfInt LAYOUT$indexCount = ValueLayout.JAVA_INT.withName("indexCount");
-    public static final OfInt LAYOUT$indexType = ValueLayout.JAVA_INT.withName("indexType");
-    public static final AddressLayout LAYOUT$transformData = ValueLayout.ADDRESS.withName("transformData");
-    public static final OfLong LAYOUT$transformOffset = ValueLayout.JAVA_LONG.withName("transformOffset");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$vertexData, LAYOUT$vertexOffset, LAYOUT$vertexCount, LAYOUT$vertexStride, LAYOUT$vertexFormat, LAYOUT$indexData, LAYOUT$indexOffset, LAYOUT$indexCount, LAYOUT$indexType, LAYOUT$transformData, LAYOUT$transformOffset);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkGeometryTrianglesNV {
+        sType(VkStructureType.GEOMETRY_TRIANGLES_NV);
+    }
 
     public static VkGeometryTrianglesNV allocate(Arena arena) {
         return new VkGeometryTrianglesNV(arena.allocate(LAYOUT));
@@ -61,6 +59,23 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("vertexData"),
+        ValueLayout.JAVA_LONG.withName("vertexOffset"),
+        ValueLayout.JAVA_INT.withName("vertexCount"),
+        ValueLayout.JAVA_LONG.withName("vertexStride"),
+        ValueLayout.JAVA_INT.withName("vertexFormat"),
+        ValueLayout.ADDRESS.withName("indexData"),
+        ValueLayout.JAVA_LONG.withName("indexOffset"),
+        ValueLayout.JAVA_INT.withName("indexCount"),
+        ValueLayout.JAVA_INT.withName("indexType"),
+        ValueLayout.ADDRESS.withName("transformData"),
+        ValueLayout.JAVA_LONG.withName("transformOffset")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$vertexData = PathElement.groupElement("PATH$vertexData");
@@ -74,6 +89,20 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
     public static final PathElement PATH$indexType = PathElement.groupElement("PATH$indexType");
     public static final PathElement PATH$transformData = PathElement.groupElement("PATH$transformData");
     public static final PathElement PATH$transformOffset = PathElement.groupElement("PATH$transformOffset");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$vertexData = (AddressLayout) LAYOUT.select(PATH$vertexData);
+    public static final OfLong LAYOUT$vertexOffset = (OfLong) LAYOUT.select(PATH$vertexOffset);
+    public static final OfInt LAYOUT$vertexCount = (OfInt) LAYOUT.select(PATH$vertexCount);
+    public static final OfLong LAYOUT$vertexStride = (OfLong) LAYOUT.select(PATH$vertexStride);
+    public static final OfInt LAYOUT$vertexFormat = (OfInt) LAYOUT.select(PATH$vertexFormat);
+    public static final AddressLayout LAYOUT$indexData = (AddressLayout) LAYOUT.select(PATH$indexData);
+    public static final OfLong LAYOUT$indexOffset = (OfLong) LAYOUT.select(PATH$indexOffset);
+    public static final OfInt LAYOUT$indexCount = (OfInt) LAYOUT.select(PATH$indexCount);
+    public static final OfInt LAYOUT$indexType = (OfInt) LAYOUT.select(PATH$indexType);
+    public static final AddressLayout LAYOUT$transformData = (AddressLayout) LAYOUT.select(PATH$transformData);
+    public static final OfLong LAYOUT$transformOffset = (OfLong) LAYOUT.select(PATH$transformOffset);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

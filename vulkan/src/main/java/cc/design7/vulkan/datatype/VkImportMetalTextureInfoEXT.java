@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkImportMetalTextureInfoEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportMetalTextureInfoEXT.html">VkImportMetalTextureInfoEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkImportMetalTextureInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$plane = ValueLayout.JAVA_INT.withName("plane");
-    public static final AddressLayout LAYOUT$mtlTexture = ValueLayout.ADDRESS.withName("mtlTexture");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$plane, LAYOUT$mtlTexture);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkImportMetalTextureInfoEXT {
+        sType(VkStructureType.IMPORT_METAL_TEXTURE_INFO_EXT);
+    }
 
     public static VkImportMetalTextureInfoEXT allocate(Arena arena) {
         return new VkImportMetalTextureInfoEXT(arena.allocate(LAYOUT));
@@ -52,10 +59,23 @@ public record VkImportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("plane"),
+        ValueLayout.ADDRESS.withName("mtlTexture")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$plane = PathElement.groupElement("PATH$plane");
     public static final PathElement PATH$mtlTexture = PathElement.groupElement("PATH$mtlTexture");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$plane = (OfInt) LAYOUT.select(PATH$plane);
+    public static final AddressLayout LAYOUT$mtlTexture = (AddressLayout) LAYOUT.select(PATH$mtlTexture);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

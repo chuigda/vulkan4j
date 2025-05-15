@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkFramebufferMixedSamplesCombinationNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFramebufferMixedSamplesCombinationNV.html">VkFramebufferMixedSamplesCombinationNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$coverageReductionMode = ValueLayout.JAVA_INT.withName("coverageReductionMode");
-    public static final OfInt LAYOUT$rasterizationSamples = ValueLayout.JAVA_INT.withName("rasterizationSamples");
-    public static final OfInt LAYOUT$depthStencilSamples = ValueLayout.JAVA_INT.withName("depthStencilSamples");
-    public static final OfInt LAYOUT$colorSamples = ValueLayout.JAVA_INT.withName("colorSamples");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$coverageReductionMode, LAYOUT$rasterizationSamples, LAYOUT$depthStencilSamples, LAYOUT$colorSamples);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkFramebufferMixedSamplesCombinationNV {
+        sType(VkStructureType.FRAMEBUFFER_MIXED_SAMPLES_COMBINATION_NV);
+    }
 
     public static VkFramebufferMixedSamplesCombinationNV allocate(Arena arena) {
         return new VkFramebufferMixedSamplesCombinationNV(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segm
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("coverageReductionMode"),
+        ValueLayout.JAVA_INT.withName("rasterizationSamples"),
+        ValueLayout.JAVA_INT.withName("depthStencilSamples"),
+        ValueLayout.JAVA_INT.withName("colorSamples")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$coverageReductionMode = PathElement.groupElement("PATH$coverageReductionMode");
     public static final PathElement PATH$rasterizationSamples = PathElement.groupElement("PATH$rasterizationSamples");
     public static final PathElement PATH$depthStencilSamples = PathElement.groupElement("PATH$depthStencilSamples");
     public static final PathElement PATH$colorSamples = PathElement.groupElement("PATH$colorSamples");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$coverageReductionMode = (OfInt) LAYOUT.select(PATH$coverageReductionMode);
+    public static final OfInt LAYOUT$rasterizationSamples = (OfInt) LAYOUT.select(PATH$rasterizationSamples);
+    public static final OfInt LAYOUT$depthStencilSamples = (OfInt) LAYOUT.select(PATH$depthStencilSamples);
+    public static final OfInt LAYOUT$colorSamples = (OfInt) LAYOUT.select(PATH$colorSamples);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

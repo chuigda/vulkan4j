@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.html">VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$shaderImageInt64Atomics = ValueLayout.JAVA_INT.withName("shaderImageInt64Atomics");
-    public static final OfInt LAYOUT$sparseImageInt64Atomics = ValueLayout.JAVA_INT.withName("sparseImageInt64Atomics");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$shaderImageInt64Atomics, LAYOUT$sparseImageInt64Atomics);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT {
+        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_IMAGE_ATOMIC_INT64_FEATURES_EXT);
+    }
 
     public static VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT allocate(Arena arena) {
         return new VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(arena.allocate(LAYOUT));
@@ -52,10 +59,23 @@ public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(@NotNull MemoryS
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("shaderImageInt64Atomics"),
+        ValueLayout.JAVA_INT.withName("sparseImageInt64Atomics")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$shaderImageInt64Atomics = PathElement.groupElement("PATH$shaderImageInt64Atomics");
     public static final PathElement PATH$sparseImageInt64Atomics = PathElement.groupElement("PATH$sparseImageInt64Atomics");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$shaderImageInt64Atomics = (OfInt) LAYOUT.select(PATH$shaderImageInt64Atomics);
+    public static final OfInt LAYOUT$sparseImageInt64Atomics = (OfInt) LAYOUT.select(PATH$sparseImageInt64Atomics);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

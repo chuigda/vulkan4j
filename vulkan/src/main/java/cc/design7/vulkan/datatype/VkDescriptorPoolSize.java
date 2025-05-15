@@ -14,15 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDescriptorPoolSize} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorPoolSize.html">VkDescriptorPoolSize</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDescriptorPoolSize(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$type = ValueLayout.JAVA_INT.withName("type");
-    public static final OfInt LAYOUT$descriptorCount = ValueLayout.JAVA_INT.withName("descriptorCount");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$type, LAYOUT$descriptorCount);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkDescriptorPoolSize allocate(Arena arena) {
         return new VkDescriptorPoolSize(arena.allocate(LAYOUT));
     }
@@ -50,8 +55,17 @@ public record VkDescriptorPoolSize(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("type"),
+        ValueLayout.JAVA_INT.withName("descriptorCount")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
     public static final PathElement PATH$descriptorCount = PathElement.groupElement("PATH$descriptorCount");
+
+    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
+    public static final OfInt LAYOUT$descriptorCount = (OfInt) LAYOUT.select(PATH$descriptorCount);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$descriptorCount = LAYOUT$descriptorCount.byteSize();

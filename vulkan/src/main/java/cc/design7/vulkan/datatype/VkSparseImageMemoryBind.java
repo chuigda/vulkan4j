@@ -14,19 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkSparseImageMemoryBind} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseImageMemoryBind.html">VkSparseImageMemoryBind</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$subresource = VkImageSubresource.LAYOUT.withName("subresource");
-    public static final StructLayout LAYOUT$offset = VkOffset3D.LAYOUT.withName("offset");
-    public static final StructLayout LAYOUT$extent = VkExtent3D.LAYOUT.withName("extent");
-    public static final AddressLayout LAYOUT$memory = ValueLayout.ADDRESS.withName("memory");
-    public static final OfLong LAYOUT$memoryOffset = ValueLayout.JAVA_LONG.withName("memoryOffset");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$subresource, LAYOUT$offset, LAYOUT$extent, LAYOUT$memory, LAYOUT$memoryOffset, LAYOUT$flags);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkSparseImageMemoryBind allocate(Arena arena) {
         return new VkSparseImageMemoryBind(arena.allocate(LAYOUT));
     }
@@ -54,12 +55,29 @@ public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        VkImageSubresource.LAYOUT.withName("subresource"),
+        VkOffset3D.LAYOUT.withName("offset"),
+        VkExtent3D.LAYOUT.withName("extent"),
+        ValueLayout.ADDRESS.withName("memory"),
+        ValueLayout.JAVA_LONG.withName("memoryOffset"),
+        ValueLayout.JAVA_INT.withName("flags")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$subresource = PathElement.groupElement("PATH$subresource");
     public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
     public static final PathElement PATH$extent = PathElement.groupElement("PATH$extent");
     public static final PathElement PATH$memory = PathElement.groupElement("PATH$memory");
     public static final PathElement PATH$memoryOffset = PathElement.groupElement("PATH$memoryOffset");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+
+    public static final StructLayout LAYOUT$subresource = (StructLayout) LAYOUT.select(PATH$subresource);
+    public static final StructLayout LAYOUT$offset = (StructLayout) LAYOUT.select(PATH$offset);
+    public static final StructLayout LAYOUT$extent = (StructLayout) LAYOUT.select(PATH$extent);
+    public static final AddressLayout LAYOUT$memory = (AddressLayout) LAYOUT.select(PATH$memory);
+    public static final OfLong LAYOUT$memoryOffset = (OfLong) LAYOUT.select(PATH$memoryOffset);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
 
     public static final long SIZE$subresource = LAYOUT$subresource.byteSize();
     public static final long SIZE$offset = LAYOUT$offset.byteSize();

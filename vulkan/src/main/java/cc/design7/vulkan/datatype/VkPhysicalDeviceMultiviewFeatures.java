@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceMultiviewFeatures} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMultiviewFeatures.html">VkPhysicalDeviceMultiviewFeatures</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceMultiviewFeatures(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$multiview = ValueLayout.JAVA_INT.withName("multiview");
-    public static final OfInt LAYOUT$multiviewGeometryShader = ValueLayout.JAVA_INT.withName("multiviewGeometryShader");
-    public static final OfInt LAYOUT$multiviewTessellationShader = ValueLayout.JAVA_INT.withName("multiviewTessellationShader");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$multiview, LAYOUT$multiviewGeometryShader, LAYOUT$multiviewTessellationShader);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceMultiviewFeatures {
+        sType(VkStructureType.PHYSICAL_DEVICE_MULTIVIEW_FEATURES);
+    }
 
     public static VkPhysicalDeviceMultiviewFeatures allocate(Arena arena) {
         return new VkPhysicalDeviceMultiviewFeatures(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkPhysicalDeviceMultiviewFeatures(@NotNull MemorySegment segment) 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("multiview"),
+        ValueLayout.JAVA_INT.withName("multiviewGeometryShader"),
+        ValueLayout.JAVA_INT.withName("multiviewTessellationShader")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$multiview = PathElement.groupElement("PATH$multiview");
     public static final PathElement PATH$multiviewGeometryShader = PathElement.groupElement("PATH$multiviewGeometryShader");
     public static final PathElement PATH$multiviewTessellationShader = PathElement.groupElement("PATH$multiviewTessellationShader");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$multiview = (OfInt) LAYOUT.select(PATH$multiview);
+    public static final OfInt LAYOUT$multiviewGeometryShader = (OfInt) LAYOUT.select(PATH$multiviewGeometryShader);
+    public static final OfInt LAYOUT$multiviewTessellationShader = (OfInt) LAYOUT.select(PATH$multiviewTessellationShader);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

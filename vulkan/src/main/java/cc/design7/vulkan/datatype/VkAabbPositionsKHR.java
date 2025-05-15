@@ -14,19 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkAabbPositionsKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAabbPositionsKHR.html">VkAabbPositionsKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkAabbPositionsKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfFloat LAYOUT$minX = ValueLayout.JAVA_FLOAT.withName("minX");
-    public static final OfFloat LAYOUT$minY = ValueLayout.JAVA_FLOAT.withName("minY");
-    public static final OfFloat LAYOUT$minZ = ValueLayout.JAVA_FLOAT.withName("minZ");
-    public static final OfFloat LAYOUT$maxX = ValueLayout.JAVA_FLOAT.withName("maxX");
-    public static final OfFloat LAYOUT$maxY = ValueLayout.JAVA_FLOAT.withName("maxY");
-    public static final OfFloat LAYOUT$maxZ = ValueLayout.JAVA_FLOAT.withName("maxZ");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$minX, LAYOUT$minY, LAYOUT$minZ, LAYOUT$maxX, LAYOUT$maxY, LAYOUT$maxZ);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkAabbPositionsKHR allocate(Arena arena) {
         return new VkAabbPositionsKHR(arena.allocate(LAYOUT));
     }
@@ -54,12 +55,29 @@ public record VkAabbPositionsKHR(@NotNull MemorySegment segment) implements IPoi
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_FLOAT.withName("minX"),
+        ValueLayout.JAVA_FLOAT.withName("minY"),
+        ValueLayout.JAVA_FLOAT.withName("minZ"),
+        ValueLayout.JAVA_FLOAT.withName("maxX"),
+        ValueLayout.JAVA_FLOAT.withName("maxY"),
+        ValueLayout.JAVA_FLOAT.withName("maxZ")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$minX = PathElement.groupElement("PATH$minX");
     public static final PathElement PATH$minY = PathElement.groupElement("PATH$minY");
     public static final PathElement PATH$minZ = PathElement.groupElement("PATH$minZ");
     public static final PathElement PATH$maxX = PathElement.groupElement("PATH$maxX");
     public static final PathElement PATH$maxY = PathElement.groupElement("PATH$maxY");
     public static final PathElement PATH$maxZ = PathElement.groupElement("PATH$maxZ");
+
+    public static final OfFloat LAYOUT$minX = (OfFloat) LAYOUT.select(PATH$minX);
+    public static final OfFloat LAYOUT$minY = (OfFloat) LAYOUT.select(PATH$minY);
+    public static final OfFloat LAYOUT$minZ = (OfFloat) LAYOUT.select(PATH$minZ);
+    public static final OfFloat LAYOUT$maxX = (OfFloat) LAYOUT.select(PATH$maxX);
+    public static final OfFloat LAYOUT$maxY = (OfFloat) LAYOUT.select(PATH$maxY);
+    public static final OfFloat LAYOUT$maxZ = (OfFloat) LAYOUT.select(PATH$maxZ);
 
     public static final long SIZE$minX = LAYOUT$minX.byteSize();
     public static final long SIZE$minY = LAYOUT$minY.byteSize();

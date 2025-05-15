@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkRenderPassStripeSubmitInfoARM} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassStripeSubmitInfoARM.html">VkRenderPassStripeSubmitInfoARM</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$stripeSemaphoreInfoCount = ValueLayout.JAVA_INT.withName("stripeSemaphoreInfoCount");
-    public static final AddressLayout LAYOUT$pStripeSemaphoreInfos = ValueLayout.ADDRESS.withTargetLayout(VkSemaphoreSubmitInfo.LAYOUT).withName("pStripeSemaphoreInfos");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$stripeSemaphoreInfoCount, LAYOUT$pStripeSemaphoreInfos);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkRenderPassStripeSubmitInfoARM {
+        sType(VkStructureType.RENDER_PASS_STRIPE_SUBMIT_INFO_ARM);
+    }
 
     public static VkRenderPassStripeSubmitInfoARM allocate(Arena arena) {
         return new VkRenderPassStripeSubmitInfoARM(arena.allocate(LAYOUT));
@@ -52,10 +59,23 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("stripeSemaphoreInfoCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkSemaphoreSubmitInfo.LAYOUT).withName("pStripeSemaphoreInfos")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$stripeSemaphoreInfoCount = PathElement.groupElement("PATH$stripeSemaphoreInfoCount");
     public static final PathElement PATH$pStripeSemaphoreInfos = PathElement.groupElement("PATH$pStripeSemaphoreInfos");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$stripeSemaphoreInfoCount = (OfInt) LAYOUT.select(PATH$stripeSemaphoreInfoCount);
+    public static final AddressLayout LAYOUT$pStripeSemaphoreInfos = (AddressLayout) LAYOUT.select(PATH$pStripeSemaphoreInfos);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

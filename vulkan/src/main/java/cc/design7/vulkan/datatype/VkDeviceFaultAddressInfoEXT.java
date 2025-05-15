@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDeviceFaultAddressInfoEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceFaultAddressInfoEXT.html">VkDeviceFaultAddressInfoEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDeviceFaultAddressInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$addressType = ValueLayout.JAVA_INT.withName("addressType");
-    public static final OfLong LAYOUT$reportedAddress = ValueLayout.JAVA_LONG.withName("reportedAddress");
-    public static final OfLong LAYOUT$addressPrecision = ValueLayout.JAVA_LONG.withName("addressPrecision");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$addressType, LAYOUT$reportedAddress, LAYOUT$addressPrecision);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkDeviceFaultAddressInfoEXT allocate(Arena arena) {
         return new VkDeviceFaultAddressInfoEXT(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkDeviceFaultAddressInfoEXT(@NotNull MemorySegment segment) implem
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("addressType"),
+        ValueLayout.JAVA_LONG.withName("reportedAddress"),
+        ValueLayout.JAVA_LONG.withName("addressPrecision")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$addressType = PathElement.groupElement("PATH$addressType");
     public static final PathElement PATH$reportedAddress = PathElement.groupElement("PATH$reportedAddress");
     public static final PathElement PATH$addressPrecision = PathElement.groupElement("PATH$addressPrecision");
+
+    public static final OfInt LAYOUT$addressType = (OfInt) LAYOUT.select(PATH$addressType);
+    public static final OfLong LAYOUT$reportedAddress = (OfLong) LAYOUT.select(PATH$reportedAddress);
+    public static final OfLong LAYOUT$addressPrecision = (OfLong) LAYOUT.select(PATH$addressPrecision);
 
     public static final long SIZE$addressType = LAYOUT$addressType.byteSize();
     public static final long SIZE$reportedAddress = LAYOUT$reportedAddress.byteSize();

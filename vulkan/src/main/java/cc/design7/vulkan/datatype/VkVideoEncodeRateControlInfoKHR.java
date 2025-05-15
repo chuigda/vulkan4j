@@ -14,20 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeRateControlInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeRateControlInfoKHR.html">VkVideoEncodeRateControlInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$rateControlMode = ValueLayout.JAVA_INT.withName("rateControlMode");
-    public static final OfInt LAYOUT$layerCount = ValueLayout.JAVA_INT.withName("layerCount");
-    public static final AddressLayout LAYOUT$pLayers = ValueLayout.ADDRESS.withTargetLayout(VkVideoEncodeRateControlLayerInfoKHR.LAYOUT).withName("pLayers");
-    public static final OfInt LAYOUT$virtualBufferSizeInMs = ValueLayout.JAVA_INT.withName("virtualBufferSizeInMs");
-    public static final OfInt LAYOUT$initialVirtualBufferSizeInMs = ValueLayout.JAVA_INT.withName("initialVirtualBufferSizeInMs");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$rateControlMode, LAYOUT$layerCount, LAYOUT$pLayers, LAYOUT$virtualBufferSizeInMs, LAYOUT$initialVirtualBufferSizeInMs);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoEncodeRateControlInfoKHR {
+        sType(VkStructureType.VIDEO_ENCODE_RATE_CONTROL_INFO_KHR);
+    }
 
     public static VkVideoEncodeRateControlInfoKHR allocate(Arena arena) {
         return new VkVideoEncodeRateControlInfoKHR(arena.allocate(LAYOUT));
@@ -56,6 +59,18 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("rateControlMode"),
+        ValueLayout.JAVA_INT.withName("layerCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkVideoEncodeRateControlLayerInfoKHR.LAYOUT).withName("pLayers"),
+        ValueLayout.JAVA_INT.withName("virtualBufferSizeInMs"),
+        ValueLayout.JAVA_INT.withName("initialVirtualBufferSizeInMs")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -64,6 +79,15 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
     public static final PathElement PATH$pLayers = PathElement.groupElement("PATH$pLayers");
     public static final PathElement PATH$virtualBufferSizeInMs = PathElement.groupElement("PATH$virtualBufferSizeInMs");
     public static final PathElement PATH$initialVirtualBufferSizeInMs = PathElement.groupElement("PATH$initialVirtualBufferSizeInMs");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$rateControlMode = (OfInt) LAYOUT.select(PATH$rateControlMode);
+    public static final OfInt LAYOUT$layerCount = (OfInt) LAYOUT.select(PATH$layerCount);
+    public static final AddressLayout LAYOUT$pLayers = (AddressLayout) LAYOUT.select(PATH$pLayers);
+    public static final OfInt LAYOUT$virtualBufferSizeInMs = (OfInt) LAYOUT.select(PATH$virtualBufferSizeInMs);
+    public static final OfInt LAYOUT$initialVirtualBufferSizeInMs = (OfInt) LAYOUT.select(PATH$initialVirtualBufferSizeInMs);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

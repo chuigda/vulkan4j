@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkExportMetalSharedEventInfoEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExportMetalSharedEventInfoEXT.html">VkExportMetalSharedEventInfoEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$semaphore = ValueLayout.ADDRESS.withName("semaphore");
-    public static final AddressLayout LAYOUT$event = ValueLayout.ADDRESS.withName("event");
-    public static final AddressLayout LAYOUT$mtlSharedEvent = ValueLayout.ADDRESS.withName("mtlSharedEvent");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$semaphore, LAYOUT$event, LAYOUT$mtlSharedEvent);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkExportMetalSharedEventInfoEXT {
+        sType(VkStructureType.EXPORT_METAL_SHARED_EVENT_INFO_EXT);
+    }
 
     public static VkExportMetalSharedEventInfoEXT allocate(Arena arena) {
         return new VkExportMetalSharedEventInfoEXT(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("semaphore"),
+        ValueLayout.ADDRESS.withName("event"),
+        ValueLayout.ADDRESS.withName("mtlSharedEvent")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$semaphore = PathElement.groupElement("PATH$semaphore");
     public static final PathElement PATH$event = PathElement.groupElement("PATH$event");
     public static final PathElement PATH$mtlSharedEvent = PathElement.groupElement("PATH$mtlSharedEvent");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$semaphore = (AddressLayout) LAYOUT.select(PATH$semaphore);
+    public static final AddressLayout LAYOUT$event = (AddressLayout) LAYOUT.select(PATH$event);
+    public static final AddressLayout LAYOUT$mtlSharedEvent = (AddressLayout) LAYOUT.select(PATH$mtlSharedEvent);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

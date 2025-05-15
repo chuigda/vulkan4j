@@ -14,18 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkColorBlendAdvancedEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkColorBlendAdvancedEXT.html">VkColorBlendAdvancedEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkColorBlendAdvancedEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$advancedBlendOp = ValueLayout.JAVA_INT.withName("advancedBlendOp");
-    public static final OfInt LAYOUT$srcPremultiplied = ValueLayout.JAVA_INT.withName("srcPremultiplied");
-    public static final OfInt LAYOUT$dstPremultiplied = ValueLayout.JAVA_INT.withName("dstPremultiplied");
-    public static final OfInt LAYOUT$blendOverlap = ValueLayout.JAVA_INT.withName("blendOverlap");
-    public static final OfInt LAYOUT$clampResults = ValueLayout.JAVA_INT.withName("clampResults");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$advancedBlendOp, LAYOUT$srcPremultiplied, LAYOUT$dstPremultiplied, LAYOUT$blendOverlap, LAYOUT$clampResults);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkColorBlendAdvancedEXT allocate(Arena arena) {
         return new VkColorBlendAdvancedEXT(arena.allocate(LAYOUT));
     }
@@ -53,11 +55,26 @@ public record VkColorBlendAdvancedEXT(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("advancedBlendOp"),
+        ValueLayout.JAVA_INT.withName("srcPremultiplied"),
+        ValueLayout.JAVA_INT.withName("dstPremultiplied"),
+        ValueLayout.JAVA_INT.withName("blendOverlap"),
+        ValueLayout.JAVA_INT.withName("clampResults")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$advancedBlendOp = PathElement.groupElement("PATH$advancedBlendOp");
     public static final PathElement PATH$srcPremultiplied = PathElement.groupElement("PATH$srcPremultiplied");
     public static final PathElement PATH$dstPremultiplied = PathElement.groupElement("PATH$dstPremultiplied");
     public static final PathElement PATH$blendOverlap = PathElement.groupElement("PATH$blendOverlap");
     public static final PathElement PATH$clampResults = PathElement.groupElement("PATH$clampResults");
+
+    public static final OfInt LAYOUT$advancedBlendOp = (OfInt) LAYOUT.select(PATH$advancedBlendOp);
+    public static final OfInt LAYOUT$srcPremultiplied = (OfInt) LAYOUT.select(PATH$srcPremultiplied);
+    public static final OfInt LAYOUT$dstPremultiplied = (OfInt) LAYOUT.select(PATH$dstPremultiplied);
+    public static final OfInt LAYOUT$blendOverlap = (OfInt) LAYOUT.select(PATH$blendOverlap);
+    public static final OfInt LAYOUT$clampResults = (OfInt) LAYOUT.select(PATH$clampResults);
 
     public static final long SIZE$advancedBlendOp = LAYOUT$advancedBlendOp.byteSize();
     public static final long SIZE$srcPremultiplied = LAYOUT$srcPremultiplied.byteSize();

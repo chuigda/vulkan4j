@@ -14,48 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoH265PictureParameterSet} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoH265PpsFlags.LAYOUT.withName("flags");
-    public static final OfByte LAYOUT$pps_pic_parameter_set_id = ValueLayout.JAVA_BYTE.withName("pps_pic_parameter_set_id");
-    public static final OfByte LAYOUT$pps_seq_parameter_set_id = ValueLayout.JAVA_BYTE.withName("pps_seq_parameter_set_id");
-    public static final OfByte LAYOUT$sps_video_parameter_set_id = ValueLayout.JAVA_BYTE.withName("sps_video_parameter_set_id");
-    public static final OfByte LAYOUT$num_extra_slice_header_bits = ValueLayout.JAVA_BYTE.withName("num_extra_slice_header_bits");
-    public static final OfByte LAYOUT$num_ref_idx_l0_default_active_minus1 = ValueLayout.JAVA_BYTE.withName("num_ref_idx_l0_default_active_minus1");
-    public static final OfByte LAYOUT$num_ref_idx_l1_default_active_minus1 = ValueLayout.JAVA_BYTE.withName("num_ref_idx_l1_default_active_minus1");
-    public static final OfByte LAYOUT$init_qp_minus26 = ValueLayout.JAVA_BYTE.withName("init_qp_minus26");
-    public static final OfByte LAYOUT$diff_cu_qp_delta_depth = ValueLayout.JAVA_BYTE.withName("diff_cu_qp_delta_depth");
-    public static final OfByte LAYOUT$pps_cb_qp_offset = ValueLayout.JAVA_BYTE.withName("pps_cb_qp_offset");
-    public static final OfByte LAYOUT$pps_cr_qp_offset = ValueLayout.JAVA_BYTE.withName("pps_cr_qp_offset");
-    public static final OfByte LAYOUT$pps_beta_offset_div2 = ValueLayout.JAVA_BYTE.withName("pps_beta_offset_div2");
-    public static final OfByte LAYOUT$pps_tc_offset_div2 = ValueLayout.JAVA_BYTE.withName("pps_tc_offset_div2");
-    public static final OfByte LAYOUT$log2_parallel_merge_level_minus2 = ValueLayout.JAVA_BYTE.withName("log2_parallel_merge_level_minus2");
-    public static final OfByte LAYOUT$log2_max_transform_skip_block_size_minus2 = ValueLayout.JAVA_BYTE.withName("log2_max_transform_skip_block_size_minus2");
-    public static final OfByte LAYOUT$diff_cu_chroma_qp_offset_depth = ValueLayout.JAVA_BYTE.withName("diff_cu_chroma_qp_offset_depth");
-    public static final OfByte LAYOUT$chroma_qp_offset_list_len_minus1 = ValueLayout.JAVA_BYTE.withName("chroma_qp_offset_list_len_minus1");
-    public static final OfByte LAYOUT$cb_qp_offset_list = ValueLayout.JAVA_BYTE.withName("cb_qp_offset_list");
-    public static final OfByte LAYOUT$cr_qp_offset_list = ValueLayout.JAVA_BYTE.withName("cr_qp_offset_list");
-    public static final OfByte LAYOUT$log2_sao_offset_scale_luma = ValueLayout.JAVA_BYTE.withName("log2_sao_offset_scale_luma");
-    public static final OfByte LAYOUT$log2_sao_offset_scale_chroma = ValueLayout.JAVA_BYTE.withName("log2_sao_offset_scale_chroma");
-    public static final OfByte LAYOUT$pps_act_y_qp_offset_plus5 = ValueLayout.JAVA_BYTE.withName("pps_act_y_qp_offset_plus5");
-    public static final OfByte LAYOUT$pps_act_cb_qp_offset_plus5 = ValueLayout.JAVA_BYTE.withName("pps_act_cb_qp_offset_plus5");
-    public static final OfByte LAYOUT$pps_act_cr_qp_offset_plus3 = ValueLayout.JAVA_BYTE.withName("pps_act_cr_qp_offset_plus3");
-    public static final OfByte LAYOUT$pps_num_palette_predictor_initializers = ValueLayout.JAVA_BYTE.withName("pps_num_palette_predictor_initializers");
-    public static final OfByte LAYOUT$luma_bit_depth_entry_minus8 = ValueLayout.JAVA_BYTE.withName("luma_bit_depth_entry_minus8");
-    public static final OfByte LAYOUT$chroma_bit_depth_entry_minus8 = ValueLayout.JAVA_BYTE.withName("chroma_bit_depth_entry_minus8");
-    public static final OfByte LAYOUT$num_tile_columns_minus1 = ValueLayout.JAVA_BYTE.withName("num_tile_columns_minus1");
-    public static final OfByte LAYOUT$num_tile_rows_minus1 = ValueLayout.JAVA_BYTE.withName("num_tile_rows_minus1");
-    public static final OfByte LAYOUT$reserved1 = ValueLayout.JAVA_BYTE.withName("reserved1");
-    public static final OfByte LAYOUT$reserved2 = ValueLayout.JAVA_BYTE.withName("reserved2");
-    public static final OfShort LAYOUT$column_width_minus1 = ValueLayout.JAVA_SHORT.withName("column_width_minus1");
-    public static final OfShort LAYOUT$row_height_minus1 = ValueLayout.JAVA_SHORT.withName("row_height_minus1");
-    public static final OfInt LAYOUT$reserved3 = ValueLayout.JAVA_INT.withName("reserved3");
-    public static final AddressLayout LAYOUT$pScalingLists = ValueLayout.ADDRESS.withTargetLayout(StdVideoH265ScalingLists.LAYOUT).withName("pScalingLists");
-    public static final AddressLayout LAYOUT$pPredictorPaletteEntries = ValueLayout.ADDRESS.withTargetLayout(StdVideoH265PredictorPaletteEntries.LAYOUT).withName("pPredictorPaletteEntries");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$pps_pic_parameter_set_id, LAYOUT$pps_seq_parameter_set_id, LAYOUT$sps_video_parameter_set_id, LAYOUT$num_extra_slice_header_bits, LAYOUT$num_ref_idx_l0_default_active_minus1, LAYOUT$num_ref_idx_l1_default_active_minus1, LAYOUT$init_qp_minus26, LAYOUT$diff_cu_qp_delta_depth, LAYOUT$pps_cb_qp_offset, LAYOUT$pps_cr_qp_offset, LAYOUT$pps_beta_offset_div2, LAYOUT$pps_tc_offset_div2, LAYOUT$log2_parallel_merge_level_minus2, LAYOUT$log2_max_transform_skip_block_size_minus2, LAYOUT$diff_cu_chroma_qp_offset_depth, LAYOUT$chroma_qp_offset_list_len_minus1, LAYOUT$cb_qp_offset_list, LAYOUT$cr_qp_offset_list, LAYOUT$log2_sao_offset_scale_luma, LAYOUT$log2_sao_offset_scale_chroma, LAYOUT$pps_act_y_qp_offset_plus5, LAYOUT$pps_act_cb_qp_offset_plus5, LAYOUT$pps_act_cr_qp_offset_plus3, LAYOUT$pps_num_palette_predictor_initializers, LAYOUT$luma_bit_depth_entry_minus8, LAYOUT$chroma_bit_depth_entry_minus8, LAYOUT$num_tile_columns_minus1, LAYOUT$num_tile_rows_minus1, LAYOUT$reserved1, LAYOUT$reserved2, LAYOUT$column_width_minus1, LAYOUT$row_height_minus1, LAYOUT$reserved3, LAYOUT$pScalingLists, LAYOUT$pPredictorPaletteEntries);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoH265PictureParameterSet allocate(Arena arena) {
         return new StdVideoH265PictureParameterSet(arena.allocate(LAYOUT));
     }
@@ -82,6 +52,46 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         }
         return ret;
     }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoH265PpsFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("pps_pic_parameter_set_id"),
+        ValueLayout.JAVA_BYTE.withName("pps_seq_parameter_set_id"),
+        ValueLayout.JAVA_BYTE.withName("sps_video_parameter_set_id"),
+        ValueLayout.JAVA_BYTE.withName("num_extra_slice_header_bits"),
+        ValueLayout.JAVA_BYTE.withName("num_ref_idx_l0_default_active_minus1"),
+        ValueLayout.JAVA_BYTE.withName("num_ref_idx_l1_default_active_minus1"),
+        ValueLayout.JAVA_BYTE.withName("init_qp_minus26"),
+        ValueLayout.JAVA_BYTE.withName("diff_cu_qp_delta_depth"),
+        ValueLayout.JAVA_BYTE.withName("pps_cb_qp_offset"),
+        ValueLayout.JAVA_BYTE.withName("pps_cr_qp_offset"),
+        ValueLayout.JAVA_BYTE.withName("pps_beta_offset_div2"),
+        ValueLayout.JAVA_BYTE.withName("pps_tc_offset_div2"),
+        ValueLayout.JAVA_BYTE.withName("log2_parallel_merge_level_minus2"),
+        ValueLayout.JAVA_BYTE.withName("log2_max_transform_skip_block_size_minus2"),
+        ValueLayout.JAVA_BYTE.withName("diff_cu_chroma_qp_offset_depth"),
+        ValueLayout.JAVA_BYTE.withName("chroma_qp_offset_list_len_minus1"),
+        ValueLayout.JAVA_BYTE.withName("cb_qp_offset_list"),
+        ValueLayout.JAVA_BYTE.withName("cr_qp_offset_list"),
+        ValueLayout.JAVA_BYTE.withName("log2_sao_offset_scale_luma"),
+        ValueLayout.JAVA_BYTE.withName("log2_sao_offset_scale_chroma"),
+        ValueLayout.JAVA_BYTE.withName("pps_act_y_qp_offset_plus5"),
+        ValueLayout.JAVA_BYTE.withName("pps_act_cb_qp_offset_plus5"),
+        ValueLayout.JAVA_BYTE.withName("pps_act_cr_qp_offset_plus3"),
+        ValueLayout.JAVA_BYTE.withName("pps_num_palette_predictor_initializers"),
+        ValueLayout.JAVA_BYTE.withName("luma_bit_depth_entry_minus8"),
+        ValueLayout.JAVA_BYTE.withName("chroma_bit_depth_entry_minus8"),
+        ValueLayout.JAVA_BYTE.withName("num_tile_columns_minus1"),
+        ValueLayout.JAVA_BYTE.withName("num_tile_rows_minus1"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.JAVA_BYTE.withName("reserved2"),
+        ValueLayout.JAVA_SHORT.withName("column_width_minus1"),
+        ValueLayout.JAVA_SHORT.withName("row_height_minus1"),
+        ValueLayout.JAVA_INT.withName("reserved3"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265ScalingLists.LAYOUT).withName("pScalingLists"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265PredictorPaletteEntries.LAYOUT).withName("pPredictorPaletteEntries")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$pps_pic_parameter_set_id = PathElement.groupElement("PATH$pps_pic_parameter_set_id");
@@ -119,6 +129,43 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
     public static final PathElement PATH$reserved3 = PathElement.groupElement("PATH$reserved3");
     public static final PathElement PATH$pScalingLists = PathElement.groupElement("PATH$pScalingLists");
     public static final PathElement PATH$pPredictorPaletteEntries = PathElement.groupElement("PATH$pPredictorPaletteEntries");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$pps_pic_parameter_set_id = (OfByte) LAYOUT.select(PATH$pps_pic_parameter_set_id);
+    public static final OfByte LAYOUT$pps_seq_parameter_set_id = (OfByte) LAYOUT.select(PATH$pps_seq_parameter_set_id);
+    public static final OfByte LAYOUT$sps_video_parameter_set_id = (OfByte) LAYOUT.select(PATH$sps_video_parameter_set_id);
+    public static final OfByte LAYOUT$num_extra_slice_header_bits = (OfByte) LAYOUT.select(PATH$num_extra_slice_header_bits);
+    public static final OfByte LAYOUT$num_ref_idx_l0_default_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l0_default_active_minus1);
+    public static final OfByte LAYOUT$num_ref_idx_l1_default_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l1_default_active_minus1);
+    public static final OfByte LAYOUT$init_qp_minus26 = (OfByte) LAYOUT.select(PATH$init_qp_minus26);
+    public static final OfByte LAYOUT$diff_cu_qp_delta_depth = (OfByte) LAYOUT.select(PATH$diff_cu_qp_delta_depth);
+    public static final OfByte LAYOUT$pps_cb_qp_offset = (OfByte) LAYOUT.select(PATH$pps_cb_qp_offset);
+    public static final OfByte LAYOUT$pps_cr_qp_offset = (OfByte) LAYOUT.select(PATH$pps_cr_qp_offset);
+    public static final OfByte LAYOUT$pps_beta_offset_div2 = (OfByte) LAYOUT.select(PATH$pps_beta_offset_div2);
+    public static final OfByte LAYOUT$pps_tc_offset_div2 = (OfByte) LAYOUT.select(PATH$pps_tc_offset_div2);
+    public static final OfByte LAYOUT$log2_parallel_merge_level_minus2 = (OfByte) LAYOUT.select(PATH$log2_parallel_merge_level_minus2);
+    public static final OfByte LAYOUT$log2_max_transform_skip_block_size_minus2 = (OfByte) LAYOUT.select(PATH$log2_max_transform_skip_block_size_minus2);
+    public static final OfByte LAYOUT$diff_cu_chroma_qp_offset_depth = (OfByte) LAYOUT.select(PATH$diff_cu_chroma_qp_offset_depth);
+    public static final OfByte LAYOUT$chroma_qp_offset_list_len_minus1 = (OfByte) LAYOUT.select(PATH$chroma_qp_offset_list_len_minus1);
+    public static final OfByte LAYOUT$cb_qp_offset_list = (OfByte) LAYOUT.select(PATH$cb_qp_offset_list);
+    public static final OfByte LAYOUT$cr_qp_offset_list = (OfByte) LAYOUT.select(PATH$cr_qp_offset_list);
+    public static final OfByte LAYOUT$log2_sao_offset_scale_luma = (OfByte) LAYOUT.select(PATH$log2_sao_offset_scale_luma);
+    public static final OfByte LAYOUT$log2_sao_offset_scale_chroma = (OfByte) LAYOUT.select(PATH$log2_sao_offset_scale_chroma);
+    public static final OfByte LAYOUT$pps_act_y_qp_offset_plus5 = (OfByte) LAYOUT.select(PATH$pps_act_y_qp_offset_plus5);
+    public static final OfByte LAYOUT$pps_act_cb_qp_offset_plus5 = (OfByte) LAYOUT.select(PATH$pps_act_cb_qp_offset_plus5);
+    public static final OfByte LAYOUT$pps_act_cr_qp_offset_plus3 = (OfByte) LAYOUT.select(PATH$pps_act_cr_qp_offset_plus3);
+    public static final OfByte LAYOUT$pps_num_palette_predictor_initializers = (OfByte) LAYOUT.select(PATH$pps_num_palette_predictor_initializers);
+    public static final OfByte LAYOUT$luma_bit_depth_entry_minus8 = (OfByte) LAYOUT.select(PATH$luma_bit_depth_entry_minus8);
+    public static final OfByte LAYOUT$chroma_bit_depth_entry_minus8 = (OfByte) LAYOUT.select(PATH$chroma_bit_depth_entry_minus8);
+    public static final OfByte LAYOUT$num_tile_columns_minus1 = (OfByte) LAYOUT.select(PATH$num_tile_columns_minus1);
+    public static final OfByte LAYOUT$num_tile_rows_minus1 = (OfByte) LAYOUT.select(PATH$num_tile_rows_minus1);
+    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
+    public static final OfByte LAYOUT$reserved2 = (OfByte) LAYOUT.select(PATH$reserved2);
+    public static final OfShort LAYOUT$column_width_minus1 = (OfShort) LAYOUT.select(PATH$column_width_minus1);
+    public static final OfShort LAYOUT$row_height_minus1 = (OfShort) LAYOUT.select(PATH$row_height_minus1);
+    public static final OfInt LAYOUT$reserved3 = (OfInt) LAYOUT.select(PATH$reserved3);
+    public static final AddressLayout LAYOUT$pScalingLists = (AddressLayout) LAYOUT.select(PATH$pScalingLists);
+    public static final AddressLayout LAYOUT$pPredictorPaletteEntries = (AddressLayout) LAYOUT.select(PATH$pPredictorPaletteEntries);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$pps_pic_parameter_set_id = LAYOUT$pps_pic_parameter_set_id.byteSize();

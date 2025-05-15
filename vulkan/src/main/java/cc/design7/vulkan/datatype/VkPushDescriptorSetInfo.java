@@ -14,19 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPushDescriptorSetInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPushDescriptorSetInfo.html">VkPushDescriptorSetInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$stageFlags = ValueLayout.JAVA_INT.withName("stageFlags");
-    public static final AddressLayout LAYOUT$layout = ValueLayout.ADDRESS.withName("layout");
-    public static final OfInt LAYOUT$set = ValueLayout.JAVA_INT.withName("set");
-    public static final OfInt LAYOUT$descriptorWriteCount = ValueLayout.JAVA_INT.withName("descriptorWriteCount");
-    public static final AddressLayout LAYOUT$pDescriptorWrites = ValueLayout.ADDRESS.withTargetLayout(VkWriteDescriptorSet.LAYOUT).withName("pDescriptorWrites");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$stageFlags, LAYOUT$layout, LAYOUT$set, LAYOUT$descriptorWriteCount, LAYOUT$pDescriptorWrites);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPushDescriptorSetInfo {
+        sType(VkStructureType.PUSH_DESCRIPTOR_SET_INFO);
+    }
 
     public static VkPushDescriptorSetInfo allocate(Arena arena) {
         return new VkPushDescriptorSetInfo(arena.allocate(LAYOUT));
@@ -55,6 +59,17 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("stageFlags"),
+        ValueLayout.ADDRESS.withName("layout"),
+        ValueLayout.JAVA_INT.withName("set"),
+        ValueLayout.JAVA_INT.withName("descriptorWriteCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkWriteDescriptorSet.LAYOUT).withName("pDescriptorWrites")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$stageFlags = PathElement.groupElement("PATH$stageFlags");
@@ -62,6 +77,14 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
     public static final PathElement PATH$set = PathElement.groupElement("PATH$set");
     public static final PathElement PATH$descriptorWriteCount = PathElement.groupElement("PATH$descriptorWriteCount");
     public static final PathElement PATH$pDescriptorWrites = PathElement.groupElement("PATH$pDescriptorWrites");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$stageFlags = (OfInt) LAYOUT.select(PATH$stageFlags);
+    public static final AddressLayout LAYOUT$layout = (AddressLayout) LAYOUT.select(PATH$layout);
+    public static final OfInt LAYOUT$set = (OfInt) LAYOUT.select(PATH$set);
+    public static final OfInt LAYOUT$descriptorWriteCount = (OfInt) LAYOUT.select(PATH$descriptorWriteCount);
+    public static final AddressLayout LAYOUT$pDescriptorWrites = (AddressLayout) LAYOUT.select(PATH$pDescriptorWrites);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

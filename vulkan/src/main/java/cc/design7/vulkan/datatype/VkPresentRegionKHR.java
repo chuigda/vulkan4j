@@ -14,15 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPresentRegionKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPresentRegionKHR.html">VkPresentRegionKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$rectangleCount = ValueLayout.JAVA_INT.withName("rectangleCount");
-    public static final AddressLayout LAYOUT$pRectangles = ValueLayout.ADDRESS.withTargetLayout(VkRectLayerKHR.LAYOUT).withName("pRectangles");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$rectangleCount, LAYOUT$pRectangles);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkPresentRegionKHR allocate(Arena arena) {
         return new VkPresentRegionKHR(arena.allocate(LAYOUT));
     }
@@ -50,8 +55,17 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IPoi
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("rectangleCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkRectLayerKHR.LAYOUT).withName("pRectangles")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$rectangleCount = PathElement.groupElement("PATH$rectangleCount");
     public static final PathElement PATH$pRectangles = PathElement.groupElement("PATH$pRectangles");
+
+    public static final OfInt LAYOUT$rectangleCount = (OfInt) LAYOUT.select(PATH$rectangleCount);
+    public static final AddressLayout LAYOUT$pRectangles = (AddressLayout) LAYOUT.select(PATH$pRectangles);
 
     public static final long SIZE$rectangleCount = LAYOUT$rectangleCount.byteSize();
     public static final long SIZE$pRectangles = LAYOUT$pRectangles.byteSize();

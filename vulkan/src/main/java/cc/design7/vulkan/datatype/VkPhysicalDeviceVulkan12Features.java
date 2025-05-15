@@ -14,61 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceVulkan12Features} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceVulkan12Features.html">VkPhysicalDeviceVulkan12Features</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceVulkan12Features(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$samplerMirrorClampToEdge = ValueLayout.JAVA_INT.withName("samplerMirrorClampToEdge");
-    public static final OfInt LAYOUT$drawIndirectCount = ValueLayout.JAVA_INT.withName("drawIndirectCount");
-    public static final OfInt LAYOUT$storageBuffer8BitAccess = ValueLayout.JAVA_INT.withName("storageBuffer8BitAccess");
-    public static final OfInt LAYOUT$uniformAndStorageBuffer8BitAccess = ValueLayout.JAVA_INT.withName("uniformAndStorageBuffer8BitAccess");
-    public static final OfInt LAYOUT$storagePushConstant8 = ValueLayout.JAVA_INT.withName("storagePushConstant8");
-    public static final OfInt LAYOUT$shaderBufferInt64Atomics = ValueLayout.JAVA_INT.withName("shaderBufferInt64Atomics");
-    public static final OfInt LAYOUT$shaderSharedInt64Atomics = ValueLayout.JAVA_INT.withName("shaderSharedInt64Atomics");
-    public static final OfInt LAYOUT$shaderFloat16 = ValueLayout.JAVA_INT.withName("shaderFloat16");
-    public static final OfInt LAYOUT$shaderInt8 = ValueLayout.JAVA_INT.withName("shaderInt8");
-    public static final OfInt LAYOUT$descriptorIndexing = ValueLayout.JAVA_INT.withName("descriptorIndexing");
-    public static final OfInt LAYOUT$shaderInputAttachmentArrayDynamicIndexing = ValueLayout.JAVA_INT.withName("shaderInputAttachmentArrayDynamicIndexing");
-    public static final OfInt LAYOUT$shaderUniformTexelBufferArrayDynamicIndexing = ValueLayout.JAVA_INT.withName("shaderUniformTexelBufferArrayDynamicIndexing");
-    public static final OfInt LAYOUT$shaderStorageTexelBufferArrayDynamicIndexing = ValueLayout.JAVA_INT.withName("shaderStorageTexelBufferArrayDynamicIndexing");
-    public static final OfInt LAYOUT$shaderUniformBufferArrayNonUniformIndexing = ValueLayout.JAVA_INT.withName("shaderUniformBufferArrayNonUniformIndexing");
-    public static final OfInt LAYOUT$shaderSampledImageArrayNonUniformIndexing = ValueLayout.JAVA_INT.withName("shaderSampledImageArrayNonUniformIndexing");
-    public static final OfInt LAYOUT$shaderStorageBufferArrayNonUniformIndexing = ValueLayout.JAVA_INT.withName("shaderStorageBufferArrayNonUniformIndexing");
-    public static final OfInt LAYOUT$shaderStorageImageArrayNonUniformIndexing = ValueLayout.JAVA_INT.withName("shaderStorageImageArrayNonUniformIndexing");
-    public static final OfInt LAYOUT$shaderInputAttachmentArrayNonUniformIndexing = ValueLayout.JAVA_INT.withName("shaderInputAttachmentArrayNonUniformIndexing");
-    public static final OfInt LAYOUT$shaderUniformTexelBufferArrayNonUniformIndexing = ValueLayout.JAVA_INT.withName("shaderUniformTexelBufferArrayNonUniformIndexing");
-    public static final OfInt LAYOUT$shaderStorageTexelBufferArrayNonUniformIndexing = ValueLayout.JAVA_INT.withName("shaderStorageTexelBufferArrayNonUniformIndexing");
-    public static final OfInt LAYOUT$descriptorBindingUniformBufferUpdateAfterBind = ValueLayout.JAVA_INT.withName("descriptorBindingUniformBufferUpdateAfterBind");
-    public static final OfInt LAYOUT$descriptorBindingSampledImageUpdateAfterBind = ValueLayout.JAVA_INT.withName("descriptorBindingSampledImageUpdateAfterBind");
-    public static final OfInt LAYOUT$descriptorBindingStorageImageUpdateAfterBind = ValueLayout.JAVA_INT.withName("descriptorBindingStorageImageUpdateAfterBind");
-    public static final OfInt LAYOUT$descriptorBindingStorageBufferUpdateAfterBind = ValueLayout.JAVA_INT.withName("descriptorBindingStorageBufferUpdateAfterBind");
-    public static final OfInt LAYOUT$descriptorBindingUniformTexelBufferUpdateAfterBind = ValueLayout.JAVA_INT.withName("descriptorBindingUniformTexelBufferUpdateAfterBind");
-    public static final OfInt LAYOUT$descriptorBindingStorageTexelBufferUpdateAfterBind = ValueLayout.JAVA_INT.withName("descriptorBindingStorageTexelBufferUpdateAfterBind");
-    public static final OfInt LAYOUT$descriptorBindingUpdateUnusedWhilePending = ValueLayout.JAVA_INT.withName("descriptorBindingUpdateUnusedWhilePending");
-    public static final OfInt LAYOUT$descriptorBindingPartiallyBound = ValueLayout.JAVA_INT.withName("descriptorBindingPartiallyBound");
-    public static final OfInt LAYOUT$descriptorBindingVariableDescriptorCount = ValueLayout.JAVA_INT.withName("descriptorBindingVariableDescriptorCount");
-    public static final OfInt LAYOUT$runtimeDescriptorArray = ValueLayout.JAVA_INT.withName("runtimeDescriptorArray");
-    public static final OfInt LAYOUT$samplerFilterMinmax = ValueLayout.JAVA_INT.withName("samplerFilterMinmax");
-    public static final OfInt LAYOUT$scalarBlockLayout = ValueLayout.JAVA_INT.withName("scalarBlockLayout");
-    public static final OfInt LAYOUT$imagelessFramebuffer = ValueLayout.JAVA_INT.withName("imagelessFramebuffer");
-    public static final OfInt LAYOUT$uniformBufferStandardLayout = ValueLayout.JAVA_INT.withName("uniformBufferStandardLayout");
-    public static final OfInt LAYOUT$shaderSubgroupExtendedTypes = ValueLayout.JAVA_INT.withName("shaderSubgroupExtendedTypes");
-    public static final OfInt LAYOUT$separateDepthStencilLayouts = ValueLayout.JAVA_INT.withName("separateDepthStencilLayouts");
-    public static final OfInt LAYOUT$hostQueryReset = ValueLayout.JAVA_INT.withName("hostQueryReset");
-    public static final OfInt LAYOUT$timelineSemaphore = ValueLayout.JAVA_INT.withName("timelineSemaphore");
-    public static final OfInt LAYOUT$bufferDeviceAddress = ValueLayout.JAVA_INT.withName("bufferDeviceAddress");
-    public static final OfInt LAYOUT$bufferDeviceAddressCaptureReplay = ValueLayout.JAVA_INT.withName("bufferDeviceAddressCaptureReplay");
-    public static final OfInt LAYOUT$bufferDeviceAddressMultiDevice = ValueLayout.JAVA_INT.withName("bufferDeviceAddressMultiDevice");
-    public static final OfInt LAYOUT$vulkanMemoryModel = ValueLayout.JAVA_INT.withName("vulkanMemoryModel");
-    public static final OfInt LAYOUT$vulkanMemoryModelDeviceScope = ValueLayout.JAVA_INT.withName("vulkanMemoryModelDeviceScope");
-    public static final OfInt LAYOUT$vulkanMemoryModelAvailabilityVisibilityChains = ValueLayout.JAVA_INT.withName("vulkanMemoryModelAvailabilityVisibilityChains");
-    public static final OfInt LAYOUT$shaderOutputViewportIndex = ValueLayout.JAVA_INT.withName("shaderOutputViewportIndex");
-    public static final OfInt LAYOUT$shaderOutputLayer = ValueLayout.JAVA_INT.withName("shaderOutputLayer");
-    public static final OfInt LAYOUT$subgroupBroadcastDynamicId = ValueLayout.JAVA_INT.withName("subgroupBroadcastDynamicId");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$samplerMirrorClampToEdge, LAYOUT$drawIndirectCount, LAYOUT$storageBuffer8BitAccess, LAYOUT$uniformAndStorageBuffer8BitAccess, LAYOUT$storagePushConstant8, LAYOUT$shaderBufferInt64Atomics, LAYOUT$shaderSharedInt64Atomics, LAYOUT$shaderFloat16, LAYOUT$shaderInt8, LAYOUT$descriptorIndexing, LAYOUT$shaderInputAttachmentArrayDynamicIndexing, LAYOUT$shaderUniformTexelBufferArrayDynamicIndexing, LAYOUT$shaderStorageTexelBufferArrayDynamicIndexing, LAYOUT$shaderUniformBufferArrayNonUniformIndexing, LAYOUT$shaderSampledImageArrayNonUniformIndexing, LAYOUT$shaderStorageBufferArrayNonUniformIndexing, LAYOUT$shaderStorageImageArrayNonUniformIndexing, LAYOUT$shaderInputAttachmentArrayNonUniformIndexing, LAYOUT$shaderUniformTexelBufferArrayNonUniformIndexing, LAYOUT$shaderStorageTexelBufferArrayNonUniformIndexing, LAYOUT$descriptorBindingUniformBufferUpdateAfterBind, LAYOUT$descriptorBindingSampledImageUpdateAfterBind, LAYOUT$descriptorBindingStorageImageUpdateAfterBind, LAYOUT$descriptorBindingStorageBufferUpdateAfterBind, LAYOUT$descriptorBindingUniformTexelBufferUpdateAfterBind, LAYOUT$descriptorBindingStorageTexelBufferUpdateAfterBind, LAYOUT$descriptorBindingUpdateUnusedWhilePending, LAYOUT$descriptorBindingPartiallyBound, LAYOUT$descriptorBindingVariableDescriptorCount, LAYOUT$runtimeDescriptorArray, LAYOUT$samplerFilterMinmax, LAYOUT$scalarBlockLayout, LAYOUT$imagelessFramebuffer, LAYOUT$uniformBufferStandardLayout, LAYOUT$shaderSubgroupExtendedTypes, LAYOUT$separateDepthStencilLayouts, LAYOUT$hostQueryReset, LAYOUT$timelineSemaphore, LAYOUT$bufferDeviceAddress, LAYOUT$bufferDeviceAddressCaptureReplay, LAYOUT$bufferDeviceAddressMultiDevice, LAYOUT$vulkanMemoryModel, LAYOUT$vulkanMemoryModelDeviceScope, LAYOUT$vulkanMemoryModelAvailabilityVisibilityChains, LAYOUT$shaderOutputViewportIndex, LAYOUT$shaderOutputLayer, LAYOUT$subgroupBroadcastDynamicId);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceVulkan12Features {
+        sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_2_FEATURES);
+    }
 
     public static VkPhysicalDeviceVulkan12Features allocate(Arena arena) {
         return new VkPhysicalDeviceVulkan12Features(arena.allocate(LAYOUT));
@@ -96,6 +58,59 @@ public record VkPhysicalDeviceVulkan12Features(@NotNull MemorySegment segment) i
         }
         return ret;
     }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("samplerMirrorClampToEdge"),
+        ValueLayout.JAVA_INT.withName("drawIndirectCount"),
+        ValueLayout.JAVA_INT.withName("storageBuffer8BitAccess"),
+        ValueLayout.JAVA_INT.withName("uniformAndStorageBuffer8BitAccess"),
+        ValueLayout.JAVA_INT.withName("storagePushConstant8"),
+        ValueLayout.JAVA_INT.withName("shaderBufferInt64Atomics"),
+        ValueLayout.JAVA_INT.withName("shaderSharedInt64Atomics"),
+        ValueLayout.JAVA_INT.withName("shaderFloat16"),
+        ValueLayout.JAVA_INT.withName("shaderInt8"),
+        ValueLayout.JAVA_INT.withName("descriptorIndexing"),
+        ValueLayout.JAVA_INT.withName("shaderInputAttachmentArrayDynamicIndexing"),
+        ValueLayout.JAVA_INT.withName("shaderUniformTexelBufferArrayDynamicIndexing"),
+        ValueLayout.JAVA_INT.withName("shaderStorageTexelBufferArrayDynamicIndexing"),
+        ValueLayout.JAVA_INT.withName("shaderUniformBufferArrayNonUniformIndexing"),
+        ValueLayout.JAVA_INT.withName("shaderSampledImageArrayNonUniformIndexing"),
+        ValueLayout.JAVA_INT.withName("shaderStorageBufferArrayNonUniformIndexing"),
+        ValueLayout.JAVA_INT.withName("shaderStorageImageArrayNonUniformIndexing"),
+        ValueLayout.JAVA_INT.withName("shaderInputAttachmentArrayNonUniformIndexing"),
+        ValueLayout.JAVA_INT.withName("shaderUniformTexelBufferArrayNonUniformIndexing"),
+        ValueLayout.JAVA_INT.withName("shaderStorageTexelBufferArrayNonUniformIndexing"),
+        ValueLayout.JAVA_INT.withName("descriptorBindingUniformBufferUpdateAfterBind"),
+        ValueLayout.JAVA_INT.withName("descriptorBindingSampledImageUpdateAfterBind"),
+        ValueLayout.JAVA_INT.withName("descriptorBindingStorageImageUpdateAfterBind"),
+        ValueLayout.JAVA_INT.withName("descriptorBindingStorageBufferUpdateAfterBind"),
+        ValueLayout.JAVA_INT.withName("descriptorBindingUniformTexelBufferUpdateAfterBind"),
+        ValueLayout.JAVA_INT.withName("descriptorBindingStorageTexelBufferUpdateAfterBind"),
+        ValueLayout.JAVA_INT.withName("descriptorBindingUpdateUnusedWhilePending"),
+        ValueLayout.JAVA_INT.withName("descriptorBindingPartiallyBound"),
+        ValueLayout.JAVA_INT.withName("descriptorBindingVariableDescriptorCount"),
+        ValueLayout.JAVA_INT.withName("runtimeDescriptorArray"),
+        ValueLayout.JAVA_INT.withName("samplerFilterMinmax"),
+        ValueLayout.JAVA_INT.withName("scalarBlockLayout"),
+        ValueLayout.JAVA_INT.withName("imagelessFramebuffer"),
+        ValueLayout.JAVA_INT.withName("uniformBufferStandardLayout"),
+        ValueLayout.JAVA_INT.withName("shaderSubgroupExtendedTypes"),
+        ValueLayout.JAVA_INT.withName("separateDepthStencilLayouts"),
+        ValueLayout.JAVA_INT.withName("hostQueryReset"),
+        ValueLayout.JAVA_INT.withName("timelineSemaphore"),
+        ValueLayout.JAVA_INT.withName("bufferDeviceAddress"),
+        ValueLayout.JAVA_INT.withName("bufferDeviceAddressCaptureReplay"),
+        ValueLayout.JAVA_INT.withName("bufferDeviceAddressMultiDevice"),
+        ValueLayout.JAVA_INT.withName("vulkanMemoryModel"),
+        ValueLayout.JAVA_INT.withName("vulkanMemoryModelDeviceScope"),
+        ValueLayout.JAVA_INT.withName("vulkanMemoryModelAvailabilityVisibilityChains"),
+        ValueLayout.JAVA_INT.withName("shaderOutputViewportIndex"),
+        ValueLayout.JAVA_INT.withName("shaderOutputLayer"),
+        ValueLayout.JAVA_INT.withName("subgroupBroadcastDynamicId")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
@@ -146,6 +161,56 @@ public record VkPhysicalDeviceVulkan12Features(@NotNull MemorySegment segment) i
     public static final PathElement PATH$shaderOutputViewportIndex = PathElement.groupElement("PATH$shaderOutputViewportIndex");
     public static final PathElement PATH$shaderOutputLayer = PathElement.groupElement("PATH$shaderOutputLayer");
     public static final PathElement PATH$subgroupBroadcastDynamicId = PathElement.groupElement("PATH$subgroupBroadcastDynamicId");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$samplerMirrorClampToEdge = (OfInt) LAYOUT.select(PATH$samplerMirrorClampToEdge);
+    public static final OfInt LAYOUT$drawIndirectCount = (OfInt) LAYOUT.select(PATH$drawIndirectCount);
+    public static final OfInt LAYOUT$storageBuffer8BitAccess = (OfInt) LAYOUT.select(PATH$storageBuffer8BitAccess);
+    public static final OfInt LAYOUT$uniformAndStorageBuffer8BitAccess = (OfInt) LAYOUT.select(PATH$uniformAndStorageBuffer8BitAccess);
+    public static final OfInt LAYOUT$storagePushConstant8 = (OfInt) LAYOUT.select(PATH$storagePushConstant8);
+    public static final OfInt LAYOUT$shaderBufferInt64Atomics = (OfInt) LAYOUT.select(PATH$shaderBufferInt64Atomics);
+    public static final OfInt LAYOUT$shaderSharedInt64Atomics = (OfInt) LAYOUT.select(PATH$shaderSharedInt64Atomics);
+    public static final OfInt LAYOUT$shaderFloat16 = (OfInt) LAYOUT.select(PATH$shaderFloat16);
+    public static final OfInt LAYOUT$shaderInt8 = (OfInt) LAYOUT.select(PATH$shaderInt8);
+    public static final OfInt LAYOUT$descriptorIndexing = (OfInt) LAYOUT.select(PATH$descriptorIndexing);
+    public static final OfInt LAYOUT$shaderInputAttachmentArrayDynamicIndexing = (OfInt) LAYOUT.select(PATH$shaderInputAttachmentArrayDynamicIndexing);
+    public static final OfInt LAYOUT$shaderUniformTexelBufferArrayDynamicIndexing = (OfInt) LAYOUT.select(PATH$shaderUniformTexelBufferArrayDynamicIndexing);
+    public static final OfInt LAYOUT$shaderStorageTexelBufferArrayDynamicIndexing = (OfInt) LAYOUT.select(PATH$shaderStorageTexelBufferArrayDynamicIndexing);
+    public static final OfInt LAYOUT$shaderUniformBufferArrayNonUniformIndexing = (OfInt) LAYOUT.select(PATH$shaderUniformBufferArrayNonUniformIndexing);
+    public static final OfInt LAYOUT$shaderSampledImageArrayNonUniformIndexing = (OfInt) LAYOUT.select(PATH$shaderSampledImageArrayNonUniformIndexing);
+    public static final OfInt LAYOUT$shaderStorageBufferArrayNonUniformIndexing = (OfInt) LAYOUT.select(PATH$shaderStorageBufferArrayNonUniformIndexing);
+    public static final OfInt LAYOUT$shaderStorageImageArrayNonUniformIndexing = (OfInt) LAYOUT.select(PATH$shaderStorageImageArrayNonUniformIndexing);
+    public static final OfInt LAYOUT$shaderInputAttachmentArrayNonUniformIndexing = (OfInt) LAYOUT.select(PATH$shaderInputAttachmentArrayNonUniformIndexing);
+    public static final OfInt LAYOUT$shaderUniformTexelBufferArrayNonUniformIndexing = (OfInt) LAYOUT.select(PATH$shaderUniformTexelBufferArrayNonUniformIndexing);
+    public static final OfInt LAYOUT$shaderStorageTexelBufferArrayNonUniformIndexing = (OfInt) LAYOUT.select(PATH$shaderStorageTexelBufferArrayNonUniformIndexing);
+    public static final OfInt LAYOUT$descriptorBindingUniformBufferUpdateAfterBind = (OfInt) LAYOUT.select(PATH$descriptorBindingUniformBufferUpdateAfterBind);
+    public static final OfInt LAYOUT$descriptorBindingSampledImageUpdateAfterBind = (OfInt) LAYOUT.select(PATH$descriptorBindingSampledImageUpdateAfterBind);
+    public static final OfInt LAYOUT$descriptorBindingStorageImageUpdateAfterBind = (OfInt) LAYOUT.select(PATH$descriptorBindingStorageImageUpdateAfterBind);
+    public static final OfInt LAYOUT$descriptorBindingStorageBufferUpdateAfterBind = (OfInt) LAYOUT.select(PATH$descriptorBindingStorageBufferUpdateAfterBind);
+    public static final OfInt LAYOUT$descriptorBindingUniformTexelBufferUpdateAfterBind = (OfInt) LAYOUT.select(PATH$descriptorBindingUniformTexelBufferUpdateAfterBind);
+    public static final OfInt LAYOUT$descriptorBindingStorageTexelBufferUpdateAfterBind = (OfInt) LAYOUT.select(PATH$descriptorBindingStorageTexelBufferUpdateAfterBind);
+    public static final OfInt LAYOUT$descriptorBindingUpdateUnusedWhilePending = (OfInt) LAYOUT.select(PATH$descriptorBindingUpdateUnusedWhilePending);
+    public static final OfInt LAYOUT$descriptorBindingPartiallyBound = (OfInt) LAYOUT.select(PATH$descriptorBindingPartiallyBound);
+    public static final OfInt LAYOUT$descriptorBindingVariableDescriptorCount = (OfInt) LAYOUT.select(PATH$descriptorBindingVariableDescriptorCount);
+    public static final OfInt LAYOUT$runtimeDescriptorArray = (OfInt) LAYOUT.select(PATH$runtimeDescriptorArray);
+    public static final OfInt LAYOUT$samplerFilterMinmax = (OfInt) LAYOUT.select(PATH$samplerFilterMinmax);
+    public static final OfInt LAYOUT$scalarBlockLayout = (OfInt) LAYOUT.select(PATH$scalarBlockLayout);
+    public static final OfInt LAYOUT$imagelessFramebuffer = (OfInt) LAYOUT.select(PATH$imagelessFramebuffer);
+    public static final OfInt LAYOUT$uniformBufferStandardLayout = (OfInt) LAYOUT.select(PATH$uniformBufferStandardLayout);
+    public static final OfInt LAYOUT$shaderSubgroupExtendedTypes = (OfInt) LAYOUT.select(PATH$shaderSubgroupExtendedTypes);
+    public static final OfInt LAYOUT$separateDepthStencilLayouts = (OfInt) LAYOUT.select(PATH$separateDepthStencilLayouts);
+    public static final OfInt LAYOUT$hostQueryReset = (OfInt) LAYOUT.select(PATH$hostQueryReset);
+    public static final OfInt LAYOUT$timelineSemaphore = (OfInt) LAYOUT.select(PATH$timelineSemaphore);
+    public static final OfInt LAYOUT$bufferDeviceAddress = (OfInt) LAYOUT.select(PATH$bufferDeviceAddress);
+    public static final OfInt LAYOUT$bufferDeviceAddressCaptureReplay = (OfInt) LAYOUT.select(PATH$bufferDeviceAddressCaptureReplay);
+    public static final OfInt LAYOUT$bufferDeviceAddressMultiDevice = (OfInt) LAYOUT.select(PATH$bufferDeviceAddressMultiDevice);
+    public static final OfInt LAYOUT$vulkanMemoryModel = (OfInt) LAYOUT.select(PATH$vulkanMemoryModel);
+    public static final OfInt LAYOUT$vulkanMemoryModelDeviceScope = (OfInt) LAYOUT.select(PATH$vulkanMemoryModelDeviceScope);
+    public static final OfInt LAYOUT$vulkanMemoryModelAvailabilityVisibilityChains = (OfInt) LAYOUT.select(PATH$vulkanMemoryModelAvailabilityVisibilityChains);
+    public static final OfInt LAYOUT$shaderOutputViewportIndex = (OfInt) LAYOUT.select(PATH$shaderOutputViewportIndex);
+    public static final OfInt LAYOUT$shaderOutputLayer = (OfInt) LAYOUT.select(PATH$shaderOutputLayer);
+    public static final OfInt LAYOUT$subgroupBroadcastDynamicId = (OfInt) LAYOUT.select(PATH$subgroupBroadcastDynamicId);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

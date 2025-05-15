@@ -14,15 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDisplayModePropertiesKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayModePropertiesKHR.html">VkDisplayModePropertiesKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDisplayModePropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final AddressLayout LAYOUT$displayMode = ValueLayout.ADDRESS.withName("displayMode");
-    public static final StructLayout LAYOUT$parameters = VkDisplayModeParametersKHR.LAYOUT.withName("parameters");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$displayMode, LAYOUT$parameters);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkDisplayModePropertiesKHR allocate(Arena arena) {
         return new VkDisplayModePropertiesKHR(arena.allocate(LAYOUT));
     }
@@ -50,8 +55,17 @@ public record VkDisplayModePropertiesKHR(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withName("displayMode"),
+        VkDisplayModeParametersKHR.LAYOUT.withName("parameters")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$displayMode = PathElement.groupElement("PATH$displayMode");
     public static final PathElement PATH$parameters = PathElement.groupElement("PATH$parameters");
+
+    public static final AddressLayout LAYOUT$displayMode = (AddressLayout) LAYOUT.select(PATH$displayMode);
+    public static final StructLayout LAYOUT$parameters = (StructLayout) LAYOUT.select(PATH$parameters);
 
     public static final long SIZE$displayMode = LAYOUT$displayMode.byteSize();
     public static final long SIZE$parameters = LAYOUT$parameters.byteSize();

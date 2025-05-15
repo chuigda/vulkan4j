@@ -14,27 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkGeneratedCommandsInfoNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeneratedCommandsInfoNV.html">VkGeneratedCommandsInfoNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$pipelineBindPoint = ValueLayout.JAVA_INT.withName("pipelineBindPoint");
-    public static final AddressLayout LAYOUT$pipeline = ValueLayout.ADDRESS.withName("pipeline");
-    public static final AddressLayout LAYOUT$indirectCommandsLayout = ValueLayout.ADDRESS.withName("indirectCommandsLayout");
-    public static final OfInt LAYOUT$streamCount = ValueLayout.JAVA_INT.withName("streamCount");
-    public static final AddressLayout LAYOUT$pStreams = ValueLayout.ADDRESS.withTargetLayout(VkIndirectCommandsStreamNV.LAYOUT).withName("pStreams");
-    public static final OfInt LAYOUT$sequencesCount = ValueLayout.JAVA_INT.withName("sequencesCount");
-    public static final AddressLayout LAYOUT$preprocessBuffer = ValueLayout.ADDRESS.withName("preprocessBuffer");
-    public static final OfLong LAYOUT$preprocessOffset = ValueLayout.JAVA_LONG.withName("preprocessOffset");
-    public static final OfLong LAYOUT$preprocessSize = ValueLayout.JAVA_LONG.withName("preprocessSize");
-    public static final AddressLayout LAYOUT$sequencesCountBuffer = ValueLayout.ADDRESS.withName("sequencesCountBuffer");
-    public static final OfLong LAYOUT$sequencesCountOffset = ValueLayout.JAVA_LONG.withName("sequencesCountOffset");
-    public static final AddressLayout LAYOUT$sequencesIndexBuffer = ValueLayout.ADDRESS.withName("sequencesIndexBuffer");
-    public static final OfLong LAYOUT$sequencesIndexOffset = ValueLayout.JAVA_LONG.withName("sequencesIndexOffset");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$pipelineBindPoint, LAYOUT$pipeline, LAYOUT$indirectCommandsLayout, LAYOUT$streamCount, LAYOUT$pStreams, LAYOUT$sequencesCount, LAYOUT$preprocessBuffer, LAYOUT$preprocessOffset, LAYOUT$preprocessSize, LAYOUT$sequencesCountBuffer, LAYOUT$sequencesCountOffset, LAYOUT$sequencesIndexBuffer, LAYOUT$sequencesIndexOffset);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkGeneratedCommandsInfoNV {
+        sType(VkStructureType.GENERATED_COMMANDS_INFO_NV);
+    }
 
     public static VkGeneratedCommandsInfoNV allocate(Arena arena) {
         return new VkGeneratedCommandsInfoNV(arena.allocate(LAYOUT));
@@ -63,6 +59,25 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("pipelineBindPoint"),
+        ValueLayout.ADDRESS.withName("pipeline"),
+        ValueLayout.ADDRESS.withName("indirectCommandsLayout"),
+        ValueLayout.JAVA_INT.withName("streamCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkIndirectCommandsStreamNV.LAYOUT).withName("pStreams"),
+        ValueLayout.JAVA_INT.withName("sequencesCount"),
+        ValueLayout.ADDRESS.withName("preprocessBuffer"),
+        ValueLayout.JAVA_LONG.withName("preprocessOffset"),
+        ValueLayout.JAVA_LONG.withName("preprocessSize"),
+        ValueLayout.ADDRESS.withName("sequencesCountBuffer"),
+        ValueLayout.JAVA_LONG.withName("sequencesCountOffset"),
+        ValueLayout.ADDRESS.withName("sequencesIndexBuffer"),
+        ValueLayout.JAVA_LONG.withName("sequencesIndexOffset")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement("PATH$pipelineBindPoint");
@@ -78,6 +93,22 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
     public static final PathElement PATH$sequencesCountOffset = PathElement.groupElement("PATH$sequencesCountOffset");
     public static final PathElement PATH$sequencesIndexBuffer = PathElement.groupElement("PATH$sequencesIndexBuffer");
     public static final PathElement PATH$sequencesIndexOffset = PathElement.groupElement("PATH$sequencesIndexOffset");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$pipelineBindPoint = (OfInt) LAYOUT.select(PATH$pipelineBindPoint);
+    public static final AddressLayout LAYOUT$pipeline = (AddressLayout) LAYOUT.select(PATH$pipeline);
+    public static final AddressLayout LAYOUT$indirectCommandsLayout = (AddressLayout) LAYOUT.select(PATH$indirectCommandsLayout);
+    public static final OfInt LAYOUT$streamCount = (OfInt) LAYOUT.select(PATH$streamCount);
+    public static final AddressLayout LAYOUT$pStreams = (AddressLayout) LAYOUT.select(PATH$pStreams);
+    public static final OfInt LAYOUT$sequencesCount = (OfInt) LAYOUT.select(PATH$sequencesCount);
+    public static final AddressLayout LAYOUT$preprocessBuffer = (AddressLayout) LAYOUT.select(PATH$preprocessBuffer);
+    public static final OfLong LAYOUT$preprocessOffset = (OfLong) LAYOUT.select(PATH$preprocessOffset);
+    public static final OfLong LAYOUT$preprocessSize = (OfLong) LAYOUT.select(PATH$preprocessSize);
+    public static final AddressLayout LAYOUT$sequencesCountBuffer = (AddressLayout) LAYOUT.select(PATH$sequencesCountBuffer);
+    public static final OfLong LAYOUT$sequencesCountOffset = (OfLong) LAYOUT.select(PATH$sequencesCountOffset);
+    public static final AddressLayout LAYOUT$sequencesIndexBuffer = (AddressLayout) LAYOUT.select(PATH$sequencesIndexBuffer);
+    public static final OfLong LAYOUT$sequencesIndexOffset = (OfLong) LAYOUT.select(PATH$sequencesIndexOffset);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

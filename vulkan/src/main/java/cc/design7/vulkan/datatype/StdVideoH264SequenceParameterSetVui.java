@@ -14,28 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoH264SequenceParameterSetVui} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoH264SpsVuiFlags.LAYOUT.withName("flags");
-    public static final OfInt LAYOUT$aspect_ratio_idc = ValueLayout.JAVA_INT.withName("aspect_ratio_idc");
-    public static final OfShort LAYOUT$sar_width = ValueLayout.JAVA_SHORT.withName("sar_width");
-    public static final OfShort LAYOUT$sar_height = ValueLayout.JAVA_SHORT.withName("sar_height");
-    public static final OfByte LAYOUT$video_format = ValueLayout.JAVA_BYTE.withName("video_format");
-    public static final OfByte LAYOUT$colour_primaries = ValueLayout.JAVA_BYTE.withName("colour_primaries");
-    public static final OfByte LAYOUT$transfer_characteristics = ValueLayout.JAVA_BYTE.withName("transfer_characteristics");
-    public static final OfByte LAYOUT$matrix_coefficients = ValueLayout.JAVA_BYTE.withName("matrix_coefficients");
-    public static final OfInt LAYOUT$num_units_in_tick = ValueLayout.JAVA_INT.withName("num_units_in_tick");
-    public static final OfInt LAYOUT$time_scale = ValueLayout.JAVA_INT.withName("time_scale");
-    public static final OfByte LAYOUT$max_num_reorder_frames = ValueLayout.JAVA_BYTE.withName("max_num_reorder_frames");
-    public static final OfByte LAYOUT$max_dec_frame_buffering = ValueLayout.JAVA_BYTE.withName("max_dec_frame_buffering");
-    public static final OfByte LAYOUT$chroma_sample_loc_type_top_field = ValueLayout.JAVA_BYTE.withName("chroma_sample_loc_type_top_field");
-    public static final OfByte LAYOUT$chroma_sample_loc_type_bottom_field = ValueLayout.JAVA_BYTE.withName("chroma_sample_loc_type_bottom_field");
-    public static final OfInt LAYOUT$reserved1 = ValueLayout.JAVA_INT.withName("reserved1");
-    public static final AddressLayout LAYOUT$pHrdParameters = ValueLayout.ADDRESS.withTargetLayout(StdVideoH264HrdParameters.LAYOUT).withName("pHrdParameters");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$aspect_ratio_idc, LAYOUT$sar_width, LAYOUT$sar_height, LAYOUT$video_format, LAYOUT$colour_primaries, LAYOUT$transfer_characteristics, LAYOUT$matrix_coefficients, LAYOUT$num_units_in_tick, LAYOUT$time_scale, LAYOUT$max_num_reorder_frames, LAYOUT$max_dec_frame_buffering, LAYOUT$chroma_sample_loc_type_top_field, LAYOUT$chroma_sample_loc_type_bottom_field, LAYOUT$reserved1, LAYOUT$pHrdParameters);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoH264SequenceParameterSetVui allocate(Arena arena) {
         return new StdVideoH264SequenceParameterSetVui(arena.allocate(LAYOUT));
     }
@@ -63,6 +53,26 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoH264SpsVuiFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("aspect_ratio_idc"),
+        ValueLayout.JAVA_SHORT.withName("sar_width"),
+        ValueLayout.JAVA_SHORT.withName("sar_height"),
+        ValueLayout.JAVA_BYTE.withName("video_format"),
+        ValueLayout.JAVA_BYTE.withName("colour_primaries"),
+        ValueLayout.JAVA_BYTE.withName("transfer_characteristics"),
+        ValueLayout.JAVA_BYTE.withName("matrix_coefficients"),
+        ValueLayout.JAVA_INT.withName("num_units_in_tick"),
+        ValueLayout.JAVA_INT.withName("time_scale"),
+        ValueLayout.JAVA_BYTE.withName("max_num_reorder_frames"),
+        ValueLayout.JAVA_BYTE.withName("max_dec_frame_buffering"),
+        ValueLayout.JAVA_BYTE.withName("chroma_sample_loc_type_top_field"),
+        ValueLayout.JAVA_BYTE.withName("chroma_sample_loc_type_bottom_field"),
+        ValueLayout.JAVA_INT.withName("reserved1"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH264HrdParameters.LAYOUT).withName("pHrdParameters")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$aspect_ratio_idc = PathElement.groupElement("PATH$aspect_ratio_idc");
     public static final PathElement PATH$sar_width = PathElement.groupElement("PATH$sar_width");
@@ -79,6 +89,23 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
     public static final PathElement PATH$chroma_sample_loc_type_bottom_field = PathElement.groupElement("PATH$chroma_sample_loc_type_bottom_field");
     public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$pHrdParameters = PathElement.groupElement("PATH$pHrdParameters");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$aspect_ratio_idc = (OfInt) LAYOUT.select(PATH$aspect_ratio_idc);
+    public static final OfShort LAYOUT$sar_width = (OfShort) LAYOUT.select(PATH$sar_width);
+    public static final OfShort LAYOUT$sar_height = (OfShort) LAYOUT.select(PATH$sar_height);
+    public static final OfByte LAYOUT$video_format = (OfByte) LAYOUT.select(PATH$video_format);
+    public static final OfByte LAYOUT$colour_primaries = (OfByte) LAYOUT.select(PATH$colour_primaries);
+    public static final OfByte LAYOUT$transfer_characteristics = (OfByte) LAYOUT.select(PATH$transfer_characteristics);
+    public static final OfByte LAYOUT$matrix_coefficients = (OfByte) LAYOUT.select(PATH$matrix_coefficients);
+    public static final OfInt LAYOUT$num_units_in_tick = (OfInt) LAYOUT.select(PATH$num_units_in_tick);
+    public static final OfInt LAYOUT$time_scale = (OfInt) LAYOUT.select(PATH$time_scale);
+    public static final OfByte LAYOUT$max_num_reorder_frames = (OfByte) LAYOUT.select(PATH$max_num_reorder_frames);
+    public static final OfByte LAYOUT$max_dec_frame_buffering = (OfByte) LAYOUT.select(PATH$max_dec_frame_buffering);
+    public static final OfByte LAYOUT$chroma_sample_loc_type_top_field = (OfByte) LAYOUT.select(PATH$chroma_sample_loc_type_top_field);
+    public static final OfByte LAYOUT$chroma_sample_loc_type_bottom_field = (OfByte) LAYOUT.select(PATH$chroma_sample_loc_type_bottom_field);
+    public static final OfInt LAYOUT$reserved1 = (OfInt) LAYOUT.select(PATH$reserved1);
+    public static final AddressLayout LAYOUT$pHrdParameters = (AddressLayout) LAYOUT.select(PATH$pHrdParameters);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$aspect_ratio_idc = LAYOUT$aspect_ratio_idc.byteSize();

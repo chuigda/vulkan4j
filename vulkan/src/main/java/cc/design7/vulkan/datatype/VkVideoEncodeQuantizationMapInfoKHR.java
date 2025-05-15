@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeQuantizationMapInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeQuantizationMapInfoKHR.html">VkVideoEncodeQuantizationMapInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeQuantizationMapInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$quantizationMap = ValueLayout.ADDRESS.withName("quantizationMap");
-    public static final StructLayout LAYOUT$quantizationMapExtent = VkExtent2D.LAYOUT.withName("quantizationMapExtent");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$quantizationMap, LAYOUT$quantizationMapExtent);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoEncodeQuantizationMapInfoKHR {
+        sType(VkStructureType.VIDEO_ENCODE_QUANTIZATION_MAP_INFO_KHR);
+    }
 
     public static VkVideoEncodeQuantizationMapInfoKHR allocate(Arena arena) {
         return new VkVideoEncodeQuantizationMapInfoKHR(arena.allocate(LAYOUT));
@@ -52,10 +59,23 @@ public record VkVideoEncodeQuantizationMapInfoKHR(@NotNull MemorySegment segment
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("quantizationMap"),
+        VkExtent2D.LAYOUT.withName("quantizationMapExtent")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$quantizationMap = PathElement.groupElement("PATH$quantizationMap");
     public static final PathElement PATH$quantizationMapExtent = PathElement.groupElement("PATH$quantizationMapExtent");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$quantizationMap = (AddressLayout) LAYOUT.select(PATH$quantizationMap);
+    public static final StructLayout LAYOUT$quantizationMapExtent = (StructLayout) LAYOUT.select(PATH$quantizationMapExtent);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

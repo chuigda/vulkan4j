@@ -14,27 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkIndirectCommandsLayoutTokenNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsLayoutTokenNV.html">VkIndirectCommandsLayoutTokenNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$tokenType = ValueLayout.JAVA_INT.withName("tokenType");
-    public static final OfInt LAYOUT$stream = ValueLayout.JAVA_INT.withName("stream");
-    public static final OfInt LAYOUT$offset = ValueLayout.JAVA_INT.withName("offset");
-    public static final OfInt LAYOUT$vertexBindingUnit = ValueLayout.JAVA_INT.withName("vertexBindingUnit");
-    public static final OfInt LAYOUT$vertexDynamicStride = ValueLayout.JAVA_INT.withName("vertexDynamicStride");
-    public static final AddressLayout LAYOUT$pushconstantPipelineLayout = ValueLayout.ADDRESS.withName("pushconstantPipelineLayout");
-    public static final OfInt LAYOUT$pushconstantShaderStageFlags = ValueLayout.JAVA_INT.withName("pushconstantShaderStageFlags");
-    public static final OfInt LAYOUT$pushconstantOffset = ValueLayout.JAVA_INT.withName("pushconstantOffset");
-    public static final OfInt LAYOUT$pushconstantSize = ValueLayout.JAVA_INT.withName("pushconstantSize");
-    public static final OfInt LAYOUT$indirectStateFlags = ValueLayout.JAVA_INT.withName("indirectStateFlags");
-    public static final OfInt LAYOUT$indexTypeCount = ValueLayout.JAVA_INT.withName("indexTypeCount");
-    public static final AddressLayout LAYOUT$pIndexTypes = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pIndexTypes");
-    public static final AddressLayout LAYOUT$pIndexTypeValues = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pIndexTypeValues");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$tokenType, LAYOUT$stream, LAYOUT$offset, LAYOUT$vertexBindingUnit, LAYOUT$vertexDynamicStride, LAYOUT$pushconstantPipelineLayout, LAYOUT$pushconstantShaderStageFlags, LAYOUT$pushconstantOffset, LAYOUT$pushconstantSize, LAYOUT$indirectStateFlags, LAYOUT$indexTypeCount, LAYOUT$pIndexTypes, LAYOUT$pIndexTypeValues);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkIndirectCommandsLayoutTokenNV {
+        sType(VkStructureType.INDIRECT_COMMANDS_LAYOUT_TOKEN_NV);
+    }
 
     public static VkIndirectCommandsLayoutTokenNV allocate(Arena arena) {
         return new VkIndirectCommandsLayoutTokenNV(arena.allocate(LAYOUT));
@@ -63,6 +59,25 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("tokenType"),
+        ValueLayout.JAVA_INT.withName("stream"),
+        ValueLayout.JAVA_INT.withName("offset"),
+        ValueLayout.JAVA_INT.withName("vertexBindingUnit"),
+        ValueLayout.JAVA_INT.withName("vertexDynamicStride"),
+        ValueLayout.ADDRESS.withName("pushconstantPipelineLayout"),
+        ValueLayout.JAVA_INT.withName("pushconstantShaderStageFlags"),
+        ValueLayout.JAVA_INT.withName("pushconstantOffset"),
+        ValueLayout.JAVA_INT.withName("pushconstantSize"),
+        ValueLayout.JAVA_INT.withName("indirectStateFlags"),
+        ValueLayout.JAVA_INT.withName("indexTypeCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pIndexTypes"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pIndexTypeValues")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$tokenType = PathElement.groupElement("PATH$tokenType");
@@ -78,6 +93,22 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
     public static final PathElement PATH$indexTypeCount = PathElement.groupElement("PATH$indexTypeCount");
     public static final PathElement PATH$pIndexTypes = PathElement.groupElement("PATH$pIndexTypes");
     public static final PathElement PATH$pIndexTypeValues = PathElement.groupElement("PATH$pIndexTypeValues");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$tokenType = (OfInt) LAYOUT.select(PATH$tokenType);
+    public static final OfInt LAYOUT$stream = (OfInt) LAYOUT.select(PATH$stream);
+    public static final OfInt LAYOUT$offset = (OfInt) LAYOUT.select(PATH$offset);
+    public static final OfInt LAYOUT$vertexBindingUnit = (OfInt) LAYOUT.select(PATH$vertexBindingUnit);
+    public static final OfInt LAYOUT$vertexDynamicStride = (OfInt) LAYOUT.select(PATH$vertexDynamicStride);
+    public static final AddressLayout LAYOUT$pushconstantPipelineLayout = (AddressLayout) LAYOUT.select(PATH$pushconstantPipelineLayout);
+    public static final OfInt LAYOUT$pushconstantShaderStageFlags = (OfInt) LAYOUT.select(PATH$pushconstantShaderStageFlags);
+    public static final OfInt LAYOUT$pushconstantOffset = (OfInt) LAYOUT.select(PATH$pushconstantOffset);
+    public static final OfInt LAYOUT$pushconstantSize = (OfInt) LAYOUT.select(PATH$pushconstantSize);
+    public static final OfInt LAYOUT$indirectStateFlags = (OfInt) LAYOUT.select(PATH$indirectStateFlags);
+    public static final OfInt LAYOUT$indexTypeCount = (OfInt) LAYOUT.select(PATH$indexTypeCount);
+    public static final AddressLayout LAYOUT$pIndexTypes = (AddressLayout) LAYOUT.select(PATH$pIndexTypes);
+    public static final AddressLayout LAYOUT$pIndexTypeValues = (AddressLayout) LAYOUT.select(PATH$pIndexTypeValues);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

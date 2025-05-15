@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkSubpassShadingPipelineCreateInfoHUAWEI} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassShadingPipelineCreateInfoHUAWEI.html">VkSubpassShadingPipelineCreateInfoHUAWEI</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkSubpassShadingPipelineCreateInfoHUAWEI(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$renderPass = ValueLayout.ADDRESS.withName("renderPass");
-    public static final OfInt LAYOUT$subpass = ValueLayout.JAVA_INT.withName("subpass");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$renderPass, LAYOUT$subpass);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkSubpassShadingPipelineCreateInfoHUAWEI {
+        sType(VkStructureType.SUBPASS_SHADING_PIPELINE_CREATE_INFO_HUAWEI);
+    }
 
     public static VkSubpassShadingPipelineCreateInfoHUAWEI allocate(Arena arena) {
         return new VkSubpassShadingPipelineCreateInfoHUAWEI(arena.allocate(LAYOUT));
@@ -52,10 +59,23 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(@NotNull MemorySegment se
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("renderPass"),
+        ValueLayout.JAVA_INT.withName("subpass")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$renderPass = PathElement.groupElement("PATH$renderPass");
     public static final PathElement PATH$subpass = PathElement.groupElement("PATH$subpass");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$renderPass = (AddressLayout) LAYOUT.select(PATH$renderPass);
+    public static final OfInt LAYOUT$subpass = (OfInt) LAYOUT.select(PATH$subpass);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

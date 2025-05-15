@@ -14,27 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoEncodeH265SliceSegmentHeader} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoEncodeH265SliceSegmentHeaderFlags.LAYOUT.withName("flags");
-    public static final OfInt LAYOUT$slice_type = ValueLayout.JAVA_INT.withName("slice_type");
-    public static final OfInt LAYOUT$slice_segment_address = ValueLayout.JAVA_INT.withName("slice_segment_address");
-    public static final OfByte LAYOUT$collocated_ref_idx = ValueLayout.JAVA_BYTE.withName("collocated_ref_idx");
-    public static final OfByte LAYOUT$MaxNumMergeCand = ValueLayout.JAVA_BYTE.withName("MaxNumMergeCand");
-    public static final OfByte LAYOUT$slice_cb_qp_offset = ValueLayout.JAVA_BYTE.withName("slice_cb_qp_offset");
-    public static final OfByte LAYOUT$slice_cr_qp_offset = ValueLayout.JAVA_BYTE.withName("slice_cr_qp_offset");
-    public static final OfByte LAYOUT$slice_beta_offset_div2 = ValueLayout.JAVA_BYTE.withName("slice_beta_offset_div2");
-    public static final OfByte LAYOUT$slice_tc_offset_div2 = ValueLayout.JAVA_BYTE.withName("slice_tc_offset_div2");
-    public static final OfByte LAYOUT$slice_act_y_qp_offset = ValueLayout.JAVA_BYTE.withName("slice_act_y_qp_offset");
-    public static final OfByte LAYOUT$slice_act_cb_qp_offset = ValueLayout.JAVA_BYTE.withName("slice_act_cb_qp_offset");
-    public static final OfByte LAYOUT$slice_act_cr_qp_offset = ValueLayout.JAVA_BYTE.withName("slice_act_cr_qp_offset");
-    public static final OfByte LAYOUT$slice_qp_delta = ValueLayout.JAVA_BYTE.withName("slice_qp_delta");
-    public static final OfShort LAYOUT$reserved1 = ValueLayout.JAVA_SHORT.withName("reserved1");
-    public static final AddressLayout LAYOUT$pWeightTable = ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH265WeightTable.LAYOUT).withName("pWeightTable");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$slice_type, LAYOUT$slice_segment_address, LAYOUT$collocated_ref_idx, LAYOUT$MaxNumMergeCand, LAYOUT$slice_cb_qp_offset, LAYOUT$slice_cr_qp_offset, LAYOUT$slice_beta_offset_div2, LAYOUT$slice_tc_offset_div2, LAYOUT$slice_act_y_qp_offset, LAYOUT$slice_act_cb_qp_offset, LAYOUT$slice_act_cr_qp_offset, LAYOUT$slice_qp_delta, LAYOUT$reserved1, LAYOUT$pWeightTable);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoEncodeH265SliceSegmentHeader allocate(Arena arena) {
         return new StdVideoEncodeH265SliceSegmentHeader(arena.allocate(LAYOUT));
     }
@@ -62,6 +53,25 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoEncodeH265SliceSegmentHeaderFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("slice_type"),
+        ValueLayout.JAVA_INT.withName("slice_segment_address"),
+        ValueLayout.JAVA_BYTE.withName("collocated_ref_idx"),
+        ValueLayout.JAVA_BYTE.withName("MaxNumMergeCand"),
+        ValueLayout.JAVA_BYTE.withName("slice_cb_qp_offset"),
+        ValueLayout.JAVA_BYTE.withName("slice_cr_qp_offset"),
+        ValueLayout.JAVA_BYTE.withName("slice_beta_offset_div2"),
+        ValueLayout.JAVA_BYTE.withName("slice_tc_offset_div2"),
+        ValueLayout.JAVA_BYTE.withName("slice_act_y_qp_offset"),
+        ValueLayout.JAVA_BYTE.withName("slice_act_cb_qp_offset"),
+        ValueLayout.JAVA_BYTE.withName("slice_act_cr_qp_offset"),
+        ValueLayout.JAVA_BYTE.withName("slice_qp_delta"),
+        ValueLayout.JAVA_SHORT.withName("reserved1"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH265WeightTable.LAYOUT).withName("pWeightTable")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$slice_type = PathElement.groupElement("PATH$slice_type");
     public static final PathElement PATH$slice_segment_address = PathElement.groupElement("PATH$slice_segment_address");
@@ -77,6 +87,22 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
     public static final PathElement PATH$slice_qp_delta = PathElement.groupElement("PATH$slice_qp_delta");
     public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$pWeightTable = PathElement.groupElement("PATH$pWeightTable");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$slice_type = (OfInt) LAYOUT.select(PATH$slice_type);
+    public static final OfInt LAYOUT$slice_segment_address = (OfInt) LAYOUT.select(PATH$slice_segment_address);
+    public static final OfByte LAYOUT$collocated_ref_idx = (OfByte) LAYOUT.select(PATH$collocated_ref_idx);
+    public static final OfByte LAYOUT$MaxNumMergeCand = (OfByte) LAYOUT.select(PATH$MaxNumMergeCand);
+    public static final OfByte LAYOUT$slice_cb_qp_offset = (OfByte) LAYOUT.select(PATH$slice_cb_qp_offset);
+    public static final OfByte LAYOUT$slice_cr_qp_offset = (OfByte) LAYOUT.select(PATH$slice_cr_qp_offset);
+    public static final OfByte LAYOUT$slice_beta_offset_div2 = (OfByte) LAYOUT.select(PATH$slice_beta_offset_div2);
+    public static final OfByte LAYOUT$slice_tc_offset_div2 = (OfByte) LAYOUT.select(PATH$slice_tc_offset_div2);
+    public static final OfByte LAYOUT$slice_act_y_qp_offset = (OfByte) LAYOUT.select(PATH$slice_act_y_qp_offset);
+    public static final OfByte LAYOUT$slice_act_cb_qp_offset = (OfByte) LAYOUT.select(PATH$slice_act_cb_qp_offset);
+    public static final OfByte LAYOUT$slice_act_cr_qp_offset = (OfByte) LAYOUT.select(PATH$slice_act_cr_qp_offset);
+    public static final OfByte LAYOUT$slice_qp_delta = (OfByte) LAYOUT.select(PATH$slice_qp_delta);
+    public static final OfShort LAYOUT$reserved1 = (OfShort) LAYOUT.select(PATH$reserved1);
+    public static final AddressLayout LAYOUT$pWeightTable = (AddressLayout) LAYOUT.select(PATH$pWeightTable);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$slice_type = LAYOUT$slice_type.byteSize();

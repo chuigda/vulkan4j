@@ -14,31 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkGraphicsPipelineCreateInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGraphicsPipelineCreateInfo.html">VkGraphicsPipelineCreateInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$stageCount = ValueLayout.JAVA_INT.withName("stageCount");
-    public static final AddressLayout LAYOUT$pStages = ValueLayout.ADDRESS.withTargetLayout(VkPipelineShaderStageCreateInfo.LAYOUT).withName("pStages");
-    public static final AddressLayout LAYOUT$pVertexInputState = ValueLayout.ADDRESS.withTargetLayout(VkPipelineVertexInputStateCreateInfo.LAYOUT).withName("pVertexInputState");
-    public static final AddressLayout LAYOUT$pInputAssemblyState = ValueLayout.ADDRESS.withTargetLayout(VkPipelineInputAssemblyStateCreateInfo.LAYOUT).withName("pInputAssemblyState");
-    public static final AddressLayout LAYOUT$pTessellationState = ValueLayout.ADDRESS.withTargetLayout(VkPipelineTessellationStateCreateInfo.LAYOUT).withName("pTessellationState");
-    public static final AddressLayout LAYOUT$pViewportState = ValueLayout.ADDRESS.withTargetLayout(VkPipelineViewportStateCreateInfo.LAYOUT).withName("pViewportState");
-    public static final AddressLayout LAYOUT$pRasterizationState = ValueLayout.ADDRESS.withTargetLayout(VkPipelineRasterizationStateCreateInfo.LAYOUT).withName("pRasterizationState");
-    public static final AddressLayout LAYOUT$pMultisampleState = ValueLayout.ADDRESS.withTargetLayout(VkPipelineMultisampleStateCreateInfo.LAYOUT).withName("pMultisampleState");
-    public static final AddressLayout LAYOUT$pDepthStencilState = ValueLayout.ADDRESS.withTargetLayout(VkPipelineDepthStencilStateCreateInfo.LAYOUT).withName("pDepthStencilState");
-    public static final AddressLayout LAYOUT$pColorBlendState = ValueLayout.ADDRESS.withTargetLayout(VkPipelineColorBlendStateCreateInfo.LAYOUT).withName("pColorBlendState");
-    public static final AddressLayout LAYOUT$pDynamicState = ValueLayout.ADDRESS.withTargetLayout(VkPipelineDynamicStateCreateInfo.LAYOUT).withName("pDynamicState");
-    public static final AddressLayout LAYOUT$layout = ValueLayout.ADDRESS.withName("layout");
-    public static final AddressLayout LAYOUT$renderPass = ValueLayout.ADDRESS.withName("renderPass");
-    public static final OfInt LAYOUT$subpass = ValueLayout.JAVA_INT.withName("subpass");
-    public static final AddressLayout LAYOUT$basePipelineHandle = ValueLayout.ADDRESS.withName("basePipelineHandle");
-    public static final OfInt LAYOUT$basePipelineIndex = ValueLayout.JAVA_INT.withName("basePipelineIndex");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$stageCount, LAYOUT$pStages, LAYOUT$pVertexInputState, LAYOUT$pInputAssemblyState, LAYOUT$pTessellationState, LAYOUT$pViewportState, LAYOUT$pRasterizationState, LAYOUT$pMultisampleState, LAYOUT$pDepthStencilState, LAYOUT$pColorBlendState, LAYOUT$pDynamicState, LAYOUT$layout, LAYOUT$renderPass, LAYOUT$subpass, LAYOUT$basePipelineHandle, LAYOUT$basePipelineIndex);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkGraphicsPipelineCreateInfo {
+        sType(VkStructureType.GRAPHICS_PIPELINE_CREATE_INFO);
+    }
 
     public static VkGraphicsPipelineCreateInfo allocate(Arena arena) {
         return new VkGraphicsPipelineCreateInfo(arena.allocate(LAYOUT));
@@ -67,6 +59,29 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("stageCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineShaderStageCreateInfo.LAYOUT).withName("pStages"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineVertexInputStateCreateInfo.LAYOUT).withName("pVertexInputState"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineInputAssemblyStateCreateInfo.LAYOUT).withName("pInputAssemblyState"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineTessellationStateCreateInfo.LAYOUT).withName("pTessellationState"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineViewportStateCreateInfo.LAYOUT).withName("pViewportState"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineRasterizationStateCreateInfo.LAYOUT).withName("pRasterizationState"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineMultisampleStateCreateInfo.LAYOUT).withName("pMultisampleState"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineDepthStencilStateCreateInfo.LAYOUT).withName("pDepthStencilState"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineColorBlendStateCreateInfo.LAYOUT).withName("pColorBlendState"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineDynamicStateCreateInfo.LAYOUT).withName("pDynamicState"),
+        ValueLayout.ADDRESS.withName("layout"),
+        ValueLayout.ADDRESS.withName("renderPass"),
+        ValueLayout.JAVA_INT.withName("subpass"),
+        ValueLayout.ADDRESS.withName("basePipelineHandle"),
+        ValueLayout.JAVA_INT.withName("basePipelineIndex")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -86,6 +101,26 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
     public static final PathElement PATH$subpass = PathElement.groupElement("PATH$subpass");
     public static final PathElement PATH$basePipelineHandle = PathElement.groupElement("PATH$basePipelineHandle");
     public static final PathElement PATH$basePipelineIndex = PathElement.groupElement("PATH$basePipelineIndex");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$stageCount = (OfInt) LAYOUT.select(PATH$stageCount);
+    public static final AddressLayout LAYOUT$pStages = (AddressLayout) LAYOUT.select(PATH$pStages);
+    public static final AddressLayout LAYOUT$pVertexInputState = (AddressLayout) LAYOUT.select(PATH$pVertexInputState);
+    public static final AddressLayout LAYOUT$pInputAssemblyState = (AddressLayout) LAYOUT.select(PATH$pInputAssemblyState);
+    public static final AddressLayout LAYOUT$pTessellationState = (AddressLayout) LAYOUT.select(PATH$pTessellationState);
+    public static final AddressLayout LAYOUT$pViewportState = (AddressLayout) LAYOUT.select(PATH$pViewportState);
+    public static final AddressLayout LAYOUT$pRasterizationState = (AddressLayout) LAYOUT.select(PATH$pRasterizationState);
+    public static final AddressLayout LAYOUT$pMultisampleState = (AddressLayout) LAYOUT.select(PATH$pMultisampleState);
+    public static final AddressLayout LAYOUT$pDepthStencilState = (AddressLayout) LAYOUT.select(PATH$pDepthStencilState);
+    public static final AddressLayout LAYOUT$pColorBlendState = (AddressLayout) LAYOUT.select(PATH$pColorBlendState);
+    public static final AddressLayout LAYOUT$pDynamicState = (AddressLayout) LAYOUT.select(PATH$pDynamicState);
+    public static final AddressLayout LAYOUT$layout = (AddressLayout) LAYOUT.select(PATH$layout);
+    public static final AddressLayout LAYOUT$renderPass = (AddressLayout) LAYOUT.select(PATH$renderPass);
+    public static final OfInt LAYOUT$subpass = (OfInt) LAYOUT.select(PATH$subpass);
+    public static final AddressLayout LAYOUT$basePipelineHandle = (AddressLayout) LAYOUT.select(PATH$basePipelineHandle);
+    public static final OfInt LAYOUT$basePipelineIndex = (OfInt) LAYOUT.select(PATH$basePipelineIndex);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

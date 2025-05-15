@@ -14,28 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceShaderCorePropertiesAMD} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderCorePropertiesAMD.html">VkPhysicalDeviceShaderCorePropertiesAMD</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceShaderCorePropertiesAMD(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$shaderEngineCount = ValueLayout.JAVA_INT.withName("shaderEngineCount");
-    public static final OfInt LAYOUT$shaderArraysPerEngineCount = ValueLayout.JAVA_INT.withName("shaderArraysPerEngineCount");
-    public static final OfInt LAYOUT$computeUnitsPerShaderArray = ValueLayout.JAVA_INT.withName("computeUnitsPerShaderArray");
-    public static final OfInt LAYOUT$simdPerComputeUnit = ValueLayout.JAVA_INT.withName("simdPerComputeUnit");
-    public static final OfInt LAYOUT$wavefrontsPerSimd = ValueLayout.JAVA_INT.withName("wavefrontsPerSimd");
-    public static final OfInt LAYOUT$wavefrontSize = ValueLayout.JAVA_INT.withName("wavefrontSize");
-    public static final OfInt LAYOUT$sgprsPerSimd = ValueLayout.JAVA_INT.withName("sgprsPerSimd");
-    public static final OfInt LAYOUT$minSgprAllocation = ValueLayout.JAVA_INT.withName("minSgprAllocation");
-    public static final OfInt LAYOUT$maxSgprAllocation = ValueLayout.JAVA_INT.withName("maxSgprAllocation");
-    public static final OfInt LAYOUT$sgprAllocationGranularity = ValueLayout.JAVA_INT.withName("sgprAllocationGranularity");
-    public static final OfInt LAYOUT$vgprsPerSimd = ValueLayout.JAVA_INT.withName("vgprsPerSimd");
-    public static final OfInt LAYOUT$minVgprAllocation = ValueLayout.JAVA_INT.withName("minVgprAllocation");
-    public static final OfInt LAYOUT$maxVgprAllocation = ValueLayout.JAVA_INT.withName("maxVgprAllocation");
-    public static final OfInt LAYOUT$vgprAllocationGranularity = ValueLayout.JAVA_INT.withName("vgprAllocationGranularity");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$shaderEngineCount, LAYOUT$shaderArraysPerEngineCount, LAYOUT$computeUnitsPerShaderArray, LAYOUT$simdPerComputeUnit, LAYOUT$wavefrontsPerSimd, LAYOUT$wavefrontSize, LAYOUT$sgprsPerSimd, LAYOUT$minSgprAllocation, LAYOUT$maxSgprAllocation, LAYOUT$sgprAllocationGranularity, LAYOUT$vgprsPerSimd, LAYOUT$minVgprAllocation, LAYOUT$maxVgprAllocation, LAYOUT$vgprAllocationGranularity);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceShaderCorePropertiesAMD {
+        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD);
+    }
 
     public static VkPhysicalDeviceShaderCorePropertiesAMD allocate(Arena arena) {
         return new VkPhysicalDeviceShaderCorePropertiesAMD(arena.allocate(LAYOUT));
@@ -64,6 +59,26 @@ public record VkPhysicalDeviceShaderCorePropertiesAMD(@NotNull MemorySegment seg
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("shaderEngineCount"),
+        ValueLayout.JAVA_INT.withName("shaderArraysPerEngineCount"),
+        ValueLayout.JAVA_INT.withName("computeUnitsPerShaderArray"),
+        ValueLayout.JAVA_INT.withName("simdPerComputeUnit"),
+        ValueLayout.JAVA_INT.withName("wavefrontsPerSimd"),
+        ValueLayout.JAVA_INT.withName("wavefrontSize"),
+        ValueLayout.JAVA_INT.withName("sgprsPerSimd"),
+        ValueLayout.JAVA_INT.withName("minSgprAllocation"),
+        ValueLayout.JAVA_INT.withName("maxSgprAllocation"),
+        ValueLayout.JAVA_INT.withName("sgprAllocationGranularity"),
+        ValueLayout.JAVA_INT.withName("vgprsPerSimd"),
+        ValueLayout.JAVA_INT.withName("minVgprAllocation"),
+        ValueLayout.JAVA_INT.withName("maxVgprAllocation"),
+        ValueLayout.JAVA_INT.withName("vgprAllocationGranularity")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$shaderEngineCount = PathElement.groupElement("PATH$shaderEngineCount");
@@ -80,6 +95,23 @@ public record VkPhysicalDeviceShaderCorePropertiesAMD(@NotNull MemorySegment seg
     public static final PathElement PATH$minVgprAllocation = PathElement.groupElement("PATH$minVgprAllocation");
     public static final PathElement PATH$maxVgprAllocation = PathElement.groupElement("PATH$maxVgprAllocation");
     public static final PathElement PATH$vgprAllocationGranularity = PathElement.groupElement("PATH$vgprAllocationGranularity");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$shaderEngineCount = (OfInt) LAYOUT.select(PATH$shaderEngineCount);
+    public static final OfInt LAYOUT$shaderArraysPerEngineCount = (OfInt) LAYOUT.select(PATH$shaderArraysPerEngineCount);
+    public static final OfInt LAYOUT$computeUnitsPerShaderArray = (OfInt) LAYOUT.select(PATH$computeUnitsPerShaderArray);
+    public static final OfInt LAYOUT$simdPerComputeUnit = (OfInt) LAYOUT.select(PATH$simdPerComputeUnit);
+    public static final OfInt LAYOUT$wavefrontsPerSimd = (OfInt) LAYOUT.select(PATH$wavefrontsPerSimd);
+    public static final OfInt LAYOUT$wavefrontSize = (OfInt) LAYOUT.select(PATH$wavefrontSize);
+    public static final OfInt LAYOUT$sgprsPerSimd = (OfInt) LAYOUT.select(PATH$sgprsPerSimd);
+    public static final OfInt LAYOUT$minSgprAllocation = (OfInt) LAYOUT.select(PATH$minSgprAllocation);
+    public static final OfInt LAYOUT$maxSgprAllocation = (OfInt) LAYOUT.select(PATH$maxSgprAllocation);
+    public static final OfInt LAYOUT$sgprAllocationGranularity = (OfInt) LAYOUT.select(PATH$sgprAllocationGranularity);
+    public static final OfInt LAYOUT$vgprsPerSimd = (OfInt) LAYOUT.select(PATH$vgprsPerSimd);
+    public static final OfInt LAYOUT$minVgprAllocation = (OfInt) LAYOUT.select(PATH$minVgprAllocation);
+    public static final OfInt LAYOUT$maxVgprAllocation = (OfInt) LAYOUT.select(PATH$maxVgprAllocation);
+    public static final OfInt LAYOUT$vgprAllocationGranularity = (OfInt) LAYOUT.select(PATH$vgprAllocationGranularity);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

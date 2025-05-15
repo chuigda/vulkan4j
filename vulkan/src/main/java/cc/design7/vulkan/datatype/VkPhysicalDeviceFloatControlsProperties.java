@@ -14,31 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceFloatControlsProperties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFloatControlsProperties.html">VkPhysicalDeviceFloatControlsProperties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceFloatControlsProperties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$denormBehaviorIndependence = ValueLayout.JAVA_INT.withName("denormBehaviorIndependence");
-    public static final OfInt LAYOUT$roundingModeIndependence = ValueLayout.JAVA_INT.withName("roundingModeIndependence");
-    public static final OfInt LAYOUT$shaderSignedZeroInfNanPreserveFloat16 = ValueLayout.JAVA_INT.withName("shaderSignedZeroInfNanPreserveFloat16");
-    public static final OfInt LAYOUT$shaderSignedZeroInfNanPreserveFloat32 = ValueLayout.JAVA_INT.withName("shaderSignedZeroInfNanPreserveFloat32");
-    public static final OfInt LAYOUT$shaderSignedZeroInfNanPreserveFloat64 = ValueLayout.JAVA_INT.withName("shaderSignedZeroInfNanPreserveFloat64");
-    public static final OfInt LAYOUT$shaderDenormPreserveFloat16 = ValueLayout.JAVA_INT.withName("shaderDenormPreserveFloat16");
-    public static final OfInt LAYOUT$shaderDenormPreserveFloat32 = ValueLayout.JAVA_INT.withName("shaderDenormPreserveFloat32");
-    public static final OfInt LAYOUT$shaderDenormPreserveFloat64 = ValueLayout.JAVA_INT.withName("shaderDenormPreserveFloat64");
-    public static final OfInt LAYOUT$shaderDenormFlushToZeroFloat16 = ValueLayout.JAVA_INT.withName("shaderDenormFlushToZeroFloat16");
-    public static final OfInt LAYOUT$shaderDenormFlushToZeroFloat32 = ValueLayout.JAVA_INT.withName("shaderDenormFlushToZeroFloat32");
-    public static final OfInt LAYOUT$shaderDenormFlushToZeroFloat64 = ValueLayout.JAVA_INT.withName("shaderDenormFlushToZeroFloat64");
-    public static final OfInt LAYOUT$shaderRoundingModeRTEFloat16 = ValueLayout.JAVA_INT.withName("shaderRoundingModeRTEFloat16");
-    public static final OfInt LAYOUT$shaderRoundingModeRTEFloat32 = ValueLayout.JAVA_INT.withName("shaderRoundingModeRTEFloat32");
-    public static final OfInt LAYOUT$shaderRoundingModeRTEFloat64 = ValueLayout.JAVA_INT.withName("shaderRoundingModeRTEFloat64");
-    public static final OfInt LAYOUT$shaderRoundingModeRTZFloat16 = ValueLayout.JAVA_INT.withName("shaderRoundingModeRTZFloat16");
-    public static final OfInt LAYOUT$shaderRoundingModeRTZFloat32 = ValueLayout.JAVA_INT.withName("shaderRoundingModeRTZFloat32");
-    public static final OfInt LAYOUT$shaderRoundingModeRTZFloat64 = ValueLayout.JAVA_INT.withName("shaderRoundingModeRTZFloat64");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$denormBehaviorIndependence, LAYOUT$roundingModeIndependence, LAYOUT$shaderSignedZeroInfNanPreserveFloat16, LAYOUT$shaderSignedZeroInfNanPreserveFloat32, LAYOUT$shaderSignedZeroInfNanPreserveFloat64, LAYOUT$shaderDenormPreserveFloat16, LAYOUT$shaderDenormPreserveFloat32, LAYOUT$shaderDenormPreserveFloat64, LAYOUT$shaderDenormFlushToZeroFloat16, LAYOUT$shaderDenormFlushToZeroFloat32, LAYOUT$shaderDenormFlushToZeroFloat64, LAYOUT$shaderRoundingModeRTEFloat16, LAYOUT$shaderRoundingModeRTEFloat32, LAYOUT$shaderRoundingModeRTEFloat64, LAYOUT$shaderRoundingModeRTZFloat16, LAYOUT$shaderRoundingModeRTZFloat32, LAYOUT$shaderRoundingModeRTZFloat64);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceFloatControlsProperties {
+        sType(VkStructureType.PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES);
+    }
 
     public static VkPhysicalDeviceFloatControlsProperties allocate(Arena arena) {
         return new VkPhysicalDeviceFloatControlsProperties(arena.allocate(LAYOUT));
@@ -67,6 +59,29 @@ public record VkPhysicalDeviceFloatControlsProperties(@NotNull MemorySegment seg
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("denormBehaviorIndependence"),
+        ValueLayout.JAVA_INT.withName("roundingModeIndependence"),
+        ValueLayout.JAVA_INT.withName("shaderSignedZeroInfNanPreserveFloat16"),
+        ValueLayout.JAVA_INT.withName("shaderSignedZeroInfNanPreserveFloat32"),
+        ValueLayout.JAVA_INT.withName("shaderSignedZeroInfNanPreserveFloat64"),
+        ValueLayout.JAVA_INT.withName("shaderDenormPreserveFloat16"),
+        ValueLayout.JAVA_INT.withName("shaderDenormPreserveFloat32"),
+        ValueLayout.JAVA_INT.withName("shaderDenormPreserveFloat64"),
+        ValueLayout.JAVA_INT.withName("shaderDenormFlushToZeroFloat16"),
+        ValueLayout.JAVA_INT.withName("shaderDenormFlushToZeroFloat32"),
+        ValueLayout.JAVA_INT.withName("shaderDenormFlushToZeroFloat64"),
+        ValueLayout.JAVA_INT.withName("shaderRoundingModeRTEFloat16"),
+        ValueLayout.JAVA_INT.withName("shaderRoundingModeRTEFloat32"),
+        ValueLayout.JAVA_INT.withName("shaderRoundingModeRTEFloat64"),
+        ValueLayout.JAVA_INT.withName("shaderRoundingModeRTZFloat16"),
+        ValueLayout.JAVA_INT.withName("shaderRoundingModeRTZFloat32"),
+        ValueLayout.JAVA_INT.withName("shaderRoundingModeRTZFloat64")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$denormBehaviorIndependence = PathElement.groupElement("PATH$denormBehaviorIndependence");
@@ -86,6 +101,26 @@ public record VkPhysicalDeviceFloatControlsProperties(@NotNull MemorySegment seg
     public static final PathElement PATH$shaderRoundingModeRTZFloat16 = PathElement.groupElement("PATH$shaderRoundingModeRTZFloat16");
     public static final PathElement PATH$shaderRoundingModeRTZFloat32 = PathElement.groupElement("PATH$shaderRoundingModeRTZFloat32");
     public static final PathElement PATH$shaderRoundingModeRTZFloat64 = PathElement.groupElement("PATH$shaderRoundingModeRTZFloat64");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$denormBehaviorIndependence = (OfInt) LAYOUT.select(PATH$denormBehaviorIndependence);
+    public static final OfInt LAYOUT$roundingModeIndependence = (OfInt) LAYOUT.select(PATH$roundingModeIndependence);
+    public static final OfInt LAYOUT$shaderSignedZeroInfNanPreserveFloat16 = (OfInt) LAYOUT.select(PATH$shaderSignedZeroInfNanPreserveFloat16);
+    public static final OfInt LAYOUT$shaderSignedZeroInfNanPreserveFloat32 = (OfInt) LAYOUT.select(PATH$shaderSignedZeroInfNanPreserveFloat32);
+    public static final OfInt LAYOUT$shaderSignedZeroInfNanPreserveFloat64 = (OfInt) LAYOUT.select(PATH$shaderSignedZeroInfNanPreserveFloat64);
+    public static final OfInt LAYOUT$shaderDenormPreserveFloat16 = (OfInt) LAYOUT.select(PATH$shaderDenormPreserveFloat16);
+    public static final OfInt LAYOUT$shaderDenormPreserveFloat32 = (OfInt) LAYOUT.select(PATH$shaderDenormPreserveFloat32);
+    public static final OfInt LAYOUT$shaderDenormPreserveFloat64 = (OfInt) LAYOUT.select(PATH$shaderDenormPreserveFloat64);
+    public static final OfInt LAYOUT$shaderDenormFlushToZeroFloat16 = (OfInt) LAYOUT.select(PATH$shaderDenormFlushToZeroFloat16);
+    public static final OfInt LAYOUT$shaderDenormFlushToZeroFloat32 = (OfInt) LAYOUT.select(PATH$shaderDenormFlushToZeroFloat32);
+    public static final OfInt LAYOUT$shaderDenormFlushToZeroFloat64 = (OfInt) LAYOUT.select(PATH$shaderDenormFlushToZeroFloat64);
+    public static final OfInt LAYOUT$shaderRoundingModeRTEFloat16 = (OfInt) LAYOUT.select(PATH$shaderRoundingModeRTEFloat16);
+    public static final OfInt LAYOUT$shaderRoundingModeRTEFloat32 = (OfInt) LAYOUT.select(PATH$shaderRoundingModeRTEFloat32);
+    public static final OfInt LAYOUT$shaderRoundingModeRTEFloat64 = (OfInt) LAYOUT.select(PATH$shaderRoundingModeRTEFloat64);
+    public static final OfInt LAYOUT$shaderRoundingModeRTZFloat16 = (OfInt) LAYOUT.select(PATH$shaderRoundingModeRTZFloat16);
+    public static final OfInt LAYOUT$shaderRoundingModeRTZFloat32 = (OfInt) LAYOUT.select(PATH$shaderRoundingModeRTZFloat32);
+    public static final OfInt LAYOUT$shaderRoundingModeRTZFloat64 = (OfInt) LAYOUT.select(PATH$shaderRoundingModeRTZFloat64);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

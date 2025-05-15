@@ -14,25 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPipelineRasterizationStateCreateInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineRasterizationStateCreateInfo.html">VkPipelineRasterizationStateCreateInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$depthClampEnable = ValueLayout.JAVA_INT.withName("depthClampEnable");
-    public static final OfInt LAYOUT$rasterizerDiscardEnable = ValueLayout.JAVA_INT.withName("rasterizerDiscardEnable");
-    public static final OfInt LAYOUT$polygonMode = ValueLayout.JAVA_INT.withName("polygonMode");
-    public static final OfInt LAYOUT$cullMode = ValueLayout.JAVA_INT.withName("cullMode");
-    public static final OfInt LAYOUT$frontFace = ValueLayout.JAVA_INT.withName("frontFace");
-    public static final OfInt LAYOUT$depthBiasEnable = ValueLayout.JAVA_INT.withName("depthBiasEnable");
-    public static final OfFloat LAYOUT$depthBiasConstantFactor = ValueLayout.JAVA_FLOAT.withName("depthBiasConstantFactor");
-    public static final OfFloat LAYOUT$depthBiasClamp = ValueLayout.JAVA_FLOAT.withName("depthBiasClamp");
-    public static final OfFloat LAYOUT$depthBiasSlopeFactor = ValueLayout.JAVA_FLOAT.withName("depthBiasSlopeFactor");
-    public static final OfFloat LAYOUT$lineWidth = ValueLayout.JAVA_FLOAT.withName("lineWidth");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$depthClampEnable, LAYOUT$rasterizerDiscardEnable, LAYOUT$polygonMode, LAYOUT$cullMode, LAYOUT$frontFace, LAYOUT$depthBiasEnable, LAYOUT$depthBiasConstantFactor, LAYOUT$depthBiasClamp, LAYOUT$depthBiasSlopeFactor, LAYOUT$lineWidth);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPipelineRasterizationStateCreateInfo {
+        sType(VkStructureType.PIPELINE_RASTERIZATION_STATE_CREATE_INFO);
+    }
 
     public static VkPipelineRasterizationStateCreateInfo allocate(Arena arena) {
         return new VkPipelineRasterizationStateCreateInfo(arena.allocate(LAYOUT));
@@ -61,6 +59,23 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("depthClampEnable"),
+        ValueLayout.JAVA_INT.withName("rasterizerDiscardEnable"),
+        ValueLayout.JAVA_INT.withName("polygonMode"),
+        ValueLayout.JAVA_INT.withName("cullMode"),
+        ValueLayout.JAVA_INT.withName("frontFace"),
+        ValueLayout.JAVA_INT.withName("depthBiasEnable"),
+        ValueLayout.JAVA_FLOAT.withName("depthBiasConstantFactor"),
+        ValueLayout.JAVA_FLOAT.withName("depthBiasClamp"),
+        ValueLayout.JAVA_FLOAT.withName("depthBiasSlopeFactor"),
+        ValueLayout.JAVA_FLOAT.withName("lineWidth")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -74,6 +89,20 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
     public static final PathElement PATH$depthBiasClamp = PathElement.groupElement("PATH$depthBiasClamp");
     public static final PathElement PATH$depthBiasSlopeFactor = PathElement.groupElement("PATH$depthBiasSlopeFactor");
     public static final PathElement PATH$lineWidth = PathElement.groupElement("PATH$lineWidth");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$depthClampEnable = (OfInt) LAYOUT.select(PATH$depthClampEnable);
+    public static final OfInt LAYOUT$rasterizerDiscardEnable = (OfInt) LAYOUT.select(PATH$rasterizerDiscardEnable);
+    public static final OfInt LAYOUT$polygonMode = (OfInt) LAYOUT.select(PATH$polygonMode);
+    public static final OfInt LAYOUT$cullMode = (OfInt) LAYOUT.select(PATH$cullMode);
+    public static final OfInt LAYOUT$frontFace = (OfInt) LAYOUT.select(PATH$frontFace);
+    public static final OfInt LAYOUT$depthBiasEnable = (OfInt) LAYOUT.select(PATH$depthBiasEnable);
+    public static final OfFloat LAYOUT$depthBiasConstantFactor = (OfFloat) LAYOUT.select(PATH$depthBiasConstantFactor);
+    public static final OfFloat LAYOUT$depthBiasClamp = (OfFloat) LAYOUT.select(PATH$depthBiasClamp);
+    public static final OfFloat LAYOUT$depthBiasSlopeFactor = (OfFloat) LAYOUT.select(PATH$depthBiasSlopeFactor);
+    public static final OfFloat LAYOUT$lineWidth = (OfFloat) LAYOUT.select(PATH$lineWidth);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

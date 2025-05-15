@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPipelineLibraryCreateInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineLibraryCreateInfoKHR.html">VkPipelineLibraryCreateInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPipelineLibraryCreateInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$libraryCount = ValueLayout.JAVA_INT.withName("libraryCount");
-    public static final AddressLayout LAYOUT$pLibraries = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pLibraries");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$libraryCount, LAYOUT$pLibraries);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPipelineLibraryCreateInfoKHR {
+        sType(VkStructureType.PIPELINE_LIBRARY_CREATE_INFO_KHR);
+    }
 
     public static VkPipelineLibraryCreateInfoKHR allocate(Arena arena) {
         return new VkPipelineLibraryCreateInfoKHR(arena.allocate(LAYOUT));
@@ -52,10 +59,23 @@ public record VkPipelineLibraryCreateInfoKHR(@NotNull MemorySegment segment) imp
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("libraryCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pLibraries")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$libraryCount = PathElement.groupElement("PATH$libraryCount");
     public static final PathElement PATH$pLibraries = PathElement.groupElement("PATH$pLibraries");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$libraryCount = (OfInt) LAYOUT.select(PATH$libraryCount);
+    public static final AddressLayout LAYOUT$pLibraries = (AddressLayout) LAYOUT.select(PATH$pLibraries);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

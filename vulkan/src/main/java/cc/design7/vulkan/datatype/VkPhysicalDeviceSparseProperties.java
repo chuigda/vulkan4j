@@ -14,18 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceSparseProperties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSparseProperties.html">VkPhysicalDeviceSparseProperties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceSparseProperties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$residencyStandard2DBlockShape = ValueLayout.JAVA_INT.withName("residencyStandard2DBlockShape");
-    public static final OfInt LAYOUT$residencyStandard2DMultisampleBlockShape = ValueLayout.JAVA_INT.withName("residencyStandard2DMultisampleBlockShape");
-    public static final OfInt LAYOUT$residencyStandard3DBlockShape = ValueLayout.JAVA_INT.withName("residencyStandard3DBlockShape");
-    public static final OfInt LAYOUT$residencyAlignedMipSize = ValueLayout.JAVA_INT.withName("residencyAlignedMipSize");
-    public static final OfInt LAYOUT$residencyNonResidentStrict = ValueLayout.JAVA_INT.withName("residencyNonResidentStrict");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$residencyStandard2DBlockShape, LAYOUT$residencyStandard2DMultisampleBlockShape, LAYOUT$residencyStandard3DBlockShape, LAYOUT$residencyAlignedMipSize, LAYOUT$residencyNonResidentStrict);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkPhysicalDeviceSparseProperties allocate(Arena arena) {
         return new VkPhysicalDeviceSparseProperties(arena.allocate(LAYOUT));
     }
@@ -53,11 +55,26 @@ public record VkPhysicalDeviceSparseProperties(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("residencyStandard2DBlockShape"),
+        ValueLayout.JAVA_INT.withName("residencyStandard2DMultisampleBlockShape"),
+        ValueLayout.JAVA_INT.withName("residencyStandard3DBlockShape"),
+        ValueLayout.JAVA_INT.withName("residencyAlignedMipSize"),
+        ValueLayout.JAVA_INT.withName("residencyNonResidentStrict")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$residencyStandard2DBlockShape = PathElement.groupElement("PATH$residencyStandard2DBlockShape");
     public static final PathElement PATH$residencyStandard2DMultisampleBlockShape = PathElement.groupElement("PATH$residencyStandard2DMultisampleBlockShape");
     public static final PathElement PATH$residencyStandard3DBlockShape = PathElement.groupElement("PATH$residencyStandard3DBlockShape");
     public static final PathElement PATH$residencyAlignedMipSize = PathElement.groupElement("PATH$residencyAlignedMipSize");
     public static final PathElement PATH$residencyNonResidentStrict = PathElement.groupElement("PATH$residencyNonResidentStrict");
+
+    public static final OfInt LAYOUT$residencyStandard2DBlockShape = (OfInt) LAYOUT.select(PATH$residencyStandard2DBlockShape);
+    public static final OfInt LAYOUT$residencyStandard2DMultisampleBlockShape = (OfInt) LAYOUT.select(PATH$residencyStandard2DMultisampleBlockShape);
+    public static final OfInt LAYOUT$residencyStandard3DBlockShape = (OfInt) LAYOUT.select(PATH$residencyStandard3DBlockShape);
+    public static final OfInt LAYOUT$residencyAlignedMipSize = (OfInt) LAYOUT.select(PATH$residencyAlignedMipSize);
+    public static final OfInt LAYOUT$residencyNonResidentStrict = (OfInt) LAYOUT.select(PATH$residencyNonResidentStrict);
 
     public static final long SIZE$residencyStandard2DBlockShape = LAYOUT$residencyStandard2DBlockShape.byteSize();
     public static final long SIZE$residencyStandard2DMultisampleBlockShape = LAYOUT$residencyStandard2DMultisampleBlockShape.byteSize();

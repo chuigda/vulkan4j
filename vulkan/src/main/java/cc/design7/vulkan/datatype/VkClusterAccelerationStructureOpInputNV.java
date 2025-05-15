@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkClusterAccelerationStructureOpInputNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureOpInputNV.html">VkClusterAccelerationStructureOpInputNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final AddressLayout LAYOUT$pClustersBottomLevel = ValueLayout.ADDRESS.withTargetLayout(VkClusterAccelerationStructureClustersBottomLevelInputNV.LAYOUT).withName("pClustersBottomLevel");
-    public static final AddressLayout LAYOUT$pTriangleClusters = ValueLayout.ADDRESS.withTargetLayout(VkClusterAccelerationStructureTriangleClusterInputNV.LAYOUT).withName("pTriangleClusters");
-    public static final AddressLayout LAYOUT$pMoveObjects = ValueLayout.ADDRESS.withTargetLayout(VkClusterAccelerationStructureMoveObjectsInputNV.LAYOUT).withName("pMoveObjects");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(LAYOUT$pClustersBottomLevel, LAYOUT$pTriangleClusters, LAYOUT$pMoveObjects);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkClusterAccelerationStructureOpInputNV allocate(Arena arena) {
         return new VkClusterAccelerationStructureOpInputNV(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         return ret;
     }
 
+    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
+        ValueLayout.ADDRESS.withTargetLayout(VkClusterAccelerationStructureClustersBottomLevelInputNV.LAYOUT).withName("pClustersBottomLevel"),
+        ValueLayout.ADDRESS.withTargetLayout(VkClusterAccelerationStructureTriangleClusterInputNV.LAYOUT).withName("pTriangleClusters"),
+        ValueLayout.ADDRESS.withTargetLayout(VkClusterAccelerationStructureMoveObjectsInputNV.LAYOUT).withName("pMoveObjects")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$pClustersBottomLevel = PathElement.groupElement("PATH$pClustersBottomLevel");
     public static final PathElement PATH$pTriangleClusters = PathElement.groupElement("PATH$pTriangleClusters");
     public static final PathElement PATH$pMoveObjects = PathElement.groupElement("PATH$pMoveObjects");
+
+    public static final AddressLayout LAYOUT$pClustersBottomLevel = (AddressLayout) LAYOUT.select(PATH$pClustersBottomLevel);
+    public static final AddressLayout LAYOUT$pTriangleClusters = (AddressLayout) LAYOUT.select(PATH$pTriangleClusters);
+    public static final AddressLayout LAYOUT$pMoveObjects = (AddressLayout) LAYOUT.select(PATH$pMoveObjects);
 
     public static final long SIZE$pClustersBottomLevel = LAYOUT$pClustersBottomLevel.byteSize();
     public static final long SIZE$pTriangleClusters = LAYOUT$pTriangleClusters.byteSize();

@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkCopyBufferInfo2} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyBufferInfo2.html">VkCopyBufferInfo2</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$srcBuffer = ValueLayout.ADDRESS.withName("srcBuffer");
-    public static final AddressLayout LAYOUT$dstBuffer = ValueLayout.ADDRESS.withName("dstBuffer");
-    public static final OfInt LAYOUT$regionCount = ValueLayout.JAVA_INT.withName("regionCount");
-    public static final AddressLayout LAYOUT$pRegions = ValueLayout.ADDRESS.withTargetLayout(VkBufferCopy2.LAYOUT).withName("pRegions");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$srcBuffer, LAYOUT$dstBuffer, LAYOUT$regionCount, LAYOUT$pRegions);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkCopyBufferInfo2 {
+        sType(VkStructureType.COPY_BUFFER_INFO_2);
+    }
 
     public static VkCopyBufferInfo2 allocate(Arena arena) {
         return new VkCopyBufferInfo2(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IPoin
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("srcBuffer"),
+        ValueLayout.ADDRESS.withName("dstBuffer"),
+        ValueLayout.JAVA_INT.withName("regionCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkBufferCopy2.LAYOUT).withName("pRegions")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$srcBuffer = PathElement.groupElement("PATH$srcBuffer");
     public static final PathElement PATH$dstBuffer = PathElement.groupElement("PATH$dstBuffer");
     public static final PathElement PATH$regionCount = PathElement.groupElement("PATH$regionCount");
     public static final PathElement PATH$pRegions = PathElement.groupElement("PATH$pRegions");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$srcBuffer = (AddressLayout) LAYOUT.select(PATH$srcBuffer);
+    public static final AddressLayout LAYOUT$dstBuffer = (AddressLayout) LAYOUT.select(PATH$dstBuffer);
+    public static final OfInt LAYOUT$regionCount = (OfInt) LAYOUT.select(PATH$regionCount);
+    public static final AddressLayout LAYOUT$pRegions = (AddressLayout) LAYOUT.select(PATH$pRegions);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

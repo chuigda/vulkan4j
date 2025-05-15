@@ -14,15 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT.html">VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$ycbcr2plane444Formats = ValueLayout.JAVA_INT.withName("ycbcr2plane444Formats");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$ycbcr2plane444Formats);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT {
+        sType(VkStructureType.PHYSICAL_DEVICE_YCBCR_2_PLANE_444_FORMATS_FEATURES_EXT);
+    }
 
     public static VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT allocate(Arena arena) {
         return new VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(arena.allocate(LAYOUT));
@@ -51,9 +59,20 @@ public record VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(@NotNull MemorySe
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("ycbcr2plane444Formats")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$ycbcr2plane444Formats = PathElement.groupElement("PATH$ycbcr2plane444Formats");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$ycbcr2plane444Formats = (OfInt) LAYOUT.select(PATH$ycbcr2plane444Formats);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

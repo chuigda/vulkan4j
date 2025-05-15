@@ -14,20 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceLineRasterizationFeatures} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceLineRasterizationFeatures.html">VkPhysicalDeviceLineRasterizationFeatures</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceLineRasterizationFeatures(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$rectangularLines = ValueLayout.JAVA_INT.withName("rectangularLines");
-    public static final OfInt LAYOUT$bresenhamLines = ValueLayout.JAVA_INT.withName("bresenhamLines");
-    public static final OfInt LAYOUT$smoothLines = ValueLayout.JAVA_INT.withName("smoothLines");
-    public static final OfInt LAYOUT$stippledRectangularLines = ValueLayout.JAVA_INT.withName("stippledRectangularLines");
-    public static final OfInt LAYOUT$stippledBresenhamLines = ValueLayout.JAVA_INT.withName("stippledBresenhamLines");
-    public static final OfInt LAYOUT$stippledSmoothLines = ValueLayout.JAVA_INT.withName("stippledSmoothLines");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$rectangularLines, LAYOUT$bresenhamLines, LAYOUT$smoothLines, LAYOUT$stippledRectangularLines, LAYOUT$stippledBresenhamLines, LAYOUT$stippledSmoothLines);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceLineRasterizationFeatures {
+        sType(VkStructureType.PHYSICAL_DEVICE_LINE_RASTERIZATION_FEATURES);
+    }
 
     public static VkPhysicalDeviceLineRasterizationFeatures allocate(Arena arena) {
         return new VkPhysicalDeviceLineRasterizationFeatures(arena.allocate(LAYOUT));
@@ -56,6 +59,18 @@ public record VkPhysicalDeviceLineRasterizationFeatures(@NotNull MemorySegment s
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("rectangularLines"),
+        ValueLayout.JAVA_INT.withName("bresenhamLines"),
+        ValueLayout.JAVA_INT.withName("smoothLines"),
+        ValueLayout.JAVA_INT.withName("stippledRectangularLines"),
+        ValueLayout.JAVA_INT.withName("stippledBresenhamLines"),
+        ValueLayout.JAVA_INT.withName("stippledSmoothLines")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$rectangularLines = PathElement.groupElement("PATH$rectangularLines");
@@ -64,6 +79,15 @@ public record VkPhysicalDeviceLineRasterizationFeatures(@NotNull MemorySegment s
     public static final PathElement PATH$stippledRectangularLines = PathElement.groupElement("PATH$stippledRectangularLines");
     public static final PathElement PATH$stippledBresenhamLines = PathElement.groupElement("PATH$stippledBresenhamLines");
     public static final PathElement PATH$stippledSmoothLines = PathElement.groupElement("PATH$stippledSmoothLines");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$rectangularLines = (OfInt) LAYOUT.select(PATH$rectangularLines);
+    public static final OfInt LAYOUT$bresenhamLines = (OfInt) LAYOUT.select(PATH$bresenhamLines);
+    public static final OfInt LAYOUT$smoothLines = (OfInt) LAYOUT.select(PATH$smoothLines);
+    public static final OfInt LAYOUT$stippledRectangularLines = (OfInt) LAYOUT.select(PATH$stippledRectangularLines);
+    public static final OfInt LAYOUT$stippledBresenhamLines = (OfInt) LAYOUT.select(PATH$stippledBresenhamLines);
+    public static final OfInt LAYOUT$stippledSmoothLines = (OfInt) LAYOUT.select(PATH$stippledSmoothLines);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,19 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkImportFenceWin32HandleInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportFenceWin32HandleInfoKHR.html">VkImportFenceWin32HandleInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkImportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$fence = ValueLayout.ADDRESS.withName("fence");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$handleType = ValueLayout.JAVA_INT.withName("handleType");
-    public static final AddressLayout LAYOUT$handle = ValueLayout.ADDRESS.withName("handle");
-    public static final AddressLayout LAYOUT$name = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("name");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$fence, LAYOUT$flags, LAYOUT$handleType, LAYOUT$handle, LAYOUT$name);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkImportFenceWin32HandleInfoKHR {
+        sType(VkStructureType.IMPORT_FENCE_WIN32_HANDLE_INFO_KHR);
+    }
 
     public static VkImportFenceWin32HandleInfoKHR allocate(Arena arena) {
         return new VkImportFenceWin32HandleInfoKHR(arena.allocate(LAYOUT));
@@ -55,6 +59,17 @@ public record VkImportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("fence"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("handleType"),
+        ValueLayout.ADDRESS.withName("handle"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("name")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$fence = PathElement.groupElement("PATH$fence");
@@ -62,6 +77,14 @@ public record VkImportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) im
     public static final PathElement PATH$handleType = PathElement.groupElement("PATH$handleType");
     public static final PathElement PATH$handle = PathElement.groupElement("PATH$handle");
     public static final PathElement PATH$name = PathElement.groupElement("PATH$name");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$fence = (AddressLayout) LAYOUT.select(PATH$fence);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$handleType = (OfInt) LAYOUT.select(PATH$handleType);
+    public static final AddressLayout LAYOUT$handle = (AddressLayout) LAYOUT.select(PATH$handle);
+    public static final AddressLayout LAYOUT$name = (AddressLayout) LAYOUT.select(PATH$name);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

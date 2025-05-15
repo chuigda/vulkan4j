@@ -14,14 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkIndirectCommandsPushConstantTokenEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsPushConstantTokenEXT.html">VkIndirectCommandsPushConstantTokenEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkIndirectCommandsPushConstantTokenEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$updateRange = VkPushConstantRange.LAYOUT.withName("updateRange");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$updateRange);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkIndirectCommandsPushConstantTokenEXT allocate(Arena arena) {
         return new VkIndirectCommandsPushConstantTokenEXT(arena.allocate(LAYOUT));
     }
@@ -49,7 +55,14 @@ public record VkIndirectCommandsPushConstantTokenEXT(@NotNull MemorySegment segm
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        VkPushConstantRange.LAYOUT.withName("updateRange")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$updateRange = PathElement.groupElement("PATH$updateRange");
+
+    public static final StructLayout LAYOUT$updateRange = (StructLayout) LAYOUT.select(PATH$updateRange);
 
     public static final long SIZE$updateRange = LAYOUT$updateRange.byteSize();
 

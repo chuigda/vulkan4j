@@ -14,22 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceRayTracingPropertiesNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceRayTracingPropertiesNV.html">VkPhysicalDeviceRayTracingPropertiesNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceRayTracingPropertiesNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$shaderGroupHandleSize = ValueLayout.JAVA_INT.withName("shaderGroupHandleSize");
-    public static final OfInt LAYOUT$maxRecursionDepth = ValueLayout.JAVA_INT.withName("maxRecursionDepth");
-    public static final OfInt LAYOUT$maxShaderGroupStride = ValueLayout.JAVA_INT.withName("maxShaderGroupStride");
-    public static final OfInt LAYOUT$shaderGroupBaseAlignment = ValueLayout.JAVA_INT.withName("shaderGroupBaseAlignment");
-    public static final OfLong LAYOUT$maxGeometryCount = ValueLayout.JAVA_LONG.withName("maxGeometryCount");
-    public static final OfLong LAYOUT$maxInstanceCount = ValueLayout.JAVA_LONG.withName("maxInstanceCount");
-    public static final OfLong LAYOUT$maxTriangleCount = ValueLayout.JAVA_LONG.withName("maxTriangleCount");
-    public static final OfInt LAYOUT$maxDescriptorSetAccelerationStructures = ValueLayout.JAVA_INT.withName("maxDescriptorSetAccelerationStructures");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$shaderGroupHandleSize, LAYOUT$maxRecursionDepth, LAYOUT$maxShaderGroupStride, LAYOUT$shaderGroupBaseAlignment, LAYOUT$maxGeometryCount, LAYOUT$maxInstanceCount, LAYOUT$maxTriangleCount, LAYOUT$maxDescriptorSetAccelerationStructures);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceRayTracingPropertiesNV {
+        sType(VkStructureType.PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV);
+    }
 
     public static VkPhysicalDeviceRayTracingPropertiesNV allocate(Arena arena) {
         return new VkPhysicalDeviceRayTracingPropertiesNV(arena.allocate(LAYOUT));
@@ -58,6 +59,20 @@ public record VkPhysicalDeviceRayTracingPropertiesNV(@NotNull MemorySegment segm
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("shaderGroupHandleSize"),
+        ValueLayout.JAVA_INT.withName("maxRecursionDepth"),
+        ValueLayout.JAVA_INT.withName("maxShaderGroupStride"),
+        ValueLayout.JAVA_INT.withName("shaderGroupBaseAlignment"),
+        ValueLayout.JAVA_LONG.withName("maxGeometryCount"),
+        ValueLayout.JAVA_LONG.withName("maxInstanceCount"),
+        ValueLayout.JAVA_LONG.withName("maxTriangleCount"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetAccelerationStructures")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$shaderGroupHandleSize = PathElement.groupElement("PATH$shaderGroupHandleSize");
@@ -68,6 +83,17 @@ public record VkPhysicalDeviceRayTracingPropertiesNV(@NotNull MemorySegment segm
     public static final PathElement PATH$maxInstanceCount = PathElement.groupElement("PATH$maxInstanceCount");
     public static final PathElement PATH$maxTriangleCount = PathElement.groupElement("PATH$maxTriangleCount");
     public static final PathElement PATH$maxDescriptorSetAccelerationStructures = PathElement.groupElement("PATH$maxDescriptorSetAccelerationStructures");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$shaderGroupHandleSize = (OfInt) LAYOUT.select(PATH$shaderGroupHandleSize);
+    public static final OfInt LAYOUT$maxRecursionDepth = (OfInt) LAYOUT.select(PATH$maxRecursionDepth);
+    public static final OfInt LAYOUT$maxShaderGroupStride = (OfInt) LAYOUT.select(PATH$maxShaderGroupStride);
+    public static final OfInt LAYOUT$shaderGroupBaseAlignment = (OfInt) LAYOUT.select(PATH$shaderGroupBaseAlignment);
+    public static final OfLong LAYOUT$maxGeometryCount = (OfLong) LAYOUT.select(PATH$maxGeometryCount);
+    public static final OfLong LAYOUT$maxInstanceCount = (OfLong) LAYOUT.select(PATH$maxInstanceCount);
+    public static final OfLong LAYOUT$maxTriangleCount = (OfLong) LAYOUT.select(PATH$maxTriangleCount);
+    public static final OfInt LAYOUT$maxDescriptorSetAccelerationStructures = (OfInt) LAYOUT.select(PATH$maxDescriptorSetAccelerationStructures);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

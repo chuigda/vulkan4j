@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPipelineViewportWScalingStateCreateInfoNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineViewportWScalingStateCreateInfoNV.html">VkPipelineViewportWScalingStateCreateInfoNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$viewportWScalingEnable = ValueLayout.JAVA_INT.withName("viewportWScalingEnable");
-    public static final OfInt LAYOUT$viewportCount = ValueLayout.JAVA_INT.withName("viewportCount");
-    public static final AddressLayout LAYOUT$pViewportWScalings = ValueLayout.ADDRESS.withTargetLayout(VkViewportWScalingNV.LAYOUT).withName("pViewportWScalings");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$viewportWScalingEnable, LAYOUT$viewportCount, LAYOUT$pViewportWScalings);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPipelineViewportWScalingStateCreateInfoNV {
+        sType(VkStructureType.PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV);
+    }
 
     public static VkPipelineViewportWScalingStateCreateInfoNV allocate(Arena arena) {
         return new VkPipelineViewportWScalingStateCreateInfoNV(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("viewportWScalingEnable"),
+        ValueLayout.JAVA_INT.withName("viewportCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkViewportWScalingNV.LAYOUT).withName("pViewportWScalings")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$viewportWScalingEnable = PathElement.groupElement("PATH$viewportWScalingEnable");
     public static final PathElement PATH$viewportCount = PathElement.groupElement("PATH$viewportCount");
     public static final PathElement PATH$pViewportWScalings = PathElement.groupElement("PATH$pViewportWScalings");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$viewportWScalingEnable = (OfInt) LAYOUT.select(PATH$viewportWScalingEnable);
+    public static final OfInt LAYOUT$viewportCount = (OfInt) LAYOUT.select(PATH$viewportCount);
+    public static final AddressLayout LAYOUT$pViewportWScalings = (AddressLayout) LAYOUT.select(PATH$pViewportWScalings);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkBindIndexBufferIndirectCommandNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindIndexBufferIndirectCommandNV.html">VkBindIndexBufferIndirectCommandNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkBindIndexBufferIndirectCommandNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfLong LAYOUT$bufferAddress = ValueLayout.JAVA_LONG.withName("bufferAddress");
-    public static final OfInt LAYOUT$size = ValueLayout.JAVA_INT.withName("size");
-    public static final OfInt LAYOUT$indexType = ValueLayout.JAVA_INT.withName("indexType");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$bufferAddress, LAYOUT$size, LAYOUT$indexType);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkBindIndexBufferIndirectCommandNV allocate(Arena arena) {
         return new VkBindIndexBufferIndirectCommandNV(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkBindIndexBufferIndirectCommandNV(@NotNull MemorySegment segment)
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("bufferAddress"),
+        ValueLayout.JAVA_INT.withName("size"),
+        ValueLayout.JAVA_INT.withName("indexType")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$bufferAddress = PathElement.groupElement("PATH$bufferAddress");
     public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
     public static final PathElement PATH$indexType = PathElement.groupElement("PATH$indexType");
+
+    public static final OfLong LAYOUT$bufferAddress = (OfLong) LAYOUT.select(PATH$bufferAddress);
+    public static final OfInt LAYOUT$size = (OfInt) LAYOUT.select(PATH$size);
+    public static final OfInt LAYOUT$indexType = (OfInt) LAYOUT.select(PATH$indexType);
 
     public static final long SIZE$bufferAddress = LAYOUT$bufferAddress.byteSize();
     public static final long SIZE$size = LAYOUT$size.byteSize();

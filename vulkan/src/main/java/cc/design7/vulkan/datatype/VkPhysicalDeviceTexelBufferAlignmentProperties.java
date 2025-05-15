@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceTexelBufferAlignmentProperties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceTexelBufferAlignmentProperties.html">VkPhysicalDeviceTexelBufferAlignmentProperties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceTexelBufferAlignmentProperties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfLong LAYOUT$storageTexelBufferOffsetAlignmentBytes = ValueLayout.JAVA_LONG.withName("storageTexelBufferOffsetAlignmentBytes");
-    public static final OfInt LAYOUT$storageTexelBufferOffsetSingleTexelAlignment = ValueLayout.JAVA_INT.withName("storageTexelBufferOffsetSingleTexelAlignment");
-    public static final OfLong LAYOUT$uniformTexelBufferOffsetAlignmentBytes = ValueLayout.JAVA_LONG.withName("uniformTexelBufferOffsetAlignmentBytes");
-    public static final OfInt LAYOUT$uniformTexelBufferOffsetSingleTexelAlignment = ValueLayout.JAVA_INT.withName("uniformTexelBufferOffsetSingleTexelAlignment");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$storageTexelBufferOffsetAlignmentBytes, LAYOUT$storageTexelBufferOffsetSingleTexelAlignment, LAYOUT$uniformTexelBufferOffsetAlignmentBytes, LAYOUT$uniformTexelBufferOffsetSingleTexelAlignment);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceTexelBufferAlignmentProperties {
+        sType(VkStructureType.PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES);
+    }
 
     public static VkPhysicalDeviceTexelBufferAlignmentProperties allocate(Arena arena) {
         return new VkPhysicalDeviceTexelBufferAlignmentProperties(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkPhysicalDeviceTexelBufferAlignmentProperties(@NotNull MemorySegm
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("storageTexelBufferOffsetAlignmentBytes"),
+        ValueLayout.JAVA_INT.withName("storageTexelBufferOffsetSingleTexelAlignment"),
+        ValueLayout.JAVA_LONG.withName("uniformTexelBufferOffsetAlignmentBytes"),
+        ValueLayout.JAVA_INT.withName("uniformTexelBufferOffsetSingleTexelAlignment")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$storageTexelBufferOffsetAlignmentBytes = PathElement.groupElement("PATH$storageTexelBufferOffsetAlignmentBytes");
     public static final PathElement PATH$storageTexelBufferOffsetSingleTexelAlignment = PathElement.groupElement("PATH$storageTexelBufferOffsetSingleTexelAlignment");
     public static final PathElement PATH$uniformTexelBufferOffsetAlignmentBytes = PathElement.groupElement("PATH$uniformTexelBufferOffsetAlignmentBytes");
     public static final PathElement PATH$uniformTexelBufferOffsetSingleTexelAlignment = PathElement.groupElement("PATH$uniformTexelBufferOffsetSingleTexelAlignment");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$storageTexelBufferOffsetAlignmentBytes = (OfLong) LAYOUT.select(PATH$storageTexelBufferOffsetAlignmentBytes);
+    public static final OfInt LAYOUT$storageTexelBufferOffsetSingleTexelAlignment = (OfInt) LAYOUT.select(PATH$storageTexelBufferOffsetSingleTexelAlignment);
+    public static final OfLong LAYOUT$uniformTexelBufferOffsetAlignmentBytes = (OfLong) LAYOUT.select(PATH$uniformTexelBufferOffsetAlignmentBytes);
+    public static final OfInt LAYOUT$uniformTexelBufferOffsetSingleTexelAlignment = (OfInt) LAYOUT.select(PATH$uniformTexelBufferOffsetSingleTexelAlignment);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

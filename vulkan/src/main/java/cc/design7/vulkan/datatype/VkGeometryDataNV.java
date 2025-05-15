@@ -14,15 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkGeometryDataNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeometryDataNV.html">VkGeometryDataNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkGeometryDataNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$triangles = VkGeometryTrianglesNV.LAYOUT.withName("triangles");
-    public static final StructLayout LAYOUT$aabbs = VkGeometryAABBNV.LAYOUT.withName("aabbs");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$triangles, LAYOUT$aabbs);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkGeometryDataNV allocate(Arena arena) {
         return new VkGeometryDataNV(arena.allocate(LAYOUT));
     }
@@ -50,8 +55,17 @@ public record VkGeometryDataNV(@NotNull MemorySegment segment) implements IPoint
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        VkGeometryTrianglesNV.LAYOUT.withName("triangles"),
+        VkGeometryAABBNV.LAYOUT.withName("aabbs")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$triangles = PathElement.groupElement("PATH$triangles");
     public static final PathElement PATH$aabbs = PathElement.groupElement("PATH$aabbs");
+
+    public static final StructLayout LAYOUT$triangles = (StructLayout) LAYOUT.select(PATH$triangles);
+    public static final StructLayout LAYOUT$aabbs = (StructLayout) LAYOUT.select(PATH$aabbs);
 
     public static final long SIZE$triangles = LAYOUT$triangles.byteSize();
     public static final long SIZE$aabbs = LAYOUT$aabbs.byteSize();

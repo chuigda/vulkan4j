@@ -14,28 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceTileShadingFeaturesQCOM} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceTileShadingFeaturesQCOM.html">VkPhysicalDeviceTileShadingFeaturesQCOM</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceTileShadingFeaturesQCOM(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$tileShading = ValueLayout.JAVA_INT.withName("tileShading");
-    public static final OfInt LAYOUT$tileShadingFragmentStage = ValueLayout.JAVA_INT.withName("tileShadingFragmentStage");
-    public static final OfInt LAYOUT$tileShadingColorAttachments = ValueLayout.JAVA_INT.withName("tileShadingColorAttachments");
-    public static final OfInt LAYOUT$tileShadingDepthAttachments = ValueLayout.JAVA_INT.withName("tileShadingDepthAttachments");
-    public static final OfInt LAYOUT$tileShadingStencilAttachments = ValueLayout.JAVA_INT.withName("tileShadingStencilAttachments");
-    public static final OfInt LAYOUT$tileShadingInputAttachments = ValueLayout.JAVA_INT.withName("tileShadingInputAttachments");
-    public static final OfInt LAYOUT$tileShadingSampledAttachments = ValueLayout.JAVA_INT.withName("tileShadingSampledAttachments");
-    public static final OfInt LAYOUT$tileShadingPerTileDraw = ValueLayout.JAVA_INT.withName("tileShadingPerTileDraw");
-    public static final OfInt LAYOUT$tileShadingPerTileDispatch = ValueLayout.JAVA_INT.withName("tileShadingPerTileDispatch");
-    public static final OfInt LAYOUT$tileShadingDispatchTile = ValueLayout.JAVA_INT.withName("tileShadingDispatchTile");
-    public static final OfInt LAYOUT$tileShadingApron = ValueLayout.JAVA_INT.withName("tileShadingApron");
-    public static final OfInt LAYOUT$tileShadingAnisotropicApron = ValueLayout.JAVA_INT.withName("tileShadingAnisotropicApron");
-    public static final OfInt LAYOUT$tileShadingAtomicOps = ValueLayout.JAVA_INT.withName("tileShadingAtomicOps");
-    public static final OfInt LAYOUT$tileShadingImageProcessing = ValueLayout.JAVA_INT.withName("tileShadingImageProcessing");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$tileShading, LAYOUT$tileShadingFragmentStage, LAYOUT$tileShadingColorAttachments, LAYOUT$tileShadingDepthAttachments, LAYOUT$tileShadingStencilAttachments, LAYOUT$tileShadingInputAttachments, LAYOUT$tileShadingSampledAttachments, LAYOUT$tileShadingPerTileDraw, LAYOUT$tileShadingPerTileDispatch, LAYOUT$tileShadingDispatchTile, LAYOUT$tileShadingApron, LAYOUT$tileShadingAnisotropicApron, LAYOUT$tileShadingAtomicOps, LAYOUT$tileShadingImageProcessing);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceTileShadingFeaturesQCOM {
+        sType(VkStructureType.PHYSICAL_DEVICE_TILE_SHADING_FEATURES_QCOM);
+    }
 
     public static VkPhysicalDeviceTileShadingFeaturesQCOM allocate(Arena arena) {
         return new VkPhysicalDeviceTileShadingFeaturesQCOM(arena.allocate(LAYOUT));
@@ -64,6 +59,26 @@ public record VkPhysicalDeviceTileShadingFeaturesQCOM(@NotNull MemorySegment seg
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("tileShading"),
+        ValueLayout.JAVA_INT.withName("tileShadingFragmentStage"),
+        ValueLayout.JAVA_INT.withName("tileShadingColorAttachments"),
+        ValueLayout.JAVA_INT.withName("tileShadingDepthAttachments"),
+        ValueLayout.JAVA_INT.withName("tileShadingStencilAttachments"),
+        ValueLayout.JAVA_INT.withName("tileShadingInputAttachments"),
+        ValueLayout.JAVA_INT.withName("tileShadingSampledAttachments"),
+        ValueLayout.JAVA_INT.withName("tileShadingPerTileDraw"),
+        ValueLayout.JAVA_INT.withName("tileShadingPerTileDispatch"),
+        ValueLayout.JAVA_INT.withName("tileShadingDispatchTile"),
+        ValueLayout.JAVA_INT.withName("tileShadingApron"),
+        ValueLayout.JAVA_INT.withName("tileShadingAnisotropicApron"),
+        ValueLayout.JAVA_INT.withName("tileShadingAtomicOps"),
+        ValueLayout.JAVA_INT.withName("tileShadingImageProcessing")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$tileShading = PathElement.groupElement("PATH$tileShading");
@@ -80,6 +95,23 @@ public record VkPhysicalDeviceTileShadingFeaturesQCOM(@NotNull MemorySegment seg
     public static final PathElement PATH$tileShadingAnisotropicApron = PathElement.groupElement("PATH$tileShadingAnisotropicApron");
     public static final PathElement PATH$tileShadingAtomicOps = PathElement.groupElement("PATH$tileShadingAtomicOps");
     public static final PathElement PATH$tileShadingImageProcessing = PathElement.groupElement("PATH$tileShadingImageProcessing");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$tileShading = (OfInt) LAYOUT.select(PATH$tileShading);
+    public static final OfInt LAYOUT$tileShadingFragmentStage = (OfInt) LAYOUT.select(PATH$tileShadingFragmentStage);
+    public static final OfInt LAYOUT$tileShadingColorAttachments = (OfInt) LAYOUT.select(PATH$tileShadingColorAttachments);
+    public static final OfInt LAYOUT$tileShadingDepthAttachments = (OfInt) LAYOUT.select(PATH$tileShadingDepthAttachments);
+    public static final OfInt LAYOUT$tileShadingStencilAttachments = (OfInt) LAYOUT.select(PATH$tileShadingStencilAttachments);
+    public static final OfInt LAYOUT$tileShadingInputAttachments = (OfInt) LAYOUT.select(PATH$tileShadingInputAttachments);
+    public static final OfInt LAYOUT$tileShadingSampledAttachments = (OfInt) LAYOUT.select(PATH$tileShadingSampledAttachments);
+    public static final OfInt LAYOUT$tileShadingPerTileDraw = (OfInt) LAYOUT.select(PATH$tileShadingPerTileDraw);
+    public static final OfInt LAYOUT$tileShadingPerTileDispatch = (OfInt) LAYOUT.select(PATH$tileShadingPerTileDispatch);
+    public static final OfInt LAYOUT$tileShadingDispatchTile = (OfInt) LAYOUT.select(PATH$tileShadingDispatchTile);
+    public static final OfInt LAYOUT$tileShadingApron = (OfInt) LAYOUT.select(PATH$tileShadingApron);
+    public static final OfInt LAYOUT$tileShadingAnisotropicApron = (OfInt) LAYOUT.select(PATH$tileShadingAnisotropicApron);
+    public static final OfInt LAYOUT$tileShadingAtomicOps = (OfInt) LAYOUT.select(PATH$tileShadingAtomicOps);
+    public static final OfInt LAYOUT$tileShadingImageProcessing = (OfInt) LAYOUT.select(PATH$tileShadingImageProcessing);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

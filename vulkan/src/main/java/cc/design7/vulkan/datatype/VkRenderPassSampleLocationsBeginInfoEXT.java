@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkRenderPassSampleLocationsBeginInfoEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassSampleLocationsBeginInfoEXT.html">VkRenderPassSampleLocationsBeginInfoEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$attachmentInitialSampleLocationsCount = ValueLayout.JAVA_INT.withName("attachmentInitialSampleLocationsCount");
-    public static final AddressLayout LAYOUT$pAttachmentInitialSampleLocations = ValueLayout.ADDRESS.withTargetLayout(VkAttachmentSampleLocationsEXT.LAYOUT).withName("pAttachmentInitialSampleLocations");
-    public static final OfInt LAYOUT$postSubpassSampleLocationsCount = ValueLayout.JAVA_INT.withName("postSubpassSampleLocationsCount");
-    public static final AddressLayout LAYOUT$pPostSubpassSampleLocations = ValueLayout.ADDRESS.withTargetLayout(VkSubpassSampleLocationsEXT.LAYOUT).withName("pPostSubpassSampleLocations");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$attachmentInitialSampleLocationsCount, LAYOUT$pAttachmentInitialSampleLocations, LAYOUT$postSubpassSampleLocationsCount, LAYOUT$pPostSubpassSampleLocations);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkRenderPassSampleLocationsBeginInfoEXT {
+        sType(VkStructureType.RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT);
+    }
 
     public static VkRenderPassSampleLocationsBeginInfoEXT allocate(Arena arena) {
         return new VkRenderPassSampleLocationsBeginInfoEXT(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("attachmentInitialSampleLocationsCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkAttachmentSampleLocationsEXT.LAYOUT).withName("pAttachmentInitialSampleLocations"),
+        ValueLayout.JAVA_INT.withName("postSubpassSampleLocationsCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkSubpassSampleLocationsEXT.LAYOUT).withName("pPostSubpassSampleLocations")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$attachmentInitialSampleLocationsCount = PathElement.groupElement("PATH$attachmentInitialSampleLocationsCount");
     public static final PathElement PATH$pAttachmentInitialSampleLocations = PathElement.groupElement("PATH$pAttachmentInitialSampleLocations");
     public static final PathElement PATH$postSubpassSampleLocationsCount = PathElement.groupElement("PATH$postSubpassSampleLocationsCount");
     public static final PathElement PATH$pPostSubpassSampleLocations = PathElement.groupElement("PATH$pPostSubpassSampleLocations");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$attachmentInitialSampleLocationsCount = (OfInt) LAYOUT.select(PATH$attachmentInitialSampleLocationsCount);
+    public static final AddressLayout LAYOUT$pAttachmentInitialSampleLocations = (AddressLayout) LAYOUT.select(PATH$pAttachmentInitialSampleLocations);
+    public static final OfInt LAYOUT$postSubpassSampleLocationsCount = (OfInt) LAYOUT.select(PATH$postSubpassSampleLocationsCount);
+    public static final AddressLayout LAYOUT$pPostSubpassSampleLocations = (AddressLayout) LAYOUT.select(PATH$pPostSubpassSampleLocations);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

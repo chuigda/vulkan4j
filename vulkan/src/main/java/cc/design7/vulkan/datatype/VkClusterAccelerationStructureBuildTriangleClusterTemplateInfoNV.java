@@ -15,27 +15,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV.html">VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$clusterID = ValueLayout.JAVA_INT.withName("clusterID");
-    public static final OfInt LAYOUT$clusterFlags = ValueLayout.JAVA_INT.withName("clusterFlags");
-    public static final OfInt LAYOUT$triangleCount_opacityMicromapIndexType = ValueLayout.JAVA_INT.withName("bitfield$triangleCount_opacityMicromapIndexType");
-    public static final StructLayout LAYOUT$baseGeometryIndexAndGeometryFlags = VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.LAYOUT.withName("baseGeometryIndexAndGeometryFlags");
-    public static final OfShort LAYOUT$indexBufferStride = ValueLayout.JAVA_SHORT.withName("indexBufferStride");
-    public static final OfShort LAYOUT$vertexBufferStride = ValueLayout.JAVA_SHORT.withName("vertexBufferStride");
-    public static final OfShort LAYOUT$geometryIndexAndFlagsBufferStride = ValueLayout.JAVA_SHORT.withName("geometryIndexAndFlagsBufferStride");
-    public static final OfShort LAYOUT$opacityMicromapIndexBufferStride = ValueLayout.JAVA_SHORT.withName("opacityMicromapIndexBufferStride");
-    public static final OfLong LAYOUT$indexBuffer = ValueLayout.JAVA_LONG.withName("indexBuffer");
-    public static final OfLong LAYOUT$vertexBuffer = ValueLayout.JAVA_LONG.withName("vertexBuffer");
-    public static final OfLong LAYOUT$geometryIndexAndFlagsBuffer = ValueLayout.JAVA_LONG.withName("geometryIndexAndFlagsBuffer");
-    public static final OfLong LAYOUT$opacityMicromapArray = ValueLayout.JAVA_LONG.withName("opacityMicromapArray");
-    public static final OfLong LAYOUT$opacityMicromapIndexBuffer = ValueLayout.JAVA_LONG.withName("opacityMicromapIndexBuffer");
-    public static final OfLong LAYOUT$instantiationBoundingBoxLimit = ValueLayout.JAVA_LONG.withName("instantiationBoundingBoxLimit");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$clusterID, LAYOUT$clusterFlags, LAYOUT$triangleCount_opacityMicromapIndexType, LAYOUT$baseGeometryIndexAndGeometryFlags, LAYOUT$indexBufferStride, LAYOUT$vertexBufferStride, LAYOUT$geometryIndexAndFlagsBufferStride, LAYOUT$opacityMicromapIndexBufferStride, LAYOUT$indexBuffer, LAYOUT$vertexBuffer, LAYOUT$geometryIndexAndFlagsBuffer, LAYOUT$opacityMicromapArray, LAYOUT$opacityMicromapIndexBuffer, LAYOUT$instantiationBoundingBoxLimit);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV allocate(Arena arena) {
         return new VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV(arena.allocate(LAYOUT));
     }
@@ -63,6 +56,24 @@ public record VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV(@
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("clusterID"),
+        ValueLayout.JAVA_INT.withName("clusterFlags"),
+        ValueLayout.JAVA_INT.withName("bitfield$triangleCount_opacityMicromapIndexType"),
+        VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.LAYOUT.withName("baseGeometryIndexAndGeometryFlags"),
+        ValueLayout.JAVA_SHORT.withName("indexBufferStride"),
+        ValueLayout.JAVA_SHORT.withName("vertexBufferStride"),
+        ValueLayout.JAVA_SHORT.withName("geometryIndexAndFlagsBufferStride"),
+        ValueLayout.JAVA_SHORT.withName("opacityMicromapIndexBufferStride"),
+        ValueLayout.JAVA_LONG.withName("indexBuffer"),
+        ValueLayout.JAVA_LONG.withName("vertexBuffer"),
+        ValueLayout.JAVA_LONG.withName("geometryIndexAndFlagsBuffer"),
+        ValueLayout.JAVA_LONG.withName("opacityMicromapArray"),
+        ValueLayout.JAVA_LONG.withName("opacityMicromapIndexBuffer"),
+        ValueLayout.JAVA_LONG.withName("instantiationBoundingBoxLimit")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$clusterID = PathElement.groupElement("PATH$clusterID");
     public static final PathElement PATH$clusterFlags = PathElement.groupElement("PATH$clusterFlags");
     public static final PathElement PATH$bitfield$triangleCount_opacityMicromapIndexType = PathElement.groupElement("PATH$bitfield$triangleCount_opacityMicromapIndexType");
@@ -77,6 +88,21 @@ public record VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV(@
     public static final PathElement PATH$opacityMicromapArray = PathElement.groupElement("PATH$opacityMicromapArray");
     public static final PathElement PATH$opacityMicromapIndexBuffer = PathElement.groupElement("PATH$opacityMicromapIndexBuffer");
     public static final PathElement PATH$instantiationBoundingBoxLimit = PathElement.groupElement("PATH$instantiationBoundingBoxLimit");
+
+    public static final OfInt LAYOUT$clusterID = (OfInt) LAYOUT.select(PATH$clusterID);
+    public static final OfInt LAYOUT$clusterFlags = (OfInt) LAYOUT.select(PATH$clusterFlags);
+    public static final OfInt LAYOUT$triangleCount_opacityMicromapIndexType = (OfInt) LAYOUT.select(PATH$bitfield$triangleCount_opacityMicromapIndexType);
+    public static final StructLayout LAYOUT$baseGeometryIndexAndGeometryFlags = (StructLayout) LAYOUT.select(PATH$baseGeometryIndexAndGeometryFlags);
+    public static final OfShort LAYOUT$indexBufferStride = (OfShort) LAYOUT.select(PATH$indexBufferStride);
+    public static final OfShort LAYOUT$vertexBufferStride = (OfShort) LAYOUT.select(PATH$vertexBufferStride);
+    public static final OfShort LAYOUT$geometryIndexAndFlagsBufferStride = (OfShort) LAYOUT.select(PATH$geometryIndexAndFlagsBufferStride);
+    public static final OfShort LAYOUT$opacityMicromapIndexBufferStride = (OfShort) LAYOUT.select(PATH$opacityMicromapIndexBufferStride);
+    public static final OfLong LAYOUT$indexBuffer = (OfLong) LAYOUT.select(PATH$indexBuffer);
+    public static final OfLong LAYOUT$vertexBuffer = (OfLong) LAYOUT.select(PATH$vertexBuffer);
+    public static final OfLong LAYOUT$geometryIndexAndFlagsBuffer = (OfLong) LAYOUT.select(PATH$geometryIndexAndFlagsBuffer);
+    public static final OfLong LAYOUT$opacityMicromapArray = (OfLong) LAYOUT.select(PATH$opacityMicromapArray);
+    public static final OfLong LAYOUT$opacityMicromapIndexBuffer = (OfLong) LAYOUT.select(PATH$opacityMicromapIndexBuffer);
+    public static final OfLong LAYOUT$instantiationBoundingBoxLimit = (OfLong) LAYOUT.select(PATH$instantiationBoundingBoxLimit);
 
     public static final long SIZE$clusterID = LAYOUT$clusterID.byteSize();
     public static final long SIZE$clusterFlags = LAYOUT$clusterFlags.byteSize();

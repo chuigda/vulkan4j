@@ -14,68 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceFeatures} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFeatures.html">VkPhysicalDeviceFeatures</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceFeatures(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$robustBufferAccess = ValueLayout.JAVA_INT.withName("robustBufferAccess");
-    public static final OfInt LAYOUT$fullDrawIndexUint32 = ValueLayout.JAVA_INT.withName("fullDrawIndexUint32");
-    public static final OfInt LAYOUT$imageCubeArray = ValueLayout.JAVA_INT.withName("imageCubeArray");
-    public static final OfInt LAYOUT$independentBlend = ValueLayout.JAVA_INT.withName("independentBlend");
-    public static final OfInt LAYOUT$geometryShader = ValueLayout.JAVA_INT.withName("geometryShader");
-    public static final OfInt LAYOUT$tessellationShader = ValueLayout.JAVA_INT.withName("tessellationShader");
-    public static final OfInt LAYOUT$sampleRateShading = ValueLayout.JAVA_INT.withName("sampleRateShading");
-    public static final OfInt LAYOUT$dualSrcBlend = ValueLayout.JAVA_INT.withName("dualSrcBlend");
-    public static final OfInt LAYOUT$logicOp = ValueLayout.JAVA_INT.withName("logicOp");
-    public static final OfInt LAYOUT$multiDrawIndirect = ValueLayout.JAVA_INT.withName("multiDrawIndirect");
-    public static final OfInt LAYOUT$drawIndirectFirstInstance = ValueLayout.JAVA_INT.withName("drawIndirectFirstInstance");
-    public static final OfInt LAYOUT$depthClamp = ValueLayout.JAVA_INT.withName("depthClamp");
-    public static final OfInt LAYOUT$depthBiasClamp = ValueLayout.JAVA_INT.withName("depthBiasClamp");
-    public static final OfInt LAYOUT$fillModeNonSolid = ValueLayout.JAVA_INT.withName("fillModeNonSolid");
-    public static final OfInt LAYOUT$depthBounds = ValueLayout.JAVA_INT.withName("depthBounds");
-    public static final OfInt LAYOUT$wideLines = ValueLayout.JAVA_INT.withName("wideLines");
-    public static final OfInt LAYOUT$largePoints = ValueLayout.JAVA_INT.withName("largePoints");
-    public static final OfInt LAYOUT$alphaToOne = ValueLayout.JAVA_INT.withName("alphaToOne");
-    public static final OfInt LAYOUT$multiViewport = ValueLayout.JAVA_INT.withName("multiViewport");
-    public static final OfInt LAYOUT$samplerAnisotropy = ValueLayout.JAVA_INT.withName("samplerAnisotropy");
-    public static final OfInt LAYOUT$textureCompressionETC2 = ValueLayout.JAVA_INT.withName("textureCompressionETC2");
-    public static final OfInt LAYOUT$textureCompressionASTC_LDR = ValueLayout.JAVA_INT.withName("textureCompressionASTC_LDR");
-    public static final OfInt LAYOUT$textureCompressionBC = ValueLayout.JAVA_INT.withName("textureCompressionBC");
-    public static final OfInt LAYOUT$occlusionQueryPrecise = ValueLayout.JAVA_INT.withName("occlusionQueryPrecise");
-    public static final OfInt LAYOUT$pipelineStatisticsQuery = ValueLayout.JAVA_INT.withName("pipelineStatisticsQuery");
-    public static final OfInt LAYOUT$vertexPipelineStoresAndAtomics = ValueLayout.JAVA_INT.withName("vertexPipelineStoresAndAtomics");
-    public static final OfInt LAYOUT$fragmentStoresAndAtomics = ValueLayout.JAVA_INT.withName("fragmentStoresAndAtomics");
-    public static final OfInt LAYOUT$shaderTessellationAndGeometryPointSize = ValueLayout.JAVA_INT.withName("shaderTessellationAndGeometryPointSize");
-    public static final OfInt LAYOUT$shaderImageGatherExtended = ValueLayout.JAVA_INT.withName("shaderImageGatherExtended");
-    public static final OfInt LAYOUT$shaderStorageImageExtendedFormats = ValueLayout.JAVA_INT.withName("shaderStorageImageExtendedFormats");
-    public static final OfInt LAYOUT$shaderStorageImageMultisample = ValueLayout.JAVA_INT.withName("shaderStorageImageMultisample");
-    public static final OfInt LAYOUT$shaderStorageImageReadWithoutFormat = ValueLayout.JAVA_INT.withName("shaderStorageImageReadWithoutFormat");
-    public static final OfInt LAYOUT$shaderStorageImageWriteWithoutFormat = ValueLayout.JAVA_INT.withName("shaderStorageImageWriteWithoutFormat");
-    public static final OfInt LAYOUT$shaderUniformBufferArrayDynamicIndexing = ValueLayout.JAVA_INT.withName("shaderUniformBufferArrayDynamicIndexing");
-    public static final OfInt LAYOUT$shaderSampledImageArrayDynamicIndexing = ValueLayout.JAVA_INT.withName("shaderSampledImageArrayDynamicIndexing");
-    public static final OfInt LAYOUT$shaderStorageBufferArrayDynamicIndexing = ValueLayout.JAVA_INT.withName("shaderStorageBufferArrayDynamicIndexing");
-    public static final OfInt LAYOUT$shaderStorageImageArrayDynamicIndexing = ValueLayout.JAVA_INT.withName("shaderStorageImageArrayDynamicIndexing");
-    public static final OfInt LAYOUT$shaderClipDistance = ValueLayout.JAVA_INT.withName("shaderClipDistance");
-    public static final OfInt LAYOUT$shaderCullDistance = ValueLayout.JAVA_INT.withName("shaderCullDistance");
-    public static final OfInt LAYOUT$shaderFloat64 = ValueLayout.JAVA_INT.withName("shaderFloat64");
-    public static final OfInt LAYOUT$shaderInt64 = ValueLayout.JAVA_INT.withName("shaderInt64");
-    public static final OfInt LAYOUT$shaderInt16 = ValueLayout.JAVA_INT.withName("shaderInt16");
-    public static final OfInt LAYOUT$shaderResourceResidency = ValueLayout.JAVA_INT.withName("shaderResourceResidency");
-    public static final OfInt LAYOUT$shaderResourceMinLod = ValueLayout.JAVA_INT.withName("shaderResourceMinLod");
-    public static final OfInt LAYOUT$sparseBinding = ValueLayout.JAVA_INT.withName("sparseBinding");
-    public static final OfInt LAYOUT$sparseResidencyBuffer = ValueLayout.JAVA_INT.withName("sparseResidencyBuffer");
-    public static final OfInt LAYOUT$sparseResidencyImage2D = ValueLayout.JAVA_INT.withName("sparseResidencyImage2D");
-    public static final OfInt LAYOUT$sparseResidencyImage3D = ValueLayout.JAVA_INT.withName("sparseResidencyImage3D");
-    public static final OfInt LAYOUT$sparseResidency2Samples = ValueLayout.JAVA_INT.withName("sparseResidency2Samples");
-    public static final OfInt LAYOUT$sparseResidency4Samples = ValueLayout.JAVA_INT.withName("sparseResidency4Samples");
-    public static final OfInt LAYOUT$sparseResidency8Samples = ValueLayout.JAVA_INT.withName("sparseResidency8Samples");
-    public static final OfInt LAYOUT$sparseResidency16Samples = ValueLayout.JAVA_INT.withName("sparseResidency16Samples");
-    public static final OfInt LAYOUT$sparseResidencyAliased = ValueLayout.JAVA_INT.withName("sparseResidencyAliased");
-    public static final OfInt LAYOUT$variableMultisampleRate = ValueLayout.JAVA_INT.withName("variableMultisampleRate");
-    public static final OfInt LAYOUT$inheritedQueries = ValueLayout.JAVA_INT.withName("inheritedQueries");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$robustBufferAccess, LAYOUT$fullDrawIndexUint32, LAYOUT$imageCubeArray, LAYOUT$independentBlend, LAYOUT$geometryShader, LAYOUT$tessellationShader, LAYOUT$sampleRateShading, LAYOUT$dualSrcBlend, LAYOUT$logicOp, LAYOUT$multiDrawIndirect, LAYOUT$drawIndirectFirstInstance, LAYOUT$depthClamp, LAYOUT$depthBiasClamp, LAYOUT$fillModeNonSolid, LAYOUT$depthBounds, LAYOUT$wideLines, LAYOUT$largePoints, LAYOUT$alphaToOne, LAYOUT$multiViewport, LAYOUT$samplerAnisotropy, LAYOUT$textureCompressionETC2, LAYOUT$textureCompressionASTC_LDR, LAYOUT$textureCompressionBC, LAYOUT$occlusionQueryPrecise, LAYOUT$pipelineStatisticsQuery, LAYOUT$vertexPipelineStoresAndAtomics, LAYOUT$fragmentStoresAndAtomics, LAYOUT$shaderTessellationAndGeometryPointSize, LAYOUT$shaderImageGatherExtended, LAYOUT$shaderStorageImageExtendedFormats, LAYOUT$shaderStorageImageMultisample, LAYOUT$shaderStorageImageReadWithoutFormat, LAYOUT$shaderStorageImageWriteWithoutFormat, LAYOUT$shaderUniformBufferArrayDynamicIndexing, LAYOUT$shaderSampledImageArrayDynamicIndexing, LAYOUT$shaderStorageBufferArrayDynamicIndexing, LAYOUT$shaderStorageImageArrayDynamicIndexing, LAYOUT$shaderClipDistance, LAYOUT$shaderCullDistance, LAYOUT$shaderFloat64, LAYOUT$shaderInt64, LAYOUT$shaderInt16, LAYOUT$shaderResourceResidency, LAYOUT$shaderResourceMinLod, LAYOUT$sparseBinding, LAYOUT$sparseResidencyBuffer, LAYOUT$sparseResidencyImage2D, LAYOUT$sparseResidencyImage3D, LAYOUT$sparseResidency2Samples, LAYOUT$sparseResidency4Samples, LAYOUT$sparseResidency8Samples, LAYOUT$sparseResidency16Samples, LAYOUT$sparseResidencyAliased, LAYOUT$variableMultisampleRate, LAYOUT$inheritedQueries);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkPhysicalDeviceFeatures allocate(Arena arena) {
         return new VkPhysicalDeviceFeatures(arena.allocate(LAYOUT));
     }
@@ -102,6 +54,65 @@ public record VkPhysicalDeviceFeatures(@NotNull MemorySegment segment) implement
         }
         return ret;
     }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("robustBufferAccess"),
+        ValueLayout.JAVA_INT.withName("fullDrawIndexUint32"),
+        ValueLayout.JAVA_INT.withName("imageCubeArray"),
+        ValueLayout.JAVA_INT.withName("independentBlend"),
+        ValueLayout.JAVA_INT.withName("geometryShader"),
+        ValueLayout.JAVA_INT.withName("tessellationShader"),
+        ValueLayout.JAVA_INT.withName("sampleRateShading"),
+        ValueLayout.JAVA_INT.withName("dualSrcBlend"),
+        ValueLayout.JAVA_INT.withName("logicOp"),
+        ValueLayout.JAVA_INT.withName("multiDrawIndirect"),
+        ValueLayout.JAVA_INT.withName("drawIndirectFirstInstance"),
+        ValueLayout.JAVA_INT.withName("depthClamp"),
+        ValueLayout.JAVA_INT.withName("depthBiasClamp"),
+        ValueLayout.JAVA_INT.withName("fillModeNonSolid"),
+        ValueLayout.JAVA_INT.withName("depthBounds"),
+        ValueLayout.JAVA_INT.withName("wideLines"),
+        ValueLayout.JAVA_INT.withName("largePoints"),
+        ValueLayout.JAVA_INT.withName("alphaToOne"),
+        ValueLayout.JAVA_INT.withName("multiViewport"),
+        ValueLayout.JAVA_INT.withName("samplerAnisotropy"),
+        ValueLayout.JAVA_INT.withName("textureCompressionETC2"),
+        ValueLayout.JAVA_INT.withName("textureCompressionASTC_LDR"),
+        ValueLayout.JAVA_INT.withName("textureCompressionBC"),
+        ValueLayout.JAVA_INT.withName("occlusionQueryPrecise"),
+        ValueLayout.JAVA_INT.withName("pipelineStatisticsQuery"),
+        ValueLayout.JAVA_INT.withName("vertexPipelineStoresAndAtomics"),
+        ValueLayout.JAVA_INT.withName("fragmentStoresAndAtomics"),
+        ValueLayout.JAVA_INT.withName("shaderTessellationAndGeometryPointSize"),
+        ValueLayout.JAVA_INT.withName("shaderImageGatherExtended"),
+        ValueLayout.JAVA_INT.withName("shaderStorageImageExtendedFormats"),
+        ValueLayout.JAVA_INT.withName("shaderStorageImageMultisample"),
+        ValueLayout.JAVA_INT.withName("shaderStorageImageReadWithoutFormat"),
+        ValueLayout.JAVA_INT.withName("shaderStorageImageWriteWithoutFormat"),
+        ValueLayout.JAVA_INT.withName("shaderUniformBufferArrayDynamicIndexing"),
+        ValueLayout.JAVA_INT.withName("shaderSampledImageArrayDynamicIndexing"),
+        ValueLayout.JAVA_INT.withName("shaderStorageBufferArrayDynamicIndexing"),
+        ValueLayout.JAVA_INT.withName("shaderStorageImageArrayDynamicIndexing"),
+        ValueLayout.JAVA_INT.withName("shaderClipDistance"),
+        ValueLayout.JAVA_INT.withName("shaderCullDistance"),
+        ValueLayout.JAVA_INT.withName("shaderFloat64"),
+        ValueLayout.JAVA_INT.withName("shaderInt64"),
+        ValueLayout.JAVA_INT.withName("shaderInt16"),
+        ValueLayout.JAVA_INT.withName("shaderResourceResidency"),
+        ValueLayout.JAVA_INT.withName("shaderResourceMinLod"),
+        ValueLayout.JAVA_INT.withName("sparseBinding"),
+        ValueLayout.JAVA_INT.withName("sparseResidencyBuffer"),
+        ValueLayout.JAVA_INT.withName("sparseResidencyImage2D"),
+        ValueLayout.JAVA_INT.withName("sparseResidencyImage3D"),
+        ValueLayout.JAVA_INT.withName("sparseResidency2Samples"),
+        ValueLayout.JAVA_INT.withName("sparseResidency4Samples"),
+        ValueLayout.JAVA_INT.withName("sparseResidency8Samples"),
+        ValueLayout.JAVA_INT.withName("sparseResidency16Samples"),
+        ValueLayout.JAVA_INT.withName("sparseResidencyAliased"),
+        ValueLayout.JAVA_INT.withName("variableMultisampleRate"),
+        ValueLayout.JAVA_INT.withName("inheritedQueries")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$robustBufferAccess = PathElement.groupElement("PATH$robustBufferAccess");
     public static final PathElement PATH$fullDrawIndexUint32 = PathElement.groupElement("PATH$fullDrawIndexUint32");
@@ -158,6 +169,62 @@ public record VkPhysicalDeviceFeatures(@NotNull MemorySegment segment) implement
     public static final PathElement PATH$sparseResidencyAliased = PathElement.groupElement("PATH$sparseResidencyAliased");
     public static final PathElement PATH$variableMultisampleRate = PathElement.groupElement("PATH$variableMultisampleRate");
     public static final PathElement PATH$inheritedQueries = PathElement.groupElement("PATH$inheritedQueries");
+
+    public static final OfInt LAYOUT$robustBufferAccess = (OfInt) LAYOUT.select(PATH$robustBufferAccess);
+    public static final OfInt LAYOUT$fullDrawIndexUint32 = (OfInt) LAYOUT.select(PATH$fullDrawIndexUint32);
+    public static final OfInt LAYOUT$imageCubeArray = (OfInt) LAYOUT.select(PATH$imageCubeArray);
+    public static final OfInt LAYOUT$independentBlend = (OfInt) LAYOUT.select(PATH$independentBlend);
+    public static final OfInt LAYOUT$geometryShader = (OfInt) LAYOUT.select(PATH$geometryShader);
+    public static final OfInt LAYOUT$tessellationShader = (OfInt) LAYOUT.select(PATH$tessellationShader);
+    public static final OfInt LAYOUT$sampleRateShading = (OfInt) LAYOUT.select(PATH$sampleRateShading);
+    public static final OfInt LAYOUT$dualSrcBlend = (OfInt) LAYOUT.select(PATH$dualSrcBlend);
+    public static final OfInt LAYOUT$logicOp = (OfInt) LAYOUT.select(PATH$logicOp);
+    public static final OfInt LAYOUT$multiDrawIndirect = (OfInt) LAYOUT.select(PATH$multiDrawIndirect);
+    public static final OfInt LAYOUT$drawIndirectFirstInstance = (OfInt) LAYOUT.select(PATH$drawIndirectFirstInstance);
+    public static final OfInt LAYOUT$depthClamp = (OfInt) LAYOUT.select(PATH$depthClamp);
+    public static final OfInt LAYOUT$depthBiasClamp = (OfInt) LAYOUT.select(PATH$depthBiasClamp);
+    public static final OfInt LAYOUT$fillModeNonSolid = (OfInt) LAYOUT.select(PATH$fillModeNonSolid);
+    public static final OfInt LAYOUT$depthBounds = (OfInt) LAYOUT.select(PATH$depthBounds);
+    public static final OfInt LAYOUT$wideLines = (OfInt) LAYOUT.select(PATH$wideLines);
+    public static final OfInt LAYOUT$largePoints = (OfInt) LAYOUT.select(PATH$largePoints);
+    public static final OfInt LAYOUT$alphaToOne = (OfInt) LAYOUT.select(PATH$alphaToOne);
+    public static final OfInt LAYOUT$multiViewport = (OfInt) LAYOUT.select(PATH$multiViewport);
+    public static final OfInt LAYOUT$samplerAnisotropy = (OfInt) LAYOUT.select(PATH$samplerAnisotropy);
+    public static final OfInt LAYOUT$textureCompressionETC2 = (OfInt) LAYOUT.select(PATH$textureCompressionETC2);
+    public static final OfInt LAYOUT$textureCompressionASTC_LDR = (OfInt) LAYOUT.select(PATH$textureCompressionASTC_LDR);
+    public static final OfInt LAYOUT$textureCompressionBC = (OfInt) LAYOUT.select(PATH$textureCompressionBC);
+    public static final OfInt LAYOUT$occlusionQueryPrecise = (OfInt) LAYOUT.select(PATH$occlusionQueryPrecise);
+    public static final OfInt LAYOUT$pipelineStatisticsQuery = (OfInt) LAYOUT.select(PATH$pipelineStatisticsQuery);
+    public static final OfInt LAYOUT$vertexPipelineStoresAndAtomics = (OfInt) LAYOUT.select(PATH$vertexPipelineStoresAndAtomics);
+    public static final OfInt LAYOUT$fragmentStoresAndAtomics = (OfInt) LAYOUT.select(PATH$fragmentStoresAndAtomics);
+    public static final OfInt LAYOUT$shaderTessellationAndGeometryPointSize = (OfInt) LAYOUT.select(PATH$shaderTessellationAndGeometryPointSize);
+    public static final OfInt LAYOUT$shaderImageGatherExtended = (OfInt) LAYOUT.select(PATH$shaderImageGatherExtended);
+    public static final OfInt LAYOUT$shaderStorageImageExtendedFormats = (OfInt) LAYOUT.select(PATH$shaderStorageImageExtendedFormats);
+    public static final OfInt LAYOUT$shaderStorageImageMultisample = (OfInt) LAYOUT.select(PATH$shaderStorageImageMultisample);
+    public static final OfInt LAYOUT$shaderStorageImageReadWithoutFormat = (OfInt) LAYOUT.select(PATH$shaderStorageImageReadWithoutFormat);
+    public static final OfInt LAYOUT$shaderStorageImageWriteWithoutFormat = (OfInt) LAYOUT.select(PATH$shaderStorageImageWriteWithoutFormat);
+    public static final OfInt LAYOUT$shaderUniformBufferArrayDynamicIndexing = (OfInt) LAYOUT.select(PATH$shaderUniformBufferArrayDynamicIndexing);
+    public static final OfInt LAYOUT$shaderSampledImageArrayDynamicIndexing = (OfInt) LAYOUT.select(PATH$shaderSampledImageArrayDynamicIndexing);
+    public static final OfInt LAYOUT$shaderStorageBufferArrayDynamicIndexing = (OfInt) LAYOUT.select(PATH$shaderStorageBufferArrayDynamicIndexing);
+    public static final OfInt LAYOUT$shaderStorageImageArrayDynamicIndexing = (OfInt) LAYOUT.select(PATH$shaderStorageImageArrayDynamicIndexing);
+    public static final OfInt LAYOUT$shaderClipDistance = (OfInt) LAYOUT.select(PATH$shaderClipDistance);
+    public static final OfInt LAYOUT$shaderCullDistance = (OfInt) LAYOUT.select(PATH$shaderCullDistance);
+    public static final OfInt LAYOUT$shaderFloat64 = (OfInt) LAYOUT.select(PATH$shaderFloat64);
+    public static final OfInt LAYOUT$shaderInt64 = (OfInt) LAYOUT.select(PATH$shaderInt64);
+    public static final OfInt LAYOUT$shaderInt16 = (OfInt) LAYOUT.select(PATH$shaderInt16);
+    public static final OfInt LAYOUT$shaderResourceResidency = (OfInt) LAYOUT.select(PATH$shaderResourceResidency);
+    public static final OfInt LAYOUT$shaderResourceMinLod = (OfInt) LAYOUT.select(PATH$shaderResourceMinLod);
+    public static final OfInt LAYOUT$sparseBinding = (OfInt) LAYOUT.select(PATH$sparseBinding);
+    public static final OfInt LAYOUT$sparseResidencyBuffer = (OfInt) LAYOUT.select(PATH$sparseResidencyBuffer);
+    public static final OfInt LAYOUT$sparseResidencyImage2D = (OfInt) LAYOUT.select(PATH$sparseResidencyImage2D);
+    public static final OfInt LAYOUT$sparseResidencyImage3D = (OfInt) LAYOUT.select(PATH$sparseResidencyImage3D);
+    public static final OfInt LAYOUT$sparseResidency2Samples = (OfInt) LAYOUT.select(PATH$sparseResidency2Samples);
+    public static final OfInt LAYOUT$sparseResidency4Samples = (OfInt) LAYOUT.select(PATH$sparseResidency4Samples);
+    public static final OfInt LAYOUT$sparseResidency8Samples = (OfInt) LAYOUT.select(PATH$sparseResidency8Samples);
+    public static final OfInt LAYOUT$sparseResidency16Samples = (OfInt) LAYOUT.select(PATH$sparseResidency16Samples);
+    public static final OfInt LAYOUT$sparseResidencyAliased = (OfInt) LAYOUT.select(PATH$sparseResidencyAliased);
+    public static final OfInt LAYOUT$variableMultisampleRate = (OfInt) LAYOUT.select(PATH$variableMultisampleRate);
+    public static final OfInt LAYOUT$inheritedQueries = (OfInt) LAYOUT.select(PATH$inheritedQueries);
 
     public static final long SIZE$robustBufferAccess = LAYOUT$robustBufferAccess.byteSize();
     public static final long SIZE$fullDrawIndexUint32 = LAYOUT$fullDrawIndexUint32.byteSize();

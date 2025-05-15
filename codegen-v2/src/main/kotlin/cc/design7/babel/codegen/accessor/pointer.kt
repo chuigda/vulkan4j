@@ -1,7 +1,7 @@
 package cc.design7.babel.codegen.accessor
 
 import cc.design7.babel.codegen.LayoutField
-import cc.design7.babel.codegen.fn
+import cc.design7.babel.codegen.defun
 import cc.design7.babel.ctype.*
 import cc.design7.babel.util.Doc
 import cc.design7.babel.util.DocList
@@ -20,7 +20,7 @@ fun generatePtrAccessor(type: CPointerType, member: LayoutField.Typed): Doc =
 
 private fun DocList.makeGet(annotation: String, member: LayoutField.Typed, raw: Boolean = false) {
     val postfix = if (raw) "Raw" else ""
-    fn("public", "$annotation MemorySegment", "${member.name}$postfix") {
+    defun("public", "$annotation MemorySegment", "${member.name}$postfix") {
         +"return segment.get(${member.layoutName}, ${member.offsetName});"
     }
 }
@@ -32,7 +32,7 @@ private fun DocList.makeTrivialGet(comment: String, member: LayoutField.Typed, r
 
 private fun DocList.makeSet(annotation: String, member: LayoutField.Typed, raw: Boolean = false) {
     val postfix = if (raw) "Raw" else ""
-    fn("public", "void", "${member.name}$postfix", "$annotation MemorySegment value") {
+    defun("public", "void", "${member.name}$postfix", "$annotation MemorySegment value") {
         +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
     }
 }
@@ -46,7 +46,7 @@ private fun DocList.makeTrivialSet(comment: String, member: LayoutField.Typed, r
  */
 private fun DocList.makeRawGet(returnType: String, con: String, member: LayoutField.Typed) {
     val rawName = "${member.name}Raw"
-    fn("public", "@Nullable $returnType", member.name) {
+    defun("public", "@Nullable $returnType", member.name) {
         +"MemorySegment s = $rawName();"
         "if (s.address() == 0)" {
             +"return null;"
@@ -61,7 +61,7 @@ private fun DocList.makeRawGet(returnType: String, con: String, member: LayoutFi
  */
 private fun DocList.makeRawSet(type: String, member: LayoutField.Typed) {
     val rawName = "${member.name}Raw"
-    fn("public", "void", member.name, "@Nullable $type value") {
+    defun("public", "void", member.name, "@Nullable $type value") {
         +"MemorySegment s = value == null ? MemorySegment.NULL : value.segment();"
         +"$rawName(s);"
     }
@@ -75,7 +75,7 @@ private fun generatePVoidAccessor(type: CPointerType, member: LayoutField.Typed)
         makeTrivialSet(comment, member)
         +""
 
-        fn("public", "void", member.name, "IPointer pointer") {
+        defun("public", "void", member.name, "IPointer pointer") {
             +"${member.name}(pointer.segment());"
         }
     }
@@ -191,7 +191,7 @@ private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField
         makeRawSet(pointee.name, member)
         +""
 
-        fn("@unsafe public", "@Nullable ${pointee.name}[]", member.name, "int assumedCount") {
+        defun("@unsafe public", "@Nullable ${pointee.name}[]", member.name, "int assumedCount") {
             +"MemorySegment s = ${member.rawName}();"
             "if (s.address() == 0)" {
                 +"return null;"

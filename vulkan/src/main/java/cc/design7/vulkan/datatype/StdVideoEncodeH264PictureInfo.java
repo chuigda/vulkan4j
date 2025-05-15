@@ -14,22 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoEncodeH264PictureInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoEncodeH264PictureInfoFlags.LAYOUT.withName("flags");
-    public static final OfByte LAYOUT$seq_parameter_set_id = ValueLayout.JAVA_BYTE.withName("seq_parameter_set_id");
-    public static final OfByte LAYOUT$pic_parameter_set_id = ValueLayout.JAVA_BYTE.withName("pic_parameter_set_id");
-    public static final OfShort LAYOUT$idr_pic_id = ValueLayout.JAVA_SHORT.withName("idr_pic_id");
-    public static final OfInt LAYOUT$primary_pic_type = ValueLayout.JAVA_INT.withName("primary_pic_type");
-    public static final OfInt LAYOUT$frame_num = ValueLayout.JAVA_INT.withName("frame_num");
-    public static final OfInt LAYOUT$PicOrderCnt = ValueLayout.JAVA_INT.withName("PicOrderCnt");
-    public static final OfByte LAYOUT$temporal_id = ValueLayout.JAVA_BYTE.withName("temporal_id");
-    public static final OfByte LAYOUT$reserved1 = ValueLayout.JAVA_BYTE.withName("reserved1");
-    public static final AddressLayout LAYOUT$pRefLists = ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264ReferenceListsInfo.LAYOUT).withName("pRefLists");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$seq_parameter_set_id, LAYOUT$pic_parameter_set_id, LAYOUT$idr_pic_id, LAYOUT$primary_pic_type, LAYOUT$frame_num, LAYOUT$PicOrderCnt, LAYOUT$temporal_id, LAYOUT$reserved1, LAYOUT$pRefLists);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoEncodeH264PictureInfo allocate(Arena arena) {
         return new StdVideoEncodeH264PictureInfo(arena.allocate(LAYOUT));
     }
@@ -57,6 +53,20 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoEncodeH264PictureInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("seq_parameter_set_id"),
+        ValueLayout.JAVA_BYTE.withName("pic_parameter_set_id"),
+        ValueLayout.JAVA_SHORT.withName("idr_pic_id"),
+        ValueLayout.JAVA_INT.withName("primary_pic_type"),
+        ValueLayout.JAVA_INT.withName("frame_num"),
+        ValueLayout.JAVA_INT.withName("PicOrderCnt"),
+        ValueLayout.JAVA_BYTE.withName("temporal_id"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264ReferenceListsInfo.LAYOUT).withName("pRefLists")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$seq_parameter_set_id = PathElement.groupElement("PATH$seq_parameter_set_id");
     public static final PathElement PATH$pic_parameter_set_id = PathElement.groupElement("PATH$pic_parameter_set_id");
@@ -67,6 +77,17 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
     public static final PathElement PATH$temporal_id = PathElement.groupElement("PATH$temporal_id");
     public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$pRefLists = PathElement.groupElement("PATH$pRefLists");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$seq_parameter_set_id = (OfByte) LAYOUT.select(PATH$seq_parameter_set_id);
+    public static final OfByte LAYOUT$pic_parameter_set_id = (OfByte) LAYOUT.select(PATH$pic_parameter_set_id);
+    public static final OfShort LAYOUT$idr_pic_id = (OfShort) LAYOUT.select(PATH$idr_pic_id);
+    public static final OfInt LAYOUT$primary_pic_type = (OfInt) LAYOUT.select(PATH$primary_pic_type);
+    public static final OfInt LAYOUT$frame_num = (OfInt) LAYOUT.select(PATH$frame_num);
+    public static final OfInt LAYOUT$PicOrderCnt = (OfInt) LAYOUT.select(PATH$PicOrderCnt);
+    public static final OfByte LAYOUT$temporal_id = (OfByte) LAYOUT.select(PATH$temporal_id);
+    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
+    public static final AddressLayout LAYOUT$pRefLists = (AddressLayout) LAYOUT.select(PATH$pRefLists);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$seq_parameter_set_id = LAYOUT$seq_parameter_set_id.byteSize();

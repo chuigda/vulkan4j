@@ -14,17 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkImageBlit} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageBlit.html">VkImageBlit</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkImageBlit(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$srcSubresource = VkImageSubresourceLayers.LAYOUT.withName("srcSubresource");
-    public static final StructLayout LAYOUT$srcOffsets = VkOffset3D.LAYOUT.withName("srcOffsets");
-    public static final StructLayout LAYOUT$dstSubresource = VkImageSubresourceLayers.LAYOUT.withName("dstSubresource");
-    public static final StructLayout LAYOUT$dstOffsets = VkOffset3D.LAYOUT.withName("dstOffsets");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$srcSubresource, LAYOUT$srcOffsets, LAYOUT$dstSubresource, LAYOUT$dstOffsets);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkImageBlit allocate(Arena arena) {
         return new VkImageBlit(arena.allocate(LAYOUT));
     }
@@ -52,10 +55,23 @@ public record VkImageBlit(@NotNull MemorySegment segment) implements IPointer {
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        VkImageSubresourceLayers.LAYOUT.withName("srcSubresource"),
+        VkOffset3D.LAYOUT.withName("srcOffsets"),
+        VkImageSubresourceLayers.LAYOUT.withName("dstSubresource"),
+        VkOffset3D.LAYOUT.withName("dstOffsets")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$srcSubresource = PathElement.groupElement("PATH$srcSubresource");
     public static final PathElement PATH$srcOffsets = PathElement.groupElement("PATH$srcOffsets");
     public static final PathElement PATH$dstSubresource = PathElement.groupElement("PATH$dstSubresource");
     public static final PathElement PATH$dstOffsets = PathElement.groupElement("PATH$dstOffsets");
+
+    public static final StructLayout LAYOUT$srcSubresource = (StructLayout) LAYOUT.select(PATH$srcSubresource);
+    public static final StructLayout LAYOUT$srcOffsets = (StructLayout) LAYOUT.select(PATH$srcOffsets);
+    public static final StructLayout LAYOUT$dstSubresource = (StructLayout) LAYOUT.select(PATH$dstSubresource);
+    public static final StructLayout LAYOUT$dstOffsets = (StructLayout) LAYOUT.select(PATH$dstOffsets);
 
     public static final long SIZE$srcSubresource = LAYOUT$srcSubresource.byteSize();
     public static final long SIZE$srcOffsets = LAYOUT$srcOffsets.byteSize();

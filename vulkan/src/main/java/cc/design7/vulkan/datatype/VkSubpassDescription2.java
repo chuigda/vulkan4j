@@ -14,25 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkSubpassDescription2} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassDescription2.html">VkSubpassDescription2</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkSubpassDescription2(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$pipelineBindPoint = ValueLayout.JAVA_INT.withName("pipelineBindPoint");
-    public static final OfInt LAYOUT$viewMask = ValueLayout.JAVA_INT.withName("viewMask");
-    public static final OfInt LAYOUT$inputAttachmentCount = ValueLayout.JAVA_INT.withName("inputAttachmentCount");
-    public static final AddressLayout LAYOUT$pInputAttachments = ValueLayout.ADDRESS.withTargetLayout(VkAttachmentReference2.LAYOUT).withName("pInputAttachments");
-    public static final OfInt LAYOUT$colorAttachmentCount = ValueLayout.JAVA_INT.withName("colorAttachmentCount");
-    public static final AddressLayout LAYOUT$pColorAttachments = ValueLayout.ADDRESS.withTargetLayout(VkAttachmentReference2.LAYOUT).withName("pColorAttachments");
-    public static final AddressLayout LAYOUT$pResolveAttachments = ValueLayout.ADDRESS.withTargetLayout(VkAttachmentReference2.LAYOUT).withName("pResolveAttachments");
-    public static final AddressLayout LAYOUT$pDepthStencilAttachment = ValueLayout.ADDRESS.withTargetLayout(VkAttachmentReference2.LAYOUT).withName("pDepthStencilAttachment");
-    public static final OfInt LAYOUT$preserveAttachmentCount = ValueLayout.JAVA_INT.withName("preserveAttachmentCount");
-    public static final AddressLayout LAYOUT$pPreserveAttachments = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pPreserveAttachments");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$pipelineBindPoint, LAYOUT$viewMask, LAYOUT$inputAttachmentCount, LAYOUT$pInputAttachments, LAYOUT$colorAttachmentCount, LAYOUT$pColorAttachments, LAYOUT$pResolveAttachments, LAYOUT$pDepthStencilAttachment, LAYOUT$preserveAttachmentCount, LAYOUT$pPreserveAttachments);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkSubpassDescription2 {
+        sType(VkStructureType.SUBPASS_DESCRIPTION_2);
+    }
 
     public static VkSubpassDescription2 allocate(Arena arena) {
         return new VkSubpassDescription2(arena.allocate(LAYOUT));
@@ -61,6 +59,23 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("pipelineBindPoint"),
+        ValueLayout.JAVA_INT.withName("viewMask"),
+        ValueLayout.JAVA_INT.withName("inputAttachmentCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkAttachmentReference2.LAYOUT).withName("pInputAttachments"),
+        ValueLayout.JAVA_INT.withName("colorAttachmentCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkAttachmentReference2.LAYOUT).withName("pColorAttachments"),
+        ValueLayout.ADDRESS.withTargetLayout(VkAttachmentReference2.LAYOUT).withName("pResolveAttachments"),
+        ValueLayout.ADDRESS.withTargetLayout(VkAttachmentReference2.LAYOUT).withName("pDepthStencilAttachment"),
+        ValueLayout.JAVA_INT.withName("preserveAttachmentCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pPreserveAttachments")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -74,6 +89,20 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
     public static final PathElement PATH$pDepthStencilAttachment = PathElement.groupElement("PATH$pDepthStencilAttachment");
     public static final PathElement PATH$preserveAttachmentCount = PathElement.groupElement("PATH$preserveAttachmentCount");
     public static final PathElement PATH$pPreserveAttachments = PathElement.groupElement("PATH$pPreserveAttachments");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$pipelineBindPoint = (OfInt) LAYOUT.select(PATH$pipelineBindPoint);
+    public static final OfInt LAYOUT$viewMask = (OfInt) LAYOUT.select(PATH$viewMask);
+    public static final OfInt LAYOUT$inputAttachmentCount = (OfInt) LAYOUT.select(PATH$inputAttachmentCount);
+    public static final AddressLayout LAYOUT$pInputAttachments = (AddressLayout) LAYOUT.select(PATH$pInputAttachments);
+    public static final OfInt LAYOUT$colorAttachmentCount = (OfInt) LAYOUT.select(PATH$colorAttachmentCount);
+    public static final AddressLayout LAYOUT$pColorAttachments = (AddressLayout) LAYOUT.select(PATH$pColorAttachments);
+    public static final AddressLayout LAYOUT$pResolveAttachments = (AddressLayout) LAYOUT.select(PATH$pResolveAttachments);
+    public static final AddressLayout LAYOUT$pDepthStencilAttachment = (AddressLayout) LAYOUT.select(PATH$pDepthStencilAttachment);
+    public static final OfInt LAYOUT$preserveAttachmentCount = (OfInt) LAYOUT.select(PATH$preserveAttachmentCount);
+    public static final AddressLayout LAYOUT$pPreserveAttachments = (AddressLayout) LAYOUT.select(PATH$pPreserveAttachments);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

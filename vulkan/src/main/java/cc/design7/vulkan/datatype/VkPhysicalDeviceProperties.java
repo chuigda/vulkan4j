@@ -14,22 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceProperties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceProperties.html">VkPhysicalDeviceProperties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$apiVersion = ValueLayout.JAVA_INT.withName("apiVersion");
-    public static final OfInt LAYOUT$driverVersion = ValueLayout.JAVA_INT.withName("driverVersion");
-    public static final OfInt LAYOUT$vendorID = ValueLayout.JAVA_INT.withName("vendorID");
-    public static final OfInt LAYOUT$deviceID = ValueLayout.JAVA_INT.withName("deviceID");
-    public static final OfInt LAYOUT$deviceType = ValueLayout.JAVA_INT.withName("deviceType");
-    public static final OfByte LAYOUT$deviceName = ValueLayout.JAVA_BYTE.withName("deviceName");
-    public static final OfByte LAYOUT$pipelineCacheUUID = ValueLayout.JAVA_BYTE.withName("pipelineCacheUUID");
-    public static final StructLayout LAYOUT$limits = VkPhysicalDeviceLimits.LAYOUT.withName("limits");
-    public static final StructLayout LAYOUT$sparseProperties = VkPhysicalDeviceSparseProperties.LAYOUT.withName("sparseProperties");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$apiVersion, LAYOUT$driverVersion, LAYOUT$vendorID, LAYOUT$deviceID, LAYOUT$deviceType, LAYOUT$deviceName, LAYOUT$pipelineCacheUUID, LAYOUT$limits, LAYOUT$sparseProperties);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkPhysicalDeviceProperties allocate(Arena arena) {
         return new VkPhysicalDeviceProperties(arena.allocate(LAYOUT));
     }
@@ -57,6 +55,19 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("apiVersion"),
+        ValueLayout.JAVA_INT.withName("driverVersion"),
+        ValueLayout.JAVA_INT.withName("vendorID"),
+        ValueLayout.JAVA_INT.withName("deviceID"),
+        ValueLayout.JAVA_INT.withName("deviceType"),
+        ValueLayout.JAVA_BYTE.withName("deviceName"),
+        ValueLayout.JAVA_BYTE.withName("pipelineCacheUUID"),
+        VkPhysicalDeviceLimits.LAYOUT.withName("limits"),
+        VkPhysicalDeviceSparseProperties.LAYOUT.withName("sparseProperties")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$apiVersion = PathElement.groupElement("PATH$apiVersion");
     public static final PathElement PATH$driverVersion = PathElement.groupElement("PATH$driverVersion");
     public static final PathElement PATH$vendorID = PathElement.groupElement("PATH$vendorID");
@@ -66,6 +77,16 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
     public static final PathElement PATH$pipelineCacheUUID = PathElement.groupElement("PATH$pipelineCacheUUID");
     public static final PathElement PATH$limits = PathElement.groupElement("PATH$limits");
     public static final PathElement PATH$sparseProperties = PathElement.groupElement("PATH$sparseProperties");
+
+    public static final OfInt LAYOUT$apiVersion = (OfInt) LAYOUT.select(PATH$apiVersion);
+    public static final OfInt LAYOUT$driverVersion = (OfInt) LAYOUT.select(PATH$driverVersion);
+    public static final OfInt LAYOUT$vendorID = (OfInt) LAYOUT.select(PATH$vendorID);
+    public static final OfInt LAYOUT$deviceID = (OfInt) LAYOUT.select(PATH$deviceID);
+    public static final OfInt LAYOUT$deviceType = (OfInt) LAYOUT.select(PATH$deviceType);
+    public static final OfByte LAYOUT$deviceName = (OfByte) LAYOUT.select(PATH$deviceName);
+    public static final OfByte LAYOUT$pipelineCacheUUID = (OfByte) LAYOUT.select(PATH$pipelineCacheUUID);
+    public static final StructLayout LAYOUT$limits = (StructLayout) LAYOUT.select(PATH$limits);
+    public static final StructLayout LAYOUT$sparseProperties = (StructLayout) LAYOUT.select(PATH$sparseProperties);
 
     public static final long SIZE$apiVersion = LAYOUT$apiVersion.byteSize();
     public static final long SIZE$driverVersion = LAYOUT$driverVersion.byteSize();

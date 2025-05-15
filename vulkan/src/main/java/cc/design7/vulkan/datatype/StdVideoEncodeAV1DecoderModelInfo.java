@@ -14,17 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoEncodeAV1DecoderModelInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoEncodeAV1DecoderModelInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfByte LAYOUT$buffer_delay_length_minus_1 = ValueLayout.JAVA_BYTE.withName("buffer_delay_length_minus_1");
-    public static final OfByte LAYOUT$buffer_removal_time_length_minus_1 = ValueLayout.JAVA_BYTE.withName("buffer_removal_time_length_minus_1");
-    public static final OfByte LAYOUT$frame_presentation_time_length_minus_1 = ValueLayout.JAVA_BYTE.withName("frame_presentation_time_length_minus_1");
-    public static final OfByte LAYOUT$reserved1 = ValueLayout.JAVA_BYTE.withName("reserved1");
-    public static final OfInt LAYOUT$num_units_in_decoding_tick = ValueLayout.JAVA_INT.withName("num_units_in_decoding_tick");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$buffer_delay_length_minus_1, LAYOUT$buffer_removal_time_length_minus_1, LAYOUT$frame_presentation_time_length_minus_1, LAYOUT$reserved1, LAYOUT$num_units_in_decoding_tick);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoEncodeAV1DecoderModelInfo allocate(Arena arena) {
         return new StdVideoEncodeAV1DecoderModelInfo(arena.allocate(LAYOUT));
     }
@@ -52,11 +53,26 @@ public record StdVideoEncodeAV1DecoderModelInfo(@NotNull MemorySegment segment) 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_BYTE.withName("buffer_delay_length_minus_1"),
+        ValueLayout.JAVA_BYTE.withName("buffer_removal_time_length_minus_1"),
+        ValueLayout.JAVA_BYTE.withName("frame_presentation_time_length_minus_1"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.JAVA_INT.withName("num_units_in_decoding_tick")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$buffer_delay_length_minus_1 = PathElement.groupElement("PATH$buffer_delay_length_minus_1");
     public static final PathElement PATH$buffer_removal_time_length_minus_1 = PathElement.groupElement("PATH$buffer_removal_time_length_minus_1");
     public static final PathElement PATH$frame_presentation_time_length_minus_1 = PathElement.groupElement("PATH$frame_presentation_time_length_minus_1");
     public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$num_units_in_decoding_tick = PathElement.groupElement("PATH$num_units_in_decoding_tick");
+
+    public static final OfByte LAYOUT$buffer_delay_length_minus_1 = (OfByte) LAYOUT.select(PATH$buffer_delay_length_minus_1);
+    public static final OfByte LAYOUT$buffer_removal_time_length_minus_1 = (OfByte) LAYOUT.select(PATH$buffer_removal_time_length_minus_1);
+    public static final OfByte LAYOUT$frame_presentation_time_length_minus_1 = (OfByte) LAYOUT.select(PATH$frame_presentation_time_length_minus_1);
+    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
+    public static final OfInt LAYOUT$num_units_in_decoding_tick = (OfInt) LAYOUT.select(PATH$num_units_in_decoding_tick);
 
     public static final long SIZE$buffer_delay_length_minus_1 = LAYOUT$buffer_delay_length_minus_1.byteSize();
     public static final long SIZE$buffer_removal_time_length_minus_1 = LAYOUT$buffer_removal_time_length_minus_1.byteSize();

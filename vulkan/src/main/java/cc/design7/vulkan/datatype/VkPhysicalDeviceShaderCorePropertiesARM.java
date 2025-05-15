@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceShaderCorePropertiesARM} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderCorePropertiesARM.html">VkPhysicalDeviceShaderCorePropertiesARM</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceShaderCorePropertiesARM(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$pixelRate = ValueLayout.JAVA_INT.withName("pixelRate");
-    public static final OfInt LAYOUT$texelRate = ValueLayout.JAVA_INT.withName("texelRate");
-    public static final OfInt LAYOUT$fmaRate = ValueLayout.JAVA_INT.withName("fmaRate");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$pixelRate, LAYOUT$texelRate, LAYOUT$fmaRate);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceShaderCorePropertiesARM {
+        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_ARM);
+    }
 
     public static VkPhysicalDeviceShaderCorePropertiesARM allocate(Arena arena) {
         return new VkPhysicalDeviceShaderCorePropertiesARM(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkPhysicalDeviceShaderCorePropertiesARM(@NotNull MemorySegment seg
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("pixelRate"),
+        ValueLayout.JAVA_INT.withName("texelRate"),
+        ValueLayout.JAVA_INT.withName("fmaRate")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$pixelRate = PathElement.groupElement("PATH$pixelRate");
     public static final PathElement PATH$texelRate = PathElement.groupElement("PATH$texelRate");
     public static final PathElement PATH$fmaRate = PathElement.groupElement("PATH$fmaRate");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$pixelRate = (OfInt) LAYOUT.select(PATH$pixelRate);
+    public static final OfInt LAYOUT$texelRate = (OfInt) LAYOUT.select(PATH$texelRate);
+    public static final OfInt LAYOUT$fmaRate = (OfInt) LAYOUT.select(PATH$fmaRate);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

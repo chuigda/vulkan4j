@@ -14,15 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkClearValue} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClearValue.html">VkClearValue</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkClearValue(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$color = VkClearColorValue.LAYOUT.withName("color");
-    public static final StructLayout LAYOUT$depthStencil = VkClearDepthStencilValue.LAYOUT.withName("depthStencil");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(LAYOUT$color, LAYOUT$depthStencil);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkClearValue allocate(Arena arena) {
         return new VkClearValue(arena.allocate(LAYOUT));
     }
@@ -50,8 +55,17 @@ public record VkClearValue(@NotNull MemorySegment segment) implements IPointer {
         return ret;
     }
 
+    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
+        VkClearColorValue.LAYOUT.withName("color"),
+        VkClearDepthStencilValue.LAYOUT.withName("depthStencil")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$color = PathElement.groupElement("PATH$color");
     public static final PathElement PATH$depthStencil = PathElement.groupElement("PATH$depthStencil");
+
+    public static final StructLayout LAYOUT$color = (StructLayout) LAYOUT.select(PATH$color);
+    public static final StructLayout LAYOUT$depthStencil = (StructLayout) LAYOUT.select(PATH$depthStencil);
 
     public static final long SIZE$color = LAYOUT$color.byteSize();
     public static final long SIZE$depthStencil = LAYOUT$depthStencil.byteSize();

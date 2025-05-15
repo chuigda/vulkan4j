@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkSubpassDescriptionDepthStencilResolve} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassDescriptionDepthStencilResolve.html">VkSubpassDescriptionDepthStencilResolve</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkSubpassDescriptionDepthStencilResolve(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$depthResolveMode = ValueLayout.JAVA_INT.withName("depthResolveMode");
-    public static final OfInt LAYOUT$stencilResolveMode = ValueLayout.JAVA_INT.withName("stencilResolveMode");
-    public static final AddressLayout LAYOUT$pDepthStencilResolveAttachment = ValueLayout.ADDRESS.withTargetLayout(VkAttachmentReference2.LAYOUT).withName("pDepthStencilResolveAttachment");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$depthResolveMode, LAYOUT$stencilResolveMode, LAYOUT$pDepthStencilResolveAttachment);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkSubpassDescriptionDepthStencilResolve {
+        sType(VkStructureType.SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE);
+    }
 
     public static VkSubpassDescriptionDepthStencilResolve allocate(Arena arena) {
         return new VkSubpassDescriptionDepthStencilResolve(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkSubpassDescriptionDepthStencilResolve(@NotNull MemorySegment seg
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("depthResolveMode"),
+        ValueLayout.JAVA_INT.withName("stencilResolveMode"),
+        ValueLayout.ADDRESS.withTargetLayout(VkAttachmentReference2.LAYOUT).withName("pDepthStencilResolveAttachment")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$depthResolveMode = PathElement.groupElement("PATH$depthResolveMode");
     public static final PathElement PATH$stencilResolveMode = PathElement.groupElement("PATH$stencilResolveMode");
     public static final PathElement PATH$pDepthStencilResolveAttachment = PathElement.groupElement("PATH$pDepthStencilResolveAttachment");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$depthResolveMode = (OfInt) LAYOUT.select(PATH$depthResolveMode);
+    public static final OfInt LAYOUT$stencilResolveMode = (OfInt) LAYOUT.select(PATH$stencilResolveMode);
+    public static final AddressLayout LAYOUT$pDepthStencilResolveAttachment = (AddressLayout) LAYOUT.select(PATH$pDepthStencilResolveAttachment);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

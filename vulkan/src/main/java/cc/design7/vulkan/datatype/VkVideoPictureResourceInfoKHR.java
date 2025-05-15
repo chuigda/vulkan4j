@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoPictureResourceInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoPictureResourceInfoKHR.html">VkVideoPictureResourceInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoPictureResourceInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final StructLayout LAYOUT$codedOffset = VkOffset2D.LAYOUT.withName("codedOffset");
-    public static final StructLayout LAYOUT$codedExtent = VkExtent2D.LAYOUT.withName("codedExtent");
-    public static final OfInt LAYOUT$baseArrayLayer = ValueLayout.JAVA_INT.withName("baseArrayLayer");
-    public static final AddressLayout LAYOUT$imageViewBinding = ValueLayout.ADDRESS.withName("imageViewBinding");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$codedOffset, LAYOUT$codedExtent, LAYOUT$baseArrayLayer, LAYOUT$imageViewBinding);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoPictureResourceInfoKHR {
+        sType(VkStructureType.VIDEO_PICTURE_RESOURCE_INFO_KHR);
+    }
 
     public static VkVideoPictureResourceInfoKHR allocate(Arena arena) {
         return new VkVideoPictureResourceInfoKHR(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkVideoPictureResourceInfoKHR(@NotNull MemorySegment segment) impl
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkOffset2D.LAYOUT.withName("codedOffset"),
+        VkExtent2D.LAYOUT.withName("codedExtent"),
+        ValueLayout.JAVA_INT.withName("baseArrayLayer"),
+        ValueLayout.ADDRESS.withName("imageViewBinding")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$codedOffset = PathElement.groupElement("PATH$codedOffset");
     public static final PathElement PATH$codedExtent = PathElement.groupElement("PATH$codedExtent");
     public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("PATH$baseArrayLayer");
     public static final PathElement PATH$imageViewBinding = PathElement.groupElement("PATH$imageViewBinding");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$codedOffset = (StructLayout) LAYOUT.select(PATH$codedOffset);
+    public static final StructLayout LAYOUT$codedExtent = (StructLayout) LAYOUT.select(PATH$codedExtent);
+    public static final OfInt LAYOUT$baseArrayLayer = (OfInt) LAYOUT.select(PATH$baseArrayLayer);
+    public static final AddressLayout LAYOUT$imageViewBinding = (AddressLayout) LAYOUT.select(PATH$imageViewBinding);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

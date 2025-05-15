@@ -14,18 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDrawIndexedIndirectCommand} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDrawIndexedIndirectCommand.html">VkDrawIndexedIndirectCommand</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDrawIndexedIndirectCommand(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$indexCount = ValueLayout.JAVA_INT.withName("indexCount");
-    public static final OfInt LAYOUT$instanceCount = ValueLayout.JAVA_INT.withName("instanceCount");
-    public static final OfInt LAYOUT$firstIndex = ValueLayout.JAVA_INT.withName("firstIndex");
-    public static final OfInt LAYOUT$vertexOffset = ValueLayout.JAVA_INT.withName("vertexOffset");
-    public static final OfInt LAYOUT$firstInstance = ValueLayout.JAVA_INT.withName("firstInstance");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$indexCount, LAYOUT$instanceCount, LAYOUT$firstIndex, LAYOUT$vertexOffset, LAYOUT$firstInstance);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkDrawIndexedIndirectCommand allocate(Arena arena) {
         return new VkDrawIndexedIndirectCommand(arena.allocate(LAYOUT));
     }
@@ -53,11 +55,26 @@ public record VkDrawIndexedIndirectCommand(@NotNull MemorySegment segment) imple
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("indexCount"),
+        ValueLayout.JAVA_INT.withName("instanceCount"),
+        ValueLayout.JAVA_INT.withName("firstIndex"),
+        ValueLayout.JAVA_INT.withName("vertexOffset"),
+        ValueLayout.JAVA_INT.withName("firstInstance")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$indexCount = PathElement.groupElement("PATH$indexCount");
     public static final PathElement PATH$instanceCount = PathElement.groupElement("PATH$instanceCount");
     public static final PathElement PATH$firstIndex = PathElement.groupElement("PATH$firstIndex");
     public static final PathElement PATH$vertexOffset = PathElement.groupElement("PATH$vertexOffset");
     public static final PathElement PATH$firstInstance = PathElement.groupElement("PATH$firstInstance");
+
+    public static final OfInt LAYOUT$indexCount = (OfInt) LAYOUT.select(PATH$indexCount);
+    public static final OfInt LAYOUT$instanceCount = (OfInt) LAYOUT.select(PATH$instanceCount);
+    public static final OfInt LAYOUT$firstIndex = (OfInt) LAYOUT.select(PATH$firstIndex);
+    public static final OfInt LAYOUT$vertexOffset = (OfInt) LAYOUT.select(PATH$vertexOffset);
+    public static final OfInt LAYOUT$firstInstance = (OfInt) LAYOUT.select(PATH$firstInstance);
 
     public static final long SIZE$indexCount = LAYOUT$indexCount.byteSize();
     public static final long SIZE$instanceCount = LAYOUT$instanceCount.byteSize();

@@ -14,23 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDescriptorDataEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorDataEXT.html">VkDescriptorDataEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final AddressLayout LAYOUT$pSampler = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pSampler");
-    public static final AddressLayout LAYOUT$pCombinedImageSampler = ValueLayout.ADDRESS.withTargetLayout(VkDescriptorImageInfo.LAYOUT).withName("pCombinedImageSampler");
-    public static final AddressLayout LAYOUT$pInputAttachmentImage = ValueLayout.ADDRESS.withTargetLayout(VkDescriptorImageInfo.LAYOUT).withName("pInputAttachmentImage");
-    public static final AddressLayout LAYOUT$pSampledImage = ValueLayout.ADDRESS.withTargetLayout(VkDescriptorImageInfo.LAYOUT).withName("pSampledImage");
-    public static final AddressLayout LAYOUT$pStorageImage = ValueLayout.ADDRESS.withTargetLayout(VkDescriptorImageInfo.LAYOUT).withName("pStorageImage");
-    public static final AddressLayout LAYOUT$pUniformTexelBuffer = ValueLayout.ADDRESS.withTargetLayout(VkDescriptorAddressInfoEXT.LAYOUT).withName("pUniformTexelBuffer");
-    public static final AddressLayout LAYOUT$pStorageTexelBuffer = ValueLayout.ADDRESS.withTargetLayout(VkDescriptorAddressInfoEXT.LAYOUT).withName("pStorageTexelBuffer");
-    public static final AddressLayout LAYOUT$pUniformBuffer = ValueLayout.ADDRESS.withTargetLayout(VkDescriptorAddressInfoEXT.LAYOUT).withName("pUniformBuffer");
-    public static final AddressLayout LAYOUT$pStorageBuffer = ValueLayout.ADDRESS.withTargetLayout(VkDescriptorAddressInfoEXT.LAYOUT).withName("pStorageBuffer");
-    public static final OfLong LAYOUT$accelerationStructure = ValueLayout.JAVA_LONG.withName("accelerationStructure");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(LAYOUT$pSampler, LAYOUT$pCombinedImageSampler, LAYOUT$pInputAttachmentImage, LAYOUT$pSampledImage, LAYOUT$pStorageImage, LAYOUT$pUniformTexelBuffer, LAYOUT$pStorageTexelBuffer, LAYOUT$pUniformBuffer, LAYOUT$pStorageBuffer, LAYOUT$accelerationStructure);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkDescriptorDataEXT allocate(Arena arena) {
         return new VkDescriptorDataEXT(arena.allocate(LAYOUT));
     }
@@ -58,6 +55,20 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
         return ret;
     }
 
+    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pSampler"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDescriptorImageInfo.LAYOUT).withName("pCombinedImageSampler"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDescriptorImageInfo.LAYOUT).withName("pInputAttachmentImage"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDescriptorImageInfo.LAYOUT).withName("pSampledImage"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDescriptorImageInfo.LAYOUT).withName("pStorageImage"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDescriptorAddressInfoEXT.LAYOUT).withName("pUniformTexelBuffer"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDescriptorAddressInfoEXT.LAYOUT).withName("pStorageTexelBuffer"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDescriptorAddressInfoEXT.LAYOUT).withName("pUniformBuffer"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDescriptorAddressInfoEXT.LAYOUT).withName("pStorageBuffer"),
+        ValueLayout.JAVA_LONG.withName("accelerationStructure")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$pSampler = PathElement.groupElement("PATH$pSampler");
     public static final PathElement PATH$pCombinedImageSampler = PathElement.groupElement("PATH$pCombinedImageSampler");
     public static final PathElement PATH$pInputAttachmentImage = PathElement.groupElement("PATH$pInputAttachmentImage");
@@ -68,6 +79,17 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
     public static final PathElement PATH$pUniformBuffer = PathElement.groupElement("PATH$pUniformBuffer");
     public static final PathElement PATH$pStorageBuffer = PathElement.groupElement("PATH$pStorageBuffer");
     public static final PathElement PATH$accelerationStructure = PathElement.groupElement("PATH$accelerationStructure");
+
+    public static final AddressLayout LAYOUT$pSampler = (AddressLayout) LAYOUT.select(PATH$pSampler);
+    public static final AddressLayout LAYOUT$pCombinedImageSampler = (AddressLayout) LAYOUT.select(PATH$pCombinedImageSampler);
+    public static final AddressLayout LAYOUT$pInputAttachmentImage = (AddressLayout) LAYOUT.select(PATH$pInputAttachmentImage);
+    public static final AddressLayout LAYOUT$pSampledImage = (AddressLayout) LAYOUT.select(PATH$pSampledImage);
+    public static final AddressLayout LAYOUT$pStorageImage = (AddressLayout) LAYOUT.select(PATH$pStorageImage);
+    public static final AddressLayout LAYOUT$pUniformTexelBuffer = (AddressLayout) LAYOUT.select(PATH$pUniformTexelBuffer);
+    public static final AddressLayout LAYOUT$pStorageTexelBuffer = (AddressLayout) LAYOUT.select(PATH$pStorageTexelBuffer);
+    public static final AddressLayout LAYOUT$pUniformBuffer = (AddressLayout) LAYOUT.select(PATH$pUniformBuffer);
+    public static final AddressLayout LAYOUT$pStorageBuffer = (AddressLayout) LAYOUT.select(PATH$pStorageBuffer);
+    public static final OfLong LAYOUT$accelerationStructure = (OfLong) LAYOUT.select(PATH$accelerationStructure);
 
     public static final long SIZE$pSampler = LAYOUT$pSampler.byteSize();
     public static final long SIZE$pCombinedImageSampler = LAYOUT$pCombinedImageSampler.byteSize();

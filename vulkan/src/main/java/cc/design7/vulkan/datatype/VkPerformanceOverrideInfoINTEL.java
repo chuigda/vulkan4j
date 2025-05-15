@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPerformanceOverrideInfoINTEL} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceOverrideInfoINTEL.html">VkPerformanceOverrideInfoINTEL</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPerformanceOverrideInfoINTEL(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$type = ValueLayout.JAVA_INT.withName("type");
-    public static final OfInt LAYOUT$enable = ValueLayout.JAVA_INT.withName("enable");
-    public static final OfLong LAYOUT$parameter = ValueLayout.JAVA_LONG.withName("parameter");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$type, LAYOUT$enable, LAYOUT$parameter);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPerformanceOverrideInfoINTEL {
+        sType(VkStructureType.PERFORMANCE_OVERRIDE_INFO_INTEL);
+    }
 
     public static VkPerformanceOverrideInfoINTEL allocate(Arena arena) {
         return new VkPerformanceOverrideInfoINTEL(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkPerformanceOverrideInfoINTEL(@NotNull MemorySegment segment) imp
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("type"),
+        ValueLayout.JAVA_INT.withName("enable"),
+        ValueLayout.JAVA_LONG.withName("parameter")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
     public static final PathElement PATH$enable = PathElement.groupElement("PATH$enable");
     public static final PathElement PATH$parameter = PathElement.groupElement("PATH$parameter");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
+    public static final OfInt LAYOUT$enable = (OfInt) LAYOUT.select(PATH$enable);
+    public static final OfLong LAYOUT$parameter = (OfLong) LAYOUT.select(PATH$parameter);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

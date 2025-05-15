@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceDepthBiasControlFeaturesEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDepthBiasControlFeaturesEXT.html">VkPhysicalDeviceDepthBiasControlFeaturesEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$depthBiasControl = ValueLayout.JAVA_INT.withName("depthBiasControl");
-    public static final OfInt LAYOUT$leastRepresentableValueForceUnormRepresentation = ValueLayout.JAVA_INT.withName("leastRepresentableValueForceUnormRepresentation");
-    public static final OfInt LAYOUT$floatRepresentation = ValueLayout.JAVA_INT.withName("floatRepresentation");
-    public static final OfInt LAYOUT$depthBiasExact = ValueLayout.JAVA_INT.withName("depthBiasExact");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$depthBiasControl, LAYOUT$leastRepresentableValueForceUnormRepresentation, LAYOUT$floatRepresentation, LAYOUT$depthBiasExact);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceDepthBiasControlFeaturesEXT {
+        sType(VkStructureType.PHYSICAL_DEVICE_DEPTH_BIAS_CONTROL_FEATURES_EXT);
+    }
 
     public static VkPhysicalDeviceDepthBiasControlFeaturesEXT allocate(Arena arena) {
         return new VkPhysicalDeviceDepthBiasControlFeaturesEXT(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(@NotNull MemorySegment
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("depthBiasControl"),
+        ValueLayout.JAVA_INT.withName("leastRepresentableValueForceUnormRepresentation"),
+        ValueLayout.JAVA_INT.withName("floatRepresentation"),
+        ValueLayout.JAVA_INT.withName("depthBiasExact")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$depthBiasControl = PathElement.groupElement("PATH$depthBiasControl");
     public static final PathElement PATH$leastRepresentableValueForceUnormRepresentation = PathElement.groupElement("PATH$leastRepresentableValueForceUnormRepresentation");
     public static final PathElement PATH$floatRepresentation = PathElement.groupElement("PATH$floatRepresentation");
     public static final PathElement PATH$depthBiasExact = PathElement.groupElement("PATH$depthBiasExact");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$depthBiasControl = (OfInt) LAYOUT.select(PATH$depthBiasControl);
+    public static final OfInt LAYOUT$leastRepresentableValueForceUnormRepresentation = (OfInt) LAYOUT.select(PATH$leastRepresentableValueForceUnormRepresentation);
+    public static final OfInt LAYOUT$floatRepresentation = (OfInt) LAYOUT.select(PATH$floatRepresentation);
+    public static final OfInt LAYOUT$depthBiasExact = (OfInt) LAYOUT.select(PATH$depthBiasExact);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

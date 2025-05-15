@@ -14,22 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoAV1Quantization} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoAV1QuantizationFlags.LAYOUT.withName("flags");
-    public static final OfByte LAYOUT$base_q_idx = ValueLayout.JAVA_BYTE.withName("base_q_idx");
-    public static final OfByte LAYOUT$DeltaQYDc = ValueLayout.JAVA_BYTE.withName("DeltaQYDc");
-    public static final OfByte LAYOUT$DeltaQUDc = ValueLayout.JAVA_BYTE.withName("DeltaQUDc");
-    public static final OfByte LAYOUT$DeltaQUAc = ValueLayout.JAVA_BYTE.withName("DeltaQUAc");
-    public static final OfByte LAYOUT$DeltaQVDc = ValueLayout.JAVA_BYTE.withName("DeltaQVDc");
-    public static final OfByte LAYOUT$DeltaQVAc = ValueLayout.JAVA_BYTE.withName("DeltaQVAc");
-    public static final OfByte LAYOUT$qm_y = ValueLayout.JAVA_BYTE.withName("qm_y");
-    public static final OfByte LAYOUT$qm_u = ValueLayout.JAVA_BYTE.withName("qm_u");
-    public static final OfByte LAYOUT$qm_v = ValueLayout.JAVA_BYTE.withName("qm_v");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$base_q_idx, LAYOUT$DeltaQYDc, LAYOUT$DeltaQUDc, LAYOUT$DeltaQUAc, LAYOUT$DeltaQVDc, LAYOUT$DeltaQVAc, LAYOUT$qm_y, LAYOUT$qm_u, LAYOUT$qm_v);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoAV1Quantization allocate(Arena arena) {
         return new StdVideoAV1Quantization(arena.allocate(LAYOUT));
     }
@@ -57,6 +53,20 @@ public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoAV1QuantizationFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("base_q_idx"),
+        ValueLayout.JAVA_BYTE.withName("DeltaQYDc"),
+        ValueLayout.JAVA_BYTE.withName("DeltaQUDc"),
+        ValueLayout.JAVA_BYTE.withName("DeltaQUAc"),
+        ValueLayout.JAVA_BYTE.withName("DeltaQVDc"),
+        ValueLayout.JAVA_BYTE.withName("DeltaQVAc"),
+        ValueLayout.JAVA_BYTE.withName("qm_y"),
+        ValueLayout.JAVA_BYTE.withName("qm_u"),
+        ValueLayout.JAVA_BYTE.withName("qm_v")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$base_q_idx = PathElement.groupElement("PATH$base_q_idx");
     public static final PathElement PATH$DeltaQYDc = PathElement.groupElement("PATH$DeltaQYDc");
@@ -67,6 +77,17 @@ public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements
     public static final PathElement PATH$qm_y = PathElement.groupElement("PATH$qm_y");
     public static final PathElement PATH$qm_u = PathElement.groupElement("PATH$qm_u");
     public static final PathElement PATH$qm_v = PathElement.groupElement("PATH$qm_v");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$base_q_idx = (OfByte) LAYOUT.select(PATH$base_q_idx);
+    public static final OfByte LAYOUT$DeltaQYDc = (OfByte) LAYOUT.select(PATH$DeltaQYDc);
+    public static final OfByte LAYOUT$DeltaQUDc = (OfByte) LAYOUT.select(PATH$DeltaQUDc);
+    public static final OfByte LAYOUT$DeltaQUAc = (OfByte) LAYOUT.select(PATH$DeltaQUAc);
+    public static final OfByte LAYOUT$DeltaQVDc = (OfByte) LAYOUT.select(PATH$DeltaQVDc);
+    public static final OfByte LAYOUT$DeltaQVAc = (OfByte) LAYOUT.select(PATH$DeltaQVAc);
+    public static final OfByte LAYOUT$qm_y = (OfByte) LAYOUT.select(PATH$qm_y);
+    public static final OfByte LAYOUT$qm_u = (OfByte) LAYOUT.select(PATH$qm_u);
+    public static final OfByte LAYOUT$qm_v = (OfByte) LAYOUT.select(PATH$qm_v);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$base_q_idx = LAYOUT$base_q_idx.byteSize();

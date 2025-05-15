@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDeviceGroupRenderPassBeginInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceGroupRenderPassBeginInfo.html">VkDeviceGroupRenderPassBeginInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDeviceGroupRenderPassBeginInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$deviceMask = ValueLayout.JAVA_INT.withName("deviceMask");
-    public static final OfInt LAYOUT$deviceRenderAreaCount = ValueLayout.JAVA_INT.withName("deviceRenderAreaCount");
-    public static final AddressLayout LAYOUT$pDeviceRenderAreas = ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pDeviceRenderAreas");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$deviceMask, LAYOUT$deviceRenderAreaCount, LAYOUT$pDeviceRenderAreas);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkDeviceGroupRenderPassBeginInfo {
+        sType(VkStructureType.DEVICE_GROUP_RENDER_PASS_BEGIN_INFO);
+    }
 
     public static VkDeviceGroupRenderPassBeginInfo allocate(Arena arena) {
         return new VkDeviceGroupRenderPassBeginInfo(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkDeviceGroupRenderPassBeginInfo(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("deviceMask"),
+        ValueLayout.JAVA_INT.withName("deviceRenderAreaCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT).withName("pDeviceRenderAreas")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$deviceMask = PathElement.groupElement("PATH$deviceMask");
     public static final PathElement PATH$deviceRenderAreaCount = PathElement.groupElement("PATH$deviceRenderAreaCount");
     public static final PathElement PATH$pDeviceRenderAreas = PathElement.groupElement("PATH$pDeviceRenderAreas");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$deviceMask = (OfInt) LAYOUT.select(PATH$deviceMask);
+    public static final OfInt LAYOUT$deviceRenderAreaCount = (OfInt) LAYOUT.select(PATH$deviceRenderAreaCount);
+    public static final AddressLayout LAYOUT$pDeviceRenderAreas = (AddressLayout) LAYOUT.select(PATH$pDeviceRenderAreas);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

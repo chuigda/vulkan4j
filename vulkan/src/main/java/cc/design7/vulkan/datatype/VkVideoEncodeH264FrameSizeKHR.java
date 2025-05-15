@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeH264FrameSizeKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264FrameSizeKHR.html">VkVideoEncodeH264FrameSizeKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeH264FrameSizeKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$frameISize = ValueLayout.JAVA_INT.withName("frameISize");
-    public static final OfInt LAYOUT$framePSize = ValueLayout.JAVA_INT.withName("framePSize");
-    public static final OfInt LAYOUT$frameBSize = ValueLayout.JAVA_INT.withName("frameBSize");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$frameISize, LAYOUT$framePSize, LAYOUT$frameBSize);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkVideoEncodeH264FrameSizeKHR allocate(Arena arena) {
         return new VkVideoEncodeH264FrameSizeKHR(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkVideoEncodeH264FrameSizeKHR(@NotNull MemorySegment segment) impl
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("frameISize"),
+        ValueLayout.JAVA_INT.withName("framePSize"),
+        ValueLayout.JAVA_INT.withName("frameBSize")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$frameISize = PathElement.groupElement("PATH$frameISize");
     public static final PathElement PATH$framePSize = PathElement.groupElement("PATH$framePSize");
     public static final PathElement PATH$frameBSize = PathElement.groupElement("PATH$frameBSize");
+
+    public static final OfInt LAYOUT$frameISize = (OfInt) LAYOUT.select(PATH$frameISize);
+    public static final OfInt LAYOUT$framePSize = (OfInt) LAYOUT.select(PATH$framePSize);
+    public static final OfInt LAYOUT$frameBSize = (OfInt) LAYOUT.select(PATH$frameBSize);
 
     public static final long SIZE$frameISize = LAYOUT$frameISize.byteSize();
     public static final long SIZE$framePSize = LAYOUT$framePSize.byteSize();

@@ -14,20 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkInstanceCreateInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkInstanceCreateInfo.html">VkInstanceCreateInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final AddressLayout LAYOUT$pApplicationInfo = ValueLayout.ADDRESS.withTargetLayout(VkApplicationInfo.LAYOUT).withName("pApplicationInfo");
-    public static final OfInt LAYOUT$enabledLayerCount = ValueLayout.JAVA_INT.withName("enabledLayerCount");
-    public static final AddressLayout LAYOUT$ppEnabledLayerNames = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)).withName("ppEnabledLayerNames");
-    public static final OfInt LAYOUT$enabledExtensionCount = ValueLayout.JAVA_INT.withName("enabledExtensionCount");
-    public static final AddressLayout LAYOUT$ppEnabledExtensionNames = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)).withName("ppEnabledExtensionNames");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$pApplicationInfo, LAYOUT$enabledLayerCount, LAYOUT$ppEnabledLayerNames, LAYOUT$enabledExtensionCount, LAYOUT$ppEnabledExtensionNames);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkInstanceCreateInfo {
+        sType(VkStructureType.INSTANCE_CREATE_INFO);
+    }
 
     public static VkInstanceCreateInfo allocate(Arena arena) {
         return new VkInstanceCreateInfo(arena.allocate(LAYOUT));
@@ -56,6 +59,18 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.ADDRESS.withTargetLayout(VkApplicationInfo.LAYOUT).withName("pApplicationInfo"),
+        ValueLayout.JAVA_INT.withName("enabledLayerCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)).withName("ppEnabledLayerNames"),
+        ValueLayout.JAVA_INT.withName("enabledExtensionCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)).withName("ppEnabledExtensionNames")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -64,6 +79,15 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IP
     public static final PathElement PATH$ppEnabledLayerNames = PathElement.groupElement("PATH$ppEnabledLayerNames");
     public static final PathElement PATH$enabledExtensionCount = PathElement.groupElement("PATH$enabledExtensionCount");
     public static final PathElement PATH$ppEnabledExtensionNames = PathElement.groupElement("PATH$ppEnabledExtensionNames");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$pApplicationInfo = (AddressLayout) LAYOUT.select(PATH$pApplicationInfo);
+    public static final OfInt LAYOUT$enabledLayerCount = (OfInt) LAYOUT.select(PATH$enabledLayerCount);
+    public static final AddressLayout LAYOUT$ppEnabledLayerNames = (AddressLayout) LAYOUT.select(PATH$ppEnabledLayerNames);
+    public static final OfInt LAYOUT$enabledExtensionCount = (OfInt) LAYOUT.select(PATH$enabledExtensionCount);
+    public static final AddressLayout LAYOUT$ppEnabledExtensionNames = (AddressLayout) LAYOUT.select(PATH$ppEnabledExtensionNames);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

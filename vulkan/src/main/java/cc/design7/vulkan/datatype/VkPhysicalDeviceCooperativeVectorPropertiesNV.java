@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceCooperativeVectorPropertiesNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceCooperativeVectorPropertiesNV.html">VkPhysicalDeviceCooperativeVectorPropertiesNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceCooperativeVectorPropertiesNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$cooperativeVectorSupportedStages = ValueLayout.JAVA_INT.withName("cooperativeVectorSupportedStages");
-    public static final OfInt LAYOUT$cooperativeVectorTrainingFloat16Accumulation = ValueLayout.JAVA_INT.withName("cooperativeVectorTrainingFloat16Accumulation");
-    public static final OfInt LAYOUT$cooperativeVectorTrainingFloat32Accumulation = ValueLayout.JAVA_INT.withName("cooperativeVectorTrainingFloat32Accumulation");
-    public static final OfInt LAYOUT$maxCooperativeVectorComponents = ValueLayout.JAVA_INT.withName("maxCooperativeVectorComponents");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$cooperativeVectorSupportedStages, LAYOUT$cooperativeVectorTrainingFloat16Accumulation, LAYOUT$cooperativeVectorTrainingFloat32Accumulation, LAYOUT$maxCooperativeVectorComponents);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceCooperativeVectorPropertiesNV {
+        sType(VkStructureType.PHYSICAL_DEVICE_COOPERATIVE_VECTOR_PROPERTIES_NV);
+    }
 
     public static VkPhysicalDeviceCooperativeVectorPropertiesNV allocate(Arena arena) {
         return new VkPhysicalDeviceCooperativeVectorPropertiesNV(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkPhysicalDeviceCooperativeVectorPropertiesNV(@NotNull MemorySegme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("cooperativeVectorSupportedStages"),
+        ValueLayout.JAVA_INT.withName("cooperativeVectorTrainingFloat16Accumulation"),
+        ValueLayout.JAVA_INT.withName("cooperativeVectorTrainingFloat32Accumulation"),
+        ValueLayout.JAVA_INT.withName("maxCooperativeVectorComponents")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$cooperativeVectorSupportedStages = PathElement.groupElement("PATH$cooperativeVectorSupportedStages");
     public static final PathElement PATH$cooperativeVectorTrainingFloat16Accumulation = PathElement.groupElement("PATH$cooperativeVectorTrainingFloat16Accumulation");
     public static final PathElement PATH$cooperativeVectorTrainingFloat32Accumulation = PathElement.groupElement("PATH$cooperativeVectorTrainingFloat32Accumulation");
     public static final PathElement PATH$maxCooperativeVectorComponents = PathElement.groupElement("PATH$maxCooperativeVectorComponents");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$cooperativeVectorSupportedStages = (OfInt) LAYOUT.select(PATH$cooperativeVectorSupportedStages);
+    public static final OfInt LAYOUT$cooperativeVectorTrainingFloat16Accumulation = (OfInt) LAYOUT.select(PATH$cooperativeVectorTrainingFloat16Accumulation);
+    public static final OfInt LAYOUT$cooperativeVectorTrainingFloat32Accumulation = (OfInt) LAYOUT.select(PATH$cooperativeVectorTrainingFloat32Accumulation);
+    public static final OfInt LAYOUT$maxCooperativeVectorComponents = (OfInt) LAYOUT.select(PATH$maxCooperativeVectorComponents);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,19 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoEncodeH265LongTermRefPics} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfByte LAYOUT$num_long_term_sps = ValueLayout.JAVA_BYTE.withName("num_long_term_sps");
-    public static final OfByte LAYOUT$num_long_term_pics = ValueLayout.JAVA_BYTE.withName("num_long_term_pics");
-    public static final OfByte LAYOUT$lt_idx_sps = ValueLayout.JAVA_BYTE.withName("lt_idx_sps");
-    public static final OfByte LAYOUT$poc_lsb_lt = ValueLayout.JAVA_BYTE.withName("poc_lsb_lt");
-    public static final OfShort LAYOUT$used_by_curr_pic_lt_flag = ValueLayout.JAVA_SHORT.withName("used_by_curr_pic_lt_flag");
-    public static final OfByte LAYOUT$delta_poc_msb_present_flag = ValueLayout.JAVA_BYTE.withName("delta_poc_msb_present_flag");
-    public static final OfByte LAYOUT$delta_poc_msb_cycle_lt = ValueLayout.JAVA_BYTE.withName("delta_poc_msb_cycle_lt");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$num_long_term_sps, LAYOUT$num_long_term_pics, LAYOUT$lt_idx_sps, LAYOUT$poc_lsb_lt, LAYOUT$used_by_curr_pic_lt_flag, LAYOUT$delta_poc_msb_present_flag, LAYOUT$delta_poc_msb_cycle_lt);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoEncodeH265LongTermRefPics allocate(Arena arena) {
         return new StdVideoEncodeH265LongTermRefPics(arena.allocate(LAYOUT));
     }
@@ -54,6 +53,17 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_BYTE.withName("num_long_term_sps"),
+        ValueLayout.JAVA_BYTE.withName("num_long_term_pics"),
+        ValueLayout.JAVA_BYTE.withName("lt_idx_sps"),
+        ValueLayout.JAVA_BYTE.withName("poc_lsb_lt"),
+        ValueLayout.JAVA_SHORT.withName("used_by_curr_pic_lt_flag"),
+        ValueLayout.JAVA_BYTE.withName("delta_poc_msb_present_flag"),
+        ValueLayout.JAVA_BYTE.withName("delta_poc_msb_cycle_lt")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$num_long_term_sps = PathElement.groupElement("PATH$num_long_term_sps");
     public static final PathElement PATH$num_long_term_pics = PathElement.groupElement("PATH$num_long_term_pics");
     public static final PathElement PATH$lt_idx_sps = PathElement.groupElement("PATH$lt_idx_sps");
@@ -61,6 +71,14 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
     public static final PathElement PATH$used_by_curr_pic_lt_flag = PathElement.groupElement("PATH$used_by_curr_pic_lt_flag");
     public static final PathElement PATH$delta_poc_msb_present_flag = PathElement.groupElement("PATH$delta_poc_msb_present_flag");
     public static final PathElement PATH$delta_poc_msb_cycle_lt = PathElement.groupElement("PATH$delta_poc_msb_cycle_lt");
+
+    public static final OfByte LAYOUT$num_long_term_sps = (OfByte) LAYOUT.select(PATH$num_long_term_sps);
+    public static final OfByte LAYOUT$num_long_term_pics = (OfByte) LAYOUT.select(PATH$num_long_term_pics);
+    public static final OfByte LAYOUT$lt_idx_sps = (OfByte) LAYOUT.select(PATH$lt_idx_sps);
+    public static final OfByte LAYOUT$poc_lsb_lt = (OfByte) LAYOUT.select(PATH$poc_lsb_lt);
+    public static final OfShort LAYOUT$used_by_curr_pic_lt_flag = (OfShort) LAYOUT.select(PATH$used_by_curr_pic_lt_flag);
+    public static final OfByte LAYOUT$delta_poc_msb_present_flag = (OfByte) LAYOUT.select(PATH$delta_poc_msb_present_flag);
+    public static final OfByte LAYOUT$delta_poc_msb_cycle_lt = (OfByte) LAYOUT.select(PATH$delta_poc_msb_cycle_lt);
 
     public static final long SIZE$num_long_term_sps = LAYOUT$num_long_term_sps.byteSize();
     public static final long SIZE$num_long_term_pics = LAYOUT$num_long_term_pics.byteSize();

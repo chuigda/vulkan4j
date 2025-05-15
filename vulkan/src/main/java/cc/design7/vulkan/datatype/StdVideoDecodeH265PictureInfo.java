@@ -14,23 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoDecodeH265PictureInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoDecodeH265PictureInfoFlags.LAYOUT.withName("flags");
-    public static final OfByte LAYOUT$sps_video_parameter_set_id = ValueLayout.JAVA_BYTE.withName("sps_video_parameter_set_id");
-    public static final OfByte LAYOUT$pps_seq_parameter_set_id = ValueLayout.JAVA_BYTE.withName("pps_seq_parameter_set_id");
-    public static final OfByte LAYOUT$pps_pic_parameter_set_id = ValueLayout.JAVA_BYTE.withName("pps_pic_parameter_set_id");
-    public static final OfByte LAYOUT$NumDeltaPocsOfRefRpsIdx = ValueLayout.JAVA_BYTE.withName("NumDeltaPocsOfRefRpsIdx");
-    public static final OfInt LAYOUT$PicOrderCntVal = ValueLayout.JAVA_INT.withName("PicOrderCntVal");
-    public static final OfShort LAYOUT$NumBitsForSTRefPicSetInSlice = ValueLayout.JAVA_SHORT.withName("NumBitsForSTRefPicSetInSlice");
-    public static final OfShort LAYOUT$reserved = ValueLayout.JAVA_SHORT.withName("reserved");
-    public static final OfByte LAYOUT$RefPicSetStCurrBefore = ValueLayout.JAVA_BYTE.withName("RefPicSetStCurrBefore");
-    public static final OfByte LAYOUT$RefPicSetStCurrAfter = ValueLayout.JAVA_BYTE.withName("RefPicSetStCurrAfter");
-    public static final OfByte LAYOUT$RefPicSetLtCurr = ValueLayout.JAVA_BYTE.withName("RefPicSetLtCurr");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$sps_video_parameter_set_id, LAYOUT$pps_seq_parameter_set_id, LAYOUT$pps_pic_parameter_set_id, LAYOUT$NumDeltaPocsOfRefRpsIdx, LAYOUT$PicOrderCntVal, LAYOUT$NumBitsForSTRefPicSetInSlice, LAYOUT$reserved, LAYOUT$RefPicSetStCurrBefore, LAYOUT$RefPicSetStCurrAfter, LAYOUT$RefPicSetLtCurr);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoDecodeH265PictureInfo allocate(Arena arena) {
         return new StdVideoDecodeH265PictureInfo(arena.allocate(LAYOUT));
     }
@@ -58,6 +53,21 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoDecodeH265PictureInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("sps_video_parameter_set_id"),
+        ValueLayout.JAVA_BYTE.withName("pps_seq_parameter_set_id"),
+        ValueLayout.JAVA_BYTE.withName("pps_pic_parameter_set_id"),
+        ValueLayout.JAVA_BYTE.withName("NumDeltaPocsOfRefRpsIdx"),
+        ValueLayout.JAVA_INT.withName("PicOrderCntVal"),
+        ValueLayout.JAVA_SHORT.withName("NumBitsForSTRefPicSetInSlice"),
+        ValueLayout.JAVA_SHORT.withName("reserved"),
+        ValueLayout.JAVA_BYTE.withName("RefPicSetStCurrBefore"),
+        ValueLayout.JAVA_BYTE.withName("RefPicSetStCurrAfter"),
+        ValueLayout.JAVA_BYTE.withName("RefPicSetLtCurr")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$sps_video_parameter_set_id = PathElement.groupElement("PATH$sps_video_parameter_set_id");
     public static final PathElement PATH$pps_seq_parameter_set_id = PathElement.groupElement("PATH$pps_seq_parameter_set_id");
@@ -69,6 +79,18 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
     public static final PathElement PATH$RefPicSetStCurrBefore = PathElement.groupElement("PATH$RefPicSetStCurrBefore");
     public static final PathElement PATH$RefPicSetStCurrAfter = PathElement.groupElement("PATH$RefPicSetStCurrAfter");
     public static final PathElement PATH$RefPicSetLtCurr = PathElement.groupElement("PATH$RefPicSetLtCurr");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$sps_video_parameter_set_id = (OfByte) LAYOUT.select(PATH$sps_video_parameter_set_id);
+    public static final OfByte LAYOUT$pps_seq_parameter_set_id = (OfByte) LAYOUT.select(PATH$pps_seq_parameter_set_id);
+    public static final OfByte LAYOUT$pps_pic_parameter_set_id = (OfByte) LAYOUT.select(PATH$pps_pic_parameter_set_id);
+    public static final OfByte LAYOUT$NumDeltaPocsOfRefRpsIdx = (OfByte) LAYOUT.select(PATH$NumDeltaPocsOfRefRpsIdx);
+    public static final OfInt LAYOUT$PicOrderCntVal = (OfInt) LAYOUT.select(PATH$PicOrderCntVal);
+    public static final OfShort LAYOUT$NumBitsForSTRefPicSetInSlice = (OfShort) LAYOUT.select(PATH$NumBitsForSTRefPicSetInSlice);
+    public static final OfShort LAYOUT$reserved = (OfShort) LAYOUT.select(PATH$reserved);
+    public static final OfByte LAYOUT$RefPicSetStCurrBefore = (OfByte) LAYOUT.select(PATH$RefPicSetStCurrBefore);
+    public static final OfByte LAYOUT$RefPicSetStCurrAfter = (OfByte) LAYOUT.select(PATH$RefPicSetStCurrAfter);
+    public static final OfByte LAYOUT$RefPicSetLtCurr = (OfByte) LAYOUT.select(PATH$RefPicSetLtCurr);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$sps_video_parameter_set_id = LAYOUT$sps_video_parameter_set_id.byteSize();

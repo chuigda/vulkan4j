@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkMemoryMapInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryMapInfo.html">VkMemoryMapInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkMemoryMapInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final AddressLayout LAYOUT$memory = ValueLayout.ADDRESS.withName("memory");
-    public static final OfLong LAYOUT$offset = ValueLayout.JAVA_LONG.withName("offset");
-    public static final OfLong LAYOUT$size = ValueLayout.JAVA_LONG.withName("size");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$memory, LAYOUT$offset, LAYOUT$size);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkMemoryMapInfo {
+        sType(VkStructureType.MEMORY_MAP_INFO);
+    }
 
     public static VkMemoryMapInfo allocate(Arena arena) {
         return new VkMemoryMapInfo(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkMemoryMapInfo(@NotNull MemorySegment segment) implements IPointe
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.ADDRESS.withName("memory"),
+        ValueLayout.JAVA_LONG.withName("offset"),
+        ValueLayout.JAVA_LONG.withName("size")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$memory = PathElement.groupElement("PATH$memory");
     public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
     public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$memory = (AddressLayout) LAYOUT.select(PATH$memory);
+    public static final OfLong LAYOUT$offset = (OfLong) LAYOUT.select(PATH$offset);
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

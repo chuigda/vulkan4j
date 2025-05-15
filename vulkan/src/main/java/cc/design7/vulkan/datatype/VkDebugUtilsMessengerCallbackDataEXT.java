@@ -14,24 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDebugUtilsMessengerCallbackDataEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDebugUtilsMessengerCallbackDataEXT.html">VkDebugUtilsMessengerCallbackDataEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final AddressLayout LAYOUT$pMessageIdName = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pMessageIdName");
-    public static final OfInt LAYOUT$messageIdNumber = ValueLayout.JAVA_INT.withName("messageIdNumber");
-    public static final AddressLayout LAYOUT$pMessage = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pMessage");
-    public static final OfInt LAYOUT$queueLabelCount = ValueLayout.JAVA_INT.withName("queueLabelCount");
-    public static final AddressLayout LAYOUT$pQueueLabels = ValueLayout.ADDRESS.withTargetLayout(VkDebugUtilsLabelEXT.LAYOUT).withName("pQueueLabels");
-    public static final OfInt LAYOUT$cmdBufLabelCount = ValueLayout.JAVA_INT.withName("cmdBufLabelCount");
-    public static final AddressLayout LAYOUT$pCmdBufLabels = ValueLayout.ADDRESS.withTargetLayout(VkDebugUtilsLabelEXT.LAYOUT).withName("pCmdBufLabels");
-    public static final OfInt LAYOUT$objectCount = ValueLayout.JAVA_INT.withName("objectCount");
-    public static final AddressLayout LAYOUT$pObjects = ValueLayout.ADDRESS.withTargetLayout(VkDebugUtilsObjectNameInfoEXT.LAYOUT).withName("pObjects");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$pMessageIdName, LAYOUT$messageIdNumber, LAYOUT$pMessage, LAYOUT$queueLabelCount, LAYOUT$pQueueLabels, LAYOUT$cmdBufLabelCount, LAYOUT$pCmdBufLabels, LAYOUT$objectCount, LAYOUT$pObjects);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkDebugUtilsMessengerCallbackDataEXT {
+        sType(VkStructureType.DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT);
+    }
 
     public static VkDebugUtilsMessengerCallbackDataEXT allocate(Arena arena) {
         return new VkDebugUtilsMessengerCallbackDataEXT(arena.allocate(LAYOUT));
@@ -60,6 +59,22 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pMessageIdName"),
+        ValueLayout.JAVA_INT.withName("messageIdNumber"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pMessage"),
+        ValueLayout.JAVA_INT.withName("queueLabelCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDebugUtilsLabelEXT.LAYOUT).withName("pQueueLabels"),
+        ValueLayout.JAVA_INT.withName("cmdBufLabelCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDebugUtilsLabelEXT.LAYOUT).withName("pCmdBufLabels"),
+        ValueLayout.JAVA_INT.withName("objectCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDebugUtilsObjectNameInfoEXT.LAYOUT).withName("pObjects")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -72,6 +87,19 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
     public static final PathElement PATH$pCmdBufLabels = PathElement.groupElement("PATH$pCmdBufLabels");
     public static final PathElement PATH$objectCount = PathElement.groupElement("PATH$objectCount");
     public static final PathElement PATH$pObjects = PathElement.groupElement("PATH$pObjects");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$pMessageIdName = (AddressLayout) LAYOUT.select(PATH$pMessageIdName);
+    public static final OfInt LAYOUT$messageIdNumber = (OfInt) LAYOUT.select(PATH$messageIdNumber);
+    public static final AddressLayout LAYOUT$pMessage = (AddressLayout) LAYOUT.select(PATH$pMessage);
+    public static final OfInt LAYOUT$queueLabelCount = (OfInt) LAYOUT.select(PATH$queueLabelCount);
+    public static final AddressLayout LAYOUT$pQueueLabels = (AddressLayout) LAYOUT.select(PATH$pQueueLabels);
+    public static final OfInt LAYOUT$cmdBufLabelCount = (OfInt) LAYOUT.select(PATH$cmdBufLabelCount);
+    public static final AddressLayout LAYOUT$pCmdBufLabels = (AddressLayout) LAYOUT.select(PATH$pCmdBufLabels);
+    public static final OfInt LAYOUT$objectCount = (OfInt) LAYOUT.select(PATH$objectCount);
+    public static final AddressLayout LAYOUT$pObjects = (AddressLayout) LAYOUT.select(PATH$pObjects);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

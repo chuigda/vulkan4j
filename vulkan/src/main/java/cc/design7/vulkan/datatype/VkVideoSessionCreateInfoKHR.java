@@ -14,23 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoSessionCreateInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoSessionCreateInfoKHR.html">VkVideoSessionCreateInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$queueFamilyIndex = ValueLayout.JAVA_INT.withName("queueFamilyIndex");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final AddressLayout LAYOUT$pVideoProfile = ValueLayout.ADDRESS.withTargetLayout(VkVideoProfileInfoKHR.LAYOUT).withName("pVideoProfile");
-    public static final OfInt LAYOUT$pictureFormat = ValueLayout.JAVA_INT.withName("pictureFormat");
-    public static final StructLayout LAYOUT$maxCodedExtent = VkExtent2D.LAYOUT.withName("maxCodedExtent");
-    public static final OfInt LAYOUT$referencePictureFormat = ValueLayout.JAVA_INT.withName("referencePictureFormat");
-    public static final OfInt LAYOUT$maxDpbSlots = ValueLayout.JAVA_INT.withName("maxDpbSlots");
-    public static final OfInt LAYOUT$maxActiveReferencePictures = ValueLayout.JAVA_INT.withName("maxActiveReferencePictures");
-    public static final AddressLayout LAYOUT$pStdHeaderVersion = ValueLayout.ADDRESS.withTargetLayout(VkExtensionProperties.LAYOUT).withName("pStdHeaderVersion");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$queueFamilyIndex, LAYOUT$flags, LAYOUT$pVideoProfile, LAYOUT$pictureFormat, LAYOUT$maxCodedExtent, LAYOUT$referencePictureFormat, LAYOUT$maxDpbSlots, LAYOUT$maxActiveReferencePictures, LAYOUT$pStdHeaderVersion);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoSessionCreateInfoKHR {
+        sType(VkStructureType.VIDEO_SESSION_CREATE_INFO_KHR);
+    }
 
     public static VkVideoSessionCreateInfoKHR allocate(Arena arena) {
         return new VkVideoSessionCreateInfoKHR(arena.allocate(LAYOUT));
@@ -59,6 +59,21 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("queueFamilyIndex"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.ADDRESS.withTargetLayout(VkVideoProfileInfoKHR.LAYOUT).withName("pVideoProfile"),
+        ValueLayout.JAVA_INT.withName("pictureFormat"),
+        VkExtent2D.LAYOUT.withName("maxCodedExtent"),
+        ValueLayout.JAVA_INT.withName("referencePictureFormat"),
+        ValueLayout.JAVA_INT.withName("maxDpbSlots"),
+        ValueLayout.JAVA_INT.withName("maxActiveReferencePictures"),
+        ValueLayout.ADDRESS.withTargetLayout(VkExtensionProperties.LAYOUT).withName("pStdHeaderVersion")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$queueFamilyIndex = PathElement.groupElement("PATH$queueFamilyIndex");
@@ -70,6 +85,18 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
     public static final PathElement PATH$maxDpbSlots = PathElement.groupElement("PATH$maxDpbSlots");
     public static final PathElement PATH$maxActiveReferencePictures = PathElement.groupElement("PATH$maxActiveReferencePictures");
     public static final PathElement PATH$pStdHeaderVersion = PathElement.groupElement("PATH$pStdHeaderVersion");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$queueFamilyIndex = (OfInt) LAYOUT.select(PATH$queueFamilyIndex);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$pVideoProfile = (AddressLayout) LAYOUT.select(PATH$pVideoProfile);
+    public static final OfInt LAYOUT$pictureFormat = (OfInt) LAYOUT.select(PATH$pictureFormat);
+    public static final StructLayout LAYOUT$maxCodedExtent = (StructLayout) LAYOUT.select(PATH$maxCodedExtent);
+    public static final OfInt LAYOUT$referencePictureFormat = (OfInt) LAYOUT.select(PATH$referencePictureFormat);
+    public static final OfInt LAYOUT$maxDpbSlots = (OfInt) LAYOUT.select(PATH$maxDpbSlots);
+    public static final OfInt LAYOUT$maxActiveReferencePictures = (OfInt) LAYOUT.select(PATH$maxActiveReferencePictures);
+    public static final AddressLayout LAYOUT$pStdHeaderVersion = (AddressLayout) LAYOUT.select(PATH$pStdHeaderVersion);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,23 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceConservativeRasterizationPropertiesEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceConservativeRasterizationPropertiesEXT.html">VkPhysicalDeviceConservativeRasterizationPropertiesEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfFloat LAYOUT$primitiveOverestimationSize = ValueLayout.JAVA_FLOAT.withName("primitiveOverestimationSize");
-    public static final OfFloat LAYOUT$maxExtraPrimitiveOverestimationSize = ValueLayout.JAVA_FLOAT.withName("maxExtraPrimitiveOverestimationSize");
-    public static final OfFloat LAYOUT$extraPrimitiveOverestimationSizeGranularity = ValueLayout.JAVA_FLOAT.withName("extraPrimitiveOverestimationSizeGranularity");
-    public static final OfInt LAYOUT$primitiveUnderestimation = ValueLayout.JAVA_INT.withName("primitiveUnderestimation");
-    public static final OfInt LAYOUT$conservativePointAndLineRasterization = ValueLayout.JAVA_INT.withName("conservativePointAndLineRasterization");
-    public static final OfInt LAYOUT$degenerateTrianglesRasterized = ValueLayout.JAVA_INT.withName("degenerateTrianglesRasterized");
-    public static final OfInt LAYOUT$degenerateLinesRasterized = ValueLayout.JAVA_INT.withName("degenerateLinesRasterized");
-    public static final OfInt LAYOUT$fullyCoveredFragmentShaderInputVariable = ValueLayout.JAVA_INT.withName("fullyCoveredFragmentShaderInputVariable");
-    public static final OfInt LAYOUT$conservativeRasterizationPostDepthCoverage = ValueLayout.JAVA_INT.withName("conservativeRasterizationPostDepthCoverage");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$primitiveOverestimationSize, LAYOUT$maxExtraPrimitiveOverestimationSize, LAYOUT$extraPrimitiveOverestimationSizeGranularity, LAYOUT$primitiveUnderestimation, LAYOUT$conservativePointAndLineRasterization, LAYOUT$degenerateTrianglesRasterized, LAYOUT$degenerateLinesRasterized, LAYOUT$fullyCoveredFragmentShaderInputVariable, LAYOUT$conservativeRasterizationPostDepthCoverage);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT {
+        sType(VkStructureType.PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT);
+    }
 
     public static VkPhysicalDeviceConservativeRasterizationPropertiesEXT allocate(Arena arena) {
         return new VkPhysicalDeviceConservativeRasterizationPropertiesEXT(arena.allocate(LAYOUT));
@@ -59,6 +59,21 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(@NotNull Me
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_FLOAT.withName("primitiveOverestimationSize"),
+        ValueLayout.JAVA_FLOAT.withName("maxExtraPrimitiveOverestimationSize"),
+        ValueLayout.JAVA_FLOAT.withName("extraPrimitiveOverestimationSizeGranularity"),
+        ValueLayout.JAVA_INT.withName("primitiveUnderestimation"),
+        ValueLayout.JAVA_INT.withName("conservativePointAndLineRasterization"),
+        ValueLayout.JAVA_INT.withName("degenerateTrianglesRasterized"),
+        ValueLayout.JAVA_INT.withName("degenerateLinesRasterized"),
+        ValueLayout.JAVA_INT.withName("fullyCoveredFragmentShaderInputVariable"),
+        ValueLayout.JAVA_INT.withName("conservativeRasterizationPostDepthCoverage")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$primitiveOverestimationSize = PathElement.groupElement("PATH$primitiveOverestimationSize");
@@ -70,6 +85,18 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(@NotNull Me
     public static final PathElement PATH$degenerateLinesRasterized = PathElement.groupElement("PATH$degenerateLinesRasterized");
     public static final PathElement PATH$fullyCoveredFragmentShaderInputVariable = PathElement.groupElement("PATH$fullyCoveredFragmentShaderInputVariable");
     public static final PathElement PATH$conservativeRasterizationPostDepthCoverage = PathElement.groupElement("PATH$conservativeRasterizationPostDepthCoverage");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfFloat LAYOUT$primitiveOverestimationSize = (OfFloat) LAYOUT.select(PATH$primitiveOverestimationSize);
+    public static final OfFloat LAYOUT$maxExtraPrimitiveOverestimationSize = (OfFloat) LAYOUT.select(PATH$maxExtraPrimitiveOverestimationSize);
+    public static final OfFloat LAYOUT$extraPrimitiveOverestimationSizeGranularity = (OfFloat) LAYOUT.select(PATH$extraPrimitiveOverestimationSizeGranularity);
+    public static final OfInt LAYOUT$primitiveUnderestimation = (OfInt) LAYOUT.select(PATH$primitiveUnderestimation);
+    public static final OfInt LAYOUT$conservativePointAndLineRasterization = (OfInt) LAYOUT.select(PATH$conservativePointAndLineRasterization);
+    public static final OfInt LAYOUT$degenerateTrianglesRasterized = (OfInt) LAYOUT.select(PATH$degenerateTrianglesRasterized);
+    public static final OfInt LAYOUT$degenerateLinesRasterized = (OfInt) LAYOUT.select(PATH$degenerateLinesRasterized);
+    public static final OfInt LAYOUT$fullyCoveredFragmentShaderInputVariable = (OfInt) LAYOUT.select(PATH$fullyCoveredFragmentShaderInputVariable);
+    public static final OfInt LAYOUT$conservativeRasterizationPostDepthCoverage = (OfInt) LAYOUT.select(PATH$conservativeRasterizationPostDepthCoverage);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

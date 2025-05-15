@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkAttachmentDescriptionStencilLayout} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentDescriptionStencilLayout.html">VkAttachmentDescriptionStencilLayout</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkAttachmentDescriptionStencilLayout(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$stencilInitialLayout = ValueLayout.JAVA_INT.withName("stencilInitialLayout");
-    public static final OfInt LAYOUT$stencilFinalLayout = ValueLayout.JAVA_INT.withName("stencilFinalLayout");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$stencilInitialLayout, LAYOUT$stencilFinalLayout);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkAttachmentDescriptionStencilLayout {
+        sType(VkStructureType.ATTACHMENT_DESCRIPTION_STENCIL_LAYOUT);
+    }
 
     public static VkAttachmentDescriptionStencilLayout allocate(Arena arena) {
         return new VkAttachmentDescriptionStencilLayout(arena.allocate(LAYOUT));
@@ -52,10 +59,23 @@ public record VkAttachmentDescriptionStencilLayout(@NotNull MemorySegment segmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("stencilInitialLayout"),
+        ValueLayout.JAVA_INT.withName("stencilFinalLayout")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$stencilInitialLayout = PathElement.groupElement("PATH$stencilInitialLayout");
     public static final PathElement PATH$stencilFinalLayout = PathElement.groupElement("PATH$stencilFinalLayout");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$stencilInitialLayout = (OfInt) LAYOUT.select(PATH$stencilInitialLayout);
+    public static final OfInt LAYOUT$stencilFinalLayout = (OfInt) LAYOUT.select(PATH$stencilFinalLayout);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

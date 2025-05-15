@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceTileShadingPropertiesQCOM} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceTileShadingPropertiesQCOM.html">VkPhysicalDeviceTileShadingPropertiesQCOM</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceTileShadingPropertiesQCOM(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$maxApronSize = ValueLayout.JAVA_INT.withName("maxApronSize");
-    public static final OfInt LAYOUT$preferNonCoherent = ValueLayout.JAVA_INT.withName("preferNonCoherent");
-    public static final StructLayout LAYOUT$tileGranularity = VkExtent2D.LAYOUT.withName("tileGranularity");
-    public static final StructLayout LAYOUT$maxTileShadingRate = VkExtent2D.LAYOUT.withName("maxTileShadingRate");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$maxApronSize, LAYOUT$preferNonCoherent, LAYOUT$tileGranularity, LAYOUT$maxTileShadingRate);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceTileShadingPropertiesQCOM {
+        sType(VkStructureType.PHYSICAL_DEVICE_TILE_SHADING_PROPERTIES_QCOM);
+    }
 
     public static VkPhysicalDeviceTileShadingPropertiesQCOM allocate(Arena arena) {
         return new VkPhysicalDeviceTileShadingPropertiesQCOM(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkPhysicalDeviceTileShadingPropertiesQCOM(@NotNull MemorySegment s
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maxApronSize"),
+        ValueLayout.JAVA_INT.withName("preferNonCoherent"),
+        VkExtent2D.LAYOUT.withName("tileGranularity"),
+        VkExtent2D.LAYOUT.withName("maxTileShadingRate")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$maxApronSize = PathElement.groupElement("PATH$maxApronSize");
     public static final PathElement PATH$preferNonCoherent = PathElement.groupElement("PATH$preferNonCoherent");
     public static final PathElement PATH$tileGranularity = PathElement.groupElement("PATH$tileGranularity");
     public static final PathElement PATH$maxTileShadingRate = PathElement.groupElement("PATH$maxTileShadingRate");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maxApronSize = (OfInt) LAYOUT.select(PATH$maxApronSize);
+    public static final OfInt LAYOUT$preferNonCoherent = (OfInt) LAYOUT.select(PATH$preferNonCoherent);
+    public static final StructLayout LAYOUT$tileGranularity = (StructLayout) LAYOUT.select(PATH$tileGranularity);
+    public static final StructLayout LAYOUT$maxTileShadingRate = (StructLayout) LAYOUT.select(PATH$maxTileShadingRate);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

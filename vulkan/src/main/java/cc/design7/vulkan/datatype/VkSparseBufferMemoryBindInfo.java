@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkSparseBufferMemoryBindInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseBufferMemoryBindInfo.html">VkSparseBufferMemoryBindInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkSparseBufferMemoryBindInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final AddressLayout LAYOUT$buffer = ValueLayout.ADDRESS.withName("buffer");
-    public static final OfInt LAYOUT$bindCount = ValueLayout.JAVA_INT.withName("bindCount");
-    public static final AddressLayout LAYOUT$pBinds = ValueLayout.ADDRESS.withTargetLayout(VkSparseMemoryBind.LAYOUT).withName("pBinds");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$buffer, LAYOUT$bindCount, LAYOUT$pBinds);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkSparseBufferMemoryBindInfo allocate(Arena arena) {
         return new VkSparseBufferMemoryBindInfo(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkSparseBufferMemoryBindInfo(@NotNull MemorySegment segment) imple
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withName("buffer"),
+        ValueLayout.JAVA_INT.withName("bindCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkSparseMemoryBind.LAYOUT).withName("pBinds")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$buffer = PathElement.groupElement("PATH$buffer");
     public static final PathElement PATH$bindCount = PathElement.groupElement("PATH$bindCount");
     public static final PathElement PATH$pBinds = PathElement.groupElement("PATH$pBinds");
+
+    public static final AddressLayout LAYOUT$buffer = (AddressLayout) LAYOUT.select(PATH$buffer);
+    public static final OfInt LAYOUT$bindCount = (OfInt) LAYOUT.select(PATH$bindCount);
+    public static final AddressLayout LAYOUT$pBinds = (AddressLayout) LAYOUT.select(PATH$pBinds);
 
     public static final long SIZE$buffer = LAYOUT$buffer.byteSize();
     public static final long SIZE$bindCount = LAYOUT$bindCount.byteSize();

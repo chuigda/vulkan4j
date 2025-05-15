@@ -15,13 +15,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoAV1TimingInfoFlags} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoAV1TimingInfoFlags(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$equal_picture_interval_reserved = ValueLayout.JAVA_INT.withName("bitfield$equal_picture_interval_reserved");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$equal_picture_interval_reserved);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoAV1TimingInfoFlags allocate(Arena arena) {
         return new StdVideoAV1TimingInfoFlags(arena.allocate(LAYOUT));
     }
@@ -49,7 +54,14 @@ public record StdVideoAV1TimingInfoFlags(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$equal_picture_interval_reserved")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$bitfield$equal_picture_interval_reserved = PathElement.groupElement("PATH$bitfield$equal_picture_interval_reserved");
+
+    public static final OfInt LAYOUT$equal_picture_interval_reserved = (OfInt) LAYOUT.select(PATH$bitfield$equal_picture_interval_reserved);
 
 
     public static final long OFFSET$equal_picture_interval_reserved = LAYOUT.byteOffset(PATH$bitfield$equal_picture_interval_reserved);

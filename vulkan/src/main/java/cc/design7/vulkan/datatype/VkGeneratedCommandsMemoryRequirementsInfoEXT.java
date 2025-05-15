@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkGeneratedCommandsMemoryRequirementsInfoEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeneratedCommandsMemoryRequirementsInfoEXT.html">VkGeneratedCommandsMemoryRequirementsInfoEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkGeneratedCommandsMemoryRequirementsInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$indirectExecutionSet = ValueLayout.ADDRESS.withName("indirectExecutionSet");
-    public static final AddressLayout LAYOUT$indirectCommandsLayout = ValueLayout.ADDRESS.withName("indirectCommandsLayout");
-    public static final OfInt LAYOUT$maxSequenceCount = ValueLayout.JAVA_INT.withName("maxSequenceCount");
-    public static final OfInt LAYOUT$maxDrawCount = ValueLayout.JAVA_INT.withName("maxDrawCount");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$indirectExecutionSet, LAYOUT$indirectCommandsLayout, LAYOUT$maxSequenceCount, LAYOUT$maxDrawCount);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkGeneratedCommandsMemoryRequirementsInfoEXT {
+        sType(VkStructureType.GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_EXT);
+    }
 
     public static VkGeneratedCommandsMemoryRequirementsInfoEXT allocate(Arena arena) {
         return new VkGeneratedCommandsMemoryRequirementsInfoEXT(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkGeneratedCommandsMemoryRequirementsInfoEXT(@NotNull MemorySegmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("indirectExecutionSet"),
+        ValueLayout.ADDRESS.withName("indirectCommandsLayout"),
+        ValueLayout.JAVA_INT.withName("maxSequenceCount"),
+        ValueLayout.JAVA_INT.withName("maxDrawCount")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$indirectExecutionSet = PathElement.groupElement("PATH$indirectExecutionSet");
     public static final PathElement PATH$indirectCommandsLayout = PathElement.groupElement("PATH$indirectCommandsLayout");
     public static final PathElement PATH$maxSequenceCount = PathElement.groupElement("PATH$maxSequenceCount");
     public static final PathElement PATH$maxDrawCount = PathElement.groupElement("PATH$maxDrawCount");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$indirectExecutionSet = (AddressLayout) LAYOUT.select(PATH$indirectExecutionSet);
+    public static final AddressLayout LAYOUT$indirectCommandsLayout = (AddressLayout) LAYOUT.select(PATH$indirectCommandsLayout);
+    public static final OfInt LAYOUT$maxSequenceCount = (OfInt) LAYOUT.select(PATH$maxSequenceCount);
+    public static final OfInt LAYOUT$maxDrawCount = (OfInt) LAYOUT.select(PATH$maxDrawCount);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,23 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoH264PictureParameterSet} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoH264PpsFlags.LAYOUT.withName("flags");
-    public static final OfByte LAYOUT$seq_parameter_set_id = ValueLayout.JAVA_BYTE.withName("seq_parameter_set_id");
-    public static final OfByte LAYOUT$pic_parameter_set_id = ValueLayout.JAVA_BYTE.withName("pic_parameter_set_id");
-    public static final OfByte LAYOUT$num_ref_idx_l0_default_active_minus1 = ValueLayout.JAVA_BYTE.withName("num_ref_idx_l0_default_active_minus1");
-    public static final OfByte LAYOUT$num_ref_idx_l1_default_active_minus1 = ValueLayout.JAVA_BYTE.withName("num_ref_idx_l1_default_active_minus1");
-    public static final OfInt LAYOUT$weighted_bipred_idc = ValueLayout.JAVA_INT.withName("weighted_bipred_idc");
-    public static final OfByte LAYOUT$pic_init_qp_minus26 = ValueLayout.JAVA_BYTE.withName("pic_init_qp_minus26");
-    public static final OfByte LAYOUT$pic_init_qs_minus26 = ValueLayout.JAVA_BYTE.withName("pic_init_qs_minus26");
-    public static final OfByte LAYOUT$chroma_qp_index_offset = ValueLayout.JAVA_BYTE.withName("chroma_qp_index_offset");
-    public static final OfByte LAYOUT$second_chroma_qp_index_offset = ValueLayout.JAVA_BYTE.withName("second_chroma_qp_index_offset");
-    public static final AddressLayout LAYOUT$pScalingLists = ValueLayout.ADDRESS.withTargetLayout(StdVideoH264ScalingLists.LAYOUT).withName("pScalingLists");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$seq_parameter_set_id, LAYOUT$pic_parameter_set_id, LAYOUT$num_ref_idx_l0_default_active_minus1, LAYOUT$num_ref_idx_l1_default_active_minus1, LAYOUT$weighted_bipred_idc, LAYOUT$pic_init_qp_minus26, LAYOUT$pic_init_qs_minus26, LAYOUT$chroma_qp_index_offset, LAYOUT$second_chroma_qp_index_offset, LAYOUT$pScalingLists);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoH264PictureParameterSet allocate(Arena arena) {
         return new StdVideoH264PictureParameterSet(arena.allocate(LAYOUT));
     }
@@ -58,6 +53,21 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoH264PpsFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("seq_parameter_set_id"),
+        ValueLayout.JAVA_BYTE.withName("pic_parameter_set_id"),
+        ValueLayout.JAVA_BYTE.withName("num_ref_idx_l0_default_active_minus1"),
+        ValueLayout.JAVA_BYTE.withName("num_ref_idx_l1_default_active_minus1"),
+        ValueLayout.JAVA_INT.withName("weighted_bipred_idc"),
+        ValueLayout.JAVA_BYTE.withName("pic_init_qp_minus26"),
+        ValueLayout.JAVA_BYTE.withName("pic_init_qs_minus26"),
+        ValueLayout.JAVA_BYTE.withName("chroma_qp_index_offset"),
+        ValueLayout.JAVA_BYTE.withName("second_chroma_qp_index_offset"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH264ScalingLists.LAYOUT).withName("pScalingLists")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$seq_parameter_set_id = PathElement.groupElement("PATH$seq_parameter_set_id");
     public static final PathElement PATH$pic_parameter_set_id = PathElement.groupElement("PATH$pic_parameter_set_id");
@@ -69,6 +79,18 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
     public static final PathElement PATH$chroma_qp_index_offset = PathElement.groupElement("PATH$chroma_qp_index_offset");
     public static final PathElement PATH$second_chroma_qp_index_offset = PathElement.groupElement("PATH$second_chroma_qp_index_offset");
     public static final PathElement PATH$pScalingLists = PathElement.groupElement("PATH$pScalingLists");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$seq_parameter_set_id = (OfByte) LAYOUT.select(PATH$seq_parameter_set_id);
+    public static final OfByte LAYOUT$pic_parameter_set_id = (OfByte) LAYOUT.select(PATH$pic_parameter_set_id);
+    public static final OfByte LAYOUT$num_ref_idx_l0_default_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l0_default_active_minus1);
+    public static final OfByte LAYOUT$num_ref_idx_l1_default_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l1_default_active_minus1);
+    public static final OfInt LAYOUT$weighted_bipred_idc = (OfInt) LAYOUT.select(PATH$weighted_bipred_idc);
+    public static final OfByte LAYOUT$pic_init_qp_minus26 = (OfByte) LAYOUT.select(PATH$pic_init_qp_minus26);
+    public static final OfByte LAYOUT$pic_init_qs_minus26 = (OfByte) LAYOUT.select(PATH$pic_init_qs_minus26);
+    public static final OfByte LAYOUT$chroma_qp_index_offset = (OfByte) LAYOUT.select(PATH$chroma_qp_index_offset);
+    public static final OfByte LAYOUT$second_chroma_qp_index_offset = (OfByte) LAYOUT.select(PATH$second_chroma_qp_index_offset);
+    public static final AddressLayout LAYOUT$pScalingLists = (AddressLayout) LAYOUT.select(PATH$pScalingLists);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$seq_parameter_set_id = LAYOUT$seq_parameter_set_id.byteSize();

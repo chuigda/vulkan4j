@@ -15,13 +15,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoH265ProfileTierLevelFlags} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoH265ProfileTierLevelFlags(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$general_tier_flag_general_frame_only_constraint_flag = ValueLayout.JAVA_INT.withName("bitfield$general_tier_flag_general_frame_only_constraint_flag");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$general_tier_flag_general_frame_only_constraint_flag);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoH265ProfileTierLevelFlags allocate(Arena arena) {
         return new StdVideoH265ProfileTierLevelFlags(arena.allocate(LAYOUT));
     }
@@ -49,7 +54,14 @@ public record StdVideoH265ProfileTierLevelFlags(@NotNull MemorySegment segment) 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$general_tier_flag_general_frame_only_constraint_flag")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$bitfield$general_tier_flag_general_frame_only_constraint_flag = PathElement.groupElement("PATH$bitfield$general_tier_flag_general_frame_only_constraint_flag");
+
+    public static final OfInt LAYOUT$general_tier_flag_general_frame_only_constraint_flag = (OfInt) LAYOUT.select(PATH$bitfield$general_tier_flag_general_frame_only_constraint_flag);
 
 
     public static final long OFFSET$general_tier_flag_general_frame_only_constraint_flag = LAYOUT.byteOffset(PATH$bitfield$general_tier_flag_general_frame_only_constraint_flag);

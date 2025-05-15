@@ -14,30 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeH265CapabilitiesKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH265CapabilitiesKHR.html">VkVideoEncodeH265CapabilitiesKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$maxLevelIdc = ValueLayout.JAVA_INT.withName("maxLevelIdc");
-    public static final OfInt LAYOUT$maxSliceSegmentCount = ValueLayout.JAVA_INT.withName("maxSliceSegmentCount");
-    public static final StructLayout LAYOUT$maxTiles = VkExtent2D.LAYOUT.withName("maxTiles");
-    public static final OfInt LAYOUT$ctbSizes = ValueLayout.JAVA_INT.withName("ctbSizes");
-    public static final OfInt LAYOUT$transformBlockSizes = ValueLayout.JAVA_INT.withName("transformBlockSizes");
-    public static final OfInt LAYOUT$maxPPictureL0ReferenceCount = ValueLayout.JAVA_INT.withName("maxPPictureL0ReferenceCount");
-    public static final OfInt LAYOUT$maxBPictureL0ReferenceCount = ValueLayout.JAVA_INT.withName("maxBPictureL0ReferenceCount");
-    public static final OfInt LAYOUT$maxL1ReferenceCount = ValueLayout.JAVA_INT.withName("maxL1ReferenceCount");
-    public static final OfInt LAYOUT$maxSubLayerCount = ValueLayout.JAVA_INT.withName("maxSubLayerCount");
-    public static final OfInt LAYOUT$expectDyadicTemporalSubLayerPattern = ValueLayout.JAVA_INT.withName("expectDyadicTemporalSubLayerPattern");
-    public static final OfInt LAYOUT$minQp = ValueLayout.JAVA_INT.withName("minQp");
-    public static final OfInt LAYOUT$maxQp = ValueLayout.JAVA_INT.withName("maxQp");
-    public static final OfInt LAYOUT$prefersGopRemainingFrames = ValueLayout.JAVA_INT.withName("prefersGopRemainingFrames");
-    public static final OfInt LAYOUT$requiresGopRemainingFrames = ValueLayout.JAVA_INT.withName("requiresGopRemainingFrames");
-    public static final OfInt LAYOUT$stdSyntaxFlags = ValueLayout.JAVA_INT.withName("stdSyntaxFlags");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$maxLevelIdc, LAYOUT$maxSliceSegmentCount, LAYOUT$maxTiles, LAYOUT$ctbSizes, LAYOUT$transformBlockSizes, LAYOUT$maxPPictureL0ReferenceCount, LAYOUT$maxBPictureL0ReferenceCount, LAYOUT$maxL1ReferenceCount, LAYOUT$maxSubLayerCount, LAYOUT$expectDyadicTemporalSubLayerPattern, LAYOUT$minQp, LAYOUT$maxQp, LAYOUT$prefersGopRemainingFrames, LAYOUT$requiresGopRemainingFrames, LAYOUT$stdSyntaxFlags);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoEncodeH265CapabilitiesKHR {
+        sType(VkStructureType.VIDEO_ENCODE_H265_CAPABILITIES_KHR);
+    }
 
     public static VkVideoEncodeH265CapabilitiesKHR allocate(Arena arena) {
         return new VkVideoEncodeH265CapabilitiesKHR(arena.allocate(LAYOUT));
@@ -66,6 +59,28 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("maxLevelIdc"),
+        ValueLayout.JAVA_INT.withName("maxSliceSegmentCount"),
+        VkExtent2D.LAYOUT.withName("maxTiles"),
+        ValueLayout.JAVA_INT.withName("ctbSizes"),
+        ValueLayout.JAVA_INT.withName("transformBlockSizes"),
+        ValueLayout.JAVA_INT.withName("maxPPictureL0ReferenceCount"),
+        ValueLayout.JAVA_INT.withName("maxBPictureL0ReferenceCount"),
+        ValueLayout.JAVA_INT.withName("maxL1ReferenceCount"),
+        ValueLayout.JAVA_INT.withName("maxSubLayerCount"),
+        ValueLayout.JAVA_INT.withName("expectDyadicTemporalSubLayerPattern"),
+        ValueLayout.JAVA_INT.withName("minQp"),
+        ValueLayout.JAVA_INT.withName("maxQp"),
+        ValueLayout.JAVA_INT.withName("prefersGopRemainingFrames"),
+        ValueLayout.JAVA_INT.withName("requiresGopRemainingFrames"),
+        ValueLayout.JAVA_INT.withName("stdSyntaxFlags")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -84,6 +99,25 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
     public static final PathElement PATH$prefersGopRemainingFrames = PathElement.groupElement("PATH$prefersGopRemainingFrames");
     public static final PathElement PATH$requiresGopRemainingFrames = PathElement.groupElement("PATH$requiresGopRemainingFrames");
     public static final PathElement PATH$stdSyntaxFlags = PathElement.groupElement("PATH$stdSyntaxFlags");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$maxLevelIdc = (OfInt) LAYOUT.select(PATH$maxLevelIdc);
+    public static final OfInt LAYOUT$maxSliceSegmentCount = (OfInt) LAYOUT.select(PATH$maxSliceSegmentCount);
+    public static final StructLayout LAYOUT$maxTiles = (StructLayout) LAYOUT.select(PATH$maxTiles);
+    public static final OfInt LAYOUT$ctbSizes = (OfInt) LAYOUT.select(PATH$ctbSizes);
+    public static final OfInt LAYOUT$transformBlockSizes = (OfInt) LAYOUT.select(PATH$transformBlockSizes);
+    public static final OfInt LAYOUT$maxPPictureL0ReferenceCount = (OfInt) LAYOUT.select(PATH$maxPPictureL0ReferenceCount);
+    public static final OfInt LAYOUT$maxBPictureL0ReferenceCount = (OfInt) LAYOUT.select(PATH$maxBPictureL0ReferenceCount);
+    public static final OfInt LAYOUT$maxL1ReferenceCount = (OfInt) LAYOUT.select(PATH$maxL1ReferenceCount);
+    public static final OfInt LAYOUT$maxSubLayerCount = (OfInt) LAYOUT.select(PATH$maxSubLayerCount);
+    public static final OfInt LAYOUT$expectDyadicTemporalSubLayerPattern = (OfInt) LAYOUT.select(PATH$expectDyadicTemporalSubLayerPattern);
+    public static final OfInt LAYOUT$minQp = (OfInt) LAYOUT.select(PATH$minQp);
+    public static final OfInt LAYOUT$maxQp = (OfInt) LAYOUT.select(PATH$maxQp);
+    public static final OfInt LAYOUT$prefersGopRemainingFrames = (OfInt) LAYOUT.select(PATH$prefersGopRemainingFrames);
+    public static final OfInt LAYOUT$requiresGopRemainingFrames = (OfInt) LAYOUT.select(PATH$requiresGopRemainingFrames);
+    public static final OfInt LAYOUT$stdSyntaxFlags = (OfInt) LAYOUT.select(PATH$stdSyntaxFlags);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

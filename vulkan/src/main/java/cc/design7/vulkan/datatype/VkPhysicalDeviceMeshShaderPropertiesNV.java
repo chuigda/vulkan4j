@@ -14,27 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceMeshShaderPropertiesNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMeshShaderPropertiesNV.html">VkPhysicalDeviceMeshShaderPropertiesNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$maxDrawMeshTasksCount = ValueLayout.JAVA_INT.withName("maxDrawMeshTasksCount");
-    public static final OfInt LAYOUT$maxTaskWorkGroupInvocations = ValueLayout.JAVA_INT.withName("maxTaskWorkGroupInvocations");
-    public static final OfInt LAYOUT$maxTaskWorkGroupSize = ValueLayout.JAVA_INT.withName("maxTaskWorkGroupSize");
-    public static final OfInt LAYOUT$maxTaskTotalMemorySize = ValueLayout.JAVA_INT.withName("maxTaskTotalMemorySize");
-    public static final OfInt LAYOUT$maxTaskOutputCount = ValueLayout.JAVA_INT.withName("maxTaskOutputCount");
-    public static final OfInt LAYOUT$maxMeshWorkGroupInvocations = ValueLayout.JAVA_INT.withName("maxMeshWorkGroupInvocations");
-    public static final OfInt LAYOUT$maxMeshWorkGroupSize = ValueLayout.JAVA_INT.withName("maxMeshWorkGroupSize");
-    public static final OfInt LAYOUT$maxMeshTotalMemorySize = ValueLayout.JAVA_INT.withName("maxMeshTotalMemorySize");
-    public static final OfInt LAYOUT$maxMeshOutputVertices = ValueLayout.JAVA_INT.withName("maxMeshOutputVertices");
-    public static final OfInt LAYOUT$maxMeshOutputPrimitives = ValueLayout.JAVA_INT.withName("maxMeshOutputPrimitives");
-    public static final OfInt LAYOUT$maxMeshMultiviewViewCount = ValueLayout.JAVA_INT.withName("maxMeshMultiviewViewCount");
-    public static final OfInt LAYOUT$meshOutputPerVertexGranularity = ValueLayout.JAVA_INT.withName("meshOutputPerVertexGranularity");
-    public static final OfInt LAYOUT$meshOutputPerPrimitiveGranularity = ValueLayout.JAVA_INT.withName("meshOutputPerPrimitiveGranularity");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$maxDrawMeshTasksCount, LAYOUT$maxTaskWorkGroupInvocations, LAYOUT$maxTaskWorkGroupSize, LAYOUT$maxTaskTotalMemorySize, LAYOUT$maxTaskOutputCount, LAYOUT$maxMeshWorkGroupInvocations, LAYOUT$maxMeshWorkGroupSize, LAYOUT$maxMeshTotalMemorySize, LAYOUT$maxMeshOutputVertices, LAYOUT$maxMeshOutputPrimitives, LAYOUT$maxMeshMultiviewViewCount, LAYOUT$meshOutputPerVertexGranularity, LAYOUT$meshOutputPerPrimitiveGranularity);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceMeshShaderPropertiesNV {
+        sType(VkStructureType.PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV);
+    }
 
     public static VkPhysicalDeviceMeshShaderPropertiesNV allocate(Arena arena) {
         return new VkPhysicalDeviceMeshShaderPropertiesNV(arena.allocate(LAYOUT));
@@ -63,6 +59,25 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segm
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maxDrawMeshTasksCount"),
+        ValueLayout.JAVA_INT.withName("maxTaskWorkGroupInvocations"),
+        ValueLayout.JAVA_INT.withName("maxTaskWorkGroupSize"),
+        ValueLayout.JAVA_INT.withName("maxTaskTotalMemorySize"),
+        ValueLayout.JAVA_INT.withName("maxTaskOutputCount"),
+        ValueLayout.JAVA_INT.withName("maxMeshWorkGroupInvocations"),
+        ValueLayout.JAVA_INT.withName("maxMeshWorkGroupSize"),
+        ValueLayout.JAVA_INT.withName("maxMeshTotalMemorySize"),
+        ValueLayout.JAVA_INT.withName("maxMeshOutputVertices"),
+        ValueLayout.JAVA_INT.withName("maxMeshOutputPrimitives"),
+        ValueLayout.JAVA_INT.withName("maxMeshMultiviewViewCount"),
+        ValueLayout.JAVA_INT.withName("meshOutputPerVertexGranularity"),
+        ValueLayout.JAVA_INT.withName("meshOutputPerPrimitiveGranularity")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$maxDrawMeshTasksCount = PathElement.groupElement("PATH$maxDrawMeshTasksCount");
@@ -78,6 +93,22 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segm
     public static final PathElement PATH$maxMeshMultiviewViewCount = PathElement.groupElement("PATH$maxMeshMultiviewViewCount");
     public static final PathElement PATH$meshOutputPerVertexGranularity = PathElement.groupElement("PATH$meshOutputPerVertexGranularity");
     public static final PathElement PATH$meshOutputPerPrimitiveGranularity = PathElement.groupElement("PATH$meshOutputPerPrimitiveGranularity");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maxDrawMeshTasksCount = (OfInt) LAYOUT.select(PATH$maxDrawMeshTasksCount);
+    public static final OfInt LAYOUT$maxTaskWorkGroupInvocations = (OfInt) LAYOUT.select(PATH$maxTaskWorkGroupInvocations);
+    public static final OfInt LAYOUT$maxTaskWorkGroupSize = (OfInt) LAYOUT.select(PATH$maxTaskWorkGroupSize);
+    public static final OfInt LAYOUT$maxTaskTotalMemorySize = (OfInt) LAYOUT.select(PATH$maxTaskTotalMemorySize);
+    public static final OfInt LAYOUT$maxTaskOutputCount = (OfInt) LAYOUT.select(PATH$maxTaskOutputCount);
+    public static final OfInt LAYOUT$maxMeshWorkGroupInvocations = (OfInt) LAYOUT.select(PATH$maxMeshWorkGroupInvocations);
+    public static final OfInt LAYOUT$maxMeshWorkGroupSize = (OfInt) LAYOUT.select(PATH$maxMeshWorkGroupSize);
+    public static final OfInt LAYOUT$maxMeshTotalMemorySize = (OfInt) LAYOUT.select(PATH$maxMeshTotalMemorySize);
+    public static final OfInt LAYOUT$maxMeshOutputVertices = (OfInt) LAYOUT.select(PATH$maxMeshOutputVertices);
+    public static final OfInt LAYOUT$maxMeshOutputPrimitives = (OfInt) LAYOUT.select(PATH$maxMeshOutputPrimitives);
+    public static final OfInt LAYOUT$maxMeshMultiviewViewCount = (OfInt) LAYOUT.select(PATH$maxMeshMultiviewViewCount);
+    public static final OfInt LAYOUT$meshOutputPerVertexGranularity = (OfInt) LAYOUT.select(PATH$meshOutputPerVertexGranularity);
+    public static final OfInt LAYOUT$meshOutputPerPrimitiveGranularity = (OfInt) LAYOUT.select(PATH$meshOutputPerPrimitiveGranularity);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

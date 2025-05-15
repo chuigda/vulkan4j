@@ -14,14 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoAV1Segmentation} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfByte LAYOUT$FeatureEnabled = ValueLayout.JAVA_BYTE.withName("FeatureEnabled");
-    public static final OfShort LAYOUT$FeatureData = ValueLayout.JAVA_SHORT.withName("FeatureData");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$FeatureEnabled, LAYOUT$FeatureData);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoAV1Segmentation allocate(Arena arena) {
         return new StdVideoAV1Segmentation(arena.allocate(LAYOUT));
     }
@@ -49,8 +53,17 @@ public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_BYTE.withName("FeatureEnabled"),
+        ValueLayout.JAVA_SHORT.withName("FeatureData")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$FeatureEnabled = PathElement.groupElement("PATH$FeatureEnabled");
     public static final PathElement PATH$FeatureData = PathElement.groupElement("PATH$FeatureData");
+
+    public static final OfByte LAYOUT$FeatureEnabled = (OfByte) LAYOUT.select(PATH$FeatureEnabled);
+    public static final OfShort LAYOUT$FeatureData = (OfShort) LAYOUT.select(PATH$FeatureData);
 
     public static final long SIZE$FeatureEnabled = LAYOUT$FeatureEnabled.byteSize();
     public static final long SIZE$FeatureData = LAYOUT$FeatureData.byteSize();

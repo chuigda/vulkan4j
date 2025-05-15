@@ -14,37 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoH264SequenceParameterSet} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoH264SpsFlags.LAYOUT.withName("flags");
-    public static final OfInt LAYOUT$profile_idc = ValueLayout.JAVA_INT.withName("profile_idc");
-    public static final OfInt LAYOUT$level_idc = ValueLayout.JAVA_INT.withName("level_idc");
-    public static final OfInt LAYOUT$chroma_format_idc = ValueLayout.JAVA_INT.withName("chroma_format_idc");
-    public static final OfByte LAYOUT$seq_parameter_set_id = ValueLayout.JAVA_BYTE.withName("seq_parameter_set_id");
-    public static final OfByte LAYOUT$bit_depth_luma_minus8 = ValueLayout.JAVA_BYTE.withName("bit_depth_luma_minus8");
-    public static final OfByte LAYOUT$bit_depth_chroma_minus8 = ValueLayout.JAVA_BYTE.withName("bit_depth_chroma_minus8");
-    public static final OfByte LAYOUT$log2_max_frame_num_minus4 = ValueLayout.JAVA_BYTE.withName("log2_max_frame_num_minus4");
-    public static final OfInt LAYOUT$pic_order_cnt_type = ValueLayout.JAVA_INT.withName("pic_order_cnt_type");
-    public static final OfInt LAYOUT$offset_for_non_ref_pic = ValueLayout.JAVA_INT.withName("offset_for_non_ref_pic");
-    public static final OfInt LAYOUT$offset_for_top_to_bottom_field = ValueLayout.JAVA_INT.withName("offset_for_top_to_bottom_field");
-    public static final OfByte LAYOUT$log2_max_pic_order_cnt_lsb_minus4 = ValueLayout.JAVA_BYTE.withName("log2_max_pic_order_cnt_lsb_minus4");
-    public static final OfByte LAYOUT$num_ref_frames_in_pic_order_cnt_cycle = ValueLayout.JAVA_BYTE.withName("num_ref_frames_in_pic_order_cnt_cycle");
-    public static final OfByte LAYOUT$max_num_ref_frames = ValueLayout.JAVA_BYTE.withName("max_num_ref_frames");
-    public static final OfByte LAYOUT$reserved1 = ValueLayout.JAVA_BYTE.withName("reserved1");
-    public static final OfInt LAYOUT$pic_width_in_mbs_minus1 = ValueLayout.JAVA_INT.withName("pic_width_in_mbs_minus1");
-    public static final OfInt LAYOUT$pic_height_in_map_units_minus1 = ValueLayout.JAVA_INT.withName("pic_height_in_map_units_minus1");
-    public static final OfInt LAYOUT$frame_crop_left_offset = ValueLayout.JAVA_INT.withName("frame_crop_left_offset");
-    public static final OfInt LAYOUT$frame_crop_right_offset = ValueLayout.JAVA_INT.withName("frame_crop_right_offset");
-    public static final OfInt LAYOUT$frame_crop_top_offset = ValueLayout.JAVA_INT.withName("frame_crop_top_offset");
-    public static final OfInt LAYOUT$frame_crop_bottom_offset = ValueLayout.JAVA_INT.withName("frame_crop_bottom_offset");
-    public static final OfInt LAYOUT$reserved2 = ValueLayout.JAVA_INT.withName("reserved2");
-    public static final AddressLayout LAYOUT$pOffsetForRefFrame = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pOffsetForRefFrame");
-    public static final AddressLayout LAYOUT$pScalingLists = ValueLayout.ADDRESS.withTargetLayout(StdVideoH264ScalingLists.LAYOUT).withName("pScalingLists");
-    public static final AddressLayout LAYOUT$pSequenceParameterSetVui = ValueLayout.ADDRESS.withTargetLayout(StdVideoH264SequenceParameterSetVui.LAYOUT).withName("pSequenceParameterSetVui");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$profile_idc, LAYOUT$level_idc, LAYOUT$chroma_format_idc, LAYOUT$seq_parameter_set_id, LAYOUT$bit_depth_luma_minus8, LAYOUT$bit_depth_chroma_minus8, LAYOUT$log2_max_frame_num_minus4, LAYOUT$pic_order_cnt_type, LAYOUT$offset_for_non_ref_pic, LAYOUT$offset_for_top_to_bottom_field, LAYOUT$log2_max_pic_order_cnt_lsb_minus4, LAYOUT$num_ref_frames_in_pic_order_cnt_cycle, LAYOUT$max_num_ref_frames, LAYOUT$reserved1, LAYOUT$pic_width_in_mbs_minus1, LAYOUT$pic_height_in_map_units_minus1, LAYOUT$frame_crop_left_offset, LAYOUT$frame_crop_right_offset, LAYOUT$frame_crop_top_offset, LAYOUT$frame_crop_bottom_offset, LAYOUT$reserved2, LAYOUT$pOffsetForRefFrame, LAYOUT$pScalingLists, LAYOUT$pSequenceParameterSetVui);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoH264SequenceParameterSet allocate(Arena arena) {
         return new StdVideoH264SequenceParameterSet(arena.allocate(LAYOUT));
     }
@@ -72,6 +53,35 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoH264SpsFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("profile_idc"),
+        ValueLayout.JAVA_INT.withName("level_idc"),
+        ValueLayout.JAVA_INT.withName("chroma_format_idc"),
+        ValueLayout.JAVA_BYTE.withName("seq_parameter_set_id"),
+        ValueLayout.JAVA_BYTE.withName("bit_depth_luma_minus8"),
+        ValueLayout.JAVA_BYTE.withName("bit_depth_chroma_minus8"),
+        ValueLayout.JAVA_BYTE.withName("log2_max_frame_num_minus4"),
+        ValueLayout.JAVA_INT.withName("pic_order_cnt_type"),
+        ValueLayout.JAVA_INT.withName("offset_for_non_ref_pic"),
+        ValueLayout.JAVA_INT.withName("offset_for_top_to_bottom_field"),
+        ValueLayout.JAVA_BYTE.withName("log2_max_pic_order_cnt_lsb_minus4"),
+        ValueLayout.JAVA_BYTE.withName("num_ref_frames_in_pic_order_cnt_cycle"),
+        ValueLayout.JAVA_BYTE.withName("max_num_ref_frames"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.JAVA_INT.withName("pic_width_in_mbs_minus1"),
+        ValueLayout.JAVA_INT.withName("pic_height_in_map_units_minus1"),
+        ValueLayout.JAVA_INT.withName("frame_crop_left_offset"),
+        ValueLayout.JAVA_INT.withName("frame_crop_right_offset"),
+        ValueLayout.JAVA_INT.withName("frame_crop_top_offset"),
+        ValueLayout.JAVA_INT.withName("frame_crop_bottom_offset"),
+        ValueLayout.JAVA_INT.withName("reserved2"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pOffsetForRefFrame"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH264ScalingLists.LAYOUT).withName("pScalingLists"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH264SequenceParameterSetVui.LAYOUT).withName("pSequenceParameterSetVui")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$profile_idc = PathElement.groupElement("PATH$profile_idc");
     public static final PathElement PATH$level_idc = PathElement.groupElement("PATH$level_idc");
@@ -97,6 +107,32 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
     public static final PathElement PATH$pOffsetForRefFrame = PathElement.groupElement("PATH$pOffsetForRefFrame");
     public static final PathElement PATH$pScalingLists = PathElement.groupElement("PATH$pScalingLists");
     public static final PathElement PATH$pSequenceParameterSetVui = PathElement.groupElement("PATH$pSequenceParameterSetVui");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$profile_idc = (OfInt) LAYOUT.select(PATH$profile_idc);
+    public static final OfInt LAYOUT$level_idc = (OfInt) LAYOUT.select(PATH$level_idc);
+    public static final OfInt LAYOUT$chroma_format_idc = (OfInt) LAYOUT.select(PATH$chroma_format_idc);
+    public static final OfByte LAYOUT$seq_parameter_set_id = (OfByte) LAYOUT.select(PATH$seq_parameter_set_id);
+    public static final OfByte LAYOUT$bit_depth_luma_minus8 = (OfByte) LAYOUT.select(PATH$bit_depth_luma_minus8);
+    public static final OfByte LAYOUT$bit_depth_chroma_minus8 = (OfByte) LAYOUT.select(PATH$bit_depth_chroma_minus8);
+    public static final OfByte LAYOUT$log2_max_frame_num_minus4 = (OfByte) LAYOUT.select(PATH$log2_max_frame_num_minus4);
+    public static final OfInt LAYOUT$pic_order_cnt_type = (OfInt) LAYOUT.select(PATH$pic_order_cnt_type);
+    public static final OfInt LAYOUT$offset_for_non_ref_pic = (OfInt) LAYOUT.select(PATH$offset_for_non_ref_pic);
+    public static final OfInt LAYOUT$offset_for_top_to_bottom_field = (OfInt) LAYOUT.select(PATH$offset_for_top_to_bottom_field);
+    public static final OfByte LAYOUT$log2_max_pic_order_cnt_lsb_minus4 = (OfByte) LAYOUT.select(PATH$log2_max_pic_order_cnt_lsb_minus4);
+    public static final OfByte LAYOUT$num_ref_frames_in_pic_order_cnt_cycle = (OfByte) LAYOUT.select(PATH$num_ref_frames_in_pic_order_cnt_cycle);
+    public static final OfByte LAYOUT$max_num_ref_frames = (OfByte) LAYOUT.select(PATH$max_num_ref_frames);
+    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
+    public static final OfInt LAYOUT$pic_width_in_mbs_minus1 = (OfInt) LAYOUT.select(PATH$pic_width_in_mbs_minus1);
+    public static final OfInt LAYOUT$pic_height_in_map_units_minus1 = (OfInt) LAYOUT.select(PATH$pic_height_in_map_units_minus1);
+    public static final OfInt LAYOUT$frame_crop_left_offset = (OfInt) LAYOUT.select(PATH$frame_crop_left_offset);
+    public static final OfInt LAYOUT$frame_crop_right_offset = (OfInt) LAYOUT.select(PATH$frame_crop_right_offset);
+    public static final OfInt LAYOUT$frame_crop_top_offset = (OfInt) LAYOUT.select(PATH$frame_crop_top_offset);
+    public static final OfInt LAYOUT$frame_crop_bottom_offset = (OfInt) LAYOUT.select(PATH$frame_crop_bottom_offset);
+    public static final OfInt LAYOUT$reserved2 = (OfInt) LAYOUT.select(PATH$reserved2);
+    public static final AddressLayout LAYOUT$pOffsetForRefFrame = (AddressLayout) LAYOUT.select(PATH$pOffsetForRefFrame);
+    public static final AddressLayout LAYOUT$pScalingLists = (AddressLayout) LAYOUT.select(PATH$pScalingLists);
+    public static final AddressLayout LAYOUT$pSequenceParameterSetVui = (AddressLayout) LAYOUT.select(PATH$pSequenceParameterSetVui);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$profile_idc = LAYOUT$profile_idc.byteSize();

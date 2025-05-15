@@ -14,37 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceDescriptorIndexingProperties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDescriptorIndexingProperties.html">VkPhysicalDeviceDescriptorIndexingProperties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceDescriptorIndexingProperties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$maxUpdateAfterBindDescriptorsInAllPools = ValueLayout.JAVA_INT.withName("maxUpdateAfterBindDescriptorsInAllPools");
-    public static final OfInt LAYOUT$shaderUniformBufferArrayNonUniformIndexingNative = ValueLayout.JAVA_INT.withName("shaderUniformBufferArrayNonUniformIndexingNative");
-    public static final OfInt LAYOUT$shaderSampledImageArrayNonUniformIndexingNative = ValueLayout.JAVA_INT.withName("shaderSampledImageArrayNonUniformIndexingNative");
-    public static final OfInt LAYOUT$shaderStorageBufferArrayNonUniformIndexingNative = ValueLayout.JAVA_INT.withName("shaderStorageBufferArrayNonUniformIndexingNative");
-    public static final OfInt LAYOUT$shaderStorageImageArrayNonUniformIndexingNative = ValueLayout.JAVA_INT.withName("shaderStorageImageArrayNonUniformIndexingNative");
-    public static final OfInt LAYOUT$shaderInputAttachmentArrayNonUniformIndexingNative = ValueLayout.JAVA_INT.withName("shaderInputAttachmentArrayNonUniformIndexingNative");
-    public static final OfInt LAYOUT$robustBufferAccessUpdateAfterBind = ValueLayout.JAVA_INT.withName("robustBufferAccessUpdateAfterBind");
-    public static final OfInt LAYOUT$quadDivergentImplicitLod = ValueLayout.JAVA_INT.withName("quadDivergentImplicitLod");
-    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindSamplers = ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindSamplers");
-    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindUniformBuffers = ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindUniformBuffers");
-    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindStorageBuffers = ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindStorageBuffers");
-    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindSampledImages = ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindSampledImages");
-    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindStorageImages = ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindStorageImages");
-    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindInputAttachments = ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindInputAttachments");
-    public static final OfInt LAYOUT$maxPerStageUpdateAfterBindResources = ValueLayout.JAVA_INT.withName("maxPerStageUpdateAfterBindResources");
-    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindSamplers = ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindSamplers");
-    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindUniformBuffers = ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindUniformBuffers");
-    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindUniformBuffersDynamic = ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindUniformBuffersDynamic");
-    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindStorageBuffers = ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindStorageBuffers");
-    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindStorageBuffersDynamic = ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindStorageBuffersDynamic");
-    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindSampledImages = ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindSampledImages");
-    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindStorageImages = ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindStorageImages");
-    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindInputAttachments = ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindInputAttachments");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$maxUpdateAfterBindDescriptorsInAllPools, LAYOUT$shaderUniformBufferArrayNonUniformIndexingNative, LAYOUT$shaderSampledImageArrayNonUniformIndexingNative, LAYOUT$shaderStorageBufferArrayNonUniformIndexingNative, LAYOUT$shaderStorageImageArrayNonUniformIndexingNative, LAYOUT$shaderInputAttachmentArrayNonUniformIndexingNative, LAYOUT$robustBufferAccessUpdateAfterBind, LAYOUT$quadDivergentImplicitLod, LAYOUT$maxPerStageDescriptorUpdateAfterBindSamplers, LAYOUT$maxPerStageDescriptorUpdateAfterBindUniformBuffers, LAYOUT$maxPerStageDescriptorUpdateAfterBindStorageBuffers, LAYOUT$maxPerStageDescriptorUpdateAfterBindSampledImages, LAYOUT$maxPerStageDescriptorUpdateAfterBindStorageImages, LAYOUT$maxPerStageDescriptorUpdateAfterBindInputAttachments, LAYOUT$maxPerStageUpdateAfterBindResources, LAYOUT$maxDescriptorSetUpdateAfterBindSamplers, LAYOUT$maxDescriptorSetUpdateAfterBindUniformBuffers, LAYOUT$maxDescriptorSetUpdateAfterBindUniformBuffersDynamic, LAYOUT$maxDescriptorSetUpdateAfterBindStorageBuffers, LAYOUT$maxDescriptorSetUpdateAfterBindStorageBuffersDynamic, LAYOUT$maxDescriptorSetUpdateAfterBindSampledImages, LAYOUT$maxDescriptorSetUpdateAfterBindStorageImages, LAYOUT$maxDescriptorSetUpdateAfterBindInputAttachments);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceDescriptorIndexingProperties {
+        sType(VkStructureType.PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES);
+    }
 
     public static VkPhysicalDeviceDescriptorIndexingProperties allocate(Arena arena) {
         return new VkPhysicalDeviceDescriptorIndexingProperties(arena.allocate(LAYOUT));
@@ -73,6 +59,35 @@ public record VkPhysicalDeviceDescriptorIndexingProperties(@NotNull MemorySegmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maxUpdateAfterBindDescriptorsInAllPools"),
+        ValueLayout.JAVA_INT.withName("shaderUniformBufferArrayNonUniformIndexingNative"),
+        ValueLayout.JAVA_INT.withName("shaderSampledImageArrayNonUniformIndexingNative"),
+        ValueLayout.JAVA_INT.withName("shaderStorageBufferArrayNonUniformIndexingNative"),
+        ValueLayout.JAVA_INT.withName("shaderStorageImageArrayNonUniformIndexingNative"),
+        ValueLayout.JAVA_INT.withName("shaderInputAttachmentArrayNonUniformIndexingNative"),
+        ValueLayout.JAVA_INT.withName("robustBufferAccessUpdateAfterBind"),
+        ValueLayout.JAVA_INT.withName("quadDivergentImplicitLod"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindSamplers"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindUniformBuffers"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindStorageBuffers"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindSampledImages"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindStorageImages"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindInputAttachments"),
+        ValueLayout.JAVA_INT.withName("maxPerStageUpdateAfterBindResources"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindSamplers"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindUniformBuffers"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindUniformBuffersDynamic"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindStorageBuffers"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindStorageBuffersDynamic"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindSampledImages"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindStorageImages"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindInputAttachments")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$maxUpdateAfterBindDescriptorsInAllPools = PathElement.groupElement("PATH$maxUpdateAfterBindDescriptorsInAllPools");
@@ -98,6 +113,32 @@ public record VkPhysicalDeviceDescriptorIndexingProperties(@NotNull MemorySegmen
     public static final PathElement PATH$maxDescriptorSetUpdateAfterBindSampledImages = PathElement.groupElement("PATH$maxDescriptorSetUpdateAfterBindSampledImages");
     public static final PathElement PATH$maxDescriptorSetUpdateAfterBindStorageImages = PathElement.groupElement("PATH$maxDescriptorSetUpdateAfterBindStorageImages");
     public static final PathElement PATH$maxDescriptorSetUpdateAfterBindInputAttachments = PathElement.groupElement("PATH$maxDescriptorSetUpdateAfterBindInputAttachments");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maxUpdateAfterBindDescriptorsInAllPools = (OfInt) LAYOUT.select(PATH$maxUpdateAfterBindDescriptorsInAllPools);
+    public static final OfInt LAYOUT$shaderUniformBufferArrayNonUniformIndexingNative = (OfInt) LAYOUT.select(PATH$shaderUniformBufferArrayNonUniformIndexingNative);
+    public static final OfInt LAYOUT$shaderSampledImageArrayNonUniformIndexingNative = (OfInt) LAYOUT.select(PATH$shaderSampledImageArrayNonUniformIndexingNative);
+    public static final OfInt LAYOUT$shaderStorageBufferArrayNonUniformIndexingNative = (OfInt) LAYOUT.select(PATH$shaderStorageBufferArrayNonUniformIndexingNative);
+    public static final OfInt LAYOUT$shaderStorageImageArrayNonUniformIndexingNative = (OfInt) LAYOUT.select(PATH$shaderStorageImageArrayNonUniformIndexingNative);
+    public static final OfInt LAYOUT$shaderInputAttachmentArrayNonUniformIndexingNative = (OfInt) LAYOUT.select(PATH$shaderInputAttachmentArrayNonUniformIndexingNative);
+    public static final OfInt LAYOUT$robustBufferAccessUpdateAfterBind = (OfInt) LAYOUT.select(PATH$robustBufferAccessUpdateAfterBind);
+    public static final OfInt LAYOUT$quadDivergentImplicitLod = (OfInt) LAYOUT.select(PATH$quadDivergentImplicitLod);
+    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindSamplers = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorUpdateAfterBindSamplers);
+    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindUniformBuffers = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorUpdateAfterBindUniformBuffers);
+    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindStorageBuffers = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorUpdateAfterBindStorageBuffers);
+    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindSampledImages = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorUpdateAfterBindSampledImages);
+    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindStorageImages = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorUpdateAfterBindStorageImages);
+    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindInputAttachments = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorUpdateAfterBindInputAttachments);
+    public static final OfInt LAYOUT$maxPerStageUpdateAfterBindResources = (OfInt) LAYOUT.select(PATH$maxPerStageUpdateAfterBindResources);
+    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindSamplers = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUpdateAfterBindSamplers);
+    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindUniformBuffers = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUpdateAfterBindUniformBuffers);
+    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindUniformBuffersDynamic = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUpdateAfterBindUniformBuffersDynamic);
+    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindStorageBuffers = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUpdateAfterBindStorageBuffers);
+    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindStorageBuffersDynamic = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUpdateAfterBindStorageBuffersDynamic);
+    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindSampledImages = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUpdateAfterBindSampledImages);
+    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindStorageImages = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUpdateAfterBindStorageImages);
+    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindInputAttachments = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUpdateAfterBindInputAttachments);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkFormatProperties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFormatProperties.html">VkFormatProperties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkFormatProperties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$linearTilingFeatures = ValueLayout.JAVA_INT.withName("linearTilingFeatures");
-    public static final OfInt LAYOUT$optimalTilingFeatures = ValueLayout.JAVA_INT.withName("optimalTilingFeatures");
-    public static final OfInt LAYOUT$bufferFeatures = ValueLayout.JAVA_INT.withName("bufferFeatures");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$linearTilingFeatures, LAYOUT$optimalTilingFeatures, LAYOUT$bufferFeatures);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkFormatProperties allocate(Arena arena) {
         return new VkFormatProperties(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkFormatProperties(@NotNull MemorySegment segment) implements IPoi
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("linearTilingFeatures"),
+        ValueLayout.JAVA_INT.withName("optimalTilingFeatures"),
+        ValueLayout.JAVA_INT.withName("bufferFeatures")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$linearTilingFeatures = PathElement.groupElement("PATH$linearTilingFeatures");
     public static final PathElement PATH$optimalTilingFeatures = PathElement.groupElement("PATH$optimalTilingFeatures");
     public static final PathElement PATH$bufferFeatures = PathElement.groupElement("PATH$bufferFeatures");
+
+    public static final OfInt LAYOUT$linearTilingFeatures = (OfInt) LAYOUT.select(PATH$linearTilingFeatures);
+    public static final OfInt LAYOUT$optimalTilingFeatures = (OfInt) LAYOUT.select(PATH$optimalTilingFeatures);
+    public static final OfInt LAYOUT$bufferFeatures = (OfInt) LAYOUT.select(PATH$bufferFeatures);
 
     public static final long SIZE$linearTilingFeatures = LAYOUT$linearTilingFeatures.byteSize();
     public static final long SIZE$optimalTilingFeatures = LAYOUT$optimalTilingFeatures.byteSize();

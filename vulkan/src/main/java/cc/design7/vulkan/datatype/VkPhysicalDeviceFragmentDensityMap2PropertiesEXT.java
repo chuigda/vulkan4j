@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceFragmentDensityMap2PropertiesEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFragmentDensityMap2PropertiesEXT.html">VkPhysicalDeviceFragmentDensityMap2PropertiesEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$subsampledLoads = ValueLayout.JAVA_INT.withName("subsampledLoads");
-    public static final OfInt LAYOUT$subsampledCoarseReconstructionEarlyAccess = ValueLayout.JAVA_INT.withName("subsampledCoarseReconstructionEarlyAccess");
-    public static final OfInt LAYOUT$maxSubsampledArrayLayers = ValueLayout.JAVA_INT.withName("maxSubsampledArrayLayers");
-    public static final OfInt LAYOUT$maxDescriptorSetSubsampledSamplers = ValueLayout.JAVA_INT.withName("maxDescriptorSetSubsampledSamplers");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$subsampledLoads, LAYOUT$subsampledCoarseReconstructionEarlyAccess, LAYOUT$maxSubsampledArrayLayers, LAYOUT$maxDescriptorSetSubsampledSamplers);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT {
+        sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_PROPERTIES_EXT);
+    }
 
     public static VkPhysicalDeviceFragmentDensityMap2PropertiesEXT allocate(Arena arena) {
         return new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(@NotNull MemorySe
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("subsampledLoads"),
+        ValueLayout.JAVA_INT.withName("subsampledCoarseReconstructionEarlyAccess"),
+        ValueLayout.JAVA_INT.withName("maxSubsampledArrayLayers"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetSubsampledSamplers")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$subsampledLoads = PathElement.groupElement("PATH$subsampledLoads");
     public static final PathElement PATH$subsampledCoarseReconstructionEarlyAccess = PathElement.groupElement("PATH$subsampledCoarseReconstructionEarlyAccess");
     public static final PathElement PATH$maxSubsampledArrayLayers = PathElement.groupElement("PATH$maxSubsampledArrayLayers");
     public static final PathElement PATH$maxDescriptorSetSubsampledSamplers = PathElement.groupElement("PATH$maxDescriptorSetSubsampledSamplers");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$subsampledLoads = (OfInt) LAYOUT.select(PATH$subsampledLoads);
+    public static final OfInt LAYOUT$subsampledCoarseReconstructionEarlyAccess = (OfInt) LAYOUT.select(PATH$subsampledCoarseReconstructionEarlyAccess);
+    public static final OfInt LAYOUT$maxSubsampledArrayLayers = (OfInt) LAYOUT.select(PATH$maxSubsampledArrayLayers);
+    public static final OfInt LAYOUT$maxDescriptorSetSubsampledSamplers = (OfInt) LAYOUT.select(PATH$maxDescriptorSetSubsampledSamplers);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

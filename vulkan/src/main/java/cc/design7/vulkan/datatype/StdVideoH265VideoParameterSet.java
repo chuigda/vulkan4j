@@ -14,24 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoH265VideoParameterSet} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoH265VpsFlags.LAYOUT.withName("flags");
-    public static final OfByte LAYOUT$vps_video_parameter_set_id = ValueLayout.JAVA_BYTE.withName("vps_video_parameter_set_id");
-    public static final OfByte LAYOUT$vps_max_sub_layers_minus1 = ValueLayout.JAVA_BYTE.withName("vps_max_sub_layers_minus1");
-    public static final OfByte LAYOUT$reserved1 = ValueLayout.JAVA_BYTE.withName("reserved1");
-    public static final OfByte LAYOUT$reserved2 = ValueLayout.JAVA_BYTE.withName("reserved2");
-    public static final OfInt LAYOUT$vps_num_units_in_tick = ValueLayout.JAVA_INT.withName("vps_num_units_in_tick");
-    public static final OfInt LAYOUT$vps_time_scale = ValueLayout.JAVA_INT.withName("vps_time_scale");
-    public static final OfInt LAYOUT$vps_num_ticks_poc_diff_one_minus1 = ValueLayout.JAVA_INT.withName("vps_num_ticks_poc_diff_one_minus1");
-    public static final OfInt LAYOUT$reserved3 = ValueLayout.JAVA_INT.withName("reserved3");
-    public static final AddressLayout LAYOUT$pDecPicBufMgr = ValueLayout.ADDRESS.withTargetLayout(StdVideoH265DecPicBufMgr.LAYOUT).withName("pDecPicBufMgr");
-    public static final AddressLayout LAYOUT$pHrdParameters = ValueLayout.ADDRESS.withTargetLayout(StdVideoH265HrdParameters.LAYOUT).withName("pHrdParameters");
-    public static final AddressLayout LAYOUT$pProfileTierLevel = ValueLayout.ADDRESS.withTargetLayout(StdVideoH265ProfileTierLevel.LAYOUT).withName("pProfileTierLevel");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$vps_video_parameter_set_id, LAYOUT$vps_max_sub_layers_minus1, LAYOUT$reserved1, LAYOUT$reserved2, LAYOUT$vps_num_units_in_tick, LAYOUT$vps_time_scale, LAYOUT$vps_num_ticks_poc_diff_one_minus1, LAYOUT$reserved3, LAYOUT$pDecPicBufMgr, LAYOUT$pHrdParameters, LAYOUT$pProfileTierLevel);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoH265VideoParameterSet allocate(Arena arena) {
         return new StdVideoH265VideoParameterSet(arena.allocate(LAYOUT));
     }
@@ -59,6 +53,22 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoH265VpsFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("vps_video_parameter_set_id"),
+        ValueLayout.JAVA_BYTE.withName("vps_max_sub_layers_minus1"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.JAVA_BYTE.withName("reserved2"),
+        ValueLayout.JAVA_INT.withName("vps_num_units_in_tick"),
+        ValueLayout.JAVA_INT.withName("vps_time_scale"),
+        ValueLayout.JAVA_INT.withName("vps_num_ticks_poc_diff_one_minus1"),
+        ValueLayout.JAVA_INT.withName("reserved3"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265DecPicBufMgr.LAYOUT).withName("pDecPicBufMgr"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265HrdParameters.LAYOUT).withName("pHrdParameters"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265ProfileTierLevel.LAYOUT).withName("pProfileTierLevel")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$vps_video_parameter_set_id = PathElement.groupElement("PATH$vps_video_parameter_set_id");
     public static final PathElement PATH$vps_max_sub_layers_minus1 = PathElement.groupElement("PATH$vps_max_sub_layers_minus1");
@@ -71,6 +81,19 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
     public static final PathElement PATH$pDecPicBufMgr = PathElement.groupElement("PATH$pDecPicBufMgr");
     public static final PathElement PATH$pHrdParameters = PathElement.groupElement("PATH$pHrdParameters");
     public static final PathElement PATH$pProfileTierLevel = PathElement.groupElement("PATH$pProfileTierLevel");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$vps_video_parameter_set_id = (OfByte) LAYOUT.select(PATH$vps_video_parameter_set_id);
+    public static final OfByte LAYOUT$vps_max_sub_layers_minus1 = (OfByte) LAYOUT.select(PATH$vps_max_sub_layers_minus1);
+    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
+    public static final OfByte LAYOUT$reserved2 = (OfByte) LAYOUT.select(PATH$reserved2);
+    public static final OfInt LAYOUT$vps_num_units_in_tick = (OfInt) LAYOUT.select(PATH$vps_num_units_in_tick);
+    public static final OfInt LAYOUT$vps_time_scale = (OfInt) LAYOUT.select(PATH$vps_time_scale);
+    public static final OfInt LAYOUT$vps_num_ticks_poc_diff_one_minus1 = (OfInt) LAYOUT.select(PATH$vps_num_ticks_poc_diff_one_minus1);
+    public static final OfInt LAYOUT$reserved3 = (OfInt) LAYOUT.select(PATH$reserved3);
+    public static final AddressLayout LAYOUT$pDecPicBufMgr = (AddressLayout) LAYOUT.select(PATH$pDecPicBufMgr);
+    public static final AddressLayout LAYOUT$pHrdParameters = (AddressLayout) LAYOUT.select(PATH$pHrdParameters);
+    public static final AddressLayout LAYOUT$pProfileTierLevel = (AddressLayout) LAYOUT.select(PATH$pProfileTierLevel);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$vps_video_parameter_set_id = LAYOUT$vps_video_parameter_set_id.byteSize();

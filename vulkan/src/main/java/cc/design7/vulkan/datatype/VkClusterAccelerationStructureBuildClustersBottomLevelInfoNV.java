@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV.html">VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$clusterReferencesCount = ValueLayout.JAVA_INT.withName("clusterReferencesCount");
-    public static final OfInt LAYOUT$clusterReferencesStride = ValueLayout.JAVA_INT.withName("clusterReferencesStride");
-    public static final OfLong LAYOUT$clusterReferences = ValueLayout.JAVA_LONG.withName("clusterReferences");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$clusterReferencesCount, LAYOUT$clusterReferencesStride, LAYOUT$clusterReferences);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV allocate(Arena arena) {
         return new VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(@NotN
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("clusterReferencesCount"),
+        ValueLayout.JAVA_INT.withName("clusterReferencesStride"),
+        ValueLayout.JAVA_LONG.withName("clusterReferences")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$clusterReferencesCount = PathElement.groupElement("PATH$clusterReferencesCount");
     public static final PathElement PATH$clusterReferencesStride = PathElement.groupElement("PATH$clusterReferencesStride");
     public static final PathElement PATH$clusterReferences = PathElement.groupElement("PATH$clusterReferences");
+
+    public static final OfInt LAYOUT$clusterReferencesCount = (OfInt) LAYOUT.select(PATH$clusterReferencesCount);
+    public static final OfInt LAYOUT$clusterReferencesStride = (OfInt) LAYOUT.select(PATH$clusterReferencesStride);
+    public static final OfLong LAYOUT$clusterReferences = (OfLong) LAYOUT.select(PATH$clusterReferences);
 
     public static final long SIZE$clusterReferencesCount = LAYOUT$clusterReferencesCount.byteSize();
     public static final long SIZE$clusterReferencesStride = LAYOUT$clusterReferencesStride.byteSize();

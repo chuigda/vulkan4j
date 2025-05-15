@@ -14,17 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkIndirectCommandsTokenDataEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsTokenDataEXT.html">VkIndirectCommandsTokenDataEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final AddressLayout LAYOUT$pPushConstant = ValueLayout.ADDRESS.withTargetLayout(VkIndirectCommandsPushConstantTokenEXT.LAYOUT).withName("pPushConstant");
-    public static final AddressLayout LAYOUT$pVertexBuffer = ValueLayout.ADDRESS.withTargetLayout(VkIndirectCommandsVertexBufferTokenEXT.LAYOUT).withName("pVertexBuffer");
-    public static final AddressLayout LAYOUT$pIndexBuffer = ValueLayout.ADDRESS.withTargetLayout(VkIndirectCommandsIndexBufferTokenEXT.LAYOUT).withName("pIndexBuffer");
-    public static final AddressLayout LAYOUT$pExecutionSet = ValueLayout.ADDRESS.withTargetLayout(VkIndirectCommandsExecutionSetTokenEXT.LAYOUT).withName("pExecutionSet");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(LAYOUT$pPushConstant, LAYOUT$pVertexBuffer, LAYOUT$pIndexBuffer, LAYOUT$pExecutionSet);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkIndirectCommandsTokenDataEXT allocate(Arena arena) {
         return new VkIndirectCommandsTokenDataEXT(arena.allocate(LAYOUT));
     }
@@ -52,10 +55,23 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         return ret;
     }
 
+    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
+        ValueLayout.ADDRESS.withTargetLayout(VkIndirectCommandsPushConstantTokenEXT.LAYOUT).withName("pPushConstant"),
+        ValueLayout.ADDRESS.withTargetLayout(VkIndirectCommandsVertexBufferTokenEXT.LAYOUT).withName("pVertexBuffer"),
+        ValueLayout.ADDRESS.withTargetLayout(VkIndirectCommandsIndexBufferTokenEXT.LAYOUT).withName("pIndexBuffer"),
+        ValueLayout.ADDRESS.withTargetLayout(VkIndirectCommandsExecutionSetTokenEXT.LAYOUT).withName("pExecutionSet")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$pPushConstant = PathElement.groupElement("PATH$pPushConstant");
     public static final PathElement PATH$pVertexBuffer = PathElement.groupElement("PATH$pVertexBuffer");
     public static final PathElement PATH$pIndexBuffer = PathElement.groupElement("PATH$pIndexBuffer");
     public static final PathElement PATH$pExecutionSet = PathElement.groupElement("PATH$pExecutionSet");
+
+    public static final AddressLayout LAYOUT$pPushConstant = (AddressLayout) LAYOUT.select(PATH$pPushConstant);
+    public static final AddressLayout LAYOUT$pVertexBuffer = (AddressLayout) LAYOUT.select(PATH$pVertexBuffer);
+    public static final AddressLayout LAYOUT$pIndexBuffer = (AddressLayout) LAYOUT.select(PATH$pIndexBuffer);
+    public static final AddressLayout LAYOUT$pExecutionSet = (AddressLayout) LAYOUT.select(PATH$pExecutionSet);
 
     public static final long SIZE$pPushConstant = LAYOUT$pPushConstant.byteSize();
     public static final long SIZE$pVertexBuffer = LAYOUT$pVertexBuffer.byteSize();

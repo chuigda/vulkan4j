@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeH264SessionCreateInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264SessionCreateInfoKHR.html">VkVideoEncodeH264SessionCreateInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeH264SessionCreateInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$useMaxLevelIdc = ValueLayout.JAVA_INT.withName("useMaxLevelIdc");
-    public static final OfInt LAYOUT$maxLevelIdc = ValueLayout.JAVA_INT.withName("maxLevelIdc");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$useMaxLevelIdc, LAYOUT$maxLevelIdc);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoEncodeH264SessionCreateInfoKHR {
+        sType(VkStructureType.VIDEO_ENCODE_H264_SESSION_CREATE_INFO_KHR);
+    }
 
     public static VkVideoEncodeH264SessionCreateInfoKHR allocate(Arena arena) {
         return new VkVideoEncodeH264SessionCreateInfoKHR(arena.allocate(LAYOUT));
@@ -52,10 +59,23 @@ public record VkVideoEncodeH264SessionCreateInfoKHR(@NotNull MemorySegment segme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("useMaxLevelIdc"),
+        ValueLayout.JAVA_INT.withName("maxLevelIdc")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$useMaxLevelIdc = PathElement.groupElement("PATH$useMaxLevelIdc");
     public static final PathElement PATH$maxLevelIdc = PathElement.groupElement("PATH$maxLevelIdc");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$useMaxLevelIdc = (OfInt) LAYOUT.select(PATH$useMaxLevelIdc);
+    public static final OfInt LAYOUT$maxLevelIdc = (OfInt) LAYOUT.select(PATH$maxLevelIdc);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

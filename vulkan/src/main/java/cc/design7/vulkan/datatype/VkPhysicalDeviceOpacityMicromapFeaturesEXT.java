@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceOpacityMicromapFeaturesEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceOpacityMicromapFeaturesEXT.html">VkPhysicalDeviceOpacityMicromapFeaturesEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceOpacityMicromapFeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$micromap = ValueLayout.JAVA_INT.withName("micromap");
-    public static final OfInt LAYOUT$micromapCaptureReplay = ValueLayout.JAVA_INT.withName("micromapCaptureReplay");
-    public static final OfInt LAYOUT$micromapHostCommands = ValueLayout.JAVA_INT.withName("micromapHostCommands");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$micromap, LAYOUT$micromapCaptureReplay, LAYOUT$micromapHostCommands);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceOpacityMicromapFeaturesEXT {
+        sType(VkStructureType.PHYSICAL_DEVICE_OPACITY_MICROMAP_FEATURES_EXT);
+    }
 
     public static VkPhysicalDeviceOpacityMicromapFeaturesEXT allocate(Arena arena) {
         return new VkPhysicalDeviceOpacityMicromapFeaturesEXT(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkPhysicalDeviceOpacityMicromapFeaturesEXT(@NotNull MemorySegment 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("micromap"),
+        ValueLayout.JAVA_INT.withName("micromapCaptureReplay"),
+        ValueLayout.JAVA_INT.withName("micromapHostCommands")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$micromap = PathElement.groupElement("PATH$micromap");
     public static final PathElement PATH$micromapCaptureReplay = PathElement.groupElement("PATH$micromapCaptureReplay");
     public static final PathElement PATH$micromapHostCommands = PathElement.groupElement("PATH$micromapHostCommands");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$micromap = (OfInt) LAYOUT.select(PATH$micromap);
+    public static final OfInt LAYOUT$micromapCaptureReplay = (OfInt) LAYOUT.select(PATH$micromapCaptureReplay);
+    public static final OfInt LAYOUT$micromapHostCommands = (OfInt) LAYOUT.select(PATH$micromapHostCommands);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

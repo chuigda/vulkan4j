@@ -14,23 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkOpticalFlowSessionCreateInfoNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowSessionCreateInfoNV.html">VkOpticalFlowSessionCreateInfoNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$width = ValueLayout.JAVA_INT.withName("width");
-    public static final OfInt LAYOUT$height = ValueLayout.JAVA_INT.withName("height");
-    public static final OfInt LAYOUT$imageFormat = ValueLayout.JAVA_INT.withName("imageFormat");
-    public static final OfInt LAYOUT$flowVectorFormat = ValueLayout.JAVA_INT.withName("flowVectorFormat");
-    public static final OfInt LAYOUT$costFormat = ValueLayout.JAVA_INT.withName("costFormat");
-    public static final OfInt LAYOUT$outputGridSize = ValueLayout.JAVA_INT.withName("outputGridSize");
-    public static final OfInt LAYOUT$hintGridSize = ValueLayout.JAVA_INT.withName("hintGridSize");
-    public static final OfInt LAYOUT$performanceLevel = ValueLayout.JAVA_INT.withName("performanceLevel");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$width, LAYOUT$height, LAYOUT$imageFormat, LAYOUT$flowVectorFormat, LAYOUT$costFormat, LAYOUT$outputGridSize, LAYOUT$hintGridSize, LAYOUT$performanceLevel, LAYOUT$flags);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkOpticalFlowSessionCreateInfoNV {
+        sType(VkStructureType.OPTICAL_FLOW_SESSION_CREATE_INFO_NV);
+    }
 
     public static VkOpticalFlowSessionCreateInfoNV allocate(Arena arena) {
         return new VkOpticalFlowSessionCreateInfoNV(arena.allocate(LAYOUT));
@@ -59,6 +59,21 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("width"),
+        ValueLayout.JAVA_INT.withName("height"),
+        ValueLayout.JAVA_INT.withName("imageFormat"),
+        ValueLayout.JAVA_INT.withName("flowVectorFormat"),
+        ValueLayout.JAVA_INT.withName("costFormat"),
+        ValueLayout.JAVA_INT.withName("outputGridSize"),
+        ValueLayout.JAVA_INT.withName("hintGridSize"),
+        ValueLayout.JAVA_INT.withName("performanceLevel"),
+        ValueLayout.JAVA_INT.withName("flags")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$width = PathElement.groupElement("PATH$width");
@@ -70,6 +85,18 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
     public static final PathElement PATH$hintGridSize = PathElement.groupElement("PATH$hintGridSize");
     public static final PathElement PATH$performanceLevel = PathElement.groupElement("PATH$performanceLevel");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$width = (OfInt) LAYOUT.select(PATH$width);
+    public static final OfInt LAYOUT$height = (OfInt) LAYOUT.select(PATH$height);
+    public static final OfInt LAYOUT$imageFormat = (OfInt) LAYOUT.select(PATH$imageFormat);
+    public static final OfInt LAYOUT$flowVectorFormat = (OfInt) LAYOUT.select(PATH$flowVectorFormat);
+    public static final OfInt LAYOUT$costFormat = (OfInt) LAYOUT.select(PATH$costFormat);
+    public static final OfInt LAYOUT$outputGridSize = (OfInt) LAYOUT.select(PATH$outputGridSize);
+    public static final OfInt LAYOUT$hintGridSize = (OfInt) LAYOUT.select(PATH$hintGridSize);
+    public static final OfInt LAYOUT$performanceLevel = (OfInt) LAYOUT.select(PATH$performanceLevel);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

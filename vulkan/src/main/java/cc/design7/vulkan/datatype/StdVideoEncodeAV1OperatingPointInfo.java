@@ -14,19 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoEncodeAV1OperatingPointInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoEncodeAV1OperatingPointInfoFlags.LAYOUT.withName("flags");
-    public static final OfShort LAYOUT$operating_point_idc = ValueLayout.JAVA_SHORT.withName("operating_point_idc");
-    public static final OfByte LAYOUT$seq_level_idx = ValueLayout.JAVA_BYTE.withName("seq_level_idx");
-    public static final OfByte LAYOUT$seq_tier = ValueLayout.JAVA_BYTE.withName("seq_tier");
-    public static final OfInt LAYOUT$decoder_buffer_delay = ValueLayout.JAVA_INT.withName("decoder_buffer_delay");
-    public static final OfInt LAYOUT$encoder_buffer_delay = ValueLayout.JAVA_INT.withName("encoder_buffer_delay");
-    public static final OfByte LAYOUT$initial_display_delay_minus_1 = ValueLayout.JAVA_BYTE.withName("initial_display_delay_minus_1");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$operating_point_idc, LAYOUT$seq_level_idx, LAYOUT$seq_tier, LAYOUT$decoder_buffer_delay, LAYOUT$encoder_buffer_delay, LAYOUT$initial_display_delay_minus_1);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoEncodeAV1OperatingPointInfo allocate(Arena arena) {
         return new StdVideoEncodeAV1OperatingPointInfo(arena.allocate(LAYOUT));
     }
@@ -54,6 +53,17 @@ public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoEncodeAV1OperatingPointInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_SHORT.withName("operating_point_idc"),
+        ValueLayout.JAVA_BYTE.withName("seq_level_idx"),
+        ValueLayout.JAVA_BYTE.withName("seq_tier"),
+        ValueLayout.JAVA_INT.withName("decoder_buffer_delay"),
+        ValueLayout.JAVA_INT.withName("encoder_buffer_delay"),
+        ValueLayout.JAVA_BYTE.withName("initial_display_delay_minus_1")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$operating_point_idc = PathElement.groupElement("PATH$operating_point_idc");
     public static final PathElement PATH$seq_level_idx = PathElement.groupElement("PATH$seq_level_idx");
@@ -61,6 +71,14 @@ public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment
     public static final PathElement PATH$decoder_buffer_delay = PathElement.groupElement("PATH$decoder_buffer_delay");
     public static final PathElement PATH$encoder_buffer_delay = PathElement.groupElement("PATH$encoder_buffer_delay");
     public static final PathElement PATH$initial_display_delay_minus_1 = PathElement.groupElement("PATH$initial_display_delay_minus_1");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfShort LAYOUT$operating_point_idc = (OfShort) LAYOUT.select(PATH$operating_point_idc);
+    public static final OfByte LAYOUT$seq_level_idx = (OfByte) LAYOUT.select(PATH$seq_level_idx);
+    public static final OfByte LAYOUT$seq_tier = (OfByte) LAYOUT.select(PATH$seq_tier);
+    public static final OfInt LAYOUT$decoder_buffer_delay = (OfInt) LAYOUT.select(PATH$decoder_buffer_delay);
+    public static final OfInt LAYOUT$encoder_buffer_delay = (OfInt) LAYOUT.select(PATH$encoder_buffer_delay);
+    public static final OfByte LAYOUT$initial_display_delay_minus_1 = (OfByte) LAYOUT.select(PATH$initial_display_delay_minus_1);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$operating_point_idc = LAYOUT$operating_point_idc.byteSize();

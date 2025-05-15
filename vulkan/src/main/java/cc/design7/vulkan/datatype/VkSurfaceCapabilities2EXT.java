@@ -14,25 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkSurfaceCapabilities2EXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSurfaceCapabilities2EXT.html">VkSurfaceCapabilities2EXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$minImageCount = ValueLayout.JAVA_INT.withName("minImageCount");
-    public static final OfInt LAYOUT$maxImageCount = ValueLayout.JAVA_INT.withName("maxImageCount");
-    public static final StructLayout LAYOUT$currentExtent = VkExtent2D.LAYOUT.withName("currentExtent");
-    public static final StructLayout LAYOUT$minImageExtent = VkExtent2D.LAYOUT.withName("minImageExtent");
-    public static final StructLayout LAYOUT$maxImageExtent = VkExtent2D.LAYOUT.withName("maxImageExtent");
-    public static final OfInt LAYOUT$maxImageArrayLayers = ValueLayout.JAVA_INT.withName("maxImageArrayLayers");
-    public static final OfInt LAYOUT$supportedTransforms = ValueLayout.JAVA_INT.withName("supportedTransforms");
-    public static final OfInt LAYOUT$currentTransform = ValueLayout.JAVA_INT.withName("currentTransform");
-    public static final OfInt LAYOUT$supportedCompositeAlpha = ValueLayout.JAVA_INT.withName("supportedCompositeAlpha");
-    public static final OfInt LAYOUT$supportedUsageFlags = ValueLayout.JAVA_INT.withName("supportedUsageFlags");
-    public static final OfInt LAYOUT$supportedSurfaceCounters = ValueLayout.JAVA_INT.withName("supportedSurfaceCounters");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$minImageCount, LAYOUT$maxImageCount, LAYOUT$currentExtent, LAYOUT$minImageExtent, LAYOUT$maxImageExtent, LAYOUT$maxImageArrayLayers, LAYOUT$supportedTransforms, LAYOUT$currentTransform, LAYOUT$supportedCompositeAlpha, LAYOUT$supportedUsageFlags, LAYOUT$supportedSurfaceCounters);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkSurfaceCapabilities2EXT {
+        sType(VkStructureType.SURFACE_CAPABILITIES_2_EXT);
+    }
 
     public static VkSurfaceCapabilities2EXT allocate(Arena arena) {
         return new VkSurfaceCapabilities2EXT(arena.allocate(LAYOUT));
@@ -61,6 +59,23 @@ public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("minImageCount"),
+        ValueLayout.JAVA_INT.withName("maxImageCount"),
+        VkExtent2D.LAYOUT.withName("currentExtent"),
+        VkExtent2D.LAYOUT.withName("minImageExtent"),
+        VkExtent2D.LAYOUT.withName("maxImageExtent"),
+        ValueLayout.JAVA_INT.withName("maxImageArrayLayers"),
+        ValueLayout.JAVA_INT.withName("supportedTransforms"),
+        ValueLayout.JAVA_INT.withName("currentTransform"),
+        ValueLayout.JAVA_INT.withName("supportedCompositeAlpha"),
+        ValueLayout.JAVA_INT.withName("supportedUsageFlags"),
+        ValueLayout.JAVA_INT.withName("supportedSurfaceCounters")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$minImageCount = PathElement.groupElement("PATH$minImageCount");
@@ -74,6 +89,20 @@ public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implemen
     public static final PathElement PATH$supportedCompositeAlpha = PathElement.groupElement("PATH$supportedCompositeAlpha");
     public static final PathElement PATH$supportedUsageFlags = PathElement.groupElement("PATH$supportedUsageFlags");
     public static final PathElement PATH$supportedSurfaceCounters = PathElement.groupElement("PATH$supportedSurfaceCounters");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$minImageCount = (OfInt) LAYOUT.select(PATH$minImageCount);
+    public static final OfInt LAYOUT$maxImageCount = (OfInt) LAYOUT.select(PATH$maxImageCount);
+    public static final StructLayout LAYOUT$currentExtent = (StructLayout) LAYOUT.select(PATH$currentExtent);
+    public static final StructLayout LAYOUT$minImageExtent = (StructLayout) LAYOUT.select(PATH$minImageExtent);
+    public static final StructLayout LAYOUT$maxImageExtent = (StructLayout) LAYOUT.select(PATH$maxImageExtent);
+    public static final OfInt LAYOUT$maxImageArrayLayers = (OfInt) LAYOUT.select(PATH$maxImageArrayLayers);
+    public static final OfInt LAYOUT$supportedTransforms = (OfInt) LAYOUT.select(PATH$supportedTransforms);
+    public static final OfInt LAYOUT$currentTransform = (OfInt) LAYOUT.select(PATH$currentTransform);
+    public static final OfInt LAYOUT$supportedCompositeAlpha = (OfInt) LAYOUT.select(PATH$supportedCompositeAlpha);
+    public static final OfInt LAYOUT$supportedUsageFlags = (OfInt) LAYOUT.select(PATH$supportedUsageFlags);
+    public static final OfInt LAYOUT$supportedSurfaceCounters = (OfInt) LAYOUT.select(PATH$supportedSurfaceCounters);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

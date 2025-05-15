@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoDecodeH264ProfileInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeH264ProfileInfoKHR.html">VkVideoDecodeH264ProfileInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoDecodeH264ProfileInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$stdProfileIdc = ValueLayout.JAVA_INT.withName("stdProfileIdc");
-    public static final OfInt LAYOUT$pictureLayout = ValueLayout.JAVA_INT.withName("pictureLayout");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$stdProfileIdc, LAYOUT$pictureLayout);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoDecodeH264ProfileInfoKHR {
+        sType(VkStructureType.VIDEO_DECODE_H264_PROFILE_INFO_KHR);
+    }
 
     public static VkVideoDecodeH264ProfileInfoKHR allocate(Arena arena) {
         return new VkVideoDecodeH264ProfileInfoKHR(arena.allocate(LAYOUT));
@@ -52,10 +59,23 @@ public record VkVideoDecodeH264ProfileInfoKHR(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("stdProfileIdc"),
+        ValueLayout.JAVA_INT.withName("pictureLayout")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$stdProfileIdc = PathElement.groupElement("PATH$stdProfileIdc");
     public static final PathElement PATH$pictureLayout = PathElement.groupElement("PATH$pictureLayout");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$stdProfileIdc = (OfInt) LAYOUT.select(PATH$stdProfileIdc);
+    public static final OfInt LAYOUT$pictureLayout = (OfInt) LAYOUT.select(PATH$pictureLayout);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

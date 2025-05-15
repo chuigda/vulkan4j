@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeAV1QIndexKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1QIndexKHR.html">VkVideoEncodeAV1QIndexKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeAV1QIndexKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$intraQIndex = ValueLayout.JAVA_INT.withName("intraQIndex");
-    public static final OfInt LAYOUT$predictiveQIndex = ValueLayout.JAVA_INT.withName("predictiveQIndex");
-    public static final OfInt LAYOUT$bipredictiveQIndex = ValueLayout.JAVA_INT.withName("bipredictiveQIndex");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$intraQIndex, LAYOUT$predictiveQIndex, LAYOUT$bipredictiveQIndex);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkVideoEncodeAV1QIndexKHR allocate(Arena arena) {
         return new VkVideoEncodeAV1QIndexKHR(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkVideoEncodeAV1QIndexKHR(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("intraQIndex"),
+        ValueLayout.JAVA_INT.withName("predictiveQIndex"),
+        ValueLayout.JAVA_INT.withName("bipredictiveQIndex")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$intraQIndex = PathElement.groupElement("PATH$intraQIndex");
     public static final PathElement PATH$predictiveQIndex = PathElement.groupElement("PATH$predictiveQIndex");
     public static final PathElement PATH$bipredictiveQIndex = PathElement.groupElement("PATH$bipredictiveQIndex");
+
+    public static final OfInt LAYOUT$intraQIndex = (OfInt) LAYOUT.select(PATH$intraQIndex);
+    public static final OfInt LAYOUT$predictiveQIndex = (OfInt) LAYOUT.select(PATH$predictiveQIndex);
+    public static final OfInt LAYOUT$bipredictiveQIndex = (OfInt) LAYOUT.select(PATH$bipredictiveQIndex);
 
     public static final long SIZE$intraQIndex = LAYOUT$intraQIndex.byteSize();
     public static final long SIZE$predictiveQIndex = LAYOUT$predictiveQIndex.byteSize();

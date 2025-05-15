@@ -14,14 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkRefreshCycleDurationGOOGLE} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRefreshCycleDurationGOOGLE.html">VkRefreshCycleDurationGOOGLE</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkRefreshCycleDurationGOOGLE(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfLong LAYOUT$refreshDuration = ValueLayout.JAVA_LONG.withName("refreshDuration");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$refreshDuration);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkRefreshCycleDurationGOOGLE allocate(Arena arena) {
         return new VkRefreshCycleDurationGOOGLE(arena.allocate(LAYOUT));
     }
@@ -49,7 +55,14 @@ public record VkRefreshCycleDurationGOOGLE(@NotNull MemorySegment segment) imple
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("refreshDuration")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$refreshDuration = PathElement.groupElement("PATH$refreshDuration");
+
+    public static final OfLong LAYOUT$refreshDuration = (OfLong) LAYOUT.select(PATH$refreshDuration);
 
     public static final long SIZE$refreshDuration = LAYOUT$refreshDuration.byteSize();
 

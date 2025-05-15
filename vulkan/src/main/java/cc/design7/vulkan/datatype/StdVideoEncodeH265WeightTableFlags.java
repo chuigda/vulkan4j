@@ -14,16 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoEncodeH265WeightTableFlags} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoEncodeH265WeightTableFlags(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfShort LAYOUT$luma_weight_l0_flag = ValueLayout.JAVA_SHORT.withName("luma_weight_l0_flag");
-    public static final OfShort LAYOUT$chroma_weight_l0_flag = ValueLayout.JAVA_SHORT.withName("chroma_weight_l0_flag");
-    public static final OfShort LAYOUT$luma_weight_l1_flag = ValueLayout.JAVA_SHORT.withName("luma_weight_l1_flag");
-    public static final OfShort LAYOUT$chroma_weight_l1_flag = ValueLayout.JAVA_SHORT.withName("chroma_weight_l1_flag");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$luma_weight_l0_flag, LAYOUT$chroma_weight_l0_flag, LAYOUT$luma_weight_l1_flag, LAYOUT$chroma_weight_l1_flag);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoEncodeH265WeightTableFlags allocate(Arena arena) {
         return new StdVideoEncodeH265WeightTableFlags(arena.allocate(LAYOUT));
     }
@@ -51,10 +53,23 @@ public record StdVideoEncodeH265WeightTableFlags(@NotNull MemorySegment segment)
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_SHORT.withName("luma_weight_l0_flag"),
+        ValueLayout.JAVA_SHORT.withName("chroma_weight_l0_flag"),
+        ValueLayout.JAVA_SHORT.withName("luma_weight_l1_flag"),
+        ValueLayout.JAVA_SHORT.withName("chroma_weight_l1_flag")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$luma_weight_l0_flag = PathElement.groupElement("PATH$luma_weight_l0_flag");
     public static final PathElement PATH$chroma_weight_l0_flag = PathElement.groupElement("PATH$chroma_weight_l0_flag");
     public static final PathElement PATH$luma_weight_l1_flag = PathElement.groupElement("PATH$luma_weight_l1_flag");
     public static final PathElement PATH$chroma_weight_l1_flag = PathElement.groupElement("PATH$chroma_weight_l1_flag");
+
+    public static final OfShort LAYOUT$luma_weight_l0_flag = (OfShort) LAYOUT.select(PATH$luma_weight_l0_flag);
+    public static final OfShort LAYOUT$chroma_weight_l0_flag = (OfShort) LAYOUT.select(PATH$chroma_weight_l0_flag);
+    public static final OfShort LAYOUT$luma_weight_l1_flag = (OfShort) LAYOUT.select(PATH$luma_weight_l1_flag);
+    public static final OfShort LAYOUT$chroma_weight_l1_flag = (OfShort) LAYOUT.select(PATH$chroma_weight_l1_flag);
 
     public static final long SIZE$luma_weight_l0_flag = LAYOUT$luma_weight_l0_flag.byteSize();
     public static final long SIZE$chroma_weight_l0_flag = LAYOUT$chroma_weight_l0_flag.byteSize();

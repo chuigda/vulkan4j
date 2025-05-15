@@ -14,19 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPipelineRenderingCreateInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineRenderingCreateInfo.html">VkPipelineRenderingCreateInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPipelineRenderingCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$viewMask = ValueLayout.JAVA_INT.withName("viewMask");
-    public static final OfInt LAYOUT$colorAttachmentCount = ValueLayout.JAVA_INT.withName("colorAttachmentCount");
-    public static final AddressLayout LAYOUT$pColorAttachmentFormats = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pColorAttachmentFormats");
-    public static final OfInt LAYOUT$depthAttachmentFormat = ValueLayout.JAVA_INT.withName("depthAttachmentFormat");
-    public static final OfInt LAYOUT$stencilAttachmentFormat = ValueLayout.JAVA_INT.withName("stencilAttachmentFormat");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$viewMask, LAYOUT$colorAttachmentCount, LAYOUT$pColorAttachmentFormats, LAYOUT$depthAttachmentFormat, LAYOUT$stencilAttachmentFormat);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPipelineRenderingCreateInfo {
+        sType(VkStructureType.PIPELINE_RENDERING_CREATE_INFO);
+    }
 
     public static VkPipelineRenderingCreateInfo allocate(Arena arena) {
         return new VkPipelineRenderingCreateInfo(arena.allocate(LAYOUT));
@@ -55,6 +59,17 @@ public record VkPipelineRenderingCreateInfo(@NotNull MemorySegment segment) impl
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("viewMask"),
+        ValueLayout.JAVA_INT.withName("colorAttachmentCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pColorAttachmentFormats"),
+        ValueLayout.JAVA_INT.withName("depthAttachmentFormat"),
+        ValueLayout.JAVA_INT.withName("stencilAttachmentFormat")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$viewMask = PathElement.groupElement("PATH$viewMask");
@@ -62,6 +77,14 @@ public record VkPipelineRenderingCreateInfo(@NotNull MemorySegment segment) impl
     public static final PathElement PATH$pColorAttachmentFormats = PathElement.groupElement("PATH$pColorAttachmentFormats");
     public static final PathElement PATH$depthAttachmentFormat = PathElement.groupElement("PATH$depthAttachmentFormat");
     public static final PathElement PATH$stencilAttachmentFormat = PathElement.groupElement("PATH$stencilAttachmentFormat");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$viewMask = (OfInt) LAYOUT.select(PATH$viewMask);
+    public static final OfInt LAYOUT$colorAttachmentCount = (OfInt) LAYOUT.select(PATH$colorAttachmentCount);
+    public static final AddressLayout LAYOUT$pColorAttachmentFormats = (AddressLayout) LAYOUT.select(PATH$pColorAttachmentFormats);
+    public static final OfInt LAYOUT$depthAttachmentFormat = (OfInt) LAYOUT.select(PATH$depthAttachmentFormat);
+    public static final OfInt LAYOUT$stencilAttachmentFormat = (OfInt) LAYOUT.select(PATH$stencilAttachmentFormat);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

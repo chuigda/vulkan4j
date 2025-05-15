@@ -14,20 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkCopyImageInfo2} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyImageInfo2.html">VkCopyImageInfo2</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkCopyImageInfo2(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$srcImage = ValueLayout.ADDRESS.withName("srcImage");
-    public static final OfInt LAYOUT$srcImageLayout = ValueLayout.JAVA_INT.withName("srcImageLayout");
-    public static final AddressLayout LAYOUT$dstImage = ValueLayout.ADDRESS.withName("dstImage");
-    public static final OfInt LAYOUT$dstImageLayout = ValueLayout.JAVA_INT.withName("dstImageLayout");
-    public static final OfInt LAYOUT$regionCount = ValueLayout.JAVA_INT.withName("regionCount");
-    public static final AddressLayout LAYOUT$pRegions = ValueLayout.ADDRESS.withTargetLayout(VkImageCopy2.LAYOUT).withName("pRegions");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$srcImage, LAYOUT$srcImageLayout, LAYOUT$dstImage, LAYOUT$dstImageLayout, LAYOUT$regionCount, LAYOUT$pRegions);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkCopyImageInfo2 {
+        sType(VkStructureType.COPY_IMAGE_INFO_2);
+    }
 
     public static VkCopyImageInfo2 allocate(Arena arena) {
         return new VkCopyImageInfo2(arena.allocate(LAYOUT));
@@ -56,6 +59,18 @@ public record VkCopyImageInfo2(@NotNull MemorySegment segment) implements IPoint
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("srcImage"),
+        ValueLayout.JAVA_INT.withName("srcImageLayout"),
+        ValueLayout.ADDRESS.withName("dstImage"),
+        ValueLayout.JAVA_INT.withName("dstImageLayout"),
+        ValueLayout.JAVA_INT.withName("regionCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkImageCopy2.LAYOUT).withName("pRegions")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$srcImage = PathElement.groupElement("PATH$srcImage");
@@ -64,6 +79,15 @@ public record VkCopyImageInfo2(@NotNull MemorySegment segment) implements IPoint
     public static final PathElement PATH$dstImageLayout = PathElement.groupElement("PATH$dstImageLayout");
     public static final PathElement PATH$regionCount = PathElement.groupElement("PATH$regionCount");
     public static final PathElement PATH$pRegions = PathElement.groupElement("PATH$pRegions");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$srcImage = (AddressLayout) LAYOUT.select(PATH$srcImage);
+    public static final OfInt LAYOUT$srcImageLayout = (OfInt) LAYOUT.select(PATH$srcImageLayout);
+    public static final AddressLayout LAYOUT$dstImage = (AddressLayout) LAYOUT.select(PATH$dstImage);
+    public static final OfInt LAYOUT$dstImageLayout = (OfInt) LAYOUT.select(PATH$dstImageLayout);
+    public static final OfInt LAYOUT$regionCount = (OfInt) LAYOUT.select(PATH$regionCount);
+    public static final AddressLayout LAYOUT$pRegions = (AddressLayout) LAYOUT.select(PATH$pRegions);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

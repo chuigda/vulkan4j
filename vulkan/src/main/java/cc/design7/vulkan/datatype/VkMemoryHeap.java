@@ -14,15 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkMemoryHeap} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMemoryHeap.html">VkMemoryHeap</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkMemoryHeap(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfLong LAYOUT$size = ValueLayout.JAVA_LONG.withName("size");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$size, LAYOUT$flags);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkMemoryHeap allocate(Arena arena) {
         return new VkMemoryHeap(arena.allocate(LAYOUT));
     }
@@ -50,8 +55,17 @@ public record VkMemoryHeap(@NotNull MemorySegment segment) implements IPointer {
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("size"),
+        ValueLayout.JAVA_INT.withName("flags")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
 
     public static final long SIZE$size = LAYOUT$size.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();

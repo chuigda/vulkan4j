@@ -14,19 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkAccelerationStructureInfoNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureInfoNV.html">VkAccelerationStructureInfoNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$type = ValueLayout.JAVA_INT.withName("type");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$instanceCount = ValueLayout.JAVA_INT.withName("instanceCount");
-    public static final OfInt LAYOUT$geometryCount = ValueLayout.JAVA_INT.withName("geometryCount");
-    public static final AddressLayout LAYOUT$pGeometries = ValueLayout.ADDRESS.withTargetLayout(VkGeometryNV.LAYOUT).withName("pGeometries");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$type, LAYOUT$flags, LAYOUT$instanceCount, LAYOUT$geometryCount, LAYOUT$pGeometries);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkAccelerationStructureInfoNV {
+        sType(VkStructureType.ACCELERATION_STRUCTURE_INFO_NV);
+    }
 
     public static VkAccelerationStructureInfoNV allocate(Arena arena) {
         return new VkAccelerationStructureInfoNV(arena.allocate(LAYOUT));
@@ -55,6 +59,17 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("type"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("instanceCount"),
+        ValueLayout.JAVA_INT.withName("geometryCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkGeometryNV.LAYOUT).withName("pGeometries")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
@@ -62,6 +77,14 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
     public static final PathElement PATH$instanceCount = PathElement.groupElement("PATH$instanceCount");
     public static final PathElement PATH$geometryCount = PathElement.groupElement("PATH$geometryCount");
     public static final PathElement PATH$pGeometries = PathElement.groupElement("PATH$pGeometries");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$instanceCount = (OfInt) LAYOUT.select(PATH$instanceCount);
+    public static final OfInt LAYOUT$geometryCount = (OfInt) LAYOUT.select(PATH$geometryCount);
+    public static final AddressLayout LAYOUT$pGeometries = (AddressLayout) LAYOUT.select(PATH$pGeometries);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceBufferDeviceAddressFeatures} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceBufferDeviceAddressFeatures.html">VkPhysicalDeviceBufferDeviceAddressFeatures</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceBufferDeviceAddressFeatures(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$bufferDeviceAddress = ValueLayout.JAVA_INT.withName("bufferDeviceAddress");
-    public static final OfInt LAYOUT$bufferDeviceAddressCaptureReplay = ValueLayout.JAVA_INT.withName("bufferDeviceAddressCaptureReplay");
-    public static final OfInt LAYOUT$bufferDeviceAddressMultiDevice = ValueLayout.JAVA_INT.withName("bufferDeviceAddressMultiDevice");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$bufferDeviceAddress, LAYOUT$bufferDeviceAddressCaptureReplay, LAYOUT$bufferDeviceAddressMultiDevice);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceBufferDeviceAddressFeatures {
+        sType(VkStructureType.PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES);
+    }
 
     public static VkPhysicalDeviceBufferDeviceAddressFeatures allocate(Arena arena) {
         return new VkPhysicalDeviceBufferDeviceAddressFeatures(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkPhysicalDeviceBufferDeviceAddressFeatures(@NotNull MemorySegment
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("bufferDeviceAddress"),
+        ValueLayout.JAVA_INT.withName("bufferDeviceAddressCaptureReplay"),
+        ValueLayout.JAVA_INT.withName("bufferDeviceAddressMultiDevice")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$bufferDeviceAddress = PathElement.groupElement("PATH$bufferDeviceAddress");
     public static final PathElement PATH$bufferDeviceAddressCaptureReplay = PathElement.groupElement("PATH$bufferDeviceAddressCaptureReplay");
     public static final PathElement PATH$bufferDeviceAddressMultiDevice = PathElement.groupElement("PATH$bufferDeviceAddressMultiDevice");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$bufferDeviceAddress = (OfInt) LAYOUT.select(PATH$bufferDeviceAddress);
+    public static final OfInt LAYOUT$bufferDeviceAddressCaptureReplay = (OfInt) LAYOUT.select(PATH$bufferDeviceAddressCaptureReplay);
+    public static final OfInt LAYOUT$bufferDeviceAddressMultiDevice = (OfInt) LAYOUT.select(PATH$bufferDeviceAddressMultiDevice);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

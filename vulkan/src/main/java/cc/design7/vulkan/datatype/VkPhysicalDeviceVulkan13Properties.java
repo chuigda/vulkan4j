@@ -14,59 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceVulkan13Properties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceVulkan13Properties.html">VkPhysicalDeviceVulkan13Properties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceVulkan13Properties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$minSubgroupSize = ValueLayout.JAVA_INT.withName("minSubgroupSize");
-    public static final OfInt LAYOUT$maxSubgroupSize = ValueLayout.JAVA_INT.withName("maxSubgroupSize");
-    public static final OfInt LAYOUT$maxComputeWorkgroupSubgroups = ValueLayout.JAVA_INT.withName("maxComputeWorkgroupSubgroups");
-    public static final OfInt LAYOUT$requiredSubgroupSizeStages = ValueLayout.JAVA_INT.withName("requiredSubgroupSizeStages");
-    public static final OfInt LAYOUT$maxInlineUniformBlockSize = ValueLayout.JAVA_INT.withName("maxInlineUniformBlockSize");
-    public static final OfInt LAYOUT$maxPerStageDescriptorInlineUniformBlocks = ValueLayout.JAVA_INT.withName("maxPerStageDescriptorInlineUniformBlocks");
-    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks = ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks");
-    public static final OfInt LAYOUT$maxDescriptorSetInlineUniformBlocks = ValueLayout.JAVA_INT.withName("maxDescriptorSetInlineUniformBlocks");
-    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindInlineUniformBlocks = ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindInlineUniformBlocks");
-    public static final OfInt LAYOUT$maxInlineUniformTotalSize = ValueLayout.JAVA_INT.withName("maxInlineUniformTotalSize");
-    public static final OfInt LAYOUT$integerDotProduct8BitUnsignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProduct8BitUnsignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProduct8BitSignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProduct8BitSignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProduct8BitMixedSignednessAccelerated = ValueLayout.JAVA_INT.withName("integerDotProduct8BitMixedSignednessAccelerated");
-    public static final OfInt LAYOUT$integerDotProduct4x8BitPackedUnsignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProduct4x8BitPackedUnsignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProduct4x8BitPackedSignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProduct4x8BitPackedSignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProduct4x8BitPackedMixedSignednessAccelerated = ValueLayout.JAVA_INT.withName("integerDotProduct4x8BitPackedMixedSignednessAccelerated");
-    public static final OfInt LAYOUT$integerDotProduct16BitUnsignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProduct16BitUnsignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProduct16BitSignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProduct16BitSignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProduct16BitMixedSignednessAccelerated = ValueLayout.JAVA_INT.withName("integerDotProduct16BitMixedSignednessAccelerated");
-    public static final OfInt LAYOUT$integerDotProduct32BitUnsignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProduct32BitUnsignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProduct32BitSignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProduct32BitSignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProduct32BitMixedSignednessAccelerated = ValueLayout.JAVA_INT.withName("integerDotProduct32BitMixedSignednessAccelerated");
-    public static final OfInt LAYOUT$integerDotProduct64BitUnsignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProduct64BitUnsignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProduct64BitSignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProduct64BitSignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProduct64BitMixedSignednessAccelerated = ValueLayout.JAVA_INT.withName("integerDotProduct64BitMixedSignednessAccelerated");
-    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating8BitUnsignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating8BitUnsignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating8BitSignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating8BitSignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated = ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated");
-    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated = ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated");
-    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating16BitUnsignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating16BitUnsignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating16BitSignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating16BitSignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated = ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated");
-    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating32BitUnsignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating32BitUnsignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating32BitSignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating32BitSignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated = ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated");
-    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating64BitUnsignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating64BitUnsignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating64BitSignedAccelerated = ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating64BitSignedAccelerated");
-    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated = ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated");
-    public static final OfLong LAYOUT$storageTexelBufferOffsetAlignmentBytes = ValueLayout.JAVA_LONG.withName("storageTexelBufferOffsetAlignmentBytes");
-    public static final OfInt LAYOUT$storageTexelBufferOffsetSingleTexelAlignment = ValueLayout.JAVA_INT.withName("storageTexelBufferOffsetSingleTexelAlignment");
-    public static final OfLong LAYOUT$uniformTexelBufferOffsetAlignmentBytes = ValueLayout.JAVA_LONG.withName("uniformTexelBufferOffsetAlignmentBytes");
-    public static final OfInt LAYOUT$uniformTexelBufferOffsetSingleTexelAlignment = ValueLayout.JAVA_INT.withName("uniformTexelBufferOffsetSingleTexelAlignment");
-    public static final OfLong LAYOUT$maxBufferSize = ValueLayout.JAVA_LONG.withName("maxBufferSize");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$minSubgroupSize, LAYOUT$maxSubgroupSize, LAYOUT$maxComputeWorkgroupSubgroups, LAYOUT$requiredSubgroupSizeStages, LAYOUT$maxInlineUniformBlockSize, LAYOUT$maxPerStageDescriptorInlineUniformBlocks, LAYOUT$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks, LAYOUT$maxDescriptorSetInlineUniformBlocks, LAYOUT$maxDescriptorSetUpdateAfterBindInlineUniformBlocks, LAYOUT$maxInlineUniformTotalSize, LAYOUT$integerDotProduct8BitUnsignedAccelerated, LAYOUT$integerDotProduct8BitSignedAccelerated, LAYOUT$integerDotProduct8BitMixedSignednessAccelerated, LAYOUT$integerDotProduct4x8BitPackedUnsignedAccelerated, LAYOUT$integerDotProduct4x8BitPackedSignedAccelerated, LAYOUT$integerDotProduct4x8BitPackedMixedSignednessAccelerated, LAYOUT$integerDotProduct16BitUnsignedAccelerated, LAYOUT$integerDotProduct16BitSignedAccelerated, LAYOUT$integerDotProduct16BitMixedSignednessAccelerated, LAYOUT$integerDotProduct32BitUnsignedAccelerated, LAYOUT$integerDotProduct32BitSignedAccelerated, LAYOUT$integerDotProduct32BitMixedSignednessAccelerated, LAYOUT$integerDotProduct64BitUnsignedAccelerated, LAYOUT$integerDotProduct64BitSignedAccelerated, LAYOUT$integerDotProduct64BitMixedSignednessAccelerated, LAYOUT$integerDotProductAccumulatingSaturating8BitUnsignedAccelerated, LAYOUT$integerDotProductAccumulatingSaturating8BitSignedAccelerated, LAYOUT$integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated, LAYOUT$integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated, LAYOUT$integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated, LAYOUT$integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated, LAYOUT$integerDotProductAccumulatingSaturating16BitUnsignedAccelerated, LAYOUT$integerDotProductAccumulatingSaturating16BitSignedAccelerated, LAYOUT$integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated, LAYOUT$integerDotProductAccumulatingSaturating32BitUnsignedAccelerated, LAYOUT$integerDotProductAccumulatingSaturating32BitSignedAccelerated, LAYOUT$integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated, LAYOUT$integerDotProductAccumulatingSaturating64BitUnsignedAccelerated, LAYOUT$integerDotProductAccumulatingSaturating64BitSignedAccelerated, LAYOUT$integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated, LAYOUT$storageTexelBufferOffsetAlignmentBytes, LAYOUT$storageTexelBufferOffsetSingleTexelAlignment, LAYOUT$uniformTexelBufferOffsetAlignmentBytes, LAYOUT$uniformTexelBufferOffsetSingleTexelAlignment, LAYOUT$maxBufferSize);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceVulkan13Properties {
+        sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_3_PROPERTIES);
+    }
 
     public static VkPhysicalDeviceVulkan13Properties allocate(Arena arena) {
         return new VkPhysicalDeviceVulkan13Properties(arena.allocate(LAYOUT));
@@ -94,6 +58,57 @@ public record VkPhysicalDeviceVulkan13Properties(@NotNull MemorySegment segment)
         }
         return ret;
     }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("minSubgroupSize"),
+        ValueLayout.JAVA_INT.withName("maxSubgroupSize"),
+        ValueLayout.JAVA_INT.withName("maxComputeWorkgroupSubgroups"),
+        ValueLayout.JAVA_INT.withName("requiredSubgroupSizeStages"),
+        ValueLayout.JAVA_INT.withName("maxInlineUniformBlockSize"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorInlineUniformBlocks"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetInlineUniformBlocks"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindInlineUniformBlocks"),
+        ValueLayout.JAVA_INT.withName("maxInlineUniformTotalSize"),
+        ValueLayout.JAVA_INT.withName("integerDotProduct8BitUnsignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProduct8BitSignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProduct8BitMixedSignednessAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProduct4x8BitPackedUnsignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProduct4x8BitPackedSignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProduct4x8BitPackedMixedSignednessAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProduct16BitUnsignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProduct16BitSignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProduct16BitMixedSignednessAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProduct32BitUnsignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProduct32BitSignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProduct32BitMixedSignednessAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProduct64BitUnsignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProduct64BitSignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProduct64BitMixedSignednessAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating8BitUnsignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating8BitSignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating16BitUnsignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating16BitSignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating32BitUnsignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating32BitSignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating64BitUnsignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating64BitSignedAccelerated"),
+        ValueLayout.JAVA_INT.withName("integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated"),
+        ValueLayout.JAVA_LONG.withName("storageTexelBufferOffsetAlignmentBytes"),
+        ValueLayout.JAVA_INT.withName("storageTexelBufferOffsetSingleTexelAlignment"),
+        ValueLayout.JAVA_LONG.withName("uniformTexelBufferOffsetAlignmentBytes"),
+        ValueLayout.JAVA_INT.withName("uniformTexelBufferOffsetSingleTexelAlignment"),
+        ValueLayout.JAVA_LONG.withName("maxBufferSize")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
@@ -142,6 +157,54 @@ public record VkPhysicalDeviceVulkan13Properties(@NotNull MemorySegment segment)
     public static final PathElement PATH$uniformTexelBufferOffsetAlignmentBytes = PathElement.groupElement("PATH$uniformTexelBufferOffsetAlignmentBytes");
     public static final PathElement PATH$uniformTexelBufferOffsetSingleTexelAlignment = PathElement.groupElement("PATH$uniformTexelBufferOffsetSingleTexelAlignment");
     public static final PathElement PATH$maxBufferSize = PathElement.groupElement("PATH$maxBufferSize");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$minSubgroupSize = (OfInt) LAYOUT.select(PATH$minSubgroupSize);
+    public static final OfInt LAYOUT$maxSubgroupSize = (OfInt) LAYOUT.select(PATH$maxSubgroupSize);
+    public static final OfInt LAYOUT$maxComputeWorkgroupSubgroups = (OfInt) LAYOUT.select(PATH$maxComputeWorkgroupSubgroups);
+    public static final OfInt LAYOUT$requiredSubgroupSizeStages = (OfInt) LAYOUT.select(PATH$requiredSubgroupSizeStages);
+    public static final OfInt LAYOUT$maxInlineUniformBlockSize = (OfInt) LAYOUT.select(PATH$maxInlineUniformBlockSize);
+    public static final OfInt LAYOUT$maxPerStageDescriptorInlineUniformBlocks = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorInlineUniformBlocks);
+    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks);
+    public static final OfInt LAYOUT$maxDescriptorSetInlineUniformBlocks = (OfInt) LAYOUT.select(PATH$maxDescriptorSetInlineUniformBlocks);
+    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindInlineUniformBlocks = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUpdateAfterBindInlineUniformBlocks);
+    public static final OfInt LAYOUT$maxInlineUniformTotalSize = (OfInt) LAYOUT.select(PATH$maxInlineUniformTotalSize);
+    public static final OfInt LAYOUT$integerDotProduct8BitUnsignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProduct8BitUnsignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProduct8BitSignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProduct8BitSignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProduct8BitMixedSignednessAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProduct8BitMixedSignednessAccelerated);
+    public static final OfInt LAYOUT$integerDotProduct4x8BitPackedUnsignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProduct4x8BitPackedUnsignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProduct4x8BitPackedSignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProduct4x8BitPackedSignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProduct4x8BitPackedMixedSignednessAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProduct4x8BitPackedMixedSignednessAccelerated);
+    public static final OfInt LAYOUT$integerDotProduct16BitUnsignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProduct16BitUnsignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProduct16BitSignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProduct16BitSignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProduct16BitMixedSignednessAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProduct16BitMixedSignednessAccelerated);
+    public static final OfInt LAYOUT$integerDotProduct32BitUnsignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProduct32BitUnsignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProduct32BitSignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProduct32BitSignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProduct32BitMixedSignednessAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProduct32BitMixedSignednessAccelerated);
+    public static final OfInt LAYOUT$integerDotProduct64BitUnsignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProduct64BitUnsignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProduct64BitSignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProduct64BitSignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProduct64BitMixedSignednessAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProduct64BitMixedSignednessAccelerated);
+    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating8BitUnsignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProductAccumulatingSaturating8BitUnsignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating8BitSignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProductAccumulatingSaturating8BitSignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated);
+    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated);
+    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating16BitUnsignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProductAccumulatingSaturating16BitUnsignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating16BitSignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProductAccumulatingSaturating16BitSignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated);
+    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating32BitUnsignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProductAccumulatingSaturating32BitUnsignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating32BitSignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProductAccumulatingSaturating32BitSignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated);
+    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating64BitUnsignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProductAccumulatingSaturating64BitUnsignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating64BitSignedAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProductAccumulatingSaturating64BitSignedAccelerated);
+    public static final OfInt LAYOUT$integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated = (OfInt) LAYOUT.select(PATH$integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated);
+    public static final OfLong LAYOUT$storageTexelBufferOffsetAlignmentBytes = (OfLong) LAYOUT.select(PATH$storageTexelBufferOffsetAlignmentBytes);
+    public static final OfInt LAYOUT$storageTexelBufferOffsetSingleTexelAlignment = (OfInt) LAYOUT.select(PATH$storageTexelBufferOffsetSingleTexelAlignment);
+    public static final OfLong LAYOUT$uniformTexelBufferOffsetAlignmentBytes = (OfLong) LAYOUT.select(PATH$uniformTexelBufferOffsetAlignmentBytes);
+    public static final OfInt LAYOUT$uniformTexelBufferOffsetSingleTexelAlignment = (OfInt) LAYOUT.select(PATH$uniformTexelBufferOffsetSingleTexelAlignment);
+    public static final OfLong LAYOUT$maxBufferSize = (OfLong) LAYOUT.select(PATH$maxBufferSize);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

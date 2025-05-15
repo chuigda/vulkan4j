@@ -14,30 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkSamplerCreateInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerCreateInfo.html">VkSamplerCreateInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$magFilter = ValueLayout.JAVA_INT.withName("magFilter");
-    public static final OfInt LAYOUT$minFilter = ValueLayout.JAVA_INT.withName("minFilter");
-    public static final OfInt LAYOUT$mipmapMode = ValueLayout.JAVA_INT.withName("mipmapMode");
-    public static final OfInt LAYOUT$addressModeU = ValueLayout.JAVA_INT.withName("addressModeU");
-    public static final OfInt LAYOUT$addressModeV = ValueLayout.JAVA_INT.withName("addressModeV");
-    public static final OfInt LAYOUT$addressModeW = ValueLayout.JAVA_INT.withName("addressModeW");
-    public static final OfFloat LAYOUT$mipLodBias = ValueLayout.JAVA_FLOAT.withName("mipLodBias");
-    public static final OfInt LAYOUT$anisotropyEnable = ValueLayout.JAVA_INT.withName("anisotropyEnable");
-    public static final OfFloat LAYOUT$maxAnisotropy = ValueLayout.JAVA_FLOAT.withName("maxAnisotropy");
-    public static final OfInt LAYOUT$compareEnable = ValueLayout.JAVA_INT.withName("compareEnable");
-    public static final OfInt LAYOUT$compareOp = ValueLayout.JAVA_INT.withName("compareOp");
-    public static final OfFloat LAYOUT$minLod = ValueLayout.JAVA_FLOAT.withName("minLod");
-    public static final OfFloat LAYOUT$maxLod = ValueLayout.JAVA_FLOAT.withName("maxLod");
-    public static final OfInt LAYOUT$borderColor = ValueLayout.JAVA_INT.withName("borderColor");
-    public static final OfInt LAYOUT$unnormalizedCoordinates = ValueLayout.JAVA_INT.withName("unnormalizedCoordinates");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$magFilter, LAYOUT$minFilter, LAYOUT$mipmapMode, LAYOUT$addressModeU, LAYOUT$addressModeV, LAYOUT$addressModeW, LAYOUT$mipLodBias, LAYOUT$anisotropyEnable, LAYOUT$maxAnisotropy, LAYOUT$compareEnable, LAYOUT$compareOp, LAYOUT$minLod, LAYOUT$maxLod, LAYOUT$borderColor, LAYOUT$unnormalizedCoordinates);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkSamplerCreateInfo {
+        sType(VkStructureType.SAMPLER_CREATE_INFO);
+    }
 
     public static VkSamplerCreateInfo allocate(Arena arena) {
         return new VkSamplerCreateInfo(arena.allocate(LAYOUT));
@@ -66,6 +59,28 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IPo
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("magFilter"),
+        ValueLayout.JAVA_INT.withName("minFilter"),
+        ValueLayout.JAVA_INT.withName("mipmapMode"),
+        ValueLayout.JAVA_INT.withName("addressModeU"),
+        ValueLayout.JAVA_INT.withName("addressModeV"),
+        ValueLayout.JAVA_INT.withName("addressModeW"),
+        ValueLayout.JAVA_FLOAT.withName("mipLodBias"),
+        ValueLayout.JAVA_INT.withName("anisotropyEnable"),
+        ValueLayout.JAVA_FLOAT.withName("maxAnisotropy"),
+        ValueLayout.JAVA_INT.withName("compareEnable"),
+        ValueLayout.JAVA_INT.withName("compareOp"),
+        ValueLayout.JAVA_FLOAT.withName("minLod"),
+        ValueLayout.JAVA_FLOAT.withName("maxLod"),
+        ValueLayout.JAVA_INT.withName("borderColor"),
+        ValueLayout.JAVA_INT.withName("unnormalizedCoordinates")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -84,6 +99,25 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IPo
     public static final PathElement PATH$maxLod = PathElement.groupElement("PATH$maxLod");
     public static final PathElement PATH$borderColor = PathElement.groupElement("PATH$borderColor");
     public static final PathElement PATH$unnormalizedCoordinates = PathElement.groupElement("PATH$unnormalizedCoordinates");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$magFilter = (OfInt) LAYOUT.select(PATH$magFilter);
+    public static final OfInt LAYOUT$minFilter = (OfInt) LAYOUT.select(PATH$minFilter);
+    public static final OfInt LAYOUT$mipmapMode = (OfInt) LAYOUT.select(PATH$mipmapMode);
+    public static final OfInt LAYOUT$addressModeU = (OfInt) LAYOUT.select(PATH$addressModeU);
+    public static final OfInt LAYOUT$addressModeV = (OfInt) LAYOUT.select(PATH$addressModeV);
+    public static final OfInt LAYOUT$addressModeW = (OfInt) LAYOUT.select(PATH$addressModeW);
+    public static final OfFloat LAYOUT$mipLodBias = (OfFloat) LAYOUT.select(PATH$mipLodBias);
+    public static final OfInt LAYOUT$anisotropyEnable = (OfInt) LAYOUT.select(PATH$anisotropyEnable);
+    public static final OfFloat LAYOUT$maxAnisotropy = (OfFloat) LAYOUT.select(PATH$maxAnisotropy);
+    public static final OfInt LAYOUT$compareEnable = (OfInt) LAYOUT.select(PATH$compareEnable);
+    public static final OfInt LAYOUT$compareOp = (OfInt) LAYOUT.select(PATH$compareOp);
+    public static final OfFloat LAYOUT$minLod = (OfFloat) LAYOUT.select(PATH$minLod);
+    public static final OfFloat LAYOUT$maxLod = (OfFloat) LAYOUT.select(PATH$maxLod);
+    public static final OfInt LAYOUT$borderColor = (OfInt) LAYOUT.select(PATH$borderColor);
+    public static final OfInt LAYOUT$unnormalizedCoordinates = (OfInt) LAYOUT.select(PATH$unnormalizedCoordinates);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

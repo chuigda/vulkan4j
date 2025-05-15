@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceImageProcessingPropertiesQCOM} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceImageProcessingPropertiesQCOM.html">VkPhysicalDeviceImageProcessingPropertiesQCOM</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceImageProcessingPropertiesQCOM(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$maxWeightFilterPhases = ValueLayout.JAVA_INT.withName("maxWeightFilterPhases");
-    public static final StructLayout LAYOUT$maxWeightFilterDimension = VkExtent2D.LAYOUT.withName("maxWeightFilterDimension");
-    public static final StructLayout LAYOUT$maxBlockMatchRegion = VkExtent2D.LAYOUT.withName("maxBlockMatchRegion");
-    public static final StructLayout LAYOUT$maxBoxFilterBlockSize = VkExtent2D.LAYOUT.withName("maxBoxFilterBlockSize");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$maxWeightFilterPhases, LAYOUT$maxWeightFilterDimension, LAYOUT$maxBlockMatchRegion, LAYOUT$maxBoxFilterBlockSize);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM {
+        sType(VkStructureType.PHYSICAL_DEVICE_IMAGE_PROCESSING_PROPERTIES_QCOM);
+    }
 
     public static VkPhysicalDeviceImageProcessingPropertiesQCOM allocate(Arena arena) {
         return new VkPhysicalDeviceImageProcessingPropertiesQCOM(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(@NotNull MemorySegme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maxWeightFilterPhases"),
+        VkExtent2D.LAYOUT.withName("maxWeightFilterDimension"),
+        VkExtent2D.LAYOUT.withName("maxBlockMatchRegion"),
+        VkExtent2D.LAYOUT.withName("maxBoxFilterBlockSize")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$maxWeightFilterPhases = PathElement.groupElement("PATH$maxWeightFilterPhases");
     public static final PathElement PATH$maxWeightFilterDimension = PathElement.groupElement("PATH$maxWeightFilterDimension");
     public static final PathElement PATH$maxBlockMatchRegion = PathElement.groupElement("PATH$maxBlockMatchRegion");
     public static final PathElement PATH$maxBoxFilterBlockSize = PathElement.groupElement("PATH$maxBoxFilterBlockSize");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maxWeightFilterPhases = (OfInt) LAYOUT.select(PATH$maxWeightFilterPhases);
+    public static final StructLayout LAYOUT$maxWeightFilterDimension = (StructLayout) LAYOUT.select(PATH$maxWeightFilterDimension);
+    public static final StructLayout LAYOUT$maxBlockMatchRegion = (StructLayout) LAYOUT.select(PATH$maxBlockMatchRegion);
+    public static final StructLayout LAYOUT$maxBoxFilterBlockSize = (StructLayout) LAYOUT.select(PATH$maxBoxFilterBlockSize);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

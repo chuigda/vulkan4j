@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDevicePipelineRobustnessProperties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevicePipelineRobustnessProperties.html">VkPhysicalDevicePipelineRobustnessProperties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDevicePipelineRobustnessProperties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$defaultRobustnessStorageBuffers = ValueLayout.JAVA_INT.withName("defaultRobustnessStorageBuffers");
-    public static final OfInt LAYOUT$defaultRobustnessUniformBuffers = ValueLayout.JAVA_INT.withName("defaultRobustnessUniformBuffers");
-    public static final OfInt LAYOUT$defaultRobustnessVertexInputs = ValueLayout.JAVA_INT.withName("defaultRobustnessVertexInputs");
-    public static final OfInt LAYOUT$defaultRobustnessImages = ValueLayout.JAVA_INT.withName("defaultRobustnessImages");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$defaultRobustnessStorageBuffers, LAYOUT$defaultRobustnessUniformBuffers, LAYOUT$defaultRobustnessVertexInputs, LAYOUT$defaultRobustnessImages);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDevicePipelineRobustnessProperties {
+        sType(VkStructureType.PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_PROPERTIES);
+    }
 
     public static VkPhysicalDevicePipelineRobustnessProperties allocate(Arena arena) {
         return new VkPhysicalDevicePipelineRobustnessProperties(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkPhysicalDevicePipelineRobustnessProperties(@NotNull MemorySegmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("defaultRobustnessStorageBuffers"),
+        ValueLayout.JAVA_INT.withName("defaultRobustnessUniformBuffers"),
+        ValueLayout.JAVA_INT.withName("defaultRobustnessVertexInputs"),
+        ValueLayout.JAVA_INT.withName("defaultRobustnessImages")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$defaultRobustnessStorageBuffers = PathElement.groupElement("PATH$defaultRobustnessStorageBuffers");
     public static final PathElement PATH$defaultRobustnessUniformBuffers = PathElement.groupElement("PATH$defaultRobustnessUniformBuffers");
     public static final PathElement PATH$defaultRobustnessVertexInputs = PathElement.groupElement("PATH$defaultRobustnessVertexInputs");
     public static final PathElement PATH$defaultRobustnessImages = PathElement.groupElement("PATH$defaultRobustnessImages");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$defaultRobustnessStorageBuffers = (OfInt) LAYOUT.select(PATH$defaultRobustnessStorageBuffers);
+    public static final OfInt LAYOUT$defaultRobustnessUniformBuffers = (OfInt) LAYOUT.select(PATH$defaultRobustnessUniformBuffers);
+    public static final OfInt LAYOUT$defaultRobustnessVertexInputs = (OfInt) LAYOUT.select(PATH$defaultRobustnessVertexInputs);
+    public static final OfInt LAYOUT$defaultRobustnessImages = (OfInt) LAYOUT.select(PATH$defaultRobustnessImages);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

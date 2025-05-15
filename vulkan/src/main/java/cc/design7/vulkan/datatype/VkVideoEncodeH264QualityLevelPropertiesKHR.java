@@ -14,23 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeH264QualityLevelPropertiesKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264QualityLevelPropertiesKHR.html">VkVideoEncodeH264QualityLevelPropertiesKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeH264QualityLevelPropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$preferredRateControlFlags = ValueLayout.JAVA_INT.withName("preferredRateControlFlags");
-    public static final OfInt LAYOUT$preferredGopFrameCount = ValueLayout.JAVA_INT.withName("preferredGopFrameCount");
-    public static final OfInt LAYOUT$preferredIdrPeriod = ValueLayout.JAVA_INT.withName("preferredIdrPeriod");
-    public static final OfInt LAYOUT$preferredConsecutiveBFrameCount = ValueLayout.JAVA_INT.withName("preferredConsecutiveBFrameCount");
-    public static final OfInt LAYOUT$preferredTemporalLayerCount = ValueLayout.JAVA_INT.withName("preferredTemporalLayerCount");
-    public static final StructLayout LAYOUT$preferredConstantQp = VkVideoEncodeH264QpKHR.LAYOUT.withName("preferredConstantQp");
-    public static final OfInt LAYOUT$preferredMaxL0ReferenceCount = ValueLayout.JAVA_INT.withName("preferredMaxL0ReferenceCount");
-    public static final OfInt LAYOUT$preferredMaxL1ReferenceCount = ValueLayout.JAVA_INT.withName("preferredMaxL1ReferenceCount");
-    public static final OfInt LAYOUT$preferredStdEntropyCodingModeFlag = ValueLayout.JAVA_INT.withName("preferredStdEntropyCodingModeFlag");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$preferredRateControlFlags, LAYOUT$preferredGopFrameCount, LAYOUT$preferredIdrPeriod, LAYOUT$preferredConsecutiveBFrameCount, LAYOUT$preferredTemporalLayerCount, LAYOUT$preferredConstantQp, LAYOUT$preferredMaxL0ReferenceCount, LAYOUT$preferredMaxL1ReferenceCount, LAYOUT$preferredStdEntropyCodingModeFlag);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoEncodeH264QualityLevelPropertiesKHR {
+        sType(VkStructureType.VIDEO_ENCODE_H264_QUALITY_LEVEL_PROPERTIES_KHR);
+    }
 
     public static VkVideoEncodeH264QualityLevelPropertiesKHR allocate(Arena arena) {
         return new VkVideoEncodeH264QualityLevelPropertiesKHR(arena.allocate(LAYOUT));
@@ -59,6 +59,21 @@ public record VkVideoEncodeH264QualityLevelPropertiesKHR(@NotNull MemorySegment 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("preferredRateControlFlags"),
+        ValueLayout.JAVA_INT.withName("preferredGopFrameCount"),
+        ValueLayout.JAVA_INT.withName("preferredIdrPeriod"),
+        ValueLayout.JAVA_INT.withName("preferredConsecutiveBFrameCount"),
+        ValueLayout.JAVA_INT.withName("preferredTemporalLayerCount"),
+        VkVideoEncodeH264QpKHR.LAYOUT.withName("preferredConstantQp"),
+        ValueLayout.JAVA_INT.withName("preferredMaxL0ReferenceCount"),
+        ValueLayout.JAVA_INT.withName("preferredMaxL1ReferenceCount"),
+        ValueLayout.JAVA_INT.withName("preferredStdEntropyCodingModeFlag")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$preferredRateControlFlags = PathElement.groupElement("PATH$preferredRateControlFlags");
@@ -70,6 +85,18 @@ public record VkVideoEncodeH264QualityLevelPropertiesKHR(@NotNull MemorySegment 
     public static final PathElement PATH$preferredMaxL0ReferenceCount = PathElement.groupElement("PATH$preferredMaxL0ReferenceCount");
     public static final PathElement PATH$preferredMaxL1ReferenceCount = PathElement.groupElement("PATH$preferredMaxL1ReferenceCount");
     public static final PathElement PATH$preferredStdEntropyCodingModeFlag = PathElement.groupElement("PATH$preferredStdEntropyCodingModeFlag");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$preferredRateControlFlags = (OfInt) LAYOUT.select(PATH$preferredRateControlFlags);
+    public static final OfInt LAYOUT$preferredGopFrameCount = (OfInt) LAYOUT.select(PATH$preferredGopFrameCount);
+    public static final OfInt LAYOUT$preferredIdrPeriod = (OfInt) LAYOUT.select(PATH$preferredIdrPeriod);
+    public static final OfInt LAYOUT$preferredConsecutiveBFrameCount = (OfInt) LAYOUT.select(PATH$preferredConsecutiveBFrameCount);
+    public static final OfInt LAYOUT$preferredTemporalLayerCount = (OfInt) LAYOUT.select(PATH$preferredTemporalLayerCount);
+    public static final StructLayout LAYOUT$preferredConstantQp = (StructLayout) LAYOUT.select(PATH$preferredConstantQp);
+    public static final OfInt LAYOUT$preferredMaxL0ReferenceCount = (OfInt) LAYOUT.select(PATH$preferredMaxL0ReferenceCount);
+    public static final OfInt LAYOUT$preferredMaxL1ReferenceCount = (OfInt) LAYOUT.select(PATH$preferredMaxL1ReferenceCount);
+    public static final OfInt LAYOUT$preferredStdEntropyCodingModeFlag = (OfInt) LAYOUT.select(PATH$preferredStdEntropyCodingModeFlag);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

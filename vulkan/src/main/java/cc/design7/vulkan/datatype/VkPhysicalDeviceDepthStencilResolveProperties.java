@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceDepthStencilResolveProperties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDepthStencilResolveProperties.html">VkPhysicalDeviceDepthStencilResolveProperties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$supportedDepthResolveModes = ValueLayout.JAVA_INT.withName("supportedDepthResolveModes");
-    public static final OfInt LAYOUT$supportedStencilResolveModes = ValueLayout.JAVA_INT.withName("supportedStencilResolveModes");
-    public static final OfInt LAYOUT$independentResolveNone = ValueLayout.JAVA_INT.withName("independentResolveNone");
-    public static final OfInt LAYOUT$independentResolve = ValueLayout.JAVA_INT.withName("independentResolve");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$supportedDepthResolveModes, LAYOUT$supportedStencilResolveModes, LAYOUT$independentResolveNone, LAYOUT$independentResolve);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceDepthStencilResolveProperties {
+        sType(VkStructureType.PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES);
+    }
 
     public static VkPhysicalDeviceDepthStencilResolveProperties allocate(Arena arena) {
         return new VkPhysicalDeviceDepthStencilResolveProperties(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("supportedDepthResolveModes"),
+        ValueLayout.JAVA_INT.withName("supportedStencilResolveModes"),
+        ValueLayout.JAVA_INT.withName("independentResolveNone"),
+        ValueLayout.JAVA_INT.withName("independentResolve")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$supportedDepthResolveModes = PathElement.groupElement("PATH$supportedDepthResolveModes");
     public static final PathElement PATH$supportedStencilResolveModes = PathElement.groupElement("PATH$supportedStencilResolveModes");
     public static final PathElement PATH$independentResolveNone = PathElement.groupElement("PATH$independentResolveNone");
     public static final PathElement PATH$independentResolve = PathElement.groupElement("PATH$independentResolve");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$supportedDepthResolveModes = (OfInt) LAYOUT.select(PATH$supportedDepthResolveModes);
+    public static final OfInt LAYOUT$supportedStencilResolveModes = (OfInt) LAYOUT.select(PATH$supportedStencilResolveModes);
+    public static final OfInt LAYOUT$independentResolveNone = (OfInt) LAYOUT.select(PATH$independentResolveNone);
+    public static final OfInt LAYOUT$independentResolve = (OfInt) LAYOUT.select(PATH$independentResolve);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,37 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoAV1FilmGrain} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoAV1FilmGrainFlags.LAYOUT.withName("flags");
-    public static final OfByte LAYOUT$grain_scaling_minus_8 = ValueLayout.JAVA_BYTE.withName("grain_scaling_minus_8");
-    public static final OfByte LAYOUT$ar_coeff_lag = ValueLayout.JAVA_BYTE.withName("ar_coeff_lag");
-    public static final OfByte LAYOUT$ar_coeff_shift_minus_6 = ValueLayout.JAVA_BYTE.withName("ar_coeff_shift_minus_6");
-    public static final OfByte LAYOUT$grain_scale_shift = ValueLayout.JAVA_BYTE.withName("grain_scale_shift");
-    public static final OfShort LAYOUT$grain_seed = ValueLayout.JAVA_SHORT.withName("grain_seed");
-    public static final OfByte LAYOUT$film_grain_params_ref_idx = ValueLayout.JAVA_BYTE.withName("film_grain_params_ref_idx");
-    public static final OfByte LAYOUT$num_y_points = ValueLayout.JAVA_BYTE.withName("num_y_points");
-    public static final OfByte LAYOUT$point_y_value = ValueLayout.JAVA_BYTE.withName("point_y_value");
-    public static final OfByte LAYOUT$point_y_scaling = ValueLayout.JAVA_BYTE.withName("point_y_scaling");
-    public static final OfByte LAYOUT$num_cb_points = ValueLayout.JAVA_BYTE.withName("num_cb_points");
-    public static final OfByte LAYOUT$point_cb_value = ValueLayout.JAVA_BYTE.withName("point_cb_value");
-    public static final OfByte LAYOUT$point_cb_scaling = ValueLayout.JAVA_BYTE.withName("point_cb_scaling");
-    public static final OfByte LAYOUT$num_cr_points = ValueLayout.JAVA_BYTE.withName("num_cr_points");
-    public static final OfByte LAYOUT$point_cr_value = ValueLayout.JAVA_BYTE.withName("point_cr_value");
-    public static final OfByte LAYOUT$point_cr_scaling = ValueLayout.JAVA_BYTE.withName("point_cr_scaling");
-    public static final OfByte LAYOUT$ar_coeffs_y_plus_128 = ValueLayout.JAVA_BYTE.withName("ar_coeffs_y_plus_128");
-    public static final OfByte LAYOUT$ar_coeffs_cb_plus_128 = ValueLayout.JAVA_BYTE.withName("ar_coeffs_cb_plus_128");
-    public static final OfByte LAYOUT$ar_coeffs_cr_plus_128 = ValueLayout.JAVA_BYTE.withName("ar_coeffs_cr_plus_128");
-    public static final OfByte LAYOUT$cb_mult = ValueLayout.JAVA_BYTE.withName("cb_mult");
-    public static final OfByte LAYOUT$cb_luma_mult = ValueLayout.JAVA_BYTE.withName("cb_luma_mult");
-    public static final OfShort LAYOUT$cb_offset = ValueLayout.JAVA_SHORT.withName("cb_offset");
-    public static final OfByte LAYOUT$cr_mult = ValueLayout.JAVA_BYTE.withName("cr_mult");
-    public static final OfByte LAYOUT$cr_luma_mult = ValueLayout.JAVA_BYTE.withName("cr_luma_mult");
-    public static final OfShort LAYOUT$cr_offset = ValueLayout.JAVA_SHORT.withName("cr_offset");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$grain_scaling_minus_8, LAYOUT$ar_coeff_lag, LAYOUT$ar_coeff_shift_minus_6, LAYOUT$grain_scale_shift, LAYOUT$grain_seed, LAYOUT$film_grain_params_ref_idx, LAYOUT$num_y_points, LAYOUT$point_y_value, LAYOUT$point_y_scaling, LAYOUT$num_cb_points, LAYOUT$point_cb_value, LAYOUT$point_cb_scaling, LAYOUT$num_cr_points, LAYOUT$point_cr_value, LAYOUT$point_cr_scaling, LAYOUT$ar_coeffs_y_plus_128, LAYOUT$ar_coeffs_cb_plus_128, LAYOUT$ar_coeffs_cr_plus_128, LAYOUT$cb_mult, LAYOUT$cb_luma_mult, LAYOUT$cb_offset, LAYOUT$cr_mult, LAYOUT$cr_luma_mult, LAYOUT$cr_offset);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoAV1FilmGrain allocate(Arena arena) {
         return new StdVideoAV1FilmGrain(arena.allocate(LAYOUT));
     }
@@ -72,6 +53,35 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoAV1FilmGrainFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("grain_scaling_minus_8"),
+        ValueLayout.JAVA_BYTE.withName("ar_coeff_lag"),
+        ValueLayout.JAVA_BYTE.withName("ar_coeff_shift_minus_6"),
+        ValueLayout.JAVA_BYTE.withName("grain_scale_shift"),
+        ValueLayout.JAVA_SHORT.withName("grain_seed"),
+        ValueLayout.JAVA_BYTE.withName("film_grain_params_ref_idx"),
+        ValueLayout.JAVA_BYTE.withName("num_y_points"),
+        ValueLayout.JAVA_BYTE.withName("point_y_value"),
+        ValueLayout.JAVA_BYTE.withName("point_y_scaling"),
+        ValueLayout.JAVA_BYTE.withName("num_cb_points"),
+        ValueLayout.JAVA_BYTE.withName("point_cb_value"),
+        ValueLayout.JAVA_BYTE.withName("point_cb_scaling"),
+        ValueLayout.JAVA_BYTE.withName("num_cr_points"),
+        ValueLayout.JAVA_BYTE.withName("point_cr_value"),
+        ValueLayout.JAVA_BYTE.withName("point_cr_scaling"),
+        ValueLayout.JAVA_BYTE.withName("ar_coeffs_y_plus_128"),
+        ValueLayout.JAVA_BYTE.withName("ar_coeffs_cb_plus_128"),
+        ValueLayout.JAVA_BYTE.withName("ar_coeffs_cr_plus_128"),
+        ValueLayout.JAVA_BYTE.withName("cb_mult"),
+        ValueLayout.JAVA_BYTE.withName("cb_luma_mult"),
+        ValueLayout.JAVA_SHORT.withName("cb_offset"),
+        ValueLayout.JAVA_BYTE.withName("cr_mult"),
+        ValueLayout.JAVA_BYTE.withName("cr_luma_mult"),
+        ValueLayout.JAVA_SHORT.withName("cr_offset")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$grain_scaling_minus_8 = PathElement.groupElement("PATH$grain_scaling_minus_8");
     public static final PathElement PATH$ar_coeff_lag = PathElement.groupElement("PATH$ar_coeff_lag");
@@ -97,6 +107,32 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IP
     public static final PathElement PATH$cr_mult = PathElement.groupElement("PATH$cr_mult");
     public static final PathElement PATH$cr_luma_mult = PathElement.groupElement("PATH$cr_luma_mult");
     public static final PathElement PATH$cr_offset = PathElement.groupElement("PATH$cr_offset");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$grain_scaling_minus_8 = (OfByte) LAYOUT.select(PATH$grain_scaling_minus_8);
+    public static final OfByte LAYOUT$ar_coeff_lag = (OfByte) LAYOUT.select(PATH$ar_coeff_lag);
+    public static final OfByte LAYOUT$ar_coeff_shift_minus_6 = (OfByte) LAYOUT.select(PATH$ar_coeff_shift_minus_6);
+    public static final OfByte LAYOUT$grain_scale_shift = (OfByte) LAYOUT.select(PATH$grain_scale_shift);
+    public static final OfShort LAYOUT$grain_seed = (OfShort) LAYOUT.select(PATH$grain_seed);
+    public static final OfByte LAYOUT$film_grain_params_ref_idx = (OfByte) LAYOUT.select(PATH$film_grain_params_ref_idx);
+    public static final OfByte LAYOUT$num_y_points = (OfByte) LAYOUT.select(PATH$num_y_points);
+    public static final OfByte LAYOUT$point_y_value = (OfByte) LAYOUT.select(PATH$point_y_value);
+    public static final OfByte LAYOUT$point_y_scaling = (OfByte) LAYOUT.select(PATH$point_y_scaling);
+    public static final OfByte LAYOUT$num_cb_points = (OfByte) LAYOUT.select(PATH$num_cb_points);
+    public static final OfByte LAYOUT$point_cb_value = (OfByte) LAYOUT.select(PATH$point_cb_value);
+    public static final OfByte LAYOUT$point_cb_scaling = (OfByte) LAYOUT.select(PATH$point_cb_scaling);
+    public static final OfByte LAYOUT$num_cr_points = (OfByte) LAYOUT.select(PATH$num_cr_points);
+    public static final OfByte LAYOUT$point_cr_value = (OfByte) LAYOUT.select(PATH$point_cr_value);
+    public static final OfByte LAYOUT$point_cr_scaling = (OfByte) LAYOUT.select(PATH$point_cr_scaling);
+    public static final OfByte LAYOUT$ar_coeffs_y_plus_128 = (OfByte) LAYOUT.select(PATH$ar_coeffs_y_plus_128);
+    public static final OfByte LAYOUT$ar_coeffs_cb_plus_128 = (OfByte) LAYOUT.select(PATH$ar_coeffs_cb_plus_128);
+    public static final OfByte LAYOUT$ar_coeffs_cr_plus_128 = (OfByte) LAYOUT.select(PATH$ar_coeffs_cr_plus_128);
+    public static final OfByte LAYOUT$cb_mult = (OfByte) LAYOUT.select(PATH$cb_mult);
+    public static final OfByte LAYOUT$cb_luma_mult = (OfByte) LAYOUT.select(PATH$cb_luma_mult);
+    public static final OfShort LAYOUT$cb_offset = (OfShort) LAYOUT.select(PATH$cb_offset);
+    public static final OfByte LAYOUT$cr_mult = (OfByte) LAYOUT.select(PATH$cr_mult);
+    public static final OfByte LAYOUT$cr_luma_mult = (OfByte) LAYOUT.select(PATH$cr_luma_mult);
+    public static final OfShort LAYOUT$cr_offset = (OfShort) LAYOUT.select(PATH$cr_offset);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$grain_scaling_minus_8 = LAYOUT$grain_scaling_minus_8.byteSize();

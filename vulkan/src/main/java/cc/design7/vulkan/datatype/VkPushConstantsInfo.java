@@ -14,19 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPushConstantsInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPushConstantsInfo.html">VkPushConstantsInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$layout = ValueLayout.ADDRESS.withName("layout");
-    public static final OfInt LAYOUT$stageFlags = ValueLayout.JAVA_INT.withName("stageFlags");
-    public static final OfInt LAYOUT$offset = ValueLayout.JAVA_INT.withName("offset");
-    public static final OfInt LAYOUT$size = ValueLayout.JAVA_INT.withName("size");
-    public static final AddressLayout LAYOUT$pValues = ValueLayout.ADDRESS.withName("pValues");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$layout, LAYOUT$stageFlags, LAYOUT$offset, LAYOUT$size, LAYOUT$pValues);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPushConstantsInfo {
+        sType(VkStructureType.PUSH_CONSTANTS_INFO);
+    }
 
     public static VkPushConstantsInfo allocate(Arena arena) {
         return new VkPushConstantsInfo(arena.allocate(LAYOUT));
@@ -55,6 +59,17 @@ public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IPo
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("layout"),
+        ValueLayout.JAVA_INT.withName("stageFlags"),
+        ValueLayout.JAVA_INT.withName("offset"),
+        ValueLayout.JAVA_INT.withName("size"),
+        ValueLayout.ADDRESS.withName("pValues")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$layout = PathElement.groupElement("PATH$layout");
@@ -62,6 +77,14 @@ public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IPo
     public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
     public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
     public static final PathElement PATH$pValues = PathElement.groupElement("PATH$pValues");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$layout = (AddressLayout) LAYOUT.select(PATH$layout);
+    public static final OfInt LAYOUT$stageFlags = (OfInt) LAYOUT.select(PATH$stageFlags);
+    public static final OfInt LAYOUT$offset = (OfInt) LAYOUT.select(PATH$offset);
+    public static final OfInt LAYOUT$size = (OfInt) LAYOUT.select(PATH$size);
+    public static final AddressLayout LAYOUT$pValues = (AddressLayout) LAYOUT.select(PATH$pValues);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

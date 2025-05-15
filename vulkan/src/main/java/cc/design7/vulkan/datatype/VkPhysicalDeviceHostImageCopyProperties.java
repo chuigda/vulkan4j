@@ -14,20 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceHostImageCopyProperties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceHostImageCopyProperties.html">VkPhysicalDeviceHostImageCopyProperties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$copySrcLayoutCount = ValueLayout.JAVA_INT.withName("copySrcLayoutCount");
-    public static final AddressLayout LAYOUT$pCopySrcLayouts = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCopySrcLayouts");
-    public static final OfInt LAYOUT$copyDstLayoutCount = ValueLayout.JAVA_INT.withName("copyDstLayoutCount");
-    public static final AddressLayout LAYOUT$pCopyDstLayouts = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCopyDstLayouts");
-    public static final OfByte LAYOUT$optimalTilingLayoutUUID = ValueLayout.JAVA_BYTE.withName("optimalTilingLayoutUUID");
-    public static final OfInt LAYOUT$identicalMemoryTypeRequirements = ValueLayout.JAVA_INT.withName("identicalMemoryTypeRequirements");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$copySrcLayoutCount, LAYOUT$pCopySrcLayouts, LAYOUT$copyDstLayoutCount, LAYOUT$pCopyDstLayouts, LAYOUT$optimalTilingLayoutUUID, LAYOUT$identicalMemoryTypeRequirements);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceHostImageCopyProperties {
+        sType(VkStructureType.PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES);
+    }
 
     public static VkPhysicalDeviceHostImageCopyProperties allocate(Arena arena) {
         return new VkPhysicalDeviceHostImageCopyProperties(arena.allocate(LAYOUT));
@@ -56,6 +59,18 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("copySrcLayoutCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCopySrcLayouts"),
+        ValueLayout.JAVA_INT.withName("copyDstLayoutCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCopyDstLayouts"),
+        ValueLayout.JAVA_BYTE.withName("optimalTilingLayoutUUID"),
+        ValueLayout.JAVA_INT.withName("identicalMemoryTypeRequirements")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$copySrcLayoutCount = PathElement.groupElement("PATH$copySrcLayoutCount");
@@ -64,6 +79,15 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
     public static final PathElement PATH$pCopyDstLayouts = PathElement.groupElement("PATH$pCopyDstLayouts");
     public static final PathElement PATH$optimalTilingLayoutUUID = PathElement.groupElement("PATH$optimalTilingLayoutUUID");
     public static final PathElement PATH$identicalMemoryTypeRequirements = PathElement.groupElement("PATH$identicalMemoryTypeRequirements");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$copySrcLayoutCount = (OfInt) LAYOUT.select(PATH$copySrcLayoutCount);
+    public static final AddressLayout LAYOUT$pCopySrcLayouts = (AddressLayout) LAYOUT.select(PATH$pCopySrcLayouts);
+    public static final OfInt LAYOUT$copyDstLayoutCount = (OfInt) LAYOUT.select(PATH$copyDstLayoutCount);
+    public static final AddressLayout LAYOUT$pCopyDstLayouts = (AddressLayout) LAYOUT.select(PATH$pCopyDstLayouts);
+    public static final OfByte LAYOUT$optimalTilingLayoutUUID = (OfByte) LAYOUT.select(PATH$optimalTilingLayoutUUID);
+    public static final OfInt LAYOUT$identicalMemoryTypeRequirements = (OfInt) LAYOUT.select(PATH$identicalMemoryTypeRequirements);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

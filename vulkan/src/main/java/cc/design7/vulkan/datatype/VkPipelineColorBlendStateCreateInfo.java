@@ -14,20 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPipelineColorBlendStateCreateInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineColorBlendStateCreateInfo.html">VkPipelineColorBlendStateCreateInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$logicOpEnable = ValueLayout.JAVA_INT.withName("logicOpEnable");
-    public static final OfInt LAYOUT$logicOp = ValueLayout.JAVA_INT.withName("logicOp");
-    public static final OfInt LAYOUT$attachmentCount = ValueLayout.JAVA_INT.withName("attachmentCount");
-    public static final AddressLayout LAYOUT$pAttachments = ValueLayout.ADDRESS.withTargetLayout(VkPipelineColorBlendAttachmentState.LAYOUT).withName("pAttachments");
-    public static final OfFloat LAYOUT$blendConstants = ValueLayout.JAVA_FLOAT.withName("blendConstants");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$logicOpEnable, LAYOUT$logicOp, LAYOUT$attachmentCount, LAYOUT$pAttachments, LAYOUT$blendConstants);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPipelineColorBlendStateCreateInfo {
+        sType(VkStructureType.PIPELINE_COLOR_BLEND_STATE_CREATE_INFO);
+    }
 
     public static VkPipelineColorBlendStateCreateInfo allocate(Arena arena) {
         return new VkPipelineColorBlendStateCreateInfo(arena.allocate(LAYOUT));
@@ -56,6 +59,18 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("logicOpEnable"),
+        ValueLayout.JAVA_INT.withName("logicOp"),
+        ValueLayout.JAVA_INT.withName("attachmentCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineColorBlendAttachmentState.LAYOUT).withName("pAttachments"),
+        ValueLayout.JAVA_FLOAT.withName("blendConstants")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -64,6 +79,15 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
     public static final PathElement PATH$attachmentCount = PathElement.groupElement("PATH$attachmentCount");
     public static final PathElement PATH$pAttachments = PathElement.groupElement("PATH$pAttachments");
     public static final PathElement PATH$blendConstants = PathElement.groupElement("PATH$blendConstants");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$logicOpEnable = (OfInt) LAYOUT.select(PATH$logicOpEnable);
+    public static final OfInt LAYOUT$logicOp = (OfInt) LAYOUT.select(PATH$logicOp);
+    public static final OfInt LAYOUT$attachmentCount = (OfInt) LAYOUT.select(PATH$attachmentCount);
+    public static final AddressLayout LAYOUT$pAttachments = (AddressLayout) LAYOUT.select(PATH$pAttachments);
+    public static final OfFloat LAYOUT$blendConstants = (OfFloat) LAYOUT.select(PATH$blendConstants);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

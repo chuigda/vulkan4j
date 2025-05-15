@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkStridedDeviceAddressRegionKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStridedDeviceAddressRegionKHR.html">VkStridedDeviceAddressRegionKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkStridedDeviceAddressRegionKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfLong LAYOUT$deviceAddress = ValueLayout.JAVA_LONG.withName("deviceAddress");
-    public static final OfLong LAYOUT$stride = ValueLayout.JAVA_LONG.withName("stride");
-    public static final OfLong LAYOUT$size = ValueLayout.JAVA_LONG.withName("size");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$deviceAddress, LAYOUT$stride, LAYOUT$size);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkStridedDeviceAddressRegionKHR allocate(Arena arena) {
         return new VkStridedDeviceAddressRegionKHR(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkStridedDeviceAddressRegionKHR(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("deviceAddress"),
+        ValueLayout.JAVA_LONG.withName("stride"),
+        ValueLayout.JAVA_LONG.withName("size")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$deviceAddress = PathElement.groupElement("PATH$deviceAddress");
     public static final PathElement PATH$stride = PathElement.groupElement("PATH$stride");
     public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
+
+    public static final OfLong LAYOUT$deviceAddress = (OfLong) LAYOUT.select(PATH$deviceAddress);
+    public static final OfLong LAYOUT$stride = (OfLong) LAYOUT.select(PATH$stride);
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
 
     public static final long SIZE$deviceAddress = LAYOUT$deviceAddress.byteSize();
     public static final long SIZE$stride = LAYOUT$stride.byteSize();

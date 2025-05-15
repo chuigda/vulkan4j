@@ -14,23 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkBufferMemoryBarrier2} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferMemoryBarrier2.html">VkBufferMemoryBarrier2</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkBufferMemoryBarrier2(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfLong LAYOUT$srcStageMask = ValueLayout.JAVA_LONG.withName("srcStageMask");
-    public static final OfLong LAYOUT$srcAccessMask = ValueLayout.JAVA_LONG.withName("srcAccessMask");
-    public static final OfLong LAYOUT$dstStageMask = ValueLayout.JAVA_LONG.withName("dstStageMask");
-    public static final OfLong LAYOUT$dstAccessMask = ValueLayout.JAVA_LONG.withName("dstAccessMask");
-    public static final OfInt LAYOUT$srcQueueFamilyIndex = ValueLayout.JAVA_INT.withName("srcQueueFamilyIndex");
-    public static final OfInt LAYOUT$dstQueueFamilyIndex = ValueLayout.JAVA_INT.withName("dstQueueFamilyIndex");
-    public static final AddressLayout LAYOUT$buffer = ValueLayout.ADDRESS.withName("buffer");
-    public static final OfLong LAYOUT$offset = ValueLayout.JAVA_LONG.withName("offset");
-    public static final OfLong LAYOUT$size = ValueLayout.JAVA_LONG.withName("size");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$srcStageMask, LAYOUT$srcAccessMask, LAYOUT$dstStageMask, LAYOUT$dstAccessMask, LAYOUT$srcQueueFamilyIndex, LAYOUT$dstQueueFamilyIndex, LAYOUT$buffer, LAYOUT$offset, LAYOUT$size);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkBufferMemoryBarrier2 {
+        sType(VkStructureType.BUFFER_MEMORY_BARRIER_2);
+    }
 
     public static VkBufferMemoryBarrier2 allocate(Arena arena) {
         return new VkBufferMemoryBarrier2(arena.allocate(LAYOUT));
@@ -59,6 +59,21 @@ public record VkBufferMemoryBarrier2(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("srcStageMask"),
+        ValueLayout.JAVA_LONG.withName("srcAccessMask"),
+        ValueLayout.JAVA_LONG.withName("dstStageMask"),
+        ValueLayout.JAVA_LONG.withName("dstAccessMask"),
+        ValueLayout.JAVA_INT.withName("srcQueueFamilyIndex"),
+        ValueLayout.JAVA_INT.withName("dstQueueFamilyIndex"),
+        ValueLayout.ADDRESS.withName("buffer"),
+        ValueLayout.JAVA_LONG.withName("offset"),
+        ValueLayout.JAVA_LONG.withName("size")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$srcStageMask = PathElement.groupElement("PATH$srcStageMask");
@@ -70,6 +85,18 @@ public record VkBufferMemoryBarrier2(@NotNull MemorySegment segment) implements 
     public static final PathElement PATH$buffer = PathElement.groupElement("PATH$buffer");
     public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
     public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$srcStageMask = (OfLong) LAYOUT.select(PATH$srcStageMask);
+    public static final OfLong LAYOUT$srcAccessMask = (OfLong) LAYOUT.select(PATH$srcAccessMask);
+    public static final OfLong LAYOUT$dstStageMask = (OfLong) LAYOUT.select(PATH$dstStageMask);
+    public static final OfLong LAYOUT$dstAccessMask = (OfLong) LAYOUT.select(PATH$dstAccessMask);
+    public static final OfInt LAYOUT$srcQueueFamilyIndex = (OfInt) LAYOUT.select(PATH$srcQueueFamilyIndex);
+    public static final OfInt LAYOUT$dstQueueFamilyIndex = (OfInt) LAYOUT.select(PATH$dstQueueFamilyIndex);
+    public static final AddressLayout LAYOUT$buffer = (AddressLayout) LAYOUT.select(PATH$buffer);
+    public static final OfLong LAYOUT$offset = (OfLong) LAYOUT.select(PATH$offset);
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

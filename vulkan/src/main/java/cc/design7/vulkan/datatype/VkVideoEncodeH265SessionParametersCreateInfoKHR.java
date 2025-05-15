@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeH265SessionParametersCreateInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH265SessionParametersCreateInfoKHR.html">VkVideoEncodeH265SessionParametersCreateInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeH265SessionParametersCreateInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$maxStdVPSCount = ValueLayout.JAVA_INT.withName("maxStdVPSCount");
-    public static final OfInt LAYOUT$maxStdSPSCount = ValueLayout.JAVA_INT.withName("maxStdSPSCount");
-    public static final OfInt LAYOUT$maxStdPPSCount = ValueLayout.JAVA_INT.withName("maxStdPPSCount");
-    public static final AddressLayout LAYOUT$pParametersAddInfo = ValueLayout.ADDRESS.withTargetLayout(VkVideoEncodeH265SessionParametersAddInfoKHR.LAYOUT).withName("pParametersAddInfo");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$maxStdVPSCount, LAYOUT$maxStdSPSCount, LAYOUT$maxStdPPSCount, LAYOUT$pParametersAddInfo);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoEncodeH265SessionParametersCreateInfoKHR {
+        sType(VkStructureType.VIDEO_ENCODE_H265_SESSION_PARAMETERS_CREATE_INFO_KHR);
+    }
 
     public static VkVideoEncodeH265SessionParametersCreateInfoKHR allocate(Arena arena) {
         return new VkVideoEncodeH265SessionParametersCreateInfoKHR(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkVideoEncodeH265SessionParametersCreateInfoKHR(@NotNull MemorySeg
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maxStdVPSCount"),
+        ValueLayout.JAVA_INT.withName("maxStdSPSCount"),
+        ValueLayout.JAVA_INT.withName("maxStdPPSCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkVideoEncodeH265SessionParametersAddInfoKHR.LAYOUT).withName("pParametersAddInfo")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$maxStdVPSCount = PathElement.groupElement("PATH$maxStdVPSCount");
     public static final PathElement PATH$maxStdSPSCount = PathElement.groupElement("PATH$maxStdSPSCount");
     public static final PathElement PATH$maxStdPPSCount = PathElement.groupElement("PATH$maxStdPPSCount");
     public static final PathElement PATH$pParametersAddInfo = PathElement.groupElement("PATH$pParametersAddInfo");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maxStdVPSCount = (OfInt) LAYOUT.select(PATH$maxStdVPSCount);
+    public static final OfInt LAYOUT$maxStdSPSCount = (OfInt) LAYOUT.select(PATH$maxStdSPSCount);
+    public static final OfInt LAYOUT$maxStdPPSCount = (OfInt) LAYOUT.select(PATH$maxStdPPSCount);
+    public static final AddressLayout LAYOUT$pParametersAddInfo = (AddressLayout) LAYOUT.select(PATH$pParametersAddInfo);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

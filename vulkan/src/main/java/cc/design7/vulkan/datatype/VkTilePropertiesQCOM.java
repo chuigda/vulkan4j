@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkTilePropertiesQCOM} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkTilePropertiesQCOM.html">VkTilePropertiesQCOM</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkTilePropertiesQCOM(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final StructLayout LAYOUT$tileSize = VkExtent3D.LAYOUT.withName("tileSize");
-    public static final StructLayout LAYOUT$apronSize = VkExtent2D.LAYOUT.withName("apronSize");
-    public static final StructLayout LAYOUT$origin = VkOffset2D.LAYOUT.withName("origin");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$tileSize, LAYOUT$apronSize, LAYOUT$origin);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkTilePropertiesQCOM {
+        sType(VkStructureType.TILE_PROPERTIES_QCOM);
+    }
 
     public static VkTilePropertiesQCOM allocate(Arena arena) {
         return new VkTilePropertiesQCOM(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkTilePropertiesQCOM(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkExtent3D.LAYOUT.withName("tileSize"),
+        VkExtent2D.LAYOUT.withName("apronSize"),
+        VkOffset2D.LAYOUT.withName("origin")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$tileSize = PathElement.groupElement("PATH$tileSize");
     public static final PathElement PATH$apronSize = PathElement.groupElement("PATH$apronSize");
     public static final PathElement PATH$origin = PathElement.groupElement("PATH$origin");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$tileSize = (StructLayout) LAYOUT.select(PATH$tileSize);
+    public static final StructLayout LAYOUT$apronSize = (StructLayout) LAYOUT.select(PATH$apronSize);
+    public static final StructLayout LAYOUT$origin = (StructLayout) LAYOUT.select(PATH$origin);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

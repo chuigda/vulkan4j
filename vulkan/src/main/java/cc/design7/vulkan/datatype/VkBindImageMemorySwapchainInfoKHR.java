@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkBindImageMemorySwapchainInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindImageMemorySwapchainInfoKHR.html">VkBindImageMemorySwapchainInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkBindImageMemorySwapchainInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$swapchain = ValueLayout.ADDRESS.withName("swapchain");
-    public static final OfInt LAYOUT$imageIndex = ValueLayout.JAVA_INT.withName("imageIndex");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$swapchain, LAYOUT$imageIndex);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkBindImageMemorySwapchainInfoKHR {
+        sType(VkStructureType.BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR);
+    }
 
     public static VkBindImageMemorySwapchainInfoKHR allocate(Arena arena) {
         return new VkBindImageMemorySwapchainInfoKHR(arena.allocate(LAYOUT));
@@ -52,10 +59,23 @@ public record VkBindImageMemorySwapchainInfoKHR(@NotNull MemorySegment segment) 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("swapchain"),
+        ValueLayout.JAVA_INT.withName("imageIndex")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$swapchain = PathElement.groupElement("PATH$swapchain");
     public static final PathElement PATH$imageIndex = PathElement.groupElement("PATH$imageIndex");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$swapchain = (AddressLayout) LAYOUT.select(PATH$swapchain);
+    public static final OfInt LAYOUT$imageIndex = (OfInt) LAYOUT.select(PATH$imageIndex);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

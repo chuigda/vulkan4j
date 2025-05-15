@@ -14,29 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceVulkan13Features} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceVulkan13Features.html">VkPhysicalDeviceVulkan13Features</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceVulkan13Features(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$robustImageAccess = ValueLayout.JAVA_INT.withName("robustImageAccess");
-    public static final OfInt LAYOUT$inlineUniformBlock = ValueLayout.JAVA_INT.withName("inlineUniformBlock");
-    public static final OfInt LAYOUT$descriptorBindingInlineUniformBlockUpdateAfterBind = ValueLayout.JAVA_INT.withName("descriptorBindingInlineUniformBlockUpdateAfterBind");
-    public static final OfInt LAYOUT$pipelineCreationCacheControl = ValueLayout.JAVA_INT.withName("pipelineCreationCacheControl");
-    public static final OfInt LAYOUT$privateData = ValueLayout.JAVA_INT.withName("privateData");
-    public static final OfInt LAYOUT$shaderDemoteToHelperInvocation = ValueLayout.JAVA_INT.withName("shaderDemoteToHelperInvocation");
-    public static final OfInt LAYOUT$shaderTerminateInvocation = ValueLayout.JAVA_INT.withName("shaderTerminateInvocation");
-    public static final OfInt LAYOUT$subgroupSizeControl = ValueLayout.JAVA_INT.withName("subgroupSizeControl");
-    public static final OfInt LAYOUT$computeFullSubgroups = ValueLayout.JAVA_INT.withName("computeFullSubgroups");
-    public static final OfInt LAYOUT$synchronization2 = ValueLayout.JAVA_INT.withName("synchronization2");
-    public static final OfInt LAYOUT$textureCompressionASTC_HDR = ValueLayout.JAVA_INT.withName("textureCompressionASTC_HDR");
-    public static final OfInt LAYOUT$shaderZeroInitializeWorkgroupMemory = ValueLayout.JAVA_INT.withName("shaderZeroInitializeWorkgroupMemory");
-    public static final OfInt LAYOUT$dynamicRendering = ValueLayout.JAVA_INT.withName("dynamicRendering");
-    public static final OfInt LAYOUT$shaderIntegerDotProduct = ValueLayout.JAVA_INT.withName("shaderIntegerDotProduct");
-    public static final OfInt LAYOUT$maintenance4 = ValueLayout.JAVA_INT.withName("maintenance4");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$robustImageAccess, LAYOUT$inlineUniformBlock, LAYOUT$descriptorBindingInlineUniformBlockUpdateAfterBind, LAYOUT$pipelineCreationCacheControl, LAYOUT$privateData, LAYOUT$shaderDemoteToHelperInvocation, LAYOUT$shaderTerminateInvocation, LAYOUT$subgroupSizeControl, LAYOUT$computeFullSubgroups, LAYOUT$synchronization2, LAYOUT$textureCompressionASTC_HDR, LAYOUT$shaderZeroInitializeWorkgroupMemory, LAYOUT$dynamicRendering, LAYOUT$shaderIntegerDotProduct, LAYOUT$maintenance4);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceVulkan13Features {
+        sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_3_FEATURES);
+    }
 
     public static VkPhysicalDeviceVulkan13Features allocate(Arena arena) {
         return new VkPhysicalDeviceVulkan13Features(arena.allocate(LAYOUT));
@@ -65,6 +59,27 @@ public record VkPhysicalDeviceVulkan13Features(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("robustImageAccess"),
+        ValueLayout.JAVA_INT.withName("inlineUniformBlock"),
+        ValueLayout.JAVA_INT.withName("descriptorBindingInlineUniformBlockUpdateAfterBind"),
+        ValueLayout.JAVA_INT.withName("pipelineCreationCacheControl"),
+        ValueLayout.JAVA_INT.withName("privateData"),
+        ValueLayout.JAVA_INT.withName("shaderDemoteToHelperInvocation"),
+        ValueLayout.JAVA_INT.withName("shaderTerminateInvocation"),
+        ValueLayout.JAVA_INT.withName("subgroupSizeControl"),
+        ValueLayout.JAVA_INT.withName("computeFullSubgroups"),
+        ValueLayout.JAVA_INT.withName("synchronization2"),
+        ValueLayout.JAVA_INT.withName("textureCompressionASTC_HDR"),
+        ValueLayout.JAVA_INT.withName("shaderZeroInitializeWorkgroupMemory"),
+        ValueLayout.JAVA_INT.withName("dynamicRendering"),
+        ValueLayout.JAVA_INT.withName("shaderIntegerDotProduct"),
+        ValueLayout.JAVA_INT.withName("maintenance4")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$robustImageAccess = PathElement.groupElement("PATH$robustImageAccess");
@@ -82,6 +97,24 @@ public record VkPhysicalDeviceVulkan13Features(@NotNull MemorySegment segment) i
     public static final PathElement PATH$dynamicRendering = PathElement.groupElement("PATH$dynamicRendering");
     public static final PathElement PATH$shaderIntegerDotProduct = PathElement.groupElement("PATH$shaderIntegerDotProduct");
     public static final PathElement PATH$maintenance4 = PathElement.groupElement("PATH$maintenance4");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$robustImageAccess = (OfInt) LAYOUT.select(PATH$robustImageAccess);
+    public static final OfInt LAYOUT$inlineUniformBlock = (OfInt) LAYOUT.select(PATH$inlineUniformBlock);
+    public static final OfInt LAYOUT$descriptorBindingInlineUniformBlockUpdateAfterBind = (OfInt) LAYOUT.select(PATH$descriptorBindingInlineUniformBlockUpdateAfterBind);
+    public static final OfInt LAYOUT$pipelineCreationCacheControl = (OfInt) LAYOUT.select(PATH$pipelineCreationCacheControl);
+    public static final OfInt LAYOUT$privateData = (OfInt) LAYOUT.select(PATH$privateData);
+    public static final OfInt LAYOUT$shaderDemoteToHelperInvocation = (OfInt) LAYOUT.select(PATH$shaderDemoteToHelperInvocation);
+    public static final OfInt LAYOUT$shaderTerminateInvocation = (OfInt) LAYOUT.select(PATH$shaderTerminateInvocation);
+    public static final OfInt LAYOUT$subgroupSizeControl = (OfInt) LAYOUT.select(PATH$subgroupSizeControl);
+    public static final OfInt LAYOUT$computeFullSubgroups = (OfInt) LAYOUT.select(PATH$computeFullSubgroups);
+    public static final OfInt LAYOUT$synchronization2 = (OfInt) LAYOUT.select(PATH$synchronization2);
+    public static final OfInt LAYOUT$textureCompressionASTC_HDR = (OfInt) LAYOUT.select(PATH$textureCompressionASTC_HDR);
+    public static final OfInt LAYOUT$shaderZeroInitializeWorkgroupMemory = (OfInt) LAYOUT.select(PATH$shaderZeroInitializeWorkgroupMemory);
+    public static final OfInt LAYOUT$dynamicRendering = (OfInt) LAYOUT.select(PATH$dynamicRendering);
+    public static final OfInt LAYOUT$shaderIntegerDotProduct = (OfInt) LAYOUT.select(PATH$shaderIntegerDotProduct);
+    public static final OfInt LAYOUT$maintenance4 = (OfInt) LAYOUT.select(PATH$maintenance4);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

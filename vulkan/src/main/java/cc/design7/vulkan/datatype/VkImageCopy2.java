@@ -14,19 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkImageCopy2} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCopy2.html">VkImageCopy2</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkImageCopy2(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final StructLayout LAYOUT$srcSubresource = VkImageSubresourceLayers.LAYOUT.withName("srcSubresource");
-    public static final StructLayout LAYOUT$srcOffset = VkOffset3D.LAYOUT.withName("srcOffset");
-    public static final StructLayout LAYOUT$dstSubresource = VkImageSubresourceLayers.LAYOUT.withName("dstSubresource");
-    public static final StructLayout LAYOUT$dstOffset = VkOffset3D.LAYOUT.withName("dstOffset");
-    public static final StructLayout LAYOUT$extent = VkExtent3D.LAYOUT.withName("extent");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$srcSubresource, LAYOUT$srcOffset, LAYOUT$dstSubresource, LAYOUT$dstOffset, LAYOUT$extent);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkImageCopy2 {
+        sType(VkStructureType.IMAGE_COPY_2);
+    }
 
     public static VkImageCopy2 allocate(Arena arena) {
         return new VkImageCopy2(arena.allocate(LAYOUT));
@@ -55,6 +59,17 @@ public record VkImageCopy2(@NotNull MemorySegment segment) implements IPointer {
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkImageSubresourceLayers.LAYOUT.withName("srcSubresource"),
+        VkOffset3D.LAYOUT.withName("srcOffset"),
+        VkImageSubresourceLayers.LAYOUT.withName("dstSubresource"),
+        VkOffset3D.LAYOUT.withName("dstOffset"),
+        VkExtent3D.LAYOUT.withName("extent")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$srcSubresource = PathElement.groupElement("PATH$srcSubresource");
@@ -62,6 +77,14 @@ public record VkImageCopy2(@NotNull MemorySegment segment) implements IPointer {
     public static final PathElement PATH$dstSubresource = PathElement.groupElement("PATH$dstSubresource");
     public static final PathElement PATH$dstOffset = PathElement.groupElement("PATH$dstOffset");
     public static final PathElement PATH$extent = PathElement.groupElement("PATH$extent");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$srcSubresource = (StructLayout) LAYOUT.select(PATH$srcSubresource);
+    public static final StructLayout LAYOUT$srcOffset = (StructLayout) LAYOUT.select(PATH$srcOffset);
+    public static final StructLayout LAYOUT$dstSubresource = (StructLayout) LAYOUT.select(PATH$dstSubresource);
+    public static final StructLayout LAYOUT$dstOffset = (StructLayout) LAYOUT.select(PATH$dstOffset);
+    public static final StructLayout LAYOUT$extent = (StructLayout) LAYOUT.select(PATH$extent);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

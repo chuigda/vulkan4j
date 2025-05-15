@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkImageConstraintsInfoFUCHSIA} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageConstraintsInfoFUCHSIA.html">VkImageConstraintsInfoFUCHSIA</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$formatConstraintsCount = ValueLayout.JAVA_INT.withName("formatConstraintsCount");
-    public static final AddressLayout LAYOUT$pFormatConstraints = ValueLayout.ADDRESS.withTargetLayout(VkImageFormatConstraintsInfoFUCHSIA.LAYOUT).withName("pFormatConstraints");
-    public static final StructLayout LAYOUT$bufferCollectionConstraints = VkBufferCollectionConstraintsInfoFUCHSIA.LAYOUT.withName("bufferCollectionConstraints");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$formatConstraintsCount, LAYOUT$pFormatConstraints, LAYOUT$bufferCollectionConstraints, LAYOUT$flags);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkImageConstraintsInfoFUCHSIA {
+        sType(VkStructureType.IMAGE_CONSTRAINTS_INFO_FUCHSIA);
+    }
 
     public static VkImageConstraintsInfoFUCHSIA allocate(Arena arena) {
         return new VkImageConstraintsInfoFUCHSIA(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("formatConstraintsCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkImageFormatConstraintsInfoFUCHSIA.LAYOUT).withName("pFormatConstraints"),
+        VkBufferCollectionConstraintsInfoFUCHSIA.LAYOUT.withName("bufferCollectionConstraints"),
+        ValueLayout.JAVA_INT.withName("flags")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$formatConstraintsCount = PathElement.groupElement("PATH$formatConstraintsCount");
     public static final PathElement PATH$pFormatConstraints = PathElement.groupElement("PATH$pFormatConstraints");
     public static final PathElement PATH$bufferCollectionConstraints = PathElement.groupElement("PATH$bufferCollectionConstraints");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$formatConstraintsCount = (OfInt) LAYOUT.select(PATH$formatConstraintsCount);
+    public static final AddressLayout LAYOUT$pFormatConstraints = (AddressLayout) LAYOUT.select(PATH$pFormatConstraints);
+    public static final StructLayout LAYOUT$bufferCollectionConstraints = (StructLayout) LAYOUT.select(PATH$bufferCollectionConstraints);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

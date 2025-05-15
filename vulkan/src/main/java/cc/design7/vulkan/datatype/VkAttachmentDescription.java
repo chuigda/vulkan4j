@@ -14,22 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkAttachmentDescription} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentDescription.html">VkAttachmentDescription</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkAttachmentDescription(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$format = ValueLayout.JAVA_INT.withName("format");
-    public static final OfInt LAYOUT$samples = ValueLayout.JAVA_INT.withName("samples");
-    public static final OfInt LAYOUT$loadOp = ValueLayout.JAVA_INT.withName("loadOp");
-    public static final OfInt LAYOUT$storeOp = ValueLayout.JAVA_INT.withName("storeOp");
-    public static final OfInt LAYOUT$stencilLoadOp = ValueLayout.JAVA_INT.withName("stencilLoadOp");
-    public static final OfInt LAYOUT$stencilStoreOp = ValueLayout.JAVA_INT.withName("stencilStoreOp");
-    public static final OfInt LAYOUT$initialLayout = ValueLayout.JAVA_INT.withName("initialLayout");
-    public static final OfInt LAYOUT$finalLayout = ValueLayout.JAVA_INT.withName("finalLayout");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$format, LAYOUT$samples, LAYOUT$loadOp, LAYOUT$storeOp, LAYOUT$stencilLoadOp, LAYOUT$stencilStoreOp, LAYOUT$initialLayout, LAYOUT$finalLayout);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkAttachmentDescription allocate(Arena arena) {
         return new VkAttachmentDescription(arena.allocate(LAYOUT));
     }
@@ -57,6 +55,19 @@ public record VkAttachmentDescription(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("format"),
+        ValueLayout.JAVA_INT.withName("samples"),
+        ValueLayout.JAVA_INT.withName("loadOp"),
+        ValueLayout.JAVA_INT.withName("storeOp"),
+        ValueLayout.JAVA_INT.withName("stencilLoadOp"),
+        ValueLayout.JAVA_INT.withName("stencilStoreOp"),
+        ValueLayout.JAVA_INT.withName("initialLayout"),
+        ValueLayout.JAVA_INT.withName("finalLayout")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
     public static final PathElement PATH$samples = PathElement.groupElement("PATH$samples");
@@ -66,6 +77,16 @@ public record VkAttachmentDescription(@NotNull MemorySegment segment) implements
     public static final PathElement PATH$stencilStoreOp = PathElement.groupElement("PATH$stencilStoreOp");
     public static final PathElement PATH$initialLayout = PathElement.groupElement("PATH$initialLayout");
     public static final PathElement PATH$finalLayout = PathElement.groupElement("PATH$finalLayout");
+
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
+    public static final OfInt LAYOUT$samples = (OfInt) LAYOUT.select(PATH$samples);
+    public static final OfInt LAYOUT$loadOp = (OfInt) LAYOUT.select(PATH$loadOp);
+    public static final OfInt LAYOUT$storeOp = (OfInt) LAYOUT.select(PATH$storeOp);
+    public static final OfInt LAYOUT$stencilLoadOp = (OfInt) LAYOUT.select(PATH$stencilLoadOp);
+    public static final OfInt LAYOUT$stencilStoreOp = (OfInt) LAYOUT.select(PATH$stencilStoreOp);
+    public static final OfInt LAYOUT$initialLayout = (OfInt) LAYOUT.select(PATH$initialLayout);
+    public static final OfInt LAYOUT$finalLayout = (OfInt) LAYOUT.select(PATH$finalLayout);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$format = LAYOUT$format.byteSize();

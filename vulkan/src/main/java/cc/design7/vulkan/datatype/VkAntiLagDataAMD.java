@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkAntiLagDataAMD} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAntiLagDataAMD.html">VkAntiLagDataAMD</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$mode = ValueLayout.JAVA_INT.withName("mode");
-    public static final OfInt LAYOUT$maxFPS = ValueLayout.JAVA_INT.withName("maxFPS");
-    public static final AddressLayout LAYOUT$pPresentationInfo = ValueLayout.ADDRESS.withTargetLayout(VkAntiLagPresentationInfoAMD.LAYOUT).withName("pPresentationInfo");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$mode, LAYOUT$maxFPS, LAYOUT$pPresentationInfo);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkAntiLagDataAMD {
+        sType(VkStructureType.ANTI_LAG_DATA_AMD);
+    }
 
     public static VkAntiLagDataAMD allocate(Arena arena) {
         return new VkAntiLagDataAMD(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IPoint
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("mode"),
+        ValueLayout.JAVA_INT.withName("maxFPS"),
+        ValueLayout.ADDRESS.withTargetLayout(VkAntiLagPresentationInfoAMD.LAYOUT).withName("pPresentationInfo")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$mode = PathElement.groupElement("PATH$mode");
     public static final PathElement PATH$maxFPS = PathElement.groupElement("PATH$maxFPS");
     public static final PathElement PATH$pPresentationInfo = PathElement.groupElement("PATH$pPresentationInfo");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$mode = (OfInt) LAYOUT.select(PATH$mode);
+    public static final OfInt LAYOUT$maxFPS = (OfInt) LAYOUT.select(PATH$maxFPS);
+    public static final AddressLayout LAYOUT$pPresentationInfo = (AddressLayout) LAYOUT.select(PATH$pPresentationInfo);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

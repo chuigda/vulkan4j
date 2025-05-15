@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceImageProcessingFeaturesQCOM} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceImageProcessingFeaturesQCOM.html">VkPhysicalDeviceImageProcessingFeaturesQCOM</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceImageProcessingFeaturesQCOM(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$textureSampleWeighted = ValueLayout.JAVA_INT.withName("textureSampleWeighted");
-    public static final OfInt LAYOUT$textureBoxFilter = ValueLayout.JAVA_INT.withName("textureBoxFilter");
-    public static final OfInt LAYOUT$textureBlockMatch = ValueLayout.JAVA_INT.withName("textureBlockMatch");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$textureSampleWeighted, LAYOUT$textureBoxFilter, LAYOUT$textureBlockMatch);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceImageProcessingFeaturesQCOM {
+        sType(VkStructureType.PHYSICAL_DEVICE_IMAGE_PROCESSING_FEATURES_QCOM);
+    }
 
     public static VkPhysicalDeviceImageProcessingFeaturesQCOM allocate(Arena arena) {
         return new VkPhysicalDeviceImageProcessingFeaturesQCOM(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkPhysicalDeviceImageProcessingFeaturesQCOM(@NotNull MemorySegment
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("textureSampleWeighted"),
+        ValueLayout.JAVA_INT.withName("textureBoxFilter"),
+        ValueLayout.JAVA_INT.withName("textureBlockMatch")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$textureSampleWeighted = PathElement.groupElement("PATH$textureSampleWeighted");
     public static final PathElement PATH$textureBoxFilter = PathElement.groupElement("PATH$textureBoxFilter");
     public static final PathElement PATH$textureBlockMatch = PathElement.groupElement("PATH$textureBlockMatch");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$textureSampleWeighted = (OfInt) LAYOUT.select(PATH$textureSampleWeighted);
+    public static final OfInt LAYOUT$textureBoxFilter = (OfInt) LAYOUT.select(PATH$textureBoxFilter);
+    public static final OfInt LAYOUT$textureBlockMatch = (OfInt) LAYOUT.select(PATH$textureBlockMatch);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

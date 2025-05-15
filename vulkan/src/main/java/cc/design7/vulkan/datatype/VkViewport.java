@@ -14,19 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkViewport} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkViewport.html">VkViewport</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkViewport(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfFloat LAYOUT$x = ValueLayout.JAVA_FLOAT.withName("x");
-    public static final OfFloat LAYOUT$y = ValueLayout.JAVA_FLOAT.withName("y");
-    public static final OfFloat LAYOUT$width = ValueLayout.JAVA_FLOAT.withName("width");
-    public static final OfFloat LAYOUT$height = ValueLayout.JAVA_FLOAT.withName("height");
-    public static final OfFloat LAYOUT$minDepth = ValueLayout.JAVA_FLOAT.withName("minDepth");
-    public static final OfFloat LAYOUT$maxDepth = ValueLayout.JAVA_FLOAT.withName("maxDepth");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$x, LAYOUT$y, LAYOUT$width, LAYOUT$height, LAYOUT$minDepth, LAYOUT$maxDepth);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkViewport allocate(Arena arena) {
         return new VkViewport(arena.allocate(LAYOUT));
     }
@@ -54,12 +55,29 @@ public record VkViewport(@NotNull MemorySegment segment) implements IPointer {
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_FLOAT.withName("x"),
+        ValueLayout.JAVA_FLOAT.withName("y"),
+        ValueLayout.JAVA_FLOAT.withName("width"),
+        ValueLayout.JAVA_FLOAT.withName("height"),
+        ValueLayout.JAVA_FLOAT.withName("minDepth"),
+        ValueLayout.JAVA_FLOAT.withName("maxDepth")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$x = PathElement.groupElement("PATH$x");
     public static final PathElement PATH$y = PathElement.groupElement("PATH$y");
     public static final PathElement PATH$width = PathElement.groupElement("PATH$width");
     public static final PathElement PATH$height = PathElement.groupElement("PATH$height");
     public static final PathElement PATH$minDepth = PathElement.groupElement("PATH$minDepth");
     public static final PathElement PATH$maxDepth = PathElement.groupElement("PATH$maxDepth");
+
+    public static final OfFloat LAYOUT$x = (OfFloat) LAYOUT.select(PATH$x);
+    public static final OfFloat LAYOUT$y = (OfFloat) LAYOUT.select(PATH$y);
+    public static final OfFloat LAYOUT$width = (OfFloat) LAYOUT.select(PATH$width);
+    public static final OfFloat LAYOUT$height = (OfFloat) LAYOUT.select(PATH$height);
+    public static final OfFloat LAYOUT$minDepth = (OfFloat) LAYOUT.select(PATH$minDepth);
+    public static final OfFloat LAYOUT$maxDepth = (OfFloat) LAYOUT.select(PATH$maxDepth);
 
     public static final long SIZE$x = LAYOUT$x.byteSize();
     public static final long SIZE$y = LAYOUT$y.byteSize();

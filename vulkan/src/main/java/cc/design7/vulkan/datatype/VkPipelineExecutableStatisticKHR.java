@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPipelineExecutableStatisticKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineExecutableStatisticKHR.html">VkPipelineExecutableStatisticKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfByte LAYOUT$name = ValueLayout.JAVA_BYTE.withName("name");
-    public static final OfByte LAYOUT$description = ValueLayout.JAVA_BYTE.withName("description");
-    public static final OfInt LAYOUT$format = ValueLayout.JAVA_INT.withName("format");
-    public static final StructLayout LAYOUT$value = VkPipelineExecutableStatisticValueKHR.LAYOUT.withName("value");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$name, LAYOUT$description, LAYOUT$format, LAYOUT$value);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPipelineExecutableStatisticKHR {
+        sType(VkStructureType.PIPELINE_EXECUTABLE_STATISTIC_KHR);
+    }
 
     public static VkPipelineExecutableStatisticKHR allocate(Arena arena) {
         return new VkPipelineExecutableStatisticKHR(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_BYTE.withName("name"),
+        ValueLayout.JAVA_BYTE.withName("description"),
+        ValueLayout.JAVA_INT.withName("format"),
+        VkPipelineExecutableStatisticValueKHR.LAYOUT.withName("value")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$name = PathElement.groupElement("PATH$name");
     public static final PathElement PATH$description = PathElement.groupElement("PATH$description");
     public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
     public static final PathElement PATH$value = PathElement.groupElement("PATH$value");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfByte LAYOUT$name = (OfByte) LAYOUT.select(PATH$name);
+    public static final OfByte LAYOUT$description = (OfByte) LAYOUT.select(PATH$description);
+    public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
+    public static final StructLayout LAYOUT$value = (StructLayout) LAYOUT.select(PATH$value);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

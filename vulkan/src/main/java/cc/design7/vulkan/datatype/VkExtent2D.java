@@ -14,15 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkExtent2D} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExtent2D.html">VkExtent2D</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkExtent2D(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$width = ValueLayout.JAVA_INT.withName("width");
-    public static final OfInt LAYOUT$height = ValueLayout.JAVA_INT.withName("height");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$width, LAYOUT$height);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkExtent2D allocate(Arena arena) {
         return new VkExtent2D(arena.allocate(LAYOUT));
     }
@@ -50,8 +55,17 @@ public record VkExtent2D(@NotNull MemorySegment segment) implements IPointer {
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("width"),
+        ValueLayout.JAVA_INT.withName("height")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$width = PathElement.groupElement("PATH$width");
     public static final PathElement PATH$height = PathElement.groupElement("PATH$height");
+
+    public static final OfInt LAYOUT$width = (OfInt) LAYOUT.select(PATH$width);
+    public static final OfInt LAYOUT$height = (OfInt) LAYOUT.select(PATH$height);
 
     public static final long SIZE$width = LAYOUT$width.byteSize();
     public static final long SIZE$height = LAYOUT$height.byteSize();

@@ -14,19 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkBufferImageCopy} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferImageCopy.html">VkBufferImageCopy</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkBufferImageCopy(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfLong LAYOUT$bufferOffset = ValueLayout.JAVA_LONG.withName("bufferOffset");
-    public static final OfInt LAYOUT$bufferRowLength = ValueLayout.JAVA_INT.withName("bufferRowLength");
-    public static final OfInt LAYOUT$bufferImageHeight = ValueLayout.JAVA_INT.withName("bufferImageHeight");
-    public static final StructLayout LAYOUT$imageSubresource = VkImageSubresourceLayers.LAYOUT.withName("imageSubresource");
-    public static final StructLayout LAYOUT$imageOffset = VkOffset3D.LAYOUT.withName("imageOffset");
-    public static final StructLayout LAYOUT$imageExtent = VkExtent3D.LAYOUT.withName("imageExtent");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$bufferOffset, LAYOUT$bufferRowLength, LAYOUT$bufferImageHeight, LAYOUT$imageSubresource, LAYOUT$imageOffset, LAYOUT$imageExtent);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkBufferImageCopy allocate(Arena arena) {
         return new VkBufferImageCopy(arena.allocate(LAYOUT));
     }
@@ -54,12 +55,29 @@ public record VkBufferImageCopy(@NotNull MemorySegment segment) implements IPoin
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("bufferOffset"),
+        ValueLayout.JAVA_INT.withName("bufferRowLength"),
+        ValueLayout.JAVA_INT.withName("bufferImageHeight"),
+        VkImageSubresourceLayers.LAYOUT.withName("imageSubresource"),
+        VkOffset3D.LAYOUT.withName("imageOffset"),
+        VkExtent3D.LAYOUT.withName("imageExtent")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$bufferOffset = PathElement.groupElement("PATH$bufferOffset");
     public static final PathElement PATH$bufferRowLength = PathElement.groupElement("PATH$bufferRowLength");
     public static final PathElement PATH$bufferImageHeight = PathElement.groupElement("PATH$bufferImageHeight");
     public static final PathElement PATH$imageSubresource = PathElement.groupElement("PATH$imageSubresource");
     public static final PathElement PATH$imageOffset = PathElement.groupElement("PATH$imageOffset");
     public static final PathElement PATH$imageExtent = PathElement.groupElement("PATH$imageExtent");
+
+    public static final OfLong LAYOUT$bufferOffset = (OfLong) LAYOUT.select(PATH$bufferOffset);
+    public static final OfInt LAYOUT$bufferRowLength = (OfInt) LAYOUT.select(PATH$bufferRowLength);
+    public static final OfInt LAYOUT$bufferImageHeight = (OfInt) LAYOUT.select(PATH$bufferImageHeight);
+    public static final StructLayout LAYOUT$imageSubresource = (StructLayout) LAYOUT.select(PATH$imageSubresource);
+    public static final StructLayout LAYOUT$imageOffset = (StructLayout) LAYOUT.select(PATH$imageOffset);
+    public static final StructLayout LAYOUT$imageExtent = (StructLayout) LAYOUT.select(PATH$imageExtent);
 
     public static final long SIZE$bufferOffset = LAYOUT$bufferOffset.byteSize();
     public static final long SIZE$bufferRowLength = LAYOUT$bufferRowLength.byteSize();

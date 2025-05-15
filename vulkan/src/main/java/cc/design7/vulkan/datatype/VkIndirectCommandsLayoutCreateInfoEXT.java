@@ -14,20 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkIndirectCommandsLayoutCreateInfoEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsLayoutCreateInfoEXT.html">VkIndirectCommandsLayoutCreateInfoEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$shaderStages = ValueLayout.JAVA_INT.withName("shaderStages");
-    public static final OfInt LAYOUT$indirectStride = ValueLayout.JAVA_INT.withName("indirectStride");
-    public static final AddressLayout LAYOUT$pipelineLayout = ValueLayout.ADDRESS.withName("pipelineLayout");
-    public static final OfInt LAYOUT$tokenCount = ValueLayout.JAVA_INT.withName("tokenCount");
-    public static final AddressLayout LAYOUT$pTokens = ValueLayout.ADDRESS.withTargetLayout(VkIndirectCommandsLayoutTokenEXT.LAYOUT).withName("pTokens");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$shaderStages, LAYOUT$indirectStride, LAYOUT$pipelineLayout, LAYOUT$tokenCount, LAYOUT$pTokens);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkIndirectCommandsLayoutCreateInfoEXT {
+        sType(VkStructureType.INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_EXT);
+    }
 
     public static VkIndirectCommandsLayoutCreateInfoEXT allocate(Arena arena) {
         return new VkIndirectCommandsLayoutCreateInfoEXT(arena.allocate(LAYOUT));
@@ -56,6 +59,18 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("shaderStages"),
+        ValueLayout.JAVA_INT.withName("indirectStride"),
+        ValueLayout.ADDRESS.withName("pipelineLayout"),
+        ValueLayout.JAVA_INT.withName("tokenCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkIndirectCommandsLayoutTokenEXT.LAYOUT).withName("pTokens")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -64,6 +79,15 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
     public static final PathElement PATH$pipelineLayout = PathElement.groupElement("PATH$pipelineLayout");
     public static final PathElement PATH$tokenCount = PathElement.groupElement("PATH$tokenCount");
     public static final PathElement PATH$pTokens = PathElement.groupElement("PATH$pTokens");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$shaderStages = (OfInt) LAYOUT.select(PATH$shaderStages);
+    public static final OfInt LAYOUT$indirectStride = (OfInt) LAYOUT.select(PATH$indirectStride);
+    public static final AddressLayout LAYOUT$pipelineLayout = (AddressLayout) LAYOUT.select(PATH$pipelineLayout);
+    public static final OfInt LAYOUT$tokenCount = (OfInt) LAYOUT.select(PATH$tokenCount);
+    public static final AddressLayout LAYOUT$pTokens = (AddressLayout) LAYOUT.select(PATH$pTokens);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,22 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPartitionedAccelerationStructureWriteInstanceDataNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPartitionedAccelerationStructureWriteInstanceDataNV.html">VkPartitionedAccelerationStructureWriteInstanceDataNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$transform = VkTransformMatrixKHR.LAYOUT.withName("transform");
-    public static final OfFloat LAYOUT$explicitAABB = ValueLayout.JAVA_FLOAT.withName("explicitAABB");
-    public static final OfInt LAYOUT$instanceID = ValueLayout.JAVA_INT.withName("instanceID");
-    public static final OfInt LAYOUT$instanceMask = ValueLayout.JAVA_INT.withName("instanceMask");
-    public static final OfInt LAYOUT$instanceContributionToHitGroupIndex = ValueLayout.JAVA_INT.withName("instanceContributionToHitGroupIndex");
-    public static final OfInt LAYOUT$instanceFlags = ValueLayout.JAVA_INT.withName("instanceFlags");
-    public static final OfInt LAYOUT$instanceIndex = ValueLayout.JAVA_INT.withName("instanceIndex");
-    public static final OfInt LAYOUT$partitionIndex = ValueLayout.JAVA_INT.withName("partitionIndex");
-    public static final OfLong LAYOUT$accelerationStructure = ValueLayout.JAVA_LONG.withName("accelerationStructure");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$transform, LAYOUT$explicitAABB, LAYOUT$instanceID, LAYOUT$instanceMask, LAYOUT$instanceContributionToHitGroupIndex, LAYOUT$instanceFlags, LAYOUT$instanceIndex, LAYOUT$partitionIndex, LAYOUT$accelerationStructure);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkPartitionedAccelerationStructureWriteInstanceDataNV allocate(Arena arena) {
         return new VkPartitionedAccelerationStructureWriteInstanceDataNV(arena.allocate(LAYOUT));
     }
@@ -57,6 +55,19 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        VkTransformMatrixKHR.LAYOUT.withName("transform"),
+        ValueLayout.JAVA_FLOAT.withName("explicitAABB"),
+        ValueLayout.JAVA_INT.withName("instanceID"),
+        ValueLayout.JAVA_INT.withName("instanceMask"),
+        ValueLayout.JAVA_INT.withName("instanceContributionToHitGroupIndex"),
+        ValueLayout.JAVA_INT.withName("instanceFlags"),
+        ValueLayout.JAVA_INT.withName("instanceIndex"),
+        ValueLayout.JAVA_INT.withName("partitionIndex"),
+        ValueLayout.JAVA_LONG.withName("accelerationStructure")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$transform = PathElement.groupElement("PATH$transform");
     public static final PathElement PATH$explicitAABB = PathElement.groupElement("PATH$explicitAABB");
     public static final PathElement PATH$instanceID = PathElement.groupElement("PATH$instanceID");
@@ -66,6 +77,16 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
     public static final PathElement PATH$instanceIndex = PathElement.groupElement("PATH$instanceIndex");
     public static final PathElement PATH$partitionIndex = PathElement.groupElement("PATH$partitionIndex");
     public static final PathElement PATH$accelerationStructure = PathElement.groupElement("PATH$accelerationStructure");
+
+    public static final StructLayout LAYOUT$transform = (StructLayout) LAYOUT.select(PATH$transform);
+    public static final OfFloat LAYOUT$explicitAABB = (OfFloat) LAYOUT.select(PATH$explicitAABB);
+    public static final OfInt LAYOUT$instanceID = (OfInt) LAYOUT.select(PATH$instanceID);
+    public static final OfInt LAYOUT$instanceMask = (OfInt) LAYOUT.select(PATH$instanceMask);
+    public static final OfInt LAYOUT$instanceContributionToHitGroupIndex = (OfInt) LAYOUT.select(PATH$instanceContributionToHitGroupIndex);
+    public static final OfInt LAYOUT$instanceFlags = (OfInt) LAYOUT.select(PATH$instanceFlags);
+    public static final OfInt LAYOUT$instanceIndex = (OfInt) LAYOUT.select(PATH$instanceIndex);
+    public static final OfInt LAYOUT$partitionIndex = (OfInt) LAYOUT.select(PATH$partitionIndex);
+    public static final OfLong LAYOUT$accelerationStructure = (OfLong) LAYOUT.select(PATH$accelerationStructure);
 
     public static final long SIZE$transform = LAYOUT$transform.byteSize();
     public static final long SIZE$explicitAABB = LAYOUT$explicitAABB.byteSize();

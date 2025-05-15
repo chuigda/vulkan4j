@@ -14,26 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceShaderAtomicFloatFeaturesEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.html">VkPhysicalDeviceShaderAtomicFloatFeaturesEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$shaderBufferFloat32Atomics = ValueLayout.JAVA_INT.withName("shaderBufferFloat32Atomics");
-    public static final OfInt LAYOUT$shaderBufferFloat32AtomicAdd = ValueLayout.JAVA_INT.withName("shaderBufferFloat32AtomicAdd");
-    public static final OfInt LAYOUT$shaderBufferFloat64Atomics = ValueLayout.JAVA_INT.withName("shaderBufferFloat64Atomics");
-    public static final OfInt LAYOUT$shaderBufferFloat64AtomicAdd = ValueLayout.JAVA_INT.withName("shaderBufferFloat64AtomicAdd");
-    public static final OfInt LAYOUT$shaderSharedFloat32Atomics = ValueLayout.JAVA_INT.withName("shaderSharedFloat32Atomics");
-    public static final OfInt LAYOUT$shaderSharedFloat32AtomicAdd = ValueLayout.JAVA_INT.withName("shaderSharedFloat32AtomicAdd");
-    public static final OfInt LAYOUT$shaderSharedFloat64Atomics = ValueLayout.JAVA_INT.withName("shaderSharedFloat64Atomics");
-    public static final OfInt LAYOUT$shaderSharedFloat64AtomicAdd = ValueLayout.JAVA_INT.withName("shaderSharedFloat64AtomicAdd");
-    public static final OfInt LAYOUT$shaderImageFloat32Atomics = ValueLayout.JAVA_INT.withName("shaderImageFloat32Atomics");
-    public static final OfInt LAYOUT$shaderImageFloat32AtomicAdd = ValueLayout.JAVA_INT.withName("shaderImageFloat32AtomicAdd");
-    public static final OfInt LAYOUT$sparseImageFloat32Atomics = ValueLayout.JAVA_INT.withName("sparseImageFloat32Atomics");
-    public static final OfInt LAYOUT$sparseImageFloat32AtomicAdd = ValueLayout.JAVA_INT.withName("sparseImageFloat32AtomicAdd");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$shaderBufferFloat32Atomics, LAYOUT$shaderBufferFloat32AtomicAdd, LAYOUT$shaderBufferFloat64Atomics, LAYOUT$shaderBufferFloat64AtomicAdd, LAYOUT$shaderSharedFloat32Atomics, LAYOUT$shaderSharedFloat32AtomicAdd, LAYOUT$shaderSharedFloat64Atomics, LAYOUT$shaderSharedFloat64AtomicAdd, LAYOUT$shaderImageFloat32Atomics, LAYOUT$shaderImageFloat32AtomicAdd, LAYOUT$sparseImageFloat32Atomics, LAYOUT$sparseImageFloat32AtomicAdd);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceShaderAtomicFloatFeaturesEXT {
+        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_FEATURES_EXT);
+    }
 
     public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT allocate(Arena arena) {
         return new VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(arena.allocate(LAYOUT));
@@ -62,6 +59,24 @@ public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(@NotNull MemorySegmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("shaderBufferFloat32Atomics"),
+        ValueLayout.JAVA_INT.withName("shaderBufferFloat32AtomicAdd"),
+        ValueLayout.JAVA_INT.withName("shaderBufferFloat64Atomics"),
+        ValueLayout.JAVA_INT.withName("shaderBufferFloat64AtomicAdd"),
+        ValueLayout.JAVA_INT.withName("shaderSharedFloat32Atomics"),
+        ValueLayout.JAVA_INT.withName("shaderSharedFloat32AtomicAdd"),
+        ValueLayout.JAVA_INT.withName("shaderSharedFloat64Atomics"),
+        ValueLayout.JAVA_INT.withName("shaderSharedFloat64AtomicAdd"),
+        ValueLayout.JAVA_INT.withName("shaderImageFloat32Atomics"),
+        ValueLayout.JAVA_INT.withName("shaderImageFloat32AtomicAdd"),
+        ValueLayout.JAVA_INT.withName("sparseImageFloat32Atomics"),
+        ValueLayout.JAVA_INT.withName("sparseImageFloat32AtomicAdd")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$shaderBufferFloat32Atomics = PathElement.groupElement("PATH$shaderBufferFloat32Atomics");
@@ -76,6 +91,21 @@ public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(@NotNull MemorySegmen
     public static final PathElement PATH$shaderImageFloat32AtomicAdd = PathElement.groupElement("PATH$shaderImageFloat32AtomicAdd");
     public static final PathElement PATH$sparseImageFloat32Atomics = PathElement.groupElement("PATH$sparseImageFloat32Atomics");
     public static final PathElement PATH$sparseImageFloat32AtomicAdd = PathElement.groupElement("PATH$sparseImageFloat32AtomicAdd");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$shaderBufferFloat32Atomics = (OfInt) LAYOUT.select(PATH$shaderBufferFloat32Atomics);
+    public static final OfInt LAYOUT$shaderBufferFloat32AtomicAdd = (OfInt) LAYOUT.select(PATH$shaderBufferFloat32AtomicAdd);
+    public static final OfInt LAYOUT$shaderBufferFloat64Atomics = (OfInt) LAYOUT.select(PATH$shaderBufferFloat64Atomics);
+    public static final OfInt LAYOUT$shaderBufferFloat64AtomicAdd = (OfInt) LAYOUT.select(PATH$shaderBufferFloat64AtomicAdd);
+    public static final OfInt LAYOUT$shaderSharedFloat32Atomics = (OfInt) LAYOUT.select(PATH$shaderSharedFloat32Atomics);
+    public static final OfInt LAYOUT$shaderSharedFloat32AtomicAdd = (OfInt) LAYOUT.select(PATH$shaderSharedFloat32AtomicAdd);
+    public static final OfInt LAYOUT$shaderSharedFloat64Atomics = (OfInt) LAYOUT.select(PATH$shaderSharedFloat64Atomics);
+    public static final OfInt LAYOUT$shaderSharedFloat64AtomicAdd = (OfInt) LAYOUT.select(PATH$shaderSharedFloat64AtomicAdd);
+    public static final OfInt LAYOUT$shaderImageFloat32Atomics = (OfInt) LAYOUT.select(PATH$shaderImageFloat32Atomics);
+    public static final OfInt LAYOUT$shaderImageFloat32AtomicAdd = (OfInt) LAYOUT.select(PATH$shaderImageFloat32AtomicAdd);
+    public static final OfInt LAYOUT$sparseImageFloat32Atomics = (OfInt) LAYOUT.select(PATH$sparseImageFloat32Atomics);
+    public static final OfInt LAYOUT$sparseImageFloat32AtomicAdd = (OfInt) LAYOUT.select(PATH$sparseImageFloat32AtomicAdd);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

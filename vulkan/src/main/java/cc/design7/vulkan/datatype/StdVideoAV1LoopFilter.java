@@ -14,19 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoAV1LoopFilter} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoAV1LoopFilterFlags.LAYOUT.withName("flags");
-    public static final OfByte LAYOUT$loop_filter_level = ValueLayout.JAVA_BYTE.withName("loop_filter_level");
-    public static final OfByte LAYOUT$loop_filter_sharpness = ValueLayout.JAVA_BYTE.withName("loop_filter_sharpness");
-    public static final OfByte LAYOUT$update_ref_delta = ValueLayout.JAVA_BYTE.withName("update_ref_delta");
-    public static final OfByte LAYOUT$loop_filter_ref_deltas = ValueLayout.JAVA_BYTE.withName("loop_filter_ref_deltas");
-    public static final OfByte LAYOUT$update_mode_delta = ValueLayout.JAVA_BYTE.withName("update_mode_delta");
-    public static final OfByte LAYOUT$loop_filter_mode_deltas = ValueLayout.JAVA_BYTE.withName("loop_filter_mode_deltas");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$loop_filter_level, LAYOUT$loop_filter_sharpness, LAYOUT$update_ref_delta, LAYOUT$loop_filter_ref_deltas, LAYOUT$update_mode_delta, LAYOUT$loop_filter_mode_deltas);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoAV1LoopFilter allocate(Arena arena) {
         return new StdVideoAV1LoopFilter(arena.allocate(LAYOUT));
     }
@@ -54,6 +53,17 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoAV1LoopFilterFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("loop_filter_level"),
+        ValueLayout.JAVA_BYTE.withName("loop_filter_sharpness"),
+        ValueLayout.JAVA_BYTE.withName("update_ref_delta"),
+        ValueLayout.JAVA_BYTE.withName("loop_filter_ref_deltas"),
+        ValueLayout.JAVA_BYTE.withName("update_mode_delta"),
+        ValueLayout.JAVA_BYTE.withName("loop_filter_mode_deltas")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$loop_filter_level = PathElement.groupElement("PATH$loop_filter_level");
     public static final PathElement PATH$loop_filter_sharpness = PathElement.groupElement("PATH$loop_filter_sharpness");
@@ -61,6 +71,14 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
     public static final PathElement PATH$loop_filter_ref_deltas = PathElement.groupElement("PATH$loop_filter_ref_deltas");
     public static final PathElement PATH$update_mode_delta = PathElement.groupElement("PATH$update_mode_delta");
     public static final PathElement PATH$loop_filter_mode_deltas = PathElement.groupElement("PATH$loop_filter_mode_deltas");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$loop_filter_level = (OfByte) LAYOUT.select(PATH$loop_filter_level);
+    public static final OfByte LAYOUT$loop_filter_sharpness = (OfByte) LAYOUT.select(PATH$loop_filter_sharpness);
+    public static final OfByte LAYOUT$update_ref_delta = (OfByte) LAYOUT.select(PATH$update_ref_delta);
+    public static final OfByte LAYOUT$loop_filter_ref_deltas = (OfByte) LAYOUT.select(PATH$loop_filter_ref_deltas);
+    public static final OfByte LAYOUT$update_mode_delta = (OfByte) LAYOUT.select(PATH$update_mode_delta);
+    public static final OfByte LAYOUT$loop_filter_mode_deltas = (OfByte) LAYOUT.select(PATH$loop_filter_mode_deltas);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$loop_filter_level = LAYOUT$loop_filter_level.byteSize();

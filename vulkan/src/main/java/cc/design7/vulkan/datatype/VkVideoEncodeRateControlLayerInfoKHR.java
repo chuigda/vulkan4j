@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeRateControlLayerInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeRateControlLayerInfoKHR.html">VkVideoEncodeRateControlLayerInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeRateControlLayerInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfLong LAYOUT$averageBitrate = ValueLayout.JAVA_LONG.withName("averageBitrate");
-    public static final OfLong LAYOUT$maxBitrate = ValueLayout.JAVA_LONG.withName("maxBitrate");
-    public static final OfInt LAYOUT$frameRateNumerator = ValueLayout.JAVA_INT.withName("frameRateNumerator");
-    public static final OfInt LAYOUT$frameRateDenominator = ValueLayout.JAVA_INT.withName("frameRateDenominator");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$averageBitrate, LAYOUT$maxBitrate, LAYOUT$frameRateNumerator, LAYOUT$frameRateDenominator);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoEncodeRateControlLayerInfoKHR {
+        sType(VkStructureType.VIDEO_ENCODE_RATE_CONTROL_LAYER_INFO_KHR);
+    }
 
     public static VkVideoEncodeRateControlLayerInfoKHR allocate(Arena arena) {
         return new VkVideoEncodeRateControlLayerInfoKHR(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkVideoEncodeRateControlLayerInfoKHR(@NotNull MemorySegment segmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("averageBitrate"),
+        ValueLayout.JAVA_LONG.withName("maxBitrate"),
+        ValueLayout.JAVA_INT.withName("frameRateNumerator"),
+        ValueLayout.JAVA_INT.withName("frameRateDenominator")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$averageBitrate = PathElement.groupElement("PATH$averageBitrate");
     public static final PathElement PATH$maxBitrate = PathElement.groupElement("PATH$maxBitrate");
     public static final PathElement PATH$frameRateNumerator = PathElement.groupElement("PATH$frameRateNumerator");
     public static final PathElement PATH$frameRateDenominator = PathElement.groupElement("PATH$frameRateDenominator");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$averageBitrate = (OfLong) LAYOUT.select(PATH$averageBitrate);
+    public static final OfLong LAYOUT$maxBitrate = (OfLong) LAYOUT.select(PATH$maxBitrate);
+    public static final OfInt LAYOUT$frameRateNumerator = (OfInt) LAYOUT.select(PATH$frameRateNumerator);
+    public static final OfInt LAYOUT$frameRateDenominator = (OfInt) LAYOUT.select(PATH$frameRateDenominator);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

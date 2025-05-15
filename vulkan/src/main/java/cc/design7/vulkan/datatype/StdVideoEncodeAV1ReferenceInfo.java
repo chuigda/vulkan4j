@@ -14,18 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoEncodeAV1ReferenceInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoEncodeAV1ReferenceInfoFlags.LAYOUT.withName("flags");
-    public static final OfInt LAYOUT$RefFrameId = ValueLayout.JAVA_INT.withName("RefFrameId");
-    public static final OfInt LAYOUT$frame_type = ValueLayout.JAVA_INT.withName("frame_type");
-    public static final OfByte LAYOUT$OrderHint = ValueLayout.JAVA_BYTE.withName("OrderHint");
-    public static final OfByte LAYOUT$reserved1 = ValueLayout.JAVA_BYTE.withName("reserved1");
-    public static final AddressLayout LAYOUT$pExtensionHeader = ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeAV1ExtensionHeader.LAYOUT).withName("pExtensionHeader");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$RefFrameId, LAYOUT$frame_type, LAYOUT$OrderHint, LAYOUT$reserved1, LAYOUT$pExtensionHeader);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoEncodeAV1ReferenceInfo allocate(Arena arena) {
         return new StdVideoEncodeAV1ReferenceInfo(arena.allocate(LAYOUT));
     }
@@ -53,12 +53,29 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoEncodeAV1ReferenceInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("RefFrameId"),
+        ValueLayout.JAVA_INT.withName("frame_type"),
+        ValueLayout.JAVA_BYTE.withName("OrderHint"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeAV1ExtensionHeader.LAYOUT).withName("pExtensionHeader")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$RefFrameId = PathElement.groupElement("PATH$RefFrameId");
     public static final PathElement PATH$frame_type = PathElement.groupElement("PATH$frame_type");
     public static final PathElement PATH$OrderHint = PathElement.groupElement("PATH$OrderHint");
     public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$pExtensionHeader = PathElement.groupElement("PATH$pExtensionHeader");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$RefFrameId = (OfInt) LAYOUT.select(PATH$RefFrameId);
+    public static final OfInt LAYOUT$frame_type = (OfInt) LAYOUT.select(PATH$frame_type);
+    public static final OfByte LAYOUT$OrderHint = (OfByte) LAYOUT.select(PATH$OrderHint);
+    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
+    public static final AddressLayout LAYOUT$pExtensionHeader = (AddressLayout) LAYOUT.select(PATH$pExtensionHeader);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$RefFrameId = LAYOUT$RefFrameId.byteSize();

@@ -3,18 +3,17 @@ package cc.design7.babel.codegen
 import cc.design7.babel.codegen.accessor.*
 import cc.design7.babel.ctype.*
 import cc.design7.babel.ctype.lowerType
+import cc.design7.babel.registry.IdentifierType
 import cc.design7.babel.registry.RegistryBase
 import cc.design7.babel.registry.Structure
 import cc.design7.babel.util.Doc
-import cc.design7.babel.util.DocList
 import cc.design7.babel.util.buildDoc
-import org.intellij.lang.annotations.Language
 
 /**
  * @param name the name of the layout, such as "pNext"
  */
 sealed class LayoutField(
-    val jType: String,
+    val jType: String?,
     val name: String,
     val value: String,
 ) {
@@ -23,7 +22,7 @@ sealed class LayoutField(
     val offsetName: String = "OFFSET$$name"
     abstract val pathName: String
 
-    class Typed(jType: String, name: String, value: String, val type: CType) :
+    class Typed(jType: String?, name: String, value: String, val type: CType) :
         LayoutField(jType, name, value) {
         override val pathName: String = "PATH$$name"
         val rawName = "${name}Raw"
@@ -41,14 +40,6 @@ sealed class LayoutField(
     data class Bitfield(val bitfieldName: String, val offset: Int) {
         val bitfieldOffsetName: String = "OFFSET$$bitfieldName"
     }
-}
-
-private fun DocList.imports(@Language("Java", prefix = "import ", suffix = ";") path: String, static: Boolean = false) {
-    +"import ${if (static) "static " else ""}$path;"
-}
-
-private fun DocList.constant(type: String, name: String, value: String) {
-    +"public static final $type $name = $value;"
 }
 
 fun generateStructure(
@@ -105,35 +96,52 @@ fun generateStructure(
     }
 
     +""
+    /// endregion import
 
-    // TODO: generate document
+    +"/// Represents a pointer to a {@code $className} structure in native memory."
+    +"///"
+
+    // TODO: generate structure/union layout document
+
+    +"/// The property {@link #segment()} should always be not-null"
+    +"/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)"
+    +"/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java"
+    +"/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details."
+    +"///"
+    +"/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not"
+    +"/// perform any runtime check. The constructor can be useful for automatic code generators."
+
     val seeLink = codegenOptions.seeLinkProvider(structure)
     if (seeLink != null) {
+        +"///"
         +"/// @see $seeLink"
     }
+
     +"@ValueBasedCandidate"
+    +"@UnsafeConstructor"
     +"public record $className(@NotNull MemorySegment segment) implements IPointer {"
 
     indent {
-        // layouts
-        layouts.forEach { layout ->
-            constant(layout.jType, layout.layoutName, layout.value)
+        if (structure.members.any { it.values != null }) {
+            +"public $className {"
+            indent {
+                structure.members.forEach {
+                    if (it.values != null && it.type is IdentifierType) {
+                        +"${it.name}(${it.type.ident}.${it.values});"
+                    }
+                }
+            }
+            +"}"
+            +""
         }
 
-        +""
-
-        constant("MemoryLayout", "LAYOUT", generateStructureLayout(layouts, isUnion))
-        constant("long", "SIZE", "LAYOUT.byteSize()")
-
-        +""
-
-        fn("public static", className, "allocate", "Arena arena") {
+        defun("public static", className, "allocate", "Arena arena") {
             +"return new $className(arena.allocate(LAYOUT));"
         }
 
         +""
 
-        fn("public static", "$className[]", "allocate", "Arena arena", "int count") {
+        defun("public static", "$className[]", "allocate", "Arena arena", "int count") {
             +"MemorySegment segment = arena.allocate(LAYOUT, count);"
             +"$className[] ret = new $className[count];"
             "for (int i = 0; i < count; i ++)" {
@@ -145,7 +153,7 @@ fun generateStructure(
 
         +""
 
-        fn("public static", className, "clone", "Arena arena", "$className src") {
+        defun("public static", className, "clone", "Arena arena", "$className src") {
             +"$className ret = allocate(arena);"
             +"ret.segment.copyFrom(src.segment);"
             +"return ret;"
@@ -153,7 +161,7 @@ fun generateStructure(
 
         +""
 
-        fn("public static", "$className[]", "clone", "Arena arena", "$className[] src") {
+        defun("public static", "$className[]", "clone", "Arena arena", "$className[] src") {
             +"$className[] ret = allocate(arena, src.length);"
             "for (int i = 0; i < src.length; i ++)" {
                 +"ret[i].segment.copyFrom(src[i].segment);"
@@ -163,9 +171,40 @@ fun generateStructure(
 
         +""
 
-        // PathElement
+        // layout of the whole structure (or union)
+        val layoutType = if (isUnion) "UnionLayout" else "StructLayout"
+        val layoutCtor = if (isUnion) "NativeLayout.unionLayout" else "NativeLayout.structLayout"
+
+        if (layouts.isEmpty()) {
+            +"public static final $layoutType LAYOUT = $layoutCtor();"
+        } else {
+            +"public static final $layoutType LAYOUT = $layoutCtor("
+            indent {
+                layouts.forEachIndexed { idx, layout ->
+                    if (idx == layouts.size - 1) {
+                        +layout.value
+                    } else {
+                        +"${layout.value},"
+                    }
+                }
+            }
+            +");"
+        }
+        defConst("long", "SIZE", "LAYOUT.byteSize()")
+        +""
+
+        // `PathElement`s
         layouts.forEach { layout ->
-            constant("PathElement", layout.pathName, "PathElement.groupElement(\"${layout.pathName}\")")
+            defConst("PathElement", layout.pathName, "PathElement.groupElement(\"${layout.pathName}\")")
+        }
+
+        +""
+
+        // separate layouts
+        layouts.forEach { layout ->
+            if (layout.jType != null) {
+                defConst(layout.jType, layout.layoutName, "(${layout.jType}) LAYOUT.select(${layout.pathName})")
+            }
         }
 
         +""
@@ -178,7 +217,7 @@ fun generateStructure(
                     else "NativeLayout.C_INT.byteSize()"
                 } else "${layout.layoutName}.byteSize()"
 
-                constant("long", layout.sizeName, value)
+                defConst("long", layout.sizeName, value)
             }
         }
 
@@ -186,13 +225,7 @@ fun generateStructure(
 
         // offset
         layouts.forEach { layout ->
-            constant("long", layout.offsetName, "LAYOUT.byteOffset(${layout.pathName})")
-
-//            if (layout is LayoutField.Bitfields) {
-//                layout.bitfields.forEach { bitfield ->
-//                    constant("long", bitfield.bitfieldOffsetName, bitfield.offset.toString())
-//                }
-//            }
+            defConst("long", layout.offsetName, "LAYOUT.byteOffset(${layout.pathName})")
         }
 
         +""
@@ -208,10 +241,8 @@ fun generateStructure(
     }
 
     +"}"
-    /// endregion import
 }
 
-// '1' means all
 private fun generateStructureLayout(layouts: List<LayoutField>, isUnion: Boolean): String {
     return buildString {
         val ctor = if (isUnion) "NativeLayout.unionLayout" else "NativeLayout.structLayout"
@@ -299,16 +330,13 @@ private fun lowerMemberTypes(
         } else {
             val layout = "${cType.jLayout}.withName(\"${current.name}\")"
 
-            val layoutTypes = if (cType is CPlatformDependentIntType) {
-                // A layout field is still required to be generated, because it will be used in the
-                // structure's layout calculation. We won't be using it for accessing the field,
-                // of course
-                "ValueLayout"
+            val layoutType = if (cType is CPlatformDependentIntType) {
+                null
             } else {
                 cType.jLayoutType
             }
 
-            layouts.add(LayoutField.Typed(layoutTypes, current.name.toString(), layout, cType))
+            layouts.add(LayoutField.Typed(layoutType, current.name.toString(), layout, cType))
 
             i += 1
         }
@@ -331,7 +359,6 @@ private fun summarizeBitfieldStorageUnit(
     val bitfields = mutableListOf<LayoutField.Bitfield>()
     var bitfieldOffset = 0
     for (i in storageUnitBegin..storageUnitEnd) {
-        // Let's hack this shit in 10 minutes, not introducing something else for bitfield offset
         val member = structure.members[i]
         bitfields.add(LayoutField.Bitfield(member.name.toString(), bitfieldOffset))
         bitfieldOffset += member.bits!!

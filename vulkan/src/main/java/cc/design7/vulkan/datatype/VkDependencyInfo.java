@@ -14,21 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDependencyInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDependencyInfo.html">VkDependencyInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDependencyInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$dependencyFlags = ValueLayout.JAVA_INT.withName("dependencyFlags");
-    public static final OfInt LAYOUT$memoryBarrierCount = ValueLayout.JAVA_INT.withName("memoryBarrierCount");
-    public static final AddressLayout LAYOUT$pMemoryBarriers = ValueLayout.ADDRESS.withTargetLayout(VkMemoryBarrier2.LAYOUT).withName("pMemoryBarriers");
-    public static final OfInt LAYOUT$bufferMemoryBarrierCount = ValueLayout.JAVA_INT.withName("bufferMemoryBarrierCount");
-    public static final AddressLayout LAYOUT$pBufferMemoryBarriers = ValueLayout.ADDRESS.withTargetLayout(VkBufferMemoryBarrier2.LAYOUT).withName("pBufferMemoryBarriers");
-    public static final OfInt LAYOUT$imageMemoryBarrierCount = ValueLayout.JAVA_INT.withName("imageMemoryBarrierCount");
-    public static final AddressLayout LAYOUT$pImageMemoryBarriers = ValueLayout.ADDRESS.withTargetLayout(VkImageMemoryBarrier2.LAYOUT).withName("pImageMemoryBarriers");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$dependencyFlags, LAYOUT$memoryBarrierCount, LAYOUT$pMemoryBarriers, LAYOUT$bufferMemoryBarrierCount, LAYOUT$pBufferMemoryBarriers, LAYOUT$imageMemoryBarrierCount, LAYOUT$pImageMemoryBarriers);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkDependencyInfo {
+        sType(VkStructureType.DEPENDENCY_INFO);
+    }
 
     public static VkDependencyInfo allocate(Arena arena) {
         return new VkDependencyInfo(arena.allocate(LAYOUT));
@@ -57,6 +59,19 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IPoint
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("dependencyFlags"),
+        ValueLayout.JAVA_INT.withName("memoryBarrierCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkMemoryBarrier2.LAYOUT).withName("pMemoryBarriers"),
+        ValueLayout.JAVA_INT.withName("bufferMemoryBarrierCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkBufferMemoryBarrier2.LAYOUT).withName("pBufferMemoryBarriers"),
+        ValueLayout.JAVA_INT.withName("imageMemoryBarrierCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkImageMemoryBarrier2.LAYOUT).withName("pImageMemoryBarriers")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$dependencyFlags = PathElement.groupElement("PATH$dependencyFlags");
@@ -66,6 +81,16 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IPoint
     public static final PathElement PATH$pBufferMemoryBarriers = PathElement.groupElement("PATH$pBufferMemoryBarriers");
     public static final PathElement PATH$imageMemoryBarrierCount = PathElement.groupElement("PATH$imageMemoryBarrierCount");
     public static final PathElement PATH$pImageMemoryBarriers = PathElement.groupElement("PATH$pImageMemoryBarriers");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$dependencyFlags = (OfInt) LAYOUT.select(PATH$dependencyFlags);
+    public static final OfInt LAYOUT$memoryBarrierCount = (OfInt) LAYOUT.select(PATH$memoryBarrierCount);
+    public static final AddressLayout LAYOUT$pMemoryBarriers = (AddressLayout) LAYOUT.select(PATH$pMemoryBarriers);
+    public static final OfInt LAYOUT$bufferMemoryBarrierCount = (OfInt) LAYOUT.select(PATH$bufferMemoryBarrierCount);
+    public static final AddressLayout LAYOUT$pBufferMemoryBarriers = (AddressLayout) LAYOUT.select(PATH$pBufferMemoryBarriers);
+    public static final OfInt LAYOUT$imageMemoryBarrierCount = (OfInt) LAYOUT.select(PATH$imageMemoryBarrierCount);
+    public static final AddressLayout LAYOUT$pImageMemoryBarriers = (AddressLayout) LAYOUT.select(PATH$pImageMemoryBarriers);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

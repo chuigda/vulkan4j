@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceTransformFeedbackFeaturesEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceTransformFeedbackFeaturesEXT.html">VkPhysicalDeviceTransformFeedbackFeaturesEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceTransformFeedbackFeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$transformFeedback = ValueLayout.JAVA_INT.withName("transformFeedback");
-    public static final OfInt LAYOUT$geometryStreams = ValueLayout.JAVA_INT.withName("geometryStreams");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$transformFeedback, LAYOUT$geometryStreams);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceTransformFeedbackFeaturesEXT {
+        sType(VkStructureType.PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT);
+    }
 
     public static VkPhysicalDeviceTransformFeedbackFeaturesEXT allocate(Arena arena) {
         return new VkPhysicalDeviceTransformFeedbackFeaturesEXT(arena.allocate(LAYOUT));
@@ -52,10 +59,23 @@ public record VkPhysicalDeviceTransformFeedbackFeaturesEXT(@NotNull MemorySegmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("transformFeedback"),
+        ValueLayout.JAVA_INT.withName("geometryStreams")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$transformFeedback = PathElement.groupElement("PATH$transformFeedback");
     public static final PathElement PATH$geometryStreams = PathElement.groupElement("PATH$geometryStreams");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$transformFeedback = (OfInt) LAYOUT.select(PATH$transformFeedback);
+    public static final OfInt LAYOUT$geometryStreams = (OfInt) LAYOUT.select(PATH$geometryStreams);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

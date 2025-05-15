@@ -14,119 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceLimits} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceLimits.html">VkPhysicalDeviceLimits</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$maxImageDimension1D = ValueLayout.JAVA_INT.withName("maxImageDimension1D");
-    public static final OfInt LAYOUT$maxImageDimension2D = ValueLayout.JAVA_INT.withName("maxImageDimension2D");
-    public static final OfInt LAYOUT$maxImageDimension3D = ValueLayout.JAVA_INT.withName("maxImageDimension3D");
-    public static final OfInt LAYOUT$maxImageDimensionCube = ValueLayout.JAVA_INT.withName("maxImageDimensionCube");
-    public static final OfInt LAYOUT$maxImageArrayLayers = ValueLayout.JAVA_INT.withName("maxImageArrayLayers");
-    public static final OfInt LAYOUT$maxTexelBufferElements = ValueLayout.JAVA_INT.withName("maxTexelBufferElements");
-    public static final OfInt LAYOUT$maxUniformBufferRange = ValueLayout.JAVA_INT.withName("maxUniformBufferRange");
-    public static final OfInt LAYOUT$maxStorageBufferRange = ValueLayout.JAVA_INT.withName("maxStorageBufferRange");
-    public static final OfInt LAYOUT$maxPushConstantsSize = ValueLayout.JAVA_INT.withName("maxPushConstantsSize");
-    public static final OfInt LAYOUT$maxMemoryAllocationCount = ValueLayout.JAVA_INT.withName("maxMemoryAllocationCount");
-    public static final OfInt LAYOUT$maxSamplerAllocationCount = ValueLayout.JAVA_INT.withName("maxSamplerAllocationCount");
-    public static final OfLong LAYOUT$bufferImageGranularity = ValueLayout.JAVA_LONG.withName("bufferImageGranularity");
-    public static final OfLong LAYOUT$sparseAddressSpaceSize = ValueLayout.JAVA_LONG.withName("sparseAddressSpaceSize");
-    public static final OfInt LAYOUT$maxBoundDescriptorSets = ValueLayout.JAVA_INT.withName("maxBoundDescriptorSets");
-    public static final OfInt LAYOUT$maxPerStageDescriptorSamplers = ValueLayout.JAVA_INT.withName("maxPerStageDescriptorSamplers");
-    public static final OfInt LAYOUT$maxPerStageDescriptorUniformBuffers = ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUniformBuffers");
-    public static final OfInt LAYOUT$maxPerStageDescriptorStorageBuffers = ValueLayout.JAVA_INT.withName("maxPerStageDescriptorStorageBuffers");
-    public static final OfInt LAYOUT$maxPerStageDescriptorSampledImages = ValueLayout.JAVA_INT.withName("maxPerStageDescriptorSampledImages");
-    public static final OfInt LAYOUT$maxPerStageDescriptorStorageImages = ValueLayout.JAVA_INT.withName("maxPerStageDescriptorStorageImages");
-    public static final OfInt LAYOUT$maxPerStageDescriptorInputAttachments = ValueLayout.JAVA_INT.withName("maxPerStageDescriptorInputAttachments");
-    public static final OfInt LAYOUT$maxPerStageResources = ValueLayout.JAVA_INT.withName("maxPerStageResources");
-    public static final OfInt LAYOUT$maxDescriptorSetSamplers = ValueLayout.JAVA_INT.withName("maxDescriptorSetSamplers");
-    public static final OfInt LAYOUT$maxDescriptorSetUniformBuffers = ValueLayout.JAVA_INT.withName("maxDescriptorSetUniformBuffers");
-    public static final OfInt LAYOUT$maxDescriptorSetUniformBuffersDynamic = ValueLayout.JAVA_INT.withName("maxDescriptorSetUniformBuffersDynamic");
-    public static final OfInt LAYOUT$maxDescriptorSetStorageBuffers = ValueLayout.JAVA_INT.withName("maxDescriptorSetStorageBuffers");
-    public static final OfInt LAYOUT$maxDescriptorSetStorageBuffersDynamic = ValueLayout.JAVA_INT.withName("maxDescriptorSetStorageBuffersDynamic");
-    public static final OfInt LAYOUT$maxDescriptorSetSampledImages = ValueLayout.JAVA_INT.withName("maxDescriptorSetSampledImages");
-    public static final OfInt LAYOUT$maxDescriptorSetStorageImages = ValueLayout.JAVA_INT.withName("maxDescriptorSetStorageImages");
-    public static final OfInt LAYOUT$maxDescriptorSetInputAttachments = ValueLayout.JAVA_INT.withName("maxDescriptorSetInputAttachments");
-    public static final OfInt LAYOUT$maxVertexInputAttributes = ValueLayout.JAVA_INT.withName("maxVertexInputAttributes");
-    public static final OfInt LAYOUT$maxVertexInputBindings = ValueLayout.JAVA_INT.withName("maxVertexInputBindings");
-    public static final OfInt LAYOUT$maxVertexInputAttributeOffset = ValueLayout.JAVA_INT.withName("maxVertexInputAttributeOffset");
-    public static final OfInt LAYOUT$maxVertexInputBindingStride = ValueLayout.JAVA_INT.withName("maxVertexInputBindingStride");
-    public static final OfInt LAYOUT$maxVertexOutputComponents = ValueLayout.JAVA_INT.withName("maxVertexOutputComponents");
-    public static final OfInt LAYOUT$maxTessellationGenerationLevel = ValueLayout.JAVA_INT.withName("maxTessellationGenerationLevel");
-    public static final OfInt LAYOUT$maxTessellationPatchSize = ValueLayout.JAVA_INT.withName("maxTessellationPatchSize");
-    public static final OfInt LAYOUT$maxTessellationControlPerVertexInputComponents = ValueLayout.JAVA_INT.withName("maxTessellationControlPerVertexInputComponents");
-    public static final OfInt LAYOUT$maxTessellationControlPerVertexOutputComponents = ValueLayout.JAVA_INT.withName("maxTessellationControlPerVertexOutputComponents");
-    public static final OfInt LAYOUT$maxTessellationControlPerPatchOutputComponents = ValueLayout.JAVA_INT.withName("maxTessellationControlPerPatchOutputComponents");
-    public static final OfInt LAYOUT$maxTessellationControlTotalOutputComponents = ValueLayout.JAVA_INT.withName("maxTessellationControlTotalOutputComponents");
-    public static final OfInt LAYOUT$maxTessellationEvaluationInputComponents = ValueLayout.JAVA_INT.withName("maxTessellationEvaluationInputComponents");
-    public static final OfInt LAYOUT$maxTessellationEvaluationOutputComponents = ValueLayout.JAVA_INT.withName("maxTessellationEvaluationOutputComponents");
-    public static final OfInt LAYOUT$maxGeometryShaderInvocations = ValueLayout.JAVA_INT.withName("maxGeometryShaderInvocations");
-    public static final OfInt LAYOUT$maxGeometryInputComponents = ValueLayout.JAVA_INT.withName("maxGeometryInputComponents");
-    public static final OfInt LAYOUT$maxGeometryOutputComponents = ValueLayout.JAVA_INT.withName("maxGeometryOutputComponents");
-    public static final OfInt LAYOUT$maxGeometryOutputVertices = ValueLayout.JAVA_INT.withName("maxGeometryOutputVertices");
-    public static final OfInt LAYOUT$maxGeometryTotalOutputComponents = ValueLayout.JAVA_INT.withName("maxGeometryTotalOutputComponents");
-    public static final OfInt LAYOUT$maxFragmentInputComponents = ValueLayout.JAVA_INT.withName("maxFragmentInputComponents");
-    public static final OfInt LAYOUT$maxFragmentOutputAttachments = ValueLayout.JAVA_INT.withName("maxFragmentOutputAttachments");
-    public static final OfInt LAYOUT$maxFragmentDualSrcAttachments = ValueLayout.JAVA_INT.withName("maxFragmentDualSrcAttachments");
-    public static final OfInt LAYOUT$maxFragmentCombinedOutputResources = ValueLayout.JAVA_INT.withName("maxFragmentCombinedOutputResources");
-    public static final OfInt LAYOUT$maxComputeSharedMemorySize = ValueLayout.JAVA_INT.withName("maxComputeSharedMemorySize");
-    public static final OfInt LAYOUT$maxComputeWorkGroupCount = ValueLayout.JAVA_INT.withName("maxComputeWorkGroupCount");
-    public static final OfInt LAYOUT$maxComputeWorkGroupInvocations = ValueLayout.JAVA_INT.withName("maxComputeWorkGroupInvocations");
-    public static final OfInt LAYOUT$maxComputeWorkGroupSize = ValueLayout.JAVA_INT.withName("maxComputeWorkGroupSize");
-    public static final OfInt LAYOUT$subPixelPrecisionBits = ValueLayout.JAVA_INT.withName("subPixelPrecisionBits");
-    public static final OfInt LAYOUT$subTexelPrecisionBits = ValueLayout.JAVA_INT.withName("subTexelPrecisionBits");
-    public static final OfInt LAYOUT$mipmapPrecisionBits = ValueLayout.JAVA_INT.withName("mipmapPrecisionBits");
-    public static final OfInt LAYOUT$maxDrawIndexedIndexValue = ValueLayout.JAVA_INT.withName("maxDrawIndexedIndexValue");
-    public static final OfInt LAYOUT$maxDrawIndirectCount = ValueLayout.JAVA_INT.withName("maxDrawIndirectCount");
-    public static final OfFloat LAYOUT$maxSamplerLodBias = ValueLayout.JAVA_FLOAT.withName("maxSamplerLodBias");
-    public static final OfFloat LAYOUT$maxSamplerAnisotropy = ValueLayout.JAVA_FLOAT.withName("maxSamplerAnisotropy");
-    public static final OfInt LAYOUT$maxViewports = ValueLayout.JAVA_INT.withName("maxViewports");
-    public static final OfInt LAYOUT$maxViewportDimensions = ValueLayout.JAVA_INT.withName("maxViewportDimensions");
-    public static final OfFloat LAYOUT$viewportBoundsRange = ValueLayout.JAVA_FLOAT.withName("viewportBoundsRange");
-    public static final OfInt LAYOUT$viewportSubPixelBits = ValueLayout.JAVA_INT.withName("viewportSubPixelBits");
-    public static final ValueLayout LAYOUT$minMemoryMapAlignment = NativeLayout.C_SIZE_T.withName("minMemoryMapAlignment");
-    public static final OfLong LAYOUT$minTexelBufferOffsetAlignment = ValueLayout.JAVA_LONG.withName("minTexelBufferOffsetAlignment");
-    public static final OfLong LAYOUT$minUniformBufferOffsetAlignment = ValueLayout.JAVA_LONG.withName("minUniformBufferOffsetAlignment");
-    public static final OfLong LAYOUT$minStorageBufferOffsetAlignment = ValueLayout.JAVA_LONG.withName("minStorageBufferOffsetAlignment");
-    public static final OfInt LAYOUT$minTexelOffset = ValueLayout.JAVA_INT.withName("minTexelOffset");
-    public static final OfInt LAYOUT$maxTexelOffset = ValueLayout.JAVA_INT.withName("maxTexelOffset");
-    public static final OfInt LAYOUT$minTexelGatherOffset = ValueLayout.JAVA_INT.withName("minTexelGatherOffset");
-    public static final OfInt LAYOUT$maxTexelGatherOffset = ValueLayout.JAVA_INT.withName("maxTexelGatherOffset");
-    public static final OfFloat LAYOUT$minInterpolationOffset = ValueLayout.JAVA_FLOAT.withName("minInterpolationOffset");
-    public static final OfFloat LAYOUT$maxInterpolationOffset = ValueLayout.JAVA_FLOAT.withName("maxInterpolationOffset");
-    public static final OfInt LAYOUT$subPixelInterpolationOffsetBits = ValueLayout.JAVA_INT.withName("subPixelInterpolationOffsetBits");
-    public static final OfInt LAYOUT$maxFramebufferWidth = ValueLayout.JAVA_INT.withName("maxFramebufferWidth");
-    public static final OfInt LAYOUT$maxFramebufferHeight = ValueLayout.JAVA_INT.withName("maxFramebufferHeight");
-    public static final OfInt LAYOUT$maxFramebufferLayers = ValueLayout.JAVA_INT.withName("maxFramebufferLayers");
-    public static final OfInt LAYOUT$framebufferColorSampleCounts = ValueLayout.JAVA_INT.withName("framebufferColorSampleCounts");
-    public static final OfInt LAYOUT$framebufferDepthSampleCounts = ValueLayout.JAVA_INT.withName("framebufferDepthSampleCounts");
-    public static final OfInt LAYOUT$framebufferStencilSampleCounts = ValueLayout.JAVA_INT.withName("framebufferStencilSampleCounts");
-    public static final OfInt LAYOUT$framebufferNoAttachmentsSampleCounts = ValueLayout.JAVA_INT.withName("framebufferNoAttachmentsSampleCounts");
-    public static final OfInt LAYOUT$maxColorAttachments = ValueLayout.JAVA_INT.withName("maxColorAttachments");
-    public static final OfInt LAYOUT$sampledImageColorSampleCounts = ValueLayout.JAVA_INT.withName("sampledImageColorSampleCounts");
-    public static final OfInt LAYOUT$sampledImageIntegerSampleCounts = ValueLayout.JAVA_INT.withName("sampledImageIntegerSampleCounts");
-    public static final OfInt LAYOUT$sampledImageDepthSampleCounts = ValueLayout.JAVA_INT.withName("sampledImageDepthSampleCounts");
-    public static final OfInt LAYOUT$sampledImageStencilSampleCounts = ValueLayout.JAVA_INT.withName("sampledImageStencilSampleCounts");
-    public static final OfInt LAYOUT$storageImageSampleCounts = ValueLayout.JAVA_INT.withName("storageImageSampleCounts");
-    public static final OfInt LAYOUT$maxSampleMaskWords = ValueLayout.JAVA_INT.withName("maxSampleMaskWords");
-    public static final OfInt LAYOUT$timestampComputeAndGraphics = ValueLayout.JAVA_INT.withName("timestampComputeAndGraphics");
-    public static final OfFloat LAYOUT$timestampPeriod = ValueLayout.JAVA_FLOAT.withName("timestampPeriod");
-    public static final OfInt LAYOUT$maxClipDistances = ValueLayout.JAVA_INT.withName("maxClipDistances");
-    public static final OfInt LAYOUT$maxCullDistances = ValueLayout.JAVA_INT.withName("maxCullDistances");
-    public static final OfInt LAYOUT$maxCombinedClipAndCullDistances = ValueLayout.JAVA_INT.withName("maxCombinedClipAndCullDistances");
-    public static final OfInt LAYOUT$discreteQueuePriorities = ValueLayout.JAVA_INT.withName("discreteQueuePriorities");
-    public static final OfFloat LAYOUT$pointSizeRange = ValueLayout.JAVA_FLOAT.withName("pointSizeRange");
-    public static final OfFloat LAYOUT$lineWidthRange = ValueLayout.JAVA_FLOAT.withName("lineWidthRange");
-    public static final OfFloat LAYOUT$pointSizeGranularity = ValueLayout.JAVA_FLOAT.withName("pointSizeGranularity");
-    public static final OfFloat LAYOUT$lineWidthGranularity = ValueLayout.JAVA_FLOAT.withName("lineWidthGranularity");
-    public static final OfInt LAYOUT$strictLines = ValueLayout.JAVA_INT.withName("strictLines");
-    public static final OfInt LAYOUT$standardSampleLocations = ValueLayout.JAVA_INT.withName("standardSampleLocations");
-    public static final OfLong LAYOUT$optimalBufferCopyOffsetAlignment = ValueLayout.JAVA_LONG.withName("optimalBufferCopyOffsetAlignment");
-    public static final OfLong LAYOUT$optimalBufferCopyRowPitchAlignment = ValueLayout.JAVA_LONG.withName("optimalBufferCopyRowPitchAlignment");
-    public static final OfLong LAYOUT$nonCoherentAtomSize = ValueLayout.JAVA_LONG.withName("nonCoherentAtomSize");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$maxImageDimension1D, LAYOUT$maxImageDimension2D, LAYOUT$maxImageDimension3D, LAYOUT$maxImageDimensionCube, LAYOUT$maxImageArrayLayers, LAYOUT$maxTexelBufferElements, LAYOUT$maxUniformBufferRange, LAYOUT$maxStorageBufferRange, LAYOUT$maxPushConstantsSize, LAYOUT$maxMemoryAllocationCount, LAYOUT$maxSamplerAllocationCount, LAYOUT$bufferImageGranularity, LAYOUT$sparseAddressSpaceSize, LAYOUT$maxBoundDescriptorSets, LAYOUT$maxPerStageDescriptorSamplers, LAYOUT$maxPerStageDescriptorUniformBuffers, LAYOUT$maxPerStageDescriptorStorageBuffers, LAYOUT$maxPerStageDescriptorSampledImages, LAYOUT$maxPerStageDescriptorStorageImages, LAYOUT$maxPerStageDescriptorInputAttachments, LAYOUT$maxPerStageResources, LAYOUT$maxDescriptorSetSamplers, LAYOUT$maxDescriptorSetUniformBuffers, LAYOUT$maxDescriptorSetUniformBuffersDynamic, LAYOUT$maxDescriptorSetStorageBuffers, LAYOUT$maxDescriptorSetStorageBuffersDynamic, LAYOUT$maxDescriptorSetSampledImages, LAYOUT$maxDescriptorSetStorageImages, LAYOUT$maxDescriptorSetInputAttachments, LAYOUT$maxVertexInputAttributes, LAYOUT$maxVertexInputBindings, LAYOUT$maxVertexInputAttributeOffset, LAYOUT$maxVertexInputBindingStride, LAYOUT$maxVertexOutputComponents, LAYOUT$maxTessellationGenerationLevel, LAYOUT$maxTessellationPatchSize, LAYOUT$maxTessellationControlPerVertexInputComponents, LAYOUT$maxTessellationControlPerVertexOutputComponents, LAYOUT$maxTessellationControlPerPatchOutputComponents, LAYOUT$maxTessellationControlTotalOutputComponents, LAYOUT$maxTessellationEvaluationInputComponents, LAYOUT$maxTessellationEvaluationOutputComponents, LAYOUT$maxGeometryShaderInvocations, LAYOUT$maxGeometryInputComponents, LAYOUT$maxGeometryOutputComponents, LAYOUT$maxGeometryOutputVertices, LAYOUT$maxGeometryTotalOutputComponents, LAYOUT$maxFragmentInputComponents, LAYOUT$maxFragmentOutputAttachments, LAYOUT$maxFragmentDualSrcAttachments, LAYOUT$maxFragmentCombinedOutputResources, LAYOUT$maxComputeSharedMemorySize, LAYOUT$maxComputeWorkGroupCount, LAYOUT$maxComputeWorkGroupInvocations, LAYOUT$maxComputeWorkGroupSize, LAYOUT$subPixelPrecisionBits, LAYOUT$subTexelPrecisionBits, LAYOUT$mipmapPrecisionBits, LAYOUT$maxDrawIndexedIndexValue, LAYOUT$maxDrawIndirectCount, LAYOUT$maxSamplerLodBias, LAYOUT$maxSamplerAnisotropy, LAYOUT$maxViewports, LAYOUT$maxViewportDimensions, LAYOUT$viewportBoundsRange, LAYOUT$viewportSubPixelBits, LAYOUT$minMemoryMapAlignment, LAYOUT$minTexelBufferOffsetAlignment, LAYOUT$minUniformBufferOffsetAlignment, LAYOUT$minStorageBufferOffsetAlignment, LAYOUT$minTexelOffset, LAYOUT$maxTexelOffset, LAYOUT$minTexelGatherOffset, LAYOUT$maxTexelGatherOffset, LAYOUT$minInterpolationOffset, LAYOUT$maxInterpolationOffset, LAYOUT$subPixelInterpolationOffsetBits, LAYOUT$maxFramebufferWidth, LAYOUT$maxFramebufferHeight, LAYOUT$maxFramebufferLayers, LAYOUT$framebufferColorSampleCounts, LAYOUT$framebufferDepthSampleCounts, LAYOUT$framebufferStencilSampleCounts, LAYOUT$framebufferNoAttachmentsSampleCounts, LAYOUT$maxColorAttachments, LAYOUT$sampledImageColorSampleCounts, LAYOUT$sampledImageIntegerSampleCounts, LAYOUT$sampledImageDepthSampleCounts, LAYOUT$sampledImageStencilSampleCounts, LAYOUT$storageImageSampleCounts, LAYOUT$maxSampleMaskWords, LAYOUT$timestampComputeAndGraphics, LAYOUT$timestampPeriod, LAYOUT$maxClipDistances, LAYOUT$maxCullDistances, LAYOUT$maxCombinedClipAndCullDistances, LAYOUT$discreteQueuePriorities, LAYOUT$pointSizeRange, LAYOUT$lineWidthRange, LAYOUT$pointSizeGranularity, LAYOUT$lineWidthGranularity, LAYOUT$strictLines, LAYOUT$standardSampleLocations, LAYOUT$optimalBufferCopyOffsetAlignment, LAYOUT$optimalBufferCopyRowPitchAlignment, LAYOUT$nonCoherentAtomSize);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkPhysicalDeviceLimits allocate(Arena arena) {
         return new VkPhysicalDeviceLimits(arena.allocate(LAYOUT));
     }
@@ -153,6 +54,116 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         }
         return ret;
     }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("maxImageDimension1D"),
+        ValueLayout.JAVA_INT.withName("maxImageDimension2D"),
+        ValueLayout.JAVA_INT.withName("maxImageDimension3D"),
+        ValueLayout.JAVA_INT.withName("maxImageDimensionCube"),
+        ValueLayout.JAVA_INT.withName("maxImageArrayLayers"),
+        ValueLayout.JAVA_INT.withName("maxTexelBufferElements"),
+        ValueLayout.JAVA_INT.withName("maxUniformBufferRange"),
+        ValueLayout.JAVA_INT.withName("maxStorageBufferRange"),
+        ValueLayout.JAVA_INT.withName("maxPushConstantsSize"),
+        ValueLayout.JAVA_INT.withName("maxMemoryAllocationCount"),
+        ValueLayout.JAVA_INT.withName("maxSamplerAllocationCount"),
+        ValueLayout.JAVA_LONG.withName("bufferImageGranularity"),
+        ValueLayout.JAVA_LONG.withName("sparseAddressSpaceSize"),
+        ValueLayout.JAVA_INT.withName("maxBoundDescriptorSets"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorSamplers"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUniformBuffers"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorStorageBuffers"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorSampledImages"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorStorageImages"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorInputAttachments"),
+        ValueLayout.JAVA_INT.withName("maxPerStageResources"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetSamplers"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUniformBuffers"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUniformBuffersDynamic"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetStorageBuffers"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetStorageBuffersDynamic"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetSampledImages"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetStorageImages"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetInputAttachments"),
+        ValueLayout.JAVA_INT.withName("maxVertexInputAttributes"),
+        ValueLayout.JAVA_INT.withName("maxVertexInputBindings"),
+        ValueLayout.JAVA_INT.withName("maxVertexInputAttributeOffset"),
+        ValueLayout.JAVA_INT.withName("maxVertexInputBindingStride"),
+        ValueLayout.JAVA_INT.withName("maxVertexOutputComponents"),
+        ValueLayout.JAVA_INT.withName("maxTessellationGenerationLevel"),
+        ValueLayout.JAVA_INT.withName("maxTessellationPatchSize"),
+        ValueLayout.JAVA_INT.withName("maxTessellationControlPerVertexInputComponents"),
+        ValueLayout.JAVA_INT.withName("maxTessellationControlPerVertexOutputComponents"),
+        ValueLayout.JAVA_INT.withName("maxTessellationControlPerPatchOutputComponents"),
+        ValueLayout.JAVA_INT.withName("maxTessellationControlTotalOutputComponents"),
+        ValueLayout.JAVA_INT.withName("maxTessellationEvaluationInputComponents"),
+        ValueLayout.JAVA_INT.withName("maxTessellationEvaluationOutputComponents"),
+        ValueLayout.JAVA_INT.withName("maxGeometryShaderInvocations"),
+        ValueLayout.JAVA_INT.withName("maxGeometryInputComponents"),
+        ValueLayout.JAVA_INT.withName("maxGeometryOutputComponents"),
+        ValueLayout.JAVA_INT.withName("maxGeometryOutputVertices"),
+        ValueLayout.JAVA_INT.withName("maxGeometryTotalOutputComponents"),
+        ValueLayout.JAVA_INT.withName("maxFragmentInputComponents"),
+        ValueLayout.JAVA_INT.withName("maxFragmentOutputAttachments"),
+        ValueLayout.JAVA_INT.withName("maxFragmentDualSrcAttachments"),
+        ValueLayout.JAVA_INT.withName("maxFragmentCombinedOutputResources"),
+        ValueLayout.JAVA_INT.withName("maxComputeSharedMemorySize"),
+        ValueLayout.JAVA_INT.withName("maxComputeWorkGroupCount"),
+        ValueLayout.JAVA_INT.withName("maxComputeWorkGroupInvocations"),
+        ValueLayout.JAVA_INT.withName("maxComputeWorkGroupSize"),
+        ValueLayout.JAVA_INT.withName("subPixelPrecisionBits"),
+        ValueLayout.JAVA_INT.withName("subTexelPrecisionBits"),
+        ValueLayout.JAVA_INT.withName("mipmapPrecisionBits"),
+        ValueLayout.JAVA_INT.withName("maxDrawIndexedIndexValue"),
+        ValueLayout.JAVA_INT.withName("maxDrawIndirectCount"),
+        ValueLayout.JAVA_FLOAT.withName("maxSamplerLodBias"),
+        ValueLayout.JAVA_FLOAT.withName("maxSamplerAnisotropy"),
+        ValueLayout.JAVA_INT.withName("maxViewports"),
+        ValueLayout.JAVA_INT.withName("maxViewportDimensions"),
+        ValueLayout.JAVA_FLOAT.withName("viewportBoundsRange"),
+        ValueLayout.JAVA_INT.withName("viewportSubPixelBits"),
+        NativeLayout.C_SIZE_T.withName("minMemoryMapAlignment"),
+        ValueLayout.JAVA_LONG.withName("minTexelBufferOffsetAlignment"),
+        ValueLayout.JAVA_LONG.withName("minUniformBufferOffsetAlignment"),
+        ValueLayout.JAVA_LONG.withName("minStorageBufferOffsetAlignment"),
+        ValueLayout.JAVA_INT.withName("minTexelOffset"),
+        ValueLayout.JAVA_INT.withName("maxTexelOffset"),
+        ValueLayout.JAVA_INT.withName("minTexelGatherOffset"),
+        ValueLayout.JAVA_INT.withName("maxTexelGatherOffset"),
+        ValueLayout.JAVA_FLOAT.withName("minInterpolationOffset"),
+        ValueLayout.JAVA_FLOAT.withName("maxInterpolationOffset"),
+        ValueLayout.JAVA_INT.withName("subPixelInterpolationOffsetBits"),
+        ValueLayout.JAVA_INT.withName("maxFramebufferWidth"),
+        ValueLayout.JAVA_INT.withName("maxFramebufferHeight"),
+        ValueLayout.JAVA_INT.withName("maxFramebufferLayers"),
+        ValueLayout.JAVA_INT.withName("framebufferColorSampleCounts"),
+        ValueLayout.JAVA_INT.withName("framebufferDepthSampleCounts"),
+        ValueLayout.JAVA_INT.withName("framebufferStencilSampleCounts"),
+        ValueLayout.JAVA_INT.withName("framebufferNoAttachmentsSampleCounts"),
+        ValueLayout.JAVA_INT.withName("maxColorAttachments"),
+        ValueLayout.JAVA_INT.withName("sampledImageColorSampleCounts"),
+        ValueLayout.JAVA_INT.withName("sampledImageIntegerSampleCounts"),
+        ValueLayout.JAVA_INT.withName("sampledImageDepthSampleCounts"),
+        ValueLayout.JAVA_INT.withName("sampledImageStencilSampleCounts"),
+        ValueLayout.JAVA_INT.withName("storageImageSampleCounts"),
+        ValueLayout.JAVA_INT.withName("maxSampleMaskWords"),
+        ValueLayout.JAVA_INT.withName("timestampComputeAndGraphics"),
+        ValueLayout.JAVA_FLOAT.withName("timestampPeriod"),
+        ValueLayout.JAVA_INT.withName("maxClipDistances"),
+        ValueLayout.JAVA_INT.withName("maxCullDistances"),
+        ValueLayout.JAVA_INT.withName("maxCombinedClipAndCullDistances"),
+        ValueLayout.JAVA_INT.withName("discreteQueuePriorities"),
+        ValueLayout.JAVA_FLOAT.withName("pointSizeRange"),
+        ValueLayout.JAVA_FLOAT.withName("lineWidthRange"),
+        ValueLayout.JAVA_FLOAT.withName("pointSizeGranularity"),
+        ValueLayout.JAVA_FLOAT.withName("lineWidthGranularity"),
+        ValueLayout.JAVA_INT.withName("strictLines"),
+        ValueLayout.JAVA_INT.withName("standardSampleLocations"),
+        ValueLayout.JAVA_LONG.withName("optimalBufferCopyOffsetAlignment"),
+        ValueLayout.JAVA_LONG.withName("optimalBufferCopyRowPitchAlignment"),
+        ValueLayout.JAVA_LONG.withName("nonCoherentAtomSize")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$maxImageDimension1D = PathElement.groupElement("PATH$maxImageDimension1D");
     public static final PathElement PATH$maxImageDimension2D = PathElement.groupElement("PATH$maxImageDimension2D");
@@ -260,6 +271,112 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
     public static final PathElement PATH$optimalBufferCopyOffsetAlignment = PathElement.groupElement("PATH$optimalBufferCopyOffsetAlignment");
     public static final PathElement PATH$optimalBufferCopyRowPitchAlignment = PathElement.groupElement("PATH$optimalBufferCopyRowPitchAlignment");
     public static final PathElement PATH$nonCoherentAtomSize = PathElement.groupElement("PATH$nonCoherentAtomSize");
+
+    public static final OfInt LAYOUT$maxImageDimension1D = (OfInt) LAYOUT.select(PATH$maxImageDimension1D);
+    public static final OfInt LAYOUT$maxImageDimension2D = (OfInt) LAYOUT.select(PATH$maxImageDimension2D);
+    public static final OfInt LAYOUT$maxImageDimension3D = (OfInt) LAYOUT.select(PATH$maxImageDimension3D);
+    public static final OfInt LAYOUT$maxImageDimensionCube = (OfInt) LAYOUT.select(PATH$maxImageDimensionCube);
+    public static final OfInt LAYOUT$maxImageArrayLayers = (OfInt) LAYOUT.select(PATH$maxImageArrayLayers);
+    public static final OfInt LAYOUT$maxTexelBufferElements = (OfInt) LAYOUT.select(PATH$maxTexelBufferElements);
+    public static final OfInt LAYOUT$maxUniformBufferRange = (OfInt) LAYOUT.select(PATH$maxUniformBufferRange);
+    public static final OfInt LAYOUT$maxStorageBufferRange = (OfInt) LAYOUT.select(PATH$maxStorageBufferRange);
+    public static final OfInt LAYOUT$maxPushConstantsSize = (OfInt) LAYOUT.select(PATH$maxPushConstantsSize);
+    public static final OfInt LAYOUT$maxMemoryAllocationCount = (OfInt) LAYOUT.select(PATH$maxMemoryAllocationCount);
+    public static final OfInt LAYOUT$maxSamplerAllocationCount = (OfInt) LAYOUT.select(PATH$maxSamplerAllocationCount);
+    public static final OfLong LAYOUT$bufferImageGranularity = (OfLong) LAYOUT.select(PATH$bufferImageGranularity);
+    public static final OfLong LAYOUT$sparseAddressSpaceSize = (OfLong) LAYOUT.select(PATH$sparseAddressSpaceSize);
+    public static final OfInt LAYOUT$maxBoundDescriptorSets = (OfInt) LAYOUT.select(PATH$maxBoundDescriptorSets);
+    public static final OfInt LAYOUT$maxPerStageDescriptorSamplers = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorSamplers);
+    public static final OfInt LAYOUT$maxPerStageDescriptorUniformBuffers = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorUniformBuffers);
+    public static final OfInt LAYOUT$maxPerStageDescriptorStorageBuffers = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorStorageBuffers);
+    public static final OfInt LAYOUT$maxPerStageDescriptorSampledImages = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorSampledImages);
+    public static final OfInt LAYOUT$maxPerStageDescriptorStorageImages = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorStorageImages);
+    public static final OfInt LAYOUT$maxPerStageDescriptorInputAttachments = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorInputAttachments);
+    public static final OfInt LAYOUT$maxPerStageResources = (OfInt) LAYOUT.select(PATH$maxPerStageResources);
+    public static final OfInt LAYOUT$maxDescriptorSetSamplers = (OfInt) LAYOUT.select(PATH$maxDescriptorSetSamplers);
+    public static final OfInt LAYOUT$maxDescriptorSetUniformBuffers = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUniformBuffers);
+    public static final OfInt LAYOUT$maxDescriptorSetUniformBuffersDynamic = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUniformBuffersDynamic);
+    public static final OfInt LAYOUT$maxDescriptorSetStorageBuffers = (OfInt) LAYOUT.select(PATH$maxDescriptorSetStorageBuffers);
+    public static final OfInt LAYOUT$maxDescriptorSetStorageBuffersDynamic = (OfInt) LAYOUT.select(PATH$maxDescriptorSetStorageBuffersDynamic);
+    public static final OfInt LAYOUT$maxDescriptorSetSampledImages = (OfInt) LAYOUT.select(PATH$maxDescriptorSetSampledImages);
+    public static final OfInt LAYOUT$maxDescriptorSetStorageImages = (OfInt) LAYOUT.select(PATH$maxDescriptorSetStorageImages);
+    public static final OfInt LAYOUT$maxDescriptorSetInputAttachments = (OfInt) LAYOUT.select(PATH$maxDescriptorSetInputAttachments);
+    public static final OfInt LAYOUT$maxVertexInputAttributes = (OfInt) LAYOUT.select(PATH$maxVertexInputAttributes);
+    public static final OfInt LAYOUT$maxVertexInputBindings = (OfInt) LAYOUT.select(PATH$maxVertexInputBindings);
+    public static final OfInt LAYOUT$maxVertexInputAttributeOffset = (OfInt) LAYOUT.select(PATH$maxVertexInputAttributeOffset);
+    public static final OfInt LAYOUT$maxVertexInputBindingStride = (OfInt) LAYOUT.select(PATH$maxVertexInputBindingStride);
+    public static final OfInt LAYOUT$maxVertexOutputComponents = (OfInt) LAYOUT.select(PATH$maxVertexOutputComponents);
+    public static final OfInt LAYOUT$maxTessellationGenerationLevel = (OfInt) LAYOUT.select(PATH$maxTessellationGenerationLevel);
+    public static final OfInt LAYOUT$maxTessellationPatchSize = (OfInt) LAYOUT.select(PATH$maxTessellationPatchSize);
+    public static final OfInt LAYOUT$maxTessellationControlPerVertexInputComponents = (OfInt) LAYOUT.select(PATH$maxTessellationControlPerVertexInputComponents);
+    public static final OfInt LAYOUT$maxTessellationControlPerVertexOutputComponents = (OfInt) LAYOUT.select(PATH$maxTessellationControlPerVertexOutputComponents);
+    public static final OfInt LAYOUT$maxTessellationControlPerPatchOutputComponents = (OfInt) LAYOUT.select(PATH$maxTessellationControlPerPatchOutputComponents);
+    public static final OfInt LAYOUT$maxTessellationControlTotalOutputComponents = (OfInt) LAYOUT.select(PATH$maxTessellationControlTotalOutputComponents);
+    public static final OfInt LAYOUT$maxTessellationEvaluationInputComponents = (OfInt) LAYOUT.select(PATH$maxTessellationEvaluationInputComponents);
+    public static final OfInt LAYOUT$maxTessellationEvaluationOutputComponents = (OfInt) LAYOUT.select(PATH$maxTessellationEvaluationOutputComponents);
+    public static final OfInt LAYOUT$maxGeometryShaderInvocations = (OfInt) LAYOUT.select(PATH$maxGeometryShaderInvocations);
+    public static final OfInt LAYOUT$maxGeometryInputComponents = (OfInt) LAYOUT.select(PATH$maxGeometryInputComponents);
+    public static final OfInt LAYOUT$maxGeometryOutputComponents = (OfInt) LAYOUT.select(PATH$maxGeometryOutputComponents);
+    public static final OfInt LAYOUT$maxGeometryOutputVertices = (OfInt) LAYOUT.select(PATH$maxGeometryOutputVertices);
+    public static final OfInt LAYOUT$maxGeometryTotalOutputComponents = (OfInt) LAYOUT.select(PATH$maxGeometryTotalOutputComponents);
+    public static final OfInt LAYOUT$maxFragmentInputComponents = (OfInt) LAYOUT.select(PATH$maxFragmentInputComponents);
+    public static final OfInt LAYOUT$maxFragmentOutputAttachments = (OfInt) LAYOUT.select(PATH$maxFragmentOutputAttachments);
+    public static final OfInt LAYOUT$maxFragmentDualSrcAttachments = (OfInt) LAYOUT.select(PATH$maxFragmentDualSrcAttachments);
+    public static final OfInt LAYOUT$maxFragmentCombinedOutputResources = (OfInt) LAYOUT.select(PATH$maxFragmentCombinedOutputResources);
+    public static final OfInt LAYOUT$maxComputeSharedMemorySize = (OfInt) LAYOUT.select(PATH$maxComputeSharedMemorySize);
+    public static final OfInt LAYOUT$maxComputeWorkGroupCount = (OfInt) LAYOUT.select(PATH$maxComputeWorkGroupCount);
+    public static final OfInt LAYOUT$maxComputeWorkGroupInvocations = (OfInt) LAYOUT.select(PATH$maxComputeWorkGroupInvocations);
+    public static final OfInt LAYOUT$maxComputeWorkGroupSize = (OfInt) LAYOUT.select(PATH$maxComputeWorkGroupSize);
+    public static final OfInt LAYOUT$subPixelPrecisionBits = (OfInt) LAYOUT.select(PATH$subPixelPrecisionBits);
+    public static final OfInt LAYOUT$subTexelPrecisionBits = (OfInt) LAYOUT.select(PATH$subTexelPrecisionBits);
+    public static final OfInt LAYOUT$mipmapPrecisionBits = (OfInt) LAYOUT.select(PATH$mipmapPrecisionBits);
+    public static final OfInt LAYOUT$maxDrawIndexedIndexValue = (OfInt) LAYOUT.select(PATH$maxDrawIndexedIndexValue);
+    public static final OfInt LAYOUT$maxDrawIndirectCount = (OfInt) LAYOUT.select(PATH$maxDrawIndirectCount);
+    public static final OfFloat LAYOUT$maxSamplerLodBias = (OfFloat) LAYOUT.select(PATH$maxSamplerLodBias);
+    public static final OfFloat LAYOUT$maxSamplerAnisotropy = (OfFloat) LAYOUT.select(PATH$maxSamplerAnisotropy);
+    public static final OfInt LAYOUT$maxViewports = (OfInt) LAYOUT.select(PATH$maxViewports);
+    public static final OfInt LAYOUT$maxViewportDimensions = (OfInt) LAYOUT.select(PATH$maxViewportDimensions);
+    public static final OfFloat LAYOUT$viewportBoundsRange = (OfFloat) LAYOUT.select(PATH$viewportBoundsRange);
+    public static final OfInt LAYOUT$viewportSubPixelBits = (OfInt) LAYOUT.select(PATH$viewportSubPixelBits);
+    public static final OfLong LAYOUT$minTexelBufferOffsetAlignment = (OfLong) LAYOUT.select(PATH$minTexelBufferOffsetAlignment);
+    public static final OfLong LAYOUT$minUniformBufferOffsetAlignment = (OfLong) LAYOUT.select(PATH$minUniformBufferOffsetAlignment);
+    public static final OfLong LAYOUT$minStorageBufferOffsetAlignment = (OfLong) LAYOUT.select(PATH$minStorageBufferOffsetAlignment);
+    public static final OfInt LAYOUT$minTexelOffset = (OfInt) LAYOUT.select(PATH$minTexelOffset);
+    public static final OfInt LAYOUT$maxTexelOffset = (OfInt) LAYOUT.select(PATH$maxTexelOffset);
+    public static final OfInt LAYOUT$minTexelGatherOffset = (OfInt) LAYOUT.select(PATH$minTexelGatherOffset);
+    public static final OfInt LAYOUT$maxTexelGatherOffset = (OfInt) LAYOUT.select(PATH$maxTexelGatherOffset);
+    public static final OfFloat LAYOUT$minInterpolationOffset = (OfFloat) LAYOUT.select(PATH$minInterpolationOffset);
+    public static final OfFloat LAYOUT$maxInterpolationOffset = (OfFloat) LAYOUT.select(PATH$maxInterpolationOffset);
+    public static final OfInt LAYOUT$subPixelInterpolationOffsetBits = (OfInt) LAYOUT.select(PATH$subPixelInterpolationOffsetBits);
+    public static final OfInt LAYOUT$maxFramebufferWidth = (OfInt) LAYOUT.select(PATH$maxFramebufferWidth);
+    public static final OfInt LAYOUT$maxFramebufferHeight = (OfInt) LAYOUT.select(PATH$maxFramebufferHeight);
+    public static final OfInt LAYOUT$maxFramebufferLayers = (OfInt) LAYOUT.select(PATH$maxFramebufferLayers);
+    public static final OfInt LAYOUT$framebufferColorSampleCounts = (OfInt) LAYOUT.select(PATH$framebufferColorSampleCounts);
+    public static final OfInt LAYOUT$framebufferDepthSampleCounts = (OfInt) LAYOUT.select(PATH$framebufferDepthSampleCounts);
+    public static final OfInt LAYOUT$framebufferStencilSampleCounts = (OfInt) LAYOUT.select(PATH$framebufferStencilSampleCounts);
+    public static final OfInt LAYOUT$framebufferNoAttachmentsSampleCounts = (OfInt) LAYOUT.select(PATH$framebufferNoAttachmentsSampleCounts);
+    public static final OfInt LAYOUT$maxColorAttachments = (OfInt) LAYOUT.select(PATH$maxColorAttachments);
+    public static final OfInt LAYOUT$sampledImageColorSampleCounts = (OfInt) LAYOUT.select(PATH$sampledImageColorSampleCounts);
+    public static final OfInt LAYOUT$sampledImageIntegerSampleCounts = (OfInt) LAYOUT.select(PATH$sampledImageIntegerSampleCounts);
+    public static final OfInt LAYOUT$sampledImageDepthSampleCounts = (OfInt) LAYOUT.select(PATH$sampledImageDepthSampleCounts);
+    public static final OfInt LAYOUT$sampledImageStencilSampleCounts = (OfInt) LAYOUT.select(PATH$sampledImageStencilSampleCounts);
+    public static final OfInt LAYOUT$storageImageSampleCounts = (OfInt) LAYOUT.select(PATH$storageImageSampleCounts);
+    public static final OfInt LAYOUT$maxSampleMaskWords = (OfInt) LAYOUT.select(PATH$maxSampleMaskWords);
+    public static final OfInt LAYOUT$timestampComputeAndGraphics = (OfInt) LAYOUT.select(PATH$timestampComputeAndGraphics);
+    public static final OfFloat LAYOUT$timestampPeriod = (OfFloat) LAYOUT.select(PATH$timestampPeriod);
+    public static final OfInt LAYOUT$maxClipDistances = (OfInt) LAYOUT.select(PATH$maxClipDistances);
+    public static final OfInt LAYOUT$maxCullDistances = (OfInt) LAYOUT.select(PATH$maxCullDistances);
+    public static final OfInt LAYOUT$maxCombinedClipAndCullDistances = (OfInt) LAYOUT.select(PATH$maxCombinedClipAndCullDistances);
+    public static final OfInt LAYOUT$discreteQueuePriorities = (OfInt) LAYOUT.select(PATH$discreteQueuePriorities);
+    public static final OfFloat LAYOUT$pointSizeRange = (OfFloat) LAYOUT.select(PATH$pointSizeRange);
+    public static final OfFloat LAYOUT$lineWidthRange = (OfFloat) LAYOUT.select(PATH$lineWidthRange);
+    public static final OfFloat LAYOUT$pointSizeGranularity = (OfFloat) LAYOUT.select(PATH$pointSizeGranularity);
+    public static final OfFloat LAYOUT$lineWidthGranularity = (OfFloat) LAYOUT.select(PATH$lineWidthGranularity);
+    public static final OfInt LAYOUT$strictLines = (OfInt) LAYOUT.select(PATH$strictLines);
+    public static final OfInt LAYOUT$standardSampleLocations = (OfInt) LAYOUT.select(PATH$standardSampleLocations);
+    public static final OfLong LAYOUT$optimalBufferCopyOffsetAlignment = (OfLong) LAYOUT.select(PATH$optimalBufferCopyOffsetAlignment);
+    public static final OfLong LAYOUT$optimalBufferCopyRowPitchAlignment = (OfLong) LAYOUT.select(PATH$optimalBufferCopyRowPitchAlignment);
+    public static final OfLong LAYOUT$nonCoherentAtomSize = (OfLong) LAYOUT.select(PATH$nonCoherentAtomSize);
 
     public static final long SIZE$maxImageDimension1D = LAYOUT$maxImageDimension1D.byteSize();
     public static final long SIZE$maxImageDimension2D = LAYOUT$maxImageDimension2D.byteSize();

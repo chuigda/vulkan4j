@@ -15,18 +15,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkAccelerationStructureMatrixMotionInstanceNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMatrixMotionInstanceNV.html">VkAccelerationStructureMatrixMotionInstanceNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkAccelerationStructureMatrixMotionInstanceNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$transformT0 = VkTransformMatrixKHR.LAYOUT.withName("transformT0");
-    public static final StructLayout LAYOUT$transformT1 = VkTransformMatrixKHR.LAYOUT.withName("transformT1");
-    public static final OfInt LAYOUT$instanceCustomIndex_mask = ValueLayout.JAVA_INT.withName("bitfield$instanceCustomIndex_mask");
-    public static final OfInt LAYOUT$instanceShaderBindingTableRecordOffset_flags = ValueLayout.JAVA_INT.withName("bitfield$instanceShaderBindingTableRecordOffset_flags");
-    public static final OfLong LAYOUT$accelerationStructureReference = ValueLayout.JAVA_LONG.withName("accelerationStructureReference");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$transformT0, LAYOUT$transformT1, LAYOUT$instanceCustomIndex_mask, LAYOUT$instanceShaderBindingTableRecordOffset_flags, LAYOUT$accelerationStructureReference);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkAccelerationStructureMatrixMotionInstanceNV allocate(Arena arena) {
         return new VkAccelerationStructureMatrixMotionInstanceNV(arena.allocate(LAYOUT));
     }
@@ -54,11 +56,26 @@ public record VkAccelerationStructureMatrixMotionInstanceNV(@NotNull MemorySegme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        VkTransformMatrixKHR.LAYOUT.withName("transformT0"),
+        VkTransformMatrixKHR.LAYOUT.withName("transformT1"),
+        ValueLayout.JAVA_INT.withName("bitfield$instanceCustomIndex_mask"),
+        ValueLayout.JAVA_INT.withName("bitfield$instanceShaderBindingTableRecordOffset_flags"),
+        ValueLayout.JAVA_LONG.withName("accelerationStructureReference")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$transformT0 = PathElement.groupElement("PATH$transformT0");
     public static final PathElement PATH$transformT1 = PathElement.groupElement("PATH$transformT1");
     public static final PathElement PATH$bitfield$instanceCustomIndex_mask = PathElement.groupElement("PATH$bitfield$instanceCustomIndex_mask");
     public static final PathElement PATH$bitfield$instanceShaderBindingTableRecordOffset_flags = PathElement.groupElement("PATH$bitfield$instanceShaderBindingTableRecordOffset_flags");
     public static final PathElement PATH$accelerationStructureReference = PathElement.groupElement("PATH$accelerationStructureReference");
+
+    public static final StructLayout LAYOUT$transformT0 = (StructLayout) LAYOUT.select(PATH$transformT0);
+    public static final StructLayout LAYOUT$transformT1 = (StructLayout) LAYOUT.select(PATH$transformT1);
+    public static final OfInt LAYOUT$instanceCustomIndex_mask = (OfInt) LAYOUT.select(PATH$bitfield$instanceCustomIndex_mask);
+    public static final OfInt LAYOUT$instanceShaderBindingTableRecordOffset_flags = (OfInt) LAYOUT.select(PATH$bitfield$instanceShaderBindingTableRecordOffset_flags);
+    public static final OfLong LAYOUT$accelerationStructureReference = (OfLong) LAYOUT.select(PATH$accelerationStructureReference);
 
     public static final long SIZE$transformT0 = LAYOUT$transformT0.byteSize();
     public static final long SIZE$transformT1 = LAYOUT$transformT1.byteSize();

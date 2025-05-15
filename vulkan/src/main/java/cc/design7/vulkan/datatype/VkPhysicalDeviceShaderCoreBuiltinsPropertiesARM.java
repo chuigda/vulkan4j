@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.html">VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfLong LAYOUT$shaderCoreMask = ValueLayout.JAVA_LONG.withName("shaderCoreMask");
-    public static final OfInt LAYOUT$shaderCoreCount = ValueLayout.JAVA_INT.withName("shaderCoreCount");
-    public static final OfInt LAYOUT$shaderWarpsPerCore = ValueLayout.JAVA_INT.withName("shaderWarpsPerCore");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$shaderCoreMask, LAYOUT$shaderCoreCount, LAYOUT$shaderWarpsPerCore);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM {
+        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_PROPERTIES_ARM);
+    }
 
     public static VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM allocate(Arena arena) {
         return new VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(@NotNull MemorySeg
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_LONG.withName("shaderCoreMask"),
+        ValueLayout.JAVA_INT.withName("shaderCoreCount"),
+        ValueLayout.JAVA_INT.withName("shaderWarpsPerCore")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$shaderCoreMask = PathElement.groupElement("PATH$shaderCoreMask");
     public static final PathElement PATH$shaderCoreCount = PathElement.groupElement("PATH$shaderCoreCount");
     public static final PathElement PATH$shaderWarpsPerCore = PathElement.groupElement("PATH$shaderWarpsPerCore");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfLong LAYOUT$shaderCoreMask = (OfLong) LAYOUT.select(PATH$shaderCoreMask);
+    public static final OfInt LAYOUT$shaderCoreCount = (OfInt) LAYOUT.select(PATH$shaderCoreCount);
+    public static final OfInt LAYOUT$shaderWarpsPerCore = (OfInt) LAYOUT.select(PATH$shaderWarpsPerCore);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

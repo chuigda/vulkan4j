@@ -14,19 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDebugMarkerObjectTagInfoEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDebugMarkerObjectTagInfoEXT.html">VkDebugMarkerObjectTagInfoEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDebugMarkerObjectTagInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$objectType = ValueLayout.JAVA_INT.withName("objectType");
-    public static final OfLong LAYOUT$object = ValueLayout.JAVA_LONG.withName("object");
-    public static final OfLong LAYOUT$tagName = ValueLayout.JAVA_LONG.withName("tagName");
-    public static final ValueLayout LAYOUT$tagSize = NativeLayout.C_SIZE_T.withName("tagSize");
-    public static final AddressLayout LAYOUT$pTag = ValueLayout.ADDRESS.withName("pTag");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$objectType, LAYOUT$object, LAYOUT$tagName, LAYOUT$tagSize, LAYOUT$pTag);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkDebugMarkerObjectTagInfoEXT {
+        sType(VkStructureType.DEBUG_MARKER_OBJECT_TAG_INFO_EXT);
+    }
 
     public static VkDebugMarkerObjectTagInfoEXT allocate(Arena arena) {
         return new VkDebugMarkerObjectTagInfoEXT(arena.allocate(LAYOUT));
@@ -55,6 +59,17 @@ public record VkDebugMarkerObjectTagInfoEXT(@NotNull MemorySegment segment) impl
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("objectType"),
+        ValueLayout.JAVA_LONG.withName("object"),
+        ValueLayout.JAVA_LONG.withName("tagName"),
+        NativeLayout.C_SIZE_T.withName("tagSize"),
+        ValueLayout.ADDRESS.withName("pTag")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$objectType = PathElement.groupElement("PATH$objectType");
@@ -62,6 +77,13 @@ public record VkDebugMarkerObjectTagInfoEXT(@NotNull MemorySegment segment) impl
     public static final PathElement PATH$tagName = PathElement.groupElement("PATH$tagName");
     public static final PathElement PATH$tagSize = PathElement.groupElement("PATH$tagSize");
     public static final PathElement PATH$pTag = PathElement.groupElement("PATH$pTag");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$objectType = (OfInt) LAYOUT.select(PATH$objectType);
+    public static final OfLong LAYOUT$object = (OfLong) LAYOUT.select(PATH$object);
+    public static final OfLong LAYOUT$tagName = (OfLong) LAYOUT.select(PATH$tagName);
+    public static final AddressLayout LAYOUT$pTag = (AddressLayout) LAYOUT.select(PATH$pTag);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

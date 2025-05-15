@@ -14,22 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkClusterAccelerationStructureCommandsInfoNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureCommandsInfoNV.html">VkClusterAccelerationStructureCommandsInfoNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final StructLayout LAYOUT$input = VkClusterAccelerationStructureInputInfoNV.LAYOUT.withName("input");
-    public static final OfLong LAYOUT$dstImplicitData = ValueLayout.JAVA_LONG.withName("dstImplicitData");
-    public static final OfLong LAYOUT$scratchData = ValueLayout.JAVA_LONG.withName("scratchData");
-    public static final StructLayout LAYOUT$dstAddressesArray = VkStridedDeviceAddressRegionKHR.LAYOUT.withName("dstAddressesArray");
-    public static final StructLayout LAYOUT$dstSizesArray = VkStridedDeviceAddressRegionKHR.LAYOUT.withName("dstSizesArray");
-    public static final StructLayout LAYOUT$srcInfosArray = VkStridedDeviceAddressRegionKHR.LAYOUT.withName("srcInfosArray");
-    public static final OfLong LAYOUT$srcInfosCount = ValueLayout.JAVA_LONG.withName("srcInfosCount");
-    public static final OfInt LAYOUT$addressResolutionFlags = ValueLayout.JAVA_INT.withName("addressResolutionFlags");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$input, LAYOUT$dstImplicitData, LAYOUT$scratchData, LAYOUT$dstAddressesArray, LAYOUT$dstSizesArray, LAYOUT$srcInfosArray, LAYOUT$srcInfosCount, LAYOUT$addressResolutionFlags);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkClusterAccelerationStructureCommandsInfoNV {
+        sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_COMMANDS_INFO_NV);
+    }
 
     public static VkClusterAccelerationStructureCommandsInfoNV allocate(Arena arena) {
         return new VkClusterAccelerationStructureCommandsInfoNV(arena.allocate(LAYOUT));
@@ -58,6 +59,20 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkClusterAccelerationStructureInputInfoNV.LAYOUT.withName("input"),
+        ValueLayout.JAVA_LONG.withName("dstImplicitData"),
+        ValueLayout.JAVA_LONG.withName("scratchData"),
+        VkStridedDeviceAddressRegionKHR.LAYOUT.withName("dstAddressesArray"),
+        VkStridedDeviceAddressRegionKHR.LAYOUT.withName("dstSizesArray"),
+        VkStridedDeviceAddressRegionKHR.LAYOUT.withName("srcInfosArray"),
+        ValueLayout.JAVA_LONG.withName("srcInfosCount"),
+        ValueLayout.JAVA_INT.withName("addressResolutionFlags")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$input = PathElement.groupElement("PATH$input");
@@ -68,6 +83,17 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
     public static final PathElement PATH$srcInfosArray = PathElement.groupElement("PATH$srcInfosArray");
     public static final PathElement PATH$srcInfosCount = PathElement.groupElement("PATH$srcInfosCount");
     public static final PathElement PATH$addressResolutionFlags = PathElement.groupElement("PATH$addressResolutionFlags");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$input = (StructLayout) LAYOUT.select(PATH$input);
+    public static final OfLong LAYOUT$dstImplicitData = (OfLong) LAYOUT.select(PATH$dstImplicitData);
+    public static final OfLong LAYOUT$scratchData = (OfLong) LAYOUT.select(PATH$scratchData);
+    public static final StructLayout LAYOUT$dstAddressesArray = (StructLayout) LAYOUT.select(PATH$dstAddressesArray);
+    public static final StructLayout LAYOUT$dstSizesArray = (StructLayout) LAYOUT.select(PATH$dstSizesArray);
+    public static final StructLayout LAYOUT$srcInfosArray = (StructLayout) LAYOUT.select(PATH$srcInfosArray);
+    public static final OfLong LAYOUT$srcInfosCount = (OfLong) LAYOUT.select(PATH$srcInfosCount);
+    public static final OfInt LAYOUT$addressResolutionFlags = (OfInt) LAYOUT.select(PATH$addressResolutionFlags);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkExternalSemaphoreProperties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalSemaphoreProperties.html">VkExternalSemaphoreProperties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkExternalSemaphoreProperties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$exportFromImportedHandleTypes = ValueLayout.JAVA_INT.withName("exportFromImportedHandleTypes");
-    public static final OfInt LAYOUT$compatibleHandleTypes = ValueLayout.JAVA_INT.withName("compatibleHandleTypes");
-    public static final OfInt LAYOUT$externalSemaphoreFeatures = ValueLayout.JAVA_INT.withName("externalSemaphoreFeatures");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$exportFromImportedHandleTypes, LAYOUT$compatibleHandleTypes, LAYOUT$externalSemaphoreFeatures);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkExternalSemaphoreProperties {
+        sType(VkStructureType.EXTERNAL_SEMAPHORE_PROPERTIES);
+    }
 
     public static VkExternalSemaphoreProperties allocate(Arena arena) {
         return new VkExternalSemaphoreProperties(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkExternalSemaphoreProperties(@NotNull MemorySegment segment) impl
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("exportFromImportedHandleTypes"),
+        ValueLayout.JAVA_INT.withName("compatibleHandleTypes"),
+        ValueLayout.JAVA_INT.withName("externalSemaphoreFeatures")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$exportFromImportedHandleTypes = PathElement.groupElement("PATH$exportFromImportedHandleTypes");
     public static final PathElement PATH$compatibleHandleTypes = PathElement.groupElement("PATH$compatibleHandleTypes");
     public static final PathElement PATH$externalSemaphoreFeatures = PathElement.groupElement("PATH$externalSemaphoreFeatures");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$exportFromImportedHandleTypes = (OfInt) LAYOUT.select(PATH$exportFromImportedHandleTypes);
+    public static final OfInt LAYOUT$compatibleHandleTypes = (OfInt) LAYOUT.select(PATH$compatibleHandleTypes);
+    public static final OfInt LAYOUT$externalSemaphoreFeatures = (OfInt) LAYOUT.select(PATH$externalSemaphoreFeatures);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

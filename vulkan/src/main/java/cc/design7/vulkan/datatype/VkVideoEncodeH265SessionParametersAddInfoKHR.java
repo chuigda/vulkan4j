@@ -14,20 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeH265SessionParametersAddInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH265SessionParametersAddInfoKHR.html">VkVideoEncodeH265SessionParametersAddInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeH265SessionParametersAddInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$stdVPSCount = ValueLayout.JAVA_INT.withName("stdVPSCount");
-    public static final AddressLayout LAYOUT$pStdVPSs = ValueLayout.ADDRESS.withTargetLayout(StdVideoH265VideoParameterSet.LAYOUT).withName("pStdVPSs");
-    public static final OfInt LAYOUT$stdSPSCount = ValueLayout.JAVA_INT.withName("stdSPSCount");
-    public static final AddressLayout LAYOUT$pStdSPSs = ValueLayout.ADDRESS.withTargetLayout(StdVideoH265SequenceParameterSet.LAYOUT).withName("pStdSPSs");
-    public static final OfInt LAYOUT$stdPPSCount = ValueLayout.JAVA_INT.withName("stdPPSCount");
-    public static final AddressLayout LAYOUT$pStdPPSs = ValueLayout.ADDRESS.withTargetLayout(StdVideoH265PictureParameterSet.LAYOUT).withName("pStdPPSs");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$stdVPSCount, LAYOUT$pStdVPSs, LAYOUT$stdSPSCount, LAYOUT$pStdSPSs, LAYOUT$stdPPSCount, LAYOUT$pStdPPSs);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoEncodeH265SessionParametersAddInfoKHR {
+        sType(VkStructureType.VIDEO_ENCODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR);
+    }
 
     public static VkVideoEncodeH265SessionParametersAddInfoKHR allocate(Arena arena) {
         return new VkVideoEncodeH265SessionParametersAddInfoKHR(arena.allocate(LAYOUT));
@@ -56,6 +59,18 @@ public record VkVideoEncodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("stdVPSCount"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265VideoParameterSet.LAYOUT).withName("pStdVPSs"),
+        ValueLayout.JAVA_INT.withName("stdSPSCount"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265SequenceParameterSet.LAYOUT).withName("pStdSPSs"),
+        ValueLayout.JAVA_INT.withName("stdPPSCount"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoH265PictureParameterSet.LAYOUT).withName("pStdPPSs")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$stdVPSCount = PathElement.groupElement("PATH$stdVPSCount");
@@ -64,6 +79,15 @@ public record VkVideoEncodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
     public static final PathElement PATH$pStdSPSs = PathElement.groupElement("PATH$pStdSPSs");
     public static final PathElement PATH$stdPPSCount = PathElement.groupElement("PATH$stdPPSCount");
     public static final PathElement PATH$pStdPPSs = PathElement.groupElement("PATH$pStdPPSs");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$stdVPSCount = (OfInt) LAYOUT.select(PATH$stdVPSCount);
+    public static final AddressLayout LAYOUT$pStdVPSs = (AddressLayout) LAYOUT.select(PATH$pStdVPSs);
+    public static final OfInt LAYOUT$stdSPSCount = (OfInt) LAYOUT.select(PATH$stdSPSCount);
+    public static final AddressLayout LAYOUT$pStdSPSs = (AddressLayout) LAYOUT.select(PATH$pStdSPSs);
+    public static final OfInt LAYOUT$stdPPSCount = (OfInt) LAYOUT.select(PATH$stdPPSCount);
+    public static final AddressLayout LAYOUT$pStdPPSs = (AddressLayout) LAYOUT.select(PATH$pStdPPSs);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

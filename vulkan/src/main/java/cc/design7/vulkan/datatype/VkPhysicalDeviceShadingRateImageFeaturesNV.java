@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceShadingRateImageFeaturesNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShadingRateImageFeaturesNV.html">VkPhysicalDeviceShadingRateImageFeaturesNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceShadingRateImageFeaturesNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$shadingRateImage = ValueLayout.JAVA_INT.withName("shadingRateImage");
-    public static final OfInt LAYOUT$shadingRateCoarseSampleOrder = ValueLayout.JAVA_INT.withName("shadingRateCoarseSampleOrder");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$shadingRateImage, LAYOUT$shadingRateCoarseSampleOrder);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceShadingRateImageFeaturesNV {
+        sType(VkStructureType.PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV);
+    }
 
     public static VkPhysicalDeviceShadingRateImageFeaturesNV allocate(Arena arena) {
         return new VkPhysicalDeviceShadingRateImageFeaturesNV(arena.allocate(LAYOUT));
@@ -52,10 +59,23 @@ public record VkPhysicalDeviceShadingRateImageFeaturesNV(@NotNull MemorySegment 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("shadingRateImage"),
+        ValueLayout.JAVA_INT.withName("shadingRateCoarseSampleOrder")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$shadingRateImage = PathElement.groupElement("PATH$shadingRateImage");
     public static final PathElement PATH$shadingRateCoarseSampleOrder = PathElement.groupElement("PATH$shadingRateCoarseSampleOrder");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$shadingRateImage = (OfInt) LAYOUT.select(PATH$shadingRateImage);
+    public static final OfInt LAYOUT$shadingRateCoarseSampleOrder = (OfInt) LAYOUT.select(PATH$shadingRateCoarseSampleOrder);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

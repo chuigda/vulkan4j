@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoDecodeH264PictureInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeH264PictureInfoKHR.html">VkVideoDecodeH264PictureInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoDecodeH264PictureInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$pStdPictureInfo = ValueLayout.ADDRESS.withTargetLayout(StdVideoDecodeH264PictureInfo.LAYOUT).withName("pStdPictureInfo");
-    public static final OfInt LAYOUT$sliceCount = ValueLayout.JAVA_INT.withName("sliceCount");
-    public static final AddressLayout LAYOUT$pSliceOffsets = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pSliceOffsets");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$pStdPictureInfo, LAYOUT$sliceCount, LAYOUT$pSliceOffsets);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoDecodeH264PictureInfoKHR {
+        sType(VkStructureType.VIDEO_DECODE_H264_PICTURE_INFO_KHR);
+    }
 
     public static VkVideoDecodeH264PictureInfoKHR allocate(Arena arena) {
         return new VkVideoDecodeH264PictureInfoKHR(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkVideoDecodeH264PictureInfoKHR(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoDecodeH264PictureInfo.LAYOUT).withName("pStdPictureInfo"),
+        ValueLayout.JAVA_INT.withName("sliceCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pSliceOffsets")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$pStdPictureInfo = PathElement.groupElement("PATH$pStdPictureInfo");
     public static final PathElement PATH$sliceCount = PathElement.groupElement("PATH$sliceCount");
     public static final PathElement PATH$pSliceOffsets = PathElement.groupElement("PATH$pSliceOffsets");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$pStdPictureInfo = (AddressLayout) LAYOUT.select(PATH$pStdPictureInfo);
+    public static final OfInt LAYOUT$sliceCount = (OfInt) LAYOUT.select(PATH$sliceCount);
+    public static final AddressLayout LAYOUT$pSliceOffsets = (AddressLayout) LAYOUT.select(PATH$pSliceOffsets);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

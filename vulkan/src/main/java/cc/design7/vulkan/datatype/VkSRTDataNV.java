@@ -14,29 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkSRTDataNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSRTDataNV.html">VkSRTDataNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkSRTDataNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfFloat LAYOUT$sx = ValueLayout.JAVA_FLOAT.withName("sx");
-    public static final OfFloat LAYOUT$a = ValueLayout.JAVA_FLOAT.withName("a");
-    public static final OfFloat LAYOUT$b = ValueLayout.JAVA_FLOAT.withName("b");
-    public static final OfFloat LAYOUT$pvx = ValueLayout.JAVA_FLOAT.withName("pvx");
-    public static final OfFloat LAYOUT$sy = ValueLayout.JAVA_FLOAT.withName("sy");
-    public static final OfFloat LAYOUT$c = ValueLayout.JAVA_FLOAT.withName("c");
-    public static final OfFloat LAYOUT$pvy = ValueLayout.JAVA_FLOAT.withName("pvy");
-    public static final OfFloat LAYOUT$sz = ValueLayout.JAVA_FLOAT.withName("sz");
-    public static final OfFloat LAYOUT$pvz = ValueLayout.JAVA_FLOAT.withName("pvz");
-    public static final OfFloat LAYOUT$qx = ValueLayout.JAVA_FLOAT.withName("qx");
-    public static final OfFloat LAYOUT$qy = ValueLayout.JAVA_FLOAT.withName("qy");
-    public static final OfFloat LAYOUT$qz = ValueLayout.JAVA_FLOAT.withName("qz");
-    public static final OfFloat LAYOUT$qw = ValueLayout.JAVA_FLOAT.withName("qw");
-    public static final OfFloat LAYOUT$tx = ValueLayout.JAVA_FLOAT.withName("tx");
-    public static final OfFloat LAYOUT$ty = ValueLayout.JAVA_FLOAT.withName("ty");
-    public static final OfFloat LAYOUT$tz = ValueLayout.JAVA_FLOAT.withName("tz");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sx, LAYOUT$a, LAYOUT$b, LAYOUT$pvx, LAYOUT$sy, LAYOUT$c, LAYOUT$pvy, LAYOUT$sz, LAYOUT$pvz, LAYOUT$qx, LAYOUT$qy, LAYOUT$qz, LAYOUT$qw, LAYOUT$tx, LAYOUT$ty, LAYOUT$tz);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkSRTDataNV allocate(Arena arena) {
         return new VkSRTDataNV(arena.allocate(LAYOUT));
     }
@@ -64,6 +55,26 @@ public record VkSRTDataNV(@NotNull MemorySegment segment) implements IPointer {
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_FLOAT.withName("sx"),
+        ValueLayout.JAVA_FLOAT.withName("a"),
+        ValueLayout.JAVA_FLOAT.withName("b"),
+        ValueLayout.JAVA_FLOAT.withName("pvx"),
+        ValueLayout.JAVA_FLOAT.withName("sy"),
+        ValueLayout.JAVA_FLOAT.withName("c"),
+        ValueLayout.JAVA_FLOAT.withName("pvy"),
+        ValueLayout.JAVA_FLOAT.withName("sz"),
+        ValueLayout.JAVA_FLOAT.withName("pvz"),
+        ValueLayout.JAVA_FLOAT.withName("qx"),
+        ValueLayout.JAVA_FLOAT.withName("qy"),
+        ValueLayout.JAVA_FLOAT.withName("qz"),
+        ValueLayout.JAVA_FLOAT.withName("qw"),
+        ValueLayout.JAVA_FLOAT.withName("tx"),
+        ValueLayout.JAVA_FLOAT.withName("ty"),
+        ValueLayout.JAVA_FLOAT.withName("tz")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sx = PathElement.groupElement("PATH$sx");
     public static final PathElement PATH$a = PathElement.groupElement("PATH$a");
     public static final PathElement PATH$b = PathElement.groupElement("PATH$b");
@@ -80,6 +91,23 @@ public record VkSRTDataNV(@NotNull MemorySegment segment) implements IPointer {
     public static final PathElement PATH$tx = PathElement.groupElement("PATH$tx");
     public static final PathElement PATH$ty = PathElement.groupElement("PATH$ty");
     public static final PathElement PATH$tz = PathElement.groupElement("PATH$tz");
+
+    public static final OfFloat LAYOUT$sx = (OfFloat) LAYOUT.select(PATH$sx);
+    public static final OfFloat LAYOUT$a = (OfFloat) LAYOUT.select(PATH$a);
+    public static final OfFloat LAYOUT$b = (OfFloat) LAYOUT.select(PATH$b);
+    public static final OfFloat LAYOUT$pvx = (OfFloat) LAYOUT.select(PATH$pvx);
+    public static final OfFloat LAYOUT$sy = (OfFloat) LAYOUT.select(PATH$sy);
+    public static final OfFloat LAYOUT$c = (OfFloat) LAYOUT.select(PATH$c);
+    public static final OfFloat LAYOUT$pvy = (OfFloat) LAYOUT.select(PATH$pvy);
+    public static final OfFloat LAYOUT$sz = (OfFloat) LAYOUT.select(PATH$sz);
+    public static final OfFloat LAYOUT$pvz = (OfFloat) LAYOUT.select(PATH$pvz);
+    public static final OfFloat LAYOUT$qx = (OfFloat) LAYOUT.select(PATH$qx);
+    public static final OfFloat LAYOUT$qy = (OfFloat) LAYOUT.select(PATH$qy);
+    public static final OfFloat LAYOUT$qz = (OfFloat) LAYOUT.select(PATH$qz);
+    public static final OfFloat LAYOUT$qw = (OfFloat) LAYOUT.select(PATH$qw);
+    public static final OfFloat LAYOUT$tx = (OfFloat) LAYOUT.select(PATH$tx);
+    public static final OfFloat LAYOUT$ty = (OfFloat) LAYOUT.select(PATH$ty);
+    public static final OfFloat LAYOUT$tz = (OfFloat) LAYOUT.select(PATH$tz);
 
     public static final long SIZE$sx = LAYOUT$sx.byteSize();
     public static final long SIZE$a = LAYOUT$a.byteSize();

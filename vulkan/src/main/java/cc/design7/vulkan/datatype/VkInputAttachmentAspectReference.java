@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkInputAttachmentAspectReference} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkInputAttachmentAspectReference.html">VkInputAttachmentAspectReference</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkInputAttachmentAspectReference(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$subpass = ValueLayout.JAVA_INT.withName("subpass");
-    public static final OfInt LAYOUT$inputAttachmentIndex = ValueLayout.JAVA_INT.withName("inputAttachmentIndex");
-    public static final OfInt LAYOUT$aspectMask = ValueLayout.JAVA_INT.withName("aspectMask");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$subpass, LAYOUT$inputAttachmentIndex, LAYOUT$aspectMask);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkInputAttachmentAspectReference allocate(Arena arena) {
         return new VkInputAttachmentAspectReference(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkInputAttachmentAspectReference(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("subpass"),
+        ValueLayout.JAVA_INT.withName("inputAttachmentIndex"),
+        ValueLayout.JAVA_INT.withName("aspectMask")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$subpass = PathElement.groupElement("PATH$subpass");
     public static final PathElement PATH$inputAttachmentIndex = PathElement.groupElement("PATH$inputAttachmentIndex");
     public static final PathElement PATH$aspectMask = PathElement.groupElement("PATH$aspectMask");
+
+    public static final OfInt LAYOUT$subpass = (OfInt) LAYOUT.select(PATH$subpass);
+    public static final OfInt LAYOUT$inputAttachmentIndex = (OfInt) LAYOUT.select(PATH$inputAttachmentIndex);
+    public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
 
     public static final long SIZE$subpass = LAYOUT$subpass.byteSize();
     public static final long SIZE$inputAttachmentIndex = LAYOUT$inputAttachmentIndex.byteSize();

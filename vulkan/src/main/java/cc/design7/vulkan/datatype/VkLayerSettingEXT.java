@@ -14,18 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkLayerSettingEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkLayerSettingEXT.html">VkLayerSettingEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final AddressLayout LAYOUT$pLayerName = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pLayerName");
-    public static final AddressLayout LAYOUT$pSettingName = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pSettingName");
-    public static final OfInt LAYOUT$type = ValueLayout.JAVA_INT.withName("type");
-    public static final OfInt LAYOUT$valueCount = ValueLayout.JAVA_INT.withName("valueCount");
-    public static final AddressLayout LAYOUT$pValues = ValueLayout.ADDRESS.withName("pValues");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$pLayerName, LAYOUT$pSettingName, LAYOUT$type, LAYOUT$valueCount, LAYOUT$pValues);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkLayerSettingEXT allocate(Arena arena) {
         return new VkLayerSettingEXT(arena.allocate(LAYOUT));
     }
@@ -53,11 +55,26 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IPoin
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pLayerName"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pSettingName"),
+        ValueLayout.JAVA_INT.withName("type"),
+        ValueLayout.JAVA_INT.withName("valueCount"),
+        ValueLayout.ADDRESS.withName("pValues")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$pLayerName = PathElement.groupElement("PATH$pLayerName");
     public static final PathElement PATH$pSettingName = PathElement.groupElement("PATH$pSettingName");
     public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
     public static final PathElement PATH$valueCount = PathElement.groupElement("PATH$valueCount");
     public static final PathElement PATH$pValues = PathElement.groupElement("PATH$pValues");
+
+    public static final AddressLayout LAYOUT$pLayerName = (AddressLayout) LAYOUT.select(PATH$pLayerName);
+    public static final AddressLayout LAYOUT$pSettingName = (AddressLayout) LAYOUT.select(PATH$pSettingName);
+    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
+    public static final OfInt LAYOUT$valueCount = (OfInt) LAYOUT.select(PATH$valueCount);
+    public static final AddressLayout LAYOUT$pValues = (AddressLayout) LAYOUT.select(PATH$pValues);
 
     public static final long SIZE$pLayerName = LAYOUT$pLayerName.byteSize();
     public static final long SIZE$pSettingName = LAYOUT$pSettingName.byteSize();

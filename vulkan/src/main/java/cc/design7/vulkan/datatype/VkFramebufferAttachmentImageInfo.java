@@ -14,21 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkFramebufferAttachmentImageInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFramebufferAttachmentImageInfo.html">VkFramebufferAttachmentImageInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$usage = ValueLayout.JAVA_INT.withName("usage");
-    public static final OfInt LAYOUT$width = ValueLayout.JAVA_INT.withName("width");
-    public static final OfInt LAYOUT$height = ValueLayout.JAVA_INT.withName("height");
-    public static final OfInt LAYOUT$layerCount = ValueLayout.JAVA_INT.withName("layerCount");
-    public static final OfInt LAYOUT$viewFormatCount = ValueLayout.JAVA_INT.withName("viewFormatCount");
-    public static final AddressLayout LAYOUT$pViewFormats = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pViewFormats");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$usage, LAYOUT$width, LAYOUT$height, LAYOUT$layerCount, LAYOUT$viewFormatCount, LAYOUT$pViewFormats);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkFramebufferAttachmentImageInfo {
+        sType(VkStructureType.FRAMEBUFFER_ATTACHMENT_IMAGE_INFO);
+    }
 
     public static VkFramebufferAttachmentImageInfo allocate(Arena arena) {
         return new VkFramebufferAttachmentImageInfo(arena.allocate(LAYOUT));
@@ -57,6 +59,19 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("usage"),
+        ValueLayout.JAVA_INT.withName("width"),
+        ValueLayout.JAVA_INT.withName("height"),
+        ValueLayout.JAVA_INT.withName("layerCount"),
+        ValueLayout.JAVA_INT.withName("viewFormatCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pViewFormats")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -66,6 +81,16 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
     public static final PathElement PATH$layerCount = PathElement.groupElement("PATH$layerCount");
     public static final PathElement PATH$viewFormatCount = PathElement.groupElement("PATH$viewFormatCount");
     public static final PathElement PATH$pViewFormats = PathElement.groupElement("PATH$pViewFormats");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$usage = (OfInt) LAYOUT.select(PATH$usage);
+    public static final OfInt LAYOUT$width = (OfInt) LAYOUT.select(PATH$width);
+    public static final OfInt LAYOUT$height = (OfInt) LAYOUT.select(PATH$height);
+    public static final OfInt LAYOUT$layerCount = (OfInt) LAYOUT.select(PATH$layerCount);
+    public static final OfInt LAYOUT$viewFormatCount = (OfInt) LAYOUT.select(PATH$viewFormatCount);
+    public static final AddressLayout LAYOUT$pViewFormats = (AddressLayout) LAYOUT.select(PATH$pViewFormats);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

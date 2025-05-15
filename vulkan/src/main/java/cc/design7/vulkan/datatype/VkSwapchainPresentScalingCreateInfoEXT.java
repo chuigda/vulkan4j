@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkSwapchainPresentScalingCreateInfoEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSwapchainPresentScalingCreateInfoEXT.html">VkSwapchainPresentScalingCreateInfoEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkSwapchainPresentScalingCreateInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$scalingBehavior = ValueLayout.JAVA_INT.withName("scalingBehavior");
-    public static final OfInt LAYOUT$presentGravityX = ValueLayout.JAVA_INT.withName("presentGravityX");
-    public static final OfInt LAYOUT$presentGravityY = ValueLayout.JAVA_INT.withName("presentGravityY");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$scalingBehavior, LAYOUT$presentGravityX, LAYOUT$presentGravityY);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkSwapchainPresentScalingCreateInfoEXT {
+        sType(VkStructureType.SWAPCHAIN_PRESENT_SCALING_CREATE_INFO_EXT);
+    }
 
     public static VkSwapchainPresentScalingCreateInfoEXT allocate(Arena arena) {
         return new VkSwapchainPresentScalingCreateInfoEXT(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkSwapchainPresentScalingCreateInfoEXT(@NotNull MemorySegment segm
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("scalingBehavior"),
+        ValueLayout.JAVA_INT.withName("presentGravityX"),
+        ValueLayout.JAVA_INT.withName("presentGravityY")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$scalingBehavior = PathElement.groupElement("PATH$scalingBehavior");
     public static final PathElement PATH$presentGravityX = PathElement.groupElement("PATH$presentGravityX");
     public static final PathElement PATH$presentGravityY = PathElement.groupElement("PATH$presentGravityY");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$scalingBehavior = (OfInt) LAYOUT.select(PATH$scalingBehavior);
+    public static final OfInt LAYOUT$presentGravityX = (OfInt) LAYOUT.select(PATH$presentGravityX);
+    public static final OfInt LAYOUT$presentGravityY = (OfInt) LAYOUT.select(PATH$presentGravityY);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

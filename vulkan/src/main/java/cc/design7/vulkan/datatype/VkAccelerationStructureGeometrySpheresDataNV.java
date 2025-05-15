@@ -14,23 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkAccelerationStructureGeometrySpheresDataNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureGeometrySpheresDataNV.html">VkAccelerationStructureGeometrySpheresDataNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkAccelerationStructureGeometrySpheresDataNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$vertexFormat = ValueLayout.JAVA_INT.withName("vertexFormat");
-    public static final StructLayout LAYOUT$vertexData = VkDeviceOrHostAddressConstKHR.LAYOUT.withName("vertexData");
-    public static final OfLong LAYOUT$vertexStride = ValueLayout.JAVA_LONG.withName("vertexStride");
-    public static final OfInt LAYOUT$radiusFormat = ValueLayout.JAVA_INT.withName("radiusFormat");
-    public static final StructLayout LAYOUT$radiusData = VkDeviceOrHostAddressConstKHR.LAYOUT.withName("radiusData");
-    public static final OfLong LAYOUT$radiusStride = ValueLayout.JAVA_LONG.withName("radiusStride");
-    public static final OfInt LAYOUT$indexType = ValueLayout.JAVA_INT.withName("indexType");
-    public static final StructLayout LAYOUT$indexData = VkDeviceOrHostAddressConstKHR.LAYOUT.withName("indexData");
-    public static final OfLong LAYOUT$indexStride = ValueLayout.JAVA_LONG.withName("indexStride");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$vertexFormat, LAYOUT$vertexData, LAYOUT$vertexStride, LAYOUT$radiusFormat, LAYOUT$radiusData, LAYOUT$radiusStride, LAYOUT$indexType, LAYOUT$indexData, LAYOUT$indexStride);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkAccelerationStructureGeometrySpheresDataNV {
+        sType(VkStructureType.ACCELERATION_STRUCTURE_GEOMETRY_SPHERES_DATA_NV);
+    }
 
     public static VkAccelerationStructureGeometrySpheresDataNV allocate(Arena arena) {
         return new VkAccelerationStructureGeometrySpheresDataNV(arena.allocate(LAYOUT));
@@ -59,6 +59,21 @@ public record VkAccelerationStructureGeometrySpheresDataNV(@NotNull MemorySegmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("vertexFormat"),
+        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("vertexData"),
+        ValueLayout.JAVA_LONG.withName("vertexStride"),
+        ValueLayout.JAVA_INT.withName("radiusFormat"),
+        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("radiusData"),
+        ValueLayout.JAVA_LONG.withName("radiusStride"),
+        ValueLayout.JAVA_INT.withName("indexType"),
+        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("indexData"),
+        ValueLayout.JAVA_LONG.withName("indexStride")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$vertexFormat = PathElement.groupElement("PATH$vertexFormat");
@@ -70,6 +85,18 @@ public record VkAccelerationStructureGeometrySpheresDataNV(@NotNull MemorySegmen
     public static final PathElement PATH$indexType = PathElement.groupElement("PATH$indexType");
     public static final PathElement PATH$indexData = PathElement.groupElement("PATH$indexData");
     public static final PathElement PATH$indexStride = PathElement.groupElement("PATH$indexStride");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$vertexFormat = (OfInt) LAYOUT.select(PATH$vertexFormat);
+    public static final StructLayout LAYOUT$vertexData = (StructLayout) LAYOUT.select(PATH$vertexData);
+    public static final OfLong LAYOUT$vertexStride = (OfLong) LAYOUT.select(PATH$vertexStride);
+    public static final OfInt LAYOUT$radiusFormat = (OfInt) LAYOUT.select(PATH$radiusFormat);
+    public static final StructLayout LAYOUT$radiusData = (StructLayout) LAYOUT.select(PATH$radiusData);
+    public static final OfLong LAYOUT$radiusStride = (OfLong) LAYOUT.select(PATH$radiusStride);
+    public static final OfInt LAYOUT$indexType = (OfInt) LAYOUT.select(PATH$indexType);
+    public static final StructLayout LAYOUT$indexData = (StructLayout) LAYOUT.select(PATH$indexData);
+    public static final OfLong LAYOUT$indexStride = (OfLong) LAYOUT.select(PATH$indexStride);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

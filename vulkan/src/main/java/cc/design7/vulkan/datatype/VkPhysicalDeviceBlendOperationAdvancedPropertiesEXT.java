@@ -14,20 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.html">VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$advancedBlendMaxColorAttachments = ValueLayout.JAVA_INT.withName("advancedBlendMaxColorAttachments");
-    public static final OfInt LAYOUT$advancedBlendIndependentBlend = ValueLayout.JAVA_INT.withName("advancedBlendIndependentBlend");
-    public static final OfInt LAYOUT$advancedBlendNonPremultipliedSrcColor = ValueLayout.JAVA_INT.withName("advancedBlendNonPremultipliedSrcColor");
-    public static final OfInt LAYOUT$advancedBlendNonPremultipliedDstColor = ValueLayout.JAVA_INT.withName("advancedBlendNonPremultipliedDstColor");
-    public static final OfInt LAYOUT$advancedBlendCorrelatedOverlap = ValueLayout.JAVA_INT.withName("advancedBlendCorrelatedOverlap");
-    public static final OfInt LAYOUT$advancedBlendAllOperations = ValueLayout.JAVA_INT.withName("advancedBlendAllOperations");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$advancedBlendMaxColorAttachments, LAYOUT$advancedBlendIndependentBlend, LAYOUT$advancedBlendNonPremultipliedSrcColor, LAYOUT$advancedBlendNonPremultipliedDstColor, LAYOUT$advancedBlendCorrelatedOverlap, LAYOUT$advancedBlendAllOperations);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT {
+        sType(VkStructureType.PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT);
+    }
 
     public static VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT allocate(Arena arena) {
         return new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(arena.allocate(LAYOUT));
@@ -56,6 +59,18 @@ public record VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(@NotNull Memor
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("advancedBlendMaxColorAttachments"),
+        ValueLayout.JAVA_INT.withName("advancedBlendIndependentBlend"),
+        ValueLayout.JAVA_INT.withName("advancedBlendNonPremultipliedSrcColor"),
+        ValueLayout.JAVA_INT.withName("advancedBlendNonPremultipliedDstColor"),
+        ValueLayout.JAVA_INT.withName("advancedBlendCorrelatedOverlap"),
+        ValueLayout.JAVA_INT.withName("advancedBlendAllOperations")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$advancedBlendMaxColorAttachments = PathElement.groupElement("PATH$advancedBlendMaxColorAttachments");
@@ -64,6 +79,15 @@ public record VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(@NotNull Memor
     public static final PathElement PATH$advancedBlendNonPremultipliedDstColor = PathElement.groupElement("PATH$advancedBlendNonPremultipliedDstColor");
     public static final PathElement PATH$advancedBlendCorrelatedOverlap = PathElement.groupElement("PATH$advancedBlendCorrelatedOverlap");
     public static final PathElement PATH$advancedBlendAllOperations = PathElement.groupElement("PATH$advancedBlendAllOperations");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$advancedBlendMaxColorAttachments = (OfInt) LAYOUT.select(PATH$advancedBlendMaxColorAttachments);
+    public static final OfInt LAYOUT$advancedBlendIndependentBlend = (OfInt) LAYOUT.select(PATH$advancedBlendIndependentBlend);
+    public static final OfInt LAYOUT$advancedBlendNonPremultipliedSrcColor = (OfInt) LAYOUT.select(PATH$advancedBlendNonPremultipliedSrcColor);
+    public static final OfInt LAYOUT$advancedBlendNonPremultipliedDstColor = (OfInt) LAYOUT.select(PATH$advancedBlendNonPremultipliedDstColor);
+    public static final OfInt LAYOUT$advancedBlendCorrelatedOverlap = (OfInt) LAYOUT.select(PATH$advancedBlendCorrelatedOverlap);
+    public static final OfInt LAYOUT$advancedBlendAllOperations = (OfInt) LAYOUT.select(PATH$advancedBlendAllOperations);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

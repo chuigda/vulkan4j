@@ -14,19 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoEncodeH264ReferenceInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoEncodeH264ReferenceInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoEncodeH264ReferenceInfoFlags.LAYOUT.withName("flags");
-    public static final OfInt LAYOUT$primary_pic_type = ValueLayout.JAVA_INT.withName("primary_pic_type");
-    public static final OfInt LAYOUT$FrameNum = ValueLayout.JAVA_INT.withName("FrameNum");
-    public static final OfInt LAYOUT$PicOrderCnt = ValueLayout.JAVA_INT.withName("PicOrderCnt");
-    public static final OfShort LAYOUT$long_term_pic_num = ValueLayout.JAVA_SHORT.withName("long_term_pic_num");
-    public static final OfShort LAYOUT$long_term_frame_idx = ValueLayout.JAVA_SHORT.withName("long_term_frame_idx");
-    public static final OfByte LAYOUT$temporal_id = ValueLayout.JAVA_BYTE.withName("temporal_id");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$primary_pic_type, LAYOUT$FrameNum, LAYOUT$PicOrderCnt, LAYOUT$long_term_pic_num, LAYOUT$long_term_frame_idx, LAYOUT$temporal_id);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoEncodeH264ReferenceInfo allocate(Arena arena) {
         return new StdVideoEncodeH264ReferenceInfo(arena.allocate(LAYOUT));
     }
@@ -54,6 +53,17 @@ public record StdVideoEncodeH264ReferenceInfo(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoEncodeH264ReferenceInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("primary_pic_type"),
+        ValueLayout.JAVA_INT.withName("FrameNum"),
+        ValueLayout.JAVA_INT.withName("PicOrderCnt"),
+        ValueLayout.JAVA_SHORT.withName("long_term_pic_num"),
+        ValueLayout.JAVA_SHORT.withName("long_term_frame_idx"),
+        ValueLayout.JAVA_BYTE.withName("temporal_id")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$primary_pic_type = PathElement.groupElement("PATH$primary_pic_type");
     public static final PathElement PATH$FrameNum = PathElement.groupElement("PATH$FrameNum");
@@ -61,6 +71,14 @@ public record StdVideoEncodeH264ReferenceInfo(@NotNull MemorySegment segment) im
     public static final PathElement PATH$long_term_pic_num = PathElement.groupElement("PATH$long_term_pic_num");
     public static final PathElement PATH$long_term_frame_idx = PathElement.groupElement("PATH$long_term_frame_idx");
     public static final PathElement PATH$temporal_id = PathElement.groupElement("PATH$temporal_id");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$primary_pic_type = (OfInt) LAYOUT.select(PATH$primary_pic_type);
+    public static final OfInt LAYOUT$FrameNum = (OfInt) LAYOUT.select(PATH$FrameNum);
+    public static final OfInt LAYOUT$PicOrderCnt = (OfInt) LAYOUT.select(PATH$PicOrderCnt);
+    public static final OfShort LAYOUT$long_term_pic_num = (OfShort) LAYOUT.select(PATH$long_term_pic_num);
+    public static final OfShort LAYOUT$long_term_frame_idx = (OfShort) LAYOUT.select(PATH$long_term_frame_idx);
+    public static final OfByte LAYOUT$temporal_id = (OfByte) LAYOUT.select(PATH$temporal_id);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$primary_pic_type = LAYOUT$primary_pic_type.byteSize();

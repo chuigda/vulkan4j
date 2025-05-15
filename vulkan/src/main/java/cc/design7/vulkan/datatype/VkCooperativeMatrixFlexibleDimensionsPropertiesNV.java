@@ -14,24 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkCooperativeMatrixFlexibleDimensionsPropertiesNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCooperativeMatrixFlexibleDimensionsPropertiesNV.html">VkCooperativeMatrixFlexibleDimensionsPropertiesNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$MGranularity = ValueLayout.JAVA_INT.withName("MGranularity");
-    public static final OfInt LAYOUT$NGranularity = ValueLayout.JAVA_INT.withName("NGranularity");
-    public static final OfInt LAYOUT$KGranularity = ValueLayout.JAVA_INT.withName("KGranularity");
-    public static final OfInt LAYOUT$AType = ValueLayout.JAVA_INT.withName("AType");
-    public static final OfInt LAYOUT$BType = ValueLayout.JAVA_INT.withName("BType");
-    public static final OfInt LAYOUT$CType = ValueLayout.JAVA_INT.withName("CType");
-    public static final OfInt LAYOUT$ResultType = ValueLayout.JAVA_INT.withName("ResultType");
-    public static final OfInt LAYOUT$saturatingAccumulation = ValueLayout.JAVA_INT.withName("saturatingAccumulation");
-    public static final OfInt LAYOUT$scope = ValueLayout.JAVA_INT.withName("scope");
-    public static final OfInt LAYOUT$workgroupInvocations = ValueLayout.JAVA_INT.withName("workgroupInvocations");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$MGranularity, LAYOUT$NGranularity, LAYOUT$KGranularity, LAYOUT$AType, LAYOUT$BType, LAYOUT$CType, LAYOUT$ResultType, LAYOUT$saturatingAccumulation, LAYOUT$scope, LAYOUT$workgroupInvocations);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV {
+        sType(VkStructureType.COOPERATIVE_MATRIX_FLEXIBLE_DIMENSIONS_PROPERTIES_NV);
+    }
 
     public static VkCooperativeMatrixFlexibleDimensionsPropertiesNV allocate(Arena arena) {
         return new VkCooperativeMatrixFlexibleDimensionsPropertiesNV(arena.allocate(LAYOUT));
@@ -60,6 +59,22 @@ public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemoryS
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("MGranularity"),
+        ValueLayout.JAVA_INT.withName("NGranularity"),
+        ValueLayout.JAVA_INT.withName("KGranularity"),
+        ValueLayout.JAVA_INT.withName("AType"),
+        ValueLayout.JAVA_INT.withName("BType"),
+        ValueLayout.JAVA_INT.withName("CType"),
+        ValueLayout.JAVA_INT.withName("ResultType"),
+        ValueLayout.JAVA_INT.withName("saturatingAccumulation"),
+        ValueLayout.JAVA_INT.withName("scope"),
+        ValueLayout.JAVA_INT.withName("workgroupInvocations")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$MGranularity = PathElement.groupElement("PATH$MGranularity");
@@ -72,6 +87,19 @@ public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemoryS
     public static final PathElement PATH$saturatingAccumulation = PathElement.groupElement("PATH$saturatingAccumulation");
     public static final PathElement PATH$scope = PathElement.groupElement("PATH$scope");
     public static final PathElement PATH$workgroupInvocations = PathElement.groupElement("PATH$workgroupInvocations");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$MGranularity = (OfInt) LAYOUT.select(PATH$MGranularity);
+    public static final OfInt LAYOUT$NGranularity = (OfInt) LAYOUT.select(PATH$NGranularity);
+    public static final OfInt LAYOUT$KGranularity = (OfInt) LAYOUT.select(PATH$KGranularity);
+    public static final OfInt LAYOUT$AType = (OfInt) LAYOUT.select(PATH$AType);
+    public static final OfInt LAYOUT$BType = (OfInt) LAYOUT.select(PATH$BType);
+    public static final OfInt LAYOUT$CType = (OfInt) LAYOUT.select(PATH$CType);
+    public static final OfInt LAYOUT$ResultType = (OfInt) LAYOUT.select(PATH$ResultType);
+    public static final OfInt LAYOUT$saturatingAccumulation = (OfInt) LAYOUT.select(PATH$saturatingAccumulation);
+    public static final OfInt LAYOUT$scope = (OfInt) LAYOUT.select(PATH$scope);
+    public static final OfInt LAYOUT$workgroupInvocations = (OfInt) LAYOUT.select(PATH$workgroupInvocations);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

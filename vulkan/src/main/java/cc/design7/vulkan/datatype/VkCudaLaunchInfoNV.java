@@ -14,26 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkCudaLaunchInfoNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCudaLaunchInfoNV.html">VkCudaLaunchInfoNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$function = ValueLayout.ADDRESS.withName("function");
-    public static final OfInt LAYOUT$gridDimX = ValueLayout.JAVA_INT.withName("gridDimX");
-    public static final OfInt LAYOUT$gridDimY = ValueLayout.JAVA_INT.withName("gridDimY");
-    public static final OfInt LAYOUT$gridDimZ = ValueLayout.JAVA_INT.withName("gridDimZ");
-    public static final OfInt LAYOUT$blockDimX = ValueLayout.JAVA_INT.withName("blockDimX");
-    public static final OfInt LAYOUT$blockDimY = ValueLayout.JAVA_INT.withName("blockDimY");
-    public static final OfInt LAYOUT$blockDimZ = ValueLayout.JAVA_INT.withName("blockDimZ");
-    public static final OfInt LAYOUT$sharedMemBytes = ValueLayout.JAVA_INT.withName("sharedMemBytes");
-    public static final ValueLayout LAYOUT$paramCount = NativeLayout.C_SIZE_T.withName("paramCount");
-    public static final AddressLayout LAYOUT$pParams = ValueLayout.ADDRESS.withName("pParams");
-    public static final ValueLayout LAYOUT$extraCount = NativeLayout.C_SIZE_T.withName("extraCount");
-    public static final AddressLayout LAYOUT$pExtras = ValueLayout.ADDRESS.withName("pExtras");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$function, LAYOUT$gridDimX, LAYOUT$gridDimY, LAYOUT$gridDimZ, LAYOUT$blockDimX, LAYOUT$blockDimY, LAYOUT$blockDimZ, LAYOUT$sharedMemBytes, LAYOUT$paramCount, LAYOUT$pParams, LAYOUT$extraCount, LAYOUT$pExtras);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkCudaLaunchInfoNV {
+        sType(VkStructureType.CUDA_LAUNCH_INFO_NV);
+    }
 
     public static VkCudaLaunchInfoNV allocate(Arena arena) {
         return new VkCudaLaunchInfoNV(arena.allocate(LAYOUT));
@@ -62,6 +59,24 @@ public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IPoi
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("function"),
+        ValueLayout.JAVA_INT.withName("gridDimX"),
+        ValueLayout.JAVA_INT.withName("gridDimY"),
+        ValueLayout.JAVA_INT.withName("gridDimZ"),
+        ValueLayout.JAVA_INT.withName("blockDimX"),
+        ValueLayout.JAVA_INT.withName("blockDimY"),
+        ValueLayout.JAVA_INT.withName("blockDimZ"),
+        ValueLayout.JAVA_INT.withName("sharedMemBytes"),
+        NativeLayout.C_SIZE_T.withName("paramCount"),
+        ValueLayout.ADDRESS.withName("pParams"),
+        NativeLayout.C_SIZE_T.withName("extraCount"),
+        ValueLayout.ADDRESS.withName("pExtras")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$function = PathElement.groupElement("PATH$function");
@@ -76,6 +91,19 @@ public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IPoi
     public static final PathElement PATH$pParams = PathElement.groupElement("PATH$pParams");
     public static final PathElement PATH$extraCount = PathElement.groupElement("PATH$extraCount");
     public static final PathElement PATH$pExtras = PathElement.groupElement("PATH$pExtras");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$function = (AddressLayout) LAYOUT.select(PATH$function);
+    public static final OfInt LAYOUT$gridDimX = (OfInt) LAYOUT.select(PATH$gridDimX);
+    public static final OfInt LAYOUT$gridDimY = (OfInt) LAYOUT.select(PATH$gridDimY);
+    public static final OfInt LAYOUT$gridDimZ = (OfInt) LAYOUT.select(PATH$gridDimZ);
+    public static final OfInt LAYOUT$blockDimX = (OfInt) LAYOUT.select(PATH$blockDimX);
+    public static final OfInt LAYOUT$blockDimY = (OfInt) LAYOUT.select(PATH$blockDimY);
+    public static final OfInt LAYOUT$blockDimZ = (OfInt) LAYOUT.select(PATH$blockDimZ);
+    public static final OfInt LAYOUT$sharedMemBytes = (OfInt) LAYOUT.select(PATH$sharedMemBytes);
+    public static final AddressLayout LAYOUT$pParams = (AddressLayout) LAYOUT.select(PATH$pParams);
+    public static final AddressLayout LAYOUT$pExtras = (AddressLayout) LAYOUT.select(PATH$pExtras);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

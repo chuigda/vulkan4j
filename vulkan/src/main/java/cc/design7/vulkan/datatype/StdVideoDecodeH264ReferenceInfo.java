@@ -14,16 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoDecodeH264ReferenceInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoDecodeH264ReferenceInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoDecodeH264ReferenceInfoFlags.LAYOUT.withName("flags");
-    public static final OfShort LAYOUT$FrameNum = ValueLayout.JAVA_SHORT.withName("FrameNum");
-    public static final OfShort LAYOUT$reserved = ValueLayout.JAVA_SHORT.withName("reserved");
-    public static final OfInt LAYOUT$PicOrderCnt = ValueLayout.JAVA_INT.withName("PicOrderCnt");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$FrameNum, LAYOUT$reserved, LAYOUT$PicOrderCnt);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoDecodeH264ReferenceInfo allocate(Arena arena) {
         return new StdVideoDecodeH264ReferenceInfo(arena.allocate(LAYOUT));
     }
@@ -51,10 +53,23 @@ public record StdVideoDecodeH264ReferenceInfo(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoDecodeH264ReferenceInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_SHORT.withName("FrameNum"),
+        ValueLayout.JAVA_SHORT.withName("reserved"),
+        ValueLayout.JAVA_INT.withName("PicOrderCnt")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$FrameNum = PathElement.groupElement("PATH$FrameNum");
     public static final PathElement PATH$reserved = PathElement.groupElement("PATH$reserved");
     public static final PathElement PATH$PicOrderCnt = PathElement.groupElement("PATH$PicOrderCnt");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfShort LAYOUT$FrameNum = (OfShort) LAYOUT.select(PATH$FrameNum);
+    public static final OfShort LAYOUT$reserved = (OfShort) LAYOUT.select(PATH$reserved);
+    public static final OfInt LAYOUT$PicOrderCnt = (OfInt) LAYOUT.select(PATH$PicOrderCnt);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$FrameNum = LAYOUT$FrameNum.byteSize();

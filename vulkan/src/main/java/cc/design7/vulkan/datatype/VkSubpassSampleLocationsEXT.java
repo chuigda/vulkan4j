@@ -14,15 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkSubpassSampleLocationsEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubpassSampleLocationsEXT.html">VkSubpassSampleLocationsEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkSubpassSampleLocationsEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$subpassIndex = ValueLayout.JAVA_INT.withName("subpassIndex");
-    public static final StructLayout LAYOUT$sampleLocationsInfo = VkSampleLocationsInfoEXT.LAYOUT.withName("sampleLocationsInfo");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$subpassIndex, LAYOUT$sampleLocationsInfo);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkSubpassSampleLocationsEXT allocate(Arena arena) {
         return new VkSubpassSampleLocationsEXT(arena.allocate(LAYOUT));
     }
@@ -50,8 +55,17 @@ public record VkSubpassSampleLocationsEXT(@NotNull MemorySegment segment) implem
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("subpassIndex"),
+        VkSampleLocationsInfoEXT.LAYOUT.withName("sampleLocationsInfo")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$subpassIndex = PathElement.groupElement("PATH$subpassIndex");
     public static final PathElement PATH$sampleLocationsInfo = PathElement.groupElement("PATH$sampleLocationsInfo");
+
+    public static final OfInt LAYOUT$subpassIndex = (OfInt) LAYOUT.select(PATH$subpassIndex);
+    public static final StructLayout LAYOUT$sampleLocationsInfo = (StructLayout) LAYOUT.select(PATH$sampleLocationsInfo);
 
     public static final long SIZE$subpassIndex = LAYOUT$subpassIndex.byteSize();
     public static final long SIZE$sampleLocationsInfo = LAYOUT$sampleLocationsInfo.byteSize();

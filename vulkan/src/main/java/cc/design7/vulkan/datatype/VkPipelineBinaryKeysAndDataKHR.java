@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPipelineBinaryKeysAndDataKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineBinaryKeysAndDataKHR.html">VkPipelineBinaryKeysAndDataKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$binaryCount = ValueLayout.JAVA_INT.withName("binaryCount");
-    public static final AddressLayout LAYOUT$pPipelineBinaryKeys = ValueLayout.ADDRESS.withTargetLayout(VkPipelineBinaryKeyKHR.LAYOUT).withName("pPipelineBinaryKeys");
-    public static final AddressLayout LAYOUT$pPipelineBinaryData = ValueLayout.ADDRESS.withTargetLayout(VkPipelineBinaryDataKHR.LAYOUT).withName("pPipelineBinaryData");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$binaryCount, LAYOUT$pPipelineBinaryKeys, LAYOUT$pPipelineBinaryData);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkPipelineBinaryKeysAndDataKHR allocate(Arena arena) {
         return new VkPipelineBinaryKeysAndDataKHR(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("binaryCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineBinaryKeyKHR.LAYOUT).withName("pPipelineBinaryKeys"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineBinaryDataKHR.LAYOUT).withName("pPipelineBinaryData")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$binaryCount = PathElement.groupElement("PATH$binaryCount");
     public static final PathElement PATH$pPipelineBinaryKeys = PathElement.groupElement("PATH$pPipelineBinaryKeys");
     public static final PathElement PATH$pPipelineBinaryData = PathElement.groupElement("PATH$pPipelineBinaryData");
+
+    public static final OfInt LAYOUT$binaryCount = (OfInt) LAYOUT.select(PATH$binaryCount);
+    public static final AddressLayout LAYOUT$pPipelineBinaryKeys = (AddressLayout) LAYOUT.select(PATH$pPipelineBinaryKeys);
+    public static final AddressLayout LAYOUT$pPipelineBinaryData = (AddressLayout) LAYOUT.select(PATH$pPipelineBinaryData);
 
     public static final long SIZE$binaryCount = LAYOUT$binaryCount.byteSize();
     public static final long SIZE$pPipelineBinaryKeys = LAYOUT$pPipelineBinaryKeys.byteSize();

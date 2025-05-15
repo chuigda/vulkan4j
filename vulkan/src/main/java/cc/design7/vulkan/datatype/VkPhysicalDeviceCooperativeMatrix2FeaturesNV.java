@@ -14,21 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceCooperativeMatrix2FeaturesNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceCooperativeMatrix2FeaturesNV.html">VkPhysicalDeviceCooperativeMatrix2FeaturesNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceCooperativeMatrix2FeaturesNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$cooperativeMatrixWorkgroupScope = ValueLayout.JAVA_INT.withName("cooperativeMatrixWorkgroupScope");
-    public static final OfInt LAYOUT$cooperativeMatrixFlexibleDimensions = ValueLayout.JAVA_INT.withName("cooperativeMatrixFlexibleDimensions");
-    public static final OfInt LAYOUT$cooperativeMatrixReductions = ValueLayout.JAVA_INT.withName("cooperativeMatrixReductions");
-    public static final OfInt LAYOUT$cooperativeMatrixConversions = ValueLayout.JAVA_INT.withName("cooperativeMatrixConversions");
-    public static final OfInt LAYOUT$cooperativeMatrixPerElementOperations = ValueLayout.JAVA_INT.withName("cooperativeMatrixPerElementOperations");
-    public static final OfInt LAYOUT$cooperativeMatrixTensorAddressing = ValueLayout.JAVA_INT.withName("cooperativeMatrixTensorAddressing");
-    public static final OfInt LAYOUT$cooperativeMatrixBlockLoads = ValueLayout.JAVA_INT.withName("cooperativeMatrixBlockLoads");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$cooperativeMatrixWorkgroupScope, LAYOUT$cooperativeMatrixFlexibleDimensions, LAYOUT$cooperativeMatrixReductions, LAYOUT$cooperativeMatrixConversions, LAYOUT$cooperativeMatrixPerElementOperations, LAYOUT$cooperativeMatrixTensorAddressing, LAYOUT$cooperativeMatrixBlockLoads);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceCooperativeMatrix2FeaturesNV {
+        sType(VkStructureType.PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV);
+    }
 
     public static VkPhysicalDeviceCooperativeMatrix2FeaturesNV allocate(Arena arena) {
         return new VkPhysicalDeviceCooperativeMatrix2FeaturesNV(arena.allocate(LAYOUT));
@@ -57,6 +59,19 @@ public record VkPhysicalDeviceCooperativeMatrix2FeaturesNV(@NotNull MemorySegmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("cooperativeMatrixWorkgroupScope"),
+        ValueLayout.JAVA_INT.withName("cooperativeMatrixFlexibleDimensions"),
+        ValueLayout.JAVA_INT.withName("cooperativeMatrixReductions"),
+        ValueLayout.JAVA_INT.withName("cooperativeMatrixConversions"),
+        ValueLayout.JAVA_INT.withName("cooperativeMatrixPerElementOperations"),
+        ValueLayout.JAVA_INT.withName("cooperativeMatrixTensorAddressing"),
+        ValueLayout.JAVA_INT.withName("cooperativeMatrixBlockLoads")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$cooperativeMatrixWorkgroupScope = PathElement.groupElement("PATH$cooperativeMatrixWorkgroupScope");
@@ -66,6 +81,16 @@ public record VkPhysicalDeviceCooperativeMatrix2FeaturesNV(@NotNull MemorySegmen
     public static final PathElement PATH$cooperativeMatrixPerElementOperations = PathElement.groupElement("PATH$cooperativeMatrixPerElementOperations");
     public static final PathElement PATH$cooperativeMatrixTensorAddressing = PathElement.groupElement("PATH$cooperativeMatrixTensorAddressing");
     public static final PathElement PATH$cooperativeMatrixBlockLoads = PathElement.groupElement("PATH$cooperativeMatrixBlockLoads");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$cooperativeMatrixWorkgroupScope = (OfInt) LAYOUT.select(PATH$cooperativeMatrixWorkgroupScope);
+    public static final OfInt LAYOUT$cooperativeMatrixFlexibleDimensions = (OfInt) LAYOUT.select(PATH$cooperativeMatrixFlexibleDimensions);
+    public static final OfInt LAYOUT$cooperativeMatrixReductions = (OfInt) LAYOUT.select(PATH$cooperativeMatrixReductions);
+    public static final OfInt LAYOUT$cooperativeMatrixConversions = (OfInt) LAYOUT.select(PATH$cooperativeMatrixConversions);
+    public static final OfInt LAYOUT$cooperativeMatrixPerElementOperations = (OfInt) LAYOUT.select(PATH$cooperativeMatrixPerElementOperations);
+    public static final OfInt LAYOUT$cooperativeMatrixTensorAddressing = (OfInt) LAYOUT.select(PATH$cooperativeMatrixTensorAddressing);
+    public static final OfInt LAYOUT$cooperativeMatrixBlockLoads = (OfInt) LAYOUT.select(PATH$cooperativeMatrixBlockLoads);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

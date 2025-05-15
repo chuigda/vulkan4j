@@ -14,26 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.html">VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$maxIndirectPipelineCount = ValueLayout.JAVA_INT.withName("maxIndirectPipelineCount");
-    public static final OfInt LAYOUT$maxIndirectShaderObjectCount = ValueLayout.JAVA_INT.withName("maxIndirectShaderObjectCount");
-    public static final OfInt LAYOUT$maxIndirectSequenceCount = ValueLayout.JAVA_INT.withName("maxIndirectSequenceCount");
-    public static final OfInt LAYOUT$maxIndirectCommandsTokenCount = ValueLayout.JAVA_INT.withName("maxIndirectCommandsTokenCount");
-    public static final OfInt LAYOUT$maxIndirectCommandsTokenOffset = ValueLayout.JAVA_INT.withName("maxIndirectCommandsTokenOffset");
-    public static final OfInt LAYOUT$maxIndirectCommandsIndirectStride = ValueLayout.JAVA_INT.withName("maxIndirectCommandsIndirectStride");
-    public static final OfInt LAYOUT$supportedIndirectCommandsInputModes = ValueLayout.JAVA_INT.withName("supportedIndirectCommandsInputModes");
-    public static final OfInt LAYOUT$supportedIndirectCommandsShaderStages = ValueLayout.JAVA_INT.withName("supportedIndirectCommandsShaderStages");
-    public static final OfInt LAYOUT$supportedIndirectCommandsShaderStagesPipelineBinding = ValueLayout.JAVA_INT.withName("supportedIndirectCommandsShaderStagesPipelineBinding");
-    public static final OfInt LAYOUT$supportedIndirectCommandsShaderStagesShaderBinding = ValueLayout.JAVA_INT.withName("supportedIndirectCommandsShaderStagesShaderBinding");
-    public static final OfInt LAYOUT$deviceGeneratedCommandsTransformFeedback = ValueLayout.JAVA_INT.withName("deviceGeneratedCommandsTransformFeedback");
-    public static final OfInt LAYOUT$deviceGeneratedCommandsMultiDrawIndirectCount = ValueLayout.JAVA_INT.withName("deviceGeneratedCommandsMultiDrawIndirectCount");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$maxIndirectPipelineCount, LAYOUT$maxIndirectShaderObjectCount, LAYOUT$maxIndirectSequenceCount, LAYOUT$maxIndirectCommandsTokenCount, LAYOUT$maxIndirectCommandsTokenOffset, LAYOUT$maxIndirectCommandsIndirectStride, LAYOUT$supportedIndirectCommandsInputModes, LAYOUT$supportedIndirectCommandsShaderStages, LAYOUT$supportedIndirectCommandsShaderStagesPipelineBinding, LAYOUT$supportedIndirectCommandsShaderStagesShaderBinding, LAYOUT$deviceGeneratedCommandsTransformFeedback, LAYOUT$deviceGeneratedCommandsMultiDrawIndirectCount);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT {
+        sType(VkStructureType.PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT);
+    }
 
     public static VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT allocate(Arena arena) {
         return new VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(arena.allocate(LAYOUT));
@@ -62,6 +59,24 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maxIndirectPipelineCount"),
+        ValueLayout.JAVA_INT.withName("maxIndirectShaderObjectCount"),
+        ValueLayout.JAVA_INT.withName("maxIndirectSequenceCount"),
+        ValueLayout.JAVA_INT.withName("maxIndirectCommandsTokenCount"),
+        ValueLayout.JAVA_INT.withName("maxIndirectCommandsTokenOffset"),
+        ValueLayout.JAVA_INT.withName("maxIndirectCommandsIndirectStride"),
+        ValueLayout.JAVA_INT.withName("supportedIndirectCommandsInputModes"),
+        ValueLayout.JAVA_INT.withName("supportedIndirectCommandsShaderStages"),
+        ValueLayout.JAVA_INT.withName("supportedIndirectCommandsShaderStagesPipelineBinding"),
+        ValueLayout.JAVA_INT.withName("supportedIndirectCommandsShaderStagesShaderBinding"),
+        ValueLayout.JAVA_INT.withName("deviceGeneratedCommandsTransformFeedback"),
+        ValueLayout.JAVA_INT.withName("deviceGeneratedCommandsMultiDrawIndirectCount")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$maxIndirectPipelineCount = PathElement.groupElement("PATH$maxIndirectPipelineCount");
@@ -76,6 +91,21 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
     public static final PathElement PATH$supportedIndirectCommandsShaderStagesShaderBinding = PathElement.groupElement("PATH$supportedIndirectCommandsShaderStagesShaderBinding");
     public static final PathElement PATH$deviceGeneratedCommandsTransformFeedback = PathElement.groupElement("PATH$deviceGeneratedCommandsTransformFeedback");
     public static final PathElement PATH$deviceGeneratedCommandsMultiDrawIndirectCount = PathElement.groupElement("PATH$deviceGeneratedCommandsMultiDrawIndirectCount");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maxIndirectPipelineCount = (OfInt) LAYOUT.select(PATH$maxIndirectPipelineCount);
+    public static final OfInt LAYOUT$maxIndirectShaderObjectCount = (OfInt) LAYOUT.select(PATH$maxIndirectShaderObjectCount);
+    public static final OfInt LAYOUT$maxIndirectSequenceCount = (OfInt) LAYOUT.select(PATH$maxIndirectSequenceCount);
+    public static final OfInt LAYOUT$maxIndirectCommandsTokenCount = (OfInt) LAYOUT.select(PATH$maxIndirectCommandsTokenCount);
+    public static final OfInt LAYOUT$maxIndirectCommandsTokenOffset = (OfInt) LAYOUT.select(PATH$maxIndirectCommandsTokenOffset);
+    public static final OfInt LAYOUT$maxIndirectCommandsIndirectStride = (OfInt) LAYOUT.select(PATH$maxIndirectCommandsIndirectStride);
+    public static final OfInt LAYOUT$supportedIndirectCommandsInputModes = (OfInt) LAYOUT.select(PATH$supportedIndirectCommandsInputModes);
+    public static final OfInt LAYOUT$supportedIndirectCommandsShaderStages = (OfInt) LAYOUT.select(PATH$supportedIndirectCommandsShaderStages);
+    public static final OfInt LAYOUT$supportedIndirectCommandsShaderStagesPipelineBinding = (OfInt) LAYOUT.select(PATH$supportedIndirectCommandsShaderStagesPipelineBinding);
+    public static final OfInt LAYOUT$supportedIndirectCommandsShaderStagesShaderBinding = (OfInt) LAYOUT.select(PATH$supportedIndirectCommandsShaderStagesShaderBinding);
+    public static final OfInt LAYOUT$deviceGeneratedCommandsTransformFeedback = (OfInt) LAYOUT.select(PATH$deviceGeneratedCommandsTransformFeedback);
+    public static final OfInt LAYOUT$deviceGeneratedCommandsMultiDrawIndirectCount = (OfInt) LAYOUT.select(PATH$deviceGeneratedCommandsMultiDrawIndirectCount);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

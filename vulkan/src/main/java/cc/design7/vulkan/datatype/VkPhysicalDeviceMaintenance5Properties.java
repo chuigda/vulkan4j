@@ -14,20 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceMaintenance5Properties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMaintenance5Properties.html">VkPhysicalDeviceMaintenance5Properties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceMaintenance5Properties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting = ValueLayout.JAVA_INT.withName("earlyFragmentMultisampleCoverageAfterSampleCounting");
-    public static final OfInt LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting = ValueLayout.JAVA_INT.withName("earlyFragmentSampleMaskTestBeforeSampleCounting");
-    public static final OfInt LAYOUT$depthStencilSwizzleOneSupport = ValueLayout.JAVA_INT.withName("depthStencilSwizzleOneSupport");
-    public static final OfInt LAYOUT$polygonModePointSize = ValueLayout.JAVA_INT.withName("polygonModePointSize");
-    public static final OfInt LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram = ValueLayout.JAVA_INT.withName("nonStrictSinglePixelWideLinesUseParallelogram");
-    public static final OfInt LAYOUT$nonStrictWideLinesUseParallelogram = ValueLayout.JAVA_INT.withName("nonStrictWideLinesUseParallelogram");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting, LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting, LAYOUT$depthStencilSwizzleOneSupport, LAYOUT$polygonModePointSize, LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram, LAYOUT$nonStrictWideLinesUseParallelogram);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceMaintenance5Properties {
+        sType(VkStructureType.PHYSICAL_DEVICE_MAINTENANCE_5_PROPERTIES);
+    }
 
     public static VkPhysicalDeviceMaintenance5Properties allocate(Arena arena) {
         return new VkPhysicalDeviceMaintenance5Properties(arena.allocate(LAYOUT));
@@ -56,6 +59,18 @@ public record VkPhysicalDeviceMaintenance5Properties(@NotNull MemorySegment segm
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("earlyFragmentMultisampleCoverageAfterSampleCounting"),
+        ValueLayout.JAVA_INT.withName("earlyFragmentSampleMaskTestBeforeSampleCounting"),
+        ValueLayout.JAVA_INT.withName("depthStencilSwizzleOneSupport"),
+        ValueLayout.JAVA_INT.withName("polygonModePointSize"),
+        ValueLayout.JAVA_INT.withName("nonStrictSinglePixelWideLinesUseParallelogram"),
+        ValueLayout.JAVA_INT.withName("nonStrictWideLinesUseParallelogram")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$earlyFragmentMultisampleCoverageAfterSampleCounting = PathElement.groupElement("PATH$earlyFragmentMultisampleCoverageAfterSampleCounting");
@@ -64,6 +79,15 @@ public record VkPhysicalDeviceMaintenance5Properties(@NotNull MemorySegment segm
     public static final PathElement PATH$polygonModePointSize = PathElement.groupElement("PATH$polygonModePointSize");
     public static final PathElement PATH$nonStrictSinglePixelWideLinesUseParallelogram = PathElement.groupElement("PATH$nonStrictSinglePixelWideLinesUseParallelogram");
     public static final PathElement PATH$nonStrictWideLinesUseParallelogram = PathElement.groupElement("PATH$nonStrictWideLinesUseParallelogram");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting = (OfInt) LAYOUT.select(PATH$earlyFragmentMultisampleCoverageAfterSampleCounting);
+    public static final OfInt LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting = (OfInt) LAYOUT.select(PATH$earlyFragmentSampleMaskTestBeforeSampleCounting);
+    public static final OfInt LAYOUT$depthStencilSwizzleOneSupport = (OfInt) LAYOUT.select(PATH$depthStencilSwizzleOneSupport);
+    public static final OfInt LAYOUT$polygonModePointSize = (OfInt) LAYOUT.select(PATH$polygonModePointSize);
+    public static final OfInt LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram = (OfInt) LAYOUT.select(PATH$nonStrictSinglePixelWideLinesUseParallelogram);
+    public static final OfInt LAYOUT$nonStrictWideLinesUseParallelogram = (OfInt) LAYOUT.select(PATH$nonStrictWideLinesUseParallelogram);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

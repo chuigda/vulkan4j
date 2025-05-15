@@ -15,17 +15,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkClusterAccelerationStructureInstantiateClusterInfoNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureInstantiateClusterInfoNV.html">VkClusterAccelerationStructureInstantiateClusterInfoNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$clusterIdOffset = ValueLayout.JAVA_INT.withName("clusterIdOffset");
-    public static final OfInt LAYOUT$geometryIndexOffset_reserved = ValueLayout.JAVA_INT.withName("bitfield$geometryIndexOffset_reserved");
-    public static final OfLong LAYOUT$clusterTemplateAddress = ValueLayout.JAVA_LONG.withName("clusterTemplateAddress");
-    public static final StructLayout LAYOUT$vertexBuffer = VkStridedDeviceAddressNV.LAYOUT.withName("vertexBuffer");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$clusterIdOffset, LAYOUT$geometryIndexOffset_reserved, LAYOUT$clusterTemplateAddress, LAYOUT$vertexBuffer);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkClusterAccelerationStructureInstantiateClusterInfoNV allocate(Arena arena) {
         return new VkClusterAccelerationStructureInstantiateClusterInfoNV(arena.allocate(LAYOUT));
     }
@@ -53,10 +56,23 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("clusterIdOffset"),
+        ValueLayout.JAVA_INT.withName("bitfield$geometryIndexOffset_reserved"),
+        ValueLayout.JAVA_LONG.withName("clusterTemplateAddress"),
+        VkStridedDeviceAddressNV.LAYOUT.withName("vertexBuffer")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$clusterIdOffset = PathElement.groupElement("PATH$clusterIdOffset");
     public static final PathElement PATH$bitfield$geometryIndexOffset_reserved = PathElement.groupElement("PATH$bitfield$geometryIndexOffset_reserved");
     public static final PathElement PATH$clusterTemplateAddress = PathElement.groupElement("PATH$clusterTemplateAddress");
     public static final PathElement PATH$vertexBuffer = PathElement.groupElement("PATH$vertexBuffer");
+
+    public static final OfInt LAYOUT$clusterIdOffset = (OfInt) LAYOUT.select(PATH$clusterIdOffset);
+    public static final OfInt LAYOUT$geometryIndexOffset_reserved = (OfInt) LAYOUT.select(PATH$bitfield$geometryIndexOffset_reserved);
+    public static final OfLong LAYOUT$clusterTemplateAddress = (OfLong) LAYOUT.select(PATH$clusterTemplateAddress);
+    public static final StructLayout LAYOUT$vertexBuffer = (StructLayout) LAYOUT.select(PATH$vertexBuffer);
 
     public static final long SIZE$clusterIdOffset = LAYOUT$clusterIdOffset.byteSize();
     public static final long SIZE$clusterTemplateAddress = LAYOUT$clusterTemplateAddress.byteSize();

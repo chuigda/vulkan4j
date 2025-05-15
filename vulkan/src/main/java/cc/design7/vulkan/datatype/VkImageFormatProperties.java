@@ -14,18 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkImageFormatProperties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageFormatProperties.html">VkImageFormatProperties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkImageFormatProperties(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$maxExtent = VkExtent3D.LAYOUT.withName("maxExtent");
-    public static final OfInt LAYOUT$maxMipLevels = ValueLayout.JAVA_INT.withName("maxMipLevels");
-    public static final OfInt LAYOUT$maxArrayLayers = ValueLayout.JAVA_INT.withName("maxArrayLayers");
-    public static final OfInt LAYOUT$sampleCounts = ValueLayout.JAVA_INT.withName("sampleCounts");
-    public static final OfLong LAYOUT$maxResourceSize = ValueLayout.JAVA_LONG.withName("maxResourceSize");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$maxExtent, LAYOUT$maxMipLevels, LAYOUT$maxArrayLayers, LAYOUT$sampleCounts, LAYOUT$maxResourceSize);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkImageFormatProperties allocate(Arena arena) {
         return new VkImageFormatProperties(arena.allocate(LAYOUT));
     }
@@ -53,11 +55,26 @@ public record VkImageFormatProperties(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        VkExtent3D.LAYOUT.withName("maxExtent"),
+        ValueLayout.JAVA_INT.withName("maxMipLevels"),
+        ValueLayout.JAVA_INT.withName("maxArrayLayers"),
+        ValueLayout.JAVA_INT.withName("sampleCounts"),
+        ValueLayout.JAVA_LONG.withName("maxResourceSize")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$maxExtent = PathElement.groupElement("PATH$maxExtent");
     public static final PathElement PATH$maxMipLevels = PathElement.groupElement("PATH$maxMipLevels");
     public static final PathElement PATH$maxArrayLayers = PathElement.groupElement("PATH$maxArrayLayers");
     public static final PathElement PATH$sampleCounts = PathElement.groupElement("PATH$sampleCounts");
     public static final PathElement PATH$maxResourceSize = PathElement.groupElement("PATH$maxResourceSize");
+
+    public static final StructLayout LAYOUT$maxExtent = (StructLayout) LAYOUT.select(PATH$maxExtent);
+    public static final OfInt LAYOUT$maxMipLevels = (OfInt) LAYOUT.select(PATH$maxMipLevels);
+    public static final OfInt LAYOUT$maxArrayLayers = (OfInt) LAYOUT.select(PATH$maxArrayLayers);
+    public static final OfInt LAYOUT$sampleCounts = (OfInt) LAYOUT.select(PATH$sampleCounts);
+    public static final OfLong LAYOUT$maxResourceSize = (OfLong) LAYOUT.select(PATH$maxResourceSize);
 
     public static final long SIZE$maxExtent = LAYOUT$maxExtent.byteSize();
     public static final long SIZE$maxMipLevels = LAYOUT$maxMipLevels.byteSize();

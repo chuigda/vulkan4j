@@ -14,20 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceDrmPropertiesEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDrmPropertiesEXT.html">VkPhysicalDeviceDrmPropertiesEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceDrmPropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$hasPrimary = ValueLayout.JAVA_INT.withName("hasPrimary");
-    public static final OfInt LAYOUT$hasRender = ValueLayout.JAVA_INT.withName("hasRender");
-    public static final OfLong LAYOUT$primaryMajor = ValueLayout.JAVA_LONG.withName("primaryMajor");
-    public static final OfLong LAYOUT$primaryMinor = ValueLayout.JAVA_LONG.withName("primaryMinor");
-    public static final OfLong LAYOUT$renderMajor = ValueLayout.JAVA_LONG.withName("renderMajor");
-    public static final OfLong LAYOUT$renderMinor = ValueLayout.JAVA_LONG.withName("renderMinor");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$hasPrimary, LAYOUT$hasRender, LAYOUT$primaryMajor, LAYOUT$primaryMinor, LAYOUT$renderMajor, LAYOUT$renderMinor);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceDrmPropertiesEXT {
+        sType(VkStructureType.PHYSICAL_DEVICE_DRM_PROPERTIES_EXT);
+    }
 
     public static VkPhysicalDeviceDrmPropertiesEXT allocate(Arena arena) {
         return new VkPhysicalDeviceDrmPropertiesEXT(arena.allocate(LAYOUT));
@@ -56,6 +59,18 @@ public record VkPhysicalDeviceDrmPropertiesEXT(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("hasPrimary"),
+        ValueLayout.JAVA_INT.withName("hasRender"),
+        ValueLayout.JAVA_LONG.withName("primaryMajor"),
+        ValueLayout.JAVA_LONG.withName("primaryMinor"),
+        ValueLayout.JAVA_LONG.withName("renderMajor"),
+        ValueLayout.JAVA_LONG.withName("renderMinor")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$hasPrimary = PathElement.groupElement("PATH$hasPrimary");
@@ -64,6 +79,15 @@ public record VkPhysicalDeviceDrmPropertiesEXT(@NotNull MemorySegment segment) i
     public static final PathElement PATH$primaryMinor = PathElement.groupElement("PATH$primaryMinor");
     public static final PathElement PATH$renderMajor = PathElement.groupElement("PATH$renderMajor");
     public static final PathElement PATH$renderMinor = PathElement.groupElement("PATH$renderMinor");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$hasPrimary = (OfInt) LAYOUT.select(PATH$hasPrimary);
+    public static final OfInt LAYOUT$hasRender = (OfInt) LAYOUT.select(PATH$hasRender);
+    public static final OfLong LAYOUT$primaryMajor = (OfLong) LAYOUT.select(PATH$primaryMajor);
+    public static final OfLong LAYOUT$primaryMinor = (OfLong) LAYOUT.select(PATH$primaryMinor);
+    public static final OfLong LAYOUT$renderMajor = (OfLong) LAYOUT.select(PATH$renderMajor);
+    public static final OfLong LAYOUT$renderMinor = (OfLong) LAYOUT.select(PATH$renderMinor);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

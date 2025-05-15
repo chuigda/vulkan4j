@@ -14,19 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceMeshShaderFeaturesEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMeshShaderFeaturesEXT.html">VkPhysicalDeviceMeshShaderFeaturesEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceMeshShaderFeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$taskShader = ValueLayout.JAVA_INT.withName("taskShader");
-    public static final OfInt LAYOUT$meshShader = ValueLayout.JAVA_INT.withName("meshShader");
-    public static final OfInt LAYOUT$multiviewMeshShader = ValueLayout.JAVA_INT.withName("multiviewMeshShader");
-    public static final OfInt LAYOUT$primitiveFragmentShadingRateMeshShader = ValueLayout.JAVA_INT.withName("primitiveFragmentShadingRateMeshShader");
-    public static final OfInt LAYOUT$meshShaderQueries = ValueLayout.JAVA_INT.withName("meshShaderQueries");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$taskShader, LAYOUT$meshShader, LAYOUT$multiviewMeshShader, LAYOUT$primitiveFragmentShadingRateMeshShader, LAYOUT$meshShaderQueries);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceMeshShaderFeaturesEXT {
+        sType(VkStructureType.PHYSICAL_DEVICE_MESH_SHADER_FEATURES_EXT);
+    }
 
     public static VkPhysicalDeviceMeshShaderFeaturesEXT allocate(Arena arena) {
         return new VkPhysicalDeviceMeshShaderFeaturesEXT(arena.allocate(LAYOUT));
@@ -55,6 +59,17 @@ public record VkPhysicalDeviceMeshShaderFeaturesEXT(@NotNull MemorySegment segme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("taskShader"),
+        ValueLayout.JAVA_INT.withName("meshShader"),
+        ValueLayout.JAVA_INT.withName("multiviewMeshShader"),
+        ValueLayout.JAVA_INT.withName("primitiveFragmentShadingRateMeshShader"),
+        ValueLayout.JAVA_INT.withName("meshShaderQueries")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$taskShader = PathElement.groupElement("PATH$taskShader");
@@ -62,6 +77,14 @@ public record VkPhysicalDeviceMeshShaderFeaturesEXT(@NotNull MemorySegment segme
     public static final PathElement PATH$multiviewMeshShader = PathElement.groupElement("PATH$multiviewMeshShader");
     public static final PathElement PATH$primitiveFragmentShadingRateMeshShader = PathElement.groupElement("PATH$primitiveFragmentShadingRateMeshShader");
     public static final PathElement PATH$meshShaderQueries = PathElement.groupElement("PATH$meshShaderQueries");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$taskShader = (OfInt) LAYOUT.select(PATH$taskShader);
+    public static final OfInt LAYOUT$meshShader = (OfInt) LAYOUT.select(PATH$meshShader);
+    public static final OfInt LAYOUT$multiviewMeshShader = (OfInt) LAYOUT.select(PATH$multiviewMeshShader);
+    public static final OfInt LAYOUT$primitiveFragmentShadingRateMeshShader = (OfInt) LAYOUT.select(PATH$primitiveFragmentShadingRateMeshShader);
+    public static final OfInt LAYOUT$meshShaderQueries = (OfInt) LAYOUT.select(PATH$meshShaderQueries);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

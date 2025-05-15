@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeAV1FrameSizeKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1FrameSizeKHR.html">VkVideoEncodeAV1FrameSizeKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeAV1FrameSizeKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$intraFrameSize = ValueLayout.JAVA_INT.withName("intraFrameSize");
-    public static final OfInt LAYOUT$predictiveFrameSize = ValueLayout.JAVA_INT.withName("predictiveFrameSize");
-    public static final OfInt LAYOUT$bipredictiveFrameSize = ValueLayout.JAVA_INT.withName("bipredictiveFrameSize");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$intraFrameSize, LAYOUT$predictiveFrameSize, LAYOUT$bipredictiveFrameSize);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkVideoEncodeAV1FrameSizeKHR allocate(Arena arena) {
         return new VkVideoEncodeAV1FrameSizeKHR(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkVideoEncodeAV1FrameSizeKHR(@NotNull MemorySegment segment) imple
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("intraFrameSize"),
+        ValueLayout.JAVA_INT.withName("predictiveFrameSize"),
+        ValueLayout.JAVA_INT.withName("bipredictiveFrameSize")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$intraFrameSize = PathElement.groupElement("PATH$intraFrameSize");
     public static final PathElement PATH$predictiveFrameSize = PathElement.groupElement("PATH$predictiveFrameSize");
     public static final PathElement PATH$bipredictiveFrameSize = PathElement.groupElement("PATH$bipredictiveFrameSize");
+
+    public static final OfInt LAYOUT$intraFrameSize = (OfInt) LAYOUT.select(PATH$intraFrameSize);
+    public static final OfInt LAYOUT$predictiveFrameSize = (OfInt) LAYOUT.select(PATH$predictiveFrameSize);
+    public static final OfInt LAYOUT$bipredictiveFrameSize = (OfInt) LAYOUT.select(PATH$bipredictiveFrameSize);
 
     public static final long SIZE$intraFrameSize = LAYOUT$intraFrameSize.byteSize();
     public static final long SIZE$predictiveFrameSize = LAYOUT$predictiveFrameSize.byteSize();

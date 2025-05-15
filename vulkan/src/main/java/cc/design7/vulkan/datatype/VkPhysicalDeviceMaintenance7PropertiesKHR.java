@@ -14,22 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceMaintenance7PropertiesKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMaintenance7PropertiesKHR.html">VkPhysicalDeviceMaintenance7PropertiesKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceMaintenance7PropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$robustFragmentShadingRateAttachmentAccess = ValueLayout.JAVA_INT.withName("robustFragmentShadingRateAttachmentAccess");
-    public static final OfInt LAYOUT$separateDepthStencilAttachmentAccess = ValueLayout.JAVA_INT.withName("separateDepthStencilAttachmentAccess");
-    public static final OfInt LAYOUT$maxDescriptorSetTotalUniformBuffersDynamic = ValueLayout.JAVA_INT.withName("maxDescriptorSetTotalUniformBuffersDynamic");
-    public static final OfInt LAYOUT$maxDescriptorSetTotalStorageBuffersDynamic = ValueLayout.JAVA_INT.withName("maxDescriptorSetTotalStorageBuffersDynamic");
-    public static final OfInt LAYOUT$maxDescriptorSetTotalBuffersDynamic = ValueLayout.JAVA_INT.withName("maxDescriptorSetTotalBuffersDynamic");
-    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic = ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic");
-    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic = ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic");
-    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic = ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindTotalBuffersDynamic");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$robustFragmentShadingRateAttachmentAccess, LAYOUT$separateDepthStencilAttachmentAccess, LAYOUT$maxDescriptorSetTotalUniformBuffersDynamic, LAYOUT$maxDescriptorSetTotalStorageBuffersDynamic, LAYOUT$maxDescriptorSetTotalBuffersDynamic, LAYOUT$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic, LAYOUT$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic, LAYOUT$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceMaintenance7PropertiesKHR {
+        sType(VkStructureType.PHYSICAL_DEVICE_MAINTENANCE_7_PROPERTIES_KHR);
+    }
 
     public static VkPhysicalDeviceMaintenance7PropertiesKHR allocate(Arena arena) {
         return new VkPhysicalDeviceMaintenance7PropertiesKHR(arena.allocate(LAYOUT));
@@ -58,6 +59,20 @@ public record VkPhysicalDeviceMaintenance7PropertiesKHR(@NotNull MemorySegment s
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("robustFragmentShadingRateAttachmentAccess"),
+        ValueLayout.JAVA_INT.withName("separateDepthStencilAttachmentAccess"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetTotalUniformBuffersDynamic"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetTotalStorageBuffersDynamic"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetTotalBuffersDynamic"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindTotalBuffersDynamic")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$robustFragmentShadingRateAttachmentAccess = PathElement.groupElement("PATH$robustFragmentShadingRateAttachmentAccess");
@@ -68,6 +83,17 @@ public record VkPhysicalDeviceMaintenance7PropertiesKHR(@NotNull MemorySegment s
     public static final PathElement PATH$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic = PathElement.groupElement("PATH$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic");
     public static final PathElement PATH$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic = PathElement.groupElement("PATH$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic");
     public static final PathElement PATH$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic = PathElement.groupElement("PATH$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$robustFragmentShadingRateAttachmentAccess = (OfInt) LAYOUT.select(PATH$robustFragmentShadingRateAttachmentAccess);
+    public static final OfInt LAYOUT$separateDepthStencilAttachmentAccess = (OfInt) LAYOUT.select(PATH$separateDepthStencilAttachmentAccess);
+    public static final OfInt LAYOUT$maxDescriptorSetTotalUniformBuffersDynamic = (OfInt) LAYOUT.select(PATH$maxDescriptorSetTotalUniformBuffersDynamic);
+    public static final OfInt LAYOUT$maxDescriptorSetTotalStorageBuffersDynamic = (OfInt) LAYOUT.select(PATH$maxDescriptorSetTotalStorageBuffersDynamic);
+    public static final OfInt LAYOUT$maxDescriptorSetTotalBuffersDynamic = (OfInt) LAYOUT.select(PATH$maxDescriptorSetTotalBuffersDynamic);
+    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic);
+    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic);
+    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

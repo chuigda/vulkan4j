@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceShaderClockFeaturesKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderClockFeaturesKHR.html">VkPhysicalDeviceShaderClockFeaturesKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceShaderClockFeaturesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$shaderSubgroupClock = ValueLayout.JAVA_INT.withName("shaderSubgroupClock");
-    public static final OfInt LAYOUT$shaderDeviceClock = ValueLayout.JAVA_INT.withName("shaderDeviceClock");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$shaderSubgroupClock, LAYOUT$shaderDeviceClock);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceShaderClockFeaturesKHR {
+        sType(VkStructureType.PHYSICAL_DEVICE_SHADER_CLOCK_FEATURES_KHR);
+    }
 
     public static VkPhysicalDeviceShaderClockFeaturesKHR allocate(Arena arena) {
         return new VkPhysicalDeviceShaderClockFeaturesKHR(arena.allocate(LAYOUT));
@@ -52,10 +59,23 @@ public record VkPhysicalDeviceShaderClockFeaturesKHR(@NotNull MemorySegment segm
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("shaderSubgroupClock"),
+        ValueLayout.JAVA_INT.withName("shaderDeviceClock")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$shaderSubgroupClock = PathElement.groupElement("PATH$shaderSubgroupClock");
     public static final PathElement PATH$shaderDeviceClock = PathElement.groupElement("PATH$shaderDeviceClock");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$shaderSubgroupClock = (OfInt) LAYOUT.select(PATH$shaderSubgroupClock);
+    public static final OfInt LAYOUT$shaderDeviceClock = (OfInt) LAYOUT.select(PATH$shaderDeviceClock);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

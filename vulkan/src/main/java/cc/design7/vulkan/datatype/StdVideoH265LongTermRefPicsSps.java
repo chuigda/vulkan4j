@@ -14,14 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoH265LongTermRefPicsSps} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$used_by_curr_pic_lt_sps_flag = ValueLayout.JAVA_INT.withName("used_by_curr_pic_lt_sps_flag");
-    public static final OfInt LAYOUT$lt_ref_pic_poc_lsb_sps = ValueLayout.JAVA_INT.withName("lt_ref_pic_poc_lsb_sps");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$used_by_curr_pic_lt_sps_flag, LAYOUT$lt_ref_pic_poc_lsb_sps);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoH265LongTermRefPicsSps allocate(Arena arena) {
         return new StdVideoH265LongTermRefPicsSps(arena.allocate(LAYOUT));
     }
@@ -49,8 +53,17 @@ public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) imp
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("used_by_curr_pic_lt_sps_flag"),
+        ValueLayout.JAVA_INT.withName("lt_ref_pic_poc_lsb_sps")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$used_by_curr_pic_lt_sps_flag = PathElement.groupElement("PATH$used_by_curr_pic_lt_sps_flag");
     public static final PathElement PATH$lt_ref_pic_poc_lsb_sps = PathElement.groupElement("PATH$lt_ref_pic_poc_lsb_sps");
+
+    public static final OfInt LAYOUT$used_by_curr_pic_lt_sps_flag = (OfInt) LAYOUT.select(PATH$used_by_curr_pic_lt_sps_flag);
+    public static final OfInt LAYOUT$lt_ref_pic_poc_lsb_sps = (OfInt) LAYOUT.select(PATH$lt_ref_pic_poc_lsb_sps);
 
     public static final long SIZE$used_by_curr_pic_lt_sps_flag = LAYOUT$used_by_curr_pic_lt_sps_flag.byteSize();
     public static final long SIZE$lt_ref_pic_poc_lsb_sps = LAYOUT$lt_ref_pic_poc_lsb_sps.byteSize();

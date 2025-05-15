@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkImageViewHandleInfoNVX} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageViewHandleInfoNVX.html">VkImageViewHandleInfoNVX</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkImageViewHandleInfoNVX(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$imageView = ValueLayout.ADDRESS.withName("imageView");
-    public static final OfInt LAYOUT$descriptorType = ValueLayout.JAVA_INT.withName("descriptorType");
-    public static final AddressLayout LAYOUT$sampler = ValueLayout.ADDRESS.withName("sampler");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$imageView, LAYOUT$descriptorType, LAYOUT$sampler);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkImageViewHandleInfoNVX {
+        sType(VkStructureType.IMAGE_VIEW_HANDLE_INFO_NVX);
+    }
 
     public static VkImageViewHandleInfoNVX allocate(Arena arena) {
         return new VkImageViewHandleInfoNVX(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkImageViewHandleInfoNVX(@NotNull MemorySegment segment) implement
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("imageView"),
+        ValueLayout.JAVA_INT.withName("descriptorType"),
+        ValueLayout.ADDRESS.withName("sampler")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$imageView = PathElement.groupElement("PATH$imageView");
     public static final PathElement PATH$descriptorType = PathElement.groupElement("PATH$descriptorType");
     public static final PathElement PATH$sampler = PathElement.groupElement("PATH$sampler");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$imageView = (AddressLayout) LAYOUT.select(PATH$imageView);
+    public static final OfInt LAYOUT$descriptorType = (OfInt) LAYOUT.select(PATH$descriptorType);
+    public static final AddressLayout LAYOUT$sampler = (AddressLayout) LAYOUT.select(PATH$sampler);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkBuildPartitionedAccelerationStructureIndirectCommandNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBuildPartitionedAccelerationStructureIndirectCommandNV.html">VkBuildPartitionedAccelerationStructureIndirectCommandNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$opType = ValueLayout.JAVA_INT.withName("opType");
-    public static final OfInt LAYOUT$argCount = ValueLayout.JAVA_INT.withName("argCount");
-    public static final StructLayout LAYOUT$argData = VkStridedDeviceAddressNV.LAYOUT.withName("argData");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$opType, LAYOUT$argCount, LAYOUT$argData);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkBuildPartitionedAccelerationStructureIndirectCommandNV allocate(Arena arena) {
         return new VkBuildPartitionedAccelerationStructureIndirectCommandNV(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("opType"),
+        ValueLayout.JAVA_INT.withName("argCount"),
+        VkStridedDeviceAddressNV.LAYOUT.withName("argData")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$opType = PathElement.groupElement("PATH$opType");
     public static final PathElement PATH$argCount = PathElement.groupElement("PATH$argCount");
     public static final PathElement PATH$argData = PathElement.groupElement("PATH$argData");
+
+    public static final OfInt LAYOUT$opType = (OfInt) LAYOUT.select(PATH$opType);
+    public static final OfInt LAYOUT$argCount = (OfInt) LAYOUT.select(PATH$argCount);
+    public static final StructLayout LAYOUT$argData = (StructLayout) LAYOUT.select(PATH$argData);
 
     public static final long SIZE$opType = LAYOUT$opType.byteSize();
     public static final long SIZE$argCount = LAYOUT$argCount.byteSize();

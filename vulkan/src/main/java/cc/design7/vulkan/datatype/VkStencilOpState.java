@@ -14,20 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkStencilOpState} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStencilOpState.html">VkStencilOpState</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkStencilOpState(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$failOp = ValueLayout.JAVA_INT.withName("failOp");
-    public static final OfInt LAYOUT$passOp = ValueLayout.JAVA_INT.withName("passOp");
-    public static final OfInt LAYOUT$depthFailOp = ValueLayout.JAVA_INT.withName("depthFailOp");
-    public static final OfInt LAYOUT$compareOp = ValueLayout.JAVA_INT.withName("compareOp");
-    public static final OfInt LAYOUT$compareMask = ValueLayout.JAVA_INT.withName("compareMask");
-    public static final OfInt LAYOUT$writeMask = ValueLayout.JAVA_INT.withName("writeMask");
-    public static final OfInt LAYOUT$reference = ValueLayout.JAVA_INT.withName("reference");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$failOp, LAYOUT$passOp, LAYOUT$depthFailOp, LAYOUT$compareOp, LAYOUT$compareMask, LAYOUT$writeMask, LAYOUT$reference);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkStencilOpState allocate(Arena arena) {
         return new VkStencilOpState(arena.allocate(LAYOUT));
     }
@@ -55,6 +55,17 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IPoint
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("failOp"),
+        ValueLayout.JAVA_INT.withName("passOp"),
+        ValueLayout.JAVA_INT.withName("depthFailOp"),
+        ValueLayout.JAVA_INT.withName("compareOp"),
+        ValueLayout.JAVA_INT.withName("compareMask"),
+        ValueLayout.JAVA_INT.withName("writeMask"),
+        ValueLayout.JAVA_INT.withName("reference")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$failOp = PathElement.groupElement("PATH$failOp");
     public static final PathElement PATH$passOp = PathElement.groupElement("PATH$passOp");
     public static final PathElement PATH$depthFailOp = PathElement.groupElement("PATH$depthFailOp");
@@ -62,6 +73,14 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IPoint
     public static final PathElement PATH$compareMask = PathElement.groupElement("PATH$compareMask");
     public static final PathElement PATH$writeMask = PathElement.groupElement("PATH$writeMask");
     public static final PathElement PATH$reference = PathElement.groupElement("PATH$reference");
+
+    public static final OfInt LAYOUT$failOp = (OfInt) LAYOUT.select(PATH$failOp);
+    public static final OfInt LAYOUT$passOp = (OfInt) LAYOUT.select(PATH$passOp);
+    public static final OfInt LAYOUT$depthFailOp = (OfInt) LAYOUT.select(PATH$depthFailOp);
+    public static final OfInt LAYOUT$compareOp = (OfInt) LAYOUT.select(PATH$compareOp);
+    public static final OfInt LAYOUT$compareMask = (OfInt) LAYOUT.select(PATH$compareMask);
+    public static final OfInt LAYOUT$writeMask = (OfInt) LAYOUT.select(PATH$writeMask);
+    public static final OfInt LAYOUT$reference = (OfInt) LAYOUT.select(PATH$reference);
 
     public static final long SIZE$failOp = LAYOUT$failOp.byteSize();
     public static final long SIZE$passOp = LAYOUT$passOp.byteSize();

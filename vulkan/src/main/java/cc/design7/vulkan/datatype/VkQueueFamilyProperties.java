@@ -14,17 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkQueueFamilyProperties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueueFamilyProperties.html">VkQueueFamilyProperties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$queueFlags = ValueLayout.JAVA_INT.withName("queueFlags");
-    public static final OfInt LAYOUT$queueCount = ValueLayout.JAVA_INT.withName("queueCount");
-    public static final OfInt LAYOUT$timestampValidBits = ValueLayout.JAVA_INT.withName("timestampValidBits");
-    public static final StructLayout LAYOUT$minImageTransferGranularity = VkExtent3D.LAYOUT.withName("minImageTransferGranularity");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$queueFlags, LAYOUT$queueCount, LAYOUT$timestampValidBits, LAYOUT$minImageTransferGranularity);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkQueueFamilyProperties allocate(Arena arena) {
         return new VkQueueFamilyProperties(arena.allocate(LAYOUT));
     }
@@ -52,10 +55,23 @@ public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("queueFlags"),
+        ValueLayout.JAVA_INT.withName("queueCount"),
+        ValueLayout.JAVA_INT.withName("timestampValidBits"),
+        VkExtent3D.LAYOUT.withName("minImageTransferGranularity")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$queueFlags = PathElement.groupElement("PATH$queueFlags");
     public static final PathElement PATH$queueCount = PathElement.groupElement("PATH$queueCount");
     public static final PathElement PATH$timestampValidBits = PathElement.groupElement("PATH$timestampValidBits");
     public static final PathElement PATH$minImageTransferGranularity = PathElement.groupElement("PATH$minImageTransferGranularity");
+
+    public static final OfInt LAYOUT$queueFlags = (OfInt) LAYOUT.select(PATH$queueFlags);
+    public static final OfInt LAYOUT$queueCount = (OfInt) LAYOUT.select(PATH$queueCount);
+    public static final OfInt LAYOUT$timestampValidBits = (OfInt) LAYOUT.select(PATH$timestampValidBits);
+    public static final StructLayout LAYOUT$minImageTransferGranularity = (StructLayout) LAYOUT.select(PATH$minImageTransferGranularity);
 
     public static final long SIZE$queueFlags = LAYOUT$queueFlags.byteSize();
     public static final long SIZE$queueCount = LAYOUT$queueCount.byteSize();

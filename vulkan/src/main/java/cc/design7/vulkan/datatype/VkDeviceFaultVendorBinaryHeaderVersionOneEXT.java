@@ -14,24 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDeviceFaultVendorBinaryHeaderVersionOneEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceFaultVendorBinaryHeaderVersionOneEXT.html">VkDeviceFaultVendorBinaryHeaderVersionOneEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$headerSize = ValueLayout.JAVA_INT.withName("headerSize");
-    public static final OfInt LAYOUT$headerVersion = ValueLayout.JAVA_INT.withName("headerVersion");
-    public static final OfInt LAYOUT$vendorID = ValueLayout.JAVA_INT.withName("vendorID");
-    public static final OfInt LAYOUT$deviceID = ValueLayout.JAVA_INT.withName("deviceID");
-    public static final OfInt LAYOUT$driverVersion = ValueLayout.JAVA_INT.withName("driverVersion");
-    public static final OfByte LAYOUT$pipelineCacheUUID = ValueLayout.JAVA_BYTE.withName("pipelineCacheUUID");
-    public static final OfInt LAYOUT$applicationNameOffset = ValueLayout.JAVA_INT.withName("applicationNameOffset");
-    public static final OfInt LAYOUT$applicationVersion = ValueLayout.JAVA_INT.withName("applicationVersion");
-    public static final OfInt LAYOUT$engineNameOffset = ValueLayout.JAVA_INT.withName("engineNameOffset");
-    public static final OfInt LAYOUT$engineVersion = ValueLayout.JAVA_INT.withName("engineVersion");
-    public static final OfInt LAYOUT$apiVersion = ValueLayout.JAVA_INT.withName("apiVersion");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$headerSize, LAYOUT$headerVersion, LAYOUT$vendorID, LAYOUT$deviceID, LAYOUT$driverVersion, LAYOUT$pipelineCacheUUID, LAYOUT$applicationNameOffset, LAYOUT$applicationVersion, LAYOUT$engineNameOffset, LAYOUT$engineVersion, LAYOUT$apiVersion);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkDeviceFaultVendorBinaryHeaderVersionOneEXT allocate(Arena arena) {
         return new VkDeviceFaultVendorBinaryHeaderVersionOneEXT(arena.allocate(LAYOUT));
     }
@@ -59,6 +55,21 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("headerSize"),
+        ValueLayout.JAVA_INT.withName("headerVersion"),
+        ValueLayout.JAVA_INT.withName("vendorID"),
+        ValueLayout.JAVA_INT.withName("deviceID"),
+        ValueLayout.JAVA_INT.withName("driverVersion"),
+        ValueLayout.JAVA_BYTE.withName("pipelineCacheUUID"),
+        ValueLayout.JAVA_INT.withName("applicationNameOffset"),
+        ValueLayout.JAVA_INT.withName("applicationVersion"),
+        ValueLayout.JAVA_INT.withName("engineNameOffset"),
+        ValueLayout.JAVA_INT.withName("engineVersion"),
+        ValueLayout.JAVA_INT.withName("apiVersion")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$headerSize = PathElement.groupElement("PATH$headerSize");
     public static final PathElement PATH$headerVersion = PathElement.groupElement("PATH$headerVersion");
     public static final PathElement PATH$vendorID = PathElement.groupElement("PATH$vendorID");
@@ -70,6 +81,18 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
     public static final PathElement PATH$engineNameOffset = PathElement.groupElement("PATH$engineNameOffset");
     public static final PathElement PATH$engineVersion = PathElement.groupElement("PATH$engineVersion");
     public static final PathElement PATH$apiVersion = PathElement.groupElement("PATH$apiVersion");
+
+    public static final OfInt LAYOUT$headerSize = (OfInt) LAYOUT.select(PATH$headerSize);
+    public static final OfInt LAYOUT$headerVersion = (OfInt) LAYOUT.select(PATH$headerVersion);
+    public static final OfInt LAYOUT$vendorID = (OfInt) LAYOUT.select(PATH$vendorID);
+    public static final OfInt LAYOUT$deviceID = (OfInt) LAYOUT.select(PATH$deviceID);
+    public static final OfInt LAYOUT$driverVersion = (OfInt) LAYOUT.select(PATH$driverVersion);
+    public static final OfByte LAYOUT$pipelineCacheUUID = (OfByte) LAYOUT.select(PATH$pipelineCacheUUID);
+    public static final OfInt LAYOUT$applicationNameOffset = (OfInt) LAYOUT.select(PATH$applicationNameOffset);
+    public static final OfInt LAYOUT$applicationVersion = (OfInt) LAYOUT.select(PATH$applicationVersion);
+    public static final OfInt LAYOUT$engineNameOffset = (OfInt) LAYOUT.select(PATH$engineNameOffset);
+    public static final OfInt LAYOUT$engineVersion = (OfInt) LAYOUT.select(PATH$engineVersion);
+    public static final OfInt LAYOUT$apiVersion = (OfInt) LAYOUT.select(PATH$apiVersion);
 
     public static final long SIZE$headerSize = LAYOUT$headerSize.byteSize();
     public static final long SIZE$headerVersion = LAYOUT$headerVersion.byteSize();

@@ -14,24 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPipelineDepthStencilStateCreateInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineDepthStencilStateCreateInfo.html">VkPipelineDepthStencilStateCreateInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$depthTestEnable = ValueLayout.JAVA_INT.withName("depthTestEnable");
-    public static final OfInt LAYOUT$depthWriteEnable = ValueLayout.JAVA_INT.withName("depthWriteEnable");
-    public static final OfInt LAYOUT$depthCompareOp = ValueLayout.JAVA_INT.withName("depthCompareOp");
-    public static final OfInt LAYOUT$depthBoundsTestEnable = ValueLayout.JAVA_INT.withName("depthBoundsTestEnable");
-    public static final OfInt LAYOUT$stencilTestEnable = ValueLayout.JAVA_INT.withName("stencilTestEnable");
-    public static final StructLayout LAYOUT$front = VkStencilOpState.LAYOUT.withName("front");
-    public static final StructLayout LAYOUT$back = VkStencilOpState.LAYOUT.withName("back");
-    public static final OfFloat LAYOUT$minDepthBounds = ValueLayout.JAVA_FLOAT.withName("minDepthBounds");
-    public static final OfFloat LAYOUT$maxDepthBounds = ValueLayout.JAVA_FLOAT.withName("maxDepthBounds");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$depthTestEnable, LAYOUT$depthWriteEnable, LAYOUT$depthCompareOp, LAYOUT$depthBoundsTestEnable, LAYOUT$stencilTestEnable, LAYOUT$front, LAYOUT$back, LAYOUT$minDepthBounds, LAYOUT$maxDepthBounds);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPipelineDepthStencilStateCreateInfo {
+        sType(VkStructureType.PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO);
+    }
 
     public static VkPipelineDepthStencilStateCreateInfo allocate(Arena arena) {
         return new VkPipelineDepthStencilStateCreateInfo(arena.allocate(LAYOUT));
@@ -60,6 +59,22 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("depthTestEnable"),
+        ValueLayout.JAVA_INT.withName("depthWriteEnable"),
+        ValueLayout.JAVA_INT.withName("depthCompareOp"),
+        ValueLayout.JAVA_INT.withName("depthBoundsTestEnable"),
+        ValueLayout.JAVA_INT.withName("stencilTestEnable"),
+        VkStencilOpState.LAYOUT.withName("front"),
+        VkStencilOpState.LAYOUT.withName("back"),
+        ValueLayout.JAVA_FLOAT.withName("minDepthBounds"),
+        ValueLayout.JAVA_FLOAT.withName("maxDepthBounds")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -72,6 +87,19 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
     public static final PathElement PATH$back = PathElement.groupElement("PATH$back");
     public static final PathElement PATH$minDepthBounds = PathElement.groupElement("PATH$minDepthBounds");
     public static final PathElement PATH$maxDepthBounds = PathElement.groupElement("PATH$maxDepthBounds");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$depthTestEnable = (OfInt) LAYOUT.select(PATH$depthTestEnable);
+    public static final OfInt LAYOUT$depthWriteEnable = (OfInt) LAYOUT.select(PATH$depthWriteEnable);
+    public static final OfInt LAYOUT$depthCompareOp = (OfInt) LAYOUT.select(PATH$depthCompareOp);
+    public static final OfInt LAYOUT$depthBoundsTestEnable = (OfInt) LAYOUT.select(PATH$depthBoundsTestEnable);
+    public static final OfInt LAYOUT$stencilTestEnable = (OfInt) LAYOUT.select(PATH$stencilTestEnable);
+    public static final StructLayout LAYOUT$front = (StructLayout) LAYOUT.select(PATH$front);
+    public static final StructLayout LAYOUT$back = (StructLayout) LAYOUT.select(PATH$back);
+    public static final OfFloat LAYOUT$minDepthBounds = (OfFloat) LAYOUT.select(PATH$minDepthBounds);
+    public static final OfFloat LAYOUT$maxDepthBounds = (OfFloat) LAYOUT.select(PATH$maxDepthBounds);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

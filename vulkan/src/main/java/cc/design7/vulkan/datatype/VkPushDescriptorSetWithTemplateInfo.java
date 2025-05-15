@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPushDescriptorSetWithTemplateInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPushDescriptorSetWithTemplateInfo.html">VkPushDescriptorSetWithTemplateInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPushDescriptorSetWithTemplateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$descriptorUpdateTemplate = ValueLayout.ADDRESS.withName("descriptorUpdateTemplate");
-    public static final AddressLayout LAYOUT$layout = ValueLayout.ADDRESS.withName("layout");
-    public static final OfInt LAYOUT$set = ValueLayout.JAVA_INT.withName("set");
-    public static final AddressLayout LAYOUT$pData = ValueLayout.ADDRESS.withName("pData");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$descriptorUpdateTemplate, LAYOUT$layout, LAYOUT$set, LAYOUT$pData);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPushDescriptorSetWithTemplateInfo {
+        sType(VkStructureType.PUSH_DESCRIPTOR_SET_WITH_TEMPLATE_INFO);
+    }
 
     public static VkPushDescriptorSetWithTemplateInfo allocate(Arena arena) {
         return new VkPushDescriptorSetWithTemplateInfo(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkPushDescriptorSetWithTemplateInfo(@NotNull MemorySegment segment
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("descriptorUpdateTemplate"),
+        ValueLayout.ADDRESS.withName("layout"),
+        ValueLayout.JAVA_INT.withName("set"),
+        ValueLayout.ADDRESS.withName("pData")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$descriptorUpdateTemplate = PathElement.groupElement("PATH$descriptorUpdateTemplate");
     public static final PathElement PATH$layout = PathElement.groupElement("PATH$layout");
     public static final PathElement PATH$set = PathElement.groupElement("PATH$set");
     public static final PathElement PATH$pData = PathElement.groupElement("PATH$pData");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$descriptorUpdateTemplate = (AddressLayout) LAYOUT.select(PATH$descriptorUpdateTemplate);
+    public static final AddressLayout LAYOUT$layout = (AddressLayout) LAYOUT.select(PATH$layout);
+    public static final OfInt LAYOUT$set = (OfInt) LAYOUT.select(PATH$set);
+    public static final AddressLayout LAYOUT$pData = (AddressLayout) LAYOUT.select(PATH$pData);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkApplicationParametersEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkApplicationParametersEXT.html">VkApplicationParametersEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkApplicationParametersEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$vendorID = ValueLayout.JAVA_INT.withName("vendorID");
-    public static final OfInt LAYOUT$deviceID = ValueLayout.JAVA_INT.withName("deviceID");
-    public static final OfInt LAYOUT$key = ValueLayout.JAVA_INT.withName("key");
-    public static final OfLong LAYOUT$value = ValueLayout.JAVA_LONG.withName("value");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$vendorID, LAYOUT$deviceID, LAYOUT$key, LAYOUT$value);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkApplicationParametersEXT {
+        sType(VkStructureType.APPLICATION_PARAMETERS_EXT);
+    }
 
     public static VkApplicationParametersEXT allocate(Arena arena) {
         return new VkApplicationParametersEXT(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkApplicationParametersEXT(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("vendorID"),
+        ValueLayout.JAVA_INT.withName("deviceID"),
+        ValueLayout.JAVA_INT.withName("key"),
+        ValueLayout.JAVA_LONG.withName("value")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$vendorID = PathElement.groupElement("PATH$vendorID");
     public static final PathElement PATH$deviceID = PathElement.groupElement("PATH$deviceID");
     public static final PathElement PATH$key = PathElement.groupElement("PATH$key");
     public static final PathElement PATH$value = PathElement.groupElement("PATH$value");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$vendorID = (OfInt) LAYOUT.select(PATH$vendorID);
+    public static final OfInt LAYOUT$deviceID = (OfInt) LAYOUT.select(PATH$deviceID);
+    public static final OfInt LAYOUT$key = (OfInt) LAYOUT.select(PATH$key);
+    public static final OfLong LAYOUT$value = (OfLong) LAYOUT.select(PATH$value);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

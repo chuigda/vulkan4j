@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.html">VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$workgroupMemoryExplicitLayout = ValueLayout.JAVA_INT.withName("workgroupMemoryExplicitLayout");
-    public static final OfInt LAYOUT$workgroupMemoryExplicitLayoutScalarBlockLayout = ValueLayout.JAVA_INT.withName("workgroupMemoryExplicitLayoutScalarBlockLayout");
-    public static final OfInt LAYOUT$workgroupMemoryExplicitLayout8BitAccess = ValueLayout.JAVA_INT.withName("workgroupMemoryExplicitLayout8BitAccess");
-    public static final OfInt LAYOUT$workgroupMemoryExplicitLayout16BitAccess = ValueLayout.JAVA_INT.withName("workgroupMemoryExplicitLayout16BitAccess");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$workgroupMemoryExplicitLayout, LAYOUT$workgroupMemoryExplicitLayoutScalarBlockLayout, LAYOUT$workgroupMemoryExplicitLayout8BitAccess, LAYOUT$workgroupMemoryExplicitLayout16BitAccess);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR {
+        sType(VkStructureType.PHYSICAL_DEVICE_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_FEATURES_KHR);
+    }
 
     public static VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR allocate(Arena arena) {
         return new VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(@NotNull 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("workgroupMemoryExplicitLayout"),
+        ValueLayout.JAVA_INT.withName("workgroupMemoryExplicitLayoutScalarBlockLayout"),
+        ValueLayout.JAVA_INT.withName("workgroupMemoryExplicitLayout8BitAccess"),
+        ValueLayout.JAVA_INT.withName("workgroupMemoryExplicitLayout16BitAccess")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$workgroupMemoryExplicitLayout = PathElement.groupElement("PATH$workgroupMemoryExplicitLayout");
     public static final PathElement PATH$workgroupMemoryExplicitLayoutScalarBlockLayout = PathElement.groupElement("PATH$workgroupMemoryExplicitLayoutScalarBlockLayout");
     public static final PathElement PATH$workgroupMemoryExplicitLayout8BitAccess = PathElement.groupElement("PATH$workgroupMemoryExplicitLayout8BitAccess");
     public static final PathElement PATH$workgroupMemoryExplicitLayout16BitAccess = PathElement.groupElement("PATH$workgroupMemoryExplicitLayout16BitAccess");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$workgroupMemoryExplicitLayout = (OfInt) LAYOUT.select(PATH$workgroupMemoryExplicitLayout);
+    public static final OfInt LAYOUT$workgroupMemoryExplicitLayoutScalarBlockLayout = (OfInt) LAYOUT.select(PATH$workgroupMemoryExplicitLayoutScalarBlockLayout);
+    public static final OfInt LAYOUT$workgroupMemoryExplicitLayout8BitAccess = (OfInt) LAYOUT.select(PATH$workgroupMemoryExplicitLayout8BitAccess);
+    public static final OfInt LAYOUT$workgroupMemoryExplicitLayout16BitAccess = (OfInt) LAYOUT.select(PATH$workgroupMemoryExplicitLayout16BitAccess);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkHostImageCopyDevicePerformanceQuery} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkHostImageCopyDevicePerformanceQuery.html">VkHostImageCopyDevicePerformanceQuery</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkHostImageCopyDevicePerformanceQuery(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$optimalDeviceAccess = ValueLayout.JAVA_INT.withName("optimalDeviceAccess");
-    public static final OfInt LAYOUT$identicalMemoryLayout = ValueLayout.JAVA_INT.withName("identicalMemoryLayout");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$optimalDeviceAccess, LAYOUT$identicalMemoryLayout);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkHostImageCopyDevicePerformanceQuery {
+        sType(VkStructureType.HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY);
+    }
 
     public static VkHostImageCopyDevicePerformanceQuery allocate(Arena arena) {
         return new VkHostImageCopyDevicePerformanceQuery(arena.allocate(LAYOUT));
@@ -52,10 +59,23 @@ public record VkHostImageCopyDevicePerformanceQuery(@NotNull MemorySegment segme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("optimalDeviceAccess"),
+        ValueLayout.JAVA_INT.withName("identicalMemoryLayout")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$optimalDeviceAccess = PathElement.groupElement("PATH$optimalDeviceAccess");
     public static final PathElement PATH$identicalMemoryLayout = PathElement.groupElement("PATH$identicalMemoryLayout");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$optimalDeviceAccess = (OfInt) LAYOUT.select(PATH$optimalDeviceAccess);
+    public static final OfInt LAYOUT$identicalMemoryLayout = (OfInt) LAYOUT.select(PATH$identicalMemoryLayout);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

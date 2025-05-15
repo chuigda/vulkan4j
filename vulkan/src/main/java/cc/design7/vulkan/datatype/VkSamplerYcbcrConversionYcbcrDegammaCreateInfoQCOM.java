@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM.html">VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$enableYDegamma = ValueLayout.JAVA_INT.withName("enableYDegamma");
-    public static final OfInt LAYOUT$enableCbCrDegamma = ValueLayout.JAVA_INT.withName("enableCbCrDegamma");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$enableYDegamma, LAYOUT$enableCbCrDegamma);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM {
+        sType(VkStructureType.SAMPLER_YCBCR_CONVERSION_YCBCR_DEGAMMA_CREATE_INFO_QCOM);
+    }
 
     public static VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM allocate(Arena arena) {
         return new VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(arena.allocate(LAYOUT));
@@ -52,10 +59,23 @@ public record VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(@NotNull Memory
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("enableYDegamma"),
+        ValueLayout.JAVA_INT.withName("enableCbCrDegamma")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$enableYDegamma = PathElement.groupElement("PATH$enableYDegamma");
     public static final PathElement PATH$enableCbCrDegamma = PathElement.groupElement("PATH$enableCbCrDegamma");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$enableYDegamma = (OfInt) LAYOUT.select(PATH$enableYDegamma);
+    public static final OfInt LAYOUT$enableCbCrDegamma = (OfInt) LAYOUT.select(PATH$enableCbCrDegamma);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

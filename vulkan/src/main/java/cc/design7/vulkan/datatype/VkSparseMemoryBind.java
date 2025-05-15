@@ -14,18 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkSparseMemoryBind} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSparseMemoryBind.html">VkSparseMemoryBind</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfLong LAYOUT$resourceOffset = ValueLayout.JAVA_LONG.withName("resourceOffset");
-    public static final OfLong LAYOUT$size = ValueLayout.JAVA_LONG.withName("size");
-    public static final AddressLayout LAYOUT$memory = ValueLayout.ADDRESS.withName("memory");
-    public static final OfLong LAYOUT$memoryOffset = ValueLayout.JAVA_LONG.withName("memoryOffset");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$resourceOffset, LAYOUT$size, LAYOUT$memory, LAYOUT$memoryOffset, LAYOUT$flags);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkSparseMemoryBind allocate(Arena arena) {
         return new VkSparseMemoryBind(arena.allocate(LAYOUT));
     }
@@ -53,11 +55,26 @@ public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IPoi
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("resourceOffset"),
+        ValueLayout.JAVA_LONG.withName("size"),
+        ValueLayout.ADDRESS.withName("memory"),
+        ValueLayout.JAVA_LONG.withName("memoryOffset"),
+        ValueLayout.JAVA_INT.withName("flags")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$resourceOffset = PathElement.groupElement("PATH$resourceOffset");
     public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
     public static final PathElement PATH$memory = PathElement.groupElement("PATH$memory");
     public static final PathElement PATH$memoryOffset = PathElement.groupElement("PATH$memoryOffset");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+
+    public static final OfLong LAYOUT$resourceOffset = (OfLong) LAYOUT.select(PATH$resourceOffset);
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
+    public static final AddressLayout LAYOUT$memory = (AddressLayout) LAYOUT.select(PATH$memory);
+    public static final OfLong LAYOUT$memoryOffset = (OfLong) LAYOUT.select(PATH$memoryOffset);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
 
     public static final long SIZE$resourceOffset = LAYOUT$resourceOffset.byteSize();
     public static final long SIZE$size = LAYOUT$size.byteSize();

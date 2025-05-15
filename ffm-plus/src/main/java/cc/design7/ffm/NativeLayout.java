@@ -3,9 +3,7 @@ package cc.design7.ffm;
 import cc.design7.ffm.annotation.unsigned;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,7 +72,7 @@ public final class NativeLayout {
     ///
     /// @param elements the elements of the struct
     /// @return the struct layout
-    public static @NotNull MemoryLayout structLayout(@NotNull MemoryLayout... elements) {
+    public static @NotNull StructLayout structLayout(@NotNull MemoryLayout... elements) {
         long currentSize = 0;
         long maxAlignment = 0;
         List<MemoryLayout> paddedElements = new ArrayList<>();
@@ -106,7 +104,7 @@ public final class NativeLayout {
     }
 
     /// Currently forwards to {@link MemoryLayout#unionLayout}.
-    public static @NotNull MemoryLayout unionLayout(@NotNull MemoryLayout... elements) {
+    public static @NotNull UnionLayout unionLayout(@NotNull MemoryLayout... elements) {
         return MemoryLayout.unionLayout(elements);
     }
 

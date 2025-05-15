@@ -14,24 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkGeneratedCommandsInfoEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGeneratedCommandsInfoEXT.html">VkGeneratedCommandsInfoEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkGeneratedCommandsInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$shaderStages = ValueLayout.JAVA_INT.withName("shaderStages");
-    public static final AddressLayout LAYOUT$indirectExecutionSet = ValueLayout.ADDRESS.withName("indirectExecutionSet");
-    public static final AddressLayout LAYOUT$indirectCommandsLayout = ValueLayout.ADDRESS.withName("indirectCommandsLayout");
-    public static final OfLong LAYOUT$indirectAddress = ValueLayout.JAVA_LONG.withName("indirectAddress");
-    public static final OfLong LAYOUT$indirectAddressSize = ValueLayout.JAVA_LONG.withName("indirectAddressSize");
-    public static final OfLong LAYOUT$preprocessAddress = ValueLayout.JAVA_LONG.withName("preprocessAddress");
-    public static final OfLong LAYOUT$preprocessSize = ValueLayout.JAVA_LONG.withName("preprocessSize");
-    public static final OfInt LAYOUT$maxSequenceCount = ValueLayout.JAVA_INT.withName("maxSequenceCount");
-    public static final OfLong LAYOUT$sequenceCountAddress = ValueLayout.JAVA_LONG.withName("sequenceCountAddress");
-    public static final OfInt LAYOUT$maxDrawCount = ValueLayout.JAVA_INT.withName("maxDrawCount");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$shaderStages, LAYOUT$indirectExecutionSet, LAYOUT$indirectCommandsLayout, LAYOUT$indirectAddress, LAYOUT$indirectAddressSize, LAYOUT$preprocessAddress, LAYOUT$preprocessSize, LAYOUT$maxSequenceCount, LAYOUT$sequenceCountAddress, LAYOUT$maxDrawCount);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkGeneratedCommandsInfoEXT {
+        sType(VkStructureType.GENERATED_COMMANDS_INFO_EXT);
+    }
 
     public static VkGeneratedCommandsInfoEXT allocate(Arena arena) {
         return new VkGeneratedCommandsInfoEXT(arena.allocate(LAYOUT));
@@ -60,6 +59,22 @@ public record VkGeneratedCommandsInfoEXT(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("shaderStages"),
+        ValueLayout.ADDRESS.withName("indirectExecutionSet"),
+        ValueLayout.ADDRESS.withName("indirectCommandsLayout"),
+        ValueLayout.JAVA_LONG.withName("indirectAddress"),
+        ValueLayout.JAVA_LONG.withName("indirectAddressSize"),
+        ValueLayout.JAVA_LONG.withName("preprocessAddress"),
+        ValueLayout.JAVA_LONG.withName("preprocessSize"),
+        ValueLayout.JAVA_INT.withName("maxSequenceCount"),
+        ValueLayout.JAVA_LONG.withName("sequenceCountAddress"),
+        ValueLayout.JAVA_INT.withName("maxDrawCount")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$shaderStages = PathElement.groupElement("PATH$shaderStages");
@@ -72,6 +87,19 @@ public record VkGeneratedCommandsInfoEXT(@NotNull MemorySegment segment) impleme
     public static final PathElement PATH$maxSequenceCount = PathElement.groupElement("PATH$maxSequenceCount");
     public static final PathElement PATH$sequenceCountAddress = PathElement.groupElement("PATH$sequenceCountAddress");
     public static final PathElement PATH$maxDrawCount = PathElement.groupElement("PATH$maxDrawCount");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$shaderStages = (OfInt) LAYOUT.select(PATH$shaderStages);
+    public static final AddressLayout LAYOUT$indirectExecutionSet = (AddressLayout) LAYOUT.select(PATH$indirectExecutionSet);
+    public static final AddressLayout LAYOUT$indirectCommandsLayout = (AddressLayout) LAYOUT.select(PATH$indirectCommandsLayout);
+    public static final OfLong LAYOUT$indirectAddress = (OfLong) LAYOUT.select(PATH$indirectAddress);
+    public static final OfLong LAYOUT$indirectAddressSize = (OfLong) LAYOUT.select(PATH$indirectAddressSize);
+    public static final OfLong LAYOUT$preprocessAddress = (OfLong) LAYOUT.select(PATH$preprocessAddress);
+    public static final OfLong LAYOUT$preprocessSize = (OfLong) LAYOUT.select(PATH$preprocessSize);
+    public static final OfInt LAYOUT$maxSequenceCount = (OfInt) LAYOUT.select(PATH$maxSequenceCount);
+    public static final OfLong LAYOUT$sequenceCountAddress = (OfLong) LAYOUT.select(PATH$sequenceCountAddress);
+    public static final OfInt LAYOUT$maxDrawCount = (OfInt) LAYOUT.select(PATH$maxDrawCount);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

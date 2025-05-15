@@ -14,16 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoAV1TimingInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoAV1TimingInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoAV1TimingInfoFlags.LAYOUT.withName("flags");
-    public static final OfInt LAYOUT$num_units_in_display_tick = ValueLayout.JAVA_INT.withName("num_units_in_display_tick");
-    public static final OfInt LAYOUT$time_scale = ValueLayout.JAVA_INT.withName("time_scale");
-    public static final OfInt LAYOUT$num_ticks_per_picture_minus_1 = ValueLayout.JAVA_INT.withName("num_ticks_per_picture_minus_1");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$num_units_in_display_tick, LAYOUT$time_scale, LAYOUT$num_ticks_per_picture_minus_1);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoAV1TimingInfo allocate(Arena arena) {
         return new StdVideoAV1TimingInfo(arena.allocate(LAYOUT));
     }
@@ -51,10 +53,23 @@ public record StdVideoAV1TimingInfo(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoAV1TimingInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("num_units_in_display_tick"),
+        ValueLayout.JAVA_INT.withName("time_scale"),
+        ValueLayout.JAVA_INT.withName("num_ticks_per_picture_minus_1")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$num_units_in_display_tick = PathElement.groupElement("PATH$num_units_in_display_tick");
     public static final PathElement PATH$time_scale = PathElement.groupElement("PATH$time_scale");
     public static final PathElement PATH$num_ticks_per_picture_minus_1 = PathElement.groupElement("PATH$num_ticks_per_picture_minus_1");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$num_units_in_display_tick = (OfInt) LAYOUT.select(PATH$num_units_in_display_tick);
+    public static final OfInt LAYOUT$time_scale = (OfInt) LAYOUT.select(PATH$time_scale);
+    public static final OfInt LAYOUT$num_ticks_per_picture_minus_1 = (OfInt) LAYOUT.select(PATH$num_ticks_per_picture_minus_1);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$num_units_in_display_tick = LAYOUT$num_units_in_display_tick.byteSize();

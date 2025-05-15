@@ -14,47 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceDescriptorBufferPropertiesEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceDescriptorBufferPropertiesEXT.html">VkPhysicalDeviceDescriptorBufferPropertiesEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$combinedImageSamplerDescriptorSingleArray = ValueLayout.JAVA_INT.withName("combinedImageSamplerDescriptorSingleArray");
-    public static final OfInt LAYOUT$bufferlessPushDescriptors = ValueLayout.JAVA_INT.withName("bufferlessPushDescriptors");
-    public static final OfInt LAYOUT$allowSamplerImageViewPostSubmitCreation = ValueLayout.JAVA_INT.withName("allowSamplerImageViewPostSubmitCreation");
-    public static final OfLong LAYOUT$descriptorBufferOffsetAlignment = ValueLayout.JAVA_LONG.withName("descriptorBufferOffsetAlignment");
-    public static final OfInt LAYOUT$maxDescriptorBufferBindings = ValueLayout.JAVA_INT.withName("maxDescriptorBufferBindings");
-    public static final OfInt LAYOUT$maxResourceDescriptorBufferBindings = ValueLayout.JAVA_INT.withName("maxResourceDescriptorBufferBindings");
-    public static final OfInt LAYOUT$maxSamplerDescriptorBufferBindings = ValueLayout.JAVA_INT.withName("maxSamplerDescriptorBufferBindings");
-    public static final OfInt LAYOUT$maxEmbeddedImmutableSamplerBindings = ValueLayout.JAVA_INT.withName("maxEmbeddedImmutableSamplerBindings");
-    public static final OfInt LAYOUT$maxEmbeddedImmutableSamplers = ValueLayout.JAVA_INT.withName("maxEmbeddedImmutableSamplers");
-    public static final ValueLayout LAYOUT$bufferCaptureReplayDescriptorDataSize = NativeLayout.C_SIZE_T.withName("bufferCaptureReplayDescriptorDataSize");
-    public static final ValueLayout LAYOUT$imageCaptureReplayDescriptorDataSize = NativeLayout.C_SIZE_T.withName("imageCaptureReplayDescriptorDataSize");
-    public static final ValueLayout LAYOUT$imageViewCaptureReplayDescriptorDataSize = NativeLayout.C_SIZE_T.withName("imageViewCaptureReplayDescriptorDataSize");
-    public static final ValueLayout LAYOUT$samplerCaptureReplayDescriptorDataSize = NativeLayout.C_SIZE_T.withName("samplerCaptureReplayDescriptorDataSize");
-    public static final ValueLayout LAYOUT$accelerationStructureCaptureReplayDescriptorDataSize = NativeLayout.C_SIZE_T.withName("accelerationStructureCaptureReplayDescriptorDataSize");
-    public static final ValueLayout LAYOUT$samplerDescriptorSize = NativeLayout.C_SIZE_T.withName("samplerDescriptorSize");
-    public static final ValueLayout LAYOUT$combinedImageSamplerDescriptorSize = NativeLayout.C_SIZE_T.withName("combinedImageSamplerDescriptorSize");
-    public static final ValueLayout LAYOUT$sampledImageDescriptorSize = NativeLayout.C_SIZE_T.withName("sampledImageDescriptorSize");
-    public static final ValueLayout LAYOUT$storageImageDescriptorSize = NativeLayout.C_SIZE_T.withName("storageImageDescriptorSize");
-    public static final ValueLayout LAYOUT$uniformTexelBufferDescriptorSize = NativeLayout.C_SIZE_T.withName("uniformTexelBufferDescriptorSize");
-    public static final ValueLayout LAYOUT$robustUniformTexelBufferDescriptorSize = NativeLayout.C_SIZE_T.withName("robustUniformTexelBufferDescriptorSize");
-    public static final ValueLayout LAYOUT$storageTexelBufferDescriptorSize = NativeLayout.C_SIZE_T.withName("storageTexelBufferDescriptorSize");
-    public static final ValueLayout LAYOUT$robustStorageTexelBufferDescriptorSize = NativeLayout.C_SIZE_T.withName("robustStorageTexelBufferDescriptorSize");
-    public static final ValueLayout LAYOUT$uniformBufferDescriptorSize = NativeLayout.C_SIZE_T.withName("uniformBufferDescriptorSize");
-    public static final ValueLayout LAYOUT$robustUniformBufferDescriptorSize = NativeLayout.C_SIZE_T.withName("robustUniformBufferDescriptorSize");
-    public static final ValueLayout LAYOUT$storageBufferDescriptorSize = NativeLayout.C_SIZE_T.withName("storageBufferDescriptorSize");
-    public static final ValueLayout LAYOUT$robustStorageBufferDescriptorSize = NativeLayout.C_SIZE_T.withName("robustStorageBufferDescriptorSize");
-    public static final ValueLayout LAYOUT$inputAttachmentDescriptorSize = NativeLayout.C_SIZE_T.withName("inputAttachmentDescriptorSize");
-    public static final ValueLayout LAYOUT$accelerationStructureDescriptorSize = NativeLayout.C_SIZE_T.withName("accelerationStructureDescriptorSize");
-    public static final OfLong LAYOUT$maxSamplerDescriptorBufferRange = ValueLayout.JAVA_LONG.withName("maxSamplerDescriptorBufferRange");
-    public static final OfLong LAYOUT$maxResourceDescriptorBufferRange = ValueLayout.JAVA_LONG.withName("maxResourceDescriptorBufferRange");
-    public static final OfLong LAYOUT$samplerDescriptorBufferAddressSpaceSize = ValueLayout.JAVA_LONG.withName("samplerDescriptorBufferAddressSpaceSize");
-    public static final OfLong LAYOUT$resourceDescriptorBufferAddressSpaceSize = ValueLayout.JAVA_LONG.withName("resourceDescriptorBufferAddressSpaceSize");
-    public static final OfLong LAYOUT$descriptorBufferAddressSpaceSize = ValueLayout.JAVA_LONG.withName("descriptorBufferAddressSpaceSize");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$combinedImageSamplerDescriptorSingleArray, LAYOUT$bufferlessPushDescriptors, LAYOUT$allowSamplerImageViewPostSubmitCreation, LAYOUT$descriptorBufferOffsetAlignment, LAYOUT$maxDescriptorBufferBindings, LAYOUT$maxResourceDescriptorBufferBindings, LAYOUT$maxSamplerDescriptorBufferBindings, LAYOUT$maxEmbeddedImmutableSamplerBindings, LAYOUT$maxEmbeddedImmutableSamplers, LAYOUT$bufferCaptureReplayDescriptorDataSize, LAYOUT$imageCaptureReplayDescriptorDataSize, LAYOUT$imageViewCaptureReplayDescriptorDataSize, LAYOUT$samplerCaptureReplayDescriptorDataSize, LAYOUT$accelerationStructureCaptureReplayDescriptorDataSize, LAYOUT$samplerDescriptorSize, LAYOUT$combinedImageSamplerDescriptorSize, LAYOUT$sampledImageDescriptorSize, LAYOUT$storageImageDescriptorSize, LAYOUT$uniformTexelBufferDescriptorSize, LAYOUT$robustUniformTexelBufferDescriptorSize, LAYOUT$storageTexelBufferDescriptorSize, LAYOUT$robustStorageTexelBufferDescriptorSize, LAYOUT$uniformBufferDescriptorSize, LAYOUT$robustUniformBufferDescriptorSize, LAYOUT$storageBufferDescriptorSize, LAYOUT$robustStorageBufferDescriptorSize, LAYOUT$inputAttachmentDescriptorSize, LAYOUT$accelerationStructureDescriptorSize, LAYOUT$maxSamplerDescriptorBufferRange, LAYOUT$maxResourceDescriptorBufferRange, LAYOUT$samplerDescriptorBufferAddressSpaceSize, LAYOUT$resourceDescriptorBufferAddressSpaceSize, LAYOUT$descriptorBufferAddressSpaceSize);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT {
+        sType(VkStructureType.PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_PROPERTIES_EXT);
+    }
 
     public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocate(Arena arena) {
         return new VkPhysicalDeviceDescriptorBufferPropertiesEXT(arena.allocate(LAYOUT));
@@ -82,6 +58,45 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(@NotNull MemorySegme
         }
         return ret;
     }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("combinedImageSamplerDescriptorSingleArray"),
+        ValueLayout.JAVA_INT.withName("bufferlessPushDescriptors"),
+        ValueLayout.JAVA_INT.withName("allowSamplerImageViewPostSubmitCreation"),
+        ValueLayout.JAVA_LONG.withName("descriptorBufferOffsetAlignment"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorBufferBindings"),
+        ValueLayout.JAVA_INT.withName("maxResourceDescriptorBufferBindings"),
+        ValueLayout.JAVA_INT.withName("maxSamplerDescriptorBufferBindings"),
+        ValueLayout.JAVA_INT.withName("maxEmbeddedImmutableSamplerBindings"),
+        ValueLayout.JAVA_INT.withName("maxEmbeddedImmutableSamplers"),
+        NativeLayout.C_SIZE_T.withName("bufferCaptureReplayDescriptorDataSize"),
+        NativeLayout.C_SIZE_T.withName("imageCaptureReplayDescriptorDataSize"),
+        NativeLayout.C_SIZE_T.withName("imageViewCaptureReplayDescriptorDataSize"),
+        NativeLayout.C_SIZE_T.withName("samplerCaptureReplayDescriptorDataSize"),
+        NativeLayout.C_SIZE_T.withName("accelerationStructureCaptureReplayDescriptorDataSize"),
+        NativeLayout.C_SIZE_T.withName("samplerDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("combinedImageSamplerDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("sampledImageDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("storageImageDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("uniformTexelBufferDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("robustUniformTexelBufferDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("storageTexelBufferDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("robustStorageTexelBufferDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("uniformBufferDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("robustUniformBufferDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("storageBufferDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("robustStorageBufferDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("inputAttachmentDescriptorSize"),
+        NativeLayout.C_SIZE_T.withName("accelerationStructureDescriptorSize"),
+        ValueLayout.JAVA_LONG.withName("maxSamplerDescriptorBufferRange"),
+        ValueLayout.JAVA_LONG.withName("maxResourceDescriptorBufferRange"),
+        ValueLayout.JAVA_LONG.withName("samplerDescriptorBufferAddressSpaceSize"),
+        ValueLayout.JAVA_LONG.withName("resourceDescriptorBufferAddressSpaceSize"),
+        ValueLayout.JAVA_LONG.withName("descriptorBufferAddressSpaceSize")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
 
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
@@ -118,6 +133,23 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(@NotNull MemorySegme
     public static final PathElement PATH$samplerDescriptorBufferAddressSpaceSize = PathElement.groupElement("PATH$samplerDescriptorBufferAddressSpaceSize");
     public static final PathElement PATH$resourceDescriptorBufferAddressSpaceSize = PathElement.groupElement("PATH$resourceDescriptorBufferAddressSpaceSize");
     public static final PathElement PATH$descriptorBufferAddressSpaceSize = PathElement.groupElement("PATH$descriptorBufferAddressSpaceSize");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$combinedImageSamplerDescriptorSingleArray = (OfInt) LAYOUT.select(PATH$combinedImageSamplerDescriptorSingleArray);
+    public static final OfInt LAYOUT$bufferlessPushDescriptors = (OfInt) LAYOUT.select(PATH$bufferlessPushDescriptors);
+    public static final OfInt LAYOUT$allowSamplerImageViewPostSubmitCreation = (OfInt) LAYOUT.select(PATH$allowSamplerImageViewPostSubmitCreation);
+    public static final OfLong LAYOUT$descriptorBufferOffsetAlignment = (OfLong) LAYOUT.select(PATH$descriptorBufferOffsetAlignment);
+    public static final OfInt LAYOUT$maxDescriptorBufferBindings = (OfInt) LAYOUT.select(PATH$maxDescriptorBufferBindings);
+    public static final OfInt LAYOUT$maxResourceDescriptorBufferBindings = (OfInt) LAYOUT.select(PATH$maxResourceDescriptorBufferBindings);
+    public static final OfInt LAYOUT$maxSamplerDescriptorBufferBindings = (OfInt) LAYOUT.select(PATH$maxSamplerDescriptorBufferBindings);
+    public static final OfInt LAYOUT$maxEmbeddedImmutableSamplerBindings = (OfInt) LAYOUT.select(PATH$maxEmbeddedImmutableSamplerBindings);
+    public static final OfInt LAYOUT$maxEmbeddedImmutableSamplers = (OfInt) LAYOUT.select(PATH$maxEmbeddedImmutableSamplers);
+    public static final OfLong LAYOUT$maxSamplerDescriptorBufferRange = (OfLong) LAYOUT.select(PATH$maxSamplerDescriptorBufferRange);
+    public static final OfLong LAYOUT$maxResourceDescriptorBufferRange = (OfLong) LAYOUT.select(PATH$maxResourceDescriptorBufferRange);
+    public static final OfLong LAYOUT$samplerDescriptorBufferAddressSpaceSize = (OfLong) LAYOUT.select(PATH$samplerDescriptorBufferAddressSpaceSize);
+    public static final OfLong LAYOUT$resourceDescriptorBufferAddressSpaceSize = (OfLong) LAYOUT.select(PATH$resourceDescriptorBufferAddressSpaceSize);
+    public static final OfLong LAYOUT$descriptorBufferAddressSpaceSize = (OfLong) LAYOUT.select(PATH$descriptorBufferAddressSpaceSize);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

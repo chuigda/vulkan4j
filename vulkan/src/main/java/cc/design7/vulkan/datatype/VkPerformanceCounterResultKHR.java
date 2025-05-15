@@ -14,19 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPerformanceCounterResultKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPerformanceCounterResultKHR.html">VkPerformanceCounterResultKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPerformanceCounterResultKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$int32 = ValueLayout.JAVA_INT.withName("int32");
-    public static final OfLong LAYOUT$int64 = ValueLayout.JAVA_LONG.withName("int64");
-    public static final OfInt LAYOUT$uint32 = ValueLayout.JAVA_INT.withName("uint32");
-    public static final OfLong LAYOUT$uint64 = ValueLayout.JAVA_LONG.withName("uint64");
-    public static final OfFloat LAYOUT$float32 = ValueLayout.JAVA_FLOAT.withName("float32");
-    public static final OfDouble LAYOUT$float64 = ValueLayout.JAVA_DOUBLE.withName("float64");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(LAYOUT$int32, LAYOUT$int64, LAYOUT$uint32, LAYOUT$uint64, LAYOUT$float32, LAYOUT$float64);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkPerformanceCounterResultKHR allocate(Arena arena) {
         return new VkPerformanceCounterResultKHR(arena.allocate(LAYOUT));
     }
@@ -54,12 +55,29 @@ public record VkPerformanceCounterResultKHR(@NotNull MemorySegment segment) impl
         return ret;
     }
 
+    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
+        ValueLayout.JAVA_INT.withName("int32"),
+        ValueLayout.JAVA_LONG.withName("int64"),
+        ValueLayout.JAVA_INT.withName("uint32"),
+        ValueLayout.JAVA_LONG.withName("uint64"),
+        ValueLayout.JAVA_FLOAT.withName("float32"),
+        ValueLayout.JAVA_DOUBLE.withName("float64")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$int32 = PathElement.groupElement("PATH$int32");
     public static final PathElement PATH$int64 = PathElement.groupElement("PATH$int64");
     public static final PathElement PATH$uint32 = PathElement.groupElement("PATH$uint32");
     public static final PathElement PATH$uint64 = PathElement.groupElement("PATH$uint64");
     public static final PathElement PATH$float32 = PathElement.groupElement("PATH$float32");
     public static final PathElement PATH$float64 = PathElement.groupElement("PATH$float64");
+
+    public static final OfInt LAYOUT$int32 = (OfInt) LAYOUT.select(PATH$int32);
+    public static final OfLong LAYOUT$int64 = (OfLong) LAYOUT.select(PATH$int64);
+    public static final OfInt LAYOUT$uint32 = (OfInt) LAYOUT.select(PATH$uint32);
+    public static final OfLong LAYOUT$uint64 = (OfLong) LAYOUT.select(PATH$uint64);
+    public static final OfFloat LAYOUT$float32 = (OfFloat) LAYOUT.select(PATH$float32);
+    public static final OfDouble LAYOUT$float64 = (OfDouble) LAYOUT.select(PATH$float64);
 
     public static final long SIZE$int32 = LAYOUT$int32.byteSize();
     public static final long SIZE$int64 = LAYOUT$int64.byteSize();

@@ -14,14 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoEncodeAV1ExtensionHeader} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfByte LAYOUT$temporal_id = ValueLayout.JAVA_BYTE.withName("temporal_id");
-    public static final OfByte LAYOUT$spatial_id = ValueLayout.JAVA_BYTE.withName("spatial_id");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$temporal_id, LAYOUT$spatial_id);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoEncodeAV1ExtensionHeader allocate(Arena arena) {
         return new StdVideoEncodeAV1ExtensionHeader(arena.allocate(LAYOUT));
     }
@@ -49,8 +53,17 @@ public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_BYTE.withName("temporal_id"),
+        ValueLayout.JAVA_BYTE.withName("spatial_id")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$temporal_id = PathElement.groupElement("PATH$temporal_id");
     public static final PathElement PATH$spatial_id = PathElement.groupElement("PATH$spatial_id");
+
+    public static final OfByte LAYOUT$temporal_id = (OfByte) LAYOUT.select(PATH$temporal_id);
+    public static final OfByte LAYOUT$spatial_id = (OfByte) LAYOUT.select(PATH$spatial_id);
 
     public static final long SIZE$temporal_id = LAYOUT$temporal_id.byteSize();
     public static final long SIZE$spatial_id = LAYOUT$spatial_id.byteSize();

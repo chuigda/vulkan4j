@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkAccelerationStructureMotionInstanceDataNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureMotionInstanceDataNV.html">VkAccelerationStructureMotionInstanceDataNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkAccelerationStructureMotionInstanceDataNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$staticInstance = VkAccelerationStructureInstanceKHR.LAYOUT.withName("staticInstance");
-    public static final StructLayout LAYOUT$matrixMotionInstance = VkAccelerationStructureMatrixMotionInstanceNV.LAYOUT.withName("matrixMotionInstance");
-    public static final StructLayout LAYOUT$srtMotionInstance = VkAccelerationStructureSRTMotionInstanceNV.LAYOUT.withName("srtMotionInstance");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.unionLayout(LAYOUT$staticInstance, LAYOUT$matrixMotionInstance, LAYOUT$srtMotionInstance);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkAccelerationStructureMotionInstanceDataNV allocate(Arena arena) {
         return new VkAccelerationStructureMotionInstanceDataNV(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkAccelerationStructureMotionInstanceDataNV(@NotNull MemorySegment
         return ret;
     }
 
+    public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
+        VkAccelerationStructureInstanceKHR.LAYOUT.withName("staticInstance"),
+        VkAccelerationStructureMatrixMotionInstanceNV.LAYOUT.withName("matrixMotionInstance"),
+        VkAccelerationStructureSRTMotionInstanceNV.LAYOUT.withName("srtMotionInstance")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$staticInstance = PathElement.groupElement("PATH$staticInstance");
     public static final PathElement PATH$matrixMotionInstance = PathElement.groupElement("PATH$matrixMotionInstance");
     public static final PathElement PATH$srtMotionInstance = PathElement.groupElement("PATH$srtMotionInstance");
+
+    public static final StructLayout LAYOUT$staticInstance = (StructLayout) LAYOUT.select(PATH$staticInstance);
+    public static final StructLayout LAYOUT$matrixMotionInstance = (StructLayout) LAYOUT.select(PATH$matrixMotionInstance);
+    public static final StructLayout LAYOUT$srtMotionInstance = (StructLayout) LAYOUT.select(PATH$srtMotionInstance);
 
     public static final long SIZE$staticInstance = LAYOUT$staticInstance.byteSize();
     public static final long SIZE$matrixMotionInstance = LAYOUT$matrixMotionInstance.byteSize();

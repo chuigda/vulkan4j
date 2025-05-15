@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDeviceFaultCountsEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceFaultCountsEXT.html">VkDeviceFaultCountsEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDeviceFaultCountsEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$addressInfoCount = ValueLayout.JAVA_INT.withName("addressInfoCount");
-    public static final OfInt LAYOUT$vendorInfoCount = ValueLayout.JAVA_INT.withName("vendorInfoCount");
-    public static final OfLong LAYOUT$vendorBinarySize = ValueLayout.JAVA_LONG.withName("vendorBinarySize");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$addressInfoCount, LAYOUT$vendorInfoCount, LAYOUT$vendorBinarySize);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkDeviceFaultCountsEXT {
+        sType(VkStructureType.DEVICE_FAULT_COUNTS_EXT);
+    }
 
     public static VkDeviceFaultCountsEXT allocate(Arena arena) {
         return new VkDeviceFaultCountsEXT(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkDeviceFaultCountsEXT(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("addressInfoCount"),
+        ValueLayout.JAVA_INT.withName("vendorInfoCount"),
+        ValueLayout.JAVA_LONG.withName("vendorBinarySize")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$addressInfoCount = PathElement.groupElement("PATH$addressInfoCount");
     public static final PathElement PATH$vendorInfoCount = PathElement.groupElement("PATH$vendorInfoCount");
     public static final PathElement PATH$vendorBinarySize = PathElement.groupElement("PATH$vendorBinarySize");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$addressInfoCount = (OfInt) LAYOUT.select(PATH$addressInfoCount);
+    public static final OfInt LAYOUT$vendorInfoCount = (OfInt) LAYOUT.select(PATH$vendorInfoCount);
+    public static final OfLong LAYOUT$vendorBinarySize = (OfLong) LAYOUT.select(PATH$vendorBinarySize);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

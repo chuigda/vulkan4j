@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVertexInputAttributeDescription2EXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVertexInputAttributeDescription2EXT.html">VkVertexInputAttributeDescription2EXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVertexInputAttributeDescription2EXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$location = ValueLayout.JAVA_INT.withName("location");
-    public static final OfInt LAYOUT$binding = ValueLayout.JAVA_INT.withName("binding");
-    public static final OfInt LAYOUT$format = ValueLayout.JAVA_INT.withName("format");
-    public static final OfInt LAYOUT$offset = ValueLayout.JAVA_INT.withName("offset");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$location, LAYOUT$binding, LAYOUT$format, LAYOUT$offset);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVertexInputAttributeDescription2EXT {
+        sType(VkStructureType.VERTEX_INPUT_ATTRIBUTE_DESCRIPTION_2_EXT);
+    }
 
     public static VkVertexInputAttributeDescription2EXT allocate(Arena arena) {
         return new VkVertexInputAttributeDescription2EXT(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkVertexInputAttributeDescription2EXT(@NotNull MemorySegment segme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("location"),
+        ValueLayout.JAVA_INT.withName("binding"),
+        ValueLayout.JAVA_INT.withName("format"),
+        ValueLayout.JAVA_INT.withName("offset")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$location = PathElement.groupElement("PATH$location");
     public static final PathElement PATH$binding = PathElement.groupElement("PATH$binding");
     public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
     public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$location = (OfInt) LAYOUT.select(PATH$location);
+    public static final OfInt LAYOUT$binding = (OfInt) LAYOUT.select(PATH$binding);
+    public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
+    public static final OfInt LAYOUT$offset = (OfInt) LAYOUT.select(PATH$offset);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

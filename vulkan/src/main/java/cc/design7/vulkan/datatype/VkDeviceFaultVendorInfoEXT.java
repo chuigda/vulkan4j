@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDeviceFaultVendorInfoEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceFaultVendorInfoEXT.html">VkDeviceFaultVendorInfoEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDeviceFaultVendorInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfByte LAYOUT$description = ValueLayout.JAVA_BYTE.withName("description");
-    public static final OfLong LAYOUT$vendorFaultCode = ValueLayout.JAVA_LONG.withName("vendorFaultCode");
-    public static final OfLong LAYOUT$vendorFaultData = ValueLayout.JAVA_LONG.withName("vendorFaultData");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$description, LAYOUT$vendorFaultCode, LAYOUT$vendorFaultData);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkDeviceFaultVendorInfoEXT allocate(Arena arena) {
         return new VkDeviceFaultVendorInfoEXT(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkDeviceFaultVendorInfoEXT(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_BYTE.withName("description"),
+        ValueLayout.JAVA_LONG.withName("vendorFaultCode"),
+        ValueLayout.JAVA_LONG.withName("vendorFaultData")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$description = PathElement.groupElement("PATH$description");
     public static final PathElement PATH$vendorFaultCode = PathElement.groupElement("PATH$vendorFaultCode");
     public static final PathElement PATH$vendorFaultData = PathElement.groupElement("PATH$vendorFaultData");
+
+    public static final OfByte LAYOUT$description = (OfByte) LAYOUT.select(PATH$description);
+    public static final OfLong LAYOUT$vendorFaultCode = (OfLong) LAYOUT.select(PATH$vendorFaultCode);
+    public static final OfLong LAYOUT$vendorFaultData = (OfLong) LAYOUT.select(PATH$vendorFaultData);
 
     public static final long SIZE$description = LAYOUT$description.byteSize();
     public static final long SIZE$vendorFaultCode = LAYOUT$vendorFaultCode.byteSize();

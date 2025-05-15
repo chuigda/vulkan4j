@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDeviceFaultInfoEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceFaultInfoEXT.html">VkDeviceFaultInfoEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfByte LAYOUT$description = ValueLayout.JAVA_BYTE.withName("description");
-    public static final AddressLayout LAYOUT$pAddressInfos = ValueLayout.ADDRESS.withTargetLayout(VkDeviceFaultAddressInfoEXT.LAYOUT).withName("pAddressInfos");
-    public static final AddressLayout LAYOUT$pVendorInfos = ValueLayout.ADDRESS.withTargetLayout(VkDeviceFaultVendorInfoEXT.LAYOUT).withName("pVendorInfos");
-    public static final AddressLayout LAYOUT$pVendorBinaryData = ValueLayout.ADDRESS.withName("pVendorBinaryData");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$description, LAYOUT$pAddressInfos, LAYOUT$pVendorInfos, LAYOUT$pVendorBinaryData);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkDeviceFaultInfoEXT {
+        sType(VkStructureType.DEVICE_FAULT_INFO_EXT);
+    }
 
     public static VkDeviceFaultInfoEXT allocate(Arena arena) {
         return new VkDeviceFaultInfoEXT(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_BYTE.withName("description"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDeviceFaultAddressInfoEXT.LAYOUT).withName("pAddressInfos"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDeviceFaultVendorInfoEXT.LAYOUT).withName("pVendorInfos"),
+        ValueLayout.ADDRESS.withName("pVendorBinaryData")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$description = PathElement.groupElement("PATH$description");
     public static final PathElement PATH$pAddressInfos = PathElement.groupElement("PATH$pAddressInfos");
     public static final PathElement PATH$pVendorInfos = PathElement.groupElement("PATH$pVendorInfos");
     public static final PathElement PATH$pVendorBinaryData = PathElement.groupElement("PATH$pVendorBinaryData");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfByte LAYOUT$description = (OfByte) LAYOUT.select(PATH$description);
+    public static final AddressLayout LAYOUT$pAddressInfos = (AddressLayout) LAYOUT.select(PATH$pAddressInfos);
+    public static final AddressLayout LAYOUT$pVendorInfos = (AddressLayout) LAYOUT.select(PATH$pVendorInfos);
+    public static final AddressLayout LAYOUT$pVendorBinaryData = (AddressLayout) LAYOUT.select(PATH$pVendorBinaryData);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

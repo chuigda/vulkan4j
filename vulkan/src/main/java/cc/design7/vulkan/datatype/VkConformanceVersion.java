@@ -14,17 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkConformanceVersion} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkConformanceVersion.html">VkConformanceVersion</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkConformanceVersion(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfByte LAYOUT$major = ValueLayout.JAVA_BYTE.withName("major");
-    public static final OfByte LAYOUT$minor = ValueLayout.JAVA_BYTE.withName("minor");
-    public static final OfByte LAYOUT$subminor = ValueLayout.JAVA_BYTE.withName("subminor");
-    public static final OfByte LAYOUT$patch = ValueLayout.JAVA_BYTE.withName("patch");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$major, LAYOUT$minor, LAYOUT$subminor, LAYOUT$patch);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkConformanceVersion allocate(Arena arena) {
         return new VkConformanceVersion(arena.allocate(LAYOUT));
     }
@@ -52,10 +55,23 @@ public record VkConformanceVersion(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_BYTE.withName("major"),
+        ValueLayout.JAVA_BYTE.withName("minor"),
+        ValueLayout.JAVA_BYTE.withName("subminor"),
+        ValueLayout.JAVA_BYTE.withName("patch")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$major = PathElement.groupElement("PATH$major");
     public static final PathElement PATH$minor = PathElement.groupElement("PATH$minor");
     public static final PathElement PATH$subminor = PathElement.groupElement("PATH$subminor");
     public static final PathElement PATH$patch = PathElement.groupElement("PATH$patch");
+
+    public static final OfByte LAYOUT$major = (OfByte) LAYOUT.select(PATH$major);
+    public static final OfByte LAYOUT$minor = (OfByte) LAYOUT.select(PATH$minor);
+    public static final OfByte LAYOUT$subminor = (OfByte) LAYOUT.select(PATH$subminor);
+    public static final OfByte LAYOUT$patch = (OfByte) LAYOUT.select(PATH$patch);
 
     public static final long SIZE$major = LAYOUT$major.byteSize();
     public static final long SIZE$minor = LAYOUT$minor.byteSize();

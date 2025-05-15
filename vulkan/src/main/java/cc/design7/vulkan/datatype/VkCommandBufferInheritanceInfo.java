@@ -14,20 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkCommandBufferInheritanceInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCommandBufferInheritanceInfo.html">VkCommandBufferInheritanceInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$renderPass = ValueLayout.ADDRESS.withName("renderPass");
-    public static final OfInt LAYOUT$subpass = ValueLayout.JAVA_INT.withName("subpass");
-    public static final AddressLayout LAYOUT$framebuffer = ValueLayout.ADDRESS.withName("framebuffer");
-    public static final OfInt LAYOUT$occlusionQueryEnable = ValueLayout.JAVA_INT.withName("occlusionQueryEnable");
-    public static final OfInt LAYOUT$queryFlags = ValueLayout.JAVA_INT.withName("queryFlags");
-    public static final OfInt LAYOUT$pipelineStatistics = ValueLayout.JAVA_INT.withName("pipelineStatistics");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$renderPass, LAYOUT$subpass, LAYOUT$framebuffer, LAYOUT$occlusionQueryEnable, LAYOUT$queryFlags, LAYOUT$pipelineStatistics);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkCommandBufferInheritanceInfo {
+        sType(VkStructureType.COMMAND_BUFFER_INHERITANCE_INFO);
+    }
 
     public static VkCommandBufferInheritanceInfo allocate(Arena arena) {
         return new VkCommandBufferInheritanceInfo(arena.allocate(LAYOUT));
@@ -56,6 +59,18 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("renderPass"),
+        ValueLayout.JAVA_INT.withName("subpass"),
+        ValueLayout.ADDRESS.withName("framebuffer"),
+        ValueLayout.JAVA_INT.withName("occlusionQueryEnable"),
+        ValueLayout.JAVA_INT.withName("queryFlags"),
+        ValueLayout.JAVA_INT.withName("pipelineStatistics")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$renderPass = PathElement.groupElement("PATH$renderPass");
@@ -64,6 +79,15 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
     public static final PathElement PATH$occlusionQueryEnable = PathElement.groupElement("PATH$occlusionQueryEnable");
     public static final PathElement PATH$queryFlags = PathElement.groupElement("PATH$queryFlags");
     public static final PathElement PATH$pipelineStatistics = PathElement.groupElement("PATH$pipelineStatistics");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$renderPass = (AddressLayout) LAYOUT.select(PATH$renderPass);
+    public static final OfInt LAYOUT$subpass = (OfInt) LAYOUT.select(PATH$subpass);
+    public static final AddressLayout LAYOUT$framebuffer = (AddressLayout) LAYOUT.select(PATH$framebuffer);
+    public static final OfInt LAYOUT$occlusionQueryEnable = (OfInt) LAYOUT.select(PATH$occlusionQueryEnable);
+    public static final OfInt LAYOUT$queryFlags = (OfInt) LAYOUT.select(PATH$queryFlags);
+    public static final OfInt LAYOUT$pipelineStatistics = (OfInt) LAYOUT.select(PATH$pipelineStatistics);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

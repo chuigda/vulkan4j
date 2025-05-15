@@ -14,35 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceVulkan14Features} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceVulkan14Features.html">VkPhysicalDeviceVulkan14Features</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceVulkan14Features(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$globalPriorityQuery = ValueLayout.JAVA_INT.withName("globalPriorityQuery");
-    public static final OfInt LAYOUT$shaderSubgroupRotate = ValueLayout.JAVA_INT.withName("shaderSubgroupRotate");
-    public static final OfInt LAYOUT$shaderSubgroupRotateClustered = ValueLayout.JAVA_INT.withName("shaderSubgroupRotateClustered");
-    public static final OfInt LAYOUT$shaderFloatControls2 = ValueLayout.JAVA_INT.withName("shaderFloatControls2");
-    public static final OfInt LAYOUT$shaderExpectAssume = ValueLayout.JAVA_INT.withName("shaderExpectAssume");
-    public static final OfInt LAYOUT$rectangularLines = ValueLayout.JAVA_INT.withName("rectangularLines");
-    public static final OfInt LAYOUT$bresenhamLines = ValueLayout.JAVA_INT.withName("bresenhamLines");
-    public static final OfInt LAYOUT$smoothLines = ValueLayout.JAVA_INT.withName("smoothLines");
-    public static final OfInt LAYOUT$stippledRectangularLines = ValueLayout.JAVA_INT.withName("stippledRectangularLines");
-    public static final OfInt LAYOUT$stippledBresenhamLines = ValueLayout.JAVA_INT.withName("stippledBresenhamLines");
-    public static final OfInt LAYOUT$stippledSmoothLines = ValueLayout.JAVA_INT.withName("stippledSmoothLines");
-    public static final OfInt LAYOUT$vertexAttributeInstanceRateDivisor = ValueLayout.JAVA_INT.withName("vertexAttributeInstanceRateDivisor");
-    public static final OfInt LAYOUT$vertexAttributeInstanceRateZeroDivisor = ValueLayout.JAVA_INT.withName("vertexAttributeInstanceRateZeroDivisor");
-    public static final OfInt LAYOUT$indexTypeUint8 = ValueLayout.JAVA_INT.withName("indexTypeUint8");
-    public static final OfInt LAYOUT$dynamicRenderingLocalRead = ValueLayout.JAVA_INT.withName("dynamicRenderingLocalRead");
-    public static final OfInt LAYOUT$maintenance5 = ValueLayout.JAVA_INT.withName("maintenance5");
-    public static final OfInt LAYOUT$maintenance6 = ValueLayout.JAVA_INT.withName("maintenance6");
-    public static final OfInt LAYOUT$pipelineProtectedAccess = ValueLayout.JAVA_INT.withName("pipelineProtectedAccess");
-    public static final OfInt LAYOUT$pipelineRobustness = ValueLayout.JAVA_INT.withName("pipelineRobustness");
-    public static final OfInt LAYOUT$hostImageCopy = ValueLayout.JAVA_INT.withName("hostImageCopy");
-    public static final OfInt LAYOUT$pushDescriptor = ValueLayout.JAVA_INT.withName("pushDescriptor");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$globalPriorityQuery, LAYOUT$shaderSubgroupRotate, LAYOUT$shaderSubgroupRotateClustered, LAYOUT$shaderFloatControls2, LAYOUT$shaderExpectAssume, LAYOUT$rectangularLines, LAYOUT$bresenhamLines, LAYOUT$smoothLines, LAYOUT$stippledRectangularLines, LAYOUT$stippledBresenhamLines, LAYOUT$stippledSmoothLines, LAYOUT$vertexAttributeInstanceRateDivisor, LAYOUT$vertexAttributeInstanceRateZeroDivisor, LAYOUT$indexTypeUint8, LAYOUT$dynamicRenderingLocalRead, LAYOUT$maintenance5, LAYOUT$maintenance6, LAYOUT$pipelineProtectedAccess, LAYOUT$pipelineRobustness, LAYOUT$hostImageCopy, LAYOUT$pushDescriptor);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceVulkan14Features {
+        sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_4_FEATURES);
+    }
 
     public static VkPhysicalDeviceVulkan14Features allocate(Arena arena) {
         return new VkPhysicalDeviceVulkan14Features(arena.allocate(LAYOUT));
@@ -71,6 +59,33 @@ public record VkPhysicalDeviceVulkan14Features(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("globalPriorityQuery"),
+        ValueLayout.JAVA_INT.withName("shaderSubgroupRotate"),
+        ValueLayout.JAVA_INT.withName("shaderSubgroupRotateClustered"),
+        ValueLayout.JAVA_INT.withName("shaderFloatControls2"),
+        ValueLayout.JAVA_INT.withName("shaderExpectAssume"),
+        ValueLayout.JAVA_INT.withName("rectangularLines"),
+        ValueLayout.JAVA_INT.withName("bresenhamLines"),
+        ValueLayout.JAVA_INT.withName("smoothLines"),
+        ValueLayout.JAVA_INT.withName("stippledRectangularLines"),
+        ValueLayout.JAVA_INT.withName("stippledBresenhamLines"),
+        ValueLayout.JAVA_INT.withName("stippledSmoothLines"),
+        ValueLayout.JAVA_INT.withName("vertexAttributeInstanceRateDivisor"),
+        ValueLayout.JAVA_INT.withName("vertexAttributeInstanceRateZeroDivisor"),
+        ValueLayout.JAVA_INT.withName("indexTypeUint8"),
+        ValueLayout.JAVA_INT.withName("dynamicRenderingLocalRead"),
+        ValueLayout.JAVA_INT.withName("maintenance5"),
+        ValueLayout.JAVA_INT.withName("maintenance6"),
+        ValueLayout.JAVA_INT.withName("pipelineProtectedAccess"),
+        ValueLayout.JAVA_INT.withName("pipelineRobustness"),
+        ValueLayout.JAVA_INT.withName("hostImageCopy"),
+        ValueLayout.JAVA_INT.withName("pushDescriptor")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$globalPriorityQuery = PathElement.groupElement("PATH$globalPriorityQuery");
@@ -94,6 +109,30 @@ public record VkPhysicalDeviceVulkan14Features(@NotNull MemorySegment segment) i
     public static final PathElement PATH$pipelineRobustness = PathElement.groupElement("PATH$pipelineRobustness");
     public static final PathElement PATH$hostImageCopy = PathElement.groupElement("PATH$hostImageCopy");
     public static final PathElement PATH$pushDescriptor = PathElement.groupElement("PATH$pushDescriptor");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$globalPriorityQuery = (OfInt) LAYOUT.select(PATH$globalPriorityQuery);
+    public static final OfInt LAYOUT$shaderSubgroupRotate = (OfInt) LAYOUT.select(PATH$shaderSubgroupRotate);
+    public static final OfInt LAYOUT$shaderSubgroupRotateClustered = (OfInt) LAYOUT.select(PATH$shaderSubgroupRotateClustered);
+    public static final OfInt LAYOUT$shaderFloatControls2 = (OfInt) LAYOUT.select(PATH$shaderFloatControls2);
+    public static final OfInt LAYOUT$shaderExpectAssume = (OfInt) LAYOUT.select(PATH$shaderExpectAssume);
+    public static final OfInt LAYOUT$rectangularLines = (OfInt) LAYOUT.select(PATH$rectangularLines);
+    public static final OfInt LAYOUT$bresenhamLines = (OfInt) LAYOUT.select(PATH$bresenhamLines);
+    public static final OfInt LAYOUT$smoothLines = (OfInt) LAYOUT.select(PATH$smoothLines);
+    public static final OfInt LAYOUT$stippledRectangularLines = (OfInt) LAYOUT.select(PATH$stippledRectangularLines);
+    public static final OfInt LAYOUT$stippledBresenhamLines = (OfInt) LAYOUT.select(PATH$stippledBresenhamLines);
+    public static final OfInt LAYOUT$stippledSmoothLines = (OfInt) LAYOUT.select(PATH$stippledSmoothLines);
+    public static final OfInt LAYOUT$vertexAttributeInstanceRateDivisor = (OfInt) LAYOUT.select(PATH$vertexAttributeInstanceRateDivisor);
+    public static final OfInt LAYOUT$vertexAttributeInstanceRateZeroDivisor = (OfInt) LAYOUT.select(PATH$vertexAttributeInstanceRateZeroDivisor);
+    public static final OfInt LAYOUT$indexTypeUint8 = (OfInt) LAYOUT.select(PATH$indexTypeUint8);
+    public static final OfInt LAYOUT$dynamicRenderingLocalRead = (OfInt) LAYOUT.select(PATH$dynamicRenderingLocalRead);
+    public static final OfInt LAYOUT$maintenance5 = (OfInt) LAYOUT.select(PATH$maintenance5);
+    public static final OfInt LAYOUT$maintenance6 = (OfInt) LAYOUT.select(PATH$maintenance6);
+    public static final OfInt LAYOUT$pipelineProtectedAccess = (OfInt) LAYOUT.select(PATH$pipelineProtectedAccess);
+    public static final OfInt LAYOUT$pipelineRobustness = (OfInt) LAYOUT.select(PATH$pipelineRobustness);
+    public static final OfInt LAYOUT$hostImageCopy = (OfInt) LAYOUT.select(PATH$hostImageCopy);
+    public static final OfInt LAYOUT$pushDescriptor = (OfInt) LAYOUT.select(PATH$pushDescriptor);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

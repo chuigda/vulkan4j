@@ -14,27 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkTraceRaysIndirectCommand2KHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkTraceRaysIndirectCommand2KHR.html">VkTraceRaysIndirectCommand2KHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkTraceRaysIndirectCommand2KHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfLong LAYOUT$raygenShaderRecordAddress = ValueLayout.JAVA_LONG.withName("raygenShaderRecordAddress");
-    public static final OfLong LAYOUT$raygenShaderRecordSize = ValueLayout.JAVA_LONG.withName("raygenShaderRecordSize");
-    public static final OfLong LAYOUT$missShaderBindingTableAddress = ValueLayout.JAVA_LONG.withName("missShaderBindingTableAddress");
-    public static final OfLong LAYOUT$missShaderBindingTableSize = ValueLayout.JAVA_LONG.withName("missShaderBindingTableSize");
-    public static final OfLong LAYOUT$missShaderBindingTableStride = ValueLayout.JAVA_LONG.withName("missShaderBindingTableStride");
-    public static final OfLong LAYOUT$hitShaderBindingTableAddress = ValueLayout.JAVA_LONG.withName("hitShaderBindingTableAddress");
-    public static final OfLong LAYOUT$hitShaderBindingTableSize = ValueLayout.JAVA_LONG.withName("hitShaderBindingTableSize");
-    public static final OfLong LAYOUT$hitShaderBindingTableStride = ValueLayout.JAVA_LONG.withName("hitShaderBindingTableStride");
-    public static final OfLong LAYOUT$callableShaderBindingTableAddress = ValueLayout.JAVA_LONG.withName("callableShaderBindingTableAddress");
-    public static final OfLong LAYOUT$callableShaderBindingTableSize = ValueLayout.JAVA_LONG.withName("callableShaderBindingTableSize");
-    public static final OfLong LAYOUT$callableShaderBindingTableStride = ValueLayout.JAVA_LONG.withName("callableShaderBindingTableStride");
-    public static final OfInt LAYOUT$width = ValueLayout.JAVA_INT.withName("width");
-    public static final OfInt LAYOUT$height = ValueLayout.JAVA_INT.withName("height");
-    public static final OfInt LAYOUT$depth = ValueLayout.JAVA_INT.withName("depth");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$raygenShaderRecordAddress, LAYOUT$raygenShaderRecordSize, LAYOUT$missShaderBindingTableAddress, LAYOUT$missShaderBindingTableSize, LAYOUT$missShaderBindingTableStride, LAYOUT$hitShaderBindingTableAddress, LAYOUT$hitShaderBindingTableSize, LAYOUT$hitShaderBindingTableStride, LAYOUT$callableShaderBindingTableAddress, LAYOUT$callableShaderBindingTableSize, LAYOUT$callableShaderBindingTableStride, LAYOUT$width, LAYOUT$height, LAYOUT$depth);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkTraceRaysIndirectCommand2KHR allocate(Arena arena) {
         return new VkTraceRaysIndirectCommand2KHR(arena.allocate(LAYOUT));
     }
@@ -62,6 +55,24 @@ public record VkTraceRaysIndirectCommand2KHR(@NotNull MemorySegment segment) imp
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("raygenShaderRecordAddress"),
+        ValueLayout.JAVA_LONG.withName("raygenShaderRecordSize"),
+        ValueLayout.JAVA_LONG.withName("missShaderBindingTableAddress"),
+        ValueLayout.JAVA_LONG.withName("missShaderBindingTableSize"),
+        ValueLayout.JAVA_LONG.withName("missShaderBindingTableStride"),
+        ValueLayout.JAVA_LONG.withName("hitShaderBindingTableAddress"),
+        ValueLayout.JAVA_LONG.withName("hitShaderBindingTableSize"),
+        ValueLayout.JAVA_LONG.withName("hitShaderBindingTableStride"),
+        ValueLayout.JAVA_LONG.withName("callableShaderBindingTableAddress"),
+        ValueLayout.JAVA_LONG.withName("callableShaderBindingTableSize"),
+        ValueLayout.JAVA_LONG.withName("callableShaderBindingTableStride"),
+        ValueLayout.JAVA_INT.withName("width"),
+        ValueLayout.JAVA_INT.withName("height"),
+        ValueLayout.JAVA_INT.withName("depth")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$raygenShaderRecordAddress = PathElement.groupElement("PATH$raygenShaderRecordAddress");
     public static final PathElement PATH$raygenShaderRecordSize = PathElement.groupElement("PATH$raygenShaderRecordSize");
     public static final PathElement PATH$missShaderBindingTableAddress = PathElement.groupElement("PATH$missShaderBindingTableAddress");
@@ -76,6 +87,21 @@ public record VkTraceRaysIndirectCommand2KHR(@NotNull MemorySegment segment) imp
     public static final PathElement PATH$width = PathElement.groupElement("PATH$width");
     public static final PathElement PATH$height = PathElement.groupElement("PATH$height");
     public static final PathElement PATH$depth = PathElement.groupElement("PATH$depth");
+
+    public static final OfLong LAYOUT$raygenShaderRecordAddress = (OfLong) LAYOUT.select(PATH$raygenShaderRecordAddress);
+    public static final OfLong LAYOUT$raygenShaderRecordSize = (OfLong) LAYOUT.select(PATH$raygenShaderRecordSize);
+    public static final OfLong LAYOUT$missShaderBindingTableAddress = (OfLong) LAYOUT.select(PATH$missShaderBindingTableAddress);
+    public static final OfLong LAYOUT$missShaderBindingTableSize = (OfLong) LAYOUT.select(PATH$missShaderBindingTableSize);
+    public static final OfLong LAYOUT$missShaderBindingTableStride = (OfLong) LAYOUT.select(PATH$missShaderBindingTableStride);
+    public static final OfLong LAYOUT$hitShaderBindingTableAddress = (OfLong) LAYOUT.select(PATH$hitShaderBindingTableAddress);
+    public static final OfLong LAYOUT$hitShaderBindingTableSize = (OfLong) LAYOUT.select(PATH$hitShaderBindingTableSize);
+    public static final OfLong LAYOUT$hitShaderBindingTableStride = (OfLong) LAYOUT.select(PATH$hitShaderBindingTableStride);
+    public static final OfLong LAYOUT$callableShaderBindingTableAddress = (OfLong) LAYOUT.select(PATH$callableShaderBindingTableAddress);
+    public static final OfLong LAYOUT$callableShaderBindingTableSize = (OfLong) LAYOUT.select(PATH$callableShaderBindingTableSize);
+    public static final OfLong LAYOUT$callableShaderBindingTableStride = (OfLong) LAYOUT.select(PATH$callableShaderBindingTableStride);
+    public static final OfInt LAYOUT$width = (OfInt) LAYOUT.select(PATH$width);
+    public static final OfInt LAYOUT$height = (OfInt) LAYOUT.select(PATH$height);
+    public static final OfInt LAYOUT$depth = (OfInt) LAYOUT.select(PATH$depth);
 
     public static final long SIZE$raygenShaderRecordAddress = LAYOUT$raygenShaderRecordAddress.byteSize();
     public static final long SIZE$raygenShaderRecordSize = LAYOUT$raygenShaderRecordSize.byteSize();

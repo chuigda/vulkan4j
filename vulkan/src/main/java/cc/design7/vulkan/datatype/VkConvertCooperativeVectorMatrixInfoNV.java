@@ -14,26 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkConvertCooperativeVectorMatrixInfoNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkConvertCooperativeVectorMatrixInfoNV.html">VkConvertCooperativeVectorMatrixInfoNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final ValueLayout LAYOUT$srcSize = NativeLayout.C_SIZE_T.withName("srcSize");
-    public static final StructLayout LAYOUT$srcData = VkDeviceOrHostAddressConstKHR.LAYOUT.withName("srcData");
-    public static final AddressLayout LAYOUT$pDstSize = ValueLayout.ADDRESS.withTargetLayout(NativeLayout.C_SIZE_T).withName("pDstSize");
-    public static final StructLayout LAYOUT$dstData = VkDeviceOrHostAddressKHR.LAYOUT.withName("dstData");
-    public static final OfInt LAYOUT$srcComponentType = ValueLayout.JAVA_INT.withName("srcComponentType");
-    public static final OfInt LAYOUT$dstComponentType = ValueLayout.JAVA_INT.withName("dstComponentType");
-    public static final OfInt LAYOUT$numRows = ValueLayout.JAVA_INT.withName("numRows");
-    public static final OfInt LAYOUT$numColumns = ValueLayout.JAVA_INT.withName("numColumns");
-    public static final OfInt LAYOUT$srcLayout = ValueLayout.JAVA_INT.withName("srcLayout");
-    public static final ValueLayout LAYOUT$srcStride = NativeLayout.C_SIZE_T.withName("srcStride");
-    public static final OfInt LAYOUT$dstLayout = ValueLayout.JAVA_INT.withName("dstLayout");
-    public static final ValueLayout LAYOUT$dstStride = NativeLayout.C_SIZE_T.withName("dstStride");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$srcSize, LAYOUT$srcData, LAYOUT$pDstSize, LAYOUT$dstData, LAYOUT$srcComponentType, LAYOUT$dstComponentType, LAYOUT$numRows, LAYOUT$numColumns, LAYOUT$srcLayout, LAYOUT$srcStride, LAYOUT$dstLayout, LAYOUT$dstStride);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkConvertCooperativeVectorMatrixInfoNV {
+        sType(VkStructureType.CONVERT_COOPERATIVE_VECTOR_MATRIX_INFO_NV);
+    }
 
     public static VkConvertCooperativeVectorMatrixInfoNV allocate(Arena arena) {
         return new VkConvertCooperativeVectorMatrixInfoNV(arena.allocate(LAYOUT));
@@ -62,6 +59,24 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        NativeLayout.C_SIZE_T.withName("srcSize"),
+        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("srcData"),
+        ValueLayout.ADDRESS.withTargetLayout(NativeLayout.C_SIZE_T).withName("pDstSize"),
+        VkDeviceOrHostAddressKHR.LAYOUT.withName("dstData"),
+        ValueLayout.JAVA_INT.withName("srcComponentType"),
+        ValueLayout.JAVA_INT.withName("dstComponentType"),
+        ValueLayout.JAVA_INT.withName("numRows"),
+        ValueLayout.JAVA_INT.withName("numColumns"),
+        ValueLayout.JAVA_INT.withName("srcLayout"),
+        NativeLayout.C_SIZE_T.withName("srcStride"),
+        ValueLayout.JAVA_INT.withName("dstLayout"),
+        NativeLayout.C_SIZE_T.withName("dstStride")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$srcSize = PathElement.groupElement("PATH$srcSize");
@@ -76,6 +91,18 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
     public static final PathElement PATH$srcStride = PathElement.groupElement("PATH$srcStride");
     public static final PathElement PATH$dstLayout = PathElement.groupElement("PATH$dstLayout");
     public static final PathElement PATH$dstStride = PathElement.groupElement("PATH$dstStride");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$srcData = (StructLayout) LAYOUT.select(PATH$srcData);
+    public static final AddressLayout LAYOUT$pDstSize = (AddressLayout) LAYOUT.select(PATH$pDstSize);
+    public static final StructLayout LAYOUT$dstData = (StructLayout) LAYOUT.select(PATH$dstData);
+    public static final OfInt LAYOUT$srcComponentType = (OfInt) LAYOUT.select(PATH$srcComponentType);
+    public static final OfInt LAYOUT$dstComponentType = (OfInt) LAYOUT.select(PATH$dstComponentType);
+    public static final OfInt LAYOUT$numRows = (OfInt) LAYOUT.select(PATH$numRows);
+    public static final OfInt LAYOUT$numColumns = (OfInt) LAYOUT.select(PATH$numColumns);
+    public static final OfInt LAYOUT$srcLayout = (OfInt) LAYOUT.select(PATH$srcLayout);
+    public static final OfInt LAYOUT$dstLayout = (OfInt) LAYOUT.select(PATH$dstLayout);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

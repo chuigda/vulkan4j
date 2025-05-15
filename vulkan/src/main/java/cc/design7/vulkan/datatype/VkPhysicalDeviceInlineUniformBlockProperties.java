@@ -14,19 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceInlineUniformBlockProperties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceInlineUniformBlockProperties.html">VkPhysicalDeviceInlineUniformBlockProperties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceInlineUniformBlockProperties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$maxInlineUniformBlockSize = ValueLayout.JAVA_INT.withName("maxInlineUniformBlockSize");
-    public static final OfInt LAYOUT$maxPerStageDescriptorInlineUniformBlocks = ValueLayout.JAVA_INT.withName("maxPerStageDescriptorInlineUniformBlocks");
-    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks = ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks");
-    public static final OfInt LAYOUT$maxDescriptorSetInlineUniformBlocks = ValueLayout.JAVA_INT.withName("maxDescriptorSetInlineUniformBlocks");
-    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindInlineUniformBlocks = ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindInlineUniformBlocks");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$maxInlineUniformBlockSize, LAYOUT$maxPerStageDescriptorInlineUniformBlocks, LAYOUT$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks, LAYOUT$maxDescriptorSetInlineUniformBlocks, LAYOUT$maxDescriptorSetUpdateAfterBindInlineUniformBlocks);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceInlineUniformBlockProperties {
+        sType(VkStructureType.PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES);
+    }
 
     public static VkPhysicalDeviceInlineUniformBlockProperties allocate(Arena arena) {
         return new VkPhysicalDeviceInlineUniformBlockProperties(arena.allocate(LAYOUT));
@@ -55,6 +59,17 @@ public record VkPhysicalDeviceInlineUniformBlockProperties(@NotNull MemorySegmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("maxInlineUniformBlockSize"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorInlineUniformBlocks"),
+        ValueLayout.JAVA_INT.withName("maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetInlineUniformBlocks"),
+        ValueLayout.JAVA_INT.withName("maxDescriptorSetUpdateAfterBindInlineUniformBlocks")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$maxInlineUniformBlockSize = PathElement.groupElement("PATH$maxInlineUniformBlockSize");
@@ -62,6 +77,14 @@ public record VkPhysicalDeviceInlineUniformBlockProperties(@NotNull MemorySegmen
     public static final PathElement PATH$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks = PathElement.groupElement("PATH$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks");
     public static final PathElement PATH$maxDescriptorSetInlineUniformBlocks = PathElement.groupElement("PATH$maxDescriptorSetInlineUniformBlocks");
     public static final PathElement PATH$maxDescriptorSetUpdateAfterBindInlineUniformBlocks = PathElement.groupElement("PATH$maxDescriptorSetUpdateAfterBindInlineUniformBlocks");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$maxInlineUniformBlockSize = (OfInt) LAYOUT.select(PATH$maxInlineUniformBlockSize);
+    public static final OfInt LAYOUT$maxPerStageDescriptorInlineUniformBlocks = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorInlineUniformBlocks);
+    public static final OfInt LAYOUT$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks = (OfInt) LAYOUT.select(PATH$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks);
+    public static final OfInt LAYOUT$maxDescriptorSetInlineUniformBlocks = (OfInt) LAYOUT.select(PATH$maxDescriptorSetInlineUniformBlocks);
+    public static final OfInt LAYOUT$maxDescriptorSetUpdateAfterBindInlineUniformBlocks = (OfInt) LAYOUT.select(PATH$maxDescriptorSetUpdateAfterBindInlineUniformBlocks);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

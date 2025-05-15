@@ -14,23 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkCooperativeMatrixPropertiesKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCooperativeMatrixPropertiesKHR.html">VkCooperativeMatrixPropertiesKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkCooperativeMatrixPropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$MSize = ValueLayout.JAVA_INT.withName("MSize");
-    public static final OfInt LAYOUT$NSize = ValueLayout.JAVA_INT.withName("NSize");
-    public static final OfInt LAYOUT$KSize = ValueLayout.JAVA_INT.withName("KSize");
-    public static final OfInt LAYOUT$AType = ValueLayout.JAVA_INT.withName("AType");
-    public static final OfInt LAYOUT$BType = ValueLayout.JAVA_INT.withName("BType");
-    public static final OfInt LAYOUT$CType = ValueLayout.JAVA_INT.withName("CType");
-    public static final OfInt LAYOUT$ResultType = ValueLayout.JAVA_INT.withName("ResultType");
-    public static final OfInt LAYOUT$saturatingAccumulation = ValueLayout.JAVA_INT.withName("saturatingAccumulation");
-    public static final OfInt LAYOUT$scope = ValueLayout.JAVA_INT.withName("scope");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$MSize, LAYOUT$NSize, LAYOUT$KSize, LAYOUT$AType, LAYOUT$BType, LAYOUT$CType, LAYOUT$ResultType, LAYOUT$saturatingAccumulation, LAYOUT$scope);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkCooperativeMatrixPropertiesKHR {
+        sType(VkStructureType.COOPERATIVE_MATRIX_PROPERTIES_KHR);
+    }
 
     public static VkCooperativeMatrixPropertiesKHR allocate(Arena arena) {
         return new VkCooperativeMatrixPropertiesKHR(arena.allocate(LAYOUT));
@@ -59,6 +59,21 @@ public record VkCooperativeMatrixPropertiesKHR(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("MSize"),
+        ValueLayout.JAVA_INT.withName("NSize"),
+        ValueLayout.JAVA_INT.withName("KSize"),
+        ValueLayout.JAVA_INT.withName("AType"),
+        ValueLayout.JAVA_INT.withName("BType"),
+        ValueLayout.JAVA_INT.withName("CType"),
+        ValueLayout.JAVA_INT.withName("ResultType"),
+        ValueLayout.JAVA_INT.withName("saturatingAccumulation"),
+        ValueLayout.JAVA_INT.withName("scope")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$MSize = PathElement.groupElement("PATH$MSize");
@@ -70,6 +85,18 @@ public record VkCooperativeMatrixPropertiesKHR(@NotNull MemorySegment segment) i
     public static final PathElement PATH$ResultType = PathElement.groupElement("PATH$ResultType");
     public static final PathElement PATH$saturatingAccumulation = PathElement.groupElement("PATH$saturatingAccumulation");
     public static final PathElement PATH$scope = PathElement.groupElement("PATH$scope");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$MSize = (OfInt) LAYOUT.select(PATH$MSize);
+    public static final OfInt LAYOUT$NSize = (OfInt) LAYOUT.select(PATH$NSize);
+    public static final OfInt LAYOUT$KSize = (OfInt) LAYOUT.select(PATH$KSize);
+    public static final OfInt LAYOUT$AType = (OfInt) LAYOUT.select(PATH$AType);
+    public static final OfInt LAYOUT$BType = (OfInt) LAYOUT.select(PATH$BType);
+    public static final OfInt LAYOUT$CType = (OfInt) LAYOUT.select(PATH$CType);
+    public static final OfInt LAYOUT$ResultType = (OfInt) LAYOUT.select(PATH$ResultType);
+    public static final OfInt LAYOUT$saturatingAccumulation = (OfInt) LAYOUT.select(PATH$saturatingAccumulation);
+    public static final OfInt LAYOUT$scope = (OfInt) LAYOUT.select(PATH$scope);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

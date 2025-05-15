@@ -15,13 +15,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoAV1ColorConfigFlags} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$mono_chrome_reserved = ValueLayout.JAVA_INT.withName("bitfield$mono_chrome_reserved");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$mono_chrome_reserved);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoAV1ColorConfigFlags allocate(Arena arena) {
         return new StdVideoAV1ColorConfigFlags(arena.allocate(LAYOUT));
     }
@@ -49,7 +54,14 @@ public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implem
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$mono_chrome_reserved")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$bitfield$mono_chrome_reserved = PathElement.groupElement("PATH$bitfield$mono_chrome_reserved");
+
+    public static final OfInt LAYOUT$mono_chrome_reserved = (OfInt) LAYOUT.select(PATH$bitfield$mono_chrome_reserved);
 
 
     public static final long OFFSET$mono_chrome_reserved = LAYOUT.byteOffset(PATH$bitfield$mono_chrome_reserved);

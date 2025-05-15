@@ -14,15 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkClearDepthStencilValue} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClearDepthStencilValue.html">VkClearDepthStencilValue</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkClearDepthStencilValue(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfFloat LAYOUT$depth = ValueLayout.JAVA_FLOAT.withName("depth");
-    public static final OfInt LAYOUT$stencil = ValueLayout.JAVA_INT.withName("stencil");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$depth, LAYOUT$stencil);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkClearDepthStencilValue allocate(Arena arena) {
         return new VkClearDepthStencilValue(arena.allocate(LAYOUT));
     }
@@ -50,8 +55,17 @@ public record VkClearDepthStencilValue(@NotNull MemorySegment segment) implement
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_FLOAT.withName("depth"),
+        ValueLayout.JAVA_INT.withName("stencil")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$depth = PathElement.groupElement("PATH$depth");
     public static final PathElement PATH$stencil = PathElement.groupElement("PATH$stencil");
+
+    public static final OfFloat LAYOUT$depth = (OfFloat) LAYOUT.select(PATH$depth);
+    public static final OfInt LAYOUT$stencil = (OfInt) LAYOUT.select(PATH$stencil);
 
     public static final long SIZE$depth = LAYOUT$depth.byteSize();
     public static final long SIZE$stencil = LAYOUT$stencil.byteSize();

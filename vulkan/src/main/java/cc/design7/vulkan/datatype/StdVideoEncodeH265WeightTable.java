@@ -14,23 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoEncodeH265WeightTable} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoEncodeH265WeightTableFlags.LAYOUT.withName("flags");
-    public static final OfByte LAYOUT$luma_log2_weight_denom = ValueLayout.JAVA_BYTE.withName("luma_log2_weight_denom");
-    public static final OfByte LAYOUT$delta_chroma_log2_weight_denom = ValueLayout.JAVA_BYTE.withName("delta_chroma_log2_weight_denom");
-    public static final OfByte LAYOUT$delta_luma_weight_l0 = ValueLayout.JAVA_BYTE.withName("delta_luma_weight_l0");
-    public static final OfByte LAYOUT$luma_offset_l0 = ValueLayout.JAVA_BYTE.withName("luma_offset_l0");
-    public static final OfByte LAYOUT$delta_chroma_weight_l0 = ValueLayout.JAVA_BYTE.withName("delta_chroma_weight_l0");
-    public static final OfByte LAYOUT$delta_chroma_offset_l0 = ValueLayout.JAVA_BYTE.withName("delta_chroma_offset_l0");
-    public static final OfByte LAYOUT$delta_luma_weight_l1 = ValueLayout.JAVA_BYTE.withName("delta_luma_weight_l1");
-    public static final OfByte LAYOUT$luma_offset_l1 = ValueLayout.JAVA_BYTE.withName("luma_offset_l1");
-    public static final OfByte LAYOUT$delta_chroma_weight_l1 = ValueLayout.JAVA_BYTE.withName("delta_chroma_weight_l1");
-    public static final OfByte LAYOUT$delta_chroma_offset_l1 = ValueLayout.JAVA_BYTE.withName("delta_chroma_offset_l1");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$luma_log2_weight_denom, LAYOUT$delta_chroma_log2_weight_denom, LAYOUT$delta_luma_weight_l0, LAYOUT$luma_offset_l0, LAYOUT$delta_chroma_weight_l0, LAYOUT$delta_chroma_offset_l0, LAYOUT$delta_luma_weight_l1, LAYOUT$luma_offset_l1, LAYOUT$delta_chroma_weight_l1, LAYOUT$delta_chroma_offset_l1);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoEncodeH265WeightTable allocate(Arena arena) {
         return new StdVideoEncodeH265WeightTable(arena.allocate(LAYOUT));
     }
@@ -58,6 +53,21 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoEncodeH265WeightTableFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("luma_log2_weight_denom"),
+        ValueLayout.JAVA_BYTE.withName("delta_chroma_log2_weight_denom"),
+        ValueLayout.JAVA_BYTE.withName("delta_luma_weight_l0"),
+        ValueLayout.JAVA_BYTE.withName("luma_offset_l0"),
+        ValueLayout.JAVA_BYTE.withName("delta_chroma_weight_l0"),
+        ValueLayout.JAVA_BYTE.withName("delta_chroma_offset_l0"),
+        ValueLayout.JAVA_BYTE.withName("delta_luma_weight_l1"),
+        ValueLayout.JAVA_BYTE.withName("luma_offset_l1"),
+        ValueLayout.JAVA_BYTE.withName("delta_chroma_weight_l1"),
+        ValueLayout.JAVA_BYTE.withName("delta_chroma_offset_l1")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$luma_log2_weight_denom = PathElement.groupElement("PATH$luma_log2_weight_denom");
     public static final PathElement PATH$delta_chroma_log2_weight_denom = PathElement.groupElement("PATH$delta_chroma_log2_weight_denom");
@@ -69,6 +79,18 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
     public static final PathElement PATH$luma_offset_l1 = PathElement.groupElement("PATH$luma_offset_l1");
     public static final PathElement PATH$delta_chroma_weight_l1 = PathElement.groupElement("PATH$delta_chroma_weight_l1");
     public static final PathElement PATH$delta_chroma_offset_l1 = PathElement.groupElement("PATH$delta_chroma_offset_l1");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$luma_log2_weight_denom = (OfByte) LAYOUT.select(PATH$luma_log2_weight_denom);
+    public static final OfByte LAYOUT$delta_chroma_log2_weight_denom = (OfByte) LAYOUT.select(PATH$delta_chroma_log2_weight_denom);
+    public static final OfByte LAYOUT$delta_luma_weight_l0 = (OfByte) LAYOUT.select(PATH$delta_luma_weight_l0);
+    public static final OfByte LAYOUT$luma_offset_l0 = (OfByte) LAYOUT.select(PATH$luma_offset_l0);
+    public static final OfByte LAYOUT$delta_chroma_weight_l0 = (OfByte) LAYOUT.select(PATH$delta_chroma_weight_l0);
+    public static final OfByte LAYOUT$delta_chroma_offset_l0 = (OfByte) LAYOUT.select(PATH$delta_chroma_offset_l0);
+    public static final OfByte LAYOUT$delta_luma_weight_l1 = (OfByte) LAYOUT.select(PATH$delta_luma_weight_l1);
+    public static final OfByte LAYOUT$luma_offset_l1 = (OfByte) LAYOUT.select(PATH$luma_offset_l1);
+    public static final OfByte LAYOUT$delta_chroma_weight_l1 = (OfByte) LAYOUT.select(PATH$delta_chroma_weight_l1);
+    public static final OfByte LAYOUT$delta_chroma_offset_l1 = (OfByte) LAYOUT.select(PATH$delta_chroma_offset_l1);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$luma_log2_weight_denom = LAYOUT$luma_log2_weight_denom.byteSize();

@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkMicromapUsageEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMicromapUsageEXT.html">VkMicromapUsageEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkMicromapUsageEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$count = ValueLayout.JAVA_INT.withName("count");
-    public static final OfInt LAYOUT$subdivisionLevel = ValueLayout.JAVA_INT.withName("subdivisionLevel");
-    public static final OfInt LAYOUT$format = ValueLayout.JAVA_INT.withName("format");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$count, LAYOUT$subdivisionLevel, LAYOUT$format);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkMicromapUsageEXT allocate(Arena arena) {
         return new VkMicromapUsageEXT(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkMicromapUsageEXT(@NotNull MemorySegment segment) implements IPoi
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("count"),
+        ValueLayout.JAVA_INT.withName("subdivisionLevel"),
+        ValueLayout.JAVA_INT.withName("format")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$count = PathElement.groupElement("PATH$count");
     public static final PathElement PATH$subdivisionLevel = PathElement.groupElement("PATH$subdivisionLevel");
     public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
+
+    public static final OfInt LAYOUT$count = (OfInt) LAYOUT.select(PATH$count);
+    public static final OfInt LAYOUT$subdivisionLevel = (OfInt) LAYOUT.select(PATH$subdivisionLevel);
+    public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
 
     public static final long SIZE$count = LAYOUT$count.byteSize();
     public static final long SIZE$subdivisionLevel = LAYOUT$subdivisionLevel.byteSize();

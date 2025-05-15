@@ -14,26 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkRayTracingPipelineCreateInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRayTracingPipelineCreateInfoKHR.html">VkRayTracingPipelineCreateInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$stageCount = ValueLayout.JAVA_INT.withName("stageCount");
-    public static final AddressLayout LAYOUT$pStages = ValueLayout.ADDRESS.withTargetLayout(VkPipelineShaderStageCreateInfo.LAYOUT).withName("pStages");
-    public static final OfInt LAYOUT$groupCount = ValueLayout.JAVA_INT.withName("groupCount");
-    public static final AddressLayout LAYOUT$pGroups = ValueLayout.ADDRESS.withTargetLayout(VkRayTracingShaderGroupCreateInfoKHR.LAYOUT).withName("pGroups");
-    public static final OfInt LAYOUT$maxPipelineRayRecursionDepth = ValueLayout.JAVA_INT.withName("maxPipelineRayRecursionDepth");
-    public static final AddressLayout LAYOUT$pLibraryInfo = ValueLayout.ADDRESS.withTargetLayout(VkPipelineLibraryCreateInfoKHR.LAYOUT).withName("pLibraryInfo");
-    public static final AddressLayout LAYOUT$pLibraryInterface = ValueLayout.ADDRESS.withTargetLayout(VkRayTracingPipelineInterfaceCreateInfoKHR.LAYOUT).withName("pLibraryInterface");
-    public static final AddressLayout LAYOUT$pDynamicState = ValueLayout.ADDRESS.withTargetLayout(VkPipelineDynamicStateCreateInfo.LAYOUT).withName("pDynamicState");
-    public static final AddressLayout LAYOUT$layout = ValueLayout.ADDRESS.withName("layout");
-    public static final AddressLayout LAYOUT$basePipelineHandle = ValueLayout.ADDRESS.withName("basePipelineHandle");
-    public static final OfInt LAYOUT$basePipelineIndex = ValueLayout.JAVA_INT.withName("basePipelineIndex");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$stageCount, LAYOUT$pStages, LAYOUT$groupCount, LAYOUT$pGroups, LAYOUT$maxPipelineRayRecursionDepth, LAYOUT$pLibraryInfo, LAYOUT$pLibraryInterface, LAYOUT$pDynamicState, LAYOUT$layout, LAYOUT$basePipelineHandle, LAYOUT$basePipelineIndex);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkRayTracingPipelineCreateInfoKHR {
+        sType(VkStructureType.RAY_TRACING_PIPELINE_CREATE_INFO_KHR);
+    }
 
     public static VkRayTracingPipelineCreateInfoKHR allocate(Arena arena) {
         return new VkRayTracingPipelineCreateInfoKHR(arena.allocate(LAYOUT));
@@ -62,6 +59,24 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("stageCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineShaderStageCreateInfo.LAYOUT).withName("pStages"),
+        ValueLayout.JAVA_INT.withName("groupCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkRayTracingShaderGroupCreateInfoKHR.LAYOUT).withName("pGroups"),
+        ValueLayout.JAVA_INT.withName("maxPipelineRayRecursionDepth"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineLibraryCreateInfoKHR.LAYOUT).withName("pLibraryInfo"),
+        ValueLayout.ADDRESS.withTargetLayout(VkRayTracingPipelineInterfaceCreateInfoKHR.LAYOUT).withName("pLibraryInterface"),
+        ValueLayout.ADDRESS.withTargetLayout(VkPipelineDynamicStateCreateInfo.LAYOUT).withName("pDynamicState"),
+        ValueLayout.ADDRESS.withName("layout"),
+        ValueLayout.ADDRESS.withName("basePipelineHandle"),
+        ValueLayout.JAVA_INT.withName("basePipelineIndex")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -76,6 +91,21 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
     public static final PathElement PATH$layout = PathElement.groupElement("PATH$layout");
     public static final PathElement PATH$basePipelineHandle = PathElement.groupElement("PATH$basePipelineHandle");
     public static final PathElement PATH$basePipelineIndex = PathElement.groupElement("PATH$basePipelineIndex");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$stageCount = (OfInt) LAYOUT.select(PATH$stageCount);
+    public static final AddressLayout LAYOUT$pStages = (AddressLayout) LAYOUT.select(PATH$pStages);
+    public static final OfInt LAYOUT$groupCount = (OfInt) LAYOUT.select(PATH$groupCount);
+    public static final AddressLayout LAYOUT$pGroups = (AddressLayout) LAYOUT.select(PATH$pGroups);
+    public static final OfInt LAYOUT$maxPipelineRayRecursionDepth = (OfInt) LAYOUT.select(PATH$maxPipelineRayRecursionDepth);
+    public static final AddressLayout LAYOUT$pLibraryInfo = (AddressLayout) LAYOUT.select(PATH$pLibraryInfo);
+    public static final AddressLayout LAYOUT$pLibraryInterface = (AddressLayout) LAYOUT.select(PATH$pLibraryInterface);
+    public static final AddressLayout LAYOUT$pDynamicState = (AddressLayout) LAYOUT.select(PATH$pDynamicState);
+    public static final AddressLayout LAYOUT$layout = (AddressLayout) LAYOUT.select(PATH$layout);
+    public static final AddressLayout LAYOUT$basePipelineHandle = (AddressLayout) LAYOUT.select(PATH$basePipelineHandle);
+    public static final OfInt LAYOUT$basePipelineIndex = (OfInt) LAYOUT.select(PATH$basePipelineIndex);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

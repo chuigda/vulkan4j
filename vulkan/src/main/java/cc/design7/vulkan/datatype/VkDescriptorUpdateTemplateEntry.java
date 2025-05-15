@@ -14,19 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDescriptorUpdateTemplateEntry} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorUpdateTemplateEntry.html">VkDescriptorUpdateTemplateEntry</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDescriptorUpdateTemplateEntry(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$dstBinding = ValueLayout.JAVA_INT.withName("dstBinding");
-    public static final OfInt LAYOUT$dstArrayElement = ValueLayout.JAVA_INT.withName("dstArrayElement");
-    public static final OfInt LAYOUT$descriptorCount = ValueLayout.JAVA_INT.withName("descriptorCount");
-    public static final OfInt LAYOUT$descriptorType = ValueLayout.JAVA_INT.withName("descriptorType");
-    public static final ValueLayout LAYOUT$offset = NativeLayout.C_SIZE_T.withName("offset");
-    public static final ValueLayout LAYOUT$stride = NativeLayout.C_SIZE_T.withName("stride");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$dstBinding, LAYOUT$dstArrayElement, LAYOUT$descriptorCount, LAYOUT$descriptorType, LAYOUT$offset, LAYOUT$stride);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkDescriptorUpdateTemplateEntry allocate(Arena arena) {
         return new VkDescriptorUpdateTemplateEntry(arena.allocate(LAYOUT));
     }
@@ -54,12 +55,27 @@ public record VkDescriptorUpdateTemplateEntry(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("dstBinding"),
+        ValueLayout.JAVA_INT.withName("dstArrayElement"),
+        ValueLayout.JAVA_INT.withName("descriptorCount"),
+        ValueLayout.JAVA_INT.withName("descriptorType"),
+        NativeLayout.C_SIZE_T.withName("offset"),
+        NativeLayout.C_SIZE_T.withName("stride")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$dstBinding = PathElement.groupElement("PATH$dstBinding");
     public static final PathElement PATH$dstArrayElement = PathElement.groupElement("PATH$dstArrayElement");
     public static final PathElement PATH$descriptorCount = PathElement.groupElement("PATH$descriptorCount");
     public static final PathElement PATH$descriptorType = PathElement.groupElement("PATH$descriptorType");
     public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
     public static final PathElement PATH$stride = PathElement.groupElement("PATH$stride");
+
+    public static final OfInt LAYOUT$dstBinding = (OfInt) LAYOUT.select(PATH$dstBinding);
+    public static final OfInt LAYOUT$dstArrayElement = (OfInt) LAYOUT.select(PATH$dstArrayElement);
+    public static final OfInt LAYOUT$descriptorCount = (OfInt) LAYOUT.select(PATH$descriptorCount);
+    public static final OfInt LAYOUT$descriptorType = (OfInt) LAYOUT.select(PATH$descriptorType);
 
     public static final long SIZE$dstBinding = LAYOUT$dstBinding.byteSize();
     public static final long SIZE$dstArrayElement = LAYOUT$dstArrayElement.byteSize();

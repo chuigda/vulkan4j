@@ -14,19 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceSampleLocationsPropertiesEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceSampleLocationsPropertiesEXT.html">VkPhysicalDeviceSampleLocationsPropertiesEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$sampleLocationSampleCounts = ValueLayout.JAVA_INT.withName("sampleLocationSampleCounts");
-    public static final StructLayout LAYOUT$maxSampleLocationGridSize = VkExtent2D.LAYOUT.withName("maxSampleLocationGridSize");
-    public static final OfFloat LAYOUT$sampleLocationCoordinateRange = ValueLayout.JAVA_FLOAT.withName("sampleLocationCoordinateRange");
-    public static final OfInt LAYOUT$sampleLocationSubPixelBits = ValueLayout.JAVA_INT.withName("sampleLocationSubPixelBits");
-    public static final OfInt LAYOUT$variableSampleLocations = ValueLayout.JAVA_INT.withName("variableSampleLocations");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$sampleLocationSampleCounts, LAYOUT$maxSampleLocationGridSize, LAYOUT$sampleLocationCoordinateRange, LAYOUT$sampleLocationSubPixelBits, LAYOUT$variableSampleLocations);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT {
+        sType(VkStructureType.PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT);
+    }
 
     public static VkPhysicalDeviceSampleLocationsPropertiesEXT allocate(Arena arena) {
         return new VkPhysicalDeviceSampleLocationsPropertiesEXT(arena.allocate(LAYOUT));
@@ -55,6 +59,17 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("sampleLocationSampleCounts"),
+        VkExtent2D.LAYOUT.withName("maxSampleLocationGridSize"),
+        ValueLayout.JAVA_FLOAT.withName("sampleLocationCoordinateRange"),
+        ValueLayout.JAVA_INT.withName("sampleLocationSubPixelBits"),
+        ValueLayout.JAVA_INT.withName("variableSampleLocations")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$sampleLocationSampleCounts = PathElement.groupElement("PATH$sampleLocationSampleCounts");
@@ -62,6 +77,14 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
     public static final PathElement PATH$sampleLocationCoordinateRange = PathElement.groupElement("PATH$sampleLocationCoordinateRange");
     public static final PathElement PATH$sampleLocationSubPixelBits = PathElement.groupElement("PATH$sampleLocationSubPixelBits");
     public static final PathElement PATH$variableSampleLocations = PathElement.groupElement("PATH$variableSampleLocations");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$sampleLocationSampleCounts = (OfInt) LAYOUT.select(PATH$sampleLocationSampleCounts);
+    public static final StructLayout LAYOUT$maxSampleLocationGridSize = (StructLayout) LAYOUT.select(PATH$maxSampleLocationGridSize);
+    public static final OfFloat LAYOUT$sampleLocationCoordinateRange = (OfFloat) LAYOUT.select(PATH$sampleLocationCoordinateRange);
+    public static final OfInt LAYOUT$sampleLocationSubPixelBits = (OfInt) LAYOUT.select(PATH$sampleLocationSubPixelBits);
+    public static final OfInt LAYOUT$variableSampleLocations = (OfInt) LAYOUT.select(PATH$variableSampleLocations);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

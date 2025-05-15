@@ -14,23 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkFrameBoundaryEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkFrameBoundaryEXT.html">VkFrameBoundaryEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfLong LAYOUT$frameID = ValueLayout.JAVA_LONG.withName("frameID");
-    public static final OfInt LAYOUT$imageCount = ValueLayout.JAVA_INT.withName("imageCount");
-    public static final AddressLayout LAYOUT$pImages = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pImages");
-    public static final OfInt LAYOUT$bufferCount = ValueLayout.JAVA_INT.withName("bufferCount");
-    public static final AddressLayout LAYOUT$pBuffers = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pBuffers");
-    public static final OfLong LAYOUT$tagName = ValueLayout.JAVA_LONG.withName("tagName");
-    public static final ValueLayout LAYOUT$tagSize = NativeLayout.C_SIZE_T.withName("tagSize");
-    public static final AddressLayout LAYOUT$pTag = ValueLayout.ADDRESS.withName("pTag");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$frameID, LAYOUT$imageCount, LAYOUT$pImages, LAYOUT$bufferCount, LAYOUT$pBuffers, LAYOUT$tagName, LAYOUT$tagSize, LAYOUT$pTag);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkFrameBoundaryEXT {
+        sType(VkStructureType.FRAME_BOUNDARY_EXT);
+    }
 
     public static VkFrameBoundaryEXT allocate(Arena arena) {
         return new VkFrameBoundaryEXT(arena.allocate(LAYOUT));
@@ -59,6 +59,21 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPoi
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_LONG.withName("frameID"),
+        ValueLayout.JAVA_INT.withName("imageCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pImages"),
+        ValueLayout.JAVA_INT.withName("bufferCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS).withName("pBuffers"),
+        ValueLayout.JAVA_LONG.withName("tagName"),
+        NativeLayout.C_SIZE_T.withName("tagSize"),
+        ValueLayout.ADDRESS.withName("pTag")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -70,6 +85,17 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPoi
     public static final PathElement PATH$tagName = PathElement.groupElement("PATH$tagName");
     public static final PathElement PATH$tagSize = PathElement.groupElement("PATH$tagSize");
     public static final PathElement PATH$pTag = PathElement.groupElement("PATH$pTag");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$frameID = (OfLong) LAYOUT.select(PATH$frameID);
+    public static final OfInt LAYOUT$imageCount = (OfInt) LAYOUT.select(PATH$imageCount);
+    public static final AddressLayout LAYOUT$pImages = (AddressLayout) LAYOUT.select(PATH$pImages);
+    public static final OfInt LAYOUT$bufferCount = (OfInt) LAYOUT.select(PATH$bufferCount);
+    public static final AddressLayout LAYOUT$pBuffers = (AddressLayout) LAYOUT.select(PATH$pBuffers);
+    public static final OfLong LAYOUT$tagName = (OfLong) LAYOUT.select(PATH$tagName);
+    public static final AddressLayout LAYOUT$pTag = (AddressLayout) LAYOUT.select(PATH$pTag);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

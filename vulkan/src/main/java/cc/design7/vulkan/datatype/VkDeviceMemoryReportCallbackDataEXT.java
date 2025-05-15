@@ -14,21 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDeviceMemoryReportCallbackDataEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceMemoryReportCallbackDataEXT.html">VkDeviceMemoryReportCallbackDataEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDeviceMemoryReportCallbackDataEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$type = ValueLayout.JAVA_INT.withName("type");
-    public static final OfLong LAYOUT$memoryObjectId = ValueLayout.JAVA_LONG.withName("memoryObjectId");
-    public static final OfLong LAYOUT$size = ValueLayout.JAVA_LONG.withName("size");
-    public static final OfInt LAYOUT$objectType = ValueLayout.JAVA_INT.withName("objectType");
-    public static final OfLong LAYOUT$objectHandle = ValueLayout.JAVA_LONG.withName("objectHandle");
-    public static final OfInt LAYOUT$heapIndex = ValueLayout.JAVA_INT.withName("heapIndex");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$type, LAYOUT$memoryObjectId, LAYOUT$size, LAYOUT$objectType, LAYOUT$objectHandle, LAYOUT$heapIndex);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkDeviceMemoryReportCallbackDataEXT {
+        sType(VkStructureType.DEVICE_MEMORY_REPORT_CALLBACK_DATA_EXT);
+    }
 
     public static VkDeviceMemoryReportCallbackDataEXT allocate(Arena arena) {
         return new VkDeviceMemoryReportCallbackDataEXT(arena.allocate(LAYOUT));
@@ -57,6 +59,19 @@ public record VkDeviceMemoryReportCallbackDataEXT(@NotNull MemorySegment segment
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("type"),
+        ValueLayout.JAVA_LONG.withName("memoryObjectId"),
+        ValueLayout.JAVA_LONG.withName("size"),
+        ValueLayout.JAVA_INT.withName("objectType"),
+        ValueLayout.JAVA_LONG.withName("objectHandle"),
+        ValueLayout.JAVA_INT.withName("heapIndex")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -66,6 +81,16 @@ public record VkDeviceMemoryReportCallbackDataEXT(@NotNull MemorySegment segment
     public static final PathElement PATH$objectType = PathElement.groupElement("PATH$objectType");
     public static final PathElement PATH$objectHandle = PathElement.groupElement("PATH$objectHandle");
     public static final PathElement PATH$heapIndex = PathElement.groupElement("PATH$heapIndex");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
+    public static final OfLong LAYOUT$memoryObjectId = (OfLong) LAYOUT.select(PATH$memoryObjectId);
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
+    public static final OfInt LAYOUT$objectType = (OfInt) LAYOUT.select(PATH$objectType);
+    public static final OfLong LAYOUT$objectHandle = (OfLong) LAYOUT.select(PATH$objectHandle);
+    public static final OfInt LAYOUT$heapIndex = (OfInt) LAYOUT.select(PATH$heapIndex);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

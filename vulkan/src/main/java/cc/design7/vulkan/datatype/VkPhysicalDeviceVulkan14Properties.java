@@ -14,39 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceVulkan14Properties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceVulkan14Properties.html">VkPhysicalDeviceVulkan14Properties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$lineSubPixelPrecisionBits = ValueLayout.JAVA_INT.withName("lineSubPixelPrecisionBits");
-    public static final OfInt LAYOUT$maxVertexAttribDivisor = ValueLayout.JAVA_INT.withName("maxVertexAttribDivisor");
-    public static final OfInt LAYOUT$supportsNonZeroFirstInstance = ValueLayout.JAVA_INT.withName("supportsNonZeroFirstInstance");
-    public static final OfInt LAYOUT$maxPushDescriptors = ValueLayout.JAVA_INT.withName("maxPushDescriptors");
-    public static final OfInt LAYOUT$dynamicRenderingLocalReadDepthStencilAttachments = ValueLayout.JAVA_INT.withName("dynamicRenderingLocalReadDepthStencilAttachments");
-    public static final OfInt LAYOUT$dynamicRenderingLocalReadMultisampledAttachments = ValueLayout.JAVA_INT.withName("dynamicRenderingLocalReadMultisampledAttachments");
-    public static final OfInt LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting = ValueLayout.JAVA_INT.withName("earlyFragmentMultisampleCoverageAfterSampleCounting");
-    public static final OfInt LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting = ValueLayout.JAVA_INT.withName("earlyFragmentSampleMaskTestBeforeSampleCounting");
-    public static final OfInt LAYOUT$depthStencilSwizzleOneSupport = ValueLayout.JAVA_INT.withName("depthStencilSwizzleOneSupport");
-    public static final OfInt LAYOUT$polygonModePointSize = ValueLayout.JAVA_INT.withName("polygonModePointSize");
-    public static final OfInt LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram = ValueLayout.JAVA_INT.withName("nonStrictSinglePixelWideLinesUseParallelogram");
-    public static final OfInt LAYOUT$nonStrictWideLinesUseParallelogram = ValueLayout.JAVA_INT.withName("nonStrictWideLinesUseParallelogram");
-    public static final OfInt LAYOUT$blockTexelViewCompatibleMultipleLayers = ValueLayout.JAVA_INT.withName("blockTexelViewCompatibleMultipleLayers");
-    public static final OfInt LAYOUT$maxCombinedImageSamplerDescriptorCount = ValueLayout.JAVA_INT.withName("maxCombinedImageSamplerDescriptorCount");
-    public static final OfInt LAYOUT$fragmentShadingRateClampCombinerInputs = ValueLayout.JAVA_INT.withName("fragmentShadingRateClampCombinerInputs");
-    public static final OfInt LAYOUT$defaultRobustnessStorageBuffers = ValueLayout.JAVA_INT.withName("defaultRobustnessStorageBuffers");
-    public static final OfInt LAYOUT$defaultRobustnessUniformBuffers = ValueLayout.JAVA_INT.withName("defaultRobustnessUniformBuffers");
-    public static final OfInt LAYOUT$defaultRobustnessVertexInputs = ValueLayout.JAVA_INT.withName("defaultRobustnessVertexInputs");
-    public static final OfInt LAYOUT$defaultRobustnessImages = ValueLayout.JAVA_INT.withName("defaultRobustnessImages");
-    public static final OfInt LAYOUT$copySrcLayoutCount = ValueLayout.JAVA_INT.withName("copySrcLayoutCount");
-    public static final AddressLayout LAYOUT$pCopySrcLayouts = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCopySrcLayouts");
-    public static final OfInt LAYOUT$copyDstLayoutCount = ValueLayout.JAVA_INT.withName("copyDstLayoutCount");
-    public static final AddressLayout LAYOUT$pCopyDstLayouts = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCopyDstLayouts");
-    public static final OfByte LAYOUT$optimalTilingLayoutUUID = ValueLayout.JAVA_BYTE.withName("optimalTilingLayoutUUID");
-    public static final OfInt LAYOUT$identicalMemoryTypeRequirements = ValueLayout.JAVA_INT.withName("identicalMemoryTypeRequirements");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$lineSubPixelPrecisionBits, LAYOUT$maxVertexAttribDivisor, LAYOUT$supportsNonZeroFirstInstance, LAYOUT$maxPushDescriptors, LAYOUT$dynamicRenderingLocalReadDepthStencilAttachments, LAYOUT$dynamicRenderingLocalReadMultisampledAttachments, LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting, LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting, LAYOUT$depthStencilSwizzleOneSupport, LAYOUT$polygonModePointSize, LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram, LAYOUT$nonStrictWideLinesUseParallelogram, LAYOUT$blockTexelViewCompatibleMultipleLayers, LAYOUT$maxCombinedImageSamplerDescriptorCount, LAYOUT$fragmentShadingRateClampCombinerInputs, LAYOUT$defaultRobustnessStorageBuffers, LAYOUT$defaultRobustnessUniformBuffers, LAYOUT$defaultRobustnessVertexInputs, LAYOUT$defaultRobustnessImages, LAYOUT$copySrcLayoutCount, LAYOUT$pCopySrcLayouts, LAYOUT$copyDstLayoutCount, LAYOUT$pCopyDstLayouts, LAYOUT$optimalTilingLayoutUUID, LAYOUT$identicalMemoryTypeRequirements);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceVulkan14Properties {
+        sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_4_PROPERTIES);
+    }
 
     public static VkPhysicalDeviceVulkan14Properties allocate(Arena arena) {
         return new VkPhysicalDeviceVulkan14Properties(arena.allocate(LAYOUT));
@@ -75,6 +59,37 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("lineSubPixelPrecisionBits"),
+        ValueLayout.JAVA_INT.withName("maxVertexAttribDivisor"),
+        ValueLayout.JAVA_INT.withName("supportsNonZeroFirstInstance"),
+        ValueLayout.JAVA_INT.withName("maxPushDescriptors"),
+        ValueLayout.JAVA_INT.withName("dynamicRenderingLocalReadDepthStencilAttachments"),
+        ValueLayout.JAVA_INT.withName("dynamicRenderingLocalReadMultisampledAttachments"),
+        ValueLayout.JAVA_INT.withName("earlyFragmentMultisampleCoverageAfterSampleCounting"),
+        ValueLayout.JAVA_INT.withName("earlyFragmentSampleMaskTestBeforeSampleCounting"),
+        ValueLayout.JAVA_INT.withName("depthStencilSwizzleOneSupport"),
+        ValueLayout.JAVA_INT.withName("polygonModePointSize"),
+        ValueLayout.JAVA_INT.withName("nonStrictSinglePixelWideLinesUseParallelogram"),
+        ValueLayout.JAVA_INT.withName("nonStrictWideLinesUseParallelogram"),
+        ValueLayout.JAVA_INT.withName("blockTexelViewCompatibleMultipleLayers"),
+        ValueLayout.JAVA_INT.withName("maxCombinedImageSamplerDescriptorCount"),
+        ValueLayout.JAVA_INT.withName("fragmentShadingRateClampCombinerInputs"),
+        ValueLayout.JAVA_INT.withName("defaultRobustnessStorageBuffers"),
+        ValueLayout.JAVA_INT.withName("defaultRobustnessUniformBuffers"),
+        ValueLayout.JAVA_INT.withName("defaultRobustnessVertexInputs"),
+        ValueLayout.JAVA_INT.withName("defaultRobustnessImages"),
+        ValueLayout.JAVA_INT.withName("copySrcLayoutCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCopySrcLayouts"),
+        ValueLayout.JAVA_INT.withName("copyDstLayoutCount"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCopyDstLayouts"),
+        ValueLayout.JAVA_BYTE.withName("optimalTilingLayoutUUID"),
+        ValueLayout.JAVA_INT.withName("identicalMemoryTypeRequirements")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$lineSubPixelPrecisionBits = PathElement.groupElement("PATH$lineSubPixelPrecisionBits");
@@ -102,6 +117,34 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
     public static final PathElement PATH$pCopyDstLayouts = PathElement.groupElement("PATH$pCopyDstLayouts");
     public static final PathElement PATH$optimalTilingLayoutUUID = PathElement.groupElement("PATH$optimalTilingLayoutUUID");
     public static final PathElement PATH$identicalMemoryTypeRequirements = PathElement.groupElement("PATH$identicalMemoryTypeRequirements");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$lineSubPixelPrecisionBits = (OfInt) LAYOUT.select(PATH$lineSubPixelPrecisionBits);
+    public static final OfInt LAYOUT$maxVertexAttribDivisor = (OfInt) LAYOUT.select(PATH$maxVertexAttribDivisor);
+    public static final OfInt LAYOUT$supportsNonZeroFirstInstance = (OfInt) LAYOUT.select(PATH$supportsNonZeroFirstInstance);
+    public static final OfInt LAYOUT$maxPushDescriptors = (OfInt) LAYOUT.select(PATH$maxPushDescriptors);
+    public static final OfInt LAYOUT$dynamicRenderingLocalReadDepthStencilAttachments = (OfInt) LAYOUT.select(PATH$dynamicRenderingLocalReadDepthStencilAttachments);
+    public static final OfInt LAYOUT$dynamicRenderingLocalReadMultisampledAttachments = (OfInt) LAYOUT.select(PATH$dynamicRenderingLocalReadMultisampledAttachments);
+    public static final OfInt LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting = (OfInt) LAYOUT.select(PATH$earlyFragmentMultisampleCoverageAfterSampleCounting);
+    public static final OfInt LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting = (OfInt) LAYOUT.select(PATH$earlyFragmentSampleMaskTestBeforeSampleCounting);
+    public static final OfInt LAYOUT$depthStencilSwizzleOneSupport = (OfInt) LAYOUT.select(PATH$depthStencilSwizzleOneSupport);
+    public static final OfInt LAYOUT$polygonModePointSize = (OfInt) LAYOUT.select(PATH$polygonModePointSize);
+    public static final OfInt LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram = (OfInt) LAYOUT.select(PATH$nonStrictSinglePixelWideLinesUseParallelogram);
+    public static final OfInt LAYOUT$nonStrictWideLinesUseParallelogram = (OfInt) LAYOUT.select(PATH$nonStrictWideLinesUseParallelogram);
+    public static final OfInt LAYOUT$blockTexelViewCompatibleMultipleLayers = (OfInt) LAYOUT.select(PATH$blockTexelViewCompatibleMultipleLayers);
+    public static final OfInt LAYOUT$maxCombinedImageSamplerDescriptorCount = (OfInt) LAYOUT.select(PATH$maxCombinedImageSamplerDescriptorCount);
+    public static final OfInt LAYOUT$fragmentShadingRateClampCombinerInputs = (OfInt) LAYOUT.select(PATH$fragmentShadingRateClampCombinerInputs);
+    public static final OfInt LAYOUT$defaultRobustnessStorageBuffers = (OfInt) LAYOUT.select(PATH$defaultRobustnessStorageBuffers);
+    public static final OfInt LAYOUT$defaultRobustnessUniformBuffers = (OfInt) LAYOUT.select(PATH$defaultRobustnessUniformBuffers);
+    public static final OfInt LAYOUT$defaultRobustnessVertexInputs = (OfInt) LAYOUT.select(PATH$defaultRobustnessVertexInputs);
+    public static final OfInt LAYOUT$defaultRobustnessImages = (OfInt) LAYOUT.select(PATH$defaultRobustnessImages);
+    public static final OfInt LAYOUT$copySrcLayoutCount = (OfInt) LAYOUT.select(PATH$copySrcLayoutCount);
+    public static final AddressLayout LAYOUT$pCopySrcLayouts = (AddressLayout) LAYOUT.select(PATH$pCopySrcLayouts);
+    public static final OfInt LAYOUT$copyDstLayoutCount = (OfInt) LAYOUT.select(PATH$copyDstLayoutCount);
+    public static final AddressLayout LAYOUT$pCopyDstLayouts = (AddressLayout) LAYOUT.select(PATH$pCopyDstLayouts);
+    public static final OfByte LAYOUT$optimalTilingLayoutUUID = (OfByte) LAYOUT.select(PATH$optimalTilingLayoutUUID);
+    public static final OfInt LAYOUT$identicalMemoryTypeRequirements = (OfInt) LAYOUT.select(PATH$identicalMemoryTypeRequirements);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

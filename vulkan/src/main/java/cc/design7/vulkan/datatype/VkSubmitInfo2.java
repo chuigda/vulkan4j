@@ -14,21 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkSubmitInfo2} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSubmitInfo2.html">VkSubmitInfo2</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$waitSemaphoreInfoCount = ValueLayout.JAVA_INT.withName("waitSemaphoreInfoCount");
-    public static final AddressLayout LAYOUT$pWaitSemaphoreInfos = ValueLayout.ADDRESS.withTargetLayout(VkSemaphoreSubmitInfo.LAYOUT).withName("pWaitSemaphoreInfos");
-    public static final OfInt LAYOUT$commandBufferInfoCount = ValueLayout.JAVA_INT.withName("commandBufferInfoCount");
-    public static final AddressLayout LAYOUT$pCommandBufferInfos = ValueLayout.ADDRESS.withTargetLayout(VkCommandBufferSubmitInfo.LAYOUT).withName("pCommandBufferInfos");
-    public static final OfInt LAYOUT$signalSemaphoreInfoCount = ValueLayout.JAVA_INT.withName("signalSemaphoreInfoCount");
-    public static final AddressLayout LAYOUT$pSignalSemaphoreInfos = ValueLayout.ADDRESS.withTargetLayout(VkSemaphoreSubmitInfo.LAYOUT).withName("pSignalSemaphoreInfos");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$waitSemaphoreInfoCount, LAYOUT$pWaitSemaphoreInfos, LAYOUT$commandBufferInfoCount, LAYOUT$pCommandBufferInfos, LAYOUT$signalSemaphoreInfoCount, LAYOUT$pSignalSemaphoreInfos);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkSubmitInfo2 {
+        sType(VkStructureType.SUBMIT_INFO_2);
+    }
 
     public static VkSubmitInfo2 allocate(Arena arena) {
         return new VkSubmitInfo2(arena.allocate(LAYOUT));
@@ -57,6 +59,19 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IPointer 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("waitSemaphoreInfoCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkSemaphoreSubmitInfo.LAYOUT).withName("pWaitSemaphoreInfos"),
+        ValueLayout.JAVA_INT.withName("commandBufferInfoCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkCommandBufferSubmitInfo.LAYOUT).withName("pCommandBufferInfos"),
+        ValueLayout.JAVA_INT.withName("signalSemaphoreInfoCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkSemaphoreSubmitInfo.LAYOUT).withName("pSignalSemaphoreInfos")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -66,6 +81,16 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IPointer 
     public static final PathElement PATH$pCommandBufferInfos = PathElement.groupElement("PATH$pCommandBufferInfos");
     public static final PathElement PATH$signalSemaphoreInfoCount = PathElement.groupElement("PATH$signalSemaphoreInfoCount");
     public static final PathElement PATH$pSignalSemaphoreInfos = PathElement.groupElement("PATH$pSignalSemaphoreInfos");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$waitSemaphoreInfoCount = (OfInt) LAYOUT.select(PATH$waitSemaphoreInfoCount);
+    public static final AddressLayout LAYOUT$pWaitSemaphoreInfos = (AddressLayout) LAYOUT.select(PATH$pWaitSemaphoreInfos);
+    public static final OfInt LAYOUT$commandBufferInfoCount = (OfInt) LAYOUT.select(PATH$commandBufferInfoCount);
+    public static final AddressLayout LAYOUT$pCommandBufferInfos = (AddressLayout) LAYOUT.select(PATH$pCommandBufferInfos);
+    public static final OfInt LAYOUT$signalSemaphoreInfoCount = (OfInt) LAYOUT.select(PATH$signalSemaphoreInfoCount);
+    public static final AddressLayout LAYOUT$pSignalSemaphoreInfos = (AddressLayout) LAYOUT.select(PATH$pSignalSemaphoreInfos);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

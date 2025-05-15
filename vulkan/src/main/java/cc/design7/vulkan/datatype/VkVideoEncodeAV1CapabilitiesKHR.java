@@ -14,38 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeAV1CapabilitiesKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1CapabilitiesKHR.html">VkVideoEncodeAV1CapabilitiesKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$maxLevel = ValueLayout.JAVA_INT.withName("maxLevel");
-    public static final StructLayout LAYOUT$codedPictureAlignment = VkExtent2D.LAYOUT.withName("codedPictureAlignment");
-    public static final StructLayout LAYOUT$maxTiles = VkExtent2D.LAYOUT.withName("maxTiles");
-    public static final StructLayout LAYOUT$minTileSize = VkExtent2D.LAYOUT.withName("minTileSize");
-    public static final StructLayout LAYOUT$maxTileSize = VkExtent2D.LAYOUT.withName("maxTileSize");
-    public static final OfInt LAYOUT$superblockSizes = ValueLayout.JAVA_INT.withName("superblockSizes");
-    public static final OfInt LAYOUT$maxSingleReferenceCount = ValueLayout.JAVA_INT.withName("maxSingleReferenceCount");
-    public static final OfInt LAYOUT$singleReferenceNameMask = ValueLayout.JAVA_INT.withName("singleReferenceNameMask");
-    public static final OfInt LAYOUT$maxUnidirectionalCompoundReferenceCount = ValueLayout.JAVA_INT.withName("maxUnidirectionalCompoundReferenceCount");
-    public static final OfInt LAYOUT$maxUnidirectionalCompoundGroup1ReferenceCount = ValueLayout.JAVA_INT.withName("maxUnidirectionalCompoundGroup1ReferenceCount");
-    public static final OfInt LAYOUT$unidirectionalCompoundReferenceNameMask = ValueLayout.JAVA_INT.withName("unidirectionalCompoundReferenceNameMask");
-    public static final OfInt LAYOUT$maxBidirectionalCompoundReferenceCount = ValueLayout.JAVA_INT.withName("maxBidirectionalCompoundReferenceCount");
-    public static final OfInt LAYOUT$maxBidirectionalCompoundGroup1ReferenceCount = ValueLayout.JAVA_INT.withName("maxBidirectionalCompoundGroup1ReferenceCount");
-    public static final OfInt LAYOUT$maxBidirectionalCompoundGroup2ReferenceCount = ValueLayout.JAVA_INT.withName("maxBidirectionalCompoundGroup2ReferenceCount");
-    public static final OfInt LAYOUT$bidirectionalCompoundReferenceNameMask = ValueLayout.JAVA_INT.withName("bidirectionalCompoundReferenceNameMask");
-    public static final OfInt LAYOUT$maxTemporalLayerCount = ValueLayout.JAVA_INT.withName("maxTemporalLayerCount");
-    public static final OfInt LAYOUT$maxSpatialLayerCount = ValueLayout.JAVA_INT.withName("maxSpatialLayerCount");
-    public static final OfInt LAYOUT$maxOperatingPoints = ValueLayout.JAVA_INT.withName("maxOperatingPoints");
-    public static final OfInt LAYOUT$minQIndex = ValueLayout.JAVA_INT.withName("minQIndex");
-    public static final OfInt LAYOUT$maxQIndex = ValueLayout.JAVA_INT.withName("maxQIndex");
-    public static final OfInt LAYOUT$prefersGopRemainingFrames = ValueLayout.JAVA_INT.withName("prefersGopRemainingFrames");
-    public static final OfInt LAYOUT$requiresGopRemainingFrames = ValueLayout.JAVA_INT.withName("requiresGopRemainingFrames");
-    public static final OfInt LAYOUT$stdSyntaxFlags = ValueLayout.JAVA_INT.withName("stdSyntaxFlags");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$maxLevel, LAYOUT$codedPictureAlignment, LAYOUT$maxTiles, LAYOUT$minTileSize, LAYOUT$maxTileSize, LAYOUT$superblockSizes, LAYOUT$maxSingleReferenceCount, LAYOUT$singleReferenceNameMask, LAYOUT$maxUnidirectionalCompoundReferenceCount, LAYOUT$maxUnidirectionalCompoundGroup1ReferenceCount, LAYOUT$unidirectionalCompoundReferenceNameMask, LAYOUT$maxBidirectionalCompoundReferenceCount, LAYOUT$maxBidirectionalCompoundGroup1ReferenceCount, LAYOUT$maxBidirectionalCompoundGroup2ReferenceCount, LAYOUT$bidirectionalCompoundReferenceNameMask, LAYOUT$maxTemporalLayerCount, LAYOUT$maxSpatialLayerCount, LAYOUT$maxOperatingPoints, LAYOUT$minQIndex, LAYOUT$maxQIndex, LAYOUT$prefersGopRemainingFrames, LAYOUT$requiresGopRemainingFrames, LAYOUT$stdSyntaxFlags);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoEncodeAV1CapabilitiesKHR {
+        sType(VkStructureType.VIDEO_ENCODE_AV1_CAPABILITIES_KHR);
+    }
 
     public static VkVideoEncodeAV1CapabilitiesKHR allocate(Arena arena) {
         return new VkVideoEncodeAV1CapabilitiesKHR(arena.allocate(LAYOUT));
@@ -74,6 +59,36 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("maxLevel"),
+        VkExtent2D.LAYOUT.withName("codedPictureAlignment"),
+        VkExtent2D.LAYOUT.withName("maxTiles"),
+        VkExtent2D.LAYOUT.withName("minTileSize"),
+        VkExtent2D.LAYOUT.withName("maxTileSize"),
+        ValueLayout.JAVA_INT.withName("superblockSizes"),
+        ValueLayout.JAVA_INT.withName("maxSingleReferenceCount"),
+        ValueLayout.JAVA_INT.withName("singleReferenceNameMask"),
+        ValueLayout.JAVA_INT.withName("maxUnidirectionalCompoundReferenceCount"),
+        ValueLayout.JAVA_INT.withName("maxUnidirectionalCompoundGroup1ReferenceCount"),
+        ValueLayout.JAVA_INT.withName("unidirectionalCompoundReferenceNameMask"),
+        ValueLayout.JAVA_INT.withName("maxBidirectionalCompoundReferenceCount"),
+        ValueLayout.JAVA_INT.withName("maxBidirectionalCompoundGroup1ReferenceCount"),
+        ValueLayout.JAVA_INT.withName("maxBidirectionalCompoundGroup2ReferenceCount"),
+        ValueLayout.JAVA_INT.withName("bidirectionalCompoundReferenceNameMask"),
+        ValueLayout.JAVA_INT.withName("maxTemporalLayerCount"),
+        ValueLayout.JAVA_INT.withName("maxSpatialLayerCount"),
+        ValueLayout.JAVA_INT.withName("maxOperatingPoints"),
+        ValueLayout.JAVA_INT.withName("minQIndex"),
+        ValueLayout.JAVA_INT.withName("maxQIndex"),
+        ValueLayout.JAVA_INT.withName("prefersGopRemainingFrames"),
+        ValueLayout.JAVA_INT.withName("requiresGopRemainingFrames"),
+        ValueLayout.JAVA_INT.withName("stdSyntaxFlags")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -100,6 +115,33 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
     public static final PathElement PATH$prefersGopRemainingFrames = PathElement.groupElement("PATH$prefersGopRemainingFrames");
     public static final PathElement PATH$requiresGopRemainingFrames = PathElement.groupElement("PATH$requiresGopRemainingFrames");
     public static final PathElement PATH$stdSyntaxFlags = PathElement.groupElement("PATH$stdSyntaxFlags");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$maxLevel = (OfInt) LAYOUT.select(PATH$maxLevel);
+    public static final StructLayout LAYOUT$codedPictureAlignment = (StructLayout) LAYOUT.select(PATH$codedPictureAlignment);
+    public static final StructLayout LAYOUT$maxTiles = (StructLayout) LAYOUT.select(PATH$maxTiles);
+    public static final StructLayout LAYOUT$minTileSize = (StructLayout) LAYOUT.select(PATH$minTileSize);
+    public static final StructLayout LAYOUT$maxTileSize = (StructLayout) LAYOUT.select(PATH$maxTileSize);
+    public static final OfInt LAYOUT$superblockSizes = (OfInt) LAYOUT.select(PATH$superblockSizes);
+    public static final OfInt LAYOUT$maxSingleReferenceCount = (OfInt) LAYOUT.select(PATH$maxSingleReferenceCount);
+    public static final OfInt LAYOUT$singleReferenceNameMask = (OfInt) LAYOUT.select(PATH$singleReferenceNameMask);
+    public static final OfInt LAYOUT$maxUnidirectionalCompoundReferenceCount = (OfInt) LAYOUT.select(PATH$maxUnidirectionalCompoundReferenceCount);
+    public static final OfInt LAYOUT$maxUnidirectionalCompoundGroup1ReferenceCount = (OfInt) LAYOUT.select(PATH$maxUnidirectionalCompoundGroup1ReferenceCount);
+    public static final OfInt LAYOUT$unidirectionalCompoundReferenceNameMask = (OfInt) LAYOUT.select(PATH$unidirectionalCompoundReferenceNameMask);
+    public static final OfInt LAYOUT$maxBidirectionalCompoundReferenceCount = (OfInt) LAYOUT.select(PATH$maxBidirectionalCompoundReferenceCount);
+    public static final OfInt LAYOUT$maxBidirectionalCompoundGroup1ReferenceCount = (OfInt) LAYOUT.select(PATH$maxBidirectionalCompoundGroup1ReferenceCount);
+    public static final OfInt LAYOUT$maxBidirectionalCompoundGroup2ReferenceCount = (OfInt) LAYOUT.select(PATH$maxBidirectionalCompoundGroup2ReferenceCount);
+    public static final OfInt LAYOUT$bidirectionalCompoundReferenceNameMask = (OfInt) LAYOUT.select(PATH$bidirectionalCompoundReferenceNameMask);
+    public static final OfInt LAYOUT$maxTemporalLayerCount = (OfInt) LAYOUT.select(PATH$maxTemporalLayerCount);
+    public static final OfInt LAYOUT$maxSpatialLayerCount = (OfInt) LAYOUT.select(PATH$maxSpatialLayerCount);
+    public static final OfInt LAYOUT$maxOperatingPoints = (OfInt) LAYOUT.select(PATH$maxOperatingPoints);
+    public static final OfInt LAYOUT$minQIndex = (OfInt) LAYOUT.select(PATH$minQIndex);
+    public static final OfInt LAYOUT$maxQIndex = (OfInt) LAYOUT.select(PATH$maxQIndex);
+    public static final OfInt LAYOUT$prefersGopRemainingFrames = (OfInt) LAYOUT.select(PATH$prefersGopRemainingFrames);
+    public static final OfInt LAYOUT$requiresGopRemainingFrames = (OfInt) LAYOUT.select(PATH$requiresGopRemainingFrames);
+    public static final OfInt LAYOUT$stdSyntaxFlags = (OfInt) LAYOUT.select(PATH$stdSyntaxFlags);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

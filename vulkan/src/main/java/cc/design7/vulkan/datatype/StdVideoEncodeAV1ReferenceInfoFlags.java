@@ -15,13 +15,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoEncodeAV1ReferenceInfoFlags} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoEncodeAV1ReferenceInfoFlags(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$disable_frame_end_update_cdf_reserved = ValueLayout.JAVA_INT.withName("bitfield$disable_frame_end_update_cdf_reserved");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$disable_frame_end_update_cdf_reserved);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoEncodeAV1ReferenceInfoFlags allocate(Arena arena) {
         return new StdVideoEncodeAV1ReferenceInfoFlags(arena.allocate(LAYOUT));
     }
@@ -49,7 +54,14 @@ public record StdVideoEncodeAV1ReferenceInfoFlags(@NotNull MemorySegment segment
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$disable_frame_end_update_cdf_reserved")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$bitfield$disable_frame_end_update_cdf_reserved = PathElement.groupElement("PATH$bitfield$disable_frame_end_update_cdf_reserved");
+
+    public static final OfInt LAYOUT$disable_frame_end_update_cdf_reserved = (OfInt) LAYOUT.select(PATH$bitfield$disable_frame_end_update_cdf_reserved);
 
 
     public static final long OFFSET$disable_frame_end_update_cdf_reserved = LAYOUT.byteOffset(PATH$bitfield$disable_frame_end_update_cdf_reserved);

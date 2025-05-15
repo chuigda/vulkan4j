@@ -14,19 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceIDProperties} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceIDProperties.html">VkPhysicalDeviceIDProperties</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfByte LAYOUT$deviceUUID = ValueLayout.JAVA_BYTE.withName("deviceUUID");
-    public static final OfByte LAYOUT$driverUUID = ValueLayout.JAVA_BYTE.withName("driverUUID");
-    public static final OfByte LAYOUT$deviceLUID = ValueLayout.JAVA_BYTE.withName("deviceLUID");
-    public static final OfInt LAYOUT$deviceNodeMask = ValueLayout.JAVA_INT.withName("deviceNodeMask");
-    public static final OfInt LAYOUT$deviceLUIDValid = ValueLayout.JAVA_INT.withName("deviceLUIDValid");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$deviceUUID, LAYOUT$driverUUID, LAYOUT$deviceLUID, LAYOUT$deviceNodeMask, LAYOUT$deviceLUIDValid);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceIDProperties {
+        sType(VkStructureType.PHYSICAL_DEVICE_ID_PROPERTIES);
+    }
 
     public static VkPhysicalDeviceIDProperties allocate(Arena arena) {
         return new VkPhysicalDeviceIDProperties(arena.allocate(LAYOUT));
@@ -55,6 +59,17 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_BYTE.withName("deviceUUID"),
+        ValueLayout.JAVA_BYTE.withName("driverUUID"),
+        ValueLayout.JAVA_BYTE.withName("deviceLUID"),
+        ValueLayout.JAVA_INT.withName("deviceNodeMask"),
+        ValueLayout.JAVA_INT.withName("deviceLUIDValid")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$deviceUUID = PathElement.groupElement("PATH$deviceUUID");
@@ -62,6 +77,14 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
     public static final PathElement PATH$deviceLUID = PathElement.groupElement("PATH$deviceLUID");
     public static final PathElement PATH$deviceNodeMask = PathElement.groupElement("PATH$deviceNodeMask");
     public static final PathElement PATH$deviceLUIDValid = PathElement.groupElement("PATH$deviceLUIDValid");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfByte LAYOUT$deviceUUID = (OfByte) LAYOUT.select(PATH$deviceUUID);
+    public static final OfByte LAYOUT$driverUUID = (OfByte) LAYOUT.select(PATH$driverUUID);
+    public static final OfByte LAYOUT$deviceLUID = (OfByte) LAYOUT.select(PATH$deviceLUID);
+    public static final OfInt LAYOUT$deviceNodeMask = (OfInt) LAYOUT.select(PATH$deviceNodeMask);
+    public static final OfInt LAYOUT$deviceLUIDValid = (OfInt) LAYOUT.select(PATH$deviceLUIDValid);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

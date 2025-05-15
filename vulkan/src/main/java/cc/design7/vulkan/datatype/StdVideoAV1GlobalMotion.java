@@ -14,14 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoAV1GlobalMotion} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfByte LAYOUT$GmType = ValueLayout.JAVA_BYTE.withName("GmType");
-    public static final OfInt LAYOUT$gm_params = ValueLayout.JAVA_INT.withName("gm_params");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$GmType, LAYOUT$gm_params);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoAV1GlobalMotion allocate(Arena arena) {
         return new StdVideoAV1GlobalMotion(arena.allocate(LAYOUT));
     }
@@ -49,8 +53,17 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_BYTE.withName("GmType"),
+        ValueLayout.JAVA_INT.withName("gm_params")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$GmType = PathElement.groupElement("PATH$GmType");
     public static final PathElement PATH$gm_params = PathElement.groupElement("PATH$gm_params");
+
+    public static final OfByte LAYOUT$GmType = (OfByte) LAYOUT.select(PATH$GmType);
+    public static final OfInt LAYOUT$gm_params = (OfInt) LAYOUT.select(PATH$gm_params);
 
     public static final long SIZE$GmType = LAYOUT$GmType.byteSize();
     public static final long SIZE$gm_params = LAYOUT$gm_params.byteSize();

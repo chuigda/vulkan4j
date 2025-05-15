@@ -14,29 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeAV1QualityLevelPropertiesKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1QualityLevelPropertiesKHR.html">VkVideoEncodeAV1QualityLevelPropertiesKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeAV1QualityLevelPropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$preferredRateControlFlags = ValueLayout.JAVA_INT.withName("preferredRateControlFlags");
-    public static final OfInt LAYOUT$preferredGopFrameCount = ValueLayout.JAVA_INT.withName("preferredGopFrameCount");
-    public static final OfInt LAYOUT$preferredKeyFramePeriod = ValueLayout.JAVA_INT.withName("preferredKeyFramePeriod");
-    public static final OfInt LAYOUT$preferredConsecutiveBipredictiveFrameCount = ValueLayout.JAVA_INT.withName("preferredConsecutiveBipredictiveFrameCount");
-    public static final OfInt LAYOUT$preferredTemporalLayerCount = ValueLayout.JAVA_INT.withName("preferredTemporalLayerCount");
-    public static final StructLayout LAYOUT$preferredConstantQIndex = VkVideoEncodeAV1QIndexKHR.LAYOUT.withName("preferredConstantQIndex");
-    public static final OfInt LAYOUT$preferredMaxSingleReferenceCount = ValueLayout.JAVA_INT.withName("preferredMaxSingleReferenceCount");
-    public static final OfInt LAYOUT$preferredSingleReferenceNameMask = ValueLayout.JAVA_INT.withName("preferredSingleReferenceNameMask");
-    public static final OfInt LAYOUT$preferredMaxUnidirectionalCompoundReferenceCount = ValueLayout.JAVA_INT.withName("preferredMaxUnidirectionalCompoundReferenceCount");
-    public static final OfInt LAYOUT$preferredMaxUnidirectionalCompoundGroup1ReferenceCount = ValueLayout.JAVA_INT.withName("preferredMaxUnidirectionalCompoundGroup1ReferenceCount");
-    public static final OfInt LAYOUT$preferredUnidirectionalCompoundReferenceNameMask = ValueLayout.JAVA_INT.withName("preferredUnidirectionalCompoundReferenceNameMask");
-    public static final OfInt LAYOUT$preferredMaxBidirectionalCompoundReferenceCount = ValueLayout.JAVA_INT.withName("preferredMaxBidirectionalCompoundReferenceCount");
-    public static final OfInt LAYOUT$preferredMaxBidirectionalCompoundGroup1ReferenceCount = ValueLayout.JAVA_INT.withName("preferredMaxBidirectionalCompoundGroup1ReferenceCount");
-    public static final OfInt LAYOUT$preferredMaxBidirectionalCompoundGroup2ReferenceCount = ValueLayout.JAVA_INT.withName("preferredMaxBidirectionalCompoundGroup2ReferenceCount");
-    public static final OfInt LAYOUT$preferredBidirectionalCompoundReferenceNameMask = ValueLayout.JAVA_INT.withName("preferredBidirectionalCompoundReferenceNameMask");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$preferredRateControlFlags, LAYOUT$preferredGopFrameCount, LAYOUT$preferredKeyFramePeriod, LAYOUT$preferredConsecutiveBipredictiveFrameCount, LAYOUT$preferredTemporalLayerCount, LAYOUT$preferredConstantQIndex, LAYOUT$preferredMaxSingleReferenceCount, LAYOUT$preferredSingleReferenceNameMask, LAYOUT$preferredMaxUnidirectionalCompoundReferenceCount, LAYOUT$preferredMaxUnidirectionalCompoundGroup1ReferenceCount, LAYOUT$preferredUnidirectionalCompoundReferenceNameMask, LAYOUT$preferredMaxBidirectionalCompoundReferenceCount, LAYOUT$preferredMaxBidirectionalCompoundGroup1ReferenceCount, LAYOUT$preferredMaxBidirectionalCompoundGroup2ReferenceCount, LAYOUT$preferredBidirectionalCompoundReferenceNameMask);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR {
+        sType(VkStructureType.VIDEO_ENCODE_AV1_QUALITY_LEVEL_PROPERTIES_KHR);
+    }
 
     public static VkVideoEncodeAV1QualityLevelPropertiesKHR allocate(Arena arena) {
         return new VkVideoEncodeAV1QualityLevelPropertiesKHR(arena.allocate(LAYOUT));
@@ -65,6 +59,27 @@ public record VkVideoEncodeAV1QualityLevelPropertiesKHR(@NotNull MemorySegment s
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("preferredRateControlFlags"),
+        ValueLayout.JAVA_INT.withName("preferredGopFrameCount"),
+        ValueLayout.JAVA_INT.withName("preferredKeyFramePeriod"),
+        ValueLayout.JAVA_INT.withName("preferredConsecutiveBipredictiveFrameCount"),
+        ValueLayout.JAVA_INT.withName("preferredTemporalLayerCount"),
+        VkVideoEncodeAV1QIndexKHR.LAYOUT.withName("preferredConstantQIndex"),
+        ValueLayout.JAVA_INT.withName("preferredMaxSingleReferenceCount"),
+        ValueLayout.JAVA_INT.withName("preferredSingleReferenceNameMask"),
+        ValueLayout.JAVA_INT.withName("preferredMaxUnidirectionalCompoundReferenceCount"),
+        ValueLayout.JAVA_INT.withName("preferredMaxUnidirectionalCompoundGroup1ReferenceCount"),
+        ValueLayout.JAVA_INT.withName("preferredUnidirectionalCompoundReferenceNameMask"),
+        ValueLayout.JAVA_INT.withName("preferredMaxBidirectionalCompoundReferenceCount"),
+        ValueLayout.JAVA_INT.withName("preferredMaxBidirectionalCompoundGroup1ReferenceCount"),
+        ValueLayout.JAVA_INT.withName("preferredMaxBidirectionalCompoundGroup2ReferenceCount"),
+        ValueLayout.JAVA_INT.withName("preferredBidirectionalCompoundReferenceNameMask")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$preferredRateControlFlags = PathElement.groupElement("PATH$preferredRateControlFlags");
@@ -82,6 +97,24 @@ public record VkVideoEncodeAV1QualityLevelPropertiesKHR(@NotNull MemorySegment s
     public static final PathElement PATH$preferredMaxBidirectionalCompoundGroup1ReferenceCount = PathElement.groupElement("PATH$preferredMaxBidirectionalCompoundGroup1ReferenceCount");
     public static final PathElement PATH$preferredMaxBidirectionalCompoundGroup2ReferenceCount = PathElement.groupElement("PATH$preferredMaxBidirectionalCompoundGroup2ReferenceCount");
     public static final PathElement PATH$preferredBidirectionalCompoundReferenceNameMask = PathElement.groupElement("PATH$preferredBidirectionalCompoundReferenceNameMask");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$preferredRateControlFlags = (OfInt) LAYOUT.select(PATH$preferredRateControlFlags);
+    public static final OfInt LAYOUT$preferredGopFrameCount = (OfInt) LAYOUT.select(PATH$preferredGopFrameCount);
+    public static final OfInt LAYOUT$preferredKeyFramePeriod = (OfInt) LAYOUT.select(PATH$preferredKeyFramePeriod);
+    public static final OfInt LAYOUT$preferredConsecutiveBipredictiveFrameCount = (OfInt) LAYOUT.select(PATH$preferredConsecutiveBipredictiveFrameCount);
+    public static final OfInt LAYOUT$preferredTemporalLayerCount = (OfInt) LAYOUT.select(PATH$preferredTemporalLayerCount);
+    public static final StructLayout LAYOUT$preferredConstantQIndex = (StructLayout) LAYOUT.select(PATH$preferredConstantQIndex);
+    public static final OfInt LAYOUT$preferredMaxSingleReferenceCount = (OfInt) LAYOUT.select(PATH$preferredMaxSingleReferenceCount);
+    public static final OfInt LAYOUT$preferredSingleReferenceNameMask = (OfInt) LAYOUT.select(PATH$preferredSingleReferenceNameMask);
+    public static final OfInt LAYOUT$preferredMaxUnidirectionalCompoundReferenceCount = (OfInt) LAYOUT.select(PATH$preferredMaxUnidirectionalCompoundReferenceCount);
+    public static final OfInt LAYOUT$preferredMaxUnidirectionalCompoundGroup1ReferenceCount = (OfInt) LAYOUT.select(PATH$preferredMaxUnidirectionalCompoundGroup1ReferenceCount);
+    public static final OfInt LAYOUT$preferredUnidirectionalCompoundReferenceNameMask = (OfInt) LAYOUT.select(PATH$preferredUnidirectionalCompoundReferenceNameMask);
+    public static final OfInt LAYOUT$preferredMaxBidirectionalCompoundReferenceCount = (OfInt) LAYOUT.select(PATH$preferredMaxBidirectionalCompoundReferenceCount);
+    public static final OfInt LAYOUT$preferredMaxBidirectionalCompoundGroup1ReferenceCount = (OfInt) LAYOUT.select(PATH$preferredMaxBidirectionalCompoundGroup1ReferenceCount);
+    public static final OfInt LAYOUT$preferredMaxBidirectionalCompoundGroup2ReferenceCount = (OfInt) LAYOUT.select(PATH$preferredMaxBidirectionalCompoundGroup2ReferenceCount);
+    public static final OfInt LAYOUT$preferredBidirectionalCompoundReferenceNameMask = (OfInt) LAYOUT.select(PATH$preferredBidirectionalCompoundReferenceNameMask);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

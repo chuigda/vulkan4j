@@ -14,23 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoCapabilitiesKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoCapabilitiesKHR.html">VkVideoCapabilitiesKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfLong LAYOUT$minBitstreamBufferOffsetAlignment = ValueLayout.JAVA_LONG.withName("minBitstreamBufferOffsetAlignment");
-    public static final OfLong LAYOUT$minBitstreamBufferSizeAlignment = ValueLayout.JAVA_LONG.withName("minBitstreamBufferSizeAlignment");
-    public static final StructLayout LAYOUT$pictureAccessGranularity = VkExtent2D.LAYOUT.withName("pictureAccessGranularity");
-    public static final StructLayout LAYOUT$minCodedExtent = VkExtent2D.LAYOUT.withName("minCodedExtent");
-    public static final StructLayout LAYOUT$maxCodedExtent = VkExtent2D.LAYOUT.withName("maxCodedExtent");
-    public static final OfInt LAYOUT$maxDpbSlots = ValueLayout.JAVA_INT.withName("maxDpbSlots");
-    public static final OfInt LAYOUT$maxActiveReferencePictures = ValueLayout.JAVA_INT.withName("maxActiveReferencePictures");
-    public static final StructLayout LAYOUT$stdHeaderVersion = VkExtensionProperties.LAYOUT.withName("stdHeaderVersion");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$minBitstreamBufferOffsetAlignment, LAYOUT$minBitstreamBufferSizeAlignment, LAYOUT$pictureAccessGranularity, LAYOUT$minCodedExtent, LAYOUT$maxCodedExtent, LAYOUT$maxDpbSlots, LAYOUT$maxActiveReferencePictures, LAYOUT$stdHeaderVersion);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoCapabilitiesKHR {
+        sType(VkStructureType.VIDEO_CAPABILITIES_KHR);
+    }
 
     public static VkVideoCapabilitiesKHR allocate(Arena arena) {
         return new VkVideoCapabilitiesKHR(arena.allocate(LAYOUT));
@@ -59,6 +59,21 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_LONG.withName("minBitstreamBufferOffsetAlignment"),
+        ValueLayout.JAVA_LONG.withName("minBitstreamBufferSizeAlignment"),
+        VkExtent2D.LAYOUT.withName("pictureAccessGranularity"),
+        VkExtent2D.LAYOUT.withName("minCodedExtent"),
+        VkExtent2D.LAYOUT.withName("maxCodedExtent"),
+        ValueLayout.JAVA_INT.withName("maxDpbSlots"),
+        ValueLayout.JAVA_INT.withName("maxActiveReferencePictures"),
+        VkExtensionProperties.LAYOUT.withName("stdHeaderVersion")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -70,6 +85,18 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
     public static final PathElement PATH$maxDpbSlots = PathElement.groupElement("PATH$maxDpbSlots");
     public static final PathElement PATH$maxActiveReferencePictures = PathElement.groupElement("PATH$maxActiveReferencePictures");
     public static final PathElement PATH$stdHeaderVersion = PathElement.groupElement("PATH$stdHeaderVersion");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$minBitstreamBufferOffsetAlignment = (OfLong) LAYOUT.select(PATH$minBitstreamBufferOffsetAlignment);
+    public static final OfLong LAYOUT$minBitstreamBufferSizeAlignment = (OfLong) LAYOUT.select(PATH$minBitstreamBufferSizeAlignment);
+    public static final StructLayout LAYOUT$pictureAccessGranularity = (StructLayout) LAYOUT.select(PATH$pictureAccessGranularity);
+    public static final StructLayout LAYOUT$minCodedExtent = (StructLayout) LAYOUT.select(PATH$minCodedExtent);
+    public static final StructLayout LAYOUT$maxCodedExtent = (StructLayout) LAYOUT.select(PATH$maxCodedExtent);
+    public static final OfInt LAYOUT$maxDpbSlots = (OfInt) LAYOUT.select(PATH$maxDpbSlots);
+    public static final OfInt LAYOUT$maxActiveReferencePictures = (OfInt) LAYOUT.select(PATH$maxActiveReferencePictures);
+    public static final StructLayout LAYOUT$stdHeaderVersion = (StructLayout) LAYOUT.select(PATH$stdHeaderVersion);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

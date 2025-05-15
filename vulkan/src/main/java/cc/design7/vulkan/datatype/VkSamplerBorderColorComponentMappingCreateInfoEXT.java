@@ -14,16 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkSamplerBorderColorComponentMappingCreateInfoEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerBorderColorComponentMappingCreateInfoEXT.html">VkSamplerBorderColorComponentMappingCreateInfoEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final StructLayout LAYOUT$components = VkComponentMapping.LAYOUT.withName("components");
-    public static final OfInt LAYOUT$srgb = ValueLayout.JAVA_INT.withName("srgb");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$components, LAYOUT$srgb);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkSamplerBorderColorComponentMappingCreateInfoEXT {
+        sType(VkStructureType.SAMPLER_BORDER_COLOR_COMPONENT_MAPPING_CREATE_INFO_EXT);
+    }
 
     public static VkSamplerBorderColorComponentMappingCreateInfoEXT allocate(Arena arena) {
         return new VkSamplerBorderColorComponentMappingCreateInfoEXT(arena.allocate(LAYOUT));
@@ -52,10 +59,23 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemoryS
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkComponentMapping.LAYOUT.withName("components"),
+        ValueLayout.JAVA_INT.withName("srgb")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$components = PathElement.groupElement("PATH$components");
     public static final PathElement PATH$srgb = PathElement.groupElement("PATH$srgb");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$components = (StructLayout) LAYOUT.select(PATH$components);
+    public static final OfInt LAYOUT$srgb = (OfInt) LAYOUT.select(PATH$srgb);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

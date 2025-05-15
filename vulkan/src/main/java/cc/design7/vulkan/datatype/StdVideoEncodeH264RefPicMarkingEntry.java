@@ -14,17 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoEncodeH264RefPicMarkingEntry} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoEncodeH264RefPicMarkingEntry(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$memory_management_control_operation = ValueLayout.JAVA_INT.withName("memory_management_control_operation");
-    public static final OfShort LAYOUT$difference_of_pic_nums_minus1 = ValueLayout.JAVA_SHORT.withName("difference_of_pic_nums_minus1");
-    public static final OfShort LAYOUT$long_term_pic_num = ValueLayout.JAVA_SHORT.withName("long_term_pic_num");
-    public static final OfShort LAYOUT$long_term_frame_idx = ValueLayout.JAVA_SHORT.withName("long_term_frame_idx");
-    public static final OfShort LAYOUT$max_long_term_frame_idx_plus1 = ValueLayout.JAVA_SHORT.withName("max_long_term_frame_idx_plus1");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$memory_management_control_operation, LAYOUT$difference_of_pic_nums_minus1, LAYOUT$long_term_pic_num, LAYOUT$long_term_frame_idx, LAYOUT$max_long_term_frame_idx_plus1);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoEncodeH264RefPicMarkingEntry allocate(Arena arena) {
         return new StdVideoEncodeH264RefPicMarkingEntry(arena.allocate(LAYOUT));
     }
@@ -52,11 +53,26 @@ public record StdVideoEncodeH264RefPicMarkingEntry(@NotNull MemorySegment segmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("memory_management_control_operation"),
+        ValueLayout.JAVA_SHORT.withName("difference_of_pic_nums_minus1"),
+        ValueLayout.JAVA_SHORT.withName("long_term_pic_num"),
+        ValueLayout.JAVA_SHORT.withName("long_term_frame_idx"),
+        ValueLayout.JAVA_SHORT.withName("max_long_term_frame_idx_plus1")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$memory_management_control_operation = PathElement.groupElement("PATH$memory_management_control_operation");
     public static final PathElement PATH$difference_of_pic_nums_minus1 = PathElement.groupElement("PATH$difference_of_pic_nums_minus1");
     public static final PathElement PATH$long_term_pic_num = PathElement.groupElement("PATH$long_term_pic_num");
     public static final PathElement PATH$long_term_frame_idx = PathElement.groupElement("PATH$long_term_frame_idx");
     public static final PathElement PATH$max_long_term_frame_idx_plus1 = PathElement.groupElement("PATH$max_long_term_frame_idx_plus1");
+
+    public static final OfInt LAYOUT$memory_management_control_operation = (OfInt) LAYOUT.select(PATH$memory_management_control_operation);
+    public static final OfShort LAYOUT$difference_of_pic_nums_minus1 = (OfShort) LAYOUT.select(PATH$difference_of_pic_nums_minus1);
+    public static final OfShort LAYOUT$long_term_pic_num = (OfShort) LAYOUT.select(PATH$long_term_pic_num);
+    public static final OfShort LAYOUT$long_term_frame_idx = (OfShort) LAYOUT.select(PATH$long_term_frame_idx);
+    public static final OfShort LAYOUT$max_long_term_frame_idx_plus1 = (OfShort) LAYOUT.select(PATH$max_long_term_frame_idx_plus1);
 
     public static final long SIZE$memory_management_control_operation = LAYOUT$memory_management_control_operation.byteSize();
     public static final long SIZE$difference_of_pic_nums_minus1 = LAYOUT$difference_of_pic_nums_minus1.byteSize();

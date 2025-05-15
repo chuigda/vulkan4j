@@ -14,23 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkAccelerationStructureBuildGeometryInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAccelerationStructureBuildGeometryInfoKHR.html">VkAccelerationStructureBuildGeometryInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$type = ValueLayout.JAVA_INT.withName("type");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$mode = ValueLayout.JAVA_INT.withName("mode");
-    public static final AddressLayout LAYOUT$srcAccelerationStructure = ValueLayout.ADDRESS.withName("srcAccelerationStructure");
-    public static final AddressLayout LAYOUT$dstAccelerationStructure = ValueLayout.ADDRESS.withName("dstAccelerationStructure");
-    public static final OfInt LAYOUT$geometryCount = ValueLayout.JAVA_INT.withName("geometryCount");
-    public static final AddressLayout LAYOUT$pGeometries = ValueLayout.ADDRESS.withTargetLayout(VkAccelerationStructureGeometryKHR.LAYOUT).withName("pGeometries");
-    public static final AddressLayout LAYOUT$ppGeometries = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(VkAccelerationStructureGeometryKHR.LAYOUT)).withName("ppGeometries");
-    public static final StructLayout LAYOUT$scratchData = VkDeviceOrHostAddressKHR.LAYOUT.withName("scratchData");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$type, LAYOUT$flags, LAYOUT$mode, LAYOUT$srcAccelerationStructure, LAYOUT$dstAccelerationStructure, LAYOUT$geometryCount, LAYOUT$pGeometries, LAYOUT$ppGeometries, LAYOUT$scratchData);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkAccelerationStructureBuildGeometryInfoKHR {
+        sType(VkStructureType.ACCELERATION_STRUCTURE_BUILD_GEOMETRY_INFO_KHR);
+    }
 
     public static VkAccelerationStructureBuildGeometryInfoKHR allocate(Arena arena) {
         return new VkAccelerationStructureBuildGeometryInfoKHR(arena.allocate(LAYOUT));
@@ -59,6 +59,21 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("type"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("mode"),
+        ValueLayout.ADDRESS.withName("srcAccelerationStructure"),
+        ValueLayout.ADDRESS.withName("dstAccelerationStructure"),
+        ValueLayout.JAVA_INT.withName("geometryCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkAccelerationStructureGeometryKHR.LAYOUT).withName("pGeometries"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(VkAccelerationStructureGeometryKHR.LAYOUT)).withName("ppGeometries"),
+        VkDeviceOrHostAddressKHR.LAYOUT.withName("scratchData")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
@@ -70,6 +85,18 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
     public static final PathElement PATH$pGeometries = PathElement.groupElement("PATH$pGeometries");
     public static final PathElement PATH$ppGeometries = PathElement.groupElement("PATH$ppGeometries");
     public static final PathElement PATH$scratchData = PathElement.groupElement("PATH$scratchData");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$mode = (OfInt) LAYOUT.select(PATH$mode);
+    public static final AddressLayout LAYOUT$srcAccelerationStructure = (AddressLayout) LAYOUT.select(PATH$srcAccelerationStructure);
+    public static final AddressLayout LAYOUT$dstAccelerationStructure = (AddressLayout) LAYOUT.select(PATH$dstAccelerationStructure);
+    public static final OfInt LAYOUT$geometryCount = (OfInt) LAYOUT.select(PATH$geometryCount);
+    public static final AddressLayout LAYOUT$pGeometries = (AddressLayout) LAYOUT.select(PATH$pGeometries);
+    public static final AddressLayout LAYOUT$ppGeometries = (AddressLayout) LAYOUT.select(PATH$ppGeometries);
+    public static final StructLayout LAYOUT$scratchData = (StructLayout) LAYOUT.select(PATH$scratchData);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

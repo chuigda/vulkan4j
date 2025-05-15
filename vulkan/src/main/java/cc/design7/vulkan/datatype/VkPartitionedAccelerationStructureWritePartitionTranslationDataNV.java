@@ -14,15 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPartitionedAccelerationStructureWritePartitionTranslationDataNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.html">VkPartitionedAccelerationStructureWritePartitionTranslationDataNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$partitionIndex = ValueLayout.JAVA_INT.withName("partitionIndex");
-    public static final OfFloat LAYOUT$partitionTranslation = ValueLayout.JAVA_FLOAT.withName("partitionTranslation");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$partitionIndex, LAYOUT$partitionTranslation);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkPartitionedAccelerationStructureWritePartitionTranslationDataNV allocate(Arena arena) {
         return new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(arena.allocate(LAYOUT));
     }
@@ -50,8 +55,17 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("partitionIndex"),
+        ValueLayout.JAVA_FLOAT.withName("partitionTranslation")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$partitionIndex = PathElement.groupElement("PATH$partitionIndex");
     public static final PathElement PATH$partitionTranslation = PathElement.groupElement("PATH$partitionTranslation");
+
+    public static final OfInt LAYOUT$partitionIndex = (OfInt) LAYOUT.select(PATH$partitionIndex);
+    public static final OfFloat LAYOUT$partitionTranslation = (OfFloat) LAYOUT.select(PATH$partitionTranslation);
 
     public static final long SIZE$partitionIndex = LAYOUT$partitionIndex.byteSize();
     public static final long SIZE$partitionTranslation = LAYOUT$partitionTranslation.byteSize();

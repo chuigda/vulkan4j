@@ -14,25 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkMicromapBuildInfoEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkMicromapBuildInfoEXT.html">VkMicromapBuildInfoEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$type = ValueLayout.JAVA_INT.withName("type");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$mode = ValueLayout.JAVA_INT.withName("mode");
-    public static final AddressLayout LAYOUT$dstMicromap = ValueLayout.ADDRESS.withName("dstMicromap");
-    public static final OfInt LAYOUT$usageCountsCount = ValueLayout.JAVA_INT.withName("usageCountsCount");
-    public static final AddressLayout LAYOUT$pUsageCounts = ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT).withName("pUsageCounts");
-    public static final AddressLayout LAYOUT$ppUsageCounts = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT)).withName("ppUsageCounts");
-    public static final StructLayout LAYOUT$data = VkDeviceOrHostAddressConstKHR.LAYOUT.withName("data");
-    public static final StructLayout LAYOUT$scratchData = VkDeviceOrHostAddressKHR.LAYOUT.withName("scratchData");
-    public static final StructLayout LAYOUT$triangleArray = VkDeviceOrHostAddressConstKHR.LAYOUT.withName("triangleArray");
-    public static final OfLong LAYOUT$triangleArrayStride = ValueLayout.JAVA_LONG.withName("triangleArrayStride");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$type, LAYOUT$flags, LAYOUT$mode, LAYOUT$dstMicromap, LAYOUT$usageCountsCount, LAYOUT$pUsageCounts, LAYOUT$ppUsageCounts, LAYOUT$data, LAYOUT$scratchData, LAYOUT$triangleArray, LAYOUT$triangleArrayStride);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkMicromapBuildInfoEXT {
+        sType(VkStructureType.MICROMAP_BUILD_INFO_EXT);
+    }
 
     public static VkMicromapBuildInfoEXT allocate(Arena arena) {
         return new VkMicromapBuildInfoEXT(arena.allocate(LAYOUT));
@@ -61,6 +59,23 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("type"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("mode"),
+        ValueLayout.ADDRESS.withName("dstMicromap"),
+        ValueLayout.JAVA_INT.withName("usageCountsCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT).withName("pUsageCounts"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(VkMicromapUsageEXT.LAYOUT)).withName("ppUsageCounts"),
+        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("data"),
+        VkDeviceOrHostAddressKHR.LAYOUT.withName("scratchData"),
+        VkDeviceOrHostAddressConstKHR.LAYOUT.withName("triangleArray"),
+        ValueLayout.JAVA_LONG.withName("triangleArrayStride")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
@@ -74,6 +89,20 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
     public static final PathElement PATH$scratchData = PathElement.groupElement("PATH$scratchData");
     public static final PathElement PATH$triangleArray = PathElement.groupElement("PATH$triangleArray");
     public static final PathElement PATH$triangleArrayStride = PathElement.groupElement("PATH$triangleArrayStride");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$mode = (OfInt) LAYOUT.select(PATH$mode);
+    public static final AddressLayout LAYOUT$dstMicromap = (AddressLayout) LAYOUT.select(PATH$dstMicromap);
+    public static final OfInt LAYOUT$usageCountsCount = (OfInt) LAYOUT.select(PATH$usageCountsCount);
+    public static final AddressLayout LAYOUT$pUsageCounts = (AddressLayout) LAYOUT.select(PATH$pUsageCounts);
+    public static final AddressLayout LAYOUT$ppUsageCounts = (AddressLayout) LAYOUT.select(PATH$ppUsageCounts);
+    public static final StructLayout LAYOUT$data = (StructLayout) LAYOUT.select(PATH$data);
+    public static final StructLayout LAYOUT$scratchData = (StructLayout) LAYOUT.select(PATH$scratchData);
+    public static final StructLayout LAYOUT$triangleArray = (StructLayout) LAYOUT.select(PATH$triangleArray);
+    public static final OfLong LAYOUT$triangleArrayStride = (OfLong) LAYOUT.select(PATH$triangleArrayStride);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

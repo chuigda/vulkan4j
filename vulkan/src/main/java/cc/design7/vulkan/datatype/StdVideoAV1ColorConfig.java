@@ -14,21 +14,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoAV1ColorConfig} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$flags = StdVideoAV1ColorConfigFlags.LAYOUT.withName("flags");
-    public static final OfByte LAYOUT$BitDepth = ValueLayout.JAVA_BYTE.withName("BitDepth");
-    public static final OfByte LAYOUT$subsampling_x = ValueLayout.JAVA_BYTE.withName("subsampling_x");
-    public static final OfByte LAYOUT$subsampling_y = ValueLayout.JAVA_BYTE.withName("subsampling_y");
-    public static final OfByte LAYOUT$reserved1 = ValueLayout.JAVA_BYTE.withName("reserved1");
-    public static final OfInt LAYOUT$color_primaries = ValueLayout.JAVA_INT.withName("color_primaries");
-    public static final OfInt LAYOUT$transfer_characteristics = ValueLayout.JAVA_INT.withName("transfer_characteristics");
-    public static final OfInt LAYOUT$matrix_coefficients = ValueLayout.JAVA_INT.withName("matrix_coefficients");
-    public static final OfInt LAYOUT$chroma_sample_position = ValueLayout.JAVA_INT.withName("chroma_sample_position");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$flags, LAYOUT$BitDepth, LAYOUT$subsampling_x, LAYOUT$subsampling_y, LAYOUT$reserved1, LAYOUT$color_primaries, LAYOUT$transfer_characteristics, LAYOUT$matrix_coefficients, LAYOUT$chroma_sample_position);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoAV1ColorConfig allocate(Arena arena) {
         return new StdVideoAV1ColorConfig(arena.allocate(LAYOUT));
     }
@@ -56,6 +53,19 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoAV1ColorConfigFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_BYTE.withName("BitDepth"),
+        ValueLayout.JAVA_BYTE.withName("subsampling_x"),
+        ValueLayout.JAVA_BYTE.withName("subsampling_y"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.JAVA_INT.withName("color_primaries"),
+        ValueLayout.JAVA_INT.withName("transfer_characteristics"),
+        ValueLayout.JAVA_INT.withName("matrix_coefficients"),
+        ValueLayout.JAVA_INT.withName("chroma_sample_position")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$BitDepth = PathElement.groupElement("PATH$BitDepth");
     public static final PathElement PATH$subsampling_x = PathElement.groupElement("PATH$subsampling_x");
@@ -65,6 +75,16 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
     public static final PathElement PATH$transfer_characteristics = PathElement.groupElement("PATH$transfer_characteristics");
     public static final PathElement PATH$matrix_coefficients = PathElement.groupElement("PATH$matrix_coefficients");
     public static final PathElement PATH$chroma_sample_position = PathElement.groupElement("PATH$chroma_sample_position");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfByte LAYOUT$BitDepth = (OfByte) LAYOUT.select(PATH$BitDepth);
+    public static final OfByte LAYOUT$subsampling_x = (OfByte) LAYOUT.select(PATH$subsampling_x);
+    public static final OfByte LAYOUT$subsampling_y = (OfByte) LAYOUT.select(PATH$subsampling_y);
+    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
+    public static final OfInt LAYOUT$color_primaries = (OfInt) LAYOUT.select(PATH$color_primaries);
+    public static final OfInt LAYOUT$transfer_characteristics = (OfInt) LAYOUT.select(PATH$transfer_characteristics);
+    public static final OfInt LAYOUT$matrix_coefficients = (OfInt) LAYOUT.select(PATH$matrix_coefficients);
+    public static final OfInt LAYOUT$chroma_sample_position = (OfInt) LAYOUT.select(PATH$chroma_sample_position);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$BitDepth = LAYOUT$BitDepth.byteSize();

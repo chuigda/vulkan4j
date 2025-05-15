@@ -14,22 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkHdrMetadataEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkHdrMetadataEXT.html">VkHdrMetadataEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final StructLayout LAYOUT$displayPrimaryRed = VkXYColorEXT.LAYOUT.withName("displayPrimaryRed");
-    public static final StructLayout LAYOUT$displayPrimaryGreen = VkXYColorEXT.LAYOUT.withName("displayPrimaryGreen");
-    public static final StructLayout LAYOUT$displayPrimaryBlue = VkXYColorEXT.LAYOUT.withName("displayPrimaryBlue");
-    public static final StructLayout LAYOUT$whitePoint = VkXYColorEXT.LAYOUT.withName("whitePoint");
-    public static final OfFloat LAYOUT$maxLuminance = ValueLayout.JAVA_FLOAT.withName("maxLuminance");
-    public static final OfFloat LAYOUT$minLuminance = ValueLayout.JAVA_FLOAT.withName("minLuminance");
-    public static final OfFloat LAYOUT$maxContentLightLevel = ValueLayout.JAVA_FLOAT.withName("maxContentLightLevel");
-    public static final OfFloat LAYOUT$maxFrameAverageLightLevel = ValueLayout.JAVA_FLOAT.withName("maxFrameAverageLightLevel");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$displayPrimaryRed, LAYOUT$displayPrimaryGreen, LAYOUT$displayPrimaryBlue, LAYOUT$whitePoint, LAYOUT$maxLuminance, LAYOUT$minLuminance, LAYOUT$maxContentLightLevel, LAYOUT$maxFrameAverageLightLevel);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkHdrMetadataEXT {
+        sType(VkStructureType.HDR_METADATA_EXT);
+    }
 
     public static VkHdrMetadataEXT allocate(Arena arena) {
         return new VkHdrMetadataEXT(arena.allocate(LAYOUT));
@@ -58,6 +59,20 @@ public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IPoint
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkXYColorEXT.LAYOUT.withName("displayPrimaryRed"),
+        VkXYColorEXT.LAYOUT.withName("displayPrimaryGreen"),
+        VkXYColorEXT.LAYOUT.withName("displayPrimaryBlue"),
+        VkXYColorEXT.LAYOUT.withName("whitePoint"),
+        ValueLayout.JAVA_FLOAT.withName("maxLuminance"),
+        ValueLayout.JAVA_FLOAT.withName("minLuminance"),
+        ValueLayout.JAVA_FLOAT.withName("maxContentLightLevel"),
+        ValueLayout.JAVA_FLOAT.withName("maxFrameAverageLightLevel")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$displayPrimaryRed = PathElement.groupElement("PATH$displayPrimaryRed");
@@ -68,6 +83,17 @@ public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IPoint
     public static final PathElement PATH$minLuminance = PathElement.groupElement("PATH$minLuminance");
     public static final PathElement PATH$maxContentLightLevel = PathElement.groupElement("PATH$maxContentLightLevel");
     public static final PathElement PATH$maxFrameAverageLightLevel = PathElement.groupElement("PATH$maxFrameAverageLightLevel");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$displayPrimaryRed = (StructLayout) LAYOUT.select(PATH$displayPrimaryRed);
+    public static final StructLayout LAYOUT$displayPrimaryGreen = (StructLayout) LAYOUT.select(PATH$displayPrimaryGreen);
+    public static final StructLayout LAYOUT$displayPrimaryBlue = (StructLayout) LAYOUT.select(PATH$displayPrimaryBlue);
+    public static final StructLayout LAYOUT$whitePoint = (StructLayout) LAYOUT.select(PATH$whitePoint);
+    public static final OfFloat LAYOUT$maxLuminance = (OfFloat) LAYOUT.select(PATH$maxLuminance);
+    public static final OfFloat LAYOUT$minLuminance = (OfFloat) LAYOUT.select(PATH$minLuminance);
+    public static final OfFloat LAYOUT$maxContentLightLevel = (OfFloat) LAYOUT.select(PATH$maxContentLightLevel);
+    public static final OfFloat LAYOUT$maxFrameAverageLightLevel = (OfFloat) LAYOUT.select(PATH$maxFrameAverageLightLevel);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

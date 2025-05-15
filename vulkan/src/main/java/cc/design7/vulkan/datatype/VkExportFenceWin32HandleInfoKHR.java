@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkExportFenceWin32HandleInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkExportFenceWin32HandleInfoKHR.html">VkExportFenceWin32HandleInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkExportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final AddressLayout LAYOUT$pAttributes = ValueLayout.ADDRESS.withName("pAttributes");
-    public static final OfInt LAYOUT$dwAccess = ValueLayout.JAVA_INT.withName("dwAccess");
-    public static final AddressLayout LAYOUT$name = ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("name");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$pAttributes, LAYOUT$dwAccess, LAYOUT$name);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkExportFenceWin32HandleInfoKHR {
+        sType(VkStructureType.EXPORT_FENCE_WIN32_HANDLE_INFO_KHR);
+    }
 
     public static VkExportFenceWin32HandleInfoKHR allocate(Arena arena) {
         return new VkExportFenceWin32HandleInfoKHR(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkExportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) im
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("pAttributes"),
+        ValueLayout.JAVA_INT.withName("dwAccess"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("name")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$pAttributes = PathElement.groupElement("PATH$pAttributes");
     public static final PathElement PATH$dwAccess = PathElement.groupElement("PATH$dwAccess");
     public static final PathElement PATH$name = PathElement.groupElement("PATH$name");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final AddressLayout LAYOUT$pAttributes = (AddressLayout) LAYOUT.select(PATH$pAttributes);
+    public static final OfInt LAYOUT$dwAccess = (OfInt) LAYOUT.select(PATH$dwAccess);
+    public static final AddressLayout LAYOUT$name = (AddressLayout) LAYOUT.select(PATH$name);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

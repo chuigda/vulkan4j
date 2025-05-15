@@ -15,13 +15,18 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code StdVideoEncodeH264PictureInfoFlags} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
+@UnsafeConstructor
 public record StdVideoEncodeH264PictureInfoFlags(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$IdrPicFlag_reserved = ValueLayout.JAVA_INT.withName("bitfield$IdrPicFlag_reserved");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$IdrPicFlag_reserved);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static StdVideoEncodeH264PictureInfoFlags allocate(Arena arena) {
         return new StdVideoEncodeH264PictureInfoFlags(arena.allocate(LAYOUT));
     }
@@ -49,7 +54,14 @@ public record StdVideoEncodeH264PictureInfoFlags(@NotNull MemorySegment segment)
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$IdrPicFlag_reserved")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$bitfield$IdrPicFlag_reserved = PathElement.groupElement("PATH$bitfield$IdrPicFlag_reserved");
+
+    public static final OfInt LAYOUT$IdrPicFlag_reserved = (OfInt) LAYOUT.select(PATH$bitfield$IdrPicFlag_reserved);
 
 
     public static final long OFFSET$IdrPicFlag_reserved = LAYOUT.byteOffset(PATH$bitfield$IdrPicFlag_reserved);

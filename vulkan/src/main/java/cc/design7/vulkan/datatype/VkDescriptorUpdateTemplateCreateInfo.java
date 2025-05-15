@@ -14,22 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDescriptorUpdateTemplateCreateInfo} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorUpdateTemplateCreateInfo.html">VkDescriptorUpdateTemplateCreateInfo</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$flags = ValueLayout.JAVA_INT.withName("flags");
-    public static final OfInt LAYOUT$descriptorUpdateEntryCount = ValueLayout.JAVA_INT.withName("descriptorUpdateEntryCount");
-    public static final AddressLayout LAYOUT$pDescriptorUpdateEntries = ValueLayout.ADDRESS.withTargetLayout(VkDescriptorUpdateTemplateEntry.LAYOUT).withName("pDescriptorUpdateEntries");
-    public static final OfInt LAYOUT$templateType = ValueLayout.JAVA_INT.withName("templateType");
-    public static final AddressLayout LAYOUT$descriptorSetLayout = ValueLayout.ADDRESS.withName("descriptorSetLayout");
-    public static final OfInt LAYOUT$pipelineBindPoint = ValueLayout.JAVA_INT.withName("pipelineBindPoint");
-    public static final AddressLayout LAYOUT$pipelineLayout = ValueLayout.ADDRESS.withName("pipelineLayout");
-    public static final OfInt LAYOUT$set = ValueLayout.JAVA_INT.withName("set");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$flags, LAYOUT$descriptorUpdateEntryCount, LAYOUT$pDescriptorUpdateEntries, LAYOUT$templateType, LAYOUT$descriptorSetLayout, LAYOUT$pipelineBindPoint, LAYOUT$pipelineLayout, LAYOUT$set);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkDescriptorUpdateTemplateCreateInfo {
+        sType(VkStructureType.DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO);
+    }
 
     public static VkDescriptorUpdateTemplateCreateInfo allocate(Arena arena) {
         return new VkDescriptorUpdateTemplateCreateInfo(arena.allocate(LAYOUT));
@@ -58,6 +59,20 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("descriptorUpdateEntryCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VkDescriptorUpdateTemplateEntry.LAYOUT).withName("pDescriptorUpdateEntries"),
+        ValueLayout.JAVA_INT.withName("templateType"),
+        ValueLayout.ADDRESS.withName("descriptorSetLayout"),
+        ValueLayout.JAVA_INT.withName("pipelineBindPoint"),
+        ValueLayout.ADDRESS.withName("pipelineLayout"),
+        ValueLayout.JAVA_INT.withName("set")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
@@ -68,6 +83,17 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
     public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement("PATH$pipelineBindPoint");
     public static final PathElement PATH$pipelineLayout = PathElement.groupElement("PATH$pipelineLayout");
     public static final PathElement PATH$set = PathElement.groupElement("PATH$set");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$descriptorUpdateEntryCount = (OfInt) LAYOUT.select(PATH$descriptorUpdateEntryCount);
+    public static final AddressLayout LAYOUT$pDescriptorUpdateEntries = (AddressLayout) LAYOUT.select(PATH$pDescriptorUpdateEntries);
+    public static final OfInt LAYOUT$templateType = (OfInt) LAYOUT.select(PATH$templateType);
+    public static final AddressLayout LAYOUT$descriptorSetLayout = (AddressLayout) LAYOUT.select(PATH$descriptorSetLayout);
+    public static final OfInt LAYOUT$pipelineBindPoint = (OfInt) LAYOUT.select(PATH$pipelineBindPoint);
+    public static final AddressLayout LAYOUT$pipelineLayout = (AddressLayout) LAYOUT.select(PATH$pipelineLayout);
+    public static final OfInt LAYOUT$set = (OfInt) LAYOUT.select(PATH$set);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

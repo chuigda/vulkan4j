@@ -14,25 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPhysicalDeviceOpticalFlowPropertiesNV} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceOpticalFlowPropertiesNV.html">VkPhysicalDeviceOpticalFlowPropertiesNV</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$supportedOutputGridSizes = ValueLayout.JAVA_INT.withName("supportedOutputGridSizes");
-    public static final OfInt LAYOUT$supportedHintGridSizes = ValueLayout.JAVA_INT.withName("supportedHintGridSizes");
-    public static final OfInt LAYOUT$hintSupported = ValueLayout.JAVA_INT.withName("hintSupported");
-    public static final OfInt LAYOUT$costSupported = ValueLayout.JAVA_INT.withName("costSupported");
-    public static final OfInt LAYOUT$bidirectionalFlowSupported = ValueLayout.JAVA_INT.withName("bidirectionalFlowSupported");
-    public static final OfInt LAYOUT$globalFlowSupported = ValueLayout.JAVA_INT.withName("globalFlowSupported");
-    public static final OfInt LAYOUT$minWidth = ValueLayout.JAVA_INT.withName("minWidth");
-    public static final OfInt LAYOUT$minHeight = ValueLayout.JAVA_INT.withName("minHeight");
-    public static final OfInt LAYOUT$maxWidth = ValueLayout.JAVA_INT.withName("maxWidth");
-    public static final OfInt LAYOUT$maxHeight = ValueLayout.JAVA_INT.withName("maxHeight");
-    public static final OfInt LAYOUT$maxNumRegionsOfInterest = ValueLayout.JAVA_INT.withName("maxNumRegionsOfInterest");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$supportedOutputGridSizes, LAYOUT$supportedHintGridSizes, LAYOUT$hintSupported, LAYOUT$costSupported, LAYOUT$bidirectionalFlowSupported, LAYOUT$globalFlowSupported, LAYOUT$minWidth, LAYOUT$minHeight, LAYOUT$maxWidth, LAYOUT$maxHeight, LAYOUT$maxNumRegionsOfInterest);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkPhysicalDeviceOpticalFlowPropertiesNV {
+        sType(VkStructureType.PHYSICAL_DEVICE_OPTICAL_FLOW_PROPERTIES_NV);
+    }
 
     public static VkPhysicalDeviceOpticalFlowPropertiesNV allocate(Arena arena) {
         return new VkPhysicalDeviceOpticalFlowPropertiesNV(arena.allocate(LAYOUT));
@@ -61,6 +59,23 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("supportedOutputGridSizes"),
+        ValueLayout.JAVA_INT.withName("supportedHintGridSizes"),
+        ValueLayout.JAVA_INT.withName("hintSupported"),
+        ValueLayout.JAVA_INT.withName("costSupported"),
+        ValueLayout.JAVA_INT.withName("bidirectionalFlowSupported"),
+        ValueLayout.JAVA_INT.withName("globalFlowSupported"),
+        ValueLayout.JAVA_INT.withName("minWidth"),
+        ValueLayout.JAVA_INT.withName("minHeight"),
+        ValueLayout.JAVA_INT.withName("maxWidth"),
+        ValueLayout.JAVA_INT.withName("maxHeight"),
+        ValueLayout.JAVA_INT.withName("maxNumRegionsOfInterest")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$supportedOutputGridSizes = PathElement.groupElement("PATH$supportedOutputGridSizes");
@@ -74,6 +89,20 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
     public static final PathElement PATH$maxWidth = PathElement.groupElement("PATH$maxWidth");
     public static final PathElement PATH$maxHeight = PathElement.groupElement("PATH$maxHeight");
     public static final PathElement PATH$maxNumRegionsOfInterest = PathElement.groupElement("PATH$maxNumRegionsOfInterest");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$supportedOutputGridSizes = (OfInt) LAYOUT.select(PATH$supportedOutputGridSizes);
+    public static final OfInt LAYOUT$supportedHintGridSizes = (OfInt) LAYOUT.select(PATH$supportedHintGridSizes);
+    public static final OfInt LAYOUT$hintSupported = (OfInt) LAYOUT.select(PATH$hintSupported);
+    public static final OfInt LAYOUT$costSupported = (OfInt) LAYOUT.select(PATH$costSupported);
+    public static final OfInt LAYOUT$bidirectionalFlowSupported = (OfInt) LAYOUT.select(PATH$bidirectionalFlowSupported);
+    public static final OfInt LAYOUT$globalFlowSupported = (OfInt) LAYOUT.select(PATH$globalFlowSupported);
+    public static final OfInt LAYOUT$minWidth = (OfInt) LAYOUT.select(PATH$minWidth);
+    public static final OfInt LAYOUT$minHeight = (OfInt) LAYOUT.select(PATH$minHeight);
+    public static final OfInt LAYOUT$maxWidth = (OfInt) LAYOUT.select(PATH$maxWidth);
+    public static final OfInt LAYOUT$maxHeight = (OfInt) LAYOUT.select(PATH$maxHeight);
+    public static final OfInt LAYOUT$maxNumRegionsOfInterest = (OfInt) LAYOUT.select(PATH$maxNumRegionsOfInterest);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,17 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDisplayPresentInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDisplayPresentInfoKHR.html">VkDisplayPresentInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDisplayPresentInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final StructLayout LAYOUT$srcRect = VkRect2D.LAYOUT.withName("srcRect");
-    public static final StructLayout LAYOUT$dstRect = VkRect2D.LAYOUT.withName("dstRect");
-    public static final OfInt LAYOUT$persistent = ValueLayout.JAVA_INT.withName("persistent");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$srcRect, LAYOUT$dstRect, LAYOUT$persistent);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkDisplayPresentInfoKHR {
+        sType(VkStructureType.DISPLAY_PRESENT_INFO_KHR);
+    }
 
     public static VkDisplayPresentInfoKHR allocate(Arena arena) {
         return new VkDisplayPresentInfoKHR(arena.allocate(LAYOUT));
@@ -53,11 +59,26 @@ public record VkDisplayPresentInfoKHR(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        VkRect2D.LAYOUT.withName("srcRect"),
+        VkRect2D.LAYOUT.withName("dstRect"),
+        ValueLayout.JAVA_INT.withName("persistent")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$srcRect = PathElement.groupElement("PATH$srcRect");
     public static final PathElement PATH$dstRect = PathElement.groupElement("PATH$dstRect");
     public static final PathElement PATH$persistent = PathElement.groupElement("PATH$persistent");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final StructLayout LAYOUT$srcRect = (StructLayout) LAYOUT.select(PATH$srcRect);
+    public static final StructLayout LAYOUT$dstRect = (StructLayout) LAYOUT.select(PATH$dstRect);
+    public static final OfInt LAYOUT$persistent = (OfInt) LAYOUT.select(PATH$persistent);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

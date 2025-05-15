@@ -14,18 +14,23 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkVideoEncodeAV1GopRemainingFrameInfoKHR} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeAV1GopRemainingFrameInfoKHR.html">VkVideoEncodeAV1GopRemainingFrameInfoKHR</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkVideoEncodeAV1GopRemainingFrameInfoKHR(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$sType = ValueLayout.JAVA_INT.withName("sType");
-    public static final AddressLayout LAYOUT$pNext = ValueLayout.ADDRESS.withName("pNext");
-    public static final OfInt LAYOUT$useGopRemainingFrames = ValueLayout.JAVA_INT.withName("useGopRemainingFrames");
-    public static final OfInt LAYOUT$gopRemainingIntra = ValueLayout.JAVA_INT.withName("gopRemainingIntra");
-    public static final OfInt LAYOUT$gopRemainingPredictive = ValueLayout.JAVA_INT.withName("gopRemainingPredictive");
-    public static final OfInt LAYOUT$gopRemainingBipredictive = ValueLayout.JAVA_INT.withName("gopRemainingBipredictive");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$sType, LAYOUT$pNext, LAYOUT$useGopRemainingFrames, LAYOUT$gopRemainingIntra, LAYOUT$gopRemainingPredictive, LAYOUT$gopRemainingBipredictive);
-    public static final long SIZE = LAYOUT.byteSize();
+    public VkVideoEncodeAV1GopRemainingFrameInfoKHR {
+        sType(VkStructureType.VIDEO_ENCODE_AV1_GOP_REMAINING_FRAME_INFO_KHR);
+    }
 
     public static VkVideoEncodeAV1GopRemainingFrameInfoKHR allocate(Arena arena) {
         return new VkVideoEncodeAV1GopRemainingFrameInfoKHR(arena.allocate(LAYOUT));
@@ -54,12 +59,29 @@ public record VkVideoEncodeAV1GopRemainingFrameInfoKHR(@NotNull MemorySegment se
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("useGopRemainingFrames"),
+        ValueLayout.JAVA_INT.withName("gopRemainingIntra"),
+        ValueLayout.JAVA_INT.withName("gopRemainingPredictive"),
+        ValueLayout.JAVA_INT.withName("gopRemainingBipredictive")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
     public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
     public static final PathElement PATH$useGopRemainingFrames = PathElement.groupElement("PATH$useGopRemainingFrames");
     public static final PathElement PATH$gopRemainingIntra = PathElement.groupElement("PATH$gopRemainingIntra");
     public static final PathElement PATH$gopRemainingPredictive = PathElement.groupElement("PATH$gopRemainingPredictive");
     public static final PathElement PATH$gopRemainingBipredictive = PathElement.groupElement("PATH$gopRemainingBipredictive");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$useGopRemainingFrames = (OfInt) LAYOUT.select(PATH$useGopRemainingFrames);
+    public static final OfInt LAYOUT$gopRemainingIntra = (OfInt) LAYOUT.select(PATH$gopRemainingIntra);
+    public static final OfInt LAYOUT$gopRemainingPredictive = (OfInt) LAYOUT.select(PATH$gopRemainingPredictive);
+    public static final OfInt LAYOUT$gopRemainingBipredictive = (OfInt) LAYOUT.select(PATH$gopRemainingBipredictive);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -14,19 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkAllocationCallbacks} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAllocationCallbacks.html">VkAllocationCallbacks</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements IPointer {
-    public static final AddressLayout LAYOUT$pUserData = ValueLayout.ADDRESS.withName("pUserData");
-    public static final AddressLayout LAYOUT$pfnAllocation = ValueLayout.ADDRESS.withName("pfnAllocation");
-    public static final AddressLayout LAYOUT$pfnReallocation = ValueLayout.ADDRESS.withName("pfnReallocation");
-    public static final AddressLayout LAYOUT$pfnFree = ValueLayout.ADDRESS.withName("pfnFree");
-    public static final AddressLayout LAYOUT$pfnInternalAllocation = ValueLayout.ADDRESS.withName("pfnInternalAllocation");
-    public static final AddressLayout LAYOUT$pfnInternalFree = ValueLayout.ADDRESS.withName("pfnInternalFree");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$pUserData, LAYOUT$pfnAllocation, LAYOUT$pfnReallocation, LAYOUT$pfnFree, LAYOUT$pfnInternalAllocation, LAYOUT$pfnInternalFree);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkAllocationCallbacks allocate(Arena arena) {
         return new VkAllocationCallbacks(arena.allocate(LAYOUT));
     }
@@ -54,12 +55,29 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withName("pUserData"),
+        ValueLayout.ADDRESS.withName("pfnAllocation"),
+        ValueLayout.ADDRESS.withName("pfnReallocation"),
+        ValueLayout.ADDRESS.withName("pfnFree"),
+        ValueLayout.ADDRESS.withName("pfnInternalAllocation"),
+        ValueLayout.ADDRESS.withName("pfnInternalFree")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$pUserData = PathElement.groupElement("PATH$pUserData");
     public static final PathElement PATH$pfnAllocation = PathElement.groupElement("PATH$pfnAllocation");
     public static final PathElement PATH$pfnReallocation = PathElement.groupElement("PATH$pfnReallocation");
     public static final PathElement PATH$pfnFree = PathElement.groupElement("PATH$pfnFree");
     public static final PathElement PATH$pfnInternalAllocation = PathElement.groupElement("PATH$pfnInternalAllocation");
     public static final PathElement PATH$pfnInternalFree = PathElement.groupElement("PATH$pfnInternalFree");
+
+    public static final AddressLayout LAYOUT$pUserData = (AddressLayout) LAYOUT.select(PATH$pUserData);
+    public static final AddressLayout LAYOUT$pfnAllocation = (AddressLayout) LAYOUT.select(PATH$pfnAllocation);
+    public static final AddressLayout LAYOUT$pfnReallocation = (AddressLayout) LAYOUT.select(PATH$pfnReallocation);
+    public static final AddressLayout LAYOUT$pfnFree = (AddressLayout) LAYOUT.select(PATH$pfnFree);
+    public static final AddressLayout LAYOUT$pfnInternalAllocation = (AddressLayout) LAYOUT.select(PATH$pfnInternalAllocation);
+    public static final AddressLayout LAYOUT$pfnInternalFree = (AddressLayout) LAYOUT.select(PATH$pfnInternalFree);
 
     public static final long SIZE$pUserData = LAYOUT$pUserData.byteSize();
     public static final long SIZE$pfnAllocation = LAYOUT$pfnAllocation.byteSize();

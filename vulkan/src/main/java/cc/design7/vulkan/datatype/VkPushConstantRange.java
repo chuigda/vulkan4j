@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkPushConstantRange} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPushConstantRange.html">VkPushConstantRange</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkPushConstantRange(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$stageFlags = ValueLayout.JAVA_INT.withName("stageFlags");
-    public static final OfInt LAYOUT$offset = ValueLayout.JAVA_INT.withName("offset");
-    public static final OfInt LAYOUT$size = ValueLayout.JAVA_INT.withName("size");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$stageFlags, LAYOUT$offset, LAYOUT$size);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkPushConstantRange allocate(Arena arena) {
         return new VkPushConstantRange(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkPushConstantRange(@NotNull MemorySegment segment) implements IPo
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("stageFlags"),
+        ValueLayout.JAVA_INT.withName("offset"),
+        ValueLayout.JAVA_INT.withName("size")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$stageFlags = PathElement.groupElement("PATH$stageFlags");
     public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
     public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
+
+    public static final OfInt LAYOUT$stageFlags = (OfInt) LAYOUT.select(PATH$stageFlags);
+    public static final OfInt LAYOUT$offset = (OfInt) LAYOUT.select(PATH$offset);
+    public static final OfInt LAYOUT$size = (OfInt) LAYOUT.select(PATH$size);
 
     public static final long SIZE$stageFlags = LAYOUT$stageFlags.byteSize();
     public static final long SIZE$offset = LAYOUT$offset.byteSize();

@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkDrawMeshTasksIndirectCommandEXT} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDrawMeshTasksIndirectCommandEXT.html">VkDrawMeshTasksIndirectCommandEXT</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkDrawMeshTasksIndirectCommandEXT(@NotNull MemorySegment segment) implements IPointer {
-    public static final OfInt LAYOUT$groupCountX = ValueLayout.JAVA_INT.withName("groupCountX");
-    public static final OfInt LAYOUT$groupCountY = ValueLayout.JAVA_INT.withName("groupCountY");
-    public static final OfInt LAYOUT$groupCountZ = ValueLayout.JAVA_INT.withName("groupCountZ");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$groupCountX, LAYOUT$groupCountY, LAYOUT$groupCountZ);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkDrawMeshTasksIndirectCommandEXT allocate(Arena arena) {
         return new VkDrawMeshTasksIndirectCommandEXT(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkDrawMeshTasksIndirectCommandEXT(@NotNull MemorySegment segment) 
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("groupCountX"),
+        ValueLayout.JAVA_INT.withName("groupCountY"),
+        ValueLayout.JAVA_INT.withName("groupCountZ")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$groupCountX = PathElement.groupElement("PATH$groupCountX");
     public static final PathElement PATH$groupCountY = PathElement.groupElement("PATH$groupCountY");
     public static final PathElement PATH$groupCountZ = PathElement.groupElement("PATH$groupCountZ");
+
+    public static final OfInt LAYOUT$groupCountX = (OfInt) LAYOUT.select(PATH$groupCountX);
+    public static final OfInt LAYOUT$groupCountY = (OfInt) LAYOUT.select(PATH$groupCountY);
+    public static final OfInt LAYOUT$groupCountZ = (OfInt) LAYOUT.select(PATH$groupCountZ);
 
     public static final long SIZE$groupCountX = LAYOUT$groupCountX.byteSize();
     public static final long SIZE$groupCountY = LAYOUT$groupCountY.byteSize();

@@ -14,16 +14,20 @@ import cc.design7.vulkan.datatype.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
+/// Represents a pointer to a {@code VkClearRect} structure in native memory.
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClearRect.html">VkClearRect</a>
 @ValueBasedCandidate
+@UnsafeConstructor
 public record VkClearRect(@NotNull MemorySegment segment) implements IPointer {
-    public static final StructLayout LAYOUT$rect = VkRect2D.LAYOUT.withName("rect");
-    public static final OfInt LAYOUT$baseArrayLayer = ValueLayout.JAVA_INT.withName("baseArrayLayer");
-    public static final OfInt LAYOUT$layerCount = ValueLayout.JAVA_INT.withName("layerCount");
-
-    public static final MemoryLayout LAYOUT = NativeLayout.structLayout(LAYOUT$rect, LAYOUT$baseArrayLayer, LAYOUT$layerCount);
-    public static final long SIZE = LAYOUT.byteSize();
-
     public static VkClearRect allocate(Arena arena) {
         return new VkClearRect(arena.allocate(LAYOUT));
     }
@@ -51,9 +55,20 @@ public record VkClearRect(@NotNull MemorySegment segment) implements IPointer {
         return ret;
     }
 
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        VkRect2D.LAYOUT.withName("rect"),
+        ValueLayout.JAVA_INT.withName("baseArrayLayer"),
+        ValueLayout.JAVA_INT.withName("layerCount")
+    );
+    public static final long SIZE = LAYOUT.byteSize();
+
     public static final PathElement PATH$rect = PathElement.groupElement("PATH$rect");
     public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("PATH$baseArrayLayer");
     public static final PathElement PATH$layerCount = PathElement.groupElement("PATH$layerCount");
+
+    public static final StructLayout LAYOUT$rect = (StructLayout) LAYOUT.select(PATH$rect);
+    public static final OfInt LAYOUT$baseArrayLayer = (OfInt) LAYOUT.select(PATH$baseArrayLayer);
+    public static final OfInt LAYOUT$layerCount = (OfInt) LAYOUT.select(PATH$layerCount);
 
     public static final long SIZE$rect = LAYOUT$rect.byteSize();
     public static final long SIZE$baseArrayLayer = LAYOUT$baseArrayLayer.byteSize();
