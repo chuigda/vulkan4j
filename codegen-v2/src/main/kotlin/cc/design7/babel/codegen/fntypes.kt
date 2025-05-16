@@ -14,7 +14,7 @@ fun generateFunctionTypedefs(
     +""
     imports("java.lang.foreign.*")
     imports("cc.design7.ffm.NativeLayout")
-    imports("$packageName.datatype")
+    imports("$packageName.datatype.*")
     +""
     +"public final class ${codegenOptions.functionTypeClassName} {"
 

@@ -2,7 +2,7 @@ package cc.design7.vulkan;
 
 import java.lang.foreign.*;
 import cc.design7.ffm.NativeLayout;
-import cc.design7.vulkan.datatype;
+import cc.design7.vulkan.datatype.*;
 
 public final class VkFunctionTypes {
     public static final FunctionDescriptor PFN_vkAllocationFunction = FunctionDescriptor.of(
