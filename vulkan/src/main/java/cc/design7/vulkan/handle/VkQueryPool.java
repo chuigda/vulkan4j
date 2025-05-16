@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import cc.design7.ffm.IPointer;
 import cc.design7.ffm.annotation.*;
 
-/// Represents an opaque handle type {@code VkQueryPool}.
+/// Represents an opaque handle type <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryPool.html"><code>VkQueryPool</code></a>.
 ///
 /// ## Contracts
 ///
@@ -19,10 +19,12 @@ import cc.design7.ffm.annotation.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryPool.html"><code>VkQueryPool</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkQueryPool(@NotNull MemorySegment segment) implements IPointer {
-    /// Represents a pointer to {@code VkQueryPool} handle(s) in native memory.
+    /// Represents a pointer to <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueryPool.html"><code>VkQueryPool</code></a> handle(s) in native memory.
     ///
     /// ## Contracts
     ///

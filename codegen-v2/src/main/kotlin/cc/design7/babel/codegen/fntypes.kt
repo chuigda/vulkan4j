@@ -20,6 +20,11 @@ fun generateFunctionTypedefs(
 
     indent {
         registry.functionTypedefs.values.sortedBy { it.name }.forEach {
+            val seeLink = codegenOptions.seeLinkProvider(it)
+            if (seeLink != null) {
+                +"/// @see $seeLink"
+            }
+
             if (it.result == null) {
                 if (it.params.isEmpty()) {
                     +"public static final FunctionDescriptor ${it.name} = FunctionDescriptor.ofVoid();"
@@ -45,6 +50,7 @@ fun generateFunctionTypedefs(
                 }
                 +");"
             }
+            +""
         }
     }
     +"}"

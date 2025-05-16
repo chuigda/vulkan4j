@@ -13,6 +13,8 @@ import cc.design7.babel.registry.Command
 import cc.design7.babel.registry.Constant
 import cc.design7.babel.registry.Entity
 import cc.design7.babel.registry.Enumeration
+import cc.design7.babel.registry.FunctionTypedef
+import cc.design7.babel.registry.OpaqueHandleTypedef
 import cc.design7.babel.registry.Structure
 import cc.design7.babel.util.render
 import java.io.File
@@ -94,7 +96,7 @@ private fun vulkanDocLinkProvider(entity: Entity) = when(entity) {
             "<a href=\"https://registry.khronos.org/vulkan/specs/latest/man/html/${entity.name.original}.html\"><code>$constantName</code></a>"
         }
     }
-    is Bitmask, is Command, is Enumeration, is Structure -> {
+    is Bitmask, is Command, is Enumeration, is Structure, is OpaqueHandleTypedef, is FunctionTypedef -> {
         val entityName = entity.name.original
         if (entityName.startsWith("StdVideo")) {
             null

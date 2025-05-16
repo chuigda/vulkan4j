@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import cc.design7.ffm.IPointer;
 import cc.design7.ffm.annotation.*;
 
-/// Represents an opaque handle type {@code VkQueue}.
+/// Represents an opaque handle type <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueue.html"><code>VkQueue</code></a>.
 ///
 /// ## Contracts
 ///
@@ -19,10 +19,12 @@ import cc.design7.ffm.annotation.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueue.html"><code>VkQueue</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VkQueue(@NotNull MemorySegment segment) implements IPointer {
-    /// Represents a pointer to {@code VkQueue} handle(s) in native memory.
+    /// Represents a pointer to <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkQueue.html"><code>VkQueue</code></a> handle(s) in native memory.
     ///
     /// ## Contracts
     ///
