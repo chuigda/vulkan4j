@@ -131,6 +131,10 @@ public record VkSwapchainPresentFenceInfoEXT(@NotNull MemorySegment segment) imp
         return new VkFence.Ptr(s);
     }
 
+    public void pFences(@Nullable VkFence.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pFencesRaw(s);
+    }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),

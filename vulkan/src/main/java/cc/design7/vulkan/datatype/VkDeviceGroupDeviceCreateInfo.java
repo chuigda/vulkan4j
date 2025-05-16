@@ -131,6 +131,10 @@ public record VkDeviceGroupDeviceCreateInfo(@NotNull MemorySegment segment) impl
         return new VkPhysicalDevice.Ptr(s);
     }
 
+    public void pPhysicalDevices(@Nullable VkPhysicalDevice.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pPhysicalDevicesRaw(s);
+    }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),

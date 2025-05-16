@@ -95,6 +95,10 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
         return new VkSampler.Ptr(s);
     }
 
+    public void pSampler(@Nullable VkSampler.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSamplerRaw(s);
+    }
 
     public @pointer(comment="VkDescriptorImageInfo*") MemorySegment pCombinedImageSamplerRaw() {
         return segment.get(LAYOUT$pCombinedImageSampler, OFFSET$pCombinedImageSampler);

@@ -154,6 +154,10 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPoi
         return new VkImage.Ptr(s);
     }
 
+    public void pImages(@Nullable VkImage.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pImagesRaw(s);
+    }
 
     public @unsigned int bufferCount() {
         return segment.get(LAYOUT$bufferCount, OFFSET$bufferCount);
@@ -183,6 +187,10 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPoi
         return new VkBuffer.Ptr(s);
     }
 
+    public void pBuffers(@Nullable VkBuffer.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pBuffersRaw(s);
+    }
 
     public @unsigned long tagName() {
         return segment.get(LAYOUT$tagName, OFFSET$tagName);

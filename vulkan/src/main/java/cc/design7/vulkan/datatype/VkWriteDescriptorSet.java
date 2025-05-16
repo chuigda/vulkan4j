@@ -243,6 +243,10 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IP
         return new VkBufferView.Ptr(s);
     }
 
+    public void pTexelBufferView(@Nullable VkBufferView.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pTexelBufferViewRaw(s);
+    }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),

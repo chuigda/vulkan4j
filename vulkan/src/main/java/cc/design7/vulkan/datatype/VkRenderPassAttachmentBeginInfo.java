@@ -131,6 +131,10 @@ public record VkRenderPassAttachmentBeginInfo(@NotNull MemorySegment segment) im
         return new VkImageView.Ptr(s);
     }
 
+    public void pAttachments(@Nullable VkImageView.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pAttachmentsRaw(s);
+    }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),

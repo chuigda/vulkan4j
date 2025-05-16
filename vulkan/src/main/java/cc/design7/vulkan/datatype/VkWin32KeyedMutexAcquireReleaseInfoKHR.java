@@ -136,6 +136,10 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(@NotNull MemorySegment segm
         return new VkDeviceMemory.Ptr(s);
     }
 
+    public void pAcquireSyncs(@Nullable VkDeviceMemory.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pAcquireSyncsRaw(s);
+    }
 
     public @pointer(comment="long*") MemorySegment pAcquireKeysRaw() {
         return segment.get(LAYOUT$pAcquireKeys, OFFSET$pAcquireKeys);
@@ -215,6 +219,10 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(@NotNull MemorySegment segm
         return new VkDeviceMemory.Ptr(s);
     }
 
+    public void pReleaseSyncs(@Nullable VkDeviceMemory.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pReleaseSyncsRaw(s);
+    }
 
     public @pointer(comment="long*") MemorySegment pReleaseKeysRaw() {
         return segment.get(LAYOUT$pReleaseKeys, OFFSET$pReleaseKeys);

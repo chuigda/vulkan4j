@@ -131,6 +131,10 @@ public record VkPipelineBinaryInfoKHR(@NotNull MemorySegment segment) implements
         return new VkPipelineBinaryKHR.Ptr(s);
     }
 
+    public void pPipelineBinaries(@Nullable VkPipelineBinaryKHR.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pPipelineBinariesRaw(s);
+    }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),

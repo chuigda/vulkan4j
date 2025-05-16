@@ -131,6 +131,10 @@ public record VkGeneratedCommandsShaderInfoEXT(@NotNull MemorySegment segment) i
         return new VkShaderEXT.Ptr(s);
     }
 
+    public void pShaders(@Nullable VkShaderEXT.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pShadersRaw(s);
+    }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),

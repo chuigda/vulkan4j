@@ -156,6 +156,10 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         return new VkImageView.Ptr(s);
     }
 
+    public void pAttachments(@Nullable VkImageView.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pAttachmentsRaw(s);
+    }
 
     public @unsigned int width() {
         return segment.get(LAYOUT$width, OFFSET$width);

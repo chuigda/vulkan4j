@@ -122,6 +122,10 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
         return new VkSampler.Ptr(s);
     }
 
+    public void pImmutableSamplers(@Nullable VkSampler.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pImmutableSamplersRaw(s);
+    }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("binding"),

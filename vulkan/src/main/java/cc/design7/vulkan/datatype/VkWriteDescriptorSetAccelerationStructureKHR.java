@@ -131,6 +131,10 @@ public record VkWriteDescriptorSetAccelerationStructureKHR(@NotNull MemorySegmen
         return new VkAccelerationStructureKHR.Ptr(s);
     }
 
+    public void pAccelerationStructures(@Nullable VkAccelerationStructureKHR.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pAccelerationStructuresRaw(s);
+    }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),

@@ -164,6 +164,10 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         return new VkDescriptorSet.Ptr(s);
     }
 
+    public void pDescriptorSets(@Nullable VkDescriptorSet.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDescriptorSetsRaw(s);
+    }
 
     public @unsigned int dynamicOffsetCount() {
         return segment.get(LAYOUT$dynamicOffsetCount, OFFSET$dynamicOffsetCount);

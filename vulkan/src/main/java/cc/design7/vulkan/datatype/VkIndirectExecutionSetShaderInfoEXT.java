@@ -135,6 +135,10 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         return new VkShaderEXT.Ptr(s);
     }
 
+    public void pInitialShaders(@Nullable VkShaderEXT.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pInitialShadersRaw(s);
+    }
 
     public @pointer(comment="VkIndirectExecutionSetShaderLayoutInfoEXT*") MemorySegment pSetLayoutInfosRaw() {
         return segment.get(LAYOUT$pSetLayoutInfos, OFFSET$pSetLayoutInfos);

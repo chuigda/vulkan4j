@@ -135,6 +135,10 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IPoint
         return new VkSemaphore.Ptr(s);
     }
 
+    public void pWaitSemaphores(@Nullable VkSemaphore.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pWaitSemaphoresRaw(s);
+    }
 
     public @unsigned int swapchainCount() {
         return segment.get(LAYOUT$swapchainCount, OFFSET$swapchainCount);
@@ -164,6 +168,10 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IPoint
         return new VkSwapchainKHR.Ptr(s);
     }
 
+    public void pSwapchains(@Nullable VkSwapchainKHR.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSwapchainsRaw(s);
+    }
 
     public @pointer(comment="int*") MemorySegment pImageIndicesRaw() {
         return segment.get(LAYOUT$pImageIndices, OFFSET$pImageIndices);

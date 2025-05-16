@@ -176,6 +176,10 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         return new VkPipeline.Ptr(s);
     }
 
+    public void pPipelines(@Nullable VkPipeline.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pPipelinesRaw(s);
+    }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),

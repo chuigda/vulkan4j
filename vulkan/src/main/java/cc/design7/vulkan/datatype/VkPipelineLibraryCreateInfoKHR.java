@@ -131,6 +131,10 @@ public record VkPipelineLibraryCreateInfoKHR(@NotNull MemorySegment segment) imp
         return new VkPipeline.Ptr(s);
     }
 
+    public void pLibraries(@Nullable VkPipeline.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pLibrariesRaw(s);
+    }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),

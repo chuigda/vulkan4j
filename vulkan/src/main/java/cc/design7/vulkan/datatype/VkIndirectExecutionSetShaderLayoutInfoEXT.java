@@ -131,6 +131,10 @@ public record VkIndirectExecutionSetShaderLayoutInfoEXT(@NotNull MemorySegment s
         return new VkDescriptorSetLayout.Ptr(s);
     }
 
+    public void pSetLayouts(@Nullable VkDescriptorSetLayout.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSetLayoutsRaw(s);
+    }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),

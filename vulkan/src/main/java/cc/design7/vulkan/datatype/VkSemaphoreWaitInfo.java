@@ -141,6 +141,10 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IPo
         return new VkSemaphore.Ptr(s);
     }
 
+    public void pSemaphores(@Nullable VkSemaphore.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSemaphoresRaw(s);
+    }
 
     public @pointer(comment="long*") MemorySegment pValuesRaw() {
         return segment.get(LAYOUT$pValues, OFFSET$pValues);

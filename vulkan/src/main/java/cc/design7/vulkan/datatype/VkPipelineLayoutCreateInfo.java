@@ -142,6 +142,10 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         return new VkDescriptorSetLayout.Ptr(s);
     }
 
+    public void pSetLayouts(@Nullable VkDescriptorSetLayout.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSetLayoutsRaw(s);
+    }
 
     public @unsigned int pushConstantRangeCount() {
         return segment.get(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount);

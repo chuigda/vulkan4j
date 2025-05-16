@@ -3,233 +3,216 @@ package cc.design7.babel.codegen.accessor
 import cc.design7.babel.codegen.LayoutField
 import cc.design7.babel.codegen.defun
 import cc.design7.babel.ctype.*
-import cc.design7.babel.util.Doc
-import cc.design7.babel.util.DocList
 import cc.design7.babel.util.buildDoc
 
-fun generatePtrAccessor(type: CPointerType, member: LayoutField.Typed): Doc =
-    when (type.pointee) {
-        is CVoidType -> generatePVoidAccessor(type, member)
-        is CPointerType -> generatePPAccessor(type.pointee, member)
-        is CEnumType -> generatePEnumAccessor(type.pointee, member)
-        is CNonRefType -> generatePNonRefAccessor(type.pointee, member)
-        is CHandleType -> generatePHandleAccessor(type.pointee, member)
-        is CStructType -> generatePStructureAccessor(type.pointee, member)
-        is CArrayType -> TODO()
-    }
+fun generatePtrAccessor(type: CPointerType, member: LayoutField.Typed) = when (type.pointee) {
+    is CVoidType -> generatePVoidAccessor(type, member)
+    is CPointerType -> generatePPAccessor(type.pointee, member)
+    is CEnumType -> generatePEnumAccessor(type.pointee, member)
+    is CNonRefType -> generatePNonRefAccessor(type.pointee, member)
+    is CHandleType -> generatePHandleAccessor(type.pointee, member)
+    is CStructType -> generatePStructureAccessor(type.pointee, member)
+    is CArrayType -> TODO()
+}
 
-private fun DocList.makeGet(annotation: String, member: LayoutField.Typed, raw: Boolean = false) {
-    val postfix = if (raw) "Raw" else ""
-    defun("public", "$annotation MemorySegment", "${member.name}$postfix") {
+private fun generatePVoidAccessor(type: CPointerType, member: LayoutField.Typed) = buildDoc {
+    val comment = type.comment ?: "void*"
+    val annotation = "@pointer(comment=\"$comment\")"
+
+    defun("public", "$annotation MemorySegment", member.name) {
         +"return segment.get(${member.layoutName}, ${member.offsetName});"
     }
-}
+    +""
 
-
-private fun DocList.makeTrivialGet(comment: String, member: LayoutField.Typed, raw: Boolean = false) {
-    makeGet("@pointer(comment=\"$comment\")", member, raw)
-}
-
-private fun DocList.makeSet(annotation: String, member: LayoutField.Typed, raw: Boolean = false) {
-    val postfix = if (raw) "Raw" else ""
-    defun("public", "void", "${member.name}$postfix", "$annotation MemorySegment value") {
+    defun("public", "void", member.name, "$annotation MemorySegment value") {
         +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
+    }
+    +""
+
+    defun("public", "void", member.name, "@Nullable IPointer pointer") {
+        +"${member.name}(pointer != null ? pointer.segment() : MemorySegment.NULL);"
     }
 }
 
-private fun DocList.makeTrivialSet(comment: String, member: LayoutField.Typed, raw: Boolean = false) {
-    makeSet("@pointer(comment=\"$comment\")", member, raw)
-}
-
-/**
- * a [makeTrivialGet] with `raw = true` must be generate first
- */
-private fun DocList.makeRawGet(returnType: String, con: String, member: LayoutField.Typed) {
+private fun generatePPAccessor(pointee: CPointerType, member: LayoutField.Typed) = buildDoc {
+    val comment = (pointee.comment ?: "void*") + "*"
+    val annotation = "@pointer(comment=\"$comment\")"
     val rawName = "${member.name}Raw"
-    defun("public", "@Nullable $returnType", member.name) {
+
+    defun("public", "$annotation MemorySegment", rawName) {
+        +"return segment.get(${member.layoutName}, ${member.offsetName});"
+    }
+    +""
+
+    defun("public", "void", rawName, "$annotation MemorySegment value") {
+        +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
+    }
+    +""
+
+    +"/// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up"
+    +"/// to user to track the size of the buffer, and use {@link PointerPtr#reinterpret} to set the size before"
+    +"/// actually reading from or writing to the buffer."
+    defun("public", "@Nullable ${"PointerPtr"}", member.name) {
         +"MemorySegment s = $rawName();"
         "if (s.equals(MemorySegment.NULL))" {
             +"return null;"
         }
-
-        +"return new $con(s);"
+        +"return new ${"PointerPtr"}(s);"
     }
-}
+    +""
 
-/**
- * a [makeTrivialSet] with `raw = true` must be generate first
- */
-private fun DocList.makeRawSet(type: String, member: LayoutField.Typed) {
-    val rawName = "${member.name}Raw"
-    defun("public", "void", member.name, "@Nullable $type value") {
+    defun("public", "void", member.name, "@Nullable ${"PointerPtr"} value") {
         +"MemorySegment s = value == null ? MemorySegment.NULL : value.segment();"
         +"$rawName(s);"
     }
 }
 
-private fun generatePVoidAccessor(type: CPointerType, member: LayoutField.Typed): Doc {
-    val comment = type.comment ?: "void*"
-    return buildDoc {
-        makeTrivialGet(comment, member)
-        +""
-        makeTrivialSet(comment, member)
-        +""
+private fun generatePNonRefAccessor(pointee: CNonRefType, member: LayoutField.Typed) = buildDoc {
+    val annotation = "@pointer(comment=\"${pointee.cType}*\")"
+    val rawName = "${member.name}Raw"
 
-        defun("public", "void", member.name, "@Nullable IPointer pointer") {
-            +"${member.name}(pointer != null ? pointer.segment() : MemorySegment.NULL);"
+    defun("public", "$annotation MemorySegment", rawName) {
+        +"return segment.get(${member.layoutName}, ${member.offsetName});"
+    }
+    +""
+
+    defun("public", "void", rawName, "$annotation MemorySegment value") {
+        +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
+    }
+    +""
+
+    +"/// Note: the returned {@link ${pointee.jPtrTypeNoAnnotation}} does not have correct "
+    +"/// {@link ${pointee.jPtrTypeNoAnnotation}#size} property. It's up to user to track the size of the buffer,"
+    +"/// and use {@link ${pointee.jPtrTypeNoAnnotation}#reinterpret} to set the size before actually reading from or"
+    +"/// writing to the buffer."
+
+    defun("public", "@Nullable ${pointee.jPtrType}", member.name) {
+        +"MemorySegment s = $rawName();"
+        "if (s.equals(MemorySegment.NULL))" {
+            +"return null;"
         }
+
+        +"return new ${pointee.jPtrTypeNoAnnotation}(s);"
+    }
+    +""
+
+    defun("public", "void", member.name, "@Nullable ${pointee.jPtrType} value") {
+        +"MemorySegment s = value == null ? MemorySegment.NULL : value.segment();"
+        +"$rawName(s);"
     }
 }
 
-private fun generatePPAccessor(pointee: CPointerType, member: LayoutField.Typed): Doc {
-    val comment = (pointee.comment ?: "void*") + "*"
+private fun generatePHandleAccessor(pointee: CHandleType, member: LayoutField.Typed) = buildDoc {
+    val annotation = "@pointer(comment=\"${pointee.name}*\")"
+    val rawName = "${member.name}Raw"
 
-    return buildDoc {
-        makeTrivialGet(comment, member, true)
+    defun("public", "$annotation MemorySegment", rawName) {
+        +"return segment.get(${member.layoutName}, ${member.offsetName});"
+    }
+    +""
 
-        +""
+    defun("public", "void", rawName, "$annotation MemorySegment value") {
+        +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
+    }
+    +""
 
-        makeTrivialSet(comment, member, true)
+    +"/// Note: the returned {@link ${pointee.name}.Ptr} does not have correct {@link ${pointee.name}.Ptr#size}"
+    +"/// property. It's up to user to track the size of the buffer, and use"
+    +"/// {@link ${pointee.name}.Ptr#reinterpret} to set the size before actually reading from or writing to the"
+    +"/// buffer."
+    defun("public", "@Nullable ${"${pointee.name}.Ptr"}", member.name) {
+        +"MemorySegment s = $rawName();"
+        "if (s.equals(MemorySegment.NULL))" {
+            +"return null;"
+        }
+        +"return new ${"${pointee.name}.Ptr"}(s);"
+    }
 
-        +""
-        +"/// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up"
-        +"/// to user to track the size of the buffer, and use {@link PointerPtr#reinterpret} to set the size before"
-        +"/// actually reading from or writing to the buffer."
-        makeRawGet("PointerPtr", "PointerPtr", member)
+    +""
 
-        +""
-
-        makeRawSet("PointerPtr", member)
+    defun("public", "void", member.name, "@Nullable ${"${pointee.name}.Ptr"} value") {
+        +"MemorySegment s = value == null ? MemorySegment.NULL : value.segment();"
+        +"$rawName(s);"
     }
 }
 
-private fun generatePNonRefAccessor(pointee: CNonRefType, member: LayoutField.Typed): Doc {
-    val comment = "${pointee.cType}*"
+private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField.Typed) = buildDoc {
+    val annotation = "@pointer(comment=\"${pointee.name}*\")"
+    val rawName = "${member.name}Raw"
 
-    return buildDoc {
-        makeTrivialGet(comment, member, true)
-        +""
-        makeTrivialSet(comment, member, true)
-        +""
-        +"/// Note: the returned {@link ${pointee.jPtrTypeNoAnnotation}} does not have correct "
-        +"/// {@link ${pointee.jPtrTypeNoAnnotation}#size} property. It's up to user to track the size of the buffer,"
-        +"/// and use {@link ${pointee.jPtrTypeNoAnnotation}#reinterpret} to set the size before actually reading from or"
-        +"/// writing to the buffer."
-        makeRawGet(pointee.jPtrType, pointee.jPtrTypeNoAnnotation, member)
+    defun("public", "$annotation MemorySegment", rawName) {
+        +"return segment.get(${member.layoutName}, ${member.offsetName});"
+    }
+    +""
 
+    defun("public", "void", rawName, "$annotation MemorySegment value") {
+        +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
+    }
+    +""
+
+
+    defun("public", "@Nullable ${pointee.name}", member.name) {
+        +"MemorySegment s = $rawName();"
+        "if (s.equals(MemorySegment.NULL))" {
+            +"return null;"
+        }
+        +"return new ${pointee.name}(s);"
+    }
+    +""
+
+    defun("public", "void", member.name, "@Nullable ${pointee.name} value") {
+        +"MemorySegment s = value == null ? MemorySegment.NULL : value.segment();"
+        +"$rawName(s);"
+    }
+    +""
+
+    defun("@unsafe public", "@Nullable ${pointee.name}[]", member.name, "int assumedCount") {
+        +"MemorySegment s = ${member.rawName}();"
+        "if (s.equals(MemorySegment.NULL))" {
+            +"return null;"
+        }
         +""
-        makeRawSet(pointee.jPtrType, member)
+
+        +"s = s.reinterpret(assumedCount * ${pointee.name}.BYTES);"
+        +"${pointee.name}[] ret = new ${pointee.name}[assumedCount];"
+        "for (int i = 0; i < assumedCount; i ++)" {
+            +"ret[i] = new ${pointee.name}(s.asSlice(i * ${pointee.name}.BYTES, ${pointee.name}.BYTES));"
+        }
+
+        +"return ret;"
     }
 }
 
-private fun generatePHandleAccessor(pointee: CHandleType, member: LayoutField.Typed): Doc {
-    val comment = "${pointee.cType}*"
+private fun generatePEnumAccessor(pointee: CEnumType, member: LayoutField.Typed) = buildDoc {
+    val annotation = "@pointer(target=${pointee.name}.class)"
+    val rawName = "${member.name}Raw"
 
-    return buildDoc {
-        makeTrivialGet(comment, member, true)
-        +""
-        makeTrivialSet(comment, member, true)
-        +""
-        +"/// Note: the returned {@link ${pointee.name}.Ptr} does not have correct {@link ${pointee.name}.Ptr#size}"
-        +"/// property. It's up to user to track the size of the buffer, and use"
-        +"/// {@link ${pointee.name}.Ptr#reinterpret} to set the size before actually reading from or writing to the"
-        +"/// buffer."
-        makeRawGet("${pointee.name}.Ptr", "${pointee.name}.Ptr", member)
-        +""
-        // TODO: no raw setter?
+    defun("public", "$annotation MemorySegment", rawName) {
+        +"return segment.get(${member.layoutName}, ${member.offsetName});"
     }
-}
+    +""
 
-private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField.Typed): Doc {
-    """
-        public @pointer(comment="${pointee.name}*") MemorySegment ${member.name}Raw() {
-            return segment.get(LAYOUT$${member.name}, OFFSET$${member.name});
-        }
-
-        public void ${member.name}Raw(@pointer(comment="${pointee.name}*") MemorySegment value) {
-            segment.set(LAYOUT$${member.name}, OFFSET$${member.name}, value);
-        }
-        
-        public @Nullable ${pointee.name} ${member.name}() {
-            MemorySegment s = ${member.name}Raw();
-            if (s.equals(MemorySegment.NULL)) {
-                return null;
-            }
-            return new ${pointee.name}(s);
-        }
-        
-        /// Note: this function is {@link unsafe} because it's up to caller to provide the correct count of elements.
-        @unsafe
-        public @Nullable ${pointee.name}[] ${member.name}(int assumedCount) {
-            MemorySegment s = ${member.name}Raw();
-            if (s.equals(MemorySegment.NULL)) {
-                return null;
-            }
-
-            s = s.reinterpret(assumedCount * ${pointee.name}.BYTES);
-            ${pointee.name}[] ret = new ${pointee.name}[assumedCount];
-            for (int i = 0; i < assumedCount; i++) {
-                ret[i] = new ${pointee.name}(s.asSlice(i * ${pointee.name}.BYTES, ${pointee.name}.BYTES));
-            }
-            return ret;
-        }
-
-        public void ${member.name}(@Nullable ${pointee.name} value) {
-            MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-            ${member.name}Raw(s);
-        }
-    """.trimIndent()
-
-    val comment = "${pointee.name}*"
-    return buildDoc {
-        makeTrivialGet(comment, member, true)
-        +""
-        makeTrivialSet(comment, member, true)
-        +""
-        makeRawGet(pointee.name, pointee.name, member)
-        +""
-        makeRawSet(pointee.name, member)
-        +""
-
-        defun("@unsafe public", "@Nullable ${pointee.name}[]", member.name, "int assumedCount") {
-            +"MemorySegment s = ${member.rawName}();"
-            "if (s.equals(MemorySegment.NULL))" {
-                +"return null;"
-            }
-
-            +""
-            +"s = s.reinterpret(assumedCount * ${pointee.name}.BYTES);"
-            +"${pointee.name}[] ret = new ${pointee.name}[assumedCount];"
-            "for (int i = 0; i < assumedCount; i ++)" {
-                +"ret[i] = new ${pointee.name}(s.asSlice(i * ${pointee.name}.BYTES, ${pointee.name}.BYTES));"
-            }
-
-            +"return ret;"
-        }
+    defun("public", "void", rawName, "$annotation MemorySegment value") {
+        +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
     }
-}
-private fun generatePEnumAccessor(pointee: CEnumType, member: LayoutField.Typed): Doc {
-    return buildDoc {
-        val annotation = "@pointer(target=${pointee.name}.class)"
-        makeGet(annotation, member, true)
-        +""
-        makeSet(annotation, member, true)
-        +""
-        +"/// Note: the returned {@link ${pointee.jPtrTypeNoAnnotation}} does not have correct"
-        +"/// {@link ${pointee.jPtrTypeNoAnnotation}#size} property. It's up to user to track the size of the buffer,"
-        +"/// and use {@link ${pointee.jPtrTypeNoAnnotation}#reinterpret} to set the size before actually reading fro"
-        +"/// or writing to the buffer."
-        makeRawGet(pointee.jPtrType, pointee.jPtrTypeNoAnnotation, member)
-        +""
-        makeRawSet(pointee.jPtrType, member)
-    }
-}
+    +""
 
-fun generateGenericPtrAccessor(type: CPointerType, member: LayoutField.Typed): Doc {
-    return buildDoc {
-        val comment = type.cType
-        makeTrivialGet(comment, member, true)
-        +""
-        makeTrivialSet(comment, member, true)
+    +"/// Note: the returned {@link ${pointee.jPtrTypeNoAnnotation}} does not have correct"
+    +"/// {@link ${pointee.jPtrTypeNoAnnotation}#size} property. It's up to user to track the size of the buffer,"
+    +"/// and use {@link ${pointee.jPtrTypeNoAnnotation}#reinterpret} to set the size before actually reading fro"
+    +"/// or writing to the buffer."
+    defun("public", "@Nullable ${pointee.jPtrType}", member.name) {
+        +"MemorySegment s = $rawName();"
+        "if (s.equals(MemorySegment.NULL))" {
+            +"return null;"
+        }
+
+        +"return new ${pointee.jPtrTypeNoAnnotation}(s);"
+    }
+    +""
+
+    defun("public", "void", member.name, "@Nullable ${pointee.jPtrType} value") {
+        +"MemorySegment s = value == null ? MemorySegment.NULL : value.segment();"
+        +"$rawName(s);"
     }
 }

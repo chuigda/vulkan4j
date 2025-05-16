@@ -139,6 +139,10 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPoint
         return new VkSemaphore.Ptr(s);
     }
 
+    public void pWaitSemaphores(@Nullable VkSemaphore.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pWaitSemaphoresRaw(s);
+    }
 
     public @unsigned int bufferBindCount() {
         return segment.get(LAYOUT$bufferBindCount, OFFSET$bufferBindCount);
@@ -297,6 +301,10 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPoint
         return new VkSemaphore.Ptr(s);
     }
 
+    public void pSignalSemaphores(@Nullable VkSemaphore.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSignalSemaphoresRaw(s);
+    }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),

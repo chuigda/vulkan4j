@@ -136,6 +136,10 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IPointer {
         return new VkSemaphore.Ptr(s);
     }
 
+    public void pWaitSemaphores(@Nullable VkSemaphore.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pWaitSemaphoresRaw(s);
+    }
 
     public @pointer(target=VkPipelineStageFlags.class) MemorySegment pWaitDstStageMaskRaw() {
         return segment.get(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask);
@@ -190,6 +194,10 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IPointer {
         return new VkCommandBuffer.Ptr(s);
     }
 
+    public void pCommandBuffers(@Nullable VkCommandBuffer.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pCommandBuffersRaw(s);
+    }
 
     public @unsigned int signalSemaphoreCount() {
         return segment.get(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount);
@@ -219,6 +227,10 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IPointer {
         return new VkSemaphore.Ptr(s);
     }
 
+    public void pSignalSemaphores(@Nullable VkSemaphore.Ptr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSignalSemaphoresRaw(s);
+    }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
