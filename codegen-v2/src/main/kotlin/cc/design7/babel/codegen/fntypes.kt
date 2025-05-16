@@ -19,7 +19,7 @@ fun generateFunctionTypedefs(
     +"public final class ${codegenOptions.functionTypeClassName} {"
 
     indent {
-        registry.functionTypedefs.values.sortedBy { it.name }.forEach {
+        registry.functionTypedefs.values.sortedBy { it.name }.forEachIndexed { idx, it ->
             val seeLink = codegenOptions.seeLinkProvider(it)
             if (seeLink != null) {
                 +"/// @see $seeLink"
@@ -50,7 +50,10 @@ fun generateFunctionTypedefs(
                 }
                 +");"
             }
-            +""
+
+            if (idx != registry.functionTypedefs.values.size - 1) {
+                +""
+            }
         }
     }
     +"}"
