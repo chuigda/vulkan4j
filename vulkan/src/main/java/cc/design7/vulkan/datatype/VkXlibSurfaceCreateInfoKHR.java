@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
@@ -120,18 +120,18 @@ public record VkXlibSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$dpy, OFFSET$dpy, value);
     }
 
-    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
-    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the size before
+    /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
+    /// to user to track the size of the buffer, and use {@link PointerPtr#reinterpret} to set the size before
     /// actually reading from or writing to the buffer.
-    public @Nullable PointerBuffer dpy() {
+    public @Nullable PointerPtr dpy() {
         MemorySegment s = dpyRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new PointerBuffer(s);
+        return new PointerPtr(s);
     }
 
-    public void dpy(@Nullable PointerBuffer value) {
+    public void dpy(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         dpyRaw(s);
     }
@@ -168,7 +168,7 @@ public record VkXlibSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impleme
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$dpy = LAYOUT$dpy.byteSize();
-    public static final long SIZE$window = NativeLayout.C_INT.byteSize();
+    public static final long SIZE$window = NativeLayout.C_LONG.byteSize();
 
     public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
     public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);

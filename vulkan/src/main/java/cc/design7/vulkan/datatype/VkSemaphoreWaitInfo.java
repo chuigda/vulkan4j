@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
@@ -129,16 +129,16 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IPo
         segment.set(LAYOUT$pSemaphores, OFFSET$pSemaphores, value);
     }
 
-    /// Note: the returned {@link VkSemaphore.Buffer} does not have correct {@link VkSemaphore.Buffer#size}
+    /// Note: the returned {@link VkSemaphore.Ptr} does not have correct {@link VkSemaphore.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkSemaphore.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// {@link VkSemaphore.Ptr#reinterpret} to set the size before actually reading from or writing to the
     /// buffer.
-    public @Nullable VkSemaphore.Buffer pSemaphores() {
+    public @Nullable VkSemaphore.Ptr pSemaphores() {
         MemorySegment s = pSemaphoresRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new VkSemaphore.Buffer(s);
+        return new VkSemaphore.Ptr(s);
     }
 
 

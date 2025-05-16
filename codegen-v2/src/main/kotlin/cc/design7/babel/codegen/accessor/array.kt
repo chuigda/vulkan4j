@@ -94,13 +94,13 @@ private fun generateHandleArrayAccessor(elementType: CHandleType, member: Layout
 
     +""
 
-    defun("public", "${elementType.name}.Buffer", member.name) {
-        +"return new ${elementType.name}.Buffer($rawName());"
+    defun("public", "${elementType.name}.Ptr", member.name) {
+        +"return new ${elementType.name}.Ptr($rawName());"
     }
 
     +""
 
-    defun("public", "void", member.name, "${elementType.name}.Buffer value") {
+    defun("public", "void", member.name, "${elementType.name}.Ptr value") {
         +"MemorySegment.copy(value.segment(), 0, segment, ${member.offsetName}, ${member.sizeName});"
     }
 

@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 

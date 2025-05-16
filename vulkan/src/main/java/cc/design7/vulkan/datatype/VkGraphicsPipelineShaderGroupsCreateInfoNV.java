@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
@@ -164,16 +164,16 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         segment.set(LAYOUT$pPipelines, OFFSET$pPipelines, value);
     }
 
-    /// Note: the returned {@link VkPipeline.Buffer} does not have correct {@link VkPipeline.Buffer#size}
+    /// Note: the returned {@link VkPipeline.Ptr} does not have correct {@link VkPipeline.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkPipeline.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// {@link VkPipeline.Ptr#reinterpret} to set the size before actually reading from or writing to the
     /// buffer.
-    public @Nullable VkPipeline.Buffer pPipelines() {
+    public @Nullable VkPipeline.Ptr pPipelines() {
         MemorySegment s = pPipelinesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new VkPipeline.Buffer(s);
+        return new VkPipeline.Ptr(s);
     }
 
 

@@ -66,6 +66,22 @@ public final class NativeLayout {
         }
     }
 
+    public static @unsigned long readCSizeT(@NotNull MemorySegment segment, long offset) {
+        if (C_SIZE_T == ValueLayout.JAVA_INT) {
+            return segment.get(ValueLayout.JAVA_INT, offset);
+        } else {
+            return segment.get(ValueLayout.JAVA_LONG, offset);
+        }
+    }
+
+    public static void writeCSizeT(@NotNull MemorySegment segment, long offset, @unsigned long value) {
+        if (C_SIZE_T == ValueLayout.JAVA_INT) {
+            segment.set(ValueLayout.JAVA_INT, offset, (int) value);
+        } else {
+            segment.set(ValueLayout.JAVA_LONG, offset, value);
+        }
+    }
+
     /// Unlike {@link MemoryLayout#structLayout MemoryLayout.structLayout}, this function will
     /// automatically compute and add padding to the layout to ensure that each element is properly
     /// aligned. The resulting layout should be the same with a C struct layout.

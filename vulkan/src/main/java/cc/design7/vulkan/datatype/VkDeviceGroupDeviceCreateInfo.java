@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
@@ -119,16 +119,16 @@ public record VkDeviceGroupDeviceCreateInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pPhysicalDevices, OFFSET$pPhysicalDevices, value);
     }
 
-    /// Note: the returned {@link VkPhysicalDevice.Buffer} does not have correct {@link VkPhysicalDevice.Buffer#size}
+    /// Note: the returned {@link VkPhysicalDevice.Ptr} does not have correct {@link VkPhysicalDevice.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkPhysicalDevice.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// {@link VkPhysicalDevice.Ptr#reinterpret} to set the size before actually reading from or writing to the
     /// buffer.
-    public @Nullable VkPhysicalDevice.Buffer pPhysicalDevices() {
+    public @Nullable VkPhysicalDevice.Ptr pPhysicalDevices() {
         MemorySegment s = pPhysicalDevicesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new VkPhysicalDevice.Buffer(s);
+        return new VkPhysicalDevice.Ptr(s);
     }
 
 

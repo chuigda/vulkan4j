@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
@@ -123,16 +123,16 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
 
-    /// Note: the returned {@link VkSemaphore.Buffer} does not have correct {@link VkSemaphore.Buffer#size}
+    /// Note: the returned {@link VkSemaphore.Ptr} does not have correct {@link VkSemaphore.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkSemaphore.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// {@link VkSemaphore.Ptr#reinterpret} to set the size before actually reading from or writing to the
     /// buffer.
-    public @Nullable VkSemaphore.Buffer pWaitSemaphores() {
+    public @Nullable VkSemaphore.Ptr pWaitSemaphores() {
         MemorySegment s = pWaitSemaphoresRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new VkSemaphore.Buffer(s);
+        return new VkSemaphore.Ptr(s);
     }
 
 
@@ -152,16 +152,16 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pSwapchains, OFFSET$pSwapchains, value);
     }
 
-    /// Note: the returned {@link VkSwapchainKHR.Buffer} does not have correct {@link VkSwapchainKHR.Buffer#size}
+    /// Note: the returned {@link VkSwapchainKHR.Ptr} does not have correct {@link VkSwapchainKHR.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkSwapchainKHR.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// {@link VkSwapchainKHR.Ptr#reinterpret} to set the size before actually reading from or writing to the
     /// buffer.
-    public @Nullable VkSwapchainKHR.Buffer pSwapchains() {
+    public @Nullable VkSwapchainKHR.Ptr pSwapchains() {
         MemorySegment s = pSwapchainsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new VkSwapchainKHR.Buffer(s);
+        return new VkSwapchainKHR.Ptr(s);
     }
 
 

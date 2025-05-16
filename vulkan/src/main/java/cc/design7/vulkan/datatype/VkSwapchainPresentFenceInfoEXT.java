@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
@@ -119,16 +119,16 @@ public record VkSwapchainPresentFenceInfoEXT(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pFences, OFFSET$pFences, value);
     }
 
-    /// Note: the returned {@link VkFence.Buffer} does not have correct {@link VkFence.Buffer#size}
+    /// Note: the returned {@link VkFence.Ptr} does not have correct {@link VkFence.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkFence.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// {@link VkFence.Ptr#reinterpret} to set the size before actually reading from or writing to the
     /// buffer.
-    public @Nullable VkFence.Buffer pFences() {
+    public @Nullable VkFence.Ptr pFences() {
         MemorySegment s = pFencesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new VkFence.Buffer(s);
+        return new VkFence.Ptr(s);
     }
 
 

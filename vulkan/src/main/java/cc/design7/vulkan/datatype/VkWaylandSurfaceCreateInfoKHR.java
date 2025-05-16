@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
@@ -120,18 +120,18 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$display, OFFSET$display, value);
     }
 
-    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
-    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the size before
+    /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
+    /// to user to track the size of the buffer, and use {@link PointerPtr#reinterpret} to set the size before
     /// actually reading from or writing to the buffer.
-    public @Nullable PointerBuffer display() {
+    public @Nullable PointerPtr display() {
         MemorySegment s = displayRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new PointerBuffer(s);
+        return new PointerPtr(s);
     }
 
-    public void display(@Nullable PointerBuffer value) {
+    public void display(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         displayRaw(s);
     }
@@ -144,18 +144,18 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$surface, OFFSET$surface, value);
     }
 
-    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
-    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the size before
+    /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
+    /// to user to track the size of the buffer, and use {@link PointerPtr#reinterpret} to set the size before
     /// actually reading from or writing to the buffer.
-    public @Nullable PointerBuffer surface() {
+    public @Nullable PointerPtr surface() {
         MemorySegment s = surfaceRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new PointerBuffer(s);
+        return new PointerPtr(s);
     }
 
-    public void surface(@Nullable PointerBuffer value) {
+    public void surface(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         surfaceRaw(s);
     }

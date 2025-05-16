@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
@@ -119,16 +119,16 @@ public record VkWriteDescriptorSetAccelerationStructureKHR(@NotNull MemorySegmen
         segment.set(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures, value);
     }
 
-    /// Note: the returned {@link VkAccelerationStructureKHR.Buffer} does not have correct {@link VkAccelerationStructureKHR.Buffer#size}
+    /// Note: the returned {@link VkAccelerationStructureKHR.Ptr} does not have correct {@link VkAccelerationStructureKHR.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkAccelerationStructureKHR.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// {@link VkAccelerationStructureKHR.Ptr#reinterpret} to set the size before actually reading from or writing to the
     /// buffer.
-    public @Nullable VkAccelerationStructureKHR.Buffer pAccelerationStructures() {
+    public @Nullable VkAccelerationStructureKHR.Ptr pAccelerationStructures() {
         MemorySegment s = pAccelerationStructuresRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new VkAccelerationStructureKHR.Buffer(s);
+        return new VkAccelerationStructureKHR.Ptr(s);
     }
 
 

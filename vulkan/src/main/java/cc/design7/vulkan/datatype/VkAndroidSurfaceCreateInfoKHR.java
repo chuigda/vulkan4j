@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
@@ -119,18 +119,18 @@ public record VkAndroidSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$window, OFFSET$window, value);
     }
 
-    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
-    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the size before
+    /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
+    /// to user to track the size of the buffer, and use {@link PointerPtr#reinterpret} to set the size before
     /// actually reading from or writing to the buffer.
-    public @Nullable PointerBuffer window() {
+    public @Nullable PointerPtr window() {
         MemorySegment s = windowRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new PointerBuffer(s);
+        return new PointerPtr(s);
     }
 
-    public void window(@Nullable PointerBuffer value) {
+    public void window(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         windowRaw(s);
     }

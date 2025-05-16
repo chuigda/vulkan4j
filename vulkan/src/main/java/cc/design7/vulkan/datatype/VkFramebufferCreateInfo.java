@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
@@ -144,16 +144,16 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 
-    /// Note: the returned {@link VkImageView.Buffer} does not have correct {@link VkImageView.Buffer#size}
+    /// Note: the returned {@link VkImageView.Ptr} does not have correct {@link VkImageView.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkImageView.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// {@link VkImageView.Ptr#reinterpret} to set the size before actually reading from or writing to the
     /// buffer.
-    public @Nullable VkImageView.Buffer pAttachments() {
+    public @Nullable VkImageView.Ptr pAttachments() {
         MemorySegment s = pAttachmentsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new VkImageView.Buffer(s);
+        return new VkImageView.Ptr(s);
     }
 
 

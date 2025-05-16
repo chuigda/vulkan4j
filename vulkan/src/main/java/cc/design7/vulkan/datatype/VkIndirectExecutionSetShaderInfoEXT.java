@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
@@ -123,16 +123,16 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$pInitialShaders, OFFSET$pInitialShaders, value);
     }
 
-    /// Note: the returned {@link VkShaderEXT.Buffer} does not have correct {@link VkShaderEXT.Buffer#size}
+    /// Note: the returned {@link VkShaderEXT.Ptr} does not have correct {@link VkShaderEXT.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkShaderEXT.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// {@link VkShaderEXT.Ptr#reinterpret} to set the size before actually reading from or writing to the
     /// buffer.
-    public @Nullable VkShaderEXT.Buffer pInitialShaders() {
+    public @Nullable VkShaderEXT.Ptr pInitialShaders() {
         MemorySegment s = pInitialShadersRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new VkShaderEXT.Buffer(s);
+        return new VkShaderEXT.Ptr(s);
     }
 
 

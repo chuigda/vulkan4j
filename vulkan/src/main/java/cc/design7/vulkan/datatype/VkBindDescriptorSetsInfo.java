@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
@@ -152,16 +152,16 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets, value);
     }
 
-    /// Note: the returned {@link VkDescriptorSet.Buffer} does not have correct {@link VkDescriptorSet.Buffer#size}
+    /// Note: the returned {@link VkDescriptorSet.Ptr} does not have correct {@link VkDescriptorSet.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkDescriptorSet.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// {@link VkDescriptorSet.Ptr#reinterpret} to set the size before actually reading from or writing to the
     /// buffer.
-    public @Nullable VkDescriptorSet.Buffer pDescriptorSets() {
+    public @Nullable VkDescriptorSet.Ptr pDescriptorSets() {
         MemorySegment s = pDescriptorSetsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new VkDescriptorSet.Buffer(s);
+        return new VkDescriptorSet.Ptr(s);
     }
 
 

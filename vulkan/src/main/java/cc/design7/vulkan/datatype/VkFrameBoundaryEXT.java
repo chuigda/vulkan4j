@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
@@ -142,16 +142,16 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pImages, OFFSET$pImages, value);
     }
 
-    /// Note: the returned {@link VkImage.Buffer} does not have correct {@link VkImage.Buffer#size}
+    /// Note: the returned {@link VkImage.Ptr} does not have correct {@link VkImage.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkImage.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// {@link VkImage.Ptr#reinterpret} to set the size before actually reading from or writing to the
     /// buffer.
-    public @Nullable VkImage.Buffer pImages() {
+    public @Nullable VkImage.Ptr pImages() {
         MemorySegment s = pImagesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new VkImage.Buffer(s);
+        return new VkImage.Ptr(s);
     }
 
 
@@ -171,16 +171,16 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPoi
         segment.set(LAYOUT$pBuffers, OFFSET$pBuffers, value);
     }
 
-    /// Note: the returned {@link VkBuffer.Buffer} does not have correct {@link VkBuffer.Buffer#size}
+    /// Note: the returned {@link VkBuffer.Ptr} does not have correct {@link VkBuffer.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkBuffer.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// {@link VkBuffer.Ptr#reinterpret} to set the size before actually reading from or writing to the
     /// buffer.
-    public @Nullable VkBuffer.Buffer pBuffers() {
+    public @Nullable VkBuffer.Ptr pBuffers() {
         MemorySegment s = pBuffersRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new VkBuffer.Buffer(s);
+        return new VkBuffer.Ptr(s);
     }
 
 

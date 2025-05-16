@@ -92,14 +92,14 @@ private fun generatePPAccessor(pointee: CPointerType, member: LayoutField.Typed)
         makeTrivialSet(comment, member, true)
 
         +""
-        +"/// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up"
-        +"/// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the size before"
+        +"/// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up"
+        +"/// to user to track the size of the buffer, and use {@link PointerPtr#reinterpret} to set the size before"
         +"/// actually reading from or writing to the buffer."
-        makeRawGet("PointerBuffer", "PointerBuffer", member)
+        makeRawGet("PointerPtr", "PointerPtr", member)
 
         +""
 
-        makeRawSet("PointerBuffer", member)
+        makeRawSet("PointerPtr", member)
     }
 }
 
@@ -130,11 +130,11 @@ private fun generatePHandleAccessor(pointee: CHandleType, member: LayoutField.Ty
         +""
         makeTrivialSet(comment, member, true)
         +""
-        +"/// Note: the returned {@link ${pointee.name}.Buffer} does not have correct {@link ${pointee.name}.Buffer#size}"
+        +"/// Note: the returned {@link ${pointee.name}.Ptr} does not have correct {@link ${pointee.name}.Ptr#size}"
         +"/// property. It's up to user to track the size of the buffer, and use"
-        +"/// {@link ${pointee.name}.Buffer#reinterpret} to set the size before actually reading from or writing to the"
+        +"/// {@link ${pointee.name}.Ptr#reinterpret} to set the size before actually reading from or writing to the"
         +"/// buffer."
-        makeRawGet("${pointee.name}.Buffer", "${pointee.name}.Buffer", member)
+        makeRawGet("${pointee.name}.Ptr", "${pointee.name}.Ptr", member)
         +""
         // TODO: no raw setter?
     }
@@ -152,7 +152,7 @@ private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField
         
         public @Nullable ${pointee.name} ${member.name}() {
             MemorySegment s = ${member.name}Raw();
-            if (s.address() == 0) {
+            if (s.equals(MemorySegment.NULL)) {
                 return null;
             }
             return new ${pointee.name}(s);
@@ -162,7 +162,7 @@ private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField
         @unsafe
         public @Nullable ${pointee.name}[] ${member.name}(int assumedCount) {
             MemorySegment s = ${member.name}Raw();
-            if (s.address() == 0) {
+            if (s.equals(MemorySegment.NULL)) {
                 return null;
             }
 

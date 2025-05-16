@@ -4,6 +4,7 @@ import cc.design7.babel.codegen.CodegenOptions
 import cc.design7.babel.codegen.generateBitmask
 import cc.design7.babel.codegen.generateConstants
 import cc.design7.babel.codegen.generateEnumeration
+import cc.design7.babel.codegen.generateHandle
 import cc.design7.babel.codegen.generateStructure
 import cc.design7.babel.extract.vulkan.extractVulkanRegistry
 import cc.design7.babel.registry.Bitmask
@@ -60,6 +61,12 @@ internal fun vulkanMain() {
         } catch (e: Throwable) {
             log.severe("Failed to generate union ${unions.name}: ${e.message}")
         }
+    }
+
+    for (handle in vulkanRegistry.opaqueHandleTypedefs.values) {
+        val handleDoc = generateHandle(vulkanRegistry, handle, codegenOptions)
+        File("vulkan/src/main/java/cc/design7/vulkan/handle/${handle.name}.java")
+            .writeText(render(handleDoc))
     }
 }
 

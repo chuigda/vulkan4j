@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
@@ -124,16 +124,16 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         segment.set(LAYOUT$pAcquireSyncs, OFFSET$pAcquireSyncs, value);
     }
 
-    /// Note: the returned {@link VkDeviceMemory.Buffer} does not have correct {@link VkDeviceMemory.Buffer#size}
+    /// Note: the returned {@link VkDeviceMemory.Ptr} does not have correct {@link VkDeviceMemory.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkDeviceMemory.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// {@link VkDeviceMemory.Ptr#reinterpret} to set the size before actually reading from or writing to the
     /// buffer.
-    public @Nullable VkDeviceMemory.Buffer pAcquireSyncs() {
+    public @Nullable VkDeviceMemory.Ptr pAcquireSyncs() {
         MemorySegment s = pAcquireSyncsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new VkDeviceMemory.Buffer(s);
+        return new VkDeviceMemory.Ptr(s);
     }
 
 
@@ -203,16 +203,16 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         segment.set(LAYOUT$pReleaseSyncs, OFFSET$pReleaseSyncs, value);
     }
 
-    /// Note: the returned {@link VkDeviceMemory.Buffer} does not have correct {@link VkDeviceMemory.Buffer#size}
+    /// Note: the returned {@link VkDeviceMemory.Ptr} does not have correct {@link VkDeviceMemory.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkDeviceMemory.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// {@link VkDeviceMemory.Ptr#reinterpret} to set the size before actually reading from or writing to the
     /// buffer.
-    public @Nullable VkDeviceMemory.Buffer pReleaseSyncs() {
+    public @Nullable VkDeviceMemory.Ptr pReleaseSyncs() {
         MemorySegment s = pReleaseSyncsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new VkDeviceMemory.Buffer(s);
+        return new VkDeviceMemory.Ptr(s);
     }
 
 

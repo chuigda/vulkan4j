@@ -50,7 +50,7 @@ fun generateStructure(
 ): Doc = buildDoc {
     val packageName = codegenOptions.packageName
     val className = structure.name.toString()
-    val originalStructName = structure.name.original
+    val originalTypeName = structure.name.original
     val layouts = mutableListOf<LayoutField>()
 
     lowerMemberTypes(
@@ -61,7 +61,7 @@ fun generateStructure(
     )
 
     /// region import
-    +"package ${codegenOptions.packageName}.datatype;"
+    +"package $packageName.datatype;"
     +""
     imports("java.lang.foreign.*")
     imports("java.lang.foreign.ValueLayout.*", true)
@@ -80,8 +80,8 @@ fun generateStructure(
         imports("$packageName.bitmask.*")
     }
 
-    if (registryBase.structures.isNotEmpty()) {
-        imports("$packageName.datatype.*")
+    if (registryBase.opaqueHandleTypedefs.isNotEmpty()) {
+        imports("$packageName.handle.*")
     }
 
     if (registryBase.enumerations.isNotEmpty()) {
@@ -104,14 +104,14 @@ fun generateStructure(
     if (seeLink != null) {
         +"/// Represents a pointer to a $seeLink structure in native memory."
     } else {
-        +"/// Represents a pointer to a {@code $className} structure in native memory."
+        +"/// Represents a pointer to a {@code $originalTypeName} structure in native memory."
     }
     +"///"
 
     +"/// ## Structure"
     +"///"
     +"/// {@snippet lang=c :"
-    +"/// typedef struct $originalStructName {"
+    +"/// typedef struct $originalTypeName {"
     structure.members.forEach {
         val maybeOptionalComment = if (it.optional) " // optional" else ""
         if (it.bits != null) {
@@ -120,7 +120,7 @@ fun generateStructure(
             +"///     ${it.type.cDisplay} ${it.name};$maybeOptionalComment"
         }
     }
-    +"/// } $originalStructName;"
+    +"/// } $originalTypeName;"
     +"/// }"
     +"///"
 
@@ -269,7 +269,9 @@ fun generateStructure(
             if (layout is LayoutField.Typed) {
                 val value = if (layout.type is CPlatformDependentIntType) {
                     if (layout.type.cType == "size_t") "NativeLayout.C_SIZE_T.byteSize()"
-                    else "NativeLayout.C_INT.byteSize()"
+                    else if (layout.type.cType == "long") "NativeLayout.C_LONG.byteSize()"
+                    else if (layout.type.cType == "int") "Integer.BYTES"
+                    else error("Unsupported type ${layout.type.cType}")
                 } else "${layout.layoutName}.byteSize()"
 
                 defConst("long", layout.sizeName, value)

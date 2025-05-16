@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
@@ -231,16 +231,16 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView, value);
     }
 
-    /// Note: the returned {@link VkBufferView.Buffer} does not have correct {@link VkBufferView.Buffer#size}
+    /// Note: the returned {@link VkBufferView.Ptr} does not have correct {@link VkBufferView.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkBufferView.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// {@link VkBufferView.Ptr#reinterpret} to set the size before actually reading from or writing to the
     /// buffer.
-    public @Nullable VkBufferView.Buffer pTexelBufferView() {
+    public @Nullable VkBufferView.Ptr pTexelBufferView() {
         MemorySegment s = pTexelBufferViewRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new VkBufferView.Buffer(s);
+        return new VkBufferView.Ptr(s);
     }
 
 

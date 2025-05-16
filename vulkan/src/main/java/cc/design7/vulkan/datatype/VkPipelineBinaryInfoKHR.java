@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
@@ -119,16 +119,16 @@ public record VkPipelineBinaryInfoKHR(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pPipelineBinaries, OFFSET$pPipelineBinaries, value);
     }
 
-    /// Note: the returned {@link VkPipelineBinaryKHR.Buffer} does not have correct {@link VkPipelineBinaryKHR.Buffer#size}
+    /// Note: the returned {@link VkPipelineBinaryKHR.Ptr} does not have correct {@link VkPipelineBinaryKHR.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkPipelineBinaryKHR.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// {@link VkPipelineBinaryKHR.Ptr#reinterpret} to set the size before actually reading from or writing to the
     /// buffer.
-    public @Nullable VkPipelineBinaryKHR.Buffer pPipelineBinaries() {
+    public @Nullable VkPipelineBinaryKHR.Ptr pPipelineBinaries() {
         MemorySegment s = pPipelineBinariesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new VkPipelineBinaryKHR.Buffer(s);
+        return new VkPipelineBinaryKHR.Ptr(s);
     }
 
 

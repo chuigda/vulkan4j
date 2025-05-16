@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
@@ -127,16 +127,16 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
 
-    /// Note: the returned {@link VkSemaphore.Buffer} does not have correct {@link VkSemaphore.Buffer#size}
+    /// Note: the returned {@link VkSemaphore.Ptr} does not have correct {@link VkSemaphore.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkSemaphore.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// {@link VkSemaphore.Ptr#reinterpret} to set the size before actually reading from or writing to the
     /// buffer.
-    public @Nullable VkSemaphore.Buffer pWaitSemaphores() {
+    public @Nullable VkSemaphore.Ptr pWaitSemaphores() {
         MemorySegment s = pWaitSemaphoresRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new VkSemaphore.Buffer(s);
+        return new VkSemaphore.Ptr(s);
     }
 
 
@@ -285,16 +285,16 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPoint
         segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
     }
 
-    /// Note: the returned {@link VkSemaphore.Buffer} does not have correct {@link VkSemaphore.Buffer#size}
+    /// Note: the returned {@link VkSemaphore.Ptr} does not have correct {@link VkSemaphore.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
-    /// {@link VkSemaphore.Buffer#reinterpret} to set the size before actually reading from or writing to the
+    /// {@link VkSemaphore.Ptr#reinterpret} to set the size before actually reading from or writing to the
     /// buffer.
-    public @Nullable VkSemaphore.Buffer pSignalSemaphores() {
+    public @Nullable VkSemaphore.Ptr pSignalSemaphores() {
         MemorySegment s = pSignalSemaphoresRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new VkSemaphore.Buffer(s);
+        return new VkSemaphore.Ptr(s);
     }
 
 

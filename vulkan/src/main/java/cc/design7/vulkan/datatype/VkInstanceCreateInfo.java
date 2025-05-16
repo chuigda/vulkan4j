@@ -10,7 +10,7 @@ import cc.design7.ffm.NativeLayout;
 import cc.design7.ffm.annotation.*;
 import cc.design7.ffm.ptr.*;
 import cc.design7.vulkan.bitmask.*;
-import cc.design7.vulkan.datatype.*;
+import cc.design7.vulkan.handle.*;
 import cc.design7.vulkan.enumtype.*;
 import static cc.design7.vulkan.VkConstants.*;
 
@@ -166,18 +166,18 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames, value);
     }
 
-    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
-    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the size before
+    /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
+    /// to user to track the size of the buffer, and use {@link PointerPtr#reinterpret} to set the size before
     /// actually reading from or writing to the buffer.
-    public @Nullable PointerBuffer ppEnabledLayerNames() {
+    public @Nullable PointerPtr ppEnabledLayerNames() {
         MemorySegment s = ppEnabledLayerNamesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new PointerBuffer(s);
+        return new PointerPtr(s);
     }
 
-    public void ppEnabledLayerNames(@Nullable PointerBuffer value) {
+    public void ppEnabledLayerNames(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         ppEnabledLayerNamesRaw(s);
     }
@@ -198,18 +198,18 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames, value);
     }
 
-    /// Note: the returned {@link PointerBuffer} does not have correct {@link PointerBuffer#size} property. It's up
-    /// to user to track the size of the buffer, and use {@link PointerBuffer#reinterpret} to set the size before
+    /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
+    /// to user to track the size of the buffer, and use {@link PointerPtr#reinterpret} to set the size before
     /// actually reading from or writing to the buffer.
-    public @Nullable PointerBuffer ppEnabledExtensionNames() {
+    public @Nullable PointerPtr ppEnabledExtensionNames() {
         MemorySegment s = ppEnabledExtensionNamesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new PointerBuffer(s);
+        return new PointerPtr(s);
     }
 
-    public void ppEnabledExtensionNames(@Nullable PointerBuffer value) {
+    public void ppEnabledExtensionNames(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         ppEnabledExtensionNamesRaw(s);
     }
