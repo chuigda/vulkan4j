@@ -83,4 +83,7 @@ public final class VkFunctionTypes {
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/PFN_vkVoidFunction.html"><code>PFN_vkVoidFunction</code></a>
     public static final FunctionDescriptor PFN_vkVoidFunction = FunctionDescriptor.ofVoid();
+
+    /// Constructing this class is nonsense so the constructor is made private.
+    private VkFunctionTypes() {}
 }

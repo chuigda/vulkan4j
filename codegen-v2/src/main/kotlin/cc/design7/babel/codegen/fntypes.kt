@@ -50,11 +50,10 @@ fun generateFunctionTypedefs(
                 }
                 +");"
             }
-
-            if (idx != registry.functionTypedefs.values.size - 1) {
-                +""
-            }
+            +""
         }
+
+        +prohibitUserConstruct(codegenOptions.functionTypeClassName)
     }
     +"}"
 }
