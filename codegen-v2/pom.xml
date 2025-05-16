@@ -86,11 +86,5 @@
             <artifactId>kotlin-stdlib</artifactId>
             <version>2.1.20</version>
         </dependency>
-        <dependency>
-            <groupId>cc.design7</groupId>
-            <artifactId>codegen</artifactId>
-            <version>1.14.514</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
 </project>
