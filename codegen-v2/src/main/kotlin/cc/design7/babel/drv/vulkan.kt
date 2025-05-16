@@ -4,6 +4,7 @@ import cc.design7.babel.codegen.CodegenOptions
 import cc.design7.babel.codegen.generateBitmask
 import cc.design7.babel.codegen.generateConstants
 import cc.design7.babel.codegen.generateEnumeration
+import cc.design7.babel.codegen.generateFunctionTypedefs
 import cc.design7.babel.codegen.generateHandle
 import cc.design7.babel.codegen.generateStructure
 import cc.design7.babel.extract.vulkan.extractVulkanRegistry
@@ -23,6 +24,7 @@ internal fun vulkanMain() {
         packageName = "cc.design7.vulkan",
         extraImport = mutableListOf(),
         constantClassName = "VkConstants",
+        functionTypeClassName = "VkFunctionTypes",
         refRegistries = emptyList(),
         seeLinkProvider = ::vulkanDocLinkProvider
     )
@@ -30,6 +32,10 @@ internal fun vulkanMain() {
     val constantsDoc = generateConstants(vulkanRegistry, codegenOptions)
     File("vulkan/src/main/java/cc/design7/vulkan/${codegenOptions.constantClassName}.java")
         .writeText(render(constantsDoc))
+
+    val functionTypeDoc = generateFunctionTypedefs(vulkanRegistry, codegenOptions)
+    File("vulkan/src/main/java/cc/design7/vulkan/${codegenOptions.functionTypeClassName}.java")
+        .writeText(render(functionTypeDoc))
 
     for (bitmask in vulkanRegistry.bitmasks.values) {
         val bitmaskDoc = generateBitmask(vulkanRegistry, bitmask, codegenOptions)

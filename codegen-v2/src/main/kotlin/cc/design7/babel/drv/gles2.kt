@@ -12,6 +12,7 @@ fun gles2Main() {
         packageName = "cc.design7.gles2",
         extraImport = mutableListOf(),
         constantClassName = "GLES2Constants",
+        functionTypeClassName = "GLES2FunctionTypes",
         refRegistries = emptyList(),
         seeLinkProvider = ::gles2DocLinkProvider
     )
