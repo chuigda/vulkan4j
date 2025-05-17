@@ -124,11 +124,11 @@ public record VkDescriptorSetAllocateInfo(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount, value);
     }
 
-    public @pointer(comment="VkDescriptorSetLayout*") MemorySegment pSetLayoutsRaw() {
+    public @pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {
         return segment.get(LAYOUT$pSetLayouts, OFFSET$pSetLayouts);
     }
 
-    public void pSetLayoutsRaw(@pointer(comment="VkDescriptorSetLayout*") MemorySegment value) {
+    public void pSetLayoutsRaw(@pointer(target=VkDescriptorSetLayout.class) MemorySegment value) {
         segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
     }
 

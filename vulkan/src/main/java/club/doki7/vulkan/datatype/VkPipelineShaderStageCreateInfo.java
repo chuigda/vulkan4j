@@ -159,11 +159,11 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         pNameRaw(s);
     }
 
-    public @pointer(comment="VkSpecializationInfo*") MemorySegment pSpecializationInfoRaw() {
+    public @pointer(target=VkSpecializationInfo.class) MemorySegment pSpecializationInfoRaw() {
         return segment.get(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo);
     }
 
-    public void pSpecializationInfoRaw(@pointer(comment="VkSpecializationInfo*") MemorySegment value) {
+    public void pSpecializationInfoRaw(@pointer(target=VkSpecializationInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo, value);
     }
 

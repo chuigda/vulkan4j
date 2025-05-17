@@ -75,11 +75,11 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IPoi
         segment.set(LAYOUT$rectangleCount, OFFSET$rectangleCount, value);
     }
 
-    public @pointer(comment="VkRectLayerKHR*") MemorySegment pRectanglesRaw() {
+    public @pointer(target=VkRectLayerKHR.class) MemorySegment pRectanglesRaw() {
         return segment.get(LAYOUT$pRectangles, OFFSET$pRectangles);
     }
 
-    public void pRectanglesRaw(@pointer(comment="VkRectLayerKHR*") MemorySegment value) {
+    public void pRectanglesRaw(@pointer(target=VkRectLayerKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pRectangles, OFFSET$pRectangles, value);
     }
 

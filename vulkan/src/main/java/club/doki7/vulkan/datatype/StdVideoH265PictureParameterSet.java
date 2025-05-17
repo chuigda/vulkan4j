@@ -371,11 +371,11 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$reserved3, OFFSET$reserved3, value);
     }
 
-    public @pointer(comment="StdVideoH265ScalingLists*") MemorySegment pScalingListsRaw() {
+    public @pointer(target=StdVideoH265ScalingLists.class) MemorySegment pScalingListsRaw() {
         return segment.get(LAYOUT$pScalingLists, OFFSET$pScalingLists);
     }
 
-    public void pScalingListsRaw(@pointer(comment="StdVideoH265ScalingLists*") MemorySegment value) {
+    public void pScalingListsRaw(@pointer(target=StdVideoH265ScalingLists.class) MemorySegment value) {
         segment.set(LAYOUT$pScalingLists, OFFSET$pScalingLists, value);
     }
 
@@ -406,11 +406,11 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public @pointer(comment="StdVideoH265PredictorPaletteEntries*") MemorySegment pPredictorPaletteEntriesRaw() {
+    public @pointer(target=StdVideoH265PredictorPaletteEntries.class) MemorySegment pPredictorPaletteEntriesRaw() {
         return segment.get(LAYOUT$pPredictorPaletteEntries, OFFSET$pPredictorPaletteEntries);
     }
 
-    public void pPredictorPaletteEntriesRaw(@pointer(comment="StdVideoH265PredictorPaletteEntries*") MemorySegment value) {
+    public void pPredictorPaletteEntriesRaw(@pointer(target=StdVideoH265PredictorPaletteEntries.class) MemorySegment value) {
         segment.set(LAYOUT$pPredictorPaletteEntries, OFFSET$pPredictorPaletteEntries, value);
     }
 

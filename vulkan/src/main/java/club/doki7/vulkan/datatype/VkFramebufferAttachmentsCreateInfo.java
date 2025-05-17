@@ -111,11 +111,11 @@ public record VkFramebufferAttachmentsCreateInfo(@NotNull MemorySegment segment)
         segment.set(LAYOUT$attachmentImageInfoCount, OFFSET$attachmentImageInfoCount, value);
     }
 
-    public @pointer(comment="VkFramebufferAttachmentImageInfo*") MemorySegment pAttachmentImageInfosRaw() {
+    public @pointer(target=VkFramebufferAttachmentImageInfo.class) MemorySegment pAttachmentImageInfosRaw() {
         return segment.get(LAYOUT$pAttachmentImageInfos, OFFSET$pAttachmentImageInfos);
     }
 
-    public void pAttachmentImageInfosRaw(@pointer(comment="VkFramebufferAttachmentImageInfo*") MemorySegment value) {
+    public void pAttachmentImageInfosRaw(@pointer(target=VkFramebufferAttachmentImageInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pAttachmentImageInfos, OFFSET$pAttachmentImageInfos, value);
     }
 

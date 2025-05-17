@@ -142,11 +142,11 @@ public record VkCopyImageToMemoryInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
     }
 
-    public @pointer(comment="VkImageToMemoryCopy*") MemorySegment pRegionsRaw() {
+    public @pointer(target=VkImageToMemoryCopy.class) MemorySegment pRegionsRaw() {
         return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
     }
 
-    public void pRegionsRaw(@pointer(comment="VkImageToMemoryCopy*") MemorySegment value) {
+    public void pRegionsRaw(@pointer(target=VkImageToMemoryCopy.class) MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 

@@ -104,11 +104,11 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="VkPipelineBinaryKeysAndDataKHR*") MemorySegment pKeysAndDataInfoRaw() {
+    public @pointer(target=VkPipelineBinaryKeysAndDataKHR.class) MemorySegment pKeysAndDataInfoRaw() {
         return segment.get(LAYOUT$pKeysAndDataInfo, OFFSET$pKeysAndDataInfo);
     }
 
-    public void pKeysAndDataInfoRaw(@pointer(comment="VkPipelineBinaryKeysAndDataKHR*") MemorySegment value) {
+    public void pKeysAndDataInfoRaw(@pointer(target=VkPipelineBinaryKeysAndDataKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pKeysAndDataInfo, OFFSET$pKeysAndDataInfo, value);
     }
 
@@ -151,11 +151,11 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pipeline, OFFSET$pipeline, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="VkPipelineCreateInfoKHR*") MemorySegment pPipelineCreateInfoRaw() {
+    public @pointer(target=VkPipelineCreateInfoKHR.class) MemorySegment pPipelineCreateInfoRaw() {
         return segment.get(LAYOUT$pPipelineCreateInfo, OFFSET$pPipelineCreateInfo);
     }
 
-    public void pPipelineCreateInfoRaw(@pointer(comment="VkPipelineCreateInfoKHR*") MemorySegment value) {
+    public void pPipelineCreateInfoRaw(@pointer(target=VkPipelineCreateInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pPipelineCreateInfo, OFFSET$pPipelineCreateInfo, value);
     }
 

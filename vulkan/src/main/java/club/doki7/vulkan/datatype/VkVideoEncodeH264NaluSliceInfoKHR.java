@@ -111,11 +111,11 @@ public record VkVideoEncodeH264NaluSliceInfoKHR(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$constantQp, OFFSET$constantQp, value);
     }
 
-    public @pointer(comment="StdVideoEncodeH264SliceHeader*") MemorySegment pStdSliceHeaderRaw() {
+    public @pointer(target=StdVideoEncodeH264SliceHeader.class) MemorySegment pStdSliceHeaderRaw() {
         return segment.get(LAYOUT$pStdSliceHeader, OFFSET$pStdSliceHeader);
     }
 
-    public void pStdSliceHeaderRaw(@pointer(comment="StdVideoEncodeH264SliceHeader*") MemorySegment value) {
+    public void pStdSliceHeaderRaw(@pointer(target=StdVideoEncodeH264SliceHeader.class) MemorySegment value) {
         segment.set(LAYOUT$pStdSliceHeader, OFFSET$pStdSliceHeader, value);
     }
 

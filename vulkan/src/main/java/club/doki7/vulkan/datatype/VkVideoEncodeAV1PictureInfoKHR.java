@@ -132,11 +132,11 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$constantQIndex, OFFSET$constantQIndex, value);
     }
 
-    public @pointer(comment="StdVideoEncodeAV1PictureInfo*") MemorySegment pStdPictureInfoRaw() {
+    public @pointer(target=StdVideoEncodeAV1PictureInfo.class) MemorySegment pStdPictureInfoRaw() {
         return segment.get(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo);
     }
 
-    public void pStdPictureInfoRaw(@pointer(comment="StdVideoEncodeAV1PictureInfo*") MemorySegment value) {
+    public void pStdPictureInfoRaw(@pointer(target=StdVideoEncodeAV1PictureInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo, value);
     }
 

@@ -134,11 +134,11 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPoi
         segment.set(LAYOUT$imageCount, OFFSET$imageCount, value);
     }
 
-    public @pointer(comment="VkImage*") MemorySegment pImagesRaw() {
+    public @pointer(target=VkImage.class) MemorySegment pImagesRaw() {
         return segment.get(LAYOUT$pImages, OFFSET$pImages);
     }
 
-    public void pImagesRaw(@pointer(comment="VkImage*") MemorySegment value) {
+    public void pImagesRaw(@pointer(target=VkImage.class) MemorySegment value) {
         segment.set(LAYOUT$pImages, OFFSET$pImages, value);
     }
 
@@ -167,11 +167,11 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPoi
         segment.set(LAYOUT$bufferCount, OFFSET$bufferCount, value);
     }
 
-    public @pointer(comment="VkBuffer*") MemorySegment pBuffersRaw() {
+    public @pointer(target=VkBuffer.class) MemorySegment pBuffersRaw() {
         return segment.get(LAYOUT$pBuffers, OFFSET$pBuffers);
     }
 
-    public void pBuffersRaw(@pointer(comment="VkBuffer*") MemorySegment value) {
+    public void pBuffersRaw(@pointer(target=VkBuffer.class) MemorySegment value) {
         segment.set(LAYOUT$pBuffers, OFFSET$pBuffers, value);
     }
 

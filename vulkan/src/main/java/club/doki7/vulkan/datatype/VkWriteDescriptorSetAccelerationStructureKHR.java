@@ -111,11 +111,11 @@ public record VkWriteDescriptorSetAccelerationStructureKHR(@NotNull MemorySegmen
         segment.set(LAYOUT$accelerationStructureCount, OFFSET$accelerationStructureCount, value);
     }
 
-    public @pointer(comment="VkAccelerationStructureKHR*") MemorySegment pAccelerationStructuresRaw() {
+    public @pointer(target=VkAccelerationStructureKHR.class) MemorySegment pAccelerationStructuresRaw() {
         return segment.get(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures);
     }
 
-    public void pAccelerationStructuresRaw(@pointer(comment="VkAccelerationStructureKHR*") MemorySegment value) {
+    public void pAccelerationStructuresRaw(@pointer(target=VkAccelerationStructureKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures, value);
     }
 

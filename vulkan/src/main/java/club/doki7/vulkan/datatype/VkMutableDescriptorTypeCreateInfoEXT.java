@@ -111,11 +111,11 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$mutableDescriptorTypeListCount, OFFSET$mutableDescriptorTypeListCount, value);
     }
 
-    public @pointer(comment="VkMutableDescriptorTypeListEXT*") MemorySegment pMutableDescriptorTypeListsRaw() {
+    public @pointer(target=VkMutableDescriptorTypeListEXT.class) MemorySegment pMutableDescriptorTypeListsRaw() {
         return segment.get(LAYOUT$pMutableDescriptorTypeLists, OFFSET$pMutableDescriptorTypeLists);
     }
 
-    public void pMutableDescriptorTypeListsRaw(@pointer(comment="VkMutableDescriptorTypeListEXT*") MemorySegment value) {
+    public void pMutableDescriptorTypeListsRaw(@pointer(target=VkMutableDescriptorTypeListEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pMutableDescriptorTypeLists, OFFSET$pMutableDescriptorTypeLists, value);
     }
 

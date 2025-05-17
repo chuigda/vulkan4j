@@ -126,11 +126,11 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(comment="VkVideoProfileInfoKHR*") MemorySegment pVideoProfileRaw() {
+    public @pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pVideoProfileRaw() {
         return segment.get(LAYOUT$pVideoProfile, OFFSET$pVideoProfile);
     }
 
-    public void pVideoProfileRaw(@pointer(comment="VkVideoProfileInfoKHR*") MemorySegment value) {
+    public void pVideoProfileRaw(@pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pVideoProfile, OFFSET$pVideoProfile, value);
     }
 
@@ -201,11 +201,11 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$maxActiveReferencePictures, OFFSET$maxActiveReferencePictures, value);
     }
 
-    public @pointer(comment="VkExtensionProperties*") MemorySegment pStdHeaderVersionRaw() {
+    public @pointer(target=VkExtensionProperties.class) MemorySegment pStdHeaderVersionRaw() {
         return segment.get(LAYOUT$pStdHeaderVersion, OFFSET$pStdHeaderVersion);
     }
 
-    public void pStdHeaderVersionRaw(@pointer(comment="VkExtensionProperties*") MemorySegment value) {
+    public void pStdHeaderVersionRaw(@pointer(target=VkExtensionProperties.class) MemorySegment value) {
         segment.set(LAYOUT$pStdHeaderVersion, OFFSET$pStdHeaderVersion, value);
     }
 

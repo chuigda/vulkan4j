@@ -154,11 +154,11 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$streamCount, OFFSET$streamCount, value);
     }
 
-    public @pointer(comment="VkIndirectCommandsStreamNV*") MemorySegment pStreamsRaw() {
+    public @pointer(target=VkIndirectCommandsStreamNV.class) MemorySegment pStreamsRaw() {
         return segment.get(LAYOUT$pStreams, OFFSET$pStreams);
     }
 
-    public void pStreamsRaw(@pointer(comment="VkIndirectCommandsStreamNV*") MemorySegment value) {
+    public void pStreamsRaw(@pointer(target=VkIndirectCommandsStreamNV.class) MemorySegment value) {
         segment.set(LAYOUT$pStreams, OFFSET$pStreams, value);
     }
 

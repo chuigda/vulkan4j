@@ -124,11 +124,11 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
     }
 
-    public @pointer(comment="VkAttachmentDescription*") MemorySegment pAttachmentsRaw() {
+    public @pointer(target=VkAttachmentDescription.class) MemorySegment pAttachmentsRaw() {
         return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
     }
 
-    public void pAttachmentsRaw(@pointer(comment="VkAttachmentDescription*") MemorySegment value) {
+    public void pAttachmentsRaw(@pointer(target=VkAttachmentDescription.class) MemorySegment value) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 
@@ -167,11 +167,11 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$subpassCount, OFFSET$subpassCount, value);
     }
 
-    public @pointer(comment="VkSubpassDescription*") MemorySegment pSubpassesRaw() {
+    public @pointer(target=VkSubpassDescription.class) MemorySegment pSubpassesRaw() {
         return segment.get(LAYOUT$pSubpasses, OFFSET$pSubpasses);
     }
 
-    public void pSubpassesRaw(@pointer(comment="VkSubpassDescription*") MemorySegment value) {
+    public void pSubpassesRaw(@pointer(target=VkSubpassDescription.class) MemorySegment value) {
         segment.set(LAYOUT$pSubpasses, OFFSET$pSubpasses, value);
     }
 
@@ -210,11 +210,11 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$dependencyCount, OFFSET$dependencyCount, value);
     }
 
-    public @pointer(comment="VkSubpassDependency*") MemorySegment pDependenciesRaw() {
+    public @pointer(target=VkSubpassDependency.class) MemorySegment pDependenciesRaw() {
         return segment.get(LAYOUT$pDependencies, OFFSET$pDependencies);
     }
 
-    public void pDependenciesRaw(@pointer(comment="VkSubpassDependency*") MemorySegment value) {
+    public void pDependenciesRaw(@pointer(target=VkSubpassDependency.class) MemorySegment value) {
         segment.set(LAYOUT$pDependencies, OFFSET$pDependencies, value);
     }
 

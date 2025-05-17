@@ -120,11 +120,11 @@ public record VkDescriptorSetLayoutCreateInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$bindingCount, OFFSET$bindingCount, value);
     }
 
-    public @pointer(comment="VkDescriptorSetLayoutBinding*") MemorySegment pBindingsRaw() {
+    public @pointer(target=VkDescriptorSetLayoutBinding.class) MemorySegment pBindingsRaw() {
         return segment.get(LAYOUT$pBindings, OFFSET$pBindings);
     }
 
-    public void pBindingsRaw(@pointer(comment="VkDescriptorSetLayoutBinding*") MemorySegment value) {
+    public void pBindingsRaw(@pointer(target=VkDescriptorSetLayoutBinding.class) MemorySegment value) {
         segment.set(LAYOUT$pBindings, OFFSET$pBindings, value);
     }
 

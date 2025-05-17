@@ -173,11 +173,11 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
     }
 
-    public @pointer(comment="StdVideoAV1ColorConfig*") MemorySegment pColorConfigRaw() {
+    public @pointer(target=StdVideoAV1ColorConfig.class) MemorySegment pColorConfigRaw() {
         return segment.get(LAYOUT$pColorConfig, OFFSET$pColorConfig);
     }
 
-    public void pColorConfigRaw(@pointer(comment="StdVideoAV1ColorConfig*") MemorySegment value) {
+    public void pColorConfigRaw(@pointer(target=StdVideoAV1ColorConfig.class) MemorySegment value) {
         segment.set(LAYOUT$pColorConfig, OFFSET$pColorConfig, value);
     }
 
@@ -208,11 +208,11 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
-    public @pointer(comment="StdVideoAV1TimingInfo*") MemorySegment pTimingInfoRaw() {
+    public @pointer(target=StdVideoAV1TimingInfo.class) MemorySegment pTimingInfoRaw() {
         return segment.get(LAYOUT$pTimingInfo, OFFSET$pTimingInfo);
     }
 
-    public void pTimingInfoRaw(@pointer(comment="StdVideoAV1TimingInfo*") MemorySegment value) {
+    public void pTimingInfoRaw(@pointer(target=StdVideoAV1TimingInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pTimingInfo, OFFSET$pTimingInfo, value);
     }
 

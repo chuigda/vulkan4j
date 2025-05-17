@@ -145,11 +145,11 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$disable_deblocking_filter_idc, OFFSET$disable_deblocking_filter_idc, value);
     }
 
-    public @pointer(comment="StdVideoEncodeH264WeightTable*") MemorySegment pWeightTableRaw() {
+    public @pointer(target=StdVideoEncodeH264WeightTable.class) MemorySegment pWeightTableRaw() {
         return segment.get(LAYOUT$pWeightTable, OFFSET$pWeightTable);
     }
 
-    public void pWeightTableRaw(@pointer(comment="StdVideoEncodeH264WeightTable*") MemorySegment value) {
+    public void pWeightTableRaw(@pointer(target=StdVideoEncodeH264WeightTable.class) MemorySegment value) {
         segment.set(LAYOUT$pWeightTable, OFFSET$pWeightTable, value);
     }
 

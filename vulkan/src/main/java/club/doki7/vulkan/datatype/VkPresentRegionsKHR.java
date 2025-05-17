@@ -111,11 +111,11 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IPo
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
     }
 
-    public @pointer(comment="VkPresentRegionKHR*") MemorySegment pRegionsRaw() {
+    public @pointer(target=VkPresentRegionKHR.class) MemorySegment pRegionsRaw() {
         return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
     }
 
-    public void pRegionsRaw(@pointer(comment="VkPresentRegionKHR*") MemorySegment value) {
+    public void pRegionsRaw(@pointer(target=VkPresentRegionKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 

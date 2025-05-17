@@ -102,11 +102,11 @@ public record VkDeviceBufferMemoryRequirements(@NotNull MemorySegment segment) i
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="VkBufferCreateInfo*") MemorySegment pCreateInfoRaw() {
+    public @pointer(target=VkBufferCreateInfo.class) MemorySegment pCreateInfoRaw() {
         return segment.get(LAYOUT$pCreateInfo, OFFSET$pCreateInfo);
     }
 
-    public void pCreateInfoRaw(@pointer(comment="VkBufferCreateInfo*") MemorySegment value) {
+    public void pCreateInfoRaw(@pointer(target=VkBufferCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
     }
 

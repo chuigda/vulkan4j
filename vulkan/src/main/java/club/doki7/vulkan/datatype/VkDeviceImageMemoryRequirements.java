@@ -103,11 +103,11 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="VkImageCreateInfo*") MemorySegment pCreateInfoRaw() {
+    public @pointer(target=VkImageCreateInfo.class) MemorySegment pCreateInfoRaw() {
         return segment.get(LAYOUT$pCreateInfo, OFFSET$pCreateInfo);
     }
 
-    public void pCreateInfoRaw(@pointer(comment="VkImageCreateInfo*") MemorySegment value) {
+    public void pCreateInfoRaw(@pointer(target=VkImageCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
     }
 

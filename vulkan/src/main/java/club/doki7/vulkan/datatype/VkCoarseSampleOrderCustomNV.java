@@ -93,11 +93,11 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$sampleLocationCount, OFFSET$sampleLocationCount, value);
     }
 
-    public @pointer(comment="VkCoarseSampleLocationNV*") MemorySegment pSampleLocationsRaw() {
+    public @pointer(target=VkCoarseSampleLocationNV.class) MemorySegment pSampleLocationsRaw() {
         return segment.get(LAYOUT$pSampleLocations, OFFSET$pSampleLocations);
     }
 
-    public void pSampleLocationsRaw(@pointer(comment="VkCoarseSampleLocationNV*") MemorySegment value) {
+    public void pSampleLocationsRaw(@pointer(target=VkCoarseSampleLocationNV.class) MemorySegment value) {
         segment.set(LAYOUT$pSampleLocations, OFFSET$pSampleLocations, value);
     }
 

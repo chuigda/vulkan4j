@@ -198,11 +198,11 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$setLayoutCount, OFFSET$setLayoutCount, value);
     }
 
-    public @pointer(comment="VkDescriptorSetLayout*") MemorySegment pSetLayoutsRaw() {
+    public @pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {
         return segment.get(LAYOUT$pSetLayouts, OFFSET$pSetLayouts);
     }
 
-    public void pSetLayoutsRaw(@pointer(comment="VkDescriptorSetLayout*") MemorySegment value) {
+    public void pSetLayoutsRaw(@pointer(target=VkDescriptorSetLayout.class) MemorySegment value) {
         segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
     }
 
@@ -231,11 +231,11 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount, value);
     }
 
-    public @pointer(comment="VkPushConstantRange*") MemorySegment pPushConstantRangesRaw() {
+    public @pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {
         return segment.get(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges);
     }
 
-    public void pPushConstantRangesRaw(@pointer(comment="VkPushConstantRange*") MemorySegment value) {
+    public void pPushConstantRangesRaw(@pointer(target=VkPushConstantRange.class) MemorySegment value) {
         segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
 
@@ -266,11 +266,11 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
-    public @pointer(comment="VkSpecializationInfo*") MemorySegment pSpecializationInfoRaw() {
+    public @pointer(target=VkSpecializationInfo.class) MemorySegment pSpecializationInfoRaw() {
         return segment.get(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo);
     }
 
-    public void pSpecializationInfoRaw(@pointer(comment="VkSpecializationInfo*") MemorySegment value) {
+    public void pSpecializationInfoRaw(@pointer(target=VkSpecializationInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo, value);
     }
 

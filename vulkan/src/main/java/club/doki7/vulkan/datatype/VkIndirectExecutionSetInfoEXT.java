@@ -67,11 +67,11 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @pointer(comment="VkIndirectExecutionSetPipelineInfoEXT*") MemorySegment pPipelineInfoRaw() {
+    public @pointer(target=VkIndirectExecutionSetPipelineInfoEXT.class) MemorySegment pPipelineInfoRaw() {
         return segment.get(LAYOUT$pPipelineInfo, OFFSET$pPipelineInfo);
     }
 
-    public void pPipelineInfoRaw(@pointer(comment="VkIndirectExecutionSetPipelineInfoEXT*") MemorySegment value) {
+    public void pPipelineInfoRaw(@pointer(target=VkIndirectExecutionSetPipelineInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pPipelineInfo, OFFSET$pPipelineInfo, value);
     }
 
@@ -102,11 +102,11 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @pointer(comment="VkIndirectExecutionSetShaderInfoEXT*") MemorySegment pShaderInfoRaw() {
+    public @pointer(target=VkIndirectExecutionSetShaderInfoEXT.class) MemorySegment pShaderInfoRaw() {
         return segment.get(LAYOUT$pShaderInfo, OFFSET$pShaderInfo);
     }
 
-    public void pShaderInfoRaw(@pointer(comment="VkIndirectExecutionSetShaderInfoEXT*") MemorySegment value) {
+    public void pShaderInfoRaw(@pointer(target=VkIndirectExecutionSetShaderInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pShaderInfo, OFFSET$pShaderInfo, value);
     }
 

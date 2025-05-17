@@ -102,11 +102,11 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
     }
 
-    public @pointer(comment="VkSampler*") MemorySegment pImmutableSamplersRaw() {
+    public @pointer(target=VkSampler.class) MemorySegment pImmutableSamplersRaw() {
         return segment.get(LAYOUT$pImmutableSamplers, OFFSET$pImmutableSamplers);
     }
 
-    public void pImmutableSamplersRaw(@pointer(comment="VkSampler*") MemorySegment value) {
+    public void pImmutableSamplersRaw(@pointer(target=VkSampler.class) MemorySegment value) {
         segment.set(LAYOUT$pImmutableSamplers, OFFSET$pImmutableSamplers, value);
     }
 

@@ -122,11 +122,11 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$viewportCount, OFFSET$viewportCount, value);
     }
 
-    public @pointer(comment="VkViewport*") MemorySegment pViewportsRaw() {
+    public @pointer(target=VkViewport.class) MemorySegment pViewportsRaw() {
         return segment.get(LAYOUT$pViewports, OFFSET$pViewports);
     }
 
-    public void pViewportsRaw(@pointer(comment="VkViewport*") MemorySegment value) {
+    public void pViewportsRaw(@pointer(target=VkViewport.class) MemorySegment value) {
         segment.set(LAYOUT$pViewports, OFFSET$pViewports, value);
     }
 
@@ -165,11 +165,11 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$scissorCount, OFFSET$scissorCount, value);
     }
 
-    public @pointer(comment="VkRect2D*") MemorySegment pScissorsRaw() {
+    public @pointer(target=VkRect2D.class) MemorySegment pScissorsRaw() {
         return segment.get(LAYOUT$pScissors, OFFSET$pScissors);
     }
 
-    public void pScissorsRaw(@pointer(comment="VkRect2D*") MemorySegment value) {
+    public void pScissorsRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
         segment.set(LAYOUT$pScissors, OFFSET$pScissors, value);
     }
 

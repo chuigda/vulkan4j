@@ -111,11 +111,11 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$settingCount, OFFSET$settingCount, value);
     }
 
-    public @pointer(comment="VkLayerSettingEXT*") MemorySegment pSettingsRaw() {
+    public @pointer(target=VkLayerSettingEXT.class) MemorySegment pSettingsRaw() {
         return segment.get(LAYOUT$pSettings, OFFSET$pSettings);
     }
 
-    public void pSettingsRaw(@pointer(comment="VkLayerSettingEXT*") MemorySegment value) {
+    public void pSettingsRaw(@pointer(target=VkLayerSettingEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pSettings, OFFSET$pSettings, value);
     }
 

@@ -125,11 +125,11 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IPoi
         segment.set(LAYOUT$queueCreateInfoCount, OFFSET$queueCreateInfoCount, value);
     }
 
-    public @pointer(comment="VkDeviceQueueCreateInfo*") MemorySegment pQueueCreateInfosRaw() {
+    public @pointer(target=VkDeviceQueueCreateInfo.class) MemorySegment pQueueCreateInfosRaw() {
         return segment.get(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos);
     }
 
-    public void pQueueCreateInfosRaw(@pointer(comment="VkDeviceQueueCreateInfo*") MemorySegment value) {
+    public void pQueueCreateInfosRaw(@pointer(target=VkDeviceQueueCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos, value);
     }
 
@@ -224,11 +224,11 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IPoi
         ppEnabledExtensionNamesRaw(s);
     }
 
-    public @pointer(comment="VkPhysicalDeviceFeatures*") MemorySegment pEnabledFeaturesRaw() {
+    public @pointer(target=VkPhysicalDeviceFeatures.class) MemorySegment pEnabledFeaturesRaw() {
         return segment.get(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures);
     }
 
-    public void pEnabledFeaturesRaw(@pointer(comment="VkPhysicalDeviceFeatures*") MemorySegment value) {
+    public void pEnabledFeaturesRaw(@pointer(target=VkPhysicalDeviceFeatures.class) MemorySegment value) {
         segment.set(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures, value);
     }
 

@@ -111,11 +111,11 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
         segment.set(LAYOUT$layeredApiCount, OFFSET$layeredApiCount, value);
     }
 
-    public @pointer(comment="VkPhysicalDeviceLayeredApiPropertiesKHR*") MemorySegment pLayeredApisRaw() {
+    public @pointer(target=VkPhysicalDeviceLayeredApiPropertiesKHR.class) MemorySegment pLayeredApisRaw() {
         return segment.get(LAYOUT$pLayeredApis, OFFSET$pLayeredApis);
     }
 
-    public void pLayeredApisRaw(@pointer(comment="VkPhysicalDeviceLayeredApiPropertiesKHR*") MemorySegment value) {
+    public void pLayeredApisRaw(@pointer(target=VkPhysicalDeviceLayeredApiPropertiesKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pLayeredApis, OFFSET$pLayeredApis, value);
     }
 

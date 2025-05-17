@@ -120,11 +120,11 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$driverCount, OFFSET$driverCount, value);
     }
 
-    public @pointer(comment="VkDirectDriverLoadingInfoLUNARG*") MemorySegment pDriversRaw() {
+    public @pointer(target=VkDirectDriverLoadingInfoLUNARG.class) MemorySegment pDriversRaw() {
         return segment.get(LAYOUT$pDrivers, OFFSET$pDrivers);
     }
 
-    public void pDriversRaw(@pointer(comment="VkDirectDriverLoadingInfoLUNARG*") MemorySegment value) {
+    public void pDriversRaw(@pointer(target=VkDirectDriverLoadingInfoLUNARG.class) MemorySegment value) {
         segment.set(LAYOUT$pDrivers, OFFSET$pDrivers, value);
     }
 

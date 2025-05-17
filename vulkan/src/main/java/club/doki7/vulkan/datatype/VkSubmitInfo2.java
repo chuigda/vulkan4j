@@ -124,11 +124,11 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$waitSemaphoreInfoCount, OFFSET$waitSemaphoreInfoCount, value);
     }
 
-    public @pointer(comment="VkSemaphoreSubmitInfo*") MemorySegment pWaitSemaphoreInfosRaw() {
+    public @pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment pWaitSemaphoreInfosRaw() {
         return segment.get(LAYOUT$pWaitSemaphoreInfos, OFFSET$pWaitSemaphoreInfos);
     }
 
-    public void pWaitSemaphoreInfosRaw(@pointer(comment="VkSemaphoreSubmitInfo*") MemorySegment value) {
+    public void pWaitSemaphoreInfosRaw(@pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphoreInfos, OFFSET$pWaitSemaphoreInfos, value);
     }
 
@@ -167,11 +167,11 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$commandBufferInfoCount, OFFSET$commandBufferInfoCount, value);
     }
 
-    public @pointer(comment="VkCommandBufferSubmitInfo*") MemorySegment pCommandBufferInfosRaw() {
+    public @pointer(target=VkCommandBufferSubmitInfo.class) MemorySegment pCommandBufferInfosRaw() {
         return segment.get(LAYOUT$pCommandBufferInfos, OFFSET$pCommandBufferInfos);
     }
 
-    public void pCommandBufferInfosRaw(@pointer(comment="VkCommandBufferSubmitInfo*") MemorySegment value) {
+    public void pCommandBufferInfosRaw(@pointer(target=VkCommandBufferSubmitInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pCommandBufferInfos, OFFSET$pCommandBufferInfos, value);
     }
 
@@ -210,11 +210,11 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$signalSemaphoreInfoCount, OFFSET$signalSemaphoreInfoCount, value);
     }
 
-    public @pointer(comment="VkSemaphoreSubmitInfo*") MemorySegment pSignalSemaphoreInfosRaw() {
+    public @pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment pSignalSemaphoreInfosRaw() {
         return segment.get(LAYOUT$pSignalSemaphoreInfos, OFFSET$pSignalSemaphoreInfos);
     }
 
-    public void pSignalSemaphoreInfosRaw(@pointer(comment="VkSemaphoreSubmitInfo*") MemorySegment value) {
+    public void pSignalSemaphoreInfosRaw(@pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphoreInfos, OFFSET$pSignalSemaphoreInfos, value);
     }
 

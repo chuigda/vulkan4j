@@ -149,11 +149,11 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         segment.set(LAYOUT$usageCountsCount, OFFSET$usageCountsCount, value);
     }
 
-    public @pointer(comment="VkMicromapUsageEXT*") MemorySegment pUsageCountsRaw() {
+    public @pointer(target=VkMicromapUsageEXT.class) MemorySegment pUsageCountsRaw() {
         return segment.get(LAYOUT$pUsageCounts, OFFSET$pUsageCounts);
     }
 
-    public void pUsageCountsRaw(@pointer(comment="VkMicromapUsageEXT*") MemorySegment value) {
+    public void pUsageCountsRaw(@pointer(target=VkMicromapUsageEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pUsageCounts, OFFSET$pUsageCounts, value);
     }
 

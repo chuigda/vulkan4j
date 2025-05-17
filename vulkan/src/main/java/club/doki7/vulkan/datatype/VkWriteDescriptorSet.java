@@ -153,11 +153,11 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$descriptorType, OFFSET$descriptorType, value);
     }
 
-    public @pointer(comment="VkDescriptorImageInfo*") MemorySegment pImageInfoRaw() {
+    public @pointer(target=VkDescriptorImageInfo.class) MemorySegment pImageInfoRaw() {
         return segment.get(LAYOUT$pImageInfo, OFFSET$pImageInfo);
     }
 
-    public void pImageInfoRaw(@pointer(comment="VkDescriptorImageInfo*") MemorySegment value) {
+    public void pImageInfoRaw(@pointer(target=VkDescriptorImageInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pImageInfo, OFFSET$pImageInfo, value);
     }
 
@@ -188,11 +188,11 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
-    public @pointer(comment="VkDescriptorBufferInfo*") MemorySegment pBufferInfoRaw() {
+    public @pointer(target=VkDescriptorBufferInfo.class) MemorySegment pBufferInfoRaw() {
         return segment.get(LAYOUT$pBufferInfo, OFFSET$pBufferInfo);
     }
 
-    public void pBufferInfoRaw(@pointer(comment="VkDescriptorBufferInfo*") MemorySegment value) {
+    public void pBufferInfoRaw(@pointer(target=VkDescriptorBufferInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pBufferInfo, OFFSET$pBufferInfo, value);
     }
 
@@ -223,11 +223,11 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
-    public @pointer(comment="VkBufferView*") MemorySegment pTexelBufferViewRaw() {
+    public @pointer(target=VkBufferView.class) MemorySegment pTexelBufferViewRaw() {
         return segment.get(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView);
     }
 
-    public void pTexelBufferViewRaw(@pointer(comment="VkBufferView*") MemorySegment value) {
+    public void pTexelBufferViewRaw(@pointer(target=VkBufferView.class) MemorySegment value) {
         segment.set(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView, value);
     }
 

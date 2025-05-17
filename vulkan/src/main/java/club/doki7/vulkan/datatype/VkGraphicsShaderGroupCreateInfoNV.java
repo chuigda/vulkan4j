@@ -113,11 +113,11 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$stageCount, OFFSET$stageCount, value);
     }
 
-    public @pointer(comment="VkPipelineShaderStageCreateInfo*") MemorySegment pStagesRaw() {
+    public @pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
         return segment.get(LAYOUT$pStages, OFFSET$pStages);
     }
 
-    public void pStagesRaw(@pointer(comment="VkPipelineShaderStageCreateInfo*") MemorySegment value) {
+    public void pStagesRaw(@pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
 
@@ -148,11 +148,11 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public @pointer(comment="VkPipelineVertexInputStateCreateInfo*") MemorySegment pVertexInputStateRaw() {
+    public @pointer(target=VkPipelineVertexInputStateCreateInfo.class) MemorySegment pVertexInputStateRaw() {
         return segment.get(LAYOUT$pVertexInputState, OFFSET$pVertexInputState);
     }
 
-    public void pVertexInputStateRaw(@pointer(comment="VkPipelineVertexInputStateCreateInfo*") MemorySegment value) {
+    public void pVertexInputStateRaw(@pointer(target=VkPipelineVertexInputStateCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pVertexInputState, OFFSET$pVertexInputState, value);
     }
 
@@ -183,11 +183,11 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public @pointer(comment="VkPipelineTessellationStateCreateInfo*") MemorySegment pTessellationStateRaw() {
+    public @pointer(target=VkPipelineTessellationStateCreateInfo.class) MemorySegment pTessellationStateRaw() {
         return segment.get(LAYOUT$pTessellationState, OFFSET$pTessellationState);
     }
 
-    public void pTessellationStateRaw(@pointer(comment="VkPipelineTessellationStateCreateInfo*") MemorySegment value) {
+    public void pTessellationStateRaw(@pointer(target=VkPipelineTessellationStateCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pTessellationState, OFFSET$pTessellationState, value);
     }
 

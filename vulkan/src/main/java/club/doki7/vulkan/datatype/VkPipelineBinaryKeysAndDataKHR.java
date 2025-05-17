@@ -76,11 +76,11 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$binaryCount, OFFSET$binaryCount, value);
     }
 
-    public @pointer(comment="VkPipelineBinaryKeyKHR*") MemorySegment pPipelineBinaryKeysRaw() {
+    public @pointer(target=VkPipelineBinaryKeyKHR.class) MemorySegment pPipelineBinaryKeysRaw() {
         return segment.get(LAYOUT$pPipelineBinaryKeys, OFFSET$pPipelineBinaryKeys);
     }
 
-    public void pPipelineBinaryKeysRaw(@pointer(comment="VkPipelineBinaryKeyKHR*") MemorySegment value) {
+    public void pPipelineBinaryKeysRaw(@pointer(target=VkPipelineBinaryKeyKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pPipelineBinaryKeys, OFFSET$pPipelineBinaryKeys, value);
     }
 
@@ -111,11 +111,11 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public @pointer(comment="VkPipelineBinaryDataKHR*") MemorySegment pPipelineBinaryDataRaw() {
+    public @pointer(target=VkPipelineBinaryDataKHR.class) MemorySegment pPipelineBinaryDataRaw() {
         return segment.get(LAYOUT$pPipelineBinaryData, OFFSET$pPipelineBinaryData);
     }
 
-    public void pPipelineBinaryDataRaw(@pointer(comment="VkPipelineBinaryDataKHR*") MemorySegment value) {
+    public void pPipelineBinaryDataRaw(@pointer(target=VkPipelineBinaryDataKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pPipelineBinaryData, OFFSET$pPipelineBinaryData, value);
     }
 

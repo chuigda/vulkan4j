@@ -113,11 +113,11 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$formatConstraintsCount, OFFSET$formatConstraintsCount, value);
     }
 
-    public @pointer(comment="VkImageFormatConstraintsInfoFUCHSIA*") MemorySegment pFormatConstraintsRaw() {
+    public @pointer(target=VkImageFormatConstraintsInfoFUCHSIA.class) MemorySegment pFormatConstraintsRaw() {
         return segment.get(LAYOUT$pFormatConstraints, OFFSET$pFormatConstraints);
     }
 
-    public void pFormatConstraintsRaw(@pointer(comment="VkImageFormatConstraintsInfoFUCHSIA*") MemorySegment value) {
+    public void pFormatConstraintsRaw(@pointer(target=VkImageFormatConstraintsInfoFUCHSIA.class) MemorySegment value) {
         segment.set(LAYOUT$pFormatConstraints, OFFSET$pFormatConstraints, value);
     }
 

@@ -111,11 +111,11 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$profileCount, OFFSET$profileCount, value);
     }
 
-    public @pointer(comment="VkVideoProfileInfoKHR*") MemorySegment pProfilesRaw() {
+    public @pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pProfilesRaw() {
         return segment.get(LAYOUT$pProfiles, OFFSET$pProfiles);
     }
 
-    public void pProfilesRaw(@pointer(comment="VkVideoProfileInfoKHR*") MemorySegment value) {
+    public void pProfilesRaw(@pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pProfiles, OFFSET$pProfiles, value);
     }
 

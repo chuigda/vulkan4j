@@ -129,11 +129,11 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$sampleLocationsCount, OFFSET$sampleLocationsCount, value);
     }
 
-    public @pointer(comment="VkSampleLocationEXT*") MemorySegment pSampleLocationsRaw() {
+    public @pointer(target=VkSampleLocationEXT.class) MemorySegment pSampleLocationsRaw() {
         return segment.get(LAYOUT$pSampleLocations, OFFSET$pSampleLocations);
     }
 
-    public void pSampleLocationsRaw(@pointer(comment="VkSampleLocationEXT*") MemorySegment value) {
+    public void pSampleLocationsRaw(@pointer(target=VkSampleLocationEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pSampleLocations, OFFSET$pSampleLocations, value);
     }
 

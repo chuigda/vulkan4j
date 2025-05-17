@@ -125,11 +125,11 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$descriptorUpdateEntryCount, OFFSET$descriptorUpdateEntryCount, value);
     }
 
-    public @pointer(comment="VkDescriptorUpdateTemplateEntry*") MemorySegment pDescriptorUpdateEntriesRaw() {
+    public @pointer(target=VkDescriptorUpdateTemplateEntry.class) MemorySegment pDescriptorUpdateEntriesRaw() {
         return segment.get(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries);
     }
 
-    public void pDescriptorUpdateEntriesRaw(@pointer(comment="VkDescriptorUpdateTemplateEntry*") MemorySegment value) {
+    public void pDescriptorUpdateEntriesRaw(@pointer(target=VkDescriptorUpdateTemplateEntry.class) MemorySegment value) {
         segment.set(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries, value);
     }
 

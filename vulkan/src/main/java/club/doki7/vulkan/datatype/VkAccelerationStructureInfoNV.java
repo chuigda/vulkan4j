@@ -138,11 +138,11 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$geometryCount, OFFSET$geometryCount, value);
     }
 
-    public @pointer(comment="VkGeometryNV*") MemorySegment pGeometriesRaw() {
+    public @pointer(target=VkGeometryNV.class) MemorySegment pGeometriesRaw() {
         return segment.get(LAYOUT$pGeometries, OFFSET$pGeometries);
     }
 
-    public void pGeometriesRaw(@pointer(comment="VkGeometryNV*") MemorySegment value) {
+    public void pGeometriesRaw(@pointer(target=VkGeometryNV.class) MemorySegment value) {
         segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
     }
 

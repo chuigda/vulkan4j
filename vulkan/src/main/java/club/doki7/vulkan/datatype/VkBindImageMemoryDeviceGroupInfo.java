@@ -146,11 +146,11 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$splitInstanceBindRegionCount, OFFSET$splitInstanceBindRegionCount, value);
     }
 
-    public @pointer(comment="VkRect2D*") MemorySegment pSplitInstanceBindRegionsRaw() {
+    public @pointer(target=VkRect2D.class) MemorySegment pSplitInstanceBindRegionsRaw() {
         return segment.get(LAYOUT$pSplitInstanceBindRegions, OFFSET$pSplitInstanceBindRegions);
     }
 
-    public void pSplitInstanceBindRegionsRaw(@pointer(comment="VkRect2D*") MemorySegment value) {
+    public void pSplitInstanceBindRegionsRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
         segment.set(LAYOUT$pSplitInstanceBindRegions, OFFSET$pSplitInstanceBindRegions, value);
     }
 

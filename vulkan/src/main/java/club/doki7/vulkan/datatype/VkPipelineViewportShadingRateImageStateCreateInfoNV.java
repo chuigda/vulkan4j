@@ -120,11 +120,11 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         segment.set(LAYOUT$viewportCount, OFFSET$viewportCount, value);
     }
 
-    public @pointer(comment="VkShadingRatePaletteNV*") MemorySegment pShadingRatePalettesRaw() {
+    public @pointer(target=VkShadingRatePaletteNV.class) MemorySegment pShadingRatePalettesRaw() {
         return segment.get(LAYOUT$pShadingRatePalettes, OFFSET$pShadingRatePalettes);
     }
 
-    public void pShadingRatePalettesRaw(@pointer(comment="VkShadingRatePaletteNV*") MemorySegment value) {
+    public void pShadingRatePalettesRaw(@pointer(target=VkShadingRatePaletteNV.class) MemorySegment value) {
         segment.set(LAYOUT$pShadingRatePalettes, OFFSET$pShadingRatePalettes, value);
     }
 

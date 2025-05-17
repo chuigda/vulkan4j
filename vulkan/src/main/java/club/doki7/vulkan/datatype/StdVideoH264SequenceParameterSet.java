@@ -289,11 +289,11 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         pOffsetForRefFrameRaw(s);
     }
 
-    public @pointer(comment="StdVideoH264ScalingLists*") MemorySegment pScalingListsRaw() {
+    public @pointer(target=StdVideoH264ScalingLists.class) MemorySegment pScalingListsRaw() {
         return segment.get(LAYOUT$pScalingLists, OFFSET$pScalingLists);
     }
 
-    public void pScalingListsRaw(@pointer(comment="StdVideoH264ScalingLists*") MemorySegment value) {
+    public void pScalingListsRaw(@pointer(target=StdVideoH264ScalingLists.class) MemorySegment value) {
         segment.set(LAYOUT$pScalingLists, OFFSET$pScalingLists, value);
     }
 
@@ -324,11 +324,11 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public @pointer(comment="StdVideoH264SequenceParameterSetVui*") MemorySegment pSequenceParameterSetVuiRaw() {
+    public @pointer(target=StdVideoH264SequenceParameterSetVui.class) MemorySegment pSequenceParameterSetVuiRaw() {
         return segment.get(LAYOUT$pSequenceParameterSetVui, OFFSET$pSequenceParameterSetVui);
     }
 
-    public void pSequenceParameterSetVuiRaw(@pointer(comment="StdVideoH264SequenceParameterSetVui*") MemorySegment value) {
+    public void pSequenceParameterSetVuiRaw(@pointer(target=StdVideoH264SequenceParameterSetVui.class) MemorySegment value) {
         segment.set(LAYOUT$pSequenceParameterSetVui, OFFSET$pSequenceParameterSetVui, value);
     }
 

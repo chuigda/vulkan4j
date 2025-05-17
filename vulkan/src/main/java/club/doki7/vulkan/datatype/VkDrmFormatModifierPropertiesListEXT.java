@@ -111,11 +111,11 @@ public record VkDrmFormatModifierPropertiesListEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$drmFormatModifierCount, OFFSET$drmFormatModifierCount, value);
     }
 
-    public @pointer(comment="VkDrmFormatModifierPropertiesEXT*") MemorySegment pDrmFormatModifierPropertiesRaw() {
+    public @pointer(target=VkDrmFormatModifierPropertiesEXT.class) MemorySegment pDrmFormatModifierPropertiesRaw() {
         return segment.get(LAYOUT$pDrmFormatModifierProperties, OFFSET$pDrmFormatModifierProperties);
     }
 
-    public void pDrmFormatModifierPropertiesRaw(@pointer(comment="VkDrmFormatModifierPropertiesEXT*") MemorySegment value) {
+    public void pDrmFormatModifierPropertiesRaw(@pointer(target=VkDrmFormatModifierPropertiesEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pDrmFormatModifierProperties, OFFSET$pDrmFormatModifierProperties, value);
     }
 

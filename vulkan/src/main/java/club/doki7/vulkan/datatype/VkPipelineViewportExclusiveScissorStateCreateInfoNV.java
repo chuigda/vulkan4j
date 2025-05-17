@@ -111,11 +111,11 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(@NotNull Memor
         segment.set(LAYOUT$exclusiveScissorCount, OFFSET$exclusiveScissorCount, value);
     }
 
-    public @pointer(comment="VkRect2D*") MemorySegment pExclusiveScissorsRaw() {
+    public @pointer(target=VkRect2D.class) MemorySegment pExclusiveScissorsRaw() {
         return segment.get(LAYOUT$pExclusiveScissors, OFFSET$pExclusiveScissors);
     }
 
-    public void pExclusiveScissorsRaw(@pointer(comment="VkRect2D*") MemorySegment value) {
+    public void pExclusiveScissorsRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
         segment.set(LAYOUT$pExclusiveScissors, OFFSET$pExclusiveScissors, value);
     }
 

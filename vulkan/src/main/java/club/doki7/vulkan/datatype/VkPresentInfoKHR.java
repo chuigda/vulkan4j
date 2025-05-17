@@ -115,11 +115,11 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IPoint
         segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
     }
 
-    public @pointer(comment="VkSemaphore*") MemorySegment pWaitSemaphoresRaw() {
+    public @pointer(target=VkSemaphore.class) MemorySegment pWaitSemaphoresRaw() {
         return segment.get(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores);
     }
 
-    public void pWaitSemaphoresRaw(@pointer(comment="VkSemaphore*") MemorySegment value) {
+    public void pWaitSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
 
@@ -148,11 +148,11 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IPoint
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
     }
 
-    public @pointer(comment="VkSwapchainKHR*") MemorySegment pSwapchainsRaw() {
+    public @pointer(target=VkSwapchainKHR.class) MemorySegment pSwapchainsRaw() {
         return segment.get(LAYOUT$pSwapchains, OFFSET$pSwapchains);
     }
 
-    public void pSwapchainsRaw(@pointer(comment="VkSwapchainKHR*") MemorySegment value) {
+    public void pSwapchainsRaw(@pointer(target=VkSwapchainKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pSwapchains, OFFSET$pSwapchains, value);
     }
 

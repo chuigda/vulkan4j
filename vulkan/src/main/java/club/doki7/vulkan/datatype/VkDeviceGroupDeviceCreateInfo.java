@@ -111,11 +111,11 @@ public record VkDeviceGroupDeviceCreateInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$physicalDeviceCount, OFFSET$physicalDeviceCount, value);
     }
 
-    public @pointer(comment="VkPhysicalDevice*") MemorySegment pPhysicalDevicesRaw() {
+    public @pointer(target=VkPhysicalDevice.class) MemorySegment pPhysicalDevicesRaw() {
         return segment.get(LAYOUT$pPhysicalDevices, OFFSET$pPhysicalDevices);
     }
 
-    public void pPhysicalDevicesRaw(@pointer(comment="VkPhysicalDevice*") MemorySegment value) {
+    public void pPhysicalDevicesRaw(@pointer(target=VkPhysicalDevice.class) MemorySegment value) {
         segment.set(LAYOUT$pPhysicalDevices, OFFSET$pPhysicalDevices, value);
     }
 

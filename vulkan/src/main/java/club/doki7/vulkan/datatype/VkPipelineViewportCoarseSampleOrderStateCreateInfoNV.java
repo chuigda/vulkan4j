@@ -120,11 +120,11 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
         segment.set(LAYOUT$customSampleOrderCount, OFFSET$customSampleOrderCount, value);
     }
 
-    public @pointer(comment="VkCoarseSampleOrderCustomNV*") MemorySegment pCustomSampleOrdersRaw() {
+    public @pointer(target=VkCoarseSampleOrderCustomNV.class) MemorySegment pCustomSampleOrdersRaw() {
         return segment.get(LAYOUT$pCustomSampleOrders, OFFSET$pCustomSampleOrders);
     }
 
-    public void pCustomSampleOrdersRaw(@pointer(comment="VkCoarseSampleOrderCustomNV*") MemorySegment value) {
+    public void pCustomSampleOrdersRaw(@pointer(target=VkCoarseSampleOrderCustomNV.class) MemorySegment value) {
         segment.set(LAYOUT$pCustomSampleOrders, OFFSET$pCustomSampleOrders, value);
     }
 

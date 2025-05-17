@@ -136,11 +136,11 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
     }
 
-    public @pointer(comment="VkImageView*") MemorySegment pAttachmentsRaw() {
+    public @pointer(target=VkImageView.class) MemorySegment pAttachmentsRaw() {
         return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
     }
 
-    public void pAttachmentsRaw(@pointer(comment="VkImageView*") MemorySegment value) {
+    public void pAttachmentsRaw(@pointer(target=VkImageView.class) MemorySegment value) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 

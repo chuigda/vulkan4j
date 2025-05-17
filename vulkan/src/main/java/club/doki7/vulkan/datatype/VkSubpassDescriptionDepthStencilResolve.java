@@ -120,11 +120,11 @@ public record VkSubpassDescriptionDepthStencilResolve(@NotNull MemorySegment seg
         segment.set(LAYOUT$stencilResolveMode, OFFSET$stencilResolveMode, value);
     }
 
-    public @pointer(comment="VkAttachmentReference2*") MemorySegment pDepthStencilResolveAttachmentRaw() {
+    public @pointer(target=VkAttachmentReference2.class) MemorySegment pDepthStencilResolveAttachmentRaw() {
         return segment.get(LAYOUT$pDepthStencilResolveAttachment, OFFSET$pDepthStencilResolveAttachment);
     }
 
-    public void pDepthStencilResolveAttachmentRaw(@pointer(comment="VkAttachmentReference2*") MemorySegment value) {
+    public void pDepthStencilResolveAttachmentRaw(@pointer(target=VkAttachmentReference2.class) MemorySegment value) {
         segment.set(LAYOUT$pDepthStencilResolveAttachment, OFFSET$pDepthStencilResolveAttachment, value);
     }
 

@@ -151,11 +151,11 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         segment.set(LAYOUT$tokenCount, OFFSET$tokenCount, value);
     }
 
-    public @pointer(comment="VkIndirectCommandsLayoutTokenEXT*") MemorySegment pTokensRaw() {
+    public @pointer(target=VkIndirectCommandsLayoutTokenEXT.class) MemorySegment pTokensRaw() {
         return segment.get(LAYOUT$pTokens, OFFSET$pTokens);
     }
 
-    public void pTokensRaw(@pointer(comment="VkIndirectCommandsLayoutTokenEXT*") MemorySegment value) {
+    public void pTokensRaw(@pointer(target=VkIndirectCommandsLayoutTokenEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pTokens, OFFSET$pTokens, value);
     }
 

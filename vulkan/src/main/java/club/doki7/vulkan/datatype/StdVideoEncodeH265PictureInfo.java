@@ -147,11 +147,11 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
     }
 
-    public @pointer(comment="StdVideoEncodeH265ReferenceListsInfo*") MemorySegment pRefListsRaw() {
+    public @pointer(target=StdVideoEncodeH265ReferenceListsInfo.class) MemorySegment pRefListsRaw() {
         return segment.get(LAYOUT$pRefLists, OFFSET$pRefLists);
     }
 
-    public void pRefListsRaw(@pointer(comment="StdVideoEncodeH265ReferenceListsInfo*") MemorySegment value) {
+    public void pRefListsRaw(@pointer(target=StdVideoEncodeH265ReferenceListsInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pRefLists, OFFSET$pRefLists, value);
     }
 
@@ -182,11 +182,11 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @pointer(comment="StdVideoH265ShortTermRefPicSet*") MemorySegment pShortTermRefPicSetRaw() {
+    public @pointer(target=StdVideoH265ShortTermRefPicSet.class) MemorySegment pShortTermRefPicSetRaw() {
         return segment.get(LAYOUT$pShortTermRefPicSet, OFFSET$pShortTermRefPicSet);
     }
 
-    public void pShortTermRefPicSetRaw(@pointer(comment="StdVideoH265ShortTermRefPicSet*") MemorySegment value) {
+    public void pShortTermRefPicSetRaw(@pointer(target=StdVideoH265ShortTermRefPicSet.class) MemorySegment value) {
         segment.set(LAYOUT$pShortTermRefPicSet, OFFSET$pShortTermRefPicSet, value);
     }
 
@@ -217,11 +217,11 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @pointer(comment="StdVideoEncodeH265LongTermRefPics*") MemorySegment pLongTermRefPicsRaw() {
+    public @pointer(target=StdVideoEncodeH265LongTermRefPics.class) MemorySegment pLongTermRefPicsRaw() {
         return segment.get(LAYOUT$pLongTermRefPics, OFFSET$pLongTermRefPics);
     }
 
-    public void pLongTermRefPicsRaw(@pointer(comment="StdVideoEncodeH265LongTermRefPics*") MemorySegment value) {
+    public void pLongTermRefPicsRaw(@pointer(target=StdVideoEncodeH265LongTermRefPics.class) MemorySegment value) {
         segment.set(LAYOUT$pLongTermRefPics, OFFSET$pLongTermRefPics, value);
     }
 

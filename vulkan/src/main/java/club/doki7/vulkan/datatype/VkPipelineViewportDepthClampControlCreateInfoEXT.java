@@ -111,11 +111,11 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
         segment.set(LAYOUT$depthClampMode, OFFSET$depthClampMode, value);
     }
 
-    public @pointer(comment="VkDepthClampRangeEXT*") MemorySegment pDepthClampRangeRaw() {
+    public @pointer(target=VkDepthClampRangeEXT.class) MemorySegment pDepthClampRangeRaw() {
         return segment.get(LAYOUT$pDepthClampRange, OFFSET$pDepthClampRange);
     }
 
-    public void pDepthClampRangeRaw(@pointer(comment="VkDepthClampRangeEXT*") MemorySegment value) {
+    public void pDepthClampRangeRaw(@pointer(target=VkDepthClampRangeEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pDepthClampRange, OFFSET$pDepthClampRange, value);
     }
 

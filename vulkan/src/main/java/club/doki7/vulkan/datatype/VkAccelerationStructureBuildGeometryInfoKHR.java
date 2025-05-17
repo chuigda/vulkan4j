@@ -166,11 +166,11 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         segment.set(LAYOUT$geometryCount, OFFSET$geometryCount, value);
     }
 
-    public @pointer(comment="VkAccelerationStructureGeometryKHR*") MemorySegment pGeometriesRaw() {
+    public @pointer(target=VkAccelerationStructureGeometryKHR.class) MemorySegment pGeometriesRaw() {
         return segment.get(LAYOUT$pGeometries, OFFSET$pGeometries);
     }
 
-    public void pGeometriesRaw(@pointer(comment="VkAccelerationStructureGeometryKHR*") MemorySegment value) {
+    public void pGeometriesRaw(@pointer(target=VkAccelerationStructureGeometryKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
     }
 

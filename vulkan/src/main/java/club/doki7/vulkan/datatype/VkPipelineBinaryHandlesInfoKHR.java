@@ -111,11 +111,11 @@ public record VkPipelineBinaryHandlesInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pipelineBinaryCount, OFFSET$pipelineBinaryCount, value);
     }
 
-    public @pointer(comment="VkPipelineBinaryKHR*") MemorySegment pPipelineBinariesRaw() {
+    public @pointer(target=VkPipelineBinaryKHR.class) MemorySegment pPipelineBinariesRaw() {
         return segment.get(LAYOUT$pPipelineBinaries, OFFSET$pPipelineBinaries);
     }
 
-    public void pPipelineBinariesRaw(@pointer(comment="VkPipelineBinaryKHR*") MemorySegment value) {
+    public void pPipelineBinariesRaw(@pointer(target=VkPipelineBinaryKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pPipelineBinaries, OFFSET$pPipelineBinaries, value);
     }
 

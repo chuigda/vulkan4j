@@ -120,11 +120,11 @@ public record VkVideoDecodeH264SessionParametersCreateInfoKHR(@NotNull MemorySeg
         segment.set(LAYOUT$maxStdPPSCount, OFFSET$maxStdPPSCount, value);
     }
 
-    public @pointer(comment="VkVideoDecodeH264SessionParametersAddInfoKHR*") MemorySegment pParametersAddInfoRaw() {
+    public @pointer(target=VkVideoDecodeH264SessionParametersAddInfoKHR.class) MemorySegment pParametersAddInfoRaw() {
         return segment.get(LAYOUT$pParametersAddInfo, OFFSET$pParametersAddInfo);
     }
 
-    public void pParametersAddInfoRaw(@pointer(comment="VkVideoDecodeH264SessionParametersAddInfoKHR*") MemorySegment value) {
+    public void pParametersAddInfoRaw(@pointer(target=VkVideoDecodeH264SessionParametersAddInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pParametersAddInfo, OFFSET$pParametersAddInfo, value);
     }
 

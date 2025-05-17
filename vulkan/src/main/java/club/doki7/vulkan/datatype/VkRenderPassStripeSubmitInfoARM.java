@@ -111,11 +111,11 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$stripeSemaphoreInfoCount, OFFSET$stripeSemaphoreInfoCount, value);
     }
 
-    public @pointer(comment="VkSemaphoreSubmitInfo*") MemorySegment pStripeSemaphoreInfosRaw() {
+    public @pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment pStripeSemaphoreInfosRaw() {
         return segment.get(LAYOUT$pStripeSemaphoreInfos, OFFSET$pStripeSemaphoreInfos);
     }
 
-    public void pStripeSemaphoreInfosRaw(@pointer(comment="VkSemaphoreSubmitInfo*") MemorySegment value) {
+    public void pStripeSemaphoreInfosRaw(@pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStripeSemaphoreInfos, OFFSET$pStripeSemaphoreInfos, value);
     }
 

@@ -68,11 +68,11 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         return ret;
     }
 
-    public @pointer(comment="VkClusterAccelerationStructureClustersBottomLevelInputNV*") MemorySegment pClustersBottomLevelRaw() {
+    public @pointer(target=VkClusterAccelerationStructureClustersBottomLevelInputNV.class) MemorySegment pClustersBottomLevelRaw() {
         return segment.get(LAYOUT$pClustersBottomLevel, OFFSET$pClustersBottomLevel);
     }
 
-    public void pClustersBottomLevelRaw(@pointer(comment="VkClusterAccelerationStructureClustersBottomLevelInputNV*") MemorySegment value) {
+    public void pClustersBottomLevelRaw(@pointer(target=VkClusterAccelerationStructureClustersBottomLevelInputNV.class) MemorySegment value) {
         segment.set(LAYOUT$pClustersBottomLevel, OFFSET$pClustersBottomLevel, value);
     }
 
@@ -103,11 +103,11 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         return ret;
     }
 
-    public @pointer(comment="VkClusterAccelerationStructureTriangleClusterInputNV*") MemorySegment pTriangleClustersRaw() {
+    public @pointer(target=VkClusterAccelerationStructureTriangleClusterInputNV.class) MemorySegment pTriangleClustersRaw() {
         return segment.get(LAYOUT$pTriangleClusters, OFFSET$pTriangleClusters);
     }
 
-    public void pTriangleClustersRaw(@pointer(comment="VkClusterAccelerationStructureTriangleClusterInputNV*") MemorySegment value) {
+    public void pTriangleClustersRaw(@pointer(target=VkClusterAccelerationStructureTriangleClusterInputNV.class) MemorySegment value) {
         segment.set(LAYOUT$pTriangleClusters, OFFSET$pTriangleClusters, value);
     }
 
@@ -138,11 +138,11 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         return ret;
     }
 
-    public @pointer(comment="VkClusterAccelerationStructureMoveObjectsInputNV*") MemorySegment pMoveObjectsRaw() {
+    public @pointer(target=VkClusterAccelerationStructureMoveObjectsInputNV.class) MemorySegment pMoveObjectsRaw() {
         return segment.get(LAYOUT$pMoveObjects, OFFSET$pMoveObjects);
     }
 
-    public void pMoveObjectsRaw(@pointer(comment="VkClusterAccelerationStructureMoveObjectsInputNV*") MemorySegment value) {
+    public void pMoveObjectsRaw(@pointer(target=VkClusterAccelerationStructureMoveObjectsInputNV.class) MemorySegment value) {
         segment.set(LAYOUT$pMoveObjects, OFFSET$pMoveObjects, value);
     }
 

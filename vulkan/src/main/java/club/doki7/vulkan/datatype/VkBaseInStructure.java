@@ -75,11 +75,11 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IPoin
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="VkBaseInStructure*") MemorySegment pNextRaw() {
+    public @pointer(target=VkBaseInStructure.class) MemorySegment pNextRaw() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNextRaw(@pointer(comment="VkBaseInStructure*") MemorySegment value) {
+    public void pNextRaw(@pointer(target=VkBaseInStructure.class) MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 

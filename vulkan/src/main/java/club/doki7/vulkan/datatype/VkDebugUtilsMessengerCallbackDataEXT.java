@@ -185,11 +185,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$queueLabelCount, OFFSET$queueLabelCount, value);
     }
 
-    public @pointer(comment="VkDebugUtilsLabelEXT*") MemorySegment pQueueLabelsRaw() {
+    public @pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment pQueueLabelsRaw() {
         return segment.get(LAYOUT$pQueueLabels, OFFSET$pQueueLabels);
     }
 
-    public void pQueueLabelsRaw(@pointer(comment="VkDebugUtilsLabelEXT*") MemorySegment value) {
+    public void pQueueLabelsRaw(@pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pQueueLabels, OFFSET$pQueueLabels, value);
     }
 
@@ -228,11 +228,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$cmdBufLabelCount, OFFSET$cmdBufLabelCount, value);
     }
 
-    public @pointer(comment="VkDebugUtilsLabelEXT*") MemorySegment pCmdBufLabelsRaw() {
+    public @pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment pCmdBufLabelsRaw() {
         return segment.get(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels);
     }
 
-    public void pCmdBufLabelsRaw(@pointer(comment="VkDebugUtilsLabelEXT*") MemorySegment value) {
+    public void pCmdBufLabelsRaw(@pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels, value);
     }
 
@@ -271,11 +271,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$objectCount, OFFSET$objectCount, value);
     }
 
-    public @pointer(comment="VkDebugUtilsObjectNameInfoEXT*") MemorySegment pObjectsRaw() {
+    public @pointer(target=VkDebugUtilsObjectNameInfoEXT.class) MemorySegment pObjectsRaw() {
         return segment.get(LAYOUT$pObjects, OFFSET$pObjects);
     }
 
-    public void pObjectsRaw(@pointer(comment="VkDebugUtilsObjectNameInfoEXT*") MemorySegment value) {
+    public void pObjectsRaw(@pointer(target=VkDebugUtilsObjectNameInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
     }
 

@@ -111,11 +111,11 @@ public record VkRenderPassFragmentDensityMapOffsetEndInfoEXT(@NotNull MemorySegm
         segment.set(LAYOUT$fragmentDensityOffsetCount, OFFSET$fragmentDensityOffsetCount, value);
     }
 
-    public @pointer(comment="VkOffset2D*") MemorySegment pFragmentDensityOffsetsRaw() {
+    public @pointer(target=VkOffset2D.class) MemorySegment pFragmentDensityOffsetsRaw() {
         return segment.get(LAYOUT$pFragmentDensityOffsets, OFFSET$pFragmentDensityOffsets);
     }
 
-    public void pFragmentDensityOffsetsRaw(@pointer(comment="VkOffset2D*") MemorySegment value) {
+    public void pFragmentDensityOffsetsRaw(@pointer(target=VkOffset2D.class) MemorySegment value) {
         segment.set(LAYOUT$pFragmentDensityOffsets, OFFSET$pFragmentDensityOffsets, value);
     }
 

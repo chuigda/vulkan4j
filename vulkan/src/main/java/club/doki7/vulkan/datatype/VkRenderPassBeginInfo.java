@@ -146,11 +146,11 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$clearValueCount, OFFSET$clearValueCount, value);
     }
 
-    public @pointer(comment="VkClearValue*") MemorySegment pClearValuesRaw() {
+    public @pointer(target=VkClearValue.class) MemorySegment pClearValuesRaw() {
         return segment.get(LAYOUT$pClearValues, OFFSET$pClearValues);
     }
 
-    public void pClearValuesRaw(@pointer(comment="VkClearValue*") MemorySegment value) {
+    public void pClearValuesRaw(@pointer(target=VkClearValue.class) MemorySegment value) {
         segment.set(LAYOUT$pClearValues, OFFSET$pClearValues, value);
     }
 

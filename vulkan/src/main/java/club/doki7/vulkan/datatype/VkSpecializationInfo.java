@@ -77,11 +77,11 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$mapEntryCount, OFFSET$mapEntryCount, value);
     }
 
-    public @pointer(comment="VkSpecializationMapEntry*") MemorySegment pMapEntriesRaw() {
+    public @pointer(target=VkSpecializationMapEntry.class) MemorySegment pMapEntriesRaw() {
         return segment.get(LAYOUT$pMapEntries, OFFSET$pMapEntries);
     }
 
-    public void pMapEntriesRaw(@pointer(comment="VkSpecializationMapEntry*") MemorySegment value) {
+    public void pMapEntriesRaw(@pointer(target=VkSpecializationMapEntry.class) MemorySegment value) {
         segment.set(LAYOUT$pMapEntries, OFFSET$pMapEntries, value);
     }
 

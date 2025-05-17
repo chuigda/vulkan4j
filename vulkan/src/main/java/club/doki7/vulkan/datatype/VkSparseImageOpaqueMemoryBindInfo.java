@@ -88,11 +88,11 @@ public record VkSparseImageOpaqueMemoryBindInfo(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$bindCount, OFFSET$bindCount, value);
     }
 
-    public @pointer(comment="VkSparseMemoryBind*") MemorySegment pBindsRaw() {
+    public @pointer(target=VkSparseMemoryBind.class) MemorySegment pBindsRaw() {
         return segment.get(LAYOUT$pBinds, OFFSET$pBinds);
     }
 
-    public void pBindsRaw(@pointer(comment="VkSparseMemoryBind*") MemorySegment value) {
+    public void pBindsRaw(@pointer(target=VkSparseMemoryBind.class) MemorySegment value) {
         segment.set(LAYOUT$pBinds, OFFSET$pBinds, value);
     }
 

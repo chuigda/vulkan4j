@@ -111,11 +111,11 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$slotIndex, OFFSET$slotIndex, value);
     }
 
-    public @pointer(comment="VkVideoPictureResourceInfoKHR*") MemorySegment pPictureResourceRaw() {
+    public @pointer(target=VkVideoPictureResourceInfoKHR.class) MemorySegment pPictureResourceRaw() {
         return segment.get(LAYOUT$pPictureResource, OFFSET$pPictureResource);
     }
 
-    public void pPictureResourceRaw(@pointer(comment="VkVideoPictureResourceInfoKHR*") MemorySegment value) {
+    public void pPictureResourceRaw(@pointer(target=VkVideoPictureResourceInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pPictureResource, OFFSET$pPictureResource, value);
     }
 

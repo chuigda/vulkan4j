@@ -129,11 +129,11 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$stageCount, OFFSET$stageCount, value);
     }
 
-    public @pointer(comment="VkPipelineShaderStageCreateInfo*") MemorySegment pStagesRaw() {
+    public @pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
         return segment.get(LAYOUT$pStages, OFFSET$pStages);
     }
 
-    public void pStagesRaw(@pointer(comment="VkPipelineShaderStageCreateInfo*") MemorySegment value) {
+    public void pStagesRaw(@pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
 
@@ -172,11 +172,11 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$groupCount, OFFSET$groupCount, value);
     }
 
-    public @pointer(comment="VkRayTracingShaderGroupCreateInfoKHR*") MemorySegment pGroupsRaw() {
+    public @pointer(target=VkRayTracingShaderGroupCreateInfoKHR.class) MemorySegment pGroupsRaw() {
         return segment.get(LAYOUT$pGroups, OFFSET$pGroups);
     }
 
-    public void pGroupsRaw(@pointer(comment="VkRayTracingShaderGroupCreateInfoKHR*") MemorySegment value) {
+    public void pGroupsRaw(@pointer(target=VkRayTracingShaderGroupCreateInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
 
@@ -215,11 +215,11 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$maxPipelineRayRecursionDepth, OFFSET$maxPipelineRayRecursionDepth, value);
     }
 
-    public @pointer(comment="VkPipelineLibraryCreateInfoKHR*") MemorySegment pLibraryInfoRaw() {
+    public @pointer(target=VkPipelineLibraryCreateInfoKHR.class) MemorySegment pLibraryInfoRaw() {
         return segment.get(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo);
     }
 
-    public void pLibraryInfoRaw(@pointer(comment="VkPipelineLibraryCreateInfoKHR*") MemorySegment value) {
+    public void pLibraryInfoRaw(@pointer(target=VkPipelineLibraryCreateInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo, value);
     }
 
@@ -250,11 +250,11 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public @pointer(comment="VkRayTracingPipelineInterfaceCreateInfoKHR*") MemorySegment pLibraryInterfaceRaw() {
+    public @pointer(target=VkRayTracingPipelineInterfaceCreateInfoKHR.class) MemorySegment pLibraryInterfaceRaw() {
         return segment.get(LAYOUT$pLibraryInterface, OFFSET$pLibraryInterface);
     }
 
-    public void pLibraryInterfaceRaw(@pointer(comment="VkRayTracingPipelineInterfaceCreateInfoKHR*") MemorySegment value) {
+    public void pLibraryInterfaceRaw(@pointer(target=VkRayTracingPipelineInterfaceCreateInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pLibraryInterface, OFFSET$pLibraryInterface, value);
     }
 
@@ -285,11 +285,11 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public @pointer(comment="VkPipelineDynamicStateCreateInfo*") MemorySegment pDynamicStateRaw() {
+    public @pointer(target=VkPipelineDynamicStateCreateInfo.class) MemorySegment pDynamicStateRaw() {
         return segment.get(LAYOUT$pDynamicState, OFFSET$pDynamicState);
     }
 
-    public void pDynamicStateRaw(@pointer(comment="VkPipelineDynamicStateCreateInfo*") MemorySegment value) {
+    public void pDynamicStateRaw(@pointer(target=VkPipelineDynamicStateCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pDynamicState, OFFSET$pDynamicState, value);
     }
 

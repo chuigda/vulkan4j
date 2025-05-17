@@ -111,11 +111,11 @@ public record VkSwapchainPresentFenceInfoEXT(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
     }
 
-    public @pointer(comment="VkFence*") MemorySegment pFencesRaw() {
+    public @pointer(target=VkFence.class) MemorySegment pFencesRaw() {
         return segment.get(LAYOUT$pFences, OFFSET$pFences);
     }
 
-    public void pFencesRaw(@pointer(comment="VkFence*") MemorySegment value) {
+    public void pFencesRaw(@pointer(target=VkFence.class) MemorySegment value) {
         segment.set(LAYOUT$pFences, OFFSET$pFences, value);
     }
 

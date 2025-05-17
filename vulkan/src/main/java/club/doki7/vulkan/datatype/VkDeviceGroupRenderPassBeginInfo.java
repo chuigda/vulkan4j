@@ -120,11 +120,11 @@ public record VkDeviceGroupRenderPassBeginInfo(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$deviceRenderAreaCount, OFFSET$deviceRenderAreaCount, value);
     }
 
-    public @pointer(comment="VkRect2D*") MemorySegment pDeviceRenderAreasRaw() {
+    public @pointer(target=VkRect2D.class) MemorySegment pDeviceRenderAreasRaw() {
         return segment.get(LAYOUT$pDeviceRenderAreas, OFFSET$pDeviceRenderAreas);
     }
 
-    public void pDeviceRenderAreasRaw(@pointer(comment="VkRect2D*") MemorySegment value) {
+    public void pDeviceRenderAreasRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
         segment.set(LAYOUT$pDeviceRenderAreas, OFFSET$pDeviceRenderAreas, value);
     }
 

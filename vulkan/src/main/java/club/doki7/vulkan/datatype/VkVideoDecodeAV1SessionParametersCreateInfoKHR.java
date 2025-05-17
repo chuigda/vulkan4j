@@ -102,11 +102,11 @@ public record VkVideoDecodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="StdVideoAV1SequenceHeader*") MemorySegment pStdSequenceHeaderRaw() {
+    public @pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment pStdSequenceHeaderRaw() {
         return segment.get(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader);
     }
 
-    public void pStdSequenceHeaderRaw(@pointer(comment="StdVideoAV1SequenceHeader*") MemorySegment value) {
+    public void pStdSequenceHeaderRaw(@pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment value) {
         segment.set(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader, value);
     }
 

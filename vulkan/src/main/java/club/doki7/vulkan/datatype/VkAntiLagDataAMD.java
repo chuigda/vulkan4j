@@ -120,11 +120,11 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IPoint
         segment.set(LAYOUT$maxFPS, OFFSET$maxFPS, value);
     }
 
-    public @pointer(comment="VkAntiLagPresentationInfoAMD*") MemorySegment pPresentationInfoRaw() {
+    public @pointer(target=VkAntiLagPresentationInfoAMD.class) MemorySegment pPresentationInfoRaw() {
         return segment.get(LAYOUT$pPresentationInfo, OFFSET$pPresentationInfo);
     }
 
-    public void pPresentationInfoRaw(@pointer(comment="VkAntiLagPresentationInfoAMD*") MemorySegment value) {
+    public void pPresentationInfoRaw(@pointer(target=VkAntiLagPresentationInfoAMD.class) MemorySegment value) {
         segment.set(LAYOUT$pPresentationInfo, OFFSET$pPresentationInfo, value);
     }
 

@@ -111,11 +111,11 @@ public record VkRenderPassStripeBeginInfoARM(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$stripeInfoCount, OFFSET$stripeInfoCount, value);
     }
 
-    public @pointer(comment="VkRenderPassStripeInfoARM*") MemorySegment pStripeInfosRaw() {
+    public @pointer(target=VkRenderPassStripeInfoARM.class) MemorySegment pStripeInfosRaw() {
         return segment.get(LAYOUT$pStripeInfos, OFFSET$pStripeInfos);
     }
 
-    public void pStripeInfosRaw(@pointer(comment="VkRenderPassStripeInfoARM*") MemorySegment value) {
+    public void pStripeInfosRaw(@pointer(target=VkRenderPassStripeInfoARM.class) MemorySegment value) {
         segment.set(LAYOUT$pStripeInfos, OFFSET$pStripeInfos, value);
     }
 

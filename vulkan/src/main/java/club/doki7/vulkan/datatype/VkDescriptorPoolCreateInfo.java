@@ -129,11 +129,11 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$poolSizeCount, OFFSET$poolSizeCount, value);
     }
 
-    public @pointer(comment="VkDescriptorPoolSize*") MemorySegment pPoolSizesRaw() {
+    public @pointer(target=VkDescriptorPoolSize.class) MemorySegment pPoolSizesRaw() {
         return segment.get(LAYOUT$pPoolSizes, OFFSET$pPoolSizes);
     }
 
-    public void pPoolSizesRaw(@pointer(comment="VkDescriptorPoolSize*") MemorySegment value) {
+    public void pPoolSizesRaw(@pointer(target=VkDescriptorPoolSize.class) MemorySegment value) {
         segment.set(LAYOUT$pPoolSizes, OFFSET$pPoolSizes, value);
     }
 

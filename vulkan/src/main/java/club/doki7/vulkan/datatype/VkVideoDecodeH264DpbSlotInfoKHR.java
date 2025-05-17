@@ -102,11 +102,11 @@ public record VkVideoDecodeH264DpbSlotInfoKHR(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="StdVideoDecodeH264ReferenceInfo*") MemorySegment pStdReferenceInfoRaw() {
+    public @pointer(target=StdVideoDecodeH264ReferenceInfo.class) MemorySegment pStdReferenceInfoRaw() {
         return segment.get(LAYOUT$pStdReferenceInfo, OFFSET$pStdReferenceInfo);
     }
 
-    public void pStdReferenceInfoRaw(@pointer(comment="StdVideoDecodeH264ReferenceInfo*") MemorySegment value) {
+    public void pStdReferenceInfoRaw(@pointer(target=StdVideoDecodeH264ReferenceInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStdReferenceInfo, OFFSET$pStdReferenceInfo, value);
     }
 

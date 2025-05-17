@@ -111,11 +111,11 @@ public record VkGeneratedCommandsShaderInfoEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$shaderCount, OFFSET$shaderCount, value);
     }
 
-    public @pointer(comment="VkShaderEXT*") MemorySegment pShadersRaw() {
+    public @pointer(target=VkShaderEXT.class) MemorySegment pShadersRaw() {
         return segment.get(LAYOUT$pShaders, OFFSET$pShaders);
     }
 
-    public void pShadersRaw(@pointer(comment="VkShaderEXT*") MemorySegment value) {
+    public void pShadersRaw(@pointer(target=VkShaderEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pShaders, OFFSET$pShaders, value);
     }
 

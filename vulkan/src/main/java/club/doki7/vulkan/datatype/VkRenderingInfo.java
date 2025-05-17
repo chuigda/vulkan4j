@@ -149,11 +149,11 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IPointe
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
     }
 
-    public @pointer(comment="VkRenderingAttachmentInfo*") MemorySegment pColorAttachmentsRaw() {
+    public @pointer(target=VkRenderingAttachmentInfo.class) MemorySegment pColorAttachmentsRaw() {
         return segment.get(LAYOUT$pColorAttachments, OFFSET$pColorAttachments);
     }
 
-    public void pColorAttachmentsRaw(@pointer(comment="VkRenderingAttachmentInfo*") MemorySegment value) {
+    public void pColorAttachmentsRaw(@pointer(target=VkRenderingAttachmentInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
 
@@ -184,11 +184,11 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IPointe
         return ret;
     }
 
-    public @pointer(comment="VkRenderingAttachmentInfo*") MemorySegment pDepthAttachmentRaw() {
+    public @pointer(target=VkRenderingAttachmentInfo.class) MemorySegment pDepthAttachmentRaw() {
         return segment.get(LAYOUT$pDepthAttachment, OFFSET$pDepthAttachment);
     }
 
-    public void pDepthAttachmentRaw(@pointer(comment="VkRenderingAttachmentInfo*") MemorySegment value) {
+    public void pDepthAttachmentRaw(@pointer(target=VkRenderingAttachmentInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pDepthAttachment, OFFSET$pDepthAttachment, value);
     }
 
@@ -219,11 +219,11 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IPointe
         return ret;
     }
 
-    public @pointer(comment="VkRenderingAttachmentInfo*") MemorySegment pStencilAttachmentRaw() {
+    public @pointer(target=VkRenderingAttachmentInfo.class) MemorySegment pStencilAttachmentRaw() {
         return segment.get(LAYOUT$pStencilAttachment, OFFSET$pStencilAttachment);
     }
 
-    public void pStencilAttachmentRaw(@pointer(comment="VkRenderingAttachmentInfo*") MemorySegment value) {
+    public void pStencilAttachmentRaw(@pointer(target=VkRenderingAttachmentInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStencilAttachment, OFFSET$pStencilAttachment, value);
     }
 

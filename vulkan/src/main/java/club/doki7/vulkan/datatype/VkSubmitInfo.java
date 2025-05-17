@@ -116,11 +116,11 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
     }
 
-    public @pointer(comment="VkSemaphore*") MemorySegment pWaitSemaphoresRaw() {
+    public @pointer(target=VkSemaphore.class) MemorySegment pWaitSemaphoresRaw() {
         return segment.get(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores);
     }
 
-    public void pWaitSemaphoresRaw(@pointer(comment="VkSemaphore*") MemorySegment value) {
+    public void pWaitSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
 
@@ -174,11 +174,11 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$commandBufferCount, OFFSET$commandBufferCount, value);
     }
 
-    public @pointer(comment="VkCommandBuffer*") MemorySegment pCommandBuffersRaw() {
+    public @pointer(target=VkCommandBuffer.class) MemorySegment pCommandBuffersRaw() {
         return segment.get(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers);
     }
 
-    public void pCommandBuffersRaw(@pointer(comment="VkCommandBuffer*") MemorySegment value) {
+    public void pCommandBuffersRaw(@pointer(target=VkCommandBuffer.class) MemorySegment value) {
         segment.set(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers, value);
     }
 
@@ -207,11 +207,11 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount, value);
     }
 
-    public @pointer(comment="VkSemaphore*") MemorySegment pSignalSemaphoresRaw() {
+    public @pointer(target=VkSemaphore.class) MemorySegment pSignalSemaphoresRaw() {
         return segment.get(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores);
     }
 
-    public void pSignalSemaphoresRaw(@pointer(comment="VkSemaphore*") MemorySegment value) {
+    public void pSignalSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
     }
 

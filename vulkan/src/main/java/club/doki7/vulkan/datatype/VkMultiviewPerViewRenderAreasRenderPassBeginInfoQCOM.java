@@ -111,11 +111,11 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
         segment.set(LAYOUT$perViewRenderAreaCount, OFFSET$perViewRenderAreaCount, value);
     }
 
-    public @pointer(comment="VkRect2D*") MemorySegment pPerViewRenderAreasRaw() {
+    public @pointer(target=VkRect2D.class) MemorySegment pPerViewRenderAreasRaw() {
         return segment.get(LAYOUT$pPerViewRenderAreas, OFFSET$pPerViewRenderAreas);
     }
 
-    public void pPerViewRenderAreasRaw(@pointer(comment="VkRect2D*") MemorySegment value) {
+    public void pPerViewRenderAreasRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
         segment.set(LAYOUT$pPerViewRenderAreas, OFFSET$pPerViewRenderAreas, value);
     }
 

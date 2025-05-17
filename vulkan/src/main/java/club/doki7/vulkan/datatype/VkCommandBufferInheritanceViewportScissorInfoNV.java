@@ -120,11 +120,11 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(@NotNull MemorySeg
         segment.set(LAYOUT$viewportDepthCount, OFFSET$viewportDepthCount, value);
     }
 
-    public @pointer(comment="VkViewport*") MemorySegment pViewportDepthsRaw() {
+    public @pointer(target=VkViewport.class) MemorySegment pViewportDepthsRaw() {
         return segment.get(LAYOUT$pViewportDepths, OFFSET$pViewportDepths);
     }
 
-    public void pViewportDepthsRaw(@pointer(comment="VkViewport*") MemorySegment value) {
+    public void pViewportDepthsRaw(@pointer(target=VkViewport.class) MemorySegment value) {
         segment.set(LAYOUT$pViewportDepths, OFFSET$pViewportDepths, value);
     }
 

@@ -104,11 +104,11 @@ public record VkVideoDecodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="StdVideoDecodeH265PictureInfo*") MemorySegment pStdPictureInfoRaw() {
+    public @pointer(target=StdVideoDecodeH265PictureInfo.class) MemorySegment pStdPictureInfoRaw() {
         return segment.get(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo);
     }
 
-    public void pStdPictureInfoRaw(@pointer(comment="StdVideoDecodeH265PictureInfo*") MemorySegment value) {
+    public void pStdPictureInfoRaw(@pointer(target=StdVideoDecodeH265PictureInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo, value);
     }
 

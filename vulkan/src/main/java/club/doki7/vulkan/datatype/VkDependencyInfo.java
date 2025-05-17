@@ -124,11 +124,11 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IPoint
         segment.set(LAYOUT$memoryBarrierCount, OFFSET$memoryBarrierCount, value);
     }
 
-    public @pointer(comment="VkMemoryBarrier2*") MemorySegment pMemoryBarriersRaw() {
+    public @pointer(target=VkMemoryBarrier2.class) MemorySegment pMemoryBarriersRaw() {
         return segment.get(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers);
     }
 
-    public void pMemoryBarriersRaw(@pointer(comment="VkMemoryBarrier2*") MemorySegment value) {
+    public void pMemoryBarriersRaw(@pointer(target=VkMemoryBarrier2.class) MemorySegment value) {
         segment.set(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers, value);
     }
 
@@ -167,11 +167,11 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IPoint
         segment.set(LAYOUT$bufferMemoryBarrierCount, OFFSET$bufferMemoryBarrierCount, value);
     }
 
-    public @pointer(comment="VkBufferMemoryBarrier2*") MemorySegment pBufferMemoryBarriersRaw() {
+    public @pointer(target=VkBufferMemoryBarrier2.class) MemorySegment pBufferMemoryBarriersRaw() {
         return segment.get(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers);
     }
 
-    public void pBufferMemoryBarriersRaw(@pointer(comment="VkBufferMemoryBarrier2*") MemorySegment value) {
+    public void pBufferMemoryBarriersRaw(@pointer(target=VkBufferMemoryBarrier2.class) MemorySegment value) {
         segment.set(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers, value);
     }
 
@@ -210,11 +210,11 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IPoint
         segment.set(LAYOUT$imageMemoryBarrierCount, OFFSET$imageMemoryBarrierCount, value);
     }
 
-    public @pointer(comment="VkImageMemoryBarrier2*") MemorySegment pImageMemoryBarriersRaw() {
+    public @pointer(target=VkImageMemoryBarrier2.class) MemorySegment pImageMemoryBarriersRaw() {
         return segment.get(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers);
     }
 
-    public void pImageMemoryBarriersRaw(@pointer(comment="VkImageMemoryBarrier2*") MemorySegment value) {
+    public void pImageMemoryBarriersRaw(@pointer(target=VkImageMemoryBarrier2.class) MemorySegment value) {
         segment.set(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers, value);
     }
 

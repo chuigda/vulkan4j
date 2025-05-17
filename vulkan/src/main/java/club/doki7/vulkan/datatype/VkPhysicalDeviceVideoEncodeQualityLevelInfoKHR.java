@@ -103,11 +103,11 @@ public record VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="VkVideoProfileInfoKHR*") MemorySegment pVideoProfileRaw() {
+    public @pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pVideoProfileRaw() {
         return segment.get(LAYOUT$pVideoProfile, OFFSET$pVideoProfile);
     }
 
-    public void pVideoProfileRaw(@pointer(comment="VkVideoProfileInfoKHR*") MemorySegment value) {
+    public void pVideoProfileRaw(@pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pVideoProfile, OFFSET$pVideoProfile, value);
     }
 

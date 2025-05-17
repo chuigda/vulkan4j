@@ -102,11 +102,11 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="VkRenderPassCreationFeedbackInfoEXT*") MemorySegment pRenderPassFeedbackRaw() {
+    public @pointer(target=VkRenderPassCreationFeedbackInfoEXT.class) MemorySegment pRenderPassFeedbackRaw() {
         return segment.get(LAYOUT$pRenderPassFeedback, OFFSET$pRenderPassFeedback);
     }
 
-    public void pRenderPassFeedbackRaw(@pointer(comment="VkRenderPassCreationFeedbackInfoEXT*") MemorySegment value) {
+    public void pRenderPassFeedbackRaw(@pointer(target=VkRenderPassCreationFeedbackInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pRenderPassFeedback, OFFSET$pRenderPassFeedback, value);
     }
 

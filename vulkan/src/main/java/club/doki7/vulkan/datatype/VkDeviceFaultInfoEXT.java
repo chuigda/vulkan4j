@@ -113,11 +113,11 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$description, OFFSET$description, value);
     }
 
-    public @pointer(comment="VkDeviceFaultAddressInfoEXT*") MemorySegment pAddressInfosRaw() {
+    public @pointer(target=VkDeviceFaultAddressInfoEXT.class) MemorySegment pAddressInfosRaw() {
         return segment.get(LAYOUT$pAddressInfos, OFFSET$pAddressInfos);
     }
 
-    public void pAddressInfosRaw(@pointer(comment="VkDeviceFaultAddressInfoEXT*") MemorySegment value) {
+    public void pAddressInfosRaw(@pointer(target=VkDeviceFaultAddressInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pAddressInfos, OFFSET$pAddressInfos, value);
     }
 
@@ -148,11 +148,11 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
-    public @pointer(comment="VkDeviceFaultVendorInfoEXT*") MemorySegment pVendorInfosRaw() {
+    public @pointer(target=VkDeviceFaultVendorInfoEXT.class) MemorySegment pVendorInfosRaw() {
         return segment.get(LAYOUT$pVendorInfos, OFFSET$pVendorInfos);
     }
 
-    public void pVendorInfosRaw(@pointer(comment="VkDeviceFaultVendorInfoEXT*") MemorySegment value) {
+    public void pVendorInfosRaw(@pointer(target=VkDeviceFaultVendorInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pVendorInfos, OFFSET$pVendorInfos, value);
     }
 

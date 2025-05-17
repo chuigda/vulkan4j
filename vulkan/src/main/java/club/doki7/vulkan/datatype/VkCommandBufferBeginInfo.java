@@ -111,11 +111,11 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(comment="VkCommandBufferInheritanceInfo*") MemorySegment pInheritanceInfoRaw() {
+    public @pointer(target=VkCommandBufferInheritanceInfo.class) MemorySegment pInheritanceInfoRaw() {
         return segment.get(LAYOUT$pInheritanceInfo, OFFSET$pInheritanceInfo);
     }
 
-    public void pInheritanceInfoRaw(@pointer(comment="VkCommandBufferInheritanceInfo*") MemorySegment value) {
+    public void pInheritanceInfoRaw(@pointer(target=VkCommandBufferInheritanceInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pInheritanceInfo, OFFSET$pInheritanceInfo, value);
     }
 

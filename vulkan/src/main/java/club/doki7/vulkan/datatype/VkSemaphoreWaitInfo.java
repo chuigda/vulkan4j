@@ -121,11 +121,11 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IPo
         segment.set(LAYOUT$semaphoreCount, OFFSET$semaphoreCount, value);
     }
 
-    public @pointer(comment="VkSemaphore*") MemorySegment pSemaphoresRaw() {
+    public @pointer(target=VkSemaphore.class) MemorySegment pSemaphoresRaw() {
         return segment.get(LAYOUT$pSemaphores, OFFSET$pSemaphores);
     }
 
-    public void pSemaphoresRaw(@pointer(comment="VkSemaphore*") MemorySegment value) {
+    public void pSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
         segment.set(LAYOUT$pSemaphores, OFFSET$pSemaphores, value);
     }
 

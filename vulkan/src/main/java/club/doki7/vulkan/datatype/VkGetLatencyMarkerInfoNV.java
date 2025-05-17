@@ -111,11 +111,11 @@ public record VkGetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$timingCount, OFFSET$timingCount, value);
     }
 
-    public @pointer(comment="VkLatencyTimingsFrameReportNV*") MemorySegment pTimingsRaw() {
+    public @pointer(target=VkLatencyTimingsFrameReportNV.class) MemorySegment pTimingsRaw() {
         return segment.get(LAYOUT$pTimings, OFFSET$pTimings);
     }
 
-    public void pTimingsRaw(@pointer(comment="VkLatencyTimingsFrameReportNV*") MemorySegment value) {
+    public void pTimingsRaw(@pointer(target=VkLatencyTimingsFrameReportNV.class) MemorySegment value) {
         segment.set(LAYOUT$pTimings, OFFSET$pTimings, value);
     }
 

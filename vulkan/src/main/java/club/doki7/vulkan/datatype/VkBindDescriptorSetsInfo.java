@@ -144,11 +144,11 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount, value);
     }
 
-    public @pointer(comment="VkDescriptorSet*") MemorySegment pDescriptorSetsRaw() {
+    public @pointer(target=VkDescriptorSet.class) MemorySegment pDescriptorSetsRaw() {
         return segment.get(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets);
     }
 
-    public void pDescriptorSetsRaw(@pointer(comment="VkDescriptorSet*") MemorySegment value) {
+    public void pDescriptorSetsRaw(@pointer(target=VkDescriptorSet.class) MemorySegment value) {
         segment.set(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets, value);
     }
 

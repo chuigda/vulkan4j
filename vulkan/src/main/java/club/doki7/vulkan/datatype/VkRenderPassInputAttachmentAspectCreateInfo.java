@@ -111,11 +111,11 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(@NotNull MemorySegment
         segment.set(LAYOUT$aspectReferenceCount, OFFSET$aspectReferenceCount, value);
     }
 
-    public @pointer(comment="VkInputAttachmentAspectReference*") MemorySegment pAspectReferencesRaw() {
+    public @pointer(target=VkInputAttachmentAspectReference.class) MemorySegment pAspectReferencesRaw() {
         return segment.get(LAYOUT$pAspectReferences, OFFSET$pAspectReferences);
     }
 
-    public void pAspectReferencesRaw(@pointer(comment="VkInputAttachmentAspectReference*") MemorySegment value) {
+    public void pAspectReferencesRaw(@pointer(target=VkInputAttachmentAspectReference.class) MemorySegment value) {
         segment.set(LAYOUT$pAspectReferences, OFFSET$pAspectReferences, value);
     }
 

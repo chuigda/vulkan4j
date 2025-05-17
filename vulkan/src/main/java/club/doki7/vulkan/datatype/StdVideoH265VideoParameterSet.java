@@ -147,11 +147,11 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$reserved3, OFFSET$reserved3, value);
     }
 
-    public @pointer(comment="StdVideoH265DecPicBufMgr*") MemorySegment pDecPicBufMgrRaw() {
+    public @pointer(target=StdVideoH265DecPicBufMgr.class) MemorySegment pDecPicBufMgrRaw() {
         return segment.get(LAYOUT$pDecPicBufMgr, OFFSET$pDecPicBufMgr);
     }
 
-    public void pDecPicBufMgrRaw(@pointer(comment="StdVideoH265DecPicBufMgr*") MemorySegment value) {
+    public void pDecPicBufMgrRaw(@pointer(target=StdVideoH265DecPicBufMgr.class) MemorySegment value) {
         segment.set(LAYOUT$pDecPicBufMgr, OFFSET$pDecPicBufMgr, value);
     }
 
@@ -182,11 +182,11 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @pointer(comment="StdVideoH265HrdParameters*") MemorySegment pHrdParametersRaw() {
+    public @pointer(target=StdVideoH265HrdParameters.class) MemorySegment pHrdParametersRaw() {
         return segment.get(LAYOUT$pHrdParameters, OFFSET$pHrdParameters);
     }
 
-    public void pHrdParametersRaw(@pointer(comment="StdVideoH265HrdParameters*") MemorySegment value) {
+    public void pHrdParametersRaw(@pointer(target=StdVideoH265HrdParameters.class) MemorySegment value) {
         segment.set(LAYOUT$pHrdParameters, OFFSET$pHrdParameters, value);
     }
 
@@ -217,11 +217,11 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @pointer(comment="StdVideoH265ProfileTierLevel*") MemorySegment pProfileTierLevelRaw() {
+    public @pointer(target=StdVideoH265ProfileTierLevel.class) MemorySegment pProfileTierLevelRaw() {
         return segment.get(LAYOUT$pProfileTierLevel, OFFSET$pProfileTierLevel);
     }
 
-    public void pProfileTierLevelRaw(@pointer(comment="StdVideoH265ProfileTierLevel*") MemorySegment value) {
+    public void pProfileTierLevelRaw(@pointer(target=StdVideoH265ProfileTierLevel.class) MemorySegment value) {
         segment.set(LAYOUT$pProfileTierLevel, OFFSET$pProfileTierLevel, value);
     }
 

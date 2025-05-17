@@ -131,11 +131,11 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$layerCount, OFFSET$layerCount, value);
     }
 
-    public @pointer(comment="VkVideoEncodeRateControlLayerInfoKHR*") MemorySegment pLayersRaw() {
+    public @pointer(target=VkVideoEncodeRateControlLayerInfoKHR.class) MemorySegment pLayersRaw() {
         return segment.get(LAYOUT$pLayers, OFFSET$pLayers);
     }
 
-    public void pLayersRaw(@pointer(comment="VkVideoEncodeRateControlLayerInfoKHR*") MemorySegment value) {
+    public void pLayersRaw(@pointer(target=VkVideoEncodeRateControlLayerInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pLayers, OFFSET$pLayers, value);
     }
 

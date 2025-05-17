@@ -109,11 +109,11 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
     }
 
-    public @pointer(comment="StdVideoEncodeAV1ExtensionHeader*") MemorySegment pExtensionHeaderRaw() {
+    public @pointer(target=StdVideoEncodeAV1ExtensionHeader.class) MemorySegment pExtensionHeaderRaw() {
         return segment.get(LAYOUT$pExtensionHeader, OFFSET$pExtensionHeader);
     }
 
-    public void pExtensionHeaderRaw(@pointer(comment="StdVideoEncodeAV1ExtensionHeader*") MemorySegment value) {
+    public void pExtensionHeaderRaw(@pointer(target=StdVideoEncodeAV1ExtensionHeader.class) MemorySegment value) {
         segment.set(LAYOUT$pExtensionHeader, OFFSET$pExtensionHeader, value);
     }
 

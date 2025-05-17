@@ -156,11 +156,11 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IPoint
         segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
     }
 
-    public @pointer(comment="VkImageBlit2*") MemorySegment pRegionsRaw() {
+    public @pointer(target=VkImageBlit2.class) MemorySegment pRegionsRaw() {
         return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
     }
 
-    public void pRegionsRaw(@pointer(comment="VkImageBlit2*") MemorySegment value) {
+    public void pRegionsRaw(@pointer(target=VkImageBlit2.class) MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 

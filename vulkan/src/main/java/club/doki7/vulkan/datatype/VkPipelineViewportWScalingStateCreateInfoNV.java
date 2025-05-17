@@ -120,11 +120,11 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
         segment.set(LAYOUT$viewportCount, OFFSET$viewportCount, value);
     }
 
-    public @pointer(comment="VkViewportWScalingNV*") MemorySegment pViewportWScalingsRaw() {
+    public @pointer(target=VkViewportWScalingNV.class) MemorySegment pViewportWScalingsRaw() {
         return segment.get(LAYOUT$pViewportWScalings, OFFSET$pViewportWScalings);
     }
 
-    public void pViewportWScalingsRaw(@pointer(comment="VkViewportWScalingNV*") MemorySegment value) {
+    public void pViewportWScalingsRaw(@pointer(target=VkViewportWScalingNV.class) MemorySegment value) {
         segment.set(LAYOUT$pViewportWScalings, OFFSET$pViewportWScalings, value);
     }
 

@@ -144,11 +144,11 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$inputAttachmentCount, OFFSET$inputAttachmentCount, value);
     }
 
-    public @pointer(comment="VkAttachmentReference2*") MemorySegment pInputAttachmentsRaw() {
+    public @pointer(target=VkAttachmentReference2.class) MemorySegment pInputAttachmentsRaw() {
         return segment.get(LAYOUT$pInputAttachments, OFFSET$pInputAttachments);
     }
 
-    public void pInputAttachmentsRaw(@pointer(comment="VkAttachmentReference2*") MemorySegment value) {
+    public void pInputAttachmentsRaw(@pointer(target=VkAttachmentReference2.class) MemorySegment value) {
         segment.set(LAYOUT$pInputAttachments, OFFSET$pInputAttachments, value);
     }
 
@@ -187,11 +187,11 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
     }
 
-    public @pointer(comment="VkAttachmentReference2*") MemorySegment pColorAttachmentsRaw() {
+    public @pointer(target=VkAttachmentReference2.class) MemorySegment pColorAttachmentsRaw() {
         return segment.get(LAYOUT$pColorAttachments, OFFSET$pColorAttachments);
     }
 
-    public void pColorAttachmentsRaw(@pointer(comment="VkAttachmentReference2*") MemorySegment value) {
+    public void pColorAttachmentsRaw(@pointer(target=VkAttachmentReference2.class) MemorySegment value) {
         segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
 
@@ -222,11 +222,11 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
-    public @pointer(comment="VkAttachmentReference2*") MemorySegment pResolveAttachmentsRaw() {
+    public @pointer(target=VkAttachmentReference2.class) MemorySegment pResolveAttachmentsRaw() {
         return segment.get(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments);
     }
 
-    public void pResolveAttachmentsRaw(@pointer(comment="VkAttachmentReference2*") MemorySegment value) {
+    public void pResolveAttachmentsRaw(@pointer(target=VkAttachmentReference2.class) MemorySegment value) {
         segment.set(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments, value);
     }
 
@@ -257,11 +257,11 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
-    public @pointer(comment="VkAttachmentReference2*") MemorySegment pDepthStencilAttachmentRaw() {
+    public @pointer(target=VkAttachmentReference2.class) MemorySegment pDepthStencilAttachmentRaw() {
         return segment.get(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment);
     }
 
-    public void pDepthStencilAttachmentRaw(@pointer(comment="VkAttachmentReference2*") MemorySegment value) {
+    public void pDepthStencilAttachmentRaw(@pointer(target=VkAttachmentReference2.class) MemorySegment value) {
         segment.set(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment, value);
     }
 

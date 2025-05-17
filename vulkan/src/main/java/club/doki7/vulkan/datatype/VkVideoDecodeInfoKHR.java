@@ -153,11 +153,11 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IP
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstPictureResource, SIZE$dstPictureResource);
     }
 
-    public @pointer(comment="VkVideoReferenceSlotInfoKHR*") MemorySegment pSetupReferenceSlotRaw() {
+    public @pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment pSetupReferenceSlotRaw() {
         return segment.get(LAYOUT$pSetupReferenceSlot, OFFSET$pSetupReferenceSlot);
     }
 
-    public void pSetupReferenceSlotRaw(@pointer(comment="VkVideoReferenceSlotInfoKHR*") MemorySegment value) {
+    public void pSetupReferenceSlotRaw(@pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pSetupReferenceSlot, OFFSET$pSetupReferenceSlot, value);
     }
 
@@ -196,11 +196,11 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$referenceSlotCount, OFFSET$referenceSlotCount, value);
     }
 
-    public @pointer(comment="VkVideoReferenceSlotInfoKHR*") MemorySegment pReferenceSlotsRaw() {
+    public @pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment pReferenceSlotsRaw() {
         return segment.get(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots);
     }
 
-    public void pReferenceSlotsRaw(@pointer(comment="VkVideoReferenceSlotInfoKHR*") MemorySegment value) {
+    public void pReferenceSlotsRaw(@pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots, value);
     }
 

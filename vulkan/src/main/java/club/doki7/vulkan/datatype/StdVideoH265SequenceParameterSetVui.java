@@ -289,11 +289,11 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
         segment.set(LAYOUT$log2_max_mv_length_vertical, OFFSET$log2_max_mv_length_vertical, value);
     }
 
-    public @pointer(comment="StdVideoH265HrdParameters*") MemorySegment pHrdParametersRaw() {
+    public @pointer(target=StdVideoH265HrdParameters.class) MemorySegment pHrdParametersRaw() {
         return segment.get(LAYOUT$pHrdParameters, OFFSET$pHrdParameters);
     }
 
-    public void pHrdParametersRaw(@pointer(comment="StdVideoH265HrdParameters*") MemorySegment value) {
+    public void pHrdParametersRaw(@pointer(target=StdVideoH265HrdParameters.class) MemorySegment value) {
         segment.set(LAYOUT$pHrdParameters, OFFSET$pHrdParameters, value);
     }
 

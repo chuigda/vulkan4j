@@ -115,11 +115,11 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$shaderCount, OFFSET$shaderCount, value);
     }
 
-    public @pointer(comment="VkShaderEXT*") MemorySegment pInitialShadersRaw() {
+    public @pointer(target=VkShaderEXT.class) MemorySegment pInitialShadersRaw() {
         return segment.get(LAYOUT$pInitialShaders, OFFSET$pInitialShaders);
     }
 
-    public void pInitialShadersRaw(@pointer(comment="VkShaderEXT*") MemorySegment value) {
+    public void pInitialShadersRaw(@pointer(target=VkShaderEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pInitialShaders, OFFSET$pInitialShaders, value);
     }
 
@@ -140,11 +140,11 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         pInitialShadersRaw(s);
     }
 
-    public @pointer(comment="VkIndirectExecutionSetShaderLayoutInfoEXT*") MemorySegment pSetLayoutInfosRaw() {
+    public @pointer(target=VkIndirectExecutionSetShaderLayoutInfoEXT.class) MemorySegment pSetLayoutInfosRaw() {
         return segment.get(LAYOUT$pSetLayoutInfos, OFFSET$pSetLayoutInfos);
     }
 
-    public void pSetLayoutInfosRaw(@pointer(comment="VkIndirectExecutionSetShaderLayoutInfoEXT*") MemorySegment value) {
+    public void pSetLayoutInfosRaw(@pointer(target=VkIndirectExecutionSetShaderLayoutInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pSetLayoutInfos, OFFSET$pSetLayoutInfos, value);
     }
 
@@ -191,11 +191,11 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount, value);
     }
 
-    public @pointer(comment="VkPushConstantRange*") MemorySegment pPushConstantRangesRaw() {
+    public @pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {
         return segment.get(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges);
     }
 
-    public void pPushConstantRangesRaw(@pointer(comment="VkPushConstantRange*") MemorySegment value) {
+    public void pPushConstantRangesRaw(@pointer(target=VkPushConstantRange.class) MemorySegment value) {
         segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
 

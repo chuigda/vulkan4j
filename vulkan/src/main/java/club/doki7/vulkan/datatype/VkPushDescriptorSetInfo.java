@@ -142,11 +142,11 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$descriptorWriteCount, OFFSET$descriptorWriteCount, value);
     }
 
-    public @pointer(comment="VkWriteDescriptorSet*") MemorySegment pDescriptorWritesRaw() {
+    public @pointer(target=VkWriteDescriptorSet.class) MemorySegment pDescriptorWritesRaw() {
         return segment.get(LAYOUT$pDescriptorWrites, OFFSET$pDescriptorWrites);
     }
 
-    public void pDescriptorWritesRaw(@pointer(comment="VkWriteDescriptorSet*") MemorySegment value) {
+    public void pDescriptorWritesRaw(@pointer(target=VkWriteDescriptorSet.class) MemorySegment value) {
         segment.set(LAYOUT$pDescriptorWrites, OFFSET$pDescriptorWrites, value);
     }
 

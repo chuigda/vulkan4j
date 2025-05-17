@@ -122,11 +122,11 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$vertexBindingDescriptionCount, OFFSET$vertexBindingDescriptionCount, value);
     }
 
-    public @pointer(comment="VkVertexInputBindingDescription*") MemorySegment pVertexBindingDescriptionsRaw() {
+    public @pointer(target=VkVertexInputBindingDescription.class) MemorySegment pVertexBindingDescriptionsRaw() {
         return segment.get(LAYOUT$pVertexBindingDescriptions, OFFSET$pVertexBindingDescriptions);
     }
 
-    public void pVertexBindingDescriptionsRaw(@pointer(comment="VkVertexInputBindingDescription*") MemorySegment value) {
+    public void pVertexBindingDescriptionsRaw(@pointer(target=VkVertexInputBindingDescription.class) MemorySegment value) {
         segment.set(LAYOUT$pVertexBindingDescriptions, OFFSET$pVertexBindingDescriptions, value);
     }
 
@@ -165,11 +165,11 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$vertexAttributeDescriptionCount, OFFSET$vertexAttributeDescriptionCount, value);
     }
 
-    public @pointer(comment="VkVertexInputAttributeDescription*") MemorySegment pVertexAttributeDescriptionsRaw() {
+    public @pointer(target=VkVertexInputAttributeDescription.class) MemorySegment pVertexAttributeDescriptionsRaw() {
         return segment.get(LAYOUT$pVertexAttributeDescriptions, OFFSET$pVertexAttributeDescriptions);
     }
 
-    public void pVertexAttributeDescriptionsRaw(@pointer(comment="VkVertexInputAttributeDescription*") MemorySegment value) {
+    public void pVertexAttributeDescriptionsRaw(@pointer(target=VkVertexInputAttributeDescription.class) MemorySegment value) {
         segment.set(LAYOUT$pVertexAttributeDescriptions, OFFSET$pVertexAttributeDescriptions, value);
     }
 

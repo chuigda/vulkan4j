@@ -113,11 +113,11 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         segment.set(LAYOUT$groupCount, OFFSET$groupCount, value);
     }
 
-    public @pointer(comment="VkGraphicsShaderGroupCreateInfoNV*") MemorySegment pGroupsRaw() {
+    public @pointer(target=VkGraphicsShaderGroupCreateInfoNV.class) MemorySegment pGroupsRaw() {
         return segment.get(LAYOUT$pGroups, OFFSET$pGroups);
     }
 
-    public void pGroupsRaw(@pointer(comment="VkGraphicsShaderGroupCreateInfoNV*") MemorySegment value) {
+    public void pGroupsRaw(@pointer(target=VkGraphicsShaderGroupCreateInfoNV.class) MemorySegment value) {
         segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
 
@@ -156,11 +156,11 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         segment.set(LAYOUT$pipelineCount, OFFSET$pipelineCount, value);
     }
 
-    public @pointer(comment="VkPipeline*") MemorySegment pPipelinesRaw() {
+    public @pointer(target=VkPipeline.class) MemorySegment pPipelinesRaw() {
         return segment.get(LAYOUT$pPipelines, OFFSET$pPipelines);
     }
 
-    public void pPipelinesRaw(@pointer(comment="VkPipeline*") MemorySegment value) {
+    public void pPipelinesRaw(@pointer(target=VkPipeline.class) MemorySegment value) {
         segment.set(LAYOUT$pPipelines, OFFSET$pPipelines, value);
     }
 

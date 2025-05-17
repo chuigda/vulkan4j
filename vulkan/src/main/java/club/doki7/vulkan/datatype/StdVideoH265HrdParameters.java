@@ -182,11 +182,11 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$reserved, OFFSET$reserved, value);
     }
 
-    public @pointer(comment="StdVideoH265SubLayerHrdParameters*") MemorySegment pSubLayerHrdParametersNalRaw() {
+    public @pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment pSubLayerHrdParametersNalRaw() {
         return segment.get(LAYOUT$pSubLayerHrdParametersNal, OFFSET$pSubLayerHrdParametersNal);
     }
 
-    public void pSubLayerHrdParametersNalRaw(@pointer(comment="StdVideoH265SubLayerHrdParameters*") MemorySegment value) {
+    public void pSubLayerHrdParametersNalRaw(@pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment value) {
         segment.set(LAYOUT$pSubLayerHrdParametersNal, OFFSET$pSubLayerHrdParametersNal, value);
     }
 
@@ -217,11 +217,11 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
-    public @pointer(comment="StdVideoH265SubLayerHrdParameters*") MemorySegment pSubLayerHrdParametersVclRaw() {
+    public @pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment pSubLayerHrdParametersVclRaw() {
         return segment.get(LAYOUT$pSubLayerHrdParametersVcl, OFFSET$pSubLayerHrdParametersVcl);
     }
 
-    public void pSubLayerHrdParametersVclRaw(@pointer(comment="StdVideoH265SubLayerHrdParameters*") MemorySegment value) {
+    public void pSubLayerHrdParametersVclRaw(@pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment value) {
         segment.set(LAYOUT$pSubLayerHrdParametersVcl, OFFSET$pSubLayerHrdParametersVcl, value);
     }
 

@@ -126,11 +126,11 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$stageCount, OFFSET$stageCount, value);
     }
 
-    public @pointer(comment="VkPipelineShaderStageCreateInfo*") MemorySegment pStagesRaw() {
+    public @pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
         return segment.get(LAYOUT$pStages, OFFSET$pStages);
     }
 
-    public void pStagesRaw(@pointer(comment="VkPipelineShaderStageCreateInfo*") MemorySegment value) {
+    public void pStagesRaw(@pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
 
@@ -169,11 +169,11 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$groupCount, OFFSET$groupCount, value);
     }
 
-    public @pointer(comment="VkRayTracingShaderGroupCreateInfoNV*") MemorySegment pGroupsRaw() {
+    public @pointer(target=VkRayTracingShaderGroupCreateInfoNV.class) MemorySegment pGroupsRaw() {
         return segment.get(LAYOUT$pGroups, OFFSET$pGroups);
     }
 
-    public void pGroupsRaw(@pointer(comment="VkRayTracingShaderGroupCreateInfoNV*") MemorySegment value) {
+    public void pGroupsRaw(@pointer(target=VkRayTracingShaderGroupCreateInfoNV.class) MemorySegment value) {
         segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
 

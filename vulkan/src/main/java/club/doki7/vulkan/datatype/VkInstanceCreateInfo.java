@@ -115,11 +115,11 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(comment="VkApplicationInfo*") MemorySegment pApplicationInfoRaw() {
+    public @pointer(target=VkApplicationInfo.class) MemorySegment pApplicationInfoRaw() {
         return segment.get(LAYOUT$pApplicationInfo, OFFSET$pApplicationInfo);
     }
 
-    public void pApplicationInfoRaw(@pointer(comment="VkApplicationInfo*") MemorySegment value) {
+    public void pApplicationInfoRaw(@pointer(target=VkApplicationInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pApplicationInfo, OFFSET$pApplicationInfo, value);
     }
 

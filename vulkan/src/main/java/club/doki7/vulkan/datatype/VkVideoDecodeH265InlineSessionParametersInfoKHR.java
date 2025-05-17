@@ -104,11 +104,11 @@ public record VkVideoDecodeH265InlineSessionParametersInfoKHR(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="StdVideoH265VideoParameterSet*") MemorySegment pStdVPSRaw() {
+    public @pointer(target=StdVideoH265VideoParameterSet.class) MemorySegment pStdVPSRaw() {
         return segment.get(LAYOUT$pStdVPS, OFFSET$pStdVPS);
     }
 
-    public void pStdVPSRaw(@pointer(comment="StdVideoH265VideoParameterSet*") MemorySegment value) {
+    public void pStdVPSRaw(@pointer(target=StdVideoH265VideoParameterSet.class) MemorySegment value) {
         segment.set(LAYOUT$pStdVPS, OFFSET$pStdVPS, value);
     }
 
@@ -139,11 +139,11 @@ public record VkVideoDecodeH265InlineSessionParametersInfoKHR(@NotNull MemorySeg
         return ret;
     }
 
-    public @pointer(comment="StdVideoH265SequenceParameterSet*") MemorySegment pStdSPSRaw() {
+    public @pointer(target=StdVideoH265SequenceParameterSet.class) MemorySegment pStdSPSRaw() {
         return segment.get(LAYOUT$pStdSPS, OFFSET$pStdSPS);
     }
 
-    public void pStdSPSRaw(@pointer(comment="StdVideoH265SequenceParameterSet*") MemorySegment value) {
+    public void pStdSPSRaw(@pointer(target=StdVideoH265SequenceParameterSet.class) MemorySegment value) {
         segment.set(LAYOUT$pStdSPS, OFFSET$pStdSPS, value);
     }
 
@@ -174,11 +174,11 @@ public record VkVideoDecodeH265InlineSessionParametersInfoKHR(@NotNull MemorySeg
         return ret;
     }
 
-    public @pointer(comment="StdVideoH265PictureParameterSet*") MemorySegment pStdPPSRaw() {
+    public @pointer(target=StdVideoH265PictureParameterSet.class) MemorySegment pStdPPSRaw() {
         return segment.get(LAYOUT$pStdPPS, OFFSET$pStdPPS);
     }
 
-    public void pStdPPSRaw(@pointer(comment="StdVideoH265PictureParameterSet*") MemorySegment value) {
+    public void pStdPPSRaw(@pointer(target=StdVideoH265PictureParameterSet.class) MemorySegment value) {
         segment.set(LAYOUT$pStdPPS, OFFSET$pStdPPS, value);
     }
 

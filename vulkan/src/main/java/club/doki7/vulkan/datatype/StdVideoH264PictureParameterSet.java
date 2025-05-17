@@ -154,11 +154,11 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$second_chroma_qp_index_offset, OFFSET$second_chroma_qp_index_offset, value);
     }
 
-    public @pointer(comment="StdVideoH264ScalingLists*") MemorySegment pScalingListsRaw() {
+    public @pointer(target=StdVideoH264ScalingLists.class) MemorySegment pScalingListsRaw() {
         return segment.get(LAYOUT$pScalingLists, OFFSET$pScalingLists);
     }
 
-    public void pScalingListsRaw(@pointer(comment="StdVideoH264ScalingLists*") MemorySegment value) {
+    public void pScalingListsRaw(@pointer(target=StdVideoH264ScalingLists.class) MemorySegment value) {
         segment.set(LAYOUT$pScalingLists, OFFSET$pScalingLists, value);
     }
 

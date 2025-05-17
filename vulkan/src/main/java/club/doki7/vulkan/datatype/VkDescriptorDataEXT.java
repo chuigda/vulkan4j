@@ -75,11 +75,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
         return ret;
     }
 
-    public @pointer(comment="VkSampler*") MemorySegment pSamplerRaw() {
+    public @pointer(target=VkSampler.class) MemorySegment pSamplerRaw() {
         return segment.get(LAYOUT$pSampler, OFFSET$pSampler);
     }
 
-    public void pSamplerRaw(@pointer(comment="VkSampler*") MemorySegment value) {
+    public void pSamplerRaw(@pointer(target=VkSampler.class) MemorySegment value) {
         segment.set(LAYOUT$pSampler, OFFSET$pSampler, value);
     }
 
@@ -100,11 +100,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
         pSamplerRaw(s);
     }
 
-    public @pointer(comment="VkDescriptorImageInfo*") MemorySegment pCombinedImageSamplerRaw() {
+    public @pointer(target=VkDescriptorImageInfo.class) MemorySegment pCombinedImageSamplerRaw() {
         return segment.get(LAYOUT$pCombinedImageSampler, OFFSET$pCombinedImageSampler);
     }
 
-    public void pCombinedImageSamplerRaw(@pointer(comment="VkDescriptorImageInfo*") MemorySegment value) {
+    public void pCombinedImageSamplerRaw(@pointer(target=VkDescriptorImageInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pCombinedImageSampler, OFFSET$pCombinedImageSampler, value);
     }
 
@@ -135,11 +135,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
         return ret;
     }
 
-    public @pointer(comment="VkDescriptorImageInfo*") MemorySegment pInputAttachmentImageRaw() {
+    public @pointer(target=VkDescriptorImageInfo.class) MemorySegment pInputAttachmentImageRaw() {
         return segment.get(LAYOUT$pInputAttachmentImage, OFFSET$pInputAttachmentImage);
     }
 
-    public void pInputAttachmentImageRaw(@pointer(comment="VkDescriptorImageInfo*") MemorySegment value) {
+    public void pInputAttachmentImageRaw(@pointer(target=VkDescriptorImageInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pInputAttachmentImage, OFFSET$pInputAttachmentImage, value);
     }
 
@@ -170,11 +170,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
         return ret;
     }
 
-    public @pointer(comment="VkDescriptorImageInfo*") MemorySegment pSampledImageRaw() {
+    public @pointer(target=VkDescriptorImageInfo.class) MemorySegment pSampledImageRaw() {
         return segment.get(LAYOUT$pSampledImage, OFFSET$pSampledImage);
     }
 
-    public void pSampledImageRaw(@pointer(comment="VkDescriptorImageInfo*") MemorySegment value) {
+    public void pSampledImageRaw(@pointer(target=VkDescriptorImageInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pSampledImage, OFFSET$pSampledImage, value);
     }
 
@@ -205,11 +205,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
         return ret;
     }
 
-    public @pointer(comment="VkDescriptorImageInfo*") MemorySegment pStorageImageRaw() {
+    public @pointer(target=VkDescriptorImageInfo.class) MemorySegment pStorageImageRaw() {
         return segment.get(LAYOUT$pStorageImage, OFFSET$pStorageImage);
     }
 
-    public void pStorageImageRaw(@pointer(comment="VkDescriptorImageInfo*") MemorySegment value) {
+    public void pStorageImageRaw(@pointer(target=VkDescriptorImageInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStorageImage, OFFSET$pStorageImage, value);
     }
 
@@ -240,11 +240,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
         return ret;
     }
 
-    public @pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment pUniformTexelBufferRaw() {
+    public @pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment pUniformTexelBufferRaw() {
         return segment.get(LAYOUT$pUniformTexelBuffer, OFFSET$pUniformTexelBuffer);
     }
 
-    public void pUniformTexelBufferRaw(@pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment value) {
+    public void pUniformTexelBufferRaw(@pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pUniformTexelBuffer, OFFSET$pUniformTexelBuffer, value);
     }
 
@@ -275,11 +275,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
         return ret;
     }
 
-    public @pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment pStorageTexelBufferRaw() {
+    public @pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment pStorageTexelBufferRaw() {
         return segment.get(LAYOUT$pStorageTexelBuffer, OFFSET$pStorageTexelBuffer);
     }
 
-    public void pStorageTexelBufferRaw(@pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment value) {
+    public void pStorageTexelBufferRaw(@pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pStorageTexelBuffer, OFFSET$pStorageTexelBuffer, value);
     }
 
@@ -310,11 +310,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
         return ret;
     }
 
-    public @pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment pUniformBufferRaw() {
+    public @pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment pUniformBufferRaw() {
         return segment.get(LAYOUT$pUniformBuffer, OFFSET$pUniformBuffer);
     }
 
-    public void pUniformBufferRaw(@pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment value) {
+    public void pUniformBufferRaw(@pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pUniformBuffer, OFFSET$pUniformBuffer, value);
     }
 
@@ -345,11 +345,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IPo
         return ret;
     }
 
-    public @pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment pStorageBufferRaw() {
+    public @pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment pStorageBufferRaw() {
         return segment.get(LAYOUT$pStorageBuffer, OFFSET$pStorageBuffer);
     }
 
-    public void pStorageBufferRaw(@pointer(comment="VkDescriptorAddressInfoEXT*") MemorySegment value) {
+    public void pStorageBufferRaw(@pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pStorageBuffer, OFFSET$pStorageBuffer, value);
     }
 

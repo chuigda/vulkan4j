@@ -146,11 +146,11 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$referenceSlotCount, OFFSET$referenceSlotCount, value);
     }
 
-    public @pointer(comment="VkVideoReferenceSlotInfoKHR*") MemorySegment pReferenceSlotsRaw() {
+    public @pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment pReferenceSlotsRaw() {
         return segment.get(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots);
     }
 
-    public void pReferenceSlotsRaw(@pointer(comment="VkVideoReferenceSlotInfoKHR*") MemorySegment value) {
+    public void pReferenceSlotsRaw(@pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots, value);
     }
 

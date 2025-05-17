@@ -103,7 +103,7 @@ private fun generatePNonRefAccessor(pointee: CNonRefType, member: LayoutField.Ty
 }
 
 private fun generatePHandleAccessor(pointee: CHandleType, member: LayoutField.Typed) = buildDoc {
-    val annotation = "@pointer(comment=\"${pointee.name}*\")"
+    val annotation = "@pointer(target=${pointee.name}.class)"
     val rawName = "${member.name}Raw"
 
     defun("public", "$annotation MemorySegment", rawName) {
@@ -137,7 +137,7 @@ private fun generatePHandleAccessor(pointee: CHandleType, member: LayoutField.Ty
 }
 
 private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField.Typed) = buildDoc {
-    val annotation = "@pointer(comment=\"${pointee.name}*\")"
+    val annotation = "@pointer(target=${pointee.name}.class)"
     val rawName = "${member.name}Raw"
 
     defun("public", "$annotation MemorySegment", rawName) {

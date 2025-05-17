@@ -111,11 +111,11 @@ public record VkPipelineLibraryCreateInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$libraryCount, OFFSET$libraryCount, value);
     }
 
-    public @pointer(comment="VkPipeline*") MemorySegment pLibrariesRaw() {
+    public @pointer(target=VkPipeline.class) MemorySegment pLibrariesRaw() {
         return segment.get(LAYOUT$pLibraries, OFFSET$pLibraries);
     }
 
-    public void pLibrariesRaw(@pointer(comment="VkPipeline*") MemorySegment value) {
+    public void pLibrariesRaw(@pointer(target=VkPipeline.class) MemorySegment value) {
         segment.set(LAYOUT$pLibraries, OFFSET$pLibraries, value);
     }
 

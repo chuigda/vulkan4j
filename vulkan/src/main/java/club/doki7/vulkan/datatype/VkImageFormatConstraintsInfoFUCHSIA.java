@@ -147,11 +147,11 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
         segment.set(LAYOUT$colorSpaceCount, OFFSET$colorSpaceCount, value);
     }
 
-    public @pointer(comment="VkSysmemColorSpaceFUCHSIA*") MemorySegment pColorSpacesRaw() {
+    public @pointer(target=VkSysmemColorSpaceFUCHSIA.class) MemorySegment pColorSpacesRaw() {
         return segment.get(LAYOUT$pColorSpaces, OFFSET$pColorSpaces);
     }
 
-    public void pColorSpacesRaw(@pointer(comment="VkSysmemColorSpaceFUCHSIA*") MemorySegment value) {
+    public void pColorSpacesRaw(@pointer(target=VkSysmemColorSpaceFUCHSIA.class) MemorySegment value) {
         segment.set(LAYOUT$pColorSpaces, OFFSET$pColorSpaces, value);
     }
 

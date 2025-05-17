@@ -75,11 +75,11 @@ public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IPoi
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="VkBaseOutStructure*") MemorySegment pNextRaw() {
+    public @pointer(target=VkBaseOutStructure.class) MemorySegment pNextRaw() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNextRaw(@pointer(comment="VkBaseOutStructure*") MemorySegment value) {
+    public void pNextRaw(@pointer(target=VkBaseOutStructure.class) MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 

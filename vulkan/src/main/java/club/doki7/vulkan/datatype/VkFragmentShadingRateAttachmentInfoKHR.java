@@ -103,11 +103,11 @@ public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="VkAttachmentReference2*") MemorySegment pFragmentShadingRateAttachmentRaw() {
+    public @pointer(target=VkAttachmentReference2.class) MemorySegment pFragmentShadingRateAttachmentRaw() {
         return segment.get(LAYOUT$pFragmentShadingRateAttachment, OFFSET$pFragmentShadingRateAttachment);
     }
 
-    public void pFragmentShadingRateAttachmentRaw(@pointer(comment="VkAttachmentReference2*") MemorySegment value) {
+    public void pFragmentShadingRateAttachmentRaw(@pointer(target=VkAttachmentReference2.class) MemorySegment value) {
         segment.set(LAYOUT$pFragmentShadingRateAttachment, OFFSET$pFragmentShadingRateAttachment, value);
     }
 

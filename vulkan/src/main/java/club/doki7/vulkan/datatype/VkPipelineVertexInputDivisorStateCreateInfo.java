@@ -111,11 +111,11 @@ public record VkPipelineVertexInputDivisorStateCreateInfo(@NotNull MemorySegment
         segment.set(LAYOUT$vertexBindingDivisorCount, OFFSET$vertexBindingDivisorCount, value);
     }
 
-    public @pointer(comment="VkVertexInputBindingDivisorDescription*") MemorySegment pVertexBindingDivisorsRaw() {
+    public @pointer(target=VkVertexInputBindingDivisorDescription.class) MemorySegment pVertexBindingDivisorsRaw() {
         return segment.get(LAYOUT$pVertexBindingDivisors, OFFSET$pVertexBindingDivisors);
     }
 
-    public void pVertexBindingDivisorsRaw(@pointer(comment="VkVertexInputBindingDivisorDescription*") MemorySegment value) {
+    public void pVertexBindingDivisorsRaw(@pointer(target=VkVertexInputBindingDivisorDescription.class) MemorySegment value) {
         segment.set(LAYOUT$pVertexBindingDivisors, OFFSET$pVertexBindingDivisors, value);
     }
 

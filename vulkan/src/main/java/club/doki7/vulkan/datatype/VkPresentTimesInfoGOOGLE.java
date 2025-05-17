@@ -111,11 +111,11 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
     }
 
-    public @pointer(comment="VkPresentTimeGOOGLE*") MemorySegment pTimesRaw() {
+    public @pointer(target=VkPresentTimeGOOGLE.class) MemorySegment pTimesRaw() {
         return segment.get(LAYOUT$pTimes, OFFSET$pTimes);
     }
 
-    public void pTimesRaw(@pointer(comment="VkPresentTimeGOOGLE*") MemorySegment value) {
+    public void pTimesRaw(@pointer(target=VkPresentTimeGOOGLE.class) MemorySegment value) {
         segment.set(LAYOUT$pTimes, OFFSET$pTimes, value);
     }
 

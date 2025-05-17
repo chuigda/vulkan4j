@@ -120,11 +120,11 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(@NotNull MemorySegme
         segment.set(LAYOUT$drmFormatModifierPlaneCount, OFFSET$drmFormatModifierPlaneCount, value);
     }
 
-    public @pointer(comment="VkSubresourceLayout*") MemorySegment pPlaneLayoutsRaw() {
+    public @pointer(target=VkSubresourceLayout.class) MemorySegment pPlaneLayoutsRaw() {
         return segment.get(LAYOUT$pPlaneLayouts, OFFSET$pPlaneLayouts);
     }
 
-    public void pPlaneLayoutsRaw(@pointer(comment="VkSubresourceLayout*") MemorySegment value) {
+    public void pPlaneLayoutsRaw(@pointer(target=VkSubresourceLayout.class) MemorySegment value) {
         segment.set(LAYOUT$pPlaneLayouts, OFFSET$pPlaneLayouts, value);
     }
 

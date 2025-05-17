@@ -105,11 +105,11 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="StdVideoAV1SequenceHeader*") MemorySegment pStdSequenceHeaderRaw() {
+    public @pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment pStdSequenceHeaderRaw() {
         return segment.get(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader);
     }
 
-    public void pStdSequenceHeaderRaw(@pointer(comment="StdVideoAV1SequenceHeader*") MemorySegment value) {
+    public void pStdSequenceHeaderRaw(@pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment value) {
         segment.set(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader, value);
     }
 
@@ -140,11 +140,11 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         return ret;
     }
 
-    public @pointer(comment="StdVideoEncodeAV1DecoderModelInfo*") MemorySegment pStdDecoderModelInfoRaw() {
+    public @pointer(target=StdVideoEncodeAV1DecoderModelInfo.class) MemorySegment pStdDecoderModelInfoRaw() {
         return segment.get(LAYOUT$pStdDecoderModelInfo, OFFSET$pStdDecoderModelInfo);
     }
 
-    public void pStdDecoderModelInfoRaw(@pointer(comment="StdVideoEncodeAV1DecoderModelInfo*") MemorySegment value) {
+    public void pStdDecoderModelInfoRaw(@pointer(target=StdVideoEncodeAV1DecoderModelInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStdDecoderModelInfo, OFFSET$pStdDecoderModelInfo, value);
     }
 
@@ -183,11 +183,11 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         segment.set(LAYOUT$stdOperatingPointCount, OFFSET$stdOperatingPointCount, value);
     }
 
-    public @pointer(comment="StdVideoEncodeAV1OperatingPointInfo*") MemorySegment pStdOperatingPointsRaw() {
+    public @pointer(target=StdVideoEncodeAV1OperatingPointInfo.class) MemorySegment pStdOperatingPointsRaw() {
         return segment.get(LAYOUT$pStdOperatingPoints, OFFSET$pStdOperatingPoints);
     }
 
-    public void pStdOperatingPointsRaw(@pointer(comment="StdVideoEncodeAV1OperatingPointInfo*") MemorySegment value) {
+    public void pStdOperatingPointsRaw(@pointer(target=StdVideoEncodeAV1OperatingPointInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStdOperatingPoints, OFFSET$pStdOperatingPoints, value);
     }
 

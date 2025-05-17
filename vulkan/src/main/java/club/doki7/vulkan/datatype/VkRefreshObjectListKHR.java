@@ -111,11 +111,11 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$objectCount, OFFSET$objectCount, value);
     }
 
-    public @pointer(comment="VkRefreshObjectKHR*") MemorySegment pObjectsRaw() {
+    public @pointer(target=VkRefreshObjectKHR.class) MemorySegment pObjectsRaw() {
         return segment.get(LAYOUT$pObjects, OFFSET$pObjects);
     }
 
-    public void pObjectsRaw(@pointer(comment="VkRefreshObjectKHR*") MemorySegment value) {
+    public void pObjectsRaw(@pointer(target=VkRefreshObjectKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
     }
 

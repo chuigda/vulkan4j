@@ -139,11 +139,11 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
     }
 
-    public @pointer(comment="VkPipelineColorBlendAttachmentState*") MemorySegment pAttachmentsRaw() {
+    public @pointer(target=VkPipelineColorBlendAttachmentState.class) MemorySegment pAttachmentsRaw() {
         return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
     }
 
-    public void pAttachmentsRaw(@pointer(comment="VkPipelineColorBlendAttachmentState*") MemorySegment value) {
+    public void pAttachmentsRaw(@pointer(target=VkPipelineColorBlendAttachmentState.class) MemorySegment value) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 

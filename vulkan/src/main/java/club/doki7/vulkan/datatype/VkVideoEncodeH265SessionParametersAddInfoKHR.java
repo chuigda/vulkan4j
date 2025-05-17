@@ -115,11 +115,11 @@ public record VkVideoEncodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         segment.set(LAYOUT$stdVPSCount, OFFSET$stdVPSCount, value);
     }
 
-    public @pointer(comment="StdVideoH265VideoParameterSet*") MemorySegment pStdVPSsRaw() {
+    public @pointer(target=StdVideoH265VideoParameterSet.class) MemorySegment pStdVPSsRaw() {
         return segment.get(LAYOUT$pStdVPSs, OFFSET$pStdVPSs);
     }
 
-    public void pStdVPSsRaw(@pointer(comment="StdVideoH265VideoParameterSet*") MemorySegment value) {
+    public void pStdVPSsRaw(@pointer(target=StdVideoH265VideoParameterSet.class) MemorySegment value) {
         segment.set(LAYOUT$pStdVPSs, OFFSET$pStdVPSs, value);
     }
 
@@ -158,11 +158,11 @@ public record VkVideoEncodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         segment.set(LAYOUT$stdSPSCount, OFFSET$stdSPSCount, value);
     }
 
-    public @pointer(comment="StdVideoH265SequenceParameterSet*") MemorySegment pStdSPSsRaw() {
+    public @pointer(target=StdVideoH265SequenceParameterSet.class) MemorySegment pStdSPSsRaw() {
         return segment.get(LAYOUT$pStdSPSs, OFFSET$pStdSPSs);
     }
 
-    public void pStdSPSsRaw(@pointer(comment="StdVideoH265SequenceParameterSet*") MemorySegment value) {
+    public void pStdSPSsRaw(@pointer(target=StdVideoH265SequenceParameterSet.class) MemorySegment value) {
         segment.set(LAYOUT$pStdSPSs, OFFSET$pStdSPSs, value);
     }
 
@@ -201,11 +201,11 @@ public record VkVideoEncodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         segment.set(LAYOUT$stdPPSCount, OFFSET$stdPPSCount, value);
     }
 
-    public @pointer(comment="StdVideoH265PictureParameterSet*") MemorySegment pStdPPSsRaw() {
+    public @pointer(target=StdVideoH265PictureParameterSet.class) MemorySegment pStdPPSsRaw() {
         return segment.get(LAYOUT$pStdPPSs, OFFSET$pStdPPSs);
     }
 
-    public void pStdPPSsRaw(@pointer(comment="StdVideoH265PictureParameterSet*") MemorySegment value) {
+    public void pStdPPSsRaw(@pointer(target=StdVideoH265PictureParameterSet.class) MemorySegment value) {
         segment.set(LAYOUT$pStdPPSs, OFFSET$pStdPPSs, value);
     }
 

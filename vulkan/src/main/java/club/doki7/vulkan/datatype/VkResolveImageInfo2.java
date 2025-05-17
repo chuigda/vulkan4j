@@ -155,11 +155,11 @@ public record VkResolveImageInfo2(@NotNull MemorySegment segment) implements IPo
         segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
     }
 
-    public @pointer(comment="VkImageResolve2*") MemorySegment pRegionsRaw() {
+    public @pointer(target=VkImageResolve2.class) MemorySegment pRegionsRaw() {
         return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
     }
 
-    public void pRegionsRaw(@pointer(comment="VkImageResolve2*") MemorySegment value) {
+    public void pRegionsRaw(@pointer(target=VkImageResolve2.class) MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 

@@ -120,11 +120,11 @@ public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
     }
 
-    public @pointer(comment="VkRect2D*") MemorySegment pRegionsRaw() {
+    public @pointer(target=VkRect2D.class) MemorySegment pRegionsRaw() {
         return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
     }
 
-    public void pRegionsRaw(@pointer(comment="VkRect2D*") MemorySegment value) {
+    public void pRegionsRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 
