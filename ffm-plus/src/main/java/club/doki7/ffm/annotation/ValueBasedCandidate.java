@@ -1,7 +1,10 @@
 package club.doki7.ffm.annotation;
 
+import java.lang.annotation.Documented;
+
 /// A marker annotation, indicating the type will consequentially become {@code @ValueBased} once Project Valhalla gets
-/// stablized. In order to maintain compatibility, it's better not to rely on object hash identity of these
+/// stabilized. In order to maintain compatibility, it's better not to rely on object hash identity of these
 /// annotated types.
+@Documented
 public @interface ValueBasedCandidate {
 }
