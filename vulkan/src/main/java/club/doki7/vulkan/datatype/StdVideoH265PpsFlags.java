@@ -1,0 +1,419 @@
+package club.doki7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import club.doki7.ffm.IPointer;
+import club.doki7.ffm.NativeLayout;
+import club.doki7.ffm.bits.BitfieldUtil;
+import club.doki7.ffm.annotation.*;
+import club.doki7.ffm.ptr.*;
+import club.doki7.vulkan.bitmask.*;
+import club.doki7.vulkan.handle.*;
+import club.doki7.vulkan.enumtype.*;
+import static club.doki7.vulkan.VkConstants.*;
+
+/// Represents a pointer to a {@code StdVideoH265PpsFlags} structure in native memory.
+///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoH265PpsFlags {
+///     uint32_t dependent_slice_segments_enabled_flag : 1;
+///     uint32_t output_flag_present_flag : 1;
+///     uint32_t sign_data_hiding_enabled_flag : 1;
+///     uint32_t cabac_init_present_flag : 1;
+///     uint32_t constrained_intra_pred_flag : 1;
+///     uint32_t transform_skip_enabled_flag : 1;
+///     uint32_t cu_qp_delta_enabled_flag : 1;
+///     uint32_t pps_slice_chroma_qp_offsets_present_flag : 1;
+///     uint32_t weighted_pred_flag : 1;
+///     uint32_t weighted_bipred_flag : 1;
+///     uint32_t transquant_bypass_enabled_flag : 1;
+///     uint32_t tiles_enabled_flag : 1;
+///     uint32_t entropy_coding_sync_enabled_flag : 1;
+///     uint32_t uniform_spacing_flag : 1;
+///     uint32_t loop_filter_across_tiles_enabled_flag : 1;
+///     uint32_t pps_loop_filter_across_slices_enabled_flag : 1;
+///     uint32_t deblocking_filter_control_present_flag : 1;
+///     uint32_t deblocking_filter_override_enabled_flag : 1;
+///     uint32_t pps_deblocking_filter_disabled_flag : 1;
+///     uint32_t pps_scaling_list_data_present_flag : 1;
+///     uint32_t lists_modification_present_flag : 1;
+///     uint32_t slice_segment_header_extension_present_flag : 1;
+///     uint32_t pps_extension_present_flag : 1;
+///     uint32_t cross_component_prediction_enabled_flag : 1;
+///     uint32_t chroma_qp_offset_list_enabled_flag : 1;
+///     uint32_t pps_curr_pic_ref_enabled_flag : 1;
+///     uint32_t residual_adaptive_colour_transform_enabled_flag : 1;
+///     uint32_t pps_slice_act_qp_offsets_present_flag : 1;
+///     uint32_t pps_palette_predictor_initializers_present_flag : 1;
+///     uint32_t monochrome_palette_flag : 1;
+///     uint32_t pps_range_extension_flag : 1;
+/// } StdVideoH265PpsFlags;
+/// }
+///
+/// ## Contracts
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+@ValueBasedCandidate
+@UnsafeConstructor
+public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IPointer {
+    public static StdVideoH265PpsFlags allocate(Arena arena) {
+        StdVideoH265PpsFlags ret = new StdVideoH265PpsFlags(arena.allocate(LAYOUT));
+        return ret;
+    }
+
+    public static StdVideoH265PpsFlags[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        StdVideoH265PpsFlags[] ret = new StdVideoH265PpsFlags[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new StdVideoH265PpsFlags(segment.asSlice(i * BYTES, BYTES));
+        }
+        return ret;
+    }
+
+    public static StdVideoH265PpsFlags clone(Arena arena, StdVideoH265PpsFlags src) {
+        StdVideoH265PpsFlags ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static StdVideoH265PpsFlags[] clone(Arena arena, StdVideoH265PpsFlags[] src) {
+        StdVideoH265PpsFlags[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public boolean dependent_slice_segments_enabled_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 0);
+    }
+
+    public void dependent_slice_segments_enabled_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 0, value);
+    }
+
+    public boolean output_flag_present_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 1);
+    }
+
+    public void output_flag_present_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 1, value);
+    }
+
+    public boolean sign_data_hiding_enabled_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 2);
+    }
+
+    public void sign_data_hiding_enabled_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 2, value);
+    }
+
+    public boolean cabac_init_present_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 3);
+    }
+
+    public void cabac_init_present_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 3, value);
+    }
+
+    public boolean constrained_intra_pred_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 4);
+    }
+
+    public void constrained_intra_pred_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 4, value);
+    }
+
+    public boolean transform_skip_enabled_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 5);
+    }
+
+    public void transform_skip_enabled_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 5, value);
+    }
+
+    public boolean cu_qp_delta_enabled_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 6);
+    }
+
+    public void cu_qp_delta_enabled_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 6, value);
+    }
+
+    public boolean pps_slice_chroma_qp_offsets_present_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 7);
+    }
+
+    public void pps_slice_chroma_qp_offsets_present_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 7, value);
+    }
+
+    public boolean weighted_pred_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 8);
+    }
+
+    public void weighted_pred_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 8, value);
+    }
+
+    public boolean weighted_bipred_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 9);
+    }
+
+    public void weighted_bipred_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 9, value);
+    }
+
+    public boolean transquant_bypass_enabled_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 10);
+    }
+
+    public void transquant_bypass_enabled_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 10, value);
+    }
+
+    public boolean tiles_enabled_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 11);
+    }
+
+    public void tiles_enabled_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 11, value);
+    }
+
+    public boolean entropy_coding_sync_enabled_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 12);
+    }
+
+    public void entropy_coding_sync_enabled_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 12, value);
+    }
+
+    public boolean uniform_spacing_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 13);
+    }
+
+    public void uniform_spacing_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 13, value);
+    }
+
+    public boolean loop_filter_across_tiles_enabled_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 14);
+    }
+
+    public void loop_filter_across_tiles_enabled_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 14, value);
+    }
+
+    public boolean pps_loop_filter_across_slices_enabled_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 15);
+    }
+
+    public void pps_loop_filter_across_slices_enabled_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 15, value);
+    }
+
+    public boolean deblocking_filter_control_present_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 16);
+    }
+
+    public void deblocking_filter_control_present_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 16, value);
+    }
+
+    public boolean deblocking_filter_override_enabled_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 17);
+    }
+
+    public void deblocking_filter_override_enabled_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 17, value);
+    }
+
+    public boolean pps_deblocking_filter_disabled_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 18);
+    }
+
+    public void pps_deblocking_filter_disabled_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 18, value);
+    }
+
+    public boolean pps_scaling_list_data_present_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 19);
+    }
+
+    public void pps_scaling_list_data_present_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 19, value);
+    }
+
+    public boolean lists_modification_present_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 20);
+    }
+
+    public void lists_modification_present_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 20, value);
+    }
+
+    public boolean slice_segment_header_extension_present_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 21);
+    }
+
+    public void slice_segment_header_extension_present_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 21, value);
+    }
+
+    public boolean pps_extension_present_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 22);
+    }
+
+    public void pps_extension_present_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 22, value);
+    }
+
+    public boolean cross_component_prediction_enabled_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 23);
+    }
+
+    public void cross_component_prediction_enabled_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 23, value);
+    }
+
+    public boolean chroma_qp_offset_list_enabled_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 24);
+    }
+
+    public void chroma_qp_offset_list_enabled_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 24, value);
+    }
+
+    public boolean pps_curr_pic_ref_enabled_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 25);
+    }
+
+    public void pps_curr_pic_ref_enabled_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 25, value);
+    }
+
+    public boolean residual_adaptive_colour_transform_enabled_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 26);
+    }
+
+    public void residual_adaptive_colour_transform_enabled_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 26, value);
+    }
+
+    public boolean pps_slice_act_qp_offsets_present_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 27);
+    }
+
+    public void pps_slice_act_qp_offsets_present_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 27, value);
+    }
+
+    public boolean pps_palette_predictor_initializers_present_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 28);
+    }
+
+    public void pps_palette_predictor_initializers_present_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 28, value);
+    }
+
+    public boolean monochrome_palette_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 29);
+    }
+
+    public void monochrome_palette_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 29, value);
+    }
+
+    public boolean pps_range_extension_flag() {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        return BitfieldUtil.readBit(s, 30);
+    }
+
+    public void pps_range_extension_flag(boolean value) {
+        MemorySegment s = segment.asSlice(OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag, LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+        BitfieldUtil.writeBit(s, 30, value);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("bitfield$dependent_slice_segments_enabled_flag_pps_range_extension_flag")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$bitfield$dependent_slice_segments_enabled_flag_pps_range_extension_flag = PathElement.groupElement("PATH$bitfield$dependent_slice_segments_enabled_flag_pps_range_extension_flag");
+
+    public static final OfInt LAYOUT$dependent_slice_segments_enabled_flag_pps_range_extension_flag = (OfInt) LAYOUT.select(PATH$bitfield$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+
+
+    public static final long OFFSET$dependent_slice_segments_enabled_flag_pps_range_extension_flag = LAYOUT.byteOffset(PATH$bitfield$dependent_slice_segments_enabled_flag_pps_range_extension_flag);
+}
