@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>cc.design7</groupId>
+        <groupId>club.doki7</groupId>
         <artifactId>root</artifactId>
         <version>${revision}</version>
     </parent>
@@ -46,15 +46,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>cc.design7</groupId>
-            <artifactId>ffm-plus</artifactId>
-            <version>0.1.4</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <version>26.0.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>club.doki7</groupId>
+            <artifactId>ffm-plus</artifactId>
+            <version>0.1.4</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
