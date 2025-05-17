@@ -73,6 +73,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.11.2</version>
+                <configuration>
+                    <bottom><![CDATA[Copyright &copy; ${project.inceptionYear}-{currentYear} ${project.organization.name}. Licensed under the BSD 3-Clause License.]]></bottom>
+                </configuration>
                 <reportSets>
                     <reportSet>
                         <id>aggregate</id>
@@ -83,7 +86,7 @@
                         <configuration>
                             <skippedModules>codegen-v2</skippedModules>
                             <doctitle><![CDATA[<code>vulkan4j</code>: CG library bindings implemented with FFM APIs]]></doctitle>
-                            <footer><![CDATA[Copyright &copy; ${project.inceptionYear}-${currentYear} ${project.organization.name}. Licensed under the BSD 3-Clause License.]]></footer>
+                            <addStylesheets>github-colorblind.css</addStylesheets>
                         </configuration>
                     </reportSet>
                     <reportSet>
