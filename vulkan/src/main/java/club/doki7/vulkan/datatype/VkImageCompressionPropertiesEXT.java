@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageCompressionPropertiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkImageCompressionFlagsEXT imageCompressionFlags;
-///     VkImageCompressionFixedRateFlagsEXT imageCompressionFixedRateFlags;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageCompressionFlagsEXT imageCompressionFlags; // @link substring="VkImageCompressionFlagsEXT" target="VkImageCompressionFlagsEXT" @link substring="imageCompressionFlags" target="#imageCompressionFlags"
+///     VkImageCompressionFixedRateFlagsEXT imageCompressionFixedRateFlags; // @link substring="VkImageCompressionFixedRateFlagsEXT" target="VkImageCompressionFixedRateFlagsEXT" @link substring="imageCompressionFixedRateFlags" target="#imageCompressionFixedRateFlags"
 /// } VkImageCompressionPropertiesEXT;
 /// }
 ///

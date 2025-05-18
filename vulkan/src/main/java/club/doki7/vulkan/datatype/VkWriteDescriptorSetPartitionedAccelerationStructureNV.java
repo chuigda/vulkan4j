@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkWriteDescriptorSetPartitionedAccelerationStructureNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t accelerationStructureCount;
-///     VkDeviceAddress const* pAccelerationStructures;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t accelerationStructureCount; // @link substring="accelerationStructureCount" target="#accelerationStructureCount"
+///     VkDeviceAddress const* pAccelerationStructures; // @link substring="pAccelerationStructures" target="#pAccelerationStructures"
 /// } VkWriteDescriptorSetPartitionedAccelerationStructureNV;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkWriteDescriptorSetPartitionedAccelerationStructureNV(@NotNull Me
         segment.set(LAYOUT$accelerationStructureCount, OFFSET$accelerationStructureCount, value);
     }
 
-    public @pointer(comment="long*") MemorySegment pAccelerationStructuresRaw() {
-        return segment.get(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures);
-    }
-
-    public void pAccelerationStructuresRaw(@pointer(comment="long*") MemorySegment value) {
-        segment.set(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures, value);
-    }
-
     /// Note: the returned {@link LongPtr} does not have correct
     /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
@@ -134,6 +126,14 @@ public record VkWriteDescriptorSetPartitionedAccelerationStructureNV(@NotNull Me
     public void pAccelerationStructures(@Nullable @unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAccelerationStructuresRaw(s);
+    }
+
+    public @pointer(comment="long*") MemorySegment pAccelerationStructuresRaw() {
+        return segment.get(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures);
+    }
+
+    public void pAccelerationStructuresRaw(@pointer(comment="long*") MemorySegment value) {
+        segment.set(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

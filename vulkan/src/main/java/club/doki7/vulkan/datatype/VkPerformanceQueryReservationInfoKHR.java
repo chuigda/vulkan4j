@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPerformanceQueryReservationInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t maxPerformanceQueriesPerPool;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxPerformanceQueriesPerPool; // @link substring="maxPerformanceQueriesPerPool" target="#maxPerformanceQueriesPerPool"
 /// } VkPerformanceQueryReservationInfoKHR;
 /// }
 ///

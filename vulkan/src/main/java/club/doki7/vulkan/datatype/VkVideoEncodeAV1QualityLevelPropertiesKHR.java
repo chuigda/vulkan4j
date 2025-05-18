@@ -20,23 +20,23 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeAV1QualityLevelPropertiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkVideoEncodeAV1RateControlFlagsKHR preferredRateControlFlags;
-///     uint32_t preferredGopFrameCount;
-///     uint32_t preferredKeyFramePeriod;
-///     uint32_t preferredConsecutiveBipredictiveFrameCount;
-///     uint32_t preferredTemporalLayerCount;
-///     VkVideoEncodeAV1QIndexKHR preferredConstantQIndex;
-///     uint32_t preferredMaxSingleReferenceCount;
-///     uint32_t preferredSingleReferenceNameMask;
-///     uint32_t preferredMaxUnidirectionalCompoundReferenceCount;
-///     uint32_t preferredMaxUnidirectionalCompoundGroup1ReferenceCount;
-///     uint32_t preferredUnidirectionalCompoundReferenceNameMask;
-///     uint32_t preferredMaxBidirectionalCompoundReferenceCount;
-///     uint32_t preferredMaxBidirectionalCompoundGroup1ReferenceCount;
-///     uint32_t preferredMaxBidirectionalCompoundGroup2ReferenceCount;
-///     uint32_t preferredBidirectionalCompoundReferenceNameMask;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkVideoEncodeAV1RateControlFlagsKHR preferredRateControlFlags; // @link substring="VkVideoEncodeAV1RateControlFlagsKHR" target="VkVideoEncodeAV1RateControlFlagsKHR" @link substring="preferredRateControlFlags" target="#preferredRateControlFlags"
+///     uint32_t preferredGopFrameCount; // @link substring="preferredGopFrameCount" target="#preferredGopFrameCount"
+///     uint32_t preferredKeyFramePeriod; // @link substring="preferredKeyFramePeriod" target="#preferredKeyFramePeriod"
+///     uint32_t preferredConsecutiveBipredictiveFrameCount; // @link substring="preferredConsecutiveBipredictiveFrameCount" target="#preferredConsecutiveBipredictiveFrameCount"
+///     uint32_t preferredTemporalLayerCount; // @link substring="preferredTemporalLayerCount" target="#preferredTemporalLayerCount"
+///     VkVideoEncodeAV1QIndexKHR preferredConstantQIndex; // @link substring="VkVideoEncodeAV1QIndexKHR" target="VkVideoEncodeAV1QIndexKHR" @link substring="preferredConstantQIndex" target="#preferredConstantQIndex"
+///     uint32_t preferredMaxSingleReferenceCount; // @link substring="preferredMaxSingleReferenceCount" target="#preferredMaxSingleReferenceCount"
+///     uint32_t preferredSingleReferenceNameMask; // @link substring="preferredSingleReferenceNameMask" target="#preferredSingleReferenceNameMask"
+///     uint32_t preferredMaxUnidirectionalCompoundReferenceCount; // @link substring="preferredMaxUnidirectionalCompoundReferenceCount" target="#preferredMaxUnidirectionalCompoundReferenceCount"
+///     uint32_t preferredMaxUnidirectionalCompoundGroup1ReferenceCount; // @link substring="preferredMaxUnidirectionalCompoundGroup1ReferenceCount" target="#preferredMaxUnidirectionalCompoundGroup1ReferenceCount"
+///     uint32_t preferredUnidirectionalCompoundReferenceNameMask; // @link substring="preferredUnidirectionalCompoundReferenceNameMask" target="#preferredUnidirectionalCompoundReferenceNameMask"
+///     uint32_t preferredMaxBidirectionalCompoundReferenceCount; // @link substring="preferredMaxBidirectionalCompoundReferenceCount" target="#preferredMaxBidirectionalCompoundReferenceCount"
+///     uint32_t preferredMaxBidirectionalCompoundGroup1ReferenceCount; // @link substring="preferredMaxBidirectionalCompoundGroup1ReferenceCount" target="#preferredMaxBidirectionalCompoundGroup1ReferenceCount"
+///     uint32_t preferredMaxBidirectionalCompoundGroup2ReferenceCount; // @link substring="preferredMaxBidirectionalCompoundGroup2ReferenceCount" target="#preferredMaxBidirectionalCompoundGroup2ReferenceCount"
+///     uint32_t preferredBidirectionalCompoundReferenceNameMask; // @link substring="preferredBidirectionalCompoundReferenceNameMask" target="#preferredBidirectionalCompoundReferenceNameMask"
 /// } VkVideoEncodeAV1QualityLevelPropertiesKHR;
 /// }
 ///
@@ -156,11 +156,11 @@ public record VkVideoEncodeAV1QualityLevelPropertiesKHR(@NotNull MemorySegment s
         segment.set(LAYOUT$preferredTemporalLayerCount, OFFSET$preferredTemporalLayerCount, value);
     }
 
-    public VkVideoEncodeAV1QIndexKHR preferredConstantQIndex() {
+    public @NotNull VkVideoEncodeAV1QIndexKHR preferredConstantQIndex() {
         return new VkVideoEncodeAV1QIndexKHR(segment.asSlice(OFFSET$preferredConstantQIndex, LAYOUT$preferredConstantQIndex));
     }
 
-    public void preferredConstantQIndex(VkVideoEncodeAV1QIndexKHR value) {
+    public void preferredConstantQIndex(@NotNull VkVideoEncodeAV1QIndexKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$preferredConstantQIndex, SIZE$preferredConstantQIndex);
     }
 

@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDevicePipelineBinaryPropertiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 pipelineBinaryInternalCache;
-///     VkBool32 pipelineBinaryInternalCacheControl;
-///     VkBool32 pipelineBinaryPrefersInternalCache;
-///     VkBool32 pipelineBinaryPrecompiledInternalCache;
-///     VkBool32 pipelineBinaryCompressedData;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 pipelineBinaryInternalCache; // @link substring="pipelineBinaryInternalCache" target="#pipelineBinaryInternalCache"
+///     VkBool32 pipelineBinaryInternalCacheControl; // @link substring="pipelineBinaryInternalCacheControl" target="#pipelineBinaryInternalCacheControl"
+///     VkBool32 pipelineBinaryPrefersInternalCache; // @link substring="pipelineBinaryPrefersInternalCache" target="#pipelineBinaryPrefersInternalCache"
+///     VkBool32 pipelineBinaryPrecompiledInternalCache; // @link substring="pipelineBinaryPrecompiledInternalCache" target="#pipelineBinaryPrecompiledInternalCache"
+///     VkBool32 pipelineBinaryCompressedData; // @link substring="pipelineBinaryCompressedData" target="#pipelineBinaryCompressedData"
 /// } VkPhysicalDevicePipelineBinaryPropertiesKHR;
 /// }
 ///

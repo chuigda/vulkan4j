@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkQueueFamilyProperties2 {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkQueueFamilyProperties queueFamilyProperties;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkQueueFamilyProperties queueFamilyProperties; // @link substring="VkQueueFamilyProperties" target="VkQueueFamilyProperties" @link substring="queueFamilyProperties" target="#queueFamilyProperties"
 /// } VkQueueFamilyProperties2;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkQueueFamilyProperties2(@NotNull MemorySegment segment) implement
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkQueueFamilyProperties queueFamilyProperties() {
+    public @NotNull VkQueueFamilyProperties queueFamilyProperties() {
         return new VkQueueFamilyProperties(segment.asSlice(OFFSET$queueFamilyProperties, LAYOUT$queueFamilyProperties));
     }
 
-    public void queueFamilyProperties(VkQueueFamilyProperties value) {
+    public void queueFamilyProperties(@NotNull VkQueueFamilyProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$queueFamilyProperties, SIZE$queueFamilyProperties);
     }
 

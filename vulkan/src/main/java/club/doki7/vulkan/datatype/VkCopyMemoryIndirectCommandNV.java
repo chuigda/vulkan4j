@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCopyMemoryIndirectCommandNV {
-///     VkDeviceAddress srcAddress;
-///     VkDeviceAddress dstAddress;
-///     VkDeviceSize size;
+///     VkDeviceAddress srcAddress; // @link substring="srcAddress" target="#srcAddress"
+///     VkDeviceAddress dstAddress; // @link substring="dstAddress" target="#dstAddress"
+///     VkDeviceSize size; // @link substring="size" target="#size"
 /// } VkCopyMemoryIndirectCommandNV;
 /// }
 ///

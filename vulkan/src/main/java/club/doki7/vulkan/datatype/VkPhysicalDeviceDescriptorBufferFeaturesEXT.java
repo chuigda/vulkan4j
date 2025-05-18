@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceDescriptorBufferFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 descriptorBuffer;
-///     VkBool32 descriptorBufferCaptureReplay;
-///     VkBool32 descriptorBufferImageLayoutIgnored;
-///     VkBool32 descriptorBufferPushDescriptors;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 descriptorBuffer; // @link substring="descriptorBuffer" target="#descriptorBuffer"
+///     VkBool32 descriptorBufferCaptureReplay; // @link substring="descriptorBufferCaptureReplay" target="#descriptorBufferCaptureReplay"
+///     VkBool32 descriptorBufferImageLayoutIgnored; // @link substring="descriptorBufferImageLayoutIgnored" target="#descriptorBufferImageLayoutIgnored"
+///     VkBool32 descriptorBufferPushDescriptors; // @link substring="descriptorBufferPushDescriptors" target="#descriptorBufferPushDescriptors"
 /// } VkPhysicalDeviceDescriptorBufferFeaturesEXT;
 /// }
 ///

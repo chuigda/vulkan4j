@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeH265ReferenceInfo {
-///     StdVideoEncodeH265ReferenceInfoFlags flags;
-///     StdVideoH265PictureType pic_type;
-///     int32_t PicOrderCntVal;
-///     uint8_t TemporalId;
+///     StdVideoEncodeH265ReferenceInfoFlags flags; // @link substring="StdVideoEncodeH265ReferenceInfoFlags" target="StdVideoEncodeH265ReferenceInfoFlags" @link substring="flags" target="#flags"
+///     StdVideoH265PictureType pic_type; // @link substring="StdVideoH265PictureType" target="StdVideoH265PictureType" @link substring="pic_type" target="#pic_type"
+///     int32_t PicOrderCntVal; // @link substring="PicOrderCntVal" target="#PicOrderCntVal"
+///     uint8_t TemporalId; // @link substring="TemporalId" target="#TemporalId"
 /// } StdVideoEncodeH265ReferenceInfo;
 /// }
 ///
@@ -67,11 +67,11 @@ public record StdVideoEncodeH265ReferenceInfo(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public StdVideoEncodeH265ReferenceInfoFlags flags() {
+    public @NotNull StdVideoEncodeH265ReferenceInfoFlags flags() {
         return new StdVideoEncodeH265ReferenceInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoEncodeH265ReferenceInfoFlags value) {
+    public void flags(@NotNull StdVideoEncodeH265ReferenceInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 

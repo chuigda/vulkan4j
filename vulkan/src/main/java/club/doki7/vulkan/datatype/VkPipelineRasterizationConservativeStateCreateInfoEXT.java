@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineRasterizationConservativeStateCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineRasterizationConservativeStateCreateFlagsEXT flags; // optional
-///     VkConservativeRasterizationModeEXT conservativeRasterizationMode;
-///     float extraPrimitiveOverestimationSize;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineRasterizationConservativeStateCreateFlagsEXT flags; // optional // @link substring="VkPipelineRasterizationConservativeStateCreateFlagsEXT" target="VkPipelineRasterizationConservativeStateCreateFlagsEXT" @link substring="flags" target="#flags"
+///     VkConservativeRasterizationModeEXT conservativeRasterizationMode; // @link substring="VkConservativeRasterizationModeEXT" target="VkConservativeRasterizationModeEXT" @link substring="conservativeRasterizationMode" target="#conservativeRasterizationMode"
+///     float extraPrimitiveOverestimationSize; // @link substring="extraPrimitiveOverestimationSize" target="#extraPrimitiveOverestimationSize"
 /// } VkPipelineRasterizationConservativeStateCreateInfoEXT;
 /// }
 ///

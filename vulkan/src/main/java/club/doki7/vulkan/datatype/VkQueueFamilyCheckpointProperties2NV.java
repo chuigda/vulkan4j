@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkQueueFamilyCheckpointProperties2NV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkPipelineStageFlags2 checkpointExecutionStageMask;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineStageFlags2 checkpointExecutionStageMask; // @link substring="VkPipelineStageFlags2" target="VkPipelineStageFlags2" @link substring="checkpointExecutionStageMask" target="#checkpointExecutionStageMask"
 /// } VkQueueFamilyCheckpointProperties2NV;
 /// }
 ///

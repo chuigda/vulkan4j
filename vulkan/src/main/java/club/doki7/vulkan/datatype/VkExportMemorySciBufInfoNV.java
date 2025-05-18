@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExportMemorySciBufInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     NvSciBufAttrList pAttributes;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     NvSciBufAttrList pAttributes; // @link substring="pAttributes" target="#pAttributes"
 /// } VkExportMemorySciBufInfoNV;
 /// }
 ///

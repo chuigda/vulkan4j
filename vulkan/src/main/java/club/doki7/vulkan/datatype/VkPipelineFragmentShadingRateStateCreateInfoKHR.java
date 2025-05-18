@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineFragmentShadingRateStateCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkExtent2D fragmentSize;
-///     VkFragmentShadingRateCombinerOpKHR combinerOps;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkExtent2D fragmentSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="fragmentSize" target="#fragmentSize"
+///     VkFragmentShadingRateCombinerOpKHR combinerOps; // @link substring="VkFragmentShadingRateCombinerOpKHR" target="VkFragmentShadingRateCombinerOpKHR" @link substring="combinerOps" target="#combinerOps"
 /// } VkPipelineFragmentShadingRateStateCreateInfoKHR;
 /// }
 ///
@@ -103,11 +103,11 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkExtent2D fragmentSize() {
+    public @NotNull VkExtent2D fragmentSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$fragmentSize, LAYOUT$fragmentSize));
     }
 
-    public void fragmentSize(VkExtent2D value) {
+    public void fragmentSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$fragmentSize, SIZE$fragmentSize);
     }
 

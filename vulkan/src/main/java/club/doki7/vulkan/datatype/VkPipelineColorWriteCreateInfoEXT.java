@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineColorWriteCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t attachmentCount; // optional
-///     VkBool32 const* pColorWriteEnables;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t attachmentCount; // optional // @link substring="attachmentCount" target="#attachmentCount"
+///     VkBool32 const* pColorWriteEnables; // @link substring="pColorWriteEnables" target="#pColorWriteEnables"
 /// } VkPipelineColorWriteCreateInfoEXT;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pColorWriteEnablesRaw() {
-        return segment.get(LAYOUT$pColorWriteEnables, OFFSET$pColorWriteEnables);
-    }
-
-    public void pColorWriteEnablesRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pColorWriteEnables, OFFSET$pColorWriteEnables, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -134,6 +126,14 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
     public void pColorWriteEnables(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorWriteEnablesRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pColorWriteEnablesRaw() {
+        return segment.get(LAYOUT$pColorWriteEnables, OFFSET$pColorWriteEnables);
+    }
+
+    public void pColorWriteEnablesRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pColorWriteEnables, OFFSET$pColorWriteEnables, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

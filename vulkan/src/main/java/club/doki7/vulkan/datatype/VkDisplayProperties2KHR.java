@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDisplayProperties2KHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkDisplayPropertiesKHR displayProperties;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDisplayPropertiesKHR displayProperties; // @link substring="VkDisplayPropertiesKHR" target="VkDisplayPropertiesKHR" @link substring="displayProperties" target="#displayProperties"
 /// } VkDisplayProperties2KHR;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkDisplayProperties2KHR(@NotNull MemorySegment segment) implements
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkDisplayPropertiesKHR displayProperties() {
+    public @NotNull VkDisplayPropertiesKHR displayProperties() {
         return new VkDisplayPropertiesKHR(segment.asSlice(OFFSET$displayProperties, LAYOUT$displayProperties));
     }
 
-    public void displayProperties(VkDisplayPropertiesKHR value) {
+    public void displayProperties(@NotNull VkDisplayPropertiesKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayProperties, SIZE$displayProperties);
     }
 

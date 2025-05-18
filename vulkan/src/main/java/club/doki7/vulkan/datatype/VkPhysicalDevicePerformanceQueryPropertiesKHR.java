@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDevicePerformanceQueryPropertiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 allowCommandBufferQueryCopies;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 allowCommandBufferQueryCopies; // @link substring="allowCommandBufferQueryCopies" target="#allowCommandBufferQueryCopies"
 /// } VkPhysicalDevicePerformanceQueryPropertiesKHR;
 /// }
 ///

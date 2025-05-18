@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCuFunctionCreateInfoNVX {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkCuModuleNVX module;
-///     char const* pName;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkCuModuleNVX module; // @link substring="VkCuModuleNVX" target="VkCuModuleNVX" @link substring="module" target="#module"
+///     char const* pName; // @link substring="pName" target="#pName"
 /// } VkCuFunctionCreateInfoNVX;
 /// }
 ///
@@ -115,14 +115,6 @@ public record VkCuFunctionCreateInfoNVX(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$module, OFFSET$module, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="byte*") MemorySegment pNameRaw() {
-        return segment.get(LAYOUT$pName, OFFSET$pName);
-    }
-
-    public void pNameRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pName, OFFSET$pName, value);
-    }
-
     /// Note: the returned {@link BytePtr} does not have correct
     /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
@@ -138,6 +130,14 @@ public record VkCuFunctionCreateInfoNVX(@NotNull MemorySegment segment) implemen
     public void pName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNameRaw(s);
+    }
+
+    public @pointer(comment="byte*") MemorySegment pNameRaw() {
+        return segment.get(LAYOUT$pName, OFFSET$pName);
+    }
+
+    public void pNameRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

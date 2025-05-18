@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAntiLagDataAMD {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkAntiLagModeAMD mode;
-///     uint32_t maxFPS;
-///     VkAntiLagPresentationInfoAMD const* pPresentationInfo; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkAntiLagModeAMD mode; // @link substring="VkAntiLagModeAMD" target="VkAntiLagModeAMD" @link substring="mode" target="#mode"
+///     uint32_t maxFPS; // @link substring="maxFPS" target="#maxFPS"
+///     VkAntiLagPresentationInfoAMD const* pPresentationInfo; // optional // @link substring="VkAntiLagPresentationInfoAMD" target="VkAntiLagPresentationInfoAMD" @link substring="pPresentationInfo" target="#pPresentationInfo"
 /// } VkAntiLagDataAMD;
 /// }
 ///
@@ -120,14 +120,6 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IPoint
         segment.set(LAYOUT$maxFPS, OFFSET$maxFPS, value);
     }
 
-    public @pointer(target=VkAntiLagPresentationInfoAMD.class) MemorySegment pPresentationInfoRaw() {
-        return segment.get(LAYOUT$pPresentationInfo, OFFSET$pPresentationInfo);
-    }
-
-    public void pPresentationInfoRaw(@pointer(target=VkAntiLagPresentationInfoAMD.class) MemorySegment value) {
-        segment.set(LAYOUT$pPresentationInfo, OFFSET$pPresentationInfo, value);
-    }
-
     public @Nullable VkAntiLagPresentationInfoAMD pPresentationInfo() {
         MemorySegment s = pPresentationInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -153,6 +145,14 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IPoint
             ret[i] = new VkAntiLagPresentationInfoAMD(s.asSlice(i * VkAntiLagPresentationInfoAMD.BYTES, VkAntiLagPresentationInfoAMD.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkAntiLagPresentationInfoAMD.class) MemorySegment pPresentationInfoRaw() {
+        return segment.get(LAYOUT$pPresentationInfo, OFFSET$pPresentationInfo);
+    }
+
+    public void pPresentationInfoRaw(@pointer(target=VkAntiLagPresentationInfoAMD.class) MemorySegment value) {
+        segment.set(LAYOUT$pPresentationInfo, OFFSET$pPresentationInfo, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

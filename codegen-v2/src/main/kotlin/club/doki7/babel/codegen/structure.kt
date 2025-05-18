@@ -3,9 +3,12 @@ package club.doki7.babel.codegen
 import club.doki7.babel.codegen.accessor.*
 import club.doki7.babel.ctype.*
 import club.doki7.babel.ctype.lowerType
+import club.doki7.babel.registry.ArrayType
 import club.doki7.babel.registry.IdentifierType
+import club.doki7.babel.registry.PointerType
 import club.doki7.babel.registry.RegistryBase
 import club.doki7.babel.registry.Structure
+import club.doki7.babel.registry.Type
 import club.doki7.babel.util.Doc
 import club.doki7.babel.util.buildDoc
 
@@ -112,12 +115,23 @@ fun generateStructure(
     +"///"
     +"/// {@snippet lang=c :"
     +"/// typedef struct $originalTypeName {"
-    structure.members.forEach {
-        val maybeOptionalComment = if (it.optional) " // optional" else ""
+    structure.members.forEachIndexed { idx, it ->
+        val fieldLink = " @link substring=\"${it.name}\" target=\"#${it.name}\""
+
         if (it.bits != null) {
-            +"///     ${it.type.cDisplay} ${it.name} : ${it.bits};$maybeOptionalComment"
+            +"///     ${it.type.cDisplay} ${it.name} : ${it.bits}; //$fieldLink"
         } else {
-            +"///     ${it.type.cDisplay} ${it.name};$maybeOptionalComment"
+            val maybeOptionalComment = if (it.optional) " // optional" else ""
+
+            val cType = (layouts[idx] as LayoutField.Typed).type
+            val fieldTypeSubstring = tryFindRootNonPlainType(cType)
+            val fieldTypeTarget = tryFindIdentifierType(it.type)
+            val maybeTypeLink = if (fieldTypeSubstring != null && fieldTypeTarget != null) {
+                " @link substring=\"$fieldTypeSubstring\" target=\"${fieldTypeTarget}\""
+            } else {
+                ""
+            }
+            +"///     ${it.type.cDisplay} ${it.name};$maybeOptionalComment //$maybeTypeLink$fieldLink"
         }
     }
     +"/// } $originalTypeName;"
@@ -427,4 +441,19 @@ private fun generateMemberAccessor(layout: LayoutField.Typed): Doc {
         is CStructType -> generateStructureTypeAccessor(cType, layout)
         is CVoidType -> throw Exception("void type not allowed in struct")
     }
+}
+
+private fun tryFindRootNonPlainType(cType: CType): String? = when (cType) {
+    is CArrayType -> tryFindRootNonPlainType(cType.element)
+    is CPointerType -> tryFindRootNonPlainType(cType.pointee)
+    is CHandleType -> cType.name
+    is CEnumType -> cType.name
+    is CStructType -> cType.name
+    is CVoidType, is CFixedIntType, is CFloatType, is CPlatformDependentIntType -> null
+}
+
+private fun tryFindIdentifierType(type: Type): String? = when (type) {
+    is ArrayType -> tryFindIdentifierType(type.element)
+    is PointerType -> tryFindIdentifierType(type.pointee)
+    is IdentifierType -> type.ident.toString()
 }

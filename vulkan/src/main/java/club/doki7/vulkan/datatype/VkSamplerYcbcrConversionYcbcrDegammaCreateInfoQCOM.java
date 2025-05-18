@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 enableYDegamma;
-///     VkBool32 enableCbCrDegamma;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 enableYDegamma; // @link substring="enableYDegamma" target="#enableYDegamma"
+///     VkBool32 enableCbCrDegamma; // @link substring="enableCbCrDegamma" target="#enableCbCrDegamma"
 /// } VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM;
 /// }
 ///

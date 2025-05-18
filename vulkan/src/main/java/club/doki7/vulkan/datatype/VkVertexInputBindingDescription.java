@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVertexInputBindingDescription {
-///     uint32_t binding;
-///     uint32_t stride;
-///     VkVertexInputRate inputRate;
+///     uint32_t binding; // @link substring="binding" target="#binding"
+///     uint32_t stride; // @link substring="stride" target="#stride"
+///     VkVertexInputRate inputRate; // @link substring="VkVertexInputRate" target="VkVertexInputRate" @link substring="inputRate" target="#inputRate"
 /// } VkVertexInputBindingDescription;
 /// }
 ///

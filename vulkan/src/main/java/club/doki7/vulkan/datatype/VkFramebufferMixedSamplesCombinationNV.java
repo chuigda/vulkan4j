@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkFramebufferMixedSamplesCombinationNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkCoverageReductionModeNV coverageReductionMode;
-///     VkSampleCountFlags rasterizationSamples;
-///     VkSampleCountFlags depthStencilSamples;
-///     VkSampleCountFlags colorSamples;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkCoverageReductionModeNV coverageReductionMode; // @link substring="VkCoverageReductionModeNV" target="VkCoverageReductionModeNV" @link substring="coverageReductionMode" target="#coverageReductionMode"
+///     VkSampleCountFlags rasterizationSamples; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="rasterizationSamples" target="#rasterizationSamples"
+///     VkSampleCountFlags depthStencilSamples; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="depthStencilSamples" target="#depthStencilSamples"
+///     VkSampleCountFlags colorSamples; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="colorSamples" target="#colorSamples"
 /// } VkFramebufferMixedSamplesCombinationNV;
 /// }
 ///

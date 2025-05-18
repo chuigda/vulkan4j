@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceFaultCountsEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t addressInfoCount; // optional
-///     uint32_t vendorInfoCount; // optional
-///     VkDeviceSize vendorBinarySize; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t addressInfoCount; // optional // @link substring="addressInfoCount" target="#addressInfoCount"
+///     uint32_t vendorInfoCount; // optional // @link substring="vendorInfoCount" target="#vendorInfoCount"
+///     VkDeviceSize vendorBinarySize; // optional // @link substring="vendorBinarySize" target="#vendorBinarySize"
 /// } VkDeviceFaultCountsEXT;
 /// }
 ///

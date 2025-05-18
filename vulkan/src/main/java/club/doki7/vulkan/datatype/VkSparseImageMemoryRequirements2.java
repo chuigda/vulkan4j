@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSparseImageMemoryRequirements2 {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkSparseImageMemoryRequirements memoryRequirements;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSparseImageMemoryRequirements memoryRequirements; // @link substring="VkSparseImageMemoryRequirements" target="VkSparseImageMemoryRequirements" @link substring="memoryRequirements" target="#memoryRequirements"
 /// } VkSparseImageMemoryRequirements2;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkSparseImageMemoryRequirements2(@NotNull MemorySegment segment) i
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkSparseImageMemoryRequirements memoryRequirements() {
+    public @NotNull VkSparseImageMemoryRequirements memoryRequirements() {
         return new VkSparseImageMemoryRequirements(segment.asSlice(OFFSET$memoryRequirements, LAYOUT$memoryRequirements));
     }
 
-    public void memoryRequirements(VkSparseImageMemoryRequirements value) {
+    public void memoryRequirements(@NotNull VkSparseImageMemoryRequirements value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryRequirements, SIZE$memoryRequirements);
     }
 

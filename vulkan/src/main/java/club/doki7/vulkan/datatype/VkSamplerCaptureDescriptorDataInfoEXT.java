@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSamplerCaptureDescriptorDataInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkSampler sampler;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSampler sampler; // @link substring="VkSampler" target="VkSampler" @link substring="sampler" target="#sampler"
 /// } VkSamplerCaptureDescriptorDataInfoEXT;
 /// }
 ///

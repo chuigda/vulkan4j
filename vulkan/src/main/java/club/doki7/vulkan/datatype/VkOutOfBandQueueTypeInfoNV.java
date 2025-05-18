@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkOutOfBandQueueTypeInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkOutOfBandQueueTypeNV queueType;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkOutOfBandQueueTypeNV queueType; // @link substring="VkOutOfBandQueueTypeNV" target="VkOutOfBandQueueTypeNV" @link substring="queueType" target="#queueType"
 /// } VkOutOfBandQueueTypeInfoNV;
 /// }
 ///

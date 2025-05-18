@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1CDEF {
-///     uint8_t cdef_damping_minus_3;
-///     uint8_t cdef_bits;
-///     uint8_t cdef_y_pri_strength;
-///     uint8_t cdef_y_sec_strength;
-///     uint8_t cdef_uv_pri_strength;
-///     uint8_t cdef_uv_sec_strength;
+///     uint8_t cdef_damping_minus_3; // @link substring="cdef_damping_minus_3" target="#cdef_damping_minus_3"
+///     uint8_t cdef_bits; // @link substring="cdef_bits" target="#cdef_bits"
+///     uint8_t cdef_y_pri_strength; // @link substring="cdef_y_pri_strength" target="#cdef_y_pri_strength"
+///     uint8_t cdef_y_sec_strength; // @link substring="cdef_y_sec_strength" target="#cdef_y_sec_strength"
+///     uint8_t cdef_uv_pri_strength; // @link substring="cdef_uv_pri_strength" target="#cdef_uv_pri_strength"
+///     uint8_t cdef_uv_sec_strength; // @link substring="cdef_uv_sec_strength" target="#cdef_uv_sec_strength"
 /// } StdVideoAV1CDEF;
 /// }
 ///

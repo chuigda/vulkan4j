@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeUsageInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkVideoEncodeUsageFlagsKHR videoUsageHints; // optional
-///     VkVideoEncodeContentFlagsKHR videoContentHints; // optional
-///     VkVideoEncodeTuningModeKHR tuningMode; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkVideoEncodeUsageFlagsKHR videoUsageHints; // optional // @link substring="VkVideoEncodeUsageFlagsKHR" target="VkVideoEncodeUsageFlagsKHR" @link substring="videoUsageHints" target="#videoUsageHints"
+///     VkVideoEncodeContentFlagsKHR videoContentHints; // optional // @link substring="VkVideoEncodeContentFlagsKHR" target="VkVideoEncodeContentFlagsKHR" @link substring="videoContentHints" target="#videoContentHints"
+///     VkVideoEncodeTuningModeKHR tuningMode; // optional // @link substring="VkVideoEncodeTuningModeKHR" target="VkVideoEncodeTuningModeKHR" @link substring="tuningMode" target="#tuningMode"
 /// } VkVideoEncodeUsageInfoKHR;
 /// }
 ///

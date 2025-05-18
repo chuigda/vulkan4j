@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassStripeSubmitInfoARM {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t stripeSemaphoreInfoCount;
-///     VkSemaphoreSubmitInfo const* pStripeSemaphoreInfos;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t stripeSemaphoreInfoCount; // @link substring="stripeSemaphoreInfoCount" target="#stripeSemaphoreInfoCount"
+///     VkSemaphoreSubmitInfo const* pStripeSemaphoreInfos; // @link substring="VkSemaphoreSubmitInfo" target="VkSemaphoreSubmitInfo" @link substring="pStripeSemaphoreInfos" target="#pStripeSemaphoreInfos"
 /// } VkRenderPassStripeSubmitInfoARM;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$stripeSemaphoreInfoCount, OFFSET$stripeSemaphoreInfoCount, value);
     }
 
-    public @pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment pStripeSemaphoreInfosRaw() {
-        return segment.get(LAYOUT$pStripeSemaphoreInfos, OFFSET$pStripeSemaphoreInfos);
-    }
-
-    public void pStripeSemaphoreInfosRaw(@pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pStripeSemaphoreInfos, OFFSET$pStripeSemaphoreInfos, value);
-    }
-
     public @Nullable VkSemaphoreSubmitInfo pStripeSemaphoreInfos() {
         MemorySegment s = pStripeSemaphoreInfosRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
             ret[i] = new VkSemaphoreSubmitInfo(s.asSlice(i * VkSemaphoreSubmitInfo.BYTES, VkSemaphoreSubmitInfo.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment pStripeSemaphoreInfosRaw() {
+        return segment.get(LAYOUT$pStripeSemaphoreInfos, OFFSET$pStripeSemaphoreInfos);
+    }
+
+    public void pStripeSemaphoreInfosRaw(@pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pStripeSemaphoreInfos, OFFSET$pStripeSemaphoreInfos, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

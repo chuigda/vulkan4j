@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineDiscardRectangleStateCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineDiscardRectangleStateCreateFlagsEXT flags; // optional
-///     VkDiscardRectangleModeEXT discardRectangleMode;
-///     uint32_t discardRectangleCount; // optional
-///     VkRect2D const* pDiscardRectangles;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineDiscardRectangleStateCreateFlagsEXT flags; // optional // @link substring="VkPipelineDiscardRectangleStateCreateFlagsEXT" target="VkPipelineDiscardRectangleStateCreateFlagsEXT" @link substring="flags" target="#flags"
+///     VkDiscardRectangleModeEXT discardRectangleMode; // @link substring="VkDiscardRectangleModeEXT" target="VkDiscardRectangleModeEXT" @link substring="discardRectangleMode" target="#discardRectangleMode"
+///     uint32_t discardRectangleCount; // optional // @link substring="discardRectangleCount" target="#discardRectangleCount"
+///     VkRect2D const* pDiscardRectangles; // @link substring="VkRect2D" target="VkRect2D" @link substring="pDiscardRectangles" target="#pDiscardRectangles"
 /// } VkPipelineDiscardRectangleStateCreateInfoEXT;
 /// }
 ///
@@ -129,14 +129,6 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         segment.set(LAYOUT$discardRectangleCount, OFFSET$discardRectangleCount, value);
     }
 
-    public @pointer(target=VkRect2D.class) MemorySegment pDiscardRectanglesRaw() {
-        return segment.get(LAYOUT$pDiscardRectangles, OFFSET$pDiscardRectangles);
-    }
-
-    public void pDiscardRectanglesRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
-        segment.set(LAYOUT$pDiscardRectangles, OFFSET$pDiscardRectangles, value);
-    }
-
     public @Nullable VkRect2D pDiscardRectangles() {
         MemorySegment s = pDiscardRectanglesRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -162,6 +154,14 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
             ret[i] = new VkRect2D(s.asSlice(i * VkRect2D.BYTES, VkRect2D.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkRect2D.class) MemorySegment pDiscardRectanglesRaw() {
+        return segment.get(LAYOUT$pDiscardRectangles, OFFSET$pDiscardRectangles);
+    }
+
+    public void pDiscardRectanglesRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
+        segment.set(LAYOUT$pDiscardRectangles, OFFSET$pDiscardRectangles, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkWriteIndirectExecutionSetShaderEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t index;
-///     VkShaderEXT shader;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t index; // @link substring="index" target="#index"
+///     VkShaderEXT shader; // @link substring="VkShaderEXT" target="VkShaderEXT" @link substring="shader" target="#shader"
 /// } VkWriteIndirectExecutionSetShaderEXT;
 /// }
 ///

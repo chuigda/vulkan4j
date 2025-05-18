@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDisplayPlaneCapabilities2KHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkDisplayPlaneCapabilitiesKHR capabilities;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDisplayPlaneCapabilitiesKHR capabilities; // @link substring="VkDisplayPlaneCapabilitiesKHR" target="VkDisplayPlaneCapabilitiesKHR" @link substring="capabilities" target="#capabilities"
 /// } VkDisplayPlaneCapabilities2KHR;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkDisplayPlaneCapabilities2KHR(@NotNull MemorySegment segment) imp
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkDisplayPlaneCapabilitiesKHR capabilities() {
+    public @NotNull VkDisplayPlaneCapabilitiesKHR capabilities() {
         return new VkDisplayPlaneCapabilitiesKHR(segment.asSlice(OFFSET$capabilities, LAYOUT$capabilities));
     }
 
-    public void capabilities(VkDisplayPlaneCapabilitiesKHR value) {
+    public void capabilities(@NotNull VkDisplayPlaneCapabilitiesKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$capabilities, SIZE$capabilities);
     }
 

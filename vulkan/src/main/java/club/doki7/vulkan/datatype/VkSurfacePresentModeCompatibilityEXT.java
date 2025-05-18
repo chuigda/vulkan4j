@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSurfacePresentModeCompatibilityEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t presentModeCount; // optional
-///     VkPresentModeKHR* pPresentModes; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t presentModeCount; // optional // @link substring="presentModeCount" target="#presentModeCount"
+///     VkPresentModeKHR* pPresentModes; // optional // @link substring="VkPresentModeKHR" target="VkPresentModeKHR" @link substring="pPresentModes" target="#pPresentModes"
 /// } VkSurfacePresentModeCompatibilityEXT;
 /// }
 ///
@@ -111,13 +111,6 @@ public record VkSurfacePresentModeCompatibilityEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$presentModeCount, OFFSET$presentModeCount, value);
     }
 
-    public @pointer(target=VkPresentModeKHR.class) MemorySegment pPresentModesRaw() {
-        return segment.get(LAYOUT$pPresentModes, OFFSET$pPresentModes);
-    }
-
-    public void pPresentModesRaw(@pointer(target=VkPresentModeKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pPresentModes, OFFSET$pPresentModes, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -134,6 +127,14 @@ public record VkSurfacePresentModeCompatibilityEXT(@NotNull MemorySegment segmen
     public void pPresentModes(@Nullable @enumtype(VkPresentModeKHR.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPresentModesRaw(s);
+    }
+
+    public @pointer(target=VkPresentModeKHR.class) MemorySegment pPresentModesRaw() {
+        return segment.get(LAYOUT$pPresentModes, OFFSET$pPresentModes);
+    }
+
+    public void pPresentModesRaw(@pointer(target=VkPresentModeKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pPresentModes, OFFSET$pPresentModes, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

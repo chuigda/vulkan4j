@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMaintenance5Features {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 maintenance5;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 maintenance5; // @link substring="maintenance5" target="#maintenance5"
 /// } VkPhysicalDeviceMaintenance5Features;
 /// }
 ///

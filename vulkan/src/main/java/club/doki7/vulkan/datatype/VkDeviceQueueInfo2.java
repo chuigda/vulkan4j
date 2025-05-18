@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceQueueInfo2 {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDeviceQueueCreateFlags flags; // optional
-///     uint32_t queueFamilyIndex;
-///     uint32_t queueIndex;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceQueueCreateFlags flags; // optional // @link substring="VkDeviceQueueCreateFlags" target="VkDeviceQueueCreateFlags" @link substring="flags" target="#flags"
+///     uint32_t queueFamilyIndex; // @link substring="queueFamilyIndex" target="#queueFamilyIndex"
+///     uint32_t queueIndex; // @link substring="queueIndex" target="#queueIndex"
 /// } VkDeviceQueueInfo2;
 /// }
 ///

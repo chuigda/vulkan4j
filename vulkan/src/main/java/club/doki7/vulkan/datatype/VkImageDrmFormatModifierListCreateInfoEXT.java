@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageDrmFormatModifierListCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t drmFormatModifierCount;
-///     uint64_t const* pDrmFormatModifiers;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t drmFormatModifierCount; // @link substring="drmFormatModifierCount" target="#drmFormatModifierCount"
+///     uint64_t const* pDrmFormatModifiers; // @link substring="pDrmFormatModifiers" target="#pDrmFormatModifiers"
 /// } VkImageDrmFormatModifierListCreateInfoEXT;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkImageDrmFormatModifierListCreateInfoEXT(@NotNull MemorySegment s
         segment.set(LAYOUT$drmFormatModifierCount, OFFSET$drmFormatModifierCount, value);
     }
 
-    public @pointer(comment="long*") MemorySegment pDrmFormatModifiersRaw() {
-        return segment.get(LAYOUT$pDrmFormatModifiers, OFFSET$pDrmFormatModifiers);
-    }
-
-    public void pDrmFormatModifiersRaw(@pointer(comment="long*") MemorySegment value) {
-        segment.set(LAYOUT$pDrmFormatModifiers, OFFSET$pDrmFormatModifiers, value);
-    }
-
     /// Note: the returned {@link LongPtr} does not have correct
     /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
@@ -134,6 +126,14 @@ public record VkImageDrmFormatModifierListCreateInfoEXT(@NotNull MemorySegment s
     public void pDrmFormatModifiers(@Nullable @unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDrmFormatModifiersRaw(s);
+    }
+
+    public @pointer(comment="long*") MemorySegment pDrmFormatModifiersRaw() {
+        return segment.get(LAYOUT$pDrmFormatModifiers, OFFSET$pDrmFormatModifiers);
+    }
+
+    public void pDrmFormatModifiersRaw(@pointer(comment="long*") MemorySegment value) {
+        segment.set(LAYOUT$pDrmFormatModifiers, OFFSET$pDrmFormatModifiers, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

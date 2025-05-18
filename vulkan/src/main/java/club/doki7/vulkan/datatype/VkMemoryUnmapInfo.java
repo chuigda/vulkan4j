@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMemoryUnmapInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkMemoryUnmapFlags flags; // optional
-///     VkDeviceMemory memory;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkMemoryUnmapFlags flags; // optional // @link substring="VkMemoryUnmapFlags" target="VkMemoryUnmapFlags" @link substring="flags" target="#flags"
+///     VkDeviceMemory memory; // @link substring="VkDeviceMemory" target="VkDeviceMemory" @link substring="memory" target="#memory"
 /// } VkMemoryUnmapInfo;
 /// }
 ///

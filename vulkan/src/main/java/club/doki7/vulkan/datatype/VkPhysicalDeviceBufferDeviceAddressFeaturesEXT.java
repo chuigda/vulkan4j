@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceBufferDeviceAddressFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 bufferDeviceAddress;
-///     VkBool32 bufferDeviceAddressCaptureReplay;
-///     VkBool32 bufferDeviceAddressMultiDevice;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 bufferDeviceAddress; // @link substring="bufferDeviceAddress" target="#bufferDeviceAddress"
+///     VkBool32 bufferDeviceAddressCaptureReplay; // @link substring="bufferDeviceAddressCaptureReplay" target="#bufferDeviceAddressCaptureReplay"
+///     VkBool32 bufferDeviceAddressMultiDevice; // @link substring="bufferDeviceAddressMultiDevice" target="#bufferDeviceAddressMultiDevice"
 /// } VkPhysicalDeviceBufferDeviceAddressFeaturesEXT;
 /// }
 ///

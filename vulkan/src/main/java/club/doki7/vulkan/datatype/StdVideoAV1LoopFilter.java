@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1LoopFilter {
-///     StdVideoAV1LoopFilterFlags flags;
-///     uint8_t loop_filter_level;
-///     uint8_t loop_filter_sharpness;
-///     uint8_t update_ref_delta;
-///     int8_t loop_filter_ref_deltas;
-///     uint8_t update_mode_delta;
-///     int8_t loop_filter_mode_deltas;
+///     StdVideoAV1LoopFilterFlags flags; // @link substring="StdVideoAV1LoopFilterFlags" target="StdVideoAV1LoopFilterFlags" @link substring="flags" target="#flags"
+///     uint8_t loop_filter_level; // @link substring="loop_filter_level" target="#loop_filter_level"
+///     uint8_t loop_filter_sharpness; // @link substring="loop_filter_sharpness" target="#loop_filter_sharpness"
+///     uint8_t update_ref_delta; // @link substring="update_ref_delta" target="#update_ref_delta"
+///     int8_t loop_filter_ref_deltas; // @link substring="loop_filter_ref_deltas" target="#loop_filter_ref_deltas"
+///     uint8_t update_mode_delta; // @link substring="update_mode_delta" target="#update_mode_delta"
+///     int8_t loop_filter_mode_deltas; // @link substring="loop_filter_mode_deltas" target="#loop_filter_mode_deltas"
 /// } StdVideoAV1LoopFilter;
 /// }
 ///
@@ -70,11 +70,11 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
-    public StdVideoAV1LoopFilterFlags flags() {
+    public @NotNull StdVideoAV1LoopFilterFlags flags() {
         return new StdVideoAV1LoopFilterFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoAV1LoopFilterFlags value) {
+    public void flags(@NotNull StdVideoAV1LoopFilterFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 

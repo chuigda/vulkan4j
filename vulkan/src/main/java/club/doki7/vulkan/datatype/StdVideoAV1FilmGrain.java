@@ -20,31 +20,31 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1FilmGrain {
-///     StdVideoAV1FilmGrainFlags flags;
-///     uint8_t grain_scaling_minus_8;
-///     uint8_t ar_coeff_lag;
-///     uint8_t ar_coeff_shift_minus_6;
-///     uint8_t grain_scale_shift;
-///     uint16_t grain_seed;
-///     uint8_t film_grain_params_ref_idx;
-///     uint8_t num_y_points;
-///     uint8_t point_y_value;
-///     uint8_t point_y_scaling;
-///     uint8_t num_cb_points;
-///     uint8_t point_cb_value;
-///     uint8_t point_cb_scaling;
-///     uint8_t num_cr_points;
-///     uint8_t point_cr_value;
-///     uint8_t point_cr_scaling;
-///     int8_t ar_coeffs_y_plus_128;
-///     int8_t ar_coeffs_cb_plus_128;
-///     int8_t ar_coeffs_cr_plus_128;
-///     uint8_t cb_mult;
-///     uint8_t cb_luma_mult;
-///     uint16_t cb_offset;
-///     uint8_t cr_mult;
-///     uint8_t cr_luma_mult;
-///     uint16_t cr_offset;
+///     StdVideoAV1FilmGrainFlags flags; // @link substring="StdVideoAV1FilmGrainFlags" target="StdVideoAV1FilmGrainFlags" @link substring="flags" target="#flags"
+///     uint8_t grain_scaling_minus_8; // @link substring="grain_scaling_minus_8" target="#grain_scaling_minus_8"
+///     uint8_t ar_coeff_lag; // @link substring="ar_coeff_lag" target="#ar_coeff_lag"
+///     uint8_t ar_coeff_shift_minus_6; // @link substring="ar_coeff_shift_minus_6" target="#ar_coeff_shift_minus_6"
+///     uint8_t grain_scale_shift; // @link substring="grain_scale_shift" target="#grain_scale_shift"
+///     uint16_t grain_seed; // @link substring="grain_seed" target="#grain_seed"
+///     uint8_t film_grain_params_ref_idx; // @link substring="film_grain_params_ref_idx" target="#film_grain_params_ref_idx"
+///     uint8_t num_y_points; // @link substring="num_y_points" target="#num_y_points"
+///     uint8_t point_y_value; // @link substring="point_y_value" target="#point_y_value"
+///     uint8_t point_y_scaling; // @link substring="point_y_scaling" target="#point_y_scaling"
+///     uint8_t num_cb_points; // @link substring="num_cb_points" target="#num_cb_points"
+///     uint8_t point_cb_value; // @link substring="point_cb_value" target="#point_cb_value"
+///     uint8_t point_cb_scaling; // @link substring="point_cb_scaling" target="#point_cb_scaling"
+///     uint8_t num_cr_points; // @link substring="num_cr_points" target="#num_cr_points"
+///     uint8_t point_cr_value; // @link substring="point_cr_value" target="#point_cr_value"
+///     uint8_t point_cr_scaling; // @link substring="point_cr_scaling" target="#point_cr_scaling"
+///     int8_t ar_coeffs_y_plus_128; // @link substring="ar_coeffs_y_plus_128" target="#ar_coeffs_y_plus_128"
+///     int8_t ar_coeffs_cb_plus_128; // @link substring="ar_coeffs_cb_plus_128" target="#ar_coeffs_cb_plus_128"
+///     int8_t ar_coeffs_cr_plus_128; // @link substring="ar_coeffs_cr_plus_128" target="#ar_coeffs_cr_plus_128"
+///     uint8_t cb_mult; // @link substring="cb_mult" target="#cb_mult"
+///     uint8_t cb_luma_mult; // @link substring="cb_luma_mult" target="#cb_luma_mult"
+///     uint16_t cb_offset; // @link substring="cb_offset" target="#cb_offset"
+///     uint8_t cr_mult; // @link substring="cr_mult" target="#cr_mult"
+///     uint8_t cr_luma_mult; // @link substring="cr_luma_mult" target="#cr_luma_mult"
+///     uint16_t cr_offset; // @link substring="cr_offset" target="#cr_offset"
 /// } StdVideoAV1FilmGrain;
 /// }
 ///
@@ -88,11 +88,11 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
-    public StdVideoAV1FilmGrainFlags flags() {
+    public @NotNull StdVideoAV1FilmGrainFlags flags() {
         return new StdVideoAV1FilmGrainFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoAV1FilmGrainFlags value) {
+    public void flags(@NotNull StdVideoAV1FilmGrainFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 

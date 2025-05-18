@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMemoryRequirements {
-///     VkDeviceSize size;
-///     VkDeviceSize alignment;
-///     uint32_t memoryTypeBits;
+///     VkDeviceSize size; // @link substring="size" target="#size"
+///     VkDeviceSize alignment; // @link substring="alignment" target="#alignment"
+///     uint32_t memoryTypeBits; // @link substring="memoryTypeBits" target="#memoryTypeBits"
 /// } VkMemoryRequirements;
 /// }
 ///

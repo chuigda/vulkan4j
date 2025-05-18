@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceFaultInfoEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     char description;
-///     VkDeviceFaultAddressInfoEXT* pAddressInfos; // optional
-///     VkDeviceFaultVendorInfoEXT* pVendorInfos; // optional
-///     void* pVendorBinaryData; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     char description; // @link substring="description" target="#description"
+///     VkDeviceFaultAddressInfoEXT* pAddressInfos; // optional // @link substring="VkDeviceFaultAddressInfoEXT" target="VkDeviceFaultAddressInfoEXT" @link substring="pAddressInfos" target="#pAddressInfos"
+///     VkDeviceFaultVendorInfoEXT* pVendorInfos; // optional // @link substring="VkDeviceFaultVendorInfoEXT" target="VkDeviceFaultVendorInfoEXT" @link substring="pVendorInfos" target="#pVendorInfos"
+///     void* pVendorBinaryData; // optional // @link substring="pVendorBinaryData" target="#pVendorBinaryData"
 /// } VkDeviceFaultInfoEXT;
 /// }
 ///
@@ -113,14 +113,6 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$description, OFFSET$description, value);
     }
 
-    public @pointer(target=VkDeviceFaultAddressInfoEXT.class) MemorySegment pAddressInfosRaw() {
-        return segment.get(LAYOUT$pAddressInfos, OFFSET$pAddressInfos);
-    }
-
-    public void pAddressInfosRaw(@pointer(target=VkDeviceFaultAddressInfoEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pAddressInfos, OFFSET$pAddressInfos, value);
-    }
-
     public @Nullable VkDeviceFaultAddressInfoEXT pAddressInfos() {
         MemorySegment s = pAddressInfosRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -148,12 +140,12 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
-    public @pointer(target=VkDeviceFaultVendorInfoEXT.class) MemorySegment pVendorInfosRaw() {
-        return segment.get(LAYOUT$pVendorInfos, OFFSET$pVendorInfos);
+    public @pointer(target=VkDeviceFaultAddressInfoEXT.class) MemorySegment pAddressInfosRaw() {
+        return segment.get(LAYOUT$pAddressInfos, OFFSET$pAddressInfos);
     }
 
-    public void pVendorInfosRaw(@pointer(target=VkDeviceFaultVendorInfoEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pVendorInfos, OFFSET$pVendorInfos, value);
+    public void pAddressInfosRaw(@pointer(target=VkDeviceFaultAddressInfoEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pAddressInfos, OFFSET$pAddressInfos, value);
     }
 
     public @Nullable VkDeviceFaultVendorInfoEXT pVendorInfos() {
@@ -181,6 +173,14 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IP
             ret[i] = new VkDeviceFaultVendorInfoEXT(s.asSlice(i * VkDeviceFaultVendorInfoEXT.BYTES, VkDeviceFaultVendorInfoEXT.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkDeviceFaultVendorInfoEXT.class) MemorySegment pVendorInfosRaw() {
+        return segment.get(LAYOUT$pVendorInfos, OFFSET$pVendorInfos);
+    }
+
+    public void pVendorInfosRaw(@pointer(target=VkDeviceFaultVendorInfoEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pVendorInfos, OFFSET$pVendorInfos, value);
     }
 
     public @pointer(comment="void*") MemorySegment pVendorBinaryData() {

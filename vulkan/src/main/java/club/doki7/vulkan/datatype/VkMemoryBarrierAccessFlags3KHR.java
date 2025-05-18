@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMemoryBarrierAccessFlags3KHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkAccessFlags3KHR srcAccessMask3; // optional
-///     VkAccessFlags3KHR dstAccessMask3; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkAccessFlags3KHR srcAccessMask3; // optional // @link substring="VkAccessFlags3KHR" target="VkAccessFlags3KHR" @link substring="srcAccessMask3" target="#srcAccessMask3"
+///     VkAccessFlags3KHR dstAccessMask3; // optional // @link substring="VkAccessFlags3KHR" target="VkAccessFlags3KHR" @link substring="dstAccessMask3" target="#dstAccessMask3"
 /// } VkMemoryBarrierAccessFlags3KHR;
 /// }
 ///

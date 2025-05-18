@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImportMemoryZirconHandleInfoFUCHSIA {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkExternalMemoryHandleTypeFlags handleType; // optional
-///     zx_handle_t handle; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkExternalMemoryHandleTypeFlags handleType; // optional // @link substring="VkExternalMemoryHandleTypeFlags" target="VkExternalMemoryHandleTypeFlags" @link substring="handleType" target="#handleType"
+///     zx_handle_t handle; // optional // @link substring="handle" target="#handle"
 /// } VkImportMemoryZirconHandleInfoFUCHSIA;
 /// }
 ///

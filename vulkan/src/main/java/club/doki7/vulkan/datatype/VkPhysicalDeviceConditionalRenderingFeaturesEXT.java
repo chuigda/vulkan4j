@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceConditionalRenderingFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 conditionalRendering;
-///     VkBool32 inheritedConditionalRendering;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 conditionalRendering; // @link substring="conditionalRendering" target="#conditionalRendering"
+///     VkBool32 inheritedConditionalRendering; // @link substring="inheritedConditionalRendering" target="#inheritedConditionalRendering"
 /// } VkPhysicalDeviceConditionalRenderingFeaturesEXT;
 /// }
 ///

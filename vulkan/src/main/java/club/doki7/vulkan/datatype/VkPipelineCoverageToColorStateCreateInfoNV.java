@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineCoverageToColorStateCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineCoverageToColorStateCreateFlagsNV flags; // optional
-///     VkBool32 coverageToColorEnable;
-///     uint32_t coverageToColorLocation; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineCoverageToColorStateCreateFlagsNV flags; // optional // @link substring="VkPipelineCoverageToColorStateCreateFlagsNV" target="VkPipelineCoverageToColorStateCreateFlagsNV" @link substring="flags" target="#flags"
+///     VkBool32 coverageToColorEnable; // @link substring="coverageToColorEnable" target="#coverageToColorEnable"
+///     uint32_t coverageToColorLocation; // optional // @link substring="coverageToColorLocation" target="#coverageToColorLocation"
 /// } VkPipelineCoverageToColorStateCreateInfoNV;
 /// }
 ///

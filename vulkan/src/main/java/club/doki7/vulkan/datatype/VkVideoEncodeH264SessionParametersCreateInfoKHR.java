@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeH264SessionParametersCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t maxStdSPSCount;
-///     uint32_t maxStdPPSCount;
-///     VkVideoEncodeH264SessionParametersAddInfoKHR const* pParametersAddInfo; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxStdSPSCount; // @link substring="maxStdSPSCount" target="#maxStdSPSCount"
+///     uint32_t maxStdPPSCount; // @link substring="maxStdPPSCount" target="#maxStdPPSCount"
+///     VkVideoEncodeH264SessionParametersAddInfoKHR const* pParametersAddInfo; // optional // @link substring="VkVideoEncodeH264SessionParametersAddInfoKHR" target="VkVideoEncodeH264SessionParametersAddInfoKHR" @link substring="pParametersAddInfo" target="#pParametersAddInfo"
 /// } VkVideoEncodeH264SessionParametersCreateInfoKHR;
 /// }
 ///
@@ -120,14 +120,6 @@ public record VkVideoEncodeH264SessionParametersCreateInfoKHR(@NotNull MemorySeg
         segment.set(LAYOUT$maxStdPPSCount, OFFSET$maxStdPPSCount, value);
     }
 
-    public @pointer(target=VkVideoEncodeH264SessionParametersAddInfoKHR.class) MemorySegment pParametersAddInfoRaw() {
-        return segment.get(LAYOUT$pParametersAddInfo, OFFSET$pParametersAddInfo);
-    }
-
-    public void pParametersAddInfoRaw(@pointer(target=VkVideoEncodeH264SessionParametersAddInfoKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pParametersAddInfo, OFFSET$pParametersAddInfo, value);
-    }
-
     public @Nullable VkVideoEncodeH264SessionParametersAddInfoKHR pParametersAddInfo() {
         MemorySegment s = pParametersAddInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -153,6 +145,14 @@ public record VkVideoEncodeH264SessionParametersCreateInfoKHR(@NotNull MemorySeg
             ret[i] = new VkVideoEncodeH264SessionParametersAddInfoKHR(s.asSlice(i * VkVideoEncodeH264SessionParametersAddInfoKHR.BYTES, VkVideoEncodeH264SessionParametersAddInfoKHR.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkVideoEncodeH264SessionParametersAddInfoKHR.class) MemorySegment pParametersAddInfoRaw() {
+        return segment.get(LAYOUT$pParametersAddInfo, OFFSET$pParametersAddInfo);
+    }
+
+    public void pParametersAddInfoRaw(@pointer(target=VkVideoEncodeH264SessionParametersAddInfoKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pParametersAddInfo, OFFSET$pParametersAddInfo, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

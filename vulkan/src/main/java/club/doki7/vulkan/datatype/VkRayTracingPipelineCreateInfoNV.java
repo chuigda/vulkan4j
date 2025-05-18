@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRayTracingPipelineCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineCreateFlags flags; // optional
-///     uint32_t stageCount;
-///     VkPipelineShaderStageCreateInfo const* pStages;
-///     uint32_t groupCount;
-///     VkRayTracingShaderGroupCreateInfoNV const* pGroups;
-///     uint32_t maxRecursionDepth;
-///     VkPipelineLayout layout;
-///     VkPipeline basePipelineHandle; // optional
-///     int32_t basePipelineIndex;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineCreateFlags flags; // optional // @link substring="VkPipelineCreateFlags" target="VkPipelineCreateFlags" @link substring="flags" target="#flags"
+///     uint32_t stageCount; // @link substring="stageCount" target="#stageCount"
+///     VkPipelineShaderStageCreateInfo const* pStages; // @link substring="VkPipelineShaderStageCreateInfo" target="VkPipelineShaderStageCreateInfo" @link substring="pStages" target="#pStages"
+///     uint32_t groupCount; // @link substring="groupCount" target="#groupCount"
+///     VkRayTracingShaderGroupCreateInfoNV const* pGroups; // @link substring="VkRayTracingShaderGroupCreateInfoNV" target="VkRayTracingShaderGroupCreateInfoNV" @link substring="pGroups" target="#pGroups"
+///     uint32_t maxRecursionDepth; // @link substring="maxRecursionDepth" target="#maxRecursionDepth"
+///     VkPipelineLayout layout; // @link substring="VkPipelineLayout" target="VkPipelineLayout" @link substring="layout" target="#layout"
+///     VkPipeline basePipelineHandle; // optional // @link substring="VkPipeline" target="VkPipeline" @link substring="basePipelineHandle" target="#basePipelineHandle"
+///     int32_t basePipelineIndex; // @link substring="basePipelineIndex" target="#basePipelineIndex"
 /// } VkRayTracingPipelineCreateInfoNV;
 /// }
 ///
@@ -126,14 +126,6 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$stageCount, OFFSET$stageCount, value);
     }
 
-    public @pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
-        return segment.get(LAYOUT$pStages, OFFSET$pStages);
-    }
-
-    public void pStagesRaw(@pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pStages, OFFSET$pStages, value);
-    }
-
     public @Nullable VkPipelineShaderStageCreateInfo pStages() {
         MemorySegment s = pStagesRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -161,20 +153,20 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         return ret;
     }
 
+    public @pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
+        return segment.get(LAYOUT$pStages, OFFSET$pStages);
+    }
+
+    public void pStagesRaw(@pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pStages, OFFSET$pStages, value);
+    }
+
     public @unsigned int groupCount() {
         return segment.get(LAYOUT$groupCount, OFFSET$groupCount);
     }
 
     public void groupCount(@unsigned int value) {
         segment.set(LAYOUT$groupCount, OFFSET$groupCount, value);
-    }
-
-    public @pointer(target=VkRayTracingShaderGroupCreateInfoNV.class) MemorySegment pGroupsRaw() {
-        return segment.get(LAYOUT$pGroups, OFFSET$pGroups);
-    }
-
-    public void pGroupsRaw(@pointer(target=VkRayTracingShaderGroupCreateInfoNV.class) MemorySegment value) {
-        segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
 
     public @Nullable VkRayTracingShaderGroupCreateInfoNV pGroups() {
@@ -202,6 +194,14 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
             ret[i] = new VkRayTracingShaderGroupCreateInfoNV(s.asSlice(i * VkRayTracingShaderGroupCreateInfoNV.BYTES, VkRayTracingShaderGroupCreateInfoNV.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkRayTracingShaderGroupCreateInfoNV.class) MemorySegment pGroupsRaw() {
+        return segment.get(LAYOUT$pGroups, OFFSET$pGroups);
+    }
+
+    public void pGroupsRaw(@pointer(target=VkRayTracingShaderGroupCreateInfoNV.class) MemorySegment value) {
+        segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
 
     public @unsigned int maxRecursionDepth() {

@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageViewSlicedCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t sliceOffset;
-///     uint32_t sliceCount;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t sliceOffset; // @link substring="sliceOffset" target="#sliceOffset"
+///     uint32_t sliceCount; // @link substring="sliceCount" target="#sliceCount"
 /// } VkImageViewSlicedCreateInfoEXT;
 /// }
 ///

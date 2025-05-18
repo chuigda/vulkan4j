@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoCapabilitiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkVideoCapabilityFlagsKHR flags;
-///     VkDeviceSize minBitstreamBufferOffsetAlignment;
-///     VkDeviceSize minBitstreamBufferSizeAlignment;
-///     VkExtent2D pictureAccessGranularity;
-///     VkExtent2D minCodedExtent;
-///     VkExtent2D maxCodedExtent;
-///     uint32_t maxDpbSlots;
-///     uint32_t maxActiveReferencePictures;
-///     VkExtensionProperties stdHeaderVersion;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkVideoCapabilityFlagsKHR flags; // @link substring="VkVideoCapabilityFlagsKHR" target="VkVideoCapabilityFlagsKHR" @link substring="flags" target="#flags"
+///     VkDeviceSize minBitstreamBufferOffsetAlignment; // @link substring="minBitstreamBufferOffsetAlignment" target="#minBitstreamBufferOffsetAlignment"
+///     VkDeviceSize minBitstreamBufferSizeAlignment; // @link substring="minBitstreamBufferSizeAlignment" target="#minBitstreamBufferSizeAlignment"
+///     VkExtent2D pictureAccessGranularity; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="pictureAccessGranularity" target="#pictureAccessGranularity"
+///     VkExtent2D minCodedExtent; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="minCodedExtent" target="#minCodedExtent"
+///     VkExtent2D maxCodedExtent; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxCodedExtent" target="#maxCodedExtent"
+///     uint32_t maxDpbSlots; // @link substring="maxDpbSlots" target="#maxDpbSlots"
+///     uint32_t maxActiveReferencePictures; // @link substring="maxActiveReferencePictures" target="#maxActiveReferencePictures"
+///     VkExtensionProperties stdHeaderVersion; // @link substring="VkExtensionProperties" target="VkExtensionProperties" @link substring="stdHeaderVersion" target="#stdHeaderVersion"
 /// } VkVideoCapabilitiesKHR;
 /// }
 ///
@@ -134,27 +134,27 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$minBitstreamBufferSizeAlignment, OFFSET$minBitstreamBufferSizeAlignment, value);
     }
 
-    public VkExtent2D pictureAccessGranularity() {
+    public @NotNull VkExtent2D pictureAccessGranularity() {
         return new VkExtent2D(segment.asSlice(OFFSET$pictureAccessGranularity, LAYOUT$pictureAccessGranularity));
     }
 
-    public void pictureAccessGranularity(VkExtent2D value) {
+    public void pictureAccessGranularity(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$pictureAccessGranularity, SIZE$pictureAccessGranularity);
     }
 
-    public VkExtent2D minCodedExtent() {
+    public @NotNull VkExtent2D minCodedExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$minCodedExtent, LAYOUT$minCodedExtent));
     }
 
-    public void minCodedExtent(VkExtent2D value) {
+    public void minCodedExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minCodedExtent, SIZE$minCodedExtent);
     }
 
-    public VkExtent2D maxCodedExtent() {
+    public @NotNull VkExtent2D maxCodedExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxCodedExtent, LAYOUT$maxCodedExtent));
     }
 
-    public void maxCodedExtent(VkExtent2D value) {
+    public void maxCodedExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxCodedExtent, SIZE$maxCodedExtent);
     }
 
@@ -174,11 +174,11 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$maxActiveReferencePictures, OFFSET$maxActiveReferencePictures, value);
     }
 
-    public VkExtensionProperties stdHeaderVersion() {
+    public @NotNull VkExtensionProperties stdHeaderVersion() {
         return new VkExtensionProperties(segment.asSlice(OFFSET$stdHeaderVersion, LAYOUT$stdHeaderVersion));
     }
 
-    public void stdHeaderVersion(VkExtensionProperties value) {
+    public void stdHeaderVersion(@NotNull VkExtensionProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$stdHeaderVersion, SIZE$stdHeaderVersion);
     }
 

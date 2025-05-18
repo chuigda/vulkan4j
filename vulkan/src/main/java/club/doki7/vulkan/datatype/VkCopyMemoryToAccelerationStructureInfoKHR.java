@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCopyMemoryToAccelerationStructureInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDeviceOrHostAddressConstKHR src;
-///     VkAccelerationStructureKHR dst;
-///     VkCopyAccelerationStructureModeKHR mode;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceOrHostAddressConstKHR src; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="src" target="#src"
+///     VkAccelerationStructureKHR dst; // @link substring="VkAccelerationStructureKHR" target="VkAccelerationStructureKHR" @link substring="dst" target="#dst"
+///     VkCopyAccelerationStructureModeKHR mode; // @link substring="VkCopyAccelerationStructureModeKHR" target="VkCopyAccelerationStructureModeKHR" @link substring="mode" target="#mode"
 /// } VkCopyMemoryToAccelerationStructureInfoKHR;
 /// }
 ///
@@ -104,11 +104,11 @@ public record VkCopyMemoryToAccelerationStructureInfoKHR(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkDeviceOrHostAddressConstKHR src() {
+    public @NotNull VkDeviceOrHostAddressConstKHR src() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$src, LAYOUT$src));
     }
 
-    public void src(VkDeviceOrHostAddressConstKHR value) {
+    public void src(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$src, SIZE$src);
     }
 

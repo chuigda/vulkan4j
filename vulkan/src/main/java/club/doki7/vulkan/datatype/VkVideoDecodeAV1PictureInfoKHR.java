@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoDecodeAV1PictureInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     StdVideoDecodeAV1PictureInfo const* pStdPictureInfo;
-///     int32_t referenceNameSlotIndices;
-///     uint32_t frameHeaderOffset;
-///     uint32_t tileCount;
-///     uint32_t const* pTileOffsets;
-///     uint32_t const* pTileSizes;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     StdVideoDecodeAV1PictureInfo const* pStdPictureInfo; // @link substring="StdVideoDecodeAV1PictureInfo" target="StdVideoDecodeAV1PictureInfo" @link substring="pStdPictureInfo" target="#pStdPictureInfo"
+///     int32_t referenceNameSlotIndices; // @link substring="referenceNameSlotIndices" target="#referenceNameSlotIndices"
+///     uint32_t frameHeaderOffset; // @link substring="frameHeaderOffset" target="#frameHeaderOffset"
+///     uint32_t tileCount; // @link substring="tileCount" target="#tileCount"
+///     uint32_t const* pTileOffsets; // @link substring="pTileOffsets" target="#pTileOffsets"
+///     uint32_t const* pTileSizes; // @link substring="pTileSizes" target="#pTileSizes"
 /// } VkVideoDecodeAV1PictureInfoKHR;
 /// }
 ///
@@ -107,14 +107,6 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(target=StdVideoDecodeAV1PictureInfo.class) MemorySegment pStdPictureInfoRaw() {
-        return segment.get(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo);
-    }
-
-    public void pStdPictureInfoRaw(@pointer(target=StdVideoDecodeAV1PictureInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo, value);
-    }
-
     public @Nullable StdVideoDecodeAV1PictureInfo pStdPictureInfo() {
         MemorySegment s = pStdPictureInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -142,6 +134,14 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         return ret;
     }
 
+    public @pointer(target=StdVideoDecodeAV1PictureInfo.class) MemorySegment pStdPictureInfoRaw() {
+        return segment.get(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo);
+    }
+
+    public void pStdPictureInfoRaw(@pointer(target=StdVideoDecodeAV1PictureInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo, value);
+    }
+
     public int referenceNameSlotIndices() {
         return segment.get(LAYOUT$referenceNameSlotIndices, OFFSET$referenceNameSlotIndices);
     }
@@ -166,14 +166,6 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$tileCount, OFFSET$tileCount, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pTileOffsetsRaw() {
-        return segment.get(LAYOUT$pTileOffsets, OFFSET$pTileOffsets);
-    }
-
-    public void pTileOffsetsRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pTileOffsets, OFFSET$pTileOffsets, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -191,12 +183,12 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         pTileOffsetsRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pTileSizesRaw() {
-        return segment.get(LAYOUT$pTileSizes, OFFSET$pTileSizes);
+    public @pointer(comment="int*") MemorySegment pTileOffsetsRaw() {
+        return segment.get(LAYOUT$pTileOffsets, OFFSET$pTileOffsets);
     }
 
-    public void pTileSizesRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pTileSizes, OFFSET$pTileSizes, value);
+    public void pTileOffsetsRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pTileOffsets, OFFSET$pTileOffsets, value);
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -214,6 +206,14 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
     public void pTileSizes(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTileSizesRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pTileSizesRaw() {
+        return segment.get(LAYOUT$pTileSizes, OFFSET$pTileSizes);
+    }
+
+    public void pTileSizesRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pTileSizes, OFFSET$pTileSizes, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

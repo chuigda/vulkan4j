@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderClockFeaturesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 shaderSubgroupClock;
-///     VkBool32 shaderDeviceClock;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 shaderSubgroupClock; // @link substring="shaderSubgroupClock" target="#shaderSubgroupClock"
+///     VkBool32 shaderDeviceClock; // @link substring="shaderDeviceClock" target="#shaderDeviceClock"
 /// } VkPhysicalDeviceShaderClockFeaturesKHR;
 /// }
 ///

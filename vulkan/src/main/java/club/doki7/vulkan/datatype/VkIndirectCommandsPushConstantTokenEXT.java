@@ -20,7 +20,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkIndirectCommandsPushConstantTokenEXT {
-///     VkPushConstantRange updateRange;
+///     VkPushConstantRange updateRange; // @link substring="VkPushConstantRange" target="VkPushConstantRange" @link substring="updateRange" target="#updateRange"
 /// } VkIndirectCommandsPushConstantTokenEXT;
 /// }
 ///
@@ -66,11 +66,11 @@ public record VkIndirectCommandsPushConstantTokenEXT(@NotNull MemorySegment segm
         return ret;
     }
 
-    public VkPushConstantRange updateRange() {
+    public @NotNull VkPushConstantRange updateRange() {
         return new VkPushConstantRange(segment.asSlice(OFFSET$updateRange, LAYOUT$updateRange));
     }
 
-    public void updateRange(VkPushConstantRange value) {
+    public void updateRange(@NotNull VkPushConstantRange value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$updateRange, SIZE$updateRange);
     }
 

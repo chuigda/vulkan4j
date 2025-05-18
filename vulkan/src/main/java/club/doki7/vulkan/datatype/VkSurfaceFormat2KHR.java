@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSurfaceFormat2KHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkSurfaceFormatKHR surfaceFormat;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSurfaceFormatKHR surfaceFormat; // @link substring="VkSurfaceFormatKHR" target="VkSurfaceFormatKHR" @link substring="surfaceFormat" target="#surfaceFormat"
 /// } VkSurfaceFormat2KHR;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkSurfaceFormat2KHR(@NotNull MemorySegment segment) implements IPo
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkSurfaceFormatKHR surfaceFormat() {
+    public @NotNull VkSurfaceFormatKHR surfaceFormat() {
         return new VkSurfaceFormatKHR(segment.asSlice(OFFSET$surfaceFormat, LAYOUT$surfaceFormat));
     }
 
-    public void surfaceFormat(VkSurfaceFormatKHR value) {
+    public void surfaceFormat(@NotNull VkSurfaceFormatKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$surfaceFormat, SIZE$surfaceFormat);
     }
 

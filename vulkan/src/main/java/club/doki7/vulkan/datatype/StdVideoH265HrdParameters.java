@@ -20,21 +20,21 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265HrdParameters {
-///     StdVideoH265HrdFlags flags;
-///     uint8_t tick_divisor_minus2;
-///     uint8_t du_cpb_removal_delay_increment_length_minus1;
-///     uint8_t dpb_output_delay_du_length_minus1;
-///     uint8_t bit_rate_scale;
-///     uint8_t cpb_size_scale;
-///     uint8_t cpb_size_du_scale;
-///     uint8_t initial_cpb_removal_delay_length_minus1;
-///     uint8_t au_cpb_removal_delay_length_minus1;
-///     uint8_t dpb_output_delay_length_minus1;
-///     uint8_t cpb_cnt_minus1;
-///     uint16_t elemental_duration_in_tc_minus1;
-///     uint16_t reserved;
-///     StdVideoH265SubLayerHrdParameters const* pSubLayerHrdParametersNal;
-///     StdVideoH265SubLayerHrdParameters const* pSubLayerHrdParametersVcl;
+///     StdVideoH265HrdFlags flags; // @link substring="StdVideoH265HrdFlags" target="StdVideoH265HrdFlags" @link substring="flags" target="#flags"
+///     uint8_t tick_divisor_minus2; // @link substring="tick_divisor_minus2" target="#tick_divisor_minus2"
+///     uint8_t du_cpb_removal_delay_increment_length_minus1; // @link substring="du_cpb_removal_delay_increment_length_minus1" target="#du_cpb_removal_delay_increment_length_minus1"
+///     uint8_t dpb_output_delay_du_length_minus1; // @link substring="dpb_output_delay_du_length_minus1" target="#dpb_output_delay_du_length_minus1"
+///     uint8_t bit_rate_scale; // @link substring="bit_rate_scale" target="#bit_rate_scale"
+///     uint8_t cpb_size_scale; // @link substring="cpb_size_scale" target="#cpb_size_scale"
+///     uint8_t cpb_size_du_scale; // @link substring="cpb_size_du_scale" target="#cpb_size_du_scale"
+///     uint8_t initial_cpb_removal_delay_length_minus1; // @link substring="initial_cpb_removal_delay_length_minus1" target="#initial_cpb_removal_delay_length_minus1"
+///     uint8_t au_cpb_removal_delay_length_minus1; // @link substring="au_cpb_removal_delay_length_minus1" target="#au_cpb_removal_delay_length_minus1"
+///     uint8_t dpb_output_delay_length_minus1; // @link substring="dpb_output_delay_length_minus1" target="#dpb_output_delay_length_minus1"
+///     uint8_t cpb_cnt_minus1; // @link substring="cpb_cnt_minus1" target="#cpb_cnt_minus1"
+///     uint16_t elemental_duration_in_tc_minus1; // @link substring="elemental_duration_in_tc_minus1" target="#elemental_duration_in_tc_minus1"
+///     uint16_t reserved; // @link substring="reserved" target="#reserved"
+///     StdVideoH265SubLayerHrdParameters const* pSubLayerHrdParametersNal; // @link substring="StdVideoH265SubLayerHrdParameters" target="StdVideoH265SubLayerHrdParameters" @link substring="pSubLayerHrdParametersNal" target="#pSubLayerHrdParametersNal"
+///     StdVideoH265SubLayerHrdParameters const* pSubLayerHrdParametersVcl; // @link substring="StdVideoH265SubLayerHrdParameters" target="StdVideoH265SubLayerHrdParameters" @link substring="pSubLayerHrdParametersVcl" target="#pSubLayerHrdParametersVcl"
 /// } StdVideoH265HrdParameters;
 /// }
 ///
@@ -78,11 +78,11 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
-    public StdVideoH265HrdFlags flags() {
+    public @NotNull StdVideoH265HrdFlags flags() {
         return new StdVideoH265HrdFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoH265HrdFlags value) {
+    public void flags(@NotNull StdVideoH265HrdFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
@@ -182,14 +182,6 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$reserved, OFFSET$reserved, value);
     }
 
-    public @pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment pSubLayerHrdParametersNalRaw() {
-        return segment.get(LAYOUT$pSubLayerHrdParametersNal, OFFSET$pSubLayerHrdParametersNal);
-    }
-
-    public void pSubLayerHrdParametersNalRaw(@pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment value) {
-        segment.set(LAYOUT$pSubLayerHrdParametersNal, OFFSET$pSubLayerHrdParametersNal, value);
-    }
-
     public @Nullable StdVideoH265SubLayerHrdParameters pSubLayerHrdParametersNal() {
         MemorySegment s = pSubLayerHrdParametersNalRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -217,12 +209,12 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
-    public @pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment pSubLayerHrdParametersVclRaw() {
-        return segment.get(LAYOUT$pSubLayerHrdParametersVcl, OFFSET$pSubLayerHrdParametersVcl);
+    public @pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment pSubLayerHrdParametersNalRaw() {
+        return segment.get(LAYOUT$pSubLayerHrdParametersNal, OFFSET$pSubLayerHrdParametersNal);
     }
 
-    public void pSubLayerHrdParametersVclRaw(@pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment value) {
-        segment.set(LAYOUT$pSubLayerHrdParametersVcl, OFFSET$pSubLayerHrdParametersVcl, value);
+    public void pSubLayerHrdParametersNalRaw(@pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment value) {
+        segment.set(LAYOUT$pSubLayerHrdParametersNal, OFFSET$pSubLayerHrdParametersNal, value);
     }
 
     public @Nullable StdVideoH265SubLayerHrdParameters pSubLayerHrdParametersVcl() {
@@ -250,6 +242,14 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
             ret[i] = new StdVideoH265SubLayerHrdParameters(s.asSlice(i * StdVideoH265SubLayerHrdParameters.BYTES, StdVideoH265SubLayerHrdParameters.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment pSubLayerHrdParametersVclRaw() {
+        return segment.get(LAYOUT$pSubLayerHrdParametersVcl, OFFSET$pSubLayerHrdParametersVcl);
+    }
+
+    public void pSubLayerHrdParametersVclRaw(@pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment value) {
+        segment.set(LAYOUT$pSubLayerHrdParametersVcl, OFFSET$pSubLayerHrdParametersVcl, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineCoverageModulationStateCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineCoverageModulationStateCreateFlagsNV flags; // optional
-///     VkCoverageModulationModeNV coverageModulationMode;
-///     VkBool32 coverageModulationTableEnable;
-///     uint32_t coverageModulationTableCount; // optional
-///     float const* pCoverageModulationTable; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineCoverageModulationStateCreateFlagsNV flags; // optional // @link substring="VkPipelineCoverageModulationStateCreateFlagsNV" target="VkPipelineCoverageModulationStateCreateFlagsNV" @link substring="flags" target="#flags"
+///     VkCoverageModulationModeNV coverageModulationMode; // @link substring="VkCoverageModulationModeNV" target="VkCoverageModulationModeNV" @link substring="coverageModulationMode" target="#coverageModulationMode"
+///     VkBool32 coverageModulationTableEnable; // @link substring="coverageModulationTableEnable" target="#coverageModulationTableEnable"
+///     uint32_t coverageModulationTableCount; // optional // @link substring="coverageModulationTableCount" target="#coverageModulationTableCount"
+///     float const* pCoverageModulationTable; // optional // @link substring="pCoverageModulationTable" target="#pCoverageModulationTable"
 /// } VkPipelineCoverageModulationStateCreateInfoNV;
 /// }
 ///
@@ -138,14 +138,6 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
         segment.set(LAYOUT$coverageModulationTableCount, OFFSET$coverageModulationTableCount, value);
     }
 
-    public @pointer(comment="float*") MemorySegment pCoverageModulationTableRaw() {
-        return segment.get(LAYOUT$pCoverageModulationTable, OFFSET$pCoverageModulationTable);
-    }
-
-    public void pCoverageModulationTableRaw(@pointer(comment="float*") MemorySegment value) {
-        segment.set(LAYOUT$pCoverageModulationTable, OFFSET$pCoverageModulationTable, value);
-    }
-
     /// Note: the returned {@link FloatPtr} does not have correct
     /// {@link FloatPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link FloatPtr#reinterpret} to set the size before actually reading from or
@@ -161,6 +153,14 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
     public void pCoverageModulationTable(@Nullable FloatPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCoverageModulationTableRaw(s);
+    }
+
+    public @pointer(comment="float*") MemorySegment pCoverageModulationTableRaw() {
+        return segment.get(LAYOUT$pCoverageModulationTable, OFFSET$pCoverageModulationTable);
+    }
+
+    public void pCoverageModulationTableRaw(@pointer(comment="float*") MemorySegment value) {
+        segment.set(LAYOUT$pCoverageModulationTable, OFFSET$pCoverageModulationTable, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

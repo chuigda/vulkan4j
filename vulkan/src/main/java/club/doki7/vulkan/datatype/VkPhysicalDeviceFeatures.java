@@ -20,61 +20,61 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceFeatures {
-///     VkBool32 robustBufferAccess;
-///     VkBool32 fullDrawIndexUint32;
-///     VkBool32 imageCubeArray;
-///     VkBool32 independentBlend;
-///     VkBool32 geometryShader;
-///     VkBool32 tessellationShader;
-///     VkBool32 sampleRateShading;
-///     VkBool32 dualSrcBlend;
-///     VkBool32 logicOp;
-///     VkBool32 multiDrawIndirect;
-///     VkBool32 drawIndirectFirstInstance;
-///     VkBool32 depthClamp;
-///     VkBool32 depthBiasClamp;
-///     VkBool32 fillModeNonSolid;
-///     VkBool32 depthBounds;
-///     VkBool32 wideLines;
-///     VkBool32 largePoints;
-///     VkBool32 alphaToOne;
-///     VkBool32 multiViewport;
-///     VkBool32 samplerAnisotropy;
-///     VkBool32 textureCompressionETC2;
-///     VkBool32 textureCompressionASTC_LDR;
-///     VkBool32 textureCompressionBC;
-///     VkBool32 occlusionQueryPrecise;
-///     VkBool32 pipelineStatisticsQuery;
-///     VkBool32 vertexPipelineStoresAndAtomics;
-///     VkBool32 fragmentStoresAndAtomics;
-///     VkBool32 shaderTessellationAndGeometryPointSize;
-///     VkBool32 shaderImageGatherExtended;
-///     VkBool32 shaderStorageImageExtendedFormats;
-///     VkBool32 shaderStorageImageMultisample;
-///     VkBool32 shaderStorageImageReadWithoutFormat;
-///     VkBool32 shaderStorageImageWriteWithoutFormat;
-///     VkBool32 shaderUniformBufferArrayDynamicIndexing;
-///     VkBool32 shaderSampledImageArrayDynamicIndexing;
-///     VkBool32 shaderStorageBufferArrayDynamicIndexing;
-///     VkBool32 shaderStorageImageArrayDynamicIndexing;
-///     VkBool32 shaderClipDistance;
-///     VkBool32 shaderCullDistance;
-///     VkBool32 shaderFloat64;
-///     VkBool32 shaderInt64;
-///     VkBool32 shaderInt16;
-///     VkBool32 shaderResourceResidency;
-///     VkBool32 shaderResourceMinLod;
-///     VkBool32 sparseBinding;
-///     VkBool32 sparseResidencyBuffer;
-///     VkBool32 sparseResidencyImage2D;
-///     VkBool32 sparseResidencyImage3D;
-///     VkBool32 sparseResidency2Samples;
-///     VkBool32 sparseResidency4Samples;
-///     VkBool32 sparseResidency8Samples;
-///     VkBool32 sparseResidency16Samples;
-///     VkBool32 sparseResidencyAliased;
-///     VkBool32 variableMultisampleRate;
-///     VkBool32 inheritedQueries;
+///     VkBool32 robustBufferAccess; // @link substring="robustBufferAccess" target="#robustBufferAccess"
+///     VkBool32 fullDrawIndexUint32; // @link substring="fullDrawIndexUint32" target="#fullDrawIndexUint32"
+///     VkBool32 imageCubeArray; // @link substring="imageCubeArray" target="#imageCubeArray"
+///     VkBool32 independentBlend; // @link substring="independentBlend" target="#independentBlend"
+///     VkBool32 geometryShader; // @link substring="geometryShader" target="#geometryShader"
+///     VkBool32 tessellationShader; // @link substring="tessellationShader" target="#tessellationShader"
+///     VkBool32 sampleRateShading; // @link substring="sampleRateShading" target="#sampleRateShading"
+///     VkBool32 dualSrcBlend; // @link substring="dualSrcBlend" target="#dualSrcBlend"
+///     VkBool32 logicOp; // @link substring="logicOp" target="#logicOp"
+///     VkBool32 multiDrawIndirect; // @link substring="multiDrawIndirect" target="#multiDrawIndirect"
+///     VkBool32 drawIndirectFirstInstance; // @link substring="drawIndirectFirstInstance" target="#drawIndirectFirstInstance"
+///     VkBool32 depthClamp; // @link substring="depthClamp" target="#depthClamp"
+///     VkBool32 depthBiasClamp; // @link substring="depthBiasClamp" target="#depthBiasClamp"
+///     VkBool32 fillModeNonSolid; // @link substring="fillModeNonSolid" target="#fillModeNonSolid"
+///     VkBool32 depthBounds; // @link substring="depthBounds" target="#depthBounds"
+///     VkBool32 wideLines; // @link substring="wideLines" target="#wideLines"
+///     VkBool32 largePoints; // @link substring="largePoints" target="#largePoints"
+///     VkBool32 alphaToOne; // @link substring="alphaToOne" target="#alphaToOne"
+///     VkBool32 multiViewport; // @link substring="multiViewport" target="#multiViewport"
+///     VkBool32 samplerAnisotropy; // @link substring="samplerAnisotropy" target="#samplerAnisotropy"
+///     VkBool32 textureCompressionETC2; // @link substring="textureCompressionETC2" target="#textureCompressionETC2"
+///     VkBool32 textureCompressionASTC_LDR; // @link substring="textureCompressionASTC_LDR" target="#textureCompressionASTC_LDR"
+///     VkBool32 textureCompressionBC; // @link substring="textureCompressionBC" target="#textureCompressionBC"
+///     VkBool32 occlusionQueryPrecise; // @link substring="occlusionQueryPrecise" target="#occlusionQueryPrecise"
+///     VkBool32 pipelineStatisticsQuery; // @link substring="pipelineStatisticsQuery" target="#pipelineStatisticsQuery"
+///     VkBool32 vertexPipelineStoresAndAtomics; // @link substring="vertexPipelineStoresAndAtomics" target="#vertexPipelineStoresAndAtomics"
+///     VkBool32 fragmentStoresAndAtomics; // @link substring="fragmentStoresAndAtomics" target="#fragmentStoresAndAtomics"
+///     VkBool32 shaderTessellationAndGeometryPointSize; // @link substring="shaderTessellationAndGeometryPointSize" target="#shaderTessellationAndGeometryPointSize"
+///     VkBool32 shaderImageGatherExtended; // @link substring="shaderImageGatherExtended" target="#shaderImageGatherExtended"
+///     VkBool32 shaderStorageImageExtendedFormats; // @link substring="shaderStorageImageExtendedFormats" target="#shaderStorageImageExtendedFormats"
+///     VkBool32 shaderStorageImageMultisample; // @link substring="shaderStorageImageMultisample" target="#shaderStorageImageMultisample"
+///     VkBool32 shaderStorageImageReadWithoutFormat; // @link substring="shaderStorageImageReadWithoutFormat" target="#shaderStorageImageReadWithoutFormat"
+///     VkBool32 shaderStorageImageWriteWithoutFormat; // @link substring="shaderStorageImageWriteWithoutFormat" target="#shaderStorageImageWriteWithoutFormat"
+///     VkBool32 shaderUniformBufferArrayDynamicIndexing; // @link substring="shaderUniformBufferArrayDynamicIndexing" target="#shaderUniformBufferArrayDynamicIndexing"
+///     VkBool32 shaderSampledImageArrayDynamicIndexing; // @link substring="shaderSampledImageArrayDynamicIndexing" target="#shaderSampledImageArrayDynamicIndexing"
+///     VkBool32 shaderStorageBufferArrayDynamicIndexing; // @link substring="shaderStorageBufferArrayDynamicIndexing" target="#shaderStorageBufferArrayDynamicIndexing"
+///     VkBool32 shaderStorageImageArrayDynamicIndexing; // @link substring="shaderStorageImageArrayDynamicIndexing" target="#shaderStorageImageArrayDynamicIndexing"
+///     VkBool32 shaderClipDistance; // @link substring="shaderClipDistance" target="#shaderClipDistance"
+///     VkBool32 shaderCullDistance; // @link substring="shaderCullDistance" target="#shaderCullDistance"
+///     VkBool32 shaderFloat64; // @link substring="shaderFloat64" target="#shaderFloat64"
+///     VkBool32 shaderInt64; // @link substring="shaderInt64" target="#shaderInt64"
+///     VkBool32 shaderInt16; // @link substring="shaderInt16" target="#shaderInt16"
+///     VkBool32 shaderResourceResidency; // @link substring="shaderResourceResidency" target="#shaderResourceResidency"
+///     VkBool32 shaderResourceMinLod; // @link substring="shaderResourceMinLod" target="#shaderResourceMinLod"
+///     VkBool32 sparseBinding; // @link substring="sparseBinding" target="#sparseBinding"
+///     VkBool32 sparseResidencyBuffer; // @link substring="sparseResidencyBuffer" target="#sparseResidencyBuffer"
+///     VkBool32 sparseResidencyImage2D; // @link substring="sparseResidencyImage2D" target="#sparseResidencyImage2D"
+///     VkBool32 sparseResidencyImage3D; // @link substring="sparseResidencyImage3D" target="#sparseResidencyImage3D"
+///     VkBool32 sparseResidency2Samples; // @link substring="sparseResidency2Samples" target="#sparseResidency2Samples"
+///     VkBool32 sparseResidency4Samples; // @link substring="sparseResidency4Samples" target="#sparseResidency4Samples"
+///     VkBool32 sparseResidency8Samples; // @link substring="sparseResidency8Samples" target="#sparseResidency8Samples"
+///     VkBool32 sparseResidency16Samples; // @link substring="sparseResidency16Samples" target="#sparseResidency16Samples"
+///     VkBool32 sparseResidencyAliased; // @link substring="sparseResidencyAliased" target="#sparseResidencyAliased"
+///     VkBool32 variableMultisampleRate; // @link substring="variableMultisampleRate" target="#variableMultisampleRate"
+///     VkBool32 inheritedQueries; // @link substring="inheritedQueries" target="#inheritedQueries"
 /// } VkPhysicalDeviceFeatures;
 /// }
 ///

@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkComputePipelineCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineCreateFlags flags; // optional
-///     VkPipelineShaderStageCreateInfo stage;
-///     VkPipelineLayout layout;
-///     VkPipeline basePipelineHandle; // optional
-///     int32_t basePipelineIndex;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineCreateFlags flags; // optional // @link substring="VkPipelineCreateFlags" target="VkPipelineCreateFlags" @link substring="flags" target="#flags"
+///     VkPipelineShaderStageCreateInfo stage; // @link substring="VkPipelineShaderStageCreateInfo" target="VkPipelineShaderStageCreateInfo" @link substring="stage" target="#stage"
+///     VkPipelineLayout layout; // @link substring="VkPipelineLayout" target="VkPipelineLayout" @link substring="layout" target="#layout"
+///     VkPipeline basePipelineHandle; // optional // @link substring="VkPipeline" target="VkPipeline" @link substring="basePipelineHandle" target="#basePipelineHandle"
+///     int32_t basePipelineIndex; // @link substring="basePipelineIndex" target="#basePipelineIndex"
 /// } VkComputePipelineCreateInfo;
 /// }
 ///
@@ -114,11 +114,11 @@ public record VkComputePipelineCreateInfo(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public VkPipelineShaderStageCreateInfo stage() {
+    public @NotNull VkPipelineShaderStageCreateInfo stage() {
         return new VkPipelineShaderStageCreateInfo(segment.asSlice(OFFSET$stage, LAYOUT$stage));
     }
 
-    public void stage(VkPipelineShaderStageCreateInfo value) {
+    public void stage(@NotNull VkPipelineShaderStageCreateInfo value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$stage, SIZE$stage);
     }
 

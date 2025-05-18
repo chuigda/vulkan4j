@@ -39,16 +39,6 @@ private fun generatePPAccessor(pointee: CPointerType, member: LayoutField.Typed)
     val annotation = "@pointer(comment=\"$comment\")"
     val rawName = "${member.name}Raw"
 
-    defun("public", "$annotation MemorySegment", rawName) {
-        +"return segment.get(${member.layoutName}, ${member.offsetName});"
-    }
-    +""
-
-    defun("public", "void", rawName, "$annotation MemorySegment value") {
-        +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
-    }
-    +""
-
     +"/// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up"
     +"/// to user to track the size of the buffer, and use {@link PointerPtr#reinterpret} to set the size before"
     +"/// actually reading from or writing to the buffer."
@@ -65,11 +55,7 @@ private fun generatePPAccessor(pointee: CPointerType, member: LayoutField.Typed)
         +"MemorySegment s = value == null ? MemorySegment.NULL : value.segment();"
         +"$rawName(s);"
     }
-}
-
-private fun generatePNonRefAccessor(pointee: CNonRefType, member: LayoutField.Typed) = buildDoc {
-    val annotation = "@pointer(comment=\"${pointee.cType}*\")"
-    val rawName = "${member.name}Raw"
+    +""
 
     defun("public", "$annotation MemorySegment", rawName) {
         +"return segment.get(${member.layoutName}, ${member.offsetName});"
@@ -79,13 +65,16 @@ private fun generatePNonRefAccessor(pointee: CNonRefType, member: LayoutField.Ty
     defun("public", "void", rawName, "$annotation MemorySegment value") {
         +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
     }
-    +""
+}
+
+private fun generatePNonRefAccessor(pointee: CNonRefType, member: LayoutField.Typed) = buildDoc {
+    val annotation = "@pointer(comment=\"${pointee.cType}*\")"
+    val rawName = "${member.name}Raw"
 
     +"/// Note: the returned {@link ${pointee.jPtrTypeNoAnnotation}} does not have correct "
     +"/// {@link ${pointee.jPtrTypeNoAnnotation}#size} property. It's up to user to track the size of the buffer,"
     +"/// and use {@link ${pointee.jPtrTypeNoAnnotation}#reinterpret} to set the size before actually reading from or"
     +"/// writing to the buffer."
-
     defun("public", "@Nullable ${pointee.jPtrType}", member.name) {
         +"MemorySegment s = $rawName();"
         "if (s.equals(MemorySegment.NULL))" {
@@ -100,11 +89,7 @@ private fun generatePNonRefAccessor(pointee: CNonRefType, member: LayoutField.Ty
         +"MemorySegment s = value == null ? MemorySegment.NULL : value.segment();"
         +"$rawName(s);"
     }
-}
-
-private fun generatePHandleAccessor(pointee: CHandleType, member: LayoutField.Typed) = buildDoc {
-    val annotation = "@pointer(target=${pointee.name}.class)"
-    val rawName = "${member.name}Raw"
+    +""
 
     defun("public", "$annotation MemorySegment", rawName) {
         +"return segment.get(${member.layoutName}, ${member.offsetName});"
@@ -114,7 +99,11 @@ private fun generatePHandleAccessor(pointee: CHandleType, member: LayoutField.Ty
     defun("public", "void", rawName, "$annotation MemorySegment value") {
         +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
     }
-    +""
+}
+
+private fun generatePHandleAccessor(pointee: CHandleType, member: LayoutField.Typed) = buildDoc {
+    val annotation = "@pointer(target=${pointee.name}.class)"
+    val rawName = "${member.name}Raw"
 
     +"/// Note: the returned {@link ${pointee.name}.Ptr} does not have correct {@link ${pointee.name}.Ptr#size}"
     +"/// property. It's up to user to track the size of the buffer, and use"
@@ -134,11 +123,7 @@ private fun generatePHandleAccessor(pointee: CHandleType, member: LayoutField.Ty
         +"MemorySegment s = value == null ? MemorySegment.NULL : value.segment();"
         +"$rawName(s);"
     }
-}
-
-private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField.Typed) = buildDoc {
-    val annotation = "@pointer(target=${pointee.name}.class)"
-    val rawName = "${member.name}Raw"
+    +""
 
     defun("public", "$annotation MemorySegment", rawName) {
         +"return segment.get(${member.layoutName}, ${member.offsetName});"
@@ -148,8 +133,11 @@ private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField
     defun("public", "void", rawName, "$annotation MemorySegment value") {
         +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
     }
-    +""
+}
 
+private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField.Typed) = buildDoc {
+    val annotation = "@pointer(target=${pointee.name}.class)"
+    val rawName = "${member.name}Raw"
 
     defun("public", "@Nullable ${pointee.name}", member.name) {
         +"MemorySegment s = $rawName();"
@@ -181,11 +169,7 @@ private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField
 
         +"return ret;"
     }
-}
-
-private fun generatePEnumAccessor(pointee: CEnumType, member: LayoutField.Typed) = buildDoc {
-    val annotation = "@pointer(target=${pointee.name}.class)"
-    val rawName = "${member.name}Raw"
+    +""
 
     defun("public", "$annotation MemorySegment", rawName) {
         +"return segment.get(${member.layoutName}, ${member.offsetName});"
@@ -195,6 +179,12 @@ private fun generatePEnumAccessor(pointee: CEnumType, member: LayoutField.Typed)
     defun("public", "void", rawName, "$annotation MemorySegment value") {
         +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
     }
+}
+
+private fun generatePEnumAccessor(pointee: CEnumType, member: LayoutField.Typed) = buildDoc {
+    val annotation = "@pointer(target=${pointee.name}.class)"
+    val rawName = "${member.name}Raw"
+
     +""
 
     +"/// Note: the returned {@link ${pointee.jPtrTypeNoAnnotation}} does not have correct"
@@ -214,5 +204,15 @@ private fun generatePEnumAccessor(pointee: CEnumType, member: LayoutField.Typed)
     defun("public", "void", member.name, "@Nullable ${pointee.jPtrType} value") {
         +"MemorySegment s = value == null ? MemorySegment.NULL : value.segment();"
         +"$rawName(s);"
+    }
+    +""
+
+    defun("public", "$annotation MemorySegment", rawName) {
+        +"return segment.get(${member.layoutName}, ${member.offsetName});"
+    }
+    +""
+
+    defun("public", "void", rawName, "$annotation MemorySegment value") {
+        +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
     }
 }

@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineExecutableStatisticKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     char name;
-///     char description;
-///     VkPipelineExecutableStatisticFormatKHR format;
-///     VkPipelineExecutableStatisticValueKHR value;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     char name; // @link substring="name" target="#name"
+///     char description; // @link substring="description" target="#description"
+///     VkPipelineExecutableStatisticFormatKHR format; // @link substring="VkPipelineExecutableStatisticFormatKHR" target="VkPipelineExecutableStatisticFormatKHR" @link substring="format" target="#format"
+///     VkPipelineExecutableStatisticValueKHR value; // @link substring="VkPipelineExecutableStatisticValueKHR" target="VkPipelineExecutableStatisticValueKHR" @link substring="value" target="#value"
 /// } VkPipelineExecutableStatisticKHR;
 /// }
 ///
@@ -129,11 +129,11 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$format, OFFSET$format, value);
     }
 
-    public VkPipelineExecutableStatisticValueKHR value() {
+    public @NotNull VkPipelineExecutableStatisticValueKHR value() {
         return new VkPipelineExecutableStatisticValueKHR(segment.asSlice(OFFSET$value, LAYOUT$value));
     }
 
-    public void value(VkPipelineExecutableStatisticValueKHR value) {
+    public void value(@NotNull VkPipelineExecutableStatisticValueKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$value, SIZE$value);
     }
 

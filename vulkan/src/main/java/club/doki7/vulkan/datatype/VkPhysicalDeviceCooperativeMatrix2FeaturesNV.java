@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceCooperativeMatrix2FeaturesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 cooperativeMatrixWorkgroupScope;
-///     VkBool32 cooperativeMatrixFlexibleDimensions;
-///     VkBool32 cooperativeMatrixReductions;
-///     VkBool32 cooperativeMatrixConversions;
-///     VkBool32 cooperativeMatrixPerElementOperations;
-///     VkBool32 cooperativeMatrixTensorAddressing;
-///     VkBool32 cooperativeMatrixBlockLoads;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 cooperativeMatrixWorkgroupScope; // @link substring="cooperativeMatrixWorkgroupScope" target="#cooperativeMatrixWorkgroupScope"
+///     VkBool32 cooperativeMatrixFlexibleDimensions; // @link substring="cooperativeMatrixFlexibleDimensions" target="#cooperativeMatrixFlexibleDimensions"
+///     VkBool32 cooperativeMatrixReductions; // @link substring="cooperativeMatrixReductions" target="#cooperativeMatrixReductions"
+///     VkBool32 cooperativeMatrixConversions; // @link substring="cooperativeMatrixConversions" target="#cooperativeMatrixConversions"
+///     VkBool32 cooperativeMatrixPerElementOperations; // @link substring="cooperativeMatrixPerElementOperations" target="#cooperativeMatrixPerElementOperations"
+///     VkBool32 cooperativeMatrixTensorAddressing; // @link substring="cooperativeMatrixTensorAddressing" target="#cooperativeMatrixTensorAddressing"
+///     VkBool32 cooperativeMatrixBlockLoads; // @link substring="cooperativeMatrixBlockLoads" target="#cooperativeMatrixBlockLoads"
 /// } VkPhysicalDeviceCooperativeMatrix2FeaturesNV;
 /// }
 ///

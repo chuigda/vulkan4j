@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureGeometryDataKHR {
-///     VkAccelerationStructureGeometryTrianglesDataKHR triangles;
-///     VkAccelerationStructureGeometryAabbsDataKHR aabbs;
-///     VkAccelerationStructureGeometryInstancesDataKHR instances;
+///     VkAccelerationStructureGeometryTrianglesDataKHR triangles; // @link substring="VkAccelerationStructureGeometryTrianglesDataKHR" target="VkAccelerationStructureGeometryTrianglesDataKHR" @link substring="triangles" target="#triangles"
+///     VkAccelerationStructureGeometryAabbsDataKHR aabbs; // @link substring="VkAccelerationStructureGeometryAabbsDataKHR" target="VkAccelerationStructureGeometryAabbsDataKHR" @link substring="aabbs" target="#aabbs"
+///     VkAccelerationStructureGeometryInstancesDataKHR instances; // @link substring="VkAccelerationStructureGeometryInstancesDataKHR" target="VkAccelerationStructureGeometryInstancesDataKHR" @link substring="instances" target="#instances"
 /// } VkAccelerationStructureGeometryDataKHR;
 /// }
 ///
@@ -68,27 +68,27 @@ public record VkAccelerationStructureGeometryDataKHR(@NotNull MemorySegment segm
         return ret;
     }
 
-    public VkAccelerationStructureGeometryTrianglesDataKHR triangles() {
+    public @NotNull VkAccelerationStructureGeometryTrianglesDataKHR triangles() {
         return new VkAccelerationStructureGeometryTrianglesDataKHR(segment.asSlice(OFFSET$triangles, LAYOUT$triangles));
     }
 
-    public void triangles(VkAccelerationStructureGeometryTrianglesDataKHR value) {
+    public void triangles(@NotNull VkAccelerationStructureGeometryTrianglesDataKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$triangles, SIZE$triangles);
     }
 
-    public VkAccelerationStructureGeometryAabbsDataKHR aabbs() {
+    public @NotNull VkAccelerationStructureGeometryAabbsDataKHR aabbs() {
         return new VkAccelerationStructureGeometryAabbsDataKHR(segment.asSlice(OFFSET$aabbs, LAYOUT$aabbs));
     }
 
-    public void aabbs(VkAccelerationStructureGeometryAabbsDataKHR value) {
+    public void aabbs(@NotNull VkAccelerationStructureGeometryAabbsDataKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$aabbs, SIZE$aabbs);
     }
 
-    public VkAccelerationStructureGeometryInstancesDataKHR instances() {
+    public @NotNull VkAccelerationStructureGeometryInstancesDataKHR instances() {
         return new VkAccelerationStructureGeometryInstancesDataKHR(segment.asSlice(OFFSET$instances, LAYOUT$instances));
     }
 
-    public void instances(VkAccelerationStructureGeometryInstancesDataKHR value) {
+    public void instances(@NotNull VkAccelerationStructureGeometryInstancesDataKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$instances, SIZE$instances);
     }
 

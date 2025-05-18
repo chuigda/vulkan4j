@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassCreateInfo2 {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkRenderPassCreateFlags flags; // optional
-///     uint32_t attachmentCount; // optional
-///     VkAttachmentDescription2 const* pAttachments;
-///     uint32_t subpassCount;
-///     VkSubpassDescription2 const* pSubpasses;
-///     uint32_t dependencyCount; // optional
-///     VkSubpassDependency2 const* pDependencies;
-///     uint32_t correlatedViewMaskCount; // optional
-///     uint32_t const* pCorrelatedViewMasks;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkRenderPassCreateFlags flags; // optional // @link substring="VkRenderPassCreateFlags" target="VkRenderPassCreateFlags" @link substring="flags" target="#flags"
+///     uint32_t attachmentCount; // optional // @link substring="attachmentCount" target="#attachmentCount"
+///     VkAttachmentDescription2 const* pAttachments; // @link substring="VkAttachmentDescription2" target="VkAttachmentDescription2" @link substring="pAttachments" target="#pAttachments"
+///     uint32_t subpassCount; // @link substring="subpassCount" target="#subpassCount"
+///     VkSubpassDescription2 const* pSubpasses; // @link substring="VkSubpassDescription2" target="VkSubpassDescription2" @link substring="pSubpasses" target="#pSubpasses"
+///     uint32_t dependencyCount; // optional // @link substring="dependencyCount" target="#dependencyCount"
+///     VkSubpassDependency2 const* pDependencies; // @link substring="VkSubpassDependency2" target="VkSubpassDependency2" @link substring="pDependencies" target="#pDependencies"
+///     uint32_t correlatedViewMaskCount; // optional // @link substring="correlatedViewMaskCount" target="#correlatedViewMaskCount"
+///     uint32_t const* pCorrelatedViewMasks; // @link substring="pCorrelatedViewMasks" target="#pCorrelatedViewMasks"
 /// } VkRenderPassCreateInfo2;
 /// }
 ///
@@ -126,14 +126,6 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
     }
 
-    public @pointer(target=VkAttachmentDescription2.class) MemorySegment pAttachmentsRaw() {
-        return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
-    }
-
-    public void pAttachmentsRaw(@pointer(target=VkAttachmentDescription2.class) MemorySegment value) {
-        segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
-    }
-
     public @Nullable VkAttachmentDescription2 pAttachments() {
         MemorySegment s = pAttachmentsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -161,20 +153,20 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public @pointer(target=VkAttachmentDescription2.class) MemorySegment pAttachmentsRaw() {
+        return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
+    }
+
+    public void pAttachmentsRaw(@pointer(target=VkAttachmentDescription2.class) MemorySegment value) {
+        segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
+    }
+
     public @unsigned int subpassCount() {
         return segment.get(LAYOUT$subpassCount, OFFSET$subpassCount);
     }
 
     public void subpassCount(@unsigned int value) {
         segment.set(LAYOUT$subpassCount, OFFSET$subpassCount, value);
-    }
-
-    public @pointer(target=VkSubpassDescription2.class) MemorySegment pSubpassesRaw() {
-        return segment.get(LAYOUT$pSubpasses, OFFSET$pSubpasses);
-    }
-
-    public void pSubpassesRaw(@pointer(target=VkSubpassDescription2.class) MemorySegment value) {
-        segment.set(LAYOUT$pSubpasses, OFFSET$pSubpasses, value);
     }
 
     public @Nullable VkSubpassDescription2 pSubpasses() {
@@ -204,20 +196,20 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public @pointer(target=VkSubpassDescription2.class) MemorySegment pSubpassesRaw() {
+        return segment.get(LAYOUT$pSubpasses, OFFSET$pSubpasses);
+    }
+
+    public void pSubpassesRaw(@pointer(target=VkSubpassDescription2.class) MemorySegment value) {
+        segment.set(LAYOUT$pSubpasses, OFFSET$pSubpasses, value);
+    }
+
     public @unsigned int dependencyCount() {
         return segment.get(LAYOUT$dependencyCount, OFFSET$dependencyCount);
     }
 
     public void dependencyCount(@unsigned int value) {
         segment.set(LAYOUT$dependencyCount, OFFSET$dependencyCount, value);
-    }
-
-    public @pointer(target=VkSubpassDependency2.class) MemorySegment pDependenciesRaw() {
-        return segment.get(LAYOUT$pDependencies, OFFSET$pDependencies);
-    }
-
-    public void pDependenciesRaw(@pointer(target=VkSubpassDependency2.class) MemorySegment value) {
-        segment.set(LAYOUT$pDependencies, OFFSET$pDependencies, value);
     }
 
     public @Nullable VkSubpassDependency2 pDependencies() {
@@ -247,20 +239,20 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return ret;
     }
 
+    public @pointer(target=VkSubpassDependency2.class) MemorySegment pDependenciesRaw() {
+        return segment.get(LAYOUT$pDependencies, OFFSET$pDependencies);
+    }
+
+    public void pDependenciesRaw(@pointer(target=VkSubpassDependency2.class) MemorySegment value) {
+        segment.set(LAYOUT$pDependencies, OFFSET$pDependencies, value);
+    }
+
     public @unsigned int correlatedViewMaskCount() {
         return segment.get(LAYOUT$correlatedViewMaskCount, OFFSET$correlatedViewMaskCount);
     }
 
     public void correlatedViewMaskCount(@unsigned int value) {
         segment.set(LAYOUT$correlatedViewMaskCount, OFFSET$correlatedViewMaskCount, value);
-    }
-
-    public @pointer(comment="int*") MemorySegment pCorrelatedViewMasksRaw() {
-        return segment.get(LAYOUT$pCorrelatedViewMasks, OFFSET$pCorrelatedViewMasks);
-    }
-
-    public void pCorrelatedViewMasksRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pCorrelatedViewMasks, OFFSET$pCorrelatedViewMasks, value);
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -278,6 +270,14 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
     public void pCorrelatedViewMasks(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCorrelatedViewMasksRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pCorrelatedViewMasksRaw() {
+        return segment.get(LAYOUT$pCorrelatedViewMasks, OFFSET$pCorrelatedViewMasks);
+    }
+
+    public void pCorrelatedViewMasksRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pCorrelatedViewMasks, OFFSET$pCorrelatedViewMasks, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

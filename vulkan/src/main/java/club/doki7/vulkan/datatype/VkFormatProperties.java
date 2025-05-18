@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkFormatProperties {
-///     VkFormatFeatureFlags linearTilingFeatures; // optional
-///     VkFormatFeatureFlags optimalTilingFeatures; // optional
-///     VkFormatFeatureFlags bufferFeatures; // optional
+///     VkFormatFeatureFlags linearTilingFeatures; // optional // @link substring="VkFormatFeatureFlags" target="VkFormatFeatureFlags" @link substring="linearTilingFeatures" target="#linearTilingFeatures"
+///     VkFormatFeatureFlags optimalTilingFeatures; // optional // @link substring="VkFormatFeatureFlags" target="VkFormatFeatureFlags" @link substring="optimalTilingFeatures" target="#optimalTilingFeatures"
+///     VkFormatFeatureFlags bufferFeatures; // optional // @link substring="VkFormatFeatureFlags" target="VkFormatFeatureFlags" @link substring="bufferFeatures" target="#bufferFeatures"
 /// } VkFormatProperties;
 /// }
 ///

@@ -20,20 +20,20 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1SequenceHeader {
-///     StdVideoAV1SequenceHeaderFlags flags;
-///     StdVideoAV1Profile seq_profile;
-///     uint8_t frame_width_bits_minus_1;
-///     uint8_t frame_height_bits_minus_1;
-///     uint16_t max_frame_width_minus_1;
-///     uint16_t max_frame_height_minus_1;
-///     uint8_t delta_frame_id_length_minus_2;
-///     uint8_t additional_frame_id_length_minus_1;
-///     uint8_t order_hint_bits_minus_1;
-///     uint8_t seq_force_integer_mv;
-///     uint8_t seq_force_screen_content_tools;
-///     uint8_t reserved1;
-///     StdVideoAV1ColorConfig const* pColorConfig;
-///     StdVideoAV1TimingInfo const* pTimingInfo;
+///     StdVideoAV1SequenceHeaderFlags flags; // @link substring="StdVideoAV1SequenceHeaderFlags" target="StdVideoAV1SequenceHeaderFlags" @link substring="flags" target="#flags"
+///     StdVideoAV1Profile seq_profile; // @link substring="StdVideoAV1Profile" target="StdVideoAV1Profile" @link substring="seq_profile" target="#seq_profile"
+///     uint8_t frame_width_bits_minus_1; // @link substring="frame_width_bits_minus_1" target="#frame_width_bits_minus_1"
+///     uint8_t frame_height_bits_minus_1; // @link substring="frame_height_bits_minus_1" target="#frame_height_bits_minus_1"
+///     uint16_t max_frame_width_minus_1; // @link substring="max_frame_width_minus_1" target="#max_frame_width_minus_1"
+///     uint16_t max_frame_height_minus_1; // @link substring="max_frame_height_minus_1" target="#max_frame_height_minus_1"
+///     uint8_t delta_frame_id_length_minus_2; // @link substring="delta_frame_id_length_minus_2" target="#delta_frame_id_length_minus_2"
+///     uint8_t additional_frame_id_length_minus_1; // @link substring="additional_frame_id_length_minus_1" target="#additional_frame_id_length_minus_1"
+///     uint8_t order_hint_bits_minus_1; // @link substring="order_hint_bits_minus_1" target="#order_hint_bits_minus_1"
+///     uint8_t seq_force_integer_mv; // @link substring="seq_force_integer_mv" target="#seq_force_integer_mv"
+///     uint8_t seq_force_screen_content_tools; // @link substring="seq_force_screen_content_tools" target="#seq_force_screen_content_tools"
+///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     StdVideoAV1ColorConfig const* pColorConfig; // @link substring="StdVideoAV1ColorConfig" target="StdVideoAV1ColorConfig" @link substring="pColorConfig" target="#pColorConfig"
+///     StdVideoAV1TimingInfo const* pTimingInfo; // @link substring="StdVideoAV1TimingInfo" target="StdVideoAV1TimingInfo" @link substring="pTimingInfo" target="#pTimingInfo"
 /// } StdVideoAV1SequenceHeader;
 /// }
 ///
@@ -77,11 +77,11 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
-    public StdVideoAV1SequenceHeaderFlags flags() {
+    public @NotNull StdVideoAV1SequenceHeaderFlags flags() {
         return new StdVideoAV1SequenceHeaderFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoAV1SequenceHeaderFlags value) {
+    public void flags(@NotNull StdVideoAV1SequenceHeaderFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
@@ -173,14 +173,6 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
     }
 
-    public @pointer(target=StdVideoAV1ColorConfig.class) MemorySegment pColorConfigRaw() {
-        return segment.get(LAYOUT$pColorConfig, OFFSET$pColorConfig);
-    }
-
-    public void pColorConfigRaw(@pointer(target=StdVideoAV1ColorConfig.class) MemorySegment value) {
-        segment.set(LAYOUT$pColorConfig, OFFSET$pColorConfig, value);
-    }
-
     public @Nullable StdVideoAV1ColorConfig pColorConfig() {
         MemorySegment s = pColorConfigRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -208,12 +200,12 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
-    public @pointer(target=StdVideoAV1TimingInfo.class) MemorySegment pTimingInfoRaw() {
-        return segment.get(LAYOUT$pTimingInfo, OFFSET$pTimingInfo);
+    public @pointer(target=StdVideoAV1ColorConfig.class) MemorySegment pColorConfigRaw() {
+        return segment.get(LAYOUT$pColorConfig, OFFSET$pColorConfig);
     }
 
-    public void pTimingInfoRaw(@pointer(target=StdVideoAV1TimingInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pTimingInfo, OFFSET$pTimingInfo, value);
+    public void pColorConfigRaw(@pointer(target=StdVideoAV1ColorConfig.class) MemorySegment value) {
+        segment.set(LAYOUT$pColorConfig, OFFSET$pColorConfig, value);
     }
 
     public @Nullable StdVideoAV1TimingInfo pTimingInfo() {
@@ -241,6 +233,14 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
             ret[i] = new StdVideoAV1TimingInfo(s.asSlice(i * StdVideoAV1TimingInfo.BYTES, StdVideoAV1TimingInfo.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoAV1TimingInfo.class) MemorySegment pTimingInfoRaw() {
+        return segment.get(LAYOUT$pTimingInfo, OFFSET$pTimingInfo);
+    }
+
+    public void pTimingInfoRaw(@pointer(target=StdVideoAV1TimingInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pTimingInfo, OFFSET$pTimingInfo, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderingFragmentShadingRateAttachmentInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImageView imageView; // optional
-///     VkImageLayout imageLayout;
-///     VkExtent2D shadingRateAttachmentTexelSize;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageView imageView; // optional // @link substring="VkImageView" target="VkImageView" @link substring="imageView" target="#imageView"
+///     VkImageLayout imageLayout; // @link substring="VkImageLayout" target="VkImageLayout" @link substring="imageLayout" target="#imageLayout"
+///     VkExtent2D shadingRateAttachmentTexelSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="shadingRateAttachmentTexelSize" target="#shadingRateAttachmentTexelSize"
 /// } VkRenderingFragmentShadingRateAttachmentInfoKHR;
 /// }
 ///
@@ -124,11 +124,11 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySeg
         segment.set(LAYOUT$imageLayout, OFFSET$imageLayout, value);
     }
 
-    public VkExtent2D shadingRateAttachmentTexelSize() {
+    public @NotNull VkExtent2D shadingRateAttachmentTexelSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$shadingRateAttachmentTexelSize, LAYOUT$shadingRateAttachmentTexelSize));
     }
 
-    public void shadingRateAttachmentTexelSize(VkExtent2D value) {
+    public void shadingRateAttachmentTexelSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$shadingRateAttachmentTexelSize, SIZE$shadingRateAttachmentTexelSize);
     }
 

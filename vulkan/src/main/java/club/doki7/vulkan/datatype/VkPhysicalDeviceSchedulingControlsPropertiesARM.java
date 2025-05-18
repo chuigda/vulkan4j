@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceSchedulingControlsPropertiesARM {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkPhysicalDeviceSchedulingControlsFlagsARM schedulingControlsFlags;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPhysicalDeviceSchedulingControlsFlagsARM schedulingControlsFlags; // @link substring="VkPhysicalDeviceSchedulingControlsFlagsARM" target="VkPhysicalDeviceSchedulingControlsFlagsARM" @link substring="schedulingControlsFlags" target="#schedulingControlsFlags"
 /// } VkPhysicalDeviceSchedulingControlsPropertiesARM;
 /// }
 ///

@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 shaderModuleIdentifier;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 shaderModuleIdentifier; // @link substring="shaderModuleIdentifier" target="#shaderModuleIdentifier"
 /// } VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT;
 /// }
 ///

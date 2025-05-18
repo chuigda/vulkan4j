@@ -21,18 +21,18 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH264SpsVuiFlags {
-///     uint32_t aspect_ratio_info_present_flag : 1;
-///     uint32_t overscan_info_present_flag : 1;
-///     uint32_t overscan_appropriate_flag : 1;
-///     uint32_t video_signal_type_present_flag : 1;
-///     uint32_t video_full_range_flag : 1;
-///     uint32_t color_description_present_flag : 1;
-///     uint32_t chroma_loc_info_present_flag : 1;
-///     uint32_t timing_info_present_flag : 1;
-///     uint32_t fixed_frame_rate_flag : 1;
-///     uint32_t bitstream_restriction_flag : 1;
-///     uint32_t nal_hrd_parameters_present_flag : 1;
-///     uint32_t vcl_hrd_parameters_present_flag : 1;
+///     uint32_t aspect_ratio_info_present_flag : 1; // @link substring="aspect_ratio_info_present_flag" target="#aspect_ratio_info_present_flag"
+///     uint32_t overscan_info_present_flag : 1; // @link substring="overscan_info_present_flag" target="#overscan_info_present_flag"
+///     uint32_t overscan_appropriate_flag : 1; // @link substring="overscan_appropriate_flag" target="#overscan_appropriate_flag"
+///     uint32_t video_signal_type_present_flag : 1; // @link substring="video_signal_type_present_flag" target="#video_signal_type_present_flag"
+///     uint32_t video_full_range_flag : 1; // @link substring="video_full_range_flag" target="#video_full_range_flag"
+///     uint32_t color_description_present_flag : 1; // @link substring="color_description_present_flag" target="#color_description_present_flag"
+///     uint32_t chroma_loc_info_present_flag : 1; // @link substring="chroma_loc_info_present_flag" target="#chroma_loc_info_present_flag"
+///     uint32_t timing_info_present_flag : 1; // @link substring="timing_info_present_flag" target="#timing_info_present_flag"
+///     uint32_t fixed_frame_rate_flag : 1; // @link substring="fixed_frame_rate_flag" target="#fixed_frame_rate_flag"
+///     uint32_t bitstream_restriction_flag : 1; // @link substring="bitstream_restriction_flag" target="#bitstream_restriction_flag"
+///     uint32_t nal_hrd_parameters_present_flag : 1; // @link substring="nal_hrd_parameters_present_flag" target="#nal_hrd_parameters_present_flag"
+///     uint32_t vcl_hrd_parameters_present_flag : 1; // @link substring="vcl_hrd_parameters_present_flag" target="#vcl_hrd_parameters_present_flag"
 /// } StdVideoH264SpsVuiFlags;
 /// }
 ///

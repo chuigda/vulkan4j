@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBaseOutStructure {
-///     VkStructureType sType;
-///     VkBaseOutStructure* pNext; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     VkBaseOutStructure* pNext; // optional // @link substring="VkBaseOutStructure" target="VkBaseOutStructure" @link substring="pNext" target="#pNext"
 /// } VkBaseOutStructure;
 /// }
 ///
@@ -75,14 +75,6 @@ public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IPoi
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(target=VkBaseOutStructure.class) MemorySegment pNextRaw() {
-        return segment.get(LAYOUT$pNext, OFFSET$pNext);
-    }
-
-    public void pNextRaw(@pointer(target=VkBaseOutStructure.class) MemorySegment value) {
-        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
-    }
-
     public @Nullable VkBaseOutStructure pNext() {
         MemorySegment s = pNextRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -108,6 +100,14 @@ public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IPoi
             ret[i] = new VkBaseOutStructure(s.asSlice(i * VkBaseOutStructure.BYTES, VkBaseOutStructure.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkBaseOutStructure.class) MemorySegment pNextRaw() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNextRaw(@pointer(target=VkBaseOutStructure.class) MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

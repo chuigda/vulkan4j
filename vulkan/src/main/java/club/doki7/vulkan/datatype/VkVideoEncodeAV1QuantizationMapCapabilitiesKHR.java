@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeAV1QuantizationMapCapabilitiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     int32_t minQIndexDelta;
-///     int32_t maxQIndexDelta;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     int32_t minQIndexDelta; // @link substring="minQIndexDelta" target="#minQIndexDelta"
+///     int32_t maxQIndexDelta; // @link substring="maxQIndexDelta" target="#maxQIndexDelta"
 /// } VkVideoEncodeAV1QuantizationMapCapabilitiesKHR;
 /// }
 ///

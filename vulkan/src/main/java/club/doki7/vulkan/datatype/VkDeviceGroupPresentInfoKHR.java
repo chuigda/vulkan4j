@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceGroupPresentInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t swapchainCount; // optional
-///     uint32_t const* pDeviceMasks;
-///     VkDeviceGroupPresentModeFlagsKHR mode;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t swapchainCount; // optional // @link substring="swapchainCount" target="#swapchainCount"
+///     uint32_t const* pDeviceMasks; // @link substring="pDeviceMasks" target="#pDeviceMasks"
+///     VkDeviceGroupPresentModeFlagsKHR mode; // @link substring="VkDeviceGroupPresentModeFlagsKHR" target="VkDeviceGroupPresentModeFlagsKHR" @link substring="mode" target="#mode"
 /// } VkDeviceGroupPresentInfoKHR;
 /// }
 ///
@@ -112,14 +112,6 @@ public record VkDeviceGroupPresentInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pDeviceMasksRaw() {
-        return segment.get(LAYOUT$pDeviceMasks, OFFSET$pDeviceMasks);
-    }
-
-    public void pDeviceMasksRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pDeviceMasks, OFFSET$pDeviceMasks, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -135,6 +127,14 @@ public record VkDeviceGroupPresentInfoKHR(@NotNull MemorySegment segment) implem
     public void pDeviceMasks(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDeviceMasksRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pDeviceMasksRaw() {
+        return segment.get(LAYOUT$pDeviceMasks, OFFSET$pDeviceMasks);
+    }
+
+    public void pDeviceMasksRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pDeviceMasks, OFFSET$pDeviceMasks, value);
     }
 
     public @enumtype(VkDeviceGroupPresentModeFlagsKHR.class) int mode() {

@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint64_t shaderCoreMask;
-///     uint32_t shaderCoreCount;
-///     uint32_t shaderWarpsPerCore;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint64_t shaderCoreMask; // @link substring="shaderCoreMask" target="#shaderCoreMask"
+///     uint32_t shaderCoreCount; // @link substring="shaderCoreCount" target="#shaderCoreCount"
+///     uint32_t shaderWarpsPerCore; // @link substring="shaderWarpsPerCore" target="#shaderWarpsPerCore"
 /// } VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM;
 /// }
 ///

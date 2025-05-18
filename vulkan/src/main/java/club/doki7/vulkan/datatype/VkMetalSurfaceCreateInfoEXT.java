@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMetalSurfaceCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkMetalSurfaceCreateFlagsEXT flags; // optional
-///     CAMetalLayer const* pLayer;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkMetalSurfaceCreateFlagsEXT flags; // optional // @link substring="VkMetalSurfaceCreateFlagsEXT" target="VkMetalSurfaceCreateFlagsEXT" @link substring="flags" target="#flags"
+///     CAMetalLayer const* pLayer; // @link substring="pLayer" target="#pLayer"
 /// } VkMetalSurfaceCreateInfoEXT;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkMetalSurfaceCreateInfoEXT(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(comment="void**") MemorySegment pLayerRaw() {
-        return segment.get(LAYOUT$pLayer, OFFSET$pLayer);
-    }
-
-    public void pLayerRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$pLayer, OFFSET$pLayer, value);
-    }
-
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
     /// to user to track the size of the buffer, and use {@link PointerPtr#reinterpret} to set the size before
     /// actually reading from or writing to the buffer.
@@ -133,6 +125,14 @@ public record VkMetalSurfaceCreateInfoEXT(@NotNull MemorySegment segment) implem
     public void pLayer(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLayerRaw(s);
+    }
+
+    public @pointer(comment="void**") MemorySegment pLayerRaw() {
+        return segment.get(LAYOUT$pLayer, OFFSET$pLayer);
+    }
+
+    public void pLayerRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$pLayer, OFFSET$pLayer, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

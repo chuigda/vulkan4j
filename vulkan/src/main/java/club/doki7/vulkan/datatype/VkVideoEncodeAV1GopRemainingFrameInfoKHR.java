@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeAV1GopRemainingFrameInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBool32 useGopRemainingFrames;
-///     uint32_t gopRemainingIntra;
-///     uint32_t gopRemainingPredictive;
-///     uint32_t gopRemainingBipredictive;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 useGopRemainingFrames; // @link substring="useGopRemainingFrames" target="#useGopRemainingFrames"
+///     uint32_t gopRemainingIntra; // @link substring="gopRemainingIntra" target="#gopRemainingIntra"
+///     uint32_t gopRemainingPredictive; // @link substring="gopRemainingPredictive" target="#gopRemainingPredictive"
+///     uint32_t gopRemainingBipredictive; // @link substring="gopRemainingBipredictive" target="#gopRemainingBipredictive"
 /// } VkVideoEncodeAV1GopRemainingFrameInfoKHR;
 /// }
 ///

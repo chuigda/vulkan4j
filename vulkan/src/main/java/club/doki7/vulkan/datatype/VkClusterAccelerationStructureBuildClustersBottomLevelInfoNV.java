@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV {
-///     uint32_t clusterReferencesCount;
-///     uint32_t clusterReferencesStride;
-///     VkDeviceAddress clusterReferences;
+///     uint32_t clusterReferencesCount; // @link substring="clusterReferencesCount" target="#clusterReferencesCount"
+///     uint32_t clusterReferencesStride; // @link substring="clusterReferencesStride" target="#clusterReferencesStride"
+///     VkDeviceAddress clusterReferences; // @link substring="clusterReferences" target="#clusterReferences"
 /// } VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV;
 /// }
 ///

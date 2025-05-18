@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkFramebufferAttachmentsCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t attachmentImageInfoCount; // optional
-///     VkFramebufferAttachmentImageInfo const* pAttachmentImageInfos;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t attachmentImageInfoCount; // optional // @link substring="attachmentImageInfoCount" target="#attachmentImageInfoCount"
+///     VkFramebufferAttachmentImageInfo const* pAttachmentImageInfos; // @link substring="VkFramebufferAttachmentImageInfo" target="VkFramebufferAttachmentImageInfo" @link substring="pAttachmentImageInfos" target="#pAttachmentImageInfos"
 /// } VkFramebufferAttachmentsCreateInfo;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkFramebufferAttachmentsCreateInfo(@NotNull MemorySegment segment)
         segment.set(LAYOUT$attachmentImageInfoCount, OFFSET$attachmentImageInfoCount, value);
     }
 
-    public @pointer(target=VkFramebufferAttachmentImageInfo.class) MemorySegment pAttachmentImageInfosRaw() {
-        return segment.get(LAYOUT$pAttachmentImageInfos, OFFSET$pAttachmentImageInfos);
-    }
-
-    public void pAttachmentImageInfosRaw(@pointer(target=VkFramebufferAttachmentImageInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pAttachmentImageInfos, OFFSET$pAttachmentImageInfos, value);
-    }
-
     public @Nullable VkFramebufferAttachmentImageInfo pAttachmentImageInfos() {
         MemorySegment s = pAttachmentImageInfosRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkFramebufferAttachmentsCreateInfo(@NotNull MemorySegment segment)
             ret[i] = new VkFramebufferAttachmentImageInfo(s.asSlice(i * VkFramebufferAttachmentImageInfo.BYTES, VkFramebufferAttachmentImageInfo.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkFramebufferAttachmentImageInfo.class) MemorySegment pAttachmentImageInfosRaw() {
+        return segment.get(LAYOUT$pAttachmentImageInfos, OFFSET$pAttachmentImageInfos);
+    }
+
+    public void pAttachmentImageInfosRaw(@pointer(target=VkFramebufferAttachmentImageInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pAttachmentImageInfos, OFFSET$pAttachmentImageInfos, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

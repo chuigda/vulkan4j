@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSparseImageMemoryRequirements {
-///     VkSparseImageFormatProperties formatProperties;
-///     uint32_t imageMipTailFirstLod;
-///     VkDeviceSize imageMipTailSize;
-///     VkDeviceSize imageMipTailOffset;
-///     VkDeviceSize imageMipTailStride;
+///     VkSparseImageFormatProperties formatProperties; // @link substring="VkSparseImageFormatProperties" target="VkSparseImageFormatProperties" @link substring="formatProperties" target="#formatProperties"
+///     uint32_t imageMipTailFirstLod; // @link substring="imageMipTailFirstLod" target="#imageMipTailFirstLod"
+///     VkDeviceSize imageMipTailSize; // @link substring="imageMipTailSize" target="#imageMipTailSize"
+///     VkDeviceSize imageMipTailOffset; // @link substring="imageMipTailOffset" target="#imageMipTailOffset"
+///     VkDeviceSize imageMipTailStride; // @link substring="imageMipTailStride" target="#imageMipTailStride"
 /// } VkSparseImageMemoryRequirements;
 /// }
 ///
@@ -70,11 +70,11 @@ public record VkSparseImageMemoryRequirements(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public VkSparseImageFormatProperties formatProperties() {
+    public @NotNull VkSparseImageFormatProperties formatProperties() {
         return new VkSparseImageFormatProperties(segment.asSlice(OFFSET$formatProperties, LAYOUT$formatProperties));
     }
 
-    public void formatProperties(VkSparseImageFormatProperties value) {
+    public void formatProperties(@NotNull VkSparseImageFormatProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$formatProperties, SIZE$formatProperties);
     }
 

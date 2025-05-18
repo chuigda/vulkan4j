@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBindVertexBufferIndirectCommandNV {
-///     VkDeviceAddress bufferAddress;
-///     uint32_t size;
-///     uint32_t stride;
+///     VkDeviceAddress bufferAddress; // @link substring="bufferAddress" target="#bufferAddress"
+///     uint32_t size; // @link substring="size" target="#size"
+///     uint32_t stride; // @link substring="stride" target="#stride"
 /// } VkBindVertexBufferIndirectCommandNV;
 /// }
 ///

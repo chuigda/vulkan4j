@@ -20,19 +20,19 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMicromapBuildInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkMicromapTypeEXT type;
-///     VkBuildMicromapFlagsEXT flags; // optional
-///     VkBuildMicromapModeEXT mode;
-///     VkMicromapEXT dstMicromap; // optional
-///     uint32_t usageCountsCount; // optional
-///     VkMicromapUsageEXT const* pUsageCounts; // optional
-///     VkMicromapUsageEXT const* const* ppUsageCounts;
-///     VkDeviceOrHostAddressConstKHR data;
-///     VkDeviceOrHostAddressKHR scratchData;
-///     VkDeviceOrHostAddressConstKHR triangleArray;
-///     VkDeviceSize triangleArrayStride;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkMicromapTypeEXT type; // @link substring="VkMicromapTypeEXT" target="VkMicromapTypeEXT" @link substring="type" target="#type"
+///     VkBuildMicromapFlagsEXT flags; // optional // @link substring="VkBuildMicromapFlagsEXT" target="VkBuildMicromapFlagsEXT" @link substring="flags" target="#flags"
+///     VkBuildMicromapModeEXT mode; // @link substring="VkBuildMicromapModeEXT" target="VkBuildMicromapModeEXT" @link substring="mode" target="#mode"
+///     VkMicromapEXT dstMicromap; // optional // @link substring="VkMicromapEXT" target="VkMicromapEXT" @link substring="dstMicromap" target="#dstMicromap"
+///     uint32_t usageCountsCount; // optional // @link substring="usageCountsCount" target="#usageCountsCount"
+///     VkMicromapUsageEXT const* pUsageCounts; // optional // @link substring="VkMicromapUsageEXT" target="VkMicromapUsageEXT" @link substring="pUsageCounts" target="#pUsageCounts"
+///     VkMicromapUsageEXT const* const* ppUsageCounts; // @link substring="VkMicromapUsageEXT" target="VkMicromapUsageEXT" @link substring="ppUsageCounts" target="#ppUsageCounts"
+///     VkDeviceOrHostAddressConstKHR data; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="data" target="#data"
+///     VkDeviceOrHostAddressKHR scratchData; // @link substring="VkDeviceOrHostAddressKHR" target="VkDeviceOrHostAddressKHR" @link substring="scratchData" target="#scratchData"
+///     VkDeviceOrHostAddressConstKHR triangleArray; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="triangleArray" target="#triangleArray"
+///     VkDeviceSize triangleArrayStride; // @link substring="triangleArrayStride" target="#triangleArrayStride"
 /// } VkMicromapBuildInfoEXT;
 /// }
 ///
@@ -156,14 +156,6 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$usageCountsCount, OFFSET$usageCountsCount, value);
     }
 
-    public @pointer(target=VkMicromapUsageEXT.class) MemorySegment pUsageCountsRaw() {
-        return segment.get(LAYOUT$pUsageCounts, OFFSET$pUsageCounts);
-    }
-
-    public void pUsageCountsRaw(@pointer(target=VkMicromapUsageEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pUsageCounts, OFFSET$pUsageCounts, value);
-    }
-
     public @Nullable VkMicromapUsageEXT pUsageCounts() {
         MemorySegment s = pUsageCountsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -191,12 +183,12 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public @pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
-        return segment.get(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts);
+    public @pointer(target=VkMicromapUsageEXT.class) MemorySegment pUsageCountsRaw() {
+        return segment.get(LAYOUT$pUsageCounts, OFFSET$pUsageCounts);
     }
 
-    public void ppUsageCountsRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts, value);
+    public void pUsageCountsRaw(@pointer(target=VkMicromapUsageEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pUsageCounts, OFFSET$pUsageCounts, value);
     }
 
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
@@ -215,27 +207,35 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         ppUsageCountsRaw(s);
     }
 
-    public VkDeviceOrHostAddressConstKHR data() {
+    public @pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
+        return segment.get(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts);
+    }
+
+    public void ppUsageCountsRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts, value);
+    }
+
+    public @NotNull VkDeviceOrHostAddressConstKHR data() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$data, LAYOUT$data));
     }
 
-    public void data(VkDeviceOrHostAddressConstKHR value) {
+    public void data(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
     }
 
-    public VkDeviceOrHostAddressKHR scratchData() {
+    public @NotNull VkDeviceOrHostAddressKHR scratchData() {
         return new VkDeviceOrHostAddressKHR(segment.asSlice(OFFSET$scratchData, LAYOUT$scratchData));
     }
 
-    public void scratchData(VkDeviceOrHostAddressKHR value) {
+    public void scratchData(@NotNull VkDeviceOrHostAddressKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$scratchData, SIZE$scratchData);
     }
 
-    public VkDeviceOrHostAddressConstKHR triangleArray() {
+    public @NotNull VkDeviceOrHostAddressConstKHR triangleArray() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$triangleArray, LAYOUT$triangleArray));
     }
 
-    public void triangleArray(VkDeviceOrHostAddressConstKHR value) {
+    public void triangleArray(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$triangleArray, SIZE$triangleArray);
     }
 

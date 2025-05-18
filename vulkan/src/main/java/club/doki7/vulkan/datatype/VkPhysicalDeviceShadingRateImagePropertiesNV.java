@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShadingRateImagePropertiesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkExtent2D shadingRateTexelSize;
-///     uint32_t shadingRatePaletteSize;
-///     uint32_t shadingRateMaxCoarseSamples;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkExtent2D shadingRateTexelSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="shadingRateTexelSize" target="#shadingRateTexelSize"
+///     uint32_t shadingRatePaletteSize; // @link substring="shadingRatePaletteSize" target="#shadingRatePaletteSize"
+///     uint32_t shadingRateMaxCoarseSamples; // @link substring="shadingRateMaxCoarseSamples" target="#shadingRateMaxCoarseSamples"
 /// } VkPhysicalDeviceShadingRateImagePropertiesNV;
 /// }
 ///
@@ -104,11 +104,11 @@ public record VkPhysicalDeviceShadingRateImagePropertiesNV(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkExtent2D shadingRateTexelSize() {
+    public @NotNull VkExtent2D shadingRateTexelSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$shadingRateTexelSize, LAYOUT$shadingRateTexelSize));
     }
 
-    public void shadingRateTexelSize(VkExtent2D value) {
+    public void shadingRateTexelSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$shadingRateTexelSize, SIZE$shadingRateTexelSize);
     }
 

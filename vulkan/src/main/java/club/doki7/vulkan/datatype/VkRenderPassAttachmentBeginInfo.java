@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassAttachmentBeginInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t attachmentCount; // optional
-///     VkImageView const* pAttachments;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t attachmentCount; // optional // @link substring="attachmentCount" target="#attachmentCount"
+///     VkImageView const* pAttachments; // @link substring="VkImageView" target="VkImageView" @link substring="pAttachments" target="#pAttachments"
 /// } VkRenderPassAttachmentBeginInfo;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkRenderPassAttachmentBeginInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
     }
 
-    public @pointer(target=VkImageView.class) MemorySegment pAttachmentsRaw() {
-        return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
-    }
-
-    public void pAttachmentsRaw(@pointer(target=VkImageView.class) MemorySegment value) {
-        segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
-    }
-
     /// Note: the returned {@link VkImageView.Ptr} does not have correct {@link VkImageView.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkImageView.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -134,6 +126,14 @@ public record VkRenderPassAttachmentBeginInfo(@NotNull MemorySegment segment) im
     public void pAttachments(@Nullable VkImageView.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentsRaw(s);
+    }
+
+    public @pointer(target=VkImageView.class) MemorySegment pAttachmentsRaw() {
+        return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
+    }
+
+    public void pAttachmentsRaw(@pointer(target=VkImageView.class) MemorySegment value) {
+        segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkWaylandSurfaceCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkWaylandSurfaceCreateFlagsKHR flags; // optional
-///     wl_display* display;
-///     wl_surface* surface;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkWaylandSurfaceCreateFlagsKHR flags; // optional // @link substring="VkWaylandSurfaceCreateFlagsKHR" target="VkWaylandSurfaceCreateFlagsKHR" @link substring="flags" target="#flags"
+///     wl_display* display; // @link substring="display" target="#display"
+///     wl_surface* surface; // @link substring="surface" target="#surface"
 /// } VkWaylandSurfaceCreateInfoKHR;
 /// }
 ///
@@ -112,14 +112,6 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(comment="void**") MemorySegment displayRaw() {
-        return segment.get(LAYOUT$display, OFFSET$display);
-    }
-
-    public void displayRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$display, OFFSET$display, value);
-    }
-
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
     /// to user to track the size of the buffer, and use {@link PointerPtr#reinterpret} to set the size before
     /// actually reading from or writing to the buffer.
@@ -136,12 +128,12 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         displayRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment surfaceRaw() {
-        return segment.get(LAYOUT$surface, OFFSET$surface);
+    public @pointer(comment="void**") MemorySegment displayRaw() {
+        return segment.get(LAYOUT$display, OFFSET$display);
     }
 
-    public void surfaceRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$surface, OFFSET$surface, value);
+    public void displayRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$display, OFFSET$display, value);
     }
 
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
@@ -158,6 +150,14 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
     public void surface(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         surfaceRaw(s);
+    }
+
+    public @pointer(comment="void**") MemorySegment surfaceRaw() {
+        return segment.get(LAYOUT$surface, OFFSET$surface);
+    }
+
+    public void surfaceRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$surface, OFFSET$surface, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

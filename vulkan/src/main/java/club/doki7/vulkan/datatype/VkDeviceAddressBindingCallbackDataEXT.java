@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceAddressBindingCallbackDataEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkDeviceAddressBindingFlagsEXT flags; // optional
-///     VkDeviceAddress baseAddress;
-///     VkDeviceSize size;
-///     VkDeviceAddressBindingTypeEXT bindingType;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceAddressBindingFlagsEXT flags; // optional // @link substring="VkDeviceAddressBindingFlagsEXT" target="VkDeviceAddressBindingFlagsEXT" @link substring="flags" target="#flags"
+///     VkDeviceAddress baseAddress; // @link substring="baseAddress" target="#baseAddress"
+///     VkDeviceSize size; // @link substring="size" target="#size"
+///     VkDeviceAddressBindingTypeEXT bindingType; // @link substring="VkDeviceAddressBindingTypeEXT" target="VkDeviceAddressBindingTypeEXT" @link substring="bindingType" target="#bindingType"
 /// } VkDeviceAddressBindingCallbackDataEXT;
 /// }
 ///

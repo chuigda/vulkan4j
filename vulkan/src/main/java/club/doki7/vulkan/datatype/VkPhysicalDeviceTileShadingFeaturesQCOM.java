@@ -20,22 +20,22 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceTileShadingFeaturesQCOM {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 tileShading;
-///     VkBool32 tileShadingFragmentStage;
-///     VkBool32 tileShadingColorAttachments;
-///     VkBool32 tileShadingDepthAttachments;
-///     VkBool32 tileShadingStencilAttachments;
-///     VkBool32 tileShadingInputAttachments;
-///     VkBool32 tileShadingSampledAttachments;
-///     VkBool32 tileShadingPerTileDraw;
-///     VkBool32 tileShadingPerTileDispatch;
-///     VkBool32 tileShadingDispatchTile;
-///     VkBool32 tileShadingApron;
-///     VkBool32 tileShadingAnisotropicApron;
-///     VkBool32 tileShadingAtomicOps;
-///     VkBool32 tileShadingImageProcessing;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 tileShading; // @link substring="tileShading" target="#tileShading"
+///     VkBool32 tileShadingFragmentStage; // @link substring="tileShadingFragmentStage" target="#tileShadingFragmentStage"
+///     VkBool32 tileShadingColorAttachments; // @link substring="tileShadingColorAttachments" target="#tileShadingColorAttachments"
+///     VkBool32 tileShadingDepthAttachments; // @link substring="tileShadingDepthAttachments" target="#tileShadingDepthAttachments"
+///     VkBool32 tileShadingStencilAttachments; // @link substring="tileShadingStencilAttachments" target="#tileShadingStencilAttachments"
+///     VkBool32 tileShadingInputAttachments; // @link substring="tileShadingInputAttachments" target="#tileShadingInputAttachments"
+///     VkBool32 tileShadingSampledAttachments; // @link substring="tileShadingSampledAttachments" target="#tileShadingSampledAttachments"
+///     VkBool32 tileShadingPerTileDraw; // @link substring="tileShadingPerTileDraw" target="#tileShadingPerTileDraw"
+///     VkBool32 tileShadingPerTileDispatch; // @link substring="tileShadingPerTileDispatch" target="#tileShadingPerTileDispatch"
+///     VkBool32 tileShadingDispatchTile; // @link substring="tileShadingDispatchTile" target="#tileShadingDispatchTile"
+///     VkBool32 tileShadingApron; // @link substring="tileShadingApron" target="#tileShadingApron"
+///     VkBool32 tileShadingAnisotropicApron; // @link substring="tileShadingAnisotropicApron" target="#tileShadingAnisotropicApron"
+///     VkBool32 tileShadingAtomicOps; // @link substring="tileShadingAtomicOps" target="#tileShadingAtomicOps"
+///     VkBool32 tileShadingImageProcessing; // @link substring="tileShadingImageProcessing" target="#tileShadingImageProcessing"
 /// } VkPhysicalDeviceTileShadingFeaturesQCOM;
 /// }
 ///

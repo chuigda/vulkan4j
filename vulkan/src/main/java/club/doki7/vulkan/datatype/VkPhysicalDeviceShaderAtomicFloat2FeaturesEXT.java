@@ -20,20 +20,20 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 shaderBufferFloat16Atomics;
-///     VkBool32 shaderBufferFloat16AtomicAdd;
-///     VkBool32 shaderBufferFloat16AtomicMinMax;
-///     VkBool32 shaderBufferFloat32AtomicMinMax;
-///     VkBool32 shaderBufferFloat64AtomicMinMax;
-///     VkBool32 shaderSharedFloat16Atomics;
-///     VkBool32 shaderSharedFloat16AtomicAdd;
-///     VkBool32 shaderSharedFloat16AtomicMinMax;
-///     VkBool32 shaderSharedFloat32AtomicMinMax;
-///     VkBool32 shaderSharedFloat64AtomicMinMax;
-///     VkBool32 shaderImageFloat32AtomicMinMax;
-///     VkBool32 sparseImageFloat32AtomicMinMax;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 shaderBufferFloat16Atomics; // @link substring="shaderBufferFloat16Atomics" target="#shaderBufferFloat16Atomics"
+///     VkBool32 shaderBufferFloat16AtomicAdd; // @link substring="shaderBufferFloat16AtomicAdd" target="#shaderBufferFloat16AtomicAdd"
+///     VkBool32 shaderBufferFloat16AtomicMinMax; // @link substring="shaderBufferFloat16AtomicMinMax" target="#shaderBufferFloat16AtomicMinMax"
+///     VkBool32 shaderBufferFloat32AtomicMinMax; // @link substring="shaderBufferFloat32AtomicMinMax" target="#shaderBufferFloat32AtomicMinMax"
+///     VkBool32 shaderBufferFloat64AtomicMinMax; // @link substring="shaderBufferFloat64AtomicMinMax" target="#shaderBufferFloat64AtomicMinMax"
+///     VkBool32 shaderSharedFloat16Atomics; // @link substring="shaderSharedFloat16Atomics" target="#shaderSharedFloat16Atomics"
+///     VkBool32 shaderSharedFloat16AtomicAdd; // @link substring="shaderSharedFloat16AtomicAdd" target="#shaderSharedFloat16AtomicAdd"
+///     VkBool32 shaderSharedFloat16AtomicMinMax; // @link substring="shaderSharedFloat16AtomicMinMax" target="#shaderSharedFloat16AtomicMinMax"
+///     VkBool32 shaderSharedFloat32AtomicMinMax; // @link substring="shaderSharedFloat32AtomicMinMax" target="#shaderSharedFloat32AtomicMinMax"
+///     VkBool32 shaderSharedFloat64AtomicMinMax; // @link substring="shaderSharedFloat64AtomicMinMax" target="#shaderSharedFloat64AtomicMinMax"
+///     VkBool32 shaderImageFloat32AtomicMinMax; // @link substring="shaderImageFloat32AtomicMinMax" target="#shaderImageFloat32AtomicMinMax"
+///     VkBool32 sparseImageFloat32AtomicMinMax; // @link substring="sparseImageFloat32AtomicMinMax" target="#sparseImageFloat32AtomicMinMax"
 /// } VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT;
 /// }
 ///

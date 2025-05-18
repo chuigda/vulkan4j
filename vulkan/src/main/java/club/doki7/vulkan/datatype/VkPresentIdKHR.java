@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPresentIdKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t swapchainCount;
-///     uint64_t const* pPresentIds; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t swapchainCount; // @link substring="swapchainCount" target="#swapchainCount"
+///     uint64_t const* pPresentIds; // optional // @link substring="pPresentIds" target="#pPresentIds"
 /// } VkPresentIdKHR;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IPointer
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
     }
 
-    public @pointer(comment="long*") MemorySegment pPresentIdsRaw() {
-        return segment.get(LAYOUT$pPresentIds, OFFSET$pPresentIds);
-    }
-
-    public void pPresentIdsRaw(@pointer(comment="long*") MemorySegment value) {
-        segment.set(LAYOUT$pPresentIds, OFFSET$pPresentIds, value);
-    }
-
     /// Note: the returned {@link LongPtr} does not have correct
     /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
@@ -134,6 +126,14 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IPointer
     public void pPresentIds(@Nullable @unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPresentIdsRaw(s);
+    }
+
+    public @pointer(comment="long*") MemorySegment pPresentIdsRaw() {
+        return segment.get(LAYOUT$pPresentIds, OFFSET$pPresentIds);
+    }
+
+    public void pPresentIdsRaw(@pointer(comment="long*") MemorySegment value) {
+        segment.set(LAYOUT$pPresentIds, OFFSET$pPresentIds, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMapMemoryPlacedFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 memoryMapPlaced;
-///     VkBool32 memoryMapRangePlaced;
-///     VkBool32 memoryUnmapReserve;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 memoryMapPlaced; // @link substring="memoryMapPlaced" target="#memoryMapPlaced"
+///     VkBool32 memoryMapRangePlaced; // @link substring="memoryMapRangePlaced" target="#memoryMapRangePlaced"
+///     VkBool32 memoryUnmapReserve; // @link substring="memoryUnmapReserve" target="#memoryUnmapReserve"
 /// } VkPhysicalDeviceMapMemoryPlacedFeaturesEXT;
 /// }
 ///

@@ -20,41 +20,41 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceDescriptorBufferPropertiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 combinedImageSamplerDescriptorSingleArray;
-///     VkBool32 bufferlessPushDescriptors;
-///     VkBool32 allowSamplerImageViewPostSubmitCreation;
-///     VkDeviceSize descriptorBufferOffsetAlignment;
-///     uint32_t maxDescriptorBufferBindings;
-///     uint32_t maxResourceDescriptorBufferBindings;
-///     uint32_t maxSamplerDescriptorBufferBindings;
-///     uint32_t maxEmbeddedImmutableSamplerBindings;
-///     uint32_t maxEmbeddedImmutableSamplers;
-///     size_t bufferCaptureReplayDescriptorDataSize;
-///     size_t imageCaptureReplayDescriptorDataSize;
-///     size_t imageViewCaptureReplayDescriptorDataSize;
-///     size_t samplerCaptureReplayDescriptorDataSize;
-///     size_t accelerationStructureCaptureReplayDescriptorDataSize;
-///     size_t samplerDescriptorSize;
-///     size_t combinedImageSamplerDescriptorSize;
-///     size_t sampledImageDescriptorSize;
-///     size_t storageImageDescriptorSize;
-///     size_t uniformTexelBufferDescriptorSize;
-///     size_t robustUniformTexelBufferDescriptorSize;
-///     size_t storageTexelBufferDescriptorSize;
-///     size_t robustStorageTexelBufferDescriptorSize;
-///     size_t uniformBufferDescriptorSize;
-///     size_t robustUniformBufferDescriptorSize;
-///     size_t storageBufferDescriptorSize;
-///     size_t robustStorageBufferDescriptorSize;
-///     size_t inputAttachmentDescriptorSize;
-///     size_t accelerationStructureDescriptorSize;
-///     VkDeviceSize maxSamplerDescriptorBufferRange;
-///     VkDeviceSize maxResourceDescriptorBufferRange;
-///     VkDeviceSize samplerDescriptorBufferAddressSpaceSize;
-///     VkDeviceSize resourceDescriptorBufferAddressSpaceSize;
-///     VkDeviceSize descriptorBufferAddressSpaceSize;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 combinedImageSamplerDescriptorSingleArray; // @link substring="combinedImageSamplerDescriptorSingleArray" target="#combinedImageSamplerDescriptorSingleArray"
+///     VkBool32 bufferlessPushDescriptors; // @link substring="bufferlessPushDescriptors" target="#bufferlessPushDescriptors"
+///     VkBool32 allowSamplerImageViewPostSubmitCreation; // @link substring="allowSamplerImageViewPostSubmitCreation" target="#allowSamplerImageViewPostSubmitCreation"
+///     VkDeviceSize descriptorBufferOffsetAlignment; // @link substring="descriptorBufferOffsetAlignment" target="#descriptorBufferOffsetAlignment"
+///     uint32_t maxDescriptorBufferBindings; // @link substring="maxDescriptorBufferBindings" target="#maxDescriptorBufferBindings"
+///     uint32_t maxResourceDescriptorBufferBindings; // @link substring="maxResourceDescriptorBufferBindings" target="#maxResourceDescriptorBufferBindings"
+///     uint32_t maxSamplerDescriptorBufferBindings; // @link substring="maxSamplerDescriptorBufferBindings" target="#maxSamplerDescriptorBufferBindings"
+///     uint32_t maxEmbeddedImmutableSamplerBindings; // @link substring="maxEmbeddedImmutableSamplerBindings" target="#maxEmbeddedImmutableSamplerBindings"
+///     uint32_t maxEmbeddedImmutableSamplers; // @link substring="maxEmbeddedImmutableSamplers" target="#maxEmbeddedImmutableSamplers"
+///     size_t bufferCaptureReplayDescriptorDataSize; // @link substring="bufferCaptureReplayDescriptorDataSize" target="#bufferCaptureReplayDescriptorDataSize"
+///     size_t imageCaptureReplayDescriptorDataSize; // @link substring="imageCaptureReplayDescriptorDataSize" target="#imageCaptureReplayDescriptorDataSize"
+///     size_t imageViewCaptureReplayDescriptorDataSize; // @link substring="imageViewCaptureReplayDescriptorDataSize" target="#imageViewCaptureReplayDescriptorDataSize"
+///     size_t samplerCaptureReplayDescriptorDataSize; // @link substring="samplerCaptureReplayDescriptorDataSize" target="#samplerCaptureReplayDescriptorDataSize"
+///     size_t accelerationStructureCaptureReplayDescriptorDataSize; // @link substring="accelerationStructureCaptureReplayDescriptorDataSize" target="#accelerationStructureCaptureReplayDescriptorDataSize"
+///     size_t samplerDescriptorSize; // @link substring="samplerDescriptorSize" target="#samplerDescriptorSize"
+///     size_t combinedImageSamplerDescriptorSize; // @link substring="combinedImageSamplerDescriptorSize" target="#combinedImageSamplerDescriptorSize"
+///     size_t sampledImageDescriptorSize; // @link substring="sampledImageDescriptorSize" target="#sampledImageDescriptorSize"
+///     size_t storageImageDescriptorSize; // @link substring="storageImageDescriptorSize" target="#storageImageDescriptorSize"
+///     size_t uniformTexelBufferDescriptorSize; // @link substring="uniformTexelBufferDescriptorSize" target="#uniformTexelBufferDescriptorSize"
+///     size_t robustUniformTexelBufferDescriptorSize; // @link substring="robustUniformTexelBufferDescriptorSize" target="#robustUniformTexelBufferDescriptorSize"
+///     size_t storageTexelBufferDescriptorSize; // @link substring="storageTexelBufferDescriptorSize" target="#storageTexelBufferDescriptorSize"
+///     size_t robustStorageTexelBufferDescriptorSize; // @link substring="robustStorageTexelBufferDescriptorSize" target="#robustStorageTexelBufferDescriptorSize"
+///     size_t uniformBufferDescriptorSize; // @link substring="uniformBufferDescriptorSize" target="#uniformBufferDescriptorSize"
+///     size_t robustUniformBufferDescriptorSize; // @link substring="robustUniformBufferDescriptorSize" target="#robustUniformBufferDescriptorSize"
+///     size_t storageBufferDescriptorSize; // @link substring="storageBufferDescriptorSize" target="#storageBufferDescriptorSize"
+///     size_t robustStorageBufferDescriptorSize; // @link substring="robustStorageBufferDescriptorSize" target="#robustStorageBufferDescriptorSize"
+///     size_t inputAttachmentDescriptorSize; // @link substring="inputAttachmentDescriptorSize" target="#inputAttachmentDescriptorSize"
+///     size_t accelerationStructureDescriptorSize; // @link substring="accelerationStructureDescriptorSize" target="#accelerationStructureDescriptorSize"
+///     VkDeviceSize maxSamplerDescriptorBufferRange; // @link substring="maxSamplerDescriptorBufferRange" target="#maxSamplerDescriptorBufferRange"
+///     VkDeviceSize maxResourceDescriptorBufferRange; // @link substring="maxResourceDescriptorBufferRange" target="#maxResourceDescriptorBufferRange"
+///     VkDeviceSize samplerDescriptorBufferAddressSpaceSize; // @link substring="samplerDescriptorBufferAddressSpaceSize" target="#samplerDescriptorBufferAddressSpaceSize"
+///     VkDeviceSize resourceDescriptorBufferAddressSpaceSize; // @link substring="resourceDescriptorBufferAddressSpaceSize" target="#resourceDescriptorBufferAddressSpaceSize"
+///     VkDeviceSize descriptorBufferAddressSpaceSize; // @link substring="descriptorBufferAddressSpaceSize" target="#descriptorBufferAddressSpaceSize"
 /// } VkPhysicalDeviceDescriptorBufferPropertiesEXT;
 /// }
 ///

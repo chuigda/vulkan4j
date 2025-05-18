@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDrmFormatModifierPropertiesEXT {
-///     uint64_t drmFormatModifier;
-///     uint32_t drmFormatModifierPlaneCount;
-///     VkFormatFeatureFlags drmFormatModifierTilingFeatures;
+///     uint64_t drmFormatModifier; // @link substring="drmFormatModifier" target="#drmFormatModifier"
+///     uint32_t drmFormatModifierPlaneCount; // @link substring="drmFormatModifierPlaneCount" target="#drmFormatModifierPlaneCount"
+///     VkFormatFeatureFlags drmFormatModifierTilingFeatures; // @link substring="VkFormatFeatureFlags" target="VkFormatFeatureFlags" @link substring="drmFormatModifierTilingFeatures" target="#drmFormatModifierTilingFeatures"
 /// } VkDrmFormatModifierPropertiesEXT;
 /// }
 ///

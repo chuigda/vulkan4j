@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeH264FrameSizeKHR {
-///     uint32_t frameISize;
-///     uint32_t framePSize;
-///     uint32_t frameBSize;
+///     uint32_t frameISize; // @link substring="frameISize" target="#frameISize"
+///     uint32_t framePSize; // @link substring="framePSize" target="#framePSize"
+///     uint32_t frameBSize; // @link substring="frameBSize" target="#frameBSize"
 /// } VkVideoEncodeH264FrameSizeKHR;
 /// }
 ///

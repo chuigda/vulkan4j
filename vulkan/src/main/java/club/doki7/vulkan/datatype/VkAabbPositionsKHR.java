@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAabbPositionsKHR {
-///     float minX;
-///     float minY;
-///     float minZ;
-///     float maxX;
-///     float maxY;
-///     float maxZ;
+///     float minX; // @link substring="minX" target="#minX"
+///     float minY; // @link substring="minY" target="#minY"
+///     float minZ; // @link substring="minZ" target="#minZ"
+///     float maxX; // @link substring="maxX" target="#maxX"
+///     float maxY; // @link substring="maxY" target="#maxY"
+///     float maxZ; // @link substring="maxZ" target="#maxZ"
 /// } VkAabbPositionsKHR;
 /// }
 ///

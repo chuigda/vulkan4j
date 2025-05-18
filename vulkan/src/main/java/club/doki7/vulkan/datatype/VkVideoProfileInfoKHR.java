@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoProfileInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkVideoCodecOperationFlagsKHR videoCodecOperation;
-///     VkVideoChromaSubsamplingFlagsKHR chromaSubsampling;
-///     VkVideoComponentBitDepthFlagsKHR lumaBitDepth;
-///     VkVideoComponentBitDepthFlagsKHR chromaBitDepth; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkVideoCodecOperationFlagsKHR videoCodecOperation; // @link substring="VkVideoCodecOperationFlagsKHR" target="VkVideoCodecOperationFlagsKHR" @link substring="videoCodecOperation" target="#videoCodecOperation"
+///     VkVideoChromaSubsamplingFlagsKHR chromaSubsampling; // @link substring="VkVideoChromaSubsamplingFlagsKHR" target="VkVideoChromaSubsamplingFlagsKHR" @link substring="chromaSubsampling" target="#chromaSubsampling"
+///     VkVideoComponentBitDepthFlagsKHR lumaBitDepth; // @link substring="VkVideoComponentBitDepthFlagsKHR" target="VkVideoComponentBitDepthFlagsKHR" @link substring="lumaBitDepth" target="#lumaBitDepth"
+///     VkVideoComponentBitDepthFlagsKHR chromaBitDepth; // optional // @link substring="VkVideoComponentBitDepthFlagsKHR" target="VkVideoComponentBitDepthFlagsKHR" @link substring="chromaBitDepth" target="#chromaBitDepth"
 /// } VkVideoProfileInfoKHR;
 /// }
 ///

@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCudaModuleCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     size_t dataSize;
-///     void const* pData;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     size_t dataSize; // @link substring="dataSize" target="#dataSize"
+///     void const* pData; // @link substring="pData" target="#pData"
 /// } VkCudaModuleCreateInfoNV;
 /// }
 ///

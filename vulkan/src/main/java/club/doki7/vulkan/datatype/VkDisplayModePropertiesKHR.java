@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDisplayModePropertiesKHR {
-///     VkDisplayModeKHR displayMode;
-///     VkDisplayModeParametersKHR parameters;
+///     VkDisplayModeKHR displayMode; // @link substring="VkDisplayModeKHR" target="VkDisplayModeKHR" @link substring="displayMode" target="#displayMode"
+///     VkDisplayModeParametersKHR parameters; // @link substring="VkDisplayModeParametersKHR" target="VkDisplayModeParametersKHR" @link substring="parameters" target="#parameters"
 /// } VkDisplayModePropertiesKHR;
 /// }
 ///
@@ -79,11 +79,11 @@ public record VkDisplayModePropertiesKHR(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$displayMode, OFFSET$displayMode, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public VkDisplayModeParametersKHR parameters() {
+    public @NotNull VkDisplayModeParametersKHR parameters() {
         return new VkDisplayModeParametersKHR(segment.asSlice(OFFSET$parameters, LAYOUT$parameters));
     }
 
-    public void parameters(VkDisplayModeParametersKHR value) {
+    public void parameters(@NotNull VkDisplayModeParametersKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$parameters, SIZE$parameters);
     }
 

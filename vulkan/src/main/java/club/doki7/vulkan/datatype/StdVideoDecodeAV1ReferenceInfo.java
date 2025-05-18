@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoDecodeAV1ReferenceInfo {
-///     StdVideoDecodeAV1ReferenceInfoFlags flags;
-///     uint8_t frame_type;
-///     uint8_t RefFrameSignBias;
-///     uint8_t OrderHint;
-///     uint8_t SavedOrderHints;
+///     StdVideoDecodeAV1ReferenceInfoFlags flags; // @link substring="StdVideoDecodeAV1ReferenceInfoFlags" target="StdVideoDecodeAV1ReferenceInfoFlags" @link substring="flags" target="#flags"
+///     uint8_t frame_type; // @link substring="frame_type" target="#frame_type"
+///     uint8_t RefFrameSignBias; // @link substring="RefFrameSignBias" target="#RefFrameSignBias"
+///     uint8_t OrderHint; // @link substring="OrderHint" target="#OrderHint"
+///     uint8_t SavedOrderHints; // @link substring="SavedOrderHints" target="#SavedOrderHints"
 /// } StdVideoDecodeAV1ReferenceInfo;
 /// }
 ///
@@ -68,11 +68,11 @@ public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public StdVideoDecodeAV1ReferenceInfoFlags flags() {
+    public @NotNull StdVideoDecodeAV1ReferenceInfoFlags flags() {
         return new StdVideoDecodeAV1ReferenceInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoDecodeAV1ReferenceInfoFlags value) {
+    public void flags(@NotNull StdVideoDecodeAV1ReferenceInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 

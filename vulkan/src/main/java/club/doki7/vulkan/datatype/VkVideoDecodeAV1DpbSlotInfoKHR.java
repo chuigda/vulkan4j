@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoDecodeAV1DpbSlotInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     StdVideoDecodeAV1ReferenceInfo const* pStdReferenceInfo;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     StdVideoDecodeAV1ReferenceInfo const* pStdReferenceInfo; // @link substring="StdVideoDecodeAV1ReferenceInfo" target="StdVideoDecodeAV1ReferenceInfo" @link substring="pStdReferenceInfo" target="#pStdReferenceInfo"
 /// } VkVideoDecodeAV1DpbSlotInfoKHR;
 /// }
 ///
@@ -102,14 +102,6 @@ public record VkVideoDecodeAV1DpbSlotInfoKHR(@NotNull MemorySegment segment) imp
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(target=StdVideoDecodeAV1ReferenceInfo.class) MemorySegment pStdReferenceInfoRaw() {
-        return segment.get(LAYOUT$pStdReferenceInfo, OFFSET$pStdReferenceInfo);
-    }
-
-    public void pStdReferenceInfoRaw(@pointer(target=StdVideoDecodeAV1ReferenceInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pStdReferenceInfo, OFFSET$pStdReferenceInfo, value);
-    }
-
     public @Nullable StdVideoDecodeAV1ReferenceInfo pStdReferenceInfo() {
         MemorySegment s = pStdReferenceInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -135,6 +127,14 @@ public record VkVideoDecodeAV1DpbSlotInfoKHR(@NotNull MemorySegment segment) imp
             ret[i] = new StdVideoDecodeAV1ReferenceInfo(s.asSlice(i * StdVideoDecodeAV1ReferenceInfo.BYTES, StdVideoDecodeAV1ReferenceInfo.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoDecodeAV1ReferenceInfo.class) MemorySegment pStdReferenceInfoRaw() {
+        return segment.get(LAYOUT$pStdReferenceInfo, OFFSET$pStdReferenceInfo);
+    }
+
+    public void pStdReferenceInfoRaw(@pointer(target=StdVideoDecodeAV1ReferenceInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pStdReferenceInfo, OFFSET$pStdReferenceInfo, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265ScalingLists {
-///     uint8_t ScalingList4x4;
-///     uint8_t ScalingList8x8;
-///     uint8_t ScalingList16x16;
-///     uint8_t ScalingList32x32;
-///     uint8_t ScalingListDCCoef16x16;
-///     uint8_t ScalingListDCCoef32x32;
+///     uint8_t ScalingList4x4; // @link substring="ScalingList4x4" target="#ScalingList4x4"
+///     uint8_t ScalingList8x8; // @link substring="ScalingList8x8" target="#ScalingList8x8"
+///     uint8_t ScalingList16x16; // @link substring="ScalingList16x16" target="#ScalingList16x16"
+///     uint8_t ScalingList32x32; // @link substring="ScalingList32x32" target="#ScalingList32x32"
+///     uint8_t ScalingListDCCoef16x16; // @link substring="ScalingListDCCoef16x16" target="#ScalingListDCCoef16x16"
+///     uint8_t ScalingListDCCoef32x32; // @link substring="ScalingListDCCoef32x32" target="#ScalingListDCCoef32x32"
 /// } StdVideoH265ScalingLists;
 /// }
 ///

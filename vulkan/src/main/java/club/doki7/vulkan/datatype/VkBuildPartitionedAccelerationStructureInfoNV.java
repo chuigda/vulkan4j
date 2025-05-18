@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBuildPartitionedAccelerationStructureInfoNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkPartitionedAccelerationStructureInstancesInputNV input;
-///     VkDeviceAddress srcAccelerationStructureData;
-///     VkDeviceAddress dstAccelerationStructureData;
-///     VkDeviceAddress scratchData;
-///     VkDeviceAddress srcInfos;
-///     VkDeviceAddress srcInfosCount;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPartitionedAccelerationStructureInstancesInputNV input; // @link substring="VkPartitionedAccelerationStructureInstancesInputNV" target="VkPartitionedAccelerationStructureInstancesInputNV" @link substring="input" target="#input"
+///     VkDeviceAddress srcAccelerationStructureData; // @link substring="srcAccelerationStructureData" target="#srcAccelerationStructureData"
+///     VkDeviceAddress dstAccelerationStructureData; // @link substring="dstAccelerationStructureData" target="#dstAccelerationStructureData"
+///     VkDeviceAddress scratchData; // @link substring="scratchData" target="#scratchData"
+///     VkDeviceAddress srcInfos; // @link substring="srcInfos" target="#srcInfos"
+///     VkDeviceAddress srcInfosCount; // @link substring="srcInfosCount" target="#srcInfosCount"
 /// } VkBuildPartitionedAccelerationStructureInfoNV;
 /// }
 ///
@@ -107,11 +107,11 @@ public record VkBuildPartitionedAccelerationStructureInfoNV(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkPartitionedAccelerationStructureInstancesInputNV input() {
+    public @NotNull VkPartitionedAccelerationStructureInstancesInputNV input() {
         return new VkPartitionedAccelerationStructureInstancesInputNV(segment.asSlice(OFFSET$input, LAYOUT$input));
     }
 
-    public void input(VkPartitionedAccelerationStructureInstancesInputNV value) {
+    public void input(@NotNull VkPartitionedAccelerationStructureInstancesInputNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$input, SIZE$input);
     }
 

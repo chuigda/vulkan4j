@@ -20,7 +20,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkClusterAccelerationStructureMoveObjectsInfoNV {
-///     VkDeviceAddress srcAccelerationStructure;
+///     VkDeviceAddress srcAccelerationStructure; // @link substring="srcAccelerationStructure" target="#srcAccelerationStructure"
 /// } VkClusterAccelerationStructureMoveObjectsInfoNV;
 /// }
 ///

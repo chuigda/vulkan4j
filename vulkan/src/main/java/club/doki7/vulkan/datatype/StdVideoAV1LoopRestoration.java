@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1LoopRestoration {
-///     StdVideoAV1FrameRestorationType FrameRestorationType;
-///     uint16_t LoopRestorationSize;
+///     StdVideoAV1FrameRestorationType FrameRestorationType; // @link substring="StdVideoAV1FrameRestorationType" target="StdVideoAV1FrameRestorationType" @link substring="FrameRestorationType" target="#FrameRestorationType"
+///     uint16_t LoopRestorationSize; // @link substring="LoopRestorationSize" target="#LoopRestorationSize"
 /// } StdVideoAV1LoopRestoration;
 /// }
 ///

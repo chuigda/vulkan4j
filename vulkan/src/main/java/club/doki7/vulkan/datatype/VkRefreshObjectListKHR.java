@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRefreshObjectListKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t objectCount;
-///     VkRefreshObjectKHR const* pObjects;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t objectCount; // @link substring="objectCount" target="#objectCount"
+///     VkRefreshObjectKHR const* pObjects; // @link substring="VkRefreshObjectKHR" target="VkRefreshObjectKHR" @link substring="pObjects" target="#pObjects"
 /// } VkRefreshObjectListKHR;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$objectCount, OFFSET$objectCount, value);
     }
 
-    public @pointer(target=VkRefreshObjectKHR.class) MemorySegment pObjectsRaw() {
-        return segment.get(LAYOUT$pObjects, OFFSET$pObjects);
-    }
-
-    public void pObjectsRaw(@pointer(target=VkRefreshObjectKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
-    }
-
     public @Nullable VkRefreshObjectKHR pObjects() {
         MemorySegment s = pObjectsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
             ret[i] = new VkRefreshObjectKHR(s.asSlice(i * VkRefreshObjectKHR.BYTES, VkRefreshObjectKHR.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkRefreshObjectKHR.class) MemorySegment pObjectsRaw() {
+        return segment.get(LAYOUT$pObjects, OFFSET$pObjects);
+    }
+
+    public void pObjectsRaw(@pointer(target=VkRefreshObjectKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

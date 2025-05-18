@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkComponentMapping {
-///     VkComponentSwizzle r;
-///     VkComponentSwizzle g;
-///     VkComponentSwizzle b;
-///     VkComponentSwizzle a;
+///     VkComponentSwizzle r; // @link substring="VkComponentSwizzle" target="VkComponentSwizzle" @link substring="r" target="#r"
+///     VkComponentSwizzle g; // @link substring="VkComponentSwizzle" target="VkComponentSwizzle" @link substring="g" target="#g"
+///     VkComponentSwizzle b; // @link substring="VkComponentSwizzle" target="VkComponentSwizzle" @link substring="b" target="#b"
+///     VkComponentSwizzle a; // @link substring="VkComponentSwizzle" target="VkComponentSwizzle" @link substring="a" target="#a"
 /// } VkComponentMapping;
 /// }
 ///

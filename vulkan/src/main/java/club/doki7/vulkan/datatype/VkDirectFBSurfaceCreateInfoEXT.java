@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDirectFBSurfaceCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDirectFBSurfaceCreateFlagsEXT flags; // optional
-///     IDirectFB* dfb;
-///     IDirectFBSurface* surface;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDirectFBSurfaceCreateFlagsEXT flags; // optional // @link substring="VkDirectFBSurfaceCreateFlagsEXT" target="VkDirectFBSurfaceCreateFlagsEXT" @link substring="flags" target="#flags"
+///     IDirectFB* dfb; // @link substring="dfb" target="#dfb"
+///     IDirectFBSurface* surface; // @link substring="surface" target="#surface"
 /// } VkDirectFBSurfaceCreateInfoEXT;
 /// }
 ///
@@ -112,14 +112,6 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(comment="void**") MemorySegment dfbRaw() {
-        return segment.get(LAYOUT$dfb, OFFSET$dfb);
-    }
-
-    public void dfbRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$dfb, OFFSET$dfb, value);
-    }
-
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
     /// to user to track the size of the buffer, and use {@link PointerPtr#reinterpret} to set the size before
     /// actually reading from or writing to the buffer.
@@ -136,12 +128,12 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         dfbRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment surfaceRaw() {
-        return segment.get(LAYOUT$surface, OFFSET$surface);
+    public @pointer(comment="void**") MemorySegment dfbRaw() {
+        return segment.get(LAYOUT$dfb, OFFSET$dfb);
     }
 
-    public void surfaceRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$surface, OFFSET$surface, value);
+    public void dfbRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$dfb, OFFSET$dfb, value);
     }
 
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
@@ -158,6 +150,14 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
     public void surface(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         surfaceRaw(s);
+    }
+
+    public @pointer(comment="void**") MemorySegment surfaceRaw() {
+        return segment.get(LAYOUT$surface, OFFSET$surface);
+    }
+
+    public void surfaceRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$surface, OFFSET$surface, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

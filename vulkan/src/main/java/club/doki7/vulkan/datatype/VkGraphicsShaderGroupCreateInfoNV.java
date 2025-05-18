@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkGraphicsShaderGroupCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t stageCount;
-///     VkPipelineShaderStageCreateInfo const* pStages;
-///     VkPipelineVertexInputStateCreateInfo const* pVertexInputState; // optional
-///     VkPipelineTessellationStateCreateInfo const* pTessellationState; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t stageCount; // @link substring="stageCount" target="#stageCount"
+///     VkPipelineShaderStageCreateInfo const* pStages; // @link substring="VkPipelineShaderStageCreateInfo" target="VkPipelineShaderStageCreateInfo" @link substring="pStages" target="#pStages"
+///     VkPipelineVertexInputStateCreateInfo const* pVertexInputState; // optional // @link substring="VkPipelineVertexInputStateCreateInfo" target="VkPipelineVertexInputStateCreateInfo" @link substring="pVertexInputState" target="#pVertexInputState"
+///     VkPipelineTessellationStateCreateInfo const* pTessellationState; // optional // @link substring="VkPipelineTessellationStateCreateInfo" target="VkPipelineTessellationStateCreateInfo" @link substring="pTessellationState" target="#pTessellationState"
 /// } VkGraphicsShaderGroupCreateInfoNV;
 /// }
 ///
@@ -113,14 +113,6 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$stageCount, OFFSET$stageCount, value);
     }
 
-    public @pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
-        return segment.get(LAYOUT$pStages, OFFSET$pStages);
-    }
-
-    public void pStagesRaw(@pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pStages, OFFSET$pStages, value);
-    }
-
     public @Nullable VkPipelineShaderStageCreateInfo pStages() {
         MemorySegment s = pStagesRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -148,12 +140,12 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public @pointer(target=VkPipelineVertexInputStateCreateInfo.class) MemorySegment pVertexInputStateRaw() {
-        return segment.get(LAYOUT$pVertexInputState, OFFSET$pVertexInputState);
+    public @pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
+        return segment.get(LAYOUT$pStages, OFFSET$pStages);
     }
 
-    public void pVertexInputStateRaw(@pointer(target=VkPipelineVertexInputStateCreateInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pVertexInputState, OFFSET$pVertexInputState, value);
+    public void pStagesRaw(@pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
 
     public @Nullable VkPipelineVertexInputStateCreateInfo pVertexInputState() {
@@ -183,12 +175,12 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public @pointer(target=VkPipelineTessellationStateCreateInfo.class) MemorySegment pTessellationStateRaw() {
-        return segment.get(LAYOUT$pTessellationState, OFFSET$pTessellationState);
+    public @pointer(target=VkPipelineVertexInputStateCreateInfo.class) MemorySegment pVertexInputStateRaw() {
+        return segment.get(LAYOUT$pVertexInputState, OFFSET$pVertexInputState);
     }
 
-    public void pTessellationStateRaw(@pointer(target=VkPipelineTessellationStateCreateInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pTessellationState, OFFSET$pTessellationState, value);
+    public void pVertexInputStateRaw(@pointer(target=VkPipelineVertexInputStateCreateInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pVertexInputState, OFFSET$pVertexInputState, value);
     }
 
     public @Nullable VkPipelineTessellationStateCreateInfo pTessellationState() {
@@ -216,6 +208,14 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
             ret[i] = new VkPipelineTessellationStateCreateInfo(s.asSlice(i * VkPipelineTessellationStateCreateInfo.BYTES, VkPipelineTessellationStateCreateInfo.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkPipelineTessellationStateCreateInfo.class) MemorySegment pTessellationStateRaw() {
+        return segment.get(LAYOUT$pTessellationState, OFFSET$pTessellationState);
+    }
+
+    public void pTessellationStateRaw(@pointer(target=VkPipelineTessellationStateCreateInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pTessellationState, OFFSET$pTessellationState, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

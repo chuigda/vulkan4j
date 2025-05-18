@@ -20,22 +20,22 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH264SequenceParameterSetVui {
-///     StdVideoH264SpsVuiFlags flags;
-///     StdVideoH264AspectRatioIdc aspect_ratio_idc;
-///     uint16_t sar_width;
-///     uint16_t sar_height;
-///     uint8_t video_format;
-///     uint8_t colour_primaries;
-///     uint8_t transfer_characteristics;
-///     uint8_t matrix_coefficients;
-///     uint32_t num_units_in_tick;
-///     uint32_t time_scale;
-///     uint8_t max_num_reorder_frames;
-///     uint8_t max_dec_frame_buffering;
-///     uint8_t chroma_sample_loc_type_top_field;
-///     uint8_t chroma_sample_loc_type_bottom_field;
-///     uint32_t reserved1;
-///     StdVideoH264HrdParameters const* pHrdParameters;
+///     StdVideoH264SpsVuiFlags flags; // @link substring="StdVideoH264SpsVuiFlags" target="StdVideoH264SpsVuiFlags" @link substring="flags" target="#flags"
+///     StdVideoH264AspectRatioIdc aspect_ratio_idc; // @link substring="StdVideoH264AspectRatioIdc" target="StdVideoH264AspectRatioIdc" @link substring="aspect_ratio_idc" target="#aspect_ratio_idc"
+///     uint16_t sar_width; // @link substring="sar_width" target="#sar_width"
+///     uint16_t sar_height; // @link substring="sar_height" target="#sar_height"
+///     uint8_t video_format; // @link substring="video_format" target="#video_format"
+///     uint8_t colour_primaries; // @link substring="colour_primaries" target="#colour_primaries"
+///     uint8_t transfer_characteristics; // @link substring="transfer_characteristics" target="#transfer_characteristics"
+///     uint8_t matrix_coefficients; // @link substring="matrix_coefficients" target="#matrix_coefficients"
+///     uint32_t num_units_in_tick; // @link substring="num_units_in_tick" target="#num_units_in_tick"
+///     uint32_t time_scale; // @link substring="time_scale" target="#time_scale"
+///     uint8_t max_num_reorder_frames; // @link substring="max_num_reorder_frames" target="#max_num_reorder_frames"
+///     uint8_t max_dec_frame_buffering; // @link substring="max_dec_frame_buffering" target="#max_dec_frame_buffering"
+///     uint8_t chroma_sample_loc_type_top_field; // @link substring="chroma_sample_loc_type_top_field" target="#chroma_sample_loc_type_top_field"
+///     uint8_t chroma_sample_loc_type_bottom_field; // @link substring="chroma_sample_loc_type_bottom_field" target="#chroma_sample_loc_type_bottom_field"
+///     uint32_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     StdVideoH264HrdParameters const* pHrdParameters; // @link substring="StdVideoH264HrdParameters" target="StdVideoH264HrdParameters" @link substring="pHrdParameters" target="#pHrdParameters"
 /// } StdVideoH264SequenceParameterSetVui;
 /// }
 ///
@@ -79,11 +79,11 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
         return ret;
     }
 
-    public StdVideoH264SpsVuiFlags flags() {
+    public @NotNull StdVideoH264SpsVuiFlags flags() {
         return new StdVideoH264SpsVuiFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoH264SpsVuiFlags value) {
+    public void flags(@NotNull StdVideoH264SpsVuiFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
@@ -199,14 +199,6 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
         segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
     }
 
-    public @pointer(target=StdVideoH264HrdParameters.class) MemorySegment pHrdParametersRaw() {
-        return segment.get(LAYOUT$pHrdParameters, OFFSET$pHrdParameters);
-    }
-
-    public void pHrdParametersRaw(@pointer(target=StdVideoH264HrdParameters.class) MemorySegment value) {
-        segment.set(LAYOUT$pHrdParameters, OFFSET$pHrdParameters, value);
-    }
-
     public @Nullable StdVideoH264HrdParameters pHrdParameters() {
         MemorySegment s = pHrdParametersRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -232,6 +224,14 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
             ret[i] = new StdVideoH264HrdParameters(s.asSlice(i * StdVideoH264HrdParameters.BYTES, StdVideoH264HrdParameters.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoH264HrdParameters.class) MemorySegment pHrdParametersRaw() {
+        return segment.get(LAYOUT$pHrdParameters, OFFSET$pHrdParameters);
+    }
+
+    public void pHrdParametersRaw(@pointer(target=StdVideoH264HrdParameters.class) MemorySegment value) {
+        segment.set(LAYOUT$pHrdParameters, OFFSET$pHrdParameters, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

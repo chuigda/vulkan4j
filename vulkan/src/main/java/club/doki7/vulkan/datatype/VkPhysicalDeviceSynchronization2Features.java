@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceSynchronization2Features {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 synchronization2;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 synchronization2; // @link substring="synchronization2" target="#synchronization2"
 /// } VkPhysicalDeviceSynchronization2Features;
 /// }
 ///

@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t maxWorkGroupCount;
-///     uint32_t maxWorkGroupSize;
-///     uint32_t maxOutputClusterCount;
-///     VkDeviceSize indirectBufferOffsetAlignment;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxWorkGroupCount; // @link substring="maxWorkGroupCount" target="#maxWorkGroupCount"
+///     uint32_t maxWorkGroupSize; // @link substring="maxWorkGroupSize" target="#maxWorkGroupSize"
+///     uint32_t maxOutputClusterCount; // @link substring="maxOutputClusterCount" target="#maxOutputClusterCount"
+///     VkDeviceSize indirectBufferOffsetAlignment; // @link substring="indirectBufferOffsetAlignment" target="#indirectBufferOffsetAlignment"
 /// } VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI;
 /// }
 ///

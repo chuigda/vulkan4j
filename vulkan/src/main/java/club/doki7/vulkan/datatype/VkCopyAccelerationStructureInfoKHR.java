@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCopyAccelerationStructureInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkAccelerationStructureKHR src;
-///     VkAccelerationStructureKHR dst;
-///     VkCopyAccelerationStructureModeKHR mode;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkAccelerationStructureKHR src; // @link substring="VkAccelerationStructureKHR" target="VkAccelerationStructureKHR" @link substring="src" target="#src"
+///     VkAccelerationStructureKHR dst; // @link substring="VkAccelerationStructureKHR" target="VkAccelerationStructureKHR" @link substring="dst" target="#dst"
+///     VkCopyAccelerationStructureModeKHR mode; // @link substring="VkCopyAccelerationStructureModeKHR" target="VkCopyAccelerationStructureModeKHR" @link substring="mode" target="#mode"
 /// } VkCopyAccelerationStructureInfoKHR;
 /// }
 ///

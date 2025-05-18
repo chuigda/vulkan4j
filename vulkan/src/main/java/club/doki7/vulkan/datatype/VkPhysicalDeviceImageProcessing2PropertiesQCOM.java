@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceImageProcessing2PropertiesQCOM {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkExtent2D maxBlockMatchWindow; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkExtent2D maxBlockMatchWindow; // optional // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxBlockMatchWindow" target="#maxBlockMatchWindow"
 /// } VkPhysicalDeviceImageProcessing2PropertiesQCOM;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkPhysicalDeviceImageProcessing2PropertiesQCOM(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkExtent2D maxBlockMatchWindow() {
+    public @NotNull VkExtent2D maxBlockMatchWindow() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxBlockMatchWindow, LAYOUT$maxBlockMatchWindow));
     }
 
-    public void maxBlockMatchWindow(VkExtent2D value) {
+    public void maxBlockMatchWindow(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxBlockMatchWindow, SIZE$maxBlockMatchWindow);
     }
 

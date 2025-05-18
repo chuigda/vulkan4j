@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPartitionedAccelerationStructureInstancesInputNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBuildAccelerationStructureFlagsKHR flags; // optional
-///     uint32_t instanceCount;
-///     uint32_t maxInstancePerPartitionCount;
-///     uint32_t partitionCount;
-///     uint32_t maxInstanceInGlobalPartitionCount;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBuildAccelerationStructureFlagsKHR flags; // optional // @link substring="VkBuildAccelerationStructureFlagsKHR" target="VkBuildAccelerationStructureFlagsKHR" @link substring="flags" target="#flags"
+///     uint32_t instanceCount; // @link substring="instanceCount" target="#instanceCount"
+///     uint32_t maxInstancePerPartitionCount; // @link substring="maxInstancePerPartitionCount" target="#maxInstancePerPartitionCount"
+///     uint32_t partitionCount; // @link substring="partitionCount" target="#partitionCount"
+///     uint32_t maxInstanceInGlobalPartitionCount; // @link substring="maxInstanceInGlobalPartitionCount" target="#maxInstanceInGlobalPartitionCount"
 /// } VkPartitionedAccelerationStructureInstancesInputNV;
 /// }
 ///

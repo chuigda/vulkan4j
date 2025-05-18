@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkFramebufferAttachmentImageInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImageCreateFlags flags; // optional
-///     VkImageUsageFlags usage;
-///     uint32_t width;
-///     uint32_t height;
-///     uint32_t layerCount;
-///     uint32_t viewFormatCount; // optional
-///     VkFormat const* pViewFormats;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageCreateFlags flags; // optional // @link substring="VkImageCreateFlags" target="VkImageCreateFlags" @link substring="flags" target="#flags"
+///     VkImageUsageFlags usage; // @link substring="VkImageUsageFlags" target="VkImageUsageFlags" @link substring="usage" target="#usage"
+///     uint32_t width; // @link substring="width" target="#width"
+///     uint32_t height; // @link substring="height" target="#height"
+///     uint32_t layerCount; // @link substring="layerCount" target="#layerCount"
+///     uint32_t viewFormatCount; // optional // @link substring="viewFormatCount" target="#viewFormatCount"
+///     VkFormat const* pViewFormats; // @link substring="VkFormat" target="VkFormat" @link substring="pViewFormats" target="#pViewFormats"
 /// } VkFramebufferAttachmentImageInfo;
 /// }
 ///
@@ -156,13 +156,6 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$viewFormatCount, OFFSET$viewFormatCount, value);
     }
 
-    public @pointer(target=VkFormat.class) MemorySegment pViewFormatsRaw() {
-        return segment.get(LAYOUT$pViewFormats, OFFSET$pViewFormats);
-    }
-
-    public void pViewFormatsRaw(@pointer(target=VkFormat.class) MemorySegment value) {
-        segment.set(LAYOUT$pViewFormats, OFFSET$pViewFormats, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -179,6 +172,14 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
     public void pViewFormats(@Nullable @enumtype(VkFormat.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewFormatsRaw(s);
+    }
+
+    public @pointer(target=VkFormat.class) MemorySegment pViewFormatsRaw() {
+        return segment.get(LAYOUT$pViewFormats, OFFSET$pViewFormats);
+    }
+
+    public void pViewFormatsRaw(@pointer(target=VkFormat.class) MemorySegment value) {
+        segment.set(LAYOUT$pViewFormats, OFFSET$pViewFormats, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

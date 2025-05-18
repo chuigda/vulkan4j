@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkClusterAccelerationStructureInputInfoNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t maxAccelerationStructureCount;
-///     VkBuildAccelerationStructureFlagsKHR flags; // optional
-///     VkClusterAccelerationStructureOpTypeNV opType;
-///     VkClusterAccelerationStructureOpModeNV opMode;
-///     VkClusterAccelerationStructureOpInputNV opInput;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxAccelerationStructureCount; // @link substring="maxAccelerationStructureCount" target="#maxAccelerationStructureCount"
+///     VkBuildAccelerationStructureFlagsKHR flags; // optional // @link substring="VkBuildAccelerationStructureFlagsKHR" target="VkBuildAccelerationStructureFlagsKHR" @link substring="flags" target="#flags"
+///     VkClusterAccelerationStructureOpTypeNV opType; // @link substring="VkClusterAccelerationStructureOpTypeNV" target="VkClusterAccelerationStructureOpTypeNV" @link substring="opType" target="#opType"
+///     VkClusterAccelerationStructureOpModeNV opMode; // @link substring="VkClusterAccelerationStructureOpModeNV" target="VkClusterAccelerationStructureOpModeNV" @link substring="opMode" target="#opMode"
+///     VkClusterAccelerationStructureOpInputNV opInput; // @link substring="VkClusterAccelerationStructureOpInputNV" target="VkClusterAccelerationStructureOpInputNV" @link substring="opInput" target="#opInput"
 /// } VkClusterAccelerationStructureInputInfoNV;
 /// }
 ///
@@ -138,11 +138,11 @@ public record VkClusterAccelerationStructureInputInfoNV(@NotNull MemorySegment s
         segment.set(LAYOUT$opMode, OFFSET$opMode, value);
     }
 
-    public VkClusterAccelerationStructureOpInputNV opInput() {
+    public @NotNull VkClusterAccelerationStructureOpInputNV opInput() {
         return new VkClusterAccelerationStructureOpInputNV(segment.asSlice(OFFSET$opInput, LAYOUT$opInput));
     }
 
-    public void opInput(VkClusterAccelerationStructureOpInputNV value) {
+    public void opInput(@NotNull VkClusterAccelerationStructureOpInputNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$opInput, SIZE$opInput);
     }
 

@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderingInputAttachmentIndexInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t colorAttachmentCount; // optional
-///     uint32_t const* pColorAttachmentInputIndices; // optional
-///     uint32_t const* pDepthInputAttachmentIndex; // optional
-///     uint32_t const* pStencilInputAttachmentIndex; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t colorAttachmentCount; // optional // @link substring="colorAttachmentCount" target="#colorAttachmentCount"
+///     uint32_t const* pColorAttachmentInputIndices; // optional // @link substring="pColorAttachmentInputIndices" target="#pColorAttachmentInputIndices"
+///     uint32_t const* pDepthInputAttachmentIndex; // optional // @link substring="pDepthInputAttachmentIndex" target="#pDepthInputAttachmentIndex"
+///     uint32_t const* pStencilInputAttachmentIndex; // optional // @link substring="pStencilInputAttachmentIndex" target="#pStencilInputAttachmentIndex"
 /// } VkRenderingInputAttachmentIndexInfo;
 /// }
 ///
@@ -113,14 +113,6 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pColorAttachmentInputIndicesRaw() {
-        return segment.get(LAYOUT$pColorAttachmentInputIndices, OFFSET$pColorAttachmentInputIndices);
-    }
-
-    public void pColorAttachmentInputIndicesRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pColorAttachmentInputIndices, OFFSET$pColorAttachmentInputIndices, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -138,12 +130,12 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         pColorAttachmentInputIndicesRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pDepthInputAttachmentIndexRaw() {
-        return segment.get(LAYOUT$pDepthInputAttachmentIndex, OFFSET$pDepthInputAttachmentIndex);
+    public @pointer(comment="int*") MemorySegment pColorAttachmentInputIndicesRaw() {
+        return segment.get(LAYOUT$pColorAttachmentInputIndices, OFFSET$pColorAttachmentInputIndices);
     }
 
-    public void pDepthInputAttachmentIndexRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pDepthInputAttachmentIndex, OFFSET$pDepthInputAttachmentIndex, value);
+    public void pColorAttachmentInputIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pColorAttachmentInputIndices, OFFSET$pColorAttachmentInputIndices, value);
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -163,12 +155,12 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         pDepthInputAttachmentIndexRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pStencilInputAttachmentIndexRaw() {
-        return segment.get(LAYOUT$pStencilInputAttachmentIndex, OFFSET$pStencilInputAttachmentIndex);
+    public @pointer(comment="int*") MemorySegment pDepthInputAttachmentIndexRaw() {
+        return segment.get(LAYOUT$pDepthInputAttachmentIndex, OFFSET$pDepthInputAttachmentIndex);
     }
 
-    public void pStencilInputAttachmentIndexRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pStencilInputAttachmentIndex, OFFSET$pStencilInputAttachmentIndex, value);
+    public void pDepthInputAttachmentIndexRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pDepthInputAttachmentIndex, OFFSET$pDepthInputAttachmentIndex, value);
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -186,6 +178,14 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
     public void pStencilInputAttachmentIndex(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStencilInputAttachmentIndexRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pStencilInputAttachmentIndexRaw() {
+        return segment.get(LAYOUT$pStencilInputAttachmentIndex, OFFSET$pStencilInputAttachmentIndex);
+    }
+
+    public void pStencilInputAttachmentIndexRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pStencilInputAttachmentIndex, OFFSET$pStencilInputAttachmentIndex, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

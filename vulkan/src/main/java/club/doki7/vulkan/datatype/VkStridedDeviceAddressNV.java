@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkStridedDeviceAddressNV {
-///     VkDeviceAddress startAddress;
-///     VkDeviceSize strideInBytes;
+///     VkDeviceAddress startAddress; // @link substring="startAddress" target="#startAddress"
+///     VkDeviceSize strideInBytes; // @link substring="strideInBytes" target="#strideInBytes"
 /// } VkStridedDeviceAddressNV;
 /// }
 ///

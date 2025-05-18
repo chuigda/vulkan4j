@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCopyMemoryToMicromapInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDeviceOrHostAddressConstKHR src;
-///     VkMicromapEXT dst;
-///     VkCopyMicromapModeEXT mode;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceOrHostAddressConstKHR src; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="src" target="#src"
+///     VkMicromapEXT dst; // @link substring="VkMicromapEXT" target="VkMicromapEXT" @link substring="dst" target="#dst"
+///     VkCopyMicromapModeEXT mode; // @link substring="VkCopyMicromapModeEXT" target="VkCopyMicromapModeEXT" @link substring="mode" target="#mode"
 /// } VkCopyMemoryToMicromapInfoEXT;
 /// }
 ///
@@ -104,11 +104,11 @@ public record VkCopyMemoryToMicromapInfoEXT(@NotNull MemorySegment segment) impl
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkDeviceOrHostAddressConstKHR src() {
+    public @NotNull VkDeviceOrHostAddressConstKHR src() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$src, LAYOUT$src));
     }
 
-    public void src(VkDeviceOrHostAddressConstKHR value) {
+    public void src(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$src, SIZE$src);
     }
 

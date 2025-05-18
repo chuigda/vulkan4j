@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineLayoutCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineLayoutCreateFlags flags; // optional
-///     uint32_t setLayoutCount; // optional
-///     VkDescriptorSetLayout const* pSetLayouts;
-///     uint32_t pushConstantRangeCount; // optional
-///     VkPushConstantRange const* pPushConstantRanges;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineLayoutCreateFlags flags; // optional // @link substring="VkPipelineLayoutCreateFlags" target="VkPipelineLayoutCreateFlags" @link substring="flags" target="#flags"
+///     uint32_t setLayoutCount; // optional // @link substring="setLayoutCount" target="#setLayoutCount"
+///     VkDescriptorSetLayout const* pSetLayouts; // @link substring="VkDescriptorSetLayout" target="VkDescriptorSetLayout" @link substring="pSetLayouts" target="#pSetLayouts"
+///     uint32_t pushConstantRangeCount; // optional // @link substring="pushConstantRangeCount" target="#pushConstantRangeCount"
+///     VkPushConstantRange const* pPushConstantRanges; // @link substring="VkPushConstantRange" target="VkPushConstantRange" @link substring="pPushConstantRanges" target="#pPushConstantRanges"
 /// } VkPipelineLayoutCreateInfo;
 /// }
 ///
@@ -122,14 +122,6 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$setLayoutCount, OFFSET$setLayoutCount, value);
     }
 
-    public @pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {
-        return segment.get(LAYOUT$pSetLayouts, OFFSET$pSetLayouts);
-    }
-
-    public void pSetLayoutsRaw(@pointer(target=VkDescriptorSetLayout.class) MemorySegment value) {
-        segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
-    }
-
     /// Note: the returned {@link VkDescriptorSetLayout.Ptr} does not have correct {@link VkDescriptorSetLayout.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkDescriptorSetLayout.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -147,20 +139,20 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         pSetLayoutsRaw(s);
     }
 
+    public @pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {
+        return segment.get(LAYOUT$pSetLayouts, OFFSET$pSetLayouts);
+    }
+
+    public void pSetLayoutsRaw(@pointer(target=VkDescriptorSetLayout.class) MemorySegment value) {
+        segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
+    }
+
     public @unsigned int pushConstantRangeCount() {
         return segment.get(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount);
     }
 
     public void pushConstantRangeCount(@unsigned int value) {
         segment.set(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount, value);
-    }
-
-    public @pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {
-        return segment.get(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges);
-    }
-
-    public void pPushConstantRangesRaw(@pointer(target=VkPushConstantRange.class) MemorySegment value) {
-        segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
 
     public @Nullable VkPushConstantRange pPushConstantRanges() {
@@ -188,6 +180,14 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
             ret[i] = new VkPushConstantRange(s.asSlice(i * VkPushConstantRange.BYTES, VkPushConstantRange.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {
+        return segment.get(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges);
+    }
+
+    public void pPushConstantRangesRaw(@pointer(target=VkPushConstantRange.class) MemorySegment value) {
+        segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

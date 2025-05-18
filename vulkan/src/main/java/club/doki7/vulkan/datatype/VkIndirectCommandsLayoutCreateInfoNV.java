@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkIndirectCommandsLayoutCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkIndirectCommandsLayoutUsageFlagsNV flags; // optional
-///     VkPipelineBindPoint pipelineBindPoint;
-///     uint32_t tokenCount;
-///     VkIndirectCommandsLayoutTokenNV const* pTokens;
-///     uint32_t streamCount;
-///     uint32_t const* pStreamStrides;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkIndirectCommandsLayoutUsageFlagsNV flags; // optional // @link substring="VkIndirectCommandsLayoutUsageFlagsNV" target="VkIndirectCommandsLayoutUsageFlagsNV" @link substring="flags" target="#flags"
+///     VkPipelineBindPoint pipelineBindPoint; // @link substring="VkPipelineBindPoint" target="VkPipelineBindPoint" @link substring="pipelineBindPoint" target="#pipelineBindPoint"
+///     uint32_t tokenCount; // @link substring="tokenCount" target="#tokenCount"
+///     VkIndirectCommandsLayoutTokenNV const* pTokens; // @link substring="VkIndirectCommandsLayoutTokenNV" target="VkIndirectCommandsLayoutTokenNV" @link substring="pTokens" target="#pTokens"
+///     uint32_t streamCount; // @link substring="streamCount" target="#streamCount"
+///     uint32_t const* pStreamStrides; // @link substring="pStreamStrides" target="#pStreamStrides"
 /// } VkIndirectCommandsLayoutCreateInfoNV;
 /// }
 ///
@@ -131,14 +131,6 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         segment.set(LAYOUT$tokenCount, OFFSET$tokenCount, value);
     }
 
-    public @pointer(target=VkIndirectCommandsLayoutTokenNV.class) MemorySegment pTokensRaw() {
-        return segment.get(LAYOUT$pTokens, OFFSET$pTokens);
-    }
-
-    public void pTokensRaw(@pointer(target=VkIndirectCommandsLayoutTokenNV.class) MemorySegment value) {
-        segment.set(LAYOUT$pTokens, OFFSET$pTokens, value);
-    }
-
     public @Nullable VkIndirectCommandsLayoutTokenNV pTokens() {
         MemorySegment s = pTokensRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -166,20 +158,20 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         return ret;
     }
 
+    public @pointer(target=VkIndirectCommandsLayoutTokenNV.class) MemorySegment pTokensRaw() {
+        return segment.get(LAYOUT$pTokens, OFFSET$pTokens);
+    }
+
+    public void pTokensRaw(@pointer(target=VkIndirectCommandsLayoutTokenNV.class) MemorySegment value) {
+        segment.set(LAYOUT$pTokens, OFFSET$pTokens, value);
+    }
+
     public @unsigned int streamCount() {
         return segment.get(LAYOUT$streamCount, OFFSET$streamCount);
     }
 
     public void streamCount(@unsigned int value) {
         segment.set(LAYOUT$streamCount, OFFSET$streamCount, value);
-    }
-
-    public @pointer(comment="int*") MemorySegment pStreamStridesRaw() {
-        return segment.get(LAYOUT$pStreamStrides, OFFSET$pStreamStrides);
-    }
-
-    public void pStreamStridesRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pStreamStrides, OFFSET$pStreamStrides, value);
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -197,6 +189,14 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
     public void pStreamStrides(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStreamStridesRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pStreamStridesRaw() {
+        return segment.get(LAYOUT$pStreamStrides, OFFSET$pStreamStrides);
+    }
+
+    public void pStreamStridesRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pStreamStrides, OFFSET$pStreamStrides, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

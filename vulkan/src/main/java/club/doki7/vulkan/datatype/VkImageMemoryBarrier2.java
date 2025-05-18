@@ -20,18 +20,18 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageMemoryBarrier2 {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineStageFlags2 srcStageMask; // optional
-///     VkAccessFlags2 srcAccessMask; // optional
-///     VkPipelineStageFlags2 dstStageMask; // optional
-///     VkAccessFlags2 dstAccessMask; // optional
-///     VkImageLayout oldLayout;
-///     VkImageLayout newLayout;
-///     uint32_t srcQueueFamilyIndex;
-///     uint32_t dstQueueFamilyIndex;
-///     VkImage image;
-///     VkImageSubresourceRange subresourceRange;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineStageFlags2 srcStageMask; // optional // @link substring="VkPipelineStageFlags2" target="VkPipelineStageFlags2" @link substring="srcStageMask" target="#srcStageMask"
+///     VkAccessFlags2 srcAccessMask; // optional // @link substring="VkAccessFlags2" target="VkAccessFlags2" @link substring="srcAccessMask" target="#srcAccessMask"
+///     VkPipelineStageFlags2 dstStageMask; // optional // @link substring="VkPipelineStageFlags2" target="VkPipelineStageFlags2" @link substring="dstStageMask" target="#dstStageMask"
+///     VkAccessFlags2 dstAccessMask; // optional // @link substring="VkAccessFlags2" target="VkAccessFlags2" @link substring="dstAccessMask" target="#dstAccessMask"
+///     VkImageLayout oldLayout; // @link substring="VkImageLayout" target="VkImageLayout" @link substring="oldLayout" target="#oldLayout"
+///     VkImageLayout newLayout; // @link substring="VkImageLayout" target="VkImageLayout" @link substring="newLayout" target="#newLayout"
+///     uint32_t srcQueueFamilyIndex; // @link substring="srcQueueFamilyIndex" target="#srcQueueFamilyIndex"
+///     uint32_t dstQueueFamilyIndex; // @link substring="dstQueueFamilyIndex" target="#dstQueueFamilyIndex"
+///     VkImage image; // @link substring="VkImage" target="VkImage" @link substring="image" target="#image"
+///     VkImageSubresourceRange subresourceRange; // @link substring="VkImageSubresourceRange" target="VkImageSubresourceRange" @link substring="subresourceRange" target="#subresourceRange"
 /// } VkImageMemoryBarrier2;
 /// }
 ///
@@ -187,11 +187,11 @@ public record VkImageMemoryBarrier2(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$image, OFFSET$image, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public VkImageSubresourceRange subresourceRange() {
+    public @NotNull VkImageSubresourceRange subresourceRange() {
         return new VkImageSubresourceRange(segment.asSlice(OFFSET$subresourceRange, LAYOUT$subresourceRange));
     }
 
-    public void subresourceRange(VkImageSubresourceRange value) {
+    public void subresourceRange(@NotNull VkImageSubresourceRange value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceRange, SIZE$subresourceRange);
     }
 

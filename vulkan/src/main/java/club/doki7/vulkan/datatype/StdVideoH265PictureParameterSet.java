@@ -20,42 +20,42 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265PictureParameterSet {
-///     StdVideoH265PpsFlags flags;
-///     uint8_t pps_pic_parameter_set_id;
-///     uint8_t pps_seq_parameter_set_id;
-///     uint8_t sps_video_parameter_set_id;
-///     uint8_t num_extra_slice_header_bits;
-///     uint8_t num_ref_idx_l0_default_active_minus1;
-///     uint8_t num_ref_idx_l1_default_active_minus1;
-///     int8_t init_qp_minus26;
-///     uint8_t diff_cu_qp_delta_depth;
-///     int8_t pps_cb_qp_offset;
-///     int8_t pps_cr_qp_offset;
-///     int8_t pps_beta_offset_div2;
-///     int8_t pps_tc_offset_div2;
-///     uint8_t log2_parallel_merge_level_minus2;
-///     uint8_t log2_max_transform_skip_block_size_minus2;
-///     uint8_t diff_cu_chroma_qp_offset_depth;
-///     uint8_t chroma_qp_offset_list_len_minus1;
-///     int8_t cb_qp_offset_list;
-///     int8_t cr_qp_offset_list;
-///     uint8_t log2_sao_offset_scale_luma;
-///     uint8_t log2_sao_offset_scale_chroma;
-///     int8_t pps_act_y_qp_offset_plus5;
-///     int8_t pps_act_cb_qp_offset_plus5;
-///     int8_t pps_act_cr_qp_offset_plus3;
-///     uint8_t pps_num_palette_predictor_initializers;
-///     uint8_t luma_bit_depth_entry_minus8;
-///     uint8_t chroma_bit_depth_entry_minus8;
-///     uint8_t num_tile_columns_minus1;
-///     uint8_t num_tile_rows_minus1;
-///     uint8_t reserved1;
-///     uint8_t reserved2;
-///     uint16_t column_width_minus1;
-///     uint16_t row_height_minus1;
-///     uint32_t reserved3;
-///     StdVideoH265ScalingLists const* pScalingLists;
-///     StdVideoH265PredictorPaletteEntries const* pPredictorPaletteEntries;
+///     StdVideoH265PpsFlags flags; // @link substring="StdVideoH265PpsFlags" target="StdVideoH265PpsFlags" @link substring="flags" target="#flags"
+///     uint8_t pps_pic_parameter_set_id; // @link substring="pps_pic_parameter_set_id" target="#pps_pic_parameter_set_id"
+///     uint8_t pps_seq_parameter_set_id; // @link substring="pps_seq_parameter_set_id" target="#pps_seq_parameter_set_id"
+///     uint8_t sps_video_parameter_set_id; // @link substring="sps_video_parameter_set_id" target="#sps_video_parameter_set_id"
+///     uint8_t num_extra_slice_header_bits; // @link substring="num_extra_slice_header_bits" target="#num_extra_slice_header_bits"
+///     uint8_t num_ref_idx_l0_default_active_minus1; // @link substring="num_ref_idx_l0_default_active_minus1" target="#num_ref_idx_l0_default_active_minus1"
+///     uint8_t num_ref_idx_l1_default_active_minus1; // @link substring="num_ref_idx_l1_default_active_minus1" target="#num_ref_idx_l1_default_active_minus1"
+///     int8_t init_qp_minus26; // @link substring="init_qp_minus26" target="#init_qp_minus26"
+///     uint8_t diff_cu_qp_delta_depth; // @link substring="diff_cu_qp_delta_depth" target="#diff_cu_qp_delta_depth"
+///     int8_t pps_cb_qp_offset; // @link substring="pps_cb_qp_offset" target="#pps_cb_qp_offset"
+///     int8_t pps_cr_qp_offset; // @link substring="pps_cr_qp_offset" target="#pps_cr_qp_offset"
+///     int8_t pps_beta_offset_div2; // @link substring="pps_beta_offset_div2" target="#pps_beta_offset_div2"
+///     int8_t pps_tc_offset_div2; // @link substring="pps_tc_offset_div2" target="#pps_tc_offset_div2"
+///     uint8_t log2_parallel_merge_level_minus2; // @link substring="log2_parallel_merge_level_minus2" target="#log2_parallel_merge_level_minus2"
+///     uint8_t log2_max_transform_skip_block_size_minus2; // @link substring="log2_max_transform_skip_block_size_minus2" target="#log2_max_transform_skip_block_size_minus2"
+///     uint8_t diff_cu_chroma_qp_offset_depth; // @link substring="diff_cu_chroma_qp_offset_depth" target="#diff_cu_chroma_qp_offset_depth"
+///     uint8_t chroma_qp_offset_list_len_minus1; // @link substring="chroma_qp_offset_list_len_minus1" target="#chroma_qp_offset_list_len_minus1"
+///     int8_t cb_qp_offset_list; // @link substring="cb_qp_offset_list" target="#cb_qp_offset_list"
+///     int8_t cr_qp_offset_list; // @link substring="cr_qp_offset_list" target="#cr_qp_offset_list"
+///     uint8_t log2_sao_offset_scale_luma; // @link substring="log2_sao_offset_scale_luma" target="#log2_sao_offset_scale_luma"
+///     uint8_t log2_sao_offset_scale_chroma; // @link substring="log2_sao_offset_scale_chroma" target="#log2_sao_offset_scale_chroma"
+///     int8_t pps_act_y_qp_offset_plus5; // @link substring="pps_act_y_qp_offset_plus5" target="#pps_act_y_qp_offset_plus5"
+///     int8_t pps_act_cb_qp_offset_plus5; // @link substring="pps_act_cb_qp_offset_plus5" target="#pps_act_cb_qp_offset_plus5"
+///     int8_t pps_act_cr_qp_offset_plus3; // @link substring="pps_act_cr_qp_offset_plus3" target="#pps_act_cr_qp_offset_plus3"
+///     uint8_t pps_num_palette_predictor_initializers; // @link substring="pps_num_palette_predictor_initializers" target="#pps_num_palette_predictor_initializers"
+///     uint8_t luma_bit_depth_entry_minus8; // @link substring="luma_bit_depth_entry_minus8" target="#luma_bit_depth_entry_minus8"
+///     uint8_t chroma_bit_depth_entry_minus8; // @link substring="chroma_bit_depth_entry_minus8" target="#chroma_bit_depth_entry_minus8"
+///     uint8_t num_tile_columns_minus1; // @link substring="num_tile_columns_minus1" target="#num_tile_columns_minus1"
+///     uint8_t num_tile_rows_minus1; // @link substring="num_tile_rows_minus1" target="#num_tile_rows_minus1"
+///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint8_t reserved2; // @link substring="reserved2" target="#reserved2"
+///     uint16_t column_width_minus1; // @link substring="column_width_minus1" target="#column_width_minus1"
+///     uint16_t row_height_minus1; // @link substring="row_height_minus1" target="#row_height_minus1"
+///     uint32_t reserved3; // @link substring="reserved3" target="#reserved3"
+///     StdVideoH265ScalingLists const* pScalingLists; // @link substring="StdVideoH265ScalingLists" target="StdVideoH265ScalingLists" @link substring="pScalingLists" target="#pScalingLists"
+///     StdVideoH265PredictorPaletteEntries const* pPredictorPaletteEntries; // @link substring="StdVideoH265PredictorPaletteEntries" target="StdVideoH265PredictorPaletteEntries" @link substring="pPredictorPaletteEntries" target="#pPredictorPaletteEntries"
 /// } StdVideoH265PictureParameterSet;
 /// }
 ///
@@ -99,11 +99,11 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public StdVideoH265PpsFlags flags() {
+    public @NotNull StdVideoH265PpsFlags flags() {
         return new StdVideoH265PpsFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoH265PpsFlags value) {
+    public void flags(@NotNull StdVideoH265PpsFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
@@ -371,14 +371,6 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$reserved3, OFFSET$reserved3, value);
     }
 
-    public @pointer(target=StdVideoH265ScalingLists.class) MemorySegment pScalingListsRaw() {
-        return segment.get(LAYOUT$pScalingLists, OFFSET$pScalingLists);
-    }
-
-    public void pScalingListsRaw(@pointer(target=StdVideoH265ScalingLists.class) MemorySegment value) {
-        segment.set(LAYOUT$pScalingLists, OFFSET$pScalingLists, value);
-    }
-
     public @Nullable StdVideoH265ScalingLists pScalingLists() {
         MemorySegment s = pScalingListsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -406,12 +398,12 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public @pointer(target=StdVideoH265PredictorPaletteEntries.class) MemorySegment pPredictorPaletteEntriesRaw() {
-        return segment.get(LAYOUT$pPredictorPaletteEntries, OFFSET$pPredictorPaletteEntries);
+    public @pointer(target=StdVideoH265ScalingLists.class) MemorySegment pScalingListsRaw() {
+        return segment.get(LAYOUT$pScalingLists, OFFSET$pScalingLists);
     }
 
-    public void pPredictorPaletteEntriesRaw(@pointer(target=StdVideoH265PredictorPaletteEntries.class) MemorySegment value) {
-        segment.set(LAYOUT$pPredictorPaletteEntries, OFFSET$pPredictorPaletteEntries, value);
+    public void pScalingListsRaw(@pointer(target=StdVideoH265ScalingLists.class) MemorySegment value) {
+        segment.set(LAYOUT$pScalingLists, OFFSET$pScalingLists, value);
     }
 
     public @Nullable StdVideoH265PredictorPaletteEntries pPredictorPaletteEntries() {
@@ -439,6 +431,14 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
             ret[i] = new StdVideoH265PredictorPaletteEntries(s.asSlice(i * StdVideoH265PredictorPaletteEntries.BYTES, StdVideoH265PredictorPaletteEntries.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoH265PredictorPaletteEntries.class) MemorySegment pPredictorPaletteEntriesRaw() {
+        return segment.get(LAYOUT$pPredictorPaletteEntries, OFFSET$pPredictorPaletteEntries);
+    }
+
+    public void pPredictorPaletteEntriesRaw(@pointer(target=StdVideoH265PredictorPaletteEntries.class) MemorySegment value) {
+        segment.set(LAYOUT$pPredictorPaletteEntries, OFFSET$pPredictorPaletteEntries, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

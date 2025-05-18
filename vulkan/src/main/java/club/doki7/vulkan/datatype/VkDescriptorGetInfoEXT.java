@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDescriptorGetInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDescriptorType type;
-///     VkDescriptorDataEXT data;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDescriptorType type; // @link substring="VkDescriptorType" target="VkDescriptorType" @link substring="type" target="#type"
+///     VkDescriptorDataEXT data; // @link substring="VkDescriptorDataEXT" target="VkDescriptorDataEXT" @link substring="data" target="#data"
 /// } VkDescriptorGetInfoEXT;
 /// }
 ///
@@ -111,11 +111,11 @@ public record VkDescriptorGetInfoEXT(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 
-    public VkDescriptorDataEXT data() {
+    public @NotNull VkDescriptorDataEXT data() {
         return new VkDescriptorDataEXT(segment.asSlice(OFFSET$data, LAYOUT$data));
     }
 
-    public void data(VkDescriptorDataEXT value) {
+    public void data(@NotNull VkDescriptorDataEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
     }
 

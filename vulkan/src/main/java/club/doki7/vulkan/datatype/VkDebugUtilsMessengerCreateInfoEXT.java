@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDebugUtilsMessengerCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDebugUtilsMessengerCreateFlagsEXT flags; // optional
-///     VkDebugUtilsMessageSeverityFlagsEXT messageSeverity;
-///     VkDebugUtilsMessageTypeFlagsEXT messageType;
-///     PFN_vkDebugUtilsMessengerCallbackEXT pfnUserCallback;
-///     void* pUserData; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDebugUtilsMessengerCreateFlagsEXT flags; // optional // @link substring="VkDebugUtilsMessengerCreateFlagsEXT" target="VkDebugUtilsMessengerCreateFlagsEXT" @link substring="flags" target="#flags"
+///     VkDebugUtilsMessageSeverityFlagsEXT messageSeverity; // @link substring="VkDebugUtilsMessageSeverityFlagsEXT" target="VkDebugUtilsMessageSeverityFlagsEXT" @link substring="messageSeverity" target="#messageSeverity"
+///     VkDebugUtilsMessageTypeFlagsEXT messageType; // @link substring="VkDebugUtilsMessageTypeFlagsEXT" target="VkDebugUtilsMessageTypeFlagsEXT" @link substring="messageType" target="#messageType"
+///     PFN_vkDebugUtilsMessengerCallbackEXT pfnUserCallback; // @link substring="pfnUserCallback" target="#pfnUserCallback"
+///     void* pUserData; // optional // @link substring="pUserData" target="#pUserData"
 /// } VkDebugUtilsMessengerCreateInfoEXT;
 /// }
 ///

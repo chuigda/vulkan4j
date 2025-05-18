@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceConservativeRasterizationPropertiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     float primitiveOverestimationSize;
-///     float maxExtraPrimitiveOverestimationSize;
-///     float extraPrimitiveOverestimationSizeGranularity;
-///     VkBool32 primitiveUnderestimation;
-///     VkBool32 conservativePointAndLineRasterization;
-///     VkBool32 degenerateTrianglesRasterized;
-///     VkBool32 degenerateLinesRasterized;
-///     VkBool32 fullyCoveredFragmentShaderInputVariable;
-///     VkBool32 conservativeRasterizationPostDepthCoverage;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     float primitiveOverestimationSize; // @link substring="primitiveOverestimationSize" target="#primitiveOverestimationSize"
+///     float maxExtraPrimitiveOverestimationSize; // @link substring="maxExtraPrimitiveOverestimationSize" target="#maxExtraPrimitiveOverestimationSize"
+///     float extraPrimitiveOverestimationSizeGranularity; // @link substring="extraPrimitiveOverestimationSizeGranularity" target="#extraPrimitiveOverestimationSizeGranularity"
+///     VkBool32 primitiveUnderestimation; // @link substring="primitiveUnderestimation" target="#primitiveUnderestimation"
+///     VkBool32 conservativePointAndLineRasterization; // @link substring="conservativePointAndLineRasterization" target="#conservativePointAndLineRasterization"
+///     VkBool32 degenerateTrianglesRasterized; // @link substring="degenerateTrianglesRasterized" target="#degenerateTrianglesRasterized"
+///     VkBool32 degenerateLinesRasterized; // @link substring="degenerateLinesRasterized" target="#degenerateLinesRasterized"
+///     VkBool32 fullyCoveredFragmentShaderInputVariable; // @link substring="fullyCoveredFragmentShaderInputVariable" target="#fullyCoveredFragmentShaderInputVariable"
+///     VkBool32 conservativeRasterizationPostDepthCoverage; // @link substring="conservativeRasterizationPostDepthCoverage" target="#conservativeRasterizationPostDepthCoverage"
 /// } VkPhysicalDeviceConservativeRasterizationPropertiesEXT;
 /// }
 ///

@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeAV1ReferenceInfo {
-///     StdVideoEncodeAV1ReferenceInfoFlags flags;
-///     uint32_t RefFrameId;
-///     StdVideoAV1FrameType frame_type;
-///     uint8_t OrderHint;
-///     uint8_t reserved1;
-///     StdVideoEncodeAV1ExtensionHeader const* pExtensionHeader;
+///     StdVideoEncodeAV1ReferenceInfoFlags flags; // @link substring="StdVideoEncodeAV1ReferenceInfoFlags" target="StdVideoEncodeAV1ReferenceInfoFlags" @link substring="flags" target="#flags"
+///     uint32_t RefFrameId; // @link substring="RefFrameId" target="#RefFrameId"
+///     StdVideoAV1FrameType frame_type; // @link substring="StdVideoAV1FrameType" target="StdVideoAV1FrameType" @link substring="frame_type" target="#frame_type"
+///     uint8_t OrderHint; // @link substring="OrderHint" target="#OrderHint"
+///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     StdVideoEncodeAV1ExtensionHeader const* pExtensionHeader; // @link substring="StdVideoEncodeAV1ExtensionHeader" target="StdVideoEncodeAV1ExtensionHeader" @link substring="pExtensionHeader" target="#pExtensionHeader"
 /// } StdVideoEncodeAV1ReferenceInfo;
 /// }
 ///
@@ -69,11 +69,11 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public StdVideoEncodeAV1ReferenceInfoFlags flags() {
+    public @NotNull StdVideoEncodeAV1ReferenceInfoFlags flags() {
         return new StdVideoEncodeAV1ReferenceInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoEncodeAV1ReferenceInfoFlags value) {
+    public void flags(@NotNull StdVideoEncodeAV1ReferenceInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
@@ -109,14 +109,6 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
     }
 
-    public @pointer(target=StdVideoEncodeAV1ExtensionHeader.class) MemorySegment pExtensionHeaderRaw() {
-        return segment.get(LAYOUT$pExtensionHeader, OFFSET$pExtensionHeader);
-    }
-
-    public void pExtensionHeaderRaw(@pointer(target=StdVideoEncodeAV1ExtensionHeader.class) MemorySegment value) {
-        segment.set(LAYOUT$pExtensionHeader, OFFSET$pExtensionHeader, value);
-    }
-
     public @Nullable StdVideoEncodeAV1ExtensionHeader pExtensionHeader() {
         MemorySegment s = pExtensionHeaderRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -142,6 +134,14 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
             ret[i] = new StdVideoEncodeAV1ExtensionHeader(s.asSlice(i * StdVideoEncodeAV1ExtensionHeader.BYTES, StdVideoEncodeAV1ExtensionHeader.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoEncodeAV1ExtensionHeader.class) MemorySegment pExtensionHeaderRaw() {
+        return segment.get(LAYOUT$pExtensionHeader, OFFSET$pExtensionHeader);
+    }
+
+    public void pExtensionHeaderRaw(@pointer(target=StdVideoEncodeAV1ExtensionHeader.class) MemorySegment value) {
+        segment.set(LAYOUT$pExtensionHeader, OFFSET$pExtensionHeader, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

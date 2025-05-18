@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDirectDriverLoadingListLUNARG {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDirectDriverLoadingModeLUNARG mode;
-///     uint32_t driverCount;
-///     VkDirectDriverLoadingInfoLUNARG const* pDrivers;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDirectDriverLoadingModeLUNARG mode; // @link substring="VkDirectDriverLoadingModeLUNARG" target="VkDirectDriverLoadingModeLUNARG" @link substring="mode" target="#mode"
+///     uint32_t driverCount; // @link substring="driverCount" target="#driverCount"
+///     VkDirectDriverLoadingInfoLUNARG const* pDrivers; // @link substring="VkDirectDriverLoadingInfoLUNARG" target="VkDirectDriverLoadingInfoLUNARG" @link substring="pDrivers" target="#pDrivers"
 /// } VkDirectDriverLoadingListLUNARG;
 /// }
 ///
@@ -120,14 +120,6 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$driverCount, OFFSET$driverCount, value);
     }
 
-    public @pointer(target=VkDirectDriverLoadingInfoLUNARG.class) MemorySegment pDriversRaw() {
-        return segment.get(LAYOUT$pDrivers, OFFSET$pDrivers);
-    }
-
-    public void pDriversRaw(@pointer(target=VkDirectDriverLoadingInfoLUNARG.class) MemorySegment value) {
-        segment.set(LAYOUT$pDrivers, OFFSET$pDrivers, value);
-    }
-
     public @Nullable VkDirectDriverLoadingInfoLUNARG pDrivers() {
         MemorySegment s = pDriversRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -153,6 +145,14 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
             ret[i] = new VkDirectDriverLoadingInfoLUNARG(s.asSlice(i * VkDirectDriverLoadingInfoLUNARG.BYTES, VkDirectDriverLoadingInfoLUNARG.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkDirectDriverLoadingInfoLUNARG.class) MemorySegment pDriversRaw() {
+        return segment.get(LAYOUT$pDrivers, OFFSET$pDrivers);
+    }
+
+    public void pDriversRaw(@pointer(target=VkDirectDriverLoadingInfoLUNARG.class) MemorySegment value) {
+        segment.set(LAYOUT$pDrivers, OFFSET$pDrivers, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1ColorConfig {
-///     StdVideoAV1ColorConfigFlags flags;
-///     uint8_t BitDepth;
-///     uint8_t subsampling_x;
-///     uint8_t subsampling_y;
-///     uint8_t reserved1;
-///     StdVideoAV1ColorPrimaries color_primaries;
-///     StdVideoAV1TransferCharacteristics transfer_characteristics;
-///     StdVideoAV1MatrixCoefficients matrix_coefficients;
-///     StdVideoAV1ChromaSamplePosition chroma_sample_position;
+///     StdVideoAV1ColorConfigFlags flags; // @link substring="StdVideoAV1ColorConfigFlags" target="StdVideoAV1ColorConfigFlags" @link substring="flags" target="#flags"
+///     uint8_t BitDepth; // @link substring="BitDepth" target="#BitDepth"
+///     uint8_t subsampling_x; // @link substring="subsampling_x" target="#subsampling_x"
+///     uint8_t subsampling_y; // @link substring="subsampling_y" target="#subsampling_y"
+///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     StdVideoAV1ColorPrimaries color_primaries; // @link substring="StdVideoAV1ColorPrimaries" target="StdVideoAV1ColorPrimaries" @link substring="color_primaries" target="#color_primaries"
+///     StdVideoAV1TransferCharacteristics transfer_characteristics; // @link substring="StdVideoAV1TransferCharacteristics" target="StdVideoAV1TransferCharacteristics" @link substring="transfer_characteristics" target="#transfer_characteristics"
+///     StdVideoAV1MatrixCoefficients matrix_coefficients; // @link substring="StdVideoAV1MatrixCoefficients" target="StdVideoAV1MatrixCoefficients" @link substring="matrix_coefficients" target="#matrix_coefficients"
+///     StdVideoAV1ChromaSamplePosition chroma_sample_position; // @link substring="StdVideoAV1ChromaSamplePosition" target="StdVideoAV1ChromaSamplePosition" @link substring="chroma_sample_position" target="#chroma_sample_position"
 /// } StdVideoAV1ColorConfig;
 /// }
 ///
@@ -72,11 +72,11 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public StdVideoAV1ColorConfigFlags flags() {
+    public @NotNull StdVideoAV1ColorConfigFlags flags() {
         return new StdVideoAV1ColorConfigFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoAV1ColorConfigFlags value) {
+    public void flags(@NotNull StdVideoAV1ColorConfigFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 

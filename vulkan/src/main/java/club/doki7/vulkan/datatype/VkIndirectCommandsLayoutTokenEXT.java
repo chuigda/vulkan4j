@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkIndirectCommandsLayoutTokenEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkIndirectCommandsTokenTypeEXT type;
-///     VkIndirectCommandsTokenDataEXT data;
-///     uint32_t offset;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkIndirectCommandsTokenTypeEXT type; // @link substring="VkIndirectCommandsTokenTypeEXT" target="VkIndirectCommandsTokenTypeEXT" @link substring="type" target="#type"
+///     VkIndirectCommandsTokenDataEXT data; // @link substring="VkIndirectCommandsTokenDataEXT" target="VkIndirectCommandsTokenDataEXT" @link substring="data" target="#data"
+///     uint32_t offset; // @link substring="offset" target="#offset"
 /// } VkIndirectCommandsLayoutTokenEXT;
 /// }
 ///
@@ -112,11 +112,11 @@ public record VkIndirectCommandsLayoutTokenEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 
-    public VkIndirectCommandsTokenDataEXT data() {
+    public @NotNull VkIndirectCommandsTokenDataEXT data() {
         return new VkIndirectCommandsTokenDataEXT(segment.asSlice(OFFSET$data, LAYOUT$data));
     }
 
-    public void data(VkIndirectCommandsTokenDataEXT value) {
+    public void data(@NotNull VkIndirectCommandsTokenDataEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
     }
 

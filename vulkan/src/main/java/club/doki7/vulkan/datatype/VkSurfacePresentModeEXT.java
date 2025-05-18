@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSurfacePresentModeEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkPresentModeKHR presentMode;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPresentModeKHR presentMode; // @link substring="VkPresentModeKHR" target="VkPresentModeKHR" @link substring="presentMode" target="#presentMode"
 /// } VkSurfacePresentModeEXT;
 /// }
 ///

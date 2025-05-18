@@ -20,20 +20,20 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t maxIndirectPipelineCount;
-///     uint32_t maxIndirectShaderObjectCount;
-///     uint32_t maxIndirectSequenceCount;
-///     uint32_t maxIndirectCommandsTokenCount;
-///     uint32_t maxIndirectCommandsTokenOffset;
-///     uint32_t maxIndirectCommandsIndirectStride;
-///     VkIndirectCommandsInputModeFlagsEXT supportedIndirectCommandsInputModes;
-///     VkShaderStageFlags supportedIndirectCommandsShaderStages;
-///     VkShaderStageFlags supportedIndirectCommandsShaderStagesPipelineBinding;
-///     VkShaderStageFlags supportedIndirectCommandsShaderStagesShaderBinding;
-///     VkBool32 deviceGeneratedCommandsTransformFeedback;
-///     VkBool32 deviceGeneratedCommandsMultiDrawIndirectCount;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxIndirectPipelineCount; // @link substring="maxIndirectPipelineCount" target="#maxIndirectPipelineCount"
+///     uint32_t maxIndirectShaderObjectCount; // @link substring="maxIndirectShaderObjectCount" target="#maxIndirectShaderObjectCount"
+///     uint32_t maxIndirectSequenceCount; // @link substring="maxIndirectSequenceCount" target="#maxIndirectSequenceCount"
+///     uint32_t maxIndirectCommandsTokenCount; // @link substring="maxIndirectCommandsTokenCount" target="#maxIndirectCommandsTokenCount"
+///     uint32_t maxIndirectCommandsTokenOffset; // @link substring="maxIndirectCommandsTokenOffset" target="#maxIndirectCommandsTokenOffset"
+///     uint32_t maxIndirectCommandsIndirectStride; // @link substring="maxIndirectCommandsIndirectStride" target="#maxIndirectCommandsIndirectStride"
+///     VkIndirectCommandsInputModeFlagsEXT supportedIndirectCommandsInputModes; // @link substring="VkIndirectCommandsInputModeFlagsEXT" target="VkIndirectCommandsInputModeFlagsEXT" @link substring="supportedIndirectCommandsInputModes" target="#supportedIndirectCommandsInputModes"
+///     VkShaderStageFlags supportedIndirectCommandsShaderStages; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="supportedIndirectCommandsShaderStages" target="#supportedIndirectCommandsShaderStages"
+///     VkShaderStageFlags supportedIndirectCommandsShaderStagesPipelineBinding; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="supportedIndirectCommandsShaderStagesPipelineBinding" target="#supportedIndirectCommandsShaderStagesPipelineBinding"
+///     VkShaderStageFlags supportedIndirectCommandsShaderStagesShaderBinding; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="supportedIndirectCommandsShaderStagesShaderBinding" target="#supportedIndirectCommandsShaderStagesShaderBinding"
+///     VkBool32 deviceGeneratedCommandsTransformFeedback; // @link substring="deviceGeneratedCommandsTransformFeedback" target="#deviceGeneratedCommandsTransformFeedback"
+///     VkBool32 deviceGeneratedCommandsMultiDrawIndirectCount; // @link substring="deviceGeneratedCommandsMultiDrawIndirectCount" target="#deviceGeneratedCommandsMultiDrawIndirectCount"
 /// } VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT;
 /// }
 ///

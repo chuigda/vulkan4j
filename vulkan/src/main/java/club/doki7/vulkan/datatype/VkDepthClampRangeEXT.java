@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDepthClampRangeEXT {
-///     float minDepthClamp;
-///     float maxDepthClamp;
+///     float minDepthClamp; // @link substring="minDepthClamp" target="#minDepthClamp"
+///     float maxDepthClamp; // @link substring="maxDepthClamp" target="#maxDepthClamp"
 /// } VkDepthClampRangeEXT;
 /// }
 ///

@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExportMetalObjectCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkExportMetalObjectTypeFlagsEXT exportObjectType; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkExportMetalObjectTypeFlagsEXT exportObjectType; // optional // @link substring="VkExportMetalObjectTypeFlagsEXT" target="VkExportMetalObjectTypeFlagsEXT" @link substring="exportObjectType" target="#exportObjectType"
 /// } VkExportMetalObjectCreateInfoEXT;
 /// }
 ///

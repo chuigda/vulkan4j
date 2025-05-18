@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkClusterAccelerationStructureCommandsInfoNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkClusterAccelerationStructureInputInfoNV input;
-///     VkDeviceAddress dstImplicitData;
-///     VkDeviceAddress scratchData;
-///     VkStridedDeviceAddressRegionKHR dstAddressesArray;
-///     VkStridedDeviceAddressRegionKHR dstSizesArray;
-///     VkStridedDeviceAddressRegionKHR srcInfosArray;
-///     VkDeviceAddress srcInfosCount;
-///     VkClusterAccelerationStructureAddressResolutionFlagsNV addressResolutionFlags; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkClusterAccelerationStructureInputInfoNV input; // @link substring="VkClusterAccelerationStructureInputInfoNV" target="VkClusterAccelerationStructureInputInfoNV" @link substring="input" target="#input"
+///     VkDeviceAddress dstImplicitData; // @link substring="dstImplicitData" target="#dstImplicitData"
+///     VkDeviceAddress scratchData; // @link substring="scratchData" target="#scratchData"
+///     VkStridedDeviceAddressRegionKHR dstAddressesArray; // @link substring="VkStridedDeviceAddressRegionKHR" target="VkStridedDeviceAddressRegionKHR" @link substring="dstAddressesArray" target="#dstAddressesArray"
+///     VkStridedDeviceAddressRegionKHR dstSizesArray; // @link substring="VkStridedDeviceAddressRegionKHR" target="VkStridedDeviceAddressRegionKHR" @link substring="dstSizesArray" target="#dstSizesArray"
+///     VkStridedDeviceAddressRegionKHR srcInfosArray; // @link substring="VkStridedDeviceAddressRegionKHR" target="VkStridedDeviceAddressRegionKHR" @link substring="srcInfosArray" target="#srcInfosArray"
+///     VkDeviceAddress srcInfosCount; // @link substring="srcInfosCount" target="#srcInfosCount"
+///     VkClusterAccelerationStructureAddressResolutionFlagsNV addressResolutionFlags; // optional // @link substring="VkClusterAccelerationStructureAddressResolutionFlagsNV" target="VkClusterAccelerationStructureAddressResolutionFlagsNV" @link substring="addressResolutionFlags" target="#addressResolutionFlags"
 /// } VkClusterAccelerationStructureCommandsInfoNV;
 /// }
 ///
@@ -109,11 +109,11 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkClusterAccelerationStructureInputInfoNV input() {
+    public @NotNull VkClusterAccelerationStructureInputInfoNV input() {
         return new VkClusterAccelerationStructureInputInfoNV(segment.asSlice(OFFSET$input, LAYOUT$input));
     }
 
-    public void input(VkClusterAccelerationStructureInputInfoNV value) {
+    public void input(@NotNull VkClusterAccelerationStructureInputInfoNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$input, SIZE$input);
     }
 
@@ -133,27 +133,27 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         segment.set(LAYOUT$scratchData, OFFSET$scratchData, value);
     }
 
-    public VkStridedDeviceAddressRegionKHR dstAddressesArray() {
+    public @NotNull VkStridedDeviceAddressRegionKHR dstAddressesArray() {
         return new VkStridedDeviceAddressRegionKHR(segment.asSlice(OFFSET$dstAddressesArray, LAYOUT$dstAddressesArray));
     }
 
-    public void dstAddressesArray(VkStridedDeviceAddressRegionKHR value) {
+    public void dstAddressesArray(@NotNull VkStridedDeviceAddressRegionKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstAddressesArray, SIZE$dstAddressesArray);
     }
 
-    public VkStridedDeviceAddressRegionKHR dstSizesArray() {
+    public @NotNull VkStridedDeviceAddressRegionKHR dstSizesArray() {
         return new VkStridedDeviceAddressRegionKHR(segment.asSlice(OFFSET$dstSizesArray, LAYOUT$dstSizesArray));
     }
 
-    public void dstSizesArray(VkStridedDeviceAddressRegionKHR value) {
+    public void dstSizesArray(@NotNull VkStridedDeviceAddressRegionKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstSizesArray, SIZE$dstSizesArray);
     }
 
-    public VkStridedDeviceAddressRegionKHR srcInfosArray() {
+    public @NotNull VkStridedDeviceAddressRegionKHR srcInfosArray() {
         return new VkStridedDeviceAddressRegionKHR(segment.asSlice(OFFSET$srcInfosArray, LAYOUT$srcInfosArray));
     }
 
-    public void srcInfosArray(VkStridedDeviceAddressRegionKHR value) {
+    public void srcInfosArray(@NotNull VkStridedDeviceAddressRegionKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcInfosArray, SIZE$srcInfosArray);
     }
 

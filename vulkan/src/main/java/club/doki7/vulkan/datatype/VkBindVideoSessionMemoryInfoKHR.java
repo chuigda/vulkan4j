@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBindVideoSessionMemoryInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t memoryBindIndex;
-///     VkDeviceMemory memory;
-///     VkDeviceSize memoryOffset;
-///     VkDeviceSize memorySize;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t memoryBindIndex; // @link substring="memoryBindIndex" target="#memoryBindIndex"
+///     VkDeviceMemory memory; // @link substring="VkDeviceMemory" target="VkDeviceMemory" @link substring="memory" target="#memory"
+///     VkDeviceSize memoryOffset; // @link substring="memoryOffset" target="#memoryOffset"
+///     VkDeviceSize memorySize; // @link substring="memorySize" target="#memorySize"
 /// } VkBindVideoSessionMemoryInfoKHR;
 /// }
 ///

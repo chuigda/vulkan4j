@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 multiviewPerViewViewports;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 multiviewPerViewViewports; // @link substring="multiviewPerViewViewports" target="#multiviewPerViewViewports"
 /// } VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM;
 /// }
 ///

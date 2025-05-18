@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineColorBlendStateCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineColorBlendStateCreateFlags flags; // optional
-///     VkBool32 logicOpEnable;
-///     VkLogicOp logicOp;
-///     uint32_t attachmentCount; // optional
-///     VkPipelineColorBlendAttachmentState const* pAttachments; // optional
-///     float blendConstants;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineColorBlendStateCreateFlags flags; // optional // @link substring="VkPipelineColorBlendStateCreateFlags" target="VkPipelineColorBlendStateCreateFlags" @link substring="flags" target="#flags"
+///     VkBool32 logicOpEnable; // @link substring="logicOpEnable" target="#logicOpEnable"
+///     VkLogicOp logicOp; // @link substring="VkLogicOp" target="VkLogicOp" @link substring="logicOp" target="#logicOp"
+///     uint32_t attachmentCount; // optional // @link substring="attachmentCount" target="#attachmentCount"
+///     VkPipelineColorBlendAttachmentState const* pAttachments; // optional // @link substring="VkPipelineColorBlendAttachmentState" target="VkPipelineColorBlendAttachmentState" @link substring="pAttachments" target="#pAttachments"
+///     float blendConstants; // @link substring="blendConstants" target="#blendConstants"
 /// } VkPipelineColorBlendStateCreateInfo;
 /// }
 ///
@@ -139,14 +139,6 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
     }
 
-    public @pointer(target=VkPipelineColorBlendAttachmentState.class) MemorySegment pAttachmentsRaw() {
-        return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
-    }
-
-    public void pAttachmentsRaw(@pointer(target=VkPipelineColorBlendAttachmentState.class) MemorySegment value) {
-        segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
-    }
-
     public @Nullable VkPipelineColorBlendAttachmentState pAttachments() {
         MemorySegment s = pAttachmentsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -172,6 +164,14 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
             ret[i] = new VkPipelineColorBlendAttachmentState(s.asSlice(i * VkPipelineColorBlendAttachmentState.BYTES, VkPipelineColorBlendAttachmentState.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkPipelineColorBlendAttachmentState.class) MemorySegment pAttachmentsRaw() {
+        return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
+    }
+
+    public void pAttachmentsRaw(@pointer(target=VkPipelineColorBlendAttachmentState.class) MemorySegment value) {
+        segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 
     public float blendConstants() {

@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAttachmentReference2 {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t attachment;
-///     VkImageLayout layout;
-///     VkImageAspectFlags aspectMask;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t attachment; // @link substring="attachment" target="#attachment"
+///     VkImageLayout layout; // @link substring="VkImageLayout" target="VkImageLayout" @link substring="layout" target="#layout"
+///     VkImageAspectFlags aspectMask; // @link substring="VkImageAspectFlags" target="VkImageAspectFlags" @link substring="aspectMask" target="#aspectMask"
 /// } VkAttachmentReference2;
 /// }
 ///

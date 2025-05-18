@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCopyBufferInfo2 {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBuffer srcBuffer;
-///     VkBuffer dstBuffer;
-///     uint32_t regionCount;
-///     VkBufferCopy2 const* pRegions;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBuffer srcBuffer; // @link substring="VkBuffer" target="VkBuffer" @link substring="srcBuffer" target="#srcBuffer"
+///     VkBuffer dstBuffer; // @link substring="VkBuffer" target="VkBuffer" @link substring="dstBuffer" target="#dstBuffer"
+///     uint32_t regionCount; // @link substring="regionCount" target="#regionCount"
+///     VkBufferCopy2 const* pRegions; // @link substring="VkBufferCopy2" target="VkBufferCopy2" @link substring="pRegions" target="#pRegions"
 /// } VkCopyBufferInfo2;
 /// }
 ///
@@ -137,14 +137,6 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IPoin
         segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
     }
 
-    public @pointer(target=VkBufferCopy2.class) MemorySegment pRegionsRaw() {
-        return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
-    }
-
-    public void pRegionsRaw(@pointer(target=VkBufferCopy2.class) MemorySegment value) {
-        segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
-    }
-
     public @Nullable VkBufferCopy2 pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -170,6 +162,14 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IPoin
             ret[i] = new VkBufferCopy2(s.asSlice(i * VkBufferCopy2.BYTES, VkBufferCopy2.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkBufferCopy2.class) MemorySegment pRegionsRaw() {
+        return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
+    }
+
+    public void pRegionsRaw(@pointer(target=VkBufferCopy2.class) MemorySegment value) {
+        segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

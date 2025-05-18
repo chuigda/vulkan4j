@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageViewASTCDecodeModeEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkFormat decodeMode;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkFormat decodeMode; // @link substring="VkFormat" target="VkFormat" @link substring="decodeMode" target="#decodeMode"
 /// } VkImageViewASTCDecodeModeEXT;
 /// }
 ///

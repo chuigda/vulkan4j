@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkHostImageLayoutTransitionInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImage image;
-///     VkImageLayout oldLayout;
-///     VkImageLayout newLayout;
-///     VkImageSubresourceRange subresourceRange;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImage image; // @link substring="VkImage" target="VkImage" @link substring="image" target="#image"
+///     VkImageLayout oldLayout; // @link substring="VkImageLayout" target="VkImageLayout" @link substring="oldLayout" target="#oldLayout"
+///     VkImageLayout newLayout; // @link substring="VkImageLayout" target="VkImageLayout" @link substring="newLayout" target="#newLayout"
+///     VkImageSubresourceRange subresourceRange; // @link substring="VkImageSubresourceRange" target="VkImageSubresourceRange" @link substring="subresourceRange" target="#subresourceRange"
 /// } VkHostImageLayoutTransitionInfo;
 /// }
 ///
@@ -133,11 +133,11 @@ public record VkHostImageLayoutTransitionInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$newLayout, OFFSET$newLayout, value);
     }
 
-    public VkImageSubresourceRange subresourceRange() {
+    public @NotNull VkImageSubresourceRange subresourceRange() {
         return new VkImageSubresourceRange(segment.asSlice(OFFSET$subresourceRange, LAYOUT$subresourceRange));
     }
 
-    public void subresourceRange(VkImageSubresourceRange value) {
+    public void subresourceRange(@NotNull VkImageSubresourceRange value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceRange, SIZE$subresourceRange);
     }
 

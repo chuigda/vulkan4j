@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPerformanceValueDataINTEL {
-///     uint32_t value32;
-///     uint64_t value64;
-///     float valueFloat;
-///     VkBool32 valueBool;
-///     char const* valueString;
+///     uint32_t value32; // @link substring="value32" target="#value32"
+///     uint64_t value64; // @link substring="value64" target="#value64"
+///     float valueFloat; // @link substring="valueFloat" target="#valueFloat"
+///     VkBool32 valueBool; // @link substring="valueBool" target="#valueBool"
+///     char const* valueString; // @link substring="valueString" target="#valueString"
 /// } VkPerformanceValueDataINTEL;
 /// }
 ///
@@ -102,14 +102,6 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$valueBool, OFFSET$valueBool, value);
     }
 
-    public @pointer(comment="byte*") MemorySegment valueStringRaw() {
-        return segment.get(LAYOUT$valueString, OFFSET$valueString);
-    }
-
-    public void valueStringRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$valueString, OFFSET$valueString, value);
-    }
-
     /// Note: the returned {@link BytePtr} does not have correct
     /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
@@ -125,6 +117,14 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
     public void valueString(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         valueStringRaw(s);
+    }
+
+    public @pointer(comment="byte*") MemorySegment valueStringRaw() {
+        return segment.get(LAYOUT$valueString, OFFSET$valueString);
+    }
+
+    public void valueStringRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$valueString, OFFSET$valueString, value);
     }
 
     public static final UnionLayout LAYOUT = NativeLayout.unionLayout(

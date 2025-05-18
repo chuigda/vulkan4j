@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDisplayModeStereoPropertiesNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBool32 hdmi3DSupported;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 hdmi3DSupported; // @link substring="hdmi3DSupported" target="#hdmi3DSupported"
 /// } VkDisplayModeStereoPropertiesNV;
 /// }
 ///

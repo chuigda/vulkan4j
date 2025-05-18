@@ -20,29 +20,29 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceVulkan14Features {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 globalPriorityQuery;
-///     VkBool32 shaderSubgroupRotate;
-///     VkBool32 shaderSubgroupRotateClustered;
-///     VkBool32 shaderFloatControls2;
-///     VkBool32 shaderExpectAssume;
-///     VkBool32 rectangularLines;
-///     VkBool32 bresenhamLines;
-///     VkBool32 smoothLines;
-///     VkBool32 stippledRectangularLines;
-///     VkBool32 stippledBresenhamLines;
-///     VkBool32 stippledSmoothLines;
-///     VkBool32 vertexAttributeInstanceRateDivisor;
-///     VkBool32 vertexAttributeInstanceRateZeroDivisor;
-///     VkBool32 indexTypeUint8;
-///     VkBool32 dynamicRenderingLocalRead;
-///     VkBool32 maintenance5;
-///     VkBool32 maintenance6;
-///     VkBool32 pipelineProtectedAccess;
-///     VkBool32 pipelineRobustness;
-///     VkBool32 hostImageCopy;
-///     VkBool32 pushDescriptor;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 globalPriorityQuery; // @link substring="globalPriorityQuery" target="#globalPriorityQuery"
+///     VkBool32 shaderSubgroupRotate; // @link substring="shaderSubgroupRotate" target="#shaderSubgroupRotate"
+///     VkBool32 shaderSubgroupRotateClustered; // @link substring="shaderSubgroupRotateClustered" target="#shaderSubgroupRotateClustered"
+///     VkBool32 shaderFloatControls2; // @link substring="shaderFloatControls2" target="#shaderFloatControls2"
+///     VkBool32 shaderExpectAssume; // @link substring="shaderExpectAssume" target="#shaderExpectAssume"
+///     VkBool32 rectangularLines; // @link substring="rectangularLines" target="#rectangularLines"
+///     VkBool32 bresenhamLines; // @link substring="bresenhamLines" target="#bresenhamLines"
+///     VkBool32 smoothLines; // @link substring="smoothLines" target="#smoothLines"
+///     VkBool32 stippledRectangularLines; // @link substring="stippledRectangularLines" target="#stippledRectangularLines"
+///     VkBool32 stippledBresenhamLines; // @link substring="stippledBresenhamLines" target="#stippledBresenhamLines"
+///     VkBool32 stippledSmoothLines; // @link substring="stippledSmoothLines" target="#stippledSmoothLines"
+///     VkBool32 vertexAttributeInstanceRateDivisor; // @link substring="vertexAttributeInstanceRateDivisor" target="#vertexAttributeInstanceRateDivisor"
+///     VkBool32 vertexAttributeInstanceRateZeroDivisor; // @link substring="vertexAttributeInstanceRateZeroDivisor" target="#vertexAttributeInstanceRateZeroDivisor"
+///     VkBool32 indexTypeUint8; // @link substring="indexTypeUint8" target="#indexTypeUint8"
+///     VkBool32 dynamicRenderingLocalRead; // @link substring="dynamicRenderingLocalRead" target="#dynamicRenderingLocalRead"
+///     VkBool32 maintenance5; // @link substring="maintenance5" target="#maintenance5"
+///     VkBool32 maintenance6; // @link substring="maintenance6" target="#maintenance6"
+///     VkBool32 pipelineProtectedAccess; // @link substring="pipelineProtectedAccess" target="#pipelineProtectedAccess"
+///     VkBool32 pipelineRobustness; // @link substring="pipelineRobustness" target="#pipelineRobustness"
+///     VkBool32 hostImageCopy; // @link substring="hostImageCopy" target="#hostImageCopy"
+///     VkBool32 pushDescriptor; // @link substring="pushDescriptor" target="#pushDescriptor"
 /// } VkPhysicalDeviceVulkan14Features;
 /// }
 ///

@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassFragmentDensityMapOffsetEndInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t fragmentDensityOffsetCount; // optional
-///     VkOffset2D const* pFragmentDensityOffsets;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t fragmentDensityOffsetCount; // optional // @link substring="fragmentDensityOffsetCount" target="#fragmentDensityOffsetCount"
+///     VkOffset2D const* pFragmentDensityOffsets; // @link substring="VkOffset2D" target="VkOffset2D" @link substring="pFragmentDensityOffsets" target="#pFragmentDensityOffsets"
 /// } VkRenderPassFragmentDensityMapOffsetEndInfoEXT;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkRenderPassFragmentDensityMapOffsetEndInfoEXT(@NotNull MemorySegm
         segment.set(LAYOUT$fragmentDensityOffsetCount, OFFSET$fragmentDensityOffsetCount, value);
     }
 
-    public @pointer(target=VkOffset2D.class) MemorySegment pFragmentDensityOffsetsRaw() {
-        return segment.get(LAYOUT$pFragmentDensityOffsets, OFFSET$pFragmentDensityOffsets);
-    }
-
-    public void pFragmentDensityOffsetsRaw(@pointer(target=VkOffset2D.class) MemorySegment value) {
-        segment.set(LAYOUT$pFragmentDensityOffsets, OFFSET$pFragmentDensityOffsets, value);
-    }
-
     public @Nullable VkOffset2D pFragmentDensityOffsets() {
         MemorySegment s = pFragmentDensityOffsetsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkRenderPassFragmentDensityMapOffsetEndInfoEXT(@NotNull MemorySegm
             ret[i] = new VkOffset2D(s.asSlice(i * VkOffset2D.BYTES, VkOffset2D.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkOffset2D.class) MemorySegment pFragmentDensityOffsetsRaw() {
+        return segment.get(LAYOUT$pFragmentDensityOffsets, OFFSET$pFragmentDensityOffsets);
+    }
+
+    public void pFragmentDensityOffsetsRaw(@pointer(target=VkOffset2D.class) MemorySegment value) {
+        segment.set(LAYOUT$pFragmentDensityOffsets, OFFSET$pFragmentDensityOffsets, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

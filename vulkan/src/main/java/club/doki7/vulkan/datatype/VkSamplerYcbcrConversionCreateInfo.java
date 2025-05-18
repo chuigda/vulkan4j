@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSamplerYcbcrConversionCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkFormat format;
-///     VkSamplerYcbcrModelConversion ycbcrModel;
-///     VkSamplerYcbcrRange ycbcrRange;
-///     VkComponentMapping components;
-///     VkChromaLocation xChromaOffset;
-///     VkChromaLocation yChromaOffset;
-///     VkFilter chromaFilter;
-///     VkBool32 forceExplicitReconstruction;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkFormat format; // @link substring="VkFormat" target="VkFormat" @link substring="format" target="#format"
+///     VkSamplerYcbcrModelConversion ycbcrModel; // @link substring="VkSamplerYcbcrModelConversion" target="VkSamplerYcbcrModelConversion" @link substring="ycbcrModel" target="#ycbcrModel"
+///     VkSamplerYcbcrRange ycbcrRange; // @link substring="VkSamplerYcbcrRange" target="VkSamplerYcbcrRange" @link substring="ycbcrRange" target="#ycbcrRange"
+///     VkComponentMapping components; // @link substring="VkComponentMapping" target="VkComponentMapping" @link substring="components" target="#components"
+///     VkChromaLocation xChromaOffset; // @link substring="VkChromaLocation" target="VkChromaLocation" @link substring="xChromaOffset" target="#xChromaOffset"
+///     VkChromaLocation yChromaOffset; // @link substring="VkChromaLocation" target="VkChromaLocation" @link substring="yChromaOffset" target="#yChromaOffset"
+///     VkFilter chromaFilter; // @link substring="VkFilter" target="VkFilter" @link substring="chromaFilter" target="#chromaFilter"
+///     VkBool32 forceExplicitReconstruction; // @link substring="forceExplicitReconstruction" target="#forceExplicitReconstruction"
 /// } VkSamplerYcbcrConversionCreateInfo;
 /// }
 ///
@@ -133,11 +133,11 @@ public record VkSamplerYcbcrConversionCreateInfo(@NotNull MemorySegment segment)
         segment.set(LAYOUT$ycbcrRange, OFFSET$ycbcrRange, value);
     }
 
-    public VkComponentMapping components() {
+    public @NotNull VkComponentMapping components() {
         return new VkComponentMapping(segment.asSlice(OFFSET$components, LAYOUT$components));
     }
 
-    public void components(VkComponentMapping value) {
+    public void components(@NotNull VkComponentMapping value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$components, SIZE$components);
     }
 

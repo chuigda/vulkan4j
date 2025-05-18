@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkStencilOpState {
-///     VkStencilOp failOp;
-///     VkStencilOp passOp;
-///     VkStencilOp depthFailOp;
-///     VkCompareOp compareOp;
-///     uint32_t compareMask;
-///     uint32_t writeMask;
-///     uint32_t reference;
+///     VkStencilOp failOp; // @link substring="VkStencilOp" target="VkStencilOp" @link substring="failOp" target="#failOp"
+///     VkStencilOp passOp; // @link substring="VkStencilOp" target="VkStencilOp" @link substring="passOp" target="#passOp"
+///     VkStencilOp depthFailOp; // @link substring="VkStencilOp" target="VkStencilOp" @link substring="depthFailOp" target="#depthFailOp"
+///     VkCompareOp compareOp; // @link substring="VkCompareOp" target="VkCompareOp" @link substring="compareOp" target="#compareOp"
+///     uint32_t compareMask; // @link substring="compareMask" target="#compareMask"
+///     uint32_t writeMask; // @link substring="writeMask" target="#writeMask"
+///     uint32_t reference; // @link substring="reference" target="#reference"
 /// } VkStencilOpState;
 /// }
 ///

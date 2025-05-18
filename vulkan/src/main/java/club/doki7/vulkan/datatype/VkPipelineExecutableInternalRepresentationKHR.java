@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineExecutableInternalRepresentationKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     char name;
-///     char description;
-///     VkBool32 isText;
-///     size_t dataSize;
-///     void* pData; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     char name; // @link substring="name" target="#name"
+///     char description; // @link substring="description" target="#description"
+///     VkBool32 isText; // @link substring="isText" target="#isText"
+///     size_t dataSize; // @link substring="dataSize" target="#dataSize"
+///     void* pData; // optional // @link substring="pData" target="#pData"
 /// } VkPipelineExecutableInternalRepresentationKHR;
 /// }
 ///

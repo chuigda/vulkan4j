@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVertexInputAttributeDescription {
-///     uint32_t location;
-///     uint32_t binding;
-///     VkFormat format;
-///     uint32_t offset;
+///     uint32_t location; // @link substring="location" target="#location"
+///     uint32_t binding; // @link substring="binding" target="#binding"
+///     VkFormat format; // @link substring="VkFormat" target="VkFormat" @link substring="format" target="#format"
+///     uint32_t offset; // @link substring="offset" target="#offset"
 /// } VkVertexInputAttributeDescription;
 /// }
 ///

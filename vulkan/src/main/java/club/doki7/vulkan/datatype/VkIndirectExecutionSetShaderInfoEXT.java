@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkIndirectExecutionSetShaderInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t shaderCount;
-///     VkShaderEXT const* pInitialShaders;
-///     VkIndirectExecutionSetShaderLayoutInfoEXT const* pSetLayoutInfos; // optional
-///     uint32_t maxShaderCount;
-///     uint32_t pushConstantRangeCount; // optional
-///     VkPushConstantRange const* pPushConstantRanges;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t shaderCount; // @link substring="shaderCount" target="#shaderCount"
+///     VkShaderEXT const* pInitialShaders; // @link substring="VkShaderEXT" target="VkShaderEXT" @link substring="pInitialShaders" target="#pInitialShaders"
+///     VkIndirectExecutionSetShaderLayoutInfoEXT const* pSetLayoutInfos; // optional // @link substring="VkIndirectExecutionSetShaderLayoutInfoEXT" target="VkIndirectExecutionSetShaderLayoutInfoEXT" @link substring="pSetLayoutInfos" target="#pSetLayoutInfos"
+///     uint32_t maxShaderCount; // @link substring="maxShaderCount" target="#maxShaderCount"
+///     uint32_t pushConstantRangeCount; // optional // @link substring="pushConstantRangeCount" target="#pushConstantRangeCount"
+///     VkPushConstantRange const* pPushConstantRanges; // @link substring="VkPushConstantRange" target="VkPushConstantRange" @link substring="pPushConstantRanges" target="#pPushConstantRanges"
 /// } VkIndirectExecutionSetShaderInfoEXT;
 /// }
 ///
@@ -115,14 +115,6 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$shaderCount, OFFSET$shaderCount, value);
     }
 
-    public @pointer(target=VkShaderEXT.class) MemorySegment pInitialShadersRaw() {
-        return segment.get(LAYOUT$pInitialShaders, OFFSET$pInitialShaders);
-    }
-
-    public void pInitialShadersRaw(@pointer(target=VkShaderEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pInitialShaders, OFFSET$pInitialShaders, value);
-    }
-
     /// Note: the returned {@link VkShaderEXT.Ptr} does not have correct {@link VkShaderEXT.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkShaderEXT.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -140,12 +132,12 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         pInitialShadersRaw(s);
     }
 
-    public @pointer(target=VkIndirectExecutionSetShaderLayoutInfoEXT.class) MemorySegment pSetLayoutInfosRaw() {
-        return segment.get(LAYOUT$pSetLayoutInfos, OFFSET$pSetLayoutInfos);
+    public @pointer(target=VkShaderEXT.class) MemorySegment pInitialShadersRaw() {
+        return segment.get(LAYOUT$pInitialShaders, OFFSET$pInitialShaders);
     }
 
-    public void pSetLayoutInfosRaw(@pointer(target=VkIndirectExecutionSetShaderLayoutInfoEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pSetLayoutInfos, OFFSET$pSetLayoutInfos, value);
+    public void pInitialShadersRaw(@pointer(target=VkShaderEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pInitialShaders, OFFSET$pInitialShaders, value);
     }
 
     public @Nullable VkIndirectExecutionSetShaderLayoutInfoEXT pSetLayoutInfos() {
@@ -175,6 +167,14 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         return ret;
     }
 
+    public @pointer(target=VkIndirectExecutionSetShaderLayoutInfoEXT.class) MemorySegment pSetLayoutInfosRaw() {
+        return segment.get(LAYOUT$pSetLayoutInfos, OFFSET$pSetLayoutInfos);
+    }
+
+    public void pSetLayoutInfosRaw(@pointer(target=VkIndirectExecutionSetShaderLayoutInfoEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pSetLayoutInfos, OFFSET$pSetLayoutInfos, value);
+    }
+
     public @unsigned int maxShaderCount() {
         return segment.get(LAYOUT$maxShaderCount, OFFSET$maxShaderCount);
     }
@@ -189,14 +189,6 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
 
     public void pushConstantRangeCount(@unsigned int value) {
         segment.set(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount, value);
-    }
-
-    public @pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {
-        return segment.get(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges);
-    }
-
-    public void pPushConstantRangesRaw(@pointer(target=VkPushConstantRange.class) MemorySegment value) {
-        segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
 
     public @Nullable VkPushConstantRange pPushConstantRanges() {
@@ -224,6 +216,14 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
             ret[i] = new VkPushConstantRange(s.asSlice(i * VkPushConstantRange.BYTES, VkPushConstantRange.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {
+        return segment.get(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges);
+    }
+
+    public void pPushConstantRangesRaw(@pointer(target=VkPushConstantRange.class) MemorySegment value) {
+        segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

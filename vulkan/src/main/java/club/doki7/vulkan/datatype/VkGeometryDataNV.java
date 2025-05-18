@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkGeometryDataNV {
-///     VkGeometryTrianglesNV triangles;
-///     VkGeometryAABBNV aabbs;
+///     VkGeometryTrianglesNV triangles; // @link substring="VkGeometryTrianglesNV" target="VkGeometryTrianglesNV" @link substring="triangles" target="#triangles"
+///     VkGeometryAABBNV aabbs; // @link substring="VkGeometryAABBNV" target="VkGeometryAABBNV" @link substring="aabbs" target="#aabbs"
 /// } VkGeometryDataNV;
 /// }
 ///
@@ -67,19 +67,19 @@ public record VkGeometryDataNV(@NotNull MemorySegment segment) implements IPoint
         return ret;
     }
 
-    public VkGeometryTrianglesNV triangles() {
+    public @NotNull VkGeometryTrianglesNV triangles() {
         return new VkGeometryTrianglesNV(segment.asSlice(OFFSET$triangles, LAYOUT$triangles));
     }
 
-    public void triangles(VkGeometryTrianglesNV value) {
+    public void triangles(@NotNull VkGeometryTrianglesNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$triangles, SIZE$triangles);
     }
 
-    public VkGeometryAABBNV aabbs() {
+    public @NotNull VkGeometryAABBNV aabbs() {
         return new VkGeometryAABBNV(segment.asSlice(OFFSET$aabbs, LAYOUT$aabbs));
     }
 
-    public void aabbs(VkGeometryAABBNV value) {
+    public void aabbs(@NotNull VkGeometryAABBNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$aabbs, SIZE$aabbs);
     }
 

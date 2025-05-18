@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceExternalSciSyncFeaturesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 sciSyncFence;
-///     VkBool32 sciSyncSemaphore;
-///     VkBool32 sciSyncImport;
-///     VkBool32 sciSyncExport;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 sciSyncFence; // @link substring="sciSyncFence" target="#sciSyncFence"
+///     VkBool32 sciSyncSemaphore; // @link substring="sciSyncSemaphore" target="#sciSyncSemaphore"
+///     VkBool32 sciSyncImport; // @link substring="sciSyncImport" target="#sciSyncImport"
+///     VkBool32 sciSyncExport; // @link substring="sciSyncExport" target="#sciSyncExport"
 /// } VkPhysicalDeviceExternalSciSyncFeaturesNV;
 /// }
 ///

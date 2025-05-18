@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExportMetalIOSurfaceInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImage image;
-///     IOSurfaceRef ioSurface;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImage image; // @link substring="VkImage" target="VkImage" @link substring="image" target="#image"
+///     IOSurfaceRef ioSurface; // @link substring="ioSurface" target="#ioSurface"
 /// } VkExportMetalIOSurfaceInfoEXT;
 /// }
 ///

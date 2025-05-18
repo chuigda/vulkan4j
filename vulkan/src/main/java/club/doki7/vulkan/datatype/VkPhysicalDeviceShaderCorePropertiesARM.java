@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderCorePropertiesARM {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t pixelRate;
-///     uint32_t texelRate;
-///     uint32_t fmaRate;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t pixelRate; // @link substring="pixelRate" target="#pixelRate"
+///     uint32_t texelRate; // @link substring="texelRate" target="#texelRate"
+///     uint32_t fmaRate; // @link substring="fmaRate" target="#fmaRate"
 /// } VkPhysicalDeviceShaderCorePropertiesARM;
 /// }
 ///

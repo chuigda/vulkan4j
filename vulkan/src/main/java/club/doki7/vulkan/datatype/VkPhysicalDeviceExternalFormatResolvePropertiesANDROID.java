@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceExternalFormatResolvePropertiesANDROID {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 nullColorAttachmentWithExternalFormatResolve;
-///     VkChromaLocation externalFormatResolveChromaOffsetX;
-///     VkChromaLocation externalFormatResolveChromaOffsetY;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 nullColorAttachmentWithExternalFormatResolve; // @link substring="nullColorAttachmentWithExternalFormatResolve" target="#nullColorAttachmentWithExternalFormatResolve"
+///     VkChromaLocation externalFormatResolveChromaOffsetX; // @link substring="VkChromaLocation" target="VkChromaLocation" @link substring="externalFormatResolveChromaOffsetX" target="#externalFormatResolveChromaOffsetX"
+///     VkChromaLocation externalFormatResolveChromaOffsetY; // @link substring="VkChromaLocation" target="VkChromaLocation" @link substring="externalFormatResolveChromaOffsetY" target="#externalFormatResolveChromaOffsetY"
 /// } VkPhysicalDeviceExternalFormatResolvePropertiesANDROID;
 /// }
 ///

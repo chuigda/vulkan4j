@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceGroupDeviceCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t physicalDeviceCount; // optional
-///     VkPhysicalDevice const* pPhysicalDevices;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t physicalDeviceCount; // optional // @link substring="physicalDeviceCount" target="#physicalDeviceCount"
+///     VkPhysicalDevice const* pPhysicalDevices; // @link substring="VkPhysicalDevice" target="VkPhysicalDevice" @link substring="pPhysicalDevices" target="#pPhysicalDevices"
 /// } VkDeviceGroupDeviceCreateInfo;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkDeviceGroupDeviceCreateInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$physicalDeviceCount, OFFSET$physicalDeviceCount, value);
     }
 
-    public @pointer(target=VkPhysicalDevice.class) MemorySegment pPhysicalDevicesRaw() {
-        return segment.get(LAYOUT$pPhysicalDevices, OFFSET$pPhysicalDevices);
-    }
-
-    public void pPhysicalDevicesRaw(@pointer(target=VkPhysicalDevice.class) MemorySegment value) {
-        segment.set(LAYOUT$pPhysicalDevices, OFFSET$pPhysicalDevices, value);
-    }
-
     /// Note: the returned {@link VkPhysicalDevice.Ptr} does not have correct {@link VkPhysicalDevice.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkPhysicalDevice.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -134,6 +126,14 @@ public record VkDeviceGroupDeviceCreateInfo(@NotNull MemorySegment segment) impl
     public void pPhysicalDevices(@Nullable VkPhysicalDevice.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPhysicalDevicesRaw(s);
+    }
+
+    public @pointer(target=VkPhysicalDevice.class) MemorySegment pPhysicalDevicesRaw() {
+        return segment.get(LAYOUT$pPhysicalDevices, OFFSET$pPhysicalDevices);
+    }
+
+    public void pPhysicalDevicesRaw(@pointer(target=VkPhysicalDevice.class) MemorySegment value) {
+        segment.set(LAYOUT$pPhysicalDevices, OFFSET$pPhysicalDevices, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

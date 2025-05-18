@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExternalMemoryProperties {
-///     VkExternalMemoryFeatureFlags externalMemoryFeatures;
-///     VkExternalMemoryHandleTypeFlags exportFromImportedHandleTypes; // optional
-///     VkExternalMemoryHandleTypeFlags compatibleHandleTypes;
+///     VkExternalMemoryFeatureFlags externalMemoryFeatures; // @link substring="VkExternalMemoryFeatureFlags" target="VkExternalMemoryFeatureFlags" @link substring="externalMemoryFeatures" target="#externalMemoryFeatures"
+///     VkExternalMemoryHandleTypeFlags exportFromImportedHandleTypes; // optional // @link substring="VkExternalMemoryHandleTypeFlags" target="VkExternalMemoryHandleTypeFlags" @link substring="exportFromImportedHandleTypes" target="#exportFromImportedHandleTypes"
+///     VkExternalMemoryHandleTypeFlags compatibleHandleTypes; // @link substring="VkExternalMemoryHandleTypeFlags" target="VkExternalMemoryHandleTypeFlags" @link substring="compatibleHandleTypes" target="#compatibleHandleTypes"
 /// } VkExternalMemoryProperties;
 /// }
 ///

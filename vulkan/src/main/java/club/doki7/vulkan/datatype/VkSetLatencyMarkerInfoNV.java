@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSetLatencyMarkerInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint64_t presentID;
-///     VkLatencyMarkerNV marker;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint64_t presentID; // @link substring="presentID" target="#presentID"
+///     VkLatencyMarkerNV marker; // @link substring="VkLatencyMarkerNV" target="VkLatencyMarkerNV" @link substring="marker" target="#marker"
 /// } VkSetLatencyMarkerInfoNV;
 /// }
 ///

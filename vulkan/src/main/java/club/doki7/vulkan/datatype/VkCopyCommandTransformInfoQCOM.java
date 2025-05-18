@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCopyCommandTransformInfoQCOM {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkSurfaceTransformFlagsKHR transform;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSurfaceTransformFlagsKHR transform; // @link substring="VkSurfaceTransformFlagsKHR" target="VkSurfaceTransformFlagsKHR" @link substring="transform" target="#transform"
 /// } VkCopyCommandTransformInfoQCOM;
 /// }
 ///

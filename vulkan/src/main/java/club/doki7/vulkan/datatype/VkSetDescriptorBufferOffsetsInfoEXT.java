@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSetDescriptorBufferOffsetsInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkShaderStageFlags stageFlags;
-///     VkPipelineLayout layout; // optional
-///     uint32_t firstSet; // optional
-///     uint32_t setCount;
-///     uint32_t const* pBufferIndices;
-///     VkDeviceSize const* pOffsets;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkShaderStageFlags stageFlags; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="stageFlags" target="#stageFlags"
+///     VkPipelineLayout layout; // optional // @link substring="VkPipelineLayout" target="VkPipelineLayout" @link substring="layout" target="#layout"
+///     uint32_t firstSet; // optional // @link substring="firstSet" target="#firstSet"
+///     uint32_t setCount; // @link substring="setCount" target="#setCount"
+///     uint32_t const* pBufferIndices; // @link substring="pBufferIndices" target="#pBufferIndices"
+///     VkDeviceSize const* pOffsets; // @link substring="pOffsets" target="#pOffsets"
 /// } VkSetDescriptorBufferOffsetsInfoEXT;
 /// }
 ///
@@ -143,14 +143,6 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$setCount, OFFSET$setCount, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pBufferIndicesRaw() {
-        return segment.get(LAYOUT$pBufferIndices, OFFSET$pBufferIndices);
-    }
-
-    public void pBufferIndicesRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pBufferIndices, OFFSET$pBufferIndices, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -168,12 +160,12 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         pBufferIndicesRaw(s);
     }
 
-    public @pointer(comment="long*") MemorySegment pOffsetsRaw() {
-        return segment.get(LAYOUT$pOffsets, OFFSET$pOffsets);
+    public @pointer(comment="int*") MemorySegment pBufferIndicesRaw() {
+        return segment.get(LAYOUT$pBufferIndices, OFFSET$pBufferIndices);
     }
 
-    public void pOffsetsRaw(@pointer(comment="long*") MemorySegment value) {
-        segment.set(LAYOUT$pOffsets, OFFSET$pOffsets, value);
+    public void pBufferIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pBufferIndices, OFFSET$pBufferIndices, value);
     }
 
     /// Note: the returned {@link LongPtr} does not have correct
@@ -191,6 +183,14 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
     public void pOffsets(@Nullable @unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pOffsetsRaw(s);
+    }
+
+    public @pointer(comment="long*") MemorySegment pOffsetsRaw() {
+        return segment.get(LAYOUT$pOffsets, OFFSET$pOffsets);
+    }
+
+    public void pOffsetsRaw(@pointer(comment="long*") MemorySegment value) {
+        segment.set(LAYOUT$pOffsets, OFFSET$pOffsets, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

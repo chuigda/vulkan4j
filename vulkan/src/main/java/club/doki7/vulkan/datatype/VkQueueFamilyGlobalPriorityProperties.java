@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkQueueFamilyGlobalPriorityProperties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t priorityCount;
-///     VkQueueGlobalPriority priorities;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t priorityCount; // @link substring="priorityCount" target="#priorityCount"
+///     VkQueueGlobalPriority priorities; // @link substring="VkQueueGlobalPriority" target="VkQueueGlobalPriority" @link substring="priorities" target="#priorities"
 /// } VkQueueFamilyGlobalPriorityProperties;
 /// }
 ///

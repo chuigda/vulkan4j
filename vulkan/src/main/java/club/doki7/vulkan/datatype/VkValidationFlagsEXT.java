@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkValidationFlagsEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t disabledValidationCheckCount;
-///     VkValidationCheckEXT const* pDisabledValidationChecks;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t disabledValidationCheckCount; // @link substring="disabledValidationCheckCount" target="#disabledValidationCheckCount"
+///     VkValidationCheckEXT const* pDisabledValidationChecks; // @link substring="VkValidationCheckEXT" target="VkValidationCheckEXT" @link substring="pDisabledValidationChecks" target="#pDisabledValidationChecks"
 /// } VkValidationFlagsEXT;
 /// }
 ///
@@ -111,13 +111,6 @@ public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$disabledValidationCheckCount, OFFSET$disabledValidationCheckCount, value);
     }
 
-    public @pointer(target=VkValidationCheckEXT.class) MemorySegment pDisabledValidationChecksRaw() {
-        return segment.get(LAYOUT$pDisabledValidationChecks, OFFSET$pDisabledValidationChecks);
-    }
-
-    public void pDisabledValidationChecksRaw(@pointer(target=VkValidationCheckEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pDisabledValidationChecks, OFFSET$pDisabledValidationChecks, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -134,6 +127,14 @@ public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IP
     public void pDisabledValidationChecks(@Nullable @enumtype(VkValidationCheckEXT.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDisabledValidationChecksRaw(s);
+    }
+
+    public @pointer(target=VkValidationCheckEXT.class) MemorySegment pDisabledValidationChecksRaw() {
+        return segment.get(LAYOUT$pDisabledValidationChecks, OFFSET$pDisabledValidationChecks);
+    }
+
+    public void pDisabledValidationChecksRaw(@pointer(target=VkValidationCheckEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pDisabledValidationChecks, OFFSET$pDisabledValidationChecks, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

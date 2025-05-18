@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImportAndroidHardwareBufferInfoANDROID {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     AHardwareBuffer* buffer;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     AHardwareBuffer* buffer; // @link substring="buffer" target="#buffer"
 /// } VkImportAndroidHardwareBufferInfoANDROID;
 /// }
 ///
@@ -102,14 +102,6 @@ public record VkImportAndroidHardwareBufferInfoANDROID(@NotNull MemorySegment se
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="void**") MemorySegment bufferRaw() {
-        return segment.get(LAYOUT$buffer, OFFSET$buffer);
-    }
-
-    public void bufferRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$buffer, OFFSET$buffer, value);
-    }
-
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
     /// to user to track the size of the buffer, and use {@link PointerPtr#reinterpret} to set the size before
     /// actually reading from or writing to the buffer.
@@ -124,6 +116,14 @@ public record VkImportAndroidHardwareBufferInfoANDROID(@NotNull MemorySegment se
     public void buffer(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         bufferRaw(s);
+    }
+
+    public @pointer(comment="void**") MemorySegment bufferRaw() {
+        return segment.get(LAYOUT$buffer, OFFSET$buffer);
+    }
+
+    public void bufferRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$buffer, OFFSET$buffer, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

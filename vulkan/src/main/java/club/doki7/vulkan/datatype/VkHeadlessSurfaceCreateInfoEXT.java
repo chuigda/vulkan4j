@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkHeadlessSurfaceCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkHeadlessSurfaceCreateFlagsEXT flags; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkHeadlessSurfaceCreateFlagsEXT flags; // optional // @link substring="VkHeadlessSurfaceCreateFlagsEXT" target="VkHeadlessSurfaceCreateFlagsEXT" @link substring="flags" target="#flags"
 /// } VkHeadlessSurfaceCreateInfoEXT;
 /// }
 ///

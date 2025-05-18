@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeH264RateControlInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkVideoEncodeH264RateControlFlagsKHR flags; // optional
-///     uint32_t gopFrameCount;
-///     uint32_t idrPeriod;
-///     uint32_t consecutiveBFrameCount;
-///     uint32_t temporalLayerCount;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkVideoEncodeH264RateControlFlagsKHR flags; // optional // @link substring="VkVideoEncodeH264RateControlFlagsKHR" target="VkVideoEncodeH264RateControlFlagsKHR" @link substring="flags" target="#flags"
+///     uint32_t gopFrameCount; // @link substring="gopFrameCount" target="#gopFrameCount"
+///     uint32_t idrPeriod; // @link substring="idrPeriod" target="#idrPeriod"
+///     uint32_t consecutiveBFrameCount; // @link substring="consecutiveBFrameCount" target="#consecutiveBFrameCount"
+///     uint32_t temporalLayerCount; // @link substring="temporalLayerCount" target="#temporalLayerCount"
 /// } VkVideoEncodeH264RateControlInfoKHR;
 /// }
 ///

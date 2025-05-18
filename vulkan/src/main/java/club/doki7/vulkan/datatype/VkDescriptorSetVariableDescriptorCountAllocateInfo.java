@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDescriptorSetVariableDescriptorCountAllocateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t descriptorSetCount; // optional
-///     uint32_t const* pDescriptorCounts;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t descriptorSetCount; // optional // @link substring="descriptorSetCount" target="#descriptorSetCount"
+///     uint32_t const* pDescriptorCounts; // @link substring="pDescriptorCounts" target="#pDescriptorCounts"
 /// } VkDescriptorSetVariableDescriptorCountAllocateInfo;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
         segment.set(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pDescriptorCountsRaw() {
-        return segment.get(LAYOUT$pDescriptorCounts, OFFSET$pDescriptorCounts);
-    }
-
-    public void pDescriptorCountsRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pDescriptorCounts, OFFSET$pDescriptorCounts, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -134,6 +126,14 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
     public void pDescriptorCounts(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorCountsRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pDescriptorCountsRaw() {
+        return segment.get(LAYOUT$pDescriptorCounts, OFFSET$pDescriptorCounts);
+    }
+
+    public void pDescriptorCountsRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pDescriptorCounts, OFFSET$pDescriptorCounts, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

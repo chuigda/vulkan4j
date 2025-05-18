@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExportMetalSharedEventInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkSemaphore semaphore; // optional
-///     VkEvent event; // optional
-///     MTLSharedEvent_id mtlSharedEvent;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSemaphore semaphore; // optional // @link substring="VkSemaphore" target="VkSemaphore" @link substring="semaphore" target="#semaphore"
+///     VkEvent event; // optional // @link substring="VkEvent" target="VkEvent" @link substring="event" target="#event"
+///     MTLSharedEvent_id mtlSharedEvent; // @link substring="mtlSharedEvent" target="#mtlSharedEvent"
 /// } VkExportMetalSharedEventInfoEXT;
 /// }
 ///

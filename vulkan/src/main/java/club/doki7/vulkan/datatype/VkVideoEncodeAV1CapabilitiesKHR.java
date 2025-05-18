@@ -20,32 +20,32 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeAV1CapabilitiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkVideoEncodeAV1CapabilityFlagsKHR flags;
-///     StdVideoAV1Level maxLevel;
-///     VkExtent2D codedPictureAlignment;
-///     VkExtent2D maxTiles;
-///     VkExtent2D minTileSize;
-///     VkExtent2D maxTileSize;
-///     VkVideoEncodeAV1SuperblockSizeFlagsKHR superblockSizes;
-///     uint32_t maxSingleReferenceCount;
-///     uint32_t singleReferenceNameMask;
-///     uint32_t maxUnidirectionalCompoundReferenceCount;
-///     uint32_t maxUnidirectionalCompoundGroup1ReferenceCount;
-///     uint32_t unidirectionalCompoundReferenceNameMask;
-///     uint32_t maxBidirectionalCompoundReferenceCount;
-///     uint32_t maxBidirectionalCompoundGroup1ReferenceCount;
-///     uint32_t maxBidirectionalCompoundGroup2ReferenceCount;
-///     uint32_t bidirectionalCompoundReferenceNameMask;
-///     uint32_t maxTemporalLayerCount;
-///     uint32_t maxSpatialLayerCount;
-///     uint32_t maxOperatingPoints;
-///     uint32_t minQIndex;
-///     uint32_t maxQIndex;
-///     VkBool32 prefersGopRemainingFrames;
-///     VkBool32 requiresGopRemainingFrames;
-///     VkVideoEncodeAV1StdFlagsKHR stdSyntaxFlags;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkVideoEncodeAV1CapabilityFlagsKHR flags; // @link substring="VkVideoEncodeAV1CapabilityFlagsKHR" target="VkVideoEncodeAV1CapabilityFlagsKHR" @link substring="flags" target="#flags"
+///     StdVideoAV1Level maxLevel; // @link substring="StdVideoAV1Level" target="StdVideoAV1Level" @link substring="maxLevel" target="#maxLevel"
+///     VkExtent2D codedPictureAlignment; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="codedPictureAlignment" target="#codedPictureAlignment"
+///     VkExtent2D maxTiles; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxTiles" target="#maxTiles"
+///     VkExtent2D minTileSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="minTileSize" target="#minTileSize"
+///     VkExtent2D maxTileSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxTileSize" target="#maxTileSize"
+///     VkVideoEncodeAV1SuperblockSizeFlagsKHR superblockSizes; // @link substring="VkVideoEncodeAV1SuperblockSizeFlagsKHR" target="VkVideoEncodeAV1SuperblockSizeFlagsKHR" @link substring="superblockSizes" target="#superblockSizes"
+///     uint32_t maxSingleReferenceCount; // @link substring="maxSingleReferenceCount" target="#maxSingleReferenceCount"
+///     uint32_t singleReferenceNameMask; // @link substring="singleReferenceNameMask" target="#singleReferenceNameMask"
+///     uint32_t maxUnidirectionalCompoundReferenceCount; // @link substring="maxUnidirectionalCompoundReferenceCount" target="#maxUnidirectionalCompoundReferenceCount"
+///     uint32_t maxUnidirectionalCompoundGroup1ReferenceCount; // @link substring="maxUnidirectionalCompoundGroup1ReferenceCount" target="#maxUnidirectionalCompoundGroup1ReferenceCount"
+///     uint32_t unidirectionalCompoundReferenceNameMask; // @link substring="unidirectionalCompoundReferenceNameMask" target="#unidirectionalCompoundReferenceNameMask"
+///     uint32_t maxBidirectionalCompoundReferenceCount; // @link substring="maxBidirectionalCompoundReferenceCount" target="#maxBidirectionalCompoundReferenceCount"
+///     uint32_t maxBidirectionalCompoundGroup1ReferenceCount; // @link substring="maxBidirectionalCompoundGroup1ReferenceCount" target="#maxBidirectionalCompoundGroup1ReferenceCount"
+///     uint32_t maxBidirectionalCompoundGroup2ReferenceCount; // @link substring="maxBidirectionalCompoundGroup2ReferenceCount" target="#maxBidirectionalCompoundGroup2ReferenceCount"
+///     uint32_t bidirectionalCompoundReferenceNameMask; // @link substring="bidirectionalCompoundReferenceNameMask" target="#bidirectionalCompoundReferenceNameMask"
+///     uint32_t maxTemporalLayerCount; // @link substring="maxTemporalLayerCount" target="#maxTemporalLayerCount"
+///     uint32_t maxSpatialLayerCount; // @link substring="maxSpatialLayerCount" target="#maxSpatialLayerCount"
+///     uint32_t maxOperatingPoints; // @link substring="maxOperatingPoints" target="#maxOperatingPoints"
+///     uint32_t minQIndex; // @link substring="minQIndex" target="#minQIndex"
+///     uint32_t maxQIndex; // @link substring="maxQIndex" target="#maxQIndex"
+///     VkBool32 prefersGopRemainingFrames; // @link substring="prefersGopRemainingFrames" target="#prefersGopRemainingFrames"
+///     VkBool32 requiresGopRemainingFrames; // @link substring="requiresGopRemainingFrames" target="#requiresGopRemainingFrames"
+///     VkVideoEncodeAV1StdFlagsKHR stdSyntaxFlags; // @link substring="VkVideoEncodeAV1StdFlagsKHR" target="VkVideoEncodeAV1StdFlagsKHR" @link substring="stdSyntaxFlags" target="#stdSyntaxFlags"
 /// } VkVideoEncodeAV1CapabilitiesKHR;
 /// }
 ///
@@ -141,35 +141,35 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$maxLevel, OFFSET$maxLevel, value);
     }
 
-    public VkExtent2D codedPictureAlignment() {
+    public @NotNull VkExtent2D codedPictureAlignment() {
         return new VkExtent2D(segment.asSlice(OFFSET$codedPictureAlignment, LAYOUT$codedPictureAlignment));
     }
 
-    public void codedPictureAlignment(VkExtent2D value) {
+    public void codedPictureAlignment(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$codedPictureAlignment, SIZE$codedPictureAlignment);
     }
 
-    public VkExtent2D maxTiles() {
+    public @NotNull VkExtent2D maxTiles() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxTiles, LAYOUT$maxTiles));
     }
 
-    public void maxTiles(VkExtent2D value) {
+    public void maxTiles(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTiles, SIZE$maxTiles);
     }
 
-    public VkExtent2D minTileSize() {
+    public @NotNull VkExtent2D minTileSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$minTileSize, LAYOUT$minTileSize));
     }
 
-    public void minTileSize(VkExtent2D value) {
+    public void minTileSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minTileSize, SIZE$minTileSize);
     }
 
-    public VkExtent2D maxTileSize() {
+    public @NotNull VkExtent2D maxTileSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxTileSize, LAYOUT$maxTileSize));
     }
 
-    public void maxTileSize(VkExtent2D value) {
+    public void maxTileSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTileSize, SIZE$maxTileSize);
     }
 

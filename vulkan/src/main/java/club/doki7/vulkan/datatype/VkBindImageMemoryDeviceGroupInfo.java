@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBindImageMemoryDeviceGroupInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t deviceIndexCount; // optional
-///     uint32_t const* pDeviceIndices;
-///     uint32_t splitInstanceBindRegionCount; // optional
-///     VkRect2D const* pSplitInstanceBindRegions;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t deviceIndexCount; // optional // @link substring="deviceIndexCount" target="#deviceIndexCount"
+///     uint32_t const* pDeviceIndices; // @link substring="pDeviceIndices" target="#pDeviceIndices"
+///     uint32_t splitInstanceBindRegionCount; // optional // @link substring="splitInstanceBindRegionCount" target="#splitInstanceBindRegionCount"
+///     VkRect2D const* pSplitInstanceBindRegions; // @link substring="VkRect2D" target="VkRect2D" @link substring="pSplitInstanceBindRegions" target="#pSplitInstanceBindRegions"
 /// } VkBindImageMemoryDeviceGroupInfo;
 /// }
 ///
@@ -113,14 +113,6 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$deviceIndexCount, OFFSET$deviceIndexCount, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pDeviceIndicesRaw() {
-        return segment.get(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices);
-    }
-
-    public void pDeviceIndicesRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -138,20 +130,20 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
         pDeviceIndicesRaw(s);
     }
 
+    public @pointer(comment="int*") MemorySegment pDeviceIndicesRaw() {
+        return segment.get(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices);
+    }
+
+    public void pDeviceIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices, value);
+    }
+
     public @unsigned int splitInstanceBindRegionCount() {
         return segment.get(LAYOUT$splitInstanceBindRegionCount, OFFSET$splitInstanceBindRegionCount);
     }
 
     public void splitInstanceBindRegionCount(@unsigned int value) {
         segment.set(LAYOUT$splitInstanceBindRegionCount, OFFSET$splitInstanceBindRegionCount, value);
-    }
-
-    public @pointer(target=VkRect2D.class) MemorySegment pSplitInstanceBindRegionsRaw() {
-        return segment.get(LAYOUT$pSplitInstanceBindRegions, OFFSET$pSplitInstanceBindRegions);
-    }
-
-    public void pSplitInstanceBindRegionsRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
-        segment.set(LAYOUT$pSplitInstanceBindRegions, OFFSET$pSplitInstanceBindRegions, value);
     }
 
     public @Nullable VkRect2D pSplitInstanceBindRegions() {
@@ -179,6 +171,14 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
             ret[i] = new VkRect2D(s.asSlice(i * VkRect2D.BYTES, VkRect2D.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkRect2D.class) MemorySegment pSplitInstanceBindRegionsRaw() {
+        return segment.get(LAYOUT$pSplitInstanceBindRegions, OFFSET$pSplitInstanceBindRegions);
+    }
+
+    public void pSplitInstanceBindRegionsRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
+        segment.set(LAYOUT$pSplitInstanceBindRegions, OFFSET$pSplitInstanceBindRegions, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

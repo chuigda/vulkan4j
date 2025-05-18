@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineViewportDepthClipControlCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBool32 negativeOneToOne;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 negativeOneToOne; // @link substring="negativeOneToOne" target="#negativeOneToOne"
 /// } VkPipelineViewportDepthClipControlCreateInfoEXT;
 /// }
 ///

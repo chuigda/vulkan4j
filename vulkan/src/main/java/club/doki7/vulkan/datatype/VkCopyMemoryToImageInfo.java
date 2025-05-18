@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCopyMemoryToImageInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkHostImageCopyFlags flags; // optional
-///     VkImage dstImage;
-///     VkImageLayout dstImageLayout;
-///     uint32_t regionCount;
-///     VkMemoryToImageCopy const* pRegions;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkHostImageCopyFlags flags; // optional // @link substring="VkHostImageCopyFlags" target="VkHostImageCopyFlags" @link substring="flags" target="#flags"
+///     VkImage dstImage; // @link substring="VkImage" target="VkImage" @link substring="dstImage" target="#dstImage"
+///     VkImageLayout dstImageLayout; // @link substring="VkImageLayout" target="VkImageLayout" @link substring="dstImageLayout" target="#dstImageLayout"
+///     uint32_t regionCount; // @link substring="regionCount" target="#regionCount"
+///     VkMemoryToImageCopy const* pRegions; // @link substring="VkMemoryToImageCopy" target="VkMemoryToImageCopy" @link substring="pRegions" target="#pRegions"
 /// } VkCopyMemoryToImageInfo;
 /// }
 ///
@@ -142,14 +142,6 @@ public record VkCopyMemoryToImageInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
     }
 
-    public @pointer(target=VkMemoryToImageCopy.class) MemorySegment pRegionsRaw() {
-        return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
-    }
-
-    public void pRegionsRaw(@pointer(target=VkMemoryToImageCopy.class) MemorySegment value) {
-        segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
-    }
-
     public @Nullable VkMemoryToImageCopy pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -175,6 +167,14 @@ public record VkCopyMemoryToImageInfo(@NotNull MemorySegment segment) implements
             ret[i] = new VkMemoryToImageCopy(s.asSlice(i * VkMemoryToImageCopy.BYTES, VkMemoryToImageCopy.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkMemoryToImageCopy.class) MemorySegment pRegionsRaw() {
+        return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
+    }
+
+    public void pRegionsRaw(@pointer(target=VkMemoryToImageCopy.class) MemorySegment value) {
+        segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

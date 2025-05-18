@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceExtendedDynamicState2FeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 extendedDynamicState2;
-///     VkBool32 extendedDynamicState2LogicOp;
-///     VkBool32 extendedDynamicState2PatchControlPoints;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 extendedDynamicState2; // @link substring="extendedDynamicState2" target="#extendedDynamicState2"
+///     VkBool32 extendedDynamicState2LogicOp; // @link substring="extendedDynamicState2LogicOp" target="#extendedDynamicState2LogicOp"
+///     VkBool32 extendedDynamicState2PatchControlPoints; // @link substring="extendedDynamicState2PatchControlPoints" target="#extendedDynamicState2PatchControlPoints"
 /// } VkPhysicalDeviceExtendedDynamicState2FeaturesEXT;
 /// }
 ///

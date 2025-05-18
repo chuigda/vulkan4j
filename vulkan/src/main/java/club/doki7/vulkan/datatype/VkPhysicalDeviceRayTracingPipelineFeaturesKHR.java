@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceRayTracingPipelineFeaturesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 rayTracingPipeline;
-///     VkBool32 rayTracingPipelineShaderGroupHandleCaptureReplay;
-///     VkBool32 rayTracingPipelineShaderGroupHandleCaptureReplayMixed;
-///     VkBool32 rayTracingPipelineTraceRaysIndirect;
-///     VkBool32 rayTraversalPrimitiveCulling;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 rayTracingPipeline; // @link substring="rayTracingPipeline" target="#rayTracingPipeline"
+///     VkBool32 rayTracingPipelineShaderGroupHandleCaptureReplay; // @link substring="rayTracingPipelineShaderGroupHandleCaptureReplay" target="#rayTracingPipelineShaderGroupHandleCaptureReplay"
+///     VkBool32 rayTracingPipelineShaderGroupHandleCaptureReplayMixed; // @link substring="rayTracingPipelineShaderGroupHandleCaptureReplayMixed" target="#rayTracingPipelineShaderGroupHandleCaptureReplayMixed"
+///     VkBool32 rayTracingPipelineTraceRaysIndirect; // @link substring="rayTracingPipelineTraceRaysIndirect" target="#rayTracingPipelineTraceRaysIndirect"
+///     VkBool32 rayTraversalPrimitiveCulling; // @link substring="rayTraversalPrimitiveCulling" target="#rayTraversalPrimitiveCulling"
 /// } VkPhysicalDeviceRayTracingPipelineFeaturesKHR;
 /// }
 ///

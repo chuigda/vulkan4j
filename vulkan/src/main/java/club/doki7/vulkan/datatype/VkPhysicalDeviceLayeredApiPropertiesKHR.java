@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceLayeredApiPropertiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t vendorID;
-///     uint32_t deviceID;
-///     VkPhysicalDeviceLayeredApiKHR layeredAPI;
-///     char deviceName;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t vendorID; // @link substring="vendorID" target="#vendorID"
+///     uint32_t deviceID; // @link substring="deviceID" target="#deviceID"
+///     VkPhysicalDeviceLayeredApiKHR layeredAPI; // @link substring="VkPhysicalDeviceLayeredApiKHR" target="VkPhysicalDeviceLayeredApiKHR" @link substring="layeredAPI" target="#layeredAPI"
+///     char deviceName; // @link substring="deviceName" target="#deviceName"
 /// } VkPhysicalDeviceLayeredApiPropertiesKHR;
 /// }
 ///

@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMaintenance7PropertiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 robustFragmentShadingRateAttachmentAccess;
-///     VkBool32 separateDepthStencilAttachmentAccess;
-///     uint32_t maxDescriptorSetTotalUniformBuffersDynamic;
-///     uint32_t maxDescriptorSetTotalStorageBuffersDynamic;
-///     uint32_t maxDescriptorSetTotalBuffersDynamic;
-///     uint32_t maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic;
-///     uint32_t maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic;
-///     uint32_t maxDescriptorSetUpdateAfterBindTotalBuffersDynamic;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 robustFragmentShadingRateAttachmentAccess; // @link substring="robustFragmentShadingRateAttachmentAccess" target="#robustFragmentShadingRateAttachmentAccess"
+///     VkBool32 separateDepthStencilAttachmentAccess; // @link substring="separateDepthStencilAttachmentAccess" target="#separateDepthStencilAttachmentAccess"
+///     uint32_t maxDescriptorSetTotalUniformBuffersDynamic; // @link substring="maxDescriptorSetTotalUniformBuffersDynamic" target="#maxDescriptorSetTotalUniformBuffersDynamic"
+///     uint32_t maxDescriptorSetTotalStorageBuffersDynamic; // @link substring="maxDescriptorSetTotalStorageBuffersDynamic" target="#maxDescriptorSetTotalStorageBuffersDynamic"
+///     uint32_t maxDescriptorSetTotalBuffersDynamic; // @link substring="maxDescriptorSetTotalBuffersDynamic" target="#maxDescriptorSetTotalBuffersDynamic"
+///     uint32_t maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic; // @link substring="maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic" target="#maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic"
+///     uint32_t maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic; // @link substring="maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic" target="#maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic"
+///     uint32_t maxDescriptorSetUpdateAfterBindTotalBuffersDynamic; // @link substring="maxDescriptorSetUpdateAfterBindTotalBuffersDynamic" target="#maxDescriptorSetUpdateAfterBindTotalBuffersDynamic"
 /// } VkPhysicalDeviceMaintenance7PropertiesKHR;
 /// }
 ///

@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBufferCollectionConstraintsInfoFUCHSIA {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t minBufferCount;
-///     uint32_t maxBufferCount;
-///     uint32_t minBufferCountForCamping;
-///     uint32_t minBufferCountForDedicatedSlack;
-///     uint32_t minBufferCountForSharedSlack;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t minBufferCount; // @link substring="minBufferCount" target="#minBufferCount"
+///     uint32_t maxBufferCount; // @link substring="maxBufferCount" target="#maxBufferCount"
+///     uint32_t minBufferCountForCamping; // @link substring="minBufferCountForCamping" target="#minBufferCountForCamping"
+///     uint32_t minBufferCountForDedicatedSlack; // @link substring="minBufferCountForDedicatedSlack" target="#minBufferCountForDedicatedSlack"
+///     uint32_t minBufferCountForSharedSlack; // @link substring="minBufferCountForSharedSlack" target="#minBufferCountForSharedSlack"
 /// } VkBufferCollectionConstraintsInfoFUCHSIA;
 /// }
 ///

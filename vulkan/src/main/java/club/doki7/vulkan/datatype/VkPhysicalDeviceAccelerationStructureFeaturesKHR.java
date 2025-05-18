@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceAccelerationStructureFeaturesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 accelerationStructure;
-///     VkBool32 accelerationStructureCaptureReplay;
-///     VkBool32 accelerationStructureIndirectBuild;
-///     VkBool32 accelerationStructureHostCommands;
-///     VkBool32 descriptorBindingAccelerationStructureUpdateAfterBind;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 accelerationStructure; // @link substring="accelerationStructure" target="#accelerationStructure"
+///     VkBool32 accelerationStructureCaptureReplay; // @link substring="accelerationStructureCaptureReplay" target="#accelerationStructureCaptureReplay"
+///     VkBool32 accelerationStructureIndirectBuild; // @link substring="accelerationStructureIndirectBuild" target="#accelerationStructureIndirectBuild"
+///     VkBool32 accelerationStructureHostCommands; // @link substring="accelerationStructureHostCommands" target="#accelerationStructureHostCommands"
+///     VkBool32 descriptorBindingAccelerationStructureUpdateAfterBind; // @link substring="descriptorBindingAccelerationStructureUpdateAfterBind" target="#descriptorBindingAccelerationStructureUpdateAfterBind"
 /// } VkPhysicalDeviceAccelerationStructureFeaturesKHR;
 /// }
 ///

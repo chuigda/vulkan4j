@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMultisampledRenderToSingleSampledInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBool32 multisampledRenderToSingleSampledEnable;
-///     VkSampleCountFlags rasterizationSamples;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 multisampledRenderToSingleSampledEnable; // @link substring="multisampledRenderToSingleSampledEnable" target="#multisampledRenderToSingleSampledEnable"
+///     VkSampleCountFlags rasterizationSamples; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="rasterizationSamples" target="#rasterizationSamples"
 /// } VkMultisampledRenderToSingleSampledInfoEXT;
 /// }
 ///

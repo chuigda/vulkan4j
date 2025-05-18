@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCoarseSampleLocationNV {
-///     uint32_t pixelX;
-///     uint32_t pixelY;
-///     uint32_t sample;
+///     uint32_t pixelX; // @link substring="pixelX" target="#pixelX"
+///     uint32_t pixelY; // @link substring="pixelY" target="#pixelY"
+///     uint32_t sample; // @link substring="sample" target="#sample"
 /// } VkCoarseSampleLocationNV;
 /// }
 ///

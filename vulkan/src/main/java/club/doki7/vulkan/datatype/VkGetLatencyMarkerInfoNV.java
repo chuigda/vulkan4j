@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkGetLatencyMarkerInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t timingCount; // optional
-///     VkLatencyTimingsFrameReportNV* pTimings; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t timingCount; // optional // @link substring="timingCount" target="#timingCount"
+///     VkLatencyTimingsFrameReportNV* pTimings; // optional // @link substring="VkLatencyTimingsFrameReportNV" target="VkLatencyTimingsFrameReportNV" @link substring="pTimings" target="#pTimings"
 /// } VkGetLatencyMarkerInfoNV;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkGetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$timingCount, OFFSET$timingCount, value);
     }
 
-    public @pointer(target=VkLatencyTimingsFrameReportNV.class) MemorySegment pTimingsRaw() {
-        return segment.get(LAYOUT$pTimings, OFFSET$pTimings);
-    }
-
-    public void pTimingsRaw(@pointer(target=VkLatencyTimingsFrameReportNV.class) MemorySegment value) {
-        segment.set(LAYOUT$pTimings, OFFSET$pTimings, value);
-    }
-
     public @Nullable VkLatencyTimingsFrameReportNV pTimings() {
         MemorySegment s = pTimingsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkGetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
             ret[i] = new VkLatencyTimingsFrameReportNV(s.asSlice(i * VkLatencyTimingsFrameReportNV.BYTES, VkLatencyTimingsFrameReportNV.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkLatencyTimingsFrameReportNV.class) MemorySegment pTimingsRaw() {
+        return segment.get(LAYOUT$pTimings, OFFSET$pTimings);
+    }
+
+    public void pTimingsRaw(@pointer(target=VkLatencyTimingsFrameReportNV.class) MemorySegment value) {
+        segment.set(LAYOUT$pTimings, OFFSET$pTimings, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

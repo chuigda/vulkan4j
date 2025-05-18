@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageStencilUsageCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImageUsageFlags stencilUsage;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageUsageFlags stencilUsage; // @link substring="VkImageUsageFlags" target="VkImageUsageFlags" @link substring="stencilUsage" target="#stencilUsage"
 /// } VkImageStencilUsageCreateInfo;
 /// }
 ///

@@ -20,18 +20,18 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCooperativeMatrixFlexibleDimensionsPropertiesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t MGranularity;
-///     uint32_t NGranularity;
-///     uint32_t KGranularity;
-///     VkComponentTypeKHR AType;
-///     VkComponentTypeKHR BType;
-///     VkComponentTypeKHR CType;
-///     VkComponentTypeKHR ResultType;
-///     VkBool32 saturatingAccumulation;
-///     VkScopeKHR scope;
-///     uint32_t workgroupInvocations;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t MGranularity; // @link substring="MGranularity" target="#MGranularity"
+///     uint32_t NGranularity; // @link substring="NGranularity" target="#NGranularity"
+///     uint32_t KGranularity; // @link substring="KGranularity" target="#KGranularity"
+///     VkComponentTypeKHR AType; // @link substring="VkComponentTypeKHR" target="VkComponentTypeKHR" @link substring="AType" target="#AType"
+///     VkComponentTypeKHR BType; // @link substring="VkComponentTypeKHR" target="VkComponentTypeKHR" @link substring="BType" target="#BType"
+///     VkComponentTypeKHR CType; // @link substring="VkComponentTypeKHR" target="VkComponentTypeKHR" @link substring="CType" target="#CType"
+///     VkComponentTypeKHR ResultType; // @link substring="VkComponentTypeKHR" target="VkComponentTypeKHR" @link substring="ResultType" target="#ResultType"
+///     VkBool32 saturatingAccumulation; // @link substring="saturatingAccumulation" target="#saturatingAccumulation"
+///     VkScopeKHR scope; // @link substring="VkScopeKHR" target="VkScopeKHR" @link substring="scope" target="#scope"
+///     uint32_t workgroupInvocations; // @link substring="workgroupInvocations" target="#workgroupInvocations"
 /// } VkCooperativeMatrixFlexibleDimensionsPropertiesNV;
 /// }
 ///

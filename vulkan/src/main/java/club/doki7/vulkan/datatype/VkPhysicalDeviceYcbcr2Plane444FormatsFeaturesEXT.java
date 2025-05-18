@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 ycbcr2plane444Formats;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 ycbcr2plane444Formats; // @link substring="ycbcr2plane444Formats" target="#ycbcr2plane444Formats"
 /// } VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT;
 /// }
 ///

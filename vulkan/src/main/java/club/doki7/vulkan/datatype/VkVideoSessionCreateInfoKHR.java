@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoSessionCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t queueFamilyIndex;
-///     VkVideoSessionCreateFlagsKHR flags; // optional
-///     VkVideoProfileInfoKHR const* pVideoProfile;
-///     VkFormat pictureFormat;
-///     VkExtent2D maxCodedExtent;
-///     VkFormat referencePictureFormat;
-///     uint32_t maxDpbSlots;
-///     uint32_t maxActiveReferencePictures;
-///     VkExtensionProperties const* pStdHeaderVersion;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t queueFamilyIndex; // @link substring="queueFamilyIndex" target="#queueFamilyIndex"
+///     VkVideoSessionCreateFlagsKHR flags; // optional // @link substring="VkVideoSessionCreateFlagsKHR" target="VkVideoSessionCreateFlagsKHR" @link substring="flags" target="#flags"
+///     VkVideoProfileInfoKHR const* pVideoProfile; // @link substring="VkVideoProfileInfoKHR" target="VkVideoProfileInfoKHR" @link substring="pVideoProfile" target="#pVideoProfile"
+///     VkFormat pictureFormat; // @link substring="VkFormat" target="VkFormat" @link substring="pictureFormat" target="#pictureFormat"
+///     VkExtent2D maxCodedExtent; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxCodedExtent" target="#maxCodedExtent"
+///     VkFormat referencePictureFormat; // @link substring="VkFormat" target="VkFormat" @link substring="referencePictureFormat" target="#referencePictureFormat"
+///     uint32_t maxDpbSlots; // @link substring="maxDpbSlots" target="#maxDpbSlots"
+///     uint32_t maxActiveReferencePictures; // @link substring="maxActiveReferencePictures" target="#maxActiveReferencePictures"
+///     VkExtensionProperties const* pStdHeaderVersion; // @link substring="VkExtensionProperties" target="VkExtensionProperties" @link substring="pStdHeaderVersion" target="#pStdHeaderVersion"
 /// } VkVideoSessionCreateInfoKHR;
 /// }
 ///
@@ -126,14 +126,6 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pVideoProfileRaw() {
-        return segment.get(LAYOUT$pVideoProfile, OFFSET$pVideoProfile);
-    }
-
-    public void pVideoProfileRaw(@pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pVideoProfile, OFFSET$pVideoProfile, value);
-    }
-
     public @Nullable VkVideoProfileInfoKHR pVideoProfile() {
         MemorySegment s = pVideoProfileRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -161,6 +153,14 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         return ret;
     }
 
+    public @pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pVideoProfileRaw() {
+        return segment.get(LAYOUT$pVideoProfile, OFFSET$pVideoProfile);
+    }
+
+    public void pVideoProfileRaw(@pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pVideoProfile, OFFSET$pVideoProfile, value);
+    }
+
     public @enumtype(VkFormat.class) int pictureFormat() {
         return segment.get(LAYOUT$pictureFormat, OFFSET$pictureFormat);
     }
@@ -169,11 +169,11 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pictureFormat, OFFSET$pictureFormat, value);
     }
 
-    public VkExtent2D maxCodedExtent() {
+    public @NotNull VkExtent2D maxCodedExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxCodedExtent, LAYOUT$maxCodedExtent));
     }
 
-    public void maxCodedExtent(VkExtent2D value) {
+    public void maxCodedExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxCodedExtent, SIZE$maxCodedExtent);
     }
 
@@ -201,14 +201,6 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$maxActiveReferencePictures, OFFSET$maxActiveReferencePictures, value);
     }
 
-    public @pointer(target=VkExtensionProperties.class) MemorySegment pStdHeaderVersionRaw() {
-        return segment.get(LAYOUT$pStdHeaderVersion, OFFSET$pStdHeaderVersion);
-    }
-
-    public void pStdHeaderVersionRaw(@pointer(target=VkExtensionProperties.class) MemorySegment value) {
-        segment.set(LAYOUT$pStdHeaderVersion, OFFSET$pStdHeaderVersion, value);
-    }
-
     public @Nullable VkExtensionProperties pStdHeaderVersion() {
         MemorySegment s = pStdHeaderVersionRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -234,6 +226,14 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
             ret[i] = new VkExtensionProperties(s.asSlice(i * VkExtensionProperties.BYTES, VkExtensionProperties.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkExtensionProperties.class) MemorySegment pStdHeaderVersionRaw() {
+        return segment.get(LAYOUT$pStdHeaderVersion, OFFSET$pStdHeaderVersion);
+    }
+
+    public void pStdHeaderVersionRaw(@pointer(target=VkExtensionProperties.class) MemorySegment value) {
+        segment.set(LAYOUT$pStdHeaderVersion, OFFSET$pStdHeaderVersion, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

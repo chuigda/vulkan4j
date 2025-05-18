@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265DecPicBufMgr {
-///     uint32_t max_latency_increase_plus1;
-///     uint8_t max_dec_pic_buffering_minus1;
-///     uint8_t max_num_reorder_pics;
+///     uint32_t max_latency_increase_plus1; // @link substring="max_latency_increase_plus1" target="#max_latency_increase_plus1"
+///     uint8_t max_dec_pic_buffering_minus1; // @link substring="max_dec_pic_buffering_minus1" target="#max_dec_pic_buffering_minus1"
+///     uint8_t max_num_reorder_pics; // @link substring="max_num_reorder_pics" target="#max_num_reorder_pics"
 /// } StdVideoH265DecPicBufMgr;
 /// }
 ///

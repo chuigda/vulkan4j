@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDrawMeshTasksIndirectCommandNV {
-///     uint32_t taskCount;
-///     uint32_t firstTask;
+///     uint32_t taskCount; // @link substring="taskCount" target="#taskCount"
+///     uint32_t firstTask; // @link substring="firstTask" target="#firstTask"
 /// } VkDrawMeshTasksIndirectCommandNV;
 /// }
 ///

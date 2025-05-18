@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineBinaryHandlesInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t pipelineBinaryCount;
-///     VkPipelineBinaryKHR* pPipelineBinaries; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t pipelineBinaryCount; // @link substring="pipelineBinaryCount" target="#pipelineBinaryCount"
+///     VkPipelineBinaryKHR* pPipelineBinaries; // optional // @link substring="VkPipelineBinaryKHR" target="VkPipelineBinaryKHR" @link substring="pPipelineBinaries" target="#pPipelineBinaries"
 /// } VkPipelineBinaryHandlesInfoKHR;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkPipelineBinaryHandlesInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pipelineBinaryCount, OFFSET$pipelineBinaryCount, value);
     }
 
-    public @pointer(target=VkPipelineBinaryKHR.class) MemorySegment pPipelineBinariesRaw() {
-        return segment.get(LAYOUT$pPipelineBinaries, OFFSET$pPipelineBinaries);
-    }
-
-    public void pPipelineBinariesRaw(@pointer(target=VkPipelineBinaryKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pPipelineBinaries, OFFSET$pPipelineBinaries, value);
-    }
-
     /// Note: the returned {@link VkPipelineBinaryKHR.Ptr} does not have correct {@link VkPipelineBinaryKHR.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkPipelineBinaryKHR.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -134,6 +126,14 @@ public record VkPipelineBinaryHandlesInfoKHR(@NotNull MemorySegment segment) imp
     public void pPipelineBinaries(@Nullable VkPipelineBinaryKHR.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineBinariesRaw(s);
+    }
+
+    public @pointer(target=VkPipelineBinaryKHR.class) MemorySegment pPipelineBinariesRaw() {
+        return segment.get(LAYOUT$pPipelineBinaries, OFFSET$pPipelineBinaries);
+    }
+
+    public void pPipelineBinariesRaw(@pointer(target=VkPipelineBinaryKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pPipelineBinaries, OFFSET$pPipelineBinaries, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -20,19 +20,19 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceOpticalFlowPropertiesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkOpticalFlowGridSizeFlagsNV supportedOutputGridSizes;
-///     VkOpticalFlowGridSizeFlagsNV supportedHintGridSizes;
-///     VkBool32 hintSupported;
-///     VkBool32 costSupported;
-///     VkBool32 bidirectionalFlowSupported;
-///     VkBool32 globalFlowSupported;
-///     uint32_t minWidth;
-///     uint32_t minHeight;
-///     uint32_t maxWidth;
-///     uint32_t maxHeight;
-///     uint32_t maxNumRegionsOfInterest;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkOpticalFlowGridSizeFlagsNV supportedOutputGridSizes; // @link substring="VkOpticalFlowGridSizeFlagsNV" target="VkOpticalFlowGridSizeFlagsNV" @link substring="supportedOutputGridSizes" target="#supportedOutputGridSizes"
+///     VkOpticalFlowGridSizeFlagsNV supportedHintGridSizes; // @link substring="VkOpticalFlowGridSizeFlagsNV" target="VkOpticalFlowGridSizeFlagsNV" @link substring="supportedHintGridSizes" target="#supportedHintGridSizes"
+///     VkBool32 hintSupported; // @link substring="hintSupported" target="#hintSupported"
+///     VkBool32 costSupported; // @link substring="costSupported" target="#costSupported"
+///     VkBool32 bidirectionalFlowSupported; // @link substring="bidirectionalFlowSupported" target="#bidirectionalFlowSupported"
+///     VkBool32 globalFlowSupported; // @link substring="globalFlowSupported" target="#globalFlowSupported"
+///     uint32_t minWidth; // @link substring="minWidth" target="#minWidth"
+///     uint32_t minHeight; // @link substring="minHeight" target="#minHeight"
+///     uint32_t maxWidth; // @link substring="maxWidth" target="#maxWidth"
+///     uint32_t maxHeight; // @link substring="maxHeight" target="#maxHeight"
+///     uint32_t maxNumRegionsOfInterest; // @link substring="maxNumRegionsOfInterest" target="#maxNumRegionsOfInterest"
 /// } VkPhysicalDeviceOpticalFlowPropertiesNV;
 /// }
 ///

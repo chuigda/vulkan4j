@@ -20,31 +20,31 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceDescriptorIndexingProperties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t maxUpdateAfterBindDescriptorsInAllPools;
-///     VkBool32 shaderUniformBufferArrayNonUniformIndexingNative;
-///     VkBool32 shaderSampledImageArrayNonUniformIndexingNative;
-///     VkBool32 shaderStorageBufferArrayNonUniformIndexingNative;
-///     VkBool32 shaderStorageImageArrayNonUniformIndexingNative;
-///     VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative;
-///     VkBool32 robustBufferAccessUpdateAfterBind;
-///     VkBool32 quadDivergentImplicitLod;
-///     uint32_t maxPerStageDescriptorUpdateAfterBindSamplers;
-///     uint32_t maxPerStageDescriptorUpdateAfterBindUniformBuffers;
-///     uint32_t maxPerStageDescriptorUpdateAfterBindStorageBuffers;
-///     uint32_t maxPerStageDescriptorUpdateAfterBindSampledImages;
-///     uint32_t maxPerStageDescriptorUpdateAfterBindStorageImages;
-///     uint32_t maxPerStageDescriptorUpdateAfterBindInputAttachments;
-///     uint32_t maxPerStageUpdateAfterBindResources;
-///     uint32_t maxDescriptorSetUpdateAfterBindSamplers;
-///     uint32_t maxDescriptorSetUpdateAfterBindUniformBuffers;
-///     uint32_t maxDescriptorSetUpdateAfterBindUniformBuffersDynamic;
-///     uint32_t maxDescriptorSetUpdateAfterBindStorageBuffers;
-///     uint32_t maxDescriptorSetUpdateAfterBindStorageBuffersDynamic;
-///     uint32_t maxDescriptorSetUpdateAfterBindSampledImages;
-///     uint32_t maxDescriptorSetUpdateAfterBindStorageImages;
-///     uint32_t maxDescriptorSetUpdateAfterBindInputAttachments;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxUpdateAfterBindDescriptorsInAllPools; // @link substring="maxUpdateAfterBindDescriptorsInAllPools" target="#maxUpdateAfterBindDescriptorsInAllPools"
+///     VkBool32 shaderUniformBufferArrayNonUniformIndexingNative; // @link substring="shaderUniformBufferArrayNonUniformIndexingNative" target="#shaderUniformBufferArrayNonUniformIndexingNative"
+///     VkBool32 shaderSampledImageArrayNonUniformIndexingNative; // @link substring="shaderSampledImageArrayNonUniformIndexingNative" target="#shaderSampledImageArrayNonUniformIndexingNative"
+///     VkBool32 shaderStorageBufferArrayNonUniformIndexingNative; // @link substring="shaderStorageBufferArrayNonUniformIndexingNative" target="#shaderStorageBufferArrayNonUniformIndexingNative"
+///     VkBool32 shaderStorageImageArrayNonUniformIndexingNative; // @link substring="shaderStorageImageArrayNonUniformIndexingNative" target="#shaderStorageImageArrayNonUniformIndexingNative"
+///     VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative; // @link substring="shaderInputAttachmentArrayNonUniformIndexingNative" target="#shaderInputAttachmentArrayNonUniformIndexingNative"
+///     VkBool32 robustBufferAccessUpdateAfterBind; // @link substring="robustBufferAccessUpdateAfterBind" target="#robustBufferAccessUpdateAfterBind"
+///     VkBool32 quadDivergentImplicitLod; // @link substring="quadDivergentImplicitLod" target="#quadDivergentImplicitLod"
+///     uint32_t maxPerStageDescriptorUpdateAfterBindSamplers; // @link substring="maxPerStageDescriptorUpdateAfterBindSamplers" target="#maxPerStageDescriptorUpdateAfterBindSamplers"
+///     uint32_t maxPerStageDescriptorUpdateAfterBindUniformBuffers; // @link substring="maxPerStageDescriptorUpdateAfterBindUniformBuffers" target="#maxPerStageDescriptorUpdateAfterBindUniformBuffers"
+///     uint32_t maxPerStageDescriptorUpdateAfterBindStorageBuffers; // @link substring="maxPerStageDescriptorUpdateAfterBindStorageBuffers" target="#maxPerStageDescriptorUpdateAfterBindStorageBuffers"
+///     uint32_t maxPerStageDescriptorUpdateAfterBindSampledImages; // @link substring="maxPerStageDescriptorUpdateAfterBindSampledImages" target="#maxPerStageDescriptorUpdateAfterBindSampledImages"
+///     uint32_t maxPerStageDescriptorUpdateAfterBindStorageImages; // @link substring="maxPerStageDescriptorUpdateAfterBindStorageImages" target="#maxPerStageDescriptorUpdateAfterBindStorageImages"
+///     uint32_t maxPerStageDescriptorUpdateAfterBindInputAttachments; // @link substring="maxPerStageDescriptorUpdateAfterBindInputAttachments" target="#maxPerStageDescriptorUpdateAfterBindInputAttachments"
+///     uint32_t maxPerStageUpdateAfterBindResources; // @link substring="maxPerStageUpdateAfterBindResources" target="#maxPerStageUpdateAfterBindResources"
+///     uint32_t maxDescriptorSetUpdateAfterBindSamplers; // @link substring="maxDescriptorSetUpdateAfterBindSamplers" target="#maxDescriptorSetUpdateAfterBindSamplers"
+///     uint32_t maxDescriptorSetUpdateAfterBindUniformBuffers; // @link substring="maxDescriptorSetUpdateAfterBindUniformBuffers" target="#maxDescriptorSetUpdateAfterBindUniformBuffers"
+///     uint32_t maxDescriptorSetUpdateAfterBindUniformBuffersDynamic; // @link substring="maxDescriptorSetUpdateAfterBindUniformBuffersDynamic" target="#maxDescriptorSetUpdateAfterBindUniformBuffersDynamic"
+///     uint32_t maxDescriptorSetUpdateAfterBindStorageBuffers; // @link substring="maxDescriptorSetUpdateAfterBindStorageBuffers" target="#maxDescriptorSetUpdateAfterBindStorageBuffers"
+///     uint32_t maxDescriptorSetUpdateAfterBindStorageBuffersDynamic; // @link substring="maxDescriptorSetUpdateAfterBindStorageBuffersDynamic" target="#maxDescriptorSetUpdateAfterBindStorageBuffersDynamic"
+///     uint32_t maxDescriptorSetUpdateAfterBindSampledImages; // @link substring="maxDescriptorSetUpdateAfterBindSampledImages" target="#maxDescriptorSetUpdateAfterBindSampledImages"
+///     uint32_t maxDescriptorSetUpdateAfterBindStorageImages; // @link substring="maxDescriptorSetUpdateAfterBindStorageImages" target="#maxDescriptorSetUpdateAfterBindStorageImages"
+///     uint32_t maxDescriptorSetUpdateAfterBindInputAttachments; // @link substring="maxDescriptorSetUpdateAfterBindInputAttachments" target="#maxDescriptorSetUpdateAfterBindInputAttachments"
 /// } VkPhysicalDeviceDescriptorIndexingProperties;
 /// }
 ///

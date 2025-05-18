@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineViewportShadingRateImageStateCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBool32 shadingRateImageEnable;
-///     uint32_t viewportCount; // optional
-///     VkShadingRatePaletteNV const* pShadingRatePalettes;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 shadingRateImageEnable; // @link substring="shadingRateImageEnable" target="#shadingRateImageEnable"
+///     uint32_t viewportCount; // optional // @link substring="viewportCount" target="#viewportCount"
+///     VkShadingRatePaletteNV const* pShadingRatePalettes; // @link substring="VkShadingRatePaletteNV" target="VkShadingRatePaletteNV" @link substring="pShadingRatePalettes" target="#pShadingRatePalettes"
 /// } VkPipelineViewportShadingRateImageStateCreateInfoNV;
 /// }
 ///
@@ -120,14 +120,6 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         segment.set(LAYOUT$viewportCount, OFFSET$viewportCount, value);
     }
 
-    public @pointer(target=VkShadingRatePaletteNV.class) MemorySegment pShadingRatePalettesRaw() {
-        return segment.get(LAYOUT$pShadingRatePalettes, OFFSET$pShadingRatePalettes);
-    }
-
-    public void pShadingRatePalettesRaw(@pointer(target=VkShadingRatePaletteNV.class) MemorySegment value) {
-        segment.set(LAYOUT$pShadingRatePalettes, OFFSET$pShadingRatePalettes, value);
-    }
-
     public @Nullable VkShadingRatePaletteNV pShadingRatePalettes() {
         MemorySegment s = pShadingRatePalettesRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -153,6 +145,14 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
             ret[i] = new VkShadingRatePaletteNV(s.asSlice(i * VkShadingRatePaletteNV.BYTES, VkShadingRatePaletteNV.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkShadingRatePaletteNV.class) MemorySegment pShadingRatePalettesRaw() {
+        return segment.get(LAYOUT$pShadingRatePalettes, OFFSET$pShadingRatePalettes);
+    }
+
+    public void pShadingRatePalettesRaw(@pointer(target=VkShadingRatePaletteNV.class) MemorySegment value) {
+        segment.set(LAYOUT$pShadingRatePalettes, OFFSET$pShadingRatePalettes, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkIndirectExecutionSetInfoEXT {
-///     VkIndirectExecutionSetPipelineInfoEXT const* pPipelineInfo;
-///     VkIndirectExecutionSetShaderInfoEXT const* pShaderInfo;
+///     VkIndirectExecutionSetPipelineInfoEXT const* pPipelineInfo; // @link substring="VkIndirectExecutionSetPipelineInfoEXT" target="VkIndirectExecutionSetPipelineInfoEXT" @link substring="pPipelineInfo" target="#pPipelineInfo"
+///     VkIndirectExecutionSetShaderInfoEXT const* pShaderInfo; // @link substring="VkIndirectExecutionSetShaderInfoEXT" target="VkIndirectExecutionSetShaderInfoEXT" @link substring="pShaderInfo" target="#pShaderInfo"
 /// } VkIndirectExecutionSetInfoEXT;
 /// }
 ///
@@ -67,14 +67,6 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @pointer(target=VkIndirectExecutionSetPipelineInfoEXT.class) MemorySegment pPipelineInfoRaw() {
-        return segment.get(LAYOUT$pPipelineInfo, OFFSET$pPipelineInfo);
-    }
-
-    public void pPipelineInfoRaw(@pointer(target=VkIndirectExecutionSetPipelineInfoEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pPipelineInfo, OFFSET$pPipelineInfo, value);
-    }
-
     public @Nullable VkIndirectExecutionSetPipelineInfoEXT pPipelineInfo() {
         MemorySegment s = pPipelineInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -102,12 +94,12 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @pointer(target=VkIndirectExecutionSetShaderInfoEXT.class) MemorySegment pShaderInfoRaw() {
-        return segment.get(LAYOUT$pShaderInfo, OFFSET$pShaderInfo);
+    public @pointer(target=VkIndirectExecutionSetPipelineInfoEXT.class) MemorySegment pPipelineInfoRaw() {
+        return segment.get(LAYOUT$pPipelineInfo, OFFSET$pPipelineInfo);
     }
 
-    public void pShaderInfoRaw(@pointer(target=VkIndirectExecutionSetShaderInfoEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pShaderInfo, OFFSET$pShaderInfo, value);
+    public void pPipelineInfoRaw(@pointer(target=VkIndirectExecutionSetPipelineInfoEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pPipelineInfo, OFFSET$pPipelineInfo, value);
     }
 
     public @Nullable VkIndirectExecutionSetShaderInfoEXT pShaderInfo() {
@@ -135,6 +127,14 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
             ret[i] = new VkIndirectExecutionSetShaderInfoEXT(s.asSlice(i * VkIndirectExecutionSetShaderInfoEXT.BYTES, VkIndirectExecutionSetShaderInfoEXT.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkIndirectExecutionSetShaderInfoEXT.class) MemorySegment pShaderInfoRaw() {
+        return segment.get(LAYOUT$pShaderInfo, OFFSET$pShaderInfo);
+    }
+
+    public void pShaderInfoRaw(@pointer(target=VkIndirectExecutionSetShaderInfoEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pShaderInfo, OFFSET$pShaderInfo, value);
     }
 
     public static final UnionLayout LAYOUT = NativeLayout.unionLayout(

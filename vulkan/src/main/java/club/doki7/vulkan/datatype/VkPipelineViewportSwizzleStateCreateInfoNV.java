@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineViewportSwizzleStateCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineViewportSwizzleStateCreateFlagsNV flags; // optional
-///     uint32_t viewportCount;
-///     VkViewportSwizzleNV const* pViewportSwizzles;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineViewportSwizzleStateCreateFlagsNV flags; // optional // @link substring="VkPipelineViewportSwizzleStateCreateFlagsNV" target="VkPipelineViewportSwizzleStateCreateFlagsNV" @link substring="flags" target="#flags"
+///     uint32_t viewportCount; // @link substring="viewportCount" target="#viewportCount"
+///     VkViewportSwizzleNV const* pViewportSwizzles; // @link substring="VkViewportSwizzleNV" target="VkViewportSwizzleNV" @link substring="pViewportSwizzles" target="#pViewportSwizzles"
 /// } VkPipelineViewportSwizzleStateCreateInfoNV;
 /// }
 ///
@@ -120,14 +120,6 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(@NotNull MemorySegment 
         segment.set(LAYOUT$viewportCount, OFFSET$viewportCount, value);
     }
 
-    public @pointer(target=VkViewportSwizzleNV.class) MemorySegment pViewportSwizzlesRaw() {
-        return segment.get(LAYOUT$pViewportSwizzles, OFFSET$pViewportSwizzles);
-    }
-
-    public void pViewportSwizzlesRaw(@pointer(target=VkViewportSwizzleNV.class) MemorySegment value) {
-        segment.set(LAYOUT$pViewportSwizzles, OFFSET$pViewportSwizzles, value);
-    }
-
     public @Nullable VkViewportSwizzleNV pViewportSwizzles() {
         MemorySegment s = pViewportSwizzlesRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -153,6 +145,14 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(@NotNull MemorySegment 
             ret[i] = new VkViewportSwizzleNV(s.asSlice(i * VkViewportSwizzleNV.BYTES, VkViewportSwizzleNV.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkViewportSwizzleNV.class) MemorySegment pViewportSwizzlesRaw() {
+        return segment.get(LAYOUT$pViewportSwizzles, OFFSET$pViewportSwizzles);
+    }
+
+    public void pViewportSwizzlesRaw(@pointer(target=VkViewportSwizzleNV.class) MemorySegment value) {
+        segment.set(LAYOUT$pViewportSwizzles, OFFSET$pViewportSwizzles, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

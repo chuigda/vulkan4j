@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 workgroupMemoryExplicitLayout;
-///     VkBool32 workgroupMemoryExplicitLayoutScalarBlockLayout;
-///     VkBool32 workgroupMemoryExplicitLayout8BitAccess;
-///     VkBool32 workgroupMemoryExplicitLayout16BitAccess;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 workgroupMemoryExplicitLayout; // @link substring="workgroupMemoryExplicitLayout" target="#workgroupMemoryExplicitLayout"
+///     VkBool32 workgroupMemoryExplicitLayoutScalarBlockLayout; // @link substring="workgroupMemoryExplicitLayoutScalarBlockLayout" target="#workgroupMemoryExplicitLayoutScalarBlockLayout"
+///     VkBool32 workgroupMemoryExplicitLayout8BitAccess; // @link substring="workgroupMemoryExplicitLayout8BitAccess" target="#workgroupMemoryExplicitLayout8BitAccess"
+///     VkBool32 workgroupMemoryExplicitLayout16BitAccess; // @link substring="workgroupMemoryExplicitLayout16BitAccess" target="#workgroupMemoryExplicitLayout16BitAccess"
 /// } VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR;
 /// }
 ///

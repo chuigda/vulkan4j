@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeQualityLevelPropertiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkVideoEncodeRateControlModeFlagsKHR preferredRateControlMode;
-///     uint32_t preferredRateControlLayerCount;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkVideoEncodeRateControlModeFlagsKHR preferredRateControlMode; // @link substring="VkVideoEncodeRateControlModeFlagsKHR" target="VkVideoEncodeRateControlModeFlagsKHR" @link substring="preferredRateControlMode" target="#preferredRateControlMode"
+///     uint32_t preferredRateControlLayerCount; // @link substring="preferredRateControlLayerCount" target="#preferredRateControlLayerCount"
 /// } VkVideoEncodeQualityLevelPropertiesKHR;
 /// }
 ///

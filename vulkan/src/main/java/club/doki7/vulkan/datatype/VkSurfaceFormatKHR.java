@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSurfaceFormatKHR {
-///     VkFormat format;
-///     VkColorSpaceKHR colorSpace;
+///     VkFormat format; // @link substring="VkFormat" target="VkFormat" @link substring="format" target="#format"
+///     VkColorSpaceKHR colorSpace; // @link substring="VkColorSpaceKHR" target="VkColorSpaceKHR" @link substring="colorSpace" target="#colorSpace"
 /// } VkSurfaceFormatKHR;
 /// }
 ///

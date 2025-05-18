@@ -21,24 +21,24 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265SpsVuiFlags {
-///     uint32_t aspect_ratio_info_present_flag : 1;
-///     uint32_t overscan_info_present_flag : 1;
-///     uint32_t overscan_appropriate_flag : 1;
-///     uint32_t video_signal_type_present_flag : 1;
-///     uint32_t video_full_range_flag : 1;
-///     uint32_t colour_description_present_flag : 1;
-///     uint32_t chroma_loc_info_present_flag : 1;
-///     uint32_t neutral_chroma_indication_flag : 1;
-///     uint32_t field_seq_flag : 1;
-///     uint32_t frame_field_info_present_flag : 1;
-///     uint32_t default_display_window_flag : 1;
-///     uint32_t vui_timing_info_present_flag : 1;
-///     uint32_t vui_poc_proportional_to_timing_flag : 1;
-///     uint32_t vui_hrd_parameters_present_flag : 1;
-///     uint32_t bitstream_restriction_flag : 1;
-///     uint32_t tiles_fixed_structure_flag : 1;
-///     uint32_t motion_vectors_over_pic_boundaries_flag : 1;
-///     uint32_t restricted_ref_pic_lists_flag : 1;
+///     uint32_t aspect_ratio_info_present_flag : 1; // @link substring="aspect_ratio_info_present_flag" target="#aspect_ratio_info_present_flag"
+///     uint32_t overscan_info_present_flag : 1; // @link substring="overscan_info_present_flag" target="#overscan_info_present_flag"
+///     uint32_t overscan_appropriate_flag : 1; // @link substring="overscan_appropriate_flag" target="#overscan_appropriate_flag"
+///     uint32_t video_signal_type_present_flag : 1; // @link substring="video_signal_type_present_flag" target="#video_signal_type_present_flag"
+///     uint32_t video_full_range_flag : 1; // @link substring="video_full_range_flag" target="#video_full_range_flag"
+///     uint32_t colour_description_present_flag : 1; // @link substring="colour_description_present_flag" target="#colour_description_present_flag"
+///     uint32_t chroma_loc_info_present_flag : 1; // @link substring="chroma_loc_info_present_flag" target="#chroma_loc_info_present_flag"
+///     uint32_t neutral_chroma_indication_flag : 1; // @link substring="neutral_chroma_indication_flag" target="#neutral_chroma_indication_flag"
+///     uint32_t field_seq_flag : 1; // @link substring="field_seq_flag" target="#field_seq_flag"
+///     uint32_t frame_field_info_present_flag : 1; // @link substring="frame_field_info_present_flag" target="#frame_field_info_present_flag"
+///     uint32_t default_display_window_flag : 1; // @link substring="default_display_window_flag" target="#default_display_window_flag"
+///     uint32_t vui_timing_info_present_flag : 1; // @link substring="vui_timing_info_present_flag" target="#vui_timing_info_present_flag"
+///     uint32_t vui_poc_proportional_to_timing_flag : 1; // @link substring="vui_poc_proportional_to_timing_flag" target="#vui_poc_proportional_to_timing_flag"
+///     uint32_t vui_hrd_parameters_present_flag : 1; // @link substring="vui_hrd_parameters_present_flag" target="#vui_hrd_parameters_present_flag"
+///     uint32_t bitstream_restriction_flag : 1; // @link substring="bitstream_restriction_flag" target="#bitstream_restriction_flag"
+///     uint32_t tiles_fixed_structure_flag : 1; // @link substring="tiles_fixed_structure_flag" target="#tiles_fixed_structure_flag"
+///     uint32_t motion_vectors_over_pic_boundaries_flag : 1; // @link substring="motion_vectors_over_pic_boundaries_flag" target="#motion_vectors_over_pic_boundaries_flag"
+///     uint32_t restricted_ref_pic_lists_flag : 1; // @link substring="restricted_ref_pic_lists_flag" target="#restricted_ref_pic_lists_flag"
 /// } StdVideoH265SpsVuiFlags;
 /// }
 ///

@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceFaultAddressInfoEXT {
-///     VkDeviceFaultAddressTypeEXT addressType;
-///     VkDeviceAddress reportedAddress;
-///     VkDeviceSize addressPrecision;
+///     VkDeviceFaultAddressTypeEXT addressType; // @link substring="VkDeviceFaultAddressTypeEXT" target="VkDeviceFaultAddressTypeEXT" @link substring="addressType" target="#addressType"
+///     VkDeviceAddress reportedAddress; // @link substring="reportedAddress" target="#reportedAddress"
+///     VkDeviceSize addressPrecision; // @link substring="addressPrecision" target="#addressPrecision"
 /// } VkDeviceFaultAddressInfoEXT;
 /// }
 ///

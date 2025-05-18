@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSparseImageFormatProperties {
-///     VkImageAspectFlags aspectMask; // optional
-///     VkExtent3D imageGranularity;
-///     VkSparseImageFormatFlags flags; // optional
+///     VkImageAspectFlags aspectMask; // optional // @link substring="VkImageAspectFlags" target="VkImageAspectFlags" @link substring="aspectMask" target="#aspectMask"
+///     VkExtent3D imageGranularity; // @link substring="VkExtent3D" target="VkExtent3D" @link substring="imageGranularity" target="#imageGranularity"
+///     VkSparseImageFormatFlags flags; // optional // @link substring="VkSparseImageFormatFlags" target="VkSparseImageFormatFlags" @link substring="flags" target="#flags"
 /// } VkSparseImageFormatProperties;
 /// }
 ///
@@ -76,11 +76,11 @@ public record VkSparseImageFormatProperties(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
     }
 
-    public VkExtent3D imageGranularity() {
+    public @NotNull VkExtent3D imageGranularity() {
         return new VkExtent3D(segment.asSlice(OFFSET$imageGranularity, LAYOUT$imageGranularity));
     }
 
-    public void imageGranularity(VkExtent3D value) {
+    public void imageGranularity(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageGranularity, SIZE$imageGranularity);
     }
 

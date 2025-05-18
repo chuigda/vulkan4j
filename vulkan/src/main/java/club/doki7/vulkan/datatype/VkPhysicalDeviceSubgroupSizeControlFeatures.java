@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceSubgroupSizeControlFeatures {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 subgroupSizeControl;
-///     VkBool32 computeFullSubgroups;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 subgroupSizeControl; // @link substring="subgroupSizeControl" target="#subgroupSizeControl"
+///     VkBool32 computeFullSubgroups; // @link substring="computeFullSubgroups" target="#computeFullSubgroups"
 /// } VkPhysicalDeviceSubgroupSizeControlFeatures;
 /// }
 ///

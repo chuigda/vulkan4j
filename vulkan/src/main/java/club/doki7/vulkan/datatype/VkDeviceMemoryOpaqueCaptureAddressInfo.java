@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceMemoryOpaqueCaptureAddressInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDeviceMemory memory;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceMemory memory; // @link substring="VkDeviceMemory" target="VkDeviceMemory" @link substring="memory" target="#memory"
 /// } VkDeviceMemoryOpaqueCaptureAddressInfo;
 /// }
 ///

@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBindDescriptorBufferEmbeddedSamplersInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkShaderStageFlags stageFlags;
-///     VkPipelineLayout layout; // optional
-///     uint32_t set; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkShaderStageFlags stageFlags; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="stageFlags" target="#stageFlags"
+///     VkPipelineLayout layout; // optional // @link substring="VkPipelineLayout" target="VkPipelineLayout" @link substring="layout" target="#layout"
+///     uint32_t set; // optional // @link substring="set" target="#set"
 /// } VkBindDescriptorBufferEmbeddedSamplersInfoEXT;
 /// }
 ///

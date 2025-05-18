@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeAV1SessionCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBool32 useMaxLevel;
-///     StdVideoAV1Level maxLevel;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 useMaxLevel; // @link substring="useMaxLevel" target="#useMaxLevel"
+///     StdVideoAV1Level maxLevel; // @link substring="StdVideoAV1Level" target="StdVideoAV1Level" @link substring="maxLevel" target="#maxLevel"
 /// } VkVideoEncodeAV1SessionCreateInfoKHR;
 /// }
 ///

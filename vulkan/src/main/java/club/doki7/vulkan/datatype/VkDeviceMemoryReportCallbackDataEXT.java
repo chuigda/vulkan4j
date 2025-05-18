@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceMemoryReportCallbackDataEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkDeviceMemoryReportFlagsEXT flags;
-///     VkDeviceMemoryReportEventTypeEXT type;
-///     uint64_t memoryObjectId;
-///     VkDeviceSize size;
-///     VkObjectType objectType;
-///     uint64_t objectHandle;
-///     uint32_t heapIndex;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceMemoryReportFlagsEXT flags; // @link substring="VkDeviceMemoryReportFlagsEXT" target="VkDeviceMemoryReportFlagsEXT" @link substring="flags" target="#flags"
+///     VkDeviceMemoryReportEventTypeEXT type; // @link substring="VkDeviceMemoryReportEventTypeEXT" target="VkDeviceMemoryReportEventTypeEXT" @link substring="type" target="#type"
+///     uint64_t memoryObjectId; // @link substring="memoryObjectId" target="#memoryObjectId"
+///     VkDeviceSize size; // @link substring="size" target="#size"
+///     VkObjectType objectType; // @link substring="VkObjectType" target="VkObjectType" @link substring="objectType" target="#objectType"
+///     uint64_t objectHandle; // @link substring="objectHandle" target="#objectHandle"
+///     uint32_t heapIndex; // @link substring="heapIndex" target="#heapIndex"
 /// } VkDeviceMemoryReportCallbackDataEXT;
 /// }
 ///

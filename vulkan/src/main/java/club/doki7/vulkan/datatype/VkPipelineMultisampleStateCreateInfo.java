@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineMultisampleStateCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineMultisampleStateCreateFlags flags; // optional
-///     VkSampleCountFlags rasterizationSamples;
-///     VkBool32 sampleShadingEnable;
-///     float minSampleShading;
-///     VkSampleMask const* pSampleMask; // optional
-///     VkBool32 alphaToCoverageEnable;
-///     VkBool32 alphaToOneEnable;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineMultisampleStateCreateFlags flags; // optional // @link substring="VkPipelineMultisampleStateCreateFlags" target="VkPipelineMultisampleStateCreateFlags" @link substring="flags" target="#flags"
+///     VkSampleCountFlags rasterizationSamples; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="rasterizationSamples" target="#rasterizationSamples"
+///     VkBool32 sampleShadingEnable; // @link substring="sampleShadingEnable" target="#sampleShadingEnable"
+///     float minSampleShading; // @link substring="minSampleShading" target="#minSampleShading"
+///     VkSampleMask const* pSampleMask; // optional // @link substring="pSampleMask" target="#pSampleMask"
+///     VkBool32 alphaToCoverageEnable; // @link substring="alphaToCoverageEnable" target="#alphaToCoverageEnable"
+///     VkBool32 alphaToOneEnable; // @link substring="alphaToOneEnable" target="#alphaToOneEnable"
 /// } VkPipelineMultisampleStateCreateInfo;
 /// }
 ///
@@ -140,14 +140,6 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$minSampleShading, OFFSET$minSampleShading, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pSampleMaskRaw() {
-        return segment.get(LAYOUT$pSampleMask, OFFSET$pSampleMask);
-    }
-
-    public void pSampleMaskRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pSampleMask, OFFSET$pSampleMask, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -163,6 +155,14 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
     public void pSampleMask(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSampleMaskRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pSampleMaskRaw() {
+        return segment.get(LAYOUT$pSampleMask, OFFSET$pSampleMask);
+    }
+
+    public void pSampleMaskRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pSampleMask, OFFSET$pSampleMask, value);
     }
 
     public @unsigned int alphaToCoverageEnable() {

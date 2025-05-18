@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPushConstantRange {
-///     VkShaderStageFlags stageFlags;
-///     uint32_t offset;
-///     uint32_t size;
+///     VkShaderStageFlags stageFlags; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="stageFlags" target="#stageFlags"
+///     uint32_t offset; // @link substring="offset" target="#offset"
+///     uint32_t size; // @link substring="size" target="#size"
 /// } VkPushConstantRange;
 /// }
 ///

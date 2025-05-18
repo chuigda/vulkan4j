@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkHdrVividDynamicMetadataHUAWEI {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     size_t dynamicMetadataSize;
-///     void const* pDynamicMetadata;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     size_t dynamicMetadataSize; // @link substring="dynamicMetadataSize" target="#dynamicMetadataSize"
+///     void const* pDynamicMetadata; // @link substring="pDynamicMetadata" target="#pDynamicMetadata"
 /// } VkHdrVividDynamicMetadataHUAWEI;
 /// }
 ///

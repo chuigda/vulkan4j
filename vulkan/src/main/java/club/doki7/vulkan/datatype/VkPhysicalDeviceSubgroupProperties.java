@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceSubgroupProperties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t subgroupSize;
-///     VkShaderStageFlags supportedStages;
-///     VkSubgroupFeatureFlags supportedOperations;
-///     VkBool32 quadOperationsInAllStages;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t subgroupSize; // @link substring="subgroupSize" target="#subgroupSize"
+///     VkShaderStageFlags supportedStages; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="supportedStages" target="#supportedStages"
+///     VkSubgroupFeatureFlags supportedOperations; // @link substring="VkSubgroupFeatureFlags" target="VkSubgroupFeatureFlags" @link substring="supportedOperations" target="#supportedOperations"
+///     VkBool32 quadOperationsInAllStages; // @link substring="quadOperationsInAllStages" target="#quadOperationsInAllStages"
 /// } VkPhysicalDeviceSubgroupProperties;
 /// }
 ///

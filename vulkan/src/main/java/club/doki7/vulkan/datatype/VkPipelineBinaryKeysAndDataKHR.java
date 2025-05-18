@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineBinaryKeysAndDataKHR {
-///     uint32_t binaryCount;
-///     VkPipelineBinaryKeyKHR const* pPipelineBinaryKeys;
-///     VkPipelineBinaryDataKHR const* pPipelineBinaryData;
+///     uint32_t binaryCount; // @link substring="binaryCount" target="#binaryCount"
+///     VkPipelineBinaryKeyKHR const* pPipelineBinaryKeys; // @link substring="VkPipelineBinaryKeyKHR" target="VkPipelineBinaryKeyKHR" @link substring="pPipelineBinaryKeys" target="#pPipelineBinaryKeys"
+///     VkPipelineBinaryDataKHR const* pPipelineBinaryData; // @link substring="VkPipelineBinaryDataKHR" target="VkPipelineBinaryDataKHR" @link substring="pPipelineBinaryData" target="#pPipelineBinaryData"
 /// } VkPipelineBinaryKeysAndDataKHR;
 /// }
 ///
@@ -76,14 +76,6 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$binaryCount, OFFSET$binaryCount, value);
     }
 
-    public @pointer(target=VkPipelineBinaryKeyKHR.class) MemorySegment pPipelineBinaryKeysRaw() {
-        return segment.get(LAYOUT$pPipelineBinaryKeys, OFFSET$pPipelineBinaryKeys);
-    }
-
-    public void pPipelineBinaryKeysRaw(@pointer(target=VkPipelineBinaryKeyKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pPipelineBinaryKeys, OFFSET$pPipelineBinaryKeys, value);
-    }
-
     public @Nullable VkPipelineBinaryKeyKHR pPipelineBinaryKeys() {
         MemorySegment s = pPipelineBinaryKeysRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -111,12 +103,12 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public @pointer(target=VkPipelineBinaryDataKHR.class) MemorySegment pPipelineBinaryDataRaw() {
-        return segment.get(LAYOUT$pPipelineBinaryData, OFFSET$pPipelineBinaryData);
+    public @pointer(target=VkPipelineBinaryKeyKHR.class) MemorySegment pPipelineBinaryKeysRaw() {
+        return segment.get(LAYOUT$pPipelineBinaryKeys, OFFSET$pPipelineBinaryKeys);
     }
 
-    public void pPipelineBinaryDataRaw(@pointer(target=VkPipelineBinaryDataKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pPipelineBinaryData, OFFSET$pPipelineBinaryData, value);
+    public void pPipelineBinaryKeysRaw(@pointer(target=VkPipelineBinaryKeyKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pPipelineBinaryKeys, OFFSET$pPipelineBinaryKeys, value);
     }
 
     public @Nullable VkPipelineBinaryDataKHR pPipelineBinaryData() {
@@ -144,6 +136,14 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
             ret[i] = new VkPipelineBinaryDataKHR(s.asSlice(i * VkPipelineBinaryDataKHR.BYTES, VkPipelineBinaryDataKHR.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkPipelineBinaryDataKHR.class) MemorySegment pPipelineBinaryDataRaw() {
+        return segment.get(LAYOUT$pPipelineBinaryData, OFFSET$pPipelineBinaryData);
+    }
+
+    public void pPipelineBinaryDataRaw(@pointer(target=VkPipelineBinaryDataKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pPipelineBinaryData, OFFSET$pPipelineBinaryData, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

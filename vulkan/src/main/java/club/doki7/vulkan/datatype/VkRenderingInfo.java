@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderingInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkRenderingFlags flags; // optional
-///     VkRect2D renderArea;
-///     uint32_t layerCount;
-///     uint32_t viewMask;
-///     uint32_t colorAttachmentCount; // optional
-///     VkRenderingAttachmentInfo const* pColorAttachments;
-///     VkRenderingAttachmentInfo const* pDepthAttachment; // optional
-///     VkRenderingAttachmentInfo const* pStencilAttachment; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkRenderingFlags flags; // optional // @link substring="VkRenderingFlags" target="VkRenderingFlags" @link substring="flags" target="#flags"
+///     VkRect2D renderArea; // @link substring="VkRect2D" target="VkRect2D" @link substring="renderArea" target="#renderArea"
+///     uint32_t layerCount; // @link substring="layerCount" target="#layerCount"
+///     uint32_t viewMask; // @link substring="viewMask" target="#viewMask"
+///     uint32_t colorAttachmentCount; // optional // @link substring="colorAttachmentCount" target="#colorAttachmentCount"
+///     VkRenderingAttachmentInfo const* pColorAttachments; // @link substring="VkRenderingAttachmentInfo" target="VkRenderingAttachmentInfo" @link substring="pColorAttachments" target="#pColorAttachments"
+///     VkRenderingAttachmentInfo const* pDepthAttachment; // optional // @link substring="VkRenderingAttachmentInfo" target="VkRenderingAttachmentInfo" @link substring="pDepthAttachment" target="#pDepthAttachment"
+///     VkRenderingAttachmentInfo const* pStencilAttachment; // optional // @link substring="VkRenderingAttachmentInfo" target="VkRenderingAttachmentInfo" @link substring="pStencilAttachment" target="#pStencilAttachment"
 /// } VkRenderingInfo;
 /// }
 ///
@@ -117,11 +117,11 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IPointe
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public VkRect2D renderArea() {
+    public @NotNull VkRect2D renderArea() {
         return new VkRect2D(segment.asSlice(OFFSET$renderArea, LAYOUT$renderArea));
     }
 
-    public void renderArea(VkRect2D value) {
+    public void renderArea(@NotNull VkRect2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderArea, SIZE$renderArea);
     }
 
@@ -147,14 +147,6 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IPointe
 
     public void colorAttachmentCount(@unsigned int value) {
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
-    }
-
-    public @pointer(target=VkRenderingAttachmentInfo.class) MemorySegment pColorAttachmentsRaw() {
-        return segment.get(LAYOUT$pColorAttachments, OFFSET$pColorAttachments);
-    }
-
-    public void pColorAttachmentsRaw(@pointer(target=VkRenderingAttachmentInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
 
     public @Nullable VkRenderingAttachmentInfo pColorAttachments() {
@@ -184,12 +176,12 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IPointe
         return ret;
     }
 
-    public @pointer(target=VkRenderingAttachmentInfo.class) MemorySegment pDepthAttachmentRaw() {
-        return segment.get(LAYOUT$pDepthAttachment, OFFSET$pDepthAttachment);
+    public @pointer(target=VkRenderingAttachmentInfo.class) MemorySegment pColorAttachmentsRaw() {
+        return segment.get(LAYOUT$pColorAttachments, OFFSET$pColorAttachments);
     }
 
-    public void pDepthAttachmentRaw(@pointer(target=VkRenderingAttachmentInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pDepthAttachment, OFFSET$pDepthAttachment, value);
+    public void pColorAttachmentsRaw(@pointer(target=VkRenderingAttachmentInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
 
     public @Nullable VkRenderingAttachmentInfo pDepthAttachment() {
@@ -219,12 +211,12 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IPointe
         return ret;
     }
 
-    public @pointer(target=VkRenderingAttachmentInfo.class) MemorySegment pStencilAttachmentRaw() {
-        return segment.get(LAYOUT$pStencilAttachment, OFFSET$pStencilAttachment);
+    public @pointer(target=VkRenderingAttachmentInfo.class) MemorySegment pDepthAttachmentRaw() {
+        return segment.get(LAYOUT$pDepthAttachment, OFFSET$pDepthAttachment);
     }
 
-    public void pStencilAttachmentRaw(@pointer(target=VkRenderingAttachmentInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pStencilAttachment, OFFSET$pStencilAttachment, value);
+    public void pDepthAttachmentRaw(@pointer(target=VkRenderingAttachmentInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pDepthAttachment, OFFSET$pDepthAttachment, value);
     }
 
     public @Nullable VkRenderingAttachmentInfo pStencilAttachment() {
@@ -252,6 +244,14 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IPointe
             ret[i] = new VkRenderingAttachmentInfo(s.asSlice(i * VkRenderingAttachmentInfo.BYTES, VkRenderingAttachmentInfo.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkRenderingAttachmentInfo.class) MemorySegment pStencilAttachmentRaw() {
+        return segment.get(LAYOUT$pStencilAttachment, OFFSET$pStencilAttachment);
+    }
+
+    public void pStencilAttachmentRaw(@pointer(target=VkRenderingAttachmentInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pStencilAttachment, OFFSET$pStencilAttachment, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

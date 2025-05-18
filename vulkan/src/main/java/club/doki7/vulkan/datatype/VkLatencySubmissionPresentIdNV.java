@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkLatencySubmissionPresentIdNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint64_t presentID;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint64_t presentID; // @link substring="presentID" target="#presentID"
 /// } VkLatencySubmissionPresentIdNV;
 /// }
 ///

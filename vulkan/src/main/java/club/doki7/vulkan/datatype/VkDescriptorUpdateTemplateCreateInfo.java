@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDescriptorUpdateTemplateCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDescriptorUpdateTemplateCreateFlags flags; // optional
-///     uint32_t descriptorUpdateEntryCount;
-///     VkDescriptorUpdateTemplateEntry const* pDescriptorUpdateEntries;
-///     VkDescriptorUpdateTemplateType templateType;
-///     VkDescriptorSetLayout descriptorSetLayout;
-///     VkPipelineBindPoint pipelineBindPoint;
-///     VkPipelineLayout pipelineLayout;
-///     uint32_t set;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDescriptorUpdateTemplateCreateFlags flags; // optional // @link substring="VkDescriptorUpdateTemplateCreateFlags" target="VkDescriptorUpdateTemplateCreateFlags" @link substring="flags" target="#flags"
+///     uint32_t descriptorUpdateEntryCount; // @link substring="descriptorUpdateEntryCount" target="#descriptorUpdateEntryCount"
+///     VkDescriptorUpdateTemplateEntry const* pDescriptorUpdateEntries; // @link substring="VkDescriptorUpdateTemplateEntry" target="VkDescriptorUpdateTemplateEntry" @link substring="pDescriptorUpdateEntries" target="#pDescriptorUpdateEntries"
+///     VkDescriptorUpdateTemplateType templateType; // @link substring="VkDescriptorUpdateTemplateType" target="VkDescriptorUpdateTemplateType" @link substring="templateType" target="#templateType"
+///     VkDescriptorSetLayout descriptorSetLayout; // @link substring="VkDescriptorSetLayout" target="VkDescriptorSetLayout" @link substring="descriptorSetLayout" target="#descriptorSetLayout"
+///     VkPipelineBindPoint pipelineBindPoint; // @link substring="VkPipelineBindPoint" target="VkPipelineBindPoint" @link substring="pipelineBindPoint" target="#pipelineBindPoint"
+///     VkPipelineLayout pipelineLayout; // @link substring="VkPipelineLayout" target="VkPipelineLayout" @link substring="pipelineLayout" target="#pipelineLayout"
+///     uint32_t set; // @link substring="set" target="#set"
 /// } VkDescriptorUpdateTemplateCreateInfo;
 /// }
 ///
@@ -125,14 +125,6 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$descriptorUpdateEntryCount, OFFSET$descriptorUpdateEntryCount, value);
     }
 
-    public @pointer(target=VkDescriptorUpdateTemplateEntry.class) MemorySegment pDescriptorUpdateEntriesRaw() {
-        return segment.get(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries);
-    }
-
-    public void pDescriptorUpdateEntriesRaw(@pointer(target=VkDescriptorUpdateTemplateEntry.class) MemorySegment value) {
-        segment.set(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries, value);
-    }
-
     public @Nullable VkDescriptorUpdateTemplateEntry pDescriptorUpdateEntries() {
         MemorySegment s = pDescriptorUpdateEntriesRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -158,6 +150,14 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
             ret[i] = new VkDescriptorUpdateTemplateEntry(s.asSlice(i * VkDescriptorUpdateTemplateEntry.BYTES, VkDescriptorUpdateTemplateEntry.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkDescriptorUpdateTemplateEntry.class) MemorySegment pDescriptorUpdateEntriesRaw() {
+        return segment.get(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries);
+    }
+
+    public void pDescriptorUpdateEntriesRaw(@pointer(target=VkDescriptorUpdateTemplateEntry.class) MemorySegment value) {
+        segment.set(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries, value);
     }
 
     public @enumtype(VkDescriptorUpdateTemplateType.class) int templateType() {

@@ -20,23 +20,23 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceVulkan13Features {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 robustImageAccess;
-///     VkBool32 inlineUniformBlock;
-///     VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind;
-///     VkBool32 pipelineCreationCacheControl;
-///     VkBool32 privateData;
-///     VkBool32 shaderDemoteToHelperInvocation;
-///     VkBool32 shaderTerminateInvocation;
-///     VkBool32 subgroupSizeControl;
-///     VkBool32 computeFullSubgroups;
-///     VkBool32 synchronization2;
-///     VkBool32 textureCompressionASTC_HDR;
-///     VkBool32 shaderZeroInitializeWorkgroupMemory;
-///     VkBool32 dynamicRendering;
-///     VkBool32 shaderIntegerDotProduct;
-///     VkBool32 maintenance4;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 robustImageAccess; // @link substring="robustImageAccess" target="#robustImageAccess"
+///     VkBool32 inlineUniformBlock; // @link substring="inlineUniformBlock" target="#inlineUniformBlock"
+///     VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind; // @link substring="descriptorBindingInlineUniformBlockUpdateAfterBind" target="#descriptorBindingInlineUniformBlockUpdateAfterBind"
+///     VkBool32 pipelineCreationCacheControl; // @link substring="pipelineCreationCacheControl" target="#pipelineCreationCacheControl"
+///     VkBool32 privateData; // @link substring="privateData" target="#privateData"
+///     VkBool32 shaderDemoteToHelperInvocation; // @link substring="shaderDemoteToHelperInvocation" target="#shaderDemoteToHelperInvocation"
+///     VkBool32 shaderTerminateInvocation; // @link substring="shaderTerminateInvocation" target="#shaderTerminateInvocation"
+///     VkBool32 subgroupSizeControl; // @link substring="subgroupSizeControl" target="#subgroupSizeControl"
+///     VkBool32 computeFullSubgroups; // @link substring="computeFullSubgroups" target="#computeFullSubgroups"
+///     VkBool32 synchronization2; // @link substring="synchronization2" target="#synchronization2"
+///     VkBool32 textureCompressionASTC_HDR; // @link substring="textureCompressionASTC_HDR" target="#textureCompressionASTC_HDR"
+///     VkBool32 shaderZeroInitializeWorkgroupMemory; // @link substring="shaderZeroInitializeWorkgroupMemory" target="#shaderZeroInitializeWorkgroupMemory"
+///     VkBool32 dynamicRendering; // @link substring="dynamicRendering" target="#dynamicRendering"
+///     VkBool32 shaderIntegerDotProduct; // @link substring="shaderIntegerDotProduct" target="#shaderIntegerDotProduct"
+///     VkBool32 maintenance4; // @link substring="maintenance4" target="#maintenance4"
 /// } VkPhysicalDeviceVulkan13Features;
 /// }
 ///

@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCooperativeVectorPropertiesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkComponentTypeKHR inputType;
-///     VkComponentTypeKHR inputInterpretation;
-///     VkComponentTypeKHR matrixInterpretation;
-///     VkComponentTypeKHR biasInterpretation;
-///     VkComponentTypeKHR resultType;
-///     VkBool32 transpose;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkComponentTypeKHR inputType; // @link substring="VkComponentTypeKHR" target="VkComponentTypeKHR" @link substring="inputType" target="#inputType"
+///     VkComponentTypeKHR inputInterpretation; // @link substring="VkComponentTypeKHR" target="VkComponentTypeKHR" @link substring="inputInterpretation" target="#inputInterpretation"
+///     VkComponentTypeKHR matrixInterpretation; // @link substring="VkComponentTypeKHR" target="VkComponentTypeKHR" @link substring="matrixInterpretation" target="#matrixInterpretation"
+///     VkComponentTypeKHR biasInterpretation; // @link substring="VkComponentTypeKHR" target="VkComponentTypeKHR" @link substring="biasInterpretation" target="#biasInterpretation"
+///     VkComponentTypeKHR resultType; // @link substring="VkComponentTypeKHR" target="VkComponentTypeKHR" @link substring="resultType" target="#resultType"
+///     VkBool32 transpose; // @link substring="transpose" target="#transpose"
 /// } VkCooperativeVectorPropertiesNV;
 /// }
 ///

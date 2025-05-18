@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAntiLagPresentationInfoAMD {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkAntiLagStageAMD stage;
-///     uint64_t frameIndex;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkAntiLagStageAMD stage; // @link substring="VkAntiLagStageAMD" target="VkAntiLagStageAMD" @link substring="stage" target="#stage"
+///     uint64_t frameIndex; // @link substring="frameIndex" target="#frameIndex"
 /// } VkAntiLagPresentationInfoAMD;
 /// }
 ///

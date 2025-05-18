@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageConstraintsInfoFUCHSIA {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t formatConstraintsCount;
-///     VkImageFormatConstraintsInfoFUCHSIA const* pFormatConstraints;
-///     VkBufferCollectionConstraintsInfoFUCHSIA bufferCollectionConstraints;
-///     VkImageConstraintsInfoFlagsFUCHSIA flags; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t formatConstraintsCount; // @link substring="formatConstraintsCount" target="#formatConstraintsCount"
+///     VkImageFormatConstraintsInfoFUCHSIA const* pFormatConstraints; // @link substring="VkImageFormatConstraintsInfoFUCHSIA" target="VkImageFormatConstraintsInfoFUCHSIA" @link substring="pFormatConstraints" target="#pFormatConstraints"
+///     VkBufferCollectionConstraintsInfoFUCHSIA bufferCollectionConstraints; // @link substring="VkBufferCollectionConstraintsInfoFUCHSIA" target="VkBufferCollectionConstraintsInfoFUCHSIA" @link substring="bufferCollectionConstraints" target="#bufferCollectionConstraints"
+///     VkImageConstraintsInfoFlagsFUCHSIA flags; // optional // @link substring="VkImageConstraintsInfoFlagsFUCHSIA" target="VkImageConstraintsInfoFlagsFUCHSIA" @link substring="flags" target="#flags"
 /// } VkImageConstraintsInfoFUCHSIA;
 /// }
 ///
@@ -113,14 +113,6 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$formatConstraintsCount, OFFSET$formatConstraintsCount, value);
     }
 
-    public @pointer(target=VkImageFormatConstraintsInfoFUCHSIA.class) MemorySegment pFormatConstraintsRaw() {
-        return segment.get(LAYOUT$pFormatConstraints, OFFSET$pFormatConstraints);
-    }
-
-    public void pFormatConstraintsRaw(@pointer(target=VkImageFormatConstraintsInfoFUCHSIA.class) MemorySegment value) {
-        segment.set(LAYOUT$pFormatConstraints, OFFSET$pFormatConstraints, value);
-    }
-
     public @Nullable VkImageFormatConstraintsInfoFUCHSIA pFormatConstraints() {
         MemorySegment s = pFormatConstraintsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -148,11 +140,19 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public VkBufferCollectionConstraintsInfoFUCHSIA bufferCollectionConstraints() {
+    public @pointer(target=VkImageFormatConstraintsInfoFUCHSIA.class) MemorySegment pFormatConstraintsRaw() {
+        return segment.get(LAYOUT$pFormatConstraints, OFFSET$pFormatConstraints);
+    }
+
+    public void pFormatConstraintsRaw(@pointer(target=VkImageFormatConstraintsInfoFUCHSIA.class) MemorySegment value) {
+        segment.set(LAYOUT$pFormatConstraints, OFFSET$pFormatConstraints, value);
+    }
+
+    public @NotNull VkBufferCollectionConstraintsInfoFUCHSIA bufferCollectionConstraints() {
         return new VkBufferCollectionConstraintsInfoFUCHSIA(segment.asSlice(OFFSET$bufferCollectionConstraints, LAYOUT$bufferCollectionConstraints));
     }
 
-    public void bufferCollectionConstraints(VkBufferCollectionConstraintsInfoFUCHSIA value) {
+    public void bufferCollectionConstraints(@NotNull VkBufferCollectionConstraintsInfoFUCHSIA value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$bufferCollectionConstraints, SIZE$bufferCollectionConstraints);
     }
 

@@ -21,13 +21,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265HrdFlags {
-///     uint32_t nal_hrd_parameters_present_flag : 1;
-///     uint32_t vcl_hrd_parameters_present_flag : 1;
-///     uint32_t sub_pic_hrd_params_present_flag : 1;
-///     uint32_t sub_pic_cpb_params_in_pic_timing_sei_flag : 1;
-///     uint32_t fixed_pic_rate_general_flag : 8;
-///     uint32_t fixed_pic_rate_within_cvs_flag : 8;
-///     uint32_t low_delay_hrd_flag : 8;
+///     uint32_t nal_hrd_parameters_present_flag : 1; // @link substring="nal_hrd_parameters_present_flag" target="#nal_hrd_parameters_present_flag"
+///     uint32_t vcl_hrd_parameters_present_flag : 1; // @link substring="vcl_hrd_parameters_present_flag" target="#vcl_hrd_parameters_present_flag"
+///     uint32_t sub_pic_hrd_params_present_flag : 1; // @link substring="sub_pic_hrd_params_present_flag" target="#sub_pic_hrd_params_present_flag"
+///     uint32_t sub_pic_cpb_params_in_pic_timing_sei_flag : 1; // @link substring="sub_pic_cpb_params_in_pic_timing_sei_flag" target="#sub_pic_cpb_params_in_pic_timing_sei_flag"
+///     uint32_t fixed_pic_rate_general_flag : 8; // @link substring="fixed_pic_rate_general_flag" target="#fixed_pic_rate_general_flag"
+///     uint32_t fixed_pic_rate_within_cvs_flag : 8; // @link substring="fixed_pic_rate_within_cvs_flag" target="#fixed_pic_rate_within_cvs_flag"
+///     uint32_t low_delay_hrd_flag : 8; // @link substring="low_delay_hrd_flag" target="#low_delay_hrd_flag"
 /// } StdVideoH265HrdFlags;
 /// }
 ///

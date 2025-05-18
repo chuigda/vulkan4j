@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeH265SessionParametersAddInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t stdVPSCount; // optional
-///     StdVideoH265VideoParameterSet const* pStdVPSs; // optional
-///     uint32_t stdSPSCount; // optional
-///     StdVideoH265SequenceParameterSet const* pStdSPSs; // optional
-///     uint32_t stdPPSCount; // optional
-///     StdVideoH265PictureParameterSet const* pStdPPSs; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t stdVPSCount; // optional // @link substring="stdVPSCount" target="#stdVPSCount"
+///     StdVideoH265VideoParameterSet const* pStdVPSs; // optional // @link substring="StdVideoH265VideoParameterSet" target="StdVideoH265VideoParameterSet" @link substring="pStdVPSs" target="#pStdVPSs"
+///     uint32_t stdSPSCount; // optional // @link substring="stdSPSCount" target="#stdSPSCount"
+///     StdVideoH265SequenceParameterSet const* pStdSPSs; // optional // @link substring="StdVideoH265SequenceParameterSet" target="StdVideoH265SequenceParameterSet" @link substring="pStdSPSs" target="#pStdSPSs"
+///     uint32_t stdPPSCount; // optional // @link substring="stdPPSCount" target="#stdPPSCount"
+///     StdVideoH265PictureParameterSet const* pStdPPSs; // optional // @link substring="StdVideoH265PictureParameterSet" target="StdVideoH265PictureParameterSet" @link substring="pStdPPSs" target="#pStdPPSs"
 /// } VkVideoEncodeH265SessionParametersAddInfoKHR;
 /// }
 ///
@@ -115,14 +115,6 @@ public record VkVideoEncodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         segment.set(LAYOUT$stdVPSCount, OFFSET$stdVPSCount, value);
     }
 
-    public @pointer(target=StdVideoH265VideoParameterSet.class) MemorySegment pStdVPSsRaw() {
-        return segment.get(LAYOUT$pStdVPSs, OFFSET$pStdVPSs);
-    }
-
-    public void pStdVPSsRaw(@pointer(target=StdVideoH265VideoParameterSet.class) MemorySegment value) {
-        segment.set(LAYOUT$pStdVPSs, OFFSET$pStdVPSs, value);
-    }
-
     public @Nullable StdVideoH265VideoParameterSet pStdVPSs() {
         MemorySegment s = pStdVPSsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -150,20 +142,20 @@ public record VkVideoEncodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         return ret;
     }
 
+    public @pointer(target=StdVideoH265VideoParameterSet.class) MemorySegment pStdVPSsRaw() {
+        return segment.get(LAYOUT$pStdVPSs, OFFSET$pStdVPSs);
+    }
+
+    public void pStdVPSsRaw(@pointer(target=StdVideoH265VideoParameterSet.class) MemorySegment value) {
+        segment.set(LAYOUT$pStdVPSs, OFFSET$pStdVPSs, value);
+    }
+
     public @unsigned int stdSPSCount() {
         return segment.get(LAYOUT$stdSPSCount, OFFSET$stdSPSCount);
     }
 
     public void stdSPSCount(@unsigned int value) {
         segment.set(LAYOUT$stdSPSCount, OFFSET$stdSPSCount, value);
-    }
-
-    public @pointer(target=StdVideoH265SequenceParameterSet.class) MemorySegment pStdSPSsRaw() {
-        return segment.get(LAYOUT$pStdSPSs, OFFSET$pStdSPSs);
-    }
-
-    public void pStdSPSsRaw(@pointer(target=StdVideoH265SequenceParameterSet.class) MemorySegment value) {
-        segment.set(LAYOUT$pStdSPSs, OFFSET$pStdSPSs, value);
     }
 
     public @Nullable StdVideoH265SequenceParameterSet pStdSPSs() {
@@ -193,20 +185,20 @@ public record VkVideoEncodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         return ret;
     }
 
+    public @pointer(target=StdVideoH265SequenceParameterSet.class) MemorySegment pStdSPSsRaw() {
+        return segment.get(LAYOUT$pStdSPSs, OFFSET$pStdSPSs);
+    }
+
+    public void pStdSPSsRaw(@pointer(target=StdVideoH265SequenceParameterSet.class) MemorySegment value) {
+        segment.set(LAYOUT$pStdSPSs, OFFSET$pStdSPSs, value);
+    }
+
     public @unsigned int stdPPSCount() {
         return segment.get(LAYOUT$stdPPSCount, OFFSET$stdPPSCount);
     }
 
     public void stdPPSCount(@unsigned int value) {
         segment.set(LAYOUT$stdPPSCount, OFFSET$stdPPSCount, value);
-    }
-
-    public @pointer(target=StdVideoH265PictureParameterSet.class) MemorySegment pStdPPSsRaw() {
-        return segment.get(LAYOUT$pStdPPSs, OFFSET$pStdPPSs);
-    }
-
-    public void pStdPPSsRaw(@pointer(target=StdVideoH265PictureParameterSet.class) MemorySegment value) {
-        segment.set(LAYOUT$pStdPPSs, OFFSET$pStdPPSs, value);
     }
 
     public @Nullable StdVideoH265PictureParameterSet pStdPPSs() {
@@ -234,6 +226,14 @@ public record VkVideoEncodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
             ret[i] = new StdVideoH265PictureParameterSet(s.asSlice(i * StdVideoH265PictureParameterSet.BYTES, StdVideoH265PictureParameterSet.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoH265PictureParameterSet.class) MemorySegment pStdPPSsRaw() {
+        return segment.get(LAYOUT$pStdPPSs, OFFSET$pStdPPSs);
+    }
+
+    public void pStdPPSsRaw(@pointer(target=StdVideoH265PictureParameterSet.class) MemorySegment value) {
+        segment.set(LAYOUT$pStdPPSs, OFFSET$pStdPPSs, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

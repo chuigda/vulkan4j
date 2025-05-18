@@ -20,18 +20,18 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBindSparseInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t waitSemaphoreCount; // optional
-///     VkSemaphore const* pWaitSemaphores;
-///     uint32_t bufferBindCount; // optional
-///     VkSparseBufferMemoryBindInfo const* pBufferBinds;
-///     uint32_t imageOpaqueBindCount; // optional
-///     VkSparseImageOpaqueMemoryBindInfo const* pImageOpaqueBinds;
-///     uint32_t imageBindCount; // optional
-///     VkSparseImageMemoryBindInfo const* pImageBinds;
-///     uint32_t signalSemaphoreCount; // optional
-///     VkSemaphore const* pSignalSemaphores;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t waitSemaphoreCount; // optional // @link substring="waitSemaphoreCount" target="#waitSemaphoreCount"
+///     VkSemaphore const* pWaitSemaphores; // @link substring="VkSemaphore" target="VkSemaphore" @link substring="pWaitSemaphores" target="#pWaitSemaphores"
+///     uint32_t bufferBindCount; // optional // @link substring="bufferBindCount" target="#bufferBindCount"
+///     VkSparseBufferMemoryBindInfo const* pBufferBinds; // @link substring="VkSparseBufferMemoryBindInfo" target="VkSparseBufferMemoryBindInfo" @link substring="pBufferBinds" target="#pBufferBinds"
+///     uint32_t imageOpaqueBindCount; // optional // @link substring="imageOpaqueBindCount" target="#imageOpaqueBindCount"
+///     VkSparseImageOpaqueMemoryBindInfo const* pImageOpaqueBinds; // @link substring="VkSparseImageOpaqueMemoryBindInfo" target="VkSparseImageOpaqueMemoryBindInfo" @link substring="pImageOpaqueBinds" target="#pImageOpaqueBinds"
+///     uint32_t imageBindCount; // optional // @link substring="imageBindCount" target="#imageBindCount"
+///     VkSparseImageMemoryBindInfo const* pImageBinds; // @link substring="VkSparseImageMemoryBindInfo" target="VkSparseImageMemoryBindInfo" @link substring="pImageBinds" target="#pImageBinds"
+///     uint32_t signalSemaphoreCount; // optional // @link substring="signalSemaphoreCount" target="#signalSemaphoreCount"
+///     VkSemaphore const* pSignalSemaphores; // @link substring="VkSemaphore" target="VkSemaphore" @link substring="pSignalSemaphores" target="#pSignalSemaphores"
 /// } VkBindSparseInfo;
 /// }
 ///
@@ -119,14 +119,6 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPoint
         segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
     }
 
-    public @pointer(target=VkSemaphore.class) MemorySegment pWaitSemaphoresRaw() {
-        return segment.get(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores);
-    }
-
-    public void pWaitSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
-        segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
-    }
-
     /// Note: the returned {@link VkSemaphore.Ptr} does not have correct {@link VkSemaphore.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkSemaphore.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -144,20 +136,20 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPoint
         pWaitSemaphoresRaw(s);
     }
 
+    public @pointer(target=VkSemaphore.class) MemorySegment pWaitSemaphoresRaw() {
+        return segment.get(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores);
+    }
+
+    public void pWaitSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
+        segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
+    }
+
     public @unsigned int bufferBindCount() {
         return segment.get(LAYOUT$bufferBindCount, OFFSET$bufferBindCount);
     }
 
     public void bufferBindCount(@unsigned int value) {
         segment.set(LAYOUT$bufferBindCount, OFFSET$bufferBindCount, value);
-    }
-
-    public @pointer(target=VkSparseBufferMemoryBindInfo.class) MemorySegment pBufferBindsRaw() {
-        return segment.get(LAYOUT$pBufferBinds, OFFSET$pBufferBinds);
-    }
-
-    public void pBufferBindsRaw(@pointer(target=VkSparseBufferMemoryBindInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pBufferBinds, OFFSET$pBufferBinds, value);
     }
 
     public @Nullable VkSparseBufferMemoryBindInfo pBufferBinds() {
@@ -187,20 +179,20 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPoint
         return ret;
     }
 
+    public @pointer(target=VkSparseBufferMemoryBindInfo.class) MemorySegment pBufferBindsRaw() {
+        return segment.get(LAYOUT$pBufferBinds, OFFSET$pBufferBinds);
+    }
+
+    public void pBufferBindsRaw(@pointer(target=VkSparseBufferMemoryBindInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pBufferBinds, OFFSET$pBufferBinds, value);
+    }
+
     public @unsigned int imageOpaqueBindCount() {
         return segment.get(LAYOUT$imageOpaqueBindCount, OFFSET$imageOpaqueBindCount);
     }
 
     public void imageOpaqueBindCount(@unsigned int value) {
         segment.set(LAYOUT$imageOpaqueBindCount, OFFSET$imageOpaqueBindCount, value);
-    }
-
-    public @pointer(target=VkSparseImageOpaqueMemoryBindInfo.class) MemorySegment pImageOpaqueBindsRaw() {
-        return segment.get(LAYOUT$pImageOpaqueBinds, OFFSET$pImageOpaqueBinds);
-    }
-
-    public void pImageOpaqueBindsRaw(@pointer(target=VkSparseImageOpaqueMemoryBindInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pImageOpaqueBinds, OFFSET$pImageOpaqueBinds, value);
     }
 
     public @Nullable VkSparseImageOpaqueMemoryBindInfo pImageOpaqueBinds() {
@@ -230,20 +222,20 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPoint
         return ret;
     }
 
+    public @pointer(target=VkSparseImageOpaqueMemoryBindInfo.class) MemorySegment pImageOpaqueBindsRaw() {
+        return segment.get(LAYOUT$pImageOpaqueBinds, OFFSET$pImageOpaqueBinds);
+    }
+
+    public void pImageOpaqueBindsRaw(@pointer(target=VkSparseImageOpaqueMemoryBindInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pImageOpaqueBinds, OFFSET$pImageOpaqueBinds, value);
+    }
+
     public @unsigned int imageBindCount() {
         return segment.get(LAYOUT$imageBindCount, OFFSET$imageBindCount);
     }
 
     public void imageBindCount(@unsigned int value) {
         segment.set(LAYOUT$imageBindCount, OFFSET$imageBindCount, value);
-    }
-
-    public @pointer(target=VkSparseImageMemoryBindInfo.class) MemorySegment pImageBindsRaw() {
-        return segment.get(LAYOUT$pImageBinds, OFFSET$pImageBinds);
-    }
-
-    public void pImageBindsRaw(@pointer(target=VkSparseImageMemoryBindInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pImageBinds, OFFSET$pImageBinds, value);
     }
 
     public @Nullable VkSparseImageMemoryBindInfo pImageBinds() {
@@ -273,20 +265,20 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPoint
         return ret;
     }
 
+    public @pointer(target=VkSparseImageMemoryBindInfo.class) MemorySegment pImageBindsRaw() {
+        return segment.get(LAYOUT$pImageBinds, OFFSET$pImageBinds);
+    }
+
+    public void pImageBindsRaw(@pointer(target=VkSparseImageMemoryBindInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pImageBinds, OFFSET$pImageBinds, value);
+    }
+
     public @unsigned int signalSemaphoreCount() {
         return segment.get(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount);
     }
 
     public void signalSemaphoreCount(@unsigned int value) {
         segment.set(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount, value);
-    }
-
-    public @pointer(target=VkSemaphore.class) MemorySegment pSignalSemaphoresRaw() {
-        return segment.get(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores);
-    }
-
-    public void pSignalSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
-        segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
     }
 
     /// Note: the returned {@link VkSemaphore.Ptr} does not have correct {@link VkSemaphore.Ptr#size}
@@ -304,6 +296,14 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPoint
     public void pSignalSemaphores(@Nullable VkSemaphore.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoresRaw(s);
+    }
+
+    public @pointer(target=VkSemaphore.class) MemorySegment pSignalSemaphoresRaw() {
+        return segment.get(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores);
+    }
+
+    public void pSignalSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
+        segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

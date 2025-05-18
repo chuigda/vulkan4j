@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMemoryRequirements2 {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkMemoryRequirements memoryRequirements;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkMemoryRequirements memoryRequirements; // @link substring="VkMemoryRequirements" target="VkMemoryRequirements" @link substring="memoryRequirements" target="#memoryRequirements"
 /// } VkMemoryRequirements2;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkMemoryRequirements2(@NotNull MemorySegment segment) implements I
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkMemoryRequirements memoryRequirements() {
+    public @NotNull VkMemoryRequirements memoryRequirements() {
         return new VkMemoryRequirements(segment.asSlice(OFFSET$memoryRequirements, LAYOUT$memoryRequirements));
     }
 
-    public void memoryRequirements(VkMemoryRequirements value) {
+    public void memoryRequirements(@NotNull VkMemoryRequirements value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryRequirements, SIZE$memoryRequirements);
     }
 

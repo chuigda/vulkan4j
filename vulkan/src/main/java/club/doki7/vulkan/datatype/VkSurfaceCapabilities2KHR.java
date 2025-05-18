@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSurfaceCapabilities2KHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkSurfaceCapabilitiesKHR surfaceCapabilities;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSurfaceCapabilitiesKHR surfaceCapabilities; // @link substring="VkSurfaceCapabilitiesKHR" target="VkSurfaceCapabilitiesKHR" @link substring="surfaceCapabilities" target="#surfaceCapabilities"
 /// } VkSurfaceCapabilities2KHR;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkSurfaceCapabilities2KHR(@NotNull MemorySegment segment) implemen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkSurfaceCapabilitiesKHR surfaceCapabilities() {
+    public @NotNull VkSurfaceCapabilitiesKHR surfaceCapabilities() {
         return new VkSurfaceCapabilitiesKHR(segment.asSlice(OFFSET$surfaceCapabilities, LAYOUT$surfaceCapabilities));
     }
 
-    public void surfaceCapabilities(VkSurfaceCapabilitiesKHR value) {
+    public void surfaceCapabilities(@NotNull VkSurfaceCapabilitiesKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$surfaceCapabilities, SIZE$surfaceCapabilities);
     }
 

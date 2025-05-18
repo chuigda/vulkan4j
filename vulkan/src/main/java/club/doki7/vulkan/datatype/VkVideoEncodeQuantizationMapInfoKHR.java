@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeQuantizationMapInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImageView quantizationMap; // optional
-///     VkExtent2D quantizationMapExtent;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageView quantizationMap; // optional // @link substring="VkImageView" target="VkImageView" @link substring="quantizationMap" target="#quantizationMap"
+///     VkExtent2D quantizationMapExtent; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="quantizationMapExtent" target="#quantizationMapExtent"
 /// } VkVideoEncodeQuantizationMapInfoKHR;
 /// }
 ///
@@ -115,11 +115,11 @@ public record VkVideoEncodeQuantizationMapInfoKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$quantizationMap, OFFSET$quantizationMap, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public VkExtent2D quantizationMapExtent() {
+    public @NotNull VkExtent2D quantizationMapExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$quantizationMapExtent, LAYOUT$quantizationMapExtent));
     }
 
-    public void quantizationMapExtent(VkExtent2D value) {
+    public void quantizationMapExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$quantizationMapExtent, SIZE$quantizationMapExtent);
     }
 

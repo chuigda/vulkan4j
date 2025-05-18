@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkClusterAccelerationStructureTriangleClusterInputNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkFormat vertexFormat;
-///     uint32_t maxGeometryIndexValue;
-///     uint32_t maxClusterUniqueGeometryCount;
-///     uint32_t maxClusterTriangleCount;
-///     uint32_t maxClusterVertexCount;
-///     uint32_t maxTotalTriangleCount;
-///     uint32_t maxTotalVertexCount;
-///     uint32_t minPositionTruncateBitCount;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkFormat vertexFormat; // @link substring="VkFormat" target="VkFormat" @link substring="vertexFormat" target="#vertexFormat"
+///     uint32_t maxGeometryIndexValue; // @link substring="maxGeometryIndexValue" target="#maxGeometryIndexValue"
+///     uint32_t maxClusterUniqueGeometryCount; // @link substring="maxClusterUniqueGeometryCount" target="#maxClusterUniqueGeometryCount"
+///     uint32_t maxClusterTriangleCount; // @link substring="maxClusterTriangleCount" target="#maxClusterTriangleCount"
+///     uint32_t maxClusterVertexCount; // @link substring="maxClusterVertexCount" target="#maxClusterVertexCount"
+///     uint32_t maxTotalTriangleCount; // @link substring="maxTotalTriangleCount" target="#maxTotalTriangleCount"
+///     uint32_t maxTotalVertexCount; // @link substring="maxTotalVertexCount" target="#maxTotalVertexCount"
+///     uint32_t minPositionTruncateBitCount; // @link substring="minPositionTruncateBitCount" target="#minPositionTruncateBitCount"
 /// } VkClusterAccelerationStructureTriangleClusterInputNV;
 /// }
 ///

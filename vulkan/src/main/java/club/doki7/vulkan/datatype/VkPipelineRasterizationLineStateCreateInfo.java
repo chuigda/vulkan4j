@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineRasterizationLineStateCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkLineRasterizationMode lineRasterizationMode;
-///     VkBool32 stippledLineEnable;
-///     uint32_t lineStippleFactor;
-///     uint16_t lineStipplePattern;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkLineRasterizationMode lineRasterizationMode; // @link substring="VkLineRasterizationMode" target="VkLineRasterizationMode" @link substring="lineRasterizationMode" target="#lineRasterizationMode"
+///     VkBool32 stippledLineEnable; // @link substring="stippledLineEnable" target="#stippledLineEnable"
+///     uint32_t lineStippleFactor; // @link substring="lineStippleFactor" target="#lineStippleFactor"
+///     uint16_t lineStipplePattern; // @link substring="lineStipplePattern" target="#lineStipplePattern"
 /// } VkPipelineRasterizationLineStateCreateInfo;
 /// }
 ///

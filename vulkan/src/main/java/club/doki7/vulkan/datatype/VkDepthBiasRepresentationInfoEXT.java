@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDepthBiasRepresentationInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDepthBiasRepresentationEXT depthBiasRepresentation;
-///     VkBool32 depthBiasExact;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDepthBiasRepresentationEXT depthBiasRepresentation; // @link substring="VkDepthBiasRepresentationEXT" target="VkDepthBiasRepresentationEXT" @link substring="depthBiasRepresentation" target="#depthBiasRepresentation"
+///     VkBool32 depthBiasExact; // @link substring="depthBiasExact" target="#depthBiasExact"
 /// } VkDepthBiasRepresentationInfoEXT;
 /// }
 ///

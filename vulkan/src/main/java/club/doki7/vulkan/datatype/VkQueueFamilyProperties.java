@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkQueueFamilyProperties {
-///     VkQueueFlags queueFlags; // optional
-///     uint32_t queueCount;
-///     uint32_t timestampValidBits;
-///     VkExtent3D minImageTransferGranularity;
+///     VkQueueFlags queueFlags; // optional // @link substring="VkQueueFlags" target="VkQueueFlags" @link substring="queueFlags" target="#queueFlags"
+///     uint32_t queueCount; // @link substring="queueCount" target="#queueCount"
+///     uint32_t timestampValidBits; // @link substring="timestampValidBits" target="#timestampValidBits"
+///     VkExtent3D minImageTransferGranularity; // @link substring="VkExtent3D" target="VkExtent3D" @link substring="minImageTransferGranularity" target="#minImageTransferGranularity"
 /// } VkQueueFamilyProperties;
 /// }
 ///
@@ -93,11 +93,11 @@ public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$timestampValidBits, OFFSET$timestampValidBits, value);
     }
 
-    public VkExtent3D minImageTransferGranularity() {
+    public @NotNull VkExtent3D minImageTransferGranularity() {
         return new VkExtent3D(segment.asSlice(OFFSET$minImageTransferGranularity, LAYOUT$minImageTransferGranularity));
     }
 
-    public void minImageTransferGranularity(VkExtent3D value) {
+    public void minImageTransferGranularity(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minImageTransferGranularity, SIZE$minImageTransferGranularity);
     }
 

@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceImage2DViewOf3DFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 image2DViewOf3D;
-///     VkBool32 sampler2DViewOf3D;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 image2DViewOf3D; // @link substring="image2DViewOf3D" target="#image2DViewOf3D"
+///     VkBool32 sampler2DViewOf3D; // @link substring="sampler2DViewOf3D" target="#sampler2DViewOf3D"
 /// } VkPhysicalDeviceImage2DViewOf3DFeaturesEXT;
 /// }
 ///

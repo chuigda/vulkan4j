@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderEnqueuePropertiesAMDX {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t maxExecutionGraphDepth;
-///     uint32_t maxExecutionGraphShaderOutputNodes;
-///     uint32_t maxExecutionGraphShaderPayloadSize;
-///     uint32_t maxExecutionGraphShaderPayloadCount;
-///     uint32_t executionGraphDispatchAddressAlignment;
-///     uint32_t maxExecutionGraphWorkgroupCount;
-///     uint32_t maxExecutionGraphWorkgroups;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxExecutionGraphDepth; // @link substring="maxExecutionGraphDepth" target="#maxExecutionGraphDepth"
+///     uint32_t maxExecutionGraphShaderOutputNodes; // @link substring="maxExecutionGraphShaderOutputNodes" target="#maxExecutionGraphShaderOutputNodes"
+///     uint32_t maxExecutionGraphShaderPayloadSize; // @link substring="maxExecutionGraphShaderPayloadSize" target="#maxExecutionGraphShaderPayloadSize"
+///     uint32_t maxExecutionGraphShaderPayloadCount; // @link substring="maxExecutionGraphShaderPayloadCount" target="#maxExecutionGraphShaderPayloadCount"
+///     uint32_t executionGraphDispatchAddressAlignment; // @link substring="executionGraphDispatchAddressAlignment" target="#executionGraphDispatchAddressAlignment"
+///     uint32_t maxExecutionGraphWorkgroupCount; // @link substring="maxExecutionGraphWorkgroupCount" target="#maxExecutionGraphWorkgroupCount"
+///     uint32_t maxExecutionGraphWorkgroups; // @link substring="maxExecutionGraphWorkgroups" target="#maxExecutionGraphWorkgroups"
 /// } VkPhysicalDeviceShaderEnqueuePropertiesAMDX;
 /// }
 ///

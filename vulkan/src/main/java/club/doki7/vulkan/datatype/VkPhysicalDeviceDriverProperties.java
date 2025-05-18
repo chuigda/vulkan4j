@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceDriverProperties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkDriverId driverID;
-///     char driverName;
-///     char driverInfo;
-///     VkConformanceVersion conformanceVersion;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDriverId driverID; // @link substring="VkDriverId" target="VkDriverId" @link substring="driverID" target="#driverID"
+///     char driverName; // @link substring="driverName" target="#driverName"
+///     char driverInfo; // @link substring="driverInfo" target="#driverInfo"
+///     VkConformanceVersion conformanceVersion; // @link substring="VkConformanceVersion" target="VkConformanceVersion" @link substring="conformanceVersion" target="#conformanceVersion"
 /// } VkPhysicalDeviceDriverProperties;
 /// }
 ///
@@ -129,11 +129,11 @@ public record VkPhysicalDeviceDriverProperties(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$driverInfo, OFFSET$driverInfo, value);
     }
 
-    public VkConformanceVersion conformanceVersion() {
+    public @NotNull VkConformanceVersion conformanceVersion() {
         return new VkConformanceVersion(segment.asSlice(OFFSET$conformanceVersion, LAYOUT$conformanceVersion));
     }
 
-    public void conformanceVersion(VkConformanceVersion value) {
+    public void conformanceVersion(@NotNull VkConformanceVersion value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$conformanceVersion, SIZE$conformanceVersion);
     }
 

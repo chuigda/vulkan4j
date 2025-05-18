@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBufferConstraintsInfoFUCHSIA {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBufferCreateInfo createInfo;
-///     VkFormatFeatureFlags requiredFormatFeatures; // optional
-///     VkBufferCollectionConstraintsInfoFUCHSIA bufferCollectionConstraints;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBufferCreateInfo createInfo; // @link substring="VkBufferCreateInfo" target="VkBufferCreateInfo" @link substring="createInfo" target="#createInfo"
+///     VkFormatFeatureFlags requiredFormatFeatures; // optional // @link substring="VkFormatFeatureFlags" target="VkFormatFeatureFlags" @link substring="requiredFormatFeatures" target="#requiredFormatFeatures"
+///     VkBufferCollectionConstraintsInfoFUCHSIA bufferCollectionConstraints; // @link substring="VkBufferCollectionConstraintsInfoFUCHSIA" target="VkBufferCollectionConstraintsInfoFUCHSIA" @link substring="bufferCollectionConstraints" target="#bufferCollectionConstraints"
 /// } VkBufferConstraintsInfoFUCHSIA;
 /// }
 ///
@@ -104,11 +104,11 @@ public record VkBufferConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) imp
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkBufferCreateInfo createInfo() {
+    public @NotNull VkBufferCreateInfo createInfo() {
         return new VkBufferCreateInfo(segment.asSlice(OFFSET$createInfo, LAYOUT$createInfo));
     }
 
-    public void createInfo(VkBufferCreateInfo value) {
+    public void createInfo(@NotNull VkBufferCreateInfo value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$createInfo, SIZE$createInfo);
     }
 
@@ -120,11 +120,11 @@ public record VkBufferConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$requiredFormatFeatures, OFFSET$requiredFormatFeatures, value);
     }
 
-    public VkBufferCollectionConstraintsInfoFUCHSIA bufferCollectionConstraints() {
+    public @NotNull VkBufferCollectionConstraintsInfoFUCHSIA bufferCollectionConstraints() {
         return new VkBufferCollectionConstraintsInfoFUCHSIA(segment.asSlice(OFFSET$bufferCollectionConstraints, LAYOUT$bufferCollectionConstraints));
     }
 
-    public void bufferCollectionConstraints(VkBufferCollectionConstraintsInfoFUCHSIA value) {
+    public void bufferCollectionConstraints(@NotNull VkBufferCollectionConstraintsInfoFUCHSIA value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$bufferCollectionConstraints, SIZE$bufferCollectionConstraints);
     }
 

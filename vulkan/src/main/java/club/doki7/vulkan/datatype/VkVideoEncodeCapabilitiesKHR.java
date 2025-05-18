@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeCapabilitiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkVideoEncodeCapabilityFlagsKHR flags;
-///     VkVideoEncodeRateControlModeFlagsKHR rateControlModes;
-///     uint32_t maxRateControlLayers;
-///     uint64_t maxBitrate;
-///     uint32_t maxQualityLevels;
-///     VkExtent2D encodeInputPictureGranularity;
-///     VkVideoEncodeFeedbackFlagsKHR supportedEncodeFeedbackFlags;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkVideoEncodeCapabilityFlagsKHR flags; // @link substring="VkVideoEncodeCapabilityFlagsKHR" target="VkVideoEncodeCapabilityFlagsKHR" @link substring="flags" target="#flags"
+///     VkVideoEncodeRateControlModeFlagsKHR rateControlModes; // @link substring="VkVideoEncodeRateControlModeFlagsKHR" target="VkVideoEncodeRateControlModeFlagsKHR" @link substring="rateControlModes" target="#rateControlModes"
+///     uint32_t maxRateControlLayers; // @link substring="maxRateControlLayers" target="#maxRateControlLayers"
+///     uint64_t maxBitrate; // @link substring="maxBitrate" target="#maxBitrate"
+///     uint32_t maxQualityLevels; // @link substring="maxQualityLevels" target="#maxQualityLevels"
+///     VkExtent2D encodeInputPictureGranularity; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="encodeInputPictureGranularity" target="#encodeInputPictureGranularity"
+///     VkVideoEncodeFeedbackFlagsKHR supportedEncodeFeedbackFlags; // @link substring="VkVideoEncodeFeedbackFlagsKHR" target="VkVideoEncodeFeedbackFlagsKHR" @link substring="supportedEncodeFeedbackFlags" target="#supportedEncodeFeedbackFlags"
 /// } VkVideoEncodeCapabilitiesKHR;
 /// }
 ///
@@ -148,11 +148,11 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$maxQualityLevels, OFFSET$maxQualityLevels, value);
     }
 
-    public VkExtent2D encodeInputPictureGranularity() {
+    public @NotNull VkExtent2D encodeInputPictureGranularity() {
         return new VkExtent2D(segment.asSlice(OFFSET$encodeInputPictureGranularity, LAYOUT$encodeInputPictureGranularity));
     }
 
-    public void encodeInputPictureGranularity(VkExtent2D value) {
+    public void encodeInputPictureGranularity(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$encodeInputPictureGranularity, SIZE$encodeInputPictureGranularity);
     }
 

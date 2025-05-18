@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceSparseProperties {
-///     VkBool32 residencyStandard2DBlockShape;
-///     VkBool32 residencyStandard2DMultisampleBlockShape;
-///     VkBool32 residencyStandard3DBlockShape;
-///     VkBool32 residencyAlignedMipSize;
-///     VkBool32 residencyNonResidentStrict;
+///     VkBool32 residencyStandard2DBlockShape; // @link substring="residencyStandard2DBlockShape" target="#residencyStandard2DBlockShape"
+///     VkBool32 residencyStandard2DMultisampleBlockShape; // @link substring="residencyStandard2DMultisampleBlockShape" target="#residencyStandard2DMultisampleBlockShape"
+///     VkBool32 residencyStandard3DBlockShape; // @link substring="residencyStandard3DBlockShape" target="#residencyStandard3DBlockShape"
+///     VkBool32 residencyAlignedMipSize; // @link substring="residencyAlignedMipSize" target="#residencyAlignedMipSize"
+///     VkBool32 residencyNonResidentStrict; // @link substring="residencyNonResidentStrict" target="#residencyNonResidentStrict"
 /// } VkPhysicalDeviceSparseProperties;
 /// }
 ///

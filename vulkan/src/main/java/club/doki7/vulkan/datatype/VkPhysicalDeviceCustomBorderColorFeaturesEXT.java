@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceCustomBorderColorFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 customBorderColors;
-///     VkBool32 customBorderColorWithoutFormat;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 customBorderColors; // @link substring="customBorderColors" target="#customBorderColors"
+///     VkBool32 customBorderColorWithoutFormat; // @link substring="customBorderColorWithoutFormat" target="#customBorderColorWithoutFormat"
 /// } VkPhysicalDeviceCustomBorderColorFeaturesEXT;
 /// }
 ///

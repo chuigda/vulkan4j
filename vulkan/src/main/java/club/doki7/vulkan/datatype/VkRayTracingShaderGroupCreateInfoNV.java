@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRayTracingShaderGroupCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkRayTracingShaderGroupTypeKHR type;
-///     uint32_t generalShader;
-///     uint32_t closestHitShader;
-///     uint32_t anyHitShader;
-///     uint32_t intersectionShader;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkRayTracingShaderGroupTypeKHR type; // @link substring="VkRayTracingShaderGroupTypeKHR" target="VkRayTracingShaderGroupTypeKHR" @link substring="type" target="#type"
+///     uint32_t generalShader; // @link substring="generalShader" target="#generalShader"
+///     uint32_t closestHitShader; // @link substring="closestHitShader" target="#closestHitShader"
+///     uint32_t anyHitShader; // @link substring="anyHitShader" target="#anyHitShader"
+///     uint32_t intersectionShader; // @link substring="intersectionShader" target="#intersectionShader"
 /// } VkRayTracingShaderGroupCreateInfoNV;
 /// }
 ///

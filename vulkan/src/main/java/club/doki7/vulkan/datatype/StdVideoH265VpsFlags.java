@@ -21,10 +21,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265VpsFlags {
-///     uint32_t vps_temporal_id_nesting_flag : 1;
-///     uint32_t vps_sub_layer_ordering_info_present_flag : 1;
-///     uint32_t vps_timing_info_present_flag : 1;
-///     uint32_t vps_poc_proportional_to_timing_flag : 1;
+///     uint32_t vps_temporal_id_nesting_flag : 1; // @link substring="vps_temporal_id_nesting_flag" target="#vps_temporal_id_nesting_flag"
+///     uint32_t vps_sub_layer_ordering_info_present_flag : 1; // @link substring="vps_sub_layer_ordering_info_present_flag" target="#vps_sub_layer_ordering_info_present_flag"
+///     uint32_t vps_timing_info_present_flag : 1; // @link substring="vps_timing_info_present_flag" target="#vps_timing_info_present_flag"
+///     uint32_t vps_poc_proportional_to_timing_flag : 1; // @link substring="vps_poc_proportional_to_timing_flag" target="#vps_poc_proportional_to_timing_flag"
 /// } StdVideoH265VpsFlags;
 /// }
 ///

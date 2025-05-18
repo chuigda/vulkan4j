@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDispatchGraphCountInfoAMDX {
-///     uint32_t count; // optional
-///     VkDeviceOrHostAddressConstAMDX infos;
-///     uint64_t stride;
+///     uint32_t count; // optional // @link substring="count" target="#count"
+///     VkDeviceOrHostAddressConstAMDX infos; // @link substring="VkDeviceOrHostAddressConstAMDX" target="VkDeviceOrHostAddressConstAMDX" @link substring="infos" target="#infos"
+///     uint64_t stride; // @link substring="stride" target="#stride"
 /// } VkDispatchGraphCountInfoAMDX;
 /// }
 ///
@@ -76,11 +76,11 @@ public record VkDispatchGraphCountInfoAMDX(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$count, OFFSET$count, value);
     }
 
-    public VkDeviceOrHostAddressConstAMDX infos() {
+    public @NotNull VkDeviceOrHostAddressConstAMDX infos() {
         return new VkDeviceOrHostAddressConstAMDX(segment.asSlice(OFFSET$infos, LAYOUT$infos));
     }
 
-    public void infos(VkDeviceOrHostAddressConstAMDX value) {
+    public void infos(@NotNull VkDeviceOrHostAddressConstAMDX value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$infos, SIZE$infos);
     }
 

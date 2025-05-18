@@ -20,18 +20,18 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265VideoParameterSet {
-///     StdVideoH265VpsFlags flags;
-///     uint8_t vps_video_parameter_set_id;
-///     uint8_t vps_max_sub_layers_minus1;
-///     uint8_t reserved1;
-///     uint8_t reserved2;
-///     uint32_t vps_num_units_in_tick;
-///     uint32_t vps_time_scale;
-///     uint32_t vps_num_ticks_poc_diff_one_minus1;
-///     uint32_t reserved3;
-///     StdVideoH265DecPicBufMgr const* pDecPicBufMgr;
-///     StdVideoH265HrdParameters const* pHrdParameters;
-///     StdVideoH265ProfileTierLevel const* pProfileTierLevel;
+///     StdVideoH265VpsFlags flags; // @link substring="StdVideoH265VpsFlags" target="StdVideoH265VpsFlags" @link substring="flags" target="#flags"
+///     uint8_t vps_video_parameter_set_id; // @link substring="vps_video_parameter_set_id" target="#vps_video_parameter_set_id"
+///     uint8_t vps_max_sub_layers_minus1; // @link substring="vps_max_sub_layers_minus1" target="#vps_max_sub_layers_minus1"
+///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint8_t reserved2; // @link substring="reserved2" target="#reserved2"
+///     uint32_t vps_num_units_in_tick; // @link substring="vps_num_units_in_tick" target="#vps_num_units_in_tick"
+///     uint32_t vps_time_scale; // @link substring="vps_time_scale" target="#vps_time_scale"
+///     uint32_t vps_num_ticks_poc_diff_one_minus1; // @link substring="vps_num_ticks_poc_diff_one_minus1" target="#vps_num_ticks_poc_diff_one_minus1"
+///     uint32_t reserved3; // @link substring="reserved3" target="#reserved3"
+///     StdVideoH265DecPicBufMgr const* pDecPicBufMgr; // @link substring="StdVideoH265DecPicBufMgr" target="StdVideoH265DecPicBufMgr" @link substring="pDecPicBufMgr" target="#pDecPicBufMgr"
+///     StdVideoH265HrdParameters const* pHrdParameters; // @link substring="StdVideoH265HrdParameters" target="StdVideoH265HrdParameters" @link substring="pHrdParameters" target="#pHrdParameters"
+///     StdVideoH265ProfileTierLevel const* pProfileTierLevel; // @link substring="StdVideoH265ProfileTierLevel" target="StdVideoH265ProfileTierLevel" @link substring="pProfileTierLevel" target="#pProfileTierLevel"
 /// } StdVideoH265VideoParameterSet;
 /// }
 ///
@@ -75,11 +75,11 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public StdVideoH265VpsFlags flags() {
+    public @NotNull StdVideoH265VpsFlags flags() {
         return new StdVideoH265VpsFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoH265VpsFlags value) {
+    public void flags(@NotNull StdVideoH265VpsFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
@@ -147,14 +147,6 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$reserved3, OFFSET$reserved3, value);
     }
 
-    public @pointer(target=StdVideoH265DecPicBufMgr.class) MemorySegment pDecPicBufMgrRaw() {
-        return segment.get(LAYOUT$pDecPicBufMgr, OFFSET$pDecPicBufMgr);
-    }
-
-    public void pDecPicBufMgrRaw(@pointer(target=StdVideoH265DecPicBufMgr.class) MemorySegment value) {
-        segment.set(LAYOUT$pDecPicBufMgr, OFFSET$pDecPicBufMgr, value);
-    }
-
     public @Nullable StdVideoH265DecPicBufMgr pDecPicBufMgr() {
         MemorySegment s = pDecPicBufMgrRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -182,12 +174,12 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @pointer(target=StdVideoH265HrdParameters.class) MemorySegment pHrdParametersRaw() {
-        return segment.get(LAYOUT$pHrdParameters, OFFSET$pHrdParameters);
+    public @pointer(target=StdVideoH265DecPicBufMgr.class) MemorySegment pDecPicBufMgrRaw() {
+        return segment.get(LAYOUT$pDecPicBufMgr, OFFSET$pDecPicBufMgr);
     }
 
-    public void pHrdParametersRaw(@pointer(target=StdVideoH265HrdParameters.class) MemorySegment value) {
-        segment.set(LAYOUT$pHrdParameters, OFFSET$pHrdParameters, value);
+    public void pDecPicBufMgrRaw(@pointer(target=StdVideoH265DecPicBufMgr.class) MemorySegment value) {
+        segment.set(LAYOUT$pDecPicBufMgr, OFFSET$pDecPicBufMgr, value);
     }
 
     public @Nullable StdVideoH265HrdParameters pHrdParameters() {
@@ -217,12 +209,12 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @pointer(target=StdVideoH265ProfileTierLevel.class) MemorySegment pProfileTierLevelRaw() {
-        return segment.get(LAYOUT$pProfileTierLevel, OFFSET$pProfileTierLevel);
+    public @pointer(target=StdVideoH265HrdParameters.class) MemorySegment pHrdParametersRaw() {
+        return segment.get(LAYOUT$pHrdParameters, OFFSET$pHrdParameters);
     }
 
-    public void pProfileTierLevelRaw(@pointer(target=StdVideoH265ProfileTierLevel.class) MemorySegment value) {
-        segment.set(LAYOUT$pProfileTierLevel, OFFSET$pProfileTierLevel, value);
+    public void pHrdParametersRaw(@pointer(target=StdVideoH265HrdParameters.class) MemorySegment value) {
+        segment.set(LAYOUT$pHrdParameters, OFFSET$pHrdParameters, value);
     }
 
     public @Nullable StdVideoH265ProfileTierLevel pProfileTierLevel() {
@@ -250,6 +242,14 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
             ret[i] = new StdVideoH265ProfileTierLevel(s.asSlice(i * StdVideoH265ProfileTierLevel.BYTES, StdVideoH265ProfileTierLevel.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoH265ProfileTierLevel.class) MemorySegment pProfileTierLevelRaw() {
+        return segment.get(LAYOUT$pProfileTierLevel, OFFSET$pProfileTierLevel);
+    }
+
+    public void pProfileTierLevelRaw(@pointer(target=StdVideoH265ProfileTierLevel.class) MemorySegment value) {
+        segment.set(LAYOUT$pProfileTierLevel, OFFSET$pProfileTierLevel, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

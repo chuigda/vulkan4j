@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSubresourceLayout {
-///     VkDeviceSize offset;
-///     VkDeviceSize size;
-///     VkDeviceSize rowPitch;
-///     VkDeviceSize arrayPitch;
-///     VkDeviceSize depthPitch;
+///     VkDeviceSize offset; // @link substring="offset" target="#offset"
+///     VkDeviceSize size; // @link substring="size" target="#size"
+///     VkDeviceSize rowPitch; // @link substring="rowPitch" target="#rowPitch"
+///     VkDeviceSize arrayPitch; // @link substring="arrayPitch" target="#arrayPitch"
+///     VkDeviceSize depthPitch; // @link substring="depthPitch" target="#depthPitch"
 /// } VkSubresourceLayout;
 /// }
 ///

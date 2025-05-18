@@ -20,18 +20,18 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkGeneratedCommandsInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkShaderStageFlags shaderStages;
-///     VkIndirectExecutionSetEXT indirectExecutionSet; // optional
-///     VkIndirectCommandsLayoutEXT indirectCommandsLayout;
-///     VkDeviceAddress indirectAddress;
-///     VkDeviceSize indirectAddressSize;
-///     VkDeviceAddress preprocessAddress; // optional
-///     VkDeviceSize preprocessSize;
-///     uint32_t maxSequenceCount;
-///     VkDeviceAddress sequenceCountAddress; // optional
-///     uint32_t maxDrawCount;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkShaderStageFlags shaderStages; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="shaderStages" target="#shaderStages"
+///     VkIndirectExecutionSetEXT indirectExecutionSet; // optional // @link substring="VkIndirectExecutionSetEXT" target="VkIndirectExecutionSetEXT" @link substring="indirectExecutionSet" target="#indirectExecutionSet"
+///     VkIndirectCommandsLayoutEXT indirectCommandsLayout; // @link substring="VkIndirectCommandsLayoutEXT" target="VkIndirectCommandsLayoutEXT" @link substring="indirectCommandsLayout" target="#indirectCommandsLayout"
+///     VkDeviceAddress indirectAddress; // @link substring="indirectAddress" target="#indirectAddress"
+///     VkDeviceSize indirectAddressSize; // @link substring="indirectAddressSize" target="#indirectAddressSize"
+///     VkDeviceAddress preprocessAddress; // optional // @link substring="preprocessAddress" target="#preprocessAddress"
+///     VkDeviceSize preprocessSize; // @link substring="preprocessSize" target="#preprocessSize"
+///     uint32_t maxSequenceCount; // @link substring="maxSequenceCount" target="#maxSequenceCount"
+///     VkDeviceAddress sequenceCountAddress; // optional // @link substring="sequenceCountAddress" target="#sequenceCountAddress"
+///     uint32_t maxDrawCount; // @link substring="maxDrawCount" target="#maxDrawCount"
 /// } VkGeneratedCommandsInfoEXT;
 /// }
 ///

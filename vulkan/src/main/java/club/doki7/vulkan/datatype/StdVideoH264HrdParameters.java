@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH264HrdParameters {
-///     uint8_t cpb_cnt_minus1;
-///     uint8_t bit_rate_scale;
-///     uint8_t cpb_size_scale;
-///     uint8_t reserved1;
-///     uint32_t bit_rate_value_minus1;
-///     uint32_t cpb_size_value_minus1;
-///     uint8_t cbr_flag;
-///     uint32_t initial_cpb_removal_delay_length_minus1;
-///     uint32_t cpb_removal_delay_length_minus1;
-///     uint32_t dpb_output_delay_length_minus1;
-///     uint32_t time_offset_length;
+///     uint8_t cpb_cnt_minus1; // @link substring="cpb_cnt_minus1" target="#cpb_cnt_minus1"
+///     uint8_t bit_rate_scale; // @link substring="bit_rate_scale" target="#bit_rate_scale"
+///     uint8_t cpb_size_scale; // @link substring="cpb_size_scale" target="#cpb_size_scale"
+///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint32_t bit_rate_value_minus1; // @link substring="bit_rate_value_minus1" target="#bit_rate_value_minus1"
+///     uint32_t cpb_size_value_minus1; // @link substring="cpb_size_value_minus1" target="#cpb_size_value_minus1"
+///     uint8_t cbr_flag; // @link substring="cbr_flag" target="#cbr_flag"
+///     uint32_t initial_cpb_removal_delay_length_minus1; // @link substring="initial_cpb_removal_delay_length_minus1" target="#initial_cpb_removal_delay_length_minus1"
+///     uint32_t cpb_removal_delay_length_minus1; // @link substring="cpb_removal_delay_length_minus1" target="#cpb_removal_delay_length_minus1"
+///     uint32_t dpb_output_delay_length_minus1; // @link substring="dpb_output_delay_length_minus1" target="#dpb_output_delay_length_minus1"
+///     uint32_t time_offset_length; // @link substring="time_offset_length" target="#time_offset_length"
 /// } StdVideoH264HrdParameters;
 /// }
 ///

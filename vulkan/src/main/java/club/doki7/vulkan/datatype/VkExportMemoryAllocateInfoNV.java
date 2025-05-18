@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExportMemoryAllocateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkExternalMemoryHandleTypeFlagsNV handleTypes; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkExternalMemoryHandleTypeFlagsNV handleTypes; // optional // @link substring="VkExternalMemoryHandleTypeFlagsNV" target="VkExternalMemoryHandleTypeFlagsNV" @link substring="handleTypes" target="#handleTypes"
 /// } VkExportMemoryAllocateInfoNV;
 /// }
 ///

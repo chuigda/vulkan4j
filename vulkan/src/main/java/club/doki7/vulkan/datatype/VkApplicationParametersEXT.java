@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkApplicationParametersEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t vendorID;
-///     uint32_t deviceID; // optional
-///     uint32_t key;
-///     uint64_t value;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t vendorID; // @link substring="vendorID" target="#vendorID"
+///     uint32_t deviceID; // optional // @link substring="deviceID" target="#deviceID"
+///     uint32_t key; // @link substring="key" target="#key"
+///     uint64_t value; // @link substring="value" target="#value"
 /// } VkApplicationParametersEXT;
 /// }
 ///

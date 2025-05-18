@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 fragmentShaderSampleInterlock;
-///     VkBool32 fragmentShaderPixelInterlock;
-///     VkBool32 fragmentShaderShadingRateInterlock;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 fragmentShaderSampleInterlock; // @link substring="fragmentShaderSampleInterlock" target="#fragmentShaderSampleInterlock"
+///     VkBool32 fragmentShaderPixelInterlock; // @link substring="fragmentShaderPixelInterlock" target="#fragmentShaderPixelInterlock"
+///     VkBool32 fragmentShaderShadingRateInterlock; // @link substring="fragmentShaderShadingRateInterlock" target="#fragmentShaderShadingRateInterlock"
 /// } VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT;
 /// }
 ///

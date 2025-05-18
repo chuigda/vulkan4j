@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkFramebufferCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkFramebufferCreateFlags flags; // optional
-///     VkRenderPass renderPass;
-///     uint32_t attachmentCount; // optional
-///     VkImageView const* pAttachments;
-///     uint32_t width;
-///     uint32_t height;
-///     uint32_t layers;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkFramebufferCreateFlags flags; // optional // @link substring="VkFramebufferCreateFlags" target="VkFramebufferCreateFlags" @link substring="flags" target="#flags"
+///     VkRenderPass renderPass; // @link substring="VkRenderPass" target="VkRenderPass" @link substring="renderPass" target="#renderPass"
+///     uint32_t attachmentCount; // optional // @link substring="attachmentCount" target="#attachmentCount"
+///     VkImageView const* pAttachments; // @link substring="VkImageView" target="VkImageView" @link substring="pAttachments" target="#pAttachments"
+///     uint32_t width; // @link substring="width" target="#width"
+///     uint32_t height; // @link substring="height" target="#height"
+///     uint32_t layers; // @link substring="layers" target="#layers"
 /// } VkFramebufferCreateInfo;
 /// }
 ///
@@ -136,14 +136,6 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
     }
 
-    public @pointer(target=VkImageView.class) MemorySegment pAttachmentsRaw() {
-        return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
-    }
-
-    public void pAttachmentsRaw(@pointer(target=VkImageView.class) MemorySegment value) {
-        segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
-    }
-
     /// Note: the returned {@link VkImageView.Ptr} does not have correct {@link VkImageView.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkImageView.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -159,6 +151,14 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
     public void pAttachments(@Nullable VkImageView.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentsRaw(s);
+    }
+
+    public @pointer(target=VkImageView.class) MemorySegment pAttachmentsRaw() {
+        return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
+    }
+
+    public void pAttachmentsRaw(@pointer(target=VkImageView.class) MemorySegment value) {
+        segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 
     public @unsigned int width() {

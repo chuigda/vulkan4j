@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPushConstantsInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineLayout layout; // optional
-///     VkShaderStageFlags stageFlags;
-///     uint32_t offset; // optional
-///     uint32_t size;
-///     void const* pValues;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineLayout layout; // optional // @link substring="VkPipelineLayout" target="VkPipelineLayout" @link substring="layout" target="#layout"
+///     VkShaderStageFlags stageFlags; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="stageFlags" target="#stageFlags"
+///     uint32_t offset; // optional // @link substring="offset" target="#offset"
+///     uint32_t size; // @link substring="size" target="#size"
+///     void const* pValues; // @link substring="pValues" target="#pValues"
 /// } VkPushConstantsInfo;
 /// }
 ///

@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineViewportDepthClampControlCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDepthClampModeEXT depthClampMode;
-///     VkDepthClampRangeEXT const* pDepthClampRange; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDepthClampModeEXT depthClampMode; // @link substring="VkDepthClampModeEXT" target="VkDepthClampModeEXT" @link substring="depthClampMode" target="#depthClampMode"
+///     VkDepthClampRangeEXT const* pDepthClampRange; // optional // @link substring="VkDepthClampRangeEXT" target="VkDepthClampRangeEXT" @link substring="pDepthClampRange" target="#pDepthClampRange"
 /// } VkPipelineViewportDepthClampControlCreateInfoEXT;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
         segment.set(LAYOUT$depthClampMode, OFFSET$depthClampMode, value);
     }
 
-    public @pointer(target=VkDepthClampRangeEXT.class) MemorySegment pDepthClampRangeRaw() {
-        return segment.get(LAYOUT$pDepthClampRange, OFFSET$pDepthClampRange);
-    }
-
-    public void pDepthClampRangeRaw(@pointer(target=VkDepthClampRangeEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pDepthClampRange, OFFSET$pDepthClampRange, value);
-    }
-
     public @Nullable VkDepthClampRangeEXT pDepthClampRange() {
         MemorySegment s = pDepthClampRangeRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
             ret[i] = new VkDepthClampRangeEXT(s.asSlice(i * VkDepthClampRangeEXT.BYTES, VkDepthClampRangeEXT.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkDepthClampRangeEXT.class) MemorySegment pDepthClampRangeRaw() {
+        return segment.get(LAYOUT$pDepthClampRange, OFFSET$pDepthClampRange);
+    }
+
+    public void pDepthClampRangeRaw(@pointer(target=VkDepthClampRangeEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pDepthClampRange, OFFSET$pDepthClampRange, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

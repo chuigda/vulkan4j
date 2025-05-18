@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineViewportWScalingStateCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBool32 viewportWScalingEnable;
-///     uint32_t viewportCount;
-///     VkViewportWScalingNV const* pViewportWScalings; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 viewportWScalingEnable; // @link substring="viewportWScalingEnable" target="#viewportWScalingEnable"
+///     uint32_t viewportCount; // @link substring="viewportCount" target="#viewportCount"
+///     VkViewportWScalingNV const* pViewportWScalings; // optional // @link substring="VkViewportWScalingNV" target="VkViewportWScalingNV" @link substring="pViewportWScalings" target="#pViewportWScalings"
 /// } VkPipelineViewportWScalingStateCreateInfoNV;
 /// }
 ///
@@ -120,14 +120,6 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
         segment.set(LAYOUT$viewportCount, OFFSET$viewportCount, value);
     }
 
-    public @pointer(target=VkViewportWScalingNV.class) MemorySegment pViewportWScalingsRaw() {
-        return segment.get(LAYOUT$pViewportWScalings, OFFSET$pViewportWScalings);
-    }
-
-    public void pViewportWScalingsRaw(@pointer(target=VkViewportWScalingNV.class) MemorySegment value) {
-        segment.set(LAYOUT$pViewportWScalings, OFFSET$pViewportWScalings, value);
-    }
-
     public @Nullable VkViewportWScalingNV pViewportWScalings() {
         MemorySegment s = pViewportWScalingsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -153,6 +145,14 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
             ret[i] = new VkViewportWScalingNV(s.asSlice(i * VkViewportWScalingNV.BYTES, VkViewportWScalingNV.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkViewportWScalingNV.class) MemorySegment pViewportWScalingsRaw() {
+        return segment.get(LAYOUT$pViewportWScalings, OFFSET$pViewportWScalings);
+    }
+
+    public void pViewportWScalingsRaw(@pointer(target=VkViewportWScalingNV.class) MemorySegment value) {
+        segment.set(LAYOUT$pViewportWScalings, OFFSET$pViewportWScalings, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

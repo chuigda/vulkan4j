@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkViewportWScalingNV {
-///     float xcoeff;
-///     float ycoeff;
+///     float xcoeff; // @link substring="xcoeff" target="#xcoeff"
+///     float ycoeff; // @link substring="ycoeff" target="#ycoeff"
 /// } VkViewportWScalingNV;
 /// }
 ///

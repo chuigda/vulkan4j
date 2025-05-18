@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPastPresentationTimingGOOGLE {
-///     uint32_t presentID;
-///     uint64_t desiredPresentTime;
-///     uint64_t actualPresentTime;
-///     uint64_t earliestPresentTime;
-///     uint64_t presentMargin;
+///     uint32_t presentID; // @link substring="presentID" target="#presentID"
+///     uint64_t desiredPresentTime; // @link substring="desiredPresentTime" target="#desiredPresentTime"
+///     uint64_t actualPresentTime; // @link substring="actualPresentTime" target="#actualPresentTime"
+///     uint64_t earliestPresentTime; // @link substring="earliestPresentTime" target="#earliestPresentTime"
+///     uint64_t presentMargin; // @link substring="presentMargin" target="#presentMargin"
 /// } VkPastPresentationTimingGOOGLE;
 /// }
 ///

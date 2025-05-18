@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassFragmentDensityMapCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkAttachmentReference fragmentDensityMapAttachment;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkAttachmentReference fragmentDensityMapAttachment; // @link substring="VkAttachmentReference" target="VkAttachmentReference" @link substring="fragmentDensityMapAttachment" target="#fragmentDensityMapAttachment"
 /// } VkRenderPassFragmentDensityMapCreateInfoEXT;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkRenderPassFragmentDensityMapCreateInfoEXT(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkAttachmentReference fragmentDensityMapAttachment() {
+    public @NotNull VkAttachmentReference fragmentDensityMapAttachment() {
         return new VkAttachmentReference(segment.asSlice(OFFSET$fragmentDensityMapAttachment, LAYOUT$fragmentDensityMapAttachment));
     }
 
-    public void fragmentDensityMapAttachment(VkAttachmentReference value) {
+    public void fragmentDensityMapAttachment(@NotNull VkAttachmentReference value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$fragmentDensityMapAttachment, SIZE$fragmentDensityMapAttachment);
     }
 

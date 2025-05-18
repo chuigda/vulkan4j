@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDisplayPowerInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDisplayPowerStateEXT powerState;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDisplayPowerStateEXT powerState; // @link substring="VkDisplayPowerStateEXT" target="VkDisplayPowerStateEXT" @link substring="powerState" target="#powerState"
 /// } VkDisplayPowerInfoEXT;
 /// }
 ///

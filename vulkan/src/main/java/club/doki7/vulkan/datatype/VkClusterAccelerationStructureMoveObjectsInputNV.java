@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkClusterAccelerationStructureMoveObjectsInputNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkClusterAccelerationStructureTypeNV type;
-///     VkBool32 noMoveOverlap;
-///     VkDeviceSize maxMovedBytes;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkClusterAccelerationStructureTypeNV type; // @link substring="VkClusterAccelerationStructureTypeNV" target="VkClusterAccelerationStructureTypeNV" @link substring="type" target="#type"
+///     VkBool32 noMoveOverlap; // @link substring="noMoveOverlap" target="#noMoveOverlap"
+///     VkDeviceSize maxMovedBytes; // @link substring="maxMovedBytes" target="#maxMovedBytes"
 /// } VkClusterAccelerationStructureMoveObjectsInputNV;
 /// }
 ///

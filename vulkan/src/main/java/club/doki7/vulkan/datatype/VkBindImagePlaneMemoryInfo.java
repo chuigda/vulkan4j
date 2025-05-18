@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBindImagePlaneMemoryInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImageAspectFlags planeAspect;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageAspectFlags planeAspect; // @link substring="VkImageAspectFlags" target="VkImageAspectFlags" @link substring="planeAspect" target="#planeAspect"
 /// } VkBindImagePlaneMemoryInfo;
 /// }
 ///

@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDescriptorPoolCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDescriptorPoolCreateFlags flags; // optional
-///     uint32_t maxSets;
-///     uint32_t poolSizeCount; // optional
-///     VkDescriptorPoolSize const* pPoolSizes;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDescriptorPoolCreateFlags flags; // optional // @link substring="VkDescriptorPoolCreateFlags" target="VkDescriptorPoolCreateFlags" @link substring="flags" target="#flags"
+///     uint32_t maxSets; // @link substring="maxSets" target="#maxSets"
+///     uint32_t poolSizeCount; // optional // @link substring="poolSizeCount" target="#poolSizeCount"
+///     VkDescriptorPoolSize const* pPoolSizes; // @link substring="VkDescriptorPoolSize" target="VkDescriptorPoolSize" @link substring="pPoolSizes" target="#pPoolSizes"
 /// } VkDescriptorPoolCreateInfo;
 /// }
 ///
@@ -129,14 +129,6 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$poolSizeCount, OFFSET$poolSizeCount, value);
     }
 
-    public @pointer(target=VkDescriptorPoolSize.class) MemorySegment pPoolSizesRaw() {
-        return segment.get(LAYOUT$pPoolSizes, OFFSET$pPoolSizes);
-    }
-
-    public void pPoolSizesRaw(@pointer(target=VkDescriptorPoolSize.class) MemorySegment value) {
-        segment.set(LAYOUT$pPoolSizes, OFFSET$pPoolSizes, value);
-    }
-
     public @Nullable VkDescriptorPoolSize pPoolSizes() {
         MemorySegment s = pPoolSizesRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -162,6 +154,14 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
             ret[i] = new VkDescriptorPoolSize(s.asSlice(i * VkDescriptorPoolSize.BYTES, VkDescriptorPoolSize.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkDescriptorPoolSize.class) MemorySegment pPoolSizesRaw() {
+        return segment.get(LAYOUT$pPoolSizes, OFFSET$pPoolSizes);
+    }
+
+    public void pPoolSizesRaw(@pointer(target=VkDescriptorPoolSize.class) MemorySegment value) {
+        segment.set(LAYOUT$pPoolSizes, OFFSET$pPoolSizes, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkClearRect {
-///     VkRect2D rect;
-///     uint32_t baseArrayLayer;
-///     uint32_t layerCount;
+///     VkRect2D rect; // @link substring="VkRect2D" target="VkRect2D" @link substring="rect" target="#rect"
+///     uint32_t baseArrayLayer; // @link substring="baseArrayLayer" target="#baseArrayLayer"
+///     uint32_t layerCount; // @link substring="layerCount" target="#layerCount"
 /// } VkClearRect;
 /// }
 ///
@@ -68,11 +68,11 @@ public record VkClearRect(@NotNull MemorySegment segment) implements IPointer {
         return ret;
     }
 
-    public VkRect2D rect() {
+    public @NotNull VkRect2D rect() {
         return new VkRect2D(segment.asSlice(OFFSET$rect, LAYOUT$rect));
     }
 
-    public void rect(VkRect2D value) {
+    public void rect(@NotNull VkRect2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$rect, SIZE$rect);
     }
 

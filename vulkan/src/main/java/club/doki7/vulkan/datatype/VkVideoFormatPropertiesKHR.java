@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoFormatPropertiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkFormat format;
-///     VkComponentMapping componentMapping;
-///     VkImageCreateFlags imageCreateFlags;
-///     VkImageType imageType;
-///     VkImageTiling imageTiling;
-///     VkImageUsageFlags imageUsageFlags;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkFormat format; // @link substring="VkFormat" target="VkFormat" @link substring="format" target="#format"
+///     VkComponentMapping componentMapping; // @link substring="VkComponentMapping" target="VkComponentMapping" @link substring="componentMapping" target="#componentMapping"
+///     VkImageCreateFlags imageCreateFlags; // @link substring="VkImageCreateFlags" target="VkImageCreateFlags" @link substring="imageCreateFlags" target="#imageCreateFlags"
+///     VkImageType imageType; // @link substring="VkImageType" target="VkImageType" @link substring="imageType" target="#imageType"
+///     VkImageTiling imageTiling; // @link substring="VkImageTiling" target="VkImageTiling" @link substring="imageTiling" target="#imageTiling"
+///     VkImageUsageFlags imageUsageFlags; // @link substring="VkImageUsageFlags" target="VkImageUsageFlags" @link substring="imageUsageFlags" target="#imageUsageFlags"
 /// } VkVideoFormatPropertiesKHR;
 /// }
 ///
@@ -115,11 +115,11 @@ public record VkVideoFormatPropertiesKHR(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$format, OFFSET$format, value);
     }
 
-    public VkComponentMapping componentMapping() {
+    public @NotNull VkComponentMapping componentMapping() {
         return new VkComponentMapping(segment.asSlice(OFFSET$componentMapping, LAYOUT$componentMapping));
     }
 
-    public void componentMapping(VkComponentMapping value) {
+    public void componentMapping(@NotNull VkComponentMapping value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$componentMapping, SIZE$componentMapping);
     }
 

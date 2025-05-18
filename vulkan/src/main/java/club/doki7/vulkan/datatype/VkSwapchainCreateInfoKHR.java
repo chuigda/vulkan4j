@@ -20,24 +20,24 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSwapchainCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkSwapchainCreateFlagsKHR flags; // optional
-///     VkSurfaceKHR surface;
-///     uint32_t minImageCount;
-///     VkFormat imageFormat;
-///     VkColorSpaceKHR imageColorSpace;
-///     VkExtent2D imageExtent;
-///     uint32_t imageArrayLayers;
-///     VkImageUsageFlags imageUsage;
-///     VkSharingMode imageSharingMode;
-///     uint32_t queueFamilyIndexCount; // optional
-///     uint32_t const* pQueueFamilyIndices;
-///     VkSurfaceTransformFlagsKHR preTransform;
-///     VkCompositeAlphaFlagsKHR compositeAlpha;
-///     VkPresentModeKHR presentMode;
-///     VkBool32 clipped;
-///     VkSwapchainKHR oldSwapchain; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSwapchainCreateFlagsKHR flags; // optional // @link substring="VkSwapchainCreateFlagsKHR" target="VkSwapchainCreateFlagsKHR" @link substring="flags" target="#flags"
+///     VkSurfaceKHR surface; // @link substring="VkSurfaceKHR" target="VkSurfaceKHR" @link substring="surface" target="#surface"
+///     uint32_t minImageCount; // @link substring="minImageCount" target="#minImageCount"
+///     VkFormat imageFormat; // @link substring="VkFormat" target="VkFormat" @link substring="imageFormat" target="#imageFormat"
+///     VkColorSpaceKHR imageColorSpace; // @link substring="VkColorSpaceKHR" target="VkColorSpaceKHR" @link substring="imageColorSpace" target="#imageColorSpace"
+///     VkExtent2D imageExtent; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="imageExtent" target="#imageExtent"
+///     uint32_t imageArrayLayers; // @link substring="imageArrayLayers" target="#imageArrayLayers"
+///     VkImageUsageFlags imageUsage; // @link substring="VkImageUsageFlags" target="VkImageUsageFlags" @link substring="imageUsage" target="#imageUsage"
+///     VkSharingMode imageSharingMode; // @link substring="VkSharingMode" target="VkSharingMode" @link substring="imageSharingMode" target="#imageSharingMode"
+///     uint32_t queueFamilyIndexCount; // optional // @link substring="queueFamilyIndexCount" target="#queueFamilyIndexCount"
+///     uint32_t const* pQueueFamilyIndices; // @link substring="pQueueFamilyIndices" target="#pQueueFamilyIndices"
+///     VkSurfaceTransformFlagsKHR preTransform; // @link substring="VkSurfaceTransformFlagsKHR" target="VkSurfaceTransformFlagsKHR" @link substring="preTransform" target="#preTransform"
+///     VkCompositeAlphaFlagsKHR compositeAlpha; // @link substring="VkCompositeAlphaFlagsKHR" target="VkCompositeAlphaFlagsKHR" @link substring="compositeAlpha" target="#compositeAlpha"
+///     VkPresentModeKHR presentMode; // @link substring="VkPresentModeKHR" target="VkPresentModeKHR" @link substring="presentMode" target="#presentMode"
+///     VkBool32 clipped; // @link substring="clipped" target="#clipped"
+///     VkSwapchainKHR oldSwapchain; // optional // @link substring="VkSwapchainKHR" target="VkSwapchainKHR" @link substring="oldSwapchain" target="#oldSwapchain"
 /// } VkSwapchainCreateInfoKHR;
 /// }
 ///
@@ -161,11 +161,11 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$imageColorSpace, OFFSET$imageColorSpace, value);
     }
 
-    public VkExtent2D imageExtent() {
+    public @NotNull VkExtent2D imageExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$imageExtent, LAYOUT$imageExtent));
     }
 
-    public void imageExtent(VkExtent2D value) {
+    public void imageExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
     }
 
@@ -201,14 +201,6 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pQueueFamilyIndicesRaw() {
-        return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
-    }
-
-    public void pQueueFamilyIndicesRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -224,6 +216,14 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
     public void pQueueFamilyIndices(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueFamilyIndicesRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pQueueFamilyIndicesRaw() {
+        return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
+    }
+
+    public void pQueueFamilyIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
     }
 
     public @enumtype(VkSurfaceTransformFlagsKHR.class) int preTransform() {

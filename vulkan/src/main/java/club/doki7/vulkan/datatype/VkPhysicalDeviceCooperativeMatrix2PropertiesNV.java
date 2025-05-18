@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceCooperativeMatrix2PropertiesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t cooperativeMatrixWorkgroupScopeMaxWorkgroupSize;
-///     uint32_t cooperativeMatrixFlexibleDimensionsMaxDimension;
-///     uint32_t cooperativeMatrixWorkgroupScopeReservedSharedMemory;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t cooperativeMatrixWorkgroupScopeMaxWorkgroupSize; // @link substring="cooperativeMatrixWorkgroupScopeMaxWorkgroupSize" target="#cooperativeMatrixWorkgroupScopeMaxWorkgroupSize"
+///     uint32_t cooperativeMatrixFlexibleDimensionsMaxDimension; // @link substring="cooperativeMatrixFlexibleDimensionsMaxDimension" target="#cooperativeMatrixFlexibleDimensionsMaxDimension"
+///     uint32_t cooperativeMatrixWorkgroupScopeReservedSharedMemory; // @link substring="cooperativeMatrixWorkgroupScopeReservedSharedMemory" target="#cooperativeMatrixWorkgroupScopeReservedSharedMemory"
 /// } VkPhysicalDeviceCooperativeMatrix2PropertiesNV;
 /// }
 ///

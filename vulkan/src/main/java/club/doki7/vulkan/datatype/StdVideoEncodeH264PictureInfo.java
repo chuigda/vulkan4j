@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeH264PictureInfo {
-///     StdVideoEncodeH264PictureInfoFlags flags;
-///     uint8_t seq_parameter_set_id;
-///     uint8_t pic_parameter_set_id;
-///     uint16_t idr_pic_id;
-///     StdVideoH264PictureType primary_pic_type;
-///     uint32_t frame_num;
-///     int32_t PicOrderCnt;
-///     uint8_t temporal_id;
-///     uint8_t reserved1;
-///     StdVideoEncodeH264ReferenceListsInfo const* pRefLists;
+///     StdVideoEncodeH264PictureInfoFlags flags; // @link substring="StdVideoEncodeH264PictureInfoFlags" target="StdVideoEncodeH264PictureInfoFlags" @link substring="flags" target="#flags"
+///     uint8_t seq_parameter_set_id; // @link substring="seq_parameter_set_id" target="#seq_parameter_set_id"
+///     uint8_t pic_parameter_set_id; // @link substring="pic_parameter_set_id" target="#pic_parameter_set_id"
+///     uint16_t idr_pic_id; // @link substring="idr_pic_id" target="#idr_pic_id"
+///     StdVideoH264PictureType primary_pic_type; // @link substring="StdVideoH264PictureType" target="StdVideoH264PictureType" @link substring="primary_pic_type" target="#primary_pic_type"
+///     uint32_t frame_num; // @link substring="frame_num" target="#frame_num"
+///     int32_t PicOrderCnt; // @link substring="PicOrderCnt" target="#PicOrderCnt"
+///     uint8_t temporal_id; // @link substring="temporal_id" target="#temporal_id"
+///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     StdVideoEncodeH264ReferenceListsInfo const* pRefLists; // @link substring="StdVideoEncodeH264ReferenceListsInfo" target="StdVideoEncodeH264ReferenceListsInfo" @link substring="pRefLists" target="#pRefLists"
 /// } StdVideoEncodeH264PictureInfo;
 /// }
 ///
@@ -73,11 +73,11 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public StdVideoEncodeH264PictureInfoFlags flags() {
+    public @NotNull StdVideoEncodeH264PictureInfoFlags flags() {
         return new StdVideoEncodeH264PictureInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoEncodeH264PictureInfoFlags value) {
+    public void flags(@NotNull StdVideoEncodeH264PictureInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
@@ -145,14 +145,6 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
     }
 
-    public @pointer(target=StdVideoEncodeH264ReferenceListsInfo.class) MemorySegment pRefListsRaw() {
-        return segment.get(LAYOUT$pRefLists, OFFSET$pRefLists);
-    }
-
-    public void pRefListsRaw(@pointer(target=StdVideoEncodeH264ReferenceListsInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pRefLists, OFFSET$pRefLists, value);
-    }
-
     public @Nullable StdVideoEncodeH264ReferenceListsInfo pRefLists() {
         MemorySegment s = pRefListsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -178,6 +170,14 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
             ret[i] = new StdVideoEncodeH264ReferenceListsInfo(s.asSlice(i * StdVideoEncodeH264ReferenceListsInfo.BYTES, StdVideoEncodeH264ReferenceListsInfo.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoEncodeH264ReferenceListsInfo.class) MemorySegment pRefListsRaw() {
+        return segment.get(LAYOUT$pRefLists, OFFSET$pRefLists);
+    }
+
+    public void pRefListsRaw(@pointer(target=StdVideoEncodeH264ReferenceListsInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pRefLists, OFFSET$pRefLists, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

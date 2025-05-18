@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceFragmentShadingRateFeaturesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 pipelineFragmentShadingRate;
-///     VkBool32 primitiveFragmentShadingRate;
-///     VkBool32 attachmentFragmentShadingRate;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 pipelineFragmentShadingRate; // @link substring="pipelineFragmentShadingRate" target="#pipelineFragmentShadingRate"
+///     VkBool32 primitiveFragmentShadingRate; // @link substring="primitiveFragmentShadingRate" target="#primitiveFragmentShadingRate"
+///     VkBool32 attachmentFragmentShadingRate; // @link substring="attachmentFragmentShadingRate" target="#attachmentFragmentShadingRate"
 /// } VkPhysicalDeviceFragmentShadingRateFeaturesKHR;
 /// }
 ///

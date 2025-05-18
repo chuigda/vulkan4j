@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineShaderStageModuleIdentifierCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t identifierSize; // optional
-///     uint8_t const* pIdentifier;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t identifierSize; // optional // @link substring="identifierSize" target="#identifierSize"
+///     uint8_t const* pIdentifier; // @link substring="pIdentifier" target="#pIdentifier"
 /// } VkPipelineShaderStageModuleIdentifierCreateInfoEXT;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(@NotNull Memory
         segment.set(LAYOUT$identifierSize, OFFSET$identifierSize, value);
     }
 
-    public @pointer(comment="byte*") MemorySegment pIdentifierRaw() {
-        return segment.get(LAYOUT$pIdentifier, OFFSET$pIdentifier);
-    }
-
-    public void pIdentifierRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pIdentifier, OFFSET$pIdentifier, value);
-    }
-
     /// Note: the returned {@link BytePtr} does not have correct
     /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
@@ -134,6 +126,14 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(@NotNull Memory
     public void pIdentifier(@Nullable @unsigned BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pIdentifierRaw(s);
+    }
+
+    public @pointer(comment="byte*") MemorySegment pIdentifierRaw() {
+        return segment.get(LAYOUT$pIdentifier, OFFSET$pIdentifier);
+    }
+
+    public void pIdentifierRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pIdentifier, OFFSET$pIdentifier, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

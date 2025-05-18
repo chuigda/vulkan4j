@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageViewCaptureDescriptorDataInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImageView imageView;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageView imageView; // @link substring="VkImageView" target="VkImageView" @link substring="imageView" target="#imageView"
 /// } VkImageViewCaptureDescriptorDataInfoEXT;
 /// }
 ///

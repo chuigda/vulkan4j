@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoSessionParametersCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkVideoSessionParametersCreateFlagsKHR flags; // optional
-///     VkVideoSessionParametersKHR videoSessionParametersTemplate; // optional
-///     VkVideoSessionKHR videoSession;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkVideoSessionParametersCreateFlagsKHR flags; // optional // @link substring="VkVideoSessionParametersCreateFlagsKHR" target="VkVideoSessionParametersCreateFlagsKHR" @link substring="flags" target="#flags"
+///     VkVideoSessionParametersKHR videoSessionParametersTemplate; // optional // @link substring="VkVideoSessionParametersKHR" target="VkVideoSessionParametersKHR" @link substring="videoSessionParametersTemplate" target="#videoSessionParametersTemplate"
+///     VkVideoSessionKHR videoSession; // @link substring="VkVideoSessionKHR" target="VkVideoSessionKHR" @link substring="videoSession" target="#videoSession"
 /// } VkVideoSessionParametersCreateInfoKHR;
 /// }
 ///

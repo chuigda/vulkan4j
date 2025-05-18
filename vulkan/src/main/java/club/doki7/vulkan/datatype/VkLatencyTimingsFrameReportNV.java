@@ -20,22 +20,22 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkLatencyTimingsFrameReportNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint64_t presentID;
-///     uint64_t inputSampleTimeUs;
-///     uint64_t simStartTimeUs;
-///     uint64_t simEndTimeUs;
-///     uint64_t renderSubmitStartTimeUs;
-///     uint64_t renderSubmitEndTimeUs;
-///     uint64_t presentStartTimeUs;
-///     uint64_t presentEndTimeUs;
-///     uint64_t driverStartTimeUs;
-///     uint64_t driverEndTimeUs;
-///     uint64_t osRenderQueueStartTimeUs;
-///     uint64_t osRenderQueueEndTimeUs;
-///     uint64_t gpuRenderStartTimeUs;
-///     uint64_t gpuRenderEndTimeUs;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint64_t presentID; // @link substring="presentID" target="#presentID"
+///     uint64_t inputSampleTimeUs; // @link substring="inputSampleTimeUs" target="#inputSampleTimeUs"
+///     uint64_t simStartTimeUs; // @link substring="simStartTimeUs" target="#simStartTimeUs"
+///     uint64_t simEndTimeUs; // @link substring="simEndTimeUs" target="#simEndTimeUs"
+///     uint64_t renderSubmitStartTimeUs; // @link substring="renderSubmitStartTimeUs" target="#renderSubmitStartTimeUs"
+///     uint64_t renderSubmitEndTimeUs; // @link substring="renderSubmitEndTimeUs" target="#renderSubmitEndTimeUs"
+///     uint64_t presentStartTimeUs; // @link substring="presentStartTimeUs" target="#presentStartTimeUs"
+///     uint64_t presentEndTimeUs; // @link substring="presentEndTimeUs" target="#presentEndTimeUs"
+///     uint64_t driverStartTimeUs; // @link substring="driverStartTimeUs" target="#driverStartTimeUs"
+///     uint64_t driverEndTimeUs; // @link substring="driverEndTimeUs" target="#driverEndTimeUs"
+///     uint64_t osRenderQueueStartTimeUs; // @link substring="osRenderQueueStartTimeUs" target="#osRenderQueueStartTimeUs"
+///     uint64_t osRenderQueueEndTimeUs; // @link substring="osRenderQueueEndTimeUs" target="#osRenderQueueEndTimeUs"
+///     uint64_t gpuRenderStartTimeUs; // @link substring="gpuRenderStartTimeUs" target="#gpuRenderStartTimeUs"
+///     uint64_t gpuRenderEndTimeUs; // @link substring="gpuRenderEndTimeUs" target="#gpuRenderEndTimeUs"
 /// } VkLatencyTimingsFrameReportNV;
 /// }
 ///

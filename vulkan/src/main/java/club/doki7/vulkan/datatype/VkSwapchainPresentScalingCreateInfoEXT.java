@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSwapchainPresentScalingCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPresentScalingFlagsEXT scalingBehavior; // optional
-///     VkPresentGravityFlagsEXT presentGravityX; // optional
-///     VkPresentGravityFlagsEXT presentGravityY; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPresentScalingFlagsEXT scalingBehavior; // optional // @link substring="VkPresentScalingFlagsEXT" target="VkPresentScalingFlagsEXT" @link substring="scalingBehavior" target="#scalingBehavior"
+///     VkPresentGravityFlagsEXT presentGravityX; // optional // @link substring="VkPresentGravityFlagsEXT" target="VkPresentGravityFlagsEXT" @link substring="presentGravityX" target="#presentGravityX"
+///     VkPresentGravityFlagsEXT presentGravityY; // optional // @link substring="VkPresentGravityFlagsEXT" target="VkPresentGravityFlagsEXT" @link substring="presentGravityY" target="#presentGravityY"
 /// } VkSwapchainPresentScalingCreateInfoEXT;
 /// }
 ///

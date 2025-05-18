@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceCudaKernelLaunchPropertiesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t computeCapabilityMinor;
-///     uint32_t computeCapabilityMajor;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t computeCapabilityMinor; // @link substring="computeCapabilityMinor" target="#computeCapabilityMinor"
+///     uint32_t computeCapabilityMajor; // @link substring="computeCapabilityMajor" target="#computeCapabilityMajor"
 /// } VkPhysicalDeviceCudaKernelLaunchPropertiesNV;
 /// }
 ///

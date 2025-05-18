@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSampleLocationEXT {
-///     float x;
-///     float y;
+///     float x; // @link substring="x" target="#x"
+///     float y; // @link substring="y" target="#y"
 /// } VkSampleLocationEXT;
 /// }
 ///

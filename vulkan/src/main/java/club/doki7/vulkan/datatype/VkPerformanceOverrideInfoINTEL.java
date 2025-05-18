@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPerformanceOverrideInfoINTEL {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPerformanceOverrideTypeINTEL type;
-///     VkBool32 enable;
-///     uint64_t parameter;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPerformanceOverrideTypeINTEL type; // @link substring="VkPerformanceOverrideTypeINTEL" target="VkPerformanceOverrideTypeINTEL" @link substring="type" target="#type"
+///     VkBool32 enable; // @link substring="enable" target="#enable"
+///     uint64_t parameter; // @link substring="parameter" target="#parameter"
 /// } VkPerformanceOverrideInfoINTEL;
 /// }
 ///

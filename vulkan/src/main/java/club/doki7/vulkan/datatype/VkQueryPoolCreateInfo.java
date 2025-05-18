@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkQueryPoolCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkQueryPoolCreateFlags flags; // optional
-///     VkQueryType queryType;
-///     uint32_t queryCount;
-///     VkQueryPipelineStatisticFlags pipelineStatistics; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkQueryPoolCreateFlags flags; // optional // @link substring="VkQueryPoolCreateFlags" target="VkQueryPoolCreateFlags" @link substring="flags" target="#flags"
+///     VkQueryType queryType; // @link substring="VkQueryType" target="VkQueryType" @link substring="queryType" target="#queryType"
+///     uint32_t queryCount; // @link substring="queryCount" target="#queryCount"
+///     VkQueryPipelineStatisticFlags pipelineStatistics; // optional // @link substring="VkQueryPipelineStatisticFlags" target="VkQueryPipelineStatisticFlags" @link substring="pipelineStatistics" target="#pipelineStatistics"
 /// } VkQueryPoolCreateInfo;
 /// }
 ///

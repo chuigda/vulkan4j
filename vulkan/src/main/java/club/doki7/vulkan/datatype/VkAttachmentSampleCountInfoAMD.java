@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAttachmentSampleCountInfoAMD {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t colorAttachmentCount; // optional
-///     VkSampleCountFlags const* pColorAttachmentSamples;
-///     VkSampleCountFlags depthStencilAttachmentSamples; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t colorAttachmentCount; // optional // @link substring="colorAttachmentCount" target="#colorAttachmentCount"
+///     VkSampleCountFlags const* pColorAttachmentSamples; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="pColorAttachmentSamples" target="#pColorAttachmentSamples"
+///     VkSampleCountFlags depthStencilAttachmentSamples; // optional // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="depthStencilAttachmentSamples" target="#depthStencilAttachmentSamples"
 /// } VkAttachmentSampleCountInfoAMD;
 /// }
 ///
@@ -112,13 +112,6 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
     }
 
-    public @pointer(target=VkSampleCountFlags.class) MemorySegment pColorAttachmentSamplesRaw() {
-        return segment.get(LAYOUT$pColorAttachmentSamples, OFFSET$pColorAttachmentSamples);
-    }
-
-    public void pColorAttachmentSamplesRaw(@pointer(target=VkSampleCountFlags.class) MemorySegment value) {
-        segment.set(LAYOUT$pColorAttachmentSamples, OFFSET$pColorAttachmentSamples, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -135,6 +128,14 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
     public void pColorAttachmentSamples(@Nullable @enumtype(VkSampleCountFlags.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentSamplesRaw(s);
+    }
+
+    public @pointer(target=VkSampleCountFlags.class) MemorySegment pColorAttachmentSamplesRaw() {
+        return segment.get(LAYOUT$pColorAttachmentSamples, OFFSET$pColorAttachmentSamples);
+    }
+
+    public void pColorAttachmentSamplesRaw(@pointer(target=VkSampleCountFlags.class) MemorySegment value) {
+        segment.set(LAYOUT$pColorAttachmentSamples, OFFSET$pColorAttachmentSamples, value);
     }
 
     public @enumtype(VkSampleCountFlags.class) int depthStencilAttachmentSamples() {

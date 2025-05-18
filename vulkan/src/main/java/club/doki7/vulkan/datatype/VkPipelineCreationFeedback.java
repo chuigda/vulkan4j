@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineCreationFeedback {
-///     VkPipelineCreationFeedbackFlags flags;
-///     uint64_t duration;
+///     VkPipelineCreationFeedbackFlags flags; // @link substring="VkPipelineCreationFeedbackFlags" target="VkPipelineCreationFeedbackFlags" @link substring="flags" target="#flags"
+///     uint64_t duration; // @link substring="duration" target="#duration"
 /// } VkPipelineCreationFeedback;
 /// }
 ///

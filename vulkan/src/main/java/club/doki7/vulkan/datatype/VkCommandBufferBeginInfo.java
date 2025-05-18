@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCommandBufferBeginInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkCommandBufferUsageFlags flags; // optional
-///     VkCommandBufferInheritanceInfo const* pInheritanceInfo; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkCommandBufferUsageFlags flags; // optional // @link substring="VkCommandBufferUsageFlags" target="VkCommandBufferUsageFlags" @link substring="flags" target="#flags"
+///     VkCommandBufferInheritanceInfo const* pInheritanceInfo; // optional // @link substring="VkCommandBufferInheritanceInfo" target="VkCommandBufferInheritanceInfo" @link substring="pInheritanceInfo" target="#pInheritanceInfo"
 /// } VkCommandBufferBeginInfo;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(target=VkCommandBufferInheritanceInfo.class) MemorySegment pInheritanceInfoRaw() {
-        return segment.get(LAYOUT$pInheritanceInfo, OFFSET$pInheritanceInfo);
-    }
-
-    public void pInheritanceInfoRaw(@pointer(target=VkCommandBufferInheritanceInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pInheritanceInfo, OFFSET$pInheritanceInfo, value);
-    }
-
     public @Nullable VkCommandBufferInheritanceInfo pInheritanceInfo() {
         MemorySegment s = pInheritanceInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
             ret[i] = new VkCommandBufferInheritanceInfo(s.asSlice(i * VkCommandBufferInheritanceInfo.BYTES, VkCommandBufferInheritanceInfo.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkCommandBufferInheritanceInfo.class) MemorySegment pInheritanceInfoRaw() {
+        return segment.get(LAYOUT$pInheritanceInfo, OFFSET$pInheritanceInfo);
+    }
+
+    public void pInheritanceInfoRaw(@pointer(target=VkCommandBufferInheritanceInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pInheritanceInfo, OFFSET$pInheritanceInfo, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExportMetalCommandQueueInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkQueue queue;
-///     MTLCommandQueue_id mtlCommandQueue;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkQueue queue; // @link substring="VkQueue" target="VkQueue" @link substring="queue" target="#queue"
+///     MTLCommandQueue_id mtlCommandQueue; // @link substring="mtlCommandQueue" target="#mtlCommandQueue"
 /// } VkExportMetalCommandQueueInfoEXT;
 /// }
 ///

@@ -20,21 +20,21 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImageCreateFlags flags; // optional
-///     VkImageType imageType;
-///     VkFormat format;
-///     VkExtent3D extent;
-///     uint32_t mipLevels;
-///     uint32_t arrayLayers;
-///     VkSampleCountFlags samples;
-///     VkImageTiling tiling;
-///     VkImageUsageFlags usage;
-///     VkSharingMode sharingMode;
-///     uint32_t queueFamilyIndexCount; // optional
-///     uint32_t const* pQueueFamilyIndices;
-///     VkImageLayout initialLayout;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageCreateFlags flags; // optional // @link substring="VkImageCreateFlags" target="VkImageCreateFlags" @link substring="flags" target="#flags"
+///     VkImageType imageType; // @link substring="VkImageType" target="VkImageType" @link substring="imageType" target="#imageType"
+///     VkFormat format; // @link substring="VkFormat" target="VkFormat" @link substring="format" target="#format"
+///     VkExtent3D extent; // @link substring="VkExtent3D" target="VkExtent3D" @link substring="extent" target="#extent"
+///     uint32_t mipLevels; // @link substring="mipLevels" target="#mipLevels"
+///     uint32_t arrayLayers; // @link substring="arrayLayers" target="#arrayLayers"
+///     VkSampleCountFlags samples; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="samples" target="#samples"
+///     VkImageTiling tiling; // @link substring="VkImageTiling" target="VkImageTiling" @link substring="tiling" target="#tiling"
+///     VkImageUsageFlags usage; // @link substring="VkImageUsageFlags" target="VkImageUsageFlags" @link substring="usage" target="#usage"
+///     VkSharingMode sharingMode; // @link substring="VkSharingMode" target="VkSharingMode" @link substring="sharingMode" target="#sharingMode"
+///     uint32_t queueFamilyIndexCount; // optional // @link substring="queueFamilyIndexCount" target="#queueFamilyIndexCount"
+///     uint32_t const* pQueueFamilyIndices; // @link substring="pQueueFamilyIndices" target="#pQueueFamilyIndices"
+///     VkImageLayout initialLayout; // @link substring="VkImageLayout" target="VkImageLayout" @link substring="initialLayout" target="#initialLayout"
 /// } VkImageCreateInfo;
 /// }
 ///
@@ -138,11 +138,11 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IPoin
         segment.set(LAYOUT$format, OFFSET$format, value);
     }
 
-    public VkExtent3D extent() {
+    public @NotNull VkExtent3D extent() {
         return new VkExtent3D(segment.asSlice(OFFSET$extent, LAYOUT$extent));
     }
 
-    public void extent(VkExtent3D value) {
+    public void extent(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
     }
 
@@ -202,14 +202,6 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IPoin
         segment.set(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pQueueFamilyIndicesRaw() {
-        return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
-    }
-
-    public void pQueueFamilyIndicesRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -225,6 +217,14 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IPoin
     public void pQueueFamilyIndices(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueFamilyIndicesRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pQueueFamilyIndicesRaw() {
+        return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
+    }
+
+    public void pQueueFamilyIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
     }
 
     public @enumtype(VkImageLayout.class) int initialLayout() {

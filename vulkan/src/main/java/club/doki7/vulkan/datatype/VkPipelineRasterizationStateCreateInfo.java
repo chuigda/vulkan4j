@@ -20,19 +20,19 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineRasterizationStateCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineRasterizationStateCreateFlags flags; // optional
-///     VkBool32 depthClampEnable;
-///     VkBool32 rasterizerDiscardEnable;
-///     VkPolygonMode polygonMode;
-///     VkCullModeFlags cullMode; // optional
-///     VkFrontFace frontFace;
-///     VkBool32 depthBiasEnable;
-///     float depthBiasConstantFactor;
-///     float depthBiasClamp;
-///     float depthBiasSlopeFactor;
-///     float lineWidth;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineRasterizationStateCreateFlags flags; // optional // @link substring="VkPipelineRasterizationStateCreateFlags" target="VkPipelineRasterizationStateCreateFlags" @link substring="flags" target="#flags"
+///     VkBool32 depthClampEnable; // @link substring="depthClampEnable" target="#depthClampEnable"
+///     VkBool32 rasterizerDiscardEnable; // @link substring="rasterizerDiscardEnable" target="#rasterizerDiscardEnable"
+///     VkPolygonMode polygonMode; // @link substring="VkPolygonMode" target="VkPolygonMode" @link substring="polygonMode" target="#polygonMode"
+///     VkCullModeFlags cullMode; // optional // @link substring="VkCullModeFlags" target="VkCullModeFlags" @link substring="cullMode" target="#cullMode"
+///     VkFrontFace frontFace; // @link substring="VkFrontFace" target="VkFrontFace" @link substring="frontFace" target="#frontFace"
+///     VkBool32 depthBiasEnable; // @link substring="depthBiasEnable" target="#depthBiasEnable"
+///     float depthBiasConstantFactor; // @link substring="depthBiasConstantFactor" target="#depthBiasConstantFactor"
+///     float depthBiasClamp; // @link substring="depthBiasClamp" target="#depthBiasClamp"
+///     float depthBiasSlopeFactor; // @link substring="depthBiasSlopeFactor" target="#depthBiasSlopeFactor"
+///     float lineWidth; // @link substring="lineWidth" target="#lineWidth"
 /// } VkPipelineRasterizationStateCreateInfo;
 /// }
 ///

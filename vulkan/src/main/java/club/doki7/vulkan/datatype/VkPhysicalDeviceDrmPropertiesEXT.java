@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceDrmPropertiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 hasPrimary;
-///     VkBool32 hasRender;
-///     int64_t primaryMajor;
-///     int64_t primaryMinor;
-///     int64_t renderMajor;
-///     int64_t renderMinor;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 hasPrimary; // @link substring="hasPrimary" target="#hasPrimary"
+///     VkBool32 hasRender; // @link substring="hasRender" target="#hasRender"
+///     int64_t primaryMajor; // @link substring="primaryMajor" target="#primaryMajor"
+///     int64_t primaryMinor; // @link substring="primaryMinor" target="#primaryMinor"
+///     int64_t renderMajor; // @link substring="renderMajor" target="#renderMajor"
+///     int64_t renderMinor; // @link substring="renderMinor" target="#renderMinor"
 /// } VkPhysicalDeviceDrmPropertiesEXT;
 /// }
 ///

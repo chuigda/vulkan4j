@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSwapchainLatencyCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBool32 latencyModeEnable; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 latencyModeEnable; // optional // @link substring="latencyModeEnable" target="#latencyModeEnable"
 /// } VkSwapchainLatencyCreateInfoNV;
 /// }
 ///

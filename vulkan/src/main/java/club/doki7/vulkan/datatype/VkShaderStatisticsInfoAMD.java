@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkShaderStatisticsInfoAMD {
-///     VkShaderStageFlags shaderStageMask;
-///     VkShaderResourceUsageAMD resourceUsage;
-///     uint32_t numPhysicalVgprs;
-///     uint32_t numPhysicalSgprs;
-///     uint32_t numAvailableVgprs;
-///     uint32_t numAvailableSgprs;
-///     uint32_t computeWorkGroupSize;
+///     VkShaderStageFlags shaderStageMask; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="shaderStageMask" target="#shaderStageMask"
+///     VkShaderResourceUsageAMD resourceUsage; // @link substring="VkShaderResourceUsageAMD" target="VkShaderResourceUsageAMD" @link substring="resourceUsage" target="#resourceUsage"
+///     uint32_t numPhysicalVgprs; // @link substring="numPhysicalVgprs" target="#numPhysicalVgprs"
+///     uint32_t numPhysicalSgprs; // @link substring="numPhysicalSgprs" target="#numPhysicalSgprs"
+///     uint32_t numAvailableVgprs; // @link substring="numAvailableVgprs" target="#numAvailableVgprs"
+///     uint32_t numAvailableSgprs; // @link substring="numAvailableSgprs" target="#numAvailableSgprs"
+///     uint32_t computeWorkGroupSize; // @link substring="computeWorkGroupSize" target="#computeWorkGroupSize"
 /// } VkShaderStatisticsInfoAMD;
 /// }
 ///
@@ -80,11 +80,11 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$shaderStageMask, OFFSET$shaderStageMask, value);
     }
 
-    public VkShaderResourceUsageAMD resourceUsage() {
+    public @NotNull VkShaderResourceUsageAMD resourceUsage() {
         return new VkShaderResourceUsageAMD(segment.asSlice(OFFSET$resourceUsage, LAYOUT$resourceUsage));
     }
 
-    public void resourceUsage(VkShaderResourceUsageAMD value) {
+    public void resourceUsage(@NotNull VkShaderResourceUsageAMD value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$resourceUsage, SIZE$resourceUsage);
     }
 

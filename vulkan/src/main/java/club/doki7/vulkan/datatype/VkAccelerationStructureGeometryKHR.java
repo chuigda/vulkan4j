@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureGeometryKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkGeometryTypeKHR geometryType;
-///     VkAccelerationStructureGeometryDataKHR geometry;
-///     VkGeometryFlagsKHR flags; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkGeometryTypeKHR geometryType; // @link substring="VkGeometryTypeKHR" target="VkGeometryTypeKHR" @link substring="geometryType" target="#geometryType"
+///     VkAccelerationStructureGeometryDataKHR geometry; // @link substring="VkAccelerationStructureGeometryDataKHR" target="VkAccelerationStructureGeometryDataKHR" @link substring="geometry" target="#geometry"
+///     VkGeometryFlagsKHR flags; // optional // @link substring="VkGeometryFlagsKHR" target="VkGeometryFlagsKHR" @link substring="flags" target="#flags"
 /// } VkAccelerationStructureGeometryKHR;
 /// }
 ///
@@ -112,11 +112,11 @@ public record VkAccelerationStructureGeometryKHR(@NotNull MemorySegment segment)
         segment.set(LAYOUT$geometryType, OFFSET$geometryType, value);
     }
 
-    public VkAccelerationStructureGeometryDataKHR geometry() {
+    public @NotNull VkAccelerationStructureGeometryDataKHR geometry() {
         return new VkAccelerationStructureGeometryDataKHR(segment.asSlice(OFFSET$geometry, LAYOUT$geometry));
     }
 
-    public void geometry(VkAccelerationStructureGeometryDataKHR value) {
+    public void geometry(@NotNull VkAccelerationStructureGeometryDataKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$geometry, SIZE$geometry);
     }
 

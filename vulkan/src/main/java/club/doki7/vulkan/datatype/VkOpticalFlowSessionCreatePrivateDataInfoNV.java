@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkOpticalFlowSessionCreatePrivateDataInfoNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t id;
-///     uint32_t size;
-///     void const* pPrivateData;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t id; // @link substring="id" target="#id"
+///     uint32_t size; // @link substring="size" target="#size"
+///     void const* pPrivateData; // @link substring="pPrivateData" target="#pPrivateData"
 /// } VkOpticalFlowSessionCreatePrivateDataInfoNV;
 /// }
 ///

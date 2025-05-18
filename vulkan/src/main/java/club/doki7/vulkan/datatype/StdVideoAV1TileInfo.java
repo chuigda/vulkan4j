@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1TileInfo {
-///     StdVideoAV1TileInfoFlags flags;
-///     uint8_t TileCols;
-///     uint8_t TileRows;
-///     uint16_t context_update_tile_id;
-///     uint8_t tile_size_bytes_minus_1;
-///     uint8_t reserved1;
-///     uint16_t const* pMiColStarts;
-///     uint16_t const* pMiRowStarts;
-///     uint16_t const* pWidthInSbsMinus1;
-///     uint16_t const* pHeightInSbsMinus1;
+///     StdVideoAV1TileInfoFlags flags; // @link substring="StdVideoAV1TileInfoFlags" target="StdVideoAV1TileInfoFlags" @link substring="flags" target="#flags"
+///     uint8_t TileCols; // @link substring="TileCols" target="#TileCols"
+///     uint8_t TileRows; // @link substring="TileRows" target="#TileRows"
+///     uint16_t context_update_tile_id; // @link substring="context_update_tile_id" target="#context_update_tile_id"
+///     uint8_t tile_size_bytes_minus_1; // @link substring="tile_size_bytes_minus_1" target="#tile_size_bytes_minus_1"
+///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint16_t const* pMiColStarts; // @link substring="pMiColStarts" target="#pMiColStarts"
+///     uint16_t const* pMiRowStarts; // @link substring="pMiRowStarts" target="#pMiRowStarts"
+///     uint16_t const* pWidthInSbsMinus1; // @link substring="pWidthInSbsMinus1" target="#pWidthInSbsMinus1"
+///     uint16_t const* pHeightInSbsMinus1; // @link substring="pHeightInSbsMinus1" target="#pHeightInSbsMinus1"
 /// } StdVideoAV1TileInfo;
 /// }
 ///
@@ -73,11 +73,11 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
         return ret;
     }
 
-    public StdVideoAV1TileInfoFlags flags() {
+    public @NotNull StdVideoAV1TileInfoFlags flags() {
         return new StdVideoAV1TileInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoAV1TileInfoFlags value) {
+    public void flags(@NotNull StdVideoAV1TileInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
@@ -121,14 +121,6 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
         segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
     }
 
-    public @pointer(comment="short*") MemorySegment pMiColStartsRaw() {
-        return segment.get(LAYOUT$pMiColStarts, OFFSET$pMiColStarts);
-    }
-
-    public void pMiColStartsRaw(@pointer(comment="short*") MemorySegment value) {
-        segment.set(LAYOUT$pMiColStarts, OFFSET$pMiColStarts, value);
-    }
-
     /// Note: the returned {@link ShortPtr} does not have correct
     /// {@link ShortPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link ShortPtr#reinterpret} to set the size before actually reading from or
@@ -146,12 +138,12 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
         pMiColStartsRaw(s);
     }
 
-    public @pointer(comment="short*") MemorySegment pMiRowStartsRaw() {
-        return segment.get(LAYOUT$pMiRowStarts, OFFSET$pMiRowStarts);
+    public @pointer(comment="short*") MemorySegment pMiColStartsRaw() {
+        return segment.get(LAYOUT$pMiColStarts, OFFSET$pMiColStarts);
     }
 
-    public void pMiRowStartsRaw(@pointer(comment="short*") MemorySegment value) {
-        segment.set(LAYOUT$pMiRowStarts, OFFSET$pMiRowStarts, value);
+    public void pMiColStartsRaw(@pointer(comment="short*") MemorySegment value) {
+        segment.set(LAYOUT$pMiColStarts, OFFSET$pMiColStarts, value);
     }
 
     /// Note: the returned {@link ShortPtr} does not have correct
@@ -171,12 +163,12 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
         pMiRowStartsRaw(s);
     }
 
-    public @pointer(comment="short*") MemorySegment pWidthInSbsMinus1Raw() {
-        return segment.get(LAYOUT$pWidthInSbsMinus1, OFFSET$pWidthInSbsMinus1);
+    public @pointer(comment="short*") MemorySegment pMiRowStartsRaw() {
+        return segment.get(LAYOUT$pMiRowStarts, OFFSET$pMiRowStarts);
     }
 
-    public void pWidthInSbsMinus1Raw(@pointer(comment="short*") MemorySegment value) {
-        segment.set(LAYOUT$pWidthInSbsMinus1, OFFSET$pWidthInSbsMinus1, value);
+    public void pMiRowStartsRaw(@pointer(comment="short*") MemorySegment value) {
+        segment.set(LAYOUT$pMiRowStarts, OFFSET$pMiRowStarts, value);
     }
 
     /// Note: the returned {@link ShortPtr} does not have correct
@@ -196,12 +188,12 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
         pWidthInSbsMinus1Raw(s);
     }
 
-    public @pointer(comment="short*") MemorySegment pHeightInSbsMinus1Raw() {
-        return segment.get(LAYOUT$pHeightInSbsMinus1, OFFSET$pHeightInSbsMinus1);
+    public @pointer(comment="short*") MemorySegment pWidthInSbsMinus1Raw() {
+        return segment.get(LAYOUT$pWidthInSbsMinus1, OFFSET$pWidthInSbsMinus1);
     }
 
-    public void pHeightInSbsMinus1Raw(@pointer(comment="short*") MemorySegment value) {
-        segment.set(LAYOUT$pHeightInSbsMinus1, OFFSET$pHeightInSbsMinus1, value);
+    public void pWidthInSbsMinus1Raw(@pointer(comment="short*") MemorySegment value) {
+        segment.set(LAYOUT$pWidthInSbsMinus1, OFFSET$pWidthInSbsMinus1, value);
     }
 
     /// Note: the returned {@link ShortPtr} does not have correct
@@ -219,6 +211,14 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
     public void pHeightInSbsMinus1(@Nullable @unsigned ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pHeightInSbsMinus1Raw(s);
+    }
+
+    public @pointer(comment="short*") MemorySegment pHeightInSbsMinus1Raw() {
+        return segment.get(LAYOUT$pHeightInSbsMinus1, OFFSET$pHeightInSbsMinus1);
+    }
+
+    public void pHeightInSbsMinus1Raw(@pointer(comment="short*") MemorySegment value) {
+        segment.set(LAYOUT$pHeightInSbsMinus1, OFFSET$pHeightInSbsMinus1, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

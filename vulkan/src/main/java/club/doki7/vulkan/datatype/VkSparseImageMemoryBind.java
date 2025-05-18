@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSparseImageMemoryBind {
-///     VkImageSubresource subresource;
-///     VkOffset3D offset;
-///     VkExtent3D extent;
-///     VkDeviceMemory memory; // optional
-///     VkDeviceSize memoryOffset;
-///     VkSparseMemoryBindFlags flags; // optional
+///     VkImageSubresource subresource; // @link substring="VkImageSubresource" target="VkImageSubresource" @link substring="subresource" target="#subresource"
+///     VkOffset3D offset; // @link substring="VkOffset3D" target="VkOffset3D" @link substring="offset" target="#offset"
+///     VkExtent3D extent; // @link substring="VkExtent3D" target="VkExtent3D" @link substring="extent" target="#extent"
+///     VkDeviceMemory memory; // optional // @link substring="VkDeviceMemory" target="VkDeviceMemory" @link substring="memory" target="#memory"
+///     VkDeviceSize memoryOffset; // @link substring="memoryOffset" target="#memoryOffset"
+///     VkSparseMemoryBindFlags flags; // optional // @link substring="VkSparseMemoryBindFlags" target="VkSparseMemoryBindFlags" @link substring="flags" target="#flags"
 /// } VkSparseImageMemoryBind;
 /// }
 ///
@@ -71,27 +71,27 @@ public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public VkImageSubresource subresource() {
+    public @NotNull VkImageSubresource subresource() {
         return new VkImageSubresource(segment.asSlice(OFFSET$subresource, LAYOUT$subresource));
     }
 
-    public void subresource(VkImageSubresource value) {
+    public void subresource(@NotNull VkImageSubresource value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresource, SIZE$subresource);
     }
 
-    public VkOffset3D offset() {
+    public @NotNull VkOffset3D offset() {
         return new VkOffset3D(segment.asSlice(OFFSET$offset, LAYOUT$offset));
     }
 
-    public void offset(VkOffset3D value) {
+    public void offset(@NotNull VkOffset3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$offset, SIZE$offset);
     }
 
-    public VkExtent3D extent() {
+    public @NotNull VkExtent3D extent() {
         return new VkExtent3D(segment.asSlice(OFFSET$extent, LAYOUT$extent));
     }
 
-    public void extent(VkExtent3D value) {
+    public void extent(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
     }
 

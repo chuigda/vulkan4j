@@ -20,24 +20,24 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeH265CapabilitiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkVideoEncodeH265CapabilityFlagsKHR flags;
-///     StdVideoH265LevelIdc maxLevelIdc;
-///     uint32_t maxSliceSegmentCount;
-///     VkExtent2D maxTiles;
-///     VkVideoEncodeH265CtbSizeFlagsKHR ctbSizes;
-///     VkVideoEncodeH265TransformBlockSizeFlagsKHR transformBlockSizes;
-///     uint32_t maxPPictureL0ReferenceCount;
-///     uint32_t maxBPictureL0ReferenceCount;
-///     uint32_t maxL1ReferenceCount;
-///     uint32_t maxSubLayerCount;
-///     VkBool32 expectDyadicTemporalSubLayerPattern;
-///     int32_t minQp;
-///     int32_t maxQp;
-///     VkBool32 prefersGopRemainingFrames;
-///     VkBool32 requiresGopRemainingFrames;
-///     VkVideoEncodeH265StdFlagsKHR stdSyntaxFlags;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkVideoEncodeH265CapabilityFlagsKHR flags; // @link substring="VkVideoEncodeH265CapabilityFlagsKHR" target="VkVideoEncodeH265CapabilityFlagsKHR" @link substring="flags" target="#flags"
+///     StdVideoH265LevelIdc maxLevelIdc; // @link substring="StdVideoH265LevelIdc" target="StdVideoH265LevelIdc" @link substring="maxLevelIdc" target="#maxLevelIdc"
+///     uint32_t maxSliceSegmentCount; // @link substring="maxSliceSegmentCount" target="#maxSliceSegmentCount"
+///     VkExtent2D maxTiles; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxTiles" target="#maxTiles"
+///     VkVideoEncodeH265CtbSizeFlagsKHR ctbSizes; // @link substring="VkVideoEncodeH265CtbSizeFlagsKHR" target="VkVideoEncodeH265CtbSizeFlagsKHR" @link substring="ctbSizes" target="#ctbSizes"
+///     VkVideoEncodeH265TransformBlockSizeFlagsKHR transformBlockSizes; // @link substring="VkVideoEncodeH265TransformBlockSizeFlagsKHR" target="VkVideoEncodeH265TransformBlockSizeFlagsKHR" @link substring="transformBlockSizes" target="#transformBlockSizes"
+///     uint32_t maxPPictureL0ReferenceCount; // @link substring="maxPPictureL0ReferenceCount" target="#maxPPictureL0ReferenceCount"
+///     uint32_t maxBPictureL0ReferenceCount; // @link substring="maxBPictureL0ReferenceCount" target="#maxBPictureL0ReferenceCount"
+///     uint32_t maxL1ReferenceCount; // @link substring="maxL1ReferenceCount" target="#maxL1ReferenceCount"
+///     uint32_t maxSubLayerCount; // @link substring="maxSubLayerCount" target="#maxSubLayerCount"
+///     VkBool32 expectDyadicTemporalSubLayerPattern; // @link substring="expectDyadicTemporalSubLayerPattern" target="#expectDyadicTemporalSubLayerPattern"
+///     int32_t minQp; // @link substring="minQp" target="#minQp"
+///     int32_t maxQp; // @link substring="maxQp" target="#maxQp"
+///     VkBool32 prefersGopRemainingFrames; // @link substring="prefersGopRemainingFrames" target="#prefersGopRemainingFrames"
+///     VkBool32 requiresGopRemainingFrames; // @link substring="requiresGopRemainingFrames" target="#requiresGopRemainingFrames"
+///     VkVideoEncodeH265StdFlagsKHR stdSyntaxFlags; // @link substring="VkVideoEncodeH265StdFlagsKHR" target="VkVideoEncodeH265StdFlagsKHR" @link substring="stdSyntaxFlags" target="#stdSyntaxFlags"
 /// } VkVideoEncodeH265CapabilitiesKHR;
 /// }
 ///
@@ -141,11 +141,11 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$maxSliceSegmentCount, OFFSET$maxSliceSegmentCount, value);
     }
 
-    public VkExtent2D maxTiles() {
+    public @NotNull VkExtent2D maxTiles() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxTiles, LAYOUT$maxTiles));
     }
 
-    public void maxTiles(VkExtent2D value) {
+    public void maxTiles(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTiles, SIZE$maxTiles);
     }
 

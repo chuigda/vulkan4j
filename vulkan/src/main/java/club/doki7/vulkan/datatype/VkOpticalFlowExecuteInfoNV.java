@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkOpticalFlowExecuteInfoNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkOpticalFlowExecuteFlagsNV flags; // optional
-///     uint32_t regionCount; // optional
-///     VkRect2D const* pRegions;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkOpticalFlowExecuteFlagsNV flags; // optional // @link substring="VkOpticalFlowExecuteFlagsNV" target="VkOpticalFlowExecuteFlagsNV" @link substring="flags" target="#flags"
+///     uint32_t regionCount; // optional // @link substring="regionCount" target="#regionCount"
+///     VkRect2D const* pRegions; // @link substring="VkRect2D" target="VkRect2D" @link substring="pRegions" target="#pRegions"
 /// } VkOpticalFlowExecuteInfoNV;
 /// }
 ///
@@ -120,14 +120,6 @@ public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
     }
 
-    public @pointer(target=VkRect2D.class) MemorySegment pRegionsRaw() {
-        return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
-    }
-
-    public void pRegionsRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
-        segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
-    }
-
     public @Nullable VkRect2D pRegions() {
         MemorySegment s = pRegionsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -153,6 +145,14 @@ public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) impleme
             ret[i] = new VkRect2D(s.asSlice(i * VkRect2D.BYTES, VkRect2D.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkRect2D.class) MemorySegment pRegionsRaw() {
+        return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
+    }
+
+    public void pRegionsRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
+        segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

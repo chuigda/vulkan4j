@@ -20,21 +20,21 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkGeneratedCommandsInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineBindPoint pipelineBindPoint;
-///     VkPipeline pipeline; // optional
-///     VkIndirectCommandsLayoutNV indirectCommandsLayout;
-///     uint32_t streamCount;
-///     VkIndirectCommandsStreamNV const* pStreams;
-///     uint32_t sequencesCount;
-///     VkBuffer preprocessBuffer;
-///     VkDeviceSize preprocessOffset;
-///     VkDeviceSize preprocessSize;
-///     VkBuffer sequencesCountBuffer; // optional
-///     VkDeviceSize sequencesCountOffset;
-///     VkBuffer sequencesIndexBuffer; // optional
-///     VkDeviceSize sequencesIndexOffset;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineBindPoint pipelineBindPoint; // @link substring="VkPipelineBindPoint" target="VkPipelineBindPoint" @link substring="pipelineBindPoint" target="#pipelineBindPoint"
+///     VkPipeline pipeline; // optional // @link substring="VkPipeline" target="VkPipeline" @link substring="pipeline" target="#pipeline"
+///     VkIndirectCommandsLayoutNV indirectCommandsLayout; // @link substring="VkIndirectCommandsLayoutNV" target="VkIndirectCommandsLayoutNV" @link substring="indirectCommandsLayout" target="#indirectCommandsLayout"
+///     uint32_t streamCount; // @link substring="streamCount" target="#streamCount"
+///     VkIndirectCommandsStreamNV const* pStreams; // @link substring="VkIndirectCommandsStreamNV" target="VkIndirectCommandsStreamNV" @link substring="pStreams" target="#pStreams"
+///     uint32_t sequencesCount; // @link substring="sequencesCount" target="#sequencesCount"
+///     VkBuffer preprocessBuffer; // @link substring="VkBuffer" target="VkBuffer" @link substring="preprocessBuffer" target="#preprocessBuffer"
+///     VkDeviceSize preprocessOffset; // @link substring="preprocessOffset" target="#preprocessOffset"
+///     VkDeviceSize preprocessSize; // @link substring="preprocessSize" target="#preprocessSize"
+///     VkBuffer sequencesCountBuffer; // optional // @link substring="VkBuffer" target="VkBuffer" @link substring="sequencesCountBuffer" target="#sequencesCountBuffer"
+///     VkDeviceSize sequencesCountOffset; // @link substring="sequencesCountOffset" target="#sequencesCountOffset"
+///     VkBuffer sequencesIndexBuffer; // optional // @link substring="VkBuffer" target="VkBuffer" @link substring="sequencesIndexBuffer" target="#sequencesIndexBuffer"
+///     VkDeviceSize sequencesIndexOffset; // @link substring="sequencesIndexOffset" target="#sequencesIndexOffset"
 /// } VkGeneratedCommandsInfoNV;
 /// }
 ///
@@ -154,14 +154,6 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$streamCount, OFFSET$streamCount, value);
     }
 
-    public @pointer(target=VkIndirectCommandsStreamNV.class) MemorySegment pStreamsRaw() {
-        return segment.get(LAYOUT$pStreams, OFFSET$pStreams);
-    }
-
-    public void pStreamsRaw(@pointer(target=VkIndirectCommandsStreamNV.class) MemorySegment value) {
-        segment.set(LAYOUT$pStreams, OFFSET$pStreams, value);
-    }
-
     public @Nullable VkIndirectCommandsStreamNV pStreams() {
         MemorySegment s = pStreamsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -187,6 +179,14 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
             ret[i] = new VkIndirectCommandsStreamNV(s.asSlice(i * VkIndirectCommandsStreamNV.BYTES, VkIndirectCommandsStreamNV.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkIndirectCommandsStreamNV.class) MemorySegment pStreamsRaw() {
+        return segment.get(LAYOUT$pStreams, OFFSET$pStreams);
+    }
+
+    public void pStreamsRaw(@pointer(target=VkIndirectCommandsStreamNV.class) MemorySegment value) {
+        segment.set(LAYOUT$pStreams, OFFSET$pStreams, value);
     }
 
     public @unsigned int sequencesCount() {

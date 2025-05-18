@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineTessellationStateCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineTessellationStateCreateFlags flags; // optional
-///     uint32_t patchControlPoints;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineTessellationStateCreateFlags flags; // optional // @link substring="VkPipelineTessellationStateCreateFlags" target="VkPipelineTessellationStateCreateFlags" @link substring="flags" target="#flags"
+///     uint32_t patchControlPoints; // @link substring="patchControlPoints" target="#patchControlPoints"
 /// } VkPipelineTessellationStateCreateInfo;
 /// }
 ///

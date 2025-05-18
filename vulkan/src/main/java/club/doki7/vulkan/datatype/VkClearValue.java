@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkClearValue {
-///     VkClearColorValue color;
-///     VkClearDepthStencilValue depthStencil;
+///     VkClearColorValue color; // @link substring="VkClearColorValue" target="VkClearColorValue" @link substring="color" target="#color"
+///     VkClearDepthStencilValue depthStencil; // @link substring="VkClearDepthStencilValue" target="VkClearDepthStencilValue" @link substring="depthStencil" target="#depthStencil"
 /// } VkClearValue;
 /// }
 ///
@@ -67,19 +67,19 @@ public record VkClearValue(@NotNull MemorySegment segment) implements IPointer {
         return ret;
     }
 
-    public VkClearColorValue color() {
+    public @NotNull VkClearColorValue color() {
         return new VkClearColorValue(segment.asSlice(OFFSET$color, LAYOUT$color));
     }
 
-    public void color(VkClearColorValue value) {
+    public void color(@NotNull VkClearColorValue value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$color, SIZE$color);
     }
 
-    public VkClearDepthStencilValue depthStencil() {
+    public @NotNull VkClearDepthStencilValue depthStencil() {
         return new VkClearDepthStencilValue(segment.asSlice(OFFSET$depthStencil, LAYOUT$depthStencil));
     }
 
-    public void depthStencil(VkClearDepthStencilValue value) {
+    public void depthStencil(@NotNull VkClearDepthStencilValue value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$depthStencil, SIZE$depthStencil);
     }
 

@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBufferCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBufferCreateFlags flags; // optional
-///     VkDeviceSize size;
-///     VkBufferUsageFlags usage;
-///     VkSharingMode sharingMode;
-///     uint32_t queueFamilyIndexCount; // optional
-///     uint32_t const* pQueueFamilyIndices;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBufferCreateFlags flags; // optional // @link substring="VkBufferCreateFlags" target="VkBufferCreateFlags" @link substring="flags" target="#flags"
+///     VkDeviceSize size; // @link substring="size" target="#size"
+///     VkBufferUsageFlags usage; // @link substring="VkBufferUsageFlags" target="VkBufferUsageFlags" @link substring="usage" target="#usage"
+///     VkSharingMode sharingMode; // @link substring="VkSharingMode" target="VkSharingMode" @link substring="sharingMode" target="#sharingMode"
+///     uint32_t queueFamilyIndexCount; // optional // @link substring="queueFamilyIndexCount" target="#queueFamilyIndexCount"
+///     uint32_t const* pQueueFamilyIndices; // @link substring="pQueueFamilyIndices" target="#pQueueFamilyIndices"
 /// } VkBufferCreateInfo;
 /// }
 ///
@@ -147,14 +147,6 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IPoi
         segment.set(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pQueueFamilyIndicesRaw() {
-        return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
-    }
-
-    public void pQueueFamilyIndicesRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -170,6 +162,14 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IPoi
     public void pQueueFamilyIndices(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueFamilyIndicesRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pQueueFamilyIndicesRaw() {
+        return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
+    }
+
+    public void pQueueFamilyIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

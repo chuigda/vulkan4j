@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPartitionedAccelerationStructureUpdateInstanceDataNV {
-///     uint32_t instanceIndex;
-///     uint32_t instanceContributionToHitGroupIndex;
-///     VkDeviceAddress accelerationStructure;
+///     uint32_t instanceIndex; // @link substring="instanceIndex" target="#instanceIndex"
+///     uint32_t instanceContributionToHitGroupIndex; // @link substring="instanceContributionToHitGroupIndex" target="#instanceContributionToHitGroupIndex"
+///     VkDeviceAddress accelerationStructure; // @link substring="accelerationStructure" target="#accelerationStructure"
 /// } VkPartitionedAccelerationStructureUpdateInstanceDataNV;
 /// }
 ///

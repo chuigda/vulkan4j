@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceGroupProperties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t physicalDeviceCount;
-///     VkPhysicalDevice physicalDevices;
-///     VkBool32 subsetAllocation;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t physicalDeviceCount; // @link substring="physicalDeviceCount" target="#physicalDeviceCount"
+///     VkPhysicalDevice physicalDevices; // @link substring="VkPhysicalDevice" target="VkPhysicalDevice" @link substring="physicalDevices" target="#physicalDevices"
+///     VkBool32 subsetAllocation; // @link substring="subsetAllocation" target="#subsetAllocation"
 /// } VkPhysicalDeviceGroupProperties;
 /// }
 ///

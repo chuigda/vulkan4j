@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPartitionedAccelerationStructureWritePartitionTranslationDataNV {
-///     uint32_t partitionIndex;
-///     float partitionTranslation;
+///     uint32_t partitionIndex; // @link substring="partitionIndex" target="#partitionIndex"
+///     float partitionTranslation; // @link substring="partitionTranslation" target="#partitionTranslation"
 /// } VkPartitionedAccelerationStructureWritePartitionTranslationDataNV;
 /// }
 ///

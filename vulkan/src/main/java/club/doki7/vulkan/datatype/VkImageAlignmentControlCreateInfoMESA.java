@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageAlignmentControlCreateInfoMESA {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t maximumRequestedAlignment;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maximumRequestedAlignment; // @link substring="maximumRequestedAlignment" target="#maximumRequestedAlignment"
 /// } VkImageAlignmentControlCreateInfoMESA;
 /// }
 ///

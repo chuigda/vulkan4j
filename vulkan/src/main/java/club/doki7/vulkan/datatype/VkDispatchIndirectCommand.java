@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDispatchIndirectCommand {
-///     uint32_t x;
-///     uint32_t y;
-///     uint32_t z;
+///     uint32_t x; // @link substring="x" target="#x"
+///     uint32_t y; // @link substring="y" target="#y"
+///     uint32_t z; // @link substring="z" target="#z"
 /// } VkDispatchIndirectCommand;
 /// }
 ///

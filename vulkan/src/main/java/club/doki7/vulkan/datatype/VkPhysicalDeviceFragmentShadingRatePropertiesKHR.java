@@ -20,25 +20,25 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceFragmentShadingRatePropertiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkExtent2D minFragmentShadingRateAttachmentTexelSize;
-///     VkExtent2D maxFragmentShadingRateAttachmentTexelSize;
-///     uint32_t maxFragmentShadingRateAttachmentTexelSizeAspectRatio;
-///     VkBool32 primitiveFragmentShadingRateWithMultipleViewports;
-///     VkBool32 layeredShadingRateAttachments;
-///     VkBool32 fragmentShadingRateNonTrivialCombinerOps;
-///     VkExtent2D maxFragmentSize;
-///     uint32_t maxFragmentSizeAspectRatio;
-///     uint32_t maxFragmentShadingRateCoverageSamples;
-///     VkSampleCountFlags maxFragmentShadingRateRasterizationSamples;
-///     VkBool32 fragmentShadingRateWithShaderDepthStencilWrites;
-///     VkBool32 fragmentShadingRateWithSampleMask;
-///     VkBool32 fragmentShadingRateWithShaderSampleMask;
-///     VkBool32 fragmentShadingRateWithConservativeRasterization;
-///     VkBool32 fragmentShadingRateWithFragmentShaderInterlock;
-///     VkBool32 fragmentShadingRateWithCustomSampleLocations;
-///     VkBool32 fragmentShadingRateStrictMultiplyCombiner;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkExtent2D minFragmentShadingRateAttachmentTexelSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="minFragmentShadingRateAttachmentTexelSize" target="#minFragmentShadingRateAttachmentTexelSize"
+///     VkExtent2D maxFragmentShadingRateAttachmentTexelSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxFragmentShadingRateAttachmentTexelSize" target="#maxFragmentShadingRateAttachmentTexelSize"
+///     uint32_t maxFragmentShadingRateAttachmentTexelSizeAspectRatio; // @link substring="maxFragmentShadingRateAttachmentTexelSizeAspectRatio" target="#maxFragmentShadingRateAttachmentTexelSizeAspectRatio"
+///     VkBool32 primitiveFragmentShadingRateWithMultipleViewports; // @link substring="primitiveFragmentShadingRateWithMultipleViewports" target="#primitiveFragmentShadingRateWithMultipleViewports"
+///     VkBool32 layeredShadingRateAttachments; // @link substring="layeredShadingRateAttachments" target="#layeredShadingRateAttachments"
+///     VkBool32 fragmentShadingRateNonTrivialCombinerOps; // @link substring="fragmentShadingRateNonTrivialCombinerOps" target="#fragmentShadingRateNonTrivialCombinerOps"
+///     VkExtent2D maxFragmentSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxFragmentSize" target="#maxFragmentSize"
+///     uint32_t maxFragmentSizeAspectRatio; // @link substring="maxFragmentSizeAspectRatio" target="#maxFragmentSizeAspectRatio"
+///     uint32_t maxFragmentShadingRateCoverageSamples; // @link substring="maxFragmentShadingRateCoverageSamples" target="#maxFragmentShadingRateCoverageSamples"
+///     VkSampleCountFlags maxFragmentShadingRateRasterizationSamples; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="maxFragmentShadingRateRasterizationSamples" target="#maxFragmentShadingRateRasterizationSamples"
+///     VkBool32 fragmentShadingRateWithShaderDepthStencilWrites; // @link substring="fragmentShadingRateWithShaderDepthStencilWrites" target="#fragmentShadingRateWithShaderDepthStencilWrites"
+///     VkBool32 fragmentShadingRateWithSampleMask; // @link substring="fragmentShadingRateWithSampleMask" target="#fragmentShadingRateWithSampleMask"
+///     VkBool32 fragmentShadingRateWithShaderSampleMask; // @link substring="fragmentShadingRateWithShaderSampleMask" target="#fragmentShadingRateWithShaderSampleMask"
+///     VkBool32 fragmentShadingRateWithConservativeRasterization; // @link substring="fragmentShadingRateWithConservativeRasterization" target="#fragmentShadingRateWithConservativeRasterization"
+///     VkBool32 fragmentShadingRateWithFragmentShaderInterlock; // @link substring="fragmentShadingRateWithFragmentShaderInterlock" target="#fragmentShadingRateWithFragmentShaderInterlock"
+///     VkBool32 fragmentShadingRateWithCustomSampleLocations; // @link substring="fragmentShadingRateWithCustomSampleLocations" target="#fragmentShadingRateWithCustomSampleLocations"
+///     VkBool32 fragmentShadingRateStrictMultiplyCombiner; // @link substring="fragmentShadingRateStrictMultiplyCombiner" target="#fragmentShadingRateStrictMultiplyCombiner"
 /// } VkPhysicalDeviceFragmentShadingRatePropertiesKHR;
 /// }
 ///
@@ -118,19 +118,19 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkExtent2D minFragmentShadingRateAttachmentTexelSize() {
+    public @NotNull VkExtent2D minFragmentShadingRateAttachmentTexelSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$minFragmentShadingRateAttachmentTexelSize, LAYOUT$minFragmentShadingRateAttachmentTexelSize));
     }
 
-    public void minFragmentShadingRateAttachmentTexelSize(VkExtent2D value) {
+    public void minFragmentShadingRateAttachmentTexelSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minFragmentShadingRateAttachmentTexelSize, SIZE$minFragmentShadingRateAttachmentTexelSize);
     }
 
-    public VkExtent2D maxFragmentShadingRateAttachmentTexelSize() {
+    public @NotNull VkExtent2D maxFragmentShadingRateAttachmentTexelSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxFragmentShadingRateAttachmentTexelSize, LAYOUT$maxFragmentShadingRateAttachmentTexelSize));
     }
 
-    public void maxFragmentShadingRateAttachmentTexelSize(VkExtent2D value) {
+    public void maxFragmentShadingRateAttachmentTexelSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFragmentShadingRateAttachmentTexelSize, SIZE$maxFragmentShadingRateAttachmentTexelSize);
     }
 
@@ -166,11 +166,11 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
         segment.set(LAYOUT$fragmentShadingRateNonTrivialCombinerOps, OFFSET$fragmentShadingRateNonTrivialCombinerOps, value);
     }
 
-    public VkExtent2D maxFragmentSize() {
+    public @NotNull VkExtent2D maxFragmentSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxFragmentSize, LAYOUT$maxFragmentSize));
     }
 
-    public void maxFragmentSize(VkExtent2D value) {
+    public void maxFragmentSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFragmentSize, SIZE$maxFragmentSize);
     }
 

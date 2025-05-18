@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageSubresourceLayers {
-///     VkImageAspectFlags aspectMask;
-///     uint32_t mipLevel;
-///     uint32_t baseArrayLayer;
-///     uint32_t layerCount;
+///     VkImageAspectFlags aspectMask; // @link substring="VkImageAspectFlags" target="VkImageAspectFlags" @link substring="aspectMask" target="#aspectMask"
+///     uint32_t mipLevel; // @link substring="mipLevel" target="#mipLevel"
+///     uint32_t baseArrayLayer; // @link substring="baseArrayLayer" target="#baseArrayLayer"
+///     uint32_t layerCount; // @link substring="layerCount" target="#layerCount"
 /// } VkImageSubresourceLayers;
 /// }
 ///

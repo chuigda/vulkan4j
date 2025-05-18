@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeQuantizationMapCapabilitiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkExtent2D maxQuantizationMapExtent;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkExtent2D maxQuantizationMapExtent; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxQuantizationMapExtent" target="#maxQuantizationMapExtent"
 /// } VkVideoEncodeQuantizationMapCapabilitiesKHR;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkVideoEncodeQuantizationMapCapabilitiesKHR(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkExtent2D maxQuantizationMapExtent() {
+    public @NotNull VkExtent2D maxQuantizationMapExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxQuantizationMapExtent, LAYOUT$maxQuantizationMapExtent));
     }
 
-    public void maxQuantizationMapExtent(VkExtent2D value) {
+    public void maxQuantizationMapExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxQuantizationMapExtent, SIZE$maxQuantizationMapExtent);
     }
 

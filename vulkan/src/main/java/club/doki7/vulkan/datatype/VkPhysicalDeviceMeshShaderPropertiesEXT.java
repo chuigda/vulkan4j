@@ -20,36 +20,36 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMeshShaderPropertiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t maxTaskWorkGroupTotalCount;
-///     uint32_t maxTaskWorkGroupCount;
-///     uint32_t maxTaskWorkGroupInvocations;
-///     uint32_t maxTaskWorkGroupSize;
-///     uint32_t maxTaskPayloadSize;
-///     uint32_t maxTaskSharedMemorySize;
-///     uint32_t maxTaskPayloadAndSharedMemorySize;
-///     uint32_t maxMeshWorkGroupTotalCount;
-///     uint32_t maxMeshWorkGroupCount;
-///     uint32_t maxMeshWorkGroupInvocations;
-///     uint32_t maxMeshWorkGroupSize;
-///     uint32_t maxMeshSharedMemorySize;
-///     uint32_t maxMeshPayloadAndSharedMemorySize;
-///     uint32_t maxMeshOutputMemorySize;
-///     uint32_t maxMeshPayloadAndOutputMemorySize;
-///     uint32_t maxMeshOutputComponents;
-///     uint32_t maxMeshOutputVertices;
-///     uint32_t maxMeshOutputPrimitives;
-///     uint32_t maxMeshOutputLayers;
-///     uint32_t maxMeshMultiviewViewCount;
-///     uint32_t meshOutputPerVertexGranularity;
-///     uint32_t meshOutputPerPrimitiveGranularity;
-///     uint32_t maxPreferredTaskWorkGroupInvocations;
-///     uint32_t maxPreferredMeshWorkGroupInvocations;
-///     VkBool32 prefersLocalInvocationVertexOutput;
-///     VkBool32 prefersLocalInvocationPrimitiveOutput;
-///     VkBool32 prefersCompactVertexOutput;
-///     VkBool32 prefersCompactPrimitiveOutput;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxTaskWorkGroupTotalCount; // @link substring="maxTaskWorkGroupTotalCount" target="#maxTaskWorkGroupTotalCount"
+///     uint32_t maxTaskWorkGroupCount; // @link substring="maxTaskWorkGroupCount" target="#maxTaskWorkGroupCount"
+///     uint32_t maxTaskWorkGroupInvocations; // @link substring="maxTaskWorkGroupInvocations" target="#maxTaskWorkGroupInvocations"
+///     uint32_t maxTaskWorkGroupSize; // @link substring="maxTaskWorkGroupSize" target="#maxTaskWorkGroupSize"
+///     uint32_t maxTaskPayloadSize; // @link substring="maxTaskPayloadSize" target="#maxTaskPayloadSize"
+///     uint32_t maxTaskSharedMemorySize; // @link substring="maxTaskSharedMemorySize" target="#maxTaskSharedMemorySize"
+///     uint32_t maxTaskPayloadAndSharedMemorySize; // @link substring="maxTaskPayloadAndSharedMemorySize" target="#maxTaskPayloadAndSharedMemorySize"
+///     uint32_t maxMeshWorkGroupTotalCount; // @link substring="maxMeshWorkGroupTotalCount" target="#maxMeshWorkGroupTotalCount"
+///     uint32_t maxMeshWorkGroupCount; // @link substring="maxMeshWorkGroupCount" target="#maxMeshWorkGroupCount"
+///     uint32_t maxMeshWorkGroupInvocations; // @link substring="maxMeshWorkGroupInvocations" target="#maxMeshWorkGroupInvocations"
+///     uint32_t maxMeshWorkGroupSize; // @link substring="maxMeshWorkGroupSize" target="#maxMeshWorkGroupSize"
+///     uint32_t maxMeshSharedMemorySize; // @link substring="maxMeshSharedMemorySize" target="#maxMeshSharedMemorySize"
+///     uint32_t maxMeshPayloadAndSharedMemorySize; // @link substring="maxMeshPayloadAndSharedMemorySize" target="#maxMeshPayloadAndSharedMemorySize"
+///     uint32_t maxMeshOutputMemorySize; // @link substring="maxMeshOutputMemorySize" target="#maxMeshOutputMemorySize"
+///     uint32_t maxMeshPayloadAndOutputMemorySize; // @link substring="maxMeshPayloadAndOutputMemorySize" target="#maxMeshPayloadAndOutputMemorySize"
+///     uint32_t maxMeshOutputComponents; // @link substring="maxMeshOutputComponents" target="#maxMeshOutputComponents"
+///     uint32_t maxMeshOutputVertices; // @link substring="maxMeshOutputVertices" target="#maxMeshOutputVertices"
+///     uint32_t maxMeshOutputPrimitives; // @link substring="maxMeshOutputPrimitives" target="#maxMeshOutputPrimitives"
+///     uint32_t maxMeshOutputLayers; // @link substring="maxMeshOutputLayers" target="#maxMeshOutputLayers"
+///     uint32_t maxMeshMultiviewViewCount; // @link substring="maxMeshMultiviewViewCount" target="#maxMeshMultiviewViewCount"
+///     uint32_t meshOutputPerVertexGranularity; // @link substring="meshOutputPerVertexGranularity" target="#meshOutputPerVertexGranularity"
+///     uint32_t meshOutputPerPrimitiveGranularity; // @link substring="meshOutputPerPrimitiveGranularity" target="#meshOutputPerPrimitiveGranularity"
+///     uint32_t maxPreferredTaskWorkGroupInvocations; // @link substring="maxPreferredTaskWorkGroupInvocations" target="#maxPreferredTaskWorkGroupInvocations"
+///     uint32_t maxPreferredMeshWorkGroupInvocations; // @link substring="maxPreferredMeshWorkGroupInvocations" target="#maxPreferredMeshWorkGroupInvocations"
+///     VkBool32 prefersLocalInvocationVertexOutput; // @link substring="prefersLocalInvocationVertexOutput" target="#prefersLocalInvocationVertexOutput"
+///     VkBool32 prefersLocalInvocationPrimitiveOutput; // @link substring="prefersLocalInvocationPrimitiveOutput" target="#prefersLocalInvocationPrimitiveOutput"
+///     VkBool32 prefersCompactVertexOutput; // @link substring="prefersCompactVertexOutput" target="#prefersCompactVertexOutput"
+///     VkBool32 prefersCompactPrimitiveOutput; // @link substring="prefersCompactPrimitiveOutput" target="#prefersCompactPrimitiveOutput"
 /// } VkPhysicalDeviceMeshShaderPropertiesEXT;
 /// }
 ///

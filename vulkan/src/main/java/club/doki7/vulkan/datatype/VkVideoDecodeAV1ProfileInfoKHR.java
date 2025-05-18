@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoDecodeAV1ProfileInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     StdVideoAV1Profile stdProfile;
-///     VkBool32 filmGrainSupport;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     StdVideoAV1Profile stdProfile; // @link substring="StdVideoAV1Profile" target="StdVideoAV1Profile" @link substring="stdProfile" target="#stdProfile"
+///     VkBool32 filmGrainSupport; // @link substring="filmGrainSupport" target="#filmGrainSupport"
 /// } VkVideoDecodeAV1ProfileInfoKHR;
 /// }
 ///

@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBuildPartitionedAccelerationStructureIndirectCommandNV {
-///     VkPartitionedAccelerationStructureOpTypeNV opType;
-///     uint32_t argCount;
-///     VkStridedDeviceAddressNV argData;
+///     VkPartitionedAccelerationStructureOpTypeNV opType; // @link substring="VkPartitionedAccelerationStructureOpTypeNV" target="VkPartitionedAccelerationStructureOpTypeNV" @link substring="opType" target="#opType"
+///     uint32_t argCount; // @link substring="argCount" target="#argCount"
+///     VkStridedDeviceAddressNV argData; // @link substring="VkStridedDeviceAddressNV" target="VkStridedDeviceAddressNV" @link substring="argData" target="#argData"
 /// } VkBuildPartitionedAccelerationStructureIndirectCommandNV;
 /// }
 ///
@@ -84,11 +84,11 @@ public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull 
         segment.set(LAYOUT$argCount, OFFSET$argCount, value);
     }
 
-    public VkStridedDeviceAddressNV argData() {
+    public @NotNull VkStridedDeviceAddressNV argData() {
         return new VkStridedDeviceAddressNV(segment.asSlice(OFFSET$argData, LAYOUT$argData));
     }
 
-    public void argData(VkStridedDeviceAddressNV value) {
+    public void argData(@NotNull VkStridedDeviceAddressNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$argData, SIZE$argData);
     }
 

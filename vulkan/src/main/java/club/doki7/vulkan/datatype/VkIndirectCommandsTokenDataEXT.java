@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkIndirectCommandsTokenDataEXT {
-///     VkIndirectCommandsPushConstantTokenEXT const* pPushConstant;
-///     VkIndirectCommandsVertexBufferTokenEXT const* pVertexBuffer;
-///     VkIndirectCommandsIndexBufferTokenEXT const* pIndexBuffer;
-///     VkIndirectCommandsExecutionSetTokenEXT const* pExecutionSet;
+///     VkIndirectCommandsPushConstantTokenEXT const* pPushConstant; // @link substring="VkIndirectCommandsPushConstantTokenEXT" target="VkIndirectCommandsPushConstantTokenEXT" @link substring="pPushConstant" target="#pPushConstant"
+///     VkIndirectCommandsVertexBufferTokenEXT const* pVertexBuffer; // @link substring="VkIndirectCommandsVertexBufferTokenEXT" target="VkIndirectCommandsVertexBufferTokenEXT" @link substring="pVertexBuffer" target="#pVertexBuffer"
+///     VkIndirectCommandsIndexBufferTokenEXT const* pIndexBuffer; // @link substring="VkIndirectCommandsIndexBufferTokenEXT" target="VkIndirectCommandsIndexBufferTokenEXT" @link substring="pIndexBuffer" target="#pIndexBuffer"
+///     VkIndirectCommandsExecutionSetTokenEXT const* pExecutionSet; // @link substring="VkIndirectCommandsExecutionSetTokenEXT" target="VkIndirectCommandsExecutionSetTokenEXT" @link substring="pExecutionSet" target="#pExecutionSet"
 /// } VkIndirectCommandsTokenDataEXT;
 /// }
 ///
@@ -69,14 +69,6 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public @pointer(target=VkIndirectCommandsPushConstantTokenEXT.class) MemorySegment pPushConstantRaw() {
-        return segment.get(LAYOUT$pPushConstant, OFFSET$pPushConstant);
-    }
-
-    public void pPushConstantRaw(@pointer(target=VkIndirectCommandsPushConstantTokenEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pPushConstant, OFFSET$pPushConstant, value);
-    }
-
     public @Nullable VkIndirectCommandsPushConstantTokenEXT pPushConstant() {
         MemorySegment s = pPushConstantRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -104,12 +96,12 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public @pointer(target=VkIndirectCommandsVertexBufferTokenEXT.class) MemorySegment pVertexBufferRaw() {
-        return segment.get(LAYOUT$pVertexBuffer, OFFSET$pVertexBuffer);
+    public @pointer(target=VkIndirectCommandsPushConstantTokenEXT.class) MemorySegment pPushConstantRaw() {
+        return segment.get(LAYOUT$pPushConstant, OFFSET$pPushConstant);
     }
 
-    public void pVertexBufferRaw(@pointer(target=VkIndirectCommandsVertexBufferTokenEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pVertexBuffer, OFFSET$pVertexBuffer, value);
+    public void pPushConstantRaw(@pointer(target=VkIndirectCommandsPushConstantTokenEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pPushConstant, OFFSET$pPushConstant, value);
     }
 
     public @Nullable VkIndirectCommandsVertexBufferTokenEXT pVertexBuffer() {
@@ -139,12 +131,12 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public @pointer(target=VkIndirectCommandsIndexBufferTokenEXT.class) MemorySegment pIndexBufferRaw() {
-        return segment.get(LAYOUT$pIndexBuffer, OFFSET$pIndexBuffer);
+    public @pointer(target=VkIndirectCommandsVertexBufferTokenEXT.class) MemorySegment pVertexBufferRaw() {
+        return segment.get(LAYOUT$pVertexBuffer, OFFSET$pVertexBuffer);
     }
 
-    public void pIndexBufferRaw(@pointer(target=VkIndirectCommandsIndexBufferTokenEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pIndexBuffer, OFFSET$pIndexBuffer, value);
+    public void pVertexBufferRaw(@pointer(target=VkIndirectCommandsVertexBufferTokenEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pVertexBuffer, OFFSET$pVertexBuffer, value);
     }
 
     public @Nullable VkIndirectCommandsIndexBufferTokenEXT pIndexBuffer() {
@@ -174,12 +166,12 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public @pointer(target=VkIndirectCommandsExecutionSetTokenEXT.class) MemorySegment pExecutionSetRaw() {
-        return segment.get(LAYOUT$pExecutionSet, OFFSET$pExecutionSet);
+    public @pointer(target=VkIndirectCommandsIndexBufferTokenEXT.class) MemorySegment pIndexBufferRaw() {
+        return segment.get(LAYOUT$pIndexBuffer, OFFSET$pIndexBuffer);
     }
 
-    public void pExecutionSetRaw(@pointer(target=VkIndirectCommandsExecutionSetTokenEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pExecutionSet, OFFSET$pExecutionSet, value);
+    public void pIndexBufferRaw(@pointer(target=VkIndirectCommandsIndexBufferTokenEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pIndexBuffer, OFFSET$pIndexBuffer, value);
     }
 
     public @Nullable VkIndirectCommandsExecutionSetTokenEXT pExecutionSet() {
@@ -207,6 +199,14 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
             ret[i] = new VkIndirectCommandsExecutionSetTokenEXT(s.asSlice(i * VkIndirectCommandsExecutionSetTokenEXT.BYTES, VkIndirectCommandsExecutionSetTokenEXT.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkIndirectCommandsExecutionSetTokenEXT.class) MemorySegment pExecutionSetRaw() {
+        return segment.get(LAYOUT$pExecutionSet, OFFSET$pExecutionSet);
+    }
+
+    public void pExecutionSetRaw(@pointer(target=VkIndirectCommandsExecutionSetTokenEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pExecutionSet, OFFSET$pExecutionSet, value);
     }
 
     public static final UnionLayout LAYOUT = NativeLayout.unionLayout(

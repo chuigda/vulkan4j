@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDisplayPresentInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkRect2D srcRect;
-///     VkRect2D dstRect;
-///     VkBool32 persistent;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkRect2D srcRect; // @link substring="VkRect2D" target="VkRect2D" @link substring="srcRect" target="#srcRect"
+///     VkRect2D dstRect; // @link substring="VkRect2D" target="VkRect2D" @link substring="dstRect" target="#dstRect"
+///     VkBool32 persistent; // @link substring="persistent" target="#persistent"
 /// } VkDisplayPresentInfoKHR;
 /// }
 ///
@@ -104,19 +104,19 @@ public record VkDisplayPresentInfoKHR(@NotNull MemorySegment segment) implements
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkRect2D srcRect() {
+    public @NotNull VkRect2D srcRect() {
         return new VkRect2D(segment.asSlice(OFFSET$srcRect, LAYOUT$srcRect));
     }
 
-    public void srcRect(VkRect2D value) {
+    public void srcRect(@NotNull VkRect2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcRect, SIZE$srcRect);
     }
 
-    public VkRect2D dstRect() {
+    public @NotNull VkRect2D dstRect() {
         return new VkRect2D(segment.asSlice(OFFSET$dstRect, LAYOUT$dstRect));
     }
 
-    public void dstRect(VkRect2D value) {
+    public void dstRect(@NotNull VkRect2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstRect, SIZE$dstRect);
     }
 

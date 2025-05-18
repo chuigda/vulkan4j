@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceLineRasterizationFeatures {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 rectangularLines;
-///     VkBool32 bresenhamLines;
-///     VkBool32 smoothLines;
-///     VkBool32 stippledRectangularLines;
-///     VkBool32 stippledBresenhamLines;
-///     VkBool32 stippledSmoothLines;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 rectangularLines; // @link substring="rectangularLines" target="#rectangularLines"
+///     VkBool32 bresenhamLines; // @link substring="bresenhamLines" target="#bresenhamLines"
+///     VkBool32 smoothLines; // @link substring="smoothLines" target="#smoothLines"
+///     VkBool32 stippledRectangularLines; // @link substring="stippledRectangularLines" target="#stippledRectangularLines"
+///     VkBool32 stippledBresenhamLines; // @link substring="stippledBresenhamLines" target="#stippledBresenhamLines"
+///     VkBool32 stippledSmoothLines; // @link substring="stippledSmoothLines" target="#stippledSmoothLines"
 /// } VkPhysicalDeviceLineRasterizationFeatures;
 /// }
 ///

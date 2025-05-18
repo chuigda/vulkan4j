@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBindImageMemoryInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImage image;
-///     VkDeviceMemory memory;
-///     VkDeviceSize memoryOffset;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImage image; // @link substring="VkImage" target="VkImage" @link substring="image" target="#image"
+///     VkDeviceMemory memory; // @link substring="VkDeviceMemory" target="VkDeviceMemory" @link substring="memory" target="#memory"
+///     VkDeviceSize memoryOffset; // @link substring="memoryOffset" target="#memoryOffset"
 /// } VkBindImageMemoryInfo;
 /// }
 ///

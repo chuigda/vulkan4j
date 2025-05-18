@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAcquireNextImageInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkSwapchainKHR swapchain;
-///     uint64_t timeout;
-///     VkSemaphore semaphore; // optional
-///     VkFence fence; // optional
-///     uint32_t deviceMask;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSwapchainKHR swapchain; // @link substring="VkSwapchainKHR" target="VkSwapchainKHR" @link substring="swapchain" target="#swapchain"
+///     uint64_t timeout; // @link substring="timeout" target="#timeout"
+///     VkSemaphore semaphore; // optional // @link substring="VkSemaphore" target="VkSemaphore" @link substring="semaphore" target="#semaphore"
+///     VkFence fence; // optional // @link substring="VkFence" target="VkFence" @link substring="fence" target="#fence"
+///     uint32_t deviceMask; // @link substring="deviceMask" target="#deviceMask"
 /// } VkAcquireNextImageInfoKHR;
 /// }
 ///

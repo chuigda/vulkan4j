@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineBinaryKeyKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t keySize;
-///     uint8_t key;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t keySize; // @link substring="keySize" target="#keySize"
+///     uint8_t key; // @link substring="key" target="#key"
 /// } VkPipelineBinaryKeyKHR;
 /// }
 ///

@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDevice16BitStorageFeatures {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 storageBuffer16BitAccess;
-///     VkBool32 uniformAndStorageBuffer16BitAccess;
-///     VkBool32 storagePushConstant16;
-///     VkBool32 storageInputOutput16;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 storageBuffer16BitAccess; // @link substring="storageBuffer16BitAccess" target="#storageBuffer16BitAccess"
+///     VkBool32 uniformAndStorageBuffer16BitAccess; // @link substring="uniformAndStorageBuffer16BitAccess" target="#uniformAndStorageBuffer16BitAccess"
+///     VkBool32 storagePushConstant16; // @link substring="storagePushConstant16" target="#storagePushConstant16"
+///     VkBool32 storageInputOutput16; // @link substring="storageInputOutput16" target="#storageInputOutput16"
 /// } VkPhysicalDevice16BitStorageFeatures;
 /// }
 ///

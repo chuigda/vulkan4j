@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265SubLayerHrdParameters {
-///     uint32_t bit_rate_value_minus1;
-///     uint32_t cpb_size_value_minus1;
-///     uint32_t cpb_size_du_value_minus1;
-///     uint32_t bit_rate_du_value_minus1;
-///     uint32_t cbr_flag;
+///     uint32_t bit_rate_value_minus1; // @link substring="bit_rate_value_minus1" target="#bit_rate_value_minus1"
+///     uint32_t cpb_size_value_minus1; // @link substring="cpb_size_value_minus1" target="#cpb_size_value_minus1"
+///     uint32_t cpb_size_du_value_minus1; // @link substring="cpb_size_du_value_minus1" target="#cpb_size_du_value_minus1"
+///     uint32_t bit_rate_du_value_minus1; // @link substring="bit_rate_du_value_minus1" target="#bit_rate_du_value_minus1"
+///     uint32_t cbr_flag; // @link substring="cbr_flag" target="#cbr_flag"
 /// } StdVideoH265SubLayerHrdParameters;
 /// }
 ///

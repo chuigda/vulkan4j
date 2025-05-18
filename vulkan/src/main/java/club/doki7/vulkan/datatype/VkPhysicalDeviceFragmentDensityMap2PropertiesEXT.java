@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceFragmentDensityMap2PropertiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 subsampledLoads;
-///     VkBool32 subsampledCoarseReconstructionEarlyAccess;
-///     uint32_t maxSubsampledArrayLayers;
-///     uint32_t maxDescriptorSetSubsampledSamplers;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 subsampledLoads; // @link substring="subsampledLoads" target="#subsampledLoads"
+///     VkBool32 subsampledCoarseReconstructionEarlyAccess; // @link substring="subsampledCoarseReconstructionEarlyAccess" target="#subsampledCoarseReconstructionEarlyAccess"
+///     uint32_t maxSubsampledArrayLayers; // @link substring="maxSubsampledArrayLayers" target="#maxSubsampledArrayLayers"
+///     uint32_t maxDescriptorSetSubsampledSamplers; // @link substring="maxDescriptorSetSubsampledSamplers" target="#maxDescriptorSetSubsampledSamplers"
 /// } VkPhysicalDeviceFragmentDensityMap2PropertiesEXT;
 /// }
 ///

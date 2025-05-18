@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPresentFrameTokenGGP {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     GgpFrameToken frameToken;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     GgpFrameToken frameToken; // @link substring="frameToken" target="#frameToken"
 /// } VkPresentFrameTokenGGP;
 /// }
 ///

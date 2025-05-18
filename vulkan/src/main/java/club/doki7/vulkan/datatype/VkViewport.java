@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkViewport {
-///     float x;
-///     float y;
-///     float width;
-///     float height;
-///     float minDepth;
-///     float maxDepth;
+///     float x; // @link substring="x" target="#x"
+///     float y; // @link substring="y" target="#y"
+///     float width; // @link substring="width" target="#width"
+///     float height; // @link substring="height" target="#height"
+///     float minDepth; // @link substring="minDepth" target="#minDepth"
+///     float maxDepth; // @link substring="maxDepth" target="#maxDepth"
 /// } VkViewport;
 /// }
 ///

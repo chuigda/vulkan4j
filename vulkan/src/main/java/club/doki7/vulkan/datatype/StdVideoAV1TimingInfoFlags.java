@@ -21,8 +21,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1TimingInfoFlags {
-///     uint32_t equal_picture_interval : 1;
-///     uint32_t reserved : 31;
+///     uint32_t equal_picture_interval : 1; // @link substring="equal_picture_interval" target="#equal_picture_interval"
+///     uint32_t reserved : 31; // @link substring="reserved" target="#reserved"
 /// } StdVideoAV1TimingInfoFlags;
 /// }
 ///

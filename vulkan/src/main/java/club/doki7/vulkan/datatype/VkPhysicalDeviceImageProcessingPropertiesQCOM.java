@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceImageProcessingPropertiesQCOM {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t maxWeightFilterPhases; // optional
-///     VkExtent2D maxWeightFilterDimension; // optional
-///     VkExtent2D maxBlockMatchRegion; // optional
-///     VkExtent2D maxBoxFilterBlockSize; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxWeightFilterPhases; // optional // @link substring="maxWeightFilterPhases" target="#maxWeightFilterPhases"
+///     VkExtent2D maxWeightFilterDimension; // optional // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxWeightFilterDimension" target="#maxWeightFilterDimension"
+///     VkExtent2D maxBlockMatchRegion; // optional // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxBlockMatchRegion" target="#maxBlockMatchRegion"
+///     VkExtent2D maxBoxFilterBlockSize; // optional // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxBoxFilterBlockSize" target="#maxBoxFilterBlockSize"
 /// } VkPhysicalDeviceImageProcessingPropertiesQCOM;
 /// }
 ///
@@ -113,27 +113,27 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(@NotNull MemorySegme
         segment.set(LAYOUT$maxWeightFilterPhases, OFFSET$maxWeightFilterPhases, value);
     }
 
-    public VkExtent2D maxWeightFilterDimension() {
+    public @NotNull VkExtent2D maxWeightFilterDimension() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxWeightFilterDimension, LAYOUT$maxWeightFilterDimension));
     }
 
-    public void maxWeightFilterDimension(VkExtent2D value) {
+    public void maxWeightFilterDimension(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxWeightFilterDimension, SIZE$maxWeightFilterDimension);
     }
 
-    public VkExtent2D maxBlockMatchRegion() {
+    public @NotNull VkExtent2D maxBlockMatchRegion() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxBlockMatchRegion, LAYOUT$maxBlockMatchRegion));
     }
 
-    public void maxBlockMatchRegion(VkExtent2D value) {
+    public void maxBlockMatchRegion(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxBlockMatchRegion, SIZE$maxBlockMatchRegion);
     }
 
-    public VkExtent2D maxBoxFilterBlockSize() {
+    public @NotNull VkExtent2D maxBoxFilterBlockSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxBoxFilterBlockSize, LAYOUT$maxBoxFilterBlockSize));
     }
 
-    public void maxBoxFilterBlockSize(VkExtent2D value) {
+    public void maxBoxFilterBlockSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxBoxFilterBlockSize, SIZE$maxBoxFilterBlockSize);
     }
 

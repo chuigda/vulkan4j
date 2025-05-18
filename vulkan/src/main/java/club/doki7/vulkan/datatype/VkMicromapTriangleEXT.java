@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMicromapTriangleEXT {
-///     uint32_t dataOffset;
-///     uint16_t subdivisionLevel;
-///     uint16_t format;
+///     uint32_t dataOffset; // @link substring="dataOffset" target="#dataOffset"
+///     uint16_t subdivisionLevel; // @link substring="subdivisionLevel" target="#subdivisionLevel"
+///     uint16_t format; // @link substring="format" target="#format"
 /// } VkMicromapTriangleEXT;
 /// }
 ///

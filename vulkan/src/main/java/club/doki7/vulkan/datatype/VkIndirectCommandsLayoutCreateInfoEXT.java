@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkIndirectCommandsLayoutCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkIndirectCommandsLayoutUsageFlagsEXT flags; // optional
-///     VkShaderStageFlags shaderStages;
-///     uint32_t indirectStride;
-///     VkPipelineLayout pipelineLayout; // optional
-///     uint32_t tokenCount;
-///     VkIndirectCommandsLayoutTokenEXT const* pTokens;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkIndirectCommandsLayoutUsageFlagsEXT flags; // optional // @link substring="VkIndirectCommandsLayoutUsageFlagsEXT" target="VkIndirectCommandsLayoutUsageFlagsEXT" @link substring="flags" target="#flags"
+///     VkShaderStageFlags shaderStages; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="shaderStages" target="#shaderStages"
+///     uint32_t indirectStride; // @link substring="indirectStride" target="#indirectStride"
+///     VkPipelineLayout pipelineLayout; // optional // @link substring="VkPipelineLayout" target="VkPipelineLayout" @link substring="pipelineLayout" target="#pipelineLayout"
+///     uint32_t tokenCount; // @link substring="tokenCount" target="#tokenCount"
+///     VkIndirectCommandsLayoutTokenEXT const* pTokens; // @link substring="VkIndirectCommandsLayoutTokenEXT" target="VkIndirectCommandsLayoutTokenEXT" @link substring="pTokens" target="#pTokens"
 /// } VkIndirectCommandsLayoutCreateInfoEXT;
 /// }
 ///
@@ -151,14 +151,6 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         segment.set(LAYOUT$tokenCount, OFFSET$tokenCount, value);
     }
 
-    public @pointer(target=VkIndirectCommandsLayoutTokenEXT.class) MemorySegment pTokensRaw() {
-        return segment.get(LAYOUT$pTokens, OFFSET$pTokens);
-    }
-
-    public void pTokensRaw(@pointer(target=VkIndirectCommandsLayoutTokenEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pTokens, OFFSET$pTokens, value);
-    }
-
     public @Nullable VkIndirectCommandsLayoutTokenEXT pTokens() {
         MemorySegment s = pTokensRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -184,6 +176,14 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
             ret[i] = new VkIndirectCommandsLayoutTokenEXT(s.asSlice(i * VkIndirectCommandsLayoutTokenEXT.BYTES, VkIndirectCommandsLayoutTokenEXT.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkIndirectCommandsLayoutTokenEXT.class) MemorySegment pTokensRaw() {
+        return segment.get(LAYOUT$pTokens, OFFSET$pTokens);
+    }
+
+    public void pTokensRaw(@pointer(target=VkIndirectCommandsLayoutTokenEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pTokens, OFFSET$pTokens, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

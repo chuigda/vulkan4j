@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceVertexAttributeDivisorFeatures {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 vertexAttributeInstanceRateDivisor;
-///     VkBool32 vertexAttributeInstanceRateZeroDivisor;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 vertexAttributeInstanceRateDivisor; // @link substring="vertexAttributeInstanceRateDivisor" target="#vertexAttributeInstanceRateDivisor"
+///     VkBool32 vertexAttributeInstanceRateZeroDivisor; // @link substring="vertexAttributeInstanceRateZeroDivisor" target="#vertexAttributeInstanceRateZeroDivisor"
 /// } VkPhysicalDeviceVertexAttributeDivisorFeatures;
 /// }
 ///

@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineShaderStageNodeCreateInfoAMDX {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     char const* pName; // optional
-///     uint32_t index;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     char const* pName; // optional // @link substring="pName" target="#pName"
+///     uint32_t index; // @link substring="index" target="#index"
 /// } VkPipelineShaderStageNodeCreateInfoAMDX;
 /// }
 ///
@@ -103,14 +103,6 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(@NotNull MemorySegment seg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="byte*") MemorySegment pNameRaw() {
-        return segment.get(LAYOUT$pName, OFFSET$pName);
-    }
-
-    public void pNameRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pName, OFFSET$pName, value);
-    }
-
     /// Note: the returned {@link BytePtr} does not have correct
     /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
@@ -126,6 +118,14 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(@NotNull MemorySegment seg
     public void pName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNameRaw(s);
+    }
+
+    public @pointer(comment="byte*") MemorySegment pNameRaw() {
+        return segment.get(LAYOUT$pName, OFFSET$pName);
+    }
+
+    public void pNameRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
 
     public @unsigned int index() {

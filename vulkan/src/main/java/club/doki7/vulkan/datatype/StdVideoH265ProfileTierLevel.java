@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265ProfileTierLevel {
-///     StdVideoH265ProfileTierLevelFlags flags;
-///     StdVideoH265ProfileIdc general_profile_idc;
-///     StdVideoH265LevelIdc general_level_idc;
+///     StdVideoH265ProfileTierLevelFlags flags; // @link substring="StdVideoH265ProfileTierLevelFlags" target="StdVideoH265ProfileTierLevelFlags" @link substring="flags" target="#flags"
+///     StdVideoH265ProfileIdc general_profile_idc; // @link substring="StdVideoH265ProfileIdc" target="StdVideoH265ProfileIdc" @link substring="general_profile_idc" target="#general_profile_idc"
+///     StdVideoH265LevelIdc general_level_idc; // @link substring="StdVideoH265LevelIdc" target="StdVideoH265LevelIdc" @link substring="general_level_idc" target="#general_level_idc"
 /// } StdVideoH265ProfileTierLevel;
 /// }
 ///
@@ -66,11 +66,11 @@ public record StdVideoH265ProfileTierLevel(@NotNull MemorySegment segment) imple
         return ret;
     }
 
-    public StdVideoH265ProfileTierLevelFlags flags() {
+    public @NotNull StdVideoH265ProfileTierLevelFlags flags() {
         return new StdVideoH265ProfileTierLevelFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoH265ProfileTierLevelFlags value) {
+    public void flags(@NotNull StdVideoH265ProfileTierLevelFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 

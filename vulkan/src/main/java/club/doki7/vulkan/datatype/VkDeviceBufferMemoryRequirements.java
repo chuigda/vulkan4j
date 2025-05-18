@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceBufferMemoryRequirements {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBufferCreateInfo const* pCreateInfo;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBufferCreateInfo const* pCreateInfo; // @link substring="VkBufferCreateInfo" target="VkBufferCreateInfo" @link substring="pCreateInfo" target="#pCreateInfo"
 /// } VkDeviceBufferMemoryRequirements;
 /// }
 ///
@@ -102,14 +102,6 @@ public record VkDeviceBufferMemoryRequirements(@NotNull MemorySegment segment) i
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(target=VkBufferCreateInfo.class) MemorySegment pCreateInfoRaw() {
-        return segment.get(LAYOUT$pCreateInfo, OFFSET$pCreateInfo);
-    }
-
-    public void pCreateInfoRaw(@pointer(target=VkBufferCreateInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
-    }
-
     public @Nullable VkBufferCreateInfo pCreateInfo() {
         MemorySegment s = pCreateInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -135,6 +127,14 @@ public record VkDeviceBufferMemoryRequirements(@NotNull MemorySegment segment) i
             ret[i] = new VkBufferCreateInfo(s.asSlice(i * VkBufferCreateInfo.BYTES, VkBufferCreateInfo.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkBufferCreateInfo.class) MemorySegment pCreateInfoRaw() {
+        return segment.get(LAYOUT$pCreateInfo, OFFSET$pCreateInfo);
+    }
+
+    public void pCreateInfoRaw(@pointer(target=VkBufferCreateInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExportMetalTextureInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImage image; // optional
-///     VkImageView imageView; // optional
-///     VkBufferView bufferView; // optional
-///     VkImageAspectFlags plane;
-///     MTLTexture_id mtlTexture;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImage image; // optional // @link substring="VkImage" target="VkImage" @link substring="image" target="#image"
+///     VkImageView imageView; // optional // @link substring="VkImageView" target="VkImageView" @link substring="imageView" target="#imageView"
+///     VkBufferView bufferView; // optional // @link substring="VkBufferView" target="VkBufferView" @link substring="bufferView" target="#bufferView"
+///     VkImageAspectFlags plane; // @link substring="VkImageAspectFlags" target="VkImageAspectFlags" @link substring="plane" target="#plane"
+///     MTLTexture_id mtlTexture; // @link substring="mtlTexture" target="#mtlTexture"
 /// } VkExportMetalTextureInfoEXT;
 /// }
 ///

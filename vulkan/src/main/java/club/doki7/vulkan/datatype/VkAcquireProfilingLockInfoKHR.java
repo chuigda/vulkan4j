@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAcquireProfilingLockInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkAcquireProfilingLockFlagsKHR flags; // optional
-///     uint64_t timeout;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkAcquireProfilingLockFlagsKHR flags; // optional // @link substring="VkAcquireProfilingLockFlagsKHR" target="VkAcquireProfilingLockFlagsKHR" @link substring="flags" target="#flags"
+///     uint64_t timeout; // @link substring="timeout" target="#timeout"
 /// } VkAcquireProfilingLockInfoKHR;
 /// }
 ///

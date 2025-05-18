@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMemoryHeap {
-///     VkDeviceSize size;
-///     VkMemoryHeapFlags flags; // optional
+///     VkDeviceSize size; // @link substring="size" target="#size"
+///     VkMemoryHeapFlags flags; // optional // @link substring="VkMemoryHeapFlags" target="VkMemoryHeapFlags" @link substring="flags" target="#flags"
 /// } VkMemoryHeap;
 /// }
 ///

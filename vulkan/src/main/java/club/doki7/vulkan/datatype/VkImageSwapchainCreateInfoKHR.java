@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageSwapchainCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkSwapchainKHR swapchain; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSwapchainKHR swapchain; // optional // @link substring="VkSwapchainKHR" target="VkSwapchainKHR" @link substring="swapchain" target="#swapchain"
 /// } VkImageSwapchainCreateInfoKHR;
 /// }
 ///

@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265LongTermRefPicsSps {
-///     uint32_t used_by_curr_pic_lt_sps_flag;
-///     uint32_t lt_ref_pic_poc_lsb_sps;
+///     uint32_t used_by_curr_pic_lt_sps_flag; // @link substring="used_by_curr_pic_lt_sps_flag" target="#used_by_curr_pic_lt_sps_flag"
+///     uint32_t lt_ref_pic_poc_lsb_sps; // @link substring="lt_ref_pic_poc_lsb_sps" target="#lt_ref_pic_poc_lsb_sps"
 /// } StdVideoH265LongTermRefPicsSps;
 /// }
 ///

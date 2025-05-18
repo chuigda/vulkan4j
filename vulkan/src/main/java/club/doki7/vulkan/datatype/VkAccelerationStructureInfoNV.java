@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkAccelerationStructureTypeNV type;
-///     VkBuildAccelerationStructureFlagsNV flags; // optional
-///     uint32_t instanceCount; // optional
-///     uint32_t geometryCount; // optional
-///     VkGeometryNV const* pGeometries;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkAccelerationStructureTypeNV type; // @link substring="VkAccelerationStructureTypeKHR" target="VkAccelerationStructureTypeNV" @link substring="type" target="#type"
+///     VkBuildAccelerationStructureFlagsNV flags; // optional // @link substring="VkBuildAccelerationStructureFlagsKHR" target="VkBuildAccelerationStructureFlagsNV" @link substring="flags" target="#flags"
+///     uint32_t instanceCount; // optional // @link substring="instanceCount" target="#instanceCount"
+///     uint32_t geometryCount; // optional // @link substring="geometryCount" target="#geometryCount"
+///     VkGeometryNV const* pGeometries; // @link substring="VkGeometryNV" target="VkGeometryNV" @link substring="pGeometries" target="#pGeometries"
 /// } VkAccelerationStructureInfoNV;
 /// }
 ///
@@ -138,14 +138,6 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$geometryCount, OFFSET$geometryCount, value);
     }
 
-    public @pointer(target=VkGeometryNV.class) MemorySegment pGeometriesRaw() {
-        return segment.get(LAYOUT$pGeometries, OFFSET$pGeometries);
-    }
-
-    public void pGeometriesRaw(@pointer(target=VkGeometryNV.class) MemorySegment value) {
-        segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
-    }
-
     public @Nullable VkGeometryNV pGeometries() {
         MemorySegment s = pGeometriesRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -171,6 +163,14 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
             ret[i] = new VkGeometryNV(s.asSlice(i * VkGeometryNV.BYTES, VkGeometryNV.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkGeometryNV.class) MemorySegment pGeometriesRaw() {
+        return segment.get(LAYOUT$pGeometries, OFFSET$pGeometries);
+    }
+
+    public void pGeometriesRaw(@pointer(target=VkGeometryNV.class) MemorySegment value) {
+        segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

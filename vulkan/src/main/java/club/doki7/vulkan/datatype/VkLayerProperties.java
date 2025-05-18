@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkLayerProperties {
-///     char layerName;
-///     uint32_t specVersion;
-///     uint32_t implementationVersion;
-///     char description;
+///     char layerName; // @link substring="layerName" target="#layerName"
+///     uint32_t specVersion; // @link substring="specVersion" target="#specVersion"
+///     uint32_t implementationVersion; // @link substring="implementationVersion" target="#implementationVersion"
+///     char description; // @link substring="description" target="#description"
 /// } VkLayerProperties;
 /// }
 ///

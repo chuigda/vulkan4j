@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDescriptorSetAllocateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDescriptorPool descriptorPool;
-///     uint32_t descriptorSetCount;
-///     VkDescriptorSetLayout const* pSetLayouts;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDescriptorPool descriptorPool; // @link substring="VkDescriptorPool" target="VkDescriptorPool" @link substring="descriptorPool" target="#descriptorPool"
+///     uint32_t descriptorSetCount; // @link substring="descriptorSetCount" target="#descriptorSetCount"
+///     VkDescriptorSetLayout const* pSetLayouts; // @link substring="VkDescriptorSetLayout" target="VkDescriptorSetLayout" @link substring="pSetLayouts" target="#pSetLayouts"
 /// } VkDescriptorSetAllocateInfo;
 /// }
 ///
@@ -124,14 +124,6 @@ public record VkDescriptorSetAllocateInfo(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount, value);
     }
 
-    public @pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {
-        return segment.get(LAYOUT$pSetLayouts, OFFSET$pSetLayouts);
-    }
-
-    public void pSetLayoutsRaw(@pointer(target=VkDescriptorSetLayout.class) MemorySegment value) {
-        segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
-    }
-
     /// Note: the returned {@link VkDescriptorSetLayout.Ptr} does not have correct {@link VkDescriptorSetLayout.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkDescriptorSetLayout.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -147,6 +139,14 @@ public record VkDescriptorSetAllocateInfo(@NotNull MemorySegment segment) implem
     public void pSetLayouts(@Nullable VkDescriptorSetLayout.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSetLayoutsRaw(s);
+    }
+
+    public @pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {
+        return segment.get(LAYOUT$pSetLayouts, OFFSET$pSetLayouts);
+    }
+
+    public void pSetLayoutsRaw(@pointer(target=VkDescriptorSetLayout.class) MemorySegment value) {
+        segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

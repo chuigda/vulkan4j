@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageViewCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImageViewCreateFlags flags; // optional
-///     VkImage image;
-///     VkImageViewType viewType;
-///     VkFormat format;
-///     VkComponentMapping components;
-///     VkImageSubresourceRange subresourceRange;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageViewCreateFlags flags; // optional // @link substring="VkImageViewCreateFlags" target="VkImageViewCreateFlags" @link substring="flags" target="#flags"
+///     VkImage image; // @link substring="VkImage" target="VkImage" @link substring="image" target="#image"
+///     VkImageViewType viewType; // @link substring="VkImageViewType" target="VkImageViewType" @link substring="viewType" target="#viewType"
+///     VkFormat format; // @link substring="VkFormat" target="VkFormat" @link substring="format" target="#format"
+///     VkComponentMapping components; // @link substring="VkComponentMapping" target="VkComponentMapping" @link substring="components" target="#components"
+///     VkImageSubresourceRange subresourceRange; // @link substring="VkImageSubresourceRange" target="VkImageSubresourceRange" @link substring="subresourceRange" target="#subresourceRange"
 /// } VkImageViewCreateInfo;
 /// }
 ///
@@ -143,19 +143,19 @@ public record VkImageViewCreateInfo(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$format, OFFSET$format, value);
     }
 
-    public VkComponentMapping components() {
+    public @NotNull VkComponentMapping components() {
         return new VkComponentMapping(segment.asSlice(OFFSET$components, LAYOUT$components));
     }
 
-    public void components(VkComponentMapping value) {
+    public void components(@NotNull VkComponentMapping value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$components, SIZE$components);
     }
 
-    public VkImageSubresourceRange subresourceRange() {
+    public @NotNull VkImageSubresourceRange subresourceRange() {
         return new VkImageSubresourceRange(segment.asSlice(OFFSET$subresourceRange, LAYOUT$subresourceRange));
     }
 
-    public void subresourceRange(VkImageSubresourceRange value) {
+    public void subresourceRange(@NotNull VkImageSubresourceRange value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceRange, SIZE$subresourceRange);
     }
 

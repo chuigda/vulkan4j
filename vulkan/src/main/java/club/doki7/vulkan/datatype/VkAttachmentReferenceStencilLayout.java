@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAttachmentReferenceStencilLayout {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkImageLayout stencilLayout;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageLayout stencilLayout; // @link substring="VkImageLayout" target="VkImageLayout" @link substring="stencilLayout" target="#stencilLayout"
 /// } VkAttachmentReferenceStencilLayout;
 /// }
 ///

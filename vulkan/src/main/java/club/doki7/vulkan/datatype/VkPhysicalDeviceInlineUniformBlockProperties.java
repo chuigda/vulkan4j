@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceInlineUniformBlockProperties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t maxInlineUniformBlockSize;
-///     uint32_t maxPerStageDescriptorInlineUniformBlocks;
-///     uint32_t maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks;
-///     uint32_t maxDescriptorSetInlineUniformBlocks;
-///     uint32_t maxDescriptorSetUpdateAfterBindInlineUniformBlocks;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxInlineUniformBlockSize; // @link substring="maxInlineUniformBlockSize" target="#maxInlineUniformBlockSize"
+///     uint32_t maxPerStageDescriptorInlineUniformBlocks; // @link substring="maxPerStageDescriptorInlineUniformBlocks" target="#maxPerStageDescriptorInlineUniformBlocks"
+///     uint32_t maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks; // @link substring="maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks" target="#maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks"
+///     uint32_t maxDescriptorSetInlineUniformBlocks; // @link substring="maxDescriptorSetInlineUniformBlocks" target="#maxDescriptorSetInlineUniformBlocks"
+///     uint32_t maxDescriptorSetUpdateAfterBindInlineUniformBlocks; // @link substring="maxDescriptorSetUpdateAfterBindInlineUniformBlocks" target="#maxDescriptorSetUpdateAfterBindInlineUniformBlocks"
 /// } VkPhysicalDeviceInlineUniformBlockProperties;
 /// }
 ///

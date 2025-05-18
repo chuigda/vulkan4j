@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCommandBufferInheritanceRenderingInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkRenderingFlags flags; // optional
-///     uint32_t viewMask;
-///     uint32_t colorAttachmentCount; // optional
-///     VkFormat const* pColorAttachmentFormats;
-///     VkFormat depthAttachmentFormat;
-///     VkFormat stencilAttachmentFormat;
-///     VkSampleCountFlags rasterizationSamples; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkRenderingFlags flags; // optional // @link substring="VkRenderingFlags" target="VkRenderingFlags" @link substring="flags" target="#flags"
+///     uint32_t viewMask; // @link substring="viewMask" target="#viewMask"
+///     uint32_t colorAttachmentCount; // optional // @link substring="colorAttachmentCount" target="#colorAttachmentCount"
+///     VkFormat const* pColorAttachmentFormats; // @link substring="VkFormat" target="VkFormat" @link substring="pColorAttachmentFormats" target="#pColorAttachmentFormats"
+///     VkFormat depthAttachmentFormat; // @link substring="VkFormat" target="VkFormat" @link substring="depthAttachmentFormat" target="#depthAttachmentFormat"
+///     VkFormat stencilAttachmentFormat; // @link substring="VkFormat" target="VkFormat" @link substring="stencilAttachmentFormat" target="#stencilAttachmentFormat"
+///     VkSampleCountFlags rasterizationSamples; // optional // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="rasterizationSamples" target="#rasterizationSamples"
 /// } VkCommandBufferInheritanceRenderingInfo;
 /// }
 ///
@@ -132,13 +132,6 @@ public record VkCommandBufferInheritanceRenderingInfo(@NotNull MemorySegment seg
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
     }
 
-    public @pointer(target=VkFormat.class) MemorySegment pColorAttachmentFormatsRaw() {
-        return segment.get(LAYOUT$pColorAttachmentFormats, OFFSET$pColorAttachmentFormats);
-    }
-
-    public void pColorAttachmentFormatsRaw(@pointer(target=VkFormat.class) MemorySegment value) {
-        segment.set(LAYOUT$pColorAttachmentFormats, OFFSET$pColorAttachmentFormats, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -155,6 +148,14 @@ public record VkCommandBufferInheritanceRenderingInfo(@NotNull MemorySegment seg
     public void pColorAttachmentFormats(@Nullable @enumtype(VkFormat.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentFormatsRaw(s);
+    }
+
+    public @pointer(target=VkFormat.class) MemorySegment pColorAttachmentFormatsRaw() {
+        return segment.get(LAYOUT$pColorAttachmentFormats, OFFSET$pColorAttachmentFormats);
+    }
+
+    public void pColorAttachmentFormatsRaw(@pointer(target=VkFormat.class) MemorySegment value) {
+        segment.set(LAYOUT$pColorAttachmentFormats, OFFSET$pColorAttachmentFormats, value);
     }
 
     public @enumtype(VkFormat.class) int depthAttachmentFormat() {

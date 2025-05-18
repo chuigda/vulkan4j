@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSurfacePresentScalingCapabilitiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkPresentScalingFlagsEXT supportedPresentScaling; // optional
-///     VkPresentGravityFlagsEXT supportedPresentGravityX; // optional
-///     VkPresentGravityFlagsEXT supportedPresentGravityY; // optional
-///     VkExtent2D minScaledImageExtent; // optional
-///     VkExtent2D maxScaledImageExtent; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPresentScalingFlagsEXT supportedPresentScaling; // optional // @link substring="VkPresentScalingFlagsEXT" target="VkPresentScalingFlagsEXT" @link substring="supportedPresentScaling" target="#supportedPresentScaling"
+///     VkPresentGravityFlagsEXT supportedPresentGravityX; // optional // @link substring="VkPresentGravityFlagsEXT" target="VkPresentGravityFlagsEXT" @link substring="supportedPresentGravityX" target="#supportedPresentGravityX"
+///     VkPresentGravityFlagsEXT supportedPresentGravityY; // optional // @link substring="VkPresentGravityFlagsEXT" target="VkPresentGravityFlagsEXT" @link substring="supportedPresentGravityY" target="#supportedPresentGravityY"
+///     VkExtent2D minScaledImageExtent; // optional // @link substring="VkExtent2D" target="VkExtent2D" @link substring="minScaledImageExtent" target="#minScaledImageExtent"
+///     VkExtent2D maxScaledImageExtent; // optional // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxScaledImageExtent" target="#maxScaledImageExtent"
 /// } VkSurfacePresentScalingCapabilitiesEXT;
 /// }
 ///
@@ -130,19 +130,19 @@ public record VkSurfacePresentScalingCapabilitiesEXT(@NotNull MemorySegment segm
         segment.set(LAYOUT$supportedPresentGravityY, OFFSET$supportedPresentGravityY, value);
     }
 
-    public VkExtent2D minScaledImageExtent() {
+    public @NotNull VkExtent2D minScaledImageExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$minScaledImageExtent, LAYOUT$minScaledImageExtent));
     }
 
-    public void minScaledImageExtent(VkExtent2D value) {
+    public void minScaledImageExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minScaledImageExtent, SIZE$minScaledImageExtent);
     }
 
-    public VkExtent2D maxScaledImageExtent() {
+    public @NotNull VkExtent2D maxScaledImageExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxScaledImageExtent, LAYOUT$maxScaledImageExtent));
     }
 
-    public void maxScaledImageExtent(VkExtent2D value) {
+    public void maxScaledImageExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxScaledImageExtent, SIZE$maxScaledImageExtent);
     }
 

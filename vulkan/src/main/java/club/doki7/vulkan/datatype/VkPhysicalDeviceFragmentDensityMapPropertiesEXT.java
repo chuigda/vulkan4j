@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceFragmentDensityMapPropertiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkExtent2D minFragmentDensityTexelSize;
-///     VkExtent2D maxFragmentDensityTexelSize;
-///     VkBool32 fragmentDensityInvocations;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkExtent2D minFragmentDensityTexelSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="minFragmentDensityTexelSize" target="#minFragmentDensityTexelSize"
+///     VkExtent2D maxFragmentDensityTexelSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxFragmentDensityTexelSize" target="#maxFragmentDensityTexelSize"
+///     VkBool32 fragmentDensityInvocations; // @link substring="fragmentDensityInvocations" target="#fragmentDensityInvocations"
 /// } VkPhysicalDeviceFragmentDensityMapPropertiesEXT;
 /// }
 ///
@@ -104,19 +104,19 @@ public record VkPhysicalDeviceFragmentDensityMapPropertiesEXT(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkExtent2D minFragmentDensityTexelSize() {
+    public @NotNull VkExtent2D minFragmentDensityTexelSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$minFragmentDensityTexelSize, LAYOUT$minFragmentDensityTexelSize));
     }
 
-    public void minFragmentDensityTexelSize(VkExtent2D value) {
+    public void minFragmentDensityTexelSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minFragmentDensityTexelSize, SIZE$minFragmentDensityTexelSize);
     }
 
-    public VkExtent2D maxFragmentDensityTexelSize() {
+    public @NotNull VkExtent2D maxFragmentDensityTexelSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxFragmentDensityTexelSize, LAYOUT$maxFragmentDensityTexelSize));
     }
 
-    public void maxFragmentDensityTexelSize(VkExtent2D value) {
+    public void maxFragmentDensityTexelSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFragmentDensityTexelSize, SIZE$maxFragmentDensityTexelSize);
     }
 

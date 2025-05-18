@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineSampleLocationsStateCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBool32 sampleLocationsEnable;
-///     VkSampleLocationsInfoEXT sampleLocationsInfo;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 sampleLocationsEnable; // @link substring="sampleLocationsEnable" target="#sampleLocationsEnable"
+///     VkSampleLocationsInfoEXT sampleLocationsInfo; // @link substring="VkSampleLocationsInfoEXT" target="VkSampleLocationsInfoEXT" @link substring="sampleLocationsInfo" target="#sampleLocationsInfo"
 /// } VkPipelineSampleLocationsStateCreateInfoEXT;
 /// }
 ///
@@ -111,11 +111,11 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(@NotNull MemorySegment
         segment.set(LAYOUT$sampleLocationsEnable, OFFSET$sampleLocationsEnable, value);
     }
 
-    public VkSampleLocationsInfoEXT sampleLocationsInfo() {
+    public @NotNull VkSampleLocationsInfoEXT sampleLocationsInfo() {
         return new VkSampleLocationsInfoEXT(segment.asSlice(OFFSET$sampleLocationsInfo, LAYOUT$sampleLocationsInfo));
     }
 
-    public void sampleLocationsInfo(VkSampleLocationsInfoEXT value) {
+    public void sampleLocationsInfo(@NotNull VkSampleLocationsInfoEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationsInfo, SIZE$sampleLocationsInfo);
     }
 

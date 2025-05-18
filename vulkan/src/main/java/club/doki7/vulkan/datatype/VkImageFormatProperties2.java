@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageFormatProperties2 {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkImageFormatProperties imageFormatProperties;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageFormatProperties imageFormatProperties; // @link substring="VkImageFormatProperties" target="VkImageFormatProperties" @link substring="imageFormatProperties" target="#imageFormatProperties"
 /// } VkImageFormatProperties2;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkImageFormatProperties2(@NotNull MemorySegment segment) implement
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkImageFormatProperties imageFormatProperties() {
+    public @NotNull VkImageFormatProperties imageFormatProperties() {
         return new VkImageFormatProperties(segment.asSlice(OFFSET$imageFormatProperties, LAYOUT$imageFormatProperties));
     }
 
-    public void imageFormatProperties(VkImageFormatProperties value) {
+    public void imageFormatProperties(@NotNull VkImageFormatProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageFormatProperties, SIZE$imageFormatProperties);
     }
 

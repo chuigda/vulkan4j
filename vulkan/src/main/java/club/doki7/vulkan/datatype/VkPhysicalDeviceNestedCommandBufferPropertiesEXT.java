@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceNestedCommandBufferPropertiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t maxCommandBufferNestingLevel;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxCommandBufferNestingLevel; // @link substring="maxCommandBufferNestingLevel" target="#maxCommandBufferNestingLevel"
 /// } VkPhysicalDeviceNestedCommandBufferPropertiesEXT;
 /// }
 ///

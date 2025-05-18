@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureGeometrySpheresDataNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkFormat vertexFormat;
-///     VkDeviceOrHostAddressConstKHR vertexData;
-///     VkDeviceSize vertexStride;
-///     VkFormat radiusFormat;
-///     VkDeviceOrHostAddressConstKHR radiusData;
-///     VkDeviceSize radiusStride;
-///     VkIndexType indexType;
-///     VkDeviceOrHostAddressConstKHR indexData;
-///     VkDeviceSize indexStride;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkFormat vertexFormat; // @link substring="VkFormat" target="VkFormat" @link substring="vertexFormat" target="#vertexFormat"
+///     VkDeviceOrHostAddressConstKHR vertexData; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="vertexData" target="#vertexData"
+///     VkDeviceSize vertexStride; // @link substring="vertexStride" target="#vertexStride"
+///     VkFormat radiusFormat; // @link substring="VkFormat" target="VkFormat" @link substring="radiusFormat" target="#radiusFormat"
+///     VkDeviceOrHostAddressConstKHR radiusData; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="radiusData" target="#radiusData"
+///     VkDeviceSize radiusStride; // @link substring="radiusStride" target="#radiusStride"
+///     VkIndexType indexType; // @link substring="VkIndexType" target="VkIndexType" @link substring="indexType" target="#indexType"
+///     VkDeviceOrHostAddressConstKHR indexData; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="indexData" target="#indexData"
+///     VkDeviceSize indexStride; // @link substring="indexStride" target="#indexStride"
 /// } VkAccelerationStructureGeometrySpheresDataNV;
 /// }
 ///
@@ -118,11 +118,11 @@ public record VkAccelerationStructureGeometrySpheresDataNV(@NotNull MemorySegmen
         segment.set(LAYOUT$vertexFormat, OFFSET$vertexFormat, value);
     }
 
-    public VkDeviceOrHostAddressConstKHR vertexData() {
+    public @NotNull VkDeviceOrHostAddressConstKHR vertexData() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$vertexData, LAYOUT$vertexData));
     }
 
-    public void vertexData(VkDeviceOrHostAddressConstKHR value) {
+    public void vertexData(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$vertexData, SIZE$vertexData);
     }
 
@@ -142,11 +142,11 @@ public record VkAccelerationStructureGeometrySpheresDataNV(@NotNull MemorySegmen
         segment.set(LAYOUT$radiusFormat, OFFSET$radiusFormat, value);
     }
 
-    public VkDeviceOrHostAddressConstKHR radiusData() {
+    public @NotNull VkDeviceOrHostAddressConstKHR radiusData() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$radiusData, LAYOUT$radiusData));
     }
 
-    public void radiusData(VkDeviceOrHostAddressConstKHR value) {
+    public void radiusData(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$radiusData, SIZE$radiusData);
     }
 
@@ -166,11 +166,11 @@ public record VkAccelerationStructureGeometrySpheresDataNV(@NotNull MemorySegmen
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
     }
 
-    public VkDeviceOrHostAddressConstKHR indexData() {
+    public @NotNull VkDeviceOrHostAddressConstKHR indexData() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$indexData, LAYOUT$indexData));
     }
 
-    public void indexData(VkDeviceOrHostAddressConstKHR value) {
+    public void indexData(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexData, SIZE$indexData);
     }
 

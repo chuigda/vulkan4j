@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageViewHandleInfoNVX {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImageView imageView;
-///     VkDescriptorType descriptorType;
-///     VkSampler sampler; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageView imageView; // @link substring="VkImageView" target="VkImageView" @link substring="imageView" target="#imageView"
+///     VkDescriptorType descriptorType; // @link substring="VkDescriptorType" target="VkDescriptorType" @link substring="descriptorType" target="#descriptorType"
+///     VkSampler sampler; // optional // @link substring="VkSampler" target="VkSampler" @link substring="sampler" target="#sampler"
 /// } VkImageViewHandleInfoNVX;
 /// }
 ///

@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExtent2D {
-///     uint32_t width;
-///     uint32_t height;
+///     uint32_t width; // @link substring="width" target="#width"
+///     uint32_t height; // @link substring="height" target="#height"
 /// } VkExtent2D;
 /// }
 ///

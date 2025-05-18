@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDisplayPlaneInfo2KHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDisplayModeKHR mode;
-///     uint32_t planeIndex;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDisplayModeKHR mode; // @link substring="VkDisplayModeKHR" target="VkDisplayModeKHR" @link substring="mode" target="#mode"
+///     uint32_t planeIndex; // @link substring="planeIndex" target="#planeIndex"
 /// } VkDisplayPlaneInfo2KHR;
 /// }
 ///

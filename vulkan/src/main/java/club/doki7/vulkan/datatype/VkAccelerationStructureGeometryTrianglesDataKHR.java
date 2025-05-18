@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureGeometryTrianglesDataKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkFormat vertexFormat;
-///     VkDeviceOrHostAddressConstKHR vertexData;
-///     VkDeviceSize vertexStride;
-///     uint32_t maxVertex;
-///     VkIndexType indexType;
-///     VkDeviceOrHostAddressConstKHR indexData;
-///     VkDeviceOrHostAddressConstKHR transformData;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkFormat vertexFormat; // @link substring="VkFormat" target="VkFormat" @link substring="vertexFormat" target="#vertexFormat"
+///     VkDeviceOrHostAddressConstKHR vertexData; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="vertexData" target="#vertexData"
+///     VkDeviceSize vertexStride; // @link substring="vertexStride" target="#vertexStride"
+///     uint32_t maxVertex; // @link substring="maxVertex" target="#maxVertex"
+///     VkIndexType indexType; // @link substring="VkIndexType" target="VkIndexType" @link substring="indexType" target="#indexType"
+///     VkDeviceOrHostAddressConstKHR indexData; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="indexData" target="#indexData"
+///     VkDeviceOrHostAddressConstKHR transformData; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="transformData" target="#transformData"
 /// } VkAccelerationStructureGeometryTrianglesDataKHR;
 /// }
 ///
@@ -116,11 +116,11 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(@NotNull MemorySeg
         segment.set(LAYOUT$vertexFormat, OFFSET$vertexFormat, value);
     }
 
-    public VkDeviceOrHostAddressConstKHR vertexData() {
+    public @NotNull VkDeviceOrHostAddressConstKHR vertexData() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$vertexData, LAYOUT$vertexData));
     }
 
-    public void vertexData(VkDeviceOrHostAddressConstKHR value) {
+    public void vertexData(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$vertexData, SIZE$vertexData);
     }
 
@@ -148,19 +148,19 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(@NotNull MemorySeg
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
     }
 
-    public VkDeviceOrHostAddressConstKHR indexData() {
+    public @NotNull VkDeviceOrHostAddressConstKHR indexData() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$indexData, LAYOUT$indexData));
     }
 
-    public void indexData(VkDeviceOrHostAddressConstKHR value) {
+    public void indexData(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexData, SIZE$indexData);
     }
 
-    public VkDeviceOrHostAddressConstKHR transformData() {
+    public @NotNull VkDeviceOrHostAddressConstKHR transformData() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$transformData, LAYOUT$transformData));
     }
 
-    public void transformData(VkDeviceOrHostAddressConstKHR value) {
+    public void transformData(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$transformData, SIZE$transformData);
     }
 

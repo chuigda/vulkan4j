@@ -20,20 +20,20 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCudaLaunchInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkCudaFunctionNV function;
-///     uint32_t gridDimX;
-///     uint32_t gridDimY;
-///     uint32_t gridDimZ;
-///     uint32_t blockDimX;
-///     uint32_t blockDimY;
-///     uint32_t blockDimZ;
-///     uint32_t sharedMemBytes;
-///     size_t paramCount; // optional
-///     void const* pParams;
-///     size_t extraCount; // optional
-///     void const* pExtras;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkCudaFunctionNV function; // @link substring="VkCudaFunctionNV" target="VkCudaFunctionNV" @link substring="function" target="#function"
+///     uint32_t gridDimX; // @link substring="gridDimX" target="#gridDimX"
+///     uint32_t gridDimY; // @link substring="gridDimY" target="#gridDimY"
+///     uint32_t gridDimZ; // @link substring="gridDimZ" target="#gridDimZ"
+///     uint32_t blockDimX; // @link substring="blockDimX" target="#blockDimX"
+///     uint32_t blockDimY; // @link substring="blockDimY" target="#blockDimY"
+///     uint32_t blockDimZ; // @link substring="blockDimZ" target="#blockDimZ"
+///     uint32_t sharedMemBytes; // @link substring="sharedMemBytes" target="#sharedMemBytes"
+///     size_t paramCount; // optional // @link substring="paramCount" target="#paramCount"
+///     void const* pParams; // @link substring="pParams" target="#pParams"
+///     size_t extraCount; // optional // @link substring="extraCount" target="#extraCount"
+///     void const* pExtras; // @link substring="pExtras" target="#pExtras"
 /// } VkCudaLaunchInfoNV;
 /// }
 ///

@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPerformanceValueINTEL {
-///     VkPerformanceValueTypeINTEL type;
-///     VkPerformanceValueDataINTEL data;
+///     VkPerformanceValueTypeINTEL type; // @link substring="VkPerformanceValueTypeINTEL" target="VkPerformanceValueTypeINTEL" @link substring="type" target="#type"
+///     VkPerformanceValueDataINTEL data; // @link substring="VkPerformanceValueDataINTEL" target="VkPerformanceValueDataINTEL" @link substring="data" target="#data"
 /// } VkPerformanceValueINTEL;
 /// }
 ///
@@ -75,11 +75,11 @@ public record VkPerformanceValueINTEL(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 
-    public VkPerformanceValueDataINTEL data() {
+    public @NotNull VkPerformanceValueDataINTEL data() {
         return new VkPerformanceValueDataINTEL(segment.asSlice(OFFSET$data, LAYOUT$data));
     }
 
-    public void data(VkPerformanceValueDataINTEL value) {
+    public void data(@NotNull VkPerformanceValueDataINTEL value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
     }
 

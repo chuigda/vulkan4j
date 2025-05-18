@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkEventCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkEventCreateFlags flags; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkEventCreateFlags flags; // optional // @link substring="VkEventCreateFlags" target="VkEventCreateFlags" @link substring="flags" target="#flags"
 /// } VkEventCreateInfo;
 /// }
 ///

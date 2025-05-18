@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDescriptorSetLayoutCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDescriptorSetLayoutCreateFlags flags; // optional
-///     uint32_t bindingCount; // optional
-///     VkDescriptorSetLayoutBinding const* pBindings;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDescriptorSetLayoutCreateFlags flags; // optional // @link substring="VkDescriptorSetLayoutCreateFlags" target="VkDescriptorSetLayoutCreateFlags" @link substring="flags" target="#flags"
+///     uint32_t bindingCount; // optional // @link substring="bindingCount" target="#bindingCount"
+///     VkDescriptorSetLayoutBinding const* pBindings; // @link substring="VkDescriptorSetLayoutBinding" target="VkDescriptorSetLayoutBinding" @link substring="pBindings" target="#pBindings"
 /// } VkDescriptorSetLayoutCreateInfo;
 /// }
 ///
@@ -120,14 +120,6 @@ public record VkDescriptorSetLayoutCreateInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$bindingCount, OFFSET$bindingCount, value);
     }
 
-    public @pointer(target=VkDescriptorSetLayoutBinding.class) MemorySegment pBindingsRaw() {
-        return segment.get(LAYOUT$pBindings, OFFSET$pBindings);
-    }
-
-    public void pBindingsRaw(@pointer(target=VkDescriptorSetLayoutBinding.class) MemorySegment value) {
-        segment.set(LAYOUT$pBindings, OFFSET$pBindings, value);
-    }
-
     public @Nullable VkDescriptorSetLayoutBinding pBindings() {
         MemorySegment s = pBindingsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -153,6 +145,14 @@ public record VkDescriptorSetLayoutCreateInfo(@NotNull MemorySegment segment) im
             ret[i] = new VkDescriptorSetLayoutBinding(s.asSlice(i * VkDescriptorSetLayoutBinding.BYTES, VkDescriptorSetLayoutBinding.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkDescriptorSetLayoutBinding.class) MemorySegment pBindingsRaw() {
+        return segment.get(LAYOUT$pBindings, OFFSET$pBindings);
+    }
+
+    public void pBindingsRaw(@pointer(target=VkDescriptorSetLayoutBinding.class) MemorySegment value) {
+        segment.set(LAYOUT$pBindings, OFFSET$pBindings, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

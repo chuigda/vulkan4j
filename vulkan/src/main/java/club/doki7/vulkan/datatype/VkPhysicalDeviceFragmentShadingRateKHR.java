@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceFragmentShadingRateKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkSampleCountFlags sampleCounts;
-///     VkExtent2D fragmentSize;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSampleCountFlags sampleCounts; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="sampleCounts" target="#sampleCounts"
+///     VkExtent2D fragmentSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="fragmentSize" target="#fragmentSize"
 /// } VkPhysicalDeviceFragmentShadingRateKHR;
 /// }
 ///
@@ -111,11 +111,11 @@ public record VkPhysicalDeviceFragmentShadingRateKHR(@NotNull MemorySegment segm
         segment.set(LAYOUT$sampleCounts, OFFSET$sampleCounts, value);
     }
 
-    public VkExtent2D fragmentSize() {
+    public @NotNull VkExtent2D fragmentSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$fragmentSize, LAYOUT$fragmentSize));
     }
 
-    public void fragmentSize(VkExtent2D value) {
+    public void fragmentSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$fragmentSize, SIZE$fragmentSize);
     }
 

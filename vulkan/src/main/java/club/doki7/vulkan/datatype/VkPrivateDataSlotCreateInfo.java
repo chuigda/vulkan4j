@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPrivateDataSlotCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPrivateDataSlotCreateFlags flags;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPrivateDataSlotCreateFlags flags; // @link substring="VkPrivateDataSlotCreateFlags" target="VkPrivateDataSlotCreateFlags" @link substring="flags" target="#flags"
 /// } VkPrivateDataSlotCreateInfo;
 /// }
 ///

@@ -20,28 +20,28 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceDescriptorIndexingFeatures {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 shaderInputAttachmentArrayDynamicIndexing;
-///     VkBool32 shaderUniformTexelBufferArrayDynamicIndexing;
-///     VkBool32 shaderStorageTexelBufferArrayDynamicIndexing;
-///     VkBool32 shaderUniformBufferArrayNonUniformIndexing;
-///     VkBool32 shaderSampledImageArrayNonUniformIndexing;
-///     VkBool32 shaderStorageBufferArrayNonUniformIndexing;
-///     VkBool32 shaderStorageImageArrayNonUniformIndexing;
-///     VkBool32 shaderInputAttachmentArrayNonUniformIndexing;
-///     VkBool32 shaderUniformTexelBufferArrayNonUniformIndexing;
-///     VkBool32 shaderStorageTexelBufferArrayNonUniformIndexing;
-///     VkBool32 descriptorBindingUniformBufferUpdateAfterBind;
-///     VkBool32 descriptorBindingSampledImageUpdateAfterBind;
-///     VkBool32 descriptorBindingStorageImageUpdateAfterBind;
-///     VkBool32 descriptorBindingStorageBufferUpdateAfterBind;
-///     VkBool32 descriptorBindingUniformTexelBufferUpdateAfterBind;
-///     VkBool32 descriptorBindingStorageTexelBufferUpdateAfterBind;
-///     VkBool32 descriptorBindingUpdateUnusedWhilePending;
-///     VkBool32 descriptorBindingPartiallyBound;
-///     VkBool32 descriptorBindingVariableDescriptorCount;
-///     VkBool32 runtimeDescriptorArray;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 shaderInputAttachmentArrayDynamicIndexing; // @link substring="shaderInputAttachmentArrayDynamicIndexing" target="#shaderInputAttachmentArrayDynamicIndexing"
+///     VkBool32 shaderUniformTexelBufferArrayDynamicIndexing; // @link substring="shaderUniformTexelBufferArrayDynamicIndexing" target="#shaderUniformTexelBufferArrayDynamicIndexing"
+///     VkBool32 shaderStorageTexelBufferArrayDynamicIndexing; // @link substring="shaderStorageTexelBufferArrayDynamicIndexing" target="#shaderStorageTexelBufferArrayDynamicIndexing"
+///     VkBool32 shaderUniformBufferArrayNonUniformIndexing; // @link substring="shaderUniformBufferArrayNonUniformIndexing" target="#shaderUniformBufferArrayNonUniformIndexing"
+///     VkBool32 shaderSampledImageArrayNonUniformIndexing; // @link substring="shaderSampledImageArrayNonUniformIndexing" target="#shaderSampledImageArrayNonUniformIndexing"
+///     VkBool32 shaderStorageBufferArrayNonUniformIndexing; // @link substring="shaderStorageBufferArrayNonUniformIndexing" target="#shaderStorageBufferArrayNonUniformIndexing"
+///     VkBool32 shaderStorageImageArrayNonUniformIndexing; // @link substring="shaderStorageImageArrayNonUniformIndexing" target="#shaderStorageImageArrayNonUniformIndexing"
+///     VkBool32 shaderInputAttachmentArrayNonUniformIndexing; // @link substring="shaderInputAttachmentArrayNonUniformIndexing" target="#shaderInputAttachmentArrayNonUniformIndexing"
+///     VkBool32 shaderUniformTexelBufferArrayNonUniformIndexing; // @link substring="shaderUniformTexelBufferArrayNonUniformIndexing" target="#shaderUniformTexelBufferArrayNonUniformIndexing"
+///     VkBool32 shaderStorageTexelBufferArrayNonUniformIndexing; // @link substring="shaderStorageTexelBufferArrayNonUniformIndexing" target="#shaderStorageTexelBufferArrayNonUniformIndexing"
+///     VkBool32 descriptorBindingUniformBufferUpdateAfterBind; // @link substring="descriptorBindingUniformBufferUpdateAfterBind" target="#descriptorBindingUniformBufferUpdateAfterBind"
+///     VkBool32 descriptorBindingSampledImageUpdateAfterBind; // @link substring="descriptorBindingSampledImageUpdateAfterBind" target="#descriptorBindingSampledImageUpdateAfterBind"
+///     VkBool32 descriptorBindingStorageImageUpdateAfterBind; // @link substring="descriptorBindingStorageImageUpdateAfterBind" target="#descriptorBindingStorageImageUpdateAfterBind"
+///     VkBool32 descriptorBindingStorageBufferUpdateAfterBind; // @link substring="descriptorBindingStorageBufferUpdateAfterBind" target="#descriptorBindingStorageBufferUpdateAfterBind"
+///     VkBool32 descriptorBindingUniformTexelBufferUpdateAfterBind; // @link substring="descriptorBindingUniformTexelBufferUpdateAfterBind" target="#descriptorBindingUniformTexelBufferUpdateAfterBind"
+///     VkBool32 descriptorBindingStorageTexelBufferUpdateAfterBind; // @link substring="descriptorBindingStorageTexelBufferUpdateAfterBind" target="#descriptorBindingStorageTexelBufferUpdateAfterBind"
+///     VkBool32 descriptorBindingUpdateUnusedWhilePending; // @link substring="descriptorBindingUpdateUnusedWhilePending" target="#descriptorBindingUpdateUnusedWhilePending"
+///     VkBool32 descriptorBindingPartiallyBound; // @link substring="descriptorBindingPartiallyBound" target="#descriptorBindingPartiallyBound"
+///     VkBool32 descriptorBindingVariableDescriptorCount; // @link substring="descriptorBindingVariableDescriptorCount" target="#descriptorBindingVariableDescriptorCount"
+///     VkBool32 runtimeDescriptorArray; // @link substring="runtimeDescriptorArray" target="#runtimeDescriptorArray"
 /// } VkPhysicalDeviceDescriptorIndexingFeatures;
 /// }
 ///

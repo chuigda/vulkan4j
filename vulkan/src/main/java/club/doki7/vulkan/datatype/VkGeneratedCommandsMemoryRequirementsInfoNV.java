@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkGeneratedCommandsMemoryRequirementsInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineBindPoint pipelineBindPoint;
-///     VkPipeline pipeline; // optional
-///     VkIndirectCommandsLayoutNV indirectCommandsLayout;
-///     uint32_t maxSequencesCount;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineBindPoint pipelineBindPoint; // @link substring="VkPipelineBindPoint" target="VkPipelineBindPoint" @link substring="pipelineBindPoint" target="#pipelineBindPoint"
+///     VkPipeline pipeline; // optional // @link substring="VkPipeline" target="VkPipeline" @link substring="pipeline" target="#pipeline"
+///     VkIndirectCommandsLayoutNV indirectCommandsLayout; // @link substring="VkIndirectCommandsLayoutNV" target="VkIndirectCommandsLayoutNV" @link substring="indirectCommandsLayout" target="#indirectCommandsLayout"
+///     uint32_t maxSequencesCount; // @link substring="maxSequencesCount" target="#maxSequencesCount"
 /// } VkGeneratedCommandsMemoryRequirementsInfoNV;
 /// }
 ///

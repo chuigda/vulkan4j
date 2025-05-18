@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassStripeInfoARM {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkRect2D stripeArea;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkRect2D stripeArea; // @link substring="VkRect2D" target="VkRect2D" @link substring="stripeArea" target="#stripeArea"
 /// } VkRenderPassStripeInfoARM;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkRenderPassStripeInfoARM(@NotNull MemorySegment segment) implemen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkRect2D stripeArea() {
+    public @NotNull VkRect2D stripeArea() {
         return new VkRect2D(segment.asSlice(OFFSET$stripeArea, LAYOUT$stripeArea));
     }
 
-    public void stripeArea(VkRect2D value) {
+    public void stripeArea(@NotNull VkRect2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$stripeArea, SIZE$stripeArea);
     }
 

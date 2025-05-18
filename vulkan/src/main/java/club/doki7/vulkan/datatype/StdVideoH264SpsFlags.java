@@ -21,22 +21,22 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH264SpsFlags {
-///     uint32_t constraint_set0_flag : 1;
-///     uint32_t constraint_set1_flag : 1;
-///     uint32_t constraint_set2_flag : 1;
-///     uint32_t constraint_set3_flag : 1;
-///     uint32_t constraint_set4_flag : 1;
-///     uint32_t constraint_set5_flag : 1;
-///     uint32_t direct_8x8_inference_flag : 1;
-///     uint32_t mb_adaptive_frame_field_flag : 1;
-///     uint32_t frame_mbs_only_flag : 1;
-///     uint32_t delta_pic_order_always_zero_flag : 1;
-///     uint32_t separate_colour_plane_flag : 1;
-///     uint32_t gaps_in_frame_num_value_allowed_flag : 1;
-///     uint32_t qpprime_y_zero_transform_bypass_flag : 1;
-///     uint32_t frame_cropping_flag : 1;
-///     uint32_t seq_scaling_matrix_present_flag : 1;
-///     uint32_t vui_parameters_present_flag : 1;
+///     uint32_t constraint_set0_flag : 1; // @link substring="constraint_set0_flag" target="#constraint_set0_flag"
+///     uint32_t constraint_set1_flag : 1; // @link substring="constraint_set1_flag" target="#constraint_set1_flag"
+///     uint32_t constraint_set2_flag : 1; // @link substring="constraint_set2_flag" target="#constraint_set2_flag"
+///     uint32_t constraint_set3_flag : 1; // @link substring="constraint_set3_flag" target="#constraint_set3_flag"
+///     uint32_t constraint_set4_flag : 1; // @link substring="constraint_set4_flag" target="#constraint_set4_flag"
+///     uint32_t constraint_set5_flag : 1; // @link substring="constraint_set5_flag" target="#constraint_set5_flag"
+///     uint32_t direct_8x8_inference_flag : 1; // @link substring="direct_8x8_inference_flag" target="#direct_8x8_inference_flag"
+///     uint32_t mb_adaptive_frame_field_flag : 1; // @link substring="mb_adaptive_frame_field_flag" target="#mb_adaptive_frame_field_flag"
+///     uint32_t frame_mbs_only_flag : 1; // @link substring="frame_mbs_only_flag" target="#frame_mbs_only_flag"
+///     uint32_t delta_pic_order_always_zero_flag : 1; // @link substring="delta_pic_order_always_zero_flag" target="#delta_pic_order_always_zero_flag"
+///     uint32_t separate_colour_plane_flag : 1; // @link substring="separate_colour_plane_flag" target="#separate_colour_plane_flag"
+///     uint32_t gaps_in_frame_num_value_allowed_flag : 1; // @link substring="gaps_in_frame_num_value_allowed_flag" target="#gaps_in_frame_num_value_allowed_flag"
+///     uint32_t qpprime_y_zero_transform_bypass_flag : 1; // @link substring="qpprime_y_zero_transform_bypass_flag" target="#qpprime_y_zero_transform_bypass_flag"
+///     uint32_t frame_cropping_flag : 1; // @link substring="frame_cropping_flag" target="#frame_cropping_flag"
+///     uint32_t seq_scaling_matrix_present_flag : 1; // @link substring="seq_scaling_matrix_present_flag" target="#seq_scaling_matrix_present_flag"
+///     uint32_t vui_parameters_present_flag : 1; // @link substring="vui_parameters_present_flag" target="#vui_parameters_present_flag"
 /// } StdVideoH264SpsFlags;
 /// }
 ///

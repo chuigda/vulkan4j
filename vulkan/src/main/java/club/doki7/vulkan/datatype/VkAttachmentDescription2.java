@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAttachmentDescription2 {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkAttachmentDescriptionFlags flags; // optional
-///     VkFormat format;
-///     VkSampleCountFlags samples;
-///     VkAttachmentLoadOp loadOp;
-///     VkAttachmentStoreOp storeOp;
-///     VkAttachmentLoadOp stencilLoadOp;
-///     VkAttachmentStoreOp stencilStoreOp;
-///     VkImageLayout initialLayout;
-///     VkImageLayout finalLayout;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkAttachmentDescriptionFlags flags; // optional // @link substring="VkAttachmentDescriptionFlags" target="VkAttachmentDescriptionFlags" @link substring="flags" target="#flags"
+///     VkFormat format; // @link substring="VkFormat" target="VkFormat" @link substring="format" target="#format"
+///     VkSampleCountFlags samples; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="samples" target="#samples"
+///     VkAttachmentLoadOp loadOp; // @link substring="VkAttachmentLoadOp" target="VkAttachmentLoadOp" @link substring="loadOp" target="#loadOp"
+///     VkAttachmentStoreOp storeOp; // @link substring="VkAttachmentStoreOp" target="VkAttachmentStoreOp" @link substring="storeOp" target="#storeOp"
+///     VkAttachmentLoadOp stencilLoadOp; // @link substring="VkAttachmentLoadOp" target="VkAttachmentLoadOp" @link substring="stencilLoadOp" target="#stencilLoadOp"
+///     VkAttachmentStoreOp stencilStoreOp; // @link substring="VkAttachmentStoreOp" target="VkAttachmentStoreOp" @link substring="stencilStoreOp" target="#stencilStoreOp"
+///     VkImageLayout initialLayout; // @link substring="VkImageLayout" target="VkImageLayout" @link substring="initialLayout" target="#initialLayout"
+///     VkImageLayout finalLayout; // @link substring="VkImageLayout" target="VkImageLayout" @link substring="finalLayout" target="#finalLayout"
 /// } VkAttachmentDescription2;
 /// }
 ///

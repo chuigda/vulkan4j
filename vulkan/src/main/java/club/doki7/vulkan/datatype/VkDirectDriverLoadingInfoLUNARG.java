@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDirectDriverLoadingInfoLUNARG {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkDirectDriverLoadingFlagsLUNARG flags;
-///     PFN_vkGetInstanceProcAddrLUNARG pfnGetInstanceProcAddr;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDirectDriverLoadingFlagsLUNARG flags; // @link substring="VkDirectDriverLoadingFlagsLUNARG" target="VkDirectDriverLoadingFlagsLUNARG" @link substring="flags" target="#flags"
+///     PFN_vkGetInstanceProcAddrLUNARG pfnGetInstanceProcAddr; // @link substring="pfnGetInstanceProcAddr" target="#pfnGetInstanceProcAddr"
 /// } VkDirectDriverLoadingInfoLUNARG;
 /// }
 ///

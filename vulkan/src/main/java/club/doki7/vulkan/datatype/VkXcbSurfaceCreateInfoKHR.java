@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkXcbSurfaceCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkXcbSurfaceCreateFlagsKHR flags; // optional
-///     xcb_connection_t* connection;
-///     xcb_window_t window;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkXcbSurfaceCreateFlagsKHR flags; // optional // @link substring="VkXcbSurfaceCreateFlagsKHR" target="VkXcbSurfaceCreateFlagsKHR" @link substring="flags" target="#flags"
+///     xcb_connection_t* connection; // @link substring="connection" target="#connection"
+///     xcb_window_t window; // @link substring="window" target="#window"
 /// } VkXcbSurfaceCreateInfoKHR;
 /// }
 ///

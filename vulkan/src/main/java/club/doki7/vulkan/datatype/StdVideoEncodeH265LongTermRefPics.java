@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeH265LongTermRefPics {
-///     uint8_t num_long_term_sps;
-///     uint8_t num_long_term_pics;
-///     uint8_t lt_idx_sps;
-///     uint8_t poc_lsb_lt;
-///     uint16_t used_by_curr_pic_lt_flag;
-///     uint8_t delta_poc_msb_present_flag;
-///     uint8_t delta_poc_msb_cycle_lt;
+///     uint8_t num_long_term_sps; // @link substring="num_long_term_sps" target="#num_long_term_sps"
+///     uint8_t num_long_term_pics; // @link substring="num_long_term_pics" target="#num_long_term_pics"
+///     uint8_t lt_idx_sps; // @link substring="lt_idx_sps" target="#lt_idx_sps"
+///     uint8_t poc_lsb_lt; // @link substring="poc_lsb_lt" target="#poc_lsb_lt"
+///     uint16_t used_by_curr_pic_lt_flag; // @link substring="used_by_curr_pic_lt_flag" target="#used_by_curr_pic_lt_flag"
+///     uint8_t delta_poc_msb_present_flag; // @link substring="delta_poc_msb_present_flag" target="#delta_poc_msb_present_flag"
+///     uint8_t delta_poc_msb_cycle_lt; // @link substring="delta_poc_msb_cycle_lt" target="#delta_poc_msb_cycle_lt"
 /// } StdVideoEncodeH265LongTermRefPics;
 /// }
 ///

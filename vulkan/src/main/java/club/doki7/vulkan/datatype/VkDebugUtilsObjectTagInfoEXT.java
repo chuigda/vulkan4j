@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDebugUtilsObjectTagInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkObjectType objectType;
-///     uint64_t objectHandle;
-///     uint64_t tagName;
-///     size_t tagSize;
-///     void const* pTag;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkObjectType objectType; // @link substring="VkObjectType" target="VkObjectType" @link substring="objectType" target="#objectType"
+///     uint64_t objectHandle; // @link substring="objectHandle" target="#objectHandle"
+///     uint64_t tagName; // @link substring="tagName" target="#tagName"
+///     size_t tagSize; // @link substring="tagSize" target="#tagSize"
+///     void const* pTag; // @link substring="pTag" target="#pTag"
 /// } VkDebugUtilsObjectTagInfoEXT;
 /// }
 ///

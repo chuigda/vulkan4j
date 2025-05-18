@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMultiDrawInfoEXT {
-///     uint32_t firstVertex;
-///     uint32_t vertexCount;
+///     uint32_t firstVertex; // @link substring="firstVertex" target="#firstVertex"
+///     uint32_t vertexCount; // @link substring="vertexCount" target="#vertexCount"
 /// } VkMultiDrawInfoEXT;
 /// }
 ///

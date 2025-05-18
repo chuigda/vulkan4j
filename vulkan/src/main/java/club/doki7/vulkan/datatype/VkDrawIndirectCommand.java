@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDrawIndirectCommand {
-///     uint32_t vertexCount;
-///     uint32_t instanceCount;
-///     uint32_t firstVertex;
-///     uint32_t firstInstance;
+///     uint32_t vertexCount; // @link substring="vertexCount" target="#vertexCount"
+///     uint32_t instanceCount; // @link substring="instanceCount" target="#instanceCount"
+///     uint32_t firstVertex; // @link substring="firstVertex" target="#firstVertex"
+///     uint32_t firstInstance; // @link substring="firstInstance" target="#firstInstance"
 /// } VkDrawIndirectCommand;
 /// }
 ///

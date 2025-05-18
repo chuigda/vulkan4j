@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkReleaseSwapchainImagesInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkSwapchainKHR swapchain;
-///     uint32_t imageIndexCount;
-///     uint32_t const* pImageIndices;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSwapchainKHR swapchain; // @link substring="VkSwapchainKHR" target="VkSwapchainKHR" @link substring="swapchain" target="#swapchain"
+///     uint32_t imageIndexCount; // @link substring="imageIndexCount" target="#imageIndexCount"
+///     uint32_t const* pImageIndices; // @link substring="pImageIndices" target="#pImageIndices"
 /// } VkReleaseSwapchainImagesInfoEXT;
 /// }
 ///
@@ -124,14 +124,6 @@ public record VkReleaseSwapchainImagesInfoEXT(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$imageIndexCount, OFFSET$imageIndexCount, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pImageIndicesRaw() {
-        return segment.get(LAYOUT$pImageIndices, OFFSET$pImageIndices);
-    }
-
-    public void pImageIndicesRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pImageIndices, OFFSET$pImageIndices, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -147,6 +139,14 @@ public record VkReleaseSwapchainImagesInfoEXT(@NotNull MemorySegment segment) im
     public void pImageIndices(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageIndicesRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pImageIndicesRaw() {
+        return segment.get(LAYOUT$pImageIndices, OFFSET$pImageIndices);
+    }
+
+    public void pImageIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pImageIndices, OFFSET$pImageIndices, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

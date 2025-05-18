@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExternalImageFormatPropertiesNV {
-///     VkImageFormatProperties imageFormatProperties;
-///     VkExternalMemoryFeatureFlagsNV externalMemoryFeatures; // optional
-///     VkExternalMemoryHandleTypeFlagsNV exportFromImportedHandleTypes; // optional
-///     VkExternalMemoryHandleTypeFlagsNV compatibleHandleTypes; // optional
+///     VkImageFormatProperties imageFormatProperties; // @link substring="VkImageFormatProperties" target="VkImageFormatProperties" @link substring="imageFormatProperties" target="#imageFormatProperties"
+///     VkExternalMemoryFeatureFlagsNV externalMemoryFeatures; // optional // @link substring="VkExternalMemoryFeatureFlagsNV" target="VkExternalMemoryFeatureFlagsNV" @link substring="externalMemoryFeatures" target="#externalMemoryFeatures"
+///     VkExternalMemoryHandleTypeFlagsNV exportFromImportedHandleTypes; // optional // @link substring="VkExternalMemoryHandleTypeFlagsNV" target="VkExternalMemoryHandleTypeFlagsNV" @link substring="exportFromImportedHandleTypes" target="#exportFromImportedHandleTypes"
+///     VkExternalMemoryHandleTypeFlagsNV compatibleHandleTypes; // optional // @link substring="VkExternalMemoryHandleTypeFlagsNV" target="VkExternalMemoryHandleTypeFlagsNV" @link substring="compatibleHandleTypes" target="#compatibleHandleTypes"
 /// } VkExternalImageFormatPropertiesNV;
 /// }
 ///
@@ -69,11 +69,11 @@ public record VkExternalImageFormatPropertiesNV(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public VkImageFormatProperties imageFormatProperties() {
+    public @NotNull VkImageFormatProperties imageFormatProperties() {
         return new VkImageFormatProperties(segment.asSlice(OFFSET$imageFormatProperties, LAYOUT$imageFormatProperties));
     }
 
-    public void imageFormatProperties(VkImageFormatProperties value) {
+    public void imageFormatProperties(@NotNull VkImageFormatProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageFormatProperties, SIZE$imageFormatProperties);
     }
 

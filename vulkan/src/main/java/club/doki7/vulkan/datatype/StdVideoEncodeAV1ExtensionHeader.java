@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeAV1ExtensionHeader {
-///     uint8_t temporal_id;
-///     uint8_t spatial_id;
+///     uint8_t temporal_id; // @link substring="temporal_id" target="#temporal_id"
+///     uint8_t spatial_id; // @link substring="spatial_id" target="#spatial_id"
 /// } StdVideoEncodeAV1ExtensionHeader;
 /// }
 ///

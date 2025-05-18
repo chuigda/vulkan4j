@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSubpassDescriptionDepthStencilResolve {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkResolveModeFlags depthResolveMode;
-///     VkResolveModeFlags stencilResolveMode;
-///     VkAttachmentReference2 const* pDepthStencilResolveAttachment; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkResolveModeFlags depthResolveMode; // @link substring="VkResolveModeFlags" target="VkResolveModeFlags" @link substring="depthResolveMode" target="#depthResolveMode"
+///     VkResolveModeFlags stencilResolveMode; // @link substring="VkResolveModeFlags" target="VkResolveModeFlags" @link substring="stencilResolveMode" target="#stencilResolveMode"
+///     VkAttachmentReference2 const* pDepthStencilResolveAttachment; // optional // @link substring="VkAttachmentReference2" target="VkAttachmentReference2" @link substring="pDepthStencilResolveAttachment" target="#pDepthStencilResolveAttachment"
 /// } VkSubpassDescriptionDepthStencilResolve;
 /// }
 ///
@@ -120,14 +120,6 @@ public record VkSubpassDescriptionDepthStencilResolve(@NotNull MemorySegment seg
         segment.set(LAYOUT$stencilResolveMode, OFFSET$stencilResolveMode, value);
     }
 
-    public @pointer(target=VkAttachmentReference2.class) MemorySegment pDepthStencilResolveAttachmentRaw() {
-        return segment.get(LAYOUT$pDepthStencilResolveAttachment, OFFSET$pDepthStencilResolveAttachment);
-    }
-
-    public void pDepthStencilResolveAttachmentRaw(@pointer(target=VkAttachmentReference2.class) MemorySegment value) {
-        segment.set(LAYOUT$pDepthStencilResolveAttachment, OFFSET$pDepthStencilResolveAttachment, value);
-    }
-
     public @Nullable VkAttachmentReference2 pDepthStencilResolveAttachment() {
         MemorySegment s = pDepthStencilResolveAttachmentRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -153,6 +145,14 @@ public record VkSubpassDescriptionDepthStencilResolve(@NotNull MemorySegment seg
             ret[i] = new VkAttachmentReference2(s.asSlice(i * VkAttachmentReference2.BYTES, VkAttachmentReference2.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkAttachmentReference2.class) MemorySegment pDepthStencilResolveAttachmentRaw() {
+        return segment.get(LAYOUT$pDepthStencilResolveAttachment, OFFSET$pDepthStencilResolveAttachment);
+    }
+
+    public void pDepthStencilResolveAttachmentRaw(@pointer(target=VkAttachmentReference2.class) MemorySegment value) {
+        segment.set(LAYOUT$pDepthStencilResolveAttachment, OFFSET$pDepthStencilResolveAttachment, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

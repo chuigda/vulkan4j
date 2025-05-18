@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceCopyMemoryIndirectPropertiesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkQueueFlags supportedQueues;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkQueueFlags supportedQueues; // @link substring="VkQueueFlags" target="VkQueueFlags" @link substring="supportedQueues" target="#supportedQueues"
 /// } VkPhysicalDeviceCopyMemoryIndirectPropertiesNV;
 /// }
 ///

@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDescriptorSetLayoutHostMappingInfoVALVE {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     size_t descriptorOffset;
-///     uint32_t descriptorSize;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     size_t descriptorOffset; // @link substring="descriptorOffset" target="#descriptorOffset"
+///     uint32_t descriptorSize; // @link substring="descriptorSize" target="#descriptorSize"
 /// } VkDescriptorSetLayoutHostMappingInfoVALVE;
 /// }
 ///

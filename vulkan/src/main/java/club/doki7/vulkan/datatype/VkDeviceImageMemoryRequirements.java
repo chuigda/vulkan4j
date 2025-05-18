@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceImageMemoryRequirements {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImageCreateInfo const* pCreateInfo;
-///     VkImageAspectFlags planeAspect; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageCreateInfo const* pCreateInfo; // @link substring="VkImageCreateInfo" target="VkImageCreateInfo" @link substring="pCreateInfo" target="#pCreateInfo"
+///     VkImageAspectFlags planeAspect; // optional // @link substring="VkImageAspectFlags" target="VkImageAspectFlags" @link substring="planeAspect" target="#planeAspect"
 /// } VkDeviceImageMemoryRequirements;
 /// }
 ///
@@ -103,14 +103,6 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(target=VkImageCreateInfo.class) MemorySegment pCreateInfoRaw() {
-        return segment.get(LAYOUT$pCreateInfo, OFFSET$pCreateInfo);
-    }
-
-    public void pCreateInfoRaw(@pointer(target=VkImageCreateInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
-    }
-
     public @Nullable VkImageCreateInfo pCreateInfo() {
         MemorySegment s = pCreateInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -136,6 +128,14 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
             ret[i] = new VkImageCreateInfo(s.asSlice(i * VkImageCreateInfo.BYTES, VkImageCreateInfo.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkImageCreateInfo.class) MemorySegment pCreateInfoRaw() {
+        return segment.get(LAYOUT$pCreateInfo, OFFSET$pCreateInfo);
+    }
+
+    public void pCreateInfoRaw(@pointer(target=VkImageCreateInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
     }
 
     public @enumtype(VkImageAspectFlags.class) int planeAspect() {

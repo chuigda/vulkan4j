@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkExtent2D fragmentDensityOffsetGranularity;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkExtent2D fragmentDensityOffsetGranularity; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="fragmentDensityOffsetGranularity" target="#fragmentDensityOffsetGranularity"
 /// } VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT(@NotNull Mem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkExtent2D fragmentDensityOffsetGranularity() {
+    public @NotNull VkExtent2D fragmentDensityOffsetGranularity() {
         return new VkExtent2D(segment.asSlice(OFFSET$fragmentDensityOffsetGranularity, LAYOUT$fragmentDensityOffsetGranularity));
     }
 
-    public void fragmentDensityOffsetGranularity(VkExtent2D value) {
+    public void fragmentDensityOffsetGranularity(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$fragmentDensityOffsetGranularity, SIZE$fragmentDensityOffsetGranularity);
     }
 

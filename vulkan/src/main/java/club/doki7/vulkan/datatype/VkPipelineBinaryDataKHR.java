@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineBinaryDataKHR {
-///     size_t dataSize;
-///     void* pData;
+///     size_t dataSize; // @link substring="dataSize" target="#dataSize"
+///     void* pData; // @link substring="pData" target="#pData"
 /// } VkPipelineBinaryDataKHR;
 /// }
 ///

@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAndroidSurfaceCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkAndroidSurfaceCreateFlagsKHR flags; // optional
-///     ANativeWindow* window;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkAndroidSurfaceCreateFlagsKHR flags; // optional // @link substring="VkAndroidSurfaceCreateFlagsKHR" target="VkAndroidSurfaceCreateFlagsKHR" @link substring="flags" target="#flags"
+///     ANativeWindow* window; // @link substring="window" target="#window"
 /// } VkAndroidSurfaceCreateInfoKHR;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkAndroidSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(comment="void**") MemorySegment windowRaw() {
-        return segment.get(LAYOUT$window, OFFSET$window);
-    }
-
-    public void windowRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$window, OFFSET$window, value);
-    }
-
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
     /// to user to track the size of the buffer, and use {@link PointerPtr#reinterpret} to set the size before
     /// actually reading from or writing to the buffer.
@@ -133,6 +125,14 @@ public record VkAndroidSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
     public void window(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         windowRaw(s);
+    }
+
+    public @pointer(comment="void**") MemorySegment windowRaw() {
+        return segment.get(LAYOUT$window, OFFSET$window);
+    }
+
+    public void windowRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$window, OFFSET$window, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

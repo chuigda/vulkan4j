@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineLibraryCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t libraryCount; // optional
-///     VkPipeline const* pLibraries;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t libraryCount; // optional // @link substring="libraryCount" target="#libraryCount"
+///     VkPipeline const* pLibraries; // @link substring="VkPipeline" target="VkPipeline" @link substring="pLibraries" target="#pLibraries"
 /// } VkPipelineLibraryCreateInfoKHR;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkPipelineLibraryCreateInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$libraryCount, OFFSET$libraryCount, value);
     }
 
-    public @pointer(target=VkPipeline.class) MemorySegment pLibrariesRaw() {
-        return segment.get(LAYOUT$pLibraries, OFFSET$pLibraries);
-    }
-
-    public void pLibrariesRaw(@pointer(target=VkPipeline.class) MemorySegment value) {
-        segment.set(LAYOUT$pLibraries, OFFSET$pLibraries, value);
-    }
-
     /// Note: the returned {@link VkPipeline.Ptr} does not have correct {@link VkPipeline.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkPipeline.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -134,6 +126,14 @@ public record VkPipelineLibraryCreateInfoKHR(@NotNull MemorySegment segment) imp
     public void pLibraries(@Nullable VkPipeline.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLibrariesRaw(s);
+    }
+
+    public @pointer(target=VkPipeline.class) MemorySegment pLibrariesRaw() {
+        return segment.get(LAYOUT$pLibraries, OFFSET$pLibraries);
+    }
+
+    public void pLibrariesRaw(@pointer(target=VkPipeline.class) MemorySegment value) {
+        segment.set(LAYOUT$pLibraries, OFFSET$pLibraries, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

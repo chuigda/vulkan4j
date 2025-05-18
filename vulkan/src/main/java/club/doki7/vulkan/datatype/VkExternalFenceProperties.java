@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExternalFenceProperties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkExternalFenceHandleTypeFlags exportFromImportedHandleTypes;
-///     VkExternalFenceHandleTypeFlags compatibleHandleTypes;
-///     VkExternalFenceFeatureFlags externalFenceFeatures; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkExternalFenceHandleTypeFlags exportFromImportedHandleTypes; // @link substring="VkExternalFenceHandleTypeFlags" target="VkExternalFenceHandleTypeFlags" @link substring="exportFromImportedHandleTypes" target="#exportFromImportedHandleTypes"
+///     VkExternalFenceHandleTypeFlags compatibleHandleTypes; // @link substring="VkExternalFenceHandleTypeFlags" target="VkExternalFenceHandleTypeFlags" @link substring="compatibleHandleTypes" target="#compatibleHandleTypes"
+///     VkExternalFenceFeatureFlags externalFenceFeatures; // optional // @link substring="VkExternalFenceFeatureFlags" target="VkExternalFenceFeatureFlags" @link substring="externalFenceFeatures" target="#externalFenceFeatures"
 /// } VkExternalFenceProperties;
 /// }
 ///

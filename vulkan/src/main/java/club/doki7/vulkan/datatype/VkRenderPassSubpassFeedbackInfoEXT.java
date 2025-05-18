@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassSubpassFeedbackInfoEXT {
-///     VkSubpassMergeStatusEXT subpassMergeStatus;
-///     char description;
-///     uint32_t postMergeIndex;
+///     VkSubpassMergeStatusEXT subpassMergeStatus; // @link substring="VkSubpassMergeStatusEXT" target="VkSubpassMergeStatusEXT" @link substring="subpassMergeStatus" target="#subpassMergeStatus"
+///     char description; // @link substring="description" target="#description"
+///     uint32_t postMergeIndex; // @link substring="postMergeIndex" target="#postMergeIndex"
 /// } VkRenderPassSubpassFeedbackInfoEXT;
 /// }
 ///

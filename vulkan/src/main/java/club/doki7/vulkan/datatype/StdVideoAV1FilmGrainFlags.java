@@ -21,11 +21,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1FilmGrainFlags {
-///     uint32_t chroma_scaling_from_luma : 1;
-///     uint32_t overlap_flag : 1;
-///     uint32_t clip_to_restricted_range : 1;
-///     uint32_t update_grain : 1;
-///     uint32_t reserved : 28;
+///     uint32_t chroma_scaling_from_luma : 1; // @link substring="chroma_scaling_from_luma" target="#chroma_scaling_from_luma"
+///     uint32_t overlap_flag : 1; // @link substring="overlap_flag" target="#overlap_flag"
+///     uint32_t clip_to_restricted_range : 1; // @link substring="clip_to_restricted_range" target="#clip_to_restricted_range"
+///     uint32_t update_grain : 1; // @link substring="update_grain" target="#update_grain"
+///     uint32_t reserved : 28; // @link substring="reserved" target="#reserved"
 /// } StdVideoAV1FilmGrainFlags;
 /// }
 ///

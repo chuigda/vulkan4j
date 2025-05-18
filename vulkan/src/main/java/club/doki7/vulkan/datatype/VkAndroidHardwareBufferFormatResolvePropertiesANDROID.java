@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAndroidHardwareBufferFormatResolvePropertiesANDROID {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkFormat colorAttachmentFormat;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkFormat colorAttachmentFormat; // @link substring="VkFormat" target="VkFormat" @link substring="colorAttachmentFormat" target="#colorAttachmentFormat"
 /// } VkAndroidHardwareBufferFormatResolvePropertiesANDROID;
 /// }
 ///

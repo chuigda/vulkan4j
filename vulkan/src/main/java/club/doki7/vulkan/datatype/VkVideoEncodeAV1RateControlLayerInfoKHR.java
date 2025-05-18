@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeAV1RateControlLayerInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBool32 useMinQIndex;
-///     VkVideoEncodeAV1QIndexKHR minQIndex;
-///     VkBool32 useMaxQIndex;
-///     VkVideoEncodeAV1QIndexKHR maxQIndex;
-///     VkBool32 useMaxFrameSize;
-///     VkVideoEncodeAV1FrameSizeKHR maxFrameSize;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 useMinQIndex; // @link substring="useMinQIndex" target="#useMinQIndex"
+///     VkVideoEncodeAV1QIndexKHR minQIndex; // @link substring="VkVideoEncodeAV1QIndexKHR" target="VkVideoEncodeAV1QIndexKHR" @link substring="minQIndex" target="#minQIndex"
+///     VkBool32 useMaxQIndex; // @link substring="useMaxQIndex" target="#useMaxQIndex"
+///     VkVideoEncodeAV1QIndexKHR maxQIndex; // @link substring="VkVideoEncodeAV1QIndexKHR" target="VkVideoEncodeAV1QIndexKHR" @link substring="maxQIndex" target="#maxQIndex"
+///     VkBool32 useMaxFrameSize; // @link substring="useMaxFrameSize" target="#useMaxFrameSize"
+///     VkVideoEncodeAV1FrameSizeKHR maxFrameSize; // @link substring="VkVideoEncodeAV1FrameSizeKHR" target="VkVideoEncodeAV1FrameSizeKHR" @link substring="maxFrameSize" target="#maxFrameSize"
 /// } VkVideoEncodeAV1RateControlLayerInfoKHR;
 /// }
 ///
@@ -115,11 +115,11 @@ public record VkVideoEncodeAV1RateControlLayerInfoKHR(@NotNull MemorySegment seg
         segment.set(LAYOUT$useMinQIndex, OFFSET$useMinQIndex, value);
     }
 
-    public VkVideoEncodeAV1QIndexKHR minQIndex() {
+    public @NotNull VkVideoEncodeAV1QIndexKHR minQIndex() {
         return new VkVideoEncodeAV1QIndexKHR(segment.asSlice(OFFSET$minQIndex, LAYOUT$minQIndex));
     }
 
-    public void minQIndex(VkVideoEncodeAV1QIndexKHR value) {
+    public void minQIndex(@NotNull VkVideoEncodeAV1QIndexKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minQIndex, SIZE$minQIndex);
     }
 
@@ -131,11 +131,11 @@ public record VkVideoEncodeAV1RateControlLayerInfoKHR(@NotNull MemorySegment seg
         segment.set(LAYOUT$useMaxQIndex, OFFSET$useMaxQIndex, value);
     }
 
-    public VkVideoEncodeAV1QIndexKHR maxQIndex() {
+    public @NotNull VkVideoEncodeAV1QIndexKHR maxQIndex() {
         return new VkVideoEncodeAV1QIndexKHR(segment.asSlice(OFFSET$maxQIndex, LAYOUT$maxQIndex));
     }
 
-    public void maxQIndex(VkVideoEncodeAV1QIndexKHR value) {
+    public void maxQIndex(@NotNull VkVideoEncodeAV1QIndexKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxQIndex, SIZE$maxQIndex);
     }
 
@@ -147,11 +147,11 @@ public record VkVideoEncodeAV1RateControlLayerInfoKHR(@NotNull MemorySegment seg
         segment.set(LAYOUT$useMaxFrameSize, OFFSET$useMaxFrameSize, value);
     }
 
-    public VkVideoEncodeAV1FrameSizeKHR maxFrameSize() {
+    public @NotNull VkVideoEncodeAV1FrameSizeKHR maxFrameSize() {
         return new VkVideoEncodeAV1FrameSizeKHR(segment.asSlice(OFFSET$maxFrameSize, LAYOUT$maxFrameSize));
     }
 
-    public void maxFrameSize(VkVideoEncodeAV1FrameSizeKHR value) {
+    public void maxFrameSize(@NotNull VkVideoEncodeAV1FrameSizeKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFrameSize, SIZE$maxFrameSize);
     }
 

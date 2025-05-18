@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExternalComputeQueueCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkQueue preferredQueue;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkQueue preferredQueue; // @link substring="VkQueue" target="VkQueue" @link substring="preferredQueue" target="#preferredQueue"
 /// } VkExternalComputeQueueCreateInfoNV;
 /// }
 ///

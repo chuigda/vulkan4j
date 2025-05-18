@@ -21,8 +21,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeH264ReferenceInfoFlags {
-///     uint32_t used_for_long_term_reference : 1;
-///     uint32_t reserved : 31;
+///     uint32_t used_for_long_term_reference : 1; // @link substring="used_for_long_term_reference" target="#used_for_long_term_reference"
+///     uint32_t reserved : 31; // @link substring="reserved" target="#reserved"
 /// } StdVideoEncodeH264ReferenceInfoFlags;
 /// }
 ///

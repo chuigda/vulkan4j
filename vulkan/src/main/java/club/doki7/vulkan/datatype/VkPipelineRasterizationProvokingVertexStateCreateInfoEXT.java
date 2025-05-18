@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineRasterizationProvokingVertexStateCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkProvokingVertexModeEXT provokingVertexMode;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkProvokingVertexModeEXT provokingVertexMode; // @link substring="VkProvokingVertexModeEXT" target="VkProvokingVertexModeEXT" @link substring="provokingVertexMode" target="#provokingVertexMode"
 /// } VkPipelineRasterizationProvokingVertexStateCreateInfoEXT;
 /// }
 ///

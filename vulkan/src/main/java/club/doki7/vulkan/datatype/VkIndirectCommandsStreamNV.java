@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkIndirectCommandsStreamNV {
-///     VkBuffer buffer;
-///     VkDeviceSize offset;
+///     VkBuffer buffer; // @link substring="VkBuffer" target="VkBuffer" @link substring="buffer" target="#buffer"
+///     VkDeviceSize offset; // @link substring="offset" target="#offset"
 /// } VkIndirectCommandsStreamNV;
 /// }
 ///

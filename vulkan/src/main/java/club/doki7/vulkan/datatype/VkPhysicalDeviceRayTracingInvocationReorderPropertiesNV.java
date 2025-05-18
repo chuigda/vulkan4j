@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkRayTracingInvocationReorderModeNV rayTracingInvocationReorderReorderingHint;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkRayTracingInvocationReorderModeNV rayTracingInvocationReorderReorderingHint; // @link substring="VkRayTracingInvocationReorderModeNV" target="VkRayTracingInvocationReorderModeNV" @link substring="rayTracingInvocationReorderReorderingHint" target="#rayTracingInvocationReorderReorderingHint"
 /// } VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV;
 /// }
 ///

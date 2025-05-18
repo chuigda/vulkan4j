@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkInputAttachmentAspectReference {
-///     uint32_t subpass;
-///     uint32_t inputAttachmentIndex;
-///     VkImageAspectFlags aspectMask;
+///     uint32_t subpass; // @link substring="subpass" target="#subpass"
+///     uint32_t inputAttachmentIndex; // @link substring="inputAttachmentIndex" target="#inputAttachmentIndex"
+///     VkImageAspectFlags aspectMask; // @link substring="VkImageAspectFlags" target="VkImageAspectFlags" @link substring="aspectMask" target="#aspectMask"
 /// } VkInputAttachmentAspectReference;
 /// }
 ///

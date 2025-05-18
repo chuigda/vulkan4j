@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkVideoProfileInfoKHR const* pVideoProfile;
-///     uint32_t qualityLevel;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkVideoProfileInfoKHR const* pVideoProfile; // @link substring="VkVideoProfileInfoKHR" target="VkVideoProfileInfoKHR" @link substring="pVideoProfile" target="#pVideoProfile"
+///     uint32_t qualityLevel; // @link substring="qualityLevel" target="#qualityLevel"
 /// } VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR;
 /// }
 ///
@@ -103,14 +103,6 @@ public record VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pVideoProfileRaw() {
-        return segment.get(LAYOUT$pVideoProfile, OFFSET$pVideoProfile);
-    }
-
-    public void pVideoProfileRaw(@pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pVideoProfile, OFFSET$pVideoProfile, value);
-    }
-
     public @Nullable VkVideoProfileInfoKHR pVideoProfile() {
         MemorySegment s = pVideoProfileRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -136,6 +128,14 @@ public record VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegm
             ret[i] = new VkVideoProfileInfoKHR(s.asSlice(i * VkVideoProfileInfoKHR.BYTES, VkVideoProfileInfoKHR.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pVideoProfileRaw() {
+        return segment.get(LAYOUT$pVideoProfile, OFFSET$pVideoProfile);
+    }
+
+    public void pVideoProfileRaw(@pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pVideoProfile, OFFSET$pVideoProfile, value);
     }
 
     public @unsigned int qualityLevel() {

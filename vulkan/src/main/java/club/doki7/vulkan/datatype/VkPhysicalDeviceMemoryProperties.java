@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMemoryProperties {
-///     uint32_t memoryTypeCount;
-///     VkMemoryType memoryTypes;
-///     uint32_t memoryHeapCount;
-///     VkMemoryHeap memoryHeaps;
+///     uint32_t memoryTypeCount; // @link substring="memoryTypeCount" target="#memoryTypeCount"
+///     VkMemoryType memoryTypes; // @link substring="VkMemoryType" target="VkMemoryType" @link substring="memoryTypes" target="#memoryTypes"
+///     uint32_t memoryHeapCount; // @link substring="memoryHeapCount" target="#memoryHeapCount"
+///     VkMemoryHeap memoryHeaps; // @link substring="VkMemoryHeap" target="VkMemoryHeap" @link substring="memoryHeaps" target="#memoryHeaps"
 /// } VkPhysicalDeviceMemoryProperties;
 /// }
 ///
@@ -77,11 +77,11 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$memoryTypeCount, OFFSET$memoryTypeCount, value);
     }
 
-    public VkMemoryType memoryTypes() {
+    public @NotNull VkMemoryType memoryTypes() {
         return new VkMemoryType(segment.asSlice(OFFSET$memoryTypes, LAYOUT$memoryTypes));
     }
 
-    public void memoryTypes(VkMemoryType value) {
+    public void memoryTypes(@NotNull VkMemoryType value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryTypes, SIZE$memoryTypes);
     }
 
@@ -93,11 +93,11 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$memoryHeapCount, OFFSET$memoryHeapCount, value);
     }
 
-    public VkMemoryHeap memoryHeaps() {
+    public @NotNull VkMemoryHeap memoryHeaps() {
         return new VkMemoryHeap(segment.asSlice(OFFSET$memoryHeaps, LAYOUT$memoryHeaps));
     }
 
-    public void memoryHeaps(VkMemoryHeap value) {
+    public void memoryHeaps(@NotNull VkMemoryHeap value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryHeaps, SIZE$memoryHeaps);
     }
 

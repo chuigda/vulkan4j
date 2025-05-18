@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoDecodeH265CapabilitiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     StdVideoH265LevelIdc maxLevelIdc;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     StdVideoH265LevelIdc maxLevelIdc; // @link substring="StdVideoH265LevelIdc" target="StdVideoH265LevelIdc" @link substring="maxLevelIdc" target="#maxLevelIdc"
 /// } VkVideoDecodeH265CapabilitiesKHR;
 /// }
 ///

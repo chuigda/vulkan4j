@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSemaphoreSubmitInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkSemaphore semaphore;
-///     uint64_t value;
-///     VkPipelineStageFlags2 stageMask; // optional
-///     uint32_t deviceIndex;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSemaphore semaphore; // @link substring="VkSemaphore" target="VkSemaphore" @link substring="semaphore" target="#semaphore"
+///     uint64_t value; // @link substring="value" target="#value"
+///     VkPipelineStageFlags2 stageMask; // optional // @link substring="VkPipelineStageFlags2" target="VkPipelineStageFlags2" @link substring="stageMask" target="#stageMask"
+///     uint32_t deviceIndex; // @link substring="deviceIndex" target="#deviceIndex"
 /// } VkSemaphoreSubmitInfo;
 /// }
 ///

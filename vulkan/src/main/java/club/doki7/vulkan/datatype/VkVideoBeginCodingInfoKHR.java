@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoBeginCodingInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkVideoBeginCodingFlagsKHR flags; // optional
-///     VkVideoSessionKHR videoSession;
-///     VkVideoSessionParametersKHR videoSessionParameters; // optional
-///     uint32_t referenceSlotCount; // optional
-///     VkVideoReferenceSlotInfoKHR const* pReferenceSlots;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkVideoBeginCodingFlagsKHR flags; // optional // @link substring="VkVideoBeginCodingFlagsKHR" target="VkVideoBeginCodingFlagsKHR" @link substring="flags" target="#flags"
+///     VkVideoSessionKHR videoSession; // @link substring="VkVideoSessionKHR" target="VkVideoSessionKHR" @link substring="videoSession" target="#videoSession"
+///     VkVideoSessionParametersKHR videoSessionParameters; // optional // @link substring="VkVideoSessionParametersKHR" target="VkVideoSessionParametersKHR" @link substring="videoSessionParameters" target="#videoSessionParameters"
+///     uint32_t referenceSlotCount; // optional // @link substring="referenceSlotCount" target="#referenceSlotCount"
+///     VkVideoReferenceSlotInfoKHR const* pReferenceSlots; // @link substring="VkVideoReferenceSlotInfoKHR" target="VkVideoReferenceSlotInfoKHR" @link substring="pReferenceSlots" target="#pReferenceSlots"
 /// } VkVideoBeginCodingInfoKHR;
 /// }
 ///
@@ -146,14 +146,6 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$referenceSlotCount, OFFSET$referenceSlotCount, value);
     }
 
-    public @pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment pReferenceSlotsRaw() {
-        return segment.get(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots);
-    }
-
-    public void pReferenceSlotsRaw(@pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots, value);
-    }
-
     public @Nullable VkVideoReferenceSlotInfoKHR pReferenceSlots() {
         MemorySegment s = pReferenceSlotsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -179,6 +171,14 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
             ret[i] = new VkVideoReferenceSlotInfoKHR(s.asSlice(i * VkVideoReferenceSlotInfoKHR.BYTES, VkVideoReferenceSlotInfoKHR.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment pReferenceSlotsRaw() {
+        return segment.get(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots);
+    }
+
+    public void pReferenceSlotsRaw(@pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

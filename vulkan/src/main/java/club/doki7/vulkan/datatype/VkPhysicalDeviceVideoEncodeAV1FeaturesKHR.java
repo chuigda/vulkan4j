@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceVideoEncodeAV1FeaturesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 videoEncodeAV1;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 videoEncodeAV1; // @link substring="videoEncodeAV1" target="#videoEncodeAV1"
 /// } VkPhysicalDeviceVideoEncodeAV1FeaturesKHR;
 /// }
 ///

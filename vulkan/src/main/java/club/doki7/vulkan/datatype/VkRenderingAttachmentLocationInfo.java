@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderingAttachmentLocationInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t colorAttachmentCount; // optional
-///     uint32_t const* pColorAttachmentLocations;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t colorAttachmentCount; // optional // @link substring="colorAttachmentCount" target="#colorAttachmentCount"
+///     uint32_t const* pColorAttachmentLocations; // @link substring="pColorAttachmentLocations" target="#pColorAttachmentLocations"
 /// } VkRenderingAttachmentLocationInfo;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pColorAttachmentLocationsRaw() {
-        return segment.get(LAYOUT$pColorAttachmentLocations, OFFSET$pColorAttachmentLocations);
-    }
-
-    public void pColorAttachmentLocationsRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pColorAttachmentLocations, OFFSET$pColorAttachmentLocations, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -134,6 +126,14 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
     public void pColorAttachmentLocations(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentLocationsRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pColorAttachmentLocationsRaw() {
+        return segment.get(LAYOUT$pColorAttachmentLocations, OFFSET$pColorAttachmentLocations);
+    }
+
+    public void pColorAttachmentLocationsRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pColorAttachmentLocations, OFFSET$pColorAttachmentLocations, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

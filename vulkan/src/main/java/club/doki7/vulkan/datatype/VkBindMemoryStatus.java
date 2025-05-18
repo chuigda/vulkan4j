@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBindMemoryStatus {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkResult* pResult;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkResult* pResult; // @link substring="VkResult" target="VkResult" @link substring="pResult" target="#pResult"
 /// } VkBindMemoryStatus;
 /// }
 ///
@@ -102,13 +102,6 @@ public record VkBindMemoryStatus(@NotNull MemorySegment segment) implements IPoi
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(target=VkResult.class) MemorySegment pResultRaw() {
-        return segment.get(LAYOUT$pResult, OFFSET$pResult);
-    }
-
-    public void pResultRaw(@pointer(target=VkResult.class) MemorySegment value) {
-        segment.set(LAYOUT$pResult, OFFSET$pResult, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -125,6 +118,14 @@ public record VkBindMemoryStatus(@NotNull MemorySegment segment) implements IPoi
     public void pResult(@Nullable @enumtype(VkResult.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pResultRaw(s);
+    }
+
+    public @pointer(target=VkResult.class) MemorySegment pResultRaw() {
+        return segment.get(LAYOUT$pResult, OFFSET$pResult);
+    }
+
+    public void pResultRaw(@pointer(target=VkResult.class) MemorySegment value) {
+        segment.set(LAYOUT$pResult, OFFSET$pResult, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

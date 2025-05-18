@@ -20,23 +20,23 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceVulkan11Properties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint8_t deviceUUID;
-///     uint8_t driverUUID;
-///     uint8_t deviceLUID;
-///     uint32_t deviceNodeMask;
-///     VkBool32 deviceLUIDValid;
-///     uint32_t subgroupSize;
-///     VkShaderStageFlags subgroupSupportedStages;
-///     VkSubgroupFeatureFlags subgroupSupportedOperations;
-///     VkBool32 subgroupQuadOperationsInAllStages;
-///     VkPointClippingBehavior pointClippingBehavior;
-///     uint32_t maxMultiviewViewCount;
-///     uint32_t maxMultiviewInstanceIndex;
-///     VkBool32 protectedNoFault;
-///     uint32_t maxPerSetDescriptors;
-///     VkDeviceSize maxMemoryAllocationSize;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint8_t deviceUUID; // @link substring="deviceUUID" target="#deviceUUID"
+///     uint8_t driverUUID; // @link substring="driverUUID" target="#driverUUID"
+///     uint8_t deviceLUID; // @link substring="deviceLUID" target="#deviceLUID"
+///     uint32_t deviceNodeMask; // @link substring="deviceNodeMask" target="#deviceNodeMask"
+///     VkBool32 deviceLUIDValid; // @link substring="deviceLUIDValid" target="#deviceLUIDValid"
+///     uint32_t subgroupSize; // @link substring="subgroupSize" target="#subgroupSize"
+///     VkShaderStageFlags subgroupSupportedStages; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="subgroupSupportedStages" target="#subgroupSupportedStages"
+///     VkSubgroupFeatureFlags subgroupSupportedOperations; // @link substring="VkSubgroupFeatureFlags" target="VkSubgroupFeatureFlags" @link substring="subgroupSupportedOperations" target="#subgroupSupportedOperations"
+///     VkBool32 subgroupQuadOperationsInAllStages; // @link substring="subgroupQuadOperationsInAllStages" target="#subgroupQuadOperationsInAllStages"
+///     VkPointClippingBehavior pointClippingBehavior; // @link substring="VkPointClippingBehavior" target="VkPointClippingBehavior" @link substring="pointClippingBehavior" target="#pointClippingBehavior"
+///     uint32_t maxMultiviewViewCount; // @link substring="maxMultiviewViewCount" target="#maxMultiviewViewCount"
+///     uint32_t maxMultiviewInstanceIndex; // @link substring="maxMultiviewInstanceIndex" target="#maxMultiviewInstanceIndex"
+///     VkBool32 protectedNoFault; // @link substring="protectedNoFault" target="#protectedNoFault"
+///     uint32_t maxPerSetDescriptors; // @link substring="maxPerSetDescriptors" target="#maxPerSetDescriptors"
+///     VkDeviceSize maxMemoryAllocationSize; // @link substring="maxMemoryAllocationSize" target="#maxMemoryAllocationSize"
 /// } VkPhysicalDeviceVulkan11Properties;
 /// }
 ///

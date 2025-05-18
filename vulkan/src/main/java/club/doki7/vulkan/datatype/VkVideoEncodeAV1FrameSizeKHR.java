@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeAV1FrameSizeKHR {
-///     uint32_t intraFrameSize;
-///     uint32_t predictiveFrameSize;
-///     uint32_t bipredictiveFrameSize;
+///     uint32_t intraFrameSize; // @link substring="intraFrameSize" target="#intraFrameSize"
+///     uint32_t predictiveFrameSize; // @link substring="predictiveFrameSize" target="#predictiveFrameSize"
+///     uint32_t bipredictiveFrameSize; // @link substring="bipredictiveFrameSize" target="#bipredictiveFrameSize"
 /// } VkVideoEncodeAV1FrameSizeKHR;
 /// }
 ///

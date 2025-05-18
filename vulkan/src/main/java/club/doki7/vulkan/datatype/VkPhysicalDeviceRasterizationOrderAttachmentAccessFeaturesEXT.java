@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 rasterizationOrderColorAttachmentAccess;
-///     VkBool32 rasterizationOrderDepthAttachmentAccess;
-///     VkBool32 rasterizationOrderStencilAttachmentAccess;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 rasterizationOrderColorAttachmentAccess; // @link substring="rasterizationOrderColorAttachmentAccess" target="#rasterizationOrderColorAttachmentAccess"
+///     VkBool32 rasterizationOrderDepthAttachmentAccess; // @link substring="rasterizationOrderDepthAttachmentAccess" target="#rasterizationOrderDepthAttachmentAccess"
+///     VkBool32 rasterizationOrderStencilAttachmentAccess; // @link substring="rasterizationOrderStencilAttachmentAccess" target="#rasterizationOrderStencilAttachmentAccess"
 /// } VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT;
 /// }
 ///

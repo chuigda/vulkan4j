@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkConditionalRenderingBeginInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBuffer buffer;
-///     VkDeviceSize offset;
-///     VkConditionalRenderingFlagsEXT flags; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBuffer buffer; // @link substring="VkBuffer" target="VkBuffer" @link substring="buffer" target="#buffer"
+///     VkDeviceSize offset; // @link substring="offset" target="#offset"
+///     VkConditionalRenderingFlagsEXT flags; // optional // @link substring="VkConditionalRenderingFlagsEXT" target="VkConditionalRenderingFlagsEXT" @link substring="flags" target="#flags"
 /// } VkConditionalRenderingBeginInfoEXT;
 /// }
 ///

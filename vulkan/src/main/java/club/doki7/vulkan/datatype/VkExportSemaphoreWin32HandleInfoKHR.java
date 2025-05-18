@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExportSemaphoreWin32HandleInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     SECURITY_ATTRIBUTES const* pAttributes; // optional
-///     DWORD dwAccess;
-///     LPCWSTR name;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     SECURITY_ATTRIBUTES const* pAttributes; // optional // @link substring="pAttributes" target="#pAttributes"
+///     DWORD dwAccess; // @link substring="dwAccess" target="#dwAccess"
+///     LPCWSTR name; // @link substring="name" target="#name"
 /// } VkExportSemaphoreWin32HandleInfoKHR;
 /// }
 ///
@@ -124,14 +124,6 @@ public record VkExportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$dwAccess, OFFSET$dwAccess, value);
     }
 
-    public @pointer(comment="short*") MemorySegment nameRaw() {
-        return segment.get(LAYOUT$name, OFFSET$name);
-    }
-
-    public void nameRaw(@pointer(comment="short*") MemorySegment value) {
-        segment.set(LAYOUT$name, OFFSET$name, value);
-    }
-
     /// Note: the returned {@link ShortPtr} does not have correct
     /// {@link ShortPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link ShortPtr#reinterpret} to set the size before actually reading from or
@@ -147,6 +139,14 @@ public record VkExportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
     public void name(@Nullable @unsigned ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         nameRaw(s);
+    }
+
+    public @pointer(comment="short*") MemorySegment nameRaw() {
+        return segment.get(LAYOUT$name, OFFSET$name);
+    }
+
+    public void nameRaw(@pointer(comment="short*") MemorySegment value) {
+        segment.set(LAYOUT$name, OFFSET$name, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

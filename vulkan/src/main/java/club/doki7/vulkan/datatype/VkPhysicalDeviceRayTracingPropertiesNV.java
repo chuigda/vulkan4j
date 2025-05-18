@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceRayTracingPropertiesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t shaderGroupHandleSize;
-///     uint32_t maxRecursionDepth;
-///     uint32_t maxShaderGroupStride;
-///     uint32_t shaderGroupBaseAlignment;
-///     uint64_t maxGeometryCount;
-///     uint64_t maxInstanceCount;
-///     uint64_t maxTriangleCount;
-///     uint32_t maxDescriptorSetAccelerationStructures;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t shaderGroupHandleSize; // @link substring="shaderGroupHandleSize" target="#shaderGroupHandleSize"
+///     uint32_t maxRecursionDepth; // @link substring="maxRecursionDepth" target="#maxRecursionDepth"
+///     uint32_t maxShaderGroupStride; // @link substring="maxShaderGroupStride" target="#maxShaderGroupStride"
+///     uint32_t shaderGroupBaseAlignment; // @link substring="shaderGroupBaseAlignment" target="#shaderGroupBaseAlignment"
+///     uint64_t maxGeometryCount; // @link substring="maxGeometryCount" target="#maxGeometryCount"
+///     uint64_t maxInstanceCount; // @link substring="maxInstanceCount" target="#maxInstanceCount"
+///     uint64_t maxTriangleCount; // @link substring="maxTriangleCount" target="#maxTriangleCount"
+///     uint32_t maxDescriptorSetAccelerationStructures; // @link substring="maxDescriptorSetAccelerationStructures" target="#maxDescriptorSetAccelerationStructures"
 /// } VkPhysicalDeviceRayTracingPropertiesNV;
 /// }
 ///

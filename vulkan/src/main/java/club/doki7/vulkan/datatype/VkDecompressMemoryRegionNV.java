@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDecompressMemoryRegionNV {
-///     VkDeviceAddress srcAddress;
-///     VkDeviceAddress dstAddress;
-///     VkDeviceSize compressedSize;
-///     VkDeviceSize decompressedSize;
-///     VkMemoryDecompressionMethodFlagsNV decompressionMethod;
+///     VkDeviceAddress srcAddress; // @link substring="srcAddress" target="#srcAddress"
+///     VkDeviceAddress dstAddress; // @link substring="dstAddress" target="#dstAddress"
+///     VkDeviceSize compressedSize; // @link substring="compressedSize" target="#compressedSize"
+///     VkDeviceSize decompressedSize; // @link substring="decompressedSize" target="#decompressedSize"
+///     VkMemoryDecompressionMethodFlagsNV decompressionMethod; // @link substring="VkMemoryDecompressionMethodFlagsNV" target="VkMemoryDecompressionMethodFlagsNV" @link substring="decompressionMethod" target="#decompressionMethod"
 /// } VkDecompressMemoryRegionNV;
 /// }
 ///

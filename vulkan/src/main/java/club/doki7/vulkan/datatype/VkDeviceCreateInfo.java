@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDeviceCreateFlags flags; // optional
-///     uint32_t queueCreateInfoCount;
-///     VkDeviceQueueCreateInfo const* pQueueCreateInfos;
-///     uint32_t enabledLayerCount; // optional
-///     char const* const* ppEnabledLayerNames;
-///     uint32_t enabledExtensionCount; // optional
-///     char const* const* ppEnabledExtensionNames;
-///     VkPhysicalDeviceFeatures const* pEnabledFeatures; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceCreateFlags flags; // optional // @link substring="VkDeviceCreateFlags" target="VkDeviceCreateFlags" @link substring="flags" target="#flags"
+///     uint32_t queueCreateInfoCount; // @link substring="queueCreateInfoCount" target="#queueCreateInfoCount"
+///     VkDeviceQueueCreateInfo const* pQueueCreateInfos; // @link substring="VkDeviceQueueCreateInfo" target="VkDeviceQueueCreateInfo" @link substring="pQueueCreateInfos" target="#pQueueCreateInfos"
+///     uint32_t enabledLayerCount; // optional // @link substring="enabledLayerCount" target="#enabledLayerCount"
+///     char const* const* ppEnabledLayerNames; // @link substring="ppEnabledLayerNames" target="#ppEnabledLayerNames"
+///     uint32_t enabledExtensionCount; // optional // @link substring="enabledExtensionCount" target="#enabledExtensionCount"
+///     char const* const* ppEnabledExtensionNames; // @link substring="ppEnabledExtensionNames" target="#ppEnabledExtensionNames"
+///     VkPhysicalDeviceFeatures const* pEnabledFeatures; // optional // @link substring="VkPhysicalDeviceFeatures" target="VkPhysicalDeviceFeatures" @link substring="pEnabledFeatures" target="#pEnabledFeatures"
 /// } VkDeviceCreateInfo;
 /// }
 ///
@@ -125,14 +125,6 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IPoi
         segment.set(LAYOUT$queueCreateInfoCount, OFFSET$queueCreateInfoCount, value);
     }
 
-    public @pointer(target=VkDeviceQueueCreateInfo.class) MemorySegment pQueueCreateInfosRaw() {
-        return segment.get(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos);
-    }
-
-    public void pQueueCreateInfosRaw(@pointer(target=VkDeviceQueueCreateInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos, value);
-    }
-
     public @Nullable VkDeviceQueueCreateInfo pQueueCreateInfos() {
         MemorySegment s = pQueueCreateInfosRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -160,20 +152,20 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IPoi
         return ret;
     }
 
+    public @pointer(target=VkDeviceQueueCreateInfo.class) MemorySegment pQueueCreateInfosRaw() {
+        return segment.get(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos);
+    }
+
+    public void pQueueCreateInfosRaw(@pointer(target=VkDeviceQueueCreateInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos, value);
+    }
+
     public @unsigned int enabledLayerCount() {
         return segment.get(LAYOUT$enabledLayerCount, OFFSET$enabledLayerCount);
     }
 
     public void enabledLayerCount(@unsigned int value) {
         segment.set(LAYOUT$enabledLayerCount, OFFSET$enabledLayerCount, value);
-    }
-
-    public @pointer(comment="void**") MemorySegment ppEnabledLayerNamesRaw() {
-        return segment.get(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames);
-    }
-
-    public void ppEnabledLayerNamesRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames, value);
     }
 
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
@@ -192,20 +184,20 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IPoi
         ppEnabledLayerNamesRaw(s);
     }
 
+    public @pointer(comment="void**") MemorySegment ppEnabledLayerNamesRaw() {
+        return segment.get(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames);
+    }
+
+    public void ppEnabledLayerNamesRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames, value);
+    }
+
     public @unsigned int enabledExtensionCount() {
         return segment.get(LAYOUT$enabledExtensionCount, OFFSET$enabledExtensionCount);
     }
 
     public void enabledExtensionCount(@unsigned int value) {
         segment.set(LAYOUT$enabledExtensionCount, OFFSET$enabledExtensionCount, value);
-    }
-
-    public @pointer(comment="void**") MemorySegment ppEnabledExtensionNamesRaw() {
-        return segment.get(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames);
-    }
-
-    public void ppEnabledExtensionNamesRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames, value);
     }
 
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
@@ -224,12 +216,12 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IPoi
         ppEnabledExtensionNamesRaw(s);
     }
 
-    public @pointer(target=VkPhysicalDeviceFeatures.class) MemorySegment pEnabledFeaturesRaw() {
-        return segment.get(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures);
+    public @pointer(comment="void**") MemorySegment ppEnabledExtensionNamesRaw() {
+        return segment.get(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames);
     }
 
-    public void pEnabledFeaturesRaw(@pointer(target=VkPhysicalDeviceFeatures.class) MemorySegment value) {
-        segment.set(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures, value);
+    public void ppEnabledExtensionNamesRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames, value);
     }
 
     public @Nullable VkPhysicalDeviceFeatures pEnabledFeatures() {
@@ -257,6 +249,14 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IPoi
             ret[i] = new VkPhysicalDeviceFeatures(s.asSlice(i * VkPhysicalDeviceFeatures.BYTES, VkPhysicalDeviceFeatures.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkPhysicalDeviceFeatures.class) MemorySegment pEnabledFeaturesRaw() {
+        return segment.get(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures);
+    }
+
+    public void pEnabledFeaturesRaw(@pointer(target=VkPhysicalDeviceFeatures.class) MemorySegment value) {
+        segment.set(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

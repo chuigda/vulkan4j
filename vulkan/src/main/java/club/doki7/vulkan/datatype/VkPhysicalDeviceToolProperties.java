@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceToolProperties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     char name;
-///     char version;
-///     VkToolPurposeFlags purposes;
-///     char description;
-///     char layer;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     char name; // @link substring="name" target="#name"
+///     char version; // @link substring="version" target="#version"
+///     VkToolPurposeFlags purposes; // @link substring="VkToolPurposeFlags" target="VkToolPurposeFlags" @link substring="purposes" target="#purposes"
+///     char description; // @link substring="description" target="#description"
+///     char layer; // @link substring="layer" target="#layer"
 /// } VkPhysicalDeviceToolProperties;
 /// }
 ///

@@ -20,20 +20,20 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkConvertCooperativeVectorMatrixInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     size_t srcSize;
-///     VkDeviceOrHostAddressConstKHR srcData;
-///     size_t* pDstSize;
-///     VkDeviceOrHostAddressKHR dstData;
-///     VkComponentTypeKHR srcComponentType;
-///     VkComponentTypeKHR dstComponentType;
-///     uint32_t numRows;
-///     uint32_t numColumns;
-///     VkCooperativeVectorMatrixLayoutNV srcLayout;
-///     size_t srcStride;
-///     VkCooperativeVectorMatrixLayoutNV dstLayout;
-///     size_t dstStride;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     size_t srcSize; // @link substring="srcSize" target="#srcSize"
+///     VkDeviceOrHostAddressConstKHR srcData; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="srcData" target="#srcData"
+///     size_t* pDstSize; // @link substring="pDstSize" target="#pDstSize"
+///     VkDeviceOrHostAddressKHR dstData; // @link substring="VkDeviceOrHostAddressKHR" target="VkDeviceOrHostAddressKHR" @link substring="dstData" target="#dstData"
+///     VkComponentTypeKHR srcComponentType; // @link substring="VkComponentTypeKHR" target="VkComponentTypeKHR" @link substring="srcComponentType" target="#srcComponentType"
+///     VkComponentTypeKHR dstComponentType; // @link substring="VkComponentTypeKHR" target="VkComponentTypeKHR" @link substring="dstComponentType" target="#dstComponentType"
+///     uint32_t numRows; // @link substring="numRows" target="#numRows"
+///     uint32_t numColumns; // @link substring="numColumns" target="#numColumns"
+///     VkCooperativeVectorMatrixLayoutNV srcLayout; // @link substring="VkCooperativeVectorMatrixLayoutNV" target="VkCooperativeVectorMatrixLayoutNV" @link substring="srcLayout" target="#srcLayout"
+///     size_t srcStride; // @link substring="srcStride" target="#srcStride"
+///     VkCooperativeVectorMatrixLayoutNV dstLayout; // @link substring="VkCooperativeVectorMatrixLayoutNV" target="VkCooperativeVectorMatrixLayoutNV" @link substring="dstLayout" target="#dstLayout"
+///     size_t dstStride; // @link substring="dstStride" target="#dstStride"
 /// } VkConvertCooperativeVectorMatrixInfoNV;
 /// }
 ///
@@ -121,20 +121,12 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         NativeLayout.writeCSizeT(segment, OFFSET$srcSize, value);
     }
 
-    public VkDeviceOrHostAddressConstKHR srcData() {
+    public @NotNull VkDeviceOrHostAddressConstKHR srcData() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$srcData, LAYOUT$srcData));
     }
 
-    public void srcData(VkDeviceOrHostAddressConstKHR value) {
+    public void srcData(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcData, SIZE$srcData);
-    }
-
-    public @pointer(comment="size_t*") MemorySegment pDstSizeRaw() {
-        return segment.get(LAYOUT$pDstSize, OFFSET$pDstSize);
-    }
-
-    public void pDstSizeRaw(@pointer(comment="size_t*") MemorySegment value) {
-        segment.set(LAYOUT$pDstSize, OFFSET$pDstSize, value);
     }
 
     /// Note: the returned {@link PointerPtr} does not have correct
@@ -154,11 +146,19 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         pDstSizeRaw(s);
     }
 
-    public VkDeviceOrHostAddressKHR dstData() {
+    public @pointer(comment="size_t*") MemorySegment pDstSizeRaw() {
+        return segment.get(LAYOUT$pDstSize, OFFSET$pDstSize);
+    }
+
+    public void pDstSizeRaw(@pointer(comment="size_t*") MemorySegment value) {
+        segment.set(LAYOUT$pDstSize, OFFSET$pDstSize, value);
+    }
+
+    public @NotNull VkDeviceOrHostAddressKHR dstData() {
         return new VkDeviceOrHostAddressKHR(segment.asSlice(OFFSET$dstData, LAYOUT$dstData));
     }
 
-    public void dstData(VkDeviceOrHostAddressKHR value) {
+    public void dstData(@NotNull VkDeviceOrHostAddressKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstData, SIZE$dstData);
     }
 

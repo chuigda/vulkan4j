@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImportFenceSciSyncInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkFence fence;
-///     VkExternalFenceHandleTypeFlags handleType;
-///     void* handle;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkFence fence; // @link substring="VkFence" target="VkFence" @link substring="fence" target="#fence"
+///     VkExternalFenceHandleTypeFlags handleType; // @link substring="VkExternalFenceHandleTypeFlags" target="VkExternalFenceHandleTypeFlags" @link substring="handleType" target="#handleType"
+///     void* handle; // @link substring="handle" target="#handle"
 /// } VkImportFenceSciSyncInfoNV;
 /// }
 ///

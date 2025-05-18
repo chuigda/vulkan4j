@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceQueueShaderCoreControlCreateInfoARM {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t shaderCoreCount;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t shaderCoreCount; // @link substring="shaderCoreCount" target="#shaderCoreCount"
 /// } VkDeviceQueueShaderCoreControlCreateInfoARM;
 /// }
 ///

@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureBuildSizesInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDeviceSize accelerationStructureSize;
-///     VkDeviceSize updateScratchSize;
-///     VkDeviceSize buildScratchSize;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceSize accelerationStructureSize; // @link substring="accelerationStructureSize" target="#accelerationStructureSize"
+///     VkDeviceSize updateScratchSize; // @link substring="updateScratchSize" target="#updateScratchSize"
+///     VkDeviceSize buildScratchSize; // @link substring="buildScratchSize" target="#buildScratchSize"
 /// } VkAccelerationStructureBuildSizesInfoKHR;
 /// }
 ///

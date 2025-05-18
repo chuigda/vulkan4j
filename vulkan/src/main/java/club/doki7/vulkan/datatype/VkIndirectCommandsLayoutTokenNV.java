@@ -20,21 +20,21 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkIndirectCommandsLayoutTokenNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkIndirectCommandsTokenTypeNV tokenType;
-///     uint32_t stream;
-///     uint32_t offset;
-///     uint32_t vertexBindingUnit;
-///     VkBool32 vertexDynamicStride;
-///     VkPipelineLayout pushconstantPipelineLayout; // optional
-///     VkShaderStageFlags pushconstantShaderStageFlags; // optional
-///     uint32_t pushconstantOffset;
-///     uint32_t pushconstantSize;
-///     VkIndirectStateFlagsNV indirectStateFlags; // optional
-///     uint32_t indexTypeCount; // optional
-///     VkIndexType const* pIndexTypes;
-///     uint32_t const* pIndexTypeValues;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkIndirectCommandsTokenTypeNV tokenType; // @link substring="VkIndirectCommandsTokenTypeNV" target="VkIndirectCommandsTokenTypeNV" @link substring="tokenType" target="#tokenType"
+///     uint32_t stream; // @link substring="stream" target="#stream"
+///     uint32_t offset; // @link substring="offset" target="#offset"
+///     uint32_t vertexBindingUnit; // @link substring="vertexBindingUnit" target="#vertexBindingUnit"
+///     VkBool32 vertexDynamicStride; // @link substring="vertexDynamicStride" target="#vertexDynamicStride"
+///     VkPipelineLayout pushconstantPipelineLayout; // optional // @link substring="VkPipelineLayout" target="VkPipelineLayout" @link substring="pushconstantPipelineLayout" target="#pushconstantPipelineLayout"
+///     VkShaderStageFlags pushconstantShaderStageFlags; // optional // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="pushconstantShaderStageFlags" target="#pushconstantShaderStageFlags"
+///     uint32_t pushconstantOffset; // @link substring="pushconstantOffset" target="#pushconstantOffset"
+///     uint32_t pushconstantSize; // @link substring="pushconstantSize" target="#pushconstantSize"
+///     VkIndirectStateFlagsNV indirectStateFlags; // optional // @link substring="VkIndirectStateFlagsNV" target="VkIndirectStateFlagsNV" @link substring="indirectStateFlags" target="#indirectStateFlags"
+///     uint32_t indexTypeCount; // optional // @link substring="indexTypeCount" target="#indexTypeCount"
+///     VkIndexType const* pIndexTypes; // @link substring="VkIndexType" target="VkIndexType" @link substring="pIndexTypes" target="#pIndexTypes"
+///     uint32_t const* pIndexTypeValues; // @link substring="pIndexTypeValues" target="#pIndexTypeValues"
 /// } VkIndirectCommandsLayoutTokenNV;
 /// }
 ///
@@ -206,13 +206,6 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$indexTypeCount, OFFSET$indexTypeCount, value);
     }
 
-    public @pointer(target=VkIndexType.class) MemorySegment pIndexTypesRaw() {
-        return segment.get(LAYOUT$pIndexTypes, OFFSET$pIndexTypes);
-    }
-
-    public void pIndexTypesRaw(@pointer(target=VkIndexType.class) MemorySegment value) {
-        segment.set(LAYOUT$pIndexTypes, OFFSET$pIndexTypes, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -231,12 +224,12 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         pIndexTypesRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pIndexTypeValuesRaw() {
-        return segment.get(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues);
+    public @pointer(target=VkIndexType.class) MemorySegment pIndexTypesRaw() {
+        return segment.get(LAYOUT$pIndexTypes, OFFSET$pIndexTypes);
     }
 
-    public void pIndexTypeValuesRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues, value);
+    public void pIndexTypesRaw(@pointer(target=VkIndexType.class) MemorySegment value) {
+        segment.set(LAYOUT$pIndexTypes, OFFSET$pIndexTypes, value);
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -254,6 +247,14 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
     public void pIndexTypeValues(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pIndexTypeValuesRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pIndexTypeValuesRaw() {
+        return segment.get(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues);
+    }
+
+    public void pIndexTypeValuesRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

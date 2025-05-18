@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkWin32KeyedMutexAcquireReleaseInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t acquireCount; // optional
-///     VkDeviceMemory const* pAcquireSyncs;
-///     uint64_t const* pAcquireKeys;
-///     uint32_t const* pAcquireTimeoutMilliseconds;
-///     uint32_t releaseCount; // optional
-///     VkDeviceMemory const* pReleaseSyncs;
-///     uint64_t const* pReleaseKeys;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t acquireCount; // optional // @link substring="acquireCount" target="#acquireCount"
+///     VkDeviceMemory const* pAcquireSyncs; // @link substring="VkDeviceMemory" target="VkDeviceMemory" @link substring="pAcquireSyncs" target="#pAcquireSyncs"
+///     uint64_t const* pAcquireKeys; // @link substring="pAcquireKeys" target="#pAcquireKeys"
+///     uint32_t const* pAcquireTimeoutMilliseconds; // @link substring="pAcquireTimeoutMilliseconds" target="#pAcquireTimeoutMilliseconds"
+///     uint32_t releaseCount; // optional // @link substring="releaseCount" target="#releaseCount"
+///     VkDeviceMemory const* pReleaseSyncs; // @link substring="VkDeviceMemory" target="VkDeviceMemory" @link substring="pReleaseSyncs" target="#pReleaseSyncs"
+///     uint64_t const* pReleaseKeys; // @link substring="pReleaseKeys" target="#pReleaseKeys"
 /// } VkWin32KeyedMutexAcquireReleaseInfoNV;
 /// }
 ///
@@ -116,14 +116,6 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         segment.set(LAYOUT$acquireCount, OFFSET$acquireCount, value);
     }
 
-    public @pointer(target=VkDeviceMemory.class) MemorySegment pAcquireSyncsRaw() {
-        return segment.get(LAYOUT$pAcquireSyncs, OFFSET$pAcquireSyncs);
-    }
-
-    public void pAcquireSyncsRaw(@pointer(target=VkDeviceMemory.class) MemorySegment value) {
-        segment.set(LAYOUT$pAcquireSyncs, OFFSET$pAcquireSyncs, value);
-    }
-
     /// Note: the returned {@link VkDeviceMemory.Ptr} does not have correct {@link VkDeviceMemory.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkDeviceMemory.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -141,12 +133,12 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         pAcquireSyncsRaw(s);
     }
 
-    public @pointer(comment="long*") MemorySegment pAcquireKeysRaw() {
-        return segment.get(LAYOUT$pAcquireKeys, OFFSET$pAcquireKeys);
+    public @pointer(target=VkDeviceMemory.class) MemorySegment pAcquireSyncsRaw() {
+        return segment.get(LAYOUT$pAcquireSyncs, OFFSET$pAcquireSyncs);
     }
 
-    public void pAcquireKeysRaw(@pointer(comment="long*") MemorySegment value) {
-        segment.set(LAYOUT$pAcquireKeys, OFFSET$pAcquireKeys, value);
+    public void pAcquireSyncsRaw(@pointer(target=VkDeviceMemory.class) MemorySegment value) {
+        segment.set(LAYOUT$pAcquireSyncs, OFFSET$pAcquireSyncs, value);
     }
 
     /// Note: the returned {@link LongPtr} does not have correct
@@ -166,12 +158,12 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         pAcquireKeysRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pAcquireTimeoutMillisecondsRaw() {
-        return segment.get(LAYOUT$pAcquireTimeoutMilliseconds, OFFSET$pAcquireTimeoutMilliseconds);
+    public @pointer(comment="long*") MemorySegment pAcquireKeysRaw() {
+        return segment.get(LAYOUT$pAcquireKeys, OFFSET$pAcquireKeys);
     }
 
-    public void pAcquireTimeoutMillisecondsRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pAcquireTimeoutMilliseconds, OFFSET$pAcquireTimeoutMilliseconds, value);
+    public void pAcquireKeysRaw(@pointer(comment="long*") MemorySegment value) {
+        segment.set(LAYOUT$pAcquireKeys, OFFSET$pAcquireKeys, value);
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -191,20 +183,20 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         pAcquireTimeoutMillisecondsRaw(s);
     }
 
+    public @pointer(comment="int*") MemorySegment pAcquireTimeoutMillisecondsRaw() {
+        return segment.get(LAYOUT$pAcquireTimeoutMilliseconds, OFFSET$pAcquireTimeoutMilliseconds);
+    }
+
+    public void pAcquireTimeoutMillisecondsRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pAcquireTimeoutMilliseconds, OFFSET$pAcquireTimeoutMilliseconds, value);
+    }
+
     public @unsigned int releaseCount() {
         return segment.get(LAYOUT$releaseCount, OFFSET$releaseCount);
     }
 
     public void releaseCount(@unsigned int value) {
         segment.set(LAYOUT$releaseCount, OFFSET$releaseCount, value);
-    }
-
-    public @pointer(target=VkDeviceMemory.class) MemorySegment pReleaseSyncsRaw() {
-        return segment.get(LAYOUT$pReleaseSyncs, OFFSET$pReleaseSyncs);
-    }
-
-    public void pReleaseSyncsRaw(@pointer(target=VkDeviceMemory.class) MemorySegment value) {
-        segment.set(LAYOUT$pReleaseSyncs, OFFSET$pReleaseSyncs, value);
     }
 
     /// Note: the returned {@link VkDeviceMemory.Ptr} does not have correct {@link VkDeviceMemory.Ptr#size}
@@ -224,12 +216,12 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         pReleaseSyncsRaw(s);
     }
 
-    public @pointer(comment="long*") MemorySegment pReleaseKeysRaw() {
-        return segment.get(LAYOUT$pReleaseKeys, OFFSET$pReleaseKeys);
+    public @pointer(target=VkDeviceMemory.class) MemorySegment pReleaseSyncsRaw() {
+        return segment.get(LAYOUT$pReleaseSyncs, OFFSET$pReleaseSyncs);
     }
 
-    public void pReleaseKeysRaw(@pointer(comment="long*") MemorySegment value) {
-        segment.set(LAYOUT$pReleaseKeys, OFFSET$pReleaseKeys, value);
+    public void pReleaseSyncsRaw(@pointer(target=VkDeviceMemory.class) MemorySegment value) {
+        segment.set(LAYOUT$pReleaseSyncs, OFFSET$pReleaseSyncs, value);
     }
 
     /// Note: the returned {@link LongPtr} does not have correct
@@ -247,6 +239,14 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
     public void pReleaseKeys(@Nullable @unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pReleaseKeysRaw(s);
+    }
+
+    public @pointer(comment="long*") MemorySegment pReleaseKeysRaw() {
+        return segment.get(LAYOUT$pReleaseKeys, OFFSET$pReleaseKeys);
+    }
+
+    public void pReleaseKeysRaw(@pointer(comment="long*") MemorySegment value) {
+        segment.set(LAYOUT$pReleaseKeys, OFFSET$pReleaseKeys, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

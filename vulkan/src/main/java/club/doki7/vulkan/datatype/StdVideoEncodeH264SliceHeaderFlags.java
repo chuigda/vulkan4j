@@ -21,9 +21,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeH264SliceHeaderFlags {
-///     uint32_t direct_spatial_mv_pred_flag : 1;
-///     uint32_t num_ref_idx_active_override_flag : 1;
-///     uint32_t reserved : 30;
+///     uint32_t direct_spatial_mv_pred_flag : 1; // @link substring="direct_spatial_mv_pred_flag" target="#direct_spatial_mv_pred_flag"
+///     uint32_t num_ref_idx_active_override_flag : 1; // @link substring="num_ref_idx_active_override_flag" target="#num_ref_idx_active_override_flag"
+///     uint32_t reserved : 30; // @link substring="reserved" target="#reserved"
 /// } StdVideoEncodeH264SliceHeaderFlags;
 /// }
 ///

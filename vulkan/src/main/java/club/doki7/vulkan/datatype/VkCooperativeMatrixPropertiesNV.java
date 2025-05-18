@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCooperativeMatrixPropertiesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t MSize;
-///     uint32_t NSize;
-///     uint32_t KSize;
-///     VkComponentTypeNV AType;
-///     VkComponentTypeNV BType;
-///     VkComponentTypeNV CType;
-///     VkComponentTypeNV DType;
-///     VkScopeNV scope;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t MSize; // @link substring="MSize" target="#MSize"
+///     uint32_t NSize; // @link substring="NSize" target="#NSize"
+///     uint32_t KSize; // @link substring="KSize" target="#KSize"
+///     VkComponentTypeNV AType; // @link substring="VkComponentTypeKHR" target="VkComponentTypeNV" @link substring="AType" target="#AType"
+///     VkComponentTypeNV BType; // @link substring="VkComponentTypeKHR" target="VkComponentTypeNV" @link substring="BType" target="#BType"
+///     VkComponentTypeNV CType; // @link substring="VkComponentTypeKHR" target="VkComponentTypeNV" @link substring="CType" target="#CType"
+///     VkComponentTypeNV DType; // @link substring="VkComponentTypeKHR" target="VkComponentTypeNV" @link substring="DType" target="#DType"
+///     VkScopeNV scope; // @link substring="VkScopeKHR" target="VkScopeNV" @link substring="scope" target="#scope"
 /// } VkCooperativeMatrixPropertiesNV;
 /// }
 ///

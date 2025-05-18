@@ -21,10 +21,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeAV1OperatingPointInfoFlags {
-///     uint32_t decoder_model_present_for_this_op : 1;
-///     uint32_t low_delay_mode_flag : 1;
-///     uint32_t initial_display_delay_present_for_this_op : 1;
-///     uint32_t reserved : 29;
+///     uint32_t decoder_model_present_for_this_op : 1; // @link substring="decoder_model_present_for_this_op" target="#decoder_model_present_for_this_op"
+///     uint32_t low_delay_mode_flag : 1; // @link substring="low_delay_mode_flag" target="#low_delay_mode_flag"
+///     uint32_t initial_display_delay_present_for_this_op : 1; // @link substring="initial_display_delay_present_for_this_op" target="#initial_display_delay_present_for_this_op"
+///     uint32_t reserved : 29; // @link substring="reserved" target="#reserved"
 /// } StdVideoEncodeAV1OperatingPointInfoFlags;
 /// }
 ///

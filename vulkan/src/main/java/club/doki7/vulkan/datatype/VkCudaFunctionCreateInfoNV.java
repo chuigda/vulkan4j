@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCudaFunctionCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkCudaModuleNV module;
-///     char const* pName;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkCudaModuleNV module; // @link substring="VkCudaModuleNV" target="VkCudaModuleNV" @link substring="module" target="#module"
+///     char const* pName; // @link substring="pName" target="#pName"
 /// } VkCudaFunctionCreateInfoNV;
 /// }
 ///
@@ -115,14 +115,6 @@ public record VkCudaFunctionCreateInfoNV(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$module, OFFSET$module, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="byte*") MemorySegment pNameRaw() {
-        return segment.get(LAYOUT$pName, OFFSET$pName);
-    }
-
-    public void pNameRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pName, OFFSET$pName, value);
-    }
-
     /// Note: the returned {@link BytePtr} does not have correct
     /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
@@ -138,6 +130,14 @@ public record VkCudaFunctionCreateInfoNV(@NotNull MemorySegment segment) impleme
     public void pName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNameRaw(s);
+    }
+
+    public @pointer(comment="byte*") MemorySegment pNameRaw() {
+        return segment.get(LAYOUT$pName, OFFSET$pName);
+    }
+
+    public void pNameRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

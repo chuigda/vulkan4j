@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceFaultVendorBinaryHeaderVersionOneEXT {
-///     uint32_t headerSize;
-///     VkDeviceFaultVendorBinaryHeaderVersionEXT headerVersion;
-///     uint32_t vendorID;
-///     uint32_t deviceID;
-///     uint32_t driverVersion;
-///     uint8_t pipelineCacheUUID;
-///     uint32_t applicationNameOffset;
-///     uint32_t applicationVersion;
-///     uint32_t engineNameOffset;
-///     uint32_t engineVersion;
-///     uint32_t apiVersion;
+///     uint32_t headerSize; // @link substring="headerSize" target="#headerSize"
+///     VkDeviceFaultVendorBinaryHeaderVersionEXT headerVersion; // @link substring="VkDeviceFaultVendorBinaryHeaderVersionEXT" target="VkDeviceFaultVendorBinaryHeaderVersionEXT" @link substring="headerVersion" target="#headerVersion"
+///     uint32_t vendorID; // @link substring="vendorID" target="#vendorID"
+///     uint32_t deviceID; // @link substring="deviceID" target="#deviceID"
+///     uint32_t driverVersion; // @link substring="driverVersion" target="#driverVersion"
+///     uint8_t pipelineCacheUUID; // @link substring="pipelineCacheUUID" target="#pipelineCacheUUID"
+///     uint32_t applicationNameOffset; // @link substring="applicationNameOffset" target="#applicationNameOffset"
+///     uint32_t applicationVersion; // @link substring="applicationVersion" target="#applicationVersion"
+///     uint32_t engineNameOffset; // @link substring="engineNameOffset" target="#engineNameOffset"
+///     uint32_t engineVersion; // @link substring="engineVersion" target="#engineVersion"
+///     uint32_t apiVersion; // @link substring="apiVersion" target="#apiVersion"
 /// } VkDeviceFaultVendorBinaryHeaderVersionOneEXT;
 /// }
 ///

@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoDecodeH264PictureInfo {
-///     StdVideoDecodeH264PictureInfoFlags flags;
-///     uint8_t seq_parameter_set_id;
-///     uint8_t pic_parameter_set_id;
-///     uint8_t reserved1;
-///     uint8_t reserved2;
-///     uint16_t frame_num;
-///     uint16_t idr_pic_id;
-///     int32_t PicOrderCnt;
+///     StdVideoDecodeH264PictureInfoFlags flags; // @link substring="StdVideoDecodeH264PictureInfoFlags" target="StdVideoDecodeH264PictureInfoFlags" @link substring="flags" target="#flags"
+///     uint8_t seq_parameter_set_id; // @link substring="seq_parameter_set_id" target="#seq_parameter_set_id"
+///     uint8_t pic_parameter_set_id; // @link substring="pic_parameter_set_id" target="#pic_parameter_set_id"
+///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint8_t reserved2; // @link substring="reserved2" target="#reserved2"
+///     uint16_t frame_num; // @link substring="frame_num" target="#frame_num"
+///     uint16_t idr_pic_id; // @link substring="idr_pic_id" target="#idr_pic_id"
+///     int32_t PicOrderCnt; // @link substring="PicOrderCnt" target="#PicOrderCnt"
 /// } StdVideoDecodeH264PictureInfo;
 /// }
 ///
@@ -71,11 +71,11 @@ public record StdVideoDecodeH264PictureInfo(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public StdVideoDecodeH264PictureInfoFlags flags() {
+    public @NotNull StdVideoDecodeH264PictureInfoFlags flags() {
         return new StdVideoDecodeH264PictureInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoDecodeH264PictureInfoFlags value) {
+    public void flags(@NotNull StdVideoDecodeH264PictureInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 

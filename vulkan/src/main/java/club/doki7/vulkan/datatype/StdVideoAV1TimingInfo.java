@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1TimingInfo {
-///     StdVideoAV1TimingInfoFlags flags;
-///     uint32_t num_units_in_display_tick;
-///     uint32_t time_scale;
-///     uint32_t num_ticks_per_picture_minus_1;
+///     StdVideoAV1TimingInfoFlags flags; // @link substring="StdVideoAV1TimingInfoFlags" target="StdVideoAV1TimingInfoFlags" @link substring="flags" target="#flags"
+///     uint32_t num_units_in_display_tick; // @link substring="num_units_in_display_tick" target="#num_units_in_display_tick"
+///     uint32_t time_scale; // @link substring="time_scale" target="#time_scale"
+///     uint32_t num_ticks_per_picture_minus_1; // @link substring="num_ticks_per_picture_minus_1" target="#num_ticks_per_picture_minus_1"
 /// } StdVideoAV1TimingInfo;
 /// }
 ///
@@ -67,11 +67,11 @@ public record StdVideoAV1TimingInfo(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
-    public StdVideoAV1TimingInfoFlags flags() {
+    public @NotNull StdVideoAV1TimingInfoFlags flags() {
         return new StdVideoAV1TimingInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoAV1TimingInfoFlags value) {
+    public void flags(@NotNull StdVideoAV1TimingInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 

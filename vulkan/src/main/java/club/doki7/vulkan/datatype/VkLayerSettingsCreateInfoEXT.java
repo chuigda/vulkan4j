@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkLayerSettingsCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t settingCount; // optional
-///     VkLayerSettingEXT const* pSettings;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t settingCount; // optional // @link substring="settingCount" target="#settingCount"
+///     VkLayerSettingEXT const* pSettings; // @link substring="VkLayerSettingEXT" target="VkLayerSettingEXT" @link substring="pSettings" target="#pSettings"
 /// } VkLayerSettingsCreateInfoEXT;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$settingCount, OFFSET$settingCount, value);
     }
 
-    public @pointer(target=VkLayerSettingEXT.class) MemorySegment pSettingsRaw() {
-        return segment.get(LAYOUT$pSettings, OFFSET$pSettings);
-    }
-
-    public void pSettingsRaw(@pointer(target=VkLayerSettingEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pSettings, OFFSET$pSettings, value);
-    }
-
     public @Nullable VkLayerSettingEXT pSettings() {
         MemorySegment s = pSettingsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
             ret[i] = new VkLayerSettingEXT(s.asSlice(i * VkLayerSettingEXT.BYTES, VkLayerSettingEXT.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkLayerSettingEXT.class) MemorySegment pSettingsRaw() {
+        return segment.get(LAYOUT$pSettings, OFFSET$pSettings);
+    }
+
+    public void pSettingsRaw(@pointer(target=VkLayerSettingEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pSettings, OFFSET$pSettings, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -21,8 +21,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265ShortTermRefPicSetFlags {
-///     uint32_t inter_ref_pic_set_prediction_flag : 1;
-///     uint32_t delta_rps_sign : 1;
+///     uint32_t inter_ref_pic_set_prediction_flag : 1; // @link substring="inter_ref_pic_set_prediction_flag" target="#inter_ref_pic_set_prediction_flag"
+///     uint32_t delta_rps_sign : 1; // @link substring="delta_rps_sign" target="#delta_rps_sign"
 /// } StdVideoH265ShortTermRefPicSetFlags;
 /// }
 ///

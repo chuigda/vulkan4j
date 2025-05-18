@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeH265ReferenceListsInfo {
-///     StdVideoEncodeH265ReferenceListsInfoFlags flags;
-///     uint8_t num_ref_idx_l0_active_minus1;
-///     uint8_t num_ref_idx_l1_active_minus1;
-///     uint8_t RefPicList0;
-///     uint8_t RefPicList1;
-///     uint8_t list_entry_l0;
-///     uint8_t list_entry_l1;
+///     StdVideoEncodeH265ReferenceListsInfoFlags flags; // @link substring="StdVideoEncodeH265ReferenceListsInfoFlags" target="StdVideoEncodeH265ReferenceListsInfoFlags" @link substring="flags" target="#flags"
+///     uint8_t num_ref_idx_l0_active_minus1; // @link substring="num_ref_idx_l0_active_minus1" target="#num_ref_idx_l0_active_minus1"
+///     uint8_t num_ref_idx_l1_active_minus1; // @link substring="num_ref_idx_l1_active_minus1" target="#num_ref_idx_l1_active_minus1"
+///     uint8_t RefPicList0; // @link substring="RefPicList0" target="#RefPicList0"
+///     uint8_t RefPicList1; // @link substring="RefPicList1" target="#RefPicList1"
+///     uint8_t list_entry_l0; // @link substring="list_entry_l0" target="#list_entry_l0"
+///     uint8_t list_entry_l1; // @link substring="list_entry_l1" target="#list_entry_l1"
 /// } StdVideoEncodeH265ReferenceListsInfo;
 /// }
 ///
@@ -70,11 +70,11 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
         return ret;
     }
 
-    public StdVideoEncodeH265ReferenceListsInfoFlags flags() {
+    public @NotNull StdVideoEncodeH265ReferenceListsInfoFlags flags() {
         return new StdVideoEncodeH265ReferenceListsInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoEncodeH265ReferenceListsInfoFlags value) {
+    public void flags(@NotNull StdVideoEncodeH265ReferenceListsInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 

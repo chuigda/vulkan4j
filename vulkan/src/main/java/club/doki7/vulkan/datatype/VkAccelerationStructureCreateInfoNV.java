@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDeviceSize compactedSize;
-///     VkAccelerationStructureInfoNV info;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceSize compactedSize; // @link substring="compactedSize" target="#compactedSize"
+///     VkAccelerationStructureInfoNV info; // @link substring="VkAccelerationStructureInfoNV" target="VkAccelerationStructureInfoNV" @link substring="info" target="#info"
 /// } VkAccelerationStructureCreateInfoNV;
 /// }
 ///
@@ -111,11 +111,11 @@ public record VkAccelerationStructureCreateInfoNV(@NotNull MemorySegment segment
         segment.set(LAYOUT$compactedSize, OFFSET$compactedSize, value);
     }
 
-    public VkAccelerationStructureInfoNV info() {
+    public @NotNull VkAccelerationStructureInfoNV info() {
         return new VkAccelerationStructureInfoNV(segment.asSlice(OFFSET$info, LAYOUT$info));
     }
 
-    public void info(VkAccelerationStructureInfoNV value) {
+    public void info(@NotNull VkAccelerationStructureInfoNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$info, SIZE$info);
     }
 

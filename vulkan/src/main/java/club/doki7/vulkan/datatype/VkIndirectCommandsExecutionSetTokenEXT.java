@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkIndirectCommandsExecutionSetTokenEXT {
-///     VkIndirectExecutionSetInfoTypeEXT type;
-///     VkShaderStageFlags shaderStages;
+///     VkIndirectExecutionSetInfoTypeEXT type; // @link substring="VkIndirectExecutionSetInfoTypeEXT" target="VkIndirectExecutionSetInfoTypeEXT" @link substring="type" target="#type"
+///     VkShaderStageFlags shaderStages; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="shaderStages" target="#shaderStages"
 /// } VkIndirectCommandsExecutionSetTokenEXT;
 /// }
 ///

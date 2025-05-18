@@ -20,18 +20,18 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineDepthStencilStateCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineDepthStencilStateCreateFlags flags; // optional
-///     VkBool32 depthTestEnable;
-///     VkBool32 depthWriteEnable;
-///     VkCompareOp depthCompareOp;
-///     VkBool32 depthBoundsTestEnable;
-///     VkBool32 stencilTestEnable;
-///     VkStencilOpState front;
-///     VkStencilOpState back;
-///     float minDepthBounds;
-///     float maxDepthBounds;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineDepthStencilStateCreateFlags flags; // optional // @link substring="VkPipelineDepthStencilStateCreateFlags" target="VkPipelineDepthStencilStateCreateFlags" @link substring="flags" target="#flags"
+///     VkBool32 depthTestEnable; // @link substring="depthTestEnable" target="#depthTestEnable"
+///     VkBool32 depthWriteEnable; // @link substring="depthWriteEnable" target="#depthWriteEnable"
+///     VkCompareOp depthCompareOp; // @link substring="VkCompareOp" target="VkCompareOp" @link substring="depthCompareOp" target="#depthCompareOp"
+///     VkBool32 depthBoundsTestEnable; // @link substring="depthBoundsTestEnable" target="#depthBoundsTestEnable"
+///     VkBool32 stencilTestEnable; // @link substring="stencilTestEnable" target="#stencilTestEnable"
+///     VkStencilOpState front; // @link substring="VkStencilOpState" target="VkStencilOpState" @link substring="front" target="#front"
+///     VkStencilOpState back; // @link substring="VkStencilOpState" target="VkStencilOpState" @link substring="back" target="#back"
+///     float minDepthBounds; // @link substring="minDepthBounds" target="#minDepthBounds"
+///     float maxDepthBounds; // @link substring="maxDepthBounds" target="#maxDepthBounds"
 /// } VkPipelineDepthStencilStateCreateInfo;
 /// }
 ///
@@ -159,19 +159,19 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         segment.set(LAYOUT$stencilTestEnable, OFFSET$stencilTestEnable, value);
     }
 
-    public VkStencilOpState front() {
+    public @NotNull VkStencilOpState front() {
         return new VkStencilOpState(segment.asSlice(OFFSET$front, LAYOUT$front));
     }
 
-    public void front(VkStencilOpState value) {
+    public void front(@NotNull VkStencilOpState value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$front, SIZE$front);
     }
 
-    public VkStencilOpState back() {
+    public @NotNull VkStencilOpState back() {
         return new VkStencilOpState(segment.asSlice(OFFSET$back, LAYOUT$back));
     }
 
-    public void back(VkStencilOpState value) {
+    public void back(@NotNull VkStencilOpState value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$back, SIZE$back);
     }
 

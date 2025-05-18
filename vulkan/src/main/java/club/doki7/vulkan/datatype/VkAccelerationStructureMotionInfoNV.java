@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureMotionInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t maxInstances;
-///     VkAccelerationStructureMotionInfoFlagsNV flags; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxInstances; // @link substring="maxInstances" target="#maxInstances"
+///     VkAccelerationStructureMotionInfoFlagsNV flags; // optional // @link substring="VkAccelerationStructureMotionInfoFlagsNV" target="VkAccelerationStructureMotionInfoFlagsNV" @link substring="flags" target="#flags"
 /// } VkAccelerationStructureMotionInfoNV;
 /// }
 ///

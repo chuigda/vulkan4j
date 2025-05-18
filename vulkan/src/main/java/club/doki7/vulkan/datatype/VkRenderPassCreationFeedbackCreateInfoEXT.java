@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassCreationFeedbackCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkRenderPassCreationFeedbackInfoEXT* pRenderPassFeedback;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkRenderPassCreationFeedbackInfoEXT* pRenderPassFeedback; // @link substring="VkRenderPassCreationFeedbackInfoEXT" target="VkRenderPassCreationFeedbackInfoEXT" @link substring="pRenderPassFeedback" target="#pRenderPassFeedback"
 /// } VkRenderPassCreationFeedbackCreateInfoEXT;
 /// }
 ///
@@ -102,14 +102,6 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(target=VkRenderPassCreationFeedbackInfoEXT.class) MemorySegment pRenderPassFeedbackRaw() {
-        return segment.get(LAYOUT$pRenderPassFeedback, OFFSET$pRenderPassFeedback);
-    }
-
-    public void pRenderPassFeedbackRaw(@pointer(target=VkRenderPassCreationFeedbackInfoEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pRenderPassFeedback, OFFSET$pRenderPassFeedback, value);
-    }
-
     public @Nullable VkRenderPassCreationFeedbackInfoEXT pRenderPassFeedback() {
         MemorySegment s = pRenderPassFeedbackRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -135,6 +127,14 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(@NotNull MemorySegment s
             ret[i] = new VkRenderPassCreationFeedbackInfoEXT(s.asSlice(i * VkRenderPassCreationFeedbackInfoEXT.BYTES, VkRenderPassCreationFeedbackInfoEXT.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkRenderPassCreationFeedbackInfoEXT.class) MemorySegment pRenderPassFeedbackRaw() {
+        return segment.get(LAYOUT$pRenderPassFeedback, OFFSET$pRenderPassFeedback);
+    }
+
+    public void pRenderPassFeedbackRaw(@pointer(target=VkRenderPassCreationFeedbackInfoEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pRenderPassFeedback, OFFSET$pRenderPassFeedback, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

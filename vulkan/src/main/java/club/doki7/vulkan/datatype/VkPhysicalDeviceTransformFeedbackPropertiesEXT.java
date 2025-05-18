@@ -20,18 +20,18 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceTransformFeedbackPropertiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t maxTransformFeedbackStreams;
-///     uint32_t maxTransformFeedbackBuffers;
-///     VkDeviceSize maxTransformFeedbackBufferSize;
-///     uint32_t maxTransformFeedbackStreamDataSize;
-///     uint32_t maxTransformFeedbackBufferDataSize;
-///     uint32_t maxTransformFeedbackBufferDataStride;
-///     VkBool32 transformFeedbackQueries;
-///     VkBool32 transformFeedbackStreamsLinesTriangles;
-///     VkBool32 transformFeedbackRasterizationStreamSelect;
-///     VkBool32 transformFeedbackDraw;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxTransformFeedbackStreams; // @link substring="maxTransformFeedbackStreams" target="#maxTransformFeedbackStreams"
+///     uint32_t maxTransformFeedbackBuffers; // @link substring="maxTransformFeedbackBuffers" target="#maxTransformFeedbackBuffers"
+///     VkDeviceSize maxTransformFeedbackBufferSize; // @link substring="maxTransformFeedbackBufferSize" target="#maxTransformFeedbackBufferSize"
+///     uint32_t maxTransformFeedbackStreamDataSize; // @link substring="maxTransformFeedbackStreamDataSize" target="#maxTransformFeedbackStreamDataSize"
+///     uint32_t maxTransformFeedbackBufferDataSize; // @link substring="maxTransformFeedbackBufferDataSize" target="#maxTransformFeedbackBufferDataSize"
+///     uint32_t maxTransformFeedbackBufferDataStride; // @link substring="maxTransformFeedbackBufferDataStride" target="#maxTransformFeedbackBufferDataStride"
+///     VkBool32 transformFeedbackQueries; // @link substring="transformFeedbackQueries" target="#transformFeedbackQueries"
+///     VkBool32 transformFeedbackStreamsLinesTriangles; // @link substring="transformFeedbackStreamsLinesTriangles" target="#transformFeedbackStreamsLinesTriangles"
+///     VkBool32 transformFeedbackRasterizationStreamSelect; // @link substring="transformFeedbackRasterizationStreamSelect" target="#transformFeedbackRasterizationStreamSelect"
+///     VkBool32 transformFeedbackDraw; // @link substring="transformFeedbackDraw" target="#transformFeedbackDraw"
 /// } VkPhysicalDeviceTransformFeedbackPropertiesEXT;
 /// }
 ///

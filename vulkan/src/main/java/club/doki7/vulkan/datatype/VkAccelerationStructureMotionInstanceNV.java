@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureMotionInstanceNV {
-///     VkAccelerationStructureMotionInstanceTypeNV type;
-///     VkAccelerationStructureMotionInstanceFlagsNV flags; // optional
-///     VkAccelerationStructureMotionInstanceDataNV data;
+///     VkAccelerationStructureMotionInstanceTypeNV type; // @link substring="VkAccelerationStructureMotionInstanceTypeNV" target="VkAccelerationStructureMotionInstanceTypeNV" @link substring="type" target="#type"
+///     VkAccelerationStructureMotionInstanceFlagsNV flags; // optional // @link substring="VkAccelerationStructureMotionInstanceFlagsNV" target="VkAccelerationStructureMotionInstanceFlagsNV" @link substring="flags" target="#flags"
+///     VkAccelerationStructureMotionInstanceDataNV data; // @link substring="VkAccelerationStructureMotionInstanceDataNV" target="VkAccelerationStructureMotionInstanceDataNV" @link substring="data" target="#data"
 /// } VkAccelerationStructureMotionInstanceNV;
 /// }
 ///
@@ -84,11 +84,11 @@ public record VkAccelerationStructureMotionInstanceNV(@NotNull MemorySegment seg
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public VkAccelerationStructureMotionInstanceDataNV data() {
+    public @NotNull VkAccelerationStructureMotionInstanceDataNV data() {
         return new VkAccelerationStructureMotionInstanceDataNV(segment.asSlice(OFFSET$data, LAYOUT$data));
     }
 
-    public void data(VkAccelerationStructureMotionInstanceDataNV value) {
+    public void data(@NotNull VkAccelerationStructureMotionInstanceDataNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
     }
 

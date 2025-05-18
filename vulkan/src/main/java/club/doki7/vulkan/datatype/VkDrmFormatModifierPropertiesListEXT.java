@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDrmFormatModifierPropertiesListEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t drmFormatModifierCount; // optional
-///     VkDrmFormatModifierPropertiesEXT* pDrmFormatModifierProperties; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t drmFormatModifierCount; // optional // @link substring="drmFormatModifierCount" target="#drmFormatModifierCount"
+///     VkDrmFormatModifierPropertiesEXT* pDrmFormatModifierProperties; // optional // @link substring="VkDrmFormatModifierPropertiesEXT" target="VkDrmFormatModifierPropertiesEXT" @link substring="pDrmFormatModifierProperties" target="#pDrmFormatModifierProperties"
 /// } VkDrmFormatModifierPropertiesListEXT;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkDrmFormatModifierPropertiesListEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$drmFormatModifierCount, OFFSET$drmFormatModifierCount, value);
     }
 
-    public @pointer(target=VkDrmFormatModifierPropertiesEXT.class) MemorySegment pDrmFormatModifierPropertiesRaw() {
-        return segment.get(LAYOUT$pDrmFormatModifierProperties, OFFSET$pDrmFormatModifierProperties);
-    }
-
-    public void pDrmFormatModifierPropertiesRaw(@pointer(target=VkDrmFormatModifierPropertiesEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pDrmFormatModifierProperties, OFFSET$pDrmFormatModifierProperties, value);
-    }
-
     public @Nullable VkDrmFormatModifierPropertiesEXT pDrmFormatModifierProperties() {
         MemorySegment s = pDrmFormatModifierPropertiesRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkDrmFormatModifierPropertiesListEXT(@NotNull MemorySegment segmen
             ret[i] = new VkDrmFormatModifierPropertiesEXT(s.asSlice(i * VkDrmFormatModifierPropertiesEXT.BYTES, VkDrmFormatModifierPropertiesEXT.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkDrmFormatModifierPropertiesEXT.class) MemorySegment pDrmFormatModifierPropertiesRaw() {
+        return segment.get(LAYOUT$pDrmFormatModifierProperties, OFFSET$pDrmFormatModifierProperties);
+    }
+
+    public void pDrmFormatModifierPropertiesRaw(@pointer(target=VkDrmFormatModifierPropertiesEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pDrmFormatModifierProperties, OFFSET$pDrmFormatModifierProperties, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

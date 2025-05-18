@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeH265WeightTable {
-///     StdVideoEncodeH265WeightTableFlags flags;
-///     uint8_t luma_log2_weight_denom;
-///     int8_t delta_chroma_log2_weight_denom;
-///     int8_t delta_luma_weight_l0;
-///     int8_t luma_offset_l0;
-///     int8_t delta_chroma_weight_l0;
-///     int8_t delta_chroma_offset_l0;
-///     int8_t delta_luma_weight_l1;
-///     int8_t luma_offset_l1;
-///     int8_t delta_chroma_weight_l1;
-///     int8_t delta_chroma_offset_l1;
+///     StdVideoEncodeH265WeightTableFlags flags; // @link substring="StdVideoEncodeH265WeightTableFlags" target="StdVideoEncodeH265WeightTableFlags" @link substring="flags" target="#flags"
+///     uint8_t luma_log2_weight_denom; // @link substring="luma_log2_weight_denom" target="#luma_log2_weight_denom"
+///     int8_t delta_chroma_log2_weight_denom; // @link substring="delta_chroma_log2_weight_denom" target="#delta_chroma_log2_weight_denom"
+///     int8_t delta_luma_weight_l0; // @link substring="delta_luma_weight_l0" target="#delta_luma_weight_l0"
+///     int8_t luma_offset_l0; // @link substring="luma_offset_l0" target="#luma_offset_l0"
+///     int8_t delta_chroma_weight_l0; // @link substring="delta_chroma_weight_l0" target="#delta_chroma_weight_l0"
+///     int8_t delta_chroma_offset_l0; // @link substring="delta_chroma_offset_l0" target="#delta_chroma_offset_l0"
+///     int8_t delta_luma_weight_l1; // @link substring="delta_luma_weight_l1" target="#delta_luma_weight_l1"
+///     int8_t luma_offset_l1; // @link substring="luma_offset_l1" target="#luma_offset_l1"
+///     int8_t delta_chroma_weight_l1; // @link substring="delta_chroma_weight_l1" target="#delta_chroma_weight_l1"
+///     int8_t delta_chroma_offset_l1; // @link substring="delta_chroma_offset_l1" target="#delta_chroma_offset_l1"
 /// } StdVideoEncodeH265WeightTable;
 /// }
 ///
@@ -74,11 +74,11 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public StdVideoEncodeH265WeightTableFlags flags() {
+    public @NotNull StdVideoEncodeH265WeightTableFlags flags() {
         return new StdVideoEncodeH265WeightTableFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoEncodeH265WeightTableFlags value) {
+    public void flags(@NotNull StdVideoEncodeH265WeightTableFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 

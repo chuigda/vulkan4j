@@ -20,24 +20,24 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureTrianglesDisplacementMicromapNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkFormat displacementBiasAndScaleFormat;
-///     VkFormat displacementVectorFormat;
-///     VkDeviceOrHostAddressConstKHR displacementBiasAndScaleBuffer;
-///     VkDeviceSize displacementBiasAndScaleStride;
-///     VkDeviceOrHostAddressConstKHR displacementVectorBuffer;
-///     VkDeviceSize displacementVectorStride;
-///     VkDeviceOrHostAddressConstKHR displacedMicromapPrimitiveFlags;
-///     VkDeviceSize displacedMicromapPrimitiveFlagsStride;
-///     VkIndexType indexType;
-///     VkDeviceOrHostAddressConstKHR indexBuffer;
-///     VkDeviceSize indexStride;
-///     uint32_t baseTriangle;
-///     uint32_t usageCountsCount; // optional
-///     VkMicromapUsageEXT const* pUsageCounts; // optional
-///     VkMicromapUsageEXT const* const* ppUsageCounts;
-///     VkMicromapEXT micromap; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkFormat displacementBiasAndScaleFormat; // @link substring="VkFormat" target="VkFormat" @link substring="displacementBiasAndScaleFormat" target="#displacementBiasAndScaleFormat"
+///     VkFormat displacementVectorFormat; // @link substring="VkFormat" target="VkFormat" @link substring="displacementVectorFormat" target="#displacementVectorFormat"
+///     VkDeviceOrHostAddressConstKHR displacementBiasAndScaleBuffer; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="displacementBiasAndScaleBuffer" target="#displacementBiasAndScaleBuffer"
+///     VkDeviceSize displacementBiasAndScaleStride; // @link substring="displacementBiasAndScaleStride" target="#displacementBiasAndScaleStride"
+///     VkDeviceOrHostAddressConstKHR displacementVectorBuffer; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="displacementVectorBuffer" target="#displacementVectorBuffer"
+///     VkDeviceSize displacementVectorStride; // @link substring="displacementVectorStride" target="#displacementVectorStride"
+///     VkDeviceOrHostAddressConstKHR displacedMicromapPrimitiveFlags; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="displacedMicromapPrimitiveFlags" target="#displacedMicromapPrimitiveFlags"
+///     VkDeviceSize displacedMicromapPrimitiveFlagsStride; // @link substring="displacedMicromapPrimitiveFlagsStride" target="#displacedMicromapPrimitiveFlagsStride"
+///     VkIndexType indexType; // @link substring="VkIndexType" target="VkIndexType" @link substring="indexType" target="#indexType"
+///     VkDeviceOrHostAddressConstKHR indexBuffer; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="indexBuffer" target="#indexBuffer"
+///     VkDeviceSize indexStride; // @link substring="indexStride" target="#indexStride"
+///     uint32_t baseTriangle; // @link substring="baseTriangle" target="#baseTriangle"
+///     uint32_t usageCountsCount; // optional // @link substring="usageCountsCount" target="#usageCountsCount"
+///     VkMicromapUsageEXT const* pUsageCounts; // optional // @link substring="VkMicromapUsageEXT" target="VkMicromapUsageEXT" @link substring="pUsageCounts" target="#pUsageCounts"
+///     VkMicromapUsageEXT const* const* ppUsageCounts; // @link substring="VkMicromapUsageEXT" target="VkMicromapUsageEXT" @link substring="ppUsageCounts" target="#ppUsageCounts"
+///     VkMicromapEXT micromap; // optional // @link substring="VkMicromapEXT" target="VkMicromapEXT" @link substring="micromap" target="#micromap"
 /// } VkAccelerationStructureTrianglesDisplacementMicromapNV;
 /// }
 ///
@@ -133,11 +133,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         segment.set(LAYOUT$displacementVectorFormat, OFFSET$displacementVectorFormat, value);
     }
 
-    public VkDeviceOrHostAddressConstKHR displacementBiasAndScaleBuffer() {
+    public @NotNull VkDeviceOrHostAddressConstKHR displacementBiasAndScaleBuffer() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$displacementBiasAndScaleBuffer, LAYOUT$displacementBiasAndScaleBuffer));
     }
 
-    public void displacementBiasAndScaleBuffer(VkDeviceOrHostAddressConstKHR value) {
+    public void displacementBiasAndScaleBuffer(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displacementBiasAndScaleBuffer, SIZE$displacementBiasAndScaleBuffer);
     }
 
@@ -149,11 +149,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         segment.set(LAYOUT$displacementBiasAndScaleStride, OFFSET$displacementBiasAndScaleStride, value);
     }
 
-    public VkDeviceOrHostAddressConstKHR displacementVectorBuffer() {
+    public @NotNull VkDeviceOrHostAddressConstKHR displacementVectorBuffer() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$displacementVectorBuffer, LAYOUT$displacementVectorBuffer));
     }
 
-    public void displacementVectorBuffer(VkDeviceOrHostAddressConstKHR value) {
+    public void displacementVectorBuffer(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displacementVectorBuffer, SIZE$displacementVectorBuffer);
     }
 
@@ -165,11 +165,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         segment.set(LAYOUT$displacementVectorStride, OFFSET$displacementVectorStride, value);
     }
 
-    public VkDeviceOrHostAddressConstKHR displacedMicromapPrimitiveFlags() {
+    public @NotNull VkDeviceOrHostAddressConstKHR displacedMicromapPrimitiveFlags() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$displacedMicromapPrimitiveFlags, LAYOUT$displacedMicromapPrimitiveFlags));
     }
 
-    public void displacedMicromapPrimitiveFlags(VkDeviceOrHostAddressConstKHR value) {
+    public void displacedMicromapPrimitiveFlags(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displacedMicromapPrimitiveFlags, SIZE$displacedMicromapPrimitiveFlags);
     }
 
@@ -189,11 +189,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
     }
 
-    public VkDeviceOrHostAddressConstKHR indexBuffer() {
+    public @NotNull VkDeviceOrHostAddressConstKHR indexBuffer() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$indexBuffer, LAYOUT$indexBuffer));
     }
 
-    public void indexBuffer(VkDeviceOrHostAddressConstKHR value) {
+    public void indexBuffer(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexBuffer, SIZE$indexBuffer);
     }
 
@@ -219,14 +219,6 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
 
     public void usageCountsCount(@unsigned int value) {
         segment.set(LAYOUT$usageCountsCount, OFFSET$usageCountsCount, value);
-    }
-
-    public @pointer(target=VkMicromapUsageEXT.class) MemorySegment pUsageCountsRaw() {
-        return segment.get(LAYOUT$pUsageCounts, OFFSET$pUsageCounts);
-    }
-
-    public void pUsageCountsRaw(@pointer(target=VkMicromapUsageEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pUsageCounts, OFFSET$pUsageCounts, value);
     }
 
     public @Nullable VkMicromapUsageEXT pUsageCounts() {
@@ -256,12 +248,12 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         return ret;
     }
 
-    public @pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
-        return segment.get(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts);
+    public @pointer(target=VkMicromapUsageEXT.class) MemorySegment pUsageCountsRaw() {
+        return segment.get(LAYOUT$pUsageCounts, OFFSET$pUsageCounts);
     }
 
-    public void ppUsageCountsRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts, value);
+    public void pUsageCountsRaw(@pointer(target=VkMicromapUsageEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pUsageCounts, OFFSET$pUsageCounts, value);
     }
 
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
@@ -278,6 +270,14 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
     public void ppUsageCounts(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         ppUsageCountsRaw(s);
+    }
+
+    public @pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
+        return segment.get(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts);
+    }
+
+    public void ppUsageCountsRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts, value);
     }
 
     public @Nullable VkMicromapEXT micromap() {

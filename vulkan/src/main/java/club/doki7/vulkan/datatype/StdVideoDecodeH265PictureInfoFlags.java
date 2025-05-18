@@ -21,10 +21,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoDecodeH265PictureInfoFlags {
-///     uint32_t IrapPicFlag : 1;
-///     uint32_t IdrPicFlag : 1;
-///     uint32_t IsReference : 1;
-///     uint32_t short_term_ref_pic_set_sps_flag : 1;
+///     uint32_t IrapPicFlag : 1; // @link substring="IrapPicFlag" target="#IrapPicFlag"
+///     uint32_t IdrPicFlag : 1; // @link substring="IdrPicFlag" target="#IdrPicFlag"
+///     uint32_t IsReference : 1; // @link substring="IsReference" target="#IsReference"
+///     uint32_t short_term_ref_pic_set_sps_flag : 1; // @link substring="short_term_ref_pic_set_sps_flag" target="#short_term_ref_pic_set_sps_flag"
 /// } StdVideoDecodeH265PictureInfoFlags;
 /// }
 ///

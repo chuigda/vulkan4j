@@ -20,18 +20,18 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDebugUtilsMessengerCallbackDataEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDebugUtilsMessengerCallbackDataFlagsEXT flags; // optional
-///     char const* pMessageIdName; // optional
-///     int32_t messageIdNumber;
-///     char const* pMessage; // optional
-///     uint32_t queueLabelCount; // optional
-///     VkDebugUtilsLabelEXT const* pQueueLabels;
-///     uint32_t cmdBufLabelCount; // optional
-///     VkDebugUtilsLabelEXT const* pCmdBufLabels;
-///     uint32_t objectCount; // optional
-///     VkDebugUtilsObjectNameInfoEXT const* pObjects;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDebugUtilsMessengerCallbackDataFlagsEXT flags; // optional // @link substring="VkDebugUtilsMessengerCallbackDataFlagsEXT" target="VkDebugUtilsMessengerCallbackDataFlagsEXT" @link substring="flags" target="#flags"
+///     char const* pMessageIdName; // optional // @link substring="pMessageIdName" target="#pMessageIdName"
+///     int32_t messageIdNumber; // @link substring="messageIdNumber" target="#messageIdNumber"
+///     char const* pMessage; // optional // @link substring="pMessage" target="#pMessage"
+///     uint32_t queueLabelCount; // optional // @link substring="queueLabelCount" target="#queueLabelCount"
+///     VkDebugUtilsLabelEXT const* pQueueLabels; // @link substring="VkDebugUtilsLabelEXT" target="VkDebugUtilsLabelEXT" @link substring="pQueueLabels" target="#pQueueLabels"
+///     uint32_t cmdBufLabelCount; // optional // @link substring="cmdBufLabelCount" target="#cmdBufLabelCount"
+///     VkDebugUtilsLabelEXT const* pCmdBufLabels; // @link substring="VkDebugUtilsLabelEXT" target="VkDebugUtilsLabelEXT" @link substring="pCmdBufLabels" target="#pCmdBufLabels"
+///     uint32_t objectCount; // optional // @link substring="objectCount" target="#objectCount"
+///     VkDebugUtilsObjectNameInfoEXT const* pObjects; // @link substring="VkDebugUtilsObjectNameInfoEXT" target="VkDebugUtilsObjectNameInfoEXT" @link substring="pObjects" target="#pObjects"
 /// } VkDebugUtilsMessengerCallbackDataEXT;
 /// }
 ///
@@ -119,14 +119,6 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(comment="byte*") MemorySegment pMessageIdNameRaw() {
-        return segment.get(LAYOUT$pMessageIdName, OFFSET$pMessageIdName);
-    }
-
-    public void pMessageIdNameRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pMessageIdName, OFFSET$pMessageIdName, value);
-    }
-
     /// Note: the returned {@link BytePtr} does not have correct
     /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
@@ -144,20 +136,20 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         pMessageIdNameRaw(s);
     }
 
+    public @pointer(comment="byte*") MemorySegment pMessageIdNameRaw() {
+        return segment.get(LAYOUT$pMessageIdName, OFFSET$pMessageIdName);
+    }
+
+    public void pMessageIdNameRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pMessageIdName, OFFSET$pMessageIdName, value);
+    }
+
     public int messageIdNumber() {
         return segment.get(LAYOUT$messageIdNumber, OFFSET$messageIdNumber);
     }
 
     public void messageIdNumber(int value) {
         segment.set(LAYOUT$messageIdNumber, OFFSET$messageIdNumber, value);
-    }
-
-    public @pointer(comment="byte*") MemorySegment pMessageRaw() {
-        return segment.get(LAYOUT$pMessage, OFFSET$pMessage);
-    }
-
-    public void pMessageRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pMessage, OFFSET$pMessage, value);
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -177,20 +169,20 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         pMessageRaw(s);
     }
 
+    public @pointer(comment="byte*") MemorySegment pMessageRaw() {
+        return segment.get(LAYOUT$pMessage, OFFSET$pMessage);
+    }
+
+    public void pMessageRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pMessage, OFFSET$pMessage, value);
+    }
+
     public @unsigned int queueLabelCount() {
         return segment.get(LAYOUT$queueLabelCount, OFFSET$queueLabelCount);
     }
 
     public void queueLabelCount(@unsigned int value) {
         segment.set(LAYOUT$queueLabelCount, OFFSET$queueLabelCount, value);
-    }
-
-    public @pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment pQueueLabelsRaw() {
-        return segment.get(LAYOUT$pQueueLabels, OFFSET$pQueueLabels);
-    }
-
-    public void pQueueLabelsRaw(@pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pQueueLabels, OFFSET$pQueueLabels, value);
     }
 
     public @Nullable VkDebugUtilsLabelEXT pQueueLabels() {
@@ -220,20 +212,20 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return ret;
     }
 
+    public @pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment pQueueLabelsRaw() {
+        return segment.get(LAYOUT$pQueueLabels, OFFSET$pQueueLabels);
+    }
+
+    public void pQueueLabelsRaw(@pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pQueueLabels, OFFSET$pQueueLabels, value);
+    }
+
     public @unsigned int cmdBufLabelCount() {
         return segment.get(LAYOUT$cmdBufLabelCount, OFFSET$cmdBufLabelCount);
     }
 
     public void cmdBufLabelCount(@unsigned int value) {
         segment.set(LAYOUT$cmdBufLabelCount, OFFSET$cmdBufLabelCount, value);
-    }
-
-    public @pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment pCmdBufLabelsRaw() {
-        return segment.get(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels);
-    }
-
-    public void pCmdBufLabelsRaw(@pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels, value);
     }
 
     public @Nullable VkDebugUtilsLabelEXT pCmdBufLabels() {
@@ -263,20 +255,20 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return ret;
     }
 
+    public @pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment pCmdBufLabelsRaw() {
+        return segment.get(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels);
+    }
+
+    public void pCmdBufLabelsRaw(@pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels, value);
+    }
+
     public @unsigned int objectCount() {
         return segment.get(LAYOUT$objectCount, OFFSET$objectCount);
     }
 
     public void objectCount(@unsigned int value) {
         segment.set(LAYOUT$objectCount, OFFSET$objectCount, value);
-    }
-
-    public @pointer(target=VkDebugUtilsObjectNameInfoEXT.class) MemorySegment pObjectsRaw() {
-        return segment.get(LAYOUT$pObjects, OFFSET$pObjects);
-    }
-
-    public void pObjectsRaw(@pointer(target=VkDebugUtilsObjectNameInfoEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
     }
 
     public @Nullable VkDebugUtilsObjectNameInfoEXT pObjects() {
@@ -304,6 +296,14 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
             ret[i] = new VkDebugUtilsObjectNameInfoEXT(s.asSlice(i * VkDebugUtilsObjectNameInfoEXT.BYTES, VkDebugUtilsObjectNameInfoEXT.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkDebugUtilsObjectNameInfoEXT.class) MemorySegment pObjectsRaw() {
+        return segment.get(LAYOUT$pObjects, OFFSET$pObjects);
+    }
+
+    public void pObjectsRaw(@pointer(target=VkDebugUtilsObjectNameInfoEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

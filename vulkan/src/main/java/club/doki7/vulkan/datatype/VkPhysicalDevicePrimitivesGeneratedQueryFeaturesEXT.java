@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 primitivesGeneratedQuery;
-///     VkBool32 primitivesGeneratedQueryWithRasterizerDiscard;
-///     VkBool32 primitivesGeneratedQueryWithNonZeroStreams;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 primitivesGeneratedQuery; // @link substring="primitivesGeneratedQuery" target="#primitivesGeneratedQuery"
+///     VkBool32 primitivesGeneratedQueryWithRasterizerDiscard; // @link substring="primitivesGeneratedQueryWithRasterizerDiscard" target="#primitivesGeneratedQueryWithRasterizerDiscard"
+///     VkBool32 primitivesGeneratedQueryWithNonZeroStreams; // @link substring="primitivesGeneratedQueryWithNonZeroStreams" target="#primitivesGeneratedQueryWithNonZeroStreams"
 /// } VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT;
 /// }
 ///

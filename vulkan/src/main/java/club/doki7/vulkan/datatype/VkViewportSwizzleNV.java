@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkViewportSwizzleNV {
-///     VkViewportCoordinateSwizzleNV x;
-///     VkViewportCoordinateSwizzleNV y;
-///     VkViewportCoordinateSwizzleNV z;
-///     VkViewportCoordinateSwizzleNV w;
+///     VkViewportCoordinateSwizzleNV x; // @link substring="VkViewportCoordinateSwizzleNV" target="VkViewportCoordinateSwizzleNV" @link substring="x" target="#x"
+///     VkViewportCoordinateSwizzleNV y; // @link substring="VkViewportCoordinateSwizzleNV" target="VkViewportCoordinateSwizzleNV" @link substring="y" target="#y"
+///     VkViewportCoordinateSwizzleNV z; // @link substring="VkViewportCoordinateSwizzleNV" target="VkViewportCoordinateSwizzleNV" @link substring="z" target="#z"
+///     VkViewportCoordinateSwizzleNV w; // @link substring="VkViewportCoordinateSwizzleNV" target="VkViewportCoordinateSwizzleNV" @link substring="w" target="#w"
 /// } VkViewportSwizzleNV;
 /// }
 ///

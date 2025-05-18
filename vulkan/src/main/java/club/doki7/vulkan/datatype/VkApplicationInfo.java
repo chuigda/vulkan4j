@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkApplicationInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     char const* pApplicationName; // optional
-///     uint32_t applicationVersion;
-///     char const* pEngineName; // optional
-///     uint32_t engineVersion;
-///     uint32_t apiVersion;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     char const* pApplicationName; // optional // @link substring="pApplicationName" target="#pApplicationName"
+///     uint32_t applicationVersion; // @link substring="applicationVersion" target="#applicationVersion"
+///     char const* pEngineName; // optional // @link substring="pEngineName" target="#pEngineName"
+///     uint32_t engineVersion; // @link substring="engineVersion" target="#engineVersion"
+///     uint32_t apiVersion; // @link substring="apiVersion" target="#apiVersion"
 /// } VkApplicationInfo;
 /// }
 ///
@@ -106,14 +106,6 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IPoin
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="byte*") MemorySegment pApplicationNameRaw() {
-        return segment.get(LAYOUT$pApplicationName, OFFSET$pApplicationName);
-    }
-
-    public void pApplicationNameRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pApplicationName, OFFSET$pApplicationName, value);
-    }
-
     /// Note: the returned {@link BytePtr} does not have correct
     /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
@@ -131,20 +123,20 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IPoin
         pApplicationNameRaw(s);
     }
 
+    public @pointer(comment="byte*") MemorySegment pApplicationNameRaw() {
+        return segment.get(LAYOUT$pApplicationName, OFFSET$pApplicationName);
+    }
+
+    public void pApplicationNameRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pApplicationName, OFFSET$pApplicationName, value);
+    }
+
     public @unsigned int applicationVersion() {
         return segment.get(LAYOUT$applicationVersion, OFFSET$applicationVersion);
     }
 
     public void applicationVersion(@unsigned int value) {
         segment.set(LAYOUT$applicationVersion, OFFSET$applicationVersion, value);
-    }
-
-    public @pointer(comment="byte*") MemorySegment pEngineNameRaw() {
-        return segment.get(LAYOUT$pEngineName, OFFSET$pEngineName);
-    }
-
-    public void pEngineNameRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pEngineName, OFFSET$pEngineName, value);
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -162,6 +154,14 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IPoin
     public void pEngineName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pEngineNameRaw(s);
+    }
+
+    public @pointer(comment="byte*") MemorySegment pEngineNameRaw() {
+        return segment.get(LAYOUT$pEngineName, OFFSET$pEngineName);
+    }
+
+    public void pEngineNameRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pEngineName, OFFSET$pEngineName, value);
     }
 
     public @unsigned int engineVersion() {

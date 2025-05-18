@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceHostImageCopyProperties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t copySrcLayoutCount; // optional
-///     VkImageLayout* pCopySrcLayouts; // optional
-///     uint32_t copyDstLayoutCount; // optional
-///     VkImageLayout* pCopyDstLayouts; // optional
-///     uint8_t optimalTilingLayoutUUID; // optional
-///     VkBool32 identicalMemoryTypeRequirements;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t copySrcLayoutCount; // optional // @link substring="copySrcLayoutCount" target="#copySrcLayoutCount"
+///     VkImageLayout* pCopySrcLayouts; // optional // @link substring="VkImageLayout" target="VkImageLayout" @link substring="pCopySrcLayouts" target="#pCopySrcLayouts"
+///     uint32_t copyDstLayoutCount; // optional // @link substring="copyDstLayoutCount" target="#copyDstLayoutCount"
+///     VkImageLayout* pCopyDstLayouts; // optional // @link substring="VkImageLayout" target="VkImageLayout" @link substring="pCopyDstLayouts" target="#pCopyDstLayouts"
+///     uint8_t optimalTilingLayoutUUID; // optional // @link substring="optimalTilingLayoutUUID" target="#optimalTilingLayoutUUID"
+///     VkBool32 identicalMemoryTypeRequirements; // @link substring="identicalMemoryTypeRequirements" target="#identicalMemoryTypeRequirements"
 /// } VkPhysicalDeviceHostImageCopyProperties;
 /// }
 ///
@@ -115,13 +115,6 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         segment.set(LAYOUT$copySrcLayoutCount, OFFSET$copySrcLayoutCount, value);
     }
 
-    public @pointer(target=VkImageLayout.class) MemorySegment pCopySrcLayoutsRaw() {
-        return segment.get(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts);
-    }
-
-    public void pCopySrcLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
-        segment.set(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -140,6 +133,14 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         pCopySrcLayoutsRaw(s);
     }
 
+    public @pointer(target=VkImageLayout.class) MemorySegment pCopySrcLayoutsRaw() {
+        return segment.get(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts);
+    }
+
+    public void pCopySrcLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
+        segment.set(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts, value);
+    }
+
     public @unsigned int copyDstLayoutCount() {
         return segment.get(LAYOUT$copyDstLayoutCount, OFFSET$copyDstLayoutCount);
     }
@@ -148,13 +149,6 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         segment.set(LAYOUT$copyDstLayoutCount, OFFSET$copyDstLayoutCount, value);
     }
 
-    public @pointer(target=VkImageLayout.class) MemorySegment pCopyDstLayoutsRaw() {
-        return segment.get(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts);
-    }
-
-    public void pCopyDstLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
-        segment.set(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -171,6 +165,14 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
     public void pCopyDstLayouts(@Nullable @enumtype(VkImageLayout.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCopyDstLayoutsRaw(s);
+    }
+
+    public @pointer(target=VkImageLayout.class) MemorySegment pCopyDstLayoutsRaw() {
+        return segment.get(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts);
+    }
+
+    public void pCopyDstLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
+        segment.set(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts, value);
     }
 
     public @unsigned byte optimalTilingLayoutUUID() {

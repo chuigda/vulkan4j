@@ -20,7 +20,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassCreationFeedbackInfoEXT {
-///     uint32_t postMergeSubpassCount;
+///     uint32_t postMergeSubpassCount; // @link substring="postMergeSubpassCount" target="#postMergeSubpassCount"
 /// } VkRenderPassCreationFeedbackInfoEXT;
 /// }
 ///

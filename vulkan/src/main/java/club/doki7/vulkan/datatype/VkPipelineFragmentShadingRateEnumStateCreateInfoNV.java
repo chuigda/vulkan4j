@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineFragmentShadingRateEnumStateCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkFragmentShadingRateTypeNV shadingRateType;
-///     VkFragmentShadingRateNV shadingRate;
-///     VkFragmentShadingRateCombinerOpKHR combinerOps;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkFragmentShadingRateTypeNV shadingRateType; // @link substring="VkFragmentShadingRateTypeNV" target="VkFragmentShadingRateTypeNV" @link substring="shadingRateType" target="#shadingRateType"
+///     VkFragmentShadingRateNV shadingRate; // @link substring="VkFragmentShadingRateNV" target="VkFragmentShadingRateNV" @link substring="shadingRate" target="#shadingRate"
+///     VkFragmentShadingRateCombinerOpKHR combinerOps; // @link substring="VkFragmentShadingRateCombinerOpKHR" target="VkFragmentShadingRateCombinerOpKHR" @link substring="combinerOps" target="#combinerOps"
 /// } VkPipelineFragmentShadingRateEnumStateCreateInfoNV;
 /// }
 ///

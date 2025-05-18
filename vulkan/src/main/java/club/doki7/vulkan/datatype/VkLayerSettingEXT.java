@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkLayerSettingEXT {
-///     char const* pLayerName;
-///     char const* pSettingName;
-///     VkLayerSettingTypeEXT type;
-///     uint32_t valueCount; // optional
-///     void const* pValues;
+///     char const* pLayerName; // @link substring="pLayerName" target="#pLayerName"
+///     char const* pSettingName; // @link substring="pSettingName" target="#pSettingName"
+///     VkLayerSettingTypeEXT type; // @link substring="VkLayerSettingTypeEXT" target="VkLayerSettingTypeEXT" @link substring="type" target="#type"
+///     uint32_t valueCount; // optional // @link substring="valueCount" target="#valueCount"
+///     void const* pValues; // @link substring="pValues" target="#pValues"
 /// } VkLayerSettingEXT;
 /// }
 ///
@@ -70,14 +70,6 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IPoin
         return ret;
     }
 
-    public @pointer(comment="byte*") MemorySegment pLayerNameRaw() {
-        return segment.get(LAYOUT$pLayerName, OFFSET$pLayerName);
-    }
-
-    public void pLayerNameRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pLayerName, OFFSET$pLayerName, value);
-    }
-
     /// Note: the returned {@link BytePtr} does not have correct
     /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
@@ -95,12 +87,12 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IPoin
         pLayerNameRaw(s);
     }
 
-    public @pointer(comment="byte*") MemorySegment pSettingNameRaw() {
-        return segment.get(LAYOUT$pSettingName, OFFSET$pSettingName);
+    public @pointer(comment="byte*") MemorySegment pLayerNameRaw() {
+        return segment.get(LAYOUT$pLayerName, OFFSET$pLayerName);
     }
 
-    public void pSettingNameRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pSettingName, OFFSET$pSettingName, value);
+    public void pLayerNameRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pLayerName, OFFSET$pLayerName, value);
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -118,6 +110,14 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IPoin
     public void pSettingName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSettingNameRaw(s);
+    }
+
+    public @pointer(comment="byte*") MemorySegment pSettingNameRaw() {
+        return segment.get(LAYOUT$pSettingName, OFFSET$pSettingName);
+    }
+
+    public void pSettingNameRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pSettingName, OFFSET$pSettingName, value);
     }
 
     public @enumtype(VkLayerSettingTypeEXT.class) int type() {

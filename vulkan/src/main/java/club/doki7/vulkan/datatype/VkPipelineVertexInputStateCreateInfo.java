@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineVertexInputStateCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineVertexInputStateCreateFlags flags; // optional
-///     uint32_t vertexBindingDescriptionCount; // optional
-///     VkVertexInputBindingDescription const* pVertexBindingDescriptions;
-///     uint32_t vertexAttributeDescriptionCount; // optional
-///     VkVertexInputAttributeDescription const* pVertexAttributeDescriptions;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineVertexInputStateCreateFlags flags; // optional // @link substring="VkPipelineVertexInputStateCreateFlags" target="VkPipelineVertexInputStateCreateFlags" @link substring="flags" target="#flags"
+///     uint32_t vertexBindingDescriptionCount; // optional // @link substring="vertexBindingDescriptionCount" target="#vertexBindingDescriptionCount"
+///     VkVertexInputBindingDescription const* pVertexBindingDescriptions; // @link substring="VkVertexInputBindingDescription" target="VkVertexInputBindingDescription" @link substring="pVertexBindingDescriptions" target="#pVertexBindingDescriptions"
+///     uint32_t vertexAttributeDescriptionCount; // optional // @link substring="vertexAttributeDescriptionCount" target="#vertexAttributeDescriptionCount"
+///     VkVertexInputAttributeDescription const* pVertexAttributeDescriptions; // @link substring="VkVertexInputAttributeDescription" target="VkVertexInputAttributeDescription" @link substring="pVertexAttributeDescriptions" target="#pVertexAttributeDescriptions"
 /// } VkPipelineVertexInputStateCreateInfo;
 /// }
 ///
@@ -122,14 +122,6 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$vertexBindingDescriptionCount, OFFSET$vertexBindingDescriptionCount, value);
     }
 
-    public @pointer(target=VkVertexInputBindingDescription.class) MemorySegment pVertexBindingDescriptionsRaw() {
-        return segment.get(LAYOUT$pVertexBindingDescriptions, OFFSET$pVertexBindingDescriptions);
-    }
-
-    public void pVertexBindingDescriptionsRaw(@pointer(target=VkVertexInputBindingDescription.class) MemorySegment value) {
-        segment.set(LAYOUT$pVertexBindingDescriptions, OFFSET$pVertexBindingDescriptions, value);
-    }
-
     public @Nullable VkVertexInputBindingDescription pVertexBindingDescriptions() {
         MemorySegment s = pVertexBindingDescriptionsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -157,20 +149,20 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         return ret;
     }
 
+    public @pointer(target=VkVertexInputBindingDescription.class) MemorySegment pVertexBindingDescriptionsRaw() {
+        return segment.get(LAYOUT$pVertexBindingDescriptions, OFFSET$pVertexBindingDescriptions);
+    }
+
+    public void pVertexBindingDescriptionsRaw(@pointer(target=VkVertexInputBindingDescription.class) MemorySegment value) {
+        segment.set(LAYOUT$pVertexBindingDescriptions, OFFSET$pVertexBindingDescriptions, value);
+    }
+
     public @unsigned int vertexAttributeDescriptionCount() {
         return segment.get(LAYOUT$vertexAttributeDescriptionCount, OFFSET$vertexAttributeDescriptionCount);
     }
 
     public void vertexAttributeDescriptionCount(@unsigned int value) {
         segment.set(LAYOUT$vertexAttributeDescriptionCount, OFFSET$vertexAttributeDescriptionCount, value);
-    }
-
-    public @pointer(target=VkVertexInputAttributeDescription.class) MemorySegment pVertexAttributeDescriptionsRaw() {
-        return segment.get(LAYOUT$pVertexAttributeDescriptions, OFFSET$pVertexAttributeDescriptions);
-    }
-
-    public void pVertexAttributeDescriptionsRaw(@pointer(target=VkVertexInputAttributeDescription.class) MemorySegment value) {
-        segment.set(LAYOUT$pVertexAttributeDescriptions, OFFSET$pVertexAttributeDescriptions, value);
     }
 
     public @Nullable VkVertexInputAttributeDescription pVertexAttributeDescriptions() {
@@ -198,6 +190,14 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
             ret[i] = new VkVertexInputAttributeDescription(s.asSlice(i * VkVertexInputAttributeDescription.BYTES, VkVertexInputAttributeDescription.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkVertexInputAttributeDescription.class) MemorySegment pVertexAttributeDescriptionsRaw() {
+        return segment.get(LAYOUT$pVertexAttributeDescriptions, OFFSET$pVertexAttributeDescriptions);
+    }
+
+    public void pVertexAttributeDescriptionsRaw(@pointer(target=VkVertexInputAttributeDescription.class) MemorySegment value) {
+        segment.set(LAYOUT$pVertexAttributeDescriptions, OFFSET$pVertexAttributeDescriptions, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

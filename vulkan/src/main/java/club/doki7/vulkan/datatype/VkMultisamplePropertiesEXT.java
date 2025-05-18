@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMultisamplePropertiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkExtent2D maxSampleLocationGridSize;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkExtent2D maxSampleLocationGridSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxSampleLocationGridSize" target="#maxSampleLocationGridSize"
 /// } VkMultisamplePropertiesEXT;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkMultisamplePropertiesEXT(@NotNull MemorySegment segment) impleme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkExtent2D maxSampleLocationGridSize() {
+    public @NotNull VkExtent2D maxSampleLocationGridSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxSampleLocationGridSize, LAYOUT$maxSampleLocationGridSize));
     }
 
-    public void maxSampleLocationGridSize(VkExtent2D value) {
+    public void maxSampleLocationGridSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxSampleLocationGridSize, SIZE$maxSampleLocationGridSize);
     }
 

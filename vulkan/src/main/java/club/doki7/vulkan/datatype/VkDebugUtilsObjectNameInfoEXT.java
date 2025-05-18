@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDebugUtilsObjectNameInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkObjectType objectType;
-///     uint64_t objectHandle;
-///     char const* pObjectName; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkObjectType objectType; // @link substring="VkObjectType" target="VkObjectType" @link substring="objectType" target="#objectType"
+///     uint64_t objectHandle; // @link substring="objectHandle" target="#objectHandle"
+///     char const* pObjectName; // optional // @link substring="pObjectName" target="#pObjectName"
 /// } VkDebugUtilsObjectNameInfoEXT;
 /// }
 ///
@@ -120,14 +120,6 @@ public record VkDebugUtilsObjectNameInfoEXT(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$objectHandle, OFFSET$objectHandle, value);
     }
 
-    public @pointer(comment="byte*") MemorySegment pObjectNameRaw() {
-        return segment.get(LAYOUT$pObjectName, OFFSET$pObjectName);
-    }
-
-    public void pObjectNameRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pObjectName, OFFSET$pObjectName, value);
-    }
-
     /// Note: the returned {@link BytePtr} does not have correct
     /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
@@ -143,6 +135,14 @@ public record VkDebugUtilsObjectNameInfoEXT(@NotNull MemorySegment segment) impl
     public void pObjectName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pObjectNameRaw(s);
+    }
+
+    public @pointer(comment="byte*") MemorySegment pObjectNameRaw() {
+        return segment.get(LAYOUT$pObjectName, OFFSET$pObjectName);
+    }
+
+    public void pObjectNameRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pObjectName, OFFSET$pObjectName, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

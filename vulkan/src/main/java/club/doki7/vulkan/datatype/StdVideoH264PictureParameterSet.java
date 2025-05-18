@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH264PictureParameterSet {
-///     StdVideoH264PpsFlags flags;
-///     uint8_t seq_parameter_set_id;
-///     uint8_t pic_parameter_set_id;
-///     uint8_t num_ref_idx_l0_default_active_minus1;
-///     uint8_t num_ref_idx_l1_default_active_minus1;
-///     StdVideoH264WeightedBipredIdc weighted_bipred_idc;
-///     int8_t pic_init_qp_minus26;
-///     int8_t pic_init_qs_minus26;
-///     int8_t chroma_qp_index_offset;
-///     int8_t second_chroma_qp_index_offset;
-///     StdVideoH264ScalingLists const* pScalingLists;
+///     StdVideoH264PpsFlags flags; // @link substring="StdVideoH264PpsFlags" target="StdVideoH264PpsFlags" @link substring="flags" target="#flags"
+///     uint8_t seq_parameter_set_id; // @link substring="seq_parameter_set_id" target="#seq_parameter_set_id"
+///     uint8_t pic_parameter_set_id; // @link substring="pic_parameter_set_id" target="#pic_parameter_set_id"
+///     uint8_t num_ref_idx_l0_default_active_minus1; // @link substring="num_ref_idx_l0_default_active_minus1" target="#num_ref_idx_l0_default_active_minus1"
+///     uint8_t num_ref_idx_l1_default_active_minus1; // @link substring="num_ref_idx_l1_default_active_minus1" target="#num_ref_idx_l1_default_active_minus1"
+///     StdVideoH264WeightedBipredIdc weighted_bipred_idc; // @link substring="StdVideoH264WeightedBipredIdc" target="StdVideoH264WeightedBipredIdc" @link substring="weighted_bipred_idc" target="#weighted_bipred_idc"
+///     int8_t pic_init_qp_minus26; // @link substring="pic_init_qp_minus26" target="#pic_init_qp_minus26"
+///     int8_t pic_init_qs_minus26; // @link substring="pic_init_qs_minus26" target="#pic_init_qs_minus26"
+///     int8_t chroma_qp_index_offset; // @link substring="chroma_qp_index_offset" target="#chroma_qp_index_offset"
+///     int8_t second_chroma_qp_index_offset; // @link substring="second_chroma_qp_index_offset" target="#second_chroma_qp_index_offset"
+///     StdVideoH264ScalingLists const* pScalingLists; // @link substring="StdVideoH264ScalingLists" target="StdVideoH264ScalingLists" @link substring="pScalingLists" target="#pScalingLists"
 /// } StdVideoH264PictureParameterSet;
 /// }
 ///
@@ -74,11 +74,11 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public StdVideoH264PpsFlags flags() {
+    public @NotNull StdVideoH264PpsFlags flags() {
         return new StdVideoH264PpsFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoH264PpsFlags value) {
+    public void flags(@NotNull StdVideoH264PpsFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
@@ -154,14 +154,6 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$second_chroma_qp_index_offset, OFFSET$second_chroma_qp_index_offset, value);
     }
 
-    public @pointer(target=StdVideoH264ScalingLists.class) MemorySegment pScalingListsRaw() {
-        return segment.get(LAYOUT$pScalingLists, OFFSET$pScalingLists);
-    }
-
-    public void pScalingListsRaw(@pointer(target=StdVideoH264ScalingLists.class) MemorySegment value) {
-        segment.set(LAYOUT$pScalingLists, OFFSET$pScalingLists, value);
-    }
-
     public @Nullable StdVideoH264ScalingLists pScalingLists() {
         MemorySegment s = pScalingListsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -187,6 +179,14 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
             ret[i] = new StdVideoH264ScalingLists(s.asSlice(i * StdVideoH264ScalingLists.BYTES, StdVideoH264ScalingLists.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoH264ScalingLists.class) MemorySegment pScalingListsRaw() {
+        return segment.get(LAYOUT$pScalingLists, OFFSET$pScalingLists);
+    }
+
+    public void pScalingListsRaw(@pointer(target=StdVideoH264ScalingLists.class) MemorySegment value) {
+        segment.set(LAYOUT$pScalingLists, OFFSET$pScalingLists, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

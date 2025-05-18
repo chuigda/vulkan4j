@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImportSemaphoreWin32HandleInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkSemaphore semaphore;
-///     VkSemaphoreImportFlags flags; // optional
-///     VkExternalSemaphoreHandleTypeFlags handleType;
-///     HANDLE handle; // optional
-///     LPCWSTR name; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSemaphore semaphore; // @link substring="VkSemaphore" target="VkSemaphore" @link substring="semaphore" target="#semaphore"
+///     VkSemaphoreImportFlags flags; // optional // @link substring="VkSemaphoreImportFlags" target="VkSemaphoreImportFlags" @link substring="flags" target="#flags"
+///     VkExternalSemaphoreHandleTypeFlags handleType; // @link substring="VkExternalSemaphoreHandleTypeFlags" target="VkExternalSemaphoreHandleTypeFlags" @link substring="handleType" target="#handleType"
+///     HANDLE handle; // optional // @link substring="handle" target="#handle"
+///     LPCWSTR name; // optional // @link substring="name" target="#name"
 /// } VkImportSemaphoreWin32HandleInfoKHR;
 /// }
 ///
@@ -146,14 +146,6 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         handle(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="short*") MemorySegment nameRaw() {
-        return segment.get(LAYOUT$name, OFFSET$name);
-    }
-
-    public void nameRaw(@pointer(comment="short*") MemorySegment value) {
-        segment.set(LAYOUT$name, OFFSET$name, value);
-    }
-
     /// Note: the returned {@link ShortPtr} does not have correct
     /// {@link ShortPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link ShortPtr#reinterpret} to set the size before actually reading from or
@@ -169,6 +161,14 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
     public void name(@Nullable @unsigned ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         nameRaw(s);
+    }
+
+    public @pointer(comment="short*") MemorySegment nameRaw() {
+        return segment.get(LAYOUT$name, OFFSET$name);
+    }
+
+    public void nameRaw(@pointer(comment="short*") MemorySegment value) {
+        segment.set(LAYOUT$name, OFFSET$name, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

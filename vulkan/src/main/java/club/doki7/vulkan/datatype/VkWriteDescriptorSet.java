@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkWriteDescriptorSet {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDescriptorSet dstSet;
-///     uint32_t dstBinding;
-///     uint32_t dstArrayElement;
-///     uint32_t descriptorCount;
-///     VkDescriptorType descriptorType;
-///     VkDescriptorImageInfo const* pImageInfo;
-///     VkDescriptorBufferInfo const* pBufferInfo;
-///     VkBufferView const* pTexelBufferView;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDescriptorSet dstSet; // @link substring="VkDescriptorSet" target="VkDescriptorSet" @link substring="dstSet" target="#dstSet"
+///     uint32_t dstBinding; // @link substring="dstBinding" target="#dstBinding"
+///     uint32_t dstArrayElement; // @link substring="dstArrayElement" target="#dstArrayElement"
+///     uint32_t descriptorCount; // @link substring="descriptorCount" target="#descriptorCount"
+///     VkDescriptorType descriptorType; // @link substring="VkDescriptorType" target="VkDescriptorType" @link substring="descriptorType" target="#descriptorType"
+///     VkDescriptorImageInfo const* pImageInfo; // @link substring="VkDescriptorImageInfo" target="VkDescriptorImageInfo" @link substring="pImageInfo" target="#pImageInfo"
+///     VkDescriptorBufferInfo const* pBufferInfo; // @link substring="VkDescriptorBufferInfo" target="VkDescriptorBufferInfo" @link substring="pBufferInfo" target="#pBufferInfo"
+///     VkBufferView const* pTexelBufferView; // @link substring="VkBufferView" target="VkBufferView" @link substring="pTexelBufferView" target="#pTexelBufferView"
 /// } VkWriteDescriptorSet;
 /// }
 ///
@@ -153,14 +153,6 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$descriptorType, OFFSET$descriptorType, value);
     }
 
-    public @pointer(target=VkDescriptorImageInfo.class) MemorySegment pImageInfoRaw() {
-        return segment.get(LAYOUT$pImageInfo, OFFSET$pImageInfo);
-    }
-
-    public void pImageInfoRaw(@pointer(target=VkDescriptorImageInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pImageInfo, OFFSET$pImageInfo, value);
-    }
-
     public @Nullable VkDescriptorImageInfo pImageInfo() {
         MemorySegment s = pImageInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -188,12 +180,12 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
-    public @pointer(target=VkDescriptorBufferInfo.class) MemorySegment pBufferInfoRaw() {
-        return segment.get(LAYOUT$pBufferInfo, OFFSET$pBufferInfo);
+    public @pointer(target=VkDescriptorImageInfo.class) MemorySegment pImageInfoRaw() {
+        return segment.get(LAYOUT$pImageInfo, OFFSET$pImageInfo);
     }
 
-    public void pBufferInfoRaw(@pointer(target=VkDescriptorBufferInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pBufferInfo, OFFSET$pBufferInfo, value);
+    public void pImageInfoRaw(@pointer(target=VkDescriptorImageInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pImageInfo, OFFSET$pImageInfo, value);
     }
 
     public @Nullable VkDescriptorBufferInfo pBufferInfo() {
@@ -223,12 +215,12 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
-    public @pointer(target=VkBufferView.class) MemorySegment pTexelBufferViewRaw() {
-        return segment.get(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView);
+    public @pointer(target=VkDescriptorBufferInfo.class) MemorySegment pBufferInfoRaw() {
+        return segment.get(LAYOUT$pBufferInfo, OFFSET$pBufferInfo);
     }
 
-    public void pTexelBufferViewRaw(@pointer(target=VkBufferView.class) MemorySegment value) {
-        segment.set(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView, value);
+    public void pBufferInfoRaw(@pointer(target=VkDescriptorBufferInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pBufferInfo, OFFSET$pBufferInfo, value);
     }
 
     /// Note: the returned {@link VkBufferView.Ptr} does not have correct {@link VkBufferView.Ptr#size}
@@ -246,6 +238,14 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IP
     public void pTexelBufferView(@Nullable VkBufferView.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTexelBufferViewRaw(s);
+    }
+
+    public @pointer(target=VkBufferView.class) MemorySegment pTexelBufferViewRaw() {
+        return segment.get(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView);
+    }
+
+    public void pTexelBufferViewRaw(@pointer(target=VkBufferView.class) MemorySegment value) {
+        segment.set(LAYOUT$pTexelBufferView, OFFSET$pTexelBufferView, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

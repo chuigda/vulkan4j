@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkScreenSurfaceCreateInfoQNX {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkScreenSurfaceCreateFlagsQNX flags; // optional
-///     _screen_context* context;
-///     _screen_window* window;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkScreenSurfaceCreateFlagsQNX flags; // optional // @link substring="VkScreenSurfaceCreateFlagsQNX" target="VkScreenSurfaceCreateFlagsQNX" @link substring="flags" target="#flags"
+///     _screen_context* context; // @link substring="context" target="#context"
+///     _screen_window* window; // @link substring="window" target="#window"
 /// } VkScreenSurfaceCreateInfoQNX;
 /// }
 ///
@@ -112,14 +112,6 @@ public record VkScreenSurfaceCreateInfoQNX(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(comment="void**") MemorySegment contextRaw() {
-        return segment.get(LAYOUT$context, OFFSET$context);
-    }
-
-    public void contextRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$context, OFFSET$context, value);
-    }
-
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
     /// to user to track the size of the buffer, and use {@link PointerPtr#reinterpret} to set the size before
     /// actually reading from or writing to the buffer.
@@ -136,12 +128,12 @@ public record VkScreenSurfaceCreateInfoQNX(@NotNull MemorySegment segment) imple
         contextRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment windowRaw() {
-        return segment.get(LAYOUT$window, OFFSET$window);
+    public @pointer(comment="void**") MemorySegment contextRaw() {
+        return segment.get(LAYOUT$context, OFFSET$context);
     }
 
-    public void windowRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$window, OFFSET$window, value);
+    public void contextRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$context, OFFSET$context, value);
     }
 
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
@@ -158,6 +150,14 @@ public record VkScreenSurfaceCreateInfoQNX(@NotNull MemorySegment segment) imple
     public void window(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         windowRaw(s);
+    }
+
+    public @pointer(comment="void**") MemorySegment windowRaw() {
+        return segment.get(LAYOUT$window, OFFSET$window);
+    }
+
+    public void windowRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$window, OFFSET$window, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureVersionInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint8_t const* pVersionData;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint8_t const* pVersionData; // @link substring="pVersionData" target="#pVersionData"
 /// } VkAccelerationStructureVersionInfoKHR;
 /// }
 ///
@@ -102,14 +102,6 @@ public record VkAccelerationStructureVersionInfoKHR(@NotNull MemorySegment segme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="byte*") MemorySegment pVersionDataRaw() {
-        return segment.get(LAYOUT$pVersionData, OFFSET$pVersionData);
-    }
-
-    public void pVersionDataRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pVersionData, OFFSET$pVersionData, value);
-    }
-
     /// Note: the returned {@link BytePtr} does not have correct
     /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
@@ -125,6 +117,14 @@ public record VkAccelerationStructureVersionInfoKHR(@NotNull MemorySegment segme
     public void pVersionData(@Nullable @unsigned BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVersionDataRaw(s);
+    }
+
+    public @pointer(comment="byte*") MemorySegment pVersionDataRaw() {
+        return segment.get(LAYOUT$pVersionData, OFFSET$pVersionData);
+    }
+
+    public void pVersionDataRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pVersionData, OFFSET$pVersionData, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

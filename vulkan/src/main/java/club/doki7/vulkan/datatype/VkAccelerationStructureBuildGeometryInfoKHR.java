@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureBuildGeometryInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkAccelerationStructureTypeKHR type;
-///     VkBuildAccelerationStructureFlagsKHR flags; // optional
-///     VkBuildAccelerationStructureModeKHR mode;
-///     VkAccelerationStructureKHR srcAccelerationStructure; // optional
-///     VkAccelerationStructureKHR dstAccelerationStructure; // optional
-///     uint32_t geometryCount; // optional
-///     VkAccelerationStructureGeometryKHR const* pGeometries; // optional
-///     VkAccelerationStructureGeometryKHR const* const* ppGeometries;
-///     VkDeviceOrHostAddressKHR scratchData;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkAccelerationStructureTypeKHR type; // @link substring="VkAccelerationStructureTypeKHR" target="VkAccelerationStructureTypeKHR" @link substring="type" target="#type"
+///     VkBuildAccelerationStructureFlagsKHR flags; // optional // @link substring="VkBuildAccelerationStructureFlagsKHR" target="VkBuildAccelerationStructureFlagsKHR" @link substring="flags" target="#flags"
+///     VkBuildAccelerationStructureModeKHR mode; // @link substring="VkBuildAccelerationStructureModeKHR" target="VkBuildAccelerationStructureModeKHR" @link substring="mode" target="#mode"
+///     VkAccelerationStructureKHR srcAccelerationStructure; // optional // @link substring="VkAccelerationStructureKHR" target="VkAccelerationStructureKHR" @link substring="srcAccelerationStructure" target="#srcAccelerationStructure"
+///     VkAccelerationStructureKHR dstAccelerationStructure; // optional // @link substring="VkAccelerationStructureKHR" target="VkAccelerationStructureKHR" @link substring="dstAccelerationStructure" target="#dstAccelerationStructure"
+///     uint32_t geometryCount; // optional // @link substring="geometryCount" target="#geometryCount"
+///     VkAccelerationStructureGeometryKHR const* pGeometries; // optional // @link substring="VkAccelerationStructureGeometryKHR" target="VkAccelerationStructureGeometryKHR" @link substring="pGeometries" target="#pGeometries"
+///     VkAccelerationStructureGeometryKHR const* const* ppGeometries; // @link substring="VkAccelerationStructureGeometryKHR" target="VkAccelerationStructureGeometryKHR" @link substring="ppGeometries" target="#ppGeometries"
+///     VkDeviceOrHostAddressKHR scratchData; // @link substring="VkDeviceOrHostAddressKHR" target="VkDeviceOrHostAddressKHR" @link substring="scratchData" target="#scratchData"
 /// } VkAccelerationStructureBuildGeometryInfoKHR;
 /// }
 ///
@@ -166,14 +166,6 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         segment.set(LAYOUT$geometryCount, OFFSET$geometryCount, value);
     }
 
-    public @pointer(target=VkAccelerationStructureGeometryKHR.class) MemorySegment pGeometriesRaw() {
-        return segment.get(LAYOUT$pGeometries, OFFSET$pGeometries);
-    }
-
-    public void pGeometriesRaw(@pointer(target=VkAccelerationStructureGeometryKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
-    }
-
     public @Nullable VkAccelerationStructureGeometryKHR pGeometries() {
         MemorySegment s = pGeometriesRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -201,12 +193,12 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         return ret;
     }
 
-    public @pointer(comment="void**") MemorySegment ppGeometriesRaw() {
-        return segment.get(LAYOUT$ppGeometries, OFFSET$ppGeometries);
+    public @pointer(target=VkAccelerationStructureGeometryKHR.class) MemorySegment pGeometriesRaw() {
+        return segment.get(LAYOUT$pGeometries, OFFSET$pGeometries);
     }
 
-    public void ppGeometriesRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$ppGeometries, OFFSET$ppGeometries, value);
+    public void pGeometriesRaw(@pointer(target=VkAccelerationStructureGeometryKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
     }
 
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
@@ -225,11 +217,19 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         ppGeometriesRaw(s);
     }
 
-    public VkDeviceOrHostAddressKHR scratchData() {
+    public @pointer(comment="void**") MemorySegment ppGeometriesRaw() {
+        return segment.get(LAYOUT$ppGeometries, OFFSET$ppGeometries);
+    }
+
+    public void ppGeometriesRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$ppGeometries, OFFSET$ppGeometries, value);
+    }
+
+    public @NotNull VkDeviceOrHostAddressKHR scratchData() {
         return new VkDeviceOrHostAddressKHR(segment.asSlice(OFFSET$scratchData, LAYOUT$scratchData));
     }
 
-    public void scratchData(VkDeviceOrHostAddressKHR value) {
+    public void scratchData(@NotNull VkDeviceOrHostAddressKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$scratchData, SIZE$scratchData);
     }
 

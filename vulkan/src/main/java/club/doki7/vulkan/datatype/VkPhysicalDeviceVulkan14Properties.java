@@ -20,33 +20,33 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceVulkan14Properties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t lineSubPixelPrecisionBits;
-///     uint32_t maxVertexAttribDivisor;
-///     VkBool32 supportsNonZeroFirstInstance;
-///     uint32_t maxPushDescriptors;
-///     VkBool32 dynamicRenderingLocalReadDepthStencilAttachments;
-///     VkBool32 dynamicRenderingLocalReadMultisampledAttachments;
-///     VkBool32 earlyFragmentMultisampleCoverageAfterSampleCounting;
-///     VkBool32 earlyFragmentSampleMaskTestBeforeSampleCounting;
-///     VkBool32 depthStencilSwizzleOneSupport;
-///     VkBool32 polygonModePointSize;
-///     VkBool32 nonStrictSinglePixelWideLinesUseParallelogram;
-///     VkBool32 nonStrictWideLinesUseParallelogram;
-///     VkBool32 blockTexelViewCompatibleMultipleLayers;
-///     uint32_t maxCombinedImageSamplerDescriptorCount;
-///     VkBool32 fragmentShadingRateClampCombinerInputs;
-///     VkPipelineRobustnessBufferBehavior defaultRobustnessStorageBuffers;
-///     VkPipelineRobustnessBufferBehavior defaultRobustnessUniformBuffers;
-///     VkPipelineRobustnessBufferBehavior defaultRobustnessVertexInputs;
-///     VkPipelineRobustnessImageBehavior defaultRobustnessImages;
-///     uint32_t copySrcLayoutCount; // optional
-///     VkImageLayout* pCopySrcLayouts; // optional
-///     uint32_t copyDstLayoutCount; // optional
-///     VkImageLayout* pCopyDstLayouts; // optional
-///     uint8_t optimalTilingLayoutUUID; // optional
-///     VkBool32 identicalMemoryTypeRequirements;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t lineSubPixelPrecisionBits; // @link substring="lineSubPixelPrecisionBits" target="#lineSubPixelPrecisionBits"
+///     uint32_t maxVertexAttribDivisor; // @link substring="maxVertexAttribDivisor" target="#maxVertexAttribDivisor"
+///     VkBool32 supportsNonZeroFirstInstance; // @link substring="supportsNonZeroFirstInstance" target="#supportsNonZeroFirstInstance"
+///     uint32_t maxPushDescriptors; // @link substring="maxPushDescriptors" target="#maxPushDescriptors"
+///     VkBool32 dynamicRenderingLocalReadDepthStencilAttachments; // @link substring="dynamicRenderingLocalReadDepthStencilAttachments" target="#dynamicRenderingLocalReadDepthStencilAttachments"
+///     VkBool32 dynamicRenderingLocalReadMultisampledAttachments; // @link substring="dynamicRenderingLocalReadMultisampledAttachments" target="#dynamicRenderingLocalReadMultisampledAttachments"
+///     VkBool32 earlyFragmentMultisampleCoverageAfterSampleCounting; // @link substring="earlyFragmentMultisampleCoverageAfterSampleCounting" target="#earlyFragmentMultisampleCoverageAfterSampleCounting"
+///     VkBool32 earlyFragmentSampleMaskTestBeforeSampleCounting; // @link substring="earlyFragmentSampleMaskTestBeforeSampleCounting" target="#earlyFragmentSampleMaskTestBeforeSampleCounting"
+///     VkBool32 depthStencilSwizzleOneSupport; // @link substring="depthStencilSwizzleOneSupport" target="#depthStencilSwizzleOneSupport"
+///     VkBool32 polygonModePointSize; // @link substring="polygonModePointSize" target="#polygonModePointSize"
+///     VkBool32 nonStrictSinglePixelWideLinesUseParallelogram; // @link substring="nonStrictSinglePixelWideLinesUseParallelogram" target="#nonStrictSinglePixelWideLinesUseParallelogram"
+///     VkBool32 nonStrictWideLinesUseParallelogram; // @link substring="nonStrictWideLinesUseParallelogram" target="#nonStrictWideLinesUseParallelogram"
+///     VkBool32 blockTexelViewCompatibleMultipleLayers; // @link substring="blockTexelViewCompatibleMultipleLayers" target="#blockTexelViewCompatibleMultipleLayers"
+///     uint32_t maxCombinedImageSamplerDescriptorCount; // @link substring="maxCombinedImageSamplerDescriptorCount" target="#maxCombinedImageSamplerDescriptorCount"
+///     VkBool32 fragmentShadingRateClampCombinerInputs; // @link substring="fragmentShadingRateClampCombinerInputs" target="#fragmentShadingRateClampCombinerInputs"
+///     VkPipelineRobustnessBufferBehavior defaultRobustnessStorageBuffers; // @link substring="VkPipelineRobustnessBufferBehavior" target="VkPipelineRobustnessBufferBehavior" @link substring="defaultRobustnessStorageBuffers" target="#defaultRobustnessStorageBuffers"
+///     VkPipelineRobustnessBufferBehavior defaultRobustnessUniformBuffers; // @link substring="VkPipelineRobustnessBufferBehavior" target="VkPipelineRobustnessBufferBehavior" @link substring="defaultRobustnessUniformBuffers" target="#defaultRobustnessUniformBuffers"
+///     VkPipelineRobustnessBufferBehavior defaultRobustnessVertexInputs; // @link substring="VkPipelineRobustnessBufferBehavior" target="VkPipelineRobustnessBufferBehavior" @link substring="defaultRobustnessVertexInputs" target="#defaultRobustnessVertexInputs"
+///     VkPipelineRobustnessImageBehavior defaultRobustnessImages; // @link substring="VkPipelineRobustnessImageBehavior" target="VkPipelineRobustnessImageBehavior" @link substring="defaultRobustnessImages" target="#defaultRobustnessImages"
+///     uint32_t copySrcLayoutCount; // optional // @link substring="copySrcLayoutCount" target="#copySrcLayoutCount"
+///     VkImageLayout* pCopySrcLayouts; // optional // @link substring="VkImageLayout" target="VkImageLayout" @link substring="pCopySrcLayouts" target="#pCopySrcLayouts"
+///     uint32_t copyDstLayoutCount; // optional // @link substring="copyDstLayoutCount" target="#copyDstLayoutCount"
+///     VkImageLayout* pCopyDstLayouts; // optional // @link substring="VkImageLayout" target="VkImageLayout" @link substring="pCopyDstLayouts" target="#pCopyDstLayouts"
+///     uint8_t optimalTilingLayoutUUID; // optional // @link substring="optimalTilingLayoutUUID" target="#optimalTilingLayoutUUID"
+///     VkBool32 identicalMemoryTypeRequirements; // @link substring="identicalMemoryTypeRequirements" target="#identicalMemoryTypeRequirements"
 /// } VkPhysicalDeviceVulkan14Properties;
 /// }
 ///
@@ -286,13 +286,6 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$copySrcLayoutCount, OFFSET$copySrcLayoutCount, value);
     }
 
-    public @pointer(target=VkImageLayout.class) MemorySegment pCopySrcLayoutsRaw() {
-        return segment.get(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts);
-    }
-
-    public void pCopySrcLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
-        segment.set(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -311,6 +304,14 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         pCopySrcLayoutsRaw(s);
     }
 
+    public @pointer(target=VkImageLayout.class) MemorySegment pCopySrcLayoutsRaw() {
+        return segment.get(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts);
+    }
+
+    public void pCopySrcLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
+        segment.set(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts, value);
+    }
+
     public @unsigned int copyDstLayoutCount() {
         return segment.get(LAYOUT$copyDstLayoutCount, OFFSET$copyDstLayoutCount);
     }
@@ -319,13 +320,6 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$copyDstLayoutCount, OFFSET$copyDstLayoutCount, value);
     }
 
-    public @pointer(target=VkImageLayout.class) MemorySegment pCopyDstLayoutsRaw() {
-        return segment.get(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts);
-    }
-
-    public void pCopyDstLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
-        segment.set(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -342,6 +336,14 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
     public void pCopyDstLayouts(@Nullable @enumtype(VkImageLayout.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCopyDstLayoutsRaw(s);
+    }
+
+    public @pointer(target=VkImageLayout.class) MemorySegment pCopyDstLayoutsRaw() {
+        return segment.get(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts);
+    }
+
+    public void pCopyDstLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
+        segment.set(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts, value);
     }
 
     public @unsigned byte optimalTilingLayoutUUID() {

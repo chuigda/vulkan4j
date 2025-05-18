@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkOffset2D {
-///     int32_t x;
-///     int32_t y;
+///     int32_t x; // @link substring="x" target="#x"
+///     int32_t y; // @link substring="y" target="#y"
 /// } VkOffset2D;
 /// }
 ///

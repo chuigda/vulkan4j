@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDrawMeshTasksIndirectCommandEXT {
-///     uint32_t groupCountX;
-///     uint32_t groupCountY;
-///     uint32_t groupCountZ;
+///     uint32_t groupCountX; // @link substring="groupCountX" target="#groupCountX"
+///     uint32_t groupCountY; // @link substring="groupCountY" target="#groupCountY"
+///     uint32_t groupCountZ; // @link substring="groupCountZ" target="#groupCountZ"
 /// } VkDrawMeshTasksIndirectCommandEXT;
 /// }
 ///

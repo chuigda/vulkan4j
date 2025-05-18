@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceTexelBufferAlignmentProperties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkDeviceSize storageTexelBufferOffsetAlignmentBytes;
-///     VkBool32 storageTexelBufferOffsetSingleTexelAlignment;
-///     VkDeviceSize uniformTexelBufferOffsetAlignmentBytes;
-///     VkBool32 uniformTexelBufferOffsetSingleTexelAlignment;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceSize storageTexelBufferOffsetAlignmentBytes; // @link substring="storageTexelBufferOffsetAlignmentBytes" target="#storageTexelBufferOffsetAlignmentBytes"
+///     VkBool32 storageTexelBufferOffsetSingleTexelAlignment; // @link substring="storageTexelBufferOffsetSingleTexelAlignment" target="#storageTexelBufferOffsetSingleTexelAlignment"
+///     VkDeviceSize uniformTexelBufferOffsetAlignmentBytes; // @link substring="uniformTexelBufferOffsetAlignmentBytes" target="#uniformTexelBufferOffsetAlignmentBytes"
+///     VkBool32 uniformTexelBufferOffsetSingleTexelAlignment; // @link substring="uniformTexelBufferOffsetSingleTexelAlignment" target="#uniformTexelBufferOffsetSingleTexelAlignment"
 /// } VkPhysicalDeviceTexelBufferAlignmentProperties;
 /// }
 ///

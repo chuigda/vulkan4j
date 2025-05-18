@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExportMetalBufferInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDeviceMemory memory;
-///     MTLBuffer_id mtlBuffer;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceMemory memory; // @link substring="VkDeviceMemory" target="VkDeviceMemory" @link substring="memory" target="#memory"
+///     MTLBuffer_id mtlBuffer; // @link substring="mtlBuffer" target="#mtlBuffer"
 /// } VkExportMetalBufferInfoEXT;
 /// }
 ///

@@ -21,11 +21,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265ProfileTierLevelFlags {
-///     uint32_t general_tier_flag : 1;
-///     uint32_t general_progressive_source_flag : 1;
-///     uint32_t general_interlaced_source_flag : 1;
-///     uint32_t general_non_packed_constraint_flag : 1;
-///     uint32_t general_frame_only_constraint_flag : 1;
+///     uint32_t general_tier_flag : 1; // @link substring="general_tier_flag" target="#general_tier_flag"
+///     uint32_t general_progressive_source_flag : 1; // @link substring="general_progressive_source_flag" target="#general_progressive_source_flag"
+///     uint32_t general_interlaced_source_flag : 1; // @link substring="general_interlaced_source_flag" target="#general_interlaced_source_flag"
+///     uint32_t general_non_packed_constraint_flag : 1; // @link substring="general_non_packed_constraint_flag" target="#general_non_packed_constraint_flag"
+///     uint32_t general_frame_only_constraint_flag : 1; // @link substring="general_frame_only_constraint_flag" target="#general_frame_only_constraint_flag"
 /// } StdVideoH265ProfileTierLevelFlags;
 /// }
 ///

@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeAV1PictureInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkVideoEncodeAV1PredictionModeKHR predictionMode;
-///     VkVideoEncodeAV1RateControlGroupKHR rateControlGroup;
-///     uint32_t constantQIndex;
-///     StdVideoEncodeAV1PictureInfo const* pStdPictureInfo;
-///     int32_t referenceNameSlotIndices;
-///     VkBool32 primaryReferenceCdfOnly;
-///     VkBool32 generateObuExtensionHeader;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkVideoEncodeAV1PredictionModeKHR predictionMode; // @link substring="VkVideoEncodeAV1PredictionModeKHR" target="VkVideoEncodeAV1PredictionModeKHR" @link substring="predictionMode" target="#predictionMode"
+///     VkVideoEncodeAV1RateControlGroupKHR rateControlGroup; // @link substring="VkVideoEncodeAV1RateControlGroupKHR" target="VkVideoEncodeAV1RateControlGroupKHR" @link substring="rateControlGroup" target="#rateControlGroup"
+///     uint32_t constantQIndex; // @link substring="constantQIndex" target="#constantQIndex"
+///     StdVideoEncodeAV1PictureInfo const* pStdPictureInfo; // @link substring="StdVideoEncodeAV1PictureInfo" target="StdVideoEncodeAV1PictureInfo" @link substring="pStdPictureInfo" target="#pStdPictureInfo"
+///     int32_t referenceNameSlotIndices; // @link substring="referenceNameSlotIndices" target="#referenceNameSlotIndices"
+///     VkBool32 primaryReferenceCdfOnly; // @link substring="primaryReferenceCdfOnly" target="#primaryReferenceCdfOnly"
+///     VkBool32 generateObuExtensionHeader; // @link substring="generateObuExtensionHeader" target="#generateObuExtensionHeader"
 /// } VkVideoEncodeAV1PictureInfoKHR;
 /// }
 ///
@@ -132,14 +132,6 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$constantQIndex, OFFSET$constantQIndex, value);
     }
 
-    public @pointer(target=StdVideoEncodeAV1PictureInfo.class) MemorySegment pStdPictureInfoRaw() {
-        return segment.get(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo);
-    }
-
-    public void pStdPictureInfoRaw(@pointer(target=StdVideoEncodeAV1PictureInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo, value);
-    }
-
     public @Nullable StdVideoEncodeAV1PictureInfo pStdPictureInfo() {
         MemorySegment s = pStdPictureInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -165,6 +157,14 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
             ret[i] = new StdVideoEncodeAV1PictureInfo(s.asSlice(i * StdVideoEncodeAV1PictureInfo.BYTES, StdVideoEncodeAV1PictureInfo.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoEncodeAV1PictureInfo.class) MemorySegment pStdPictureInfoRaw() {
+        return segment.get(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo);
+    }
+
+    public void pStdPictureInfoRaw(@pointer(target=StdVideoEncodeAV1PictureInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo, value);
     }
 
     public int referenceNameSlotIndices() {

@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPartitionedAccelerationStructureWriteInstanceDataNV {
-///     VkTransformMatrixKHR transform;
-///     float explicitAABB;
-///     uint32_t instanceID;
-///     uint32_t instanceMask;
-///     uint32_t instanceContributionToHitGroupIndex;
-///     VkPartitionedAccelerationStructureInstanceFlagsNV instanceFlags; // optional
-///     uint32_t instanceIndex;
-///     uint32_t partitionIndex;
-///     VkDeviceAddress accelerationStructure;
+///     VkTransformMatrixKHR transform; // @link substring="VkTransformMatrixKHR" target="VkTransformMatrixKHR" @link substring="transform" target="#transform"
+///     float explicitAABB; // @link substring="explicitAABB" target="#explicitAABB"
+///     uint32_t instanceID; // @link substring="instanceID" target="#instanceID"
+///     uint32_t instanceMask; // @link substring="instanceMask" target="#instanceMask"
+///     uint32_t instanceContributionToHitGroupIndex; // @link substring="instanceContributionToHitGroupIndex" target="#instanceContributionToHitGroupIndex"
+///     VkPartitionedAccelerationStructureInstanceFlagsNV instanceFlags; // optional // @link substring="VkPartitionedAccelerationStructureInstanceFlagsNV" target="VkPartitionedAccelerationStructureInstanceFlagsNV" @link substring="instanceFlags" target="#instanceFlags"
+///     uint32_t instanceIndex; // @link substring="instanceIndex" target="#instanceIndex"
+///     uint32_t partitionIndex; // @link substring="partitionIndex" target="#partitionIndex"
+///     VkDeviceAddress accelerationStructure; // @link substring="accelerationStructure" target="#accelerationStructure"
 /// } VkPartitionedAccelerationStructureWriteInstanceDataNV;
 /// }
 ///
@@ -74,11 +74,11 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         return ret;
     }
 
-    public VkTransformMatrixKHR transform() {
+    public @NotNull VkTransformMatrixKHR transform() {
         return new VkTransformMatrixKHR(segment.asSlice(OFFSET$transform, LAYOUT$transform));
     }
 
-    public void transform(VkTransformMatrixKHR value) {
+    public void transform(@NotNull VkTransformMatrixKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$transform, SIZE$transform);
     }
 

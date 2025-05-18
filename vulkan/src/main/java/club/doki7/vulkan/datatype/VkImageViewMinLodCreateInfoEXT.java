@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageViewMinLodCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     float minLod;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     float minLod; // @link substring="minLod" target="#minLod"
 /// } VkImageViewMinLodCreateInfoEXT;
 /// }
 ///

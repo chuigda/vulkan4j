@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBufferMemoryBarrier2 {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineStageFlags2 srcStageMask; // optional
-///     VkAccessFlags2 srcAccessMask; // optional
-///     VkPipelineStageFlags2 dstStageMask; // optional
-///     VkAccessFlags2 dstAccessMask; // optional
-///     uint32_t srcQueueFamilyIndex;
-///     uint32_t dstQueueFamilyIndex;
-///     VkBuffer buffer;
-///     VkDeviceSize offset;
-///     VkDeviceSize size;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineStageFlags2 srcStageMask; // optional // @link substring="VkPipelineStageFlags2" target="VkPipelineStageFlags2" @link substring="srcStageMask" target="#srcStageMask"
+///     VkAccessFlags2 srcAccessMask; // optional // @link substring="VkAccessFlags2" target="VkAccessFlags2" @link substring="srcAccessMask" target="#srcAccessMask"
+///     VkPipelineStageFlags2 dstStageMask; // optional // @link substring="VkPipelineStageFlags2" target="VkPipelineStageFlags2" @link substring="dstStageMask" target="#dstStageMask"
+///     VkAccessFlags2 dstAccessMask; // optional // @link substring="VkAccessFlags2" target="VkAccessFlags2" @link substring="dstAccessMask" target="#dstAccessMask"
+///     uint32_t srcQueueFamilyIndex; // @link substring="srcQueueFamilyIndex" target="#srcQueueFamilyIndex"
+///     uint32_t dstQueueFamilyIndex; // @link substring="dstQueueFamilyIndex" target="#dstQueueFamilyIndex"
+///     VkBuffer buffer; // @link substring="VkBuffer" target="VkBuffer" @link substring="buffer" target="#buffer"
+///     VkDeviceSize offset; // @link substring="offset" target="#offset"
+///     VkDeviceSize size; // @link substring="size" target="#size"
 /// } VkBufferMemoryBarrier2;
 /// }
 ///

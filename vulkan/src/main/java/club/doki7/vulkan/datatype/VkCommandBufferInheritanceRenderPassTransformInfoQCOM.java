@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCommandBufferInheritanceRenderPassTransformInfoQCOM {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkSurfaceTransformFlagsKHR transform;
-///     VkRect2D renderArea;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSurfaceTransformFlagsKHR transform; // @link substring="VkSurfaceTransformFlagsKHR" target="VkSurfaceTransformFlagsKHR" @link substring="transform" target="#transform"
+///     VkRect2D renderArea; // @link substring="VkRect2D" target="VkRect2D" @link substring="renderArea" target="#renderArea"
 /// } VkCommandBufferInheritanceRenderPassTransformInfoQCOM;
 /// }
 ///
@@ -111,11 +111,11 @@ public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(@NotNull Mem
         segment.set(LAYOUT$transform, OFFSET$transform, value);
     }
 
-    public VkRect2D renderArea() {
+    public @NotNull VkRect2D renderArea() {
         return new VkRect2D(segment.asSlice(OFFSET$renderArea, LAYOUT$renderArea));
     }
 
-    public void renderArea(VkRect2D value) {
+    public void renderArea(@NotNull VkRect2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderArea, SIZE$renderArea);
     }
 

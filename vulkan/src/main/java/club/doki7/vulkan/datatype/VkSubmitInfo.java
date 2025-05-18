@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSubmitInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t waitSemaphoreCount; // optional
-///     VkSemaphore const* pWaitSemaphores;
-///     VkPipelineStageFlags const* pWaitDstStageMask;
-///     uint32_t commandBufferCount; // optional
-///     VkCommandBuffer const* pCommandBuffers;
-///     uint32_t signalSemaphoreCount; // optional
-///     VkSemaphore const* pSignalSemaphores;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t waitSemaphoreCount; // optional // @link substring="waitSemaphoreCount" target="#waitSemaphoreCount"
+///     VkSemaphore const* pWaitSemaphores; // @link substring="VkSemaphore" target="VkSemaphore" @link substring="pWaitSemaphores" target="#pWaitSemaphores"
+///     VkPipelineStageFlags const* pWaitDstStageMask; // @link substring="VkPipelineStageFlags" target="VkPipelineStageFlags" @link substring="pWaitDstStageMask" target="#pWaitDstStageMask"
+///     uint32_t commandBufferCount; // optional // @link substring="commandBufferCount" target="#commandBufferCount"
+///     VkCommandBuffer const* pCommandBuffers; // @link substring="VkCommandBuffer" target="VkCommandBuffer" @link substring="pCommandBuffers" target="#pCommandBuffers"
+///     uint32_t signalSemaphoreCount; // optional // @link substring="signalSemaphoreCount" target="#signalSemaphoreCount"
+///     VkSemaphore const* pSignalSemaphores; // @link substring="VkSemaphore" target="VkSemaphore" @link substring="pSignalSemaphores" target="#pSignalSemaphores"
 /// } VkSubmitInfo;
 /// }
 ///
@@ -116,14 +116,6 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
     }
 
-    public @pointer(target=VkSemaphore.class) MemorySegment pWaitSemaphoresRaw() {
-        return segment.get(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores);
-    }
-
-    public void pWaitSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
-        segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
-    }
-
     /// Note: the returned {@link VkSemaphore.Ptr} does not have correct {@link VkSemaphore.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkSemaphore.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -141,13 +133,14 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IPointer {
         pWaitSemaphoresRaw(s);
     }
 
-    public @pointer(target=VkPipelineStageFlags.class) MemorySegment pWaitDstStageMaskRaw() {
-        return segment.get(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask);
+    public @pointer(target=VkSemaphore.class) MemorySegment pWaitSemaphoresRaw() {
+        return segment.get(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores);
     }
 
-    public void pWaitDstStageMaskRaw(@pointer(target=VkPipelineStageFlags.class) MemorySegment value) {
-        segment.set(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask, value);
+    public void pWaitSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
+        segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
+
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -166,20 +159,20 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IPointer {
         pWaitDstStageMaskRaw(s);
     }
 
+    public @pointer(target=VkPipelineStageFlags.class) MemorySegment pWaitDstStageMaskRaw() {
+        return segment.get(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask);
+    }
+
+    public void pWaitDstStageMaskRaw(@pointer(target=VkPipelineStageFlags.class) MemorySegment value) {
+        segment.set(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask, value);
+    }
+
     public @unsigned int commandBufferCount() {
         return segment.get(LAYOUT$commandBufferCount, OFFSET$commandBufferCount);
     }
 
     public void commandBufferCount(@unsigned int value) {
         segment.set(LAYOUT$commandBufferCount, OFFSET$commandBufferCount, value);
-    }
-
-    public @pointer(target=VkCommandBuffer.class) MemorySegment pCommandBuffersRaw() {
-        return segment.get(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers);
-    }
-
-    public void pCommandBuffersRaw(@pointer(target=VkCommandBuffer.class) MemorySegment value) {
-        segment.set(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers, value);
     }
 
     /// Note: the returned {@link VkCommandBuffer.Ptr} does not have correct {@link VkCommandBuffer.Ptr#size}
@@ -199,20 +192,20 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IPointer {
         pCommandBuffersRaw(s);
     }
 
+    public @pointer(target=VkCommandBuffer.class) MemorySegment pCommandBuffersRaw() {
+        return segment.get(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers);
+    }
+
+    public void pCommandBuffersRaw(@pointer(target=VkCommandBuffer.class) MemorySegment value) {
+        segment.set(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers, value);
+    }
+
     public @unsigned int signalSemaphoreCount() {
         return segment.get(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount);
     }
 
     public void signalSemaphoreCount(@unsigned int value) {
         segment.set(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount, value);
-    }
-
-    public @pointer(target=VkSemaphore.class) MemorySegment pSignalSemaphoresRaw() {
-        return segment.get(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores);
-    }
-
-    public void pSignalSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
-        segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
     }
 
     /// Note: the returned {@link VkSemaphore.Ptr} does not have correct {@link VkSemaphore.Ptr#size}
@@ -230,6 +223,14 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IPointer {
     public void pSignalSemaphores(@Nullable VkSemaphore.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoresRaw(s);
+    }
+
+    public @pointer(target=VkSemaphore.class) MemorySegment pSignalSemaphoresRaw() {
+        return segment.get(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores);
+    }
+
+    public void pSignalSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
+        segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

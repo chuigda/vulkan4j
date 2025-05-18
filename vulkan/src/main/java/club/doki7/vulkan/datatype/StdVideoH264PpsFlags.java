@@ -21,14 +21,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH264PpsFlags {
-///     uint32_t transform_8x8_mode_flag : 1;
-///     uint32_t redundant_pic_cnt_present_flag : 1;
-///     uint32_t constrained_intra_pred_flag : 1;
-///     uint32_t deblocking_filter_control_present_flag : 1;
-///     uint32_t weighted_pred_flag : 1;
-///     uint32_t bottom_field_pic_order_in_frame_present_flag : 1;
-///     uint32_t entropy_coding_mode_flag : 1;
-///     uint32_t pic_scaling_matrix_present_flag : 1;
+///     uint32_t transform_8x8_mode_flag : 1; // @link substring="transform_8x8_mode_flag" target="#transform_8x8_mode_flag"
+///     uint32_t redundant_pic_cnt_present_flag : 1; // @link substring="redundant_pic_cnt_present_flag" target="#redundant_pic_cnt_present_flag"
+///     uint32_t constrained_intra_pred_flag : 1; // @link substring="constrained_intra_pred_flag" target="#constrained_intra_pred_flag"
+///     uint32_t deblocking_filter_control_present_flag : 1; // @link substring="deblocking_filter_control_present_flag" target="#deblocking_filter_control_present_flag"
+///     uint32_t weighted_pred_flag : 1; // @link substring="weighted_pred_flag" target="#weighted_pred_flag"
+///     uint32_t bottom_field_pic_order_in_frame_present_flag : 1; // @link substring="bottom_field_pic_order_in_frame_present_flag" target="#bottom_field_pic_order_in_frame_present_flag"
+///     uint32_t entropy_coding_mode_flag : 1; // @link substring="entropy_coding_mode_flag" target="#entropy_coding_mode_flag"
+///     uint32_t pic_scaling_matrix_present_flag : 1; // @link substring="pic_scaling_matrix_present_flag" target="#pic_scaling_matrix_present_flag"
 /// } StdVideoH264PpsFlags;
 /// }
 ///

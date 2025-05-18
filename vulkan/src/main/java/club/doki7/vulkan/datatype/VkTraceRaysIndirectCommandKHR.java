@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkTraceRaysIndirectCommandKHR {
-///     uint32_t width;
-///     uint32_t height;
-///     uint32_t depth;
+///     uint32_t width; // @link substring="width" target="#width"
+///     uint32_t height; // @link substring="height" target="#height"
+///     uint32_t depth; // @link substring="depth" target="#depth"
 /// } VkTraceRaysIndirectCommandKHR;
 /// }
 ///

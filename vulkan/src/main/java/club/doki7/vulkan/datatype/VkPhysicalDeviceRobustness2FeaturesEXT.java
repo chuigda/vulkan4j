@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceRobustness2FeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 robustBufferAccess2;
-///     VkBool32 robustImageAccess2;
-///     VkBool32 nullDescriptor;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 robustBufferAccess2; // @link substring="robustBufferAccess2" target="#robustBufferAccess2"
+///     VkBool32 robustImageAccess2; // @link substring="robustImageAccess2" target="#robustImageAccess2"
+///     VkBool32 nullDescriptor; // @link substring="nullDescriptor" target="#nullDescriptor"
 /// } VkPhysicalDeviceRobustness2FeaturesEXT;
 /// }
 ///

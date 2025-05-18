@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoPictureResourceInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkOffset2D codedOffset;
-///     VkExtent2D codedExtent;
-///     uint32_t baseArrayLayer;
-///     VkImageView imageViewBinding;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkOffset2D codedOffset; // @link substring="VkOffset2D" target="VkOffset2D" @link substring="codedOffset" target="#codedOffset"
+///     VkExtent2D codedExtent; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="codedExtent" target="#codedExtent"
+///     uint32_t baseArrayLayer; // @link substring="baseArrayLayer" target="#baseArrayLayer"
+///     VkImageView imageViewBinding; // @link substring="VkImageView" target="VkImageView" @link substring="imageViewBinding" target="#imageViewBinding"
 /// } VkVideoPictureResourceInfoKHR;
 /// }
 ///
@@ -105,19 +105,19 @@ public record VkVideoPictureResourceInfoKHR(@NotNull MemorySegment segment) impl
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkOffset2D codedOffset() {
+    public @NotNull VkOffset2D codedOffset() {
         return new VkOffset2D(segment.asSlice(OFFSET$codedOffset, LAYOUT$codedOffset));
     }
 
-    public void codedOffset(VkOffset2D value) {
+    public void codedOffset(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$codedOffset, SIZE$codedOffset);
     }
 
-    public VkExtent2D codedExtent() {
+    public @NotNull VkExtent2D codedExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$codedExtent, LAYOUT$codedExtent));
     }
 
-    public void codedExtent(VkExtent2D value) {
+    public void codedExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$codedExtent, SIZE$codedExtent);
     }
 

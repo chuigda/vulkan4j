@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoDecodeInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkVideoDecodeFlagsKHR flags; // optional
-///     VkBuffer srcBuffer;
-///     VkDeviceSize srcBufferOffset;
-///     VkDeviceSize srcBufferRange;
-///     VkVideoPictureResourceInfoKHR dstPictureResource;
-///     VkVideoReferenceSlotInfoKHR const* pSetupReferenceSlot; // optional
-///     uint32_t referenceSlotCount; // optional
-///     VkVideoReferenceSlotInfoKHR const* pReferenceSlots;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkVideoDecodeFlagsKHR flags; // optional // @link substring="VkVideoDecodeFlagsKHR" target="VkVideoDecodeFlagsKHR" @link substring="flags" target="#flags"
+///     VkBuffer srcBuffer; // @link substring="VkBuffer" target="VkBuffer" @link substring="srcBuffer" target="#srcBuffer"
+///     VkDeviceSize srcBufferOffset; // @link substring="srcBufferOffset" target="#srcBufferOffset"
+///     VkDeviceSize srcBufferRange; // @link substring="srcBufferRange" target="#srcBufferRange"
+///     VkVideoPictureResourceInfoKHR dstPictureResource; // @link substring="VkVideoPictureResourceInfoKHR" target="VkVideoPictureResourceInfoKHR" @link substring="dstPictureResource" target="#dstPictureResource"
+///     VkVideoReferenceSlotInfoKHR const* pSetupReferenceSlot; // optional // @link substring="VkVideoReferenceSlotInfoKHR" target="VkVideoReferenceSlotInfoKHR" @link substring="pSetupReferenceSlot" target="#pSetupReferenceSlot"
+///     uint32_t referenceSlotCount; // optional // @link substring="referenceSlotCount" target="#referenceSlotCount"
+///     VkVideoReferenceSlotInfoKHR const* pReferenceSlots; // @link substring="VkVideoReferenceSlotInfoKHR" target="VkVideoReferenceSlotInfoKHR" @link substring="pReferenceSlots" target="#pReferenceSlots"
 /// } VkVideoDecodeInfoKHR;
 /// }
 ///
@@ -145,20 +145,12 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$srcBufferRange, OFFSET$srcBufferRange, value);
     }
 
-    public VkVideoPictureResourceInfoKHR dstPictureResource() {
+    public @NotNull VkVideoPictureResourceInfoKHR dstPictureResource() {
         return new VkVideoPictureResourceInfoKHR(segment.asSlice(OFFSET$dstPictureResource, LAYOUT$dstPictureResource));
     }
 
-    public void dstPictureResource(VkVideoPictureResourceInfoKHR value) {
+    public void dstPictureResource(@NotNull VkVideoPictureResourceInfoKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstPictureResource, SIZE$dstPictureResource);
-    }
-
-    public @pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment pSetupReferenceSlotRaw() {
-        return segment.get(LAYOUT$pSetupReferenceSlot, OFFSET$pSetupReferenceSlot);
-    }
-
-    public void pSetupReferenceSlotRaw(@pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pSetupReferenceSlot, OFFSET$pSetupReferenceSlot, value);
     }
 
     public @Nullable VkVideoReferenceSlotInfoKHR pSetupReferenceSlot() {
@@ -188,20 +180,20 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
+    public @pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment pSetupReferenceSlotRaw() {
+        return segment.get(LAYOUT$pSetupReferenceSlot, OFFSET$pSetupReferenceSlot);
+    }
+
+    public void pSetupReferenceSlotRaw(@pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pSetupReferenceSlot, OFFSET$pSetupReferenceSlot, value);
+    }
+
     public @unsigned int referenceSlotCount() {
         return segment.get(LAYOUT$referenceSlotCount, OFFSET$referenceSlotCount);
     }
 
     public void referenceSlotCount(@unsigned int value) {
         segment.set(LAYOUT$referenceSlotCount, OFFSET$referenceSlotCount, value);
-    }
-
-    public @pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment pReferenceSlotsRaw() {
-        return segment.get(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots);
-    }
-
-    public void pReferenceSlotsRaw(@pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots, value);
     }
 
     public @Nullable VkVideoReferenceSlotInfoKHR pReferenceSlots() {
@@ -229,6 +221,14 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IP
             ret[i] = new VkVideoReferenceSlotInfoKHR(s.asSlice(i * VkVideoReferenceSlotInfoKHR.BYTES, VkVideoReferenceSlotInfoKHR.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment pReferenceSlotsRaw() {
+        return segment.get(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots);
+    }
+
+    public void pReferenceSlotsRaw(@pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

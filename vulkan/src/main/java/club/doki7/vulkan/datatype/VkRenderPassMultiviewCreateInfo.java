@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassMultiviewCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t subpassCount; // optional
-///     uint32_t const* pViewMasks;
-///     uint32_t dependencyCount; // optional
-///     int32_t const* pViewOffsets;
-///     uint32_t correlationMaskCount; // optional
-///     uint32_t const* pCorrelationMasks;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t subpassCount; // optional // @link substring="subpassCount" target="#subpassCount"
+///     uint32_t const* pViewMasks; // @link substring="pViewMasks" target="#pViewMasks"
+///     uint32_t dependencyCount; // optional // @link substring="dependencyCount" target="#dependencyCount"
+///     int32_t const* pViewOffsets; // @link substring="pViewOffsets" target="#pViewOffsets"
+///     uint32_t correlationMaskCount; // optional // @link substring="correlationMaskCount" target="#correlationMaskCount"
+///     uint32_t const* pCorrelationMasks; // @link substring="pCorrelationMasks" target="#pCorrelationMasks"
 /// } VkRenderPassMultiviewCreateInfo;
 /// }
 ///
@@ -115,14 +115,6 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$subpassCount, OFFSET$subpassCount, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pViewMasksRaw() {
-        return segment.get(LAYOUT$pViewMasks, OFFSET$pViewMasks);
-    }
-
-    public void pViewMasksRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pViewMasks, OFFSET$pViewMasks, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -140,20 +132,20 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         pViewMasksRaw(s);
     }
 
+    public @pointer(comment="int*") MemorySegment pViewMasksRaw() {
+        return segment.get(LAYOUT$pViewMasks, OFFSET$pViewMasks);
+    }
+
+    public void pViewMasksRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pViewMasks, OFFSET$pViewMasks, value);
+    }
+
     public @unsigned int dependencyCount() {
         return segment.get(LAYOUT$dependencyCount, OFFSET$dependencyCount);
     }
 
     public void dependencyCount(@unsigned int value) {
         segment.set(LAYOUT$dependencyCount, OFFSET$dependencyCount, value);
-    }
-
-    public @pointer(comment="int*") MemorySegment pViewOffsetsRaw() {
-        return segment.get(LAYOUT$pViewOffsets, OFFSET$pViewOffsets);
-    }
-
-    public void pViewOffsetsRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pViewOffsets, OFFSET$pViewOffsets, value);
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -173,20 +165,20 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         pViewOffsetsRaw(s);
     }
 
+    public @pointer(comment="int*") MemorySegment pViewOffsetsRaw() {
+        return segment.get(LAYOUT$pViewOffsets, OFFSET$pViewOffsets);
+    }
+
+    public void pViewOffsetsRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pViewOffsets, OFFSET$pViewOffsets, value);
+    }
+
     public @unsigned int correlationMaskCount() {
         return segment.get(LAYOUT$correlationMaskCount, OFFSET$correlationMaskCount);
     }
 
     public void correlationMaskCount(@unsigned int value) {
         segment.set(LAYOUT$correlationMaskCount, OFFSET$correlationMaskCount, value);
-    }
-
-    public @pointer(comment="int*") MemorySegment pCorrelationMasksRaw() {
-        return segment.get(LAYOUT$pCorrelationMasks, OFFSET$pCorrelationMasks);
-    }
-
-    public void pCorrelationMasksRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pCorrelationMasks, OFFSET$pCorrelationMasks, value);
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -204,6 +196,14 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
     public void pCorrelationMasks(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCorrelationMasksRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pCorrelationMasksRaw() {
+        return segment.get(LAYOUT$pCorrelationMasks, OFFSET$pCorrelationMasks);
+    }
+
+    public void pCorrelationMasksRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pCorrelationMasks, OFFSET$pCorrelationMasks, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

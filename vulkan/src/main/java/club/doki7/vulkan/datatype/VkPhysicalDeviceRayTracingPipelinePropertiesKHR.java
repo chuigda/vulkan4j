@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceRayTracingPipelinePropertiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t shaderGroupHandleSize;
-///     uint32_t maxRayRecursionDepth;
-///     uint32_t maxShaderGroupStride;
-///     uint32_t shaderGroupBaseAlignment;
-///     uint32_t shaderGroupHandleCaptureReplaySize;
-///     uint32_t maxRayDispatchInvocationCount;
-///     uint32_t shaderGroupHandleAlignment;
-///     uint32_t maxRayHitAttributeSize;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t shaderGroupHandleSize; // @link substring="shaderGroupHandleSize" target="#shaderGroupHandleSize"
+///     uint32_t maxRayRecursionDepth; // @link substring="maxRayRecursionDepth" target="#maxRayRecursionDepth"
+///     uint32_t maxShaderGroupStride; // @link substring="maxShaderGroupStride" target="#maxShaderGroupStride"
+///     uint32_t shaderGroupBaseAlignment; // @link substring="shaderGroupBaseAlignment" target="#shaderGroupBaseAlignment"
+///     uint32_t shaderGroupHandleCaptureReplaySize; // @link substring="shaderGroupHandleCaptureReplaySize" target="#shaderGroupHandleCaptureReplaySize"
+///     uint32_t maxRayDispatchInvocationCount; // @link substring="maxRayDispatchInvocationCount" target="#maxRayDispatchInvocationCount"
+///     uint32_t shaderGroupHandleAlignment; // @link substring="shaderGroupHandleAlignment" target="#shaderGroupHandleAlignment"
+///     uint32_t maxRayHitAttributeSize; // @link substring="maxRayHitAttributeSize" target="#maxRayHitAttributeSize"
 /// } VkPhysicalDeviceRayTracingPipelinePropertiesKHR;
 /// }
 ///

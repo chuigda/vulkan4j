@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExecutionGraphPipelineScratchSizeAMDX {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkDeviceSize minSize;
-///     VkDeviceSize maxSize;
-///     VkDeviceSize sizeGranularity;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceSize minSize; // @link substring="minSize" target="#minSize"
+///     VkDeviceSize maxSize; // @link substring="maxSize" target="#maxSize"
+///     VkDeviceSize sizeGranularity; // @link substring="sizeGranularity" target="#sizeGranularity"
 /// } VkExecutionGraphPipelineScratchSizeAMDX;
 /// }
 ///

@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeH264RefPicMarkingEntry {
-///     StdVideoH264MemMgmtControlOp memory_management_control_operation;
-///     uint16_t difference_of_pic_nums_minus1;
-///     uint16_t long_term_pic_num;
-///     uint16_t long_term_frame_idx;
-///     uint16_t max_long_term_frame_idx_plus1;
+///     StdVideoH264MemMgmtControlOp memory_management_control_operation; // @link substring="StdVideoH264MemMgmtControlOp" target="StdVideoH264MemMgmtControlOp" @link substring="memory_management_control_operation" target="#memory_management_control_operation"
+///     uint16_t difference_of_pic_nums_minus1; // @link substring="difference_of_pic_nums_minus1" target="#difference_of_pic_nums_minus1"
+///     uint16_t long_term_pic_num; // @link substring="long_term_pic_num" target="#long_term_pic_num"
+///     uint16_t long_term_frame_idx; // @link substring="long_term_frame_idx" target="#long_term_frame_idx"
+///     uint16_t max_long_term_frame_idx_plus1; // @link substring="max_long_term_frame_idx_plus1" target="#max_long_term_frame_idx_plus1"
 /// } StdVideoEncodeH264RefPicMarkingEntry;
 /// }
 ///

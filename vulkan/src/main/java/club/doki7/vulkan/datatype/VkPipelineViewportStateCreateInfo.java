@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineViewportStateCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineViewportStateCreateFlags flags; // optional
-///     uint32_t viewportCount; // optional
-///     VkViewport const* pViewports; // optional
-///     uint32_t scissorCount; // optional
-///     VkRect2D const* pScissors; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineViewportStateCreateFlags flags; // optional // @link substring="VkPipelineViewportStateCreateFlags" target="VkPipelineViewportStateCreateFlags" @link substring="flags" target="#flags"
+///     uint32_t viewportCount; // optional // @link substring="viewportCount" target="#viewportCount"
+///     VkViewport const* pViewports; // optional // @link substring="VkViewport" target="VkViewport" @link substring="pViewports" target="#pViewports"
+///     uint32_t scissorCount; // optional // @link substring="scissorCount" target="#scissorCount"
+///     VkRect2D const* pScissors; // optional // @link substring="VkRect2D" target="VkRect2D" @link substring="pScissors" target="#pScissors"
 /// } VkPipelineViewportStateCreateInfo;
 /// }
 ///
@@ -122,14 +122,6 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$viewportCount, OFFSET$viewportCount, value);
     }
 
-    public @pointer(target=VkViewport.class) MemorySegment pViewportsRaw() {
-        return segment.get(LAYOUT$pViewports, OFFSET$pViewports);
-    }
-
-    public void pViewportsRaw(@pointer(target=VkViewport.class) MemorySegment value) {
-        segment.set(LAYOUT$pViewports, OFFSET$pViewports, value);
-    }
-
     public @Nullable VkViewport pViewports() {
         MemorySegment s = pViewportsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -157,20 +149,20 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         return ret;
     }
 
+    public @pointer(target=VkViewport.class) MemorySegment pViewportsRaw() {
+        return segment.get(LAYOUT$pViewports, OFFSET$pViewports);
+    }
+
+    public void pViewportsRaw(@pointer(target=VkViewport.class) MemorySegment value) {
+        segment.set(LAYOUT$pViewports, OFFSET$pViewports, value);
+    }
+
     public @unsigned int scissorCount() {
         return segment.get(LAYOUT$scissorCount, OFFSET$scissorCount);
     }
 
     public void scissorCount(@unsigned int value) {
         segment.set(LAYOUT$scissorCount, OFFSET$scissorCount, value);
-    }
-
-    public @pointer(target=VkRect2D.class) MemorySegment pScissorsRaw() {
-        return segment.get(LAYOUT$pScissors, OFFSET$pScissors);
-    }
-
-    public void pScissorsRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
-        segment.set(LAYOUT$pScissors, OFFSET$pScissors, value);
     }
 
     public @Nullable VkRect2D pScissors() {
@@ -198,6 +190,14 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
             ret[i] = new VkRect2D(s.asSlice(i * VkRect2D.BYTES, VkRect2D.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkRect2D.class) MemorySegment pScissorsRaw() {
+        return segment.get(LAYOUT$pScissors, OFFSET$pScissors);
+    }
+
+    public void pScissorsRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
+        segment.set(LAYOUT$pScissors, OFFSET$pScissors, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

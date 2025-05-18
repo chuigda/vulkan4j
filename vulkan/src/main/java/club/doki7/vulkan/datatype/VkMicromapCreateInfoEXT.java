@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMicromapCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkMicromapCreateFlagsEXT createFlags; // optional
-///     VkBuffer buffer;
-///     VkDeviceSize offset;
-///     VkDeviceSize size;
-///     VkMicromapTypeEXT type;
-///     VkDeviceAddress deviceAddress; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkMicromapCreateFlagsEXT createFlags; // optional // @link substring="VkMicromapCreateFlagsEXT" target="VkMicromapCreateFlagsEXT" @link substring="createFlags" target="#createFlags"
+///     VkBuffer buffer; // @link substring="VkBuffer" target="VkBuffer" @link substring="buffer" target="#buffer"
+///     VkDeviceSize offset; // @link substring="offset" target="#offset"
+///     VkDeviceSize size; // @link substring="size" target="#size"
+///     VkMicromapTypeEXT type; // @link substring="VkMicromapTypeEXT" target="VkMicromapTypeEXT" @link substring="type" target="#type"
+///     VkDeviceAddress deviceAddress; // optional // @link substring="deviceAddress" target="#deviceAddress"
 /// } VkMicromapCreateInfoEXT;
 /// }
 ///

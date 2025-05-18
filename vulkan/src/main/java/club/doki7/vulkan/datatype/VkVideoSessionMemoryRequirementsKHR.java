@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoSessionMemoryRequirementsKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t memoryBindIndex;
-///     VkMemoryRequirements memoryRequirements;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t memoryBindIndex; // @link substring="memoryBindIndex" target="#memoryBindIndex"
+///     VkMemoryRequirements memoryRequirements; // @link substring="VkMemoryRequirements" target="VkMemoryRequirements" @link substring="memoryRequirements" target="#memoryRequirements"
 /// } VkVideoSessionMemoryRequirementsKHR;
 /// }
 ///
@@ -111,11 +111,11 @@ public record VkVideoSessionMemoryRequirementsKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$memoryBindIndex, OFFSET$memoryBindIndex, value);
     }
 
-    public VkMemoryRequirements memoryRequirements() {
+    public @NotNull VkMemoryRequirements memoryRequirements() {
         return new VkMemoryRequirements(segment.asSlice(OFFSET$memoryRequirements, LAYOUT$memoryRequirements));
     }
 
-    public void memoryRequirements(VkMemoryRequirements value) {
+    public void memoryRequirements(@NotNull VkMemoryRequirements value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryRequirements, SIZE$memoryRequirements);
     }
 

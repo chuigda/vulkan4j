@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceIDProperties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint8_t deviceUUID;
-///     uint8_t driverUUID;
-///     uint8_t deviceLUID;
-///     uint32_t deviceNodeMask;
-///     VkBool32 deviceLUIDValid;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint8_t deviceUUID; // @link substring="deviceUUID" target="#deviceUUID"
+///     uint8_t driverUUID; // @link substring="driverUUID" target="#driverUUID"
+///     uint8_t deviceLUID; // @link substring="deviceLUID" target="#deviceLUID"
+///     uint32_t deviceNodeMask; // @link substring="deviceNodeMask" target="#deviceNodeMask"
+///     VkBool32 deviceLUIDValid; // @link substring="deviceLUIDValid" target="#deviceLUIDValid"
 /// } VkPhysicalDeviceIDProperties;
 /// }
 ///

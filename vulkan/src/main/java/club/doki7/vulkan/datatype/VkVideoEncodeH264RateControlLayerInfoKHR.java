@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeH264RateControlLayerInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBool32 useMinQp;
-///     VkVideoEncodeH264QpKHR minQp;
-///     VkBool32 useMaxQp;
-///     VkVideoEncodeH264QpKHR maxQp;
-///     VkBool32 useMaxFrameSize;
-///     VkVideoEncodeH264FrameSizeKHR maxFrameSize;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 useMinQp; // @link substring="useMinQp" target="#useMinQp"
+///     VkVideoEncodeH264QpKHR minQp; // @link substring="VkVideoEncodeH264QpKHR" target="VkVideoEncodeH264QpKHR" @link substring="minQp" target="#minQp"
+///     VkBool32 useMaxQp; // @link substring="useMaxQp" target="#useMaxQp"
+///     VkVideoEncodeH264QpKHR maxQp; // @link substring="VkVideoEncodeH264QpKHR" target="VkVideoEncodeH264QpKHR" @link substring="maxQp" target="#maxQp"
+///     VkBool32 useMaxFrameSize; // @link substring="useMaxFrameSize" target="#useMaxFrameSize"
+///     VkVideoEncodeH264FrameSizeKHR maxFrameSize; // @link substring="VkVideoEncodeH264FrameSizeKHR" target="VkVideoEncodeH264FrameSizeKHR" @link substring="maxFrameSize" target="#maxFrameSize"
 /// } VkVideoEncodeH264RateControlLayerInfoKHR;
 /// }
 ///
@@ -115,11 +115,11 @@ public record VkVideoEncodeH264RateControlLayerInfoKHR(@NotNull MemorySegment se
         segment.set(LAYOUT$useMinQp, OFFSET$useMinQp, value);
     }
 
-    public VkVideoEncodeH264QpKHR minQp() {
+    public @NotNull VkVideoEncodeH264QpKHR minQp() {
         return new VkVideoEncodeH264QpKHR(segment.asSlice(OFFSET$minQp, LAYOUT$minQp));
     }
 
-    public void minQp(VkVideoEncodeH264QpKHR value) {
+    public void minQp(@NotNull VkVideoEncodeH264QpKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minQp, SIZE$minQp);
     }
 
@@ -131,11 +131,11 @@ public record VkVideoEncodeH264RateControlLayerInfoKHR(@NotNull MemorySegment se
         segment.set(LAYOUT$useMaxQp, OFFSET$useMaxQp, value);
     }
 
-    public VkVideoEncodeH264QpKHR maxQp() {
+    public @NotNull VkVideoEncodeH264QpKHR maxQp() {
         return new VkVideoEncodeH264QpKHR(segment.asSlice(OFFSET$maxQp, LAYOUT$maxQp));
     }
 
-    public void maxQp(VkVideoEncodeH264QpKHR value) {
+    public void maxQp(@NotNull VkVideoEncodeH264QpKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxQp, SIZE$maxQp);
     }
 
@@ -147,11 +147,11 @@ public record VkVideoEncodeH264RateControlLayerInfoKHR(@NotNull MemorySegment se
         segment.set(LAYOUT$useMaxFrameSize, OFFSET$useMaxFrameSize, value);
     }
 
-    public VkVideoEncodeH264FrameSizeKHR maxFrameSize() {
+    public @NotNull VkVideoEncodeH264FrameSizeKHR maxFrameSize() {
         return new VkVideoEncodeH264FrameSizeKHR(segment.asSlice(OFFSET$maxFrameSize, LAYOUT$maxFrameSize));
     }
 
-    public void maxFrameSize(VkVideoEncodeH264FrameSizeKHR value) {
+    public void maxFrameSize(@NotNull VkVideoEncodeH264FrameSizeKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFrameSize, SIZE$maxFrameSize);
     }
 

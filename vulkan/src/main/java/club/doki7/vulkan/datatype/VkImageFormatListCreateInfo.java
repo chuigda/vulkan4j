@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageFormatListCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t viewFormatCount; // optional
-///     VkFormat const* pViewFormats;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t viewFormatCount; // optional // @link substring="viewFormatCount" target="#viewFormatCount"
+///     VkFormat const* pViewFormats; // @link substring="VkFormat" target="VkFormat" @link substring="pViewFormats" target="#pViewFormats"
 /// } VkImageFormatListCreateInfo;
 /// }
 ///
@@ -111,13 +111,6 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$viewFormatCount, OFFSET$viewFormatCount, value);
     }
 
-    public @pointer(target=VkFormat.class) MemorySegment pViewFormatsRaw() {
-        return segment.get(LAYOUT$pViewFormats, OFFSET$pViewFormats);
-    }
-
-    public void pViewFormatsRaw(@pointer(target=VkFormat.class) MemorySegment value) {
-        segment.set(LAYOUT$pViewFormats, OFFSET$pViewFormats, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -134,6 +127,14 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
     public void pViewFormats(@Nullable @enumtype(VkFormat.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewFormatsRaw(s);
+    }
+
+    public @pointer(target=VkFormat.class) MemorySegment pViewFormatsRaw() {
+        return segment.get(LAYOUT$pViewFormats, OFFSET$pViewFormats);
+    }
+
+    public void pViewFormatsRaw(@pointer(target=VkFormat.class) MemorySegment value) {
+        segment.set(LAYOUT$pViewFormats, OFFSET$pViewFormats, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

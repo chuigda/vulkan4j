@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkShaderResourceUsageAMD {
-///     uint32_t numUsedVgprs;
-///     uint32_t numUsedSgprs;
-///     uint32_t ldsSizePerLocalWorkGroup;
-///     size_t ldsUsageSizeInBytes;
-///     size_t scratchMemUsageInBytes;
+///     uint32_t numUsedVgprs; // @link substring="numUsedVgprs" target="#numUsedVgprs"
+///     uint32_t numUsedSgprs; // @link substring="numUsedSgprs" target="#numUsedSgprs"
+///     uint32_t ldsSizePerLocalWorkGroup; // @link substring="ldsSizePerLocalWorkGroup" target="#ldsSizePerLocalWorkGroup"
+///     size_t ldsUsageSizeInBytes; // @link substring="ldsUsageSizeInBytes" target="#ldsUsageSizeInBytes"
+///     size_t scratchMemUsageInBytes; // @link substring="scratchMemUsageInBytes" target="#scratchMemUsageInBytes"
 /// } VkShaderResourceUsageAMD;
 /// }
 ///

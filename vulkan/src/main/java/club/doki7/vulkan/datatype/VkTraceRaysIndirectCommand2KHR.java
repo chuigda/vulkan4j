@@ -20,20 +20,20 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkTraceRaysIndirectCommand2KHR {
-///     VkDeviceAddress raygenShaderRecordAddress;
-///     VkDeviceSize raygenShaderRecordSize;
-///     VkDeviceAddress missShaderBindingTableAddress;
-///     VkDeviceSize missShaderBindingTableSize;
-///     VkDeviceSize missShaderBindingTableStride;
-///     VkDeviceAddress hitShaderBindingTableAddress;
-///     VkDeviceSize hitShaderBindingTableSize;
-///     VkDeviceSize hitShaderBindingTableStride;
-///     VkDeviceAddress callableShaderBindingTableAddress;
-///     VkDeviceSize callableShaderBindingTableSize;
-///     VkDeviceSize callableShaderBindingTableStride;
-///     uint32_t width;
-///     uint32_t height;
-///     uint32_t depth;
+///     VkDeviceAddress raygenShaderRecordAddress; // @link substring="raygenShaderRecordAddress" target="#raygenShaderRecordAddress"
+///     VkDeviceSize raygenShaderRecordSize; // @link substring="raygenShaderRecordSize" target="#raygenShaderRecordSize"
+///     VkDeviceAddress missShaderBindingTableAddress; // @link substring="missShaderBindingTableAddress" target="#missShaderBindingTableAddress"
+///     VkDeviceSize missShaderBindingTableSize; // @link substring="missShaderBindingTableSize" target="#missShaderBindingTableSize"
+///     VkDeviceSize missShaderBindingTableStride; // @link substring="missShaderBindingTableStride" target="#missShaderBindingTableStride"
+///     VkDeviceAddress hitShaderBindingTableAddress; // @link substring="hitShaderBindingTableAddress" target="#hitShaderBindingTableAddress"
+///     VkDeviceSize hitShaderBindingTableSize; // @link substring="hitShaderBindingTableSize" target="#hitShaderBindingTableSize"
+///     VkDeviceSize hitShaderBindingTableStride; // @link substring="hitShaderBindingTableStride" target="#hitShaderBindingTableStride"
+///     VkDeviceAddress callableShaderBindingTableAddress; // @link substring="callableShaderBindingTableAddress" target="#callableShaderBindingTableAddress"
+///     VkDeviceSize callableShaderBindingTableSize; // @link substring="callableShaderBindingTableSize" target="#callableShaderBindingTableSize"
+///     VkDeviceSize callableShaderBindingTableStride; // @link substring="callableShaderBindingTableStride" target="#callableShaderBindingTableStride"
+///     uint32_t width; // @link substring="width" target="#width"
+///     uint32_t height; // @link substring="height" target="#height"
+///     uint32_t depth; // @link substring="depth" target="#depth"
 /// } VkTraceRaysIndirectCommand2KHR;
 /// }
 ///

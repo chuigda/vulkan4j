@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceSurfaceInfo2KHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkSurfaceKHR surface; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSurfaceKHR surface; // optional // @link substring="VkSurfaceKHR" target="VkSurfaceKHR" @link substring="surface" target="#surface"
 /// } VkPhysicalDeviceSurfaceInfo2KHR;
 /// }
 ///

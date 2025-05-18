@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 deviceGeneratedCompute;
-///     VkBool32 deviceGeneratedComputePipelines;
-///     VkBool32 deviceGeneratedComputeCaptureReplay;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 deviceGeneratedCompute; // @link substring="deviceGeneratedCompute" target="#deviceGeneratedCompute"
+///     VkBool32 deviceGeneratedComputePipelines; // @link substring="deviceGeneratedComputePipelines" target="#deviceGeneratedComputePipelines"
+///     VkBool32 deviceGeneratedComputeCaptureReplay; // @link substring="deviceGeneratedComputeCaptureReplay" target="#deviceGeneratedComputeCaptureReplay"
 /// } VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV;
 /// }
 ///

@@ -20,39 +20,39 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceExtendedDynamicState3FeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 extendedDynamicState3TessellationDomainOrigin;
-///     VkBool32 extendedDynamicState3DepthClampEnable;
-///     VkBool32 extendedDynamicState3PolygonMode;
-///     VkBool32 extendedDynamicState3RasterizationSamples;
-///     VkBool32 extendedDynamicState3SampleMask;
-///     VkBool32 extendedDynamicState3AlphaToCoverageEnable;
-///     VkBool32 extendedDynamicState3AlphaToOneEnable;
-///     VkBool32 extendedDynamicState3LogicOpEnable;
-///     VkBool32 extendedDynamicState3ColorBlendEnable;
-///     VkBool32 extendedDynamicState3ColorBlendEquation;
-///     VkBool32 extendedDynamicState3ColorWriteMask;
-///     VkBool32 extendedDynamicState3RasterizationStream;
-///     VkBool32 extendedDynamicState3ConservativeRasterizationMode;
-///     VkBool32 extendedDynamicState3ExtraPrimitiveOverestimationSize;
-///     VkBool32 extendedDynamicState3DepthClipEnable;
-///     VkBool32 extendedDynamicState3SampleLocationsEnable;
-///     VkBool32 extendedDynamicState3ColorBlendAdvanced;
-///     VkBool32 extendedDynamicState3ProvokingVertexMode;
-///     VkBool32 extendedDynamicState3LineRasterizationMode;
-///     VkBool32 extendedDynamicState3LineStippleEnable;
-///     VkBool32 extendedDynamicState3DepthClipNegativeOneToOne;
-///     VkBool32 extendedDynamicState3ViewportWScalingEnable;
-///     VkBool32 extendedDynamicState3ViewportSwizzle;
-///     VkBool32 extendedDynamicState3CoverageToColorEnable;
-///     VkBool32 extendedDynamicState3CoverageToColorLocation;
-///     VkBool32 extendedDynamicState3CoverageModulationMode;
-///     VkBool32 extendedDynamicState3CoverageModulationTableEnable;
-///     VkBool32 extendedDynamicState3CoverageModulationTable;
-///     VkBool32 extendedDynamicState3CoverageReductionMode;
-///     VkBool32 extendedDynamicState3RepresentativeFragmentTestEnable;
-///     VkBool32 extendedDynamicState3ShadingRateImageEnable;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 extendedDynamicState3TessellationDomainOrigin; // @link substring="extendedDynamicState3TessellationDomainOrigin" target="#extendedDynamicState3TessellationDomainOrigin"
+///     VkBool32 extendedDynamicState3DepthClampEnable; // @link substring="extendedDynamicState3DepthClampEnable" target="#extendedDynamicState3DepthClampEnable"
+///     VkBool32 extendedDynamicState3PolygonMode; // @link substring="extendedDynamicState3PolygonMode" target="#extendedDynamicState3PolygonMode"
+///     VkBool32 extendedDynamicState3RasterizationSamples; // @link substring="extendedDynamicState3RasterizationSamples" target="#extendedDynamicState3RasterizationSamples"
+///     VkBool32 extendedDynamicState3SampleMask; // @link substring="extendedDynamicState3SampleMask" target="#extendedDynamicState3SampleMask"
+///     VkBool32 extendedDynamicState3AlphaToCoverageEnable; // @link substring="extendedDynamicState3AlphaToCoverageEnable" target="#extendedDynamicState3AlphaToCoverageEnable"
+///     VkBool32 extendedDynamicState3AlphaToOneEnable; // @link substring="extendedDynamicState3AlphaToOneEnable" target="#extendedDynamicState3AlphaToOneEnable"
+///     VkBool32 extendedDynamicState3LogicOpEnable; // @link substring="extendedDynamicState3LogicOpEnable" target="#extendedDynamicState3LogicOpEnable"
+///     VkBool32 extendedDynamicState3ColorBlendEnable; // @link substring="extendedDynamicState3ColorBlendEnable" target="#extendedDynamicState3ColorBlendEnable"
+///     VkBool32 extendedDynamicState3ColorBlendEquation; // @link substring="extendedDynamicState3ColorBlendEquation" target="#extendedDynamicState3ColorBlendEquation"
+///     VkBool32 extendedDynamicState3ColorWriteMask; // @link substring="extendedDynamicState3ColorWriteMask" target="#extendedDynamicState3ColorWriteMask"
+///     VkBool32 extendedDynamicState3RasterizationStream; // @link substring="extendedDynamicState3RasterizationStream" target="#extendedDynamicState3RasterizationStream"
+///     VkBool32 extendedDynamicState3ConservativeRasterizationMode; // @link substring="extendedDynamicState3ConservativeRasterizationMode" target="#extendedDynamicState3ConservativeRasterizationMode"
+///     VkBool32 extendedDynamicState3ExtraPrimitiveOverestimationSize; // @link substring="extendedDynamicState3ExtraPrimitiveOverestimationSize" target="#extendedDynamicState3ExtraPrimitiveOverestimationSize"
+///     VkBool32 extendedDynamicState3DepthClipEnable; // @link substring="extendedDynamicState3DepthClipEnable" target="#extendedDynamicState3DepthClipEnable"
+///     VkBool32 extendedDynamicState3SampleLocationsEnable; // @link substring="extendedDynamicState3SampleLocationsEnable" target="#extendedDynamicState3SampleLocationsEnable"
+///     VkBool32 extendedDynamicState3ColorBlendAdvanced; // @link substring="extendedDynamicState3ColorBlendAdvanced" target="#extendedDynamicState3ColorBlendAdvanced"
+///     VkBool32 extendedDynamicState3ProvokingVertexMode; // @link substring="extendedDynamicState3ProvokingVertexMode" target="#extendedDynamicState3ProvokingVertexMode"
+///     VkBool32 extendedDynamicState3LineRasterizationMode; // @link substring="extendedDynamicState3LineRasterizationMode" target="#extendedDynamicState3LineRasterizationMode"
+///     VkBool32 extendedDynamicState3LineStippleEnable; // @link substring="extendedDynamicState3LineStippleEnable" target="#extendedDynamicState3LineStippleEnable"
+///     VkBool32 extendedDynamicState3DepthClipNegativeOneToOne; // @link substring="extendedDynamicState3DepthClipNegativeOneToOne" target="#extendedDynamicState3DepthClipNegativeOneToOne"
+///     VkBool32 extendedDynamicState3ViewportWScalingEnable; // @link substring="extendedDynamicState3ViewportWScalingEnable" target="#extendedDynamicState3ViewportWScalingEnable"
+///     VkBool32 extendedDynamicState3ViewportSwizzle; // @link substring="extendedDynamicState3ViewportSwizzle" target="#extendedDynamicState3ViewportSwizzle"
+///     VkBool32 extendedDynamicState3CoverageToColorEnable; // @link substring="extendedDynamicState3CoverageToColorEnable" target="#extendedDynamicState3CoverageToColorEnable"
+///     VkBool32 extendedDynamicState3CoverageToColorLocation; // @link substring="extendedDynamicState3CoverageToColorLocation" target="#extendedDynamicState3CoverageToColorLocation"
+///     VkBool32 extendedDynamicState3CoverageModulationMode; // @link substring="extendedDynamicState3CoverageModulationMode" target="#extendedDynamicState3CoverageModulationMode"
+///     VkBool32 extendedDynamicState3CoverageModulationTableEnable; // @link substring="extendedDynamicState3CoverageModulationTableEnable" target="#extendedDynamicState3CoverageModulationTableEnable"
+///     VkBool32 extendedDynamicState3CoverageModulationTable; // @link substring="extendedDynamicState3CoverageModulationTable" target="#extendedDynamicState3CoverageModulationTable"
+///     VkBool32 extendedDynamicState3CoverageReductionMode; // @link substring="extendedDynamicState3CoverageReductionMode" target="#extendedDynamicState3CoverageReductionMode"
+///     VkBool32 extendedDynamicState3RepresentativeFragmentTestEnable; // @link substring="extendedDynamicState3RepresentativeFragmentTestEnable" target="#extendedDynamicState3RepresentativeFragmentTestEnable"
+///     VkBool32 extendedDynamicState3ShadingRateImageEnable; // @link substring="extendedDynamicState3ShadingRateImageEnable" target="#extendedDynamicState3ShadingRateImageEnable"
 /// } VkPhysicalDeviceExtendedDynamicState3FeaturesEXT;
 /// }
 ///

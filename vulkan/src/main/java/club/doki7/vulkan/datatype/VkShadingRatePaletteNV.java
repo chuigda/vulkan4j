@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkShadingRatePaletteNV {
-///     uint32_t shadingRatePaletteEntryCount;
-///     VkShadingRatePaletteEntryNV const* pShadingRatePaletteEntries;
+///     uint32_t shadingRatePaletteEntryCount; // @link substring="shadingRatePaletteEntryCount" target="#shadingRatePaletteEntryCount"
+///     VkShadingRatePaletteEntryNV const* pShadingRatePaletteEntries; // @link substring="VkShadingRatePaletteEntryNV" target="VkShadingRatePaletteEntryNV" @link substring="pShadingRatePaletteEntries" target="#pShadingRatePaletteEntries"
 /// } VkShadingRatePaletteNV;
 /// }
 ///
@@ -75,13 +75,6 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$shadingRatePaletteEntryCount, OFFSET$shadingRatePaletteEntryCount, value);
     }
 
-    public @pointer(target=VkShadingRatePaletteEntryNV.class) MemorySegment pShadingRatePaletteEntriesRaw() {
-        return segment.get(LAYOUT$pShadingRatePaletteEntries, OFFSET$pShadingRatePaletteEntries);
-    }
-
-    public void pShadingRatePaletteEntriesRaw(@pointer(target=VkShadingRatePaletteEntryNV.class) MemorySegment value) {
-        segment.set(LAYOUT$pShadingRatePaletteEntries, OFFSET$pShadingRatePaletteEntries, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -98,6 +91,14 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
     public void pShadingRatePaletteEntries(@Nullable @enumtype(VkShadingRatePaletteEntryNV.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pShadingRatePaletteEntriesRaw(s);
+    }
+
+    public @pointer(target=VkShadingRatePaletteEntryNV.class) MemorySegment pShadingRatePaletteEntriesRaw() {
+        return segment.get(LAYOUT$pShadingRatePaletteEntries, OFFSET$pShadingRatePaletteEntries);
+    }
+
+    public void pShadingRatePaletteEntriesRaw(@pointer(target=VkShadingRatePaletteEntryNV.class) MemorySegment value) {
+        segment.set(LAYOUT$pShadingRatePaletteEntries, OFFSET$pShadingRatePaletteEntries, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

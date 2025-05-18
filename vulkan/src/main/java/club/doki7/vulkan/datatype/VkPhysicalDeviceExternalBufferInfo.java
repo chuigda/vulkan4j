@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceExternalBufferInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBufferCreateFlags flags; // optional
-///     VkBufferUsageFlags usage; // optional
-///     VkExternalMemoryHandleTypeFlags handleType;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBufferCreateFlags flags; // optional // @link substring="VkBufferCreateFlags" target="VkBufferCreateFlags" @link substring="flags" target="#flags"
+///     VkBufferUsageFlags usage; // optional // @link substring="VkBufferUsageFlags" target="VkBufferUsageFlags" @link substring="usage" target="#usage"
+///     VkExternalMemoryHandleTypeFlags handleType; // @link substring="VkExternalMemoryHandleTypeFlags" target="VkExternalMemoryHandleTypeFlags" @link substring="handleType" target="#handleType"
 /// } VkPhysicalDeviceExternalBufferInfo;
 /// }
 ///

@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDrawIndirectCountIndirectCommandEXT {
-///     VkDeviceAddress bufferAddress;
-///     uint32_t stride;
-///     uint32_t commandCount;
+///     VkDeviceAddress bufferAddress; // @link substring="bufferAddress" target="#bufferAddress"
+///     uint32_t stride; // @link substring="stride" target="#stride"
+///     uint32_t commandCount; // @link substring="commandCount" target="#commandCount"
 /// } VkDrawIndirectCountIndirectCommandEXT;
 /// }
 ///

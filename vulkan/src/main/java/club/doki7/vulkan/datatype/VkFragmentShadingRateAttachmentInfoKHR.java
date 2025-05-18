@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkFragmentShadingRateAttachmentInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkAttachmentReference2 const* pFragmentShadingRateAttachment; // optional
-///     VkExtent2D shadingRateAttachmentTexelSize;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkAttachmentReference2 const* pFragmentShadingRateAttachment; // optional // @link substring="VkAttachmentReference2" target="VkAttachmentReference2" @link substring="pFragmentShadingRateAttachment" target="#pFragmentShadingRateAttachment"
+///     VkExtent2D shadingRateAttachmentTexelSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="shadingRateAttachmentTexelSize" target="#shadingRateAttachmentTexelSize"
 /// } VkFragmentShadingRateAttachmentInfoKHR;
 /// }
 ///
@@ -103,14 +103,6 @@ public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(target=VkAttachmentReference2.class) MemorySegment pFragmentShadingRateAttachmentRaw() {
-        return segment.get(LAYOUT$pFragmentShadingRateAttachment, OFFSET$pFragmentShadingRateAttachment);
-    }
-
-    public void pFragmentShadingRateAttachmentRaw(@pointer(target=VkAttachmentReference2.class) MemorySegment value) {
-        segment.set(LAYOUT$pFragmentShadingRateAttachment, OFFSET$pFragmentShadingRateAttachment, value);
-    }
-
     public @Nullable VkAttachmentReference2 pFragmentShadingRateAttachment() {
         MemorySegment s = pFragmentShadingRateAttachmentRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -138,11 +130,19 @@ public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segm
         return ret;
     }
 
-    public VkExtent2D shadingRateAttachmentTexelSize() {
+    public @pointer(target=VkAttachmentReference2.class) MemorySegment pFragmentShadingRateAttachmentRaw() {
+        return segment.get(LAYOUT$pFragmentShadingRateAttachment, OFFSET$pFragmentShadingRateAttachment);
+    }
+
+    public void pFragmentShadingRateAttachmentRaw(@pointer(target=VkAttachmentReference2.class) MemorySegment value) {
+        segment.set(LAYOUT$pFragmentShadingRateAttachment, OFFSET$pFragmentShadingRateAttachment, value);
+    }
+
+    public @NotNull VkExtent2D shadingRateAttachmentTexelSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$shadingRateAttachmentTexelSize, LAYOUT$shadingRateAttachmentTexelSize));
     }
 
-    public void shadingRateAttachmentTexelSize(VkExtent2D value) {
+    public void shadingRateAttachmentTexelSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$shadingRateAttachmentTexelSize, SIZE$shadingRateAttachmentTexelSize);
     }
 

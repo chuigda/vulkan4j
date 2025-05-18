@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSwapchainDisplayNativeHdrCreateInfoAMD {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBool32 localDimmingEnable;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 localDimmingEnable; // @link substring="localDimmingEnable" target="#localDimmingEnable"
 /// } VkSwapchainDisplayNativeHdrCreateInfoAMD;
 /// }
 ///

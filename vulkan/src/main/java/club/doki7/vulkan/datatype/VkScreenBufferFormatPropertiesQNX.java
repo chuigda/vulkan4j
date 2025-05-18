@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkScreenBufferFormatPropertiesQNX {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkFormat format;
-///     uint64_t externalFormat;
-///     uint64_t screenUsage;
-///     VkFormatFeatureFlags formatFeatures;
-///     VkComponentMapping samplerYcbcrConversionComponents;
-///     VkSamplerYcbcrModelConversion suggestedYcbcrModel;
-///     VkSamplerYcbcrRange suggestedYcbcrRange;
-///     VkChromaLocation suggestedXChromaOffset;
-///     VkChromaLocation suggestedYChromaOffset;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkFormat format; // @link substring="VkFormat" target="VkFormat" @link substring="format" target="#format"
+///     uint64_t externalFormat; // @link substring="externalFormat" target="#externalFormat"
+///     uint64_t screenUsage; // @link substring="screenUsage" target="#screenUsage"
+///     VkFormatFeatureFlags formatFeatures; // @link substring="VkFormatFeatureFlags" target="VkFormatFeatureFlags" @link substring="formatFeatures" target="#formatFeatures"
+///     VkComponentMapping samplerYcbcrConversionComponents; // @link substring="VkComponentMapping" target="VkComponentMapping" @link substring="samplerYcbcrConversionComponents" target="#samplerYcbcrConversionComponents"
+///     VkSamplerYcbcrModelConversion suggestedYcbcrModel; // @link substring="VkSamplerYcbcrModelConversion" target="VkSamplerYcbcrModelConversion" @link substring="suggestedYcbcrModel" target="#suggestedYcbcrModel"
+///     VkSamplerYcbcrRange suggestedYcbcrRange; // @link substring="VkSamplerYcbcrRange" target="VkSamplerYcbcrRange" @link substring="suggestedYcbcrRange" target="#suggestedYcbcrRange"
+///     VkChromaLocation suggestedXChromaOffset; // @link substring="VkChromaLocation" target="VkChromaLocation" @link substring="suggestedXChromaOffset" target="#suggestedXChromaOffset"
+///     VkChromaLocation suggestedYChromaOffset; // @link substring="VkChromaLocation" target="VkChromaLocation" @link substring="suggestedYChromaOffset" target="#suggestedYChromaOffset"
 /// } VkScreenBufferFormatPropertiesQNX;
 /// }
 ///
@@ -142,11 +142,11 @@ public record VkScreenBufferFormatPropertiesQNX(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$formatFeatures, OFFSET$formatFeatures, value);
     }
 
-    public VkComponentMapping samplerYcbcrConversionComponents() {
+    public @NotNull VkComponentMapping samplerYcbcrConversionComponents() {
         return new VkComponentMapping(segment.asSlice(OFFSET$samplerYcbcrConversionComponents, LAYOUT$samplerYcbcrConversionComponents));
     }
 
-    public void samplerYcbcrConversionComponents(VkComponentMapping value) {
+    public void samplerYcbcrConversionComponents(@NotNull VkComponentMapping value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$samplerYcbcrConversionComponents, SIZE$samplerYcbcrConversionComponents);
     }
 

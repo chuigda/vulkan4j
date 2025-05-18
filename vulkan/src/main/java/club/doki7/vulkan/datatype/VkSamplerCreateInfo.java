@@ -20,24 +20,24 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSamplerCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkSamplerCreateFlags flags; // optional
-///     VkFilter magFilter;
-///     VkFilter minFilter;
-///     VkSamplerMipmapMode mipmapMode;
-///     VkSamplerAddressMode addressModeU;
-///     VkSamplerAddressMode addressModeV;
-///     VkSamplerAddressMode addressModeW;
-///     float mipLodBias;
-///     VkBool32 anisotropyEnable;
-///     float maxAnisotropy;
-///     VkBool32 compareEnable;
-///     VkCompareOp compareOp;
-///     float minLod;
-///     float maxLod;
-///     VkBorderColor borderColor;
-///     VkBool32 unnormalizedCoordinates;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSamplerCreateFlags flags; // optional // @link substring="VkSamplerCreateFlags" target="VkSamplerCreateFlags" @link substring="flags" target="#flags"
+///     VkFilter magFilter; // @link substring="VkFilter" target="VkFilter" @link substring="magFilter" target="#magFilter"
+///     VkFilter minFilter; // @link substring="VkFilter" target="VkFilter" @link substring="minFilter" target="#minFilter"
+///     VkSamplerMipmapMode mipmapMode; // @link substring="VkSamplerMipmapMode" target="VkSamplerMipmapMode" @link substring="mipmapMode" target="#mipmapMode"
+///     VkSamplerAddressMode addressModeU; // @link substring="VkSamplerAddressMode" target="VkSamplerAddressMode" @link substring="addressModeU" target="#addressModeU"
+///     VkSamplerAddressMode addressModeV; // @link substring="VkSamplerAddressMode" target="VkSamplerAddressMode" @link substring="addressModeV" target="#addressModeV"
+///     VkSamplerAddressMode addressModeW; // @link substring="VkSamplerAddressMode" target="VkSamplerAddressMode" @link substring="addressModeW" target="#addressModeW"
+///     float mipLodBias; // @link substring="mipLodBias" target="#mipLodBias"
+///     VkBool32 anisotropyEnable; // @link substring="anisotropyEnable" target="#anisotropyEnable"
+///     float maxAnisotropy; // @link substring="maxAnisotropy" target="#maxAnisotropy"
+///     VkBool32 compareEnable; // @link substring="compareEnable" target="#compareEnable"
+///     VkCompareOp compareOp; // @link substring="VkCompareOp" target="VkCompareOp" @link substring="compareOp" target="#compareOp"
+///     float minLod; // @link substring="minLod" target="#minLod"
+///     float maxLod; // @link substring="maxLod" target="#maxLod"
+///     VkBorderColor borderColor; // @link substring="VkBorderColor" target="VkBorderColor" @link substring="borderColor" target="#borderColor"
+///     VkBool32 unnormalizedCoordinates; // @link substring="unnormalizedCoordinates" target="#unnormalizedCoordinates"
 /// } VkSamplerCreateInfo;
 /// }
 ///

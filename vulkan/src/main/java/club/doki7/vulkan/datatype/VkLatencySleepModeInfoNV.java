@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkLatencySleepModeInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBool32 lowLatencyMode;
-///     VkBool32 lowLatencyBoost;
-///     uint32_t minimumIntervalUs;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 lowLatencyMode; // @link substring="lowLatencyMode" target="#lowLatencyMode"
+///     VkBool32 lowLatencyBoost; // @link substring="lowLatencyBoost" target="#lowLatencyBoost"
+///     uint32_t minimumIntervalUs; // @link substring="minimumIntervalUs" target="#minimumIntervalUs"
 /// } VkLatencySleepModeInfoNV;
 /// }
 ///

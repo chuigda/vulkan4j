@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPushDescriptorSetWithTemplateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDescriptorUpdateTemplate descriptorUpdateTemplate;
-///     VkPipelineLayout layout; // optional
-///     uint32_t set; // optional
-///     void const* pData;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDescriptorUpdateTemplate descriptorUpdateTemplate; // @link substring="VkDescriptorUpdateTemplate" target="VkDescriptorUpdateTemplate" @link substring="descriptorUpdateTemplate" target="#descriptorUpdateTemplate"
+///     VkPipelineLayout layout; // optional // @link substring="VkPipelineLayout" target="VkPipelineLayout" @link substring="layout" target="#layout"
+///     uint32_t set; // optional // @link substring="set" target="#set"
+///     void const* pData; // @link substring="pData" target="#pData"
 /// } VkPushDescriptorSetWithTemplateInfo;
 /// }
 ///

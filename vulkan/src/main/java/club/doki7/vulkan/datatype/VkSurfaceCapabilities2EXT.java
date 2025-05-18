@@ -20,19 +20,19 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSurfaceCapabilities2EXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t minImageCount;
-///     uint32_t maxImageCount;
-///     VkExtent2D currentExtent;
-///     VkExtent2D minImageExtent;
-///     VkExtent2D maxImageExtent;
-///     uint32_t maxImageArrayLayers;
-///     VkSurfaceTransformFlagsKHR supportedTransforms;
-///     VkSurfaceTransformFlagsKHR currentTransform;
-///     VkCompositeAlphaFlagsKHR supportedCompositeAlpha;
-///     VkImageUsageFlags supportedUsageFlags;
-///     VkSurfaceCounterFlagsEXT supportedSurfaceCounters; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t minImageCount; // @link substring="minImageCount" target="#minImageCount"
+///     uint32_t maxImageCount; // @link substring="maxImageCount" target="#maxImageCount"
+///     VkExtent2D currentExtent; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="currentExtent" target="#currentExtent"
+///     VkExtent2D minImageExtent; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="minImageExtent" target="#minImageExtent"
+///     VkExtent2D maxImageExtent; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxImageExtent" target="#maxImageExtent"
+///     uint32_t maxImageArrayLayers; // @link substring="maxImageArrayLayers" target="#maxImageArrayLayers"
+///     VkSurfaceTransformFlagsKHR supportedTransforms; // @link substring="VkSurfaceTransformFlagsKHR" target="VkSurfaceTransformFlagsKHR" @link substring="supportedTransforms" target="#supportedTransforms"
+///     VkSurfaceTransformFlagsKHR currentTransform; // @link substring="VkSurfaceTransformFlagsKHR" target="VkSurfaceTransformFlagsKHR" @link substring="currentTransform" target="#currentTransform"
+///     VkCompositeAlphaFlagsKHR supportedCompositeAlpha; // @link substring="VkCompositeAlphaFlagsKHR" target="VkCompositeAlphaFlagsKHR" @link substring="supportedCompositeAlpha" target="#supportedCompositeAlpha"
+///     VkImageUsageFlags supportedUsageFlags; // @link substring="VkImageUsageFlags" target="VkImageUsageFlags" @link substring="supportedUsageFlags" target="#supportedUsageFlags"
+///     VkSurfaceCounterFlagsEXT supportedSurfaceCounters; // optional // @link substring="VkSurfaceCounterFlagsEXT" target="VkSurfaceCounterFlagsEXT" @link substring="supportedSurfaceCounters" target="#supportedSurfaceCounters"
 /// } VkSurfaceCapabilities2EXT;
 /// }
 ///
@@ -128,27 +128,27 @@ public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$maxImageCount, OFFSET$maxImageCount, value);
     }
 
-    public VkExtent2D currentExtent() {
+    public @NotNull VkExtent2D currentExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$currentExtent, LAYOUT$currentExtent));
     }
 
-    public void currentExtent(VkExtent2D value) {
+    public void currentExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$currentExtent, SIZE$currentExtent);
     }
 
-    public VkExtent2D minImageExtent() {
+    public @NotNull VkExtent2D minImageExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$minImageExtent, LAYOUT$minImageExtent));
     }
 
-    public void minImageExtent(VkExtent2D value) {
+    public void minImageExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minImageExtent, SIZE$minImageExtent);
     }
 
-    public VkExtent2D maxImageExtent() {
+    public @NotNull VkExtent2D maxImageExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxImageExtent, LAYOUT$maxImageExtent));
     }
 
-    public void maxImageExtent(VkExtent2D value) {
+    public void maxImageExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxImageExtent, SIZE$maxImageExtent);
     }
 

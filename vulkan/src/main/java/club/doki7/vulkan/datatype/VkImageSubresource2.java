@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageSubresource2 {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkImageSubresource imageSubresource;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageSubresource imageSubresource; // @link substring="VkImageSubresource" target="VkImageSubresource" @link substring="imageSubresource" target="#imageSubresource"
 /// } VkImageSubresource2;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkImageSubresource2(@NotNull MemorySegment segment) implements IPo
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkImageSubresource imageSubresource() {
+    public @NotNull VkImageSubresource imageSubresource() {
         return new VkImageSubresource(segment.asSlice(OFFSET$imageSubresource, LAYOUT$imageSubresource));
     }
 
-    public void imageSubresource(VkImageSubresource value) {
+    public void imageSubresource(@NotNull VkImageSubresource value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageSubresource, SIZE$imageSubresource);
     }
 

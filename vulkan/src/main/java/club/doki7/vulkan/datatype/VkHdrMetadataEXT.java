@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkHdrMetadataEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkXYColorEXT displayPrimaryRed;
-///     VkXYColorEXT displayPrimaryGreen;
-///     VkXYColorEXT displayPrimaryBlue;
-///     VkXYColorEXT whitePoint;
-///     float maxLuminance;
-///     float minLuminance;
-///     float maxContentLightLevel;
-///     float maxFrameAverageLightLevel;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkXYColorEXT displayPrimaryRed; // @link substring="VkXYColorEXT" target="VkXYColorEXT" @link substring="displayPrimaryRed" target="#displayPrimaryRed"
+///     VkXYColorEXT displayPrimaryGreen; // @link substring="VkXYColorEXT" target="VkXYColorEXT" @link substring="displayPrimaryGreen" target="#displayPrimaryGreen"
+///     VkXYColorEXT displayPrimaryBlue; // @link substring="VkXYColorEXT" target="VkXYColorEXT" @link substring="displayPrimaryBlue" target="#displayPrimaryBlue"
+///     VkXYColorEXT whitePoint; // @link substring="VkXYColorEXT" target="VkXYColorEXT" @link substring="whitePoint" target="#whitePoint"
+///     float maxLuminance; // @link substring="maxLuminance" target="#maxLuminance"
+///     float minLuminance; // @link substring="minLuminance" target="#minLuminance"
+///     float maxContentLightLevel; // @link substring="maxContentLightLevel" target="#maxContentLightLevel"
+///     float maxFrameAverageLightLevel; // @link substring="maxFrameAverageLightLevel" target="#maxFrameAverageLightLevel"
 /// } VkHdrMetadataEXT;
 /// }
 ///
@@ -109,35 +109,35 @@ public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IPoint
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkXYColorEXT displayPrimaryRed() {
+    public @NotNull VkXYColorEXT displayPrimaryRed() {
         return new VkXYColorEXT(segment.asSlice(OFFSET$displayPrimaryRed, LAYOUT$displayPrimaryRed));
     }
 
-    public void displayPrimaryRed(VkXYColorEXT value) {
+    public void displayPrimaryRed(@NotNull VkXYColorEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayPrimaryRed, SIZE$displayPrimaryRed);
     }
 
-    public VkXYColorEXT displayPrimaryGreen() {
+    public @NotNull VkXYColorEXT displayPrimaryGreen() {
         return new VkXYColorEXT(segment.asSlice(OFFSET$displayPrimaryGreen, LAYOUT$displayPrimaryGreen));
     }
 
-    public void displayPrimaryGreen(VkXYColorEXT value) {
+    public void displayPrimaryGreen(@NotNull VkXYColorEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayPrimaryGreen, SIZE$displayPrimaryGreen);
     }
 
-    public VkXYColorEXT displayPrimaryBlue() {
+    public @NotNull VkXYColorEXT displayPrimaryBlue() {
         return new VkXYColorEXT(segment.asSlice(OFFSET$displayPrimaryBlue, LAYOUT$displayPrimaryBlue));
     }
 
-    public void displayPrimaryBlue(VkXYColorEXT value) {
+    public void displayPrimaryBlue(@NotNull VkXYColorEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayPrimaryBlue, SIZE$displayPrimaryBlue);
     }
 
-    public VkXYColorEXT whitePoint() {
+    public @NotNull VkXYColorEXT whitePoint() {
         return new VkXYColorEXT(segment.asSlice(OFFSET$whitePoint, LAYOUT$whitePoint));
     }
 
-    public void whitePoint(VkXYColorEXT value) {
+    public void whitePoint(@NotNull VkXYColorEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$whitePoint, SIZE$whitePoint);
     }
 

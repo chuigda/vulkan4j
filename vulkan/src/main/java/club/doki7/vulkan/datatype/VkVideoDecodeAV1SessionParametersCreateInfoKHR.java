@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoDecodeAV1SessionParametersCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     StdVideoAV1SequenceHeader const* pStdSequenceHeader;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     StdVideoAV1SequenceHeader const* pStdSequenceHeader; // @link substring="StdVideoAV1SequenceHeader" target="StdVideoAV1SequenceHeader" @link substring="pStdSequenceHeader" target="#pStdSequenceHeader"
 /// } VkVideoDecodeAV1SessionParametersCreateInfoKHR;
 /// }
 ///
@@ -102,14 +102,6 @@ public record VkVideoDecodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment pStdSequenceHeaderRaw() {
-        return segment.get(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader);
-    }
-
-    public void pStdSequenceHeaderRaw(@pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment value) {
-        segment.set(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader, value);
-    }
-
     public @Nullable StdVideoAV1SequenceHeader pStdSequenceHeader() {
         MemorySegment s = pStdSequenceHeaderRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -135,6 +127,14 @@ public record VkVideoDecodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
             ret[i] = new StdVideoAV1SequenceHeader(s.asSlice(i * StdVideoAV1SequenceHeader.BYTES, StdVideoAV1SequenceHeader.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment pStdSequenceHeaderRaw() {
+        return segment.get(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader);
+    }
+
+    public void pStdSequenceHeaderRaw(@pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment value) {
+        segment.set(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

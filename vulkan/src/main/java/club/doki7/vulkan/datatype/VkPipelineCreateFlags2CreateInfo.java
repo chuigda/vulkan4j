@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineCreateFlags2CreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineCreateFlags2 flags;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineCreateFlags2 flags; // @link substring="VkPipelineCreateFlags2" target="VkPipelineCreateFlags2" @link substring="flags" target="#flags"
 /// } VkPipelineCreateFlags2CreateInfo;
 /// }
 ///

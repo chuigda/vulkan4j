@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceInlineUniformBlockFeatures {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 inlineUniformBlock;
-///     VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 inlineUniformBlock; // @link substring="inlineUniformBlock" target="#inlineUniformBlock"
+///     VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind; // @link substring="descriptorBindingInlineUniformBlockUpdateAfterBind" target="#descriptorBindingInlineUniformBlockUpdateAfterBind"
 /// } VkPhysicalDeviceInlineUniformBlockFeatures;
 /// }
 ///

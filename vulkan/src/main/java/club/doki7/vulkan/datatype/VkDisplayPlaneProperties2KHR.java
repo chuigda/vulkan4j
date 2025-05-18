@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDisplayPlaneProperties2KHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkDisplayPlanePropertiesKHR displayPlaneProperties;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDisplayPlanePropertiesKHR displayPlaneProperties; // @link substring="VkDisplayPlanePropertiesKHR" target="VkDisplayPlanePropertiesKHR" @link substring="displayPlaneProperties" target="#displayPlaneProperties"
 /// } VkDisplayPlaneProperties2KHR;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkDisplayPlaneProperties2KHR(@NotNull MemorySegment segment) imple
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkDisplayPlanePropertiesKHR displayPlaneProperties() {
+    public @NotNull VkDisplayPlanePropertiesKHR displayPlaneProperties() {
         return new VkDisplayPlanePropertiesKHR(segment.asSlice(OFFSET$displayPlaneProperties, LAYOUT$displayPlaneProperties));
     }
 
-    public void displayPlaneProperties(VkDisplayPlanePropertiesKHR value) {
+    public void displayPlaneProperties(@NotNull VkDisplayPlanePropertiesKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayPlaneProperties, SIZE$displayPlaneProperties);
     }
 

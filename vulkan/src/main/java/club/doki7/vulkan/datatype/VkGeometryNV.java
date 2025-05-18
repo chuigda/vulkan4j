@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkGeometryNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkGeometryTypeKHR geometryType;
-///     VkGeometryDataNV geometry;
-///     VkGeometryFlagsKHR flags; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkGeometryTypeKHR geometryType; // @link substring="VkGeometryTypeKHR" target="VkGeometryTypeKHR" @link substring="geometryType" target="#geometryType"
+///     VkGeometryDataNV geometry; // @link substring="VkGeometryDataNV" target="VkGeometryDataNV" @link substring="geometry" target="#geometry"
+///     VkGeometryFlagsKHR flags; // optional // @link substring="VkGeometryFlagsKHR" target="VkGeometryFlagsKHR" @link substring="flags" target="#flags"
 /// } VkGeometryNV;
 /// }
 ///
@@ -112,11 +112,11 @@ public record VkGeometryNV(@NotNull MemorySegment segment) implements IPointer {
         segment.set(LAYOUT$geometryType, OFFSET$geometryType, value);
     }
 
-    public VkGeometryDataNV geometry() {
+    public @NotNull VkGeometryDataNV geometry() {
         return new VkGeometryDataNV(segment.asSlice(OFFSET$geometry, LAYOUT$geometry));
     }
 
-    public void geometry(VkGeometryDataNV value) {
+    public void geometry(@NotNull VkGeometryDataNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$geometry, SIZE$geometry);
     }
 

@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSparseMemoryBind {
-///     VkDeviceSize resourceOffset;
-///     VkDeviceSize size;
-///     VkDeviceMemory memory; // optional
-///     VkDeviceSize memoryOffset;
-///     VkSparseMemoryBindFlags flags; // optional
+///     VkDeviceSize resourceOffset; // @link substring="resourceOffset" target="#resourceOffset"
+///     VkDeviceSize size; // @link substring="size" target="#size"
+///     VkDeviceMemory memory; // optional // @link substring="VkDeviceMemory" target="VkDeviceMemory" @link substring="memory" target="#memory"
+///     VkDeviceSize memoryOffset; // @link substring="memoryOffset" target="#memoryOffset"
+///     VkSparseMemoryBindFlags flags; // optional // @link substring="VkSparseMemoryBindFlags" target="VkSparseMemoryBindFlags" @link substring="flags" target="#flags"
 /// } VkSparseMemoryBind;
 /// }
 ///

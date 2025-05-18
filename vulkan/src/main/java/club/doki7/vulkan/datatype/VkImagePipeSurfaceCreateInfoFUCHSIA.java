@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImagePipeSurfaceCreateInfoFUCHSIA {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImagePipeSurfaceCreateFlagsFUCHSIA flags; // optional
-///     zx_handle_t imagePipeHandle;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImagePipeSurfaceCreateFlagsFUCHSIA flags; // optional // @link substring="VkImagePipeSurfaceCreateFlagsFUCHSIA" target="VkImagePipeSurfaceCreateFlagsFUCHSIA" @link substring="flags" target="#flags"
+///     zx_handle_t imagePipeHandle; // @link substring="imagePipeHandle" target="#imagePipeHandle"
 /// } VkImagePipeSurfaceCreateInfoFUCHSIA;
 /// }
 ///

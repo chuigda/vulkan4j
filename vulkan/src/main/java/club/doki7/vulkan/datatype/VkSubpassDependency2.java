@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSubpassDependency2 {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t srcSubpass;
-///     uint32_t dstSubpass;
-///     VkPipelineStageFlags srcStageMask; // optional
-///     VkPipelineStageFlags dstStageMask; // optional
-///     VkAccessFlags srcAccessMask; // optional
-///     VkAccessFlags dstAccessMask; // optional
-///     VkDependencyFlags dependencyFlags; // optional
-///     int32_t viewOffset;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t srcSubpass; // @link substring="srcSubpass" target="#srcSubpass"
+///     uint32_t dstSubpass; // @link substring="dstSubpass" target="#dstSubpass"
+///     VkPipelineStageFlags srcStageMask; // optional // @link substring="VkPipelineStageFlags" target="VkPipelineStageFlags" @link substring="srcStageMask" target="#srcStageMask"
+///     VkPipelineStageFlags dstStageMask; // optional // @link substring="VkPipelineStageFlags" target="VkPipelineStageFlags" @link substring="dstStageMask" target="#dstStageMask"
+///     VkAccessFlags srcAccessMask; // optional // @link substring="VkAccessFlags" target="VkAccessFlags" @link substring="srcAccessMask" target="#srcAccessMask"
+///     VkAccessFlags dstAccessMask; // optional // @link substring="VkAccessFlags" target="VkAccessFlags" @link substring="dstAccessMask" target="#dstAccessMask"
+///     VkDependencyFlags dependencyFlags; // optional // @link substring="VkDependencyFlags" target="VkDependencyFlags" @link substring="dependencyFlags" target="#dependencyFlags"
+///     int32_t viewOffset; // @link substring="viewOffset" target="#viewOffset"
 /// } VkSubpassDependency2;
 /// }
 ///

@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSubpassDescription {
-///     VkSubpassDescriptionFlags flags; // optional
-///     VkPipelineBindPoint pipelineBindPoint;
-///     uint32_t inputAttachmentCount; // optional
-///     VkAttachmentReference const* pInputAttachments;
-///     uint32_t colorAttachmentCount; // optional
-///     VkAttachmentReference const* pColorAttachments;
-///     VkAttachmentReference const* pResolveAttachments; // optional
-///     VkAttachmentReference const* pDepthStencilAttachment; // optional
-///     uint32_t preserveAttachmentCount; // optional
-///     uint32_t const* pPreserveAttachments;
+///     VkSubpassDescriptionFlags flags; // optional // @link substring="VkSubpassDescriptionFlags" target="VkSubpassDescriptionFlags" @link substring="flags" target="#flags"
+///     VkPipelineBindPoint pipelineBindPoint; // @link substring="VkPipelineBindPoint" target="VkPipelineBindPoint" @link substring="pipelineBindPoint" target="#pipelineBindPoint"
+///     uint32_t inputAttachmentCount; // optional // @link substring="inputAttachmentCount" target="#inputAttachmentCount"
+///     VkAttachmentReference const* pInputAttachments; // @link substring="VkAttachmentReference" target="VkAttachmentReference" @link substring="pInputAttachments" target="#pInputAttachments"
+///     uint32_t colorAttachmentCount; // optional // @link substring="colorAttachmentCount" target="#colorAttachmentCount"
+///     VkAttachmentReference const* pColorAttachments; // @link substring="VkAttachmentReference" target="VkAttachmentReference" @link substring="pColorAttachments" target="#pColorAttachments"
+///     VkAttachmentReference const* pResolveAttachments; // optional // @link substring="VkAttachmentReference" target="VkAttachmentReference" @link substring="pResolveAttachments" target="#pResolveAttachments"
+///     VkAttachmentReference const* pDepthStencilAttachment; // optional // @link substring="VkAttachmentReference" target="VkAttachmentReference" @link substring="pDepthStencilAttachment" target="#pDepthStencilAttachment"
+///     uint32_t preserveAttachmentCount; // optional // @link substring="preserveAttachmentCount" target="#preserveAttachmentCount"
+///     uint32_t const* pPreserveAttachments; // @link substring="pPreserveAttachments" target="#pPreserveAttachments"
 /// } VkSubpassDescription;
 /// }
 ///
@@ -99,14 +99,6 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$inputAttachmentCount, OFFSET$inputAttachmentCount, value);
     }
 
-    public @pointer(target=VkAttachmentReference.class) MemorySegment pInputAttachmentsRaw() {
-        return segment.get(LAYOUT$pInputAttachments, OFFSET$pInputAttachments);
-    }
-
-    public void pInputAttachmentsRaw(@pointer(target=VkAttachmentReference.class) MemorySegment value) {
-        segment.set(LAYOUT$pInputAttachments, OFFSET$pInputAttachments, value);
-    }
-
     public @Nullable VkAttachmentReference pInputAttachments() {
         MemorySegment s = pInputAttachmentsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -134,20 +126,20 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
+    public @pointer(target=VkAttachmentReference.class) MemorySegment pInputAttachmentsRaw() {
+        return segment.get(LAYOUT$pInputAttachments, OFFSET$pInputAttachments);
+    }
+
+    public void pInputAttachmentsRaw(@pointer(target=VkAttachmentReference.class) MemorySegment value) {
+        segment.set(LAYOUT$pInputAttachments, OFFSET$pInputAttachments, value);
+    }
+
     public @unsigned int colorAttachmentCount() {
         return segment.get(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount);
     }
 
     public void colorAttachmentCount(@unsigned int value) {
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
-    }
-
-    public @pointer(target=VkAttachmentReference.class) MemorySegment pColorAttachmentsRaw() {
-        return segment.get(LAYOUT$pColorAttachments, OFFSET$pColorAttachments);
-    }
-
-    public void pColorAttachmentsRaw(@pointer(target=VkAttachmentReference.class) MemorySegment value) {
-        segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
 
     public @Nullable VkAttachmentReference pColorAttachments() {
@@ -177,12 +169,12 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
-    public @pointer(target=VkAttachmentReference.class) MemorySegment pResolveAttachmentsRaw() {
-        return segment.get(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments);
+    public @pointer(target=VkAttachmentReference.class) MemorySegment pColorAttachmentsRaw() {
+        return segment.get(LAYOUT$pColorAttachments, OFFSET$pColorAttachments);
     }
 
-    public void pResolveAttachmentsRaw(@pointer(target=VkAttachmentReference.class) MemorySegment value) {
-        segment.set(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments, value);
+    public void pColorAttachmentsRaw(@pointer(target=VkAttachmentReference.class) MemorySegment value) {
+        segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
 
     public @Nullable VkAttachmentReference pResolveAttachments() {
@@ -212,12 +204,12 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
-    public @pointer(target=VkAttachmentReference.class) MemorySegment pDepthStencilAttachmentRaw() {
-        return segment.get(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment);
+    public @pointer(target=VkAttachmentReference.class) MemorySegment pResolveAttachmentsRaw() {
+        return segment.get(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments);
     }
 
-    public void pDepthStencilAttachmentRaw(@pointer(target=VkAttachmentReference.class) MemorySegment value) {
-        segment.set(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment, value);
+    public void pResolveAttachmentsRaw(@pointer(target=VkAttachmentReference.class) MemorySegment value) {
+        segment.set(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments, value);
     }
 
     public @Nullable VkAttachmentReference pDepthStencilAttachment() {
@@ -247,20 +239,20 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
+    public @pointer(target=VkAttachmentReference.class) MemorySegment pDepthStencilAttachmentRaw() {
+        return segment.get(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment);
+    }
+
+    public void pDepthStencilAttachmentRaw(@pointer(target=VkAttachmentReference.class) MemorySegment value) {
+        segment.set(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment, value);
+    }
+
     public @unsigned int preserveAttachmentCount() {
         return segment.get(LAYOUT$preserveAttachmentCount, OFFSET$preserveAttachmentCount);
     }
 
     public void preserveAttachmentCount(@unsigned int value) {
         segment.set(LAYOUT$preserveAttachmentCount, OFFSET$preserveAttachmentCount, value);
-    }
-
-    public @pointer(comment="int*") MemorySegment pPreserveAttachmentsRaw() {
-        return segment.get(LAYOUT$pPreserveAttachments, OFFSET$pPreserveAttachments);
-    }
-
-    public void pPreserveAttachmentsRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pPreserveAttachments, OFFSET$pPreserveAttachments, value);
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -278,6 +270,14 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IP
     public void pPreserveAttachments(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPreserveAttachmentsRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pPreserveAttachmentsRaw() {
+        return segment.get(LAYOUT$pPreserveAttachments, OFFSET$pPreserveAttachments);
+    }
+
+    public void pPreserveAttachmentsRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pPreserveAttachments, OFFSET$pPreserveAttachments, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

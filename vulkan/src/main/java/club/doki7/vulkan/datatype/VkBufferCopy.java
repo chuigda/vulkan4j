@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBufferCopy {
-///     VkDeviceSize srcOffset;
-///     VkDeviceSize dstOffset;
-///     VkDeviceSize size;
+///     VkDeviceSize srcOffset; // @link substring="srcOffset" target="#srcOffset"
+///     VkDeviceSize dstOffset; // @link substring="dstOffset" target="#dstOffset"
+///     VkDeviceSize size; // @link substring="size" target="#size"
 /// } VkBufferCopy;
 /// }
 ///

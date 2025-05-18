@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceImageProcessing2FeaturesQCOM {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 textureBlockMatch2;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 textureBlockMatch2; // @link substring="textureBlockMatch2" target="#textureBlockMatch2"
 /// } VkPhysicalDeviceImageProcessing2FeaturesQCOM;
 /// }
 ///

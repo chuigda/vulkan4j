@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCommandBufferAllocateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkCommandPool commandPool;
-///     VkCommandBufferLevel level;
-///     uint32_t commandBufferCount;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkCommandPool commandPool; // @link substring="VkCommandPool" target="VkCommandPool" @link substring="commandPool" target="#commandPool"
+///     VkCommandBufferLevel level; // @link substring="VkCommandBufferLevel" target="VkCommandBufferLevel" @link substring="level" target="#level"
+///     uint32_t commandBufferCount; // @link substring="commandBufferCount" target="#commandBufferCount"
 /// } VkCommandBufferAllocateInfo;
 /// }
 ///

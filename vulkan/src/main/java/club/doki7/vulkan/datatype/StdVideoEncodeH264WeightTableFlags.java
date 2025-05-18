@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeH264WeightTableFlags {
-///     uint32_t luma_weight_l0_flag;
-///     uint32_t chroma_weight_l0_flag;
-///     uint32_t luma_weight_l1_flag;
-///     uint32_t chroma_weight_l1_flag;
+///     uint32_t luma_weight_l0_flag; // @link substring="luma_weight_l0_flag" target="#luma_weight_l0_flag"
+///     uint32_t chroma_weight_l0_flag; // @link substring="chroma_weight_l0_flag" target="#chroma_weight_l0_flag"
+///     uint32_t luma_weight_l1_flag; // @link substring="luma_weight_l1_flag" target="#luma_weight_l1_flag"
+///     uint32_t chroma_weight_l1_flag; // @link substring="chroma_weight_l1_flag" target="#chroma_weight_l1_flag"
 /// } StdVideoEncodeH264WeightTableFlags;
 /// }
 ///

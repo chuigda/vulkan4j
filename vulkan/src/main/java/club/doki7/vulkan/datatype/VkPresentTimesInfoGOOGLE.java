@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPresentTimesInfoGOOGLE {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t swapchainCount;
-///     VkPresentTimeGOOGLE const* pTimes; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t swapchainCount; // @link substring="swapchainCount" target="#swapchainCount"
+///     VkPresentTimeGOOGLE const* pTimes; // optional // @link substring="VkPresentTimeGOOGLE" target="VkPresentTimeGOOGLE" @link substring="pTimes" target="#pTimes"
 /// } VkPresentTimesInfoGOOGLE;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
     }
 
-    public @pointer(target=VkPresentTimeGOOGLE.class) MemorySegment pTimesRaw() {
-        return segment.get(LAYOUT$pTimes, OFFSET$pTimes);
-    }
-
-    public void pTimesRaw(@pointer(target=VkPresentTimeGOOGLE.class) MemorySegment value) {
-        segment.set(LAYOUT$pTimes, OFFSET$pTimes, value);
-    }
-
     public @Nullable VkPresentTimeGOOGLE pTimes() {
         MemorySegment s = pTimesRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
             ret[i] = new VkPresentTimeGOOGLE(s.asSlice(i * VkPresentTimeGOOGLE.BYTES, VkPresentTimeGOOGLE.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkPresentTimeGOOGLE.class) MemorySegment pTimesRaw() {
+        return segment.get(LAYOUT$pTimes, OFFSET$pTimes);
+    }
+
+    public void pTimesRaw(@pointer(target=VkPresentTimeGOOGLE.class) MemorySegment value) {
+        segment.set(LAYOUT$pTimes, OFFSET$pTimes, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

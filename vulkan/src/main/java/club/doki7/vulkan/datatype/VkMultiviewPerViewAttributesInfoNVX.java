@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMultiviewPerViewAttributesInfoNVX {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBool32 perViewAttributes;
-///     VkBool32 perViewAttributesPositionXOnly;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 perViewAttributes; // @link substring="perViewAttributes" target="#perViewAttributes"
+///     VkBool32 perViewAttributesPositionXOnly; // @link substring="perViewAttributesPositionXOnly" target="#perViewAttributesPositionXOnly"
 /// } VkMultiviewPerViewAttributesInfoNVX;
 /// }
 ///

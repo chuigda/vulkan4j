@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeRateControlInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkVideoEncodeRateControlFlagsKHR flags; // optional
-///     VkVideoEncodeRateControlModeFlagsKHR rateControlMode; // optional
-///     uint32_t layerCount; // optional
-///     VkVideoEncodeRateControlLayerInfoKHR const* pLayers;
-///     uint32_t virtualBufferSizeInMs;
-///     uint32_t initialVirtualBufferSizeInMs;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkVideoEncodeRateControlFlagsKHR flags; // optional // @link substring="VkVideoEncodeRateControlFlagsKHR" target="VkVideoEncodeRateControlFlagsKHR" @link substring="flags" target="#flags"
+///     VkVideoEncodeRateControlModeFlagsKHR rateControlMode; // optional // @link substring="VkVideoEncodeRateControlModeFlagsKHR" target="VkVideoEncodeRateControlModeFlagsKHR" @link substring="rateControlMode" target="#rateControlMode"
+///     uint32_t layerCount; // optional // @link substring="layerCount" target="#layerCount"
+///     VkVideoEncodeRateControlLayerInfoKHR const* pLayers; // @link substring="VkVideoEncodeRateControlLayerInfoKHR" target="VkVideoEncodeRateControlLayerInfoKHR" @link substring="pLayers" target="#pLayers"
+///     uint32_t virtualBufferSizeInMs; // @link substring="virtualBufferSizeInMs" target="#virtualBufferSizeInMs"
+///     uint32_t initialVirtualBufferSizeInMs; // @link substring="initialVirtualBufferSizeInMs" target="#initialVirtualBufferSizeInMs"
 /// } VkVideoEncodeRateControlInfoKHR;
 /// }
 ///
@@ -131,14 +131,6 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$layerCount, OFFSET$layerCount, value);
     }
 
-    public @pointer(target=VkVideoEncodeRateControlLayerInfoKHR.class) MemorySegment pLayersRaw() {
-        return segment.get(LAYOUT$pLayers, OFFSET$pLayers);
-    }
-
-    public void pLayersRaw(@pointer(target=VkVideoEncodeRateControlLayerInfoKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pLayers, OFFSET$pLayers, value);
-    }
-
     public @Nullable VkVideoEncodeRateControlLayerInfoKHR pLayers() {
         MemorySegment s = pLayersRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -164,6 +156,14 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
             ret[i] = new VkVideoEncodeRateControlLayerInfoKHR(s.asSlice(i * VkVideoEncodeRateControlLayerInfoKHR.BYTES, VkVideoEncodeRateControlLayerInfoKHR.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkVideoEncodeRateControlLayerInfoKHR.class) MemorySegment pLayersRaw() {
+        return segment.get(LAYOUT$pLayers, OFFSET$pLayers);
+    }
+
+    public void pLayersRaw(@pointer(target=VkVideoEncodeRateControlLayerInfoKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pLayers, OFFSET$pLayers, value);
     }
 
     public @unsigned int virtualBufferSizeInMs() {

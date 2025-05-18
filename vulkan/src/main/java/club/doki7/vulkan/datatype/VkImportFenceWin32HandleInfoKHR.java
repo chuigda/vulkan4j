@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImportFenceWin32HandleInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkFence fence;
-///     VkFenceImportFlags flags; // optional
-///     VkExternalFenceHandleTypeFlags handleType;
-///     HANDLE handle; // optional
-///     LPCWSTR name; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkFence fence; // @link substring="VkFence" target="VkFence" @link substring="fence" target="#fence"
+///     VkFenceImportFlags flags; // optional // @link substring="VkFenceImportFlags" target="VkFenceImportFlags" @link substring="flags" target="#flags"
+///     VkExternalFenceHandleTypeFlags handleType; // @link substring="VkExternalFenceHandleTypeFlags" target="VkExternalFenceHandleTypeFlags" @link substring="handleType" target="#handleType"
+///     HANDLE handle; // optional // @link substring="handle" target="#handle"
+///     LPCWSTR name; // optional // @link substring="name" target="#name"
 /// } VkImportFenceWin32HandleInfoKHR;
 /// }
 ///
@@ -146,14 +146,6 @@ public record VkImportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) im
         handle(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="short*") MemorySegment nameRaw() {
-        return segment.get(LAYOUT$name, OFFSET$name);
-    }
-
-    public void nameRaw(@pointer(comment="short*") MemorySegment value) {
-        segment.set(LAYOUT$name, OFFSET$name, value);
-    }
-
     /// Note: the returned {@link ShortPtr} does not have correct
     /// {@link ShortPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link ShortPtr#reinterpret} to set the size before actually reading from or
@@ -169,6 +161,14 @@ public record VkImportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) im
     public void name(@Nullable @unsigned ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         nameRaw(s);
+    }
+
+    public @pointer(comment="short*") MemorySegment nameRaw() {
+        return segment.get(LAYOUT$name, OFFSET$name);
+    }
+
+    public void nameRaw(@pointer(comment="short*") MemorySegment value) {
+        segment.set(LAYOUT$name, OFFSET$name, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

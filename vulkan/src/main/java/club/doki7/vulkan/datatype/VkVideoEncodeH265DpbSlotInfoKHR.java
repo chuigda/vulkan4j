@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeH265DpbSlotInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     StdVideoEncodeH265ReferenceInfo const* pStdReferenceInfo;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     StdVideoEncodeH265ReferenceInfo const* pStdReferenceInfo; // @link substring="StdVideoEncodeH265ReferenceInfo" target="StdVideoEncodeH265ReferenceInfo" @link substring="pStdReferenceInfo" target="#pStdReferenceInfo"
 /// } VkVideoEncodeH265DpbSlotInfoKHR;
 /// }
 ///
@@ -102,14 +102,6 @@ public record VkVideoEncodeH265DpbSlotInfoKHR(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(target=StdVideoEncodeH265ReferenceInfo.class) MemorySegment pStdReferenceInfoRaw() {
-        return segment.get(LAYOUT$pStdReferenceInfo, OFFSET$pStdReferenceInfo);
-    }
-
-    public void pStdReferenceInfoRaw(@pointer(target=StdVideoEncodeH265ReferenceInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pStdReferenceInfo, OFFSET$pStdReferenceInfo, value);
-    }
-
     public @Nullable StdVideoEncodeH265ReferenceInfo pStdReferenceInfo() {
         MemorySegment s = pStdReferenceInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -135,6 +127,14 @@ public record VkVideoEncodeH265DpbSlotInfoKHR(@NotNull MemorySegment segment) im
             ret[i] = new StdVideoEncodeH265ReferenceInfo(s.asSlice(i * StdVideoEncodeH265ReferenceInfo.BYTES, StdVideoEncodeH265ReferenceInfo.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoEncodeH265ReferenceInfo.class) MemorySegment pStdReferenceInfoRaw() {
+        return segment.get(LAYOUT$pStdReferenceInfo, OFFSET$pStdReferenceInfo);
+    }
+
+    public void pStdReferenceInfoRaw(@pointer(target=StdVideoEncodeH265ReferenceInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pStdReferenceInfo, OFFSET$pStdReferenceInfo, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

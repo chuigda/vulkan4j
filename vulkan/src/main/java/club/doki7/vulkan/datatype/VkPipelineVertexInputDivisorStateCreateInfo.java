@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineVertexInputDivisorStateCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t vertexBindingDivisorCount;
-///     VkVertexInputBindingDivisorDescription const* pVertexBindingDivisors;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t vertexBindingDivisorCount; // @link substring="vertexBindingDivisorCount" target="#vertexBindingDivisorCount"
+///     VkVertexInputBindingDivisorDescription const* pVertexBindingDivisors; // @link substring="VkVertexInputBindingDivisorDescription" target="VkVertexInputBindingDivisorDescription" @link substring="pVertexBindingDivisors" target="#pVertexBindingDivisors"
 /// } VkPipelineVertexInputDivisorStateCreateInfo;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkPipelineVertexInputDivisorStateCreateInfo(@NotNull MemorySegment
         segment.set(LAYOUT$vertexBindingDivisorCount, OFFSET$vertexBindingDivisorCount, value);
     }
 
-    public @pointer(target=VkVertexInputBindingDivisorDescription.class) MemorySegment pVertexBindingDivisorsRaw() {
-        return segment.get(LAYOUT$pVertexBindingDivisors, OFFSET$pVertexBindingDivisors);
-    }
-
-    public void pVertexBindingDivisorsRaw(@pointer(target=VkVertexInputBindingDivisorDescription.class) MemorySegment value) {
-        segment.set(LAYOUT$pVertexBindingDivisors, OFFSET$pVertexBindingDivisors, value);
-    }
-
     public @Nullable VkVertexInputBindingDivisorDescription pVertexBindingDivisors() {
         MemorySegment s = pVertexBindingDivisorsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkPipelineVertexInputDivisorStateCreateInfo(@NotNull MemorySegment
             ret[i] = new VkVertexInputBindingDivisorDescription(s.asSlice(i * VkVertexInputBindingDivisorDescription.BYTES, VkVertexInputBindingDivisorDescription.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkVertexInputBindingDivisorDescription.class) MemorySegment pVertexBindingDivisorsRaw() {
+        return segment.get(LAYOUT$pVertexBindingDivisors, OFFSET$pVertexBindingDivisors);
+    }
+
+    public void pVertexBindingDivisorsRaw(@pointer(target=VkVertexInputBindingDivisorDescription.class) MemorySegment value) {
+        segment.set(LAYOUT$pVertexBindingDivisors, OFFSET$pVertexBindingDivisors, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

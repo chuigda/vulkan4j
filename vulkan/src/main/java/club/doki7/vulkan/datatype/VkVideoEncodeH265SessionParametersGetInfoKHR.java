@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeH265SessionParametersGetInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBool32 writeStdVPS;
-///     VkBool32 writeStdSPS;
-///     VkBool32 writeStdPPS;
-///     uint32_t stdVPSId;
-///     uint32_t stdSPSId;
-///     uint32_t stdPPSId;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 writeStdVPS; // @link substring="writeStdVPS" target="#writeStdVPS"
+///     VkBool32 writeStdSPS; // @link substring="writeStdSPS" target="#writeStdSPS"
+///     VkBool32 writeStdPPS; // @link substring="writeStdPPS" target="#writeStdPPS"
+///     uint32_t stdVPSId; // @link substring="stdVPSId" target="#stdVPSId"
+///     uint32_t stdSPSId; // @link substring="stdSPSId" target="#stdSPSId"
+///     uint32_t stdPPSId; // @link substring="stdPPSId" target="#stdPPSId"
 /// } VkVideoEncodeH265SessionParametersGetInfoKHR;
 /// }
 ///

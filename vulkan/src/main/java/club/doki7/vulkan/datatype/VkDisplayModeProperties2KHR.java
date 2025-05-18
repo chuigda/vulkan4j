@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDisplayModeProperties2KHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkDisplayModePropertiesKHR displayModeProperties;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDisplayModePropertiesKHR displayModeProperties; // @link substring="VkDisplayModePropertiesKHR" target="VkDisplayModePropertiesKHR" @link substring="displayModeProperties" target="#displayModeProperties"
 /// } VkDisplayModeProperties2KHR;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkDisplayModeProperties2KHR(@NotNull MemorySegment segment) implem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkDisplayModePropertiesKHR displayModeProperties() {
+    public @NotNull VkDisplayModePropertiesKHR displayModeProperties() {
         return new VkDisplayModePropertiesKHR(segment.asSlice(OFFSET$displayModeProperties, LAYOUT$displayModeProperties));
     }
 
-    public void displayModeProperties(VkDisplayModePropertiesKHR value) {
+    public void displayModeProperties(@NotNull VkDisplayModePropertiesKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayModeProperties, SIZE$displayModeProperties);
     }
 

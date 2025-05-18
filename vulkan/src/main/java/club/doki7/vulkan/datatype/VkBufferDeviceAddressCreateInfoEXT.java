@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBufferDeviceAddressCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDeviceAddress deviceAddress;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceAddress deviceAddress; // @link substring="deviceAddress" target="#deviceAddress"
 /// } VkBufferDeviceAddressCreateInfoEXT;
 /// }
 ///

@@ -20,7 +20,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkIndirectCommandsVertexBufferTokenEXT {
-///     uint32_t vertexBindingUnit;
+///     uint32_t vertexBindingUnit; // @link substring="vertexBindingUnit" target="#vertexBindingUnit"
 /// } VkIndirectCommandsVertexBufferTokenEXT;
 /// }
 ///

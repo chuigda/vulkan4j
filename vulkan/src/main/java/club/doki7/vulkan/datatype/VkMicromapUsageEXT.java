@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMicromapUsageEXT {
-///     uint32_t count;
-///     uint32_t subdivisionLevel;
-///     uint32_t format;
+///     uint32_t count; // @link substring="count" target="#count"
+///     uint32_t subdivisionLevel; // @link substring="subdivisionLevel" target="#subdivisionLevel"
+///     uint32_t format; // @link substring="format" target="#format"
 /// } VkMicromapUsageEXT;
 /// }
 ///

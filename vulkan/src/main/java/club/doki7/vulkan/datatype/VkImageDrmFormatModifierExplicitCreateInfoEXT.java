@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageDrmFormatModifierExplicitCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint64_t drmFormatModifier;
-///     uint32_t drmFormatModifierPlaneCount;
-///     VkSubresourceLayout const* pPlaneLayouts;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint64_t drmFormatModifier; // @link substring="drmFormatModifier" target="#drmFormatModifier"
+///     uint32_t drmFormatModifierPlaneCount; // @link substring="drmFormatModifierPlaneCount" target="#drmFormatModifierPlaneCount"
+///     VkSubresourceLayout const* pPlaneLayouts; // @link substring="VkSubresourceLayout" target="VkSubresourceLayout" @link substring="pPlaneLayouts" target="#pPlaneLayouts"
 /// } VkImageDrmFormatModifierExplicitCreateInfoEXT;
 /// }
 ///
@@ -120,14 +120,6 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(@NotNull MemorySegme
         segment.set(LAYOUT$drmFormatModifierPlaneCount, OFFSET$drmFormatModifierPlaneCount, value);
     }
 
-    public @pointer(target=VkSubresourceLayout.class) MemorySegment pPlaneLayoutsRaw() {
-        return segment.get(LAYOUT$pPlaneLayouts, OFFSET$pPlaneLayouts);
-    }
-
-    public void pPlaneLayoutsRaw(@pointer(target=VkSubresourceLayout.class) MemorySegment value) {
-        segment.set(LAYOUT$pPlaneLayouts, OFFSET$pPlaneLayouts, value);
-    }
-
     public @Nullable VkSubresourceLayout pPlaneLayouts() {
         MemorySegment s = pPlaneLayoutsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -153,6 +145,14 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(@NotNull MemorySegme
             ret[i] = new VkSubresourceLayout(s.asSlice(i * VkSubresourceLayout.BYTES, VkSubresourceLayout.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkSubresourceLayout.class) MemorySegment pPlaneLayoutsRaw() {
+        return segment.get(LAYOUT$pPlaneLayouts, OFFSET$pPlaneLayouts);
+    }
+
+    public void pPlaneLayoutsRaw(@pointer(target=VkSubresourceLayout.class) MemorySegment value) {
+        segment.set(LAYOUT$pPlaneLayouts, OFFSET$pPlaneLayouts, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

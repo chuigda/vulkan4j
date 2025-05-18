@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceFragmentDensityMapFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 fragmentDensityMap;
-///     VkBool32 fragmentDensityMapDynamic;
-///     VkBool32 fragmentDensityMapNonSubsampledImages;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 fragmentDensityMap; // @link substring="fragmentDensityMap" target="#fragmentDensityMap"
+///     VkBool32 fragmentDensityMapDynamic; // @link substring="fragmentDensityMapDynamic" target="#fragmentDensityMapDynamic"
+///     VkBool32 fragmentDensityMapNonSubsampledImages; // @link substring="fragmentDensityMapNonSubsampledImages" target="#fragmentDensityMapNonSubsampledImages"
 /// } VkPhysicalDeviceFragmentDensityMapFeaturesEXT;
 /// }
 ///

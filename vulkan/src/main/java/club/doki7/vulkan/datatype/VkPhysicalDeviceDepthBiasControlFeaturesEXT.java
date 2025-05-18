@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceDepthBiasControlFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 depthBiasControl;
-///     VkBool32 leastRepresentableValueForceUnormRepresentation;
-///     VkBool32 floatRepresentation;
-///     VkBool32 depthBiasExact;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 depthBiasControl; // @link substring="depthBiasControl" target="#depthBiasControl"
+///     VkBool32 leastRepresentableValueForceUnormRepresentation; // @link substring="leastRepresentableValueForceUnormRepresentation" target="#leastRepresentableValueForceUnormRepresentation"
+///     VkBool32 floatRepresentation; // @link substring="floatRepresentation" target="#floatRepresentation"
+///     VkBool32 depthBiasExact; // @link substring="depthBiasExact" target="#depthBiasExact"
 /// } VkPhysicalDeviceDepthBiasControlFeaturesEXT;
 /// }
 ///

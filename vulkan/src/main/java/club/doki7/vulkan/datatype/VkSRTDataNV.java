@@ -20,22 +20,22 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSRTDataNV {
-///     float sx;
-///     float a;
-///     float b;
-///     float pvx;
-///     float sy;
-///     float c;
-///     float pvy;
-///     float sz;
-///     float pvz;
-///     float qx;
-///     float qy;
-///     float qz;
-///     float qw;
-///     float tx;
-///     float ty;
-///     float tz;
+///     float sx; // @link substring="sx" target="#sx"
+///     float a; // @link substring="a" target="#a"
+///     float b; // @link substring="b" target="#b"
+///     float pvx; // @link substring="pvx" target="#pvx"
+///     float sy; // @link substring="sy" target="#sy"
+///     float c; // @link substring="c" target="#c"
+///     float pvy; // @link substring="pvy" target="#pvy"
+///     float sz; // @link substring="sz" target="#sz"
+///     float pvz; // @link substring="pvz" target="#pvz"
+///     float qx; // @link substring="qx" target="#qx"
+///     float qy; // @link substring="qy" target="#qy"
+///     float qz; // @link substring="qz" target="#qz"
+///     float qw; // @link substring="qw" target="#qw"
+///     float tx; // @link substring="tx" target="#tx"
+///     float ty; // @link substring="ty" target="#ty"
+///     float tz; // @link substring="tz" target="#tz"
 /// } VkSRTDataNV;
 /// }
 ///

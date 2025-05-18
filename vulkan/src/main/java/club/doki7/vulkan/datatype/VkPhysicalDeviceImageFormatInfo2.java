@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceImageFormatInfo2 {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkFormat format;
-///     VkImageType type;
-///     VkImageTiling tiling;
-///     VkImageUsageFlags usage;
-///     VkImageCreateFlags flags; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkFormat format; // @link substring="VkFormat" target="VkFormat" @link substring="format" target="#format"
+///     VkImageType type; // @link substring="VkImageType" target="VkImageType" @link substring="type" target="#type"
+///     VkImageTiling tiling; // @link substring="VkImageTiling" target="VkImageTiling" @link substring="tiling" target="#tiling"
+///     VkImageUsageFlags usage; // @link substring="VkImageUsageFlags" target="VkImageUsageFlags" @link substring="usage" target="#usage"
+///     VkImageCreateFlags flags; // optional // @link substring="VkImageCreateFlags" target="VkImageCreateFlags" @link substring="flags" target="#flags"
 /// } VkPhysicalDeviceImageFormatInfo2;
 /// }
 ///

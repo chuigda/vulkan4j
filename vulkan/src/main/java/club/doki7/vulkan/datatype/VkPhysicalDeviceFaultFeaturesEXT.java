@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceFaultFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 deviceFault;
-///     VkBool32 deviceFaultVendorBinary;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 deviceFault; // @link substring="deviceFault" target="#deviceFault"
+///     VkBool32 deviceFaultVendorBinary; // @link substring="deviceFaultVendorBinary" target="#deviceFaultVendorBinary"
 /// } VkPhysicalDeviceFaultFeaturesEXT;
 /// }
 ///

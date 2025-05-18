@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeAV1DecoderModelInfo {
-///     uint8_t buffer_delay_length_minus_1;
-///     uint8_t buffer_removal_time_length_minus_1;
-///     uint8_t frame_presentation_time_length_minus_1;
-///     uint8_t reserved1;
-///     uint32_t num_units_in_decoding_tick;
+///     uint8_t buffer_delay_length_minus_1; // @link substring="buffer_delay_length_minus_1" target="#buffer_delay_length_minus_1"
+///     uint8_t buffer_removal_time_length_minus_1; // @link substring="buffer_removal_time_length_minus_1" target="#buffer_removal_time_length_minus_1"
+///     uint8_t frame_presentation_time_length_minus_1; // @link substring="frame_presentation_time_length_minus_1" target="#frame_presentation_time_length_minus_1"
+///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint32_t num_units_in_decoding_tick; // @link substring="num_units_in_decoding_tick" target="#num_units_in_decoding_tick"
 /// } StdVideoEncodeAV1DecoderModelInfo;
 /// }
 ///

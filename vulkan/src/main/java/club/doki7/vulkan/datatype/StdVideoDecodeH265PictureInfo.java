@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoDecodeH265PictureInfo {
-///     StdVideoDecodeH265PictureInfoFlags flags;
-///     uint8_t sps_video_parameter_set_id;
-///     uint8_t pps_seq_parameter_set_id;
-///     uint8_t pps_pic_parameter_set_id;
-///     uint8_t NumDeltaPocsOfRefRpsIdx;
-///     int32_t PicOrderCntVal;
-///     uint16_t NumBitsForSTRefPicSetInSlice;
-///     uint16_t reserved;
-///     uint8_t RefPicSetStCurrBefore;
-///     uint8_t RefPicSetStCurrAfter;
-///     uint8_t RefPicSetLtCurr;
+///     StdVideoDecodeH265PictureInfoFlags flags; // @link substring="StdVideoDecodeH265PictureInfoFlags" target="StdVideoDecodeH265PictureInfoFlags" @link substring="flags" target="#flags"
+///     uint8_t sps_video_parameter_set_id; // @link substring="sps_video_parameter_set_id" target="#sps_video_parameter_set_id"
+///     uint8_t pps_seq_parameter_set_id; // @link substring="pps_seq_parameter_set_id" target="#pps_seq_parameter_set_id"
+///     uint8_t pps_pic_parameter_set_id; // @link substring="pps_pic_parameter_set_id" target="#pps_pic_parameter_set_id"
+///     uint8_t NumDeltaPocsOfRefRpsIdx; // @link substring="NumDeltaPocsOfRefRpsIdx" target="#NumDeltaPocsOfRefRpsIdx"
+///     int32_t PicOrderCntVal; // @link substring="PicOrderCntVal" target="#PicOrderCntVal"
+///     uint16_t NumBitsForSTRefPicSetInSlice; // @link substring="NumBitsForSTRefPicSetInSlice" target="#NumBitsForSTRefPicSetInSlice"
+///     uint16_t reserved; // @link substring="reserved" target="#reserved"
+///     uint8_t RefPicSetStCurrBefore; // @link substring="RefPicSetStCurrBefore" target="#RefPicSetStCurrBefore"
+///     uint8_t RefPicSetStCurrAfter; // @link substring="RefPicSetStCurrAfter" target="#RefPicSetStCurrAfter"
+///     uint8_t RefPicSetLtCurr; // @link substring="RefPicSetLtCurr" target="#RefPicSetLtCurr"
 /// } StdVideoDecodeH265PictureInfo;
 /// }
 ///
@@ -74,11 +74,11 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public StdVideoDecodeH265PictureInfoFlags flags() {
+    public @NotNull StdVideoDecodeH265PictureInfoFlags flags() {
         return new StdVideoDecodeH265PictureInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoDecodeH265PictureInfoFlags value) {
+    public void flags(@NotNull StdVideoDecodeH265PictureInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 

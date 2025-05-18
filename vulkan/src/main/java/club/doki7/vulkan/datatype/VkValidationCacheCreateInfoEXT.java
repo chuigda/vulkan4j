@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkValidationCacheCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkValidationCacheCreateFlagsEXT flags; // optional
-///     size_t initialDataSize; // optional
-///     void const* pInitialData;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkValidationCacheCreateFlagsEXT flags; // optional // @link substring="VkValidationCacheCreateFlagsEXT" target="VkValidationCacheCreateFlagsEXT" @link substring="flags" target="#flags"
+///     size_t initialDataSize; // optional // @link substring="initialDataSize" target="#initialDataSize"
+///     void const* pInitialData; // @link substring="pInitialData" target="#pInitialData"
 /// } VkValidationCacheCreateInfoEXT;
 /// }
 ///

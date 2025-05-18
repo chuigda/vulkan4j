@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMaintenance4Properties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkDeviceSize maxBufferSize;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceSize maxBufferSize; // @link substring="maxBufferSize" target="#maxBufferSize"
 /// } VkPhysicalDeviceMaintenance4Properties;
 /// }
 ///

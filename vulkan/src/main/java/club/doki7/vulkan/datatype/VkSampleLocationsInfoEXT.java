@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSampleLocationsInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkSampleCountFlags sampleLocationsPerPixel;
-///     VkExtent2D sampleLocationGridSize;
-///     uint32_t sampleLocationsCount; // optional
-///     VkSampleLocationEXT const* pSampleLocations;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSampleCountFlags sampleLocationsPerPixel; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="sampleLocationsPerPixel" target="#sampleLocationsPerPixel"
+///     VkExtent2D sampleLocationGridSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="sampleLocationGridSize" target="#sampleLocationGridSize"
+///     uint32_t sampleLocationsCount; // optional // @link substring="sampleLocationsCount" target="#sampleLocationsCount"
+///     VkSampleLocationEXT const* pSampleLocations; // @link substring="VkSampleLocationEXT" target="VkSampleLocationEXT" @link substring="pSampleLocations" target="#pSampleLocations"
 /// } VkSampleLocationsInfoEXT;
 /// }
 ///
@@ -113,11 +113,11 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$sampleLocationsPerPixel, OFFSET$sampleLocationsPerPixel, value);
     }
 
-    public VkExtent2D sampleLocationGridSize() {
+    public @NotNull VkExtent2D sampleLocationGridSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$sampleLocationGridSize, LAYOUT$sampleLocationGridSize));
     }
 
-    public void sampleLocationGridSize(VkExtent2D value) {
+    public void sampleLocationGridSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationGridSize, SIZE$sampleLocationGridSize);
     }
 
@@ -127,14 +127,6 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
 
     public void sampleLocationsCount(@unsigned int value) {
         segment.set(LAYOUT$sampleLocationsCount, OFFSET$sampleLocationsCount, value);
-    }
-
-    public @pointer(target=VkSampleLocationEXT.class) MemorySegment pSampleLocationsRaw() {
-        return segment.get(LAYOUT$pSampleLocations, OFFSET$pSampleLocations);
-    }
-
-    public void pSampleLocationsRaw(@pointer(target=VkSampleLocationEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pSampleLocations, OFFSET$pSampleLocations, value);
     }
 
     public @Nullable VkSampleLocationEXT pSampleLocations() {
@@ -162,6 +154,14 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
             ret[i] = new VkSampleLocationEXT(s.asSlice(i * VkSampleLocationEXT.BYTES, VkSampleLocationEXT.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkSampleLocationEXT.class) MemorySegment pSampleLocationsRaw() {
+        return segment.get(LAYOUT$pSampleLocations, OFFSET$pSampleLocations);
+    }
+
+    public void pSampleLocationsRaw(@pointer(target=VkSampleLocationEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pSampleLocations, OFFSET$pSampleLocations, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

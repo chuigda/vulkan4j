@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkColorBlendEquationEXT {
-///     VkBlendFactor srcColorBlendFactor;
-///     VkBlendFactor dstColorBlendFactor;
-///     VkBlendOp colorBlendOp;
-///     VkBlendFactor srcAlphaBlendFactor;
-///     VkBlendFactor dstAlphaBlendFactor;
-///     VkBlendOp alphaBlendOp;
+///     VkBlendFactor srcColorBlendFactor; // @link substring="VkBlendFactor" target="VkBlendFactor" @link substring="srcColorBlendFactor" target="#srcColorBlendFactor"
+///     VkBlendFactor dstColorBlendFactor; // @link substring="VkBlendFactor" target="VkBlendFactor" @link substring="dstColorBlendFactor" target="#dstColorBlendFactor"
+///     VkBlendOp colorBlendOp; // @link substring="VkBlendOp" target="VkBlendOp" @link substring="colorBlendOp" target="#colorBlendOp"
+///     VkBlendFactor srcAlphaBlendFactor; // @link substring="VkBlendFactor" target="VkBlendFactor" @link substring="srcAlphaBlendFactor" target="#srcAlphaBlendFactor"
+///     VkBlendFactor dstAlphaBlendFactor; // @link substring="VkBlendFactor" target="VkBlendFactor" @link substring="dstAlphaBlendFactor" target="#dstAlphaBlendFactor"
+///     VkBlendOp alphaBlendOp; // @link substring="VkBlendOp" target="VkBlendOp" @link substring="alphaBlendOp" target="#alphaBlendOp"
 /// } VkColorBlendEquationEXT;
 /// }
 ///

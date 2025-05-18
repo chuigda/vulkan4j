@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSparseImageMemoryBindInfo {
-///     VkImage image;
-///     uint32_t bindCount;
-///     VkSparseImageMemoryBind const* pBinds;
+///     VkImage image; // @link substring="VkImage" target="VkImage" @link substring="image" target="#image"
+///     uint32_t bindCount; // @link substring="bindCount" target="#bindCount"
+///     VkSparseImageMemoryBind const* pBinds; // @link substring="VkSparseImageMemoryBind" target="VkSparseImageMemoryBind" @link substring="pBinds" target="#pBinds"
 /// } VkSparseImageMemoryBindInfo;
 /// }
 ///
@@ -88,14 +88,6 @@ public record VkSparseImageMemoryBindInfo(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$bindCount, OFFSET$bindCount, value);
     }
 
-    public @pointer(target=VkSparseImageMemoryBind.class) MemorySegment pBindsRaw() {
-        return segment.get(LAYOUT$pBinds, OFFSET$pBinds);
-    }
-
-    public void pBindsRaw(@pointer(target=VkSparseImageMemoryBind.class) MemorySegment value) {
-        segment.set(LAYOUT$pBinds, OFFSET$pBinds, value);
-    }
-
     public @Nullable VkSparseImageMemoryBind pBinds() {
         MemorySegment s = pBindsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -121,6 +113,14 @@ public record VkSparseImageMemoryBindInfo(@NotNull MemorySegment segment) implem
             ret[i] = new VkSparseImageMemoryBind(s.asSlice(i * VkSparseImageMemoryBind.BYTES, VkSparseImageMemoryBind.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkSparseImageMemoryBind.class) MemorySegment pBindsRaw() {
+        return segment.get(LAYOUT$pBinds, OFFSET$pBinds);
+    }
+
+    public void pBindsRaw(@pointer(target=VkSparseImageMemoryBind.class) MemorySegment value) {
+        segment.set(LAYOUT$pBinds, OFFSET$pBinds, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

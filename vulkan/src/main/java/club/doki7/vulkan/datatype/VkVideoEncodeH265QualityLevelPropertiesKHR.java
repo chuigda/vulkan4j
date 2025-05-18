@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeH265QualityLevelPropertiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkVideoEncodeH265RateControlFlagsKHR preferredRateControlFlags;
-///     uint32_t preferredGopFrameCount;
-///     uint32_t preferredIdrPeriod;
-///     uint32_t preferredConsecutiveBFrameCount;
-///     uint32_t preferredSubLayerCount;
-///     VkVideoEncodeH265QpKHR preferredConstantQp;
-///     uint32_t preferredMaxL0ReferenceCount;
-///     uint32_t preferredMaxL1ReferenceCount;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkVideoEncodeH265RateControlFlagsKHR preferredRateControlFlags; // @link substring="VkVideoEncodeH265RateControlFlagsKHR" target="VkVideoEncodeH265RateControlFlagsKHR" @link substring="preferredRateControlFlags" target="#preferredRateControlFlags"
+///     uint32_t preferredGopFrameCount; // @link substring="preferredGopFrameCount" target="#preferredGopFrameCount"
+///     uint32_t preferredIdrPeriod; // @link substring="preferredIdrPeriod" target="#preferredIdrPeriod"
+///     uint32_t preferredConsecutiveBFrameCount; // @link substring="preferredConsecutiveBFrameCount" target="#preferredConsecutiveBFrameCount"
+///     uint32_t preferredSubLayerCount; // @link substring="preferredSubLayerCount" target="#preferredSubLayerCount"
+///     VkVideoEncodeH265QpKHR preferredConstantQp; // @link substring="VkVideoEncodeH265QpKHR" target="VkVideoEncodeH265QpKHR" @link substring="preferredConstantQp" target="#preferredConstantQp"
+///     uint32_t preferredMaxL0ReferenceCount; // @link substring="preferredMaxL0ReferenceCount" target="#preferredMaxL0ReferenceCount"
+///     uint32_t preferredMaxL1ReferenceCount; // @link substring="preferredMaxL1ReferenceCount" target="#preferredMaxL1ReferenceCount"
 /// } VkVideoEncodeH265QualityLevelPropertiesKHR;
 /// }
 ///
@@ -149,11 +149,11 @@ public record VkVideoEncodeH265QualityLevelPropertiesKHR(@NotNull MemorySegment 
         segment.set(LAYOUT$preferredSubLayerCount, OFFSET$preferredSubLayerCount, value);
     }
 
-    public VkVideoEncodeH265QpKHR preferredConstantQp() {
+    public @NotNull VkVideoEncodeH265QpKHR preferredConstantQp() {
         return new VkVideoEncodeH265QpKHR(segment.asSlice(OFFSET$preferredConstantQp, LAYOUT$preferredConstantQp));
     }
 
-    public void preferredConstantQp(VkVideoEncodeH265QpKHR value) {
+    public void preferredConstantQp(@NotNull VkVideoEncodeH265QpKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$preferredConstantQp, SIZE$preferredConstantQp);
     }
 

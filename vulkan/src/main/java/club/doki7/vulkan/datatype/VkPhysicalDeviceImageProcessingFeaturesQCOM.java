@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceImageProcessingFeaturesQCOM {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 textureSampleWeighted;
-///     VkBool32 textureBoxFilter;
-///     VkBool32 textureBlockMatch;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 textureSampleWeighted; // @link substring="textureSampleWeighted" target="#textureSampleWeighted"
+///     VkBool32 textureBoxFilter; // @link substring="textureBoxFilter" target="#textureBoxFilter"
+///     VkBool32 textureBlockMatch; // @link substring="textureBlockMatch" target="#textureBlockMatch"
 /// } VkPhysicalDeviceImageProcessingFeaturesQCOM;
 /// }
 ///

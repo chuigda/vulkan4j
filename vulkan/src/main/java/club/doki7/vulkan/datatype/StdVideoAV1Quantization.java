@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1Quantization {
-///     StdVideoAV1QuantizationFlags flags;
-///     uint8_t base_q_idx;
-///     int8_t DeltaQYDc;
-///     int8_t DeltaQUDc;
-///     int8_t DeltaQUAc;
-///     int8_t DeltaQVDc;
-///     int8_t DeltaQVAc;
-///     uint8_t qm_y;
-///     uint8_t qm_u;
-///     uint8_t qm_v;
+///     StdVideoAV1QuantizationFlags flags; // @link substring="StdVideoAV1QuantizationFlags" target="StdVideoAV1QuantizationFlags" @link substring="flags" target="#flags"
+///     uint8_t base_q_idx; // @link substring="base_q_idx" target="#base_q_idx"
+///     int8_t DeltaQYDc; // @link substring="DeltaQYDc" target="#DeltaQYDc"
+///     int8_t DeltaQUDc; // @link substring="DeltaQUDc" target="#DeltaQUDc"
+///     int8_t DeltaQUAc; // @link substring="DeltaQUAc" target="#DeltaQUAc"
+///     int8_t DeltaQVDc; // @link substring="DeltaQVDc" target="#DeltaQVDc"
+///     int8_t DeltaQVAc; // @link substring="DeltaQVAc" target="#DeltaQVAc"
+///     uint8_t qm_y; // @link substring="qm_y" target="#qm_y"
+///     uint8_t qm_u; // @link substring="qm_u" target="#qm_u"
+///     uint8_t qm_v; // @link substring="qm_v" target="#qm_v"
 /// } StdVideoAV1Quantization;
 /// }
 ///
@@ -73,11 +73,11 @@ public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public StdVideoAV1QuantizationFlags flags() {
+    public @NotNull StdVideoAV1QuantizationFlags flags() {
         return new StdVideoAV1QuantizationFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoAV1QuantizationFlags value) {
+    public void flags(@NotNull StdVideoAV1QuantizationFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 

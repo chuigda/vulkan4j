@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMeshShaderFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 taskShader;
-///     VkBool32 meshShader;
-///     VkBool32 multiviewMeshShader;
-///     VkBool32 primitiveFragmentShadingRateMeshShader;
-///     VkBool32 meshShaderQueries;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 taskShader; // @link substring="taskShader" target="#taskShader"
+///     VkBool32 meshShader; // @link substring="meshShader" target="#meshShader"
+///     VkBool32 multiviewMeshShader; // @link substring="multiviewMeshShader" target="#multiviewMeshShader"
+///     VkBool32 primitiveFragmentShadingRateMeshShader; // @link substring="primitiveFragmentShadingRateMeshShader" target="#primitiveFragmentShadingRateMeshShader"
+///     VkBool32 meshShaderQueries; // @link substring="meshShaderQueries" target="#meshShaderQueries"
 /// } VkPhysicalDeviceMeshShaderFeaturesEXT;
 /// }
 ///

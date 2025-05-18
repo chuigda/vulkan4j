@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPresentTimeGOOGLE {
-///     uint32_t presentID;
-///     uint64_t desiredPresentTime;
+///     uint32_t presentID; // @link substring="presentID" target="#presentID"
+///     uint64_t desiredPresentTime; // @link substring="desiredPresentTime" target="#desiredPresentTime"
 /// } VkPresentTimeGOOGLE;
 /// }
 ///

@@ -20,7 +20,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265PredictorPaletteEntries {
-///     uint16_t PredictorPaletteEntries;
+///     uint16_t PredictorPaletteEntries; // @link substring="PredictorPaletteEntries" target="#PredictorPaletteEntries"
 /// } StdVideoH265PredictorPaletteEntries;
 /// }
 ///

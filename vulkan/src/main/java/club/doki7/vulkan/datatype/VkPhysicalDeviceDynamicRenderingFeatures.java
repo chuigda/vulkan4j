@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceDynamicRenderingFeatures {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 dynamicRendering;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 dynamicRendering; // @link substring="dynamicRendering" target="#dynamicRendering"
 /// } VkPhysicalDeviceDynamicRenderingFeatures;
 /// }
 ///

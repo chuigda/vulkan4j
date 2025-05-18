@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBufferCollectionCreateInfoFUCHSIA {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     zx_handle_t collectionToken;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     zx_handle_t collectionToken; // @link substring="collectionToken" target="#collectionToken"
 /// } VkBufferCollectionCreateInfoFUCHSIA;
 /// }
 ///

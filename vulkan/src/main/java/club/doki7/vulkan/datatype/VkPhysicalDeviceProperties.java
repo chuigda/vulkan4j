@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceProperties {
-///     uint32_t apiVersion;
-///     uint32_t driverVersion;
-///     uint32_t vendorID;
-///     uint32_t deviceID;
-///     VkPhysicalDeviceType deviceType;
-///     char deviceName;
-///     uint8_t pipelineCacheUUID;
-///     VkPhysicalDeviceLimits limits;
-///     VkPhysicalDeviceSparseProperties sparseProperties;
+///     uint32_t apiVersion; // @link substring="apiVersion" target="#apiVersion"
+///     uint32_t driverVersion; // @link substring="driverVersion" target="#driverVersion"
+///     uint32_t vendorID; // @link substring="vendorID" target="#vendorID"
+///     uint32_t deviceID; // @link substring="deviceID" target="#deviceID"
+///     VkPhysicalDeviceType deviceType; // @link substring="VkPhysicalDeviceType" target="VkPhysicalDeviceType" @link substring="deviceType" target="#deviceType"
+///     char deviceName; // @link substring="deviceName" target="#deviceName"
+///     uint8_t pipelineCacheUUID; // @link substring="pipelineCacheUUID" target="#pipelineCacheUUID"
+///     VkPhysicalDeviceLimits limits; // @link substring="VkPhysicalDeviceLimits" target="VkPhysicalDeviceLimits" @link substring="limits" target="#limits"
+///     VkPhysicalDeviceSparseProperties sparseProperties; // @link substring="VkPhysicalDeviceSparseProperties" target="VkPhysicalDeviceSparseProperties" @link substring="sparseProperties" target="#sparseProperties"
 /// } VkPhysicalDeviceProperties;
 /// }
 ///
@@ -130,19 +130,19 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pipelineCacheUUID, OFFSET$pipelineCacheUUID, value);
     }
 
-    public VkPhysicalDeviceLimits limits() {
+    public @NotNull VkPhysicalDeviceLimits limits() {
         return new VkPhysicalDeviceLimits(segment.asSlice(OFFSET$limits, LAYOUT$limits));
     }
 
-    public void limits(VkPhysicalDeviceLimits value) {
+    public void limits(@NotNull VkPhysicalDeviceLimits value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$limits, SIZE$limits);
     }
 
-    public VkPhysicalDeviceSparseProperties sparseProperties() {
+    public @NotNull VkPhysicalDeviceSparseProperties sparseProperties() {
         return new VkPhysicalDeviceSparseProperties(segment.asSlice(OFFSET$sparseProperties, LAYOUT$sparseProperties));
     }
 
-    public void sparseProperties(VkPhysicalDeviceSparseProperties value) {
+    public void sparseProperties(@NotNull VkPhysicalDeviceSparseProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sparseProperties, SIZE$sparseProperties);
     }
 

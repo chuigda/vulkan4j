@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDebugMarkerMarkerInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     char const* pMarkerName;
-///     float color;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     char const* pMarkerName; // @link substring="pMarkerName" target="#pMarkerName"
+///     float color; // @link substring="color" target="#color"
 /// } VkDebugMarkerMarkerInfoEXT;
 /// }
 ///
@@ -103,14 +103,6 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="byte*") MemorySegment pMarkerNameRaw() {
-        return segment.get(LAYOUT$pMarkerName, OFFSET$pMarkerName);
-    }
-
-    public void pMarkerNameRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pMarkerName, OFFSET$pMarkerName, value);
-    }
-
     /// Note: the returned {@link BytePtr} does not have correct
     /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
@@ -126,6 +118,14 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
     public void pMarkerName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMarkerNameRaw(s);
+    }
+
+    public @pointer(comment="byte*") MemorySegment pMarkerNameRaw() {
+        return segment.get(LAYOUT$pMarkerName, OFFSET$pMarkerName);
+    }
+
+    public void pMarkerNameRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pMarkerName, OFFSET$pMarkerName, value);
     }
 
     public float color() {

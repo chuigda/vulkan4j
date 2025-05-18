@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassBeginInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkRenderPass renderPass;
-///     VkFramebuffer framebuffer;
-///     VkRect2D renderArea;
-///     uint32_t clearValueCount; // optional
-///     VkClearValue const* pClearValues;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkRenderPass renderPass; // @link substring="VkRenderPass" target="VkRenderPass" @link substring="renderPass" target="#renderPass"
+///     VkFramebuffer framebuffer; // @link substring="VkFramebuffer" target="VkFramebuffer" @link substring="framebuffer" target="#framebuffer"
+///     VkRect2D renderArea; // @link substring="VkRect2D" target="VkRect2D" @link substring="renderArea" target="#renderArea"
+///     uint32_t clearValueCount; // optional // @link substring="clearValueCount" target="#clearValueCount"
+///     VkClearValue const* pClearValues; // @link substring="VkClearValue" target="VkClearValue" @link substring="pClearValues" target="#pClearValues"
 /// } VkRenderPassBeginInfo;
 /// }
 ///
@@ -130,11 +130,11 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$framebuffer, OFFSET$framebuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public VkRect2D renderArea() {
+    public @NotNull VkRect2D renderArea() {
         return new VkRect2D(segment.asSlice(OFFSET$renderArea, LAYOUT$renderArea));
     }
 
-    public void renderArea(VkRect2D value) {
+    public void renderArea(@NotNull VkRect2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderArea, SIZE$renderArea);
     }
 
@@ -144,14 +144,6 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
 
     public void clearValueCount(@unsigned int value) {
         segment.set(LAYOUT$clearValueCount, OFFSET$clearValueCount, value);
-    }
-
-    public @pointer(target=VkClearValue.class) MemorySegment pClearValuesRaw() {
-        return segment.get(LAYOUT$pClearValues, OFFSET$pClearValues);
-    }
-
-    public void pClearValuesRaw(@pointer(target=VkClearValue.class) MemorySegment value) {
-        segment.set(LAYOUT$pClearValues, OFFSET$pClearValues, value);
     }
 
     public @Nullable VkClearValue pClearValues() {
@@ -179,6 +171,14 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
             ret[i] = new VkClearValue(s.asSlice(i * VkClearValue.BYTES, VkClearValue.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkClearValue.class) MemorySegment pClearValuesRaw() {
+        return segment.get(LAYOUT$pClearValues, OFFSET$pClearValues);
+    }
+
+    public void pClearValuesRaw(@pointer(target=VkClearValue.class) MemorySegment value) {
+        segment.set(LAYOUT$pClearValues, OFFSET$pClearValues, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

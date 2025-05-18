@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t advancedBlendMaxColorAttachments;
-///     VkBool32 advancedBlendIndependentBlend;
-///     VkBool32 advancedBlendNonPremultipliedSrcColor;
-///     VkBool32 advancedBlendNonPremultipliedDstColor;
-///     VkBool32 advancedBlendCorrelatedOverlap;
-///     VkBool32 advancedBlendAllOperations;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t advancedBlendMaxColorAttachments; // @link substring="advancedBlendMaxColorAttachments" target="#advancedBlendMaxColorAttachments"
+///     VkBool32 advancedBlendIndependentBlend; // @link substring="advancedBlendIndependentBlend" target="#advancedBlendIndependentBlend"
+///     VkBool32 advancedBlendNonPremultipliedSrcColor; // @link substring="advancedBlendNonPremultipliedSrcColor" target="#advancedBlendNonPremultipliedSrcColor"
+///     VkBool32 advancedBlendNonPremultipliedDstColor; // @link substring="advancedBlendNonPremultipliedDstColor" target="#advancedBlendNonPremultipliedDstColor"
+///     VkBool32 advancedBlendCorrelatedOverlap; // @link substring="advancedBlendCorrelatedOverlap" target="#advancedBlendCorrelatedOverlap"
+///     VkBool32 advancedBlendAllOperations; // @link substring="advancedBlendAllOperations" target="#advancedBlendAllOperations"
 /// } VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT;
 /// }
 ///

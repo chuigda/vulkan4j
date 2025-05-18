@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSciSyncAttributesInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkSciSyncClientTypeNV clientType;
-///     VkSciSyncPrimitiveTypeNV primitiveType;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSciSyncClientTypeNV clientType; // @link substring="VkSciSyncClientTypeNV" target="VkSciSyncClientTypeNV" @link substring="clientType" target="#clientType"
+///     VkSciSyncPrimitiveTypeNV primitiveType; // @link substring="VkSciSyncPrimitiveTypeNV" target="VkSciSyncPrimitiveTypeNV" @link substring="primitiveType" target="#primitiveType"
 /// } VkSciSyncAttributesInfoNV;
 /// }
 ///

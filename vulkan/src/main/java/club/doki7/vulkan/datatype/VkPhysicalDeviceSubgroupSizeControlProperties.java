@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceSubgroupSizeControlProperties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t minSubgroupSize;
-///     uint32_t maxSubgroupSize;
-///     uint32_t maxComputeWorkgroupSubgroups;
-///     VkShaderStageFlags requiredSubgroupSizeStages;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t minSubgroupSize; // @link substring="minSubgroupSize" target="#minSubgroupSize"
+///     uint32_t maxSubgroupSize; // @link substring="maxSubgroupSize" target="#maxSubgroupSize"
+///     uint32_t maxComputeWorkgroupSubgroups; // @link substring="maxComputeWorkgroupSubgroups" target="#maxComputeWorkgroupSubgroups"
+///     VkShaderStageFlags requiredSubgroupSizeStages; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="requiredSubgroupSizeStages" target="#requiredSubgroupSizeStages"
 /// } VkPhysicalDeviceSubgroupSizeControlProperties;
 /// }
 ///

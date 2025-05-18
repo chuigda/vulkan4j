@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureGeometryMotionTrianglesDataNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDeviceOrHostAddressConstKHR vertexData;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceOrHostAddressConstKHR vertexData; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="vertexData" target="#vertexData"
 /// } VkAccelerationStructureGeometryMotionTrianglesDataNV;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkAccelerationStructureGeometryMotionTrianglesDataNV(@NotNull Memo
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkDeviceOrHostAddressConstKHR vertexData() {
+    public @NotNull VkDeviceOrHostAddressConstKHR vertexData() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$vertexData, LAYOUT$vertexData));
     }
 
-    public void vertexData(VkDeviceOrHostAddressConstKHR value) {
+    public void vertexData(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$vertexData, SIZE$vertexData);
     }
 

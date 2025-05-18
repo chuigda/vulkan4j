@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderTileImagePropertiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 shaderTileImageCoherentReadAccelerated;
-///     VkBool32 shaderTileImageReadSampleFromPixelRateInvocation;
-///     VkBool32 shaderTileImageReadFromHelperInvocation;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 shaderTileImageCoherentReadAccelerated; // @link substring="shaderTileImageCoherentReadAccelerated" target="#shaderTileImageCoherentReadAccelerated"
+///     VkBool32 shaderTileImageReadSampleFromPixelRateInvocation; // @link substring="shaderTileImageReadSampleFromPixelRateInvocation" target="#shaderTileImageReadSampleFromPixelRateInvocation"
+///     VkBool32 shaderTileImageReadFromHelperInvocation; // @link substring="shaderTileImageReadFromHelperInvocation" target="#shaderTileImageReadFromHelperInvocation"
 /// } VkPhysicalDeviceShaderTileImagePropertiesEXT;
 /// }
 ///

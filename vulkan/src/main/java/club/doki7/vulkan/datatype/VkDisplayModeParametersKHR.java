@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDisplayModeParametersKHR {
-///     VkExtent2D visibleRegion;
-///     uint32_t refreshRate;
+///     VkExtent2D visibleRegion; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="visibleRegion" target="#visibleRegion"
+///     uint32_t refreshRate; // @link substring="refreshRate" target="#refreshRate"
 /// } VkDisplayModeParametersKHR;
 /// }
 ///
@@ -67,11 +67,11 @@ public record VkDisplayModeParametersKHR(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
-    public VkExtent2D visibleRegion() {
+    public @NotNull VkExtent2D visibleRegion() {
         return new VkExtent2D(segment.asSlice(OFFSET$visibleRegion, LAYOUT$visibleRegion));
     }
 
-    public void visibleRegion(VkExtent2D value) {
+    public void visibleRegion(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$visibleRegion, SIZE$visibleRegion);
     }
 

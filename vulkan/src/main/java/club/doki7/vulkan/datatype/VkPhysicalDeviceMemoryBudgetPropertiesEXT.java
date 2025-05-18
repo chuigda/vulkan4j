@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMemoryBudgetPropertiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkDeviceSize heapBudget;
-///     VkDeviceSize heapUsage;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceSize heapBudget; // @link substring="heapBudget" target="#heapBudget"
+///     VkDeviceSize heapUsage; // @link substring="heapUsage" target="#heapUsage"
 /// } VkPhysicalDeviceMemoryBudgetPropertiesEXT;
 /// }
 ///

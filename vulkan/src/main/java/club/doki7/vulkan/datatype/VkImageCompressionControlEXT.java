@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageCompressionControlEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImageCompressionFlagsEXT flags;
-///     uint32_t compressionControlPlaneCount; // optional
-///     VkImageCompressionFixedRateFlagsEXT* pFixedRateFlags;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageCompressionFlagsEXT flags; // @link substring="VkImageCompressionFlagsEXT" target="VkImageCompressionFlagsEXT" @link substring="flags" target="#flags"
+///     uint32_t compressionControlPlaneCount; // optional // @link substring="compressionControlPlaneCount" target="#compressionControlPlaneCount"
+///     VkImageCompressionFixedRateFlagsEXT* pFixedRateFlags; // @link substring="VkImageCompressionFixedRateFlagsEXT" target="VkImageCompressionFixedRateFlagsEXT" @link substring="pFixedRateFlags" target="#pFixedRateFlags"
 /// } VkImageCompressionControlEXT;
 /// }
 ///
@@ -120,13 +120,6 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$compressionControlPlaneCount, OFFSET$compressionControlPlaneCount, value);
     }
 
-    public @pointer(target=VkImageCompressionFixedRateFlagsEXT.class) MemorySegment pFixedRateFlagsRaw() {
-        return segment.get(LAYOUT$pFixedRateFlags, OFFSET$pFixedRateFlags);
-    }
-
-    public void pFixedRateFlagsRaw(@pointer(target=VkImageCompressionFixedRateFlagsEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pFixedRateFlags, OFFSET$pFixedRateFlags, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -143,6 +136,14 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
     public void pFixedRateFlags(@Nullable @enumtype(VkImageCompressionFixedRateFlagsEXT.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFixedRateFlagsRaw(s);
+    }
+
+    public @pointer(target=VkImageCompressionFixedRateFlagsEXT.class) MemorySegment pFixedRateFlagsRaw() {
+        return segment.get(LAYOUT$pFixedRateFlags, OFFSET$pFixedRateFlags);
+    }
+
+    public void pFixedRateFlagsRaw(@pointer(target=VkImageCompressionFixedRateFlagsEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pFixedRateFlags, OFFSET$pFixedRateFlags, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderEnqueueFeaturesAMDX {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 shaderEnqueue;
-///     VkBool32 shaderMeshEnqueue;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 shaderEnqueue; // @link substring="shaderEnqueue" target="#shaderEnqueue"
+///     VkBool32 shaderMeshEnqueue; // @link substring="shaderMeshEnqueue" target="#shaderMeshEnqueue"
 /// } VkPhysicalDeviceShaderEnqueueFeaturesAMDX;
 /// }
 ///

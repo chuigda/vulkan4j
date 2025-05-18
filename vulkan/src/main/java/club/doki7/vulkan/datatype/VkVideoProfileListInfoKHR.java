@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoProfileListInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t profileCount; // optional
-///     VkVideoProfileInfoKHR const* pProfiles;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t profileCount; // optional // @link substring="profileCount" target="#profileCount"
+///     VkVideoProfileInfoKHR const* pProfiles; // @link substring="VkVideoProfileInfoKHR" target="VkVideoProfileInfoKHR" @link substring="pProfiles" target="#pProfiles"
 /// } VkVideoProfileListInfoKHR;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$profileCount, OFFSET$profileCount, value);
     }
 
-    public @pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pProfilesRaw() {
-        return segment.get(LAYOUT$pProfiles, OFFSET$pProfiles);
-    }
-
-    public void pProfilesRaw(@pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pProfiles, OFFSET$pProfiles, value);
-    }
-
     public @Nullable VkVideoProfileInfoKHR pProfiles() {
         MemorySegment s = pProfilesRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
             ret[i] = new VkVideoProfileInfoKHR(s.asSlice(i * VkVideoProfileInfoKHR.BYTES, VkVideoProfileInfoKHR.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pProfilesRaw() {
+        return segment.get(LAYOUT$pProfiles, OFFSET$pProfiles);
+    }
+
+    public void pProfilesRaw(@pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pProfiles, OFFSET$pProfiles, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

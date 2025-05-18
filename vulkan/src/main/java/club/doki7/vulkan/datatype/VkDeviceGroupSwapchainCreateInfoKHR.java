@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceGroupSwapchainCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDeviceGroupPresentModeFlagsKHR modes;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceGroupPresentModeFlagsKHR modes; // @link substring="VkDeviceGroupPresentModeFlagsKHR" target="VkDeviceGroupPresentModeFlagsKHR" @link substring="modes" target="#modes"
 /// } VkDeviceGroupSwapchainCreateInfoKHR;
 /// }
 ///

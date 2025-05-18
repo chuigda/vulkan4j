@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAttachmentSampleLocationsEXT {
-///     uint32_t attachmentIndex;
-///     VkSampleLocationsInfoEXT sampleLocationsInfo;
+///     uint32_t attachmentIndex; // @link substring="attachmentIndex" target="#attachmentIndex"
+///     VkSampleLocationsInfoEXT sampleLocationsInfo; // @link substring="VkSampleLocationsInfoEXT" target="VkSampleLocationsInfoEXT" @link substring="sampleLocationsInfo" target="#sampleLocationsInfo"
 /// } VkAttachmentSampleLocationsEXT;
 /// }
 ///
@@ -75,11 +75,11 @@ public record VkAttachmentSampleLocationsEXT(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$attachmentIndex, OFFSET$attachmentIndex, value);
     }
 
-    public VkSampleLocationsInfoEXT sampleLocationsInfo() {
+    public @NotNull VkSampleLocationsInfoEXT sampleLocationsInfo() {
         return new VkSampleLocationsInfoEXT(segment.asSlice(OFFSET$sampleLocationsInfo, LAYOUT$sampleLocationsInfo));
     }
 
-    public void sampleLocationsInfo(VkSampleLocationsInfoEXT value) {
+    public void sampleLocationsInfo(@NotNull VkSampleLocationsInfoEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationsInfo, SIZE$sampleLocationsInfo);
     }
 

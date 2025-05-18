@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSubpassShadingPipelineCreateInfoHUAWEI {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkRenderPass renderPass;
-///     uint32_t subpass;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkRenderPass renderPass; // @link substring="VkRenderPass" target="VkRenderPass" @link substring="renderPass" target="#renderPass"
+///     uint32_t subpass; // @link substring="subpass" target="#subpass"
 /// } VkSubpassShadingPipelineCreateInfoHUAWEI;
 /// }
 ///

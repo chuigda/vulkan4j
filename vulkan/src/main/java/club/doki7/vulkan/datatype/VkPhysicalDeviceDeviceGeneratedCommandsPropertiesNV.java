@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t maxGraphicsShaderGroupCount;
-///     uint32_t maxIndirectSequenceCount;
-///     uint32_t maxIndirectCommandsTokenCount;
-///     uint32_t maxIndirectCommandsStreamCount;
-///     uint32_t maxIndirectCommandsTokenOffset;
-///     uint32_t maxIndirectCommandsStreamStride;
-///     uint32_t minSequencesCountBufferOffsetAlignment;
-///     uint32_t minSequencesIndexBufferOffsetAlignment;
-///     uint32_t minIndirectCommandsBufferOffsetAlignment;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxGraphicsShaderGroupCount; // @link substring="maxGraphicsShaderGroupCount" target="#maxGraphicsShaderGroupCount"
+///     uint32_t maxIndirectSequenceCount; // @link substring="maxIndirectSequenceCount" target="#maxIndirectSequenceCount"
+///     uint32_t maxIndirectCommandsTokenCount; // @link substring="maxIndirectCommandsTokenCount" target="#maxIndirectCommandsTokenCount"
+///     uint32_t maxIndirectCommandsStreamCount; // @link substring="maxIndirectCommandsStreamCount" target="#maxIndirectCommandsStreamCount"
+///     uint32_t maxIndirectCommandsTokenOffset; // @link substring="maxIndirectCommandsTokenOffset" target="#maxIndirectCommandsTokenOffset"
+///     uint32_t maxIndirectCommandsStreamStride; // @link substring="maxIndirectCommandsStreamStride" target="#maxIndirectCommandsStreamStride"
+///     uint32_t minSequencesCountBufferOffsetAlignment; // @link substring="minSequencesCountBufferOffsetAlignment" target="#minSequencesCountBufferOffsetAlignment"
+///     uint32_t minSequencesIndexBufferOffsetAlignment; // @link substring="minSequencesIndexBufferOffsetAlignment" target="#minSequencesIndexBufferOffsetAlignment"
+///     uint32_t minIndirectCommandsBufferOffsetAlignment; // @link substring="minIndirectCommandsBufferOffsetAlignment" target="#minIndirectCommandsBufferOffsetAlignment"
 /// } VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV;
 /// }
 ///

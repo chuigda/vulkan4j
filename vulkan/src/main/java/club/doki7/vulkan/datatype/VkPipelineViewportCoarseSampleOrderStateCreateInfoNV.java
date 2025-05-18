@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineViewportCoarseSampleOrderStateCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkCoarseSampleOrderTypeNV sampleOrderType;
-///     uint32_t customSampleOrderCount; // optional
-///     VkCoarseSampleOrderCustomNV const* pCustomSampleOrders;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkCoarseSampleOrderTypeNV sampleOrderType; // @link substring="VkCoarseSampleOrderTypeNV" target="VkCoarseSampleOrderTypeNV" @link substring="sampleOrderType" target="#sampleOrderType"
+///     uint32_t customSampleOrderCount; // optional // @link substring="customSampleOrderCount" target="#customSampleOrderCount"
+///     VkCoarseSampleOrderCustomNV const* pCustomSampleOrders; // @link substring="VkCoarseSampleOrderCustomNV" target="VkCoarseSampleOrderCustomNV" @link substring="pCustomSampleOrders" target="#pCustomSampleOrders"
 /// } VkPipelineViewportCoarseSampleOrderStateCreateInfoNV;
 /// }
 ///
@@ -120,14 +120,6 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
         segment.set(LAYOUT$customSampleOrderCount, OFFSET$customSampleOrderCount, value);
     }
 
-    public @pointer(target=VkCoarseSampleOrderCustomNV.class) MemorySegment pCustomSampleOrdersRaw() {
-        return segment.get(LAYOUT$pCustomSampleOrders, OFFSET$pCustomSampleOrders);
-    }
-
-    public void pCustomSampleOrdersRaw(@pointer(target=VkCoarseSampleOrderCustomNV.class) MemorySegment value) {
-        segment.set(LAYOUT$pCustomSampleOrders, OFFSET$pCustomSampleOrders, value);
-    }
-
     public @Nullable VkCoarseSampleOrderCustomNV pCustomSampleOrders() {
         MemorySegment s = pCustomSampleOrdersRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -153,6 +145,14 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
             ret[i] = new VkCoarseSampleOrderCustomNV(s.asSlice(i * VkCoarseSampleOrderCustomNV.BYTES, VkCoarseSampleOrderCustomNV.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkCoarseSampleOrderCustomNV.class) MemorySegment pCustomSampleOrdersRaw() {
+        return segment.get(LAYOUT$pCustomSampleOrders, OFFSET$pCustomSampleOrders);
+    }
+
+    public void pCustomSampleOrdersRaw(@pointer(target=VkCoarseSampleOrderCustomNV.class) MemorySegment value) {
+        segment.set(LAYOUT$pCustomSampleOrders, OFFSET$pCustomSampleOrders, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

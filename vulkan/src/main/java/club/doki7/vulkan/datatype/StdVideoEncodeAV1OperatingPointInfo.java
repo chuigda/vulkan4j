@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeAV1OperatingPointInfo {
-///     StdVideoEncodeAV1OperatingPointInfoFlags flags;
-///     uint16_t operating_point_idc;
-///     uint8_t seq_level_idx;
-///     uint8_t seq_tier;
-///     uint32_t decoder_buffer_delay;
-///     uint32_t encoder_buffer_delay;
-///     uint8_t initial_display_delay_minus_1;
+///     StdVideoEncodeAV1OperatingPointInfoFlags flags; // @link substring="StdVideoEncodeAV1OperatingPointInfoFlags" target="StdVideoEncodeAV1OperatingPointInfoFlags" @link substring="flags" target="#flags"
+///     uint16_t operating_point_idc; // @link substring="operating_point_idc" target="#operating_point_idc"
+///     uint8_t seq_level_idx; // @link substring="seq_level_idx" target="#seq_level_idx"
+///     uint8_t seq_tier; // @link substring="seq_tier" target="#seq_tier"
+///     uint32_t decoder_buffer_delay; // @link substring="decoder_buffer_delay" target="#decoder_buffer_delay"
+///     uint32_t encoder_buffer_delay; // @link substring="encoder_buffer_delay" target="#encoder_buffer_delay"
+///     uint8_t initial_display_delay_minus_1; // @link substring="initial_display_delay_minus_1" target="#initial_display_delay_minus_1"
 /// } StdVideoEncodeAV1OperatingPointInfo;
 /// }
 ///
@@ -70,11 +70,11 @@ public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment
         return ret;
     }
 
-    public StdVideoEncodeAV1OperatingPointInfoFlags flags() {
+    public @NotNull StdVideoEncodeAV1OperatingPointInfoFlags flags() {
         return new StdVideoEncodeAV1OperatingPointInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoEncodeAV1OperatingPointInfoFlags value) {
+    public void flags(@NotNull StdVideoEncodeAV1OperatingPointInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 

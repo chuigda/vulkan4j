@@ -20,20 +20,20 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderAtomicFloatFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 shaderBufferFloat32Atomics;
-///     VkBool32 shaderBufferFloat32AtomicAdd;
-///     VkBool32 shaderBufferFloat64Atomics;
-///     VkBool32 shaderBufferFloat64AtomicAdd;
-///     VkBool32 shaderSharedFloat32Atomics;
-///     VkBool32 shaderSharedFloat32AtomicAdd;
-///     VkBool32 shaderSharedFloat64Atomics;
-///     VkBool32 shaderSharedFloat64AtomicAdd;
-///     VkBool32 shaderImageFloat32Atomics;
-///     VkBool32 shaderImageFloat32AtomicAdd;
-///     VkBool32 sparseImageFloat32Atomics;
-///     VkBool32 sparseImageFloat32AtomicAdd;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 shaderBufferFloat32Atomics; // @link substring="shaderBufferFloat32Atomics" target="#shaderBufferFloat32Atomics"
+///     VkBool32 shaderBufferFloat32AtomicAdd; // @link substring="shaderBufferFloat32AtomicAdd" target="#shaderBufferFloat32AtomicAdd"
+///     VkBool32 shaderBufferFloat64Atomics; // @link substring="shaderBufferFloat64Atomics" target="#shaderBufferFloat64Atomics"
+///     VkBool32 shaderBufferFloat64AtomicAdd; // @link substring="shaderBufferFloat64AtomicAdd" target="#shaderBufferFloat64AtomicAdd"
+///     VkBool32 shaderSharedFloat32Atomics; // @link substring="shaderSharedFloat32Atomics" target="#shaderSharedFloat32Atomics"
+///     VkBool32 shaderSharedFloat32AtomicAdd; // @link substring="shaderSharedFloat32AtomicAdd" target="#shaderSharedFloat32AtomicAdd"
+///     VkBool32 shaderSharedFloat64Atomics; // @link substring="shaderSharedFloat64Atomics" target="#shaderSharedFloat64Atomics"
+///     VkBool32 shaderSharedFloat64AtomicAdd; // @link substring="shaderSharedFloat64AtomicAdd" target="#shaderSharedFloat64AtomicAdd"
+///     VkBool32 shaderImageFloat32Atomics; // @link substring="shaderImageFloat32Atomics" target="#shaderImageFloat32Atomics"
+///     VkBool32 shaderImageFloat32AtomicAdd; // @link substring="shaderImageFloat32AtomicAdd" target="#shaderImageFloat32AtomicAdd"
+///     VkBool32 sparseImageFloat32Atomics; // @link substring="sparseImageFloat32Atomics" target="#sparseImageFloat32Atomics"
+///     VkBool32 sparseImageFloat32AtomicAdd; // @link substring="sparseImageFloat32AtomicAdd" target="#sparseImageFloat32AtomicAdd"
 /// } VkPhysicalDeviceShaderAtomicFloatFeaturesEXT;
 /// }
 ///

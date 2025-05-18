@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExportSemaphoreSciSyncInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     NvSciSyncAttrList pAttributes;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     NvSciSyncAttrList pAttributes; // @link substring="pAttributes" target="#pAttributes"
 /// } VkExportSemaphoreSciSyncInfoNV;
 /// }
 ///

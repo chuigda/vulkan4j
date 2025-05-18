@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMemoryType {
-///     VkMemoryPropertyFlags propertyFlags; // optional
-///     uint32_t heapIndex;
+///     VkMemoryPropertyFlags propertyFlags; // optional // @link substring="VkMemoryPropertyFlags" target="VkMemoryPropertyFlags" @link substring="propertyFlags" target="#propertyFlags"
+///     uint32_t heapIndex; // @link substring="heapIndex" target="#heapIndex"
 /// } VkMemoryType;
 /// }
 ///

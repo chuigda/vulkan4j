@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeH264ReferenceInfo {
-///     StdVideoEncodeH264ReferenceInfoFlags flags;
-///     StdVideoH264PictureType primary_pic_type;
-///     uint32_t FrameNum;
-///     int32_t PicOrderCnt;
-///     uint16_t long_term_pic_num;
-///     uint16_t long_term_frame_idx;
-///     uint8_t temporal_id;
+///     StdVideoEncodeH264ReferenceInfoFlags flags; // @link substring="StdVideoEncodeH264ReferenceInfoFlags" target="StdVideoEncodeH264ReferenceInfoFlags" @link substring="flags" target="#flags"
+///     StdVideoH264PictureType primary_pic_type; // @link substring="StdVideoH264PictureType" target="StdVideoH264PictureType" @link substring="primary_pic_type" target="#primary_pic_type"
+///     uint32_t FrameNum; // @link substring="FrameNum" target="#FrameNum"
+///     int32_t PicOrderCnt; // @link substring="PicOrderCnt" target="#PicOrderCnt"
+///     uint16_t long_term_pic_num; // @link substring="long_term_pic_num" target="#long_term_pic_num"
+///     uint16_t long_term_frame_idx; // @link substring="long_term_frame_idx" target="#long_term_frame_idx"
+///     uint8_t temporal_id; // @link substring="temporal_id" target="#temporal_id"
 /// } StdVideoEncodeH264ReferenceInfo;
 /// }
 ///
@@ -70,11 +70,11 @@ public record StdVideoEncodeH264ReferenceInfo(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public StdVideoEncodeH264ReferenceInfoFlags flags() {
+    public @NotNull StdVideoEncodeH264ReferenceInfoFlags flags() {
         return new StdVideoEncodeH264ReferenceInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoEncodeH264ReferenceInfoFlags value) {
+    public void flags(@NotNull StdVideoEncodeH264ReferenceInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 

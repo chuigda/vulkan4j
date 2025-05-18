@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkFrameBoundaryEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkFrameBoundaryFlagsEXT flags; // optional
-///     uint64_t frameID;
-///     uint32_t imageCount; // optional
-///     VkImage const* pImages; // optional
-///     uint32_t bufferCount; // optional
-///     VkBuffer const* pBuffers; // optional
-///     uint64_t tagName; // optional
-///     size_t tagSize; // optional
-///     void const* pTag; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkFrameBoundaryFlagsEXT flags; // optional // @link substring="VkFrameBoundaryFlagsEXT" target="VkFrameBoundaryFlagsEXT" @link substring="flags" target="#flags"
+///     uint64_t frameID; // @link substring="frameID" target="#frameID"
+///     uint32_t imageCount; // optional // @link substring="imageCount" target="#imageCount"
+///     VkImage const* pImages; // optional // @link substring="VkImage" target="VkImage" @link substring="pImages" target="#pImages"
+///     uint32_t bufferCount; // optional // @link substring="bufferCount" target="#bufferCount"
+///     VkBuffer const* pBuffers; // optional // @link substring="VkBuffer" target="VkBuffer" @link substring="pBuffers" target="#pBuffers"
+///     uint64_t tagName; // optional // @link substring="tagName" target="#tagName"
+///     size_t tagSize; // optional // @link substring="tagSize" target="#tagSize"
+///     void const* pTag; // optional // @link substring="pTag" target="#pTag"
 /// } VkFrameBoundaryEXT;
 /// }
 ///
@@ -134,14 +134,6 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPoi
         segment.set(LAYOUT$imageCount, OFFSET$imageCount, value);
     }
 
-    public @pointer(target=VkImage.class) MemorySegment pImagesRaw() {
-        return segment.get(LAYOUT$pImages, OFFSET$pImages);
-    }
-
-    public void pImagesRaw(@pointer(target=VkImage.class) MemorySegment value) {
-        segment.set(LAYOUT$pImages, OFFSET$pImages, value);
-    }
-
     /// Note: the returned {@link VkImage.Ptr} does not have correct {@link VkImage.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkImage.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -159,20 +151,20 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPoi
         pImagesRaw(s);
     }
 
+    public @pointer(target=VkImage.class) MemorySegment pImagesRaw() {
+        return segment.get(LAYOUT$pImages, OFFSET$pImages);
+    }
+
+    public void pImagesRaw(@pointer(target=VkImage.class) MemorySegment value) {
+        segment.set(LAYOUT$pImages, OFFSET$pImages, value);
+    }
+
     public @unsigned int bufferCount() {
         return segment.get(LAYOUT$bufferCount, OFFSET$bufferCount);
     }
 
     public void bufferCount(@unsigned int value) {
         segment.set(LAYOUT$bufferCount, OFFSET$bufferCount, value);
-    }
-
-    public @pointer(target=VkBuffer.class) MemorySegment pBuffersRaw() {
-        return segment.get(LAYOUT$pBuffers, OFFSET$pBuffers);
-    }
-
-    public void pBuffersRaw(@pointer(target=VkBuffer.class) MemorySegment value) {
-        segment.set(LAYOUT$pBuffers, OFFSET$pBuffers, value);
     }
 
     /// Note: the returned {@link VkBuffer.Ptr} does not have correct {@link VkBuffer.Ptr#size}
@@ -190,6 +182,14 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPoi
     public void pBuffers(@Nullable VkBuffer.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBuffersRaw(s);
+    }
+
+    public @pointer(target=VkBuffer.class) MemorySegment pBuffersRaw() {
+        return segment.get(LAYOUT$pBuffers, OFFSET$pBuffers);
+    }
+
+    public void pBuffersRaw(@pointer(target=VkBuffer.class) MemorySegment value) {
+        segment.set(LAYOUT$pBuffers, OFFSET$pBuffers, value);
     }
 
     public @unsigned long tagName() {

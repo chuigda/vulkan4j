@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoReferenceSlotInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     int32_t slotIndex;
-///     VkVideoPictureResourceInfoKHR const* pPictureResource; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     int32_t slotIndex; // @link substring="slotIndex" target="#slotIndex"
+///     VkVideoPictureResourceInfoKHR const* pPictureResource; // optional // @link substring="VkVideoPictureResourceInfoKHR" target="VkVideoPictureResourceInfoKHR" @link substring="pPictureResource" target="#pPictureResource"
 /// } VkVideoReferenceSlotInfoKHR;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$slotIndex, OFFSET$slotIndex, value);
     }
 
-    public @pointer(target=VkVideoPictureResourceInfoKHR.class) MemorySegment pPictureResourceRaw() {
-        return segment.get(LAYOUT$pPictureResource, OFFSET$pPictureResource);
-    }
-
-    public void pPictureResourceRaw(@pointer(target=VkVideoPictureResourceInfoKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pPictureResource, OFFSET$pPictureResource, value);
-    }
-
     public @Nullable VkVideoPictureResourceInfoKHR pPictureResource() {
         MemorySegment s = pPictureResourceRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
             ret[i] = new VkVideoPictureResourceInfoKHR(s.asSlice(i * VkVideoPictureResourceInfoKHR.BYTES, VkVideoPictureResourceInfoKHR.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkVideoPictureResourceInfoKHR.class) MemorySegment pPictureResourceRaw() {
+        return segment.get(LAYOUT$pPictureResource, OFFSET$pPictureResource);
+    }
+
+    public void pPictureResourceRaw(@pointer(target=VkVideoPictureResourceInfoKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pPictureResource, OFFSET$pPictureResource, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

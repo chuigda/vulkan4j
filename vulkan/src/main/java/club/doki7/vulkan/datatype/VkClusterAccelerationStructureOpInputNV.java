@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkClusterAccelerationStructureOpInputNV {
-///     VkClusterAccelerationStructureClustersBottomLevelInputNV* pClustersBottomLevel;
-///     VkClusterAccelerationStructureTriangleClusterInputNV* pTriangleClusters;
-///     VkClusterAccelerationStructureMoveObjectsInputNV* pMoveObjects;
+///     VkClusterAccelerationStructureClustersBottomLevelInputNV* pClustersBottomLevel; // @link substring="VkClusterAccelerationStructureClustersBottomLevelInputNV" target="VkClusterAccelerationStructureClustersBottomLevelInputNV" @link substring="pClustersBottomLevel" target="#pClustersBottomLevel"
+///     VkClusterAccelerationStructureTriangleClusterInputNV* pTriangleClusters; // @link substring="VkClusterAccelerationStructureTriangleClusterInputNV" target="VkClusterAccelerationStructureTriangleClusterInputNV" @link substring="pTriangleClusters" target="#pTriangleClusters"
+///     VkClusterAccelerationStructureMoveObjectsInputNV* pMoveObjects; // @link substring="VkClusterAccelerationStructureMoveObjectsInputNV" target="VkClusterAccelerationStructureMoveObjectsInputNV" @link substring="pMoveObjects" target="#pMoveObjects"
 /// } VkClusterAccelerationStructureOpInputNV;
 /// }
 ///
@@ -68,14 +68,6 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         return ret;
     }
 
-    public @pointer(target=VkClusterAccelerationStructureClustersBottomLevelInputNV.class) MemorySegment pClustersBottomLevelRaw() {
-        return segment.get(LAYOUT$pClustersBottomLevel, OFFSET$pClustersBottomLevel);
-    }
-
-    public void pClustersBottomLevelRaw(@pointer(target=VkClusterAccelerationStructureClustersBottomLevelInputNV.class) MemorySegment value) {
-        segment.set(LAYOUT$pClustersBottomLevel, OFFSET$pClustersBottomLevel, value);
-    }
-
     public @Nullable VkClusterAccelerationStructureClustersBottomLevelInputNV pClustersBottomLevel() {
         MemorySegment s = pClustersBottomLevelRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -103,12 +95,12 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         return ret;
     }
 
-    public @pointer(target=VkClusterAccelerationStructureTriangleClusterInputNV.class) MemorySegment pTriangleClustersRaw() {
-        return segment.get(LAYOUT$pTriangleClusters, OFFSET$pTriangleClusters);
+    public @pointer(target=VkClusterAccelerationStructureClustersBottomLevelInputNV.class) MemorySegment pClustersBottomLevelRaw() {
+        return segment.get(LAYOUT$pClustersBottomLevel, OFFSET$pClustersBottomLevel);
     }
 
-    public void pTriangleClustersRaw(@pointer(target=VkClusterAccelerationStructureTriangleClusterInputNV.class) MemorySegment value) {
-        segment.set(LAYOUT$pTriangleClusters, OFFSET$pTriangleClusters, value);
+    public void pClustersBottomLevelRaw(@pointer(target=VkClusterAccelerationStructureClustersBottomLevelInputNV.class) MemorySegment value) {
+        segment.set(LAYOUT$pClustersBottomLevel, OFFSET$pClustersBottomLevel, value);
     }
 
     public @Nullable VkClusterAccelerationStructureTriangleClusterInputNV pTriangleClusters() {
@@ -138,12 +130,12 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         return ret;
     }
 
-    public @pointer(target=VkClusterAccelerationStructureMoveObjectsInputNV.class) MemorySegment pMoveObjectsRaw() {
-        return segment.get(LAYOUT$pMoveObjects, OFFSET$pMoveObjects);
+    public @pointer(target=VkClusterAccelerationStructureTriangleClusterInputNV.class) MemorySegment pTriangleClustersRaw() {
+        return segment.get(LAYOUT$pTriangleClusters, OFFSET$pTriangleClusters);
     }
 
-    public void pMoveObjectsRaw(@pointer(target=VkClusterAccelerationStructureMoveObjectsInputNV.class) MemorySegment value) {
-        segment.set(LAYOUT$pMoveObjects, OFFSET$pMoveObjects, value);
+    public void pTriangleClustersRaw(@pointer(target=VkClusterAccelerationStructureTriangleClusterInputNV.class) MemorySegment value) {
+        segment.set(LAYOUT$pTriangleClusters, OFFSET$pTriangleClusters, value);
     }
 
     public @Nullable VkClusterAccelerationStructureMoveObjectsInputNV pMoveObjects() {
@@ -171,6 +163,14 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
             ret[i] = new VkClusterAccelerationStructureMoveObjectsInputNV(s.asSlice(i * VkClusterAccelerationStructureMoveObjectsInputNV.BYTES, VkClusterAccelerationStructureMoveObjectsInputNV.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkClusterAccelerationStructureMoveObjectsInputNV.class) MemorySegment pMoveObjectsRaw() {
+        return segment.get(LAYOUT$pMoveObjects, OFFSET$pMoveObjects);
+    }
+
+    public void pMoveObjectsRaw(@pointer(target=VkClusterAccelerationStructureMoveObjectsInputNV.class) MemorySegment value) {
+        segment.set(LAYOUT$pMoveObjects, OFFSET$pMoveObjects, value);
     }
 
     public static final UnionLayout LAYOUT = NativeLayout.unionLayout(

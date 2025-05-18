@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSubmitInfo2 {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkSubmitFlags flags; // optional
-///     uint32_t waitSemaphoreInfoCount; // optional
-///     VkSemaphoreSubmitInfo const* pWaitSemaphoreInfos;
-///     uint32_t commandBufferInfoCount; // optional
-///     VkCommandBufferSubmitInfo const* pCommandBufferInfos;
-///     uint32_t signalSemaphoreInfoCount; // optional
-///     VkSemaphoreSubmitInfo const* pSignalSemaphoreInfos;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSubmitFlags flags; // optional // @link substring="VkSubmitFlags" target="VkSubmitFlags" @link substring="flags" target="#flags"
+///     uint32_t waitSemaphoreInfoCount; // optional // @link substring="waitSemaphoreInfoCount" target="#waitSemaphoreInfoCount"
+///     VkSemaphoreSubmitInfo const* pWaitSemaphoreInfos; // @link substring="VkSemaphoreSubmitInfo" target="VkSemaphoreSubmitInfo" @link substring="pWaitSemaphoreInfos" target="#pWaitSemaphoreInfos"
+///     uint32_t commandBufferInfoCount; // optional // @link substring="commandBufferInfoCount" target="#commandBufferInfoCount"
+///     VkCommandBufferSubmitInfo const* pCommandBufferInfos; // @link substring="VkCommandBufferSubmitInfo" target="VkCommandBufferSubmitInfo" @link substring="pCommandBufferInfos" target="#pCommandBufferInfos"
+///     uint32_t signalSemaphoreInfoCount; // optional // @link substring="signalSemaphoreInfoCount" target="#signalSemaphoreInfoCount"
+///     VkSemaphoreSubmitInfo const* pSignalSemaphoreInfos; // @link substring="VkSemaphoreSubmitInfo" target="VkSemaphoreSubmitInfo" @link substring="pSignalSemaphoreInfos" target="#pSignalSemaphoreInfos"
 /// } VkSubmitInfo2;
 /// }
 ///
@@ -124,14 +124,6 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IPointer 
         segment.set(LAYOUT$waitSemaphoreInfoCount, OFFSET$waitSemaphoreInfoCount, value);
     }
 
-    public @pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment pWaitSemaphoreInfosRaw() {
-        return segment.get(LAYOUT$pWaitSemaphoreInfos, OFFSET$pWaitSemaphoreInfos);
-    }
-
-    public void pWaitSemaphoreInfosRaw(@pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pWaitSemaphoreInfos, OFFSET$pWaitSemaphoreInfos, value);
-    }
-
     public @Nullable VkSemaphoreSubmitInfo pWaitSemaphoreInfos() {
         MemorySegment s = pWaitSemaphoreInfosRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -159,20 +151,20 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IPointer 
         return ret;
     }
 
+    public @pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment pWaitSemaphoreInfosRaw() {
+        return segment.get(LAYOUT$pWaitSemaphoreInfos, OFFSET$pWaitSemaphoreInfos);
+    }
+
+    public void pWaitSemaphoreInfosRaw(@pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pWaitSemaphoreInfos, OFFSET$pWaitSemaphoreInfos, value);
+    }
+
     public @unsigned int commandBufferInfoCount() {
         return segment.get(LAYOUT$commandBufferInfoCount, OFFSET$commandBufferInfoCount);
     }
 
     public void commandBufferInfoCount(@unsigned int value) {
         segment.set(LAYOUT$commandBufferInfoCount, OFFSET$commandBufferInfoCount, value);
-    }
-
-    public @pointer(target=VkCommandBufferSubmitInfo.class) MemorySegment pCommandBufferInfosRaw() {
-        return segment.get(LAYOUT$pCommandBufferInfos, OFFSET$pCommandBufferInfos);
-    }
-
-    public void pCommandBufferInfosRaw(@pointer(target=VkCommandBufferSubmitInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pCommandBufferInfos, OFFSET$pCommandBufferInfos, value);
     }
 
     public @Nullable VkCommandBufferSubmitInfo pCommandBufferInfos() {
@@ -202,20 +194,20 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IPointer 
         return ret;
     }
 
+    public @pointer(target=VkCommandBufferSubmitInfo.class) MemorySegment pCommandBufferInfosRaw() {
+        return segment.get(LAYOUT$pCommandBufferInfos, OFFSET$pCommandBufferInfos);
+    }
+
+    public void pCommandBufferInfosRaw(@pointer(target=VkCommandBufferSubmitInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pCommandBufferInfos, OFFSET$pCommandBufferInfos, value);
+    }
+
     public @unsigned int signalSemaphoreInfoCount() {
         return segment.get(LAYOUT$signalSemaphoreInfoCount, OFFSET$signalSemaphoreInfoCount);
     }
 
     public void signalSemaphoreInfoCount(@unsigned int value) {
         segment.set(LAYOUT$signalSemaphoreInfoCount, OFFSET$signalSemaphoreInfoCount, value);
-    }
-
-    public @pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment pSignalSemaphoreInfosRaw() {
-        return segment.get(LAYOUT$pSignalSemaphoreInfos, OFFSET$pSignalSemaphoreInfos);
-    }
-
-    public void pSignalSemaphoreInfosRaw(@pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pSignalSemaphoreInfos, OFFSET$pSignalSemaphoreInfos, value);
     }
 
     public @Nullable VkSemaphoreSubmitInfo pSignalSemaphoreInfos() {
@@ -243,6 +235,14 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IPointer 
             ret[i] = new VkSemaphoreSubmitInfo(s.asSlice(i * VkSemaphoreSubmitInfo.BYTES, VkSemaphoreSubmitInfo.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment pSignalSemaphoreInfosRaw() {
+        return segment.get(LAYOUT$pSignalSemaphoreInfos, OFFSET$pSignalSemaphoreInfos);
+    }
+
+    public void pSignalSemaphoreInfosRaw(@pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pSignalSemaphoreInfos, OFFSET$pSignalSemaphoreInfos, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

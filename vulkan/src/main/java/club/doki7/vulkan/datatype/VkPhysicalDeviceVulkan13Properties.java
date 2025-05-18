@@ -20,53 +20,53 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceVulkan13Properties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t minSubgroupSize;
-///     uint32_t maxSubgroupSize;
-///     uint32_t maxComputeWorkgroupSubgroups;
-///     VkShaderStageFlags requiredSubgroupSizeStages;
-///     uint32_t maxInlineUniformBlockSize;
-///     uint32_t maxPerStageDescriptorInlineUniformBlocks;
-///     uint32_t maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks;
-///     uint32_t maxDescriptorSetInlineUniformBlocks;
-///     uint32_t maxDescriptorSetUpdateAfterBindInlineUniformBlocks;
-///     uint32_t maxInlineUniformTotalSize;
-///     VkBool32 integerDotProduct8BitUnsignedAccelerated;
-///     VkBool32 integerDotProduct8BitSignedAccelerated;
-///     VkBool32 integerDotProduct8BitMixedSignednessAccelerated;
-///     VkBool32 integerDotProduct4x8BitPackedUnsignedAccelerated;
-///     VkBool32 integerDotProduct4x8BitPackedSignedAccelerated;
-///     VkBool32 integerDotProduct4x8BitPackedMixedSignednessAccelerated;
-///     VkBool32 integerDotProduct16BitUnsignedAccelerated;
-///     VkBool32 integerDotProduct16BitSignedAccelerated;
-///     VkBool32 integerDotProduct16BitMixedSignednessAccelerated;
-///     VkBool32 integerDotProduct32BitUnsignedAccelerated;
-///     VkBool32 integerDotProduct32BitSignedAccelerated;
-///     VkBool32 integerDotProduct32BitMixedSignednessAccelerated;
-///     VkBool32 integerDotProduct64BitUnsignedAccelerated;
-///     VkBool32 integerDotProduct64BitSignedAccelerated;
-///     VkBool32 integerDotProduct64BitMixedSignednessAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating8BitUnsignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating8BitSignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating16BitUnsignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating16BitSignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating32BitUnsignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating32BitSignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating64BitUnsignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating64BitSignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated;
-///     VkDeviceSize storageTexelBufferOffsetAlignmentBytes;
-///     VkBool32 storageTexelBufferOffsetSingleTexelAlignment;
-///     VkDeviceSize uniformTexelBufferOffsetAlignmentBytes;
-///     VkBool32 uniformTexelBufferOffsetSingleTexelAlignment;
-///     VkDeviceSize maxBufferSize;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t minSubgroupSize; // @link substring="minSubgroupSize" target="#minSubgroupSize"
+///     uint32_t maxSubgroupSize; // @link substring="maxSubgroupSize" target="#maxSubgroupSize"
+///     uint32_t maxComputeWorkgroupSubgroups; // @link substring="maxComputeWorkgroupSubgroups" target="#maxComputeWorkgroupSubgroups"
+///     VkShaderStageFlags requiredSubgroupSizeStages; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="requiredSubgroupSizeStages" target="#requiredSubgroupSizeStages"
+///     uint32_t maxInlineUniformBlockSize; // @link substring="maxInlineUniformBlockSize" target="#maxInlineUniformBlockSize"
+///     uint32_t maxPerStageDescriptorInlineUniformBlocks; // @link substring="maxPerStageDescriptorInlineUniformBlocks" target="#maxPerStageDescriptorInlineUniformBlocks"
+///     uint32_t maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks; // @link substring="maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks" target="#maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks"
+///     uint32_t maxDescriptorSetInlineUniformBlocks; // @link substring="maxDescriptorSetInlineUniformBlocks" target="#maxDescriptorSetInlineUniformBlocks"
+///     uint32_t maxDescriptorSetUpdateAfterBindInlineUniformBlocks; // @link substring="maxDescriptorSetUpdateAfterBindInlineUniformBlocks" target="#maxDescriptorSetUpdateAfterBindInlineUniformBlocks"
+///     uint32_t maxInlineUniformTotalSize; // @link substring="maxInlineUniformTotalSize" target="#maxInlineUniformTotalSize"
+///     VkBool32 integerDotProduct8BitUnsignedAccelerated; // @link substring="integerDotProduct8BitUnsignedAccelerated" target="#integerDotProduct8BitUnsignedAccelerated"
+///     VkBool32 integerDotProduct8BitSignedAccelerated; // @link substring="integerDotProduct8BitSignedAccelerated" target="#integerDotProduct8BitSignedAccelerated"
+///     VkBool32 integerDotProduct8BitMixedSignednessAccelerated; // @link substring="integerDotProduct8BitMixedSignednessAccelerated" target="#integerDotProduct8BitMixedSignednessAccelerated"
+///     VkBool32 integerDotProduct4x8BitPackedUnsignedAccelerated; // @link substring="integerDotProduct4x8BitPackedUnsignedAccelerated" target="#integerDotProduct4x8BitPackedUnsignedAccelerated"
+///     VkBool32 integerDotProduct4x8BitPackedSignedAccelerated; // @link substring="integerDotProduct4x8BitPackedSignedAccelerated" target="#integerDotProduct4x8BitPackedSignedAccelerated"
+///     VkBool32 integerDotProduct4x8BitPackedMixedSignednessAccelerated; // @link substring="integerDotProduct4x8BitPackedMixedSignednessAccelerated" target="#integerDotProduct4x8BitPackedMixedSignednessAccelerated"
+///     VkBool32 integerDotProduct16BitUnsignedAccelerated; // @link substring="integerDotProduct16BitUnsignedAccelerated" target="#integerDotProduct16BitUnsignedAccelerated"
+///     VkBool32 integerDotProduct16BitSignedAccelerated; // @link substring="integerDotProduct16BitSignedAccelerated" target="#integerDotProduct16BitSignedAccelerated"
+///     VkBool32 integerDotProduct16BitMixedSignednessAccelerated; // @link substring="integerDotProduct16BitMixedSignednessAccelerated" target="#integerDotProduct16BitMixedSignednessAccelerated"
+///     VkBool32 integerDotProduct32BitUnsignedAccelerated; // @link substring="integerDotProduct32BitUnsignedAccelerated" target="#integerDotProduct32BitUnsignedAccelerated"
+///     VkBool32 integerDotProduct32BitSignedAccelerated; // @link substring="integerDotProduct32BitSignedAccelerated" target="#integerDotProduct32BitSignedAccelerated"
+///     VkBool32 integerDotProduct32BitMixedSignednessAccelerated; // @link substring="integerDotProduct32BitMixedSignednessAccelerated" target="#integerDotProduct32BitMixedSignednessAccelerated"
+///     VkBool32 integerDotProduct64BitUnsignedAccelerated; // @link substring="integerDotProduct64BitUnsignedAccelerated" target="#integerDotProduct64BitUnsignedAccelerated"
+///     VkBool32 integerDotProduct64BitSignedAccelerated; // @link substring="integerDotProduct64BitSignedAccelerated" target="#integerDotProduct64BitSignedAccelerated"
+///     VkBool32 integerDotProduct64BitMixedSignednessAccelerated; // @link substring="integerDotProduct64BitMixedSignednessAccelerated" target="#integerDotProduct64BitMixedSignednessAccelerated"
+///     VkBool32 integerDotProductAccumulatingSaturating8BitUnsignedAccelerated; // @link substring="integerDotProductAccumulatingSaturating8BitUnsignedAccelerated" target="#integerDotProductAccumulatingSaturating8BitUnsignedAccelerated"
+///     VkBool32 integerDotProductAccumulatingSaturating8BitSignedAccelerated; // @link substring="integerDotProductAccumulatingSaturating8BitSignedAccelerated" target="#integerDotProductAccumulatingSaturating8BitSignedAccelerated"
+///     VkBool32 integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated; // @link substring="integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated" target="#integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated"
+///     VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated; // @link substring="integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated" target="#integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated"
+///     VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated; // @link substring="integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated" target="#integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated"
+///     VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated; // @link substring="integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated" target="#integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated"
+///     VkBool32 integerDotProductAccumulatingSaturating16BitUnsignedAccelerated; // @link substring="integerDotProductAccumulatingSaturating16BitUnsignedAccelerated" target="#integerDotProductAccumulatingSaturating16BitUnsignedAccelerated"
+///     VkBool32 integerDotProductAccumulatingSaturating16BitSignedAccelerated; // @link substring="integerDotProductAccumulatingSaturating16BitSignedAccelerated" target="#integerDotProductAccumulatingSaturating16BitSignedAccelerated"
+///     VkBool32 integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated; // @link substring="integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated" target="#integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated"
+///     VkBool32 integerDotProductAccumulatingSaturating32BitUnsignedAccelerated; // @link substring="integerDotProductAccumulatingSaturating32BitUnsignedAccelerated" target="#integerDotProductAccumulatingSaturating32BitUnsignedAccelerated"
+///     VkBool32 integerDotProductAccumulatingSaturating32BitSignedAccelerated; // @link substring="integerDotProductAccumulatingSaturating32BitSignedAccelerated" target="#integerDotProductAccumulatingSaturating32BitSignedAccelerated"
+///     VkBool32 integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated; // @link substring="integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated" target="#integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated"
+///     VkBool32 integerDotProductAccumulatingSaturating64BitUnsignedAccelerated; // @link substring="integerDotProductAccumulatingSaturating64BitUnsignedAccelerated" target="#integerDotProductAccumulatingSaturating64BitUnsignedAccelerated"
+///     VkBool32 integerDotProductAccumulatingSaturating64BitSignedAccelerated; // @link substring="integerDotProductAccumulatingSaturating64BitSignedAccelerated" target="#integerDotProductAccumulatingSaturating64BitSignedAccelerated"
+///     VkBool32 integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated; // @link substring="integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated" target="#integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated"
+///     VkDeviceSize storageTexelBufferOffsetAlignmentBytes; // @link substring="storageTexelBufferOffsetAlignmentBytes" target="#storageTexelBufferOffsetAlignmentBytes"
+///     VkBool32 storageTexelBufferOffsetSingleTexelAlignment; // @link substring="storageTexelBufferOffsetSingleTexelAlignment" target="#storageTexelBufferOffsetSingleTexelAlignment"
+///     VkDeviceSize uniformTexelBufferOffsetAlignmentBytes; // @link substring="uniformTexelBufferOffsetAlignmentBytes" target="#uniformTexelBufferOffsetAlignmentBytes"
+///     VkBool32 uniformTexelBufferOffsetSingleTexelAlignment; // @link substring="uniformTexelBufferOffsetSingleTexelAlignment" target="#uniformTexelBufferOffsetSingleTexelAlignment"
+///     VkDeviceSize maxBufferSize; // @link substring="maxBufferSize" target="#maxBufferSize"
 /// } VkPhysicalDeviceVulkan13Properties;
 /// }
 ///

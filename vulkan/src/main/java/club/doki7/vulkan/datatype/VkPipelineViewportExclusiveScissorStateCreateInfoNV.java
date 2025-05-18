@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineViewportExclusiveScissorStateCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t exclusiveScissorCount; // optional
-///     VkRect2D const* pExclusiveScissors;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t exclusiveScissorCount; // optional // @link substring="exclusiveScissorCount" target="#exclusiveScissorCount"
+///     VkRect2D const* pExclusiveScissors; // @link substring="VkRect2D" target="VkRect2D" @link substring="pExclusiveScissors" target="#pExclusiveScissors"
 /// } VkPipelineViewportExclusiveScissorStateCreateInfoNV;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(@NotNull Memor
         segment.set(LAYOUT$exclusiveScissorCount, OFFSET$exclusiveScissorCount, value);
     }
 
-    public @pointer(target=VkRect2D.class) MemorySegment pExclusiveScissorsRaw() {
-        return segment.get(LAYOUT$pExclusiveScissors, OFFSET$pExclusiveScissors);
-    }
-
-    public void pExclusiveScissorsRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
-        segment.set(LAYOUT$pExclusiveScissors, OFFSET$pExclusiveScissors, value);
-    }
-
     public @Nullable VkRect2D pExclusiveScissors() {
         MemorySegment s = pExclusiveScissorsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(@NotNull Memor
             ret[i] = new VkRect2D(s.asSlice(i * VkRect2D.BYTES, VkRect2D.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkRect2D.class) MemorySegment pExclusiveScissorsRaw() {
+        return segment.get(LAYOUT$pExclusiveScissors, OFFSET$pExclusiveScissors);
+    }
+
+    public void pExclusiveScissorsRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
+        segment.set(LAYOUT$pExclusiveScissors, OFFSET$pExclusiveScissors, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

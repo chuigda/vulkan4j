@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderingAttachmentInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImageView imageView; // optional
-///     VkImageLayout imageLayout;
-///     VkResolveModeFlags resolveMode; // optional
-///     VkImageView resolveImageView; // optional
-///     VkImageLayout resolveImageLayout;
-///     VkAttachmentLoadOp loadOp;
-///     VkAttachmentStoreOp storeOp;
-///     VkClearValue clearValue;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageView imageView; // optional // @link substring="VkImageView" target="VkImageView" @link substring="imageView" target="#imageView"
+///     VkImageLayout imageLayout; // @link substring="VkImageLayout" target="VkImageLayout" @link substring="imageLayout" target="#imageLayout"
+///     VkResolveModeFlags resolveMode; // optional // @link substring="VkResolveModeFlags" target="VkResolveModeFlags" @link substring="resolveMode" target="#resolveMode"
+///     VkImageView resolveImageView; // optional // @link substring="VkImageView" target="VkImageView" @link substring="resolveImageView" target="#resolveImageView"
+///     VkImageLayout resolveImageLayout; // @link substring="VkImageLayout" target="VkImageLayout" @link substring="resolveImageLayout" target="#resolveImageLayout"
+///     VkAttachmentLoadOp loadOp; // @link substring="VkAttachmentLoadOp" target="VkAttachmentLoadOp" @link substring="loadOp" target="#loadOp"
+///     VkAttachmentStoreOp storeOp; // @link substring="VkAttachmentStoreOp" target="VkAttachmentStoreOp" @link substring="storeOp" target="#storeOp"
+///     VkClearValue clearValue; // @link substring="VkClearValue" target="VkClearValue" @link substring="clearValue" target="#clearValue"
 /// } VkRenderingAttachmentInfo;
 /// }
 ///
@@ -173,11 +173,11 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$storeOp, OFFSET$storeOp, value);
     }
 
-    public VkClearValue clearValue() {
+    public @NotNull VkClearValue clearValue() {
         return new VkClearValue(segment.asSlice(OFFSET$clearValue, LAYOUT$clearValue));
     }
 
-    public void clearValue(VkClearValue value) {
+    public void clearValue(@NotNull VkClearValue value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$clearValue, SIZE$clearValue);
     }
 

@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSamplerCubicWeightsCreateInfoQCOM {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkCubicFilterWeightsQCOM cubicWeights;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkCubicFilterWeightsQCOM cubicWeights; // @link substring="VkCubicFilterWeightsQCOM" target="VkCubicFilterWeightsQCOM" @link substring="cubicWeights" target="#cubicWeights"
 /// } VkSamplerCubicWeightsCreateInfoQCOM;
 /// }
 ///

@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeH265PictureInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t naluSliceSegmentEntryCount;
-///     VkVideoEncodeH265NaluSliceSegmentInfoKHR const* pNaluSliceSegmentEntries;
-///     StdVideoEncodeH265PictureInfo const* pStdPictureInfo;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t naluSliceSegmentEntryCount; // @link substring="naluSliceSegmentEntryCount" target="#naluSliceSegmentEntryCount"
+///     VkVideoEncodeH265NaluSliceSegmentInfoKHR const* pNaluSliceSegmentEntries; // @link substring="VkVideoEncodeH265NaluSliceSegmentInfoKHR" target="VkVideoEncodeH265NaluSliceSegmentInfoKHR" @link substring="pNaluSliceSegmentEntries" target="#pNaluSliceSegmentEntries"
+///     StdVideoEncodeH265PictureInfo const* pStdPictureInfo; // @link substring="StdVideoEncodeH265PictureInfo" target="StdVideoEncodeH265PictureInfo" @link substring="pStdPictureInfo" target="#pStdPictureInfo"
 /// } VkVideoEncodeH265PictureInfoKHR;
 /// }
 ///
@@ -112,14 +112,6 @@ public record VkVideoEncodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$naluSliceSegmentEntryCount, OFFSET$naluSliceSegmentEntryCount, value);
     }
 
-    public @pointer(target=VkVideoEncodeH265NaluSliceSegmentInfoKHR.class) MemorySegment pNaluSliceSegmentEntriesRaw() {
-        return segment.get(LAYOUT$pNaluSliceSegmentEntries, OFFSET$pNaluSliceSegmentEntries);
-    }
-
-    public void pNaluSliceSegmentEntriesRaw(@pointer(target=VkVideoEncodeH265NaluSliceSegmentInfoKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pNaluSliceSegmentEntries, OFFSET$pNaluSliceSegmentEntries, value);
-    }
-
     public @Nullable VkVideoEncodeH265NaluSliceSegmentInfoKHR pNaluSliceSegmentEntries() {
         MemorySegment s = pNaluSliceSegmentEntriesRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -147,12 +139,12 @@ public record VkVideoEncodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public @pointer(target=StdVideoEncodeH265PictureInfo.class) MemorySegment pStdPictureInfoRaw() {
-        return segment.get(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo);
+    public @pointer(target=VkVideoEncodeH265NaluSliceSegmentInfoKHR.class) MemorySegment pNaluSliceSegmentEntriesRaw() {
+        return segment.get(LAYOUT$pNaluSliceSegmentEntries, OFFSET$pNaluSliceSegmentEntries);
     }
 
-    public void pStdPictureInfoRaw(@pointer(target=StdVideoEncodeH265PictureInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo, value);
+    public void pNaluSliceSegmentEntriesRaw(@pointer(target=VkVideoEncodeH265NaluSliceSegmentInfoKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pNaluSliceSegmentEntries, OFFSET$pNaluSliceSegmentEntries, value);
     }
 
     public @Nullable StdVideoEncodeH265PictureInfo pStdPictureInfo() {
@@ -180,6 +172,14 @@ public record VkVideoEncodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
             ret[i] = new StdVideoEncodeH265PictureInfo(s.asSlice(i * StdVideoEncodeH265PictureInfo.BYTES, StdVideoEncodeH265PictureInfo.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoEncodeH265PictureInfo.class) MemorySegment pStdPictureInfoRaw() {
+        return segment.get(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo);
+    }
+
+    public void pStdPictureInfoRaw(@pointer(target=StdVideoEncodeH265PictureInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

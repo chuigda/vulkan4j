@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceDepthStencilResolveProperties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkResolveModeFlags supportedDepthResolveModes;
-///     VkResolveModeFlags supportedStencilResolveModes;
-///     VkBool32 independentResolveNone;
-///     VkBool32 independentResolve;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkResolveModeFlags supportedDepthResolveModes; // @link substring="VkResolveModeFlags" target="VkResolveModeFlags" @link substring="supportedDepthResolveModes" target="#supportedDepthResolveModes"
+///     VkResolveModeFlags supportedStencilResolveModes; // @link substring="VkResolveModeFlags" target="VkResolveModeFlags" @link substring="supportedStencilResolveModes" target="#supportedStencilResolveModes"
+///     VkBool32 independentResolveNone; // @link substring="independentResolveNone" target="#independentResolveNone"
+///     VkBool32 independentResolve; // @link substring="independentResolve" target="#independentResolve"
 /// } VkPhysicalDeviceDepthStencilResolveProperties;
 /// }
 ///

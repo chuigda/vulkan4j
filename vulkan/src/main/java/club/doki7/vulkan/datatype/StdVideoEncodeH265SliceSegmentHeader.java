@@ -20,21 +20,21 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeH265SliceSegmentHeader {
-///     StdVideoEncodeH265SliceSegmentHeaderFlags flags;
-///     StdVideoH265SliceType slice_type;
-///     uint32_t slice_segment_address;
-///     uint8_t collocated_ref_idx;
-///     uint8_t MaxNumMergeCand;
-///     int8_t slice_cb_qp_offset;
-///     int8_t slice_cr_qp_offset;
-///     int8_t slice_beta_offset_div2;
-///     int8_t slice_tc_offset_div2;
-///     int8_t slice_act_y_qp_offset;
-///     int8_t slice_act_cb_qp_offset;
-///     int8_t slice_act_cr_qp_offset;
-///     int8_t slice_qp_delta;
-///     uint16_t reserved1;
-///     StdVideoEncodeH265WeightTable const* pWeightTable;
+///     StdVideoEncodeH265SliceSegmentHeaderFlags flags; // @link substring="StdVideoEncodeH265SliceSegmentHeaderFlags" target="StdVideoEncodeH265SliceSegmentHeaderFlags" @link substring="flags" target="#flags"
+///     StdVideoH265SliceType slice_type; // @link substring="StdVideoH265SliceType" target="StdVideoH265SliceType" @link substring="slice_type" target="#slice_type"
+///     uint32_t slice_segment_address; // @link substring="slice_segment_address" target="#slice_segment_address"
+///     uint8_t collocated_ref_idx; // @link substring="collocated_ref_idx" target="#collocated_ref_idx"
+///     uint8_t MaxNumMergeCand; // @link substring="MaxNumMergeCand" target="#MaxNumMergeCand"
+///     int8_t slice_cb_qp_offset; // @link substring="slice_cb_qp_offset" target="#slice_cb_qp_offset"
+///     int8_t slice_cr_qp_offset; // @link substring="slice_cr_qp_offset" target="#slice_cr_qp_offset"
+///     int8_t slice_beta_offset_div2; // @link substring="slice_beta_offset_div2" target="#slice_beta_offset_div2"
+///     int8_t slice_tc_offset_div2; // @link substring="slice_tc_offset_div2" target="#slice_tc_offset_div2"
+///     int8_t slice_act_y_qp_offset; // @link substring="slice_act_y_qp_offset" target="#slice_act_y_qp_offset"
+///     int8_t slice_act_cb_qp_offset; // @link substring="slice_act_cb_qp_offset" target="#slice_act_cb_qp_offset"
+///     int8_t slice_act_cr_qp_offset; // @link substring="slice_act_cr_qp_offset" target="#slice_act_cr_qp_offset"
+///     int8_t slice_qp_delta; // @link substring="slice_qp_delta" target="#slice_qp_delta"
+///     uint16_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     StdVideoEncodeH265WeightTable const* pWeightTable; // @link substring="StdVideoEncodeH265WeightTable" target="StdVideoEncodeH265WeightTable" @link substring="pWeightTable" target="#pWeightTable"
 /// } StdVideoEncodeH265SliceSegmentHeader;
 /// }
 ///
@@ -78,11 +78,11 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         return ret;
     }
 
-    public StdVideoEncodeH265SliceSegmentHeaderFlags flags() {
+    public @NotNull StdVideoEncodeH265SliceSegmentHeaderFlags flags() {
         return new StdVideoEncodeH265SliceSegmentHeaderFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoEncodeH265SliceSegmentHeaderFlags value) {
+    public void flags(@NotNull StdVideoEncodeH265SliceSegmentHeaderFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
@@ -190,14 +190,6 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
     }
 
-    public @pointer(target=StdVideoEncodeH265WeightTable.class) MemorySegment pWeightTableRaw() {
-        return segment.get(LAYOUT$pWeightTable, OFFSET$pWeightTable);
-    }
-
-    public void pWeightTableRaw(@pointer(target=StdVideoEncodeH265WeightTable.class) MemorySegment value) {
-        segment.set(LAYOUT$pWeightTable, OFFSET$pWeightTable, value);
-    }
-
     public @Nullable StdVideoEncodeH265WeightTable pWeightTable() {
         MemorySegment s = pWeightTableRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -223,6 +215,14 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
             ret[i] = new StdVideoEncodeH265WeightTable(s.asSlice(i * StdVideoEncodeH265WeightTable.BYTES, StdVideoEncodeH265WeightTable.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoEncodeH265WeightTable.class) MemorySegment pWeightTableRaw() {
+        return segment.get(LAYOUT$pWeightTable, OFFSET$pWeightTable);
+    }
+
+    public void pWeightTableRaw(@pointer(target=StdVideoEncodeH265WeightTable.class) MemorySegment value) {
+        segment.set(LAYOUT$pWeightTable, OFFSET$pWeightTable, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

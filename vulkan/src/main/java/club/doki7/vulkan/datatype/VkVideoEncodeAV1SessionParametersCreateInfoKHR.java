@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeAV1SessionParametersCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     StdVideoAV1SequenceHeader const* pStdSequenceHeader;
-///     StdVideoEncodeAV1DecoderModelInfo const* pStdDecoderModelInfo; // optional
-///     uint32_t stdOperatingPointCount; // optional
-///     StdVideoEncodeAV1OperatingPointInfo const* pStdOperatingPoints; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     StdVideoAV1SequenceHeader const* pStdSequenceHeader; // @link substring="StdVideoAV1SequenceHeader" target="StdVideoAV1SequenceHeader" @link substring="pStdSequenceHeader" target="#pStdSequenceHeader"
+///     StdVideoEncodeAV1DecoderModelInfo const* pStdDecoderModelInfo; // optional // @link substring="StdVideoEncodeAV1DecoderModelInfo" target="StdVideoEncodeAV1DecoderModelInfo" @link substring="pStdDecoderModelInfo" target="#pStdDecoderModelInfo"
+///     uint32_t stdOperatingPointCount; // optional // @link substring="stdOperatingPointCount" target="#stdOperatingPointCount"
+///     StdVideoEncodeAV1OperatingPointInfo const* pStdOperatingPoints; // optional // @link substring="StdVideoEncodeAV1OperatingPointInfo" target="StdVideoEncodeAV1OperatingPointInfo" @link substring="pStdOperatingPoints" target="#pStdOperatingPoints"
 /// } VkVideoEncodeAV1SessionParametersCreateInfoKHR;
 /// }
 ///
@@ -105,14 +105,6 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment pStdSequenceHeaderRaw() {
-        return segment.get(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader);
-    }
-
-    public void pStdSequenceHeaderRaw(@pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment value) {
-        segment.set(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader, value);
-    }
-
     public @Nullable StdVideoAV1SequenceHeader pStdSequenceHeader() {
         MemorySegment s = pStdSequenceHeaderRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -140,12 +132,12 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         return ret;
     }
 
-    public @pointer(target=StdVideoEncodeAV1DecoderModelInfo.class) MemorySegment pStdDecoderModelInfoRaw() {
-        return segment.get(LAYOUT$pStdDecoderModelInfo, OFFSET$pStdDecoderModelInfo);
+    public @pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment pStdSequenceHeaderRaw() {
+        return segment.get(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader);
     }
 
-    public void pStdDecoderModelInfoRaw(@pointer(target=StdVideoEncodeAV1DecoderModelInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pStdDecoderModelInfo, OFFSET$pStdDecoderModelInfo, value);
+    public void pStdSequenceHeaderRaw(@pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment value) {
+        segment.set(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader, value);
     }
 
     public @Nullable StdVideoEncodeAV1DecoderModelInfo pStdDecoderModelInfo() {
@@ -175,20 +167,20 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         return ret;
     }
 
+    public @pointer(target=StdVideoEncodeAV1DecoderModelInfo.class) MemorySegment pStdDecoderModelInfoRaw() {
+        return segment.get(LAYOUT$pStdDecoderModelInfo, OFFSET$pStdDecoderModelInfo);
+    }
+
+    public void pStdDecoderModelInfoRaw(@pointer(target=StdVideoEncodeAV1DecoderModelInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pStdDecoderModelInfo, OFFSET$pStdDecoderModelInfo, value);
+    }
+
     public @unsigned int stdOperatingPointCount() {
         return segment.get(LAYOUT$stdOperatingPointCount, OFFSET$stdOperatingPointCount);
     }
 
     public void stdOperatingPointCount(@unsigned int value) {
         segment.set(LAYOUT$stdOperatingPointCount, OFFSET$stdOperatingPointCount, value);
-    }
-
-    public @pointer(target=StdVideoEncodeAV1OperatingPointInfo.class) MemorySegment pStdOperatingPointsRaw() {
-        return segment.get(LAYOUT$pStdOperatingPoints, OFFSET$pStdOperatingPoints);
-    }
-
-    public void pStdOperatingPointsRaw(@pointer(target=StdVideoEncodeAV1OperatingPointInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pStdOperatingPoints, OFFSET$pStdOperatingPoints, value);
     }
 
     public @Nullable StdVideoEncodeAV1OperatingPointInfo pStdOperatingPoints() {
@@ -216,6 +208,14 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
             ret[i] = new StdVideoEncodeAV1OperatingPointInfo(s.asSlice(i * StdVideoEncodeAV1OperatingPointInfo.BYTES, StdVideoEncodeAV1OperatingPointInfo.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoEncodeAV1OperatingPointInfo.class) MemorySegment pStdOperatingPointsRaw() {
+        return segment.get(LAYOUT$pStdOperatingPoints, OFFSET$pStdOperatingPoints);
+    }
+
+    public void pStdOperatingPointsRaw(@pointer(target=StdVideoEncodeAV1OperatingPointInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pStdOperatingPoints, OFFSET$pStdOperatingPoints, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

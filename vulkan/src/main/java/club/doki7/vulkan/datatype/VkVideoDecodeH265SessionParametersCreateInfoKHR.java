@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoDecodeH265SessionParametersCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t maxStdVPSCount;
-///     uint32_t maxStdSPSCount;
-///     uint32_t maxStdPPSCount;
-///     VkVideoDecodeH265SessionParametersAddInfoKHR const* pParametersAddInfo; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxStdVPSCount; // @link substring="maxStdVPSCount" target="#maxStdVPSCount"
+///     uint32_t maxStdSPSCount; // @link substring="maxStdSPSCount" target="#maxStdSPSCount"
+///     uint32_t maxStdPPSCount; // @link substring="maxStdPPSCount" target="#maxStdPPSCount"
+///     VkVideoDecodeH265SessionParametersAddInfoKHR const* pParametersAddInfo; // optional // @link substring="VkVideoDecodeH265SessionParametersAddInfoKHR" target="VkVideoDecodeH265SessionParametersAddInfoKHR" @link substring="pParametersAddInfo" target="#pParametersAddInfo"
 /// } VkVideoDecodeH265SessionParametersCreateInfoKHR;
 /// }
 ///
@@ -129,14 +129,6 @@ public record VkVideoDecodeH265SessionParametersCreateInfoKHR(@NotNull MemorySeg
         segment.set(LAYOUT$maxStdPPSCount, OFFSET$maxStdPPSCount, value);
     }
 
-    public @pointer(target=VkVideoDecodeH265SessionParametersAddInfoKHR.class) MemorySegment pParametersAddInfoRaw() {
-        return segment.get(LAYOUT$pParametersAddInfo, OFFSET$pParametersAddInfo);
-    }
-
-    public void pParametersAddInfoRaw(@pointer(target=VkVideoDecodeH265SessionParametersAddInfoKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pParametersAddInfo, OFFSET$pParametersAddInfo, value);
-    }
-
     public @Nullable VkVideoDecodeH265SessionParametersAddInfoKHR pParametersAddInfo() {
         MemorySegment s = pParametersAddInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -162,6 +154,14 @@ public record VkVideoDecodeH265SessionParametersCreateInfoKHR(@NotNull MemorySeg
             ret[i] = new VkVideoDecodeH265SessionParametersAddInfoKHR(s.asSlice(i * VkVideoDecodeH265SessionParametersAddInfoKHR.BYTES, VkVideoDecodeH265SessionParametersAddInfoKHR.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkVideoDecodeH265SessionParametersAddInfoKHR.class) MemorySegment pParametersAddInfoRaw() {
+        return segment.get(LAYOUT$pParametersAddInfo, OFFSET$pParametersAddInfo);
+    }
+
+    public void pParametersAddInfoRaw(@pointer(target=VkVideoDecodeH265SessionParametersAddInfoKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pParametersAddInfo, OFFSET$pParametersAddInfo, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

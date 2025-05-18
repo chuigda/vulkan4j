@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineCacheHeaderVersionOne {
-///     uint32_t headerSize;
-///     VkPipelineCacheHeaderVersion headerVersion;
-///     uint32_t vendorID;
-///     uint32_t deviceID;
-///     uint8_t pipelineCacheUUID;
+///     uint32_t headerSize; // @link substring="headerSize" target="#headerSize"
+///     VkPipelineCacheHeaderVersion headerVersion; // @link substring="VkPipelineCacheHeaderVersion" target="VkPipelineCacheHeaderVersion" @link substring="headerVersion" target="#headerVersion"
+///     uint32_t vendorID; // @link substring="vendorID" target="#vendorID"
+///     uint32_t deviceID; // @link substring="deviceID" target="#deviceID"
+///     uint8_t pipelineCacheUUID; // @link substring="pipelineCacheUUID" target="#pipelineCacheUUID"
 /// } VkPipelineCacheHeaderVersionOne;
 /// }
 ///

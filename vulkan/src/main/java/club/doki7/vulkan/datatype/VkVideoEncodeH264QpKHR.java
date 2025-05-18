@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeH264QpKHR {
-///     int32_t qpI;
-///     int32_t qpP;
-///     int32_t qpB;
+///     int32_t qpI; // @link substring="qpI" target="#qpI"
+///     int32_t qpP; // @link substring="qpP" target="#qpP"
+///     int32_t qpB; // @link substring="qpB" target="#qpB"
 /// } VkVideoEncodeH264QpKHR;
 /// }
 ///

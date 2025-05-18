@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineCoverageReductionStateCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineCoverageReductionStateCreateFlagsNV flags; // optional
-///     VkCoverageReductionModeNV coverageReductionMode;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineCoverageReductionStateCreateFlagsNV flags; // optional // @link substring="VkPipelineCoverageReductionStateCreateFlagsNV" target="VkPipelineCoverageReductionStateCreateFlagsNV" @link substring="flags" target="#flags"
+///     VkCoverageReductionModeNV coverageReductionMode; // @link substring="VkCoverageReductionModeNV" target="VkCoverageReductionModeNV" @link substring="coverageReductionMode" target="#coverageReductionMode"
 /// } VkPipelineCoverageReductionStateCreateInfoNV;
 /// }
 ///

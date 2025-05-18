@@ -20,7 +20,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkTransformMatrixKHR {
-///     float matrix;
+///     float matrix; // @link substring="matrix" target="#matrix"
 /// } VkTransformMatrixKHR;
 /// }
 ///

@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceTileShadingPropertiesQCOM {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t maxApronSize;
-///     VkBool32 preferNonCoherent;
-///     VkExtent2D tileGranularity;
-///     VkExtent2D maxTileShadingRate;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxApronSize; // @link substring="maxApronSize" target="#maxApronSize"
+///     VkBool32 preferNonCoherent; // @link substring="preferNonCoherent" target="#preferNonCoherent"
+///     VkExtent2D tileGranularity; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="tileGranularity" target="#tileGranularity"
+///     VkExtent2D maxTileShadingRate; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxTileShadingRate" target="#maxTileShadingRate"
 /// } VkPhysicalDeviceTileShadingPropertiesQCOM;
 /// }
 ///
@@ -121,19 +121,19 @@ public record VkPhysicalDeviceTileShadingPropertiesQCOM(@NotNull MemorySegment s
         segment.set(LAYOUT$preferNonCoherent, OFFSET$preferNonCoherent, value);
     }
 
-    public VkExtent2D tileGranularity() {
+    public @NotNull VkExtent2D tileGranularity() {
         return new VkExtent2D(segment.asSlice(OFFSET$tileGranularity, LAYOUT$tileGranularity));
     }
 
-    public void tileGranularity(VkExtent2D value) {
+    public void tileGranularity(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$tileGranularity, SIZE$tileGranularity);
     }
 
-    public VkExtent2D maxTileShadingRate() {
+    public @NotNull VkExtent2D maxTileShadingRate() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxTileShadingRate, LAYOUT$maxTileShadingRate));
     }
 
-    public void maxTileShadingRate(VkExtent2D value) {
+    public void maxTileShadingRate(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTileShadingRate, SIZE$maxTileShadingRate);
     }
 

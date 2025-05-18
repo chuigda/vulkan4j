@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkLatencySleepInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkSemaphore signalSemaphore;
-///     uint64_t value;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSemaphore signalSemaphore; // @link substring="VkSemaphore" target="VkSemaphore" @link substring="signalSemaphore" target="#signalSemaphore"
+///     uint64_t value; // @link substring="value" target="#value"
 /// } VkLatencySleepInfoNV;
 /// }
 ///

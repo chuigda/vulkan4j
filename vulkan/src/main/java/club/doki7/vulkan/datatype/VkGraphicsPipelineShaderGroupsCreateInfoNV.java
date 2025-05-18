@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkGraphicsPipelineShaderGroupsCreateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t groupCount; // optional
-///     VkGraphicsShaderGroupCreateInfoNV const* pGroups;
-///     uint32_t pipelineCount; // optional
-///     VkPipeline const* pPipelines;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t groupCount; // optional // @link substring="groupCount" target="#groupCount"
+///     VkGraphicsShaderGroupCreateInfoNV const* pGroups; // @link substring="VkGraphicsShaderGroupCreateInfoNV" target="VkGraphicsShaderGroupCreateInfoNV" @link substring="pGroups" target="#pGroups"
+///     uint32_t pipelineCount; // optional // @link substring="pipelineCount" target="#pipelineCount"
+///     VkPipeline const* pPipelines; // @link substring="VkPipeline" target="VkPipeline" @link substring="pPipelines" target="#pPipelines"
 /// } VkGraphicsPipelineShaderGroupsCreateInfoNV;
 /// }
 ///
@@ -113,14 +113,6 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         segment.set(LAYOUT$groupCount, OFFSET$groupCount, value);
     }
 
-    public @pointer(target=VkGraphicsShaderGroupCreateInfoNV.class) MemorySegment pGroupsRaw() {
-        return segment.get(LAYOUT$pGroups, OFFSET$pGroups);
-    }
-
-    public void pGroupsRaw(@pointer(target=VkGraphicsShaderGroupCreateInfoNV.class) MemorySegment value) {
-        segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
-    }
-
     public @Nullable VkGraphicsShaderGroupCreateInfoNV pGroups() {
         MemorySegment s = pGroupsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -148,20 +140,20 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         return ret;
     }
 
+    public @pointer(target=VkGraphicsShaderGroupCreateInfoNV.class) MemorySegment pGroupsRaw() {
+        return segment.get(LAYOUT$pGroups, OFFSET$pGroups);
+    }
+
+    public void pGroupsRaw(@pointer(target=VkGraphicsShaderGroupCreateInfoNV.class) MemorySegment value) {
+        segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
+    }
+
     public @unsigned int pipelineCount() {
         return segment.get(LAYOUT$pipelineCount, OFFSET$pipelineCount);
     }
 
     public void pipelineCount(@unsigned int value) {
         segment.set(LAYOUT$pipelineCount, OFFSET$pipelineCount, value);
-    }
-
-    public @pointer(target=VkPipeline.class) MemorySegment pPipelinesRaw() {
-        return segment.get(LAYOUT$pPipelines, OFFSET$pPipelines);
-    }
-
-    public void pPipelinesRaw(@pointer(target=VkPipeline.class) MemorySegment value) {
-        segment.set(LAYOUT$pPipelines, OFFSET$pPipelines, value);
     }
 
     /// Note: the returned {@link VkPipeline.Ptr} does not have correct {@link VkPipeline.Ptr#size}
@@ -179,6 +171,14 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
     public void pPipelines(@Nullable VkPipeline.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelinesRaw(s);
+    }
+
+    public @pointer(target=VkPipeline.class) MemorySegment pPipelinesRaw() {
+        return segment.get(LAYOUT$pPipelines, OFFSET$pPipelines);
+    }
+
+    public void pPipelinesRaw(@pointer(target=VkPipeline.class) MemorySegment value) {
+        segment.set(LAYOUT$pPipelines, OFFSET$pPipelines, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

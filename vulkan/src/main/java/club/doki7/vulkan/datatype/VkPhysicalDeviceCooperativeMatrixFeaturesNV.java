@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceCooperativeMatrixFeaturesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 cooperativeMatrix;
-///     VkBool32 cooperativeMatrixRobustBufferAccess;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 cooperativeMatrix; // @link substring="cooperativeMatrix" target="#cooperativeMatrix"
+///     VkBool32 cooperativeMatrixRobustBufferAccess; // @link substring="cooperativeMatrixRobustBufferAccess" target="#cooperativeMatrixRobustBufferAccess"
 /// } VkPhysicalDeviceCooperativeMatrixFeaturesNV;
 /// }
 ///

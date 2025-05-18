@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeH264RefListModEntry {
-///     StdVideoH264ModificationOfPicNumsIdc modification_of_pic_nums_idc;
-///     uint16_t abs_diff_pic_num_minus1;
-///     uint16_t long_term_pic_num;
+///     StdVideoH264ModificationOfPicNumsIdc modification_of_pic_nums_idc; // @link substring="StdVideoH264ModificationOfPicNumsIdc" target="StdVideoH264ModificationOfPicNumsIdc" @link substring="modification_of_pic_nums_idc" target="#modification_of_pic_nums_idc"
+///     uint16_t abs_diff_pic_num_minus1; // @link substring="abs_diff_pic_num_minus1" target="#abs_diff_pic_num_minus1"
+///     uint16_t long_term_pic_num; // @link substring="long_term_pic_num" target="#long_term_pic_num"
 /// } StdVideoEncodeH264RefListModEntry;
 /// }
 ///

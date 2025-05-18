@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineColorBlendAdvancedStateCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBool32 srcPremultiplied;
-///     VkBool32 dstPremultiplied;
-///     VkBlendOverlapEXT blendOverlap;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 srcPremultiplied; // @link substring="srcPremultiplied" target="#srcPremultiplied"
+///     VkBool32 dstPremultiplied; // @link substring="dstPremultiplied" target="#dstPremultiplied"
+///     VkBlendOverlapEXT blendOverlap; // @link substring="VkBlendOverlapEXT" target="VkBlendOverlapEXT" @link substring="blendOverlap" target="#blendOverlap"
 /// } VkPipelineColorBlendAdvancedStateCreateInfoEXT;
 /// }
 ///

@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSamplerCustomBorderColorCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkClearColorValue customBorderColor;
-///     VkFormat format;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkClearColorValue customBorderColor; // @link substring="VkClearColorValue" target="VkClearColorValue" @link substring="customBorderColor" target="#customBorderColor"
+///     VkFormat format; // @link substring="VkFormat" target="VkFormat" @link substring="format" target="#format"
 /// } VkSamplerCustomBorderColorCreateInfoEXT;
 /// }
 ///
@@ -103,11 +103,11 @@ public record VkSamplerCustomBorderColorCreateInfoEXT(@NotNull MemorySegment seg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkClearColorValue customBorderColor() {
+    public @NotNull VkClearColorValue customBorderColor() {
         return new VkClearColorValue(segment.asSlice(OFFSET$customBorderColor, LAYOUT$customBorderColor));
     }
 
-    public void customBorderColor(VkClearColorValue value) {
+    public void customBorderColor(@NotNull VkClearColorValue value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$customBorderColor, SIZE$customBorderColor);
     }
 

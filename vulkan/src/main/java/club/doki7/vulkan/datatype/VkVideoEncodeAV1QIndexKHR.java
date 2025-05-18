@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeAV1QIndexKHR {
-///     uint32_t intraQIndex;
-///     uint32_t predictiveQIndex;
-///     uint32_t bipredictiveQIndex;
+///     uint32_t intraQIndex; // @link substring="intraQIndex" target="#intraQIndex"
+///     uint32_t predictiveQIndex; // @link substring="predictiveQIndex" target="#predictiveQIndex"
+///     uint32_t bipredictiveQIndex; // @link substring="bipredictiveQIndex" target="#bipredictiveQIndex"
 /// } VkVideoEncodeAV1QIndexKHR;
 /// }
 ///

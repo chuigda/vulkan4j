@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSubresourceHostMemcpySize {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkDeviceSize size;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceSize size; // @link substring="size" target="#size"
 /// } VkSubresourceHostMemcpySize;
 /// }
 ///

@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDispatchGraphInfoAMDX {
-///     uint32_t nodeIndex;
-///     uint32_t payloadCount; // optional
-///     VkDeviceOrHostAddressConstAMDX payloads;
-///     uint64_t payloadStride;
+///     uint32_t nodeIndex; // @link substring="nodeIndex" target="#nodeIndex"
+///     uint32_t payloadCount; // optional // @link substring="payloadCount" target="#payloadCount"
+///     VkDeviceOrHostAddressConstAMDX payloads; // @link substring="VkDeviceOrHostAddressConstAMDX" target="VkDeviceOrHostAddressConstAMDX" @link substring="payloads" target="#payloads"
+///     uint64_t payloadStride; // @link substring="payloadStride" target="#payloadStride"
 /// } VkDispatchGraphInfoAMDX;
 /// }
 ///
@@ -85,11 +85,11 @@ public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$payloadCount, OFFSET$payloadCount, value);
     }
 
-    public VkDeviceOrHostAddressConstAMDX payloads() {
+    public @NotNull VkDeviceOrHostAddressConstAMDX payloads() {
         return new VkDeviceOrHostAddressConstAMDX(segment.asSlice(OFFSET$payloads, LAYOUT$payloads));
     }
 
-    public void payloads(VkDeviceOrHostAddressConstAMDX value) {
+    public void payloads(@NotNull VkDeviceOrHostAddressConstAMDX value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$payloads, SIZE$payloads);
     }
 

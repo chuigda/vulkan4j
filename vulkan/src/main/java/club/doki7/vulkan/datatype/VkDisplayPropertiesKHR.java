@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDisplayPropertiesKHR {
-///     VkDisplayKHR display;
-///     char const* displayName;
-///     VkExtent2D physicalDimensions;
-///     VkExtent2D physicalResolution;
-///     VkSurfaceTransformFlagsKHR supportedTransforms; // optional
-///     VkBool32 planeReorderPossible;
-///     VkBool32 persistentContent;
+///     VkDisplayKHR display; // @link substring="VkDisplayKHR" target="VkDisplayKHR" @link substring="display" target="#display"
+///     char const* displayName; // @link substring="displayName" target="#displayName"
+///     VkExtent2D physicalDimensions; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="physicalDimensions" target="#physicalDimensions"
+///     VkExtent2D physicalResolution; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="physicalResolution" target="#physicalResolution"
+///     VkSurfaceTransformFlagsKHR supportedTransforms; // optional // @link substring="VkSurfaceTransformFlagsKHR" target="VkSurfaceTransformFlagsKHR" @link substring="supportedTransforms" target="#supportedTransforms"
+///     VkBool32 planeReorderPossible; // @link substring="planeReorderPossible" target="#planeReorderPossible"
+///     VkBool32 persistentContent; // @link substring="persistentContent" target="#persistentContent"
 /// } VkDisplayPropertiesKHR;
 /// }
 ///
@@ -84,14 +84,6 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$display, OFFSET$display, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="byte*") MemorySegment displayNameRaw() {
-        return segment.get(LAYOUT$displayName, OFFSET$displayName);
-    }
-
-    public void displayNameRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$displayName, OFFSET$displayName, value);
-    }
-
     /// Note: the returned {@link BytePtr} does not have correct
     /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
@@ -109,19 +101,27 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         displayNameRaw(s);
     }
 
-    public VkExtent2D physicalDimensions() {
+    public @pointer(comment="byte*") MemorySegment displayNameRaw() {
+        return segment.get(LAYOUT$displayName, OFFSET$displayName);
+    }
+
+    public void displayNameRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$displayName, OFFSET$displayName, value);
+    }
+
+    public @NotNull VkExtent2D physicalDimensions() {
         return new VkExtent2D(segment.asSlice(OFFSET$physicalDimensions, LAYOUT$physicalDimensions));
     }
 
-    public void physicalDimensions(VkExtent2D value) {
+    public void physicalDimensions(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$physicalDimensions, SIZE$physicalDimensions);
     }
 
-    public VkExtent2D physicalResolution() {
+    public @NotNull VkExtent2D physicalResolution() {
         return new VkExtent2D(segment.asSlice(OFFSET$physicalResolution, LAYOUT$physicalResolution));
     }
 
-    public void physicalResolution(VkExtent2D value) {
+    public void physicalResolution(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$physicalResolution, SIZE$physicalResolution);
     }
 

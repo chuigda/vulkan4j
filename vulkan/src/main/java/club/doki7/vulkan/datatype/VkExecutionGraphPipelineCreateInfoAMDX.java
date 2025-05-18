@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExecutionGraphPipelineCreateInfoAMDX {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineCreateFlags flags; // optional
-///     uint32_t stageCount; // optional
-///     VkPipelineShaderStageCreateInfo const* pStages; // optional
-///     VkPipelineLibraryCreateInfoKHR const* pLibraryInfo; // optional
-///     VkPipelineLayout layout;
-///     VkPipeline basePipelineHandle; // optional
-///     int32_t basePipelineIndex;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineCreateFlags flags; // optional // @link substring="VkPipelineCreateFlags" target="VkPipelineCreateFlags" @link substring="flags" target="#flags"
+///     uint32_t stageCount; // optional // @link substring="stageCount" target="#stageCount"
+///     VkPipelineShaderStageCreateInfo const* pStages; // optional // @link substring="VkPipelineShaderStageCreateInfo" target="VkPipelineShaderStageCreateInfo" @link substring="pStages" target="#pStages"
+///     VkPipelineLibraryCreateInfoKHR const* pLibraryInfo; // optional // @link substring="VkPipelineLibraryCreateInfoKHR" target="VkPipelineLibraryCreateInfoKHR" @link substring="pLibraryInfo" target="#pLibraryInfo"
+///     VkPipelineLayout layout; // @link substring="VkPipelineLayout" target="VkPipelineLayout" @link substring="layout" target="#layout"
+///     VkPipeline basePipelineHandle; // optional // @link substring="VkPipeline" target="VkPipeline" @link substring="basePipelineHandle" target="#basePipelineHandle"
+///     int32_t basePipelineIndex; // @link substring="basePipelineIndex" target="#basePipelineIndex"
 /// } VkExecutionGraphPipelineCreateInfoAMDX;
 /// }
 ///
@@ -124,14 +124,6 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         segment.set(LAYOUT$stageCount, OFFSET$stageCount, value);
     }
 
-    public @pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
-        return segment.get(LAYOUT$pStages, OFFSET$pStages);
-    }
-
-    public void pStagesRaw(@pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pStages, OFFSET$pStages, value);
-    }
-
     public @Nullable VkPipelineShaderStageCreateInfo pStages() {
         MemorySegment s = pStagesRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -159,12 +151,12 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         return ret;
     }
 
-    public @pointer(target=VkPipelineLibraryCreateInfoKHR.class) MemorySegment pLibraryInfoRaw() {
-        return segment.get(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo);
+    public @pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
+        return segment.get(LAYOUT$pStages, OFFSET$pStages);
     }
 
-    public void pLibraryInfoRaw(@pointer(target=VkPipelineLibraryCreateInfoKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo, value);
+    public void pStagesRaw(@pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
 
     public @Nullable VkPipelineLibraryCreateInfoKHR pLibraryInfo() {
@@ -192,6 +184,14 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
             ret[i] = new VkPipelineLibraryCreateInfoKHR(s.asSlice(i * VkPipelineLibraryCreateInfoKHR.BYTES, VkPipelineLibraryCreateInfoKHR.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkPipelineLibraryCreateInfoKHR.class) MemorySegment pLibraryInfoRaw() {
+        return segment.get(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo);
+    }
+
+    public void pLibraryInfoRaw(@pointer(target=VkPipelineLibraryCreateInfoKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo, value);
     }
 
     public @Nullable VkPipelineLayout layout() {

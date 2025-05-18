@@ -21,9 +21,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeAV1ReferenceInfoFlags {
-///     uint32_t disable_frame_end_update_cdf : 1;
-///     uint32_t segmentation_enabled : 1;
-///     uint32_t reserved : 30;
+///     uint32_t disable_frame_end_update_cdf : 1; // @link substring="disable_frame_end_update_cdf" target="#disable_frame_end_update_cdf"
+///     uint32_t segmentation_enabled : 1; // @link substring="segmentation_enabled" target="#segmentation_enabled"
+///     uint32_t reserved : 30; // @link substring="reserved" target="#reserved"
 /// } StdVideoEncodeAV1ReferenceInfoFlags;
 /// }
 ///

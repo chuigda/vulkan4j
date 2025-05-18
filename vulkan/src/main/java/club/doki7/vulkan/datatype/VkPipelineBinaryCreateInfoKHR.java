@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineBinaryCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineBinaryKeysAndDataKHR const* pKeysAndDataInfo; // optional
-///     VkPipeline pipeline; // optional
-///     VkPipelineCreateInfoKHR const* pPipelineCreateInfo; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineBinaryKeysAndDataKHR const* pKeysAndDataInfo; // optional // @link substring="VkPipelineBinaryKeysAndDataKHR" target="VkPipelineBinaryKeysAndDataKHR" @link substring="pKeysAndDataInfo" target="#pKeysAndDataInfo"
+///     VkPipeline pipeline; // optional // @link substring="VkPipeline" target="VkPipeline" @link substring="pipeline" target="#pipeline"
+///     VkPipelineCreateInfoKHR const* pPipelineCreateInfo; // optional // @link substring="VkPipelineCreateInfoKHR" target="VkPipelineCreateInfoKHR" @link substring="pPipelineCreateInfo" target="#pPipelineCreateInfo"
 /// } VkPipelineBinaryCreateInfoKHR;
 /// }
 ///
@@ -104,14 +104,6 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(target=VkPipelineBinaryKeysAndDataKHR.class) MemorySegment pKeysAndDataInfoRaw() {
-        return segment.get(LAYOUT$pKeysAndDataInfo, OFFSET$pKeysAndDataInfo);
-    }
-
-    public void pKeysAndDataInfoRaw(@pointer(target=VkPipelineBinaryKeysAndDataKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pKeysAndDataInfo, OFFSET$pKeysAndDataInfo, value);
-    }
-
     public @Nullable VkPipelineBinaryKeysAndDataKHR pKeysAndDataInfo() {
         MemorySegment s = pKeysAndDataInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -139,6 +131,14 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
         return ret;
     }
 
+    public @pointer(target=VkPipelineBinaryKeysAndDataKHR.class) MemorySegment pKeysAndDataInfoRaw() {
+        return segment.get(LAYOUT$pKeysAndDataInfo, OFFSET$pKeysAndDataInfo);
+    }
+
+    public void pKeysAndDataInfoRaw(@pointer(target=VkPipelineBinaryKeysAndDataKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pKeysAndDataInfo, OFFSET$pKeysAndDataInfo, value);
+    }
+
     public @Nullable VkPipeline pipeline() {
         MemorySegment s = segment.asSlice(OFFSET$pipeline, SIZE$pipeline);
         if (s.equals(MemorySegment.NULL)) {
@@ -149,14 +149,6 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
 
     public void pipeline(@Nullable VkPipeline value) {
         segment.set(LAYOUT$pipeline, OFFSET$pipeline, value != null ? value.segment() : MemorySegment.NULL);
-    }
-
-    public @pointer(target=VkPipelineCreateInfoKHR.class) MemorySegment pPipelineCreateInfoRaw() {
-        return segment.get(LAYOUT$pPipelineCreateInfo, OFFSET$pPipelineCreateInfo);
-    }
-
-    public void pPipelineCreateInfoRaw(@pointer(target=VkPipelineCreateInfoKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pPipelineCreateInfo, OFFSET$pPipelineCreateInfo, value);
     }
 
     public @Nullable VkPipelineCreateInfoKHR pPipelineCreateInfo() {
@@ -184,6 +176,14 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
             ret[i] = new VkPipelineCreateInfoKHR(s.asSlice(i * VkPipelineCreateInfoKHR.BYTES, VkPipelineCreateInfoKHR.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkPipelineCreateInfoKHR.class) MemorySegment pPipelineCreateInfoRaw() {
+        return segment.get(LAYOUT$pPipelineCreateInfo, OFFSET$pPipelineCreateInfo);
+    }
+
+    public void pPipelineCreateInfoRaw(@pointer(target=VkPipelineCreateInfoKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pPipelineCreateInfo, OFFSET$pPipelineCreateInfo, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

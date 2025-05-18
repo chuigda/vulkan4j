@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCommandBufferInheritanceViewportScissorInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBool32 viewportScissor2D;
-///     uint32_t viewportDepthCount;
-///     VkViewport const* pViewportDepths;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 viewportScissor2D; // @link substring="viewportScissor2D" target="#viewportScissor2D"
+///     uint32_t viewportDepthCount; // @link substring="viewportDepthCount" target="#viewportDepthCount"
+///     VkViewport const* pViewportDepths; // @link substring="VkViewport" target="VkViewport" @link substring="pViewportDepths" target="#pViewportDepths"
 /// } VkCommandBufferInheritanceViewportScissorInfoNV;
 /// }
 ///
@@ -120,14 +120,6 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(@NotNull MemorySeg
         segment.set(LAYOUT$viewportDepthCount, OFFSET$viewportDepthCount, value);
     }
 
-    public @pointer(target=VkViewport.class) MemorySegment pViewportDepthsRaw() {
-        return segment.get(LAYOUT$pViewportDepths, OFFSET$pViewportDepths);
-    }
-
-    public void pViewportDepthsRaw(@pointer(target=VkViewport.class) MemorySegment value) {
-        segment.set(LAYOUT$pViewportDepths, OFFSET$pViewportDepths, value);
-    }
-
     public @Nullable VkViewport pViewportDepths() {
         MemorySegment s = pViewportDepthsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -153,6 +145,14 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(@NotNull MemorySeg
             ret[i] = new VkViewport(s.asSlice(i * VkViewport.BYTES, VkViewport.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkViewport.class) MemorySegment pViewportDepthsRaw() {
+        return segment.get(LAYOUT$pViewportDepths, OFFSET$pViewportDepths);
+    }
+
+    public void pViewportDepthsRaw(@pointer(target=VkViewport.class) MemorySegment value) {
+        segment.set(LAYOUT$pViewportDepths, OFFSET$pViewportDepths, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

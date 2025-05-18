@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkSampleCountFlags maxFragmentShadingRateInvocationCount;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSampleCountFlags maxFragmentShadingRateInvocationCount; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="maxFragmentShadingRateInvocationCount" target="#maxFragmentShadingRateInvocationCount"
 /// } VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV;
 /// }
 ///

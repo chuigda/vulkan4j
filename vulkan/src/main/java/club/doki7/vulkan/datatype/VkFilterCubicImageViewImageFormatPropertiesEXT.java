@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkFilterCubicImageViewImageFormatPropertiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 filterCubic;
-///     VkBool32 filterCubicMinmax;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 filterCubic; // @link substring="filterCubic" target="#filterCubic"
+///     VkBool32 filterCubicMinmax; // @link substring="filterCubicMinmax" target="#filterCubicMinmax"
 /// } VkFilterCubicImageViewImageFormatPropertiesEXT;
 /// }
 ///

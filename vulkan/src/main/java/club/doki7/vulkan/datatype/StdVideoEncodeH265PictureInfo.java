@@ -20,18 +20,18 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeH265PictureInfo {
-///     StdVideoEncodeH265PictureInfoFlags flags;
-///     StdVideoH265PictureType pic_type;
-///     uint8_t sps_video_parameter_set_id;
-///     uint8_t pps_seq_parameter_set_id;
-///     uint8_t pps_pic_parameter_set_id;
-///     uint8_t short_term_ref_pic_set_idx;
-///     int32_t PicOrderCntVal;
-///     uint8_t TemporalId;
-///     uint8_t reserved1;
-///     StdVideoEncodeH265ReferenceListsInfo const* pRefLists;
-///     StdVideoH265ShortTermRefPicSet const* pShortTermRefPicSet;
-///     StdVideoEncodeH265LongTermRefPics const* pLongTermRefPics;
+///     StdVideoEncodeH265PictureInfoFlags flags; // @link substring="StdVideoEncodeH265PictureInfoFlags" target="StdVideoEncodeH265PictureInfoFlags" @link substring="flags" target="#flags"
+///     StdVideoH265PictureType pic_type; // @link substring="StdVideoH265PictureType" target="StdVideoH265PictureType" @link substring="pic_type" target="#pic_type"
+///     uint8_t sps_video_parameter_set_id; // @link substring="sps_video_parameter_set_id" target="#sps_video_parameter_set_id"
+///     uint8_t pps_seq_parameter_set_id; // @link substring="pps_seq_parameter_set_id" target="#pps_seq_parameter_set_id"
+///     uint8_t pps_pic_parameter_set_id; // @link substring="pps_pic_parameter_set_id" target="#pps_pic_parameter_set_id"
+///     uint8_t short_term_ref_pic_set_idx; // @link substring="short_term_ref_pic_set_idx" target="#short_term_ref_pic_set_idx"
+///     int32_t PicOrderCntVal; // @link substring="PicOrderCntVal" target="#PicOrderCntVal"
+///     uint8_t TemporalId; // @link substring="TemporalId" target="#TemporalId"
+///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     StdVideoEncodeH265ReferenceListsInfo const* pRefLists; // @link substring="StdVideoEncodeH265ReferenceListsInfo" target="StdVideoEncodeH265ReferenceListsInfo" @link substring="pRefLists" target="#pRefLists"
+///     StdVideoH265ShortTermRefPicSet const* pShortTermRefPicSet; // @link substring="StdVideoH265ShortTermRefPicSet" target="StdVideoH265ShortTermRefPicSet" @link substring="pShortTermRefPicSet" target="#pShortTermRefPicSet"
+///     StdVideoEncodeH265LongTermRefPics const* pLongTermRefPics; // @link substring="StdVideoEncodeH265LongTermRefPics" target="StdVideoEncodeH265LongTermRefPics" @link substring="pLongTermRefPics" target="#pLongTermRefPics"
 /// } StdVideoEncodeH265PictureInfo;
 /// }
 ///
@@ -75,11 +75,11 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public StdVideoEncodeH265PictureInfoFlags flags() {
+    public @NotNull StdVideoEncodeH265PictureInfoFlags flags() {
         return new StdVideoEncodeH265PictureInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoEncodeH265PictureInfoFlags value) {
+    public void flags(@NotNull StdVideoEncodeH265PictureInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
@@ -147,14 +147,6 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
     }
 
-    public @pointer(target=StdVideoEncodeH265ReferenceListsInfo.class) MemorySegment pRefListsRaw() {
-        return segment.get(LAYOUT$pRefLists, OFFSET$pRefLists);
-    }
-
-    public void pRefListsRaw(@pointer(target=StdVideoEncodeH265ReferenceListsInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pRefLists, OFFSET$pRefLists, value);
-    }
-
     public @Nullable StdVideoEncodeH265ReferenceListsInfo pRefLists() {
         MemorySegment s = pRefListsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -182,12 +174,12 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @pointer(target=StdVideoH265ShortTermRefPicSet.class) MemorySegment pShortTermRefPicSetRaw() {
-        return segment.get(LAYOUT$pShortTermRefPicSet, OFFSET$pShortTermRefPicSet);
+    public @pointer(target=StdVideoEncodeH265ReferenceListsInfo.class) MemorySegment pRefListsRaw() {
+        return segment.get(LAYOUT$pRefLists, OFFSET$pRefLists);
     }
 
-    public void pShortTermRefPicSetRaw(@pointer(target=StdVideoH265ShortTermRefPicSet.class) MemorySegment value) {
-        segment.set(LAYOUT$pShortTermRefPicSet, OFFSET$pShortTermRefPicSet, value);
+    public void pRefListsRaw(@pointer(target=StdVideoEncodeH265ReferenceListsInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pRefLists, OFFSET$pRefLists, value);
     }
 
     public @Nullable StdVideoH265ShortTermRefPicSet pShortTermRefPicSet() {
@@ -217,12 +209,12 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @pointer(target=StdVideoEncodeH265LongTermRefPics.class) MemorySegment pLongTermRefPicsRaw() {
-        return segment.get(LAYOUT$pLongTermRefPics, OFFSET$pLongTermRefPics);
+    public @pointer(target=StdVideoH265ShortTermRefPicSet.class) MemorySegment pShortTermRefPicSetRaw() {
+        return segment.get(LAYOUT$pShortTermRefPicSet, OFFSET$pShortTermRefPicSet);
     }
 
-    public void pLongTermRefPicsRaw(@pointer(target=StdVideoEncodeH265LongTermRefPics.class) MemorySegment value) {
-        segment.set(LAYOUT$pLongTermRefPics, OFFSET$pLongTermRefPics, value);
+    public void pShortTermRefPicSetRaw(@pointer(target=StdVideoH265ShortTermRefPicSet.class) MemorySegment value) {
+        segment.set(LAYOUT$pShortTermRefPicSet, OFFSET$pShortTermRefPicSet, value);
     }
 
     public @Nullable StdVideoEncodeH265LongTermRefPics pLongTermRefPics() {
@@ -250,6 +242,14 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
             ret[i] = new StdVideoEncodeH265LongTermRefPics(s.asSlice(i * StdVideoEncodeH265LongTermRefPics.BYTES, StdVideoEncodeH265LongTermRefPics.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoEncodeH265LongTermRefPics.class) MemorySegment pLongTermRefPicsRaw() {
+        return segment.get(LAYOUT$pLongTermRefPics, OFFSET$pLongTermRefPics);
+    }
+
+    public void pLongTermRefPicsRaw(@pointer(target=StdVideoEncodeH265LongTermRefPics.class) MemorySegment value) {
+        segment.set(LAYOUT$pLongTermRefPics, OFFSET$pLongTermRefPics, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

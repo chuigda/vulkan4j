@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDescriptorSetLayoutBinding {
-///     uint32_t binding;
-///     VkDescriptorType descriptorType;
-///     uint32_t descriptorCount; // optional
-///     VkShaderStageFlags stageFlags;
-///     VkSampler const* pImmutableSamplers; // optional
+///     uint32_t binding; // @link substring="binding" target="#binding"
+///     VkDescriptorType descriptorType; // @link substring="VkDescriptorType" target="VkDescriptorType" @link substring="descriptorType" target="#descriptorType"
+///     uint32_t descriptorCount; // optional // @link substring="descriptorCount" target="#descriptorCount"
+///     VkShaderStageFlags stageFlags; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="stageFlags" target="#stageFlags"
+///     VkSampler const* pImmutableSamplers; // optional // @link substring="VkSampler" target="VkSampler" @link substring="pImmutableSamplers" target="#pImmutableSamplers"
 /// } VkDescriptorSetLayoutBinding;
 /// }
 ///
@@ -102,14 +102,6 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
     }
 
-    public @pointer(target=VkSampler.class) MemorySegment pImmutableSamplersRaw() {
-        return segment.get(LAYOUT$pImmutableSamplers, OFFSET$pImmutableSamplers);
-    }
-
-    public void pImmutableSamplersRaw(@pointer(target=VkSampler.class) MemorySegment value) {
-        segment.set(LAYOUT$pImmutableSamplers, OFFSET$pImmutableSamplers, value);
-    }
-
     /// Note: the returned {@link VkSampler.Ptr} does not have correct {@link VkSampler.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkSampler.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -125,6 +117,14 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
     public void pImmutableSamplers(@Nullable VkSampler.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImmutableSamplersRaw(s);
+    }
+
+    public @pointer(target=VkSampler.class) MemorySegment pImmutableSamplersRaw() {
+        return segment.get(LAYOUT$pImmutableSamplers, OFFSET$pImmutableSamplers);
+    }
+
+    public void pImmutableSamplersRaw(@pointer(target=VkSampler.class) MemorySegment value) {
+        segment.set(LAYOUT$pImmutableSamplers, OFFSET$pImmutableSamplers, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

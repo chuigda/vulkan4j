@@ -20,21 +20,21 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeH264CapabilitiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkVideoEncodeH264CapabilityFlagsKHR flags;
-///     StdVideoH264LevelIdc maxLevelIdc;
-///     uint32_t maxSliceCount;
-///     uint32_t maxPPictureL0ReferenceCount;
-///     uint32_t maxBPictureL0ReferenceCount;
-///     uint32_t maxL1ReferenceCount;
-///     uint32_t maxTemporalLayerCount;
-///     VkBool32 expectDyadicTemporalLayerPattern;
-///     int32_t minQp;
-///     int32_t maxQp;
-///     VkBool32 prefersGopRemainingFrames;
-///     VkBool32 requiresGopRemainingFrames;
-///     VkVideoEncodeH264StdFlagsKHR stdSyntaxFlags;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkVideoEncodeH264CapabilityFlagsKHR flags; // @link substring="VkVideoEncodeH264CapabilityFlagsKHR" target="VkVideoEncodeH264CapabilityFlagsKHR" @link substring="flags" target="#flags"
+///     StdVideoH264LevelIdc maxLevelIdc; // @link substring="StdVideoH264LevelIdc" target="StdVideoH264LevelIdc" @link substring="maxLevelIdc" target="#maxLevelIdc"
+///     uint32_t maxSliceCount; // @link substring="maxSliceCount" target="#maxSliceCount"
+///     uint32_t maxPPictureL0ReferenceCount; // @link substring="maxPPictureL0ReferenceCount" target="#maxPPictureL0ReferenceCount"
+///     uint32_t maxBPictureL0ReferenceCount; // @link substring="maxBPictureL0ReferenceCount" target="#maxBPictureL0ReferenceCount"
+///     uint32_t maxL1ReferenceCount; // @link substring="maxL1ReferenceCount" target="#maxL1ReferenceCount"
+///     uint32_t maxTemporalLayerCount; // @link substring="maxTemporalLayerCount" target="#maxTemporalLayerCount"
+///     VkBool32 expectDyadicTemporalLayerPattern; // @link substring="expectDyadicTemporalLayerPattern" target="#expectDyadicTemporalLayerPattern"
+///     int32_t minQp; // @link substring="minQp" target="#minQp"
+///     int32_t maxQp; // @link substring="maxQp" target="#maxQp"
+///     VkBool32 prefersGopRemainingFrames; // @link substring="prefersGopRemainingFrames" target="#prefersGopRemainingFrames"
+///     VkBool32 requiresGopRemainingFrames; // @link substring="requiresGopRemainingFrames" target="#requiresGopRemainingFrames"
+///     VkVideoEncodeH264StdFlagsKHR stdSyntaxFlags; // @link substring="VkVideoEncodeH264StdFlagsKHR" target="VkVideoEncodeH264StdFlagsKHR" @link substring="stdSyntaxFlags" target="#stdSyntaxFlags"
 /// } VkVideoEncodeH264CapabilitiesKHR;
 /// }
 ///

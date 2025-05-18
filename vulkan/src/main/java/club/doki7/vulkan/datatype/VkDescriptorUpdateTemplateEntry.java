@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDescriptorUpdateTemplateEntry {
-///     uint32_t dstBinding;
-///     uint32_t dstArrayElement;
-///     uint32_t descriptorCount;
-///     VkDescriptorType descriptorType;
-///     size_t offset;
-///     size_t stride;
+///     uint32_t dstBinding; // @link substring="dstBinding" target="#dstBinding"
+///     uint32_t dstArrayElement; // @link substring="dstArrayElement" target="#dstArrayElement"
+///     uint32_t descriptorCount; // @link substring="descriptorCount" target="#descriptorCount"
+///     VkDescriptorType descriptorType; // @link substring="VkDescriptorType" target="VkDescriptorType" @link substring="descriptorType" target="#descriptorType"
+///     size_t offset; // @link substring="offset" target="#offset"
+///     size_t stride; // @link substring="stride" target="#stride"
 /// } VkDescriptorUpdateTemplateEntry;
 /// }
 ///

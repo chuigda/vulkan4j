@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRect2D {
-///     VkOffset2D offset;
-///     VkExtent2D extent;
+///     VkOffset2D offset; // @link substring="VkOffset2D" target="VkOffset2D" @link substring="offset" target="#offset"
+///     VkExtent2D extent; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="extent" target="#extent"
 /// } VkRect2D;
 /// }
 ///
@@ -67,19 +67,19 @@ public record VkRect2D(@NotNull MemorySegment segment) implements IPointer {
         return ret;
     }
 
-    public VkOffset2D offset() {
+    public @NotNull VkOffset2D offset() {
         return new VkOffset2D(segment.asSlice(OFFSET$offset, LAYOUT$offset));
     }
 
-    public void offset(VkOffset2D value) {
+    public void offset(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$offset, SIZE$offset);
     }
 
-    public VkExtent2D extent() {
+    public @NotNull VkExtent2D extent() {
         return new VkExtent2D(segment.asSlice(OFFSET$extent, LAYOUT$extent));
     }
 
-    public void extent(VkExtent2D value) {
+    public void extent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
     }
 

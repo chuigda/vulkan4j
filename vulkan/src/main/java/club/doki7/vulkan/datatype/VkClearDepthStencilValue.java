@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkClearDepthStencilValue {
-///     float depth;
-///     uint32_t stencil;
+///     float depth; // @link substring="depth" target="#depth"
+///     uint32_t stencil; // @link substring="stencil" target="#stencil"
 /// } VkClearDepthStencilValue;
 /// }
 ///

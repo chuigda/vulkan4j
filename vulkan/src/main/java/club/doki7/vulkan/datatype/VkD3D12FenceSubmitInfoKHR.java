@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkD3D12FenceSubmitInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t waitSemaphoreValuesCount; // optional
-///     uint64_t const* pWaitSemaphoreValues; // optional
-///     uint32_t signalSemaphoreValuesCount; // optional
-///     uint64_t const* pSignalSemaphoreValues; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t waitSemaphoreValuesCount; // optional // @link substring="waitSemaphoreValuesCount" target="#waitSemaphoreValuesCount"
+///     uint64_t const* pWaitSemaphoreValues; // optional // @link substring="pWaitSemaphoreValues" target="#pWaitSemaphoreValues"
+///     uint32_t signalSemaphoreValuesCount; // optional // @link substring="signalSemaphoreValuesCount" target="#signalSemaphoreValuesCount"
+///     uint64_t const* pSignalSemaphoreValues; // optional // @link substring="pSignalSemaphoreValues" target="#pSignalSemaphoreValues"
 /// } VkD3D12FenceSubmitInfoKHR;
 /// }
 ///
@@ -113,14 +113,6 @@ public record VkD3D12FenceSubmitInfoKHR(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$waitSemaphoreValuesCount, OFFSET$waitSemaphoreValuesCount, value);
     }
 
-    public @pointer(comment="long*") MemorySegment pWaitSemaphoreValuesRaw() {
-        return segment.get(LAYOUT$pWaitSemaphoreValues, OFFSET$pWaitSemaphoreValues);
-    }
-
-    public void pWaitSemaphoreValuesRaw(@pointer(comment="long*") MemorySegment value) {
-        segment.set(LAYOUT$pWaitSemaphoreValues, OFFSET$pWaitSemaphoreValues, value);
-    }
-
     /// Note: the returned {@link LongPtr} does not have correct
     /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
@@ -138,20 +130,20 @@ public record VkD3D12FenceSubmitInfoKHR(@NotNull MemorySegment segment) implemen
         pWaitSemaphoreValuesRaw(s);
     }
 
+    public @pointer(comment="long*") MemorySegment pWaitSemaphoreValuesRaw() {
+        return segment.get(LAYOUT$pWaitSemaphoreValues, OFFSET$pWaitSemaphoreValues);
+    }
+
+    public void pWaitSemaphoreValuesRaw(@pointer(comment="long*") MemorySegment value) {
+        segment.set(LAYOUT$pWaitSemaphoreValues, OFFSET$pWaitSemaphoreValues, value);
+    }
+
     public @unsigned int signalSemaphoreValuesCount() {
         return segment.get(LAYOUT$signalSemaphoreValuesCount, OFFSET$signalSemaphoreValuesCount);
     }
 
     public void signalSemaphoreValuesCount(@unsigned int value) {
         segment.set(LAYOUT$signalSemaphoreValuesCount, OFFSET$signalSemaphoreValuesCount, value);
-    }
-
-    public @pointer(comment="long*") MemorySegment pSignalSemaphoreValuesRaw() {
-        return segment.get(LAYOUT$pSignalSemaphoreValues, OFFSET$pSignalSemaphoreValues);
-    }
-
-    public void pSignalSemaphoreValuesRaw(@pointer(comment="long*") MemorySegment value) {
-        segment.set(LAYOUT$pSignalSemaphoreValues, OFFSET$pSignalSemaphoreValues, value);
     }
 
     /// Note: the returned {@link LongPtr} does not have correct
@@ -169,6 +161,14 @@ public record VkD3D12FenceSubmitInfoKHR(@NotNull MemorySegment segment) implemen
     public void pSignalSemaphoreValues(@Nullable @unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoreValuesRaw(s);
+    }
+
+    public @pointer(comment="long*") MemorySegment pSignalSemaphoreValuesRaw() {
+        return segment.get(LAYOUT$pSignalSemaphoreValues, OFFSET$pSignalSemaphoreValues);
+    }
+
+    public void pSignalSemaphoreValuesRaw(@pointer(comment="long*") MemorySegment value) {
+        segment.set(LAYOUT$pSignalSemaphoreValues, OFFSET$pSignalSemaphoreValues, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -21,19 +21,19 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoEncodeH265SliceSegmentHeaderFlags {
-///     uint32_t first_slice_segment_in_pic_flag : 1;
-///     uint32_t dependent_slice_segment_flag : 1;
-///     uint32_t slice_sao_luma_flag : 1;
-///     uint32_t slice_sao_chroma_flag : 1;
-///     uint32_t num_ref_idx_active_override_flag : 1;
-///     uint32_t mvd_l1_zero_flag : 1;
-///     uint32_t cabac_init_flag : 1;
-///     uint32_t cu_chroma_qp_offset_enabled_flag : 1;
-///     uint32_t deblocking_filter_override_flag : 1;
-///     uint32_t slice_deblocking_filter_disabled_flag : 1;
-///     uint32_t collocated_from_l0_flag : 1;
-///     uint32_t slice_loop_filter_across_slices_enabled_flag : 1;
-///     uint32_t reserved : 20;
+///     uint32_t first_slice_segment_in_pic_flag : 1; // @link substring="first_slice_segment_in_pic_flag" target="#first_slice_segment_in_pic_flag"
+///     uint32_t dependent_slice_segment_flag : 1; // @link substring="dependent_slice_segment_flag" target="#dependent_slice_segment_flag"
+///     uint32_t slice_sao_luma_flag : 1; // @link substring="slice_sao_luma_flag" target="#slice_sao_luma_flag"
+///     uint32_t slice_sao_chroma_flag : 1; // @link substring="slice_sao_chroma_flag" target="#slice_sao_chroma_flag"
+///     uint32_t num_ref_idx_active_override_flag : 1; // @link substring="num_ref_idx_active_override_flag" target="#num_ref_idx_active_override_flag"
+///     uint32_t mvd_l1_zero_flag : 1; // @link substring="mvd_l1_zero_flag" target="#mvd_l1_zero_flag"
+///     uint32_t cabac_init_flag : 1; // @link substring="cabac_init_flag" target="#cabac_init_flag"
+///     uint32_t cu_chroma_qp_offset_enabled_flag : 1; // @link substring="cu_chroma_qp_offset_enabled_flag" target="#cu_chroma_qp_offset_enabled_flag"
+///     uint32_t deblocking_filter_override_flag : 1; // @link substring="deblocking_filter_override_flag" target="#deblocking_filter_override_flag"
+///     uint32_t slice_deblocking_filter_disabled_flag : 1; // @link substring="slice_deblocking_filter_disabled_flag" target="#slice_deblocking_filter_disabled_flag"
+///     uint32_t collocated_from_l0_flag : 1; // @link substring="collocated_from_l0_flag" target="#collocated_from_l0_flag"
+///     uint32_t slice_loop_filter_across_slices_enabled_flag : 1; // @link substring="slice_loop_filter_across_slices_enabled_flag" target="#slice_loop_filter_across_slices_enabled_flag"
+///     uint32_t reserved : 20; // @link substring="reserved" target="#reserved"
 /// } StdVideoEncodeH265SliceSegmentHeaderFlags;
 /// }
 ///

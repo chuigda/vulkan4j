@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineDynamicStateCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineDynamicStateCreateFlags flags; // optional
-///     uint32_t dynamicStateCount; // optional
-///     VkDynamicState const* pDynamicStates;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineDynamicStateCreateFlags flags; // optional // @link substring="VkPipelineDynamicStateCreateFlags" target="VkPipelineDynamicStateCreateFlags" @link substring="flags" target="#flags"
+///     uint32_t dynamicStateCount; // optional // @link substring="dynamicStateCount" target="#dynamicStateCount"
+///     VkDynamicState const* pDynamicStates; // @link substring="VkDynamicState" target="VkDynamicState" @link substring="pDynamicStates" target="#pDynamicStates"
 /// } VkPipelineDynamicStateCreateInfo;
 /// }
 ///
@@ -120,13 +120,6 @@ public record VkPipelineDynamicStateCreateInfo(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$dynamicStateCount, OFFSET$dynamicStateCount, value);
     }
 
-    public @pointer(target=VkDynamicState.class) MemorySegment pDynamicStatesRaw() {
-        return segment.get(LAYOUT$pDynamicStates, OFFSET$pDynamicStates);
-    }
-
-    public void pDynamicStatesRaw(@pointer(target=VkDynamicState.class) MemorySegment value) {
-        segment.set(LAYOUT$pDynamicStates, OFFSET$pDynamicStates, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -143,6 +136,14 @@ public record VkPipelineDynamicStateCreateInfo(@NotNull MemorySegment segment) i
     public void pDynamicStates(@Nullable @enumtype(VkDynamicState.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDynamicStatesRaw(s);
+    }
+
+    public @pointer(target=VkDynamicState.class) MemorySegment pDynamicStatesRaw() {
+        return segment.get(LAYOUT$pDynamicStates, OFFSET$pDynamicStates);
+    }
+
+    public void pDynamicStatesRaw(@pointer(target=VkDynamicState.class) MemorySegment value) {
+        segment.set(LAYOUT$pDynamicStates, OFFSET$pDynamicStates, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

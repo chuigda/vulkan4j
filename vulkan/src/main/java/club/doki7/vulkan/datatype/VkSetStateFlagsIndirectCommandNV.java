@@ -20,7 +20,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSetStateFlagsIndirectCommandNV {
-///     uint32_t data;
+///     uint32_t data; // @link substring="data" target="#data"
 /// } VkSetStateFlagsIndirectCommandNV;
 /// }
 ///

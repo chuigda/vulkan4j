@@ -20,23 +20,23 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDevicePortabilitySubsetFeaturesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 constantAlphaColorBlendFactors;
-///     VkBool32 events;
-///     VkBool32 imageViewFormatReinterpretation;
-///     VkBool32 imageViewFormatSwizzle;
-///     VkBool32 imageView2DOn3DImage;
-///     VkBool32 multisampleArrayImage;
-///     VkBool32 mutableComparisonSamplers;
-///     VkBool32 pointPolygons;
-///     VkBool32 samplerMipLodBias;
-///     VkBool32 separateStencilMaskRef;
-///     VkBool32 shaderSampleRateInterpolationFunctions;
-///     VkBool32 tessellationIsolines;
-///     VkBool32 tessellationPointMode;
-///     VkBool32 triangleFans;
-///     VkBool32 vertexAttributeAccessBeyondStride;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 constantAlphaColorBlendFactors; // @link substring="constantAlphaColorBlendFactors" target="#constantAlphaColorBlendFactors"
+///     VkBool32 events; // @link substring="events" target="#events"
+///     VkBool32 imageViewFormatReinterpretation; // @link substring="imageViewFormatReinterpretation" target="#imageViewFormatReinterpretation"
+///     VkBool32 imageViewFormatSwizzle; // @link substring="imageViewFormatSwizzle" target="#imageViewFormatSwizzle"
+///     VkBool32 imageView2DOn3DImage; // @link substring="imageView2DOn3DImage" target="#imageView2DOn3DImage"
+///     VkBool32 multisampleArrayImage; // @link substring="multisampleArrayImage" target="#multisampleArrayImage"
+///     VkBool32 mutableComparisonSamplers; // @link substring="mutableComparisonSamplers" target="#mutableComparisonSamplers"
+///     VkBool32 pointPolygons; // @link substring="pointPolygons" target="#pointPolygons"
+///     VkBool32 samplerMipLodBias; // @link substring="samplerMipLodBias" target="#samplerMipLodBias"
+///     VkBool32 separateStencilMaskRef; // @link substring="separateStencilMaskRef" target="#separateStencilMaskRef"
+///     VkBool32 shaderSampleRateInterpolationFunctions; // @link substring="shaderSampleRateInterpolationFunctions" target="#shaderSampleRateInterpolationFunctions"
+///     VkBool32 tessellationIsolines; // @link substring="tessellationIsolines" target="#tessellationIsolines"
+///     VkBool32 tessellationPointMode; // @link substring="tessellationPointMode" target="#tessellationPointMode"
+///     VkBool32 triangleFans; // @link substring="triangleFans" target="#triangleFans"
+///     VkBool32 vertexAttributeAccessBeyondStride; // @link substring="vertexAttributeAccessBeyondStride" target="#vertexAttributeAccessBeyondStride"
 /// } VkPhysicalDevicePortabilitySubsetFeaturesKHR;
 /// }
 ///

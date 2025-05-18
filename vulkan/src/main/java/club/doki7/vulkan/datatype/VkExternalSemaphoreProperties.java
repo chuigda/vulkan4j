@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExternalSemaphoreProperties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkExternalSemaphoreHandleTypeFlags exportFromImportedHandleTypes;
-///     VkExternalSemaphoreHandleTypeFlags compatibleHandleTypes;
-///     VkExternalSemaphoreFeatureFlags externalSemaphoreFeatures; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkExternalSemaphoreHandleTypeFlags exportFromImportedHandleTypes; // @link substring="VkExternalSemaphoreHandleTypeFlags" target="VkExternalSemaphoreHandleTypeFlags" @link substring="exportFromImportedHandleTypes" target="#exportFromImportedHandleTypes"
+///     VkExternalSemaphoreHandleTypeFlags compatibleHandleTypes; // @link substring="VkExternalSemaphoreHandleTypeFlags" target="VkExternalSemaphoreHandleTypeFlags" @link substring="compatibleHandleTypes" target="#compatibleHandleTypes"
+///     VkExternalSemaphoreFeatureFlags externalSemaphoreFeatures; // optional // @link substring="VkExternalSemaphoreFeatureFlags" target="VkExternalSemaphoreFeatureFlags" @link substring="externalSemaphoreFeatures" target="#externalSemaphoreFeatures"
 /// } VkExternalSemaphoreProperties;
 /// }
 ///

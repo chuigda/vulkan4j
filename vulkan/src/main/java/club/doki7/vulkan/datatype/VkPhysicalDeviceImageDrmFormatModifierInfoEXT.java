@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceImageDrmFormatModifierInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint64_t drmFormatModifier;
-///     VkSharingMode sharingMode;
-///     uint32_t queueFamilyIndexCount; // optional
-///     uint32_t const* pQueueFamilyIndices;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint64_t drmFormatModifier; // @link substring="drmFormatModifier" target="#drmFormatModifier"
+///     VkSharingMode sharingMode; // @link substring="VkSharingMode" target="VkSharingMode" @link substring="sharingMode" target="#sharingMode"
+///     uint32_t queueFamilyIndexCount; // optional // @link substring="queueFamilyIndexCount" target="#queueFamilyIndexCount"
+///     uint32_t const* pQueueFamilyIndices; // @link substring="pQueueFamilyIndices" target="#pQueueFamilyIndices"
 /// } VkPhysicalDeviceImageDrmFormatModifierInfoEXT;
 /// }
 ///
@@ -129,14 +129,6 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
         segment.set(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pQueueFamilyIndicesRaw() {
-        return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
-    }
-
-    public void pQueueFamilyIndicesRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -152,6 +144,14 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
     public void pQueueFamilyIndices(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueFamilyIndicesRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pQueueFamilyIndicesRaw() {
+        return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
+    }
+
+    public void pQueueFamilyIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

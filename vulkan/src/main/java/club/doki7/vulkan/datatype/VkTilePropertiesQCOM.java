@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkTilePropertiesQCOM {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkExtent3D tileSize;
-///     VkExtent2D apronSize;
-///     VkOffset2D origin;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkExtent3D tileSize; // @link substring="VkExtent3D" target="VkExtent3D" @link substring="tileSize" target="#tileSize"
+///     VkExtent2D apronSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="apronSize" target="#apronSize"
+///     VkOffset2D origin; // @link substring="VkOffset2D" target="VkOffset2D" @link substring="origin" target="#origin"
 /// } VkTilePropertiesQCOM;
 /// }
 ///
@@ -104,27 +104,27 @@ public record VkTilePropertiesQCOM(@NotNull MemorySegment segment) implements IP
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkExtent3D tileSize() {
+    public @NotNull VkExtent3D tileSize() {
         return new VkExtent3D(segment.asSlice(OFFSET$tileSize, LAYOUT$tileSize));
     }
 
-    public void tileSize(VkExtent3D value) {
+    public void tileSize(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$tileSize, SIZE$tileSize);
     }
 
-    public VkExtent2D apronSize() {
+    public @NotNull VkExtent2D apronSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$apronSize, LAYOUT$apronSize));
     }
 
-    public void apronSize(VkExtent2D value) {
+    public void apronSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$apronSize, SIZE$apronSize);
     }
 
-    public VkOffset2D origin() {
+    public @NotNull VkOffset2D origin() {
         return new VkOffset2D(segment.asSlice(OFFSET$origin, LAYOUT$origin));
     }
 
-    public void origin(VkOffset2D value) {
+    public void origin(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$origin, SIZE$origin);
     }
 

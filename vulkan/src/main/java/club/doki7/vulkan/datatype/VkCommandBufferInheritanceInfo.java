@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCommandBufferInheritanceInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkRenderPass renderPass; // optional
-///     uint32_t subpass;
-///     VkFramebuffer framebuffer; // optional
-///     VkBool32 occlusionQueryEnable;
-///     VkQueryControlFlags queryFlags; // optional
-///     VkQueryPipelineStatisticFlags pipelineStatistics; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkRenderPass renderPass; // optional // @link substring="VkRenderPass" target="VkRenderPass" @link substring="renderPass" target="#renderPass"
+///     uint32_t subpass; // @link substring="subpass" target="#subpass"
+///     VkFramebuffer framebuffer; // optional // @link substring="VkFramebuffer" target="VkFramebuffer" @link substring="framebuffer" target="#framebuffer"
+///     VkBool32 occlusionQueryEnable; // @link substring="occlusionQueryEnable" target="#occlusionQueryEnable"
+///     VkQueryControlFlags queryFlags; // optional // @link substring="VkQueryControlFlags" target="VkQueryControlFlags" @link substring="queryFlags" target="#queryFlags"
+///     VkQueryPipelineStatisticFlags pipelineStatistics; // optional // @link substring="VkQueryPipelineStatisticFlags" target="VkQueryPipelineStatisticFlags" @link substring="pipelineStatistics" target="#pipelineStatistics"
 /// } VkCommandBufferInheritanceInfo;
 /// }
 ///

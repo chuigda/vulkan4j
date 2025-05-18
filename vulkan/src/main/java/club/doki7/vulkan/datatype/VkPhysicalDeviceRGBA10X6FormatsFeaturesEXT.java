@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 formatRgba10x6WithoutYCbCrSampler;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 formatRgba10x6WithoutYCbCrSampler; // @link substring="formatRgba10x6WithoutYCbCrSampler" target="#formatRgba10x6WithoutYCbCrSampler"
 /// } VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT;
 /// }
 ///

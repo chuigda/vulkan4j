@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSurfaceFullScreenExclusiveInfoEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkFullScreenExclusiveEXT fullScreenExclusive;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkFullScreenExclusiveEXT fullScreenExclusive; // @link substring="VkFullScreenExclusiveEXT" target="VkFullScreenExclusiveEXT" @link substring="fullScreenExclusive" target="#fullScreenExclusive"
 /// } VkSurfaceFullScreenExclusiveInfoEXT;
 /// }
 ///

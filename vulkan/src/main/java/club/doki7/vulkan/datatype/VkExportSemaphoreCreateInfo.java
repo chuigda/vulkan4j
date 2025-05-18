@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExportSemaphoreCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkExternalSemaphoreHandleTypeFlags handleTypes; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkExternalSemaphoreHandleTypeFlags handleTypes; // optional // @link substring="VkExternalSemaphoreHandleTypeFlags" target="VkExternalSemaphoreHandleTypeFlags" @link substring="handleTypes" target="#handleTypes"
 /// } VkExportSemaphoreCreateInfo;
 /// }
 ///

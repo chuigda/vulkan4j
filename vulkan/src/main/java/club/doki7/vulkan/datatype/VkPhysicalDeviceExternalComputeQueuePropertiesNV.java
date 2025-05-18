@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceExternalComputeQueuePropertiesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t externalDataSize;
-///     uint32_t maxExternalQueues;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t externalDataSize; // @link substring="externalDataSize" target="#externalDataSize"
+///     uint32_t maxExternalQueues; // @link substring="maxExternalQueues" target="#maxExternalQueues"
 /// } VkPhysicalDeviceExternalComputeQueuePropertiesNV;
 /// }
 ///

@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceGroupSubmitInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t waitSemaphoreCount; // optional
-///     uint32_t const* pWaitSemaphoreDeviceIndices;
-///     uint32_t commandBufferCount; // optional
-///     uint32_t const* pCommandBufferDeviceMasks;
-///     uint32_t signalSemaphoreCount; // optional
-///     uint32_t const* pSignalSemaphoreDeviceIndices;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t waitSemaphoreCount; // optional // @link substring="waitSemaphoreCount" target="#waitSemaphoreCount"
+///     uint32_t const* pWaitSemaphoreDeviceIndices; // @link substring="pWaitSemaphoreDeviceIndices" target="#pWaitSemaphoreDeviceIndices"
+///     uint32_t commandBufferCount; // optional // @link substring="commandBufferCount" target="#commandBufferCount"
+///     uint32_t const* pCommandBufferDeviceMasks; // @link substring="pCommandBufferDeviceMasks" target="#pCommandBufferDeviceMasks"
+///     uint32_t signalSemaphoreCount; // optional // @link substring="signalSemaphoreCount" target="#signalSemaphoreCount"
+///     uint32_t const* pSignalSemaphoreDeviceIndices; // @link substring="pSignalSemaphoreDeviceIndices" target="#pSignalSemaphoreDeviceIndices"
 /// } VkDeviceGroupSubmitInfo;
 /// }
 ///
@@ -115,14 +115,6 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pWaitSemaphoreDeviceIndicesRaw() {
-        return segment.get(LAYOUT$pWaitSemaphoreDeviceIndices, OFFSET$pWaitSemaphoreDeviceIndices);
-    }
-
-    public void pWaitSemaphoreDeviceIndicesRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pWaitSemaphoreDeviceIndices, OFFSET$pWaitSemaphoreDeviceIndices, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -140,20 +132,20 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         pWaitSemaphoreDeviceIndicesRaw(s);
     }
 
+    public @pointer(comment="int*") MemorySegment pWaitSemaphoreDeviceIndicesRaw() {
+        return segment.get(LAYOUT$pWaitSemaphoreDeviceIndices, OFFSET$pWaitSemaphoreDeviceIndices);
+    }
+
+    public void pWaitSemaphoreDeviceIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pWaitSemaphoreDeviceIndices, OFFSET$pWaitSemaphoreDeviceIndices, value);
+    }
+
     public @unsigned int commandBufferCount() {
         return segment.get(LAYOUT$commandBufferCount, OFFSET$commandBufferCount);
     }
 
     public void commandBufferCount(@unsigned int value) {
         segment.set(LAYOUT$commandBufferCount, OFFSET$commandBufferCount, value);
-    }
-
-    public @pointer(comment="int*") MemorySegment pCommandBufferDeviceMasksRaw() {
-        return segment.get(LAYOUT$pCommandBufferDeviceMasks, OFFSET$pCommandBufferDeviceMasks);
-    }
-
-    public void pCommandBufferDeviceMasksRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pCommandBufferDeviceMasks, OFFSET$pCommandBufferDeviceMasks, value);
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -173,20 +165,20 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         pCommandBufferDeviceMasksRaw(s);
     }
 
+    public @pointer(comment="int*") MemorySegment pCommandBufferDeviceMasksRaw() {
+        return segment.get(LAYOUT$pCommandBufferDeviceMasks, OFFSET$pCommandBufferDeviceMasks);
+    }
+
+    public void pCommandBufferDeviceMasksRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pCommandBufferDeviceMasks, OFFSET$pCommandBufferDeviceMasks, value);
+    }
+
     public @unsigned int signalSemaphoreCount() {
         return segment.get(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount);
     }
 
     public void signalSemaphoreCount(@unsigned int value) {
         segment.set(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount, value);
-    }
-
-    public @pointer(comment="int*") MemorySegment pSignalSemaphoreDeviceIndicesRaw() {
-        return segment.get(LAYOUT$pSignalSemaphoreDeviceIndices, OFFSET$pSignalSemaphoreDeviceIndices);
-    }
-
-    public void pSignalSemaphoreDeviceIndicesRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pSignalSemaphoreDeviceIndices, OFFSET$pSignalSemaphoreDeviceIndices, value);
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -204,6 +196,14 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
     public void pSignalSemaphoreDeviceIndices(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoreDeviceIndicesRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pSignalSemaphoreDeviceIndicesRaw() {
+        return segment.get(LAYOUT$pSignalSemaphoreDeviceIndices, OFFSET$pSignalSemaphoreDeviceIndices);
+    }
+
+    public void pSignalSemaphoreDeviceIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pSignalSemaphoreDeviceIndices, OFFSET$pSignalSemaphoreDeviceIndices, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

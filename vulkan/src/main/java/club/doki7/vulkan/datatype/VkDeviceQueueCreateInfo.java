@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceQueueCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDeviceQueueCreateFlags flags; // optional
-///     uint32_t queueFamilyIndex;
-///     uint32_t queueCount;
-///     float const* pQueuePriorities;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceQueueCreateFlags flags; // optional // @link substring="VkDeviceQueueCreateFlags" target="VkDeviceQueueCreateFlags" @link substring="flags" target="#flags"
+///     uint32_t queueFamilyIndex; // @link substring="queueFamilyIndex" target="#queueFamilyIndex"
+///     uint32_t queueCount; // @link substring="queueCount" target="#queueCount"
+///     float const* pQueuePriorities; // @link substring="pQueuePriorities" target="#pQueuePriorities"
 /// } VkDeviceQueueCreateInfo;
 /// }
 ///
@@ -129,14 +129,6 @@ public record VkDeviceQueueCreateInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$queueCount, OFFSET$queueCount, value);
     }
 
-    public @pointer(comment="float*") MemorySegment pQueuePrioritiesRaw() {
-        return segment.get(LAYOUT$pQueuePriorities, OFFSET$pQueuePriorities);
-    }
-
-    public void pQueuePrioritiesRaw(@pointer(comment="float*") MemorySegment value) {
-        segment.set(LAYOUT$pQueuePriorities, OFFSET$pQueuePriorities, value);
-    }
-
     /// Note: the returned {@link FloatPtr} does not have correct
     /// {@link FloatPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link FloatPtr#reinterpret} to set the size before actually reading from or
@@ -152,6 +144,14 @@ public record VkDeviceQueueCreateInfo(@NotNull MemorySegment segment) implements
     public void pQueuePriorities(@Nullable FloatPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueuePrioritiesRaw(s);
+    }
+
+    public @pointer(comment="float*") MemorySegment pQueuePrioritiesRaw() {
+        return segment.get(LAYOUT$pQueuePriorities, OFFSET$pQueuePriorities);
+    }
+
+    public void pQueuePrioritiesRaw(@pointer(comment="float*") MemorySegment value) {
+        segment.set(LAYOUT$pQueuePriorities, OFFSET$pQueuePriorities, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

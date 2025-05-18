@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceFaultVendorInfoEXT {
-///     char description;
-///     uint64_t vendorFaultCode;
-///     uint64_t vendorFaultData;
+///     char description; // @link substring="description" target="#description"
+///     uint64_t vendorFaultCode; // @link substring="vendorFaultCode" target="#vendorFaultCode"
+///     uint64_t vendorFaultData; // @link substring="vendorFaultData" target="#vendorFaultData"
 /// } VkDeviceFaultVendorInfoEXT;
 /// }
 ///

@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDescriptorPoolSize {
-///     VkDescriptorType type;
-///     uint32_t descriptorCount;
+///     VkDescriptorType type; // @link substring="VkDescriptorType" target="VkDescriptorType" @link substring="type" target="#type"
+///     uint32_t descriptorCount; // @link substring="descriptorCount" target="#descriptorCount"
 /// } VkDescriptorPoolSize;
 /// }
 ///

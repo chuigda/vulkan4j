@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPerformanceConfigurationAcquireInfoINTEL {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPerformanceConfigurationTypeINTEL type;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPerformanceConfigurationTypeINTEL type; // @link substring="VkPerformanceConfigurationTypeINTEL" target="VkPerformanceConfigurationTypeINTEL" @link substring="type" target="#type"
 /// } VkPerformanceConfigurationAcquireInfoINTEL;
 /// }
 ///

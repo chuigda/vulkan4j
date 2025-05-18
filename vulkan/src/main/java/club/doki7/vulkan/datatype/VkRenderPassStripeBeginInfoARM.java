@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassStripeBeginInfoARM {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t stripeInfoCount;
-///     VkRenderPassStripeInfoARM const* pStripeInfos;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t stripeInfoCount; // @link substring="stripeInfoCount" target="#stripeInfoCount"
+///     VkRenderPassStripeInfoARM const* pStripeInfos; // @link substring="VkRenderPassStripeInfoARM" target="VkRenderPassStripeInfoARM" @link substring="pStripeInfos" target="#pStripeInfos"
 /// } VkRenderPassStripeBeginInfoARM;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkRenderPassStripeBeginInfoARM(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$stripeInfoCount, OFFSET$stripeInfoCount, value);
     }
 
-    public @pointer(target=VkRenderPassStripeInfoARM.class) MemorySegment pStripeInfosRaw() {
-        return segment.get(LAYOUT$pStripeInfos, OFFSET$pStripeInfos);
-    }
-
-    public void pStripeInfosRaw(@pointer(target=VkRenderPassStripeInfoARM.class) MemorySegment value) {
-        segment.set(LAYOUT$pStripeInfos, OFFSET$pStripeInfos, value);
-    }
-
     public @Nullable VkRenderPassStripeInfoARM pStripeInfos() {
         MemorySegment s = pStripeInfosRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkRenderPassStripeBeginInfoARM(@NotNull MemorySegment segment) imp
             ret[i] = new VkRenderPassStripeInfoARM(s.asSlice(i * VkRenderPassStripeInfoARM.BYTES, VkRenderPassStripeInfoARM.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkRenderPassStripeInfoARM.class) MemorySegment pStripeInfosRaw() {
+        return segment.get(LAYOUT$pStripeInfos, OFFSET$pStripeInfos);
+    }
+
+    public void pStripeInfosRaw(@pointer(target=VkRenderPassStripeInfoARM.class) MemorySegment value) {
+        segment.set(LAYOUT$pStripeInfos, OFFSET$pStripeInfos, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

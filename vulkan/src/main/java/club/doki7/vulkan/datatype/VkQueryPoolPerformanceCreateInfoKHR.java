@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkQueryPoolPerformanceCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t queueFamilyIndex;
-///     uint32_t counterIndexCount;
-///     uint32_t const* pCounterIndices;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t queueFamilyIndex; // @link substring="queueFamilyIndex" target="#queueFamilyIndex"
+///     uint32_t counterIndexCount; // @link substring="counterIndexCount" target="#counterIndexCount"
+///     uint32_t const* pCounterIndices; // @link substring="pCounterIndices" target="#pCounterIndices"
 /// } VkQueryPoolPerformanceCreateInfoKHR;
 /// }
 ///
@@ -120,14 +120,6 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$counterIndexCount, OFFSET$counterIndexCount, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pCounterIndicesRaw() {
-        return segment.get(LAYOUT$pCounterIndices, OFFSET$pCounterIndices);
-    }
-
-    public void pCounterIndicesRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pCounterIndices, OFFSET$pCounterIndices, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -143,6 +135,14 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
     public void pCounterIndices(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCounterIndicesRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pCounterIndicesRaw() {
+        return segment.get(LAYOUT$pCounterIndices, OFFSET$pCounterIndices);
+    }
+
+    public void pCounterIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pCounterIndices, OFFSET$pCounterIndices, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

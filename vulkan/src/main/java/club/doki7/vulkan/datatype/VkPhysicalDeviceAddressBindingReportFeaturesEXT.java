@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceAddressBindingReportFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 reportAddressBinding;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 reportAddressBinding; // @link substring="reportAddressBinding" target="#reportAddressBinding"
 /// } VkPhysicalDeviceAddressBindingReportFeaturesEXT;
 /// }
 ///

@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureMotionInstanceDataNV {
-///     VkAccelerationStructureInstanceKHR staticInstance;
-///     VkAccelerationStructureMatrixMotionInstanceNV matrixMotionInstance;
-///     VkAccelerationStructureSRTMotionInstanceNV srtMotionInstance;
+///     VkAccelerationStructureInstanceKHR staticInstance; // @link substring="VkAccelerationStructureInstanceKHR" target="VkAccelerationStructureInstanceKHR" @link substring="staticInstance" target="#staticInstance"
+///     VkAccelerationStructureMatrixMotionInstanceNV matrixMotionInstance; // @link substring="VkAccelerationStructureMatrixMotionInstanceNV" target="VkAccelerationStructureMatrixMotionInstanceNV" @link substring="matrixMotionInstance" target="#matrixMotionInstance"
+///     VkAccelerationStructureSRTMotionInstanceNV srtMotionInstance; // @link substring="VkAccelerationStructureSRTMotionInstanceNV" target="VkAccelerationStructureSRTMotionInstanceNV" @link substring="srtMotionInstance" target="#srtMotionInstance"
 /// } VkAccelerationStructureMotionInstanceDataNV;
 /// }
 ///
@@ -68,27 +68,27 @@ public record VkAccelerationStructureMotionInstanceDataNV(@NotNull MemorySegment
         return ret;
     }
 
-    public VkAccelerationStructureInstanceKHR staticInstance() {
+    public @NotNull VkAccelerationStructureInstanceKHR staticInstance() {
         return new VkAccelerationStructureInstanceKHR(segment.asSlice(OFFSET$staticInstance, LAYOUT$staticInstance));
     }
 
-    public void staticInstance(VkAccelerationStructureInstanceKHR value) {
+    public void staticInstance(@NotNull VkAccelerationStructureInstanceKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$staticInstance, SIZE$staticInstance);
     }
 
-    public VkAccelerationStructureMatrixMotionInstanceNV matrixMotionInstance() {
+    public @NotNull VkAccelerationStructureMatrixMotionInstanceNV matrixMotionInstance() {
         return new VkAccelerationStructureMatrixMotionInstanceNV(segment.asSlice(OFFSET$matrixMotionInstance, LAYOUT$matrixMotionInstance));
     }
 
-    public void matrixMotionInstance(VkAccelerationStructureMatrixMotionInstanceNV value) {
+    public void matrixMotionInstance(@NotNull VkAccelerationStructureMatrixMotionInstanceNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$matrixMotionInstance, SIZE$matrixMotionInstance);
     }
 
-    public VkAccelerationStructureSRTMotionInstanceNV srtMotionInstance() {
+    public @NotNull VkAccelerationStructureSRTMotionInstanceNV srtMotionInstance() {
         return new VkAccelerationStructureSRTMotionInstanceNV(segment.asSlice(OFFSET$srtMotionInstance, LAYOUT$srtMotionInstance));
     }
 
-    public void srtMotionInstance(VkAccelerationStructureSRTMotionInstanceNV value) {
+    public void srtMotionInstance(@NotNull VkAccelerationStructureSRTMotionInstanceNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srtMotionInstance, SIZE$srtMotionInstance);
     }
 

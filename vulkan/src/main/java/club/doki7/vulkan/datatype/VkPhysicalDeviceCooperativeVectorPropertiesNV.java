@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceCooperativeVectorPropertiesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkShaderStageFlags cooperativeVectorSupportedStages;
-///     VkBool32 cooperativeVectorTrainingFloat16Accumulation;
-///     VkBool32 cooperativeVectorTrainingFloat32Accumulation;
-///     uint32_t maxCooperativeVectorComponents;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkShaderStageFlags cooperativeVectorSupportedStages; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="cooperativeVectorSupportedStages" target="#cooperativeVectorSupportedStages"
+///     VkBool32 cooperativeVectorTrainingFloat16Accumulation; // @link substring="cooperativeVectorTrainingFloat16Accumulation" target="#cooperativeVectorTrainingFloat16Accumulation"
+///     VkBool32 cooperativeVectorTrainingFloat32Accumulation; // @link substring="cooperativeVectorTrainingFloat32Accumulation" target="#cooperativeVectorTrainingFloat32Accumulation"
+///     uint32_t maxCooperativeVectorComponents; // @link substring="maxCooperativeVectorComponents" target="#maxCooperativeVectorComponents"
 /// } VkPhysicalDeviceCooperativeVectorPropertiesNV;
 /// }
 ///

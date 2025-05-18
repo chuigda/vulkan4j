@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageFormatConstraintsInfoFUCHSIA {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImageCreateInfo imageCreateInfo;
-///     VkFormatFeatureFlags requiredFormatFeatures;
-///     VkImageFormatConstraintsFlagsFUCHSIA flags; // optional
-///     uint64_t sysmemPixelFormat; // optional
-///     uint32_t colorSpaceCount;
-///     VkSysmemColorSpaceFUCHSIA const* pColorSpaces;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageCreateInfo imageCreateInfo; // @link substring="VkImageCreateInfo" target="VkImageCreateInfo" @link substring="imageCreateInfo" target="#imageCreateInfo"
+///     VkFormatFeatureFlags requiredFormatFeatures; // @link substring="VkFormatFeatureFlags" target="VkFormatFeatureFlags" @link substring="requiredFormatFeatures" target="#requiredFormatFeatures"
+///     VkImageFormatConstraintsFlagsFUCHSIA flags; // optional // @link substring="VkImageFormatConstraintsFlagsFUCHSIA" target="VkImageFormatConstraintsFlagsFUCHSIA" @link substring="flags" target="#flags"
+///     uint64_t sysmemPixelFormat; // optional // @link substring="sysmemPixelFormat" target="#sysmemPixelFormat"
+///     uint32_t colorSpaceCount; // @link substring="colorSpaceCount" target="#colorSpaceCount"
+///     VkSysmemColorSpaceFUCHSIA const* pColorSpaces; // @link substring="VkSysmemColorSpaceFUCHSIA" target="VkSysmemColorSpaceFUCHSIA" @link substring="pColorSpaces" target="#pColorSpaces"
 /// } VkImageFormatConstraintsInfoFUCHSIA;
 /// }
 ///
@@ -107,11 +107,11 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkImageCreateInfo imageCreateInfo() {
+    public @NotNull VkImageCreateInfo imageCreateInfo() {
         return new VkImageCreateInfo(segment.asSlice(OFFSET$imageCreateInfo, LAYOUT$imageCreateInfo));
     }
 
-    public void imageCreateInfo(VkImageCreateInfo value) {
+    public void imageCreateInfo(@NotNull VkImageCreateInfo value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageCreateInfo, SIZE$imageCreateInfo);
     }
 
@@ -147,14 +147,6 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
         segment.set(LAYOUT$colorSpaceCount, OFFSET$colorSpaceCount, value);
     }
 
-    public @pointer(target=VkSysmemColorSpaceFUCHSIA.class) MemorySegment pColorSpacesRaw() {
-        return segment.get(LAYOUT$pColorSpaces, OFFSET$pColorSpaces);
-    }
-
-    public void pColorSpacesRaw(@pointer(target=VkSysmemColorSpaceFUCHSIA.class) MemorySegment value) {
-        segment.set(LAYOUT$pColorSpaces, OFFSET$pColorSpaces, value);
-    }
-
     public @Nullable VkSysmemColorSpaceFUCHSIA pColorSpaces() {
         MemorySegment s = pColorSpacesRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -180,6 +172,14 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
             ret[i] = new VkSysmemColorSpaceFUCHSIA(s.asSlice(i * VkSysmemColorSpaceFUCHSIA.BYTES, VkSysmemColorSpaceFUCHSIA.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkSysmemColorSpaceFUCHSIA.class) MemorySegment pColorSpacesRaw() {
+        return segment.get(LAYOUT$pColorSpaces, OFFSET$pColorSpaces);
+    }
+
+    public void pColorSpacesRaw(@pointer(target=VkSysmemColorSpaceFUCHSIA.class) MemorySegment value) {
+        segment.set(LAYOUT$pColorSpaces, OFFSET$pColorSpaces, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

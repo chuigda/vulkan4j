@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMemoryProperties2 {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkPhysicalDeviceMemoryProperties memoryProperties;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPhysicalDeviceMemoryProperties memoryProperties; // @link substring="VkPhysicalDeviceMemoryProperties" target="VkPhysicalDeviceMemoryProperties" @link substring="memoryProperties" target="#memoryProperties"
 /// } VkPhysicalDeviceMemoryProperties2;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkPhysicalDeviceMemoryProperties2(@NotNull MemorySegment segment) 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkPhysicalDeviceMemoryProperties memoryProperties() {
+    public @NotNull VkPhysicalDeviceMemoryProperties memoryProperties() {
         return new VkPhysicalDeviceMemoryProperties(segment.asSlice(OFFSET$memoryProperties, LAYOUT$memoryProperties));
     }
 
-    public void memoryProperties(VkPhysicalDeviceMemoryProperties value) {
+    public void memoryProperties(@NotNull VkPhysicalDeviceMemoryProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryProperties, SIZE$memoryProperties);
     }
 

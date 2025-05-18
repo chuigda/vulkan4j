@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPerformanceCounterResultKHR {
-///     int32_t int32;
-///     int64_t int64;
-///     uint32_t uint32;
-///     uint64_t uint64;
-///     float float32;
-///     double float64;
+///     int32_t int32; // @link substring="int32" target="#int32"
+///     int64_t int64; // @link substring="int64" target="#int64"
+///     uint32_t uint32; // @link substring="uint32" target="#uint32"
+///     uint64_t uint64; // @link substring="uint64" target="#uint64"
+///     float float32; // @link substring="float32" target="#float32"
+///     double float64; // @link substring="float64" target="#float64"
 /// } VkPerformanceCounterResultKHR;
 /// }
 ///

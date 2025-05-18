@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeRateControlLayerInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint64_t averageBitrate;
-///     uint64_t maxBitrate;
-///     uint32_t frameRateNumerator;
-///     uint32_t frameRateDenominator;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint64_t averageBitrate; // @link substring="averageBitrate" target="#averageBitrate"
+///     uint64_t maxBitrate; // @link substring="maxBitrate" target="#maxBitrate"
+///     uint32_t frameRateNumerator; // @link substring="frameRateNumerator" target="#frameRateNumerator"
+///     uint32_t frameRateDenominator; // @link substring="frameRateDenominator" target="#frameRateDenominator"
 /// } VkVideoEncodeRateControlLayerInfoKHR;
 /// }
 ///

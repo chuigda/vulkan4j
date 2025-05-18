@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBindAccelerationStructureMemoryInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkAccelerationStructureNV accelerationStructure;
-///     VkDeviceMemory memory;
-///     VkDeviceSize memoryOffset;
-///     uint32_t deviceIndexCount; // optional
-///     uint32_t const* pDeviceIndices;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkAccelerationStructureNV accelerationStructure; // @link substring="VkAccelerationStructureNV" target="VkAccelerationStructureNV" @link substring="accelerationStructure" target="#accelerationStructure"
+///     VkDeviceMemory memory; // @link substring="VkDeviceMemory" target="VkDeviceMemory" @link substring="memory" target="#memory"
+///     VkDeviceSize memoryOffset; // @link substring="memoryOffset" target="#memoryOffset"
+///     uint32_t deviceIndexCount; // optional // @link substring="deviceIndexCount" target="#deviceIndexCount"
+///     uint32_t const* pDeviceIndices; // @link substring="pDeviceIndices" target="#pDeviceIndices"
 /// } VkBindAccelerationStructureMemoryInfoNV;
 /// }
 ///
@@ -146,14 +146,6 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
         segment.set(LAYOUT$deviceIndexCount, OFFSET$deviceIndexCount, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pDeviceIndicesRaw() {
-        return segment.get(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices);
-    }
-
-    public void pDeviceIndicesRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -169,6 +161,14 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
     public void pDeviceIndices(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDeviceIndicesRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pDeviceIndicesRaw() {
+        return segment.get(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices);
+    }
+
+    public void pDeviceIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

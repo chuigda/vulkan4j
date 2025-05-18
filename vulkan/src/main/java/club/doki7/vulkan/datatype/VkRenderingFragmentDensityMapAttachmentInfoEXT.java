@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderingFragmentDensityMapAttachmentInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImageView imageView;
-///     VkImageLayout imageLayout;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageView imageView; // @link substring="VkImageView" target="VkImageView" @link substring="imageView" target="#imageView"
+///     VkImageLayout imageLayout; // @link substring="VkImageLayout" target="VkImageLayout" @link substring="imageLayout" target="#imageLayout"
 /// } VkRenderingFragmentDensityMapAttachmentInfoEXT;
 /// }
 ///

@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceImageRobustnessFeatures {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 robustImageAccess;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 robustImageAccess; // @link substring="robustImageAccess" target="#robustImageAccess"
 /// } VkPhysicalDeviceImageRobustnessFeatures;
 /// }
 ///

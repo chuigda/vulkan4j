@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSamplerBorderColorComponentMappingCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkComponentMapping components;
-///     VkBool32 srgb;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkComponentMapping components; // @link substring="VkComponentMapping" target="VkComponentMapping" @link substring="components" target="#components"
+///     VkBool32 srgb; // @link substring="srgb" target="#srgb"
 /// } VkSamplerBorderColorComponentMappingCreateInfoEXT;
 /// }
 ///
@@ -103,11 +103,11 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemoryS
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkComponentMapping components() {
+    public @NotNull VkComponentMapping components() {
         return new VkComponentMapping(segment.asSlice(OFFSET$components, LAYOUT$components));
     }
 
-    public void components(VkComponentMapping value) {
+    public void components(@NotNull VkComponentMapping value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$components, SIZE$components);
     }
 

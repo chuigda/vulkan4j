@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSpecializationInfo {
-///     uint32_t mapEntryCount; // optional
-///     VkSpecializationMapEntry const* pMapEntries;
-///     size_t dataSize; // optional
-///     void const* pData;
+///     uint32_t mapEntryCount; // optional // @link substring="mapEntryCount" target="#mapEntryCount"
+///     VkSpecializationMapEntry const* pMapEntries; // @link substring="VkSpecializationMapEntry" target="VkSpecializationMapEntry" @link substring="pMapEntries" target="#pMapEntries"
+///     size_t dataSize; // optional // @link substring="dataSize" target="#dataSize"
+///     void const* pData; // @link substring="pData" target="#pData"
 /// } VkSpecializationInfo;
 /// }
 ///
@@ -77,14 +77,6 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$mapEntryCount, OFFSET$mapEntryCount, value);
     }
 
-    public @pointer(target=VkSpecializationMapEntry.class) MemorySegment pMapEntriesRaw() {
-        return segment.get(LAYOUT$pMapEntries, OFFSET$pMapEntries);
-    }
-
-    public void pMapEntriesRaw(@pointer(target=VkSpecializationMapEntry.class) MemorySegment value) {
-        segment.set(LAYOUT$pMapEntries, OFFSET$pMapEntries, value);
-    }
-
     public @Nullable VkSpecializationMapEntry pMapEntries() {
         MemorySegment s = pMapEntriesRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -110,6 +102,14 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IP
             ret[i] = new VkSpecializationMapEntry(s.asSlice(i * VkSpecializationMapEntry.BYTES, VkSpecializationMapEntry.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkSpecializationMapEntry.class) MemorySegment pMapEntriesRaw() {
+        return segment.get(LAYOUT$pMapEntries, OFFSET$pMapEntries);
+    }
+
+    public void pMapEntriesRaw(@pointer(target=VkSpecializationMapEntry.class) MemorySegment value) {
+        segment.set(LAYOUT$pMapEntries, OFFSET$pMapEntries, value);
     }
 
     public @unsigned long dataSize() {

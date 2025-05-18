@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDevicePCIBusInfoPropertiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t pciDomain;
-///     uint32_t pciBus;
-///     uint32_t pciDevice;
-///     uint32_t pciFunction;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t pciDomain; // @link substring="pciDomain" target="#pciDomain"
+///     uint32_t pciBus; // @link substring="pciBus" target="#pciBus"
+///     uint32_t pciDevice; // @link substring="pciDevice" target="#pciDevice"
+///     uint32_t pciFunction; // @link substring="pciFunction" target="#pciFunction"
 /// } VkPhysicalDevicePCIBusInfoPropertiesEXT;
 /// }
 ///

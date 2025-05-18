@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageViewSampleWeightCreateInfoQCOM {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkOffset2D filterCenter;
-///     VkExtent2D filterSize;
-///     uint32_t numPhases;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkOffset2D filterCenter; // @link substring="VkOffset2D" target="VkOffset2D" @link substring="filterCenter" target="#filterCenter"
+///     VkExtent2D filterSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="filterSize" target="#filterSize"
+///     uint32_t numPhases; // @link substring="numPhases" target="#numPhases"
 /// } VkImageViewSampleWeightCreateInfoQCOM;
 /// }
 ///
@@ -104,19 +104,19 @@ public record VkImageViewSampleWeightCreateInfoQCOM(@NotNull MemorySegment segme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkOffset2D filterCenter() {
+    public @NotNull VkOffset2D filterCenter() {
         return new VkOffset2D(segment.asSlice(OFFSET$filterCenter, LAYOUT$filterCenter));
     }
 
-    public void filterCenter(VkOffset2D value) {
+    public void filterCenter(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$filterCenter, SIZE$filterCenter);
     }
 
-    public VkExtent2D filterSize() {
+    public @NotNull VkExtent2D filterSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$filterSize, LAYOUT$filterSize));
     }
 
-    public void filterSize(VkExtent2D value) {
+    public void filterSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$filterSize, SIZE$filterSize);
     }
 

@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureBuildRangeInfoKHR {
-///     uint32_t primitiveCount;
-///     uint32_t primitiveOffset;
-///     uint32_t firstVertex;
-///     uint32_t transformOffset;
+///     uint32_t primitiveCount; // @link substring="primitiveCount" target="#primitiveCount"
+///     uint32_t primitiveOffset; // @link substring="primitiveOffset" target="#primitiveOffset"
+///     uint32_t firstVertex; // @link substring="firstVertex" target="#firstVertex"
+///     uint32_t transformOffset; // @link substring="transformOffset" target="#transformOffset"
 /// } VkAccelerationStructureBuildRangeInfoKHR;
 /// }
 ///

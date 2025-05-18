@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceSamplerFilterMinmaxProperties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 filterMinmaxSingleComponentFormats;
-///     VkBool32 filterMinmaxImageComponentMapping;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 filterMinmaxSingleComponentFormats; // @link substring="filterMinmaxSingleComponentFormats" target="#filterMinmaxSingleComponentFormats"
+///     VkBool32 filterMinmaxImageComponentMapping; // @link substring="filterMinmaxImageComponentMapping" target="#filterMinmaxImageComponentMapping"
 /// } VkPhysicalDeviceSamplerFilterMinmaxProperties;
 /// }
 ///

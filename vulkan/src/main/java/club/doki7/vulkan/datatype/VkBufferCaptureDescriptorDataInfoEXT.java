@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBufferCaptureDescriptorDataInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBuffer buffer;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBuffer buffer; // @link substring="VkBuffer" target="VkBuffer" @link substring="buffer" target="#buffer"
 /// } VkBufferCaptureDescriptorDataInfoEXT;
 /// }
 ///

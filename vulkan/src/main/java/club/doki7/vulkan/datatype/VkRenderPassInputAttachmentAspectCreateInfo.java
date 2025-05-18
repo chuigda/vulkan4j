@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassInputAttachmentAspectCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t aspectReferenceCount;
-///     VkInputAttachmentAspectReference const* pAspectReferences;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t aspectReferenceCount; // @link substring="aspectReferenceCount" target="#aspectReferenceCount"
+///     VkInputAttachmentAspectReference const* pAspectReferences; // @link substring="VkInputAttachmentAspectReference" target="VkInputAttachmentAspectReference" @link substring="pAspectReferences" target="#pAspectReferences"
 /// } VkRenderPassInputAttachmentAspectCreateInfo;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(@NotNull MemorySegment
         segment.set(LAYOUT$aspectReferenceCount, OFFSET$aspectReferenceCount, value);
     }
 
-    public @pointer(target=VkInputAttachmentAspectReference.class) MemorySegment pAspectReferencesRaw() {
-        return segment.get(LAYOUT$pAspectReferences, OFFSET$pAspectReferences);
-    }
-
-    public void pAspectReferencesRaw(@pointer(target=VkInputAttachmentAspectReference.class) MemorySegment value) {
-        segment.set(LAYOUT$pAspectReferences, OFFSET$pAspectReferences, value);
-    }
-
     public @Nullable VkInputAttachmentAspectReference pAspectReferences() {
         MemorySegment s = pAspectReferencesRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(@NotNull MemorySegment
             ret[i] = new VkInputAttachmentAspectReference(s.asSlice(i * VkInputAttachmentAspectReference.BYTES, VkInputAttachmentAspectReference.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkInputAttachmentAspectReference.class) MemorySegment pAspectReferencesRaw() {
+        return segment.get(LAYOUT$pAspectReferences, OFFSET$pAspectReferences);
+    }
+
+    public void pAspectReferencesRaw(@pointer(target=VkInputAttachmentAspectReference.class) MemorySegment value) {
+        segment.set(LAYOUT$pAspectReferences, OFFSET$pAspectReferences, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

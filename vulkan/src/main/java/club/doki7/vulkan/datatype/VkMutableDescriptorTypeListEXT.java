@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMutableDescriptorTypeListEXT {
-///     uint32_t descriptorTypeCount; // optional
-///     VkDescriptorType const* pDescriptorTypes;
+///     uint32_t descriptorTypeCount; // optional // @link substring="descriptorTypeCount" target="#descriptorTypeCount"
+///     VkDescriptorType const* pDescriptorTypes; // @link substring="VkDescriptorType" target="VkDescriptorType" @link substring="pDescriptorTypes" target="#pDescriptorTypes"
 /// } VkMutableDescriptorTypeListEXT;
 /// }
 ///
@@ -75,13 +75,6 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$descriptorTypeCount, OFFSET$descriptorTypeCount, value);
     }
 
-    public @pointer(target=VkDescriptorType.class) MemorySegment pDescriptorTypesRaw() {
-        return segment.get(LAYOUT$pDescriptorTypes, OFFSET$pDescriptorTypes);
-    }
-
-    public void pDescriptorTypesRaw(@pointer(target=VkDescriptorType.class) MemorySegment value) {
-        segment.set(LAYOUT$pDescriptorTypes, OFFSET$pDescriptorTypes, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -98,6 +91,14 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
     public void pDescriptorTypes(@Nullable @enumtype(VkDescriptorType.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorTypesRaw(s);
+    }
+
+    public @pointer(target=VkDescriptorType.class) MemorySegment pDescriptorTypesRaw() {
+        return segment.get(LAYOUT$pDescriptorTypes, OFFSET$pDescriptorTypes);
+    }
+
+    public void pDescriptorTypesRaw(@pointer(target=VkDescriptorType.class) MemorySegment value) {
+        segment.set(LAYOUT$pDescriptorTypes, OFFSET$pDescriptorTypes, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

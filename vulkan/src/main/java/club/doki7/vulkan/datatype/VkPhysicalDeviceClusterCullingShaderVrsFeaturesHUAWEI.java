@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 clusterShadingRate;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 clusterShadingRate; // @link substring="clusterShadingRate" target="#clusterShadingRate"
 /// } VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI;
 /// }
 ///

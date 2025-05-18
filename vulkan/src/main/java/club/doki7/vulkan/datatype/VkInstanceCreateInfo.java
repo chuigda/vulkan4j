@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkInstanceCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkInstanceCreateFlags flags; // optional
-///     VkApplicationInfo const* pApplicationInfo; // optional
-///     uint32_t enabledLayerCount; // optional
-///     char const* const* ppEnabledLayerNames;
-///     uint32_t enabledExtensionCount; // optional
-///     char const* const* ppEnabledExtensionNames;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkInstanceCreateFlags flags; // optional // @link substring="VkInstanceCreateFlags" target="VkInstanceCreateFlags" @link substring="flags" target="#flags"
+///     VkApplicationInfo const* pApplicationInfo; // optional // @link substring="VkApplicationInfo" target="VkApplicationInfo" @link substring="pApplicationInfo" target="#pApplicationInfo"
+///     uint32_t enabledLayerCount; // optional // @link substring="enabledLayerCount" target="#enabledLayerCount"
+///     char const* const* ppEnabledLayerNames; // @link substring="ppEnabledLayerNames" target="#ppEnabledLayerNames"
+///     uint32_t enabledExtensionCount; // optional // @link substring="enabledExtensionCount" target="#enabledExtensionCount"
+///     char const* const* ppEnabledExtensionNames; // @link substring="ppEnabledExtensionNames" target="#ppEnabledExtensionNames"
 /// } VkInstanceCreateInfo;
 /// }
 ///
@@ -115,14 +115,6 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(target=VkApplicationInfo.class) MemorySegment pApplicationInfoRaw() {
-        return segment.get(LAYOUT$pApplicationInfo, OFFSET$pApplicationInfo);
-    }
-
-    public void pApplicationInfoRaw(@pointer(target=VkApplicationInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pApplicationInfo, OFFSET$pApplicationInfo, value);
-    }
-
     public @Nullable VkApplicationInfo pApplicationInfo() {
         MemorySegment s = pApplicationInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -150,20 +142,20 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IP
         return ret;
     }
 
+    public @pointer(target=VkApplicationInfo.class) MemorySegment pApplicationInfoRaw() {
+        return segment.get(LAYOUT$pApplicationInfo, OFFSET$pApplicationInfo);
+    }
+
+    public void pApplicationInfoRaw(@pointer(target=VkApplicationInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pApplicationInfo, OFFSET$pApplicationInfo, value);
+    }
+
     public @unsigned int enabledLayerCount() {
         return segment.get(LAYOUT$enabledLayerCount, OFFSET$enabledLayerCount);
     }
 
     public void enabledLayerCount(@unsigned int value) {
         segment.set(LAYOUT$enabledLayerCount, OFFSET$enabledLayerCount, value);
-    }
-
-    public @pointer(comment="void**") MemorySegment ppEnabledLayerNamesRaw() {
-        return segment.get(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames);
-    }
-
-    public void ppEnabledLayerNamesRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames, value);
     }
 
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
@@ -182,20 +174,20 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IP
         ppEnabledLayerNamesRaw(s);
     }
 
+    public @pointer(comment="void**") MemorySegment ppEnabledLayerNamesRaw() {
+        return segment.get(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames);
+    }
+
+    public void ppEnabledLayerNamesRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames, value);
+    }
+
     public @unsigned int enabledExtensionCount() {
         return segment.get(LAYOUT$enabledExtensionCount, OFFSET$enabledExtensionCount);
     }
 
     public void enabledExtensionCount(@unsigned int value) {
         segment.set(LAYOUT$enabledExtensionCount, OFFSET$enabledExtensionCount, value);
-    }
-
-    public @pointer(comment="void**") MemorySegment ppEnabledExtensionNamesRaw() {
-        return segment.get(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames);
-    }
-
-    public void ppEnabledExtensionNamesRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames, value);
     }
 
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
@@ -212,6 +204,14 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IP
     public void ppEnabledExtensionNames(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         ppEnabledExtensionNamesRaw(s);
+    }
+
+    public @pointer(comment="void**") MemorySegment ppEnabledExtensionNamesRaw() {
+        return segment.get(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames);
+    }
+
+    public void ppEnabledExtensionNamesRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

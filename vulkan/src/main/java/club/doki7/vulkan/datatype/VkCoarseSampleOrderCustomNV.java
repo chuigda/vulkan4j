@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCoarseSampleOrderCustomNV {
-///     VkShadingRatePaletteEntryNV shadingRate;
-///     uint32_t sampleCount;
-///     uint32_t sampleLocationCount;
-///     VkCoarseSampleLocationNV const* pSampleLocations;
+///     VkShadingRatePaletteEntryNV shadingRate; // @link substring="VkShadingRatePaletteEntryNV" target="VkShadingRatePaletteEntryNV" @link substring="shadingRate" target="#shadingRate"
+///     uint32_t sampleCount; // @link substring="sampleCount" target="#sampleCount"
+///     uint32_t sampleLocationCount; // @link substring="sampleLocationCount" target="#sampleLocationCount"
+///     VkCoarseSampleLocationNV const* pSampleLocations; // @link substring="VkCoarseSampleLocationNV" target="VkCoarseSampleLocationNV" @link substring="pSampleLocations" target="#pSampleLocations"
 /// } VkCoarseSampleOrderCustomNV;
 /// }
 ///
@@ -93,14 +93,6 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$sampleLocationCount, OFFSET$sampleLocationCount, value);
     }
 
-    public @pointer(target=VkCoarseSampleLocationNV.class) MemorySegment pSampleLocationsRaw() {
-        return segment.get(LAYOUT$pSampleLocations, OFFSET$pSampleLocations);
-    }
-
-    public void pSampleLocationsRaw(@pointer(target=VkCoarseSampleLocationNV.class) MemorySegment value) {
-        segment.set(LAYOUT$pSampleLocations, OFFSET$pSampleLocations, value);
-    }
-
     public @Nullable VkCoarseSampleLocationNV pSampleLocations() {
         MemorySegment s = pSampleLocationsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -126,6 +118,14 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
             ret[i] = new VkCoarseSampleLocationNV(s.asSlice(i * VkCoarseSampleLocationNV.BYTES, VkCoarseSampleLocationNV.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkCoarseSampleLocationNV.class) MemorySegment pSampleLocationsRaw() {
+        return segment.get(LAYOUT$pSampleLocations, OFFSET$pSampleLocations);
+    }
+
+    public void pSampleLocationsRaw(@pointer(target=VkCoarseSampleLocationNV.class) MemorySegment value) {
+        segment.set(LAYOUT$pSampleLocations, OFFSET$pSampleLocations, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

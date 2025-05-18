@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCopyDescriptorSet {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDescriptorSet srcSet;
-///     uint32_t srcBinding;
-///     uint32_t srcArrayElement;
-///     VkDescriptorSet dstSet;
-///     uint32_t dstBinding;
-///     uint32_t dstArrayElement;
-///     uint32_t descriptorCount;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDescriptorSet srcSet; // @link substring="VkDescriptorSet" target="VkDescriptorSet" @link substring="srcSet" target="#srcSet"
+///     uint32_t srcBinding; // @link substring="srcBinding" target="#srcBinding"
+///     uint32_t srcArrayElement; // @link substring="srcArrayElement" target="#srcArrayElement"
+///     VkDescriptorSet dstSet; // @link substring="VkDescriptorSet" target="VkDescriptorSet" @link substring="dstSet" target="#dstSet"
+///     uint32_t dstBinding; // @link substring="dstBinding" target="#dstBinding"
+///     uint32_t dstArrayElement; // @link substring="dstArrayElement" target="#dstArrayElement"
+///     uint32_t descriptorCount; // @link substring="descriptorCount" target="#descriptorCount"
 /// } VkCopyDescriptorSet;
 /// }
 ///

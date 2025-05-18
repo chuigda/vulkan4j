@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkFormatProperties3 {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkFormatFeatureFlags2 linearTilingFeatures; // optional
-///     VkFormatFeatureFlags2 optimalTilingFeatures; // optional
-///     VkFormatFeatureFlags2 bufferFeatures; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkFormatFeatureFlags2 linearTilingFeatures; // optional // @link substring="VkFormatFeatureFlags2" target="VkFormatFeatureFlags2" @link substring="linearTilingFeatures" target="#linearTilingFeatures"
+///     VkFormatFeatureFlags2 optimalTilingFeatures; // optional // @link substring="VkFormatFeatureFlags2" target="VkFormatFeatureFlags2" @link substring="optimalTilingFeatures" target="#optimalTilingFeatures"
+///     VkFormatFeatureFlags2 bufferFeatures; // optional // @link substring="VkFormatFeatureFlags2" target="VkFormatFeatureFlags2" @link substring="bufferFeatures" target="#bufferFeatures"
 /// } VkFormatProperties3;
 /// }
 ///

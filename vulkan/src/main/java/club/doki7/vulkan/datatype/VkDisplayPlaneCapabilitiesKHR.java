@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDisplayPlaneCapabilitiesKHR {
-///     VkDisplayPlaneAlphaFlagsKHR supportedAlpha; // optional
-///     VkOffset2D minSrcPosition;
-///     VkOffset2D maxSrcPosition;
-///     VkExtent2D minSrcExtent;
-///     VkExtent2D maxSrcExtent;
-///     VkOffset2D minDstPosition;
-///     VkOffset2D maxDstPosition;
-///     VkExtent2D minDstExtent;
-///     VkExtent2D maxDstExtent;
+///     VkDisplayPlaneAlphaFlagsKHR supportedAlpha; // optional // @link substring="VkDisplayPlaneAlphaFlagsKHR" target="VkDisplayPlaneAlphaFlagsKHR" @link substring="supportedAlpha" target="#supportedAlpha"
+///     VkOffset2D minSrcPosition; // @link substring="VkOffset2D" target="VkOffset2D" @link substring="minSrcPosition" target="#minSrcPosition"
+///     VkOffset2D maxSrcPosition; // @link substring="VkOffset2D" target="VkOffset2D" @link substring="maxSrcPosition" target="#maxSrcPosition"
+///     VkExtent2D minSrcExtent; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="minSrcExtent" target="#minSrcExtent"
+///     VkExtent2D maxSrcExtent; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxSrcExtent" target="#maxSrcExtent"
+///     VkOffset2D minDstPosition; // @link substring="VkOffset2D" target="VkOffset2D" @link substring="minDstPosition" target="#minDstPosition"
+///     VkOffset2D maxDstPosition; // @link substring="VkOffset2D" target="VkOffset2D" @link substring="maxDstPosition" target="#maxDstPosition"
+///     VkExtent2D minDstExtent; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="minDstExtent" target="#minDstExtent"
+///     VkExtent2D maxDstExtent; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxDstExtent" target="#maxDstExtent"
 /// } VkDisplayPlaneCapabilitiesKHR;
 /// }
 ///
@@ -82,67 +82,67 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$supportedAlpha, OFFSET$supportedAlpha, value);
     }
 
-    public VkOffset2D minSrcPosition() {
+    public @NotNull VkOffset2D minSrcPosition() {
         return new VkOffset2D(segment.asSlice(OFFSET$minSrcPosition, LAYOUT$minSrcPosition));
     }
 
-    public void minSrcPosition(VkOffset2D value) {
+    public void minSrcPosition(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minSrcPosition, SIZE$minSrcPosition);
     }
 
-    public VkOffset2D maxSrcPosition() {
+    public @NotNull VkOffset2D maxSrcPosition() {
         return new VkOffset2D(segment.asSlice(OFFSET$maxSrcPosition, LAYOUT$maxSrcPosition));
     }
 
-    public void maxSrcPosition(VkOffset2D value) {
+    public void maxSrcPosition(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxSrcPosition, SIZE$maxSrcPosition);
     }
 
-    public VkExtent2D minSrcExtent() {
+    public @NotNull VkExtent2D minSrcExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$minSrcExtent, LAYOUT$minSrcExtent));
     }
 
-    public void minSrcExtent(VkExtent2D value) {
+    public void minSrcExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minSrcExtent, SIZE$minSrcExtent);
     }
 
-    public VkExtent2D maxSrcExtent() {
+    public @NotNull VkExtent2D maxSrcExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxSrcExtent, LAYOUT$maxSrcExtent));
     }
 
-    public void maxSrcExtent(VkExtent2D value) {
+    public void maxSrcExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxSrcExtent, SIZE$maxSrcExtent);
     }
 
-    public VkOffset2D minDstPosition() {
+    public @NotNull VkOffset2D minDstPosition() {
         return new VkOffset2D(segment.asSlice(OFFSET$minDstPosition, LAYOUT$minDstPosition));
     }
 
-    public void minDstPosition(VkOffset2D value) {
+    public void minDstPosition(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minDstPosition, SIZE$minDstPosition);
     }
 
-    public VkOffset2D maxDstPosition() {
+    public @NotNull VkOffset2D maxDstPosition() {
         return new VkOffset2D(segment.asSlice(OFFSET$maxDstPosition, LAYOUT$maxDstPosition));
     }
 
-    public void maxDstPosition(VkOffset2D value) {
+    public void maxDstPosition(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxDstPosition, SIZE$maxDstPosition);
     }
 
-    public VkExtent2D minDstExtent() {
+    public @NotNull VkExtent2D minDstExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$minDstExtent, LAYOUT$minDstExtent));
     }
 
-    public void minDstExtent(VkExtent2D value) {
+    public void minDstExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minDstExtent, SIZE$minDstExtent);
     }
 
-    public VkExtent2D maxDstExtent() {
+    public @NotNull VkExtent2D maxDstExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxDstExtent, LAYOUT$maxDstExtent));
     }
 
-    public void maxDstExtent(VkExtent2D value) {
+    public void maxDstExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxDstExtent, SIZE$maxDstExtent);
     }
 

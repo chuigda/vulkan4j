@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceImageSubresourceInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImageCreateInfo const* pCreateInfo;
-///     VkImageSubresource2 const* pSubresource;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImageCreateInfo const* pCreateInfo; // @link substring="VkImageCreateInfo" target="VkImageCreateInfo" @link substring="pCreateInfo" target="#pCreateInfo"
+///     VkImageSubresource2 const* pSubresource; // @link substring="VkImageSubresource2" target="VkImageSubresource2" @link substring="pSubresource" target="#pSubresource"
 /// } VkDeviceImageSubresourceInfo;
 /// }
 ///
@@ -103,14 +103,6 @@ public record VkDeviceImageSubresourceInfo(@NotNull MemorySegment segment) imple
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(target=VkImageCreateInfo.class) MemorySegment pCreateInfoRaw() {
-        return segment.get(LAYOUT$pCreateInfo, OFFSET$pCreateInfo);
-    }
-
-    public void pCreateInfoRaw(@pointer(target=VkImageCreateInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
-    }
-
     public @Nullable VkImageCreateInfo pCreateInfo() {
         MemorySegment s = pCreateInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -138,12 +130,12 @@ public record VkDeviceImageSubresourceInfo(@NotNull MemorySegment segment) imple
         return ret;
     }
 
-    public @pointer(target=VkImageSubresource2.class) MemorySegment pSubresourceRaw() {
-        return segment.get(LAYOUT$pSubresource, OFFSET$pSubresource);
+    public @pointer(target=VkImageCreateInfo.class) MemorySegment pCreateInfoRaw() {
+        return segment.get(LAYOUT$pCreateInfo, OFFSET$pCreateInfo);
     }
 
-    public void pSubresourceRaw(@pointer(target=VkImageSubresource2.class) MemorySegment value) {
-        segment.set(LAYOUT$pSubresource, OFFSET$pSubresource, value);
+    public void pCreateInfoRaw(@pointer(target=VkImageCreateInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
     }
 
     public @Nullable VkImageSubresource2 pSubresource() {
@@ -171,6 +163,14 @@ public record VkDeviceImageSubresourceInfo(@NotNull MemorySegment segment) imple
             ret[i] = new VkImageSubresource2(s.asSlice(i * VkImageSubresource2.BYTES, VkImageSubresource2.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkImageSubresource2.class) MemorySegment pSubresourceRaw() {
+        return segment.get(LAYOUT$pSubresource, OFFSET$pSubresource);
+    }
+
+    public void pSubresourceRaw(@pointer(target=VkImageSubresource2.class) MemorySegment value) {
+        segment.set(LAYOUT$pSubresource, OFFSET$pSubresource, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageResolve {
-///     VkImageSubresourceLayers srcSubresource;
-///     VkOffset3D srcOffset;
-///     VkImageSubresourceLayers dstSubresource;
-///     VkOffset3D dstOffset;
-///     VkExtent3D extent;
+///     VkImageSubresourceLayers srcSubresource; // @link substring="VkImageSubresourceLayers" target="VkImageSubresourceLayers" @link substring="srcSubresource" target="#srcSubresource"
+///     VkOffset3D srcOffset; // @link substring="VkOffset3D" target="VkOffset3D" @link substring="srcOffset" target="#srcOffset"
+///     VkImageSubresourceLayers dstSubresource; // @link substring="VkImageSubresourceLayers" target="VkImageSubresourceLayers" @link substring="dstSubresource" target="#dstSubresource"
+///     VkOffset3D dstOffset; // @link substring="VkOffset3D" target="VkOffset3D" @link substring="dstOffset" target="#dstOffset"
+///     VkExtent3D extent; // @link substring="VkExtent3D" target="VkExtent3D" @link substring="extent" target="#extent"
 /// } VkImageResolve;
 /// }
 ///
@@ -70,43 +70,43 @@ public record VkImageResolve(@NotNull MemorySegment segment) implements IPointer
         return ret;
     }
 
-    public VkImageSubresourceLayers srcSubresource() {
+    public @NotNull VkImageSubresourceLayers srcSubresource() {
         return new VkImageSubresourceLayers(segment.asSlice(OFFSET$srcSubresource, LAYOUT$srcSubresource));
     }
 
-    public void srcSubresource(VkImageSubresourceLayers value) {
+    public void srcSubresource(@NotNull VkImageSubresourceLayers value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcSubresource, SIZE$srcSubresource);
     }
 
-    public VkOffset3D srcOffset() {
+    public @NotNull VkOffset3D srcOffset() {
         return new VkOffset3D(segment.asSlice(OFFSET$srcOffset, LAYOUT$srcOffset));
     }
 
-    public void srcOffset(VkOffset3D value) {
+    public void srcOffset(@NotNull VkOffset3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcOffset, SIZE$srcOffset);
     }
 
-    public VkImageSubresourceLayers dstSubresource() {
+    public @NotNull VkImageSubresourceLayers dstSubresource() {
         return new VkImageSubresourceLayers(segment.asSlice(OFFSET$dstSubresource, LAYOUT$dstSubresource));
     }
 
-    public void dstSubresource(VkImageSubresourceLayers value) {
+    public void dstSubresource(@NotNull VkImageSubresourceLayers value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstSubresource, SIZE$dstSubresource);
     }
 
-    public VkOffset3D dstOffset() {
+    public @NotNull VkOffset3D dstOffset() {
         return new VkOffset3D(segment.asSlice(OFFSET$dstOffset, LAYOUT$dstOffset));
     }
 
-    public void dstOffset(VkOffset3D value) {
+    public void dstOffset(@NotNull VkOffset3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstOffset, SIZE$dstOffset);
     }
 
-    public VkExtent3D extent() {
+    public @NotNull VkExtent3D extent() {
         return new VkExtent3D(segment.asSlice(OFFSET$extent, LAYOUT$extent));
     }
 
-    public void extent(VkExtent3D value) {
+    public void extent(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
     }
 

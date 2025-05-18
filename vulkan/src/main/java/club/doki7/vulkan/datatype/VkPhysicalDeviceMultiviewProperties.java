@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMultiviewProperties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t maxMultiviewViewCount;
-///     uint32_t maxMultiviewInstanceIndex;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxMultiviewViewCount; // @link substring="maxMultiviewViewCount" target="#maxMultiviewViewCount"
+///     uint32_t maxMultiviewInstanceIndex; // @link substring="maxMultiviewInstanceIndex" target="#maxMultiviewInstanceIndex"
 /// } VkPhysicalDeviceMultiviewProperties;
 /// }
 ///

@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDevicePipelineBinaryFeaturesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 pipelineBinaries;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 pipelineBinaries; // @link substring="pipelineBinaries" target="#pipelineBinaries"
 /// } VkPhysicalDevicePipelineBinaryFeaturesKHR;
 /// }
 ///

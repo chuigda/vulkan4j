@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAllocationCallbacks {
-///     void* pUserData; // optional
-///     PFN_vkAllocationFunction pfnAllocation;
-///     PFN_vkReallocationFunction pfnReallocation;
-///     PFN_vkFreeFunction pfnFree;
-///     PFN_vkInternalAllocationNotification pfnInternalAllocation; // optional
-///     PFN_vkInternalFreeNotification pfnInternalFree; // optional
+///     void* pUserData; // optional // @link substring="pUserData" target="#pUserData"
+///     PFN_vkAllocationFunction pfnAllocation; // @link substring="pfnAllocation" target="#pfnAllocation"
+///     PFN_vkReallocationFunction pfnReallocation; // @link substring="pfnReallocation" target="#pfnReallocation"
+///     PFN_vkFreeFunction pfnFree; // @link substring="pfnFree" target="#pfnFree"
+///     PFN_vkInternalAllocationNotification pfnInternalAllocation; // optional // @link substring="pfnInternalAllocation" target="#pfnInternalAllocation"
+///     PFN_vkInternalFreeNotification pfnInternalFree; // optional // @link substring="pfnInternalFree" target="#pfnInternalFree"
 /// } VkAllocationCallbacks;
 /// }
 ///

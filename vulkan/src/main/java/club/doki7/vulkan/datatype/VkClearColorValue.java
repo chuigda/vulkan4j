@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkClearColorValue {
-///     float float32;
-///     int32_t int32;
-///     uint32_t uint32;
+///     float float32; // @link substring="float32" target="#float32"
+///     int32_t int32; // @link substring="int32" target="#int32"
+///     uint32_t uint32; // @link substring="uint32" target="#uint32"
 /// } VkClearColorValue;
 /// }
 ///

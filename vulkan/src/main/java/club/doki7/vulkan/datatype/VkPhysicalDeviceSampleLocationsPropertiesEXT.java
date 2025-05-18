@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceSampleLocationsPropertiesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkSampleCountFlags sampleLocationSampleCounts;
-///     VkExtent2D maxSampleLocationGridSize;
-///     float sampleLocationCoordinateRange;
-///     uint32_t sampleLocationSubPixelBits;
-///     VkBool32 variableSampleLocations;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSampleCountFlags sampleLocationSampleCounts; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="sampleLocationSampleCounts" target="#sampleLocationSampleCounts"
+///     VkExtent2D maxSampleLocationGridSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxSampleLocationGridSize" target="#maxSampleLocationGridSize"
+///     float sampleLocationCoordinateRange; // @link substring="sampleLocationCoordinateRange" target="#sampleLocationCoordinateRange"
+///     uint32_t sampleLocationSubPixelBits; // @link substring="sampleLocationSubPixelBits" target="#sampleLocationSubPixelBits"
+///     VkBool32 variableSampleLocations; // @link substring="variableSampleLocations" target="#variableSampleLocations"
 /// } VkPhysicalDeviceSampleLocationsPropertiesEXT;
 /// }
 ///
@@ -114,11 +114,11 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         segment.set(LAYOUT$sampleLocationSampleCounts, OFFSET$sampleLocationSampleCounts, value);
     }
 
-    public VkExtent2D maxSampleLocationGridSize() {
+    public @NotNull VkExtent2D maxSampleLocationGridSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxSampleLocationGridSize, LAYOUT$maxSampleLocationGridSize));
     }
 
-    public void maxSampleLocationGridSize(VkExtent2D value) {
+    public void maxSampleLocationGridSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxSampleLocationGridSize, SIZE$maxSampleLocationGridSize);
     }
 

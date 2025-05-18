@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMutableDescriptorTypeCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t mutableDescriptorTypeListCount; // optional
-///     VkMutableDescriptorTypeListEXT const* pMutableDescriptorTypeLists;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t mutableDescriptorTypeListCount; // optional // @link substring="mutableDescriptorTypeListCount" target="#mutableDescriptorTypeListCount"
+///     VkMutableDescriptorTypeListEXT const* pMutableDescriptorTypeLists; // @link substring="VkMutableDescriptorTypeListEXT" target="VkMutableDescriptorTypeListEXT" @link substring="pMutableDescriptorTypeLists" target="#pMutableDescriptorTypeLists"
 /// } VkMutableDescriptorTypeCreateInfoEXT;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$mutableDescriptorTypeListCount, OFFSET$mutableDescriptorTypeListCount, value);
     }
 
-    public @pointer(target=VkMutableDescriptorTypeListEXT.class) MemorySegment pMutableDescriptorTypeListsRaw() {
-        return segment.get(LAYOUT$pMutableDescriptorTypeLists, OFFSET$pMutableDescriptorTypeLists);
-    }
-
-    public void pMutableDescriptorTypeListsRaw(@pointer(target=VkMutableDescriptorTypeListEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pMutableDescriptorTypeLists, OFFSET$pMutableDescriptorTypeLists, value);
-    }
-
     public @Nullable VkMutableDescriptorTypeListEXT pMutableDescriptorTypeLists() {
         MemorySegment s = pMutableDescriptorTypeListsRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
             ret[i] = new VkMutableDescriptorTypeListEXT(s.asSlice(i * VkMutableDescriptorTypeListEXT.BYTES, VkMutableDescriptorTypeListEXT.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkMutableDescriptorTypeListEXT.class) MemorySegment pMutableDescriptorTypeListsRaw() {
+        return segment.get(LAYOUT$pMutableDescriptorTypeLists, OFFSET$pMutableDescriptorTypeLists);
+    }
+
+    public void pMutableDescriptorTypeListsRaw(@pointer(target=VkMutableDescriptorTypeListEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pMutableDescriptorTypeLists, OFFSET$pMutableDescriptorTypeLists, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

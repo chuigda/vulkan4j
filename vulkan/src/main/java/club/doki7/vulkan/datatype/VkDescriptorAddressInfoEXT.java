@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDescriptorAddressInfoEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkDeviceAddress address;
-///     VkDeviceSize range;
-///     VkFormat format;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceAddress address; // @link substring="address" target="#address"
+///     VkDeviceSize range; // @link substring="range" target="#range"
+///     VkFormat format; // @link substring="VkFormat" target="VkFormat" @link substring="format" target="#format"
 /// } VkDescriptorAddressInfoEXT;
 /// }
 ///

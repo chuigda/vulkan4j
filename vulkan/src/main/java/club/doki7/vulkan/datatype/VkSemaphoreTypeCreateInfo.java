@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSemaphoreTypeCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkSemaphoreType semaphoreType;
-///     uint64_t initialValue;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSemaphoreType semaphoreType; // @link substring="VkSemaphoreType" target="VkSemaphoreType" @link substring="semaphoreType" target="#semaphoreType"
+///     uint64_t initialValue; // @link substring="initialValue" target="#initialValue"
 /// } VkSemaphoreTypeCreateInfo;
 /// }
 ///

@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageFormatProperties {
-///     VkExtent3D maxExtent;
-///     uint32_t maxMipLevels;
-///     uint32_t maxArrayLayers;
-///     VkSampleCountFlags sampleCounts; // optional
-///     VkDeviceSize maxResourceSize;
+///     VkExtent3D maxExtent; // @link substring="VkExtent3D" target="VkExtent3D" @link substring="maxExtent" target="#maxExtent"
+///     uint32_t maxMipLevels; // @link substring="maxMipLevels" target="#maxMipLevels"
+///     uint32_t maxArrayLayers; // @link substring="maxArrayLayers" target="#maxArrayLayers"
+///     VkSampleCountFlags sampleCounts; // optional // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="sampleCounts" target="#sampleCounts"
+///     VkDeviceSize maxResourceSize; // @link substring="maxResourceSize" target="#maxResourceSize"
 /// } VkImageFormatProperties;
 /// }
 ///
@@ -70,11 +70,11 @@ public record VkImageFormatProperties(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public VkExtent3D maxExtent() {
+    public @NotNull VkExtent3D maxExtent() {
         return new VkExtent3D(segment.asSlice(OFFSET$maxExtent, LAYOUT$maxExtent));
     }
 
-    public void maxExtent(VkExtent3D value) {
+    public void maxExtent(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxExtent, SIZE$maxExtent);
     }
 

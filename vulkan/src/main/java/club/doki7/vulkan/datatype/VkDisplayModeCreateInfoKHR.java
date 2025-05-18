@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDisplayModeCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDisplayModeCreateFlagsKHR flags; // optional
-///     VkDisplayModeParametersKHR parameters;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDisplayModeCreateFlagsKHR flags; // optional // @link substring="VkDisplayModeCreateFlagsKHR" target="VkDisplayModeCreateFlagsKHR" @link substring="flags" target="#flags"
+///     VkDisplayModeParametersKHR parameters; // @link substring="VkDisplayModeParametersKHR" target="VkDisplayModeParametersKHR" @link substring="parameters" target="#parameters"
 /// } VkDisplayModeCreateInfoKHR;
 /// }
 ///
@@ -111,11 +111,11 @@ public record VkDisplayModeCreateInfoKHR(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public VkDisplayModeParametersKHR parameters() {
+    public @NotNull VkDisplayModeParametersKHR parameters() {
         return new VkDisplayModeParametersKHR(segment.asSlice(OFFSET$parameters, LAYOUT$parameters));
     }
 
-    public void parameters(VkDisplayModeParametersKHR value) {
+    public void parameters(@NotNull VkDisplayModeParametersKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$parameters, SIZE$parameters);
     }
 

@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkWriteIndirectExecutionSetPipelineEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t index;
-///     VkPipeline pipeline;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t index; // @link substring="index" target="#index"
+///     VkPipeline pipeline; // @link substring="VkPipeline" target="VkPipeline" @link substring="pipeline" target="#pipeline"
 /// } VkWriteIndirectExecutionSetPipelineEXT;
 /// }
 ///

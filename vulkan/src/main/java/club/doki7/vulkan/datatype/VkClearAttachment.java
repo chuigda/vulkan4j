@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkClearAttachment {
-///     VkImageAspectFlags aspectMask;
-///     uint32_t colorAttachment;
-///     VkClearValue clearValue;
+///     VkImageAspectFlags aspectMask; // @link substring="VkImageAspectFlags" target="VkImageAspectFlags" @link substring="aspectMask" target="#aspectMask"
+///     uint32_t colorAttachment; // @link substring="colorAttachment" target="#colorAttachment"
+///     VkClearValue clearValue; // @link substring="VkClearValue" target="VkClearValue" @link substring="clearValue" target="#clearValue"
 /// } VkClearAttachment;
 /// }
 ///
@@ -84,11 +84,11 @@ public record VkClearAttachment(@NotNull MemorySegment segment) implements IPoin
         segment.set(LAYOUT$colorAttachment, OFFSET$colorAttachment, value);
     }
 
-    public VkClearValue clearValue() {
+    public @NotNull VkClearValue clearValue() {
         return new VkClearValue(segment.asSlice(OFFSET$clearValue, LAYOUT$clearValue));
     }
 
-    public void clearValue(VkClearValue value) {
+    public void clearValue(@NotNull VkClearValue value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$clearValue, SIZE$clearValue);
     }
 

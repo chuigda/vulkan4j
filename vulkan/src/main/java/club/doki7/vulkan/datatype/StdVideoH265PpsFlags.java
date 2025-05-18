@@ -21,37 +21,37 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265PpsFlags {
-///     uint32_t dependent_slice_segments_enabled_flag : 1;
-///     uint32_t output_flag_present_flag : 1;
-///     uint32_t sign_data_hiding_enabled_flag : 1;
-///     uint32_t cabac_init_present_flag : 1;
-///     uint32_t constrained_intra_pred_flag : 1;
-///     uint32_t transform_skip_enabled_flag : 1;
-///     uint32_t cu_qp_delta_enabled_flag : 1;
-///     uint32_t pps_slice_chroma_qp_offsets_present_flag : 1;
-///     uint32_t weighted_pred_flag : 1;
-///     uint32_t weighted_bipred_flag : 1;
-///     uint32_t transquant_bypass_enabled_flag : 1;
-///     uint32_t tiles_enabled_flag : 1;
-///     uint32_t entropy_coding_sync_enabled_flag : 1;
-///     uint32_t uniform_spacing_flag : 1;
-///     uint32_t loop_filter_across_tiles_enabled_flag : 1;
-///     uint32_t pps_loop_filter_across_slices_enabled_flag : 1;
-///     uint32_t deblocking_filter_control_present_flag : 1;
-///     uint32_t deblocking_filter_override_enabled_flag : 1;
-///     uint32_t pps_deblocking_filter_disabled_flag : 1;
-///     uint32_t pps_scaling_list_data_present_flag : 1;
-///     uint32_t lists_modification_present_flag : 1;
-///     uint32_t slice_segment_header_extension_present_flag : 1;
-///     uint32_t pps_extension_present_flag : 1;
-///     uint32_t cross_component_prediction_enabled_flag : 1;
-///     uint32_t chroma_qp_offset_list_enabled_flag : 1;
-///     uint32_t pps_curr_pic_ref_enabled_flag : 1;
-///     uint32_t residual_adaptive_colour_transform_enabled_flag : 1;
-///     uint32_t pps_slice_act_qp_offsets_present_flag : 1;
-///     uint32_t pps_palette_predictor_initializers_present_flag : 1;
-///     uint32_t monochrome_palette_flag : 1;
-///     uint32_t pps_range_extension_flag : 1;
+///     uint32_t dependent_slice_segments_enabled_flag : 1; // @link substring="dependent_slice_segments_enabled_flag" target="#dependent_slice_segments_enabled_flag"
+///     uint32_t output_flag_present_flag : 1; // @link substring="output_flag_present_flag" target="#output_flag_present_flag"
+///     uint32_t sign_data_hiding_enabled_flag : 1; // @link substring="sign_data_hiding_enabled_flag" target="#sign_data_hiding_enabled_flag"
+///     uint32_t cabac_init_present_flag : 1; // @link substring="cabac_init_present_flag" target="#cabac_init_present_flag"
+///     uint32_t constrained_intra_pred_flag : 1; // @link substring="constrained_intra_pred_flag" target="#constrained_intra_pred_flag"
+///     uint32_t transform_skip_enabled_flag : 1; // @link substring="transform_skip_enabled_flag" target="#transform_skip_enabled_flag"
+///     uint32_t cu_qp_delta_enabled_flag : 1; // @link substring="cu_qp_delta_enabled_flag" target="#cu_qp_delta_enabled_flag"
+///     uint32_t pps_slice_chroma_qp_offsets_present_flag : 1; // @link substring="pps_slice_chroma_qp_offsets_present_flag" target="#pps_slice_chroma_qp_offsets_present_flag"
+///     uint32_t weighted_pred_flag : 1; // @link substring="weighted_pred_flag" target="#weighted_pred_flag"
+///     uint32_t weighted_bipred_flag : 1; // @link substring="weighted_bipred_flag" target="#weighted_bipred_flag"
+///     uint32_t transquant_bypass_enabled_flag : 1; // @link substring="transquant_bypass_enabled_flag" target="#transquant_bypass_enabled_flag"
+///     uint32_t tiles_enabled_flag : 1; // @link substring="tiles_enabled_flag" target="#tiles_enabled_flag"
+///     uint32_t entropy_coding_sync_enabled_flag : 1; // @link substring="entropy_coding_sync_enabled_flag" target="#entropy_coding_sync_enabled_flag"
+///     uint32_t uniform_spacing_flag : 1; // @link substring="uniform_spacing_flag" target="#uniform_spacing_flag"
+///     uint32_t loop_filter_across_tiles_enabled_flag : 1; // @link substring="loop_filter_across_tiles_enabled_flag" target="#loop_filter_across_tiles_enabled_flag"
+///     uint32_t pps_loop_filter_across_slices_enabled_flag : 1; // @link substring="pps_loop_filter_across_slices_enabled_flag" target="#pps_loop_filter_across_slices_enabled_flag"
+///     uint32_t deblocking_filter_control_present_flag : 1; // @link substring="deblocking_filter_control_present_flag" target="#deblocking_filter_control_present_flag"
+///     uint32_t deblocking_filter_override_enabled_flag : 1; // @link substring="deblocking_filter_override_enabled_flag" target="#deblocking_filter_override_enabled_flag"
+///     uint32_t pps_deblocking_filter_disabled_flag : 1; // @link substring="pps_deblocking_filter_disabled_flag" target="#pps_deblocking_filter_disabled_flag"
+///     uint32_t pps_scaling_list_data_present_flag : 1; // @link substring="pps_scaling_list_data_present_flag" target="#pps_scaling_list_data_present_flag"
+///     uint32_t lists_modification_present_flag : 1; // @link substring="lists_modification_present_flag" target="#lists_modification_present_flag"
+///     uint32_t slice_segment_header_extension_present_flag : 1; // @link substring="slice_segment_header_extension_present_flag" target="#slice_segment_header_extension_present_flag"
+///     uint32_t pps_extension_present_flag : 1; // @link substring="pps_extension_present_flag" target="#pps_extension_present_flag"
+///     uint32_t cross_component_prediction_enabled_flag : 1; // @link substring="cross_component_prediction_enabled_flag" target="#cross_component_prediction_enabled_flag"
+///     uint32_t chroma_qp_offset_list_enabled_flag : 1; // @link substring="chroma_qp_offset_list_enabled_flag" target="#chroma_qp_offset_list_enabled_flag"
+///     uint32_t pps_curr_pic_ref_enabled_flag : 1; // @link substring="pps_curr_pic_ref_enabled_flag" target="#pps_curr_pic_ref_enabled_flag"
+///     uint32_t residual_adaptive_colour_transform_enabled_flag : 1; // @link substring="residual_adaptive_colour_transform_enabled_flag" target="#residual_adaptive_colour_transform_enabled_flag"
+///     uint32_t pps_slice_act_qp_offsets_present_flag : 1; // @link substring="pps_slice_act_qp_offsets_present_flag" target="#pps_slice_act_qp_offsets_present_flag"
+///     uint32_t pps_palette_predictor_initializers_present_flag : 1; // @link substring="pps_palette_predictor_initializers_present_flag" target="#pps_palette_predictor_initializers_present_flag"
+///     uint32_t monochrome_palette_flag : 1; // @link substring="monochrome_palette_flag" target="#monochrome_palette_flag"
+///     uint32_t pps_range_extension_flag : 1; // @link substring="pps_range_extension_flag" target="#pps_range_extension_flag"
 /// } StdVideoH265PpsFlags;
 /// }
 ///

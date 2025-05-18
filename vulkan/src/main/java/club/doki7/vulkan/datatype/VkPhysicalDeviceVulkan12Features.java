@@ -20,55 +20,55 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceVulkan12Features {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 samplerMirrorClampToEdge;
-///     VkBool32 drawIndirectCount;
-///     VkBool32 storageBuffer8BitAccess;
-///     VkBool32 uniformAndStorageBuffer8BitAccess;
-///     VkBool32 storagePushConstant8;
-///     VkBool32 shaderBufferInt64Atomics;
-///     VkBool32 shaderSharedInt64Atomics;
-///     VkBool32 shaderFloat16;
-///     VkBool32 shaderInt8;
-///     VkBool32 descriptorIndexing;
-///     VkBool32 shaderInputAttachmentArrayDynamicIndexing;
-///     VkBool32 shaderUniformTexelBufferArrayDynamicIndexing;
-///     VkBool32 shaderStorageTexelBufferArrayDynamicIndexing;
-///     VkBool32 shaderUniformBufferArrayNonUniformIndexing;
-///     VkBool32 shaderSampledImageArrayNonUniformIndexing;
-///     VkBool32 shaderStorageBufferArrayNonUniformIndexing;
-///     VkBool32 shaderStorageImageArrayNonUniformIndexing;
-///     VkBool32 shaderInputAttachmentArrayNonUniformIndexing;
-///     VkBool32 shaderUniformTexelBufferArrayNonUniformIndexing;
-///     VkBool32 shaderStorageTexelBufferArrayNonUniformIndexing;
-///     VkBool32 descriptorBindingUniformBufferUpdateAfterBind;
-///     VkBool32 descriptorBindingSampledImageUpdateAfterBind;
-///     VkBool32 descriptorBindingStorageImageUpdateAfterBind;
-///     VkBool32 descriptorBindingStorageBufferUpdateAfterBind;
-///     VkBool32 descriptorBindingUniformTexelBufferUpdateAfterBind;
-///     VkBool32 descriptorBindingStorageTexelBufferUpdateAfterBind;
-///     VkBool32 descriptorBindingUpdateUnusedWhilePending;
-///     VkBool32 descriptorBindingPartiallyBound;
-///     VkBool32 descriptorBindingVariableDescriptorCount;
-///     VkBool32 runtimeDescriptorArray;
-///     VkBool32 samplerFilterMinmax;
-///     VkBool32 scalarBlockLayout;
-///     VkBool32 imagelessFramebuffer;
-///     VkBool32 uniformBufferStandardLayout;
-///     VkBool32 shaderSubgroupExtendedTypes;
-///     VkBool32 separateDepthStencilLayouts;
-///     VkBool32 hostQueryReset;
-///     VkBool32 timelineSemaphore;
-///     VkBool32 bufferDeviceAddress;
-///     VkBool32 bufferDeviceAddressCaptureReplay;
-///     VkBool32 bufferDeviceAddressMultiDevice;
-///     VkBool32 vulkanMemoryModel;
-///     VkBool32 vulkanMemoryModelDeviceScope;
-///     VkBool32 vulkanMemoryModelAvailabilityVisibilityChains;
-///     VkBool32 shaderOutputViewportIndex;
-///     VkBool32 shaderOutputLayer;
-///     VkBool32 subgroupBroadcastDynamicId;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 samplerMirrorClampToEdge; // @link substring="samplerMirrorClampToEdge" target="#samplerMirrorClampToEdge"
+///     VkBool32 drawIndirectCount; // @link substring="drawIndirectCount" target="#drawIndirectCount"
+///     VkBool32 storageBuffer8BitAccess; // @link substring="storageBuffer8BitAccess" target="#storageBuffer8BitAccess"
+///     VkBool32 uniformAndStorageBuffer8BitAccess; // @link substring="uniformAndStorageBuffer8BitAccess" target="#uniformAndStorageBuffer8BitAccess"
+///     VkBool32 storagePushConstant8; // @link substring="storagePushConstant8" target="#storagePushConstant8"
+///     VkBool32 shaderBufferInt64Atomics; // @link substring="shaderBufferInt64Atomics" target="#shaderBufferInt64Atomics"
+///     VkBool32 shaderSharedInt64Atomics; // @link substring="shaderSharedInt64Atomics" target="#shaderSharedInt64Atomics"
+///     VkBool32 shaderFloat16; // @link substring="shaderFloat16" target="#shaderFloat16"
+///     VkBool32 shaderInt8; // @link substring="shaderInt8" target="#shaderInt8"
+///     VkBool32 descriptorIndexing; // @link substring="descriptorIndexing" target="#descriptorIndexing"
+///     VkBool32 shaderInputAttachmentArrayDynamicIndexing; // @link substring="shaderInputAttachmentArrayDynamicIndexing" target="#shaderInputAttachmentArrayDynamicIndexing"
+///     VkBool32 shaderUniformTexelBufferArrayDynamicIndexing; // @link substring="shaderUniformTexelBufferArrayDynamicIndexing" target="#shaderUniformTexelBufferArrayDynamicIndexing"
+///     VkBool32 shaderStorageTexelBufferArrayDynamicIndexing; // @link substring="shaderStorageTexelBufferArrayDynamicIndexing" target="#shaderStorageTexelBufferArrayDynamicIndexing"
+///     VkBool32 shaderUniformBufferArrayNonUniformIndexing; // @link substring="shaderUniformBufferArrayNonUniformIndexing" target="#shaderUniformBufferArrayNonUniformIndexing"
+///     VkBool32 shaderSampledImageArrayNonUniformIndexing; // @link substring="shaderSampledImageArrayNonUniformIndexing" target="#shaderSampledImageArrayNonUniformIndexing"
+///     VkBool32 shaderStorageBufferArrayNonUniformIndexing; // @link substring="shaderStorageBufferArrayNonUniformIndexing" target="#shaderStorageBufferArrayNonUniformIndexing"
+///     VkBool32 shaderStorageImageArrayNonUniformIndexing; // @link substring="shaderStorageImageArrayNonUniformIndexing" target="#shaderStorageImageArrayNonUniformIndexing"
+///     VkBool32 shaderInputAttachmentArrayNonUniformIndexing; // @link substring="shaderInputAttachmentArrayNonUniformIndexing" target="#shaderInputAttachmentArrayNonUniformIndexing"
+///     VkBool32 shaderUniformTexelBufferArrayNonUniformIndexing; // @link substring="shaderUniformTexelBufferArrayNonUniformIndexing" target="#shaderUniformTexelBufferArrayNonUniformIndexing"
+///     VkBool32 shaderStorageTexelBufferArrayNonUniformIndexing; // @link substring="shaderStorageTexelBufferArrayNonUniformIndexing" target="#shaderStorageTexelBufferArrayNonUniformIndexing"
+///     VkBool32 descriptorBindingUniformBufferUpdateAfterBind; // @link substring="descriptorBindingUniformBufferUpdateAfterBind" target="#descriptorBindingUniformBufferUpdateAfterBind"
+///     VkBool32 descriptorBindingSampledImageUpdateAfterBind; // @link substring="descriptorBindingSampledImageUpdateAfterBind" target="#descriptorBindingSampledImageUpdateAfterBind"
+///     VkBool32 descriptorBindingStorageImageUpdateAfterBind; // @link substring="descriptorBindingStorageImageUpdateAfterBind" target="#descriptorBindingStorageImageUpdateAfterBind"
+///     VkBool32 descriptorBindingStorageBufferUpdateAfterBind; // @link substring="descriptorBindingStorageBufferUpdateAfterBind" target="#descriptorBindingStorageBufferUpdateAfterBind"
+///     VkBool32 descriptorBindingUniformTexelBufferUpdateAfterBind; // @link substring="descriptorBindingUniformTexelBufferUpdateAfterBind" target="#descriptorBindingUniformTexelBufferUpdateAfterBind"
+///     VkBool32 descriptorBindingStorageTexelBufferUpdateAfterBind; // @link substring="descriptorBindingStorageTexelBufferUpdateAfterBind" target="#descriptorBindingStorageTexelBufferUpdateAfterBind"
+///     VkBool32 descriptorBindingUpdateUnusedWhilePending; // @link substring="descriptorBindingUpdateUnusedWhilePending" target="#descriptorBindingUpdateUnusedWhilePending"
+///     VkBool32 descriptorBindingPartiallyBound; // @link substring="descriptorBindingPartiallyBound" target="#descriptorBindingPartiallyBound"
+///     VkBool32 descriptorBindingVariableDescriptorCount; // @link substring="descriptorBindingVariableDescriptorCount" target="#descriptorBindingVariableDescriptorCount"
+///     VkBool32 runtimeDescriptorArray; // @link substring="runtimeDescriptorArray" target="#runtimeDescriptorArray"
+///     VkBool32 samplerFilterMinmax; // @link substring="samplerFilterMinmax" target="#samplerFilterMinmax"
+///     VkBool32 scalarBlockLayout; // @link substring="scalarBlockLayout" target="#scalarBlockLayout"
+///     VkBool32 imagelessFramebuffer; // @link substring="imagelessFramebuffer" target="#imagelessFramebuffer"
+///     VkBool32 uniformBufferStandardLayout; // @link substring="uniformBufferStandardLayout" target="#uniformBufferStandardLayout"
+///     VkBool32 shaderSubgroupExtendedTypes; // @link substring="shaderSubgroupExtendedTypes" target="#shaderSubgroupExtendedTypes"
+///     VkBool32 separateDepthStencilLayouts; // @link substring="separateDepthStencilLayouts" target="#separateDepthStencilLayouts"
+///     VkBool32 hostQueryReset; // @link substring="hostQueryReset" target="#hostQueryReset"
+///     VkBool32 timelineSemaphore; // @link substring="timelineSemaphore" target="#timelineSemaphore"
+///     VkBool32 bufferDeviceAddress; // @link substring="bufferDeviceAddress" target="#bufferDeviceAddress"
+///     VkBool32 bufferDeviceAddressCaptureReplay; // @link substring="bufferDeviceAddressCaptureReplay" target="#bufferDeviceAddressCaptureReplay"
+///     VkBool32 bufferDeviceAddressMultiDevice; // @link substring="bufferDeviceAddressMultiDevice" target="#bufferDeviceAddressMultiDevice"
+///     VkBool32 vulkanMemoryModel; // @link substring="vulkanMemoryModel" target="#vulkanMemoryModel"
+///     VkBool32 vulkanMemoryModelDeviceScope; // @link substring="vulkanMemoryModelDeviceScope" target="#vulkanMemoryModelDeviceScope"
+///     VkBool32 vulkanMemoryModelAvailabilityVisibilityChains; // @link substring="vulkanMemoryModelAvailabilityVisibilityChains" target="#vulkanMemoryModelAvailabilityVisibilityChains"
+///     VkBool32 shaderOutputViewportIndex; // @link substring="shaderOutputViewportIndex" target="#shaderOutputViewportIndex"
+///     VkBool32 shaderOutputLayer; // @link substring="shaderOutputLayer" target="#shaderOutputLayer"
+///     VkBool32 subgroupBroadcastDynamicId; // @link substring="subgroupBroadcastDynamicId" target="#subgroupBroadcastDynamicId"
 /// } VkPhysicalDeviceVulkan12Features;
 /// }
 ///

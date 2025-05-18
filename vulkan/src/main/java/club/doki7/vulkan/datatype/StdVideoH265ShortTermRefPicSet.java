@@ -20,20 +20,20 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265ShortTermRefPicSet {
-///     StdVideoH265ShortTermRefPicSetFlags flags;
-///     uint32_t delta_idx_minus1;
-///     uint16_t use_delta_flag;
-///     uint16_t abs_delta_rps_minus1;
-///     uint16_t used_by_curr_pic_flag;
-///     uint16_t used_by_curr_pic_s0_flag;
-///     uint16_t used_by_curr_pic_s1_flag;
-///     uint16_t reserved1;
-///     uint8_t reserved2;
-///     uint8_t reserved3;
-///     uint8_t num_negative_pics;
-///     uint8_t num_positive_pics;
-///     uint16_t delta_poc_s0_minus1;
-///     uint16_t delta_poc_s1_minus1;
+///     StdVideoH265ShortTermRefPicSetFlags flags; // @link substring="StdVideoH265ShortTermRefPicSetFlags" target="StdVideoH265ShortTermRefPicSetFlags" @link substring="flags" target="#flags"
+///     uint32_t delta_idx_minus1; // @link substring="delta_idx_minus1" target="#delta_idx_minus1"
+///     uint16_t use_delta_flag; // @link substring="use_delta_flag" target="#use_delta_flag"
+///     uint16_t abs_delta_rps_minus1; // @link substring="abs_delta_rps_minus1" target="#abs_delta_rps_minus1"
+///     uint16_t used_by_curr_pic_flag; // @link substring="used_by_curr_pic_flag" target="#used_by_curr_pic_flag"
+///     uint16_t used_by_curr_pic_s0_flag; // @link substring="used_by_curr_pic_s0_flag" target="#used_by_curr_pic_s0_flag"
+///     uint16_t used_by_curr_pic_s1_flag; // @link substring="used_by_curr_pic_s1_flag" target="#used_by_curr_pic_s1_flag"
+///     uint16_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint8_t reserved2; // @link substring="reserved2" target="#reserved2"
+///     uint8_t reserved3; // @link substring="reserved3" target="#reserved3"
+///     uint8_t num_negative_pics; // @link substring="num_negative_pics" target="#num_negative_pics"
+///     uint8_t num_positive_pics; // @link substring="num_positive_pics" target="#num_positive_pics"
+///     uint16_t delta_poc_s0_minus1; // @link substring="delta_poc_s0_minus1" target="#delta_poc_s0_minus1"
+///     uint16_t delta_poc_s1_minus1; // @link substring="delta_poc_s1_minus1" target="#delta_poc_s1_minus1"
 /// } StdVideoH265ShortTermRefPicSet;
 /// }
 ///
@@ -77,11 +77,11 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public StdVideoH265ShortTermRefPicSetFlags flags() {
+    public @NotNull StdVideoH265ShortTermRefPicSetFlags flags() {
         return new StdVideoH265ShortTermRefPicSetFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoH265ShortTermRefPicSetFlags value) {
+    public void flags(@NotNull StdVideoH265ShortTermRefPicSetFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 

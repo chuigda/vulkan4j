@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1GlobalMotion {
-///     uint8_t GmType;
-///     int32_t gm_params;
+///     uint8_t GmType; // @link substring="GmType" target="#GmType"
+///     int32_t gm_params; // @link substring="gm_params" target="#gm_params"
 /// } StdVideoAV1GlobalMotion;
 /// }
 ///

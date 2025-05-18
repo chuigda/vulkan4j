@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImageSubresource {
-///     VkImageAspectFlags aspectMask;
-///     uint32_t mipLevel;
-///     uint32_t arrayLayer;
+///     VkImageAspectFlags aspectMask; // @link substring="VkImageAspectFlags" target="VkImageAspectFlags" @link substring="aspectMask" target="#aspectMask"
+///     uint32_t mipLevel; // @link substring="mipLevel" target="#mipLevel"
+///     uint32_t arrayLayer; // @link substring="arrayLayer" target="#arrayLayer"
 /// } VkImageSubresource;
 /// }
 ///

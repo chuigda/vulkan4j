@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkIndirectExecutionSetCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkIndirectExecutionSetInfoTypeEXT type;
-///     VkIndirectExecutionSetInfoEXT info;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkIndirectExecutionSetInfoTypeEXT type; // @link substring="VkIndirectExecutionSetInfoTypeEXT" target="VkIndirectExecutionSetInfoTypeEXT" @link substring="type" target="#type"
+///     VkIndirectExecutionSetInfoEXT info; // @link substring="VkIndirectExecutionSetInfoEXT" target="VkIndirectExecutionSetInfoEXT" @link substring="info" target="#info"
 /// } VkIndirectExecutionSetCreateInfoEXT;
 /// }
 ///
@@ -111,11 +111,11 @@ public record VkIndirectExecutionSetCreateInfoEXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 
-    public VkIndirectExecutionSetInfoEXT info() {
+    public @NotNull VkIndirectExecutionSetInfoEXT info() {
         return new VkIndirectExecutionSetInfoEXT(segment.asSlice(OFFSET$info, LAYOUT$info));
     }
 
-    public void info(VkIndirectExecutionSetInfoEXT value) {
+    public void info(@NotNull VkIndirectExecutionSetInfoEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$info, SIZE$info);
     }
 

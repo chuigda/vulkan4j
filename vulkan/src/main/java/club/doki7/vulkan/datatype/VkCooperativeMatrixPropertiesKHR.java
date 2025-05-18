@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCooperativeMatrixPropertiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t MSize;
-///     uint32_t NSize;
-///     uint32_t KSize;
-///     VkComponentTypeKHR AType;
-///     VkComponentTypeKHR BType;
-///     VkComponentTypeKHR CType;
-///     VkComponentTypeKHR ResultType;
-///     VkBool32 saturatingAccumulation;
-///     VkScopeKHR scope;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t MSize; // @link substring="MSize" target="#MSize"
+///     uint32_t NSize; // @link substring="NSize" target="#NSize"
+///     uint32_t KSize; // @link substring="KSize" target="#KSize"
+///     VkComponentTypeKHR AType; // @link substring="VkComponentTypeKHR" target="VkComponentTypeKHR" @link substring="AType" target="#AType"
+///     VkComponentTypeKHR BType; // @link substring="VkComponentTypeKHR" target="VkComponentTypeKHR" @link substring="BType" target="#BType"
+///     VkComponentTypeKHR CType; // @link substring="VkComponentTypeKHR" target="VkComponentTypeKHR" @link substring="CType" target="#CType"
+///     VkComponentTypeKHR ResultType; // @link substring="VkComponentTypeKHR" target="VkComponentTypeKHR" @link substring="ResultType" target="#ResultType"
+///     VkBool32 saturatingAccumulation; // @link substring="saturatingAccumulation" target="#saturatingAccumulation"
+///     VkScopeKHR scope; // @link substring="VkScopeKHR" target="VkScopeKHR" @link substring="scope" target="#scope"
 /// } VkCooperativeMatrixPropertiesKHR;
 /// }
 ///

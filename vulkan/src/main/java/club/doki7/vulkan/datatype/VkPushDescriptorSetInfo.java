@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPushDescriptorSetInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkShaderStageFlags stageFlags;
-///     VkPipelineLayout layout; // optional
-///     uint32_t set; // optional
-///     uint32_t descriptorWriteCount;
-///     VkWriteDescriptorSet const* pDescriptorWrites;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkShaderStageFlags stageFlags; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="stageFlags" target="#stageFlags"
+///     VkPipelineLayout layout; // optional // @link substring="VkPipelineLayout" target="VkPipelineLayout" @link substring="layout" target="#layout"
+///     uint32_t set; // optional // @link substring="set" target="#set"
+///     uint32_t descriptorWriteCount; // @link substring="descriptorWriteCount" target="#descriptorWriteCount"
+///     VkWriteDescriptorSet const* pDescriptorWrites; // @link substring="VkWriteDescriptorSet" target="VkWriteDescriptorSet" @link substring="pDescriptorWrites" target="#pDescriptorWrites"
 /// } VkPushDescriptorSetInfo;
 /// }
 ///
@@ -142,14 +142,6 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$descriptorWriteCount, OFFSET$descriptorWriteCount, value);
     }
 
-    public @pointer(target=VkWriteDescriptorSet.class) MemorySegment pDescriptorWritesRaw() {
-        return segment.get(LAYOUT$pDescriptorWrites, OFFSET$pDescriptorWrites);
-    }
-
-    public void pDescriptorWritesRaw(@pointer(target=VkWriteDescriptorSet.class) MemorySegment value) {
-        segment.set(LAYOUT$pDescriptorWrites, OFFSET$pDescriptorWrites, value);
-    }
-
     public @Nullable VkWriteDescriptorSet pDescriptorWrites() {
         MemorySegment s = pDescriptorWritesRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -175,6 +167,14 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
             ret[i] = new VkWriteDescriptorSet(s.asSlice(i * VkWriteDescriptorSet.BYTES, VkWriteDescriptorSet.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkWriteDescriptorSet.class) MemorySegment pDescriptorWritesRaw() {
+        return segment.get(LAYOUT$pDescriptorWrites, OFFSET$pDescriptorWrites);
+    }
+
+    public void pDescriptorWritesRaw(@pointer(target=VkWriteDescriptorSet.class) MemorySegment value) {
+        segment.set(LAYOUT$pDescriptorWrites, OFFSET$pDescriptorWrites, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

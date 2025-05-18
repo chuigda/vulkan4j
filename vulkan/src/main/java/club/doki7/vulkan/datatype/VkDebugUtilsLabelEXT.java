@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDebugUtilsLabelEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     char const* pLabelName;
-///     float color;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     char const* pLabelName; // @link substring="pLabelName" target="#pLabelName"
+///     float color; // @link substring="color" target="#color"
 /// } VkDebugUtilsLabelEXT;
 /// }
 ///
@@ -103,14 +103,6 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IP
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="byte*") MemorySegment pLabelNameRaw() {
-        return segment.get(LAYOUT$pLabelName, OFFSET$pLabelName);
-    }
-
-    public void pLabelNameRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pLabelName, OFFSET$pLabelName, value);
-    }
-
     /// Note: the returned {@link BytePtr} does not have correct
     /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
@@ -126,6 +118,14 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IP
     public void pLabelName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLabelNameRaw(s);
+    }
+
+    public @pointer(comment="byte*") MemorySegment pLabelNameRaw() {
+        return segment.get(LAYOUT$pLabelName, OFFSET$pLabelName);
+    }
+
+    public void pLabelNameRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pLabelName, OFFSET$pLabelName, value);
     }
 
     public float color() {

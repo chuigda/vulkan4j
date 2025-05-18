@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkShaderModuleCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkShaderModuleCreateFlags flags; // optional
-///     size_t codeSize;
-///     uint32_t const* pCode;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkShaderModuleCreateFlags flags; // optional // @link substring="VkShaderModuleCreateFlags" target="VkShaderModuleCreateFlags" @link substring="flags" target="#flags"
+///     size_t codeSize; // @link substring="codeSize" target="#codeSize"
+///     uint32_t const* pCode; // @link substring="pCode" target="#pCode"
 /// } VkShaderModuleCreateInfo;
 /// }
 ///
@@ -120,14 +120,6 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
         NativeLayout.writeCSizeT(segment, OFFSET$codeSize, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pCodeRaw() {
-        return segment.get(LAYOUT$pCode, OFFSET$pCode);
-    }
-
-    public void pCodeRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pCode, OFFSET$pCode, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -143,6 +135,14 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
     public void pCode(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCodeRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pCodeRaw() {
+        return segment.get(LAYOUT$pCode, OFFSET$pCode);
+    }
+
+    public void pCodeRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pCode, OFFSET$pCode, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

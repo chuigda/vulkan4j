@@ -21,36 +21,36 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265SpsFlags {
-///     uint32_t sps_temporal_id_nesting_flag : 1;
-///     uint32_t separate_colour_plane_flag : 1;
-///     uint32_t conformance_window_flag : 1;
-///     uint32_t sps_sub_layer_ordering_info_present_flag : 1;
-///     uint32_t scaling_list_enabled_flag : 1;
-///     uint32_t sps_scaling_list_data_present_flag : 1;
-///     uint32_t amp_enabled_flag : 1;
-///     uint32_t sample_adaptive_offset_enabled_flag : 1;
-///     uint32_t pcm_enabled_flag : 1;
-///     uint32_t pcm_loop_filter_disabled_flag : 1;
-///     uint32_t long_term_ref_pics_present_flag : 1;
-///     uint32_t sps_temporal_mvp_enabled_flag : 1;
-///     uint32_t strong_intra_smoothing_enabled_flag : 1;
-///     uint32_t vui_parameters_present_flag : 1;
-///     uint32_t sps_extension_present_flag : 1;
-///     uint32_t sps_range_extension_flag : 1;
-///     uint32_t transform_skip_rotation_enabled_flag : 1;
-///     uint32_t transform_skip_context_enabled_flag : 1;
-///     uint32_t implicit_rdpcm_enabled_flag : 1;
-///     uint32_t explicit_rdpcm_enabled_flag : 1;
-///     uint32_t extended_precision_processing_flag : 1;
-///     uint32_t intra_smoothing_disabled_flag : 1;
-///     uint32_t high_precision_offsets_enabled_flag : 1;
-///     uint32_t persistent_rice_adaptation_enabled_flag : 1;
-///     uint32_t cabac_bypass_alignment_enabled_flag : 1;
-///     uint32_t sps_scc_extension_flag : 1;
-///     uint32_t sps_curr_pic_ref_enabled_flag : 1;
-///     uint32_t palette_mode_enabled_flag : 1;
-///     uint32_t sps_palette_predictor_initializers_present_flag : 1;
-///     uint32_t intra_boundary_filtering_disabled_flag : 1;
+///     uint32_t sps_temporal_id_nesting_flag : 1; // @link substring="sps_temporal_id_nesting_flag" target="#sps_temporal_id_nesting_flag"
+///     uint32_t separate_colour_plane_flag : 1; // @link substring="separate_colour_plane_flag" target="#separate_colour_plane_flag"
+///     uint32_t conformance_window_flag : 1; // @link substring="conformance_window_flag" target="#conformance_window_flag"
+///     uint32_t sps_sub_layer_ordering_info_present_flag : 1; // @link substring="sps_sub_layer_ordering_info_present_flag" target="#sps_sub_layer_ordering_info_present_flag"
+///     uint32_t scaling_list_enabled_flag : 1; // @link substring="scaling_list_enabled_flag" target="#scaling_list_enabled_flag"
+///     uint32_t sps_scaling_list_data_present_flag : 1; // @link substring="sps_scaling_list_data_present_flag" target="#sps_scaling_list_data_present_flag"
+///     uint32_t amp_enabled_flag : 1; // @link substring="amp_enabled_flag" target="#amp_enabled_flag"
+///     uint32_t sample_adaptive_offset_enabled_flag : 1; // @link substring="sample_adaptive_offset_enabled_flag" target="#sample_adaptive_offset_enabled_flag"
+///     uint32_t pcm_enabled_flag : 1; // @link substring="pcm_enabled_flag" target="#pcm_enabled_flag"
+///     uint32_t pcm_loop_filter_disabled_flag : 1; // @link substring="pcm_loop_filter_disabled_flag" target="#pcm_loop_filter_disabled_flag"
+///     uint32_t long_term_ref_pics_present_flag : 1; // @link substring="long_term_ref_pics_present_flag" target="#long_term_ref_pics_present_flag"
+///     uint32_t sps_temporal_mvp_enabled_flag : 1; // @link substring="sps_temporal_mvp_enabled_flag" target="#sps_temporal_mvp_enabled_flag"
+///     uint32_t strong_intra_smoothing_enabled_flag : 1; // @link substring="strong_intra_smoothing_enabled_flag" target="#strong_intra_smoothing_enabled_flag"
+///     uint32_t vui_parameters_present_flag : 1; // @link substring="vui_parameters_present_flag" target="#vui_parameters_present_flag"
+///     uint32_t sps_extension_present_flag : 1; // @link substring="sps_extension_present_flag" target="#sps_extension_present_flag"
+///     uint32_t sps_range_extension_flag : 1; // @link substring="sps_range_extension_flag" target="#sps_range_extension_flag"
+///     uint32_t transform_skip_rotation_enabled_flag : 1; // @link substring="transform_skip_rotation_enabled_flag" target="#transform_skip_rotation_enabled_flag"
+///     uint32_t transform_skip_context_enabled_flag : 1; // @link substring="transform_skip_context_enabled_flag" target="#transform_skip_context_enabled_flag"
+///     uint32_t implicit_rdpcm_enabled_flag : 1; // @link substring="implicit_rdpcm_enabled_flag" target="#implicit_rdpcm_enabled_flag"
+///     uint32_t explicit_rdpcm_enabled_flag : 1; // @link substring="explicit_rdpcm_enabled_flag" target="#explicit_rdpcm_enabled_flag"
+///     uint32_t extended_precision_processing_flag : 1; // @link substring="extended_precision_processing_flag" target="#extended_precision_processing_flag"
+///     uint32_t intra_smoothing_disabled_flag : 1; // @link substring="intra_smoothing_disabled_flag" target="#intra_smoothing_disabled_flag"
+///     uint32_t high_precision_offsets_enabled_flag : 1; // @link substring="high_precision_offsets_enabled_flag" target="#high_precision_offsets_enabled_flag"
+///     uint32_t persistent_rice_adaptation_enabled_flag : 1; // @link substring="persistent_rice_adaptation_enabled_flag" target="#persistent_rice_adaptation_enabled_flag"
+///     uint32_t cabac_bypass_alignment_enabled_flag : 1; // @link substring="cabac_bypass_alignment_enabled_flag" target="#cabac_bypass_alignment_enabled_flag"
+///     uint32_t sps_scc_extension_flag : 1; // @link substring="sps_scc_extension_flag" target="#sps_scc_extension_flag"
+///     uint32_t sps_curr_pic_ref_enabled_flag : 1; // @link substring="sps_curr_pic_ref_enabled_flag" target="#sps_curr_pic_ref_enabled_flag"
+///     uint32_t palette_mode_enabled_flag : 1; // @link substring="palette_mode_enabled_flag" target="#palette_mode_enabled_flag"
+///     uint32_t sps_palette_predictor_initializers_present_flag : 1; // @link substring="sps_palette_predictor_initializers_present_flag" target="#sps_palette_predictor_initializers_present_flag"
+///     uint32_t intra_boundary_filtering_disabled_flag : 1; // @link substring="intra_boundary_filtering_disabled_flag" target="#intra_boundary_filtering_disabled_flag"
 /// } StdVideoH265SpsFlags;
 /// }
 ///

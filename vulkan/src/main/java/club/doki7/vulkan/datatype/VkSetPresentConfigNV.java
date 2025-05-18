@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSetPresentConfigNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t numFramesPerBatch;
-///     uint32_t presentConfigFeedback;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t numFramesPerBatch; // @link substring="numFramesPerBatch" target="#numFramesPerBatch"
+///     uint32_t presentConfigFeedback; // @link substring="presentConfigFeedback" target="#presentConfigFeedback"
 /// } VkSetPresentConfigNV;
 /// }
 ///

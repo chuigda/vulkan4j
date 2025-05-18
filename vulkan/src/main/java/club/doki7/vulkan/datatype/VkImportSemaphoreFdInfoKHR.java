@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkImportSemaphoreFdInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkSemaphore semaphore;
-///     VkSemaphoreImportFlags flags; // optional
-///     VkExternalSemaphoreHandleTypeFlags handleType;
-///     int fd;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSemaphore semaphore; // @link substring="VkSemaphore" target="VkSemaphore" @link substring="semaphore" target="#semaphore"
+///     VkSemaphoreImportFlags flags; // optional // @link substring="VkSemaphoreImportFlags" target="VkSemaphoreImportFlags" @link substring="flags" target="#flags"
+///     VkExternalSemaphoreHandleTypeFlags handleType; // @link substring="VkExternalSemaphoreHandleTypeFlags" target="VkExternalSemaphoreHandleTypeFlags" @link substring="handleType" target="#handleType"
+///     int fd; // @link substring="fd" target="#fd"
 /// } VkImportSemaphoreFdInfoKHR;
 /// }
 ///

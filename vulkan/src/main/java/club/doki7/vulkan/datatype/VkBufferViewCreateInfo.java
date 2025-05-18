@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBufferViewCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBufferViewCreateFlags flags; // optional
-///     VkBuffer buffer;
-///     VkFormat format;
-///     VkDeviceSize offset;
-///     VkDeviceSize range;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBufferViewCreateFlags flags; // optional // @link substring="VkBufferViewCreateFlags" target="VkBufferViewCreateFlags" @link substring="flags" target="#flags"
+///     VkBuffer buffer; // @link substring="VkBuffer" target="VkBuffer" @link substring="buffer" target="#buffer"
+///     VkFormat format; // @link substring="VkFormat" target="VkFormat" @link substring="format" target="#format"
+///     VkDeviceSize offset; // @link substring="offset" target="#offset"
+///     VkDeviceSize range; // @link substring="range" target="#range"
 /// } VkBufferViewCreateInfo;
 /// }
 ///

@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRayTracingPipelineInterfaceCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t maxPipelineRayPayloadSize;
-///     uint32_t maxPipelineRayHitAttributeSize;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxPipelineRayPayloadSize; // @link substring="maxPipelineRayPayloadSize" target="#maxPipelineRayPayloadSize"
+///     uint32_t maxPipelineRayHitAttributeSize; // @link substring="maxPipelineRayHitAttributeSize" target="#maxPipelineRayHitAttributeSize"
 /// } VkRayTracingPipelineInterfaceCreateInfoKHR;
 /// }
 ///

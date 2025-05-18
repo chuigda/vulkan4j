@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExternalImageFormatProperties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkExternalMemoryProperties externalMemoryProperties;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkExternalMemoryProperties externalMemoryProperties; // @link substring="VkExternalMemoryProperties" target="VkExternalMemoryProperties" @link substring="externalMemoryProperties" target="#externalMemoryProperties"
 /// } VkExternalImageFormatProperties;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkExternalImageFormatProperties(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkExternalMemoryProperties externalMemoryProperties() {
+    public @NotNull VkExternalMemoryProperties externalMemoryProperties() {
         return new VkExternalMemoryProperties(segment.asSlice(OFFSET$externalMemoryProperties, LAYOUT$externalMemoryProperties));
     }
 
-    public void externalMemoryProperties(VkExternalMemoryProperties value) {
+    public void externalMemoryProperties(@NotNull VkExternalMemoryProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$externalMemoryProperties, SIZE$externalMemoryProperties);
     }
 

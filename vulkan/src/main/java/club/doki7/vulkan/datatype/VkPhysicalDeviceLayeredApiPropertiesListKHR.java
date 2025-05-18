@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceLayeredApiPropertiesListKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t layeredApiCount; // optional
-///     VkPhysicalDeviceLayeredApiPropertiesKHR* pLayeredApis; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t layeredApiCount; // optional // @link substring="layeredApiCount" target="#layeredApiCount"
+///     VkPhysicalDeviceLayeredApiPropertiesKHR* pLayeredApis; // optional // @link substring="VkPhysicalDeviceLayeredApiPropertiesKHR" target="VkPhysicalDeviceLayeredApiPropertiesKHR" @link substring="pLayeredApis" target="#pLayeredApis"
 /// } VkPhysicalDeviceLayeredApiPropertiesListKHR;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
         segment.set(LAYOUT$layeredApiCount, OFFSET$layeredApiCount, value);
     }
 
-    public @pointer(target=VkPhysicalDeviceLayeredApiPropertiesKHR.class) MemorySegment pLayeredApisRaw() {
-        return segment.get(LAYOUT$pLayeredApis, OFFSET$pLayeredApis);
-    }
-
-    public void pLayeredApisRaw(@pointer(target=VkPhysicalDeviceLayeredApiPropertiesKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pLayeredApis, OFFSET$pLayeredApis, value);
-    }
-
     public @Nullable VkPhysicalDeviceLayeredApiPropertiesKHR pLayeredApis() {
         MemorySegment s = pLayeredApisRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
             ret[i] = new VkPhysicalDeviceLayeredApiPropertiesKHR(s.asSlice(i * VkPhysicalDeviceLayeredApiPropertiesKHR.BYTES, VkPhysicalDeviceLayeredApiPropertiesKHR.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkPhysicalDeviceLayeredApiPropertiesKHR.class) MemorySegment pLayeredApisRaw() {
+        return segment.get(LAYOUT$pLayeredApis, OFFSET$pLayeredApis);
+    }
+
+    public void pLayeredApisRaw(@pointer(target=VkPhysicalDeviceLayeredApiPropertiesKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pLayeredApis, OFFSET$pLayeredApis, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

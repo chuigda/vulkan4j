@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkXlibSurfaceCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkXlibSurfaceCreateFlagsKHR flags; // optional
-///     Display* dpy;
-///     Window window;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkXlibSurfaceCreateFlagsKHR flags; // optional // @link substring="VkXlibSurfaceCreateFlagsKHR" target="VkXlibSurfaceCreateFlagsKHR" @link substring="flags" target="#flags"
+///     Display* dpy; // @link substring="dpy" target="#dpy"
+///     Window window; // @link substring="window" target="#window"
 /// } VkXlibSurfaceCreateInfoKHR;
 /// }
 ///
@@ -112,14 +112,6 @@ public record VkXlibSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(comment="void**") MemorySegment dpyRaw() {
-        return segment.get(LAYOUT$dpy, OFFSET$dpy);
-    }
-
-    public void dpyRaw(@pointer(comment="void**") MemorySegment value) {
-        segment.set(LAYOUT$dpy, OFFSET$dpy, value);
-    }
-
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
     /// to user to track the size of the buffer, and use {@link PointerPtr#reinterpret} to set the size before
     /// actually reading from or writing to the buffer.
@@ -134,6 +126,14 @@ public record VkXlibSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impleme
     public void dpy(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         dpyRaw(s);
+    }
+
+    public @pointer(comment="void**") MemorySegment dpyRaw() {
+        return segment.get(LAYOUT$dpy, OFFSET$dpy);
+    }
+
+    public void dpyRaw(@pointer(comment="void**") MemorySegment value) {
+        segment.set(LAYOUT$dpy, OFFSET$dpy, value);
     }
 
     public long window() {

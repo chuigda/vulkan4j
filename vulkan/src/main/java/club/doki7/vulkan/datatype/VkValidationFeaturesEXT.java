@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkValidationFeaturesEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t enabledValidationFeatureCount; // optional
-///     VkValidationFeatureEnableEXT const* pEnabledValidationFeatures;
-///     uint32_t disabledValidationFeatureCount; // optional
-///     VkValidationFeatureDisableEXT const* pDisabledValidationFeatures;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t enabledValidationFeatureCount; // optional // @link substring="enabledValidationFeatureCount" target="#enabledValidationFeatureCount"
+///     VkValidationFeatureEnableEXT const* pEnabledValidationFeatures; // @link substring="VkValidationFeatureEnableEXT" target="VkValidationFeatureEnableEXT" @link substring="pEnabledValidationFeatures" target="#pEnabledValidationFeatures"
+///     uint32_t disabledValidationFeatureCount; // optional // @link substring="disabledValidationFeatureCount" target="#disabledValidationFeatureCount"
+///     VkValidationFeatureDisableEXT const* pDisabledValidationFeatures; // @link substring="VkValidationFeatureDisableEXT" target="VkValidationFeatureDisableEXT" @link substring="pDisabledValidationFeatures" target="#pDisabledValidationFeatures"
 /// } VkValidationFeaturesEXT;
 /// }
 ///
@@ -113,13 +113,6 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$enabledValidationFeatureCount, OFFSET$enabledValidationFeatureCount, value);
     }
 
-    public @pointer(target=VkValidationFeatureEnableEXT.class) MemorySegment pEnabledValidationFeaturesRaw() {
-        return segment.get(LAYOUT$pEnabledValidationFeatures, OFFSET$pEnabledValidationFeatures);
-    }
-
-    public void pEnabledValidationFeaturesRaw(@pointer(target=VkValidationFeatureEnableEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pEnabledValidationFeatures, OFFSET$pEnabledValidationFeatures, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -138,6 +131,14 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         pEnabledValidationFeaturesRaw(s);
     }
 
+    public @pointer(target=VkValidationFeatureEnableEXT.class) MemorySegment pEnabledValidationFeaturesRaw() {
+        return segment.get(LAYOUT$pEnabledValidationFeatures, OFFSET$pEnabledValidationFeatures);
+    }
+
+    public void pEnabledValidationFeaturesRaw(@pointer(target=VkValidationFeatureEnableEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pEnabledValidationFeatures, OFFSET$pEnabledValidationFeatures, value);
+    }
+
     public @unsigned int disabledValidationFeatureCount() {
         return segment.get(LAYOUT$disabledValidationFeatureCount, OFFSET$disabledValidationFeatureCount);
     }
@@ -146,13 +147,6 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$disabledValidationFeatureCount, OFFSET$disabledValidationFeatureCount, value);
     }
 
-    public @pointer(target=VkValidationFeatureDisableEXT.class) MemorySegment pDisabledValidationFeaturesRaw() {
-        return segment.get(LAYOUT$pDisabledValidationFeatures, OFFSET$pDisabledValidationFeatures);
-    }
-
-    public void pDisabledValidationFeaturesRaw(@pointer(target=VkValidationFeatureDisableEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pDisabledValidationFeatures, OFFSET$pDisabledValidationFeatures, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -169,6 +163,14 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
     public void pDisabledValidationFeatures(@Nullable @enumtype(VkValidationFeatureDisableEXT.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDisabledValidationFeaturesRaw(s);
+    }
+
+    public @pointer(target=VkValidationFeatureDisableEXT.class) MemorySegment pDisabledValidationFeaturesRaw() {
+        return segment.get(LAYOUT$pDisabledValidationFeatures, OFFSET$pDisabledValidationFeatures);
+    }
+
+    public void pDisabledValidationFeaturesRaw(@pointer(target=VkValidationFeatureDisableEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pDisabledValidationFeatures, OFFSET$pDisabledValidationFeatures, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

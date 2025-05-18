@@ -20,22 +20,22 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderCorePropertiesAMD {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t shaderEngineCount;
-///     uint32_t shaderArraysPerEngineCount;
-///     uint32_t computeUnitsPerShaderArray;
-///     uint32_t simdPerComputeUnit;
-///     uint32_t wavefrontsPerSimd;
-///     uint32_t wavefrontSize;
-///     uint32_t sgprsPerSimd;
-///     uint32_t minSgprAllocation;
-///     uint32_t maxSgprAllocation;
-///     uint32_t sgprAllocationGranularity;
-///     uint32_t vgprsPerSimd;
-///     uint32_t minVgprAllocation;
-///     uint32_t maxVgprAllocation;
-///     uint32_t vgprAllocationGranularity;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t shaderEngineCount; // @link substring="shaderEngineCount" target="#shaderEngineCount"
+///     uint32_t shaderArraysPerEngineCount; // @link substring="shaderArraysPerEngineCount" target="#shaderArraysPerEngineCount"
+///     uint32_t computeUnitsPerShaderArray; // @link substring="computeUnitsPerShaderArray" target="#computeUnitsPerShaderArray"
+///     uint32_t simdPerComputeUnit; // @link substring="simdPerComputeUnit" target="#simdPerComputeUnit"
+///     uint32_t wavefrontsPerSimd; // @link substring="wavefrontsPerSimd" target="#wavefrontsPerSimd"
+///     uint32_t wavefrontSize; // @link substring="wavefrontSize" target="#wavefrontSize"
+///     uint32_t sgprsPerSimd; // @link substring="sgprsPerSimd" target="#sgprsPerSimd"
+///     uint32_t minSgprAllocation; // @link substring="minSgprAllocation" target="#minSgprAllocation"
+///     uint32_t maxSgprAllocation; // @link substring="maxSgprAllocation" target="#maxSgprAllocation"
+///     uint32_t sgprAllocationGranularity; // @link substring="sgprAllocationGranularity" target="#sgprAllocationGranularity"
+///     uint32_t vgprsPerSimd; // @link substring="vgprsPerSimd" target="#vgprsPerSimd"
+///     uint32_t minVgprAllocation; // @link substring="minVgprAllocation" target="#minVgprAllocation"
+///     uint32_t maxVgprAllocation; // @link substring="maxVgprAllocation" target="#maxVgprAllocation"
+///     uint32_t vgprAllocationGranularity; // @link substring="vgprAllocationGranularity" target="#vgprAllocationGranularity"
 /// } VkPhysicalDeviceShaderCorePropertiesAMD;
 /// }
 ///

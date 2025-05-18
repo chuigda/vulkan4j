@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeH264NaluSliceInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     int32_t constantQp;
-///     StdVideoEncodeH264SliceHeader const* pStdSliceHeader;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     int32_t constantQp; // @link substring="constantQp" target="#constantQp"
+///     StdVideoEncodeH264SliceHeader const* pStdSliceHeader; // @link substring="StdVideoEncodeH264SliceHeader" target="StdVideoEncodeH264SliceHeader" @link substring="pStdSliceHeader" target="#pStdSliceHeader"
 /// } VkVideoEncodeH264NaluSliceInfoKHR;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkVideoEncodeH264NaluSliceInfoKHR(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$constantQp, OFFSET$constantQp, value);
     }
 
-    public @pointer(target=StdVideoEncodeH264SliceHeader.class) MemorySegment pStdSliceHeaderRaw() {
-        return segment.get(LAYOUT$pStdSliceHeader, OFFSET$pStdSliceHeader);
-    }
-
-    public void pStdSliceHeaderRaw(@pointer(target=StdVideoEncodeH264SliceHeader.class) MemorySegment value) {
-        segment.set(LAYOUT$pStdSliceHeader, OFFSET$pStdSliceHeader, value);
-    }
-
     public @Nullable StdVideoEncodeH264SliceHeader pStdSliceHeader() {
         MemorySegment s = pStdSliceHeaderRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkVideoEncodeH264NaluSliceInfoKHR(@NotNull MemorySegment segment) 
             ret[i] = new StdVideoEncodeH264SliceHeader(s.asSlice(i * StdVideoEncodeH264SliceHeader.BYTES, StdVideoEncodeH264SliceHeader.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoEncodeH264SliceHeader.class) MemorySegment pStdSliceHeaderRaw() {
+        return segment.get(LAYOUT$pStdSliceHeader, OFFSET$pStdSliceHeader);
+    }
+
+    public void pStdSliceHeaderRaw(@pointer(target=StdVideoEncodeH264SliceHeader.class) MemorySegment value) {
+        segment.set(LAYOUT$pStdSliceHeader, OFFSET$pStdSliceHeader, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

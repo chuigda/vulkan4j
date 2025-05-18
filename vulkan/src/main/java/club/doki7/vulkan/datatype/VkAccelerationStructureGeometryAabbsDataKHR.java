@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureGeometryAabbsDataKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDeviceOrHostAddressConstKHR data;
-///     VkDeviceSize stride;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceOrHostAddressConstKHR data; // @link substring="VkDeviceOrHostAddressConstKHR" target="VkDeviceOrHostAddressConstKHR" @link substring="data" target="#data"
+///     VkDeviceSize stride; // @link substring="stride" target="#stride"
 /// } VkAccelerationStructureGeometryAabbsDataKHR;
 /// }
 ///
@@ -103,11 +103,11 @@ public record VkAccelerationStructureGeometryAabbsDataKHR(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkDeviceOrHostAddressConstKHR data() {
+    public @NotNull VkDeviceOrHostAddressConstKHR data() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$data, LAYOUT$data));
     }
 
-    public void data(VkDeviceOrHostAddressConstKHR value) {
+    public void data(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
     }
 

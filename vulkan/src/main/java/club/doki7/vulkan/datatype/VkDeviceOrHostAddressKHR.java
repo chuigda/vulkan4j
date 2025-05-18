@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceOrHostAddressKHR {
-///     VkDeviceAddress deviceAddress;
-///     void* hostAddress;
+///     VkDeviceAddress deviceAddress; // @link substring="deviceAddress" target="#deviceAddress"
+///     void* hostAddress; // @link substring="hostAddress" target="#hostAddress"
 /// } VkDeviceOrHostAddressKHR;
 /// }
 ///

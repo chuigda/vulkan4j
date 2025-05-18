@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDedicatedAllocationMemoryAllocateInfoNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkImage image; // optional
-///     VkBuffer buffer; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkImage image; // optional // @link substring="VkImage" target="VkImage" @link substring="image" target="#image"
+///     VkBuffer buffer; // optional // @link substring="VkBuffer" target="VkBuffer" @link substring="buffer" target="#buffer"
 /// } VkDedicatedAllocationMemoryAllocateInfoNV;
 /// }
 ///

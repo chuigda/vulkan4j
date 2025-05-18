@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkExtent2D quantizationMapTexelSize;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkExtent2D quantizationMapTexelSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="quantizationMapTexelSize" target="#quantizationMapTexelSize"
 /// } VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR(@NotNul
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkExtent2D quantizationMapTexelSize() {
+    public @NotNull VkExtent2D quantizationMapTexelSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$quantizationMapTexelSize, LAYOUT$quantizationMapTexelSize));
     }
 
-    public void quantizationMapTexelSize(VkExtent2D value) {
+    public void quantizationMapTexelSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$quantizationMapTexelSize, SIZE$quantizationMapTexelSize);
     }
 

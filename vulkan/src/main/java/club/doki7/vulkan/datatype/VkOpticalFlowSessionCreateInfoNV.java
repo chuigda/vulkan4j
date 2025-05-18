@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkOpticalFlowSessionCreateInfoNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t width;
-///     uint32_t height;
-///     VkFormat imageFormat;
-///     VkFormat flowVectorFormat;
-///     VkFormat costFormat; // optional
-///     VkOpticalFlowGridSizeFlagsNV outputGridSize;
-///     VkOpticalFlowGridSizeFlagsNV hintGridSize; // optional
-///     VkOpticalFlowPerformanceLevelNV performanceLevel; // optional
-///     VkOpticalFlowSessionCreateFlagsNV flags; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t width; // @link substring="width" target="#width"
+///     uint32_t height; // @link substring="height" target="#height"
+///     VkFormat imageFormat; // @link substring="VkFormat" target="VkFormat" @link substring="imageFormat" target="#imageFormat"
+///     VkFormat flowVectorFormat; // @link substring="VkFormat" target="VkFormat" @link substring="flowVectorFormat" target="#flowVectorFormat"
+///     VkFormat costFormat; // optional // @link substring="VkFormat" target="VkFormat" @link substring="costFormat" target="#costFormat"
+///     VkOpticalFlowGridSizeFlagsNV outputGridSize; // @link substring="VkOpticalFlowGridSizeFlagsNV" target="VkOpticalFlowGridSizeFlagsNV" @link substring="outputGridSize" target="#outputGridSize"
+///     VkOpticalFlowGridSizeFlagsNV hintGridSize; // optional // @link substring="VkOpticalFlowGridSizeFlagsNV" target="VkOpticalFlowGridSizeFlagsNV" @link substring="hintGridSize" target="#hintGridSize"
+///     VkOpticalFlowPerformanceLevelNV performanceLevel; // optional // @link substring="VkOpticalFlowPerformanceLevelNV" target="VkOpticalFlowPerformanceLevelNV" @link substring="performanceLevel" target="#performanceLevel"
+///     VkOpticalFlowSessionCreateFlagsNV flags; // optional // @link substring="VkOpticalFlowSessionCreateFlagsNV" target="VkOpticalFlowSessionCreateFlagsNV" @link substring="flags" target="#flags"
 /// } VkOpticalFlowSessionCreateInfoNV;
 /// }
 ///

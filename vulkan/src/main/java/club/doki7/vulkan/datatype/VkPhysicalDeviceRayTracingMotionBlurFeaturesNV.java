@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceRayTracingMotionBlurFeaturesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 rayTracingMotionBlur;
-///     VkBool32 rayTracingMotionBlurPipelineTraceRaysIndirect;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 rayTracingMotionBlur; // @link substring="rayTracingMotionBlur" target="#rayTracingMotionBlur"
+///     VkBool32 rayTracingMotionBlurPipelineTraceRaysIndirect; // @link substring="rayTracingMotionBlurPipelineTraceRaysIndirect" target="#rayTracingMotionBlurPipelineTraceRaysIndirect"
 /// } VkPhysicalDeviceRayTracingMotionBlurFeaturesNV;
 /// }
 ///

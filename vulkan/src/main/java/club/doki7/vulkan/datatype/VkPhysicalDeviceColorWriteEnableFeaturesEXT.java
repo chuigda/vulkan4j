@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceColorWriteEnableFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 colorWriteEnable;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 colorWriteEnable; // @link substring="colorWriteEnable" target="#colorWriteEnable"
 /// } VkPhysicalDeviceColorWriteEnableFeaturesEXT;
 /// }
 ///

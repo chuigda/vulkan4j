@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineRasterizationStateStreamCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineRasterizationStateStreamCreateFlagsEXT flags; // optional
-///     uint32_t rasterizationStream;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineRasterizationStateStreamCreateFlagsEXT flags; // optional // @link substring="VkPipelineRasterizationStateStreamCreateFlagsEXT" target="VkPipelineRasterizationStateStreamCreateFlagsEXT" @link substring="flags" target="#flags"
+///     uint32_t rasterizationStream; // @link substring="rasterizationStream" target="#rasterizationStream"
 /// } VkPipelineRasterizationStateStreamCreateInfoEXT;
 /// }
 ///

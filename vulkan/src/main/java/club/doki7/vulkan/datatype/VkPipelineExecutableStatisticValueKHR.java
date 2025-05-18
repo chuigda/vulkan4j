@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineExecutableStatisticValueKHR {
-///     VkBool32 b32;
-///     int64_t i64;
-///     uint64_t u64;
-///     double f64;
+///     VkBool32 b32; // @link substring="b32" target="#b32"
+///     int64_t i64; // @link substring="i64" target="#i64"
+///     uint64_t u64; // @link substring="u64" target="#u64"
+///     double f64; // @link substring="f64" target="#f64"
 /// } VkPipelineExecutableStatisticValueKHR;
 /// }
 ///

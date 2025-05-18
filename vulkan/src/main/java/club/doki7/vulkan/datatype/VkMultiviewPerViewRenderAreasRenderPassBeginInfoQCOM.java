@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t perViewRenderAreaCount; // optional
-///     VkRect2D const* pPerViewRenderAreas;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t perViewRenderAreaCount; // optional // @link substring="perViewRenderAreaCount" target="#perViewRenderAreaCount"
+///     VkRect2D const* pPerViewRenderAreas; // @link substring="VkRect2D" target="VkRect2D" @link substring="pPerViewRenderAreas" target="#pPerViewRenderAreas"
 /// } VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
         segment.set(LAYOUT$perViewRenderAreaCount, OFFSET$perViewRenderAreaCount, value);
     }
 
-    public @pointer(target=VkRect2D.class) MemorySegment pPerViewRenderAreasRaw() {
-        return segment.get(LAYOUT$pPerViewRenderAreas, OFFSET$pPerViewRenderAreas);
-    }
-
-    public void pPerViewRenderAreasRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
-        segment.set(LAYOUT$pPerViewRenderAreas, OFFSET$pPerViewRenderAreas, value);
-    }
-
     public @Nullable VkRect2D pPerViewRenderAreas() {
         MemorySegment s = pPerViewRenderAreasRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -144,6 +136,14 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
             ret[i] = new VkRect2D(s.asSlice(i * VkRect2D.BYTES, VkRect2D.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkRect2D.class) MemorySegment pPerViewRenderAreasRaw() {
+        return segment.get(LAYOUT$pPerViewRenderAreas, OFFSET$pPerViewRenderAreas);
+    }
+
+    public void pPerViewRenderAreasRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
+        segment.set(LAYOUT$pPerViewRenderAreas, OFFSET$pPerViewRenderAreas, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

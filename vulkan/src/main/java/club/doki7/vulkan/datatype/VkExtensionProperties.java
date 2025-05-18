@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExtensionProperties {
-///     char extensionName;
-///     uint32_t specVersion;
+///     char extensionName; // @link substring="extensionName" target="#extensionName"
+///     uint32_t specVersion; // @link substring="specVersion" target="#specVersion"
 /// } VkExtensionProperties;
 /// }
 ///

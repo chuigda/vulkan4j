@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDisplayPlanePropertiesKHR {
-///     VkDisplayKHR currentDisplay;
-///     uint32_t currentStackIndex;
+///     VkDisplayKHR currentDisplay; // @link substring="VkDisplayKHR" target="VkDisplayKHR" @link substring="currentDisplay" target="#currentDisplay"
+///     uint32_t currentStackIndex; // @link substring="currentStackIndex" target="#currentStackIndex"
 /// } VkDisplayPlanePropertiesKHR;
 /// }
 ///

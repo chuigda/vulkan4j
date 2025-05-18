@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSamplerBlockMatchWindowCreateInfoQCOM {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkExtent2D windowExtent;
-///     VkBlockMatchWindowCompareModeQCOM windowCompareMode;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkExtent2D windowExtent; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="windowExtent" target="#windowExtent"
+///     VkBlockMatchWindowCompareModeQCOM windowCompareMode; // @link substring="VkBlockMatchWindowCompareModeQCOM" target="VkBlockMatchWindowCompareModeQCOM" @link substring="windowCompareMode" target="#windowCompareMode"
 /// } VkSamplerBlockMatchWindowCreateInfoQCOM;
 /// }
 ///
@@ -103,11 +103,11 @@ public record VkSamplerBlockMatchWindowCreateInfoQCOM(@NotNull MemorySegment seg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkExtent2D windowExtent() {
+    public @NotNull VkExtent2D windowExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$windowExtent, LAYOUT$windowExtent));
     }
 
-    public void windowExtent(VkExtent2D value) {
+    public void windowExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$windowExtent, SIZE$windowExtent);
     }
 

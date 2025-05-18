@@ -20,60 +20,60 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceVulkan12Properties {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkDriverId driverID;
-///     char driverName;
-///     char driverInfo;
-///     VkConformanceVersion conformanceVersion;
-///     VkShaderFloatControlsIndependence denormBehaviorIndependence;
-///     VkShaderFloatControlsIndependence roundingModeIndependence;
-///     VkBool32 shaderSignedZeroInfNanPreserveFloat16;
-///     VkBool32 shaderSignedZeroInfNanPreserveFloat32;
-///     VkBool32 shaderSignedZeroInfNanPreserveFloat64;
-///     VkBool32 shaderDenormPreserveFloat16;
-///     VkBool32 shaderDenormPreserveFloat32;
-///     VkBool32 shaderDenormPreserveFloat64;
-///     VkBool32 shaderDenormFlushToZeroFloat16;
-///     VkBool32 shaderDenormFlushToZeroFloat32;
-///     VkBool32 shaderDenormFlushToZeroFloat64;
-///     VkBool32 shaderRoundingModeRTEFloat16;
-///     VkBool32 shaderRoundingModeRTEFloat32;
-///     VkBool32 shaderRoundingModeRTEFloat64;
-///     VkBool32 shaderRoundingModeRTZFloat16;
-///     VkBool32 shaderRoundingModeRTZFloat32;
-///     VkBool32 shaderRoundingModeRTZFloat64;
-///     uint32_t maxUpdateAfterBindDescriptorsInAllPools;
-///     VkBool32 shaderUniformBufferArrayNonUniformIndexingNative;
-///     VkBool32 shaderSampledImageArrayNonUniformIndexingNative;
-///     VkBool32 shaderStorageBufferArrayNonUniformIndexingNative;
-///     VkBool32 shaderStorageImageArrayNonUniformIndexingNative;
-///     VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative;
-///     VkBool32 robustBufferAccessUpdateAfterBind;
-///     VkBool32 quadDivergentImplicitLod;
-///     uint32_t maxPerStageDescriptorUpdateAfterBindSamplers;
-///     uint32_t maxPerStageDescriptorUpdateAfterBindUniformBuffers;
-///     uint32_t maxPerStageDescriptorUpdateAfterBindStorageBuffers;
-///     uint32_t maxPerStageDescriptorUpdateAfterBindSampledImages;
-///     uint32_t maxPerStageDescriptorUpdateAfterBindStorageImages;
-///     uint32_t maxPerStageDescriptorUpdateAfterBindInputAttachments;
-///     uint32_t maxPerStageUpdateAfterBindResources;
-///     uint32_t maxDescriptorSetUpdateAfterBindSamplers;
-///     uint32_t maxDescriptorSetUpdateAfterBindUniformBuffers;
-///     uint32_t maxDescriptorSetUpdateAfterBindUniformBuffersDynamic;
-///     uint32_t maxDescriptorSetUpdateAfterBindStorageBuffers;
-///     uint32_t maxDescriptorSetUpdateAfterBindStorageBuffersDynamic;
-///     uint32_t maxDescriptorSetUpdateAfterBindSampledImages;
-///     uint32_t maxDescriptorSetUpdateAfterBindStorageImages;
-///     uint32_t maxDescriptorSetUpdateAfterBindInputAttachments;
-///     VkResolveModeFlags supportedDepthResolveModes;
-///     VkResolveModeFlags supportedStencilResolveModes;
-///     VkBool32 independentResolveNone;
-///     VkBool32 independentResolve;
-///     VkBool32 filterMinmaxSingleComponentFormats;
-///     VkBool32 filterMinmaxImageComponentMapping;
-///     uint64_t maxTimelineSemaphoreValueDifference;
-///     VkSampleCountFlags framebufferIntegerColorSampleCounts; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDriverId driverID; // @link substring="VkDriverId" target="VkDriverId" @link substring="driverID" target="#driverID"
+///     char driverName; // @link substring="driverName" target="#driverName"
+///     char driverInfo; // @link substring="driverInfo" target="#driverInfo"
+///     VkConformanceVersion conformanceVersion; // @link substring="VkConformanceVersion" target="VkConformanceVersion" @link substring="conformanceVersion" target="#conformanceVersion"
+///     VkShaderFloatControlsIndependence denormBehaviorIndependence; // @link substring="VkShaderFloatControlsIndependence" target="VkShaderFloatControlsIndependence" @link substring="denormBehaviorIndependence" target="#denormBehaviorIndependence"
+///     VkShaderFloatControlsIndependence roundingModeIndependence; // @link substring="VkShaderFloatControlsIndependence" target="VkShaderFloatControlsIndependence" @link substring="roundingModeIndependence" target="#roundingModeIndependence"
+///     VkBool32 shaderSignedZeroInfNanPreserveFloat16; // @link substring="shaderSignedZeroInfNanPreserveFloat16" target="#shaderSignedZeroInfNanPreserveFloat16"
+///     VkBool32 shaderSignedZeroInfNanPreserveFloat32; // @link substring="shaderSignedZeroInfNanPreserveFloat32" target="#shaderSignedZeroInfNanPreserveFloat32"
+///     VkBool32 shaderSignedZeroInfNanPreserveFloat64; // @link substring="shaderSignedZeroInfNanPreserveFloat64" target="#shaderSignedZeroInfNanPreserveFloat64"
+///     VkBool32 shaderDenormPreserveFloat16; // @link substring="shaderDenormPreserveFloat16" target="#shaderDenormPreserveFloat16"
+///     VkBool32 shaderDenormPreserveFloat32; // @link substring="shaderDenormPreserveFloat32" target="#shaderDenormPreserveFloat32"
+///     VkBool32 shaderDenormPreserveFloat64; // @link substring="shaderDenormPreserveFloat64" target="#shaderDenormPreserveFloat64"
+///     VkBool32 shaderDenormFlushToZeroFloat16; // @link substring="shaderDenormFlushToZeroFloat16" target="#shaderDenormFlushToZeroFloat16"
+///     VkBool32 shaderDenormFlushToZeroFloat32; // @link substring="shaderDenormFlushToZeroFloat32" target="#shaderDenormFlushToZeroFloat32"
+///     VkBool32 shaderDenormFlushToZeroFloat64; // @link substring="shaderDenormFlushToZeroFloat64" target="#shaderDenormFlushToZeroFloat64"
+///     VkBool32 shaderRoundingModeRTEFloat16; // @link substring="shaderRoundingModeRTEFloat16" target="#shaderRoundingModeRTEFloat16"
+///     VkBool32 shaderRoundingModeRTEFloat32; // @link substring="shaderRoundingModeRTEFloat32" target="#shaderRoundingModeRTEFloat32"
+///     VkBool32 shaderRoundingModeRTEFloat64; // @link substring="shaderRoundingModeRTEFloat64" target="#shaderRoundingModeRTEFloat64"
+///     VkBool32 shaderRoundingModeRTZFloat16; // @link substring="shaderRoundingModeRTZFloat16" target="#shaderRoundingModeRTZFloat16"
+///     VkBool32 shaderRoundingModeRTZFloat32; // @link substring="shaderRoundingModeRTZFloat32" target="#shaderRoundingModeRTZFloat32"
+///     VkBool32 shaderRoundingModeRTZFloat64; // @link substring="shaderRoundingModeRTZFloat64" target="#shaderRoundingModeRTZFloat64"
+///     uint32_t maxUpdateAfterBindDescriptorsInAllPools; // @link substring="maxUpdateAfterBindDescriptorsInAllPools" target="#maxUpdateAfterBindDescriptorsInAllPools"
+///     VkBool32 shaderUniformBufferArrayNonUniformIndexingNative; // @link substring="shaderUniformBufferArrayNonUniformIndexingNative" target="#shaderUniformBufferArrayNonUniformIndexingNative"
+///     VkBool32 shaderSampledImageArrayNonUniformIndexingNative; // @link substring="shaderSampledImageArrayNonUniformIndexingNative" target="#shaderSampledImageArrayNonUniformIndexingNative"
+///     VkBool32 shaderStorageBufferArrayNonUniformIndexingNative; // @link substring="shaderStorageBufferArrayNonUniformIndexingNative" target="#shaderStorageBufferArrayNonUniformIndexingNative"
+///     VkBool32 shaderStorageImageArrayNonUniformIndexingNative; // @link substring="shaderStorageImageArrayNonUniformIndexingNative" target="#shaderStorageImageArrayNonUniformIndexingNative"
+///     VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative; // @link substring="shaderInputAttachmentArrayNonUniformIndexingNative" target="#shaderInputAttachmentArrayNonUniformIndexingNative"
+///     VkBool32 robustBufferAccessUpdateAfterBind; // @link substring="robustBufferAccessUpdateAfterBind" target="#robustBufferAccessUpdateAfterBind"
+///     VkBool32 quadDivergentImplicitLod; // @link substring="quadDivergentImplicitLod" target="#quadDivergentImplicitLod"
+///     uint32_t maxPerStageDescriptorUpdateAfterBindSamplers; // @link substring="maxPerStageDescriptorUpdateAfterBindSamplers" target="#maxPerStageDescriptorUpdateAfterBindSamplers"
+///     uint32_t maxPerStageDescriptorUpdateAfterBindUniformBuffers; // @link substring="maxPerStageDescriptorUpdateAfterBindUniformBuffers" target="#maxPerStageDescriptorUpdateAfterBindUniformBuffers"
+///     uint32_t maxPerStageDescriptorUpdateAfterBindStorageBuffers; // @link substring="maxPerStageDescriptorUpdateAfterBindStorageBuffers" target="#maxPerStageDescriptorUpdateAfterBindStorageBuffers"
+///     uint32_t maxPerStageDescriptorUpdateAfterBindSampledImages; // @link substring="maxPerStageDescriptorUpdateAfterBindSampledImages" target="#maxPerStageDescriptorUpdateAfterBindSampledImages"
+///     uint32_t maxPerStageDescriptorUpdateAfterBindStorageImages; // @link substring="maxPerStageDescriptorUpdateAfterBindStorageImages" target="#maxPerStageDescriptorUpdateAfterBindStorageImages"
+///     uint32_t maxPerStageDescriptorUpdateAfterBindInputAttachments; // @link substring="maxPerStageDescriptorUpdateAfterBindInputAttachments" target="#maxPerStageDescriptorUpdateAfterBindInputAttachments"
+///     uint32_t maxPerStageUpdateAfterBindResources; // @link substring="maxPerStageUpdateAfterBindResources" target="#maxPerStageUpdateAfterBindResources"
+///     uint32_t maxDescriptorSetUpdateAfterBindSamplers; // @link substring="maxDescriptorSetUpdateAfterBindSamplers" target="#maxDescriptorSetUpdateAfterBindSamplers"
+///     uint32_t maxDescriptorSetUpdateAfterBindUniformBuffers; // @link substring="maxDescriptorSetUpdateAfterBindUniformBuffers" target="#maxDescriptorSetUpdateAfterBindUniformBuffers"
+///     uint32_t maxDescriptorSetUpdateAfterBindUniformBuffersDynamic; // @link substring="maxDescriptorSetUpdateAfterBindUniformBuffersDynamic" target="#maxDescriptorSetUpdateAfterBindUniformBuffersDynamic"
+///     uint32_t maxDescriptorSetUpdateAfterBindStorageBuffers; // @link substring="maxDescriptorSetUpdateAfterBindStorageBuffers" target="#maxDescriptorSetUpdateAfterBindStorageBuffers"
+///     uint32_t maxDescriptorSetUpdateAfterBindStorageBuffersDynamic; // @link substring="maxDescriptorSetUpdateAfterBindStorageBuffersDynamic" target="#maxDescriptorSetUpdateAfterBindStorageBuffersDynamic"
+///     uint32_t maxDescriptorSetUpdateAfterBindSampledImages; // @link substring="maxDescriptorSetUpdateAfterBindSampledImages" target="#maxDescriptorSetUpdateAfterBindSampledImages"
+///     uint32_t maxDescriptorSetUpdateAfterBindStorageImages; // @link substring="maxDescriptorSetUpdateAfterBindStorageImages" target="#maxDescriptorSetUpdateAfterBindStorageImages"
+///     uint32_t maxDescriptorSetUpdateAfterBindInputAttachments; // @link substring="maxDescriptorSetUpdateAfterBindInputAttachments" target="#maxDescriptorSetUpdateAfterBindInputAttachments"
+///     VkResolveModeFlags supportedDepthResolveModes; // @link substring="VkResolveModeFlags" target="VkResolveModeFlags" @link substring="supportedDepthResolveModes" target="#supportedDepthResolveModes"
+///     VkResolveModeFlags supportedStencilResolveModes; // @link substring="VkResolveModeFlags" target="VkResolveModeFlags" @link substring="supportedStencilResolveModes" target="#supportedStencilResolveModes"
+///     VkBool32 independentResolveNone; // @link substring="independentResolveNone" target="#independentResolveNone"
+///     VkBool32 independentResolve; // @link substring="independentResolve" target="#independentResolve"
+///     VkBool32 filterMinmaxSingleComponentFormats; // @link substring="filterMinmaxSingleComponentFormats" target="#filterMinmaxSingleComponentFormats"
+///     VkBool32 filterMinmaxImageComponentMapping; // @link substring="filterMinmaxImageComponentMapping" target="#filterMinmaxImageComponentMapping"
+///     uint64_t maxTimelineSemaphoreValueDifference; // @link substring="maxTimelineSemaphoreValueDifference" target="#maxTimelineSemaphoreValueDifference"
+///     VkSampleCountFlags framebufferIntegerColorSampleCounts; // optional // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="framebufferIntegerColorSampleCounts" target="#framebufferIntegerColorSampleCounts"
 /// } VkPhysicalDeviceVulkan12Properties;
 /// }
 ///
@@ -177,11 +177,11 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$driverInfo, OFFSET$driverInfo, value);
     }
 
-    public VkConformanceVersion conformanceVersion() {
+    public @NotNull VkConformanceVersion conformanceVersion() {
         return new VkConformanceVersion(segment.asSlice(OFFSET$conformanceVersion, LAYOUT$conformanceVersion));
     }
 
-    public void conformanceVersion(VkConformanceVersion value) {
+    public void conformanceVersion(@NotNull VkConformanceVersion value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$conformanceVersion, SIZE$conformanceVersion);
     }
 

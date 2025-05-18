@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceClusterAccelerationStructurePropertiesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t maxVerticesPerCluster;
-///     uint32_t maxTrianglesPerCluster;
-///     uint32_t clusterScratchByteAlignment;
-///     uint32_t clusterByteAlignment;
-///     uint32_t clusterTemplateByteAlignment;
-///     uint32_t clusterBottomLevelByteAlignment;
-///     uint32_t clusterTemplateBoundsByteAlignment;
-///     uint32_t maxClusterGeometryIndex;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxVerticesPerCluster; // @link substring="maxVerticesPerCluster" target="#maxVerticesPerCluster"
+///     uint32_t maxTrianglesPerCluster; // @link substring="maxTrianglesPerCluster" target="#maxTrianglesPerCluster"
+///     uint32_t clusterScratchByteAlignment; // @link substring="clusterScratchByteAlignment" target="#clusterScratchByteAlignment"
+///     uint32_t clusterByteAlignment; // @link substring="clusterByteAlignment" target="#clusterByteAlignment"
+///     uint32_t clusterTemplateByteAlignment; // @link substring="clusterTemplateByteAlignment" target="#clusterTemplateByteAlignment"
+///     uint32_t clusterBottomLevelByteAlignment; // @link substring="clusterBottomLevelByteAlignment" target="#clusterBottomLevelByteAlignment"
+///     uint32_t clusterTemplateBoundsByteAlignment; // @link substring="clusterTemplateBoundsByteAlignment" target="#clusterTemplateBoundsByteAlignment"
+///     uint32_t maxClusterGeometryIndex; // @link substring="maxClusterGeometryIndex" target="#maxClusterGeometryIndex"
 /// } VkPhysicalDeviceClusterAccelerationStructurePropertiesNV;
 /// }
 ///

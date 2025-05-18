@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceProperties2 {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkPhysicalDeviceProperties properties;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPhysicalDeviceProperties properties; // @link substring="VkPhysicalDeviceProperties" target="VkPhysicalDeviceProperties" @link substring="properties" target="#properties"
 /// } VkPhysicalDeviceProperties2;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkPhysicalDeviceProperties2(@NotNull MemorySegment segment) implem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkPhysicalDeviceProperties properties() {
+    public @NotNull VkPhysicalDeviceProperties properties() {
         return new VkPhysicalDeviceProperties(segment.asSlice(OFFSET$properties, LAYOUT$properties));
     }
 
-    public void properties(VkPhysicalDeviceProperties value) {
+    public void properties(@NotNull VkPhysicalDeviceProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$properties, SIZE$properties);
     }
 

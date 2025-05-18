@@ -20,7 +20,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBindShaderGroupIndirectCommandNV {
-///     uint32_t groupIndex;
+///     uint32_t groupIndex; // @link substring="groupIndex" target="#groupIndex"
 /// } VkBindShaderGroupIndirectCommandNV;
 /// }
 ///

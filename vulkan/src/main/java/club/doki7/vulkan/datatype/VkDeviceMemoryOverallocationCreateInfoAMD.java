@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceMemoryOverallocationCreateInfoAMD {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkMemoryOverallocationBehaviorAMD overallocationBehavior;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkMemoryOverallocationBehaviorAMD overallocationBehavior; // @link substring="VkMemoryOverallocationBehaviorAMD" target="VkMemoryOverallocationBehaviorAMD" @link substring="overallocationBehavior" target="#overallocationBehavior"
 /// } VkDeviceMemoryOverallocationCreateInfoAMD;
 /// }
 ///

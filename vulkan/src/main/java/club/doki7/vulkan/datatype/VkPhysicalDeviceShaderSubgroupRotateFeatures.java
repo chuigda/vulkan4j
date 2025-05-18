@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceShaderSubgroupRotateFeatures {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 shaderSubgroupRotate;
-///     VkBool32 shaderSubgroupRotateClustered;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 shaderSubgroupRotate; // @link substring="shaderSubgroupRotate" target="#shaderSubgroupRotate"
+///     VkBool32 shaderSubgroupRotateClustered; // @link substring="shaderSubgroupRotateClustered" target="#shaderSubgroupRotateClustered"
 /// } VkPhysicalDeviceShaderSubgroupRotateFeatures;
 /// }
 ///

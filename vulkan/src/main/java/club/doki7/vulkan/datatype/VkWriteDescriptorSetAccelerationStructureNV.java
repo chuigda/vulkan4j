@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkWriteDescriptorSetAccelerationStructureNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t accelerationStructureCount;
-///     VkAccelerationStructureNV const* pAccelerationStructures;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t accelerationStructureCount; // @link substring="accelerationStructureCount" target="#accelerationStructureCount"
+///     VkAccelerationStructureNV const* pAccelerationStructures; // @link substring="VkAccelerationStructureNV" target="VkAccelerationStructureNV" @link substring="pAccelerationStructures" target="#pAccelerationStructures"
 /// } VkWriteDescriptorSetAccelerationStructureNV;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkWriteDescriptorSetAccelerationStructureNV(@NotNull MemorySegment
         segment.set(LAYOUT$accelerationStructureCount, OFFSET$accelerationStructureCount, value);
     }
 
-    public @pointer(target=VkAccelerationStructureNV.class) MemorySegment pAccelerationStructuresRaw() {
-        return segment.get(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures);
-    }
-
-    public void pAccelerationStructuresRaw(@pointer(target=VkAccelerationStructureNV.class) MemorySegment value) {
-        segment.set(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures, value);
-    }
-
     /// Note: the returned {@link VkAccelerationStructureNV.Ptr} does not have correct {@link VkAccelerationStructureNV.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkAccelerationStructureNV.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -134,6 +126,14 @@ public record VkWriteDescriptorSetAccelerationStructureNV(@NotNull MemorySegment
     public void pAccelerationStructures(@Nullable VkAccelerationStructureNV.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAccelerationStructuresRaw(s);
+    }
+
+    public @pointer(target=VkAccelerationStructureNV.class) MemorySegment pAccelerationStructuresRaw() {
+        return segment.get(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures);
+    }
+
+    public void pAccelerationStructuresRaw(@pointer(target=VkAccelerationStructureNV.class) MemorySegment value) {
+        segment.set(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

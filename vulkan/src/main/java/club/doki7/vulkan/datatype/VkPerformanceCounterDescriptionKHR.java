@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPerformanceCounterDescriptionKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkPerformanceCounterDescriptionFlagsKHR flags; // optional
-///     char name;
-///     char category;
-///     char description;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPerformanceCounterDescriptionFlagsKHR flags; // optional // @link substring="VkPerformanceCounterDescriptionFlagsKHR" target="VkPerformanceCounterDescriptionFlagsKHR" @link substring="flags" target="#flags"
+///     char name; // @link substring="name" target="#name"
+///     char category; // @link substring="category" target="#category"
+///     char description; // @link substring="description" target="#description"
 /// } VkPerformanceCounterDescriptionKHR;
 /// }
 ///

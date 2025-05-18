@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceVariablePointersFeatures {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 variablePointersStorageBuffer;
-///     VkBool32 variablePointers;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 variablePointersStorageBuffer; // @link substring="variablePointersStorageBuffer" target="#variablePointersStorageBuffer"
+///     VkBool32 variablePointers; // @link substring="variablePointers" target="#variablePointers"
 /// } VkPhysicalDeviceVariablePointersFeatures;
 /// }
 ///

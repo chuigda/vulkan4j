@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVertexInputBindingDivisorDescription {
-///     uint32_t binding;
-///     uint32_t divisor;
+///     uint32_t binding; // @link substring="binding" target="#binding"
+///     uint32_t divisor; // @link substring="divisor" target="#divisor"
 /// } VkVertexInputBindingDivisorDescription;
 /// }
 ///

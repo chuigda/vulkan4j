@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCalibratedTimestampInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkTimeDomainKHR timeDomain;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkTimeDomainKHR timeDomain; // @link substring="VkTimeDomainKHR" target="VkTimeDomainKHR" @link substring="timeDomain" target="#timeDomain"
 /// } VkCalibratedTimestampInfoKHR;
 /// }
 ///

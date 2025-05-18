@@ -20,19 +20,19 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkGeometryTrianglesNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBuffer vertexData; // optional
-///     VkDeviceSize vertexOffset;
-///     uint32_t vertexCount;
-///     VkDeviceSize vertexStride;
-///     VkFormat vertexFormat;
-///     VkBuffer indexData; // optional
-///     VkDeviceSize indexOffset;
-///     uint32_t indexCount;
-///     VkIndexType indexType;
-///     VkBuffer transformData; // optional
-///     VkDeviceSize transformOffset;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBuffer vertexData; // optional // @link substring="VkBuffer" target="VkBuffer" @link substring="vertexData" target="#vertexData"
+///     VkDeviceSize vertexOffset; // @link substring="vertexOffset" target="#vertexOffset"
+///     uint32_t vertexCount; // @link substring="vertexCount" target="#vertexCount"
+///     VkDeviceSize vertexStride; // @link substring="vertexStride" target="#vertexStride"
+///     VkFormat vertexFormat; // @link substring="VkFormat" target="VkFormat" @link substring="vertexFormat" target="#vertexFormat"
+///     VkBuffer indexData; // optional // @link substring="VkBuffer" target="VkBuffer" @link substring="indexData" target="#indexData"
+///     VkDeviceSize indexOffset; // @link substring="indexOffset" target="#indexOffset"
+///     uint32_t indexCount; // @link substring="indexCount" target="#indexCount"
+///     VkIndexType indexType; // @link substring="VkIndexType" target="VkIndexType" @link substring="indexType" target="#indexType"
+///     VkBuffer transformData; // optional // @link substring="VkBuffer" target="VkBuffer" @link substring="transformData" target="#transformData"
+///     VkDeviceSize transformOffset; // @link substring="transformOffset" target="#transformOffset"
 /// } VkGeometryTrianglesNV;
 /// }
 ///

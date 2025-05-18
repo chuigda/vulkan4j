@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRefreshObjectKHR {
-///     VkObjectType objectType;
-///     uint64_t objectHandle;
-///     VkRefreshObjectFlagsKHR flags; // optional
+///     VkObjectType objectType; // @link substring="VkObjectType" target="VkObjectType" @link substring="objectType" target="#objectType"
+///     uint64_t objectHandle; // @link substring="objectHandle" target="#objectHandle"
+///     VkRefreshObjectFlagsKHR flags; // optional // @link substring="VkRefreshObjectFlagsKHR" target="VkRefreshObjectFlagsKHR" @link substring="flags" target="#flags"
 /// } VkRefreshObjectKHR;
 /// }
 ///

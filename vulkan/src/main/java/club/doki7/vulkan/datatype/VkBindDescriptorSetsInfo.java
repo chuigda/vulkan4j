@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBindDescriptorSetsInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkShaderStageFlags stageFlags;
-///     VkPipelineLayout layout; // optional
-///     uint32_t firstSet; // optional
-///     uint32_t descriptorSetCount;
-///     VkDescriptorSet const* pDescriptorSets;
-///     uint32_t dynamicOffsetCount; // optional
-///     uint32_t const* pDynamicOffsets;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkShaderStageFlags stageFlags; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="stageFlags" target="#stageFlags"
+///     VkPipelineLayout layout; // optional // @link substring="VkPipelineLayout" target="VkPipelineLayout" @link substring="layout" target="#layout"
+///     uint32_t firstSet; // optional // @link substring="firstSet" target="#firstSet"
+///     uint32_t descriptorSetCount; // @link substring="descriptorSetCount" target="#descriptorSetCount"
+///     VkDescriptorSet const* pDescriptorSets; // @link substring="VkDescriptorSet" target="VkDescriptorSet" @link substring="pDescriptorSets" target="#pDescriptorSets"
+///     uint32_t dynamicOffsetCount; // optional // @link substring="dynamicOffsetCount" target="#dynamicOffsetCount"
+///     uint32_t const* pDynamicOffsets; // @link substring="pDynamicOffsets" target="#pDynamicOffsets"
 /// } VkBindDescriptorSetsInfo;
 /// }
 ///
@@ -144,14 +144,6 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount, value);
     }
 
-    public @pointer(target=VkDescriptorSet.class) MemorySegment pDescriptorSetsRaw() {
-        return segment.get(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets);
-    }
-
-    public void pDescriptorSetsRaw(@pointer(target=VkDescriptorSet.class) MemorySegment value) {
-        segment.set(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets, value);
-    }
-
     /// Note: the returned {@link VkDescriptorSet.Ptr} does not have correct {@link VkDescriptorSet.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkDescriptorSet.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -169,20 +161,20 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         pDescriptorSetsRaw(s);
     }
 
+    public @pointer(target=VkDescriptorSet.class) MemorySegment pDescriptorSetsRaw() {
+        return segment.get(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets);
+    }
+
+    public void pDescriptorSetsRaw(@pointer(target=VkDescriptorSet.class) MemorySegment value) {
+        segment.set(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets, value);
+    }
+
     public @unsigned int dynamicOffsetCount() {
         return segment.get(LAYOUT$dynamicOffsetCount, OFFSET$dynamicOffsetCount);
     }
 
     public void dynamicOffsetCount(@unsigned int value) {
         segment.set(LAYOUT$dynamicOffsetCount, OFFSET$dynamicOffsetCount, value);
-    }
-
-    public @pointer(comment="int*") MemorySegment pDynamicOffsetsRaw() {
-        return segment.get(LAYOUT$pDynamicOffsets, OFFSET$pDynamicOffsets);
-    }
-
-    public void pDynamicOffsetsRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pDynamicOffsets, OFFSET$pDynamicOffsets, value);
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -200,6 +192,14 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
     public void pDynamicOffsets(@Nullable @unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDynamicOffsetsRaw(s);
+    }
+
+    public @pointer(comment="int*") MemorySegment pDynamicOffsetsRaw() {
+        return segment.get(LAYOUT$pDynamicOffsets, OFFSET$pDynamicOffsets);
+    }
+
+    public void pDynamicOffsetsRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pDynamicOffsets, OFFSET$pDynamicOffsets, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -20,20 +20,20 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkShaderCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkShaderCreateFlagsEXT flags; // optional
-///     VkShaderStageFlags stage;
-///     VkShaderStageFlags nextStage; // optional
-///     VkShaderCodeTypeEXT codeType;
-///     size_t codeSize;
-///     void const* pCode;
-///     char const* pName; // optional
-///     uint32_t setLayoutCount; // optional
-///     VkDescriptorSetLayout const* pSetLayouts; // optional
-///     uint32_t pushConstantRangeCount; // optional
-///     VkPushConstantRange const* pPushConstantRanges; // optional
-///     VkSpecializationInfo const* pSpecializationInfo; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkShaderCreateFlagsEXT flags; // optional // @link substring="VkShaderCreateFlagsEXT" target="VkShaderCreateFlagsEXT" @link substring="flags" target="#flags"
+///     VkShaderStageFlags stage; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="stage" target="#stage"
+///     VkShaderStageFlags nextStage; // optional // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="nextStage" target="#nextStage"
+///     VkShaderCodeTypeEXT codeType; // @link substring="VkShaderCodeTypeEXT" target="VkShaderCodeTypeEXT" @link substring="codeType" target="#codeType"
+///     size_t codeSize; // @link substring="codeSize" target="#codeSize"
+///     void const* pCode; // @link substring="pCode" target="#pCode"
+///     char const* pName; // optional // @link substring="pName" target="#pName"
+///     uint32_t setLayoutCount; // optional // @link substring="setLayoutCount" target="#setLayoutCount"
+///     VkDescriptorSetLayout const* pSetLayouts; // optional // @link substring="VkDescriptorSetLayout" target="VkDescriptorSetLayout" @link substring="pSetLayouts" target="#pSetLayouts"
+///     uint32_t pushConstantRangeCount; // optional // @link substring="pushConstantRangeCount" target="#pushConstantRangeCount"
+///     VkPushConstantRange const* pPushConstantRanges; // optional // @link substring="VkPushConstantRange" target="VkPushConstantRange" @link substring="pPushConstantRanges" target="#pPushConstantRanges"
+///     VkSpecializationInfo const* pSpecializationInfo; // optional // @link substring="VkSpecializationInfo" target="VkSpecializationInfo" @link substring="pSpecializationInfo" target="#pSpecializationInfo"
 /// } VkShaderCreateInfoEXT;
 /// }
 ///
@@ -165,14 +165,6 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         pCode(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="byte*") MemorySegment pNameRaw() {
-        return segment.get(LAYOUT$pName, OFFSET$pName);
-    }
-
-    public void pNameRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pName, OFFSET$pName, value);
-    }
-
     /// Note: the returned {@link BytePtr} does not have correct
     /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
@@ -190,20 +182,20 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         pNameRaw(s);
     }
 
+    public @pointer(comment="byte*") MemorySegment pNameRaw() {
+        return segment.get(LAYOUT$pName, OFFSET$pName);
+    }
+
+    public void pNameRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pName, OFFSET$pName, value);
+    }
+
     public @unsigned int setLayoutCount() {
         return segment.get(LAYOUT$setLayoutCount, OFFSET$setLayoutCount);
     }
 
     public void setLayoutCount(@unsigned int value) {
         segment.set(LAYOUT$setLayoutCount, OFFSET$setLayoutCount, value);
-    }
-
-    public @pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {
-        return segment.get(LAYOUT$pSetLayouts, OFFSET$pSetLayouts);
-    }
-
-    public void pSetLayoutsRaw(@pointer(target=VkDescriptorSetLayout.class) MemorySegment value) {
-        segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
     }
 
     /// Note: the returned {@link VkDescriptorSetLayout.Ptr} does not have correct {@link VkDescriptorSetLayout.Ptr#size}
@@ -223,20 +215,20 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         pSetLayoutsRaw(s);
     }
 
+    public @pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {
+        return segment.get(LAYOUT$pSetLayouts, OFFSET$pSetLayouts);
+    }
+
+    public void pSetLayoutsRaw(@pointer(target=VkDescriptorSetLayout.class) MemorySegment value) {
+        segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
+    }
+
     public @unsigned int pushConstantRangeCount() {
         return segment.get(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount);
     }
 
     public void pushConstantRangeCount(@unsigned int value) {
         segment.set(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount, value);
-    }
-
-    public @pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {
-        return segment.get(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges);
-    }
-
-    public void pPushConstantRangesRaw(@pointer(target=VkPushConstantRange.class) MemorySegment value) {
-        segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
 
     public @Nullable VkPushConstantRange pPushConstantRanges() {
@@ -266,12 +258,12 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
-    public @pointer(target=VkSpecializationInfo.class) MemorySegment pSpecializationInfoRaw() {
-        return segment.get(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo);
+    public @pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {
+        return segment.get(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges);
     }
 
-    public void pSpecializationInfoRaw(@pointer(target=VkSpecializationInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo, value);
+    public void pPushConstantRangesRaw(@pointer(target=VkPushConstantRange.class) MemorySegment value) {
+        segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
 
     public @Nullable VkSpecializationInfo pSpecializationInfo() {
@@ -299,6 +291,14 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
             ret[i] = new VkSpecializationInfo(s.asSlice(i * VkSpecializationInfo.BYTES, VkSpecializationInfo.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkSpecializationInfo.class) MemorySegment pSpecializationInfoRaw() {
+        return segment.get(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo);
+    }
+
+    public void pSpecializationInfoRaw(@pointer(target=VkSpecializationInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

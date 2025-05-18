@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceGroupBindSparseInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t resourceDeviceIndex;
-///     uint32_t memoryDeviceIndex;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t resourceDeviceIndex; // @link substring="resourceDeviceIndex" target="#resourceDeviceIndex"
+///     uint32_t memoryDeviceIndex; // @link substring="memoryDeviceIndex" target="#memoryDeviceIndex"
 /// } VkDeviceGroupBindSparseInfo;
 /// }
 ///

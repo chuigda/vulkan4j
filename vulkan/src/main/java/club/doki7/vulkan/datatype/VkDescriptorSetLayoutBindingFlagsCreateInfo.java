@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDescriptorSetLayoutBindingFlagsCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t bindingCount; // optional
-///     VkDescriptorBindingFlags const* pBindingFlags;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t bindingCount; // optional // @link substring="bindingCount" target="#bindingCount"
+///     VkDescriptorBindingFlags const* pBindingFlags; // @link substring="VkDescriptorBindingFlags" target="VkDescriptorBindingFlags" @link substring="pBindingFlags" target="#pBindingFlags"
 /// } VkDescriptorSetLayoutBindingFlagsCreateInfo;
 /// }
 ///
@@ -111,13 +111,6 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
         segment.set(LAYOUT$bindingCount, OFFSET$bindingCount, value);
     }
 
-    public @pointer(target=VkDescriptorBindingFlags.class) MemorySegment pBindingFlagsRaw() {
-        return segment.get(LAYOUT$pBindingFlags, OFFSET$pBindingFlags);
-    }
-
-    public void pBindingFlagsRaw(@pointer(target=VkDescriptorBindingFlags.class) MemorySegment value) {
-        segment.set(LAYOUT$pBindingFlags, OFFSET$pBindingFlags, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -134,6 +127,14 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
     public void pBindingFlags(@Nullable @enumtype(VkDescriptorBindingFlags.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBindingFlagsRaw(s);
+    }
+
+    public @pointer(target=VkDescriptorBindingFlags.class) MemorySegment pBindingFlagsRaw() {
+        return segment.get(LAYOUT$pBindingFlags, OFFSET$pBindingFlags);
+    }
+
+    public void pBindingFlagsRaw(@pointer(target=VkDescriptorBindingFlags.class) MemorySegment value) {
+        segment.set(LAYOUT$pBindingFlags, OFFSET$pBindingFlags, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

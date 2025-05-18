@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkGeometryAABBNV {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkBuffer aabbData; // optional
-///     uint32_t numAABBs;
-///     uint32_t stride;
-///     VkDeviceSize offset;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBuffer aabbData; // optional // @link substring="VkBuffer" target="VkBuffer" @link substring="aabbData" target="#aabbData"
+///     uint32_t numAABBs; // @link substring="numAABBs" target="#numAABBs"
+///     uint32_t stride; // @link substring="stride" target="#stride"
+///     VkDeviceSize offset; // @link substring="offset" target="#offset"
 /// } VkGeometryAABBNV;
 /// }
 ///

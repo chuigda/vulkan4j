@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceAccelerationStructurePropertiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint64_t maxGeometryCount;
-///     uint64_t maxInstanceCount;
-///     uint64_t maxPrimitiveCount;
-///     uint32_t maxPerStageDescriptorAccelerationStructures;
-///     uint32_t maxPerStageDescriptorUpdateAfterBindAccelerationStructures;
-///     uint32_t maxDescriptorSetAccelerationStructures;
-///     uint32_t maxDescriptorSetUpdateAfterBindAccelerationStructures;
-///     uint32_t minAccelerationStructureScratchOffsetAlignment;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint64_t maxGeometryCount; // @link substring="maxGeometryCount" target="#maxGeometryCount"
+///     uint64_t maxInstanceCount; // @link substring="maxInstanceCount" target="#maxInstanceCount"
+///     uint64_t maxPrimitiveCount; // @link substring="maxPrimitiveCount" target="#maxPrimitiveCount"
+///     uint32_t maxPerStageDescriptorAccelerationStructures; // @link substring="maxPerStageDescriptorAccelerationStructures" target="#maxPerStageDescriptorAccelerationStructures"
+///     uint32_t maxPerStageDescriptorUpdateAfterBindAccelerationStructures; // @link substring="maxPerStageDescriptorUpdateAfterBindAccelerationStructures" target="#maxPerStageDescriptorUpdateAfterBindAccelerationStructures"
+///     uint32_t maxDescriptorSetAccelerationStructures; // @link substring="maxDescriptorSetAccelerationStructures" target="#maxDescriptorSetAccelerationStructures"
+///     uint32_t maxDescriptorSetUpdateAfterBindAccelerationStructures; // @link substring="maxDescriptorSetUpdateAfterBindAccelerationStructures" target="#maxDescriptorSetUpdateAfterBindAccelerationStructures"
+///     uint32_t minAccelerationStructureScratchOffsetAlignment; // @link substring="minAccelerationStructureScratchOffsetAlignment" target="#minAccelerationStructureScratchOffsetAlignment"
 /// } VkPhysicalDeviceAccelerationStructurePropertiesKHR;
 /// }
 ///

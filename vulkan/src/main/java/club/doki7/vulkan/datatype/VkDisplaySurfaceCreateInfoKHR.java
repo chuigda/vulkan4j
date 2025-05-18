@@ -20,16 +20,16 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDisplaySurfaceCreateInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDisplaySurfaceCreateFlagsKHR flags; // optional
-///     VkDisplayModeKHR displayMode;
-///     uint32_t planeIndex;
-///     uint32_t planeStackIndex;
-///     VkSurfaceTransformFlagsKHR transform;
-///     float globalAlpha;
-///     VkDisplayPlaneAlphaFlagsKHR alphaMode;
-///     VkExtent2D imageExtent;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDisplaySurfaceCreateFlagsKHR flags; // optional // @link substring="VkDisplaySurfaceCreateFlagsKHR" target="VkDisplaySurfaceCreateFlagsKHR" @link substring="flags" target="#flags"
+///     VkDisplayModeKHR displayMode; // @link substring="VkDisplayModeKHR" target="VkDisplayModeKHR" @link substring="displayMode" target="#displayMode"
+///     uint32_t planeIndex; // @link substring="planeIndex" target="#planeIndex"
+///     uint32_t planeStackIndex; // @link substring="planeStackIndex" target="#planeStackIndex"
+///     VkSurfaceTransformFlagsKHR transform; // @link substring="VkSurfaceTransformFlagsKHR" target="VkSurfaceTransformFlagsKHR" @link substring="transform" target="#transform"
+///     float globalAlpha; // @link substring="globalAlpha" target="#globalAlpha"
+///     VkDisplayPlaneAlphaFlagsKHR alphaMode; // @link substring="VkDisplayPlaneAlphaFlagsKHR" target="VkDisplayPlaneAlphaFlagsKHR" @link substring="alphaMode" target="#alphaMode"
+///     VkExtent2D imageExtent; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="imageExtent" target="#imageExtent"
 /// } VkDisplaySurfaceCreateInfoKHR;
 /// }
 ///
@@ -169,11 +169,11 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$alphaMode, OFFSET$alphaMode, value);
     }
 
-    public VkExtent2D imageExtent() {
+    public @NotNull VkExtent2D imageExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$imageExtent, LAYOUT$imageExtent));
     }
 
-    public void imageExtent(VkExtent2D value) {
+    public void imageExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
     }
 

@@ -20,7 +20,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkBindPipelineIndirectCommandNV {
-///     VkDeviceAddress pipelineAddress;
+///     VkDeviceAddress pipelineAddress; // @link substring="pipelineAddress" target="#pipelineAddress"
 /// } VkBindPipelineIndirectCommandNV;
 /// }
 ///

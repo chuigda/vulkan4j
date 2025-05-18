@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkGeneratedCommandsShaderInfoEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t shaderCount;
-///     VkShaderEXT const* pShaders;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t shaderCount; // @link substring="shaderCount" target="#shaderCount"
+///     VkShaderEXT const* pShaders; // @link substring="VkShaderEXT" target="VkShaderEXT" @link substring="pShaders" target="#pShaders"
 /// } VkGeneratedCommandsShaderInfoEXT;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkGeneratedCommandsShaderInfoEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$shaderCount, OFFSET$shaderCount, value);
     }
 
-    public @pointer(target=VkShaderEXT.class) MemorySegment pShadersRaw() {
-        return segment.get(LAYOUT$pShaders, OFFSET$pShaders);
-    }
-
-    public void pShadersRaw(@pointer(target=VkShaderEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pShaders, OFFSET$pShaders, value);
-    }
-
     /// Note: the returned {@link VkShaderEXT.Ptr} does not have correct {@link VkShaderEXT.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkShaderEXT.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -134,6 +126,14 @@ public record VkGeneratedCommandsShaderInfoEXT(@NotNull MemorySegment segment) i
     public void pShaders(@Nullable VkShaderEXT.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pShadersRaw(s);
+    }
+
+    public @pointer(target=VkShaderEXT.class) MemorySegment pShadersRaw() {
+        return segment.get(LAYOUT$pShaders, OFFSET$pShaders);
+    }
+
+    public void pShadersRaw(@pointer(target=VkShaderEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pShaders, OFFSET$pShaders, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

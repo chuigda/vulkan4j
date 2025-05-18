@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDebugReportCallbackCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDebugReportFlagsEXT flags; // optional
-///     PFN_vkDebugReportCallbackEXT pfnCallback;
-///     void* pUserData; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDebugReportFlagsEXT flags; // optional // @link substring="VkDebugReportFlagsEXT" target="VkDebugReportFlagsEXT" @link substring="flags" target="#flags"
+///     PFN_vkDebugReportCallbackEXT pfnCallback; // @link substring="pfnCallback" target="#pfnCallback"
+///     void* pUserData; // optional // @link substring="pUserData" target="#pUserData"
 /// } VkDebugReportCallbackCreateInfoEXT;
 /// }
 ///

@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassSubpassFeedbackCreateInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkRenderPassSubpassFeedbackInfoEXT* pSubpassFeedback;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkRenderPassSubpassFeedbackInfoEXT* pSubpassFeedback; // @link substring="VkRenderPassSubpassFeedbackInfoEXT" target="VkRenderPassSubpassFeedbackInfoEXT" @link substring="pSubpassFeedback" target="#pSubpassFeedback"
 /// } VkRenderPassSubpassFeedbackCreateInfoEXT;
 /// }
 ///
@@ -102,14 +102,6 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(@NotNull MemorySegment se
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(target=VkRenderPassSubpassFeedbackInfoEXT.class) MemorySegment pSubpassFeedbackRaw() {
-        return segment.get(LAYOUT$pSubpassFeedback, OFFSET$pSubpassFeedback);
-    }
-
-    public void pSubpassFeedbackRaw(@pointer(target=VkRenderPassSubpassFeedbackInfoEXT.class) MemorySegment value) {
-        segment.set(LAYOUT$pSubpassFeedback, OFFSET$pSubpassFeedback, value);
-    }
-
     public @Nullable VkRenderPassSubpassFeedbackInfoEXT pSubpassFeedback() {
         MemorySegment s = pSubpassFeedbackRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -135,6 +127,14 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(@NotNull MemorySegment se
             ret[i] = new VkRenderPassSubpassFeedbackInfoEXT(s.asSlice(i * VkRenderPassSubpassFeedbackInfoEXT.BYTES, VkRenderPassSubpassFeedbackInfoEXT.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkRenderPassSubpassFeedbackInfoEXT.class) MemorySegment pSubpassFeedbackRaw() {
+        return segment.get(LAYOUT$pSubpassFeedback, OFFSET$pSubpassFeedback);
+    }
+
+    public void pSubpassFeedbackRaw(@pointer(target=VkRenderPassSubpassFeedbackInfoEXT.class) MemorySegment value) {
+        segment.set(LAYOUT$pSubpassFeedback, OFFSET$pSubpassFeedback, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

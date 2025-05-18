@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSemaphoreWaitInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkSemaphoreWaitFlags flags; // optional
-///     uint32_t semaphoreCount;
-///     VkSemaphore const* pSemaphores;
-///     uint64_t const* pValues;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSemaphoreWaitFlags flags; // optional // @link substring="VkSemaphoreWaitFlags" target="VkSemaphoreWaitFlags" @link substring="flags" target="#flags"
+///     uint32_t semaphoreCount; // @link substring="semaphoreCount" target="#semaphoreCount"
+///     VkSemaphore const* pSemaphores; // @link substring="VkSemaphore" target="VkSemaphore" @link substring="pSemaphores" target="#pSemaphores"
+///     uint64_t const* pValues; // @link substring="pValues" target="#pValues"
 /// } VkSemaphoreWaitInfo;
 /// }
 ///
@@ -121,14 +121,6 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IPo
         segment.set(LAYOUT$semaphoreCount, OFFSET$semaphoreCount, value);
     }
 
-    public @pointer(target=VkSemaphore.class) MemorySegment pSemaphoresRaw() {
-        return segment.get(LAYOUT$pSemaphores, OFFSET$pSemaphores);
-    }
-
-    public void pSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
-        segment.set(LAYOUT$pSemaphores, OFFSET$pSemaphores, value);
-    }
-
     /// Note: the returned {@link VkSemaphore.Ptr} does not have correct {@link VkSemaphore.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkSemaphore.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -146,12 +138,12 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IPo
         pSemaphoresRaw(s);
     }
 
-    public @pointer(comment="long*") MemorySegment pValuesRaw() {
-        return segment.get(LAYOUT$pValues, OFFSET$pValues);
+    public @pointer(target=VkSemaphore.class) MemorySegment pSemaphoresRaw() {
+        return segment.get(LAYOUT$pSemaphores, OFFSET$pSemaphores);
     }
 
-    public void pValuesRaw(@pointer(comment="long*") MemorySegment value) {
-        segment.set(LAYOUT$pValues, OFFSET$pValues, value);
+    public void pSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
+        segment.set(LAYOUT$pSemaphores, OFFSET$pSemaphores, value);
     }
 
     /// Note: the returned {@link LongPtr} does not have correct
@@ -169,6 +161,14 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IPo
     public void pValues(@Nullable @unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pValuesRaw(s);
+    }
+
+    public @pointer(comment="long*") MemorySegment pValuesRaw() {
+        return segment.get(LAYOUT$pValues, OFFSET$pValues);
+    }
+
+    public void pValuesRaw(@pointer(comment="long*") MemorySegment value) {
+        segment.set(LAYOUT$pValues, OFFSET$pValues, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

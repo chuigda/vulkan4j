@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCopyMicromapInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkMicromapEXT src;
-///     VkMicromapEXT dst;
-///     VkCopyMicromapModeEXT mode;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkMicromapEXT src; // @link substring="VkMicromapEXT" target="VkMicromapEXT" @link substring="src" target="#src"
+///     VkMicromapEXT dst; // @link substring="VkMicromapEXT" target="VkMicromapEXT" @link substring="dst" target="#dst"
+///     VkCopyMicromapModeEXT mode; // @link substring="VkCopyMicromapModeEXT" target="VkCopyMicromapModeEXT" @link substring="mode" target="#mode"
 /// } VkCopyMicromapInfoEXT;
 /// }
 ///

@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineTessellationDomainOriginStateCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkTessellationDomainOrigin domainOrigin;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkTessellationDomainOrigin domainOrigin; // @link substring="VkTessellationDomainOrigin" target="VkTessellationDomainOrigin" @link substring="domainOrigin" target="#domainOrigin"
 /// } VkPipelineTessellationDomainOriginStateCreateInfo;
 /// }
 ///

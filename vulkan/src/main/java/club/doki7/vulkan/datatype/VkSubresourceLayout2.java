@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSubresourceLayout2 {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkSubresourceLayout subresourceLayout;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkSubresourceLayout subresourceLayout; // @link substring="VkSubresourceLayout" target="VkSubresourceLayout" @link substring="subresourceLayout" target="#subresourceLayout"
 /// } VkSubresourceLayout2;
 /// }
 ///
@@ -102,11 +102,11 @@ public record VkSubresourceLayout2(@NotNull MemorySegment segment) implements IP
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public VkSubresourceLayout subresourceLayout() {
+    public @NotNull VkSubresourceLayout subresourceLayout() {
         return new VkSubresourceLayout(segment.asSlice(OFFSET$subresourceLayout, LAYOUT$subresourceLayout));
     }
 
-    public void subresourceLayout(VkSubresourceLayout value) {
+    public void subresourceLayout(@NotNull VkSubresourceLayout value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceLayout, SIZE$subresourceLayout);
     }
 

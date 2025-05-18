@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkViSurfaceCreateInfoNN {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkViSurfaceCreateFlagsNN flags; // optional
-///     void* window;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkViSurfaceCreateFlagsNN flags; // optional // @link substring="VkViSurfaceCreateFlagsNN" target="VkViSurfaceCreateFlagsNN" @link substring="flags" target="#flags"
+///     void* window; // @link substring="window" target="#window"
 /// } VkViSurfaceCreateInfoNN;
 /// }
 ///

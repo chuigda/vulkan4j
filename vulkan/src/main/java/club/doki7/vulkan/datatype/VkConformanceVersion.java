@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkConformanceVersion {
-///     uint8_t major;
-///     uint8_t minor;
-///     uint8_t subminor;
-///     uint8_t patch;
+///     uint8_t major; // @link substring="major" target="#major"
+///     uint8_t minor; // @link substring="minor" target="#minor"
+///     uint8_t subminor; // @link substring="subminor" target="#subminor"
+///     uint8_t patch; // @link substring="patch" target="#patch"
 /// } VkConformanceVersion;
 /// }
 ///

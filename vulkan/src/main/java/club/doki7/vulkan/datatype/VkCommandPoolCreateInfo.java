@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkCommandPoolCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkCommandPoolCreateFlags flags; // optional
-///     uint32_t queueFamilyIndex;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkCommandPoolCreateFlags flags; // optional // @link substring="VkCommandPoolCreateFlags" target="VkCommandPoolCreateFlags" @link substring="flags" target="#flags"
+///     uint32_t queueFamilyIndex; // @link substring="queueFamilyIndex" target="#queueFamilyIndex"
 /// } VkCommandPoolCreateInfo;
 /// }
 ///

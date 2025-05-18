@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoDecodeH265ReferenceInfo {
-///     StdVideoDecodeH265ReferenceInfoFlags flags;
-///     int32_t PicOrderCntVal;
+///     StdVideoDecodeH265ReferenceInfoFlags flags; // @link substring="StdVideoDecodeH265ReferenceInfoFlags" target="StdVideoDecodeH265ReferenceInfoFlags" @link substring="flags" target="#flags"
+///     int32_t PicOrderCntVal; // @link substring="PicOrderCntVal" target="#PicOrderCntVal"
 /// } StdVideoDecodeH265ReferenceInfo;
 /// }
 ///
@@ -65,11 +65,11 @@ public record StdVideoDecodeH265ReferenceInfo(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public StdVideoDecodeH265ReferenceInfoFlags flags() {
+    public @NotNull StdVideoDecodeH265ReferenceInfoFlags flags() {
         return new StdVideoDecodeH265ReferenceInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoDecodeH265ReferenceInfoFlags value) {
+    public void flags(@NotNull StdVideoDecodeH265ReferenceInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 

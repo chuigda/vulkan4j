@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoDecodeH264CapabilitiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     StdVideoH264LevelIdc maxLevelIdc;
-///     VkOffset2D fieldOffsetGranularity;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     StdVideoH264LevelIdc maxLevelIdc; // @link substring="StdVideoH264LevelIdc" target="StdVideoH264LevelIdc" @link substring="maxLevelIdc" target="#maxLevelIdc"
+///     VkOffset2D fieldOffsetGranularity; // @link substring="VkOffset2D" target="VkOffset2D" @link substring="fieldOffsetGranularity" target="#fieldOffsetGranularity"
 /// } VkVideoDecodeH264CapabilitiesKHR;
 /// }
 ///
@@ -111,11 +111,11 @@ public record VkVideoDecodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc, value);
     }
 
-    public VkOffset2D fieldOffsetGranularity() {
+    public @NotNull VkOffset2D fieldOffsetGranularity() {
         return new VkOffset2D(segment.asSlice(OFFSET$fieldOffsetGranularity, LAYOUT$fieldOffsetGranularity));
     }
 
-    public void fieldOffsetGranularity(VkOffset2D value) {
+    public void fieldOffsetGranularity(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$fieldOffsetGranularity, SIZE$fieldOffsetGranularity);
     }
 

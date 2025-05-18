@@ -20,7 +20,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRefreshCycleDurationGOOGLE {
-///     uint64_t refreshDuration;
+///     uint64_t refreshDuration; // @link substring="refreshDuration" target="#refreshDuration"
 /// } VkRefreshCycleDurationGOOGLE;
 /// }
 ///

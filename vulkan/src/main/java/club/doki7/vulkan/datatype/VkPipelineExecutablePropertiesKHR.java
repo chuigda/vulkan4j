@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineExecutablePropertiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkShaderStageFlags stages;
-///     char name;
-///     char description;
-///     uint32_t subgroupSize;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkShaderStageFlags stages; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="stages" target="#stages"
+///     char name; // @link substring="name" target="#name"
+///     char description; // @link substring="description" target="#description"
+///     uint32_t subgroupSize; // @link substring="subgroupSize" target="#subgroupSize"
 /// } VkPipelineExecutablePropertiesKHR;
 /// }
 ///

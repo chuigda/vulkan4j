@@ -20,21 +20,21 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMeshShaderPropertiesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     uint32_t maxDrawMeshTasksCount;
-///     uint32_t maxTaskWorkGroupInvocations;
-///     uint32_t maxTaskWorkGroupSize;
-///     uint32_t maxTaskTotalMemorySize;
-///     uint32_t maxTaskOutputCount;
-///     uint32_t maxMeshWorkGroupInvocations;
-///     uint32_t maxMeshWorkGroupSize;
-///     uint32_t maxMeshTotalMemorySize;
-///     uint32_t maxMeshOutputVertices;
-///     uint32_t maxMeshOutputPrimitives;
-///     uint32_t maxMeshMultiviewViewCount;
-///     uint32_t meshOutputPerVertexGranularity;
-///     uint32_t meshOutputPerPrimitiveGranularity;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t maxDrawMeshTasksCount; // @link substring="maxDrawMeshTasksCount" target="#maxDrawMeshTasksCount"
+///     uint32_t maxTaskWorkGroupInvocations; // @link substring="maxTaskWorkGroupInvocations" target="#maxTaskWorkGroupInvocations"
+///     uint32_t maxTaskWorkGroupSize; // @link substring="maxTaskWorkGroupSize" target="#maxTaskWorkGroupSize"
+///     uint32_t maxTaskTotalMemorySize; // @link substring="maxTaskTotalMemorySize" target="#maxTaskTotalMemorySize"
+///     uint32_t maxTaskOutputCount; // @link substring="maxTaskOutputCount" target="#maxTaskOutputCount"
+///     uint32_t maxMeshWorkGroupInvocations; // @link substring="maxMeshWorkGroupInvocations" target="#maxMeshWorkGroupInvocations"
+///     uint32_t maxMeshWorkGroupSize; // @link substring="maxMeshWorkGroupSize" target="#maxMeshWorkGroupSize"
+///     uint32_t maxMeshTotalMemorySize; // @link substring="maxMeshTotalMemorySize" target="#maxMeshTotalMemorySize"
+///     uint32_t maxMeshOutputVertices; // @link substring="maxMeshOutputVertices" target="#maxMeshOutputVertices"
+///     uint32_t maxMeshOutputPrimitives; // @link substring="maxMeshOutputPrimitives" target="#maxMeshOutputPrimitives"
+///     uint32_t maxMeshMultiviewViewCount; // @link substring="maxMeshMultiviewViewCount" target="#maxMeshMultiviewViewCount"
+///     uint32_t meshOutputPerVertexGranularity; // @link substring="meshOutputPerVertexGranularity" target="#meshOutputPerVertexGranularity"
+///     uint32_t meshOutputPerPrimitiveGranularity; // @link substring="meshOutputPerPrimitiveGranularity" target="#meshOutputPerPrimitiveGranularity"
 /// } VkPhysicalDeviceMeshShaderPropertiesNV;
 /// }
 ///

@@ -20,12 +20,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineRobustnessCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineRobustnessBufferBehavior storageBuffers;
-///     VkPipelineRobustnessBufferBehavior uniformBuffers;
-///     VkPipelineRobustnessBufferBehavior vertexInputs;
-///     VkPipelineRobustnessImageBehavior images;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineRobustnessBufferBehavior storageBuffers; // @link substring="VkPipelineRobustnessBufferBehavior" target="VkPipelineRobustnessBufferBehavior" @link substring="storageBuffers" target="#storageBuffers"
+///     VkPipelineRobustnessBufferBehavior uniformBuffers; // @link substring="VkPipelineRobustnessBufferBehavior" target="VkPipelineRobustnessBufferBehavior" @link substring="uniformBuffers" target="#uniformBuffers"
+///     VkPipelineRobustnessBufferBehavior vertexInputs; // @link substring="VkPipelineRobustnessBufferBehavior" target="VkPipelineRobustnessBufferBehavior" @link substring="vertexInputs" target="#vertexInputs"
+///     VkPipelineRobustnessImageBehavior images; // @link substring="VkPipelineRobustnessImageBehavior" target="VkPipelineRobustnessImageBehavior" @link substring="images" target="#images"
 /// } VkPipelineRobustnessCreateInfo;
 /// }
 ///

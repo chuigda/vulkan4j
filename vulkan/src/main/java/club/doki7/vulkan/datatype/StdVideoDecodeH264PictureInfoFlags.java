@@ -21,12 +21,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoDecodeH264PictureInfoFlags {
-///     uint32_t field_pic_flag : 1;
-///     uint32_t is_intra : 1;
-///     uint32_t IdrPicFlag : 1;
-///     uint32_t bottom_field_flag : 1;
-///     uint32_t is_reference : 1;
-///     uint32_t complementary_field_pair : 1;
+///     uint32_t field_pic_flag : 1; // @link substring="field_pic_flag" target="#field_pic_flag"
+///     uint32_t is_intra : 1; // @link substring="is_intra" target="#is_intra"
+///     uint32_t IdrPicFlag : 1; // @link substring="IdrPicFlag" target="#IdrPicFlag"
+///     uint32_t bottom_field_flag : 1; // @link substring="bottom_field_flag" target="#bottom_field_flag"
+///     uint32_t is_reference : 1; // @link substring="is_reference" target="#is_reference"
+///     uint32_t complementary_field_pair : 1; // @link substring="complementary_field_pair" target="#complementary_field_pair"
 /// } StdVideoDecodeH264PictureInfoFlags;
 /// }
 ///

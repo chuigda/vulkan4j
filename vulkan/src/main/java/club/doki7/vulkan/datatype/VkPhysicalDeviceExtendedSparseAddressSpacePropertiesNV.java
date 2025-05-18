@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkDeviceSize extendedSparseAddressSpaceSize;
-///     VkImageUsageFlags extendedSparseImageUsageFlags;
-///     VkBufferUsageFlags extendedSparseBufferUsageFlags;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDeviceSize extendedSparseAddressSpaceSize; // @link substring="extendedSparseAddressSpaceSize" target="#extendedSparseAddressSpaceSize"
+///     VkImageUsageFlags extendedSparseImageUsageFlags; // @link substring="VkImageUsageFlags" target="VkImageUsageFlags" @link substring="extendedSparseImageUsageFlags" target="#extendedSparseImageUsageFlags"
+///     VkBufferUsageFlags extendedSparseBufferUsageFlags; // @link substring="VkBufferUsageFlags" target="VkBufferUsageFlags" @link substring="extendedSparseBufferUsageFlags" target="#extendedSparseBufferUsageFlags"
 /// } VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV;
 /// }
 ///

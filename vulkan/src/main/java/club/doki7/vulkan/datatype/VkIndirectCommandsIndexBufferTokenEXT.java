@@ -20,7 +20,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkIndirectCommandsIndexBufferTokenEXT {
-///     VkIndirectCommandsInputModeFlagsEXT mode;
+///     VkIndirectCommandsInputModeFlagsEXT mode; // @link substring="VkIndirectCommandsInputModeFlagsEXT" target="VkIndirectCommandsInputModeFlagsEXT" @link substring="mode" target="#mode"
 /// } VkIndirectCommandsIndexBufferTokenEXT;
 /// }
 ///

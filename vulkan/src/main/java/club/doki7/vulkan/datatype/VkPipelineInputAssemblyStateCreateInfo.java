@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineInputAssemblyStateCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineInputAssemblyStateCreateFlags flags; // optional
-///     VkPrimitiveTopology topology;
-///     VkBool32 primitiveRestartEnable;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineInputAssemblyStateCreateFlags flags; // optional // @link substring="VkPipelineInputAssemblyStateCreateFlags" target="VkPipelineInputAssemblyStateCreateFlags" @link substring="flags" target="#flags"
+///     VkPrimitiveTopology topology; // @link substring="VkPrimitiveTopology" target="VkPrimitiveTopology" @link substring="topology" target="#topology"
+///     VkBool32 primitiveRestartEnable; // @link substring="primitiveRestartEnable" target="#primitiveRestartEnable"
 /// } VkPipelineInputAssemblyStateCreateInfo;
 /// }
 ///

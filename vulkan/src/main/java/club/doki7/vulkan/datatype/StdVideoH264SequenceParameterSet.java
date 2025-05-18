@@ -20,31 +20,31 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH264SequenceParameterSet {
-///     StdVideoH264SpsFlags flags;
-///     StdVideoH264ProfileIdc profile_idc;
-///     StdVideoH264LevelIdc level_idc;
-///     StdVideoH264ChromaFormatIdc chroma_format_idc;
-///     uint8_t seq_parameter_set_id;
-///     uint8_t bit_depth_luma_minus8;
-///     uint8_t bit_depth_chroma_minus8;
-///     uint8_t log2_max_frame_num_minus4;
-///     StdVideoH264PocType pic_order_cnt_type;
-///     int32_t offset_for_non_ref_pic;
-///     int32_t offset_for_top_to_bottom_field;
-///     uint8_t log2_max_pic_order_cnt_lsb_minus4;
-///     uint8_t num_ref_frames_in_pic_order_cnt_cycle;
-///     uint8_t max_num_ref_frames;
-///     uint8_t reserved1;
-///     uint32_t pic_width_in_mbs_minus1;
-///     uint32_t pic_height_in_map_units_minus1;
-///     uint32_t frame_crop_left_offset;
-///     uint32_t frame_crop_right_offset;
-///     uint32_t frame_crop_top_offset;
-///     uint32_t frame_crop_bottom_offset;
-///     uint32_t reserved2;
-///     int32_t const* pOffsetForRefFrame;
-///     StdVideoH264ScalingLists const* pScalingLists;
-///     StdVideoH264SequenceParameterSetVui const* pSequenceParameterSetVui;
+///     StdVideoH264SpsFlags flags; // @link substring="StdVideoH264SpsFlags" target="StdVideoH264SpsFlags" @link substring="flags" target="#flags"
+///     StdVideoH264ProfileIdc profile_idc; // @link substring="StdVideoH264ProfileIdc" target="StdVideoH264ProfileIdc" @link substring="profile_idc" target="#profile_idc"
+///     StdVideoH264LevelIdc level_idc; // @link substring="StdVideoH264LevelIdc" target="StdVideoH264LevelIdc" @link substring="level_idc" target="#level_idc"
+///     StdVideoH264ChromaFormatIdc chroma_format_idc; // @link substring="StdVideoH264ChromaFormatIdc" target="StdVideoH264ChromaFormatIdc" @link substring="chroma_format_idc" target="#chroma_format_idc"
+///     uint8_t seq_parameter_set_id; // @link substring="seq_parameter_set_id" target="#seq_parameter_set_id"
+///     uint8_t bit_depth_luma_minus8; // @link substring="bit_depth_luma_minus8" target="#bit_depth_luma_minus8"
+///     uint8_t bit_depth_chroma_minus8; // @link substring="bit_depth_chroma_minus8" target="#bit_depth_chroma_minus8"
+///     uint8_t log2_max_frame_num_minus4; // @link substring="log2_max_frame_num_minus4" target="#log2_max_frame_num_minus4"
+///     StdVideoH264PocType pic_order_cnt_type; // @link substring="StdVideoH264PocType" target="StdVideoH264PocType" @link substring="pic_order_cnt_type" target="#pic_order_cnt_type"
+///     int32_t offset_for_non_ref_pic; // @link substring="offset_for_non_ref_pic" target="#offset_for_non_ref_pic"
+///     int32_t offset_for_top_to_bottom_field; // @link substring="offset_for_top_to_bottom_field" target="#offset_for_top_to_bottom_field"
+///     uint8_t log2_max_pic_order_cnt_lsb_minus4; // @link substring="log2_max_pic_order_cnt_lsb_minus4" target="#log2_max_pic_order_cnt_lsb_minus4"
+///     uint8_t num_ref_frames_in_pic_order_cnt_cycle; // @link substring="num_ref_frames_in_pic_order_cnt_cycle" target="#num_ref_frames_in_pic_order_cnt_cycle"
+///     uint8_t max_num_ref_frames; // @link substring="max_num_ref_frames" target="#max_num_ref_frames"
+///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint32_t pic_width_in_mbs_minus1; // @link substring="pic_width_in_mbs_minus1" target="#pic_width_in_mbs_minus1"
+///     uint32_t pic_height_in_map_units_minus1; // @link substring="pic_height_in_map_units_minus1" target="#pic_height_in_map_units_minus1"
+///     uint32_t frame_crop_left_offset; // @link substring="frame_crop_left_offset" target="#frame_crop_left_offset"
+///     uint32_t frame_crop_right_offset; // @link substring="frame_crop_right_offset" target="#frame_crop_right_offset"
+///     uint32_t frame_crop_top_offset; // @link substring="frame_crop_top_offset" target="#frame_crop_top_offset"
+///     uint32_t frame_crop_bottom_offset; // @link substring="frame_crop_bottom_offset" target="#frame_crop_bottom_offset"
+///     uint32_t reserved2; // @link substring="reserved2" target="#reserved2"
+///     int32_t const* pOffsetForRefFrame; // @link substring="pOffsetForRefFrame" target="#pOffsetForRefFrame"
+///     StdVideoH264ScalingLists const* pScalingLists; // @link substring="StdVideoH264ScalingLists" target="StdVideoH264ScalingLists" @link substring="pScalingLists" target="#pScalingLists"
+///     StdVideoH264SequenceParameterSetVui const* pSequenceParameterSetVui; // @link substring="StdVideoH264SequenceParameterSetVui" target="StdVideoH264SequenceParameterSetVui" @link substring="pSequenceParameterSetVui" target="#pSequenceParameterSetVui"
 /// } StdVideoH264SequenceParameterSet;
 /// }
 ///
@@ -88,11 +88,11 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public StdVideoH264SpsFlags flags() {
+    public @NotNull StdVideoH264SpsFlags flags() {
         return new StdVideoH264SpsFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(StdVideoH264SpsFlags value) {
+    public void flags(@NotNull StdVideoH264SpsFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
@@ -264,14 +264,6 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$reserved2, OFFSET$reserved2, value);
     }
 
-    public @pointer(comment="int*") MemorySegment pOffsetForRefFrameRaw() {
-        return segment.get(LAYOUT$pOffsetForRefFrame, OFFSET$pOffsetForRefFrame);
-    }
-
-    public void pOffsetForRefFrameRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pOffsetForRefFrame, OFFSET$pOffsetForRefFrame, value);
-    }
-
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
@@ -289,12 +281,12 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         pOffsetForRefFrameRaw(s);
     }
 
-    public @pointer(target=StdVideoH264ScalingLists.class) MemorySegment pScalingListsRaw() {
-        return segment.get(LAYOUT$pScalingLists, OFFSET$pScalingLists);
+    public @pointer(comment="int*") MemorySegment pOffsetForRefFrameRaw() {
+        return segment.get(LAYOUT$pOffsetForRefFrame, OFFSET$pOffsetForRefFrame);
     }
 
-    public void pScalingListsRaw(@pointer(target=StdVideoH264ScalingLists.class) MemorySegment value) {
-        segment.set(LAYOUT$pScalingLists, OFFSET$pScalingLists, value);
+    public void pOffsetForRefFrameRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pOffsetForRefFrame, OFFSET$pOffsetForRefFrame, value);
     }
 
     public @Nullable StdVideoH264ScalingLists pScalingLists() {
@@ -324,12 +316,12 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public @pointer(target=StdVideoH264SequenceParameterSetVui.class) MemorySegment pSequenceParameterSetVuiRaw() {
-        return segment.get(LAYOUT$pSequenceParameterSetVui, OFFSET$pSequenceParameterSetVui);
+    public @pointer(target=StdVideoH264ScalingLists.class) MemorySegment pScalingListsRaw() {
+        return segment.get(LAYOUT$pScalingLists, OFFSET$pScalingLists);
     }
 
-    public void pSequenceParameterSetVuiRaw(@pointer(target=StdVideoH264SequenceParameterSetVui.class) MemorySegment value) {
-        segment.set(LAYOUT$pSequenceParameterSetVui, OFFSET$pSequenceParameterSetVui, value);
+    public void pScalingListsRaw(@pointer(target=StdVideoH264ScalingLists.class) MemorySegment value) {
+        segment.set(LAYOUT$pScalingLists, OFFSET$pScalingLists, value);
     }
 
     public @Nullable StdVideoH264SequenceParameterSetVui pSequenceParameterSetVui() {
@@ -357,6 +349,14 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
             ret[i] = new StdVideoH264SequenceParameterSetVui(s.asSlice(i * StdVideoH264SequenceParameterSetVui.BYTES, StdVideoH264SequenceParameterSetVui.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=StdVideoH264SequenceParameterSetVui.class) MemorySegment pSequenceParameterSetVuiRaw() {
+        return segment.get(LAYOUT$pSequenceParameterSetVui, OFFSET$pSequenceParameterSetVui);
+    }
+
+    public void pSequenceParameterSetVuiRaw(@pointer(target=StdVideoH264SequenceParameterSetVui.class) MemorySegment value) {
+        segment.set(LAYOUT$pSequenceParameterSetVui, OFFSET$pSequenceParameterSetVui, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

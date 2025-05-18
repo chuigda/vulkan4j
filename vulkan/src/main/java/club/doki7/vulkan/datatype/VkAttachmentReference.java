@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAttachmentReference {
-///     uint32_t attachment;
-///     VkImageLayout layout;
+///     uint32_t attachment; // @link substring="attachment" target="#attachment"
+///     VkImageLayout layout; // @link substring="VkImageLayout" target="VkImageLayout" @link substring="layout" target="#layout"
 /// } VkAttachmentReference;
 /// }
 ///

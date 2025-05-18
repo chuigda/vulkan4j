@@ -21,26 +21,26 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1SequenceHeaderFlags {
-///     uint32_t still_picture : 1;
-///     uint32_t reduced_still_picture_header : 1;
-///     uint32_t use_128x128_superblock : 1;
-///     uint32_t enable_filter_intra : 1;
-///     uint32_t enable_intra_edge_filter : 1;
-///     uint32_t enable_interintra_compound : 1;
-///     uint32_t enable_masked_compound : 1;
-///     uint32_t enable_warped_motion : 1;
-///     uint32_t enable_dual_filter : 1;
-///     uint32_t enable_order_hint : 1;
-///     uint32_t enable_jnt_comp : 1;
-///     uint32_t enable_ref_frame_mvs : 1;
-///     uint32_t frame_id_numbers_present_flag : 1;
-///     uint32_t enable_superres : 1;
-///     uint32_t enable_cdef : 1;
-///     uint32_t enable_restoration : 1;
-///     uint32_t film_grain_params_present : 1;
-///     uint32_t timing_info_present_flag : 1;
-///     uint32_t initial_display_delay_present_flag : 1;
-///     uint32_t reserved : 13;
+///     uint32_t still_picture : 1; // @link substring="still_picture" target="#still_picture"
+///     uint32_t reduced_still_picture_header : 1; // @link substring="reduced_still_picture_header" target="#reduced_still_picture_header"
+///     uint32_t use_128x128_superblock : 1; // @link substring="use_128x128_superblock" target="#use_128x128_superblock"
+///     uint32_t enable_filter_intra : 1; // @link substring="enable_filter_intra" target="#enable_filter_intra"
+///     uint32_t enable_intra_edge_filter : 1; // @link substring="enable_intra_edge_filter" target="#enable_intra_edge_filter"
+///     uint32_t enable_interintra_compound : 1; // @link substring="enable_interintra_compound" target="#enable_interintra_compound"
+///     uint32_t enable_masked_compound : 1; // @link substring="enable_masked_compound" target="#enable_masked_compound"
+///     uint32_t enable_warped_motion : 1; // @link substring="enable_warped_motion" target="#enable_warped_motion"
+///     uint32_t enable_dual_filter : 1; // @link substring="enable_dual_filter" target="#enable_dual_filter"
+///     uint32_t enable_order_hint : 1; // @link substring="enable_order_hint" target="#enable_order_hint"
+///     uint32_t enable_jnt_comp : 1; // @link substring="enable_jnt_comp" target="#enable_jnt_comp"
+///     uint32_t enable_ref_frame_mvs : 1; // @link substring="enable_ref_frame_mvs" target="#enable_ref_frame_mvs"
+///     uint32_t frame_id_numbers_present_flag : 1; // @link substring="frame_id_numbers_present_flag" target="#frame_id_numbers_present_flag"
+///     uint32_t enable_superres : 1; // @link substring="enable_superres" target="#enable_superres"
+///     uint32_t enable_cdef : 1; // @link substring="enable_cdef" target="#enable_cdef"
+///     uint32_t enable_restoration : 1; // @link substring="enable_restoration" target="#enable_restoration"
+///     uint32_t film_grain_params_present : 1; // @link substring="film_grain_params_present" target="#film_grain_params_present"
+///     uint32_t timing_info_present_flag : 1; // @link substring="timing_info_present_flag" target="#timing_info_present_flag"
+///     uint32_t initial_display_delay_present_flag : 1; // @link substring="initial_display_delay_present_flag" target="#initial_display_delay_present_flag"
+///     uint32_t reserved : 13; // @link substring="reserved" target="#reserved"
 /// } StdVideoAV1SequenceHeaderFlags;
 /// }
 ///

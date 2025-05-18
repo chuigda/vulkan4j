@@ -21,8 +21,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1TileInfoFlags {
-///     uint32_t uniform_tile_spacing_flag : 1;
-///     uint32_t reserved : 31;
+///     uint32_t uniform_tile_spacing_flag : 1; // @link substring="uniform_tile_spacing_flag" target="#uniform_tile_spacing_flag"
+///     uint32_t reserved : 31; // @link substring="reserved" target="#reserved"
 /// } StdVideoAV1TileInfoFlags;
 /// }
 ///

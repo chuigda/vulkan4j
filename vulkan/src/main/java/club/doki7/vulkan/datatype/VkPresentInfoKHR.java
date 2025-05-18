@@ -20,14 +20,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPresentInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t waitSemaphoreCount; // optional
-///     VkSemaphore const* pWaitSemaphores;
-///     uint32_t swapchainCount;
-///     VkSwapchainKHR const* pSwapchains;
-///     uint32_t const* pImageIndices;
-///     VkResult* pResults; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t waitSemaphoreCount; // optional // @link substring="waitSemaphoreCount" target="#waitSemaphoreCount"
+///     VkSemaphore const* pWaitSemaphores; // @link substring="VkSemaphore" target="VkSemaphore" @link substring="pWaitSemaphores" target="#pWaitSemaphores"
+///     uint32_t swapchainCount; // @link substring="swapchainCount" target="#swapchainCount"
+///     VkSwapchainKHR const* pSwapchains; // @link substring="VkSwapchainKHR" target="VkSwapchainKHR" @link substring="pSwapchains" target="#pSwapchains"
+///     uint32_t const* pImageIndices; // @link substring="pImageIndices" target="#pImageIndices"
+///     VkResult* pResults; // optional // @link substring="VkResult" target="VkResult" @link substring="pResults" target="#pResults"
 /// } VkPresentInfoKHR;
 /// }
 ///
@@ -115,14 +115,6 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IPoint
         segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
     }
 
-    public @pointer(target=VkSemaphore.class) MemorySegment pWaitSemaphoresRaw() {
-        return segment.get(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores);
-    }
-
-    public void pWaitSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
-        segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
-    }
-
     /// Note: the returned {@link VkSemaphore.Ptr} does not have correct {@link VkSemaphore.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkSemaphore.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -140,20 +132,20 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IPoint
         pWaitSemaphoresRaw(s);
     }
 
+    public @pointer(target=VkSemaphore.class) MemorySegment pWaitSemaphoresRaw() {
+        return segment.get(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores);
+    }
+
+    public void pWaitSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
+        segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
+    }
+
     public @unsigned int swapchainCount() {
         return segment.get(LAYOUT$swapchainCount, OFFSET$swapchainCount);
     }
 
     public void swapchainCount(@unsigned int value) {
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
-    }
-
-    public @pointer(target=VkSwapchainKHR.class) MemorySegment pSwapchainsRaw() {
-        return segment.get(LAYOUT$pSwapchains, OFFSET$pSwapchains);
-    }
-
-    public void pSwapchainsRaw(@pointer(target=VkSwapchainKHR.class) MemorySegment value) {
-        segment.set(LAYOUT$pSwapchains, OFFSET$pSwapchains, value);
     }
 
     /// Note: the returned {@link VkSwapchainKHR.Ptr} does not have correct {@link VkSwapchainKHR.Ptr#size}
@@ -173,12 +165,12 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IPoint
         pSwapchainsRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pImageIndicesRaw() {
-        return segment.get(LAYOUT$pImageIndices, OFFSET$pImageIndices);
+    public @pointer(target=VkSwapchainKHR.class) MemorySegment pSwapchainsRaw() {
+        return segment.get(LAYOUT$pSwapchains, OFFSET$pSwapchains);
     }
 
-    public void pImageIndicesRaw(@pointer(comment="int*") MemorySegment value) {
-        segment.set(LAYOUT$pImageIndices, OFFSET$pImageIndices, value);
+    public void pSwapchainsRaw(@pointer(target=VkSwapchainKHR.class) MemorySegment value) {
+        segment.set(LAYOUT$pSwapchains, OFFSET$pSwapchains, value);
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -198,13 +190,14 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IPoint
         pImageIndicesRaw(s);
     }
 
-    public @pointer(target=VkResult.class) MemorySegment pResultsRaw() {
-        return segment.get(LAYOUT$pResults, OFFSET$pResults);
+    public @pointer(comment="int*") MemorySegment pImageIndicesRaw() {
+        return segment.get(LAYOUT$pImageIndices, OFFSET$pImageIndices);
     }
 
-    public void pResultsRaw(@pointer(target=VkResult.class) MemorySegment value) {
-        segment.set(LAYOUT$pResults, OFFSET$pResults, value);
+    public void pImageIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+        segment.set(LAYOUT$pImageIndices, OFFSET$pImageIndices, value);
     }
+
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -221,6 +214,14 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IPoint
     public void pResults(@Nullable @enumtype(VkResult.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pResultsRaw(s);
+    }
+
+    public @pointer(target=VkResult.class) MemorySegment pResultsRaw() {
+        return segment.get(LAYOUT$pResults, OFFSET$pResults);
+    }
+
+    public void pResultsRaw(@pointer(target=VkResult.class) MemorySegment value) {
+        segment.set(LAYOUT$pResults, OFFSET$pResults, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoInlineQueryInfoKHR {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkQueryPool queryPool; // optional
-///     uint32_t firstQuery;
-///     uint32_t queryCount;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkQueryPool queryPool; // optional // @link substring="VkQueryPool" target="VkQueryPool" @link substring="queryPool" target="#queryPool"
+///     uint32_t firstQuery; // @link substring="firstQuery" target="#firstQuery"
+///     uint32_t queryCount; // @link substring="queryCount" target="#queryCount"
 /// } VkVideoInlineQueryInfoKHR;
 /// }
 ///

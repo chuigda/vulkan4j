@@ -20,15 +20,15 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDependencyInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkDependencyFlags dependencyFlags; // optional
-///     uint32_t memoryBarrierCount; // optional
-///     VkMemoryBarrier2 const* pMemoryBarriers;
-///     uint32_t bufferMemoryBarrierCount; // optional
-///     VkBufferMemoryBarrier2 const* pBufferMemoryBarriers;
-///     uint32_t imageMemoryBarrierCount; // optional
-///     VkImageMemoryBarrier2 const* pImageMemoryBarriers;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkDependencyFlags dependencyFlags; // optional // @link substring="VkDependencyFlags" target="VkDependencyFlags" @link substring="dependencyFlags" target="#dependencyFlags"
+///     uint32_t memoryBarrierCount; // optional // @link substring="memoryBarrierCount" target="#memoryBarrierCount"
+///     VkMemoryBarrier2 const* pMemoryBarriers; // @link substring="VkMemoryBarrier2" target="VkMemoryBarrier2" @link substring="pMemoryBarriers" target="#pMemoryBarriers"
+///     uint32_t bufferMemoryBarrierCount; // optional // @link substring="bufferMemoryBarrierCount" target="#bufferMemoryBarrierCount"
+///     VkBufferMemoryBarrier2 const* pBufferMemoryBarriers; // @link substring="VkBufferMemoryBarrier2" target="VkBufferMemoryBarrier2" @link substring="pBufferMemoryBarriers" target="#pBufferMemoryBarriers"
+///     uint32_t imageMemoryBarrierCount; // optional // @link substring="imageMemoryBarrierCount" target="#imageMemoryBarrierCount"
+///     VkImageMemoryBarrier2 const* pImageMemoryBarriers; // @link substring="VkImageMemoryBarrier2" target="VkImageMemoryBarrier2" @link substring="pImageMemoryBarriers" target="#pImageMemoryBarriers"
 /// } VkDependencyInfo;
 /// }
 ///
@@ -124,14 +124,6 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IPoint
         segment.set(LAYOUT$memoryBarrierCount, OFFSET$memoryBarrierCount, value);
     }
 
-    public @pointer(target=VkMemoryBarrier2.class) MemorySegment pMemoryBarriersRaw() {
-        return segment.get(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers);
-    }
-
-    public void pMemoryBarriersRaw(@pointer(target=VkMemoryBarrier2.class) MemorySegment value) {
-        segment.set(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers, value);
-    }
-
     public @Nullable VkMemoryBarrier2 pMemoryBarriers() {
         MemorySegment s = pMemoryBarriersRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -159,20 +151,20 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IPoint
         return ret;
     }
 
+    public @pointer(target=VkMemoryBarrier2.class) MemorySegment pMemoryBarriersRaw() {
+        return segment.get(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers);
+    }
+
+    public void pMemoryBarriersRaw(@pointer(target=VkMemoryBarrier2.class) MemorySegment value) {
+        segment.set(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers, value);
+    }
+
     public @unsigned int bufferMemoryBarrierCount() {
         return segment.get(LAYOUT$bufferMemoryBarrierCount, OFFSET$bufferMemoryBarrierCount);
     }
 
     public void bufferMemoryBarrierCount(@unsigned int value) {
         segment.set(LAYOUT$bufferMemoryBarrierCount, OFFSET$bufferMemoryBarrierCount, value);
-    }
-
-    public @pointer(target=VkBufferMemoryBarrier2.class) MemorySegment pBufferMemoryBarriersRaw() {
-        return segment.get(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers);
-    }
-
-    public void pBufferMemoryBarriersRaw(@pointer(target=VkBufferMemoryBarrier2.class) MemorySegment value) {
-        segment.set(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers, value);
     }
 
     public @Nullable VkBufferMemoryBarrier2 pBufferMemoryBarriers() {
@@ -202,20 +194,20 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IPoint
         return ret;
     }
 
+    public @pointer(target=VkBufferMemoryBarrier2.class) MemorySegment pBufferMemoryBarriersRaw() {
+        return segment.get(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers);
+    }
+
+    public void pBufferMemoryBarriersRaw(@pointer(target=VkBufferMemoryBarrier2.class) MemorySegment value) {
+        segment.set(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers, value);
+    }
+
     public @unsigned int imageMemoryBarrierCount() {
         return segment.get(LAYOUT$imageMemoryBarrierCount, OFFSET$imageMemoryBarrierCount);
     }
 
     public void imageMemoryBarrierCount(@unsigned int value) {
         segment.set(LAYOUT$imageMemoryBarrierCount, OFFSET$imageMemoryBarrierCount, value);
-    }
-
-    public @pointer(target=VkImageMemoryBarrier2.class) MemorySegment pImageMemoryBarriersRaw() {
-        return segment.get(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers);
-    }
-
-    public void pImageMemoryBarriersRaw(@pointer(target=VkImageMemoryBarrier2.class) MemorySegment value) {
-        segment.set(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers, value);
     }
 
     public @Nullable VkImageMemoryBarrier2 pImageMemoryBarriers() {
@@ -243,6 +235,14 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IPoint
             ret[i] = new VkImageMemoryBarrier2(s.asSlice(i * VkImageMemoryBarrier2.BYTES, VkImageMemoryBarrier2.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkImageMemoryBarrier2.class) MemorySegment pImageMemoryBarriersRaw() {
+        return segment.get(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers);
+    }
+
+    public void pImageMemoryBarriersRaw(@pointer(target=VkImageMemoryBarrier2.class) MemorySegment value) {
+        segment.set(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

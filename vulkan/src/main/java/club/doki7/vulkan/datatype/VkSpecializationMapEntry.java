@@ -20,9 +20,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSpecializationMapEntry {
-///     uint32_t constantID;
-///     uint32_t offset;
-///     size_t size;
+///     uint32_t constantID; // @link substring="constantID" target="#constantID"
+///     uint32_t offset; // @link substring="offset" target="#offset"
+///     size_t size; // @link substring="size" target="#size"
 /// } VkSpecializationMapEntry;
 /// }
 ///

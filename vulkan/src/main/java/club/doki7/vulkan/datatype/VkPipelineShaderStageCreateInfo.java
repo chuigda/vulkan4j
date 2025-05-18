@@ -20,13 +20,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPipelineShaderStageCreateInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkPipelineShaderStageCreateFlags flags; // optional
-///     VkShaderStageFlags stage;
-///     VkShaderModule module; // optional
-///     char const* pName;
-///     VkSpecializationInfo const* pSpecializationInfo; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkPipelineShaderStageCreateFlags flags; // optional // @link substring="VkPipelineShaderStageCreateFlags" target="VkPipelineShaderStageCreateFlags" @link substring="flags" target="#flags"
+///     VkShaderStageFlags stage; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="stage" target="#stage"
+///     VkShaderModule module; // optional // @link substring="VkShaderModule" target="VkShaderModule" @link substring="module" target="#module"
+///     char const* pName; // @link substring="pName" target="#pName"
+///     VkSpecializationInfo const* pSpecializationInfo; // optional // @link substring="VkSpecializationInfo" target="VkSpecializationInfo" @link substring="pSpecializationInfo" target="#pSpecializationInfo"
 /// } VkPipelineShaderStageCreateInfo;
 /// }
 ///
@@ -134,14 +134,6 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$module, OFFSET$module, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="byte*") MemorySegment pNameRaw() {
-        return segment.get(LAYOUT$pName, OFFSET$pName);
-    }
-
-    public void pNameRaw(@pointer(comment="byte*") MemorySegment value) {
-        segment.set(LAYOUT$pName, OFFSET$pName, value);
-    }
-
     /// Note: the returned {@link BytePtr} does not have correct
     /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
@@ -159,12 +151,12 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         pNameRaw(s);
     }
 
-    public @pointer(target=VkSpecializationInfo.class) MemorySegment pSpecializationInfoRaw() {
-        return segment.get(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo);
+    public @pointer(comment="byte*") MemorySegment pNameRaw() {
+        return segment.get(LAYOUT$pName, OFFSET$pName);
     }
 
-    public void pSpecializationInfoRaw(@pointer(target=VkSpecializationInfo.class) MemorySegment value) {
-        segment.set(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo, value);
+    public void pNameRaw(@pointer(comment="byte*") MemorySegment value) {
+        segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
 
     public @Nullable VkSpecializationInfo pSpecializationInfo() {
@@ -192,6 +184,14 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
             ret[i] = new VkSpecializationInfo(s.asSlice(i * VkSpecializationInfo.BYTES, VkSpecializationInfo.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkSpecializationInfo.class) MemorySegment pSpecializationInfoRaw() {
+        return segment.get(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo);
+    }
+
+    public void pSpecializationInfoRaw(@pointer(target=VkSpecializationInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

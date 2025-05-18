@@ -20,17 +20,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkVideoEncodeH264QualityLevelPropertiesKHR {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkVideoEncodeH264RateControlFlagsKHR preferredRateControlFlags;
-///     uint32_t preferredGopFrameCount;
-///     uint32_t preferredIdrPeriod;
-///     uint32_t preferredConsecutiveBFrameCount;
-///     uint32_t preferredTemporalLayerCount;
-///     VkVideoEncodeH264QpKHR preferredConstantQp;
-///     uint32_t preferredMaxL0ReferenceCount;
-///     uint32_t preferredMaxL1ReferenceCount;
-///     VkBool32 preferredStdEntropyCodingModeFlag;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkVideoEncodeH264RateControlFlagsKHR preferredRateControlFlags; // @link substring="VkVideoEncodeH264RateControlFlagsKHR" target="VkVideoEncodeH264RateControlFlagsKHR" @link substring="preferredRateControlFlags" target="#preferredRateControlFlags"
+///     uint32_t preferredGopFrameCount; // @link substring="preferredGopFrameCount" target="#preferredGopFrameCount"
+///     uint32_t preferredIdrPeriod; // @link substring="preferredIdrPeriod" target="#preferredIdrPeriod"
+///     uint32_t preferredConsecutiveBFrameCount; // @link substring="preferredConsecutiveBFrameCount" target="#preferredConsecutiveBFrameCount"
+///     uint32_t preferredTemporalLayerCount; // @link substring="preferredTemporalLayerCount" target="#preferredTemporalLayerCount"
+///     VkVideoEncodeH264QpKHR preferredConstantQp; // @link substring="VkVideoEncodeH264QpKHR" target="VkVideoEncodeH264QpKHR" @link substring="preferredConstantQp" target="#preferredConstantQp"
+///     uint32_t preferredMaxL0ReferenceCount; // @link substring="preferredMaxL0ReferenceCount" target="#preferredMaxL0ReferenceCount"
+///     uint32_t preferredMaxL1ReferenceCount; // @link substring="preferredMaxL1ReferenceCount" target="#preferredMaxL1ReferenceCount"
+///     VkBool32 preferredStdEntropyCodingModeFlag; // @link substring="preferredStdEntropyCodingModeFlag" target="#preferredStdEntropyCodingModeFlag"
 /// } VkVideoEncodeH264QualityLevelPropertiesKHR;
 /// }
 ///
@@ -150,11 +150,11 @@ public record VkVideoEncodeH264QualityLevelPropertiesKHR(@NotNull MemorySegment 
         segment.set(LAYOUT$preferredTemporalLayerCount, OFFSET$preferredTemporalLayerCount, value);
     }
 
-    public VkVideoEncodeH264QpKHR preferredConstantQp() {
+    public @NotNull VkVideoEncodeH264QpKHR preferredConstantQp() {
         return new VkVideoEncodeH264QpKHR(segment.asSlice(OFFSET$preferredConstantQp, LAYOUT$preferredConstantQp));
     }
 
-    public void preferredConstantQp(VkVideoEncodeH264QpKHR value) {
+    public void preferredConstantQp(@NotNull VkVideoEncodeH264QpKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$preferredConstantQp, SIZE$preferredConstantQp);
     }
 

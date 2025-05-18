@@ -20,8 +20,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1Segmentation {
-///     uint8_t FeatureEnabled;
-///     int16_t FeatureData;
+///     uint8_t FeatureEnabled; // @link substring="FeatureEnabled" target="#FeatureEnabled"
+///     int16_t FeatureData; // @link substring="FeatureData" target="#FeatureData"
 /// } StdVideoAV1Segmentation;
 /// }
 ///

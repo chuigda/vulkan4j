@@ -20,11 +20,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceGroupRenderPassBeginInfo {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t deviceMask;
-///     uint32_t deviceRenderAreaCount; // optional
-///     VkRect2D const* pDeviceRenderAreas;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t deviceMask; // @link substring="deviceMask" target="#deviceMask"
+///     uint32_t deviceRenderAreaCount; // optional // @link substring="deviceRenderAreaCount" target="#deviceRenderAreaCount"
+///     VkRect2D const* pDeviceRenderAreas; // @link substring="VkRect2D" target="VkRect2D" @link substring="pDeviceRenderAreas" target="#pDeviceRenderAreas"
 /// } VkDeviceGroupRenderPassBeginInfo;
 /// }
 ///
@@ -120,14 +120,6 @@ public record VkDeviceGroupRenderPassBeginInfo(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$deviceRenderAreaCount, OFFSET$deviceRenderAreaCount, value);
     }
 
-    public @pointer(target=VkRect2D.class) MemorySegment pDeviceRenderAreasRaw() {
-        return segment.get(LAYOUT$pDeviceRenderAreas, OFFSET$pDeviceRenderAreas);
-    }
-
-    public void pDeviceRenderAreasRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
-        segment.set(LAYOUT$pDeviceRenderAreas, OFFSET$pDeviceRenderAreas, value);
-    }
-
     public @Nullable VkRect2D pDeviceRenderAreas() {
         MemorySegment s = pDeviceRenderAreasRaw();
         if (s.equals(MemorySegment.NULL)) {
@@ -153,6 +145,14 @@ public record VkDeviceGroupRenderPassBeginInfo(@NotNull MemorySegment segment) i
             ret[i] = new VkRect2D(s.asSlice(i * VkRect2D.BYTES, VkRect2D.BYTES));
         }
         return ret;
+    }
+
+    public @pointer(target=VkRect2D.class) MemorySegment pDeviceRenderAreasRaw() {
+        return segment.get(LAYOUT$pDeviceRenderAreas, OFFSET$pDeviceRenderAreas);
+    }
+
+    public void pDeviceRenderAreasRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
+        segment.set(LAYOUT$pDeviceRenderAreas, OFFSET$pDeviceRenderAreas, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

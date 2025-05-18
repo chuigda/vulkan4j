@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkSwapchainPresentFenceInfoEXT {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     uint32_t swapchainCount;
-///     VkFence const* pFences;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     uint32_t swapchainCount; // @link substring="swapchainCount" target="#swapchainCount"
+///     VkFence const* pFences; // @link substring="VkFence" target="VkFence" @link substring="pFences" target="#pFences"
 /// } VkSwapchainPresentFenceInfoEXT;
 /// }
 ///
@@ -111,14 +111,6 @@ public record VkSwapchainPresentFenceInfoEXT(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
     }
 
-    public @pointer(target=VkFence.class) MemorySegment pFencesRaw() {
-        return segment.get(LAYOUT$pFences, OFFSET$pFences);
-    }
-
-    public void pFencesRaw(@pointer(target=VkFence.class) MemorySegment value) {
-        segment.set(LAYOUT$pFences, OFFSET$pFences, value);
-    }
-
     /// Note: the returned {@link VkFence.Ptr} does not have correct {@link VkFence.Ptr#size}
     /// property. It's up to user to track the size of the buffer, and use
     /// {@link VkFence.Ptr#reinterpret} to set the size before actually reading from or writing to the
@@ -134,6 +126,14 @@ public record VkSwapchainPresentFenceInfoEXT(@NotNull MemorySegment segment) imp
     public void pFences(@Nullable VkFence.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFencesRaw(s);
+    }
+
+    public @pointer(target=VkFence.class) MemorySegment pFencesRaw() {
+        return segment.get(LAYOUT$pFences, OFFSET$pFences);
+    }
+
+    public void pFencesRaw(@pointer(target=VkFence.class) MemorySegment value) {
+        segment.set(LAYOUT$pFences, OFFSET$pFences, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceProvokingVertexFeaturesEXT {
-///     VkStructureType sType;
-///     void* pNext; // optional
-///     VkBool32 provokingVertexLast;
-///     VkBool32 transformFeedbackPreservesProvokingVertex;
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkBool32 provokingVertexLast; // @link substring="provokingVertexLast" target="#provokingVertexLast"
+///     VkBool32 transformFeedbackPreservesProvokingVertex; // @link substring="transformFeedbackPreservesProvokingVertex" target="#transformFeedbackPreservesProvokingVertex"
 /// } VkPhysicalDeviceProvokingVertexFeaturesEXT;
 /// }
 ///

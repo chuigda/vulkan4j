@@ -20,10 +20,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassTileShadingCreateInfoQCOM {
-///     VkStructureType sType;
-///     void const* pNext; // optional
-///     VkTileShadingRenderPassFlagsQCOM flags; // optional
-///     VkExtent2D tileApronSize; // optional
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkTileShadingRenderPassFlagsQCOM flags; // optional // @link substring="VkTileShadingRenderPassFlagsQCOM" target="VkTileShadingRenderPassFlagsQCOM" @link substring="flags" target="#flags"
+///     VkExtent2D tileApronSize; // optional // @link substring="VkExtent2D" target="VkExtent2D" @link substring="tileApronSize" target="#tileApronSize"
 /// } VkRenderPassTileShadingCreateInfoQCOM;
 /// }
 ///
@@ -111,11 +111,11 @@ public record VkRenderPassTileShadingCreateInfoQCOM(@NotNull MemorySegment segme
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public VkExtent2D tileApronSize() {
+    public @NotNull VkExtent2D tileApronSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$tileApronSize, LAYOUT$tileApronSize));
     }
 
-    public void tileApronSize(VkExtent2D value) {
+    public void tileApronSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$tileApronSize, SIZE$tileApronSize);
     }
 
