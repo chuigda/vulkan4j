@@ -76,7 +76,7 @@ fun generateCommandFile(
 
         +"public static final class Descriptors {"
         indent {
-            loweredCommand.forEachIndexed { idx, it ->
+            loweredCommand.filter { it.command.aliasTo == null }.forEachIndexed { idx, it ->
                 +generateFunctionDescriptor(it)
                 if (idx != loweredCommand.size - 1) {
                     +""

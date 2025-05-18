@@ -23,12 +23,10 @@ class VkStructureMetadata(
 }
 
 data class VulkanRegistryExt(
-    val commandAliases: Map<Identifier, Identifier>,
     val versions: Map<Identifier, VulkanVersion>,
     val extensions: Map<Identifier, Extension>,
 ) : IMergeable<VulkanRegistryExt> {
     override fun merge(other: VulkanRegistryExt): VulkanRegistryExt = VulkanRegistryExt(
-        commandAliases = this.commandAliases + other.commandAliases,
         versions = this.versions + other.versions,
         extensions = this.extensions + other.extensions
     )

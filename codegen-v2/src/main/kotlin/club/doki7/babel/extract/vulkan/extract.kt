@@ -111,6 +111,11 @@ private fun Element.extractEntities(): Registry<VulkanRegistryExt> {
         .associateBy { it.name }
         .toMutableMap()
 
+    log.info(" - 解析：命令别名")
+    for ((k, v) in commandAliases) {
+        commands[k]?.aliasTo = v
+    }
+
     return Registry(
         aliases = aliases,
         bitmasks = bitmasks,
@@ -123,7 +128,6 @@ private fun Element.extractEntities(): Registry<VulkanRegistryExt> {
         structures = structures,
         unions = unions,
         ext = VulkanRegistryExt(
-            commandAliases = commandAliases,
             versions = versions,
             extensions = extensions
         )

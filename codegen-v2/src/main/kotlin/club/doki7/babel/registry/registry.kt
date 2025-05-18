@@ -143,7 +143,8 @@ class Command(
     val params: List<Param>,
     val result: Type,
     val successCodes: List<Identifier>?,
-    val errorCodes: List<Identifier>?
+    val errorCodes: List<Identifier>?,
+    var aliasTo: Identifier? = null
 ) : Entity(name) {
     constructor(
         name: String,

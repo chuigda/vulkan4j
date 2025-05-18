@@ -51,7 +51,6 @@ internal fun Registry<VulkanRegistryExt>.filterEntities(): Registry<VulkanRegist
         structures = structures.filterSupportedEntities(),
         unions = unions.filterSupportedEntities(),
         ext = VulkanRegistryExt(
-            commandAliases = ext.commandAliases,
             extensions = extensions.associateBy { it.name },
             versions = versions.associateBy { it.name }
         )

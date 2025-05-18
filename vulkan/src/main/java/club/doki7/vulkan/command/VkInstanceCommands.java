@@ -2198,13 +2198,6 @@ public final class VkInstanceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceGroupProperties.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkEnumeratePhysicalDeviceGroupsKHR = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceGroupProperties.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkEnumeratePhysicalDevices = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
@@ -2300,19 +2293,7 @@ public final class VkInstanceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkExternalBufferProperties.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceExternalBufferPropertiesKHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceExternalBufferInfo.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkExternalBufferProperties.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceExternalFenceProperties = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceExternalFenceInfo.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkExternalFenceProperties.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceExternalFencePropertiesKHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceExternalFenceInfo.LAYOUT),
             ValueLayout.ADDRESS.withTargetLayout(VkExternalFenceProperties.LAYOUT)
@@ -2336,23 +2317,12 @@ public final class VkInstanceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkExternalSemaphoreProperties.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceExternalSemaphorePropertiesKHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceExternalSemaphoreInfo.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkExternalSemaphoreProperties.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceFeatures = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceFeatures.LAYOUT)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceFeatures2 = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceFeatures2.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceFeatures2KHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceFeatures2.LAYOUT)
         );
@@ -2364,12 +2334,6 @@ public final class VkInstanceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceFormatProperties2 = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(VkFormatProperties2.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceFormatProperties2KHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS.withTargetLayout(VkFormatProperties2.LAYOUT)
@@ -2393,24 +2357,12 @@ public final class VkInstanceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkImageFormatProperties2.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceImageFormatProperties2KHR = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceImageFormatInfo2.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkImageFormatProperties2.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceMemoryProperties = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceMemoryProperties.LAYOUT)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceMemoryProperties2 = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceMemoryProperties2.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceMemoryProperties2KHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceMemoryProperties2.LAYOUT)
         );
@@ -2425,11 +2377,6 @@ public final class VkInstanceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceProperties2.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceProperties2KHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceProperties2.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceQueueFamilyProperties = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
@@ -2437,12 +2384,6 @@ public final class VkInstanceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceQueueFamilyProperties2 = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(VkQueueFamilyProperties2.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceQueueFamilyProperties2KHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
             ValueLayout.ADDRESS.withTargetLayout(VkQueueFamilyProperties2.LAYOUT)
@@ -2467,13 +2408,6 @@ public final class VkInstanceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceSparseImageFormatProperties2 = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceSparseImageFormatInfo2.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(VkSparseImageFormatProperties2.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceSparseImageFormatProperties2KHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceSparseImageFormatInfo2.LAYOUT),
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
@@ -2615,5 +2549,6 @@ public final class VkInstanceCommands {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS.withTargetLayout(VkDebugUtilsMessengerCallbackDataEXT.LAYOUT)
         );
+
     }
 }

@@ -13554,13 +13554,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkBindBufferMemoryInfo.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkBindBufferMemory2KHR = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(VkBindBufferMemoryInfo.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkBindImageMemory = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
@@ -13570,13 +13563,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkBindImageMemory2 = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(VkBindImageMemoryInfo.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkBindImageMemory2KHR = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
@@ -13654,18 +13640,7 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkSubpassBeginInfo.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdBeginRenderPass2KHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkRenderPassBeginInfo.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkSubpassBeginInfo.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdBeginRendering = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkRenderingInfo.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdBeginRenderingKHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkRenderingInfo.LAYOUT)
         );
@@ -13717,11 +13692,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkBindDescriptorSetsInfo.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdBindDescriptorSets2KHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkBindDescriptorSetsInfo.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdBindIndexBuffer = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
@@ -13730,14 +13700,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkCmdBindIndexBuffer2 = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_LONG,
-            ValueLayout.JAVA_LONG,
-            ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdBindIndexBuffer2KHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_LONG,
@@ -13809,16 +13771,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdBindVertexBuffers2EXT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdBlitImage = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
@@ -13831,11 +13783,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkCmdBlitImage2 = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkBlitImageInfo2.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdBlitImage2KHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkBlitImageInfo2.LAYOUT)
         );
@@ -13951,11 +13898,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkCopyBufferInfo2.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdCopyBuffer2KHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkCopyBufferInfo2.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdCopyBufferToImage = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
@@ -13966,11 +13908,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkCmdCopyBufferToImage2 = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkCopyBufferToImageInfo2.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdCopyBufferToImage2KHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkCopyBufferToImageInfo2.LAYOUT)
         );
@@ -13990,11 +13927,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkCopyImageInfo2.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdCopyImage2KHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkCopyImageInfo2.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdCopyImageToBuffer = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
@@ -14005,11 +13937,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkCmdCopyImageToBuffer2 = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkCopyImageToBufferInfo2.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdCopyImageToBuffer2KHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkCopyImageToBufferInfo2.LAYOUT)
         );
@@ -14121,16 +14048,6 @@ public final class VkDeviceCommands {
             ValueLayout.JAVA_INT
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdDispatchBaseKHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdDispatchGraphAMDX = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_LONG,
@@ -14210,26 +14127,6 @@ public final class VkDeviceCommands {
             ValueLayout.JAVA_INT
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdDrawIndexedIndirectCountAMD = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_LONG,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_LONG,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdDrawIndexedIndirectCountKHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_LONG,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_LONG,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdDrawIndirect = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
@@ -14249,26 +14146,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkCmdDrawIndirectCount = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_LONG,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_LONG,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdDrawIndirectCountAMD = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_LONG,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_LONG,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdDrawIndirectCountKHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_LONG,
@@ -14382,11 +14259,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkSubpassEndInfo.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdEndRenderPass2KHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkSubpassEndInfo.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdEndRendering = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS
         );
@@ -14394,10 +14266,6 @@ public final class VkDeviceCommands {
         public static final FunctionDescriptor DESCRIPTOR$vkCmdEndRendering2EXT = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkRenderingEndInfoEXT.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdEndRenderingKHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkCmdEndTransformFeedbackEXT = FunctionDescriptor.ofVoid(
@@ -14457,12 +14325,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkSubpassEndInfo.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdNextSubpass2KHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkSubpassBeginInfo.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkSubpassEndInfo.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdOpticalFlowExecuteNV = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
@@ -14483,11 +14345,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkCmdPipelineBarrier2 = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkDependencyInfo.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdPipelineBarrier2KHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkDependencyInfo.LAYOUT)
         );
@@ -14517,11 +14374,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkPushConstantsInfo.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdPushConstants2KHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkPushConstantsInfo.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdPushDescriptorSet = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
@@ -14534,20 +14386,6 @@ public final class VkDeviceCommands {
         public static final FunctionDescriptor DESCRIPTOR$vkCmdPushDescriptorSet2 = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkPushDescriptorSetInfo.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdPushDescriptorSet2KHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkPushDescriptorSetInfo.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdPushDescriptorSetKHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(VkWriteDescriptorSet.LAYOUT)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkCmdPushDescriptorSetWithTemplate = FunctionDescriptor.ofVoid(
@@ -14563,19 +14401,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkPushDescriptorSetWithTemplateInfo.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdPushDescriptorSetWithTemplate2KHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkPushDescriptorSetWithTemplateInfo.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdPushDescriptorSetWithTemplateKHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdRefreshObjectsKHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkRefreshObjectListKHR.LAYOUT)
@@ -14588,12 +14413,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkCmdResetEvent2 = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_LONG
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdResetEvent2KHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_LONG
@@ -14617,11 +14436,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkCmdResolveImage2 = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkResolveImageInfo2.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdResolveImage2KHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkResolveImageInfo2.LAYOUT)
         );
@@ -14733,11 +14547,6 @@ public final class VkDeviceCommands {
             ValueLayout.JAVA_INT
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetCullModeEXT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdSetDepthBias = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_FLOAT,
@@ -14755,11 +14564,6 @@ public final class VkDeviceCommands {
             ValueLayout.JAVA_INT
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetDepthBiasEnableEXT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdSetDepthBounds = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_FLOAT,
@@ -14767,11 +14571,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkCmdSetDepthBoundsTestEnable = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetDepthBoundsTestEnableEXT = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT
         );
@@ -14802,27 +14601,12 @@ public final class VkDeviceCommands {
             ValueLayout.JAVA_INT
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetDepthCompareOpEXT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdSetDepthTestEnable = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetDepthTestEnableEXT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdSetDepthWriteEnable = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetDepthWriteEnableEXT = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT
         );
@@ -14843,11 +14627,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkCmdSetDeviceMask = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetDeviceMaskKHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT
         );
@@ -14876,12 +14655,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkCmdSetEvent2 = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkDependencyInfo.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetEvent2KHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkDependencyInfo.LAYOUT)
@@ -14923,11 +14696,6 @@ public final class VkDeviceCommands {
             ValueLayout.JAVA_INT
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetFrontFaceEXT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdSetLineRasterizationModeEXT = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT
@@ -14939,21 +14707,9 @@ public final class VkDeviceCommands {
             ValueLayout.JAVA_SHORT
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetLineStippleEXT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_SHORT
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdSetLineStippleEnableEXT = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetLineStippleKHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_SHORT
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkCmdSetLineWidth = FunctionDescriptor.ofVoid(
@@ -15004,17 +14760,7 @@ public final class VkDeviceCommands {
             ValueLayout.JAVA_INT
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetPrimitiveRestartEnableEXT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdSetPrimitiveTopology = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetPrimitiveTopologyEXT = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT
         );
@@ -15039,11 +14785,6 @@ public final class VkDeviceCommands {
             ValueLayout.JAVA_INT
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetRasterizerDiscardEnableEXT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdSetRayTracingPipelineStackSizeKHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT
@@ -15054,17 +14795,7 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkRenderingAttachmentLocationInfo.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetRenderingAttachmentLocationsKHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkRenderingAttachmentLocationInfo.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdSetRenderingInputAttachmentIndices = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkRenderingInputAttachmentIndexInfo.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetRenderingInputAttachmentIndicesKHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkRenderingInputAttachmentIndexInfo.LAYOUT)
         );
@@ -15103,12 +14834,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetScissorWithCountEXT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdSetShadingRateImageEnableNV = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT
@@ -15129,15 +14854,6 @@ public final class VkDeviceCommands {
             ValueLayout.JAVA_INT
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetStencilOpEXT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdSetStencilReference = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
@@ -15145,11 +14861,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkCmdSetStencilTestEnable = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetStencilTestEnableEXT = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT
         );
@@ -15207,12 +14918,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkCmdSetViewportWithCount = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(VkViewport.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdSetViewportWithCountEXT = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS.withTargetLayout(VkViewport.LAYOUT)
@@ -15300,13 +15005,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkDependencyInfo.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdWaitEvents2KHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS),
-            ValueLayout.ADDRESS.withTargetLayout(VkDependencyInfo.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCmdWriteAccelerationStructuresPropertiesKHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
@@ -15364,13 +15062,6 @@ public final class VkDeviceCommands {
             ValueLayout.JAVA_INT
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCmdWriteTimestamp2KHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_LONG,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCompileDeferredNV = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
@@ -15404,19 +15095,7 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkCopyImageToImageInfo.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCopyImageToImageEXT = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkCopyImageToImageInfo.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCopyImageToMemory = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkCopyImageToMemoryInfo.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCopyImageToMemoryEXT = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkCopyImageToMemoryInfo.LAYOUT)
@@ -15430,12 +15109,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkCopyMemoryToImage = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkCopyMemoryToImageInfo.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCopyMemoryToImageEXT = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkCopyMemoryToImageInfo.LAYOUT)
@@ -15583,14 +15256,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCreateDescriptorUpdateTemplateKHR = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkDescriptorUpdateTemplateCreateInfo.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkAllocationCallbacks.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCreateEvent = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
@@ -15731,14 +15396,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCreatePrivateDataSlotEXT = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkPrivateDataSlotCreateInfo.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkAllocationCallbacks.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCreateQueryPool = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
@@ -15784,14 +15441,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkCreateRenderPass2KHR = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkRenderPassCreateInfo2.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkAllocationCallbacks.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkCreateSampler = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
@@ -15801,14 +15450,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkCreateSamplerYcbcrConversion = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkSamplerYcbcrConversionCreateInfo.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkAllocationCallbacks.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkCreateSamplerYcbcrConversionKHR = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkSamplerYcbcrConversionCreateInfo.LAYOUT),
@@ -15992,12 +15633,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkAllocationCallbacks.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkDestroyDescriptorUpdateTemplateKHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkAllocationCallbacks.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkDestroyDevice = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkAllocationCallbacks.LAYOUT)
@@ -16099,12 +15734,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkAllocationCallbacks.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkDestroyPrivateDataSlotEXT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkAllocationCallbacks.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkDestroyQueryPool = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
@@ -16124,12 +15753,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkDestroySamplerYcbcrConversion = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkAllocationCallbacks.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkDestroySamplerYcbcrConversionKHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkAllocationCallbacks.LAYOUT)
@@ -16297,18 +15920,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkBufferDeviceAddressInfo.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkGetBufferDeviceAddressEXT = FunctionDescriptor.of(
-            ValueLayout.JAVA_LONG,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkBufferDeviceAddressInfo.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetBufferDeviceAddressKHR = FunctionDescriptor.of(
-            ValueLayout.JAVA_LONG,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkBufferDeviceAddressInfo.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkGetBufferMemoryRequirements = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
@@ -16321,19 +15932,7 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkMemoryRequirements2.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkGetBufferMemoryRequirements2KHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkBufferMemoryRequirementsInfo2.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkMemoryRequirements2.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkGetBufferOpaqueCaptureAddress = FunctionDescriptor.of(
-            ValueLayout.JAVA_LONG,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkBufferDeviceAddressInfo.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetBufferOpaqueCaptureAddressKHR = FunctionDescriptor.of(
             ValueLayout.JAVA_LONG,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkBufferDeviceAddressInfo.LAYOUT)
@@ -16344,15 +15943,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkBufferCaptureDescriptorDataInfoEXT.LAYOUT),
             ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetCalibratedTimestampsEXT = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(VkCalibratedTimestampInfoKHR.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkGetCalibratedTimestampsKHR = FunctionDescriptor.of(
@@ -16428,12 +16018,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkDescriptorSetLayoutSupport.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkGetDescriptorSetLayoutSupportKHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkDescriptorSetLayoutCreateInfo.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkDescriptorSetLayoutSupport.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkGetDeviceAccelerationStructureCompatibilityKHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkAccelerationStructureVersionInfoKHR.LAYOUT),
@@ -16441,12 +16025,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkGetDeviceBufferMemoryRequirements = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkDeviceBufferMemoryRequirements.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkMemoryRequirements2.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetDeviceBufferMemoryRequirementsKHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkDeviceBufferMemoryRequirements.LAYOUT),
             ValueLayout.ADDRESS.withTargetLayout(VkMemoryRequirements2.LAYOUT)
@@ -16460,14 +16038,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkGetDeviceGroupPeerMemoryFeatures = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetDeviceGroupPeerMemoryFeaturesKHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
             ValueLayout.JAVA_INT,
@@ -16501,20 +16071,7 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkMemoryRequirements2.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkGetDeviceImageMemoryRequirementsKHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkDeviceImageMemoryRequirements.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkMemoryRequirements2.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkGetDeviceImageSparseMemoryRequirements = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkDeviceImageMemoryRequirements.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(VkSparseImageMemoryRequirements2.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetDeviceImageSparseMemoryRequirementsKHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkDeviceImageMemoryRequirements.LAYOUT),
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
@@ -16527,12 +16084,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkSubresourceLayout2.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkGetDeviceImageSubresourceLayoutKHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkDeviceImageSubresourceInfo.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkSubresourceLayout2.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkGetDeviceMemoryCommitment = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
@@ -16540,12 +16091,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkGetDeviceMemoryOpaqueCaptureAddress = FunctionDescriptor.of(
-            ValueLayout.JAVA_LONG,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkDeviceMemoryOpaqueCaptureAddressInfo.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetDeviceMemoryOpaqueCaptureAddressKHR = FunctionDescriptor.of(
             ValueLayout.JAVA_LONG,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkDeviceMemoryOpaqueCaptureAddressInfo.LAYOUT)
@@ -16693,12 +16238,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkMemoryRequirements2.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkGetImageMemoryRequirements2KHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkImageMemoryRequirementsInfo2.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkMemoryRequirements2.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkGetImageOpaqueCaptureDescriptorDataEXT = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
@@ -16720,13 +16259,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkSparseImageMemoryRequirements2.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkGetImageSparseMemoryRequirements2KHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkImageSparseMemoryRequirementsInfo2.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(VkSparseImageMemoryRequirements2.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkGetImageSubresourceLayout = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
@@ -16735,20 +16267,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkGetImageSubresourceLayout2 = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkImageSubresource2.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkSubresourceLayout2.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetImageSubresourceLayout2EXT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkImageSubresource2.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkSubresourceLayout2.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetImageSubresourceLayout2KHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkImageSubresource2.LAYOUT),
@@ -16912,13 +16430,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkPerformanceValueINTEL.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceCalibrateableTimeDomainsEXT = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
@@ -17032,13 +16543,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceToolPropertiesEXT = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceToolProperties.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceVideoCapabilitiesKHR = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
@@ -17136,14 +16640,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPrivateDataEXT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_LONG,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkGetQueryPoolResults = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
@@ -17188,16 +16684,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkGetRayTracingShaderGroupHandlesNV = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            NativeLayout.C_SIZE_T,
-            ValueLayout.ADDRESS
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkGetRayTracingShaderGroupStackSizeKHR = FunctionDescriptor.of(
             ValueLayout.JAVA_LONG,
             ValueLayout.ADDRESS,
@@ -17225,12 +16711,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkExtent2D.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkGetRenderingAreaGranularityKHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkRenderingAreaInfo.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkExtent2D.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkGetSamplerOpaqueCaptureDescriptorDataEXT = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
@@ -17246,13 +16726,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkGetSemaphoreCounterValue = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetSemaphoreCounterValueKHR = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
@@ -17447,13 +16920,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkMapMemory2KHR = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkMemoryMapInfo.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkMergePipelineCaches = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
@@ -17504,14 +16970,6 @@ public final class VkDeviceCommands {
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkQueueSubmit2 = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(VkSubmitInfo2.LAYOUT),
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkQueueSubmit2KHR = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
@@ -17610,13 +17068,6 @@ public final class VkDeviceCommands {
             ValueLayout.JAVA_INT
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkResetQueryPoolEXT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkSetBufferCollectionBufferConstraintsFUCHSIA = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
@@ -17678,22 +17129,7 @@ public final class VkDeviceCommands {
             ValueLayout.JAVA_LONG
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkSetPrivateDataEXT = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_LONG,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_LONG
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkSignalSemaphore = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkSemaphoreSignalInfo.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkSignalSemaphoreKHR = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkSemaphoreSignalInfo.LAYOUT)
@@ -17706,20 +17142,7 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkHostImageLayoutTransitionInfo.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkTransitionImageLayoutEXT = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(VkHostImageLayoutTransitionInfo.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkTrimCommandPool = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkTrimCommandPoolKHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT
@@ -17740,20 +17163,7 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkMemoryUnmapInfo.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkUnmapMemory2KHR = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkMemoryUnmapInfo.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkUpdateDescriptorSetWithTemplate = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkUpdateDescriptorSetWithTemplateKHR = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
@@ -17813,13 +17223,6 @@ public final class VkDeviceCommands {
             ValueLayout.JAVA_LONG
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkWaitSemaphoresKHR = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkSemaphoreWaitInfo.LAYOUT),
-            ValueLayout.JAVA_LONG
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkWriteAccelerationStructuresPropertiesKHR = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
@@ -17841,5 +17244,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS,
             NativeLayout.C_SIZE_T
         );
+
     }
 }
