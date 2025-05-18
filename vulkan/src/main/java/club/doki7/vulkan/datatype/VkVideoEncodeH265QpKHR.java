@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkVideoEncodeH265QpKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkVideoEncodeH265QpKHR allocate(Arena arena) {
-        VkVideoEncodeH265QpKHR ret = new VkVideoEncodeH265QpKHR(arena.allocate(LAYOUT));
-        return ret;
+        return new VkVideoEncodeH265QpKHR(arena.allocate(LAYOUT));
     }
 
     public static VkVideoEncodeH265QpKHR[] allocate(Arena arena, int count) {

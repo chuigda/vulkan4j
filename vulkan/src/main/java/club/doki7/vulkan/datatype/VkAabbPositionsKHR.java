@@ -44,8 +44,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkAabbPositionsKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkAabbPositionsKHR allocate(Arena arena) {
-        VkAabbPositionsKHR ret = new VkAabbPositionsKHR(arena.allocate(LAYOUT));
-        return ret;
+        return new VkAabbPositionsKHR(arena.allocate(LAYOUT));
     }
 
     public static VkAabbPositionsKHR[] allocate(Arena arena, int count) {

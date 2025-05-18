@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkClusterAccelerationStructureOpInputNV allocate(Arena arena) {
-        VkClusterAccelerationStructureOpInputNV ret = new VkClusterAccelerationStructureOpInputNV(arena.allocate(LAYOUT));
-        return ret;
+        return new VkClusterAccelerationStructureOpInputNV(arena.allocate(LAYOUT));
     }
 
     public static VkClusterAccelerationStructureOpInputNV[] allocate(Arena arena, int count) {

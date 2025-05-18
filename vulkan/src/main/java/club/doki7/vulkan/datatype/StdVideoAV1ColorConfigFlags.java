@@ -42,8 +42,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1ColorConfigFlags allocate(Arena arena) {
-        StdVideoAV1ColorConfigFlags ret = new StdVideoAV1ColorConfigFlags(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoAV1ColorConfigFlags(arena.allocate(LAYOUT));
     }
 
     public static StdVideoAV1ColorConfigFlags[] allocate(Arena arena, int count) {

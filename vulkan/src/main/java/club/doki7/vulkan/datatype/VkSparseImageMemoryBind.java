@@ -44,8 +44,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements IPointer {
     public static VkSparseImageMemoryBind allocate(Arena arena) {
-        VkSparseImageMemoryBind ret = new VkSparseImageMemoryBind(arena.allocate(LAYOUT));
-        return ret;
+        return new VkSparseImageMemoryBind(arena.allocate(LAYOUT));
     }
 
     public static VkSparseImageMemoryBind[] allocate(Arena arena, int count) {

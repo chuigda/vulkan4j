@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkDeviceFaultAddressInfoEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkDeviceFaultAddressInfoEXT allocate(Arena arena) {
-        VkDeviceFaultAddressInfoEXT ret = new VkDeviceFaultAddressInfoEXT(arena.allocate(LAYOUT));
-        return ret;
+        return new VkDeviceFaultAddressInfoEXT(arena.allocate(LAYOUT));
     }
 
     public static VkDeviceFaultAddressInfoEXT[] allocate(Arena arena, int count) {

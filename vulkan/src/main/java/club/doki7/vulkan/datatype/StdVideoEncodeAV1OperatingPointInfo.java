@@ -43,8 +43,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeAV1OperatingPointInfo allocate(Arena arena) {
-        StdVideoEncodeAV1OperatingPointInfo ret = new StdVideoEncodeAV1OperatingPointInfo(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoEncodeAV1OperatingPointInfo(arena.allocate(LAYOUT));
     }
 
     public static StdVideoEncodeAV1OperatingPointInfo[] allocate(Arena arena, int count) {

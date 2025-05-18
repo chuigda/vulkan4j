@@ -39,8 +39,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkBindShaderGroupIndirectCommandNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkBindShaderGroupIndirectCommandNV allocate(Arena arena) {
-        VkBindShaderGroupIndirectCommandNV ret = new VkBindShaderGroupIndirectCommandNV(arena.allocate(LAYOUT));
-        return ret;
+        return new VkBindShaderGroupIndirectCommandNV(arena.allocate(LAYOUT));
     }
 
     public static VkBindShaderGroupIndirectCommandNV[] allocate(Arena arena, int count) {

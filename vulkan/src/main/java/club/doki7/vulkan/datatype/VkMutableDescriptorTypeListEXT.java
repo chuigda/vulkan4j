@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkMutableDescriptorTypeListEXT allocate(Arena arena) {
-        VkMutableDescriptorTypeListEXT ret = new VkMutableDescriptorTypeListEXT(arena.allocate(LAYOUT));
-        return ret;
+        return new VkMutableDescriptorTypeListEXT(arena.allocate(LAYOUT));
     }
 
     public static VkMutableDescriptorTypeListEXT[] allocate(Arena arena, int count) {

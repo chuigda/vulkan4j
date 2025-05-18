@@ -43,8 +43,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1LoopFilter allocate(Arena arena) {
-        StdVideoAV1LoopFilter ret = new StdVideoAV1LoopFilter(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoAV1LoopFilter(arena.allocate(LAYOUT));
     }
 
     public static StdVideoAV1LoopFilter[] allocate(Arena arena, int count) {

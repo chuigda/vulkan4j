@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkDepthClampRangeEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkDepthClampRangeEXT allocate(Arena arena) {
-        VkDepthClampRangeEXT ret = new VkDepthClampRangeEXT(arena.allocate(LAYOUT));
-        return ret;
+        return new VkDepthClampRangeEXT(arena.allocate(LAYOUT));
     }
 
     public static VkDepthClampRangeEXT[] allocate(Arena arena, int count) {

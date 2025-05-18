@@ -42,8 +42,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkImageBlit(@NotNull MemorySegment segment) implements IPointer {
     public static VkImageBlit allocate(Arena arena) {
-        VkImageBlit ret = new VkImageBlit(arena.allocate(LAYOUT));
-        return ret;
+        return new VkImageBlit(arena.allocate(LAYOUT));
     }
 
     public static VkImageBlit[] allocate(Arena arena, int count) {

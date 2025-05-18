@@ -43,8 +43,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkSubresourceLayout(@NotNull MemorySegment segment) implements IPointer {
     public static VkSubresourceLayout allocate(Arena arena) {
-        VkSubresourceLayout ret = new VkSubresourceLayout(arena.allocate(LAYOUT));
-        return ret;
+        return new VkSubresourceLayout(arena.allocate(LAYOUT));
     }
 
     public static VkSubresourceLayout[] allocate(Arena arena, int count) {

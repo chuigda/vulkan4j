@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkPipelineBinaryDataKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkPipelineBinaryDataKHR allocate(Arena arena) {
-        VkPipelineBinaryDataKHR ret = new VkPipelineBinaryDataKHR(arena.allocate(LAYOUT));
-        return ret;
+        return new VkPipelineBinaryDataKHR(arena.allocate(LAYOUT));
     }
 
     public static VkPipelineBinaryDataKHR[] allocate(Arena arena, int count) {

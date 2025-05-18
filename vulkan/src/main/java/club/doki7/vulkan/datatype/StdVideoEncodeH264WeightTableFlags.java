@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeH264WeightTableFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeH264WeightTableFlags allocate(Arena arena) {
-        StdVideoEncodeH264WeightTableFlags ret = new StdVideoEncodeH264WeightTableFlags(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoEncodeH264WeightTableFlags(arena.allocate(LAYOUT));
     }
 
     public static StdVideoEncodeH264WeightTableFlags[] allocate(Arena arena, int count) {

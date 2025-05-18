@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkMicromapTriangleEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkMicromapTriangleEXT allocate(Arena arena) {
-        VkMicromapTriangleEXT ret = new VkMicromapTriangleEXT(arena.allocate(LAYOUT));
-        return ret;
+        return new VkMicromapTriangleEXT(arena.allocate(LAYOUT));
     }
 
     public static VkMicromapTriangleEXT[] allocate(Arena arena, int count) {

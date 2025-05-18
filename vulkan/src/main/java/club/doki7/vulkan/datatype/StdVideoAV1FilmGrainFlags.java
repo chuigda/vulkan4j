@@ -42,8 +42,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1FilmGrainFlags allocate(Arena arena) {
-        StdVideoAV1FilmGrainFlags ret = new StdVideoAV1FilmGrainFlags(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoAV1FilmGrainFlags(arena.allocate(LAYOUT));
     }
 
     public static StdVideoAV1FilmGrainFlags[] allocate(Arena arena, int count) {

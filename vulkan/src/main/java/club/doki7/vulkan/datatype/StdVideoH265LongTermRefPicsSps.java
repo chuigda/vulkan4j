@@ -38,8 +38,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265LongTermRefPicsSps allocate(Arena arena) {
-        StdVideoH265LongTermRefPicsSps ret = new StdVideoH265LongTermRefPicsSps(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoH265LongTermRefPicsSps(arena.allocate(LAYOUT));
     }
 
     public static StdVideoH265LongTermRefPicsSps[] allocate(Arena arena, int count) {

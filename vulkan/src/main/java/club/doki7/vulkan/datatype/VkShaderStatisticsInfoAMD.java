@@ -45,8 +45,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implements IPointer {
     public static VkShaderStatisticsInfoAMD allocate(Arena arena) {
-        VkShaderStatisticsInfoAMD ret = new VkShaderStatisticsInfoAMD(arena.allocate(LAYOUT));
-        return ret;
+        return new VkShaderStatisticsInfoAMD(arena.allocate(LAYOUT));
     }
 
     public static VkShaderStatisticsInfoAMD[] allocate(Arena arena, int count) {

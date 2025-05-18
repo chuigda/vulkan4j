@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkDrmFormatModifierPropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkDrmFormatModifierPropertiesEXT allocate(Arena arena) {
-        VkDrmFormatModifierPropertiesEXT ret = new VkDrmFormatModifierPropertiesEXT(arena.allocate(LAYOUT));
-        return ret;
+        return new VkDrmFormatModifierPropertiesEXT(arena.allocate(LAYOUT));
     }
 
     public static VkDrmFormatModifierPropertiesEXT[] allocate(Arena arena, int count) {

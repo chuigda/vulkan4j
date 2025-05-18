@@ -43,8 +43,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implements IPointer {
     public static VkPerformanceValueDataINTEL allocate(Arena arena) {
-        VkPerformanceValueDataINTEL ret = new VkPerformanceValueDataINTEL(arena.allocate(LAYOUT));
-        return ret;
+        return new VkPerformanceValueDataINTEL(arena.allocate(LAYOUT));
     }
 
     public static VkPerformanceValueDataINTEL[] allocate(Arena arena, int count) {

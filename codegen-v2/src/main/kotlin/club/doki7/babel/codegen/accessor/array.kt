@@ -22,22 +22,20 @@ fun generateArrayAccessor(type: CArrayType, member: LayoutField.Typed): Doc {
 }
 
 private fun generateNonRefArrayAccessor(elementType: CNonRefType, member: LayoutField.Typed) = buildDoc {
-    val fnRaw = "${member.name}Raw"
-
-    defun("public", "MemorySegment", fnRaw) {
-        +"return segment.asSlice(${member.offsetName}, ${member.sizeName});"
-    }
-
-    +""
+    val rawName = "${member.name}Raw"
 
     defun("public", elementType.jPtrType, member.name) {
-        +"return new ${elementType.jPtrTypeNoAnnotation}($fnRaw);"
+        +"return new ${elementType.jPtrTypeNoAnnotation}($rawName());"
     }
-
     +""
 
     defun("public", "void", member.name, "${elementType.jPtrType} value") {
         +"MemorySegment.copy(value.segment(), 0, segment, ${member.offsetName}, ${member.sizeName});"
+    }
+    +""
+
+    defun("public", "MemorySegment", rawName) {
+        +"return segment.asSlice(${member.offsetName}, ${member.sizeName});"
     }
 }
 

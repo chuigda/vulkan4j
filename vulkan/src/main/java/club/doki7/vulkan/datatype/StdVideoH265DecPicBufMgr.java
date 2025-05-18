@@ -39,8 +39,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265DecPicBufMgr allocate(Arena arena) {
-        StdVideoH265DecPicBufMgr ret = new StdVideoH265DecPicBufMgr(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoH265DecPicBufMgr(arena.allocate(LAYOUT));
     }
 
     public static StdVideoH265DecPicBufMgr[] allocate(Arena arena, int count) {

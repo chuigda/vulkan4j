@@ -42,8 +42,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265ScalingLists allocate(Arena arena) {
-        StdVideoH265ScalingLists ret = new StdVideoH265ScalingLists(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoH265ScalingLists(arena.allocate(LAYOUT));
     }
 
     public static StdVideoH265ScalingLists[] allocate(Arena arena, int count) {

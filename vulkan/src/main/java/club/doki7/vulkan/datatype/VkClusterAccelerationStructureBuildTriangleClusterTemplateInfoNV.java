@@ -57,8 +57,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV allocate(Arena arena) {
-        VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV ret = new VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV(arena.allocate(LAYOUT));
-        return ret;
+        return new VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV(arena.allocate(LAYOUT));
     }
 
     public static VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV[] allocate(Arena arena, int count) {

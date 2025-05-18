@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkExtensionProperties(@NotNull MemorySegment segment) implements IPointer {
     public static VkExtensionProperties allocate(Arena arena) {
-        VkExtensionProperties ret = new VkExtensionProperties(arena.allocate(LAYOUT));
-        return ret;
+        return new VkExtensionProperties(arena.allocate(LAYOUT));
     }
 
     public static VkExtensionProperties[] allocate(Arena arena, int count) {

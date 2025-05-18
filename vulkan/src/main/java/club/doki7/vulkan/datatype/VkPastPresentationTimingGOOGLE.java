@@ -43,8 +43,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) implements IPointer {
     public static VkPastPresentationTimingGOOGLE allocate(Arena arena) {
-        VkPastPresentationTimingGOOGLE ret = new VkPastPresentationTimingGOOGLE(arena.allocate(LAYOUT));
-        return ret;
+        return new VkPastPresentationTimingGOOGLE(arena.allocate(LAYOUT));
     }
 
     public static VkPastPresentationTimingGOOGLE[] allocate(Arena arena, int count) {

@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkSubpassSampleLocationsEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkSubpassSampleLocationsEXT allocate(Arena arena) {
-        VkSubpassSampleLocationsEXT ret = new VkSubpassSampleLocationsEXT(arena.allocate(LAYOUT));
-        return ret;
+        return new VkSubpassSampleLocationsEXT(arena.allocate(LAYOUT));
     }
 
     public static VkSubpassSampleLocationsEXT[] allocate(Arena arena, int count) {

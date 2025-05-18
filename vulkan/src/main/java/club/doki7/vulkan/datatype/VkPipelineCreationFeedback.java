@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) implements IPointer {
     public static VkPipelineCreationFeedback allocate(Arena arena) {
-        VkPipelineCreationFeedback ret = new VkPipelineCreationFeedback(arena.allocate(LAYOUT));
-        return ret;
+        return new VkPipelineCreationFeedback(arena.allocate(LAYOUT));
     }
 
     public static VkPipelineCreationFeedback[] allocate(Arena arena, int count) {

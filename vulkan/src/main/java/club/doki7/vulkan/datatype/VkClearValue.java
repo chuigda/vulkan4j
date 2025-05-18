@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkClearValue(@NotNull MemorySegment segment) implements IPointer {
     public static VkClearValue allocate(Arena arena) {
-        VkClearValue ret = new VkClearValue(arena.allocate(LAYOUT));
-        return ret;
+        return new VkClearValue(arena.allocate(LAYOUT));
     }
 
     public static VkClearValue[] allocate(Arena arena, int count) {

@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IPointer {
     public static VkBaseOutStructure allocate(Arena arena) {
-        VkBaseOutStructure ret = new VkBaseOutStructure(arena.allocate(LAYOUT));
-        return ret;
+        return new VkBaseOutStructure(arena.allocate(LAYOUT));
     }
 
     public static VkBaseOutStructure[] allocate(Arena arena, int count) {

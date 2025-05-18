@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeH265ReferenceInfo(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeH265ReferenceInfo allocate(Arena arena) {
-        StdVideoEncodeH265ReferenceInfo ret = new StdVideoEncodeH265ReferenceInfo(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoEncodeH265ReferenceInfo(arena.allocate(LAYOUT));
     }
 
     public static StdVideoEncodeH265ReferenceInfo[] allocate(Arena arena, int count) {

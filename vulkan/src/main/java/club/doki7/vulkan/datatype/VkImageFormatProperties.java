@@ -43,8 +43,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkImageFormatProperties(@NotNull MemorySegment segment) implements IPointer {
     public static VkImageFormatProperties allocate(Arena arena) {
-        VkImageFormatProperties ret = new VkImageFormatProperties(arena.allocate(LAYOUT));
-        return ret;
+        return new VkImageFormatProperties(arena.allocate(LAYOUT));
     }
 
     public static VkImageFormatProperties[] allocate(Arena arena, int count) {

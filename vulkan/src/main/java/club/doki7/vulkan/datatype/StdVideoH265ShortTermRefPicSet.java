@@ -50,8 +50,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265ShortTermRefPicSet allocate(Arena arena) {
-        StdVideoH265ShortTermRefPicSet ret = new StdVideoH265ShortTermRefPicSet(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoH265ShortTermRefPicSet(arena.allocate(LAYOUT));
     }
 
     public static StdVideoH265ShortTermRefPicSet[] allocate(Arena arena, int count) {

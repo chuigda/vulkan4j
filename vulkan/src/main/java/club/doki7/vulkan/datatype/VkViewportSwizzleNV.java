@@ -42,8 +42,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkViewportSwizzleNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkViewportSwizzleNV allocate(Arena arena) {
-        VkViewportSwizzleNV ret = new VkViewportSwizzleNV(arena.allocate(LAYOUT));
-        return ret;
+        return new VkViewportSwizzleNV(arena.allocate(LAYOUT));
     }
 
     public static VkViewportSwizzleNV[] allocate(Arena arena, int count) {

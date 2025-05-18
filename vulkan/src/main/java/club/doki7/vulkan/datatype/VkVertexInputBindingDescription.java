@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkVertexInputBindingDescription(@NotNull MemorySegment segment) implements IPointer {
     public static VkVertexInputBindingDescription allocate(Arena arena) {
-        VkVertexInputBindingDescription ret = new VkVertexInputBindingDescription(arena.allocate(LAYOUT));
-        return ret;
+        return new VkVertexInputBindingDescription(arena.allocate(LAYOUT));
     }
 
     public static VkVertexInputBindingDescription[] allocate(Arena arena, int count) {

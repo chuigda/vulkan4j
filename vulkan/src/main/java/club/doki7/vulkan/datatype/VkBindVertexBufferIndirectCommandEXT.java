@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkBindVertexBufferIndirectCommandEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkBindVertexBufferIndirectCommandEXT allocate(Arena arena) {
-        VkBindVertexBufferIndirectCommandEXT ret = new VkBindVertexBufferIndirectCommandEXT(arena.allocate(LAYOUT));
-        return ret;
+        return new VkBindVertexBufferIndirectCommandEXT(arena.allocate(LAYOUT));
     }
 
     public static VkBindVertexBufferIndirectCommandEXT[] allocate(Arena arena, int count) {

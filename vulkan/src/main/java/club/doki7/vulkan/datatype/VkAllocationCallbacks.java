@@ -44,8 +44,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements IPointer {
     public static VkAllocationCallbacks allocate(Arena arena) {
-        VkAllocationCallbacks ret = new VkAllocationCallbacks(arena.allocate(LAYOUT));
-        return ret;
+        return new VkAllocationCallbacks(arena.allocate(LAYOUT));
     }
 
     public static VkAllocationCallbacks[] allocate(Arena arena, int count) {

@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkExtent2D(@NotNull MemorySegment segment) implements IPointer {
     public static VkExtent2D allocate(Arena arena) {
-        VkExtent2D ret = new VkExtent2D(arena.allocate(LAYOUT));
-        return ret;
+        return new VkExtent2D(arena.allocate(LAYOUT));
     }
 
     public static VkExtent2D[] allocate(Arena arena, int count) {

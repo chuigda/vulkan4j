@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkMultiDrawIndexedInfoEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkMultiDrawIndexedInfoEXT allocate(Arena arena) {
-        VkMultiDrawIndexedInfoEXT ret = new VkMultiDrawIndexedInfoEXT(arena.allocate(LAYOUT));
-        return ret;
+        return new VkMultiDrawIndexedInfoEXT(arena.allocate(LAYOUT));
     }
 
     public static VkMultiDrawIndexedInfoEXT[] allocate(Arena arena, int count) {

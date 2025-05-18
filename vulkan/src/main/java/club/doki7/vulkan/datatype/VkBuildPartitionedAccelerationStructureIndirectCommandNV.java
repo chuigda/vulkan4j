@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkBuildPartitionedAccelerationStructureIndirectCommandNV allocate(Arena arena) {
-        VkBuildPartitionedAccelerationStructureIndirectCommandNV ret = new VkBuildPartitionedAccelerationStructureIndirectCommandNV(arena.allocate(LAYOUT));
-        return ret;
+        return new VkBuildPartitionedAccelerationStructureIndirectCommandNV(arena.allocate(LAYOUT));
     }
 
     public static VkBuildPartitionedAccelerationStructureIndirectCommandNV[] allocate(Arena arena, int count) {

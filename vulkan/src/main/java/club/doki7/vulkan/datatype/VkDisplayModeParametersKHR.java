@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkDisplayModeParametersKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkDisplayModeParametersKHR allocate(Arena arena) {
-        VkDisplayModeParametersKHR ret = new VkDisplayModeParametersKHR(arena.allocate(LAYOUT));
-        return ret;
+        return new VkDisplayModeParametersKHR(arena.allocate(LAYOUT));
     }
 
     public static VkDisplayModeParametersKHR[] allocate(Arena arena, int count) {

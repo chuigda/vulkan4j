@@ -47,8 +47,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeH265WeightTable allocate(Arena arena) {
-        StdVideoEncodeH265WeightTable ret = new StdVideoEncodeH265WeightTable(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoEncodeH265WeightTable(arena.allocate(LAYOUT));
     }
 
     public static StdVideoEncodeH265WeightTable[] allocate(Arena arena, int count) {

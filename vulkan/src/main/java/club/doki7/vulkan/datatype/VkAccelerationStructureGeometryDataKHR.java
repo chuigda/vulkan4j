@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkAccelerationStructureGeometryDataKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkAccelerationStructureGeometryDataKHR allocate(Arena arena) {
-        VkAccelerationStructureGeometryDataKHR ret = new VkAccelerationStructureGeometryDataKHR(arena.allocate(LAYOUT));
-        return ret;
+        return new VkAccelerationStructureGeometryDataKHR(arena.allocate(LAYOUT));
     }
 
     public static VkAccelerationStructureGeometryDataKHR[] allocate(Arena arena, int count) {

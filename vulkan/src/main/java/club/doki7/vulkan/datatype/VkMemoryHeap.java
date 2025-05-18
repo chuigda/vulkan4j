@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkMemoryHeap(@NotNull MemorySegment segment) implements IPointer {
     public static VkMemoryHeap allocate(Arena arena) {
-        VkMemoryHeap ret = new VkMemoryHeap(arena.allocate(LAYOUT));
-        return ret;
+        return new VkMemoryHeap(arena.allocate(LAYOUT));
     }
 
     public static VkMemoryHeap[] allocate(Arena arena, int count) {

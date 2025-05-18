@@ -61,8 +61,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH264SequenceParameterSet allocate(Arena arena) {
-        StdVideoH264SequenceParameterSet ret = new StdVideoH264SequenceParameterSet(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoH264SequenceParameterSet(arena.allocate(LAYOUT));
     }
 
     public static StdVideoH264SequenceParameterSet[] allocate(Arena arena, int count) {

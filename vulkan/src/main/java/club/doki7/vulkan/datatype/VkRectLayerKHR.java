@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkRectLayerKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkRectLayerKHR allocate(Arena arena) {
-        VkRectLayerKHR ret = new VkRectLayerKHR(arena.allocate(LAYOUT));
-        return ret;
+        return new VkRectLayerKHR(arena.allocate(LAYOUT));
     }
 
     public static VkRectLayerKHR[] allocate(Arena arena, int count) {

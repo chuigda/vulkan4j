@@ -42,8 +42,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkComponentMapping(@NotNull MemorySegment segment) implements IPointer {
     public static VkComponentMapping allocate(Arena arena) {
-        VkComponentMapping ret = new VkComponentMapping(arena.allocate(LAYOUT));
-        return ret;
+        return new VkComponentMapping(arena.allocate(LAYOUT));
     }
 
     public static VkComponentMapping[] allocate(Arena arena, int count) {

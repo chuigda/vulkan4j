@@ -43,8 +43,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkPhysicalDeviceSparseProperties(@NotNull MemorySegment segment) implements IPointer {
     public static VkPhysicalDeviceSparseProperties allocate(Arena arena) {
-        VkPhysicalDeviceSparseProperties ret = new VkPhysicalDeviceSparseProperties(arena.allocate(LAYOUT));
-        return ret;
+        return new VkPhysicalDeviceSparseProperties(arena.allocate(LAYOUT));
     }
 
     public static VkPhysicalDeviceSparseProperties[] allocate(Arena arena, int count) {

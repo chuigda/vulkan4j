@@ -46,8 +46,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkPipelineColorBlendAttachmentState(@NotNull MemorySegment segment) implements IPointer {
     public static VkPipelineColorBlendAttachmentState allocate(Arena arena) {
-        VkPipelineColorBlendAttachmentState ret = new VkPipelineColorBlendAttachmentState(arena.allocate(LAYOUT));
-        return ret;
+        return new VkPipelineColorBlendAttachmentState(arena.allocate(LAYOUT));
     }
 
     public static VkPipelineColorBlendAttachmentState[] allocate(Arena arena, int count) {

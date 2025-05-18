@@ -201,16 +201,18 @@ fun generateStructure(
 
     indent {
         defun("public static", className, "allocate", "Arena arena") {
-            +"$className ret = new $className(arena.allocate(LAYOUT));"
             if (autoInitMembers.isNotEmpty()) {
+                +"$className ret = new $className(arena.allocate(LAYOUT));"
                 if (autoInitMembers.size == 1) {
                     val it = autoInitMembers.first()
                     +"ret.${it.name}(${(it.type as IdentifierType).ident}.${it.values});"
                 } else {
                     +"ret.autoInit();"
                 }
+                +"return ret;"
+            } else {
+                +"return new $className(arena.allocate(LAYOUT));"
             }
-            +"return ret;"
         }
         +""
 
@@ -228,7 +230,6 @@ fun generateStructure(
                     }
                 }
             }
-
             +"return ret;"
         }
         +""
@@ -334,7 +335,7 @@ fun generateStructure(
 
         +""
 
-        // offset
+        // offsets
         layouts.forEach { layout ->
             if (layout is LayoutField.Typed && layout.name.isUnusedReservedField()) {
                 return@forEach

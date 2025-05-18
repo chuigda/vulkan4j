@@ -42,8 +42,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1CDEF allocate(Arena arena) {
-        StdVideoAV1CDEF ret = new StdVideoAV1CDEF(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoAV1CDEF(arena.allocate(LAYOUT));
     }
 
     public static StdVideoAV1CDEF[] allocate(Arena arena, int count) {

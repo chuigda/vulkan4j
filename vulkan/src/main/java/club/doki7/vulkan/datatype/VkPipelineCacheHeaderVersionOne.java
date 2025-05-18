@@ -43,8 +43,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) implements IPointer {
     public static VkPipelineCacheHeaderVersionOne allocate(Arena arena) {
-        VkPipelineCacheHeaderVersionOne ret = new VkPipelineCacheHeaderVersionOne(arena.allocate(LAYOUT));
-        return ret;
+        return new VkPipelineCacheHeaderVersionOne(arena.allocate(LAYOUT));
     }
 
     public static VkPipelineCacheHeaderVersionOne[] allocate(Arena arena, int count) {

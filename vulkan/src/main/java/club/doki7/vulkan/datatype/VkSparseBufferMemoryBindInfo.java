@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkSparseBufferMemoryBindInfo(@NotNull MemorySegment segment) implements IPointer {
     public static VkSparseBufferMemoryBindInfo allocate(Arena arena) {
-        VkSparseBufferMemoryBindInfo ret = new VkSparseBufferMemoryBindInfo(arena.allocate(LAYOUT));
-        return ret;
+        return new VkSparseBufferMemoryBindInfo(arena.allocate(LAYOUT));
     }
 
     public static VkSparseBufferMemoryBindInfo[] allocate(Arena arena, int count) {

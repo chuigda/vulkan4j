@@ -47,8 +47,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkDisplayPlaneCapabilitiesKHR allocate(Arena arena) {
-        VkDisplayPlaneCapabilitiesKHR ret = new VkDisplayPlaneCapabilitiesKHR(arena.allocate(LAYOUT));
-        return ret;
+        return new VkDisplayPlaneCapabilitiesKHR(arena.allocate(LAYOUT));
     }
 
     public static VkDisplayPlaneCapabilitiesKHR[] allocate(Arena arena, int count) {

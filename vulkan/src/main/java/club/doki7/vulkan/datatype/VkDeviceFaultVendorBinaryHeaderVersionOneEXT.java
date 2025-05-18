@@ -49,8 +49,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkDeviceFaultVendorBinaryHeaderVersionOneEXT allocate(Arena arena) {
-        VkDeviceFaultVendorBinaryHeaderVersionOneEXT ret = new VkDeviceFaultVendorBinaryHeaderVersionOneEXT(arena.allocate(LAYOUT));
-        return ret;
+        return new VkDeviceFaultVendorBinaryHeaderVersionOneEXT(arena.allocate(LAYOUT));
     }
 
     public static VkDeviceFaultVendorBinaryHeaderVersionOneEXT[] allocate(Arena arena, int count) {

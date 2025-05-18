@@ -51,8 +51,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeH265SliceSegmentHeader allocate(Arena arena) {
-        StdVideoEncodeH265SliceSegmentHeader ret = new StdVideoEncodeH265SliceSegmentHeader(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoEncodeH265SliceSegmentHeader(arena.allocate(LAYOUT));
     }
 
     public static StdVideoEncodeH265SliceSegmentHeader[] allocate(Arena arena, int count) {

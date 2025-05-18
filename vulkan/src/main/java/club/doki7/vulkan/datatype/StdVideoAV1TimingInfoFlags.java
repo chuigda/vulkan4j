@@ -39,8 +39,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1TimingInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1TimingInfoFlags allocate(Arena arena) {
-        StdVideoAV1TimingInfoFlags ret = new StdVideoAV1TimingInfoFlags(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoAV1TimingInfoFlags(arena.allocate(LAYOUT));
     }
 
     public static StdVideoAV1TimingInfoFlags[] allocate(Arena arena, int count) {

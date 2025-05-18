@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkDescriptorPoolSize(@NotNull MemorySegment segment) implements IPointer {
     public static VkDescriptorPoolSize allocate(Arena arena) {
-        VkDescriptorPoolSize ret = new VkDescriptorPoolSize(arena.allocate(LAYOUT));
-        return ret;
+        return new VkDescriptorPoolSize(arena.allocate(LAYOUT));
     }
 
     public static VkDescriptorPoolSize[] allocate(Arena arena, int count) {

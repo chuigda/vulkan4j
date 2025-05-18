@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkGeometryDataNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkGeometryDataNV allocate(Arena arena) {
-        VkGeometryDataNV ret = new VkGeometryDataNV(arena.allocate(LAYOUT));
-        return ret;
+        return new VkGeometryDataNV(arena.allocate(LAYOUT));
     }
 
     public static VkGeometryDataNV[] allocate(Arena arena, int count) {

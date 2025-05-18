@@ -45,8 +45,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkStencilOpState(@NotNull MemorySegment segment) implements IPointer {
     public static VkStencilOpState allocate(Arena arena) {
-        VkStencilOpState ret = new VkStencilOpState(arena.allocate(LAYOUT));
-        return ret;
+        return new VkStencilOpState(arena.allocate(LAYOUT));
     }
 
     public static VkStencilOpState[] allocate(Arena arena, int count) {

@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkOffset3D(@NotNull MemorySegment segment) implements IPointer {
     public static VkOffset3D allocate(Arena arena) {
-        VkOffset3D ret = new VkOffset3D(arena.allocate(LAYOUT));
-        return ret;
+        return new VkOffset3D(arena.allocate(LAYOUT));
     }
 
     public static VkOffset3D[] allocate(Arena arena, int count) {

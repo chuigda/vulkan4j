@@ -46,8 +46,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1Quantization allocate(Arena arena) {
-        StdVideoAV1Quantization ret = new StdVideoAV1Quantization(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoAV1Quantization(arena.allocate(LAYOUT));
     }
 
     public static StdVideoAV1Quantization[] allocate(Arena arena, int count) {

@@ -37,8 +37,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoH265PredictorPaletteEntries allocate(Arena arena) {
-        StdVideoH265PredictorPaletteEntries ret = new StdVideoH265PredictorPaletteEntries(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoH265PredictorPaletteEntries(arena.allocate(LAYOUT));
     }
 
     public static StdVideoH265PredictorPaletteEntries[] allocate(Arena arena, int count) {

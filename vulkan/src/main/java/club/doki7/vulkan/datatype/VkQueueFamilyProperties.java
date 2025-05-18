@@ -42,8 +42,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements IPointer {
     public static VkQueueFamilyProperties allocate(Arena arena) {
-        VkQueueFamilyProperties ret = new VkQueueFamilyProperties(arena.allocate(LAYOUT));
-        return ret;
+        return new VkQueueFamilyProperties(arena.allocate(LAYOUT));
     }
 
     public static VkQueueFamilyProperties[] allocate(Arena arena, int count) {

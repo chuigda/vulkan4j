@@ -44,8 +44,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkColorBlendEquationEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkColorBlendEquationEXT allocate(Arena arena) {
-        VkColorBlendEquationEXT ret = new VkColorBlendEquationEXT(arena.allocate(LAYOUT));
-        return ret;
+        return new VkColorBlendEquationEXT(arena.allocate(LAYOUT));
     }
 
     public static VkColorBlendEquationEXT[] allocate(Arena arena, int count) {

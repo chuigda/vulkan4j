@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkRefreshObjectKHR allocate(Arena arena) {
-        VkRefreshObjectKHR ret = new VkRefreshObjectKHR(arena.allocate(LAYOUT));
-        return ret;
+        return new VkRefreshObjectKHR(arena.allocate(LAYOUT));
     }
 
     public static VkRefreshObjectKHR[] allocate(Arena arena, int count) {

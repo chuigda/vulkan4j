@@ -50,8 +50,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1SequenceHeader allocate(Arena arena) {
-        StdVideoAV1SequenceHeader ret = new StdVideoAV1SequenceHeader(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoAV1SequenceHeader(arena.allocate(LAYOUT));
     }
 
     public static StdVideoAV1SequenceHeader[] allocate(Arena arena, int count) {

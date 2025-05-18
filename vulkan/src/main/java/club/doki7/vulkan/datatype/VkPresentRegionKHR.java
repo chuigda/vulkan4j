@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkPresentRegionKHR allocate(Arena arena) {
-        VkPresentRegionKHR ret = new VkPresentRegionKHR(arena.allocate(LAYOUT));
-        return ret;
+        return new VkPresentRegionKHR(arena.allocate(LAYOUT));
     }
 
     public static VkPresentRegionKHR[] allocate(Arena arena, int count) {

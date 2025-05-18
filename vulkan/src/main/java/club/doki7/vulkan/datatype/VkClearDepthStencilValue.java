@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkClearDepthStencilValue(@NotNull MemorySegment segment) implements IPointer {
     public static VkClearDepthStencilValue allocate(Arena arena) {
-        VkClearDepthStencilValue ret = new VkClearDepthStencilValue(arena.allocate(LAYOUT));
-        return ret;
+        return new VkClearDepthStencilValue(arena.allocate(LAYOUT));
     }
 
     public static VkClearDepthStencilValue[] allocate(Arena arena, int count) {

@@ -47,8 +47,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeH265PictureInfoFlags allocate(Arena arena) {
-        StdVideoEncodeH265PictureInfoFlags ret = new StdVideoEncodeH265PictureInfoFlags(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoEncodeH265PictureInfoFlags(arena.allocate(LAYOUT));
     }
 
     public static StdVideoEncodeH265PictureInfoFlags[] allocate(Arena arena, int count) {

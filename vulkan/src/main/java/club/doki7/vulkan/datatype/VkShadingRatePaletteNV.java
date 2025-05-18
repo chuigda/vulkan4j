@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkShadingRatePaletteNV allocate(Arena arena) {
-        VkShadingRatePaletteNV ret = new VkShadingRatePaletteNV(arena.allocate(LAYOUT));
-        return ret;
+        return new VkShadingRatePaletteNV(arena.allocate(LAYOUT));
     }
 
     public static VkShadingRatePaletteNV[] allocate(Arena arena, int count) {

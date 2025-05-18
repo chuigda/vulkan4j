@@ -44,8 +44,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkDescriptorUpdateTemplateEntry(@NotNull MemorySegment segment) implements IPointer {
     public static VkDescriptorUpdateTemplateEntry allocate(Arena arena) {
-        VkDescriptorUpdateTemplateEntry ret = new VkDescriptorUpdateTemplateEntry(arena.allocate(LAYOUT));
-        return ret;
+        return new VkDescriptorUpdateTemplateEntry(arena.allocate(LAYOUT));
     }
 
     public static VkDescriptorUpdateTemplateEntry[] allocate(Arena arena, int count) {

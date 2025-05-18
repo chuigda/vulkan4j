@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkSampleLocationEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkSampleLocationEXT allocate(Arena arena) {
-        VkSampleLocationEXT ret = new VkSampleLocationEXT(arena.allocate(LAYOUT));
-        return ret;
+        return new VkSampleLocationEXT(arena.allocate(LAYOUT));
     }
 
     public static VkSampleLocationEXT[] allocate(Arena arena, int count) {

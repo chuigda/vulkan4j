@@ -42,8 +42,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IPointer {
     public static VkSpecializationInfo allocate(Arena arena) {
-        VkSpecializationInfo ret = new VkSpecializationInfo(arena.allocate(LAYOUT));
-        return ret;
+        return new VkSpecializationInfo(arena.allocate(LAYOUT));
     }
 
     public static VkSpecializationInfo[] allocate(Arena arena, int count) {

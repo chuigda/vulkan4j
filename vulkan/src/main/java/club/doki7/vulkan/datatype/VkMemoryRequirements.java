@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkMemoryRequirements(@NotNull MemorySegment segment) implements IPointer {
     public static VkMemoryRequirements allocate(Arena arena) {
-        VkMemoryRequirements ret = new VkMemoryRequirements(arena.allocate(LAYOUT));
-        return ret;
+        return new VkMemoryRequirements(arena.allocate(LAYOUT));
     }
 
     public static VkMemoryRequirements[] allocate(Arena arena, int count) {

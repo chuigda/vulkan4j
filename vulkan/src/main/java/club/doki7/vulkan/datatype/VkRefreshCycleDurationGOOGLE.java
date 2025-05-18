@@ -39,8 +39,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkRefreshCycleDurationGOOGLE(@NotNull MemorySegment segment) implements IPointer {
     public static VkRefreshCycleDurationGOOGLE allocate(Arena arena) {
-        VkRefreshCycleDurationGOOGLE ret = new VkRefreshCycleDurationGOOGLE(arena.allocate(LAYOUT));
-        return ret;
+        return new VkRefreshCycleDurationGOOGLE(arena.allocate(LAYOUT));
     }
 
     public static VkRefreshCycleDurationGOOGLE[] allocate(Arena arena, int count) {

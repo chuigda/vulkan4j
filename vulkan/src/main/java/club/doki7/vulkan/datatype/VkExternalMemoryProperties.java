@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkExternalMemoryProperties(@NotNull MemorySegment segment) implements IPointer {
     public static VkExternalMemoryProperties allocate(Arena arena) {
-        VkExternalMemoryProperties ret = new VkExternalMemoryProperties(arena.allocate(LAYOUT));
-        return ret;
+        return new VkExternalMemoryProperties(arena.allocate(LAYOUT));
     }
 
     public static VkExternalMemoryProperties[] allocate(Arena arena, int count) {

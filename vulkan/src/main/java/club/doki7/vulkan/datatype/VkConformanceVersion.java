@@ -42,8 +42,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkConformanceVersion(@NotNull MemorySegment segment) implements IPointer {
     public static VkConformanceVersion allocate(Arena arena) {
-        VkConformanceVersion ret = new VkConformanceVersion(arena.allocate(LAYOUT));
-        return ret;
+        return new VkConformanceVersion(arena.allocate(LAYOUT));
     }
 
     public static VkConformanceVersion[] allocate(Arena arena, int count) {

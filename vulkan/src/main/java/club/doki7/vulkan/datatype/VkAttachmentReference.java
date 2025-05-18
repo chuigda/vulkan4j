@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkAttachmentReference(@NotNull MemorySegment segment) implements IPointer {
     public static VkAttachmentReference allocate(Arena arena) {
-        VkAttachmentReference ret = new VkAttachmentReference(arena.allocate(LAYOUT));
-        return ret;
+        return new VkAttachmentReference(arena.allocate(LAYOUT));
     }
 
     public static VkAttachmentReference[] allocate(Arena arena, int count) {

@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkTraceRaysIndirectCommandKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkTraceRaysIndirectCommandKHR allocate(Arena arena) {
-        VkTraceRaysIndirectCommandKHR ret = new VkTraceRaysIndirectCommandKHR(arena.allocate(LAYOUT));
-        return ret;
+        return new VkTraceRaysIndirectCommandKHR(arena.allocate(LAYOUT));
     }
 
     public static VkTraceRaysIndirectCommandKHR[] allocate(Arena arena, int count) {

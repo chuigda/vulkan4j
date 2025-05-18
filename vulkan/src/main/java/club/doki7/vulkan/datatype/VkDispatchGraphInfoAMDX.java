@@ -42,8 +42,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements IPointer {
     public static VkDispatchGraphInfoAMDX allocate(Arena arena) {
-        VkDispatchGraphInfoAMDX ret = new VkDispatchGraphInfoAMDX(arena.allocate(LAYOUT));
-        return ret;
+        return new VkDispatchGraphInfoAMDX(arena.allocate(LAYOUT));
     }
 
     public static VkDispatchGraphInfoAMDX[] allocate(Arena arena, int count) {

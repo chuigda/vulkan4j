@@ -43,8 +43,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkShaderResourceUsageAMD(@NotNull MemorySegment segment) implements IPointer {
     public static VkShaderResourceUsageAMD allocate(Arena arena) {
-        VkShaderResourceUsageAMD ret = new VkShaderResourceUsageAMD(arena.allocate(LAYOUT));
-        return ret;
+        return new VkShaderResourceUsageAMD(arena.allocate(LAYOUT));
     }
 
     public static VkShaderResourceUsageAMD[] allocate(Arena arena, int count) {

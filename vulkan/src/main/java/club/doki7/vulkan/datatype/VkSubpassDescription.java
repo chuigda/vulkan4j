@@ -48,8 +48,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkSubpassDescription(@NotNull MemorySegment segment) implements IPointer {
     public static VkSubpassDescription allocate(Arena arena) {
-        VkSubpassDescription ret = new VkSubpassDescription(arena.allocate(LAYOUT));
-        return ret;
+        return new VkSubpassDescription(arena.allocate(LAYOUT));
     }
 
     public static VkSubpassDescription[] allocate(Arena arena, int count) {

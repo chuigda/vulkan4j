@@ -54,8 +54,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkSRTDataNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkSRTDataNV allocate(Arena arena) {
-        VkSRTDataNV ret = new VkSRTDataNV(arena.allocate(LAYOUT));
-        return ret;
+        return new VkSRTDataNV(arena.allocate(LAYOUT));
     }
 
     public static VkSRTDataNV[] allocate(Arena arena, int count) {

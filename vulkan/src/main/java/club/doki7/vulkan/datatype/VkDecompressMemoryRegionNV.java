@@ -43,8 +43,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkDecompressMemoryRegionNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkDecompressMemoryRegionNV allocate(Arena arena) {
-        VkDecompressMemoryRegionNV ret = new VkDecompressMemoryRegionNV(arena.allocate(LAYOUT));
-        return ret;
+        return new VkDecompressMemoryRegionNV(arena.allocate(LAYOUT));
     }
 
     public static VkDecompressMemoryRegionNV[] allocate(Arena arena, int count) {

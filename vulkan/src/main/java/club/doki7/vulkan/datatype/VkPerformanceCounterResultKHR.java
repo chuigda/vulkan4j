@@ -44,8 +44,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkPerformanceCounterResultKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkPerformanceCounterResultKHR allocate(Arena arena) {
-        VkPerformanceCounterResultKHR ret = new VkPerformanceCounterResultKHR(arena.allocate(LAYOUT));
-        return ret;
+        return new VkPerformanceCounterResultKHR(arena.allocate(LAYOUT));
     }
 
     public static VkPerformanceCounterResultKHR[] allocate(Arena arena, int count) {

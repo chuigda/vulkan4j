@@ -44,8 +44,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkViewport(@NotNull MemorySegment segment) implements IPointer {
     public static VkViewport allocate(Arena arena) {
-        VkViewport ret = new VkViewport(arena.allocate(LAYOUT));
-        return ret;
+        return new VkViewport(arena.allocate(LAYOUT));
     }
 
     public static VkViewport[] allocate(Arena arena, int count) {

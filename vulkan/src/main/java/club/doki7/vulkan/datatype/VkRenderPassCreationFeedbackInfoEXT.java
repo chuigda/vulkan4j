@@ -39,8 +39,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkRenderPassCreationFeedbackInfoEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkRenderPassCreationFeedbackInfoEXT allocate(Arena arena) {
-        VkRenderPassCreationFeedbackInfoEXT ret = new VkRenderPassCreationFeedbackInfoEXT(arena.allocate(LAYOUT));
-        return ret;
+        return new VkRenderPassCreationFeedbackInfoEXT(arena.allocate(LAYOUT));
     }
 
     public static VkRenderPassCreationFeedbackInfoEXT[] allocate(Arena arena, int count) {

@@ -42,8 +42,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV allocate(Arena arena) {
-        VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV ret = new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(arena.allocate(LAYOUT));
-        return ret;
+        return new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(arena.allocate(LAYOUT));
     }
 
     public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV[] allocate(Arena arena, int count) {

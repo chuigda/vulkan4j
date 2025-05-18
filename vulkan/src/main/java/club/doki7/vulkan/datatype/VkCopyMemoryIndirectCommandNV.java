@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkCopyMemoryIndirectCommandNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkCopyMemoryIndirectCommandNV allocate(Arena arena) {
-        VkCopyMemoryIndirectCommandNV ret = new VkCopyMemoryIndirectCommandNV(arena.allocate(LAYOUT));
-        return ret;
+        return new VkCopyMemoryIndirectCommandNV(arena.allocate(LAYOUT));
     }
 
     public static VkCopyMemoryIndirectCommandNV[] allocate(Arena arena, int count) {

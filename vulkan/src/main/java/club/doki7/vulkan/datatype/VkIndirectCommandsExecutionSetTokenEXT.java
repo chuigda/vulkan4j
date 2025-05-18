@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkIndirectCommandsExecutionSetTokenEXT allocate(Arena arena) {
-        VkIndirectCommandsExecutionSetTokenEXT ret = new VkIndirectCommandsExecutionSetTokenEXT(arena.allocate(LAYOUT));
-        return ret;
+        return new VkIndirectCommandsExecutionSetTokenEXT(arena.allocate(LAYOUT));
     }
 
     public static VkIndirectCommandsExecutionSetTokenEXT[] allocate(Arena arena, int count) {

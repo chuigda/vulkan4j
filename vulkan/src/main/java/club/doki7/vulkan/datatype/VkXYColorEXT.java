@@ -40,8 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkXYColorEXT(@NotNull MemorySegment segment) implements IPointer {
     public static VkXYColorEXT allocate(Arena arena) {
-        VkXYColorEXT ret = new VkXYColorEXT(arena.allocate(LAYOUT));
-        return ret;
+        return new VkXYColorEXT(arena.allocate(LAYOUT));
     }
 
     public static VkXYColorEXT[] allocate(Arena arena, int count) {

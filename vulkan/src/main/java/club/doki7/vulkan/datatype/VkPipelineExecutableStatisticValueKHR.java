@@ -42,8 +42,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkPipelineExecutableStatisticValueKHR(@NotNull MemorySegment segment) implements IPointer {
     public static VkPipelineExecutableStatisticValueKHR allocate(Arena arena) {
-        VkPipelineExecutableStatisticValueKHR ret = new VkPipelineExecutableStatisticValueKHR(arena.allocate(LAYOUT));
-        return ret;
+        return new VkPipelineExecutableStatisticValueKHR(arena.allocate(LAYOUT));
     }
 
     public static VkPipelineExecutableStatisticValueKHR[] allocate(Arena arena, int count) {

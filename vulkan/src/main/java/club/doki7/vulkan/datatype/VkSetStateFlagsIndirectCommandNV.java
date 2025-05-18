@@ -39,8 +39,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkSetStateFlagsIndirectCommandNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkSetStateFlagsIndirectCommandNV allocate(Arena arena) {
-        VkSetStateFlagsIndirectCommandNV ret = new VkSetStateFlagsIndirectCommandNV(arena.allocate(LAYOUT));
-        return ret;
+        return new VkSetStateFlagsIndirectCommandNV(arena.allocate(LAYOUT));
     }
 
     public static VkSetStateFlagsIndirectCommandNV[] allocate(Arena arena, int count) {

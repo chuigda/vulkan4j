@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoEncodeAV1DecoderModelInfo(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoEncodeAV1DecoderModelInfo allocate(Arena arena) {
-        StdVideoEncodeAV1DecoderModelInfo ret = new StdVideoEncodeAV1DecoderModelInfo(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoEncodeAV1DecoderModelInfo(arena.allocate(LAYOUT));
     }
 
     public static StdVideoEncodeAV1DecoderModelInfo[] allocate(Arena arena, int count) {

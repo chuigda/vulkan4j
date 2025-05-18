@@ -38,8 +38,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements IPointer {
     public static StdVideoAV1Segmentation allocate(Arena arena) {
-        StdVideoAV1Segmentation ret = new StdVideoAV1Segmentation(arena.allocate(LAYOUT));
-        return ret;
+        return new StdVideoAV1Segmentation(arena.allocate(LAYOUT));
     }
 
     public static StdVideoAV1Segmentation[] allocate(Arena arena, int count) {

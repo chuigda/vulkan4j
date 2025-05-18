@@ -41,8 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkClearAttachment(@NotNull MemorySegment segment) implements IPointer {
     public static VkClearAttachment allocate(Arena arena) {
-        VkClearAttachment ret = new VkClearAttachment(arena.allocate(LAYOUT));
-        return ret;
+        return new VkClearAttachment(arena.allocate(LAYOUT));
     }
 
     public static VkClearAttachment[] allocate(Arena arena, int count) {

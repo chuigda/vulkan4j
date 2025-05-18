@@ -42,8 +42,7 @@ import static club.doki7.vulkan.VkConstants.*;
 @UnsafeConstructor
 public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implements IPointer {
     public static VkCoarseSampleOrderCustomNV allocate(Arena arena) {
-        VkCoarseSampleOrderCustomNV ret = new VkCoarseSampleOrderCustomNV(arena.allocate(LAYOUT));
-        return ret;
+        return new VkCoarseSampleOrderCustomNV(arena.allocate(LAYOUT));
     }
 
     public static VkCoarseSampleOrderCustomNV[] allocate(Arena arena, int count) {
