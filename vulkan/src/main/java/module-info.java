@@ -1,5 +1,12 @@
 /// Vulkan Java bindings implemented with Java 22 FFM (Project Panama) APIs.
 ///
+/// For actual API documentation, see packages documentation. For vulkan documentation,
+/// see <a href="https://docs.vulkan.org/spec/latest/index.html">Vulkan specification</a>.
+/// For Vulkan tutorial using this Java and {@code vulkan4j} ecosystem, see
+/// <a href="https://vk-java.doki7.club">vk-java.doki7.club</a>. The following content is
+/// literary and not relevant to the API itself.
+///
+/// <small>
 /// <p><i>《庄子·外篇·秋水》节选</i></p>
 ///
 /// <p><i>
@@ -27,6 +34,7 @@
 /// 计人之所知，不若其所不知；其生之时，不若未生之时。以其至小，求穷其至大之域，
 /// 是故迷乱而不能自得也。由此观之，又何以知毫末之足以定至细之倪！又何以知天地之足以穷至大之域！”
 /// </i></p>
+/// </small>
 module club.doki7.vulkan {
     requires club.doki7.ffm;
     requires org.jetbrains.annotations;

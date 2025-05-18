@@ -1,5 +1,11 @@
 /// Utility library for Java 22 FFM (Project Panama) APIs.
 ///
+/// For actual API documentation, see packages documentation. For Java 22 FFM knowledge,
+/// see <a href="https://openjdk.org/projects/panama/">OpenJDK projects page</a> or
+/// <a href="https://www.baeldung.com/java-project-panama">Guide on www.baeldung.com</a>. The
+/// following content is literary and not relevant to the API itself.
+///
+/// <small>
 /// <p><i>《庄子·内篇·逍遥游》节选</i></p>
 ///
 /// <p><i>
@@ -44,6 +50,7 @@
 /// 此虽免乎行，犹有所待者也。若夫乘天地之正，而御六气之辩，以游无穷者，彼且恶乎待哉！故曰：
 /// 至人无己，神人无功，圣人无名。
 /// </i></p>
+/// </small>
 module club.doki7.ffm {
     exports club.doki7.ffm;
     exports club.doki7.ffm.annotation;
