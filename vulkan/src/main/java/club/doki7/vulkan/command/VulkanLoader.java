@@ -4,17 +4,32 @@ import club.doki7.ffm.Loader;
 import club.doki7.ffm.ptr.BytePtr;
 import club.doki7.vulkan.handle.VkDevice;
 import club.doki7.vulkan.handle.VkInstance;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.Linker;
+import java.lang.foreign.MemorySegment;
 
+/// Utility class for loading Vulkan functions
 public final class VulkanLoader {
     /// Try loading the Vulkan library.
     ///
     /// This function is implemented in terms of {@link System#loadLibrary}. On Windows it will try
-    /// {@code "vulkan-1"} ({@code vulkan-1.dll}), and on other platforms it will try {@code "vulkan"}
-    /// ({@code libvulkan.so}).
+    /// {@code "vulkan-1"} ({@code vulkan-1.dll}), and on other platforms it will try
+    /// {@code "vulkan"} ({@code libvulkan.so}).
     ///
-    /// Instead of using this function, you may also implement your own Vulkan library loading logic.
+    /// Instead of using this function, you may also implement your own Vulkan library loading
+    /// logic.
+    ///
+    /// <b>Notice for Linux users:</b> On some Linux platforms, {@code libvulkan.so} may not be
+    /// installed under {@code /usr/lib},  {@code /usr/lib32} or {@code /usr/lib64}. For example,
+    /// on my Debian 12 system, it is installed under <code>/lib/<i>cpu-os-libc-triplet</i></code>.
+    /// Such locations might not be included by Java {@code java.library.path}. In that case,
+    /// you may need to set the  {@code LD_LIBRARY_PATH} environment variable to include the
+    /// directory where {@code libvulkan.so} is installed.
+    ///
+    /// <b>macOS is not supported by this moment</b> because the library author does not have access
+    /// to macOS computer. Help is welcome.
     ///
     /// @throws SecurityException see {@link System#loadLibrary}
     /// @throws UnsatisfiedLinkError see {@link System#loadLibrary}
@@ -28,47 +43,72 @@ public final class VulkanLoader {
 
     /// Load Vulkan static commands.
     ///
-    /// This function is implemented in terms of {@link Loader#loadFunction}. If any of
-    /// the static functions is not found, a {@link RuntimeException} will be thrown.
+    /// This function is in effect implemented in terms of {@link Loader#loadFunction} +
+    /// {@link Linker#downcallHandle}. If any of the static functions is not found, a
+    /// {@link RuntimeException} will be thrown. If any of the functions cannot be linked due to
+    /// any reason, the relevant exception will be thrown.
     ///
     /// Instead of using this function, you may also implement your own commands loading logic.
     ///
     /// @return loaded static commands
-    /// @throws RuntimeException if any static function is not found
-    ///
-    /// @see Loader#loadFunction
-    public static VkStaticCommands loadStaticCommands() {
+    /// @throws RuntimeException if any static function is not found, see {@link Loader#loadFunction}
+    /// @throws IllegalArgumentException see {@link Linker#downcallHandle}
+    /// @throws IllegalCallerException see {@link Linker#downcallHandle}
+    public static @NotNull VkStaticCommands loadStaticCommands() {
         return new VkStaticCommands(Loader::loadFunction);
     }
 
     /// Load Vulkan entry commands.
     ///
-    /// This function is implemented in terms of {@link Loader#loadFunction}. If any of
-    /// the entry functions is not found, a {@link RuntimeException} will be thrown.
+    /// This function is in effect implemented in terms of
+    /// {@link VkStaticCommands#getInstanceProcAddr} + {@link Linker#downcallHandle}, while not
+    /// providing actual pointer to the {@link VkInstance}. If any of the static functions is not
+    /// found, a {@link RuntimeException} will be thrown. If any of the functions cannot be linked
+    /// due to any reason, the relevant exception will be thrown.
     ///
     /// Instead of using this function, you may also implement your own commands loading logic.
     ///
+    /// @param staticCommands static commands, providing the {@code vkGetInstanceProcAddr} function
     /// @return loaded entry commands
     /// @throws RuntimeException if any entry function is not found
-    ///
-    /// @see Loader#loadFunction
-    public static VkEntryCommands loadEntryCommands() {
-        return new VkEntryCommands(Loader::loadFunction);
+    /// @throws IllegalArgumentException see {@link Linker#downcallHandle}
+    /// @throws IllegalCallerException see {@link Linker#downcallHandle}
+    public static @NotNull VkEntryCommands loadEntryCommands(
+            @NotNull VkStaticCommands staticCommands
+    ) {
+        return new VkEntryCommands(name -> {
+            try (Arena arena = Arena.ofConfined()) {
+                MemorySegment s = staticCommands.getInstanceProcAddr(null, BytePtr.allocateString(arena, name));
+                if (s.equals(MemorySegment.NULL)) {
+                    throw new RuntimeException("Vulkan entry function " + name + " not found");
+                }
+                return s;
+            }
+        });
     }
 
     /// Load Vulkan instance commands.
     ///
-    /// This function is implemented in terms of {@link VkStaticCommands#getInstanceProcAddr}. If any of the functions
-    /// is not found, that "slot" will be filled with {@code null}. Calling a function not loaded will result in a
-    /// {@link NullPointerException}. Unfounded functions are usually caused by unsupported or not requested Vulkan
-    /// extensions or layers.
+    /// This function is implemented in terms of {@link VkStaticCommands#getInstanceProcAddr} +
+    /// {@link Linker#downcallHandle}. If any of the functions is not found, that "slot" will be
+    /// filled with {@code null}. Calling a function not loaded will result in a
+    /// {@link NullPointerException}. Not found functions are usually caused by unsupported or **not
+    /// requested** Vulkan extensions or layers.
+    ///
+    /// If the function address is found, but cannot be linked due to any reason, the relevant
+    /// exception will be thrown.
     ///
     /// Instead of using this function, you may also implement your own commands loading logic.
     ///
     /// @param instance Vulkan instance
     /// @param staticCommands static commands, providing the {@code vkGetInstanceProcAddr} function
     /// @return loaded instance commands
-    public static VkInstanceCommands loadInstanceCommands(VkInstance instance, VkStaticCommands staticCommands) {
+    /// @throws IllegalArgumentException see {@link Linker#downcallHandle}
+    /// @throws IllegalCallerException see {@link Linker#downcallHandle}
+    public static @NotNull VkInstanceCommands loadInstanceCommands(
+            @NotNull VkInstance instance,
+            @NotNull VkStaticCommands staticCommands
+    ) {
         return new VkInstanceCommands(name -> {
             try (Arena arena = Arena.ofConfined()) {
                 return staticCommands.getInstanceProcAddr(instance, BytePtr.allocateString(arena, name));
@@ -78,19 +118,25 @@ public final class VulkanLoader {
 
     /// Load Vulkan device commands.
     ///
-    /// This function is implemented in terms of {@link VkStaticCommands#getDeviceProcAddr}.
-    /// If any of the functions is not found, that "slot" will be filled with {@code null}. Calling
-    /// a function not loaded will result in a {@link NullPointerException}. Unfounded functions
-    /// are usually caused by unsupported or not requested Vulkan extensions or layers.
+    /// This function is implemented in terms of {@link VkStaticCommands#getDeviceProcAddr} +
+    /// {@link Linker#downcallHandle}. If any of the functions is not found, that "slot" will be
+    /// filled with {@code null}. Calling a function not loaded will result in a
+    /// {@link NullPointerException}. Not found functions are usually caused by unsupported or **not
+    /// requested** Vulkan extensions or layers.
+    ///
+    /// If the function address is found, but cannot be linked due to any reason, the relevant
+    /// exception will be thrown.
     ///
     /// Instead of using this function, you may also implement your own commands loading logic.
     ///
     /// @param device Vulkan device
     /// @param staticCommands static commands, providing the loading functions
     /// @return loaded device commands
-    public static VkDeviceCommands loadDeviceCommands(
-            VkDevice device,
-            VkStaticCommands staticCommands
+    /// @throws IllegalArgumentException see {@link Linker#downcallHandle}
+    /// @throws IllegalCallerException see {@link Linker#downcallHandle}
+    public static @NotNull VkDeviceCommands loadDeviceCommands(
+            @NotNull VkDevice device,
+            @NotNull VkStaticCommands staticCommands
     ) {
         return new VkDeviceCommands(name -> {
             try (Arena arena = Arena.ofConfined()) {
@@ -98,4 +144,6 @@ public final class VulkanLoader {
             }
         });
     }
+
+    private VulkanLoader() {}
 }

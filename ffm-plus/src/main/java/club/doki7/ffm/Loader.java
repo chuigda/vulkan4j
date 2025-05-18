@@ -15,7 +15,7 @@ public final class Loader {
         return loaderLookup.find(name)
                 .or(() -> stdlibLookup.find(name))
                 .map(segment -> RawFunctionLoader.link(segment, descriptor))
-                .orElseThrow(() -> new RuntimeException("未找到函数 " + name));
+                .orElseThrow(() -> new RuntimeException("native function " + name + " not found"));
     }
 
     public static @Nullable MethodHandle loadFunctionOrNull(String name, FunctionDescriptor descriptor) {
@@ -28,7 +28,7 @@ public final class Loader {
     public static @NotNull MemorySegment loadFunction(String name) {
         return loaderLookup.find(name)
                 .or(() -> stdlibLookup.find(name))
-                .orElseThrow(() -> new RuntimeException("未找到函数 " + name));
+                .orElseThrow(() -> new RuntimeException("native function " + name + " not found"));
     }
 
     public static @Nullable MemorySegment loadFunctionOrNull(String name) {

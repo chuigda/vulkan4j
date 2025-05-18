@@ -130,5 +130,8 @@ public final class VkEntryCommands {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
         );
+
+        /// Constructing this class is nonsense so the constructor is made private.
+        private Descriptors() {}
     }
 }

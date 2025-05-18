@@ -18557,5 +18557,7 @@ public final class VkDeviceCommands {
             NativeLayout.C_SIZE_T
         );
 
+        /// Constructing this class is nonsense so the constructor is made private.
+        private Descriptors() {}
     }
 }

@@ -109,12 +109,11 @@ fun generateCommandFile(
         indent {
             loweredCommand
                 .filter { it.command.aliasTo == null || !locallySuppliedCommands.contains(it.command.aliasTo!!.original) }
-                .forEachIndexed { idx, it ->
+                .forEach {
                     +generateFunctionDescriptor(it)
-                    if (idx != loweredCommand.size - 1) {
-                        +""
-                    }
+                    +""
                 }
+            +prohibitUserConstruct("Descriptors")
         }
         +"}"
     }

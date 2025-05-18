@@ -75,5 +75,8 @@ public final class VkStaticCommands {
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
         );
+
+        /// Constructing this class is nonsense so the constructor is made private.
+        private Descriptors() {}
     }
 }

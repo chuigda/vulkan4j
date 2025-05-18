@@ -2747,5 +2747,7 @@ public final class VkInstanceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkDebugUtilsMessengerCallbackDataEXT.LAYOUT)
         );
 
+        /// Constructing this class is nonsense so the constructor is made private.
+        private Descriptors() {}
     }
 }
