@@ -80,12 +80,12 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
     }
 
     public @unsigned int geometryIndexOffset() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndexOffset_reserved, LAYOUT$geometryIndexOffset_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndexOffset$reserved, LAYOUT$bitfield$geometryIndexOffset$reserved);
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
     public void geometryIndexOffset(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndexOffset_reserved, LAYOUT$geometryIndexOffset_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndexOffset$reserved, LAYOUT$bitfield$geometryIndexOffset$reserved);
         BitfieldUtil.writeBits(s, 0, 24, value);
     }
 
@@ -107,19 +107,19 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("clusterIdOffset"),
-        ValueLayout.JAVA_INT.withName("bitfield$geometryIndexOffset_reserved"),
+        ValueLayout.JAVA_INT.withName("bitfield$geometryIndexOffset$reserved"),
         ValueLayout.JAVA_LONG.withName("clusterTemplateAddress"),
         VkStridedDeviceAddressNV.LAYOUT.withName("vertexBuffer")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$clusterIdOffset = PathElement.groupElement("PATH$clusterIdOffset");
-    public static final PathElement PATH$bitfield$geometryIndexOffset_reserved = PathElement.groupElement("PATH$bitfield$geometryIndexOffset_reserved");
+    public static final PathElement PATH$bitfield$geometryIndexOffset$reserved = PathElement.groupElement("PATH$bitfield$geometryIndexOffset$reserved");
     public static final PathElement PATH$clusterTemplateAddress = PathElement.groupElement("PATH$clusterTemplateAddress");
     public static final PathElement PATH$vertexBuffer = PathElement.groupElement("PATH$vertexBuffer");
 
     public static final OfInt LAYOUT$clusterIdOffset = (OfInt) LAYOUT.select(PATH$clusterIdOffset);
-    public static final OfInt LAYOUT$geometryIndexOffset_reserved = (OfInt) LAYOUT.select(PATH$bitfield$geometryIndexOffset_reserved);
+    public static final OfInt LAYOUT$bitfield$geometryIndexOffset$reserved = (OfInt) LAYOUT.select(PATH$bitfield$geometryIndexOffset$reserved);
     public static final OfLong LAYOUT$clusterTemplateAddress = (OfLong) LAYOUT.select(PATH$clusterTemplateAddress);
     public static final StructLayout LAYOUT$vertexBuffer = (StructLayout) LAYOUT.select(PATH$vertexBuffer);
 
@@ -128,7 +128,7 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
     public static final long SIZE$vertexBuffer = LAYOUT$vertexBuffer.byteSize();
 
     public static final long OFFSET$clusterIdOffset = LAYOUT.byteOffset(PATH$clusterIdOffset);
-    public static final long OFFSET$bitfield$geometryIndexOffset_reserved = LAYOUT.byteOffset(PATH$bitfield$geometryIndexOffset_reserved);
+    public static final long OFFSET$bitfield$geometryIndexOffset$reserved = LAYOUT.byteOffset(PATH$bitfield$geometryIndexOffset$reserved);
     public static final long OFFSET$clusterTemplateAddress = LAYOUT.byteOffset(PATH$clusterTemplateAddress);
     public static final long OFFSET$vertexBuffer = LAYOUT.byteOffset(PATH$vertexBuffer);
 }

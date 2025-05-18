@@ -68,34 +68,34 @@ public record StdVideoAV1LoopFilterFlags(@NotNull MemorySegment segment) impleme
     }
 
     public boolean loop_filter_delta_enabled() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$loop_filter_delta_enabled_reserved, LAYOUT$loop_filter_delta_enabled_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$loop_filter_delta_enabled$reserved, LAYOUT$bitfield$loop_filter_delta_enabled$reserved);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void loop_filter_delta_enabled(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$loop_filter_delta_enabled_reserved, LAYOUT$loop_filter_delta_enabled_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$loop_filter_delta_enabled$reserved, LAYOUT$bitfield$loop_filter_delta_enabled$reserved);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean loop_filter_delta_update() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$loop_filter_delta_enabled_reserved, LAYOUT$loop_filter_delta_enabled_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$loop_filter_delta_enabled$reserved, LAYOUT$bitfield$loop_filter_delta_enabled$reserved);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void loop_filter_delta_update(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$loop_filter_delta_enabled_reserved, LAYOUT$loop_filter_delta_enabled_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$loop_filter_delta_enabled$reserved, LAYOUT$bitfield$loop_filter_delta_enabled$reserved);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$loop_filter_delta_enabled_reserved")
+        ValueLayout.JAVA_INT.withName("bitfield$loop_filter_delta_enabled$reserved")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$loop_filter_delta_enabled_reserved = PathElement.groupElement("PATH$bitfield$loop_filter_delta_enabled_reserved");
+    public static final PathElement PATH$bitfield$loop_filter_delta_enabled$reserved = PathElement.groupElement("PATH$bitfield$loop_filter_delta_enabled$reserved");
 
-    public static final OfInt LAYOUT$loop_filter_delta_enabled_reserved = (OfInt) LAYOUT.select(PATH$bitfield$loop_filter_delta_enabled_reserved);
+    public static final OfInt LAYOUT$bitfield$loop_filter_delta_enabled$reserved = (OfInt) LAYOUT.select(PATH$bitfield$loop_filter_delta_enabled$reserved);
 
 
-    public static final long OFFSET$bitfield$loop_filter_delta_enabled_reserved = LAYOUT.byteOffset(PATH$bitfield$loop_filter_delta_enabled_reserved);
+    public static final long OFFSET$bitfield$loop_filter_delta_enabled$reserved = LAYOUT.byteOffset(PATH$bitfield$loop_filter_delta_enabled$reserved);
 }

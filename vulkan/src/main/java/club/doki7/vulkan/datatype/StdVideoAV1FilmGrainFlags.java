@@ -70,54 +70,54 @@ public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implemen
     }
 
     public boolean chroma_scaling_from_luma() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma$reserved, LAYOUT$bitfield$chroma_scaling_from_luma$reserved);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void chroma_scaling_from_luma(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma$reserved, LAYOUT$bitfield$chroma_scaling_from_luma$reserved);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean overlap_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma$reserved, LAYOUT$bitfield$chroma_scaling_from_luma$reserved);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void overlap_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma$reserved, LAYOUT$bitfield$chroma_scaling_from_luma$reserved);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
     public boolean clip_to_restricted_range() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma$reserved, LAYOUT$bitfield$chroma_scaling_from_luma$reserved);
         return BitfieldUtil.readBit(s, 2);
     }
 
     public void clip_to_restricted_range(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma$reserved, LAYOUT$bitfield$chroma_scaling_from_luma$reserved);
         BitfieldUtil.writeBit(s, 2, value);
     }
 
     public boolean update_grain() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma$reserved, LAYOUT$bitfield$chroma_scaling_from_luma$reserved);
         return BitfieldUtil.readBit(s, 3);
     }
 
     public void update_grain(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma_reserved, LAYOUT$chroma_scaling_from_luma_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma$reserved, LAYOUT$bitfield$chroma_scaling_from_luma$reserved);
         BitfieldUtil.writeBit(s, 3, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$chroma_scaling_from_luma_reserved")
+        ValueLayout.JAVA_INT.withName("bitfield$chroma_scaling_from_luma$reserved")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$chroma_scaling_from_luma_reserved = PathElement.groupElement("PATH$bitfield$chroma_scaling_from_luma_reserved");
+    public static final PathElement PATH$bitfield$chroma_scaling_from_luma$reserved = PathElement.groupElement("PATH$bitfield$chroma_scaling_from_luma$reserved");
 
-    public static final OfInt LAYOUT$chroma_scaling_from_luma_reserved = (OfInt) LAYOUT.select(PATH$bitfield$chroma_scaling_from_luma_reserved);
+    public static final OfInt LAYOUT$bitfield$chroma_scaling_from_luma$reserved = (OfInt) LAYOUT.select(PATH$bitfield$chroma_scaling_from_luma$reserved);
 
 
-    public static final long OFFSET$bitfield$chroma_scaling_from_luma_reserved = LAYOUT.byteOffset(PATH$bitfield$chroma_scaling_from_luma_reserved);
+    public static final long OFFSET$bitfield$chroma_scaling_from_luma$reserved = LAYOUT.byteOffset(PATH$bitfield$chroma_scaling_from_luma$reserved);
 }

@@ -81,42 +81,42 @@ public record VkAccelerationStructureInstanceKHR(@NotNull MemorySegment segment)
     }
 
     public @unsigned int instanceCustomIndex() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceCustomIndex_mask, LAYOUT$instanceCustomIndex_mask);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceCustomIndex$mask, LAYOUT$bitfield$instanceCustomIndex$mask);
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
     public void instanceCustomIndex(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceCustomIndex_mask, LAYOUT$instanceCustomIndex_mask);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceCustomIndex$mask, LAYOUT$bitfield$instanceCustomIndex$mask);
         BitfieldUtil.writeBits(s, 0, 24, value);
     }
 
     public @unsigned int mask() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceCustomIndex_mask, LAYOUT$instanceCustomIndex_mask);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceCustomIndex$mask, LAYOUT$bitfield$instanceCustomIndex$mask);
         return BitfieldUtil.readBits(s, 24, 32);
     }
 
     public void mask(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceCustomIndex_mask, LAYOUT$instanceCustomIndex_mask);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceCustomIndex$mask, LAYOUT$bitfield$instanceCustomIndex$mask);
         BitfieldUtil.writeBits(s, 24, 32, value);
     }
 
     public @unsigned int instanceShaderBindingTableRecordOffset() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceShaderBindingTableRecordOffset_flags, LAYOUT$instanceShaderBindingTableRecordOffset_flags);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceShaderBindingTableRecordOffset$flags, LAYOUT$bitfield$instanceShaderBindingTableRecordOffset$flags);
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
     public void instanceShaderBindingTableRecordOffset(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceShaderBindingTableRecordOffset_flags, LAYOUT$instanceShaderBindingTableRecordOffset_flags);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceShaderBindingTableRecordOffset$flags, LAYOUT$bitfield$instanceShaderBindingTableRecordOffset$flags);
         BitfieldUtil.writeBits(s, 0, 24, value);
     }
 
     public @unsigned int flags() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceShaderBindingTableRecordOffset_flags, LAYOUT$instanceShaderBindingTableRecordOffset_flags);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceShaderBindingTableRecordOffset$flags, LAYOUT$bitfield$instanceShaderBindingTableRecordOffset$flags);
         return BitfieldUtil.readBits(s, 24, 32);
     }
 
     public void flags(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceShaderBindingTableRecordOffset_flags, LAYOUT$instanceShaderBindingTableRecordOffset_flags);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceShaderBindingTableRecordOffset$flags, LAYOUT$bitfield$instanceShaderBindingTableRecordOffset$flags);
         BitfieldUtil.writeBits(s, 24, 32, value);
     }
 
@@ -130,27 +130,27 @@ public record VkAccelerationStructureInstanceKHR(@NotNull MemorySegment segment)
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         VkTransformMatrixKHR.LAYOUT.withName("transform"),
-        ValueLayout.JAVA_INT.withName("bitfield$instanceCustomIndex_mask"),
-        ValueLayout.JAVA_INT.withName("bitfield$instanceShaderBindingTableRecordOffset_flags"),
+        ValueLayout.JAVA_INT.withName("bitfield$instanceCustomIndex$mask"),
+        ValueLayout.JAVA_INT.withName("bitfield$instanceShaderBindingTableRecordOffset$flags"),
         ValueLayout.JAVA_LONG.withName("accelerationStructureReference")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$transform = PathElement.groupElement("PATH$transform");
-    public static final PathElement PATH$bitfield$instanceCustomIndex_mask = PathElement.groupElement("PATH$bitfield$instanceCustomIndex_mask");
-    public static final PathElement PATH$bitfield$instanceShaderBindingTableRecordOffset_flags = PathElement.groupElement("PATH$bitfield$instanceShaderBindingTableRecordOffset_flags");
+    public static final PathElement PATH$bitfield$instanceCustomIndex$mask = PathElement.groupElement("PATH$bitfield$instanceCustomIndex$mask");
+    public static final PathElement PATH$bitfield$instanceShaderBindingTableRecordOffset$flags = PathElement.groupElement("PATH$bitfield$instanceShaderBindingTableRecordOffset$flags");
     public static final PathElement PATH$accelerationStructureReference = PathElement.groupElement("PATH$accelerationStructureReference");
 
     public static final StructLayout LAYOUT$transform = (StructLayout) LAYOUT.select(PATH$transform);
-    public static final OfInt LAYOUT$instanceCustomIndex_mask = (OfInt) LAYOUT.select(PATH$bitfield$instanceCustomIndex_mask);
-    public static final OfInt LAYOUT$instanceShaderBindingTableRecordOffset_flags = (OfInt) LAYOUT.select(PATH$bitfield$instanceShaderBindingTableRecordOffset_flags);
+    public static final OfInt LAYOUT$bitfield$instanceCustomIndex$mask = (OfInt) LAYOUT.select(PATH$bitfield$instanceCustomIndex$mask);
+    public static final OfInt LAYOUT$bitfield$instanceShaderBindingTableRecordOffset$flags = (OfInt) LAYOUT.select(PATH$bitfield$instanceShaderBindingTableRecordOffset$flags);
     public static final OfLong LAYOUT$accelerationStructureReference = (OfLong) LAYOUT.select(PATH$accelerationStructureReference);
 
     public static final long SIZE$transform = LAYOUT$transform.byteSize();
     public static final long SIZE$accelerationStructureReference = LAYOUT$accelerationStructureReference.byteSize();
 
     public static final long OFFSET$transform = LAYOUT.byteOffset(PATH$transform);
-    public static final long OFFSET$bitfield$instanceCustomIndex_mask = LAYOUT.byteOffset(PATH$bitfield$instanceCustomIndex_mask);
-    public static final long OFFSET$bitfield$instanceShaderBindingTableRecordOffset_flags = LAYOUT.byteOffset(PATH$bitfield$instanceShaderBindingTableRecordOffset_flags);
+    public static final long OFFSET$bitfield$instanceCustomIndex$mask = LAYOUT.byteOffset(PATH$bitfield$instanceCustomIndex$mask);
+    public static final long OFFSET$bitfield$instanceShaderBindingTableRecordOffset$flags = LAYOUT.byteOffset(PATH$bitfield$instanceShaderBindingTableRecordOffset$flags);
     public static final long OFFSET$accelerationStructureReference = LAYOUT.byteOffset(PATH$accelerationStructureReference);
 }

@@ -68,34 +68,34 @@ public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) imple
     }
 
     public boolean using_qmatrix() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$using_qmatrix$reserved, LAYOUT$bitfield$using_qmatrix$reserved);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void using_qmatrix(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$using_qmatrix$reserved, LAYOUT$bitfield$using_qmatrix$reserved);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean diff_uv_delta() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$using_qmatrix$reserved, LAYOUT$bitfield$using_qmatrix$reserved);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void diff_uv_delta(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$using_qmatrix$reserved, LAYOUT$bitfield$using_qmatrix$reserved);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$using_qmatrix_reserved")
+        ValueLayout.JAVA_INT.withName("bitfield$using_qmatrix$reserved")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$using_qmatrix_reserved = PathElement.groupElement("PATH$bitfield$using_qmatrix_reserved");
+    public static final PathElement PATH$bitfield$using_qmatrix$reserved = PathElement.groupElement("PATH$bitfield$using_qmatrix$reserved");
 
-    public static final OfInt LAYOUT$using_qmatrix_reserved = (OfInt) LAYOUT.select(PATH$bitfield$using_qmatrix_reserved);
+    public static final OfInt LAYOUT$bitfield$using_qmatrix$reserved = (OfInt) LAYOUT.select(PATH$bitfield$using_qmatrix$reserved);
 
 
-    public static final long OFFSET$bitfield$using_qmatrix_reserved = LAYOUT.byteOffset(PATH$bitfield$using_qmatrix_reserved);
+    public static final long OFFSET$bitfield$using_qmatrix$reserved = LAYOUT.byteOffset(PATH$bitfield$using_qmatrix$reserved);
 }

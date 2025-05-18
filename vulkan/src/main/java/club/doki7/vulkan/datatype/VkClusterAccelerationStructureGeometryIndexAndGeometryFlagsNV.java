@@ -70,33 +70,33 @@ public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@Not
     }
 
     public @unsigned int geometryIndex() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndex$geometryFlags, LAYOUT$bitfield$geometryIndex$geometryFlags);
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
     public void geometryIndex(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndex$geometryFlags, LAYOUT$bitfield$geometryIndex$geometryFlags);
         BitfieldUtil.writeBits(s, 0, 24, value);
     }
     public @unsigned int geometryFlags() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndex$geometryFlags, LAYOUT$bitfield$geometryIndex$geometryFlags);
         return BitfieldUtil.readBits(s, 29, 32);
     }
 
     public void geometryFlags(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndex$geometryFlags, LAYOUT$bitfield$geometryIndex$geometryFlags);
         BitfieldUtil.writeBits(s, 29, 32, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$geometryIndex_geometryFlags")
+        ValueLayout.JAVA_INT.withName("bitfield$geometryIndex$geometryFlags")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$geometryIndex_geometryFlags = PathElement.groupElement("PATH$bitfield$geometryIndex_geometryFlags");
+    public static final PathElement PATH$bitfield$geometryIndex$geometryFlags = PathElement.groupElement("PATH$bitfield$geometryIndex$geometryFlags");
 
-    public static final OfInt LAYOUT$geometryIndex_geometryFlags = (OfInt) LAYOUT.select(PATH$bitfield$geometryIndex_geometryFlags);
+    public static final OfInt LAYOUT$bitfield$geometryIndex$geometryFlags = (OfInt) LAYOUT.select(PATH$bitfield$geometryIndex$geometryFlags);
 
 
-    public static final long OFFSET$bitfield$geometryIndex_geometryFlags = LAYOUT.byteOffset(PATH$bitfield$geometryIndex_geometryFlags);
+    public static final long OFFSET$bitfield$geometryIndex$geometryFlags = LAYOUT.byteOffset(PATH$bitfield$geometryIndex$geometryFlags);
 }

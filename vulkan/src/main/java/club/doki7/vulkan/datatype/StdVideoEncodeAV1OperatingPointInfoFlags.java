@@ -69,44 +69,44 @@ public record StdVideoEncodeAV1OperatingPointInfoFlags(@NotNull MemorySegment se
     }
 
     public boolean decoder_model_present_for_this_op() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$decoder_model_present_for_this_op_reserved, LAYOUT$decoder_model_present_for_this_op_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$decoder_model_present_for_this_op$reserved, LAYOUT$bitfield$decoder_model_present_for_this_op$reserved);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void decoder_model_present_for_this_op(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$decoder_model_present_for_this_op_reserved, LAYOUT$decoder_model_present_for_this_op_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$decoder_model_present_for_this_op$reserved, LAYOUT$bitfield$decoder_model_present_for_this_op$reserved);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean low_delay_mode_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$decoder_model_present_for_this_op_reserved, LAYOUT$decoder_model_present_for_this_op_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$decoder_model_present_for_this_op$reserved, LAYOUT$bitfield$decoder_model_present_for_this_op$reserved);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void low_delay_mode_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$decoder_model_present_for_this_op_reserved, LAYOUT$decoder_model_present_for_this_op_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$decoder_model_present_for_this_op$reserved, LAYOUT$bitfield$decoder_model_present_for_this_op$reserved);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
     public boolean initial_display_delay_present_for_this_op() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$decoder_model_present_for_this_op_reserved, LAYOUT$decoder_model_present_for_this_op_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$decoder_model_present_for_this_op$reserved, LAYOUT$bitfield$decoder_model_present_for_this_op$reserved);
         return BitfieldUtil.readBit(s, 2);
     }
 
     public void initial_display_delay_present_for_this_op(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$decoder_model_present_for_this_op_reserved, LAYOUT$decoder_model_present_for_this_op_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$decoder_model_present_for_this_op$reserved, LAYOUT$bitfield$decoder_model_present_for_this_op$reserved);
         BitfieldUtil.writeBit(s, 2, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$decoder_model_present_for_this_op_reserved")
+        ValueLayout.JAVA_INT.withName("bitfield$decoder_model_present_for_this_op$reserved")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$decoder_model_present_for_this_op_reserved = PathElement.groupElement("PATH$bitfield$decoder_model_present_for_this_op_reserved");
+    public static final PathElement PATH$bitfield$decoder_model_present_for_this_op$reserved = PathElement.groupElement("PATH$bitfield$decoder_model_present_for_this_op$reserved");
 
-    public static final OfInt LAYOUT$decoder_model_present_for_this_op_reserved = (OfInt) LAYOUT.select(PATH$bitfield$decoder_model_present_for_this_op_reserved);
+    public static final OfInt LAYOUT$bitfield$decoder_model_present_for_this_op$reserved = (OfInt) LAYOUT.select(PATH$bitfield$decoder_model_present_for_this_op$reserved);
 
 
-    public static final long OFFSET$bitfield$decoder_model_present_for_this_op_reserved = LAYOUT.byteOffset(PATH$bitfield$decoder_model_present_for_this_op_reserved);
+    public static final long OFFSET$bitfield$decoder_model_present_for_this_op$reserved = LAYOUT.byteOffset(PATH$bitfield$decoder_model_present_for_this_op$reserved);
 }

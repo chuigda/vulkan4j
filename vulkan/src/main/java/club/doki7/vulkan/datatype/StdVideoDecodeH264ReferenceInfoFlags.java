@@ -69,54 +69,54 @@ public record StdVideoDecodeH264ReferenceInfoFlags(@NotNull MemorySegment segmen
     }
 
     public boolean top_field_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag_is_non_existing, LAYOUT$top_field_flag_is_non_existing);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag$is_non_existing, LAYOUT$bitfield$top_field_flag$is_non_existing);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void top_field_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag_is_non_existing, LAYOUT$top_field_flag_is_non_existing);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag$is_non_existing, LAYOUT$bitfield$top_field_flag$is_non_existing);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean bottom_field_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag_is_non_existing, LAYOUT$top_field_flag_is_non_existing);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag$is_non_existing, LAYOUT$bitfield$top_field_flag$is_non_existing);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void bottom_field_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag_is_non_existing, LAYOUT$top_field_flag_is_non_existing);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag$is_non_existing, LAYOUT$bitfield$top_field_flag$is_non_existing);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
     public boolean used_for_long_term_reference() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag_is_non_existing, LAYOUT$top_field_flag_is_non_existing);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag$is_non_existing, LAYOUT$bitfield$top_field_flag$is_non_existing);
         return BitfieldUtil.readBit(s, 2);
     }
 
     public void used_for_long_term_reference(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag_is_non_existing, LAYOUT$top_field_flag_is_non_existing);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag$is_non_existing, LAYOUT$bitfield$top_field_flag$is_non_existing);
         BitfieldUtil.writeBit(s, 2, value);
     }
 
     public boolean is_non_existing() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag_is_non_existing, LAYOUT$top_field_flag_is_non_existing);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag$is_non_existing, LAYOUT$bitfield$top_field_flag$is_non_existing);
         return BitfieldUtil.readBit(s, 3);
     }
 
     public void is_non_existing(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag_is_non_existing, LAYOUT$top_field_flag_is_non_existing);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag$is_non_existing, LAYOUT$bitfield$top_field_flag$is_non_existing);
         BitfieldUtil.writeBit(s, 3, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$top_field_flag_is_non_existing")
+        ValueLayout.JAVA_INT.withName("bitfield$top_field_flag$is_non_existing")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$top_field_flag_is_non_existing = PathElement.groupElement("PATH$bitfield$top_field_flag_is_non_existing");
+    public static final PathElement PATH$bitfield$top_field_flag$is_non_existing = PathElement.groupElement("PATH$bitfield$top_field_flag$is_non_existing");
 
-    public static final OfInt LAYOUT$top_field_flag_is_non_existing = (OfInt) LAYOUT.select(PATH$bitfield$top_field_flag_is_non_existing);
+    public static final OfInt LAYOUT$bitfield$top_field_flag$is_non_existing = (OfInt) LAYOUT.select(PATH$bitfield$top_field_flag$is_non_existing);
 
 
-    public static final long OFFSET$bitfield$top_field_flag_is_non_existing = LAYOUT.byteOffset(PATH$bitfield$top_field_flag_is_non_existing);
+    public static final long OFFSET$bitfield$top_field_flag$is_non_existing = LAYOUT.byteOffset(PATH$bitfield$top_field_flag$is_non_existing);
 }

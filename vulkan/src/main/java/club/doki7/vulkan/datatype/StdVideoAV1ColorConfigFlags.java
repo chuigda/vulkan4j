@@ -70,54 +70,54 @@ public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implem
     }
 
     public boolean mono_chrome() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome$reserved, LAYOUT$bitfield$mono_chrome$reserved);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void mono_chrome(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome$reserved, LAYOUT$bitfield$mono_chrome$reserved);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean color_range() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome$reserved, LAYOUT$bitfield$mono_chrome$reserved);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void color_range(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome$reserved, LAYOUT$bitfield$mono_chrome$reserved);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
     public boolean separate_uv_delta_q() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome$reserved, LAYOUT$bitfield$mono_chrome$reserved);
         return BitfieldUtil.readBit(s, 2);
     }
 
     public void separate_uv_delta_q(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome$reserved, LAYOUT$bitfield$mono_chrome$reserved);
         BitfieldUtil.writeBit(s, 2, value);
     }
 
     public boolean color_description_present_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome$reserved, LAYOUT$bitfield$mono_chrome$reserved);
         return BitfieldUtil.readBit(s, 3);
     }
 
     public void color_description_present_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome_reserved, LAYOUT$mono_chrome_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome$reserved, LAYOUT$bitfield$mono_chrome$reserved);
         BitfieldUtil.writeBit(s, 3, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$mono_chrome_reserved")
+        ValueLayout.JAVA_INT.withName("bitfield$mono_chrome$reserved")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$mono_chrome_reserved = PathElement.groupElement("PATH$bitfield$mono_chrome_reserved");
+    public static final PathElement PATH$bitfield$mono_chrome$reserved = PathElement.groupElement("PATH$bitfield$mono_chrome$reserved");
 
-    public static final OfInt LAYOUT$mono_chrome_reserved = (OfInt) LAYOUT.select(PATH$bitfield$mono_chrome_reserved);
+    public static final OfInt LAYOUT$bitfield$mono_chrome$reserved = (OfInt) LAYOUT.select(PATH$bitfield$mono_chrome$reserved);
 
 
-    public static final long OFFSET$bitfield$mono_chrome_reserved = LAYOUT.byteOffset(PATH$bitfield$mono_chrome_reserved);
+    public static final long OFFSET$bitfield$mono_chrome$reserved = LAYOUT.byteOffset(PATH$bitfield$mono_chrome$reserved);
 }

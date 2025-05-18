@@ -70,64 +70,64 @@ public record StdVideoH265ProfileTierLevelFlags(@NotNull MemorySegment segment) 
     }
 
     public boolean general_tier_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag_general_frame_only_constraint_flag, LAYOUT$general_tier_flag_general_frame_only_constraint_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag$general_frame_only_constraint_flag, LAYOUT$bitfield$general_tier_flag$general_frame_only_constraint_flag);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void general_tier_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag_general_frame_only_constraint_flag, LAYOUT$general_tier_flag_general_frame_only_constraint_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag$general_frame_only_constraint_flag, LAYOUT$bitfield$general_tier_flag$general_frame_only_constraint_flag);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean general_progressive_source_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag_general_frame_only_constraint_flag, LAYOUT$general_tier_flag_general_frame_only_constraint_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag$general_frame_only_constraint_flag, LAYOUT$bitfield$general_tier_flag$general_frame_only_constraint_flag);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void general_progressive_source_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag_general_frame_only_constraint_flag, LAYOUT$general_tier_flag_general_frame_only_constraint_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag$general_frame_only_constraint_flag, LAYOUT$bitfield$general_tier_flag$general_frame_only_constraint_flag);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
     public boolean general_interlaced_source_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag_general_frame_only_constraint_flag, LAYOUT$general_tier_flag_general_frame_only_constraint_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag$general_frame_only_constraint_flag, LAYOUT$bitfield$general_tier_flag$general_frame_only_constraint_flag);
         return BitfieldUtil.readBit(s, 2);
     }
 
     public void general_interlaced_source_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag_general_frame_only_constraint_flag, LAYOUT$general_tier_flag_general_frame_only_constraint_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag$general_frame_only_constraint_flag, LAYOUT$bitfield$general_tier_flag$general_frame_only_constraint_flag);
         BitfieldUtil.writeBit(s, 2, value);
     }
 
     public boolean general_non_packed_constraint_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag_general_frame_only_constraint_flag, LAYOUT$general_tier_flag_general_frame_only_constraint_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag$general_frame_only_constraint_flag, LAYOUT$bitfield$general_tier_flag$general_frame_only_constraint_flag);
         return BitfieldUtil.readBit(s, 3);
     }
 
     public void general_non_packed_constraint_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag_general_frame_only_constraint_flag, LAYOUT$general_tier_flag_general_frame_only_constraint_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag$general_frame_only_constraint_flag, LAYOUT$bitfield$general_tier_flag$general_frame_only_constraint_flag);
         BitfieldUtil.writeBit(s, 3, value);
     }
 
     public boolean general_frame_only_constraint_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag_general_frame_only_constraint_flag, LAYOUT$general_tier_flag_general_frame_only_constraint_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag$general_frame_only_constraint_flag, LAYOUT$bitfield$general_tier_flag$general_frame_only_constraint_flag);
         return BitfieldUtil.readBit(s, 4);
     }
 
     public void general_frame_only_constraint_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag_general_frame_only_constraint_flag, LAYOUT$general_tier_flag_general_frame_only_constraint_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag$general_frame_only_constraint_flag, LAYOUT$bitfield$general_tier_flag$general_frame_only_constraint_flag);
         BitfieldUtil.writeBit(s, 4, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$general_tier_flag_general_frame_only_constraint_flag")
+        ValueLayout.JAVA_INT.withName("bitfield$general_tier_flag$general_frame_only_constraint_flag")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$general_tier_flag_general_frame_only_constraint_flag = PathElement.groupElement("PATH$bitfield$general_tier_flag_general_frame_only_constraint_flag");
+    public static final PathElement PATH$bitfield$general_tier_flag$general_frame_only_constraint_flag = PathElement.groupElement("PATH$bitfield$general_tier_flag$general_frame_only_constraint_flag");
 
-    public static final OfInt LAYOUT$general_tier_flag_general_frame_only_constraint_flag = (OfInt) LAYOUT.select(PATH$bitfield$general_tier_flag_general_frame_only_constraint_flag);
+    public static final OfInt LAYOUT$bitfield$general_tier_flag$general_frame_only_constraint_flag = (OfInt) LAYOUT.select(PATH$bitfield$general_tier_flag$general_frame_only_constraint_flag);
 
 
-    public static final long OFFSET$bitfield$general_tier_flag_general_frame_only_constraint_flag = LAYOUT.byteOffset(PATH$bitfield$general_tier_flag_general_frame_only_constraint_flag);
+    public static final long OFFSET$bitfield$general_tier_flag$general_frame_only_constraint_flag = LAYOUT.byteOffset(PATH$bitfield$general_tier_flag$general_frame_only_constraint_flag);
 }

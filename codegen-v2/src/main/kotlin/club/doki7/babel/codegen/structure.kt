@@ -20,8 +20,8 @@ sealed class LayoutField(
     val name: String,
     val value: String,
 ) {
-    val layoutName: String = "LAYOUT$$name"
-    val sizeName: String = "SIZE$$name"
+    abstract val layoutName: String
+    abstract val sizeName: String
     abstract val pathName: String
     abstract val offsetName: String
 
@@ -33,8 +33,9 @@ sealed class LayoutField(
         val unresolvedType:
         Type,
         val optional: Boolean
-    ) :
-        LayoutField(jLayoutType, name, value) {
+    ) : LayoutField(jLayoutType, name, value) {
+        override val layoutName: String = "LAYOUT$$name"
+        override val sizeName: String = "SIZE$$name"
         override val pathName: String = "PATH$$name"
         override val offsetName: String = "OFFSET$$name"
         val rawName = "${name}Raw"
@@ -50,8 +51,9 @@ sealed class LayoutField(
         val unresolvedType: Type,
         val bitfields: List<Bitfield>,
         val length: Int
-    ) :
-        LayoutField(jLayoutType, name, value) {
+    ) : LayoutField(jLayoutType, name, value) {
+        override val layoutName: String = "LAYOUT\$bitfield$$name"
+        override val sizeName: String = "SIZE\$bitfield$$name"
         override val pathName: String = "PATH\$bitfield$$name"
         override val offsetName: String = "OFFSET\$bitfield$$name"
     }
@@ -457,7 +459,7 @@ private fun summarizeBitfieldStorageUnit(
     val storageUnitBeginMemberName = structure.members[storageUnitBegin].name.value
     val storageUnitEndMemberName = structure.members[storageUnitEnd].name.value
 
-    val storageUnitName = "${storageUnitBeginMemberName}_${storageUnitEndMemberName}"
+    val storageUnitName = "${storageUnitBeginMemberName}$${storageUnitEndMemberName}"
     val layout = "${storageUnitType.jLayout}.withName(\"bitfield$$storageUnitName\")"
 
     val bitfields = mutableListOf<LayoutField.Bitfield>()

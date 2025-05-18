@@ -69,54 +69,54 @@ public record StdVideoDecodeH265PictureInfoFlags(@NotNull MemorySegment segment)
     }
 
     public boolean IrapPicFlag() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag, LAYOUT$IrapPicFlag_short_term_ref_pic_set_sps_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag, LAYOUT$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void IrapPicFlag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag, LAYOUT$IrapPicFlag_short_term_ref_pic_set_sps_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag, LAYOUT$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean IdrPicFlag() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag, LAYOUT$IrapPicFlag_short_term_ref_pic_set_sps_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag, LAYOUT$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void IdrPicFlag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag, LAYOUT$IrapPicFlag_short_term_ref_pic_set_sps_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag, LAYOUT$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
     public boolean IsReference() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag, LAYOUT$IrapPicFlag_short_term_ref_pic_set_sps_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag, LAYOUT$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag);
         return BitfieldUtil.readBit(s, 2);
     }
 
     public void IsReference(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag, LAYOUT$IrapPicFlag_short_term_ref_pic_set_sps_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag, LAYOUT$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag);
         BitfieldUtil.writeBit(s, 2, value);
     }
 
     public boolean short_term_ref_pic_set_sps_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag, LAYOUT$IrapPicFlag_short_term_ref_pic_set_sps_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag, LAYOUT$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag);
         return BitfieldUtil.readBit(s, 3);
     }
 
     public void short_term_ref_pic_set_sps_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag, LAYOUT$IrapPicFlag_short_term_ref_pic_set_sps_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag, LAYOUT$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag);
         BitfieldUtil.writeBit(s, 3, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag")
+        ValueLayout.JAVA_INT.withName("bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag = PathElement.groupElement("PATH$bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag");
+    public static final PathElement PATH$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag = PathElement.groupElement("PATH$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag");
 
-    public static final OfInt LAYOUT$IrapPicFlag_short_term_ref_pic_set_sps_flag = (OfInt) LAYOUT.select(PATH$bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag);
+    public static final OfInt LAYOUT$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag = (OfInt) LAYOUT.select(PATH$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag);
 
 
-    public static final long OFFSET$bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag = LAYOUT.byteOffset(PATH$bitfield$IrapPicFlag_short_term_ref_pic_set_sps_flag);
+    public static final long OFFSET$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag = LAYOUT.byteOffset(PATH$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag);
 }

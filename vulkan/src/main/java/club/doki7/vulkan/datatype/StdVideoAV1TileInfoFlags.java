@@ -67,24 +67,24 @@ public record StdVideoAV1TileInfoFlags(@NotNull MemorySegment segment) implement
     }
 
     public boolean uniform_tile_spacing_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$uniform_tile_spacing_flag_reserved, LAYOUT$uniform_tile_spacing_flag_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$uniform_tile_spacing_flag$reserved, LAYOUT$bitfield$uniform_tile_spacing_flag$reserved);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void uniform_tile_spacing_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$uniform_tile_spacing_flag_reserved, LAYOUT$uniform_tile_spacing_flag_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$uniform_tile_spacing_flag$reserved, LAYOUT$bitfield$uniform_tile_spacing_flag$reserved);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$uniform_tile_spacing_flag_reserved")
+        ValueLayout.JAVA_INT.withName("bitfield$uniform_tile_spacing_flag$reserved")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$uniform_tile_spacing_flag_reserved = PathElement.groupElement("PATH$bitfield$uniform_tile_spacing_flag_reserved");
+    public static final PathElement PATH$bitfield$uniform_tile_spacing_flag$reserved = PathElement.groupElement("PATH$bitfield$uniform_tile_spacing_flag$reserved");
 
-    public static final OfInt LAYOUT$uniform_tile_spacing_flag_reserved = (OfInt) LAYOUT.select(PATH$bitfield$uniform_tile_spacing_flag_reserved);
+    public static final OfInt LAYOUT$bitfield$uniform_tile_spacing_flag$reserved = (OfInt) LAYOUT.select(PATH$bitfield$uniform_tile_spacing_flag$reserved);
 
 
-    public static final long OFFSET$bitfield$uniform_tile_spacing_flag_reserved = LAYOUT.byteOffset(PATH$bitfield$uniform_tile_spacing_flag_reserved);
+    public static final long OFFSET$bitfield$uniform_tile_spacing_flag$reserved = LAYOUT.byteOffset(PATH$bitfield$uniform_tile_spacing_flag$reserved);
 }

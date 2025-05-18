@@ -68,34 +68,34 @@ public record StdVideoDecodeAV1ReferenceInfoFlags(@NotNull MemorySegment segment
     }
 
     public boolean disable_frame_end_update_cdf() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$disable_frame_end_update_cdf$reserved, LAYOUT$bitfield$disable_frame_end_update_cdf$reserved);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void disable_frame_end_update_cdf(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$disable_frame_end_update_cdf$reserved, LAYOUT$bitfield$disable_frame_end_update_cdf$reserved);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean segmentation_enabled() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$disable_frame_end_update_cdf$reserved, LAYOUT$bitfield$disable_frame_end_update_cdf$reserved);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void segmentation_enabled(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$disable_frame_end_update_cdf$reserved, LAYOUT$bitfield$disable_frame_end_update_cdf$reserved);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$disable_frame_end_update_cdf_reserved")
+        ValueLayout.JAVA_INT.withName("bitfield$disable_frame_end_update_cdf$reserved")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$disable_frame_end_update_cdf_reserved = PathElement.groupElement("PATH$bitfield$disable_frame_end_update_cdf_reserved");
+    public static final PathElement PATH$bitfield$disable_frame_end_update_cdf$reserved = PathElement.groupElement("PATH$bitfield$disable_frame_end_update_cdf$reserved");
 
-    public static final OfInt LAYOUT$disable_frame_end_update_cdf_reserved = (OfInt) LAYOUT.select(PATH$bitfield$disable_frame_end_update_cdf_reserved);
+    public static final OfInt LAYOUT$bitfield$disable_frame_end_update_cdf$reserved = (OfInt) LAYOUT.select(PATH$bitfield$disable_frame_end_update_cdf$reserved);
 
 
-    public static final long OFFSET$bitfield$disable_frame_end_update_cdf_reserved = LAYOUT.byteOffset(PATH$bitfield$disable_frame_end_update_cdf_reserved);
+    public static final long OFFSET$bitfield$disable_frame_end_update_cdf$reserved = LAYOUT.byteOffset(PATH$bitfield$disable_frame_end_update_cdf$reserved);
 }

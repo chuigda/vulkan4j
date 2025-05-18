@@ -67,24 +67,24 @@ public record StdVideoAV1TimingInfoFlags(@NotNull MemorySegment segment) impleme
     }
 
     public boolean equal_picture_interval() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$equal_picture_interval_reserved, LAYOUT$equal_picture_interval_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$equal_picture_interval$reserved, LAYOUT$bitfield$equal_picture_interval$reserved);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void equal_picture_interval(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$equal_picture_interval_reserved, LAYOUT$equal_picture_interval_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$equal_picture_interval$reserved, LAYOUT$bitfield$equal_picture_interval$reserved);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$equal_picture_interval_reserved")
+        ValueLayout.JAVA_INT.withName("bitfield$equal_picture_interval$reserved")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$equal_picture_interval_reserved = PathElement.groupElement("PATH$bitfield$equal_picture_interval_reserved");
+    public static final PathElement PATH$bitfield$equal_picture_interval$reserved = PathElement.groupElement("PATH$bitfield$equal_picture_interval$reserved");
 
-    public static final OfInt LAYOUT$equal_picture_interval_reserved = (OfInt) LAYOUT.select(PATH$bitfield$equal_picture_interval_reserved);
+    public static final OfInt LAYOUT$bitfield$equal_picture_interval$reserved = (OfInt) LAYOUT.select(PATH$bitfield$equal_picture_interval$reserved);
 
 
-    public static final long OFFSET$bitfield$equal_picture_interval_reserved = LAYOUT.byteOffset(PATH$bitfield$equal_picture_interval_reserved);
+    public static final long OFFSET$bitfield$equal_picture_interval$reserved = LAYOUT.byteOffset(PATH$bitfield$equal_picture_interval$reserved);
 }

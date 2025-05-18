@@ -68,34 +68,34 @@ public record StdVideoEncodeH265ReferenceInfoFlags(@NotNull MemorySegment segmen
     }
 
     public boolean used_for_long_term_reference() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$used_for_long_term_reference_reserved, LAYOUT$used_for_long_term_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$used_for_long_term_reference$reserved, LAYOUT$bitfield$used_for_long_term_reference$reserved);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void used_for_long_term_reference(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$used_for_long_term_reference_reserved, LAYOUT$used_for_long_term_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$used_for_long_term_reference$reserved, LAYOUT$bitfield$used_for_long_term_reference$reserved);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean unused_for_reference() {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$used_for_long_term_reference_reserved, LAYOUT$used_for_long_term_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$used_for_long_term_reference$reserved, LAYOUT$bitfield$used_for_long_term_reference$reserved);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void unused_for_reference(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$bitfield$used_for_long_term_reference_reserved, LAYOUT$used_for_long_term_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$used_for_long_term_reference$reserved, LAYOUT$bitfield$used_for_long_term_reference$reserved);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bitfield$used_for_long_term_reference_reserved")
+        ValueLayout.JAVA_INT.withName("bitfield$used_for_long_term_reference$reserved")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$used_for_long_term_reference_reserved = PathElement.groupElement("PATH$bitfield$used_for_long_term_reference_reserved");
+    public static final PathElement PATH$bitfield$used_for_long_term_reference$reserved = PathElement.groupElement("PATH$bitfield$used_for_long_term_reference$reserved");
 
-    public static final OfInt LAYOUT$used_for_long_term_reference_reserved = (OfInt) LAYOUT.select(PATH$bitfield$used_for_long_term_reference_reserved);
+    public static final OfInt LAYOUT$bitfield$used_for_long_term_reference$reserved = (OfInt) LAYOUT.select(PATH$bitfield$used_for_long_term_reference$reserved);
 
 
-    public static final long OFFSET$bitfield$used_for_long_term_reference_reserved = LAYOUT.byteOffset(PATH$bitfield$used_for_long_term_reference_reserved);
+    public static final long OFFSET$bitfield$used_for_long_term_reference$reserved = LAYOUT.byteOffset(PATH$bitfield$used_for_long_term_reference$reserved);
 }
