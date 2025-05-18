@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
 import club.doki7.ffm.NativeLayout;
+import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.vulkan.bitmask.*;
@@ -14,6 +15,14 @@ import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 
 public final class VkStaticCommands {
+    public VkStaticCommands(RawFunctionLoader loader) {
+        SEGMENT$vkGetDeviceProcAddr = loader.apply("vkGetDeviceProcAddr");
+        HANDLE$vkGetDeviceProcAddr = RawFunctionLoader.link(SEGMENT$vkGetDeviceProcAddr, Descriptors.DESCRIPTOR$vkGetDeviceProcAddr);
+        SEGMENT$vkGetInstanceProcAddr = loader.apply("vkGetInstanceProcAddr");
+        HANDLE$vkGetInstanceProcAddr = RawFunctionLoader.link(SEGMENT$vkGetInstanceProcAddr, Descriptors.DESCRIPTOR$vkGetInstanceProcAddr);
+    }
+
+    // region command wrappers
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetDeviceProcAddr.html"><code>vkGetDeviceProcAddr</code></a>
     public @pointer(comment="PFN_vkVoidFunction") MemorySegment getDeviceProcAddr(
         VkDevice device,
@@ -45,11 +54,15 @@ public final class VkStaticCommands {
             throw new RuntimeException(e);
         }
     }
+    // endregion
 
+    // region segments and handles
     public final @Nullable MemorySegment SEGMENT$vkGetDeviceProcAddr;
     public final @Nullable MemorySegment SEGMENT$vkGetInstanceProcAddr;
     public final @Nullable MethodHandle HANDLE$vkGetDeviceProcAddr;
     public final @Nullable MethodHandle HANDLE$vkGetInstanceProcAddr;
+    // endregion
+
     public static final class Descriptors {
         public static final FunctionDescriptor DESCRIPTOR$vkGetDeviceProcAddr = FunctionDescriptor.of(
             ValueLayout.ADDRESS,

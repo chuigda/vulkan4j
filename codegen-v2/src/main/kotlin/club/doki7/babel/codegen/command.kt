@@ -33,6 +33,7 @@ fun generateCommandFile(
     +""
     imports("org.jetbrains.annotations.Nullable")
     imports("club.doki7.ffm.NativeLayout")
+    imports("club.doki7.ffm.RawFunctionLoader")
     imports("club.doki7.ffm.annotation.*")
     imports("club.doki7.ffm.ptr.*")
     if (registry.bitmasks.isNotEmpty()) {
@@ -61,11 +62,34 @@ fun generateCommandFile(
     indent {
         val loweredCommand = commands.map { lowerCommand(it, registry, codegenOptions) }.toList()
 
-        loweredCommand.forEach {
-            +generateCommandWrapper(it, codegenOptions)
-            +""
-        }
+        +"public $className(RawFunctionLoader loader) {"
+        indent {
+            loweredCommand.forEach {
+                val funcOriginalName = it.command.name.original
+                val descriptorFuncName = it.command.aliasTo?.original ?: funcOriginalName
 
+                val segmentName = "SEGMENT$$funcOriginalName"
+                val handleName = "HANDLE$$funcOriginalName"
+                val descriptorName = "Descriptors.DESCRIPTOR$$descriptorFuncName"
+
+                +"$segmentName = loader.apply(\"$funcOriginalName\");"
+                +"$handleName = RawFunctionLoader.link($segmentName, $descriptorName);"
+            }
+        }
+        +"}"
+        +""
+
+        +"// region command wrappers"
+        loweredCommand.forEachIndexed { idx, it ->
+            +generateCommandWrapper(it, codegenOptions)
+            if (idx != loweredCommand.size - 1) {
+                +""
+            }
+        }
+        +"// endregion"
+        +""
+
+        +"// region segments and handles"
         loweredCommand.forEach {
             +"public final @Nullable MemorySegment SEGMENT$${it.command.name.original};"
         }
@@ -73,6 +97,8 @@ fun generateCommandFile(
         loweredCommand.forEach {
             +"public final @Nullable MethodHandle HANDLE$${it.command.name.original};"
         }
+        +"// endregion"
+        +""
 
         +"public static final class Descriptors {"
         indent {

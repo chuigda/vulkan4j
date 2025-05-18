@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
 import club.doki7.ffm.NativeLayout;
+import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.vulkan.bitmask.*;
@@ -14,6 +15,18 @@ import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 
 public final class VkEntryCommands {
+    public VkEntryCommands(RawFunctionLoader loader) {
+        SEGMENT$vkCreateInstance = loader.apply("vkCreateInstance");
+        HANDLE$vkCreateInstance = RawFunctionLoader.link(SEGMENT$vkCreateInstance, Descriptors.DESCRIPTOR$vkCreateInstance);
+        SEGMENT$vkEnumerateInstanceExtensionProperties = loader.apply("vkEnumerateInstanceExtensionProperties");
+        HANDLE$vkEnumerateInstanceExtensionProperties = RawFunctionLoader.link(SEGMENT$vkEnumerateInstanceExtensionProperties, Descriptors.DESCRIPTOR$vkEnumerateInstanceExtensionProperties);
+        SEGMENT$vkEnumerateInstanceLayerProperties = loader.apply("vkEnumerateInstanceLayerProperties");
+        HANDLE$vkEnumerateInstanceLayerProperties = RawFunctionLoader.link(SEGMENT$vkEnumerateInstanceLayerProperties, Descriptors.DESCRIPTOR$vkEnumerateInstanceLayerProperties);
+        SEGMENT$vkEnumerateInstanceVersion = loader.apply("vkEnumerateInstanceVersion");
+        HANDLE$vkEnumerateInstanceVersion = RawFunctionLoader.link(SEGMENT$vkEnumerateInstanceVersion, Descriptors.DESCRIPTOR$vkEnumerateInstanceVersion);
+    }
+
+    // region command wrappers
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateInstance.html"><code>vkCreateInstance</code></a>
     public @enumtype(VkResult.class) int createInstance(
         @pointer(target=VkInstanceCreateInfo.class) VkInstanceCreateInfo pCreateInfo,
@@ -79,7 +92,9 @@ public final class VkEntryCommands {
             throw new RuntimeException(e);
         }
     }
+    // endregion
 
+    // region segments and handles
     public final @Nullable MemorySegment SEGMENT$vkCreateInstance;
     public final @Nullable MemorySegment SEGMENT$vkEnumerateInstanceExtensionProperties;
     public final @Nullable MemorySegment SEGMENT$vkEnumerateInstanceLayerProperties;
@@ -88,6 +103,8 @@ public final class VkEntryCommands {
     public final @Nullable MethodHandle HANDLE$vkEnumerateInstanceExtensionProperties;
     public final @Nullable MethodHandle HANDLE$vkEnumerateInstanceLayerProperties;
     public final @Nullable MethodHandle HANDLE$vkEnumerateInstanceVersion;
+    // endregion
+
     public static final class Descriptors {
         public static final FunctionDescriptor DESCRIPTOR$vkCreateInstance = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,

@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
 import club.doki7.ffm.NativeLayout;
+import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.vulkan.bitmask.*;
@@ -14,6 +15,198 @@ import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 
 public final class VkInstanceCommands {
+    public VkInstanceCommands(RawFunctionLoader loader) {
+        SEGMENT$vkAcquireDrmDisplayEXT = loader.apply("vkAcquireDrmDisplayEXT");
+        HANDLE$vkAcquireDrmDisplayEXT = RawFunctionLoader.link(SEGMENT$vkAcquireDrmDisplayEXT, Descriptors.DESCRIPTOR$vkAcquireDrmDisplayEXT);
+        SEGMENT$vkAcquireXlibDisplayEXT = loader.apply("vkAcquireXlibDisplayEXT");
+        HANDLE$vkAcquireXlibDisplayEXT = RawFunctionLoader.link(SEGMENT$vkAcquireXlibDisplayEXT, Descriptors.DESCRIPTOR$vkAcquireXlibDisplayEXT);
+        SEGMENT$vkCmdBeginDebugUtilsLabelEXT = loader.apply("vkCmdBeginDebugUtilsLabelEXT");
+        HANDLE$vkCmdBeginDebugUtilsLabelEXT = RawFunctionLoader.link(SEGMENT$vkCmdBeginDebugUtilsLabelEXT, Descriptors.DESCRIPTOR$vkCmdBeginDebugUtilsLabelEXT);
+        SEGMENT$vkCmdEndDebugUtilsLabelEXT = loader.apply("vkCmdEndDebugUtilsLabelEXT");
+        HANDLE$vkCmdEndDebugUtilsLabelEXT = RawFunctionLoader.link(SEGMENT$vkCmdEndDebugUtilsLabelEXT, Descriptors.DESCRIPTOR$vkCmdEndDebugUtilsLabelEXT);
+        SEGMENT$vkCmdInsertDebugUtilsLabelEXT = loader.apply("vkCmdInsertDebugUtilsLabelEXT");
+        HANDLE$vkCmdInsertDebugUtilsLabelEXT = RawFunctionLoader.link(SEGMENT$vkCmdInsertDebugUtilsLabelEXT, Descriptors.DESCRIPTOR$vkCmdInsertDebugUtilsLabelEXT);
+        SEGMENT$vkCreateAndroidSurfaceKHR = loader.apply("vkCreateAndroidSurfaceKHR");
+        HANDLE$vkCreateAndroidSurfaceKHR = RawFunctionLoader.link(SEGMENT$vkCreateAndroidSurfaceKHR, Descriptors.DESCRIPTOR$vkCreateAndroidSurfaceKHR);
+        SEGMENT$vkCreateDebugReportCallbackEXT = loader.apply("vkCreateDebugReportCallbackEXT");
+        HANDLE$vkCreateDebugReportCallbackEXT = RawFunctionLoader.link(SEGMENT$vkCreateDebugReportCallbackEXT, Descriptors.DESCRIPTOR$vkCreateDebugReportCallbackEXT);
+        SEGMENT$vkCreateDebugUtilsMessengerEXT = loader.apply("vkCreateDebugUtilsMessengerEXT");
+        HANDLE$vkCreateDebugUtilsMessengerEXT = RawFunctionLoader.link(SEGMENT$vkCreateDebugUtilsMessengerEXT, Descriptors.DESCRIPTOR$vkCreateDebugUtilsMessengerEXT);
+        SEGMENT$vkCreateDevice = loader.apply("vkCreateDevice");
+        HANDLE$vkCreateDevice = RawFunctionLoader.link(SEGMENT$vkCreateDevice, Descriptors.DESCRIPTOR$vkCreateDevice);
+        SEGMENT$vkCreateDirectFBSurfaceEXT = loader.apply("vkCreateDirectFBSurfaceEXT");
+        HANDLE$vkCreateDirectFBSurfaceEXT = RawFunctionLoader.link(SEGMENT$vkCreateDirectFBSurfaceEXT, Descriptors.DESCRIPTOR$vkCreateDirectFBSurfaceEXT);
+        SEGMENT$vkCreateDisplayModeKHR = loader.apply("vkCreateDisplayModeKHR");
+        HANDLE$vkCreateDisplayModeKHR = RawFunctionLoader.link(SEGMENT$vkCreateDisplayModeKHR, Descriptors.DESCRIPTOR$vkCreateDisplayModeKHR);
+        SEGMENT$vkCreateDisplayPlaneSurfaceKHR = loader.apply("vkCreateDisplayPlaneSurfaceKHR");
+        HANDLE$vkCreateDisplayPlaneSurfaceKHR = RawFunctionLoader.link(SEGMENT$vkCreateDisplayPlaneSurfaceKHR, Descriptors.DESCRIPTOR$vkCreateDisplayPlaneSurfaceKHR);
+        SEGMENT$vkCreateHeadlessSurfaceEXT = loader.apply("vkCreateHeadlessSurfaceEXT");
+        HANDLE$vkCreateHeadlessSurfaceEXT = RawFunctionLoader.link(SEGMENT$vkCreateHeadlessSurfaceEXT, Descriptors.DESCRIPTOR$vkCreateHeadlessSurfaceEXT);
+        SEGMENT$vkCreateIOSSurfaceMVK = loader.apply("vkCreateIOSSurfaceMVK");
+        HANDLE$vkCreateIOSSurfaceMVK = RawFunctionLoader.link(SEGMENT$vkCreateIOSSurfaceMVK, Descriptors.DESCRIPTOR$vkCreateIOSSurfaceMVK);
+        SEGMENT$vkCreateImagePipeSurfaceFUCHSIA = loader.apply("vkCreateImagePipeSurfaceFUCHSIA");
+        HANDLE$vkCreateImagePipeSurfaceFUCHSIA = RawFunctionLoader.link(SEGMENT$vkCreateImagePipeSurfaceFUCHSIA, Descriptors.DESCRIPTOR$vkCreateImagePipeSurfaceFUCHSIA);
+        SEGMENT$vkCreateMacOSSurfaceMVK = loader.apply("vkCreateMacOSSurfaceMVK");
+        HANDLE$vkCreateMacOSSurfaceMVK = RawFunctionLoader.link(SEGMENT$vkCreateMacOSSurfaceMVK, Descriptors.DESCRIPTOR$vkCreateMacOSSurfaceMVK);
+        SEGMENT$vkCreateMetalSurfaceEXT = loader.apply("vkCreateMetalSurfaceEXT");
+        HANDLE$vkCreateMetalSurfaceEXT = RawFunctionLoader.link(SEGMENT$vkCreateMetalSurfaceEXT, Descriptors.DESCRIPTOR$vkCreateMetalSurfaceEXT);
+        SEGMENT$vkCreateScreenSurfaceQNX = loader.apply("vkCreateScreenSurfaceQNX");
+        HANDLE$vkCreateScreenSurfaceQNX = RawFunctionLoader.link(SEGMENT$vkCreateScreenSurfaceQNX, Descriptors.DESCRIPTOR$vkCreateScreenSurfaceQNX);
+        SEGMENT$vkCreateStreamDescriptorSurfaceGGP = loader.apply("vkCreateStreamDescriptorSurfaceGGP");
+        HANDLE$vkCreateStreamDescriptorSurfaceGGP = RawFunctionLoader.link(SEGMENT$vkCreateStreamDescriptorSurfaceGGP, Descriptors.DESCRIPTOR$vkCreateStreamDescriptorSurfaceGGP);
+        SEGMENT$vkCreateViSurfaceNN = loader.apply("vkCreateViSurfaceNN");
+        HANDLE$vkCreateViSurfaceNN = RawFunctionLoader.link(SEGMENT$vkCreateViSurfaceNN, Descriptors.DESCRIPTOR$vkCreateViSurfaceNN);
+        SEGMENT$vkCreateWaylandSurfaceKHR = loader.apply("vkCreateWaylandSurfaceKHR");
+        HANDLE$vkCreateWaylandSurfaceKHR = RawFunctionLoader.link(SEGMENT$vkCreateWaylandSurfaceKHR, Descriptors.DESCRIPTOR$vkCreateWaylandSurfaceKHR);
+        SEGMENT$vkCreateWin32SurfaceKHR = loader.apply("vkCreateWin32SurfaceKHR");
+        HANDLE$vkCreateWin32SurfaceKHR = RawFunctionLoader.link(SEGMENT$vkCreateWin32SurfaceKHR, Descriptors.DESCRIPTOR$vkCreateWin32SurfaceKHR);
+        SEGMENT$vkCreateXcbSurfaceKHR = loader.apply("vkCreateXcbSurfaceKHR");
+        HANDLE$vkCreateXcbSurfaceKHR = RawFunctionLoader.link(SEGMENT$vkCreateXcbSurfaceKHR, Descriptors.DESCRIPTOR$vkCreateXcbSurfaceKHR);
+        SEGMENT$vkCreateXlibSurfaceKHR = loader.apply("vkCreateXlibSurfaceKHR");
+        HANDLE$vkCreateXlibSurfaceKHR = RawFunctionLoader.link(SEGMENT$vkCreateXlibSurfaceKHR, Descriptors.DESCRIPTOR$vkCreateXlibSurfaceKHR);
+        SEGMENT$vkDebugReportMessageEXT = loader.apply("vkDebugReportMessageEXT");
+        HANDLE$vkDebugReportMessageEXT = RawFunctionLoader.link(SEGMENT$vkDebugReportMessageEXT, Descriptors.DESCRIPTOR$vkDebugReportMessageEXT);
+        SEGMENT$vkDestroyDebugReportCallbackEXT = loader.apply("vkDestroyDebugReportCallbackEXT");
+        HANDLE$vkDestroyDebugReportCallbackEXT = RawFunctionLoader.link(SEGMENT$vkDestroyDebugReportCallbackEXT, Descriptors.DESCRIPTOR$vkDestroyDebugReportCallbackEXT);
+        SEGMENT$vkDestroyDebugUtilsMessengerEXT = loader.apply("vkDestroyDebugUtilsMessengerEXT");
+        HANDLE$vkDestroyDebugUtilsMessengerEXT = RawFunctionLoader.link(SEGMENT$vkDestroyDebugUtilsMessengerEXT, Descriptors.DESCRIPTOR$vkDestroyDebugUtilsMessengerEXT);
+        SEGMENT$vkDestroyInstance = loader.apply("vkDestroyInstance");
+        HANDLE$vkDestroyInstance = RawFunctionLoader.link(SEGMENT$vkDestroyInstance, Descriptors.DESCRIPTOR$vkDestroyInstance);
+        SEGMENT$vkDestroySurfaceKHR = loader.apply("vkDestroySurfaceKHR");
+        HANDLE$vkDestroySurfaceKHR = RawFunctionLoader.link(SEGMENT$vkDestroySurfaceKHR, Descriptors.DESCRIPTOR$vkDestroySurfaceKHR);
+        SEGMENT$vkEnumerateDeviceExtensionProperties = loader.apply("vkEnumerateDeviceExtensionProperties");
+        HANDLE$vkEnumerateDeviceExtensionProperties = RawFunctionLoader.link(SEGMENT$vkEnumerateDeviceExtensionProperties, Descriptors.DESCRIPTOR$vkEnumerateDeviceExtensionProperties);
+        SEGMENT$vkEnumerateDeviceLayerProperties = loader.apply("vkEnumerateDeviceLayerProperties");
+        HANDLE$vkEnumerateDeviceLayerProperties = RawFunctionLoader.link(SEGMENT$vkEnumerateDeviceLayerProperties, Descriptors.DESCRIPTOR$vkEnumerateDeviceLayerProperties);
+        SEGMENT$vkEnumeratePhysicalDeviceGroups = loader.apply("vkEnumeratePhysicalDeviceGroups");
+        HANDLE$vkEnumeratePhysicalDeviceGroups = RawFunctionLoader.link(SEGMENT$vkEnumeratePhysicalDeviceGroups, Descriptors.DESCRIPTOR$vkEnumeratePhysicalDeviceGroups);
+        SEGMENT$vkEnumeratePhysicalDeviceGroupsKHR = loader.apply("vkEnumeratePhysicalDeviceGroupsKHR");
+        HANDLE$vkEnumeratePhysicalDeviceGroupsKHR = RawFunctionLoader.link(SEGMENT$vkEnumeratePhysicalDeviceGroupsKHR, Descriptors.DESCRIPTOR$vkEnumeratePhysicalDeviceGroups);
+        SEGMENT$vkEnumeratePhysicalDevices = loader.apply("vkEnumeratePhysicalDevices");
+        HANDLE$vkEnumeratePhysicalDevices = RawFunctionLoader.link(SEGMENT$vkEnumeratePhysicalDevices, Descriptors.DESCRIPTOR$vkEnumeratePhysicalDevices);
+        SEGMENT$vkGetDisplayModeProperties2KHR = loader.apply("vkGetDisplayModeProperties2KHR");
+        HANDLE$vkGetDisplayModeProperties2KHR = RawFunctionLoader.link(SEGMENT$vkGetDisplayModeProperties2KHR, Descriptors.DESCRIPTOR$vkGetDisplayModeProperties2KHR);
+        SEGMENT$vkGetDisplayModePropertiesKHR = loader.apply("vkGetDisplayModePropertiesKHR");
+        HANDLE$vkGetDisplayModePropertiesKHR = RawFunctionLoader.link(SEGMENT$vkGetDisplayModePropertiesKHR, Descriptors.DESCRIPTOR$vkGetDisplayModePropertiesKHR);
+        SEGMENT$vkGetDisplayPlaneCapabilities2KHR = loader.apply("vkGetDisplayPlaneCapabilities2KHR");
+        HANDLE$vkGetDisplayPlaneCapabilities2KHR = RawFunctionLoader.link(SEGMENT$vkGetDisplayPlaneCapabilities2KHR, Descriptors.DESCRIPTOR$vkGetDisplayPlaneCapabilities2KHR);
+        SEGMENT$vkGetDisplayPlaneCapabilitiesKHR = loader.apply("vkGetDisplayPlaneCapabilitiesKHR");
+        HANDLE$vkGetDisplayPlaneCapabilitiesKHR = RawFunctionLoader.link(SEGMENT$vkGetDisplayPlaneCapabilitiesKHR, Descriptors.DESCRIPTOR$vkGetDisplayPlaneCapabilitiesKHR);
+        SEGMENT$vkGetDisplayPlaneSupportedDisplaysKHR = loader.apply("vkGetDisplayPlaneSupportedDisplaysKHR");
+        HANDLE$vkGetDisplayPlaneSupportedDisplaysKHR = RawFunctionLoader.link(SEGMENT$vkGetDisplayPlaneSupportedDisplaysKHR, Descriptors.DESCRIPTOR$vkGetDisplayPlaneSupportedDisplaysKHR);
+        SEGMENT$vkGetDrmDisplayEXT = loader.apply("vkGetDrmDisplayEXT");
+        HANDLE$vkGetDrmDisplayEXT = RawFunctionLoader.link(SEGMENT$vkGetDrmDisplayEXT, Descriptors.DESCRIPTOR$vkGetDrmDisplayEXT);
+        SEGMENT$vkGetPhysicalDeviceDirectFBPresentationSupportEXT = loader.apply("vkGetPhysicalDeviceDirectFBPresentationSupportEXT");
+        HANDLE$vkGetPhysicalDeviceDirectFBPresentationSupportEXT = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceDirectFBPresentationSupportEXT, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceDirectFBPresentationSupportEXT);
+        SEGMENT$vkGetPhysicalDeviceDisplayPlaneProperties2KHR = loader.apply("vkGetPhysicalDeviceDisplayPlaneProperties2KHR");
+        HANDLE$vkGetPhysicalDeviceDisplayPlaneProperties2KHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceDisplayPlaneProperties2KHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceDisplayPlaneProperties2KHR);
+        SEGMENT$vkGetPhysicalDeviceDisplayPlanePropertiesKHR = loader.apply("vkGetPhysicalDeviceDisplayPlanePropertiesKHR");
+        HANDLE$vkGetPhysicalDeviceDisplayPlanePropertiesKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceDisplayPlanePropertiesKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceDisplayPlanePropertiesKHR);
+        SEGMENT$vkGetPhysicalDeviceDisplayProperties2KHR = loader.apply("vkGetPhysicalDeviceDisplayProperties2KHR");
+        HANDLE$vkGetPhysicalDeviceDisplayProperties2KHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceDisplayProperties2KHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceDisplayProperties2KHR);
+        SEGMENT$vkGetPhysicalDeviceDisplayPropertiesKHR = loader.apply("vkGetPhysicalDeviceDisplayPropertiesKHR");
+        HANDLE$vkGetPhysicalDeviceDisplayPropertiesKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceDisplayPropertiesKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceDisplayPropertiesKHR);
+        SEGMENT$vkGetPhysicalDeviceExternalBufferProperties = loader.apply("vkGetPhysicalDeviceExternalBufferProperties");
+        HANDLE$vkGetPhysicalDeviceExternalBufferProperties = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceExternalBufferProperties, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceExternalBufferProperties);
+        SEGMENT$vkGetPhysicalDeviceExternalBufferPropertiesKHR = loader.apply("vkGetPhysicalDeviceExternalBufferPropertiesKHR");
+        HANDLE$vkGetPhysicalDeviceExternalBufferPropertiesKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceExternalBufferPropertiesKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceExternalBufferProperties);
+        SEGMENT$vkGetPhysicalDeviceExternalFenceProperties = loader.apply("vkGetPhysicalDeviceExternalFenceProperties");
+        HANDLE$vkGetPhysicalDeviceExternalFenceProperties = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceExternalFenceProperties, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceExternalFenceProperties);
+        SEGMENT$vkGetPhysicalDeviceExternalFencePropertiesKHR = loader.apply("vkGetPhysicalDeviceExternalFencePropertiesKHR");
+        HANDLE$vkGetPhysicalDeviceExternalFencePropertiesKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceExternalFencePropertiesKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceExternalFenceProperties);
+        SEGMENT$vkGetPhysicalDeviceExternalImageFormatPropertiesNV = loader.apply("vkGetPhysicalDeviceExternalImageFormatPropertiesNV");
+        HANDLE$vkGetPhysicalDeviceExternalImageFormatPropertiesNV = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceExternalImageFormatPropertiesNV, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceExternalImageFormatPropertiesNV);
+        SEGMENT$vkGetPhysicalDeviceExternalSemaphoreProperties = loader.apply("vkGetPhysicalDeviceExternalSemaphoreProperties");
+        HANDLE$vkGetPhysicalDeviceExternalSemaphoreProperties = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceExternalSemaphoreProperties, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceExternalSemaphoreProperties);
+        SEGMENT$vkGetPhysicalDeviceExternalSemaphorePropertiesKHR = loader.apply("vkGetPhysicalDeviceExternalSemaphorePropertiesKHR");
+        HANDLE$vkGetPhysicalDeviceExternalSemaphorePropertiesKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceExternalSemaphorePropertiesKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceExternalSemaphoreProperties);
+        SEGMENT$vkGetPhysicalDeviceFeatures = loader.apply("vkGetPhysicalDeviceFeatures");
+        HANDLE$vkGetPhysicalDeviceFeatures = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceFeatures, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceFeatures);
+        SEGMENT$vkGetPhysicalDeviceFeatures2 = loader.apply("vkGetPhysicalDeviceFeatures2");
+        HANDLE$vkGetPhysicalDeviceFeatures2 = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceFeatures2, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceFeatures2);
+        SEGMENT$vkGetPhysicalDeviceFeatures2KHR = loader.apply("vkGetPhysicalDeviceFeatures2KHR");
+        HANDLE$vkGetPhysicalDeviceFeatures2KHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceFeatures2KHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceFeatures2);
+        SEGMENT$vkGetPhysicalDeviceFormatProperties = loader.apply("vkGetPhysicalDeviceFormatProperties");
+        HANDLE$vkGetPhysicalDeviceFormatProperties = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceFormatProperties, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceFormatProperties);
+        SEGMENT$vkGetPhysicalDeviceFormatProperties2 = loader.apply("vkGetPhysicalDeviceFormatProperties2");
+        HANDLE$vkGetPhysicalDeviceFormatProperties2 = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceFormatProperties2, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceFormatProperties2);
+        SEGMENT$vkGetPhysicalDeviceFormatProperties2KHR = loader.apply("vkGetPhysicalDeviceFormatProperties2KHR");
+        HANDLE$vkGetPhysicalDeviceFormatProperties2KHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceFormatProperties2KHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceFormatProperties2);
+        SEGMENT$vkGetPhysicalDeviceImageFormatProperties = loader.apply("vkGetPhysicalDeviceImageFormatProperties");
+        HANDLE$vkGetPhysicalDeviceImageFormatProperties = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceImageFormatProperties, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceImageFormatProperties);
+        SEGMENT$vkGetPhysicalDeviceImageFormatProperties2 = loader.apply("vkGetPhysicalDeviceImageFormatProperties2");
+        HANDLE$vkGetPhysicalDeviceImageFormatProperties2 = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceImageFormatProperties2, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceImageFormatProperties2);
+        SEGMENT$vkGetPhysicalDeviceImageFormatProperties2KHR = loader.apply("vkGetPhysicalDeviceImageFormatProperties2KHR");
+        HANDLE$vkGetPhysicalDeviceImageFormatProperties2KHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceImageFormatProperties2KHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceImageFormatProperties2);
+        SEGMENT$vkGetPhysicalDeviceMemoryProperties = loader.apply("vkGetPhysicalDeviceMemoryProperties");
+        HANDLE$vkGetPhysicalDeviceMemoryProperties = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceMemoryProperties, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceMemoryProperties);
+        SEGMENT$vkGetPhysicalDeviceMemoryProperties2 = loader.apply("vkGetPhysicalDeviceMemoryProperties2");
+        HANDLE$vkGetPhysicalDeviceMemoryProperties2 = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceMemoryProperties2, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceMemoryProperties2);
+        SEGMENT$vkGetPhysicalDeviceMemoryProperties2KHR = loader.apply("vkGetPhysicalDeviceMemoryProperties2KHR");
+        HANDLE$vkGetPhysicalDeviceMemoryProperties2KHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceMemoryProperties2KHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceMemoryProperties2);
+        SEGMENT$vkGetPhysicalDeviceProperties = loader.apply("vkGetPhysicalDeviceProperties");
+        HANDLE$vkGetPhysicalDeviceProperties = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceProperties, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceProperties);
+        SEGMENT$vkGetPhysicalDeviceProperties2 = loader.apply("vkGetPhysicalDeviceProperties2");
+        HANDLE$vkGetPhysicalDeviceProperties2 = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceProperties2, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceProperties2);
+        SEGMENT$vkGetPhysicalDeviceProperties2KHR = loader.apply("vkGetPhysicalDeviceProperties2KHR");
+        HANDLE$vkGetPhysicalDeviceProperties2KHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceProperties2KHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceProperties2);
+        SEGMENT$vkGetPhysicalDeviceQueueFamilyProperties = loader.apply("vkGetPhysicalDeviceQueueFamilyProperties");
+        HANDLE$vkGetPhysicalDeviceQueueFamilyProperties = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceQueueFamilyProperties, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceQueueFamilyProperties);
+        SEGMENT$vkGetPhysicalDeviceQueueFamilyProperties2 = loader.apply("vkGetPhysicalDeviceQueueFamilyProperties2");
+        HANDLE$vkGetPhysicalDeviceQueueFamilyProperties2 = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceQueueFamilyProperties2, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceQueueFamilyProperties2);
+        SEGMENT$vkGetPhysicalDeviceQueueFamilyProperties2KHR = loader.apply("vkGetPhysicalDeviceQueueFamilyProperties2KHR");
+        HANDLE$vkGetPhysicalDeviceQueueFamilyProperties2KHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceQueueFamilyProperties2KHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceQueueFamilyProperties2);
+        SEGMENT$vkGetPhysicalDeviceScreenPresentationSupportQNX = loader.apply("vkGetPhysicalDeviceScreenPresentationSupportQNX");
+        HANDLE$vkGetPhysicalDeviceScreenPresentationSupportQNX = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceScreenPresentationSupportQNX, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceScreenPresentationSupportQNX);
+        SEGMENT$vkGetPhysicalDeviceSparseImageFormatProperties = loader.apply("vkGetPhysicalDeviceSparseImageFormatProperties");
+        HANDLE$vkGetPhysicalDeviceSparseImageFormatProperties = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceSparseImageFormatProperties, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceSparseImageFormatProperties);
+        SEGMENT$vkGetPhysicalDeviceSparseImageFormatProperties2 = loader.apply("vkGetPhysicalDeviceSparseImageFormatProperties2");
+        HANDLE$vkGetPhysicalDeviceSparseImageFormatProperties2 = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceSparseImageFormatProperties2, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceSparseImageFormatProperties2);
+        SEGMENT$vkGetPhysicalDeviceSparseImageFormatProperties2KHR = loader.apply("vkGetPhysicalDeviceSparseImageFormatProperties2KHR");
+        HANDLE$vkGetPhysicalDeviceSparseImageFormatProperties2KHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceSparseImageFormatProperties2KHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceSparseImageFormatProperties2);
+        SEGMENT$vkGetPhysicalDeviceSurfaceCapabilities2EXT = loader.apply("vkGetPhysicalDeviceSurfaceCapabilities2EXT");
+        HANDLE$vkGetPhysicalDeviceSurfaceCapabilities2EXT = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceSurfaceCapabilities2EXT, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceSurfaceCapabilities2EXT);
+        SEGMENT$vkGetPhysicalDeviceSurfaceCapabilities2KHR = loader.apply("vkGetPhysicalDeviceSurfaceCapabilities2KHR");
+        HANDLE$vkGetPhysicalDeviceSurfaceCapabilities2KHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceSurfaceCapabilities2KHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceSurfaceCapabilities2KHR);
+        SEGMENT$vkGetPhysicalDeviceSurfaceCapabilitiesKHR = loader.apply("vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
+        HANDLE$vkGetPhysicalDeviceSurfaceCapabilitiesKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceSurfaceCapabilitiesKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceSurfaceCapabilitiesKHR);
+        SEGMENT$vkGetPhysicalDeviceSurfaceFormats2KHR = loader.apply("vkGetPhysicalDeviceSurfaceFormats2KHR");
+        HANDLE$vkGetPhysicalDeviceSurfaceFormats2KHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceSurfaceFormats2KHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceSurfaceFormats2KHR);
+        SEGMENT$vkGetPhysicalDeviceSurfaceFormatsKHR = loader.apply("vkGetPhysicalDeviceSurfaceFormatsKHR");
+        HANDLE$vkGetPhysicalDeviceSurfaceFormatsKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceSurfaceFormatsKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceSurfaceFormatsKHR);
+        SEGMENT$vkGetPhysicalDeviceSurfacePresentModesKHR = loader.apply("vkGetPhysicalDeviceSurfacePresentModesKHR");
+        HANDLE$vkGetPhysicalDeviceSurfacePresentModesKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceSurfacePresentModesKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceSurfacePresentModesKHR);
+        SEGMENT$vkGetPhysicalDeviceSurfaceSupportKHR = loader.apply("vkGetPhysicalDeviceSurfaceSupportKHR");
+        HANDLE$vkGetPhysicalDeviceSurfaceSupportKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceSurfaceSupportKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceSurfaceSupportKHR);
+        SEGMENT$vkGetPhysicalDeviceToolProperties = loader.apply("vkGetPhysicalDeviceToolProperties");
+        HANDLE$vkGetPhysicalDeviceToolProperties = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceToolProperties, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceToolProperties);
+        SEGMENT$vkGetPhysicalDeviceWaylandPresentationSupportKHR = loader.apply("vkGetPhysicalDeviceWaylandPresentationSupportKHR");
+        HANDLE$vkGetPhysicalDeviceWaylandPresentationSupportKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceWaylandPresentationSupportKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceWaylandPresentationSupportKHR);
+        SEGMENT$vkGetPhysicalDeviceWin32PresentationSupportKHR = loader.apply("vkGetPhysicalDeviceWin32PresentationSupportKHR");
+        HANDLE$vkGetPhysicalDeviceWin32PresentationSupportKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceWin32PresentationSupportKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceWin32PresentationSupportKHR);
+        SEGMENT$vkGetPhysicalDeviceXcbPresentationSupportKHR = loader.apply("vkGetPhysicalDeviceXcbPresentationSupportKHR");
+        HANDLE$vkGetPhysicalDeviceXcbPresentationSupportKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceXcbPresentationSupportKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceXcbPresentationSupportKHR);
+        SEGMENT$vkGetPhysicalDeviceXlibPresentationSupportKHR = loader.apply("vkGetPhysicalDeviceXlibPresentationSupportKHR");
+        HANDLE$vkGetPhysicalDeviceXlibPresentationSupportKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceXlibPresentationSupportKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceXlibPresentationSupportKHR);
+        SEGMENT$vkGetRandROutputDisplayEXT = loader.apply("vkGetRandROutputDisplayEXT");
+        HANDLE$vkGetRandROutputDisplayEXT = RawFunctionLoader.link(SEGMENT$vkGetRandROutputDisplayEXT, Descriptors.DESCRIPTOR$vkGetRandROutputDisplayEXT);
+        SEGMENT$vkQueueBeginDebugUtilsLabelEXT = loader.apply("vkQueueBeginDebugUtilsLabelEXT");
+        HANDLE$vkQueueBeginDebugUtilsLabelEXT = RawFunctionLoader.link(SEGMENT$vkQueueBeginDebugUtilsLabelEXT, Descriptors.DESCRIPTOR$vkQueueBeginDebugUtilsLabelEXT);
+        SEGMENT$vkQueueEndDebugUtilsLabelEXT = loader.apply("vkQueueEndDebugUtilsLabelEXT");
+        HANDLE$vkQueueEndDebugUtilsLabelEXT = RawFunctionLoader.link(SEGMENT$vkQueueEndDebugUtilsLabelEXT, Descriptors.DESCRIPTOR$vkQueueEndDebugUtilsLabelEXT);
+        SEGMENT$vkQueueInsertDebugUtilsLabelEXT = loader.apply("vkQueueInsertDebugUtilsLabelEXT");
+        HANDLE$vkQueueInsertDebugUtilsLabelEXT = RawFunctionLoader.link(SEGMENT$vkQueueInsertDebugUtilsLabelEXT, Descriptors.DESCRIPTOR$vkQueueInsertDebugUtilsLabelEXT);
+        SEGMENT$vkReleaseDisplayEXT = loader.apply("vkReleaseDisplayEXT");
+        HANDLE$vkReleaseDisplayEXT = RawFunctionLoader.link(SEGMENT$vkReleaseDisplayEXT, Descriptors.DESCRIPTOR$vkReleaseDisplayEXT);
+        SEGMENT$vkSetDebugUtilsObjectNameEXT = loader.apply("vkSetDebugUtilsObjectNameEXT");
+        HANDLE$vkSetDebugUtilsObjectNameEXT = RawFunctionLoader.link(SEGMENT$vkSetDebugUtilsObjectNameEXT, Descriptors.DESCRIPTOR$vkSetDebugUtilsObjectNameEXT);
+        SEGMENT$vkSetDebugUtilsObjectTagEXT = loader.apply("vkSetDebugUtilsObjectTagEXT");
+        HANDLE$vkSetDebugUtilsObjectTagEXT = RawFunctionLoader.link(SEGMENT$vkSetDebugUtilsObjectTagEXT, Descriptors.DESCRIPTOR$vkSetDebugUtilsObjectTagEXT);
+        SEGMENT$vkSubmitDebugUtilsMessageEXT = loader.apply("vkSubmitDebugUtilsMessageEXT");
+        HANDLE$vkSubmitDebugUtilsMessageEXT = RawFunctionLoader.link(SEGMENT$vkSubmitDebugUtilsMessageEXT, Descriptors.DESCRIPTOR$vkSubmitDebugUtilsMessageEXT);
+    }
+
+    // region command wrappers
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkAcquireDrmDisplayEXT.html"><code>vkAcquireDrmDisplayEXT</code></a>
     public @enumtype(VkResult.class) int acquireDrmDisplayEXT(
         VkPhysicalDevice physicalDevice,
@@ -1771,7 +1964,9 @@ public final class VkInstanceCommands {
             throw new RuntimeException(e);
         }
     }
+    // endregion
 
+    // region segments and handles
     public final @Nullable MemorySegment SEGMENT$vkAcquireDrmDisplayEXT;
     public final @Nullable MemorySegment SEGMENT$vkAcquireXlibDisplayEXT;
     public final @Nullable MemorySegment SEGMENT$vkCmdBeginDebugUtilsLabelEXT;
@@ -1960,6 +2155,8 @@ public final class VkInstanceCommands {
     public final @Nullable MethodHandle HANDLE$vkSetDebugUtilsObjectNameEXT;
     public final @Nullable MethodHandle HANDLE$vkSetDebugUtilsObjectTagEXT;
     public final @Nullable MethodHandle HANDLE$vkSubmitDebugUtilsMessageEXT;
+    // endregion
+
     public static final class Descriptors {
         public static final FunctionDescriptor DESCRIPTOR$vkAcquireDrmDisplayEXT = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
