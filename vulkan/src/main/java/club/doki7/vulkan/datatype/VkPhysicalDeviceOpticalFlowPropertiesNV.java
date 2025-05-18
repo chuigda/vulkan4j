@@ -1,0 +1,274 @@
+package club.doki7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import club.doki7.ffm.IPointer;
+import club.doki7.ffm.NativeLayout;
+import club.doki7.ffm.annotation.*;
+import club.doki7.ffm.ptr.*;
+import club.doki7.vulkan.bitmask.*;
+import club.doki7.vulkan.handle.*;
+import club.doki7.vulkan.enumtype.*;
+import static club.doki7.vulkan.VkConstants.*;
+
+/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceOpticalFlowPropertiesNV.html"><code>VkPhysicalDeviceOpticalFlowPropertiesNV</code></a> structure in native memory.
+///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct VkPhysicalDeviceOpticalFlowPropertiesNV {
+///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
+///     void* pNext; // optional // @link substring="pNext" target="#pNext"
+///     VkOpticalFlowGridSizeFlagsNV supportedOutputGridSizes; // @link substring="VkOpticalFlowGridSizeFlagsNV" target="VkOpticalFlowGridSizeFlagsNV" @link substring="supportedOutputGridSizes" target="#supportedOutputGridSizes"
+///     VkOpticalFlowGridSizeFlagsNV supportedHintGridSizes; // @link substring="VkOpticalFlowGridSizeFlagsNV" target="VkOpticalFlowGridSizeFlagsNV" @link substring="supportedHintGridSizes" target="#supportedHintGridSizes"
+///     VkBool32 hintSupported; // @link substring="hintSupported" target="#hintSupported"
+///     VkBool32 costSupported; // @link substring="costSupported" target="#costSupported"
+///     VkBool32 bidirectionalFlowSupported; // @link substring="bidirectionalFlowSupported" target="#bidirectionalFlowSupported"
+///     VkBool32 globalFlowSupported; // @link substring="globalFlowSupported" target="#globalFlowSupported"
+///     uint32_t minWidth; // @link substring="minWidth" target="#minWidth"
+///     uint32_t minHeight; // @link substring="minHeight" target="#minHeight"
+///     uint32_t maxWidth; // @link substring="maxWidth" target="#maxWidth"
+///     uint32_t maxHeight; // @link substring="maxHeight" target="#maxHeight"
+///     uint32_t maxNumRegionsOfInterest; // @link substring="maxNumRegionsOfInterest" target="#maxNumRegionsOfInterest"
+/// } VkPhysicalDeviceOpticalFlowPropertiesNV;
+/// }
+///
+/// ## Auto initialization
+/// This structure has the following members that can be automatically initialized:
+/// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPTICAL_FLOW_PROPERTIES_NV`
+///
+/// The {@code allocate} ({@link VkPhysicalDeviceOpticalFlowPropertiesNV#allocate(Arena)}, {@link VkPhysicalDeviceOpticalFlowPropertiesNV#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceOpticalFlowPropertiesNV#autoInit}
+/// to initialize these fields manually for non-allocated instances.
+/// ## Contracts
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceOpticalFlowPropertiesNV.html"><code>VkPhysicalDeviceOpticalFlowPropertiesNV</code></a>
+@ValueBasedCandidate
+@UnsafeConstructor
+public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment segment) implements IPointer {
+    public static VkPhysicalDeviceOpticalFlowPropertiesNV allocate(Arena arena) {
+        VkPhysicalDeviceOpticalFlowPropertiesNV ret = new VkPhysicalDeviceOpticalFlowPropertiesNV(arena.allocate(LAYOUT));
+        ret.sType(VkStructureType.PHYSICAL_DEVICE_OPTICAL_FLOW_PROPERTIES_NV);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceOpticalFlowPropertiesNV[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        VkPhysicalDeviceOpticalFlowPropertiesNV[] ret = new VkPhysicalDeviceOpticalFlowPropertiesNV[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new VkPhysicalDeviceOpticalFlowPropertiesNV(segment.asSlice(i * BYTES, BYTES));
+            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_OPTICAL_FLOW_PROPERTIES_NV);
+        }
+        return ret;
+    }
+
+    public static VkPhysicalDeviceOpticalFlowPropertiesNV clone(Arena arena, VkPhysicalDeviceOpticalFlowPropertiesNV src) {
+        VkPhysicalDeviceOpticalFlowPropertiesNV ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static VkPhysicalDeviceOpticalFlowPropertiesNV[] clone(Arena arena, VkPhysicalDeviceOpticalFlowPropertiesNV[] src) {
+        VkPhysicalDeviceOpticalFlowPropertiesNV[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public void autoInit() {
+        sType(VkStructureType.PHYSICAL_DEVICE_OPTICAL_FLOW_PROPERTIES_NV);
+    }
+
+    public @enumtype(VkStructureType.class) int sType() {
+        return segment.get(LAYOUT$sType, OFFSET$sType);
+    }
+
+    public void sType(@enumtype(VkStructureType.class) int value) {
+        segment.set(LAYOUT$sType, OFFSET$sType, value);
+    }
+
+    public @pointer(comment="void*") MemorySegment pNext() {
+        return segment.get(LAYOUT$pNext, OFFSET$pNext);
+    }
+
+    public void pNext(@pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pNext, OFFSET$pNext, value);
+    }
+
+    public void pNext(@Nullable IPointer pointer) {
+        pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @enumtype(VkOpticalFlowGridSizeFlagsNV.class) int supportedOutputGridSizes() {
+        return segment.get(LAYOUT$supportedOutputGridSizes, OFFSET$supportedOutputGridSizes);
+    }
+
+    public void supportedOutputGridSizes(@enumtype(VkOpticalFlowGridSizeFlagsNV.class) int value) {
+        segment.set(LAYOUT$supportedOutputGridSizes, OFFSET$supportedOutputGridSizes, value);
+    }
+
+    public @enumtype(VkOpticalFlowGridSizeFlagsNV.class) int supportedHintGridSizes() {
+        return segment.get(LAYOUT$supportedHintGridSizes, OFFSET$supportedHintGridSizes);
+    }
+
+    public void supportedHintGridSizes(@enumtype(VkOpticalFlowGridSizeFlagsNV.class) int value) {
+        segment.set(LAYOUT$supportedHintGridSizes, OFFSET$supportedHintGridSizes, value);
+    }
+
+    public @unsigned int hintSupported() {
+        return segment.get(LAYOUT$hintSupported, OFFSET$hintSupported);
+    }
+
+    public void hintSupported(@unsigned int value) {
+        segment.set(LAYOUT$hintSupported, OFFSET$hintSupported, value);
+    }
+
+    public @unsigned int costSupported() {
+        return segment.get(LAYOUT$costSupported, OFFSET$costSupported);
+    }
+
+    public void costSupported(@unsigned int value) {
+        segment.set(LAYOUT$costSupported, OFFSET$costSupported, value);
+    }
+
+    public @unsigned int bidirectionalFlowSupported() {
+        return segment.get(LAYOUT$bidirectionalFlowSupported, OFFSET$bidirectionalFlowSupported);
+    }
+
+    public void bidirectionalFlowSupported(@unsigned int value) {
+        segment.set(LAYOUT$bidirectionalFlowSupported, OFFSET$bidirectionalFlowSupported, value);
+    }
+
+    public @unsigned int globalFlowSupported() {
+        return segment.get(LAYOUT$globalFlowSupported, OFFSET$globalFlowSupported);
+    }
+
+    public void globalFlowSupported(@unsigned int value) {
+        segment.set(LAYOUT$globalFlowSupported, OFFSET$globalFlowSupported, value);
+    }
+
+    public @unsigned int minWidth() {
+        return segment.get(LAYOUT$minWidth, OFFSET$minWidth);
+    }
+
+    public void minWidth(@unsigned int value) {
+        segment.set(LAYOUT$minWidth, OFFSET$minWidth, value);
+    }
+
+    public @unsigned int minHeight() {
+        return segment.get(LAYOUT$minHeight, OFFSET$minHeight);
+    }
+
+    public void minHeight(@unsigned int value) {
+        segment.set(LAYOUT$minHeight, OFFSET$minHeight, value);
+    }
+
+    public @unsigned int maxWidth() {
+        return segment.get(LAYOUT$maxWidth, OFFSET$maxWidth);
+    }
+
+    public void maxWidth(@unsigned int value) {
+        segment.set(LAYOUT$maxWidth, OFFSET$maxWidth, value);
+    }
+
+    public @unsigned int maxHeight() {
+        return segment.get(LAYOUT$maxHeight, OFFSET$maxHeight);
+    }
+
+    public void maxHeight(@unsigned int value) {
+        segment.set(LAYOUT$maxHeight, OFFSET$maxHeight, value);
+    }
+
+    public @unsigned int maxNumRegionsOfInterest() {
+        return segment.get(LAYOUT$maxNumRegionsOfInterest, OFFSET$maxNumRegionsOfInterest);
+    }
+
+    public void maxNumRegionsOfInterest(@unsigned int value) {
+        segment.set(LAYOUT$maxNumRegionsOfInterest, OFFSET$maxNumRegionsOfInterest, value);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("supportedOutputGridSizes"),
+        ValueLayout.JAVA_INT.withName("supportedHintGridSizes"),
+        ValueLayout.JAVA_INT.withName("hintSupported"),
+        ValueLayout.JAVA_INT.withName("costSupported"),
+        ValueLayout.JAVA_INT.withName("bidirectionalFlowSupported"),
+        ValueLayout.JAVA_INT.withName("globalFlowSupported"),
+        ValueLayout.JAVA_INT.withName("minWidth"),
+        ValueLayout.JAVA_INT.withName("minHeight"),
+        ValueLayout.JAVA_INT.withName("maxWidth"),
+        ValueLayout.JAVA_INT.withName("maxHeight"),
+        ValueLayout.JAVA_INT.withName("maxNumRegionsOfInterest")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
+    public static final PathElement PATH$supportedOutputGridSizes = PathElement.groupElement("PATH$supportedOutputGridSizes");
+    public static final PathElement PATH$supportedHintGridSizes = PathElement.groupElement("PATH$supportedHintGridSizes");
+    public static final PathElement PATH$hintSupported = PathElement.groupElement("PATH$hintSupported");
+    public static final PathElement PATH$costSupported = PathElement.groupElement("PATH$costSupported");
+    public static final PathElement PATH$bidirectionalFlowSupported = PathElement.groupElement("PATH$bidirectionalFlowSupported");
+    public static final PathElement PATH$globalFlowSupported = PathElement.groupElement("PATH$globalFlowSupported");
+    public static final PathElement PATH$minWidth = PathElement.groupElement("PATH$minWidth");
+    public static final PathElement PATH$minHeight = PathElement.groupElement("PATH$minHeight");
+    public static final PathElement PATH$maxWidth = PathElement.groupElement("PATH$maxWidth");
+    public static final PathElement PATH$maxHeight = PathElement.groupElement("PATH$maxHeight");
+    public static final PathElement PATH$maxNumRegionsOfInterest = PathElement.groupElement("PATH$maxNumRegionsOfInterest");
+
+    public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
+    public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
+    public static final OfInt LAYOUT$supportedOutputGridSizes = (OfInt) LAYOUT.select(PATH$supportedOutputGridSizes);
+    public static final OfInt LAYOUT$supportedHintGridSizes = (OfInt) LAYOUT.select(PATH$supportedHintGridSizes);
+    public static final OfInt LAYOUT$hintSupported = (OfInt) LAYOUT.select(PATH$hintSupported);
+    public static final OfInt LAYOUT$costSupported = (OfInt) LAYOUT.select(PATH$costSupported);
+    public static final OfInt LAYOUT$bidirectionalFlowSupported = (OfInt) LAYOUT.select(PATH$bidirectionalFlowSupported);
+    public static final OfInt LAYOUT$globalFlowSupported = (OfInt) LAYOUT.select(PATH$globalFlowSupported);
+    public static final OfInt LAYOUT$minWidth = (OfInt) LAYOUT.select(PATH$minWidth);
+    public static final OfInt LAYOUT$minHeight = (OfInt) LAYOUT.select(PATH$minHeight);
+    public static final OfInt LAYOUT$maxWidth = (OfInt) LAYOUT.select(PATH$maxWidth);
+    public static final OfInt LAYOUT$maxHeight = (OfInt) LAYOUT.select(PATH$maxHeight);
+    public static final OfInt LAYOUT$maxNumRegionsOfInterest = (OfInt) LAYOUT.select(PATH$maxNumRegionsOfInterest);
+
+    public static final long SIZE$sType = LAYOUT$sType.byteSize();
+    public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
+    public static final long SIZE$supportedOutputGridSizes = LAYOUT$supportedOutputGridSizes.byteSize();
+    public static final long SIZE$supportedHintGridSizes = LAYOUT$supportedHintGridSizes.byteSize();
+    public static final long SIZE$hintSupported = LAYOUT$hintSupported.byteSize();
+    public static final long SIZE$costSupported = LAYOUT$costSupported.byteSize();
+    public static final long SIZE$bidirectionalFlowSupported = LAYOUT$bidirectionalFlowSupported.byteSize();
+    public static final long SIZE$globalFlowSupported = LAYOUT$globalFlowSupported.byteSize();
+    public static final long SIZE$minWidth = LAYOUT$minWidth.byteSize();
+    public static final long SIZE$minHeight = LAYOUT$minHeight.byteSize();
+    public static final long SIZE$maxWidth = LAYOUT$maxWidth.byteSize();
+    public static final long SIZE$maxHeight = LAYOUT$maxHeight.byteSize();
+    public static final long SIZE$maxNumRegionsOfInterest = LAYOUT$maxNumRegionsOfInterest.byteSize();
+
+    public static final long OFFSET$sType = LAYOUT.byteOffset(PATH$sType);
+    public static final long OFFSET$pNext = LAYOUT.byteOffset(PATH$pNext);
+    public static final long OFFSET$supportedOutputGridSizes = LAYOUT.byteOffset(PATH$supportedOutputGridSizes);
+    public static final long OFFSET$supportedHintGridSizes = LAYOUT.byteOffset(PATH$supportedHintGridSizes);
+    public static final long OFFSET$hintSupported = LAYOUT.byteOffset(PATH$hintSupported);
+    public static final long OFFSET$costSupported = LAYOUT.byteOffset(PATH$costSupported);
+    public static final long OFFSET$bidirectionalFlowSupported = LAYOUT.byteOffset(PATH$bidirectionalFlowSupported);
+    public static final long OFFSET$globalFlowSupported = LAYOUT.byteOffset(PATH$globalFlowSupported);
+    public static final long OFFSET$minWidth = LAYOUT.byteOffset(PATH$minWidth);
+    public static final long OFFSET$minHeight = LAYOUT.byteOffset(PATH$minHeight);
+    public static final long OFFSET$maxWidth = LAYOUT.byteOffset(PATH$maxWidth);
+    public static final long OFFSET$maxHeight = LAYOUT.byteOffset(PATH$maxHeight);
+    public static final long OFFSET$maxNumRegionsOfInterest = LAYOUT.byteOffset(PATH$maxNumRegionsOfInterest);
+}

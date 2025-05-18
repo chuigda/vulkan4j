@@ -1,0 +1,48 @@
+/// Vulkan Java bindings implemented with Java 22 FFM (Project Panama) APIs.
+///
+/// For actual API documentation, see packages documentation. For vulkan documentation,
+/// see <a href="https://docs.vulkan.org/spec/latest/index.html">Vulkan specification</a>.
+/// For Vulkan tutorial using Java and {@code vulkan4j} ecosystem, see
+/// <a href="https://vk-java.doki7.club">vk-java.doki7.club</a>. The following content is
+/// literary and not relevant to the API itself.
+///
+/// <small>
+/// <p><i>《庄子·外篇·秋水》节选</i></p>
+///
+/// <p><i>
+/// 秋水时至，百川灌河，泾流之大，两涘渚崖之间，不辩牛马。于是焉河伯欣然自喜，以天下之美为尽在己。
+/// 顺流而东行，至于北海，东面而视，不见水端，于是焉河伯始旋其面目，望洋向若而叹，曰：“野语有之曰
+/// ‘闻道百，以为莫己若’者，我之谓也。且夫我尝闻少仲尼之闻而轻伯夷之义者，始吾弗信，
+/// 今我睹子之难穷也，吾非至于子之门则殆矣，吾长见笑于大方之家。”
+/// </i></p>
+///
+/// <p><i>
+/// 北海若曰：“井蛙不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，
+/// 束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。天下之水，莫大于海，万川归之，
+/// 不知何时止而不盈；尾闾泄之，不知何时已而不虚；春秋不变，水旱不知。此其过江河之流，不可为量数。
+/// 而吾未尝以此自多者，自以比形于天地而受气于阴阳，吾在天地之间，犹小石小木之在大山也，方存乎见少，
+/// 又奚以自多！计四海之在天地之间也，不似礨空之在大泽乎？计中国之在海内，不似稊米之在大仓乎？
+/// 号物之数谓之万，人处一焉；人卒九州，谷食之所生，舟车之所通，人处一焉。此其比万物也，
+/// 不似豪末之在于马体乎？五帝之所连，三王之所争，仁人之所忧，任士之所劳，尽此矣。伯夷辞之以为名，
+/// 仲尼语之以为博，此其自多也，不似尔向之自多于水乎？”
+/// </i></p>
+///
+/// <p><i>
+/// 河伯曰：“然则吾大天地而小毫末可乎？”北海若曰：“否。夫物，量无穷，时无止，分无常，终始无故。
+/// 是故大知观于远近，故小而不寡，大而不多，知量无穷；证向今故，故遥而不闷，掇而不跂，知时无止；
+/// 察乎盈虚，故得而不喜，失而不忧，知分之无常也；明乎坦涂，故生而不说，死而不祸，知终始之不可故也。
+/// 计人之所知，不若其所不知；其生之时，不若未生之时。以其至小，求穷其至大之域，
+/// 是故迷乱而不能自得也。由此观之，又何以知毫末之足以定至细之倪！又何以知天地之足以穷至大之域！”
+/// </i></p>
+/// </small>
+module club.doki7.vulkan {
+    requires club.doki7.ffm;
+    requires org.jetbrains.annotations;
+
+    exports club.doki7.vulkan;
+    exports club.doki7.vulkan.bitmask;
+    exports club.doki7.vulkan.command;
+    exports club.doki7.vulkan.datatype;
+    exports club.doki7.vulkan.enumtype;
+    exports club.doki7.vulkan.handle;
+}

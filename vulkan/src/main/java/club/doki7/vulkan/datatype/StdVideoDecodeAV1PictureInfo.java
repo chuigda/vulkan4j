@@ -1,0 +1,602 @@
+package club.doki7.vulkan.datatype;
+
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import club.doki7.ffm.IPointer;
+import club.doki7.ffm.NativeLayout;
+import club.doki7.ffm.annotation.*;
+import club.doki7.ffm.ptr.*;
+import club.doki7.vulkan.bitmask.*;
+import club.doki7.vulkan.handle.*;
+import club.doki7.vulkan.enumtype.*;
+import static club.doki7.vulkan.VkConstants.*;
+
+/// Represents a pointer to a {@code StdVideoDecodeAV1PictureInfo} structure in native memory.
+///
+/// ## Structure
+///
+/// {@snippet lang=c :
+/// typedef struct StdVideoDecodeAV1PictureInfo {
+///     StdVideoDecodeAV1PictureInfoFlags flags; // @link substring="StdVideoDecodeAV1PictureInfoFlags" target="StdVideoDecodeAV1PictureInfoFlags" @link substring="flags" target="#flags"
+///     StdVideoAV1FrameType frame_type; // @link substring="StdVideoAV1FrameType" target="StdVideoAV1FrameType" @link substring="frame_type" target="#frame_type"
+///     uint32_t current_frame_id; // @link substring="current_frame_id" target="#current_frame_id"
+///     uint8_t OrderHint; // @link substring="OrderHint" target="#OrderHint"
+///     uint8_t primary_ref_frame; // @link substring="primary_ref_frame" target="#primary_ref_frame"
+///     uint8_t refresh_frame_flags; // @link substring="refresh_frame_flags" target="#refresh_frame_flags"
+///     uint8_t reserved1;
+///     StdVideoAV1InterpolationFilter interpolation_filter; // @link substring="StdVideoAV1InterpolationFilter" target="StdVideoAV1InterpolationFilter" @link substring="interpolation_filter" target="#interpolation_filter"
+///     StdVideoAV1TxMode TxMode; // @link substring="StdVideoAV1TxMode" target="StdVideoAV1TxMode" @link substring="TxMode" target="#TxMode"
+///     uint8_t delta_q_res; // @link substring="delta_q_res" target="#delta_q_res"
+///     uint8_t delta_lf_res; // @link substring="delta_lf_res" target="#delta_lf_res"
+///     uint8_t SkipModeFrame; // @link substring="SkipModeFrame" target="#SkipModeFrame"
+///     uint8_t coded_denom; // @link substring="coded_denom" target="#coded_denom"
+///     uint8_t reserved2;
+///     uint8_t OrderHints; // @link substring="OrderHints" target="#OrderHints"
+///     uint32_t expectedFrameId; // @link substring="expectedFrameId" target="#expectedFrameId"
+///     StdVideoAV1TileInfo const* pTileInfo; // @link substring="StdVideoAV1TileInfo" target="StdVideoAV1TileInfo" @link substring="pTileInfo" target="#pTileInfo"
+///     StdVideoAV1Quantization const* pQuantization; // @link substring="StdVideoAV1Quantization" target="StdVideoAV1Quantization" @link substring="pQuantization" target="#pQuantization"
+///     StdVideoAV1Segmentation const* pSegmentation; // @link substring="StdVideoAV1Segmentation" target="StdVideoAV1Segmentation" @link substring="pSegmentation" target="#pSegmentation"
+///     StdVideoAV1LoopFilter const* pLoopFilter; // @link substring="StdVideoAV1LoopFilter" target="StdVideoAV1LoopFilter" @link substring="pLoopFilter" target="#pLoopFilter"
+///     StdVideoAV1CDEF const* pCDEF; // @link substring="StdVideoAV1CDEF" target="StdVideoAV1CDEF" @link substring="pCDEF" target="#pCDEF"
+///     StdVideoAV1LoopRestoration const* pLoopRestoration; // @link substring="StdVideoAV1LoopRestoration" target="StdVideoAV1LoopRestoration" @link substring="pLoopRestoration" target="#pLoopRestoration"
+///     StdVideoAV1GlobalMotion const* pGlobalMotion; // @link substring="StdVideoAV1GlobalMotion" target="StdVideoAV1GlobalMotion" @link substring="pGlobalMotion" target="#pGlobalMotion"
+///     StdVideoAV1FilmGrain const* pFilmGrain; // @link substring="StdVideoAV1FilmGrain" target="StdVideoAV1FilmGrain" @link substring="pFilmGrain" target="#pFilmGrain"
+/// } StdVideoDecodeAV1PictureInfo;
+/// }
+///
+/// ## Contracts
+///
+/// The property {@link #segment()} should always be not-null
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+///
+/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+/// perform any runtime check. The constructor can be useful for automatic code generators.
+@ValueBasedCandidate
+@UnsafeConstructor
+public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) implements IPointer {
+    public static StdVideoDecodeAV1PictureInfo allocate(Arena arena) {
+        return new StdVideoDecodeAV1PictureInfo(arena.allocate(LAYOUT));
+    }
+
+    public static StdVideoDecodeAV1PictureInfo[] allocate(Arena arena, int count) {
+        MemorySegment segment = arena.allocate(LAYOUT, count);
+        StdVideoDecodeAV1PictureInfo[] ret = new StdVideoDecodeAV1PictureInfo[count];
+        for (int i = 0; i < count; i ++) {
+            ret[i] = new StdVideoDecodeAV1PictureInfo(segment.asSlice(i * BYTES, BYTES));
+        }
+        return ret;
+    }
+
+    public static StdVideoDecodeAV1PictureInfo clone(Arena arena, StdVideoDecodeAV1PictureInfo src) {
+        StdVideoDecodeAV1PictureInfo ret = allocate(arena);
+        ret.segment.copyFrom(src.segment);
+        return ret;
+    }
+
+    public static StdVideoDecodeAV1PictureInfo[] clone(Arena arena, StdVideoDecodeAV1PictureInfo[] src) {
+        StdVideoDecodeAV1PictureInfo[] ret = allocate(arena, src.length);
+        for (int i = 0; i < src.length; i ++) {
+            ret[i].segment.copyFrom(src[i].segment);
+        }
+        return ret;
+    }
+
+    public @NotNull StdVideoDecodeAV1PictureInfoFlags flags() {
+        return new StdVideoDecodeAV1PictureInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
+    }
+
+    public void flags(@NotNull StdVideoDecodeAV1PictureInfoFlags value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+    }
+
+    public @enumtype(StdVideoAV1FrameType.class) int frame_type() {
+        return segment.get(LAYOUT$frame_type, OFFSET$frame_type);
+    }
+
+    public void frame_type(@enumtype(StdVideoAV1FrameType.class) int value) {
+        segment.set(LAYOUT$frame_type, OFFSET$frame_type, value);
+    }
+
+    public @unsigned int current_frame_id() {
+        return segment.get(LAYOUT$current_frame_id, OFFSET$current_frame_id);
+    }
+
+    public void current_frame_id(@unsigned int value) {
+        segment.set(LAYOUT$current_frame_id, OFFSET$current_frame_id, value);
+    }
+
+    public @unsigned byte OrderHint() {
+        return segment.get(LAYOUT$OrderHint, OFFSET$OrderHint);
+    }
+
+    public void OrderHint(@unsigned byte value) {
+        segment.set(LAYOUT$OrderHint, OFFSET$OrderHint, value);
+    }
+
+    public @unsigned byte primary_ref_frame() {
+        return segment.get(LAYOUT$primary_ref_frame, OFFSET$primary_ref_frame);
+    }
+
+    public void primary_ref_frame(@unsigned byte value) {
+        segment.set(LAYOUT$primary_ref_frame, OFFSET$primary_ref_frame, value);
+    }
+
+    public @unsigned byte refresh_frame_flags() {
+        return segment.get(LAYOUT$refresh_frame_flags, OFFSET$refresh_frame_flags);
+    }
+
+    public void refresh_frame_flags(@unsigned byte value) {
+        segment.set(LAYOUT$refresh_frame_flags, OFFSET$refresh_frame_flags, value);
+    }
+
+
+    public @enumtype(StdVideoAV1InterpolationFilter.class) int interpolation_filter() {
+        return segment.get(LAYOUT$interpolation_filter, OFFSET$interpolation_filter);
+    }
+
+    public void interpolation_filter(@enumtype(StdVideoAV1InterpolationFilter.class) int value) {
+        segment.set(LAYOUT$interpolation_filter, OFFSET$interpolation_filter, value);
+    }
+
+    public @enumtype(StdVideoAV1TxMode.class) int TxMode() {
+        return segment.get(LAYOUT$TxMode, OFFSET$TxMode);
+    }
+
+    public void TxMode(@enumtype(StdVideoAV1TxMode.class) int value) {
+        segment.set(LAYOUT$TxMode, OFFSET$TxMode, value);
+    }
+
+    public @unsigned byte delta_q_res() {
+        return segment.get(LAYOUT$delta_q_res, OFFSET$delta_q_res);
+    }
+
+    public void delta_q_res(@unsigned byte value) {
+        segment.set(LAYOUT$delta_q_res, OFFSET$delta_q_res, value);
+    }
+
+    public @unsigned byte delta_lf_res() {
+        return segment.get(LAYOUT$delta_lf_res, OFFSET$delta_lf_res);
+    }
+
+    public void delta_lf_res(@unsigned byte value) {
+        segment.set(LAYOUT$delta_lf_res, OFFSET$delta_lf_res, value);
+    }
+
+    public @unsigned byte SkipModeFrame() {
+        return segment.get(LAYOUT$SkipModeFrame, OFFSET$SkipModeFrame);
+    }
+
+    public void SkipModeFrame(@unsigned byte value) {
+        segment.set(LAYOUT$SkipModeFrame, OFFSET$SkipModeFrame, value);
+    }
+
+    public @unsigned byte coded_denom() {
+        return segment.get(LAYOUT$coded_denom, OFFSET$coded_denom);
+    }
+
+    public void coded_denom(@unsigned byte value) {
+        segment.set(LAYOUT$coded_denom, OFFSET$coded_denom, value);
+    }
+
+
+    public @unsigned byte OrderHints() {
+        return segment.get(LAYOUT$OrderHints, OFFSET$OrderHints);
+    }
+
+    public void OrderHints(@unsigned byte value) {
+        segment.set(LAYOUT$OrderHints, OFFSET$OrderHints, value);
+    }
+
+    public @unsigned int expectedFrameId() {
+        return segment.get(LAYOUT$expectedFrameId, OFFSET$expectedFrameId);
+    }
+
+    public void expectedFrameId(@unsigned int value) {
+        segment.set(LAYOUT$expectedFrameId, OFFSET$expectedFrameId, value);
+    }
+
+    public @Nullable StdVideoAV1TileInfo pTileInfo() {
+        MemorySegment s = pTileInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoAV1TileInfo(s);
+    }
+
+    public void pTileInfo(@Nullable StdVideoAV1TileInfo value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pTileInfoRaw(s);
+    }
+
+    @unsafe public @Nullable StdVideoAV1TileInfo[] pTileInfo(int assumedCount) {
+        MemorySegment s = pTileInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * StdVideoAV1TileInfo.BYTES);
+        StdVideoAV1TileInfo[] ret = new StdVideoAV1TileInfo[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new StdVideoAV1TileInfo(s.asSlice(i * StdVideoAV1TileInfo.BYTES, StdVideoAV1TileInfo.BYTES));
+        }
+        return ret;
+    }
+
+    public @pointer(target=StdVideoAV1TileInfo.class) MemorySegment pTileInfoRaw() {
+        return segment.get(LAYOUT$pTileInfo, OFFSET$pTileInfo);
+    }
+
+    public void pTileInfoRaw(@pointer(target=StdVideoAV1TileInfo.class) MemorySegment value) {
+        segment.set(LAYOUT$pTileInfo, OFFSET$pTileInfo, value);
+    }
+
+    public @Nullable StdVideoAV1Quantization pQuantization() {
+        MemorySegment s = pQuantizationRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoAV1Quantization(s);
+    }
+
+    public void pQuantization(@Nullable StdVideoAV1Quantization value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pQuantizationRaw(s);
+    }
+
+    @unsafe public @Nullable StdVideoAV1Quantization[] pQuantization(int assumedCount) {
+        MemorySegment s = pQuantizationRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * StdVideoAV1Quantization.BYTES);
+        StdVideoAV1Quantization[] ret = new StdVideoAV1Quantization[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new StdVideoAV1Quantization(s.asSlice(i * StdVideoAV1Quantization.BYTES, StdVideoAV1Quantization.BYTES));
+        }
+        return ret;
+    }
+
+    public @pointer(target=StdVideoAV1Quantization.class) MemorySegment pQuantizationRaw() {
+        return segment.get(LAYOUT$pQuantization, OFFSET$pQuantization);
+    }
+
+    public void pQuantizationRaw(@pointer(target=StdVideoAV1Quantization.class) MemorySegment value) {
+        segment.set(LAYOUT$pQuantization, OFFSET$pQuantization, value);
+    }
+
+    public @Nullable StdVideoAV1Segmentation pSegmentation() {
+        MemorySegment s = pSegmentationRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoAV1Segmentation(s);
+    }
+
+    public void pSegmentation(@Nullable StdVideoAV1Segmentation value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pSegmentationRaw(s);
+    }
+
+    @unsafe public @Nullable StdVideoAV1Segmentation[] pSegmentation(int assumedCount) {
+        MemorySegment s = pSegmentationRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * StdVideoAV1Segmentation.BYTES);
+        StdVideoAV1Segmentation[] ret = new StdVideoAV1Segmentation[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new StdVideoAV1Segmentation(s.asSlice(i * StdVideoAV1Segmentation.BYTES, StdVideoAV1Segmentation.BYTES));
+        }
+        return ret;
+    }
+
+    public @pointer(target=StdVideoAV1Segmentation.class) MemorySegment pSegmentationRaw() {
+        return segment.get(LAYOUT$pSegmentation, OFFSET$pSegmentation);
+    }
+
+    public void pSegmentationRaw(@pointer(target=StdVideoAV1Segmentation.class) MemorySegment value) {
+        segment.set(LAYOUT$pSegmentation, OFFSET$pSegmentation, value);
+    }
+
+    public @Nullable StdVideoAV1LoopFilter pLoopFilter() {
+        MemorySegment s = pLoopFilterRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoAV1LoopFilter(s);
+    }
+
+    public void pLoopFilter(@Nullable StdVideoAV1LoopFilter value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pLoopFilterRaw(s);
+    }
+
+    @unsafe public @Nullable StdVideoAV1LoopFilter[] pLoopFilter(int assumedCount) {
+        MemorySegment s = pLoopFilterRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * StdVideoAV1LoopFilter.BYTES);
+        StdVideoAV1LoopFilter[] ret = new StdVideoAV1LoopFilter[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new StdVideoAV1LoopFilter(s.asSlice(i * StdVideoAV1LoopFilter.BYTES, StdVideoAV1LoopFilter.BYTES));
+        }
+        return ret;
+    }
+
+    public @pointer(target=StdVideoAV1LoopFilter.class) MemorySegment pLoopFilterRaw() {
+        return segment.get(LAYOUT$pLoopFilter, OFFSET$pLoopFilter);
+    }
+
+    public void pLoopFilterRaw(@pointer(target=StdVideoAV1LoopFilter.class) MemorySegment value) {
+        segment.set(LAYOUT$pLoopFilter, OFFSET$pLoopFilter, value);
+    }
+
+    public @Nullable StdVideoAV1CDEF pCDEF() {
+        MemorySegment s = pCDEFRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoAV1CDEF(s);
+    }
+
+    public void pCDEF(@Nullable StdVideoAV1CDEF value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pCDEFRaw(s);
+    }
+
+    @unsafe public @Nullable StdVideoAV1CDEF[] pCDEF(int assumedCount) {
+        MemorySegment s = pCDEFRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * StdVideoAV1CDEF.BYTES);
+        StdVideoAV1CDEF[] ret = new StdVideoAV1CDEF[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new StdVideoAV1CDEF(s.asSlice(i * StdVideoAV1CDEF.BYTES, StdVideoAV1CDEF.BYTES));
+        }
+        return ret;
+    }
+
+    public @pointer(target=StdVideoAV1CDEF.class) MemorySegment pCDEFRaw() {
+        return segment.get(LAYOUT$pCDEF, OFFSET$pCDEF);
+    }
+
+    public void pCDEFRaw(@pointer(target=StdVideoAV1CDEF.class) MemorySegment value) {
+        segment.set(LAYOUT$pCDEF, OFFSET$pCDEF, value);
+    }
+
+    public @Nullable StdVideoAV1LoopRestoration pLoopRestoration() {
+        MemorySegment s = pLoopRestorationRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoAV1LoopRestoration(s);
+    }
+
+    public void pLoopRestoration(@Nullable StdVideoAV1LoopRestoration value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pLoopRestorationRaw(s);
+    }
+
+    @unsafe public @Nullable StdVideoAV1LoopRestoration[] pLoopRestoration(int assumedCount) {
+        MemorySegment s = pLoopRestorationRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * StdVideoAV1LoopRestoration.BYTES);
+        StdVideoAV1LoopRestoration[] ret = new StdVideoAV1LoopRestoration[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new StdVideoAV1LoopRestoration(s.asSlice(i * StdVideoAV1LoopRestoration.BYTES, StdVideoAV1LoopRestoration.BYTES));
+        }
+        return ret;
+    }
+
+    public @pointer(target=StdVideoAV1LoopRestoration.class) MemorySegment pLoopRestorationRaw() {
+        return segment.get(LAYOUT$pLoopRestoration, OFFSET$pLoopRestoration);
+    }
+
+    public void pLoopRestorationRaw(@pointer(target=StdVideoAV1LoopRestoration.class) MemorySegment value) {
+        segment.set(LAYOUT$pLoopRestoration, OFFSET$pLoopRestoration, value);
+    }
+
+    public @Nullable StdVideoAV1GlobalMotion pGlobalMotion() {
+        MemorySegment s = pGlobalMotionRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoAV1GlobalMotion(s);
+    }
+
+    public void pGlobalMotion(@Nullable StdVideoAV1GlobalMotion value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pGlobalMotionRaw(s);
+    }
+
+    @unsafe public @Nullable StdVideoAV1GlobalMotion[] pGlobalMotion(int assumedCount) {
+        MemorySegment s = pGlobalMotionRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * StdVideoAV1GlobalMotion.BYTES);
+        StdVideoAV1GlobalMotion[] ret = new StdVideoAV1GlobalMotion[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new StdVideoAV1GlobalMotion(s.asSlice(i * StdVideoAV1GlobalMotion.BYTES, StdVideoAV1GlobalMotion.BYTES));
+        }
+        return ret;
+    }
+
+    public @pointer(target=StdVideoAV1GlobalMotion.class) MemorySegment pGlobalMotionRaw() {
+        return segment.get(LAYOUT$pGlobalMotion, OFFSET$pGlobalMotion);
+    }
+
+    public void pGlobalMotionRaw(@pointer(target=StdVideoAV1GlobalMotion.class) MemorySegment value) {
+        segment.set(LAYOUT$pGlobalMotion, OFFSET$pGlobalMotion, value);
+    }
+
+    public @Nullable StdVideoAV1FilmGrain pFilmGrain() {
+        MemorySegment s = pFilmGrainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoAV1FilmGrain(s);
+    }
+
+    public void pFilmGrain(@Nullable StdVideoAV1FilmGrain value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pFilmGrainRaw(s);
+    }
+
+    @unsafe public @Nullable StdVideoAV1FilmGrain[] pFilmGrain(int assumedCount) {
+        MemorySegment s = pFilmGrainRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * StdVideoAV1FilmGrain.BYTES);
+        StdVideoAV1FilmGrain[] ret = new StdVideoAV1FilmGrain[assumedCount];
+        for (int i = 0; i < assumedCount; i ++) {
+            ret[i] = new StdVideoAV1FilmGrain(s.asSlice(i * StdVideoAV1FilmGrain.BYTES, StdVideoAV1FilmGrain.BYTES));
+        }
+        return ret;
+    }
+
+    public @pointer(target=StdVideoAV1FilmGrain.class) MemorySegment pFilmGrainRaw() {
+        return segment.get(LAYOUT$pFilmGrain, OFFSET$pFilmGrain);
+    }
+
+    public void pFilmGrainRaw(@pointer(target=StdVideoAV1FilmGrain.class) MemorySegment value) {
+        segment.set(LAYOUT$pFilmGrain, OFFSET$pFilmGrain, value);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        StdVideoDecodeAV1PictureInfoFlags.LAYOUT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("frame_type"),
+        ValueLayout.JAVA_INT.withName("current_frame_id"),
+        ValueLayout.JAVA_BYTE.withName("OrderHint"),
+        ValueLayout.JAVA_BYTE.withName("primary_ref_frame"),
+        ValueLayout.JAVA_BYTE.withName("refresh_frame_flags"),
+        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        ValueLayout.JAVA_INT.withName("interpolation_filter"),
+        ValueLayout.JAVA_INT.withName("TxMode"),
+        ValueLayout.JAVA_BYTE.withName("delta_q_res"),
+        ValueLayout.JAVA_BYTE.withName("delta_lf_res"),
+        ValueLayout.JAVA_BYTE.withName("SkipModeFrame"),
+        ValueLayout.JAVA_BYTE.withName("coded_denom"),
+        ValueLayout.JAVA_BYTE.withName("reserved2"),
+        ValueLayout.JAVA_BYTE.withName("OrderHints"),
+        ValueLayout.JAVA_INT.withName("expectedFrameId"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1TileInfo.LAYOUT).withName("pTileInfo"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1Quantization.LAYOUT).withName("pQuantization"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1Segmentation.LAYOUT).withName("pSegmentation"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1LoopFilter.LAYOUT).withName("pLoopFilter"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1CDEF.LAYOUT).withName("pCDEF"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1LoopRestoration.LAYOUT).withName("pLoopRestoration"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1GlobalMotion.LAYOUT).withName("pGlobalMotion"),
+        ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1FilmGrain.LAYOUT).withName("pFilmGrain")
+    );
+    public static final long BYTES = LAYOUT.byteSize();
+
+    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$frame_type = PathElement.groupElement("PATH$frame_type");
+    public static final PathElement PATH$current_frame_id = PathElement.groupElement("PATH$current_frame_id");
+    public static final PathElement PATH$OrderHint = PathElement.groupElement("PATH$OrderHint");
+    public static final PathElement PATH$primary_ref_frame = PathElement.groupElement("PATH$primary_ref_frame");
+    public static final PathElement PATH$refresh_frame_flags = PathElement.groupElement("PATH$refresh_frame_flags");
+    public static final PathElement PATH$interpolation_filter = PathElement.groupElement("PATH$interpolation_filter");
+    public static final PathElement PATH$TxMode = PathElement.groupElement("PATH$TxMode");
+    public static final PathElement PATH$delta_q_res = PathElement.groupElement("PATH$delta_q_res");
+    public static final PathElement PATH$delta_lf_res = PathElement.groupElement("PATH$delta_lf_res");
+    public static final PathElement PATH$SkipModeFrame = PathElement.groupElement("PATH$SkipModeFrame");
+    public static final PathElement PATH$coded_denom = PathElement.groupElement("PATH$coded_denom");
+    public static final PathElement PATH$OrderHints = PathElement.groupElement("PATH$OrderHints");
+    public static final PathElement PATH$expectedFrameId = PathElement.groupElement("PATH$expectedFrameId");
+    public static final PathElement PATH$pTileInfo = PathElement.groupElement("PATH$pTileInfo");
+    public static final PathElement PATH$pQuantization = PathElement.groupElement("PATH$pQuantization");
+    public static final PathElement PATH$pSegmentation = PathElement.groupElement("PATH$pSegmentation");
+    public static final PathElement PATH$pLoopFilter = PathElement.groupElement("PATH$pLoopFilter");
+    public static final PathElement PATH$pCDEF = PathElement.groupElement("PATH$pCDEF");
+    public static final PathElement PATH$pLoopRestoration = PathElement.groupElement("PATH$pLoopRestoration");
+    public static final PathElement PATH$pGlobalMotion = PathElement.groupElement("PATH$pGlobalMotion");
+    public static final PathElement PATH$pFilmGrain = PathElement.groupElement("PATH$pFilmGrain");
+
+    public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$frame_type = (OfInt) LAYOUT.select(PATH$frame_type);
+    public static final OfInt LAYOUT$current_frame_id = (OfInt) LAYOUT.select(PATH$current_frame_id);
+    public static final OfByte LAYOUT$OrderHint = (OfByte) LAYOUT.select(PATH$OrderHint);
+    public static final OfByte LAYOUT$primary_ref_frame = (OfByte) LAYOUT.select(PATH$primary_ref_frame);
+    public static final OfByte LAYOUT$refresh_frame_flags = (OfByte) LAYOUT.select(PATH$refresh_frame_flags);
+    public static final OfInt LAYOUT$interpolation_filter = (OfInt) LAYOUT.select(PATH$interpolation_filter);
+    public static final OfInt LAYOUT$TxMode = (OfInt) LAYOUT.select(PATH$TxMode);
+    public static final OfByte LAYOUT$delta_q_res = (OfByte) LAYOUT.select(PATH$delta_q_res);
+    public static final OfByte LAYOUT$delta_lf_res = (OfByte) LAYOUT.select(PATH$delta_lf_res);
+    public static final OfByte LAYOUT$SkipModeFrame = (OfByte) LAYOUT.select(PATH$SkipModeFrame);
+    public static final OfByte LAYOUT$coded_denom = (OfByte) LAYOUT.select(PATH$coded_denom);
+    public static final OfByte LAYOUT$OrderHints = (OfByte) LAYOUT.select(PATH$OrderHints);
+    public static final OfInt LAYOUT$expectedFrameId = (OfInt) LAYOUT.select(PATH$expectedFrameId);
+    public static final AddressLayout LAYOUT$pTileInfo = (AddressLayout) LAYOUT.select(PATH$pTileInfo);
+    public static final AddressLayout LAYOUT$pQuantization = (AddressLayout) LAYOUT.select(PATH$pQuantization);
+    public static final AddressLayout LAYOUT$pSegmentation = (AddressLayout) LAYOUT.select(PATH$pSegmentation);
+    public static final AddressLayout LAYOUT$pLoopFilter = (AddressLayout) LAYOUT.select(PATH$pLoopFilter);
+    public static final AddressLayout LAYOUT$pCDEF = (AddressLayout) LAYOUT.select(PATH$pCDEF);
+    public static final AddressLayout LAYOUT$pLoopRestoration = (AddressLayout) LAYOUT.select(PATH$pLoopRestoration);
+    public static final AddressLayout LAYOUT$pGlobalMotion = (AddressLayout) LAYOUT.select(PATH$pGlobalMotion);
+    public static final AddressLayout LAYOUT$pFilmGrain = (AddressLayout) LAYOUT.select(PATH$pFilmGrain);
+
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$frame_type = LAYOUT$frame_type.byteSize();
+    public static final long SIZE$current_frame_id = LAYOUT$current_frame_id.byteSize();
+    public static final long SIZE$OrderHint = LAYOUT$OrderHint.byteSize();
+    public static final long SIZE$primary_ref_frame = LAYOUT$primary_ref_frame.byteSize();
+    public static final long SIZE$refresh_frame_flags = LAYOUT$refresh_frame_flags.byteSize();
+    public static final long SIZE$interpolation_filter = LAYOUT$interpolation_filter.byteSize();
+    public static final long SIZE$TxMode = LAYOUT$TxMode.byteSize();
+    public static final long SIZE$delta_q_res = LAYOUT$delta_q_res.byteSize();
+    public static final long SIZE$delta_lf_res = LAYOUT$delta_lf_res.byteSize();
+    public static final long SIZE$SkipModeFrame = LAYOUT$SkipModeFrame.byteSize();
+    public static final long SIZE$coded_denom = LAYOUT$coded_denom.byteSize();
+    public static final long SIZE$OrderHints = LAYOUT$OrderHints.byteSize();
+    public static final long SIZE$expectedFrameId = LAYOUT$expectedFrameId.byteSize();
+    public static final long SIZE$pTileInfo = LAYOUT$pTileInfo.byteSize();
+    public static final long SIZE$pQuantization = LAYOUT$pQuantization.byteSize();
+    public static final long SIZE$pSegmentation = LAYOUT$pSegmentation.byteSize();
+    public static final long SIZE$pLoopFilter = LAYOUT$pLoopFilter.byteSize();
+    public static final long SIZE$pCDEF = LAYOUT$pCDEF.byteSize();
+    public static final long SIZE$pLoopRestoration = LAYOUT$pLoopRestoration.byteSize();
+    public static final long SIZE$pGlobalMotion = LAYOUT$pGlobalMotion.byteSize();
+    public static final long SIZE$pFilmGrain = LAYOUT$pFilmGrain.byteSize();
+
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$frame_type = LAYOUT.byteOffset(PATH$frame_type);
+    public static final long OFFSET$current_frame_id = LAYOUT.byteOffset(PATH$current_frame_id);
+    public static final long OFFSET$OrderHint = LAYOUT.byteOffset(PATH$OrderHint);
+    public static final long OFFSET$primary_ref_frame = LAYOUT.byteOffset(PATH$primary_ref_frame);
+    public static final long OFFSET$refresh_frame_flags = LAYOUT.byteOffset(PATH$refresh_frame_flags);
+    public static final long OFFSET$interpolation_filter = LAYOUT.byteOffset(PATH$interpolation_filter);
+    public static final long OFFSET$TxMode = LAYOUT.byteOffset(PATH$TxMode);
+    public static final long OFFSET$delta_q_res = LAYOUT.byteOffset(PATH$delta_q_res);
+    public static final long OFFSET$delta_lf_res = LAYOUT.byteOffset(PATH$delta_lf_res);
+    public static final long OFFSET$SkipModeFrame = LAYOUT.byteOffset(PATH$SkipModeFrame);
+    public static final long OFFSET$coded_denom = LAYOUT.byteOffset(PATH$coded_denom);
+    public static final long OFFSET$OrderHints = LAYOUT.byteOffset(PATH$OrderHints);
+    public static final long OFFSET$expectedFrameId = LAYOUT.byteOffset(PATH$expectedFrameId);
+    public static final long OFFSET$pTileInfo = LAYOUT.byteOffset(PATH$pTileInfo);
+    public static final long OFFSET$pQuantization = LAYOUT.byteOffset(PATH$pQuantization);
+    public static final long OFFSET$pSegmentation = LAYOUT.byteOffset(PATH$pSegmentation);
+    public static final long OFFSET$pLoopFilter = LAYOUT.byteOffset(PATH$pLoopFilter);
+    public static final long OFFSET$pCDEF = LAYOUT.byteOffset(PATH$pCDEF);
+    public static final long OFFSET$pLoopRestoration = LAYOUT.byteOffset(PATH$pLoopRestoration);
+    public static final long OFFSET$pGlobalMotion = LAYOUT.byteOffset(PATH$pGlobalMotion);
+    public static final long OFFSET$pFilmGrain = LAYOUT.byteOffset(PATH$pFilmGrain);
+}

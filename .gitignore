@@ -63,3 +63,7 @@ vma/vma_build/vk_mem_alloc.h
 
 # Python __pycache__
 **/__pycache__/
+
+# Javadoc output
+
+javadoc_gen
