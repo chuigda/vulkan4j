@@ -14,11 +14,7 @@ public interface RawFunctionLoader {
     Linker nativeLinker = Linker.nativeLinker();
 
     static @Nullable MethodHandle link(@Nullable MemorySegment segment, FunctionDescriptor descriptor) {
-        if (segment == null) {
-            return null;
-        }
-
-        if (segment.address() == 0) {
+        if (segment == null || segment.equals(MemorySegment.NULL)) {
             return null;
         }
 
