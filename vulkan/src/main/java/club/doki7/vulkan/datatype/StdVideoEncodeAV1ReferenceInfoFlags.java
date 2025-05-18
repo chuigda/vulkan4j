@@ -68,22 +68,22 @@ public record StdVideoEncodeAV1ReferenceInfoFlags(@NotNull MemorySegment segment
     }
 
     public boolean disable_frame_end_update_cdf() {
-        MemorySegment s = segment.asSlice(OFFSET$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void disable_frame_end_update_cdf(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean segmentation_enabled() {
-        MemorySegment s = segment.asSlice(OFFSET$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void segmentation_enabled(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$disable_frame_end_update_cdf_reserved, LAYOUT$disable_frame_end_update_cdf_reserved);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
@@ -97,5 +97,5 @@ public record StdVideoEncodeAV1ReferenceInfoFlags(@NotNull MemorySegment segment
     public static final OfInt LAYOUT$disable_frame_end_update_cdf_reserved = (OfInt) LAYOUT.select(PATH$bitfield$disable_frame_end_update_cdf_reserved);
 
 
-    public static final long OFFSET$disable_frame_end_update_cdf_reserved = LAYOUT.byteOffset(PATH$bitfield$disable_frame_end_update_cdf_reserved);
+    public static final long OFFSET$bitfield$disable_frame_end_update_cdf_reserved = LAYOUT.byteOffset(PATH$bitfield$disable_frame_end_update_cdf_reserved);
 }

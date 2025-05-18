@@ -71,52 +71,52 @@ public record StdVideoEncodeH264PictureInfoFlags(@NotNull MemorySegment segment)
     }
 
     public boolean IdrPicFlag() {
-        MemorySegment s = segment.asSlice(OFFSET$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void IdrPicFlag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean is_reference() {
-        MemorySegment s = segment.asSlice(OFFSET$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void is_reference(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
     public boolean no_output_of_prior_pics_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
         return BitfieldUtil.readBit(s, 2);
     }
 
     public void no_output_of_prior_pics_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
         BitfieldUtil.writeBit(s, 2, value);
     }
 
     public boolean long_term_reference_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
         return BitfieldUtil.readBit(s, 3);
     }
 
     public void long_term_reference_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
         BitfieldUtil.writeBit(s, 3, value);
     }
 
     public boolean adaptive_ref_pic_marking_mode_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
         return BitfieldUtil.readBit(s, 4);
     }
 
     public void adaptive_ref_pic_marking_mode_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$IdrPicFlag_reserved, LAYOUT$IdrPicFlag_reserved);
         BitfieldUtil.writeBit(s, 4, value);
     }
 
@@ -130,5 +130,5 @@ public record StdVideoEncodeH264PictureInfoFlags(@NotNull MemorySegment segment)
     public static final OfInt LAYOUT$IdrPicFlag_reserved = (OfInt) LAYOUT.select(PATH$bitfield$IdrPicFlag_reserved);
 
 
-    public static final long OFFSET$IdrPicFlag_reserved = LAYOUT.byteOffset(PATH$bitfield$IdrPicFlag_reserved);
+    public static final long OFFSET$bitfield$IdrPicFlag_reserved = LAYOUT.byteOffset(PATH$bitfield$IdrPicFlag_reserved);
 }

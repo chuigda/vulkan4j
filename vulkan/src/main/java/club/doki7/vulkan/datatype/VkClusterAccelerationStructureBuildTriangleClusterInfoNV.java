@@ -100,52 +100,52 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
     }
 
     public @unsigned int triangleCount() {
-        MemorySegment s = segment.asSlice(OFFSET$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
         return BitfieldUtil.readBits(s, 0, 9);
     }
 
     public void triangleCount(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
         BitfieldUtil.writeBits(s, 0, 9, value);
     }
 
     public @unsigned int vertexCount() {
-        MemorySegment s = segment.asSlice(OFFSET$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
         return BitfieldUtil.readBits(s, 9, 18);
     }
 
     public void vertexCount(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
         BitfieldUtil.writeBits(s, 9, 18, value);
     }
 
     public @unsigned int positionTruncateBitCount() {
-        MemorySegment s = segment.asSlice(OFFSET$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
         return BitfieldUtil.readBits(s, 18, 24);
     }
 
     public void positionTruncateBitCount(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
         BitfieldUtil.writeBits(s, 18, 24, value);
     }
 
     public @unsigned int indexType() {
-        MemorySegment s = segment.asSlice(OFFSET$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
         return BitfieldUtil.readBits(s, 24, 28);
     }
 
     public void indexType(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
         BitfieldUtil.writeBits(s, 24, 28, value);
     }
 
     public @unsigned int opacityMicromapIndexType() {
-        MemorySegment s = segment.asSlice(OFFSET$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
         return BitfieldUtil.readBits(s, 28, 32);
     }
 
     public void opacityMicromapIndexType(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$triangleCount_opacityMicromapIndexType, LAYOUT$triangleCount_opacityMicromapIndexType);
         BitfieldUtil.writeBits(s, 28, 32, value);
     }
 
@@ -289,7 +289,7 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
 
     public static final long OFFSET$clusterID = LAYOUT.byteOffset(PATH$clusterID);
     public static final long OFFSET$clusterFlags = LAYOUT.byteOffset(PATH$clusterFlags);
-    public static final long OFFSET$triangleCount_opacityMicromapIndexType = LAYOUT.byteOffset(PATH$bitfield$triangleCount_opacityMicromapIndexType);
+    public static final long OFFSET$bitfield$triangleCount_opacityMicromapIndexType = LAYOUT.byteOffset(PATH$bitfield$triangleCount_opacityMicromapIndexType);
     public static final long OFFSET$baseGeometryIndexAndGeometryFlags = LAYOUT.byteOffset(PATH$baseGeometryIndexAndGeometryFlags);
     public static final long OFFSET$indexBufferStride = LAYOUT.byteOffset(PATH$indexBufferStride);
     public static final long OFFSET$vertexBufferStride = LAYOUT.byteOffset(PATH$vertexBufferStride);

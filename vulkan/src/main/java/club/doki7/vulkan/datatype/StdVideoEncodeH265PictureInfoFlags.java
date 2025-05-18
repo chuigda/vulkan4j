@@ -75,92 +75,92 @@ public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment)
     }
 
     public boolean is_reference() {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference_reserved, LAYOUT$is_reference_reserved);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void is_reference(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference_reserved, LAYOUT$is_reference_reserved);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean IrapPicFlag() {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference_reserved, LAYOUT$is_reference_reserved);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void IrapPicFlag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference_reserved, LAYOUT$is_reference_reserved);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
     public boolean used_for_long_term_reference() {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference_reserved, LAYOUT$is_reference_reserved);
         return BitfieldUtil.readBit(s, 2);
     }
 
     public void used_for_long_term_reference(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference_reserved, LAYOUT$is_reference_reserved);
         BitfieldUtil.writeBit(s, 2, value);
     }
 
     public boolean discardable_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference_reserved, LAYOUT$is_reference_reserved);
         return BitfieldUtil.readBit(s, 3);
     }
 
     public void discardable_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference_reserved, LAYOUT$is_reference_reserved);
         BitfieldUtil.writeBit(s, 3, value);
     }
 
     public boolean cross_layer_bla_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference_reserved, LAYOUT$is_reference_reserved);
         return BitfieldUtil.readBit(s, 4);
     }
 
     public void cross_layer_bla_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference_reserved, LAYOUT$is_reference_reserved);
         BitfieldUtil.writeBit(s, 4, value);
     }
 
     public boolean pic_output_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference_reserved, LAYOUT$is_reference_reserved);
         return BitfieldUtil.readBit(s, 5);
     }
 
     public void pic_output_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference_reserved, LAYOUT$is_reference_reserved);
         BitfieldUtil.writeBit(s, 5, value);
     }
 
     public boolean no_output_of_prior_pics_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference_reserved, LAYOUT$is_reference_reserved);
         return BitfieldUtil.readBit(s, 6);
     }
 
     public void no_output_of_prior_pics_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference_reserved, LAYOUT$is_reference_reserved);
         BitfieldUtil.writeBit(s, 6, value);
     }
 
     public boolean short_term_ref_pic_set_sps_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference_reserved, LAYOUT$is_reference_reserved);
         return BitfieldUtil.readBit(s, 7);
     }
 
     public void short_term_ref_pic_set_sps_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference_reserved, LAYOUT$is_reference_reserved);
         BitfieldUtil.writeBit(s, 7, value);
     }
 
     public boolean slice_temporal_mvp_enabled_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference_reserved, LAYOUT$is_reference_reserved);
         return BitfieldUtil.readBit(s, 8);
     }
 
     public void slice_temporal_mvp_enabled_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$is_reference_reserved, LAYOUT$is_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference_reserved, LAYOUT$is_reference_reserved);
         BitfieldUtil.writeBit(s, 8, value);
     }
 
@@ -174,5 +174,5 @@ public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment)
     public static final OfInt LAYOUT$is_reference_reserved = (OfInt) LAYOUT.select(PATH$bitfield$is_reference_reserved);
 
 
-    public static final long OFFSET$is_reference_reserved = LAYOUT.byteOffset(PATH$bitfield$is_reference_reserved);
+    public static final long OFFSET$bitfield$is_reference_reserved = LAYOUT.byteOffset(PATH$bitfield$is_reference_reserved);
 }

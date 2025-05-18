@@ -69,42 +69,42 @@ public record StdVideoH265VpsFlags(@NotNull MemorySegment segment) implements IP
     }
 
     public boolean vps_temporal_id_nesting_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void vps_temporal_id_nesting_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean vps_sub_layer_ordering_info_present_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void vps_sub_layer_ordering_info_present_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
     public boolean vps_timing_info_present_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
         return BitfieldUtil.readBit(s, 2);
     }
 
     public void vps_timing_info_present_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
         BitfieldUtil.writeBit(s, 2, value);
     }
 
     public boolean vps_poc_proportional_to_timing_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
         return BitfieldUtil.readBit(s, 3);
     }
 
     public void vps_poc_proportional_to_timing_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag, LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
         BitfieldUtil.writeBit(s, 3, value);
     }
 
@@ -118,5 +118,5 @@ public record StdVideoH265VpsFlags(@NotNull MemorySegment segment) implements IP
     public static final OfInt LAYOUT$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag = (OfInt) LAYOUT.select(PATH$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
 
 
-    public static final long OFFSET$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag = LAYOUT.byteOffset(PATH$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
+    public static final long OFFSET$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag = LAYOUT.byteOffset(PATH$bitfield$vps_temporal_id_nesting_flag_vps_poc_proportional_to_timing_flag);
 }

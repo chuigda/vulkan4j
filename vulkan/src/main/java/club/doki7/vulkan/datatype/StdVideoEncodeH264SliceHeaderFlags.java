@@ -68,22 +68,22 @@ public record StdVideoEncodeH264SliceHeaderFlags(@NotNull MemorySegment segment)
     }
 
     public boolean direct_spatial_mv_pred_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$direct_spatial_mv_pred_flag_reserved, LAYOUT$direct_spatial_mv_pred_flag_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$direct_spatial_mv_pred_flag_reserved, LAYOUT$direct_spatial_mv_pred_flag_reserved);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void direct_spatial_mv_pred_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$direct_spatial_mv_pred_flag_reserved, LAYOUT$direct_spatial_mv_pred_flag_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$direct_spatial_mv_pred_flag_reserved, LAYOUT$direct_spatial_mv_pred_flag_reserved);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean num_ref_idx_active_override_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$direct_spatial_mv_pred_flag_reserved, LAYOUT$direct_spatial_mv_pred_flag_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$direct_spatial_mv_pred_flag_reserved, LAYOUT$direct_spatial_mv_pred_flag_reserved);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void num_ref_idx_active_override_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$direct_spatial_mv_pred_flag_reserved, LAYOUT$direct_spatial_mv_pred_flag_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$direct_spatial_mv_pred_flag_reserved, LAYOUT$direct_spatial_mv_pred_flag_reserved);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
@@ -97,5 +97,5 @@ public record StdVideoEncodeH264SliceHeaderFlags(@NotNull MemorySegment segment)
     public static final OfInt LAYOUT$direct_spatial_mv_pred_flag_reserved = (OfInt) LAYOUT.select(PATH$bitfield$direct_spatial_mv_pred_flag_reserved);
 
 
-    public static final long OFFSET$direct_spatial_mv_pred_flag_reserved = LAYOUT.byteOffset(PATH$bitfield$direct_spatial_mv_pred_flag_reserved);
+    public static final long OFFSET$bitfield$direct_spatial_mv_pred_flag_reserved = LAYOUT.byteOffset(PATH$bitfield$direct_spatial_mv_pred_flag_reserved);
 }

@@ -67,12 +67,12 @@ public record StdVideoAV1TileInfoFlags(@NotNull MemorySegment segment) implement
     }
 
     public boolean uniform_tile_spacing_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$uniform_tile_spacing_flag_reserved, LAYOUT$uniform_tile_spacing_flag_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$uniform_tile_spacing_flag_reserved, LAYOUT$uniform_tile_spacing_flag_reserved);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void uniform_tile_spacing_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$uniform_tile_spacing_flag_reserved, LAYOUT$uniform_tile_spacing_flag_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$uniform_tile_spacing_flag_reserved, LAYOUT$uniform_tile_spacing_flag_reserved);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
@@ -86,5 +86,5 @@ public record StdVideoAV1TileInfoFlags(@NotNull MemorySegment segment) implement
     public static final OfInt LAYOUT$uniform_tile_spacing_flag_reserved = (OfInt) LAYOUT.select(PATH$bitfield$uniform_tile_spacing_flag_reserved);
 
 
-    public static final long OFFSET$uniform_tile_spacing_flag_reserved = LAYOUT.byteOffset(PATH$bitfield$uniform_tile_spacing_flag_reserved);
+    public static final long OFFSET$bitfield$uniform_tile_spacing_flag_reserved = LAYOUT.byteOffset(PATH$bitfield$uniform_tile_spacing_flag_reserved);
 }

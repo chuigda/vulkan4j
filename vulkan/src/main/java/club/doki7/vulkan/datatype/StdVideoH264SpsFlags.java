@@ -81,162 +81,162 @@ public record StdVideoH264SpsFlags(@NotNull MemorySegment segment) implements IP
     }
 
     public boolean constraint_set0_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void constraint_set0_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean constraint_set1_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void constraint_set1_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
     public boolean constraint_set2_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         return BitfieldUtil.readBit(s, 2);
     }
 
     public void constraint_set2_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         BitfieldUtil.writeBit(s, 2, value);
     }
 
     public boolean constraint_set3_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         return BitfieldUtil.readBit(s, 3);
     }
 
     public void constraint_set3_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         BitfieldUtil.writeBit(s, 3, value);
     }
 
     public boolean constraint_set4_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         return BitfieldUtil.readBit(s, 4);
     }
 
     public void constraint_set4_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         BitfieldUtil.writeBit(s, 4, value);
     }
 
     public boolean constraint_set5_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         return BitfieldUtil.readBit(s, 5);
     }
 
     public void constraint_set5_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         BitfieldUtil.writeBit(s, 5, value);
     }
 
     public boolean direct_8x8_inference_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         return BitfieldUtil.readBit(s, 6);
     }
 
     public void direct_8x8_inference_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         BitfieldUtil.writeBit(s, 6, value);
     }
 
     public boolean mb_adaptive_frame_field_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         return BitfieldUtil.readBit(s, 7);
     }
 
     public void mb_adaptive_frame_field_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         BitfieldUtil.writeBit(s, 7, value);
     }
 
     public boolean frame_mbs_only_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         return BitfieldUtil.readBit(s, 8);
     }
 
     public void frame_mbs_only_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         BitfieldUtil.writeBit(s, 8, value);
     }
 
     public boolean delta_pic_order_always_zero_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         return BitfieldUtil.readBit(s, 9);
     }
 
     public void delta_pic_order_always_zero_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         BitfieldUtil.writeBit(s, 9, value);
     }
 
     public boolean separate_colour_plane_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         return BitfieldUtil.readBit(s, 10);
     }
 
     public void separate_colour_plane_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         BitfieldUtil.writeBit(s, 10, value);
     }
 
     public boolean gaps_in_frame_num_value_allowed_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         return BitfieldUtil.readBit(s, 11);
     }
 
     public void gaps_in_frame_num_value_allowed_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         BitfieldUtil.writeBit(s, 11, value);
     }
 
     public boolean qpprime_y_zero_transform_bypass_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         return BitfieldUtil.readBit(s, 12);
     }
 
     public void qpprime_y_zero_transform_bypass_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         BitfieldUtil.writeBit(s, 12, value);
     }
 
     public boolean frame_cropping_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         return BitfieldUtil.readBit(s, 13);
     }
 
     public void frame_cropping_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         BitfieldUtil.writeBit(s, 13, value);
     }
 
     public boolean seq_scaling_matrix_present_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         return BitfieldUtil.readBit(s, 14);
     }
 
     public void seq_scaling_matrix_present_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         BitfieldUtil.writeBit(s, 14, value);
     }
 
     public boolean vui_parameters_present_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         return BitfieldUtil.readBit(s, 15);
     }
 
     public void vui_parameters_present_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag, LAYOUT$constraint_set0_flag_vui_parameters_present_flag);
         BitfieldUtil.writeBit(s, 15, value);
     }
 
@@ -250,5 +250,5 @@ public record StdVideoH264SpsFlags(@NotNull MemorySegment segment) implements IP
     public static final OfInt LAYOUT$constraint_set0_flag_vui_parameters_present_flag = (OfInt) LAYOUT.select(PATH$bitfield$constraint_set0_flag_vui_parameters_present_flag);
 
 
-    public static final long OFFSET$constraint_set0_flag_vui_parameters_present_flag = LAYOUT.byteOffset(PATH$bitfield$constraint_set0_flag_vui_parameters_present_flag);
+    public static final long OFFSET$bitfield$constraint_set0_flag_vui_parameters_present_flag = LAYOUT.byteOffset(PATH$bitfield$constraint_set0_flag_vui_parameters_present_flag);
 }

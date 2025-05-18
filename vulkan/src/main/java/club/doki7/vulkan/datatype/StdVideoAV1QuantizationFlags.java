@@ -68,22 +68,22 @@ public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) imple
     }
 
     public boolean using_qmatrix() {
-        MemorySegment s = segment.asSlice(OFFSET$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void using_qmatrix(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean diff_uv_delta() {
-        MemorySegment s = segment.asSlice(OFFSET$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void diff_uv_delta(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$using_qmatrix_reserved, LAYOUT$using_qmatrix_reserved);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
@@ -97,5 +97,5 @@ public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) imple
     public static final OfInt LAYOUT$using_qmatrix_reserved = (OfInt) LAYOUT.select(PATH$bitfield$using_qmatrix_reserved);
 
 
-    public static final long OFFSET$using_qmatrix_reserved = LAYOUT.byteOffset(PATH$bitfield$using_qmatrix_reserved);
+    public static final long OFFSET$bitfield$using_qmatrix_reserved = LAYOUT.byteOffset(PATH$bitfield$using_qmatrix_reserved);
 }

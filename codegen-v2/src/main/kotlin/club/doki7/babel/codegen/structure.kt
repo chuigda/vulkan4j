@@ -22,8 +22,8 @@ sealed class LayoutField(
 ) {
     val layoutName: String = "LAYOUT$$name"
     val sizeName: String = "SIZE$$name"
-    val offsetName: String = "OFFSET$$name"
     abstract val pathName: String
+    abstract val offsetName: String
 
     class Typed(
         jLayoutType: String?,
@@ -36,6 +36,7 @@ sealed class LayoutField(
     ) :
         LayoutField(jLayoutType, name, value) {
         override val pathName: String = "PATH$$name"
+        override val offsetName: String = "OFFSET$$name"
         val rawName = "${name}Raw"
     }
 
@@ -51,8 +52,8 @@ sealed class LayoutField(
         val length: Int
     ) :
         LayoutField(jLayoutType, name, value) {
-        val bitfieldName: String = "bitfield$$name"
-        override val pathName: String = "PATH$$bitfieldName"
+        override val pathName: String = "PATH\$bitfield$$name"
+        override val offsetName: String = "OFFSET\$bitfield$$name"
     }
 
     data class Bitfield(val bitfieldName: String, val offset: Int, val bits: Int)

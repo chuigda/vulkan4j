@@ -67,12 +67,12 @@ public record StdVideoEncodeH264ReferenceInfoFlags(@NotNull MemorySegment segmen
     }
 
     public boolean used_for_long_term_reference() {
-        MemorySegment s = segment.asSlice(OFFSET$used_for_long_term_reference_reserved, LAYOUT$used_for_long_term_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$used_for_long_term_reference_reserved, LAYOUT$used_for_long_term_reference_reserved);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void used_for_long_term_reference(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$used_for_long_term_reference_reserved, LAYOUT$used_for_long_term_reference_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$used_for_long_term_reference_reserved, LAYOUT$used_for_long_term_reference_reserved);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
@@ -86,5 +86,5 @@ public record StdVideoEncodeH264ReferenceInfoFlags(@NotNull MemorySegment segmen
     public static final OfInt LAYOUT$used_for_long_term_reference_reserved = (OfInt) LAYOUT.select(PATH$bitfield$used_for_long_term_reference_reserved);
 
 
-    public static final long OFFSET$used_for_long_term_reference_reserved = LAYOUT.byteOffset(PATH$bitfield$used_for_long_term_reference_reserved);
+    public static final long OFFSET$bitfield$used_for_long_term_reference_reserved = LAYOUT.byteOffset(PATH$bitfield$used_for_long_term_reference_reserved);
 }

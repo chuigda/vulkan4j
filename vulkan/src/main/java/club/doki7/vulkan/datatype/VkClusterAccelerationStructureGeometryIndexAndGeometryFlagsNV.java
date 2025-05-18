@@ -70,21 +70,21 @@ public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@Not
     }
 
     public @unsigned int geometryIndex() {
-        MemorySegment s = segment.asSlice(OFFSET$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
     public void geometryIndex(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
         BitfieldUtil.writeBits(s, 0, 24, value);
     }
     public @unsigned int geometryFlags() {
-        MemorySegment s = segment.asSlice(OFFSET$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
         return BitfieldUtil.readBits(s, 29, 32);
     }
 
     public void geometryFlags(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndex_geometryFlags, LAYOUT$geometryIndex_geometryFlags);
         BitfieldUtil.writeBits(s, 29, 32, value);
     }
 
@@ -98,5 +98,5 @@ public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@Not
     public static final OfInt LAYOUT$geometryIndex_geometryFlags = (OfInt) LAYOUT.select(PATH$bitfield$geometryIndex_geometryFlags);
 
 
-    public static final long OFFSET$geometryIndex_geometryFlags = LAYOUT.byteOffset(PATH$bitfield$geometryIndex_geometryFlags);
+    public static final long OFFSET$bitfield$geometryIndex_geometryFlags = LAYOUT.byteOffset(PATH$bitfield$geometryIndex_geometryFlags);
 }

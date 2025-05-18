@@ -67,22 +67,22 @@ public record StdVideoH265ShortTermRefPicSetFlags(@NotNull MemorySegment segment
     }
 
     public boolean inter_ref_pic_set_prediction_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$inter_ref_pic_set_prediction_flag_delta_rps_sign, LAYOUT$inter_ref_pic_set_prediction_flag_delta_rps_sign);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign, LAYOUT$inter_ref_pic_set_prediction_flag_delta_rps_sign);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void inter_ref_pic_set_prediction_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$inter_ref_pic_set_prediction_flag_delta_rps_sign, LAYOUT$inter_ref_pic_set_prediction_flag_delta_rps_sign);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign, LAYOUT$inter_ref_pic_set_prediction_flag_delta_rps_sign);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean delta_rps_sign() {
-        MemorySegment s = segment.asSlice(OFFSET$inter_ref_pic_set_prediction_flag_delta_rps_sign, LAYOUT$inter_ref_pic_set_prediction_flag_delta_rps_sign);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign, LAYOUT$inter_ref_pic_set_prediction_flag_delta_rps_sign);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void delta_rps_sign(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$inter_ref_pic_set_prediction_flag_delta_rps_sign, LAYOUT$inter_ref_pic_set_prediction_flag_delta_rps_sign);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign, LAYOUT$inter_ref_pic_set_prediction_flag_delta_rps_sign);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
@@ -96,5 +96,5 @@ public record StdVideoH265ShortTermRefPicSetFlags(@NotNull MemorySegment segment
     public static final OfInt LAYOUT$inter_ref_pic_set_prediction_flag_delta_rps_sign = (OfInt) LAYOUT.select(PATH$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign);
 
 
-    public static final long OFFSET$inter_ref_pic_set_prediction_flag_delta_rps_sign = LAYOUT.byteOffset(PATH$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign);
+    public static final long OFFSET$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign = LAYOUT.byteOffset(PATH$bitfield$inter_ref_pic_set_prediction_flag_delta_rps_sign);
 }

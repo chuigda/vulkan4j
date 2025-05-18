@@ -72,72 +72,72 @@ public record StdVideoH265HrdFlags(@NotNull MemorySegment segment) implements IP
     }
 
     public boolean nal_hrd_parameters_present_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void nal_hrd_parameters_present_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean vcl_hrd_parameters_present_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void vcl_hrd_parameters_present_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
     public boolean sub_pic_hrd_params_present_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
         return BitfieldUtil.readBit(s, 2);
     }
 
     public void sub_pic_hrd_params_present_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
         BitfieldUtil.writeBit(s, 2, value);
     }
 
     public boolean sub_pic_cpb_params_in_pic_timing_sei_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
         return BitfieldUtil.readBit(s, 3);
     }
 
     public void sub_pic_cpb_params_in_pic_timing_sei_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
         BitfieldUtil.writeBit(s, 3, value);
     }
 
     public @unsigned int fixed_pic_rate_general_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
         return BitfieldUtil.readBits(s, 4, 12);
     }
 
     public void fixed_pic_rate_general_flag(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
         BitfieldUtil.writeBits(s, 4, 12, value);
     }
 
     public @unsigned int fixed_pic_rate_within_cvs_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
         return BitfieldUtil.readBits(s, 12, 20);
     }
 
     public void fixed_pic_rate_within_cvs_flag(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
         BitfieldUtil.writeBits(s, 12, 20, value);
     }
 
     public @unsigned int low_delay_hrd_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
         return BitfieldUtil.readBits(s, 20, 28);
     }
 
     public void low_delay_hrd_flag(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag, LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
         BitfieldUtil.writeBits(s, 20, 28, value);
     }
 
@@ -151,5 +151,5 @@ public record StdVideoH265HrdFlags(@NotNull MemorySegment segment) implements IP
     public static final OfInt LAYOUT$nal_hrd_parameters_present_flag_low_delay_hrd_flag = (OfInt) LAYOUT.select(PATH$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
 
 
-    public static final long OFFSET$nal_hrd_parameters_present_flag_low_delay_hrd_flag = LAYOUT.byteOffset(PATH$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
+    public static final long OFFSET$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag = LAYOUT.byteOffset(PATH$bitfield$nal_hrd_parameters_present_flag_low_delay_hrd_flag);
 }

@@ -71,62 +71,62 @@ public record StdVideoDecodeH264PictureInfoFlags(@NotNull MemorySegment segment)
     }
 
     public boolean field_pic_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void field_pic_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean is_intra() {
-        MemorySegment s = segment.asSlice(OFFSET$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void is_intra(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
     public boolean IdrPicFlag() {
-        MemorySegment s = segment.asSlice(OFFSET$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
         return BitfieldUtil.readBit(s, 2);
     }
 
     public void IdrPicFlag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
         BitfieldUtil.writeBit(s, 2, value);
     }
 
     public boolean bottom_field_flag() {
-        MemorySegment s = segment.asSlice(OFFSET$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
         return BitfieldUtil.readBit(s, 3);
     }
 
     public void bottom_field_flag(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
         BitfieldUtil.writeBit(s, 3, value);
     }
 
     public boolean is_reference() {
-        MemorySegment s = segment.asSlice(OFFSET$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
         return BitfieldUtil.readBit(s, 4);
     }
 
     public void is_reference(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
         BitfieldUtil.writeBit(s, 4, value);
     }
 
     public boolean complementary_field_pair() {
-        MemorySegment s = segment.asSlice(OFFSET$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
         return BitfieldUtil.readBit(s, 5);
     }
 
     public void complementary_field_pair(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$field_pic_flag_complementary_field_pair, LAYOUT$field_pic_flag_complementary_field_pair);
         BitfieldUtil.writeBit(s, 5, value);
     }
 
@@ -140,5 +140,5 @@ public record StdVideoDecodeH264PictureInfoFlags(@NotNull MemorySegment segment)
     public static final OfInt LAYOUT$field_pic_flag_complementary_field_pair = (OfInt) LAYOUT.select(PATH$bitfield$field_pic_flag_complementary_field_pair);
 
 
-    public static final long OFFSET$field_pic_flag_complementary_field_pair = LAYOUT.byteOffset(PATH$bitfield$field_pic_flag_complementary_field_pair);
+    public static final long OFFSET$bitfield$field_pic_flag_complementary_field_pair = LAYOUT.byteOffset(PATH$bitfield$field_pic_flag_complementary_field_pair);
 }

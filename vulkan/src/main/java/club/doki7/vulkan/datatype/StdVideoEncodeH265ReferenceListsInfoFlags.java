@@ -68,22 +68,22 @@ public record StdVideoEncodeH265ReferenceListsInfoFlags(@NotNull MemorySegment s
     }
 
     public boolean ref_pic_list_modification_flag_l0() {
-        MemorySegment s = segment.asSlice(OFFSET$ref_pic_list_modification_flag_l0_reserved, LAYOUT$ref_pic_list_modification_flag_l0_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$ref_pic_list_modification_flag_l0_reserved, LAYOUT$ref_pic_list_modification_flag_l0_reserved);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void ref_pic_list_modification_flag_l0(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$ref_pic_list_modification_flag_l0_reserved, LAYOUT$ref_pic_list_modification_flag_l0_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$ref_pic_list_modification_flag_l0_reserved, LAYOUT$ref_pic_list_modification_flag_l0_reserved);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean ref_pic_list_modification_flag_l1() {
-        MemorySegment s = segment.asSlice(OFFSET$ref_pic_list_modification_flag_l0_reserved, LAYOUT$ref_pic_list_modification_flag_l0_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$ref_pic_list_modification_flag_l0_reserved, LAYOUT$ref_pic_list_modification_flag_l0_reserved);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void ref_pic_list_modification_flag_l1(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$ref_pic_list_modification_flag_l0_reserved, LAYOUT$ref_pic_list_modification_flag_l0_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$ref_pic_list_modification_flag_l0_reserved, LAYOUT$ref_pic_list_modification_flag_l0_reserved);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
@@ -97,5 +97,5 @@ public record StdVideoEncodeH265ReferenceListsInfoFlags(@NotNull MemorySegment s
     public static final OfInt LAYOUT$ref_pic_list_modification_flag_l0_reserved = (OfInt) LAYOUT.select(PATH$bitfield$ref_pic_list_modification_flag_l0_reserved);
 
 
-    public static final long OFFSET$ref_pic_list_modification_flag_l0_reserved = LAYOUT.byteOffset(PATH$bitfield$ref_pic_list_modification_flag_l0_reserved);
+    public static final long OFFSET$bitfield$ref_pic_list_modification_flag_l0_reserved = LAYOUT.byteOffset(PATH$bitfield$ref_pic_list_modification_flag_l0_reserved);
 }

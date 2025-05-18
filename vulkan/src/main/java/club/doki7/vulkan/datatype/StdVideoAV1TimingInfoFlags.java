@@ -67,12 +67,12 @@ public record StdVideoAV1TimingInfoFlags(@NotNull MemorySegment segment) impleme
     }
 
     public boolean equal_picture_interval() {
-        MemorySegment s = segment.asSlice(OFFSET$equal_picture_interval_reserved, LAYOUT$equal_picture_interval_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$equal_picture_interval_reserved, LAYOUT$equal_picture_interval_reserved);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void equal_picture_interval(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$equal_picture_interval_reserved, LAYOUT$equal_picture_interval_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$equal_picture_interval_reserved, LAYOUT$equal_picture_interval_reserved);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
@@ -86,5 +86,5 @@ public record StdVideoAV1TimingInfoFlags(@NotNull MemorySegment segment) impleme
     public static final OfInt LAYOUT$equal_picture_interval_reserved = (OfInt) LAYOUT.select(PATH$bitfield$equal_picture_interval_reserved);
 
 
-    public static final long OFFSET$equal_picture_interval_reserved = LAYOUT.byteOffset(PATH$bitfield$equal_picture_interval_reserved);
+    public static final long OFFSET$bitfield$equal_picture_interval_reserved = LAYOUT.byteOffset(PATH$bitfield$equal_picture_interval_reserved);
 }

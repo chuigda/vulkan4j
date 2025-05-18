@@ -80,12 +80,12 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
     }
 
     public @unsigned int geometryIndexOffset() {
-        MemorySegment s = segment.asSlice(OFFSET$geometryIndexOffset_reserved, LAYOUT$geometryIndexOffset_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndexOffset_reserved, LAYOUT$geometryIndexOffset_reserved);
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
     public void geometryIndexOffset(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$geometryIndexOffset_reserved, LAYOUT$geometryIndexOffset_reserved);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndexOffset_reserved, LAYOUT$geometryIndexOffset_reserved);
         BitfieldUtil.writeBits(s, 0, 24, value);
     }
 
@@ -128,7 +128,7 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
     public static final long SIZE$vertexBuffer = LAYOUT$vertexBuffer.byteSize();
 
     public static final long OFFSET$clusterIdOffset = LAYOUT.byteOffset(PATH$clusterIdOffset);
-    public static final long OFFSET$geometryIndexOffset_reserved = LAYOUT.byteOffset(PATH$bitfield$geometryIndexOffset_reserved);
+    public static final long OFFSET$bitfield$geometryIndexOffset_reserved = LAYOUT.byteOffset(PATH$bitfield$geometryIndexOffset_reserved);
     public static final long OFFSET$clusterTemplateAddress = LAYOUT.byteOffset(PATH$clusterTemplateAddress);
     public static final long OFFSET$vertexBuffer = LAYOUT.byteOffset(PATH$vertexBuffer);
 }

@@ -90,42 +90,42 @@ public record VkAccelerationStructureSRTMotionInstanceNV(@NotNull MemorySegment 
     }
 
     public @unsigned int instanceCustomIndex() {
-        MemorySegment s = segment.asSlice(OFFSET$instanceCustomIndex_mask, LAYOUT$instanceCustomIndex_mask);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceCustomIndex_mask, LAYOUT$instanceCustomIndex_mask);
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
     public void instanceCustomIndex(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$instanceCustomIndex_mask, LAYOUT$instanceCustomIndex_mask);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceCustomIndex_mask, LAYOUT$instanceCustomIndex_mask);
         BitfieldUtil.writeBits(s, 0, 24, value);
     }
 
     public @unsigned int mask() {
-        MemorySegment s = segment.asSlice(OFFSET$instanceCustomIndex_mask, LAYOUT$instanceCustomIndex_mask);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceCustomIndex_mask, LAYOUT$instanceCustomIndex_mask);
         return BitfieldUtil.readBits(s, 24, 32);
     }
 
     public void mask(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$instanceCustomIndex_mask, LAYOUT$instanceCustomIndex_mask);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceCustomIndex_mask, LAYOUT$instanceCustomIndex_mask);
         BitfieldUtil.writeBits(s, 24, 32, value);
     }
 
     public @unsigned int instanceShaderBindingTableRecordOffset() {
-        MemorySegment s = segment.asSlice(OFFSET$instanceShaderBindingTableRecordOffset_flags, LAYOUT$instanceShaderBindingTableRecordOffset_flags);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceShaderBindingTableRecordOffset_flags, LAYOUT$instanceShaderBindingTableRecordOffset_flags);
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
     public void instanceShaderBindingTableRecordOffset(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$instanceShaderBindingTableRecordOffset_flags, LAYOUT$instanceShaderBindingTableRecordOffset_flags);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceShaderBindingTableRecordOffset_flags, LAYOUT$instanceShaderBindingTableRecordOffset_flags);
         BitfieldUtil.writeBits(s, 0, 24, value);
     }
 
     public @unsigned int flags() {
-        MemorySegment s = segment.asSlice(OFFSET$instanceShaderBindingTableRecordOffset_flags, LAYOUT$instanceShaderBindingTableRecordOffset_flags);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceShaderBindingTableRecordOffset_flags, LAYOUT$instanceShaderBindingTableRecordOffset_flags);
         return BitfieldUtil.readBits(s, 24, 32);
     }
 
     public void flags(@unsigned int value) {
-        MemorySegment s = segment.asSlice(OFFSET$instanceShaderBindingTableRecordOffset_flags, LAYOUT$instanceShaderBindingTableRecordOffset_flags);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceShaderBindingTableRecordOffset_flags, LAYOUT$instanceShaderBindingTableRecordOffset_flags);
         BitfieldUtil.writeBits(s, 24, 32, value);
     }
 
@@ -164,7 +164,7 @@ public record VkAccelerationStructureSRTMotionInstanceNV(@NotNull MemorySegment 
 
     public static final long OFFSET$transformT0 = LAYOUT.byteOffset(PATH$transformT0);
     public static final long OFFSET$transformT1 = LAYOUT.byteOffset(PATH$transformT1);
-    public static final long OFFSET$instanceCustomIndex_mask = LAYOUT.byteOffset(PATH$bitfield$instanceCustomIndex_mask);
-    public static final long OFFSET$instanceShaderBindingTableRecordOffset_flags = LAYOUT.byteOffset(PATH$bitfield$instanceShaderBindingTableRecordOffset_flags);
+    public static final long OFFSET$bitfield$instanceCustomIndex_mask = LAYOUT.byteOffset(PATH$bitfield$instanceCustomIndex_mask);
+    public static final long OFFSET$bitfield$instanceShaderBindingTableRecordOffset_flags = LAYOUT.byteOffset(PATH$bitfield$instanceShaderBindingTableRecordOffset_flags);
     public static final long OFFSET$accelerationStructureReference = LAYOUT.byteOffset(PATH$accelerationStructureReference);
 }

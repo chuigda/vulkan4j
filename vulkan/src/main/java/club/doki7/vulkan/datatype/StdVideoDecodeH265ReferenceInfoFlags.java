@@ -67,22 +67,22 @@ public record StdVideoDecodeH265ReferenceInfoFlags(@NotNull MemorySegment segmen
     }
 
     public boolean used_for_long_term_reference() {
-        MemorySegment s = segment.asSlice(OFFSET$used_for_long_term_reference_unused_for_reference, LAYOUT$used_for_long_term_reference_unused_for_reference);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$used_for_long_term_reference_unused_for_reference, LAYOUT$used_for_long_term_reference_unused_for_reference);
         return BitfieldUtil.readBit(s, 0);
     }
 
     public void used_for_long_term_reference(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$used_for_long_term_reference_unused_for_reference, LAYOUT$used_for_long_term_reference_unused_for_reference);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$used_for_long_term_reference_unused_for_reference, LAYOUT$used_for_long_term_reference_unused_for_reference);
         BitfieldUtil.writeBit(s, 0, value);
     }
 
     public boolean unused_for_reference() {
-        MemorySegment s = segment.asSlice(OFFSET$used_for_long_term_reference_unused_for_reference, LAYOUT$used_for_long_term_reference_unused_for_reference);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$used_for_long_term_reference_unused_for_reference, LAYOUT$used_for_long_term_reference_unused_for_reference);
         return BitfieldUtil.readBit(s, 1);
     }
 
     public void unused_for_reference(boolean value) {
-        MemorySegment s = segment.asSlice(OFFSET$used_for_long_term_reference_unused_for_reference, LAYOUT$used_for_long_term_reference_unused_for_reference);
+        MemorySegment s = segment.asSlice(OFFSET$bitfield$used_for_long_term_reference_unused_for_reference, LAYOUT$used_for_long_term_reference_unused_for_reference);
         BitfieldUtil.writeBit(s, 1, value);
     }
 
@@ -96,5 +96,5 @@ public record StdVideoDecodeH265ReferenceInfoFlags(@NotNull MemorySegment segmen
     public static final OfInt LAYOUT$used_for_long_term_reference_unused_for_reference = (OfInt) LAYOUT.select(PATH$bitfield$used_for_long_term_reference_unused_for_reference);
 
 
-    public static final long OFFSET$used_for_long_term_reference_unused_for_reference = LAYOUT.byteOffset(PATH$bitfield$used_for_long_term_reference_unused_for_reference);
+    public static final long OFFSET$bitfield$used_for_long_term_reference_unused_for_reference = LAYOUT.byteOffset(PATH$bitfield$used_for_long_term_reference_unused_for_reference);
 }
