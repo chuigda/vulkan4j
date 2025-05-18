@@ -1,0 +1,117 @@
+package club.doki7.vulkan.command;
+
+import java.lang.foreign.*;
+import java.lang.invoke.MethodHandle;
+import java.util.Objects;
+
+import org.jetbrains.annotations.Nullable;
+import club.doki7.ffm.NativeLayout;
+import club.doki7.ffm.annotation.*;
+import club.doki7.ffm.ptr.*;
+import club.doki7.vulkan.bitmask.*;
+import club.doki7.vulkan.datatype.*;
+import club.doki7.vulkan.enumtype.*;
+import club.doki7.vulkan.handle.*;
+
+public final class VkEntryCommands {
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateInstance.html"><code>vkCreateInstance</code></a>
+    public @enumtype(VkResult.class) int createInstance(
+        @pointer(target=VkInstanceCreateInfo.class) VkInstanceCreateInfo pCreateInfo,
+        @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
+        @pointer(target=VkInstance.class) VkInstance.Ptr pInstance
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateInstance);
+        try {
+            return (int) hFunction.invokeExact(
+                pCreateInfo.segment(),
+                (MemorySegment) (pAllocator != null ? pAllocator.segment() : MemorySegment.NULL),
+                pInstance.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkEnumerateInstanceExtensionProperties.html"><code>vkEnumerateInstanceExtensionProperties</code></a>
+    public @enumtype(VkResult.class) int enumerateInstanceExtensionProperties(
+        @Nullable BytePtr pLayerName,
+        @unsigned IntPtr pPropertyCount,
+        @Nullable @pointer(target=VkExtensionProperties.class) VkExtensionProperties pProperties
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkEnumerateInstanceExtensionProperties);
+        try {
+            return (int) hFunction.invokeExact(
+                (MemorySegment) (pLayerName != null ? pLayerName.segment() : MemorySegment.NULL),
+                pPropertyCount.segment(),
+                (MemorySegment) (pProperties != null ? pProperties.segment() : MemorySegment.NULL)
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkEnumerateInstanceLayerProperties.html"><code>vkEnumerateInstanceLayerProperties</code></a>
+    public @enumtype(VkResult.class) int enumerateInstanceLayerProperties(
+        @unsigned IntPtr pPropertyCount,
+        @Nullable @pointer(target=VkLayerProperties.class) VkLayerProperties pProperties
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkEnumerateInstanceLayerProperties);
+        try {
+            return (int) hFunction.invokeExact(
+                pPropertyCount.segment(),
+                (MemorySegment) (pProperties != null ? pProperties.segment() : MemorySegment.NULL)
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkEnumerateInstanceVersion.html"><code>vkEnumerateInstanceVersion</code></a>
+    public @enumtype(VkResult.class) int enumerateInstanceVersion(
+        @unsigned IntPtr pApiVersion
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkEnumerateInstanceVersion);
+        try {
+            return (int) hFunction.invokeExact(
+                pApiVersion.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public final @Nullable MemorySegment SEGMENT$vkCreateInstance;
+    public final @Nullable MemorySegment SEGMENT$vkEnumerateInstanceExtensionProperties;
+    public final @Nullable MemorySegment SEGMENT$vkEnumerateInstanceLayerProperties;
+    public final @Nullable MemorySegment SEGMENT$vkEnumerateInstanceVersion;
+    public final @Nullable MethodHandle HANDLE$vkCreateInstance;
+    public final @Nullable MethodHandle HANDLE$vkEnumerateInstanceExtensionProperties;
+    public final @Nullable MethodHandle HANDLE$vkEnumerateInstanceLayerProperties;
+    public final @Nullable MethodHandle HANDLE$vkEnumerateInstanceVersion;
+    public static final class Descriptors {
+        public static final FunctionDescriptor DESCRIPTOR$vkCreateInstance = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS.withTargetLayout(VkInstanceCreateInfo.LAYOUT),
+            ValueLayout.ADDRESS.withTargetLayout(VkAllocationCallbacks.LAYOUT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$vkEnumerateInstanceExtensionProperties = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
+            ValueLayout.ADDRESS.withTargetLayout(VkExtensionProperties.LAYOUT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$vkEnumerateInstanceLayerProperties = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
+            ValueLayout.ADDRESS.withTargetLayout(VkLayerProperties.LAYOUT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$vkEnumerateInstanceVersion = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
+        );
+    }
+}

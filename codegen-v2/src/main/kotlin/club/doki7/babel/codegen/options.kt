@@ -8,7 +8,6 @@ data class CodegenOptions(
     val extraImport: MutableList<String>,
     val constantClassName: String,
     val functionTypeClassName: String,
-    val functionClassName: String,
 
     val refRegistries: List<RegistryBase>,
 

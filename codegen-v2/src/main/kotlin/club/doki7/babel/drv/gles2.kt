@@ -12,7 +12,6 @@ fun gles2Main() {
         packageName = "club.doki7.gles2",
         extraImport = mutableListOf(),
         constantClassName = "GLES2Constants",
-        functionClassName = "GLES2Functions",
         functionTypeClassName = "GLES2FunctionTypes",
         refRegistries = emptyList(),
         seeLinkProvider = ::gles2DocLinkProvider

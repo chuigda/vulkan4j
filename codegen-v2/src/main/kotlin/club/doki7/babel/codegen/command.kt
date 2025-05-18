@@ -12,14 +12,17 @@ import club.doki7.babel.ctype.lowerType
 import club.doki7.babel.registry.Command
 import club.doki7.babel.registry.Param
 import club.doki7.babel.registry.RegistryBase
+import club.doki7.babel.util.Doc
 import club.doki7.babel.util.buildDoc
 
 fun generateCommandFile(
     registry: RegistryBase,
-    codegenOptions: CodegenOptions
+    className: String,
+    commands: List<Command>,
+    codegenOptions: CodegenOptions,
+    javaDoc: Doc?
 ) = buildDoc {
     val packageName = codegenOptions.packageName
-    val className = codegenOptions.functionClassName
 
     // region imports
     +"package $packageName.command;"
@@ -29,6 +32,7 @@ fun generateCommandFile(
     imports("java.util.Objects")
     +""
     imports("org.jetbrains.annotations.Nullable")
+    imports("club.doki7.ffm.NativeLayout")
     imports("club.doki7.ffm.annotation.*")
     imports("club.doki7.ffm.ptr.*")
     if (registry.bitmasks.isNotEmpty()) {
@@ -50,12 +54,12 @@ fun generateCommandFile(
     +""
     // endregion
 
+    if (javaDoc != null) {
+        +javaDoc
+    }
     +"public final class $className {"
     indent {
-        val loweredCommand = registry.commands.values
-            .sortedBy { it.name }
-            .map { lowerCommand(it, registry, codegenOptions) }
-            .toList()
+        val loweredCommand = commands.map { lowerCommand(it, registry, codegenOptions) }.toList()
 
         loweredCommand.forEach {
             +generateCommandWrapper(it, codegenOptions)
@@ -69,6 +73,17 @@ fun generateCommandFile(
         loweredCommand.forEach {
             +"public final @Nullable MethodHandle HANDLE$${it.command.name.original};"
         }
+
+        +"public static final class Descriptors {"
+        indent {
+            loweredCommand.forEachIndexed { idx, it ->
+                +generateFunctionDescriptor(it)
+                if (idx != loweredCommand.size - 1) {
+                    +""
+                }
+            }
+        }
+        +"}"
     }
     +"}"
 }
@@ -106,6 +121,10 @@ private fun generateCommandWrapper(
 
     val retIOType = generateInputOutputType(loweredCommand.result, false)
 
+    val callArgsDoc = buildDoc {
+        callArgs.forEachIndexed { idx, it -> +if (idx != callArgs.size - 1) "$it, " else it }
+    }
+
     val seeLink = codegenOptions.seeLinkProvider(loweredCommand.command)
     if (seeLink != null) {
         +"/// @see $seeLink"
@@ -134,28 +153,12 @@ private fun generateCommandWrapper(
         indent {
             if (loweredCommand.result is CVoidType) {
                 +"hFunction.invokeExact("
-                indent {
-                    callArgs.forEachIndexed { idx, it ->
-                        if (idx != callArgs.size - 1) {
-                            +"$it, "
-                        } else {
-                            +it
-                        }
-                    }
-                }
+                indent { +callArgsDoc }
                 +");"
             } else {
                 val (beforeCall, afterCall, nextStmt) = generateResultConvert(loweredCommand.result)
                 +"${beforeCall}hFunction.invokeExact("
-                indent {
-                    callArgs.forEachIndexed { idx, it ->
-                        if (idx != callArgs.size - 1) {
-                            +"$it, "
-                        } else {
-                            +it
-                        }
-                    }
-                }
+                indent { +callArgsDoc }
                 +")$afterCall;"
                 if (nextStmt != null) {
                     +nextStmt
@@ -172,7 +175,32 @@ private fun generateCommandWrapper(
     +"}"
 }
 
-fun generateInputOutputType(type: CType, optional: Boolean): String {
+private fun generateFunctionDescriptor(loweredCommand: LoweredCommand) = buildDoc {
+    val descriptorName = "DESCRIPTOR$${loweredCommand.command.name.original}"
+
+    if (loweredCommand.result is CVoidType) {
+        +"public static final FunctionDescriptor $descriptorName = FunctionDescriptor.ofVoid("
+    } else {
+        +"public static final FunctionDescriptor $descriptorName = FunctionDescriptor.of("
+    }
+    indent {
+        if (loweredCommand.result !is CVoidType) {
+            val hasComma = loweredCommand.paramCType.isNotEmpty()
+            +"${loweredCommand.result.jLayout}${if (hasComma) "," else ""}"
+        }
+
+        loweredCommand.paramCType.forEachIndexed { idx, it ->
+            if (idx != loweredCommand.paramCType.size - 1) {
+                +"${it.jLayout}, "
+            } else {
+                +it.jLayout
+            }
+        }
+    }
+    +");"
+}
+
+private fun generateInputOutputType(type: CType, optional: Boolean): String {
     val nullablePrefix = if (optional) "@Nullable " else ""
 
     return when (type) {
@@ -199,7 +227,7 @@ fun generateInputOutputType(type: CType, optional: Boolean): String {
     }
 }
 
-fun generateInputConvert(type: CType, param: Param) = when (type) {
+private fun generateInputConvert(type: CType, param: Param) = when (type) {
     is CPointerType -> when (type.pointee) {
         is CNonRefType, is CStructType, is CHandleType, is CPointerType -> if (param.optional) {
             "(MemorySegment) (${param.name} != null ? ${param.name}.segment() : MemorySegment.NULL)"
@@ -235,7 +263,7 @@ fun generateInputConvert(type: CType, param: Param) = when (type) {
     else -> throw Exception("unsupported parameter type: $type")
 }
 
-fun generateResultConvert(retType: CType): Triple<String, String, String?> = when (retType) {
+private fun generateResultConvert(retType: CType): Triple<String, String, String?> = when (retType) {
     is CPointerType -> when (retType.pointee) {
         is CNonRefType -> Triple(
             "MemorySegment s = (MemorySegment) ",
