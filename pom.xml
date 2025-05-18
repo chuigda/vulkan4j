@@ -87,7 +87,10 @@
                             <skippedModules>codegen-v2</skippedModules>
                             <windowtitle>vulkan4j</windowtitle>
                             <doctitle><![CDATA[<code>vulkan4j</code>: CG library bindings implemented with FFM APIs]]></doctitle>
-                            <addStylesheets>github-colorblind.css</addStylesheets>
+                            <additionalOptions>
+                                <additionalOption>--add-stylesheet</additionalOption>
+                                <additionalOption>${project.basedir}/misc/github-colorblind.css</additionalOption>
+                            </additionalOptions>
                         </configuration>
                     </reportSet>
                     <reportSet>
