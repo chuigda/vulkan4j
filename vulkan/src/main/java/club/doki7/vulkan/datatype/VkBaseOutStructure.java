@@ -111,7 +111,7 @@ public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IPoi
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withTargetLayout(VkBaseOutStructure.LAYOUT).withName("pNext")
+        ValueLayout.ADDRESS.withName("pNext")
     );
     public static final long BYTES = LAYOUT.byteSize();
 

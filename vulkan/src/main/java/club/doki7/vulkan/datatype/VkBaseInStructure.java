@@ -111,7 +111,7 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IPoin
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
-        ValueLayout.ADDRESS.withTargetLayout(VkBaseInStructure.LAYOUT).withName("pNext")
+        ValueLayout.ADDRESS.withName("pNext")
     );
     public static final long BYTES = LAYOUT.byteSize();
 

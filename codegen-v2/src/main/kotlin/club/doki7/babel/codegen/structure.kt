@@ -426,7 +426,13 @@ private fun lowerMemberTypes(
                 layouts
             )
         } else {
-            val layout = "${cType.jLayout}.withName(\"${current.name}\")"
+            val identifierType = if (current.type is PointerType) tryFindIdentifierType(current.type) else null
+            val layout = if (identifierType != null && identifierType == structure.name.toString()) {
+                // avoid cyclic reference
+                "ValueLayout.ADDRESS.withName(\"${current.name}\")"
+            } else {
+                "${cType.jLayout}.withName(\"${current.name}\")"
+            }
 
             val layoutType = if (cType is CPlatformDependentIntType) {
                 null
