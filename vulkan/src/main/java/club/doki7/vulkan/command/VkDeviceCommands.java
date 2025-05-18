@@ -1085,7 +1085,7 @@ public final class VkDeviceCommands {
         SEGMENT$vkGetPhysicalDeviceSurfacePresentModes2EXT = loader.apply("vkGetPhysicalDeviceSurfacePresentModes2EXT");
         HANDLE$vkGetPhysicalDeviceSurfacePresentModes2EXT = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceSurfacePresentModes2EXT, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceSurfacePresentModes2EXT);
         SEGMENT$vkGetPhysicalDeviceToolPropertiesEXT = loader.apply("vkGetPhysicalDeviceToolPropertiesEXT");
-        HANDLE$vkGetPhysicalDeviceToolPropertiesEXT = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceToolPropertiesEXT, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceToolProperties);
+        HANDLE$vkGetPhysicalDeviceToolPropertiesEXT = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceToolPropertiesEXT, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceToolPropertiesEXT);
         SEGMENT$vkGetPhysicalDeviceVideoCapabilitiesKHR = loader.apply("vkGetPhysicalDeviceVideoCapabilitiesKHR");
         HANDLE$vkGetPhysicalDeviceVideoCapabilitiesKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceVideoCapabilitiesKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceVideoCapabilitiesKHR);
         SEGMENT$vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR = loader.apply("vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR");
@@ -17846,6 +17846,13 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceSurfaceInfo2KHR.LAYOUT),
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceToolPropertiesEXT = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
+            ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceToolProperties.LAYOUT)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceVideoCapabilitiesKHR = FunctionDescriptor.of(

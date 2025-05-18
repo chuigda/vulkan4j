@@ -60,13 +60,18 @@ fun generateCommandFile(
     }
     +"public final class $className {"
     indent {
+        val locallySuppliedCommands = commands.map { it.name.original }.toSet()
         val loweredCommand = commands.map { lowerCommand(it, registry, codegenOptions) }.toList()
 
         +"public $className(RawFunctionLoader loader) {"
         indent {
             loweredCommand.forEach {
                 val funcOriginalName = it.command.name.original
-                val descriptorFuncName = it.command.aliasTo?.original ?: funcOriginalName
+                val descriptorFuncName = if (it.command.aliasTo != null && locallySuppliedCommands.contains(it.command.aliasTo!!.original)) {
+                    it.command.aliasTo!!.original
+                } else {
+                    funcOriginalName
+                }
 
                 val segmentName = "SEGMENT$$funcOriginalName"
                 val handleName = "HANDLE$$funcOriginalName"
@@ -102,12 +107,14 @@ fun generateCommandFile(
 
         +"public static final class Descriptors {"
         indent {
-            loweredCommand.filter { it.command.aliasTo == null }.forEachIndexed { idx, it ->
-                +generateFunctionDescriptor(it)
-                if (idx != loweredCommand.size - 1) {
-                    +""
+            loweredCommand
+                .filter { it.command.aliasTo == null || !locallySuppliedCommands.contains(it.command.aliasTo!!.original) }
+                .forEachIndexed { idx, it ->
+                    +generateFunctionDescriptor(it)
+                    if (idx != loweredCommand.size - 1) {
+                        +""
+                    }
                 }
-            }
         }
         +"}"
     }
