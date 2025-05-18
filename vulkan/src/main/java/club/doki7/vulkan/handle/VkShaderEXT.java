@@ -13,8 +13,8 @@ import club.doki7.ffm.annotation.*;
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
-/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// {@link AddressLayout#byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
@@ -29,8 +29,8 @@ public record VkShaderEXT(@NotNull MemorySegment segment) implements IPointer {
     /// ## Contracts
     ///
     /// The property {@link #segment()} should always be not-null
-    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to)
-    /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@link AddressLayout#byteAlignment()} bytes. To represent null pointer, you may use a Java
     /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
     ///
     /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
