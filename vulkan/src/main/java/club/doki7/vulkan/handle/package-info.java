@@ -10,25 +10,31 @@
 ///
 /// In {@code vulkan4j} ecosystem, opaque handles are represented with a Java record type containing
 /// a single {@link java.lang.foreign.MemorySegment} field. That segment is basically the opaque
-/// handle itself You may think that it is pointing to a hypothetical {@code OpauqeStruct}
+/// handle itself You may think that it is pointing to a hypothetical {@code OpaqueStruct}
 /// structure.
 ///
 /// Handles themselves cannot be allocated, because the layout of the memory block it points to is
 /// completely unknown: C APIs use opaque handles intentionally to hide these details. There are
 /// two common C API designs:
 ///
-/// {@snippet lang=C : OpaqueHandle obtainOpaqueHandle(void);}
+/// {@snippet lang=C :
+/// OpaqueHandle obtainOpaqueHandle(void);
+/// }
 ///
 /// and
 ///
-/// {@snippet lang=C : void obtainOpaqueHandles(OpaqueHandle *pHandle, int capacity);}
+/// {@snippet lang=C :
+/// void obtainOpaqueHandles(OpaqueHandle *pHandle, int capacity);
+/// }
 ///
 /// In order to handle the second case, and to handle the cases you need to pass an array of
 /// handles to C APIs:
 ///
-/// {@snippet lang=C : void useOpaqueHandles(OpaqueHandle const* pHandles, int count);}
+/// {@snippet lang=C :
+/// void useOpaqueHandles(OpaqueHandle const* pHandles, int count);
+/// }
 ///
-/// All the handle types defined has a {@code Ptr} subclass, which is a pointer to the handle
+/// All the handle types defined have a {@code Ptr} subclass, which is a pointer to the handle
 /// type.
 ///
 /// ### `NULL` handles

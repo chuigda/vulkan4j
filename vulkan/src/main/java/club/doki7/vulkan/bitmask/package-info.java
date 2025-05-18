@@ -27,9 +27,11 @@
 /// links, so you can Ctrl-Click on the annotation argument to jump to the definition of the bitmask
 /// type.
 ///
-/// Also there's a handy {@code explain} function to explain a bitmask integral value. For example:
+/// Also, there's a handy {@code explain} function to explain a bitmask integral value. For example:
 ///
-/// {@snippet : VkBufferUsageFlags.explain(someFlags) }
+/// {@snippet :
+/// VkBufferUsageFlags.explain(someFlags)
+/// }
 ///
 /// Have fun.
 package club.doki7.vulkan.bitmask;
