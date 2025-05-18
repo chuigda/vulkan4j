@@ -21,24 +21,24 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV {
-///     uint32_t clusterID;
-///     VkClusterAccelerationStructureClusterFlagsNV clusterFlags; // optional
-///     uint32_t triangleCount : 9;
-///     uint32_t vertexCount : 9;
-///     uint32_t positionTruncateBitCount : 6;
-///     uint32_t indexType : 4;
-///     uint32_t opacityMicromapIndexType : 4;
-///     VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV baseGeometryIndexAndGeometryFlags;
-///     uint16_t indexBufferStride;
-///     uint16_t vertexBufferStride;
-///     uint16_t geometryIndexAndFlagsBufferStride;
-///     uint16_t opacityMicromapIndexBufferStride;
-///     VkDeviceAddress indexBuffer;
-///     VkDeviceAddress vertexBuffer;
-///     VkDeviceAddress geometryIndexAndFlagsBuffer;
-///     VkDeviceAddress opacityMicromapArray;
-///     VkDeviceAddress opacityMicromapIndexBuffer;
-///     VkDeviceAddress instantiationBoundingBoxLimit;
+///     uint32_t clusterID; // @link substring="clusterID" target="#clusterID"
+///     VkClusterAccelerationStructureClusterFlagsNV clusterFlags; // optional // @link substring="VkClusterAccelerationStructureClusterFlagsNV" target="VkClusterAccelerationStructureClusterFlagsNV" @link substring="clusterFlags" target="#clusterFlags"
+///     uint32_t triangleCount : 9; // @link substring="triangleCount" target="#triangleCount"
+///     uint32_t vertexCount : 9; // @link substring="vertexCount" target="#vertexCount"
+///     uint32_t positionTruncateBitCount : 6; // @link substring="positionTruncateBitCount" target="#positionTruncateBitCount"
+///     uint32_t indexType : 4; // @link substring="indexType" target="#indexType"
+///     uint32_t opacityMicromapIndexType : 4; // @link substring="opacityMicromapIndexType" target="#opacityMicromapIndexType"
+///     VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV baseGeometryIndexAndGeometryFlags; // @link substring="VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV" target="VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV" @link substring="baseGeometryIndexAndGeometryFlags" target="#baseGeometryIndexAndGeometryFlags"
+///     uint16_t indexBufferStride; // @link substring="indexBufferStride" target="#indexBufferStride"
+///     uint16_t vertexBufferStride; // @link substring="vertexBufferStride" target="#vertexBufferStride"
+///     uint16_t geometryIndexAndFlagsBufferStride; // @link substring="geometryIndexAndFlagsBufferStride" target="#geometryIndexAndFlagsBufferStride"
+///     uint16_t opacityMicromapIndexBufferStride; // @link substring="opacityMicromapIndexBufferStride" target="#opacityMicromapIndexBufferStride"
+///     VkDeviceAddress indexBuffer; // @link substring="indexBuffer" target="#indexBuffer"
+///     VkDeviceAddress vertexBuffer; // @link substring="vertexBuffer" target="#vertexBuffer"
+///     VkDeviceAddress geometryIndexAndFlagsBuffer; // @link substring="geometryIndexAndFlagsBuffer" target="#geometryIndexAndFlagsBuffer"
+///     VkDeviceAddress opacityMicromapArray; // @link substring="opacityMicromapArray" target="#opacityMicromapArray"
+///     VkDeviceAddress opacityMicromapIndexBuffer; // @link substring="opacityMicromapIndexBuffer" target="#opacityMicromapIndexBuffer"
+///     VkDeviceAddress instantiationBoundingBoxLimit; // @link substring="instantiationBoundingBoxLimit" target="#instantiationBoundingBoxLimit"
 /// } VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV;
 /// }
 ///
@@ -150,11 +150,11 @@ public record VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV(@
         BitfieldUtil.writeBits(s, 28, 32, value);
     }
 
-    public VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV baseGeometryIndexAndGeometryFlags() {
+    public @NotNull VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV baseGeometryIndexAndGeometryFlags() {
         return new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(segment.asSlice(OFFSET$baseGeometryIndexAndGeometryFlags, LAYOUT$baseGeometryIndexAndGeometryFlags));
     }
 
-    public void baseGeometryIndexAndGeometryFlags(VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV value) {
+    public void baseGeometryIndexAndGeometryFlags(@NotNull VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$baseGeometryIndexAndGeometryFlags, SIZE$baseGeometryIndexAndGeometryFlags);
     }
 

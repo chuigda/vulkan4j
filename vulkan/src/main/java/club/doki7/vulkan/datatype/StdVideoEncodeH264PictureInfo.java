@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t frame_num; // @link substring="frame_num" target="#frame_num"
 ///     int32_t PicOrderCnt; // @link substring="PicOrderCnt" target="#PicOrderCnt"
 ///     uint8_t temporal_id; // @link substring="temporal_id" target="#temporal_id"
-///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint8_t reserved1;
 ///     StdVideoEncodeH264ReferenceListsInfo const* pRefLists; // @link substring="StdVideoEncodeH264ReferenceListsInfo" target="StdVideoEncodeH264ReferenceListsInfo" @link substring="pRefLists" target="#pRefLists"
 /// } StdVideoEncodeH264PictureInfo;
 /// }
@@ -137,13 +137,6 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$temporal_id, OFFSET$temporal_id, value);
     }
 
-    public @unsigned byte reserved1() {
-        return segment.get(LAYOUT$reserved1, OFFSET$reserved1);
-    }
-
-    public void reserved1(@unsigned byte value) {
-        segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
-    }
 
     public @Nullable StdVideoEncodeH264ReferenceListsInfo pRefLists() {
         MemorySegment s = pRefListsRaw();
@@ -202,7 +195,6 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
     public static final PathElement PATH$frame_num = PathElement.groupElement("PATH$frame_num");
     public static final PathElement PATH$PicOrderCnt = PathElement.groupElement("PATH$PicOrderCnt");
     public static final PathElement PATH$temporal_id = PathElement.groupElement("PATH$temporal_id");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$pRefLists = PathElement.groupElement("PATH$pRefLists");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
@@ -213,7 +205,6 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
     public static final OfInt LAYOUT$frame_num = (OfInt) LAYOUT.select(PATH$frame_num);
     public static final OfInt LAYOUT$PicOrderCnt = (OfInt) LAYOUT.select(PATH$PicOrderCnt);
     public static final OfByte LAYOUT$temporal_id = (OfByte) LAYOUT.select(PATH$temporal_id);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
     public static final AddressLayout LAYOUT$pRefLists = (AddressLayout) LAYOUT.select(PATH$pRefLists);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
@@ -224,7 +215,6 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
     public static final long SIZE$frame_num = LAYOUT$frame_num.byteSize();
     public static final long SIZE$PicOrderCnt = LAYOUT$PicOrderCnt.byteSize();
     public static final long SIZE$temporal_id = LAYOUT$temporal_id.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
     public static final long SIZE$pRefLists = LAYOUT$pRefLists.byteSize();
 
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
@@ -235,6 +225,5 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
     public static final long OFFSET$frame_num = LAYOUT.byteOffset(PATH$frame_num);
     public static final long OFFSET$PicOrderCnt = LAYOUT.byteOffset(PATH$PicOrderCnt);
     public static final long OFFSET$temporal_id = LAYOUT.byteOffset(PATH$temporal_id);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
     public static final long OFFSET$pRefLists = LAYOUT.byteOffset(PATH$pRefLists);
 }

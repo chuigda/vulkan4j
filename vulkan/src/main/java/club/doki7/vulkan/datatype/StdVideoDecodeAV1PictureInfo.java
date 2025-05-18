@@ -26,14 +26,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t OrderHint; // @link substring="OrderHint" target="#OrderHint"
 ///     uint8_t primary_ref_frame; // @link substring="primary_ref_frame" target="#primary_ref_frame"
 ///     uint8_t refresh_frame_flags; // @link substring="refresh_frame_flags" target="#refresh_frame_flags"
-///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint8_t reserved1;
 ///     StdVideoAV1InterpolationFilter interpolation_filter; // @link substring="StdVideoAV1InterpolationFilter" target="StdVideoAV1InterpolationFilter" @link substring="interpolation_filter" target="#interpolation_filter"
 ///     StdVideoAV1TxMode TxMode; // @link substring="StdVideoAV1TxMode" target="StdVideoAV1TxMode" @link substring="TxMode" target="#TxMode"
 ///     uint8_t delta_q_res; // @link substring="delta_q_res" target="#delta_q_res"
 ///     uint8_t delta_lf_res; // @link substring="delta_lf_res" target="#delta_lf_res"
 ///     uint8_t SkipModeFrame; // @link substring="SkipModeFrame" target="#SkipModeFrame"
 ///     uint8_t coded_denom; // @link substring="coded_denom" target="#coded_denom"
-///     uint8_t reserved2; // @link substring="reserved2" target="#reserved2"
+///     uint8_t reserved2;
 ///     uint8_t OrderHints; // @link substring="OrderHints" target="#OrderHints"
 ///     uint32_t expectedFrameId; // @link substring="expectedFrameId" target="#expectedFrameId"
 ///     StdVideoAV1TileInfo const* pTileInfo; // @link substring="StdVideoAV1TileInfo" target="StdVideoAV1TileInfo" @link substring="pTileInfo" target="#pTileInfo"
@@ -135,13 +135,6 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$refresh_frame_flags, OFFSET$refresh_frame_flags, value);
     }
 
-    public @unsigned byte reserved1() {
-        return segment.get(LAYOUT$reserved1, OFFSET$reserved1);
-    }
-
-    public void reserved1(@unsigned byte value) {
-        segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
-    }
 
     public @enumtype(StdVideoAV1InterpolationFilter.class) int interpolation_filter() {
         return segment.get(LAYOUT$interpolation_filter, OFFSET$interpolation_filter);
@@ -191,13 +184,6 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$coded_denom, OFFSET$coded_denom, value);
     }
 
-    public @unsigned byte reserved2() {
-        return segment.get(LAYOUT$reserved2, OFFSET$reserved2);
-    }
-
-    public void reserved2(@unsigned byte value) {
-        segment.set(LAYOUT$reserved2, OFFSET$reserved2, value);
-    }
 
     public @unsigned byte OrderHints() {
         return segment.get(LAYOUT$OrderHints, OFFSET$OrderHints);
@@ -529,14 +515,12 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     public static final PathElement PATH$OrderHint = PathElement.groupElement("PATH$OrderHint");
     public static final PathElement PATH$primary_ref_frame = PathElement.groupElement("PATH$primary_ref_frame");
     public static final PathElement PATH$refresh_frame_flags = PathElement.groupElement("PATH$refresh_frame_flags");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$interpolation_filter = PathElement.groupElement("PATH$interpolation_filter");
     public static final PathElement PATH$TxMode = PathElement.groupElement("PATH$TxMode");
     public static final PathElement PATH$delta_q_res = PathElement.groupElement("PATH$delta_q_res");
     public static final PathElement PATH$delta_lf_res = PathElement.groupElement("PATH$delta_lf_res");
     public static final PathElement PATH$SkipModeFrame = PathElement.groupElement("PATH$SkipModeFrame");
     public static final PathElement PATH$coded_denom = PathElement.groupElement("PATH$coded_denom");
-    public static final PathElement PATH$reserved2 = PathElement.groupElement("PATH$reserved2");
     public static final PathElement PATH$OrderHints = PathElement.groupElement("PATH$OrderHints");
     public static final PathElement PATH$expectedFrameId = PathElement.groupElement("PATH$expectedFrameId");
     public static final PathElement PATH$pTileInfo = PathElement.groupElement("PATH$pTileInfo");
@@ -554,14 +538,12 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     public static final OfByte LAYOUT$OrderHint = (OfByte) LAYOUT.select(PATH$OrderHint);
     public static final OfByte LAYOUT$primary_ref_frame = (OfByte) LAYOUT.select(PATH$primary_ref_frame);
     public static final OfByte LAYOUT$refresh_frame_flags = (OfByte) LAYOUT.select(PATH$refresh_frame_flags);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
     public static final OfInt LAYOUT$interpolation_filter = (OfInt) LAYOUT.select(PATH$interpolation_filter);
     public static final OfInt LAYOUT$TxMode = (OfInt) LAYOUT.select(PATH$TxMode);
     public static final OfByte LAYOUT$delta_q_res = (OfByte) LAYOUT.select(PATH$delta_q_res);
     public static final OfByte LAYOUT$delta_lf_res = (OfByte) LAYOUT.select(PATH$delta_lf_res);
     public static final OfByte LAYOUT$SkipModeFrame = (OfByte) LAYOUT.select(PATH$SkipModeFrame);
     public static final OfByte LAYOUT$coded_denom = (OfByte) LAYOUT.select(PATH$coded_denom);
-    public static final OfByte LAYOUT$reserved2 = (OfByte) LAYOUT.select(PATH$reserved2);
     public static final OfByte LAYOUT$OrderHints = (OfByte) LAYOUT.select(PATH$OrderHints);
     public static final OfInt LAYOUT$expectedFrameId = (OfInt) LAYOUT.select(PATH$expectedFrameId);
     public static final AddressLayout LAYOUT$pTileInfo = (AddressLayout) LAYOUT.select(PATH$pTileInfo);
@@ -579,14 +561,12 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     public static final long SIZE$OrderHint = LAYOUT$OrderHint.byteSize();
     public static final long SIZE$primary_ref_frame = LAYOUT$primary_ref_frame.byteSize();
     public static final long SIZE$refresh_frame_flags = LAYOUT$refresh_frame_flags.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
     public static final long SIZE$interpolation_filter = LAYOUT$interpolation_filter.byteSize();
     public static final long SIZE$TxMode = LAYOUT$TxMode.byteSize();
     public static final long SIZE$delta_q_res = LAYOUT$delta_q_res.byteSize();
     public static final long SIZE$delta_lf_res = LAYOUT$delta_lf_res.byteSize();
     public static final long SIZE$SkipModeFrame = LAYOUT$SkipModeFrame.byteSize();
     public static final long SIZE$coded_denom = LAYOUT$coded_denom.byteSize();
-    public static final long SIZE$reserved2 = LAYOUT$reserved2.byteSize();
     public static final long SIZE$OrderHints = LAYOUT$OrderHints.byteSize();
     public static final long SIZE$expectedFrameId = LAYOUT$expectedFrameId.byteSize();
     public static final long SIZE$pTileInfo = LAYOUT$pTileInfo.byteSize();
@@ -604,14 +584,12 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     public static final long OFFSET$OrderHint = LAYOUT.byteOffset(PATH$OrderHint);
     public static final long OFFSET$primary_ref_frame = LAYOUT.byteOffset(PATH$primary_ref_frame);
     public static final long OFFSET$refresh_frame_flags = LAYOUT.byteOffset(PATH$refresh_frame_flags);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
     public static final long OFFSET$interpolation_filter = LAYOUT.byteOffset(PATH$interpolation_filter);
     public static final long OFFSET$TxMode = LAYOUT.byteOffset(PATH$TxMode);
     public static final long OFFSET$delta_q_res = LAYOUT.byteOffset(PATH$delta_q_res);
     public static final long OFFSET$delta_lf_res = LAYOUT.byteOffset(PATH$delta_lf_res);
     public static final long OFFSET$SkipModeFrame = LAYOUT.byteOffset(PATH$SkipModeFrame);
     public static final long OFFSET$coded_denom = LAYOUT.byteOffset(PATH$coded_denom);
-    public static final long OFFSET$reserved2 = LAYOUT.byteOffset(PATH$reserved2);
     public static final long OFFSET$OrderHints = LAYOUT.byteOffset(PATH$OrderHints);
     public static final long OFFSET$expectedFrameId = LAYOUT.byteOffset(PATH$expectedFrameId);
     public static final long OFFSET$pTileInfo = LAYOUT.byteOffset(PATH$pTileInfo);

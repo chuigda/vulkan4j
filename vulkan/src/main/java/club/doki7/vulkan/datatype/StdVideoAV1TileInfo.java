@@ -25,7 +25,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t TileRows; // @link substring="TileRows" target="#TileRows"
 ///     uint16_t context_update_tile_id; // @link substring="context_update_tile_id" target="#context_update_tile_id"
 ///     uint8_t tile_size_bytes_minus_1; // @link substring="tile_size_bytes_minus_1" target="#tile_size_bytes_minus_1"
-///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint8_t reserved1;
 ///     uint16_t const* pMiColStarts; // @link substring="pMiColStarts" target="#pMiColStarts"
 ///     uint16_t const* pMiRowStarts; // @link substring="pMiRowStarts" target="#pMiRowStarts"
 ///     uint16_t const* pWidthInSbsMinus1; // @link substring="pWidthInSbsMinus1" target="#pWidthInSbsMinus1"
@@ -113,13 +113,6 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
         segment.set(LAYOUT$tile_size_bytes_minus_1, OFFSET$tile_size_bytes_minus_1, value);
     }
 
-    public @unsigned byte reserved1() {
-        return segment.get(LAYOUT$reserved1, OFFSET$reserved1);
-    }
-
-    public void reserved1(@unsigned byte value) {
-        segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
-    }
 
     /// Note: the returned {@link ShortPtr} does not have correct
     /// {@link ShortPtr#size} property. It's up to user to track the size of the buffer,
@@ -240,7 +233,6 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
     public static final PathElement PATH$TileRows = PathElement.groupElement("PATH$TileRows");
     public static final PathElement PATH$context_update_tile_id = PathElement.groupElement("PATH$context_update_tile_id");
     public static final PathElement PATH$tile_size_bytes_minus_1 = PathElement.groupElement("PATH$tile_size_bytes_minus_1");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$pMiColStarts = PathElement.groupElement("PATH$pMiColStarts");
     public static final PathElement PATH$pMiRowStarts = PathElement.groupElement("PATH$pMiRowStarts");
     public static final PathElement PATH$pWidthInSbsMinus1 = PathElement.groupElement("PATH$pWidthInSbsMinus1");
@@ -251,7 +243,6 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
     public static final OfByte LAYOUT$TileRows = (OfByte) LAYOUT.select(PATH$TileRows);
     public static final OfShort LAYOUT$context_update_tile_id = (OfShort) LAYOUT.select(PATH$context_update_tile_id);
     public static final OfByte LAYOUT$tile_size_bytes_minus_1 = (OfByte) LAYOUT.select(PATH$tile_size_bytes_minus_1);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
     public static final AddressLayout LAYOUT$pMiColStarts = (AddressLayout) LAYOUT.select(PATH$pMiColStarts);
     public static final AddressLayout LAYOUT$pMiRowStarts = (AddressLayout) LAYOUT.select(PATH$pMiRowStarts);
     public static final AddressLayout LAYOUT$pWidthInSbsMinus1 = (AddressLayout) LAYOUT.select(PATH$pWidthInSbsMinus1);
@@ -262,7 +253,6 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
     public static final long SIZE$TileRows = LAYOUT$TileRows.byteSize();
     public static final long SIZE$context_update_tile_id = LAYOUT$context_update_tile_id.byteSize();
     public static final long SIZE$tile_size_bytes_minus_1 = LAYOUT$tile_size_bytes_minus_1.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
     public static final long SIZE$pMiColStarts = LAYOUT$pMiColStarts.byteSize();
     public static final long SIZE$pMiRowStarts = LAYOUT$pMiRowStarts.byteSize();
     public static final long SIZE$pWidthInSbsMinus1 = LAYOUT$pWidthInSbsMinus1.byteSize();
@@ -273,7 +263,6 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
     public static final long OFFSET$TileRows = LAYOUT.byteOffset(PATH$TileRows);
     public static final long OFFSET$context_update_tile_id = LAYOUT.byteOffset(PATH$context_update_tile_id);
     public static final long OFFSET$tile_size_bytes_minus_1 = LAYOUT.byteOffset(PATH$tile_size_bytes_minus_1);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
     public static final long OFFSET$pMiColStarts = LAYOUT.byteOffset(PATH$pMiColStarts);
     public static final long OFFSET$pMiRowStarts = LAYOUT.byteOffset(PATH$pMiRowStarts);
     public static final long OFFSET$pWidthInSbsMinus1 = LAYOUT.byteOffset(PATH$pWidthInSbsMinus1);

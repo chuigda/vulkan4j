@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t short_term_ref_pic_set_idx; // @link substring="short_term_ref_pic_set_idx" target="#short_term_ref_pic_set_idx"
 ///     int32_t PicOrderCntVal; // @link substring="PicOrderCntVal" target="#PicOrderCntVal"
 ///     uint8_t TemporalId; // @link substring="TemporalId" target="#TemporalId"
-///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint8_t reserved1;
 ///     StdVideoEncodeH265ReferenceListsInfo const* pRefLists; // @link substring="StdVideoEncodeH265ReferenceListsInfo" target="StdVideoEncodeH265ReferenceListsInfo" @link substring="pRefLists" target="#pRefLists"
 ///     StdVideoH265ShortTermRefPicSet const* pShortTermRefPicSet; // @link substring="StdVideoH265ShortTermRefPicSet" target="StdVideoH265ShortTermRefPicSet" @link substring="pShortTermRefPicSet" target="#pShortTermRefPicSet"
 ///     StdVideoEncodeH265LongTermRefPics const* pLongTermRefPics; // @link substring="StdVideoEncodeH265LongTermRefPics" target="StdVideoEncodeH265LongTermRefPics" @link substring="pLongTermRefPics" target="#pLongTermRefPics"
@@ -139,13 +139,6 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$TemporalId, OFFSET$TemporalId, value);
     }
 
-    public @unsigned byte reserved1() {
-        return segment.get(LAYOUT$reserved1, OFFSET$reserved1);
-    }
-
-    public void reserved1(@unsigned byte value) {
-        segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
-    }
 
     public @Nullable StdVideoEncodeH265ReferenceListsInfo pRefLists() {
         MemorySegment s = pRefListsRaw();
@@ -276,7 +269,6 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
     public static final PathElement PATH$short_term_ref_pic_set_idx = PathElement.groupElement("PATH$short_term_ref_pic_set_idx");
     public static final PathElement PATH$PicOrderCntVal = PathElement.groupElement("PATH$PicOrderCntVal");
     public static final PathElement PATH$TemporalId = PathElement.groupElement("PATH$TemporalId");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$pRefLists = PathElement.groupElement("PATH$pRefLists");
     public static final PathElement PATH$pShortTermRefPicSet = PathElement.groupElement("PATH$pShortTermRefPicSet");
     public static final PathElement PATH$pLongTermRefPics = PathElement.groupElement("PATH$pLongTermRefPics");
@@ -289,7 +281,6 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
     public static final OfByte LAYOUT$short_term_ref_pic_set_idx = (OfByte) LAYOUT.select(PATH$short_term_ref_pic_set_idx);
     public static final OfInt LAYOUT$PicOrderCntVal = (OfInt) LAYOUT.select(PATH$PicOrderCntVal);
     public static final OfByte LAYOUT$TemporalId = (OfByte) LAYOUT.select(PATH$TemporalId);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
     public static final AddressLayout LAYOUT$pRefLists = (AddressLayout) LAYOUT.select(PATH$pRefLists);
     public static final AddressLayout LAYOUT$pShortTermRefPicSet = (AddressLayout) LAYOUT.select(PATH$pShortTermRefPicSet);
     public static final AddressLayout LAYOUT$pLongTermRefPics = (AddressLayout) LAYOUT.select(PATH$pLongTermRefPics);
@@ -302,7 +293,6 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
     public static final long SIZE$short_term_ref_pic_set_idx = LAYOUT$short_term_ref_pic_set_idx.byteSize();
     public static final long SIZE$PicOrderCntVal = LAYOUT$PicOrderCntVal.byteSize();
     public static final long SIZE$TemporalId = LAYOUT$TemporalId.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
     public static final long SIZE$pRefLists = LAYOUT$pRefLists.byteSize();
     public static final long SIZE$pShortTermRefPicSet = LAYOUT$pShortTermRefPicSet.byteSize();
     public static final long SIZE$pLongTermRefPics = LAYOUT$pLongTermRefPics.byteSize();
@@ -315,7 +305,6 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
     public static final long OFFSET$short_term_ref_pic_set_idx = LAYOUT.byteOffset(PATH$short_term_ref_pic_set_idx);
     public static final long OFFSET$PicOrderCntVal = LAYOUT.byteOffset(PATH$PicOrderCntVal);
     public static final long OFFSET$TemporalId = LAYOUT.byteOffset(PATH$TemporalId);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
     public static final long OFFSET$pRefLists = LAYOUT.byteOffset(PATH$pRefLists);
     public static final long OFFSET$pShortTermRefPicSet = LAYOUT.byteOffset(PATH$pShortTermRefPicSet);
     public static final long OFFSET$pLongTermRefPics = LAYOUT.byteOffset(PATH$pLongTermRefPics);

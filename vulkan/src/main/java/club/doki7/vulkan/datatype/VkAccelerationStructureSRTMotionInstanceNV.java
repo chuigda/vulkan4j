@@ -21,13 +21,13 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureSRTMotionInstanceNV {
-///     VkSRTDataNV transformT0;
-///     VkSRTDataNV transformT1;
-///     uint32_t instanceCustomIndex : 24;
-///     uint32_t mask : 8;
-///     uint32_t instanceShaderBindingTableRecordOffset : 24;
-///     VkGeometryInstanceFlagsKHR flags : 8; // optional
-///     uint64_t accelerationStructureReference;
+///     VkSRTDataNV transformT0; // @link substring="VkSRTDataNV" target="VkSRTDataNV" @link substring="transformT0" target="#transformT0"
+///     VkSRTDataNV transformT1; // @link substring="VkSRTDataNV" target="VkSRTDataNV" @link substring="transformT1" target="#transformT1"
+///     uint32_t instanceCustomIndex : 24; // @link substring="instanceCustomIndex" target="#instanceCustomIndex"
+///     uint32_t mask : 8; // @link substring="mask" target="#mask"
+///     uint32_t instanceShaderBindingTableRecordOffset : 24; // @link substring="instanceShaderBindingTableRecordOffset" target="#instanceShaderBindingTableRecordOffset"
+///     uint32_t flags : 8; // @link substring="flags" target="#flags"
+///     uint64_t accelerationStructureReference; // @link substring="accelerationStructureReference" target="#accelerationStructureReference"
 /// } VkAccelerationStructureSRTMotionInstanceNV;
 /// }
 ///
@@ -73,19 +73,19 @@ public record VkAccelerationStructureSRTMotionInstanceNV(@NotNull MemorySegment 
         return ret;
     }
 
-    public VkSRTDataNV transformT0() {
+    public @NotNull VkSRTDataNV transformT0() {
         return new VkSRTDataNV(segment.asSlice(OFFSET$transformT0, LAYOUT$transformT0));
     }
 
-    public void transformT0(VkSRTDataNV value) {
+    public void transformT0(@NotNull VkSRTDataNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$transformT0, SIZE$transformT0);
     }
 
-    public VkSRTDataNV transformT1() {
+    public @NotNull VkSRTDataNV transformT1() {
         return new VkSRTDataNV(segment.asSlice(OFFSET$transformT1, LAYOUT$transformT1));
     }
 
-    public void transformT1(VkSRTDataNV value) {
+    public void transformT1(@NotNull VkSRTDataNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$transformT1, SIZE$transformT1);
     }
 

@@ -30,8 +30,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t matrix_coeffs; // @link substring="matrix_coeffs" target="#matrix_coeffs"
 ///     uint8_t chroma_sample_loc_type_top_field; // @link substring="chroma_sample_loc_type_top_field" target="#chroma_sample_loc_type_top_field"
 ///     uint8_t chroma_sample_loc_type_bottom_field; // @link substring="chroma_sample_loc_type_bottom_field" target="#chroma_sample_loc_type_bottom_field"
-///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
-///     uint8_t reserved2; // @link substring="reserved2" target="#reserved2"
+///     uint8_t reserved1;
+///     uint8_t reserved2;
 ///     uint16_t def_disp_win_left_offset; // @link substring="def_disp_win_left_offset" target="#def_disp_win_left_offset"
 ///     uint16_t def_disp_win_right_offset; // @link substring="def_disp_win_right_offset" target="#def_disp_win_right_offset"
 ///     uint16_t def_disp_win_top_offset; // @link substring="def_disp_win_top_offset" target="#def_disp_win_top_offset"
@@ -40,7 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t vui_time_scale; // @link substring="vui_time_scale" target="#vui_time_scale"
 ///     uint32_t vui_num_ticks_poc_diff_one_minus1; // @link substring="vui_num_ticks_poc_diff_one_minus1" target="#vui_num_ticks_poc_diff_one_minus1"
 ///     uint16_t min_spatial_segmentation_idc; // @link substring="min_spatial_segmentation_idc" target="#min_spatial_segmentation_idc"
-///     uint16_t reserved3; // @link substring="reserved3" target="#reserved3"
+///     uint16_t reserved3;
 ///     uint8_t max_bytes_per_pic_denom; // @link substring="max_bytes_per_pic_denom" target="#max_bytes_per_pic_denom"
 ///     uint8_t max_bits_per_min_cu_denom; // @link substring="max_bits_per_min_cu_denom" target="#max_bits_per_min_cu_denom"
 ///     uint8_t log2_max_mv_length_horizontal; // @link substring="log2_max_mv_length_horizontal" target="#log2_max_mv_length_horizontal"
@@ -169,21 +169,7 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
         segment.set(LAYOUT$chroma_sample_loc_type_bottom_field, OFFSET$chroma_sample_loc_type_bottom_field, value);
     }
 
-    public @unsigned byte reserved1() {
-        return segment.get(LAYOUT$reserved1, OFFSET$reserved1);
-    }
 
-    public void reserved1(@unsigned byte value) {
-        segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
-    }
-
-    public @unsigned byte reserved2() {
-        return segment.get(LAYOUT$reserved2, OFFSET$reserved2);
-    }
-
-    public void reserved2(@unsigned byte value) {
-        segment.set(LAYOUT$reserved2, OFFSET$reserved2, value);
-    }
 
     public @unsigned short def_disp_win_left_offset() {
         return segment.get(LAYOUT$def_disp_win_left_offset, OFFSET$def_disp_win_left_offset);
@@ -249,13 +235,6 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
         segment.set(LAYOUT$min_spatial_segmentation_idc, OFFSET$min_spatial_segmentation_idc, value);
     }
 
-    public @unsigned short reserved3() {
-        return segment.get(LAYOUT$reserved3, OFFSET$reserved3);
-    }
-
-    public void reserved3(@unsigned short value) {
-        segment.set(LAYOUT$reserved3, OFFSET$reserved3, value);
-    }
 
     public @unsigned byte max_bytes_per_pic_denom() {
         return segment.get(LAYOUT$max_bytes_per_pic_denom, OFFSET$max_bytes_per_pic_denom);
@@ -364,8 +343,6 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
     public static final PathElement PATH$matrix_coeffs = PathElement.groupElement("PATH$matrix_coeffs");
     public static final PathElement PATH$chroma_sample_loc_type_top_field = PathElement.groupElement("PATH$chroma_sample_loc_type_top_field");
     public static final PathElement PATH$chroma_sample_loc_type_bottom_field = PathElement.groupElement("PATH$chroma_sample_loc_type_bottom_field");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
-    public static final PathElement PATH$reserved2 = PathElement.groupElement("PATH$reserved2");
     public static final PathElement PATH$def_disp_win_left_offset = PathElement.groupElement("PATH$def_disp_win_left_offset");
     public static final PathElement PATH$def_disp_win_right_offset = PathElement.groupElement("PATH$def_disp_win_right_offset");
     public static final PathElement PATH$def_disp_win_top_offset = PathElement.groupElement("PATH$def_disp_win_top_offset");
@@ -374,7 +351,6 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
     public static final PathElement PATH$vui_time_scale = PathElement.groupElement("PATH$vui_time_scale");
     public static final PathElement PATH$vui_num_ticks_poc_diff_one_minus1 = PathElement.groupElement("PATH$vui_num_ticks_poc_diff_one_minus1");
     public static final PathElement PATH$min_spatial_segmentation_idc = PathElement.groupElement("PATH$min_spatial_segmentation_idc");
-    public static final PathElement PATH$reserved3 = PathElement.groupElement("PATH$reserved3");
     public static final PathElement PATH$max_bytes_per_pic_denom = PathElement.groupElement("PATH$max_bytes_per_pic_denom");
     public static final PathElement PATH$max_bits_per_min_cu_denom = PathElement.groupElement("PATH$max_bits_per_min_cu_denom");
     public static final PathElement PATH$log2_max_mv_length_horizontal = PathElement.groupElement("PATH$log2_max_mv_length_horizontal");
@@ -391,8 +367,6 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
     public static final OfByte LAYOUT$matrix_coeffs = (OfByte) LAYOUT.select(PATH$matrix_coeffs);
     public static final OfByte LAYOUT$chroma_sample_loc_type_top_field = (OfByte) LAYOUT.select(PATH$chroma_sample_loc_type_top_field);
     public static final OfByte LAYOUT$chroma_sample_loc_type_bottom_field = (OfByte) LAYOUT.select(PATH$chroma_sample_loc_type_bottom_field);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
-    public static final OfByte LAYOUT$reserved2 = (OfByte) LAYOUT.select(PATH$reserved2);
     public static final OfShort LAYOUT$def_disp_win_left_offset = (OfShort) LAYOUT.select(PATH$def_disp_win_left_offset);
     public static final OfShort LAYOUT$def_disp_win_right_offset = (OfShort) LAYOUT.select(PATH$def_disp_win_right_offset);
     public static final OfShort LAYOUT$def_disp_win_top_offset = (OfShort) LAYOUT.select(PATH$def_disp_win_top_offset);
@@ -401,7 +375,6 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
     public static final OfInt LAYOUT$vui_time_scale = (OfInt) LAYOUT.select(PATH$vui_time_scale);
     public static final OfInt LAYOUT$vui_num_ticks_poc_diff_one_minus1 = (OfInt) LAYOUT.select(PATH$vui_num_ticks_poc_diff_one_minus1);
     public static final OfShort LAYOUT$min_spatial_segmentation_idc = (OfShort) LAYOUT.select(PATH$min_spatial_segmentation_idc);
-    public static final OfShort LAYOUT$reserved3 = (OfShort) LAYOUT.select(PATH$reserved3);
     public static final OfByte LAYOUT$max_bytes_per_pic_denom = (OfByte) LAYOUT.select(PATH$max_bytes_per_pic_denom);
     public static final OfByte LAYOUT$max_bits_per_min_cu_denom = (OfByte) LAYOUT.select(PATH$max_bits_per_min_cu_denom);
     public static final OfByte LAYOUT$log2_max_mv_length_horizontal = (OfByte) LAYOUT.select(PATH$log2_max_mv_length_horizontal);
@@ -418,8 +391,6 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
     public static final long SIZE$matrix_coeffs = LAYOUT$matrix_coeffs.byteSize();
     public static final long SIZE$chroma_sample_loc_type_top_field = LAYOUT$chroma_sample_loc_type_top_field.byteSize();
     public static final long SIZE$chroma_sample_loc_type_bottom_field = LAYOUT$chroma_sample_loc_type_bottom_field.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
-    public static final long SIZE$reserved2 = LAYOUT$reserved2.byteSize();
     public static final long SIZE$def_disp_win_left_offset = LAYOUT$def_disp_win_left_offset.byteSize();
     public static final long SIZE$def_disp_win_right_offset = LAYOUT$def_disp_win_right_offset.byteSize();
     public static final long SIZE$def_disp_win_top_offset = LAYOUT$def_disp_win_top_offset.byteSize();
@@ -428,7 +399,6 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
     public static final long SIZE$vui_time_scale = LAYOUT$vui_time_scale.byteSize();
     public static final long SIZE$vui_num_ticks_poc_diff_one_minus1 = LAYOUT$vui_num_ticks_poc_diff_one_minus1.byteSize();
     public static final long SIZE$min_spatial_segmentation_idc = LAYOUT$min_spatial_segmentation_idc.byteSize();
-    public static final long SIZE$reserved3 = LAYOUT$reserved3.byteSize();
     public static final long SIZE$max_bytes_per_pic_denom = LAYOUT$max_bytes_per_pic_denom.byteSize();
     public static final long SIZE$max_bits_per_min_cu_denom = LAYOUT$max_bits_per_min_cu_denom.byteSize();
     public static final long SIZE$log2_max_mv_length_horizontal = LAYOUT$log2_max_mv_length_horizontal.byteSize();
@@ -445,8 +415,6 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
     public static final long OFFSET$matrix_coeffs = LAYOUT.byteOffset(PATH$matrix_coeffs);
     public static final long OFFSET$chroma_sample_loc_type_top_field = LAYOUT.byteOffset(PATH$chroma_sample_loc_type_top_field);
     public static final long OFFSET$chroma_sample_loc_type_bottom_field = LAYOUT.byteOffset(PATH$chroma_sample_loc_type_bottom_field);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
-    public static final long OFFSET$reserved2 = LAYOUT.byteOffset(PATH$reserved2);
     public static final long OFFSET$def_disp_win_left_offset = LAYOUT.byteOffset(PATH$def_disp_win_left_offset);
     public static final long OFFSET$def_disp_win_right_offset = LAYOUT.byteOffset(PATH$def_disp_win_right_offset);
     public static final long OFFSET$def_disp_win_top_offset = LAYOUT.byteOffset(PATH$def_disp_win_top_offset);
@@ -455,7 +423,6 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
     public static final long OFFSET$vui_time_scale = LAYOUT.byteOffset(PATH$vui_time_scale);
     public static final long OFFSET$vui_num_ticks_poc_diff_one_minus1 = LAYOUT.byteOffset(PATH$vui_num_ticks_poc_diff_one_minus1);
     public static final long OFFSET$min_spatial_segmentation_idc = LAYOUT.byteOffset(PATH$min_spatial_segmentation_idc);
-    public static final long OFFSET$reserved3 = LAYOUT.byteOffset(PATH$reserved3);
     public static final long OFFSET$max_bytes_per_pic_denom = LAYOUT.byteOffset(PATH$max_bytes_per_pic_denom);
     public static final long OFFSET$max_bits_per_min_cu_denom = LAYOUT.byteOffset(PATH$max_bits_per_min_cu_denom);
     public static final long OFFSET$log2_max_mv_length_horizontal = LAYOUT.byteOffset(PATH$log2_max_mv_length_horizontal);

@@ -36,7 +36,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t delta_lf_res; // @link substring="delta_lf_res" target="#delta_lf_res"
 ///     uint8_t ref_order_hint; // @link substring="ref_order_hint" target="#ref_order_hint"
 ///     int8_t ref_frame_idx; // @link substring="ref_frame_idx" target="#ref_frame_idx"
-///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint8_t reserved1;
 ///     uint32_t delta_frame_id_minus_1; // @link substring="delta_frame_id_minus_1" target="#delta_frame_id_minus_1"
 ///     StdVideoAV1TileInfo const* pTileInfo; // @link substring="StdVideoAV1TileInfo" target="StdVideoAV1TileInfo" @link substring="pTileInfo" target="#pTileInfo"
 ///     StdVideoAV1Quantization const* pQuantization; // @link substring="StdVideoAV1Quantization" target="StdVideoAV1Quantization" @link substring="pQuantization" target="#pQuantization"
@@ -218,13 +218,6 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$ref_frame_idx, OFFSET$ref_frame_idx, value);
     }
 
-    public @unsigned byte reserved1() {
-        return segment.get(LAYOUT$reserved1, OFFSET$reserved1);
-    }
-
-    public void reserved1(@unsigned byte value) {
-        segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
-    }
 
     public @unsigned int delta_frame_id_minus_1() {
         return segment.get(LAYOUT$delta_frame_id_minus_1, OFFSET$delta_frame_id_minus_1);
@@ -586,7 +579,6 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     public static final PathElement PATH$delta_lf_res = PathElement.groupElement("PATH$delta_lf_res");
     public static final PathElement PATH$ref_order_hint = PathElement.groupElement("PATH$ref_order_hint");
     public static final PathElement PATH$ref_frame_idx = PathElement.groupElement("PATH$ref_frame_idx");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$delta_frame_id_minus_1 = PathElement.groupElement("PATH$delta_frame_id_minus_1");
     public static final PathElement PATH$pTileInfo = PathElement.groupElement("PATH$pTileInfo");
     public static final PathElement PATH$pQuantization = PathElement.groupElement("PATH$pQuantization");
@@ -614,7 +606,6 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     public static final OfByte LAYOUT$delta_lf_res = (OfByte) LAYOUT.select(PATH$delta_lf_res);
     public static final OfByte LAYOUT$ref_order_hint = (OfByte) LAYOUT.select(PATH$ref_order_hint);
     public static final OfByte LAYOUT$ref_frame_idx = (OfByte) LAYOUT.select(PATH$ref_frame_idx);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
     public static final OfInt LAYOUT$delta_frame_id_minus_1 = (OfInt) LAYOUT.select(PATH$delta_frame_id_minus_1);
     public static final AddressLayout LAYOUT$pTileInfo = (AddressLayout) LAYOUT.select(PATH$pTileInfo);
     public static final AddressLayout LAYOUT$pQuantization = (AddressLayout) LAYOUT.select(PATH$pQuantization);
@@ -642,7 +633,6 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     public static final long SIZE$delta_lf_res = LAYOUT$delta_lf_res.byteSize();
     public static final long SIZE$ref_order_hint = LAYOUT$ref_order_hint.byteSize();
     public static final long SIZE$ref_frame_idx = LAYOUT$ref_frame_idx.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
     public static final long SIZE$delta_frame_id_minus_1 = LAYOUT$delta_frame_id_minus_1.byteSize();
     public static final long SIZE$pTileInfo = LAYOUT$pTileInfo.byteSize();
     public static final long SIZE$pQuantization = LAYOUT$pQuantization.byteSize();
@@ -670,7 +660,6 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     public static final long OFFSET$delta_lf_res = LAYOUT.byteOffset(PATH$delta_lf_res);
     public static final long OFFSET$ref_order_hint = LAYOUT.byteOffset(PATH$ref_order_hint);
     public static final long OFFSET$ref_frame_idx = LAYOUT.byteOffset(PATH$ref_frame_idx);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
     public static final long OFFSET$delta_frame_id_minus_1 = LAYOUT.byteOffset(PATH$delta_frame_id_minus_1);
     public static final long OFFSET$pTileInfo = LAYOUT.byteOffset(PATH$pTileInfo);
     public static final long OFFSET$pQuantization = LAYOUT.byteOffset(PATH$pQuantization);

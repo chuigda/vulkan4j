@@ -49,11 +49,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t chroma_bit_depth_entry_minus8; // @link substring="chroma_bit_depth_entry_minus8" target="#chroma_bit_depth_entry_minus8"
 ///     uint8_t num_tile_columns_minus1; // @link substring="num_tile_columns_minus1" target="#num_tile_columns_minus1"
 ///     uint8_t num_tile_rows_minus1; // @link substring="num_tile_rows_minus1" target="#num_tile_rows_minus1"
-///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
-///     uint8_t reserved2; // @link substring="reserved2" target="#reserved2"
+///     uint8_t reserved1;
+///     uint8_t reserved2;
 ///     uint16_t column_width_minus1; // @link substring="column_width_minus1" target="#column_width_minus1"
 ///     uint16_t row_height_minus1; // @link substring="row_height_minus1" target="#row_height_minus1"
-///     uint32_t reserved3; // @link substring="reserved3" target="#reserved3"
+///     uint32_t reserved3;
 ///     StdVideoH265ScalingLists const* pScalingLists; // @link substring="StdVideoH265ScalingLists" target="StdVideoH265ScalingLists" @link substring="pScalingLists" target="#pScalingLists"
 ///     StdVideoH265PredictorPaletteEntries const* pPredictorPaletteEntries; // @link substring="StdVideoH265PredictorPaletteEntries" target="StdVideoH265PredictorPaletteEntries" @link substring="pPredictorPaletteEntries" target="#pPredictorPaletteEntries"
 /// } StdVideoH265PictureParameterSet;
@@ -331,21 +331,7 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$num_tile_rows_minus1, OFFSET$num_tile_rows_minus1, value);
     }
 
-    public @unsigned byte reserved1() {
-        return segment.get(LAYOUT$reserved1, OFFSET$reserved1);
-    }
 
-    public void reserved1(@unsigned byte value) {
-        segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
-    }
-
-    public @unsigned byte reserved2() {
-        return segment.get(LAYOUT$reserved2, OFFSET$reserved2);
-    }
-
-    public void reserved2(@unsigned byte value) {
-        segment.set(LAYOUT$reserved2, OFFSET$reserved2, value);
-    }
 
     public @unsigned short column_width_minus1() {
         return segment.get(LAYOUT$column_width_minus1, OFFSET$column_width_minus1);
@@ -363,13 +349,6 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$row_height_minus1, OFFSET$row_height_minus1, value);
     }
 
-    public @unsigned int reserved3() {
-        return segment.get(LAYOUT$reserved3, OFFSET$reserved3);
-    }
-
-    public void reserved3(@unsigned int value) {
-        segment.set(LAYOUT$reserved3, OFFSET$reserved3, value);
-    }
 
     public @Nullable StdVideoH265ScalingLists pScalingLists() {
         MemorySegment s = pScalingListsRaw();
@@ -510,11 +489,8 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
     public static final PathElement PATH$chroma_bit_depth_entry_minus8 = PathElement.groupElement("PATH$chroma_bit_depth_entry_minus8");
     public static final PathElement PATH$num_tile_columns_minus1 = PathElement.groupElement("PATH$num_tile_columns_minus1");
     public static final PathElement PATH$num_tile_rows_minus1 = PathElement.groupElement("PATH$num_tile_rows_minus1");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
-    public static final PathElement PATH$reserved2 = PathElement.groupElement("PATH$reserved2");
     public static final PathElement PATH$column_width_minus1 = PathElement.groupElement("PATH$column_width_minus1");
     public static final PathElement PATH$row_height_minus1 = PathElement.groupElement("PATH$row_height_minus1");
-    public static final PathElement PATH$reserved3 = PathElement.groupElement("PATH$reserved3");
     public static final PathElement PATH$pScalingLists = PathElement.groupElement("PATH$pScalingLists");
     public static final PathElement PATH$pPredictorPaletteEntries = PathElement.groupElement("PATH$pPredictorPaletteEntries");
 
@@ -547,11 +523,8 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
     public static final OfByte LAYOUT$chroma_bit_depth_entry_minus8 = (OfByte) LAYOUT.select(PATH$chroma_bit_depth_entry_minus8);
     public static final OfByte LAYOUT$num_tile_columns_minus1 = (OfByte) LAYOUT.select(PATH$num_tile_columns_minus1);
     public static final OfByte LAYOUT$num_tile_rows_minus1 = (OfByte) LAYOUT.select(PATH$num_tile_rows_minus1);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
-    public static final OfByte LAYOUT$reserved2 = (OfByte) LAYOUT.select(PATH$reserved2);
     public static final OfShort LAYOUT$column_width_minus1 = (OfShort) LAYOUT.select(PATH$column_width_minus1);
     public static final OfShort LAYOUT$row_height_minus1 = (OfShort) LAYOUT.select(PATH$row_height_minus1);
-    public static final OfInt LAYOUT$reserved3 = (OfInt) LAYOUT.select(PATH$reserved3);
     public static final AddressLayout LAYOUT$pScalingLists = (AddressLayout) LAYOUT.select(PATH$pScalingLists);
     public static final AddressLayout LAYOUT$pPredictorPaletteEntries = (AddressLayout) LAYOUT.select(PATH$pPredictorPaletteEntries);
 
@@ -584,11 +557,8 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
     public static final long SIZE$chroma_bit_depth_entry_minus8 = LAYOUT$chroma_bit_depth_entry_minus8.byteSize();
     public static final long SIZE$num_tile_columns_minus1 = LAYOUT$num_tile_columns_minus1.byteSize();
     public static final long SIZE$num_tile_rows_minus1 = LAYOUT$num_tile_rows_minus1.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
-    public static final long SIZE$reserved2 = LAYOUT$reserved2.byteSize();
     public static final long SIZE$column_width_minus1 = LAYOUT$column_width_minus1.byteSize();
     public static final long SIZE$row_height_minus1 = LAYOUT$row_height_minus1.byteSize();
-    public static final long SIZE$reserved3 = LAYOUT$reserved3.byteSize();
     public static final long SIZE$pScalingLists = LAYOUT$pScalingLists.byteSize();
     public static final long SIZE$pPredictorPaletteEntries = LAYOUT$pPredictorPaletteEntries.byteSize();
 
@@ -621,11 +591,8 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
     public static final long OFFSET$chroma_bit_depth_entry_minus8 = LAYOUT.byteOffset(PATH$chroma_bit_depth_entry_minus8);
     public static final long OFFSET$num_tile_columns_minus1 = LAYOUT.byteOffset(PATH$num_tile_columns_minus1);
     public static final long OFFSET$num_tile_rows_minus1 = LAYOUT.byteOffset(PATH$num_tile_rows_minus1);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
-    public static final long OFFSET$reserved2 = LAYOUT.byteOffset(PATH$reserved2);
     public static final long OFFSET$column_width_minus1 = LAYOUT.byteOffset(PATH$column_width_minus1);
     public static final long OFFSET$row_height_minus1 = LAYOUT.byteOffset(PATH$row_height_minus1);
-    public static final long OFFSET$reserved3 = LAYOUT.byteOffset(PATH$reserved3);
     public static final long OFFSET$pScalingLists = LAYOUT.byteOffset(PATH$pScalingLists);
     public static final long OFFSET$pPredictorPaletteEntries = LAYOUT.byteOffset(PATH$pPredictorPaletteEntries);
 }

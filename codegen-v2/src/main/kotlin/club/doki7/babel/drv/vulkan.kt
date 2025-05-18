@@ -58,6 +58,7 @@ internal fun vulkanMain() {
             File("vulkan/src/main/java/club/doki7/vulkan/datatype/${structure.name}.java")
                 .writeText(render(structureDoc))
         } catch (e: Throwable) {
+            e.printStackTrace()
             log.severe("Failed to generate structure ${structure.name}: ${e.message}")
         }
     }
@@ -68,6 +69,7 @@ internal fun vulkanMain() {
             File("vulkan/src/main/java/club/doki7/vulkan/datatype/${unions.name}.java")
                 .writeText(render(structureDoc))
         } catch (e: Throwable) {
+            e.printStackTrace()
             log.severe("Failed to generate union ${unions.name}: ${e.message}")
         }
     }

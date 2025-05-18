@@ -33,7 +33,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     int8_t slice_act_cb_qp_offset; // @link substring="slice_act_cb_qp_offset" target="#slice_act_cb_qp_offset"
 ///     int8_t slice_act_cr_qp_offset; // @link substring="slice_act_cr_qp_offset" target="#slice_act_cr_qp_offset"
 ///     int8_t slice_qp_delta; // @link substring="slice_qp_delta" target="#slice_qp_delta"
-///     uint16_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint16_t reserved1;
 ///     StdVideoEncodeH265WeightTable const* pWeightTable; // @link substring="StdVideoEncodeH265WeightTable" target="StdVideoEncodeH265WeightTable" @link substring="pWeightTable" target="#pWeightTable"
 /// } StdVideoEncodeH265SliceSegmentHeader;
 /// }
@@ -182,13 +182,6 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         segment.set(LAYOUT$slice_qp_delta, OFFSET$slice_qp_delta, value);
     }
 
-    public @unsigned short reserved1() {
-        return segment.get(LAYOUT$reserved1, OFFSET$reserved1);
-    }
-
-    public void reserved1(@unsigned short value) {
-        segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
-    }
 
     public @Nullable StdVideoEncodeH265WeightTable pWeightTable() {
         MemorySegment s = pWeightTableRaw();
@@ -257,7 +250,6 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
     public static final PathElement PATH$slice_act_cb_qp_offset = PathElement.groupElement("PATH$slice_act_cb_qp_offset");
     public static final PathElement PATH$slice_act_cr_qp_offset = PathElement.groupElement("PATH$slice_act_cr_qp_offset");
     public static final PathElement PATH$slice_qp_delta = PathElement.groupElement("PATH$slice_qp_delta");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$pWeightTable = PathElement.groupElement("PATH$pWeightTable");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
@@ -273,7 +265,6 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
     public static final OfByte LAYOUT$slice_act_cb_qp_offset = (OfByte) LAYOUT.select(PATH$slice_act_cb_qp_offset);
     public static final OfByte LAYOUT$slice_act_cr_qp_offset = (OfByte) LAYOUT.select(PATH$slice_act_cr_qp_offset);
     public static final OfByte LAYOUT$slice_qp_delta = (OfByte) LAYOUT.select(PATH$slice_qp_delta);
-    public static final OfShort LAYOUT$reserved1 = (OfShort) LAYOUT.select(PATH$reserved1);
     public static final AddressLayout LAYOUT$pWeightTable = (AddressLayout) LAYOUT.select(PATH$pWeightTable);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
@@ -289,7 +280,6 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
     public static final long SIZE$slice_act_cb_qp_offset = LAYOUT$slice_act_cb_qp_offset.byteSize();
     public static final long SIZE$slice_act_cr_qp_offset = LAYOUT$slice_act_cr_qp_offset.byteSize();
     public static final long SIZE$slice_qp_delta = LAYOUT$slice_qp_delta.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
     public static final long SIZE$pWeightTable = LAYOUT$pWeightTable.byteSize();
 
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
@@ -305,6 +295,5 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
     public static final long OFFSET$slice_act_cb_qp_offset = LAYOUT.byteOffset(PATH$slice_act_cb_qp_offset);
     public static final long OFFSET$slice_act_cr_qp_offset = LAYOUT.byteOffset(PATH$slice_act_cr_qp_offset);
     public static final long OFFSET$slice_qp_delta = LAYOUT.byteOffset(PATH$slice_qp_delta);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
     public static final long OFFSET$pWeightTable = LAYOUT.byteOffset(PATH$pWeightTable);
 }

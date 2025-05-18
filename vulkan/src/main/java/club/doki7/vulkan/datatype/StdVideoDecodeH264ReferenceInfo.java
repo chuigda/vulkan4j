@@ -22,7 +22,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct StdVideoDecodeH264ReferenceInfo {
 ///     StdVideoDecodeH264ReferenceInfoFlags flags; // @link substring="StdVideoDecodeH264ReferenceInfoFlags" target="StdVideoDecodeH264ReferenceInfoFlags" @link substring="flags" target="#flags"
 ///     uint16_t FrameNum; // @link substring="FrameNum" target="#FrameNum"
-///     uint16_t reserved; // @link substring="reserved" target="#reserved"
+///     uint16_t reserved;
 ///     int32_t PicOrderCnt; // @link substring="PicOrderCnt" target="#PicOrderCnt"
 /// } StdVideoDecodeH264ReferenceInfo;
 /// }
@@ -83,13 +83,6 @@ public record StdVideoDecodeH264ReferenceInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$FrameNum, OFFSET$FrameNum, value);
     }
 
-    public @unsigned short reserved() {
-        return segment.get(LAYOUT$reserved, OFFSET$reserved);
-    }
-
-    public void reserved(@unsigned short value) {
-        segment.set(LAYOUT$reserved, OFFSET$reserved, value);
-    }
 
     public int PicOrderCnt() {
         return segment.get(LAYOUT$PicOrderCnt, OFFSET$PicOrderCnt);
@@ -109,21 +102,17 @@ public record StdVideoDecodeH264ReferenceInfo(@NotNull MemorySegment segment) im
 
     public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
     public static final PathElement PATH$FrameNum = PathElement.groupElement("PATH$FrameNum");
-    public static final PathElement PATH$reserved = PathElement.groupElement("PATH$reserved");
     public static final PathElement PATH$PicOrderCnt = PathElement.groupElement("PATH$PicOrderCnt");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfShort LAYOUT$FrameNum = (OfShort) LAYOUT.select(PATH$FrameNum);
-    public static final OfShort LAYOUT$reserved = (OfShort) LAYOUT.select(PATH$reserved);
     public static final OfInt LAYOUT$PicOrderCnt = (OfInt) LAYOUT.select(PATH$PicOrderCnt);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$FrameNum = LAYOUT$FrameNum.byteSize();
-    public static final long SIZE$reserved = LAYOUT$reserved.byteSize();
     public static final long SIZE$PicOrderCnt = LAYOUT$PicOrderCnt.byteSize();
 
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$FrameNum = LAYOUT.byteOffset(PATH$FrameNum);
-    public static final long OFFSET$reserved = LAYOUT.byteOffset(PATH$reserved);
     public static final long OFFSET$PicOrderCnt = LAYOUT.byteOffset(PATH$PicOrderCnt);
 }

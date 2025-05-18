@@ -2,13 +2,14 @@ package club.doki7.babel.codegen.accessor
 
 import club.doki7.babel.codegen.LayoutField
 import club.doki7.babel.codegen.defun
+import club.doki7.babel.codegen.isUnusedReservedField
 import club.doki7.babel.util.buildDoc
 
 fun generateBitfieldAccessor(bitfields: LayoutField.Bitfields) = buildDoc {
     for (i in bitfields.bitfields.indices) {
         val member = bitfields.bitfields[i]
         val memberName = member.bitfieldName
-        if (memberName.startsWith("reserved")) {
+        if (memberName.isUnusedReservedField()) {
             continue
         }
 

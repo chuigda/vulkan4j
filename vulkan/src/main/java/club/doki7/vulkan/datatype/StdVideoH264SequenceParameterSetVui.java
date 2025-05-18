@@ -34,7 +34,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t max_dec_frame_buffering; // @link substring="max_dec_frame_buffering" target="#max_dec_frame_buffering"
 ///     uint8_t chroma_sample_loc_type_top_field; // @link substring="chroma_sample_loc_type_top_field" target="#chroma_sample_loc_type_top_field"
 ///     uint8_t chroma_sample_loc_type_bottom_field; // @link substring="chroma_sample_loc_type_bottom_field" target="#chroma_sample_loc_type_bottom_field"
-///     uint32_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint32_t reserved1;
 ///     StdVideoH264HrdParameters const* pHrdParameters; // @link substring="StdVideoH264HrdParameters" target="StdVideoH264HrdParameters" @link substring="pHrdParameters" target="#pHrdParameters"
 /// } StdVideoH264SequenceParameterSetVui;
 /// }
@@ -191,13 +191,6 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
         segment.set(LAYOUT$chroma_sample_loc_type_bottom_field, OFFSET$chroma_sample_loc_type_bottom_field, value);
     }
 
-    public @unsigned int reserved1() {
-        return segment.get(LAYOUT$reserved1, OFFSET$reserved1);
-    }
-
-    public void reserved1(@unsigned int value) {
-        segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
-    }
 
     public @Nullable StdVideoH264HrdParameters pHrdParameters() {
         MemorySegment s = pHrdParametersRaw();
@@ -268,7 +261,6 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
     public static final PathElement PATH$max_dec_frame_buffering = PathElement.groupElement("PATH$max_dec_frame_buffering");
     public static final PathElement PATH$chroma_sample_loc_type_top_field = PathElement.groupElement("PATH$chroma_sample_loc_type_top_field");
     public static final PathElement PATH$chroma_sample_loc_type_bottom_field = PathElement.groupElement("PATH$chroma_sample_loc_type_bottom_field");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$pHrdParameters = PathElement.groupElement("PATH$pHrdParameters");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
@@ -285,7 +277,6 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
     public static final OfByte LAYOUT$max_dec_frame_buffering = (OfByte) LAYOUT.select(PATH$max_dec_frame_buffering);
     public static final OfByte LAYOUT$chroma_sample_loc_type_top_field = (OfByte) LAYOUT.select(PATH$chroma_sample_loc_type_top_field);
     public static final OfByte LAYOUT$chroma_sample_loc_type_bottom_field = (OfByte) LAYOUT.select(PATH$chroma_sample_loc_type_bottom_field);
-    public static final OfInt LAYOUT$reserved1 = (OfInt) LAYOUT.select(PATH$reserved1);
     public static final AddressLayout LAYOUT$pHrdParameters = (AddressLayout) LAYOUT.select(PATH$pHrdParameters);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
@@ -302,7 +293,6 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
     public static final long SIZE$max_dec_frame_buffering = LAYOUT$max_dec_frame_buffering.byteSize();
     public static final long SIZE$chroma_sample_loc_type_top_field = LAYOUT$chroma_sample_loc_type_top_field.byteSize();
     public static final long SIZE$chroma_sample_loc_type_bottom_field = LAYOUT$chroma_sample_loc_type_bottom_field.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
     public static final long SIZE$pHrdParameters = LAYOUT$pHrdParameters.byteSize();
 
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
@@ -319,6 +309,5 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
     public static final long OFFSET$max_dec_frame_buffering = LAYOUT.byteOffset(PATH$max_dec_frame_buffering);
     public static final long OFFSET$chroma_sample_loc_type_top_field = LAYOUT.byteOffset(PATH$chroma_sample_loc_type_top_field);
     public static final long OFFSET$chroma_sample_loc_type_bottom_field = LAYOUT.byteOffset(PATH$chroma_sample_loc_type_bottom_field);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
     public static final long OFFSET$pHrdParameters = LAYOUT.byteOffset(PATH$pHrdParameters);
 }

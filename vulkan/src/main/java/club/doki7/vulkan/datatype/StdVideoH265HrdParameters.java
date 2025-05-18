@@ -32,7 +32,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t dpb_output_delay_length_minus1; // @link substring="dpb_output_delay_length_minus1" target="#dpb_output_delay_length_minus1"
 ///     uint8_t cpb_cnt_minus1; // @link substring="cpb_cnt_minus1" target="#cpb_cnt_minus1"
 ///     uint16_t elemental_duration_in_tc_minus1; // @link substring="elemental_duration_in_tc_minus1" target="#elemental_duration_in_tc_minus1"
-///     uint16_t reserved; // @link substring="reserved" target="#reserved"
+///     uint16_t reserved;
 ///     StdVideoH265SubLayerHrdParameters const* pSubLayerHrdParametersNal; // @link substring="StdVideoH265SubLayerHrdParameters" target="StdVideoH265SubLayerHrdParameters" @link substring="pSubLayerHrdParametersNal" target="#pSubLayerHrdParametersNal"
 ///     StdVideoH265SubLayerHrdParameters const* pSubLayerHrdParametersVcl; // @link substring="StdVideoH265SubLayerHrdParameters" target="StdVideoH265SubLayerHrdParameters" @link substring="pSubLayerHrdParametersVcl" target="#pSubLayerHrdParametersVcl"
 /// } StdVideoH265HrdParameters;
@@ -174,13 +174,6 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$elemental_duration_in_tc_minus1, OFFSET$elemental_duration_in_tc_minus1, value);
     }
 
-    public @unsigned short reserved() {
-        return segment.get(LAYOUT$reserved, OFFSET$reserved);
-    }
-
-    public void reserved(@unsigned short value) {
-        segment.set(LAYOUT$reserved, OFFSET$reserved, value);
-    }
 
     public @Nullable StdVideoH265SubLayerHrdParameters pSubLayerHrdParametersNal() {
         MemorySegment s = pSubLayerHrdParametersNalRaw();
@@ -283,7 +276,6 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
     public static final PathElement PATH$dpb_output_delay_length_minus1 = PathElement.groupElement("PATH$dpb_output_delay_length_minus1");
     public static final PathElement PATH$cpb_cnt_minus1 = PathElement.groupElement("PATH$cpb_cnt_minus1");
     public static final PathElement PATH$elemental_duration_in_tc_minus1 = PathElement.groupElement("PATH$elemental_duration_in_tc_minus1");
-    public static final PathElement PATH$reserved = PathElement.groupElement("PATH$reserved");
     public static final PathElement PATH$pSubLayerHrdParametersNal = PathElement.groupElement("PATH$pSubLayerHrdParametersNal");
     public static final PathElement PATH$pSubLayerHrdParametersVcl = PathElement.groupElement("PATH$pSubLayerHrdParametersVcl");
 
@@ -299,7 +291,6 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
     public static final OfByte LAYOUT$dpb_output_delay_length_minus1 = (OfByte) LAYOUT.select(PATH$dpb_output_delay_length_minus1);
     public static final OfByte LAYOUT$cpb_cnt_minus1 = (OfByte) LAYOUT.select(PATH$cpb_cnt_minus1);
     public static final OfShort LAYOUT$elemental_duration_in_tc_minus1 = (OfShort) LAYOUT.select(PATH$elemental_duration_in_tc_minus1);
-    public static final OfShort LAYOUT$reserved = (OfShort) LAYOUT.select(PATH$reserved);
     public static final AddressLayout LAYOUT$pSubLayerHrdParametersNal = (AddressLayout) LAYOUT.select(PATH$pSubLayerHrdParametersNal);
     public static final AddressLayout LAYOUT$pSubLayerHrdParametersVcl = (AddressLayout) LAYOUT.select(PATH$pSubLayerHrdParametersVcl);
 
@@ -315,7 +306,6 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
     public static final long SIZE$dpb_output_delay_length_minus1 = LAYOUT$dpb_output_delay_length_minus1.byteSize();
     public static final long SIZE$cpb_cnt_minus1 = LAYOUT$cpb_cnt_minus1.byteSize();
     public static final long SIZE$elemental_duration_in_tc_minus1 = LAYOUT$elemental_duration_in_tc_minus1.byteSize();
-    public static final long SIZE$reserved = LAYOUT$reserved.byteSize();
     public static final long SIZE$pSubLayerHrdParametersNal = LAYOUT$pSubLayerHrdParametersNal.byteSize();
     public static final long SIZE$pSubLayerHrdParametersVcl = LAYOUT$pSubLayerHrdParametersVcl.byteSize();
 
@@ -331,7 +321,6 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
     public static final long OFFSET$dpb_output_delay_length_minus1 = LAYOUT.byteOffset(PATH$dpb_output_delay_length_minus1);
     public static final long OFFSET$cpb_cnt_minus1 = LAYOUT.byteOffset(PATH$cpb_cnt_minus1);
     public static final long OFFSET$elemental_duration_in_tc_minus1 = LAYOUT.byteOffset(PATH$elemental_duration_in_tc_minus1);
-    public static final long OFFSET$reserved = LAYOUT.byteOffset(PATH$reserved);
     public static final long OFFSET$pSubLayerHrdParametersNal = LAYOUT.byteOffset(PATH$pSubLayerHrdParametersNal);
     public static final long OFFSET$pSubLayerHrdParametersVcl = LAYOUT.byteOffset(PATH$pSubLayerHrdParametersVcl);
 }

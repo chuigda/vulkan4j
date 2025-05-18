@@ -24,7 +24,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t BitDepth; // @link substring="BitDepth" target="#BitDepth"
 ///     uint8_t subsampling_x; // @link substring="subsampling_x" target="#subsampling_x"
 ///     uint8_t subsampling_y; // @link substring="subsampling_y" target="#subsampling_y"
-///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint8_t reserved1;
 ///     StdVideoAV1ColorPrimaries color_primaries; // @link substring="StdVideoAV1ColorPrimaries" target="StdVideoAV1ColorPrimaries" @link substring="color_primaries" target="#color_primaries"
 ///     StdVideoAV1TransferCharacteristics transfer_characteristics; // @link substring="StdVideoAV1TransferCharacteristics" target="StdVideoAV1TransferCharacteristics" @link substring="transfer_characteristics" target="#transfer_characteristics"
 ///     StdVideoAV1MatrixCoefficients matrix_coefficients; // @link substring="StdVideoAV1MatrixCoefficients" target="StdVideoAV1MatrixCoefficients" @link substring="matrix_coefficients" target="#matrix_coefficients"
@@ -104,13 +104,6 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$subsampling_y, OFFSET$subsampling_y, value);
     }
 
-    public @unsigned byte reserved1() {
-        return segment.get(LAYOUT$reserved1, OFFSET$reserved1);
-    }
-
-    public void reserved1(@unsigned byte value) {
-        segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
-    }
 
     public @enumtype(StdVideoAV1ColorPrimaries.class) int color_primaries() {
         return segment.get(LAYOUT$color_primaries, OFFSET$color_primaries);
@@ -161,7 +154,6 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
     public static final PathElement PATH$BitDepth = PathElement.groupElement("PATH$BitDepth");
     public static final PathElement PATH$subsampling_x = PathElement.groupElement("PATH$subsampling_x");
     public static final PathElement PATH$subsampling_y = PathElement.groupElement("PATH$subsampling_y");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$color_primaries = PathElement.groupElement("PATH$color_primaries");
     public static final PathElement PATH$transfer_characteristics = PathElement.groupElement("PATH$transfer_characteristics");
     public static final PathElement PATH$matrix_coefficients = PathElement.groupElement("PATH$matrix_coefficients");
@@ -171,7 +163,6 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
     public static final OfByte LAYOUT$BitDepth = (OfByte) LAYOUT.select(PATH$BitDepth);
     public static final OfByte LAYOUT$subsampling_x = (OfByte) LAYOUT.select(PATH$subsampling_x);
     public static final OfByte LAYOUT$subsampling_y = (OfByte) LAYOUT.select(PATH$subsampling_y);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
     public static final OfInt LAYOUT$color_primaries = (OfInt) LAYOUT.select(PATH$color_primaries);
     public static final OfInt LAYOUT$transfer_characteristics = (OfInt) LAYOUT.select(PATH$transfer_characteristics);
     public static final OfInt LAYOUT$matrix_coefficients = (OfInt) LAYOUT.select(PATH$matrix_coefficients);
@@ -181,7 +172,6 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
     public static final long SIZE$BitDepth = LAYOUT$BitDepth.byteSize();
     public static final long SIZE$subsampling_x = LAYOUT$subsampling_x.byteSize();
     public static final long SIZE$subsampling_y = LAYOUT$subsampling_y.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
     public static final long SIZE$color_primaries = LAYOUT$color_primaries.byteSize();
     public static final long SIZE$transfer_characteristics = LAYOUT$transfer_characteristics.byteSize();
     public static final long SIZE$matrix_coefficients = LAYOUT$matrix_coefficients.byteSize();
@@ -191,7 +181,6 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
     public static final long OFFSET$BitDepth = LAYOUT.byteOffset(PATH$BitDepth);
     public static final long OFFSET$subsampling_x = LAYOUT.byteOffset(PATH$subsampling_x);
     public static final long OFFSET$subsampling_y = LAYOUT.byteOffset(PATH$subsampling_y);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
     public static final long OFFSET$color_primaries = LAYOUT.byteOffset(PATH$color_primaries);
     public static final long OFFSET$transfer_characteristics = LAYOUT.byteOffset(PATH$transfer_characteristics);
     public static final long OFFSET$matrix_coefficients = LAYOUT.byteOffset(PATH$matrix_coefficients);

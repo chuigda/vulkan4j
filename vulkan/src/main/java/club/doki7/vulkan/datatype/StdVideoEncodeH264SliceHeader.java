@@ -26,7 +26,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     int8_t slice_alpha_c0_offset_div2; // @link substring="slice_alpha_c0_offset_div2" target="#slice_alpha_c0_offset_div2"
 ///     int8_t slice_beta_offset_div2; // @link substring="slice_beta_offset_div2" target="#slice_beta_offset_div2"
 ///     int8_t slice_qp_delta; // @link substring="slice_qp_delta" target="#slice_qp_delta"
-///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint8_t reserved1;
 ///     StdVideoH264CabacInitIdc cabac_init_idc; // @link substring="StdVideoH264CabacInitIdc" target="StdVideoH264CabacInitIdc" @link substring="cabac_init_idc" target="#cabac_init_idc"
 ///     StdVideoH264DisableDeblockingFilterIdc disable_deblocking_filter_idc; // @link substring="StdVideoH264DisableDeblockingFilterIdc" target="StdVideoH264DisableDeblockingFilterIdc" @link substring="disable_deblocking_filter_idc" target="#disable_deblocking_filter_idc"
 ///     StdVideoEncodeH264WeightTable const* pWeightTable; // @link substring="StdVideoEncodeH264WeightTable" target="StdVideoEncodeH264WeightTable" @link substring="pWeightTable" target="#pWeightTable"
@@ -121,13 +121,6 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$slice_qp_delta, OFFSET$slice_qp_delta, value);
     }
 
-    public @unsigned byte reserved1() {
-        return segment.get(LAYOUT$reserved1, OFFSET$reserved1);
-    }
-
-    public void reserved1(@unsigned byte value) {
-        segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
-    }
 
     public @enumtype(StdVideoH264CabacInitIdc.class) int cabac_init_idc() {
         return segment.get(LAYOUT$cabac_init_idc, OFFSET$cabac_init_idc);
@@ -200,7 +193,6 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
     public static final PathElement PATH$slice_alpha_c0_offset_div2 = PathElement.groupElement("PATH$slice_alpha_c0_offset_div2");
     public static final PathElement PATH$slice_beta_offset_div2 = PathElement.groupElement("PATH$slice_beta_offset_div2");
     public static final PathElement PATH$slice_qp_delta = PathElement.groupElement("PATH$slice_qp_delta");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$cabac_init_idc = PathElement.groupElement("PATH$cabac_init_idc");
     public static final PathElement PATH$disable_deblocking_filter_idc = PathElement.groupElement("PATH$disable_deblocking_filter_idc");
     public static final PathElement PATH$pWeightTable = PathElement.groupElement("PATH$pWeightTable");
@@ -211,7 +203,6 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
     public static final OfByte LAYOUT$slice_alpha_c0_offset_div2 = (OfByte) LAYOUT.select(PATH$slice_alpha_c0_offset_div2);
     public static final OfByte LAYOUT$slice_beta_offset_div2 = (OfByte) LAYOUT.select(PATH$slice_beta_offset_div2);
     public static final OfByte LAYOUT$slice_qp_delta = (OfByte) LAYOUT.select(PATH$slice_qp_delta);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
     public static final OfInt LAYOUT$cabac_init_idc = (OfInt) LAYOUT.select(PATH$cabac_init_idc);
     public static final OfInt LAYOUT$disable_deblocking_filter_idc = (OfInt) LAYOUT.select(PATH$disable_deblocking_filter_idc);
     public static final AddressLayout LAYOUT$pWeightTable = (AddressLayout) LAYOUT.select(PATH$pWeightTable);
@@ -222,7 +213,6 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
     public static final long SIZE$slice_alpha_c0_offset_div2 = LAYOUT$slice_alpha_c0_offset_div2.byteSize();
     public static final long SIZE$slice_beta_offset_div2 = LAYOUT$slice_beta_offset_div2.byteSize();
     public static final long SIZE$slice_qp_delta = LAYOUT$slice_qp_delta.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
     public static final long SIZE$cabac_init_idc = LAYOUT$cabac_init_idc.byteSize();
     public static final long SIZE$disable_deblocking_filter_idc = LAYOUT$disable_deblocking_filter_idc.byteSize();
     public static final long SIZE$pWeightTable = LAYOUT$pWeightTable.byteSize();
@@ -233,7 +223,6 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
     public static final long OFFSET$slice_alpha_c0_offset_div2 = LAYOUT.byteOffset(PATH$slice_alpha_c0_offset_div2);
     public static final long OFFSET$slice_beta_offset_div2 = LAYOUT.byteOffset(PATH$slice_beta_offset_div2);
     public static final long OFFSET$slice_qp_delta = LAYOUT.byteOffset(PATH$slice_qp_delta);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
     public static final long OFFSET$cabac_init_idc = LAYOUT.byteOffset(PATH$cabac_init_idc);
     public static final long OFFSET$disable_deblocking_filter_idc = LAYOUT.byteOffset(PATH$disable_deblocking_filter_idc);
     public static final long OFFSET$pWeightTable = LAYOUT.byteOffset(PATH$pWeightTable);

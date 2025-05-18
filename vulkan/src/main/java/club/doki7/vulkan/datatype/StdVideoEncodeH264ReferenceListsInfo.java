@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t refList0ModOpCount; // @link substring="refList0ModOpCount" target="#refList0ModOpCount"
 ///     uint8_t refList1ModOpCount; // @link substring="refList1ModOpCount" target="#refList1ModOpCount"
 ///     uint8_t refPicMarkingOpCount; // @link substring="refPicMarkingOpCount" target="#refPicMarkingOpCount"
-///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint8_t reserved1;
 ///     StdVideoEncodeH264RefListModEntry const* pRefList0ModOperations; // @link substring="StdVideoEncodeH264RefListModEntry" target="StdVideoEncodeH264RefListModEntry" @link substring="pRefList0ModOperations" target="#pRefList0ModOperations"
 ///     StdVideoEncodeH264RefListModEntry const* pRefList1ModOperations; // @link substring="StdVideoEncodeH264RefListModEntry" target="StdVideoEncodeH264RefListModEntry" @link substring="pRefList1ModOperations" target="#pRefList1ModOperations"
 ///     StdVideoEncodeH264RefPicMarkingEntry const* pRefPicMarkingOperations; // @link substring="StdVideoEncodeH264RefPicMarkingEntry" target="StdVideoEncodeH264RefPicMarkingEntry" @link substring="pRefPicMarkingOperations" target="#pRefPicMarkingOperations"
@@ -139,13 +139,6 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$refPicMarkingOpCount, OFFSET$refPicMarkingOpCount, value);
     }
 
-    public @unsigned byte reserved1() {
-        return segment.get(LAYOUT$reserved1, OFFSET$reserved1);
-    }
-
-    public void reserved1(@unsigned byte value) {
-        segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
-    }
 
     public @Nullable StdVideoEncodeH264RefListModEntry pRefList0ModOperations() {
         MemorySegment s = pRefList0ModOperationsRaw();
@@ -276,7 +269,6 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
     public static final PathElement PATH$refList0ModOpCount = PathElement.groupElement("PATH$refList0ModOpCount");
     public static final PathElement PATH$refList1ModOpCount = PathElement.groupElement("PATH$refList1ModOpCount");
     public static final PathElement PATH$refPicMarkingOpCount = PathElement.groupElement("PATH$refPicMarkingOpCount");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$pRefList0ModOperations = PathElement.groupElement("PATH$pRefList0ModOperations");
     public static final PathElement PATH$pRefList1ModOperations = PathElement.groupElement("PATH$pRefList1ModOperations");
     public static final PathElement PATH$pRefPicMarkingOperations = PathElement.groupElement("PATH$pRefPicMarkingOperations");
@@ -289,7 +281,6 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
     public static final OfByte LAYOUT$refList0ModOpCount = (OfByte) LAYOUT.select(PATH$refList0ModOpCount);
     public static final OfByte LAYOUT$refList1ModOpCount = (OfByte) LAYOUT.select(PATH$refList1ModOpCount);
     public static final OfByte LAYOUT$refPicMarkingOpCount = (OfByte) LAYOUT.select(PATH$refPicMarkingOpCount);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
     public static final AddressLayout LAYOUT$pRefList0ModOperations = (AddressLayout) LAYOUT.select(PATH$pRefList0ModOperations);
     public static final AddressLayout LAYOUT$pRefList1ModOperations = (AddressLayout) LAYOUT.select(PATH$pRefList1ModOperations);
     public static final AddressLayout LAYOUT$pRefPicMarkingOperations = (AddressLayout) LAYOUT.select(PATH$pRefPicMarkingOperations);
@@ -302,7 +293,6 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
     public static final long SIZE$refList0ModOpCount = LAYOUT$refList0ModOpCount.byteSize();
     public static final long SIZE$refList1ModOpCount = LAYOUT$refList1ModOpCount.byteSize();
     public static final long SIZE$refPicMarkingOpCount = LAYOUT$refPicMarkingOpCount.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
     public static final long SIZE$pRefList0ModOperations = LAYOUT$pRefList0ModOperations.byteSize();
     public static final long SIZE$pRefList1ModOperations = LAYOUT$pRefList1ModOperations.byteSize();
     public static final long SIZE$pRefPicMarkingOperations = LAYOUT$pRefPicMarkingOperations.byteSize();
@@ -315,7 +305,6 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
     public static final long OFFSET$refList0ModOpCount = LAYOUT.byteOffset(PATH$refList0ModOpCount);
     public static final long OFFSET$refList1ModOpCount = LAYOUT.byteOffset(PATH$refList1ModOpCount);
     public static final long OFFSET$refPicMarkingOpCount = LAYOUT.byteOffset(PATH$refPicMarkingOpCount);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
     public static final long OFFSET$pRefList0ModOperations = LAYOUT.byteOffset(PATH$pRefList0ModOperations);
     public static final long OFFSET$pRefList1ModOperations = LAYOUT.byteOffset(PATH$pRefList1ModOperations);
     public static final long OFFSET$pRefPicMarkingOperations = LAYOUT.byteOffset(PATH$pRefPicMarkingOperations);

@@ -21,11 +21,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkClusterAccelerationStructureInstantiateClusterInfoNV {
-///     uint32_t clusterIdOffset;
-///     uint32_t geometryIndexOffset : 24;
+///     uint32_t clusterIdOffset; // @link substring="clusterIdOffset" target="#clusterIdOffset"
+///     uint32_t geometryIndexOffset : 24; // @link substring="geometryIndexOffset" target="#geometryIndexOffset"
 ///     uint32_t reserved : 8;
-///     VkDeviceAddress clusterTemplateAddress;
-///     VkStridedDeviceAddressNV vertexBuffer;
+///     VkDeviceAddress clusterTemplateAddress; // @link substring="clusterTemplateAddress" target="#clusterTemplateAddress"
+///     VkStridedDeviceAddressNV vertexBuffer; // @link substring="VkStridedDeviceAddressNV" target="VkStridedDeviceAddressNV" @link substring="vertexBuffer" target="#vertexBuffer"
 /// } VkClusterAccelerationStructureInstantiateClusterInfoNV;
 /// }
 ///
@@ -97,11 +97,11 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
         segment.set(LAYOUT$clusterTemplateAddress, OFFSET$clusterTemplateAddress, value);
     }
 
-    public VkStridedDeviceAddressNV vertexBuffer() {
+    public @NotNull VkStridedDeviceAddressNV vertexBuffer() {
         return new VkStridedDeviceAddressNV(segment.asSlice(OFFSET$vertexBuffer, LAYOUT$vertexBuffer));
     }
 
-    public void vertexBuffer(VkStridedDeviceAddressNV value) {
+    public void vertexBuffer(@NotNull VkStridedDeviceAddressNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$vertexBuffer, SIZE$vertexBuffer);
     }
 

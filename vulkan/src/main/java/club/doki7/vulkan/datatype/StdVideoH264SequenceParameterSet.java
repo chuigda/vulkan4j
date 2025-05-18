@@ -34,14 +34,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t log2_max_pic_order_cnt_lsb_minus4; // @link substring="log2_max_pic_order_cnt_lsb_minus4" target="#log2_max_pic_order_cnt_lsb_minus4"
 ///     uint8_t num_ref_frames_in_pic_order_cnt_cycle; // @link substring="num_ref_frames_in_pic_order_cnt_cycle" target="#num_ref_frames_in_pic_order_cnt_cycle"
 ///     uint8_t max_num_ref_frames; // @link substring="max_num_ref_frames" target="#max_num_ref_frames"
-///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint8_t reserved1;
 ///     uint32_t pic_width_in_mbs_minus1; // @link substring="pic_width_in_mbs_minus1" target="#pic_width_in_mbs_minus1"
 ///     uint32_t pic_height_in_map_units_minus1; // @link substring="pic_height_in_map_units_minus1" target="#pic_height_in_map_units_minus1"
 ///     uint32_t frame_crop_left_offset; // @link substring="frame_crop_left_offset" target="#frame_crop_left_offset"
 ///     uint32_t frame_crop_right_offset; // @link substring="frame_crop_right_offset" target="#frame_crop_right_offset"
 ///     uint32_t frame_crop_top_offset; // @link substring="frame_crop_top_offset" target="#frame_crop_top_offset"
 ///     uint32_t frame_crop_bottom_offset; // @link substring="frame_crop_bottom_offset" target="#frame_crop_bottom_offset"
-///     uint32_t reserved2; // @link substring="reserved2" target="#reserved2"
+///     uint32_t reserved2;
 ///     int32_t const* pOffsetForRefFrame; // @link substring="pOffsetForRefFrame" target="#pOffsetForRefFrame"
 ///     StdVideoH264ScalingLists const* pScalingLists; // @link substring="StdVideoH264ScalingLists" target="StdVideoH264ScalingLists" @link substring="pScalingLists" target="#pScalingLists"
 ///     StdVideoH264SequenceParameterSetVui const* pSequenceParameterSetVui; // @link substring="StdVideoH264SequenceParameterSetVui" target="StdVideoH264SequenceParameterSetVui" @link substring="pSequenceParameterSetVui" target="#pSequenceParameterSetVui"
@@ -200,13 +200,6 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$max_num_ref_frames, OFFSET$max_num_ref_frames, value);
     }
 
-    public @unsigned byte reserved1() {
-        return segment.get(LAYOUT$reserved1, OFFSET$reserved1);
-    }
-
-    public void reserved1(@unsigned byte value) {
-        segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
-    }
 
     public @unsigned int pic_width_in_mbs_minus1() {
         return segment.get(LAYOUT$pic_width_in_mbs_minus1, OFFSET$pic_width_in_mbs_minus1);
@@ -256,13 +249,6 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$frame_crop_bottom_offset, OFFSET$frame_crop_bottom_offset, value);
     }
 
-    public @unsigned int reserved2() {
-        return segment.get(LAYOUT$reserved2, OFFSET$reserved2);
-    }
-
-    public void reserved2(@unsigned int value) {
-        segment.set(LAYOUT$reserved2, OFFSET$reserved2, value);
-    }
 
     /// Note: the returned {@link IntPtr} does not have correct
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
@@ -402,14 +388,12 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
     public static final PathElement PATH$log2_max_pic_order_cnt_lsb_minus4 = PathElement.groupElement("PATH$log2_max_pic_order_cnt_lsb_minus4");
     public static final PathElement PATH$num_ref_frames_in_pic_order_cnt_cycle = PathElement.groupElement("PATH$num_ref_frames_in_pic_order_cnt_cycle");
     public static final PathElement PATH$max_num_ref_frames = PathElement.groupElement("PATH$max_num_ref_frames");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$pic_width_in_mbs_minus1 = PathElement.groupElement("PATH$pic_width_in_mbs_minus1");
     public static final PathElement PATH$pic_height_in_map_units_minus1 = PathElement.groupElement("PATH$pic_height_in_map_units_minus1");
     public static final PathElement PATH$frame_crop_left_offset = PathElement.groupElement("PATH$frame_crop_left_offset");
     public static final PathElement PATH$frame_crop_right_offset = PathElement.groupElement("PATH$frame_crop_right_offset");
     public static final PathElement PATH$frame_crop_top_offset = PathElement.groupElement("PATH$frame_crop_top_offset");
     public static final PathElement PATH$frame_crop_bottom_offset = PathElement.groupElement("PATH$frame_crop_bottom_offset");
-    public static final PathElement PATH$reserved2 = PathElement.groupElement("PATH$reserved2");
     public static final PathElement PATH$pOffsetForRefFrame = PathElement.groupElement("PATH$pOffsetForRefFrame");
     public static final PathElement PATH$pScalingLists = PathElement.groupElement("PATH$pScalingLists");
     public static final PathElement PATH$pSequenceParameterSetVui = PathElement.groupElement("PATH$pSequenceParameterSetVui");
@@ -428,14 +412,12 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
     public static final OfByte LAYOUT$log2_max_pic_order_cnt_lsb_minus4 = (OfByte) LAYOUT.select(PATH$log2_max_pic_order_cnt_lsb_minus4);
     public static final OfByte LAYOUT$num_ref_frames_in_pic_order_cnt_cycle = (OfByte) LAYOUT.select(PATH$num_ref_frames_in_pic_order_cnt_cycle);
     public static final OfByte LAYOUT$max_num_ref_frames = (OfByte) LAYOUT.select(PATH$max_num_ref_frames);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
     public static final OfInt LAYOUT$pic_width_in_mbs_minus1 = (OfInt) LAYOUT.select(PATH$pic_width_in_mbs_minus1);
     public static final OfInt LAYOUT$pic_height_in_map_units_minus1 = (OfInt) LAYOUT.select(PATH$pic_height_in_map_units_minus1);
     public static final OfInt LAYOUT$frame_crop_left_offset = (OfInt) LAYOUT.select(PATH$frame_crop_left_offset);
     public static final OfInt LAYOUT$frame_crop_right_offset = (OfInt) LAYOUT.select(PATH$frame_crop_right_offset);
     public static final OfInt LAYOUT$frame_crop_top_offset = (OfInt) LAYOUT.select(PATH$frame_crop_top_offset);
     public static final OfInt LAYOUT$frame_crop_bottom_offset = (OfInt) LAYOUT.select(PATH$frame_crop_bottom_offset);
-    public static final OfInt LAYOUT$reserved2 = (OfInt) LAYOUT.select(PATH$reserved2);
     public static final AddressLayout LAYOUT$pOffsetForRefFrame = (AddressLayout) LAYOUT.select(PATH$pOffsetForRefFrame);
     public static final AddressLayout LAYOUT$pScalingLists = (AddressLayout) LAYOUT.select(PATH$pScalingLists);
     public static final AddressLayout LAYOUT$pSequenceParameterSetVui = (AddressLayout) LAYOUT.select(PATH$pSequenceParameterSetVui);
@@ -454,14 +436,12 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
     public static final long SIZE$log2_max_pic_order_cnt_lsb_minus4 = LAYOUT$log2_max_pic_order_cnt_lsb_minus4.byteSize();
     public static final long SIZE$num_ref_frames_in_pic_order_cnt_cycle = LAYOUT$num_ref_frames_in_pic_order_cnt_cycle.byteSize();
     public static final long SIZE$max_num_ref_frames = LAYOUT$max_num_ref_frames.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
     public static final long SIZE$pic_width_in_mbs_minus1 = LAYOUT$pic_width_in_mbs_minus1.byteSize();
     public static final long SIZE$pic_height_in_map_units_minus1 = LAYOUT$pic_height_in_map_units_minus1.byteSize();
     public static final long SIZE$frame_crop_left_offset = LAYOUT$frame_crop_left_offset.byteSize();
     public static final long SIZE$frame_crop_right_offset = LAYOUT$frame_crop_right_offset.byteSize();
     public static final long SIZE$frame_crop_top_offset = LAYOUT$frame_crop_top_offset.byteSize();
     public static final long SIZE$frame_crop_bottom_offset = LAYOUT$frame_crop_bottom_offset.byteSize();
-    public static final long SIZE$reserved2 = LAYOUT$reserved2.byteSize();
     public static final long SIZE$pOffsetForRefFrame = LAYOUT$pOffsetForRefFrame.byteSize();
     public static final long SIZE$pScalingLists = LAYOUT$pScalingLists.byteSize();
     public static final long SIZE$pSequenceParameterSetVui = LAYOUT$pSequenceParameterSetVui.byteSize();
@@ -480,14 +460,12 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
     public static final long OFFSET$log2_max_pic_order_cnt_lsb_minus4 = LAYOUT.byteOffset(PATH$log2_max_pic_order_cnt_lsb_minus4);
     public static final long OFFSET$num_ref_frames_in_pic_order_cnt_cycle = LAYOUT.byteOffset(PATH$num_ref_frames_in_pic_order_cnt_cycle);
     public static final long OFFSET$max_num_ref_frames = LAYOUT.byteOffset(PATH$max_num_ref_frames);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
     public static final long OFFSET$pic_width_in_mbs_minus1 = LAYOUT.byteOffset(PATH$pic_width_in_mbs_minus1);
     public static final long OFFSET$pic_height_in_map_units_minus1 = LAYOUT.byteOffset(PATH$pic_height_in_map_units_minus1);
     public static final long OFFSET$frame_crop_left_offset = LAYOUT.byteOffset(PATH$frame_crop_left_offset);
     public static final long OFFSET$frame_crop_right_offset = LAYOUT.byteOffset(PATH$frame_crop_right_offset);
     public static final long OFFSET$frame_crop_top_offset = LAYOUT.byteOffset(PATH$frame_crop_top_offset);
     public static final long OFFSET$frame_crop_bottom_offset = LAYOUT.byteOffset(PATH$frame_crop_bottom_offset);
-    public static final long OFFSET$reserved2 = LAYOUT.byteOffset(PATH$reserved2);
     public static final long OFFSET$pOffsetForRefFrame = LAYOUT.byteOffset(PATH$pOffsetForRefFrame);
     public static final long OFFSET$pScalingLists = LAYOUT.byteOffset(PATH$pScalingLists);
     public static final long OFFSET$pSequenceParameterSetVui = LAYOUT.byteOffset(PATH$pSequenceParameterSetVui);

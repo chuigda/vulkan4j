@@ -24,7 +24,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t RefFrameId; // @link substring="RefFrameId" target="#RefFrameId"
 ///     StdVideoAV1FrameType frame_type; // @link substring="StdVideoAV1FrameType" target="StdVideoAV1FrameType" @link substring="frame_type" target="#frame_type"
 ///     uint8_t OrderHint; // @link substring="OrderHint" target="#OrderHint"
-///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint8_t reserved1;
 ///     StdVideoEncodeAV1ExtensionHeader const* pExtensionHeader; // @link substring="StdVideoEncodeAV1ExtensionHeader" target="StdVideoEncodeAV1ExtensionHeader" @link substring="pExtensionHeader" target="#pExtensionHeader"
 /// } StdVideoEncodeAV1ReferenceInfo;
 /// }
@@ -101,13 +101,6 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$OrderHint, OFFSET$OrderHint, value);
     }
 
-    public @unsigned byte reserved1() {
-        return segment.get(LAYOUT$reserved1, OFFSET$reserved1);
-    }
-
-    public void reserved1(@unsigned byte value) {
-        segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
-    }
 
     public @Nullable StdVideoEncodeAV1ExtensionHeader pExtensionHeader() {
         MemorySegment s = pExtensionHeaderRaw();
@@ -158,27 +151,23 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
     public static final PathElement PATH$RefFrameId = PathElement.groupElement("PATH$RefFrameId");
     public static final PathElement PATH$frame_type = PathElement.groupElement("PATH$frame_type");
     public static final PathElement PATH$OrderHint = PathElement.groupElement("PATH$OrderHint");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$pExtensionHeader = PathElement.groupElement("PATH$pExtensionHeader");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfInt LAYOUT$RefFrameId = (OfInt) LAYOUT.select(PATH$RefFrameId);
     public static final OfInt LAYOUT$frame_type = (OfInt) LAYOUT.select(PATH$frame_type);
     public static final OfByte LAYOUT$OrderHint = (OfByte) LAYOUT.select(PATH$OrderHint);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
     public static final AddressLayout LAYOUT$pExtensionHeader = (AddressLayout) LAYOUT.select(PATH$pExtensionHeader);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$RefFrameId = LAYOUT$RefFrameId.byteSize();
     public static final long SIZE$frame_type = LAYOUT$frame_type.byteSize();
     public static final long SIZE$OrderHint = LAYOUT$OrderHint.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
     public static final long SIZE$pExtensionHeader = LAYOUT$pExtensionHeader.byteSize();
 
     public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
     public static final long OFFSET$RefFrameId = LAYOUT.byteOffset(PATH$RefFrameId);
     public static final long OFFSET$frame_type = LAYOUT.byteOffset(PATH$frame_type);
     public static final long OFFSET$OrderHint = LAYOUT.byteOffset(PATH$OrderHint);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
     public static final long OFFSET$pExtensionHeader = LAYOUT.byteOffset(PATH$pExtensionHeader);
 }

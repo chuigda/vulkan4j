@@ -21,12 +21,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkAccelerationStructureInstanceKHR {
-///     VkTransformMatrixKHR transform;
-///     uint32_t instanceCustomIndex : 24;
-///     uint32_t mask : 8;
-///     uint32_t instanceShaderBindingTableRecordOffset : 24;
-///     VkGeometryInstanceFlagsKHR flags : 8; // optional
-///     uint64_t accelerationStructureReference;
+///     VkTransformMatrixKHR transform; // @link substring="VkTransformMatrixKHR" target="VkTransformMatrixKHR" @link substring="transform" target="#transform"
+///     uint32_t instanceCustomIndex : 24; // @link substring="instanceCustomIndex" target="#instanceCustomIndex"
+///     uint32_t mask : 8; // @link substring="mask" target="#mask"
+///     uint32_t instanceShaderBindingTableRecordOffset : 24; // @link substring="instanceShaderBindingTableRecordOffset" target="#instanceShaderBindingTableRecordOffset"
+///     uint32_t flags : 8; // @link substring="flags" target="#flags"
+///     uint64_t accelerationStructureReference; // @link substring="accelerationStructureReference" target="#accelerationStructureReference"
 /// } VkAccelerationStructureInstanceKHR;
 /// }
 ///
@@ -72,11 +72,11 @@ public record VkAccelerationStructureInstanceKHR(@NotNull MemorySegment segment)
         return ret;
     }
 
-    public VkTransformMatrixKHR transform() {
+    public @NotNull VkTransformMatrixKHR transform() {
         return new VkTransformMatrixKHR(segment.asSlice(OFFSET$transform, LAYOUT$transform));
     }
 
-    public void transform(VkTransformMatrixKHR value) {
+    public void transform(@NotNull VkTransformMatrixKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$transform, SIZE$transform);
     }
 

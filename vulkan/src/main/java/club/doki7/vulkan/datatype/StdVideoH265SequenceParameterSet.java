@@ -42,8 +42,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t pcm_sample_bit_depth_chroma_minus1; // @link substring="pcm_sample_bit_depth_chroma_minus1" target="#pcm_sample_bit_depth_chroma_minus1"
 ///     uint8_t log2_min_pcm_luma_coding_block_size_minus3; // @link substring="log2_min_pcm_luma_coding_block_size_minus3" target="#log2_min_pcm_luma_coding_block_size_minus3"
 ///     uint8_t log2_diff_max_min_pcm_luma_coding_block_size; // @link substring="log2_diff_max_min_pcm_luma_coding_block_size" target="#log2_diff_max_min_pcm_luma_coding_block_size"
-///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
-///     uint8_t reserved2; // @link substring="reserved2" target="#reserved2"
+///     uint8_t reserved1;
+///     uint8_t reserved2;
 ///     uint8_t palette_max_size; // @link substring="palette_max_size" target="#palette_max_size"
 ///     uint8_t delta_palette_max_predictor_size; // @link substring="delta_palette_max_predictor_size" target="#delta_palette_max_predictor_size"
 ///     uint8_t motion_vector_resolution_control_idc; // @link substring="motion_vector_resolution_control_idc" target="#motion_vector_resolution_control_idc"
@@ -278,21 +278,7 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$log2_diff_max_min_pcm_luma_coding_block_size, OFFSET$log2_diff_max_min_pcm_luma_coding_block_size, value);
     }
 
-    public @unsigned byte reserved1() {
-        return segment.get(LAYOUT$reserved1, OFFSET$reserved1);
-    }
 
-    public void reserved1(@unsigned byte value) {
-        segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
-    }
-
-    public @unsigned byte reserved2() {
-        return segment.get(LAYOUT$reserved2, OFFSET$reserved2);
-    }
-
-    public void reserved2(@unsigned byte value) {
-        segment.set(LAYOUT$reserved2, OFFSET$reserved2, value);
-    }
 
     public @unsigned byte palette_max_size() {
         return segment.get(LAYOUT$palette_max_size, OFFSET$palette_max_size);
@@ -668,8 +654,6 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
     public static final PathElement PATH$pcm_sample_bit_depth_chroma_minus1 = PathElement.groupElement("PATH$pcm_sample_bit_depth_chroma_minus1");
     public static final PathElement PATH$log2_min_pcm_luma_coding_block_size_minus3 = PathElement.groupElement("PATH$log2_min_pcm_luma_coding_block_size_minus3");
     public static final PathElement PATH$log2_diff_max_min_pcm_luma_coding_block_size = PathElement.groupElement("PATH$log2_diff_max_min_pcm_luma_coding_block_size");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
-    public static final PathElement PATH$reserved2 = PathElement.groupElement("PATH$reserved2");
     public static final PathElement PATH$palette_max_size = PathElement.groupElement("PATH$palette_max_size");
     public static final PathElement PATH$delta_palette_max_predictor_size = PathElement.groupElement("PATH$delta_palette_max_predictor_size");
     public static final PathElement PATH$motion_vector_resolution_control_idc = PathElement.groupElement("PATH$motion_vector_resolution_control_idc");
@@ -708,8 +692,6 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
     public static final OfByte LAYOUT$pcm_sample_bit_depth_chroma_minus1 = (OfByte) LAYOUT.select(PATH$pcm_sample_bit_depth_chroma_minus1);
     public static final OfByte LAYOUT$log2_min_pcm_luma_coding_block_size_minus3 = (OfByte) LAYOUT.select(PATH$log2_min_pcm_luma_coding_block_size_minus3);
     public static final OfByte LAYOUT$log2_diff_max_min_pcm_luma_coding_block_size = (OfByte) LAYOUT.select(PATH$log2_diff_max_min_pcm_luma_coding_block_size);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
-    public static final OfByte LAYOUT$reserved2 = (OfByte) LAYOUT.select(PATH$reserved2);
     public static final OfByte LAYOUT$palette_max_size = (OfByte) LAYOUT.select(PATH$palette_max_size);
     public static final OfByte LAYOUT$delta_palette_max_predictor_size = (OfByte) LAYOUT.select(PATH$delta_palette_max_predictor_size);
     public static final OfByte LAYOUT$motion_vector_resolution_control_idc = (OfByte) LAYOUT.select(PATH$motion_vector_resolution_control_idc);
@@ -748,8 +730,6 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
     public static final long SIZE$pcm_sample_bit_depth_chroma_minus1 = LAYOUT$pcm_sample_bit_depth_chroma_minus1.byteSize();
     public static final long SIZE$log2_min_pcm_luma_coding_block_size_minus3 = LAYOUT$log2_min_pcm_luma_coding_block_size_minus3.byteSize();
     public static final long SIZE$log2_diff_max_min_pcm_luma_coding_block_size = LAYOUT$log2_diff_max_min_pcm_luma_coding_block_size.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
-    public static final long SIZE$reserved2 = LAYOUT$reserved2.byteSize();
     public static final long SIZE$palette_max_size = LAYOUT$palette_max_size.byteSize();
     public static final long SIZE$delta_palette_max_predictor_size = LAYOUT$delta_palette_max_predictor_size.byteSize();
     public static final long SIZE$motion_vector_resolution_control_idc = LAYOUT$motion_vector_resolution_control_idc.byteSize();
@@ -788,8 +768,6 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
     public static final long OFFSET$pcm_sample_bit_depth_chroma_minus1 = LAYOUT.byteOffset(PATH$pcm_sample_bit_depth_chroma_minus1);
     public static final long OFFSET$log2_min_pcm_luma_coding_block_size_minus3 = LAYOUT.byteOffset(PATH$log2_min_pcm_luma_coding_block_size_minus3);
     public static final long OFFSET$log2_diff_max_min_pcm_luma_coding_block_size = LAYOUT.byteOffset(PATH$log2_diff_max_min_pcm_luma_coding_block_size);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
-    public static final long OFFSET$reserved2 = LAYOUT.byteOffset(PATH$reserved2);
     public static final long OFFSET$palette_max_size = LAYOUT.byteOffset(PATH$palette_max_size);
     public static final long OFFSET$delta_palette_max_predictor_size = LAYOUT.byteOffset(PATH$delta_palette_max_predictor_size);
     public static final long OFFSET$motion_vector_resolution_control_idc = LAYOUT.byteOffset(PATH$motion_vector_resolution_control_idc);

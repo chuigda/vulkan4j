@@ -23,7 +23,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t cpb_cnt_minus1; // @link substring="cpb_cnt_minus1" target="#cpb_cnt_minus1"
 ///     uint8_t bit_rate_scale; // @link substring="bit_rate_scale" target="#bit_rate_scale"
 ///     uint8_t cpb_size_scale; // @link substring="cpb_size_scale" target="#cpb_size_scale"
-///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint8_t reserved1;
 ///     uint32_t bit_rate_value_minus1; // @link substring="bit_rate_value_minus1" target="#bit_rate_value_minus1"
 ///     uint32_t cpb_size_value_minus1; // @link substring="cpb_size_value_minus1" target="#cpb_size_value_minus1"
 ///     uint8_t cbr_flag; // @link substring="cbr_flag" target="#cbr_flag"
@@ -98,13 +98,6 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$cpb_size_scale, OFFSET$cpb_size_scale, value);
     }
 
-    public @unsigned byte reserved1() {
-        return segment.get(LAYOUT$reserved1, OFFSET$reserved1);
-    }
-
-    public void reserved1(@unsigned byte value) {
-        segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
-    }
 
     public @unsigned int bit_rate_value_minus1() {
         return segment.get(LAYOUT$bit_rate_value_minus1, OFFSET$bit_rate_value_minus1);
@@ -180,7 +173,6 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
     public static final PathElement PATH$cpb_cnt_minus1 = PathElement.groupElement("PATH$cpb_cnt_minus1");
     public static final PathElement PATH$bit_rate_scale = PathElement.groupElement("PATH$bit_rate_scale");
     public static final PathElement PATH$cpb_size_scale = PathElement.groupElement("PATH$cpb_size_scale");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$bit_rate_value_minus1 = PathElement.groupElement("PATH$bit_rate_value_minus1");
     public static final PathElement PATH$cpb_size_value_minus1 = PathElement.groupElement("PATH$cpb_size_value_minus1");
     public static final PathElement PATH$cbr_flag = PathElement.groupElement("PATH$cbr_flag");
@@ -192,7 +184,6 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
     public static final OfByte LAYOUT$cpb_cnt_minus1 = (OfByte) LAYOUT.select(PATH$cpb_cnt_minus1);
     public static final OfByte LAYOUT$bit_rate_scale = (OfByte) LAYOUT.select(PATH$bit_rate_scale);
     public static final OfByte LAYOUT$cpb_size_scale = (OfByte) LAYOUT.select(PATH$cpb_size_scale);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
     public static final OfInt LAYOUT$bit_rate_value_minus1 = (OfInt) LAYOUT.select(PATH$bit_rate_value_minus1);
     public static final OfInt LAYOUT$cpb_size_value_minus1 = (OfInt) LAYOUT.select(PATH$cpb_size_value_minus1);
     public static final OfByte LAYOUT$cbr_flag = (OfByte) LAYOUT.select(PATH$cbr_flag);
@@ -204,7 +195,6 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
     public static final long SIZE$cpb_cnt_minus1 = LAYOUT$cpb_cnt_minus1.byteSize();
     public static final long SIZE$bit_rate_scale = LAYOUT$bit_rate_scale.byteSize();
     public static final long SIZE$cpb_size_scale = LAYOUT$cpb_size_scale.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
     public static final long SIZE$bit_rate_value_minus1 = LAYOUT$bit_rate_value_minus1.byteSize();
     public static final long SIZE$cpb_size_value_minus1 = LAYOUT$cpb_size_value_minus1.byteSize();
     public static final long SIZE$cbr_flag = LAYOUT$cbr_flag.byteSize();
@@ -216,7 +206,6 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
     public static final long OFFSET$cpb_cnt_minus1 = LAYOUT.byteOffset(PATH$cpb_cnt_minus1);
     public static final long OFFSET$bit_rate_scale = LAYOUT.byteOffset(PATH$bit_rate_scale);
     public static final long OFFSET$cpb_size_scale = LAYOUT.byteOffset(PATH$cpb_size_scale);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
     public static final long OFFSET$bit_rate_value_minus1 = LAYOUT.byteOffset(PATH$bit_rate_value_minus1);
     public static final long OFFSET$cpb_size_value_minus1 = LAYOUT.byteOffset(PATH$cpb_size_value_minus1);
     public static final long OFFSET$cbr_flag = LAYOUT.byteOffset(PATH$cbr_flag);

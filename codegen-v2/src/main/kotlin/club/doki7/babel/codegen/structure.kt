@@ -16,7 +16,7 @@ import club.doki7.babel.util.buildDoc
  * @param name the name of the layout, such as "pNext"
  */
 sealed class LayoutField(
-    val jType: String?,
+    val jLayoutType: String?,
     val name: String,
     val value: String,
 ) {
@@ -25,8 +25,16 @@ sealed class LayoutField(
     val offsetName: String = "OFFSET$$name"
     abstract val pathName: String
 
-    class Typed(jType: String?, name: String, value: String, val type: CType) :
-        LayoutField(jType, name, value) {
+    class Typed(
+        jLayoutType: String?,
+        name: String,
+        value: String,
+        val type: CType,
+        val unresolvedType:
+        Type,
+        val optional: Boolean
+    ) :
+        LayoutField(jLayoutType, name, value) {
         override val pathName: String = "PATH$$name"
         val rawName = "${name}Raw"
     }
@@ -34,15 +42,20 @@ sealed class LayoutField(
     /**
      * The [name] is guaranteed to be `[bitfields.first().bitfieldName]_[bitfields.last().bitfieldName]`
      */
-    class Bitfields(jType: String, name: String, value: String, val bitfields: List<Bitfield>, val length: Int) :
-        LayoutField(jType, name, value) {
+    class Bitfields(
+        jLayoutType: String,
+        name: String,
+        value: String,
+        val unresolvedType: Type,
+        val bitfields: List<Bitfield>,
+        val length: Int
+    ) :
+        LayoutField(jLayoutType, name, value) {
         val bitfieldName: String = "bitfield$$name"
         override val pathName: String = "PATH$$bitfieldName"
     }
 
-    data class Bitfield(val bitfieldName: String, val offset: Int) {
-        val bitfieldOffsetName: String = "OFFSET$$bitfieldName"
-    }
+    data class Bitfield(val bitfieldName: String, val offset: Int, val bits: Int)
 }
 
 fun generateStructure(
@@ -115,27 +128,35 @@ fun generateStructure(
     +"///"
     +"/// {@snippet lang=c :"
     +"/// typedef struct $originalTypeName {"
-    structure.members.forEachIndexed { idx, it ->
-        val fieldLink = " @link substring=\"${it.name}\" target=\"#${it.name}\""
-
-        if (it.bits != null) {
-            if (it.name.original.startsWith("reserved")) {
-                +"///     ${it.type.cDisplay} ${it.name} : ${it.bits};"
-            } else {
-                +"///     ${it.type.cDisplay} ${it.name} : ${it.bits}; //$fieldLink"
+    layouts.forEach {
+        when (it) {
+            is LayoutField.Bitfields -> {
+                it.bitfields.forEach { bitfield ->
+                    if (bitfield.bitfieldName.isUnusedReservedField()) {
+                        +"///     ${it.unresolvedType.cDisplay} ${bitfield.bitfieldName} : ${bitfield.bits};"
+                    } else {
+                        val fieldLink = "@link substring=\"${bitfield.bitfieldName}\" target=\"#${bitfield.bitfieldName}\""
+                        +"///     ${it.unresolvedType.cDisplay} ${bitfield.bitfieldName} : ${bitfield.bits}; // $fieldLink"
+                    }
+                }
             }
-        } else {
-            val maybeOptionalComment = if (it.optional) " // optional" else ""
-
-            val cType = (layouts[idx] as LayoutField.Typed).type
-            val fieldTypeSubstring = tryFindRootNonPlainType(cType)
-            val fieldTypeTarget = tryFindIdentifierType(it.type)
-            val maybeTypeLink = if (fieldTypeSubstring != null && fieldTypeTarget != null) {
-                " @link substring=\"$fieldTypeSubstring\" target=\"${fieldTypeTarget}\""
-            } else {
-                ""
+            is LayoutField.Typed -> {
+                if (it.name.isUnusedReservedField()) {
+                    +"///     ${it.unresolvedType.cDisplay} ${it.name};"
+                } else {
+                    val fieldLink = " @link substring=\"${it.name}\" target=\"#${it.name}\""
+                    val maybeOptionalComment = if (it.optional) " // optional" else ""
+                    val cType = it.type
+                    val fieldTypeSubstring = tryFindRootNonPlainType(cType)
+                    val fieldTypeTarget = tryFindIdentifierType(it.unresolvedType)
+                    val maybeTypeLink = if (fieldTypeSubstring != null && fieldTypeTarget != null) {
+                        " @link substring=\"$fieldTypeSubstring\" target=\"${fieldTypeTarget}\""
+                    } else {
+                        ""
+                    }
+                    +"///     ${it.unresolvedType.cDisplay} ${it.name};$maybeOptionalComment //$maybeTypeLink$fieldLink"
+                }
             }
-            +"///     ${it.type.cDisplay} ${it.name};$maybeOptionalComment //$maybeTypeLink$fieldLink"
         }
     }
     +"/// } $originalTypeName;"
@@ -239,7 +260,9 @@ fun generateStructure(
         layouts.forEach {
             when (it) {
                 is LayoutField.Bitfields -> +generateBitfieldAccessor(it)
-                is LayoutField.Typed -> +generateMemberAccessor(it)
+                is LayoutField.Typed -> if (!it.name.isUnusedReservedField()) {
+                    +generateMemberAccessor(it)
+                }
             }
             +""
         }
@@ -268,6 +291,9 @@ fun generateStructure(
 
         // `PathElement`s
         layouts.forEach { layout ->
+            if (layout is LayoutField.Typed && layout.name.isUnusedReservedField()) {
+                return@forEach
+            }
             defConst("PathElement", layout.pathName, "PathElement.groupElement(\"${layout.pathName}\")")
         }
 
@@ -275,8 +301,11 @@ fun generateStructure(
 
         // separate layouts
         layouts.forEach { layout ->
-            if (layout.jType != null) {
-                defConst(layout.jType, layout.layoutName, "(${layout.jType}) LAYOUT.select(${layout.pathName})")
+            if (layout is LayoutField.Typed && layout.name.isUnusedReservedField()) {
+                return@forEach
+            }
+            if (layout.jLayoutType != null) {
+                defConst(layout.jLayoutType, layout.layoutName, "(${layout.jLayoutType}) LAYOUT.select(${layout.pathName})")
             }
         }
 
@@ -284,6 +313,10 @@ fun generateStructure(
 
         // size
         layouts.forEach { layout ->
+            if (layout is LayoutField.Typed && layout.name.isUnusedReservedField()) {
+                return@forEach
+            }
+
             if (layout is LayoutField.Typed) {
                 val value = if (layout.type is CPlatformDependentIntType) {
                     if (layout.type.cType == "size_t") "NativeLayout.C_SIZE_T.byteSize()"
@@ -300,6 +333,10 @@ fun generateStructure(
 
         // offset
         layouts.forEach { layout ->
+            if (layout is LayoutField.Typed && layout.name.isUnusedReservedField()) {
+                return@forEach
+            }
+
             defConst("long", layout.offsetName, "LAYOUT.byteOffset(${layout.pathName})")
         }
     }
@@ -307,13 +344,7 @@ fun generateStructure(
     +"}"
 }
 
-private fun generateStructureLayout(layouts: List<LayoutField>, isUnion: Boolean): String {
-    return buildString {
-        val ctor = if (isUnion) "NativeLayout.unionLayout" else "NativeLayout.structLayout"
-        append(ctor)
-        layouts.joinTo(this, prefix = "(", postfix = ")") { it.layoutName }
-    }
-}
+internal fun String.isUnusedReservedField() = this.startsWith("reserved") && this.removePrefix("reserved").all { it.isDigit() }
 
 private fun lowerMemberTypes(
     registry: RegistryBase,
@@ -400,7 +431,14 @@ private fun lowerMemberTypes(
                 cType.jLayoutType
             }
 
-            layouts.add(LayoutField.Typed(layoutType, current.name.toString(), layout, cType))
+            layouts.add(LayoutField.Typed(
+                layoutType,
+                current.name.toString(),
+                layout,
+                cType,
+                current.type,
+                current.optional
+            ))
 
             i += 1
         }
@@ -414,6 +452,7 @@ private fun summarizeBitfieldStorageUnit(
     storageUnitEnd: Int,
     layouts: MutableList<LayoutField>,
 ) {
+    val storageUnitUnresolvedType = structure.members[storageUnitBegin].type
     val storageUnitBeginMemberName = structure.members[storageUnitBegin].name.value
     val storageUnitEndMemberName = structure.members[storageUnitEnd].name.value
 
@@ -424,14 +463,18 @@ private fun summarizeBitfieldStorageUnit(
     var bitfieldOffset = 0
     for (i in storageUnitBegin..storageUnitEnd) {
         val member = structure.members[i]
-        bitfields.add(LayoutField.Bitfield(member.name.toString(), bitfieldOffset))
-        bitfieldOffset += member.bits!!
+        bitfields.add(LayoutField.Bitfield(member.name.toString(), bitfieldOffset, member.bits!!))
+        bitfieldOffset += member.bits
     }
 
     layouts.add(
         LayoutField.Bitfields(
-            storageUnitType.jLayoutType, storageUnitName, layout,
-            bitfields, bitfieldOffset
+            storageUnitType.jLayoutType,
+            storageUnitName,
+            layout,
+            storageUnitUnresolvedType,
+            bitfields,
+            bitfieldOffset
         )
     )
 }

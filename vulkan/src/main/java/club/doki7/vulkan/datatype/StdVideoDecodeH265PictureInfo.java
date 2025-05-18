@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t NumDeltaPocsOfRefRpsIdx; // @link substring="NumDeltaPocsOfRefRpsIdx" target="#NumDeltaPocsOfRefRpsIdx"
 ///     int32_t PicOrderCntVal; // @link substring="PicOrderCntVal" target="#PicOrderCntVal"
 ///     uint16_t NumBitsForSTRefPicSetInSlice; // @link substring="NumBitsForSTRefPicSetInSlice" target="#NumBitsForSTRefPicSetInSlice"
-///     uint16_t reserved; // @link substring="reserved" target="#reserved"
+///     uint16_t reserved;
 ///     uint8_t RefPicSetStCurrBefore; // @link substring="RefPicSetStCurrBefore" target="#RefPicSetStCurrBefore"
 ///     uint8_t RefPicSetStCurrAfter; // @link substring="RefPicSetStCurrAfter" target="#RefPicSetStCurrAfter"
 ///     uint8_t RefPicSetLtCurr; // @link substring="RefPicSetLtCurr" target="#RefPicSetLtCurr"
@@ -130,13 +130,6 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$NumBitsForSTRefPicSetInSlice, OFFSET$NumBitsForSTRefPicSetInSlice, value);
     }
 
-    public @unsigned short reserved() {
-        return segment.get(LAYOUT$reserved, OFFSET$reserved);
-    }
-
-    public void reserved(@unsigned short value) {
-        segment.set(LAYOUT$reserved, OFFSET$reserved, value);
-    }
 
     public @unsigned byte RefPicSetStCurrBefore() {
         return segment.get(LAYOUT$RefPicSetStCurrBefore, OFFSET$RefPicSetStCurrBefore);
@@ -184,7 +177,6 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
     public static final PathElement PATH$NumDeltaPocsOfRefRpsIdx = PathElement.groupElement("PATH$NumDeltaPocsOfRefRpsIdx");
     public static final PathElement PATH$PicOrderCntVal = PathElement.groupElement("PATH$PicOrderCntVal");
     public static final PathElement PATH$NumBitsForSTRefPicSetInSlice = PathElement.groupElement("PATH$NumBitsForSTRefPicSetInSlice");
-    public static final PathElement PATH$reserved = PathElement.groupElement("PATH$reserved");
     public static final PathElement PATH$RefPicSetStCurrBefore = PathElement.groupElement("PATH$RefPicSetStCurrBefore");
     public static final PathElement PATH$RefPicSetStCurrAfter = PathElement.groupElement("PATH$RefPicSetStCurrAfter");
     public static final PathElement PATH$RefPicSetLtCurr = PathElement.groupElement("PATH$RefPicSetLtCurr");
@@ -196,7 +188,6 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
     public static final OfByte LAYOUT$NumDeltaPocsOfRefRpsIdx = (OfByte) LAYOUT.select(PATH$NumDeltaPocsOfRefRpsIdx);
     public static final OfInt LAYOUT$PicOrderCntVal = (OfInt) LAYOUT.select(PATH$PicOrderCntVal);
     public static final OfShort LAYOUT$NumBitsForSTRefPicSetInSlice = (OfShort) LAYOUT.select(PATH$NumBitsForSTRefPicSetInSlice);
-    public static final OfShort LAYOUT$reserved = (OfShort) LAYOUT.select(PATH$reserved);
     public static final OfByte LAYOUT$RefPicSetStCurrBefore = (OfByte) LAYOUT.select(PATH$RefPicSetStCurrBefore);
     public static final OfByte LAYOUT$RefPicSetStCurrAfter = (OfByte) LAYOUT.select(PATH$RefPicSetStCurrAfter);
     public static final OfByte LAYOUT$RefPicSetLtCurr = (OfByte) LAYOUT.select(PATH$RefPicSetLtCurr);
@@ -208,7 +199,6 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
     public static final long SIZE$NumDeltaPocsOfRefRpsIdx = LAYOUT$NumDeltaPocsOfRefRpsIdx.byteSize();
     public static final long SIZE$PicOrderCntVal = LAYOUT$PicOrderCntVal.byteSize();
     public static final long SIZE$NumBitsForSTRefPicSetInSlice = LAYOUT$NumBitsForSTRefPicSetInSlice.byteSize();
-    public static final long SIZE$reserved = LAYOUT$reserved.byteSize();
     public static final long SIZE$RefPicSetStCurrBefore = LAYOUT$RefPicSetStCurrBefore.byteSize();
     public static final long SIZE$RefPicSetStCurrAfter = LAYOUT$RefPicSetStCurrAfter.byteSize();
     public static final long SIZE$RefPicSetLtCurr = LAYOUT$RefPicSetLtCurr.byteSize();
@@ -220,7 +210,6 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
     public static final long OFFSET$NumDeltaPocsOfRefRpsIdx = LAYOUT.byteOffset(PATH$NumDeltaPocsOfRefRpsIdx);
     public static final long OFFSET$PicOrderCntVal = LAYOUT.byteOffset(PATH$PicOrderCntVal);
     public static final long OFFSET$NumBitsForSTRefPicSetInSlice = LAYOUT.byteOffset(PATH$NumBitsForSTRefPicSetInSlice);
-    public static final long OFFSET$reserved = LAYOUT.byteOffset(PATH$reserved);
     public static final long OFFSET$RefPicSetStCurrBefore = LAYOUT.byteOffset(PATH$RefPicSetStCurrBefore);
     public static final long OFFSET$RefPicSetStCurrAfter = LAYOUT.byteOffset(PATH$RefPicSetStCurrAfter);
     public static final long OFFSET$RefPicSetLtCurr = LAYOUT.byteOffset(PATH$RefPicSetLtCurr);

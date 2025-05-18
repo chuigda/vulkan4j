@@ -31,7 +31,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t order_hint_bits_minus_1; // @link substring="order_hint_bits_minus_1" target="#order_hint_bits_minus_1"
 ///     uint8_t seq_force_integer_mv; // @link substring="seq_force_integer_mv" target="#seq_force_integer_mv"
 ///     uint8_t seq_force_screen_content_tools; // @link substring="seq_force_screen_content_tools" target="#seq_force_screen_content_tools"
-///     uint8_t reserved1; // @link substring="reserved1" target="#reserved1"
+///     uint8_t reserved1;
 ///     StdVideoAV1ColorConfig const* pColorConfig; // @link substring="StdVideoAV1ColorConfig" target="StdVideoAV1ColorConfig" @link substring="pColorConfig" target="#pColorConfig"
 ///     StdVideoAV1TimingInfo const* pTimingInfo; // @link substring="StdVideoAV1TimingInfo" target="StdVideoAV1TimingInfo" @link substring="pTimingInfo" target="#pTimingInfo"
 /// } StdVideoAV1SequenceHeader;
@@ -165,13 +165,6 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$seq_force_screen_content_tools, OFFSET$seq_force_screen_content_tools, value);
     }
 
-    public @unsigned byte reserved1() {
-        return segment.get(LAYOUT$reserved1, OFFSET$reserved1);
-    }
-
-    public void reserved1(@unsigned byte value) {
-        segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
-    }
 
     public @Nullable StdVideoAV1ColorConfig pColorConfig() {
         MemorySegment s = pColorConfigRaw();
@@ -272,7 +265,6 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
     public static final PathElement PATH$order_hint_bits_minus_1 = PathElement.groupElement("PATH$order_hint_bits_minus_1");
     public static final PathElement PATH$seq_force_integer_mv = PathElement.groupElement("PATH$seq_force_integer_mv");
     public static final PathElement PATH$seq_force_screen_content_tools = PathElement.groupElement("PATH$seq_force_screen_content_tools");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
     public static final PathElement PATH$pColorConfig = PathElement.groupElement("PATH$pColorConfig");
     public static final PathElement PATH$pTimingInfo = PathElement.groupElement("PATH$pTimingInfo");
 
@@ -287,7 +279,6 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
     public static final OfByte LAYOUT$order_hint_bits_minus_1 = (OfByte) LAYOUT.select(PATH$order_hint_bits_minus_1);
     public static final OfByte LAYOUT$seq_force_integer_mv = (OfByte) LAYOUT.select(PATH$seq_force_integer_mv);
     public static final OfByte LAYOUT$seq_force_screen_content_tools = (OfByte) LAYOUT.select(PATH$seq_force_screen_content_tools);
-    public static final OfByte LAYOUT$reserved1 = (OfByte) LAYOUT.select(PATH$reserved1);
     public static final AddressLayout LAYOUT$pColorConfig = (AddressLayout) LAYOUT.select(PATH$pColorConfig);
     public static final AddressLayout LAYOUT$pTimingInfo = (AddressLayout) LAYOUT.select(PATH$pTimingInfo);
 
@@ -302,7 +293,6 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
     public static final long SIZE$order_hint_bits_minus_1 = LAYOUT$order_hint_bits_minus_1.byteSize();
     public static final long SIZE$seq_force_integer_mv = LAYOUT$seq_force_integer_mv.byteSize();
     public static final long SIZE$seq_force_screen_content_tools = LAYOUT$seq_force_screen_content_tools.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
     public static final long SIZE$pColorConfig = LAYOUT$pColorConfig.byteSize();
     public static final long SIZE$pTimingInfo = LAYOUT$pTimingInfo.byteSize();
 
@@ -317,7 +307,6 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
     public static final long OFFSET$order_hint_bits_minus_1 = LAYOUT.byteOffset(PATH$order_hint_bits_minus_1);
     public static final long OFFSET$seq_force_integer_mv = LAYOUT.byteOffset(PATH$seq_force_integer_mv);
     public static final long OFFSET$seq_force_screen_content_tools = LAYOUT.byteOffset(PATH$seq_force_screen_content_tools);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
     public static final long OFFSET$pColorConfig = LAYOUT.byteOffset(PATH$pColorConfig);
     public static final long OFFSET$pTimingInfo = LAYOUT.byteOffset(PATH$pTimingInfo);
 }

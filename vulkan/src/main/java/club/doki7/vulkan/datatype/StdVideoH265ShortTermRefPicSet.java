@@ -27,9 +27,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint16_t used_by_curr_pic_flag; // @link substring="used_by_curr_pic_flag" target="#used_by_curr_pic_flag"
 ///     uint16_t used_by_curr_pic_s0_flag; // @link substring="used_by_curr_pic_s0_flag" target="#used_by_curr_pic_s0_flag"
 ///     uint16_t used_by_curr_pic_s1_flag; // @link substring="used_by_curr_pic_s1_flag" target="#used_by_curr_pic_s1_flag"
-///     uint16_t reserved1; // @link substring="reserved1" target="#reserved1"
-///     uint8_t reserved2; // @link substring="reserved2" target="#reserved2"
-///     uint8_t reserved3; // @link substring="reserved3" target="#reserved3"
+///     uint16_t reserved1;
+///     uint8_t reserved2;
+///     uint8_t reserved3;
 ///     uint8_t num_negative_pics; // @link substring="num_negative_pics" target="#num_negative_pics"
 ///     uint8_t num_positive_pics; // @link substring="num_positive_pics" target="#num_positive_pics"
 ///     uint16_t delta_poc_s0_minus1; // @link substring="delta_poc_s0_minus1" target="#delta_poc_s0_minus1"
@@ -133,29 +133,8 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$used_by_curr_pic_s1_flag, OFFSET$used_by_curr_pic_s1_flag, value);
     }
 
-    public @unsigned short reserved1() {
-        return segment.get(LAYOUT$reserved1, OFFSET$reserved1);
-    }
 
-    public void reserved1(@unsigned short value) {
-        segment.set(LAYOUT$reserved1, OFFSET$reserved1, value);
-    }
 
-    public @unsigned byte reserved2() {
-        return segment.get(LAYOUT$reserved2, OFFSET$reserved2);
-    }
-
-    public void reserved2(@unsigned byte value) {
-        segment.set(LAYOUT$reserved2, OFFSET$reserved2, value);
-    }
-
-    public @unsigned byte reserved3() {
-        return segment.get(LAYOUT$reserved3, OFFSET$reserved3);
-    }
-
-    public void reserved3(@unsigned byte value) {
-        segment.set(LAYOUT$reserved3, OFFSET$reserved3, value);
-    }
 
     public @unsigned byte num_negative_pics() {
         return segment.get(LAYOUT$num_negative_pics, OFFSET$num_negative_pics);
@@ -214,9 +193,6 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
     public static final PathElement PATH$used_by_curr_pic_flag = PathElement.groupElement("PATH$used_by_curr_pic_flag");
     public static final PathElement PATH$used_by_curr_pic_s0_flag = PathElement.groupElement("PATH$used_by_curr_pic_s0_flag");
     public static final PathElement PATH$used_by_curr_pic_s1_flag = PathElement.groupElement("PATH$used_by_curr_pic_s1_flag");
-    public static final PathElement PATH$reserved1 = PathElement.groupElement("PATH$reserved1");
-    public static final PathElement PATH$reserved2 = PathElement.groupElement("PATH$reserved2");
-    public static final PathElement PATH$reserved3 = PathElement.groupElement("PATH$reserved3");
     public static final PathElement PATH$num_negative_pics = PathElement.groupElement("PATH$num_negative_pics");
     public static final PathElement PATH$num_positive_pics = PathElement.groupElement("PATH$num_positive_pics");
     public static final PathElement PATH$delta_poc_s0_minus1 = PathElement.groupElement("PATH$delta_poc_s0_minus1");
@@ -229,9 +205,6 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
     public static final OfShort LAYOUT$used_by_curr_pic_flag = (OfShort) LAYOUT.select(PATH$used_by_curr_pic_flag);
     public static final OfShort LAYOUT$used_by_curr_pic_s0_flag = (OfShort) LAYOUT.select(PATH$used_by_curr_pic_s0_flag);
     public static final OfShort LAYOUT$used_by_curr_pic_s1_flag = (OfShort) LAYOUT.select(PATH$used_by_curr_pic_s1_flag);
-    public static final OfShort LAYOUT$reserved1 = (OfShort) LAYOUT.select(PATH$reserved1);
-    public static final OfByte LAYOUT$reserved2 = (OfByte) LAYOUT.select(PATH$reserved2);
-    public static final OfByte LAYOUT$reserved3 = (OfByte) LAYOUT.select(PATH$reserved3);
     public static final OfByte LAYOUT$num_negative_pics = (OfByte) LAYOUT.select(PATH$num_negative_pics);
     public static final OfByte LAYOUT$num_positive_pics = (OfByte) LAYOUT.select(PATH$num_positive_pics);
     public static final OfShort LAYOUT$delta_poc_s0_minus1 = (OfShort) LAYOUT.select(PATH$delta_poc_s0_minus1);
@@ -244,9 +217,6 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
     public static final long SIZE$used_by_curr_pic_flag = LAYOUT$used_by_curr_pic_flag.byteSize();
     public static final long SIZE$used_by_curr_pic_s0_flag = LAYOUT$used_by_curr_pic_s0_flag.byteSize();
     public static final long SIZE$used_by_curr_pic_s1_flag = LAYOUT$used_by_curr_pic_s1_flag.byteSize();
-    public static final long SIZE$reserved1 = LAYOUT$reserved1.byteSize();
-    public static final long SIZE$reserved2 = LAYOUT$reserved2.byteSize();
-    public static final long SIZE$reserved3 = LAYOUT$reserved3.byteSize();
     public static final long SIZE$num_negative_pics = LAYOUT$num_negative_pics.byteSize();
     public static final long SIZE$num_positive_pics = LAYOUT$num_positive_pics.byteSize();
     public static final long SIZE$delta_poc_s0_minus1 = LAYOUT$delta_poc_s0_minus1.byteSize();
@@ -259,9 +229,6 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
     public static final long OFFSET$used_by_curr_pic_flag = LAYOUT.byteOffset(PATH$used_by_curr_pic_flag);
     public static final long OFFSET$used_by_curr_pic_s0_flag = LAYOUT.byteOffset(PATH$used_by_curr_pic_s0_flag);
     public static final long OFFSET$used_by_curr_pic_s1_flag = LAYOUT.byteOffset(PATH$used_by_curr_pic_s1_flag);
-    public static final long OFFSET$reserved1 = LAYOUT.byteOffset(PATH$reserved1);
-    public static final long OFFSET$reserved2 = LAYOUT.byteOffset(PATH$reserved2);
-    public static final long OFFSET$reserved3 = LAYOUT.byteOffset(PATH$reserved3);
     public static final long OFFSET$num_negative_pics = LAYOUT.byteOffset(PATH$num_negative_pics);
     public static final long OFFSET$num_positive_pics = LAYOUT.byteOffset(PATH$num_positive_pics);
     public static final long OFFSET$delta_poc_s0_minus1 = LAYOUT.byteOffset(PATH$delta_poc_s0_minus1);
