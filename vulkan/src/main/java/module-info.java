@@ -41,6 +41,7 @@ module club.doki7.vulkan {
 
     exports club.doki7.vulkan;
     exports club.doki7.vulkan.bitmask;
+    exports club.doki7.vulkan.command;
     exports club.doki7.vulkan.datatype;
     exports club.doki7.vulkan.enumtype;
     exports club.doki7.vulkan.handle;
