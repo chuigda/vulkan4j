@@ -2,6 +2,7 @@ package club.doki7.babel.drv
 
 import club.doki7.babel.codegen.CodegenOptions
 import club.doki7.babel.codegen.generateBitmask
+import club.doki7.babel.codegen.generateCommandFile
 import club.doki7.babel.codegen.generateConstants
 import club.doki7.babel.codegen.generateEnumeration
 import club.doki7.babel.codegen.generateFunctionTypedefs
@@ -79,6 +80,10 @@ internal fun vulkanMain() {
         File("vulkan/src/main/java/club/doki7/vulkan/handle/${handle.name}.java")
             .writeText(render(handleDoc))
     }
+
+    val commandsDoc = generateCommandFile(vulkanRegistry, codegenOptions)
+    File("vulkan/src/main/java/club/doki7/vulkan/command/${codegenOptions.functionClassName}.java")
+        .writeText(render(commandsDoc))
 }
 
 private fun vulkanDocLinkProvider(entity: Entity) = when(entity) {
