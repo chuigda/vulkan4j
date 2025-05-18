@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_QUERY_FEATURES_KHR`
 ///
-/// The {@link VkPhysicalDevicePerformanceQueryFeaturesKHR#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPhysicalDevicePerformanceQueryFeaturesKHR#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPhysicalDevicePerformanceQueryFeaturesKHR#allocate(Arena)}, {@link VkPhysicalDevicePerformanceQueryFeaturesKHR#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDevicePerformanceQueryFeaturesKHR#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

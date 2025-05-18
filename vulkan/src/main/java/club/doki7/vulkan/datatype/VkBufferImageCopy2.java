@@ -35,10 +35,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_BUFFER_IMAGE_COPY_2`
 ///
-/// The {@link VkBufferImageCopy2#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkBufferImageCopy2#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkBufferImageCopy2#allocate(Arena)}, {@link VkBufferImageCopy2#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkBufferImageCopy2#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

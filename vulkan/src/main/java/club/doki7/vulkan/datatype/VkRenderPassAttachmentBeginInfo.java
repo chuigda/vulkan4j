@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO`
 ///
-/// The {@link VkRenderPassAttachmentBeginInfo#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkRenderPassAttachmentBeginInfo#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkRenderPassAttachmentBeginInfo#allocate(Arena)}, {@link VkRenderPassAttachmentBeginInfo#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkRenderPassAttachmentBeginInfo#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

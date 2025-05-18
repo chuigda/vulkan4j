@@ -33,10 +33,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_HOST_IMAGE_LAYOUT_TRANSITION_INFO`
 ///
-/// The {@link VkHostImageLayoutTransitionInfo#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkHostImageLayoutTransitionInfo#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkHostImageLayoutTransitionInfo#allocate(Arena)}, {@link VkHostImageLayoutTransitionInfo#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkHostImageLayoutTransitionInfo#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

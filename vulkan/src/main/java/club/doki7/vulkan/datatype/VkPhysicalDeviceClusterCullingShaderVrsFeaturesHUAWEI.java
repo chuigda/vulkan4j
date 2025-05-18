@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_VRS_FEATURES_HUAWEI`
 ///
-/// The {@link VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI#allocate(Arena)}, {@link VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

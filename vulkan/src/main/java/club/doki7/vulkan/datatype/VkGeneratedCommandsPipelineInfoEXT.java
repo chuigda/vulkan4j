@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_GENERATED_COMMANDS_PIPELINE_INFO_EXT`
 ///
-/// The {@link VkGeneratedCommandsPipelineInfoEXT#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkGeneratedCommandsPipelineInfoEXT#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkGeneratedCommandsPipelineInfoEXT#allocate(Arena)}, {@link VkGeneratedCommandsPipelineInfoEXT#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkGeneratedCommandsPipelineInfoEXT#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

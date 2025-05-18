@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT`
 ///
-/// The {@link VkFilterCubicImageViewImageFormatPropertiesEXT#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkFilterCubicImageViewImageFormatPropertiesEXT#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkFilterCubicImageViewImageFormatPropertiesEXT#allocate(Arena)}, {@link VkFilterCubicImageViewImageFormatPropertiesEXT#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkFilterCubicImageViewImageFormatPropertiesEXT#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

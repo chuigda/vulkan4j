@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM`
 ///
-/// The {@link VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM#allocate(Arena)}, {@link VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

@@ -33,10 +33,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_DEVICE_ADDRESS_BINDING_CALLBACK_DATA_EXT`
 ///
-/// The {@link VkDeviceAddressBindingCallbackDataEXT#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkDeviceAddressBindingCallbackDataEXT#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkDeviceAddressBindingCallbackDataEXT#allocate(Arena)}, {@link VkDeviceAddressBindingCallbackDataEXT#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkDeviceAddressBindingCallbackDataEXT#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

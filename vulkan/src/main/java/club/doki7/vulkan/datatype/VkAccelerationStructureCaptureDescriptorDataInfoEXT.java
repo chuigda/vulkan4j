@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CAPTURE_DESCRIPTOR_DATA_INFO_EXT`
 ///
-/// The {@link VkAccelerationStructureCaptureDescriptorDataInfoEXT#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkAccelerationStructureCaptureDescriptorDataInfoEXT#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkAccelerationStructureCaptureDescriptorDataInfoEXT#allocate(Arena)}, {@link VkAccelerationStructureCaptureDescriptorDataInfoEXT#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkAccelerationStructureCaptureDescriptorDataInfoEXT#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

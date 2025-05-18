@@ -35,10 +35,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_IMAGE_TO_MEMORY_COPY`
 ///
-/// The {@link VkImageToMemoryCopy#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkImageToMemoryCopy#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkImageToMemoryCopy#allocate(Arena)}, {@link VkImageToMemoryCopy#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkImageToMemoryCopy#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

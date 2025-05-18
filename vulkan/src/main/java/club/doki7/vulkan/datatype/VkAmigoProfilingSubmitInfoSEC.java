@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_AMIGO_PROFILING_SUBMIT_INFO_SEC`
 ///
-/// The {@link VkAmigoProfilingSubmitInfoSEC#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkAmigoProfilingSubmitInfoSEC#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkAmigoProfilingSubmitInfoSEC#allocate(Arena)}, {@link VkAmigoProfilingSubmitInfoSEC#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkAmigoProfilingSubmitInfoSEC#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

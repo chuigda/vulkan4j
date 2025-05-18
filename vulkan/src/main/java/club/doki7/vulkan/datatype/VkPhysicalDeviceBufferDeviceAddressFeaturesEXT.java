@@ -32,10 +32,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT`
 ///
-/// The {@link VkPhysicalDeviceBufferDeviceAddressFeaturesEXT#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPhysicalDeviceBufferDeviceAddressFeaturesEXT#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPhysicalDeviceBufferDeviceAddressFeaturesEXT#allocate(Arena)}, {@link VkPhysicalDeviceBufferDeviceAddressFeaturesEXT#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceBufferDeviceAddressFeaturesEXT#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

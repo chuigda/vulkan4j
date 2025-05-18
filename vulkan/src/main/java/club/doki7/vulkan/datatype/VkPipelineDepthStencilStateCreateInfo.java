@@ -39,10 +39,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO`
 ///
-/// The {@link VkPipelineDepthStencilStateCreateInfo#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPipelineDepthStencilStateCreateInfo#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPipelineDepthStencilStateCreateInfo#allocate(Arena)}, {@link VkPipelineDepthStencilStateCreateInfo#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPipelineDepthStencilStateCreateInfo#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

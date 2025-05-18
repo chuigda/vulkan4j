@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV`
 ///
-/// The {@link VkQueueFamilyCheckpointProperties2NV#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkQueueFamilyCheckpointProperties2NV#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkQueueFamilyCheckpointProperties2NV#allocate(Arena)}, {@link VkQueueFamilyCheckpointProperties2NV#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkQueueFamilyCheckpointProperties2NV#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

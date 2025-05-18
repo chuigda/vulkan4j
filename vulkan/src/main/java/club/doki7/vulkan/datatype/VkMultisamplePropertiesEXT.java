@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_MULTISAMPLE_PROPERTIES_EXT`
 ///
-/// The {@link VkMultisamplePropertiesEXT#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkMultisamplePropertiesEXT#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkMultisamplePropertiesEXT#allocate(Arena)}, {@link VkMultisamplePropertiesEXT#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkMultisamplePropertiesEXT#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

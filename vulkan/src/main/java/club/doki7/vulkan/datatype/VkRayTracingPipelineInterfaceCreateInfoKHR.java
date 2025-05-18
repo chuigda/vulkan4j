@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_INTERFACE_CREATE_INFO_KHR`
 ///
-/// The {@link VkRayTracingPipelineInterfaceCreateInfoKHR#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkRayTracingPipelineInterfaceCreateInfoKHR#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkRayTracingPipelineInterfaceCreateInfoKHR#allocate(Arena)}, {@link VkRayTracingPipelineInterfaceCreateInfoKHR#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkRayTracingPipelineInterfaceCreateInfoKHR#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

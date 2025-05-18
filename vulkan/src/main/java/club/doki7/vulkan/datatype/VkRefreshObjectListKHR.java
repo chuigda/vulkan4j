@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_REFRESH_OBJECT_LIST_KHR`
 ///
-/// The {@link VkRefreshObjectListKHR#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkRefreshObjectListKHR#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkRefreshObjectListKHR#allocate(Arena)}, {@link VkRefreshObjectListKHR#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkRefreshObjectListKHR#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

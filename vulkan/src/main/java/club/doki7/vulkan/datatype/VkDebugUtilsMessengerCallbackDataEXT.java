@@ -39,10 +39,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT`
 ///
-/// The {@link VkDebugUtilsMessengerCallbackDataEXT#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkDebugUtilsMessengerCallbackDataEXT#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkDebugUtilsMessengerCallbackDataEXT#allocate(Arena)}, {@link VkDebugUtilsMessengerCallbackDataEXT#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkDebugUtilsMessengerCallbackDataEXT#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

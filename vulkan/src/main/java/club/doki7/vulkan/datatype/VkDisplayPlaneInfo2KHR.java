@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_DISPLAY_PLANE_INFO_2_KHR`
 ///
-/// The {@link VkDisplayPlaneInfo2KHR#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkDisplayPlaneInfo2KHR#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkDisplayPlaneInfo2KHR#allocate(Arena)}, {@link VkDisplayPlaneInfo2KHR#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkDisplayPlaneInfo2KHR#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

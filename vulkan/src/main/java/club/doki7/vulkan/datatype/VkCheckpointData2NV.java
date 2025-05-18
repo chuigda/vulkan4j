@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV`
 ///
-/// The {@link VkCheckpointData2NV#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkCheckpointData2NV#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkCheckpointData2NV#allocate(Arena)}, {@link VkCheckpointData2NV#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkCheckpointData2NV#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

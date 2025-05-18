@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_OPTICAL_FLOW_IMAGE_FORMAT_INFO_NV`
 ///
-/// The {@link VkOpticalFlowImageFormatInfoNV#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkOpticalFlowImageFormatInfoNV#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkOpticalFlowImageFormatInfoNV#allocate(Arena)}, {@link VkOpticalFlowImageFormatInfoNV#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkOpticalFlowImageFormatInfoNV#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX`
 ///
-/// The {@link VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX#allocate(Arena)}, {@link VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

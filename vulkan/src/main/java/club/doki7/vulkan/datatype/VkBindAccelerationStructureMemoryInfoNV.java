@@ -34,10 +34,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_BIND_ACCELERATION_STRUCTURE_MEMORY_INFO_NV`
 ///
-/// The {@link VkBindAccelerationStructureMemoryInfoNV#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkBindAccelerationStructureMemoryInfoNV#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkBindAccelerationStructureMemoryInfoNV#allocate(Arena)}, {@link VkBindAccelerationStructureMemoryInfoNV#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkBindAccelerationStructureMemoryInfoNV#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

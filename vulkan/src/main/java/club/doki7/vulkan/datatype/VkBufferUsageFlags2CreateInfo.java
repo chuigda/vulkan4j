@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO`
 ///
-/// The {@link VkBufferUsageFlags2CreateInfo#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkBufferUsageFlags2CreateInfo#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkBufferUsageFlags2CreateInfo#allocate(Arena)}, {@link VkBufferUsageFlags2CreateInfo#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkBufferUsageFlags2CreateInfo#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

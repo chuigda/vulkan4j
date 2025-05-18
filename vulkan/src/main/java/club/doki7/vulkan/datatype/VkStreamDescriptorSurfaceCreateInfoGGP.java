@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP`
 ///
-/// The {@link VkStreamDescriptorSurfaceCreateInfoGGP#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkStreamDescriptorSurfaceCreateInfoGGP#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkStreamDescriptorSurfaceCreateInfoGGP#allocate(Arena)}, {@link VkStreamDescriptorSurfaceCreateInfoGGP#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkStreamDescriptorSurfaceCreateInfoGGP#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

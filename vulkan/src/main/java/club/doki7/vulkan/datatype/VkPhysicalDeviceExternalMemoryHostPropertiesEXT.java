@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT`
 ///
-/// The {@link VkPhysicalDeviceExternalMemoryHostPropertiesEXT#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPhysicalDeviceExternalMemoryHostPropertiesEXT#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPhysicalDeviceExternalMemoryHostPropertiesEXT#allocate(Arena)}, {@link VkPhysicalDeviceExternalMemoryHostPropertiesEXT#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceExternalMemoryHostPropertiesEXT#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

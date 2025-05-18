@@ -34,10 +34,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV`
 ///
-/// The {@link VkPipelineCoverageModulationStateCreateInfoNV#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPipelineCoverageModulationStateCreateInfoNV#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPipelineCoverageModulationStateCreateInfoNV#allocate(Arena)}, {@link VkPipelineCoverageModulationStateCreateInfoNV#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPipelineCoverageModulationStateCreateInfoNV#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

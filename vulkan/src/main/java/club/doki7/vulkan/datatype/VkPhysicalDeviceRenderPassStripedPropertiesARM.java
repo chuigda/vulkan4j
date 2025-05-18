@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RENDER_PASS_STRIPED_PROPERTIES_ARM`
 ///
-/// The {@link VkPhysicalDeviceRenderPassStripedPropertiesARM#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPhysicalDeviceRenderPassStripedPropertiesARM#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPhysicalDeviceRenderPassStripedPropertiesARM#allocate(Arena)}, {@link VkPhysicalDeviceRenderPassStripedPropertiesARM#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceRenderPassStripedPropertiesARM#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

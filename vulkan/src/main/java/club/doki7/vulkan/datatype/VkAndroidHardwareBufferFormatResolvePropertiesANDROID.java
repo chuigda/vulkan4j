@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_RESOLVE_PROPERTIES_ANDROID`
 ///
-/// The {@link VkAndroidHardwareBufferFormatResolvePropertiesANDROID#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkAndroidHardwareBufferFormatResolvePropertiesANDROID#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkAndroidHardwareBufferFormatResolvePropertiesANDROID#allocate(Arena)}, {@link VkAndroidHardwareBufferFormatResolvePropertiesANDROID#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkAndroidHardwareBufferFormatResolvePropertiesANDROID#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

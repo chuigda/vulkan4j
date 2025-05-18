@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_EXT`
 ///
-/// The {@link VkPhysicalDeviceRobustness2PropertiesEXT#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPhysicalDeviceRobustness2PropertiesEXT#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPhysicalDeviceRobustness2PropertiesEXT#allocate(Arena)}, {@link VkPhysicalDeviceRobustness2PropertiesEXT#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceRobustness2PropertiesEXT#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

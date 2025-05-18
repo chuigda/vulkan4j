@@ -33,10 +33,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_SCI_SYNC_2_FEATURES_NV`
 ///
-/// The {@link VkPhysicalDeviceExternalSciSync2FeaturesNV#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPhysicalDeviceExternalSciSync2FeaturesNV#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPhysicalDeviceExternalSciSync2FeaturesNV#allocate(Arena)}, {@link VkPhysicalDeviceExternalSciSync2FeaturesNV#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceExternalSciSync2FeaturesNV#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

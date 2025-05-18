@@ -32,10 +32,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_BUFFER_CONSTRAINTS_INFO_FUCHSIA`
 ///
-/// The {@link VkBufferConstraintsInfoFUCHSIA#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkBufferConstraintsInfoFUCHSIA#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkBufferConstraintsInfoFUCHSIA#allocate(Arena)}, {@link VkBufferConstraintsInfoFUCHSIA#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkBufferConstraintsInfoFUCHSIA#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

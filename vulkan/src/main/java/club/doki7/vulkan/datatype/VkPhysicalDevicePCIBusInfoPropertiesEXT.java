@@ -33,10 +33,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT`
 ///
-/// The {@link VkPhysicalDevicePCIBusInfoPropertiesEXT#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPhysicalDevicePCIBusInfoPropertiesEXT#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPhysicalDevicePCIBusInfoPropertiesEXT#allocate(Arena)}, {@link VkPhysicalDevicePCIBusInfoPropertiesEXT#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDevicePCIBusInfoPropertiesEXT#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

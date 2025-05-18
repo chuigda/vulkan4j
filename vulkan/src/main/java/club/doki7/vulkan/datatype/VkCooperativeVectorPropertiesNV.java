@@ -35,10 +35,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_COOPERATIVE_VECTOR_PROPERTIES_NV`
 ///
-/// The {@link VkCooperativeVectorPropertiesNV#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkCooperativeVectorPropertiesNV#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkCooperativeVectorPropertiesNV#allocate(Arena)}, {@link VkCooperativeVectorPropertiesNV#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkCooperativeVectorPropertiesNV#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

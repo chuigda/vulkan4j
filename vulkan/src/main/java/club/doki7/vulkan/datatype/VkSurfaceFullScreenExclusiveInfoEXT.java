@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_INFO_EXT`
 ///
-/// The {@link VkSurfaceFullScreenExclusiveInfoEXT#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkSurfaceFullScreenExclusiveInfoEXT#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkSurfaceFullScreenExclusiveInfoEXT#allocate(Arena)}, {@link VkSurfaceFullScreenExclusiveInfoEXT#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkSurfaceFullScreenExclusiveInfoEXT#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

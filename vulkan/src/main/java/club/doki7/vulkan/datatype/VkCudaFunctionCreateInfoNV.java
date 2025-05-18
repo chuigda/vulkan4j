@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_CUDA_FUNCTION_CREATE_INFO_NV`
 ///
-/// The {@link VkCudaFunctionCreateInfoNV#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkCudaFunctionCreateInfoNV#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkCudaFunctionCreateInfoNV#allocate(Arena)}, {@link VkCudaFunctionCreateInfoNV#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkCudaFunctionCreateInfoNV#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD`
 ///
-/// The {@link VkAntiLagPresentationInfoAMD#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkAntiLagPresentationInfoAMD#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkAntiLagPresentationInfoAMD#allocate(Arena)}, {@link VkAntiLagPresentationInfoAMD#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkAntiLagPresentationInfoAMD#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

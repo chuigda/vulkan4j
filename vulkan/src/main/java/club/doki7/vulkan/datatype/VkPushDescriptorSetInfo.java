@@ -34,10 +34,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PUSH_DESCRIPTOR_SET_INFO`
 ///
-/// The {@link VkPushDescriptorSetInfo#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPushDescriptorSetInfo#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPushDescriptorSetInfo#allocate(Arena)}, {@link VkPushDescriptorSetInfo#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPushDescriptorSetInfo#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

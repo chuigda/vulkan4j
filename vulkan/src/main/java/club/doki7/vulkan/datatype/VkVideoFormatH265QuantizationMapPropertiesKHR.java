@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_VIDEO_FORMAT_H265_QUANTIZATION_MAP_PROPERTIES_KHR`
 ///
-/// The {@link VkVideoFormatH265QuantizationMapPropertiesKHR#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkVideoFormatH265QuantizationMapPropertiesKHR#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkVideoFormatH265QuantizationMapPropertiesKHR#allocate(Arena)}, {@link VkVideoFormatH265QuantizationMapPropertiesKHR#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkVideoFormatH265QuantizationMapPropertiesKHR#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

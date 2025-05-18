@@ -35,10 +35,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO`
 ///
-/// The {@link VkPipelineColorBlendStateCreateInfo#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPipelineColorBlendStateCreateInfo#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPipelineColorBlendStateCreateInfo#allocate(Arena)}, {@link VkPipelineColorBlendStateCreateInfo#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPipelineColorBlendStateCreateInfo#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

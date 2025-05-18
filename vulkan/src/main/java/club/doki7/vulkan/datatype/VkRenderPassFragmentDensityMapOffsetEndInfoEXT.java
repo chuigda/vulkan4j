@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_OFFSET_END_INFO_EXT`
 ///
-/// The {@link VkRenderPassFragmentDensityMapOffsetEndInfoEXT#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkRenderPassFragmentDensityMapOffsetEndInfoEXT#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkRenderPassFragmentDensityMapOffsetEndInfoEXT#allocate(Arena)}, {@link VkRenderPassFragmentDensityMapOffsetEndInfoEXT#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkRenderPassFragmentDensityMapOffsetEndInfoEXT#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_CAPABILITIES_KHR`
 ///
-/// The {@link VkVideoDecodeAV1CapabilitiesKHR#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkVideoDecodeAV1CapabilitiesKHR#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkVideoDecodeAV1CapabilitiesKHR#allocate(Arena)}, {@link VkVideoDecodeAV1CapabilitiesKHR#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkVideoDecodeAV1CapabilitiesKHR#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

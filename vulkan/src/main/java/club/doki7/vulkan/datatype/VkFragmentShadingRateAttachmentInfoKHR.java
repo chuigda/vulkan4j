@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR`
 ///
-/// The {@link VkFragmentShadingRateAttachmentInfoKHR#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkFragmentShadingRateAttachmentInfoKHR#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkFragmentShadingRateAttachmentInfoKHR#allocate(Arena)}, {@link VkFragmentShadingRateAttachmentInfoKHR#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkFragmentShadingRateAttachmentInfoKHR#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

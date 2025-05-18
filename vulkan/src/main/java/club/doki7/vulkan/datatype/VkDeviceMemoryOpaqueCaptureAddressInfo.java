@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO`
 ///
-/// The {@link VkDeviceMemoryOpaqueCaptureAddressInfo#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkDeviceMemoryOpaqueCaptureAddressInfo#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkDeviceMemoryOpaqueCaptureAddressInfo#allocate(Arena)}, {@link VkDeviceMemoryOpaqueCaptureAddressInfo#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkDeviceMemoryOpaqueCaptureAddressInfo#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

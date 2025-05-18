@@ -33,10 +33,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_GEOMETRY_AABB_NV`
 ///
-/// The {@link VkGeometryAABBNV#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkGeometryAABBNV#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkGeometryAABBNV#allocate(Arena)}, {@link VkGeometryAABBNV#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkGeometryAABBNV#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

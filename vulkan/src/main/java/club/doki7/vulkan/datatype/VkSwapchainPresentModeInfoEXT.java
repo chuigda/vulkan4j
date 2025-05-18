@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_MODE_INFO_EXT`
 ///
-/// The {@link VkSwapchainPresentModeInfoEXT#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkSwapchainPresentModeInfoEXT#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkSwapchainPresentModeInfoEXT#allocate(Arena)}, {@link VkSwapchainPresentModeInfoEXT#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkSwapchainPresentModeInfoEXT#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

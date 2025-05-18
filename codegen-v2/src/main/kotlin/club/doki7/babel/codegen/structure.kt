@@ -174,10 +174,9 @@ fun generateStructure(
             +"/// - `${it.name} = ${it.values!!.original}`"
         }
         +"///"
-        +"/// The {@link $className#allocate} functions will automatically initialize these fields."
-        +"/// Also, you may call {@link $className#autoInit} to initialize these fields manually for"
-        +"/// non-allocated instances."
-        +"///"
+        +"/// The {@code allocate} ({@link $className#allocate(Arena)}, {@link $className#allocate(Arena, int)})"
+        +"/// functions will automatically initialize these fields. Also, you may call {@link $className#autoInit}"
+        +"/// to initialize these fields manually for non-allocated instances."
     }
 
     +"/// ## Contracts"

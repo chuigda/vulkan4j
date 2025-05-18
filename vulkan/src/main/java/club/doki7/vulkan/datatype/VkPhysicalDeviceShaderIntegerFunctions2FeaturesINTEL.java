@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL`
 ///
-/// The {@link VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL#allocate(Arena)}, {@link VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

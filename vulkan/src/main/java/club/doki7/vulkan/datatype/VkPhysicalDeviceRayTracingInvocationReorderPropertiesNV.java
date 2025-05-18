@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV`
 ///
-/// The {@link VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV#allocate(Arena)}, {@link VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

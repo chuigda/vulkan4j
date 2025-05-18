@@ -33,10 +33,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO`
 ///
-/// The {@link VkQueryPoolCreateInfo#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkQueryPoolCreateInfo#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkQueryPoolCreateInfo#allocate(Arena)}, {@link VkQueryPoolCreateInfo#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkQueryPoolCreateInfo#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

@@ -41,10 +41,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_CU_LAUNCH_INFO_NVX`
 ///
-/// The {@link VkCuLaunchInfoNVX#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkCuLaunchInfoNVX#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkCuLaunchInfoNVX#allocate(Arena)}, {@link VkCuLaunchInfoNVX#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkCuLaunchInfoNVX#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

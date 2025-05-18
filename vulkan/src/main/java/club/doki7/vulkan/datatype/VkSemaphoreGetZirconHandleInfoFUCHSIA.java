@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_SEMAPHORE_GET_ZIRCON_HANDLE_INFO_FUCHSIA`
 ///
-/// The {@link VkSemaphoreGetZirconHandleInfoFUCHSIA#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkSemaphoreGetZirconHandleInfoFUCHSIA#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkSemaphoreGetZirconHandleInfoFUCHSIA#allocate(Arena)}, {@link VkSemaphoreGetZirconHandleInfoFUCHSIA#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkSemaphoreGetZirconHandleInfoFUCHSIA#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

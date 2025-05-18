@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK`
 ///
-/// The {@link VkMacOSSurfaceCreateInfoMVK#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkMacOSSurfaceCreateInfoMVK#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkMacOSSurfaceCreateInfoMVK#allocate(Arena)}, {@link VkMacOSSurfaceCreateInfoMVK#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkMacOSSurfaceCreateInfoMVK#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

@@ -32,10 +32,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_FEEDBACK_INFO_KHR`
 ///
-/// The {@link VkVideoEncodeH265SessionParametersFeedbackInfoKHR#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkVideoEncodeH265SessionParametersFeedbackInfoKHR#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkVideoEncodeH265SessionParametersFeedbackInfoKHR#allocate(Arena)}, {@link VkVideoEncodeH265SessionParametersFeedbackInfoKHR#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkVideoEncodeH265SessionParametersFeedbackInfoKHR#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

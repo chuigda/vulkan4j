@@ -32,10 +32,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR`
 ///
-/// The {@link VkImportMemoryWin32HandleInfoKHR#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkImportMemoryWin32HandleInfoKHR#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkImportMemoryWin32HandleInfoKHR#allocate(Arena)}, {@link VkImportMemoryWin32HandleInfoKHR#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkImportMemoryWin32HandleInfoKHR#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_ADDRESS_PROPERTIES_NVX`
 ///
-/// The {@link VkImageViewAddressPropertiesNVX#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkImageViewAddressPropertiesNVX#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkImageViewAddressPropertiesNVX#allocate(Arena)}, {@link VkImageViewAddressPropertiesNVX#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkImageViewAddressPropertiesNVX#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

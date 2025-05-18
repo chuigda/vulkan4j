@@ -32,10 +32,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO`
 ///
-/// The {@link VkShaderModuleCreateInfo#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkShaderModuleCreateInfo#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkShaderModuleCreateInfo#allocate(Arena)}, {@link VkShaderModuleCreateInfo#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkShaderModuleCreateInfo#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

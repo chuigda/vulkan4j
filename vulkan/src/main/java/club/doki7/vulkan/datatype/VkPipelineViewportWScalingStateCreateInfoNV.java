@@ -32,10 +32,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV`
 ///
-/// The {@link VkPipelineViewportWScalingStateCreateInfoNV#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPipelineViewportWScalingStateCreateInfoNV#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPipelineViewportWScalingStateCreateInfoNV#allocate(Arena)}, {@link VkPipelineViewportWScalingStateCreateInfoNV#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPipelineViewportWScalingStateCreateInfoNV#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

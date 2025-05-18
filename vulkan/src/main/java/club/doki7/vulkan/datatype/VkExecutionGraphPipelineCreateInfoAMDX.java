@@ -36,10 +36,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_EXECUTION_GRAPH_PIPELINE_CREATE_INFO_AMDX`
 ///
-/// The {@link VkExecutionGraphPipelineCreateInfoAMDX#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkExecutionGraphPipelineCreateInfoAMDX#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkExecutionGraphPipelineCreateInfoAMDX#allocate(Arena)}, {@link VkExecutionGraphPipelineCreateInfoAMDX#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkExecutionGraphPipelineCreateInfoAMDX#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

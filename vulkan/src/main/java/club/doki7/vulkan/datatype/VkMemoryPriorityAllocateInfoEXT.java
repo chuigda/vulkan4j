@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT`
 ///
-/// The {@link VkMemoryPriorityAllocateInfoEXT#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkMemoryPriorityAllocateInfoEXT#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkMemoryPriorityAllocateInfoEXT#allocate(Arena)}, {@link VkMemoryPriorityAllocateInfoEXT#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkMemoryPriorityAllocateInfoEXT#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

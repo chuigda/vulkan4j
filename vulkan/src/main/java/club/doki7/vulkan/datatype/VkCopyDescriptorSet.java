@@ -36,10 +36,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_COPY_DESCRIPTOR_SET`
 ///
-/// The {@link VkCopyDescriptorSet#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkCopyDescriptorSet#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkCopyDescriptorSet#allocate(Arena)}, {@link VkCopyDescriptorSet#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkCopyDescriptorSet#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

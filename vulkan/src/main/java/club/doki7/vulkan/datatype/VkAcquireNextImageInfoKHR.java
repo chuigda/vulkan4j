@@ -34,10 +34,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR`
 ///
-/// The {@link VkAcquireNextImageInfoKHR#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkAcquireNextImageInfoKHR#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkAcquireNextImageInfoKHR#allocate(Arena)}, {@link VkAcquireNextImageInfoKHR#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkAcquireNextImageInfoKHR#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

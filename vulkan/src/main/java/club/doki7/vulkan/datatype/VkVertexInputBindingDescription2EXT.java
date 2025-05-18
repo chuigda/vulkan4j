@@ -33,10 +33,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_VERTEX_INPUT_BINDING_DESCRIPTION_2_EXT`
 ///
-/// The {@link VkVertexInputBindingDescription2EXT#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkVertexInputBindingDescription2EXT#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkVertexInputBindingDescription2EXT#allocate(Arena)}, {@link VkVertexInputBindingDescription2EXT#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkVertexInputBindingDescription2EXT#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

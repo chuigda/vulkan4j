@@ -32,10 +32,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE`
 ///
-/// The {@link VkMappedMemoryRange#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkMappedMemoryRange#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkMappedMemoryRange#allocate(Arena)}, {@link VkMappedMemoryRange#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkMappedMemoryRange#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

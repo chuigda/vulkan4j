@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_2_AMD`
 ///
-/// The {@link VkPhysicalDeviceShaderCoreProperties2AMD#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPhysicalDeviceShaderCoreProperties2AMD#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPhysicalDeviceShaderCoreProperties2AMD#allocate(Arena)}, {@link VkPhysicalDeviceShaderCoreProperties2AMD#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceShaderCoreProperties2AMD#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

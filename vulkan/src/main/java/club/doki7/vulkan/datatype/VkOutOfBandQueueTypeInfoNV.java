@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_OUT_OF_BAND_QUEUE_TYPE_INFO_NV`
 ///
-/// The {@link VkOutOfBandQueueTypeInfoNV#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkOutOfBandQueueTypeInfoNV#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkOutOfBandQueueTypeInfoNV#allocate(Arena)}, {@link VkOutOfBandQueueTypeInfoNV#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkOutOfBandQueueTypeInfoNV#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

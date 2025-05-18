@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR`
 ///
-/// The {@link VkDeviceGroupPresentCapabilitiesKHR#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkDeviceGroupPresentCapabilitiesKHR#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkDeviceGroupPresentCapabilitiesKHR#allocate(Arena)}, {@link VkDeviceGroupPresentCapabilitiesKHR#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkDeviceGroupPresentCapabilitiesKHR#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

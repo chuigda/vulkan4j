@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO`
 ///
-/// The {@link VkPipelineShaderStageRequiredSubgroupSizeCreateInfo#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPipelineShaderStageRequiredSubgroupSizeCreateInfo#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPipelineShaderStageRequiredSubgroupSizeCreateInfo#allocate(Arena)}, {@link VkPipelineShaderStageRequiredSubgroupSizeCreateInfo#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPipelineShaderStageRequiredSubgroupSizeCreateInfo#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

@@ -32,10 +32,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR`
 ///
-/// The {@link VkXcbSurfaceCreateInfoKHR#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkXcbSurfaceCreateInfoKHR#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkXcbSurfaceCreateInfoKHR#allocate(Arena)}, {@link VkXcbSurfaceCreateInfoKHR#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkXcbSurfaceCreateInfoKHR#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

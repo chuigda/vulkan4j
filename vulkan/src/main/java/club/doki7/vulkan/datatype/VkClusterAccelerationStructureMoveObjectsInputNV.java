@@ -32,10 +32,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_MOVE_OBJECTS_INPUT_NV`
 ///
-/// The {@link VkClusterAccelerationStructureMoveObjectsInputNV#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkClusterAccelerationStructureMoveObjectsInputNV#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkClusterAccelerationStructureMoveObjectsInputNV#allocate(Arena)}, {@link VkClusterAccelerationStructureMoveObjectsInputNV#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkClusterAccelerationStructureMoveObjectsInputNV#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

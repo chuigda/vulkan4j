@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM`
 ///
-/// The {@link VkPhysicalDeviceSchedulingControlsPropertiesARM#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPhysicalDeviceSchedulingControlsPropertiesARM#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPhysicalDeviceSchedulingControlsPropertiesARM#allocate(Arena)}, {@link VkPhysicalDeviceSchedulingControlsPropertiesARM#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceSchedulingControlsPropertiesARM#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_LOCAL_READ_FEATURES`
 ///
-/// The {@link VkPhysicalDeviceDynamicRenderingLocalReadFeatures#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPhysicalDeviceDynamicRenderingLocalReadFeatures#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPhysicalDeviceDynamicRenderingLocalReadFeatures#allocate(Arena)}, {@link VkPhysicalDeviceDynamicRenderingLocalReadFeatures#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceDynamicRenderingLocalReadFeatures#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_FLAGS_NV`
 ///
-/// The {@link VkPartitionedAccelerationStructureFlagsNV#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPartitionedAccelerationStructureFlagsNV#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPartitionedAccelerationStructureFlagsNV#allocate(Arena)}, {@link VkPartitionedAccelerationStructureFlagsNV#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPartitionedAccelerationStructureFlagsNV#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

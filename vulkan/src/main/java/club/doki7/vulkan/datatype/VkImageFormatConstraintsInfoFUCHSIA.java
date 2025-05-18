@@ -35,10 +35,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_IMAGE_FORMAT_CONSTRAINTS_INFO_FUCHSIA`
 ///
-/// The {@link VkImageFormatConstraintsInfoFUCHSIA#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkImageFormatConstraintsInfoFUCHSIA#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkImageFormatConstraintsInfoFUCHSIA#allocate(Arena)}, {@link VkImageFormatConstraintsInfoFUCHSIA#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkImageFormatConstraintsInfoFUCHSIA#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

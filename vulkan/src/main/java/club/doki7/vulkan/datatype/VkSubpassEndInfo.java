@@ -29,10 +29,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_SUBPASS_END_INFO`
 ///
-/// The {@link VkSubpassEndInfo#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkSubpassEndInfo#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkSubpassEndInfo#allocate(Arena)}, {@link VkSubpassEndInfo#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkSubpassEndInfo#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

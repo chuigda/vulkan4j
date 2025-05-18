@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_PROPERTIES_NV`
 ///
-/// The {@link VkPhysicalDeviceDisplacementMicromapPropertiesNV#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPhysicalDeviceDisplacementMicromapPropertiesNV#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPhysicalDeviceDisplacementMicromapPropertiesNV#allocate(Arena)}, {@link VkPhysicalDeviceDisplacementMicromapPropertiesNV#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceDisplacementMicromapPropertiesNV#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

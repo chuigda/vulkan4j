@@ -30,10 +30,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_FEATURES`
 ///
-/// The {@link VkPhysicalDeviceHostImageCopyFeatures#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPhysicalDeviceHostImageCopyFeatures#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPhysicalDeviceHostImageCopyFeatures#allocate(Arena)}, {@link VkPhysicalDeviceHostImageCopyFeatures#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceHostImageCopyFeatures#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

@@ -52,10 +52,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES`
 ///
-/// The {@link VkPhysicalDeviceDescriptorIndexingProperties#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkPhysicalDeviceDescriptorIndexingProperties#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkPhysicalDeviceDescriptorIndexingProperties#allocate(Arena)}, {@link VkPhysicalDeviceDescriptorIndexingProperties#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceDescriptorIndexingProperties#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

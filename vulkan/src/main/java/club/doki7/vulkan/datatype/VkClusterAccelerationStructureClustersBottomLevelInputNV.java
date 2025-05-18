@@ -31,10 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_CLUSTERS_BOTTOM_LEVEL_INPUT_NV`
 ///
-/// The {@link VkClusterAccelerationStructureClustersBottomLevelInputNV#allocate} functions will automatically initialize these fields.
-/// Also, you may call {@link VkClusterAccelerationStructureClustersBottomLevelInputNV#autoInit} to initialize these fields manually for
-/// non-allocated instances.
-///
+/// The {@code allocate} ({@link VkClusterAccelerationStructureClustersBottomLevelInputNV#allocate(Arena)}, {@link VkClusterAccelerationStructureClustersBottomLevelInputNV#allocate(Arena, int)})
+/// functions will automatically initialize these fields. Also, you may call {@link VkClusterAccelerationStructureClustersBottomLevelInputNV#autoInit}
+/// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
