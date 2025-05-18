@@ -23,7 +23,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct StdVideoEncodeH265ReferenceListsInfoFlags {
 ///     uint32_t ref_pic_list_modification_flag_l0 : 1; // @link substring="ref_pic_list_modification_flag_l0" target="#ref_pic_list_modification_flag_l0"
 ///     uint32_t ref_pic_list_modification_flag_l1 : 1; // @link substring="ref_pic_list_modification_flag_l1" target="#ref_pic_list_modification_flag_l1"
-///     uint32_t reserved : 30; // @link substring="reserved" target="#reserved"
+///     uint32_t reserved : 30;
 /// } StdVideoEncodeH265ReferenceListsInfoFlags;
 /// }
 ///

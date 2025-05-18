@@ -40,7 +40,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t film_grain_params_present : 1; // @link substring="film_grain_params_present" target="#film_grain_params_present"
 ///     uint32_t timing_info_present_flag : 1; // @link substring="timing_info_present_flag" target="#timing_info_present_flag"
 ///     uint32_t initial_display_delay_present_flag : 1; // @link substring="initial_display_delay_present_flag" target="#initial_display_delay_present_flag"
-///     uint32_t reserved : 13; // @link substring="reserved" target="#reserved"
+///     uint32_t reserved : 13;
 /// } StdVideoAV1SequenceHeaderFlags;
 /// }
 ///

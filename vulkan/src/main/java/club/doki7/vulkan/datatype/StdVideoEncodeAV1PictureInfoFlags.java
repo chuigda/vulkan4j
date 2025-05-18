@@ -50,7 +50,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t usesChromaLr : 1; // @link substring="usesChromaLr" target="#usesChromaLr"
 ///     uint32_t show_frame : 1; // @link substring="show_frame" target="#show_frame"
 ///     uint32_t showable_frame : 1; // @link substring="showable_frame" target="#showable_frame"
-///     uint32_t reserved : 3; // @link substring="reserved" target="#reserved"
+///     uint32_t reserved : 3;
 /// } StdVideoEncodeAV1PictureInfoFlags;
 /// }
 ///

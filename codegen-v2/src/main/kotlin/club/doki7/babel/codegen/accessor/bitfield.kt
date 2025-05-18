@@ -8,7 +8,7 @@ fun generateBitfieldAccessor(bitfields: LayoutField.Bitfields) = buildDoc {
     for (i in bitfields.bitfields.indices) {
         val member = bitfields.bitfields[i]
         val memberName = member.bitfieldName
-        if (memberName == "reserved") {
+        if (memberName.startsWith("reserved")) {
             continue
         }
 

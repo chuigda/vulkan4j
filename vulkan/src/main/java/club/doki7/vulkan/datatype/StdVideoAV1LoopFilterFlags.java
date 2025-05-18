@@ -23,7 +23,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct StdVideoAV1LoopFilterFlags {
 ///     uint32_t loop_filter_delta_enabled : 1; // @link substring="loop_filter_delta_enabled" target="#loop_filter_delta_enabled"
 ///     uint32_t loop_filter_delta_update : 1; // @link substring="loop_filter_delta_update" target="#loop_filter_delta_update"
-///     uint32_t reserved : 30; // @link substring="reserved" target="#reserved"
+///     uint32_t reserved : 30;
 /// } StdVideoAV1LoopFilterFlags;
 /// }
 ///

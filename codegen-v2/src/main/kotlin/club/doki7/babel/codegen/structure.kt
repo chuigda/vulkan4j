@@ -119,7 +119,11 @@ fun generateStructure(
         val fieldLink = " @link substring=\"${it.name}\" target=\"#${it.name}\""
 
         if (it.bits != null) {
-            +"///     ${it.type.cDisplay} ${it.name} : ${it.bits}; //$fieldLink"
+            if (it.name.original.startsWith("reserved")) {
+                +"///     ${it.type.cDisplay} ${it.name} : ${it.bits};"
+            } else {
+                +"///     ${it.type.cDisplay} ${it.name} : ${it.bits}; //$fieldLink"
+            }
         } else {
             val maybeOptionalComment = if (it.optional) " // optional" else ""
 

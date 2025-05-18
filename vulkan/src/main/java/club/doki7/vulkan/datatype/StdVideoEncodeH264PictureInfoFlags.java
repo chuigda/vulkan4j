@@ -26,7 +26,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t no_output_of_prior_pics_flag : 1; // @link substring="no_output_of_prior_pics_flag" target="#no_output_of_prior_pics_flag"
 ///     uint32_t long_term_reference_flag : 1; // @link substring="long_term_reference_flag" target="#long_term_reference_flag"
 ///     uint32_t adaptive_ref_pic_marking_mode_flag : 1; // @link substring="adaptive_ref_pic_marking_mode_flag" target="#adaptive_ref_pic_marking_mode_flag"
-///     uint32_t reserved : 27; // @link substring="reserved" target="#reserved"
+///     uint32_t reserved : 27;
 /// } StdVideoEncodeH264PictureInfoFlags;
 /// }
 ///

@@ -25,7 +25,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t color_range : 1; // @link substring="color_range" target="#color_range"
 ///     uint32_t separate_uv_delta_q : 1; // @link substring="separate_uv_delta_q" target="#separate_uv_delta_q"
 ///     uint32_t color_description_present_flag : 1; // @link substring="color_description_present_flag" target="#color_description_present_flag"
-///     uint32_t reserved : 28; // @link substring="reserved" target="#reserved"
+///     uint32_t reserved : 28;
 /// } StdVideoAV1ColorConfigFlags;
 /// }
 ///

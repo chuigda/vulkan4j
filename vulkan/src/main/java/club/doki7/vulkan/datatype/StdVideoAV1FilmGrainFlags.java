@@ -25,7 +25,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t overlap_flag : 1; // @link substring="overlap_flag" target="#overlap_flag"
 ///     uint32_t clip_to_restricted_range : 1; // @link substring="clip_to_restricted_range" target="#clip_to_restricted_range"
 ///     uint32_t update_grain : 1; // @link substring="update_grain" target="#update_grain"
-///     uint32_t reserved : 28; // @link substring="reserved" target="#reserved"
+///     uint32_t reserved : 28;
 /// } StdVideoAV1FilmGrainFlags;
 /// }
 ///

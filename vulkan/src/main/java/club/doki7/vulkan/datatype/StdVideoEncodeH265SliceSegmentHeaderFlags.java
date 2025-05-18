@@ -33,7 +33,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t slice_deblocking_filter_disabled_flag : 1; // @link substring="slice_deblocking_filter_disabled_flag" target="#slice_deblocking_filter_disabled_flag"
 ///     uint32_t collocated_from_l0_flag : 1; // @link substring="collocated_from_l0_flag" target="#collocated_from_l0_flag"
 ///     uint32_t slice_loop_filter_across_slices_enabled_flag : 1; // @link substring="slice_loop_filter_across_slices_enabled_flag" target="#slice_loop_filter_across_slices_enabled_flag"
-///     uint32_t reserved : 20; // @link substring="reserved" target="#reserved"
+///     uint32_t reserved : 20;
 /// } StdVideoEncodeH265SliceSegmentHeaderFlags;
 /// }
 ///

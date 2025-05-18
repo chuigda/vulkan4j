@@ -23,7 +23,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct StdVideoAV1QuantizationFlags {
 ///     uint32_t using_qmatrix : 1; // @link substring="using_qmatrix" target="#using_qmatrix"
 ///     uint32_t diff_uv_delta : 1; // @link substring="diff_uv_delta" target="#diff_uv_delta"
-///     uint32_t reserved : 30; // @link substring="reserved" target="#reserved"
+///     uint32_t reserved : 30;
 /// } StdVideoAV1QuantizationFlags;
 /// }
 ///

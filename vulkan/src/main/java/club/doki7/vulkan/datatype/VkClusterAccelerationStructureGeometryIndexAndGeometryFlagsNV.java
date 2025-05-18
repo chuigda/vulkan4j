@@ -22,7 +22,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV {
 ///     uint32_t geometryIndex : 24; // @link substring="geometryIndex" target="#geometryIndex"
-///     uint32_t reserved : 5; // @link substring="reserved" target="#reserved"
+///     uint32_t reserved : 5;
 ///     uint32_t geometryFlags : 3; // @link substring="geometryFlags" target="#geometryFlags"
 /// } VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV;
 /// }

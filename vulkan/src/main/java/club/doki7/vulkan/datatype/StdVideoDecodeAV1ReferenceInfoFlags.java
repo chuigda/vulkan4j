@@ -23,7 +23,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct StdVideoDecodeAV1ReferenceInfoFlags {
 ///     uint32_t disable_frame_end_update_cdf : 1; // @link substring="disable_frame_end_update_cdf" target="#disable_frame_end_update_cdf"
 ///     uint32_t segmentation_enabled : 1; // @link substring="segmentation_enabled" target="#segmentation_enabled"
-///     uint32_t reserved : 30; // @link substring="reserved" target="#reserved"
+///     uint32_t reserved : 30;
 /// } StdVideoDecodeAV1ReferenceInfoFlags;
 /// }
 ///
