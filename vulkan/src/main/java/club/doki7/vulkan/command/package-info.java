@@ -7,7 +7,7 @@
 /// Vulkan commands are basically Vulkan API functions. There are four classes of Vulkan commands:
 /// - static commands ({@link club.doki7.vulkan.command.VkStaticCommands}):
 /// The Vulkan commands loaded in a platform-specific manner that can then used to load the other
-/// commands (i.e., {@code vkGetInstanceProcAddr} and {@cod vkGetDeviceProcAddr})
+/// commands (i.e., {@code vkGetInstanceProcAddr} and {@code vkGetDeviceProcAddr})
 /// - entry commands ({@link club.doki7.vulkan.command.VkEntryCommands}):
 /// The Vulkan commands loaded using {@code vkGetInstanceProcAddr} and a null Vulkan instance. These
 /// commands are not tied to a specific Vulkan instance and are used to query instance support and
