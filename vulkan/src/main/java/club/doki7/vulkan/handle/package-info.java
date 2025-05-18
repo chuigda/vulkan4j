@@ -1,4 +1,4 @@
-/// Opaque handle types of Vulkan API
+/// Opaque handle types of Vulkan API.
 ///
 /// ## Quick start
 ///

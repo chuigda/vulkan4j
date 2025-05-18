@@ -1,4 +1,4 @@
-/// Enumeration ({@code enum}) types of Vulkan API
+/// Enumeration ({@code enum}) types of Vulkan API.
 ///
 /// ## Quick start
 ///

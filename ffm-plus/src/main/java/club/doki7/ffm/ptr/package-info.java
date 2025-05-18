@@ -1,5 +1,5 @@
 /// Utility classes encapsulating {@link java.lang.foreign.MemorySegment}, providing type-safe way
-/// to access native memory
+/// to access native memory.
 ///
 /// ## Quick start
 ///

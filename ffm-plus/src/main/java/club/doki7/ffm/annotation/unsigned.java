@@ -2,7 +2,7 @@ package club.doki7.ffm.annotation;
 
 import java.lang.annotation.Documented;
 
-/// A marker annotation to indicate that the annotated value should be treated as unsigned.
+/// Marker annotation, indicating that the annotated integral value should be treated as unsigned.
 ///
 /// For example, if an {@code int} is annotated with this annotation, you should use
 /// {@link Integer#toUnsignedString} to get its string representation, and so on.

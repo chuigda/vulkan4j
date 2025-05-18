@@ -1,4 +1,4 @@
-/// Structure ({@code struct} or {@code union}) types of Vulkan API
+/// Structure ({@code struct} or {@code union}) types of Vulkan API.
 ///
 /// ## Quick start
 ///

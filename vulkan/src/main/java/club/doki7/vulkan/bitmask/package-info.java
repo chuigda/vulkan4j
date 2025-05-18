@@ -1,4 +1,4 @@
-/// Bitmask (flags) types of Vulkan API
+/// Bitmask (flags) types of Vulkan API.
 ///
 /// ## Quick start
 ///

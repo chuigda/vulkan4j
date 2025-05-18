@@ -1,4 +1,4 @@
-/// Utility library for Java 22 FFM (Project Panama) APIs
+/// Utility library for Java 22 FFM (Project Panama) APIs.
 ///
 /// <p><i>《庄子·内篇·逍遥游》节选</i></p>
 ///

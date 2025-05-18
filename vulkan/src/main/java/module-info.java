@@ -1,4 +1,4 @@
-/// Vulkan Java bindings implemented with Java 22 FFM (Project Panama) APIs
+/// Vulkan Java bindings implemented with Java 22 FFM (Project Panama) APIs.
 ///
 /// <p><i>《庄子·外篇·秋水》节选</i></p>
 ///
