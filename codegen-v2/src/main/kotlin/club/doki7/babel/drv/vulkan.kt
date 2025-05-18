@@ -101,7 +101,7 @@ private fun vulkanDocLinkProvider(entity: Entity) = when(entity) {
     }
     is Bitmask, is Command, is Enumeration, is Structure, is OpaqueHandleTypedef, is FunctionTypedef -> {
         val entityName = entity.name.original
-        if (entityName.startsWith("StdVideo")) {
+        if (entityName.startsWith("StdVideo") || entityName.startsWith("Nv")) {
             null
         } else {
             "<a href=\"https://registry.khronos.org/vulkan/specs/latest/man/html/${entity.name.original}.html\"><code>${entity.name.original}</code></a>"

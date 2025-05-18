@@ -14,7 +14,7 @@ import club.doki7.vulkan.handle.*;
 import club.doki7.vulkan.enumtype.*;
 import static club.doki7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/NvSciSyncFence.html"><code>NvSciSyncFence</code></a> structure in native memory.
+/// Represents a pointer to a {@code NvSciSyncFence} structure in native memory.
 ///
 /// ## Structure
 ///
@@ -33,8 +33,6 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
-///
-/// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/NvSciSyncFence.html"><code>NvSciSyncFence</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record NvSciSyncFenceVKREF(@NotNull MemorySegment segment) implements IPointer {

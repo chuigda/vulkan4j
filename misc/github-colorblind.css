@@ -1,3 +1,25 @@
+:root {
+    --body-font-family: sans-serif;
+    --block-font-family: sans-serif;
+    --code-font-family: 'Fira Code', monospace;
+}
+
+.summary-table .col-first {
+    font-family: var(--code-font-family);
+}
+
+.index a.member-name-link {
+    font-family: var(--code-font-family);
+}
+
+.hierarchy {
+    font-family: var(--code-font-family);
+}
+
+.inheritance {
+    font-family: var(--code-font-family);
+}
+
 /* 取材自 GitHub Light/Dark Colorblind 颜色主题，使用 Gemini-2.5 Pro 自动生成 */
 :root {
     /* 背景颜色 */
@@ -73,5 +95,4 @@
         --invalid-tag-background-color: #d47616; /* errorForeground, used as background */
         --invalid-tag-text-color: #ffffff; /* For contrast against an orange/error background */
     }
-
 }
