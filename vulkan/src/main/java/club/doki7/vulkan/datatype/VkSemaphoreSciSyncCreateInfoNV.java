@@ -23,7 +23,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkSemaphoreSciSyncPoolNV semaphorePool; // @link substring="VkSemaphoreSciSyncPoolNV" target="VkSemaphoreSciSyncPoolNV" @link substring="semaphorePool" target="#semaphorePool"
-///     NvSciSyncFence const* pFence; // @link substring="NvSciSyncFence_VK" target="NvSciSyncFence_VK" @link substring="pFence" target="#pFence"
+///     NvSciSyncFence const* pFence; // @link substring="NvSciSyncFenceVKREF" target="NvSciSyncFenceVKREF" @link substring="pFence" target="#pFence"
 /// } VkSemaphoreSciSyncCreateInfoNV;
 /// }
 ///
@@ -115,38 +115,38 @@ public record VkSemaphoreSciSyncCreateInfoNV(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$semaphorePool, OFFSET$semaphorePool, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Nullable NvSciSyncFence_VK pFence() {
+    public @Nullable NvSciSyncFenceVKREF pFence() {
         MemorySegment s = pFenceRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
-        return new NvSciSyncFence_VK(s);
+        return new NvSciSyncFenceVKREF(s);
     }
 
-    public void pFence(@Nullable NvSciSyncFence_VK value) {
+    public void pFence(@Nullable NvSciSyncFenceVKREF value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFenceRaw(s);
     }
 
-    @unsafe public @Nullable NvSciSyncFence_VK[] pFence(int assumedCount) {
+    @unsafe public @Nullable NvSciSyncFenceVKREF[] pFence(int assumedCount) {
         MemorySegment s = pFenceRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
-        s = s.reinterpret(assumedCount * NvSciSyncFence_VK.BYTES);
-        NvSciSyncFence_VK[] ret = new NvSciSyncFence_VK[assumedCount];
+        s = s.reinterpret(assumedCount * NvSciSyncFenceVKREF.BYTES);
+        NvSciSyncFenceVKREF[] ret = new NvSciSyncFenceVKREF[assumedCount];
         for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new NvSciSyncFence_VK(s.asSlice(i * NvSciSyncFence_VK.BYTES, NvSciSyncFence_VK.BYTES));
+            ret[i] = new NvSciSyncFenceVKREF(s.asSlice(i * NvSciSyncFenceVKREF.BYTES, NvSciSyncFenceVKREF.BYTES));
         }
         return ret;
     }
 
-    public @pointer(target=NvSciSyncFence_VK.class) MemorySegment pFenceRaw() {
+    public @pointer(target=NvSciSyncFenceVKREF.class) MemorySegment pFenceRaw() {
         return segment.get(LAYOUT$pFence, OFFSET$pFence);
     }
 
-    public void pFenceRaw(@pointer(target=NvSciSyncFence_VK.class) MemorySegment value) {
+    public void pFenceRaw(@pointer(target=NvSciSyncFenceVKREF.class) MemorySegment value) {
         segment.set(LAYOUT$pFence, OFFSET$pFence, value);
     }
 
@@ -154,7 +154,7 @@ public record VkSemaphoreSciSyncCreateInfoNV(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withName("semaphorePool"),
-        ValueLayout.ADDRESS.withTargetLayout(NvSciSyncFence_VK.LAYOUT).withName("pFence")
+        ValueLayout.ADDRESS.withTargetLayout(NvSciSyncFenceVKREF.LAYOUT).withName("pFence")
     );
     public static final long BYTES = LAYOUT.byteSize();
 

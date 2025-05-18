@@ -37,28 +37,28 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/NvSciSyncFence.html"><code>NvSciSyncFence</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record NvSciSyncFence_VK(@NotNull MemorySegment segment) implements IPointer {
-    public static NvSciSyncFence_VK allocate(Arena arena) {
-        return new NvSciSyncFence_VK(arena.allocate(LAYOUT));
+public record NvSciSyncFenceVKREF(@NotNull MemorySegment segment) implements IPointer {
+    public static NvSciSyncFenceVKREF allocate(Arena arena) {
+        return new NvSciSyncFenceVKREF(arena.allocate(LAYOUT));
     }
 
-    public static NvSciSyncFence_VK[] allocate(Arena arena, int count) {
+    public static NvSciSyncFenceVKREF[] allocate(Arena arena, int count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        NvSciSyncFence_VK[] ret = new NvSciSyncFence_VK[count];
+        NvSciSyncFenceVKREF[] ret = new NvSciSyncFenceVKREF[count];
         for (int i = 0; i < count; i ++) {
-            ret[i] = new NvSciSyncFence_VK(segment.asSlice(i * BYTES, BYTES));
+            ret[i] = new NvSciSyncFenceVKREF(segment.asSlice(i * BYTES, BYTES));
         }
         return ret;
     }
 
-    public static NvSciSyncFence_VK clone(Arena arena, NvSciSyncFence_VK src) {
-        NvSciSyncFence_VK ret = allocate(arena);
+    public static NvSciSyncFenceVKREF clone(Arena arena, NvSciSyncFenceVKREF src) {
+        NvSciSyncFenceVKREF ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
         return ret;
     }
 
-    public static NvSciSyncFence_VK[] clone(Arena arena, NvSciSyncFence_VK[] src) {
-        NvSciSyncFence_VK[] ret = allocate(arena, src.length);
+    public static NvSciSyncFenceVKREF[] clone(Arena arena, NvSciSyncFenceVKREF[] src) {
+        NvSciSyncFenceVKREF[] ret = allocate(arena, src.length);
         for (int i = 0; i < src.length; i ++) {
             ret[i].segment.copyFrom(src[i].segment);
         }

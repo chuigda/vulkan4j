@@ -25,7 +25,7 @@ fun extractVulkanRegistry(): Registry<VulkanRegistryExt> {
 
     log.info("手动添加类型 NvSciSyncFence")
     val renamedNvSciSyncFence = "NvSciSyncFence".intern()
-    renamedNvSciSyncFence.rename("NvSciSyncFence_VK")
+    renamedNvSciSyncFence.rename("NvSciSyncFenceVKREF")
     filteredRegistry.structures.put(
         renamedNvSciSyncFence,
         Structure(
