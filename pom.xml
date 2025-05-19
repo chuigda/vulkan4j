@@ -90,6 +90,8 @@
                             <additionalOptions>
                                 <additionalOption>--add-stylesheet</additionalOption>
                                 <additionalOption>${project.basedir}/misc/github-colorblind.css</additionalOption>
+                                <additionalOption>-overview</additionalOption>
+                                <additionalOption>${project.basedir}/misc/overview.html</additionalOption>
                                 <additionalOption>--no-fonts</additionalOption>
                             </additionalOptions>
                         </configuration>
