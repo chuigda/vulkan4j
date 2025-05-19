@@ -92,6 +92,7 @@
                                 <additionalOption>${project.basedir}/misc/github-colorblind.css</additionalOption>
                                 <additionalOption>-overview</additionalOption>
                                 <additionalOption>${project.basedir}/misc/overview.html</additionalOption>
+                                <additionalOption>--allow-script-in-comments</additionalOption>
                                 <additionalOption>--no-fonts</additionalOption>
                             </additionalOptions>
                         </configuration>

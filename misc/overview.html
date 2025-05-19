@@ -4,21 +4,28 @@
     <meta charset="utf-8">
   </header>
   <body>
-    <h2>Brief introduction</h2>
     <p>
       <code>vulkan4j</code> is a project aiming at providing Java bindings for computer graphics APIs using Java 22 FFM (Foreign Function and Memory) APIs. This project was initially created only for Vulkan, but soon the initiator realized that it could be extended to other graphics APIs as well.
     </p>
     <p>
       <code>vulkan4j</code> is opensource software and freely available at no charge.
     </p>
-    <p>
-      <small><i>时运不济，命运多舛。冯唐易老，李广难封。屈贾谊于长沙，非无圣主；窜梁鸿于海曲，岂乏明时？所赖<a href="https://chuigda.doki7.club/resume">君子见机，达人知命</a></i></small>
-    </p>
-    <h2>Links</h2>
+    <b>Links</b>
     <ul>
       <li><a href="https://github.com/vulkan4j" target="_blank">GitHub repository</a></li>
       <li><a href="https://doki7.club" target="_blank">Doki Doki 7th Design Club!</a></li>
       <li><a href="https://vk-java.doki7.club" target="_blank">Vulkan + Java tutorial using <code>vulkan4j</code></a></li>
     </ul>
+    <p id="resume-slot">
+      <small><i>时运不济，命运多舛。冯唐易老，李广难封。屈贾谊于长沙，非无圣主；窜梁鸿于海曲，岂乏明时？所赖<a href="https://chuigda.doki7.club/resume-cn.pdf">君子见机，达人知命</a></i></small>
+    </p>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        if (!navigator.language.startsWith('zh')) {
+          document.getElementById('resume-slot').innerHTML = '<small><i>Luck is always elusive, and life is fraught with obstacles. Feng Tang easily turned old before he was called to serve in office. Li Guang had difficulties getting an award for dukedom. Jia Yi was relegated to Changsha not because there wasn\'t a sage emperor; Liang Hong\'s escape to the seaside did not happen at a time when there was no good governance, was it? We rely upon gentlemen who <a href="https://chuigda.doki7.club/resume.pdf">detect telltale signs before happenings, and at-ease men who take things as they come in life</a>.</i></small>';
+        }
+      })
+    </script>
   </body>
 </html>
