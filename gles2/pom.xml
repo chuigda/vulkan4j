@@ -4,14 +4,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>tech.icey</groupId>
+        <groupId>club.doki7</groupId>
         <artifactId>root</artifactId>
         <version>${revision}</version>
     </parent>
 
     <name>gles2</name>
-    <description>Java bindings for OpenGL ES 2.0 using Project Panama</description>
+    <description>OpenGL ES2 Java bindings implemented with Java 22 FFM (Project Panama) API</description>
     <url>https://github/chuigda/vulkan4j</url>
+
+    <inceptionYear>2024</inceptionYear>
+    <organization>
+        <name>Doki Doki 7th Design Club!</name>
+        <url>https://doki7.club</url>
+    </organization>
 
     <licenses>
         <license>
@@ -22,16 +28,16 @@
 
     <developers>
         <developer>
-            <name>Cousin Ze</name>
-            <email>alex@ckx-ily.cn</email>
-            <organization>7th General Design Group</organization>
-            <organizationUrl>https://self.icey.tech</organizationUrl>
-        </developer>
-        <developer>
             <name>Chuigda Whitegive</name>
             <email>icey@icey.tech</email>
-            <organization>7th General Design Group</organization>
-            <organizationUrl>https://self.icey.tech</organizationUrl>
+        </developer>
+        <developer>
+            <name>Cousin Ze</name>
+            <email>alex@ckx-ily.cn</email>
+        </developer>
+        <developer>
+            <name>Hoshino Tented</name>
+            <email>hoshinotented@qq.com</email>
         </developer>
     </developers>
 
@@ -42,7 +48,7 @@
     </scm>
 
     <artifactId>gles2</artifactId>
-    <version>0.2.3</version>
+    <version>0.3.0</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -52,15 +58,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>tech.icey</groupId>
-            <artifactId>panama-plus</artifactId>
-            <version>0.1.2</version>
+            <groupId>club.doki7</groupId>
+            <artifactId>ffm-plus</artifactId>
+            <version>0.1.4</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>24.0.0</version>
+            <version>26.0.2</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

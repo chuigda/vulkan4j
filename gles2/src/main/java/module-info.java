@@ -1,7 +1,6 @@
-@SuppressWarnings("JavaModuleNaming")
-module tech.icey.gles2 {
-    exports tech.icey.gles2;
+module club.doki7.gles2 {
+    exports club.doki7.gles2;
 
-    requires tech.icey.panama;
+    requires club.doki7.ffm;
     requires org.jetbrains.annotations;
 }

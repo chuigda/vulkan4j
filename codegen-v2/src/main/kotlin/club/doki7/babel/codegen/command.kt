@@ -20,12 +20,17 @@ fun generateCommandFile(
     className: String,
     commands: List<Command>,
     codegenOptions: CodegenOptions,
-    javaDoc: Doc?
+    subpackage: String?,
+    javaDoc: Doc? = null
 ) = buildDoc {
     val packageName = codegenOptions.packageName
 
     // region imports
-    +"package $packageName.command;"
+    if (subpackage != null) {
+        +"package $packageName.$subpackage;"
+    } else {
+        +"package $packageName;"
+    }
     +""
     imports("java.lang.foreign.*")
     imports("java.lang.invoke.MethodHandle")
@@ -176,7 +181,7 @@ private fun generateCommandWrapper(
         }
         +") {"
     } else {
-        +"public $retIOType ${loweredCommand.command}.name() {"
+        +"public $retIOType ${loweredCommand.command.name}() {"
     }
 
     indent {

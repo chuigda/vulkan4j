@@ -104,28 +104,28 @@ internal fun vulkanMain() {
         "VkStaticCommands",
         staticCommands,
         codegenOptions,
-        null
+        "command"
     )
     val entryCommandsDoc = generateCommandFile(
         vulkanRegistry,
         "VkEntryCommands",
         entryCommands,
         codegenOptions,
-        null
+        "command"
     )
     val instanceCommandsDoc = generateCommandFile(
         vulkanRegistry,
         "VkInstanceCommands",
         instanceCommands,
         codegenOptions,
-        null
+        "command"
     )
     val deviceCommandsDoc = generateCommandFile(
         vulkanRegistry,
         "VkDeviceCommands",
         deviceCommands,
         codegenOptions,
-        null
+        "command"
     )
 
     File("$packageDir/command/VkStaticCommands.java")
