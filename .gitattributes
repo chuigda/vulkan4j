@@ -1,8 +1,8 @@
-vulkan4j/src/main/java/club/doki7/vulkan/bitmask/*.java linguist-generated
-vulkan4j/src/main/java/club/doki7/vulkan/command/*.java linguist-generated
-vulkan4j/src/main/java/club/doki7/vulkan/datatype/*.java linguist-generated
-vulkan4j/src/main/java/club/doki7/vulkan/enumtype/*.java linguist-generated
-vulkan4j/src/main/java/club/doki7/vulkan/handle/*.java linguist-generated
+vulkan/src/main/java/club/doki7/vulkan/bitmask/*.java linguist-generated
+vulkan/src/main/java/club/doki7/vulkan/command/*.java linguist-generated
+vulkan/src/main/java/club/doki7/vulkan/datatype/*.java linguist-generated
+vulkan/src/main/java/club/doki7/vulkan/enumtype/*.java linguist-generated
+vulkan/src/main/java/club/doki7/vulkan/handle/*.java linguist-generated
 
 gles2/src/main/java/club/doki7/gles2/GLES2.java linguist-generated
 gles2/src/main/java/club/doki7/gles2/GLES2Constants.java linguist-generated
