@@ -13,7 +13,7 @@ data class StructFieldDecl(
 data class FunctionDecl(
     val functionName: String,
     val returnType: RawType,
-    val params: FunctionParamDecl,
+    val params: List<FunctionParamDecl>,
     override val syntaxTrivia: List<String>
 ) : Decl
 
@@ -42,21 +42,32 @@ data class EnumeratorDecl(
     override val syntaxTrivia: List<String>
 ) : Decl
 
-sealed interface RawType
-
-data class RawIdentifierType(
-    val ident: String
-) : RawType
-
-data class RawPointerType(
-    val pointee: RawType,
-    val const: Boolean,
-    val volatile: Boolean,
+sealed interface RawType {
     val syntaxTrivia: List<String>
+}
+
+class RawIdentifierType(
+    val ident: String,
+    val modifiers: List<String>,
+    override val syntaxTrivia: List<String>
 ) : RawType
 
-data class RawArrayType(
-    val element: RawType,
+class RawPointerType(
+    var pointee: RawType,
+    var const: Boolean,
+    var volatile: Boolean,
+    override val syntaxTrivia: List<String>
+) : RawType
+
+class RawArrayType(
+    var element: RawType,
     val size: String,
-    val syntaxTrivia: List<String>
+    override val syntaxTrivia: List<String>
+) : RawType
+
+class RawFunctionType(
+    val functionName: String,
+    var returnType: RawType,
+    val params: List<Pair<String, RawType>>,
+    override val syntaxTrivia: List<String>
 ) : RawType
