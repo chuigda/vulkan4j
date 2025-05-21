@@ -92,8 +92,8 @@ public record VkIndirectCommandsStreamNV(@NotNull MemorySegment segment) impleme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$buffer = PathElement.groupElement("PATH$buffer");
-    public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
+    public static final PathElement PATH$buffer = PathElement.groupElement("buffer");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
 
     public static final AddressLayout LAYOUT$buffer = (AddressLayout) LAYOUT.select(PATH$buffer);
     public static final OfLong LAYOUT$offset = (OfLong) LAYOUT.select(PATH$offset);

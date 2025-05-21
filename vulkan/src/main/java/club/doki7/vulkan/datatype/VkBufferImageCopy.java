@@ -128,12 +128,12 @@ public record VkBufferImageCopy(@NotNull MemorySegment segment) implements IPoin
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bufferOffset = PathElement.groupElement("PATH$bufferOffset");
-    public static final PathElement PATH$bufferRowLength = PathElement.groupElement("PATH$bufferRowLength");
-    public static final PathElement PATH$bufferImageHeight = PathElement.groupElement("PATH$bufferImageHeight");
-    public static final PathElement PATH$imageSubresource = PathElement.groupElement("PATH$imageSubresource");
-    public static final PathElement PATH$imageOffset = PathElement.groupElement("PATH$imageOffset");
-    public static final PathElement PATH$imageExtent = PathElement.groupElement("PATH$imageExtent");
+    public static final PathElement PATH$bufferOffset = PathElement.groupElement("bufferOffset");
+    public static final PathElement PATH$bufferRowLength = PathElement.groupElement("bufferRowLength");
+    public static final PathElement PATH$bufferImageHeight = PathElement.groupElement("bufferImageHeight");
+    public static final PathElement PATH$imageSubresource = PathElement.groupElement("imageSubresource");
+    public static final PathElement PATH$imageOffset = PathElement.groupElement("imageOffset");
+    public static final PathElement PATH$imageExtent = PathElement.groupElement("imageExtent");
 
     public static final OfLong LAYOUT$bufferOffset = (OfLong) LAYOUT.select(PATH$bufferOffset);
     public static final OfInt LAYOUT$bufferRowLength = (OfInt) LAYOUT.select(PATH$bufferRowLength);

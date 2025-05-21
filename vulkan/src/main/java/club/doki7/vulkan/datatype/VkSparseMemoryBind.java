@@ -122,11 +122,11 @@ public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IPoi
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$resourceOffset = PathElement.groupElement("PATH$resourceOffset");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
-    public static final PathElement PATH$memory = PathElement.groupElement("PATH$memory");
-    public static final PathElement PATH$memoryOffset = PathElement.groupElement("PATH$memoryOffset");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$resourceOffset = PathElement.groupElement("resourceOffset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$memory = PathElement.groupElement("memory");
+    public static final PathElement PATH$memoryOffset = PathElement.groupElement("memoryOffset");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
 
     public static final OfLong LAYOUT$resourceOffset = (OfLong) LAYOUT.select(PATH$resourceOffset);
     public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);

@@ -186,16 +186,16 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$input = PathElement.groupElement("PATH$input");
-    public static final PathElement PATH$dstImplicitData = PathElement.groupElement("PATH$dstImplicitData");
-    public static final PathElement PATH$scratchData = PathElement.groupElement("PATH$scratchData");
-    public static final PathElement PATH$dstAddressesArray = PathElement.groupElement("PATH$dstAddressesArray");
-    public static final PathElement PATH$dstSizesArray = PathElement.groupElement("PATH$dstSizesArray");
-    public static final PathElement PATH$srcInfosArray = PathElement.groupElement("PATH$srcInfosArray");
-    public static final PathElement PATH$srcInfosCount = PathElement.groupElement("PATH$srcInfosCount");
-    public static final PathElement PATH$addressResolutionFlags = PathElement.groupElement("PATH$addressResolutionFlags");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$input = PathElement.groupElement("input");
+    public static final PathElement PATH$dstImplicitData = PathElement.groupElement("dstImplicitData");
+    public static final PathElement PATH$scratchData = PathElement.groupElement("scratchData");
+    public static final PathElement PATH$dstAddressesArray = PathElement.groupElement("dstAddressesArray");
+    public static final PathElement PATH$dstSizesArray = PathElement.groupElement("dstSizesArray");
+    public static final PathElement PATH$srcInfosArray = PathElement.groupElement("srcInfosArray");
+    public static final PathElement PATH$srcInfosCount = PathElement.groupElement("srcInfosCount");
+    public static final PathElement PATH$addressResolutionFlags = PathElement.groupElement("addressResolutionFlags");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

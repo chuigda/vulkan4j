@@ -216,10 +216,10 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$pPushConstant = PathElement.groupElement("PATH$pPushConstant");
-    public static final PathElement PATH$pVertexBuffer = PathElement.groupElement("PATH$pVertexBuffer");
-    public static final PathElement PATH$pIndexBuffer = PathElement.groupElement("PATH$pIndexBuffer");
-    public static final PathElement PATH$pExecutionSet = PathElement.groupElement("PATH$pExecutionSet");
+    public static final PathElement PATH$pPushConstant = PathElement.groupElement("pPushConstant");
+    public static final PathElement PATH$pVertexBuffer = PathElement.groupElement("pVertexBuffer");
+    public static final PathElement PATH$pIndexBuffer = PathElement.groupElement("pIndexBuffer");
+    public static final PathElement PATH$pExecutionSet = PathElement.groupElement("pExecutionSet");
 
     public static final AddressLayout LAYOUT$pPushConstant = (AddressLayout) LAYOUT.select(PATH$pPushConstant);
     public static final AddressLayout LAYOUT$pVertexBuffer = (AddressLayout) LAYOUT.select(PATH$pVertexBuffer);

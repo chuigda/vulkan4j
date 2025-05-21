@@ -176,15 +176,15 @@ public record VkDeviceMemoryReportCallbackDataEXT(@NotNull MemorySegment segment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
-    public static final PathElement PATH$memoryObjectId = PathElement.groupElement("PATH$memoryObjectId");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
-    public static final PathElement PATH$objectType = PathElement.groupElement("PATH$objectType");
-    public static final PathElement PATH$objectHandle = PathElement.groupElement("PATH$objectHandle");
-    public static final PathElement PATH$heapIndex = PathElement.groupElement("PATH$heapIndex");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$memoryObjectId = PathElement.groupElement("memoryObjectId");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$objectType = PathElement.groupElement("objectType");
+    public static final PathElement PATH$objectHandle = PathElement.groupElement("objectHandle");
+    public static final PathElement PATH$heapIndex = PathElement.groupElement("heapIndex");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

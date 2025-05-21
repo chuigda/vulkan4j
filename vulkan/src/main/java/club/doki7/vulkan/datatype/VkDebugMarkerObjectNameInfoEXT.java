@@ -153,11 +153,11 @@ public record VkDebugMarkerObjectNameInfoEXT(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$objectType = PathElement.groupElement("PATH$objectType");
-    public static final PathElement PATH$object = PathElement.groupElement("PATH$object");
-    public static final PathElement PATH$pObjectName = PathElement.groupElement("PATH$pObjectName");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$objectType = PathElement.groupElement("objectType");
+    public static final PathElement PATH$object = PathElement.groupElement("object");
+    public static final PathElement PATH$pObjectName = PathElement.groupElement("pObjectName");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

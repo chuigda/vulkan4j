@@ -176,15 +176,15 @@ public record VkPhysicalDeviceCooperativeMatrix2FeaturesNV(@NotNull MemorySegmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$cooperativeMatrixWorkgroupScope = PathElement.groupElement("PATH$cooperativeMatrixWorkgroupScope");
-    public static final PathElement PATH$cooperativeMatrixFlexibleDimensions = PathElement.groupElement("PATH$cooperativeMatrixFlexibleDimensions");
-    public static final PathElement PATH$cooperativeMatrixReductions = PathElement.groupElement("PATH$cooperativeMatrixReductions");
-    public static final PathElement PATH$cooperativeMatrixConversions = PathElement.groupElement("PATH$cooperativeMatrixConversions");
-    public static final PathElement PATH$cooperativeMatrixPerElementOperations = PathElement.groupElement("PATH$cooperativeMatrixPerElementOperations");
-    public static final PathElement PATH$cooperativeMatrixTensorAddressing = PathElement.groupElement("PATH$cooperativeMatrixTensorAddressing");
-    public static final PathElement PATH$cooperativeMatrixBlockLoads = PathElement.groupElement("PATH$cooperativeMatrixBlockLoads");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$cooperativeMatrixWorkgroupScope = PathElement.groupElement("cooperativeMatrixWorkgroupScope");
+    public static final PathElement PATH$cooperativeMatrixFlexibleDimensions = PathElement.groupElement("cooperativeMatrixFlexibleDimensions");
+    public static final PathElement PATH$cooperativeMatrixReductions = PathElement.groupElement("cooperativeMatrixReductions");
+    public static final PathElement PATH$cooperativeMatrixConversions = PathElement.groupElement("cooperativeMatrixConversions");
+    public static final PathElement PATH$cooperativeMatrixPerElementOperations = PathElement.groupElement("cooperativeMatrixPerElementOperations");
+    public static final PathElement PATH$cooperativeMatrixTensorAddressing = PathElement.groupElement("cooperativeMatrixTensorAddressing");
+    public static final PathElement PATH$cooperativeMatrixBlockLoads = PathElement.groupElement("cooperativeMatrixBlockLoads");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

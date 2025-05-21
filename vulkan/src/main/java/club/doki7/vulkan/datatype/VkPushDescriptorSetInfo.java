@@ -187,13 +187,13 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$stageFlags = PathElement.groupElement("PATH$stageFlags");
-    public static final PathElement PATH$layout = PathElement.groupElement("PATH$layout");
-    public static final PathElement PATH$set = PathElement.groupElement("PATH$set");
-    public static final PathElement PATH$descriptorWriteCount = PathElement.groupElement("PATH$descriptorWriteCount");
-    public static final PathElement PATH$pDescriptorWrites = PathElement.groupElement("PATH$pDescriptorWrites");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$stageFlags = PathElement.groupElement("stageFlags");
+    public static final PathElement PATH$layout = PathElement.groupElement("layout");
+    public static final PathElement PATH$set = PathElement.groupElement("set");
+    public static final PathElement PATH$descriptorWriteCount = PathElement.groupElement("descriptorWriteCount");
+    public static final PathElement PATH$pDescriptorWrites = PathElement.groupElement("pDescriptorWrites");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

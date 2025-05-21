@@ -152,9 +152,9 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$binaryCount = PathElement.groupElement("PATH$binaryCount");
-    public static final PathElement PATH$pPipelineBinaryKeys = PathElement.groupElement("PATH$pPipelineBinaryKeys");
-    public static final PathElement PATH$pPipelineBinaryData = PathElement.groupElement("PATH$pPipelineBinaryData");
+    public static final PathElement PATH$binaryCount = PathElement.groupElement("binaryCount");
+    public static final PathElement PATH$pPipelineBinaryKeys = PathElement.groupElement("pPipelineBinaryKeys");
+    public static final PathElement PATH$pPipelineBinaryData = PathElement.groupElement("pPipelineBinaryData");
 
     public static final OfInt LAYOUT$binaryCount = (OfInt) LAYOUT.select(PATH$binaryCount);
     public static final AddressLayout LAYOUT$pPipelineBinaryKeys = (AddressLayout) LAYOUT.select(PATH$pPipelineBinaryKeys);

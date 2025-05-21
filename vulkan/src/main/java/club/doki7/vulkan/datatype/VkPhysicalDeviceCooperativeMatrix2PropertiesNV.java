@@ -136,11 +136,11 @@ public record VkPhysicalDeviceCooperativeMatrix2PropertiesNV(@NotNull MemorySegm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$cooperativeMatrixWorkgroupScopeMaxWorkgroupSize = PathElement.groupElement("PATH$cooperativeMatrixWorkgroupScopeMaxWorkgroupSize");
-    public static final PathElement PATH$cooperativeMatrixFlexibleDimensionsMaxDimension = PathElement.groupElement("PATH$cooperativeMatrixFlexibleDimensionsMaxDimension");
-    public static final PathElement PATH$cooperativeMatrixWorkgroupScopeReservedSharedMemory = PathElement.groupElement("PATH$cooperativeMatrixWorkgroupScopeReservedSharedMemory");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$cooperativeMatrixWorkgroupScopeMaxWorkgroupSize = PathElement.groupElement("cooperativeMatrixWorkgroupScopeMaxWorkgroupSize");
+    public static final PathElement PATH$cooperativeMatrixFlexibleDimensionsMaxDimension = PathElement.groupElement("cooperativeMatrixFlexibleDimensionsMaxDimension");
+    public static final PathElement PATH$cooperativeMatrixWorkgroupScopeReservedSharedMemory = PathElement.groupElement("cooperativeMatrixWorkgroupScopeReservedSharedMemory");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

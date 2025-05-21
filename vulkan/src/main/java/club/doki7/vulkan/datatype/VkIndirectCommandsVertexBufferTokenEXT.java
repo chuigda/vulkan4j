@@ -78,7 +78,7 @@ public record VkIndirectCommandsVertexBufferTokenEXT(@NotNull MemorySegment segm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$vertexBindingUnit = PathElement.groupElement("PATH$vertexBindingUnit");
+    public static final PathElement PATH$vertexBindingUnit = PathElement.groupElement("vertexBindingUnit");
 
     public static final OfInt LAYOUT$vertexBindingUnit = (OfInt) LAYOUT.select(PATH$vertexBindingUnit);
 

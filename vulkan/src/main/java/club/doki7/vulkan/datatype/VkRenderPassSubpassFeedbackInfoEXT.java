@@ -98,9 +98,9 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$subpassMergeStatus = PathElement.groupElement("PATH$subpassMergeStatus");
-    public static final PathElement PATH$description = PathElement.groupElement("PATH$description");
-    public static final PathElement PATH$postMergeIndex = PathElement.groupElement("PATH$postMergeIndex");
+    public static final PathElement PATH$subpassMergeStatus = PathElement.groupElement("subpassMergeStatus");
+    public static final PathElement PATH$description = PathElement.groupElement("description");
+    public static final PathElement PATH$postMergeIndex = PathElement.groupElement("postMergeIndex");
 
     public static final OfInt LAYOUT$subpassMergeStatus = (OfInt) LAYOUT.select(PATH$subpassMergeStatus);
     public static final OfByte LAYOUT$description = (OfByte) LAYOUT.select(PATH$description);

@@ -88,8 +88,8 @@ public record VkAttachmentSampleLocationsEXT(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$attachmentIndex = PathElement.groupElement("PATH$attachmentIndex");
-    public static final PathElement PATH$sampleLocationsInfo = PathElement.groupElement("PATH$sampleLocationsInfo");
+    public static final PathElement PATH$attachmentIndex = PathElement.groupElement("attachmentIndex");
+    public static final PathElement PATH$sampleLocationsInfo = PathElement.groupElement("sampleLocationsInfo");
 
     public static final OfInt LAYOUT$attachmentIndex = (OfInt) LAYOUT.select(PATH$attachmentIndex);
     public static final StructLayout LAYOUT$sampleLocationsInfo = (StructLayout) LAYOUT.select(PATH$sampleLocationsInfo);

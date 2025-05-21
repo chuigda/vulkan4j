@@ -202,14 +202,14 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$copySrcLayoutCount = PathElement.groupElement("PATH$copySrcLayoutCount");
-    public static final PathElement PATH$pCopySrcLayouts = PathElement.groupElement("PATH$pCopySrcLayouts");
-    public static final PathElement PATH$copyDstLayoutCount = PathElement.groupElement("PATH$copyDstLayoutCount");
-    public static final PathElement PATH$pCopyDstLayouts = PathElement.groupElement("PATH$pCopyDstLayouts");
-    public static final PathElement PATH$optimalTilingLayoutUUID = PathElement.groupElement("PATH$optimalTilingLayoutUUID");
-    public static final PathElement PATH$identicalMemoryTypeRequirements = PathElement.groupElement("PATH$identicalMemoryTypeRequirements");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$copySrcLayoutCount = PathElement.groupElement("copySrcLayoutCount");
+    public static final PathElement PATH$pCopySrcLayouts = PathElement.groupElement("pCopySrcLayouts");
+    public static final PathElement PATH$copyDstLayoutCount = PathElement.groupElement("copyDstLayoutCount");
+    public static final PathElement PATH$pCopyDstLayouts = PathElement.groupElement("pCopyDstLayouts");
+    public static final PathElement PATH$optimalTilingLayoutUUID = PathElement.groupElement("optimalTilingLayoutUUID");
+    public static final PathElement PATH$identicalMemoryTypeRequirements = PathElement.groupElement("identicalMemoryTypeRequirements");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

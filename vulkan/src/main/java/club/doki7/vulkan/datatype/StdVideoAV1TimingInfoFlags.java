@@ -80,7 +80,7 @@ public record StdVideoAV1TimingInfoFlags(@NotNull MemorySegment segment) impleme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$equal_picture_interval$reserved = PathElement.groupElement("PATH$bitfield$equal_picture_interval$reserved");
+    public static final PathElement PATH$bitfield$equal_picture_interval$reserved = PathElement.groupElement("equal_picture_interval$reserved");
 
     public static final OfInt LAYOUT$bitfield$equal_picture_interval$reserved = (OfInt) LAYOUT.select(PATH$bitfield$equal_picture_interval$reserved);
 

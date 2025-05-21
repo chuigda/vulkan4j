@@ -108,10 +108,10 @@ public record VkExternalImageFormatPropertiesNV(@NotNull MemorySegment segment) 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$imageFormatProperties = PathElement.groupElement("PATH$imageFormatProperties");
-    public static final PathElement PATH$externalMemoryFeatures = PathElement.groupElement("PATH$externalMemoryFeatures");
-    public static final PathElement PATH$exportFromImportedHandleTypes = PathElement.groupElement("PATH$exportFromImportedHandleTypes");
-    public static final PathElement PATH$compatibleHandleTypes = PathElement.groupElement("PATH$compatibleHandleTypes");
+    public static final PathElement PATH$imageFormatProperties = PathElement.groupElement("imageFormatProperties");
+    public static final PathElement PATH$externalMemoryFeatures = PathElement.groupElement("externalMemoryFeatures");
+    public static final PathElement PATH$exportFromImportedHandleTypes = PathElement.groupElement("exportFromImportedHandleTypes");
+    public static final PathElement PATH$compatibleHandleTypes = PathElement.groupElement("compatibleHandleTypes");
 
     public static final StructLayout LAYOUT$imageFormatProperties = (StructLayout) LAYOUT.select(PATH$imageFormatProperties);
     public static final OfInt LAYOUT$externalMemoryFeatures = (OfInt) LAYOUT.select(PATH$externalMemoryFeatures);

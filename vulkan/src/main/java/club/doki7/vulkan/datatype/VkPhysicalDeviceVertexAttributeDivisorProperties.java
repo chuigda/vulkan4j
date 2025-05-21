@@ -126,10 +126,10 @@ public record VkPhysicalDeviceVertexAttributeDivisorProperties(@NotNull MemorySe
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxVertexAttribDivisor = PathElement.groupElement("PATH$maxVertexAttribDivisor");
-    public static final PathElement PATH$supportsNonZeroFirstInstance = PathElement.groupElement("PATH$supportsNonZeroFirstInstance");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$maxVertexAttribDivisor = PathElement.groupElement("maxVertexAttribDivisor");
+    public static final PathElement PATH$supportsNonZeroFirstInstance = PathElement.groupElement("supportsNonZeroFirstInstance");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

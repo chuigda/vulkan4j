@@ -92,8 +92,8 @@ public record VkDeviceOrHostAddressConstAMDX(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$deviceAddress = PathElement.groupElement("PATH$deviceAddress");
-    public static final PathElement PATH$hostAddress = PathElement.groupElement("PATH$hostAddress");
+    public static final PathElement PATH$deviceAddress = PathElement.groupElement("deviceAddress");
+    public static final PathElement PATH$hostAddress = PathElement.groupElement("hostAddress");
 
     public static final OfLong LAYOUT$deviceAddress = (OfLong) LAYOUT.select(PATH$deviceAddress);
     public static final AddressLayout LAYOUT$hostAddress = (AddressLayout) LAYOUT.select(PATH$hostAddress);

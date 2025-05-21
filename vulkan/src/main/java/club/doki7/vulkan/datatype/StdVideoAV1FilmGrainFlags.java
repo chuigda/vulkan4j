@@ -113,7 +113,7 @@ public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implemen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$chroma_scaling_from_luma$reserved = PathElement.groupElement("PATH$bitfield$chroma_scaling_from_luma$reserved");
+    public static final PathElement PATH$bitfield$chroma_scaling_from_luma$reserved = PathElement.groupElement("chroma_scaling_from_luma$reserved");
 
     public static final OfInt LAYOUT$bitfield$chroma_scaling_from_luma$reserved = (OfInt) LAYOUT.select(PATH$bitfield$chroma_scaling_from_luma$reserved);
 

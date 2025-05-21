@@ -197,12 +197,12 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$colorAttachmentCount = PathElement.groupElement("PATH$colorAttachmentCount");
-    public static final PathElement PATH$pColorAttachmentInputIndices = PathElement.groupElement("PATH$pColorAttachmentInputIndices");
-    public static final PathElement PATH$pDepthInputAttachmentIndex = PathElement.groupElement("PATH$pDepthInputAttachmentIndex");
-    public static final PathElement PATH$pStencilInputAttachmentIndex = PathElement.groupElement("PATH$pStencilInputAttachmentIndex");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$colorAttachmentCount = PathElement.groupElement("colorAttachmentCount");
+    public static final PathElement PATH$pColorAttachmentInputIndices = PathElement.groupElement("pColorAttachmentInputIndices");
+    public static final PathElement PATH$pDepthInputAttachmentIndex = PathElement.groupElement("pDepthInputAttachmentIndex");
+    public static final PathElement PATH$pStencilInputAttachmentIndex = PathElement.groupElement("pStencilInputAttachmentIndex");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

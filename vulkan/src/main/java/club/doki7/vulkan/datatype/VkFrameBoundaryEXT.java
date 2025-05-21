@@ -234,17 +234,17 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IPoi
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$frameID = PathElement.groupElement("PATH$frameID");
-    public static final PathElement PATH$imageCount = PathElement.groupElement("PATH$imageCount");
-    public static final PathElement PATH$pImages = PathElement.groupElement("PATH$pImages");
-    public static final PathElement PATH$bufferCount = PathElement.groupElement("PATH$bufferCount");
-    public static final PathElement PATH$pBuffers = PathElement.groupElement("PATH$pBuffers");
-    public static final PathElement PATH$tagName = PathElement.groupElement("PATH$tagName");
-    public static final PathElement PATH$tagSize = PathElement.groupElement("PATH$tagSize");
-    public static final PathElement PATH$pTag = PathElement.groupElement("PATH$pTag");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$frameID = PathElement.groupElement("frameID");
+    public static final PathElement PATH$imageCount = PathElement.groupElement("imageCount");
+    public static final PathElement PATH$pImages = PathElement.groupElement("pImages");
+    public static final PathElement PATH$bufferCount = PathElement.groupElement("bufferCount");
+    public static final PathElement PATH$pBuffers = PathElement.groupElement("pBuffers");
+    public static final PathElement PATH$tagName = PathElement.groupElement("tagName");
+    public static final PathElement PATH$tagSize = PathElement.groupElement("tagSize");
+    public static final PathElement PATH$pTag = PathElement.groupElement("pTag");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

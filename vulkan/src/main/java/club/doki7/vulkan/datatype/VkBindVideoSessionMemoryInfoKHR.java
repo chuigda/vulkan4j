@@ -150,12 +150,12 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$memoryBindIndex = PathElement.groupElement("PATH$memoryBindIndex");
-    public static final PathElement PATH$memory = PathElement.groupElement("PATH$memory");
-    public static final PathElement PATH$memoryOffset = PathElement.groupElement("PATH$memoryOffset");
-    public static final PathElement PATH$memorySize = PathElement.groupElement("PATH$memorySize");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$memoryBindIndex = PathElement.groupElement("memoryBindIndex");
+    public static final PathElement PATH$memory = PathElement.groupElement("memory");
+    public static final PathElement PATH$memoryOffset = PathElement.groupElement("memoryOffset");
+    public static final PathElement PATH$memorySize = PathElement.groupElement("memorySize");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

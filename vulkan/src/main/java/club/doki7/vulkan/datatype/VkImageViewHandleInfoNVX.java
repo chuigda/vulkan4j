@@ -144,11 +144,11 @@ public record VkImageViewHandleInfoNVX(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$imageView = PathElement.groupElement("PATH$imageView");
-    public static final PathElement PATH$descriptorType = PathElement.groupElement("PATH$descriptorType");
-    public static final PathElement PATH$sampler = PathElement.groupElement("PATH$sampler");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$imageView = PathElement.groupElement("imageView");
+    public static final PathElement PATH$descriptorType = PathElement.groupElement("descriptorType");
+    public static final PathElement PATH$sampler = PathElement.groupElement("sampler");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

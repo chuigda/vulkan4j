@@ -245,19 +245,19 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$clusterID = PathElement.groupElement("PATH$clusterID");
-    public static final PathElement PATH$clusterFlags = PathElement.groupElement("PATH$clusterFlags");
-    public static final PathElement PATH$bitfield$triangleCount$opacityMicromapIndexType = PathElement.groupElement("PATH$bitfield$triangleCount$opacityMicromapIndexType");
-    public static final PathElement PATH$baseGeometryIndexAndGeometryFlags = PathElement.groupElement("PATH$baseGeometryIndexAndGeometryFlags");
-    public static final PathElement PATH$indexBufferStride = PathElement.groupElement("PATH$indexBufferStride");
-    public static final PathElement PATH$vertexBufferStride = PathElement.groupElement("PATH$vertexBufferStride");
-    public static final PathElement PATH$geometryIndexAndFlagsBufferStride = PathElement.groupElement("PATH$geometryIndexAndFlagsBufferStride");
-    public static final PathElement PATH$opacityMicromapIndexBufferStride = PathElement.groupElement("PATH$opacityMicromapIndexBufferStride");
-    public static final PathElement PATH$indexBuffer = PathElement.groupElement("PATH$indexBuffer");
-    public static final PathElement PATH$vertexBuffer = PathElement.groupElement("PATH$vertexBuffer");
-    public static final PathElement PATH$geometryIndexAndFlagsBuffer = PathElement.groupElement("PATH$geometryIndexAndFlagsBuffer");
-    public static final PathElement PATH$opacityMicromapArray = PathElement.groupElement("PATH$opacityMicromapArray");
-    public static final PathElement PATH$opacityMicromapIndexBuffer = PathElement.groupElement("PATH$opacityMicromapIndexBuffer");
+    public static final PathElement PATH$clusterID = PathElement.groupElement("clusterID");
+    public static final PathElement PATH$clusterFlags = PathElement.groupElement("clusterFlags");
+    public static final PathElement PATH$bitfield$triangleCount$opacityMicromapIndexType = PathElement.groupElement("triangleCount$opacityMicromapIndexType");
+    public static final PathElement PATH$baseGeometryIndexAndGeometryFlags = PathElement.groupElement("baseGeometryIndexAndGeometryFlags");
+    public static final PathElement PATH$indexBufferStride = PathElement.groupElement("indexBufferStride");
+    public static final PathElement PATH$vertexBufferStride = PathElement.groupElement("vertexBufferStride");
+    public static final PathElement PATH$geometryIndexAndFlagsBufferStride = PathElement.groupElement("geometryIndexAndFlagsBufferStride");
+    public static final PathElement PATH$opacityMicromapIndexBufferStride = PathElement.groupElement("opacityMicromapIndexBufferStride");
+    public static final PathElement PATH$indexBuffer = PathElement.groupElement("indexBuffer");
+    public static final PathElement PATH$vertexBuffer = PathElement.groupElement("vertexBuffer");
+    public static final PathElement PATH$geometryIndexAndFlagsBuffer = PathElement.groupElement("geometryIndexAndFlagsBuffer");
+    public static final PathElement PATH$opacityMicromapArray = PathElement.groupElement("opacityMicromapArray");
+    public static final PathElement PATH$opacityMicromapIndexBuffer = PathElement.groupElement("opacityMicromapIndexBuffer");
 
     public static final OfInt LAYOUT$clusterID = (OfInt) LAYOUT.select(PATH$clusterID);
     public static final OfInt LAYOUT$clusterFlags = (OfInt) LAYOUT.select(PATH$clusterFlags);

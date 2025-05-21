@@ -247,17 +247,17 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$mode = PathElement.groupElement("PATH$mode");
-    public static final PathElement PATH$srcAccelerationStructure = PathElement.groupElement("PATH$srcAccelerationStructure");
-    public static final PathElement PATH$dstAccelerationStructure = PathElement.groupElement("PATH$dstAccelerationStructure");
-    public static final PathElement PATH$geometryCount = PathElement.groupElement("PATH$geometryCount");
-    public static final PathElement PATH$pGeometries = PathElement.groupElement("PATH$pGeometries");
-    public static final PathElement PATH$ppGeometries = PathElement.groupElement("PATH$ppGeometries");
-    public static final PathElement PATH$scratchData = PathElement.groupElement("PATH$scratchData");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$mode = PathElement.groupElement("mode");
+    public static final PathElement PATH$srcAccelerationStructure = PathElement.groupElement("srcAccelerationStructure");
+    public static final PathElement PATH$dstAccelerationStructure = PathElement.groupElement("dstAccelerationStructure");
+    public static final PathElement PATH$geometryCount = PathElement.groupElement("geometryCount");
+    public static final PathElement PATH$pGeometries = PathElement.groupElement("pGeometries");
+    public static final PathElement PATH$ppGeometries = PathElement.groupElement("ppGeometries");
+    public static final PathElement PATH$scratchData = PathElement.groupElement("scratchData");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -126,10 +126,10 @@ public record VkPhysicalDeviceSubgroupSizeControlFeatures(@NotNull MemorySegment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$subgroupSizeControl = PathElement.groupElement("PATH$subgroupSizeControl");
-    public static final PathElement PATH$computeFullSubgroups = PathElement.groupElement("PATH$computeFullSubgroups");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$subgroupSizeControl = PathElement.groupElement("subgroupSizeControl");
+    public static final PathElement PATH$computeFullSubgroups = PathElement.groupElement("computeFullSubgroups");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

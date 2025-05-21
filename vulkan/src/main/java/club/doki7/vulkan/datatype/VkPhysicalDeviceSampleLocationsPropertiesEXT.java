@@ -156,13 +156,13 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$sampleLocationSampleCounts = PathElement.groupElement("PATH$sampleLocationSampleCounts");
-    public static final PathElement PATH$maxSampleLocationGridSize = PathElement.groupElement("PATH$maxSampleLocationGridSize");
-    public static final PathElement PATH$sampleLocationCoordinateRange = PathElement.groupElement("PATH$sampleLocationCoordinateRange");
-    public static final PathElement PATH$sampleLocationSubPixelBits = PathElement.groupElement("PATH$sampleLocationSubPixelBits");
-    public static final PathElement PATH$variableSampleLocations = PathElement.groupElement("PATH$variableSampleLocations");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$sampleLocationSampleCounts = PathElement.groupElement("sampleLocationSampleCounts");
+    public static final PathElement PATH$maxSampleLocationGridSize = PathElement.groupElement("maxSampleLocationGridSize");
+    public static final PathElement PATH$sampleLocationCoordinateRange = PathElement.groupElement("sampleLocationCoordinateRange");
+    public static final PathElement PATH$sampleLocationSubPixelBits = PathElement.groupElement("sampleLocationSubPixelBits");
+    public static final PathElement PATH$variableSampleLocations = PathElement.groupElement("variableSampleLocations");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

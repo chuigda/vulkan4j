@@ -153,10 +153,10 @@ public record VkGetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$timingCount = PathElement.groupElement("PATH$timingCount");
-    public static final PathElement PATH$pTimings = PathElement.groupElement("PATH$pTimings");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$timingCount = PathElement.groupElement("timingCount");
+    public static final PathElement PATH$pTimings = PathElement.groupElement("pTimings");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

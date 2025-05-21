@@ -98,9 +98,9 @@ public record VkMemoryRequirements(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
-    public static final PathElement PATH$alignment = PathElement.groupElement("PATH$alignment");
-    public static final PathElement PATH$memoryTypeBits = PathElement.groupElement("PATH$memoryTypeBits");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$alignment = PathElement.groupElement("alignment");
+    public static final PathElement PATH$memoryTypeBits = PathElement.groupElement("memoryTypeBits");
 
     public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
     public static final OfLong LAYOUT$alignment = (OfLong) LAYOUT.select(PATH$alignment);

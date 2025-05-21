@@ -156,13 +156,13 @@ public record VkPartitionedAccelerationStructureInstancesInputNV(@NotNull Memory
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$instanceCount = PathElement.groupElement("PATH$instanceCount");
-    public static final PathElement PATH$maxInstancePerPartitionCount = PathElement.groupElement("PATH$maxInstancePerPartitionCount");
-    public static final PathElement PATH$partitionCount = PathElement.groupElement("PATH$partitionCount");
-    public static final PathElement PATH$maxInstanceInGlobalPartitionCount = PathElement.groupElement("PATH$maxInstanceInGlobalPartitionCount");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$instanceCount = PathElement.groupElement("instanceCount");
+    public static final PathElement PATH$maxInstancePerPartitionCount = PathElement.groupElement("maxInstancePerPartitionCount");
+    public static final PathElement PATH$partitionCount = PathElement.groupElement("partitionCount");
+    public static final PathElement PATH$maxInstanceInGlobalPartitionCount = PathElement.groupElement("maxInstanceInGlobalPartitionCount");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -78,7 +78,7 @@ public record VkBindShaderGroupIndirectCommandNV(@NotNull MemorySegment segment)
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$groupIndex = PathElement.groupElement("PATH$groupIndex");
+    public static final PathElement PATH$groupIndex = PathElement.groupElement("groupIndex");
 
     public static final OfInt LAYOUT$groupIndex = (OfInt) LAYOUT.select(PATH$groupIndex);
 

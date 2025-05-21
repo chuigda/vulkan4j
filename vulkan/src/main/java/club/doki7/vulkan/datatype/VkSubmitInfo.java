@@ -245,15 +245,15 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IPointer {
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$waitSemaphoreCount = PathElement.groupElement("PATH$waitSemaphoreCount");
-    public static final PathElement PATH$pWaitSemaphores = PathElement.groupElement("PATH$pWaitSemaphores");
-    public static final PathElement PATH$pWaitDstStageMask = PathElement.groupElement("PATH$pWaitDstStageMask");
-    public static final PathElement PATH$commandBufferCount = PathElement.groupElement("PATH$commandBufferCount");
-    public static final PathElement PATH$pCommandBuffers = PathElement.groupElement("PATH$pCommandBuffers");
-    public static final PathElement PATH$signalSemaphoreCount = PathElement.groupElement("PATH$signalSemaphoreCount");
-    public static final PathElement PATH$pSignalSemaphores = PathElement.groupElement("PATH$pSignalSemaphores");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$waitSemaphoreCount = PathElement.groupElement("waitSemaphoreCount");
+    public static final PathElement PATH$pWaitSemaphores = PathElement.groupElement("pWaitSemaphores");
+    public static final PathElement PATH$pWaitDstStageMask = PathElement.groupElement("pWaitDstStageMask");
+    public static final PathElement PATH$commandBufferCount = PathElement.groupElement("commandBufferCount");
+    public static final PathElement PATH$pCommandBuffers = PathElement.groupElement("pCommandBuffers");
+    public static final PathElement PATH$signalSemaphoreCount = PathElement.groupElement("signalSemaphoreCount");
+    public static final PathElement PATH$pSignalSemaphores = PathElement.groupElement("pSignalSemaphores");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

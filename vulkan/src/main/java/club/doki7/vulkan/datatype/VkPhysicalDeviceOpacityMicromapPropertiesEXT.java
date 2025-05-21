@@ -126,10 +126,10 @@ public record VkPhysicalDeviceOpacityMicromapPropertiesEXT(@NotNull MemorySegmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxOpacity2StateSubdivisionLevel = PathElement.groupElement("PATH$maxOpacity2StateSubdivisionLevel");
-    public static final PathElement PATH$maxOpacity4StateSubdivisionLevel = PathElement.groupElement("PATH$maxOpacity4StateSubdivisionLevel");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$maxOpacity2StateSubdivisionLevel = PathElement.groupElement("maxOpacity2StateSubdivisionLevel");
+    public static final PathElement PATH$maxOpacity4StateSubdivisionLevel = PathElement.groupElement("maxOpacity4StateSubdivisionLevel");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

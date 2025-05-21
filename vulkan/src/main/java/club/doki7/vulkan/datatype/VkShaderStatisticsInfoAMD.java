@@ -138,13 +138,13 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$shaderStageMask = PathElement.groupElement("PATH$shaderStageMask");
-    public static final PathElement PATH$resourceUsage = PathElement.groupElement("PATH$resourceUsage");
-    public static final PathElement PATH$numPhysicalVgprs = PathElement.groupElement("PATH$numPhysicalVgprs");
-    public static final PathElement PATH$numPhysicalSgprs = PathElement.groupElement("PATH$numPhysicalSgprs");
-    public static final PathElement PATH$numAvailableVgprs = PathElement.groupElement("PATH$numAvailableVgprs");
-    public static final PathElement PATH$numAvailableSgprs = PathElement.groupElement("PATH$numAvailableSgprs");
-    public static final PathElement PATH$computeWorkGroupSize = PathElement.groupElement("PATH$computeWorkGroupSize");
+    public static final PathElement PATH$shaderStageMask = PathElement.groupElement("shaderStageMask");
+    public static final PathElement PATH$resourceUsage = PathElement.groupElement("resourceUsage");
+    public static final PathElement PATH$numPhysicalVgprs = PathElement.groupElement("numPhysicalVgprs");
+    public static final PathElement PATH$numPhysicalSgprs = PathElement.groupElement("numPhysicalSgprs");
+    public static final PathElement PATH$numAvailableVgprs = PathElement.groupElement("numAvailableVgprs");
+    public static final PathElement PATH$numAvailableSgprs = PathElement.groupElement("numAvailableSgprs");
+    public static final PathElement PATH$computeWorkGroupSize = PathElement.groupElement("computeWorkGroupSize");
 
     public static final OfInt LAYOUT$shaderStageMask = (OfInt) LAYOUT.select(PATH$shaderStageMask);
     public static final StructLayout LAYOUT$resourceUsage = (StructLayout) LAYOUT.select(PATH$resourceUsage);

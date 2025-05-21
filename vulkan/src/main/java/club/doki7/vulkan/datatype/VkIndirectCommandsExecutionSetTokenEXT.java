@@ -88,8 +88,8 @@ public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
-    public static final PathElement PATH$shaderStages = PathElement.groupElement("PATH$shaderStages");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$shaderStages = PathElement.groupElement("shaderStages");
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final OfInt LAYOUT$shaderStages = (OfInt) LAYOUT.select(PATH$shaderStages);

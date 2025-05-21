@@ -118,11 +118,11 @@ public record VkColorBlendAdvancedEXT(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$advancedBlendOp = PathElement.groupElement("PATH$advancedBlendOp");
-    public static final PathElement PATH$srcPremultiplied = PathElement.groupElement("PATH$srcPremultiplied");
-    public static final PathElement PATH$dstPremultiplied = PathElement.groupElement("PATH$dstPremultiplied");
-    public static final PathElement PATH$blendOverlap = PathElement.groupElement("PATH$blendOverlap");
-    public static final PathElement PATH$clampResults = PathElement.groupElement("PATH$clampResults");
+    public static final PathElement PATH$advancedBlendOp = PathElement.groupElement("advancedBlendOp");
+    public static final PathElement PATH$srcPremultiplied = PathElement.groupElement("srcPremultiplied");
+    public static final PathElement PATH$dstPremultiplied = PathElement.groupElement("dstPremultiplied");
+    public static final PathElement PATH$blendOverlap = PathElement.groupElement("blendOverlap");
+    public static final PathElement PATH$clampResults = PathElement.groupElement("clampResults");
 
     public static final OfInt LAYOUT$advancedBlendOp = (OfInt) LAYOUT.select(PATH$advancedBlendOp);
     public static final OfInt LAYOUT$srcPremultiplied = (OfInt) LAYOUT.select(PATH$srcPremultiplied);

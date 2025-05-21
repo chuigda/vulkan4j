@@ -88,8 +88,8 @@ public record VkClearValue(@NotNull MemorySegment segment) implements IPointer {
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$color = PathElement.groupElement("PATH$color");
-    public static final PathElement PATH$depthStencil = PathElement.groupElement("PATH$depthStencil");
+    public static final PathElement PATH$color = PathElement.groupElement("color");
+    public static final PathElement PATH$depthStencil = PathElement.groupElement("depthStencil");
 
     public static final StructLayout LAYOUT$color = (StructLayout) LAYOUT.select(PATH$color);
     public static final StructLayout LAYOUT$depthStencil = (StructLayout) LAYOUT.select(PATH$depthStencil);

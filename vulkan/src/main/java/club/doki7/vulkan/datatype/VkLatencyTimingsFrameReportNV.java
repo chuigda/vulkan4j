@@ -246,22 +246,22 @@ public record VkLatencyTimingsFrameReportNV(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$presentID = PathElement.groupElement("PATH$presentID");
-    public static final PathElement PATH$inputSampleTimeUs = PathElement.groupElement("PATH$inputSampleTimeUs");
-    public static final PathElement PATH$simStartTimeUs = PathElement.groupElement("PATH$simStartTimeUs");
-    public static final PathElement PATH$simEndTimeUs = PathElement.groupElement("PATH$simEndTimeUs");
-    public static final PathElement PATH$renderSubmitStartTimeUs = PathElement.groupElement("PATH$renderSubmitStartTimeUs");
-    public static final PathElement PATH$renderSubmitEndTimeUs = PathElement.groupElement("PATH$renderSubmitEndTimeUs");
-    public static final PathElement PATH$presentStartTimeUs = PathElement.groupElement("PATH$presentStartTimeUs");
-    public static final PathElement PATH$presentEndTimeUs = PathElement.groupElement("PATH$presentEndTimeUs");
-    public static final PathElement PATH$driverStartTimeUs = PathElement.groupElement("PATH$driverStartTimeUs");
-    public static final PathElement PATH$driverEndTimeUs = PathElement.groupElement("PATH$driverEndTimeUs");
-    public static final PathElement PATH$osRenderQueueStartTimeUs = PathElement.groupElement("PATH$osRenderQueueStartTimeUs");
-    public static final PathElement PATH$osRenderQueueEndTimeUs = PathElement.groupElement("PATH$osRenderQueueEndTimeUs");
-    public static final PathElement PATH$gpuRenderStartTimeUs = PathElement.groupElement("PATH$gpuRenderStartTimeUs");
-    public static final PathElement PATH$gpuRenderEndTimeUs = PathElement.groupElement("PATH$gpuRenderEndTimeUs");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$presentID = PathElement.groupElement("presentID");
+    public static final PathElement PATH$inputSampleTimeUs = PathElement.groupElement("inputSampleTimeUs");
+    public static final PathElement PATH$simStartTimeUs = PathElement.groupElement("simStartTimeUs");
+    public static final PathElement PATH$simEndTimeUs = PathElement.groupElement("simEndTimeUs");
+    public static final PathElement PATH$renderSubmitStartTimeUs = PathElement.groupElement("renderSubmitStartTimeUs");
+    public static final PathElement PATH$renderSubmitEndTimeUs = PathElement.groupElement("renderSubmitEndTimeUs");
+    public static final PathElement PATH$presentStartTimeUs = PathElement.groupElement("presentStartTimeUs");
+    public static final PathElement PATH$presentEndTimeUs = PathElement.groupElement("presentEndTimeUs");
+    public static final PathElement PATH$driverStartTimeUs = PathElement.groupElement("driverStartTimeUs");
+    public static final PathElement PATH$driverEndTimeUs = PathElement.groupElement("driverEndTimeUs");
+    public static final PathElement PATH$osRenderQueueStartTimeUs = PathElement.groupElement("osRenderQueueStartTimeUs");
+    public static final PathElement PATH$osRenderQueueEndTimeUs = PathElement.groupElement("osRenderQueueEndTimeUs");
+    public static final PathElement PATH$gpuRenderStartTimeUs = PathElement.groupElement("gpuRenderStartTimeUs");
+    public static final PathElement PATH$gpuRenderEndTimeUs = PathElement.groupElement("gpuRenderEndTimeUs");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

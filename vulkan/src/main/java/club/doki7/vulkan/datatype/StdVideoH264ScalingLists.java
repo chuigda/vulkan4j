@@ -106,10 +106,10 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$scaling_list_present_mask = PathElement.groupElement("PATH$scaling_list_present_mask");
-    public static final PathElement PATH$use_default_scaling_matrix_mask = PathElement.groupElement("PATH$use_default_scaling_matrix_mask");
-    public static final PathElement PATH$ScalingList4x4 = PathElement.groupElement("PATH$ScalingList4x4");
-    public static final PathElement PATH$ScalingList8x8 = PathElement.groupElement("PATH$ScalingList8x8");
+    public static final PathElement PATH$scaling_list_present_mask = PathElement.groupElement("scaling_list_present_mask");
+    public static final PathElement PATH$use_default_scaling_matrix_mask = PathElement.groupElement("use_default_scaling_matrix_mask");
+    public static final PathElement PATH$ScalingList4x4 = PathElement.groupElement("ScalingList4x4");
+    public static final PathElement PATH$ScalingList8x8 = PathElement.groupElement("ScalingList8x8");
 
     public static final OfShort LAYOUT$scaling_list_present_mask = (OfShort) LAYOUT.select(PATH$scaling_list_present_mask);
     public static final OfShort LAYOUT$use_default_scaling_matrix_mask = (OfShort) LAYOUT.select(PATH$use_default_scaling_matrix_mask);

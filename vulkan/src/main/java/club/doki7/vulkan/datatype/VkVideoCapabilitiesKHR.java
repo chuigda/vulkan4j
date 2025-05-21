@@ -196,17 +196,17 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$minBitstreamBufferOffsetAlignment = PathElement.groupElement("PATH$minBitstreamBufferOffsetAlignment");
-    public static final PathElement PATH$minBitstreamBufferSizeAlignment = PathElement.groupElement("PATH$minBitstreamBufferSizeAlignment");
-    public static final PathElement PATH$pictureAccessGranularity = PathElement.groupElement("PATH$pictureAccessGranularity");
-    public static final PathElement PATH$minCodedExtent = PathElement.groupElement("PATH$minCodedExtent");
-    public static final PathElement PATH$maxCodedExtent = PathElement.groupElement("PATH$maxCodedExtent");
-    public static final PathElement PATH$maxDpbSlots = PathElement.groupElement("PATH$maxDpbSlots");
-    public static final PathElement PATH$maxActiveReferencePictures = PathElement.groupElement("PATH$maxActiveReferencePictures");
-    public static final PathElement PATH$stdHeaderVersion = PathElement.groupElement("PATH$stdHeaderVersion");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$minBitstreamBufferOffsetAlignment = PathElement.groupElement("minBitstreamBufferOffsetAlignment");
+    public static final PathElement PATH$minBitstreamBufferSizeAlignment = PathElement.groupElement("minBitstreamBufferSizeAlignment");
+    public static final PathElement PATH$pictureAccessGranularity = PathElement.groupElement("pictureAccessGranularity");
+    public static final PathElement PATH$minCodedExtent = PathElement.groupElement("minCodedExtent");
+    public static final PathElement PATH$maxCodedExtent = PathElement.groupElement("maxCodedExtent");
+    public static final PathElement PATH$maxDpbSlots = PathElement.groupElement("maxDpbSlots");
+    public static final PathElement PATH$maxActiveReferencePictures = PathElement.groupElement("maxActiveReferencePictures");
+    public static final PathElement PATH$stdHeaderVersion = PathElement.groupElement("stdHeaderVersion");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

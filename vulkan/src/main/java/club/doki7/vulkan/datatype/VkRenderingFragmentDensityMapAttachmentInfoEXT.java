@@ -130,10 +130,10 @@ public record VkRenderingFragmentDensityMapAttachmentInfoEXT(@NotNull MemorySegm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$imageView = PathElement.groupElement("PATH$imageView");
-    public static final PathElement PATH$imageLayout = PathElement.groupElement("PATH$imageLayout");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$imageView = PathElement.groupElement("imageView");
+    public static final PathElement PATH$imageLayout = PathElement.groupElement("imageLayout");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

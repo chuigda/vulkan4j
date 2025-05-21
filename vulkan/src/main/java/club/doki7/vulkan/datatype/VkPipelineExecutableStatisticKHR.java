@@ -146,12 +146,12 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$name = PathElement.groupElement("PATH$name");
-    public static final PathElement PATH$description = PathElement.groupElement("PATH$description");
-    public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
-    public static final PathElement PATH$value = PathElement.groupElement("PATH$value");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$name = PathElement.groupElement("name");
+    public static final PathElement PATH$description = PathElement.groupElement("description");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$value = PathElement.groupElement("value");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

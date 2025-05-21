@@ -118,11 +118,11 @@ public record VkImageResolve(@NotNull MemorySegment segment) implements IPointer
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$srcSubresource = PathElement.groupElement("PATH$srcSubresource");
-    public static final PathElement PATH$srcOffset = PathElement.groupElement("PATH$srcOffset");
-    public static final PathElement PATH$dstSubresource = PathElement.groupElement("PATH$dstSubresource");
-    public static final PathElement PATH$dstOffset = PathElement.groupElement("PATH$dstOffset");
-    public static final PathElement PATH$extent = PathElement.groupElement("PATH$extent");
+    public static final PathElement PATH$srcSubresource = PathElement.groupElement("srcSubresource");
+    public static final PathElement PATH$srcOffset = PathElement.groupElement("srcOffset");
+    public static final PathElement PATH$dstSubresource = PathElement.groupElement("dstSubresource");
+    public static final PathElement PATH$dstOffset = PathElement.groupElement("dstOffset");
+    public static final PathElement PATH$extent = PathElement.groupElement("extent");
 
     public static final StructLayout LAYOUT$srcSubresource = (StructLayout) LAYOUT.select(PATH$srcSubresource);
     public static final StructLayout LAYOUT$srcOffset = (StructLayout) LAYOUT.select(PATH$srcOffset);

@@ -168,7 +168,7 @@ public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment)
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$is_reference$reserved = PathElement.groupElement("PATH$bitfield$is_reference$reserved");
+    public static final PathElement PATH$bitfield$is_reference$reserved = PathElement.groupElement("is_reference$reserved");
 
     public static final OfInt LAYOUT$bitfield$is_reference$reserved = (OfInt) LAYOUT.select(PATH$bitfield$is_reference$reserved);
 

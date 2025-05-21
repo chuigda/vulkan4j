@@ -126,10 +126,10 @@ public record VkPipelineBinaryKeyKHR(@NotNull MemorySegment segment) implements 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$keySize = PathElement.groupElement("PATH$keySize");
-    public static final PathElement PATH$key = PathElement.groupElement("PATH$key");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$keySize = PathElement.groupElement("keySize");
+    public static final PathElement PATH$key = PathElement.groupElement("key");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

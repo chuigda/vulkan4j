@@ -143,10 +143,10 @@ public record VkWriteDescriptorSetAccelerationStructureKHR(@NotNull MemorySegmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$accelerationStructureCount = PathElement.groupElement("PATH$accelerationStructureCount");
-    public static final PathElement PATH$pAccelerationStructures = PathElement.groupElement("PATH$pAccelerationStructures");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$accelerationStructureCount = PathElement.groupElement("accelerationStructureCount");
+    public static final PathElement PATH$pAccelerationStructures = PathElement.groupElement("pAccelerationStructures");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

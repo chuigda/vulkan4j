@@ -146,12 +146,12 @@ public record VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(@NotNull MemorySe
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$subsampledLoads = PathElement.groupElement("PATH$subsampledLoads");
-    public static final PathElement PATH$subsampledCoarseReconstructionEarlyAccess = PathElement.groupElement("PATH$subsampledCoarseReconstructionEarlyAccess");
-    public static final PathElement PATH$maxSubsampledArrayLayers = PathElement.groupElement("PATH$maxSubsampledArrayLayers");
-    public static final PathElement PATH$maxDescriptorSetSubsampledSamplers = PathElement.groupElement("PATH$maxDescriptorSetSubsampledSamplers");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$subsampledLoads = PathElement.groupElement("subsampledLoads");
+    public static final PathElement PATH$subsampledCoarseReconstructionEarlyAccess = PathElement.groupElement("subsampledCoarseReconstructionEarlyAccess");
+    public static final PathElement PATH$maxSubsampledArrayLayers = PathElement.groupElement("maxSubsampledArrayLayers");
+    public static final PathElement PATH$maxDescriptorSetSubsampledSamplers = PathElement.groupElement("maxDescriptorSetSubsampledSamplers");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

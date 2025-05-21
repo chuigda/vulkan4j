@@ -112,7 +112,7 @@ public record StdVideoH265VpsFlags(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$vps_temporal_id_nesting_flag$vps_poc_proportional_to_timing_flag = PathElement.groupElement("PATH$bitfield$vps_temporal_id_nesting_flag$vps_poc_proportional_to_timing_flag");
+    public static final PathElement PATH$bitfield$vps_temporal_id_nesting_flag$vps_poc_proportional_to_timing_flag = PathElement.groupElement("vps_temporal_id_nesting_flag$vps_poc_proportional_to_timing_flag");
 
     public static final OfInt LAYOUT$bitfield$vps_temporal_id_nesting_flag$vps_poc_proportional_to_timing_flag = (OfInt) LAYOUT.select(PATH$bitfield$vps_temporal_id_nesting_flag$vps_poc_proportional_to_timing_flag);
 

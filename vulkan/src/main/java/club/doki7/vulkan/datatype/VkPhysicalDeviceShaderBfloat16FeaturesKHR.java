@@ -136,11 +136,11 @@ public record VkPhysicalDeviceShaderBfloat16FeaturesKHR(@NotNull MemorySegment s
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shaderBFloat16Type = PathElement.groupElement("PATH$shaderBFloat16Type");
-    public static final PathElement PATH$shaderBFloat16DotProduct = PathElement.groupElement("PATH$shaderBFloat16DotProduct");
-    public static final PathElement PATH$shaderBFloat16CooperativeMatrix = PathElement.groupElement("PATH$shaderBFloat16CooperativeMatrix");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shaderBFloat16Type = PathElement.groupElement("shaderBFloat16Type");
+    public static final PathElement PATH$shaderBFloat16DotProduct = PathElement.groupElement("shaderBFloat16DotProduct");
+    public static final PathElement PATH$shaderBFloat16CooperativeMatrix = PathElement.groupElement("shaderBFloat16CooperativeMatrix");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

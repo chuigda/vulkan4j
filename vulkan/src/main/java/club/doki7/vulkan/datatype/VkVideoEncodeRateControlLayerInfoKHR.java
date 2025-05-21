@@ -146,12 +146,12 @@ public record VkVideoEncodeRateControlLayerInfoKHR(@NotNull MemorySegment segmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$averageBitrate = PathElement.groupElement("PATH$averageBitrate");
-    public static final PathElement PATH$maxBitrate = PathElement.groupElement("PATH$maxBitrate");
-    public static final PathElement PATH$frameRateNumerator = PathElement.groupElement("PATH$frameRateNumerator");
-    public static final PathElement PATH$frameRateDenominator = PathElement.groupElement("PATH$frameRateDenominator");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$averageBitrate = PathElement.groupElement("averageBitrate");
+    public static final PathElement PATH$maxBitrate = PathElement.groupElement("maxBitrate");
+    public static final PathElement PATH$frameRateNumerator = PathElement.groupElement("frameRateNumerator");
+    public static final PathElement PATH$frameRateDenominator = PathElement.groupElement("frameRateDenominator");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

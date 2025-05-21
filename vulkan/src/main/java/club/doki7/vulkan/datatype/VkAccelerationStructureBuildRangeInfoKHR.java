@@ -108,10 +108,10 @@ public record VkAccelerationStructureBuildRangeInfoKHR(@NotNull MemorySegment se
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$primitiveCount = PathElement.groupElement("PATH$primitiveCount");
-    public static final PathElement PATH$primitiveOffset = PathElement.groupElement("PATH$primitiveOffset");
-    public static final PathElement PATH$firstVertex = PathElement.groupElement("PATH$firstVertex");
-    public static final PathElement PATH$transformOffset = PathElement.groupElement("PATH$transformOffset");
+    public static final PathElement PATH$primitiveCount = PathElement.groupElement("primitiveCount");
+    public static final PathElement PATH$primitiveOffset = PathElement.groupElement("primitiveOffset");
+    public static final PathElement PATH$firstVertex = PathElement.groupElement("firstVertex");
+    public static final PathElement PATH$transformOffset = PathElement.groupElement("transformOffset");
 
     public static final OfInt LAYOUT$primitiveCount = (OfInt) LAYOUT.select(PATH$primitiveCount);
     public static final OfInt LAYOUT$primitiveOffset = (OfInt) LAYOUT.select(PATH$primitiveOffset);

@@ -156,13 +156,13 @@ public record VkSurfacePresentScalingCapabilitiesEXT(@NotNull MemorySegment segm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$supportedPresentScaling = PathElement.groupElement("PATH$supportedPresentScaling");
-    public static final PathElement PATH$supportedPresentGravityX = PathElement.groupElement("PATH$supportedPresentGravityX");
-    public static final PathElement PATH$supportedPresentGravityY = PathElement.groupElement("PATH$supportedPresentGravityY");
-    public static final PathElement PATH$minScaledImageExtent = PathElement.groupElement("PATH$minScaledImageExtent");
-    public static final PathElement PATH$maxScaledImageExtent = PathElement.groupElement("PATH$maxScaledImageExtent");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$supportedPresentScaling = PathElement.groupElement("supportedPresentScaling");
+    public static final PathElement PATH$supportedPresentGravityX = PathElement.groupElement("supportedPresentGravityX");
+    public static final PathElement PATH$supportedPresentGravityY = PathElement.groupElement("supportedPresentGravityY");
+    public static final PathElement PATH$minScaledImageExtent = PathElement.groupElement("minScaledImageExtent");
+    public static final PathElement PATH$maxScaledImageExtent = PathElement.groupElement("maxScaledImageExtent");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

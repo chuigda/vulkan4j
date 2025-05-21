@@ -156,13 +156,13 @@ public record VkImageResolve2(@NotNull MemorySegment segment) implements IPointe
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$srcSubresource = PathElement.groupElement("PATH$srcSubresource");
-    public static final PathElement PATH$srcOffset = PathElement.groupElement("PATH$srcOffset");
-    public static final PathElement PATH$dstSubresource = PathElement.groupElement("PATH$dstSubresource");
-    public static final PathElement PATH$dstOffset = PathElement.groupElement("PATH$dstOffset");
-    public static final PathElement PATH$extent = PathElement.groupElement("PATH$extent");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcSubresource = PathElement.groupElement("srcSubresource");
+    public static final PathElement PATH$srcOffset = PathElement.groupElement("srcOffset");
+    public static final PathElement PATH$dstSubresource = PathElement.groupElement("dstSubresource");
+    public static final PathElement PATH$dstOffset = PathElement.groupElement("dstOffset");
+    public static final PathElement PATH$extent = PathElement.groupElement("extent");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

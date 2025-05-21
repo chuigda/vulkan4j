@@ -98,9 +98,9 @@ public record VkSpecializationMapEntry(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$constantID = PathElement.groupElement("PATH$constantID");
-    public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
+    public static final PathElement PATH$constantID = PathElement.groupElement("constantID");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
 
     public static final OfInt LAYOUT$constantID = (OfInt) LAYOUT.select(PATH$constantID);
     public static final OfInt LAYOUT$offset = (OfInt) LAYOUT.select(PATH$offset);

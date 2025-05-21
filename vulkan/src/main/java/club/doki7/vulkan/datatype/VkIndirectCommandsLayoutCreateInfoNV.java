@@ -210,14 +210,14 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement("PATH$pipelineBindPoint");
-    public static final PathElement PATH$tokenCount = PathElement.groupElement("PATH$tokenCount");
-    public static final PathElement PATH$pTokens = PathElement.groupElement("PATH$pTokens");
-    public static final PathElement PATH$streamCount = PathElement.groupElement("PATH$streamCount");
-    public static final PathElement PATH$pStreamStrides = PathElement.groupElement("PATH$pStreamStrides");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement("pipelineBindPoint");
+    public static final PathElement PATH$tokenCount = PathElement.groupElement("tokenCount");
+    public static final PathElement PATH$pTokens = PathElement.groupElement("pTokens");
+    public static final PathElement PATH$streamCount = PathElement.groupElement("streamCount");
+    public static final PathElement PATH$pStreamStrides = PathElement.groupElement("pStreamStrides");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

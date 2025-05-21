@@ -204,13 +204,13 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$stage = PathElement.groupElement("PATH$stage");
-    public static final PathElement PATH$module = PathElement.groupElement("PATH$module");
-    public static final PathElement PATH$pName = PathElement.groupElement("PATH$pName");
-    public static final PathElement PATH$pSpecializationInfo = PathElement.groupElement("PATH$pSpecializationInfo");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$stage = PathElement.groupElement("stage");
+    public static final PathElement PATH$module = PathElement.groupElement("module");
+    public static final PathElement PATH$pName = PathElement.groupElement("pName");
+    public static final PathElement PATH$pSpecializationInfo = PathElement.groupElement("pSpecializationInfo");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

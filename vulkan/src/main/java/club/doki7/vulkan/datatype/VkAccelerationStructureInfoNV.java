@@ -183,13 +183,13 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$instanceCount = PathElement.groupElement("PATH$instanceCount");
-    public static final PathElement PATH$geometryCount = PathElement.groupElement("PATH$geometryCount");
-    public static final PathElement PATH$pGeometries = PathElement.groupElement("PATH$pGeometries");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$instanceCount = PathElement.groupElement("instanceCount");
+    public static final PathElement PATH$geometryCount = PathElement.groupElement("geometryCount");
+    public static final PathElement PATH$pGeometries = PathElement.groupElement("pGeometries");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -106,10 +106,10 @@ public record StdVideoAV1TimingInfo(@NotNull MemorySegment segment) implements I
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$num_units_in_display_tick = PathElement.groupElement("PATH$num_units_in_display_tick");
-    public static final PathElement PATH$time_scale = PathElement.groupElement("PATH$time_scale");
-    public static final PathElement PATH$num_ticks_per_picture_minus_1 = PathElement.groupElement("PATH$num_ticks_per_picture_minus_1");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$num_units_in_display_tick = PathElement.groupElement("num_units_in_display_tick");
+    public static final PathElement PATH$time_scale = PathElement.groupElement("time_scale");
+    public static final PathElement PATH$num_ticks_per_picture_minus_1 = PathElement.groupElement("num_ticks_per_picture_minus_1");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfInt LAYOUT$num_units_in_display_tick = (OfInt) LAYOUT.select(PATH$num_units_in_display_tick);

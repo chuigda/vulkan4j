@@ -156,13 +156,13 @@ public record VkPhysicalDeviceImageFormatInfo2(@NotNull MemorySegment segment) i
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
-    public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
-    public static final PathElement PATH$tiling = PathElement.groupElement("PATH$tiling");
-    public static final PathElement PATH$usage = PathElement.groupElement("PATH$usage");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$tiling = PathElement.groupElement("tiling");
+    public static final PathElement PATH$usage = PathElement.groupElement("usage");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

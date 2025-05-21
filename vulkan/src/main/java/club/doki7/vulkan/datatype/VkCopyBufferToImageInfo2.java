@@ -191,13 +191,13 @@ public record VkCopyBufferToImageInfo2(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$srcBuffer = PathElement.groupElement("PATH$srcBuffer");
-    public static final PathElement PATH$dstImage = PathElement.groupElement("PATH$dstImage");
-    public static final PathElement PATH$dstImageLayout = PathElement.groupElement("PATH$dstImageLayout");
-    public static final PathElement PATH$regionCount = PathElement.groupElement("PATH$regionCount");
-    public static final PathElement PATH$pRegions = PathElement.groupElement("PATH$pRegions");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcBuffer = PathElement.groupElement("srcBuffer");
+    public static final PathElement PATH$dstImage = PathElement.groupElement("dstImage");
+    public static final PathElement PATH$dstImageLayout = PathElement.groupElement("dstImageLayout");
+    public static final PathElement PATH$regionCount = PathElement.groupElement("regionCount");
+    public static final PathElement PATH$pRegions = PathElement.groupElement("pRegions");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

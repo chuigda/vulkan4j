@@ -88,8 +88,8 @@ public record VkMemoryHeap(@NotNull MemorySegment segment) implements IPointer {
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
 
     public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
     public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);

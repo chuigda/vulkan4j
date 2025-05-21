@@ -98,9 +98,9 @@ public record VkDrawIndirectCountIndirectCommandEXT(@NotNull MemorySegment segme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bufferAddress = PathElement.groupElement("PATH$bufferAddress");
-    public static final PathElement PATH$stride = PathElement.groupElement("PATH$stride");
-    public static final PathElement PATH$commandCount = PathElement.groupElement("PATH$commandCount");
+    public static final PathElement PATH$bufferAddress = PathElement.groupElement("bufferAddress");
+    public static final PathElement PATH$stride = PathElement.groupElement("stride");
+    public static final PathElement PATH$commandCount = PathElement.groupElement("commandCount");
 
     public static final OfLong LAYOUT$bufferAddress = (OfLong) LAYOUT.select(PATH$bufferAddress);
     public static final OfInt LAYOUT$stride = (OfInt) LAYOUT.select(PATH$stride);

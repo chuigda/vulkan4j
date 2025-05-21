@@ -136,11 +136,11 @@ public record VkPhysicalDeviceFragmentDensityMapFeaturesEXT(@NotNull MemorySegme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$fragmentDensityMap = PathElement.groupElement("PATH$fragmentDensityMap");
-    public static final PathElement PATH$fragmentDensityMapDynamic = PathElement.groupElement("PATH$fragmentDensityMapDynamic");
-    public static final PathElement PATH$fragmentDensityMapNonSubsampledImages = PathElement.groupElement("PATH$fragmentDensityMapNonSubsampledImages");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$fragmentDensityMap = PathElement.groupElement("fragmentDensityMap");
+    public static final PathElement PATH$fragmentDensityMapDynamic = PathElement.groupElement("fragmentDensityMapDynamic");
+    public static final PathElement PATH$fragmentDensityMapNonSubsampledImages = PathElement.groupElement("fragmentDensityMapNonSubsampledImages");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

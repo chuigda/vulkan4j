@@ -203,17 +203,17 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$seq_parameter_set_id = PathElement.groupElement("PATH$seq_parameter_set_id");
-    public static final PathElement PATH$pic_parameter_set_id = PathElement.groupElement("PATH$pic_parameter_set_id");
-    public static final PathElement PATH$num_ref_idx_l0_default_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l0_default_active_minus1");
-    public static final PathElement PATH$num_ref_idx_l1_default_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l1_default_active_minus1");
-    public static final PathElement PATH$weighted_bipred_idc = PathElement.groupElement("PATH$weighted_bipred_idc");
-    public static final PathElement PATH$pic_init_qp_minus26 = PathElement.groupElement("PATH$pic_init_qp_minus26");
-    public static final PathElement PATH$pic_init_qs_minus26 = PathElement.groupElement("PATH$pic_init_qs_minus26");
-    public static final PathElement PATH$chroma_qp_index_offset = PathElement.groupElement("PATH$chroma_qp_index_offset");
-    public static final PathElement PATH$second_chroma_qp_index_offset = PathElement.groupElement("PATH$second_chroma_qp_index_offset");
-    public static final PathElement PATH$pScalingLists = PathElement.groupElement("PATH$pScalingLists");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$seq_parameter_set_id = PathElement.groupElement("seq_parameter_set_id");
+    public static final PathElement PATH$pic_parameter_set_id = PathElement.groupElement("pic_parameter_set_id");
+    public static final PathElement PATH$num_ref_idx_l0_default_active_minus1 = PathElement.groupElement("num_ref_idx_l0_default_active_minus1");
+    public static final PathElement PATH$num_ref_idx_l1_default_active_minus1 = PathElement.groupElement("num_ref_idx_l1_default_active_minus1");
+    public static final PathElement PATH$weighted_bipred_idc = PathElement.groupElement("weighted_bipred_idc");
+    public static final PathElement PATH$pic_init_qp_minus26 = PathElement.groupElement("pic_init_qp_minus26");
+    public static final PathElement PATH$pic_init_qs_minus26 = PathElement.groupElement("pic_init_qs_minus26");
+    public static final PathElement PATH$chroma_qp_index_offset = PathElement.groupElement("chroma_qp_index_offset");
+    public static final PathElement PATH$second_chroma_qp_index_offset = PathElement.groupElement("second_chroma_qp_index_offset");
+    public static final PathElement PATH$pScalingLists = PathElement.groupElement("pScalingLists");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$seq_parameter_set_id = (OfByte) LAYOUT.select(PATH$seq_parameter_set_id);

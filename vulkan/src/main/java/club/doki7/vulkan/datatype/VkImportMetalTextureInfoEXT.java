@@ -130,10 +130,10 @@ public record VkImportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$plane = PathElement.groupElement("PATH$plane");
-    public static final PathElement PATH$mtlTexture = PathElement.groupElement("PATH$mtlTexture");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$plane = PathElement.groupElement("plane");
+    public static final PathElement PATH$mtlTexture = PathElement.groupElement("mtlTexture");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

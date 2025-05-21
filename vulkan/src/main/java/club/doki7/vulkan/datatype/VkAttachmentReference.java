@@ -88,8 +88,8 @@ public record VkAttachmentReference(@NotNull MemorySegment segment) implements I
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$attachment = PathElement.groupElement("PATH$attachment");
-    public static final PathElement PATH$layout = PathElement.groupElement("PATH$layout");
+    public static final PathElement PATH$attachment = PathElement.groupElement("attachment");
+    public static final PathElement PATH$layout = PathElement.groupElement("layout");
 
     public static final OfInt LAYOUT$attachment = (OfInt) LAYOUT.select(PATH$attachment);
     public static final OfInt LAYOUT$layout = (OfInt) LAYOUT.select(PATH$layout);

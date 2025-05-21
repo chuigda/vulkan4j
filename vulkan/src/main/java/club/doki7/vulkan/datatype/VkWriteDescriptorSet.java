@@ -261,16 +261,16 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$dstSet = PathElement.groupElement("PATH$dstSet");
-    public static final PathElement PATH$dstBinding = PathElement.groupElement("PATH$dstBinding");
-    public static final PathElement PATH$dstArrayElement = PathElement.groupElement("PATH$dstArrayElement");
-    public static final PathElement PATH$descriptorCount = PathElement.groupElement("PATH$descriptorCount");
-    public static final PathElement PATH$descriptorType = PathElement.groupElement("PATH$descriptorType");
-    public static final PathElement PATH$pImageInfo = PathElement.groupElement("PATH$pImageInfo");
-    public static final PathElement PATH$pBufferInfo = PathElement.groupElement("PATH$pBufferInfo");
-    public static final PathElement PATH$pTexelBufferView = PathElement.groupElement("PATH$pTexelBufferView");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$dstSet = PathElement.groupElement("dstSet");
+    public static final PathElement PATH$dstBinding = PathElement.groupElement("dstBinding");
+    public static final PathElement PATH$dstArrayElement = PathElement.groupElement("dstArrayElement");
+    public static final PathElement PATH$descriptorCount = PathElement.groupElement("descriptorCount");
+    public static final PathElement PATH$descriptorType = PathElement.groupElement("descriptorType");
+    public static final PathElement PATH$pImageInfo = PathElement.groupElement("pImageInfo");
+    public static final PathElement PATH$pBufferInfo = PathElement.groupElement("pBufferInfo");
+    public static final PathElement PATH$pTexelBufferView = PathElement.groupElement("pTexelBufferView");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

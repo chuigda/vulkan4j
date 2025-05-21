@@ -156,13 +156,13 @@ public record VkVideoEncodeAV1RateControlInfoKHR(@NotNull MemorySegment segment)
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$gopFrameCount = PathElement.groupElement("PATH$gopFrameCount");
-    public static final PathElement PATH$keyFramePeriod = PathElement.groupElement("PATH$keyFramePeriod");
-    public static final PathElement PATH$consecutiveBipredictiveFrameCount = PathElement.groupElement("PATH$consecutiveBipredictiveFrameCount");
-    public static final PathElement PATH$temporalLayerCount = PathElement.groupElement("PATH$temporalLayerCount");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$gopFrameCount = PathElement.groupElement("gopFrameCount");
+    public static final PathElement PATH$keyFramePeriod = PathElement.groupElement("keyFramePeriod");
+    public static final PathElement PATH$consecutiveBipredictiveFrameCount = PathElement.groupElement("consecutiveBipredictiveFrameCount");
+    public static final PathElement PATH$temporalLayerCount = PathElement.groupElement("temporalLayerCount");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

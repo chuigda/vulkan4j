@@ -153,10 +153,10 @@ public record VkFramebufferAttachmentsCreateInfo(@NotNull MemorySegment segment)
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$attachmentImageInfoCount = PathElement.groupElement("PATH$attachmentImageInfoCount");
-    public static final PathElement PATH$pAttachmentImageInfos = PathElement.groupElement("PATH$pAttachmentImageInfos");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$attachmentImageInfoCount = PathElement.groupElement("attachmentImageInfoCount");
+    public static final PathElement PATH$pAttachmentImageInfos = PathElement.groupElement("pAttachmentImageInfos");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

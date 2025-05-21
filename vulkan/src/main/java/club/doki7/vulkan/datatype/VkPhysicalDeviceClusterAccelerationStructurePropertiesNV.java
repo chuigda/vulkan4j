@@ -186,16 +186,16 @@ public record VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(@NotNull 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxVerticesPerCluster = PathElement.groupElement("PATH$maxVerticesPerCluster");
-    public static final PathElement PATH$maxTrianglesPerCluster = PathElement.groupElement("PATH$maxTrianglesPerCluster");
-    public static final PathElement PATH$clusterScratchByteAlignment = PathElement.groupElement("PATH$clusterScratchByteAlignment");
-    public static final PathElement PATH$clusterByteAlignment = PathElement.groupElement("PATH$clusterByteAlignment");
-    public static final PathElement PATH$clusterTemplateByteAlignment = PathElement.groupElement("PATH$clusterTemplateByteAlignment");
-    public static final PathElement PATH$clusterBottomLevelByteAlignment = PathElement.groupElement("PATH$clusterBottomLevelByteAlignment");
-    public static final PathElement PATH$clusterTemplateBoundsByteAlignment = PathElement.groupElement("PATH$clusterTemplateBoundsByteAlignment");
-    public static final PathElement PATH$maxClusterGeometryIndex = PathElement.groupElement("PATH$maxClusterGeometryIndex");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$maxVerticesPerCluster = PathElement.groupElement("maxVerticesPerCluster");
+    public static final PathElement PATH$maxTrianglesPerCluster = PathElement.groupElement("maxTrianglesPerCluster");
+    public static final PathElement PATH$clusterScratchByteAlignment = PathElement.groupElement("clusterScratchByteAlignment");
+    public static final PathElement PATH$clusterByteAlignment = PathElement.groupElement("clusterByteAlignment");
+    public static final PathElement PATH$clusterTemplateByteAlignment = PathElement.groupElement("clusterTemplateByteAlignment");
+    public static final PathElement PATH$clusterBottomLevelByteAlignment = PathElement.groupElement("clusterBottomLevelByteAlignment");
+    public static final PathElement PATH$clusterTemplateBoundsByteAlignment = PathElement.groupElement("clusterTemplateBoundsByteAlignment");
+    public static final PathElement PATH$maxClusterGeometryIndex = PathElement.groupElement("maxClusterGeometryIndex");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

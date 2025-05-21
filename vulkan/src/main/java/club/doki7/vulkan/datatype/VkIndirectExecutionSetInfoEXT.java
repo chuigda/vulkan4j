@@ -142,8 +142,8 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$pPipelineInfo = PathElement.groupElement("PATH$pPipelineInfo");
-    public static final PathElement PATH$pShaderInfo = PathElement.groupElement("PATH$pShaderInfo");
+    public static final PathElement PATH$pPipelineInfo = PathElement.groupElement("pPipelineInfo");
+    public static final PathElement PATH$pShaderInfo = PathElement.groupElement("pShaderInfo");
 
     public static final AddressLayout LAYOUT$pPipelineInfo = (AddressLayout) LAYOUT.select(PATH$pPipelineInfo);
     public static final AddressLayout LAYOUT$pShaderInfo = (AddressLayout) LAYOUT.select(PATH$pShaderInfo);

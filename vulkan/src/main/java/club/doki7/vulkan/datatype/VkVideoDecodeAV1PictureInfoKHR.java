@@ -227,14 +227,14 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$pStdPictureInfo = PathElement.groupElement("PATH$pStdPictureInfo");
-    public static final PathElement PATH$referenceNameSlotIndices = PathElement.groupElement("PATH$referenceNameSlotIndices");
-    public static final PathElement PATH$frameHeaderOffset = PathElement.groupElement("PATH$frameHeaderOffset");
-    public static final PathElement PATH$tileCount = PathElement.groupElement("PATH$tileCount");
-    public static final PathElement PATH$pTileOffsets = PathElement.groupElement("PATH$pTileOffsets");
-    public static final PathElement PATH$pTileSizes = PathElement.groupElement("PATH$pTileSizes");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$pStdPictureInfo = PathElement.groupElement("pStdPictureInfo");
+    public static final PathElement PATH$referenceNameSlotIndices = PathElement.groupElement("referenceNameSlotIndices");
+    public static final PathElement PATH$frameHeaderOffset = PathElement.groupElement("frameHeaderOffset");
+    public static final PathElement PATH$tileCount = PathElement.groupElement("tileCount");
+    public static final PathElement PATH$pTileOffsets = PathElement.groupElement("pTileOffsets");
+    public static final PathElement PATH$pTileSizes = PathElement.groupElement("pTileSizes");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

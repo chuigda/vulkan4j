@@ -283,21 +283,21 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement("PATH$pipelineBindPoint");
-    public static final PathElement PATH$pipeline = PathElement.groupElement("PATH$pipeline");
-    public static final PathElement PATH$indirectCommandsLayout = PathElement.groupElement("PATH$indirectCommandsLayout");
-    public static final PathElement PATH$streamCount = PathElement.groupElement("PATH$streamCount");
-    public static final PathElement PATH$pStreams = PathElement.groupElement("PATH$pStreams");
-    public static final PathElement PATH$sequencesCount = PathElement.groupElement("PATH$sequencesCount");
-    public static final PathElement PATH$preprocessBuffer = PathElement.groupElement("PATH$preprocessBuffer");
-    public static final PathElement PATH$preprocessOffset = PathElement.groupElement("PATH$preprocessOffset");
-    public static final PathElement PATH$preprocessSize = PathElement.groupElement("PATH$preprocessSize");
-    public static final PathElement PATH$sequencesCountBuffer = PathElement.groupElement("PATH$sequencesCountBuffer");
-    public static final PathElement PATH$sequencesCountOffset = PathElement.groupElement("PATH$sequencesCountOffset");
-    public static final PathElement PATH$sequencesIndexBuffer = PathElement.groupElement("PATH$sequencesIndexBuffer");
-    public static final PathElement PATH$sequencesIndexOffset = PathElement.groupElement("PATH$sequencesIndexOffset");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement("pipelineBindPoint");
+    public static final PathElement PATH$pipeline = PathElement.groupElement("pipeline");
+    public static final PathElement PATH$indirectCommandsLayout = PathElement.groupElement("indirectCommandsLayout");
+    public static final PathElement PATH$streamCount = PathElement.groupElement("streamCount");
+    public static final PathElement PATH$pStreams = PathElement.groupElement("pStreams");
+    public static final PathElement PATH$sequencesCount = PathElement.groupElement("sequencesCount");
+    public static final PathElement PATH$preprocessBuffer = PathElement.groupElement("preprocessBuffer");
+    public static final PathElement PATH$preprocessOffset = PathElement.groupElement("preprocessOffset");
+    public static final PathElement PATH$preprocessSize = PathElement.groupElement("preprocessSize");
+    public static final PathElement PATH$sequencesCountBuffer = PathElement.groupElement("sequencesCountBuffer");
+    public static final PathElement PATH$sequencesCountOffset = PathElement.groupElement("sequencesCountOffset");
+    public static final PathElement PATH$sequencesIndexBuffer = PathElement.groupElement("sequencesIndexBuffer");
+    public static final PathElement PATH$sequencesIndexOffset = PathElement.groupElement("sequencesIndexOffset");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

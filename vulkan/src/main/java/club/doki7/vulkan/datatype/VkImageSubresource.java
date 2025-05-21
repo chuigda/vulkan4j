@@ -98,9 +98,9 @@ public record VkImageSubresource(@NotNull MemorySegment segment) implements IPoi
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$aspectMask = PathElement.groupElement("PATH$aspectMask");
-    public static final PathElement PATH$mipLevel = PathElement.groupElement("PATH$mipLevel");
-    public static final PathElement PATH$arrayLayer = PathElement.groupElement("PATH$arrayLayer");
+    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
+    public static final PathElement PATH$mipLevel = PathElement.groupElement("mipLevel");
+    public static final PathElement PATH$arrayLayer = PathElement.groupElement("arrayLayer");
 
     public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
     public static final OfInt LAYOUT$mipLevel = (OfInt) LAYOUT.select(PATH$mipLevel);

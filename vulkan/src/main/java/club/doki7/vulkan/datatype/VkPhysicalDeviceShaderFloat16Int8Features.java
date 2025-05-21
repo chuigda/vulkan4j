@@ -126,10 +126,10 @@ public record VkPhysicalDeviceShaderFloat16Int8Features(@NotNull MemorySegment s
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shaderFloat16 = PathElement.groupElement("PATH$shaderFloat16");
-    public static final PathElement PATH$shaderInt8 = PathElement.groupElement("PATH$shaderInt8");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shaderFloat16 = PathElement.groupElement("shaderFloat16");
+    public static final PathElement PATH$shaderInt8 = PathElement.groupElement("shaderInt8");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

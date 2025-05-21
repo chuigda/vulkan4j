@@ -98,9 +98,9 @@ public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$opType = PathElement.groupElement("PATH$opType");
-    public static final PathElement PATH$argCount = PathElement.groupElement("PATH$argCount");
-    public static final PathElement PATH$argData = PathElement.groupElement("PATH$argData");
+    public static final PathElement PATH$opType = PathElement.groupElement("opType");
+    public static final PathElement PATH$argCount = PathElement.groupElement("argCount");
+    public static final PathElement PATH$argData = PathElement.groupElement("argData");
 
     public static final OfInt LAYOUT$opType = (OfInt) LAYOUT.select(PATH$opType);
     public static final OfInt LAYOUT$argCount = (OfInt) LAYOUT.select(PATH$argCount);

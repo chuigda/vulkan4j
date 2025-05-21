@@ -194,15 +194,15 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$usage = PathElement.groupElement("PATH$usage");
-    public static final PathElement PATH$width = PathElement.groupElement("PATH$width");
-    public static final PathElement PATH$height = PathElement.groupElement("PATH$height");
-    public static final PathElement PATH$layerCount = PathElement.groupElement("PATH$layerCount");
-    public static final PathElement PATH$viewFormatCount = PathElement.groupElement("PATH$viewFormatCount");
-    public static final PathElement PATH$pViewFormats = PathElement.groupElement("PATH$pViewFormats");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$usage = PathElement.groupElement("usage");
+    public static final PathElement PATH$width = PathElement.groupElement("width");
+    public static final PathElement PATH$height = PathElement.groupElement("height");
+    public static final PathElement PATH$layerCount = PathElement.groupElement("layerCount");
+    public static final PathElement PATH$viewFormatCount = PathElement.groupElement("viewFormatCount");
+    public static final PathElement PATH$pViewFormats = PathElement.groupElement("pViewFormats");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

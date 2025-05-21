@@ -398,7 +398,7 @@ public record StdVideoH265SpsFlags(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$sps_temporal_id_nesting_flag$intra_boundary_filtering_disabled_flag = PathElement.groupElement("PATH$bitfield$sps_temporal_id_nesting_flag$intra_boundary_filtering_disabled_flag");
+    public static final PathElement PATH$bitfield$sps_temporal_id_nesting_flag$intra_boundary_filtering_disabled_flag = PathElement.groupElement("sps_temporal_id_nesting_flag$intra_boundary_filtering_disabled_flag");
 
     public static final OfInt LAYOUT$bitfield$sps_temporal_id_nesting_flag$intra_boundary_filtering_disabled_flag = (OfInt) LAYOUT.select(PATH$bitfield$sps_temporal_id_nesting_flag$intra_boundary_filtering_disabled_flag);
 

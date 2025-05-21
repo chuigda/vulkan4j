@@ -176,15 +176,15 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxExecutionGraphDepth = PathElement.groupElement("PATH$maxExecutionGraphDepth");
-    public static final PathElement PATH$maxExecutionGraphShaderOutputNodes = PathElement.groupElement("PATH$maxExecutionGraphShaderOutputNodes");
-    public static final PathElement PATH$maxExecutionGraphShaderPayloadSize = PathElement.groupElement("PATH$maxExecutionGraphShaderPayloadSize");
-    public static final PathElement PATH$maxExecutionGraphShaderPayloadCount = PathElement.groupElement("PATH$maxExecutionGraphShaderPayloadCount");
-    public static final PathElement PATH$executionGraphDispatchAddressAlignment = PathElement.groupElement("PATH$executionGraphDispatchAddressAlignment");
-    public static final PathElement PATH$maxExecutionGraphWorkgroupCount = PathElement.groupElement("PATH$maxExecutionGraphWorkgroupCount");
-    public static final PathElement PATH$maxExecutionGraphWorkgroups = PathElement.groupElement("PATH$maxExecutionGraphWorkgroups");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$maxExecutionGraphDepth = PathElement.groupElement("maxExecutionGraphDepth");
+    public static final PathElement PATH$maxExecutionGraphShaderOutputNodes = PathElement.groupElement("maxExecutionGraphShaderOutputNodes");
+    public static final PathElement PATH$maxExecutionGraphShaderPayloadSize = PathElement.groupElement("maxExecutionGraphShaderPayloadSize");
+    public static final PathElement PATH$maxExecutionGraphShaderPayloadCount = PathElement.groupElement("maxExecutionGraphShaderPayloadCount");
+    public static final PathElement PATH$executionGraphDispatchAddressAlignment = PathElement.groupElement("executionGraphDispatchAddressAlignment");
+    public static final PathElement PATH$maxExecutionGraphWorkgroupCount = PathElement.groupElement("maxExecutionGraphWorkgroupCount");
+    public static final PathElement PATH$maxExecutionGraphWorkgroups = PathElement.groupElement("maxExecutionGraphWorkgroups");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

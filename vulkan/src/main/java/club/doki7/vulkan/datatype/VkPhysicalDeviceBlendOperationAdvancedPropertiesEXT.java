@@ -166,14 +166,14 @@ public record VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(@NotNull Memor
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$advancedBlendMaxColorAttachments = PathElement.groupElement("PATH$advancedBlendMaxColorAttachments");
-    public static final PathElement PATH$advancedBlendIndependentBlend = PathElement.groupElement("PATH$advancedBlendIndependentBlend");
-    public static final PathElement PATH$advancedBlendNonPremultipliedSrcColor = PathElement.groupElement("PATH$advancedBlendNonPremultipliedSrcColor");
-    public static final PathElement PATH$advancedBlendNonPremultipliedDstColor = PathElement.groupElement("PATH$advancedBlendNonPremultipliedDstColor");
-    public static final PathElement PATH$advancedBlendCorrelatedOverlap = PathElement.groupElement("PATH$advancedBlendCorrelatedOverlap");
-    public static final PathElement PATH$advancedBlendAllOperations = PathElement.groupElement("PATH$advancedBlendAllOperations");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$advancedBlendMaxColorAttachments = PathElement.groupElement("advancedBlendMaxColorAttachments");
+    public static final PathElement PATH$advancedBlendIndependentBlend = PathElement.groupElement("advancedBlendIndependentBlend");
+    public static final PathElement PATH$advancedBlendNonPremultipliedSrcColor = PathElement.groupElement("advancedBlendNonPremultipliedSrcColor");
+    public static final PathElement PATH$advancedBlendNonPremultipliedDstColor = PathElement.groupElement("advancedBlendNonPremultipliedDstColor");
+    public static final PathElement PATH$advancedBlendCorrelatedOverlap = PathElement.groupElement("advancedBlendCorrelatedOverlap");
+    public static final PathElement PATH$advancedBlendAllOperations = PathElement.groupElement("advancedBlendAllOperations");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

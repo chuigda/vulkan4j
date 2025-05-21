@@ -186,16 +186,16 @@ public record VkPhysicalDeviceAccelerationStructurePropertiesKHR(@NotNull Memory
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxGeometryCount = PathElement.groupElement("PATH$maxGeometryCount");
-    public static final PathElement PATH$maxInstanceCount = PathElement.groupElement("PATH$maxInstanceCount");
-    public static final PathElement PATH$maxPrimitiveCount = PathElement.groupElement("PATH$maxPrimitiveCount");
-    public static final PathElement PATH$maxPerStageDescriptorAccelerationStructures = PathElement.groupElement("PATH$maxPerStageDescriptorAccelerationStructures");
-    public static final PathElement PATH$maxPerStageDescriptorUpdateAfterBindAccelerationStructures = PathElement.groupElement("PATH$maxPerStageDescriptorUpdateAfterBindAccelerationStructures");
-    public static final PathElement PATH$maxDescriptorSetAccelerationStructures = PathElement.groupElement("PATH$maxDescriptorSetAccelerationStructures");
-    public static final PathElement PATH$maxDescriptorSetUpdateAfterBindAccelerationStructures = PathElement.groupElement("PATH$maxDescriptorSetUpdateAfterBindAccelerationStructures");
-    public static final PathElement PATH$minAccelerationStructureScratchOffsetAlignment = PathElement.groupElement("PATH$minAccelerationStructureScratchOffsetAlignment");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$maxGeometryCount = PathElement.groupElement("maxGeometryCount");
+    public static final PathElement PATH$maxInstanceCount = PathElement.groupElement("maxInstanceCount");
+    public static final PathElement PATH$maxPrimitiveCount = PathElement.groupElement("maxPrimitiveCount");
+    public static final PathElement PATH$maxPerStageDescriptorAccelerationStructures = PathElement.groupElement("maxPerStageDescriptorAccelerationStructures");
+    public static final PathElement PATH$maxPerStageDescriptorUpdateAfterBindAccelerationStructures = PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindAccelerationStructures");
+    public static final PathElement PATH$maxDescriptorSetAccelerationStructures = PathElement.groupElement("maxDescriptorSetAccelerationStructures");
+    public static final PathElement PATH$maxDescriptorSetUpdateAfterBindAccelerationStructures = PathElement.groupElement("maxDescriptorSetUpdateAfterBindAccelerationStructures");
+    public static final PathElement PATH$minAccelerationStructureScratchOffsetAlignment = PathElement.groupElement("minAccelerationStructureScratchOffsetAlignment");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -160,13 +160,13 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$objectType = PathElement.groupElement("PATH$objectType");
-    public static final PathElement PATH$objectHandle = PathElement.groupElement("PATH$objectHandle");
-    public static final PathElement PATH$tagName = PathElement.groupElement("PATH$tagName");
-    public static final PathElement PATH$tagSize = PathElement.groupElement("PATH$tagSize");
-    public static final PathElement PATH$pTag = PathElement.groupElement("PATH$pTag");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$objectType = PathElement.groupElement("objectType");
+    public static final PathElement PATH$objectHandle = PathElement.groupElement("objectHandle");
+    public static final PathElement PATH$tagName = PathElement.groupElement("tagName");
+    public static final PathElement PATH$tagSize = PathElement.groupElement("tagSize");
+    public static final PathElement PATH$pTag = PathElement.groupElement("pTag");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

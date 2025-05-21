@@ -235,14 +235,14 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IPoint
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$waitSemaphoreCount = PathElement.groupElement("PATH$waitSemaphoreCount");
-    public static final PathElement PATH$pWaitSemaphores = PathElement.groupElement("PATH$pWaitSemaphores");
-    public static final PathElement PATH$swapchainCount = PathElement.groupElement("PATH$swapchainCount");
-    public static final PathElement PATH$pSwapchains = PathElement.groupElement("PATH$pSwapchains");
-    public static final PathElement PATH$pImageIndices = PathElement.groupElement("PATH$pImageIndices");
-    public static final PathElement PATH$pResults = PathElement.groupElement("PATH$pResults");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$waitSemaphoreCount = PathElement.groupElement("waitSemaphoreCount");
+    public static final PathElement PATH$pWaitSemaphores = PathElement.groupElement("pWaitSemaphores");
+    public static final PathElement PATH$swapchainCount = PathElement.groupElement("swapchainCount");
+    public static final PathElement PATH$pSwapchains = PathElement.groupElement("pSwapchains");
+    public static final PathElement PATH$pImageIndices = PathElement.groupElement("pImageIndices");
+    public static final PathElement PATH$pResults = PathElement.groupElement("pResults");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

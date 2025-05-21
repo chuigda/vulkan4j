@@ -123,7 +123,7 @@ public record StdVideoH265ProfileTierLevelFlags(@NotNull MemorySegment segment) 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$general_tier_flag$general_frame_only_constraint_flag = PathElement.groupElement("PATH$bitfield$general_tier_flag$general_frame_only_constraint_flag");
+    public static final PathElement PATH$bitfield$general_tier_flag$general_frame_only_constraint_flag = PathElement.groupElement("general_tier_flag$general_frame_only_constraint_flag");
 
     public static final OfInt LAYOUT$bitfield$general_tier_flag$general_frame_only_constraint_flag = (OfInt) LAYOUT.select(PATH$bitfield$general_tier_flag$general_frame_only_constraint_flag);
 

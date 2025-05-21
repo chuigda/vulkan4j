@@ -409,7 +409,7 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag = PathElement.groupElement("PATH$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag");
+    public static final PathElement PATH$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag = PathElement.groupElement("dependent_slice_segments_enabled_flag$pps_range_extension_flag");
 
     public static final OfInt LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag = (OfInt) LAYOUT.select(PATH$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
 

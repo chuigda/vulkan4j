@@ -98,9 +98,9 @@ public record VkVideoEncodeH264QpKHR(@NotNull MemorySegment segment) implements 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$qpI = PathElement.groupElement("PATH$qpI");
-    public static final PathElement PATH$qpP = PathElement.groupElement("PATH$qpP");
-    public static final PathElement PATH$qpB = PathElement.groupElement("PATH$qpB");
+    public static final PathElement PATH$qpI = PathElement.groupElement("qpI");
+    public static final PathElement PATH$qpP = PathElement.groupElement("qpP");
+    public static final PathElement PATH$qpB = PathElement.groupElement("qpB");
 
     public static final OfInt LAYOUT$qpI = (OfInt) LAYOUT.select(PATH$qpI);
     public static final OfInt LAYOUT$qpP = (OfInt) LAYOUT.select(PATH$qpP);

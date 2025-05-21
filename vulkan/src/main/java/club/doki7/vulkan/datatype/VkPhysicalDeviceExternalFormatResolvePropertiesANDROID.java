@@ -136,11 +136,11 @@ public record VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(@NotNull Me
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$nullColorAttachmentWithExternalFormatResolve = PathElement.groupElement("PATH$nullColorAttachmentWithExternalFormatResolve");
-    public static final PathElement PATH$externalFormatResolveChromaOffsetX = PathElement.groupElement("PATH$externalFormatResolveChromaOffsetX");
-    public static final PathElement PATH$externalFormatResolveChromaOffsetY = PathElement.groupElement("PATH$externalFormatResolveChromaOffsetY");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$nullColorAttachmentWithExternalFormatResolve = PathElement.groupElement("nullColorAttachmentWithExternalFormatResolve");
+    public static final PathElement PATH$externalFormatResolveChromaOffsetX = PathElement.groupElement("externalFormatResolveChromaOffsetX");
+    public static final PathElement PATH$externalFormatResolveChromaOffsetY = PathElement.groupElement("externalFormatResolveChromaOffsetY");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

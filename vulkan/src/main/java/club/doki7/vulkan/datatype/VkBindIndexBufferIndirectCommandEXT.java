@@ -98,9 +98,9 @@ public record VkBindIndexBufferIndirectCommandEXT(@NotNull MemorySegment segment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bufferAddress = PathElement.groupElement("PATH$bufferAddress");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
-    public static final PathElement PATH$indexType = PathElement.groupElement("PATH$indexType");
+    public static final PathElement PATH$bufferAddress = PathElement.groupElement("bufferAddress");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$indexType = PathElement.groupElement("indexType");
 
     public static final OfLong LAYOUT$bufferAddress = (OfLong) LAYOUT.select(PATH$bufferAddress);
     public static final OfInt LAYOUT$size = (OfInt) LAYOUT.select(PATH$size);

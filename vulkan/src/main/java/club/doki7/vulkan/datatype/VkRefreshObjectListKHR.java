@@ -153,10 +153,10 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$objectCount = PathElement.groupElement("PATH$objectCount");
-    public static final PathElement PATH$pObjects = PathElement.groupElement("PATH$pObjects");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$objectCount = PathElement.groupElement("objectCount");
+    public static final PathElement PATH$pObjects = PathElement.groupElement("pObjects");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

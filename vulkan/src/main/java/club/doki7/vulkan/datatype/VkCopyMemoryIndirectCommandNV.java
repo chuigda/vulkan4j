@@ -98,9 +98,9 @@ public record VkCopyMemoryIndirectCommandNV(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$srcAddress = PathElement.groupElement("PATH$srcAddress");
-    public static final PathElement PATH$dstAddress = PathElement.groupElement("PATH$dstAddress");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
+    public static final PathElement PATH$srcAddress = PathElement.groupElement("srcAddress");
+    public static final PathElement PATH$dstAddress = PathElement.groupElement("dstAddress");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
 
     public static final OfLong LAYOUT$srcAddress = (OfLong) LAYOUT.select(PATH$srcAddress);
     public static final OfLong LAYOUT$dstAddress = (OfLong) LAYOUT.select(PATH$dstAddress);

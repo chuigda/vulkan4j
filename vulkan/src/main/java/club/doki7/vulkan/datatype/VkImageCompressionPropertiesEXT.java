@@ -126,10 +126,10 @@ public record VkImageCompressionPropertiesEXT(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$imageCompressionFlags = PathElement.groupElement("PATH$imageCompressionFlags");
-    public static final PathElement PATH$imageCompressionFixedRateFlags = PathElement.groupElement("PATH$imageCompressionFixedRateFlags");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$imageCompressionFlags = PathElement.groupElement("imageCompressionFlags");
+    public static final PathElement PATH$imageCompressionFixedRateFlags = PathElement.groupElement("imageCompressionFixedRateFlags");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

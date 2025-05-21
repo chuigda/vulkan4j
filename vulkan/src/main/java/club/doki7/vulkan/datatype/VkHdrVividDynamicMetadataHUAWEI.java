@@ -130,10 +130,10 @@ public record VkHdrVividDynamicMetadataHUAWEI(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$dynamicMetadataSize = PathElement.groupElement("PATH$dynamicMetadataSize");
-    public static final PathElement PATH$pDynamicMetadata = PathElement.groupElement("PATH$pDynamicMetadata");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$dynamicMetadataSize = PathElement.groupElement("dynamicMetadataSize");
+    public static final PathElement PATH$pDynamicMetadata = PathElement.groupElement("pDynamicMetadata");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

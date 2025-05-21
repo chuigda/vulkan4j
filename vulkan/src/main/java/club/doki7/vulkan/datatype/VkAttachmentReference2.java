@@ -136,11 +136,11 @@ public record VkAttachmentReference2(@NotNull MemorySegment segment) implements 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$attachment = PathElement.groupElement("PATH$attachment");
-    public static final PathElement PATH$layout = PathElement.groupElement("PATH$layout");
-    public static final PathElement PATH$aspectMask = PathElement.groupElement("PATH$aspectMask");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$attachment = PathElement.groupElement("attachment");
+    public static final PathElement PATH$layout = PathElement.groupElement("layout");
+    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

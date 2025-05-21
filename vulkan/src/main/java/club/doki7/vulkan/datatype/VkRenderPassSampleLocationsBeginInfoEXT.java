@@ -200,12 +200,12 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$attachmentInitialSampleLocationsCount = PathElement.groupElement("PATH$attachmentInitialSampleLocationsCount");
-    public static final PathElement PATH$pAttachmentInitialSampleLocations = PathElement.groupElement("PATH$pAttachmentInitialSampleLocations");
-    public static final PathElement PATH$postSubpassSampleLocationsCount = PathElement.groupElement("PATH$postSubpassSampleLocationsCount");
-    public static final PathElement PATH$pPostSubpassSampleLocations = PathElement.groupElement("PATH$pPostSubpassSampleLocations");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$attachmentInitialSampleLocationsCount = PathElement.groupElement("attachmentInitialSampleLocationsCount");
+    public static final PathElement PATH$pAttachmentInitialSampleLocations = PathElement.groupElement("pAttachmentInitialSampleLocations");
+    public static final PathElement PATH$postSubpassSampleLocationsCount = PathElement.groupElement("postSubpassSampleLocationsCount");
+    public static final PathElement PATH$pPostSubpassSampleLocations = PathElement.groupElement("pPostSubpassSampleLocations");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

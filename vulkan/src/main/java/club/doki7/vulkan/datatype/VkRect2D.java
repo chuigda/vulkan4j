@@ -88,8 +88,8 @@ public record VkRect2D(@NotNull MemorySegment segment) implements IPointer {
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
-    public static final PathElement PATH$extent = PathElement.groupElement("PATH$extent");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$extent = PathElement.groupElement("extent");
 
     public static final StructLayout LAYOUT$offset = (StructLayout) LAYOUT.select(PATH$offset);
     public static final StructLayout LAYOUT$extent = (StructLayout) LAYOUT.select(PATH$extent);

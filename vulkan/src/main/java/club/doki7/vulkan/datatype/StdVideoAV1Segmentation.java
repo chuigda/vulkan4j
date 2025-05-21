@@ -86,8 +86,8 @@ public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$FeatureEnabled = PathElement.groupElement("PATH$FeatureEnabled");
-    public static final PathElement PATH$FeatureData = PathElement.groupElement("PATH$FeatureData");
+    public static final PathElement PATH$FeatureEnabled = PathElement.groupElement("FeatureEnabled");
+    public static final PathElement PATH$FeatureData = PathElement.groupElement("FeatureData");
 
     public static final OfByte LAYOUT$FeatureEnabled = (OfByte) LAYOUT.select(PATH$FeatureEnabled);
     public static final OfShort LAYOUT$FeatureData = (OfShort) LAYOUT.select(PATH$FeatureData);

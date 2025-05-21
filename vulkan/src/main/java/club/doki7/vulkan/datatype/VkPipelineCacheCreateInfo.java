@@ -140,11 +140,11 @@ public record VkPipelineCacheCreateInfo(@NotNull MemorySegment segment) implemen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$initialDataSize = PathElement.groupElement("PATH$initialDataSize");
-    public static final PathElement PATH$pInitialData = PathElement.groupElement("PATH$pInitialData");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$initialDataSize = PathElement.groupElement("initialDataSize");
+    public static final PathElement PATH$pInitialData = PathElement.groupElement("pInitialData");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

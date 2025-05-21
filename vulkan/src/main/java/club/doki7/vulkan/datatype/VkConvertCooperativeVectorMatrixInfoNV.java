@@ -243,20 +243,20 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$srcSize = PathElement.groupElement("PATH$srcSize");
-    public static final PathElement PATH$srcData = PathElement.groupElement("PATH$srcData");
-    public static final PathElement PATH$pDstSize = PathElement.groupElement("PATH$pDstSize");
-    public static final PathElement PATH$dstData = PathElement.groupElement("PATH$dstData");
-    public static final PathElement PATH$srcComponentType = PathElement.groupElement("PATH$srcComponentType");
-    public static final PathElement PATH$dstComponentType = PathElement.groupElement("PATH$dstComponentType");
-    public static final PathElement PATH$numRows = PathElement.groupElement("PATH$numRows");
-    public static final PathElement PATH$numColumns = PathElement.groupElement("PATH$numColumns");
-    public static final PathElement PATH$srcLayout = PathElement.groupElement("PATH$srcLayout");
-    public static final PathElement PATH$srcStride = PathElement.groupElement("PATH$srcStride");
-    public static final PathElement PATH$dstLayout = PathElement.groupElement("PATH$dstLayout");
-    public static final PathElement PATH$dstStride = PathElement.groupElement("PATH$dstStride");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcSize = PathElement.groupElement("srcSize");
+    public static final PathElement PATH$srcData = PathElement.groupElement("srcData");
+    public static final PathElement PATH$pDstSize = PathElement.groupElement("pDstSize");
+    public static final PathElement PATH$dstData = PathElement.groupElement("dstData");
+    public static final PathElement PATH$srcComponentType = PathElement.groupElement("srcComponentType");
+    public static final PathElement PATH$dstComponentType = PathElement.groupElement("dstComponentType");
+    public static final PathElement PATH$numRows = PathElement.groupElement("numRows");
+    public static final PathElement PATH$numColumns = PathElement.groupElement("numColumns");
+    public static final PathElement PATH$srcLayout = PathElement.groupElement("srcLayout");
+    public static final PathElement PATH$srcStride = PathElement.groupElement("srcStride");
+    public static final PathElement PATH$dstLayout = PathElement.groupElement("dstLayout");
+    public static final PathElement PATH$dstStride = PathElement.groupElement("dstStride");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

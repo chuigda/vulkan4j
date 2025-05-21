@@ -216,19 +216,19 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$vertexFormat = PathElement.groupElement("PATH$vertexFormat");
-    public static final PathElement PATH$vertexData = PathElement.groupElement("PATH$vertexData");
-    public static final PathElement PATH$vertexStride = PathElement.groupElement("PATH$vertexStride");
-    public static final PathElement PATH$radiusFormat = PathElement.groupElement("PATH$radiusFormat");
-    public static final PathElement PATH$radiusData = PathElement.groupElement("PATH$radiusData");
-    public static final PathElement PATH$radiusStride = PathElement.groupElement("PATH$radiusStride");
-    public static final PathElement PATH$indexType = PathElement.groupElement("PATH$indexType");
-    public static final PathElement PATH$indexData = PathElement.groupElement("PATH$indexData");
-    public static final PathElement PATH$indexStride = PathElement.groupElement("PATH$indexStride");
-    public static final PathElement PATH$indexingMode = PathElement.groupElement("PATH$indexingMode");
-    public static final PathElement PATH$endCapsMode = PathElement.groupElement("PATH$endCapsMode");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$vertexFormat = PathElement.groupElement("vertexFormat");
+    public static final PathElement PATH$vertexData = PathElement.groupElement("vertexData");
+    public static final PathElement PATH$vertexStride = PathElement.groupElement("vertexStride");
+    public static final PathElement PATH$radiusFormat = PathElement.groupElement("radiusFormat");
+    public static final PathElement PATH$radiusData = PathElement.groupElement("radiusData");
+    public static final PathElement PATH$radiusStride = PathElement.groupElement("radiusStride");
+    public static final PathElement PATH$indexType = PathElement.groupElement("indexType");
+    public static final PathElement PATH$indexData = PathElement.groupElement("indexData");
+    public static final PathElement PATH$indexStride = PathElement.groupElement("indexStride");
+    public static final PathElement PATH$indexingMode = PathElement.groupElement("indexingMode");
+    public static final PathElement PATH$endCapsMode = PathElement.groupElement("endCapsMode");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

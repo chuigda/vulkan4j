@@ -146,12 +146,12 @@ public record VkDeviceAddressBindingCallbackDataEXT(@NotNull MemorySegment segme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$baseAddress = PathElement.groupElement("PATH$baseAddress");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
-    public static final PathElement PATH$bindingType = PathElement.groupElement("PATH$bindingType");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$baseAddress = PathElement.groupElement("baseAddress");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$bindingType = PathElement.groupElement("bindingType");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

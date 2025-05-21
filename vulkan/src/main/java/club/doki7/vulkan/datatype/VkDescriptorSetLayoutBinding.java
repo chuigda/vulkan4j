@@ -135,11 +135,11 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$binding = PathElement.groupElement("PATH$binding");
-    public static final PathElement PATH$descriptorType = PathElement.groupElement("PATH$descriptorType");
-    public static final PathElement PATH$descriptorCount = PathElement.groupElement("PATH$descriptorCount");
-    public static final PathElement PATH$stageFlags = PathElement.groupElement("PATH$stageFlags");
-    public static final PathElement PATH$pImmutableSamplers = PathElement.groupElement("PATH$pImmutableSamplers");
+    public static final PathElement PATH$binding = PathElement.groupElement("binding");
+    public static final PathElement PATH$descriptorType = PathElement.groupElement("descriptorType");
+    public static final PathElement PATH$descriptorCount = PathElement.groupElement("descriptorCount");
+    public static final PathElement PATH$stageFlags = PathElement.groupElement("stageFlags");
+    public static final PathElement PATH$pImmutableSamplers = PathElement.groupElement("pImmutableSamplers");
 
     public static final OfInt LAYOUT$binding = (OfInt) LAYOUT.select(PATH$binding);
     public static final OfInt LAYOUT$descriptorType = (OfInt) LAYOUT.select(PATH$descriptorType);

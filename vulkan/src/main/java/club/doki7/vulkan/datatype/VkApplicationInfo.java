@@ -190,13 +190,13 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IPoin
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$pApplicationName = PathElement.groupElement("PATH$pApplicationName");
-    public static final PathElement PATH$applicationVersion = PathElement.groupElement("PATH$applicationVersion");
-    public static final PathElement PATH$pEngineName = PathElement.groupElement("PATH$pEngineName");
-    public static final PathElement PATH$engineVersion = PathElement.groupElement("PATH$engineVersion");
-    public static final PathElement PATH$apiVersion = PathElement.groupElement("PATH$apiVersion");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$pApplicationName = PathElement.groupElement("pApplicationName");
+    public static final PathElement PATH$applicationVersion = PathElement.groupElement("applicationVersion");
+    public static final PathElement PATH$pEngineName = PathElement.groupElement("pEngineName");
+    public static final PathElement PATH$engineVersion = PathElement.groupElement("engineVersion");
+    public static final PathElement PATH$apiVersion = PathElement.groupElement("apiVersion");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

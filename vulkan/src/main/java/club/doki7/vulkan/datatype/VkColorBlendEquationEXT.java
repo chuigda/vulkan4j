@@ -128,12 +128,12 @@ public record VkColorBlendEquationEXT(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$srcColorBlendFactor = PathElement.groupElement("PATH$srcColorBlendFactor");
-    public static final PathElement PATH$dstColorBlendFactor = PathElement.groupElement("PATH$dstColorBlendFactor");
-    public static final PathElement PATH$colorBlendOp = PathElement.groupElement("PATH$colorBlendOp");
-    public static final PathElement PATH$srcAlphaBlendFactor = PathElement.groupElement("PATH$srcAlphaBlendFactor");
-    public static final PathElement PATH$dstAlphaBlendFactor = PathElement.groupElement("PATH$dstAlphaBlendFactor");
-    public static final PathElement PATH$alphaBlendOp = PathElement.groupElement("PATH$alphaBlendOp");
+    public static final PathElement PATH$srcColorBlendFactor = PathElement.groupElement("srcColorBlendFactor");
+    public static final PathElement PATH$dstColorBlendFactor = PathElement.groupElement("dstColorBlendFactor");
+    public static final PathElement PATH$colorBlendOp = PathElement.groupElement("colorBlendOp");
+    public static final PathElement PATH$srcAlphaBlendFactor = PathElement.groupElement("srcAlphaBlendFactor");
+    public static final PathElement PATH$dstAlphaBlendFactor = PathElement.groupElement("dstAlphaBlendFactor");
+    public static final PathElement PATH$alphaBlendOp = PathElement.groupElement("alphaBlendOp");
 
     public static final OfInt LAYOUT$srcColorBlendFactor = (OfInt) LAYOUT.select(PATH$srcColorBlendFactor);
     public static final OfInt LAYOUT$dstColorBlendFactor = (OfInt) LAYOUT.select(PATH$dstColorBlendFactor);

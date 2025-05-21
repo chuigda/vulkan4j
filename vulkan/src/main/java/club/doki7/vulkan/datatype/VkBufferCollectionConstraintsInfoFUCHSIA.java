@@ -156,13 +156,13 @@ public record VkBufferCollectionConstraintsInfoFUCHSIA(@NotNull MemorySegment se
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$minBufferCount = PathElement.groupElement("PATH$minBufferCount");
-    public static final PathElement PATH$maxBufferCount = PathElement.groupElement("PATH$maxBufferCount");
-    public static final PathElement PATH$minBufferCountForCamping = PathElement.groupElement("PATH$minBufferCountForCamping");
-    public static final PathElement PATH$minBufferCountForDedicatedSlack = PathElement.groupElement("PATH$minBufferCountForDedicatedSlack");
-    public static final PathElement PATH$minBufferCountForSharedSlack = PathElement.groupElement("PATH$minBufferCountForSharedSlack");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$minBufferCount = PathElement.groupElement("minBufferCount");
+    public static final PathElement PATH$maxBufferCount = PathElement.groupElement("maxBufferCount");
+    public static final PathElement PATH$minBufferCountForCamping = PathElement.groupElement("minBufferCountForCamping");
+    public static final PathElement PATH$minBufferCountForDedicatedSlack = PathElement.groupElement("minBufferCountForDedicatedSlack");
+    public static final PathElement PATH$minBufferCountForSharedSlack = PathElement.groupElement("minBufferCountForSharedSlack");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -118,11 +118,11 @@ public record VkImageFormatProperties(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$maxExtent = PathElement.groupElement("PATH$maxExtent");
-    public static final PathElement PATH$maxMipLevels = PathElement.groupElement("PATH$maxMipLevels");
-    public static final PathElement PATH$maxArrayLayers = PathElement.groupElement("PATH$maxArrayLayers");
-    public static final PathElement PATH$sampleCounts = PathElement.groupElement("PATH$sampleCounts");
-    public static final PathElement PATH$maxResourceSize = PathElement.groupElement("PATH$maxResourceSize");
+    public static final PathElement PATH$maxExtent = PathElement.groupElement("maxExtent");
+    public static final PathElement PATH$maxMipLevels = PathElement.groupElement("maxMipLevels");
+    public static final PathElement PATH$maxArrayLayers = PathElement.groupElement("maxArrayLayers");
+    public static final PathElement PATH$sampleCounts = PathElement.groupElement("sampleCounts");
+    public static final PathElement PATH$maxResourceSize = PathElement.groupElement("maxResourceSize");
 
     public static final StructLayout LAYOUT$maxExtent = (StructLayout) LAYOUT.select(PATH$maxExtent);
     public static final OfInt LAYOUT$maxMipLevels = (OfInt) LAYOUT.select(PATH$maxMipLevels);

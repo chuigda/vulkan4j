@@ -206,18 +206,18 @@ public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(@NotNull MemorySegm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxTransformFeedbackStreams = PathElement.groupElement("PATH$maxTransformFeedbackStreams");
-    public static final PathElement PATH$maxTransformFeedbackBuffers = PathElement.groupElement("PATH$maxTransformFeedbackBuffers");
-    public static final PathElement PATH$maxTransformFeedbackBufferSize = PathElement.groupElement("PATH$maxTransformFeedbackBufferSize");
-    public static final PathElement PATH$maxTransformFeedbackStreamDataSize = PathElement.groupElement("PATH$maxTransformFeedbackStreamDataSize");
-    public static final PathElement PATH$maxTransformFeedbackBufferDataSize = PathElement.groupElement("PATH$maxTransformFeedbackBufferDataSize");
-    public static final PathElement PATH$maxTransformFeedbackBufferDataStride = PathElement.groupElement("PATH$maxTransformFeedbackBufferDataStride");
-    public static final PathElement PATH$transformFeedbackQueries = PathElement.groupElement("PATH$transformFeedbackQueries");
-    public static final PathElement PATH$transformFeedbackStreamsLinesTriangles = PathElement.groupElement("PATH$transformFeedbackStreamsLinesTriangles");
-    public static final PathElement PATH$transformFeedbackRasterizationStreamSelect = PathElement.groupElement("PATH$transformFeedbackRasterizationStreamSelect");
-    public static final PathElement PATH$transformFeedbackDraw = PathElement.groupElement("PATH$transformFeedbackDraw");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$maxTransformFeedbackStreams = PathElement.groupElement("maxTransformFeedbackStreams");
+    public static final PathElement PATH$maxTransformFeedbackBuffers = PathElement.groupElement("maxTransformFeedbackBuffers");
+    public static final PathElement PATH$maxTransformFeedbackBufferSize = PathElement.groupElement("maxTransformFeedbackBufferSize");
+    public static final PathElement PATH$maxTransformFeedbackStreamDataSize = PathElement.groupElement("maxTransformFeedbackStreamDataSize");
+    public static final PathElement PATH$maxTransformFeedbackBufferDataSize = PathElement.groupElement("maxTransformFeedbackBufferDataSize");
+    public static final PathElement PATH$maxTransformFeedbackBufferDataStride = PathElement.groupElement("maxTransformFeedbackBufferDataStride");
+    public static final PathElement PATH$transformFeedbackQueries = PathElement.groupElement("transformFeedbackQueries");
+    public static final PathElement PATH$transformFeedbackStreamsLinesTriangles = PathElement.groupElement("transformFeedbackStreamsLinesTriangles");
+    public static final PathElement PATH$transformFeedbackRasterizationStreamSelect = PathElement.groupElement("transformFeedbackRasterizationStreamSelect");
+    public static final PathElement PATH$transformFeedbackDraw = PathElement.groupElement("transformFeedbackDraw");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

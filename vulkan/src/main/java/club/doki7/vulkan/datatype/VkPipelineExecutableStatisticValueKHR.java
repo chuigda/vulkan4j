@@ -108,10 +108,10 @@ public record VkPipelineExecutableStatisticValueKHR(@NotNull MemorySegment segme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$b32 = PathElement.groupElement("PATH$b32");
-    public static final PathElement PATH$i64 = PathElement.groupElement("PATH$i64");
-    public static final PathElement PATH$u64 = PathElement.groupElement("PATH$u64");
-    public static final PathElement PATH$f64 = PathElement.groupElement("PATH$f64");
+    public static final PathElement PATH$b32 = PathElement.groupElement("b32");
+    public static final PathElement PATH$i64 = PathElement.groupElement("i64");
+    public static final PathElement PATH$u64 = PathElement.groupElement("u64");
+    public static final PathElement PATH$f64 = PathElement.groupElement("f64");
 
     public static final OfInt LAYOUT$b32 = (OfInt) LAYOUT.select(PATH$b32);
     public static final OfLong LAYOUT$i64 = (OfLong) LAYOUT.select(PATH$i64);

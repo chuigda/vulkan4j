@@ -88,8 +88,8 @@ public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) impleme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$duration = PathElement.groupElement("PATH$duration");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$duration = PathElement.groupElement("duration");
 
     public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
     public static final OfLong LAYOUT$duration = (OfLong) LAYOUT.select(PATH$duration);

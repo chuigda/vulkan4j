@@ -126,10 +126,10 @@ public record VkPhysicalDeviceCooperativeVectorFeaturesNV(@NotNull MemorySegment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$cooperativeVector = PathElement.groupElement("PATH$cooperativeVector");
-    public static final PathElement PATH$cooperativeVectorTraining = PathElement.groupElement("PATH$cooperativeVectorTraining");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$cooperativeVector = PathElement.groupElement("cooperativeVector");
+    public static final PathElement PATH$cooperativeVectorTraining = PathElement.groupElement("cooperativeVectorTraining");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

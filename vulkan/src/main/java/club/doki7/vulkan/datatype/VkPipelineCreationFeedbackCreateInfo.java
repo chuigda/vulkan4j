@@ -190,11 +190,11 @@ public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$pPipelineCreationFeedback = PathElement.groupElement("PATH$pPipelineCreationFeedback");
-    public static final PathElement PATH$pipelineStageCreationFeedbackCount = PathElement.groupElement("PATH$pipelineStageCreationFeedbackCount");
-    public static final PathElement PATH$pPipelineStageCreationFeedbacks = PathElement.groupElement("PATH$pPipelineStageCreationFeedbacks");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$pPipelineCreationFeedback = PathElement.groupElement("pPipelineCreationFeedback");
+    public static final PathElement PATH$pipelineStageCreationFeedbackCount = PathElement.groupElement("pipelineStageCreationFeedbackCount");
+    public static final PathElement PATH$pPipelineStageCreationFeedbacks = PathElement.groupElement("pPipelineStageCreationFeedbacks");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

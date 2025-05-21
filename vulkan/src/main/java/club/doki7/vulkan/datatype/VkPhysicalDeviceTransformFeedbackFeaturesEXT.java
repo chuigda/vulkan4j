@@ -126,10 +126,10 @@ public record VkPhysicalDeviceTransformFeedbackFeaturesEXT(@NotNull MemorySegmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$transformFeedback = PathElement.groupElement("PATH$transformFeedback");
-    public static final PathElement PATH$geometryStreams = PathElement.groupElement("PATH$geometryStreams");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$transformFeedback = PathElement.groupElement("transformFeedback");
+    public static final PathElement PATH$geometryStreams = PathElement.groupElement("geometryStreams");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

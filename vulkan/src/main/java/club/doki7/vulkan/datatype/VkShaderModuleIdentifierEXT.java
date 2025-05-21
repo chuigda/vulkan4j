@@ -126,10 +126,10 @@ public record VkShaderModuleIdentifierEXT(@NotNull MemorySegment segment) implem
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$identifierSize = PathElement.groupElement("PATH$identifierSize");
-    public static final PathElement PATH$identifier = PathElement.groupElement("PATH$identifier");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$identifierSize = PathElement.groupElement("identifierSize");
+    public static final PathElement PATH$identifier = PathElement.groupElement("identifier");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

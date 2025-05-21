@@ -126,10 +126,10 @@ public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(@NotNull MemoryS
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shaderImageInt64Atomics = PathElement.groupElement("PATH$shaderImageInt64Atomics");
-    public static final PathElement PATH$sparseImageInt64Atomics = PathElement.groupElement("PATH$sparseImageInt64Atomics");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shaderImageInt64Atomics = PathElement.groupElement("shaderImageInt64Atomics");
+    public static final PathElement PATH$sparseImageInt64Atomics = PathElement.groupElement("sparseImageInt64Atomics");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

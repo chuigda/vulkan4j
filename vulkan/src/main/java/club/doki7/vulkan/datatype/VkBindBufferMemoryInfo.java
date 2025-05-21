@@ -144,11 +144,11 @@ public record VkBindBufferMemoryInfo(@NotNull MemorySegment segment) implements 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$buffer = PathElement.groupElement("PATH$buffer");
-    public static final PathElement PATH$memory = PathElement.groupElement("PATH$memory");
-    public static final PathElement PATH$memoryOffset = PathElement.groupElement("PATH$memoryOffset");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$buffer = PathElement.groupElement("buffer");
+    public static final PathElement PATH$memory = PathElement.groupElement("memory");
+    public static final PathElement PATH$memoryOffset = PathElement.groupElement("memoryOffset");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

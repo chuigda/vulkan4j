@@ -261,15 +261,15 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(@NotNull MemorySegment segm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$acquireCount = PathElement.groupElement("PATH$acquireCount");
-    public static final PathElement PATH$pAcquireSyncs = PathElement.groupElement("PATH$pAcquireSyncs");
-    public static final PathElement PATH$pAcquireKeys = PathElement.groupElement("PATH$pAcquireKeys");
-    public static final PathElement PATH$pAcquireTimeouts = PathElement.groupElement("PATH$pAcquireTimeouts");
-    public static final PathElement PATH$releaseCount = PathElement.groupElement("PATH$releaseCount");
-    public static final PathElement PATH$pReleaseSyncs = PathElement.groupElement("PATH$pReleaseSyncs");
-    public static final PathElement PATH$pReleaseKeys = PathElement.groupElement("PATH$pReleaseKeys");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$acquireCount = PathElement.groupElement("acquireCount");
+    public static final PathElement PATH$pAcquireSyncs = PathElement.groupElement("pAcquireSyncs");
+    public static final PathElement PATH$pAcquireKeys = PathElement.groupElement("pAcquireKeys");
+    public static final PathElement PATH$pAcquireTimeouts = PathElement.groupElement("pAcquireTimeouts");
+    public static final PathElement PATH$releaseCount = PathElement.groupElement("releaseCount");
+    public static final PathElement PATH$pReleaseSyncs = PathElement.groupElement("pReleaseSyncs");
+    public static final PathElement PATH$pReleaseKeys = PathElement.groupElement("pReleaseKeys");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

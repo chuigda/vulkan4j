@@ -176,15 +176,15 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(@NotNull MemorySeg
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$vertexFormat = PathElement.groupElement("PATH$vertexFormat");
-    public static final PathElement PATH$vertexData = PathElement.groupElement("PATH$vertexData");
-    public static final PathElement PATH$vertexStride = PathElement.groupElement("PATH$vertexStride");
-    public static final PathElement PATH$maxVertex = PathElement.groupElement("PATH$maxVertex");
-    public static final PathElement PATH$indexType = PathElement.groupElement("PATH$indexType");
-    public static final PathElement PATH$indexData = PathElement.groupElement("PATH$indexData");
-    public static final PathElement PATH$transformData = PathElement.groupElement("PATH$transformData");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$vertexFormat = PathElement.groupElement("vertexFormat");
+    public static final PathElement PATH$vertexData = PathElement.groupElement("vertexData");
+    public static final PathElement PATH$vertexStride = PathElement.groupElement("vertexStride");
+    public static final PathElement PATH$maxVertex = PathElement.groupElement("maxVertex");
+    public static final PathElement PATH$indexType = PathElement.groupElement("indexType");
+    public static final PathElement PATH$indexData = PathElement.groupElement("indexData");
+    public static final PathElement PATH$transformData = PathElement.groupElement("transformData");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

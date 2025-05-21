@@ -126,10 +126,10 @@ public record VkAmigoProfilingSubmitInfoSEC(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$firstDrawTimestamp = PathElement.groupElement("PATH$firstDrawTimestamp");
-    public static final PathElement PATH$swapBufferTimestamp = PathElement.groupElement("PATH$swapBufferTimestamp");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$firstDrawTimestamp = PathElement.groupElement("firstDrawTimestamp");
+    public static final PathElement PATH$swapBufferTimestamp = PathElement.groupElement("swapBufferTimestamp");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

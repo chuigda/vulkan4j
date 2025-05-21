@@ -143,10 +143,10 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$attachmentCount = PathElement.groupElement("PATH$attachmentCount");
-    public static final PathElement PATH$pColorWriteEnables = PathElement.groupElement("PATH$pColorWriteEnables");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$attachmentCount = PathElement.groupElement("attachmentCount");
+    public static final PathElement PATH$pColorWriteEnables = PathElement.groupElement("pColorWriteEnables");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

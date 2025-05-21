@@ -88,8 +88,8 @@ public record VkViewportWScalingNV(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$xcoeff = PathElement.groupElement("PATH$xcoeff");
-    public static final PathElement PATH$ycoeff = PathElement.groupElement("PATH$ycoeff");
+    public static final PathElement PATH$xcoeff = PathElement.groupElement("xcoeff");
+    public static final PathElement PATH$ycoeff = PathElement.groupElement("ycoeff");
 
     public static final OfFloat LAYOUT$xcoeff = (OfFloat) LAYOUT.select(PATH$xcoeff);
     public static final OfFloat LAYOUT$ycoeff = (OfFloat) LAYOUT.select(PATH$ycoeff);

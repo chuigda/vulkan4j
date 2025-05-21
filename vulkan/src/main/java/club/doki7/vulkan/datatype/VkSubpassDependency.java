@@ -138,13 +138,13 @@ public record VkSubpassDependency(@NotNull MemorySegment segment) implements IPo
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$srcSubpass = PathElement.groupElement("PATH$srcSubpass");
-    public static final PathElement PATH$dstSubpass = PathElement.groupElement("PATH$dstSubpass");
-    public static final PathElement PATH$srcStageMask = PathElement.groupElement("PATH$srcStageMask");
-    public static final PathElement PATH$dstStageMask = PathElement.groupElement("PATH$dstStageMask");
-    public static final PathElement PATH$srcAccessMask = PathElement.groupElement("PATH$srcAccessMask");
-    public static final PathElement PATH$dstAccessMask = PathElement.groupElement("PATH$dstAccessMask");
-    public static final PathElement PATH$dependencyFlags = PathElement.groupElement("PATH$dependencyFlags");
+    public static final PathElement PATH$srcSubpass = PathElement.groupElement("srcSubpass");
+    public static final PathElement PATH$dstSubpass = PathElement.groupElement("dstSubpass");
+    public static final PathElement PATH$srcStageMask = PathElement.groupElement("srcStageMask");
+    public static final PathElement PATH$dstStageMask = PathElement.groupElement("dstStageMask");
+    public static final PathElement PATH$srcAccessMask = PathElement.groupElement("srcAccessMask");
+    public static final PathElement PATH$dstAccessMask = PathElement.groupElement("dstAccessMask");
+    public static final PathElement PATH$dependencyFlags = PathElement.groupElement("dependencyFlags");
 
     public static final OfInt LAYOUT$srcSubpass = (OfInt) LAYOUT.select(PATH$srcSubpass);
     public static final OfInt LAYOUT$dstSubpass = (OfInt) LAYOUT.select(PATH$dstSubpass);

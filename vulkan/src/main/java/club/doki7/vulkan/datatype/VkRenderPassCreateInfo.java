@@ -257,15 +257,15 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$attachmentCount = PathElement.groupElement("PATH$attachmentCount");
-    public static final PathElement PATH$pAttachments = PathElement.groupElement("PATH$pAttachments");
-    public static final PathElement PATH$subpassCount = PathElement.groupElement("PATH$subpassCount");
-    public static final PathElement PATH$pSubpasses = PathElement.groupElement("PATH$pSubpasses");
-    public static final PathElement PATH$dependencyCount = PathElement.groupElement("PATH$dependencyCount");
-    public static final PathElement PATH$pDependencies = PathElement.groupElement("PATH$pDependencies");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$attachmentCount = PathElement.groupElement("attachmentCount");
+    public static final PathElement PATH$pAttachments = PathElement.groupElement("pAttachments");
+    public static final PathElement PATH$subpassCount = PathElement.groupElement("subpassCount");
+    public static final PathElement PATH$pSubpasses = PathElement.groupElement("pSubpasses");
+    public static final PathElement PATH$dependencyCount = PathElement.groupElement("dependencyCount");
+    public static final PathElement PATH$pDependencies = PathElement.groupElement("pDependencies");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

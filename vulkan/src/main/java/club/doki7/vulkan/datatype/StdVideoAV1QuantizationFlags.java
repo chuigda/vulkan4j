@@ -91,7 +91,7 @@ public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) imple
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$using_qmatrix$reserved = PathElement.groupElement("PATH$bitfield$using_qmatrix$reserved");
+    public static final PathElement PATH$bitfield$using_qmatrix$reserved = PathElement.groupElement("using_qmatrix$reserved");
 
     public static final OfInt LAYOUT$bitfield$using_qmatrix$reserved = (OfInt) LAYOUT.select(PATH$bitfield$using_qmatrix$reserved);
 

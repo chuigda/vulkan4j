@@ -78,7 +78,7 @@ public record VkSetStateFlagsIndirectCommandNV(@NotNull MemorySegment segment) i
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$data = PathElement.groupElement("PATH$data");
+    public static final PathElement PATH$data = PathElement.groupElement("data");
 
     public static final OfInt LAYOUT$data = (OfInt) LAYOUT.select(PATH$data);
 

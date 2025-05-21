@@ -227,12 +227,12 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$stageCount = PathElement.groupElement("PATH$stageCount");
-    public static final PathElement PATH$pStages = PathElement.groupElement("PATH$pStages");
-    public static final PathElement PATH$pVertexInputState = PathElement.groupElement("PATH$pVertexInputState");
-    public static final PathElement PATH$pTessellationState = PathElement.groupElement("PATH$pTessellationState");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$stageCount = PathElement.groupElement("stageCount");
+    public static final PathElement PATH$pStages = PathElement.groupElement("pStages");
+    public static final PathElement PATH$pVertexInputState = PathElement.groupElement("pVertexInputState");
+    public static final PathElement PATH$pTessellationState = PathElement.groupElement("pTessellationState");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -98,9 +98,9 @@ public record VkAccelerationStructureMotionInstanceNV(@NotNull MemorySegment seg
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$data = PathElement.groupElement("PATH$data");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$data = PathElement.groupElement("data");
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);

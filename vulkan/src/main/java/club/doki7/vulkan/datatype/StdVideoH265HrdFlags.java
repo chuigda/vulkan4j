@@ -145,7 +145,7 @@ public record StdVideoH265HrdFlags(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$nal_hrd_parameters_present_flag$low_delay_hrd_flag = PathElement.groupElement("PATH$bitfield$nal_hrd_parameters_present_flag$low_delay_hrd_flag");
+    public static final PathElement PATH$bitfield$nal_hrd_parameters_present_flag$low_delay_hrd_flag = PathElement.groupElement("nal_hrd_parameters_present_flag$low_delay_hrd_flag");
 
     public static final OfInt LAYOUT$bitfield$nal_hrd_parameters_present_flag$low_delay_hrd_flag = (OfInt) LAYOUT.select(PATH$bitfield$nal_hrd_parameters_present_flag$low_delay_hrd_flag);
 

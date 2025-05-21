@@ -126,10 +126,10 @@ public record VkImageViewSlicedCreateInfoEXT(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$sliceOffset = PathElement.groupElement("PATH$sliceOffset");
-    public static final PathElement PATH$sliceCount = PathElement.groupElement("PATH$sliceCount");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$sliceOffset = PathElement.groupElement("sliceOffset");
+    public static final PathElement PATH$sliceCount = PathElement.groupElement("sliceCount");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

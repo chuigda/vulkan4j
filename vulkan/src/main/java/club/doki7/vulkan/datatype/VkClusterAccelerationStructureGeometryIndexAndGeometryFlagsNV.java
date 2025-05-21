@@ -92,7 +92,7 @@ public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@Not
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$geometryIndex$geometryFlags = PathElement.groupElement("PATH$bitfield$geometryIndex$geometryFlags");
+    public static final PathElement PATH$bitfield$geometryIndex$geometryFlags = PathElement.groupElement("geometryIndex$geometryFlags");
 
     public static final OfInt LAYOUT$bitfield$geometryIndex$geometryFlags = (OfInt) LAYOUT.select(PATH$bitfield$geometryIndex$geometryFlags);
 

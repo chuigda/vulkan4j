@@ -136,11 +136,11 @@ public record VkAccelerationStructureBuildSizesInfoKHR(@NotNull MemorySegment se
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$accelerationStructureSize = PathElement.groupElement("PATH$accelerationStructureSize");
-    public static final PathElement PATH$updateScratchSize = PathElement.groupElement("PATH$updateScratchSize");
-    public static final PathElement PATH$buildScratchSize = PathElement.groupElement("PATH$buildScratchSize");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$accelerationStructureSize = PathElement.groupElement("accelerationStructureSize");
+    public static final PathElement PATH$updateScratchSize = PathElement.groupElement("updateScratchSize");
+    public static final PathElement PATH$buildScratchSize = PathElement.groupElement("buildScratchSize");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -116,11 +116,11 @@ public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$frame_type = PathElement.groupElement("PATH$frame_type");
-    public static final PathElement PATH$RefFrameSignBias = PathElement.groupElement("PATH$RefFrameSignBias");
-    public static final PathElement PATH$OrderHint = PathElement.groupElement("PATH$OrderHint");
-    public static final PathElement PATH$SavedOrderHints = PathElement.groupElement("PATH$SavedOrderHints");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$frame_type = PathElement.groupElement("frame_type");
+    public static final PathElement PATH$RefFrameSignBias = PathElement.groupElement("RefFrameSignBias");
+    public static final PathElement PATH$OrderHint = PathElement.groupElement("OrderHint");
+    public static final PathElement PATH$SavedOrderHints = PathElement.groupElement("SavedOrderHints");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$frame_type = (OfByte) LAYOUT.select(PATH$frame_type);

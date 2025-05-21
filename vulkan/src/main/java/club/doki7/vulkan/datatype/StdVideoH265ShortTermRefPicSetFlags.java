@@ -90,7 +90,7 @@ public record StdVideoH265ShortTermRefPicSetFlags(@NotNull MemorySegment segment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$inter_ref_pic_set_prediction_flag$delta_rps_sign = PathElement.groupElement("PATH$bitfield$inter_ref_pic_set_prediction_flag$delta_rps_sign");
+    public static final PathElement PATH$bitfield$inter_ref_pic_set_prediction_flag$delta_rps_sign = PathElement.groupElement("inter_ref_pic_set_prediction_flag$delta_rps_sign");
 
     public static final OfInt LAYOUT$bitfield$inter_ref_pic_set_prediction_flag$delta_rps_sign = (OfInt) LAYOUT.select(PATH$bitfield$inter_ref_pic_set_prediction_flag$delta_rps_sign);
 

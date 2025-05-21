@@ -86,8 +86,8 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$FrameRestorationType = PathElement.groupElement("PATH$FrameRestorationType");
-    public static final PathElement PATH$LoopRestorationSize = PathElement.groupElement("PATH$LoopRestorationSize");
+    public static final PathElement PATH$FrameRestorationType = PathElement.groupElement("FrameRestorationType");
+    public static final PathElement PATH$LoopRestorationSize = PathElement.groupElement("LoopRestorationSize");
 
     public static final OfInt LAYOUT$FrameRestorationType = (OfInt) LAYOUT.select(PATH$FrameRestorationType);
     public static final OfShort LAYOUT$LoopRestorationSize = (OfShort) LAYOUT.select(PATH$LoopRestorationSize);

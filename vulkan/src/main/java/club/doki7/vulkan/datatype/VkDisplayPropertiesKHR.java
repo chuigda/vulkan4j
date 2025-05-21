@@ -159,13 +159,13 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$display = PathElement.groupElement("PATH$display");
-    public static final PathElement PATH$displayName = PathElement.groupElement("PATH$displayName");
-    public static final PathElement PATH$physicalDimensions = PathElement.groupElement("PATH$physicalDimensions");
-    public static final PathElement PATH$physicalResolution = PathElement.groupElement("PATH$physicalResolution");
-    public static final PathElement PATH$supportedTransforms = PathElement.groupElement("PATH$supportedTransforms");
-    public static final PathElement PATH$planeReorderPossible = PathElement.groupElement("PATH$planeReorderPossible");
-    public static final PathElement PATH$persistentContent = PathElement.groupElement("PATH$persistentContent");
+    public static final PathElement PATH$display = PathElement.groupElement("display");
+    public static final PathElement PATH$displayName = PathElement.groupElement("displayName");
+    public static final PathElement PATH$physicalDimensions = PathElement.groupElement("physicalDimensions");
+    public static final PathElement PATH$physicalResolution = PathElement.groupElement("physicalResolution");
+    public static final PathElement PATH$supportedTransforms = PathElement.groupElement("supportedTransforms");
+    public static final PathElement PATH$planeReorderPossible = PathElement.groupElement("planeReorderPossible");
+    public static final PathElement PATH$persistentContent = PathElement.groupElement("persistentContent");
 
     public static final AddressLayout LAYOUT$display = (AddressLayout) LAYOUT.select(PATH$display);
     public static final AddressLayout LAYOUT$displayName = (AddressLayout) LAYOUT.select(PATH$displayName);

@@ -246,22 +246,22 @@ public record VkPhysicalDeviceTileShadingFeaturesQCOM(@NotNull MemorySegment seg
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$tileShading = PathElement.groupElement("PATH$tileShading");
-    public static final PathElement PATH$tileShadingFragmentStage = PathElement.groupElement("PATH$tileShadingFragmentStage");
-    public static final PathElement PATH$tileShadingColorAttachments = PathElement.groupElement("PATH$tileShadingColorAttachments");
-    public static final PathElement PATH$tileShadingDepthAttachments = PathElement.groupElement("PATH$tileShadingDepthAttachments");
-    public static final PathElement PATH$tileShadingStencilAttachments = PathElement.groupElement("PATH$tileShadingStencilAttachments");
-    public static final PathElement PATH$tileShadingInputAttachments = PathElement.groupElement("PATH$tileShadingInputAttachments");
-    public static final PathElement PATH$tileShadingSampledAttachments = PathElement.groupElement("PATH$tileShadingSampledAttachments");
-    public static final PathElement PATH$tileShadingPerTileDraw = PathElement.groupElement("PATH$tileShadingPerTileDraw");
-    public static final PathElement PATH$tileShadingPerTileDispatch = PathElement.groupElement("PATH$tileShadingPerTileDispatch");
-    public static final PathElement PATH$tileShadingDispatchTile = PathElement.groupElement("PATH$tileShadingDispatchTile");
-    public static final PathElement PATH$tileShadingApron = PathElement.groupElement("PATH$tileShadingApron");
-    public static final PathElement PATH$tileShadingAnisotropicApron = PathElement.groupElement("PATH$tileShadingAnisotropicApron");
-    public static final PathElement PATH$tileShadingAtomicOps = PathElement.groupElement("PATH$tileShadingAtomicOps");
-    public static final PathElement PATH$tileShadingImageProcessing = PathElement.groupElement("PATH$tileShadingImageProcessing");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$tileShading = PathElement.groupElement("tileShading");
+    public static final PathElement PATH$tileShadingFragmentStage = PathElement.groupElement("tileShadingFragmentStage");
+    public static final PathElement PATH$tileShadingColorAttachments = PathElement.groupElement("tileShadingColorAttachments");
+    public static final PathElement PATH$tileShadingDepthAttachments = PathElement.groupElement("tileShadingDepthAttachments");
+    public static final PathElement PATH$tileShadingStencilAttachments = PathElement.groupElement("tileShadingStencilAttachments");
+    public static final PathElement PATH$tileShadingInputAttachments = PathElement.groupElement("tileShadingInputAttachments");
+    public static final PathElement PATH$tileShadingSampledAttachments = PathElement.groupElement("tileShadingSampledAttachments");
+    public static final PathElement PATH$tileShadingPerTileDraw = PathElement.groupElement("tileShadingPerTileDraw");
+    public static final PathElement PATH$tileShadingPerTileDispatch = PathElement.groupElement("tileShadingPerTileDispatch");
+    public static final PathElement PATH$tileShadingDispatchTile = PathElement.groupElement("tileShadingDispatchTile");
+    public static final PathElement PATH$tileShadingApron = PathElement.groupElement("tileShadingApron");
+    public static final PathElement PATH$tileShadingAnisotropicApron = PathElement.groupElement("tileShadingAnisotropicApron");
+    public static final PathElement PATH$tileShadingAtomicOps = PathElement.groupElement("tileShadingAtomicOps");
+    public static final PathElement PATH$tileShadingImageProcessing = PathElement.groupElement("tileShadingImageProcessing");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

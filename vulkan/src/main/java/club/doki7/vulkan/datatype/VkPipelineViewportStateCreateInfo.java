@@ -210,13 +210,13 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$viewportCount = PathElement.groupElement("PATH$viewportCount");
-    public static final PathElement PATH$pViewports = PathElement.groupElement("PATH$pViewports");
-    public static final PathElement PATH$scissorCount = PathElement.groupElement("PATH$scissorCount");
-    public static final PathElement PATH$pScissors = PathElement.groupElement("PATH$pScissors");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$viewportCount = PathElement.groupElement("viewportCount");
+    public static final PathElement PATH$pViewports = PathElement.groupElement("pViewports");
+    public static final PathElement PATH$scissorCount = PathElement.groupElement("scissorCount");
+    public static final PathElement PATH$pScissors = PathElement.groupElement("pScissors");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

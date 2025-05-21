@@ -153,10 +153,10 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IPo
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$swapchainCount = PathElement.groupElement("PATH$swapchainCount");
-    public static final PathElement PATH$pRegions = PathElement.groupElement("PATH$pRegions");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$swapchainCount = PathElement.groupElement("swapchainCount");
+    public static final PathElement PATH$pRegions = PathElement.groupElement("pRegions");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

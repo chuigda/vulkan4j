@@ -136,11 +136,11 @@ public record VkDisplayPresentInfoKHR(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$srcRect = PathElement.groupElement("PATH$srcRect");
-    public static final PathElement PATH$dstRect = PathElement.groupElement("PATH$dstRect");
-    public static final PathElement PATH$persistent = PathElement.groupElement("PATH$persistent");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcRect = PathElement.groupElement("srcRect");
+    public static final PathElement PATH$dstRect = PathElement.groupElement("dstRect");
+    public static final PathElement PATH$persistent = PathElement.groupElement("persistent");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

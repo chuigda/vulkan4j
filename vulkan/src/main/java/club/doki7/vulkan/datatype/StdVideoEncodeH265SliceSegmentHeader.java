@@ -236,20 +236,20 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$slice_type = PathElement.groupElement("PATH$slice_type");
-    public static final PathElement PATH$slice_segment_address = PathElement.groupElement("PATH$slice_segment_address");
-    public static final PathElement PATH$collocated_ref_idx = PathElement.groupElement("PATH$collocated_ref_idx");
-    public static final PathElement PATH$MaxNumMergeCand = PathElement.groupElement("PATH$MaxNumMergeCand");
-    public static final PathElement PATH$slice_cb_qp_offset = PathElement.groupElement("PATH$slice_cb_qp_offset");
-    public static final PathElement PATH$slice_cr_qp_offset = PathElement.groupElement("PATH$slice_cr_qp_offset");
-    public static final PathElement PATH$slice_beta_offset_div2 = PathElement.groupElement("PATH$slice_beta_offset_div2");
-    public static final PathElement PATH$slice_tc_offset_div2 = PathElement.groupElement("PATH$slice_tc_offset_div2");
-    public static final PathElement PATH$slice_act_y_qp_offset = PathElement.groupElement("PATH$slice_act_y_qp_offset");
-    public static final PathElement PATH$slice_act_cb_qp_offset = PathElement.groupElement("PATH$slice_act_cb_qp_offset");
-    public static final PathElement PATH$slice_act_cr_qp_offset = PathElement.groupElement("PATH$slice_act_cr_qp_offset");
-    public static final PathElement PATH$slice_qp_delta = PathElement.groupElement("PATH$slice_qp_delta");
-    public static final PathElement PATH$pWeightTable = PathElement.groupElement("PATH$pWeightTable");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$slice_type = PathElement.groupElement("slice_type");
+    public static final PathElement PATH$slice_segment_address = PathElement.groupElement("slice_segment_address");
+    public static final PathElement PATH$collocated_ref_idx = PathElement.groupElement("collocated_ref_idx");
+    public static final PathElement PATH$MaxNumMergeCand = PathElement.groupElement("MaxNumMergeCand");
+    public static final PathElement PATH$slice_cb_qp_offset = PathElement.groupElement("slice_cb_qp_offset");
+    public static final PathElement PATH$slice_cr_qp_offset = PathElement.groupElement("slice_cr_qp_offset");
+    public static final PathElement PATH$slice_beta_offset_div2 = PathElement.groupElement("slice_beta_offset_div2");
+    public static final PathElement PATH$slice_tc_offset_div2 = PathElement.groupElement("slice_tc_offset_div2");
+    public static final PathElement PATH$slice_act_y_qp_offset = PathElement.groupElement("slice_act_y_qp_offset");
+    public static final PathElement PATH$slice_act_cb_qp_offset = PathElement.groupElement("slice_act_cb_qp_offset");
+    public static final PathElement PATH$slice_act_cr_qp_offset = PathElement.groupElement("slice_act_cr_qp_offset");
+    public static final PathElement PATH$slice_qp_delta = PathElement.groupElement("slice_qp_delta");
+    public static final PathElement PATH$pWeightTable = PathElement.groupElement("pWeightTable");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfInt LAYOUT$slice_type = (OfInt) LAYOUT.select(PATH$slice_type);

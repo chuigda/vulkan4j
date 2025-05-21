@@ -166,14 +166,14 @@ public record VkPhysicalDeviceDrmPropertiesEXT(@NotNull MemorySegment segment) i
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$hasPrimary = PathElement.groupElement("PATH$hasPrimary");
-    public static final PathElement PATH$hasRender = PathElement.groupElement("PATH$hasRender");
-    public static final PathElement PATH$primaryMajor = PathElement.groupElement("PATH$primaryMajor");
-    public static final PathElement PATH$primaryMinor = PathElement.groupElement("PATH$primaryMinor");
-    public static final PathElement PATH$renderMajor = PathElement.groupElement("PATH$renderMajor");
-    public static final PathElement PATH$renderMinor = PathElement.groupElement("PATH$renderMinor");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$hasPrimary = PathElement.groupElement("hasPrimary");
+    public static final PathElement PATH$hasRender = PathElement.groupElement("hasRender");
+    public static final PathElement PATH$primaryMajor = PathElement.groupElement("primaryMajor");
+    public static final PathElement PATH$primaryMinor = PathElement.groupElement("primaryMinor");
+    public static final PathElement PATH$renderMajor = PathElement.groupElement("renderMajor");
+    public static final PathElement PATH$renderMinor = PathElement.groupElement("renderMinor");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

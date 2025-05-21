@@ -158,15 +158,15 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$supportedAlpha = PathElement.groupElement("PATH$supportedAlpha");
-    public static final PathElement PATH$minSrcPosition = PathElement.groupElement("PATH$minSrcPosition");
-    public static final PathElement PATH$maxSrcPosition = PathElement.groupElement("PATH$maxSrcPosition");
-    public static final PathElement PATH$minSrcExtent = PathElement.groupElement("PATH$minSrcExtent");
-    public static final PathElement PATH$maxSrcExtent = PathElement.groupElement("PATH$maxSrcExtent");
-    public static final PathElement PATH$minDstPosition = PathElement.groupElement("PATH$minDstPosition");
-    public static final PathElement PATH$maxDstPosition = PathElement.groupElement("PATH$maxDstPosition");
-    public static final PathElement PATH$minDstExtent = PathElement.groupElement("PATH$minDstExtent");
-    public static final PathElement PATH$maxDstExtent = PathElement.groupElement("PATH$maxDstExtent");
+    public static final PathElement PATH$supportedAlpha = PathElement.groupElement("supportedAlpha");
+    public static final PathElement PATH$minSrcPosition = PathElement.groupElement("minSrcPosition");
+    public static final PathElement PATH$maxSrcPosition = PathElement.groupElement("maxSrcPosition");
+    public static final PathElement PATH$minSrcExtent = PathElement.groupElement("minSrcExtent");
+    public static final PathElement PATH$maxSrcExtent = PathElement.groupElement("maxSrcExtent");
+    public static final PathElement PATH$minDstPosition = PathElement.groupElement("minDstPosition");
+    public static final PathElement PATH$maxDstPosition = PathElement.groupElement("maxDstPosition");
+    public static final PathElement PATH$minDstExtent = PathElement.groupElement("minDstExtent");
+    public static final PathElement PATH$maxDstExtent = PathElement.groupElement("maxDstExtent");
 
     public static final OfInt LAYOUT$supportedAlpha = (OfInt) LAYOUT.select(PATH$supportedAlpha);
     public static final StructLayout LAYOUT$minSrcPosition = (StructLayout) LAYOUT.select(PATH$minSrcPosition);

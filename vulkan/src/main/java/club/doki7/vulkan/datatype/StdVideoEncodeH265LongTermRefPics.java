@@ -136,13 +136,13 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$num_long_term_sps = PathElement.groupElement("PATH$num_long_term_sps");
-    public static final PathElement PATH$num_long_term_pics = PathElement.groupElement("PATH$num_long_term_pics");
-    public static final PathElement PATH$lt_idx_sps = PathElement.groupElement("PATH$lt_idx_sps");
-    public static final PathElement PATH$poc_lsb_lt = PathElement.groupElement("PATH$poc_lsb_lt");
-    public static final PathElement PATH$used_by_curr_pic_lt_flag = PathElement.groupElement("PATH$used_by_curr_pic_lt_flag");
-    public static final PathElement PATH$delta_poc_msb_present_flag = PathElement.groupElement("PATH$delta_poc_msb_present_flag");
-    public static final PathElement PATH$delta_poc_msb_cycle_lt = PathElement.groupElement("PATH$delta_poc_msb_cycle_lt");
+    public static final PathElement PATH$num_long_term_sps = PathElement.groupElement("num_long_term_sps");
+    public static final PathElement PATH$num_long_term_pics = PathElement.groupElement("num_long_term_pics");
+    public static final PathElement PATH$lt_idx_sps = PathElement.groupElement("lt_idx_sps");
+    public static final PathElement PATH$poc_lsb_lt = PathElement.groupElement("poc_lsb_lt");
+    public static final PathElement PATH$used_by_curr_pic_lt_flag = PathElement.groupElement("used_by_curr_pic_lt_flag");
+    public static final PathElement PATH$delta_poc_msb_present_flag = PathElement.groupElement("delta_poc_msb_present_flag");
+    public static final PathElement PATH$delta_poc_msb_cycle_lt = PathElement.groupElement("delta_poc_msb_cycle_lt");
 
     public static final OfByte LAYOUT$num_long_term_sps = (OfByte) LAYOUT.select(PATH$num_long_term_sps);
     public static final OfByte LAYOUT$num_long_term_pics = (OfByte) LAYOUT.select(PATH$num_long_term_pics);

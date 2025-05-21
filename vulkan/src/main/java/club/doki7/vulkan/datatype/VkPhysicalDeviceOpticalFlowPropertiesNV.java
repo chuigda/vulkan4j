@@ -216,19 +216,19 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$supportedOutputGridSizes = PathElement.groupElement("PATH$supportedOutputGridSizes");
-    public static final PathElement PATH$supportedHintGridSizes = PathElement.groupElement("PATH$supportedHintGridSizes");
-    public static final PathElement PATH$hintSupported = PathElement.groupElement("PATH$hintSupported");
-    public static final PathElement PATH$costSupported = PathElement.groupElement("PATH$costSupported");
-    public static final PathElement PATH$bidirectionalFlowSupported = PathElement.groupElement("PATH$bidirectionalFlowSupported");
-    public static final PathElement PATH$globalFlowSupported = PathElement.groupElement("PATH$globalFlowSupported");
-    public static final PathElement PATH$minWidth = PathElement.groupElement("PATH$minWidth");
-    public static final PathElement PATH$minHeight = PathElement.groupElement("PATH$minHeight");
-    public static final PathElement PATH$maxWidth = PathElement.groupElement("PATH$maxWidth");
-    public static final PathElement PATH$maxHeight = PathElement.groupElement("PATH$maxHeight");
-    public static final PathElement PATH$maxNumRegionsOfInterest = PathElement.groupElement("PATH$maxNumRegionsOfInterest");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$supportedOutputGridSizes = PathElement.groupElement("supportedOutputGridSizes");
+    public static final PathElement PATH$supportedHintGridSizes = PathElement.groupElement("supportedHintGridSizes");
+    public static final PathElement PATH$hintSupported = PathElement.groupElement("hintSupported");
+    public static final PathElement PATH$costSupported = PathElement.groupElement("costSupported");
+    public static final PathElement PATH$bidirectionalFlowSupported = PathElement.groupElement("bidirectionalFlowSupported");
+    public static final PathElement PATH$globalFlowSupported = PathElement.groupElement("globalFlowSupported");
+    public static final PathElement PATH$minWidth = PathElement.groupElement("minWidth");
+    public static final PathElement PATH$minHeight = PathElement.groupElement("minHeight");
+    public static final PathElement PATH$maxWidth = PathElement.groupElement("maxWidth");
+    public static final PathElement PATH$maxHeight = PathElement.groupElement("maxHeight");
+    public static final PathElement PATH$maxNumRegionsOfInterest = PathElement.groupElement("maxNumRegionsOfInterest");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

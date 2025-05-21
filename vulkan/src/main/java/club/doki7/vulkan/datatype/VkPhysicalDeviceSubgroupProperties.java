@@ -146,12 +146,12 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$subgroupSize = PathElement.groupElement("PATH$subgroupSize");
-    public static final PathElement PATH$supportedStages = PathElement.groupElement("PATH$supportedStages");
-    public static final PathElement PATH$supportedOperations = PathElement.groupElement("PATH$supportedOperations");
-    public static final PathElement PATH$quadOperationsInAllStages = PathElement.groupElement("PATH$quadOperationsInAllStages");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$subgroupSize = PathElement.groupElement("subgroupSize");
+    public static final PathElement PATH$supportedStages = PathElement.groupElement("supportedStages");
+    public static final PathElement PATH$supportedOperations = PathElement.groupElement("supportedOperations");
+    public static final PathElement PATH$quadOperationsInAllStages = PathElement.groupElement("quadOperationsInAllStages");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

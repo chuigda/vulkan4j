@@ -193,14 +193,14 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$imageCreateInfo = PathElement.groupElement("PATH$imageCreateInfo");
-    public static final PathElement PATH$requiredFormatFeatures = PathElement.groupElement("PATH$requiredFormatFeatures");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$sysmemPixelFormat = PathElement.groupElement("PATH$sysmemPixelFormat");
-    public static final PathElement PATH$colorSpaceCount = PathElement.groupElement("PATH$colorSpaceCount");
-    public static final PathElement PATH$pColorSpaces = PathElement.groupElement("PATH$pColorSpaces");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$imageCreateInfo = PathElement.groupElement("imageCreateInfo");
+    public static final PathElement PATH$requiredFormatFeatures = PathElement.groupElement("requiredFormatFeatures");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$sysmemPixelFormat = PathElement.groupElement("sysmemPixelFormat");
+    public static final PathElement PATH$colorSpaceCount = PathElement.groupElement("colorSpaceCount");
+    public static final PathElement PATH$pColorSpaces = PathElement.groupElement("pColorSpaces");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

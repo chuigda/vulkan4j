@@ -115,8 +115,8 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IPoi
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$rectangleCount = PathElement.groupElement("PATH$rectangleCount");
-    public static final PathElement PATH$pRectangles = PathElement.groupElement("PATH$pRectangles");
+    public static final PathElement PATH$rectangleCount = PathElement.groupElement("rectangleCount");
+    public static final PathElement PATH$pRectangles = PathElement.groupElement("pRectangles");
 
     public static final OfInt LAYOUT$rectangleCount = (OfInt) LAYOUT.select(PATH$rectangleCount);
     public static final AddressLayout LAYOUT$pRectangles = (AddressLayout) LAYOUT.select(PATH$pRectangles);

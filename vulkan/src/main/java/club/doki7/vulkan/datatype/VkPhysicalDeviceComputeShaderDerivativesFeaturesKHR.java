@@ -126,10 +126,10 @@ public record VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR(@NotNull Memor
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$computeDerivativeGroupQuads = PathElement.groupElement("PATH$computeDerivativeGroupQuads");
-    public static final PathElement PATH$computeDerivativeGroupLinear = PathElement.groupElement("PATH$computeDerivativeGroupLinear");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$computeDerivativeGroupQuads = PathElement.groupElement("computeDerivativeGroupQuads");
+    public static final PathElement PATH$computeDerivativeGroupLinear = PathElement.groupElement("computeDerivativeGroupLinear");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

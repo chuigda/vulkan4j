@@ -146,12 +146,12 @@ public record VkVideoEncodeH264SessionParametersGetInfoKHR(@NotNull MemorySegmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$writeStdSPS = PathElement.groupElement("PATH$writeStdSPS");
-    public static final PathElement PATH$writeStdPPS = PathElement.groupElement("PATH$writeStdPPS");
-    public static final PathElement PATH$stdSPSId = PathElement.groupElement("PATH$stdSPSId");
-    public static final PathElement PATH$stdPPSId = PathElement.groupElement("PATH$stdPPSId");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$writeStdSPS = PathElement.groupElement("writeStdSPS");
+    public static final PathElement PATH$writeStdPPS = PathElement.groupElement("writeStdPPS");
+    public static final PathElement PATH$stdSPSId = PathElement.groupElement("stdSPSId");
+    public static final PathElement PATH$stdPPSId = PathElement.groupElement("stdPPSId");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

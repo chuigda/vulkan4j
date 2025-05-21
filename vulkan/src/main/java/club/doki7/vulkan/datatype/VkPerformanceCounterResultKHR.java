@@ -128,12 +128,12 @@ public record VkPerformanceCounterResultKHR(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$int32 = PathElement.groupElement("PATH$int32");
-    public static final PathElement PATH$int64 = PathElement.groupElement("PATH$int64");
-    public static final PathElement PATH$uint32 = PathElement.groupElement("PATH$uint32");
-    public static final PathElement PATH$uint64 = PathElement.groupElement("PATH$uint64");
-    public static final PathElement PATH$float32 = PathElement.groupElement("PATH$float32");
-    public static final PathElement PATH$float64 = PathElement.groupElement("PATH$float64");
+    public static final PathElement PATH$int32 = PathElement.groupElement("int32");
+    public static final PathElement PATH$int64 = PathElement.groupElement("int64");
+    public static final PathElement PATH$uint32 = PathElement.groupElement("uint32");
+    public static final PathElement PATH$uint64 = PathElement.groupElement("uint64");
+    public static final PathElement PATH$float32 = PathElement.groupElement("float32");
+    public static final PathElement PATH$float64 = PathElement.groupElement("float64");
 
     public static final OfInt LAYOUT$int32 = (OfInt) LAYOUT.select(PATH$int32);
     public static final OfLong LAYOUT$int64 = (OfLong) LAYOUT.select(PATH$int64);

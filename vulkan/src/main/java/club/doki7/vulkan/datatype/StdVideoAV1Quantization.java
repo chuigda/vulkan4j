@@ -166,16 +166,16 @@ public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$base_q_idx = PathElement.groupElement("PATH$base_q_idx");
-    public static final PathElement PATH$DeltaQYDc = PathElement.groupElement("PATH$DeltaQYDc");
-    public static final PathElement PATH$DeltaQUDc = PathElement.groupElement("PATH$DeltaQUDc");
-    public static final PathElement PATH$DeltaQUAc = PathElement.groupElement("PATH$DeltaQUAc");
-    public static final PathElement PATH$DeltaQVDc = PathElement.groupElement("PATH$DeltaQVDc");
-    public static final PathElement PATH$DeltaQVAc = PathElement.groupElement("PATH$DeltaQVAc");
-    public static final PathElement PATH$qm_y = PathElement.groupElement("PATH$qm_y");
-    public static final PathElement PATH$qm_u = PathElement.groupElement("PATH$qm_u");
-    public static final PathElement PATH$qm_v = PathElement.groupElement("PATH$qm_v");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$base_q_idx = PathElement.groupElement("base_q_idx");
+    public static final PathElement PATH$DeltaQYDc = PathElement.groupElement("DeltaQYDc");
+    public static final PathElement PATH$DeltaQUDc = PathElement.groupElement("DeltaQUDc");
+    public static final PathElement PATH$DeltaQUAc = PathElement.groupElement("DeltaQUAc");
+    public static final PathElement PATH$DeltaQVDc = PathElement.groupElement("DeltaQVDc");
+    public static final PathElement PATH$DeltaQVAc = PathElement.groupElement("DeltaQVAc");
+    public static final PathElement PATH$qm_y = PathElement.groupElement("qm_y");
+    public static final PathElement PATH$qm_u = PathElement.groupElement("qm_u");
+    public static final PathElement PATH$qm_v = PathElement.groupElement("qm_v");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$base_q_idx = (OfByte) LAYOUT.select(PATH$base_q_idx);

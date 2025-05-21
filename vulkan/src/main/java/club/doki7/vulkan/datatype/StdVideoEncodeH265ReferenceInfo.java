@@ -106,10 +106,10 @@ public record StdVideoEncodeH265ReferenceInfo(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$pic_type = PathElement.groupElement("PATH$pic_type");
-    public static final PathElement PATH$PicOrderCntVal = PathElement.groupElement("PATH$PicOrderCntVal");
-    public static final PathElement PATH$TemporalId = PathElement.groupElement("PATH$TemporalId");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$pic_type = PathElement.groupElement("pic_type");
+    public static final PathElement PATH$PicOrderCntVal = PathElement.groupElement("PicOrderCntVal");
+    public static final PathElement PATH$TemporalId = PathElement.groupElement("TemporalId");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfInt LAYOUT$pic_type = (OfInt) LAYOUT.select(PATH$pic_type);

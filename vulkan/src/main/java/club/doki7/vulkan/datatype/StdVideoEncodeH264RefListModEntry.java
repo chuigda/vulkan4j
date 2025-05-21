@@ -96,9 +96,9 @@ public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$modification_of_pic_nums_idc = PathElement.groupElement("PATH$modification_of_pic_nums_idc");
-    public static final PathElement PATH$abs_diff_pic_num_minus1 = PathElement.groupElement("PATH$abs_diff_pic_num_minus1");
-    public static final PathElement PATH$long_term_pic_num = PathElement.groupElement("PATH$long_term_pic_num");
+    public static final PathElement PATH$modification_of_pic_nums_idc = PathElement.groupElement("modification_of_pic_nums_idc");
+    public static final PathElement PATH$abs_diff_pic_num_minus1 = PathElement.groupElement("abs_diff_pic_num_minus1");
+    public static final PathElement PATH$long_term_pic_num = PathElement.groupElement("long_term_pic_num");
 
     public static final OfInt LAYOUT$modification_of_pic_nums_idc = (OfInt) LAYOUT.select(PATH$modification_of_pic_nums_idc);
     public static final OfShort LAYOUT$abs_diff_pic_num_minus1 = (OfShort) LAYOUT.select(PATH$abs_diff_pic_num_minus1);

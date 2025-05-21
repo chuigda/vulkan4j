@@ -166,14 +166,14 @@ public record VkBufferImageCopy2(@NotNull MemorySegment segment) implements IPoi
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$bufferOffset = PathElement.groupElement("PATH$bufferOffset");
-    public static final PathElement PATH$bufferRowLength = PathElement.groupElement("PATH$bufferRowLength");
-    public static final PathElement PATH$bufferImageHeight = PathElement.groupElement("PATH$bufferImageHeight");
-    public static final PathElement PATH$imageSubresource = PathElement.groupElement("PATH$imageSubresource");
-    public static final PathElement PATH$imageOffset = PathElement.groupElement("PATH$imageOffset");
-    public static final PathElement PATH$imageExtent = PathElement.groupElement("PATH$imageExtent");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$bufferOffset = PathElement.groupElement("bufferOffset");
+    public static final PathElement PATH$bufferRowLength = PathElement.groupElement("bufferRowLength");
+    public static final PathElement PATH$bufferImageHeight = PathElement.groupElement("bufferImageHeight");
+    public static final PathElement PATH$imageSubresource = PathElement.groupElement("imageSubresource");
+    public static final PathElement PATH$imageOffset = PathElement.groupElement("imageOffset");
+    public static final PathElement PATH$imageExtent = PathElement.groupElement("imageExtent");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

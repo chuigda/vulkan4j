@@ -140,11 +140,11 @@ public record VkCopyMemoryToAccelerationStructureInfoKHR(@NotNull MemorySegment 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$src = PathElement.groupElement("PATH$src");
-    public static final PathElement PATH$dst = PathElement.groupElement("PATH$dst");
-    public static final PathElement PATH$mode = PathElement.groupElement("PATH$mode");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$src = PathElement.groupElement("src");
+    public static final PathElement PATH$dst = PathElement.groupElement("dst");
+    public static final PathElement PATH$mode = PathElement.groupElement("mode");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

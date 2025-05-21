@@ -118,11 +118,11 @@ public record VkSubresourceLayout(@NotNull MemorySegment segment) implements IPo
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
-    public static final PathElement PATH$rowPitch = PathElement.groupElement("PATH$rowPitch");
-    public static final PathElement PATH$arrayPitch = PathElement.groupElement("PATH$arrayPitch");
-    public static final PathElement PATH$depthPitch = PathElement.groupElement("PATH$depthPitch");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$rowPitch = PathElement.groupElement("rowPitch");
+    public static final PathElement PATH$arrayPitch = PathElement.groupElement("arrayPitch");
+    public static final PathElement PATH$depthPitch = PathElement.groupElement("depthPitch");
 
     public static final OfLong LAYOUT$offset = (OfLong) LAYOUT.select(PATH$offset);
     public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);

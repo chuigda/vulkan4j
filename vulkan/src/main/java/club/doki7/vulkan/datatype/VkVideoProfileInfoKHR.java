@@ -146,12 +146,12 @@ public record VkVideoProfileInfoKHR(@NotNull MemorySegment segment) implements I
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$videoCodecOperation = PathElement.groupElement("PATH$videoCodecOperation");
-    public static final PathElement PATH$chromaSubsampling = PathElement.groupElement("PATH$chromaSubsampling");
-    public static final PathElement PATH$lumaBitDepth = PathElement.groupElement("PATH$lumaBitDepth");
-    public static final PathElement PATH$chromaBitDepth = PathElement.groupElement("PATH$chromaBitDepth");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$videoCodecOperation = PathElement.groupElement("videoCodecOperation");
+    public static final PathElement PATH$chromaSubsampling = PathElement.groupElement("chromaSubsampling");
+    public static final PathElement PATH$lumaBitDepth = PathElement.groupElement("lumaBitDepth");
+    public static final PathElement PATH$chromaBitDepth = PathElement.groupElement("chromaBitDepth");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

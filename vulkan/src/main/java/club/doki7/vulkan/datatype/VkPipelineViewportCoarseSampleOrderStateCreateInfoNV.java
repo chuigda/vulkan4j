@@ -163,11 +163,11 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$sampleOrderType = PathElement.groupElement("PATH$sampleOrderType");
-    public static final PathElement PATH$customSampleOrderCount = PathElement.groupElement("PATH$customSampleOrderCount");
-    public static final PathElement PATH$pCustomSampleOrders = PathElement.groupElement("PATH$pCustomSampleOrders");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$sampleOrderType = PathElement.groupElement("sampleOrderType");
+    public static final PathElement PATH$customSampleOrderCount = PathElement.groupElement("customSampleOrderCount");
+    public static final PathElement PATH$pCustomSampleOrders = PathElement.groupElement("pCustomSampleOrders");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

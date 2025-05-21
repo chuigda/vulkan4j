@@ -166,14 +166,14 @@ public record VkVideoFormatPropertiesKHR(@NotNull MemorySegment segment) impleme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
-    public static final PathElement PATH$componentMapping = PathElement.groupElement("PATH$componentMapping");
-    public static final PathElement PATH$imageCreateFlags = PathElement.groupElement("PATH$imageCreateFlags");
-    public static final PathElement PATH$imageType = PathElement.groupElement("PATH$imageType");
-    public static final PathElement PATH$imageTiling = PathElement.groupElement("PATH$imageTiling");
-    public static final PathElement PATH$imageUsageFlags = PathElement.groupElement("PATH$imageUsageFlags");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$componentMapping = PathElement.groupElement("componentMapping");
+    public static final PathElement PATH$imageCreateFlags = PathElement.groupElement("imageCreateFlags");
+    public static final PathElement PATH$imageType = PathElement.groupElement("imageType");
+    public static final PathElement PATH$imageTiling = PathElement.groupElement("imageTiling");
+    public static final PathElement PATH$imageUsageFlags = PathElement.groupElement("imageUsageFlags");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

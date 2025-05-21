@@ -98,9 +98,9 @@ public record VkExtent3D(@NotNull MemorySegment segment) implements IPointer {
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$width = PathElement.groupElement("PATH$width");
-    public static final PathElement PATH$height = PathElement.groupElement("PATH$height");
-    public static final PathElement PATH$depth = PathElement.groupElement("PATH$depth");
+    public static final PathElement PATH$width = PathElement.groupElement("width");
+    public static final PathElement PATH$height = PathElement.groupElement("height");
+    public static final PathElement PATH$depth = PathElement.groupElement("depth");
 
     public static final OfInt LAYOUT$width = (OfInt) LAYOUT.select(PATH$width);
     public static final OfInt LAYOUT$height = (OfInt) LAYOUT.select(PATH$height);

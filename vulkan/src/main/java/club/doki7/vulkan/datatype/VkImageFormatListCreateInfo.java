@@ -144,10 +144,10 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$viewFormatCount = PathElement.groupElement("PATH$viewFormatCount");
-    public static final PathElement PATH$pViewFormats = PathElement.groupElement("PATH$pViewFormats");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$viewFormatCount = PathElement.groupElement("viewFormatCount");
+    public static final PathElement PATH$pViewFormats = PathElement.groupElement("pViewFormats");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

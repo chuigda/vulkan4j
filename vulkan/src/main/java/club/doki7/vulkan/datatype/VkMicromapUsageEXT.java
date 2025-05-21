@@ -98,9 +98,9 @@ public record VkMicromapUsageEXT(@NotNull MemorySegment segment) implements IPoi
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$count = PathElement.groupElement("PATH$count");
-    public static final PathElement PATH$subdivisionLevel = PathElement.groupElement("PATH$subdivisionLevel");
-    public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
+    public static final PathElement PATH$count = PathElement.groupElement("count");
+    public static final PathElement PATH$subdivisionLevel = PathElement.groupElement("subdivisionLevel");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
 
     public static final OfInt LAYOUT$count = (OfInt) LAYOUT.select(PATH$count);
     public static final OfInt LAYOUT$subdivisionLevel = (OfInt) LAYOUT.select(PATH$subdivisionLevel);

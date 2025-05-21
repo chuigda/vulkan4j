@@ -186,16 +186,16 @@ public record VkPhysicalDeviceRayTracingPropertiesNV(@NotNull MemorySegment segm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shaderGroupHandleSize = PathElement.groupElement("PATH$shaderGroupHandleSize");
-    public static final PathElement PATH$maxRecursionDepth = PathElement.groupElement("PATH$maxRecursionDepth");
-    public static final PathElement PATH$maxShaderGroupStride = PathElement.groupElement("PATH$maxShaderGroupStride");
-    public static final PathElement PATH$shaderGroupBaseAlignment = PathElement.groupElement("PATH$shaderGroupBaseAlignment");
-    public static final PathElement PATH$maxGeometryCount = PathElement.groupElement("PATH$maxGeometryCount");
-    public static final PathElement PATH$maxInstanceCount = PathElement.groupElement("PATH$maxInstanceCount");
-    public static final PathElement PATH$maxTriangleCount = PathElement.groupElement("PATH$maxTriangleCount");
-    public static final PathElement PATH$maxDescriptorSetAccelerationStructures = PathElement.groupElement("PATH$maxDescriptorSetAccelerationStructures");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shaderGroupHandleSize = PathElement.groupElement("shaderGroupHandleSize");
+    public static final PathElement PATH$maxRecursionDepth = PathElement.groupElement("maxRecursionDepth");
+    public static final PathElement PATH$maxShaderGroupStride = PathElement.groupElement("maxShaderGroupStride");
+    public static final PathElement PATH$shaderGroupBaseAlignment = PathElement.groupElement("shaderGroupBaseAlignment");
+    public static final PathElement PATH$maxGeometryCount = PathElement.groupElement("maxGeometryCount");
+    public static final PathElement PATH$maxInstanceCount = PathElement.groupElement("maxInstanceCount");
+    public static final PathElement PATH$maxTriangleCount = PathElement.groupElement("maxTriangleCount");
+    public static final PathElement PATH$maxDescriptorSetAccelerationStructures = PathElement.groupElement("maxDescriptorSetAccelerationStructures");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

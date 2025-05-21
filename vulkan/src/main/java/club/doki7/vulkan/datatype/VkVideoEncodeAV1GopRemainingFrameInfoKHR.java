@@ -146,12 +146,12 @@ public record VkVideoEncodeAV1GopRemainingFrameInfoKHR(@NotNull MemorySegment se
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$useGopRemainingFrames = PathElement.groupElement("PATH$useGopRemainingFrames");
-    public static final PathElement PATH$gopRemainingIntra = PathElement.groupElement("PATH$gopRemainingIntra");
-    public static final PathElement PATH$gopRemainingPredictive = PathElement.groupElement("PATH$gopRemainingPredictive");
-    public static final PathElement PATH$gopRemainingBipredictive = PathElement.groupElement("PATH$gopRemainingBipredictive");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$useGopRemainingFrames = PathElement.groupElement("useGopRemainingFrames");
+    public static final PathElement PATH$gopRemainingIntra = PathElement.groupElement("gopRemainingIntra");
+    public static final PathElement PATH$gopRemainingPredictive = PathElement.groupElement("gopRemainingPredictive");
+    public static final PathElement PATH$gopRemainingBipredictive = PathElement.groupElement("gopRemainingBipredictive");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

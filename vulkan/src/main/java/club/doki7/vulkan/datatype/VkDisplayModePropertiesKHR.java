@@ -92,8 +92,8 @@ public record VkDisplayModePropertiesKHR(@NotNull MemorySegment segment) impleme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$displayMode = PathElement.groupElement("PATH$displayMode");
-    public static final PathElement PATH$parameters = PathElement.groupElement("PATH$parameters");
+    public static final PathElement PATH$displayMode = PathElement.groupElement("displayMode");
+    public static final PathElement PATH$parameters = PathElement.groupElement("parameters");
 
     public static final AddressLayout LAYOUT$displayMode = (AddressLayout) LAYOUT.select(PATH$displayMode);
     public static final StructLayout LAYOUT$parameters = (StructLayout) LAYOUT.select(PATH$parameters);

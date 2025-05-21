@@ -154,11 +154,11 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$colorAttachmentCount = PathElement.groupElement("PATH$colorAttachmentCount");
-    public static final PathElement PATH$pColorAttachmentSamples = PathElement.groupElement("PATH$pColorAttachmentSamples");
-    public static final PathElement PATH$depthStencilAttachmentSamples = PathElement.groupElement("PATH$depthStencilAttachmentSamples");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$colorAttachmentCount = PathElement.groupElement("colorAttachmentCount");
+    public static final PathElement PATH$pColorAttachmentSamples = PathElement.groupElement("pColorAttachmentSamples");
+    public static final PathElement PATH$depthStencilAttachmentSamples = PathElement.groupElement("depthStencilAttachmentSamples");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

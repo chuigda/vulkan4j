@@ -126,10 +126,10 @@ public record VkPhysicalDeviceShadingRateImageFeaturesNV(@NotNull MemorySegment 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shadingRateImage = PathElement.groupElement("PATH$shadingRateImage");
-    public static final PathElement PATH$shadingRateCoarseSampleOrder = PathElement.groupElement("PATH$shadingRateCoarseSampleOrder");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shadingRateImage = PathElement.groupElement("shadingRateImage");
+    public static final PathElement PATH$shadingRateCoarseSampleOrder = PathElement.groupElement("shadingRateCoarseSampleOrder");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

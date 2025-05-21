@@ -152,12 +152,12 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$pUserData = PathElement.groupElement("PATH$pUserData");
-    public static final PathElement PATH$pfnAllocation = PathElement.groupElement("PATH$pfnAllocation");
-    public static final PathElement PATH$pfnReallocation = PathElement.groupElement("PATH$pfnReallocation");
-    public static final PathElement PATH$pfnFree = PathElement.groupElement("PATH$pfnFree");
-    public static final PathElement PATH$pfnInternalAllocation = PathElement.groupElement("PATH$pfnInternalAllocation");
-    public static final PathElement PATH$pfnInternalFree = PathElement.groupElement("PATH$pfnInternalFree");
+    public static final PathElement PATH$pUserData = PathElement.groupElement("pUserData");
+    public static final PathElement PATH$pfnAllocation = PathElement.groupElement("pfnAllocation");
+    public static final PathElement PATH$pfnReallocation = PathElement.groupElement("pfnReallocation");
+    public static final PathElement PATH$pfnFree = PathElement.groupElement("pfnFree");
+    public static final PathElement PATH$pfnInternalAllocation = PathElement.groupElement("pfnInternalAllocation");
+    public static final PathElement PATH$pfnInternalFree = PathElement.groupElement("pfnInternalFree");
 
     public static final AddressLayout LAYOUT$pUserData = (AddressLayout) LAYOUT.select(PATH$pUserData);
     public static final AddressLayout LAYOUT$pfnAllocation = (AddressLayout) LAYOUT.select(PATH$pfnAllocation);

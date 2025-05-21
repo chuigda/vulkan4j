@@ -144,11 +144,11 @@ public record VkDebugReportCallbackCreateInfoEXT(@NotNull MemorySegment segment)
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$pfnCallback = PathElement.groupElement("PATH$pfnCallback");
-    public static final PathElement PATH$pUserData = PathElement.groupElement("PATH$pUserData");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$pfnCallback = PathElement.groupElement("pfnCallback");
+    public static final PathElement PATH$pUserData = PathElement.groupElement("pUserData");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

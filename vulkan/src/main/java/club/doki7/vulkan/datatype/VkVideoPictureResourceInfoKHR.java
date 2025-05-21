@@ -150,12 +150,12 @@ public record VkVideoPictureResourceInfoKHR(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$codedOffset = PathElement.groupElement("PATH$codedOffset");
-    public static final PathElement PATH$codedExtent = PathElement.groupElement("PATH$codedExtent");
-    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("PATH$baseArrayLayer");
-    public static final PathElement PATH$imageViewBinding = PathElement.groupElement("PATH$imageViewBinding");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$codedOffset = PathElement.groupElement("codedOffset");
+    public static final PathElement PATH$codedExtent = PathElement.groupElement("codedExtent");
+    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("baseArrayLayer");
+    public static final PathElement PATH$imageViewBinding = PathElement.groupElement("imageViewBinding");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

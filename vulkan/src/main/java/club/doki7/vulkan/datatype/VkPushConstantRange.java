@@ -98,9 +98,9 @@ public record VkPushConstantRange(@NotNull MemorySegment segment) implements IPo
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$stageFlags = PathElement.groupElement("PATH$stageFlags");
-    public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
+    public static final PathElement PATH$stageFlags = PathElement.groupElement("stageFlags");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
 
     public static final OfInt LAYOUT$stageFlags = (OfInt) LAYOUT.select(PATH$stageFlags);
     public static final OfInt LAYOUT$offset = (OfInt) LAYOUT.select(PATH$offset);

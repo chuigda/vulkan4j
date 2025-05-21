@@ -136,13 +136,13 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$loop_filter_level = PathElement.groupElement("PATH$loop_filter_level");
-    public static final PathElement PATH$loop_filter_sharpness = PathElement.groupElement("PATH$loop_filter_sharpness");
-    public static final PathElement PATH$update_ref_delta = PathElement.groupElement("PATH$update_ref_delta");
-    public static final PathElement PATH$loop_filter_ref_deltas = PathElement.groupElement("PATH$loop_filter_ref_deltas");
-    public static final PathElement PATH$update_mode_delta = PathElement.groupElement("PATH$update_mode_delta");
-    public static final PathElement PATH$loop_filter_mode_deltas = PathElement.groupElement("PATH$loop_filter_mode_deltas");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$loop_filter_level = PathElement.groupElement("loop_filter_level");
+    public static final PathElement PATH$loop_filter_sharpness = PathElement.groupElement("loop_filter_sharpness");
+    public static final PathElement PATH$update_ref_delta = PathElement.groupElement("update_ref_delta");
+    public static final PathElement PATH$loop_filter_ref_deltas = PathElement.groupElement("loop_filter_ref_deltas");
+    public static final PathElement PATH$update_mode_delta = PathElement.groupElement("update_mode_delta");
+    public static final PathElement PATH$loop_filter_mode_deltas = PathElement.groupElement("loop_filter_mode_deltas");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$loop_filter_level = (OfByte) LAYOUT.select(PATH$loop_filter_level);

@@ -246,22 +246,22 @@ public record VkPhysicalDeviceShaderCorePropertiesAMD(@NotNull MemorySegment seg
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shaderEngineCount = PathElement.groupElement("PATH$shaderEngineCount");
-    public static final PathElement PATH$shaderArraysPerEngineCount = PathElement.groupElement("PATH$shaderArraysPerEngineCount");
-    public static final PathElement PATH$computeUnitsPerShaderArray = PathElement.groupElement("PATH$computeUnitsPerShaderArray");
-    public static final PathElement PATH$simdPerComputeUnit = PathElement.groupElement("PATH$simdPerComputeUnit");
-    public static final PathElement PATH$wavefrontsPerSimd = PathElement.groupElement("PATH$wavefrontsPerSimd");
-    public static final PathElement PATH$wavefrontSize = PathElement.groupElement("PATH$wavefrontSize");
-    public static final PathElement PATH$sgprsPerSimd = PathElement.groupElement("PATH$sgprsPerSimd");
-    public static final PathElement PATH$minSgprAllocation = PathElement.groupElement("PATH$minSgprAllocation");
-    public static final PathElement PATH$maxSgprAllocation = PathElement.groupElement("PATH$maxSgprAllocation");
-    public static final PathElement PATH$sgprAllocationGranularity = PathElement.groupElement("PATH$sgprAllocationGranularity");
-    public static final PathElement PATH$vgprsPerSimd = PathElement.groupElement("PATH$vgprsPerSimd");
-    public static final PathElement PATH$minVgprAllocation = PathElement.groupElement("PATH$minVgprAllocation");
-    public static final PathElement PATH$maxVgprAllocation = PathElement.groupElement("PATH$maxVgprAllocation");
-    public static final PathElement PATH$vgprAllocationGranularity = PathElement.groupElement("PATH$vgprAllocationGranularity");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shaderEngineCount = PathElement.groupElement("shaderEngineCount");
+    public static final PathElement PATH$shaderArraysPerEngineCount = PathElement.groupElement("shaderArraysPerEngineCount");
+    public static final PathElement PATH$computeUnitsPerShaderArray = PathElement.groupElement("computeUnitsPerShaderArray");
+    public static final PathElement PATH$simdPerComputeUnit = PathElement.groupElement("simdPerComputeUnit");
+    public static final PathElement PATH$wavefrontsPerSimd = PathElement.groupElement("wavefrontsPerSimd");
+    public static final PathElement PATH$wavefrontSize = PathElement.groupElement("wavefrontSize");
+    public static final PathElement PATH$sgprsPerSimd = PathElement.groupElement("sgprsPerSimd");
+    public static final PathElement PATH$minSgprAllocation = PathElement.groupElement("minSgprAllocation");
+    public static final PathElement PATH$maxSgprAllocation = PathElement.groupElement("maxSgprAllocation");
+    public static final PathElement PATH$sgprAllocationGranularity = PathElement.groupElement("sgprAllocationGranularity");
+    public static final PathElement PATH$vgprsPerSimd = PathElement.groupElement("vgprsPerSimd");
+    public static final PathElement PATH$minVgprAllocation = PathElement.groupElement("minVgprAllocation");
+    public static final PathElement PATH$maxVgprAllocation = PathElement.groupElement("maxVgprAllocation");
+    public static final PathElement PATH$vgprAllocationGranularity = PathElement.groupElement("vgprAllocationGranularity");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

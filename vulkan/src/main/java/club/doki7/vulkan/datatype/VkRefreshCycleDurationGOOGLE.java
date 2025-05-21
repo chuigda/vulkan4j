@@ -78,7 +78,7 @@ public record VkRefreshCycleDurationGOOGLE(@NotNull MemorySegment segment) imple
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$refreshDuration = PathElement.groupElement("PATH$refreshDuration");
+    public static final PathElement PATH$refreshDuration = PathElement.groupElement("refreshDuration");
 
     public static final OfLong LAYOUT$refreshDuration = (OfLong) LAYOUT.select(PATH$refreshDuration);
 

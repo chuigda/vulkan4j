@@ -108,10 +108,10 @@ public record VkComponentMapping(@NotNull MemorySegment segment) implements IPoi
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$r = PathElement.groupElement("PATH$r");
-    public static final PathElement PATH$g = PathElement.groupElement("PATH$g");
-    public static final PathElement PATH$b = PathElement.groupElement("PATH$b");
-    public static final PathElement PATH$a = PathElement.groupElement("PATH$a");
+    public static final PathElement PATH$r = PathElement.groupElement("r");
+    public static final PathElement PATH$g = PathElement.groupElement("g");
+    public static final PathElement PATH$b = PathElement.groupElement("b");
+    public static final PathElement PATH$a = PathElement.groupElement("a");
 
     public static final OfInt LAYOUT$r = (OfInt) LAYOUT.select(PATH$r);
     public static final OfInt LAYOUT$g = (OfInt) LAYOUT.select(PATH$g);

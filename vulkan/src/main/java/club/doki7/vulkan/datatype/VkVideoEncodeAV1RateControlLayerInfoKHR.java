@@ -166,14 +166,14 @@ public record VkVideoEncodeAV1RateControlLayerInfoKHR(@NotNull MemorySegment seg
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$useMinQIndex = PathElement.groupElement("PATH$useMinQIndex");
-    public static final PathElement PATH$minQIndex = PathElement.groupElement("PATH$minQIndex");
-    public static final PathElement PATH$useMaxQIndex = PathElement.groupElement("PATH$useMaxQIndex");
-    public static final PathElement PATH$maxQIndex = PathElement.groupElement("PATH$maxQIndex");
-    public static final PathElement PATH$useMaxFrameSize = PathElement.groupElement("PATH$useMaxFrameSize");
-    public static final PathElement PATH$maxFrameSize = PathElement.groupElement("PATH$maxFrameSize");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$useMinQIndex = PathElement.groupElement("useMinQIndex");
+    public static final PathElement PATH$minQIndex = PathElement.groupElement("minQIndex");
+    public static final PathElement PATH$useMaxQIndex = PathElement.groupElement("useMaxQIndex");
+    public static final PathElement PATH$maxQIndex = PathElement.groupElement("maxQIndex");
+    public static final PathElement PATH$useMaxFrameSize = PathElement.groupElement("useMaxFrameSize");
+    public static final PathElement PATH$maxFrameSize = PathElement.groupElement("maxFrameSize");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

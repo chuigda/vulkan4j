@@ -128,12 +128,12 @@ public record VkCopyMemoryToImageIndirectCommandNV(@NotNull MemorySegment segmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$srcAddress = PathElement.groupElement("PATH$srcAddress");
-    public static final PathElement PATH$bufferRowLength = PathElement.groupElement("PATH$bufferRowLength");
-    public static final PathElement PATH$bufferImageHeight = PathElement.groupElement("PATH$bufferImageHeight");
-    public static final PathElement PATH$imageSubresource = PathElement.groupElement("PATH$imageSubresource");
-    public static final PathElement PATH$imageOffset = PathElement.groupElement("PATH$imageOffset");
-    public static final PathElement PATH$imageExtent = PathElement.groupElement("PATH$imageExtent");
+    public static final PathElement PATH$srcAddress = PathElement.groupElement("srcAddress");
+    public static final PathElement PATH$bufferRowLength = PathElement.groupElement("bufferRowLength");
+    public static final PathElement PATH$bufferImageHeight = PathElement.groupElement("bufferImageHeight");
+    public static final PathElement PATH$imageSubresource = PathElement.groupElement("imageSubresource");
+    public static final PathElement PATH$imageOffset = PathElement.groupElement("imageOffset");
+    public static final PathElement PATH$imageExtent = PathElement.groupElement("imageExtent");
 
     public static final OfLong LAYOUT$srcAddress = (OfLong) LAYOUT.select(PATH$srcAddress);
     public static final OfInt LAYOUT$bufferRowLength = (OfInt) LAYOUT.select(PATH$bufferRowLength);

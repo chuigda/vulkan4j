@@ -126,10 +126,10 @@ public record VkPhysicalDeviceCooperativeMatrixFeaturesNV(@NotNull MemorySegment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$cooperativeMatrix = PathElement.groupElement("PATH$cooperativeMatrix");
-    public static final PathElement PATH$cooperativeMatrixRobustBufferAccess = PathElement.groupElement("PATH$cooperativeMatrixRobustBufferAccess");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$cooperativeMatrix = PathElement.groupElement("cooperativeMatrix");
+    public static final PathElement PATH$cooperativeMatrixRobustBufferAccess = PathElement.groupElement("cooperativeMatrixRobustBufferAccess");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

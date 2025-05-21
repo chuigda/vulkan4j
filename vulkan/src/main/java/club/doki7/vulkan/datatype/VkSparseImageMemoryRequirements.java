@@ -118,11 +118,11 @@ public record VkSparseImageMemoryRequirements(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$formatProperties = PathElement.groupElement("PATH$formatProperties");
-    public static final PathElement PATH$imageMipTailFirstLod = PathElement.groupElement("PATH$imageMipTailFirstLod");
-    public static final PathElement PATH$imageMipTailSize = PathElement.groupElement("PATH$imageMipTailSize");
-    public static final PathElement PATH$imageMipTailOffset = PathElement.groupElement("PATH$imageMipTailOffset");
-    public static final PathElement PATH$imageMipTailStride = PathElement.groupElement("PATH$imageMipTailStride");
+    public static final PathElement PATH$formatProperties = PathElement.groupElement("formatProperties");
+    public static final PathElement PATH$imageMipTailFirstLod = PathElement.groupElement("imageMipTailFirstLod");
+    public static final PathElement PATH$imageMipTailSize = PathElement.groupElement("imageMipTailSize");
+    public static final PathElement PATH$imageMipTailOffset = PathElement.groupElement("imageMipTailOffset");
+    public static final PathElement PATH$imageMipTailStride = PathElement.groupElement("imageMipTailStride");
 
     public static final StructLayout LAYOUT$formatProperties = (StructLayout) LAYOUT.select(PATH$formatProperties);
     public static final OfInt LAYOUT$imageMipTailFirstLod = (OfInt) LAYOUT.select(PATH$imageMipTailFirstLod);

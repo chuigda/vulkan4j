@@ -106,10 +106,10 @@ public record StdVideoEncodeH265WeightTableFlags(@NotNull MemorySegment segment)
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$luma_weight_l0_flag = PathElement.groupElement("PATH$luma_weight_l0_flag");
-    public static final PathElement PATH$chroma_weight_l0_flag = PathElement.groupElement("PATH$chroma_weight_l0_flag");
-    public static final PathElement PATH$luma_weight_l1_flag = PathElement.groupElement("PATH$luma_weight_l1_flag");
-    public static final PathElement PATH$chroma_weight_l1_flag = PathElement.groupElement("PATH$chroma_weight_l1_flag");
+    public static final PathElement PATH$luma_weight_l0_flag = PathElement.groupElement("luma_weight_l0_flag");
+    public static final PathElement PATH$chroma_weight_l0_flag = PathElement.groupElement("chroma_weight_l0_flag");
+    public static final PathElement PATH$luma_weight_l1_flag = PathElement.groupElement("luma_weight_l1_flag");
+    public static final PathElement PATH$chroma_weight_l1_flag = PathElement.groupElement("chroma_weight_l1_flag");
 
     public static final OfShort LAYOUT$luma_weight_l0_flag = (OfShort) LAYOUT.select(PATH$luma_weight_l0_flag);
     public static final OfShort LAYOUT$chroma_weight_l0_flag = (OfShort) LAYOUT.select(PATH$chroma_weight_l0_flag);

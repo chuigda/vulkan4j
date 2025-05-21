@@ -88,8 +88,8 @@ public record VkDepthClampRangeEXT(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$minDepthClamp = PathElement.groupElement("PATH$minDepthClamp");
-    public static final PathElement PATH$maxDepthClamp = PathElement.groupElement("PATH$maxDepthClamp");
+    public static final PathElement PATH$minDepthClamp = PathElement.groupElement("minDepthClamp");
+    public static final PathElement PATH$maxDepthClamp = PathElement.groupElement("maxDepthClamp");
 
     public static final OfFloat LAYOUT$minDepthClamp = (OfFloat) LAYOUT.select(PATH$minDepthClamp);
     public static final OfFloat LAYOUT$maxDepthClamp = (OfFloat) LAYOUT.select(PATH$maxDepthClamp);

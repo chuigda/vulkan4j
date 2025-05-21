@@ -226,20 +226,20 @@ public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(@NotNull MemorySegmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shaderBufferFloat32Atomics = PathElement.groupElement("PATH$shaderBufferFloat32Atomics");
-    public static final PathElement PATH$shaderBufferFloat32AtomicAdd = PathElement.groupElement("PATH$shaderBufferFloat32AtomicAdd");
-    public static final PathElement PATH$shaderBufferFloat64Atomics = PathElement.groupElement("PATH$shaderBufferFloat64Atomics");
-    public static final PathElement PATH$shaderBufferFloat64AtomicAdd = PathElement.groupElement("PATH$shaderBufferFloat64AtomicAdd");
-    public static final PathElement PATH$shaderSharedFloat32Atomics = PathElement.groupElement("PATH$shaderSharedFloat32Atomics");
-    public static final PathElement PATH$shaderSharedFloat32AtomicAdd = PathElement.groupElement("PATH$shaderSharedFloat32AtomicAdd");
-    public static final PathElement PATH$shaderSharedFloat64Atomics = PathElement.groupElement("PATH$shaderSharedFloat64Atomics");
-    public static final PathElement PATH$shaderSharedFloat64AtomicAdd = PathElement.groupElement("PATH$shaderSharedFloat64AtomicAdd");
-    public static final PathElement PATH$shaderImageFloat32Atomics = PathElement.groupElement("PATH$shaderImageFloat32Atomics");
-    public static final PathElement PATH$shaderImageFloat32AtomicAdd = PathElement.groupElement("PATH$shaderImageFloat32AtomicAdd");
-    public static final PathElement PATH$sparseImageFloat32Atomics = PathElement.groupElement("PATH$sparseImageFloat32Atomics");
-    public static final PathElement PATH$sparseImageFloat32AtomicAdd = PathElement.groupElement("PATH$sparseImageFloat32AtomicAdd");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shaderBufferFloat32Atomics = PathElement.groupElement("shaderBufferFloat32Atomics");
+    public static final PathElement PATH$shaderBufferFloat32AtomicAdd = PathElement.groupElement("shaderBufferFloat32AtomicAdd");
+    public static final PathElement PATH$shaderBufferFloat64Atomics = PathElement.groupElement("shaderBufferFloat64Atomics");
+    public static final PathElement PATH$shaderBufferFloat64AtomicAdd = PathElement.groupElement("shaderBufferFloat64AtomicAdd");
+    public static final PathElement PATH$shaderSharedFloat32Atomics = PathElement.groupElement("shaderSharedFloat32Atomics");
+    public static final PathElement PATH$shaderSharedFloat32AtomicAdd = PathElement.groupElement("shaderSharedFloat32AtomicAdd");
+    public static final PathElement PATH$shaderSharedFloat64Atomics = PathElement.groupElement("shaderSharedFloat64Atomics");
+    public static final PathElement PATH$shaderSharedFloat64AtomicAdd = PathElement.groupElement("shaderSharedFloat64AtomicAdd");
+    public static final PathElement PATH$shaderImageFloat32Atomics = PathElement.groupElement("shaderImageFloat32Atomics");
+    public static final PathElement PATH$shaderImageFloat32AtomicAdd = PathElement.groupElement("shaderImageFloat32AtomicAdd");
+    public static final PathElement PATH$sparseImageFloat32Atomics = PathElement.groupElement("sparseImageFloat32Atomics");
+    public static final PathElement PATH$sparseImageFloat32AtomicAdd = PathElement.groupElement("sparseImageFloat32AtomicAdd");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

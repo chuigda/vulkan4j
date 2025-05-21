@@ -136,11 +136,11 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(@NotNull Memory
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$fragmentShadingRateEnums = PathElement.groupElement("PATH$fragmentShadingRateEnums");
-    public static final PathElement PATH$supersampleFragmentShadingRates = PathElement.groupElement("PATH$supersampleFragmentShadingRates");
-    public static final PathElement PATH$noInvocationFragmentShadingRates = PathElement.groupElement("PATH$noInvocationFragmentShadingRates");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$fragmentShadingRateEnums = PathElement.groupElement("fragmentShadingRateEnums");
+    public static final PathElement PATH$supersampleFragmentShadingRates = PathElement.groupElement("supersampleFragmentShadingRates");
+    public static final PathElement PATH$noInvocationFragmentShadingRates = PathElement.groupElement("noInvocationFragmentShadingRates");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

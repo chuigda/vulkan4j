@@ -146,12 +146,12 @@ public record VkPhysicalDevice16BitStorageFeatures(@NotNull MemorySegment segmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$storageBuffer16BitAccess = PathElement.groupElement("PATH$storageBuffer16BitAccess");
-    public static final PathElement PATH$uniformAndStorageBuffer16BitAccess = PathElement.groupElement("PATH$uniformAndStorageBuffer16BitAccess");
-    public static final PathElement PATH$storagePushConstant16 = PathElement.groupElement("PATH$storagePushConstant16");
-    public static final PathElement PATH$storageInputOutput16 = PathElement.groupElement("PATH$storageInputOutput16");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$storageBuffer16BitAccess = PathElement.groupElement("storageBuffer16BitAccess");
+    public static final PathElement PATH$uniformAndStorageBuffer16BitAccess = PathElement.groupElement("uniformAndStorageBuffer16BitAccess");
+    public static final PathElement PATH$storagePushConstant16 = PathElement.groupElement("storagePushConstant16");
+    public static final PathElement PATH$storageInputOutput16 = PathElement.groupElement("storageInputOutput16");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -186,15 +186,15 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$seq_parameter_set_id = PathElement.groupElement("PATH$seq_parameter_set_id");
-    public static final PathElement PATH$pic_parameter_set_id = PathElement.groupElement("PATH$pic_parameter_set_id");
-    public static final PathElement PATH$idr_pic_id = PathElement.groupElement("PATH$idr_pic_id");
-    public static final PathElement PATH$primary_pic_type = PathElement.groupElement("PATH$primary_pic_type");
-    public static final PathElement PATH$frame_num = PathElement.groupElement("PATH$frame_num");
-    public static final PathElement PATH$PicOrderCnt = PathElement.groupElement("PATH$PicOrderCnt");
-    public static final PathElement PATH$temporal_id = PathElement.groupElement("PATH$temporal_id");
-    public static final PathElement PATH$pRefLists = PathElement.groupElement("PATH$pRefLists");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$seq_parameter_set_id = PathElement.groupElement("seq_parameter_set_id");
+    public static final PathElement PATH$pic_parameter_set_id = PathElement.groupElement("pic_parameter_set_id");
+    public static final PathElement PATH$idr_pic_id = PathElement.groupElement("idr_pic_id");
+    public static final PathElement PATH$primary_pic_type = PathElement.groupElement("primary_pic_type");
+    public static final PathElement PATH$frame_num = PathElement.groupElement("frame_num");
+    public static final PathElement PATH$PicOrderCnt = PathElement.groupElement("PicOrderCnt");
+    public static final PathElement PATH$temporal_id = PathElement.groupElement("temporal_id");
+    public static final PathElement PATH$pRefLists = PathElement.groupElement("pRefLists");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$seq_parameter_set_id = (OfByte) LAYOUT.select(PATH$seq_parameter_set_id);

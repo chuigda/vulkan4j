@@ -158,15 +158,15 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$transform = PathElement.groupElement("PATH$transform");
-    public static final PathElement PATH$explicitAABB = PathElement.groupElement("PATH$explicitAABB");
-    public static final PathElement PATH$instanceID = PathElement.groupElement("PATH$instanceID");
-    public static final PathElement PATH$instanceMask = PathElement.groupElement("PATH$instanceMask");
-    public static final PathElement PATH$instanceContributionToHitGroupIndex = PathElement.groupElement("PATH$instanceContributionToHitGroupIndex");
-    public static final PathElement PATH$instanceFlags = PathElement.groupElement("PATH$instanceFlags");
-    public static final PathElement PATH$instanceIndex = PathElement.groupElement("PATH$instanceIndex");
-    public static final PathElement PATH$partitionIndex = PathElement.groupElement("PATH$partitionIndex");
-    public static final PathElement PATH$accelerationStructure = PathElement.groupElement("PATH$accelerationStructure");
+    public static final PathElement PATH$transform = PathElement.groupElement("transform");
+    public static final PathElement PATH$explicitAABB = PathElement.groupElement("explicitAABB");
+    public static final PathElement PATH$instanceID = PathElement.groupElement("instanceID");
+    public static final PathElement PATH$instanceMask = PathElement.groupElement("instanceMask");
+    public static final PathElement PATH$instanceContributionToHitGroupIndex = PathElement.groupElement("instanceContributionToHitGroupIndex");
+    public static final PathElement PATH$instanceFlags = PathElement.groupElement("instanceFlags");
+    public static final PathElement PATH$instanceIndex = PathElement.groupElement("instanceIndex");
+    public static final PathElement PATH$partitionIndex = PathElement.groupElement("partitionIndex");
+    public static final PathElement PATH$accelerationStructure = PathElement.groupElement("accelerationStructure");
 
     public static final StructLayout LAYOUT$transform = (StructLayout) LAYOUT.select(PATH$transform);
     public static final OfFloat LAYOUT$explicitAABB = (OfFloat) LAYOUT.select(PATH$explicitAABB);

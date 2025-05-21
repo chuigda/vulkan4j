@@ -176,17 +176,17 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$luma_log2_weight_denom = PathElement.groupElement("PATH$luma_log2_weight_denom");
-    public static final PathElement PATH$chroma_log2_weight_denom = PathElement.groupElement("PATH$chroma_log2_weight_denom");
-    public static final PathElement PATH$luma_weight_l0 = PathElement.groupElement("PATH$luma_weight_l0");
-    public static final PathElement PATH$luma_offset_l0 = PathElement.groupElement("PATH$luma_offset_l0");
-    public static final PathElement PATH$chroma_weight_l0 = PathElement.groupElement("PATH$chroma_weight_l0");
-    public static final PathElement PATH$chroma_offset_l0 = PathElement.groupElement("PATH$chroma_offset_l0");
-    public static final PathElement PATH$luma_weight_l1 = PathElement.groupElement("PATH$luma_weight_l1");
-    public static final PathElement PATH$luma_offset_l1 = PathElement.groupElement("PATH$luma_offset_l1");
-    public static final PathElement PATH$chroma_weight_l1 = PathElement.groupElement("PATH$chroma_weight_l1");
-    public static final PathElement PATH$chroma_offset_l1 = PathElement.groupElement("PATH$chroma_offset_l1");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$luma_log2_weight_denom = PathElement.groupElement("luma_log2_weight_denom");
+    public static final PathElement PATH$chroma_log2_weight_denom = PathElement.groupElement("chroma_log2_weight_denom");
+    public static final PathElement PATH$luma_weight_l0 = PathElement.groupElement("luma_weight_l0");
+    public static final PathElement PATH$luma_offset_l0 = PathElement.groupElement("luma_offset_l0");
+    public static final PathElement PATH$chroma_weight_l0 = PathElement.groupElement("chroma_weight_l0");
+    public static final PathElement PATH$chroma_offset_l0 = PathElement.groupElement("chroma_offset_l0");
+    public static final PathElement PATH$luma_weight_l1 = PathElement.groupElement("luma_weight_l1");
+    public static final PathElement PATH$luma_offset_l1 = PathElement.groupElement("luma_offset_l1");
+    public static final PathElement PATH$chroma_weight_l1 = PathElement.groupElement("chroma_weight_l1");
+    public static final PathElement PATH$chroma_offset_l1 = PathElement.groupElement("chroma_offset_l1");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$luma_log2_weight_denom = (OfByte) LAYOUT.select(PATH$luma_log2_weight_denom);

@@ -98,9 +98,9 @@ public record VkBufferCopy(@NotNull MemorySegment segment) implements IPointer {
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$srcOffset = PathElement.groupElement("PATH$srcOffset");
-    public static final PathElement PATH$dstOffset = PathElement.groupElement("PATH$dstOffset");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
+    public static final PathElement PATH$srcOffset = PathElement.groupElement("srcOffset");
+    public static final PathElement PATH$dstOffset = PathElement.groupElement("dstOffset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
 
     public static final OfLong LAYOUT$srcOffset = (OfLong) LAYOUT.select(PATH$srcOffset);
     public static final OfLong LAYOUT$dstOffset = (OfLong) LAYOUT.select(PATH$dstOffset);

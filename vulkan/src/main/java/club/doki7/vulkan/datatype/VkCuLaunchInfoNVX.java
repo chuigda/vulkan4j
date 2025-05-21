@@ -238,20 +238,20 @@ public record VkCuLaunchInfoNVX(@NotNull MemorySegment segment) implements IPoin
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$function = PathElement.groupElement("PATH$function");
-    public static final PathElement PATH$gridDimX = PathElement.groupElement("PATH$gridDimX");
-    public static final PathElement PATH$gridDimY = PathElement.groupElement("PATH$gridDimY");
-    public static final PathElement PATH$gridDimZ = PathElement.groupElement("PATH$gridDimZ");
-    public static final PathElement PATH$blockDimX = PathElement.groupElement("PATH$blockDimX");
-    public static final PathElement PATH$blockDimY = PathElement.groupElement("PATH$blockDimY");
-    public static final PathElement PATH$blockDimZ = PathElement.groupElement("PATH$blockDimZ");
-    public static final PathElement PATH$sharedMemBytes = PathElement.groupElement("PATH$sharedMemBytes");
-    public static final PathElement PATH$paramCount = PathElement.groupElement("PATH$paramCount");
-    public static final PathElement PATH$pParams = PathElement.groupElement("PATH$pParams");
-    public static final PathElement PATH$extraCount = PathElement.groupElement("PATH$extraCount");
-    public static final PathElement PATH$pExtras = PathElement.groupElement("PATH$pExtras");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$function = PathElement.groupElement("function");
+    public static final PathElement PATH$gridDimX = PathElement.groupElement("gridDimX");
+    public static final PathElement PATH$gridDimY = PathElement.groupElement("gridDimY");
+    public static final PathElement PATH$gridDimZ = PathElement.groupElement("gridDimZ");
+    public static final PathElement PATH$blockDimX = PathElement.groupElement("blockDimX");
+    public static final PathElement PATH$blockDimY = PathElement.groupElement("blockDimY");
+    public static final PathElement PATH$blockDimZ = PathElement.groupElement("blockDimZ");
+    public static final PathElement PATH$sharedMemBytes = PathElement.groupElement("sharedMemBytes");
+    public static final PathElement PATH$paramCount = PathElement.groupElement("paramCount");
+    public static final PathElement PATH$pParams = PathElement.groupElement("pParams");
+    public static final PathElement PATH$extraCount = PathElement.groupElement("extraCount");
+    public static final PathElement PATH$pExtras = PathElement.groupElement("pExtras");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

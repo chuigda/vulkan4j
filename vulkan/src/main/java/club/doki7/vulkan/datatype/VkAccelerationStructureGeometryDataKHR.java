@@ -98,9 +98,9 @@ public record VkAccelerationStructureGeometryDataKHR(@NotNull MemorySegment segm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$triangles = PathElement.groupElement("PATH$triangles");
-    public static final PathElement PATH$aabbs = PathElement.groupElement("PATH$aabbs");
-    public static final PathElement PATH$instances = PathElement.groupElement("PATH$instances");
+    public static final PathElement PATH$triangles = PathElement.groupElement("triangles");
+    public static final PathElement PATH$aabbs = PathElement.groupElement("aabbs");
+    public static final PathElement PATH$instances = PathElement.groupElement("instances");
 
     public static final StructLayout LAYOUT$triangles = (StructLayout) LAYOUT.select(PATH$triangles);
     public static final StructLayout LAYOUT$aabbs = (StructLayout) LAYOUT.select(PATH$aabbs);

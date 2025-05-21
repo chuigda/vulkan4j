@@ -108,10 +108,10 @@ public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$queueFlags = PathElement.groupElement("PATH$queueFlags");
-    public static final PathElement PATH$queueCount = PathElement.groupElement("PATH$queueCount");
-    public static final PathElement PATH$timestampValidBits = PathElement.groupElement("PATH$timestampValidBits");
-    public static final PathElement PATH$minImageTransferGranularity = PathElement.groupElement("PATH$minImageTransferGranularity");
+    public static final PathElement PATH$queueFlags = PathElement.groupElement("queueFlags");
+    public static final PathElement PATH$queueCount = PathElement.groupElement("queueCount");
+    public static final PathElement PATH$timestampValidBits = PathElement.groupElement("timestampValidBits");
+    public static final PathElement PATH$minImageTransferGranularity = PathElement.groupElement("minImageTransferGranularity");
 
     public static final OfInt LAYOUT$queueFlags = (OfInt) LAYOUT.select(PATH$queueFlags);
     public static final OfInt LAYOUT$queueCount = (OfInt) LAYOUT.select(PATH$queueCount);

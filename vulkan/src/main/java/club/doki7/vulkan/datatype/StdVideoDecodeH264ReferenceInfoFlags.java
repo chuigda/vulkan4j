@@ -112,7 +112,7 @@ public record StdVideoDecodeH264ReferenceInfoFlags(@NotNull MemorySegment segmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$top_field_flag$is_non_existing = PathElement.groupElement("PATH$bitfield$top_field_flag$is_non_existing");
+    public static final PathElement PATH$bitfield$top_field_flag$is_non_existing = PathElement.groupElement("top_field_flag$is_non_existing");
 
     public static final OfInt LAYOUT$bitfield$top_field_flag$is_non_existing = (OfInt) LAYOUT.select(PATH$bitfield$top_field_flag$is_non_existing);
 

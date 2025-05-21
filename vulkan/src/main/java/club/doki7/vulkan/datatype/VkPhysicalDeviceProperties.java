@@ -158,15 +158,15 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$apiVersion = PathElement.groupElement("PATH$apiVersion");
-    public static final PathElement PATH$driverVersion = PathElement.groupElement("PATH$driverVersion");
-    public static final PathElement PATH$vendorID = PathElement.groupElement("PATH$vendorID");
-    public static final PathElement PATH$deviceID = PathElement.groupElement("PATH$deviceID");
-    public static final PathElement PATH$deviceType = PathElement.groupElement("PATH$deviceType");
-    public static final PathElement PATH$deviceName = PathElement.groupElement("PATH$deviceName");
-    public static final PathElement PATH$pipelineCacheUUID = PathElement.groupElement("PATH$pipelineCacheUUID");
-    public static final PathElement PATH$limits = PathElement.groupElement("PATH$limits");
-    public static final PathElement PATH$sparseProperties = PathElement.groupElement("PATH$sparseProperties");
+    public static final PathElement PATH$apiVersion = PathElement.groupElement("apiVersion");
+    public static final PathElement PATH$driverVersion = PathElement.groupElement("driverVersion");
+    public static final PathElement PATH$vendorID = PathElement.groupElement("vendorID");
+    public static final PathElement PATH$deviceID = PathElement.groupElement("deviceID");
+    public static final PathElement PATH$deviceType = PathElement.groupElement("deviceType");
+    public static final PathElement PATH$deviceName = PathElement.groupElement("deviceName");
+    public static final PathElement PATH$pipelineCacheUUID = PathElement.groupElement("pipelineCacheUUID");
+    public static final PathElement PATH$limits = PathElement.groupElement("limits");
+    public static final PathElement PATH$sparseProperties = PathElement.groupElement("sparseProperties");
 
     public static final OfInt LAYOUT$apiVersion = (OfInt) LAYOUT.select(PATH$apiVersion);
     public static final OfInt LAYOUT$driverVersion = (OfInt) LAYOUT.select(PATH$driverVersion);

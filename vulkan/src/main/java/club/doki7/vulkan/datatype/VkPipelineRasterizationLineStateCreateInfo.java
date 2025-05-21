@@ -146,12 +146,12 @@ public record VkPipelineRasterizationLineStateCreateInfo(@NotNull MemorySegment 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$lineRasterizationMode = PathElement.groupElement("PATH$lineRasterizationMode");
-    public static final PathElement PATH$stippledLineEnable = PathElement.groupElement("PATH$stippledLineEnable");
-    public static final PathElement PATH$lineStippleFactor = PathElement.groupElement("PATH$lineStippleFactor");
-    public static final PathElement PATH$lineStipplePattern = PathElement.groupElement("PATH$lineStipplePattern");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$lineRasterizationMode = PathElement.groupElement("lineRasterizationMode");
+    public static final PathElement PATH$stippledLineEnable = PathElement.groupElement("stippledLineEnable");
+    public static final PathElement PATH$lineStippleFactor = PathElement.groupElement("lineStippleFactor");
+    public static final PathElement PATH$lineStipplePattern = PathElement.groupElement("lineStipplePattern");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

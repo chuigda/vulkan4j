@@ -136,11 +136,11 @@ public record VkComputePipelineIndirectBufferInfoNV(@NotNull MemorySegment segme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$deviceAddress = PathElement.groupElement("PATH$deviceAddress");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
-    public static final PathElement PATH$pipelineDeviceAddressCaptureReplay = PathElement.groupElement("PATH$pipelineDeviceAddressCaptureReplay");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$deviceAddress = PathElement.groupElement("deviceAddress");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$pipelineDeviceAddressCaptureReplay = PathElement.groupElement("pipelineDeviceAddressCaptureReplay");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

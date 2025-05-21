@@ -88,8 +88,8 @@ public record VkClearDepthStencilValue(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$depth = PathElement.groupElement("PATH$depth");
-    public static final PathElement PATH$stencil = PathElement.groupElement("PATH$stencil");
+    public static final PathElement PATH$depth = PathElement.groupElement("depth");
+    public static final PathElement PATH$stencil = PathElement.groupElement("stencil");
 
     public static final OfFloat LAYOUT$depth = (OfFloat) LAYOUT.select(PATH$depth);
     public static final OfInt LAYOUT$stencil = (OfInt) LAYOUT.select(PATH$stencil);

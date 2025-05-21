@@ -214,18 +214,18 @@ public record VkGeneratedCommandsInfoEXT(@NotNull MemorySegment segment) impleme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shaderStages = PathElement.groupElement("PATH$shaderStages");
-    public static final PathElement PATH$indirectExecutionSet = PathElement.groupElement("PATH$indirectExecutionSet");
-    public static final PathElement PATH$indirectCommandsLayout = PathElement.groupElement("PATH$indirectCommandsLayout");
-    public static final PathElement PATH$indirectAddress = PathElement.groupElement("PATH$indirectAddress");
-    public static final PathElement PATH$indirectAddressSize = PathElement.groupElement("PATH$indirectAddressSize");
-    public static final PathElement PATH$preprocessAddress = PathElement.groupElement("PATH$preprocessAddress");
-    public static final PathElement PATH$preprocessSize = PathElement.groupElement("PATH$preprocessSize");
-    public static final PathElement PATH$maxSequenceCount = PathElement.groupElement("PATH$maxSequenceCount");
-    public static final PathElement PATH$sequenceCountAddress = PathElement.groupElement("PATH$sequenceCountAddress");
-    public static final PathElement PATH$maxDrawCount = PathElement.groupElement("PATH$maxDrawCount");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shaderStages = PathElement.groupElement("shaderStages");
+    public static final PathElement PATH$indirectExecutionSet = PathElement.groupElement("indirectExecutionSet");
+    public static final PathElement PATH$indirectCommandsLayout = PathElement.groupElement("indirectCommandsLayout");
+    public static final PathElement PATH$indirectAddress = PathElement.groupElement("indirectAddress");
+    public static final PathElement PATH$indirectAddressSize = PathElement.groupElement("indirectAddressSize");
+    public static final PathElement PATH$preprocessAddress = PathElement.groupElement("preprocessAddress");
+    public static final PathElement PATH$preprocessSize = PathElement.groupElement("preprocessSize");
+    public static final PathElement PATH$maxSequenceCount = PathElement.groupElement("maxSequenceCount");
+    public static final PathElement PATH$sequenceCountAddress = PathElement.groupElement("sequenceCountAddress");
+    public static final PathElement PATH$maxDrawCount = PathElement.groupElement("maxDrawCount");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

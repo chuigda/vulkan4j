@@ -126,10 +126,10 @@ public record VkSemaphoreTypeCreateInfo(@NotNull MemorySegment segment) implemen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$semaphoreType = PathElement.groupElement("PATH$semaphoreType");
-    public static final PathElement PATH$initialValue = PathElement.groupElement("PATH$initialValue");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$semaphoreType = PathElement.groupElement("semaphoreType");
+    public static final PathElement PATH$initialValue = PathElement.groupElement("initialValue");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

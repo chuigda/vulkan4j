@@ -118,11 +118,11 @@ public record VkDrawIndexedIndirectCommand(@NotNull MemorySegment segment) imple
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$indexCount = PathElement.groupElement("PATH$indexCount");
-    public static final PathElement PATH$instanceCount = PathElement.groupElement("PATH$instanceCount");
-    public static final PathElement PATH$firstIndex = PathElement.groupElement("PATH$firstIndex");
-    public static final PathElement PATH$vertexOffset = PathElement.groupElement("PATH$vertexOffset");
-    public static final PathElement PATH$firstInstance = PathElement.groupElement("PATH$firstInstance");
+    public static final PathElement PATH$indexCount = PathElement.groupElement("indexCount");
+    public static final PathElement PATH$instanceCount = PathElement.groupElement("instanceCount");
+    public static final PathElement PATH$firstIndex = PathElement.groupElement("firstIndex");
+    public static final PathElement PATH$vertexOffset = PathElement.groupElement("vertexOffset");
+    public static final PathElement PATH$firstInstance = PathElement.groupElement("firstInstance");
 
     public static final OfInt LAYOUT$indexCount = (OfInt) LAYOUT.select(PATH$indexCount);
     public static final OfInt LAYOUT$instanceCount = (OfInt) LAYOUT.select(PATH$instanceCount);

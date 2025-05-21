@@ -106,8 +106,8 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$descriptorTypeCount = PathElement.groupElement("PATH$descriptorTypeCount");
-    public static final PathElement PATH$pDescriptorTypes = PathElement.groupElement("PATH$pDescriptorTypes");
+    public static final PathElement PATH$descriptorTypeCount = PathElement.groupElement("descriptorTypeCount");
+    public static final PathElement PATH$pDescriptorTypes = PathElement.groupElement("pDescriptorTypes");
 
     public static final OfInt LAYOUT$descriptorTypeCount = (OfInt) LAYOUT.select(PATH$descriptorTypeCount);
     public static final AddressLayout LAYOUT$pDescriptorTypes = (AddressLayout) LAYOUT.select(PATH$pDescriptorTypes);

@@ -126,10 +126,10 @@ public record VkPhysicalDeviceShaderClockFeaturesKHR(@NotNull MemorySegment segm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shaderSubgroupClock = PathElement.groupElement("PATH$shaderSubgroupClock");
-    public static final PathElement PATH$shaderDeviceClock = PathElement.groupElement("PATH$shaderDeviceClock");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shaderSubgroupClock = PathElement.groupElement("shaderSubgroupClock");
+    public static final PathElement PATH$shaderDeviceClock = PathElement.groupElement("shaderDeviceClock");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

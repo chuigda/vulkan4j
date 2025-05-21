@@ -126,10 +126,10 @@ public record VkPhysicalDeviceVariablePointersFeatures(@NotNull MemorySegment se
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$variablePointersStorageBuffer = PathElement.groupElement("PATH$variablePointersStorageBuffer");
-    public static final PathElement PATH$variablePointers = PathElement.groupElement("PATH$variablePointers");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$variablePointersStorageBuffer = PathElement.groupElement("variablePointersStorageBuffer");
+    public static final PathElement PATH$variablePointers = PathElement.groupElement("variablePointers");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

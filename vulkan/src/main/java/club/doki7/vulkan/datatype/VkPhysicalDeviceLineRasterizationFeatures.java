@@ -166,14 +166,14 @@ public record VkPhysicalDeviceLineRasterizationFeatures(@NotNull MemorySegment s
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$rectangularLines = PathElement.groupElement("PATH$rectangularLines");
-    public static final PathElement PATH$bresenhamLines = PathElement.groupElement("PATH$bresenhamLines");
-    public static final PathElement PATH$smoothLines = PathElement.groupElement("PATH$smoothLines");
-    public static final PathElement PATH$stippledRectangularLines = PathElement.groupElement("PATH$stippledRectangularLines");
-    public static final PathElement PATH$stippledBresenhamLines = PathElement.groupElement("PATH$stippledBresenhamLines");
-    public static final PathElement PATH$stippledSmoothLines = PathElement.groupElement("PATH$stippledSmoothLines");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$rectangularLines = PathElement.groupElement("rectangularLines");
+    public static final PathElement PATH$bresenhamLines = PathElement.groupElement("bresenhamLines");
+    public static final PathElement PATH$smoothLines = PathElement.groupElement("smoothLines");
+    public static final PathElement PATH$stippledRectangularLines = PathElement.groupElement("stippledRectangularLines");
+    public static final PathElement PATH$stippledBresenhamLines = PathElement.groupElement("stippledBresenhamLines");
+    public static final PathElement PATH$stippledSmoothLines = PathElement.groupElement("stippledSmoothLines");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

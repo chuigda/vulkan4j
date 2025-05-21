@@ -92,8 +92,8 @@ public record VkDisplayPlanePropertiesKHR(@NotNull MemorySegment segment) implem
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$currentDisplay = PathElement.groupElement("PATH$currentDisplay");
-    public static final PathElement PATH$currentStackIndex = PathElement.groupElement("PATH$currentStackIndex");
+    public static final PathElement PATH$currentDisplay = PathElement.groupElement("currentDisplay");
+    public static final PathElement PATH$currentStackIndex = PathElement.groupElement("currentStackIndex");
 
     public static final AddressLayout LAYOUT$currentDisplay = (AddressLayout) LAYOUT.select(PATH$currentDisplay);
     public static final OfInt LAYOUT$currentStackIndex = (OfInt) LAYOUT.select(PATH$currentStackIndex);

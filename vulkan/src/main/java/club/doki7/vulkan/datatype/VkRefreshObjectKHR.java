@@ -98,9 +98,9 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IPoi
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$objectType = PathElement.groupElement("PATH$objectType");
-    public static final PathElement PATH$objectHandle = PathElement.groupElement("PATH$objectHandle");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$objectType = PathElement.groupElement("objectType");
+    public static final PathElement PATH$objectHandle = PathElement.groupElement("objectHandle");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
 
     public static final OfInt LAYOUT$objectType = (OfInt) LAYOUT.select(PATH$objectType);
     public static final OfLong LAYOUT$objectHandle = (OfLong) LAYOUT.select(PATH$objectHandle);

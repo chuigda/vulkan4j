@@ -140,11 +140,11 @@ public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implem
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$commandPool = PathElement.groupElement("PATH$commandPool");
-    public static final PathElement PATH$level = PathElement.groupElement("PATH$level");
-    public static final PathElement PATH$commandBufferCount = PathElement.groupElement("PATH$commandBufferCount");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$commandPool = PathElement.groupElement("commandPool");
+    public static final PathElement PATH$level = PathElement.groupElement("level");
+    public static final PathElement PATH$commandBufferCount = PathElement.groupElement("commandBufferCount");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -163,11 +163,11 @@ public record VkVideoDecodeH264SessionParametersCreateInfoKHR(@NotNull MemorySeg
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxStdSPSCount = PathElement.groupElement("PATH$maxStdSPSCount");
-    public static final PathElement PATH$maxStdPPSCount = PathElement.groupElement("PATH$maxStdPPSCount");
-    public static final PathElement PATH$pParametersAddInfo = PathElement.groupElement("PATH$pParametersAddInfo");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$maxStdSPSCount = PathElement.groupElement("maxStdSPSCount");
+    public static final PathElement PATH$maxStdPPSCount = PathElement.groupElement("maxStdPPSCount");
+    public static final PathElement PATH$pParametersAddInfo = PathElement.groupElement("pParametersAddInfo");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

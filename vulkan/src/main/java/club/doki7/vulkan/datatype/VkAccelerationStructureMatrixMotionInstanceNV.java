@@ -145,11 +145,11 @@ public record VkAccelerationStructureMatrixMotionInstanceNV(@NotNull MemorySegme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$transformT0 = PathElement.groupElement("PATH$transformT0");
-    public static final PathElement PATH$transformT1 = PathElement.groupElement("PATH$transformT1");
-    public static final PathElement PATH$bitfield$instanceCustomIndex$mask = PathElement.groupElement("PATH$bitfield$instanceCustomIndex$mask");
-    public static final PathElement PATH$bitfield$instanceShaderBindingTableRecordOffset$flags = PathElement.groupElement("PATH$bitfield$instanceShaderBindingTableRecordOffset$flags");
-    public static final PathElement PATH$accelerationStructureReference = PathElement.groupElement("PATH$accelerationStructureReference");
+    public static final PathElement PATH$transformT0 = PathElement.groupElement("transformT0");
+    public static final PathElement PATH$transformT1 = PathElement.groupElement("transformT1");
+    public static final PathElement PATH$bitfield$instanceCustomIndex$mask = PathElement.groupElement("instanceCustomIndex$mask");
+    public static final PathElement PATH$bitfield$instanceShaderBindingTableRecordOffset$flags = PathElement.groupElement("instanceShaderBindingTableRecordOffset$flags");
+    public static final PathElement PATH$accelerationStructureReference = PathElement.groupElement("accelerationStructureReference");
 
     public static final StructLayout LAYOUT$transformT0 = (StructLayout) LAYOUT.select(PATH$transformT0);
     public static final StructLayout LAYOUT$transformT1 = (StructLayout) LAYOUT.select(PATH$transformT1);

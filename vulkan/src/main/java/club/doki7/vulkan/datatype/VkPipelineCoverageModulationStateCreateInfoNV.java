@@ -173,13 +173,13 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$coverageModulationMode = PathElement.groupElement("PATH$coverageModulationMode");
-    public static final PathElement PATH$coverageModulationTableEnable = PathElement.groupElement("PATH$coverageModulationTableEnable");
-    public static final PathElement PATH$coverageModulationTableCount = PathElement.groupElement("PATH$coverageModulationTableCount");
-    public static final PathElement PATH$pCoverageModulationTable = PathElement.groupElement("PATH$pCoverageModulationTable");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$coverageModulationMode = PathElement.groupElement("coverageModulationMode");
+    public static final PathElement PATH$coverageModulationTableEnable = PathElement.groupElement("coverageModulationTableEnable");
+    public static final PathElement PATH$coverageModulationTableCount = PathElement.groupElement("coverageModulationTableCount");
+    public static final PathElement PATH$pCoverageModulationTable = PathElement.groupElement("pCoverageModulationTable");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

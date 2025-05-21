@@ -118,11 +118,11 @@ public record VkImageSubresourceRange(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$aspectMask = PathElement.groupElement("PATH$aspectMask");
-    public static final PathElement PATH$baseMipLevel = PathElement.groupElement("PATH$baseMipLevel");
-    public static final PathElement PATH$levelCount = PathElement.groupElement("PATH$levelCount");
-    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("PATH$baseArrayLayer");
-    public static final PathElement PATH$layerCount = PathElement.groupElement("PATH$layerCount");
+    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
+    public static final PathElement PATH$baseMipLevel = PathElement.groupElement("baseMipLevel");
+    public static final PathElement PATH$levelCount = PathElement.groupElement("levelCount");
+    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("baseArrayLayer");
+    public static final PathElement PATH$layerCount = PathElement.groupElement("layerCount");
 
     public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
     public static final OfInt LAYOUT$baseMipLevel = (OfInt) LAYOUT.select(PATH$baseMipLevel);

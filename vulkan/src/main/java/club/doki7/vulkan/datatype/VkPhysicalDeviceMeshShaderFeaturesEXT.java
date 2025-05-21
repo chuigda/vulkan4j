@@ -156,13 +156,13 @@ public record VkPhysicalDeviceMeshShaderFeaturesEXT(@NotNull MemorySegment segme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$taskShader = PathElement.groupElement("PATH$taskShader");
-    public static final PathElement PATH$meshShader = PathElement.groupElement("PATH$meshShader");
-    public static final PathElement PATH$multiviewMeshShader = PathElement.groupElement("PATH$multiviewMeshShader");
-    public static final PathElement PATH$primitiveFragmentShadingRateMeshShader = PathElement.groupElement("PATH$primitiveFragmentShadingRateMeshShader");
-    public static final PathElement PATH$meshShaderQueries = PathElement.groupElement("PATH$meshShaderQueries");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$taskShader = PathElement.groupElement("taskShader");
+    public static final PathElement PATH$meshShader = PathElement.groupElement("meshShader");
+    public static final PathElement PATH$multiviewMeshShader = PathElement.groupElement("multiviewMeshShader");
+    public static final PathElement PATH$primitiveFragmentShadingRateMeshShader = PathElement.groupElement("primitiveFragmentShadingRateMeshShader");
+    public static final PathElement PATH$meshShaderQueries = PathElement.groupElement("meshShaderQueries");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

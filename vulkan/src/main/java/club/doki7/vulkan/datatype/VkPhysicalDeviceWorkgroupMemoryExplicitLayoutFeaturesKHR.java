@@ -146,12 +146,12 @@ public record VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(@NotNull 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$workgroupMemoryExplicitLayout = PathElement.groupElement("PATH$workgroupMemoryExplicitLayout");
-    public static final PathElement PATH$workgroupMemoryExplicitLayoutScalarBlockLayout = PathElement.groupElement("PATH$workgroupMemoryExplicitLayoutScalarBlockLayout");
-    public static final PathElement PATH$workgroupMemoryExplicitLayout8BitAccess = PathElement.groupElement("PATH$workgroupMemoryExplicitLayout8BitAccess");
-    public static final PathElement PATH$workgroupMemoryExplicitLayout16BitAccess = PathElement.groupElement("PATH$workgroupMemoryExplicitLayout16BitAccess");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$workgroupMemoryExplicitLayout = PathElement.groupElement("workgroupMemoryExplicitLayout");
+    public static final PathElement PATH$workgroupMemoryExplicitLayoutScalarBlockLayout = PathElement.groupElement("workgroupMemoryExplicitLayoutScalarBlockLayout");
+    public static final PathElement PATH$workgroupMemoryExplicitLayout8BitAccess = PathElement.groupElement("workgroupMemoryExplicitLayout8BitAccess");
+    public static final PathElement PATH$workgroupMemoryExplicitLayout16BitAccess = PathElement.groupElement("workgroupMemoryExplicitLayout16BitAccess");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

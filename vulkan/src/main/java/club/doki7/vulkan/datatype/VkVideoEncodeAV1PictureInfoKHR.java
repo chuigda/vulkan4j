@@ -203,15 +203,15 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$predictionMode = PathElement.groupElement("PATH$predictionMode");
-    public static final PathElement PATH$rateControlGroup = PathElement.groupElement("PATH$rateControlGroup");
-    public static final PathElement PATH$constantQIndex = PathElement.groupElement("PATH$constantQIndex");
-    public static final PathElement PATH$pStdPictureInfo = PathElement.groupElement("PATH$pStdPictureInfo");
-    public static final PathElement PATH$referenceNameSlotIndices = PathElement.groupElement("PATH$referenceNameSlotIndices");
-    public static final PathElement PATH$primaryReferenceCdfOnly = PathElement.groupElement("PATH$primaryReferenceCdfOnly");
-    public static final PathElement PATH$generateObuExtensionHeader = PathElement.groupElement("PATH$generateObuExtensionHeader");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$predictionMode = PathElement.groupElement("predictionMode");
+    public static final PathElement PATH$rateControlGroup = PathElement.groupElement("rateControlGroup");
+    public static final PathElement PATH$constantQIndex = PathElement.groupElement("constantQIndex");
+    public static final PathElement PATH$pStdPictureInfo = PathElement.groupElement("pStdPictureInfo");
+    public static final PathElement PATH$referenceNameSlotIndices = PathElement.groupElement("referenceNameSlotIndices");
+    public static final PathElement PATH$primaryReferenceCdfOnly = PathElement.groupElement("primaryReferenceCdfOnly");
+    public static final PathElement PATH$generateObuExtensionHeader = PathElement.groupElement("generateObuExtensionHeader");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

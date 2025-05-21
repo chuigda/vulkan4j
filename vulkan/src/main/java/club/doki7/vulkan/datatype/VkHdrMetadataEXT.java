@@ -186,16 +186,16 @@ public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IPoint
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$displayPrimaryRed = PathElement.groupElement("PATH$displayPrimaryRed");
-    public static final PathElement PATH$displayPrimaryGreen = PathElement.groupElement("PATH$displayPrimaryGreen");
-    public static final PathElement PATH$displayPrimaryBlue = PathElement.groupElement("PATH$displayPrimaryBlue");
-    public static final PathElement PATH$whitePoint = PathElement.groupElement("PATH$whitePoint");
-    public static final PathElement PATH$maxLuminance = PathElement.groupElement("PATH$maxLuminance");
-    public static final PathElement PATH$minLuminance = PathElement.groupElement("PATH$minLuminance");
-    public static final PathElement PATH$maxContentLightLevel = PathElement.groupElement("PATH$maxContentLightLevel");
-    public static final PathElement PATH$maxFrameAverageLightLevel = PathElement.groupElement("PATH$maxFrameAverageLightLevel");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$displayPrimaryRed = PathElement.groupElement("displayPrimaryRed");
+    public static final PathElement PATH$displayPrimaryGreen = PathElement.groupElement("displayPrimaryGreen");
+    public static final PathElement PATH$displayPrimaryBlue = PathElement.groupElement("displayPrimaryBlue");
+    public static final PathElement PATH$whitePoint = PathElement.groupElement("whitePoint");
+    public static final PathElement PATH$maxLuminance = PathElement.groupElement("maxLuminance");
+    public static final PathElement PATH$minLuminance = PathElement.groupElement("minLuminance");
+    public static final PathElement PATH$maxContentLightLevel = PathElement.groupElement("maxContentLightLevel");
+    public static final PathElement PATH$maxFrameAverageLightLevel = PathElement.groupElement("maxFrameAverageLightLevel");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

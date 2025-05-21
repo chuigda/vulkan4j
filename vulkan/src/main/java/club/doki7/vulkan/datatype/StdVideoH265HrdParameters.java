@@ -263,20 +263,20 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$tick_divisor_minus2 = PathElement.groupElement("PATH$tick_divisor_minus2");
-    public static final PathElement PATH$du_cpb_removal_delay_increment_length_minus1 = PathElement.groupElement("PATH$du_cpb_removal_delay_increment_length_minus1");
-    public static final PathElement PATH$dpb_output_delay_du_length_minus1 = PathElement.groupElement("PATH$dpb_output_delay_du_length_minus1");
-    public static final PathElement PATH$bit_rate_scale = PathElement.groupElement("PATH$bit_rate_scale");
-    public static final PathElement PATH$cpb_size_scale = PathElement.groupElement("PATH$cpb_size_scale");
-    public static final PathElement PATH$cpb_size_du_scale = PathElement.groupElement("PATH$cpb_size_du_scale");
-    public static final PathElement PATH$initial_cpb_removal_delay_length_minus1 = PathElement.groupElement("PATH$initial_cpb_removal_delay_length_minus1");
-    public static final PathElement PATH$au_cpb_removal_delay_length_minus1 = PathElement.groupElement("PATH$au_cpb_removal_delay_length_minus1");
-    public static final PathElement PATH$dpb_output_delay_length_minus1 = PathElement.groupElement("PATH$dpb_output_delay_length_minus1");
-    public static final PathElement PATH$cpb_cnt_minus1 = PathElement.groupElement("PATH$cpb_cnt_minus1");
-    public static final PathElement PATH$elemental_duration_in_tc_minus1 = PathElement.groupElement("PATH$elemental_duration_in_tc_minus1");
-    public static final PathElement PATH$pSubLayerHrdParametersNal = PathElement.groupElement("PATH$pSubLayerHrdParametersNal");
-    public static final PathElement PATH$pSubLayerHrdParametersVcl = PathElement.groupElement("PATH$pSubLayerHrdParametersVcl");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$tick_divisor_minus2 = PathElement.groupElement("tick_divisor_minus2");
+    public static final PathElement PATH$du_cpb_removal_delay_increment_length_minus1 = PathElement.groupElement("du_cpb_removal_delay_increment_length_minus1");
+    public static final PathElement PATH$dpb_output_delay_du_length_minus1 = PathElement.groupElement("dpb_output_delay_du_length_minus1");
+    public static final PathElement PATH$bit_rate_scale = PathElement.groupElement("bit_rate_scale");
+    public static final PathElement PATH$cpb_size_scale = PathElement.groupElement("cpb_size_scale");
+    public static final PathElement PATH$cpb_size_du_scale = PathElement.groupElement("cpb_size_du_scale");
+    public static final PathElement PATH$initial_cpb_removal_delay_length_minus1 = PathElement.groupElement("initial_cpb_removal_delay_length_minus1");
+    public static final PathElement PATH$au_cpb_removal_delay_length_minus1 = PathElement.groupElement("au_cpb_removal_delay_length_minus1");
+    public static final PathElement PATH$dpb_output_delay_length_minus1 = PathElement.groupElement("dpb_output_delay_length_minus1");
+    public static final PathElement PATH$cpb_cnt_minus1 = PathElement.groupElement("cpb_cnt_minus1");
+    public static final PathElement PATH$elemental_duration_in_tc_minus1 = PathElement.groupElement("elemental_duration_in_tc_minus1");
+    public static final PathElement PATH$pSubLayerHrdParametersNal = PathElement.groupElement("pSubLayerHrdParametersNal");
+    public static final PathElement PATH$pSubLayerHrdParametersVcl = PathElement.groupElement("pSubLayerHrdParametersVcl");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$tick_divisor_minus2 = (OfByte) LAYOUT.select(PATH$tick_divisor_minus2);

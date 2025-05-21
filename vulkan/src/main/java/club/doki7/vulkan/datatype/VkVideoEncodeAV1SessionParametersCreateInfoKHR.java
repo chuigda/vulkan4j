@@ -227,12 +227,12 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$pStdSequenceHeader = PathElement.groupElement("PATH$pStdSequenceHeader");
-    public static final PathElement PATH$pStdDecoderModelInfo = PathElement.groupElement("PATH$pStdDecoderModelInfo");
-    public static final PathElement PATH$stdOperatingPointCount = PathElement.groupElement("PATH$stdOperatingPointCount");
-    public static final PathElement PATH$pStdOperatingPoints = PathElement.groupElement("PATH$pStdOperatingPoints");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$pStdSequenceHeader = PathElement.groupElement("pStdSequenceHeader");
+    public static final PathElement PATH$pStdDecoderModelInfo = PathElement.groupElement("pStdDecoderModelInfo");
+    public static final PathElement PATH$stdOperatingPointCount = PathElement.groupElement("stdOperatingPointCount");
+    public static final PathElement PATH$pStdOperatingPoints = PathElement.groupElement("pStdOperatingPoints");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

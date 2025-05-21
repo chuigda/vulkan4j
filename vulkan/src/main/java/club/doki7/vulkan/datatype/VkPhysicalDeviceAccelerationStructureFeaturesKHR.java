@@ -156,13 +156,13 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(@NotNull MemorySe
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$accelerationStructure = PathElement.groupElement("PATH$accelerationStructure");
-    public static final PathElement PATH$accelerationStructureCaptureReplay = PathElement.groupElement("PATH$accelerationStructureCaptureReplay");
-    public static final PathElement PATH$accelerationStructureIndirectBuild = PathElement.groupElement("PATH$accelerationStructureIndirectBuild");
-    public static final PathElement PATH$accelerationStructureHostCommands = PathElement.groupElement("PATH$accelerationStructureHostCommands");
-    public static final PathElement PATH$descriptorBindingAccelerationStructureUpdateAfterBind = PathElement.groupElement("PATH$descriptorBindingAccelerationStructureUpdateAfterBind");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$accelerationStructure = PathElement.groupElement("accelerationStructure");
+    public static final PathElement PATH$accelerationStructureCaptureReplay = PathElement.groupElement("accelerationStructureCaptureReplay");
+    public static final PathElement PATH$accelerationStructureIndirectBuild = PathElement.groupElement("accelerationStructureIndirectBuild");
+    public static final PathElement PATH$accelerationStructureHostCommands = PathElement.groupElement("accelerationStructureHostCommands");
+    public static final PathElement PATH$descriptorBindingAccelerationStructureUpdateAfterBind = PathElement.groupElement("descriptorBindingAccelerationStructureUpdateAfterBind");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

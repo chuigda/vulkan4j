@@ -108,10 +108,10 @@ public record VkViewportSwizzleNV(@NotNull MemorySegment segment) implements IPo
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$x = PathElement.groupElement("PATH$x");
-    public static final PathElement PATH$y = PathElement.groupElement("PATH$y");
-    public static final PathElement PATH$z = PathElement.groupElement("PATH$z");
-    public static final PathElement PATH$w = PathElement.groupElement("PATH$w");
+    public static final PathElement PATH$x = PathElement.groupElement("x");
+    public static final PathElement PATH$y = PathElement.groupElement("y");
+    public static final PathElement PATH$z = PathElement.groupElement("z");
+    public static final PathElement PATH$w = PathElement.groupElement("w");
 
     public static final OfInt LAYOUT$x = (OfInt) LAYOUT.select(PATH$x);
     public static final OfInt LAYOUT$y = (OfInt) LAYOUT.select(PATH$y);

@@ -149,14 +149,14 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$BitDepth = PathElement.groupElement("PATH$BitDepth");
-    public static final PathElement PATH$subsampling_x = PathElement.groupElement("PATH$subsampling_x");
-    public static final PathElement PATH$subsampling_y = PathElement.groupElement("PATH$subsampling_y");
-    public static final PathElement PATH$color_primaries = PathElement.groupElement("PATH$color_primaries");
-    public static final PathElement PATH$transfer_characteristics = PathElement.groupElement("PATH$transfer_characteristics");
-    public static final PathElement PATH$matrix_coefficients = PathElement.groupElement("PATH$matrix_coefficients");
-    public static final PathElement PATH$chroma_sample_position = PathElement.groupElement("PATH$chroma_sample_position");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$BitDepth = PathElement.groupElement("BitDepth");
+    public static final PathElement PATH$subsampling_x = PathElement.groupElement("subsampling_x");
+    public static final PathElement PATH$subsampling_y = PathElement.groupElement("subsampling_y");
+    public static final PathElement PATH$color_primaries = PathElement.groupElement("color_primaries");
+    public static final PathElement PATH$transfer_characteristics = PathElement.groupElement("transfer_characteristics");
+    public static final PathElement PATH$matrix_coefficients = PathElement.groupElement("matrix_coefficients");
+    public static final PathElement PATH$chroma_sample_position = PathElement.groupElement("chroma_sample_position");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$BitDepth = (OfByte) LAYOUT.select(PATH$BitDepth);

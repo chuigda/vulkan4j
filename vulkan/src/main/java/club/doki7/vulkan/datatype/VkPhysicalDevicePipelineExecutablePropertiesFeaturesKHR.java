@@ -116,9 +116,9 @@ public record VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(@NotNull M
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$pipelineExecutableInfo = PathElement.groupElement("PATH$pipelineExecutableInfo");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$pipelineExecutableInfo = PathElement.groupElement("pipelineExecutableInfo");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

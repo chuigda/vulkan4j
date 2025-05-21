@@ -238,15 +238,15 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$stageCount = PathElement.groupElement("PATH$stageCount");
-    public static final PathElement PATH$pStages = PathElement.groupElement("PATH$pStages");
-    public static final PathElement PATH$pLibraryInfo = PathElement.groupElement("PATH$pLibraryInfo");
-    public static final PathElement PATH$layout = PathElement.groupElement("PATH$layout");
-    public static final PathElement PATH$basePipelineHandle = PathElement.groupElement("PATH$basePipelineHandle");
-    public static final PathElement PATH$basePipelineIndex = PathElement.groupElement("PATH$basePipelineIndex");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$stageCount = PathElement.groupElement("stageCount");
+    public static final PathElement PATH$pStages = PathElement.groupElement("pStages");
+    public static final PathElement PATH$pLibraryInfo = PathElement.groupElement("pLibraryInfo");
+    public static final PathElement PATH$layout = PathElement.groupElement("layout");
+    public static final PathElement PATH$basePipelineHandle = PathElement.groupElement("basePipelineHandle");
+    public static final PathElement PATH$basePipelineIndex = PathElement.groupElement("basePipelineIndex");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

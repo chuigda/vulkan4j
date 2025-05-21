@@ -98,9 +98,9 @@ public record VkVideoEncodeAV1FrameSizeKHR(@NotNull MemorySegment segment) imple
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$intraFrameSize = PathElement.groupElement("PATH$intraFrameSize");
-    public static final PathElement PATH$predictiveFrameSize = PathElement.groupElement("PATH$predictiveFrameSize");
-    public static final PathElement PATH$bipredictiveFrameSize = PathElement.groupElement("PATH$bipredictiveFrameSize");
+    public static final PathElement PATH$intraFrameSize = PathElement.groupElement("intraFrameSize");
+    public static final PathElement PATH$predictiveFrameSize = PathElement.groupElement("predictiveFrameSize");
+    public static final PathElement PATH$bipredictiveFrameSize = PathElement.groupElement("bipredictiveFrameSize");
 
     public static final OfInt LAYOUT$intraFrameSize = (OfInt) LAYOUT.select(PATH$intraFrameSize);
     public static final OfInt LAYOUT$predictiveFrameSize = (OfInt) LAYOUT.select(PATH$predictiveFrameSize);

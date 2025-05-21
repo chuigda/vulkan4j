@@ -260,17 +260,17 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$num_ref_idx_l0_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l0_active_minus1");
-    public static final PathElement PATH$num_ref_idx_l1_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l1_active_minus1");
-    public static final PathElement PATH$RefPicList0 = PathElement.groupElement("PATH$RefPicList0");
-    public static final PathElement PATH$RefPicList1 = PathElement.groupElement("PATH$RefPicList1");
-    public static final PathElement PATH$refList0ModOpCount = PathElement.groupElement("PATH$refList0ModOpCount");
-    public static final PathElement PATH$refList1ModOpCount = PathElement.groupElement("PATH$refList1ModOpCount");
-    public static final PathElement PATH$refPicMarkingOpCount = PathElement.groupElement("PATH$refPicMarkingOpCount");
-    public static final PathElement PATH$pRefList0ModOperations = PathElement.groupElement("PATH$pRefList0ModOperations");
-    public static final PathElement PATH$pRefList1ModOperations = PathElement.groupElement("PATH$pRefList1ModOperations");
-    public static final PathElement PATH$pRefPicMarkingOperations = PathElement.groupElement("PATH$pRefPicMarkingOperations");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$num_ref_idx_l0_active_minus1 = PathElement.groupElement("num_ref_idx_l0_active_minus1");
+    public static final PathElement PATH$num_ref_idx_l1_active_minus1 = PathElement.groupElement("num_ref_idx_l1_active_minus1");
+    public static final PathElement PATH$RefPicList0 = PathElement.groupElement("RefPicList0");
+    public static final PathElement PATH$RefPicList1 = PathElement.groupElement("RefPicList1");
+    public static final PathElement PATH$refList0ModOpCount = PathElement.groupElement("refList0ModOpCount");
+    public static final PathElement PATH$refList1ModOpCount = PathElement.groupElement("refList1ModOpCount");
+    public static final PathElement PATH$refPicMarkingOpCount = PathElement.groupElement("refPicMarkingOpCount");
+    public static final PathElement PATH$pRefList0ModOperations = PathElement.groupElement("pRefList0ModOperations");
+    public static final PathElement PATH$pRefList1ModOperations = PathElement.groupElement("pRefList1ModOperations");
+    public static final PathElement PATH$pRefPicMarkingOperations = PathElement.groupElement("pRefPicMarkingOperations");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$num_ref_idx_l0_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l0_active_minus1);

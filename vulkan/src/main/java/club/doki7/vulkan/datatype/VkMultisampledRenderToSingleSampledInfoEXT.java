@@ -126,10 +126,10 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(@NotNull MemorySegment 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$multisampledRenderToSingleSampledEnable = PathElement.groupElement("PATH$multisampledRenderToSingleSampledEnable");
-    public static final PathElement PATH$rasterizationSamples = PathElement.groupElement("PATH$rasterizationSamples");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$multisampledRenderToSingleSampledEnable = PathElement.groupElement("multisampledRenderToSingleSampledEnable");
+    public static final PathElement PATH$rasterizationSamples = PathElement.groupElement("rasterizationSamples");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

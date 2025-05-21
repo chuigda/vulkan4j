@@ -130,10 +130,10 @@ public record VkCheckpointData2NV(@NotNull MemorySegment segment) implements IPo
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$stage = PathElement.groupElement("PATH$stage");
-    public static final PathElement PATH$pCheckpointMarker = PathElement.groupElement("PATH$pCheckpointMarker");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$stage = PathElement.groupElement("stage");
+    public static final PathElement PATH$pCheckpointMarker = PathElement.groupElement("pCheckpointMarker");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

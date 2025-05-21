@@ -86,8 +86,8 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$GmType = PathElement.groupElement("PATH$GmType");
-    public static final PathElement PATH$gm_params = PathElement.groupElement("PATH$gm_params");
+    public static final PathElement PATH$GmType = PathElement.groupElement("GmType");
+    public static final PathElement PATH$gm_params = PathElement.groupElement("gm_params");
 
     public static final OfByte LAYOUT$GmType = (OfByte) LAYOUT.select(PATH$GmType);
     public static final OfInt LAYOUT$gm_params = (OfInt) LAYOUT.select(PATH$gm_params);

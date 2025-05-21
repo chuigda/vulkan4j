@@ -98,9 +98,9 @@ public record VkDispatchGraphCountInfoAMDX(@NotNull MemorySegment segment) imple
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$count = PathElement.groupElement("PATH$count");
-    public static final PathElement PATH$infos = PathElement.groupElement("PATH$infos");
-    public static final PathElement PATH$stride = PathElement.groupElement("PATH$stride");
+    public static final PathElement PATH$count = PathElement.groupElement("count");
+    public static final PathElement PATH$infos = PathElement.groupElement("infos");
+    public static final PathElement PATH$stride = PathElement.groupElement("stride");
 
     public static final OfInt LAYOUT$count = (OfInt) LAYOUT.select(PATH$count);
     public static final StructLayout LAYOUT$infos = (StructLayout) LAYOUT.select(PATH$infos);

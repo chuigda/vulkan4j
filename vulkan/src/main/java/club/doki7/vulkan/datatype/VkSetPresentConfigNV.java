@@ -126,10 +126,10 @@ public record VkSetPresentConfigNV(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$numFramesPerBatch = PathElement.groupElement("PATH$numFramesPerBatch");
-    public static final PathElement PATH$presentConfigFeedback = PathElement.groupElement("PATH$presentConfigFeedback");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$numFramesPerBatch = PathElement.groupElement("numFramesPerBatch");
+    public static final PathElement PATH$presentConfigFeedback = PathElement.groupElement("presentConfigFeedback");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -200,13 +200,13 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$setLayoutCount = PathElement.groupElement("PATH$setLayoutCount");
-    public static final PathElement PATH$pSetLayouts = PathElement.groupElement("PATH$pSetLayouts");
-    public static final PathElement PATH$pushConstantRangeCount = PathElement.groupElement("PATH$pushConstantRangeCount");
-    public static final PathElement PATH$pPushConstantRanges = PathElement.groupElement("PATH$pPushConstantRanges");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$setLayoutCount = PathElement.groupElement("setLayoutCount");
+    public static final PathElement PATH$pSetLayouts = PathElement.groupElement("pSetLayouts");
+    public static final PathElement PATH$pushConstantRangeCount = PathElement.groupElement("pushConstantRangeCount");
+    public static final PathElement PATH$pPushConstantRanges = PathElement.groupElement("pPushConstantRanges");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

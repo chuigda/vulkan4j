@@ -180,12 +180,12 @@ public record VkD3D12FenceSubmitInfoKHR(@NotNull MemorySegment segment) implemen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$waitSemaphoreValuesCount = PathElement.groupElement("PATH$waitSemaphoreValuesCount");
-    public static final PathElement PATH$pWaitSemaphoreValues = PathElement.groupElement("PATH$pWaitSemaphoreValues");
-    public static final PathElement PATH$signalSemaphoreValuesCount = PathElement.groupElement("PATH$signalSemaphoreValuesCount");
-    public static final PathElement PATH$pSignalSemaphoreValues = PathElement.groupElement("PATH$pSignalSemaphoreValues");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$waitSemaphoreValuesCount = PathElement.groupElement("waitSemaphoreValuesCount");
+    public static final PathElement PATH$pWaitSemaphoreValues = PathElement.groupElement("pWaitSemaphoreValues");
+    public static final PathElement PATH$signalSemaphoreValuesCount = PathElement.groupElement("signalSemaphoreValuesCount");
+    public static final PathElement PATH$pSignalSemaphoreValues = PathElement.groupElement("pSignalSemaphoreValues");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

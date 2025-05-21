@@ -138,13 +138,13 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IPoint
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$failOp = PathElement.groupElement("PATH$failOp");
-    public static final PathElement PATH$passOp = PathElement.groupElement("PATH$passOp");
-    public static final PathElement PATH$depthFailOp = PathElement.groupElement("PATH$depthFailOp");
-    public static final PathElement PATH$compareOp = PathElement.groupElement("PATH$compareOp");
-    public static final PathElement PATH$compareMask = PathElement.groupElement("PATH$compareMask");
-    public static final PathElement PATH$writeMask = PathElement.groupElement("PATH$writeMask");
-    public static final PathElement PATH$reference = PathElement.groupElement("PATH$reference");
+    public static final PathElement PATH$failOp = PathElement.groupElement("failOp");
+    public static final PathElement PATH$passOp = PathElement.groupElement("passOp");
+    public static final PathElement PATH$depthFailOp = PathElement.groupElement("depthFailOp");
+    public static final PathElement PATH$compareOp = PathElement.groupElement("compareOp");
+    public static final PathElement PATH$compareMask = PathElement.groupElement("compareMask");
+    public static final PathElement PATH$writeMask = PathElement.groupElement("writeMask");
+    public static final PathElement PATH$reference = PathElement.groupElement("reference");
 
     public static final OfInt LAYOUT$failOp = (OfInt) LAYOUT.select(PATH$failOp);
     public static final OfInt LAYOUT$passOp = (OfInt) LAYOUT.select(PATH$passOp);

@@ -166,14 +166,14 @@ public record VkCooperativeVectorPropertiesNV(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$inputType = PathElement.groupElement("PATH$inputType");
-    public static final PathElement PATH$inputInterpretation = PathElement.groupElement("PATH$inputInterpretation");
-    public static final PathElement PATH$matrixInterpretation = PathElement.groupElement("PATH$matrixInterpretation");
-    public static final PathElement PATH$biasInterpretation = PathElement.groupElement("PATH$biasInterpretation");
-    public static final PathElement PATH$resultType = PathElement.groupElement("PATH$resultType");
-    public static final PathElement PATH$transpose = PathElement.groupElement("PATH$transpose");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$inputType = PathElement.groupElement("inputType");
+    public static final PathElement PATH$inputInterpretation = PathElement.groupElement("inputInterpretation");
+    public static final PathElement PATH$matrixInterpretation = PathElement.groupElement("matrixInterpretation");
+    public static final PathElement PATH$biasInterpretation = PathElement.groupElement("biasInterpretation");
+    public static final PathElement PATH$resultType = PathElement.groupElement("resultType");
+    public static final PathElement PATH$transpose = PathElement.groupElement("transpose");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

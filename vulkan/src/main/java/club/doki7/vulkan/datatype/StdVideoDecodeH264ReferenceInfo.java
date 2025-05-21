@@ -99,9 +99,9 @@ public record StdVideoDecodeH264ReferenceInfo(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$FrameNum = PathElement.groupElement("PATH$FrameNum");
-    public static final PathElement PATH$PicOrderCnt = PathElement.groupElement("PATH$PicOrderCnt");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$FrameNum = PathElement.groupElement("FrameNum");
+    public static final PathElement PATH$PicOrderCnt = PathElement.groupElement("PicOrderCnt");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfShort LAYOUT$FrameNum = (OfShort) LAYOUT.select(PATH$FrameNum);

@@ -136,11 +136,11 @@ public record VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(@NotNull MemorySegment 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$memoryMapPlaced = PathElement.groupElement("PATH$memoryMapPlaced");
-    public static final PathElement PATH$memoryMapRangePlaced = PathElement.groupElement("PATH$memoryMapRangePlaced");
-    public static final PathElement PATH$memoryUnmapReserve = PathElement.groupElement("PATH$memoryUnmapReserve");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$memoryMapPlaced = PathElement.groupElement("memoryMapPlaced");
+    public static final PathElement PATH$memoryMapRangePlaced = PathElement.groupElement("memoryMapRangePlaced");
+    public static final PathElement PATH$memoryUnmapReserve = PathElement.groupElement("memoryUnmapReserve");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

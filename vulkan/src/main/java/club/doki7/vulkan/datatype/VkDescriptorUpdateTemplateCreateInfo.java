@@ -221,16 +221,16 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$descriptorUpdateEntryCount = PathElement.groupElement("PATH$descriptorUpdateEntryCount");
-    public static final PathElement PATH$pDescriptorUpdateEntries = PathElement.groupElement("PATH$pDescriptorUpdateEntries");
-    public static final PathElement PATH$templateType = PathElement.groupElement("PATH$templateType");
-    public static final PathElement PATH$descriptorSetLayout = PathElement.groupElement("PATH$descriptorSetLayout");
-    public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement("PATH$pipelineBindPoint");
-    public static final PathElement PATH$pipelineLayout = PathElement.groupElement("PATH$pipelineLayout");
-    public static final PathElement PATH$set = PathElement.groupElement("PATH$set");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$descriptorUpdateEntryCount = PathElement.groupElement("descriptorUpdateEntryCount");
+    public static final PathElement PATH$pDescriptorUpdateEntries = PathElement.groupElement("pDescriptorUpdateEntries");
+    public static final PathElement PATH$templateType = PathElement.groupElement("templateType");
+    public static final PathElement PATH$descriptorSetLayout = PathElement.groupElement("descriptorSetLayout");
+    public static final PathElement PATH$pipelineBindPoint = PathElement.groupElement("pipelineBindPoint");
+    public static final PathElement PATH$pipelineLayout = PathElement.groupElement("pipelineLayout");
+    public static final PathElement PATH$set = PathElement.groupElement("set");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

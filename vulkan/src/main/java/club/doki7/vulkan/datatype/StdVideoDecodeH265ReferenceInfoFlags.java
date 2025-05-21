@@ -90,7 +90,7 @@ public record StdVideoDecodeH265ReferenceInfoFlags(@NotNull MemorySegment segmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$used_for_long_term_reference$unused_for_reference = PathElement.groupElement("PATH$bitfield$used_for_long_term_reference$unused_for_reference");
+    public static final PathElement PATH$bitfield$used_for_long_term_reference$unused_for_reference = PathElement.groupElement("used_for_long_term_reference$unused_for_reference");
 
     public static final OfInt LAYOUT$bitfield$used_for_long_term_reference$unused_for_reference = (OfInt) LAYOUT.select(PATH$bitfield$used_for_long_term_reference$unused_for_reference);
 

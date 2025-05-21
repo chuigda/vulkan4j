@@ -98,9 +98,9 @@ public record VkClearRect(@NotNull MemorySegment segment) implements IPointer {
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$rect = PathElement.groupElement("PATH$rect");
-    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("PATH$baseArrayLayer");
-    public static final PathElement PATH$layerCount = PathElement.groupElement("PATH$layerCount");
+    public static final PathElement PATH$rect = PathElement.groupElement("rect");
+    public static final PathElement PATH$baseArrayLayer = PathElement.groupElement("baseArrayLayer");
+    public static final PathElement PATH$layerCount = PathElement.groupElement("layerCount");
 
     public static final StructLayout LAYOUT$rect = (StructLayout) LAYOUT.select(PATH$rect);
     public static final OfInt LAYOUT$baseArrayLayer = (OfInt) LAYOUT.select(PATH$baseArrayLayer);

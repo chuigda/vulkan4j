@@ -86,8 +86,8 @@ public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$used_by_curr_pic_lt_sps_flag = PathElement.groupElement("PATH$used_by_curr_pic_lt_sps_flag");
-    public static final PathElement PATH$lt_ref_pic_poc_lsb_sps = PathElement.groupElement("PATH$lt_ref_pic_poc_lsb_sps");
+    public static final PathElement PATH$used_by_curr_pic_lt_sps_flag = PathElement.groupElement("used_by_curr_pic_lt_sps_flag");
+    public static final PathElement PATH$lt_ref_pic_poc_lsb_sps = PathElement.groupElement("lt_ref_pic_poc_lsb_sps");
 
     public static final OfInt LAYOUT$used_by_curr_pic_lt_sps_flag = (OfInt) LAYOUT.select(PATH$used_by_curr_pic_lt_sps_flag);
     public static final OfInt LAYOUT$lt_ref_pic_poc_lsb_sps = (OfInt) LAYOUT.select(PATH$lt_ref_pic_poc_lsb_sps);

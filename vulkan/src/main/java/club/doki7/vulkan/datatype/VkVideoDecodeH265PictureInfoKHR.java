@@ -180,11 +180,11 @@ public record VkVideoDecodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$pStdPictureInfo = PathElement.groupElement("PATH$pStdPictureInfo");
-    public static final PathElement PATH$sliceSegmentCount = PathElement.groupElement("PATH$sliceSegmentCount");
-    public static final PathElement PATH$pSliceSegmentOffsets = PathElement.groupElement("PATH$pSliceSegmentOffsets");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$pStdPictureInfo = PathElement.groupElement("pStdPictureInfo");
+    public static final PathElement PATH$sliceSegmentCount = PathElement.groupElement("sliceSegmentCount");
+    public static final PathElement PATH$pSliceSegmentOffsets = PathElement.groupElement("pSliceSegmentOffsets");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

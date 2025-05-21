@@ -197,15 +197,15 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$renderPass = PathElement.groupElement("PATH$renderPass");
-    public static final PathElement PATH$attachmentCount = PathElement.groupElement("PATH$attachmentCount");
-    public static final PathElement PATH$pAttachments = PathElement.groupElement("PATH$pAttachments");
-    public static final PathElement PATH$width = PathElement.groupElement("PATH$width");
-    public static final PathElement PATH$height = PathElement.groupElement("PATH$height");
-    public static final PathElement PATH$layers = PathElement.groupElement("PATH$layers");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$renderPass = PathElement.groupElement("renderPass");
+    public static final PathElement PATH$attachmentCount = PathElement.groupElement("attachmentCount");
+    public static final PathElement PATH$pAttachments = PathElement.groupElement("pAttachments");
+    public static final PathElement PATH$width = PathElement.groupElement("width");
+    public static final PathElement PATH$height = PathElement.groupElement("height");
+    public static final PathElement PATH$layers = PathElement.groupElement("layers");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

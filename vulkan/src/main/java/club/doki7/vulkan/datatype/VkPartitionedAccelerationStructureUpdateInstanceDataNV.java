@@ -98,9 +98,9 @@ public record VkPartitionedAccelerationStructureUpdateInstanceDataNV(@NotNull Me
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$instanceIndex = PathElement.groupElement("PATH$instanceIndex");
-    public static final PathElement PATH$instanceContributionToHitGroupIndex = PathElement.groupElement("PATH$instanceContributionToHitGroupIndex");
-    public static final PathElement PATH$accelerationStructure = PathElement.groupElement("PATH$accelerationStructure");
+    public static final PathElement PATH$instanceIndex = PathElement.groupElement("instanceIndex");
+    public static final PathElement PATH$instanceContributionToHitGroupIndex = PathElement.groupElement("instanceContributionToHitGroupIndex");
+    public static final PathElement PATH$accelerationStructure = PathElement.groupElement("accelerationStructure");
 
     public static final OfInt LAYOUT$instanceIndex = (OfInt) LAYOUT.select(PATH$instanceIndex);
     public static final OfInt LAYOUT$instanceContributionToHitGroupIndex = (OfInt) LAYOUT.select(PATH$instanceContributionToHitGroupIndex);

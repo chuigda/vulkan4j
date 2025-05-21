@@ -217,14 +217,14 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$subpassCount = PathElement.groupElement("PATH$subpassCount");
-    public static final PathElement PATH$pViewMasks = PathElement.groupElement("PATH$pViewMasks");
-    public static final PathElement PATH$dependencyCount = PathElement.groupElement("PATH$dependencyCount");
-    public static final PathElement PATH$pViewOffsets = PathElement.groupElement("PATH$pViewOffsets");
-    public static final PathElement PATH$correlationMaskCount = PathElement.groupElement("PATH$correlationMaskCount");
-    public static final PathElement PATH$pCorrelationMasks = PathElement.groupElement("PATH$pCorrelationMasks");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$subpassCount = PathElement.groupElement("subpassCount");
+    public static final PathElement PATH$pViewMasks = PathElement.groupElement("pViewMasks");
+    public static final PathElement PATH$dependencyCount = PathElement.groupElement("dependencyCount");
+    public static final PathElement PATH$pViewOffsets = PathElement.groupElement("pViewOffsets");
+    public static final PathElement PATH$correlationMaskCount = PathElement.groupElement("correlationMaskCount");
+    public static final PathElement PATH$pCorrelationMasks = PathElement.groupElement("pCorrelationMasks");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

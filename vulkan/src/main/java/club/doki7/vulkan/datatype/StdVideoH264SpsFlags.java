@@ -244,7 +244,7 @@ public record StdVideoH264SpsFlags(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$constraint_set0_flag$vui_parameters_present_flag = PathElement.groupElement("PATH$bitfield$constraint_set0_flag$vui_parameters_present_flag");
+    public static final PathElement PATH$bitfield$constraint_set0_flag$vui_parameters_present_flag = PathElement.groupElement("constraint_set0_flag$vui_parameters_present_flag");
 
     public static final OfInt LAYOUT$bitfield$constraint_set0_flag$vui_parameters_present_flag = (OfInt) LAYOUT.select(PATH$bitfield$constraint_set0_flag$vui_parameters_present_flag);
 

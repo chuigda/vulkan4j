@@ -136,11 +136,11 @@ public record VkPhysicalDevice8BitStorageFeatures(@NotNull MemorySegment segment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$storageBuffer8BitAccess = PathElement.groupElement("PATH$storageBuffer8BitAccess");
-    public static final PathElement PATH$uniformAndStorageBuffer8BitAccess = PathElement.groupElement("PATH$uniformAndStorageBuffer8BitAccess");
-    public static final PathElement PATH$storagePushConstant8 = PathElement.groupElement("PATH$storagePushConstant8");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$storageBuffer8BitAccess = PathElement.groupElement("storageBuffer8BitAccess");
+    public static final PathElement PATH$uniformAndStorageBuffer8BitAccess = PathElement.groupElement("uniformAndStorageBuffer8BitAccess");
+    public static final PathElement PATH$storagePushConstant8 = PathElement.groupElement("storagePushConstant8");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

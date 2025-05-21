@@ -214,15 +214,15 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$stageFlags = PathElement.groupElement("PATH$stageFlags");
-    public static final PathElement PATH$layout = PathElement.groupElement("PATH$layout");
-    public static final PathElement PATH$firstSet = PathElement.groupElement("PATH$firstSet");
-    public static final PathElement PATH$descriptorSetCount = PathElement.groupElement("PATH$descriptorSetCount");
-    public static final PathElement PATH$pDescriptorSets = PathElement.groupElement("PATH$pDescriptorSets");
-    public static final PathElement PATH$dynamicOffsetCount = PathElement.groupElement("PATH$dynamicOffsetCount");
-    public static final PathElement PATH$pDynamicOffsets = PathElement.groupElement("PATH$pDynamicOffsets");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$stageFlags = PathElement.groupElement("stageFlags");
+    public static final PathElement PATH$layout = PathElement.groupElement("layout");
+    public static final PathElement PATH$firstSet = PathElement.groupElement("firstSet");
+    public static final PathElement PATH$descriptorSetCount = PathElement.groupElement("descriptorSetCount");
+    public static final PathElement PATH$pDescriptorSets = PathElement.groupElement("pDescriptorSets");
+    public static final PathElement PATH$dynamicOffsetCount = PathElement.groupElement("dynamicOffsetCount");
+    public static final PathElement PATH$pDynamicOffsets = PathElement.groupElement("pDynamicOffsets");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

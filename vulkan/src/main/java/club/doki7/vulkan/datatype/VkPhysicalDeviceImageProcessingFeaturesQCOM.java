@@ -136,11 +136,11 @@ public record VkPhysicalDeviceImageProcessingFeaturesQCOM(@NotNull MemorySegment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$textureSampleWeighted = PathElement.groupElement("PATH$textureSampleWeighted");
-    public static final PathElement PATH$textureBoxFilter = PathElement.groupElement("PATH$textureBoxFilter");
-    public static final PathElement PATH$textureBlockMatch = PathElement.groupElement("PATH$textureBlockMatch");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$textureSampleWeighted = PathElement.groupElement("textureSampleWeighted");
+    public static final PathElement PATH$textureBoxFilter = PathElement.groupElement("textureBoxFilter");
+    public static final PathElement PATH$textureBlockMatch = PathElement.groupElement("textureBlockMatch");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

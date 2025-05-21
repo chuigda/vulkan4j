@@ -186,16 +186,16 @@ public record VkClusterAccelerationStructureTriangleClusterInputNV(@NotNull Memo
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$vertexFormat = PathElement.groupElement("PATH$vertexFormat");
-    public static final PathElement PATH$maxGeometryIndexValue = PathElement.groupElement("PATH$maxGeometryIndexValue");
-    public static final PathElement PATH$maxClusterUniqueGeometryCount = PathElement.groupElement("PATH$maxClusterUniqueGeometryCount");
-    public static final PathElement PATH$maxClusterTriangleCount = PathElement.groupElement("PATH$maxClusterTriangleCount");
-    public static final PathElement PATH$maxClusterVertexCount = PathElement.groupElement("PATH$maxClusterVertexCount");
-    public static final PathElement PATH$maxTotalTriangleCount = PathElement.groupElement("PATH$maxTotalTriangleCount");
-    public static final PathElement PATH$maxTotalVertexCount = PathElement.groupElement("PATH$maxTotalVertexCount");
-    public static final PathElement PATH$minPositionTruncateBitCount = PathElement.groupElement("PATH$minPositionTruncateBitCount");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$vertexFormat = PathElement.groupElement("vertexFormat");
+    public static final PathElement PATH$maxGeometryIndexValue = PathElement.groupElement("maxGeometryIndexValue");
+    public static final PathElement PATH$maxClusterUniqueGeometryCount = PathElement.groupElement("maxClusterUniqueGeometryCount");
+    public static final PathElement PATH$maxClusterTriangleCount = PathElement.groupElement("maxClusterTriangleCount");
+    public static final PathElement PATH$maxClusterVertexCount = PathElement.groupElement("maxClusterVertexCount");
+    public static final PathElement PATH$maxTotalTriangleCount = PathElement.groupElement("maxTotalTriangleCount");
+    public static final PathElement PATH$maxTotalVertexCount = PathElement.groupElement("maxTotalVertexCount");
+    public static final PathElement PATH$minPositionTruncateBitCount = PathElement.groupElement("minPositionTruncateBitCount");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

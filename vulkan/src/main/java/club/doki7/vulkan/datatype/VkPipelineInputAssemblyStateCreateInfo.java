@@ -136,11 +136,11 @@ public record VkPipelineInputAssemblyStateCreateInfo(@NotNull MemorySegment segm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$topology = PathElement.groupElement("PATH$topology");
-    public static final PathElement PATH$primitiveRestartEnable = PathElement.groupElement("PATH$primitiveRestartEnable");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$topology = PathElement.groupElement("topology");
+    public static final PathElement PATH$primitiveRestartEnable = PathElement.groupElement("primitiveRestartEnable");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

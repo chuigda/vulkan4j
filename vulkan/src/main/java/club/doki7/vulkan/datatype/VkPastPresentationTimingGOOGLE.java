@@ -118,11 +118,11 @@ public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$presentID = PathElement.groupElement("PATH$presentID");
-    public static final PathElement PATH$desiredPresentTime = PathElement.groupElement("PATH$desiredPresentTime");
-    public static final PathElement PATH$actualPresentTime = PathElement.groupElement("PATH$actualPresentTime");
-    public static final PathElement PATH$earliestPresentTime = PathElement.groupElement("PATH$earliestPresentTime");
-    public static final PathElement PATH$presentMargin = PathElement.groupElement("PATH$presentMargin");
+    public static final PathElement PATH$presentID = PathElement.groupElement("presentID");
+    public static final PathElement PATH$desiredPresentTime = PathElement.groupElement("desiredPresentTime");
+    public static final PathElement PATH$actualPresentTime = PathElement.groupElement("actualPresentTime");
+    public static final PathElement PATH$earliestPresentTime = PathElement.groupElement("earliestPresentTime");
+    public static final PathElement PATH$presentMargin = PathElement.groupElement("presentMargin");
 
     public static final OfInt LAYOUT$presentID = (OfInt) LAYOUT.select(PATH$presentID);
     public static final OfLong LAYOUT$desiredPresentTime = (OfLong) LAYOUT.select(PATH$desiredPresentTime);

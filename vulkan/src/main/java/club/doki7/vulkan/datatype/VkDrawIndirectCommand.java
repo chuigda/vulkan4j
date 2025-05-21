@@ -108,10 +108,10 @@ public record VkDrawIndirectCommand(@NotNull MemorySegment segment) implements I
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$vertexCount = PathElement.groupElement("PATH$vertexCount");
-    public static final PathElement PATH$instanceCount = PathElement.groupElement("PATH$instanceCount");
-    public static final PathElement PATH$firstVertex = PathElement.groupElement("PATH$firstVertex");
-    public static final PathElement PATH$firstInstance = PathElement.groupElement("PATH$firstInstance");
+    public static final PathElement PATH$vertexCount = PathElement.groupElement("vertexCount");
+    public static final PathElement PATH$instanceCount = PathElement.groupElement("instanceCount");
+    public static final PathElement PATH$firstVertex = PathElement.groupElement("firstVertex");
+    public static final PathElement PATH$firstInstance = PathElement.groupElement("firstInstance");
 
     public static final OfInt LAYOUT$vertexCount = (OfInt) LAYOUT.select(PATH$vertexCount);
     public static final OfInt LAYOUT$instanceCount = (OfInt) LAYOUT.select(PATH$instanceCount);

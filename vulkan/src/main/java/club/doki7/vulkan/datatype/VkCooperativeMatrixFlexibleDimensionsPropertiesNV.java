@@ -206,18 +206,18 @@ public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemoryS
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$MGranularity = PathElement.groupElement("PATH$MGranularity");
-    public static final PathElement PATH$NGranularity = PathElement.groupElement("PATH$NGranularity");
-    public static final PathElement PATH$KGranularity = PathElement.groupElement("PATH$KGranularity");
-    public static final PathElement PATH$AType = PathElement.groupElement("PATH$AType");
-    public static final PathElement PATH$BType = PathElement.groupElement("PATH$BType");
-    public static final PathElement PATH$CType = PathElement.groupElement("PATH$CType");
-    public static final PathElement PATH$ResultType = PathElement.groupElement("PATH$ResultType");
-    public static final PathElement PATH$saturatingAccumulation = PathElement.groupElement("PATH$saturatingAccumulation");
-    public static final PathElement PATH$scope = PathElement.groupElement("PATH$scope");
-    public static final PathElement PATH$workgroupInvocations = PathElement.groupElement("PATH$workgroupInvocations");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$MGranularity = PathElement.groupElement("MGranularity");
+    public static final PathElement PATH$NGranularity = PathElement.groupElement("NGranularity");
+    public static final PathElement PATH$KGranularity = PathElement.groupElement("KGranularity");
+    public static final PathElement PATH$AType = PathElement.groupElement("AType");
+    public static final PathElement PATH$BType = PathElement.groupElement("BType");
+    public static final PathElement PATH$CType = PathElement.groupElement("CType");
+    public static final PathElement PATH$ResultType = PathElement.groupElement("ResultType");
+    public static final PathElement PATH$saturatingAccumulation = PathElement.groupElement("saturatingAccumulation");
+    public static final PathElement PATH$scope = PathElement.groupElement("scope");
+    public static final PathElement PATH$workgroupInvocations = PathElement.groupElement("workgroupInvocations");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -91,7 +91,7 @@ public record StdVideoAV1LoopFilterFlags(@NotNull MemorySegment segment) impleme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$loop_filter_delta_enabled$reserved = PathElement.groupElement("PATH$bitfield$loop_filter_delta_enabled$reserved");
+    public static final PathElement PATH$bitfield$loop_filter_delta_enabled$reserved = PathElement.groupElement("loop_filter_delta_enabled$reserved");
 
     public static final OfInt LAYOUT$bitfield$loop_filter_delta_enabled$reserved = (OfInt) LAYOUT.select(PATH$bitfield$loop_filter_delta_enabled$reserved);
 

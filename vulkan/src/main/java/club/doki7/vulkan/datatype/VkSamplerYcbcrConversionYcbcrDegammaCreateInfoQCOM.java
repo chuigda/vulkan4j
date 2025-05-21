@@ -126,10 +126,10 @@ public record VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(@NotNull Memory
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$enableYDegamma = PathElement.groupElement("PATH$enableYDegamma");
-    public static final PathElement PATH$enableCbCrDegamma = PathElement.groupElement("PATH$enableCbCrDegamma");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$enableYDegamma = PathElement.groupElement("enableYDegamma");
+    public static final PathElement PATH$enableCbCrDegamma = PathElement.groupElement("enableCbCrDegamma");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

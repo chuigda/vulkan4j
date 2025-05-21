@@ -169,16 +169,16 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$cpb_cnt_minus1 = PathElement.groupElement("PATH$cpb_cnt_minus1");
-    public static final PathElement PATH$bit_rate_scale = PathElement.groupElement("PATH$bit_rate_scale");
-    public static final PathElement PATH$cpb_size_scale = PathElement.groupElement("PATH$cpb_size_scale");
-    public static final PathElement PATH$bit_rate_value_minus1 = PathElement.groupElement("PATH$bit_rate_value_minus1");
-    public static final PathElement PATH$cpb_size_value_minus1 = PathElement.groupElement("PATH$cpb_size_value_minus1");
-    public static final PathElement PATH$cbr_flag = PathElement.groupElement("PATH$cbr_flag");
-    public static final PathElement PATH$initial_cpb_removal_delay_length_minus1 = PathElement.groupElement("PATH$initial_cpb_removal_delay_length_minus1");
-    public static final PathElement PATH$cpb_removal_delay_length_minus1 = PathElement.groupElement("PATH$cpb_removal_delay_length_minus1");
-    public static final PathElement PATH$dpb_output_delay_length_minus1 = PathElement.groupElement("PATH$dpb_output_delay_length_minus1");
-    public static final PathElement PATH$time_offset_length = PathElement.groupElement("PATH$time_offset_length");
+    public static final PathElement PATH$cpb_cnt_minus1 = PathElement.groupElement("cpb_cnt_minus1");
+    public static final PathElement PATH$bit_rate_scale = PathElement.groupElement("bit_rate_scale");
+    public static final PathElement PATH$cpb_size_scale = PathElement.groupElement("cpb_size_scale");
+    public static final PathElement PATH$bit_rate_value_minus1 = PathElement.groupElement("bit_rate_value_minus1");
+    public static final PathElement PATH$cpb_size_value_minus1 = PathElement.groupElement("cpb_size_value_minus1");
+    public static final PathElement PATH$cbr_flag = PathElement.groupElement("cbr_flag");
+    public static final PathElement PATH$initial_cpb_removal_delay_length_minus1 = PathElement.groupElement("initial_cpb_removal_delay_length_minus1");
+    public static final PathElement PATH$cpb_removal_delay_length_minus1 = PathElement.groupElement("cpb_removal_delay_length_minus1");
+    public static final PathElement PATH$dpb_output_delay_length_minus1 = PathElement.groupElement("dpb_output_delay_length_minus1");
+    public static final PathElement PATH$time_offset_length = PathElement.groupElement("time_offset_length");
 
     public static final OfByte LAYOUT$cpb_cnt_minus1 = (OfByte) LAYOUT.select(PATH$cpb_cnt_minus1);
     public static final OfByte LAYOUT$bit_rate_scale = (OfByte) LAYOUT.select(PATH$bit_rate_scale);

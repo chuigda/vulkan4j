@@ -150,12 +150,12 @@ public record VkSemaphoreSubmitInfo(@NotNull MemorySegment segment) implements I
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$semaphore = PathElement.groupElement("PATH$semaphore");
-    public static final PathElement PATH$value = PathElement.groupElement("PATH$value");
-    public static final PathElement PATH$stageMask = PathElement.groupElement("PATH$stageMask");
-    public static final PathElement PATH$deviceIndex = PathElement.groupElement("PATH$deviceIndex");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$semaphore = PathElement.groupElement("semaphore");
+    public static final PathElement PATH$value = PathElement.groupElement("value");
+    public static final PathElement PATH$stageMask = PathElement.groupElement("stageMask");
+    public static final PathElement PATH$deviceIndex = PathElement.groupElement("deviceIndex");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

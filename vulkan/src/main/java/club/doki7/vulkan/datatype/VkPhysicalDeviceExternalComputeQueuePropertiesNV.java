@@ -126,10 +126,10 @@ public record VkPhysicalDeviceExternalComputeQueuePropertiesNV(@NotNull MemorySe
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$externalDataSize = PathElement.groupElement("PATH$externalDataSize");
-    public static final PathElement PATH$maxExternalQueues = PathElement.groupElement("PATH$maxExternalQueues");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$externalDataSize = PathElement.groupElement("externalDataSize");
+    public static final PathElement PATH$maxExternalQueues = PathElement.groupElement("maxExternalQueues");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -191,13 +191,13 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$renderPass = PathElement.groupElement("PATH$renderPass");
-    public static final PathElement PATH$framebuffer = PathElement.groupElement("PATH$framebuffer");
-    public static final PathElement PATH$renderArea = PathElement.groupElement("PATH$renderArea");
-    public static final PathElement PATH$clearValueCount = PathElement.groupElement("PATH$clearValueCount");
-    public static final PathElement PATH$pClearValues = PathElement.groupElement("PATH$pClearValues");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$renderPass = PathElement.groupElement("renderPass");
+    public static final PathElement PATH$framebuffer = PathElement.groupElement("framebuffer");
+    public static final PathElement PATH$renderArea = PathElement.groupElement("renderArea");
+    public static final PathElement PATH$clearValueCount = PathElement.groupElement("clearValueCount");
+    public static final PathElement PATH$pClearValues = PathElement.groupElement("pClearValues");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

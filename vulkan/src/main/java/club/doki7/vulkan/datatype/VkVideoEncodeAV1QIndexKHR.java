@@ -98,9 +98,9 @@ public record VkVideoEncodeAV1QIndexKHR(@NotNull MemorySegment segment) implemen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$intraQIndex = PathElement.groupElement("PATH$intraQIndex");
-    public static final PathElement PATH$predictiveQIndex = PathElement.groupElement("PATH$predictiveQIndex");
-    public static final PathElement PATH$bipredictiveQIndex = PathElement.groupElement("PATH$bipredictiveQIndex");
+    public static final PathElement PATH$intraQIndex = PathElement.groupElement("intraQIndex");
+    public static final PathElement PATH$predictiveQIndex = PathElement.groupElement("predictiveQIndex");
+    public static final PathElement PATH$bipredictiveQIndex = PathElement.groupElement("bipredictiveQIndex");
 
     public static final OfInt LAYOUT$intraQIndex = (OfInt) LAYOUT.select(PATH$intraQIndex);
     public static final OfInt LAYOUT$predictiveQIndex = (OfInt) LAYOUT.select(PATH$predictiveQIndex);

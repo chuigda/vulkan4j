@@ -186,16 +186,16 @@ public record VkVideoEncodeH265QualityLevelPropertiesKHR(@NotNull MemorySegment 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$preferredRateControlFlags = PathElement.groupElement("PATH$preferredRateControlFlags");
-    public static final PathElement PATH$preferredGopFrameCount = PathElement.groupElement("PATH$preferredGopFrameCount");
-    public static final PathElement PATH$preferredIdrPeriod = PathElement.groupElement("PATH$preferredIdrPeriod");
-    public static final PathElement PATH$preferredConsecutiveBFrameCount = PathElement.groupElement("PATH$preferredConsecutiveBFrameCount");
-    public static final PathElement PATH$preferredSubLayerCount = PathElement.groupElement("PATH$preferredSubLayerCount");
-    public static final PathElement PATH$preferredConstantQp = PathElement.groupElement("PATH$preferredConstantQp");
-    public static final PathElement PATH$preferredMaxL0ReferenceCount = PathElement.groupElement("PATH$preferredMaxL0ReferenceCount");
-    public static final PathElement PATH$preferredMaxL1ReferenceCount = PathElement.groupElement("PATH$preferredMaxL1ReferenceCount");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$preferredRateControlFlags = PathElement.groupElement("preferredRateControlFlags");
+    public static final PathElement PATH$preferredGopFrameCount = PathElement.groupElement("preferredGopFrameCount");
+    public static final PathElement PATH$preferredIdrPeriod = PathElement.groupElement("preferredIdrPeriod");
+    public static final PathElement PATH$preferredConsecutiveBFrameCount = PathElement.groupElement("preferredConsecutiveBFrameCount");
+    public static final PathElement PATH$preferredSubLayerCount = PathElement.groupElement("preferredSubLayerCount");
+    public static final PathElement PATH$preferredConstantQp = PathElement.groupElement("preferredConstantQp");
+    public static final PathElement PATH$preferredMaxL0ReferenceCount = PathElement.groupElement("preferredMaxL0ReferenceCount");
+    public static final PathElement PATH$preferredMaxL1ReferenceCount = PathElement.groupElement("preferredMaxL1ReferenceCount");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

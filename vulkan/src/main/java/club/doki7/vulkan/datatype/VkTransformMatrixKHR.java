@@ -78,7 +78,7 @@ public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$matrix = PathElement.groupElement("PATH$matrix");
+    public static final PathElement PATH$matrix = PathElement.groupElement("matrix");
 
     public static final OfFloat LAYOUT$matrix = (OfFloat) LAYOUT.select(PATH$matrix);
 

@@ -388,7 +388,7 @@ public record StdVideoEncodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$error_resilient_mode$reserved = PathElement.groupElement("PATH$bitfield$error_resilient_mode$reserved");
+    public static final PathElement PATH$bitfield$error_resilient_mode$reserved = PathElement.groupElement("error_resilient_mode$reserved");
 
     public static final OfInt LAYOUT$bitfield$error_resilient_mode$reserved = (OfInt) LAYOUT.select(PATH$bitfield$error_resilient_mode$reserved);
 

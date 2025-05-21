@@ -146,12 +146,12 @@ public record VkPhysicalDeviceTileShadingPropertiesQCOM(@NotNull MemorySegment s
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxApronSize = PathElement.groupElement("PATH$maxApronSize");
-    public static final PathElement PATH$preferNonCoherent = PathElement.groupElement("PATH$preferNonCoherent");
-    public static final PathElement PATH$tileGranularity = PathElement.groupElement("PATH$tileGranularity");
-    public static final PathElement PATH$maxTileShadingRate = PathElement.groupElement("PATH$maxTileShadingRate");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$maxApronSize = PathElement.groupElement("maxApronSize");
+    public static final PathElement PATH$preferNonCoherent = PathElement.groupElement("preferNonCoherent");
+    public static final PathElement PATH$tileGranularity = PathElement.groupElement("tileGranularity");
+    public static final PathElement PATH$maxTileShadingRate = PathElement.groupElement("maxTileShadingRate");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

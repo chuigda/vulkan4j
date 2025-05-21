@@ -136,11 +136,11 @@ public record VkClusterAccelerationStructureMoveObjectsInputNV(@NotNull MemorySe
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
-    public static final PathElement PATH$noMoveOverlap = PathElement.groupElement("PATH$noMoveOverlap");
-    public static final PathElement PATH$maxMovedBytes = PathElement.groupElement("PATH$maxMovedBytes");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$noMoveOverlap = PathElement.groupElement("noMoveOverlap");
+    public static final PathElement PATH$maxMovedBytes = PathElement.groupElement("maxMovedBytes");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

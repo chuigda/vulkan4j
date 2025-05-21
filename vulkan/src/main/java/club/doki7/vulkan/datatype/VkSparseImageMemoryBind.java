@@ -132,12 +132,12 @@ public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$subresource = PathElement.groupElement("PATH$subresource");
-    public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
-    public static final PathElement PATH$extent = PathElement.groupElement("PATH$extent");
-    public static final PathElement PATH$memory = PathElement.groupElement("PATH$memory");
-    public static final PathElement PATH$memoryOffset = PathElement.groupElement("PATH$memoryOffset");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$subresource = PathElement.groupElement("subresource");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$extent = PathElement.groupElement("extent");
+    public static final PathElement PATH$memory = PathElement.groupElement("memory");
+    public static final PathElement PATH$memoryOffset = PathElement.groupElement("memoryOffset");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
 
     public static final StructLayout LAYOUT$subresource = (StructLayout) LAYOUT.select(PATH$subresource);
     public static final StructLayout LAYOUT$offset = (StructLayout) LAYOUT.select(PATH$offset);

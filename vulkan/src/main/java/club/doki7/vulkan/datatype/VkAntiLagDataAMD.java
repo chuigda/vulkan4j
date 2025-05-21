@@ -163,11 +163,11 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IPoint
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$mode = PathElement.groupElement("PATH$mode");
-    public static final PathElement PATH$maxFPS = PathElement.groupElement("PATH$maxFPS");
-    public static final PathElement PATH$pPresentationInfo = PathElement.groupElement("PATH$pPresentationInfo");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$mode = PathElement.groupElement("mode");
+    public static final PathElement PATH$maxFPS = PathElement.groupElement("maxFPS");
+    public static final PathElement PATH$pPresentationInfo = PathElement.groupElement("pPresentationInfo");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

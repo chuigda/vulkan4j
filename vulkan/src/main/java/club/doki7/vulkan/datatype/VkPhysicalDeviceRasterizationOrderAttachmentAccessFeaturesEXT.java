@@ -136,11 +136,11 @@ public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(@Not
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$rasterizationOrderColorAttachmentAccess = PathElement.groupElement("PATH$rasterizationOrderColorAttachmentAccess");
-    public static final PathElement PATH$rasterizationOrderDepthAttachmentAccess = PathElement.groupElement("PATH$rasterizationOrderDepthAttachmentAccess");
-    public static final PathElement PATH$rasterizationOrderStencilAttachmentAccess = PathElement.groupElement("PATH$rasterizationOrderStencilAttachmentAccess");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$rasterizationOrderColorAttachmentAccess = PathElement.groupElement("rasterizationOrderColorAttachmentAccess");
+    public static final PathElement PATH$rasterizationOrderDepthAttachmentAccess = PathElement.groupElement("rasterizationOrderDepthAttachmentAccess");
+    public static final PathElement PATH$rasterizationOrderStencilAttachmentAccess = PathElement.groupElement("rasterizationOrderStencilAttachmentAccess");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

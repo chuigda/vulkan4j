@@ -88,8 +88,8 @@ public record VkDisplayModeParametersKHR(@NotNull MemorySegment segment) impleme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$visibleRegion = PathElement.groupElement("PATH$visibleRegion");
-    public static final PathElement PATH$refreshRate = PathElement.groupElement("PATH$refreshRate");
+    public static final PathElement PATH$visibleRegion = PathElement.groupElement("visibleRegion");
+    public static final PathElement PATH$refreshRate = PathElement.groupElement("refreshRate");
 
     public static final StructLayout LAYOUT$visibleRegion = (StructLayout) LAYOUT.select(PATH$visibleRegion);
     public static final OfInt LAYOUT$refreshRate = (OfInt) LAYOUT.select(PATH$refreshRate);

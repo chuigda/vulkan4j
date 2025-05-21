@@ -98,9 +98,9 @@ public record VkDrawMeshTasksIndirectCommandEXT(@NotNull MemorySegment segment) 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$groupCountX = PathElement.groupElement("PATH$groupCountX");
-    public static final PathElement PATH$groupCountY = PathElement.groupElement("PATH$groupCountY");
-    public static final PathElement PATH$groupCountZ = PathElement.groupElement("PATH$groupCountZ");
+    public static final PathElement PATH$groupCountX = PathElement.groupElement("groupCountX");
+    public static final PathElement PATH$groupCountY = PathElement.groupElement("groupCountY");
+    public static final PathElement PATH$groupCountZ = PathElement.groupElement("groupCountZ");
 
     public static final OfInt LAYOUT$groupCountX = (OfInt) LAYOUT.select(PATH$groupCountX);
     public static final OfInt LAYOUT$groupCountY = (OfInt) LAYOUT.select(PATH$groupCountY);

@@ -78,7 +78,7 @@ public record VkIndirectCommandsIndexBufferTokenEXT(@NotNull MemorySegment segme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$mode = PathElement.groupElement("PATH$mode");
+    public static final PathElement PATH$mode = PathElement.groupElement("mode");
 
     public static final OfInt LAYOUT$mode = (OfInt) LAYOUT.select(PATH$mode);
 

@@ -236,21 +236,21 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$maxLevelIdc = PathElement.groupElement("PATH$maxLevelIdc");
-    public static final PathElement PATH$maxSliceCount = PathElement.groupElement("PATH$maxSliceCount");
-    public static final PathElement PATH$maxPPictureL0ReferenceCount = PathElement.groupElement("PATH$maxPPictureL0ReferenceCount");
-    public static final PathElement PATH$maxBPictureL0ReferenceCount = PathElement.groupElement("PATH$maxBPictureL0ReferenceCount");
-    public static final PathElement PATH$maxL1ReferenceCount = PathElement.groupElement("PATH$maxL1ReferenceCount");
-    public static final PathElement PATH$maxTemporalLayerCount = PathElement.groupElement("PATH$maxTemporalLayerCount");
-    public static final PathElement PATH$expectDyadicTemporalLayerPattern = PathElement.groupElement("PATH$expectDyadicTemporalLayerPattern");
-    public static final PathElement PATH$minQp = PathElement.groupElement("PATH$minQp");
-    public static final PathElement PATH$maxQp = PathElement.groupElement("PATH$maxQp");
-    public static final PathElement PATH$prefersGopRemainingFrames = PathElement.groupElement("PATH$prefersGopRemainingFrames");
-    public static final PathElement PATH$requiresGopRemainingFrames = PathElement.groupElement("PATH$requiresGopRemainingFrames");
-    public static final PathElement PATH$stdSyntaxFlags = PathElement.groupElement("PATH$stdSyntaxFlags");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$maxLevelIdc = PathElement.groupElement("maxLevelIdc");
+    public static final PathElement PATH$maxSliceCount = PathElement.groupElement("maxSliceCount");
+    public static final PathElement PATH$maxPPictureL0ReferenceCount = PathElement.groupElement("maxPPictureL0ReferenceCount");
+    public static final PathElement PATH$maxBPictureL0ReferenceCount = PathElement.groupElement("maxBPictureL0ReferenceCount");
+    public static final PathElement PATH$maxL1ReferenceCount = PathElement.groupElement("maxL1ReferenceCount");
+    public static final PathElement PATH$maxTemporalLayerCount = PathElement.groupElement("maxTemporalLayerCount");
+    public static final PathElement PATH$expectDyadicTemporalLayerPattern = PathElement.groupElement("expectDyadicTemporalLayerPattern");
+    public static final PathElement PATH$minQp = PathElement.groupElement("minQp");
+    public static final PathElement PATH$maxQp = PathElement.groupElement("maxQp");
+    public static final PathElement PATH$prefersGopRemainingFrames = PathElement.groupElement("prefersGopRemainingFrames");
+    public static final PathElement PATH$requiresGopRemainingFrames = PathElement.groupElement("requiresGopRemainingFrames");
+    public static final PathElement PATH$stdSyntaxFlags = PathElement.groupElement("stdSyntaxFlags");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

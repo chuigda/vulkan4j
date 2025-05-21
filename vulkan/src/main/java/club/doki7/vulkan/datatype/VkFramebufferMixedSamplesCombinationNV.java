@@ -146,12 +146,12 @@ public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$coverageReductionMode = PathElement.groupElement("PATH$coverageReductionMode");
-    public static final PathElement PATH$rasterizationSamples = PathElement.groupElement("PATH$rasterizationSamples");
-    public static final PathElement PATH$depthStencilSamples = PathElement.groupElement("PATH$depthStencilSamples");
-    public static final PathElement PATH$colorSamples = PathElement.groupElement("PATH$colorSamples");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$coverageReductionMode = PathElement.groupElement("coverageReductionMode");
+    public static final PathElement PATH$rasterizationSamples = PathElement.groupElement("rasterizationSamples");
+    public static final PathElement PATH$depthStencilSamples = PathElement.groupElement("depthStencilSamples");
+    public static final PathElement PATH$colorSamples = PathElement.groupElement("colorSamples");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

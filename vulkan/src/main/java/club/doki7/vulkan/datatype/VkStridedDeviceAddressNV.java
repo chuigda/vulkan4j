@@ -88,8 +88,8 @@ public record VkStridedDeviceAddressNV(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$startAddress = PathElement.groupElement("PATH$startAddress");
-    public static final PathElement PATH$strideInBytes = PathElement.groupElement("PATH$strideInBytes");
+    public static final PathElement PATH$startAddress = PathElement.groupElement("startAddress");
+    public static final PathElement PATH$strideInBytes = PathElement.groupElement("strideInBytes");
 
     public static final OfLong LAYOUT$startAddress = (OfLong) LAYOUT.select(PATH$startAddress);
     public static final OfLong LAYOUT$strideInBytes = (OfLong) LAYOUT.select(PATH$strideInBytes);

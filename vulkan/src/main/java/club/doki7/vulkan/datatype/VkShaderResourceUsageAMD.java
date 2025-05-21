@@ -118,11 +118,11 @@ public record VkShaderResourceUsageAMD(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$numUsedVgprs = PathElement.groupElement("PATH$numUsedVgprs");
-    public static final PathElement PATH$numUsedSgprs = PathElement.groupElement("PATH$numUsedSgprs");
-    public static final PathElement PATH$ldsSizePerLocalWorkGroup = PathElement.groupElement("PATH$ldsSizePerLocalWorkGroup");
-    public static final PathElement PATH$ldsUsageSizeInBytes = PathElement.groupElement("PATH$ldsUsageSizeInBytes");
-    public static final PathElement PATH$scratchMemUsageInBytes = PathElement.groupElement("PATH$scratchMemUsageInBytes");
+    public static final PathElement PATH$numUsedVgprs = PathElement.groupElement("numUsedVgprs");
+    public static final PathElement PATH$numUsedSgprs = PathElement.groupElement("numUsedSgprs");
+    public static final PathElement PATH$ldsSizePerLocalWorkGroup = PathElement.groupElement("ldsSizePerLocalWorkGroup");
+    public static final PathElement PATH$ldsUsageSizeInBytes = PathElement.groupElement("ldsUsageSizeInBytes");
+    public static final PathElement PATH$scratchMemUsageInBytes = PathElement.groupElement("scratchMemUsageInBytes");
 
     public static final OfInt LAYOUT$numUsedVgprs = (OfInt) LAYOUT.select(PATH$numUsedVgprs);
     public static final OfInt LAYOUT$numUsedSgprs = (OfInt) LAYOUT.select(PATH$numUsedSgprs);

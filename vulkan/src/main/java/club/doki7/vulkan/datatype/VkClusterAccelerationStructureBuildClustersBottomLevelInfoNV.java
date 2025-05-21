@@ -98,9 +98,9 @@ public record VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(@NotN
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$clusterReferencesCount = PathElement.groupElement("PATH$clusterReferencesCount");
-    public static final PathElement PATH$clusterReferencesStride = PathElement.groupElement("PATH$clusterReferencesStride");
-    public static final PathElement PATH$clusterReferences = PathElement.groupElement("PATH$clusterReferences");
+    public static final PathElement PATH$clusterReferencesCount = PathElement.groupElement("clusterReferencesCount");
+    public static final PathElement PATH$clusterReferencesStride = PathElement.groupElement("clusterReferencesStride");
+    public static final PathElement PATH$clusterReferences = PathElement.groupElement("clusterReferences");
 
     public static final OfInt LAYOUT$clusterReferencesCount = (OfInt) LAYOUT.select(PATH$clusterReferencesCount);
     public static final OfInt LAYOUT$clusterReferencesStride = (OfInt) LAYOUT.select(PATH$clusterReferencesStride);

@@ -156,7 +156,7 @@ public record StdVideoH264PpsFlags(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag = PathElement.groupElement("PATH$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag");
+    public static final PathElement PATH$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag = PathElement.groupElement("transform_8x8_mode_flag$pic_scaling_matrix_present_flag");
 
     public static final OfInt LAYOUT$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag = (OfInt) LAYOUT.select(PATH$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag);
 

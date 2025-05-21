@@ -156,13 +156,13 @@ public record VkPhysicalDevicePipelineBinaryPropertiesKHR(@NotNull MemorySegment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$pipelineBinaryInternalCache = PathElement.groupElement("PATH$pipelineBinaryInternalCache");
-    public static final PathElement PATH$pipelineBinaryInternalCacheControl = PathElement.groupElement("PATH$pipelineBinaryInternalCacheControl");
-    public static final PathElement PATH$pipelineBinaryPrefersInternalCache = PathElement.groupElement("PATH$pipelineBinaryPrefersInternalCache");
-    public static final PathElement PATH$pipelineBinaryPrecompiledInternalCache = PathElement.groupElement("PATH$pipelineBinaryPrecompiledInternalCache");
-    public static final PathElement PATH$pipelineBinaryCompressedData = PathElement.groupElement("PATH$pipelineBinaryCompressedData");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$pipelineBinaryInternalCache = PathElement.groupElement("pipelineBinaryInternalCache");
+    public static final PathElement PATH$pipelineBinaryInternalCacheControl = PathElement.groupElement("pipelineBinaryInternalCacheControl");
+    public static final PathElement PATH$pipelineBinaryPrefersInternalCache = PathElement.groupElement("pipelineBinaryPrefersInternalCache");
+    public static final PathElement PATH$pipelineBinaryPrecompiledInternalCache = PathElement.groupElement("pipelineBinaryPrecompiledInternalCache");
+    public static final PathElement PATH$pipelineBinaryCompressedData = PathElement.groupElement("pipelineBinaryCompressedData");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

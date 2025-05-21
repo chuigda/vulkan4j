@@ -135,10 +135,10 @@ public record VkAccelerationStructureInstanceKHR(@NotNull MemorySegment segment)
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$transform = PathElement.groupElement("PATH$transform");
-    public static final PathElement PATH$bitfield$instanceCustomIndex$mask = PathElement.groupElement("PATH$bitfield$instanceCustomIndex$mask");
-    public static final PathElement PATH$bitfield$instanceShaderBindingTableRecordOffset$flags = PathElement.groupElement("PATH$bitfield$instanceShaderBindingTableRecordOffset$flags");
-    public static final PathElement PATH$accelerationStructureReference = PathElement.groupElement("PATH$accelerationStructureReference");
+    public static final PathElement PATH$transform = PathElement.groupElement("transform");
+    public static final PathElement PATH$bitfield$instanceCustomIndex$mask = PathElement.groupElement("instanceCustomIndex$mask");
+    public static final PathElement PATH$bitfield$instanceShaderBindingTableRecordOffset$flags = PathElement.groupElement("instanceShaderBindingTableRecordOffset$flags");
+    public static final PathElement PATH$accelerationStructureReference = PathElement.groupElement("accelerationStructureReference");
 
     public static final StructLayout LAYOUT$transform = (StructLayout) LAYOUT.select(PATH$transform);
     public static final OfInt LAYOUT$bitfield$instanceCustomIndex$mask = (OfInt) LAYOUT.select(PATH$bitfield$instanceCustomIndex$mask);

@@ -124,7 +124,7 @@ public record StdVideoEncodeH264PictureInfoFlags(@NotNull MemorySegment segment)
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$IdrPicFlag$reserved = PathElement.groupElement("PATH$bitfield$IdrPicFlag$reserved");
+    public static final PathElement PATH$bitfield$IdrPicFlag$reserved = PathElement.groupElement("IdrPicFlag$reserved");
 
     public static final OfInt LAYOUT$bitfield$IdrPicFlag$reserved = (OfInt) LAYOUT.select(PATH$bitfield$IdrPicFlag$reserved);
 

@@ -108,10 +108,10 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IPoin
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$layerName = PathElement.groupElement("PATH$layerName");
-    public static final PathElement PATH$specVersion = PathElement.groupElement("PATH$specVersion");
-    public static final PathElement PATH$implementationVersion = PathElement.groupElement("PATH$implementationVersion");
-    public static final PathElement PATH$description = PathElement.groupElement("PATH$description");
+    public static final PathElement PATH$layerName = PathElement.groupElement("layerName");
+    public static final PathElement PATH$specVersion = PathElement.groupElement("specVersion");
+    public static final PathElement PATH$implementationVersion = PathElement.groupElement("implementationVersion");
+    public static final PathElement PATH$description = PathElement.groupElement("description");
 
     public static final OfByte LAYOUT$layerName = (OfByte) LAYOUT.select(PATH$layerName);
     public static final OfInt LAYOUT$specVersion = (OfInt) LAYOUT.select(PATH$specVersion);

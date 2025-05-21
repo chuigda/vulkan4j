@@ -158,15 +158,15 @@ public record VkAttachmentDescription(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
-    public static final PathElement PATH$samples = PathElement.groupElement("PATH$samples");
-    public static final PathElement PATH$loadOp = PathElement.groupElement("PATH$loadOp");
-    public static final PathElement PATH$storeOp = PathElement.groupElement("PATH$storeOp");
-    public static final PathElement PATH$stencilLoadOp = PathElement.groupElement("PATH$stencilLoadOp");
-    public static final PathElement PATH$stencilStoreOp = PathElement.groupElement("PATH$stencilStoreOp");
-    public static final PathElement PATH$initialLayout = PathElement.groupElement("PATH$initialLayout");
-    public static final PathElement PATH$finalLayout = PathElement.groupElement("PATH$finalLayout");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$samples = PathElement.groupElement("samples");
+    public static final PathElement PATH$loadOp = PathElement.groupElement("loadOp");
+    public static final PathElement PATH$storeOp = PathElement.groupElement("storeOp");
+    public static final PathElement PATH$stencilLoadOp = PathElement.groupElement("stencilLoadOp");
+    public static final PathElement PATH$stencilStoreOp = PathElement.groupElement("stencilStoreOp");
+    public static final PathElement PATH$initialLayout = PathElement.groupElement("initialLayout");
+    public static final PathElement PATH$finalLayout = PathElement.groupElement("finalLayout");
 
     public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
     public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);

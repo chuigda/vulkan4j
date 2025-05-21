@@ -246,15 +246,15 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$vps_video_parameter_set_id = PathElement.groupElement("PATH$vps_video_parameter_set_id");
-    public static final PathElement PATH$vps_max_sub_layers_minus1 = PathElement.groupElement("PATH$vps_max_sub_layers_minus1");
-    public static final PathElement PATH$vps_num_units_in_tick = PathElement.groupElement("PATH$vps_num_units_in_tick");
-    public static final PathElement PATH$vps_time_scale = PathElement.groupElement("PATH$vps_time_scale");
-    public static final PathElement PATH$vps_num_ticks_poc_diff_one_minus1 = PathElement.groupElement("PATH$vps_num_ticks_poc_diff_one_minus1");
-    public static final PathElement PATH$pDecPicBufMgr = PathElement.groupElement("PATH$pDecPicBufMgr");
-    public static final PathElement PATH$pHrdParameters = PathElement.groupElement("PATH$pHrdParameters");
-    public static final PathElement PATH$pProfileTierLevel = PathElement.groupElement("PATH$pProfileTierLevel");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$vps_video_parameter_set_id = PathElement.groupElement("vps_video_parameter_set_id");
+    public static final PathElement PATH$vps_max_sub_layers_minus1 = PathElement.groupElement("vps_max_sub_layers_minus1");
+    public static final PathElement PATH$vps_num_units_in_tick = PathElement.groupElement("vps_num_units_in_tick");
+    public static final PathElement PATH$vps_time_scale = PathElement.groupElement("vps_time_scale");
+    public static final PathElement PATH$vps_num_ticks_poc_diff_one_minus1 = PathElement.groupElement("vps_num_ticks_poc_diff_one_minus1");
+    public static final PathElement PATH$pDecPicBufMgr = PathElement.groupElement("pDecPicBufMgr");
+    public static final PathElement PATH$pHrdParameters = PathElement.groupElement("pHrdParameters");
+    public static final PathElement PATH$pProfileTierLevel = PathElement.groupElement("pProfileTierLevel");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$vps_video_parameter_set_id = (OfByte) LAYOUT.select(PATH$vps_video_parameter_set_id);

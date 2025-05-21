@@ -136,11 +136,11 @@ public record VkImageViewSampleWeightCreateInfoQCOM(@NotNull MemorySegment segme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$filterCenter = PathElement.groupElement("PATH$filterCenter");
-    public static final PathElement PATH$filterSize = PathElement.groupElement("PATH$filterSize");
-    public static final PathElement PATH$numPhases = PathElement.groupElement("PATH$numPhases");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$filterCenter = PathElement.groupElement("filterCenter");
+    public static final PathElement PATH$filterSize = PathElement.groupElement("filterSize");
+    public static final PathElement PATH$numPhases = PathElement.groupElement("numPhases");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

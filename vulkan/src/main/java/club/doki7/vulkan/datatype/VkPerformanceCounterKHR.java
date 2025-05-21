@@ -146,12 +146,12 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$unit = PathElement.groupElement("PATH$unit");
-    public static final PathElement PATH$scope = PathElement.groupElement("PATH$scope");
-    public static final PathElement PATH$storage = PathElement.groupElement("PATH$storage");
-    public static final PathElement PATH$uuid = PathElement.groupElement("PATH$uuid");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$unit = PathElement.groupElement("unit");
+    public static final PathElement PATH$scope = PathElement.groupElement("scope");
+    public static final PathElement PATH$storage = PathElement.groupElement("storage");
+    public static final PathElement PATH$uuid = PathElement.groupElement("uuid");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

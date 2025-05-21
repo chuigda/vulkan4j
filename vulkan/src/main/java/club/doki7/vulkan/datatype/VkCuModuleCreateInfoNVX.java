@@ -130,10 +130,10 @@ public record VkCuModuleCreateInfoNVX(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$dataSize = PathElement.groupElement("PATH$dataSize");
-    public static final PathElement PATH$pData = PathElement.groupElement("PATH$pData");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$dataSize = PathElement.groupElement("dataSize");
+    public static final PathElement PATH$pData = PathElement.groupElement("pData");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -136,11 +136,11 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(@NotNull Mem
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$conservativeRasterizationMode = PathElement.groupElement("PATH$conservativeRasterizationMode");
-    public static final PathElement PATH$extraPrimitiveOverestimationSize = PathElement.groupElement("PATH$extraPrimitiveOverestimationSize");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$conservativeRasterizationMode = PathElement.groupElement("conservativeRasterizationMode");
+    public static final PathElement PATH$extraPrimitiveOverestimationSize = PathElement.groupElement("extraPrimitiveOverestimationSize");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

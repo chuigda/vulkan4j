@@ -267,16 +267,16 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IPointe
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$renderArea = PathElement.groupElement("PATH$renderArea");
-    public static final PathElement PATH$layerCount = PathElement.groupElement("PATH$layerCount");
-    public static final PathElement PATH$viewMask = PathElement.groupElement("PATH$viewMask");
-    public static final PathElement PATH$colorAttachmentCount = PathElement.groupElement("PATH$colorAttachmentCount");
-    public static final PathElement PATH$pColorAttachments = PathElement.groupElement("PATH$pColorAttachments");
-    public static final PathElement PATH$pDepthAttachment = PathElement.groupElement("PATH$pDepthAttachment");
-    public static final PathElement PATH$pStencilAttachment = PathElement.groupElement("PATH$pStencilAttachment");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$renderArea = PathElement.groupElement("renderArea");
+    public static final PathElement PATH$layerCount = PathElement.groupElement("layerCount");
+    public static final PathElement PATH$viewMask = PathElement.groupElement("viewMask");
+    public static final PathElement PATH$colorAttachmentCount = PathElement.groupElement("colorAttachmentCount");
+    public static final PathElement PATH$pColorAttachments = PathElement.groupElement("pColorAttachments");
+    public static final PathElement PATH$pDepthAttachment = PathElement.groupElement("pDepthAttachment");
+    public static final PathElement PATH$pStencilAttachment = PathElement.groupElement("pStencilAttachment");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

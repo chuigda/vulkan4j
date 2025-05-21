@@ -201,7 +201,7 @@ public record StdVideoEncodeH265SliceSegmentHeaderFlags(@NotNull MemorySegment s
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$first_slice_segment_in_pic_flag$reserved = PathElement.groupElement("PATH$bitfield$first_slice_segment_in_pic_flag$reserved");
+    public static final PathElement PATH$bitfield$first_slice_segment_in_pic_flag$reserved = PathElement.groupElement("first_slice_segment_in_pic_flag$reserved");
 
     public static final OfInt LAYOUT$bitfield$first_slice_segment_in_pic_flag$reserved = (OfInt) LAYOUT.select(PATH$bitfield$first_slice_segment_in_pic_flag$reserved);
 

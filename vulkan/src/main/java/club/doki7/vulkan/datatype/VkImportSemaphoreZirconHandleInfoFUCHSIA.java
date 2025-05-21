@@ -150,12 +150,12 @@ public record VkImportSemaphoreZirconHandleInfoFUCHSIA(@NotNull MemorySegment se
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$semaphore = PathElement.groupElement("PATH$semaphore");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$handleType = PathElement.groupElement("PATH$handleType");
-    public static final PathElement PATH$zirconHandle = PathElement.groupElement("PATH$zirconHandle");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$semaphore = PathElement.groupElement("semaphore");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$handleType = PathElement.groupElement("handleType");
+    public static final PathElement PATH$zirconHandle = PathElement.groupElement("zirconHandle");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

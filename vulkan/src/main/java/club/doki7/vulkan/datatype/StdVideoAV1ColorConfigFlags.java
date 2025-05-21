@@ -113,7 +113,7 @@ public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implem
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$mono_chrome$reserved = PathElement.groupElement("PATH$bitfield$mono_chrome$reserved");
+    public static final PathElement PATH$bitfield$mono_chrome$reserved = PathElement.groupElement("mono_chrome$reserved");
 
     public static final OfInt LAYOUT$bitfield$mono_chrome$reserved = (OfInt) LAYOUT.select(PATH$bitfield$mono_chrome$reserved);
 

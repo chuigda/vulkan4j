@@ -194,16 +194,16 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$imageView = PathElement.groupElement("PATH$imageView");
-    public static final PathElement PATH$imageLayout = PathElement.groupElement("PATH$imageLayout");
-    public static final PathElement PATH$resolveMode = PathElement.groupElement("PATH$resolveMode");
-    public static final PathElement PATH$resolveImageView = PathElement.groupElement("PATH$resolveImageView");
-    public static final PathElement PATH$resolveImageLayout = PathElement.groupElement("PATH$resolveImageLayout");
-    public static final PathElement PATH$loadOp = PathElement.groupElement("PATH$loadOp");
-    public static final PathElement PATH$storeOp = PathElement.groupElement("PATH$storeOp");
-    public static final PathElement PATH$clearValue = PathElement.groupElement("PATH$clearValue");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$imageView = PathElement.groupElement("imageView");
+    public static final PathElement PATH$imageLayout = PathElement.groupElement("imageLayout");
+    public static final PathElement PATH$resolveMode = PathElement.groupElement("resolveMode");
+    public static final PathElement PATH$resolveImageView = PathElement.groupElement("resolveImageView");
+    public static final PathElement PATH$resolveImageLayout = PathElement.groupElement("resolveImageLayout");
+    public static final PathElement PATH$loadOp = PathElement.groupElement("loadOp");
+    public static final PathElement PATH$storeOp = PathElement.groupElement("storeOp");
+    public static final PathElement PATH$clearValue = PathElement.groupElement("clearValue");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

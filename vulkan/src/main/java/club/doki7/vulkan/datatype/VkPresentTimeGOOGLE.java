@@ -88,8 +88,8 @@ public record VkPresentTimeGOOGLE(@NotNull MemorySegment segment) implements IPo
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$presentID = PathElement.groupElement("PATH$presentID");
-    public static final PathElement PATH$desiredPresentTime = PathElement.groupElement("PATH$desiredPresentTime");
+    public static final PathElement PATH$presentID = PathElement.groupElement("presentID");
+    public static final PathElement PATH$desiredPresentTime = PathElement.groupElement("desiredPresentTime");
 
     public static final OfInt LAYOUT$presentID = (OfInt) LAYOUT.select(PATH$presentID);
     public static final OfLong LAYOUT$desiredPresentTime = (OfLong) LAYOUT.select(PATH$desiredPresentTime);

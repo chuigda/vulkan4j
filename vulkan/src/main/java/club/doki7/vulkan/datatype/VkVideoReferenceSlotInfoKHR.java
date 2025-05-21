@@ -153,10 +153,10 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$slotIndex = PathElement.groupElement("PATH$slotIndex");
-    public static final PathElement PATH$pPictureResource = PathElement.groupElement("PATH$pPictureResource");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$slotIndex = PathElement.groupElement("slotIndex");
+    public static final PathElement PATH$pPictureResource = PathElement.groupElement("pPictureResource");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

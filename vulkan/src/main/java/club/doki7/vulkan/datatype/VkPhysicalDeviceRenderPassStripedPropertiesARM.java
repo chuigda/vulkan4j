@@ -126,10 +126,10 @@ public record VkPhysicalDeviceRenderPassStripedPropertiesARM(@NotNull MemorySegm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$renderPassStripeGranularity = PathElement.groupElement("PATH$renderPassStripeGranularity");
-    public static final PathElement PATH$maxRenderPassStripes = PathElement.groupElement("PATH$maxRenderPassStripes");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$renderPassStripeGranularity = PathElement.groupElement("renderPassStripeGranularity");
+    public static final PathElement PATH$maxRenderPassStripes = PathElement.groupElement("maxRenderPassStripes");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

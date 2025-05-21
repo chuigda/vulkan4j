@@ -173,12 +173,12 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$formatConstraintsCount = PathElement.groupElement("PATH$formatConstraintsCount");
-    public static final PathElement PATH$pFormatConstraints = PathElement.groupElement("PATH$pFormatConstraints");
-    public static final PathElement PATH$bufferCollectionConstraints = PathElement.groupElement("PATH$bufferCollectionConstraints");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$formatConstraintsCount = PathElement.groupElement("formatConstraintsCount");
+    public static final PathElement PATH$pFormatConstraints = PathElement.groupElement("pFormatConstraints");
+    public static final PathElement PATH$bufferCollectionConstraints = PathElement.groupElement("bufferCollectionConstraints");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

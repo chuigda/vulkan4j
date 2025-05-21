@@ -136,11 +136,11 @@ public record VkExecutionGraphPipelineScratchSizeAMDX(@NotNull MemorySegment seg
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$minSize = PathElement.groupElement("PATH$minSize");
-    public static final PathElement PATH$maxSize = PathElement.groupElement("PATH$maxSize");
-    public static final PathElement PATH$sizeGranularity = PathElement.groupElement("PATH$sizeGranularity");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$minSize = PathElement.groupElement("minSize");
+    public static final PathElement PATH$maxSize = PathElement.groupElement("maxSize");
+    public static final PathElement PATH$sizeGranularity = PathElement.groupElement("sizeGranularity");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -178,17 +178,17 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$headerSize = PathElement.groupElement("PATH$headerSize");
-    public static final PathElement PATH$headerVersion = PathElement.groupElement("PATH$headerVersion");
-    public static final PathElement PATH$vendorID = PathElement.groupElement("PATH$vendorID");
-    public static final PathElement PATH$deviceID = PathElement.groupElement("PATH$deviceID");
-    public static final PathElement PATH$driverVersion = PathElement.groupElement("PATH$driverVersion");
-    public static final PathElement PATH$pipelineCacheUUID = PathElement.groupElement("PATH$pipelineCacheUUID");
-    public static final PathElement PATH$applicationNameOffset = PathElement.groupElement("PATH$applicationNameOffset");
-    public static final PathElement PATH$applicationVersion = PathElement.groupElement("PATH$applicationVersion");
-    public static final PathElement PATH$engineNameOffset = PathElement.groupElement("PATH$engineNameOffset");
-    public static final PathElement PATH$engineVersion = PathElement.groupElement("PATH$engineVersion");
-    public static final PathElement PATH$apiVersion = PathElement.groupElement("PATH$apiVersion");
+    public static final PathElement PATH$headerSize = PathElement.groupElement("headerSize");
+    public static final PathElement PATH$headerVersion = PathElement.groupElement("headerVersion");
+    public static final PathElement PATH$vendorID = PathElement.groupElement("vendorID");
+    public static final PathElement PATH$deviceID = PathElement.groupElement("deviceID");
+    public static final PathElement PATH$driverVersion = PathElement.groupElement("driverVersion");
+    public static final PathElement PATH$pipelineCacheUUID = PathElement.groupElement("pipelineCacheUUID");
+    public static final PathElement PATH$applicationNameOffset = PathElement.groupElement("applicationNameOffset");
+    public static final PathElement PATH$applicationVersion = PathElement.groupElement("applicationVersion");
+    public static final PathElement PATH$engineNameOffset = PathElement.groupElement("engineNameOffset");
+    public static final PathElement PATH$engineVersion = PathElement.groupElement("engineVersion");
+    public static final PathElement PATH$apiVersion = PathElement.groupElement("apiVersion");
 
     public static final OfInt LAYOUT$headerSize = (OfInt) LAYOUT.select(PATH$headerSize);
     public static final OfInt LAYOUT$headerVersion = (OfInt) LAYOUT.select(PATH$headerVersion);

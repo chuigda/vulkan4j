@@ -146,12 +146,12 @@ public record VkMemoryBarrier2(@NotNull MemorySegment segment) implements IPoint
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$srcStageMask = PathElement.groupElement("PATH$srcStageMask");
-    public static final PathElement PATH$srcAccessMask = PathElement.groupElement("PATH$srcAccessMask");
-    public static final PathElement PATH$dstStageMask = PathElement.groupElement("PATH$dstStageMask");
-    public static final PathElement PATH$dstAccessMask = PathElement.groupElement("PATH$dstAccessMask");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcStageMask = PathElement.groupElement("srcStageMask");
+    public static final PathElement PATH$srcAccessMask = PathElement.groupElement("srcAccessMask");
+    public static final PathElement PATH$dstStageMask = PathElement.groupElement("dstStageMask");
+    public static final PathElement PATH$dstAccessMask = PathElement.groupElement("dstAccessMask");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -88,8 +88,8 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$partitionIndex = PathElement.groupElement("PATH$partitionIndex");
-    public static final PathElement PATH$partitionTranslation = PathElement.groupElement("PATH$partitionTranslation");
+    public static final PathElement PATH$partitionIndex = PathElement.groupElement("partitionIndex");
+    public static final PathElement PATH$partitionTranslation = PathElement.groupElement("partitionTranslation");
 
     public static final OfInt LAYOUT$partitionIndex = (OfInt) LAYOUT.select(PATH$partitionIndex);
     public static final OfFloat LAYOUT$partitionTranslation = (OfFloat) LAYOUT.select(PATH$partitionTranslation);

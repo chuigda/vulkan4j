@@ -146,12 +146,12 @@ public record VkVertexInputBindingDescription2EXT(@NotNull MemorySegment segment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$binding = PathElement.groupElement("PATH$binding");
-    public static final PathElement PATH$stride = PathElement.groupElement("PATH$stride");
-    public static final PathElement PATH$inputRate = PathElement.groupElement("PATH$inputRate");
-    public static final PathElement PATH$divisor = PathElement.groupElement("PATH$divisor");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$binding = PathElement.groupElement("binding");
+    public static final PathElement PATH$stride = PathElement.groupElement("stride");
+    public static final PathElement PATH$inputRate = PathElement.groupElement("inputRate");
+    public static final PathElement PATH$divisor = PathElement.groupElement("divisor");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

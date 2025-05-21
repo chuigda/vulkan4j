@@ -136,11 +136,11 @@ public record VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(@NotNull MemorySeg
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shaderCoreMask = PathElement.groupElement("PATH$shaderCoreMask");
-    public static final PathElement PATH$shaderCoreCount = PathElement.groupElement("PATH$shaderCoreCount");
-    public static final PathElement PATH$shaderWarpsPerCore = PathElement.groupElement("PATH$shaderWarpsPerCore");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shaderCoreMask = PathElement.groupElement("shaderCoreMask");
+    public static final PathElement PATH$shaderCoreCount = PathElement.groupElement("shaderCoreCount");
+    public static final PathElement PATH$shaderWarpsPerCore = PathElement.groupElement("shaderWarpsPerCore");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

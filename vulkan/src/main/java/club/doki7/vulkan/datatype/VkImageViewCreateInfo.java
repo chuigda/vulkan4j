@@ -170,14 +170,14 @@ public record VkImageViewCreateInfo(@NotNull MemorySegment segment) implements I
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$image = PathElement.groupElement("PATH$image");
-    public static final PathElement PATH$viewType = PathElement.groupElement("PATH$viewType");
-    public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
-    public static final PathElement PATH$components = PathElement.groupElement("PATH$components");
-    public static final PathElement PATH$subresourceRange = PathElement.groupElement("PATH$subresourceRange");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$image = PathElement.groupElement("image");
+    public static final PathElement PATH$viewType = PathElement.groupElement("viewType");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$components = PathElement.groupElement("components");
+    public static final PathElement PATH$subresourceRange = PathElement.groupElement("subresourceRange");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

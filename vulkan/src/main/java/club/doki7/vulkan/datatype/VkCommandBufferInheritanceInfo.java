@@ -174,14 +174,14 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$renderPass = PathElement.groupElement("PATH$renderPass");
-    public static final PathElement PATH$subpass = PathElement.groupElement("PATH$subpass");
-    public static final PathElement PATH$framebuffer = PathElement.groupElement("PATH$framebuffer");
-    public static final PathElement PATH$occlusionQueryEnable = PathElement.groupElement("PATH$occlusionQueryEnable");
-    public static final PathElement PATH$queryFlags = PathElement.groupElement("PATH$queryFlags");
-    public static final PathElement PATH$pipelineStatistics = PathElement.groupElement("PATH$pipelineStatistics");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$renderPass = PathElement.groupElement("renderPass");
+    public static final PathElement PATH$subpass = PathElement.groupElement("subpass");
+    public static final PathElement PATH$framebuffer = PathElement.groupElement("framebuffer");
+    public static final PathElement PATH$occlusionQueryEnable = PathElement.groupElement("occlusionQueryEnable");
+    public static final PathElement PATH$queryFlags = PathElement.groupElement("queryFlags");
+    public static final PathElement PATH$pipelineStatistics = PathElement.groupElement("pipelineStatistics");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

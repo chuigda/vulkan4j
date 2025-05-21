@@ -166,14 +166,14 @@ public record VkBuildPartitionedAccelerationStructureInfoNV(@NotNull MemorySegme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$input = PathElement.groupElement("PATH$input");
-    public static final PathElement PATH$srcAccelerationStructureData = PathElement.groupElement("PATH$srcAccelerationStructureData");
-    public static final PathElement PATH$dstAccelerationStructureData = PathElement.groupElement("PATH$dstAccelerationStructureData");
-    public static final PathElement PATH$scratchData = PathElement.groupElement("PATH$scratchData");
-    public static final PathElement PATH$srcInfos = PathElement.groupElement("PATH$srcInfos");
-    public static final PathElement PATH$srcInfosCount = PathElement.groupElement("PATH$srcInfosCount");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$input = PathElement.groupElement("input");
+    public static final PathElement PATH$srcAccelerationStructureData = PathElement.groupElement("srcAccelerationStructureData");
+    public static final PathElement PATH$dstAccelerationStructureData = PathElement.groupElement("dstAccelerationStructureData");
+    public static final PathElement PATH$scratchData = PathElement.groupElement("scratchData");
+    public static final PathElement PATH$srcInfos = PathElement.groupElement("srcInfos");
+    public static final PathElement PATH$srcInfosCount = PathElement.groupElement("srcInfosCount");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

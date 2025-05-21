@@ -227,15 +227,15 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements IPo
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$TileCols = PathElement.groupElement("PATH$TileCols");
-    public static final PathElement PATH$TileRows = PathElement.groupElement("PATH$TileRows");
-    public static final PathElement PATH$context_update_tile_id = PathElement.groupElement("PATH$context_update_tile_id");
-    public static final PathElement PATH$tile_size_bytes_minus_1 = PathElement.groupElement("PATH$tile_size_bytes_minus_1");
-    public static final PathElement PATH$pMiColStarts = PathElement.groupElement("PATH$pMiColStarts");
-    public static final PathElement PATH$pMiRowStarts = PathElement.groupElement("PATH$pMiRowStarts");
-    public static final PathElement PATH$pWidthInSbsMinus1 = PathElement.groupElement("PATH$pWidthInSbsMinus1");
-    public static final PathElement PATH$pHeightInSbsMinus1 = PathElement.groupElement("PATH$pHeightInSbsMinus1");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$TileCols = PathElement.groupElement("TileCols");
+    public static final PathElement PATH$TileRows = PathElement.groupElement("TileRows");
+    public static final PathElement PATH$context_update_tile_id = PathElement.groupElement("context_update_tile_id");
+    public static final PathElement PATH$tile_size_bytes_minus_1 = PathElement.groupElement("tile_size_bytes_minus_1");
+    public static final PathElement PATH$pMiColStarts = PathElement.groupElement("pMiColStarts");
+    public static final PathElement PATH$pMiRowStarts = PathElement.groupElement("pMiRowStarts");
+    public static final PathElement PATH$pWidthInSbsMinus1 = PathElement.groupElement("pWidthInSbsMinus1");
+    public static final PathElement PATH$pHeightInSbsMinus1 = PathElement.groupElement("pHeightInSbsMinus1");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$TileCols = (OfByte) LAYOUT.select(PATH$TileCols);

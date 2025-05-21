@@ -253,19 +253,19 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$seq_profile = PathElement.groupElement("PATH$seq_profile");
-    public static final PathElement PATH$frame_width_bits_minus_1 = PathElement.groupElement("PATH$frame_width_bits_minus_1");
-    public static final PathElement PATH$frame_height_bits_minus_1 = PathElement.groupElement("PATH$frame_height_bits_minus_1");
-    public static final PathElement PATH$max_frame_width_minus_1 = PathElement.groupElement("PATH$max_frame_width_minus_1");
-    public static final PathElement PATH$max_frame_height_minus_1 = PathElement.groupElement("PATH$max_frame_height_minus_1");
-    public static final PathElement PATH$delta_frame_id_length_minus_2 = PathElement.groupElement("PATH$delta_frame_id_length_minus_2");
-    public static final PathElement PATH$additional_frame_id_length_minus_1 = PathElement.groupElement("PATH$additional_frame_id_length_minus_1");
-    public static final PathElement PATH$order_hint_bits_minus_1 = PathElement.groupElement("PATH$order_hint_bits_minus_1");
-    public static final PathElement PATH$seq_force_integer_mv = PathElement.groupElement("PATH$seq_force_integer_mv");
-    public static final PathElement PATH$seq_force_screen_content_tools = PathElement.groupElement("PATH$seq_force_screen_content_tools");
-    public static final PathElement PATH$pColorConfig = PathElement.groupElement("PATH$pColorConfig");
-    public static final PathElement PATH$pTimingInfo = PathElement.groupElement("PATH$pTimingInfo");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$seq_profile = PathElement.groupElement("seq_profile");
+    public static final PathElement PATH$frame_width_bits_minus_1 = PathElement.groupElement("frame_width_bits_minus_1");
+    public static final PathElement PATH$frame_height_bits_minus_1 = PathElement.groupElement("frame_height_bits_minus_1");
+    public static final PathElement PATH$max_frame_width_minus_1 = PathElement.groupElement("max_frame_width_minus_1");
+    public static final PathElement PATH$max_frame_height_minus_1 = PathElement.groupElement("max_frame_height_minus_1");
+    public static final PathElement PATH$delta_frame_id_length_minus_2 = PathElement.groupElement("delta_frame_id_length_minus_2");
+    public static final PathElement PATH$additional_frame_id_length_minus_1 = PathElement.groupElement("additional_frame_id_length_minus_1");
+    public static final PathElement PATH$order_hint_bits_minus_1 = PathElement.groupElement("order_hint_bits_minus_1");
+    public static final PathElement PATH$seq_force_integer_mv = PathElement.groupElement("seq_force_integer_mv");
+    public static final PathElement PATH$seq_force_screen_content_tools = PathElement.groupElement("seq_force_screen_content_tools");
+    public static final PathElement PATH$pColorConfig = PathElement.groupElement("pColorConfig");
+    public static final PathElement PATH$pTimingInfo = PathElement.groupElement("pTimingInfo");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfInt LAYOUT$seq_profile = (OfInt) LAYOUT.select(PATH$seq_profile);

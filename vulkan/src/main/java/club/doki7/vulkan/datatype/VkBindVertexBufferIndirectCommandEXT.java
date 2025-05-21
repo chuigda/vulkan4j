@@ -98,9 +98,9 @@ public record VkBindVertexBufferIndirectCommandEXT(@NotNull MemorySegment segmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bufferAddress = PathElement.groupElement("PATH$bufferAddress");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
-    public static final PathElement PATH$stride = PathElement.groupElement("PATH$stride");
+    public static final PathElement PATH$bufferAddress = PathElement.groupElement("bufferAddress");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$stride = PathElement.groupElement("stride");
 
     public static final OfLong LAYOUT$bufferAddress = (OfLong) LAYOUT.select(PATH$bufferAddress);
     public static final OfInt LAYOUT$size = (OfInt) LAYOUT.select(PATH$size);

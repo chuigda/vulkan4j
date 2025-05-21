@@ -156,11 +156,11 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IPoin
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$pLayerName = PathElement.groupElement("PATH$pLayerName");
-    public static final PathElement PATH$pSettingName = PathElement.groupElement("PATH$pSettingName");
-    public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
-    public static final PathElement PATH$valueCount = PathElement.groupElement("PATH$valueCount");
-    public static final PathElement PATH$pValues = PathElement.groupElement("PATH$pValues");
+    public static final PathElement PATH$pLayerName = PathElement.groupElement("pLayerName");
+    public static final PathElement PATH$pSettingName = PathElement.groupElement("pSettingName");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$valueCount = PathElement.groupElement("valueCount");
+    public static final PathElement PATH$pValues = PathElement.groupElement("pValues");
 
     public static final AddressLayout LAYOUT$pLayerName = (AddressLayout) LAYOUT.select(PATH$pLayerName);
     public static final AddressLayout LAYOUT$pSettingName = (AddressLayout) LAYOUT.select(PATH$pSettingName);

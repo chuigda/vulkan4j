@@ -98,9 +98,9 @@ public record VkVertexInputBindingDescription(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$binding = PathElement.groupElement("PATH$binding");
-    public static final PathElement PATH$stride = PathElement.groupElement("PATH$stride");
-    public static final PathElement PATH$inputRate = PathElement.groupElement("PATH$inputRate");
+    public static final PathElement PATH$binding = PathElement.groupElement("binding");
+    public static final PathElement PATH$stride = PathElement.groupElement("stride");
+    public static final PathElement PATH$inputRate = PathElement.groupElement("inputRate");
 
     public static final OfInt LAYOUT$binding = (OfInt) LAYOUT.select(PATH$binding);
     public static final OfInt LAYOUT$stride = (OfInt) LAYOUT.select(PATH$stride);

@@ -263,19 +263,19 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$mode = PathElement.groupElement("PATH$mode");
-    public static final PathElement PATH$dstMicromap = PathElement.groupElement("PATH$dstMicromap");
-    public static final PathElement PATH$usageCountsCount = PathElement.groupElement("PATH$usageCountsCount");
-    public static final PathElement PATH$pUsageCounts = PathElement.groupElement("PATH$pUsageCounts");
-    public static final PathElement PATH$ppUsageCounts = PathElement.groupElement("PATH$ppUsageCounts");
-    public static final PathElement PATH$data = PathElement.groupElement("PATH$data");
-    public static final PathElement PATH$scratchData = PathElement.groupElement("PATH$scratchData");
-    public static final PathElement PATH$triangleArray = PathElement.groupElement("PATH$triangleArray");
-    public static final PathElement PATH$triangleArrayStride = PathElement.groupElement("PATH$triangleArrayStride");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$mode = PathElement.groupElement("mode");
+    public static final PathElement PATH$dstMicromap = PathElement.groupElement("dstMicromap");
+    public static final PathElement PATH$usageCountsCount = PathElement.groupElement("usageCountsCount");
+    public static final PathElement PATH$pUsageCounts = PathElement.groupElement("pUsageCounts");
+    public static final PathElement PATH$ppUsageCounts = PathElement.groupElement("ppUsageCounts");
+    public static final PathElement PATH$data = PathElement.groupElement("data");
+    public static final PathElement PATH$scratchData = PathElement.groupElement("scratchData");
+    public static final PathElement PATH$triangleArray = PathElement.groupElement("triangleArray");
+    public static final PathElement PATH$triangleArrayStride = PathElement.groupElement("triangleArrayStride");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

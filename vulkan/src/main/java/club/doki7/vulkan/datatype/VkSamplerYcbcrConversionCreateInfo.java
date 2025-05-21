@@ -186,16 +186,16 @@ public record VkSamplerYcbcrConversionCreateInfo(@NotNull MemorySegment segment)
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
-    public static final PathElement PATH$ycbcrModel = PathElement.groupElement("PATH$ycbcrModel");
-    public static final PathElement PATH$ycbcrRange = PathElement.groupElement("PATH$ycbcrRange");
-    public static final PathElement PATH$components = PathElement.groupElement("PATH$components");
-    public static final PathElement PATH$xChromaOffset = PathElement.groupElement("PATH$xChromaOffset");
-    public static final PathElement PATH$yChromaOffset = PathElement.groupElement("PATH$yChromaOffset");
-    public static final PathElement PATH$chromaFilter = PathElement.groupElement("PATH$chromaFilter");
-    public static final PathElement PATH$forceExplicitReconstruction = PathElement.groupElement("PATH$forceExplicitReconstruction");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$ycbcrModel = PathElement.groupElement("ycbcrModel");
+    public static final PathElement PATH$ycbcrRange = PathElement.groupElement("ycbcrRange");
+    public static final PathElement PATH$components = PathElement.groupElement("components");
+    public static final PathElement PATH$xChromaOffset = PathElement.groupElement("xChromaOffset");
+    public static final PathElement PATH$yChromaOffset = PathElement.groupElement("yChromaOffset");
+    public static final PathElement PATH$chromaFilter = PathElement.groupElement("chromaFilter");
+    public static final PathElement PATH$forceExplicitReconstruction = PathElement.groupElement("forceExplicitReconstruction");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

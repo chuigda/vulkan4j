@@ -156,13 +156,13 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$deviceUUID = PathElement.groupElement("PATH$deviceUUID");
-    public static final PathElement PATH$driverUUID = PathElement.groupElement("PATH$driverUUID");
-    public static final PathElement PATH$deviceLUID = PathElement.groupElement("PATH$deviceLUID");
-    public static final PathElement PATH$deviceNodeMask = PathElement.groupElement("PATH$deviceNodeMask");
-    public static final PathElement PATH$deviceLUIDValid = PathElement.groupElement("PATH$deviceLUIDValid");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$deviceUUID = PathElement.groupElement("deviceUUID");
+    public static final PathElement PATH$driverUUID = PathElement.groupElement("driverUUID");
+    public static final PathElement PATH$deviceLUID = PathElement.groupElement("deviceLUID");
+    public static final PathElement PATH$deviceNodeMask = PathElement.groupElement("deviceNodeMask");
+    public static final PathElement PATH$deviceLUIDValid = PathElement.groupElement("deviceLUIDValid");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

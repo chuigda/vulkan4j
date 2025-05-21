@@ -106,8 +106,8 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$shadingRatePaletteEntryCount = PathElement.groupElement("PATH$shadingRatePaletteEntryCount");
-    public static final PathElement PATH$pShadingRatePaletteEntries = PathElement.groupElement("PATH$pShadingRatePaletteEntries");
+    public static final PathElement PATH$shadingRatePaletteEntryCount = PathElement.groupElement("shadingRatePaletteEntryCount");
+    public static final PathElement PATH$pShadingRatePaletteEntries = PathElement.groupElement("pShadingRatePaletteEntries");
 
     public static final OfInt LAYOUT$shadingRatePaletteEntryCount = (OfInt) LAYOUT.select(PATH$shadingRatePaletteEntryCount);
     public static final AddressLayout LAYOUT$pShadingRatePaletteEntries = (AddressLayout) LAYOUT.select(PATH$pShadingRatePaletteEntries);

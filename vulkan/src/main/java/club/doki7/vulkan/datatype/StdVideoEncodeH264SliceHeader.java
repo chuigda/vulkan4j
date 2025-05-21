@@ -186,15 +186,15 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$first_mb_in_slice = PathElement.groupElement("PATH$first_mb_in_slice");
-    public static final PathElement PATH$slice_type = PathElement.groupElement("PATH$slice_type");
-    public static final PathElement PATH$slice_alpha_c0_offset_div2 = PathElement.groupElement("PATH$slice_alpha_c0_offset_div2");
-    public static final PathElement PATH$slice_beta_offset_div2 = PathElement.groupElement("PATH$slice_beta_offset_div2");
-    public static final PathElement PATH$slice_qp_delta = PathElement.groupElement("PATH$slice_qp_delta");
-    public static final PathElement PATH$cabac_init_idc = PathElement.groupElement("PATH$cabac_init_idc");
-    public static final PathElement PATH$disable_deblocking_filter_idc = PathElement.groupElement("PATH$disable_deblocking_filter_idc");
-    public static final PathElement PATH$pWeightTable = PathElement.groupElement("PATH$pWeightTable");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$first_mb_in_slice = PathElement.groupElement("first_mb_in_slice");
+    public static final PathElement PATH$slice_type = PathElement.groupElement("slice_type");
+    public static final PathElement PATH$slice_alpha_c0_offset_div2 = PathElement.groupElement("slice_alpha_c0_offset_div2");
+    public static final PathElement PATH$slice_beta_offset_div2 = PathElement.groupElement("slice_beta_offset_div2");
+    public static final PathElement PATH$slice_qp_delta = PathElement.groupElement("slice_qp_delta");
+    public static final PathElement PATH$cabac_init_idc = PathElement.groupElement("cabac_init_idc");
+    public static final PathElement PATH$disable_deblocking_filter_idc = PathElement.groupElement("disable_deblocking_filter_idc");
+    public static final PathElement PATH$pWeightTable = PathElement.groupElement("pWeightTable");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfInt LAYOUT$first_mb_in_slice = (OfInt) LAYOUT.select(PATH$first_mb_in_slice);

@@ -126,10 +126,10 @@ public record VkPhysicalDeviceTileMemoryHeapPropertiesQCOM(@NotNull MemorySegmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$queueSubmitBoundary = PathElement.groupElement("PATH$queueSubmitBoundary");
-    public static final PathElement PATH$tileBufferTransfers = PathElement.groupElement("PATH$tileBufferTransfers");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$queueSubmitBoundary = PathElement.groupElement("queueSubmitBoundary");
+    public static final PathElement PATH$tileBufferTransfers = PathElement.groupElement("tileBufferTransfers");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

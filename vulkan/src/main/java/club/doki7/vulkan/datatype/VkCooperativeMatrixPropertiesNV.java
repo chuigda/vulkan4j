@@ -186,16 +186,16 @@ public record VkCooperativeMatrixPropertiesNV(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$MSize = PathElement.groupElement("PATH$MSize");
-    public static final PathElement PATH$NSize = PathElement.groupElement("PATH$NSize");
-    public static final PathElement PATH$KSize = PathElement.groupElement("PATH$KSize");
-    public static final PathElement PATH$AType = PathElement.groupElement("PATH$AType");
-    public static final PathElement PATH$BType = PathElement.groupElement("PATH$BType");
-    public static final PathElement PATH$CType = PathElement.groupElement("PATH$CType");
-    public static final PathElement PATH$DType = PathElement.groupElement("PATH$DType");
-    public static final PathElement PATH$scope = PathElement.groupElement("PATH$scope");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$MSize = PathElement.groupElement("MSize");
+    public static final PathElement PATH$NSize = PathElement.groupElement("NSize");
+    public static final PathElement PATH$KSize = PathElement.groupElement("KSize");
+    public static final PathElement PATH$AType = PathElement.groupElement("AType");
+    public static final PathElement PATH$BType = PathElement.groupElement("BType");
+    public static final PathElement PATH$CType = PathElement.groupElement("CType");
+    public static final PathElement PATH$DType = PathElement.groupElement("DType");
+    public static final PathElement PATH$scope = PathElement.groupElement("scope");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

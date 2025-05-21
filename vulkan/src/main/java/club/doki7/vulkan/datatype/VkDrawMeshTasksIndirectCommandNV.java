@@ -88,8 +88,8 @@ public record VkDrawMeshTasksIndirectCommandNV(@NotNull MemorySegment segment) i
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$taskCount = PathElement.groupElement("PATH$taskCount");
-    public static final PathElement PATH$firstTask = PathElement.groupElement("PATH$firstTask");
+    public static final PathElement PATH$taskCount = PathElement.groupElement("taskCount");
+    public static final PathElement PATH$firstTask = PathElement.groupElement("firstTask");
 
     public static final OfInt LAYOUT$taskCount = (OfInt) LAYOUT.select(PATH$taskCount);
     public static final OfInt LAYOUT$firstTask = (OfInt) LAYOUT.select(PATH$firstTask);

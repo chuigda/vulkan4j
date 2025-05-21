@@ -146,12 +146,12 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(@NotNull MemorySegme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxWeightFilterPhases = PathElement.groupElement("PATH$maxWeightFilterPhases");
-    public static final PathElement PATH$maxWeightFilterDimension = PathElement.groupElement("PATH$maxWeightFilterDimension");
-    public static final PathElement PATH$maxBlockMatchRegion = PathElement.groupElement("PATH$maxBlockMatchRegion");
-    public static final PathElement PATH$maxBoxFilterBlockSize = PathElement.groupElement("PATH$maxBoxFilterBlockSize");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$maxWeightFilterPhases = PathElement.groupElement("maxWeightFilterPhases");
+    public static final PathElement PATH$maxWeightFilterDimension = PathElement.groupElement("maxWeightFilterDimension");
+    public static final PathElement PATH$maxBlockMatchRegion = PathElement.groupElement("maxBlockMatchRegion");
+    public static final PathElement PATH$maxBoxFilterBlockSize = PathElement.groupElement("maxBoxFilterBlockSize");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -153,10 +153,10 @@ public record VkVideoEncodeH264NaluSliceInfoKHR(@NotNull MemorySegment segment) 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$constantQp = PathElement.groupElement("PATH$constantQp");
-    public static final PathElement PATH$pStdSliceHeader = PathElement.groupElement("PATH$pStdSliceHeader");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$constantQp = PathElement.groupElement("constantQp");
+    public static final PathElement PATH$pStdSliceHeader = PathElement.groupElement("pStdSliceHeader");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

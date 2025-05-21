@@ -169,16 +169,16 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$sps_video_parameter_set_id = PathElement.groupElement("PATH$sps_video_parameter_set_id");
-    public static final PathElement PATH$pps_seq_parameter_set_id = PathElement.groupElement("PATH$pps_seq_parameter_set_id");
-    public static final PathElement PATH$pps_pic_parameter_set_id = PathElement.groupElement("PATH$pps_pic_parameter_set_id");
-    public static final PathElement PATH$NumDeltaPocsOfRefRpsIdx = PathElement.groupElement("PATH$NumDeltaPocsOfRefRpsIdx");
-    public static final PathElement PATH$PicOrderCntVal = PathElement.groupElement("PATH$PicOrderCntVal");
-    public static final PathElement PATH$NumBitsForSTRefPicSetInSlice = PathElement.groupElement("PATH$NumBitsForSTRefPicSetInSlice");
-    public static final PathElement PATH$RefPicSetStCurrBefore = PathElement.groupElement("PATH$RefPicSetStCurrBefore");
-    public static final PathElement PATH$RefPicSetStCurrAfter = PathElement.groupElement("PATH$RefPicSetStCurrAfter");
-    public static final PathElement PATH$RefPicSetLtCurr = PathElement.groupElement("PATH$RefPicSetLtCurr");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$sps_video_parameter_set_id = PathElement.groupElement("sps_video_parameter_set_id");
+    public static final PathElement PATH$pps_seq_parameter_set_id = PathElement.groupElement("pps_seq_parameter_set_id");
+    public static final PathElement PATH$pps_pic_parameter_set_id = PathElement.groupElement("pps_pic_parameter_set_id");
+    public static final PathElement PATH$NumDeltaPocsOfRefRpsIdx = PathElement.groupElement("NumDeltaPocsOfRefRpsIdx");
+    public static final PathElement PATH$PicOrderCntVal = PathElement.groupElement("PicOrderCntVal");
+    public static final PathElement PATH$NumBitsForSTRefPicSetInSlice = PathElement.groupElement("NumBitsForSTRefPicSetInSlice");
+    public static final PathElement PATH$RefPicSetStCurrBefore = PathElement.groupElement("RefPicSetStCurrBefore");
+    public static final PathElement PATH$RefPicSetStCurrAfter = PathElement.groupElement("RefPicSetStCurrAfter");
+    public static final PathElement PATH$RefPicSetLtCurr = PathElement.groupElement("RefPicSetLtCurr");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$sps_video_parameter_set_id = (OfByte) LAYOUT.select(PATH$sps_video_parameter_set_id);

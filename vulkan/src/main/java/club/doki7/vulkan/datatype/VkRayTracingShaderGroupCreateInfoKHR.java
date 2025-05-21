@@ -170,14 +170,14 @@ public record VkRayTracingShaderGroupCreateInfoKHR(@NotNull MemorySegment segmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
-    public static final PathElement PATH$generalShader = PathElement.groupElement("PATH$generalShader");
-    public static final PathElement PATH$closestHitShader = PathElement.groupElement("PATH$closestHitShader");
-    public static final PathElement PATH$anyHitShader = PathElement.groupElement("PATH$anyHitShader");
-    public static final PathElement PATH$intersectionShader = PathElement.groupElement("PATH$intersectionShader");
-    public static final PathElement PATH$pShaderGroupCaptureReplayHandle = PathElement.groupElement("PATH$pShaderGroupCaptureReplayHandle");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$generalShader = PathElement.groupElement("generalShader");
+    public static final PathElement PATH$closestHitShader = PathElement.groupElement("closestHitShader");
+    public static final PathElement PATH$anyHitShader = PathElement.groupElement("anyHitShader");
+    public static final PathElement PATH$intersectionShader = PathElement.groupElement("intersectionShader");
+    public static final PathElement PATH$pShaderGroupCaptureReplayHandle = PathElement.groupElement("pShaderGroupCaptureReplayHandle");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

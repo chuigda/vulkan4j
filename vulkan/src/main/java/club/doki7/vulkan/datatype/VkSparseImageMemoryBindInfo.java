@@ -129,9 +129,9 @@ public record VkSparseImageMemoryBindInfo(@NotNull MemorySegment segment) implem
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$image = PathElement.groupElement("PATH$image");
-    public static final PathElement PATH$bindCount = PathElement.groupElement("PATH$bindCount");
-    public static final PathElement PATH$pBinds = PathElement.groupElement("PATH$pBinds");
+    public static final PathElement PATH$image = PathElement.groupElement("image");
+    public static final PathElement PATH$bindCount = PathElement.groupElement("bindCount");
+    public static final PathElement PATH$pBinds = PathElement.groupElement("pBinds");
 
     public static final AddressLayout LAYOUT$image = (AddressLayout) LAYOUT.select(PATH$image);
     public static final OfInt LAYOUT$bindCount = (OfInt) LAYOUT.select(PATH$bindCount);

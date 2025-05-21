@@ -98,9 +98,9 @@ public record VkStridedDeviceAddressRegionKHR(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$deviceAddress = PathElement.groupElement("PATH$deviceAddress");
-    public static final PathElement PATH$stride = PathElement.groupElement("PATH$stride");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
+    public static final PathElement PATH$deviceAddress = PathElement.groupElement("deviceAddress");
+    public static final PathElement PATH$stride = PathElement.groupElement("stride");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
 
     public static final OfLong LAYOUT$deviceAddress = (OfLong) LAYOUT.select(PATH$deviceAddress);
     public static final OfLong LAYOUT$stride = (OfLong) LAYOUT.select(PATH$stride);

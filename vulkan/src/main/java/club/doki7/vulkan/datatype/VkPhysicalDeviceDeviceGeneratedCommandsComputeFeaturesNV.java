@@ -136,11 +136,11 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(@NotNull 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$deviceGeneratedCompute = PathElement.groupElement("PATH$deviceGeneratedCompute");
-    public static final PathElement PATH$deviceGeneratedComputePipelines = PathElement.groupElement("PATH$deviceGeneratedComputePipelines");
-    public static final PathElement PATH$deviceGeneratedComputeCaptureReplay = PathElement.groupElement("PATH$deviceGeneratedComputeCaptureReplay");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$deviceGeneratedCompute = PathElement.groupElement("deviceGeneratedCompute");
+    public static final PathElement PATH$deviceGeneratedComputePipelines = PathElement.groupElement("deviceGeneratedComputePipelines");
+    public static final PathElement PATH$deviceGeneratedComputeCaptureReplay = PathElement.groupElement("deviceGeneratedComputeCaptureReplay");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -180,12 +180,12 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IPo
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$semaphoreCount = PathElement.groupElement("PATH$semaphoreCount");
-    public static final PathElement PATH$pSemaphores = PathElement.groupElement("PATH$pSemaphores");
-    public static final PathElement PATH$pValues = PathElement.groupElement("PATH$pValues");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$semaphoreCount = PathElement.groupElement("semaphoreCount");
+    public static final PathElement PATH$pSemaphores = PathElement.groupElement("pSemaphores");
+    public static final PathElement PATH$pValues = PathElement.groupElement("pValues");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

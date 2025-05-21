@@ -98,9 +98,9 @@ public record VkFormatProperties(@NotNull MemorySegment segment) implements IPoi
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$linearTilingFeatures = PathElement.groupElement("PATH$linearTilingFeatures");
-    public static final PathElement PATH$optimalTilingFeatures = PathElement.groupElement("PATH$optimalTilingFeatures");
-    public static final PathElement PATH$bufferFeatures = PathElement.groupElement("PATH$bufferFeatures");
+    public static final PathElement PATH$linearTilingFeatures = PathElement.groupElement("linearTilingFeatures");
+    public static final PathElement PATH$optimalTilingFeatures = PathElement.groupElement("optimalTilingFeatures");
+    public static final PathElement PATH$bufferFeatures = PathElement.groupElement("bufferFeatures");
 
     public static final OfInt LAYOUT$linearTilingFeatures = (OfInt) LAYOUT.select(PATH$linearTilingFeatures);
     public static final OfInt LAYOUT$optimalTilingFeatures = (OfInt) LAYOUT.select(PATH$optimalTilingFeatures);

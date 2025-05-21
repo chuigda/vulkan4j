@@ -108,10 +108,10 @@ public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$nodeIndex = PathElement.groupElement("PATH$nodeIndex");
-    public static final PathElement PATH$payloadCount = PathElement.groupElement("PATH$payloadCount");
-    public static final PathElement PATH$payloads = PathElement.groupElement("PATH$payloads");
-    public static final PathElement PATH$payloadStride = PathElement.groupElement("PATH$payloadStride");
+    public static final PathElement PATH$nodeIndex = PathElement.groupElement("nodeIndex");
+    public static final PathElement PATH$payloadCount = PathElement.groupElement("payloadCount");
+    public static final PathElement PATH$payloads = PathElement.groupElement("payloads");
+    public static final PathElement PATH$payloadStride = PathElement.groupElement("payloadStride");
 
     public static final OfInt LAYOUT$nodeIndex = (OfInt) LAYOUT.select(PATH$nodeIndex);
     public static final OfInt LAYOUT$payloadCount = (OfInt) LAYOUT.select(PATH$payloadCount);

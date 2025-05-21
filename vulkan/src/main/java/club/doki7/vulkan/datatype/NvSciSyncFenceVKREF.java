@@ -80,7 +80,7 @@ public record NvSciSyncFenceVKREF(@NotNull MemorySegment segment) implements IPo
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$payload = PathElement.groupElement("PATH$payload");
+    public static final PathElement PATH$payload = PathElement.groupElement("payload");
 
     public static final SequenceLayout LAYOUT$payload = (SequenceLayout) LAYOUT.select(PATH$payload);
 

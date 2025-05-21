@@ -135,11 +135,11 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$value32 = PathElement.groupElement("PATH$value32");
-    public static final PathElement PATH$value64 = PathElement.groupElement("PATH$value64");
-    public static final PathElement PATH$valueFloat = PathElement.groupElement("PATH$valueFloat");
-    public static final PathElement PATH$valueBool = PathElement.groupElement("PATH$valueBool");
-    public static final PathElement PATH$valueString = PathElement.groupElement("PATH$valueString");
+    public static final PathElement PATH$value32 = PathElement.groupElement("value32");
+    public static final PathElement PATH$value64 = PathElement.groupElement("value64");
+    public static final PathElement PATH$valueFloat = PathElement.groupElement("valueFloat");
+    public static final PathElement PATH$valueBool = PathElement.groupElement("valueBool");
+    public static final PathElement PATH$valueString = PathElement.groupElement("valueString");
 
     public static final OfInt LAYOUT$value32 = (OfInt) LAYOUT.select(PATH$value32);
     public static final OfLong LAYOUT$value64 = (OfLong) LAYOUT.select(PATH$value64);

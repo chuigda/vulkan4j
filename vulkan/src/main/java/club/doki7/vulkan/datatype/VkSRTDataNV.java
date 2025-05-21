@@ -228,22 +228,22 @@ public record VkSRTDataNV(@NotNull MemorySegment segment) implements IPointer {
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sx = PathElement.groupElement("PATH$sx");
-    public static final PathElement PATH$a = PathElement.groupElement("PATH$a");
-    public static final PathElement PATH$b = PathElement.groupElement("PATH$b");
-    public static final PathElement PATH$pvx = PathElement.groupElement("PATH$pvx");
-    public static final PathElement PATH$sy = PathElement.groupElement("PATH$sy");
-    public static final PathElement PATH$c = PathElement.groupElement("PATH$c");
-    public static final PathElement PATH$pvy = PathElement.groupElement("PATH$pvy");
-    public static final PathElement PATH$sz = PathElement.groupElement("PATH$sz");
-    public static final PathElement PATH$pvz = PathElement.groupElement("PATH$pvz");
-    public static final PathElement PATH$qx = PathElement.groupElement("PATH$qx");
-    public static final PathElement PATH$qy = PathElement.groupElement("PATH$qy");
-    public static final PathElement PATH$qz = PathElement.groupElement("PATH$qz");
-    public static final PathElement PATH$qw = PathElement.groupElement("PATH$qw");
-    public static final PathElement PATH$tx = PathElement.groupElement("PATH$tx");
-    public static final PathElement PATH$ty = PathElement.groupElement("PATH$ty");
-    public static final PathElement PATH$tz = PathElement.groupElement("PATH$tz");
+    public static final PathElement PATH$sx = PathElement.groupElement("sx");
+    public static final PathElement PATH$a = PathElement.groupElement("a");
+    public static final PathElement PATH$b = PathElement.groupElement("b");
+    public static final PathElement PATH$pvx = PathElement.groupElement("pvx");
+    public static final PathElement PATH$sy = PathElement.groupElement("sy");
+    public static final PathElement PATH$c = PathElement.groupElement("c");
+    public static final PathElement PATH$pvy = PathElement.groupElement("pvy");
+    public static final PathElement PATH$sz = PathElement.groupElement("sz");
+    public static final PathElement PATH$pvz = PathElement.groupElement("pvz");
+    public static final PathElement PATH$qx = PathElement.groupElement("qx");
+    public static final PathElement PATH$qy = PathElement.groupElement("qy");
+    public static final PathElement PATH$qz = PathElement.groupElement("qz");
+    public static final PathElement PATH$qw = PathElement.groupElement("qw");
+    public static final PathElement PATH$tx = PathElement.groupElement("tx");
+    public static final PathElement PATH$ty = PathElement.groupElement("ty");
+    public static final PathElement PATH$tz = PathElement.groupElement("tz");
 
     public static final OfFloat LAYOUT$sx = (OfFloat) LAYOUT.select(PATH$sx);
     public static final OfFloat LAYOUT$a = (OfFloat) LAYOUT.select(PATH$a);

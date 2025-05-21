@@ -257,15 +257,15 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IPoint
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$dependencyFlags = PathElement.groupElement("PATH$dependencyFlags");
-    public static final PathElement PATH$memoryBarrierCount = PathElement.groupElement("PATH$memoryBarrierCount");
-    public static final PathElement PATH$pMemoryBarriers = PathElement.groupElement("PATH$pMemoryBarriers");
-    public static final PathElement PATH$bufferMemoryBarrierCount = PathElement.groupElement("PATH$bufferMemoryBarrierCount");
-    public static final PathElement PATH$pBufferMemoryBarriers = PathElement.groupElement("PATH$pBufferMemoryBarriers");
-    public static final PathElement PATH$imageMemoryBarrierCount = PathElement.groupElement("PATH$imageMemoryBarrierCount");
-    public static final PathElement PATH$pImageMemoryBarriers = PathElement.groupElement("PATH$pImageMemoryBarriers");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$dependencyFlags = PathElement.groupElement("dependencyFlags");
+    public static final PathElement PATH$memoryBarrierCount = PathElement.groupElement("memoryBarrierCount");
+    public static final PathElement PATH$pMemoryBarriers = PathElement.groupElement("pMemoryBarriers");
+    public static final PathElement PATH$bufferMemoryBarrierCount = PathElement.groupElement("bufferMemoryBarrierCount");
+    public static final PathElement PATH$pBufferMemoryBarriers = PathElement.groupElement("pBufferMemoryBarriers");
+    public static final PathElement PATH$imageMemoryBarrierCount = PathElement.groupElement("imageMemoryBarrierCount");
+    public static final PathElement PATH$pImageMemoryBarriers = PathElement.groupElement("pImageMemoryBarriers");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

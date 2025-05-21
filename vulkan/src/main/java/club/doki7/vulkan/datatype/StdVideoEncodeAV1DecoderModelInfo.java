@@ -109,10 +109,10 @@ public record StdVideoEncodeAV1DecoderModelInfo(@NotNull MemorySegment segment) 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$buffer_delay_length_minus_1 = PathElement.groupElement("PATH$buffer_delay_length_minus_1");
-    public static final PathElement PATH$buffer_removal_time_length_minus_1 = PathElement.groupElement("PATH$buffer_removal_time_length_minus_1");
-    public static final PathElement PATH$frame_presentation_time_length_minus_1 = PathElement.groupElement("PATH$frame_presentation_time_length_minus_1");
-    public static final PathElement PATH$num_units_in_decoding_tick = PathElement.groupElement("PATH$num_units_in_decoding_tick");
+    public static final PathElement PATH$buffer_delay_length_minus_1 = PathElement.groupElement("buffer_delay_length_minus_1");
+    public static final PathElement PATH$buffer_removal_time_length_minus_1 = PathElement.groupElement("buffer_removal_time_length_minus_1");
+    public static final PathElement PATH$frame_presentation_time_length_minus_1 = PathElement.groupElement("frame_presentation_time_length_minus_1");
+    public static final PathElement PATH$num_units_in_decoding_tick = PathElement.groupElement("num_units_in_decoding_tick");
 
     public static final OfByte LAYOUT$buffer_delay_length_minus_1 = (OfByte) LAYOUT.select(PATH$buffer_delay_length_minus_1);
     public static final OfByte LAYOUT$buffer_removal_time_length_minus_1 = (OfByte) LAYOUT.select(PATH$buffer_removal_time_length_minus_1);

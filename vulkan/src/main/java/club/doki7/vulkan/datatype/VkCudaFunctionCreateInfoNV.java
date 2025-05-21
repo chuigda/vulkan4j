@@ -147,10 +147,10 @@ public record VkCudaFunctionCreateInfoNV(@NotNull MemorySegment segment) impleme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$module = PathElement.groupElement("PATH$module");
-    public static final PathElement PATH$pName = PathElement.groupElement("PATH$pName");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$module = PathElement.groupElement("module");
+    public static final PathElement PATH$pName = PathElement.groupElement("pName");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -185,17 +185,17 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$delta_idx_minus1 = PathElement.groupElement("PATH$delta_idx_minus1");
-    public static final PathElement PATH$use_delta_flag = PathElement.groupElement("PATH$use_delta_flag");
-    public static final PathElement PATH$abs_delta_rps_minus1 = PathElement.groupElement("PATH$abs_delta_rps_minus1");
-    public static final PathElement PATH$used_by_curr_pic_flag = PathElement.groupElement("PATH$used_by_curr_pic_flag");
-    public static final PathElement PATH$used_by_curr_pic_s0_flag = PathElement.groupElement("PATH$used_by_curr_pic_s0_flag");
-    public static final PathElement PATH$used_by_curr_pic_s1_flag = PathElement.groupElement("PATH$used_by_curr_pic_s1_flag");
-    public static final PathElement PATH$num_negative_pics = PathElement.groupElement("PATH$num_negative_pics");
-    public static final PathElement PATH$num_positive_pics = PathElement.groupElement("PATH$num_positive_pics");
-    public static final PathElement PATH$delta_poc_s0_minus1 = PathElement.groupElement("PATH$delta_poc_s0_minus1");
-    public static final PathElement PATH$delta_poc_s1_minus1 = PathElement.groupElement("PATH$delta_poc_s1_minus1");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$delta_idx_minus1 = PathElement.groupElement("delta_idx_minus1");
+    public static final PathElement PATH$use_delta_flag = PathElement.groupElement("use_delta_flag");
+    public static final PathElement PATH$abs_delta_rps_minus1 = PathElement.groupElement("abs_delta_rps_minus1");
+    public static final PathElement PATH$used_by_curr_pic_flag = PathElement.groupElement("used_by_curr_pic_flag");
+    public static final PathElement PATH$used_by_curr_pic_s0_flag = PathElement.groupElement("used_by_curr_pic_s0_flag");
+    public static final PathElement PATH$used_by_curr_pic_s1_flag = PathElement.groupElement("used_by_curr_pic_s1_flag");
+    public static final PathElement PATH$num_negative_pics = PathElement.groupElement("num_negative_pics");
+    public static final PathElement PATH$num_positive_pics = PathElement.groupElement("num_positive_pics");
+    public static final PathElement PATH$delta_poc_s0_minus1 = PathElement.groupElement("delta_poc_s0_minus1");
+    public static final PathElement PATH$delta_poc_s1_minus1 = PathElement.groupElement("delta_poc_s1_minus1");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfInt LAYOUT$delta_idx_minus1 = (OfInt) LAYOUT.select(PATH$delta_idx_minus1);

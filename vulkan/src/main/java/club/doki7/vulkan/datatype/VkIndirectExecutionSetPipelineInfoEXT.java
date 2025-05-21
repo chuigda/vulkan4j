@@ -130,10 +130,10 @@ public record VkIndirectExecutionSetPipelineInfoEXT(@NotNull MemorySegment segme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$initialPipeline = PathElement.groupElement("PATH$initialPipeline");
-    public static final PathElement PATH$maxPipelineCount = PathElement.groupElement("PATH$maxPipelineCount");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$initialPipeline = PathElement.groupElement("initialPipeline");
+    public static final PathElement PATH$maxPipelineCount = PathElement.groupElement("maxPipelineCount");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

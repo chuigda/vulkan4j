@@ -98,9 +98,9 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IPoin
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$float32 = PathElement.groupElement("PATH$float32");
-    public static final PathElement PATH$int32 = PathElement.groupElement("PATH$int32");
-    public static final PathElement PATH$uint32 = PathElement.groupElement("PATH$uint32");
+    public static final PathElement PATH$float32 = PathElement.groupElement("float32");
+    public static final PathElement PATH$int32 = PathElement.groupElement("int32");
+    public static final PathElement PATH$uint32 = PathElement.groupElement("uint32");
 
     public static final OfFloat LAYOUT$float32 = (OfFloat) LAYOUT.select(PATH$float32);
     public static final OfInt LAYOUT$int32 = (OfInt) LAYOUT.select(PATH$int32);

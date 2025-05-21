@@ -98,9 +98,9 @@ public record VkInputAttachmentAspectReference(@NotNull MemorySegment segment) i
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$subpass = PathElement.groupElement("PATH$subpass");
-    public static final PathElement PATH$inputAttachmentIndex = PathElement.groupElement("PATH$inputAttachmentIndex");
-    public static final PathElement PATH$aspectMask = PathElement.groupElement("PATH$aspectMask");
+    public static final PathElement PATH$subpass = PathElement.groupElement("subpass");
+    public static final PathElement PATH$inputAttachmentIndex = PathElement.groupElement("inputAttachmentIndex");
+    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
 
     public static final OfInt LAYOUT$subpass = (OfInt) LAYOUT.select(PATH$subpass);
     public static final OfInt LAYOUT$inputAttachmentIndex = (OfInt) LAYOUT.select(PATH$inputAttachmentIndex);

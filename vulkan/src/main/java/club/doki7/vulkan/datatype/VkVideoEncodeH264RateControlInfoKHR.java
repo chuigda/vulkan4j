@@ -156,13 +156,13 @@ public record VkVideoEncodeH264RateControlInfoKHR(@NotNull MemorySegment segment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$gopFrameCount = PathElement.groupElement("PATH$gopFrameCount");
-    public static final PathElement PATH$idrPeriod = PathElement.groupElement("PATH$idrPeriod");
-    public static final PathElement PATH$consecutiveBFrameCount = PathElement.groupElement("PATH$consecutiveBFrameCount");
-    public static final PathElement PATH$temporalLayerCount = PathElement.groupElement("PATH$temporalLayerCount");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$gopFrameCount = PathElement.groupElement("gopFrameCount");
+    public static final PathElement PATH$idrPeriod = PathElement.groupElement("idrPeriod");
+    public static final PathElement PATH$consecutiveBFrameCount = PathElement.groupElement("consecutiveBFrameCount");
+    public static final PathElement PATH$temporalLayerCount = PathElement.groupElement("temporalLayerCount");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

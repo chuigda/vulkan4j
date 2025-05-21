@@ -226,20 +226,20 @@ public record VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(@NotNull MemorySegme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shaderBufferFloat16Atomics = PathElement.groupElement("PATH$shaderBufferFloat16Atomics");
-    public static final PathElement PATH$shaderBufferFloat16AtomicAdd = PathElement.groupElement("PATH$shaderBufferFloat16AtomicAdd");
-    public static final PathElement PATH$shaderBufferFloat16AtomicMinMax = PathElement.groupElement("PATH$shaderBufferFloat16AtomicMinMax");
-    public static final PathElement PATH$shaderBufferFloat32AtomicMinMax = PathElement.groupElement("PATH$shaderBufferFloat32AtomicMinMax");
-    public static final PathElement PATH$shaderBufferFloat64AtomicMinMax = PathElement.groupElement("PATH$shaderBufferFloat64AtomicMinMax");
-    public static final PathElement PATH$shaderSharedFloat16Atomics = PathElement.groupElement("PATH$shaderSharedFloat16Atomics");
-    public static final PathElement PATH$shaderSharedFloat16AtomicAdd = PathElement.groupElement("PATH$shaderSharedFloat16AtomicAdd");
-    public static final PathElement PATH$shaderSharedFloat16AtomicMinMax = PathElement.groupElement("PATH$shaderSharedFloat16AtomicMinMax");
-    public static final PathElement PATH$shaderSharedFloat32AtomicMinMax = PathElement.groupElement("PATH$shaderSharedFloat32AtomicMinMax");
-    public static final PathElement PATH$shaderSharedFloat64AtomicMinMax = PathElement.groupElement("PATH$shaderSharedFloat64AtomicMinMax");
-    public static final PathElement PATH$shaderImageFloat32AtomicMinMax = PathElement.groupElement("PATH$shaderImageFloat32AtomicMinMax");
-    public static final PathElement PATH$sparseImageFloat32AtomicMinMax = PathElement.groupElement("PATH$sparseImageFloat32AtomicMinMax");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shaderBufferFloat16Atomics = PathElement.groupElement("shaderBufferFloat16Atomics");
+    public static final PathElement PATH$shaderBufferFloat16AtomicAdd = PathElement.groupElement("shaderBufferFloat16AtomicAdd");
+    public static final PathElement PATH$shaderBufferFloat16AtomicMinMax = PathElement.groupElement("shaderBufferFloat16AtomicMinMax");
+    public static final PathElement PATH$shaderBufferFloat32AtomicMinMax = PathElement.groupElement("shaderBufferFloat32AtomicMinMax");
+    public static final PathElement PATH$shaderBufferFloat64AtomicMinMax = PathElement.groupElement("shaderBufferFloat64AtomicMinMax");
+    public static final PathElement PATH$shaderSharedFloat16Atomics = PathElement.groupElement("shaderSharedFloat16Atomics");
+    public static final PathElement PATH$shaderSharedFloat16AtomicAdd = PathElement.groupElement("shaderSharedFloat16AtomicAdd");
+    public static final PathElement PATH$shaderSharedFloat16AtomicMinMax = PathElement.groupElement("shaderSharedFloat16AtomicMinMax");
+    public static final PathElement PATH$shaderSharedFloat32AtomicMinMax = PathElement.groupElement("shaderSharedFloat32AtomicMinMax");
+    public static final PathElement PATH$shaderSharedFloat64AtomicMinMax = PathElement.groupElement("shaderSharedFloat64AtomicMinMax");
+    public static final PathElement PATH$shaderImageFloat32AtomicMinMax = PathElement.groupElement("shaderImageFloat32AtomicMinMax");
+    public static final PathElement PATH$sparseImageFloat32AtomicMinMax = PathElement.groupElement("sparseImageFloat32AtomicMinMax");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

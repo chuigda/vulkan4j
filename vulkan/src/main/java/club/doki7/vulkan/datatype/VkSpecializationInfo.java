@@ -139,10 +139,10 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$mapEntryCount = PathElement.groupElement("PATH$mapEntryCount");
-    public static final PathElement PATH$pMapEntries = PathElement.groupElement("PATH$pMapEntries");
-    public static final PathElement PATH$dataSize = PathElement.groupElement("PATH$dataSize");
-    public static final PathElement PATH$pData = PathElement.groupElement("PATH$pData");
+    public static final PathElement PATH$mapEntryCount = PathElement.groupElement("mapEntryCount");
+    public static final PathElement PATH$pMapEntries = PathElement.groupElement("pMapEntries");
+    public static final PathElement PATH$dataSize = PathElement.groupElement("dataSize");
+    public static final PathElement PATH$pData = PathElement.groupElement("pData");
 
     public static final OfInt LAYOUT$mapEntryCount = (OfInt) LAYOUT.select(PATH$mapEntryCount);
     public static final AddressLayout LAYOUT$pMapEntries = (AddressLayout) LAYOUT.select(PATH$pMapEntries);

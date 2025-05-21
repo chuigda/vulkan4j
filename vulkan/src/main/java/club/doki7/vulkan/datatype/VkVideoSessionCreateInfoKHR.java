@@ -250,17 +250,17 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$queueFamilyIndex = PathElement.groupElement("PATH$queueFamilyIndex");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$pVideoProfile = PathElement.groupElement("PATH$pVideoProfile");
-    public static final PathElement PATH$pictureFormat = PathElement.groupElement("PATH$pictureFormat");
-    public static final PathElement PATH$maxCodedExtent = PathElement.groupElement("PATH$maxCodedExtent");
-    public static final PathElement PATH$referencePictureFormat = PathElement.groupElement("PATH$referencePictureFormat");
-    public static final PathElement PATH$maxDpbSlots = PathElement.groupElement("PATH$maxDpbSlots");
-    public static final PathElement PATH$maxActiveReferencePictures = PathElement.groupElement("PATH$maxActiveReferencePictures");
-    public static final PathElement PATH$pStdHeaderVersion = PathElement.groupElement("PATH$pStdHeaderVersion");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$queueFamilyIndex = PathElement.groupElement("queueFamilyIndex");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$pVideoProfile = PathElement.groupElement("pVideoProfile");
+    public static final PathElement PATH$pictureFormat = PathElement.groupElement("pictureFormat");
+    public static final PathElement PATH$maxCodedExtent = PathElement.groupElement("maxCodedExtent");
+    public static final PathElement PATH$referencePictureFormat = PathElement.groupElement("referencePictureFormat");
+    public static final PathElement PATH$maxDpbSlots = PathElement.groupElement("maxDpbSlots");
+    public static final PathElement PATH$maxActiveReferencePictures = PathElement.groupElement("maxActiveReferencePictures");
+    public static final PathElement PATH$pStdHeaderVersion = PathElement.groupElement("pStdHeaderVersion");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

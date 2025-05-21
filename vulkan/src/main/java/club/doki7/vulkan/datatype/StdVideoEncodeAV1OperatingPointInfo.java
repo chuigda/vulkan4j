@@ -136,13 +136,13 @@ public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$operating_point_idc = PathElement.groupElement("PATH$operating_point_idc");
-    public static final PathElement PATH$seq_level_idx = PathElement.groupElement("PATH$seq_level_idx");
-    public static final PathElement PATH$seq_tier = PathElement.groupElement("PATH$seq_tier");
-    public static final PathElement PATH$decoder_buffer_delay = PathElement.groupElement("PATH$decoder_buffer_delay");
-    public static final PathElement PATH$encoder_buffer_delay = PathElement.groupElement("PATH$encoder_buffer_delay");
-    public static final PathElement PATH$initial_display_delay_minus_1 = PathElement.groupElement("PATH$initial_display_delay_minus_1");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$operating_point_idc = PathElement.groupElement("operating_point_idc");
+    public static final PathElement PATH$seq_level_idx = PathElement.groupElement("seq_level_idx");
+    public static final PathElement PATH$seq_tier = PathElement.groupElement("seq_tier");
+    public static final PathElement PATH$decoder_buffer_delay = PathElement.groupElement("decoder_buffer_delay");
+    public static final PathElement PATH$encoder_buffer_delay = PathElement.groupElement("encoder_buffer_delay");
+    public static final PathElement PATH$initial_display_delay_minus_1 = PathElement.groupElement("initial_display_delay_minus_1");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfShort LAYOUT$operating_point_idc = (OfShort) LAYOUT.select(PATH$operating_point_idc);

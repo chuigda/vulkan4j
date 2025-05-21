@@ -86,8 +86,8 @@ public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) i
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$temporal_id = PathElement.groupElement("PATH$temporal_id");
-    public static final PathElement PATH$spatial_id = PathElement.groupElement("PATH$spatial_id");
+    public static final PathElement PATH$temporal_id = PathElement.groupElement("temporal_id");
+    public static final PathElement PATH$spatial_id = PathElement.groupElement("spatial_id");
 
     public static final OfByte LAYOUT$temporal_id = (OfByte) LAYOUT.select(PATH$temporal_id);
     public static final OfByte LAYOUT$spatial_id = (OfByte) LAYOUT.select(PATH$spatial_id);

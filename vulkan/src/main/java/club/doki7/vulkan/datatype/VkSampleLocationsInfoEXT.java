@@ -173,12 +173,12 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$sampleLocationsPerPixel = PathElement.groupElement("PATH$sampleLocationsPerPixel");
-    public static final PathElement PATH$sampleLocationGridSize = PathElement.groupElement("PATH$sampleLocationGridSize");
-    public static final PathElement PATH$sampleLocationsCount = PathElement.groupElement("PATH$sampleLocationsCount");
-    public static final PathElement PATH$pSampleLocations = PathElement.groupElement("PATH$pSampleLocations");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$sampleLocationsPerPixel = PathElement.groupElement("sampleLocationsPerPixel");
+    public static final PathElement PATH$sampleLocationGridSize = PathElement.groupElement("sampleLocationGridSize");
+    public static final PathElement PATH$sampleLocationsCount = PathElement.groupElement("sampleLocationsCount");
+    public static final PathElement PATH$pSampleLocations = PathElement.groupElement("pSampleLocations");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

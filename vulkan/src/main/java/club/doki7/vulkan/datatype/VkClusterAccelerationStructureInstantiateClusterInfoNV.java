@@ -112,10 +112,10 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$clusterIdOffset = PathElement.groupElement("PATH$clusterIdOffset");
-    public static final PathElement PATH$bitfield$geometryIndexOffset$reserved = PathElement.groupElement("PATH$bitfield$geometryIndexOffset$reserved");
-    public static final PathElement PATH$clusterTemplateAddress = PathElement.groupElement("PATH$clusterTemplateAddress");
-    public static final PathElement PATH$vertexBuffer = PathElement.groupElement("PATH$vertexBuffer");
+    public static final PathElement PATH$clusterIdOffset = PathElement.groupElement("clusterIdOffset");
+    public static final PathElement PATH$bitfield$geometryIndexOffset$reserved = PathElement.groupElement("geometryIndexOffset$reserved");
+    public static final PathElement PATH$clusterTemplateAddress = PathElement.groupElement("clusterTemplateAddress");
+    public static final PathElement PATH$vertexBuffer = PathElement.groupElement("vertexBuffer");
 
     public static final OfInt LAYOUT$clusterIdOffset = (OfInt) LAYOUT.select(PATH$clusterIdOffset);
     public static final OfInt LAYOUT$bitfield$geometryIndexOffset$reserved = (OfInt) LAYOUT.select(PATH$bitfield$geometryIndexOffset$reserved);

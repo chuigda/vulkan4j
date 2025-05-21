@@ -134,7 +134,7 @@ public record StdVideoDecodeH264PictureInfoFlags(@NotNull MemorySegment segment)
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$field_pic_flag$complementary_field_pair = PathElement.groupElement("PATH$bitfield$field_pic_flag$complementary_field_pair");
+    public static final PathElement PATH$bitfield$field_pic_flag$complementary_field_pair = PathElement.groupElement("field_pic_flag$complementary_field_pair");
 
     public static final OfInt LAYOUT$bitfield$field_pic_flag$complementary_field_pair = (OfInt) LAYOUT.select(PATH$bitfield$field_pic_flag$complementary_field_pair);
 

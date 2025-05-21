@@ -190,16 +190,16 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$displayMode = PathElement.groupElement("PATH$displayMode");
-    public static final PathElement PATH$planeIndex = PathElement.groupElement("PATH$planeIndex");
-    public static final PathElement PATH$planeStackIndex = PathElement.groupElement("PATH$planeStackIndex");
-    public static final PathElement PATH$transform = PathElement.groupElement("PATH$transform");
-    public static final PathElement PATH$globalAlpha = PathElement.groupElement("PATH$globalAlpha");
-    public static final PathElement PATH$alphaMode = PathElement.groupElement("PATH$alphaMode");
-    public static final PathElement PATH$imageExtent = PathElement.groupElement("PATH$imageExtent");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$displayMode = PathElement.groupElement("displayMode");
+    public static final PathElement PATH$planeIndex = PathElement.groupElement("planeIndex");
+    public static final PathElement PATH$planeStackIndex = PathElement.groupElement("planeStackIndex");
+    public static final PathElement PATH$transform = PathElement.groupElement("transform");
+    public static final PathElement PATH$globalAlpha = PathElement.groupElement("globalAlpha");
+    public static final PathElement PATH$alphaMode = PathElement.groupElement("alphaMode");
+    public static final PathElement PATH$imageExtent = PathElement.groupElement("imageExtent");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

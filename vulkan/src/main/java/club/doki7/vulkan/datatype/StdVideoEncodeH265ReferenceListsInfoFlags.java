@@ -91,7 +91,7 @@ public record StdVideoEncodeH265ReferenceListsInfoFlags(@NotNull MemorySegment s
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$ref_pic_list_modification_flag_l0$reserved = PathElement.groupElement("PATH$bitfield$ref_pic_list_modification_flag_l0$reserved");
+    public static final PathElement PATH$bitfield$ref_pic_list_modification_flag_l0$reserved = PathElement.groupElement("ref_pic_list_modification_flag_l0$reserved");
 
     public static final OfInt LAYOUT$bitfield$ref_pic_list_modification_flag_l0$reserved = (OfInt) LAYOUT.select(PATH$bitfield$ref_pic_list_modification_flag_l0$reserved);
 

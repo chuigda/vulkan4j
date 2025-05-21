@@ -260,17 +260,17 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$pic_type = PathElement.groupElement("PATH$pic_type");
-    public static final PathElement PATH$sps_video_parameter_set_id = PathElement.groupElement("PATH$sps_video_parameter_set_id");
-    public static final PathElement PATH$pps_seq_parameter_set_id = PathElement.groupElement("PATH$pps_seq_parameter_set_id");
-    public static final PathElement PATH$pps_pic_parameter_set_id = PathElement.groupElement("PATH$pps_pic_parameter_set_id");
-    public static final PathElement PATH$short_term_ref_pic_set_idx = PathElement.groupElement("PATH$short_term_ref_pic_set_idx");
-    public static final PathElement PATH$PicOrderCntVal = PathElement.groupElement("PATH$PicOrderCntVal");
-    public static final PathElement PATH$TemporalId = PathElement.groupElement("PATH$TemporalId");
-    public static final PathElement PATH$pRefLists = PathElement.groupElement("PATH$pRefLists");
-    public static final PathElement PATH$pShortTermRefPicSet = PathElement.groupElement("PATH$pShortTermRefPicSet");
-    public static final PathElement PATH$pLongTermRefPics = PathElement.groupElement("PATH$pLongTermRefPics");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$pic_type = PathElement.groupElement("pic_type");
+    public static final PathElement PATH$sps_video_parameter_set_id = PathElement.groupElement("sps_video_parameter_set_id");
+    public static final PathElement PATH$pps_seq_parameter_set_id = PathElement.groupElement("pps_seq_parameter_set_id");
+    public static final PathElement PATH$pps_pic_parameter_set_id = PathElement.groupElement("pps_pic_parameter_set_id");
+    public static final PathElement PATH$short_term_ref_pic_set_idx = PathElement.groupElement("short_term_ref_pic_set_idx");
+    public static final PathElement PATH$PicOrderCntVal = PathElement.groupElement("PicOrderCntVal");
+    public static final PathElement PATH$TemporalId = PathElement.groupElement("TemporalId");
+    public static final PathElement PATH$pRefLists = PathElement.groupElement("pRefLists");
+    public static final PathElement PATH$pShortTermRefPicSet = PathElement.groupElement("pShortTermRefPicSet");
+    public static final PathElement PATH$pLongTermRefPics = PathElement.groupElement("pLongTermRefPics");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfInt LAYOUT$pic_type = (OfInt) LAYOUT.select(PATH$pic_type);

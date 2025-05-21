@@ -146,12 +146,12 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$vendorID = PathElement.groupElement("PATH$vendorID");
-    public static final PathElement PATH$deviceID = PathElement.groupElement("PATH$deviceID");
-    public static final PathElement PATH$layeredAPI = PathElement.groupElement("PATH$layeredAPI");
-    public static final PathElement PATH$deviceName = PathElement.groupElement("PATH$deviceName");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$vendorID = PathElement.groupElement("vendorID");
+    public static final PathElement PATH$deviceID = PathElement.groupElement("deviceID");
+    public static final PathElement PATH$layeredAPI = PathElement.groupElement("layeredAPI");
+    public static final PathElement PATH$deviceName = PathElement.groupElement("deviceName");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

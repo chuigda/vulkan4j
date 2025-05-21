@@ -126,10 +126,10 @@ public record VkPhysicalDeviceProvokingVertexPropertiesEXT(@NotNull MemorySegmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$provokingVertexModePerPipeline = PathElement.groupElement("PATH$provokingVertexModePerPipeline");
-    public static final PathElement PATH$transformFeedbackPreservesTriangleFanProvokingVertex = PathElement.groupElement("PATH$transformFeedbackPreservesTriangleFanProvokingVertex");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$provokingVertexModePerPipeline = PathElement.groupElement("provokingVertexModePerPipeline");
+    public static final PathElement PATH$transformFeedbackPreservesTriangleFanProvokingVertex = PathElement.groupElement("transformFeedbackPreservesTriangleFanProvokingVertex");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

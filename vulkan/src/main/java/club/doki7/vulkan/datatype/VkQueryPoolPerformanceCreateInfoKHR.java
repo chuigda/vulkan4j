@@ -153,11 +153,11 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$queueFamilyIndex = PathElement.groupElement("PATH$queueFamilyIndex");
-    public static final PathElement PATH$counterIndexCount = PathElement.groupElement("PATH$counterIndexCount");
-    public static final PathElement PATH$pCounterIndices = PathElement.groupElement("PATH$pCounterIndices");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$queueFamilyIndex = PathElement.groupElement("queueFamilyIndex");
+    public static final PathElement PATH$counterIndexCount = PathElement.groupElement("counterIndexCount");
+    public static final PathElement PATH$pCounterIndices = PathElement.groupElement("pCounterIndices");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

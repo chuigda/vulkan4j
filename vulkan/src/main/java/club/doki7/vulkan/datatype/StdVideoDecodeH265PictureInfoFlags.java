@@ -112,7 +112,7 @@ public record StdVideoDecodeH265PictureInfoFlags(@NotNull MemorySegment segment)
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag = PathElement.groupElement("PATH$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag");
+    public static final PathElement PATH$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag = PathElement.groupElement("IrapPicFlag$short_term_ref_pic_set_sps_flag");
 
     public static final OfInt LAYOUT$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag = (OfInt) LAYOUT.select(PATH$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag);
 

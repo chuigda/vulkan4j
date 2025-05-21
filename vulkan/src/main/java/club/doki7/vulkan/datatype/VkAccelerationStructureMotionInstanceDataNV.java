@@ -98,9 +98,9 @@ public record VkAccelerationStructureMotionInstanceDataNV(@NotNull MemorySegment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$staticInstance = PathElement.groupElement("PATH$staticInstance");
-    public static final PathElement PATH$matrixMotionInstance = PathElement.groupElement("PATH$matrixMotionInstance");
-    public static final PathElement PATH$srtMotionInstance = PathElement.groupElement("PATH$srtMotionInstance");
+    public static final PathElement PATH$staticInstance = PathElement.groupElement("staticInstance");
+    public static final PathElement PATH$matrixMotionInstance = PathElement.groupElement("matrixMotionInstance");
+    public static final PathElement PATH$srtMotionInstance = PathElement.groupElement("srtMotionInstance");
 
     public static final StructLayout LAYOUT$staticInstance = (StructLayout) LAYOUT.select(PATH$staticInstance);
     public static final StructLayout LAYOUT$matrixMotionInstance = (StructLayout) LAYOUT.select(PATH$matrixMotionInstance);

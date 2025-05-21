@@ -126,10 +126,10 @@ public record VkMemoryDedicatedRequirements(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$prefersDedicatedAllocation = PathElement.groupElement("PATH$prefersDedicatedAllocation");
-    public static final PathElement PATH$requiresDedicatedAllocation = PathElement.groupElement("PATH$requiresDedicatedAllocation");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$prefersDedicatedAllocation = PathElement.groupElement("prefersDedicatedAllocation");
+    public static final PathElement PATH$requiresDedicatedAllocation = PathElement.groupElement("requiresDedicatedAllocation");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

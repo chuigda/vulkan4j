@@ -136,11 +136,11 @@ public record VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV(@NotNull Me
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$extendedSparseAddressSpaceSize = PathElement.groupElement("PATH$extendedSparseAddressSpaceSize");
-    public static final PathElement PATH$extendedSparseImageUsageFlags = PathElement.groupElement("PATH$extendedSparseImageUsageFlags");
-    public static final PathElement PATH$extendedSparseBufferUsageFlags = PathElement.groupElement("PATH$extendedSparseBufferUsageFlags");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$extendedSparseAddressSpaceSize = PathElement.groupElement("extendedSparseAddressSpaceSize");
+    public static final PathElement PATH$extendedSparseImageUsageFlags = PathElement.groupElement("extendedSparseImageUsageFlags");
+    public static final PathElement PATH$extendedSparseBufferUsageFlags = PathElement.groupElement("extendedSparseBufferUsageFlags");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

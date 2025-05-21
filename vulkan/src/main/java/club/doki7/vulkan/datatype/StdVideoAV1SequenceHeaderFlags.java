@@ -278,7 +278,7 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$still_picture$reserved = PathElement.groupElement("PATH$bitfield$still_picture$reserved");
+    public static final PathElement PATH$bitfield$still_picture$reserved = PathElement.groupElement("still_picture$reserved");
 
     public static final OfInt LAYOUT$bitfield$still_picture$reserved = (OfInt) LAYOUT.select(PATH$bitfield$still_picture$reserved);
 

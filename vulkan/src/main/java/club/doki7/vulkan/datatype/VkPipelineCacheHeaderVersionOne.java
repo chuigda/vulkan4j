@@ -118,11 +118,11 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$headerSize = PathElement.groupElement("PATH$headerSize");
-    public static final PathElement PATH$headerVersion = PathElement.groupElement("PATH$headerVersion");
-    public static final PathElement PATH$vendorID = PathElement.groupElement("PATH$vendorID");
-    public static final PathElement PATH$deviceID = PathElement.groupElement("PATH$deviceID");
-    public static final PathElement PATH$pipelineCacheUUID = PathElement.groupElement("PATH$pipelineCacheUUID");
+    public static final PathElement PATH$headerSize = PathElement.groupElement("headerSize");
+    public static final PathElement PATH$headerVersion = PathElement.groupElement("headerVersion");
+    public static final PathElement PATH$vendorID = PathElement.groupElement("vendorID");
+    public static final PathElement PATH$deviceID = PathElement.groupElement("deviceID");
+    public static final PathElement PATH$pipelineCacheUUID = PathElement.groupElement("pipelineCacheUUID");
 
     public static final OfInt LAYOUT$headerSize = (OfInt) LAYOUT.select(PATH$headerSize);
     public static final OfInt LAYOUT$headerVersion = (OfInt) LAYOUT.select(PATH$headerVersion);

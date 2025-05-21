@@ -146,12 +146,12 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$minSubgroupSize = PathElement.groupElement("PATH$minSubgroupSize");
-    public static final PathElement PATH$maxSubgroupSize = PathElement.groupElement("PATH$maxSubgroupSize");
-    public static final PathElement PATH$maxComputeWorkgroupSubgroups = PathElement.groupElement("PATH$maxComputeWorkgroupSubgroups");
-    public static final PathElement PATH$requiredSubgroupSizeStages = PathElement.groupElement("PATH$requiredSubgroupSizeStages");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$minSubgroupSize = PathElement.groupElement("minSubgroupSize");
+    public static final PathElement PATH$maxSubgroupSize = PathElement.groupElement("maxSubgroupSize");
+    public static final PathElement PATH$maxComputeWorkgroupSubgroups = PathElement.groupElement("maxComputeWorkgroupSubgroups");
+    public static final PathElement PATH$requiredSubgroupSizeStages = PathElement.groupElement("requiredSubgroupSizeStages");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

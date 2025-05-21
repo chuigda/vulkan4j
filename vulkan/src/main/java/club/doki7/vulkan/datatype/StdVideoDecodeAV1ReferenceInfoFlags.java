@@ -91,7 +91,7 @@ public record StdVideoDecodeAV1ReferenceInfoFlags(@NotNull MemorySegment segment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$disable_frame_end_update_cdf$reserved = PathElement.groupElement("PATH$bitfield$disable_frame_end_update_cdf$reserved");
+    public static final PathElement PATH$bitfield$disable_frame_end_update_cdf$reserved = PathElement.groupElement("disable_frame_end_update_cdf$reserved");
 
     public static final OfInt LAYOUT$bitfield$disable_frame_end_update_cdf$reserved = (OfInt) LAYOUT.select(PATH$bitfield$disable_frame_end_update_cdf$reserved);
 

@@ -204,14 +204,14 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$stageFlags = PathElement.groupElement("PATH$stageFlags");
-    public static final PathElement PATH$layout = PathElement.groupElement("PATH$layout");
-    public static final PathElement PATH$firstSet = PathElement.groupElement("PATH$firstSet");
-    public static final PathElement PATH$setCount = PathElement.groupElement("PATH$setCount");
-    public static final PathElement PATH$pBufferIndices = PathElement.groupElement("PATH$pBufferIndices");
-    public static final PathElement PATH$pOffsets = PathElement.groupElement("PATH$pOffsets");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$stageFlags = PathElement.groupElement("stageFlags");
+    public static final PathElement PATH$layout = PathElement.groupElement("layout");
+    public static final PathElement PATH$firstSet = PathElement.groupElement("firstSet");
+    public static final PathElement PATH$setCount = PathElement.groupElement("setCount");
+    public static final PathElement PATH$pBufferIndices = PathElement.groupElement("pBufferIndices");
+    public static final PathElement PATH$pOffsets = PathElement.groupElement("pOffsets");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

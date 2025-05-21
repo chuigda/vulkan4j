@@ -102,7 +102,7 @@ public record StdVideoEncodeAV1OperatingPointInfoFlags(@NotNull MemorySegment se
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$decoder_model_present_for_this_op$reserved = PathElement.groupElement("PATH$bitfield$decoder_model_present_for_this_op$reserved");
+    public static final PathElement PATH$bitfield$decoder_model_present_for_this_op$reserved = PathElement.groupElement("decoder_model_present_for_this_op$reserved");
 
     public static final OfInt LAYOUT$bitfield$decoder_model_present_for_this_op$reserved = (OfInt) LAYOUT.select(PATH$bitfield$decoder_model_present_for_this_op$reserved);
 

@@ -146,12 +146,12 @@ public record VkPhysicalDeviceDriverProperties(@NotNull MemorySegment segment) i
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$driverID = PathElement.groupElement("PATH$driverID");
-    public static final PathElement PATH$driverName = PathElement.groupElement("PATH$driverName");
-    public static final PathElement PATH$driverInfo = PathElement.groupElement("PATH$driverInfo");
-    public static final PathElement PATH$conformanceVersion = PathElement.groupElement("PATH$conformanceVersion");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$driverID = PathElement.groupElement("driverID");
+    public static final PathElement PATH$driverName = PathElement.groupElement("driverName");
+    public static final PathElement PATH$driverInfo = PathElement.groupElement("driverInfo");
+    public static final PathElement PATH$conformanceVersion = PathElement.groupElement("conformanceVersion");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

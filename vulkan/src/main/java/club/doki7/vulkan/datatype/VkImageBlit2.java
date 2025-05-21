@@ -146,12 +146,12 @@ public record VkImageBlit2(@NotNull MemorySegment segment) implements IPointer {
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$srcSubresource = PathElement.groupElement("PATH$srcSubresource");
-    public static final PathElement PATH$srcOffsets = PathElement.groupElement("PATH$srcOffsets");
-    public static final PathElement PATH$dstSubresource = PathElement.groupElement("PATH$dstSubresource");
-    public static final PathElement PATH$dstOffsets = PathElement.groupElement("PATH$dstOffsets");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcSubresource = PathElement.groupElement("srcSubresource");
+    public static final PathElement PATH$srcOffsets = PathElement.groupElement("srcOffsets");
+    public static final PathElement PATH$dstSubresource = PathElement.groupElement("dstSubresource");
+    public static final PathElement PATH$dstOffsets = PathElement.groupElement("dstOffsets");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

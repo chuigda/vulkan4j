@@ -126,10 +126,10 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$rayTracingMaintenance1 = PathElement.groupElement("PATH$rayTracingMaintenance1");
-    public static final PathElement PATH$rayTracingPipelineTraceRaysIndirect2 = PathElement.groupElement("PATH$rayTracingPipelineTraceRaysIndirect2");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$rayTracingMaintenance1 = PathElement.groupElement("rayTracingMaintenance1");
+    public static final PathElement PATH$rayTracingPipelineTraceRaysIndirect2 = PathElement.groupElement("rayTracingPipelineTraceRaysIndirect2");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

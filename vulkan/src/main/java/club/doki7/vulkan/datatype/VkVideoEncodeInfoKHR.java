@@ -254,17 +254,17 @@ public record VkVideoEncodeInfoKHR(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$dstBuffer = PathElement.groupElement("PATH$dstBuffer");
-    public static final PathElement PATH$dstBufferOffset = PathElement.groupElement("PATH$dstBufferOffset");
-    public static final PathElement PATH$dstBufferRange = PathElement.groupElement("PATH$dstBufferRange");
-    public static final PathElement PATH$srcPictureResource = PathElement.groupElement("PATH$srcPictureResource");
-    public static final PathElement PATH$pSetupReferenceSlot = PathElement.groupElement("PATH$pSetupReferenceSlot");
-    public static final PathElement PATH$referenceSlotCount = PathElement.groupElement("PATH$referenceSlotCount");
-    public static final PathElement PATH$pReferenceSlots = PathElement.groupElement("PATH$pReferenceSlots");
-    public static final PathElement PATH$precedingExternallyEncodedBytes = PathElement.groupElement("PATH$precedingExternallyEncodedBytes");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$dstBuffer = PathElement.groupElement("dstBuffer");
+    public static final PathElement PATH$dstBufferOffset = PathElement.groupElement("dstBufferOffset");
+    public static final PathElement PATH$dstBufferRange = PathElement.groupElement("dstBufferRange");
+    public static final PathElement PATH$srcPictureResource = PathElement.groupElement("srcPictureResource");
+    public static final PathElement PATH$pSetupReferenceSlot = PathElement.groupElement("pSetupReferenceSlot");
+    public static final PathElement PATH$referenceSlotCount = PathElement.groupElement("referenceSlotCount");
+    public static final PathElement PATH$pReferenceSlots = PathElement.groupElement("pReferenceSlots");
+    public static final PathElement PATH$precedingExternallyEncodedBytes = PathElement.groupElement("precedingExternallyEncodedBytes");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -88,8 +88,8 @@ public record VkDescriptorPoolSize(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$type = PathElement.groupElement("PATH$type");
-    public static final PathElement PATH$descriptorCount = PathElement.groupElement("PATH$descriptorCount");
+    public static final PathElement PATH$type = PathElement.groupElement("type");
+    public static final PathElement PATH$descriptorCount = PathElement.groupElement("descriptorCount");
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
     public static final OfInt LAYOUT$descriptorCount = (OfInt) LAYOUT.select(PATH$descriptorCount);

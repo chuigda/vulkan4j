@@ -98,9 +98,9 @@ public record VkMicromapTriangleEXT(@NotNull MemorySegment segment) implements I
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$dataOffset = PathElement.groupElement("PATH$dataOffset");
-    public static final PathElement PATH$subdivisionLevel = PathElement.groupElement("PATH$subdivisionLevel");
-    public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
+    public static final PathElement PATH$dataOffset = PathElement.groupElement("dataOffset");
+    public static final PathElement PATH$subdivisionLevel = PathElement.groupElement("subdivisionLevel");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
 
     public static final OfInt LAYOUT$dataOffset = (OfInt) LAYOUT.select(PATH$dataOffset);
     public static final OfShort LAYOUT$subdivisionLevel = (OfShort) LAYOUT.select(PATH$subdivisionLevel);

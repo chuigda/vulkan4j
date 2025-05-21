@@ -156,13 +156,13 @@ public record VkClusterAccelerationStructureInputInfoNV(@NotNull MemorySegment s
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxAccelerationStructureCount = PathElement.groupElement("PATH$maxAccelerationStructureCount");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$opType = PathElement.groupElement("PATH$opType");
-    public static final PathElement PATH$opMode = PathElement.groupElement("PATH$opMode");
-    public static final PathElement PATH$opInput = PathElement.groupElement("PATH$opInput");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$maxAccelerationStructureCount = PathElement.groupElement("maxAccelerationStructureCount");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$opType = PathElement.groupElement("opType");
+    public static final PathElement PATH$opMode = PathElement.groupElement("opMode");
+    public static final PathElement PATH$opInput = PathElement.groupElement("opInput");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

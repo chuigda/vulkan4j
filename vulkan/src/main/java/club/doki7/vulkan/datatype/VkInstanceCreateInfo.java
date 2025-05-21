@@ -225,14 +225,14 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$pApplicationInfo = PathElement.groupElement("PATH$pApplicationInfo");
-    public static final PathElement PATH$enabledLayerCount = PathElement.groupElement("PATH$enabledLayerCount");
-    public static final PathElement PATH$ppEnabledLayerNames = PathElement.groupElement("PATH$ppEnabledLayerNames");
-    public static final PathElement PATH$enabledExtensionCount = PathElement.groupElement("PATH$enabledExtensionCount");
-    public static final PathElement PATH$ppEnabledExtensionNames = PathElement.groupElement("PATH$ppEnabledExtensionNames");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$pApplicationInfo = PathElement.groupElement("pApplicationInfo");
+    public static final PathElement PATH$enabledLayerCount = PathElement.groupElement("enabledLayerCount");
+    public static final PathElement PATH$ppEnabledLayerNames = PathElement.groupElement("ppEnabledLayerNames");
+    public static final PathElement PATH$enabledExtensionCount = PathElement.groupElement("enabledExtensionCount");
+    public static final PathElement PATH$ppEnabledExtensionNames = PathElement.groupElement("ppEnabledExtensionNames");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

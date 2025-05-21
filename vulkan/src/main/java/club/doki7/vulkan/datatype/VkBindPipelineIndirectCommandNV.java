@@ -78,7 +78,7 @@ public record VkBindPipelineIndirectCommandNV(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$pipelineAddress = PathElement.groupElement("PATH$pipelineAddress");
+    public static final PathElement PATH$pipelineAddress = PathElement.groupElement("pipelineAddress");
 
     public static final OfLong LAYOUT$pipelineAddress = (OfLong) LAYOUT.select(PATH$pipelineAddress);
 

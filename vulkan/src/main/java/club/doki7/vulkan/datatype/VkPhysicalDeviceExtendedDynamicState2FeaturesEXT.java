@@ -136,11 +136,11 @@ public record VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(@NotNull MemorySe
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$extendedDynamicState2 = PathElement.groupElement("PATH$extendedDynamicState2");
-    public static final PathElement PATH$extendedDynamicState2LogicOp = PathElement.groupElement("PATH$extendedDynamicState2LogicOp");
-    public static final PathElement PATH$extendedDynamicState2PatchControlPoints = PathElement.groupElement("PATH$extendedDynamicState2PatchControlPoints");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$extendedDynamicState2 = PathElement.groupElement("extendedDynamicState2");
+    public static final PathElement PATH$extendedDynamicState2LogicOp = PathElement.groupElement("extendedDynamicState2LogicOp");
+    public static final PathElement PATH$extendedDynamicState2PatchControlPoints = PathElement.groupElement("extendedDynamicState2PatchControlPoints");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

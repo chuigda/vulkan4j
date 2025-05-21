@@ -146,12 +146,12 @@ public record VkPhysicalDeviceCooperativeVectorPropertiesNV(@NotNull MemorySegme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$cooperativeVectorSupportedStages = PathElement.groupElement("PATH$cooperativeVectorSupportedStages");
-    public static final PathElement PATH$cooperativeVectorTrainingFloat16Accumulation = PathElement.groupElement("PATH$cooperativeVectorTrainingFloat16Accumulation");
-    public static final PathElement PATH$cooperativeVectorTrainingFloat32Accumulation = PathElement.groupElement("PATH$cooperativeVectorTrainingFloat32Accumulation");
-    public static final PathElement PATH$maxCooperativeVectorComponents = PathElement.groupElement("PATH$maxCooperativeVectorComponents");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$cooperativeVectorSupportedStages = PathElement.groupElement("cooperativeVectorSupportedStages");
+    public static final PathElement PATH$cooperativeVectorTrainingFloat16Accumulation = PathElement.groupElement("cooperativeVectorTrainingFloat16Accumulation");
+    public static final PathElement PATH$cooperativeVectorTrainingFloat32Accumulation = PathElement.groupElement("cooperativeVectorTrainingFloat32Accumulation");
+    public static final PathElement PATH$maxCooperativeVectorComponents = PathElement.groupElement("maxCooperativeVectorComponents");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

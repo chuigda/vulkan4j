@@ -88,8 +88,8 @@ public record VkOffset2D(@NotNull MemorySegment segment) implements IPointer {
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$x = PathElement.groupElement("PATH$x");
-    public static final PathElement PATH$y = PathElement.groupElement("PATH$y");
+    public static final PathElement PATH$x = PathElement.groupElement("x");
+    public static final PathElement PATH$y = PathElement.groupElement("y");
 
     public static final OfInt LAYOUT$x = (OfInt) LAYOUT.select(PATH$x);
     public static final OfInt LAYOUT$y = (OfInt) LAYOUT.select(PATH$y);

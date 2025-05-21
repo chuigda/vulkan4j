@@ -173,12 +173,12 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$discardRectangleMode = PathElement.groupElement("PATH$discardRectangleMode");
-    public static final PathElement PATH$discardRectangleCount = PathElement.groupElement("PATH$discardRectangleCount");
-    public static final PathElement PATH$pDiscardRectangles = PathElement.groupElement("PATH$pDiscardRectangles");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$discardRectangleMode = PathElement.groupElement("discardRectangleMode");
+    public static final PathElement PATH$discardRectangleCount = PathElement.groupElement("discardRectangleCount");
+    public static final PathElement PATH$pDiscardRectangles = PathElement.groupElement("pDiscardRectangles");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

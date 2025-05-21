@@ -136,11 +136,11 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(@NotNull MemorySegm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$srcPremultiplied = PathElement.groupElement("PATH$srcPremultiplied");
-    public static final PathElement PATH$dstPremultiplied = PathElement.groupElement("PATH$dstPremultiplied");
-    public static final PathElement PATH$blendOverlap = PathElement.groupElement("PATH$blendOverlap");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcPremultiplied = PathElement.groupElement("srcPremultiplied");
+    public static final PathElement PATH$dstPremultiplied = PathElement.groupElement("dstPremultiplied");
+    public static final PathElement PATH$blendOverlap = PathElement.groupElement("blendOverlap");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -150,12 +150,12 @@ public record VkGeometryAABBNV(@NotNull MemorySegment segment) implements IPoint
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$aabbData = PathElement.groupElement("PATH$aabbData");
-    public static final PathElement PATH$numAABBs = PathElement.groupElement("PATH$numAABBs");
-    public static final PathElement PATH$stride = PathElement.groupElement("PATH$stride");
-    public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$aabbData = PathElement.groupElement("aabbData");
+    public static final PathElement PATH$numAABBs = PathElement.groupElement("numAABBs");
+    public static final PathElement PATH$stride = PathElement.groupElement("stride");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

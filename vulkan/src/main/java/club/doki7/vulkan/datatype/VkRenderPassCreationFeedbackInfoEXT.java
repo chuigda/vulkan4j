@@ -78,7 +78,7 @@ public record VkRenderPassCreationFeedbackInfoEXT(@NotNull MemorySegment segment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$postMergeSubpassCount = PathElement.groupElement("PATH$postMergeSubpassCount");
+    public static final PathElement PATH$postMergeSubpassCount = PathElement.groupElement("postMergeSubpassCount");
 
     public static final OfInt LAYOUT$postMergeSubpassCount = (OfInt) LAYOUT.select(PATH$postMergeSubpassCount);
 

@@ -126,12 +126,12 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IPointe
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$cdef_damping_minus_3 = PathElement.groupElement("PATH$cdef_damping_minus_3");
-    public static final PathElement PATH$cdef_bits = PathElement.groupElement("PATH$cdef_bits");
-    public static final PathElement PATH$cdef_y_pri_strength = PathElement.groupElement("PATH$cdef_y_pri_strength");
-    public static final PathElement PATH$cdef_y_sec_strength = PathElement.groupElement("PATH$cdef_y_sec_strength");
-    public static final PathElement PATH$cdef_uv_pri_strength = PathElement.groupElement("PATH$cdef_uv_pri_strength");
-    public static final PathElement PATH$cdef_uv_sec_strength = PathElement.groupElement("PATH$cdef_uv_sec_strength");
+    public static final PathElement PATH$cdef_damping_minus_3 = PathElement.groupElement("cdef_damping_minus_3");
+    public static final PathElement PATH$cdef_bits = PathElement.groupElement("cdef_bits");
+    public static final PathElement PATH$cdef_y_pri_strength = PathElement.groupElement("cdef_y_pri_strength");
+    public static final PathElement PATH$cdef_y_sec_strength = PathElement.groupElement("cdef_y_sec_strength");
+    public static final PathElement PATH$cdef_uv_pri_strength = PathElement.groupElement("cdef_uv_pri_strength");
+    public static final PathElement PATH$cdef_uv_sec_strength = PathElement.groupElement("cdef_uv_sec_strength");
 
     public static final OfByte LAYOUT$cdef_damping_minus_3 = (OfByte) LAYOUT.select(PATH$cdef_damping_minus_3);
     public static final OfByte LAYOUT$cdef_bits = (OfByte) LAYOUT.select(PATH$cdef_bits);

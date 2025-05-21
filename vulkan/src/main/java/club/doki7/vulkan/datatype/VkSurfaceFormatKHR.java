@@ -88,8 +88,8 @@ public record VkSurfaceFormatKHR(@NotNull MemorySegment segment) implements IPoi
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
-    public static final PathElement PATH$colorSpace = PathElement.groupElement("PATH$colorSpace");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$colorSpace = PathElement.groupElement("colorSpace");
 
     public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
     public static final OfInt LAYOUT$colorSpace = (OfInt) LAYOUT.select(PATH$colorSpace);

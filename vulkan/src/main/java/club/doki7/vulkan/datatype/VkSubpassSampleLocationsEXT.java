@@ -88,8 +88,8 @@ public record VkSubpassSampleLocationsEXT(@NotNull MemorySegment segment) implem
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$subpassIndex = PathElement.groupElement("PATH$subpassIndex");
-    public static final PathElement PATH$sampleLocationsInfo = PathElement.groupElement("PATH$sampleLocationsInfo");
+    public static final PathElement PATH$subpassIndex = PathElement.groupElement("subpassIndex");
+    public static final PathElement PATH$sampleLocationsInfo = PathElement.groupElement("sampleLocationsInfo");
 
     public static final OfInt LAYOUT$subpassIndex = (OfInt) LAYOUT.select(PATH$subpassIndex);
     public static final StructLayout LAYOUT$sampleLocationsInfo = (StructLayout) LAYOUT.select(PATH$sampleLocationsInfo);

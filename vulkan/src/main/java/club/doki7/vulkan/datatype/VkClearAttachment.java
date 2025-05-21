@@ -98,9 +98,9 @@ public record VkClearAttachment(@NotNull MemorySegment segment) implements IPoin
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$aspectMask = PathElement.groupElement("PATH$aspectMask");
-    public static final PathElement PATH$colorAttachment = PathElement.groupElement("PATH$colorAttachment");
-    public static final PathElement PATH$clearValue = PathElement.groupElement("PATH$clearValue");
+    public static final PathElement PATH$aspectMask = PathElement.groupElement("aspectMask");
+    public static final PathElement PATH$colorAttachment = PathElement.groupElement("colorAttachment");
+    public static final PathElement PATH$clearValue = PathElement.groupElement("clearValue");
 
     public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
     public static final OfInt LAYOUT$colorAttachment = (OfInt) LAYOUT.select(PATH$colorAttachment);

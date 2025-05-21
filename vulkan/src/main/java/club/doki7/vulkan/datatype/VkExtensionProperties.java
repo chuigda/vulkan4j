@@ -88,8 +88,8 @@ public record VkExtensionProperties(@NotNull MemorySegment segment) implements I
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$extensionName = PathElement.groupElement("PATH$extensionName");
-    public static final PathElement PATH$specVersion = PathElement.groupElement("PATH$specVersion");
+    public static final PathElement PATH$extensionName = PathElement.groupElement("extensionName");
+    public static final PathElement PATH$specVersion = PathElement.groupElement("specVersion");
 
     public static final OfByte LAYOUT$extensionName = (OfByte) LAYOUT.select(PATH$extensionName);
     public static final OfInt LAYOUT$specVersion = (OfInt) LAYOUT.select(PATH$specVersion);

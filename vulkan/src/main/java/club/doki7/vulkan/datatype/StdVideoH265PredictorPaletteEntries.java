@@ -76,7 +76,7 @@ public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$PredictorPaletteEntries = PathElement.groupElement("PATH$PredictorPaletteEntries");
+    public static final PathElement PATH$PredictorPaletteEntries = PathElement.groupElement("PredictorPaletteEntries");
 
     public static final OfShort LAYOUT$PredictorPaletteEntries = (OfShort) LAYOUT.select(PATH$PredictorPaletteEntries);
 

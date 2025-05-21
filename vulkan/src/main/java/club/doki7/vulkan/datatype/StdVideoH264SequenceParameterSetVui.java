@@ -246,21 +246,21 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$aspect_ratio_idc = PathElement.groupElement("PATH$aspect_ratio_idc");
-    public static final PathElement PATH$sar_width = PathElement.groupElement("PATH$sar_width");
-    public static final PathElement PATH$sar_height = PathElement.groupElement("PATH$sar_height");
-    public static final PathElement PATH$video_format = PathElement.groupElement("PATH$video_format");
-    public static final PathElement PATH$colour_primaries = PathElement.groupElement("PATH$colour_primaries");
-    public static final PathElement PATH$transfer_characteristics = PathElement.groupElement("PATH$transfer_characteristics");
-    public static final PathElement PATH$matrix_coefficients = PathElement.groupElement("PATH$matrix_coefficients");
-    public static final PathElement PATH$num_units_in_tick = PathElement.groupElement("PATH$num_units_in_tick");
-    public static final PathElement PATH$time_scale = PathElement.groupElement("PATH$time_scale");
-    public static final PathElement PATH$max_num_reorder_frames = PathElement.groupElement("PATH$max_num_reorder_frames");
-    public static final PathElement PATH$max_dec_frame_buffering = PathElement.groupElement("PATH$max_dec_frame_buffering");
-    public static final PathElement PATH$chroma_sample_loc_type_top_field = PathElement.groupElement("PATH$chroma_sample_loc_type_top_field");
-    public static final PathElement PATH$chroma_sample_loc_type_bottom_field = PathElement.groupElement("PATH$chroma_sample_loc_type_bottom_field");
-    public static final PathElement PATH$pHrdParameters = PathElement.groupElement("PATH$pHrdParameters");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$aspect_ratio_idc = PathElement.groupElement("aspect_ratio_idc");
+    public static final PathElement PATH$sar_width = PathElement.groupElement("sar_width");
+    public static final PathElement PATH$sar_height = PathElement.groupElement("sar_height");
+    public static final PathElement PATH$video_format = PathElement.groupElement("video_format");
+    public static final PathElement PATH$colour_primaries = PathElement.groupElement("colour_primaries");
+    public static final PathElement PATH$transfer_characteristics = PathElement.groupElement("transfer_characteristics");
+    public static final PathElement PATH$matrix_coefficients = PathElement.groupElement("matrix_coefficients");
+    public static final PathElement PATH$num_units_in_tick = PathElement.groupElement("num_units_in_tick");
+    public static final PathElement PATH$time_scale = PathElement.groupElement("time_scale");
+    public static final PathElement PATH$max_num_reorder_frames = PathElement.groupElement("max_num_reorder_frames");
+    public static final PathElement PATH$max_dec_frame_buffering = PathElement.groupElement("max_dec_frame_buffering");
+    public static final PathElement PATH$chroma_sample_loc_type_top_field = PathElement.groupElement("chroma_sample_loc_type_top_field");
+    public static final PathElement PATH$chroma_sample_loc_type_bottom_field = PathElement.groupElement("chroma_sample_loc_type_bottom_field");
+    public static final PathElement PATH$pHrdParameters = PathElement.groupElement("pHrdParameters");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfInt LAYOUT$aspect_ratio_idc = (OfInt) LAYOUT.select(PATH$aspect_ratio_idc);

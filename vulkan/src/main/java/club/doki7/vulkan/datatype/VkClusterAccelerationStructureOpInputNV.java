@@ -179,9 +179,9 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$pClustersBottomLevel = PathElement.groupElement("PATH$pClustersBottomLevel");
-    public static final PathElement PATH$pTriangleClusters = PathElement.groupElement("PATH$pTriangleClusters");
-    public static final PathElement PATH$pMoveObjects = PathElement.groupElement("PATH$pMoveObjects");
+    public static final PathElement PATH$pClustersBottomLevel = PathElement.groupElement("pClustersBottomLevel");
+    public static final PathElement PATH$pTriangleClusters = PathElement.groupElement("pTriangleClusters");
+    public static final PathElement PATH$pMoveObjects = PathElement.groupElement("pMoveObjects");
 
     public static final AddressLayout LAYOUT$pClustersBottomLevel = (AddressLayout) LAYOUT.select(PATH$pClustersBottomLevel);
     public static final AddressLayout LAYOUT$pTriangleClusters = (AddressLayout) LAYOUT.select(PATH$pTriangleClusters);

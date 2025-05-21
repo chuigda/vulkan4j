@@ -98,9 +98,9 @@ public record VkCoarseSampleLocationNV(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$pixelX = PathElement.groupElement("PATH$pixelX");
-    public static final PathElement PATH$pixelY = PathElement.groupElement("PATH$pixelY");
-    public static final PathElement PATH$sample = PathElement.groupElement("PATH$sample");
+    public static final PathElement PATH$pixelX = PathElement.groupElement("pixelX");
+    public static final PathElement PATH$pixelY = PathElement.groupElement("pixelY");
+    public static final PathElement PATH$sample = PathElement.groupElement("sample");
 
     public static final OfInt LAYOUT$pixelX = (OfInt) LAYOUT.select(PATH$pixelX);
     public static final OfInt LAYOUT$pixelY = (OfInt) LAYOUT.select(PATH$pixelY);

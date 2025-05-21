@@ -108,10 +108,10 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$memoryTypeCount = PathElement.groupElement("PATH$memoryTypeCount");
-    public static final PathElement PATH$memoryTypes = PathElement.groupElement("PATH$memoryTypes");
-    public static final PathElement PATH$memoryHeapCount = PathElement.groupElement("PATH$memoryHeapCount");
-    public static final PathElement PATH$memoryHeaps = PathElement.groupElement("PATH$memoryHeaps");
+    public static final PathElement PATH$memoryTypeCount = PathElement.groupElement("memoryTypeCount");
+    public static final PathElement PATH$memoryTypes = PathElement.groupElement("memoryTypes");
+    public static final PathElement PATH$memoryHeapCount = PathElement.groupElement("memoryHeapCount");
+    public static final PathElement PATH$memoryHeaps = PathElement.groupElement("memoryHeaps");
 
     public static final OfInt LAYOUT$memoryTypeCount = (OfInt) LAYOUT.select(PATH$memoryTypeCount);
     public static final StructLayout LAYOUT$memoryTypes = (StructLayout) LAYOUT.select(PATH$memoryTypes);

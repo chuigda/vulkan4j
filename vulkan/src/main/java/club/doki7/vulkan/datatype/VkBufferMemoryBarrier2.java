@@ -200,17 +200,17 @@ public record VkBufferMemoryBarrier2(@NotNull MemorySegment segment) implements 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$srcStageMask = PathElement.groupElement("PATH$srcStageMask");
-    public static final PathElement PATH$srcAccessMask = PathElement.groupElement("PATH$srcAccessMask");
-    public static final PathElement PATH$dstStageMask = PathElement.groupElement("PATH$dstStageMask");
-    public static final PathElement PATH$dstAccessMask = PathElement.groupElement("PATH$dstAccessMask");
-    public static final PathElement PATH$srcQueueFamilyIndex = PathElement.groupElement("PATH$srcQueueFamilyIndex");
-    public static final PathElement PATH$dstQueueFamilyIndex = PathElement.groupElement("PATH$dstQueueFamilyIndex");
-    public static final PathElement PATH$buffer = PathElement.groupElement("PATH$buffer");
-    public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcStageMask = PathElement.groupElement("srcStageMask");
+    public static final PathElement PATH$srcAccessMask = PathElement.groupElement("srcAccessMask");
+    public static final PathElement PATH$dstStageMask = PathElement.groupElement("dstStageMask");
+    public static final PathElement PATH$dstAccessMask = PathElement.groupElement("dstAccessMask");
+    public static final PathElement PATH$srcQueueFamilyIndex = PathElement.groupElement("srcQueueFamilyIndex");
+    public static final PathElement PATH$dstQueueFamilyIndex = PathElement.groupElement("dstQueueFamilyIndex");
+    public static final PathElement PATH$buffer = PathElement.groupElement("buffer");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

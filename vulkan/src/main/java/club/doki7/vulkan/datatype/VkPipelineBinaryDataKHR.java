@@ -92,8 +92,8 @@ public record VkPipelineBinaryDataKHR(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$dataSize = PathElement.groupElement("PATH$dataSize");
-    public static final PathElement PATH$pData = PathElement.groupElement("PATH$pData");
+    public static final PathElement PATH$dataSize = PathElement.groupElement("dataSize");
+    public static final PathElement PATH$pData = PathElement.groupElement("pData");
 
     public static final AddressLayout LAYOUT$pData = (AddressLayout) LAYOUT.select(PATH$pData);
 

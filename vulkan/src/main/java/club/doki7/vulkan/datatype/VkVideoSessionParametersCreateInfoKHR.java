@@ -144,11 +144,11 @@ public record VkVideoSessionParametersCreateInfoKHR(@NotNull MemorySegment segme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$videoSessionParametersTemplate = PathElement.groupElement("PATH$videoSessionParametersTemplate");
-    public static final PathElement PATH$videoSession = PathElement.groupElement("PATH$videoSession");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$videoSessionParametersTemplate = PathElement.groupElement("videoSessionParametersTemplate");
+    public static final PathElement PATH$videoSession = PathElement.groupElement("videoSession");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

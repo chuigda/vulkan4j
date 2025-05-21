@@ -321,18 +321,18 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$pMessageIdName = PathElement.groupElement("PATH$pMessageIdName");
-    public static final PathElement PATH$messageIdNumber = PathElement.groupElement("PATH$messageIdNumber");
-    public static final PathElement PATH$pMessage = PathElement.groupElement("PATH$pMessage");
-    public static final PathElement PATH$queueLabelCount = PathElement.groupElement("PATH$queueLabelCount");
-    public static final PathElement PATH$pQueueLabels = PathElement.groupElement("PATH$pQueueLabels");
-    public static final PathElement PATH$cmdBufLabelCount = PathElement.groupElement("PATH$cmdBufLabelCount");
-    public static final PathElement PATH$pCmdBufLabels = PathElement.groupElement("PATH$pCmdBufLabels");
-    public static final PathElement PATH$objectCount = PathElement.groupElement("PATH$objectCount");
-    public static final PathElement PATH$pObjects = PathElement.groupElement("PATH$pObjects");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$pMessageIdName = PathElement.groupElement("pMessageIdName");
+    public static final PathElement PATH$messageIdNumber = PathElement.groupElement("messageIdNumber");
+    public static final PathElement PATH$pMessage = PathElement.groupElement("pMessage");
+    public static final PathElement PATH$queueLabelCount = PathElement.groupElement("queueLabelCount");
+    public static final PathElement PATH$pQueueLabels = PathElement.groupElement("pQueueLabels");
+    public static final PathElement PATH$cmdBufLabelCount = PathElement.groupElement("cmdBufLabelCount");
+    public static final PathElement PATH$pCmdBufLabels = PathElement.groupElement("pCmdBufLabels");
+    public static final PathElement PATH$objectCount = PathElement.groupElement("objectCount");
+    public static final PathElement PATH$pObjects = PathElement.groupElement("pObjects");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

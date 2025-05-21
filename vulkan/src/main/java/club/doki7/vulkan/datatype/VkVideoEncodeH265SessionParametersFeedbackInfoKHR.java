@@ -136,11 +136,11 @@ public record VkVideoEncodeH265SessionParametersFeedbackInfoKHR(@NotNull MemoryS
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$hasStdVPSOverrides = PathElement.groupElement("PATH$hasStdVPSOverrides");
-    public static final PathElement PATH$hasStdSPSOverrides = PathElement.groupElement("PATH$hasStdSPSOverrides");
-    public static final PathElement PATH$hasStdPPSOverrides = PathElement.groupElement("PATH$hasStdPPSOverrides");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$hasStdVPSOverrides = PathElement.groupElement("hasStdVPSOverrides");
+    public static final PathElement PATH$hasStdSPSOverrides = PathElement.groupElement("hasStdSPSOverrides");
+    public static final PathElement PATH$hasStdPPSOverrides = PathElement.groupElement("hasStdPPSOverrides");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -88,8 +88,8 @@ public record VkMultiDrawInfoEXT(@NotNull MemorySegment segment) implements IPoi
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$firstVertex = PathElement.groupElement("PATH$firstVertex");
-    public static final PathElement PATH$vertexCount = PathElement.groupElement("PATH$vertexCount");
+    public static final PathElement PATH$firstVertex = PathElement.groupElement("firstVertex");
+    public static final PathElement PATH$vertexCount = PathElement.groupElement("vertexCount");
 
     public static final OfInt LAYOUT$firstVertex = (OfInt) LAYOUT.select(PATH$firstVertex);
     public static final OfInt LAYOUT$vertexCount = (OfInt) LAYOUT.select(PATH$vertexCount);

@@ -153,10 +153,10 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$settingCount = PathElement.groupElement("PATH$settingCount");
-    public static final PathElement PATH$pSettings = PathElement.groupElement("PATH$pSettings");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$settingCount = PathElement.groupElement("settingCount");
+    public static final PathElement PATH$pSettings = PathElement.groupElement("pSettings");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

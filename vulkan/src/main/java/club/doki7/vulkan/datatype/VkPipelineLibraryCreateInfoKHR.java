@@ -143,10 +143,10 @@ public record VkPipelineLibraryCreateInfoKHR(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$libraryCount = PathElement.groupElement("PATH$libraryCount");
-    public static final PathElement PATH$pLibraries = PathElement.groupElement("PATH$pLibraries");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$libraryCount = PathElement.groupElement("libraryCount");
+    public static final PathElement PATH$pLibraries = PathElement.groupElement("pLibraries");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

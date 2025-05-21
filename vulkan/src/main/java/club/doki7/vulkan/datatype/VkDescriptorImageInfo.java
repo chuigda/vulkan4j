@@ -106,9 +106,9 @@ public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements I
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sampler = PathElement.groupElement("PATH$sampler");
-    public static final PathElement PATH$imageView = PathElement.groupElement("PATH$imageView");
-    public static final PathElement PATH$imageLayout = PathElement.groupElement("PATH$imageLayout");
+    public static final PathElement PATH$sampler = PathElement.groupElement("sampler");
+    public static final PathElement PATH$imageView = PathElement.groupElement("imageView");
+    public static final PathElement PATH$imageLayout = PathElement.groupElement("imageLayout");
 
     public static final AddressLayout LAYOUT$sampler = (AddressLayout) LAYOUT.select(PATH$sampler);
     public static final AddressLayout LAYOUT$imageView = (AddressLayout) LAYOUT.select(PATH$imageView);

@@ -226,20 +226,20 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxIndirectPipelineCount = PathElement.groupElement("PATH$maxIndirectPipelineCount");
-    public static final PathElement PATH$maxIndirectShaderObjectCount = PathElement.groupElement("PATH$maxIndirectShaderObjectCount");
-    public static final PathElement PATH$maxIndirectSequenceCount = PathElement.groupElement("PATH$maxIndirectSequenceCount");
-    public static final PathElement PATH$maxIndirectCommandsTokenCount = PathElement.groupElement("PATH$maxIndirectCommandsTokenCount");
-    public static final PathElement PATH$maxIndirectCommandsTokenOffset = PathElement.groupElement("PATH$maxIndirectCommandsTokenOffset");
-    public static final PathElement PATH$maxIndirectCommandsIndirectStride = PathElement.groupElement("PATH$maxIndirectCommandsIndirectStride");
-    public static final PathElement PATH$supportedIndirectCommandsInputModes = PathElement.groupElement("PATH$supportedIndirectCommandsInputModes");
-    public static final PathElement PATH$supportedIndirectCommandsShaderStages = PathElement.groupElement("PATH$supportedIndirectCommandsShaderStages");
-    public static final PathElement PATH$supportedIndirectCommandsShaderStagesPipelineBinding = PathElement.groupElement("PATH$supportedIndirectCommandsShaderStagesPipelineBinding");
-    public static final PathElement PATH$supportedIndirectCommandsShaderStagesShaderBinding = PathElement.groupElement("PATH$supportedIndirectCommandsShaderStagesShaderBinding");
-    public static final PathElement PATH$deviceGeneratedCommandsTransformFeedback = PathElement.groupElement("PATH$deviceGeneratedCommandsTransformFeedback");
-    public static final PathElement PATH$deviceGeneratedCommandsMultiDrawIndirectCount = PathElement.groupElement("PATH$deviceGeneratedCommandsMultiDrawIndirectCount");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$maxIndirectPipelineCount = PathElement.groupElement("maxIndirectPipelineCount");
+    public static final PathElement PATH$maxIndirectShaderObjectCount = PathElement.groupElement("maxIndirectShaderObjectCount");
+    public static final PathElement PATH$maxIndirectSequenceCount = PathElement.groupElement("maxIndirectSequenceCount");
+    public static final PathElement PATH$maxIndirectCommandsTokenCount = PathElement.groupElement("maxIndirectCommandsTokenCount");
+    public static final PathElement PATH$maxIndirectCommandsTokenOffset = PathElement.groupElement("maxIndirectCommandsTokenOffset");
+    public static final PathElement PATH$maxIndirectCommandsIndirectStride = PathElement.groupElement("maxIndirectCommandsIndirectStride");
+    public static final PathElement PATH$supportedIndirectCommandsInputModes = PathElement.groupElement("supportedIndirectCommandsInputModes");
+    public static final PathElement PATH$supportedIndirectCommandsShaderStages = PathElement.groupElement("supportedIndirectCommandsShaderStages");
+    public static final PathElement PATH$supportedIndirectCommandsShaderStagesPipelineBinding = PathElement.groupElement("supportedIndirectCommandsShaderStagesPipelineBinding");
+    public static final PathElement PATH$supportedIndirectCommandsShaderStagesShaderBinding = PathElement.groupElement("supportedIndirectCommandsShaderStagesShaderBinding");
+    public static final PathElement PATH$deviceGeneratedCommandsTransformFeedback = PathElement.groupElement("deviceGeneratedCommandsTransformFeedback");
+    public static final PathElement PATH$deviceGeneratedCommandsMultiDrawIndirectCount = PathElement.groupElement("deviceGeneratedCommandsMultiDrawIndirectCount");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

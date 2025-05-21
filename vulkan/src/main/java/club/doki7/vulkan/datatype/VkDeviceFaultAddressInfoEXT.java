@@ -98,9 +98,9 @@ public record VkDeviceFaultAddressInfoEXT(@NotNull MemorySegment segment) implem
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$addressType = PathElement.groupElement("PATH$addressType");
-    public static final PathElement PATH$reportedAddress = PathElement.groupElement("PATH$reportedAddress");
-    public static final PathElement PATH$addressPrecision = PathElement.groupElement("PATH$addressPrecision");
+    public static final PathElement PATH$addressType = PathElement.groupElement("addressType");
+    public static final PathElement PATH$reportedAddress = PathElement.groupElement("reportedAddress");
+    public static final PathElement PATH$addressPrecision = PathElement.groupElement("addressPrecision");
 
     public static final OfInt LAYOUT$addressType = (OfInt) LAYOUT.select(PATH$addressType);
     public static final OfLong LAYOUT$reportedAddress = (OfLong) LAYOUT.select(PATH$reportedAddress);

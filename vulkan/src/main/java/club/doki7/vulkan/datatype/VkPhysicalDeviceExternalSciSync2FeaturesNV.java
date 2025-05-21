@@ -146,12 +146,12 @@ public record VkPhysicalDeviceExternalSciSync2FeaturesNV(@NotNull MemorySegment 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$sciSyncFence = PathElement.groupElement("PATH$sciSyncFence");
-    public static final PathElement PATH$sciSyncSemaphore2 = PathElement.groupElement("PATH$sciSyncSemaphore2");
-    public static final PathElement PATH$sciSyncImport = PathElement.groupElement("PATH$sciSyncImport");
-    public static final PathElement PATH$sciSyncExport = PathElement.groupElement("PATH$sciSyncExport");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$sciSyncFence = PathElement.groupElement("sciSyncFence");
+    public static final PathElement PATH$sciSyncSemaphore2 = PathElement.groupElement("sciSyncSemaphore2");
+    public static final PathElement PATH$sciSyncImport = PathElement.groupElement("sciSyncImport");
+    public static final PathElement PATH$sciSyncExport = PathElement.groupElement("sciSyncExport");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

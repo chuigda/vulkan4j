@@ -297,7 +297,7 @@ fun generateStructure(
             if (layout is LayoutField.Typed && layout.name.isUnusedReservedField()) {
                 return@forEach
             }
-            defConst("PathElement", layout.pathName, "PathElement.groupElement(\"${layout.pathName}\")")
+            defConst("PathElement", layout.pathName, "PathElement.groupElement(\"${layout.name}\")")
         }
 
         +""

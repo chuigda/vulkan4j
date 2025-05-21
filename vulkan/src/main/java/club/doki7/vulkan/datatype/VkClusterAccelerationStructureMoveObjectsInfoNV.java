@@ -78,7 +78,7 @@ public record VkClusterAccelerationStructureMoveObjectsInfoNV(@NotNull MemorySeg
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$srcAccelerationStructure = PathElement.groupElement("PATH$srcAccelerationStructure");
+    public static final PathElement PATH$srcAccelerationStructure = PathElement.groupElement("srcAccelerationStructure");
 
     public static final OfLong LAYOUT$srcAccelerationStructure = (OfLong) LAYOUT.select(PATH$srcAccelerationStructure);
 

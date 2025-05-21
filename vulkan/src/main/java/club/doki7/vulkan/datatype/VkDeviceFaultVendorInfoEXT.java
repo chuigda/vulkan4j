@@ -98,9 +98,9 @@ public record VkDeviceFaultVendorInfoEXT(@NotNull MemorySegment segment) impleme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$description = PathElement.groupElement("PATH$description");
-    public static final PathElement PATH$vendorFaultCode = PathElement.groupElement("PATH$vendorFaultCode");
-    public static final PathElement PATH$vendorFaultData = PathElement.groupElement("PATH$vendorFaultData");
+    public static final PathElement PATH$description = PathElement.groupElement("description");
+    public static final PathElement PATH$vendorFaultCode = PathElement.groupElement("vendorFaultCode");
+    public static final PathElement PATH$vendorFaultData = PathElement.groupElement("vendorFaultData");
 
     public static final OfByte LAYOUT$description = (OfByte) LAYOUT.select(PATH$description);
     public static final OfLong LAYOUT$vendorFaultCode = (OfLong) LAYOUT.select(PATH$vendorFaultCode);

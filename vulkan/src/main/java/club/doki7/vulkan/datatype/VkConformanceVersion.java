@@ -108,10 +108,10 @@ public record VkConformanceVersion(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$major = PathElement.groupElement("PATH$major");
-    public static final PathElement PATH$minor = PathElement.groupElement("PATH$minor");
-    public static final PathElement PATH$subminor = PathElement.groupElement("PATH$subminor");
-    public static final PathElement PATH$patch = PathElement.groupElement("PATH$patch");
+    public static final PathElement PATH$major = PathElement.groupElement("major");
+    public static final PathElement PATH$minor = PathElement.groupElement("minor");
+    public static final PathElement PATH$subminor = PathElement.groupElement("subminor");
+    public static final PathElement PATH$patch = PathElement.groupElement("patch");
 
     public static final OfByte LAYOUT$major = (OfByte) LAYOUT.select(PATH$major);
     public static final OfByte LAYOUT$minor = (OfByte) LAYOUT.select(PATH$minor);

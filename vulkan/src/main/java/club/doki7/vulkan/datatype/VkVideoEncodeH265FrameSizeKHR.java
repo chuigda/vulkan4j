@@ -98,9 +98,9 @@ public record VkVideoEncodeH265FrameSizeKHR(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$frameISize = PathElement.groupElement("PATH$frameISize");
-    public static final PathElement PATH$framePSize = PathElement.groupElement("PATH$framePSize");
-    public static final PathElement PATH$frameBSize = PathElement.groupElement("PATH$frameBSize");
+    public static final PathElement PATH$frameISize = PathElement.groupElement("frameISize");
+    public static final PathElement PATH$framePSize = PathElement.groupElement("framePSize");
+    public static final PathElement PATH$frameBSize = PathElement.groupElement("frameBSize");
 
     public static final OfInt LAYOUT$frameISize = (OfInt) LAYOUT.select(PATH$frameISize);
     public static final OfInt LAYOUT$framePSize = (OfInt) LAYOUT.select(PATH$framePSize);

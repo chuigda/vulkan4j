@@ -166,14 +166,14 @@ public record VkVideoEncodeH264RateControlLayerInfoKHR(@NotNull MemorySegment se
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$useMinQp = PathElement.groupElement("PATH$useMinQp");
-    public static final PathElement PATH$minQp = PathElement.groupElement("PATH$minQp");
-    public static final PathElement PATH$useMaxQp = PathElement.groupElement("PATH$useMaxQp");
-    public static final PathElement PATH$maxQp = PathElement.groupElement("PATH$maxQp");
-    public static final PathElement PATH$useMaxFrameSize = PathElement.groupElement("PATH$useMaxFrameSize");
-    public static final PathElement PATH$maxFrameSize = PathElement.groupElement("PATH$maxFrameSize");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$useMinQp = PathElement.groupElement("useMinQp");
+    public static final PathElement PATH$minQp = PathElement.groupElement("minQp");
+    public static final PathElement PATH$useMaxQp = PathElement.groupElement("useMaxQp");
+    public static final PathElement PATH$maxQp = PathElement.groupElement("maxQp");
+    public static final PathElement PATH$useMaxFrameSize = PathElement.groupElement("useMaxFrameSize");
+    public static final PathElement PATH$maxFrameSize = PathElement.groupElement("maxFrameSize");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

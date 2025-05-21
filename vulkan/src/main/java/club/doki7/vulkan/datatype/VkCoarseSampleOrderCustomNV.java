@@ -135,10 +135,10 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$shadingRate = PathElement.groupElement("PATH$shadingRate");
-    public static final PathElement PATH$sampleCount = PathElement.groupElement("PATH$sampleCount");
-    public static final PathElement PATH$sampleLocationCount = PathElement.groupElement("PATH$sampleLocationCount");
-    public static final PathElement PATH$pSampleLocations = PathElement.groupElement("PATH$pSampleLocations");
+    public static final PathElement PATH$shadingRate = PathElement.groupElement("shadingRate");
+    public static final PathElement PATH$sampleCount = PathElement.groupElement("sampleCount");
+    public static final PathElement PATH$sampleLocationCount = PathElement.groupElement("sampleLocationCount");
+    public static final PathElement PATH$pSampleLocations = PathElement.groupElement("pSampleLocations");
 
     public static final OfInt LAYOUT$shadingRate = (OfInt) LAYOUT.select(PATH$shadingRate);
     public static final OfInt LAYOUT$sampleCount = (OfInt) LAYOUT.select(PATH$sampleCount);

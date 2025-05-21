@@ -146,12 +146,12 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$supportedDepthResolveModes = PathElement.groupElement("PATH$supportedDepthResolveModes");
-    public static final PathElement PATH$supportedStencilResolveModes = PathElement.groupElement("PATH$supportedStencilResolveModes");
-    public static final PathElement PATH$independentResolveNone = PathElement.groupElement("PATH$independentResolveNone");
-    public static final PathElement PATH$independentResolve = PathElement.groupElement("PATH$independentResolve");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$supportedDepthResolveModes = PathElement.groupElement("supportedDepthResolveModes");
+    public static final PathElement PATH$supportedStencilResolveModes = PathElement.groupElement("supportedStencilResolveModes");
+    public static final PathElement PATH$independentResolveNone = PathElement.groupElement("independentResolveNone");
+    public static final PathElement PATH$independentResolve = PathElement.groupElement("independentResolve");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

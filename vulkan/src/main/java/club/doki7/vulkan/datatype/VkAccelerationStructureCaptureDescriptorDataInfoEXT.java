@@ -134,10 +134,10 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(@NotNull Memor
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$accelerationStructure = PathElement.groupElement("PATH$accelerationStructure");
-    public static final PathElement PATH$accelerationStructureNV = PathElement.groupElement("PATH$accelerationStructureNV");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$accelerationStructure = PathElement.groupElement("accelerationStructure");
+    public static final PathElement PATH$accelerationStructureNV = PathElement.groupElement("accelerationStructureNV");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

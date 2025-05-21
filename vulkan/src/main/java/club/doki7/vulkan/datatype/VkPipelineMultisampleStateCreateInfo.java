@@ -193,15 +193,15 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$rasterizationSamples = PathElement.groupElement("PATH$rasterizationSamples");
-    public static final PathElement PATH$sampleShadingEnable = PathElement.groupElement("PATH$sampleShadingEnable");
-    public static final PathElement PATH$minSampleShading = PathElement.groupElement("PATH$minSampleShading");
-    public static final PathElement PATH$pSampleMask = PathElement.groupElement("PATH$pSampleMask");
-    public static final PathElement PATH$alphaToCoverageEnable = PathElement.groupElement("PATH$alphaToCoverageEnable");
-    public static final PathElement PATH$alphaToOneEnable = PathElement.groupElement("PATH$alphaToOneEnable");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$rasterizationSamples = PathElement.groupElement("rasterizationSamples");
+    public static final PathElement PATH$sampleShadingEnable = PathElement.groupElement("sampleShadingEnable");
+    public static final PathElement PATH$minSampleShading = PathElement.groupElement("minSampleShading");
+    public static final PathElement PATH$pSampleMask = PathElement.groupElement("pSampleMask");
+    public static final PathElement PATH$alphaToCoverageEnable = PathElement.groupElement("alphaToCoverageEnable");
+    public static final PathElement PATH$alphaToOneEnable = PathElement.groupElement("alphaToOneEnable");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

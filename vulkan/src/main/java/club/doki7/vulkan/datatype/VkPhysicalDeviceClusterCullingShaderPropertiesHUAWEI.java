@@ -146,12 +146,12 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(@NotNull Memo
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxWorkGroupCount = PathElement.groupElement("PATH$maxWorkGroupCount");
-    public static final PathElement PATH$maxWorkGroupSize = PathElement.groupElement("PATH$maxWorkGroupSize");
-    public static final PathElement PATH$maxOutputClusterCount = PathElement.groupElement("PATH$maxOutputClusterCount");
-    public static final PathElement PATH$indirectBufferOffsetAlignment = PathElement.groupElement("PATH$indirectBufferOffsetAlignment");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$maxWorkGroupCount = PathElement.groupElement("maxWorkGroupCount");
+    public static final PathElement PATH$maxWorkGroupSize = PathElement.groupElement("maxWorkGroupSize");
+    public static final PathElement PATH$maxOutputClusterCount = PathElement.groupElement("maxOutputClusterCount");
+    public static final PathElement PATH$indirectBufferOffsetAlignment = PathElement.groupElement("indirectBufferOffsetAlignment");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

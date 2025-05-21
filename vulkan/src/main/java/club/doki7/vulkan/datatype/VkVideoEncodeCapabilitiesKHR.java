@@ -176,15 +176,15 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$rateControlModes = PathElement.groupElement("PATH$rateControlModes");
-    public static final PathElement PATH$maxRateControlLayers = PathElement.groupElement("PATH$maxRateControlLayers");
-    public static final PathElement PATH$maxBitrate = PathElement.groupElement("PATH$maxBitrate");
-    public static final PathElement PATH$maxQualityLevels = PathElement.groupElement("PATH$maxQualityLevels");
-    public static final PathElement PATH$encodeInputPictureGranularity = PathElement.groupElement("PATH$encodeInputPictureGranularity");
-    public static final PathElement PATH$supportedEncodeFeedbackFlags = PathElement.groupElement("PATH$supportedEncodeFeedbackFlags");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$rateControlModes = PathElement.groupElement("rateControlModes");
+    public static final PathElement PATH$maxRateControlLayers = PathElement.groupElement("maxRateControlLayers");
+    public static final PathElement PATH$maxBitrate = PathElement.groupElement("maxBitrate");
+    public static final PathElement PATH$maxQualityLevels = PathElement.groupElement("maxQualityLevels");
+    public static final PathElement PATH$encodeInputPictureGranularity = PathElement.groupElement("encodeInputPictureGranularity");
+    public static final PathElement PATH$supportedEncodeFeedbackFlags = PathElement.groupElement("supportedEncodeFeedbackFlags");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

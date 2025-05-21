@@ -143,10 +143,10 @@ public record VkPipelineBinaryInfoKHR(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$binaryCount = PathElement.groupElement("PATH$binaryCount");
-    public static final PathElement PATH$pPipelineBinaries = PathElement.groupElement("PATH$pPipelineBinaries");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$binaryCount = PathElement.groupElement("binaryCount");
+    public static final PathElement PATH$pPipelineBinaries = PathElement.groupElement("pPipelineBinaries");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

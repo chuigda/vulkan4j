@@ -136,11 +136,11 @@ public record VkPhysicalDeviceShaderTileImagePropertiesEXT(@NotNull MemorySegmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shaderTileImageCoherentReadAccelerated = PathElement.groupElement("PATH$shaderTileImageCoherentReadAccelerated");
-    public static final PathElement PATH$shaderTileImageReadSampleFromPixelRateInvocation = PathElement.groupElement("PATH$shaderTileImageReadSampleFromPixelRateInvocation");
-    public static final PathElement PATH$shaderTileImageReadFromHelperInvocation = PathElement.groupElement("PATH$shaderTileImageReadFromHelperInvocation");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shaderTileImageCoherentReadAccelerated = PathElement.groupElement("shaderTileImageCoherentReadAccelerated");
+    public static final PathElement PATH$shaderTileImageReadSampleFromPixelRateInvocation = PathElement.groupElement("shaderTileImageReadSampleFromPixelRateInvocation");
+    public static final PathElement PATH$shaderTileImageReadFromHelperInvocation = PathElement.groupElement("shaderTileImageReadFromHelperInvocation");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

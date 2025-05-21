@@ -126,10 +126,10 @@ public record VkFilterCubicImageViewImageFormatPropertiesEXT(@NotNull MemorySegm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$filterCubic = PathElement.groupElement("PATH$filterCubic");
-    public static final PathElement PATH$filterCubicMinmax = PathElement.groupElement("PATH$filterCubicMinmax");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$filterCubic = PathElement.groupElement("filterCubic");
+    public static final PathElement PATH$filterCubicMinmax = PathElement.groupElement("filterCubicMinmax");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

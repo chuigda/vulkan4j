@@ -193,14 +193,14 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$rateControlMode = PathElement.groupElement("PATH$rateControlMode");
-    public static final PathElement PATH$layerCount = PathElement.groupElement("PATH$layerCount");
-    public static final PathElement PATH$pLayers = PathElement.groupElement("PATH$pLayers");
-    public static final PathElement PATH$virtualBufferSizeInMs = PathElement.groupElement("PATH$virtualBufferSizeInMs");
-    public static final PathElement PATH$initialVirtualBufferSizeInMs = PathElement.groupElement("PATH$initialVirtualBufferSizeInMs");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$rateControlMode = PathElement.groupElement("rateControlMode");
+    public static final PathElement PATH$layerCount = PathElement.groupElement("layerCount");
+    public static final PathElement PATH$pLayers = PathElement.groupElement("pLayers");
+    public static final PathElement PATH$virtualBufferSizeInMs = PathElement.groupElement("virtualBufferSizeInMs");
+    public static final PathElement PATH$initialVirtualBufferSizeInMs = PathElement.groupElement("initialVirtualBufferSizeInMs");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

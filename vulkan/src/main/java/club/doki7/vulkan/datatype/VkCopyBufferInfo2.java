@@ -181,12 +181,12 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IPoin
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$srcBuffer = PathElement.groupElement("PATH$srcBuffer");
-    public static final PathElement PATH$dstBuffer = PathElement.groupElement("PATH$dstBuffer");
-    public static final PathElement PATH$regionCount = PathElement.groupElement("PATH$regionCount");
-    public static final PathElement PATH$pRegions = PathElement.groupElement("PATH$pRegions");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcBuffer = PathElement.groupElement("srcBuffer");
+    public static final PathElement PATH$dstBuffer = PathElement.groupElement("dstBuffer");
+    public static final PathElement PATH$regionCount = PathElement.groupElement("regionCount");
+    public static final PathElement PATH$pRegions = PathElement.groupElement("pRegions");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

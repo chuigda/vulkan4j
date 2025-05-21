@@ -136,13 +136,13 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$num_ref_idx_l0_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l0_active_minus1");
-    public static final PathElement PATH$num_ref_idx_l1_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l1_active_minus1");
-    public static final PathElement PATH$RefPicList0 = PathElement.groupElement("PATH$RefPicList0");
-    public static final PathElement PATH$RefPicList1 = PathElement.groupElement("PATH$RefPicList1");
-    public static final PathElement PATH$list_entry_l0 = PathElement.groupElement("PATH$list_entry_l0");
-    public static final PathElement PATH$list_entry_l1 = PathElement.groupElement("PATH$list_entry_l1");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$num_ref_idx_l0_active_minus1 = PathElement.groupElement("num_ref_idx_l0_active_minus1");
+    public static final PathElement PATH$num_ref_idx_l1_active_minus1 = PathElement.groupElement("num_ref_idx_l1_active_minus1");
+    public static final PathElement PATH$RefPicList0 = PathElement.groupElement("RefPicList0");
+    public static final PathElement PATH$RefPicList1 = PathElement.groupElement("RefPicList1");
+    public static final PathElement PATH$list_entry_l0 = PathElement.groupElement("list_entry_l0");
+    public static final PathElement PATH$list_entry_l1 = PathElement.groupElement("list_entry_l1");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$num_ref_idx_l0_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l0_active_minus1);

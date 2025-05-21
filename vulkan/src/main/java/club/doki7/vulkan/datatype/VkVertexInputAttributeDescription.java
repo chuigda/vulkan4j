@@ -108,10 +108,10 @@ public record VkVertexInputAttributeDescription(@NotNull MemorySegment segment) 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$location = PathElement.groupElement("PATH$location");
-    public static final PathElement PATH$binding = PathElement.groupElement("PATH$binding");
-    public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
-    public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
+    public static final PathElement PATH$location = PathElement.groupElement("location");
+    public static final PathElement PATH$binding = PathElement.groupElement("binding");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
 
     public static final OfInt LAYOUT$location = (OfInt) LAYOUT.select(PATH$location);
     public static final OfInt LAYOUT$binding = (OfInt) LAYOUT.select(PATH$binding);

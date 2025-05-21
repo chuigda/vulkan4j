@@ -136,11 +136,11 @@ public record VkPhysicalDeviceBufferDeviceAddressFeatures(@NotNull MemorySegment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$bufferDeviceAddress = PathElement.groupElement("PATH$bufferDeviceAddress");
-    public static final PathElement PATH$bufferDeviceAddressCaptureReplay = PathElement.groupElement("PATH$bufferDeviceAddressCaptureReplay");
-    public static final PathElement PATH$bufferDeviceAddressMultiDevice = PathElement.groupElement("PATH$bufferDeviceAddressMultiDevice");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$bufferDeviceAddress = PathElement.groupElement("bufferDeviceAddress");
+    public static final PathElement PATH$bufferDeviceAddressCaptureReplay = PathElement.groupElement("bufferDeviceAddressCaptureReplay");
+    public static final PathElement PATH$bufferDeviceAddressMultiDevice = PathElement.groupElement("bufferDeviceAddressMultiDevice");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

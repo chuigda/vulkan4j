@@ -118,11 +118,11 @@ public record VkPhysicalDeviceSparseProperties(@NotNull MemorySegment segment) i
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$residencyStandard2DBlockShape = PathElement.groupElement("PATH$residencyStandard2DBlockShape");
-    public static final PathElement PATH$residencyStandard2DMultisampleBlockShape = PathElement.groupElement("PATH$residencyStandard2DMultisampleBlockShape");
-    public static final PathElement PATH$residencyStandard3DBlockShape = PathElement.groupElement("PATH$residencyStandard3DBlockShape");
-    public static final PathElement PATH$residencyAlignedMipSize = PathElement.groupElement("PATH$residencyAlignedMipSize");
-    public static final PathElement PATH$residencyNonResidentStrict = PathElement.groupElement("PATH$residencyNonResidentStrict");
+    public static final PathElement PATH$residencyStandard2DBlockShape = PathElement.groupElement("residencyStandard2DBlockShape");
+    public static final PathElement PATH$residencyStandard2DMultisampleBlockShape = PathElement.groupElement("residencyStandard2DMultisampleBlockShape");
+    public static final PathElement PATH$residencyStandard3DBlockShape = PathElement.groupElement("residencyStandard3DBlockShape");
+    public static final PathElement PATH$residencyAlignedMipSize = PathElement.groupElement("residencyAlignedMipSize");
+    public static final PathElement PATH$residencyNonResidentStrict = PathElement.groupElement("residencyNonResidentStrict");
 
     public static final OfInt LAYOUT$residencyStandard2DBlockShape = (OfInt) LAYOUT.select(PATH$residencyStandard2DBlockShape);
     public static final OfInt LAYOUT$residencyStandard2DMultisampleBlockShape = (OfInt) LAYOUT.select(PATH$residencyStandard2DMultisampleBlockShape);

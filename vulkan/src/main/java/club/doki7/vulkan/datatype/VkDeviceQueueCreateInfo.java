@@ -163,12 +163,12 @@ public record VkDeviceQueueCreateInfo(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$queueFamilyIndex = PathElement.groupElement("PATH$queueFamilyIndex");
-    public static final PathElement PATH$queueCount = PathElement.groupElement("PATH$queueCount");
-    public static final PathElement PATH$pQueuePriorities = PathElement.groupElement("PATH$pQueuePriorities");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$queueFamilyIndex = PathElement.groupElement("queueFamilyIndex");
+    public static final PathElement PATH$queueCount = PathElement.groupElement("queueCount");
+    public static final PathElement PATH$pQueuePriorities = PathElement.groupElement("pQueuePriorities");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

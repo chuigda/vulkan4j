@@ -96,9 +96,9 @@ public record StdVideoH265ProfileTierLevel(@NotNull MemorySegment segment) imple
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$general_profile_idc = PathElement.groupElement("PATH$general_profile_idc");
-    public static final PathElement PATH$general_level_idc = PathElement.groupElement("PATH$general_level_idc");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$general_profile_idc = PathElement.groupElement("general_profile_idc");
+    public static final PathElement PATH$general_level_idc = PathElement.groupElement("general_level_idc");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfInt LAYOUT$general_profile_idc = (OfInt) LAYOUT.select(PATH$general_profile_idc);

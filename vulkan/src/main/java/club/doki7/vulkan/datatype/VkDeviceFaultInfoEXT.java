@@ -204,12 +204,12 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$description = PathElement.groupElement("PATH$description");
-    public static final PathElement PATH$pAddressInfos = PathElement.groupElement("PATH$pAddressInfos");
-    public static final PathElement PATH$pVendorInfos = PathElement.groupElement("PATH$pVendorInfos");
-    public static final PathElement PATH$pVendorBinaryData = PathElement.groupElement("PATH$pVendorBinaryData");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$description = PathElement.groupElement("description");
+    public static final PathElement PATH$pAddressInfos = PathElement.groupElement("pAddressInfos");
+    public static final PathElement PATH$pVendorInfos = PathElement.groupElement("pVendorInfos");
+    public static final PathElement PATH$pVendorBinaryData = PathElement.groupElement("pVendorBinaryData");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

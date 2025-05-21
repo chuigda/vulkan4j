@@ -126,12 +126,12 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$ScalingList4x4 = PathElement.groupElement("PATH$ScalingList4x4");
-    public static final PathElement PATH$ScalingList8x8 = PathElement.groupElement("PATH$ScalingList8x8");
-    public static final PathElement PATH$ScalingList16x16 = PathElement.groupElement("PATH$ScalingList16x16");
-    public static final PathElement PATH$ScalingList32x32 = PathElement.groupElement("PATH$ScalingList32x32");
-    public static final PathElement PATH$ScalingListDCCoef16x16 = PathElement.groupElement("PATH$ScalingListDCCoef16x16");
-    public static final PathElement PATH$ScalingListDCCoef32x32 = PathElement.groupElement("PATH$ScalingListDCCoef32x32");
+    public static final PathElement PATH$ScalingList4x4 = PathElement.groupElement("ScalingList4x4");
+    public static final PathElement PATH$ScalingList8x8 = PathElement.groupElement("ScalingList8x8");
+    public static final PathElement PATH$ScalingList16x16 = PathElement.groupElement("ScalingList16x16");
+    public static final PathElement PATH$ScalingList32x32 = PathElement.groupElement("ScalingList32x32");
+    public static final PathElement PATH$ScalingListDCCoef16x16 = PathElement.groupElement("ScalingListDCCoef16x16");
+    public static final PathElement PATH$ScalingListDCCoef32x32 = PathElement.groupElement("ScalingListDCCoef32x32");
 
     public static final OfByte LAYOUT$ScalingList4x4 = (OfByte) LAYOUT.select(PATH$ScalingList4x4);
     public static final OfByte LAYOUT$ScalingList8x8 = (OfByte) LAYOUT.select(PATH$ScalingList8x8);

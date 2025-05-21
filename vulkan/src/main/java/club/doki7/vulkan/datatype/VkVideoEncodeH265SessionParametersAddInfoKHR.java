@@ -247,14 +247,14 @@ public record VkVideoEncodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$stdVPSCount = PathElement.groupElement("PATH$stdVPSCount");
-    public static final PathElement PATH$pStdVPSs = PathElement.groupElement("PATH$pStdVPSs");
-    public static final PathElement PATH$stdSPSCount = PathElement.groupElement("PATH$stdSPSCount");
-    public static final PathElement PATH$pStdSPSs = PathElement.groupElement("PATH$pStdSPSs");
-    public static final PathElement PATH$stdPPSCount = PathElement.groupElement("PATH$stdPPSCount");
-    public static final PathElement PATH$pStdPPSs = PathElement.groupElement("PATH$pStdPPSs");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$stdVPSCount = PathElement.groupElement("stdVPSCount");
+    public static final PathElement PATH$pStdVPSs = PathElement.groupElement("pStdVPSs");
+    public static final PathElement PATH$stdSPSCount = PathElement.groupElement("stdSPSCount");
+    public static final PathElement PATH$pStdSPSs = PathElement.groupElement("pStdSPSs");
+    public static final PathElement PATH$stdPPSCount = PathElement.groupElement("stdPPSCount");
+    public static final PathElement PATH$pStdPPSs = PathElement.groupElement("pStdPPSs");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -156,13 +156,13 @@ public record VkPhysicalDeviceRayTracingPipelineFeaturesKHR(@NotNull MemorySegme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$rayTracingPipeline = PathElement.groupElement("PATH$rayTracingPipeline");
-    public static final PathElement PATH$rayTracingPipelineShaderGroupHandleCaptureReplay = PathElement.groupElement("PATH$rayTracingPipelineShaderGroupHandleCaptureReplay");
-    public static final PathElement PATH$rayTracingPipelineShaderGroupHandleCaptureReplayMixed = PathElement.groupElement("PATH$rayTracingPipelineShaderGroupHandleCaptureReplayMixed");
-    public static final PathElement PATH$rayTracingPipelineTraceRaysIndirect = PathElement.groupElement("PATH$rayTracingPipelineTraceRaysIndirect");
-    public static final PathElement PATH$rayTraversalPrimitiveCulling = PathElement.groupElement("PATH$rayTraversalPrimitiveCulling");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$rayTracingPipeline = PathElement.groupElement("rayTracingPipeline");
+    public static final PathElement PATH$rayTracingPipelineShaderGroupHandleCaptureReplay = PathElement.groupElement("rayTracingPipelineShaderGroupHandleCaptureReplay");
+    public static final PathElement PATH$rayTracingPipelineShaderGroupHandleCaptureReplayMixed = PathElement.groupElement("rayTracingPipelineShaderGroupHandleCaptureReplayMixed");
+    public static final PathElement PATH$rayTracingPipelineTraceRaysIndirect = PathElement.groupElement("rayTracingPipelineTraceRaysIndirect");
+    public static final PathElement PATH$rayTraversalPrimitiveCulling = PathElement.groupElement("rayTraversalPrimitiveCulling");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

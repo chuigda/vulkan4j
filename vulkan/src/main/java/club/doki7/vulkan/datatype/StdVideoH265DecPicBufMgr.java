@@ -96,9 +96,9 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$max_latency_increase_plus1 = PathElement.groupElement("PATH$max_latency_increase_plus1");
-    public static final PathElement PATH$max_dec_pic_buffering_minus1 = PathElement.groupElement("PATH$max_dec_pic_buffering_minus1");
-    public static final PathElement PATH$max_num_reorder_pics = PathElement.groupElement("PATH$max_num_reorder_pics");
+    public static final PathElement PATH$max_latency_increase_plus1 = PathElement.groupElement("max_latency_increase_plus1");
+    public static final PathElement PATH$max_dec_pic_buffering_minus1 = PathElement.groupElement("max_dec_pic_buffering_minus1");
+    public static final PathElement PATH$max_num_reorder_pics = PathElement.groupElement("max_num_reorder_pics");
 
     public static final OfInt LAYOUT$max_latency_increase_plus1 = (OfInt) LAYOUT.select(PATH$max_latency_increase_plus1);
     public static final OfByte LAYOUT$max_dec_pic_buffering_minus1 = (OfByte) LAYOUT.select(PATH$max_dec_pic_buffering_minus1);

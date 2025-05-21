@@ -136,13 +136,13 @@ public record StdVideoEncodeH264ReferenceInfo(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$primary_pic_type = PathElement.groupElement("PATH$primary_pic_type");
-    public static final PathElement PATH$FrameNum = PathElement.groupElement("PATH$FrameNum");
-    public static final PathElement PATH$PicOrderCnt = PathElement.groupElement("PATH$PicOrderCnt");
-    public static final PathElement PATH$long_term_pic_num = PathElement.groupElement("PATH$long_term_pic_num");
-    public static final PathElement PATH$long_term_frame_idx = PathElement.groupElement("PATH$long_term_frame_idx");
-    public static final PathElement PATH$temporal_id = PathElement.groupElement("PATH$temporal_id");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$primary_pic_type = PathElement.groupElement("primary_pic_type");
+    public static final PathElement PATH$FrameNum = PathElement.groupElement("FrameNum");
+    public static final PathElement PATH$PicOrderCnt = PathElement.groupElement("PicOrderCnt");
+    public static final PathElement PATH$long_term_pic_num = PathElement.groupElement("long_term_pic_num");
+    public static final PathElement PATH$long_term_frame_idx = PathElement.groupElement("long_term_frame_idx");
+    public static final PathElement PATH$temporal_id = PathElement.groupElement("temporal_id");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfInt LAYOUT$primary_pic_type = (OfInt) LAYOUT.select(PATH$primary_pic_type);

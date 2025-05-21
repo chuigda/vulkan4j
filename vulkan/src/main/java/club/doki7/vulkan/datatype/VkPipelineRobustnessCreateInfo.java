@@ -146,12 +146,12 @@ public record VkPipelineRobustnessCreateInfo(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$storageBuffers = PathElement.groupElement("PATH$storageBuffers");
-    public static final PathElement PATH$uniformBuffers = PathElement.groupElement("PATH$uniformBuffers");
-    public static final PathElement PATH$vertexInputs = PathElement.groupElement("PATH$vertexInputs");
-    public static final PathElement PATH$images = PathElement.groupElement("PATH$images");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$storageBuffers = PathElement.groupElement("storageBuffers");
+    public static final PathElement PATH$uniformBuffers = PathElement.groupElement("uniformBuffers");
+    public static final PathElement PATH$vertexInputs = PathElement.groupElement("vertexInputs");
+    public static final PathElement PATH$images = PathElement.groupElement("images");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

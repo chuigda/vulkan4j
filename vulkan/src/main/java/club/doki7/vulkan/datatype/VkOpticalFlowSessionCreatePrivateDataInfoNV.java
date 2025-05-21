@@ -140,11 +140,11 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(@NotNull MemorySegment
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$id = PathElement.groupElement("PATH$id");
-    public static final PathElement PATH$size = PathElement.groupElement("PATH$size");
-    public static final PathElement PATH$pPrivateData = PathElement.groupElement("PATH$pPrivateData");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$id = PathElement.groupElement("id");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$pPrivateData = PathElement.groupElement("pPrivateData");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

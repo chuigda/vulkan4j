@@ -78,7 +78,7 @@ public record VkIndirectCommandsPushConstantTokenEXT(@NotNull MemorySegment segm
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$updateRange = PathElement.groupElement("PATH$updateRange");
+    public static final PathElement PATH$updateRange = PathElement.groupElement("updateRange");
 
     public static final StructLayout LAYOUT$updateRange = (StructLayout) LAYOUT.select(PATH$updateRange);
 

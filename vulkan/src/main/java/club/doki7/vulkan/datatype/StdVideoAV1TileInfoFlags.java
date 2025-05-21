@@ -80,7 +80,7 @@ public record StdVideoAV1TileInfoFlags(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$uniform_tile_spacing_flag$reserved = PathElement.groupElement("PATH$bitfield$uniform_tile_spacing_flag$reserved");
+    public static final PathElement PATH$bitfield$uniform_tile_spacing_flag$reserved = PathElement.groupElement("uniform_tile_spacing_flag$reserved");
 
     public static final OfInt LAYOUT$bitfield$uniform_tile_spacing_flag$reserved = (OfInt) LAYOUT.select(PATH$bitfield$uniform_tile_spacing_flag$reserved);
 

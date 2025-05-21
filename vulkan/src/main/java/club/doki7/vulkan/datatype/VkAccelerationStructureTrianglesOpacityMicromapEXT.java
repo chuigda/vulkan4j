@@ -233,16 +233,16 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$indexType = PathElement.groupElement("PATH$indexType");
-    public static final PathElement PATH$indexBuffer = PathElement.groupElement("PATH$indexBuffer");
-    public static final PathElement PATH$indexStride = PathElement.groupElement("PATH$indexStride");
-    public static final PathElement PATH$baseTriangle = PathElement.groupElement("PATH$baseTriangle");
-    public static final PathElement PATH$usageCountsCount = PathElement.groupElement("PATH$usageCountsCount");
-    public static final PathElement PATH$pUsageCounts = PathElement.groupElement("PATH$pUsageCounts");
-    public static final PathElement PATH$ppUsageCounts = PathElement.groupElement("PATH$ppUsageCounts");
-    public static final PathElement PATH$micromap = PathElement.groupElement("PATH$micromap");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$indexType = PathElement.groupElement("indexType");
+    public static final PathElement PATH$indexBuffer = PathElement.groupElement("indexBuffer");
+    public static final PathElement PATH$indexStride = PathElement.groupElement("indexStride");
+    public static final PathElement PATH$baseTriangle = PathElement.groupElement("baseTriangle");
+    public static final PathElement PATH$usageCountsCount = PathElement.groupElement("usageCountsCount");
+    public static final PathElement PATH$pUsageCounts = PathElement.groupElement("pUsageCounts");
+    public static final PathElement PATH$ppUsageCounts = PathElement.groupElement("ppUsageCounts");
+    public static final PathElement PATH$micromap = PathElement.groupElement("micromap");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

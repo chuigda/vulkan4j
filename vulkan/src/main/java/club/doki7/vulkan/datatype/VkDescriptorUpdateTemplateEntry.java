@@ -128,12 +128,12 @@ public record VkDescriptorUpdateTemplateEntry(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$dstBinding = PathElement.groupElement("PATH$dstBinding");
-    public static final PathElement PATH$dstArrayElement = PathElement.groupElement("PATH$dstArrayElement");
-    public static final PathElement PATH$descriptorCount = PathElement.groupElement("PATH$descriptorCount");
-    public static final PathElement PATH$descriptorType = PathElement.groupElement("PATH$descriptorType");
-    public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
-    public static final PathElement PATH$stride = PathElement.groupElement("PATH$stride");
+    public static final PathElement PATH$dstBinding = PathElement.groupElement("dstBinding");
+    public static final PathElement PATH$dstArrayElement = PathElement.groupElement("dstArrayElement");
+    public static final PathElement PATH$descriptorCount = PathElement.groupElement("descriptorCount");
+    public static final PathElement PATH$descriptorType = PathElement.groupElement("descriptorType");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$stride = PathElement.groupElement("stride");
 
     public static final OfInt LAYOUT$dstBinding = (OfInt) LAYOUT.select(PATH$dstBinding);
     public static final OfInt LAYOUT$dstArrayElement = (OfInt) LAYOUT.select(PATH$dstArrayElement);

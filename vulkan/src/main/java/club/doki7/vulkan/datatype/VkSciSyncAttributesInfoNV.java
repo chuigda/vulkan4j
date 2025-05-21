@@ -126,10 +126,10 @@ public record VkSciSyncAttributesInfoNV(@NotNull MemorySegment segment) implemen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$clientType = PathElement.groupElement("PATH$clientType");
-    public static final PathElement PATH$primitiveType = PathElement.groupElement("PATH$primitiveType");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$clientType = PathElement.groupElement("clientType");
+    public static final PathElement PATH$primitiveType = PathElement.groupElement("primitiveType");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

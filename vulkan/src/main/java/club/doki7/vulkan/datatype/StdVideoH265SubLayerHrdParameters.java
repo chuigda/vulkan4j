@@ -116,11 +116,11 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bit_rate_value_minus1 = PathElement.groupElement("PATH$bit_rate_value_minus1");
-    public static final PathElement PATH$cpb_size_value_minus1 = PathElement.groupElement("PATH$cpb_size_value_minus1");
-    public static final PathElement PATH$cpb_size_du_value_minus1 = PathElement.groupElement("PATH$cpb_size_du_value_minus1");
-    public static final PathElement PATH$bit_rate_du_value_minus1 = PathElement.groupElement("PATH$bit_rate_du_value_minus1");
-    public static final PathElement PATH$cbr_flag = PathElement.groupElement("PATH$cbr_flag");
+    public static final PathElement PATH$bit_rate_value_minus1 = PathElement.groupElement("bit_rate_value_minus1");
+    public static final PathElement PATH$cpb_size_value_minus1 = PathElement.groupElement("cpb_size_value_minus1");
+    public static final PathElement PATH$cpb_size_du_value_minus1 = PathElement.groupElement("cpb_size_du_value_minus1");
+    public static final PathElement PATH$bit_rate_du_value_minus1 = PathElement.groupElement("bit_rate_du_value_minus1");
+    public static final PathElement PATH$cbr_flag = PathElement.groupElement("cbr_flag");
 
     public static final OfInt LAYOUT$bit_rate_value_minus1 = (OfInt) LAYOUT.select(PATH$bit_rate_value_minus1);
     public static final OfInt LAYOUT$cpb_size_value_minus1 = (OfInt) LAYOUT.select(PATH$cpb_size_value_minus1);

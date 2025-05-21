@@ -91,7 +91,7 @@ public record StdVideoEncodeH264SliceHeaderFlags(@NotNull MemorySegment segment)
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$direct_spatial_mv_pred_flag$reserved = PathElement.groupElement("PATH$bitfield$direct_spatial_mv_pred_flag$reserved");
+    public static final PathElement PATH$bitfield$direct_spatial_mv_pred_flag$reserved = PathElement.groupElement("direct_spatial_mv_pred_flag$reserved");
 
     public static final OfInt LAYOUT$bitfield$direct_spatial_mv_pred_flag$reserved = (OfInt) LAYOUT.select(PATH$bitfield$direct_spatial_mv_pred_flag$reserved);
 

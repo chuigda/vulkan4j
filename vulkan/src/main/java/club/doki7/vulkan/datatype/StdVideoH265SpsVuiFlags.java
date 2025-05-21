@@ -266,7 +266,7 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag = PathElement.groupElement("PATH$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag");
+    public static final PathElement PATH$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag = PathElement.groupElement("aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag");
 
     public static final OfInt LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag = (OfInt) LAYOUT.select(PATH$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
 

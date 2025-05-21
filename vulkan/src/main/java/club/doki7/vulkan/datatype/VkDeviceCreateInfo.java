@@ -272,16 +272,16 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IPoi
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$queueCreateInfoCount = PathElement.groupElement("PATH$queueCreateInfoCount");
-    public static final PathElement PATH$pQueueCreateInfos = PathElement.groupElement("PATH$pQueueCreateInfos");
-    public static final PathElement PATH$enabledLayerCount = PathElement.groupElement("PATH$enabledLayerCount");
-    public static final PathElement PATH$ppEnabledLayerNames = PathElement.groupElement("PATH$ppEnabledLayerNames");
-    public static final PathElement PATH$enabledExtensionCount = PathElement.groupElement("PATH$enabledExtensionCount");
-    public static final PathElement PATH$ppEnabledExtensionNames = PathElement.groupElement("PATH$ppEnabledExtensionNames");
-    public static final PathElement PATH$pEnabledFeatures = PathElement.groupElement("PATH$pEnabledFeatures");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$queueCreateInfoCount = PathElement.groupElement("queueCreateInfoCount");
+    public static final PathElement PATH$pQueueCreateInfos = PathElement.groupElement("pQueueCreateInfos");
+    public static final PathElement PATH$enabledLayerCount = PathElement.groupElement("enabledLayerCount");
+    public static final PathElement PATH$ppEnabledLayerNames = PathElement.groupElement("ppEnabledLayerNames");
+    public static final PathElement PATH$enabledExtensionCount = PathElement.groupElement("enabledExtensionCount");
+    public static final PathElement PATH$ppEnabledExtensionNames = PathElement.groupElement("ppEnabledExtensionNames");
+    public static final PathElement PATH$pEnabledFeatures = PathElement.groupElement("pEnabledFeatures");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
