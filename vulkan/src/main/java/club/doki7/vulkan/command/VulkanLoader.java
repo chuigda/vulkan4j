@@ -17,7 +17,7 @@ public final class VulkanLoader {
     ///
     /// This function is implemented in terms of {@link System#loadLibrary(String)}. On Windows it
     /// will try {@code "vulkan-1"} ({@code vulkan-1.dll}), and on other platforms it will try
-    /// {@code "vulkan"} ({@code libvulkan.so}).
+    /// {@code "vulkan"} ({@code libvulkan.so} or {@code libvulkan.dylib}).
     ///
     /// Instead of using this function, you may also implement your own Vulkan library loading
     /// logic.
