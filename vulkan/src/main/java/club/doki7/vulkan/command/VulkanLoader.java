@@ -32,7 +32,7 @@ public final class VulkanLoader {
     /// <b>Notice for macOS users</b>: According to my observation, as long as the
     /// {@code libvulkan.dylib} is contained in the {@code java.library.path}, it will be loaded
     /// correctly. Since {@code java.library.path} includes {@code .} (i.e. {@code cwd}), when
-    /// developing on macOS, you may simply symlink the {@code libvulkan.dylib} (provided my
+    /// developing on macOS, you may simply symlink the {@code libvulkan.dylib} (provided by
     /// MoltenVk) to the project root directory. But by this moment the project maintainer don't
     /// have any knowledge on macOS software packaging. You may need to implement your own loading
     /// logic when packaging and releasing software. Contributions are welcome.
