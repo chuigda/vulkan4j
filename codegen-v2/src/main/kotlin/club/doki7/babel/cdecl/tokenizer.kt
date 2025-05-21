@@ -140,9 +140,10 @@ class CTokenizer(private val source: List<String>, var curLine: Int) {
     private fun readLineComment(): RawToken {
         curCol += 2
         val startCol = curCol
+        val commentContent = source[curLine].substring(startCol)
         curLine++
         curCol = 0
-        return RawToken(RawTokenType.COMMENT, source[curLine].substring(startCol), curLine - 1, startCol)
+        return RawToken(RawTokenType.COMMENT, commentContent, curLine - 1, startCol)
     }
 
     private fun readBlockComment(): RawToken {
