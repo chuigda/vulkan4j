@@ -194,14 +194,6 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(@NotNull MemorySegme
         segment.set(LAYOUT$drmFormatModifierPlaneCount, OFFSET$drmFormatModifierPlaneCount, value);
     }
 
-    public @Nullable VkSubresourceLayout pPlaneLayouts() {
-        MemorySegment s = pPlaneLayoutsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkSubresourceLayout(s);
-    }
-
     public void pPlaneLayouts(@Nullable IVkSubresourceLayout value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPlaneLayoutsRaw(s);
@@ -215,6 +207,14 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(@NotNull MemorySegme
 
         s = s.reinterpret(assumedCount * VkSubresourceLayout.BYTES);
         return new VkSubresourceLayout.Ptr(s);
+    }
+
+    public @Nullable VkSubresourceLayout pPlaneLayouts() {
+        MemorySegment s = pPlaneLayoutsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkSubresourceLayout(s);
     }
 
     public @pointer(target=VkSubresourceLayout.class) MemorySegment pPlaneLayoutsRaw() {

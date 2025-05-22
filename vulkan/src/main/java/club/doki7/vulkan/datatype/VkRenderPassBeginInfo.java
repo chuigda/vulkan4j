@@ -220,14 +220,6 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$clearValueCount, OFFSET$clearValueCount, value);
     }
 
-    public @Nullable VkClearValue pClearValues() {
-        MemorySegment s = pClearValuesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkClearValue(s);
-    }
-
     public void pClearValues(@Nullable IVkClearValue value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pClearValuesRaw(s);
@@ -241,6 +233,14 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
 
         s = s.reinterpret(assumedCount * VkClearValue.BYTES);
         return new VkClearValue.Ptr(s);
+    }
+
+    public @Nullable VkClearValue pClearValues() {
+        MemorySegment s = pClearValuesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkClearValue(s);
     }
 
     public @pointer(target=VkClearValue.class) MemorySegment pClearValuesRaw() {

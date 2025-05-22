@@ -146,14 +146,6 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
         segment.set(LAYOUT$rectangleCount, OFFSET$rectangleCount, value);
     }
 
-    public @Nullable VkRectLayerKHR pRectangles() {
-        MemorySegment s = pRectanglesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkRectLayerKHR(s);
-    }
-
     public void pRectangles(@Nullable IVkRectLayerKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRectanglesRaw(s);
@@ -167,6 +159,14 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
 
         s = s.reinterpret(assumedCount * VkRectLayerKHR.BYTES);
         return new VkRectLayerKHR.Ptr(s);
+    }
+
+    public @Nullable VkRectLayerKHR pRectangles() {
+        MemorySegment s = pRectanglesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkRectLayerKHR(s);
     }
 
     public @pointer(target=VkRectLayerKHR.class) MemorySegment pRectanglesRaw() {

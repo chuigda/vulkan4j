@@ -185,14 +185,6 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$stripeSemaphoreInfoCount, OFFSET$stripeSemaphoreInfoCount, value);
     }
 
-    public @Nullable VkSemaphoreSubmitInfo pStripeSemaphoreInfos() {
-        MemorySegment s = pStripeSemaphoreInfosRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkSemaphoreSubmitInfo(s);
-    }
-
     public void pStripeSemaphoreInfos(@Nullable IVkSemaphoreSubmitInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStripeSemaphoreInfosRaw(s);
@@ -206,6 +198,14 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
 
         s = s.reinterpret(assumedCount * VkSemaphoreSubmitInfo.BYTES);
         return new VkSemaphoreSubmitInfo.Ptr(s);
+    }
+
+    public @Nullable VkSemaphoreSubmitInfo pStripeSemaphoreInfos() {
+        MemorySegment s = pStripeSemaphoreInfosRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkSemaphoreSubmitInfo(s);
     }
 
     public @pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment pStripeSemaphoreInfosRaw() {

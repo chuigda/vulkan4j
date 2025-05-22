@@ -185,14 +185,6 @@ public record VkGetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$timingCount, OFFSET$timingCount, value);
     }
 
-    public @Nullable VkLatencyTimingsFrameReportNV pTimings() {
-        MemorySegment s = pTimingsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkLatencyTimingsFrameReportNV(s);
-    }
-
     public void pTimings(@Nullable IVkLatencyTimingsFrameReportNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTimingsRaw(s);
@@ -206,6 +198,14 @@ public record VkGetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
 
         s = s.reinterpret(assumedCount * VkLatencyTimingsFrameReportNV.BYTES);
         return new VkLatencyTimingsFrameReportNV.Ptr(s);
+    }
+
+    public @Nullable VkLatencyTimingsFrameReportNV pTimings() {
+        MemorySegment s = pTimingsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkLatencyTimingsFrameReportNV(s);
     }
 
     public @pointer(target=VkLatencyTimingsFrameReportNV.class) MemorySegment pTimingsRaw() {

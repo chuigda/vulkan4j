@@ -185,14 +185,6 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$objectCount, OFFSET$objectCount, value);
     }
 
-    public @Nullable VkRefreshObjectKHR pObjects() {
-        MemorySegment s = pObjectsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkRefreshObjectKHR(s);
-    }
-
     public void pObjects(@Nullable IVkRefreshObjectKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pObjectsRaw(s);
@@ -206,6 +198,14 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
 
         s = s.reinterpret(assumedCount * VkRefreshObjectKHR.BYTES);
         return new VkRefreshObjectKHR.Ptr(s);
+    }
+
+    public @Nullable VkRefreshObjectKHR pObjects() {
+        MemorySegment s = pObjectsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkRefreshObjectKHR(s);
     }
 
     public @pointer(target=VkRefreshObjectKHR.class) MemorySegment pObjectsRaw() {

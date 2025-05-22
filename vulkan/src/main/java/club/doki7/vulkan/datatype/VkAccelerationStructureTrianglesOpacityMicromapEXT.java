@@ -223,14 +223,6 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         segment.set(LAYOUT$usageCountsCount, OFFSET$usageCountsCount, value);
     }
 
-    public @Nullable VkMicromapUsageEXT pUsageCounts() {
-        MemorySegment s = pUsageCountsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkMicromapUsageEXT(s);
-    }
-
     public void pUsageCounts(@Nullable IVkMicromapUsageEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pUsageCountsRaw(s);
@@ -244,6 +236,14 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
 
         s = s.reinterpret(assumedCount * VkMicromapUsageEXT.BYTES);
         return new VkMicromapUsageEXT.Ptr(s);
+    }
+
+    public @Nullable VkMicromapUsageEXT pUsageCounts() {
+        MemorySegment s = pUsageCountsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkMicromapUsageEXT(s);
     }
 
     public @pointer(target=VkMicromapUsageEXT.class) MemorySegment pUsageCountsRaw() {

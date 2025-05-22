@@ -185,14 +185,6 @@ public record VkFramebufferAttachmentsCreateInfo(@NotNull MemorySegment segment)
         segment.set(LAYOUT$attachmentImageInfoCount, OFFSET$attachmentImageInfoCount, value);
     }
 
-    public @Nullable VkFramebufferAttachmentImageInfo pAttachmentImageInfos() {
-        MemorySegment s = pAttachmentImageInfosRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkFramebufferAttachmentImageInfo(s);
-    }
-
     public void pAttachmentImageInfos(@Nullable IVkFramebufferAttachmentImageInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentImageInfosRaw(s);
@@ -206,6 +198,14 @@ public record VkFramebufferAttachmentsCreateInfo(@NotNull MemorySegment segment)
 
         s = s.reinterpret(assumedCount * VkFramebufferAttachmentImageInfo.BYTES);
         return new VkFramebufferAttachmentImageInfo.Ptr(s);
+    }
+
+    public @Nullable VkFramebufferAttachmentImageInfo pAttachmentImageInfos() {
+        MemorySegment s = pAttachmentImageInfosRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkFramebufferAttachmentImageInfo(s);
     }
 
     public @pointer(target=VkFramebufferAttachmentImageInfo.class) MemorySegment pAttachmentImageInfosRaw() {

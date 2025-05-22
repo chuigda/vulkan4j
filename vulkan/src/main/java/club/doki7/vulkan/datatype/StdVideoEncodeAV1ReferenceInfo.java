@@ -173,14 +173,6 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
     }
 
 
-    public @Nullable StdVideoEncodeAV1ExtensionHeader pExtensionHeader() {
-        MemorySegment s = pExtensionHeaderRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoEncodeAV1ExtensionHeader(s);
-    }
-
     public void pExtensionHeader(@Nullable IStdVideoEncodeAV1ExtensionHeader value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pExtensionHeaderRaw(s);
@@ -194,6 +186,14 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
 
         s = s.reinterpret(assumedCount * StdVideoEncodeAV1ExtensionHeader.BYTES);
         return new StdVideoEncodeAV1ExtensionHeader.Ptr(s);
+    }
+
+    public @Nullable StdVideoEncodeAV1ExtensionHeader pExtensionHeader() {
+        MemorySegment s = pExtensionHeaderRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoEncodeAV1ExtensionHeader(s);
     }
 
     public @pointer(target=StdVideoEncodeAV1ExtensionHeader.class) MemorySegment pExtensionHeaderRaw() {

@@ -205,14 +205,6 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         segment.set(LAYOUT$tokenCount, OFFSET$tokenCount, value);
     }
 
-    public @Nullable VkIndirectCommandsLayoutTokenNV pTokens() {
-        MemorySegment s = pTokensRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkIndirectCommandsLayoutTokenNV(s);
-    }
-
     public void pTokens(@Nullable IVkIndirectCommandsLayoutTokenNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTokensRaw(s);
@@ -226,6 +218,14 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
 
         s = s.reinterpret(assumedCount * VkIndirectCommandsLayoutTokenNV.BYTES);
         return new VkIndirectCommandsLayoutTokenNV.Ptr(s);
+    }
+
+    public @Nullable VkIndirectCommandsLayoutTokenNV pTokens() {
+        MemorySegment s = pTokensRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkIndirectCommandsLayoutTokenNV(s);
     }
 
     public @pointer(target=VkIndirectCommandsLayoutTokenNV.class) MemorySegment pTokensRaw() {

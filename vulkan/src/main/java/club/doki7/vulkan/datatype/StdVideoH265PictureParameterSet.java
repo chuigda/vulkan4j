@@ -421,14 +421,6 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
     }
 
 
-    public @Nullable StdVideoH265ScalingLists pScalingLists() {
-        MemorySegment s = pScalingListsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoH265ScalingLists(s);
-    }
-
     public void pScalingLists(@Nullable IStdVideoH265ScalingLists value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pScalingListsRaw(s);
@@ -444,20 +436,20 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         return new StdVideoH265ScalingLists.Ptr(s);
     }
 
+    public @Nullable StdVideoH265ScalingLists pScalingLists() {
+        MemorySegment s = pScalingListsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoH265ScalingLists(s);
+    }
+
     public @pointer(target=StdVideoH265ScalingLists.class) MemorySegment pScalingListsRaw() {
         return segment.get(LAYOUT$pScalingLists, OFFSET$pScalingLists);
     }
 
     public void pScalingListsRaw(@pointer(target=StdVideoH265ScalingLists.class) MemorySegment value) {
         segment.set(LAYOUT$pScalingLists, OFFSET$pScalingLists, value);
-    }
-
-    public @Nullable StdVideoH265PredictorPaletteEntries pPredictorPaletteEntries() {
-        MemorySegment s = pPredictorPaletteEntriesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoH265PredictorPaletteEntries(s);
     }
 
     public void pPredictorPaletteEntries(@Nullable IStdVideoH265PredictorPaletteEntries value) {
@@ -473,6 +465,14 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
 
         s = s.reinterpret(assumedCount * StdVideoH265PredictorPaletteEntries.BYTES);
         return new StdVideoH265PredictorPaletteEntries.Ptr(s);
+    }
+
+    public @Nullable StdVideoH265PredictorPaletteEntries pPredictorPaletteEntries() {
+        MemorySegment s = pPredictorPaletteEntriesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoH265PredictorPaletteEntries(s);
     }
 
     public @pointer(target=StdVideoH265PredictorPaletteEntries.class) MemorySegment pPredictorPaletteEntriesRaw() {

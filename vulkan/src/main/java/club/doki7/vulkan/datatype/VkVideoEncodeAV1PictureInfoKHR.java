@@ -206,14 +206,6 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$constantQIndex, OFFSET$constantQIndex, value);
     }
 
-    public @Nullable StdVideoEncodeAV1PictureInfo pStdPictureInfo() {
-        MemorySegment s = pStdPictureInfoRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoEncodeAV1PictureInfo(s);
-    }
-
     public void pStdPictureInfo(@Nullable IStdVideoEncodeAV1PictureInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdPictureInfoRaw(s);
@@ -227,6 +219,14 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
 
         s = s.reinterpret(assumedCount * StdVideoEncodeAV1PictureInfo.BYTES);
         return new StdVideoEncodeAV1PictureInfo.Ptr(s);
+    }
+
+    public @Nullable StdVideoEncodeAV1PictureInfo pStdPictureInfo() {
+        MemorySegment s = pStdPictureInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoEncodeAV1PictureInfo(s);
     }
 
     public @pointer(target=StdVideoEncodeAV1PictureInfo.class) MemorySegment pStdPictureInfoRaw() {

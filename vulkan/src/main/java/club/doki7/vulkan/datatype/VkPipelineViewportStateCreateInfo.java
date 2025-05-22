@@ -196,14 +196,6 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$viewportCount, OFFSET$viewportCount, value);
     }
 
-    public @Nullable VkViewport pViewports() {
-        MemorySegment s = pViewportsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkViewport(s);
-    }
-
     public void pViewports(@Nullable IVkViewport value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewportsRaw(s);
@@ -217,6 +209,14 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
 
         s = s.reinterpret(assumedCount * VkViewport.BYTES);
         return new VkViewport.Ptr(s);
+    }
+
+    public @Nullable VkViewport pViewports() {
+        MemorySegment s = pViewportsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkViewport(s);
     }
 
     public @pointer(target=VkViewport.class) MemorySegment pViewportsRaw() {
@@ -235,14 +235,6 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$scissorCount, OFFSET$scissorCount, value);
     }
 
-    public @Nullable VkRect2D pScissors() {
-        MemorySegment s = pScissorsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkRect2D(s);
-    }
-
     public void pScissors(@Nullable IVkRect2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pScissorsRaw(s);
@@ -256,6 +248,14 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
 
         s = s.reinterpret(assumedCount * VkRect2D.BYTES);
         return new VkRect2D.Ptr(s);
+    }
+
+    public @Nullable VkRect2D pScissors() {
+        MemorySegment s = pScissorsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkRect2D(s);
     }
 
     public @pointer(target=VkRect2D.class) MemorySegment pScissorsRaw() {

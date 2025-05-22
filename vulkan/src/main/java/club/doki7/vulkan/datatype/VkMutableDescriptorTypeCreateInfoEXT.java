@@ -185,14 +185,6 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$mutableDescriptorTypeListCount, OFFSET$mutableDescriptorTypeListCount, value);
     }
 
-    public @Nullable VkMutableDescriptorTypeListEXT pMutableDescriptorTypeLists() {
-        MemorySegment s = pMutableDescriptorTypeListsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkMutableDescriptorTypeListEXT(s);
-    }
-
     public void pMutableDescriptorTypeLists(@Nullable IVkMutableDescriptorTypeListEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMutableDescriptorTypeListsRaw(s);
@@ -206,6 +198,14 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
 
         s = s.reinterpret(assumedCount * VkMutableDescriptorTypeListEXT.BYTES);
         return new VkMutableDescriptorTypeListEXT.Ptr(s);
+    }
+
+    public @Nullable VkMutableDescriptorTypeListEXT pMutableDescriptorTypeLists() {
+        MemorySegment s = pMutableDescriptorTypeListsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkMutableDescriptorTypeListEXT(s);
     }
 
     public @pointer(target=VkMutableDescriptorTypeListEXT.class) MemorySegment pMutableDescriptorTypeListsRaw() {

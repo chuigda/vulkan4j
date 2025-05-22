@@ -200,14 +200,6 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @Nullable VkVideoProfileInfoKHR pVideoProfile() {
-        MemorySegment s = pVideoProfileRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkVideoProfileInfoKHR(s);
-    }
-
     public void pVideoProfile(@Nullable IVkVideoProfileInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVideoProfileRaw(s);
@@ -221,6 +213,14 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
 
         s = s.reinterpret(assumedCount * VkVideoProfileInfoKHR.BYTES);
         return new VkVideoProfileInfoKHR.Ptr(s);
+    }
+
+    public @Nullable VkVideoProfileInfoKHR pVideoProfile() {
+        MemorySegment s = pVideoProfileRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkVideoProfileInfoKHR(s);
     }
 
     public @pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pVideoProfileRaw() {
@@ -271,14 +271,6 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$maxActiveReferencePictures, OFFSET$maxActiveReferencePictures, value);
     }
 
-    public @Nullable VkExtensionProperties pStdHeaderVersion() {
-        MemorySegment s = pStdHeaderVersionRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkExtensionProperties(s);
-    }
-
     public void pStdHeaderVersion(@Nullable IVkExtensionProperties value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdHeaderVersionRaw(s);
@@ -292,6 +284,14 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
 
         s = s.reinterpret(assumedCount * VkExtensionProperties.BYTES);
         return new VkExtensionProperties.Ptr(s);
+    }
+
+    public @Nullable VkExtensionProperties pStdHeaderVersion() {
+        MemorySegment s = pStdHeaderVersionRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkExtensionProperties(s);
     }
 
     public @pointer(target=VkExtensionProperties.class) MemorySegment pStdHeaderVersionRaw() {

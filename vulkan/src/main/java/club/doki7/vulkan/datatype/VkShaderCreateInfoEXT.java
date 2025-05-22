@@ -305,14 +305,6 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount, value);
     }
 
-    public @Nullable VkPushConstantRange pPushConstantRanges() {
-        MemorySegment s = pPushConstantRangesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkPushConstantRange(s);
-    }
-
     public void pPushConstantRanges(@Nullable IVkPushConstantRange value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPushConstantRangesRaw(s);
@@ -328,20 +320,20 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return new VkPushConstantRange.Ptr(s);
     }
 
+    public @Nullable VkPushConstantRange pPushConstantRanges() {
+        MemorySegment s = pPushConstantRangesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPushConstantRange(s);
+    }
+
     public @pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {
         return segment.get(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges);
     }
 
     public void pPushConstantRangesRaw(@pointer(target=VkPushConstantRange.class) MemorySegment value) {
         segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
-    }
-
-    public @Nullable VkSpecializationInfo pSpecializationInfo() {
-        MemorySegment s = pSpecializationInfoRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkSpecializationInfo(s);
     }
 
     public void pSpecializationInfo(@Nullable IVkSpecializationInfo value) {
@@ -357,6 +349,14 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
 
         s = s.reinterpret(assumedCount * VkSpecializationInfo.BYTES);
         return new VkSpecializationInfo.Ptr(s);
+    }
+
+    public @Nullable VkSpecializationInfo pSpecializationInfo() {
+        MemorySegment s = pSpecializationInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkSpecializationInfo(s);
     }
 
     public @pointer(target=VkSpecializationInfo.class) MemorySegment pSpecializationInfoRaw() {

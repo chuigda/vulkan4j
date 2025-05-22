@@ -213,14 +213,6 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
     }
 
-    public @Nullable VkPipelineColorBlendAttachmentState pAttachments() {
-        MemorySegment s = pAttachmentsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkPipelineColorBlendAttachmentState(s);
-    }
-
     public void pAttachments(@Nullable IVkPipelineColorBlendAttachmentState value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentsRaw(s);
@@ -234,6 +226,14 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
 
         s = s.reinterpret(assumedCount * VkPipelineColorBlendAttachmentState.BYTES);
         return new VkPipelineColorBlendAttachmentState.Ptr(s);
+    }
+
+    public @Nullable VkPipelineColorBlendAttachmentState pAttachments() {
+        MemorySegment s = pAttachmentsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineColorBlendAttachmentState(s);
     }
 
     public @pointer(target=VkPipelineColorBlendAttachmentState.class) MemorySegment pAttachmentsRaw() {

@@ -146,14 +146,6 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IVkBa
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @Nullable VkBaseInStructure pNext() {
-        MemorySegment s = pNextRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkBaseInStructure(s);
-    }
-
     public void pNext(@Nullable IVkBaseInStructure value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNextRaw(s);
@@ -167,6 +159,14 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IVkBa
 
         s = s.reinterpret(assumedCount * VkBaseInStructure.BYTES);
         return new VkBaseInStructure.Ptr(s);
+    }
+
+    public @Nullable VkBaseInStructure pNext() {
+        MemorySegment s = pNextRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkBaseInStructure(s);
     }
 
     public @pointer(target=VkBaseInStructure.class) MemorySegment pNextRaw() {

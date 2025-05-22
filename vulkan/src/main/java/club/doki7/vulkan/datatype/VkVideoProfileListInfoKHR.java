@@ -185,14 +185,6 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$profileCount, OFFSET$profileCount, value);
     }
 
-    public @Nullable VkVideoProfileInfoKHR pProfiles() {
-        MemorySegment s = pProfilesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkVideoProfileInfoKHR(s);
-    }
-
     public void pProfiles(@Nullable IVkVideoProfileInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pProfilesRaw(s);
@@ -206,6 +198,14 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
 
         s = s.reinterpret(assumedCount * VkVideoProfileInfoKHR.BYTES);
         return new VkVideoProfileInfoKHR.Ptr(s);
+    }
+
+    public @Nullable VkVideoProfileInfoKHR pProfiles() {
+        MemorySegment s = pProfilesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkVideoProfileInfoKHR(s);
     }
 
     public @pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pProfilesRaw() {

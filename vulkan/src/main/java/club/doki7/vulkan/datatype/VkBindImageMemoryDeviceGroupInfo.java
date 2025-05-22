@@ -220,14 +220,6 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$splitInstanceBindRegionCount, OFFSET$splitInstanceBindRegionCount, value);
     }
 
-    public @Nullable VkRect2D pSplitInstanceBindRegions() {
-        MemorySegment s = pSplitInstanceBindRegionsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkRect2D(s);
-    }
-
     public void pSplitInstanceBindRegions(@Nullable IVkRect2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSplitInstanceBindRegionsRaw(s);
@@ -241,6 +233,14 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
 
         s = s.reinterpret(assumedCount * VkRect2D.BYTES);
         return new VkRect2D.Ptr(s);
+    }
+
+    public @Nullable VkRect2D pSplitInstanceBindRegions() {
+        MemorySegment s = pSplitInstanceBindRegionsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkRect2D(s);
     }
 
     public @pointer(target=VkRect2D.class) MemorySegment pSplitInstanceBindRegionsRaw() {

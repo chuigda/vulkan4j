@@ -194,14 +194,6 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IVkAnt
         segment.set(LAYOUT$maxFPS, OFFSET$maxFPS, value);
     }
 
-    public @Nullable VkAntiLagPresentationInfoAMD pPresentationInfo() {
-        MemorySegment s = pPresentationInfoRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkAntiLagPresentationInfoAMD(s);
-    }
-
     public void pPresentationInfo(@Nullable IVkAntiLagPresentationInfoAMD value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPresentationInfoRaw(s);
@@ -215,6 +207,14 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IVkAnt
 
         s = s.reinterpret(assumedCount * VkAntiLagPresentationInfoAMD.BYTES);
         return new VkAntiLagPresentationInfoAMD.Ptr(s);
+    }
+
+    public @Nullable VkAntiLagPresentationInfoAMD pPresentationInfo() {
+        MemorySegment s = pPresentationInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkAntiLagPresentationInfoAMD(s);
     }
 
     public @pointer(target=VkAntiLagPresentationInfoAMD.class) MemorySegment pPresentationInfoRaw() {

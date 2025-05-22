@@ -187,14 +187,6 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$description, OFFSET$description, value);
     }
 
-    public @Nullable VkDeviceFaultAddressInfoEXT pAddressInfos() {
-        MemorySegment s = pAddressInfosRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkDeviceFaultAddressInfoEXT(s);
-    }
-
     public void pAddressInfos(@Nullable IVkDeviceFaultAddressInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAddressInfosRaw(s);
@@ -210,20 +202,20 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         return new VkDeviceFaultAddressInfoEXT.Ptr(s);
     }
 
+    public @Nullable VkDeviceFaultAddressInfoEXT pAddressInfos() {
+        MemorySegment s = pAddressInfosRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDeviceFaultAddressInfoEXT(s);
+    }
+
     public @pointer(target=VkDeviceFaultAddressInfoEXT.class) MemorySegment pAddressInfosRaw() {
         return segment.get(LAYOUT$pAddressInfos, OFFSET$pAddressInfos);
     }
 
     public void pAddressInfosRaw(@pointer(target=VkDeviceFaultAddressInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pAddressInfos, OFFSET$pAddressInfos, value);
-    }
-
-    public @Nullable VkDeviceFaultVendorInfoEXT pVendorInfos() {
-        MemorySegment s = pVendorInfosRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkDeviceFaultVendorInfoEXT(s);
     }
 
     public void pVendorInfos(@Nullable IVkDeviceFaultVendorInfoEXT value) {
@@ -239,6 +231,14 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
 
         s = s.reinterpret(assumedCount * VkDeviceFaultVendorInfoEXT.BYTES);
         return new VkDeviceFaultVendorInfoEXT.Ptr(s);
+    }
+
+    public @Nullable VkDeviceFaultVendorInfoEXT pVendorInfos() {
+        MemorySegment s = pVendorInfosRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDeviceFaultVendorInfoEXT(s);
     }
 
     public @pointer(target=VkDeviceFaultVendorInfoEXT.class) MemorySegment pVendorInfosRaw() {

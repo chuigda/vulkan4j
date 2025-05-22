@@ -194,14 +194,6 @@ public record VkVideoEncodeH264SessionParametersCreateInfoKHR(@NotNull MemorySeg
         segment.set(LAYOUT$maxStdPPSCount, OFFSET$maxStdPPSCount, value);
     }
 
-    public @Nullable VkVideoEncodeH264SessionParametersAddInfoKHR pParametersAddInfo() {
-        MemorySegment s = pParametersAddInfoRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkVideoEncodeH264SessionParametersAddInfoKHR(s);
-    }
-
     public void pParametersAddInfo(@Nullable IVkVideoEncodeH264SessionParametersAddInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pParametersAddInfoRaw(s);
@@ -215,6 +207,14 @@ public record VkVideoEncodeH264SessionParametersCreateInfoKHR(@NotNull MemorySeg
 
         s = s.reinterpret(assumedCount * VkVideoEncodeH264SessionParametersAddInfoKHR.BYTES);
         return new VkVideoEncodeH264SessionParametersAddInfoKHR.Ptr(s);
+    }
+
+    public @Nullable VkVideoEncodeH264SessionParametersAddInfoKHR pParametersAddInfo() {
+        MemorySegment s = pParametersAddInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkVideoEncodeH264SessionParametersAddInfoKHR(s);
     }
 
     public @pointer(target=VkVideoEncodeH264SessionParametersAddInfoKHR.class) MemorySegment pParametersAddInfoRaw() {

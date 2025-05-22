@@ -230,14 +230,6 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IVkBli
         segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
     }
 
-    public @Nullable VkImageBlit2 pRegions() {
-        MemorySegment s = pRegionsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkImageBlit2(s);
-    }
-
     public void pRegions(@Nullable IVkImageBlit2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
@@ -251,6 +243,14 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IVkBli
 
         s = s.reinterpret(assumedCount * VkImageBlit2.BYTES);
         return new VkImageBlit2.Ptr(s);
+    }
+
+    public @Nullable VkImageBlit2 pRegions() {
+        MemorySegment s = pRegionsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkImageBlit2(s);
     }
 
     public @pointer(target=VkImageBlit2.class) MemorySegment pRegionsRaw() {

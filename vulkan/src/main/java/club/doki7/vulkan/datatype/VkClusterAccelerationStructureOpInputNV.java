@@ -139,14 +139,6 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         return ret;
     }
 
-    public @Nullable VkClusterAccelerationStructureClustersBottomLevelInputNV pClustersBottomLevel() {
-        MemorySegment s = pClustersBottomLevelRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkClusterAccelerationStructureClustersBottomLevelInputNV(s);
-    }
-
     public void pClustersBottomLevel(@Nullable IVkClusterAccelerationStructureClustersBottomLevelInputNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pClustersBottomLevelRaw(s);
@@ -162,20 +154,20 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         return new VkClusterAccelerationStructureClustersBottomLevelInputNV.Ptr(s);
     }
 
+    public @Nullable VkClusterAccelerationStructureClustersBottomLevelInputNV pClustersBottomLevel() {
+        MemorySegment s = pClustersBottomLevelRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkClusterAccelerationStructureClustersBottomLevelInputNV(s);
+    }
+
     public @pointer(target=VkClusterAccelerationStructureClustersBottomLevelInputNV.class) MemorySegment pClustersBottomLevelRaw() {
         return segment.get(LAYOUT$pClustersBottomLevel, OFFSET$pClustersBottomLevel);
     }
 
     public void pClustersBottomLevelRaw(@pointer(target=VkClusterAccelerationStructureClustersBottomLevelInputNV.class) MemorySegment value) {
         segment.set(LAYOUT$pClustersBottomLevel, OFFSET$pClustersBottomLevel, value);
-    }
-
-    public @Nullable VkClusterAccelerationStructureTriangleClusterInputNV pTriangleClusters() {
-        MemorySegment s = pTriangleClustersRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkClusterAccelerationStructureTriangleClusterInputNV(s);
     }
 
     public void pTriangleClusters(@Nullable IVkClusterAccelerationStructureTriangleClusterInputNV value) {
@@ -193,20 +185,20 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         return new VkClusterAccelerationStructureTriangleClusterInputNV.Ptr(s);
     }
 
+    public @Nullable VkClusterAccelerationStructureTriangleClusterInputNV pTriangleClusters() {
+        MemorySegment s = pTriangleClustersRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkClusterAccelerationStructureTriangleClusterInputNV(s);
+    }
+
     public @pointer(target=VkClusterAccelerationStructureTriangleClusterInputNV.class) MemorySegment pTriangleClustersRaw() {
         return segment.get(LAYOUT$pTriangleClusters, OFFSET$pTriangleClusters);
     }
 
     public void pTriangleClustersRaw(@pointer(target=VkClusterAccelerationStructureTriangleClusterInputNV.class) MemorySegment value) {
         segment.set(LAYOUT$pTriangleClusters, OFFSET$pTriangleClusters, value);
-    }
-
-    public @Nullable VkClusterAccelerationStructureMoveObjectsInputNV pMoveObjects() {
-        MemorySegment s = pMoveObjectsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkClusterAccelerationStructureMoveObjectsInputNV(s);
     }
 
     public void pMoveObjects(@Nullable IVkClusterAccelerationStructureMoveObjectsInputNV value) {
@@ -222,6 +214,14 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
 
         s = s.reinterpret(assumedCount * VkClusterAccelerationStructureMoveObjectsInputNV.BYTES);
         return new VkClusterAccelerationStructureMoveObjectsInputNV.Ptr(s);
+    }
+
+    public @Nullable VkClusterAccelerationStructureMoveObjectsInputNV pMoveObjects() {
+        MemorySegment s = pMoveObjectsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkClusterAccelerationStructureMoveObjectsInputNV(s);
     }
 
     public @pointer(target=VkClusterAccelerationStructureMoveObjectsInputNV.class) MemorySegment pMoveObjectsRaw() {

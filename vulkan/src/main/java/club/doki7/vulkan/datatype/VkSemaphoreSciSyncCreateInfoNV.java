@@ -189,14 +189,6 @@ public record VkSemaphoreSciSyncCreateInfoNV(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$semaphorePool, OFFSET$semaphorePool, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Nullable NvSciSyncFenceVKREF pFence() {
-        MemorySegment s = pFenceRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new NvSciSyncFenceVKREF(s);
-    }
-
     public void pFence(@Nullable INvSciSyncFenceVKREF value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFenceRaw(s);
@@ -210,6 +202,14 @@ public record VkSemaphoreSciSyncCreateInfoNV(@NotNull MemorySegment segment) imp
 
         s = s.reinterpret(assumedCount * NvSciSyncFenceVKREF.BYTES);
         return new NvSciSyncFenceVKREF.Ptr(s);
+    }
+
+    public @Nullable NvSciSyncFenceVKREF pFence() {
+        MemorySegment s = pFenceRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new NvSciSyncFenceVKREF(s);
     }
 
     public @pointer(target=NvSciSyncFenceVKREF.class) MemorySegment pFenceRaw() {

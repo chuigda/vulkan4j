@@ -177,14 +177,6 @@ public record VkVideoDecodeH264InlineSessionParametersInfoKHR(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Nullable StdVideoH264SequenceParameterSet pStdSPS() {
-        MemorySegment s = pStdSPSRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoH264SequenceParameterSet(s);
-    }
-
     public void pStdSPS(@Nullable IStdVideoH264SequenceParameterSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdSPSRaw(s);
@@ -200,20 +192,20 @@ public record VkVideoDecodeH264InlineSessionParametersInfoKHR(@NotNull MemorySeg
         return new StdVideoH264SequenceParameterSet.Ptr(s);
     }
 
+    public @Nullable StdVideoH264SequenceParameterSet pStdSPS() {
+        MemorySegment s = pStdSPSRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoH264SequenceParameterSet(s);
+    }
+
     public @pointer(target=StdVideoH264SequenceParameterSet.class) MemorySegment pStdSPSRaw() {
         return segment.get(LAYOUT$pStdSPS, OFFSET$pStdSPS);
     }
 
     public void pStdSPSRaw(@pointer(target=StdVideoH264SequenceParameterSet.class) MemorySegment value) {
         segment.set(LAYOUT$pStdSPS, OFFSET$pStdSPS, value);
-    }
-
-    public @Nullable StdVideoH264PictureParameterSet pStdPPS() {
-        MemorySegment s = pStdPPSRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoH264PictureParameterSet(s);
     }
 
     public void pStdPPS(@Nullable IStdVideoH264PictureParameterSet value) {
@@ -229,6 +221,14 @@ public record VkVideoDecodeH264InlineSessionParametersInfoKHR(@NotNull MemorySeg
 
         s = s.reinterpret(assumedCount * StdVideoH264PictureParameterSet.BYTES);
         return new StdVideoH264PictureParameterSet.Ptr(s);
+    }
+
+    public @Nullable StdVideoH264PictureParameterSet pStdPPS() {
+        MemorySegment s = pStdPPSRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoH264PictureParameterSet(s);
     }
 
     public @pointer(target=StdVideoH264PictureParameterSet.class) MemorySegment pStdPPSRaw() {

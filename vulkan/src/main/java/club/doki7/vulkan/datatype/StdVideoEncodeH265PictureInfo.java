@@ -211,14 +211,6 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
     }
 
 
-    public @Nullable StdVideoEncodeH265ReferenceListsInfo pRefLists() {
-        MemorySegment s = pRefListsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoEncodeH265ReferenceListsInfo(s);
-    }
-
     public void pRefLists(@Nullable IStdVideoEncodeH265ReferenceListsInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRefListsRaw(s);
@@ -234,20 +226,20 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return new StdVideoEncodeH265ReferenceListsInfo.Ptr(s);
     }
 
+    public @Nullable StdVideoEncodeH265ReferenceListsInfo pRefLists() {
+        MemorySegment s = pRefListsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoEncodeH265ReferenceListsInfo(s);
+    }
+
     public @pointer(target=StdVideoEncodeH265ReferenceListsInfo.class) MemorySegment pRefListsRaw() {
         return segment.get(LAYOUT$pRefLists, OFFSET$pRefLists);
     }
 
     public void pRefListsRaw(@pointer(target=StdVideoEncodeH265ReferenceListsInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pRefLists, OFFSET$pRefLists, value);
-    }
-
-    public @Nullable StdVideoH265ShortTermRefPicSet pShortTermRefPicSet() {
-        MemorySegment s = pShortTermRefPicSetRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoH265ShortTermRefPicSet(s);
     }
 
     public void pShortTermRefPicSet(@Nullable IStdVideoH265ShortTermRefPicSet value) {
@@ -265,20 +257,20 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return new StdVideoH265ShortTermRefPicSet.Ptr(s);
     }
 
+    public @Nullable StdVideoH265ShortTermRefPicSet pShortTermRefPicSet() {
+        MemorySegment s = pShortTermRefPicSetRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoH265ShortTermRefPicSet(s);
+    }
+
     public @pointer(target=StdVideoH265ShortTermRefPicSet.class) MemorySegment pShortTermRefPicSetRaw() {
         return segment.get(LAYOUT$pShortTermRefPicSet, OFFSET$pShortTermRefPicSet);
     }
 
     public void pShortTermRefPicSetRaw(@pointer(target=StdVideoH265ShortTermRefPicSet.class) MemorySegment value) {
         segment.set(LAYOUT$pShortTermRefPicSet, OFFSET$pShortTermRefPicSet, value);
-    }
-
-    public @Nullable StdVideoEncodeH265LongTermRefPics pLongTermRefPics() {
-        MemorySegment s = pLongTermRefPicsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoEncodeH265LongTermRefPics(s);
     }
 
     public void pLongTermRefPics(@Nullable IStdVideoEncodeH265LongTermRefPics value) {
@@ -294,6 +286,14 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
 
         s = s.reinterpret(assumedCount * StdVideoEncodeH265LongTermRefPics.BYTES);
         return new StdVideoEncodeH265LongTermRefPics.Ptr(s);
+    }
+
+    public @Nullable StdVideoEncodeH265LongTermRefPics pLongTermRefPics() {
+        MemorySegment s = pLongTermRefPicsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoEncodeH265LongTermRefPics(s);
     }
 
     public @pointer(target=StdVideoEncodeH265LongTermRefPics.class) MemorySegment pLongTermRefPicsRaw() {

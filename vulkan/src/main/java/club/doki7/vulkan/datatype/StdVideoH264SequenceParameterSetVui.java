@@ -263,14 +263,6 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
     }
 
 
-    public @Nullable StdVideoH264HrdParameters pHrdParameters() {
-        MemorySegment s = pHrdParametersRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoH264HrdParameters(s);
-    }
-
     public void pHrdParameters(@Nullable IStdVideoH264HrdParameters value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pHrdParametersRaw(s);
@@ -284,6 +276,14 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
 
         s = s.reinterpret(assumedCount * StdVideoH264HrdParameters.BYTES);
         return new StdVideoH264HrdParameters.Ptr(s);
+    }
+
+    public @Nullable StdVideoH264HrdParameters pHrdParameters() {
+        MemorySegment s = pHrdParametersRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoH264HrdParameters(s);
     }
 
     public @pointer(target=StdVideoH264HrdParameters.class) MemorySegment pHrdParametersRaw() {

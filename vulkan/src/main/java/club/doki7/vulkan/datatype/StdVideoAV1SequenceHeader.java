@@ -237,14 +237,6 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
     }
 
 
-    public @Nullable StdVideoAV1ColorConfig pColorConfig() {
-        MemorySegment s = pColorConfigRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoAV1ColorConfig(s);
-    }
-
     public void pColorConfig(@Nullable IStdVideoAV1ColorConfig value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorConfigRaw(s);
@@ -260,20 +252,20 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         return new StdVideoAV1ColorConfig.Ptr(s);
     }
 
+    public @Nullable StdVideoAV1ColorConfig pColorConfig() {
+        MemorySegment s = pColorConfigRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoAV1ColorConfig(s);
+    }
+
     public @pointer(target=StdVideoAV1ColorConfig.class) MemorySegment pColorConfigRaw() {
         return segment.get(LAYOUT$pColorConfig, OFFSET$pColorConfig);
     }
 
     public void pColorConfigRaw(@pointer(target=StdVideoAV1ColorConfig.class) MemorySegment value) {
         segment.set(LAYOUT$pColorConfig, OFFSET$pColorConfig, value);
-    }
-
-    public @Nullable StdVideoAV1TimingInfo pTimingInfo() {
-        MemorySegment s = pTimingInfoRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoAV1TimingInfo(s);
     }
 
     public void pTimingInfo(@Nullable IStdVideoAV1TimingInfo value) {
@@ -289,6 +281,14 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
 
         s = s.reinterpret(assumedCount * StdVideoAV1TimingInfo.BYTES);
         return new StdVideoAV1TimingInfo.Ptr(s);
+    }
+
+    public @Nullable StdVideoAV1TimingInfo pTimingInfo() {
+        MemorySegment s = pTimingInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoAV1TimingInfo(s);
     }
 
     public @pointer(target=StdVideoAV1TimingInfo.class) MemorySegment pTimingInfoRaw() {

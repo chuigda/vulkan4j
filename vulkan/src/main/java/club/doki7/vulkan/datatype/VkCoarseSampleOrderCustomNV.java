@@ -164,14 +164,6 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$sampleLocationCount, OFFSET$sampleLocationCount, value);
     }
 
-    public @Nullable VkCoarseSampleLocationNV pSampleLocations() {
-        MemorySegment s = pSampleLocationsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkCoarseSampleLocationNV(s);
-    }
-
     public void pSampleLocations(@Nullable IVkCoarseSampleLocationNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSampleLocationsRaw(s);
@@ -185,6 +177,14 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
 
         s = s.reinterpret(assumedCount * VkCoarseSampleLocationNV.BYTES);
         return new VkCoarseSampleLocationNV.Ptr(s);
+    }
+
+    public @Nullable VkCoarseSampleLocationNV pSampleLocations() {
+        MemorySegment s = pSampleLocationsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkCoarseSampleLocationNV(s);
     }
 
     public @pointer(target=VkCoarseSampleLocationNV.class) MemorySegment pSampleLocationsRaw() {

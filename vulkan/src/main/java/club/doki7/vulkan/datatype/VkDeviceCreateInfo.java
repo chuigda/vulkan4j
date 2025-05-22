@@ -199,14 +199,6 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         segment.set(LAYOUT$queueCreateInfoCount, OFFSET$queueCreateInfoCount, value);
     }
 
-    public @Nullable VkDeviceQueueCreateInfo pQueueCreateInfos() {
-        MemorySegment s = pQueueCreateInfosRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkDeviceQueueCreateInfo(s);
-    }
-
     public void pQueueCreateInfos(@Nullable IVkDeviceQueueCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueCreateInfosRaw(s);
@@ -220,6 +212,14 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
 
         s = s.reinterpret(assumedCount * VkDeviceQueueCreateInfo.BYTES);
         return new VkDeviceQueueCreateInfo.Ptr(s);
+    }
+
+    public @Nullable VkDeviceQueueCreateInfo pQueueCreateInfos() {
+        MemorySegment s = pQueueCreateInfosRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDeviceQueueCreateInfo(s);
     }
 
     public @pointer(target=VkDeviceQueueCreateInfo.class) MemorySegment pQueueCreateInfosRaw() {
@@ -294,14 +294,6 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         segment.set(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames, value);
     }
 
-    public @Nullable VkPhysicalDeviceFeatures pEnabledFeatures() {
-        MemorySegment s = pEnabledFeaturesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkPhysicalDeviceFeatures(s);
-    }
-
     public void pEnabledFeatures(@Nullable IVkPhysicalDeviceFeatures value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pEnabledFeaturesRaw(s);
@@ -315,6 +307,14 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
 
         s = s.reinterpret(assumedCount * VkPhysicalDeviceFeatures.BYTES);
         return new VkPhysicalDeviceFeatures.Ptr(s);
+    }
+
+    public @Nullable VkPhysicalDeviceFeatures pEnabledFeatures() {
+        MemorySegment s = pEnabledFeaturesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPhysicalDeviceFeatures(s);
     }
 
     public @pointer(target=VkPhysicalDeviceFeatures.class) MemorySegment pEnabledFeaturesRaw() {

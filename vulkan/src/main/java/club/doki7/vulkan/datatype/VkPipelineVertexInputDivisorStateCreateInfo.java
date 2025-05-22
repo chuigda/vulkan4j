@@ -185,14 +185,6 @@ public record VkPipelineVertexInputDivisorStateCreateInfo(@NotNull MemorySegment
         segment.set(LAYOUT$vertexBindingDivisorCount, OFFSET$vertexBindingDivisorCount, value);
     }
 
-    public @Nullable VkVertexInputBindingDivisorDescription pVertexBindingDivisors() {
-        MemorySegment s = pVertexBindingDivisorsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkVertexInputBindingDivisorDescription(s);
-    }
-
     public void pVertexBindingDivisors(@Nullable IVkVertexInputBindingDivisorDescription value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVertexBindingDivisorsRaw(s);
@@ -206,6 +198,14 @@ public record VkPipelineVertexInputDivisorStateCreateInfo(@NotNull MemorySegment
 
         s = s.reinterpret(assumedCount * VkVertexInputBindingDivisorDescription.BYTES);
         return new VkVertexInputBindingDivisorDescription.Ptr(s);
+    }
+
+    public @Nullable VkVertexInputBindingDivisorDescription pVertexBindingDivisors() {
+        MemorySegment s = pVertexBindingDivisorsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkVertexInputBindingDivisorDescription(s);
     }
 
     public @pointer(target=VkVertexInputBindingDivisorDescription.class) MemorySegment pVertexBindingDivisorsRaw() {

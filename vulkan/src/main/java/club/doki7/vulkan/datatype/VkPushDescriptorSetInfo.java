@@ -216,14 +216,6 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$descriptorWriteCount, OFFSET$descriptorWriteCount, value);
     }
 
-    public @Nullable VkWriteDescriptorSet pDescriptorWrites() {
-        MemorySegment s = pDescriptorWritesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkWriteDescriptorSet(s);
-    }
-
     public void pDescriptorWrites(@Nullable IVkWriteDescriptorSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorWritesRaw(s);
@@ -237,6 +229,14 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
 
         s = s.reinterpret(assumedCount * VkWriteDescriptorSet.BYTES);
         return new VkWriteDescriptorSet.Ptr(s);
+    }
+
+    public @Nullable VkWriteDescriptorSet pDescriptorWrites() {
+        MemorySegment s = pDescriptorWritesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkWriteDescriptorSet(s);
     }
 
     public @pointer(target=VkWriteDescriptorSet.class) MemorySegment pDescriptorWritesRaw() {

@@ -185,14 +185,6 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$settingCount, OFFSET$settingCount, value);
     }
 
-    public @Nullable VkLayerSettingEXT pSettings() {
-        MemorySegment s = pSettingsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkLayerSettingEXT(s);
-    }
-
     public void pSettings(@Nullable IVkLayerSettingEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSettingsRaw(s);
@@ -206,6 +198,14 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
 
         s = s.reinterpret(assumedCount * VkLayerSettingEXT.BYTES);
         return new VkLayerSettingEXT.Ptr(s);
+    }
+
+    public @Nullable VkLayerSettingEXT pSettings() {
+        MemorySegment s = pSettingsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkLayerSettingEXT(s);
     }
 
     public @pointer(target=VkLayerSettingEXT.class) MemorySegment pSettingsRaw() {

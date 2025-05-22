@@ -140,14 +140,6 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public @Nullable VkIndirectCommandsPushConstantTokenEXT pPushConstant() {
-        MemorySegment s = pPushConstantRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkIndirectCommandsPushConstantTokenEXT(s);
-    }
-
     public void pPushConstant(@Nullable IVkIndirectCommandsPushConstantTokenEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPushConstantRaw(s);
@@ -163,20 +155,20 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         return new VkIndirectCommandsPushConstantTokenEXT.Ptr(s);
     }
 
+    public @Nullable VkIndirectCommandsPushConstantTokenEXT pPushConstant() {
+        MemorySegment s = pPushConstantRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkIndirectCommandsPushConstantTokenEXT(s);
+    }
+
     public @pointer(target=VkIndirectCommandsPushConstantTokenEXT.class) MemorySegment pPushConstantRaw() {
         return segment.get(LAYOUT$pPushConstant, OFFSET$pPushConstant);
     }
 
     public void pPushConstantRaw(@pointer(target=VkIndirectCommandsPushConstantTokenEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pPushConstant, OFFSET$pPushConstant, value);
-    }
-
-    public @Nullable VkIndirectCommandsVertexBufferTokenEXT pVertexBuffer() {
-        MemorySegment s = pVertexBufferRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkIndirectCommandsVertexBufferTokenEXT(s);
     }
 
     public void pVertexBuffer(@Nullable IVkIndirectCommandsVertexBufferTokenEXT value) {
@@ -194,20 +186,20 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         return new VkIndirectCommandsVertexBufferTokenEXT.Ptr(s);
     }
 
+    public @Nullable VkIndirectCommandsVertexBufferTokenEXT pVertexBuffer() {
+        MemorySegment s = pVertexBufferRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkIndirectCommandsVertexBufferTokenEXT(s);
+    }
+
     public @pointer(target=VkIndirectCommandsVertexBufferTokenEXT.class) MemorySegment pVertexBufferRaw() {
         return segment.get(LAYOUT$pVertexBuffer, OFFSET$pVertexBuffer);
     }
 
     public void pVertexBufferRaw(@pointer(target=VkIndirectCommandsVertexBufferTokenEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pVertexBuffer, OFFSET$pVertexBuffer, value);
-    }
-
-    public @Nullable VkIndirectCommandsIndexBufferTokenEXT pIndexBuffer() {
-        MemorySegment s = pIndexBufferRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkIndirectCommandsIndexBufferTokenEXT(s);
     }
 
     public void pIndexBuffer(@Nullable IVkIndirectCommandsIndexBufferTokenEXT value) {
@@ -225,20 +217,20 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         return new VkIndirectCommandsIndexBufferTokenEXT.Ptr(s);
     }
 
+    public @Nullable VkIndirectCommandsIndexBufferTokenEXT pIndexBuffer() {
+        MemorySegment s = pIndexBufferRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkIndirectCommandsIndexBufferTokenEXT(s);
+    }
+
     public @pointer(target=VkIndirectCommandsIndexBufferTokenEXT.class) MemorySegment pIndexBufferRaw() {
         return segment.get(LAYOUT$pIndexBuffer, OFFSET$pIndexBuffer);
     }
 
     public void pIndexBufferRaw(@pointer(target=VkIndirectCommandsIndexBufferTokenEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pIndexBuffer, OFFSET$pIndexBuffer, value);
-    }
-
-    public @Nullable VkIndirectCommandsExecutionSetTokenEXT pExecutionSet() {
-        MemorySegment s = pExecutionSetRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkIndirectCommandsExecutionSetTokenEXT(s);
     }
 
     public void pExecutionSet(@Nullable IVkIndirectCommandsExecutionSetTokenEXT value) {
@@ -254,6 +246,14 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
 
         s = s.reinterpret(assumedCount * VkIndirectCommandsExecutionSetTokenEXT.BYTES);
         return new VkIndirectCommandsExecutionSetTokenEXT.Ptr(s);
+    }
+
+    public @Nullable VkIndirectCommandsExecutionSetTokenEXT pExecutionSet() {
+        MemorySegment s = pExecutionSetRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkIndirectCommandsExecutionSetTokenEXT(s);
     }
 
     public @pointer(target=VkIndirectCommandsExecutionSetTokenEXT.class) MemorySegment pExecutionSetRaw() {

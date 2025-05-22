@@ -211,14 +211,6 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
     }
 
 
-    public @Nullable StdVideoEncodeH264RefListModEntry pRefList0ModOperations() {
-        MemorySegment s = pRefList0ModOperationsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoEncodeH264RefListModEntry(s);
-    }
-
     public void pRefList0ModOperations(@Nullable IStdVideoEncodeH264RefListModEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRefList0ModOperationsRaw(s);
@@ -234,20 +226,20 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         return new StdVideoEncodeH264RefListModEntry.Ptr(s);
     }
 
+    public @Nullable StdVideoEncodeH264RefListModEntry pRefList0ModOperations() {
+        MemorySegment s = pRefList0ModOperationsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoEncodeH264RefListModEntry(s);
+    }
+
     public @pointer(target=StdVideoEncodeH264RefListModEntry.class) MemorySegment pRefList0ModOperationsRaw() {
         return segment.get(LAYOUT$pRefList0ModOperations, OFFSET$pRefList0ModOperations);
     }
 
     public void pRefList0ModOperationsRaw(@pointer(target=StdVideoEncodeH264RefListModEntry.class) MemorySegment value) {
         segment.set(LAYOUT$pRefList0ModOperations, OFFSET$pRefList0ModOperations, value);
-    }
-
-    public @Nullable StdVideoEncodeH264RefListModEntry pRefList1ModOperations() {
-        MemorySegment s = pRefList1ModOperationsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoEncodeH264RefListModEntry(s);
     }
 
     public void pRefList1ModOperations(@Nullable IStdVideoEncodeH264RefListModEntry value) {
@@ -265,20 +257,20 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         return new StdVideoEncodeH264RefListModEntry.Ptr(s);
     }
 
+    public @Nullable StdVideoEncodeH264RefListModEntry pRefList1ModOperations() {
+        MemorySegment s = pRefList1ModOperationsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoEncodeH264RefListModEntry(s);
+    }
+
     public @pointer(target=StdVideoEncodeH264RefListModEntry.class) MemorySegment pRefList1ModOperationsRaw() {
         return segment.get(LAYOUT$pRefList1ModOperations, OFFSET$pRefList1ModOperations);
     }
 
     public void pRefList1ModOperationsRaw(@pointer(target=StdVideoEncodeH264RefListModEntry.class) MemorySegment value) {
         segment.set(LAYOUT$pRefList1ModOperations, OFFSET$pRefList1ModOperations, value);
-    }
-
-    public @Nullable StdVideoEncodeH264RefPicMarkingEntry pRefPicMarkingOperations() {
-        MemorySegment s = pRefPicMarkingOperationsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoEncodeH264RefPicMarkingEntry(s);
     }
 
     public void pRefPicMarkingOperations(@Nullable IStdVideoEncodeH264RefPicMarkingEntry value) {
@@ -294,6 +286,14 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
 
         s = s.reinterpret(assumedCount * StdVideoEncodeH264RefPicMarkingEntry.BYTES);
         return new StdVideoEncodeH264RefPicMarkingEntry.Ptr(s);
+    }
+
+    public @Nullable StdVideoEncodeH264RefPicMarkingEntry pRefPicMarkingOperations() {
+        MemorySegment s = pRefPicMarkingOperationsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoEncodeH264RefPicMarkingEntry(s);
     }
 
     public @pointer(target=StdVideoEncodeH264RefPicMarkingEntry.class) MemorySegment pRefPicMarkingOperationsRaw() {

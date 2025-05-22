@@ -198,14 +198,6 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IVkSubmit
         segment.set(LAYOUT$waitSemaphoreInfoCount, OFFSET$waitSemaphoreInfoCount, value);
     }
 
-    public @Nullable VkSemaphoreSubmitInfo pWaitSemaphoreInfos() {
-        MemorySegment s = pWaitSemaphoreInfosRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkSemaphoreSubmitInfo(s);
-    }
-
     public void pWaitSemaphoreInfos(@Nullable IVkSemaphoreSubmitInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoreInfosRaw(s);
@@ -219,6 +211,14 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IVkSubmit
 
         s = s.reinterpret(assumedCount * VkSemaphoreSubmitInfo.BYTES);
         return new VkSemaphoreSubmitInfo.Ptr(s);
+    }
+
+    public @Nullable VkSemaphoreSubmitInfo pWaitSemaphoreInfos() {
+        MemorySegment s = pWaitSemaphoreInfosRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkSemaphoreSubmitInfo(s);
     }
 
     public @pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment pWaitSemaphoreInfosRaw() {
@@ -237,14 +237,6 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IVkSubmit
         segment.set(LAYOUT$commandBufferInfoCount, OFFSET$commandBufferInfoCount, value);
     }
 
-    public @Nullable VkCommandBufferSubmitInfo pCommandBufferInfos() {
-        MemorySegment s = pCommandBufferInfosRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkCommandBufferSubmitInfo(s);
-    }
-
     public void pCommandBufferInfos(@Nullable IVkCommandBufferSubmitInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCommandBufferInfosRaw(s);
@@ -258,6 +250,14 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IVkSubmit
 
         s = s.reinterpret(assumedCount * VkCommandBufferSubmitInfo.BYTES);
         return new VkCommandBufferSubmitInfo.Ptr(s);
+    }
+
+    public @Nullable VkCommandBufferSubmitInfo pCommandBufferInfos() {
+        MemorySegment s = pCommandBufferInfosRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkCommandBufferSubmitInfo(s);
     }
 
     public @pointer(target=VkCommandBufferSubmitInfo.class) MemorySegment pCommandBufferInfosRaw() {
@@ -276,14 +276,6 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IVkSubmit
         segment.set(LAYOUT$signalSemaphoreInfoCount, OFFSET$signalSemaphoreInfoCount, value);
     }
 
-    public @Nullable VkSemaphoreSubmitInfo pSignalSemaphoreInfos() {
-        MemorySegment s = pSignalSemaphoreInfosRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkSemaphoreSubmitInfo(s);
-    }
-
     public void pSignalSemaphoreInfos(@Nullable IVkSemaphoreSubmitInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoreInfosRaw(s);
@@ -297,6 +289,14 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IVkSubmit
 
         s = s.reinterpret(assumedCount * VkSemaphoreSubmitInfo.BYTES);
         return new VkSemaphoreSubmitInfo.Ptr(s);
+    }
+
+    public @Nullable VkSemaphoreSubmitInfo pSignalSemaphoreInfos() {
+        MemorySegment s = pSignalSemaphoreInfosRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkSemaphoreSubmitInfo(s);
     }
 
     public @pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment pSignalSemaphoreInfosRaw() {

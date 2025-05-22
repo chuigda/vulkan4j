@@ -178,14 +178,6 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Nullable VkPipelineBinaryKeysAndDataKHR pKeysAndDataInfo() {
-        MemorySegment s = pKeysAndDataInfoRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkPipelineBinaryKeysAndDataKHR(s);
-    }
-
     public void pKeysAndDataInfo(@Nullable IVkPipelineBinaryKeysAndDataKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pKeysAndDataInfoRaw(s);
@@ -199,6 +191,14 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
 
         s = s.reinterpret(assumedCount * VkPipelineBinaryKeysAndDataKHR.BYTES);
         return new VkPipelineBinaryKeysAndDataKHR.Ptr(s);
+    }
+
+    public @Nullable VkPipelineBinaryKeysAndDataKHR pKeysAndDataInfo() {
+        MemorySegment s = pKeysAndDataInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineBinaryKeysAndDataKHR(s);
     }
 
     public @pointer(target=VkPipelineBinaryKeysAndDataKHR.class) MemorySegment pKeysAndDataInfoRaw() {
@@ -221,14 +221,6 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pipeline, OFFSET$pipeline, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Nullable VkPipelineCreateInfoKHR pPipelineCreateInfo() {
-        MemorySegment s = pPipelineCreateInfoRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkPipelineCreateInfoKHR(s);
-    }
-
     public void pPipelineCreateInfo(@Nullable IVkPipelineCreateInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineCreateInfoRaw(s);
@@ -242,6 +234,14 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
 
         s = s.reinterpret(assumedCount * VkPipelineCreateInfoKHR.BYTES);
         return new VkPipelineCreateInfoKHR.Ptr(s);
+    }
+
+    public @Nullable VkPipelineCreateInfoKHR pPipelineCreateInfo() {
+        MemorySegment s = pPipelineCreateInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineCreateInfoKHR(s);
     }
 
     public @pointer(target=VkPipelineCreateInfoKHR.class) MemorySegment pPipelineCreateInfoRaw() {

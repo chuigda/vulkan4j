@@ -209,14 +209,6 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
     }
 
 
-    public @Nullable StdVideoEncodeH264ReferenceListsInfo pRefLists() {
-        MemorySegment s = pRefListsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoEncodeH264ReferenceListsInfo(s);
-    }
-
     public void pRefLists(@Nullable IStdVideoEncodeH264ReferenceListsInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRefListsRaw(s);
@@ -230,6 +222,14 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
 
         s = s.reinterpret(assumedCount * StdVideoEncodeH264ReferenceListsInfo.BYTES);
         return new StdVideoEncodeH264ReferenceListsInfo.Ptr(s);
+    }
+
+    public @Nullable StdVideoEncodeH264ReferenceListsInfo pRefLists() {
+        MemorySegment s = pRefListsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoEncodeH264ReferenceListsInfo(s);
     }
 
     public @pointer(target=StdVideoEncodeH264ReferenceListsInfo.class) MemorySegment pRefListsRaw() {

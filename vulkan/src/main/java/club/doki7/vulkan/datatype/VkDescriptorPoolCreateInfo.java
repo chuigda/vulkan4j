@@ -203,14 +203,6 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$poolSizeCount, OFFSET$poolSizeCount, value);
     }
 
-    public @Nullable VkDescriptorPoolSize pPoolSizes() {
-        MemorySegment s = pPoolSizesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkDescriptorPoolSize(s);
-    }
-
     public void pPoolSizes(@Nullable IVkDescriptorPoolSize value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPoolSizesRaw(s);
@@ -224,6 +216,14 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
 
         s = s.reinterpret(assumedCount * VkDescriptorPoolSize.BYTES);
         return new VkDescriptorPoolSize.Ptr(s);
+    }
+
+    public @Nullable VkDescriptorPoolSize pPoolSizes() {
+        MemorySegment s = pPoolSizesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDescriptorPoolSize(s);
     }
 
     public @pointer(target=VkDescriptorPoolSize.class) MemorySegment pPoolSizesRaw() {

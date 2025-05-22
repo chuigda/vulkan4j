@@ -178,14 +178,6 @@ public record VkVideoDecodeH264PictureInfoKHR(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Nullable StdVideoDecodeH264PictureInfo pStdPictureInfo() {
-        MemorySegment s = pStdPictureInfoRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoDecodeH264PictureInfo(s);
-    }
-
     public void pStdPictureInfo(@Nullable IStdVideoDecodeH264PictureInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdPictureInfoRaw(s);
@@ -199,6 +191,14 @@ public record VkVideoDecodeH264PictureInfoKHR(@NotNull MemorySegment segment) im
 
         s = s.reinterpret(assumedCount * StdVideoDecodeH264PictureInfo.BYTES);
         return new StdVideoDecodeH264PictureInfo.Ptr(s);
+    }
+
+    public @Nullable StdVideoDecodeH264PictureInfo pStdPictureInfo() {
+        MemorySegment s = pStdPictureInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoDecodeH264PictureInfo(s);
     }
 
     public @pointer(target=StdVideoDecodeH264PictureInfo.class) MemorySegment pStdPictureInfoRaw() {

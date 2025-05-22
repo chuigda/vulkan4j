@@ -187,14 +187,6 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         segment.set(LAYOUT$groupCount, OFFSET$groupCount, value);
     }
 
-    public @Nullable VkGraphicsShaderGroupCreateInfoNV pGroups() {
-        MemorySegment s = pGroupsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkGraphicsShaderGroupCreateInfoNV(s);
-    }
-
     public void pGroups(@Nullable IVkGraphicsShaderGroupCreateInfoNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGroupsRaw(s);
@@ -208,6 +200,14 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
 
         s = s.reinterpret(assumedCount * VkGraphicsShaderGroupCreateInfoNV.BYTES);
         return new VkGraphicsShaderGroupCreateInfoNV.Ptr(s);
+    }
+
+    public @Nullable VkGraphicsShaderGroupCreateInfoNV pGroups() {
+        MemorySegment s = pGroupsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkGraphicsShaderGroupCreateInfoNV(s);
     }
 
     public @pointer(target=VkGraphicsShaderGroupCreateInfoNV.class) MemorySegment pGroupsRaw() {

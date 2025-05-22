@@ -259,14 +259,6 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$queueLabelCount, OFFSET$queueLabelCount, value);
     }
 
-    public @Nullable VkDebugUtilsLabelEXT pQueueLabels() {
-        MemorySegment s = pQueueLabelsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkDebugUtilsLabelEXT(s);
-    }
-
     public void pQueueLabels(@Nullable IVkDebugUtilsLabelEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueLabelsRaw(s);
@@ -280,6 +272,14 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
 
         s = s.reinterpret(assumedCount * VkDebugUtilsLabelEXT.BYTES);
         return new VkDebugUtilsLabelEXT.Ptr(s);
+    }
+
+    public @Nullable VkDebugUtilsLabelEXT pQueueLabels() {
+        MemorySegment s = pQueueLabelsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDebugUtilsLabelEXT(s);
     }
 
     public @pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment pQueueLabelsRaw() {
@@ -298,14 +298,6 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$cmdBufLabelCount, OFFSET$cmdBufLabelCount, value);
     }
 
-    public @Nullable VkDebugUtilsLabelEXT pCmdBufLabels() {
-        MemorySegment s = pCmdBufLabelsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkDebugUtilsLabelEXT(s);
-    }
-
     public void pCmdBufLabels(@Nullable IVkDebugUtilsLabelEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCmdBufLabelsRaw(s);
@@ -319,6 +311,14 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
 
         s = s.reinterpret(assumedCount * VkDebugUtilsLabelEXT.BYTES);
         return new VkDebugUtilsLabelEXT.Ptr(s);
+    }
+
+    public @Nullable VkDebugUtilsLabelEXT pCmdBufLabels() {
+        MemorySegment s = pCmdBufLabelsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDebugUtilsLabelEXT(s);
     }
 
     public @pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment pCmdBufLabelsRaw() {
@@ -337,14 +337,6 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$objectCount, OFFSET$objectCount, value);
     }
 
-    public @Nullable VkDebugUtilsObjectNameInfoEXT pObjects() {
-        MemorySegment s = pObjectsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkDebugUtilsObjectNameInfoEXT(s);
-    }
-
     public void pObjects(@Nullable IVkDebugUtilsObjectNameInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pObjectsRaw(s);
@@ -358,6 +350,14 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
 
         s = s.reinterpret(assumedCount * VkDebugUtilsObjectNameInfoEXT.BYTES);
         return new VkDebugUtilsObjectNameInfoEXT.Ptr(s);
+    }
+
+    public @Nullable VkDebugUtilsObjectNameInfoEXT pObjects() {
+        MemorySegment s = pObjectsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDebugUtilsObjectNameInfoEXT(s);
     }
 
     public @pointer(target=VkDebugUtilsObjectNameInfoEXT.class) MemorySegment pObjectsRaw() {

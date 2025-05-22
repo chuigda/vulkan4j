@@ -203,14 +203,6 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$stageCount, OFFSET$stageCount, value);
     }
 
-    public @Nullable VkPipelineShaderStageCreateInfo pStages() {
-        MemorySegment s = pStagesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkPipelineShaderStageCreateInfo(s);
-    }
-
     public void pStages(@Nullable IVkPipelineShaderStageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStagesRaw(s);
@@ -224,6 +216,14 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
 
         s = s.reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.BYTES);
         return new VkPipelineShaderStageCreateInfo.Ptr(s);
+    }
+
+    public @Nullable VkPipelineShaderStageCreateInfo pStages() {
+        MemorySegment s = pStagesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineShaderStageCreateInfo(s);
     }
 
     public @pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
@@ -242,14 +242,6 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$groupCount, OFFSET$groupCount, value);
     }
 
-    public @Nullable VkRayTracingShaderGroupCreateInfoKHR pGroups() {
-        MemorySegment s = pGroupsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkRayTracingShaderGroupCreateInfoKHR(s);
-    }
-
     public void pGroups(@Nullable IVkRayTracingShaderGroupCreateInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGroupsRaw(s);
@@ -263,6 +255,14 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
 
         s = s.reinterpret(assumedCount * VkRayTracingShaderGroupCreateInfoKHR.BYTES);
         return new VkRayTracingShaderGroupCreateInfoKHR.Ptr(s);
+    }
+
+    public @Nullable VkRayTracingShaderGroupCreateInfoKHR pGroups() {
+        MemorySegment s = pGroupsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkRayTracingShaderGroupCreateInfoKHR(s);
     }
 
     public @pointer(target=VkRayTracingShaderGroupCreateInfoKHR.class) MemorySegment pGroupsRaw() {
@@ -281,14 +281,6 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$maxPipelineRayRecursionDepth, OFFSET$maxPipelineRayRecursionDepth, value);
     }
 
-    public @Nullable VkPipelineLibraryCreateInfoKHR pLibraryInfo() {
-        MemorySegment s = pLibraryInfoRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkPipelineLibraryCreateInfoKHR(s);
-    }
-
     public void pLibraryInfo(@Nullable IVkPipelineLibraryCreateInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLibraryInfoRaw(s);
@@ -304,20 +296,20 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         return new VkPipelineLibraryCreateInfoKHR.Ptr(s);
     }
 
+    public @Nullable VkPipelineLibraryCreateInfoKHR pLibraryInfo() {
+        MemorySegment s = pLibraryInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineLibraryCreateInfoKHR(s);
+    }
+
     public @pointer(target=VkPipelineLibraryCreateInfoKHR.class) MemorySegment pLibraryInfoRaw() {
         return segment.get(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo);
     }
 
     public void pLibraryInfoRaw(@pointer(target=VkPipelineLibraryCreateInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo, value);
-    }
-
-    public @Nullable VkRayTracingPipelineInterfaceCreateInfoKHR pLibraryInterface() {
-        MemorySegment s = pLibraryInterfaceRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkRayTracingPipelineInterfaceCreateInfoKHR(s);
     }
 
     public void pLibraryInterface(@Nullable IVkRayTracingPipelineInterfaceCreateInfoKHR value) {
@@ -335,20 +327,20 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         return new VkRayTracingPipelineInterfaceCreateInfoKHR.Ptr(s);
     }
 
+    public @Nullable VkRayTracingPipelineInterfaceCreateInfoKHR pLibraryInterface() {
+        MemorySegment s = pLibraryInterfaceRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkRayTracingPipelineInterfaceCreateInfoKHR(s);
+    }
+
     public @pointer(target=VkRayTracingPipelineInterfaceCreateInfoKHR.class) MemorySegment pLibraryInterfaceRaw() {
         return segment.get(LAYOUT$pLibraryInterface, OFFSET$pLibraryInterface);
     }
 
     public void pLibraryInterfaceRaw(@pointer(target=VkRayTracingPipelineInterfaceCreateInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pLibraryInterface, OFFSET$pLibraryInterface, value);
-    }
-
-    public @Nullable VkPipelineDynamicStateCreateInfo pDynamicState() {
-        MemorySegment s = pDynamicStateRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkPipelineDynamicStateCreateInfo(s);
     }
 
     public void pDynamicState(@Nullable IVkPipelineDynamicStateCreateInfo value) {
@@ -364,6 +356,14 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
 
         s = s.reinterpret(assumedCount * VkPipelineDynamicStateCreateInfo.BYTES);
         return new VkPipelineDynamicStateCreateInfo.Ptr(s);
+    }
+
+    public @Nullable VkPipelineDynamicStateCreateInfo pDynamicState() {
+        MemorySegment s = pDynamicStateRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineDynamicStateCreateInfo(s);
     }
 
     public @pointer(target=VkPipelineDynamicStateCreateInfo.class) MemorySegment pDynamicStateRaw() {

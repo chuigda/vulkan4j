@@ -194,14 +194,6 @@ public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
     }
 
-    public @Nullable VkRect2D pRegions() {
-        MemorySegment s = pRegionsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkRect2D(s);
-    }
-
     public void pRegions(@Nullable IVkRect2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
@@ -215,6 +207,14 @@ public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) impleme
 
         s = s.reinterpret(assumedCount * VkRect2D.BYTES);
         return new VkRect2D.Ptr(s);
+    }
+
+    public @Nullable VkRect2D pRegions() {
+        MemorySegment s = pRegionsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkRect2D(s);
     }
 
     public @pointer(target=VkRect2D.class) MemorySegment pRegionsRaw() {

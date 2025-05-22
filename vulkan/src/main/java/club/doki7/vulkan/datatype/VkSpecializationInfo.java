@@ -148,14 +148,6 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$mapEntryCount, OFFSET$mapEntryCount, value);
     }
 
-    public @Nullable VkSpecializationMapEntry pMapEntries() {
-        MemorySegment s = pMapEntriesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkSpecializationMapEntry(s);
-    }
-
     public void pMapEntries(@Nullable IVkSpecializationMapEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMapEntriesRaw(s);
@@ -169,6 +161,14 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
 
         s = s.reinterpret(assumedCount * VkSpecializationMapEntry.BYTES);
         return new VkSpecializationMapEntry.Ptr(s);
+    }
+
+    public @Nullable VkSpecializationMapEntry pMapEntries() {
+        MemorySegment s = pMapEntriesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkSpecializationMapEntry(s);
     }
 
     public @pointer(target=VkSpecializationMapEntry.class) MemorySegment pMapEntriesRaw() {

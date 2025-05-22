@@ -176,14 +176,6 @@ public record VkVideoDecodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Nullable StdVideoAV1SequenceHeader pStdSequenceHeader() {
-        MemorySegment s = pStdSequenceHeaderRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoAV1SequenceHeader(s);
-    }
-
     public void pStdSequenceHeader(@Nullable IStdVideoAV1SequenceHeader value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdSequenceHeaderRaw(s);
@@ -197,6 +189,14 @@ public record VkVideoDecodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
 
         s = s.reinterpret(assumedCount * StdVideoAV1SequenceHeader.BYTES);
         return new StdVideoAV1SequenceHeader.Ptr(s);
+    }
+
+    public @Nullable StdVideoAV1SequenceHeader pStdSequenceHeader() {
+        MemorySegment s = pStdSequenceHeaderRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoAV1SequenceHeader(s);
     }
 
     public @pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment pStdSequenceHeaderRaw() {

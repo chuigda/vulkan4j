@@ -194,14 +194,6 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         segment.set(LAYOUT$viewportCount, OFFSET$viewportCount, value);
     }
 
-    public @Nullable VkShadingRatePaletteNV pShadingRatePalettes() {
-        MemorySegment s = pShadingRatePalettesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkShadingRatePaletteNV(s);
-    }
-
     public void pShadingRatePalettes(@Nullable IVkShadingRatePaletteNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pShadingRatePalettesRaw(s);
@@ -215,6 +207,14 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
 
         s = s.reinterpret(assumedCount * VkShadingRatePaletteNV.BYTES);
         return new VkShadingRatePaletteNV.Ptr(s);
+    }
+
+    public @Nullable VkShadingRatePaletteNV pShadingRatePalettes() {
+        MemorySegment s = pShadingRatePalettesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkShadingRatePaletteNV(s);
     }
 
     public @pointer(target=VkShadingRatePaletteNV.class) MemorySegment pShadingRatePalettesRaw() {

@@ -185,14 +185,6 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
     }
 
-    public @Nullable VkPresentTimeGOOGLE pTimes() {
-        MemorySegment s = pTimesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkPresentTimeGOOGLE(s);
-    }
-
     public void pTimes(@Nullable IVkPresentTimeGOOGLE value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTimesRaw(s);
@@ -206,6 +198,14 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
 
         s = s.reinterpret(assumedCount * VkPresentTimeGOOGLE.BYTES);
         return new VkPresentTimeGOOGLE.Ptr(s);
+    }
+
+    public @Nullable VkPresentTimeGOOGLE pTimes() {
+        MemorySegment s = pTimesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPresentTimeGOOGLE(s);
     }
 
     public @pointer(target=VkPresentTimeGOOGLE.class) MemorySegment pTimesRaw() {

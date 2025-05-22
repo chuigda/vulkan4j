@@ -227,14 +227,6 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$descriptorType, OFFSET$descriptorType, value);
     }
 
-    public @Nullable VkDescriptorImageInfo pImageInfo() {
-        MemorySegment s = pImageInfoRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkDescriptorImageInfo(s);
-    }
-
     public void pImageInfo(@Nullable IVkDescriptorImageInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageInfoRaw(s);
@@ -250,20 +242,20 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         return new VkDescriptorImageInfo.Ptr(s);
     }
 
+    public @Nullable VkDescriptorImageInfo pImageInfo() {
+        MemorySegment s = pImageInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDescriptorImageInfo(s);
+    }
+
     public @pointer(target=VkDescriptorImageInfo.class) MemorySegment pImageInfoRaw() {
         return segment.get(LAYOUT$pImageInfo, OFFSET$pImageInfo);
     }
 
     public void pImageInfoRaw(@pointer(target=VkDescriptorImageInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pImageInfo, OFFSET$pImageInfo, value);
-    }
-
-    public @Nullable VkDescriptorBufferInfo pBufferInfo() {
-        MemorySegment s = pBufferInfoRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkDescriptorBufferInfo(s);
     }
 
     public void pBufferInfo(@Nullable IVkDescriptorBufferInfo value) {
@@ -279,6 +271,14 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
 
         s = s.reinterpret(assumedCount * VkDescriptorBufferInfo.BYTES);
         return new VkDescriptorBufferInfo.Ptr(s);
+    }
+
+    public @Nullable VkDescriptorBufferInfo pBufferInfo() {
+        MemorySegment s = pBufferInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDescriptorBufferInfo(s);
     }
 
     public @pointer(target=VkDescriptorBufferInfo.class) MemorySegment pBufferInfoRaw() {

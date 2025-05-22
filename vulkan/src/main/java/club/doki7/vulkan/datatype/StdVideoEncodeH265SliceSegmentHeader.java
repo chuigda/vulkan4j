@@ -254,14 +254,6 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
     }
 
 
-    public @Nullable StdVideoEncodeH265WeightTable pWeightTable() {
-        MemorySegment s = pWeightTableRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoEncodeH265WeightTable(s);
-    }
-
     public void pWeightTable(@Nullable IStdVideoEncodeH265WeightTable value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWeightTableRaw(s);
@@ -275,6 +267,14 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
 
         s = s.reinterpret(assumedCount * StdVideoEncodeH265WeightTable.BYTES);
         return new StdVideoEncodeH265WeightTable.Ptr(s);
+    }
+
+    public @Nullable StdVideoEncodeH265WeightTable pWeightTable() {
+        MemorySegment s = pWeightTableRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoEncodeH265WeightTable(s);
     }
 
     public @pointer(target=StdVideoEncodeH265WeightTable.class) MemorySegment pWeightTableRaw() {

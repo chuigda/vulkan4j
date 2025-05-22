@@ -187,14 +187,6 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
         segment.set(LAYOUT$attachmentInitialSampleLocationsCount, OFFSET$attachmentInitialSampleLocationsCount, value);
     }
 
-    public @Nullable VkAttachmentSampleLocationsEXT pAttachmentInitialSampleLocations() {
-        MemorySegment s = pAttachmentInitialSampleLocationsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkAttachmentSampleLocationsEXT(s);
-    }
-
     public void pAttachmentInitialSampleLocations(@Nullable IVkAttachmentSampleLocationsEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentInitialSampleLocationsRaw(s);
@@ -208,6 +200,14 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
 
         s = s.reinterpret(assumedCount * VkAttachmentSampleLocationsEXT.BYTES);
         return new VkAttachmentSampleLocationsEXT.Ptr(s);
+    }
+
+    public @Nullable VkAttachmentSampleLocationsEXT pAttachmentInitialSampleLocations() {
+        MemorySegment s = pAttachmentInitialSampleLocationsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkAttachmentSampleLocationsEXT(s);
     }
 
     public @pointer(target=VkAttachmentSampleLocationsEXT.class) MemorySegment pAttachmentInitialSampleLocationsRaw() {
@@ -226,14 +226,6 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
         segment.set(LAYOUT$postSubpassSampleLocationsCount, OFFSET$postSubpassSampleLocationsCount, value);
     }
 
-    public @Nullable VkSubpassSampleLocationsEXT pPostSubpassSampleLocations() {
-        MemorySegment s = pPostSubpassSampleLocationsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkSubpassSampleLocationsEXT(s);
-    }
-
     public void pPostSubpassSampleLocations(@Nullable IVkSubpassSampleLocationsEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPostSubpassSampleLocationsRaw(s);
@@ -247,6 +239,14 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
 
         s = s.reinterpret(assumedCount * VkSubpassSampleLocationsEXT.BYTES);
         return new VkSubpassSampleLocationsEXT.Ptr(s);
+    }
+
+    public @Nullable VkSubpassSampleLocationsEXT pPostSubpassSampleLocations() {
+        MemorySegment s = pPostSubpassSampleLocationsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkSubpassSampleLocationsEXT(s);
     }
 
     public @pointer(target=VkSubpassSampleLocationsEXT.class) MemorySegment pPostSubpassSampleLocationsRaw() {

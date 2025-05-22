@@ -200,14 +200,6 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
     }
 
-    public @Nullable VkAttachmentDescription2 pAttachments() {
-        MemorySegment s = pAttachmentsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkAttachmentDescription2(s);
-    }
-
     public void pAttachments(@Nullable IVkAttachmentDescription2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentsRaw(s);
@@ -221,6 +213,14 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
 
         s = s.reinterpret(assumedCount * VkAttachmentDescription2.BYTES);
         return new VkAttachmentDescription2.Ptr(s);
+    }
+
+    public @Nullable VkAttachmentDescription2 pAttachments() {
+        MemorySegment s = pAttachmentsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkAttachmentDescription2(s);
     }
 
     public @pointer(target=VkAttachmentDescription2.class) MemorySegment pAttachmentsRaw() {
@@ -239,14 +239,6 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$subpassCount, OFFSET$subpassCount, value);
     }
 
-    public @Nullable VkSubpassDescription2 pSubpasses() {
-        MemorySegment s = pSubpassesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkSubpassDescription2(s);
-    }
-
     public void pSubpasses(@Nullable IVkSubpassDescription2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSubpassesRaw(s);
@@ -260,6 +252,14 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
 
         s = s.reinterpret(assumedCount * VkSubpassDescription2.BYTES);
         return new VkSubpassDescription2.Ptr(s);
+    }
+
+    public @Nullable VkSubpassDescription2 pSubpasses() {
+        MemorySegment s = pSubpassesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkSubpassDescription2(s);
     }
 
     public @pointer(target=VkSubpassDescription2.class) MemorySegment pSubpassesRaw() {
@@ -278,14 +278,6 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$dependencyCount, OFFSET$dependencyCount, value);
     }
 
-    public @Nullable VkSubpassDependency2 pDependencies() {
-        MemorySegment s = pDependenciesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkSubpassDependency2(s);
-    }
-
     public void pDependencies(@Nullable IVkSubpassDependency2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDependenciesRaw(s);
@@ -299,6 +291,14 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
 
         s = s.reinterpret(assumedCount * VkSubpassDependency2.BYTES);
         return new VkSubpassDependency2.Ptr(s);
+    }
+
+    public @Nullable VkSubpassDependency2 pDependencies() {
+        MemorySegment s = pDependenciesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkSubpassDependency2(s);
     }
 
     public @pointer(target=VkSubpassDependency2.class) MemorySegment pDependenciesRaw() {

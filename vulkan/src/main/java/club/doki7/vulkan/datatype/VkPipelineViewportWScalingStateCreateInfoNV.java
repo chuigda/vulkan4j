@@ -194,14 +194,6 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
         segment.set(LAYOUT$viewportCount, OFFSET$viewportCount, value);
     }
 
-    public @Nullable VkViewportWScalingNV pViewportWScalings() {
-        MemorySegment s = pViewportWScalingsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkViewportWScalingNV(s);
-    }
-
     public void pViewportWScalings(@Nullable IVkViewportWScalingNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewportWScalingsRaw(s);
@@ -215,6 +207,14 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
 
         s = s.reinterpret(assumedCount * VkViewportWScalingNV.BYTES);
         return new VkViewportWScalingNV.Ptr(s);
+    }
+
+    public @Nullable VkViewportWScalingNV pViewportWScalings() {
+        MemorySegment s = pViewportWScalingsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkViewportWScalingNV(s);
     }
 
     public @pointer(target=VkViewportWScalingNV.class) MemorySegment pViewportWScalingsRaw() {

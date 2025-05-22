@@ -138,14 +138,6 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @Nullable VkIndirectExecutionSetPipelineInfoEXT pPipelineInfo() {
-        MemorySegment s = pPipelineInfoRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkIndirectExecutionSetPipelineInfoEXT(s);
-    }
-
     public void pPipelineInfo(@Nullable IVkIndirectExecutionSetPipelineInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineInfoRaw(s);
@@ -161,20 +153,20 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         return new VkIndirectExecutionSetPipelineInfoEXT.Ptr(s);
     }
 
+    public @Nullable VkIndirectExecutionSetPipelineInfoEXT pPipelineInfo() {
+        MemorySegment s = pPipelineInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkIndirectExecutionSetPipelineInfoEXT(s);
+    }
+
     public @pointer(target=VkIndirectExecutionSetPipelineInfoEXT.class) MemorySegment pPipelineInfoRaw() {
         return segment.get(LAYOUT$pPipelineInfo, OFFSET$pPipelineInfo);
     }
 
     public void pPipelineInfoRaw(@pointer(target=VkIndirectExecutionSetPipelineInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pPipelineInfo, OFFSET$pPipelineInfo, value);
-    }
-
-    public @Nullable VkIndirectExecutionSetShaderInfoEXT pShaderInfo() {
-        MemorySegment s = pShaderInfoRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkIndirectExecutionSetShaderInfoEXT(s);
     }
 
     public void pShaderInfo(@Nullable IVkIndirectExecutionSetShaderInfoEXT value) {
@@ -190,6 +182,14 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
 
         s = s.reinterpret(assumedCount * VkIndirectExecutionSetShaderInfoEXT.BYTES);
         return new VkIndirectExecutionSetShaderInfoEXT.Ptr(s);
+    }
+
+    public @Nullable VkIndirectExecutionSetShaderInfoEXT pShaderInfo() {
+        MemorySegment s = pShaderInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkIndirectExecutionSetShaderInfoEXT(s);
     }
 
     public @pointer(target=VkIndirectExecutionSetShaderInfoEXT.class) MemorySegment pShaderInfoRaw() {

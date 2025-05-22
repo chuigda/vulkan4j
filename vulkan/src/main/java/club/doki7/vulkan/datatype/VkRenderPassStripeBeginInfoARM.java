@@ -185,14 +185,6 @@ public record VkRenderPassStripeBeginInfoARM(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$stripeInfoCount, OFFSET$stripeInfoCount, value);
     }
 
-    public @Nullable VkRenderPassStripeInfoARM pStripeInfos() {
-        MemorySegment s = pStripeInfosRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkRenderPassStripeInfoARM(s);
-    }
-
     public void pStripeInfos(@Nullable IVkRenderPassStripeInfoARM value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStripeInfosRaw(s);
@@ -206,6 +198,14 @@ public record VkRenderPassStripeBeginInfoARM(@NotNull MemorySegment segment) imp
 
         s = s.reinterpret(assumedCount * VkRenderPassStripeInfoARM.BYTES);
         return new VkRenderPassStripeInfoARM.Ptr(s);
+    }
+
+    public @Nullable VkRenderPassStripeInfoARM pStripeInfos() {
+        MemorySegment s = pStripeInfosRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkRenderPassStripeInfoARM(s);
     }
 
     public @pointer(target=VkRenderPassStripeInfoARM.class) MemorySegment pStripeInfosRaw() {

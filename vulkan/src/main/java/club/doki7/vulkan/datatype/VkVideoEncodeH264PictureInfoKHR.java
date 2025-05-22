@@ -187,14 +187,6 @@ public record VkVideoEncodeH264PictureInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$naluSliceEntryCount, OFFSET$naluSliceEntryCount, value);
     }
 
-    public @Nullable VkVideoEncodeH264NaluSliceInfoKHR pNaluSliceEntries() {
-        MemorySegment s = pNaluSliceEntriesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkVideoEncodeH264NaluSliceInfoKHR(s);
-    }
-
     public void pNaluSliceEntries(@Nullable IVkVideoEncodeH264NaluSliceInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNaluSliceEntriesRaw(s);
@@ -210,20 +202,20 @@ public record VkVideoEncodeH264PictureInfoKHR(@NotNull MemorySegment segment) im
         return new VkVideoEncodeH264NaluSliceInfoKHR.Ptr(s);
     }
 
+    public @Nullable VkVideoEncodeH264NaluSliceInfoKHR pNaluSliceEntries() {
+        MemorySegment s = pNaluSliceEntriesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkVideoEncodeH264NaluSliceInfoKHR(s);
+    }
+
     public @pointer(target=VkVideoEncodeH264NaluSliceInfoKHR.class) MemorySegment pNaluSliceEntriesRaw() {
         return segment.get(LAYOUT$pNaluSliceEntries, OFFSET$pNaluSliceEntries);
     }
 
     public void pNaluSliceEntriesRaw(@pointer(target=VkVideoEncodeH264NaluSliceInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pNaluSliceEntries, OFFSET$pNaluSliceEntries, value);
-    }
-
-    public @Nullable StdVideoEncodeH264PictureInfo pStdPictureInfo() {
-        MemorySegment s = pStdPictureInfoRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoEncodeH264PictureInfo(s);
     }
 
     public void pStdPictureInfo(@Nullable IStdVideoEncodeH264PictureInfo value) {
@@ -239,6 +231,14 @@ public record VkVideoEncodeH264PictureInfoKHR(@NotNull MemorySegment segment) im
 
         s = s.reinterpret(assumedCount * StdVideoEncodeH264PictureInfo.BYTES);
         return new StdVideoEncodeH264PictureInfo.Ptr(s);
+    }
+
+    public @Nullable StdVideoEncodeH264PictureInfo pStdPictureInfo() {
+        MemorySegment s = pStdPictureInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoEncodeH264PictureInfo(s);
     }
 
     public @pointer(target=StdVideoEncodeH264PictureInfo.class) MemorySegment pStdPictureInfoRaw() {

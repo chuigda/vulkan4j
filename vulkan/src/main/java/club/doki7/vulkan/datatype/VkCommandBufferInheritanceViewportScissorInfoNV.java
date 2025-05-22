@@ -194,14 +194,6 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(@NotNull MemorySeg
         segment.set(LAYOUT$viewportDepthCount, OFFSET$viewportDepthCount, value);
     }
 
-    public @Nullable VkViewport pViewportDepths() {
-        MemorySegment s = pViewportDepthsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkViewport(s);
-    }
-
     public void pViewportDepths(@Nullable IVkViewport value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewportDepthsRaw(s);
@@ -215,6 +207,14 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(@NotNull MemorySeg
 
         s = s.reinterpret(assumedCount * VkViewport.BYTES);
         return new VkViewport.Ptr(s);
+    }
+
+    public @Nullable VkViewport pViewportDepths() {
+        MemorySegment s = pViewportDepthsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkViewport(s);
     }
 
     public @pointer(target=VkViewport.class) MemorySegment pViewportDepthsRaw() {

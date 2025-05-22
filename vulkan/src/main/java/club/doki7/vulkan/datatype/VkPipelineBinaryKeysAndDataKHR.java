@@ -147,14 +147,6 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$binaryCount, OFFSET$binaryCount, value);
     }
 
-    public @Nullable VkPipelineBinaryKeyKHR pPipelineBinaryKeys() {
-        MemorySegment s = pPipelineBinaryKeysRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkPipelineBinaryKeyKHR(s);
-    }
-
     public void pPipelineBinaryKeys(@Nullable IVkPipelineBinaryKeyKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineBinaryKeysRaw(s);
@@ -170,20 +162,20 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         return new VkPipelineBinaryKeyKHR.Ptr(s);
     }
 
+    public @Nullable VkPipelineBinaryKeyKHR pPipelineBinaryKeys() {
+        MemorySegment s = pPipelineBinaryKeysRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineBinaryKeyKHR(s);
+    }
+
     public @pointer(target=VkPipelineBinaryKeyKHR.class) MemorySegment pPipelineBinaryKeysRaw() {
         return segment.get(LAYOUT$pPipelineBinaryKeys, OFFSET$pPipelineBinaryKeys);
     }
 
     public void pPipelineBinaryKeysRaw(@pointer(target=VkPipelineBinaryKeyKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pPipelineBinaryKeys, OFFSET$pPipelineBinaryKeys, value);
-    }
-
-    public @Nullable VkPipelineBinaryDataKHR pPipelineBinaryData() {
-        MemorySegment s = pPipelineBinaryDataRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkPipelineBinaryDataKHR(s);
     }
 
     public void pPipelineBinaryData(@Nullable IVkPipelineBinaryDataKHR value) {
@@ -199,6 +191,14 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
 
         s = s.reinterpret(assumedCount * VkPipelineBinaryDataKHR.BYTES);
         return new VkPipelineBinaryDataKHR.Ptr(s);
+    }
+
+    public @Nullable VkPipelineBinaryDataKHR pPipelineBinaryData() {
+        MemorySegment s = pPipelineBinaryDataRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineBinaryDataKHR(s);
     }
 
     public @pointer(target=VkPipelineBinaryDataKHR.class) MemorySegment pPipelineBinaryDataRaw() {

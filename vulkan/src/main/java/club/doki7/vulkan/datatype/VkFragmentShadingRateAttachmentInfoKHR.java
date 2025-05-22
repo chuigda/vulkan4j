@@ -177,14 +177,6 @@ public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Nullable VkAttachmentReference2 pFragmentShadingRateAttachment() {
-        MemorySegment s = pFragmentShadingRateAttachmentRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkAttachmentReference2(s);
-    }
-
     public void pFragmentShadingRateAttachment(@Nullable IVkAttachmentReference2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFragmentShadingRateAttachmentRaw(s);
@@ -198,6 +190,14 @@ public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segm
 
         s = s.reinterpret(assumedCount * VkAttachmentReference2.BYTES);
         return new VkAttachmentReference2.Ptr(s);
+    }
+
+    public @Nullable VkAttachmentReference2 pFragmentShadingRateAttachment() {
+        MemorySegment s = pFragmentShadingRateAttachmentRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkAttachmentReference2(s);
     }
 
     public @pointer(target=VkAttachmentReference2.class) MemorySegment pFragmentShadingRateAttachmentRaw() {

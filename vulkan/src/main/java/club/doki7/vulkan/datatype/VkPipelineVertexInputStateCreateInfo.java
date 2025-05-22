@@ -196,14 +196,6 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$vertexBindingDescriptionCount, OFFSET$vertexBindingDescriptionCount, value);
     }
 
-    public @Nullable VkVertexInputBindingDescription pVertexBindingDescriptions() {
-        MemorySegment s = pVertexBindingDescriptionsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkVertexInputBindingDescription(s);
-    }
-
     public void pVertexBindingDescriptions(@Nullable IVkVertexInputBindingDescription value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVertexBindingDescriptionsRaw(s);
@@ -217,6 +209,14 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
 
         s = s.reinterpret(assumedCount * VkVertexInputBindingDescription.BYTES);
         return new VkVertexInputBindingDescription.Ptr(s);
+    }
+
+    public @Nullable VkVertexInputBindingDescription pVertexBindingDescriptions() {
+        MemorySegment s = pVertexBindingDescriptionsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkVertexInputBindingDescription(s);
     }
 
     public @pointer(target=VkVertexInputBindingDescription.class) MemorySegment pVertexBindingDescriptionsRaw() {
@@ -235,14 +235,6 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$vertexAttributeDescriptionCount, OFFSET$vertexAttributeDescriptionCount, value);
     }
 
-    public @Nullable VkVertexInputAttributeDescription pVertexAttributeDescriptions() {
-        MemorySegment s = pVertexAttributeDescriptionsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkVertexInputAttributeDescription(s);
-    }
-
     public void pVertexAttributeDescriptions(@Nullable IVkVertexInputAttributeDescription value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVertexAttributeDescriptionsRaw(s);
@@ -256,6 +248,14 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
 
         s = s.reinterpret(assumedCount * VkVertexInputAttributeDescription.BYTES);
         return new VkVertexInputAttributeDescription.Ptr(s);
+    }
+
+    public @Nullable VkVertexInputAttributeDescription pVertexAttributeDescriptions() {
+        MemorySegment s = pVertexAttributeDescriptionsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkVertexInputAttributeDescription(s);
     }
 
     public @pointer(target=VkVertexInputAttributeDescription.class) MemorySegment pVertexAttributeDescriptionsRaw() {

@@ -187,14 +187,6 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$formatConstraintsCount, OFFSET$formatConstraintsCount, value);
     }
 
-    public @Nullable VkImageFormatConstraintsInfoFUCHSIA pFormatConstraints() {
-        MemorySegment s = pFormatConstraintsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkImageFormatConstraintsInfoFUCHSIA(s);
-    }
-
     public void pFormatConstraints(@Nullable IVkImageFormatConstraintsInfoFUCHSIA value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFormatConstraintsRaw(s);
@@ -208,6 +200,14 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
 
         s = s.reinterpret(assumedCount * VkImageFormatConstraintsInfoFUCHSIA.BYTES);
         return new VkImageFormatConstraintsInfoFUCHSIA.Ptr(s);
+    }
+
+    public @Nullable VkImageFormatConstraintsInfoFUCHSIA pFormatConstraints() {
+        MemorySegment s = pFormatConstraintsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkImageFormatConstraintsInfoFUCHSIA(s);
     }
 
     public @pointer(target=VkImageFormatConstraintsInfoFUCHSIA.class) MemorySegment pFormatConstraintsRaw() {

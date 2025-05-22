@@ -139,15 +139,6 @@ private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField
     val annotation = "@pointer(target=${pointee.name}.class)"
     val rawName = "${member.name}Raw"
 
-    defun("public", "@Nullable ${pointee.name}", member.name) {
-        +"MemorySegment s = $rawName();"
-        "if (s.equals(MemorySegment.NULL))" {
-            +"return null;"
-        }
-        +"return new ${pointee.name}(s);"
-    }
-    +""
-
     defun("public", "void", member.name, "@Nullable ${pointee.jType} value") {
         +"MemorySegment s = value == null ? MemorySegment.NULL : value.segment();"
         +"$rawName(s);"
@@ -163,6 +154,15 @@ private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField
 
         +"s = s.reinterpret(assumedCount * ${pointee.name}.BYTES);"
         +"return new ${pointee.name}.Ptr(s);"
+    }
+    +""
+
+    defun("public", "@Nullable ${pointee.name}", member.name) {
+        +"MemorySegment s = $rawName();"
+        "if (s.equals(MemorySegment.NULL))" {
+            +"return null;"
+        }
+        +"return new ${pointee.name}(s);"
     }
     +""
 

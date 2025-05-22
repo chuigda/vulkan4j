@@ -185,14 +185,6 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
     }
 
-    public @Nullable VkPresentRegionKHR pRegions() {
-        MemorySegment s = pRegionsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkPresentRegionKHR(s);
-    }
-
     public void pRegions(@Nullable IVkPresentRegionKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
@@ -206,6 +198,14 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IVk
 
         s = s.reinterpret(assumedCount * VkPresentRegionKHR.BYTES);
         return new VkPresentRegionKHR.Ptr(s);
+    }
+
+    public @Nullable VkPresentRegionKHR pRegions() {
+        MemorySegment s = pRegionsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPresentRegionKHR(s);
     }
 
     public @pointer(target=VkPresentRegionKHR.class) MemorySegment pRegionsRaw() {

@@ -159,14 +159,6 @@ public record VkSparseImageOpaqueMemoryBindInfo(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$bindCount, OFFSET$bindCount, value);
     }
 
-    public @Nullable VkSparseMemoryBind pBinds() {
-        MemorySegment s = pBindsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkSparseMemoryBind(s);
-    }
-
     public void pBinds(@Nullable IVkSparseMemoryBind value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBindsRaw(s);
@@ -180,6 +172,14 @@ public record VkSparseImageOpaqueMemoryBindInfo(@NotNull MemorySegment segment) 
 
         s = s.reinterpret(assumedCount * VkSparseMemoryBind.BYTES);
         return new VkSparseMemoryBind.Ptr(s);
+    }
+
+    public @Nullable VkSparseMemoryBind pBinds() {
+        MemorySegment s = pBindsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkSparseMemoryBind(s);
     }
 
     public @pointer(target=VkSparseMemoryBind.class) MemorySegment pBindsRaw() {

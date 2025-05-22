@@ -220,14 +220,6 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$referenceSlotCount, OFFSET$referenceSlotCount, value);
     }
 
-    public @Nullable VkVideoReferenceSlotInfoKHR pReferenceSlots() {
-        MemorySegment s = pReferenceSlotsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkVideoReferenceSlotInfoKHR(s);
-    }
-
     public void pReferenceSlots(@Nullable IVkVideoReferenceSlotInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pReferenceSlotsRaw(s);
@@ -241,6 +233,14 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
 
         s = s.reinterpret(assumedCount * VkVideoReferenceSlotInfoKHR.BYTES);
         return new VkVideoReferenceSlotInfoKHR.Ptr(s);
+    }
+
+    public @Nullable VkVideoReferenceSlotInfoKHR pReferenceSlots() {
+        MemorySegment s = pReferenceSlotsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkVideoReferenceSlotInfoKHR(s);
     }
 
     public @pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment pReferenceSlotsRaw() {

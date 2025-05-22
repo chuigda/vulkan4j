@@ -240,14 +240,6 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         segment.set(LAYOUT$geometryCount, OFFSET$geometryCount, value);
     }
 
-    public @Nullable VkAccelerationStructureGeometryKHR pGeometries() {
-        MemorySegment s = pGeometriesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkAccelerationStructureGeometryKHR(s);
-    }
-
     public void pGeometries(@Nullable IVkAccelerationStructureGeometryKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGeometriesRaw(s);
@@ -261,6 +253,14 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
 
         s = s.reinterpret(assumedCount * VkAccelerationStructureGeometryKHR.BYTES);
         return new VkAccelerationStructureGeometryKHR.Ptr(s);
+    }
+
+    public @Nullable VkAccelerationStructureGeometryKHR pGeometries() {
+        MemorySegment s = pGeometriesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkAccelerationStructureGeometryKHR(s);
     }
 
     public @pointer(target=VkAccelerationStructureGeometryKHR.class) MemorySegment pGeometriesRaw() {

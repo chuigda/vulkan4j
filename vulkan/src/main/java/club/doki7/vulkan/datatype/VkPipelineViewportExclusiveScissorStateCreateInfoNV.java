@@ -185,14 +185,6 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(@NotNull Memor
         segment.set(LAYOUT$exclusiveScissorCount, OFFSET$exclusiveScissorCount, value);
     }
 
-    public @Nullable VkRect2D pExclusiveScissors() {
-        MemorySegment s = pExclusiveScissorsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkRect2D(s);
-    }
-
     public void pExclusiveScissors(@Nullable IVkRect2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pExclusiveScissorsRaw(s);
@@ -206,6 +198,14 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(@NotNull Memor
 
         s = s.reinterpret(assumedCount * VkRect2D.BYTES);
         return new VkRect2D.Ptr(s);
+    }
+
+    public @Nullable VkRect2D pExclusiveScissors() {
+        MemorySegment s = pExclusiveScissorsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkRect2D(s);
     }
 
     public @pointer(target=VkRect2D.class) MemorySegment pExclusiveScissorsRaw() {

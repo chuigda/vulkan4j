@@ -185,14 +185,6 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$slotIndex, OFFSET$slotIndex, value);
     }
 
-    public @Nullable VkVideoPictureResourceInfoKHR pPictureResource() {
-        MemorySegment s = pPictureResourceRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkVideoPictureResourceInfoKHR(s);
-    }
-
     public void pPictureResource(@Nullable IVkVideoPictureResourceInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPictureResourceRaw(s);
@@ -206,6 +198,14 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
 
         s = s.reinterpret(assumedCount * VkVideoPictureResourceInfoKHR.BYTES);
         return new VkVideoPictureResourceInfoKHR.Ptr(s);
+    }
+
+    public @Nullable VkVideoPictureResourceInfoKHR pPictureResource() {
+        MemorySegment s = pPictureResourceRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkVideoPictureResourceInfoKHR(s);
     }
 
     public @pointer(target=VkVideoPictureResourceInfoKHR.class) MemorySegment pPictureResourceRaw() {

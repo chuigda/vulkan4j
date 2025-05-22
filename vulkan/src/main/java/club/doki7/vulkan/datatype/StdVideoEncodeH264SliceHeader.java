@@ -209,14 +209,6 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$disable_deblocking_filter_idc, OFFSET$disable_deblocking_filter_idc, value);
     }
 
-    public @Nullable StdVideoEncodeH264WeightTable pWeightTable() {
-        MemorySegment s = pWeightTableRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoEncodeH264WeightTable(s);
-    }
-
     public void pWeightTable(@Nullable IStdVideoEncodeH264WeightTable value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWeightTableRaw(s);
@@ -230,6 +222,14 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
 
         s = s.reinterpret(assumedCount * StdVideoEncodeH264WeightTable.BYTES);
         return new StdVideoEncodeH264WeightTable.Ptr(s);
+    }
+
+    public @Nullable StdVideoEncodeH264WeightTable pWeightTable() {
+        MemorySegment s = pWeightTableRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoEncodeH264WeightTable(s);
     }
 
     public @pointer(target=StdVideoEncodeH264WeightTable.class) MemorySegment pWeightTableRaw() {

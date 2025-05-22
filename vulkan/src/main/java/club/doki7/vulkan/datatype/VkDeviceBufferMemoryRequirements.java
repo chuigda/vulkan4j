@@ -176,14 +176,6 @@ public record VkDeviceBufferMemoryRequirements(@NotNull MemorySegment segment) i
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Nullable VkBufferCreateInfo pCreateInfo() {
-        MemorySegment s = pCreateInfoRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkBufferCreateInfo(s);
-    }
-
     public void pCreateInfo(@Nullable IVkBufferCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCreateInfoRaw(s);
@@ -197,6 +189,14 @@ public record VkDeviceBufferMemoryRequirements(@NotNull MemorySegment segment) i
 
         s = s.reinterpret(assumedCount * VkBufferCreateInfo.BYTES);
         return new VkBufferCreateInfo.Ptr(s);
+    }
+
+    public @Nullable VkBufferCreateInfo pCreateInfo() {
+        MemorySegment s = pCreateInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkBufferCreateInfo(s);
     }
 
     public @pointer(target=VkBufferCreateInfo.class) MemorySegment pCreateInfoRaw() {

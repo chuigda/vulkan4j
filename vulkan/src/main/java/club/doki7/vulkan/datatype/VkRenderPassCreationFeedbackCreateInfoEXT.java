@@ -176,14 +176,6 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Nullable VkRenderPassCreationFeedbackInfoEXT pRenderPassFeedback() {
-        MemorySegment s = pRenderPassFeedbackRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkRenderPassCreationFeedbackInfoEXT(s);
-    }
-
     public void pRenderPassFeedback(@Nullable IVkRenderPassCreationFeedbackInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRenderPassFeedbackRaw(s);
@@ -197,6 +189,14 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(@NotNull MemorySegment s
 
         s = s.reinterpret(assumedCount * VkRenderPassCreationFeedbackInfoEXT.BYTES);
         return new VkRenderPassCreationFeedbackInfoEXT.Ptr(s);
+    }
+
+    public @Nullable VkRenderPassCreationFeedbackInfoEXT pRenderPassFeedback() {
+        MemorySegment s = pRenderPassFeedbackRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkRenderPassCreationFeedbackInfoEXT(s);
     }
 
     public @pointer(target=VkRenderPassCreationFeedbackInfoEXT.class) MemorySegment pRenderPassFeedbackRaw() {

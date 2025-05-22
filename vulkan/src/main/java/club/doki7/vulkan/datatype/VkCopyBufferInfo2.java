@@ -211,14 +211,6 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IVkCo
         segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
     }
 
-    public @Nullable VkBufferCopy2 pRegions() {
-        MemorySegment s = pRegionsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkBufferCopy2(s);
-    }
-
     public void pRegions(@Nullable IVkBufferCopy2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
@@ -232,6 +224,14 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IVkCo
 
         s = s.reinterpret(assumedCount * VkBufferCopy2.BYTES);
         return new VkBufferCopy2.Ptr(s);
+    }
+
+    public @Nullable VkBufferCopy2 pRegions() {
+        MemorySegment s = pRegionsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkBufferCopy2(s);
     }
 
     public @pointer(target=VkBufferCopy2.class) MemorySegment pRegionsRaw() {

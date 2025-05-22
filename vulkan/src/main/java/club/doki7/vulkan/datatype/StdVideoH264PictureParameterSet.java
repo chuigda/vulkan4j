@@ -225,14 +225,6 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$second_chroma_qp_index_offset, OFFSET$second_chroma_qp_index_offset, value);
     }
 
-    public @Nullable StdVideoH264ScalingLists pScalingLists() {
-        MemorySegment s = pScalingListsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoH264ScalingLists(s);
-    }
-
     public void pScalingLists(@Nullable IStdVideoH264ScalingLists value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pScalingListsRaw(s);
@@ -246,6 +238,14 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
 
         s = s.reinterpret(assumedCount * StdVideoH264ScalingLists.BYTES);
         return new StdVideoH264ScalingLists.Ptr(s);
+    }
+
+    public @Nullable StdVideoH264ScalingLists pScalingLists() {
+        MemorySegment s = pScalingListsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new StdVideoH264ScalingLists(s);
     }
 
     public @pointer(target=StdVideoH264ScalingLists.class) MemorySegment pScalingListsRaw() {

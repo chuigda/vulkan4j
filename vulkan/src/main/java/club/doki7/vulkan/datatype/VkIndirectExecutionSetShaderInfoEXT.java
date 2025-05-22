@@ -214,14 +214,6 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$pInitialShaders, OFFSET$pInitialShaders, value);
     }
 
-    public @Nullable VkIndirectExecutionSetShaderLayoutInfoEXT pSetLayoutInfos() {
-        MemorySegment s = pSetLayoutInfosRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkIndirectExecutionSetShaderLayoutInfoEXT(s);
-    }
-
     public void pSetLayoutInfos(@Nullable IVkIndirectExecutionSetShaderLayoutInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSetLayoutInfosRaw(s);
@@ -235,6 +227,14 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
 
         s = s.reinterpret(assumedCount * VkIndirectExecutionSetShaderLayoutInfoEXT.BYTES);
         return new VkIndirectExecutionSetShaderLayoutInfoEXT.Ptr(s);
+    }
+
+    public @Nullable VkIndirectExecutionSetShaderLayoutInfoEXT pSetLayoutInfos() {
+        MemorySegment s = pSetLayoutInfosRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkIndirectExecutionSetShaderLayoutInfoEXT(s);
     }
 
     public @pointer(target=VkIndirectExecutionSetShaderLayoutInfoEXT.class) MemorySegment pSetLayoutInfosRaw() {
@@ -261,14 +261,6 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount, value);
     }
 
-    public @Nullable VkPushConstantRange pPushConstantRanges() {
-        MemorySegment s = pPushConstantRangesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkPushConstantRange(s);
-    }
-
     public void pPushConstantRanges(@Nullable IVkPushConstantRange value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPushConstantRangesRaw(s);
@@ -282,6 +274,14 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
 
         s = s.reinterpret(assumedCount * VkPushConstantRange.BYTES);
         return new VkPushConstantRange.Ptr(s);
+    }
+
+    public @Nullable VkPushConstantRange pPushConstantRanges() {
+        MemorySegment s = pPushConstantRangesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPushConstantRange(s);
     }
 
     public @pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {

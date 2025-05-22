@@ -216,14 +216,6 @@ public record VkCopyImageToMemoryInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
     }
 
-    public @Nullable VkImageToMemoryCopy pRegions() {
-        MemorySegment s = pRegionsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkImageToMemoryCopy(s);
-    }
-
     public void pRegions(@Nullable IVkImageToMemoryCopy value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
@@ -237,6 +229,14 @@ public record VkCopyImageToMemoryInfo(@NotNull MemorySegment segment) implements
 
         s = s.reinterpret(assumedCount * VkImageToMemoryCopy.BYTES);
         return new VkImageToMemoryCopy.Ptr(s);
+    }
+
+    public @Nullable VkImageToMemoryCopy pRegions() {
+        MemorySegment s = pRegionsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkImageToMemoryCopy(s);
     }
 
     public @pointer(target=VkImageToMemoryCopy.class) MemorySegment pRegionsRaw() {

@@ -229,14 +229,6 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount, value);
     }
 
-    public @Nullable VkPushConstantRange pPushConstantRanges() {
-        MemorySegment s = pPushConstantRangesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkPushConstantRange(s);
-    }
-
     public void pPushConstantRanges(@Nullable IVkPushConstantRange value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPushConstantRangesRaw(s);
@@ -250,6 +242,14 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
 
         s = s.reinterpret(assumedCount * VkPushConstantRange.BYTES);
         return new VkPushConstantRange.Ptr(s);
+    }
+
+    public @Nullable VkPushConstantRange pPushConstantRanges() {
+        MemorySegment s = pPushConstantRangesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPushConstantRange(s);
     }
 
     public @pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {

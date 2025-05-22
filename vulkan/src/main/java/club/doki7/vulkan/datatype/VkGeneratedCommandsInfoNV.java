@@ -228,14 +228,6 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$streamCount, OFFSET$streamCount, value);
     }
 
-    public @Nullable VkIndirectCommandsStreamNV pStreams() {
-        MemorySegment s = pStreamsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkIndirectCommandsStreamNV(s);
-    }
-
     public void pStreams(@Nullable IVkIndirectCommandsStreamNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStreamsRaw(s);
@@ -249,6 +241,14 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
 
         s = s.reinterpret(assumedCount * VkIndirectCommandsStreamNV.BYTES);
         return new VkIndirectCommandsStreamNV.Ptr(s);
+    }
+
+    public @Nullable VkIndirectCommandsStreamNV pStreams() {
+        MemorySegment s = pStreamsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkIndirectCommandsStreamNV(s);
     }
 
     public @pointer(target=VkIndirectCommandsStreamNV.class) MemorySegment pStreamsRaw() {

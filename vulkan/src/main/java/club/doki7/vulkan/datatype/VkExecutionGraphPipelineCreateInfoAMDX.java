@@ -198,14 +198,6 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         segment.set(LAYOUT$stageCount, OFFSET$stageCount, value);
     }
 
-    public @Nullable VkPipelineShaderStageCreateInfo pStages() {
-        MemorySegment s = pStagesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkPipelineShaderStageCreateInfo(s);
-    }
-
     public void pStages(@Nullable IVkPipelineShaderStageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStagesRaw(s);
@@ -221,20 +213,20 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         return new VkPipelineShaderStageCreateInfo.Ptr(s);
     }
 
+    public @Nullable VkPipelineShaderStageCreateInfo pStages() {
+        MemorySegment s = pStagesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineShaderStageCreateInfo(s);
+    }
+
     public @pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
         return segment.get(LAYOUT$pStages, OFFSET$pStages);
     }
 
     public void pStagesRaw(@pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
-    }
-
-    public @Nullable VkPipelineLibraryCreateInfoKHR pLibraryInfo() {
-        MemorySegment s = pLibraryInfoRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkPipelineLibraryCreateInfoKHR(s);
     }
 
     public void pLibraryInfo(@Nullable IVkPipelineLibraryCreateInfoKHR value) {
@@ -250,6 +242,14 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
 
         s = s.reinterpret(assumedCount * VkPipelineLibraryCreateInfoKHR.BYTES);
         return new VkPipelineLibraryCreateInfoKHR.Ptr(s);
+    }
+
+    public @Nullable VkPipelineLibraryCreateInfoKHR pLibraryInfo() {
+        MemorySegment s = pLibraryInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPipelineLibraryCreateInfoKHR(s);
     }
 
     public @pointer(target=VkPipelineLibraryCreateInfoKHR.class) MemorySegment pLibraryInfoRaw() {
