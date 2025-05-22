@@ -161,7 +161,7 @@ data class CFloatType(override val byteSize: Int) : CFixedSizeType {
 }
 
 data class CStructType(val name: String): CType {
-    override val jType: String = name
+    override val jType: String = "I$name"
     override val jLayout: String = "$name.LAYOUT"
     override val jLayoutType: String = "StructLayout"
     override val cType: String = name
