@@ -19,7 +19,13 @@ public class TestBitfield {
         if (userDir.contains("vulkan4j")) {
             path = userDir.substring(0, userDir.indexOf("vulkan4j") + "vulkan4j".length());
         }
-        path += "/misc/test_binary/libbitfield.so";
+
+        if (!System.getProperty("os.name").toLowerCase().contains("windows")) {
+            path += "/misc/test_binary/libbitfield.so";
+        } else {
+            path += "\\misc\\test_binary\\bitfield.dll";
+        }
+
         System.load(path);
     }
 
