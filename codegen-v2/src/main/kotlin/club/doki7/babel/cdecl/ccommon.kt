@@ -11,4 +11,10 @@ fun String.isAllCapital(): Boolean = this.any { it.isLetter() } && this.filter {
 
 fun String.isValidIdent(): Boolean = this.isNotEmpty() && this[0].isIdentStartingChar() && this.all { it.isIdentChar() }
 
-fun String.isLikelyMacro(): Boolean = this.isValidIdent() && this.isAllCapital()
+fun String.isLikelyMacro(): Boolean = this.isValidIdent() && this.isAllCapital() && this !in allCapitalTypeNames
+
+// Mainly Microsoft(R) Windows(R) typedefs. Fuck Microsoft Windows.
+private val allCapitalTypeNames = setOf(
+    "HWND",
+    "HINSTANCE"
+);

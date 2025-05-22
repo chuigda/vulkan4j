@@ -3,7 +3,7 @@ package club.doki7.babel.cdecl
 // used for intermediate states
 private data class EmptyType(override val syntaxTrivia: List<String> = emptyList()) : RawType
 
-private class CTypeParser(private val tokens: List<Token>) {
+private class CParser(private val tokens: List<Token>) {
     private var pos = 0
 
     private val curToken: Token
@@ -17,18 +17,19 @@ private class CTypeParser(private val tokens: List<Token>) {
             unexpectedEnd()
         }
         if (curToken.type != type) {
-            throw ParseException("Expected token of type '$type' but found '${curToken.type}'", curToken)
+            error("Expected token of type '$type' but found '${curToken.type}'", curToken)
         }
         if (value != null && curToken.value != value) {
-            throw ParseException("Expected '$value' but found '${curToken.value}'", curToken)
+            error("Expected '$value' but found '${curToken.value}'", curToken)
         }
     }
 
     private fun unexpectedEnd(reason: String = "") {
-        throw ParseException(
+        error(
             "Unexpected end of tokens${if (reason == "") {""} else {", $reason"}}",
             tokens.last().line,
-            tokens.last().col)
+            tokens.last().col
+        )
     }
 
     private fun getAndSkipTrivia(): List<String> {
@@ -55,7 +56,7 @@ private class CTypeParser(private val tokens: List<Token>) {
                     if (curToken.value == CONST || curToken.value == VOLATILE) {
                         modifiers.add(curToken.value)
                     } else {
-                        throw ParseException("unexpected qualifier", curToken)
+                        error("unexpected qualifier", curToken)
                     }
                 }
                 TokenType.IDENT -> {
@@ -71,7 +72,7 @@ private class CTypeParser(private val tokens: List<Token>) {
             pos++
         }
         if (typeName == null) {
-            throw ParseException("expected type name", curToken)
+            error("expected type name", curToken)
         }
         return RawIdentifierType(typeName, modifiers, trivia)
     }
@@ -100,12 +101,12 @@ private class CTypeParser(private val tokens: List<Token>) {
                 }
                 TokenType.QUALIFIER -> {
                     if (ty == null) {
-                        throw ParseException("expected pointer before qualifier", curToken)
+                        error("expected pointer before qualifier", curToken)
                     }
                     when (curToken.value) {
                         CONST -> ty.const = true
                         VOLATILE -> ty.volatile = true
-                        else -> throw ParseException("unexpected qualifier", curToken)
+                        else -> error("unexpected qualifier", curToken)
                     }
                 }
                 else -> break
@@ -133,7 +134,7 @@ private class CTypeParser(private val tokens: List<Token>) {
                 } else if (curToken.type == TokenType.SYMBOL && curToken.value == ")") {
                     break
                 } else {
-                    throw ParseException("expected ',' or ')'", curToken)
+                    error("expected ',' or ')'", curToken)
                 }
             }
         }
@@ -146,7 +147,7 @@ private class CTypeParser(private val tokens: List<Token>) {
             unexpectedEnd("expected array length")
         }
         if (curToken.type != TokenType.INTEGER) {
-            throw ParseException("expected array length", curToken)
+            error("expected array length", curToken)
         }
         val length = curToken.value
         pos++
@@ -167,7 +168,7 @@ private class CTypeParser(private val tokens: List<Token>) {
             when (curToken.type) {
                 TokenType.IDENT -> {
                     if (name != "") {
-                        throw ParseException("unexpected identifier", curToken)
+                        error("unexpected identifier", curToken)
                     } else {
                         name = curToken.value
                     }
@@ -220,7 +221,7 @@ private class CTypeParser(private val tokens: List<Token>) {
             pos++
         }
         if (name == "" && ty == null) {
-            throw ParseException("expected identifier or type", curToken)
+            error("expected identifier or type", curToken)
         }
         return name to ty
     }
@@ -290,7 +291,7 @@ private class CTypeParser(private val tokens: List<Token>) {
                     directType
                 }
                 else -> {
-                    throw ParseException("invalid type, expected pointer, array, or function", curToken)
+                    error("invalid type, expected pointer, array, or function", curToken)
                 }
             }
         } else {
@@ -316,13 +317,13 @@ private class CTypeParser(private val tokens: List<Token>) {
         pos++
         trivia.addAll(getAndSkipTrivia())
         if (hasEnded || curToken.type != TokenType.INTEGER && curToken.type != TokenType.IDENT) {
-            throw ParseException("expected integer or identifier", curToken)
+            error("expected integer or identifier", curToken)
         }
         val value = curToken.value
         pos++
         trivia.addAll(getAndSkipTrivia())
         if (hasEnded || curToken.type != TokenType.SYMBOL || curToken.value != ",") {
-            throw ParseException("expected ','", curToken)
+            error("expected ','", curToken)
         }
         return EnumeratorDecl(
             name = name,
@@ -334,7 +335,7 @@ private class CTypeParser(private val tokens: List<Token>) {
 
 fun parseStructFieldDecl(source: List<String>, startLine: Int): Pair<StructFieldDecl, Int> {
     val (tokens, lastLine) = CTokenizer(source, startLine).tokenize(',')
-    val (name, ty) = CTypeParser(tokens).parseDeclaration()
+    val (name, ty) = CParser(tokens).parseDeclaration()
     return Pair(
         StructFieldDecl(
             fieldName = name,
@@ -347,7 +348,7 @@ fun parseStructFieldDecl(source: List<String>, startLine: Int): Pair<StructField
 
 fun parseFunctionDecl(source: List<String>, startLine: Int): Pair<FunctionDecl, Int> {
     val (tokens, lastLine) = CTokenizer(source, startLine).tokenize(';')
-    val (name, ty) = CTypeParser(tokens).parseDeclaration()
+    val (name, ty) = CParser(tokens).parseDeclaration()
     return Pair(
         FunctionDecl(
             functionName = name,
@@ -359,26 +360,9 @@ fun parseFunctionDecl(source: List<String>, startLine: Int): Pair<FunctionDecl, 
     )
 }
 
-fun parseFunctionTypedefDecl(source: List<String>, startLine: Int): Pair<FunctionTypedefDecl, Int> {
-    val (tokens, lastLine) = CTokenizer(source, startLine).tokenize(';')
-    val (name, ty) = CTypeParser(tokens).parseTypedefDecl()
-    assert(ty is RawFunctionType) { "typedef expects function type" }
-    val funcTy = ty as RawFunctionType
-    return Pair(
-        FunctionTypedefDecl(
-            functionName = name,
-            returnType = funcTy.returnType,
-            params = funcTy.params.map { FunctionParamDecl(it.second, it.first, emptyList()) },
-            syntaxTrivia = funcTy.syntaxTrivia
-        ),
-        lastLine
-    )
-}
-
 fun parseTypedefDecl(source: List<String>, startLine: Int): Pair<TypedefDecl, Int> {
     val (tokens, lastLine) = CTokenizer(source, startLine).tokenize(';')
-    val (name, ty) = CTypeParser(tokens).parseTypedefDecl()
-    assert(ty !is RawFunctionType) { "typedef expects non-function type" }
+    val (name, ty) = CParser(tokens).parseTypedefDecl()
     return Pair(
         TypedefDecl(
             typeName = name,
@@ -391,7 +375,7 @@ fun parseTypedefDecl(source: List<String>, startLine: Int): Pair<TypedefDecl, In
 
 fun parseEnumeratorDecl(source: List<String>, startLine: Int): Pair<EnumeratorDecl, Int> {
     val (tokens, lastLine) = CTokenizer(source, startLine).tokenize(',', true)
-    val (name, ty) = CTypeParser(tokens).parseEnumeratorDecl()
+    val (name, ty) = CParser(tokens).parseEnumeratorDecl()
     return Pair(
         EnumeratorDecl(
             name = name,
@@ -411,14 +395,14 @@ fun main() {
     //         const VkDeviceSize* VMA_NULLABLE VMA_LEN_IF_NOT_NULL(allocationCount) offsets,
     //         const VkDeviceSize* VMA_NULLABLE VMA_LEN_IF_NOT_NULL(allocationCount) sizes);
     // """.trimIndent().split('\n')
-    val source = """void (VKAPI_PTR* PFN_vmaAllocateDeviceMemoryFunction)(
+    val source = """void (VKAPI_PTR* )(
     VmaAllocator VMA_NOT_NULL                    allocator,
     uint32_t                                     memoryType,
     VkDeviceMemory VMA_NOT_NULL_NON_DISPATCHABLE memory,
-    VkDeviceSize                                 size,
+    VkDeviceSize                                 size,PFN_vmaAllocateDeviceMemoryFunction
     void* VMA_NULLABLE                           pUserData);""".trimIndent().split("\n")
     // val source = """VmaAllocator VMA_NOT_NULL allocator;""".split('\n')
     val (tokens, lastLine) = CTokenizer(source, 0).tokenize(';')
-    val (name, ty) = CTypeParser(tokens).parseDeclaration()
+    val (name, ty) = CParser(tokens).parseDeclaration()
     println("name: $name, type: $ty")
 }

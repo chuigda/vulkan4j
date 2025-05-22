@@ -48,7 +48,7 @@ private class RawToken(
         return Token(
             when (type) {
                 RawTokenType.IDENT -> TokenType.IDENT
-                RawTokenType.STRING -> throw ParseException("Invalid string literal", this)
+                RawTokenType.STRING -> error("Invalid string literal", this)
                 RawTokenType.COMMENT -> TokenType.TRIVIA
                 RawTokenType.SYMBOL -> TokenType.SYMBOL
                 RawTokenType.INTEGER -> TokenType.INTEGER
@@ -83,7 +83,7 @@ class CTokenizer(private val source: List<String>, var curLine: Int) {
                     } else if (curCol + 1 < line.length && line[curCol + 1] == '*') {
                         readBlockComment()
                     } else {
-                        throw ParseException("Unexpected character: $c", curLine, curCol)
+                        error("Unexpected character: $c", curLine, curCol)
                     }
                     tokens.add(commentToken)
                 } else if (c.isSymbolChar()) {
@@ -96,13 +96,13 @@ class CTokenizer(private val source: List<String>, var curLine: Int) {
                 } else if (c == '"') {
                     tokens.add(readString())
                 } else {
-                    throw ParseException("Unexpected character: $c", curLine, curCol)
+                    error("Unexpected character: $c", curLine, curCol)
                 }
             }
             curLine++
             curCol = 0
         }
-        throw ParseException("Unexpected end of file", curLine, curCol)
+        error("Unexpected end of file", curLine, curCol)
     }
 
     private fun readIdent(): RawToken {
@@ -119,7 +119,7 @@ class CTokenizer(private val source: List<String>, var curLine: Int) {
             curCol++
         }
         if (!source[curLine][curCol].isSymbolChar()) {
-            throw ParseException("Unexpected character: $curChar", curLine, curCol)
+            error("Unexpected character: $curChar", curLine, curCol)
         }
         return RawToken(RawTokenType.INTEGER, source[curLine].substring(start, curCol), curLine, start)
     }
@@ -131,7 +131,7 @@ class CTokenizer(private val source: List<String>, var curLine: Int) {
             curCol++
         }
         if (source[curLine][curCol] != '"') {
-            throw ParseException("Unterminated string literal", curLine, start)
+            error("Unterminated string literal", curLine, start)
         }
         curCol++
         return RawToken(RawTokenType.STRING, source[curLine].substring(start, curCol - 1), curLine, start)
@@ -163,7 +163,7 @@ class CTokenizer(private val source: List<String>, var curLine: Int) {
             curLine++
             curCol = 0
         }
-        throw ParseException("Unterminated block comment", startLine, startCol)
+        error("Unterminated block comment", startLine, startCol)
     }
 
     private fun skipWhitespace() {
@@ -200,7 +200,7 @@ private fun postprocessMacros(tokens: List<RawToken>, noTransform: Boolean = fal
                     pos++
                     sb.append(tokens[pos].value) // (
                     if (pos + 1 >= tokens.size) {
-                        throw ParseException("Unexpected end of tokens", tokens[pos].line, tokens[pos].col)
+                        error("Unexpected end of tokens", tokens[pos].line, tokens[pos].col)
                     }
                     pos++
                     when (tokens[pos].type) {
@@ -219,10 +219,10 @@ private fun postprocessMacros(tokens: List<RawToken>, noTransform: Boolean = fal
                         else -> {}
                     }
                     if (pos >= tokens.size) {
-                        throw ParseException("Unexpected end of tokens", tokens.last().line, tokens.last().col)
+                        error("Unexpected end of tokens", tokens.last().line, tokens.last().col)
                     }
                     if (tokens[pos].type != RawTokenType.SYMBOL || tokens[pos].value != ")") {
-                        throw ParseException("Expected ')'", tokens[pos])
+                        error("Expected ')'", tokens[pos])
                     }
                     sb.append(tokens[pos].value) // )
                     result.add(Token(TokenType.TRIVIA, sb.toString(), curToken.line, curToken.col))

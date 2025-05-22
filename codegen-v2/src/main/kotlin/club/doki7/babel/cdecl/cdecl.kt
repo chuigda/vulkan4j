@@ -23,13 +23,6 @@ data class FunctionParamDecl(
     override val syntaxTrivia: List<String>
 ) : Decl
 
-data class FunctionTypedefDecl(
-    val functionName: String,
-    val returnType: RawType,
-    val params: List<FunctionParamDecl>,
-    override val syntaxTrivia: List<String>
-) : Decl
-
 data class TypedefDecl(
     val typeName: String,
     val aliasedType: RawType,
@@ -46,26 +39,26 @@ sealed interface RawType {
     val syntaxTrivia: List<String>
 }
 
-class RawIdentifierType(
+data class RawIdentifierType(
     val ident: String,
     val modifiers: List<String>,
     override val syntaxTrivia: List<String>
 ) : RawType
 
-class RawPointerType(
+data class RawPointerType(
     var pointee: RawType,
     var const: Boolean,
     var volatile: Boolean,
     override val syntaxTrivia: List<String>
 ) : RawType
 
-class RawArrayType(
+data class RawArrayType(
     var element: RawType,
     val size: String,
     override val syntaxTrivia: List<String>
 ) : RawType
 
-class RawFunctionType(
+data class RawFunctionType(
     val functionName: String,
     var returnType: RawType,
     val params: List<Pair<String, RawType>>,
