@@ -192,6 +192,7 @@ fun generateStructure(
     val autoInitMembers = structure.members.filter { it.values != null && it.type is IdentifierType }
     if (autoInitMembers.isNotEmpty()) {
         +"/// ## Auto initialization"
+        +"///"
         +"/// This structure has the following members that can be automatically initialized:"
         autoInitMembers.forEach {
             +"/// - `${it.name} = ${it.values!!.original}`"
