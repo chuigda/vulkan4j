@@ -24,7 +24,7 @@ import java.util.List;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators. For
-/// normal users, {@link #checked} is a good safe alternative.
+/// normal users, {@link #checked(MemorySegment)} is a good safe alternative.
 @ValueBasedCandidate
 @UnsafeConstructor
 public record BytePtr(@NotNull MemorySegment segment) implements IPointer {
