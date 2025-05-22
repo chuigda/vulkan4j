@@ -121,8 +121,7 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
 
     public static VkShadingRatePaletteNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkShadingRatePaletteNV.Ptr ret = new VkShadingRatePaletteNV.Ptr(segment);
-        return ret;
+        return new VkShadingRatePaletteNV.Ptr(segment);
     }
 
     public static VkShadingRatePaletteNV clone(Arena arena, VkShadingRatePaletteNV src) {

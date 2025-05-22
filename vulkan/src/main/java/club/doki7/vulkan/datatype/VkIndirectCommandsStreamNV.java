@@ -121,8 +121,7 @@ public record VkIndirectCommandsStreamNV(@NotNull MemorySegment segment) impleme
 
     public static VkIndirectCommandsStreamNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkIndirectCommandsStreamNV.Ptr ret = new VkIndirectCommandsStreamNV.Ptr(segment);
-        return ret;
+        return new VkIndirectCommandsStreamNV.Ptr(segment);
     }
 
     public static VkIndirectCommandsStreamNV clone(Arena arena, VkIndirectCommandsStreamNV src) {

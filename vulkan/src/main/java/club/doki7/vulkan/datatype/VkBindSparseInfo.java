@@ -226,23 +226,19 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
         return new VkSparseBufferMemoryBindInfo(s);
     }
 
-    public void pBufferBinds(@Nullable VkSparseBufferMemoryBindInfo value) {
+    public void pBufferBinds(@Nullable IVkSparseBufferMemoryBindInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBufferBindsRaw(s);
     }
 
-    @unsafe public @Nullable VkSparseBufferMemoryBindInfo[] pBufferBinds(int assumedCount) {
+    @unsafe public @Nullable VkSparseBufferMemoryBindInfo.Ptr pBufferBinds(int assumedCount) {
         MemorySegment s = pBufferBindsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkSparseBufferMemoryBindInfo.BYTES);
-        VkSparseBufferMemoryBindInfo[] ret = new VkSparseBufferMemoryBindInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSparseBufferMemoryBindInfo(s.asSlice(i * VkSparseBufferMemoryBindInfo.BYTES, VkSparseBufferMemoryBindInfo.BYTES));
-        }
-        return ret;
+        return new VkSparseBufferMemoryBindInfo.Ptr(s);
     }
 
     public @pointer(target=VkSparseBufferMemoryBindInfo.class) MemorySegment pBufferBindsRaw() {
@@ -269,23 +265,19 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
         return new VkSparseImageOpaqueMemoryBindInfo(s);
     }
 
-    public void pImageOpaqueBinds(@Nullable VkSparseImageOpaqueMemoryBindInfo value) {
+    public void pImageOpaqueBinds(@Nullable IVkSparseImageOpaqueMemoryBindInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageOpaqueBindsRaw(s);
     }
 
-    @unsafe public @Nullable VkSparseImageOpaqueMemoryBindInfo[] pImageOpaqueBinds(int assumedCount) {
+    @unsafe public @Nullable VkSparseImageOpaqueMemoryBindInfo.Ptr pImageOpaqueBinds(int assumedCount) {
         MemorySegment s = pImageOpaqueBindsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkSparseImageOpaqueMemoryBindInfo.BYTES);
-        VkSparseImageOpaqueMemoryBindInfo[] ret = new VkSparseImageOpaqueMemoryBindInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSparseImageOpaqueMemoryBindInfo(s.asSlice(i * VkSparseImageOpaqueMemoryBindInfo.BYTES, VkSparseImageOpaqueMemoryBindInfo.BYTES));
-        }
-        return ret;
+        return new VkSparseImageOpaqueMemoryBindInfo.Ptr(s);
     }
 
     public @pointer(target=VkSparseImageOpaqueMemoryBindInfo.class) MemorySegment pImageOpaqueBindsRaw() {
@@ -312,23 +304,19 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
         return new VkSparseImageMemoryBindInfo(s);
     }
 
-    public void pImageBinds(@Nullable VkSparseImageMemoryBindInfo value) {
+    public void pImageBinds(@Nullable IVkSparseImageMemoryBindInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageBindsRaw(s);
     }
 
-    @unsafe public @Nullable VkSparseImageMemoryBindInfo[] pImageBinds(int assumedCount) {
+    @unsafe public @Nullable VkSparseImageMemoryBindInfo.Ptr pImageBinds(int assumedCount) {
         MemorySegment s = pImageBindsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkSparseImageMemoryBindInfo.BYTES);
-        VkSparseImageMemoryBindInfo[] ret = new VkSparseImageMemoryBindInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSparseImageMemoryBindInfo(s.asSlice(i * VkSparseImageMemoryBindInfo.BYTES, VkSparseImageMemoryBindInfo.BYTES));
-        }
-        return ret;
+        return new VkSparseImageMemoryBindInfo.Ptr(s);
     }
 
     public @pointer(target=VkSparseImageMemoryBindInfo.class) MemorySegment pImageBindsRaw() {

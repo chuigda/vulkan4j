@@ -122,8 +122,7 @@ public record VkSparseImageOpaqueMemoryBindInfo(@NotNull MemorySegment segment) 
 
     public static VkSparseImageOpaqueMemoryBindInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSparseImageOpaqueMemoryBindInfo.Ptr ret = new VkSparseImageOpaqueMemoryBindInfo.Ptr(segment);
-        return ret;
+        return new VkSparseImageOpaqueMemoryBindInfo.Ptr(segment);
     }
 
     public static VkSparseImageOpaqueMemoryBindInfo clone(Arena arena, VkSparseImageOpaqueMemoryBindInfo src) {
@@ -160,23 +159,19 @@ public record VkSparseImageOpaqueMemoryBindInfo(@NotNull MemorySegment segment) 
         return new VkSparseMemoryBind(s);
     }
 
-    public void pBinds(@Nullable VkSparseMemoryBind value) {
+    public void pBinds(@Nullable IVkSparseMemoryBind value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBindsRaw(s);
     }
 
-    @unsafe public @Nullable VkSparseMemoryBind[] pBinds(int assumedCount) {
+    @unsafe public @Nullable VkSparseMemoryBind.Ptr pBinds(int assumedCount) {
         MemorySegment s = pBindsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkSparseMemoryBind.BYTES);
-        VkSparseMemoryBind[] ret = new VkSparseMemoryBind[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSparseMemoryBind(s.asSlice(i * VkSparseMemoryBind.BYTES, VkSparseMemoryBind.BYTES));
-        }
-        return ret;
+        return new VkSparseMemoryBind.Ptr(s);
     }
 
     public @pointer(target=VkSparseMemoryBind.class) MemorySegment pBindsRaw() {

@@ -123,8 +123,7 @@ public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@Not
 
     public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.Ptr ret = new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.Ptr(segment);
-        return ret;
+        return new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.Ptr(segment);
     }
 
     public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV clone(Arena arena, VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV src) {

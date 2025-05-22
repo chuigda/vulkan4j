@@ -120,8 +120,7 @@ public record VkClusterAccelerationStructureMoveObjectsInfoNV(@NotNull MemorySeg
 
     public static VkClusterAccelerationStructureMoveObjectsInfoNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkClusterAccelerationStructureMoveObjectsInfoNV.Ptr ret = new VkClusterAccelerationStructureMoveObjectsInfoNV.Ptr(segment);
-        return ret;
+        return new VkClusterAccelerationStructureMoveObjectsInfoNV.Ptr(segment);
     }
 
     public static VkClusterAccelerationStructureMoveObjectsInfoNV clone(Arena arena, VkClusterAccelerationStructureMoveObjectsInfoNV src) {

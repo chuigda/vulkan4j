@@ -122,8 +122,7 @@ public record VkDispatchIndirectCommand(@NotNull MemorySegment segment) implemen
 
     public static VkDispatchIndirectCommand.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDispatchIndirectCommand.Ptr ret = new VkDispatchIndirectCommand.Ptr(segment);
-        return ret;
+        return new VkDispatchIndirectCommand.Ptr(segment);
     }
 
     public static VkDispatchIndirectCommand clone(Arena arena, VkDispatchIndirectCommand src) {

@@ -186,23 +186,19 @@ public record VkVideoEncodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         return new VkVideoEncodeH265NaluSliceSegmentInfoKHR(s);
     }
 
-    public void pNaluSliceSegmentEntries(@Nullable VkVideoEncodeH265NaluSliceSegmentInfoKHR value) {
+    public void pNaluSliceSegmentEntries(@Nullable IVkVideoEncodeH265NaluSliceSegmentInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNaluSliceSegmentEntriesRaw(s);
     }
 
-    @unsafe public @Nullable VkVideoEncodeH265NaluSliceSegmentInfoKHR[] pNaluSliceSegmentEntries(int assumedCount) {
+    @unsafe public @Nullable VkVideoEncodeH265NaluSliceSegmentInfoKHR.Ptr pNaluSliceSegmentEntries(int assumedCount) {
         MemorySegment s = pNaluSliceSegmentEntriesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkVideoEncodeH265NaluSliceSegmentInfoKHR.BYTES);
-        VkVideoEncodeH265NaluSliceSegmentInfoKHR[] ret = new VkVideoEncodeH265NaluSliceSegmentInfoKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVideoEncodeH265NaluSliceSegmentInfoKHR(s.asSlice(i * VkVideoEncodeH265NaluSliceSegmentInfoKHR.BYTES, VkVideoEncodeH265NaluSliceSegmentInfoKHR.BYTES));
-        }
-        return ret;
+        return new VkVideoEncodeH265NaluSliceSegmentInfoKHR.Ptr(s);
     }
 
     public @pointer(target=VkVideoEncodeH265NaluSliceSegmentInfoKHR.class) MemorySegment pNaluSliceSegmentEntriesRaw() {
@@ -221,23 +217,19 @@ public record VkVideoEncodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         return new StdVideoEncodeH265PictureInfo(s);
     }
 
-    public void pStdPictureInfo(@Nullable StdVideoEncodeH265PictureInfo value) {
+    public void pStdPictureInfo(@Nullable IStdVideoEncodeH265PictureInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdPictureInfoRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH265PictureInfo[] pStdPictureInfo(int assumedCount) {
+    @unsafe public @Nullable StdVideoEncodeH265PictureInfo.Ptr pStdPictureInfo(int assumedCount) {
         MemorySegment s = pStdPictureInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoEncodeH265PictureInfo.BYTES);
-        StdVideoEncodeH265PictureInfo[] ret = new StdVideoEncodeH265PictureInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH265PictureInfo(s.asSlice(i * StdVideoEncodeH265PictureInfo.BYTES, StdVideoEncodeH265PictureInfo.BYTES));
-        }
-        return ret;
+        return new StdVideoEncodeH265PictureInfo.Ptr(s);
     }
 
     public @pointer(target=StdVideoEncodeH265PictureInfo.class) MemorySegment pStdPictureInfoRaw() {

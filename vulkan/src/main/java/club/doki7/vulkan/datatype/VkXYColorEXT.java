@@ -121,8 +121,7 @@ public record VkXYColorEXT(@NotNull MemorySegment segment) implements IVkXYColor
 
     public static VkXYColorEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkXYColorEXT.Ptr ret = new VkXYColorEXT.Ptr(segment);
-        return ret;
+        return new VkXYColorEXT.Ptr(segment);
     }
 
     public static VkXYColorEXT clone(Arena arena, VkXYColorEXT src) {

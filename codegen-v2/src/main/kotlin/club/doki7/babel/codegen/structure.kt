@@ -326,8 +326,8 @@ fun generateStructure(
 
         defun("public static", "$className.Ptr", "allocate", "Arena arena", "long count") {
             +"MemorySegment segment = arena.allocate(LAYOUT, count);"
-            +"$className.Ptr ret = new $className.Ptr(segment);"
             if (autoInitMembers.isNotEmpty()) {
+                +"$className.Ptr ret = new $className.Ptr(segment);"
                 "for (long i = 0; i < count; i++)" {
                     if (autoInitMembers.size == 1) {
                         val it = autoInitMembers.first()
@@ -336,8 +336,10 @@ fun generateStructure(
                         +"ret.at(i).autoInit();"
                     }
                 }
+                +"return ret;"
+            } else {
+                +"return new $className.Ptr(segment);"
             }
-            +"return ret;"
         }
         +""
 

@@ -121,8 +121,7 @@ public record VkStridedDeviceAddressNV(@NotNull MemorySegment segment) implement
 
     public static VkStridedDeviceAddressNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkStridedDeviceAddressNV.Ptr ret = new VkStridedDeviceAddressNV.Ptr(segment);
-        return ret;
+        return new VkStridedDeviceAddressNV.Ptr(segment);
     }
 
     public static VkStridedDeviceAddressNV clone(Arena arena, VkStridedDeviceAddressNV src) {

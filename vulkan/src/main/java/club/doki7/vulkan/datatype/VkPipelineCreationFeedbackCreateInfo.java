@@ -178,23 +178,19 @@ public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segmen
         return new VkPipelineCreationFeedback(s);
     }
 
-    public void pPipelineCreationFeedback(@Nullable VkPipelineCreationFeedback value) {
+    public void pPipelineCreationFeedback(@Nullable IVkPipelineCreationFeedback value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineCreationFeedbackRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineCreationFeedback[] pPipelineCreationFeedback(int assumedCount) {
+    @unsafe public @Nullable VkPipelineCreationFeedback.Ptr pPipelineCreationFeedback(int assumedCount) {
         MemorySegment s = pPipelineCreationFeedbackRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPipelineCreationFeedback.BYTES);
-        VkPipelineCreationFeedback[] ret = new VkPipelineCreationFeedback[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineCreationFeedback(s.asSlice(i * VkPipelineCreationFeedback.BYTES, VkPipelineCreationFeedback.BYTES));
-        }
-        return ret;
+        return new VkPipelineCreationFeedback.Ptr(s);
     }
 
     public @pointer(target=VkPipelineCreationFeedback.class) MemorySegment pPipelineCreationFeedbackRaw() {
@@ -221,23 +217,19 @@ public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segmen
         return new VkPipelineCreationFeedback(s);
     }
 
-    public void pPipelineStageCreationFeedbacks(@Nullable VkPipelineCreationFeedback value) {
+    public void pPipelineStageCreationFeedbacks(@Nullable IVkPipelineCreationFeedback value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineStageCreationFeedbacksRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineCreationFeedback[] pPipelineStageCreationFeedbacks(int assumedCount) {
+    @unsafe public @Nullable VkPipelineCreationFeedback.Ptr pPipelineStageCreationFeedbacks(int assumedCount) {
         MemorySegment s = pPipelineStageCreationFeedbacksRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPipelineCreationFeedback.BYTES);
-        VkPipelineCreationFeedback[] ret = new VkPipelineCreationFeedback[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineCreationFeedback(s.asSlice(i * VkPipelineCreationFeedback.BYTES, VkPipelineCreationFeedback.BYTES));
-        }
-        return ret;
+        return new VkPipelineCreationFeedback.Ptr(s);
     }
 
     public @pointer(target=VkPipelineCreationFeedback.class) MemorySegment pPipelineStageCreationFeedbacksRaw() {

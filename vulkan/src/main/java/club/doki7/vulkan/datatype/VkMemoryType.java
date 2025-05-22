@@ -121,8 +121,7 @@ public record VkMemoryType(@NotNull MemorySegment segment) implements IVkMemoryT
 
     public static VkMemoryType.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkMemoryType.Ptr ret = new VkMemoryType.Ptr(segment);
-        return ret;
+        return new VkMemoryType.Ptr(segment);
     }
 
     public static VkMemoryType clone(Arena arena, VkMemoryType src) {

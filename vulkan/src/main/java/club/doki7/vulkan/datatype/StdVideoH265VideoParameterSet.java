@@ -129,8 +129,7 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
 
     public static StdVideoH265VideoParameterSet.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoH265VideoParameterSet.Ptr ret = new StdVideoH265VideoParameterSet.Ptr(segment);
-        return ret;
+        return new StdVideoH265VideoParameterSet.Ptr(segment);
     }
 
     public static StdVideoH265VideoParameterSet clone(Arena arena, StdVideoH265VideoParameterSet src) {
@@ -198,23 +197,19 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         return new StdVideoH265DecPicBufMgr(s);
     }
 
-    public void pDecPicBufMgr(@Nullable StdVideoH265DecPicBufMgr value) {
+    public void pDecPicBufMgr(@Nullable IStdVideoH265DecPicBufMgr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDecPicBufMgrRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265DecPicBufMgr[] pDecPicBufMgr(int assumedCount) {
+    @unsafe public @Nullable StdVideoH265DecPicBufMgr.Ptr pDecPicBufMgr(int assumedCount) {
         MemorySegment s = pDecPicBufMgrRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoH265DecPicBufMgr.BYTES);
-        StdVideoH265DecPicBufMgr[] ret = new StdVideoH265DecPicBufMgr[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265DecPicBufMgr(s.asSlice(i * StdVideoH265DecPicBufMgr.BYTES, StdVideoH265DecPicBufMgr.BYTES));
-        }
-        return ret;
+        return new StdVideoH265DecPicBufMgr.Ptr(s);
     }
 
     public @pointer(target=StdVideoH265DecPicBufMgr.class) MemorySegment pDecPicBufMgrRaw() {
@@ -233,23 +228,19 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         return new StdVideoH265HrdParameters(s);
     }
 
-    public void pHrdParameters(@Nullable StdVideoH265HrdParameters value) {
+    public void pHrdParameters(@Nullable IStdVideoH265HrdParameters value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pHrdParametersRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265HrdParameters[] pHrdParameters(int assumedCount) {
+    @unsafe public @Nullable StdVideoH265HrdParameters.Ptr pHrdParameters(int assumedCount) {
         MemorySegment s = pHrdParametersRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoH265HrdParameters.BYTES);
-        StdVideoH265HrdParameters[] ret = new StdVideoH265HrdParameters[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265HrdParameters(s.asSlice(i * StdVideoH265HrdParameters.BYTES, StdVideoH265HrdParameters.BYTES));
-        }
-        return ret;
+        return new StdVideoH265HrdParameters.Ptr(s);
     }
 
     public @pointer(target=StdVideoH265HrdParameters.class) MemorySegment pHrdParametersRaw() {
@@ -268,23 +259,19 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         return new StdVideoH265ProfileTierLevel(s);
     }
 
-    public void pProfileTierLevel(@Nullable StdVideoH265ProfileTierLevel value) {
+    public void pProfileTierLevel(@Nullable IStdVideoH265ProfileTierLevel value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pProfileTierLevelRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265ProfileTierLevel[] pProfileTierLevel(int assumedCount) {
+    @unsafe public @Nullable StdVideoH265ProfileTierLevel.Ptr pProfileTierLevel(int assumedCount) {
         MemorySegment s = pProfileTierLevelRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoH265ProfileTierLevel.BYTES);
-        StdVideoH265ProfileTierLevel[] ret = new StdVideoH265ProfileTierLevel[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265ProfileTierLevel(s.asSlice(i * StdVideoH265ProfileTierLevel.BYTES, StdVideoH265ProfileTierLevel.BYTES));
-        }
-        return ret;
+        return new StdVideoH265ProfileTierLevel.Ptr(s);
     }
 
     public @pointer(target=StdVideoH265ProfileTierLevel.class) MemorySegment pProfileTierLevelRaw() {

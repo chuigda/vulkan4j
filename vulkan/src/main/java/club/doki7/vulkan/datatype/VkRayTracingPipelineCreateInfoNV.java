@@ -200,23 +200,19 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
-    public void pStages(@Nullable VkPipelineShaderStageCreateInfo value) {
+    public void pStages(@Nullable IVkPipelineShaderStageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStagesRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
+    @unsafe public @Nullable VkPipelineShaderStageCreateInfo.Ptr pStages(int assumedCount) {
         MemorySegment s = pStagesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.BYTES);
-        VkPipelineShaderStageCreateInfo[] ret = new VkPipelineShaderStageCreateInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineShaderStageCreateInfo(s.asSlice(i * VkPipelineShaderStageCreateInfo.BYTES, VkPipelineShaderStageCreateInfo.BYTES));
-        }
-        return ret;
+        return new VkPipelineShaderStageCreateInfo.Ptr(s);
     }
 
     public @pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
@@ -243,23 +239,19 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         return new VkRayTracingShaderGroupCreateInfoNV(s);
     }
 
-    public void pGroups(@Nullable VkRayTracingShaderGroupCreateInfoNV value) {
+    public void pGroups(@Nullable IVkRayTracingShaderGroupCreateInfoNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGroupsRaw(s);
     }
 
-    @unsafe public @Nullable VkRayTracingShaderGroupCreateInfoNV[] pGroups(int assumedCount) {
+    @unsafe public @Nullable VkRayTracingShaderGroupCreateInfoNV.Ptr pGroups(int assumedCount) {
         MemorySegment s = pGroupsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkRayTracingShaderGroupCreateInfoNV.BYTES);
-        VkRayTracingShaderGroupCreateInfoNV[] ret = new VkRayTracingShaderGroupCreateInfoNV[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkRayTracingShaderGroupCreateInfoNV(s.asSlice(i * VkRayTracingShaderGroupCreateInfoNV.BYTES, VkRayTracingShaderGroupCreateInfoNV.BYTES));
-        }
-        return ret;
+        return new VkRayTracingShaderGroupCreateInfoNV.Ptr(s);
     }
 
     public @pointer(target=VkRayTracingShaderGroupCreateInfoNV.class) MemorySegment pGroupsRaw() {

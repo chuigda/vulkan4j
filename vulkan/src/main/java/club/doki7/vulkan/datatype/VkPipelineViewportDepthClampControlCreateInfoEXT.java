@@ -185,23 +185,19 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
         return new VkDepthClampRangeEXT(s);
     }
 
-    public void pDepthClampRange(@Nullable VkDepthClampRangeEXT value) {
+    public void pDepthClampRange(@Nullable IVkDepthClampRangeEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDepthClampRangeRaw(s);
     }
 
-    @unsafe public @Nullable VkDepthClampRangeEXT[] pDepthClampRange(int assumedCount) {
+    @unsafe public @Nullable VkDepthClampRangeEXT.Ptr pDepthClampRange(int assumedCount) {
         MemorySegment s = pDepthClampRangeRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDepthClampRangeEXT.BYTES);
-        VkDepthClampRangeEXT[] ret = new VkDepthClampRangeEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDepthClampRangeEXT(s.asSlice(i * VkDepthClampRangeEXT.BYTES, VkDepthClampRangeEXT.BYTES));
-        }
-        return ret;
+        return new VkDepthClampRangeEXT.Ptr(s);
     }
 
     public @pointer(target=VkDepthClampRangeEXT.class) MemorySegment pDepthClampRangeRaw() {

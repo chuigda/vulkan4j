@@ -123,8 +123,7 @@ public record VkVertexInputAttributeDescription(@NotNull MemorySegment segment) 
 
     public static VkVertexInputAttributeDescription.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkVertexInputAttributeDescription.Ptr ret = new VkVertexInputAttributeDescription.Ptr(segment);
-        return ret;
+        return new VkVertexInputAttributeDescription.Ptr(segment);
     }
 
     public static VkVertexInputAttributeDescription clone(Arena arena, VkVertexInputAttributeDescription src) {

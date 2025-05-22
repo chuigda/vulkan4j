@@ -122,8 +122,7 @@ public record VkDispatchGraphCountInfoAMDX(@NotNull MemorySegment segment) imple
 
     public static VkDispatchGraphCountInfoAMDX.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDispatchGraphCountInfoAMDX.Ptr ret = new VkDispatchGraphCountInfoAMDX.Ptr(segment);
-        return ret;
+        return new VkDispatchGraphCountInfoAMDX.Ptr(segment);
     }
 
     public static VkDispatchGraphCountInfoAMDX clone(Arena arena, VkDispatchGraphCountInfoAMDX src) {

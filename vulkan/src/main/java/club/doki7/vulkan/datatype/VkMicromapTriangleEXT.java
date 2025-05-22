@@ -122,8 +122,7 @@ public record VkMicromapTriangleEXT(@NotNull MemorySegment segment) implements I
 
     public static VkMicromapTriangleEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkMicromapTriangleEXT.Ptr ret = new VkMicromapTriangleEXT.Ptr(segment);
-        return ret;
+        return new VkMicromapTriangleEXT.Ptr(segment);
     }
 
     public static VkMicromapTriangleEXT clone(Arena arena, VkMicromapTriangleEXT src) {

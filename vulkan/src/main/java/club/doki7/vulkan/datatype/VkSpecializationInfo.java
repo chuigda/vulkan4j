@@ -123,8 +123,7 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
 
     public static VkSpecializationInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSpecializationInfo.Ptr ret = new VkSpecializationInfo.Ptr(segment);
-        return ret;
+        return new VkSpecializationInfo.Ptr(segment);
     }
 
     public static VkSpecializationInfo clone(Arena arena, VkSpecializationInfo src) {
@@ -149,23 +148,19 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         return new VkSpecializationMapEntry(s);
     }
 
-    public void pMapEntries(@Nullable VkSpecializationMapEntry value) {
+    public void pMapEntries(@Nullable IVkSpecializationMapEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMapEntriesRaw(s);
     }
 
-    @unsafe public @Nullable VkSpecializationMapEntry[] pMapEntries(int assumedCount) {
+    @unsafe public @Nullable VkSpecializationMapEntry.Ptr pMapEntries(int assumedCount) {
         MemorySegment s = pMapEntriesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkSpecializationMapEntry.BYTES);
-        VkSpecializationMapEntry[] ret = new VkSpecializationMapEntry[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSpecializationMapEntry(s.asSlice(i * VkSpecializationMapEntry.BYTES, VkSpecializationMapEntry.BYTES));
-        }
-        return ret;
+        return new VkSpecializationMapEntry.Ptr(s);
     }
 
     public @pointer(target=VkSpecializationMapEntry.class) MemorySegment pMapEntriesRaw() {

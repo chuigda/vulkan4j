@@ -122,8 +122,7 @@ public record VkVideoEncodeH265FrameSizeKHR(@NotNull MemorySegment segment) impl
 
     public static VkVideoEncodeH265FrameSizeKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkVideoEncodeH265FrameSizeKHR.Ptr ret = new VkVideoEncodeH265FrameSizeKHR.Ptr(segment);
-        return ret;
+        return new VkVideoEncodeH265FrameSizeKHR.Ptr(segment);
     }
 
     public static VkVideoEncodeH265FrameSizeKHR clone(Arena arena, VkVideoEncodeH265FrameSizeKHR src) {

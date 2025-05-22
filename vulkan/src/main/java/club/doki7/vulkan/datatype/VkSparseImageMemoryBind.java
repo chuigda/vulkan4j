@@ -125,8 +125,7 @@ public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements
 
     public static VkSparseImageMemoryBind.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSparseImageMemoryBind.Ptr ret = new VkSparseImageMemoryBind.Ptr(segment);
-        return ret;
+        return new VkSparseImageMemoryBind.Ptr(segment);
     }
 
     public static VkSparseImageMemoryBind clone(Arena arena, VkSparseImageMemoryBind src) {

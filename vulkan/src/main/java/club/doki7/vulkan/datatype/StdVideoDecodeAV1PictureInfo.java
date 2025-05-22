@@ -141,8 +141,7 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
 
     public static StdVideoDecodeAV1PictureInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoDecodeAV1PictureInfo.Ptr ret = new StdVideoDecodeAV1PictureInfo.Ptr(segment);
-        return ret;
+        return new StdVideoDecodeAV1PictureInfo.Ptr(segment);
     }
 
     public static StdVideoDecodeAV1PictureInfo clone(Arena arena, StdVideoDecodeAV1PictureInfo src) {
@@ -273,23 +272,19 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new StdVideoAV1TileInfo(s);
     }
 
-    public void pTileInfo(@Nullable StdVideoAV1TileInfo value) {
+    public void pTileInfo(@Nullable IStdVideoAV1TileInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTileInfoRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1TileInfo[] pTileInfo(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1TileInfo.Ptr pTileInfo(int assumedCount) {
         MemorySegment s = pTileInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1TileInfo.BYTES);
-        StdVideoAV1TileInfo[] ret = new StdVideoAV1TileInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1TileInfo(s.asSlice(i * StdVideoAV1TileInfo.BYTES, StdVideoAV1TileInfo.BYTES));
-        }
-        return ret;
+        return new StdVideoAV1TileInfo.Ptr(s);
     }
 
     public @pointer(target=StdVideoAV1TileInfo.class) MemorySegment pTileInfoRaw() {
@@ -308,23 +303,19 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new StdVideoAV1Quantization(s);
     }
 
-    public void pQuantization(@Nullable StdVideoAV1Quantization value) {
+    public void pQuantization(@Nullable IStdVideoAV1Quantization value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQuantizationRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1Quantization[] pQuantization(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1Quantization.Ptr pQuantization(int assumedCount) {
         MemorySegment s = pQuantizationRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1Quantization.BYTES);
-        StdVideoAV1Quantization[] ret = new StdVideoAV1Quantization[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1Quantization(s.asSlice(i * StdVideoAV1Quantization.BYTES, StdVideoAV1Quantization.BYTES));
-        }
-        return ret;
+        return new StdVideoAV1Quantization.Ptr(s);
     }
 
     public @pointer(target=StdVideoAV1Quantization.class) MemorySegment pQuantizationRaw() {
@@ -343,23 +334,19 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new StdVideoAV1Segmentation(s);
     }
 
-    public void pSegmentation(@Nullable StdVideoAV1Segmentation value) {
+    public void pSegmentation(@Nullable IStdVideoAV1Segmentation value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSegmentationRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1Segmentation[] pSegmentation(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1Segmentation.Ptr pSegmentation(int assumedCount) {
         MemorySegment s = pSegmentationRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1Segmentation.BYTES);
-        StdVideoAV1Segmentation[] ret = new StdVideoAV1Segmentation[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1Segmentation(s.asSlice(i * StdVideoAV1Segmentation.BYTES, StdVideoAV1Segmentation.BYTES));
-        }
-        return ret;
+        return new StdVideoAV1Segmentation.Ptr(s);
     }
 
     public @pointer(target=StdVideoAV1Segmentation.class) MemorySegment pSegmentationRaw() {
@@ -378,23 +365,19 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new StdVideoAV1LoopFilter(s);
     }
 
-    public void pLoopFilter(@Nullable StdVideoAV1LoopFilter value) {
+    public void pLoopFilter(@Nullable IStdVideoAV1LoopFilter value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLoopFilterRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1LoopFilter[] pLoopFilter(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1LoopFilter.Ptr pLoopFilter(int assumedCount) {
         MemorySegment s = pLoopFilterRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1LoopFilter.BYTES);
-        StdVideoAV1LoopFilter[] ret = new StdVideoAV1LoopFilter[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1LoopFilter(s.asSlice(i * StdVideoAV1LoopFilter.BYTES, StdVideoAV1LoopFilter.BYTES));
-        }
-        return ret;
+        return new StdVideoAV1LoopFilter.Ptr(s);
     }
 
     public @pointer(target=StdVideoAV1LoopFilter.class) MemorySegment pLoopFilterRaw() {
@@ -413,23 +396,19 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new StdVideoAV1CDEF(s);
     }
 
-    public void pCDEF(@Nullable StdVideoAV1CDEF value) {
+    public void pCDEF(@Nullable IStdVideoAV1CDEF value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCDEFRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1CDEF[] pCDEF(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1CDEF.Ptr pCDEF(int assumedCount) {
         MemorySegment s = pCDEFRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1CDEF.BYTES);
-        StdVideoAV1CDEF[] ret = new StdVideoAV1CDEF[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1CDEF(s.asSlice(i * StdVideoAV1CDEF.BYTES, StdVideoAV1CDEF.BYTES));
-        }
-        return ret;
+        return new StdVideoAV1CDEF.Ptr(s);
     }
 
     public @pointer(target=StdVideoAV1CDEF.class) MemorySegment pCDEFRaw() {
@@ -448,23 +427,19 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new StdVideoAV1LoopRestoration(s);
     }
 
-    public void pLoopRestoration(@Nullable StdVideoAV1LoopRestoration value) {
+    public void pLoopRestoration(@Nullable IStdVideoAV1LoopRestoration value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLoopRestorationRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1LoopRestoration[] pLoopRestoration(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1LoopRestoration.Ptr pLoopRestoration(int assumedCount) {
         MemorySegment s = pLoopRestorationRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1LoopRestoration.BYTES);
-        StdVideoAV1LoopRestoration[] ret = new StdVideoAV1LoopRestoration[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1LoopRestoration(s.asSlice(i * StdVideoAV1LoopRestoration.BYTES, StdVideoAV1LoopRestoration.BYTES));
-        }
-        return ret;
+        return new StdVideoAV1LoopRestoration.Ptr(s);
     }
 
     public @pointer(target=StdVideoAV1LoopRestoration.class) MemorySegment pLoopRestorationRaw() {
@@ -483,23 +458,19 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new StdVideoAV1GlobalMotion(s);
     }
 
-    public void pGlobalMotion(@Nullable StdVideoAV1GlobalMotion value) {
+    public void pGlobalMotion(@Nullable IStdVideoAV1GlobalMotion value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGlobalMotionRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1GlobalMotion[] pGlobalMotion(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1GlobalMotion.Ptr pGlobalMotion(int assumedCount) {
         MemorySegment s = pGlobalMotionRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1GlobalMotion.BYTES);
-        StdVideoAV1GlobalMotion[] ret = new StdVideoAV1GlobalMotion[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1GlobalMotion(s.asSlice(i * StdVideoAV1GlobalMotion.BYTES, StdVideoAV1GlobalMotion.BYTES));
-        }
-        return ret;
+        return new StdVideoAV1GlobalMotion.Ptr(s);
     }
 
     public @pointer(target=StdVideoAV1GlobalMotion.class) MemorySegment pGlobalMotionRaw() {
@@ -518,23 +489,19 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new StdVideoAV1FilmGrain(s);
     }
 
-    public void pFilmGrain(@Nullable StdVideoAV1FilmGrain value) {
+    public void pFilmGrain(@Nullable IStdVideoAV1FilmGrain value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFilmGrainRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1FilmGrain[] pFilmGrain(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1FilmGrain.Ptr pFilmGrain(int assumedCount) {
         MemorySegment s = pFilmGrainRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1FilmGrain.BYTES);
-        StdVideoAV1FilmGrain[] ret = new StdVideoAV1FilmGrain[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1FilmGrain(s.asSlice(i * StdVideoAV1FilmGrain.BYTES, StdVideoAV1FilmGrain.BYTES));
-        }
-        return ret;
+        return new StdVideoAV1FilmGrain.Ptr(s);
     }
 
     public @pointer(target=StdVideoAV1FilmGrain.class) MemorySegment pFilmGrainRaw() {

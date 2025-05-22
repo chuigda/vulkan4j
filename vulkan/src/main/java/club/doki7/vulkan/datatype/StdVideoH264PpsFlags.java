@@ -126,8 +126,7 @@ public record StdVideoH264PpsFlags(@NotNull MemorySegment segment) implements IS
 
     public static StdVideoH264PpsFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoH264PpsFlags.Ptr ret = new StdVideoH264PpsFlags.Ptr(segment);
-        return ret;
+        return new StdVideoH264PpsFlags.Ptr(segment);
     }
 
     public static StdVideoH264PpsFlags clone(Arena arena, StdVideoH264PpsFlags src) {

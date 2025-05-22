@@ -121,8 +121,7 @@ public record VkSubpassSampleLocationsEXT(@NotNull MemorySegment segment) implem
 
     public static VkSubpassSampleLocationsEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSubpassSampleLocationsEXT.Ptr ret = new VkSubpassSampleLocationsEXT.Ptr(segment);
-        return ret;
+        return new VkSubpassSampleLocationsEXT.Ptr(segment);
     }
 
     public static VkSubpassSampleLocationsEXT clone(Arena arena, VkSubpassSampleLocationsEXT src) {

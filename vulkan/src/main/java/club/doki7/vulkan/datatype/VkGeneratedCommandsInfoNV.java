@@ -228,23 +228,19 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         return new VkIndirectCommandsStreamNV(s);
     }
 
-    public void pStreams(@Nullable VkIndirectCommandsStreamNV value) {
+    public void pStreams(@Nullable IVkIndirectCommandsStreamNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStreamsRaw(s);
     }
 
-    @unsafe public @Nullable VkIndirectCommandsStreamNV[] pStreams(int assumedCount) {
+    @unsafe public @Nullable VkIndirectCommandsStreamNV.Ptr pStreams(int assumedCount) {
         MemorySegment s = pStreamsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkIndirectCommandsStreamNV.BYTES);
-        VkIndirectCommandsStreamNV[] ret = new VkIndirectCommandsStreamNV[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectCommandsStreamNV(s.asSlice(i * VkIndirectCommandsStreamNV.BYTES, VkIndirectCommandsStreamNV.BYTES));
-        }
-        return ret;
+        return new VkIndirectCommandsStreamNV.Ptr(s);
     }
 
     public @pointer(target=VkIndirectCommandsStreamNV.class) MemorySegment pStreamsRaw() {

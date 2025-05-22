@@ -216,23 +216,19 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         return new VkWriteDescriptorSet(s);
     }
 
-    public void pDescriptorWrites(@Nullable VkWriteDescriptorSet value) {
+    public void pDescriptorWrites(@Nullable IVkWriteDescriptorSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorWritesRaw(s);
     }
 
-    @unsafe public @Nullable VkWriteDescriptorSet[] pDescriptorWrites(int assumedCount) {
+    @unsafe public @Nullable VkWriteDescriptorSet.Ptr pDescriptorWrites(int assumedCount) {
         MemorySegment s = pDescriptorWritesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkWriteDescriptorSet.BYTES);
-        VkWriteDescriptorSet[] ret = new VkWriteDescriptorSet[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkWriteDescriptorSet(s.asSlice(i * VkWriteDescriptorSet.BYTES, VkWriteDescriptorSet.BYTES));
-        }
-        return ret;
+        return new VkWriteDescriptorSet.Ptr(s);
     }
 
     public @pointer(target=VkWriteDescriptorSet.class) MemorySegment pDescriptorWritesRaw() {

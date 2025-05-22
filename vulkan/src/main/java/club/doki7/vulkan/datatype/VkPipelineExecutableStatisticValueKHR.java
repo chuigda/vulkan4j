@@ -123,8 +123,7 @@ public record VkPipelineExecutableStatisticValueKHR(@NotNull MemorySegment segme
 
     public static VkPipelineExecutableStatisticValueKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPipelineExecutableStatisticValueKHR.Ptr ret = new VkPipelineExecutableStatisticValueKHR.Ptr(segment);
-        return ret;
+        return new VkPipelineExecutableStatisticValueKHR.Ptr(segment);
     }
 
     public static VkPipelineExecutableStatisticValueKHR clone(Arena arena, VkPipelineExecutableStatisticValueKHR src) {

@@ -121,8 +121,7 @@ public record VkViewportWScalingNV(@NotNull MemorySegment segment) implements IV
 
     public static VkViewportWScalingNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkViewportWScalingNV.Ptr ret = new VkViewportWScalingNV.Ptr(segment);
-        return ret;
+        return new VkViewportWScalingNV.Ptr(segment);
     }
 
     public static VkViewportWScalingNV clone(Arena arena, VkViewportWScalingNV src) {

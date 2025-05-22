@@ -119,8 +119,7 @@ public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) imp
 
     public static StdVideoH265LongTermRefPicsSps.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoH265LongTermRefPicsSps.Ptr ret = new StdVideoH265LongTermRefPicsSps.Ptr(segment);
-        return ret;
+        return new StdVideoH265LongTermRefPicsSps.Ptr(segment);
     }
 
     public static StdVideoH265LongTermRefPicsSps clone(Arena arena, StdVideoH265LongTermRefPicsSps src) {

@@ -198,23 +198,19 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
-    public void pStages(@Nullable VkPipelineShaderStageCreateInfo value) {
+    public void pStages(@Nullable IVkPipelineShaderStageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStagesRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
+    @unsafe public @Nullable VkPipelineShaderStageCreateInfo.Ptr pStages(int assumedCount) {
         MemorySegment s = pStagesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.BYTES);
-        VkPipelineShaderStageCreateInfo[] ret = new VkPipelineShaderStageCreateInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineShaderStageCreateInfo(s.asSlice(i * VkPipelineShaderStageCreateInfo.BYTES, VkPipelineShaderStageCreateInfo.BYTES));
-        }
-        return ret;
+        return new VkPipelineShaderStageCreateInfo.Ptr(s);
     }
 
     public @pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
@@ -233,23 +229,19 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         return new VkPipelineLibraryCreateInfoKHR(s);
     }
 
-    public void pLibraryInfo(@Nullable VkPipelineLibraryCreateInfoKHR value) {
+    public void pLibraryInfo(@Nullable IVkPipelineLibraryCreateInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLibraryInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineLibraryCreateInfoKHR[] pLibraryInfo(int assumedCount) {
+    @unsafe public @Nullable VkPipelineLibraryCreateInfoKHR.Ptr pLibraryInfo(int assumedCount) {
         MemorySegment s = pLibraryInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPipelineLibraryCreateInfoKHR.BYTES);
-        VkPipelineLibraryCreateInfoKHR[] ret = new VkPipelineLibraryCreateInfoKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineLibraryCreateInfoKHR(s.asSlice(i * VkPipelineLibraryCreateInfoKHR.BYTES, VkPipelineLibraryCreateInfoKHR.BYTES));
-        }
-        return ret;
+        return new VkPipelineLibraryCreateInfoKHR.Ptr(s);
     }
 
     public @pointer(target=VkPipelineLibraryCreateInfoKHR.class) MemorySegment pLibraryInfoRaw() {

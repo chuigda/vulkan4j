@@ -229,23 +229,19 @@ public record VkResolveImageInfo2(@NotNull MemorySegment segment) implements IVk
         return new VkImageResolve2(s);
     }
 
-    public void pRegions(@Nullable VkImageResolve2 value) {
+    public void pRegions(@Nullable IVkImageResolve2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
     }
 
-    @unsafe public @Nullable VkImageResolve2[] pRegions(int assumedCount) {
+    @unsafe public @Nullable VkImageResolve2.Ptr pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkImageResolve2.BYTES);
-        VkImageResolve2[] ret = new VkImageResolve2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkImageResolve2(s.asSlice(i * VkImageResolve2.BYTES, VkImageResolve2.BYTES));
-        }
-        return ret;
+        return new VkImageResolve2.Ptr(s);
     }
 
     public @pointer(target=VkImageResolve2.class) MemorySegment pRegionsRaw() {

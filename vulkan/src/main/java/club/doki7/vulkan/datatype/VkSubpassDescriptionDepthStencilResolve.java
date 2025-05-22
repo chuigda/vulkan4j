@@ -194,23 +194,19 @@ public record VkSubpassDescriptionDepthStencilResolve(@NotNull MemorySegment seg
         return new VkAttachmentReference2(s);
     }
 
-    public void pDepthStencilResolveAttachment(@Nullable VkAttachmentReference2 value) {
+    public void pDepthStencilResolveAttachment(@Nullable IVkAttachmentReference2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDepthStencilResolveAttachmentRaw(s);
     }
 
-    @unsafe public @Nullable VkAttachmentReference2[] pDepthStencilResolveAttachment(int assumedCount) {
+    @unsafe public @Nullable VkAttachmentReference2.Ptr pDepthStencilResolveAttachment(int assumedCount) {
         MemorySegment s = pDepthStencilResolveAttachmentRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkAttachmentReference2.BYTES);
-        VkAttachmentReference2[] ret = new VkAttachmentReference2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentReference2(s.asSlice(i * VkAttachmentReference2.BYTES, VkAttachmentReference2.BYTES));
-        }
-        return ret;
+        return new VkAttachmentReference2.Ptr(s);
     }
 
     public @pointer(target=VkAttachmentReference2.class) MemorySegment pDepthStencilResolveAttachmentRaw() {

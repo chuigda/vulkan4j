@@ -259,23 +259,19 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return new VkDebugUtilsLabelEXT(s);
     }
 
-    public void pQueueLabels(@Nullable VkDebugUtilsLabelEXT value) {
+    public void pQueueLabels(@Nullable IVkDebugUtilsLabelEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueLabelsRaw(s);
     }
 
-    @unsafe public @Nullable VkDebugUtilsLabelEXT[] pQueueLabels(int assumedCount) {
+    @unsafe public @Nullable VkDebugUtilsLabelEXT.Ptr pQueueLabels(int assumedCount) {
         MemorySegment s = pQueueLabelsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDebugUtilsLabelEXT.BYTES);
-        VkDebugUtilsLabelEXT[] ret = new VkDebugUtilsLabelEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDebugUtilsLabelEXT(s.asSlice(i * VkDebugUtilsLabelEXT.BYTES, VkDebugUtilsLabelEXT.BYTES));
-        }
-        return ret;
+        return new VkDebugUtilsLabelEXT.Ptr(s);
     }
 
     public @pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment pQueueLabelsRaw() {
@@ -302,23 +298,19 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return new VkDebugUtilsLabelEXT(s);
     }
 
-    public void pCmdBufLabels(@Nullable VkDebugUtilsLabelEXT value) {
+    public void pCmdBufLabels(@Nullable IVkDebugUtilsLabelEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCmdBufLabelsRaw(s);
     }
 
-    @unsafe public @Nullable VkDebugUtilsLabelEXT[] pCmdBufLabels(int assumedCount) {
+    @unsafe public @Nullable VkDebugUtilsLabelEXT.Ptr pCmdBufLabels(int assumedCount) {
         MemorySegment s = pCmdBufLabelsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDebugUtilsLabelEXT.BYTES);
-        VkDebugUtilsLabelEXT[] ret = new VkDebugUtilsLabelEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDebugUtilsLabelEXT(s.asSlice(i * VkDebugUtilsLabelEXT.BYTES, VkDebugUtilsLabelEXT.BYTES));
-        }
-        return ret;
+        return new VkDebugUtilsLabelEXT.Ptr(s);
     }
 
     public @pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment pCmdBufLabelsRaw() {
@@ -345,23 +337,19 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return new VkDebugUtilsObjectNameInfoEXT(s);
     }
 
-    public void pObjects(@Nullable VkDebugUtilsObjectNameInfoEXT value) {
+    public void pObjects(@Nullable IVkDebugUtilsObjectNameInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pObjectsRaw(s);
     }
 
-    @unsafe public @Nullable VkDebugUtilsObjectNameInfoEXT[] pObjects(int assumedCount) {
+    @unsafe public @Nullable VkDebugUtilsObjectNameInfoEXT.Ptr pObjects(int assumedCount) {
         MemorySegment s = pObjectsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDebugUtilsObjectNameInfoEXT.BYTES);
-        VkDebugUtilsObjectNameInfoEXT[] ret = new VkDebugUtilsObjectNameInfoEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDebugUtilsObjectNameInfoEXT(s.asSlice(i * VkDebugUtilsObjectNameInfoEXT.BYTES, VkDebugUtilsObjectNameInfoEXT.BYTES));
-        }
-        return ret;
+        return new VkDebugUtilsObjectNameInfoEXT.Ptr(s);
     }
 
     public @pointer(target=VkDebugUtilsObjectNameInfoEXT.class) MemorySegment pObjectsRaw() {

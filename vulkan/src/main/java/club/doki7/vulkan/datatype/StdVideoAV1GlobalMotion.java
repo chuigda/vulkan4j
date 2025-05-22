@@ -119,8 +119,7 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
 
     public static StdVideoAV1GlobalMotion.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1GlobalMotion.Ptr ret = new StdVideoAV1GlobalMotion.Ptr(segment);
-        return ret;
+        return new StdVideoAV1GlobalMotion.Ptr(segment);
     }
 
     public static StdVideoAV1GlobalMotion clone(Arena arena, StdVideoAV1GlobalMotion src) {

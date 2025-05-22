@@ -122,8 +122,7 @@ public record VkVideoEncodeH264QpKHR(@NotNull MemorySegment segment) implements 
 
     public static VkVideoEncodeH264QpKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkVideoEncodeH264QpKHR.Ptr ret = new VkVideoEncodeH264QpKHR.Ptr(segment);
-        return ret;
+        return new VkVideoEncodeH264QpKHR.Ptr(segment);
     }
 
     public static VkVideoEncodeH264QpKHR clone(Arena arena, VkVideoEncodeH264QpKHR src) {

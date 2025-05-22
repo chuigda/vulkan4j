@@ -119,8 +119,7 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
 
     public static StdVideoAV1LoopRestoration.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1LoopRestoration.Ptr ret = new StdVideoAV1LoopRestoration.Ptr(segment);
-        return ret;
+        return new StdVideoAV1LoopRestoration.Ptr(segment);
     }
 
     public static StdVideoAV1LoopRestoration clone(Arena arena, StdVideoAV1LoopRestoration src) {

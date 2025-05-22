@@ -194,23 +194,19 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(@NotNull MemorySegment 
         return new VkViewportSwizzleNV(s);
     }
 
-    public void pViewportSwizzles(@Nullable VkViewportSwizzleNV value) {
+    public void pViewportSwizzles(@Nullable IVkViewportSwizzleNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewportSwizzlesRaw(s);
     }
 
-    @unsafe public @Nullable VkViewportSwizzleNV[] pViewportSwizzles(int assumedCount) {
+    @unsafe public @Nullable VkViewportSwizzleNV.Ptr pViewportSwizzles(int assumedCount) {
         MemorySegment s = pViewportSwizzlesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkViewportSwizzleNV.BYTES);
-        VkViewportSwizzleNV[] ret = new VkViewportSwizzleNV[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkViewportSwizzleNV(s.asSlice(i * VkViewportSwizzleNV.BYTES, VkViewportSwizzleNV.BYTES));
-        }
-        return ret;
+        return new VkViewportSwizzleNV.Ptr(s);
     }
 
     public @pointer(target=VkViewportSwizzleNV.class) MemorySegment pViewportSwizzlesRaw() {

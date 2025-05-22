@@ -119,8 +119,7 @@ public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) i
 
     public static StdVideoEncodeAV1ExtensionHeader.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeAV1ExtensionHeader.Ptr ret = new StdVideoEncodeAV1ExtensionHeader.Ptr(segment);
-        return ret;
+        return new StdVideoEncodeAV1ExtensionHeader.Ptr(segment);
     }
 
     public static StdVideoEncodeAV1ExtensionHeader clone(Arena arena, StdVideoEncodeAV1ExtensionHeader src) {

@@ -123,8 +123,7 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
 
     public static VkPhysicalDeviceMemoryProperties.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceMemoryProperties.Ptr ret = new VkPhysicalDeviceMemoryProperties.Ptr(segment);
-        return ret;
+        return new VkPhysicalDeviceMemoryProperties.Ptr(segment);
     }
 
     public static VkPhysicalDeviceMemoryProperties clone(Arena arena, VkPhysicalDeviceMemoryProperties src) {

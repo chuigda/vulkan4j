@@ -185,23 +185,19 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
         return new VkVideoPictureResourceInfoKHR(s);
     }
 
-    public void pPictureResource(@Nullable VkVideoPictureResourceInfoKHR value) {
+    public void pPictureResource(@Nullable IVkVideoPictureResourceInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPictureResourceRaw(s);
     }
 
-    @unsafe public @Nullable VkVideoPictureResourceInfoKHR[] pPictureResource(int assumedCount) {
+    @unsafe public @Nullable VkVideoPictureResourceInfoKHR.Ptr pPictureResource(int assumedCount) {
         MemorySegment s = pPictureResourceRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkVideoPictureResourceInfoKHR.BYTES);
-        VkVideoPictureResourceInfoKHR[] ret = new VkVideoPictureResourceInfoKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVideoPictureResourceInfoKHR(s.asSlice(i * VkVideoPictureResourceInfoKHR.BYTES, VkVideoPictureResourceInfoKHR.BYTES));
-        }
-        return ret;
+        return new VkVideoPictureResourceInfoKHR.Ptr(s);
     }
 
     public @pointer(target=VkVideoPictureResourceInfoKHR.class) MemorySegment pPictureResourceRaw() {

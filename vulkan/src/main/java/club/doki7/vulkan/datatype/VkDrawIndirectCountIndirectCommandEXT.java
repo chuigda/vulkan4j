@@ -122,8 +122,7 @@ public record VkDrawIndirectCountIndirectCommandEXT(@NotNull MemorySegment segme
 
     public static VkDrawIndirectCountIndirectCommandEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDrawIndirectCountIndirectCommandEXT.Ptr ret = new VkDrawIndirectCountIndirectCommandEXT.Ptr(segment);
-        return ret;
+        return new VkDrawIndirectCountIndirectCommandEXT.Ptr(segment);
     }
 
     public static VkDrawIndirectCountIndirectCommandEXT clone(Arena arena, VkDrawIndirectCountIndirectCommandEXT src) {

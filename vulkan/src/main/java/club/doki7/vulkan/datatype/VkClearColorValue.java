@@ -122,8 +122,7 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
 
     public static VkClearColorValue.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkClearColorValue.Ptr ret = new VkClearColorValue.Ptr(segment);
-        return ret;
+        return new VkClearColorValue.Ptr(segment);
     }
 
     public static VkClearColorValue clone(Arena arena, VkClearColorValue src) {

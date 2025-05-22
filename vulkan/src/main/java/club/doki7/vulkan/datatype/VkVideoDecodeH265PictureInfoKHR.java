@@ -178,23 +178,19 @@ public record VkVideoDecodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         return new StdVideoDecodeH265PictureInfo(s);
     }
 
-    public void pStdPictureInfo(@Nullable StdVideoDecodeH265PictureInfo value) {
+    public void pStdPictureInfo(@Nullable IStdVideoDecodeH265PictureInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdPictureInfoRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoDecodeH265PictureInfo[] pStdPictureInfo(int assumedCount) {
+    @unsafe public @Nullable StdVideoDecodeH265PictureInfo.Ptr pStdPictureInfo(int assumedCount) {
         MemorySegment s = pStdPictureInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoDecodeH265PictureInfo.BYTES);
-        StdVideoDecodeH265PictureInfo[] ret = new StdVideoDecodeH265PictureInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoDecodeH265PictureInfo(s.asSlice(i * StdVideoDecodeH265PictureInfo.BYTES, StdVideoDecodeH265PictureInfo.BYTES));
-        }
-        return ret;
+        return new StdVideoDecodeH265PictureInfo.Ptr(s);
     }
 
     public @pointer(target=StdVideoDecodeH265PictureInfo.class) MemorySegment pStdPictureInfoRaw() {

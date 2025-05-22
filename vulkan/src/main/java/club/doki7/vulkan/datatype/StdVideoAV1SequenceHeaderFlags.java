@@ -138,8 +138,7 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
 
     public static StdVideoAV1SequenceHeaderFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1SequenceHeaderFlags.Ptr ret = new StdVideoAV1SequenceHeaderFlags.Ptr(segment);
-        return ret;
+        return new StdVideoAV1SequenceHeaderFlags.Ptr(segment);
     }
 
     public static StdVideoAV1SequenceHeaderFlags clone(Arena arena, StdVideoAV1SequenceHeaderFlags src) {

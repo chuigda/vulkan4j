@@ -121,8 +121,7 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
 
     public static VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.Ptr ret = new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.Ptr(segment);
-        return ret;
+        return new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.Ptr(segment);
     }
 
     public static VkPartitionedAccelerationStructureWritePartitionTranslationDataNV clone(Arena arena, VkPartitionedAccelerationStructureWritePartitionTranslationDataNV src) {

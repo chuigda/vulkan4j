@@ -128,8 +128,7 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
 
     public static StdVideoEncodeH265WeightTable.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeH265WeightTable.Ptr ret = new StdVideoEncodeH265WeightTable.Ptr(segment);
-        return ret;
+        return new StdVideoEncodeH265WeightTable.Ptr(segment);
     }
 
     public static StdVideoEncodeH265WeightTable clone(Arena arena, StdVideoEncodeH265WeightTable src) {

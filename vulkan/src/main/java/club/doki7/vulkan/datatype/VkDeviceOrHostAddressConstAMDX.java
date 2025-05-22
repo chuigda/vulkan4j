@@ -121,8 +121,7 @@ public record VkDeviceOrHostAddressConstAMDX(@NotNull MemorySegment segment) imp
 
     public static VkDeviceOrHostAddressConstAMDX.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDeviceOrHostAddressConstAMDX.Ptr ret = new VkDeviceOrHostAddressConstAMDX.Ptr(segment);
-        return ret;
+        return new VkDeviceOrHostAddressConstAMDX.Ptr(segment);
     }
 
     public static VkDeviceOrHostAddressConstAMDX clone(Arena arena, VkDeviceOrHostAddressConstAMDX src) {

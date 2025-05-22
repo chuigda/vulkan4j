@@ -121,8 +121,7 @@ public record VkPerformanceValueINTEL(@NotNull MemorySegment segment) implements
 
     public static VkPerformanceValueINTEL.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPerformanceValueINTEL.Ptr ret = new VkPerformanceValueINTEL.Ptr(segment);
-        return ret;
+        return new VkPerformanceValueINTEL.Ptr(segment);
     }
 
     public static VkPerformanceValueINTEL clone(Arena arena, VkPerformanceValueINTEL src) {

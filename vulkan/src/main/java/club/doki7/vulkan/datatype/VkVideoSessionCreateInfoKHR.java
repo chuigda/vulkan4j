@@ -200,23 +200,19 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         return new VkVideoProfileInfoKHR(s);
     }
 
-    public void pVideoProfile(@Nullable VkVideoProfileInfoKHR value) {
+    public void pVideoProfile(@Nullable IVkVideoProfileInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVideoProfileRaw(s);
     }
 
-    @unsafe public @Nullable VkVideoProfileInfoKHR[] pVideoProfile(int assumedCount) {
+    @unsafe public @Nullable VkVideoProfileInfoKHR.Ptr pVideoProfile(int assumedCount) {
         MemorySegment s = pVideoProfileRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkVideoProfileInfoKHR.BYTES);
-        VkVideoProfileInfoKHR[] ret = new VkVideoProfileInfoKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVideoProfileInfoKHR(s.asSlice(i * VkVideoProfileInfoKHR.BYTES, VkVideoProfileInfoKHR.BYTES));
-        }
-        return ret;
+        return new VkVideoProfileInfoKHR.Ptr(s);
     }
 
     public @pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pVideoProfileRaw() {
@@ -275,23 +271,19 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         return new VkExtensionProperties(s);
     }
 
-    public void pStdHeaderVersion(@Nullable VkExtensionProperties value) {
+    public void pStdHeaderVersion(@Nullable IVkExtensionProperties value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdHeaderVersionRaw(s);
     }
 
-    @unsafe public @Nullable VkExtensionProperties[] pStdHeaderVersion(int assumedCount) {
+    @unsafe public @Nullable VkExtensionProperties.Ptr pStdHeaderVersion(int assumedCount) {
         MemorySegment s = pStdHeaderVersionRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkExtensionProperties.BYTES);
-        VkExtensionProperties[] ret = new VkExtensionProperties[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkExtensionProperties(s.asSlice(i * VkExtensionProperties.BYTES, VkExtensionProperties.BYTES));
-        }
-        return ret;
+        return new VkExtensionProperties.Ptr(s);
     }
 
     public @pointer(target=VkExtensionProperties.class) MemorySegment pStdHeaderVersionRaw() {

@@ -121,8 +121,7 @@ public record StdVideoEncodeH264WeightTableFlags(@NotNull MemorySegment segment)
 
     public static StdVideoEncodeH264WeightTableFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeH264WeightTableFlags.Ptr ret = new StdVideoEncodeH264WeightTableFlags.Ptr(segment);
-        return ret;
+        return new StdVideoEncodeH264WeightTableFlags.Ptr(segment);
     }
 
     public static StdVideoEncodeH264WeightTableFlags clone(Arena arena, StdVideoEncodeH264WeightTableFlags src) {

@@ -121,8 +121,7 @@ public record VkMultiDrawInfoEXT(@NotNull MemorySegment segment) implements IVkM
 
     public static VkMultiDrawInfoEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkMultiDrawInfoEXT.Ptr ret = new VkMultiDrawInfoEXT.Ptr(segment);
-        return ret;
+        return new VkMultiDrawInfoEXT.Ptr(segment);
     }
 
     public static VkMultiDrawInfoEXT clone(Arena arena, VkMultiDrawInfoEXT src) {

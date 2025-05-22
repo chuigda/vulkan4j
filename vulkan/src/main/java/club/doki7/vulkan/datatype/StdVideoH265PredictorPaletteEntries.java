@@ -118,8 +118,7 @@ public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment
 
     public static StdVideoH265PredictorPaletteEntries.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoH265PredictorPaletteEntries.Ptr ret = new StdVideoH265PredictorPaletteEntries.Ptr(segment);
-        return ret;
+        return new StdVideoH265PredictorPaletteEntries.Ptr(segment);
     }
 
     public static StdVideoH265PredictorPaletteEntries clone(Arena arena, StdVideoH265PredictorPaletteEntries src) {

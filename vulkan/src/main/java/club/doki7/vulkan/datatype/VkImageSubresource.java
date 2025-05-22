@@ -122,8 +122,7 @@ public record VkImageSubresource(@NotNull MemorySegment segment) implements IVkI
 
     public static VkImageSubresource.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkImageSubresource.Ptr ret = new VkImageSubresource.Ptr(segment);
-        return ret;
+        return new VkImageSubresource.Ptr(segment);
     }
 
     public static VkImageSubresource clone(Arena arena, VkImageSubresource src) {

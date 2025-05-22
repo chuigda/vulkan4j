@@ -211,23 +211,19 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IVkCo
         return new VkBufferCopy2(s);
     }
 
-    public void pRegions(@Nullable VkBufferCopy2 value) {
+    public void pRegions(@Nullable IVkBufferCopy2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
     }
 
-    @unsafe public @Nullable VkBufferCopy2[] pRegions(int assumedCount) {
+    @unsafe public @Nullable VkBufferCopy2.Ptr pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkBufferCopy2.BYTES);
-        VkBufferCopy2[] ret = new VkBufferCopy2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkBufferCopy2(s.asSlice(i * VkBufferCopy2.BYTES, VkBufferCopy2.BYTES));
-        }
-        return ret;
+        return new VkBufferCopy2.Ptr(s);
     }
 
     public @pointer(target=VkBufferCopy2.class) MemorySegment pRegionsRaw() {

@@ -220,23 +220,19 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
         return new VkClearValue(s);
     }
 
-    public void pClearValues(@Nullable VkClearValue value) {
+    public void pClearValues(@Nullable IVkClearValue value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pClearValuesRaw(s);
     }
 
-    @unsafe public @Nullable VkClearValue[] pClearValues(int assumedCount) {
+    @unsafe public @Nullable VkClearValue.Ptr pClearValues(int assumedCount) {
         MemorySegment s = pClearValuesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkClearValue.BYTES);
-        VkClearValue[] ret = new VkClearValue[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkClearValue(s.asSlice(i * VkClearValue.BYTES, VkClearValue.BYTES));
-        }
-        return ret;
+        return new VkClearValue.Ptr(s);
     }
 
     public @pointer(target=VkClearValue.class) MemorySegment pClearValuesRaw() {

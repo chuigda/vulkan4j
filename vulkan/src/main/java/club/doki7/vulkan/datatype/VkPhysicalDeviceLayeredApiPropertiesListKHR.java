@@ -185,23 +185,19 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
         return new VkPhysicalDeviceLayeredApiPropertiesKHR(s);
     }
 
-    public void pLayeredApis(@Nullable VkPhysicalDeviceLayeredApiPropertiesKHR value) {
+    public void pLayeredApis(@Nullable IVkPhysicalDeviceLayeredApiPropertiesKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLayeredApisRaw(s);
     }
 
-    @unsafe public @Nullable VkPhysicalDeviceLayeredApiPropertiesKHR[] pLayeredApis(int assumedCount) {
+    @unsafe public @Nullable VkPhysicalDeviceLayeredApiPropertiesKHR.Ptr pLayeredApis(int assumedCount) {
         MemorySegment s = pLayeredApisRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPhysicalDeviceLayeredApiPropertiesKHR.BYTES);
-        VkPhysicalDeviceLayeredApiPropertiesKHR[] ret = new VkPhysicalDeviceLayeredApiPropertiesKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPhysicalDeviceLayeredApiPropertiesKHR(s.asSlice(i * VkPhysicalDeviceLayeredApiPropertiesKHR.BYTES, VkPhysicalDeviceLayeredApiPropertiesKHR.BYTES));
-        }
-        return ret;
+        return new VkPhysicalDeviceLayeredApiPropertiesKHR.Ptr(s);
     }
 
     public @pointer(target=VkPhysicalDeviceLayeredApiPropertiesKHR.class) MemorySegment pLayeredApisRaw() {

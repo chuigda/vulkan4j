@@ -205,23 +205,19 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         return new VkIndirectCommandsLayoutTokenNV(s);
     }
 
-    public void pTokens(@Nullable VkIndirectCommandsLayoutTokenNV value) {
+    public void pTokens(@Nullable IVkIndirectCommandsLayoutTokenNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTokensRaw(s);
     }
 
-    @unsafe public @Nullable VkIndirectCommandsLayoutTokenNV[] pTokens(int assumedCount) {
+    @unsafe public @Nullable VkIndirectCommandsLayoutTokenNV.Ptr pTokens(int assumedCount) {
         MemorySegment s = pTokensRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkIndirectCommandsLayoutTokenNV.BYTES);
-        VkIndirectCommandsLayoutTokenNV[] ret = new VkIndirectCommandsLayoutTokenNV[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectCommandsLayoutTokenNV(s.asSlice(i * VkIndirectCommandsLayoutTokenNV.BYTES, VkIndirectCommandsLayoutTokenNV.BYTES));
-        }
-        return ret;
+        return new VkIndirectCommandsLayoutTokenNV.Ptr(s);
     }
 
     public @pointer(target=VkIndirectCommandsLayoutTokenNV.class) MemorySegment pTokensRaw() {

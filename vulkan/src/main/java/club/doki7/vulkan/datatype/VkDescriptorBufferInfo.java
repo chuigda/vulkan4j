@@ -122,8 +122,7 @@ public record VkDescriptorBufferInfo(@NotNull MemorySegment segment) implements 
 
     public static VkDescriptorBufferInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDescriptorBufferInfo.Ptr ret = new VkDescriptorBufferInfo.Ptr(segment);
-        return ret;
+        return new VkDescriptorBufferInfo.Ptr(segment);
     }
 
     public static VkDescriptorBufferInfo clone(Arena arena, VkDescriptorBufferInfo src) {

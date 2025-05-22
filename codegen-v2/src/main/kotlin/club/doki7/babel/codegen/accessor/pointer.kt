@@ -148,13 +148,13 @@ private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField
     }
     +""
 
-    defun("public", "void", member.name, "@Nullable ${pointee.name} value") {
+    defun("public", "void", member.name, "@Nullable ${pointee.jType} value") {
         +"MemorySegment s = value == null ? MemorySegment.NULL : value.segment();"
         +"$rawName(s);"
     }
     +""
 
-    defun("@unsafe public", "@Nullable ${pointee.name}[]", member.name, "int assumedCount") {
+    defun("@unsafe public", "@Nullable ${pointee.name}.Ptr", member.name, "int assumedCount") {
         +"MemorySegment s = ${member.rawName}();"
         "if (s.equals(MemorySegment.NULL))" {
             +"return null;"
@@ -162,12 +162,7 @@ private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField
         +""
 
         +"s = s.reinterpret(assumedCount * ${pointee.name}.BYTES);"
-        +"${pointee.name}[] ret = new ${pointee.name}[assumedCount];"
-        "for (int i = 0; i < assumedCount; i ++)" {
-            +"ret[i] = new ${pointee.name}(s.asSlice(i * ${pointee.name}.BYTES, ${pointee.name}.BYTES));"
-        }
-
-        +"return ret;"
+        +"return new ${pointee.name}.Ptr(s);"
     }
     +""
 

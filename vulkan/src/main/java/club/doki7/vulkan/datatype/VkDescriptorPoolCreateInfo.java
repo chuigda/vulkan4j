@@ -203,23 +203,19 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
         return new VkDescriptorPoolSize(s);
     }
 
-    public void pPoolSizes(@Nullable VkDescriptorPoolSize value) {
+    public void pPoolSizes(@Nullable IVkDescriptorPoolSize value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPoolSizesRaw(s);
     }
 
-    @unsafe public @Nullable VkDescriptorPoolSize[] pPoolSizes(int assumedCount) {
+    @unsafe public @Nullable VkDescriptorPoolSize.Ptr pPoolSizes(int assumedCount) {
         MemorySegment s = pPoolSizesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDescriptorPoolSize.BYTES);
-        VkDescriptorPoolSize[] ret = new VkDescriptorPoolSize[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorPoolSize(s.asSlice(i * VkDescriptorPoolSize.BYTES, VkDescriptorPoolSize.BYTES));
-        }
-        return ret;
+        return new VkDescriptorPoolSize.Ptr(s);
     }
 
     public @pointer(target=VkDescriptorPoolSize.class) MemorySegment pPoolSizesRaw() {

@@ -121,8 +121,7 @@ public record VkClearDepthStencilValue(@NotNull MemorySegment segment) implement
 
     public static VkClearDepthStencilValue.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkClearDepthStencilValue.Ptr ret = new VkClearDepthStencilValue.Ptr(segment);
-        return ret;
+        return new VkClearDepthStencilValue.Ptr(segment);
     }
 
     public static VkClearDepthStencilValue clone(Arena arena, VkClearDepthStencilValue src) {

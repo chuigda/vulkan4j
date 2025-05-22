@@ -126,8 +126,7 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
 
     public static VkShaderStatisticsInfoAMD.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkShaderStatisticsInfoAMD.Ptr ret = new VkShaderStatisticsInfoAMD.Ptr(segment);
-        return ret;
+        return new VkShaderStatisticsInfoAMD.Ptr(segment);
     }
 
     public static VkShaderStatisticsInfoAMD clone(Arena arena, VkShaderStatisticsInfoAMD src) {

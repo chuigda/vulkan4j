@@ -124,8 +124,7 @@ public record VkImageSubresourceRange(@NotNull MemorySegment segment) implements
 
     public static VkImageSubresourceRange.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkImageSubresourceRange.Ptr ret = new VkImageSubresourceRange.Ptr(segment);
-        return ret;
+        return new VkImageSubresourceRange.Ptr(segment);
     }
 
     public static VkImageSubresourceRange clone(Arena arena, VkImageSubresourceRange src) {

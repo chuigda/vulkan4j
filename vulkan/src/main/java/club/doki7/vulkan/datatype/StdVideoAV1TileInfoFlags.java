@@ -120,8 +120,7 @@ public record StdVideoAV1TileInfoFlags(@NotNull MemorySegment segment) implement
 
     public static StdVideoAV1TileInfoFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1TileInfoFlags.Ptr ret = new StdVideoAV1TileInfoFlags.Ptr(segment);
-        return ret;
+        return new StdVideoAV1TileInfoFlags.Ptr(segment);
     }
 
     public static StdVideoAV1TileInfoFlags clone(Arena arena, StdVideoAV1TileInfoFlags src) {

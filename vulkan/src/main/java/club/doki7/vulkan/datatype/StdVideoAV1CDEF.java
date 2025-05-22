@@ -123,8 +123,7 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
 
     public static StdVideoAV1CDEF.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1CDEF.Ptr ret = new StdVideoAV1CDEF.Ptr(segment);
-        return ret;
+        return new StdVideoAV1CDEF.Ptr(segment);
     }
 
     public static StdVideoAV1CDEF clone(Arena arena, StdVideoAV1CDEF src) {

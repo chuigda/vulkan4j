@@ -121,8 +121,7 @@ public record VkMemoryHeap(@NotNull MemorySegment segment) implements IVkMemoryH
 
     public static VkMemoryHeap.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkMemoryHeap.Ptr ret = new VkMemoryHeap.Ptr(segment);
-        return ret;
+        return new VkMemoryHeap.Ptr(segment);
     }
 
     public static VkMemoryHeap clone(Arena arena, VkMemoryHeap src) {

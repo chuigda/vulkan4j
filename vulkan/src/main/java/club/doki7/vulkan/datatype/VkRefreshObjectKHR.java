@@ -122,8 +122,7 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IVkR
 
     public static VkRefreshObjectKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkRefreshObjectKHR.Ptr ret = new VkRefreshObjectKHR.Ptr(segment);
-        return ret;
+        return new VkRefreshObjectKHR.Ptr(segment);
     }
 
     public static VkRefreshObjectKHR clone(Arena arena, VkRefreshObjectKHR src) {

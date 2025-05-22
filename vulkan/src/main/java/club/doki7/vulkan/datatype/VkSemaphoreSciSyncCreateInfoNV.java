@@ -189,23 +189,19 @@ public record VkSemaphoreSciSyncCreateInfoNV(@NotNull MemorySegment segment) imp
         return new NvSciSyncFenceVKREF(s);
     }
 
-    public void pFence(@Nullable NvSciSyncFenceVKREF value) {
+    public void pFence(@Nullable INvSciSyncFenceVKREF value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFenceRaw(s);
     }
 
-    @unsafe public @Nullable NvSciSyncFenceVKREF[] pFence(int assumedCount) {
+    @unsafe public @Nullable NvSciSyncFenceVKREF.Ptr pFence(int assumedCount) {
         MemorySegment s = pFenceRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * NvSciSyncFenceVKREF.BYTES);
-        NvSciSyncFenceVKREF[] ret = new NvSciSyncFenceVKREF[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new NvSciSyncFenceVKREF(s.asSlice(i * NvSciSyncFenceVKREF.BYTES, NvSciSyncFenceVKREF.BYTES));
-        }
-        return ret;
+        return new NvSciSyncFenceVKREF.Ptr(s);
     }
 
     public @pointer(target=NvSciSyncFenceVKREF.class) MemorySegment pFenceRaw() {

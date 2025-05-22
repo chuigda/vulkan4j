@@ -119,8 +119,7 @@ public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements
 
     public static StdVideoAV1Segmentation.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1Segmentation.Ptr ret = new StdVideoAV1Segmentation.Ptr(segment);
-        return ret;
+        return new StdVideoAV1Segmentation.Ptr(segment);
     }
 
     public static StdVideoAV1Segmentation clone(Arena arena, StdVideoAV1Segmentation src) {

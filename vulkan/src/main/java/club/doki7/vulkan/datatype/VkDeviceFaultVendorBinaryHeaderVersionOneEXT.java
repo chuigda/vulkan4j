@@ -130,8 +130,7 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
 
     public static VkDeviceFaultVendorBinaryHeaderVersionOneEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDeviceFaultVendorBinaryHeaderVersionOneEXT.Ptr ret = new VkDeviceFaultVendorBinaryHeaderVersionOneEXT.Ptr(segment);
-        return ret;
+        return new VkDeviceFaultVendorBinaryHeaderVersionOneEXT.Ptr(segment);
     }
 
     public static VkDeviceFaultVendorBinaryHeaderVersionOneEXT clone(Arena arena, VkDeviceFaultVendorBinaryHeaderVersionOneEXT src) {

@@ -121,8 +121,7 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
 
     public static StdVideoH264ScalingLists.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoH264ScalingLists.Ptr ret = new StdVideoH264ScalingLists.Ptr(segment);
-        return ret;
+        return new StdVideoH264ScalingLists.Ptr(segment);
     }
 
     public static StdVideoH264ScalingLists clone(Arena arena, StdVideoH264ScalingLists src) {

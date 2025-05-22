@@ -123,8 +123,7 @@ public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implemen
 
     public static StdVideoAV1FilmGrainFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1FilmGrainFlags.Ptr ret = new StdVideoAV1FilmGrainFlags.Ptr(segment);
-        return ret;
+        return new StdVideoAV1FilmGrainFlags.Ptr(segment);
     }
 
     public static StdVideoAV1FilmGrainFlags clone(Arena arena, StdVideoAV1FilmGrainFlags src) {

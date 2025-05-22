@@ -295,23 +295,19 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         return new VkMicromapUsageEXT(s);
     }
 
-    public void pUsageCounts(@Nullable VkMicromapUsageEXT value) {
+    public void pUsageCounts(@Nullable IVkMicromapUsageEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pUsageCountsRaw(s);
     }
 
-    @unsafe public @Nullable VkMicromapUsageEXT[] pUsageCounts(int assumedCount) {
+    @unsafe public @Nullable VkMicromapUsageEXT.Ptr pUsageCounts(int assumedCount) {
         MemorySegment s = pUsageCountsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkMicromapUsageEXT.BYTES);
-        VkMicromapUsageEXT[] ret = new VkMicromapUsageEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkMicromapUsageEXT(s.asSlice(i * VkMicromapUsageEXT.BYTES, VkMicromapUsageEXT.BYTES));
-        }
-        return ret;
+        return new VkMicromapUsageEXT.Ptr(s);
     }
 
     public @pointer(target=VkMicromapUsageEXT.class) MemorySegment pUsageCountsRaw() {

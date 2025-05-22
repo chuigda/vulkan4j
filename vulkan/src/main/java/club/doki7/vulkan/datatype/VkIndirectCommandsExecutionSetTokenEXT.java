@@ -121,8 +121,7 @@ public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segm
 
     public static VkIndirectCommandsExecutionSetTokenEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkIndirectCommandsExecutionSetTokenEXT.Ptr ret = new VkIndirectCommandsExecutionSetTokenEXT.Ptr(segment);
-        return ret;
+        return new VkIndirectCommandsExecutionSetTokenEXT.Ptr(segment);
     }
 
     public static VkIndirectCommandsExecutionSetTokenEXT clone(Arena arena, VkIndirectCommandsExecutionSetTokenEXT src) {

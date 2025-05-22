@@ -122,8 +122,7 @@ public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull 
 
     public static VkBuildPartitionedAccelerationStructureIndirectCommandNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkBuildPartitionedAccelerationStructureIndirectCommandNV.Ptr ret = new VkBuildPartitionedAccelerationStructureIndirectCommandNV.Ptr(segment);
-        return ret;
+        return new VkBuildPartitionedAccelerationStructureIndirectCommandNV.Ptr(segment);
     }
 
     public static VkBuildPartitionedAccelerationStructureIndirectCommandNV clone(Arena arena, VkBuildPartitionedAccelerationStructureIndirectCommandNV src) {

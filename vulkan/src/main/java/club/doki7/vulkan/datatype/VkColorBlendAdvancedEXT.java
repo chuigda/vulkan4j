@@ -124,8 +124,7 @@ public record VkColorBlendAdvancedEXT(@NotNull MemorySegment segment) implements
 
     public static VkColorBlendAdvancedEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkColorBlendAdvancedEXT.Ptr ret = new VkColorBlendAdvancedEXT.Ptr(segment);
-        return ret;
+        return new VkColorBlendAdvancedEXT.Ptr(segment);
     }
 
     public static VkColorBlendAdvancedEXT clone(Arena arena, VkColorBlendAdvancedEXT src) {

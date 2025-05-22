@@ -121,8 +121,7 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
 
     public static VkIndirectExecutionSetInfoEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkIndirectExecutionSetInfoEXT.Ptr ret = new VkIndirectExecutionSetInfoEXT.Ptr(segment);
-        return ret;
+        return new VkIndirectExecutionSetInfoEXT.Ptr(segment);
     }
 
     public static VkIndirectExecutionSetInfoEXT clone(Arena arena, VkIndirectExecutionSetInfoEXT src) {
@@ -139,23 +138,19 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         return new VkIndirectExecutionSetPipelineInfoEXT(s);
     }
 
-    public void pPipelineInfo(@Nullable VkIndirectExecutionSetPipelineInfoEXT value) {
+    public void pPipelineInfo(@Nullable IVkIndirectExecutionSetPipelineInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkIndirectExecutionSetPipelineInfoEXT[] pPipelineInfo(int assumedCount) {
+    @unsafe public @Nullable VkIndirectExecutionSetPipelineInfoEXT.Ptr pPipelineInfo(int assumedCount) {
         MemorySegment s = pPipelineInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkIndirectExecutionSetPipelineInfoEXT.BYTES);
-        VkIndirectExecutionSetPipelineInfoEXT[] ret = new VkIndirectExecutionSetPipelineInfoEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectExecutionSetPipelineInfoEXT(s.asSlice(i * VkIndirectExecutionSetPipelineInfoEXT.BYTES, VkIndirectExecutionSetPipelineInfoEXT.BYTES));
-        }
-        return ret;
+        return new VkIndirectExecutionSetPipelineInfoEXT.Ptr(s);
     }
 
     public @pointer(target=VkIndirectExecutionSetPipelineInfoEXT.class) MemorySegment pPipelineInfoRaw() {
@@ -174,23 +169,19 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         return new VkIndirectExecutionSetShaderInfoEXT(s);
     }
 
-    public void pShaderInfo(@Nullable VkIndirectExecutionSetShaderInfoEXT value) {
+    public void pShaderInfo(@Nullable IVkIndirectExecutionSetShaderInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pShaderInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkIndirectExecutionSetShaderInfoEXT[] pShaderInfo(int assumedCount) {
+    @unsafe public @Nullable VkIndirectExecutionSetShaderInfoEXT.Ptr pShaderInfo(int assumedCount) {
         MemorySegment s = pShaderInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkIndirectExecutionSetShaderInfoEXT.BYTES);
-        VkIndirectExecutionSetShaderInfoEXT[] ret = new VkIndirectExecutionSetShaderInfoEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectExecutionSetShaderInfoEXT(s.asSlice(i * VkIndirectExecutionSetShaderInfoEXT.BYTES, VkIndirectExecutionSetShaderInfoEXT.BYTES));
-        }
-        return ret;
+        return new VkIndirectExecutionSetShaderInfoEXT.Ptr(s);
     }
 
     public @pointer(target=VkIndirectExecutionSetShaderInfoEXT.class) MemorySegment pShaderInfoRaw() {

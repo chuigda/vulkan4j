@@ -187,23 +187,19 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
-    public void pStages(@Nullable VkPipelineShaderStageCreateInfo value) {
+    public void pStages(@Nullable IVkPipelineShaderStageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStagesRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineShaderStageCreateInfo[] pStages(int assumedCount) {
+    @unsafe public @Nullable VkPipelineShaderStageCreateInfo.Ptr pStages(int assumedCount) {
         MemorySegment s = pStagesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPipelineShaderStageCreateInfo.BYTES);
-        VkPipelineShaderStageCreateInfo[] ret = new VkPipelineShaderStageCreateInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineShaderStageCreateInfo(s.asSlice(i * VkPipelineShaderStageCreateInfo.BYTES, VkPipelineShaderStageCreateInfo.BYTES));
-        }
-        return ret;
+        return new VkPipelineShaderStageCreateInfo.Ptr(s);
     }
 
     public @pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
@@ -222,23 +218,19 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         return new VkPipelineVertexInputStateCreateInfo(s);
     }
 
-    public void pVertexInputState(@Nullable VkPipelineVertexInputStateCreateInfo value) {
+    public void pVertexInputState(@Nullable IVkPipelineVertexInputStateCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVertexInputStateRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineVertexInputStateCreateInfo[] pVertexInputState(int assumedCount) {
+    @unsafe public @Nullable VkPipelineVertexInputStateCreateInfo.Ptr pVertexInputState(int assumedCount) {
         MemorySegment s = pVertexInputStateRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPipelineVertexInputStateCreateInfo.BYTES);
-        VkPipelineVertexInputStateCreateInfo[] ret = new VkPipelineVertexInputStateCreateInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineVertexInputStateCreateInfo(s.asSlice(i * VkPipelineVertexInputStateCreateInfo.BYTES, VkPipelineVertexInputStateCreateInfo.BYTES));
-        }
-        return ret;
+        return new VkPipelineVertexInputStateCreateInfo.Ptr(s);
     }
 
     public @pointer(target=VkPipelineVertexInputStateCreateInfo.class) MemorySegment pVertexInputStateRaw() {
@@ -257,23 +249,19 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         return new VkPipelineTessellationStateCreateInfo(s);
     }
 
-    public void pTessellationState(@Nullable VkPipelineTessellationStateCreateInfo value) {
+    public void pTessellationState(@Nullable IVkPipelineTessellationStateCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTessellationStateRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineTessellationStateCreateInfo[] pTessellationState(int assumedCount) {
+    @unsafe public @Nullable VkPipelineTessellationStateCreateInfo.Ptr pTessellationState(int assumedCount) {
         MemorySegment s = pTessellationStateRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPipelineTessellationStateCreateInfo.BYTES);
-        VkPipelineTessellationStateCreateInfo[] ret = new VkPipelineTessellationStateCreateInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineTessellationStateCreateInfo(s.asSlice(i * VkPipelineTessellationStateCreateInfo.BYTES, VkPipelineTessellationStateCreateInfo.BYTES));
-        }
-        return ret;
+        return new VkPipelineTessellationStateCreateInfo.Ptr(s);
     }
 
     public @pointer(target=VkPipelineTessellationStateCreateInfo.class) MemorySegment pTessellationStateRaw() {

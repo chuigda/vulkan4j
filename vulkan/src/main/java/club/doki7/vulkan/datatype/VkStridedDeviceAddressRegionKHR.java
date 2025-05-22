@@ -122,8 +122,7 @@ public record VkStridedDeviceAddressRegionKHR(@NotNull MemorySegment segment) im
 
     public static VkStridedDeviceAddressRegionKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkStridedDeviceAddressRegionKHR.Ptr ret = new VkStridedDeviceAddressRegionKHR.Ptr(segment);
-        return ret;
+        return new VkStridedDeviceAddressRegionKHR.Ptr(segment);
     }
 
     public static VkStridedDeviceAddressRegionKHR clone(Arena arena, VkStridedDeviceAddressRegionKHR src) {

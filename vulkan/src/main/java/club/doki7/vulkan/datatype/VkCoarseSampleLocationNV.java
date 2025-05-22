@@ -122,8 +122,7 @@ public record VkCoarseSampleLocationNV(@NotNull MemorySegment segment) implement
 
     public static VkCoarseSampleLocationNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkCoarseSampleLocationNV.Ptr ret = new VkCoarseSampleLocationNV.Ptr(segment);
-        return ret;
+        return new VkCoarseSampleLocationNV.Ptr(segment);
     }
 
     public static VkCoarseSampleLocationNV clone(Arena arena, VkCoarseSampleLocationNV src) {

@@ -121,8 +121,7 @@ public record VkAttachmentReference(@NotNull MemorySegment segment) implements I
 
     public static VkAttachmentReference.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkAttachmentReference.Ptr ret = new VkAttachmentReference.Ptr(segment);
-        return ret;
+        return new VkAttachmentReference.Ptr(segment);
     }
 
     public static VkAttachmentReference clone(Arena arena, VkAttachmentReference src) {

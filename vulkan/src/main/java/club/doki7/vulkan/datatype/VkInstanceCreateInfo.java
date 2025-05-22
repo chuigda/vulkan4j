@@ -189,23 +189,19 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IV
         return new VkApplicationInfo(s);
     }
 
-    public void pApplicationInfo(@Nullable VkApplicationInfo value) {
+    public void pApplicationInfo(@Nullable IVkApplicationInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pApplicationInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkApplicationInfo[] pApplicationInfo(int assumedCount) {
+    @unsafe public @Nullable VkApplicationInfo.Ptr pApplicationInfo(int assumedCount) {
         MemorySegment s = pApplicationInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkApplicationInfo.BYTES);
-        VkApplicationInfo[] ret = new VkApplicationInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkApplicationInfo(s.asSlice(i * VkApplicationInfo.BYTES, VkApplicationInfo.BYTES));
-        }
-        return ret;
+        return new VkApplicationInfo.Ptr(s);
     }
 
     public @pointer(target=VkApplicationInfo.class) MemorySegment pApplicationInfoRaw() {

@@ -178,23 +178,19 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
         return new VkPipelineBinaryKeysAndDataKHR(s);
     }
 
-    public void pKeysAndDataInfo(@Nullable VkPipelineBinaryKeysAndDataKHR value) {
+    public void pKeysAndDataInfo(@Nullable IVkPipelineBinaryKeysAndDataKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pKeysAndDataInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineBinaryKeysAndDataKHR[] pKeysAndDataInfo(int assumedCount) {
+    @unsafe public @Nullable VkPipelineBinaryKeysAndDataKHR.Ptr pKeysAndDataInfo(int assumedCount) {
         MemorySegment s = pKeysAndDataInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPipelineBinaryKeysAndDataKHR.BYTES);
-        VkPipelineBinaryKeysAndDataKHR[] ret = new VkPipelineBinaryKeysAndDataKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineBinaryKeysAndDataKHR(s.asSlice(i * VkPipelineBinaryKeysAndDataKHR.BYTES, VkPipelineBinaryKeysAndDataKHR.BYTES));
-        }
-        return ret;
+        return new VkPipelineBinaryKeysAndDataKHR.Ptr(s);
     }
 
     public @pointer(target=VkPipelineBinaryKeysAndDataKHR.class) MemorySegment pKeysAndDataInfoRaw() {
@@ -225,23 +221,19 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
         return new VkPipelineCreateInfoKHR(s);
     }
 
-    public void pPipelineCreateInfo(@Nullable VkPipelineCreateInfoKHR value) {
+    public void pPipelineCreateInfo(@Nullable IVkPipelineCreateInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineCreateInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineCreateInfoKHR[] pPipelineCreateInfo(int assumedCount) {
+    @unsafe public @Nullable VkPipelineCreateInfoKHR.Ptr pPipelineCreateInfo(int assumedCount) {
         MemorySegment s = pPipelineCreateInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPipelineCreateInfoKHR.BYTES);
-        VkPipelineCreateInfoKHR[] ret = new VkPipelineCreateInfoKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineCreateInfoKHR(s.asSlice(i * VkPipelineCreateInfoKHR.BYTES, VkPipelineCreateInfoKHR.BYTES));
-        }
-        return ret;
+        return new VkPipelineCreateInfoKHR.Ptr(s);
     }
 
     public @pointer(target=VkPipelineCreateInfoKHR.class) MemorySegment pPipelineCreateInfoRaw() {

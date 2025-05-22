@@ -124,8 +124,7 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
 
     public static VkPerformanceValueDataINTEL.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPerformanceValueDataINTEL.Ptr ret = new VkPerformanceValueDataINTEL.Ptr(segment);
-        return ret;
+        return new VkPerformanceValueDataINTEL.Ptr(segment);
     }
 
     public static VkPerformanceValueDataINTEL clone(Arena arena, VkPerformanceValueDataINTEL src) {

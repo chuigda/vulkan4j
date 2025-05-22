@@ -225,8 +225,7 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
 
     public static VkPhysicalDeviceLimits.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceLimits.Ptr ret = new VkPhysicalDeviceLimits.Ptr(segment);
-        return ret;
+        return new VkPhysicalDeviceLimits.Ptr(segment);
     }
 
     public static VkPhysicalDeviceLimits clone(Arena arena, VkPhysicalDeviceLimits src) {

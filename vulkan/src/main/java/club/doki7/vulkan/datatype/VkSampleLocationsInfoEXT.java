@@ -203,23 +203,19 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         return new VkSampleLocationEXT(s);
     }
 
-    public void pSampleLocations(@Nullable VkSampleLocationEXT value) {
+    public void pSampleLocations(@Nullable IVkSampleLocationEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSampleLocationsRaw(s);
     }
 
-    @unsafe public @Nullable VkSampleLocationEXT[] pSampleLocations(int assumedCount) {
+    @unsafe public @Nullable VkSampleLocationEXT.Ptr pSampleLocations(int assumedCount) {
         MemorySegment s = pSampleLocationsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkSampleLocationEXT.BYTES);
-        VkSampleLocationEXT[] ret = new VkSampleLocationEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSampleLocationEXT(s.asSlice(i * VkSampleLocationEXT.BYTES, VkSampleLocationEXT.BYTES));
-        }
-        return ret;
+        return new VkSampleLocationEXT.Ptr(s);
     }
 
     public @pointer(target=VkSampleLocationEXT.class) MemorySegment pSampleLocationsRaw() {

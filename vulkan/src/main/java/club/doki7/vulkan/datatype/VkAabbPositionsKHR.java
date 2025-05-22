@@ -125,8 +125,7 @@ public record VkAabbPositionsKHR(@NotNull MemorySegment segment) implements IVkA
 
     public static VkAabbPositionsKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkAabbPositionsKHR.Ptr ret = new VkAabbPositionsKHR.Ptr(segment);
-        return ret;
+        return new VkAabbPositionsKHR.Ptr(segment);
     }
 
     public static VkAabbPositionsKHR clone(Arena arena, VkAabbPositionsKHR src) {

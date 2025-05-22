@@ -121,8 +121,7 @@ public record VkAttachmentSampleLocationsEXT(@NotNull MemorySegment segment) imp
 
     public static VkAttachmentSampleLocationsEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkAttachmentSampleLocationsEXT.Ptr ret = new VkAttachmentSampleLocationsEXT.Ptr(segment);
-        return ret;
+        return new VkAttachmentSampleLocationsEXT.Ptr(segment);
     }
 
     public static VkAttachmentSampleLocationsEXT clone(Arena arena, VkAttachmentSampleLocationsEXT src) {

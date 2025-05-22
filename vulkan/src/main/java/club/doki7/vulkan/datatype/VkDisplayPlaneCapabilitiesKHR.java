@@ -128,8 +128,7 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
 
     public static VkDisplayPlaneCapabilitiesKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDisplayPlaneCapabilitiesKHR.Ptr ret = new VkDisplayPlaneCapabilitiesKHR.Ptr(segment);
-        return ret;
+        return new VkDisplayPlaneCapabilitiesKHR.Ptr(segment);
     }
 
     public static VkDisplayPlaneCapabilitiesKHR clone(Arena arena, VkDisplayPlaneCapabilitiesKHR src) {

@@ -212,23 +212,19 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
         return new VkGeometryNV(s);
     }
 
-    public void pGeometries(@Nullable VkGeometryNV value) {
+    public void pGeometries(@Nullable IVkGeometryNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGeometriesRaw(s);
     }
 
-    @unsafe public @Nullable VkGeometryNV[] pGeometries(int assumedCount) {
+    @unsafe public @Nullable VkGeometryNV.Ptr pGeometries(int assumedCount) {
         MemorySegment s = pGeometriesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkGeometryNV.BYTES);
-        VkGeometryNV[] ret = new VkGeometryNV[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkGeometryNV(s.asSlice(i * VkGeometryNV.BYTES, VkGeometryNV.BYTES));
-        }
-        return ret;
+        return new VkGeometryNV.Ptr(s);
     }
 
     public @pointer(target=VkGeometryNV.class) MemorySegment pGeometriesRaw() {

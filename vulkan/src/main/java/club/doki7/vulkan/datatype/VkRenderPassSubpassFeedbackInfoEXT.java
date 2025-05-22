@@ -122,8 +122,7 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
 
     public static VkRenderPassSubpassFeedbackInfoEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkRenderPassSubpassFeedbackInfoEXT.Ptr ret = new VkRenderPassSubpassFeedbackInfoEXT.Ptr(segment);
-        return ret;
+        return new VkRenderPassSubpassFeedbackInfoEXT.Ptr(segment);
     }
 
     public static VkRenderPassSubpassFeedbackInfoEXT clone(Arena arena, VkRenderPassSubpassFeedbackInfoEXT src) {

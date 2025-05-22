@@ -122,8 +122,7 @@ public record VkMicromapUsageEXT(@NotNull MemorySegment segment) implements IVkM
 
     public static VkMicromapUsageEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkMicromapUsageEXT.Ptr ret = new VkMicromapUsageEXT.Ptr(segment);
-        return ret;
+        return new VkMicromapUsageEXT.Ptr(segment);
     }
 
     public static VkMicromapUsageEXT clone(Arena arena, VkMicromapUsageEXT src) {

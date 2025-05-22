@@ -185,23 +185,19 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
         return new VkVideoProfileInfoKHR(s);
     }
 
-    public void pProfiles(@Nullable VkVideoProfileInfoKHR value) {
+    public void pProfiles(@Nullable IVkVideoProfileInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pProfilesRaw(s);
     }
 
-    @unsafe public @Nullable VkVideoProfileInfoKHR[] pProfiles(int assumedCount) {
+    @unsafe public @Nullable VkVideoProfileInfoKHR.Ptr pProfiles(int assumedCount) {
         MemorySegment s = pProfilesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkVideoProfileInfoKHR.BYTES);
-        VkVideoProfileInfoKHR[] ret = new VkVideoProfileInfoKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVideoProfileInfoKHR(s.asSlice(i * VkVideoProfileInfoKHR.BYTES, VkVideoProfileInfoKHR.BYTES));
-        }
-        return ret;
+        return new VkVideoProfileInfoKHR.Ptr(s);
     }
 
     public @pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pProfilesRaw() {

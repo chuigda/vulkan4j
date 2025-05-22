@@ -227,23 +227,19 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         return new VkDescriptorImageInfo(s);
     }
 
-    public void pImageInfo(@Nullable VkDescriptorImageInfo value) {
+    public void pImageInfo(@Nullable IVkDescriptorImageInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkDescriptorImageInfo[] pImageInfo(int assumedCount) {
+    @unsafe public @Nullable VkDescriptorImageInfo.Ptr pImageInfo(int assumedCount) {
         MemorySegment s = pImageInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDescriptorImageInfo.BYTES);
-        VkDescriptorImageInfo[] ret = new VkDescriptorImageInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorImageInfo(s.asSlice(i * VkDescriptorImageInfo.BYTES, VkDescriptorImageInfo.BYTES));
-        }
-        return ret;
+        return new VkDescriptorImageInfo.Ptr(s);
     }
 
     public @pointer(target=VkDescriptorImageInfo.class) MemorySegment pImageInfoRaw() {
@@ -262,23 +258,19 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         return new VkDescriptorBufferInfo(s);
     }
 
-    public void pBufferInfo(@Nullable VkDescriptorBufferInfo value) {
+    public void pBufferInfo(@Nullable IVkDescriptorBufferInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBufferInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkDescriptorBufferInfo[] pBufferInfo(int assumedCount) {
+    @unsafe public @Nullable VkDescriptorBufferInfo.Ptr pBufferInfo(int assumedCount) {
         MemorySegment s = pBufferInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDescriptorBufferInfo.BYTES);
-        VkDescriptorBufferInfo[] ret = new VkDescriptorBufferInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorBufferInfo(s.asSlice(i * VkDescriptorBufferInfo.BYTES, VkDescriptorBufferInfo.BYTES));
-        }
-        return ret;
+        return new VkDescriptorBufferInfo.Ptr(s);
     }
 
     public @pointer(target=VkDescriptorBufferInfo.class) MemorySegment pBufferInfoRaw() {

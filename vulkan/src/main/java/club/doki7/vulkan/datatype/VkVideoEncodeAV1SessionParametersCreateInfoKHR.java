@@ -179,23 +179,19 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         return new StdVideoAV1SequenceHeader(s);
     }
 
-    public void pStdSequenceHeader(@Nullable StdVideoAV1SequenceHeader value) {
+    public void pStdSequenceHeader(@Nullable IStdVideoAV1SequenceHeader value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdSequenceHeaderRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1SequenceHeader[] pStdSequenceHeader(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1SequenceHeader.Ptr pStdSequenceHeader(int assumedCount) {
         MemorySegment s = pStdSequenceHeaderRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1SequenceHeader.BYTES);
-        StdVideoAV1SequenceHeader[] ret = new StdVideoAV1SequenceHeader[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1SequenceHeader(s.asSlice(i * StdVideoAV1SequenceHeader.BYTES, StdVideoAV1SequenceHeader.BYTES));
-        }
-        return ret;
+        return new StdVideoAV1SequenceHeader.Ptr(s);
     }
 
     public @pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment pStdSequenceHeaderRaw() {
@@ -214,23 +210,19 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         return new StdVideoEncodeAV1DecoderModelInfo(s);
     }
 
-    public void pStdDecoderModelInfo(@Nullable StdVideoEncodeAV1DecoderModelInfo value) {
+    public void pStdDecoderModelInfo(@Nullable IStdVideoEncodeAV1DecoderModelInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdDecoderModelInfoRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeAV1DecoderModelInfo[] pStdDecoderModelInfo(int assumedCount) {
+    @unsafe public @Nullable StdVideoEncodeAV1DecoderModelInfo.Ptr pStdDecoderModelInfo(int assumedCount) {
         MemorySegment s = pStdDecoderModelInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoEncodeAV1DecoderModelInfo.BYTES);
-        StdVideoEncodeAV1DecoderModelInfo[] ret = new StdVideoEncodeAV1DecoderModelInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeAV1DecoderModelInfo(s.asSlice(i * StdVideoEncodeAV1DecoderModelInfo.BYTES, StdVideoEncodeAV1DecoderModelInfo.BYTES));
-        }
-        return ret;
+        return new StdVideoEncodeAV1DecoderModelInfo.Ptr(s);
     }
 
     public @pointer(target=StdVideoEncodeAV1DecoderModelInfo.class) MemorySegment pStdDecoderModelInfoRaw() {
@@ -257,23 +249,19 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         return new StdVideoEncodeAV1OperatingPointInfo(s);
     }
 
-    public void pStdOperatingPoints(@Nullable StdVideoEncodeAV1OperatingPointInfo value) {
+    public void pStdOperatingPoints(@Nullable IStdVideoEncodeAV1OperatingPointInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdOperatingPointsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeAV1OperatingPointInfo[] pStdOperatingPoints(int assumedCount) {
+    @unsafe public @Nullable StdVideoEncodeAV1OperatingPointInfo.Ptr pStdOperatingPoints(int assumedCount) {
         MemorySegment s = pStdOperatingPointsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoEncodeAV1OperatingPointInfo.BYTES);
-        StdVideoEncodeAV1OperatingPointInfo[] ret = new StdVideoEncodeAV1OperatingPointInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeAV1OperatingPointInfo(s.asSlice(i * StdVideoEncodeAV1OperatingPointInfo.BYTES, StdVideoEncodeAV1OperatingPointInfo.BYTES));
-        }
-        return ret;
+        return new StdVideoEncodeAV1OperatingPointInfo.Ptr(s);
     }
 
     public @pointer(target=StdVideoEncodeAV1OperatingPointInfo.class) MemorySegment pStdOperatingPointsRaw() {

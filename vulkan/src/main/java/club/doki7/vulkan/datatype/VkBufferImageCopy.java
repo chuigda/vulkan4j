@@ -125,8 +125,7 @@ public record VkBufferImageCopy(@NotNull MemorySegment segment) implements IVkBu
 
     public static VkBufferImageCopy.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkBufferImageCopy.Ptr ret = new VkBufferImageCopy.Ptr(segment);
-        return ret;
+        return new VkBufferImageCopy.Ptr(segment);
     }
 
     public static VkBufferImageCopy clone(Arena arena, VkBufferImageCopy src) {

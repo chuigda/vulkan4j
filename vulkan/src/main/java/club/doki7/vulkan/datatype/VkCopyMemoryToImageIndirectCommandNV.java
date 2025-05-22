@@ -125,8 +125,7 @@ public record VkCopyMemoryToImageIndirectCommandNV(@NotNull MemorySegment segmen
 
     public static VkCopyMemoryToImageIndirectCommandNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkCopyMemoryToImageIndirectCommandNV.Ptr ret = new VkCopyMemoryToImageIndirectCommandNV.Ptr(segment);
-        return ret;
+        return new VkCopyMemoryToImageIndirectCommandNV.Ptr(segment);
     }
 
     public static VkCopyMemoryToImageIndirectCommandNV clone(Arena arena, VkCopyMemoryToImageIndirectCommandNV src) {

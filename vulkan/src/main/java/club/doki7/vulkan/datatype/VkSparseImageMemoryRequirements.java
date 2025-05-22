@@ -124,8 +124,7 @@ public record VkSparseImageMemoryRequirements(@NotNull MemorySegment segment) im
 
     public static VkSparseImageMemoryRequirements.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSparseImageMemoryRequirements.Ptr ret = new VkSparseImageMemoryRequirements.Ptr(segment);
-        return ret;
+        return new VkSparseImageMemoryRequirements.Ptr(segment);
     }
 
     public static VkSparseImageMemoryRequirements clone(Arena arena, VkSparseImageMemoryRequirements src) {

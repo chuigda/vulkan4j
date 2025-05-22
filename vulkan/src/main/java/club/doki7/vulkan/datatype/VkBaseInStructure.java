@@ -121,8 +121,7 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IVkBa
 
     public static VkBaseInStructure.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkBaseInStructure.Ptr ret = new VkBaseInStructure.Ptr(segment);
-        return ret;
+        return new VkBaseInStructure.Ptr(segment);
     }
 
     public static VkBaseInStructure clone(Arena arena, VkBaseInStructure src) {
@@ -147,23 +146,19 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IVkBa
         return new VkBaseInStructure(s);
     }
 
-    public void pNext(@Nullable VkBaseInStructure value) {
+    public void pNext(@Nullable IVkBaseInStructure value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNextRaw(s);
     }
 
-    @unsafe public @Nullable VkBaseInStructure[] pNext(int assumedCount) {
+    @unsafe public @Nullable VkBaseInStructure.Ptr pNext(int assumedCount) {
         MemorySegment s = pNextRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkBaseInStructure.BYTES);
-        VkBaseInStructure[] ret = new VkBaseInStructure[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkBaseInStructure(s.asSlice(i * VkBaseInStructure.BYTES, VkBaseInStructure.BYTES));
-        }
-        return ret;
+        return new VkBaseInStructure.Ptr(s);
     }
 
     public @pointer(target=VkBaseInStructure.class) MemorySegment pNextRaw() {

@@ -125,8 +125,7 @@ public record VkViewport(@NotNull MemorySegment segment) implements IVkViewport 
 
     public static VkViewport.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkViewport.Ptr ret = new VkViewport.Ptr(segment);
-        return ret;
+        return new VkViewport.Ptr(segment);
     }
 
     public static VkViewport clone(Arena arena, VkViewport src) {

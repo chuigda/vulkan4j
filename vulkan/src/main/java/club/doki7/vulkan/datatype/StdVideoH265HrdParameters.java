@@ -132,8 +132,7 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
 
     public static StdVideoH265HrdParameters.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoH265HrdParameters.Ptr ret = new StdVideoH265HrdParameters.Ptr(segment);
-        return ret;
+        return new StdVideoH265HrdParameters.Ptr(segment);
     }
 
     public static StdVideoH265HrdParameters clone(Arena arena, StdVideoH265HrdParameters src) {
@@ -247,23 +246,19 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         return new StdVideoH265SubLayerHrdParameters(s);
     }
 
-    public void pSubLayerHrdParametersNal(@Nullable StdVideoH265SubLayerHrdParameters value) {
+    public void pSubLayerHrdParametersNal(@Nullable IStdVideoH265SubLayerHrdParameters value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSubLayerHrdParametersNalRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265SubLayerHrdParameters[] pSubLayerHrdParametersNal(int assumedCount) {
+    @unsafe public @Nullable StdVideoH265SubLayerHrdParameters.Ptr pSubLayerHrdParametersNal(int assumedCount) {
         MemorySegment s = pSubLayerHrdParametersNalRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoH265SubLayerHrdParameters.BYTES);
-        StdVideoH265SubLayerHrdParameters[] ret = new StdVideoH265SubLayerHrdParameters[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265SubLayerHrdParameters(s.asSlice(i * StdVideoH265SubLayerHrdParameters.BYTES, StdVideoH265SubLayerHrdParameters.BYTES));
-        }
-        return ret;
+        return new StdVideoH265SubLayerHrdParameters.Ptr(s);
     }
 
     public @pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment pSubLayerHrdParametersNalRaw() {
@@ -282,23 +277,19 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         return new StdVideoH265SubLayerHrdParameters(s);
     }
 
-    public void pSubLayerHrdParametersVcl(@Nullable StdVideoH265SubLayerHrdParameters value) {
+    public void pSubLayerHrdParametersVcl(@Nullable IStdVideoH265SubLayerHrdParameters value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSubLayerHrdParametersVclRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265SubLayerHrdParameters[] pSubLayerHrdParametersVcl(int assumedCount) {
+    @unsafe public @Nullable StdVideoH265SubLayerHrdParameters.Ptr pSubLayerHrdParametersVcl(int assumedCount) {
         MemorySegment s = pSubLayerHrdParametersVclRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoH265SubLayerHrdParameters.BYTES);
-        StdVideoH265SubLayerHrdParameters[] ret = new StdVideoH265SubLayerHrdParameters[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265SubLayerHrdParameters(s.asSlice(i * StdVideoH265SubLayerHrdParameters.BYTES, StdVideoH265SubLayerHrdParameters.BYTES));
-        }
-        return ret;
+        return new StdVideoH265SubLayerHrdParameters.Ptr(s);
     }
 
     public @pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment pSubLayerHrdParametersVclRaw() {

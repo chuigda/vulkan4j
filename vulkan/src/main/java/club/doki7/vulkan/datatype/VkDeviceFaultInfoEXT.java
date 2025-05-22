@@ -187,23 +187,19 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         return new VkDeviceFaultAddressInfoEXT(s);
     }
 
-    public void pAddressInfos(@Nullable VkDeviceFaultAddressInfoEXT value) {
+    public void pAddressInfos(@Nullable IVkDeviceFaultAddressInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAddressInfosRaw(s);
     }
 
-    @unsafe public @Nullable VkDeviceFaultAddressInfoEXT[] pAddressInfos(int assumedCount) {
+    @unsafe public @Nullable VkDeviceFaultAddressInfoEXT.Ptr pAddressInfos(int assumedCount) {
         MemorySegment s = pAddressInfosRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDeviceFaultAddressInfoEXT.BYTES);
-        VkDeviceFaultAddressInfoEXT[] ret = new VkDeviceFaultAddressInfoEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDeviceFaultAddressInfoEXT(s.asSlice(i * VkDeviceFaultAddressInfoEXT.BYTES, VkDeviceFaultAddressInfoEXT.BYTES));
-        }
-        return ret;
+        return new VkDeviceFaultAddressInfoEXT.Ptr(s);
     }
 
     public @pointer(target=VkDeviceFaultAddressInfoEXT.class) MemorySegment pAddressInfosRaw() {
@@ -222,23 +218,19 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         return new VkDeviceFaultVendorInfoEXT(s);
     }
 
-    public void pVendorInfos(@Nullable VkDeviceFaultVendorInfoEXT value) {
+    public void pVendorInfos(@Nullable IVkDeviceFaultVendorInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVendorInfosRaw(s);
     }
 
-    @unsafe public @Nullable VkDeviceFaultVendorInfoEXT[] pVendorInfos(int assumedCount) {
+    @unsafe public @Nullable VkDeviceFaultVendorInfoEXT.Ptr pVendorInfos(int assumedCount) {
         MemorySegment s = pVendorInfosRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDeviceFaultVendorInfoEXT.BYTES);
-        VkDeviceFaultVendorInfoEXT[] ret = new VkDeviceFaultVendorInfoEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDeviceFaultVendorInfoEXT(s.asSlice(i * VkDeviceFaultVendorInfoEXT.BYTES, VkDeviceFaultVendorInfoEXT.BYTES));
-        }
-        return ret;
+        return new VkDeviceFaultVendorInfoEXT.Ptr(s);
     }
 
     public @pointer(target=VkDeviceFaultVendorInfoEXT.class) MemorySegment pVendorInfosRaw() {

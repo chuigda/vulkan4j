@@ -124,8 +124,7 @@ public record VkImageResolve(@NotNull MemorySegment segment) implements IVkImage
 
     public static VkImageResolve.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkImageResolve.Ptr ret = new VkImageResolve.Ptr(segment);
-        return ret;
+        return new VkImageResolve.Ptr(segment);
     }
 
     public static VkImageResolve clone(Arena arena, VkImageResolve src) {

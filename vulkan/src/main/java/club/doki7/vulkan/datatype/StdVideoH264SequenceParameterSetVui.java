@@ -133,8 +133,7 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
 
     public static StdVideoH264SequenceParameterSetVui.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoH264SequenceParameterSetVui.Ptr ret = new StdVideoH264SequenceParameterSetVui.Ptr(segment);
-        return ret;
+        return new StdVideoH264SequenceParameterSetVui.Ptr(segment);
     }
 
     public static StdVideoH264SequenceParameterSetVui clone(Arena arena, StdVideoH264SequenceParameterSetVui src) {
@@ -264,23 +263,19 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
         return new StdVideoH264HrdParameters(s);
     }
 
-    public void pHrdParameters(@Nullable StdVideoH264HrdParameters value) {
+    public void pHrdParameters(@Nullable IStdVideoH264HrdParameters value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pHrdParametersRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH264HrdParameters[] pHrdParameters(int assumedCount) {
+    @unsafe public @Nullable StdVideoH264HrdParameters.Ptr pHrdParameters(int assumedCount) {
         MemorySegment s = pHrdParametersRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoH264HrdParameters.BYTES);
-        StdVideoH264HrdParameters[] ret = new StdVideoH264HrdParameters[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH264HrdParameters(s.asSlice(i * StdVideoH264HrdParameters.BYTES, StdVideoH264HrdParameters.BYTES));
-        }
-        return ret;
+        return new StdVideoH264HrdParameters.Ptr(s);
     }
 
     public @pointer(target=StdVideoH264HrdParameters.class) MemorySegment pHrdParametersRaw() {

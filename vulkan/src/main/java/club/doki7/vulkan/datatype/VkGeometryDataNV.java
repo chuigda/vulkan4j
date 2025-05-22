@@ -121,8 +121,7 @@ public record VkGeometryDataNV(@NotNull MemorySegment segment) implements IVkGeo
 
     public static VkGeometryDataNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkGeometryDataNV.Ptr ret = new VkGeometryDataNV.Ptr(segment);
-        return ret;
+        return new VkGeometryDataNV.Ptr(segment);
     }
 
     public static VkGeometryDataNV clone(Arena arena, VkGeometryDataNV src) {

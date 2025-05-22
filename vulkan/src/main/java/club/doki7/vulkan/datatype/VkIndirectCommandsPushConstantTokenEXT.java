@@ -120,8 +120,7 @@ public record VkIndirectCommandsPushConstantTokenEXT(@NotNull MemorySegment segm
 
     public static VkIndirectCommandsPushConstantTokenEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkIndirectCommandsPushConstantTokenEXT.Ptr ret = new VkIndirectCommandsPushConstantTokenEXT.Ptr(segment);
-        return ret;
+        return new VkIndirectCommandsPushConstantTokenEXT.Ptr(segment);
     }
 
     public static VkIndirectCommandsPushConstantTokenEXT clone(Arena arena, VkIndirectCommandsPushConstantTokenEXT src) {

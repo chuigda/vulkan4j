@@ -194,23 +194,19 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(@NotNull MemorySeg
         return new VkViewport(s);
     }
 
-    public void pViewportDepths(@Nullable VkViewport value) {
+    public void pViewportDepths(@Nullable IVkViewport value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewportDepthsRaw(s);
     }
 
-    @unsafe public @Nullable VkViewport[] pViewportDepths(int assumedCount) {
+    @unsafe public @Nullable VkViewport.Ptr pViewportDepths(int assumedCount) {
         MemorySegment s = pViewportDepthsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkViewport.BYTES);
-        VkViewport[] ret = new VkViewport[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkViewport(s.asSlice(i * VkViewport.BYTES, VkViewport.BYTES));
-        }
-        return ret;
+        return new VkViewport.Ptr(s);
     }
 
     public @pointer(target=VkViewport.class) MemorySegment pViewportDepthsRaw() {

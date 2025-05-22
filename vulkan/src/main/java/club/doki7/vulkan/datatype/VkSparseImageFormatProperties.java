@@ -122,8 +122,7 @@ public record VkSparseImageFormatProperties(@NotNull MemorySegment segment) impl
 
     public static VkSparseImageFormatProperties.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSparseImageFormatProperties.Ptr ret = new VkSparseImageFormatProperties.Ptr(segment);
-        return ret;
+        return new VkSparseImageFormatProperties.Ptr(segment);
     }
 
     public static VkSparseImageFormatProperties clone(Arena arena, VkSparseImageFormatProperties src) {

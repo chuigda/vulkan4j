@@ -128,8 +128,7 @@ public record VkAttachmentDescription(@NotNull MemorySegment segment) implements
 
     public static VkAttachmentDescription.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkAttachmentDescription.Ptr ret = new VkAttachmentDescription.Ptr(segment);
-        return ret;
+        return new VkAttachmentDescription.Ptr(segment);
     }
 
     public static VkAttachmentDescription clone(Arena arena, VkAttachmentDescription src) {

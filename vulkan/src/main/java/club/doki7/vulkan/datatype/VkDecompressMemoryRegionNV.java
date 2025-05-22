@@ -124,8 +124,7 @@ public record VkDecompressMemoryRegionNV(@NotNull MemorySegment segment) impleme
 
     public static VkDecompressMemoryRegionNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDecompressMemoryRegionNV.Ptr ret = new VkDecompressMemoryRegionNV.Ptr(segment);
-        return ret;
+        return new VkDecompressMemoryRegionNV.Ptr(segment);
     }
 
     public static VkDecompressMemoryRegionNV clone(Arena arena, VkDecompressMemoryRegionNV src) {

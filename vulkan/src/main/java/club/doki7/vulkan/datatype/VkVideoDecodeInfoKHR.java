@@ -227,23 +227,19 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IV
         return new VkVideoReferenceSlotInfoKHR(s);
     }
 
-    public void pSetupReferenceSlot(@Nullable VkVideoReferenceSlotInfoKHR value) {
+    public void pSetupReferenceSlot(@Nullable IVkVideoReferenceSlotInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSetupReferenceSlotRaw(s);
     }
 
-    @unsafe public @Nullable VkVideoReferenceSlotInfoKHR[] pSetupReferenceSlot(int assumedCount) {
+    @unsafe public @Nullable VkVideoReferenceSlotInfoKHR.Ptr pSetupReferenceSlot(int assumedCount) {
         MemorySegment s = pSetupReferenceSlotRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkVideoReferenceSlotInfoKHR.BYTES);
-        VkVideoReferenceSlotInfoKHR[] ret = new VkVideoReferenceSlotInfoKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVideoReferenceSlotInfoKHR(s.asSlice(i * VkVideoReferenceSlotInfoKHR.BYTES, VkVideoReferenceSlotInfoKHR.BYTES));
-        }
-        return ret;
+        return new VkVideoReferenceSlotInfoKHR.Ptr(s);
     }
 
     public @pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment pSetupReferenceSlotRaw() {
@@ -270,23 +266,19 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IV
         return new VkVideoReferenceSlotInfoKHR(s);
     }
 
-    public void pReferenceSlots(@Nullable VkVideoReferenceSlotInfoKHR value) {
+    public void pReferenceSlots(@Nullable IVkVideoReferenceSlotInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pReferenceSlotsRaw(s);
     }
 
-    @unsafe public @Nullable VkVideoReferenceSlotInfoKHR[] pReferenceSlots(int assumedCount) {
+    @unsafe public @Nullable VkVideoReferenceSlotInfoKHR.Ptr pReferenceSlots(int assumedCount) {
         MemorySegment s = pReferenceSlotsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkVideoReferenceSlotInfoKHR.BYTES);
-        VkVideoReferenceSlotInfoKHR[] ret = new VkVideoReferenceSlotInfoKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVideoReferenceSlotInfoKHR(s.asSlice(i * VkVideoReferenceSlotInfoKHR.BYTES, VkVideoReferenceSlotInfoKHR.BYTES));
-        }
-        return ret;
+        return new VkVideoReferenceSlotInfoKHR.Ptr(s);
     }
 
     public @pointer(target=VkVideoReferenceSlotInfoKHR.class) MemorySegment pReferenceSlotsRaw() {

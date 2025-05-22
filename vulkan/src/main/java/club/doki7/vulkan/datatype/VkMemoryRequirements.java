@@ -122,8 +122,7 @@ public record VkMemoryRequirements(@NotNull MemorySegment segment) implements IV
 
     public static VkMemoryRequirements.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkMemoryRequirements.Ptr ret = new VkMemoryRequirements.Ptr(segment);
-        return ret;
+        return new VkMemoryRequirements.Ptr(segment);
     }
 
     public static VkMemoryRequirements clone(Arena arena, VkMemoryRequirements src) {

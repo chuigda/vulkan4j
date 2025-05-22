@@ -125,8 +125,7 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
 
     public static VkAllocationCallbacks.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkAllocationCallbacks.Ptr ret = new VkAllocationCallbacks.Ptr(segment);
-        return ret;
+        return new VkAllocationCallbacks.Ptr(segment);
     }
 
     public static VkAllocationCallbacks clone(Arena arena, VkAllocationCallbacks src) {

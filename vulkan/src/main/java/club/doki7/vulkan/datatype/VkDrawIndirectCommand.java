@@ -123,8 +123,7 @@ public record VkDrawIndirectCommand(@NotNull MemorySegment segment) implements I
 
     public static VkDrawIndirectCommand.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDrawIndirectCommand.Ptr ret = new VkDrawIndirectCommand.Ptr(segment);
-        return ret;
+        return new VkDrawIndirectCommand.Ptr(segment);
     }
 
     public static VkDrawIndirectCommand clone(Arena arena, VkDrawIndirectCommand src) {

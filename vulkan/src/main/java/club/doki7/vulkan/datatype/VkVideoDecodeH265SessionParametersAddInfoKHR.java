@@ -189,23 +189,19 @@ public record VkVideoDecodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         return new StdVideoH265VideoParameterSet(s);
     }
 
-    public void pStdVPSs(@Nullable StdVideoH265VideoParameterSet value) {
+    public void pStdVPSs(@Nullable IStdVideoH265VideoParameterSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdVPSsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265VideoParameterSet[] pStdVPSs(int assumedCount) {
+    @unsafe public @Nullable StdVideoH265VideoParameterSet.Ptr pStdVPSs(int assumedCount) {
         MemorySegment s = pStdVPSsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoH265VideoParameterSet.BYTES);
-        StdVideoH265VideoParameterSet[] ret = new StdVideoH265VideoParameterSet[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265VideoParameterSet(s.asSlice(i * StdVideoH265VideoParameterSet.BYTES, StdVideoH265VideoParameterSet.BYTES));
-        }
-        return ret;
+        return new StdVideoH265VideoParameterSet.Ptr(s);
     }
 
     public @pointer(target=StdVideoH265VideoParameterSet.class) MemorySegment pStdVPSsRaw() {
@@ -232,23 +228,19 @@ public record VkVideoDecodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         return new StdVideoH265SequenceParameterSet(s);
     }
 
-    public void pStdSPSs(@Nullable StdVideoH265SequenceParameterSet value) {
+    public void pStdSPSs(@Nullable IStdVideoH265SequenceParameterSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdSPSsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265SequenceParameterSet[] pStdSPSs(int assumedCount) {
+    @unsafe public @Nullable StdVideoH265SequenceParameterSet.Ptr pStdSPSs(int assumedCount) {
         MemorySegment s = pStdSPSsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoH265SequenceParameterSet.BYTES);
-        StdVideoH265SequenceParameterSet[] ret = new StdVideoH265SequenceParameterSet[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265SequenceParameterSet(s.asSlice(i * StdVideoH265SequenceParameterSet.BYTES, StdVideoH265SequenceParameterSet.BYTES));
-        }
-        return ret;
+        return new StdVideoH265SequenceParameterSet.Ptr(s);
     }
 
     public @pointer(target=StdVideoH265SequenceParameterSet.class) MemorySegment pStdSPSsRaw() {
@@ -275,23 +267,19 @@ public record VkVideoDecodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         return new StdVideoH265PictureParameterSet(s);
     }
 
-    public void pStdPPSs(@Nullable StdVideoH265PictureParameterSet value) {
+    public void pStdPPSs(@Nullable IStdVideoH265PictureParameterSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdPPSsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265PictureParameterSet[] pStdPPSs(int assumedCount) {
+    @unsafe public @Nullable StdVideoH265PictureParameterSet.Ptr pStdPPSs(int assumedCount) {
         MemorySegment s = pStdPPSsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoH265PictureParameterSet.BYTES);
-        StdVideoH265PictureParameterSet[] ret = new StdVideoH265PictureParameterSet[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265PictureParameterSet(s.asSlice(i * StdVideoH265PictureParameterSet.BYTES, StdVideoH265PictureParameterSet.BYTES));
-        }
-        return ret;
+        return new StdVideoH265PictureParameterSet.Ptr(s);
     }
 
     public @pointer(target=StdVideoH265PictureParameterSet.class) MemorySegment pStdPPSsRaw() {

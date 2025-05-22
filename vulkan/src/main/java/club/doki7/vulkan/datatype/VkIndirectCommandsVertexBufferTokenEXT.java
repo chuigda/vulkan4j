@@ -120,8 +120,7 @@ public record VkIndirectCommandsVertexBufferTokenEXT(@NotNull MemorySegment segm
 
     public static VkIndirectCommandsVertexBufferTokenEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkIndirectCommandsVertexBufferTokenEXT.Ptr ret = new VkIndirectCommandsVertexBufferTokenEXT.Ptr(segment);
-        return ret;
+        return new VkIndirectCommandsVertexBufferTokenEXT.Ptr(segment);
     }
 
     public static VkIndirectCommandsVertexBufferTokenEXT clone(Arena arena, VkIndirectCommandsVertexBufferTokenEXT src) {

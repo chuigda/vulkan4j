@@ -121,8 +121,7 @@ public record StdVideoAV1TimingInfo(@NotNull MemorySegment segment) implements I
 
     public static StdVideoAV1TimingInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1TimingInfo.Ptr ret = new StdVideoAV1TimingInfo.Ptr(segment);
-        return ret;
+        return new StdVideoAV1TimingInfo.Ptr(segment);
     }
 
     public static StdVideoAV1TimingInfo clone(Arena arena, StdVideoAV1TimingInfo src) {

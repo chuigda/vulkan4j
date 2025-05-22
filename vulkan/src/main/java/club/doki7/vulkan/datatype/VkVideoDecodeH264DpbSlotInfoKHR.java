@@ -176,23 +176,19 @@ public record VkVideoDecodeH264DpbSlotInfoKHR(@NotNull MemorySegment segment) im
         return new StdVideoDecodeH264ReferenceInfo(s);
     }
 
-    public void pStdReferenceInfo(@Nullable StdVideoDecodeH264ReferenceInfo value) {
+    public void pStdReferenceInfo(@Nullable IStdVideoDecodeH264ReferenceInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdReferenceInfoRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoDecodeH264ReferenceInfo[] pStdReferenceInfo(int assumedCount) {
+    @unsafe public @Nullable StdVideoDecodeH264ReferenceInfo.Ptr pStdReferenceInfo(int assumedCount) {
         MemorySegment s = pStdReferenceInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoDecodeH264ReferenceInfo.BYTES);
-        StdVideoDecodeH264ReferenceInfo[] ret = new StdVideoDecodeH264ReferenceInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoDecodeH264ReferenceInfo(s.asSlice(i * StdVideoDecodeH264ReferenceInfo.BYTES, StdVideoDecodeH264ReferenceInfo.BYTES));
-        }
-        return ret;
+        return new StdVideoDecodeH264ReferenceInfo.Ptr(s);
     }
 
     public @pointer(target=StdVideoDecodeH264ReferenceInfo.class) MemorySegment pStdReferenceInfoRaw() {

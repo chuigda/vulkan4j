@@ -185,23 +185,19 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
         return new VkCommandBufferInheritanceInfo(s);
     }
 
-    public void pInheritanceInfo(@Nullable VkCommandBufferInheritanceInfo value) {
+    public void pInheritanceInfo(@Nullable IVkCommandBufferInheritanceInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pInheritanceInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkCommandBufferInheritanceInfo[] pInheritanceInfo(int assumedCount) {
+    @unsafe public @Nullable VkCommandBufferInheritanceInfo.Ptr pInheritanceInfo(int assumedCount) {
         MemorySegment s = pInheritanceInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkCommandBufferInheritanceInfo.BYTES);
-        VkCommandBufferInheritanceInfo[] ret = new VkCommandBufferInheritanceInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkCommandBufferInheritanceInfo(s.asSlice(i * VkCommandBufferInheritanceInfo.BYTES, VkCommandBufferInheritanceInfo.BYTES));
-        }
-        return ret;
+        return new VkCommandBufferInheritanceInfo.Ptr(s);
     }
 
     public @pointer(target=VkCommandBufferInheritanceInfo.class) MemorySegment pInheritanceInfoRaw() {

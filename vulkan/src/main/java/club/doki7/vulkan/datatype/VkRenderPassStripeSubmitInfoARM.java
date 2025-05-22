@@ -185,23 +185,19 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
         return new VkSemaphoreSubmitInfo(s);
     }
 
-    public void pStripeSemaphoreInfos(@Nullable VkSemaphoreSubmitInfo value) {
+    public void pStripeSemaphoreInfos(@Nullable IVkSemaphoreSubmitInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStripeSemaphoreInfosRaw(s);
     }
 
-    @unsafe public @Nullable VkSemaphoreSubmitInfo[] pStripeSemaphoreInfos(int assumedCount) {
+    @unsafe public @Nullable VkSemaphoreSubmitInfo.Ptr pStripeSemaphoreInfos(int assumedCount) {
         MemorySegment s = pStripeSemaphoreInfosRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkSemaphoreSubmitInfo.BYTES);
-        VkSemaphoreSubmitInfo[] ret = new VkSemaphoreSubmitInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSemaphoreSubmitInfo(s.asSlice(i * VkSemaphoreSubmitInfo.BYTES, VkSemaphoreSubmitInfo.BYTES));
-        }
-        return ret;
+        return new VkSemaphoreSubmitInfo.Ptr(s);
     }
 
     public @pointer(target=VkSemaphoreSubmitInfo.class) MemorySegment pStripeSemaphoreInfosRaw() {

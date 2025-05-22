@@ -122,8 +122,7 @@ public record StdVideoEncodeAV1OperatingPointInfoFlags(@NotNull MemorySegment se
 
     public static StdVideoEncodeAV1OperatingPointInfoFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeAV1OperatingPointInfoFlags.Ptr ret = new StdVideoEncodeAV1OperatingPointInfoFlags.Ptr(segment);
-        return ret;
+        return new StdVideoEncodeAV1OperatingPointInfoFlags.Ptr(segment);
     }
 
     public static StdVideoEncodeAV1OperatingPointInfoFlags clone(Arena arena, StdVideoEncodeAV1OperatingPointInfoFlags src) {

@@ -124,8 +124,7 @@ public record VkShaderResourceUsageAMD(@NotNull MemorySegment segment) implement
 
     public static VkShaderResourceUsageAMD.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkShaderResourceUsageAMD.Ptr ret = new VkShaderResourceUsageAMD.Ptr(segment);
-        return ret;
+        return new VkShaderResourceUsageAMD.Ptr(segment);
     }
 
     public static VkShaderResourceUsageAMD clone(Arena arena, VkShaderResourceUsageAMD src) {

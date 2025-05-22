@@ -124,8 +124,7 @@ public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment
 
     public static StdVideoEncodeAV1OperatingPointInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeAV1OperatingPointInfo.Ptr ret = new StdVideoEncodeAV1OperatingPointInfo.Ptr(segment);
-        return ret;
+        return new StdVideoEncodeAV1OperatingPointInfo.Ptr(segment);
     }
 
     public static StdVideoEncodeAV1OperatingPointInfo clone(Arena arena, StdVideoEncodeAV1OperatingPointInfo src) {

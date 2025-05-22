@@ -131,8 +131,7 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
 
     public static StdVideoAV1SequenceHeader.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1SequenceHeader.Ptr ret = new StdVideoAV1SequenceHeader.Ptr(segment);
-        return ret;
+        return new StdVideoAV1SequenceHeader.Ptr(segment);
     }
 
     public static StdVideoAV1SequenceHeader clone(Arena arena, StdVideoAV1SequenceHeader src) {
@@ -238,23 +237,19 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         return new StdVideoAV1ColorConfig(s);
     }
 
-    public void pColorConfig(@Nullable StdVideoAV1ColorConfig value) {
+    public void pColorConfig(@Nullable IStdVideoAV1ColorConfig value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorConfigRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1ColorConfig[] pColorConfig(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1ColorConfig.Ptr pColorConfig(int assumedCount) {
         MemorySegment s = pColorConfigRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1ColorConfig.BYTES);
-        StdVideoAV1ColorConfig[] ret = new StdVideoAV1ColorConfig[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1ColorConfig(s.asSlice(i * StdVideoAV1ColorConfig.BYTES, StdVideoAV1ColorConfig.BYTES));
-        }
-        return ret;
+        return new StdVideoAV1ColorConfig.Ptr(s);
     }
 
     public @pointer(target=StdVideoAV1ColorConfig.class) MemorySegment pColorConfigRaw() {
@@ -273,23 +268,19 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         return new StdVideoAV1TimingInfo(s);
     }
 
-    public void pTimingInfo(@Nullable StdVideoAV1TimingInfo value) {
+    public void pTimingInfo(@Nullable IStdVideoAV1TimingInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTimingInfoRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1TimingInfo[] pTimingInfo(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1TimingInfo.Ptr pTimingInfo(int assumedCount) {
         MemorySegment s = pTimingInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1TimingInfo.BYTES);
-        StdVideoAV1TimingInfo[] ret = new StdVideoAV1TimingInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1TimingInfo(s.asSlice(i * StdVideoAV1TimingInfo.BYTES, StdVideoAV1TimingInfo.BYTES));
-        }
-        return ret;
+        return new StdVideoAV1TimingInfo.Ptr(s);
     }
 
     public @pointer(target=StdVideoAV1TimingInfo.class) MemorySegment pTimingInfoRaw() {

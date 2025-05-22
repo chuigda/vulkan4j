@@ -123,8 +123,7 @@ public record VkExternalImageFormatPropertiesNV(@NotNull MemorySegment segment) 
 
     public static VkExternalImageFormatPropertiesNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkExternalImageFormatPropertiesNV.Ptr ret = new VkExternalImageFormatPropertiesNV.Ptr(segment);
-        return ret;
+        return new VkExternalImageFormatPropertiesNV.Ptr(segment);
     }
 
     public static VkExternalImageFormatPropertiesNV clone(Arena arena, VkExternalImageFormatPropertiesNV src) {

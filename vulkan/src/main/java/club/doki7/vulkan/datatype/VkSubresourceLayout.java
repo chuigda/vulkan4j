@@ -124,8 +124,7 @@ public record VkSubresourceLayout(@NotNull MemorySegment segment) implements IVk
 
     public static VkSubresourceLayout.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSubresourceLayout.Ptr ret = new VkSubresourceLayout.Ptr(segment);
-        return ret;
+        return new VkSubresourceLayout.Ptr(segment);
     }
 
     public static VkSubresourceLayout clone(Arena arena, VkSubresourceLayout src) {

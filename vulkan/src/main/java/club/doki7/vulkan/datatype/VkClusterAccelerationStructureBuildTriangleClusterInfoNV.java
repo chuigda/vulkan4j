@@ -137,8 +137,7 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
 
     public static VkClusterAccelerationStructureBuildTriangleClusterInfoNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkClusterAccelerationStructureBuildTriangleClusterInfoNV.Ptr ret = new VkClusterAccelerationStructureBuildTriangleClusterInfoNV.Ptr(segment);
-        return ret;
+        return new VkClusterAccelerationStructureBuildTriangleClusterInfoNV.Ptr(segment);
     }
 
     public static VkClusterAccelerationStructureBuildTriangleClusterInfoNV clone(Arena arena, VkClusterAccelerationStructureBuildTriangleClusterInfoNV src) {

@@ -135,8 +135,7 @@ public record VkSRTDataNV(@NotNull MemorySegment segment) implements IVkSRTDataN
 
     public static VkSRTDataNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSRTDataNV.Ptr ret = new VkSRTDataNV.Ptr(segment);
-        return ret;
+        return new VkSRTDataNV.Ptr(segment);
     }
 
     public static VkSRTDataNV clone(Arena arena, VkSRTDataNV src) {

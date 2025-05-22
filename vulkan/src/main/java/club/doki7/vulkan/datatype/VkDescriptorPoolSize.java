@@ -121,8 +121,7 @@ public record VkDescriptorPoolSize(@NotNull MemorySegment segment) implements IV
 
     public static VkDescriptorPoolSize.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDescriptorPoolSize.Ptr ret = new VkDescriptorPoolSize.Ptr(segment);
-        return ret;
+        return new VkDescriptorPoolSize.Ptr(segment);
     }
 
     public static VkDescriptorPoolSize clone(Arena arena, VkDescriptorPoolSize src) {

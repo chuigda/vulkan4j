@@ -122,8 +122,7 @@ public record VkOffset3D(@NotNull MemorySegment segment) implements IVkOffset3D 
 
     public static VkOffset3D.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkOffset3D.Ptr ret = new VkOffset3D.Ptr(segment);
-        return ret;
+        return new VkOffset3D.Ptr(segment);
     }
 
     public static VkOffset3D clone(Arena arena, VkOffset3D src) {

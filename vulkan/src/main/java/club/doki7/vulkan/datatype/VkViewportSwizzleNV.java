@@ -123,8 +123,7 @@ public record VkViewportSwizzleNV(@NotNull MemorySegment segment) implements IVk
 
     public static VkViewportSwizzleNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkViewportSwizzleNV.Ptr ret = new VkViewportSwizzleNV.Ptr(segment);
-        return ret;
+        return new VkViewportSwizzleNV.Ptr(segment);
     }
 
     public static VkViewportSwizzleNV clone(Arena arena, VkViewportSwizzleNV src) {

@@ -121,8 +121,7 @@ public record VkPipelineBinaryDataKHR(@NotNull MemorySegment segment) implements
 
     public static VkPipelineBinaryDataKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPipelineBinaryDataKHR.Ptr ret = new VkPipelineBinaryDataKHR.Ptr(segment);
-        return ret;
+        return new VkPipelineBinaryDataKHR.Ptr(segment);
     }
 
     public static VkPipelineBinaryDataKHR clone(Arena arena, VkPipelineBinaryDataKHR src) {

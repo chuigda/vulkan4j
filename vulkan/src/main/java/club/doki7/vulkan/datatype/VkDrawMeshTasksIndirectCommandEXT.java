@@ -122,8 +122,7 @@ public record VkDrawMeshTasksIndirectCommandEXT(@NotNull MemorySegment segment) 
 
     public static VkDrawMeshTasksIndirectCommandEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDrawMeshTasksIndirectCommandEXT.Ptr ret = new VkDrawMeshTasksIndirectCommandEXT.Ptr(segment);
-        return ret;
+        return new VkDrawMeshTasksIndirectCommandEXT.Ptr(segment);
     }
 
     public static VkDrawMeshTasksIndirectCommandEXT clone(Arena arena, VkDrawMeshTasksIndirectCommandEXT src) {

@@ -133,8 +133,7 @@ public record VkTraceRaysIndirectCommand2KHR(@NotNull MemorySegment segment) imp
 
     public static VkTraceRaysIndirectCommand2KHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkTraceRaysIndirectCommand2KHR.Ptr ret = new VkTraceRaysIndirectCommand2KHR.Ptr(segment);
-        return ret;
+        return new VkTraceRaysIndirectCommand2KHR.Ptr(segment);
     }
 
     public static VkTraceRaysIndirectCommand2KHR clone(Arena arena, VkTraceRaysIndirectCommand2KHR src) {

@@ -120,8 +120,7 @@ public record VkSetStateFlagsIndirectCommandNV(@NotNull MemorySegment segment) i
 
     public static VkSetStateFlagsIndirectCommandNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSetStateFlagsIndirectCommandNV.Ptr ret = new VkSetStateFlagsIndirectCommandNV.Ptr(segment);
-        return ret;
+        return new VkSetStateFlagsIndirectCommandNV.Ptr(segment);
     }
 
     public static VkSetStateFlagsIndirectCommandNV clone(Arena arena, VkSetStateFlagsIndirectCommandNV src) {

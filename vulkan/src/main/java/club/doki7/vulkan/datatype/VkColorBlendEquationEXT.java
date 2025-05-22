@@ -125,8 +125,7 @@ public record VkColorBlendEquationEXT(@NotNull MemorySegment segment) implements
 
     public static VkColorBlendEquationEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkColorBlendEquationEXT.Ptr ret = new VkColorBlendEquationEXT.Ptr(segment);
-        return ret;
+        return new VkColorBlendEquationEXT.Ptr(segment);
     }
 
     public static VkColorBlendEquationEXT clone(Arena arena, VkColorBlendEquationEXT src) {

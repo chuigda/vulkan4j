@@ -185,23 +185,19 @@ public record VkRenderPassFragmentDensityMapOffsetEndInfoEXT(@NotNull MemorySegm
         return new VkOffset2D(s);
     }
 
-    public void pFragmentDensityOffsets(@Nullable VkOffset2D value) {
+    public void pFragmentDensityOffsets(@Nullable IVkOffset2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFragmentDensityOffsetsRaw(s);
     }
 
-    @unsafe public @Nullable VkOffset2D[] pFragmentDensityOffsets(int assumedCount) {
+    @unsafe public @Nullable VkOffset2D.Ptr pFragmentDensityOffsets(int assumedCount) {
         MemorySegment s = pFragmentDensityOffsetsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkOffset2D.BYTES);
-        VkOffset2D[] ret = new VkOffset2D[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkOffset2D(s.asSlice(i * VkOffset2D.BYTES, VkOffset2D.BYTES));
-        }
-        return ret;
+        return new VkOffset2D.Ptr(s);
     }
 
     public @pointer(target=VkOffset2D.class) MemorySegment pFragmentDensityOffsetsRaw() {

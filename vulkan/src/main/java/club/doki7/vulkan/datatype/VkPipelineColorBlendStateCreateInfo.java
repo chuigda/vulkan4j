@@ -213,23 +213,19 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         return new VkPipelineColorBlendAttachmentState(s);
     }
 
-    public void pAttachments(@Nullable VkPipelineColorBlendAttachmentState value) {
+    public void pAttachments(@Nullable IVkPipelineColorBlendAttachmentState value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentsRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineColorBlendAttachmentState[] pAttachments(int assumedCount) {
+    @unsafe public @Nullable VkPipelineColorBlendAttachmentState.Ptr pAttachments(int assumedCount) {
         MemorySegment s = pAttachmentsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPipelineColorBlendAttachmentState.BYTES);
-        VkPipelineColorBlendAttachmentState[] ret = new VkPipelineColorBlendAttachmentState[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineColorBlendAttachmentState(s.asSlice(i * VkPipelineColorBlendAttachmentState.BYTES, VkPipelineColorBlendAttachmentState.BYTES));
-        }
-        return ret;
+        return new VkPipelineColorBlendAttachmentState.Ptr(s);
     }
 
     public @pointer(target=VkPipelineColorBlendAttachmentState.class) MemorySegment pAttachmentsRaw() {

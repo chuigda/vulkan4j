@@ -120,8 +120,7 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
 
     public static StdVideoH265DecPicBufMgr.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoH265DecPicBufMgr.Ptr ret = new StdVideoH265DecPicBufMgr.Ptr(segment);
-        return ret;
+        return new StdVideoH265DecPicBufMgr.Ptr(segment);
     }
 
     public static StdVideoH265DecPicBufMgr clone(Arena arena, StdVideoH265DecPicBufMgr src) {

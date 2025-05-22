@@ -122,8 +122,7 @@ public record VkVideoEncodeAV1QIndexKHR(@NotNull MemorySegment segment) implemen
 
     public static VkVideoEncodeAV1QIndexKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkVideoEncodeAV1QIndexKHR.Ptr ret = new VkVideoEncodeAV1QIndexKHR.Ptr(segment);
-        return ret;
+        return new VkVideoEncodeAV1QIndexKHR.Ptr(segment);
     }
 
     public static VkVideoEncodeAV1QIndexKHR clone(Arena arena, VkVideoEncodeAV1QIndexKHR src) {

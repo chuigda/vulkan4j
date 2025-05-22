@@ -123,8 +123,7 @@ public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements
 
     public static VkQueueFamilyProperties.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkQueueFamilyProperties.Ptr ret = new VkQueueFamilyProperties.Ptr(segment);
-        return ret;
+        return new VkQueueFamilyProperties.Ptr(segment);
     }
 
     public static VkQueueFamilyProperties clone(Arena arena, VkQueueFamilyProperties src) {

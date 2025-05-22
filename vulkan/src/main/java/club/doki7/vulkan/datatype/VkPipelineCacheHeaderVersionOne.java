@@ -124,8 +124,7 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
 
     public static VkPipelineCacheHeaderVersionOne.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPipelineCacheHeaderVersionOne.Ptr ret = new VkPipelineCacheHeaderVersionOne.Ptr(segment);
-        return ret;
+        return new VkPipelineCacheHeaderVersionOne.Ptr(segment);
     }
 
     public static VkPipelineCacheHeaderVersionOne clone(Arena arena, VkPipelineCacheHeaderVersionOne src) {

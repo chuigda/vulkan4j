@@ -122,8 +122,7 @@ public record VkVertexInputBindingDescription(@NotNull MemorySegment segment) im
 
     public static VkVertexInputBindingDescription.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkVertexInputBindingDescription.Ptr ret = new VkVertexInputBindingDescription.Ptr(segment);
-        return ret;
+        return new VkVertexInputBindingDescription.Ptr(segment);
     }
 
     public static VkVertexInputBindingDescription clone(Arena arena, VkVertexInputBindingDescription src) {

@@ -121,8 +121,7 @@ public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) imple
 
     public static StdVideoAV1QuantizationFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1QuantizationFlags.Ptr ret = new StdVideoAV1QuantizationFlags.Ptr(segment);
-        return ret;
+        return new StdVideoAV1QuantizationFlags.Ptr(segment);
     }
 
     public static StdVideoAV1QuantizationFlags clone(Arena arena, StdVideoAV1QuantizationFlags src) {

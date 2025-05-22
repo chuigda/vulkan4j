@@ -177,23 +177,19 @@ public record VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegm
         return new VkVideoProfileInfoKHR(s);
     }
 
-    public void pVideoProfile(@Nullable VkVideoProfileInfoKHR value) {
+    public void pVideoProfile(@Nullable IVkVideoProfileInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVideoProfileRaw(s);
     }
 
-    @unsafe public @Nullable VkVideoProfileInfoKHR[] pVideoProfile(int assumedCount) {
+    @unsafe public @Nullable VkVideoProfileInfoKHR.Ptr pVideoProfile(int assumedCount) {
         MemorySegment s = pVideoProfileRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkVideoProfileInfoKHR.BYTES);
-        VkVideoProfileInfoKHR[] ret = new VkVideoProfileInfoKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVideoProfileInfoKHR(s.asSlice(i * VkVideoProfileInfoKHR.BYTES, VkVideoProfileInfoKHR.BYTES));
-        }
-        return ret;
+        return new VkVideoProfileInfoKHR.Ptr(s);
     }
 
     public @pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pVideoProfileRaw() {

@@ -127,8 +127,7 @@ public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements
 
     public static StdVideoAV1Quantization.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1Quantization.Ptr ret = new StdVideoAV1Quantization.Ptr(segment);
-        return ret;
+        return new StdVideoAV1Quantization.Ptr(segment);
     }
 
     public static StdVideoAV1Quantization clone(Arena arena, StdVideoAV1Quantization src) {

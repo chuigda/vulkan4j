@@ -218,23 +218,19 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         return new VkAttachmentReference2(s);
     }
 
-    public void pInputAttachments(@Nullable VkAttachmentReference2 value) {
+    public void pInputAttachments(@Nullable IVkAttachmentReference2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pInputAttachmentsRaw(s);
     }
 
-    @unsafe public @Nullable VkAttachmentReference2[] pInputAttachments(int assumedCount) {
+    @unsafe public @Nullable VkAttachmentReference2.Ptr pInputAttachments(int assumedCount) {
         MemorySegment s = pInputAttachmentsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkAttachmentReference2.BYTES);
-        VkAttachmentReference2[] ret = new VkAttachmentReference2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentReference2(s.asSlice(i * VkAttachmentReference2.BYTES, VkAttachmentReference2.BYTES));
-        }
-        return ret;
+        return new VkAttachmentReference2.Ptr(s);
     }
 
     public @pointer(target=VkAttachmentReference2.class) MemorySegment pInputAttachmentsRaw() {
@@ -261,23 +257,19 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         return new VkAttachmentReference2(s);
     }
 
-    public void pColorAttachments(@Nullable VkAttachmentReference2 value) {
+    public void pColorAttachments(@Nullable IVkAttachmentReference2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentsRaw(s);
     }
 
-    @unsafe public @Nullable VkAttachmentReference2[] pColorAttachments(int assumedCount) {
+    @unsafe public @Nullable VkAttachmentReference2.Ptr pColorAttachments(int assumedCount) {
         MemorySegment s = pColorAttachmentsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkAttachmentReference2.BYTES);
-        VkAttachmentReference2[] ret = new VkAttachmentReference2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentReference2(s.asSlice(i * VkAttachmentReference2.BYTES, VkAttachmentReference2.BYTES));
-        }
-        return ret;
+        return new VkAttachmentReference2.Ptr(s);
     }
 
     public @pointer(target=VkAttachmentReference2.class) MemorySegment pColorAttachmentsRaw() {
@@ -296,23 +288,19 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         return new VkAttachmentReference2(s);
     }
 
-    public void pResolveAttachments(@Nullable VkAttachmentReference2 value) {
+    public void pResolveAttachments(@Nullable IVkAttachmentReference2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pResolveAttachmentsRaw(s);
     }
 
-    @unsafe public @Nullable VkAttachmentReference2[] pResolveAttachments(int assumedCount) {
+    @unsafe public @Nullable VkAttachmentReference2.Ptr pResolveAttachments(int assumedCount) {
         MemorySegment s = pResolveAttachmentsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkAttachmentReference2.BYTES);
-        VkAttachmentReference2[] ret = new VkAttachmentReference2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentReference2(s.asSlice(i * VkAttachmentReference2.BYTES, VkAttachmentReference2.BYTES));
-        }
-        return ret;
+        return new VkAttachmentReference2.Ptr(s);
     }
 
     public @pointer(target=VkAttachmentReference2.class) MemorySegment pResolveAttachmentsRaw() {
@@ -331,23 +319,19 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         return new VkAttachmentReference2(s);
     }
 
-    public void pDepthStencilAttachment(@Nullable VkAttachmentReference2 value) {
+    public void pDepthStencilAttachment(@Nullable IVkAttachmentReference2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDepthStencilAttachmentRaw(s);
     }
 
-    @unsafe public @Nullable VkAttachmentReference2[] pDepthStencilAttachment(int assumedCount) {
+    @unsafe public @Nullable VkAttachmentReference2.Ptr pDepthStencilAttachment(int assumedCount) {
         MemorySegment s = pDepthStencilAttachmentRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkAttachmentReference2.BYTES);
-        VkAttachmentReference2[] ret = new VkAttachmentReference2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentReference2(s.asSlice(i * VkAttachmentReference2.BYTES, VkAttachmentReference2.BYTES));
-        }
-        return ret;
+        return new VkAttachmentReference2.Ptr(s);
     }
 
     public @pointer(target=VkAttachmentReference2.class) MemorySegment pDepthStencilAttachmentRaw() {

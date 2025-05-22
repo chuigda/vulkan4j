@@ -122,8 +122,7 @@ public record VkDrmFormatModifierProperties2EXT(@NotNull MemorySegment segment) 
 
     public static VkDrmFormatModifierProperties2EXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDrmFormatModifierProperties2EXT.Ptr ret = new VkDrmFormatModifierProperties2EXT.Ptr(segment);
-        return ret;
+        return new VkDrmFormatModifierProperties2EXT.Ptr(segment);
     }
 
     public static VkDrmFormatModifierProperties2EXT clone(Arena arena, VkDrmFormatModifierProperties2EXT src) {

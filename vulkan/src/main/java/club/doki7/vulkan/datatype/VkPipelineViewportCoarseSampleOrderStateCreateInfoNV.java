@@ -194,23 +194,19 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
         return new VkCoarseSampleOrderCustomNV(s);
     }
 
-    public void pCustomSampleOrders(@Nullable VkCoarseSampleOrderCustomNV value) {
+    public void pCustomSampleOrders(@Nullable IVkCoarseSampleOrderCustomNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCustomSampleOrdersRaw(s);
     }
 
-    @unsafe public @Nullable VkCoarseSampleOrderCustomNV[] pCustomSampleOrders(int assumedCount) {
+    @unsafe public @Nullable VkCoarseSampleOrderCustomNV.Ptr pCustomSampleOrders(int assumedCount) {
         MemorySegment s = pCustomSampleOrdersRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkCoarseSampleOrderCustomNV.BYTES);
-        VkCoarseSampleOrderCustomNV[] ret = new VkCoarseSampleOrderCustomNV[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkCoarseSampleOrderCustomNV(s.asSlice(i * VkCoarseSampleOrderCustomNV.BYTES, VkCoarseSampleOrderCustomNV.BYTES));
-        }
-        return ret;
+        return new VkCoarseSampleOrderCustomNV.Ptr(s);
     }
 
     public @pointer(target=VkCoarseSampleOrderCustomNV.class) MemorySegment pCustomSampleOrdersRaw() {

@@ -121,8 +121,7 @@ public record VkExtent2D(@NotNull MemorySegment segment) implements IVkExtent2D 
 
     public static VkExtent2D.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkExtent2D.Ptr ret = new VkExtent2D.Ptr(segment);
-        return ret;
+        return new VkExtent2D.Ptr(segment);
     }
 
     public static VkExtent2D clone(Arena arena, VkExtent2D src) {

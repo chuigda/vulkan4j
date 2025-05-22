@@ -126,8 +126,7 @@ public record VkSubpassDependency(@NotNull MemorySegment segment) implements IVk
 
     public static VkSubpassDependency.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSubpassDependency.Ptr ret = new VkSubpassDependency.Ptr(segment);
-        return ret;
+        return new VkSubpassDependency.Ptr(segment);
     }
 
     public static VkSubpassDependency clone(Arena arena, VkSubpassDependency src) {

@@ -122,8 +122,7 @@ public record VkDeviceFaultAddressInfoEXT(@NotNull MemorySegment segment) implem
 
     public static VkDeviceFaultAddressInfoEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDeviceFaultAddressInfoEXT.Ptr ret = new VkDeviceFaultAddressInfoEXT.Ptr(segment);
-        return ret;
+        return new VkDeviceFaultAddressInfoEXT.Ptr(segment);
     }
 
     public static VkDeviceFaultAddressInfoEXT clone(Arena arena, VkDeviceFaultAddressInfoEXT src) {

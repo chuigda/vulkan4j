@@ -121,8 +121,7 @@ public record VkDepthClampRangeEXT(@NotNull MemorySegment segment) implements IV
 
     public static VkDepthClampRangeEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDepthClampRangeEXT.Ptr ret = new VkDepthClampRangeEXT.Ptr(segment);
-        return ret;
+        return new VkDepthClampRangeEXT.Ptr(segment);
     }
 
     public static VkDepthClampRangeEXT clone(Arena arena, VkDepthClampRangeEXT src) {

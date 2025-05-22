@@ -194,23 +194,19 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         return new VkDirectDriverLoadingInfoLUNARG(s);
     }
 
-    public void pDrivers(@Nullable VkDirectDriverLoadingInfoLUNARG value) {
+    public void pDrivers(@Nullable IVkDirectDriverLoadingInfoLUNARG value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDriversRaw(s);
     }
 
-    @unsafe public @Nullable VkDirectDriverLoadingInfoLUNARG[] pDrivers(int assumedCount) {
+    @unsafe public @Nullable VkDirectDriverLoadingInfoLUNARG.Ptr pDrivers(int assumedCount) {
         MemorySegment s = pDriversRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDirectDriverLoadingInfoLUNARG.BYTES);
-        VkDirectDriverLoadingInfoLUNARG[] ret = new VkDirectDriverLoadingInfoLUNARG[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDirectDriverLoadingInfoLUNARG(s.asSlice(i * VkDirectDriverLoadingInfoLUNARG.BYTES, VkDirectDriverLoadingInfoLUNARG.BYTES));
-        }
-        return ret;
+        return new VkDirectDriverLoadingInfoLUNARG.Ptr(s);
     }
 
     public @pointer(target=VkDirectDriverLoadingInfoLUNARG.class) MemorySegment pDriversRaw() {

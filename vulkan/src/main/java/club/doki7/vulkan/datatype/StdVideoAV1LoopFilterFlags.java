@@ -121,8 +121,7 @@ public record StdVideoAV1LoopFilterFlags(@NotNull MemorySegment segment) impleme
 
     public static StdVideoAV1LoopFilterFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1LoopFilterFlags.Ptr ret = new StdVideoAV1LoopFilterFlags.Ptr(segment);
-        return ret;
+        return new StdVideoAV1LoopFilterFlags.Ptr(segment);
     }
 
     public static StdVideoAV1LoopFilterFlags clone(Arena arena, StdVideoAV1LoopFilterFlags src) {

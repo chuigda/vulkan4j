@@ -124,8 +124,7 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
 
     public static VkLayerSettingEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkLayerSettingEXT.Ptr ret = new VkLayerSettingEXT.Ptr(segment);
-        return ret;
+        return new VkLayerSettingEXT.Ptr(segment);
     }
 
     public static VkLayerSettingEXT clone(Arena arena, VkLayerSettingEXT src) {

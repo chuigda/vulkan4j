@@ -123,8 +123,7 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
 
     public static StdVideoEncodeAV1ReferenceInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeAV1ReferenceInfo.Ptr ret = new StdVideoEncodeAV1ReferenceInfo.Ptr(segment);
-        return ret;
+        return new StdVideoEncodeAV1ReferenceInfo.Ptr(segment);
     }
 
     public static StdVideoEncodeAV1ReferenceInfo clone(Arena arena, StdVideoEncodeAV1ReferenceInfo src) {
@@ -174,23 +173,19 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         return new StdVideoEncodeAV1ExtensionHeader(s);
     }
 
-    public void pExtensionHeader(@Nullable StdVideoEncodeAV1ExtensionHeader value) {
+    public void pExtensionHeader(@Nullable IStdVideoEncodeAV1ExtensionHeader value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pExtensionHeaderRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeAV1ExtensionHeader[] pExtensionHeader(int assumedCount) {
+    @unsafe public @Nullable StdVideoEncodeAV1ExtensionHeader.Ptr pExtensionHeader(int assumedCount) {
         MemorySegment s = pExtensionHeaderRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoEncodeAV1ExtensionHeader.BYTES);
-        StdVideoEncodeAV1ExtensionHeader[] ret = new StdVideoEncodeAV1ExtensionHeader[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeAV1ExtensionHeader(s.asSlice(i * StdVideoEncodeAV1ExtensionHeader.BYTES, StdVideoEncodeAV1ExtensionHeader.BYTES));
-        }
-        return ret;
+        return new StdVideoEncodeAV1ExtensionHeader.Ptr(s);
     }
 
     public @pointer(target=StdVideoEncodeAV1ExtensionHeader.class) MemorySegment pExtensionHeaderRaw() {

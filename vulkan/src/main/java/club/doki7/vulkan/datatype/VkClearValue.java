@@ -121,8 +121,7 @@ public record VkClearValue(@NotNull MemorySegment segment) implements IVkClearVa
 
     public static VkClearValue.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkClearValue.Ptr ret = new VkClearValue.Ptr(segment);
-        return ret;
+        return new VkClearValue.Ptr(segment);
     }
 
     public static VkClearValue clone(Arena arena, VkClearValue src) {

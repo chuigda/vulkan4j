@@ -122,8 +122,7 @@ public record VkVideoEncodeAV1FrameSizeKHR(@NotNull MemorySegment segment) imple
 
     public static VkVideoEncodeAV1FrameSizeKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkVideoEncodeAV1FrameSizeKHR.Ptr ret = new VkVideoEncodeAV1FrameSizeKHR.Ptr(segment);
-        return ret;
+        return new VkVideoEncodeAV1FrameSizeKHR.Ptr(segment);
     }
 
     public static VkVideoEncodeAV1FrameSizeKHR clone(Arena arena, VkVideoEncodeAV1FrameSizeKHR src) {

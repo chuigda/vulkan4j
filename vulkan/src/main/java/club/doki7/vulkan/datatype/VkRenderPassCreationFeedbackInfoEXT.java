@@ -120,8 +120,7 @@ public record VkRenderPassCreationFeedbackInfoEXT(@NotNull MemorySegment segment
 
     public static VkRenderPassCreationFeedbackInfoEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkRenderPassCreationFeedbackInfoEXT.Ptr ret = new VkRenderPassCreationFeedbackInfoEXT.Ptr(segment);
-        return ret;
+        return new VkRenderPassCreationFeedbackInfoEXT.Ptr(segment);
     }
 
     public static VkRenderPassCreationFeedbackInfoEXT clone(Arena arena, VkRenderPassCreationFeedbackInfoEXT src) {

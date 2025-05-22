@@ -185,23 +185,19 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         return new VkRefreshObjectKHR(s);
     }
 
-    public void pObjects(@Nullable VkRefreshObjectKHR value) {
+    public void pObjects(@Nullable IVkRefreshObjectKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pObjectsRaw(s);
     }
 
-    @unsafe public @Nullable VkRefreshObjectKHR[] pObjects(int assumedCount) {
+    @unsafe public @Nullable VkRefreshObjectKHR.Ptr pObjects(int assumedCount) {
         MemorySegment s = pObjectsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkRefreshObjectKHR.BYTES);
-        VkRefreshObjectKHR[] ret = new VkRefreshObjectKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkRefreshObjectKHR(s.asSlice(i * VkRefreshObjectKHR.BYTES, VkRefreshObjectKHR.BYTES));
-        }
-        return ret;
+        return new VkRefreshObjectKHR.Ptr(s);
     }
 
     public @pointer(target=VkRefreshObjectKHR.class) MemorySegment pObjectsRaw() {

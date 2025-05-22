@@ -127,8 +127,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
 
     public static StdVideoAV1TileInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1TileInfo.Ptr ret = new StdVideoAV1TileInfo.Ptr(segment);
-        return ret;
+        return new StdVideoAV1TileInfo.Ptr(segment);
     }
 
     public static StdVideoAV1TileInfo clone(Arena arena, StdVideoAV1TileInfo src) {

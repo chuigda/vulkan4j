@@ -127,8 +127,7 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
 
     public static StdVideoEncodeH264SliceHeader.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeH264SliceHeader.Ptr ret = new StdVideoEncodeH264SliceHeader.Ptr(segment);
-        return ret;
+        return new StdVideoEncodeH264SliceHeader.Ptr(segment);
     }
 
     public static StdVideoEncodeH264SliceHeader clone(Arena arena, StdVideoEncodeH264SliceHeader src) {
@@ -210,23 +209,19 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
         return new StdVideoEncodeH264WeightTable(s);
     }
 
-    public void pWeightTable(@Nullable StdVideoEncodeH264WeightTable value) {
+    public void pWeightTable(@Nullable IStdVideoEncodeH264WeightTable value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWeightTableRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH264WeightTable[] pWeightTable(int assumedCount) {
+    @unsafe public @Nullable StdVideoEncodeH264WeightTable.Ptr pWeightTable(int assumedCount) {
         MemorySegment s = pWeightTableRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoEncodeH264WeightTable.BYTES);
-        StdVideoEncodeH264WeightTable[] ret = new StdVideoEncodeH264WeightTable[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH264WeightTable(s.asSlice(i * StdVideoEncodeH264WeightTable.BYTES, StdVideoEncodeH264WeightTable.BYTES));
-        }
-        return ret;
+        return new StdVideoEncodeH264WeightTable.Ptr(s);
     }
 
     public @pointer(target=StdVideoEncodeH264WeightTable.class) MemorySegment pWeightTableRaw() {

@@ -122,8 +122,7 @@ public record VkClearAttachment(@NotNull MemorySegment segment) implements IVkCl
 
     public static VkClearAttachment.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkClearAttachment.Ptr ret = new VkClearAttachment.Ptr(segment);
-        return ret;
+        return new VkClearAttachment.Ptr(segment);
     }
 
     public static VkClearAttachment clone(Arena arena, VkClearAttachment src) {

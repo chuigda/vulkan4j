@@ -122,8 +122,7 @@ public record VkAccelerationStructureMotionInstanceNV(@NotNull MemorySegment seg
 
     public static VkAccelerationStructureMotionInstanceNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkAccelerationStructureMotionInstanceNV.Ptr ret = new VkAccelerationStructureMotionInstanceNV.Ptr(segment);
-        return ret;
+        return new VkAccelerationStructureMotionInstanceNV.Ptr(segment);
     }
 
     public static VkAccelerationStructureMotionInstanceNV clone(Arena arena, VkAccelerationStructureMotionInstanceNV src) {

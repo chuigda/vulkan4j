@@ -122,8 +122,7 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
 
     public static VkPipelineBinaryKeysAndDataKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPipelineBinaryKeysAndDataKHR.Ptr ret = new VkPipelineBinaryKeysAndDataKHR.Ptr(segment);
-        return ret;
+        return new VkPipelineBinaryKeysAndDataKHR.Ptr(segment);
     }
 
     public static VkPipelineBinaryKeysAndDataKHR clone(Arena arena, VkPipelineBinaryKeysAndDataKHR src) {
@@ -148,23 +147,19 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         return new VkPipelineBinaryKeyKHR(s);
     }
 
-    public void pPipelineBinaryKeys(@Nullable VkPipelineBinaryKeyKHR value) {
+    public void pPipelineBinaryKeys(@Nullable IVkPipelineBinaryKeyKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineBinaryKeysRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineBinaryKeyKHR[] pPipelineBinaryKeys(int assumedCount) {
+    @unsafe public @Nullable VkPipelineBinaryKeyKHR.Ptr pPipelineBinaryKeys(int assumedCount) {
         MemorySegment s = pPipelineBinaryKeysRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPipelineBinaryKeyKHR.BYTES);
-        VkPipelineBinaryKeyKHR[] ret = new VkPipelineBinaryKeyKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineBinaryKeyKHR(s.asSlice(i * VkPipelineBinaryKeyKHR.BYTES, VkPipelineBinaryKeyKHR.BYTES));
-        }
-        return ret;
+        return new VkPipelineBinaryKeyKHR.Ptr(s);
     }
 
     public @pointer(target=VkPipelineBinaryKeyKHR.class) MemorySegment pPipelineBinaryKeysRaw() {
@@ -183,23 +178,19 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         return new VkPipelineBinaryDataKHR(s);
     }
 
-    public void pPipelineBinaryData(@Nullable VkPipelineBinaryDataKHR value) {
+    public void pPipelineBinaryData(@Nullable IVkPipelineBinaryDataKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineBinaryDataRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineBinaryDataKHR[] pPipelineBinaryData(int assumedCount) {
+    @unsafe public @Nullable VkPipelineBinaryDataKHR.Ptr pPipelineBinaryData(int assumedCount) {
         MemorySegment s = pPipelineBinaryDataRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPipelineBinaryDataKHR.BYTES);
-        VkPipelineBinaryDataKHR[] ret = new VkPipelineBinaryDataKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPipelineBinaryDataKHR(s.asSlice(i * VkPipelineBinaryDataKHR.BYTES, VkPipelineBinaryDataKHR.BYTES));
-        }
-        return ret;
+        return new VkPipelineBinaryDataKHR.Ptr(s);
     }
 
     public @pointer(target=VkPipelineBinaryDataKHR.class) MemorySegment pPipelineBinaryDataRaw() {

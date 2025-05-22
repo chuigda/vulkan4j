@@ -131,8 +131,7 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
 
     public static StdVideoH265ShortTermRefPicSet.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoH265ShortTermRefPicSet.Ptr ret = new StdVideoH265ShortTermRefPicSet.Ptr(segment);
-        return ret;
+        return new StdVideoH265ShortTermRefPicSet.Ptr(segment);
     }
 
     public static StdVideoH265ShortTermRefPicSet clone(Arena arena, StdVideoH265ShortTermRefPicSet src) {

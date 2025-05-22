@@ -132,8 +132,7 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
 
     public static StdVideoEncodeH265SliceSegmentHeader.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeH265SliceSegmentHeader.Ptr ret = new StdVideoEncodeH265SliceSegmentHeader.Ptr(segment);
-        return ret;
+        return new StdVideoEncodeH265SliceSegmentHeader.Ptr(segment);
     }
 
     public static StdVideoEncodeH265SliceSegmentHeader clone(Arena arena, StdVideoEncodeH265SliceSegmentHeader src) {
@@ -255,23 +254,19 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         return new StdVideoEncodeH265WeightTable(s);
     }
 
-    public void pWeightTable(@Nullable StdVideoEncodeH265WeightTable value) {
+    public void pWeightTable(@Nullable IStdVideoEncodeH265WeightTable value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWeightTableRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH265WeightTable[] pWeightTable(int assumedCount) {
+    @unsafe public @Nullable StdVideoEncodeH265WeightTable.Ptr pWeightTable(int assumedCount) {
         MemorySegment s = pWeightTableRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoEncodeH265WeightTable.BYTES);
-        StdVideoEncodeH265WeightTable[] ret = new StdVideoEncodeH265WeightTable[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH265WeightTable(s.asSlice(i * StdVideoEncodeH265WeightTable.BYTES, StdVideoEncodeH265WeightTable.BYTES));
-        }
-        return ret;
+        return new StdVideoEncodeH265WeightTable.Ptr(s);
     }
 
     public @pointer(target=StdVideoEncodeH265WeightTable.class) MemorySegment pWeightTableRaw() {

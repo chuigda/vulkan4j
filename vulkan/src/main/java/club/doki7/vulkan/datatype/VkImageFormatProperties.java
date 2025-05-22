@@ -124,8 +124,7 @@ public record VkImageFormatProperties(@NotNull MemorySegment segment) implements
 
     public static VkImageFormatProperties.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkImageFormatProperties.Ptr ret = new VkImageFormatProperties.Ptr(segment);
-        return ret;
+        return new VkImageFormatProperties.Ptr(segment);
     }
 
     public static VkImageFormatProperties clone(Arena arena, VkImageFormatProperties src) {

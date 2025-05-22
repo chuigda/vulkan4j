@@ -196,23 +196,19 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         return new VkVertexInputBindingDescription(s);
     }
 
-    public void pVertexBindingDescriptions(@Nullable VkVertexInputBindingDescription value) {
+    public void pVertexBindingDescriptions(@Nullable IVkVertexInputBindingDescription value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVertexBindingDescriptionsRaw(s);
     }
 
-    @unsafe public @Nullable VkVertexInputBindingDescription[] pVertexBindingDescriptions(int assumedCount) {
+    @unsafe public @Nullable VkVertexInputBindingDescription.Ptr pVertexBindingDescriptions(int assumedCount) {
         MemorySegment s = pVertexBindingDescriptionsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkVertexInputBindingDescription.BYTES);
-        VkVertexInputBindingDescription[] ret = new VkVertexInputBindingDescription[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVertexInputBindingDescription(s.asSlice(i * VkVertexInputBindingDescription.BYTES, VkVertexInputBindingDescription.BYTES));
-        }
-        return ret;
+        return new VkVertexInputBindingDescription.Ptr(s);
     }
 
     public @pointer(target=VkVertexInputBindingDescription.class) MemorySegment pVertexBindingDescriptionsRaw() {
@@ -239,23 +235,19 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         return new VkVertexInputAttributeDescription(s);
     }
 
-    public void pVertexAttributeDescriptions(@Nullable VkVertexInputAttributeDescription value) {
+    public void pVertexAttributeDescriptions(@Nullable IVkVertexInputAttributeDescription value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVertexAttributeDescriptionsRaw(s);
     }
 
-    @unsafe public @Nullable VkVertexInputAttributeDescription[] pVertexAttributeDescriptions(int assumedCount) {
+    @unsafe public @Nullable VkVertexInputAttributeDescription.Ptr pVertexAttributeDescriptions(int assumedCount) {
         MemorySegment s = pVertexAttributeDescriptionsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkVertexInputAttributeDescription.BYTES);
-        VkVertexInputAttributeDescription[] ret = new VkVertexInputAttributeDescription[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVertexInputAttributeDescription(s.asSlice(i * VkVertexInputAttributeDescription.BYTES, VkVertexInputAttributeDescription.BYTES));
-        }
-        return ret;
+        return new VkVertexInputAttributeDescription.Ptr(s);
     }
 
     public @pointer(target=VkVertexInputAttributeDescription.class) MemorySegment pVertexAttributeDescriptionsRaw() {

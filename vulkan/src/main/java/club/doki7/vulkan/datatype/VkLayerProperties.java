@@ -123,8 +123,7 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IVkLa
 
     public static VkLayerProperties.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkLayerProperties.Ptr ret = new VkLayerProperties.Ptr(segment);
-        return ret;
+        return new VkLayerProperties.Ptr(segment);
     }
 
     public static VkLayerProperties clone(Arena arena, VkLayerProperties src) {

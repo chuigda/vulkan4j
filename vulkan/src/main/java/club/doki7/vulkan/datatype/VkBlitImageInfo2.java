@@ -230,23 +230,19 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IVkBli
         return new VkImageBlit2(s);
     }
 
-    public void pRegions(@Nullable VkImageBlit2 value) {
+    public void pRegions(@Nullable IVkImageBlit2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
     }
 
-    @unsafe public @Nullable VkImageBlit2[] pRegions(int assumedCount) {
+    @unsafe public @Nullable VkImageBlit2.Ptr pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkImageBlit2.BYTES);
-        VkImageBlit2[] ret = new VkImageBlit2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkImageBlit2(s.asSlice(i * VkImageBlit2.BYTES, VkImageBlit2.BYTES));
-        }
-        return ret;
+        return new VkImageBlit2.Ptr(s);
     }
 
     public @pointer(target=VkImageBlit2.class) MemorySegment pRegionsRaw() {

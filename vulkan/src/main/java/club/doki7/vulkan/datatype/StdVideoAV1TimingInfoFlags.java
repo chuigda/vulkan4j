@@ -120,8 +120,7 @@ public record StdVideoAV1TimingInfoFlags(@NotNull MemorySegment segment) impleme
 
     public static StdVideoAV1TimingInfoFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1TimingInfoFlags.Ptr ret = new StdVideoAV1TimingInfoFlags.Ptr(segment);
-        return ret;
+        return new StdVideoAV1TimingInfoFlags.Ptr(segment);
     }
 
     public static StdVideoAV1TimingInfoFlags clone(Arena arena, StdVideoAV1TimingInfoFlags src) {

@@ -128,8 +128,7 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
 
     public static StdVideoH264HrdParameters.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoH264HrdParameters.Ptr ret = new StdVideoH264HrdParameters.Ptr(segment);
-        return ret;
+        return new StdVideoH264HrdParameters.Ptr(segment);
     }
 
     public static StdVideoH264HrdParameters clone(Arena arena, StdVideoH264HrdParameters src) {

@@ -125,8 +125,7 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
 
     public static VkClusterAccelerationStructureInstantiateClusterInfoNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkClusterAccelerationStructureInstantiateClusterInfoNV.Ptr ret = new VkClusterAccelerationStructureInstantiateClusterInfoNV.Ptr(segment);
-        return ret;
+        return new VkClusterAccelerationStructureInstantiateClusterInfoNV.Ptr(segment);
     }
 
     public static VkClusterAccelerationStructureInstantiateClusterInfoNV clone(Arena arena, VkClusterAccelerationStructureInstantiateClusterInfoNV src) {

@@ -122,8 +122,7 @@ public record VkMultiDrawIndexedInfoEXT(@NotNull MemorySegment segment) implemen
 
     public static VkMultiDrawIndexedInfoEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkMultiDrawIndexedInfoEXT.Ptr ret = new VkMultiDrawIndexedInfoEXT.Ptr(segment);
-        return ret;
+        return new VkMultiDrawIndexedInfoEXT.Ptr(segment);
     }
 
     public static VkMultiDrawIndexedInfoEXT clone(Arena arena, VkMultiDrawIndexedInfoEXT src) {

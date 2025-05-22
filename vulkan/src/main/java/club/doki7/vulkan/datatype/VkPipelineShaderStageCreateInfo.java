@@ -233,23 +233,19 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         return new VkSpecializationInfo(s);
     }
 
-    public void pSpecializationInfo(@Nullable VkSpecializationInfo value) {
+    public void pSpecializationInfo(@Nullable IVkSpecializationInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSpecializationInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkSpecializationInfo[] pSpecializationInfo(int assumedCount) {
+    @unsafe public @Nullable VkSpecializationInfo.Ptr pSpecializationInfo(int assumedCount) {
         MemorySegment s = pSpecializationInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkSpecializationInfo.BYTES);
-        VkSpecializationInfo[] ret = new VkSpecializationInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSpecializationInfo(s.asSlice(i * VkSpecializationInfo.BYTES, VkSpecializationInfo.BYTES));
-        }
-        return ret;
+        return new VkSpecializationInfo.Ptr(s);
     }
 
     public @pointer(target=VkSpecializationInfo.class) MemorySegment pSpecializationInfoRaw() {

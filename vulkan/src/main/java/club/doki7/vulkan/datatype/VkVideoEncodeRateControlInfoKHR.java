@@ -205,23 +205,19 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
         return new VkVideoEncodeRateControlLayerInfoKHR(s);
     }
 
-    public void pLayers(@Nullable VkVideoEncodeRateControlLayerInfoKHR value) {
+    public void pLayers(@Nullable IVkVideoEncodeRateControlLayerInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLayersRaw(s);
     }
 
-    @unsafe public @Nullable VkVideoEncodeRateControlLayerInfoKHR[] pLayers(int assumedCount) {
+    @unsafe public @Nullable VkVideoEncodeRateControlLayerInfoKHR.Ptr pLayers(int assumedCount) {
         MemorySegment s = pLayersRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkVideoEncodeRateControlLayerInfoKHR.BYTES);
-        VkVideoEncodeRateControlLayerInfoKHR[] ret = new VkVideoEncodeRateControlLayerInfoKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkVideoEncodeRateControlLayerInfoKHR(s.asSlice(i * VkVideoEncodeRateControlLayerInfoKHR.BYTES, VkVideoEncodeRateControlLayerInfoKHR.BYTES));
-        }
-        return ret;
+        return new VkVideoEncodeRateControlLayerInfoKHR.Ptr(s);
     }
 
     public @pointer(target=VkVideoEncodeRateControlLayerInfoKHR.class) MemorySegment pLayersRaw() {

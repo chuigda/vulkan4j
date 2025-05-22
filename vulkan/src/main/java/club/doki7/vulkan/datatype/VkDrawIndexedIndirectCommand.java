@@ -124,8 +124,7 @@ public record VkDrawIndexedIndirectCommand(@NotNull MemorySegment segment) imple
 
     public static VkDrawIndexedIndirectCommand.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDrawIndexedIndirectCommand.Ptr ret = new VkDrawIndexedIndirectCommand.Ptr(segment);
-        return ret;
+        return new VkDrawIndexedIndirectCommand.Ptr(segment);
     }
 
     public static VkDrawIndexedIndirectCommand clone(Arena arena, VkDrawIndexedIndirectCommand src) {

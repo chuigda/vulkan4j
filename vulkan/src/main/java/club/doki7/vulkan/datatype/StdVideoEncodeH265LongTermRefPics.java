@@ -124,8 +124,7 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
 
     public static StdVideoEncodeH265LongTermRefPics.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeH265LongTermRefPics.Ptr ret = new StdVideoEncodeH265LongTermRefPics.Ptr(segment);
-        return ret;
+        return new StdVideoEncodeH265LongTermRefPics.Ptr(segment);
     }
 
     public static StdVideoEncodeH265LongTermRefPics clone(Arena arena, StdVideoEncodeH265LongTermRefPics src) {

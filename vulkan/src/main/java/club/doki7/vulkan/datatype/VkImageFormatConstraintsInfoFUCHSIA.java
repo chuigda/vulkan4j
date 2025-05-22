@@ -221,23 +221,19 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
         return new VkSysmemColorSpaceFUCHSIA(s);
     }
 
-    public void pColorSpaces(@Nullable VkSysmemColorSpaceFUCHSIA value) {
+    public void pColorSpaces(@Nullable IVkSysmemColorSpaceFUCHSIA value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorSpacesRaw(s);
     }
 
-    @unsafe public @Nullable VkSysmemColorSpaceFUCHSIA[] pColorSpaces(int assumedCount) {
+    @unsafe public @Nullable VkSysmemColorSpaceFUCHSIA.Ptr pColorSpaces(int assumedCount) {
         MemorySegment s = pColorSpacesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkSysmemColorSpaceFUCHSIA.BYTES);
-        VkSysmemColorSpaceFUCHSIA[] ret = new VkSysmemColorSpaceFUCHSIA[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSysmemColorSpaceFUCHSIA(s.asSlice(i * VkSysmemColorSpaceFUCHSIA.BYTES, VkSysmemColorSpaceFUCHSIA.BYTES));
-        }
-        return ret;
+        return new VkSysmemColorSpaceFUCHSIA.Ptr(s);
     }
 
     public @pointer(target=VkSysmemColorSpaceFUCHSIA.class) MemorySegment pColorSpacesRaw() {

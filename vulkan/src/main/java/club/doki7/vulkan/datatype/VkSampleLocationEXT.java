@@ -121,8 +121,7 @@ public record VkSampleLocationEXT(@NotNull MemorySegment segment) implements IVk
 
     public static VkSampleLocationEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSampleLocationEXT.Ptr ret = new VkSampleLocationEXT.Ptr(segment);
-        return ret;
+        return new VkSampleLocationEXT.Ptr(segment);
     }
 
     public static VkSampleLocationEXT clone(Arena arena, VkSampleLocationEXT src) {

@@ -124,8 +124,7 @@ public record VkImageCopy(@NotNull MemorySegment segment) implements IVkImageCop
 
     public static VkImageCopy.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkImageCopy.Ptr ret = new VkImageCopy.Ptr(segment);
-        return ret;
+        return new VkImageCopy.Ptr(segment);
     }
 
     public static VkImageCopy clone(Arena arena, VkImageCopy src) {

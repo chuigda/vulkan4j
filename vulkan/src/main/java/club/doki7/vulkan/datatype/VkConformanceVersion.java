@@ -123,8 +123,7 @@ public record VkConformanceVersion(@NotNull MemorySegment segment) implements IV
 
     public static VkConformanceVersion.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkConformanceVersion.Ptr ret = new VkConformanceVersion.Ptr(segment);
-        return ret;
+        return new VkConformanceVersion.Ptr(segment);
     }
 
     public static VkConformanceVersion clone(Arena arena, VkConformanceVersion src) {

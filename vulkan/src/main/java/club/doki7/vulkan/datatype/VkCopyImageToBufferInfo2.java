@@ -220,23 +220,19 @@ public record VkCopyImageToBufferInfo2(@NotNull MemorySegment segment) implement
         return new VkBufferImageCopy2(s);
     }
 
-    public void pRegions(@Nullable VkBufferImageCopy2 value) {
+    public void pRegions(@Nullable IVkBufferImageCopy2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
     }
 
-    @unsafe public @Nullable VkBufferImageCopy2[] pRegions(int assumedCount) {
+    @unsafe public @Nullable VkBufferImageCopy2.Ptr pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkBufferImageCopy2.BYTES);
-        VkBufferImageCopy2[] ret = new VkBufferImageCopy2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkBufferImageCopy2(s.asSlice(i * VkBufferImageCopy2.BYTES, VkBufferImageCopy2.BYTES));
-        }
-        return ret;
+        return new VkBufferImageCopy2.Ptr(s);
     }
 
     public @pointer(target=VkBufferImageCopy2.class) MemorySegment pRegionsRaw() {

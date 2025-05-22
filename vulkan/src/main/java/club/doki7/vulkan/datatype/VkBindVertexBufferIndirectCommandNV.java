@@ -122,8 +122,7 @@ public record VkBindVertexBufferIndirectCommandNV(@NotNull MemorySegment segment
 
     public static VkBindVertexBufferIndirectCommandNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkBindVertexBufferIndirectCommandNV.Ptr ret = new VkBindVertexBufferIndirectCommandNV.Ptr(segment);
-        return ret;
+        return new VkBindVertexBufferIndirectCommandNV.Ptr(segment);
     }
 
     public static VkBindVertexBufferIndirectCommandNV clone(Arena arena, VkBindVertexBufferIndirectCommandNV src) {

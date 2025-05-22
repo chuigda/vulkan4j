@@ -122,8 +122,7 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
 
     public static StdVideoH265SubLayerHrdParameters.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoH265SubLayerHrdParameters.Ptr ret = new StdVideoH265SubLayerHrdParameters.Ptr(segment);
-        return ret;
+        return new StdVideoH265SubLayerHrdParameters.Ptr(segment);
     }
 
     public static StdVideoH265SubLayerHrdParameters clone(Arena arena, StdVideoH265SubLayerHrdParameters src) {

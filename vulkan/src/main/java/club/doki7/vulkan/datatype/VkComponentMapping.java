@@ -123,8 +123,7 @@ public record VkComponentMapping(@NotNull MemorySegment segment) implements IVkC
 
     public static VkComponentMapping.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkComponentMapping.Ptr ret = new VkComponentMapping.Ptr(segment);
-        return ret;
+        return new VkComponentMapping.Ptr(segment);
     }
 
     public static VkComponentMapping clone(Arena arena, VkComponentMapping src) {

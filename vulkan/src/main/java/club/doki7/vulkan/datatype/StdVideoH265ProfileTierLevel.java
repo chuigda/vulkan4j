@@ -120,8 +120,7 @@ public record StdVideoH265ProfileTierLevel(@NotNull MemorySegment segment) imple
 
     public static StdVideoH265ProfileTierLevel.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoH265ProfileTierLevel.Ptr ret = new StdVideoH265ProfileTierLevel.Ptr(segment);
-        return ret;
+        return new StdVideoH265ProfileTierLevel.Ptr(segment);
     }
 
     public static StdVideoH265ProfileTierLevel clone(Arena arena, StdVideoH265ProfileTierLevel src) {

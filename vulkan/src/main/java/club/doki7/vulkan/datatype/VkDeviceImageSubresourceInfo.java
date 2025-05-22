@@ -177,23 +177,19 @@ public record VkDeviceImageSubresourceInfo(@NotNull MemorySegment segment) imple
         return new VkImageCreateInfo(s);
     }
 
-    public void pCreateInfo(@Nullable VkImageCreateInfo value) {
+    public void pCreateInfo(@Nullable IVkImageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCreateInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkImageCreateInfo[] pCreateInfo(int assumedCount) {
+    @unsafe public @Nullable VkImageCreateInfo.Ptr pCreateInfo(int assumedCount) {
         MemorySegment s = pCreateInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkImageCreateInfo.BYTES);
-        VkImageCreateInfo[] ret = new VkImageCreateInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkImageCreateInfo(s.asSlice(i * VkImageCreateInfo.BYTES, VkImageCreateInfo.BYTES));
-        }
-        return ret;
+        return new VkImageCreateInfo.Ptr(s);
     }
 
     public @pointer(target=VkImageCreateInfo.class) MemorySegment pCreateInfoRaw() {
@@ -212,23 +208,19 @@ public record VkDeviceImageSubresourceInfo(@NotNull MemorySegment segment) imple
         return new VkImageSubresource2(s);
     }
 
-    public void pSubresource(@Nullable VkImageSubresource2 value) {
+    public void pSubresource(@Nullable IVkImageSubresource2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSubresourceRaw(s);
     }
 
-    @unsafe public @Nullable VkImageSubresource2[] pSubresource(int assumedCount) {
+    @unsafe public @Nullable VkImageSubresource2.Ptr pSubresource(int assumedCount) {
         MemorySegment s = pSubresourceRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkImageSubresource2.BYTES);
-        VkImageSubresource2[] ret = new VkImageSubresource2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkImageSubresource2(s.asSlice(i * VkImageSubresource2.BYTES, VkImageSubresource2.BYTES));
-        }
-        return ret;
+        return new VkImageSubresource2.Ptr(s);
     }
 
     public @pointer(target=VkImageSubresource2.class) MemorySegment pSubresourceRaw() {

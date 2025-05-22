@@ -124,8 +124,7 @@ public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) imp
 
     public static VkPastPresentationTimingGOOGLE.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPastPresentationTimingGOOGLE.Ptr ret = new VkPastPresentationTimingGOOGLE.Ptr(segment);
-        return ret;
+        return new VkPastPresentationTimingGOOGLE.Ptr(segment);
     }
 
     public static VkPastPresentationTimingGOOGLE clone(Arena arena, VkPastPresentationTimingGOOGLE src) {

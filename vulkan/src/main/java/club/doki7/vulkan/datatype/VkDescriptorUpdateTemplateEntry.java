@@ -125,8 +125,7 @@ public record VkDescriptorUpdateTemplateEntry(@NotNull MemorySegment segment) im
 
     public static VkDescriptorUpdateTemplateEntry.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDescriptorUpdateTemplateEntry.Ptr ret = new VkDescriptorUpdateTemplateEntry.Ptr(segment);
-        return ret;
+        return new VkDescriptorUpdateTemplateEntry.Ptr(segment);
     }
 
     public static VkDescriptorUpdateTemplateEntry clone(Arena arena, VkDescriptorUpdateTemplateEntry src) {

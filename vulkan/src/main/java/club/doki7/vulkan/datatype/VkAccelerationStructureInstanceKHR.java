@@ -126,8 +126,7 @@ public record VkAccelerationStructureInstanceKHR(@NotNull MemorySegment segment)
 
     public static VkAccelerationStructureInstanceKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkAccelerationStructureInstanceKHR.Ptr ret = new VkAccelerationStructureInstanceKHR.Ptr(segment);
-        return ret;
+        return new VkAccelerationStructureInstanceKHR.Ptr(segment);
     }
 
     public static VkAccelerationStructureInstanceKHR clone(Arena arena, VkAccelerationStructureInstanceKHR src) {

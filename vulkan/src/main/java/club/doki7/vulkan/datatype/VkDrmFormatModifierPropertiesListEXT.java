@@ -185,23 +185,19 @@ public record VkDrmFormatModifierPropertiesListEXT(@NotNull MemorySegment segmen
         return new VkDrmFormatModifierPropertiesEXT(s);
     }
 
-    public void pDrmFormatModifierProperties(@Nullable VkDrmFormatModifierPropertiesEXT value) {
+    public void pDrmFormatModifierProperties(@Nullable IVkDrmFormatModifierPropertiesEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDrmFormatModifierPropertiesRaw(s);
     }
 
-    @unsafe public @Nullable VkDrmFormatModifierPropertiesEXT[] pDrmFormatModifierProperties(int assumedCount) {
+    @unsafe public @Nullable VkDrmFormatModifierPropertiesEXT.Ptr pDrmFormatModifierProperties(int assumedCount) {
         MemorySegment s = pDrmFormatModifierPropertiesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDrmFormatModifierPropertiesEXT.BYTES);
-        VkDrmFormatModifierPropertiesEXT[] ret = new VkDrmFormatModifierPropertiesEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDrmFormatModifierPropertiesEXT(s.asSlice(i * VkDrmFormatModifierPropertiesEXT.BYTES, VkDrmFormatModifierPropertiesEXT.BYTES));
-        }
-        return ret;
+        return new VkDrmFormatModifierPropertiesEXT.Ptr(s);
     }
 
     public @pointer(target=VkDrmFormatModifierPropertiesEXT.class) MemorySegment pDrmFormatModifierPropertiesRaw() {

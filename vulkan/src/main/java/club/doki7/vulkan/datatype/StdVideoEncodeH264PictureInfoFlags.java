@@ -124,8 +124,7 @@ public record StdVideoEncodeH264PictureInfoFlags(@NotNull MemorySegment segment)
 
     public static StdVideoEncodeH264PictureInfoFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeH264PictureInfoFlags.Ptr ret = new StdVideoEncodeH264PictureInfoFlags.Ptr(segment);
-        return ret;
+        return new StdVideoEncodeH264PictureInfoFlags.Ptr(segment);
     }
 
     public static StdVideoEncodeH264PictureInfoFlags clone(Arena arena, StdVideoEncodeH264PictureInfoFlags src) {

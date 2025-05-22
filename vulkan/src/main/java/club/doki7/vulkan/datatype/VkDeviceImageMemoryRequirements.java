@@ -177,23 +177,19 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
         return new VkImageCreateInfo(s);
     }
 
-    public void pCreateInfo(@Nullable VkImageCreateInfo value) {
+    public void pCreateInfo(@Nullable IVkImageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCreateInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkImageCreateInfo[] pCreateInfo(int assumedCount) {
+    @unsafe public @Nullable VkImageCreateInfo.Ptr pCreateInfo(int assumedCount) {
         MemorySegment s = pCreateInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkImageCreateInfo.BYTES);
-        VkImageCreateInfo[] ret = new VkImageCreateInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkImageCreateInfo(s.asSlice(i * VkImageCreateInfo.BYTES, VkImageCreateInfo.BYTES));
-        }
-        return ret;
+        return new VkImageCreateInfo.Ptr(s);
     }
 
     public @pointer(target=VkImageCreateInfo.class) MemorySegment pCreateInfoRaw() {

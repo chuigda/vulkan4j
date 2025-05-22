@@ -194,23 +194,19 @@ public record VkDescriptorSetLayoutCreateInfo(@NotNull MemorySegment segment) im
         return new VkDescriptorSetLayoutBinding(s);
     }
 
-    public void pBindings(@Nullable VkDescriptorSetLayoutBinding value) {
+    public void pBindings(@Nullable IVkDescriptorSetLayoutBinding value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBindingsRaw(s);
     }
 
-    @unsafe public @Nullable VkDescriptorSetLayoutBinding[] pBindings(int assumedCount) {
+    @unsafe public @Nullable VkDescriptorSetLayoutBinding.Ptr pBindings(int assumedCount) {
         MemorySegment s = pBindingsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDescriptorSetLayoutBinding.BYTES);
-        VkDescriptorSetLayoutBinding[] ret = new VkDescriptorSetLayoutBinding[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorSetLayoutBinding(s.asSlice(i * VkDescriptorSetLayoutBinding.BYTES, VkDescriptorSetLayoutBinding.BYTES));
-        }
-        return ret;
+        return new VkDescriptorSetLayoutBinding.Ptr(s);
     }
 
     public @pointer(target=VkDescriptorSetLayoutBinding.class) MemorySegment pBindingsRaw() {

@@ -187,23 +187,19 @@ public record VkVideoEncodeH264SessionParametersAddInfoKHR(@NotNull MemorySegmen
         return new StdVideoH264SequenceParameterSet(s);
     }
 
-    public void pStdSPSs(@Nullable StdVideoH264SequenceParameterSet value) {
+    public void pStdSPSs(@Nullable IStdVideoH264SequenceParameterSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdSPSsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH264SequenceParameterSet[] pStdSPSs(int assumedCount) {
+    @unsafe public @Nullable StdVideoH264SequenceParameterSet.Ptr pStdSPSs(int assumedCount) {
         MemorySegment s = pStdSPSsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoH264SequenceParameterSet.BYTES);
-        StdVideoH264SequenceParameterSet[] ret = new StdVideoH264SequenceParameterSet[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH264SequenceParameterSet(s.asSlice(i * StdVideoH264SequenceParameterSet.BYTES, StdVideoH264SequenceParameterSet.BYTES));
-        }
-        return ret;
+        return new StdVideoH264SequenceParameterSet.Ptr(s);
     }
 
     public @pointer(target=StdVideoH264SequenceParameterSet.class) MemorySegment pStdSPSsRaw() {
@@ -230,23 +226,19 @@ public record VkVideoEncodeH264SessionParametersAddInfoKHR(@NotNull MemorySegmen
         return new StdVideoH264PictureParameterSet(s);
     }
 
-    public void pStdPPSs(@Nullable StdVideoH264PictureParameterSet value) {
+    public void pStdPPSs(@Nullable IStdVideoH264PictureParameterSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdPPSsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH264PictureParameterSet[] pStdPPSs(int assumedCount) {
+    @unsafe public @Nullable StdVideoH264PictureParameterSet.Ptr pStdPPSs(int assumedCount) {
         MemorySegment s = pStdPPSsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoH264PictureParameterSet.BYTES);
-        StdVideoH264PictureParameterSet[] ret = new StdVideoH264PictureParameterSet[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH264PictureParameterSet(s.asSlice(i * StdVideoH264PictureParameterSet.BYTES, StdVideoH264PictureParameterSet.BYTES));
-        }
-        return ret;
+        return new StdVideoH264PictureParameterSet.Ptr(s);
     }
 
     public @pointer(target=StdVideoH264PictureParameterSet.class) MemorySegment pStdPPSsRaw() {

@@ -123,8 +123,7 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
 
     public static VkCoarseSampleOrderCustomNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkCoarseSampleOrderCustomNV.Ptr ret = new VkCoarseSampleOrderCustomNV.Ptr(segment);
-        return ret;
+        return new VkCoarseSampleOrderCustomNV.Ptr(segment);
     }
 
     public static VkCoarseSampleOrderCustomNV clone(Arena arena, VkCoarseSampleOrderCustomNV src) {
@@ -165,23 +164,19 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         return new VkCoarseSampleLocationNV(s);
     }
 
-    public void pSampleLocations(@Nullable VkCoarseSampleLocationNV value) {
+    public void pSampleLocations(@Nullable IVkCoarseSampleLocationNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSampleLocationsRaw(s);
     }
 
-    @unsafe public @Nullable VkCoarseSampleLocationNV[] pSampleLocations(int assumedCount) {
+    @unsafe public @Nullable VkCoarseSampleLocationNV.Ptr pSampleLocations(int assumedCount) {
         MemorySegment s = pSampleLocationsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkCoarseSampleLocationNV.BYTES);
-        VkCoarseSampleLocationNV[] ret = new VkCoarseSampleLocationNV[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkCoarseSampleLocationNV(s.asSlice(i * VkCoarseSampleLocationNV.BYTES, VkCoarseSampleLocationNV.BYTES));
-        }
-        return ret;
+        return new VkCoarseSampleLocationNV.Ptr(s);
     }
 
     public @pointer(target=VkCoarseSampleLocationNV.class) MemorySegment pSampleLocationsRaw() {

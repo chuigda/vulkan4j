@@ -121,8 +121,7 @@ public record StdVideoEncodeAV1ReferenceInfoFlags(@NotNull MemorySegment segment
 
     public static StdVideoEncodeAV1ReferenceInfoFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeAV1ReferenceInfoFlags.Ptr ret = new StdVideoEncodeAV1ReferenceInfoFlags.Ptr(segment);
-        return ret;
+        return new StdVideoEncodeAV1ReferenceInfoFlags.Ptr(segment);
     }
 
     public static StdVideoEncodeAV1ReferenceInfoFlags clone(Arena arena, StdVideoEncodeAV1ReferenceInfoFlags src) {

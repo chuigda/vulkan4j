@@ -199,23 +199,19 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         return new VkDeviceQueueCreateInfo(s);
     }
 
-    public void pQueueCreateInfos(@Nullable VkDeviceQueueCreateInfo value) {
+    public void pQueueCreateInfos(@Nullable IVkDeviceQueueCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueCreateInfosRaw(s);
     }
 
-    @unsafe public @Nullable VkDeviceQueueCreateInfo[] pQueueCreateInfos(int assumedCount) {
+    @unsafe public @Nullable VkDeviceQueueCreateInfo.Ptr pQueueCreateInfos(int assumedCount) {
         MemorySegment s = pQueueCreateInfosRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDeviceQueueCreateInfo.BYTES);
-        VkDeviceQueueCreateInfo[] ret = new VkDeviceQueueCreateInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDeviceQueueCreateInfo(s.asSlice(i * VkDeviceQueueCreateInfo.BYTES, VkDeviceQueueCreateInfo.BYTES));
-        }
-        return ret;
+        return new VkDeviceQueueCreateInfo.Ptr(s);
     }
 
     public @pointer(target=VkDeviceQueueCreateInfo.class) MemorySegment pQueueCreateInfosRaw() {
@@ -298,23 +294,19 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         return new VkPhysicalDeviceFeatures(s);
     }
 
-    public void pEnabledFeatures(@Nullable VkPhysicalDeviceFeatures value) {
+    public void pEnabledFeatures(@Nullable IVkPhysicalDeviceFeatures value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pEnabledFeaturesRaw(s);
     }
 
-    @unsafe public @Nullable VkPhysicalDeviceFeatures[] pEnabledFeatures(int assumedCount) {
+    @unsafe public @Nullable VkPhysicalDeviceFeatures.Ptr pEnabledFeatures(int assumedCount) {
         MemorySegment s = pEnabledFeaturesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPhysicalDeviceFeatures.BYTES);
-        VkPhysicalDeviceFeatures[] ret = new VkPhysicalDeviceFeatures[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPhysicalDeviceFeatures(s.asSlice(i * VkPhysicalDeviceFeatures.BYTES, VkPhysicalDeviceFeatures.BYTES));
-        }
-        return ret;
+        return new VkPhysicalDeviceFeatures.Ptr(s);
     }
 
     public @pointer(target=VkPhysicalDeviceFeatures.class) MemorySegment pEnabledFeaturesRaw() {

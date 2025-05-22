@@ -122,8 +122,7 @@ public record StdVideoEncodeAV1DecoderModelInfo(@NotNull MemorySegment segment) 
 
     public static StdVideoEncodeAV1DecoderModelInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeAV1DecoderModelInfo.Ptr ret = new StdVideoEncodeAV1DecoderModelInfo.Ptr(segment);
-        return ret;
+        return new StdVideoEncodeAV1DecoderModelInfo.Ptr(segment);
     }
 
     public static StdVideoEncodeAV1DecoderModelInfo clone(Arena arena, StdVideoEncodeAV1DecoderModelInfo src) {

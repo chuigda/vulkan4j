@@ -121,8 +121,7 @@ public record VkRect2D(@NotNull MemorySegment segment) implements IVkRect2D {
 
     public static VkRect2D.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkRect2D.Ptr ret = new VkRect2D.Ptr(segment);
-        return ret;
+        return new VkRect2D.Ptr(segment);
     }
 
     public static VkRect2D clone(Arena arena, VkRect2D src) {

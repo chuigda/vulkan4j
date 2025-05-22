@@ -120,8 +120,7 @@ public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) 
 
     public static StdVideoEncodeH264RefListModEntry.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeH264RefListModEntry.Ptr ret = new StdVideoEncodeH264RefListModEntry.Ptr(segment);
-        return ret;
+        return new StdVideoEncodeH264RefListModEntry.Ptr(segment);
     }
 
     public static StdVideoEncodeH264RefListModEntry clone(Arena arena, StdVideoEncodeH264RefListModEntry src) {

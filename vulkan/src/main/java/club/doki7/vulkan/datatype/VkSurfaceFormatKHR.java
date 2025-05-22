@@ -121,8 +121,7 @@ public record VkSurfaceFormatKHR(@NotNull MemorySegment segment) implements IVkS
 
     public static VkSurfaceFormatKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSurfaceFormatKHR.Ptr ret = new VkSurfaceFormatKHR.Ptr(segment);
-        return ret;
+        return new VkSurfaceFormatKHR.Ptr(segment);
     }
 
     public static VkSurfaceFormatKHR clone(Arena arena, VkSurfaceFormatKHR src) {

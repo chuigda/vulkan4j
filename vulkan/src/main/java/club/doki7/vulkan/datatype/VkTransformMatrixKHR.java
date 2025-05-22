@@ -120,8 +120,7 @@ public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IV
 
     public static VkTransformMatrixKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkTransformMatrixKHR.Ptr ret = new VkTransformMatrixKHR.Ptr(segment);
-        return ret;
+        return new VkTransformMatrixKHR.Ptr(segment);
     }
 
     public static VkTransformMatrixKHR clone(Arena arena, VkTransformMatrixKHR src) {

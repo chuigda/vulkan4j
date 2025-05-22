@@ -121,8 +121,7 @@ public record VkExtensionProperties(@NotNull MemorySegment segment) implements I
 
     public static VkExtensionProperties.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkExtensionProperties.Ptr ret = new VkExtensionProperties.Ptr(segment);
-        return ret;
+        return new VkExtensionProperties.Ptr(segment);
     }
 
     public static VkExtensionProperties clone(Arena arena, VkExtensionProperties src) {

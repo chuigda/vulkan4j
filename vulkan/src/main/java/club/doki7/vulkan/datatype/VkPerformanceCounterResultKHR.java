@@ -125,8 +125,7 @@ public record VkPerformanceCounterResultKHR(@NotNull MemorySegment segment) impl
 
     public static VkPerformanceCounterResultKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPerformanceCounterResultKHR.Ptr ret = new VkPerformanceCounterResultKHR.Ptr(segment);
-        return ret;
+        return new VkPerformanceCounterResultKHR.Ptr(segment);
     }
 
     public static VkPerformanceCounterResultKHR clone(Arena arena, VkPerformanceCounterResultKHR src) {

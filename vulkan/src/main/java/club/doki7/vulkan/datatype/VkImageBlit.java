@@ -123,8 +123,7 @@ public record VkImageBlit(@NotNull MemorySegment segment) implements IVkImageBli
 
     public static VkImageBlit.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkImageBlit.Ptr ret = new VkImageBlit.Ptr(segment);
-        return ret;
+        return new VkImageBlit.Ptr(segment);
     }
 
     public static VkImageBlit clone(Arena arena, VkImageBlit src) {

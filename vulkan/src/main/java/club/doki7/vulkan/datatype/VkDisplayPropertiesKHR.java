@@ -126,8 +126,7 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
 
     public static VkDisplayPropertiesKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDisplayPropertiesKHR.Ptr ret = new VkDisplayPropertiesKHR.Ptr(segment);
-        return ret;
+        return new VkDisplayPropertiesKHR.Ptr(segment);
     }
 
     public static VkDisplayPropertiesKHR clone(Arena arena, VkDisplayPropertiesKHR src) {

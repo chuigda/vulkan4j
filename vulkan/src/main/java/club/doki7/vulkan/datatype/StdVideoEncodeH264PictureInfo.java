@@ -127,8 +127,7 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
 
     public static StdVideoEncodeH264PictureInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeH264PictureInfo.Ptr ret = new StdVideoEncodeH264PictureInfo.Ptr(segment);
-        return ret;
+        return new StdVideoEncodeH264PictureInfo.Ptr(segment);
     }
 
     public static StdVideoEncodeH264PictureInfo clone(Arena arena, StdVideoEncodeH264PictureInfo src) {
@@ -210,23 +209,19 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
         return new StdVideoEncodeH264ReferenceListsInfo(s);
     }
 
-    public void pRefLists(@Nullable StdVideoEncodeH264ReferenceListsInfo value) {
+    public void pRefLists(@Nullable IStdVideoEncodeH264ReferenceListsInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRefListsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH264ReferenceListsInfo[] pRefLists(int assumedCount) {
+    @unsafe public @Nullable StdVideoEncodeH264ReferenceListsInfo.Ptr pRefLists(int assumedCount) {
         MemorySegment s = pRefListsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoEncodeH264ReferenceListsInfo.BYTES);
-        StdVideoEncodeH264ReferenceListsInfo[] ret = new StdVideoEncodeH264ReferenceListsInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH264ReferenceListsInfo(s.asSlice(i * StdVideoEncodeH264ReferenceListsInfo.BYTES, StdVideoEncodeH264ReferenceListsInfo.BYTES));
-        }
-        return ret;
+        return new StdVideoEncodeH264ReferenceListsInfo.Ptr(s);
     }
 
     public @pointer(target=StdVideoEncodeH264ReferenceListsInfo.class) MemorySegment pRefListsRaw() {

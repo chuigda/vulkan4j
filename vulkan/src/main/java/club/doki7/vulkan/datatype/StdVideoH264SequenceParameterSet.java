@@ -142,8 +142,7 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
 
     public static StdVideoH264SequenceParameterSet.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoH264SequenceParameterSet.Ptr ret = new StdVideoH264SequenceParameterSet.Ptr(segment);
-        return ret;
+        return new StdVideoH264SequenceParameterSet.Ptr(segment);
     }
 
     public static StdVideoH264SequenceParameterSet clone(Arena arena, StdVideoH264SequenceParameterSet src) {
@@ -347,23 +346,19 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         return new StdVideoH264ScalingLists(s);
     }
 
-    public void pScalingLists(@Nullable StdVideoH264ScalingLists value) {
+    public void pScalingLists(@Nullable IStdVideoH264ScalingLists value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pScalingListsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH264ScalingLists[] pScalingLists(int assumedCount) {
+    @unsafe public @Nullable StdVideoH264ScalingLists.Ptr pScalingLists(int assumedCount) {
         MemorySegment s = pScalingListsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoH264ScalingLists.BYTES);
-        StdVideoH264ScalingLists[] ret = new StdVideoH264ScalingLists[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH264ScalingLists(s.asSlice(i * StdVideoH264ScalingLists.BYTES, StdVideoH264ScalingLists.BYTES));
-        }
-        return ret;
+        return new StdVideoH264ScalingLists.Ptr(s);
     }
 
     public @pointer(target=StdVideoH264ScalingLists.class) MemorySegment pScalingListsRaw() {
@@ -382,23 +377,19 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         return new StdVideoH264SequenceParameterSetVui(s);
     }
 
-    public void pSequenceParameterSetVui(@Nullable StdVideoH264SequenceParameterSetVui value) {
+    public void pSequenceParameterSetVui(@Nullable IStdVideoH264SequenceParameterSetVui value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSequenceParameterSetVuiRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH264SequenceParameterSetVui[] pSequenceParameterSetVui(int assumedCount) {
+    @unsafe public @Nullable StdVideoH264SequenceParameterSetVui.Ptr pSequenceParameterSetVui(int assumedCount) {
         MemorySegment s = pSequenceParameterSetVuiRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoH264SequenceParameterSetVui.BYTES);
-        StdVideoH264SequenceParameterSetVui[] ret = new StdVideoH264SequenceParameterSetVui[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH264SequenceParameterSetVui(s.asSlice(i * StdVideoH264SequenceParameterSetVui.BYTES, StdVideoH264SequenceParameterSetVui.BYTES));
-        }
-        return ret;
+        return new StdVideoH264SequenceParameterSetVui.Ptr(s);
     }
 
     public @pointer(target=StdVideoH264SequenceParameterSetVui.class) MemorySegment pSequenceParameterSetVuiRaw() {

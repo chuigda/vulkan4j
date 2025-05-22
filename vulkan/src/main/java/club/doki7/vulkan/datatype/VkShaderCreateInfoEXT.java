@@ -305,23 +305,19 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return new VkPushConstantRange(s);
     }
 
-    public void pPushConstantRanges(@Nullable VkPushConstantRange value) {
+    public void pPushConstantRanges(@Nullable IVkPushConstantRange value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPushConstantRangesRaw(s);
     }
 
-    @unsafe public @Nullable VkPushConstantRange[] pPushConstantRanges(int assumedCount) {
+    @unsafe public @Nullable VkPushConstantRange.Ptr pPushConstantRanges(int assumedCount) {
         MemorySegment s = pPushConstantRangesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPushConstantRange.BYTES);
-        VkPushConstantRange[] ret = new VkPushConstantRange[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPushConstantRange(s.asSlice(i * VkPushConstantRange.BYTES, VkPushConstantRange.BYTES));
-        }
-        return ret;
+        return new VkPushConstantRange.Ptr(s);
     }
 
     public @pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {
@@ -340,23 +336,19 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return new VkSpecializationInfo(s);
     }
 
-    public void pSpecializationInfo(@Nullable VkSpecializationInfo value) {
+    public void pSpecializationInfo(@Nullable IVkSpecializationInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSpecializationInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkSpecializationInfo[] pSpecializationInfo(int assumedCount) {
+    @unsafe public @Nullable VkSpecializationInfo.Ptr pSpecializationInfo(int assumedCount) {
         MemorySegment s = pSpecializationInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkSpecializationInfo.BYTES);
-        VkSpecializationInfo[] ret = new VkSpecializationInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSpecializationInfo(s.asSlice(i * VkSpecializationInfo.BYTES, VkSpecializationInfo.BYTES));
-        }
-        return ret;
+        return new VkSpecializationInfo.Ptr(s);
     }
 
     public @pointer(target=VkSpecializationInfo.class) MemorySegment pSpecializationInfoRaw() {

@@ -122,8 +122,7 @@ public record VkPartitionedAccelerationStructureUpdateInstanceDataNV(@NotNull Me
 
     public static VkPartitionedAccelerationStructureUpdateInstanceDataNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPartitionedAccelerationStructureUpdateInstanceDataNV.Ptr ret = new VkPartitionedAccelerationStructureUpdateInstanceDataNV.Ptr(segment);
-        return ret;
+        return new VkPartitionedAccelerationStructureUpdateInstanceDataNV.Ptr(segment);
     }
 
     public static VkPartitionedAccelerationStructureUpdateInstanceDataNV clone(Arena arena, VkPartitionedAccelerationStructureUpdateInstanceDataNV src) {

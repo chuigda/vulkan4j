@@ -123,8 +123,7 @@ public record StdVideoH265ProfileTierLevelFlags(@NotNull MemorySegment segment) 
 
     public static StdVideoH265ProfileTierLevelFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoH265ProfileTierLevelFlags.Ptr ret = new StdVideoH265ProfileTierLevelFlags.Ptr(segment);
-        return ret;
+        return new StdVideoH265ProfileTierLevelFlags.Ptr(segment);
     }
 
     public static StdVideoH265ProfileTierLevelFlags clone(Arena arena, StdVideoH265ProfileTierLevelFlags src) {

@@ -121,8 +121,7 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
 
     public static VkPresentRegionKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPresentRegionKHR.Ptr ret = new VkPresentRegionKHR.Ptr(segment);
-        return ret;
+        return new VkPresentRegionKHR.Ptr(segment);
     }
 
     public static VkPresentRegionKHR clone(Arena arena, VkPresentRegionKHR src) {
@@ -147,23 +146,19 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
         return new VkRectLayerKHR(s);
     }
 
-    public void pRectangles(@Nullable VkRectLayerKHR value) {
+    public void pRectangles(@Nullable IVkRectLayerKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRectanglesRaw(s);
     }
 
-    @unsafe public @Nullable VkRectLayerKHR[] pRectangles(int assumedCount) {
+    @unsafe public @Nullable VkRectLayerKHR.Ptr pRectangles(int assumedCount) {
         MemorySegment s = pRectanglesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkRectLayerKHR.BYTES);
-        VkRectLayerKHR[] ret = new VkRectLayerKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkRectLayerKHR(s.asSlice(i * VkRectLayerKHR.BYTES, VkRectLayerKHR.BYTES));
-        }
-        return ret;
+        return new VkRectLayerKHR.Ptr(s);
     }
 
     public @pointer(target=VkRectLayerKHR.class) MemorySegment pRectanglesRaw() {

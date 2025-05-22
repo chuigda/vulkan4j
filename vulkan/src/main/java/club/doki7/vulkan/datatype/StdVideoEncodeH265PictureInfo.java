@@ -129,8 +129,7 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
 
     public static StdVideoEncodeH265PictureInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeH265PictureInfo.Ptr ret = new StdVideoEncodeH265PictureInfo.Ptr(segment);
-        return ret;
+        return new StdVideoEncodeH265PictureInfo.Ptr(segment);
     }
 
     public static StdVideoEncodeH265PictureInfo clone(Arena arena, StdVideoEncodeH265PictureInfo src) {
@@ -212,23 +211,19 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return new StdVideoEncodeH265ReferenceListsInfo(s);
     }
 
-    public void pRefLists(@Nullable StdVideoEncodeH265ReferenceListsInfo value) {
+    public void pRefLists(@Nullable IStdVideoEncodeH265ReferenceListsInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRefListsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH265ReferenceListsInfo[] pRefLists(int assumedCount) {
+    @unsafe public @Nullable StdVideoEncodeH265ReferenceListsInfo.Ptr pRefLists(int assumedCount) {
         MemorySegment s = pRefListsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoEncodeH265ReferenceListsInfo.BYTES);
-        StdVideoEncodeH265ReferenceListsInfo[] ret = new StdVideoEncodeH265ReferenceListsInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH265ReferenceListsInfo(s.asSlice(i * StdVideoEncodeH265ReferenceListsInfo.BYTES, StdVideoEncodeH265ReferenceListsInfo.BYTES));
-        }
-        return ret;
+        return new StdVideoEncodeH265ReferenceListsInfo.Ptr(s);
     }
 
     public @pointer(target=StdVideoEncodeH265ReferenceListsInfo.class) MemorySegment pRefListsRaw() {
@@ -247,23 +242,19 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return new StdVideoH265ShortTermRefPicSet(s);
     }
 
-    public void pShortTermRefPicSet(@Nullable StdVideoH265ShortTermRefPicSet value) {
+    public void pShortTermRefPicSet(@Nullable IStdVideoH265ShortTermRefPicSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pShortTermRefPicSetRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265ShortTermRefPicSet[] pShortTermRefPicSet(int assumedCount) {
+    @unsafe public @Nullable StdVideoH265ShortTermRefPicSet.Ptr pShortTermRefPicSet(int assumedCount) {
         MemorySegment s = pShortTermRefPicSetRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoH265ShortTermRefPicSet.BYTES);
-        StdVideoH265ShortTermRefPicSet[] ret = new StdVideoH265ShortTermRefPicSet[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265ShortTermRefPicSet(s.asSlice(i * StdVideoH265ShortTermRefPicSet.BYTES, StdVideoH265ShortTermRefPicSet.BYTES));
-        }
-        return ret;
+        return new StdVideoH265ShortTermRefPicSet.Ptr(s);
     }
 
     public @pointer(target=StdVideoH265ShortTermRefPicSet.class) MemorySegment pShortTermRefPicSetRaw() {
@@ -282,23 +273,19 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return new StdVideoEncodeH265LongTermRefPics(s);
     }
 
-    public void pLongTermRefPics(@Nullable StdVideoEncodeH265LongTermRefPics value) {
+    public void pLongTermRefPics(@Nullable IStdVideoEncodeH265LongTermRefPics value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLongTermRefPicsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH265LongTermRefPics[] pLongTermRefPics(int assumedCount) {
+    @unsafe public @Nullable StdVideoEncodeH265LongTermRefPics.Ptr pLongTermRefPics(int assumedCount) {
         MemorySegment s = pLongTermRefPicsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoEncodeH265LongTermRefPics.BYTES);
-        StdVideoEncodeH265LongTermRefPics[] ret = new StdVideoEncodeH265LongTermRefPics[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH265LongTermRefPics(s.asSlice(i * StdVideoEncodeH265LongTermRefPics.BYTES, StdVideoEncodeH265LongTermRefPics.BYTES));
-        }
-        return ret;
+        return new StdVideoEncodeH265LongTermRefPics.Ptr(s);
     }
 
     public @pointer(target=StdVideoEncodeH265LongTermRefPics.class) MemorySegment pLongTermRefPicsRaw() {

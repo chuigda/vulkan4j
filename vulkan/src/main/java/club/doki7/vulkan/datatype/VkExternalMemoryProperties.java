@@ -122,8 +122,7 @@ public record VkExternalMemoryProperties(@NotNull MemorySegment segment) impleme
 
     public static VkExternalMemoryProperties.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkExternalMemoryProperties.Ptr ret = new VkExternalMemoryProperties.Ptr(segment);
-        return ret;
+        return new VkExternalMemoryProperties.Ptr(segment);
     }
 
     public static VkExternalMemoryProperties clone(Arena arena, VkExternalMemoryProperties src) {

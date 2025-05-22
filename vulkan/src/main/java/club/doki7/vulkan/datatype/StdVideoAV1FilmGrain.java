@@ -142,8 +142,7 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
 
     public static StdVideoAV1FilmGrain.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1FilmGrain.Ptr ret = new StdVideoAV1FilmGrain.Ptr(segment);
-        return ret;
+        return new StdVideoAV1FilmGrain.Ptr(segment);
     }
 
     public static StdVideoAV1FilmGrain clone(Arena arena, StdVideoAV1FilmGrain src) {

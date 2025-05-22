@@ -127,8 +127,7 @@ public record VkPipelineColorBlendAttachmentState(@NotNull MemorySegment segment
 
     public static VkPipelineColorBlendAttachmentState.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPipelineColorBlendAttachmentState.Ptr ret = new VkPipelineColorBlendAttachmentState.Ptr(segment);
-        return ret;
+        return new VkPipelineColorBlendAttachmentState.Ptr(segment);
     }
 
     public static VkPipelineColorBlendAttachmentState clone(Arena arena, VkPipelineColorBlendAttachmentState src) {

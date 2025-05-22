@@ -128,8 +128,7 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
 
     public static VkPartitionedAccelerationStructureWriteInstanceDataNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPartitionedAccelerationStructureWriteInstanceDataNV.Ptr ret = new VkPartitionedAccelerationStructureWriteInstanceDataNV.Ptr(segment);
-        return ret;
+        return new VkPartitionedAccelerationStructureWriteInstanceDataNV.Ptr(segment);
     }
 
     public static VkPartitionedAccelerationStructureWriteInstanceDataNV clone(Arena arena, VkPartitionedAccelerationStructureWriteInstanceDataNV src) {

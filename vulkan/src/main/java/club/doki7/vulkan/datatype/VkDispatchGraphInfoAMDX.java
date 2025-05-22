@@ -123,8 +123,7 @@ public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements
 
     public static VkDispatchGraphInfoAMDX.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDispatchGraphInfoAMDX.Ptr ret = new VkDispatchGraphInfoAMDX.Ptr(segment);
-        return ret;
+        return new VkDispatchGraphInfoAMDX.Ptr(segment);
     }
 
     public static VkDispatchGraphInfoAMDX clone(Arena arena, VkDispatchGraphInfoAMDX src) {

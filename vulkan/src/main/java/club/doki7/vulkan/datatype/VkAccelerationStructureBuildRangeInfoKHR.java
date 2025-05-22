@@ -123,8 +123,7 @@ public record VkAccelerationStructureBuildRangeInfoKHR(@NotNull MemorySegment se
 
     public static VkAccelerationStructureBuildRangeInfoKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkAccelerationStructureBuildRangeInfoKHR.Ptr ret = new VkAccelerationStructureBuildRangeInfoKHR.Ptr(segment);
-        return ret;
+        return new VkAccelerationStructureBuildRangeInfoKHR.Ptr(segment);
     }
 
     public static VkAccelerationStructureBuildRangeInfoKHR clone(Arena arena, VkAccelerationStructureBuildRangeInfoKHR src) {

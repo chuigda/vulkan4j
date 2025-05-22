@@ -176,23 +176,19 @@ public record VkVideoDecodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         return new StdVideoAV1SequenceHeader(s);
     }
 
-    public void pStdSequenceHeader(@Nullable StdVideoAV1SequenceHeader value) {
+    public void pStdSequenceHeader(@Nullable IStdVideoAV1SequenceHeader value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdSequenceHeaderRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1SequenceHeader[] pStdSequenceHeader(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1SequenceHeader.Ptr pStdSequenceHeader(int assumedCount) {
         MemorySegment s = pStdSequenceHeaderRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1SequenceHeader.BYTES);
-        StdVideoAV1SequenceHeader[] ret = new StdVideoAV1SequenceHeader[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1SequenceHeader(s.asSlice(i * StdVideoAV1SequenceHeader.BYTES, StdVideoAV1SequenceHeader.BYTES));
-        }
-        return ret;
+        return new StdVideoAV1SequenceHeader.Ptr(s);
     }
 
     public @pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment pStdSequenceHeaderRaw() {

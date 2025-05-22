@@ -124,8 +124,7 @@ public record StdVideoEncodeH264ReferenceInfo(@NotNull MemorySegment segment) im
 
     public static StdVideoEncodeH264ReferenceInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeH264ReferenceInfo.Ptr ret = new StdVideoEncodeH264ReferenceInfo.Ptr(segment);
-        return ret;
+        return new StdVideoEncodeH264ReferenceInfo.Ptr(segment);
     }
 
     public static StdVideoEncodeH264ReferenceInfo clone(Arena arena, StdVideoEncodeH264ReferenceInfo src) {

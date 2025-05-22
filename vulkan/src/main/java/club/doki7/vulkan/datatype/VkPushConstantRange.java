@@ -122,8 +122,7 @@ public record VkPushConstantRange(@NotNull MemorySegment segment) implements IVk
 
     public static VkPushConstantRange.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPushConstantRange.Ptr ret = new VkPushConstantRange.Ptr(segment);
-        return ret;
+        return new VkPushConstantRange.Ptr(segment);
     }
 
     public static VkPushConstantRange clone(Arena arena, VkPushConstantRange src) {

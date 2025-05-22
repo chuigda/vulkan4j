@@ -185,23 +185,19 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         return new VkPresentTimeGOOGLE(s);
     }
 
-    public void pTimes(@Nullable VkPresentTimeGOOGLE value) {
+    public void pTimes(@Nullable IVkPresentTimeGOOGLE value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTimesRaw(s);
     }
 
-    @unsafe public @Nullable VkPresentTimeGOOGLE[] pTimes(int assumedCount) {
+    @unsafe public @Nullable VkPresentTimeGOOGLE.Ptr pTimes(int assumedCount) {
         MemorySegment s = pTimesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPresentTimeGOOGLE.BYTES);
-        VkPresentTimeGOOGLE[] ret = new VkPresentTimeGOOGLE[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPresentTimeGOOGLE(s.asSlice(i * VkPresentTimeGOOGLE.BYTES, VkPresentTimeGOOGLE.BYTES));
-        }
-        return ret;
+        return new VkPresentTimeGOOGLE.Ptr(s);
     }
 
     public @pointer(target=VkPresentTimeGOOGLE.class) MemorySegment pTimesRaw() {

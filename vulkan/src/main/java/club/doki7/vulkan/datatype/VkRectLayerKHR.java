@@ -122,8 +122,7 @@ public record VkRectLayerKHR(@NotNull MemorySegment segment) implements IVkRectL
 
     public static VkRectLayerKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkRectLayerKHR.Ptr ret = new VkRectLayerKHR.Ptr(segment);
-        return ret;
+        return new VkRectLayerKHR.Ptr(segment);
     }
 
     public static VkRectLayerKHR clone(Arena arena, VkRectLayerKHR src) {

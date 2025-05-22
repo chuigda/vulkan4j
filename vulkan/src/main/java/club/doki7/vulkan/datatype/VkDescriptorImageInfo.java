@@ -122,8 +122,7 @@ public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements I
 
     public static VkDescriptorImageInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDescriptorImageInfo.Ptr ret = new VkDescriptorImageInfo.Ptr(segment);
-        return ret;
+        return new VkDescriptorImageInfo.Ptr(segment);
     }
 
     public static VkDescriptorImageInfo clone(Arena arena, VkDescriptorImageInfo src) {

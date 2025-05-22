@@ -121,8 +121,7 @@ public record VkPresentTimeGOOGLE(@NotNull MemorySegment segment) implements IVk
 
     public static VkPresentTimeGOOGLE.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPresentTimeGOOGLE.Ptr ret = new VkPresentTimeGOOGLE.Ptr(segment);
-        return ret;
+        return new VkPresentTimeGOOGLE.Ptr(segment);
     }
 
     public static VkPresentTimeGOOGLE clone(Arena arena, VkPresentTimeGOOGLE src) {

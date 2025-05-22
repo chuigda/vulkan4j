@@ -122,8 +122,7 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
 
     public static VkClusterAccelerationStructureOpInputNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkClusterAccelerationStructureOpInputNV.Ptr ret = new VkClusterAccelerationStructureOpInputNV.Ptr(segment);
-        return ret;
+        return new VkClusterAccelerationStructureOpInputNV.Ptr(segment);
     }
 
     public static VkClusterAccelerationStructureOpInputNV clone(Arena arena, VkClusterAccelerationStructureOpInputNV src) {
@@ -140,23 +139,19 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         return new VkClusterAccelerationStructureClustersBottomLevelInputNV(s);
     }
 
-    public void pClustersBottomLevel(@Nullable VkClusterAccelerationStructureClustersBottomLevelInputNV value) {
+    public void pClustersBottomLevel(@Nullable IVkClusterAccelerationStructureClustersBottomLevelInputNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pClustersBottomLevelRaw(s);
     }
 
-    @unsafe public @Nullable VkClusterAccelerationStructureClustersBottomLevelInputNV[] pClustersBottomLevel(int assumedCount) {
+    @unsafe public @Nullable VkClusterAccelerationStructureClustersBottomLevelInputNV.Ptr pClustersBottomLevel(int assumedCount) {
         MemorySegment s = pClustersBottomLevelRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkClusterAccelerationStructureClustersBottomLevelInputNV.BYTES);
-        VkClusterAccelerationStructureClustersBottomLevelInputNV[] ret = new VkClusterAccelerationStructureClustersBottomLevelInputNV[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkClusterAccelerationStructureClustersBottomLevelInputNV(s.asSlice(i * VkClusterAccelerationStructureClustersBottomLevelInputNV.BYTES, VkClusterAccelerationStructureClustersBottomLevelInputNV.BYTES));
-        }
-        return ret;
+        return new VkClusterAccelerationStructureClustersBottomLevelInputNV.Ptr(s);
     }
 
     public @pointer(target=VkClusterAccelerationStructureClustersBottomLevelInputNV.class) MemorySegment pClustersBottomLevelRaw() {
@@ -175,23 +170,19 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         return new VkClusterAccelerationStructureTriangleClusterInputNV(s);
     }
 
-    public void pTriangleClusters(@Nullable VkClusterAccelerationStructureTriangleClusterInputNV value) {
+    public void pTriangleClusters(@Nullable IVkClusterAccelerationStructureTriangleClusterInputNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTriangleClustersRaw(s);
     }
 
-    @unsafe public @Nullable VkClusterAccelerationStructureTriangleClusterInputNV[] pTriangleClusters(int assumedCount) {
+    @unsafe public @Nullable VkClusterAccelerationStructureTriangleClusterInputNV.Ptr pTriangleClusters(int assumedCount) {
         MemorySegment s = pTriangleClustersRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkClusterAccelerationStructureTriangleClusterInputNV.BYTES);
-        VkClusterAccelerationStructureTriangleClusterInputNV[] ret = new VkClusterAccelerationStructureTriangleClusterInputNV[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkClusterAccelerationStructureTriangleClusterInputNV(s.asSlice(i * VkClusterAccelerationStructureTriangleClusterInputNV.BYTES, VkClusterAccelerationStructureTriangleClusterInputNV.BYTES));
-        }
-        return ret;
+        return new VkClusterAccelerationStructureTriangleClusterInputNV.Ptr(s);
     }
 
     public @pointer(target=VkClusterAccelerationStructureTriangleClusterInputNV.class) MemorySegment pTriangleClustersRaw() {
@@ -210,23 +201,19 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         return new VkClusterAccelerationStructureMoveObjectsInputNV(s);
     }
 
-    public void pMoveObjects(@Nullable VkClusterAccelerationStructureMoveObjectsInputNV value) {
+    public void pMoveObjects(@Nullable IVkClusterAccelerationStructureMoveObjectsInputNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMoveObjectsRaw(s);
     }
 
-    @unsafe public @Nullable VkClusterAccelerationStructureMoveObjectsInputNV[] pMoveObjects(int assumedCount) {
+    @unsafe public @Nullable VkClusterAccelerationStructureMoveObjectsInputNV.Ptr pMoveObjects(int assumedCount) {
         MemorySegment s = pMoveObjectsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkClusterAccelerationStructureMoveObjectsInputNV.BYTES);
-        VkClusterAccelerationStructureMoveObjectsInputNV[] ret = new VkClusterAccelerationStructureMoveObjectsInputNV[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkClusterAccelerationStructureMoveObjectsInputNV(s.asSlice(i * VkClusterAccelerationStructureMoveObjectsInputNV.BYTES, VkClusterAccelerationStructureMoveObjectsInputNV.BYTES));
-        }
-        return ret;
+        return new VkClusterAccelerationStructureMoveObjectsInputNV.Ptr(s);
     }
 
     public @pointer(target=VkClusterAccelerationStructureMoveObjectsInputNV.class) MemorySegment pMoveObjectsRaw() {

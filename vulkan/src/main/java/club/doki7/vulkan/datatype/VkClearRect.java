@@ -122,8 +122,7 @@ public record VkClearRect(@NotNull MemorySegment segment) implements IVkClearRec
 
     public static VkClearRect.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkClearRect.Ptr ret = new VkClearRect.Ptr(segment);
-        return ret;
+        return new VkClearRect.Ptr(segment);
     }
 
     public static VkClearRect clone(Arena arena, VkClearRect src) {

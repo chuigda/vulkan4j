@@ -122,8 +122,7 @@ public record VkBindIndexBufferIndirectCommandEXT(@NotNull MemorySegment segment
 
     public static VkBindIndexBufferIndirectCommandEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkBindIndexBufferIndirectCommandEXT.Ptr ret = new VkBindIndexBufferIndirectCommandEXT.Ptr(segment);
-        return ret;
+        return new VkBindIndexBufferIndirectCommandEXT.Ptr(segment);
     }
 
     public static VkBindIndexBufferIndirectCommandEXT clone(Arena arena, VkBindIndexBufferIndirectCommandEXT src) {

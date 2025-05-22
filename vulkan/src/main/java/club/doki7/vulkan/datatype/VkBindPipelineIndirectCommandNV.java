@@ -120,8 +120,7 @@ public record VkBindPipelineIndirectCommandNV(@NotNull MemorySegment segment) im
 
     public static VkBindPipelineIndirectCommandNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkBindPipelineIndirectCommandNV.Ptr ret = new VkBindPipelineIndirectCommandNV.Ptr(segment);
-        return ret;
+        return new VkBindPipelineIndirectCommandNV.Ptr(segment);
     }
 
     public static VkBindPipelineIndirectCommandNV clone(Arena arena, VkBindPipelineIndirectCommandNV src) {

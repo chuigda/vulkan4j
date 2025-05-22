@@ -199,23 +199,19 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         return new VkDescriptorUpdateTemplateEntry(s);
     }
 
-    public void pDescriptorUpdateEntries(@Nullable VkDescriptorUpdateTemplateEntry value) {
+    public void pDescriptorUpdateEntries(@Nullable IVkDescriptorUpdateTemplateEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorUpdateEntriesRaw(s);
     }
 
-    @unsafe public @Nullable VkDescriptorUpdateTemplateEntry[] pDescriptorUpdateEntries(int assumedCount) {
+    @unsafe public @Nullable VkDescriptorUpdateTemplateEntry.Ptr pDescriptorUpdateEntries(int assumedCount) {
         MemorySegment s = pDescriptorUpdateEntriesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDescriptorUpdateTemplateEntry.BYTES);
-        VkDescriptorUpdateTemplateEntry[] ret = new VkDescriptorUpdateTemplateEntry[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorUpdateTemplateEntry(s.asSlice(i * VkDescriptorUpdateTemplateEntry.BYTES, VkDescriptorUpdateTemplateEntry.BYTES));
-        }
-        return ret;
+        return new VkDescriptorUpdateTemplateEntry.Ptr(s);
     }
 
     public @pointer(target=VkDescriptorUpdateTemplateEntry.class) MemorySegment pDescriptorUpdateEntriesRaw() {

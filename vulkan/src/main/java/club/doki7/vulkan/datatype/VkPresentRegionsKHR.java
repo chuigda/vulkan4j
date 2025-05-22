@@ -185,23 +185,19 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IVk
         return new VkPresentRegionKHR(s);
     }
 
-    public void pRegions(@Nullable VkPresentRegionKHR value) {
+    public void pRegions(@Nullable IVkPresentRegionKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
     }
 
-    @unsafe public @Nullable VkPresentRegionKHR[] pRegions(int assumedCount) {
+    @unsafe public @Nullable VkPresentRegionKHR.Ptr pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPresentRegionKHR.BYTES);
-        VkPresentRegionKHR[] ret = new VkPresentRegionKHR[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPresentRegionKHR(s.asSlice(i * VkPresentRegionKHR.BYTES, VkPresentRegionKHR.BYTES));
-        }
-        return ret;
+        return new VkPresentRegionKHR.Ptr(s);
     }
 
     public @pointer(target=VkPresentRegionKHR.class) MemorySegment pRegionsRaw() {

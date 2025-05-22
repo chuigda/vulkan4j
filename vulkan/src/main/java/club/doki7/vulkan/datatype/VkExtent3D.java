@@ -122,8 +122,7 @@ public record VkExtent3D(@NotNull MemorySegment segment) implements IVkExtent3D 
 
     public static VkExtent3D.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkExtent3D.Ptr ret = new VkExtent3D.Ptr(segment);
-        return ret;
+        return new VkExtent3D.Ptr(segment);
     }
 
     public static VkExtent3D clone(Arena arena, VkExtent3D src) {

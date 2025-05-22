@@ -122,8 +122,7 @@ public record StdVideoDecodeH265PictureInfoFlags(@NotNull MemorySegment segment)
 
     public static StdVideoDecodeH265PictureInfoFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoDecodeH265PictureInfoFlags.Ptr ret = new StdVideoDecodeH265PictureInfoFlags.Ptr(segment);
-        return ret;
+        return new StdVideoDecodeH265PictureInfoFlags.Ptr(segment);
     }
 
     public static StdVideoDecodeH265PictureInfoFlags clone(Arena arena, StdVideoDecodeH265PictureInfoFlags src) {

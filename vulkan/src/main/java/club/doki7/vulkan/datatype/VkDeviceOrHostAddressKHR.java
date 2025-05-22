@@ -121,8 +121,7 @@ public record VkDeviceOrHostAddressKHR(@NotNull MemorySegment segment) implement
 
     public static VkDeviceOrHostAddressKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDeviceOrHostAddressKHR.Ptr ret = new VkDeviceOrHostAddressKHR.Ptr(segment);
-        return ret;
+        return new VkDeviceOrHostAddressKHR.Ptr(segment);
     }
 
     public static VkDeviceOrHostAddressKHR clone(Arena arena, VkDeviceOrHostAddressKHR src) {

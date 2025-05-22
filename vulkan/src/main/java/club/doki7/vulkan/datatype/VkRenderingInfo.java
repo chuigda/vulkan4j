@@ -223,23 +223,19 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         return new VkRenderingAttachmentInfo(s);
     }
 
-    public void pColorAttachments(@Nullable VkRenderingAttachmentInfo value) {
+    public void pColorAttachments(@Nullable IVkRenderingAttachmentInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentsRaw(s);
     }
 
-    @unsafe public @Nullable VkRenderingAttachmentInfo[] pColorAttachments(int assumedCount) {
+    @unsafe public @Nullable VkRenderingAttachmentInfo.Ptr pColorAttachments(int assumedCount) {
         MemorySegment s = pColorAttachmentsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkRenderingAttachmentInfo.BYTES);
-        VkRenderingAttachmentInfo[] ret = new VkRenderingAttachmentInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkRenderingAttachmentInfo(s.asSlice(i * VkRenderingAttachmentInfo.BYTES, VkRenderingAttachmentInfo.BYTES));
-        }
-        return ret;
+        return new VkRenderingAttachmentInfo.Ptr(s);
     }
 
     public @pointer(target=VkRenderingAttachmentInfo.class) MemorySegment pColorAttachmentsRaw() {
@@ -258,23 +254,19 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         return new VkRenderingAttachmentInfo(s);
     }
 
-    public void pDepthAttachment(@Nullable VkRenderingAttachmentInfo value) {
+    public void pDepthAttachment(@Nullable IVkRenderingAttachmentInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDepthAttachmentRaw(s);
     }
 
-    @unsafe public @Nullable VkRenderingAttachmentInfo[] pDepthAttachment(int assumedCount) {
+    @unsafe public @Nullable VkRenderingAttachmentInfo.Ptr pDepthAttachment(int assumedCount) {
         MemorySegment s = pDepthAttachmentRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkRenderingAttachmentInfo.BYTES);
-        VkRenderingAttachmentInfo[] ret = new VkRenderingAttachmentInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkRenderingAttachmentInfo(s.asSlice(i * VkRenderingAttachmentInfo.BYTES, VkRenderingAttachmentInfo.BYTES));
-        }
-        return ret;
+        return new VkRenderingAttachmentInfo.Ptr(s);
     }
 
     public @pointer(target=VkRenderingAttachmentInfo.class) MemorySegment pDepthAttachmentRaw() {
@@ -293,23 +285,19 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         return new VkRenderingAttachmentInfo(s);
     }
 
-    public void pStencilAttachment(@Nullable VkRenderingAttachmentInfo value) {
+    public void pStencilAttachment(@Nullable IVkRenderingAttachmentInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStencilAttachmentRaw(s);
     }
 
-    @unsafe public @Nullable VkRenderingAttachmentInfo[] pStencilAttachment(int assumedCount) {
+    @unsafe public @Nullable VkRenderingAttachmentInfo.Ptr pStencilAttachment(int assumedCount) {
         MemorySegment s = pStencilAttachmentRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkRenderingAttachmentInfo.BYTES);
-        VkRenderingAttachmentInfo[] ret = new VkRenderingAttachmentInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkRenderingAttachmentInfo(s.asSlice(i * VkRenderingAttachmentInfo.BYTES, VkRenderingAttachmentInfo.BYTES));
-        }
-        return ret;
+        return new VkRenderingAttachmentInfo.Ptr(s);
     }
 
     public @pointer(target=VkRenderingAttachmentInfo.class) MemorySegment pStencilAttachmentRaw() {

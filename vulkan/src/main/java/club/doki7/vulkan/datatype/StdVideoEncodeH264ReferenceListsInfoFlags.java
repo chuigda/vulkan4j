@@ -121,8 +121,7 @@ public record StdVideoEncodeH264ReferenceListsInfoFlags(@NotNull MemorySegment s
 
     public static StdVideoEncodeH264ReferenceListsInfoFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeH264ReferenceListsInfoFlags.Ptr ret = new StdVideoEncodeH264ReferenceListsInfoFlags.Ptr(segment);
-        return ret;
+        return new StdVideoEncodeH264ReferenceListsInfoFlags.Ptr(segment);
     }
 
     public static StdVideoEncodeH264ReferenceListsInfoFlags clone(Arena arena, StdVideoEncodeH264ReferenceListsInfoFlags src) {

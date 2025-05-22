@@ -121,8 +121,7 @@ public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IVkB
 
     public static VkBaseOutStructure.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkBaseOutStructure.Ptr ret = new VkBaseOutStructure.Ptr(segment);
-        return ret;
+        return new VkBaseOutStructure.Ptr(segment);
     }
 
     public static VkBaseOutStructure clone(Arena arena, VkBaseOutStructure src) {
@@ -147,23 +146,19 @@ public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IVkB
         return new VkBaseOutStructure(s);
     }
 
-    public void pNext(@Nullable VkBaseOutStructure value) {
+    public void pNext(@Nullable IVkBaseOutStructure value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNextRaw(s);
     }
 
-    @unsafe public @Nullable VkBaseOutStructure[] pNext(int assumedCount) {
+    @unsafe public @Nullable VkBaseOutStructure.Ptr pNext(int assumedCount) {
         MemorySegment s = pNextRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkBaseOutStructure.BYTES);
-        VkBaseOutStructure[] ret = new VkBaseOutStructure[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkBaseOutStructure(s.asSlice(i * VkBaseOutStructure.BYTES, VkBaseOutStructure.BYTES));
-        }
-        return ret;
+        return new VkBaseOutStructure.Ptr(s);
     }
 
     public @pointer(target=VkBaseOutStructure.class) MemorySegment pNextRaw() {

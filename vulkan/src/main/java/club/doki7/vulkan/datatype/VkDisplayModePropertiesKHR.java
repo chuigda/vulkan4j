@@ -121,8 +121,7 @@ public record VkDisplayModePropertiesKHR(@NotNull MemorySegment segment) impleme
 
     public static VkDisplayModePropertiesKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDisplayModePropertiesKHR.Ptr ret = new VkDisplayModePropertiesKHR.Ptr(segment);
-        return ret;
+        return new VkDisplayModePropertiesKHR.Ptr(segment);
     }
 
     public static VkDisplayModePropertiesKHR clone(Arena arena, VkDisplayModePropertiesKHR src) {

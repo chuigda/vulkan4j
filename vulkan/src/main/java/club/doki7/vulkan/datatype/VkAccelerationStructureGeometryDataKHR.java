@@ -122,8 +122,7 @@ public record VkAccelerationStructureGeometryDataKHR(@NotNull MemorySegment segm
 
     public static VkAccelerationStructureGeometryDataKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkAccelerationStructureGeometryDataKHR.Ptr ret = new VkAccelerationStructureGeometryDataKHR.Ptr(segment);
-        return ret;
+        return new VkAccelerationStructureGeometryDataKHR.Ptr(segment);
     }
 
     public static VkAccelerationStructureGeometryDataKHR clone(Arena arena, VkAccelerationStructureGeometryDataKHR src) {

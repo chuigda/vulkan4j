@@ -124,8 +124,7 @@ public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IVkS
 
     public static VkSparseMemoryBind.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSparseMemoryBind.Ptr ret = new VkSparseMemoryBind.Ptr(segment);
-        return ret;
+        return new VkSparseMemoryBind.Ptr(segment);
     }
 
     public static VkSparseMemoryBind clone(Arena arena, VkSparseMemoryBind src) {

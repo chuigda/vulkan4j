@@ -123,8 +123,7 @@ public record VkImageSubresourceLayers(@NotNull MemorySegment segment) implement
 
     public static VkImageSubresourceLayers.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkImageSubresourceLayers.Ptr ret = new VkImageSubresourceLayers.Ptr(segment);
-        return ret;
+        return new VkImageSubresourceLayers.Ptr(segment);
     }
 
     public static VkImageSubresourceLayers clone(Arena arena, VkImageSubresourceLayers src) {

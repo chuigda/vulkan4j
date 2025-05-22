@@ -129,8 +129,7 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
 
     public static VkDescriptorDataEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDescriptorDataEXT.Ptr ret = new VkDescriptorDataEXT.Ptr(segment);
-        return ret;
+        return new VkDescriptorDataEXT.Ptr(segment);
     }
 
     public static VkDescriptorDataEXT clone(Arena arena, VkDescriptorDataEXT src) {
@@ -172,23 +171,19 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         return new VkDescriptorImageInfo(s);
     }
 
-    public void pCombinedImageSampler(@Nullable VkDescriptorImageInfo value) {
+    public void pCombinedImageSampler(@Nullable IVkDescriptorImageInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCombinedImageSamplerRaw(s);
     }
 
-    @unsafe public @Nullable VkDescriptorImageInfo[] pCombinedImageSampler(int assumedCount) {
+    @unsafe public @Nullable VkDescriptorImageInfo.Ptr pCombinedImageSampler(int assumedCount) {
         MemorySegment s = pCombinedImageSamplerRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDescriptorImageInfo.BYTES);
-        VkDescriptorImageInfo[] ret = new VkDescriptorImageInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorImageInfo(s.asSlice(i * VkDescriptorImageInfo.BYTES, VkDescriptorImageInfo.BYTES));
-        }
-        return ret;
+        return new VkDescriptorImageInfo.Ptr(s);
     }
 
     public @pointer(target=VkDescriptorImageInfo.class) MemorySegment pCombinedImageSamplerRaw() {
@@ -207,23 +202,19 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         return new VkDescriptorImageInfo(s);
     }
 
-    public void pInputAttachmentImage(@Nullable VkDescriptorImageInfo value) {
+    public void pInputAttachmentImage(@Nullable IVkDescriptorImageInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pInputAttachmentImageRaw(s);
     }
 
-    @unsafe public @Nullable VkDescriptorImageInfo[] pInputAttachmentImage(int assumedCount) {
+    @unsafe public @Nullable VkDescriptorImageInfo.Ptr pInputAttachmentImage(int assumedCount) {
         MemorySegment s = pInputAttachmentImageRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDescriptorImageInfo.BYTES);
-        VkDescriptorImageInfo[] ret = new VkDescriptorImageInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorImageInfo(s.asSlice(i * VkDescriptorImageInfo.BYTES, VkDescriptorImageInfo.BYTES));
-        }
-        return ret;
+        return new VkDescriptorImageInfo.Ptr(s);
     }
 
     public @pointer(target=VkDescriptorImageInfo.class) MemorySegment pInputAttachmentImageRaw() {
@@ -242,23 +233,19 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         return new VkDescriptorImageInfo(s);
     }
 
-    public void pSampledImage(@Nullable VkDescriptorImageInfo value) {
+    public void pSampledImage(@Nullable IVkDescriptorImageInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSampledImageRaw(s);
     }
 
-    @unsafe public @Nullable VkDescriptorImageInfo[] pSampledImage(int assumedCount) {
+    @unsafe public @Nullable VkDescriptorImageInfo.Ptr pSampledImage(int assumedCount) {
         MemorySegment s = pSampledImageRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDescriptorImageInfo.BYTES);
-        VkDescriptorImageInfo[] ret = new VkDescriptorImageInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorImageInfo(s.asSlice(i * VkDescriptorImageInfo.BYTES, VkDescriptorImageInfo.BYTES));
-        }
-        return ret;
+        return new VkDescriptorImageInfo.Ptr(s);
     }
 
     public @pointer(target=VkDescriptorImageInfo.class) MemorySegment pSampledImageRaw() {
@@ -277,23 +264,19 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         return new VkDescriptorImageInfo(s);
     }
 
-    public void pStorageImage(@Nullable VkDescriptorImageInfo value) {
+    public void pStorageImage(@Nullable IVkDescriptorImageInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStorageImageRaw(s);
     }
 
-    @unsafe public @Nullable VkDescriptorImageInfo[] pStorageImage(int assumedCount) {
+    @unsafe public @Nullable VkDescriptorImageInfo.Ptr pStorageImage(int assumedCount) {
         MemorySegment s = pStorageImageRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDescriptorImageInfo.BYTES);
-        VkDescriptorImageInfo[] ret = new VkDescriptorImageInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorImageInfo(s.asSlice(i * VkDescriptorImageInfo.BYTES, VkDescriptorImageInfo.BYTES));
-        }
-        return ret;
+        return new VkDescriptorImageInfo.Ptr(s);
     }
 
     public @pointer(target=VkDescriptorImageInfo.class) MemorySegment pStorageImageRaw() {
@@ -312,23 +295,19 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         return new VkDescriptorAddressInfoEXT(s);
     }
 
-    public void pUniformTexelBuffer(@Nullable VkDescriptorAddressInfoEXT value) {
+    public void pUniformTexelBuffer(@Nullable IVkDescriptorAddressInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pUniformTexelBufferRaw(s);
     }
 
-    @unsafe public @Nullable VkDescriptorAddressInfoEXT[] pUniformTexelBuffer(int assumedCount) {
+    @unsafe public @Nullable VkDescriptorAddressInfoEXT.Ptr pUniformTexelBuffer(int assumedCount) {
         MemorySegment s = pUniformTexelBufferRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDescriptorAddressInfoEXT.BYTES);
-        VkDescriptorAddressInfoEXT[] ret = new VkDescriptorAddressInfoEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorAddressInfoEXT(s.asSlice(i * VkDescriptorAddressInfoEXT.BYTES, VkDescriptorAddressInfoEXT.BYTES));
-        }
-        return ret;
+        return new VkDescriptorAddressInfoEXT.Ptr(s);
     }
 
     public @pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment pUniformTexelBufferRaw() {
@@ -347,23 +326,19 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         return new VkDescriptorAddressInfoEXT(s);
     }
 
-    public void pStorageTexelBuffer(@Nullable VkDescriptorAddressInfoEXT value) {
+    public void pStorageTexelBuffer(@Nullable IVkDescriptorAddressInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStorageTexelBufferRaw(s);
     }
 
-    @unsafe public @Nullable VkDescriptorAddressInfoEXT[] pStorageTexelBuffer(int assumedCount) {
+    @unsafe public @Nullable VkDescriptorAddressInfoEXT.Ptr pStorageTexelBuffer(int assumedCount) {
         MemorySegment s = pStorageTexelBufferRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDescriptorAddressInfoEXT.BYTES);
-        VkDescriptorAddressInfoEXT[] ret = new VkDescriptorAddressInfoEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorAddressInfoEXT(s.asSlice(i * VkDescriptorAddressInfoEXT.BYTES, VkDescriptorAddressInfoEXT.BYTES));
-        }
-        return ret;
+        return new VkDescriptorAddressInfoEXT.Ptr(s);
     }
 
     public @pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment pStorageTexelBufferRaw() {
@@ -382,23 +357,19 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         return new VkDescriptorAddressInfoEXT(s);
     }
 
-    public void pUniformBuffer(@Nullable VkDescriptorAddressInfoEXT value) {
+    public void pUniformBuffer(@Nullable IVkDescriptorAddressInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pUniformBufferRaw(s);
     }
 
-    @unsafe public @Nullable VkDescriptorAddressInfoEXT[] pUniformBuffer(int assumedCount) {
+    @unsafe public @Nullable VkDescriptorAddressInfoEXT.Ptr pUniformBuffer(int assumedCount) {
         MemorySegment s = pUniformBufferRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDescriptorAddressInfoEXT.BYTES);
-        VkDescriptorAddressInfoEXT[] ret = new VkDescriptorAddressInfoEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorAddressInfoEXT(s.asSlice(i * VkDescriptorAddressInfoEXT.BYTES, VkDescriptorAddressInfoEXT.BYTES));
-        }
-        return ret;
+        return new VkDescriptorAddressInfoEXT.Ptr(s);
     }
 
     public @pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment pUniformBufferRaw() {
@@ -417,23 +388,19 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         return new VkDescriptorAddressInfoEXT(s);
     }
 
-    public void pStorageBuffer(@Nullable VkDescriptorAddressInfoEXT value) {
+    public void pStorageBuffer(@Nullable IVkDescriptorAddressInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStorageBufferRaw(s);
     }
 
-    @unsafe public @Nullable VkDescriptorAddressInfoEXT[] pStorageBuffer(int assumedCount) {
+    @unsafe public @Nullable VkDescriptorAddressInfoEXT.Ptr pStorageBuffer(int assumedCount) {
         MemorySegment s = pStorageBufferRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkDescriptorAddressInfoEXT.BYTES);
-        VkDescriptorAddressInfoEXT[] ret = new VkDescriptorAddressInfoEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkDescriptorAddressInfoEXT(s.asSlice(i * VkDescriptorAddressInfoEXT.BYTES, VkDescriptorAddressInfoEXT.BYTES));
-        }
-        return ret;
+        return new VkDescriptorAddressInfoEXT.Ptr(s);
     }
 
     public @pointer(target=VkDescriptorAddressInfoEXT.class) MemorySegment pStorageBufferRaw() {

@@ -185,23 +185,19 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
         return new VkLayerSettingEXT(s);
     }
 
-    public void pSettings(@Nullable VkLayerSettingEXT value) {
+    public void pSettings(@Nullable IVkLayerSettingEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSettingsRaw(s);
     }
 
-    @unsafe public @Nullable VkLayerSettingEXT[] pSettings(int assumedCount) {
+    @unsafe public @Nullable VkLayerSettingEXT.Ptr pSettings(int assumedCount) {
         MemorySegment s = pSettingsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkLayerSettingEXT.BYTES);
-        VkLayerSettingEXT[] ret = new VkLayerSettingEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkLayerSettingEXT(s.asSlice(i * VkLayerSettingEXT.BYTES, VkLayerSettingEXT.BYTES));
-        }
-        return ret;
+        return new VkLayerSettingEXT.Ptr(s);
     }
 
     public @pointer(target=VkLayerSettingEXT.class) MemorySegment pSettingsRaw() {

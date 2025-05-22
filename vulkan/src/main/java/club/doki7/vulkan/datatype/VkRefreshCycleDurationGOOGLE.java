@@ -120,8 +120,7 @@ public record VkRefreshCycleDurationGOOGLE(@NotNull MemorySegment segment) imple
 
     public static VkRefreshCycleDurationGOOGLE.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkRefreshCycleDurationGOOGLE.Ptr ret = new VkRefreshCycleDurationGOOGLE.Ptr(segment);
-        return ret;
+        return new VkRefreshCycleDurationGOOGLE.Ptr(segment);
     }
 
     public static VkRefreshCycleDurationGOOGLE clone(Arena arena, VkRefreshCycleDurationGOOGLE src) {

@@ -126,8 +126,7 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
 
     public static StdVideoAV1ColorConfig.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1ColorConfig.Ptr ret = new StdVideoAV1ColorConfig.Ptr(segment);
-        return ret;
+        return new StdVideoAV1ColorConfig.Ptr(segment);
     }
 
     public static StdVideoAV1ColorConfig clone(Arena arena, StdVideoAV1ColorConfig src) {

@@ -122,8 +122,7 @@ public record VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(@NotN
 
     public static VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV.Ptr ret = new VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV.Ptr(segment);
-        return ret;
+        return new VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV.Ptr(segment);
     }
 
     public static VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV clone(Arena arena, VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV src) {

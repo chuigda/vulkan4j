@@ -123,8 +123,7 @@ public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implem
 
     public static StdVideoAV1ColorConfigFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1ColorConfigFlags.Ptr ret = new StdVideoAV1ColorConfigFlags.Ptr(segment);
-        return ret;
+        return new StdVideoAV1ColorConfigFlags.Ptr(segment);
     }
 
     public static StdVideoAV1ColorConfigFlags clone(Arena arena, StdVideoAV1ColorConfigFlags src) {

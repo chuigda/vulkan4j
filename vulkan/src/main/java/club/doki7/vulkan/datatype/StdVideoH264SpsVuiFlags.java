@@ -130,8 +130,7 @@ public record StdVideoH264SpsVuiFlags(@NotNull MemorySegment segment) implements
 
     public static StdVideoH264SpsVuiFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoH264SpsVuiFlags.Ptr ret = new StdVideoH264SpsVuiFlags.Ptr(segment);
-        return ret;
+        return new StdVideoH264SpsVuiFlags.Ptr(segment);
     }
 
     public static StdVideoH264SpsVuiFlags clone(Arena arena, StdVideoH264SpsVuiFlags src) {

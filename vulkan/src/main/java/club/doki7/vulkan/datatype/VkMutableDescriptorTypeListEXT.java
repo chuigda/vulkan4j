@@ -121,8 +121,7 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
 
     public static VkMutableDescriptorTypeListEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkMutableDescriptorTypeListEXT.Ptr ret = new VkMutableDescriptorTypeListEXT.Ptr(segment);
-        return ret;
+        return new VkMutableDescriptorTypeListEXT.Ptr(segment);
     }
 
     public static VkMutableDescriptorTypeListEXT clone(Arena arena, VkMutableDescriptorTypeListEXT src) {

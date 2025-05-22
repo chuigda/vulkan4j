@@ -214,23 +214,19 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         return new VkIndirectExecutionSetShaderLayoutInfoEXT(s);
     }
 
-    public void pSetLayoutInfos(@Nullable VkIndirectExecutionSetShaderLayoutInfoEXT value) {
+    public void pSetLayoutInfos(@Nullable IVkIndirectExecutionSetShaderLayoutInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSetLayoutInfosRaw(s);
     }
 
-    @unsafe public @Nullable VkIndirectExecutionSetShaderLayoutInfoEXT[] pSetLayoutInfos(int assumedCount) {
+    @unsafe public @Nullable VkIndirectExecutionSetShaderLayoutInfoEXT.Ptr pSetLayoutInfos(int assumedCount) {
         MemorySegment s = pSetLayoutInfosRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkIndirectExecutionSetShaderLayoutInfoEXT.BYTES);
-        VkIndirectExecutionSetShaderLayoutInfoEXT[] ret = new VkIndirectExecutionSetShaderLayoutInfoEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectExecutionSetShaderLayoutInfoEXT(s.asSlice(i * VkIndirectExecutionSetShaderLayoutInfoEXT.BYTES, VkIndirectExecutionSetShaderLayoutInfoEXT.BYTES));
-        }
-        return ret;
+        return new VkIndirectExecutionSetShaderLayoutInfoEXT.Ptr(s);
     }
 
     public @pointer(target=VkIndirectExecutionSetShaderLayoutInfoEXT.class) MemorySegment pSetLayoutInfosRaw() {
@@ -265,23 +261,19 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         return new VkPushConstantRange(s);
     }
 
-    public void pPushConstantRanges(@Nullable VkPushConstantRange value) {
+    public void pPushConstantRanges(@Nullable IVkPushConstantRange value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPushConstantRangesRaw(s);
     }
 
-    @unsafe public @Nullable VkPushConstantRange[] pPushConstantRanges(int assumedCount) {
+    @unsafe public @Nullable VkPushConstantRange.Ptr pPushConstantRanges(int assumedCount) {
         MemorySegment s = pPushConstantRangesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkPushConstantRange.BYTES);
-        VkPushConstantRange[] ret = new VkPushConstantRange[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkPushConstantRange(s.asSlice(i * VkPushConstantRange.BYTES, VkPushConstantRange.BYTES));
-        }
-        return ret;
+        return new VkPushConstantRange.Ptr(s);
     }
 
     public @pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {

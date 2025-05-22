@@ -126,8 +126,7 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IVkSte
 
     public static VkStencilOpState.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkStencilOpState.Ptr ret = new VkStencilOpState.Ptr(segment);
-        return ret;
+        return new VkStencilOpState.Ptr(segment);
     }
 
     public static VkStencilOpState clone(Arena arena, VkStencilOpState src) {

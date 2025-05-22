@@ -122,8 +122,7 @@ public record VkInputAttachmentAspectReference(@NotNull MemorySegment segment) i
 
     public static VkInputAttachmentAspectReference.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkInputAttachmentAspectReference.Ptr ret = new VkInputAttachmentAspectReference.Ptr(segment);
-        return ret;
+        return new VkInputAttachmentAspectReference.Ptr(segment);
     }
 
     public static VkInputAttachmentAspectReference clone(Arena arena, VkInputAttachmentAspectReference src) {

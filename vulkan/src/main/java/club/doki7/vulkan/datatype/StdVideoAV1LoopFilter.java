@@ -124,8 +124,7 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
 
     public static StdVideoAV1LoopFilter.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1LoopFilter.Ptr ret = new StdVideoAV1LoopFilter.Ptr(segment);
-        return ret;
+        return new StdVideoAV1LoopFilter.Ptr(segment);
     }
 
     public static StdVideoAV1LoopFilter clone(Arena arena, StdVideoAV1LoopFilter src) {

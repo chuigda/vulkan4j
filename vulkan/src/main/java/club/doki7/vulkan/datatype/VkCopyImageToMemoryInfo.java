@@ -216,23 +216,19 @@ public record VkCopyImageToMemoryInfo(@NotNull MemorySegment segment) implements
         return new VkImageToMemoryCopy(s);
     }
 
-    public void pRegions(@Nullable VkImageToMemoryCopy value) {
+    public void pRegions(@Nullable IVkImageToMemoryCopy value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
     }
 
-    @unsafe public @Nullable VkImageToMemoryCopy[] pRegions(int assumedCount) {
+    @unsafe public @Nullable VkImageToMemoryCopy.Ptr pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkImageToMemoryCopy.BYTES);
-        VkImageToMemoryCopy[] ret = new VkImageToMemoryCopy[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkImageToMemoryCopy(s.asSlice(i * VkImageToMemoryCopy.BYTES, VkImageToMemoryCopy.BYTES));
-        }
-        return ret;
+        return new VkImageToMemoryCopy.Ptr(s);
     }
 
     public @pointer(target=VkImageToMemoryCopy.class) MemorySegment pRegionsRaw() {

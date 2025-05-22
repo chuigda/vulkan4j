@@ -187,23 +187,19 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         return new VkGraphicsShaderGroupCreateInfoNV(s);
     }
 
-    public void pGroups(@Nullable VkGraphicsShaderGroupCreateInfoNV value) {
+    public void pGroups(@Nullable IVkGraphicsShaderGroupCreateInfoNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGroupsRaw(s);
     }
 
-    @unsafe public @Nullable VkGraphicsShaderGroupCreateInfoNV[] pGroups(int assumedCount) {
+    @unsafe public @Nullable VkGraphicsShaderGroupCreateInfoNV.Ptr pGroups(int assumedCount) {
         MemorySegment s = pGroupsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkGraphicsShaderGroupCreateInfoNV.BYTES);
-        VkGraphicsShaderGroupCreateInfoNV[] ret = new VkGraphicsShaderGroupCreateInfoNV[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkGraphicsShaderGroupCreateInfoNV(s.asSlice(i * VkGraphicsShaderGroupCreateInfoNV.BYTES, VkGraphicsShaderGroupCreateInfoNV.BYTES));
-        }
-        return ret;
+        return new VkGraphicsShaderGroupCreateInfoNV.Ptr(s);
     }
 
     public @pointer(target=VkGraphicsShaderGroupCreateInfoNV.class) MemorySegment pGroupsRaw() {

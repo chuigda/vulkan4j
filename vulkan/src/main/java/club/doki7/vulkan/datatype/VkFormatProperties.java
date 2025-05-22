@@ -122,8 +122,7 @@ public record VkFormatProperties(@NotNull MemorySegment segment) implements IVkF
 
     public static VkFormatProperties.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkFormatProperties.Ptr ret = new VkFormatProperties.Ptr(segment);
-        return ret;
+        return new VkFormatProperties.Ptr(segment);
     }
 
     public static VkFormatProperties clone(Arena arena, VkFormatProperties src) {

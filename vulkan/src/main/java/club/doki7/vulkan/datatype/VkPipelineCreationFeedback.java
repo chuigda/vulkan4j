@@ -121,8 +121,7 @@ public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) impleme
 
     public static VkPipelineCreationFeedback.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPipelineCreationFeedback.Ptr ret = new VkPipelineCreationFeedback.Ptr(segment);
-        return ret;
+        return new VkPipelineCreationFeedback.Ptr(segment);
     }
 
     public static VkPipelineCreationFeedback clone(Arena arena, VkPipelineCreationFeedback src) {

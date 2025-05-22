@@ -122,8 +122,7 @@ public record VkSpecializationMapEntry(@NotNull MemorySegment segment) implement
 
     public static VkSpecializationMapEntry.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSpecializationMapEntry.Ptr ret = new VkSpecializationMapEntry.Ptr(segment);
-        return ret;
+        return new VkSpecializationMapEntry.Ptr(segment);
     }
 
     public static VkSpecializationMapEntry clone(Arena arena, VkSpecializationMapEntry src) {

@@ -194,23 +194,19 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IVkAnt
         return new VkAntiLagPresentationInfoAMD(s);
     }
 
-    public void pPresentationInfo(@Nullable VkAntiLagPresentationInfoAMD value) {
+    public void pPresentationInfo(@Nullable IVkAntiLagPresentationInfoAMD value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPresentationInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkAntiLagPresentationInfoAMD[] pPresentationInfo(int assumedCount) {
+    @unsafe public @Nullable VkAntiLagPresentationInfoAMD.Ptr pPresentationInfo(int assumedCount) {
         MemorySegment s = pPresentationInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkAntiLagPresentationInfoAMD.BYTES);
-        VkAntiLagPresentationInfoAMD[] ret = new VkAntiLagPresentationInfoAMD[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAntiLagPresentationInfoAMD(s.asSlice(i * VkAntiLagPresentationInfoAMD.BYTES, VkAntiLagPresentationInfoAMD.BYTES));
-        }
-        return ret;
+        return new VkAntiLagPresentationInfoAMD.Ptr(s);
     }
 
     public @pointer(target=VkAntiLagPresentationInfoAMD.class) MemorySegment pPresentationInfoRaw() {

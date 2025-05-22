@@ -120,8 +120,7 @@ public record VkBindShaderGroupIndirectCommandNV(@NotNull MemorySegment segment)
 
     public static VkBindShaderGroupIndirectCommandNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkBindShaderGroupIndirectCommandNV.Ptr ret = new VkBindShaderGroupIndirectCommandNV.Ptr(segment);
-        return ret;
+        return new VkBindShaderGroupIndirectCommandNV.Ptr(segment);
     }
 
     public static VkBindShaderGroupIndirectCommandNV clone(Arena arena, VkBindShaderGroupIndirectCommandNV src) {

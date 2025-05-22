@@ -122,8 +122,7 @@ public record StdVideoEncodeH264RefPicMarkingEntry(@NotNull MemorySegment segmen
 
     public static StdVideoEncodeH264RefPicMarkingEntry.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeH264RefPicMarkingEntry.Ptr ret = new StdVideoEncodeH264RefPicMarkingEntry.Ptr(segment);
-        return ret;
+        return new StdVideoEncodeH264RefPicMarkingEntry.Ptr(segment);
     }
 
     public static StdVideoEncodeH264RefPicMarkingEntry clone(Arena arena, StdVideoEncodeH264RefPicMarkingEntry src) {

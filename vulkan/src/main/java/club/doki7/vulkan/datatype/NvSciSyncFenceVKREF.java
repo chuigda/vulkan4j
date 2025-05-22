@@ -118,8 +118,7 @@ public record NvSciSyncFenceVKREF(@NotNull MemorySegment segment) implements INv
 
     public static NvSciSyncFenceVKREF.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        NvSciSyncFenceVKREF.Ptr ret = new NvSciSyncFenceVKREF.Ptr(segment);
-        return ret;
+        return new NvSciSyncFenceVKREF.Ptr(segment);
     }
 
     public static NvSciSyncFenceVKREF clone(Arena arena, NvSciSyncFenceVKREF src) {

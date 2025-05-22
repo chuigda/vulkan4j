@@ -185,23 +185,19 @@ public record VkVideoEncodeH265NaluSliceSegmentInfoKHR(@NotNull MemorySegment se
         return new StdVideoEncodeH265SliceSegmentHeader(s);
     }
 
-    public void pStdSliceSegmentHeader(@Nullable StdVideoEncodeH265SliceSegmentHeader value) {
+    public void pStdSliceSegmentHeader(@Nullable IStdVideoEncodeH265SliceSegmentHeader value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdSliceSegmentHeaderRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH265SliceSegmentHeader[] pStdSliceSegmentHeader(int assumedCount) {
+    @unsafe public @Nullable StdVideoEncodeH265SliceSegmentHeader.Ptr pStdSliceSegmentHeader(int assumedCount) {
         MemorySegment s = pStdSliceSegmentHeaderRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoEncodeH265SliceSegmentHeader.BYTES);
-        StdVideoEncodeH265SliceSegmentHeader[] ret = new StdVideoEncodeH265SliceSegmentHeader[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH265SliceSegmentHeader(s.asSlice(i * StdVideoEncodeH265SliceSegmentHeader.BYTES, StdVideoEncodeH265SliceSegmentHeader.BYTES));
-        }
-        return ret;
+        return new StdVideoEncodeH265SliceSegmentHeader.Ptr(s);
     }
 
     public @pointer(target=StdVideoEncodeH265SliceSegmentHeader.class) MemorySegment pStdSliceSegmentHeaderRaw() {

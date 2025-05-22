@@ -124,8 +124,7 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
 
     public static VkDescriptorSetLayoutBinding.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDescriptorSetLayoutBinding.Ptr ret = new VkDescriptorSetLayoutBinding.Ptr(segment);
-        return ret;
+        return new VkDescriptorSetLayoutBinding.Ptr(segment);
     }
 
     public static VkDescriptorSetLayoutBinding clone(Arena arena, VkDescriptorSetLayoutBinding src) {
