@@ -1377,7 +1377,7 @@ public final class VkDeviceCommands {
     public @enumtype(VkResult.class) int acquirePerformanceConfigurationINTEL(
         VkDevice device,
         @pointer VkPerformanceConfigurationAcquireInfoINTEL pAcquireInfo,
-        @pointer(target=VkPerformanceConfigurationINTEL.class) VkPerformanceConfigurationINTEL.Ptr pConfiguration
+        @pointer VkPerformanceConfigurationINTEL.Ptr pConfiguration
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkAcquirePerformanceConfigurationINTEL);
         try {
@@ -1427,7 +1427,7 @@ public final class VkDeviceCommands {
     public @enumtype(VkResult.class) int allocateCommandBuffers(
         VkDevice device,
         @pointer VkCommandBufferAllocateInfo pAllocateInfo,
-        @pointer(target=VkCommandBuffer.class) VkCommandBuffer.Ptr pCommandBuffers
+        @pointer VkCommandBuffer.Ptr pCommandBuffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkAllocateCommandBuffers);
         try {
@@ -1445,7 +1445,7 @@ public final class VkDeviceCommands {
     public @enumtype(VkResult.class) int allocateDescriptorSets(
         VkDevice device,
         @pointer VkDescriptorSetAllocateInfo pAllocateInfo,
-        @pointer(target=VkDescriptorSet.class) VkDescriptorSet.Ptr pDescriptorSets
+        @pointer VkDescriptorSet.Ptr pDescriptorSets
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkAllocateDescriptorSets);
         try {
@@ -1464,7 +1464,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkMemoryAllocateInfo pAllocateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkDeviceMemory.class) VkDeviceMemory.Ptr pMemory
+        @pointer VkDeviceMemory.Ptr pMemory
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkAllocateMemory);
         try {
@@ -1890,7 +1890,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @unsigned int firstCounterBuffer,
         @unsigned int counterBufferCount,
-        @pointer(target=VkBuffer.class) VkBuffer.Ptr pCounterBuffers,
+        @pointer VkBuffer.Ptr pCounterBuffers,
         @Nullable @unsigned LongPtr pCounterBufferOffsets
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBeginTransformFeedbackEXT);
@@ -1984,7 +1984,7 @@ public final class VkDeviceCommands {
         VkPipelineLayout layout,
         @unsigned int firstSet,
         @unsigned int descriptorSetCount,
-        @pointer(target=VkDescriptorSet.class) VkDescriptorSet.Ptr pDescriptorSets,
+        @pointer VkDescriptorSet.Ptr pDescriptorSets,
         @unsigned int dynamicOffsetCount,
         @unsigned IntPtr pDynamicOffsets
     ) {
@@ -2162,7 +2162,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @unsigned int stageCount,
         @enumtype(VkShaderStageFlags.class) IntPtr pStages,
-        @Nullable @pointer(target=VkShaderEXT.class) VkShaderEXT.Ptr pShaders
+        @Nullable @pointer VkShaderEXT.Ptr pShaders
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindShadersEXT);
         try {
@@ -2216,7 +2216,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @unsigned int firstBinding,
         @unsigned int bindingCount,
-        @pointer(target=VkBuffer.class) VkBuffer.Ptr pBuffers,
+        @pointer VkBuffer.Ptr pBuffers,
         @unsigned LongPtr pOffsets,
         @Nullable @unsigned LongPtr pSizes
     ) {
@@ -2240,7 +2240,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @unsigned int firstBinding,
         @unsigned int bindingCount,
-        @pointer(target=VkBuffer.class) VkBuffer.Ptr pBuffers,
+        @pointer VkBuffer.Ptr pBuffers,
         @unsigned LongPtr pOffsets
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindVertexBuffers);
@@ -2262,7 +2262,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @unsigned int firstBinding,
         @unsigned int bindingCount,
-        @pointer(target=VkBuffer.class) VkBuffer.Ptr pBuffers,
+        @pointer VkBuffer.Ptr pBuffers,
         @unsigned LongPtr pOffsets,
         @Nullable @unsigned LongPtr pSizes,
         @Nullable @unsigned LongPtr pStrides
@@ -2288,7 +2288,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @unsigned int firstBinding,
         @unsigned int bindingCount,
-        @pointer(target=VkBuffer.class) VkBuffer.Ptr pBuffers,
+        @pointer VkBuffer.Ptr pBuffers,
         @unsigned LongPtr pOffsets,
         @Nullable @unsigned LongPtr pSizes,
         @Nullable @unsigned LongPtr pStrides
@@ -3980,7 +3980,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @unsigned int firstCounterBuffer,
         @unsigned int counterBufferCount,
-        @pointer(target=VkBuffer.class) VkBuffer.Ptr pCounterBuffers,
+        @pointer VkBuffer.Ptr pCounterBuffers,
         @Nullable @unsigned LongPtr pCounterBufferOffsets
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdEndTransformFeedbackEXT);
@@ -4017,7 +4017,7 @@ public final class VkDeviceCommands {
     public void cmdExecuteCommands(
         VkCommandBuffer commandBuffer,
         @unsigned int commandBufferCount,
-        @pointer(target=VkCommandBuffer.class) VkCommandBuffer.Ptr pCommandBuffers
+        @pointer VkCommandBuffer.Ptr pCommandBuffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdExecuteCommands);
         try {
@@ -6613,7 +6613,7 @@ public final class VkDeviceCommands {
     public void cmdWaitEvents(
         VkCommandBuffer commandBuffer,
         @unsigned int eventCount,
-        @pointer(target=VkEvent.class) VkEvent.Ptr pEvents,
+        @pointer VkEvent.Ptr pEvents,
         @enumtype(VkPipelineStageFlags.class) int srcStageMask,
         @enumtype(VkPipelineStageFlags.class) int dstStageMask,
         @unsigned int memoryBarrierCount,
@@ -6647,7 +6647,7 @@ public final class VkDeviceCommands {
     public void cmdWaitEvents2(
         VkCommandBuffer commandBuffer,
         @unsigned int eventCount,
-        @pointer(target=VkEvent.class) VkEvent.Ptr pEvents,
+        @pointer VkEvent.Ptr pEvents,
         @pointer IVkDependencyInfo pDependencyInfos
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdWaitEvents2);
@@ -6667,7 +6667,7 @@ public final class VkDeviceCommands {
     public void cmdWaitEvents2KHR(
         VkCommandBuffer commandBuffer,
         @unsigned int eventCount,
-        @pointer(target=VkEvent.class) VkEvent.Ptr pEvents,
+        @pointer VkEvent.Ptr pEvents,
         @pointer IVkDependencyInfo pDependencyInfos
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdWaitEvents2KHR);
@@ -6687,7 +6687,7 @@ public final class VkDeviceCommands {
     public void cmdWriteAccelerationStructuresPropertiesKHR(
         VkCommandBuffer commandBuffer,
         @unsigned int accelerationStructureCount,
-        @pointer(target=VkAccelerationStructureKHR.class) VkAccelerationStructureKHR.Ptr pAccelerationStructures,
+        @pointer VkAccelerationStructureKHR.Ptr pAccelerationStructures,
         @enumtype(VkQueryType.class) int queryType,
         VkQueryPool queryPool,
         @unsigned int firstQuery
@@ -6711,7 +6711,7 @@ public final class VkDeviceCommands {
     public void cmdWriteAccelerationStructuresPropertiesNV(
         VkCommandBuffer commandBuffer,
         @unsigned int accelerationStructureCount,
-        @pointer(target=VkAccelerationStructureNV.class) VkAccelerationStructureNV.Ptr pAccelerationStructures,
+        @pointer VkAccelerationStructureNV.Ptr pAccelerationStructures,
         @enumtype(VkQueryType.class) int queryType,
         VkQueryPool queryPool,
         @unsigned int firstQuery
@@ -6779,7 +6779,7 @@ public final class VkDeviceCommands {
     public void cmdWriteMicromapsPropertiesEXT(
         VkCommandBuffer commandBuffer,
         @unsigned int micromapCount,
-        @pointer(target=VkMicromapEXT.class) VkMicromapEXT.Ptr pMicromaps,
+        @pointer VkMicromapEXT.Ptr pMicromaps,
         @enumtype(VkQueryType.class) int queryType,
         VkQueryPool queryPool,
         @unsigned int firstQuery
@@ -7102,7 +7102,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkAccelerationStructureCreateInfoKHR pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkAccelerationStructureKHR.class) VkAccelerationStructureKHR.Ptr pAccelerationStructure
+        @pointer VkAccelerationStructureKHR.Ptr pAccelerationStructure
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateAccelerationStructureKHR);
         try {
@@ -7122,7 +7122,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkAccelerationStructureCreateInfoNV pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkAccelerationStructureNV.class) VkAccelerationStructureNV.Ptr pAccelerationStructure
+        @pointer VkAccelerationStructureNV.Ptr pAccelerationStructure
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateAccelerationStructureNV);
         try {
@@ -7142,7 +7142,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkBufferCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkBuffer.class) VkBuffer.Ptr pBuffer
+        @pointer VkBuffer.Ptr pBuffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateBuffer);
         try {
@@ -7162,7 +7162,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkBufferCollectionCreateInfoFUCHSIA pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkBufferCollectionFUCHSIA.class) VkBufferCollectionFUCHSIA.Ptr pCollection
+        @pointer VkBufferCollectionFUCHSIA.Ptr pCollection
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateBufferCollectionFUCHSIA);
         try {
@@ -7182,7 +7182,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkBufferViewCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkBufferView.class) VkBufferView.Ptr pView
+        @pointer VkBufferView.Ptr pView
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateBufferView);
         try {
@@ -7202,7 +7202,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkCommandPoolCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkCommandPool.class) VkCommandPool.Ptr pCommandPool
+        @pointer VkCommandPool.Ptr pCommandPool
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateCommandPool);
         try {
@@ -7224,7 +7224,7 @@ public final class VkDeviceCommands {
         @unsigned int createInfoCount,
         @pointer IVkComputePipelineCreateInfo pCreateInfos,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkPipeline.class) VkPipeline.Ptr pPipelines
+        @pointer VkPipeline.Ptr pPipelines
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateComputePipelines);
         try {
@@ -7246,7 +7246,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkCuFunctionCreateInfoNVX pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkCuFunctionNVX.class) VkCuFunctionNVX.Ptr pFunction
+        @pointer VkCuFunctionNVX.Ptr pFunction
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateCuFunctionNVX);
         try {
@@ -7266,7 +7266,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkCuModuleCreateInfoNVX pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkCuModuleNVX.class) VkCuModuleNVX.Ptr pModule
+        @pointer VkCuModuleNVX.Ptr pModule
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateCuModuleNVX);
         try {
@@ -7286,7 +7286,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkCudaFunctionCreateInfoNV pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkCudaFunctionNV.class) VkCudaFunctionNV.Ptr pFunction
+        @pointer VkCudaFunctionNV.Ptr pFunction
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateCudaFunctionNV);
         try {
@@ -7306,7 +7306,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkCudaModuleCreateInfoNV pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkCudaModuleNV.class) VkCudaModuleNV.Ptr pModule
+        @pointer VkCudaModuleNV.Ptr pModule
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateCudaModuleNV);
         try {
@@ -7325,7 +7325,7 @@ public final class VkDeviceCommands {
     public @enumtype(VkResult.class) int createDeferredOperationKHR(
         VkDevice device,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkDeferredOperationKHR.class) VkDeferredOperationKHR.Ptr pDeferredOperation
+        @pointer VkDeferredOperationKHR.Ptr pDeferredOperation
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateDeferredOperationKHR);
         try {
@@ -7344,7 +7344,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkDescriptorPoolCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkDescriptorPool.class) VkDescriptorPool.Ptr pDescriptorPool
+        @pointer VkDescriptorPool.Ptr pDescriptorPool
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateDescriptorPool);
         try {
@@ -7364,7 +7364,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkDescriptorSetLayoutCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkDescriptorSetLayout.class) VkDescriptorSetLayout.Ptr pSetLayout
+        @pointer VkDescriptorSetLayout.Ptr pSetLayout
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateDescriptorSetLayout);
         try {
@@ -7384,7 +7384,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkDescriptorUpdateTemplateCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkDescriptorUpdateTemplate.class) VkDescriptorUpdateTemplate.Ptr pDescriptorUpdateTemplate
+        @pointer VkDescriptorUpdateTemplate.Ptr pDescriptorUpdateTemplate
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateDescriptorUpdateTemplate);
         try {
@@ -7404,7 +7404,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkDescriptorUpdateTemplateCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkDescriptorUpdateTemplate.class) VkDescriptorUpdateTemplate.Ptr pDescriptorUpdateTemplate
+        @pointer VkDescriptorUpdateTemplate.Ptr pDescriptorUpdateTemplate
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateDescriptorUpdateTemplateKHR);
         try {
@@ -7424,7 +7424,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkEventCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkEvent.class) VkEvent.Ptr pEvent
+        @pointer VkEvent.Ptr pEvent
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateEvent);
         try {
@@ -7446,7 +7446,7 @@ public final class VkDeviceCommands {
         @unsigned int createInfoCount,
         @pointer IVkExecutionGraphPipelineCreateInfoAMDX pCreateInfos,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkPipeline.class) VkPipeline.Ptr pPipelines
+        @pointer VkPipeline.Ptr pPipelines
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateExecutionGraphPipelinesAMDX);
         try {
@@ -7468,7 +7468,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkExternalComputeQueueCreateInfoNV pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkExternalComputeQueueNV.class) VkExternalComputeQueueNV.Ptr pExternalQueue
+        @pointer VkExternalComputeQueueNV.Ptr pExternalQueue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateExternalComputeQueueNV);
         try {
@@ -7488,7 +7488,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkFenceCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkFence.class) VkFence.Ptr pFence
+        @pointer VkFence.Ptr pFence
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateFence);
         try {
@@ -7508,7 +7508,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkFramebufferCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkFramebuffer.class) VkFramebuffer.Ptr pFramebuffer
+        @pointer VkFramebuffer.Ptr pFramebuffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateFramebuffer);
         try {
@@ -7530,7 +7530,7 @@ public final class VkDeviceCommands {
         @unsigned int createInfoCount,
         @pointer IVkGraphicsPipelineCreateInfo pCreateInfos,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkPipeline.class) VkPipeline.Ptr pPipelines
+        @pointer VkPipeline.Ptr pPipelines
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateGraphicsPipelines);
         try {
@@ -7552,7 +7552,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkImageCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkImage.class) VkImage.Ptr pImage
+        @pointer VkImage.Ptr pImage
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateImage);
         try {
@@ -7572,7 +7572,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkImageViewCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkImageView.class) VkImageView.Ptr pView
+        @pointer VkImageView.Ptr pView
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateImageView);
         try {
@@ -7592,7 +7592,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkIndirectCommandsLayoutCreateInfoEXT pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkIndirectCommandsLayoutEXT.class) VkIndirectCommandsLayoutEXT.Ptr pIndirectCommandsLayout
+        @pointer VkIndirectCommandsLayoutEXT.Ptr pIndirectCommandsLayout
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateIndirectCommandsLayoutEXT);
         try {
@@ -7612,7 +7612,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkIndirectCommandsLayoutCreateInfoNV pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkIndirectCommandsLayoutNV.class) VkIndirectCommandsLayoutNV.Ptr pIndirectCommandsLayout
+        @pointer VkIndirectCommandsLayoutNV.Ptr pIndirectCommandsLayout
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateIndirectCommandsLayoutNV);
         try {
@@ -7632,7 +7632,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkIndirectExecutionSetCreateInfoEXT pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkIndirectExecutionSetEXT.class) VkIndirectExecutionSetEXT.Ptr pIndirectExecutionSet
+        @pointer VkIndirectExecutionSetEXT.Ptr pIndirectExecutionSet
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateIndirectExecutionSetEXT);
         try {
@@ -7652,7 +7652,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkMicromapCreateInfoEXT pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkMicromapEXT.class) VkMicromapEXT.Ptr pMicromap
+        @pointer VkMicromapEXT.Ptr pMicromap
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateMicromapEXT);
         try {
@@ -7672,7 +7672,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkOpticalFlowSessionCreateInfoNV pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkOpticalFlowSessionNV.class) VkOpticalFlowSessionNV.Ptr pSession
+        @pointer VkOpticalFlowSessionNV.Ptr pSession
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateOpticalFlowSessionNV);
         try {
@@ -7712,7 +7712,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkPipelineCacheCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkPipelineCache.class) VkPipelineCache.Ptr pPipelineCache
+        @pointer VkPipelineCache.Ptr pPipelineCache
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreatePipelineCache);
         try {
@@ -7732,7 +7732,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkPipelineLayoutCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkPipelineLayout.class) VkPipelineLayout.Ptr pPipelineLayout
+        @pointer VkPipelineLayout.Ptr pPipelineLayout
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreatePipelineLayout);
         try {
@@ -7752,7 +7752,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkPrivateDataSlotCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkPrivateDataSlot.class) VkPrivateDataSlot.Ptr pPrivateDataSlot
+        @pointer VkPrivateDataSlot.Ptr pPrivateDataSlot
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreatePrivateDataSlot);
         try {
@@ -7772,7 +7772,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkPrivateDataSlotCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkPrivateDataSlot.class) VkPrivateDataSlot.Ptr pPrivateDataSlot
+        @pointer VkPrivateDataSlot.Ptr pPrivateDataSlot
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreatePrivateDataSlotEXT);
         try {
@@ -7792,7 +7792,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkQueryPoolCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkQueryPool.class) VkQueryPool.Ptr pQueryPool
+        @pointer VkQueryPool.Ptr pQueryPool
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateQueryPool);
         try {
@@ -7815,7 +7815,7 @@ public final class VkDeviceCommands {
         @unsigned int createInfoCount,
         @pointer IVkRayTracingPipelineCreateInfoKHR pCreateInfos,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkPipeline.class) VkPipeline.Ptr pPipelines
+        @pointer VkPipeline.Ptr pPipelines
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateRayTracingPipelinesKHR);
         try {
@@ -7840,7 +7840,7 @@ public final class VkDeviceCommands {
         @unsigned int createInfoCount,
         @pointer IVkRayTracingPipelineCreateInfoNV pCreateInfos,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkPipeline.class) VkPipeline.Ptr pPipelines
+        @pointer VkPipeline.Ptr pPipelines
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateRayTracingPipelinesNV);
         try {
@@ -7862,7 +7862,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkRenderPassCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkRenderPass.class) VkRenderPass.Ptr pRenderPass
+        @pointer VkRenderPass.Ptr pRenderPass
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateRenderPass);
         try {
@@ -7882,7 +7882,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkRenderPassCreateInfo2 pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkRenderPass.class) VkRenderPass.Ptr pRenderPass
+        @pointer VkRenderPass.Ptr pRenderPass
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateRenderPass2);
         try {
@@ -7902,7 +7902,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkRenderPassCreateInfo2 pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkRenderPass.class) VkRenderPass.Ptr pRenderPass
+        @pointer VkRenderPass.Ptr pRenderPass
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateRenderPass2KHR);
         try {
@@ -7922,7 +7922,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkSamplerCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSampler.class) VkSampler.Ptr pSampler
+        @pointer VkSampler.Ptr pSampler
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateSampler);
         try {
@@ -7942,7 +7942,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkSamplerYcbcrConversionCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSamplerYcbcrConversion.class) VkSamplerYcbcrConversion.Ptr pYcbcrConversion
+        @pointer VkSamplerYcbcrConversion.Ptr pYcbcrConversion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateSamplerYcbcrConversion);
         try {
@@ -7962,7 +7962,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkSamplerYcbcrConversionCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSamplerYcbcrConversion.class) VkSamplerYcbcrConversion.Ptr pYcbcrConversion
+        @pointer VkSamplerYcbcrConversion.Ptr pYcbcrConversion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateSamplerYcbcrConversionKHR);
         try {
@@ -7982,7 +7982,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkSemaphoreCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSemaphore.class) VkSemaphore.Ptr pSemaphore
+        @pointer VkSemaphore.Ptr pSemaphore
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateSemaphore);
         try {
@@ -8002,7 +8002,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkSemaphoreSciSyncPoolCreateInfoNV pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSemaphoreSciSyncPoolNV.class) VkSemaphoreSciSyncPoolNV.Ptr pSemaphorePool
+        @pointer VkSemaphoreSciSyncPoolNV.Ptr pSemaphorePool
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateSemaphoreSciSyncPoolNV);
         try {
@@ -8022,7 +8022,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkShaderModuleCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkShaderModule.class) VkShaderModule.Ptr pShaderModule
+        @pointer VkShaderModule.Ptr pShaderModule
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateShaderModule);
         try {
@@ -8043,7 +8043,7 @@ public final class VkDeviceCommands {
         @unsigned int createInfoCount,
         @pointer IVkShaderCreateInfoEXT pCreateInfos,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkShaderEXT.class) VkShaderEXT.Ptr pShaders
+        @pointer VkShaderEXT.Ptr pShaders
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateShadersEXT);
         try {
@@ -8065,7 +8065,7 @@ public final class VkDeviceCommands {
         @unsigned int swapchainCount,
         @pointer IVkSwapchainCreateInfoKHR pCreateInfos,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSwapchainKHR.class) VkSwapchainKHR.Ptr pSwapchains
+        @pointer VkSwapchainKHR.Ptr pSwapchains
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateSharedSwapchainsKHR);
         try {
@@ -8086,7 +8086,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkSwapchainCreateInfoKHR pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSwapchainKHR.class) VkSwapchainKHR.Ptr pSwapchain
+        @pointer VkSwapchainKHR.Ptr pSwapchain
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateSwapchainKHR);
         try {
@@ -8106,7 +8106,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkValidationCacheCreateInfoEXT pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkValidationCacheEXT.class) VkValidationCacheEXT.Ptr pValidationCache
+        @pointer VkValidationCacheEXT.Ptr pValidationCache
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateValidationCacheEXT);
         try {
@@ -8126,7 +8126,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkVideoSessionCreateInfoKHR pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkVideoSessionKHR.class) VkVideoSessionKHR.Ptr pVideoSession
+        @pointer VkVideoSessionKHR.Ptr pVideoSession
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateVideoSessionKHR);
         try {
@@ -8146,7 +8146,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkVideoSessionParametersCreateInfoKHR pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkVideoSessionParametersKHR.class) VkVideoSessionParametersKHR.Ptr pVideoSessionParameters
+        @pointer VkVideoSessionParametersKHR.Ptr pVideoSessionParameters
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateVideoSessionParametersKHR);
         try {
@@ -9142,7 +9142,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         VkCommandPool commandPool,
         @unsigned int commandBufferCount,
-        @pointer(target=VkCommandBuffer.class) VkCommandBuffer.Ptr pCommandBuffers
+        @pointer VkCommandBuffer.Ptr pCommandBuffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkFreeCommandBuffers);
         try {
@@ -9162,7 +9162,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         VkDescriptorPool descriptorPool,
         @unsigned int descriptorSetCount,
-        @pointer(target=VkDescriptorSet.class) VkDescriptorSet.Ptr pDescriptorSets
+        @pointer VkDescriptorSet.Ptr pDescriptorSets
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkFreeDescriptorSets);
         try {
@@ -10074,7 +10074,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @unsigned int queueFamilyIndex,
         @unsigned int queueIndex,
-        @pointer(target=VkQueue.class) VkQueue.Ptr pQueue
+        @pointer VkQueue.Ptr pQueue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetDeviceQueue);
         try {
@@ -10093,7 +10093,7 @@ public final class VkDeviceCommands {
     public void getDeviceQueue2(
         VkDevice device,
         @pointer VkDeviceQueueInfo2 pQueueInfo,
-        @pointer(target=VkQueue.class) VkQueue.Ptr pQueue
+        @pointer VkQueue.Ptr pQueue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetDeviceQueue2);
         try {
@@ -12098,7 +12098,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         VkSwapchainKHR swapchain,
         @unsigned IntPtr pSwapchainImageCount,
-        @Nullable @pointer(target=VkImage.class) VkImage.Ptr pSwapchainImages
+        @Nullable @pointer VkImage.Ptr pSwapchainImages
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetSwapchainImagesKHR);
         try {
@@ -12173,7 +12173,7 @@ public final class VkDeviceCommands {
     public @enumtype(VkResult.class) int getWinrtDisplayNV(
         VkPhysicalDevice physicalDevice,
         @unsigned int deviceRelativeId,
-        @pointer(target=VkDisplayKHR.class) VkDisplayKHR.Ptr pDisplay
+        @pointer VkDisplayKHR.Ptr pDisplay
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetWinrtDisplayNV);
         try {
@@ -12432,7 +12432,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         VkPipelineCache dstCache,
         @unsigned int srcCacheCount,
-        @pointer(target=VkPipelineCache.class) VkPipelineCache.Ptr pSrcCaches
+        @pointer VkPipelineCache.Ptr pSrcCaches
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkMergePipelineCaches);
         try {
@@ -12452,7 +12452,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         VkValidationCacheEXT dstCache,
         @unsigned int srcCacheCount,
-        @pointer(target=VkValidationCacheEXT.class) VkValidationCacheEXT.Ptr pSrcCaches
+        @pointer VkValidationCacheEXT.Ptr pSrcCaches
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkMergeValidationCachesEXT);
         try {
@@ -12614,7 +12614,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @pointer VkDeviceEventInfoEXT pDeviceEventInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkFence.class) VkFence.Ptr pFence
+        @pointer VkFence.Ptr pFence
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkRegisterDeviceEventEXT);
         try {
@@ -12635,7 +12635,7 @@ public final class VkDeviceCommands {
         VkDisplayKHR display,
         @pointer VkDisplayEventInfoEXT pDisplayEventInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkFence.class) VkFence.Ptr pFence
+        @pointer VkFence.Ptr pFence
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkRegisterDisplayEventEXT);
         try {
@@ -12803,7 +12803,7 @@ public final class VkDeviceCommands {
     public @enumtype(VkResult.class) int resetFences(
         VkDevice device,
         @unsigned int fenceCount,
-        @pointer(target=VkFence.class) VkFence.Ptr pFences
+        @pointer VkFence.Ptr pFences
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkResetFences);
         try {
@@ -12931,7 +12931,7 @@ public final class VkDeviceCommands {
     public void setHdrMetadataEXT(
         VkDevice device,
         @unsigned int swapchainCount,
-        @pointer(target=VkSwapchainKHR.class) VkSwapchainKHR.Ptr pSwapchains,
+        @pointer VkSwapchainKHR.Ptr pSwapchains,
         @pointer IVkHdrMetadataEXT pMetadata
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkSetHdrMetadataEXT);
@@ -13335,7 +13335,7 @@ public final class VkDeviceCommands {
     public @enumtype(VkResult.class) int waitForFences(
         VkDevice device,
         @unsigned int fenceCount,
-        @pointer(target=VkFence.class) VkFence.Ptr pFences,
+        @pointer VkFence.Ptr pFences,
         @unsigned int waitAll,
         @unsigned long timeout
     ) {
@@ -13413,7 +13413,7 @@ public final class VkDeviceCommands {
     public @enumtype(VkResult.class) int writeAccelerationStructuresPropertiesKHR(
         VkDevice device,
         @unsigned int accelerationStructureCount,
-        @pointer(target=VkAccelerationStructureKHR.class) VkAccelerationStructureKHR.Ptr pAccelerationStructures,
+        @pointer VkAccelerationStructureKHR.Ptr pAccelerationStructures,
         @enumtype(VkQueryType.class) int queryType,
         long dataSize,
         @pointer(comment="void*") MemorySegment pData,
@@ -13439,7 +13439,7 @@ public final class VkDeviceCommands {
     public @enumtype(VkResult.class) int writeMicromapsPropertiesEXT(
         VkDevice device,
         @unsigned int micromapCount,
-        @pointer(target=VkMicromapEXT.class) VkMicromapEXT.Ptr pMicromaps,
+        @pointer VkMicromapEXT.Ptr pMicromaps,
         @enumtype(VkQueryType.class) int queryType,
         long dataSize,
         @pointer(comment="void*") MemorySegment pData,

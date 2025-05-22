@@ -31,7 +31,7 @@ public final class VkEntryCommands {
     public @enumtype(VkResult.class) int createInstance(
         @pointer VkInstanceCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkInstance.class) VkInstance.Ptr pInstance
+        @pointer VkInstance.Ptr pInstance
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateInstance);
         try {

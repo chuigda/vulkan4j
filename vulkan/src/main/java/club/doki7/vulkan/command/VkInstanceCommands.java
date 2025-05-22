@@ -294,7 +294,7 @@ public final class VkInstanceCommands {
         VkInstance instance,
         @pointer VkAndroidSurfaceCreateInfoKHR pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Ptr pSurface
+        @pointer VkSurfaceKHR.Ptr pSurface
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateAndroidSurfaceKHR);
         try {
@@ -314,7 +314,7 @@ public final class VkInstanceCommands {
         VkInstance instance,
         @pointer VkDebugReportCallbackCreateInfoEXT pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkDebugReportCallbackEXT.class) VkDebugReportCallbackEXT.Ptr pCallback
+        @pointer VkDebugReportCallbackEXT.Ptr pCallback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateDebugReportCallbackEXT);
         try {
@@ -334,7 +334,7 @@ public final class VkInstanceCommands {
         VkInstance instance,
         @pointer VkDebugUtilsMessengerCreateInfoEXT pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkDebugUtilsMessengerEXT.class) VkDebugUtilsMessengerEXT.Ptr pMessenger
+        @pointer VkDebugUtilsMessengerEXT.Ptr pMessenger
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateDebugUtilsMessengerEXT);
         try {
@@ -354,7 +354,7 @@ public final class VkInstanceCommands {
         VkPhysicalDevice physicalDevice,
         @pointer VkDeviceCreateInfo pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkDevice.class) VkDevice.Ptr pDevice
+        @pointer VkDevice.Ptr pDevice
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateDevice);
         try {
@@ -374,7 +374,7 @@ public final class VkInstanceCommands {
         VkInstance instance,
         @pointer VkDirectFBSurfaceCreateInfoEXT pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Ptr pSurface
+        @pointer VkSurfaceKHR.Ptr pSurface
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateDirectFBSurfaceEXT);
         try {
@@ -395,7 +395,7 @@ public final class VkInstanceCommands {
         VkDisplayKHR display,
         @pointer VkDisplayModeCreateInfoKHR pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkDisplayModeKHR.class) VkDisplayModeKHR.Ptr pMode
+        @pointer VkDisplayModeKHR.Ptr pMode
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateDisplayModeKHR);
         try {
@@ -416,7 +416,7 @@ public final class VkInstanceCommands {
         VkInstance instance,
         @pointer VkDisplaySurfaceCreateInfoKHR pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Ptr pSurface
+        @pointer VkSurfaceKHR.Ptr pSurface
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateDisplayPlaneSurfaceKHR);
         try {
@@ -436,7 +436,7 @@ public final class VkInstanceCommands {
         VkInstance instance,
         @pointer VkHeadlessSurfaceCreateInfoEXT pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Ptr pSurface
+        @pointer VkSurfaceKHR.Ptr pSurface
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateHeadlessSurfaceEXT);
         try {
@@ -456,7 +456,7 @@ public final class VkInstanceCommands {
         VkInstance instance,
         @pointer VkIOSSurfaceCreateInfoMVK pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Ptr pSurface
+        @pointer VkSurfaceKHR.Ptr pSurface
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateIOSSurfaceMVK);
         try {
@@ -476,7 +476,7 @@ public final class VkInstanceCommands {
         VkInstance instance,
         @pointer VkImagePipeSurfaceCreateInfoFUCHSIA pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Ptr pSurface
+        @pointer VkSurfaceKHR.Ptr pSurface
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateImagePipeSurfaceFUCHSIA);
         try {
@@ -496,7 +496,7 @@ public final class VkInstanceCommands {
         VkInstance instance,
         @pointer VkMacOSSurfaceCreateInfoMVK pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Ptr pSurface
+        @pointer VkSurfaceKHR.Ptr pSurface
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateMacOSSurfaceMVK);
         try {
@@ -516,7 +516,7 @@ public final class VkInstanceCommands {
         VkInstance instance,
         @pointer VkMetalSurfaceCreateInfoEXT pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Ptr pSurface
+        @pointer VkSurfaceKHR.Ptr pSurface
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateMetalSurfaceEXT);
         try {
@@ -536,7 +536,7 @@ public final class VkInstanceCommands {
         VkInstance instance,
         @pointer VkScreenSurfaceCreateInfoQNX pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Ptr pSurface
+        @pointer VkSurfaceKHR.Ptr pSurface
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateScreenSurfaceQNX);
         try {
@@ -556,7 +556,7 @@ public final class VkInstanceCommands {
         VkInstance instance,
         @pointer VkStreamDescriptorSurfaceCreateInfoGGP pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Ptr pSurface
+        @pointer VkSurfaceKHR.Ptr pSurface
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateStreamDescriptorSurfaceGGP);
         try {
@@ -576,7 +576,7 @@ public final class VkInstanceCommands {
         VkInstance instance,
         @pointer VkViSurfaceCreateInfoNN pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Ptr pSurface
+        @pointer VkSurfaceKHR.Ptr pSurface
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateViSurfaceNN);
         try {
@@ -596,7 +596,7 @@ public final class VkInstanceCommands {
         VkInstance instance,
         @pointer VkWaylandSurfaceCreateInfoKHR pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Ptr pSurface
+        @pointer VkSurfaceKHR.Ptr pSurface
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateWaylandSurfaceKHR);
         try {
@@ -616,7 +616,7 @@ public final class VkInstanceCommands {
         VkInstance instance,
         @pointer VkWin32SurfaceCreateInfoKHR pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Ptr pSurface
+        @pointer VkSurfaceKHR.Ptr pSurface
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateWin32SurfaceKHR);
         try {
@@ -636,7 +636,7 @@ public final class VkInstanceCommands {
         VkInstance instance,
         @pointer VkXcbSurfaceCreateInfoKHR pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Ptr pSurface
+        @pointer VkSurfaceKHR.Ptr pSurface
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateXcbSurfaceKHR);
         try {
@@ -656,7 +656,7 @@ public final class VkInstanceCommands {
         VkInstance instance,
         @pointer VkXlibSurfaceCreateInfoKHR pCreateInfo,
         @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Ptr pSurface
+        @pointer VkSurfaceKHR.Ptr pSurface
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateXlibSurfaceKHR);
         try {
@@ -847,7 +847,7 @@ public final class VkInstanceCommands {
     public @enumtype(VkResult.class) int enumeratePhysicalDevices(
         VkInstance instance,
         @unsigned IntPtr pPhysicalDeviceCount,
-        @Nullable @pointer(target=VkPhysicalDevice.class) VkPhysicalDevice.Ptr pPhysicalDevices
+        @Nullable @pointer VkPhysicalDevice.Ptr pPhysicalDevices
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkEnumeratePhysicalDevices);
         try {
@@ -944,7 +944,7 @@ public final class VkInstanceCommands {
         VkPhysicalDevice physicalDevice,
         @unsigned int planeIndex,
         @unsigned IntPtr pDisplayCount,
-        @Nullable @pointer(target=VkDisplayKHR.class) VkDisplayKHR.Ptr pDisplays
+        @Nullable @pointer VkDisplayKHR.Ptr pDisplays
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetDisplayPlaneSupportedDisplaysKHR);
         try {
@@ -964,7 +964,7 @@ public final class VkInstanceCommands {
         VkPhysicalDevice physicalDevice,
         int drmFd,
         @unsigned int connectorId,
-        @pointer(target=VkDisplayKHR.class) VkDisplayKHR.Ptr display
+        @pointer VkDisplayKHR.Ptr display
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetDrmDisplayEXT);
         try {
@@ -1836,7 +1836,7 @@ public final class VkInstanceCommands {
         VkPhysicalDevice physicalDevice,
         PointerPtr dpy,
         long rrOutput,
-        @pointer(target=VkDisplayKHR.class) VkDisplayKHR.Ptr pDisplay
+        @pointer VkDisplayKHR.Ptr pDisplay
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetRandROutputDisplayEXT);
         try {
